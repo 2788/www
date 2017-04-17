@@ -1,24 +1,44 @@
-# README
+# 新官网
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## nginx config
+```
+#################### WORKS API SERVICE ####################
+upstream www_backend {
+  server unix:/tmp/unicorn.www.sock fail_timeout=0;
+}
 
-Things you may want to cover:
+server {
+  listen 80 default_server;
+  server_name localhost www.qiniu.io;
+  client_max_body_size 20M;
+  root /home/qboxserver/mars-www/_package/www/public;
 
-* Ruby version
+  location ~* ^(/assets|/favicon.ico) {
+    access_log        off;
+    expires           max;
+  }
 
-* System dependencies
+  location / {
+    proxy_redirect     off;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Forwarded-Host $host;
+    proxy_set_header   X-Forwarded-Server $host;
+    proxy_set_header   X-Real-IP        $remote_addr;
+    proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+    proxy_buffering    on;
+    proxy_pass         http://www_backend;
+  }
+}
+```
 
-* Configuration
+## unicorn
+```
+# start
+unicorn_rails -D -c config/unicorn.rb -E production
 
-* Database creation
+# restart
+kill -USR2 `cat tmp/pids/unicorn.pid`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# stop
+kill -9 `cat tmp/pids/unicorn.pid`
+```
