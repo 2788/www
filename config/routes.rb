@@ -3,4 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'welcome#index'
 
+  constraints subdomain: 'career-source' do
+    root to: 'career#index'
+  end
+
+  # constraints subdomain: 'blog' do
+  #   resources :articles
+  # end
+
 end
