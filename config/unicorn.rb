@@ -7,6 +7,9 @@ module Rails
 end
 rails_env = ENV["RAILS_ENV"] || "production"
 
+`bundle`
+`bundle exec rake assets:precompile`
+
 preload_app true
 working_directory Rails.root
 pid "#{Rails.root}/tmp/pids/unicorn.pid"
