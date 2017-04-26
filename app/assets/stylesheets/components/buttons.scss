@@ -26,9 +26,12 @@
 }
 
 .stripe-blue{
-  .btn-primary:hover{
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:focus{
     background-color: #FFF;
     border-color: #FFF;
     color: darken($blue, 15%);
+    outline: none;
   }
 }
