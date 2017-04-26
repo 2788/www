@@ -1,0 +1,9 @@
+// stripe
+.stripe{
+  &.stripe-blue{
+    background-color: $blue;
+    color: #FFF;
+  }
+
+  padding: 30px;
+}

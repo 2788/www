@@ -1,0 +1,102 @@
+nav.navbar{
+  min-height: 64px;
+  margin-bottom: 0;
+}
+
+// 导航栏
+.navbar-default{
+  background: #1B8AFA;
+  color: #FFF;
+  border: none;
+  border-radius: 0;
+  transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+
+  &.transparent{
+    background: transparent;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: none;
+  }
+  .navbar-header{
+    min-height: 64px;
+    .navbar-toggle{
+      margin-top: 14px;
+      &:focus,
+      &:hover { background-color: rgba(0, 0, 0, 0.35); }
+
+      .icon-bar { background-color: #FFF; }
+    }
+  }
+  .navbar-brand {
+    display: inline-block;
+    height: auto;
+    color: #FFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    &:focus,
+    &:hover { color: #FFF; }
+
+    img{
+      display: block;
+      float: left;
+    }
+    span{
+      display: block;
+      float: left;
+      margin-top: 17px;
+    }
+  }
+
+  .navbar-nav:first-child{
+    margin-left: 10px;
+  }
+
+  .navbar-right{
+    margin-right: 0;
+    li.mobile{ display: none; }
+  }
+
+  .navbar-nav>li>a {
+    display: block;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    color: #FFF;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 20px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: #FFF;
+      content: '';
+      opacity: 0;
+      -webkit-transition: -webkit-transform 0.2s ease-in;
+      transition: transform 0.1s ease-in;
+      -webkit-transform: scale3d(0, 1, 1);
+      transform: scale3d(0, 1, 1);
+    }
+  }
+  .navbar-nav>li.dropdown.open>a,
+  .navbar-nav>li>a:focus,
+  .navbar-nav>li>a:hover,
+  .navbar-nav>.active>a,
+  .navbar-nav>.active>a:focus,
+  .navbar-nav>.active>a:hover {
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0);
+
+    &::after {
+      opacity: 1;
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  .navbar-nav>.open>a,
+  .navbar-nav>.open>a:focus,
+  .navbar-nav>.open>a:hover {
+    color: #FFF;
+    background-color: transparent;
+  }
+}

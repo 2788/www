@@ -9,12 +9,15 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
  */
 
 @import "bootstrap";
+@import "components/variables";
+@import "components/buttons";
+@import "components/navbar";
+@import "components/components";
+@import "components/utilities";
+@import "components/footer";
 
 
 html, body {
@@ -51,170 +54,8 @@ a{
 
 a[data-lightbox] { display: inline-block; }
 
-nav.navbar{
-  min-height: 64px;
-}
 
-// 导航栏
-.navbar-default{
-  background: #1B8AFA;
-  color: #FFF;
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
-  border-radius: 0;
-  transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
 
-  &.transparent{
-    background: transparent;
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: none;
-  }
-  .navbar-header{
-    min-height: 64px;
-    .navbar-toggle{
-      margin-top: 14px;
-      &:focus,
-      &:hover { background-color: rgba(0, 0, 0, 0.35); }
-
-      .icon-bar { background-color: #FFF; }
-    }
-  }
-  .navbar-brand {
-    display: inline-block;
-    height: auto;
-    color: #FFF;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 16px;
-    &:focus,
-    &:hover { color: #FFF; }
-
-    img{
-      display: block;
-      float: left;
-    }
-    span{
-      display: block;
-      float: left;
-      margin-top: 17px;
-    }
-  }
-
-  .navbar-nav:first-child{
-    margin-left: 10px;
-  }
-
-  .navbar-right{
-    margin-right: 0;
-    li.mobile{ display: none; }
-  }
-
-  .navbar-nav>li>a {
-    display: block;
-    padding-top: 22px;
-    padding-bottom: 22px;
-    color: #FFF;
-    position: relative;
-
-    &::after {
-      position: absolute;
-      bottom: 20px;
-      left: 14px;
-      right: 14px;
-      height: 2px;
-      background: #FFF;
-      content: '';
-      opacity: 0;
-      -webkit-transition: -webkit-transform 0.2s ease-in;
-      transition: transform 0.1s ease-in;
-      -webkit-transform: scale3d(0, 1, 1);
-      transform: scale3d(0, 1, 1);
-    }
-  }
-  .navbar-nav>li.dropdown.open>a,
-  .navbar-nav>li>a:focus,
-  .navbar-nav>li>a:hover,
-  .navbar-nav>.active>a,
-  .navbar-nav>.active>a:focus,
-  .navbar-nav>.active>a:hover {
-    color: #FFF;
-    background-color: rgba(0, 0, 0, 0);
-
-    &::after {
-      opacity: 1;
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
-    }
-  }
-  .navbar-nav>.open>a,
-  .navbar-nav>.open>a:focus,
-  .navbar-nav>.open>a:hover {
-    color: #FFF;
-    background-color: transparent;
-  }
-}
-
-footer{
-  height: 185px;
-  background-color: #303749;
-  color: #FFF;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  vertical-align: baseline;
-  transition: left .4s ease-in;
-  font-weight: 300;
-
-  .container{ max-width: 960px; }
-  .links{
-    margin-top: 35px;
-    margin-bottom: 20px;
-  }
-
-  .copyright{
-    margin: 0 30px 10px 0;
-    padding: 4px 0;
-  }
-
-  .qiniu-sites {
-    li {
-      display: inline-block;
-      padding: 0 14px;
-      margin: 7px 0;
-      height: 14px;
-      line-height: 14px;
-      border-left: 1px solid #e6e9f0;
-
-      &:first-child {
-        border-left: none;
-        padding-left: 0px;
-      }
-
-      a{ color: #FFF; }
-    }
-  }
-
-  .social-follow {
-    float: right;
-    .social-links li {
-      float: left;
-      margin-right: 20px;
-      a{ color: #CCC; }
-    }
-    .social-weixin-qrcode{
-      position: relative;
-
-      .popover{
-        .arrow{ left: 50%; }
-        bottom: 35px;
-        top: inherit;
-        left: -75px;
-      }
-    }
-  }
-}
 
 // custome btn
 .btn.btn-normal {
@@ -329,20 +170,22 @@ footer{
 // 产品
 .features{
   background: #FFF;
-  .container{
-    .row{
-      margin-left: -35px;
-      margin-right: -35px;
-      .col-sm-6{
-        padding-left: 35px;
-        padding-right: 35px;
-        min-height: 172px;
-        margin-bottom: 25px;
-      }
+  padding: 80px 0 100px;
+  .row{
+    margin-left: -35px;
+    margin-right: -35px;
+    .col-sm-6{
+      padding-left: 35px;
+      padding-right: 35px;
+      min-height: 172px;
+      margin-bottom: 25px;
     }
-
+  }
+  .intro{
+    margin-bottom: 50px;
     .title{
-      margin: 50px 10px;
+      margin-top: 0;
+      margin-bottom: 20px;
       line-height: 34px;
       text-align: center;
       font-weight: 300;
@@ -350,30 +193,32 @@ footer{
     .desc{
       text-align: center;
     }
-    .media-object{
-      max-width: 150px;
-    }
-    .media-heading{
-      margin-bottom: 20px;
-    }
-    p, a{
-      color: #666;
-      line-height: 24px;
-    }
-    a:hover{
-      color: #28aedf;
-    }
+  }
+  .media-object{
+    max-width: 150px;
+  }
+  .media-heading{
+    margin-bottom: 20px;
+  }
+  p, a{
+    color: #666;
+    line-height: 24px;
+  }
+  a:hover{
+    color: #28aedf;
+  }
+
+  .thumbnail{
+    border: none;
+    background: transparent;
+    min-height: 300px;
+    h4{ text-align: center; }
   }
 }
 
 
 .features-solution{
-  .thumbnail{
-    border: none;
-    h4{
-      text-align: center;
-    }
-  }
+  background: #F7F8F9;
 }
 
 #support-tab, #goTopBtn {

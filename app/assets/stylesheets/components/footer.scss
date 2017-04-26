@@ -1,0 +1,96 @@
+footer{
+  padding: 70px;
+  background-color: #303848;
+  color: #FFF;
+  vertical-align: baseline;
+  transition: left .4s ease-in;
+  font-weight: 300;
+
+  dl{
+    dt{ margin-bottom: 20px;}
+    dd{ line-height: 28px; }
+    a{ color: #FFF; }
+  }
+
+  .logo{
+    display: inline-block;
+    margin-left: -10px;
+    padding: 15px 0 20px;
+    img{ width: 125px; }
+  }
+
+  .qrcode{
+    margin: auto;
+    width: 112px;
+    height: 112px;
+    padding: 6px;
+    background: #FFF;
+    img{ max-width: 100%; }
+  }
+
+  .sns{
+    padding: 50px 0 5px;
+    a{
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-size: 18px 18px !important;
+      padding: 10px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .github{ background: image-url('github.png') no-repeat 50% 50%; }
+    .weibo{  background: image-url('weibo.png') no-repeat 50% 50%; }
+  }
+
+  .links{
+    margin: 35px 0 20px;
+    border-top: 1px solid #4C5461;
+    font-size: 12px;
+
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 20px 0 10px;
+      border-top: 1px solid #49515F;
+      li {
+        display: inline-block;
+        padding: 0 14px;
+        margin: 7px 0;
+        height: 14px;
+        line-height: 14px;
+        border-left: 1px solid #e6e9f0;
+        &:first-child {
+          border-left: none;
+          padding-left: 0px;
+        }
+        a{ color: #FFF; }
+      }
+    }
+  }
+
+  .cloud-verify{
+    float: right;
+    margin-top: 25px;
+
+    .verify-logo {
+      display: block;
+      width: 30px;
+      height: 35px;
+      background-image: image-url('kexinyun.png');
+      background-repeat: no-repeat;
+      background-size: 30px 35px;
+      float: right;
+    }
+    .iso-logo {
+      display: block;
+      width: 35px;
+      height: 35px;
+      background-image: image-url('iso27001.png');
+      background-repeat: no-repeat;
+      background-size: 30px 35px;
+      float: right;
+      margin-right: 20px;
+    }
+  }
+}
