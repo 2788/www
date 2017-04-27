@@ -5,19 +5,18 @@ nav.navbar{
 
 // 导航栏
 .navbar-default{
-  background: #1B8AFA;
+  background: transparent;
   color: #FFF;
   border: none;
   border-radius: 0;
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
 
-  &.transparent{
-    background: transparent;
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: none;
+  &:hover{
+    background-color: #000;
   }
+
   .navbar-header{
-    min-height: 64px;
+    min-height: 68px;
     .navbar-toggle{
       margin-top: 14px;
       &:focus,
@@ -51,52 +50,40 @@ nav.navbar{
     margin-left: 10px;
   }
 
+  .navbar-nav > li {
+    padding: 8px 0 4px;
+    > a {
+      display: block;
+      color: #FFF;
+      position: relative;
+      &:hover{ color: $blue; }
+      &:focus{ color: #FFF; }
+    }
+  }
+
   .navbar-right{
     margin-right: 0;
-    li.mobile{ display: none; }
+    font-size: 12px;
   }
 
-  .navbar-nav>li>a {
-    display: block;
-    padding-top: 22px;
-    padding-bottom: 22px;
-    color: #FFF;
+  .actions{
+    margin-left: 15px;
+    padding: 7px 0 0 25px;
     position: relative;
 
-    &::after {
-      position: absolute;
-      bottom: 20px;
-      left: 14px;
-      right: 14px;
-      height: 2px;
+    &::before{
+      display: inline-block;
+      content: " ";
+      width: 1px;
+      height: 16px;
       background: #FFF;
-      content: '';
-      opacity: 0;
-      -webkit-transition: -webkit-transform 0.2s ease-in;
-      transition: transform 0.1s ease-in;
-      -webkit-transform: scale3d(0, 1, 1);
-      transform: scale3d(0, 1, 1);
+      position: absolute;
+      top: 17px;
+      left: 0;
     }
-  }
-  .navbar-nav>li.dropdown.open>a,
-  .navbar-nav>li>a:focus,
-  .navbar-nav>li>a:hover,
-  .navbar-nav>.active>a,
-  .navbar-nav>.active>a:focus,
-  .navbar-nav>.active>a:hover {
-    color: #FFF;
-    background-color: rgba(0, 0, 0, 0);
 
-    &::after {
-      opacity: 1;
-      -webkit-transform: scale3d(1, 1, 1);
-      transform: scale3d(1, 1, 1);
+    .btn{ margin-right: 10px;
+      &:last-child{ margin-right: 0; }
     }
-  }
-  .navbar-nav>.open>a,
-  .navbar-nav>.open>a:focus,
-  .navbar-nav>.open>a:hover {
-    color: #FFF;
-    background-color: transparent;
   }
 }
