@@ -1,0 +1,79 @@
+.conveyor{
+  margin-bottom: 0;
+
+  .slick-slide{
+    text-align: center;
+    outline: none;
+  }
+
+  .slick-arrow{
+    width: 22px;
+    height: 45px;
+    top: 20%;
+    -webkit-background-size: 21px 45px;
+    -moz-background-size: 21px 45px;
+    -o-background-size: 21px 45px;
+    background-size: 21px 45px;
+    background-position: 0 0;
+    transition: background-image .1s;
+    &:before{ content: '' }
+  }
+  .slick-prev{
+    background-image: image-url("arrow-left@2x.png");
+    &:hover{ background-image: image-url("arrow-left-highlight@2x.png"); }
+  }
+  .slick-next{
+    background-image: image-url("arrow-right@2x.png");
+    &:hover{ background-image: image-url("arrow-right-highlight@2x.png"); }
+  }
+
+  img{
+    margin: auto;
+    max-height: 42px;
+    transition: opacity .1s;
+  }
+
+  .case{
+    display: inline-block;
+    height: 42px;
+    -webkit-background-size: auto 42px;
+    -moz-background-size: auto 42px;
+    -o-background-size: auto 42px;
+    background-size: auto 42px;
+    background-repeat: no-repeat;
+    transition: background-image .1s;
+    &:hover,
+    &:focus{
+      outline: none;
+       img{ opacity: 0; }
+    }
+  }
+
+  #customer-ch{ background-image: image-url("client-ch@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-ch-highlight@2x.jpg");}
+  }
+  #customer-changba{ background-image: image-url("client-changba@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-changba-highlight@2x.jpg");}
+  }
+  #customer-dajian{ background-image: image-url("client-dajian@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-dajian-highlight@2x.jpg");}
+  }
+  #customer-dazhong{ background-image: image-url("client-dazhong@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-dazhong-highlight@2x.jpg");}
+  }
+  #customer-hujiang{ background-image: image-url("client-hujiang@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-hujiang-highlight@2x.jpg");}
+  }
+  #customer-intel{ background-image: image-url("client-intel@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-intel-highlight@2x.jpg");}
+  }
+  #customer-oppo{ background-image: image-url("client-oppo@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-oppo-highlight@2x.jpg");}
+  }
+  #customer-qingting{ background-image: image-url("client-qingting@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-qingting-highlight@2x.jpg");}
+  }
+  #customer-zte{ background-image: image-url("client-zte@2x.jpg");
+    &:hover, &:focus{background-image: image-url("client-zte-highlight@2x.jpg");}
+  }
+}
