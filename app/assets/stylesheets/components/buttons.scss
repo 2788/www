@@ -38,3 +38,11 @@
   background-color: transparent;
   border-color: #FFF;
 }
+
+// custome btn
+.btn.btn-normal {
+  color: #fff;
+  background: #1989fa;
+  border-radius: 0;
+  &:hover{ color: #FFF; }
+}
