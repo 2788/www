@@ -29,6 +29,7 @@
 .jumbotron.hero{
   height: 518px;
   margin-top: -68px;
+  margin-bottom: 0;
   text-align: center;
   background-image: image-url('banner.jpg');
 
@@ -102,6 +103,7 @@
     border: none;
     background: transparent;
     min-height: 300px;
+    margin-bottom: 0;
     h4{ text-align: center; }
   }
 }
@@ -198,18 +200,42 @@
   display: none;
 }
 
-// Responsive
-@media (max-width: 425px) {
-  footer{
-    .qiniu-sites li { padding: 0 5px; }
-    .footer-info{ margin: 25px auto 22px; }
-  }
-}
-
-
 // 打印
 @media print {
   body{ padding-top: 0; }
   .topic-sidebar-wrap{ display: none; }
   .topic-content-wrap { margin-left: 0; }
+}
+
+
+// Responsive
+// ---------------------------------------------------------------------
+@media (max-width: 1024px){
+  .features{
+    padding: 50px 0 60px;
+  }
+}
+
+
+@media (max-width: 767px){
+
+}
+
+// iPad
+@media (min-width: 768px) and (max-width: 991px){
+
+}
+
+// @media (min-width: 992px){
+//   .topic-content-wrap .container { max-width: 100%; }
+// }
+
+// @media (min-width: 1200px){
+//   .container {
+//     width: 1170px;
+//   }
+// }
+
+@media (min-width: 992px){
+
 }

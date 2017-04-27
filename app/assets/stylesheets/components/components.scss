@@ -1,9 +1,13 @@
 // stripe
 .stripe{
+  padding: 30px;
+
   &.stripe-blue{
     background-color: $blue;
     color: #FFF;
   }
 
-  padding: 30px;
+  h3{
+    line-height: 2;
+  }
 }
