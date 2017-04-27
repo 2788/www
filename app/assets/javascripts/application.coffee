@@ -14,4 +14,13 @@
 #= require jquery_ujs
 #= require turbolinks
 #= require bootstrap
-#= require_tree .
+#= require jquery.slick
+
+
+# $(document).on('turbolinks:load', $('#my-slider').slick({}))
+# $(document).on('turbolinks:before-cache', $('#my-slider').slick('unslick'))
+
+$(document).ready ->
+  $('#cases-slider').slick
+    slidesToShow: 6
+    slidesToScroll: 6

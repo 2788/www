@@ -9,76 +9,20 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
+ *
+ *= require slick
+ *= require slick-theme
  */
 
 @import "bootstrap";
 @import "components/base";
 @import "components/buttons";
 @import "components/navbar";
-@import "components/components";
+@import "components/navtab";
 @import "components/utilities";
 @import "components/footer";
-
-
-// custome btn
-.btn.btn-normal {
-  color: #fff;
-  background: #1989fa;
-  border-radius: 0;
-  &:hover{ color: #FFF; }
-}
-
-// nav nav-tabs
-.nav.nav-tabs{
-  border-bottom: 2px solid #e5e5e5;
-  >li{
-    display: block;
-    position: relative;
-    margin-bottom: -2px;
-    margin-right: 35px;
-
-    &:last-child{ margin-right: 0;}
-  }
-  >li::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #1989fa;
-    content: '';
-    opacity: 0;
-    -webkit-transition: -webkit-transform 0.2s ease-in;
-    transition: transform 0.1s ease-in;
-    -webkit-transform: scale3d(0, 1, 1);
-    transform: scale3d(0, 1, 1);
-  }
-
-  li.active::before {
-    opacity: 1;
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-  >li>a{
-    padding: 12px 0;
-    color: #333;
-    border: none;
-    &:hover{
-      color: #1989fa;
-      background-color: transparent;
-      border-radius: 0;
-    }
-  }
-  >li.active>a,
-  >li.active>a:focus,
-  >li.active>a:hover {
-    color: #1989fa;
-    cursor: default;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-  }
-}
+@import "components/conveyor";
+@import "components/components";
 
 // index page
 .jumbotron.hero{
