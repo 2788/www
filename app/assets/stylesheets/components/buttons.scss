@@ -17,21 +17,24 @@
 
   &:hover{
     background-color: darken($blue, 15%);
-    // border-color: darken($border, 15%);
+    border-color: darken($blue, 15%);
   }
 }
 
-.btn-outline-w{
+.btn-hollow{
+  color: #FFF;
+  background-color: transparent;
   border-color: #FFF;
-}
 
-.stripe-blue{
-  .btn-primary:hover,
-  .btn-primary:active,
-  .btn-primary:focus{
+  &:hover,
+  &:focus {
+    color: darken($blue, 15%);
     background-color: #FFF;
     border-color: #FFF;
-    color: darken($blue, 15%);
-    outline: none;
   }
+}
+
+.btn-outline{
+  background-color: transparent;
+  border-color: #FFF;
 }
