@@ -25,8 +25,8 @@
       <p class="browsehappy">您正在使用 <strong>旧浏览器</strong> . 为了更好的体验，请 <a href="http://browsehappy.com/">更新</a> 您的浏览器.</p>
     <![endif]-->
 
-    <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
-      <div class="container-fluid">
+    <nav class="navbar navbar-default" id="navbar">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
           </button>
           <%= link_to content_tag(:i, nil, class: "fa fa-bars"), "javascript:;", class: "sidebar-toggle" if controller_name == "articles" %>
-          <%= link_to image_tag("logo-white.png", width: 50) + content_tag(:span, "QINIU"), "/", class: "navbar-brand" %>
+          <%= link_to image_tag("logo-white.png", width: 50), "/", class: "navbar-brand" %>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -69,47 +69,78 @@
 
     <%= yield %>
 
-    <a id="support-tab" href="https://support.qiniu.com/tickets/new" target="_blank">
-      <span>提交工单</span>
-    </a>
-    <a id="goTopBtn" class="hidden">
-      <span>回到顶部</span>
-    </a>
+    <%# 悬浮按钮 %>
+    <a id="support-tab" href="https://support.qiniu.com/tickets/new" target="_blank"><span>提交工单</span></a>
+    <a id="goTopBtn" class="hidden"><span>回到顶部</span></a>
+
+
     <footer>
       <div class="container">
-        <div class="row links">
-          <div class="col-md-2">
-            <div class="copyright">© 2017 七牛云</div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-4">
+                <dl>
+                  <dt>产品与服务</dt>
+                  <dd><%= link_to "对象存储", "" -%></dd>
+                  <dd><%= link_to "融合CDN", "" -%></dd>
+                  <dd><%= link_to "数据处理", "" -%></dd>
+                  <dd><%= link_to "直播云", "" -%></dd>
+                  <dd><%= link_to "点播云", "" -%></dd>
+                  <dd><%= link_to "大数据", "" -%></dd>
+                  <dd><%= link_to "机器学习", "" -%></dd>
+                  <dd><%= link_to "容器云", "" -%></dd>
+                </dl>
+              </div>
+              <div class="col-md-4">
+                <dl>
+                  <dt>支持</dt>
+                  <dd><%= link_to "开发者中心", "https://developer.qiniu.com" -%></dd>
+                  <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></dd>
+                  <dd><%= link_to "线下活动", "" -%></dd>
+                  <dd><%= link_to "工单", "https://support.qiniu.com" -%></dd>
+                </dl>
+              </div>
+              <div class="col-md-4">
+                <dl>
+                  <dt>关于我们</dt>
+                  <dd><%= link_to "公司介绍", "" -%></dd>
+                  <dd><%= link_to "新闻动态", "" -%></dd>
+                  <dd><%= link_to "产品动态", "" -%></dd>
+                  <dd><%= link_to "行业报告", "" -%></dd>
+                  <dd><%= link_to "客户案例", "" -%></dd>
+                  <dd><%= link_to "市场合作", "" -%></dd>
+                  <dd><%= link_to "加入我们", "" -%></dd>
+                  <dd><%= link_to "联系我们", "" -%></dd>
+                </dl>
+              </div>
+            </div>
           </div>
-          <div class="col-md-10">
-            <ul class="qiniu-sites list-unstyled">
-              <li><a href="http://www.qiniu.com" target="_blank">七牛官网</a></li>
-              <li><a href="https://portal.qiniu.com" target="_blank">开发者平台</a></li>
-              <li><a href="https://segmentfault.com/qiniu" target="_blank">问答社区</a></li>
-              <li><a href="https://support.qiniu.com" target="_blank">技术支持</a></li>
-              <li><a href="/brand">七牛标识</a></li>
-            </ul>
+          <div class="col-md-4 text-center">
+            <%= link_to image_tag("logo.png", alt: "七牛云"), "/", class: "logo" -%>
+            <div class="qrcode">
+              <%= image_tag "weixin-qrcode.png" -%>
+            </div>
+            <div class="sns">
+              <a class="github" href="https://github.com/qiniu" target="_blank"></a>
+              <a class="weibo" href="http://weibo.com/qiniutek" target="_blank"></a>
+            </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-8">沪公网安备 31011502000961 号沪 ICP 备 11037377 号-5</div>
-
-          <div class="col-md-4">
-            <div class="social-follow">
-              <ul class="social-links list-unstyled">
-                <li><a href="https://github.com/qiniu" target="_blank"><i class="fa fa-lg fa-github-alt"></i></a></li>
-                <li><a href="http://e.weibo.com/qiniutek" target="_blank"><i class="fa fa-lg fa-weibo"></i></a></li>
-                <li class="social-weixin-qrcode">
-                  <a href="javascript:;"><i class="fa fa-lg fa-weixin"></i></a>
-                  <div class="popover fade top in" id="wexin-qrcode-popover">
-                    <div class="arrow"></div>
-                    <div class="popover-content"><%= image_tag "weixin-qrcode.png", width: 140 -%></div>
-                  </div>
-                </li>
-              </ul>
-            </div>
+        <div class="links">
+          <div class="cloud-verify">
+            <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" style="float: right"></a>
+            <a target="_blank" rel="noopener" href="#" class="iso-logo"></a>
           </div>
+
+          <ul>
+            <li><div class="copyright">© 2017 七牛云</div></li>
+            <li><a href="/user-agreement">用户协议</a></li>
+            <li><a href="/sla-kodo">SLA</a></li>
+            <li><a href="https://status.qiniu.com/">健康状态</a></li>
+          </ul>
+          <div class="icp">沪公网安备 31011502000961 号沪 ICP 备 11037377 号-5</div>
         </div>
       </div>
     </footer>
