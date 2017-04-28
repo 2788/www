@@ -13,7 +13,7 @@
     <meta name="version" content="<%= @article.version_id -%>">
     <meta name="article_id" content="<%= @article._id -%>">
     <% end %>
-    <title><%= @title && "#{@title} - " -%>七牛开发者中心</title>
+    <title><%= @title && "#{@title} - " -%>七牛云</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -62,11 +62,29 @@
       </div><!-- /.container-fluid -->
     </nav>
 
+
     <%= yield %>
 
+
     <%# 悬浮按钮 %>
-    <a id="support-tab" href="https://support.qiniu.com/tickets/new" target="_blank"><span>提交工单</span></a>
-    <a id="goTopBtn" class="hidden"><span>回到顶部</span></a>
+    <div class="helper">
+      <a id="waiter">
+        <%= image_tag "icon-sevice@2x.png", alt: nil -%>
+        <span>服务&bull;咨询</span>
+      </a>
+      <div class="help-popup">
+        <div class="oncall">
+          <%= image_tag "icon-24h@2x.png", alt: nil -%>
+          <span>服务热线</span>
+          <em>400-808-9176 (7&Chi;24)</em>
+        </div>
+        <div>
+          <%= image_tag "icon-qa@2x.png", alt: nil -%>
+          <span>产品及服务咨询</span>
+          <button class="btn btn-primary">立即咨询</button>
+        </div>
+      </div>
+    </div>
 
 
     <footer>
