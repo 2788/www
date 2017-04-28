@@ -28,24 +28,29 @@ $(document).ready ->
   $('#cases-slider').slick
     slidesToShow: 6
     slidesToScroll: 6
+    responsive: [{
+        breakpoint: 1024
+        settings:
+          slidesToShow: 6
+          slidesToScroll: 6
+      },{
+        breakpoint: 600
+        settings:
+          slidesToShow: 4
+          slidesToScroll: 4
+      },{
+        breakpoint: 480
+        settings:
+          slidesToShow: 3
+          slidesToScroll: 3
+      },{
+        breakpoint: 320
+        settings:
+          slidesToShow: 2
+          slidesToScroll: 2
+      }]
 
-
-# 服务咨询按钮
+# 弹出框自动焦点到咨询内容输入框
 $(document).ready ->
-  $helper = $('.helper')
-  $helpePopup = $('.helper .help-popup')
-
-  helperPopupOpen = ->
-    $helper.addClass('open')
-    $helpePopup.animate { right: "50" }, 300, ->
-      $helpePopup.addClass('open')
-
-  helperPopupHide = ->
-    $helpePopup.animate { right: "-300" }, 300, ->
-      $helper.removeClass('open')
-      $helpePopup.removeClass('open')
-
-  $helper.hover helperPopupOpen, helperPopupHide
-
-  $('body').on 'click', '.helper #waiter', (event) ->
-    if $helpePopup.hasClass('open') then helperPopupHide() else helperPopupOpen()
+  $('#feedback-modal').on 'shown.bs.modal', ->
+    $('#feedback-content').focus()

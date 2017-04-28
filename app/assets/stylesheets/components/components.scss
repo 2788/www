@@ -1,13 +1,144 @@
-// stripe
+// Elements
+// -------------------------
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: PingFangSC-Light,'helvetica neue','hiragino sans gb',arial,'microsoft yahei ui','microsoft yahei',simsun,sans-serif;
+}
+
+html {
+  min-height: 100%;
+  height: auto;
+  position: relative;
+  background-color: #FFF;
+}
+
+code {
+  font-weight: 400;
+  font-family: "Roboto Mono", monospace;
+}
+
+a{
+  cursor: pointer;
+  &:hover{
+    color: #28aedf;
+    text-decoration: none;
+  }
+}
+
+a[data-lightbox] { display: inline-block; }
+
+
+// Buttons
+// --------------------------------------------------
+
+.btn{
+  transition: background-color .3s;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 4px;
+}
+
+.btn-hollow{
+  color: #FFF;
+  background-color: transparent;
+  border-color: #FFF;
+
+  &:hover,
+  &:focus {
+    color: darken($brand-primary, 15%);
+    background-color: #FFF;
+    border-color: #FFF;
+  }
+}
+
+.btn-outline{
+  background-color: transparent;
+  border-color: #FFF;
+}
+
+// custome btn
+.btn.btn-normal {
+  color: #fff;
+  background: #1989fa;
+  border-radius: 0;
+  &:hover{ color: #FFF; }
+}
+
+
+// Form
+// --------------------------------------------------
+.form-control{
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  &:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+label{ font-weight: 300; }
+
+
+// Stripe
+// --------------------------------------------------
 .stripe{
   padding: 30px;
 
   &.stripe-blue{
-    background-color: $blue;
+    background-color: $brand-primary;
     color: #FFF;
   }
 
   h3{
     line-height: 2;
   }
+}
+
+
+// Modal
+// --------------------------------------------------
+.modal-content {
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+}
+
+.modal-backdrop.in {
+  opacity: 0.25;
+  filter: alpha(opacity=25);
+}
+
+#feedback-modal{
+  .modal-dialog{ margin-top: 200px; }
+  .modal-header{ text-align: center; }
+  .modal-body{ padding: 25px; }
+  .actions{
+    padding-top: 12px;
+    text-align: center;
+    .btn{ min-width: 80px; }
+  }
+  label i{ margin-right: 3px; }
+  .modal-footer{
+    padding: 15px;
+    text-align: left;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #ECF7FC;
+
+    strong{ white-space: nowrap; }
+  }
+}
+
+@media (max-width: 568px){
+  #feedback-modal .modal-dialog{ margin-top: 12px; }
 }

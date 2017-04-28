@@ -14,9 +14,8 @@
  *= require slick-theme
  */
 
+@import "components/variables";
 @import "bootstrap";
-@import "components/base";
-@import "components/buttons";
 @import "components/navbar";
 @import "components/navtab";
 @import "components/utilities";
@@ -148,7 +147,7 @@
   a.more{
     display: inline-block;
     margin-top: 8px;
-    color: $blue;
+    color: $brand-primary;
   }
 }
 
@@ -170,8 +169,25 @@
 }
 
 
-@media (max-width: 767px){
+@media (max-width: 768px){
+  .features{
+    .col-sm-6:nth-child(odd){
+      clear: left;
+    }
 
+    .media-left{
+      display: block;
+      text-align: center;
+      padding: 10px;
+      .media-object{ margin: auto; }
+    }
+
+    .media-body{
+      display: block;
+      width: auto;
+      .media-heading{ text-align: center; }
+    }
+  }
 }
 
 // iPad
