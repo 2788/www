@@ -116,9 +116,7 @@ label{ font-weight: 300; }
 }
 
 #feedback-modal{
-  .modal-dialog{
-    margin-top: 200px;
-  }
+  .modal-dialog{ margin-top: 200px; }
   .modal-header{ text-align: center; }
   .modal-body{ padding: 25px; }
   .actions{
@@ -139,4 +137,8 @@ label{ font-weight: 300; }
 
     strong{ white-space: nowrap; }
   }
+}
+
+@media (max-width: 568px){
+  #feedback-modal .modal-dialog{ margin-top: 12px; }
 }
