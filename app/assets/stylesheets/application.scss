@@ -14,9 +14,8 @@
  *= require slick-theme
  */
 
+@import "components/variables";
 @import "bootstrap";
-@import "components/base";
-@import "components/buttons";
 @import "components/navbar";
 @import "components/navtab";
 @import "components/utilities";
@@ -148,7 +147,7 @@
   a.more{
     display: inline-block;
     margin-top: 8px;
-    color: $blue;
+    color: $brand-primary;
   }
 }
 

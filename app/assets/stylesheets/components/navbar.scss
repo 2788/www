@@ -56,7 +56,7 @@ nav.navbar{
       display: block;
       color: #FFF;
       position: relative;
-      &:hover{ color: $blue; }
+      &:hover{ color: $brand-primary; }
       &:focus{ color: #FFF; }
     }
   }

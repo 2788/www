@@ -50,23 +50,9 @@ $(document).ready ->
           slidesToScroll: 2
       }]
 
-
-# 服务咨询按钮
 $(document).ready ->
-  $helper = $('.helper')
-  $helpePopup = $('.helper .help-popup')
+  $('#feedback-modal').modal('show')
 
-  helperPopupOpen = ->
-    $helper.addClass('open')
-    $helpePopup.animate { right: "50" }, 300, ->
-      $helpePopup.addClass('open')
-
-  helperPopupHide = ->
-    $helpePopup.animate { right: "-300" }, 300, ->
-      $helper.removeClass('open')
-      $helpePopup.removeClass('open')
-
-  $helper.hover helperPopupOpen, helperPopupHide
-
-  $('body').on 'click', '.helper #waiter', (event) ->
-    if $helpePopup.hasClass('open') then helperPopupHide() else helperPopupOpen()
+  # 弹出框自动焦点到咨询内容输入框
+  $('#feedback-modal').on 'shown.bs.modal', ->
+    $('#feedback-content').focus()
