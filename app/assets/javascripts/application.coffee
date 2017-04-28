@@ -50,9 +50,7 @@ $(document).ready ->
           slidesToScroll: 2
       }]
 
+# 弹出框自动焦点到咨询内容输入框
 $(document).ready ->
-  $('#feedback-modal').modal('show')
-
-  # 弹出框自动焦点到咨询内容输入框
   $('#feedback-modal').on 'shown.bs.modal', ->
     $('#feedback-content').focus()
