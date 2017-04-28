@@ -170,8 +170,25 @@
 }
 
 
-@media (max-width: 767px){
+@media (max-width: 768px){
+  .features{
+    .col-sm-6:nth-child(odd){
+      clear: left;
+    }
 
+    .media-left{
+      display: block;
+      text-align: center;
+      padding: 10px;
+      .media-object{ margin: auto; }
+    }
+
+    .media-body{
+      display: block;
+      width: auto;
+      .media-heading{ text-align: center; }
+    }
+  }
 }
 
 // iPad
