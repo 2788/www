@@ -1,8 +1,12 @@
 // nav nav-tabs
 .nav.nav-tabs{
   border-bottom: 2px solid #e5e5e5;
+
+  &.nav-justified >li::before {
+    bottom: -2px;
+  }
+
   >li{
-    display: block;
     position: relative;
     margin-bottom: -2px;
     margin-right: 35px;

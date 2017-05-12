@@ -41,14 +41,17 @@
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
+  &.hero-kodo{
+    background-image: image-url('banner-diamond.jpg');
+  }
   .container{
-    max-width: 750px;
+    text-align: left;
     padding-top: 55px;
+    color: #FFF;
   }
   h2{
     margin: 50px auto;
     font-weight: 400;
-    color: #FFF;
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
 }
@@ -58,6 +61,7 @@
 .features{
   background: #FFF;
   padding: 80px 0 100px;
+
   .row{
     margin-left: -35px;
     margin-right: -35px;
@@ -68,6 +72,7 @@
       margin-bottom: 25px;
     }
   }
+
   .intro{
     margin-bottom: 50px;
     .title{
@@ -77,10 +82,19 @@
       text-align: center;
       font-weight: 300;
     }
-    .desc{
-      text-align: center;
-    }
+    .desc{ text-align: center; }
   }
+
+  .tab-content {
+    margin-top: 45px;
+    line-height: 28px;
+
+    .media-body{
+      padding: 50px 0 0 50px;
+    }
+    p{ line-height: 28px; }
+  }
+
   .media-object{
     max-width: 150px;
   }
@@ -117,6 +131,15 @@
   background: #FFF;
 }
 
+.features-less{
+  &.features-cases{
+    background: #F8F8F8;
+  }
+  .row h2.title{
+    margin-top: 5px;
+  }
+}
+
 .features-hotnews{
   background: #F7F8F9;
   .row{
@@ -151,8 +174,18 @@
   }
 }
 
+.links-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a{
+    color: #07A0DF;
+  }
+}
+
 
 // 打印
+// ---------------------------------------------------------------------
 @media print {
   body{ padding-top: 0; }
   .topic-sidebar-wrap{ display: none; }

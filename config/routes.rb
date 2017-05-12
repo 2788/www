@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'welcome#index'
+  get '/kodo',    to: 'welcome#kodo'
+  get '/pili',    to: 'welcome#pili'
+  get '/pandora', to: 'welcome#pandora'
 
 end
