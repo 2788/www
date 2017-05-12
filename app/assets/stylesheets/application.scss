@@ -41,33 +41,42 @@
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
+  &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
+  &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
+
   .container{
-    max-width: 750px;
+    text-align: left;
     padding-top: 55px;
+    color: #FFF;
   }
   h2{
-    margin: 50px auto;
+    margin: 50px auto 30px;
     font-weight: 400;
-    color: #FFF;
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
+  p{ line-height: 38px; }
 }
 
+.features-nav{
+  height: 46px;
+  margin-top: 30px;
+}
 
 // 产品
 .features{
   background: #FFF;
   padding: 80px 0 100px;
+
   .row{
     margin-left: -35px;
     margin-right: -35px;
     .col-sm-6{
       padding-left: 35px;
       padding-right: 35px;
-      min-height: 172px;
       margin-bottom: 25px;
     }
   }
+
   .intro{
     margin-bottom: 50px;
     .title{
@@ -77,10 +86,29 @@
       text-align: center;
       font-weight: 300;
     }
-    .desc{
-      text-align: center;
+    .desc{ text-align: center; }
+  }
+
+  .tab-content {
+    margin-top: 45px;
+    line-height: 28px;
+
+    .media-body{
+      padding: 50px 0 0 50px;
+    }
+    p{ line-height: 28px; }
+  }
+
+  .feature-item{
+    margin-bottom: 50px;
+    padding-left: 15px;
+    &:last-child{ margin-bottom: 0; }
+    h4{
+      margin-bottom: 15px;
+      > img{ margin-right: 15px; }
     }
   }
+
   .media-object{
     max-width: 150px;
   }
@@ -117,6 +145,15 @@
   background: #FFF;
 }
 
+.features-less{
+  &.features-cases{
+    background: #F8F8F8;
+  }
+  .row h2.title{
+    margin-top: 5px;
+  }
+}
+
 .features-hotnews{
   background: #F7F8F9;
   .row{
@@ -151,8 +188,29 @@
   }
 }
 
+.features-custom-function{
+  background: #F7F8F9;
+  .media-left{ padding-right: 35px; }
+  .media-body{ padding-right: 30px; }
+}
+
+.features-scenario{
+  text-align: center;
+  img{ margin-bottom: 30px; }
+}
+
+.links-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a{
+    color: #07A0DF;
+  }
+}
+
 
 // 打印
+// ---------------------------------------------------------------------
 @media print {
   body{ padding-top: 0; }
   .topic-sidebar-wrap{ display: none; }
