@@ -41,21 +41,26 @@
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
-  &.hero-kodo{
-    background-image: image-url('banner-diamond.jpg');
-  }
+  &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
+  &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
+
   .container{
     text-align: left;
     padding-top: 55px;
     color: #FFF;
   }
   h2{
-    margin: 50px auto;
+    margin: 50px auto 30px;
     font-weight: 400;
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
+  p{ line-height: 38px; }
 }
 
+.features-nav{
+  height: 46px;
+  margin-top: 30px;
+}
 
 // 产品
 .features{
@@ -68,7 +73,6 @@
     .col-sm-6{
       padding-left: 35px;
       padding-right: 35px;
-      min-height: 172px;
       margin-bottom: 25px;
     }
   }
@@ -93,6 +97,16 @@
       padding: 50px 0 0 50px;
     }
     p{ line-height: 28px; }
+  }
+
+  .feature-item{
+    margin-bottom: 50px;
+    padding-left: 15px;
+    &:last-child{ margin-bottom: 0; }
+    h4{
+      margin-bottom: 15px;
+      > img{ margin-right: 15px; }
+    }
   }
 
   .media-object{
@@ -172,6 +186,17 @@
     margin-top: 8px;
     color: $brand-primary;
   }
+}
+
+.features-custom-function{
+  background: #F7F8F9;
+  .media-left{ padding-right: 35px; }
+  .media-body{ padding-right: 30px; }
+}
+
+.features-scenario{
+  text-align: center;
+  img{ margin-bottom: 30px; }
 }
 
 .links-list{

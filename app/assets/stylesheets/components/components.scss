@@ -29,6 +29,11 @@ a{
 
 a[data-lightbox] { display: inline-block; }
 
+img{ max-width: 100%; }
+
+.text-left{
+  text-align: left !important;
+}
 
 // Buttons
 // --------------------------------------------------
