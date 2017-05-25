@@ -1,5 +1,7 @@
 # 新官网
-
+## start
+bundle install
+rails server
 ## nginx config
 ```
 #################### WORKS API SERVICE ####################

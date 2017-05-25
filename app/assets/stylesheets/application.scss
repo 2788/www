@@ -43,6 +43,7 @@
 
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
+  &.hero-contact{ background-image: image-url('contactus/banner.jpg'); }
 
   .container{
     text-align: left;
@@ -266,3 +267,4 @@
 @media (min-width: 992px){
 
 }
+@import "contactus";
