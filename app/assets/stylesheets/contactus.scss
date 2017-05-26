@@ -1,11 +1,7 @@
 .features{
   .row .ipo-col{
-    padding-right:0;
-    padding-left:140px;
-  }
-
-  .media-object{
-    max-width: 50px;
+    padding-right:0 !important;
+    padding-left:140px !important;
   }
 
   .media-body{
@@ -67,13 +63,22 @@
           left: 50%;
           transform: translate(-50%,-50%);
 
-          border-bottom: 1px solid #ffffff;
+          i{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 35px;
+            height: 1px;
+            background: #fff;
+          }
         }
       }
 
       .layer:hover{
         cursor: pointer;
         opacity: 0;
+        transition: background .2s;
       }
     }
 
