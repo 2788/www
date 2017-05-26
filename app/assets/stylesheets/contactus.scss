@@ -1,7 +1,28 @@
 .features{
-  .row .ipo-col{
-    padding-right:0 !important;
-    padding-left:140px !important;
+  .ipo-row{
+    position: relative;
+    padding-top: 20px;
+    font-family: PingFangSC Regular;
+  }
+
+  .container .row .ipo-col-left{
+    padding-left:180px;
+    padding-right: 0;
+  }
+
+  .container .row .ipo-col-right{
+    padding-left:150px;
+  }
+
+  .middle-line{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    height: 90%;
+    width: 2px;
+    background-color: #97989c;
   }
 
   .media-body{
@@ -9,31 +30,19 @@
       color:#97989c;
     }
     .media-body-tail{
-      margin-top: 40px;
+      padding-top: 52px;
       em{
         font-style: normal;
         color:#00a0de;
-        margin-left: 5px;
+        padding-left: 15px;
       }
     }
-  }
-
-  .media-left-line{
-    border-right:2px solid #97989c;
-    width:90%;
-    padding-left: 20px;
-    padding-top: 10px;
-  }
-
-  .media-right{
-    padding-left: 20px;
-    padding-top: 10px;
   }
 
   .thumbnail{
     .mask-layer{
       position: relative;
-      min-height:200px;
+      min-height:100px;
       border: none;
       margin: 0;
 
@@ -83,11 +92,11 @@
     }
 
     .caption{
-      padding: 25px 0 0 0;
+      padding: 40px 0 0 0;
       margin: 0;
 
       p{
-        padding-top: 10px;
+        padding-top: 20px;
       }
     }
   }
