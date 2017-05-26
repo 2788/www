@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get '/kodo',    to: 'welcome#kodo'
   get '/pili',    to: 'welcome#pili'
   get '/pandora', to: 'welcome#pandora'
-  get '/contactus', to: 'welcome#contactus'
+  get '/contact', to: 'welcome#contact'
 
 end

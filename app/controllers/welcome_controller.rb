@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
   end
 
   def contactus
-    @title = "contactus"
+    @title = "contact"
   end
 
 end

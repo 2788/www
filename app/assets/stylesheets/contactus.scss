@@ -10,19 +10,20 @@
 
   .media-body{
     h6{
-      color:#D1D5DB;
+      color:#97989c;
     }
     .media-body-tail{
       margin-top: 40px;
-      .email{
-        color:#00A094;
+      em{
+        font-style: normal;
+        color:#00a0de;
         margin-left: 5px;
       }
     }
   }
 
   .media-left-line{
-    border-right:2px solid #D1D5DB;
+    border-right:2px solid #97989c;
     width:90%;
     padding-left: 20px;
     padding-top: 10px;
@@ -34,7 +35,7 @@
   }
 
   .thumbnail{
-    .masklayer-body{
+    .mask-layer{
       position: relative;
       min-height:200px;
       border: none;
@@ -44,20 +45,19 @@
         width:100%;
       }
 
-      .masklayer{
+      .layer{
         padding: 0;
         position: absolute;
         width: 100%;
         height: 100%;
 
-        background-color: #D1D5DB;
+        background: rgba(0, 0, 0, .35);
         color: #ffffff;
-        font-size: 40px;
+        font-size: 16px;
+        transition: background .2s;
 
-        opacity: 0.7;
-
-        .textlayer{
-          padding: 0;
+        span{
+          padding-bottom: 6px;
           margin: 0;
 
           text-align: center;
@@ -67,20 +67,23 @@
           left: 50%;
           transform: translate(-50%,-50%);
 
-          border-bottom: 3px solid #ffffff;
+          border-bottom: 1px solid #ffffff;
         }
       }
 
-      .masklayer:hover{
+      .layer:hover{
         cursor: pointer;
-        opacity: 1;
-        background: none;
+        opacity: 0;
       }
     }
 
     .caption{
-      padding: 0;
-      margin-top: 20px;
+      padding: 25px 0 0 0;
+      margin: 0;
+
+      p{
+        padding-top: 10px;
+      }
     }
   }
 }
