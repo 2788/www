@@ -25,6 +25,7 @@
 @import "components/conveyor";
 @import "components/components";
 
+@import "contactus";
 // index page
 .jumbotron.hero{
   height: 518px;
@@ -43,6 +44,7 @@
 
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
+  &.hero-contact{ background-image: image-url('contactus/banner.jpg'); }
 
   .container{
     text-align: left;
