@@ -25,7 +25,10 @@
 @import "components/conveyor";
 @import "components/components";
 
-@import "contactus";
+@import "contact";
+@import "events";
+@import "tech";
+
 // index page
 .jumbotron.hero{
   height: 518px;
@@ -44,7 +47,9 @@
 
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
-  &.hero-contact{ background-image: image-url('contactus/banner.jpg'); }
+  &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
+  &.hero-events{background-image: image-url('events-banner.png'); }
+  &.hero-tech{background-image: image-url('tech-banner.png'); }
 
   .container{
     text-align: left;

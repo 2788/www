@@ -16,7 +16,7 @@ class WelcomeController < ApplicationController
     @title = "pandora"
   end
 
-  def contactus
+  def contact
     @title = "contact"
   end
 

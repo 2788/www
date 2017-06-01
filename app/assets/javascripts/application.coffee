@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require jquery.slick
+#= require events
 
 
 isMobile = false; # initiate as false
