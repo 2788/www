@@ -7,7 +7,11 @@
     padding: 0;
   }
 
+/*
+图片栅格的css
+*/
   .grid-container{
+    transition: all 0.3s;
     position: relative;
     min-height:100px;
     width:31%;
@@ -40,6 +44,7 @@
   }
 
   .grid-container:hover{
+    transition: all 0.3s;
     -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
     -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
     box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
@@ -48,6 +53,9 @@
     }
   }
 
+/*
+每一条活动栏的css
+*/
   .ipo-class-container{
     padding-top:100px;
   }
@@ -65,10 +73,13 @@
     }
   }
 
+/*
+活动栏间line的css
+*/
   .line-container{
     margin-right: auto;
     margin-left: auto;
-    margin-top:100px;
+    margin-top:130px;
     margin-bottom:100px;
 
     .educa-line{
@@ -80,6 +91,9 @@
     }
   }
 
+/*
+video box的css
+*/
   #video-play-modal{
     background-color: transparent;
 
@@ -102,6 +116,9 @@
     }
   }
 
+/*
+video的css
+*/
   #edu-video{
     width: 100%;
     height:100%;
