@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="https://portal.qiniu.com">管理控制台</a></li>
             <li><a href="https://developer.qiniu.com">问答社区</a></li>
-            <li><a href="/events">线下活动</a></li>
+            <li><%= link_to "线下活动", events_path -%></li>
 
             <li>
               <div class="actions">
@@ -137,7 +137,7 @@
                   <dt>支持</dt>
                   <dd><%= link_to "开发者中心", "https://developer.qiniu.com" -%></dd>
                   <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></dd>
-                  <dd><%= link_to "线下活动", "" -%></dd>
+                  <dd><%= link_to "线下活动", events_path -%></dd>
                   <dd><%= link_to "工单", "https://support.qiniu.com" -%></dd>
                 </dl>
               </div>

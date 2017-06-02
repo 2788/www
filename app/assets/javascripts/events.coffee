@@ -3,8 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
   $('.grid-container').click (e) ->
-    src = $(this).attr('data-src')
-    if src=="undefined" || src.length == 0
+    src = $(this).data('src')
+    if src == "undefined" || src.length == 0
       return
     # 点击瞬间更改图标
     $(this).find('.btn-icon').addClass('btn-icon-visited');

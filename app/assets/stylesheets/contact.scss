@@ -9,8 +9,8 @@
     font-family: PingFangSC Regular;
   }
 
-  .container .row .ipo-col{
-    padding-left:160px;
+  .ipo-row .ipo-col{
+    padding-left: 160px;
   }
 
   .middle-line{
@@ -24,11 +24,11 @@
     background-color: #97989c;
   }
 
-  .media-body{
+  .service-box{
     h6{
       color:#97989c;
     }
-    .media-body-tail{
+    .service-box-tail{
       padding-top: 52px;
       em{
         font-style: normal;
@@ -41,7 +41,7 @@
   .thumbnail{
     .mask-layer{
       position: relative;
-      min-height:100px;
+      min-height: 100px;
       border: none;
       margin: 0;
 

@@ -3,6 +3,6 @@ class EventsController < ApplicationController
   end
 
   def tech
-    @title="tech"
+    @title = "tech"
   end
 end

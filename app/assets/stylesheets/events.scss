@@ -14,7 +14,7 @@
     transition: all 0.3s;
     position: relative;
     min-height:100px;
-    width:31%;
+    width: 31%;
     margin: 0 10px 10px;
     float: left;
     height: 100%;
@@ -57,11 +57,11 @@
 每一条活动栏的css
 */
   .ipo-class-container{
-    padding-top:100px;
+    padding-top: 100px;
   }
 
   .row .ipo-col-title{
-    padding:0 !important;
+    padding: 0 !important;
     dt{
       font-size: 30px;
     }
@@ -79,8 +79,8 @@
   .line-container{
     margin-right: auto;
     margin-left: auto;
-    margin-top:130px;
-    margin-bottom:100px;
+    margin-top: 130px;
+    margin-bottom: 100px;
 
     .educa-line{
       display: block;
@@ -99,7 +99,7 @@ video box的css
 
     div{
       background-color: transparent;
-      padding:0;
+      padding: 0;
       border:none;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
@@ -121,7 +121,7 @@ video的css
 */
   #edu-video{
     width: 100%;
-    height:100%;
+    height: 100%;
   }
 }
 
