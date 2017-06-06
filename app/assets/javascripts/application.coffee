@@ -19,7 +19,8 @@
 #= require events
 #= require pili
 #= require pandora
-#= require cdn
+#= require fusion
+#= require dora
 
 
 isMobile = false; # initiate as false

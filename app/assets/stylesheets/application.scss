@@ -29,7 +29,7 @@
 @import "events";
 @import "tech";
 @import "pandora";
-@import "cdn";
+@import "fusion";
 
 // index page
 .jumbotron.hero{
@@ -53,7 +53,8 @@
   &.hero-events{background-image: image-url('events-banner.png'); }
   &.hero-tech{background-image: image-url('tech-banner.png'); }
   &.hero-pandora{background-image: image-url('pandora/banner.jpg'); }
-  &.hero-cdn{background-image: image-url('cdn/banner.jpg'); }
+  &.hero-fusion{background-image: image-url('fusion/banner.jpg'); }
+  &.hero-dora{background-image: image-url("dora/banner.jpg"); }
 
   .container{
     text-align: left;
