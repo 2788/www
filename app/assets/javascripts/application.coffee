@@ -14,7 +14,12 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require jquery.slick
+#= require smint
+
 #= require events
+#= require pili
+#= require pandora
+#= require cdn
 
 
 isMobile = false; # initiate as false

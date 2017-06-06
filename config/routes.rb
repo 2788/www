@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/pili',     to: 'welcome#pili'
   get '/pandora',  to: 'welcome#pandora'
   get '/contact',  to: 'welcome#contact'
+  get '/cdn',      to: 'welcome#cdn'
 
   resources 'events', only: [:index, :show]
   get '/tech', to: 'events#tech'
