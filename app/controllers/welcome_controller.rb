@@ -24,6 +24,14 @@ class WelcomeController < ApplicationController
     @title = "dora"
   end
 
+  def kirk
+    @title = "kirk"
+  end
+
+  def vance
+    @title = "vance"
+  end
+
   def contact
     @title = "contact"
   end

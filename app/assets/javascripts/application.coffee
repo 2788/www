@@ -21,6 +21,8 @@
 #= require pandora
 #= require fusion
 #= require dora
+#= require kirk
+#= require vance
 
 
 isMobile = false; # initiate as false
