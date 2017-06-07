@@ -1,0 +1,144 @@
+.features-events{
+  .events-slider{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+/*
+图片栅格的css
+*/
+  .grid-container{
+    transition: all 0.3s;
+    position: relative;
+    min-height:100px;
+    width: 31%;
+    margin: 0 10px 10px;
+    float: left;
+    height: 100%;
+
+    h5{
+      padding:10px;
+    }
+
+    .btn-icon{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+
+      height: 100%;
+      width: 100%;
+
+
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 20% 25%;
+    }
+
+    .btn-icon-visited{
+      background-image: image-url("btn-play-highlight.png");
+    }
+  }
+
+  .grid-container:hover{
+    transition: all 0.3s;
+    -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    .btn-icon{
+      background-image: image-url("btn-play-hover.png");
+    }
+  }
+
+/*
+每一条活动栏的css
+*/
+  .ipo-class-container{
+    padding-top: 100px;
+  }
+
+  .row .ipo-col-title{
+    padding: 0 !important;
+    dt{
+      font-size: 30px;
+    }
+
+    a.more{
+      display: inline-block;
+      padding-top: 20px;
+      color: $brand-primary;
+    }
+  }
+
+/*
+活动栏间line的css
+*/
+  .line-container{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 130px;
+    margin-bottom: 100px;
+
+    .educa-line{
+      display: block;
+
+      height: 2px;
+      width: 100%;
+      background-color: #B9B9B9;
+    }
+  }
+
+/*
+video box的css
+*/
+  #video-play-modal{
+    background-color: transparent;
+
+    div{
+      background-color: transparent;
+      padding: 0;
+      border:none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .close{
+      margin-right: 0;
+      margin-top: -30px;
+      color: #fff;
+      opacity: 1;
+      font-weight: 100;
+      font-size: 50px;
+    }
+  }
+
+/*
+video的css
+*/
+  #edu-video{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px){
+  .line-container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px){
+  .line-container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px){
+  .line-container {
+    width: 1170px;
+  }
+}

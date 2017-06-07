@@ -42,8 +42,8 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li><a href="https://portal.qiniu.com">管理控制台</a></li>
-            <li><a href="https://developer.qiniu.com">开发者中心</a></li>
-            <li><a href="http://hd.qiniu.com/arch">热门活动</a></li>
+            <li><a href="https://developer.qiniu.com">问答社区</a></li>
+            <li><%= link_to "线下活动", events_path -%></li>
 
             <li>
               <div class="actions">
@@ -122,14 +122,14 @@
               <div class="col-sm-4">
                 <dl>
                   <dt>产品与服务</dt>
-                  <dd><%= link_to "对象存储", "" -%></dd>
-                  <dd><%= link_to "融合CDN", "" -%></dd>
-                  <dd><%= link_to "数据处理", "" -%></dd>
-                  <dd><%= link_to "直播云", "" -%></dd>
-                  <dd><%= link_to "点播云", "" -%></dd>
-                  <dd><%= link_to "大数据", "" -%></dd>
+                  <dd><%= link_to "对象存储", kodo_path -%></dd>
+                  <dd><%= link_to "融合CDN", fusion_path -%></dd>
+                  <dd><%= link_to "数据处理", dora_path -%></dd>
+                  <dd><%= link_to "直播云", pili_path -%></dd>
+                  <dd><%= link_to "点播云", vance_path -%></dd>
+                  <dd><%= link_to "大数据", pandora_path -%></dd>
                   <dd><%= link_to "机器学习", "" -%></dd>
-                  <dd><%= link_to "容器云", "" -%></dd>
+                  <dd><%= link_to "容器云", kirk_path -%></dd>
                 </dl>
               </div>
               <div class="col-sm-4">
@@ -137,7 +137,7 @@
                   <dt>支持</dt>
                   <dd><%= link_to "开发者中心", "https://developer.qiniu.com" -%></dd>
                   <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></dd>
-                  <dd><%= link_to "线下活动", "" -%></dd>
+                  <dd><%= link_to "线下活动", events_path -%></dd>
                   <dd><%= link_to "工单", "https://support.qiniu.com" -%></dd>
                 </dl>
               </div>

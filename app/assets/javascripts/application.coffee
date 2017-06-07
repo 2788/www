@@ -14,6 +14,15 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require jquery.slick
+#= require smint
+
+#= require events
+#= require pili
+#= require pandora
+#= require fusion
+#= require dora
+#= require kirk
+#= require vance
 
 
 isMobile = false; # initiate as false

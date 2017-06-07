@@ -16,7 +16,23 @@ class WelcomeController < ApplicationController
     @title = "pandora"
   end
 
-  def contactus
+  def fusion
+    @title = "fusion"
+  end
+
+  def dora
+    @title = "dora"
+  end
+
+  def kirk
+    @title = "kirk"
+  end
+
+  def vance
+    @title = "vance"
+  end
+
+  def contact
     @title = "contact"
   end
 

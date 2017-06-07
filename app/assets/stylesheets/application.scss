@@ -25,12 +25,17 @@
 @import "components/conveyor";
 @import "components/components";
 
-@import "contactus";
+@import "contact";
+@import "events";
+@import "tech";
+@import "pandora";
+@import "fusion";
+
 // index page
 .jumbotron.hero{
   height: 518px;
   margin-top: -68px;
-  margin-bottom: 0;
+  margin-bottom: 30px;
   text-align: center;
   background-image: image-url('banner.jpg');
 
@@ -44,7 +49,14 @@
 
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
-  &.hero-contact{ background-image: image-url('contactus/banner.jpg'); }
+  &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
+  &.hero-events{background-image: image-url('events-banner.png'); }
+  &.hero-tech{background-image: image-url('tech-banner.png'); }
+  &.hero-pandora{background-image: image-url('pandora/banner.jpg'); }
+  &.hero-fusion{background-image: image-url('fusion/banner.jpg'); }
+  &.hero-dora{background-image: image-url("dora/banner.jpg"); }
+  &.hero-kirk{background-image: image-url("kirk/banner.jpg"); }
+  &.hero-vance{background-image: image-url("vance/banner.jpg"); }
 
   .container{
     text-align: left;
@@ -61,7 +73,7 @@
 
 .features-nav{
   height: 46px;
-  margin-top: 30px;
+  margin-top: 0;
 }
 
 // 产品
@@ -210,7 +222,15 @@
   }
 }
 
-
+//公用fixed
+.fxd{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  z-index: 1000;
+}
 // 打印
 // ---------------------------------------------------------------------
 @media print {
