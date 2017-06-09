@@ -14,15 +14,9 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require jquery.slick
-#= require smint
 
+#= require smint
 #= require events
-#= require pili
-#= require pandora
-#= require fusion
-#= require dora
-#= require kirk
-#= require vance
 
 
 isMobile = false; # initiate as false
@@ -62,3 +56,11 @@ $(document).ready ->
 $(document).ready ->
   $('#feedback-modal').on 'shown.bs.modal', ->
     $('#feedback-content').focus()
+
+# 监控滚动 中部导航
+jQuery ($) ->
+  $(document).ready ->
+    #enabling stickUp on the '.navbar-wrapper' class
+    $('.navbar-wrapper-middle').smint('fxd')
+    return
+  return
