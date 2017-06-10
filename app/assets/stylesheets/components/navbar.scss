@@ -12,7 +12,7 @@ nav.navbar{
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
 
   &:hover{
-    background-color: #1a282e;
+    background-color: #303848;
   }
 
   .navbar-header{
@@ -50,14 +50,58 @@ nav.navbar{
     margin-left: 10px;
   }
 
+  .navbar-nav > li.open a{
+    color: $brand-primary;
+    background-color: transparent;
+    &:hover{
+      color: $brand-primary;
+      background-color: transparent;
+    }
+    &:focus{
+      color: #FFF;
+      background-color: transparent;
+    }
+  }
   .navbar-nav > li {
-    padding: 8px 0 4px;
+    padding: 8px 0 9px;
     > a {
       display: block;
       color: #FFF;
       position: relative;
       &:hover{ color: $brand-primary; }
       &:focus{ color: #FFF; }
+    }
+  }
+  .navbar-nav .dropdown-menu{
+    background-color: #303848;
+    padding: 0;
+    border: 0;
+    li{
+      &.menu-title{
+        background-color:rgba(229, 229, 229, 0.06);
+        font-size: 12px;
+        color: #666;
+        padding:  5px 50px 5px 40px
+      }
+      a{
+        padding: 10px 50px 10px 40px;
+        border-bottom: 2px solid rgba(229, 229, 229, 0.07);
+        color: #FFF;
+        &:hover{
+          color: $brand-primary;
+          background-color: rgba(239, 239, 239, 0.15);
+        }
+        &:focus{ color: #FFF; }
+      }
+      strong{
+        padding-left: 5px;
+        font-size: 14px;
+      }
+      p{
+        color: #666;
+        margin-top: 5px;
+        font-size: 12px;
+      }
     }
   }
 

@@ -148,21 +148,19 @@
       <h2 class="title">各行各业的成功案例</h2>
     </div>
 
-    <div id="cases-slider" class="conveyor slick-slider draggable">
-      <div><%= link_to image_tag("client-ch@2x.jpg", alt: "长虹"), "http://cn.changhong.com/", id: "customer-ch", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-changba@2x.jpg", alt: "唱吧"), "https://changba.com/", id: "customer-changba", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-dajian@2x.jpg", alt: "大疆创新"), "http://www.dji.com/cn", id: "customer-dajian", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-dazhong@2x.jpg", alt: "大众点评"), "https://www.dianping.com/", id: "customer-dazhong", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-hujiang@2x.jpg", alt: "沪江网"), "http://www.hujiang.com/", id: "customer-hujiang", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-intel@2x.jpg", alt: "英特尔"), "http://www.intel.cn/content/www/cn/zh/homepage.html", id: "customer-intel", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-oppo@2x.jpg", alt: "OPPO"), "http://www.oppo.com/cn/", id: "customer-oppo", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-qingting@2x.jpg", alt: "蜻蜓 FM"), "http://www.qingting.fm/", id: "customer-qingting", class: "case", target: "_blank" -%></div>
-      <div><%= link_to image_tag("client-zte@2x.jpg", alt: "中兴"), "http://www.zte.com.cn/china/", id: "customer-zte", class: "case", target: "_blank" -%></div>
+    <div id="index-cases-slider" class="conveyor slick-slider draggable">
+      <div class="index-case"><%= link_to image_tag("client-ch@2x.jpg", alt: "长虹"), "http://cn.changhong.com/", id: "customer-ch", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-changba@2x.jpg", alt: "唱吧"), "https://changba.com/", id: "customer-changba", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-dajian@2x.jpg", alt: "大疆创新"), "http://www.dji.com/cn", id: "customer-dajian", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-dazhong@2x.jpg", alt: "大众点评"), "https://www.dianping.com/", id: "customer-dazhong", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-hujiang@2x.jpg", alt: "沪江网"), "http://www.hujiang.com/", id: "customer-hujiang", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-intel@2x.jpg", alt: "英特尔"), "http://www.intel.cn/content/www/cn/zh/homepage.html", id: "customer-intel", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-oppo@2x.jpg", alt: "OPPO"), "http://www.oppo.com/cn/", id: "customer-oppo", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-qingting@2x.jpg", alt: "蜻蜓 FM"), "http://www.qingting.fm/", id: "customer-qingting", class: "case", target: "_blank" -%></div>
+      <div class="index-case"><%= link_to image_tag("client-zte@2x.jpg", alt: "中兴"), "http://www.zte.com.cn/china/", id: "customer-zte", class: "case", target: "_blank" -%></div>
     </div>
   </div>
 </div>
-
-
 
 <div class="features features-hotnews">
   <div class="container">
@@ -170,42 +168,43 @@
       <h2 class="title">热门动态</h2>
     </div>
     <div class="row">
-      <div class="col-sm-6">
-        <dl>
-          <dt>新闻动态</dt>
-          <dd>
-            <time>04.01</time>
-            <%= link_to "七牛云对象存储产品价格调整，最高降幅近 13%", "" -%>
-          </dd>
-          <dd>
-            <time>03.30</time>
-            <%= link_to "上海经信委领导一行莅临七牛云，共话云计算产业发展", "" -%>
-          </dd>
-          <dd>
-            <time>03.24</time>
-            <%= link_to "七牛云许式伟荣获上海市青年科技杰出贡献奖", "" -%>
-          </dd>
-          <dd><%= link_to raw("更多内容 &gt;"), "", class: "more" -%></dd>
-        </dl>
+      <div class="col-sm-3">
+        <ul class="list">
+          <li class="hotnews-title">新闻动态</li>
+          <li class="hotnews-title">产品动态</li>
+          <li class="hotnews-title">热门资讯</li>
+          <li><%= link_to raw("更多内容 &gt;"), "", class: "more" -%></li>
+        </ul>
       </div>
 
-      <div class="col-sm-6">
-        <dl>
-          <dt>产品动态</dt>
-          <dd>
-            <time>04.01</time>
-            <%= link_to "七牛数据处理再添新兵——图片瘦身", "" -%>
-          </dd>
-          <dd>
-            <time>03.30</time>
-            <%= link_to "视频分发不用愁：基于 HLS 的实时流式转码、多码率自适应支持", "" -%>
-          </dd>
-          <dd>
-            <time>03.24</time>
-            <%= link_to "说真的，现实世界只剩下 1% 的希望，那互联网世界会是怎样？", "" -%>
-          </dd>
-          <dd><%= link_to raw("更多内容 &gt;"), "", class: "more" -%></dd>
-        </dl>
+      <div class="col-sm-9">
+        <div class="col-sm-6 col-md-4">
+          <div class="hotnews-box">
+            <%= link_to image_tag("test.jpg", alt: "长虹"), "" -%>
+            <div class="infobox">
+              <time>MAY 03, 2016</time>
+              <p>七牛云许世伟荣获上海市青年科技杰出贡献奖</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="hotnews-box">
+            <%= link_to image_tag("test.jpg", alt: "长虹"), "" -%>
+            <div class="infobox">
+              <time>MAY 03, 2016</time>
+              <p>七牛云许世伟荣获上海市青年科技杰出贡献奖</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="hotnews-box">
+            <%= link_to image_tag("test.jpg", alt: "长虹"), "" -%>
+            <div class="infobox">
+              <time>MAY 03, 2016</time>
+              <p>七牛云许世伟荣获上海市青年科技杰出贡献奖</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

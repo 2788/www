@@ -34,32 +34,102 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-
-
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品</a>
               <ul class="dropdown-menu">
-                <li><%= link_to "对象存储", kodo_path -%></li>
+                <li class="menu-title">基础服务</li>
                 <li>
-                  <div class="media">
-                    <div class="media-left">
-                      <%= image_tag "dora/icon-jiandanyiyong@2x.png", class: "media-object", alt: "简单易用", width: 110 %></a>
+                  <a href="/kodo">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "对象存储", width: "20" %>
+                          <strong>对象存储</strong>
+                      </div>
+                      <p>高安全、易扩展、比传统存储节省62%存储成本</p>
                     </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">简单易用</h4>
-                      <p>调用方式简单，缩短产品开发维护时间</p>
-                    </div>
-                  </div>
+                  </a>
                 </li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
+                <li>
+                  <a href="/fusion">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "融合CDN", width: "20" %>
+                          <strong>融合CDN</strong>
+                      </div>
+                      <p>融合优质节点、可监控、智能调度的内容分发服务</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/kirk_path">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "容器服务", width: "20" %>
+                          <strong>容器服务</strong>
+                      </div>
+                      <p>面向微服务架构的企业级容器管理平台</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="menu-title">人工智能</li>
+                <li>
+                  <a href="#">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "机器学习", width: "20" %>
+                          <strong>机器学习</strong>
+                      </div>
+                      <p>针对图片视频的一站式数据集中处理、模型训练平台</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/pandora">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "大数据", width: "20" %>
+                          <strong>大数据</strong>
+                      </div>
+                      <p>安全、易用、一站式大数据处理、分析、管理平台</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/dora">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "数据处理", width: "20" %>
+                          <strong>数据处理</strong>
+                      </div>
+                      <p>面向微服务架构的企业级容器管理平台</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="menu-title">视频服务</li>
+                <li>
+                  <a href="/pili">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "视频直播", width: "20" %>
+                          <strong>视频直播</strong>
+                      </div>
+                      <p>提供全球化实时流服务和端到端直播场景解决方案</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/vance">
+                    <div class="media">
+                      <div class="media-left">
+                          <%= image_tag "icon-databass@2x.png", alt: "视频点播", width: "20" %>
+                          <strong>视频点播</strong>
+                      </div>
+                      <p>提供上传、存储、转发分发、播放器等服务的一站式点播服务</p>
+                    </div>
+                  </a>
+                </li>
               </ul>
             </li>
-
-            <li><a href="#">产品</a></li>
             <li><a href="#">企业服务</a></li>
             <li><a href="#">价格</a></li>
             <li><a href="#">关于我们</a></li>
@@ -150,11 +220,11 @@
                   <dd><%= link_to "对象存储", kodo_path -%></dd>
                   <dd><%= link_to "融合CDN", fusion_path -%></dd>
                   <dd><%= link_to "数据处理", dora_path -%></dd>
-                  <dd><%= link_to "直播云", pili_path -%></dd>
-                  <dd><%= link_to "点播云", vance_path -%></dd>
+                  <dd><%= link_to "视频直播", pili_path -%></dd>
+                  <dd><%= link_to "视频点播", vance_path -%></dd>
                   <dd><%= link_to "大数据", pandora_path -%></dd>
                   <dd><%= link_to "机器学习", "" -%></dd>
-                  <dd><%= link_to "容器云", kirk_path -%></dd>
+                  <dd><%= link_to "容器服务", kirk_path -%></dd>
                 </dl>
               </div>
               <div class="col-sm-4">
