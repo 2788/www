@@ -58,6 +58,16 @@ $(document).ready ->
           slidesToScroll: 2
       }]
 
+ # 导航栏菜单
+  if isMobile
+    $('#spaces-dropdown, #solution-dropdown').on "tap", ->
+      $(this).toggleClass('open')
+  else
+    $('#spaces-dropdown, #solution-dropdown').hover ->
+      $(this).addClass('open')
+    , ->
+      $(this).removeClass('open')
+
 # 客户案例
 $(document).ready ->
   $('#cases-slider').slick

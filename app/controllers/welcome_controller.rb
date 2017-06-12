@@ -36,4 +36,8 @@ class WelcomeController < ApplicationController
     @title = "contact"
   end
 
+  def solution
+    @title = "solution"
+  end
+
 end
