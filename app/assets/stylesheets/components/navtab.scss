@@ -53,3 +53,21 @@
     border-radius: 0;
   }
 }
+
+// 切换导航栏
+.nav.nav-tabs.nav-justified.points-bar{
+  border-bottom: 0;
+  width: 35%;
+  margin: auto;
+}
+
+.nav.nav-tabs.nav-justified.points-bar > li::before{
+  width: 0;
+  height: 0;
+}
+.nav.nav-tabs.points-bar > li.active > a,
+.nav.nav-tabs.points-bar > li.active > a:focus,
+.nav.nav-tabs.points-bar > li.active > a:hover,
+.nav.nav-tabs.points-bar > li > a:hover{
+  color: #00c4de;
+}
