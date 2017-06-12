@@ -34,16 +34,37 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">产品</a></li>
-            <li><a href="#">企业服务</a></li>
+            <li class="dropdown" id="spaces-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品</a>
+
+              <ul class="dropdown-menu services-menu">
+                <% I18n.t("services").each do |service| %>
+                  <%= content_tag :li, service[:group], class: "menu-title" -%>
+
+                  <% service[:list].each do |product| %>
+                    <%= content_tag :li, link_to(content_tag(:h4, product[:label],class: product[:name]) + content_tag(:p, product[:desc]), product[:name]), class: "service" -%>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+
+            <li class="dropdown" id="solution-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">解决方案</a>
+
+              <ul class="dropdown-menu solutions-menu">
+                <% I18n.t("solutions").each do |solution| %>
+                  <%= content_tag :li, link_to(solution[:label], solution_path(anchor: solution[:name])) -%>
+                <% end %>
+              </ul>
+            </li>
             <li><a href="#">价格</a></li>
             <li><a href="#">关于我们</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
             <li><a href="https://portal.qiniu.com">管理控制台</a></li>
-            <li><a href="https://developer.qiniu.com">问答社区</a></li>
-            <li><%= link_to "线下活动", events_path -%></li>
+            <li><a href="https://developer.qiniu.com">开发者中心</a></li>
+            <li><%= link_to "热门活动", events_path -%></li>
 
             <li>
               <div class="actions">
@@ -119,34 +140,43 @@
         <div class="row">
           <div class="col-sm-8">
             <div class="row">
-              <div class="col-sm-4">
-                <dl>
-                  <dt>产品与服务</dt>
-                  <dd><%= link_to "对象存储", kodo_path -%></dd>
-                  <dd><%= link_to "融合CDN", fusion_path -%></dd>
-                  <dd><%= link_to "数据处理", dora_path -%></dd>
-                  <dd><%= link_to "直播云", pili_path -%></dd>
-                  <dd><%= link_to "点播云", vance_path -%></dd>
-                  <dd><%= link_to "大数据", pandora_path -%></dd>
-                  <dd><%= link_to "机器学习", "" -%></dd>
-                  <dd><%= link_to "容器云", kirk_path -%></dd>
-                </dl>
+              <div class="col-sm-6">
+                <div class="col-sm-4">
+                  <dl>
+                    <dt>产品与服务</dt>
+                    <% I18n.t("services").each do |service| %>
+                      <% service[:list].each do |product| %>
+                        <%= content_tag :dd, link_to(product[:label], product[:name]) -%>
+                      <% end %>
+                    <% end %>
+                  </dl>
+                </div>
+                <div class="col-sm-8">
+                  <dl>
+                    <dt>解决方案</dt>
+                    <% I18n.t("solutions").each do |solution| %>
+                      <%= content_tag :dd, link_to(solution[:label], solution_path(anchor: solution[:name])) -%>
+                    <% end %>
+                  </dl>
+                </div>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <dl>
                   <dt>支持</dt>
                   <dd><%= link_to "开发者中心", "https://developer.qiniu.com" -%></dd>
+                  <dd><%= link_to "技术支持", "" -%></dd>
                   <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></dd>
-                  <dd><%= link_to "线下活动", events_path -%></dd>
+                  <dd><%= link_to "热门活动", events_path -%></dd>
                   <dd><%= link_to "工单", "https://support.qiniu.com" -%></dd>
                 </dl>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <dl>
                   <dt>关于我们</dt>
                   <dd><%= link_to "公司介绍", "" -%></dd>
                   <dd><%= link_to "新闻动态", "" -%></dd>
                   <dd><%= link_to "产品动态", "" -%></dd>
+                  <dd><%= link_to "近期福利", "" -%></dd>
                   <dd><%= link_to "行业报告", "" -%></dd>
                   <dd><%= link_to "客户案例", "" -%></dd>
                   <dd><%= link_to "市场合作", "" -%></dd>

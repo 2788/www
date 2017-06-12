@@ -12,7 +12,7 @@ nav.navbar{
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
 
   &:hover{
-    background-color: #1a282e;
+    background-color: #303848;
   }
 
   .navbar-header{
@@ -50,14 +50,61 @@ nav.navbar{
     margin-left: 10px;
   }
 
+  .navbar-nav > li.open a{
+    color: $brand-primary;
+    background-color: transparent;
+    &:hover{
+      color: $brand-primary;
+      background-color: transparent;
+    }
+    &:focus{
+      color: #FFF;
+      background-color: transparent;
+    }
+  }
   .navbar-nav > li {
-    padding: 8px 0 4px;
+    padding: 8px 0 9px;
     > a {
       display: block;
       color: #FFF;
       position: relative;
       &:hover{ color: $brand-primary; }
       &:focus{ color: #FFF; }
+    }
+  }
+  .navbar-nav .services-menu,
+  .navbar-nav .solutions-menu{
+    background-color: #303848;
+    padding: 0;
+    border: 0;
+    li{
+      &.menu-title{
+        background-color:rgba(229, 229, 229, 0.06);
+        font-size: 12px;
+        color: #666;
+        padding:  0px 50px 0px 40px
+      }
+      a{
+        padding: 0px 50px 0px 40px;
+        border-bottom: 2px solid rgba(229, 229, 229, 0.07);
+        color: #FFF;
+        &:hover{
+          color: $brand-primary;
+          background-color: rgba(239, 239, 239, 0.15);
+        }
+        &:focus{
+          color: #FFF;
+        }
+        h4{
+          padding-left: 30px;
+          font-size: 14px;
+        }
+        p{
+          color: #666;
+          margin-top: 0;
+          font-size: 12px;
+        }
+      }
     }
   }
 
@@ -84,6 +131,59 @@ nav.navbar{
 
     .btn{ margin-right: 10px;
       &:last-child{ margin-right: 0; }
+    }
+  }
+}
+
+.services-menu{
+  .service{
+    .kodo{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .fusion{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .kirk{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .atlib{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .pandora{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .dora{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .pili{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .vance{
+      background-image: image-url("icon-databass@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
     }
   }
 }

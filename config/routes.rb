@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/dora',     to: 'welcome#dora'
   get '/kirk',     to: 'welcome#kirk'
   get '/vance',    to: 'welcome#vance'
+  get '/solution', to: 'welcome#solution'
 
   resources 'events', only: [:index, :show]
   get '/tech', to: 'events#tech'
