@@ -85,7 +85,7 @@ nav.navbar{
         height: 32px;
         line-height: 32px;
         color: rgb(151, 152, 156);
-        padding: 0 0 0 40px;
+        padding: 0 0 0 20px;
       }
       &.service,
       &.solution{
@@ -94,14 +94,17 @@ nav.navbar{
         border-bottom: 2px solid rgba(229, 229, 229, 0.07);
       }
       a{
-        padding: 10px 20px 0 40px;
+        padding: 10px 20px 0 20px;
         height: 80px;
         color: #FFF;
+        transition: all .3s;
         &:hover{
+          transition: all .3s;
           color: $brand-primary;
           background-color: rgba(239, 239, 239, 0.15);
         }
         &:focus{
+          transition: all .3s;
           color: #FFF;
         }
         h4{
