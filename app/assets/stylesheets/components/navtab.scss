@@ -68,6 +68,8 @@
 .nav.nav-tabs.points-bar > li.active > a,
 .nav.nav-tabs.points-bar > li.active > a:focus,
 .nav.nav-tabs.points-bar > li.active > a:hover,
-.nav.nav-tabs.points-bar > li > a:hover{
-  color: #00c4de;
+.nav.nav-tabs.points-bar > li > a:hover,
+.nav.nav-tabs.points-bar > li > a:visited{
+  font-family: PingFangSC Light;
+  color: rgb(0, 160, 222);
 }
