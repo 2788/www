@@ -7,13 +7,10 @@ nav.navbar{
 .navbar-default{
   background: transparent;
   color: #FFF;
+  background-color: #303848;
   border: none;
   border-radius: 0;
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
-
-  &:hover{
-    background-color: #303848;
-  }
 
   .navbar-header{
     min-height: 68px;
