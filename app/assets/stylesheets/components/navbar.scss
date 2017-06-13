@@ -78,15 +78,24 @@ nav.navbar{
     padding: 0;
     border: 0;
     li{
+      font-family: PingFangSC Light;
       &.menu-title{
         background-color:rgba(229, 229, 229, 0.06);
         font-size: 12px;
-        color: #666;
-        padding:  0px 50px 0px 40px
+        height: 32px;
+        line-height: 32px;
+        color: rgb(151, 152, 156);
+        padding: 0 0 0 40px;
+      }
+      &.service,
+      &.solution{
+        height: 80px;
+        padding: 0;
+        border-bottom: 2px solid rgba(229, 229, 229, 0.07);
       }
       a{
-        padding: 0px 50px 0px 40px;
-        border-bottom: 2px solid rgba(229, 229, 229, 0.07);
+        padding: 10px 20px 0 40px;
+        height: 80px;
         color: #FFF;
         &:hover{
           color: $brand-primary;
@@ -96,12 +105,16 @@ nav.navbar{
           color: #FFF;
         }
         h4{
+          margin-top: 0;
+          margin-bottom: 0;
+          padding-top: 10px;
+          padding-bottom: 10px;
           padding-left: 30px;
           font-size: 14px;
         }
         p{
-          color: #666;
-          margin-top: 0;
+          color: rgb(151, 152, 156);
+          margin: 0;
           font-size: 12px;
         }
       }

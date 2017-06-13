@@ -59,13 +59,59 @@
        img{ opacity: 0; }
     }
   }
-
+  .case-div{
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
   .index-case{
+    display: block;
     margin: 10px;
-    padding: 20px 0;
-    -webkit-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
-    -moz-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
-    box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+    border: 1px solid #eeeeee;
+    height: 118px;
+    line-height: 118px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: all .3s;
+
+    &:hover,
+    &:focus{
+      color: #eeeeee;
+      text-decoration: none;
+      transition: all .3s;
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+    }
+  }
+
+  //在hover的加载新图片的瞬间
+  //空隙间 以此作为备用背景图片
+  #customer-ch-wrapper{
+    background-image: image-url("client-ch@2x.jpg");
+  }
+  #customer-changba-wrapper{
+    background-image: image-url("client-changba@2x.jpg");
+  }
+  #customer-dajian-wrapper{
+    background-image: image-url("client-dajian@2x.jpg");
+  }
+  #customer-dazhong-wrapper{
+    background-image: image-url("client-dazhong@2x.jpg");
+  }
+  #customer-hujiang-wrapper{
+    background-image: image-url("client-hujiang@2x.jpg");
+  }
+  #customer-intel-wrapper{
+    background-image: image-url("client-intel@2x.jpg");
+  }
+  #customer-oppo-wrapper{
+    background-image: image-url("client-oppo@2x.jpg");
+  }
+  #customer-qingting-wrapper{
+    background-image: image-url("client-qingting@2x.jpg");
+  }
+  #customer-zte-wrapper{
+    background-image: image-url("client-zte@2x.jpg");
   }
 
   #customer-ch{ background-image: image-url("client-ch@2x.jpg");
@@ -95,6 +141,7 @@
   #customer-zte{ background-image: image-url("client-zte@2x.jpg");
     &:hover, &:focus{background-image: image-url("client-zte-highlight@2x.jpg");}
   }
+
   #customer-tantan{ background-image: image-url("fusion/client-tantan@2x.jpg");
     &:hover, &:focus{background-image: image-url("fusion/client-tantan-highlight@2x.jpg");}
   }

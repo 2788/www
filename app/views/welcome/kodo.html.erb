@@ -13,8 +13,21 @@
   </div>
 </div>
 
+<div class="features-nav kodo-nav">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <li class="intLink active"><a href="#tab-content-section-1">产品优势</a></li>
+        <li class="intLink"><a href="#tab-content-section-2">核心功能及服务</a></li>
+        <li class="intLink"><a href="#tab-content-section-3">适用场景</a></li>
+        <li class="intLink"><a href="#tab-content-section-4">客户案例</a></li>
+        <li class="intLink"><a href="#tab-content-section-5">产品相关</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<div class="features">
+<div class="features tab-content-section-1">
   <div class="container">
     <div class="intro">
       <h2 class="title">产品优势</h2>
@@ -76,7 +89,7 @@
 </div>
 
 
-<div class="features features-solution">
+<div class="features features-solution tab-content-section-2">
   <div class="container">
     <div class="intro">
       <h2 class="title">核心功能及服务</h2>
@@ -127,21 +140,21 @@
 </div>
 
 
-<div class="features">
+<div class="features tab-content-section-3">
   <div class="container">
     <div class="intro">
       <h2 class="title">适用场景</h2>
     </div>
 
     <div class="tabs">
-      <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li class="active"><a href="#tab-content-section-1" data-toggle="tab">私有化部署</a></li>
-        <li><a href="#tab-content-section-2" data-toggle="tab">内容加速分发</a></li>
-        <li><a href="#tab-content-section-3" data-toggle="tab">数据处理</a></li>
-        <li><a href="#tab-content-section-4" data-toggle="tab">托管静态资源</a></li>
+      <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
+        <li class="active"><a href="#tab-usage-section-1" data-toggle="tab">私有化部署</a></li>
+        <li><a href="#tab-usage-section-2" data-toggle="tab">内容加速分发</a></li>
+        <li><a href="#tab-usage-section-3" data-toggle="tab">数据处理</a></li>
+        <li><a href="#tab-usage-section-4" data-toggle="tab">托管静态资源</a></li>
       </ul>
       <div class="tab-content">
-        <section id="tab-content-section-1" class="tab-pane active">
+        <section class="tab-pane active" id="tab-usage-section-1">
           <div class="media">
             <%= content_tag :div, image_tag("icon-siyouhuabushu@2x.png", alt: "私有化部署", width: "377"), class: "media-left" %>
             <div class="media-body">
@@ -149,7 +162,7 @@
             </div>
           </div>
         </section>
-        <section class="tab-pane" id="tab-content-section-2">
+        <section class="tab-pane" id="tab-usage-section-2">
           <div class="media">
             <%= content_tag :div, image_tag("icon-neirongjiasufenfa@2x.png", alt: "内容加速分发", width: "377"), class: "media-left" %>
             <div class="media-body">
@@ -157,7 +170,7 @@
             </div>
           </div>
         </section>
-        <section class="tab-pane" id="tab-content-section-3">
+        <section class="tab-pane" id="tab-usage-section-3">
           <div class="media">
             <%= content_tag :div, image_tag("icon-shujuchuli2@2x.png", alt: "数据处理", width: "377"), class: "media-left" %>
             <div class="media-body">
@@ -165,7 +178,7 @@
             </div>
           </div>
         </section>
-        <section class="tab-pane" id="tab-content-section-4">
+        <section class="tab-pane" id="tab-usage-section-4">
           <div class="media">
             <%= content_tag :div, image_tag("icon-tuoguanjingtaiziyuan@2x.png", alt: "托管静态资源", width: "377"), class: "media-left" %>
             <div class="media-body">
@@ -180,7 +193,7 @@
 </div>
 
 
-<div class="features features-less features-cases">
+<div class="features features-less features-cases tab-content-section-4">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
@@ -204,7 +217,7 @@
 </div>
 
 
-<div class="features features-less">
+<div class="features features-less tab-content-section-5">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
