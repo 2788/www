@@ -61,11 +61,28 @@
   }
 
   .index-case{
+    display: block;
     margin: 10px;
-    padding: 20px 0;
-    -webkit-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
-    -moz-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
-    box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+    border: 1px solid #eeeeee;
+    height: 118px;
+    line-height: 118px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: all .3s;
+    img{
+      max-height: 118px;
+      display: inline;
+    }
+    &:hover,
+    &:focus{
+      color: #eeeeee;
+      text-decoration: none;
+      transition: all .3s;
+      border: 0;
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+    }
   }
 
   #customer-ch{ background-image: image-url("client-ch@2x.jpg");

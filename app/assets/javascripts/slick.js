@@ -35,7 +35,8 @@
 
         function Slick(element, settings) {
 
-            var _ = this, dataSettings;
+            var _ = this,
+                dataSettings;
 
             _.defaults = {
                 accessibility: true,
