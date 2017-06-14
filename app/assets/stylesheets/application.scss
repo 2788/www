@@ -31,6 +31,7 @@
 @import "pandora";
 @import "fusion";
 @import "about";
+@import "company";
 
 // index page
 .jumbotron.hero{
@@ -58,6 +59,7 @@
   &.hero-dora{background-image: image-url("dora/banner.jpg"); }
   &.hero-kirk{background-image: image-url("kirk/banner.jpg"); }
   &.hero-vance{background-image: image-url("vance/banner.jpg"); }
+  &.hero-company{background-image: image-url("company/banner.jpg"); }
 
   .container{
     text-align: left;
@@ -151,7 +153,9 @@
   }
 }
 
-
+.feature-color{
+  background: #F7F8F9;
+}
 .features-solution{
   background: #F7F8F9;
 }

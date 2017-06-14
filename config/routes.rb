@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/vance',    to: 'welcome#vance'
   get '/solution', to: 'welcome#solution'
   get '/about',    to: 'welcome#about'
+  get '/company',  to: 'welcome#company'
 
   resources 'events', only: [:index, :show]
   get '/tech', to: 'events#tech'

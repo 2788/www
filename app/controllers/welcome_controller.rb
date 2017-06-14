@@ -44,4 +44,8 @@ class WelcomeController < ApplicationController
     @title = "about"
   end
 
+  def company
+    @title = "company"
+  end
+
 end
