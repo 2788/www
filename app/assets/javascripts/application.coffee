@@ -100,6 +100,12 @@ $(document).ready ->
   $('#feedback-modal').on 'shown.bs.modal', ->
     $('#feedback-content').focus()
 
+# 弹出框到发送邮件modal
+$(document).ready ->
+  $('#report').click (e) ->
+    # 展示video
+    $('#email-modal').modal('show')
+
 # 监控滚动 中部导航
 jQuery ($) ->
   $(document).ready ->
