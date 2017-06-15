@@ -2,6 +2,18 @@
   div.news-section-wrapper{
     margin-top: -30px;
   }
+  ul.nav.nav-stacked.left-tab li a{
+    color: #666;
+
+    &:hover,
+    &:focus{
+      color: #00a0de;
+    }
+  }
+
+  ul.nav.nav-stacked.left-tab li.active a{
+    color: #00a0de;
+  }
   #news-section{
     font-family: PingFangSC Medium;
 
