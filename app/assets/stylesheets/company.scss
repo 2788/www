@@ -34,8 +34,12 @@
       line-height: 24px;
     }
 
-    .icon-img{
+    .li-content{
+      position: relative;
       display: inline-block;
+    }
+
+    .icon-img{
       height: 60px;
       width: 60px;
       background-size: 60px 60px;
@@ -48,7 +52,7 @@
 
     .icon-point{
       position: absolute;
-      top: 90%;
+      bottom: -7px;
       width: 12px;
       height: 12px;
       background: #fff;
@@ -77,6 +81,44 @@
       color: #fff;
 
       border-radius: 16px;
+
+     @keyframes rubberBand {
+      from {
+          transform: scale3d(1, 1, 1);
+        }
+
+        30% {
+          transform: scale3d(1.25, 0.75, 1);
+        }
+
+        40% {
+          transform: scale3d(0.75, 1.25, 1);
+        }
+
+        50% {
+          transform: scale3d(1.15, 0.85, 1);
+        }
+
+        65% {
+          transform: scale3d(.95, 1.05, 1);
+        }
+
+        75% {
+          transform: scale3d(1.05, .95, 1);
+        }
+
+        to {
+          transform: scale3d(1, 1, 1);
+        }
+      }
+
+      &:hover{
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        animation-name: rubberBand;
+      }
     }
 
     .time-point{
@@ -88,6 +130,11 @@
       background-color: #fff;
       border: 1px solid rgb(0, 160, 222);
       border-radius: 50%;
+
+      &:hover{
+        transition: all .3s;
+        transform: scale(1.5,1.5);
+      }
 
       .time-point-blue{
         position: absolute;
@@ -123,7 +170,11 @@
     }
 
     .icon-point-right{
-      right: -1.5%;
+      right: -7px;
+    }
+
+    .icon-img{
+      left: 5px;
     }
   }
 
@@ -144,11 +195,15 @@
     }
 
     .icon-point-left{
-      left: -0.5%;
+      left: -4px;
     }
 
     .icon-point-right{
       left: 100%;
+    }
+
+    .icon-img{
+      right: -45px;
     }
   }
 
@@ -191,6 +246,26 @@
   .xinxianquan{
     background-image: image-url("company/icon-xinxianquan@2x.png");
   }
+}
 
+@media (max-width: 768px){
+  .timeline-ul li{
+    padding-top: 20px;
 
+    &.right{
+      margin-left: 0;
+    }
+  }
+
+  .timeline-ul::before{
+    left: 0;
+  }
+
+  .timeline-ul li.time-wrapper .time-span{
+    top: -27px;
+  }
+
+  .timeline-ul li.time-wrapper .time-point{
+    left: -7px;
+  }
 }

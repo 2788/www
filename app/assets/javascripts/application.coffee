@@ -107,3 +107,22 @@ jQuery ($) ->
     $('.navbar-wrapper-middle').smint('fxd')
     return
   return
+
+# ourcompany timeline
+$(document).ready ->
+  if document.body.clientWidth <= 768
+        $('.timeline-ul').find('.left-li').addClass('right')
+        $('.timeline-ul').find('.left-li').removeClass('left')
+      else
+        $('.timeline-ul').find('.left-li').addClass('left')
+        $('.timeline-ul').find('.left-li').removeClass('right')
+
+  ismin = document.body.clientWidth <= 768
+  $(window).resize ->
+      if document.body.clientWidth <= 768 && !ismin
+        $('.timeline-ul').find('.left-li').addClass('right')
+        $('.timeline-ul').find('.left-li').removeClass('left')
+      else if ismin
+        $('.timeline-ul').find('.left-li').addClass('left')
+        $('.timeline-ul').find('.left-li').removeClass('right')
+
