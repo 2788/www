@@ -55,7 +55,7 @@
 }
 
 // 切换导航栏
-.nav.nav-tabs.nav-justified.points-bar{
+.nav.points-bar{
   border-bottom: 0;
   width: 35%;
   margin: auto;
@@ -72,4 +72,24 @@
 .nav.nav-tabs.points-bar > li > a:visited{
   font-family: PingFangSC Light;
   color: rgb(0, 160, 222);
+}
+
+// 左侧切换导航
+.nav.nav-stacked.left-tab{
+  border-bottom: 0;
+  margin: auto;
+}
+
+.nav.nav-stacked.left-tab > li::before{
+  width: 0;
+  height: 0;
+}
+.nav.nav-stacked.left-tab > li.active > a,
+.nav.nav-stacked.left-tab > li.active > a:focus,
+.nav.nav-stacked.left-tab > li.active > a:hover,
+.nav.nav-stacked.left-tab > li > a:hover,
+.nav.nav-stacked.left-tab > li > a:visited{
+  font-family: PingFangSC Light;
+  color: rgb(0, 160, 222);
+  background-color: transparent;
 }

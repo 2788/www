@@ -58,7 +58,7 @@
               </ul>
             </li>
             <li><a href="#">价格</a></li>
-            <li><a href="#">关于我们</a></li>
+            <li><%= link_to "关于我们", about_path -%></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -164,7 +164,7 @@
                 <dl>
                   <dt>支持</dt>
                   <dd><%= link_to "开发者中心", "https://developer.qiniu.com" -%></dd>
-                  <dd><%= link_to "技术支持", "" -%></dd>
+                  <dd><%= link_to "技术支持", "https://support.qiniu.com" -%></dd>
                   <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></dd>
                   <dd><%= link_to "热门活动", events_path -%></dd>
                   <dd><%= link_to "工单", "https://support.qiniu.com" -%></dd>
@@ -173,7 +173,7 @@
               <div class="col-sm-3">
                 <dl>
                   <dt>关于我们</dt>
-                  <dd><%= link_to "公司介绍", "" -%></dd>
+                  <dd><%= link_to "公司介绍", company_path -%></dd>
                   <dd><%= link_to "新闻动态", "" -%></dd>
                   <dd><%= link_to "产品动态", "" -%></dd>
                   <dd><%= link_to "近期福利", "" -%></dd>
@@ -208,7 +208,6 @@
             <li><div class="copyright">© 2017 七牛云</div></li>
             <li><a href="/user-agreement">用户协议</a></li>
             <li><a href="/sla-kodo">SLA</a></li>
-            <li><a href="https://status.qiniu.com/">健康状态</a></li>
           </ul>
           <div class="icp">沪公网安备 31011502000961 号沪 ICP 备 11037377 号-5</div>
         </div>
