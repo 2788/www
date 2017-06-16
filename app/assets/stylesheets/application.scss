@@ -33,6 +33,7 @@
 @import "about";
 @import "company";
 @import "cooperation";
+@import "case";
 
 // index page
 .jumbotron.hero{
@@ -61,6 +62,7 @@
   &.hero-kirk{background-image: image-url("kirk/banner.jpg"); }
   &.hero-vance{background-image: image-url("vance/banner.jpg"); }
   &.hero-company{background-image: image-url("company/banner.jpg"); }
+  &.hero-case{background-image: image-url("case/banner.jpg"); }
 
   .container{
     text-align: left;

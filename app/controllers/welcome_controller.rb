@@ -52,4 +52,8 @@ class WelcomeController < ApplicationController
     @title = "cooperation"
   end
 
+  def case
+    @title = "case"
+  end
+
 end
