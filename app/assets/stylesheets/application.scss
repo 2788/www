@@ -87,6 +87,11 @@
   background: #FFF;
   padding: 80px 0 100px;
 
+  a.more{
+    display: inline-block;
+    margin-top: 0;
+    color: $brand-primary;
+  }
   //合作伙伴 案例
   div.feature-case{
     border: 1px solid #eeeeee;
@@ -207,11 +212,6 @@
       cursor: pointer;
       color: #000;
     }
-  }
-  a.more{
-    display: inline-block;
-    margin-top: 40px;
-    color: $brand-primary;
   }
 
   .hotnews-box{

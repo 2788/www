@@ -101,11 +101,9 @@ $(document).ready ->
     $('#feedback-content').focus()
 
 # 监控滚动 中部导航
-jQuery ($) ->
-  $(document).ready ->
-    #enabling stickUp on the '.navbar-wrapper' class
-    $('.navbar-wrapper-middle').smint('fxd')
-    return
+$(document).ready ->
+  #enabling stickUp on the '.navbar-wrapper' class
+  $('.navbar-wrapper-middle').smint('fxd')
   return
 
 # ourcompany timeline
