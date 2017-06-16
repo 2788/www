@@ -48,4 +48,12 @@ class WelcomeController < ApplicationController
     @title = "company"
   end
 
+  def cooperation
+    @title = "cooperation"
+  end
+
+  def case
+    @title = "case"
+  end
+
 end

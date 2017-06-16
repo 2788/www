@@ -1,0 +1,120 @@
+.feature-cooperation .container{
+  h2{
+    margin-bottom: 54px;
+  }
+  p{
+    line-height: 45px;
+    margin: 45px 0;
+  }
+
+  .feature-contact-box{
+    width: 100%;
+    overflow: hidden;
+
+    a{
+      display: inline-block;
+      padding: 3px 0 3px 56px;
+      height: 35px;
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: 35px 35px;
+      text-align: center;
+    }
+
+    a.email-box{
+      background-image: image-url("icon-email@2x.png");
+      float: left;
+
+      &:hover{
+        background-image: image-url("icon-email-highlight@2x.png");
+      }
+    }
+
+    a.tel-box{
+      background-image: image-url("icon-phone@2x.png");
+      float: right;
+
+      &:hover{
+        color: #666;
+      }
+    }
+  }
+}
+
+ul.cooperation-step {
+  list-style: none;
+  background-color: transparent;
+  position: relative;
+  margin-top: 52px;
+
+  .step-li{
+    float: left;
+    width: 234px;
+    padding-right: 45px;
+    border-top: 2px solid #eee;
+  }
+
+  .step-li-no{
+    float: left;
+    width: 234px;
+  }
+
+  .step-li-first{
+    margin-left: -40px;
+  }
+
+  li .step-no{
+    position: relative;
+    top: -23px;
+    width: 46px;
+    height: 46px;
+    border: 2px solid #e5e5e5;
+    font-size: 22px;
+    color: #333333;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 46px;
+    border-radius: 50%;
+    margin-bottom: 26px;
+    background: #fff;
+  }
+
+
+  .cooperation-step-line {
+    position: absolute;
+    left: 50px;
+    top: 24px;
+    width: 480px;
+    height: 2px;
+    background: #e5e5e5;
+  }
+}
+
+.features-cooperation .btn{
+  color: #fff;
+  margin-top: 34px;
+  margin-left: 60px;
+
+  &:hover{
+    color: #fff;
+  }
+}
+
+ul.friend-link{
+  &::before,
+  &::after{
+    content: " ";
+    display: table;
+  }
+
+  &::after{
+    clear: both;
+  }
+
+  li{
+    float: left;
+    margin-right: 108px;
+    margin-bottom: 13px;
+    width: 112px;
+  }
+}
