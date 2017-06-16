@@ -1,4 +1,7 @@
 .feature-cooperation .container{
+  h2{
+    margin-bottom: 54px;
+  }
   p{
     line-height: 45px;
     margin: 45px 0;
@@ -94,5 +97,24 @@ ul.cooperation-step {
 
   &:hover{
     color: #fff;
+  }
+}
+
+ul.friend-link{
+  &::before,
+  &::after{
+    content: " ";
+    display: table;
+  }
+
+  &::after{
+    clear: both;
+  }
+
+  li{
+    float: left;
+    margin-right: 163px;
+    margin-bottom: 13px;
+    width: 112px;
   }
 }
