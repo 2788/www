@@ -48,6 +48,10 @@ ul.cooperation-step {
     width: 234px;
   }
 
+  .step-li-first{
+    margin-left: -40px;
+  }
+
   li .step-no{
     position: relative;
     top: -23px;
@@ -72,5 +76,15 @@ ul.cooperation-step {
     width: 480px;
     height: 2px;
     background: #e5e5e5;
+  }
+}
+
+.features-cooperation .btn{
+  color: #fff;
+  margin-top: 34px;
+  margin-left: 60px;
+
+  &:hover{
+    color: #fff;
   }
 }
