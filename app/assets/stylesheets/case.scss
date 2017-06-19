@@ -3,3 +3,154 @@
     margin-top: 125px;
   }
 }
+
+.cases-wrapper{
+  position: relative;
+  padding: 0 0 5px 0;
+
+  .img-box img{
+    width: 100%;
+    height: 230px;
+  }
+
+  .case-icon{
+    width: 70px;
+    height: 50px;
+  }
+
+  div.info-box{
+    vertical-align: bottom;
+  }
+
+  &:hover{
+    transition: scale 0.3s;
+    transform: scale(1.02,1.02);
+    .btn-icon-wrap{
+      visibility: visible;
+      .btn-icon{
+        opacity: 1;
+        color: #fff;
+      }
+    }
+    .img-box img{
+      opacity: 0.8;
+    }
+    -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+  }
+
+  .btn-icon-wrap{
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 230px;
+    background-color: rgba(0,0,0,.5);
+    .btn-icon{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      border: 1px solid #fff;
+      background-color: transparent;
+      color: #fff;
+      padding: 10px 20px;
+    }
+  }
+}
+
+.features-eval{
+  .evaluation-left{
+    float: left;
+    width: 280px;
+
+    h4{
+      color: #666;
+      font-weight: 300;
+    }
+
+    h2{
+      width: 640px;
+      margin: 26px 26px 0 0;
+    }
+  }
+
+  .evaluation-right {
+    float: right;
+    width: 640px;
+
+    ul{
+      list-style: none;
+
+      li{
+        list-style: none;
+        padding-right: 42px;
+      }
+
+      &.client-list li{
+        float: left;
+
+        a {
+          display: block;
+          width: 60px;
+          height: 60px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .nav li a{
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    ul.client-list li.active a img, ul.client-list li a img:hover {
+      opacity: 1;
+    }
+
+    ul.client-list li a img {
+      opacity: .3;
+      transition: opacity .5s;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      width: auto;
+    }
+
+    .tab-content-evaluation-details {
+      margin-left: 0;
+      width: 640px;
+    }
+
+    .tab-content {
+      position: relative;
+      overflow: hidden;
+
+      section {
+        h3 {
+          margin: 56px 0 0 0;
+          font-size: 28px;
+          color: #333;
+
+          span {
+            margin-left: 20px;
+            font-size: 14px;
+            color: #666666;
+          }
+        }
+
+        p {
+          margin-top: 18px;
+          padding-top: 24px;
+          border-top: 1px solid #e5e5e5;
+          font-size: 16px;
+          color: #333;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+}
