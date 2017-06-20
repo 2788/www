@@ -34,6 +34,7 @@
 @import "company";
 @import "cooperation";
 @import "case";
+@import "prices";
 
 // index page
 .jumbotron.hero{
@@ -63,6 +64,9 @@
   &.hero-vance{background-image: image-url("vance/banner.jpg"); }
   &.hero-company{background-image: image-url("company/banner.jpg"); }
   &.hero-case{background-image: image-url("case/banner.jpg"); }
+  &.hero-solution{background-image: image-url("solution/banner.jpg"); }
+  &.hero-prices{background-image: image-url("solution/banner.jpg"); }
+  &.hero-caculator{background-image: image-url("solution/banner.jpg"); }
 
   .container{
     text-align: left;

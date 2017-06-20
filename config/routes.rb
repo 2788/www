@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   get '/cooperation', to: 'welcome#cooperation'
   get '/case',        to: 'welcome#case'
 
-  resources 'events', only: [:index, :show]
+  resources 'events', only: [:index]
   get '/tech', to: 'events#tech'
+
+  resources 'prices', only: [:index]
+  get '/caculator', to: 'prices#caculator'
 
 end

@@ -1,0 +1,76 @@
+<div class="jumbotron hero hero-caculator">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>价格计算器</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="feature-price tabs">
+  <div class="feature-price-nav">
+    <div class="container">
+      <ul class="nav navbar-nav" id="caculatorTabs">
+        <li>
+          <input type="checkbox" value="kodo" checked> 标准存储</input>
+        </li>
+        <li>
+          <input type="checkbox" value="lowKodo" checked> 低频存储</input>
+        </li>
+        <li>
+          <input type="checkbox" value="fusion" checked> 融合CDN</input>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="tab-content">
+            <section class="tab-pane active" id="tab-caculator-kodo">
+            </section>
+            <section class="tab-pane active" id="tab-caculator-lowKodo">
+            </section>
+            <section class="tab-pane active" id="tab-caculator-fusion">
+            </section>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="pricing-info">
+            <dl>
+              <dt>价格预算清单</dt>
+              <dd>
+                <ul class="pricing-info-details">
+                  <li>标准存储</li>
+                  <li class="price" id="kodo-price">￥19089</li>
+                </ul>
+                <p id="kodo-details">xxxGB/月，xxx万次读请求，xxx次万次写请求</p>
+              </dd>
+              <dd>
+                <ul class="pricing-info-details">
+                  <li>低频存储</li>
+                  <li class="price" id="lowKodo-price">￥19089</li>
+                </ul>
+                <p id="lowKodo-details">xxxGB/月，xxx万次读请求，xxx次万次写请求</p>
+              </dd>
+              <dd>
+                <ul class="pricing-info-details">
+                  <li>融合CDN</li>
+                  <li class="price" id="fusion-price">￥19089</li>
+                </ul>
+                <p id="fusion-details">HTTP国内下载流量xxxGB, HTTP海外下载流量xxxGB， HTTPS国内下载流量xxxGB， HTTS海外下载流量xxxGB</p>
+              </dd>
+              <dd class="sum">
+                合计： ￥19089 / 月
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

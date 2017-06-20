@@ -17,6 +17,7 @@
 
 #= require smint
 #= require events
+#= require prices
 
 
 isMobile = false; # initiate as false
