@@ -1,0 +1,139 @@
+.navbar-nav > li > a.caculator{
+  line-height: 0;
+}
+
+.feature-price-nav{
+  margin-top: -30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: rgb(234, 241, 251);
+
+  ul li{
+    padding-right: 50px;
+  }
+}
+
+.tab-content-caculating{
+  dl {
+    dt{
+      border-left: 3px solid rgb(60, 135, 188);
+      padding-left: 12px;
+      font-size: 18px;
+      line-height: 14px;
+      margin-bottom: 8px;
+    }
+
+    dd{
+      line-height: 30px;
+    }
+
+    .formula{
+      font-weight: bold;
+    }
+  }
+}
+
+.list-inline-prices{
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+
+  li{
+    list-style: none;
+    float: left;
+    padding-right: 80px;
+
+    p{
+      text-align: center;
+
+      .big-text{
+        color: #000;
+        font-size: 32px;
+        font-weight: 500;
+      }
+      .smal-text{
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.tab-content-pricing{
+  padding-top: 200px;
+}
+
+table.pricing-table tr th{
+  font-size: 16px;
+  font-weight: 400;
+}
+
+table.pricing-table tr th, table.pricing-table tr td{
+  vertical-align: middle;
+  text-align: left;
+  color: #333;
+  line-height: 32px;
+
+  div {
+    padding-bottom: 21px;
+    margin-bottom: 22px;
+  }
+}
+
+//caculator css
+
+.pricing-info{
+  border: 1px solid #eee;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
+  -moz-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
+  box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
+
+  dl{
+    padding: 0;
+    margin: 0;
+  }
+
+  dt{
+    padding: 5px 20px;
+    background-color: rgb(234, 241, 251);
+    border-bottom: 1px solid #eee;
+
+    font-size: 16px;
+    line-height: 32px;
+  }
+  dd{
+    padding: 5px 20px;
+  }
+
+  p{
+    word-wrap: break-word;
+    color: rgb(168, 168, 168);
+    font-size: 12px;
+  }
+
+  .sum{
+    padding: 0;
+    background-color: rgb(67, 158, 217);
+    color: #fff;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+}
+
+.pricing-info-details{
+  list-style: none;
+  padding: 0;
+  li{
+    font-size: 18px;
+    display: inline-block;
+
+    &.price{
+      float: right;
+      color: #3b99fc;
+    }
+  }
+}
