@@ -17,7 +17,6 @@
 
 #= require smint
 #= require events
-#= require range
 #= require prices
 
 
