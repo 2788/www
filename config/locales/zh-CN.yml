@@ -11,13 +11,13 @@ zh-CN:
           desc: 融合优质节点、可监控、智能调度的内容分发服务
 
         - name: kirk
-          label: 容器云
+          label: 容器服务
           desc: 面向微服务架构的企业级容器管理平台
 
     - group: 人工智能
       list:
         - name: atlib
-          label: 深度学习
+          label: 机器学习
           desc: 针对图片视频的一站式数据集中处理、模型训练平台
 
         - name: pandora
@@ -25,8 +25,8 @@ zh-CN:
           desc: 安全、易用、一站式大数据处理、分析、管理平台
 
         - name: dora
-          label: 数据处理
-          desc: 面向微服务架构的企业级容器管理平台
+          label: 智能多媒体API
+          desc: 针对海量图片视频提供鉴黄鉴暴、人脸技术、物体识别等服务
 
     - group: 视频服务
       list:
