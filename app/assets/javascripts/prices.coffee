@@ -1,5 +1,7 @@
 $(document).ready ->
-  #控制prices页面tab
+  ##
+  ## 控制prices页面tab
+  ##
   pre = 'kodo'
   $('#pricesTabs').change (e) ->
     val = $(this).val()
@@ -7,7 +9,9 @@ $(document).ready ->
     $('#tab-prices-' + pre).removeClass('active')
     pre = val
 
-  #控制caculator的tab
+  ##
+  ## 控制caculator的tab
+  ##
   $('.caculatorTabs').bind 'click', (e) ->
     id = $(this).val()
     if $(this).attr('checked') == 'checked'
@@ -23,30 +27,61 @@ $(document).ready ->
       caculatePrice(id, true)
 
   ##
-  # 公用方法
-  #add = () ->
-  setPrice = (amountJSON) ->
+  ## 控制fusion 第二个连动select
+  ##
+  $("#fusion").change (e) ->
+    val = $(this).val()
+    if val == "inland"
+      $("#fusion-outland").addClass("displayNone")
+    else if $("#fusion-outland").hasClass("displayNone")
+      $("#fusion-outland").removeClass("displayNone")
+
+  ##
+  ## 公用方法
+  ##
+  #caculate all prices and set
+  setPrice = () ->
+    # 获取数量
+    amountJSON =
+      kodo:
+        area: $('#kodo').val()
+        space: $('#num-kodo-space').val()
+        reads: $('#num-kodo-read').val()
+        writes: $('#num-kodo-write').val()
+      lowKodo:
+        space: $('#num-lowKodo-space').val()
+        APIs: $('#num-lowKodo-API').val()
+        types: $('#num-lowKodo-type').val()
+        HTTPs: $('#num-lowKodo-HTTP').val()
+      fusion:
+        area:
+          land: $('#fusion').val()
+          region: null
+        HTTPs: $('#num-fusion-HTTP').val()
+        HTTPSs: $('#num-fusion-HTTPS').val()
+    if amountJSON.fusion.area.land == 'outland'
+      amountJSON.fusion.area.region = $('#fusion-outland').val()
     # 数据表
     kodoData =
-      '华东':
+      'east':
         '0': 0
         '10': 0.148
         '1024': 0.145
         '204800': 0.142
         '5242880': 0.139
-      '华南':
+      'sourth':
         '0': 0
         '10': 0.134
         '1024': 0.131
         '204800': 0.128
         '5242880': 0.125
-      '华北':
+      'north':
         '0': 0
         '10': 0.148
         '1024': 0.145
         '204800': 0.142
         '5242880': 0.139
-      '北美':
+      'northAmerica':
         '0': 0
         '10': 0.165
         '1024': 0.162
@@ -67,7 +102,7 @@ $(document).ready ->
         '10': 0.29
         '102400': 0.26
     fusionData =
-      '国内':
+      'inland':
         'HTTPs':
           '0': 0
           '10': 0.29
@@ -76,58 +111,58 @@ $(document).ready ->
           '0': 0.36
           '10240': 0.32
           '102400': 0.26
-      '海外':
+      'outland':
         'HTTPs':
           '0':
-            '欧洲/北美洲': 0.39
-            '亚洲（除中国/印度/东南亚）': 0.57
-            '亚洲（东南亚/印度）': 0.87
-            '南美洲': 0.87
-            '大洋洲与其他': 1.08
+            'ENA': 0.39
+            'Asia': 0.57
+            'India': 0.87
+            'SA': 0.87
+            'Oceania': 1.08
           '10':
-            '欧洲/北美洲': 0.34
-            '亚洲（除中国/印度/东南亚）': 0.50
-            '亚洲（东南亚/印度）': 0.76
-            '南美洲': 0.76
-            '大洋洲与其他': 0.94
+            'ENA': 0.34
+            'Asia': 0.50
+            'India': 0.76
+            'SA': 0.76
+            'Oceania': 0.94
           '102400':
-            '欧洲/北美洲': 0.30
-            '亚洲（除中国/印度/东南亚）': 0.44
-            '亚洲（东南亚/印度）': 0.66
-            '南美洲': 0.66
-            '大洋洲与其他': 0.82
+            'ENA': 0.30
+            'Asia': 0.44
+            'India': 0.66
+            'SA': 0.66
+            'Oceania': 0.82
           '1048576':
-            '欧洲/北美洲': 0.26
-            '亚洲（除中国/印度/东南亚）': 0.38
-            '亚洲（东南亚/印度）': 0.57
-            '南美洲': 0.57
-            '大洋洲与其他': 0.71
+            'ENA': 0.26
+            'Asia': 0.38
+            'India': 0.57
+            'SA': 0.57
+            'Oceania': 0.71
           '10PB以上': '联系我们'
         'HTTPSs':
           '0':
-            '欧洲/北美洲': 0.46
-            '亚洲（除中国/印度/东南亚）': 0.68
-            '亚洲（东南亚/印度）': 1.04
-            '南美洲': 1.04
-            '大洋洲与其他': 1.29
+            'ENA': 0.46
+            'Asia': 0.68
+            'India': 1.04
+            'SA': 1.04
+            'Oceania': 1.29
           '10':
-            '欧洲/北美洲': 0.4
-            '亚洲（除中国/印度/东南亚）': 0.60
-            '亚洲（东南亚/印度）': 0.91
-            '南美洲': 0.91
-            '大洋洲与其他': 1.12
+            'ENA': 0.4
+            'Asia': 0.60
+            'India': 0.91
+            'SA': 0.91
+            'Oceania': 1.12
           '102400':
-            '欧洲/北美洲': 0.36
-            '亚洲（除中国/印度/东南亚）': 0.52
-            '亚洲（东南亚/印度）': 0.79
-            '南美洲': 0.79
-            '大洋洲与其他': 0.98
+            'ENA': 0.36
+            'Asia': 0.52
+            'India': 0.79
+            'SA': 0.79
+            'Oceania': 0.98
           '1048576':
-            '欧洲/北美洲': 0.31
-            '亚洲（除中国/印度/东南亚）': 0.45
-            '亚洲（东南亚/印度）': 0.68
-            '南美洲': 0.68
-            '大洋洲与其他': 0.85
+            'ENA': 0.31
+            'Asia': 0.45
+            'India': 0.68
+            'SA': 0.68
+            'Oceania': 0.85
           '10PB以上': '联系我们'
     # kodo的价格计算
     kodoVal = 1986
@@ -139,10 +174,15 @@ $(document).ready ->
     fusionVal = 1986
     $("#fusion-price").text(fusionVal)
 
+    # 总价的计算
+    caculatePrice()
+
+  ## 控制总价格是否加上隐藏的模块价格
   prices =
     kodo: true
     lowKodo: true
     fusion: true
+
   #render range
   renderRange = (key, val) ->
     #range条填充颜色
@@ -153,48 +193,31 @@ $(document).ready ->
   caculatePrice = (key, bol) ->
     sum = 0;
     if arguments.length > 0
-      prices.key = bol
+      prices[key] = bol
     for i of prices
       if prices[i]
         #如果存在该板块 总价加进去
         sum += Number($('#' + i + '-price').text())
     $('#sum-price').text(sum)
 
-  #set all Amount same,caculate price and sum
+  #set Amount and then set prices
   setAmount = (key, val) ->
     $('#range-' + key).val(val)
     renderRange('#range-' + key, val)
     $('#num-' + key).val(val)
     $('#text-' + key).text(val)
-    amountJSON =
-      kodo:
-        area: $('#kodo').val()
-        space: $('#num-kodo-space').val()
-        reads: $('#num-kodo-read').val()
-        writes: $('#num-kodo-write').val()
-      lowKodo:
-        space: $('#num-lowKodo-space').val()
-        APIs: $('#num-lowKodo-API').val()
-        types: $('#num-lowKodo-type').val()
-        HTTPs: $('#num-lowKodo-HTTP').val()
-      fusion:
-        area:
-          land: $('#fusion').val()
-          region: null
-        HTTPs: $('#num-fusion-HTTP').val()
-        HTTPSs: $('#num-fusion-HTTPS').val()
-    if amountJSON.fusion.area.land == '海外'
-      amountJSON.fusion.area.region = $('#fusion-outland').val()
-    setPrice(amountJSON)
-    caculatePrice()
+    setPrice()
 
   ##
   ## the entrance of all events
+  ##
   $('.amount-input').bind 'input', ->
     key = $(this).attr('key')
     setAmount(key, $(this).val())
 
+  ##
   ## 初始化 range num text一致
+  ##
   $('.input-range').each (index,item) ->
     key = $(this).attr('key')
     setAmount(key, $(this).val())
