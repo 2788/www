@@ -47,20 +47,20 @@
                 </dd>
                 <dd>
                   <h5>存储空间</h5>
-                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
-                  <span>万次/月</span>
+                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range amount-input" id="range-kodo-space" key="kodo-space">
+                  <input type="number" class="input-num amount-input" id="num-kodo-space" key="kodo-space">
+                  <span>GB/月</span>
                 </dd>
                 <dd>
                   <h5>GET读请求数</h5>
-                  <input type="range" value="10" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
+                  <input type="range" value="10" min="0" max="1000" step="1" class="input-range amount-input" id="range-kodo-read" key="kodo-read">
+                  <input type="number" class="input-num amount-input" id="num-kodo-read" key="kodo-read">
                   <span>万次/月</span>
                 </dd>
                 <dd>
                   <h5>PUT/DELET写请求数</h5>
-                  <input type="range" value="40" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
+                  <input type="range" value="40" min="0" max="1000" step="1" class="input-range amount-input" id="range-kodo-write" key="kodo-write">
+                  <input type="number" class="input-num amount-input" id="num-kodo-write" key="kodo-write">
                   <span>万次/月</span>
                 </dd>
               </dl>
@@ -69,6 +69,7 @@
             <section class="tab-pane active caculator-sec" id="tab-caculator-lowKodo">
               <dl>
                 <dt>低频存储</dt>
+                <!--
                 <dd>
                   <ul class="list-inline">
                     <li><span>存储区域</span></li>
@@ -81,29 +82,30 @@
                     </li>
                   </ul>
                 </dd>
+                -->
                 <dd>
                   <h5>存储空间</h5>
-                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
-                  <span>万次/月</span>
+                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range amount-input" id="range-lowKodo-space" key="lowKodo-space">
+                  <input type="number" class="input-num amount-input" id="num-lowKodo-space" key="lowKodo-space">
+                  <span>GB/月</span>
                 </dd>
                 <dd>
                   <h5>API请求数 (GET/PUT)</h5>
-                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
+                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range amount-input" id="range-lowKodo-API" key="lowKodo-API">
+                  <input type="number" class="input-num amount-input" id="num-lowKodo-API" key="lowKodo-API">
                   <span>万次/月</span>
                 </dd>
                 <dd>
                   <h5>存储类型转换</h5>
-                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
+                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range amount-input" id="range-lowKodo-type" key="lowKodo-type">
+                  <input type="number" class="input-num amount-input" id="num-lowKodo-type" key="lowKodo-type">
                   <span>万次/月</span>
                 </dd>
                 <dd>
                   <h5>读取流量(HTTP)</h5>
-                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
-                  <span>万次/月</span>
+                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range amount-input" id="range-lowKodo-HTTP" key="lowKodo-HTTP">
+                  <input type="number" class="input-num amount-input" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
+                  <span>GB/月</span>
                 </dd>
               </dl>
             </section>
@@ -120,19 +122,28 @@
                         <option value="outland">国外</option>
                       </select>
                     </li>
+                    <li>
+                      <select name="fusion-outland" id="fusion-outland">
+                        <option value="ENA">欧洲/北美洲</option>
+                        <option value="Asia">亚洲（除中国/印度/东南亚）</option>
+                        <option value="India">亚洲（东南亚/印度）</option>
+                        <option value="SA">南美洲</option>
+                        <option value="Oceania">大洋洲与其他</option>
+                      </select>
+                    </li>
                   </ul>
                 </dd>
                 <dd>
                   <h5>HTTP下载流量</h5>
-                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
-                  <span>GB/月</span>
+                  <input type="range" value="0" min="0" max="1000" step="1" class="input-range amount-input" id="range-fusion-HTTP" key="fusion-HTTP">
+                  <input type="number" class="input-num amount-input" id="num-fusion-HTTP" key="fusion-HTTP">
+                  <span>TB/月</span>
                 </dd>
                 <dd>
                   <h5>HTTPS下载流量</h5>
-                  <input type="range" value="10" min="0" max="1000" step="1" class="input-range">
-                  <input type="number" class="input-num">
-                  <span>GB/月</span>
+                  <input type="range" value="10" min="0" max="1000" step="1" class="input-range amount-input" id="range-fusion-HTTPS" key="fusion-HTTPS">
+                  <input type="number" class="input-num amount-input" id="num-fusion-HTTPS" key="fusion-HTTPS">
+                  <span>TB/月</span>
                 </dd>
               </dl>
             </section>
@@ -145,26 +156,26 @@
               <dd id="pricing-info-kodo">
                 <ul class="pricing-info-details">
                   <li>标准存储</li>
-                  <li class="price" id="kodo-price">￥19089</li>
+                  <li class="price">￥<span id="kodo-price">19089</span></li>
                 </ul>
-                <p id="kodo-details">xxxGB/月，xxx万次读请求，xxx次万次写请求</p>
+                <p id="kodo-details"><span id="text-kodo-space" key="kodo-space"></span>GB/月，<span id="text-kodo-read" key="kodo-read"></span>万次/月读请求，<span id="text-kodo-write" key="kodo-write"></span>万次/月写请求</p>
               </dd>
               <dd id="pricing-info-lowKodo">
                 <ul class="pricing-info-details">
                   <li>低频存储</li>
-                  <li class="price" id="lowKodo-price">￥19089</li>
+                  <li class="price">￥<span id="lowKodo-price">19089</span></li>
                 </ul>
-                <p id="lowKodo-details">xxxGB/月，xxx万次读请求，xxx次万次写请求</p>
+                <p id="lowKodo-details"><span id="text-lowKodo-space" key="lowKodo-space"></span>GB/月，<span id="text-lowKodo-API" key="lowKodo-API"></span>万次API请求，<span id="text-lowKodo-type" key="lowKodo-type"></span>万次存储类型装换，<span id="text-lowKodo-HTTP" key="lowKodo-HTTP"></span>GB的HTTP读取</p>
               </dd>
               <dd id="pricing-info-fusion">
                 <ul class="pricing-info-details">
                   <li>融合CDN</li>
-                  <li class="price" id="fusion-price">￥19089</li>
+                  <li class="price">￥<span id="fusion-price">19089</span></li>
                 </ul>
-                <p id="fusion-details">HTTP国内下载流量xxxGB, HTTP海外下载流量xxxGB， HTTPS国内下载流量xxxGB， HTTS海外下载流量xxxGB</p>
+                <p id="fusion-details">HTTP下载流量<span id="text-fusion-HTTP" key="fusion-HTTP"></span>TB, HTTPS下载流量<span id="text-fusion-HTTPS" key="fusion-HTTPS"></span>TB</p>
               </dd>
               <dd class="sum">
-                <%= link_to '合计： ￥19089 / 月', "", class: "sum" %>
+                <a href="" class="sum">合计： ￥<span id="sum-price"></span> / 月</a>
               </dd>
             </dl>
           </div>
