@@ -83,6 +83,8 @@ table.pricing-table tr th, table.pricing-table tr td{
 
 //caculator css
 
+//right menu
+
 .pricing-info{
   border: 1px solid #eee;
   border-radius: 2px;
@@ -121,6 +123,10 @@ table.pricing-table tr th, table.pricing-table tr td{
     height: 50px;
     line-height: 50px;
     text-align: center;
+
+    &:hover{
+      color: #fff;
+    }
   }
 }
 
@@ -136,4 +142,56 @@ table.pricing-table tr th, table.pricing-table tr td{
       color: #3b99fc;
     }
   }
+}
+
+/*
+**caculator css
+**left select
+*/
+
+.features div.pricing-details{
+  margin-top: 0px;
+
+  section{
+    color: rgb(157, 157, 157);
+    font-size: 14px;
+    dt{
+      font-size: 18px;
+      color: #000;
+      line-height: 80px;
+    }
+    dd{
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      select{
+        color: #000;
+      }
+    }
+  }
+}
+
+.caculator-sec{
+  border-bottom: 1px solid #eee;
+  padding-top: 60px;
+  padding-bottom: 70px;
+}
+
+.caculator-sec-last{
+  padding-top: 60px;
+}
+
+input[type="range"]{
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+  width: 80%;
+}
+
+.input-num{
+  width: 70px;
+  color: #3b99fc;
+}
+
+.displayNone{
+  display: none;
 }
