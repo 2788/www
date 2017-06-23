@@ -1,5 +1,5 @@
 # 数据表
-    kodoData =
+    window.kodoData =
       'east':
         '0': 0
         '10': 0.148
@@ -30,7 +30,7 @@
       'reads':
         '0': 0
         '100': 0.01
-    lowKodoData =
+    window.lowKodoData =
       'space': 0.06
       'APIs': 0.1
       'types': 0.1
@@ -38,7 +38,7 @@
         '0': 0
         '10': 0.29
         '102400': 0.26
-    fusionData =
+    window.fusionData =
       'inland':
         'HTTPs':
           '0': 0
