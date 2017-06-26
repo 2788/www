@@ -93,6 +93,17 @@
   background: #FFF;
   padding: 80px 0 100px;
 
+  .btn.feature-btn{
+    color: #28aedf;
+    background-color: transparent;
+    border: 1px solid #28aedf;
+
+    &:hover{
+      color: #fff;
+      background-color: #28aedf;
+    }
+  }
+
   a.more{
     display: inline-block;
     margin-top: 0;
