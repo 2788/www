@@ -44,15 +44,15 @@ zh-CN:
       label:  对象存储私有化部署
     - name: UDMP
       label:  非结构化数据管理解决方案
-    - name: b
+    - name: ICA
       label:  智能云相册解决方案
-    - name: c
+    - name: IHAIOT
       label:  智能硬件与物联网解决方案
-    - name: d
+    - name: RTMI
       label:  广电传媒解决方案
-    - name: e
+    - name: HST
       label:  安防解决方案
-    - name: f
+    - name: Internet
       label:  互联网与移动互联网解决方案
-    - name: pandora
+    - name: DQM
       label:  应用质量监控解决方案
