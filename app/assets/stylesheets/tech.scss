@@ -49,6 +49,7 @@
     .btn-dwn-wrap{
       width: 100%;
       margin-top: 14px;
+      text-align: center;
 
       a{
         display: inline-block;
@@ -128,14 +129,15 @@
 
     .lecturer-box{
       position: absolute;
+      width: 100%;
       top: -28px;
-      left: 50%;
-      transform: translateX(-50%);
+    }
+
+    .img-box{
+      text-align: center;
     }
     .lecturer-photo{
       border-radius: 50%;
-      position: relative;
-      left: 55px;
     }
 
     .lecturer-info-box .lecturer-name{
@@ -146,15 +148,24 @@
     }
 
     .lecturer-info-box .lecturer-job{
+      text-align: center;
       font-family: PingFangSC Regular;
       font-size: 14px;
       color: rgb(145, 147, 150);
       line-height: 24px;
     }
 
+    .lecturer-info-box .short-line{
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 1px;
+      background: #eee;
+    }
+
     .lecturer-tail{
       padding: 0 30px;
-      border-bottom: 2px solid #eee;
     }
   }
 }
