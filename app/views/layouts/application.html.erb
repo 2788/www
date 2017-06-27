@@ -98,34 +98,34 @@
             <h4 class="modal-title" id="feedback-modal-label">产品及服务咨询</h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="feedback-form">
               <div class="form-group">
-                <label for="feedback-content" class="col-sm-2 control-label"><i class="text-danger">*</i>咨询内容</label>
+                <label for="feedback-content" class="col-sm-2 control-label"><small class="text-danger">*</small>咨询内容</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" name="" id="feedback-content" rows="5"></textarea>
+                  <textarea class="form-control" name="feedback[content]" id="feedback-content" rows="5"></textarea>
                 </div>
               </div>
               <div class="form-group">
-                <label for="feedback-name" class="col-sm-2 control-label"><i class="text-danger">*</i>姓名</label>
+                <label for="feedback-name" class="col-sm-2 control-label"><small class="text-danger">*</small>姓名</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="feedback-name">
+                  <input type="text" name="feedback[name]" class="form-control" id="feedback-name">
                 </div>
               </div>
               <div class="form-group">
                 <label for="feedback-company" class="col-sm-2 control-label">公司名称</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="feedback-company">
+                  <input type="text" name="feedback[company]" class="form-control" id="feedback-company">
                 </div>
               </div>
               <div class="form-group">
-                <label for="feedback-phone" class="col-sm-2 control-label"><i class="text-danger">*</i>联系电话</label>
+                <label for="feedback-phone" class="col-sm-2 control-label"><small class="text-danger">*</small>联系电话</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="feedback-phone">
+                  <input type="text" name="feedback[phone]" class="form-control" id="feedback-phone">
                 </div>
               </div>
 
               <div class="actions">
-                <button type="submit" class="btn btn-primary">提 交</button>
+                <button type="button" id="feedback-submit" class="btn btn-primary" disabled>提 交</button>
               </div>
             </form>
           </div>

@@ -32,4 +32,6 @@ Rails.application.routes.draw do
   resources 'prices', only: [:index]
   get '/caculator', to: 'prices#caculator'
 
+  post '/feedbacks', to: 'feedbacks#create'
+
 end
