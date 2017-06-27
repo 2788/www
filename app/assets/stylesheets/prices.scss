@@ -91,6 +91,7 @@ table.pricing-table tr th, table.pricing-table tr td{
   -webkit-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
   -moz-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
   box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
+  background-color: #fff;
 
   dl{
     padding: 0;
@@ -194,4 +195,15 @@ input[type="range"]{
 
 .displayNone{
   display: none;
+}
+
+.fix-top{
+  margin-top: 0;
+  top: 0;
+  width: 100%;
+}
+
+.fix-right{
+  top: 111px;
+  right: 50px;
 }
