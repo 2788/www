@@ -64,9 +64,30 @@
   padding-top: 200px;
 }
 
+table.pricing-table tr.table-linesep td div {
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 21px;
+    margin-bottom: 22px;
+}
+
 table.pricing-table tr th{
   font-size: 16px;
   font-weight: 400;
+
+  &.thead-title{
+    font-size: 24px;
+    padding-bottom: 30px;
+  }
+
+  .grey-unit{
+    font-size: 12px;
+    color: #666;
+  }
+
+  .th-p{
+    margin: 0 0 -15px -8px;
+    line-height: 12px;
+  }
 }
 
 table.pricing-table tr th, table.pricing-table tr td{
