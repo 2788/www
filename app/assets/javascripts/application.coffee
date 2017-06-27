@@ -105,7 +105,7 @@ $(document).ready ->
 # 监控滚动 中部导航
 $(document).ready ->
   #enabling stickUp on the '.navbar-wrapper' class
-  $('.navbar-wrapper-middle').smint('fxd')
+  $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
   return
 
 # ourcompany timeline
