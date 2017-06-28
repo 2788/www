@@ -7,7 +7,11 @@
   margin-bottom: 40px;
   .col-scene{
     padding: 100px 20px 70px 20px;
-    height: 100%;
+    height: 550px;
+
+    .col-scene_case{
+      margin-top: 30px;
+    }
   }
 
   .col-solution{
