@@ -81,7 +81,7 @@
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
   p{
-    line-height: 34px;
+    line-height: 38px;
     font-size: 18px;
   }
 }
@@ -381,7 +381,22 @@
 
 // iPad
 @media (min-width: 768px) and (max-width: 991px){
+  .jumbotron.hero{
+    p{
+      line-height: 34px;
+      font-size: 16px;
+    }
+  }
+}
 
+//phone
+@media (max-width: 768px){
+  .jumbotron.hero{
+    p{
+      line-height: 34px;
+      font-size: 16px;
+    }
+  }
 }
 
 // @media (min-width: 992px){
