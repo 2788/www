@@ -56,3 +56,54 @@ zh-CN:
       label:  互联网与移动互联网解决方案
     - name: DQM
       label:  应用质量监控解决方案
+
+  partners:
+    - path: cooperation/client-3w-highlight@2x.png
+      desc: 3w
+    - path: cooperation/client-aijiami-highlight@2x.png
+      desc: aijiami
+    - path: cooperation/client-APIcloud-highlight@2x.png
+      desc: APIcloud
+    - path: cooperation/client-dnspod-highlight@2x.png
+      desc: dnspod
+    - path: cooperation/client-duobeifen-highlight@2x.png
+      desc: duobeifen
+    - path: cooperation/client-getui-highlight@2x.png
+      desc: getui
+    - path: cooperation/client-aimei-highlight@2x.png
+      desc: aimei
+    - path: cooperation/client-jiasuhui-highlight@2x.png
+      desc: jiasuhui
+    - path: cooperation/client-leancloud-highlight@2x.png
+      desc: leancloud
+    - path: cooperation/client-maike-highlight@2x.png
+      desc: maike
+    - path: cooperation/client-segmentfault-highlight@2x.png
+      desc: segmentfault
+    - path: cooperation/client-teambiton-highlight@2x.png
+      desc: teambiton
+    - path: cooperation/client-shisuyun-highlight@2x.png
+      desc: shisuyun
+    - path: cooperation/client-jizhiyun-highlight@2x.png
+      desc: jizhiyun
+    - path: cooperation/client-kedaxunfei-highlight@2x.png
+      desc: kedaxunfei
+    - path: cooperation/client-youmi-highlight@2x.png
+      desc: youmi
+    - path: cooperation/client-yunzhixun-highlight@2x.png
+      desc: yunzhixun
+    - path: cooperation/client-juzikongjian-highlight@2x.png
+      desc: juzikongjian
+    - path: cooperation/client-mingdao-highlight@2x.png
+      desc: mingdao
+    - path: cooperation/client-jisiwei-highlight@2x.png
+      desc: jisiwei
+    - path: cooperation/client-testin-highlight@2x.png
+      desc: testin
+    - path: cooperation/client-jinshuju-highlight@2x.png
+      desc: jinshuju
+    - path: cooperation/client-anchang-highlight@2x.png
+      desc: anchang
+    - path: cooperation/client-devstore-highlight@2x.png
+      desc: devstore
+
