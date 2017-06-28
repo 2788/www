@@ -6,9 +6,14 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.uid = cookies['PORTAL_UID']
+    @feedback.ip = request.remote_ip
+
+    if @feedback.referer.blank?
+      @feedback.referer = params[:referer] || request.referer || request.env['HTTP_REFERER']
+    end
 
     if @feedback.save
-      render json: @feedback, status: :created
+      render :nothing => true, :status => :created
     else
       render json: @feedback.errors, status: :unprocessable_entity
     end
