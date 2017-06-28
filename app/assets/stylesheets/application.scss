@@ -80,7 +80,10 @@
     font-weight: 400;
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
-  p{ line-height: 38px; }
+  p{
+    line-height: 34px;
+    font-size: 18px;
+  }
 }
 
 .features-nav{
@@ -328,6 +331,7 @@
   background-position: left center;
   background-size: 140px 140px;
   height: 140px;
+  margin-bottom: 20px;
 }
 //覆盖 bootsrap css
 //.nav > li > a:hover, .nav > li > a:focus
