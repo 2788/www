@@ -69,6 +69,7 @@
     border: 1px solid #eeeeee;
     height: 118px;
     line-height: 118px;
+    background-size: 100px auto;
     background-position: center center;
     background-repeat: no-repeat;
     outline: none;
@@ -84,36 +85,6 @@
       box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
       outline: none;
     }
-  }
-
-  //在hover的加载新图片的瞬间
-  //空隙间 以此作为备用背景图片
-  #customer-ch-wrapper{
-    background-image: image-url("client-ch@2x.jpg");
-  }
-  #customer-changba-wrapper{
-    background-image: image-url("client-changba@2x.jpg");
-  }
-  #customer-dajian-wrapper{
-    background-image: image-url("client-dajian@2x.jpg");
-  }
-  #customer-dazhong-wrapper{
-    background-image: image-url("client-dazhong@2x.jpg");
-  }
-  #customer-hujiang-wrapper{
-    background-image: image-url("client-hujiang@2x.jpg");
-  }
-  #customer-intel-wrapper{
-    background-image: image-url("client-intel@2x.jpg");
-  }
-  #customer-oppo-wrapper{
-    background-image: image-url("client-oppo@2x.jpg");
-  }
-  #customer-qingting-wrapper{
-    background-image: image-url("client-qingting@2x.jpg");
-  }
-  #customer-zte-wrapper{
-    background-image: image-url("client-zte@2x.jpg");
   }
 
   #customer-ch{ background-image: image-url("client-ch@2x.jpg");
@@ -177,6 +148,70 @@
   #customer-caishi{ background-image: image-url("vance/client-caishi@2x.jpg");
     &:hover, &:focus{background-image: image-url("vance/client-caishi-highlight@2x.jpg");}
   }
+
+  /////////
+  .customer-ch{
+    background-image: image-url("client-ch-highlight@2x.jpg");
+  }
+  .customer-changba{
+    background-image: image-url("client-changba-highlight@2x.jpg");
+  }
+  .customer-dajian{
+    background-image: image-url("client-dajian-highlight@2x.jpg");
+  }
+  .customer-dazhong{
+    background-image: image-url("client-dazhong-highlight@2x.jpg");
+  }
+  .customer-hujiang{
+    background-image: image-url("client-hujiang-highlight@2x.jpg");
+  }
+  .customer-intel{
+    background-image: image-url("client-intel-highlight@2x.jpg");
+  }
+  .customer-oppo{
+    background-image: image-url("client-oppo-highlight@2x.jpg");
+  }
+  .customer-qingting{
+    background-image: image-url("client-qingting-highlight@2x.jpg");
+  }
+  .customer-zte{
+    background-image: image-url("client-zte-highlight@2x.jpg");
+  }
+
+  .customer-tantan{
+    background-image: image-url("fusion/client-tantan-highlight@2x.jpg");
+  }
+  .customer-anxinzhengquan{
+    background-image: image-url("fusion/client-anxinzhengquan-highlight@2x.jpg");
+  }
+  .customer-mangguotv{
+    background-image: image-url("fusion/client-mangguotv-highlight@2x.jpg");
+  }
+  .customer-wifibanlv{
+    background-image: image-url("fusion/client-wifibanlv-highlight@2x.jpg");
+  }
+  .customer-huanbei{
+    background-image: image-url("dora/client-huanbei-highlight@2x.jpg");
+  }
+  .customer-jumeiyoupin{
+    background-image: image-url("dora/client-jumeiyoupin-highlight@2x.jpg");
+  }
+  .customer-pinganhaofang{
+    background-image: image-url("dora/client-pinganhaofang-highlight@2x.jpg");
+  }
+  .customer-timelink{
+    background-image: image-url("dora/client-timelink-highlight@2x.jpg");
+  }
+  .customer-zaker{
+    background-image: image-url("dora/client-zaker-highlight@2x.jpg");
+  }
+  .customer-yunxuetang{
+    background-image: image-url("vance/client-yunxuetang-highlight@2x.jpg");
+  }
+  .customer-caishi{
+    background-image: image-url("vance/client-caishi-highlight@2x.jpg");
+  }
+
 
 }
 

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/company',     to: 'welcome#company'
   get '/cooperation', to: 'welcome#cooperation'
   get '/case',        to: 'welcome#case'
+  get '/atlib',       to: 'welcome#atlib'
 
   resources 'events', only: [:index]
   get '/tech', to: 'events#tech'

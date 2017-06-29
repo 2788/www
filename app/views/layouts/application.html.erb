@@ -53,7 +53,7 @@
 
               <ul class="dropdown-menu solutions-menu">
                 <% I18n.t("solutions").each do |solution| %>
-                  <%= content_tag :li, link_to(solution[:label], solution_path(anchor: solution[:name])) -%>
+                  <%= content_tag :li, link_to(content_tag(:h4, solution[:label]) + content_tag(:p, solution[:desc]), solution_path(anchor: solution[:name])) -%>
                 <% end %>
               </ul>
             </li>
@@ -168,7 +168,7 @@
                   <dd><%= link_to "新闻动态", "" -%></dd>
                   <dd><%= link_to "产品动态", "" -%></dd>
                   <dd><%= link_to "近期福利", "" -%></dd>
-                  <dd><%= link_to "行业报告", "" -%></dd>
+                  <dd><%= link_to "品牌标识", "https://developer.qiniu.com/brand" -%></dd>
                   <dd><%= link_to "客户案例", case_path -%></dd>
                   <dd><%= link_to "市场合作", cooperation_path -%></dd>
                   <dd><%= link_to "加入我们", "" -%></dd>

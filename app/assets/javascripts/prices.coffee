@@ -88,7 +88,9 @@ $(document).ready ->
         # add padding to the body to make up for the loss in heigt when the men goes to a fixed position.
         # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
       else
-        myElem.css('position', 'relative').removeClass fxd
+        myElem.css(
+          'position': 'relative'
+          ).removeClass fxd
 
   #render range
   renderRange = (key, val) ->

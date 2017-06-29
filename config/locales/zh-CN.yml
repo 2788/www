@@ -11,13 +11,13 @@ zh-CN:
           desc: 融合优质节点、可监控、智能调度的内容分发服务
 
         - name: kirk
-          label: 容器服务
+          label: 容器云
           desc: 面向微服务架构的企业级容器管理平台
 
     - group: 人工智能
       list:
         - name: atlib
-          label: 机器学习
+          label: 深度学习平台
           desc: 针对图片视频的一站式数据集中处理、模型训练平台
 
         - name: pandora
@@ -42,20 +42,28 @@ zh-CN:
   solutions:
     - name: QOS
       label:  对象存储私有化部署
+      desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
     - name: UDMP
       label:  非结构化数据管理解决方案
+      desc: 提供大批量文件打包上传、文档检索、多媒体数据处理等服务
     - name: ICA
       label:  智能云相册解决方案
+      desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
     - name: IHAIOT
       label:  智能硬件与物联网解决方案
+      desc: 满足智能硬件厂商各应用场景下云端计算需求
     - name: RTMI
       label:  广电传媒解决方案
+      desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
     - name: HST
       label:  安防解决方案
+      desc: 灵活部署，满足不同安防场景互联网远程监控需求
     - name: Internet
       label:  互联网与移动互联网解决方案
+      desc: 为互联网初创企业量身定制，一站式云计算服务平台
     - name: DQM
       label:  应用质量监控解决方案
+      desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
 
   partners:
     - path: cooperation/client-3w-highlight@2x.png

@@ -10,10 +10,30 @@
 
   ul li{
     padding-right: 50px;
+
+    .caculator{
+      padding-left: 80px;
+      background-image: image-url("prices/icon-caculator@2x.png");
+      background-size: 80px 80px;
+      background-repeat: no-repeat;
+      background-position: left center;
+
+      color: rgb(94, 97, 102);
+      font-size: 14px;
+      font-family: PingFangSC Medium;
+
+      &:hover{
+        background-color: transparent;
+        color: #00A0DE;
+      }
+    }
   }
 }
 
 .tab-content-caculating{
+  .details{
+    padding-left: 15px;
+  }
   dl {
     dt{
       border-left: 3px solid rgb(60, 135, 188);
