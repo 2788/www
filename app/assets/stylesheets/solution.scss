@@ -7,7 +7,11 @@
   margin-bottom: 40px;
   .col-scene{
     padding: 100px 20px 70px 20px;
-    height: 100%;
+    height: 550px;
+
+    .col-scene_case{
+      margin-top: 30px;
+    }
   }
 
   .col-solution{
@@ -33,7 +37,7 @@
   }
 
   .icon-RTMI{
-    //广电传媒
+    background-image: image-url("solution/icon-guangdianchuanmei@2x.png");
   }
 
   .icon-HST{
@@ -42,6 +46,10 @@
 
   .icon-Internet{
     background-image: image-url("solution/icon-hulianwangyuyidonghulianwang@2x.png");
+  }
+
+  .icon-DQM{
+    background-image: image-url("solution/icon-yingyongzhiliangjiankong@2x.png");
   }
 
   .content{
@@ -87,6 +95,18 @@
 
   .icon-deepLearn{
     background-image: image-url("solution/icon-shenduxuexi@2x.png");
+  }
+
+  .icon-kirk{
+    background-image: image-url("solution/icon-zhibozhiliang@2x.png");
+  }
+
+  .icon-cdn{
+    background-image: image-url("solution/icon-cdnzhiliang@2x.png");
+  }
+
+  .icon-mass{
+    background-image: image-url("solution/icon-yidongzhiliang@2x.png");
   }
 }
 

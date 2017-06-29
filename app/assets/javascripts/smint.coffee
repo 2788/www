@@ -15,7 +15,7 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
 
 (->
 
-  $.fn.smint = (fxd) ->
+  $.fn.smint = (json) ->
     settings = $.extend({
       'scrollSpeed': 500
       'mySelector': 'div'
@@ -29,8 +29,9 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
     smint = $('.smint')
     smintLi = $('.smint li')
     smintA = $('.smint a')
-    smintH = smintLi || smintA;
+    smintH = smintLi or smintA;
     myOffset = smint.height()
+    fxd = json.fxdClass or 'fxd'
     if settings.scrollSpeed
       scrollSpeed = settings.scrollSpeed
     if settings.mySelector
@@ -51,14 +52,15 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
         scrollTop = $(window).scrollTop() + myOffset
         # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
         if scrollTop > stickyTop + myOffset
-          smint.css({
+          smint.css(
             'position': 'fixed'
-            'top':0}).addClass 'fxd'
+            'top': 0
+          ).addClass fxd
           # add padding to the body to make up for the loss in heigt when the men goes to a fixed position.
           # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
           # $('body').css 'padding-top', menuHeight
         else
-          smint.css('position', 'relative').removeClass 'fxd'
+          smint.css('position', 'relative').removeClass fxd
           #remove the padding we added.
           # $('body').css 'padding-top', '0'
         # Check if the position is inside then change the menu
@@ -124,7 +126,7 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
         myOffset = smint.height()
         e.preventDefault()
         hash = $(this).find('a').attr('href').split('#')[1]
-        if smint.hasClass('fxd')
+        if smint.hasClass(fxd)
           goTo = $(mySelector + '.' + hash).position().top - myOffset
         else
           goTo = $(mySelector + '.' + hash).position().top - (myOffset * 2)

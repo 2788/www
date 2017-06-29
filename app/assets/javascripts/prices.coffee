@@ -20,10 +20,12 @@ $(document).ready ->
   numfusionHTTPDOM = $('#num-fusion-HTTP')
   numfusionHTTPSDOM = $('#num-fusion-HTTPS')
   fusionoutlandDOM = $('#fusion-outland')
+  rangeFusionHTTP = $('#range-fusion-HTTP')
+  rangeFusionHTTPS = $('#range-fusion-HTTPS')
+  fusionUnit = $('.fusion-unit')
 
-  ##
+  #/////////////////////////////////////////////////
   ## 控制prices页面tab
-  ##
   pre = 'kodo'
   $('#pricesTabs').change (e) ->
     val = $(this).val()
@@ -31,9 +33,8 @@ $(document).ready ->
     $('#tab-prices-' + pre).removeClass('active')
     pre = val
 
-  ##
+  #//////////////////////////////////////////////////
   ## 控制caculator的tab
-  ##
   $('.caculatorTabs').bind 'click', (e) ->
     id = $(this).val()
     if $(this).attr('checked') == 'checked'
@@ -48,21 +49,123 @@ $(document).ready ->
       $('#pricing-info-'+id).removeClass('displayNone')
       caculatePrice(id, true)
 
-  ##
+  #/////////////////////////////////////////////////////////
   ## 控制fusion 第二个连动select
-  ##
   $("#fusion").change (e) ->
     val = $(this).val()
     if val == "inland"
-      $("#fusion-outland").addClass("displayNone")
-    else if $("#fusion-outland").hasClass("displayNone")
-      $("#fusion-outland").removeClass("displayNone")
+      fusionoutlandDOM.addClass("displayNone")
+      rangeFusionHTTP.attr('max', 10000000)
+      rangeFusionHTTPS.attr('max', 10000000)
+      fusionUnit.text('GB/月')
+    else if fusionoutlandDOM.hasClass("displayNone")
+      fusionoutlandDOM.removeClass("displayNone")
+      rangeFusionHTTP.attr('max', 10000)
+      rangeFusionHTTPS.attr('max', 10000)
+      fusionUnit.text('TB/月')
+    renderRange('#range-fusion-HTTP', $('#range-fusion-HTTP').val())
+    renderRange('#range-fusion-HTTPS', $('#range-fusion-HTTPS').val())
 
-  ##
+  #/////////////////////////////////////////////////////////////////////
   ## 公用方法
-  ##
+  # fix some block
+  setFxd = (json) ->
+    defaultVar =
+      'fxdClass':'fxd'
+      'elem': 'elem'
+    json = json or defaultVar
+    fxd = json.fxdClass
+    myElem = json.elem
+    myOffset = myElem.height()
+    stickyTop = myElem.offset().top
+    $(window).scroll ->
+      # current distance top
+      scrollTop = $(window).scrollTop() + myOffset
+      # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
+      if scrollTop > stickyTop + myOffset
+        myElem.css({
+          'position': 'fixed'}).addClass fxd
+        # add padding to the body to make up for the loss in heigt when the men goes to a fixed position.
+        # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
+      else
+        myElem.css(
+          'position': 'relative'
+          ).removeClass fxd
+
+  #render range
+  renderRange = (key, val) ->
+    #range条填充颜色
+    max = $(key).attr('max')
+    $(key).css 'background-size', val / max * 100 + '% 100%'
+  #caculate all sum
+  caculatePrice = (key, bol) ->
+    sum = 0;
+    if arguments.length > 0
+      prices[key] = bol
+    for i of prices
+      if prices[i]
+        #如果存在该板块 总价加进去
+        sum += Number($('#' + i + '-price').text())
+    $('#sum-price').text(sum)
+
+
+  # search data,add to sum
+  cacuSum = (num, obj) ->
+    sum = 0
+    prev = 0
+    for i of obj
+      if num <= i
+        sum += (num - prev) * obj[i]
+        return sum
+      else
+        prev = i
+        sum += i * obj[i]
+    sum
+
+  # caculate fusion outland
+  cacuSumOutFusion = (num, region, obj) ->
+    sum = 0
+    prev = 0
+    for j of obj
+      if region == j
+        for i of obj[j]
+          if num <= i
+            sum += (num - prev) * obj[j][i]
+            return sum
+          else
+            prev = i
+            sum += i * obj[j][i]
+    sum
+
   #caculate all prices and set
-  setPrice = () ->
+  setPrice = (amountJSON) ->
+    # kodo的价格计算
+    kodoVal =  cacuSum(amountJSON.kodo.space, kodoData[amountJSON.kodo.area]) + cacuSum(amountJSON.kodo.reads, kodoData[amountJSON.kodo.reads]) + cacuSum(amountJSON.kodo.write, kodoData[amountJSON.kodo.writes])
+    kodoVal = if isNaN(kodoVal) then 0 else kodoVal.toFixed(2)
+    $("#kodo-price").text(kodoVal)
+
+    # lowKodo的价格计算
+    lowKodoVal =  amountJSON.lowKodo.space*lowKodoData.space + amountJSON.lowKodo.APIs*lowKodoData.APIs + amountJSON.lowKodo.types*lowKodoData.types + cacuSum(amountJSON.lowKodo.HTTPs, kodoData[amountJSON.lowKodo.HTTPs])
+    lowKodoVal = if isNaN(lowKodoVal) then 0 else lowKodoVal.toFixed(2)
+    $("#lowKodo-price").text(lowKodoVal)
+
+    # fusion的价格计算
+    if amountJSON.fusion.area.land == 'inland'
+      fusionVal = cacuSum(amountJSON.fusion.HTTPs, fusionData.inland.HTTPs) + cacuSum(amountJSON.fusion.HTTPSs, fusionData.inland.HTTPSs)
+    else
+      fusionVal = cacuSumOutFusion(amountJSON.fusion.HTTPs, amountJSON.fusion.area.region, fusionData.outland.HTTPs) + cacuSumOutFusion(amountJSON.fusion.HTTPSs, amountJSON.fusion.area.region, fusionData.outland.HTTPSs)
+    fusionVal = if isNaN(fusionVal) then 0 else fusionVal.toFixed(2)
+    $("#fusion-price").text(fusionVal)
+
+    # 总价的计算
+    caculatePrice()
+
+  #set Amount and then set prices
+  setAmount = (key, val) ->
+    $('#range-' + key).val(val)
+    renderRange('#range-' + key, val)
+    $('#num-' + key).val(val)
+    $('#text-' + key).text(val)
     # 获取数量
     amountJSON =
       kodo:
@@ -83,55 +186,27 @@ $(document).ready ->
         HTTPSs: numfusionHTTPSDOM.val()
     if amountJSON.fusion.area.land == 'outland'
       amountJSON.fusion.area.region = fusionoutlandDOM.val()
+    setPrice(amountJSON)
 
-    # kodo的价格计算
-    kodoVal = 1986
-    $("#kodo-price").text(kodoVal)
-    # lowKodo的价格计算
-    lowKodoVal = 1986
-    $("#lowKodo-price").text(lowKodoVal)
-    # fusion的价格计算
-    fusionVal = 1986
-    $("#fusion-price").text(fusionVal)
+  # 容错
+  if $('#feature-price-nav').length != 0
+    setFxd
+      'elem': $('#feature-price-nav')
+      'fxdClass': 'fix-top'
+  if $('#pricing-info').length != 0
+    setFxd
+      'elem': $('#pricing-info')
+      'fxdClass': 'fix-right'
 
-    # 总价的计算
-    caculatePrice()
-
-  #render range
-  renderRange = (key, val) ->
-    #range条填充颜色
-    max = $(key).attr('max')
-    $(key).css 'background-size', val / max * 100 + '% 100%'
-
-  #caculate all sum
-  caculatePrice = (key, bol) ->
-    sum = 0;
-    if arguments.length > 0
-      prices[key] = bol
-    for i of prices
-      if prices[i]
-        #如果存在该板块 总价加进去
-        sum += Number($('#' + i + '-price').text())
-    $('#sum-price').text(sum)
-
-  #set Amount and then set prices
-  setAmount = (key, val) ->
-    $('#range-' + key).val(val)
-    renderRange('#range-' + key, val)
-    $('#num-' + key).val(val)
-    $('#text-' + key).text(val)
-    setPrice()
-
-  ##
+  #////////////////////////////////////////////////////////////////
   ## the entrance of all events
-  ##
   $('.amount-input').bind 'input', ->
     key = $(this).attr('key')
     setAmount(key, $(this).val())
 
-  ##
+  #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
-  ##
-  $('.input-range').each (index,item) ->
+  $('.input-range').each (index, item) ->
     key = $(this).attr('key')
     setAmount(key, $(this).val())
+    return

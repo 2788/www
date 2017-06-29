@@ -56,4 +56,8 @@ class WelcomeController < ApplicationController
     @title = "case"
   end
 
+  def atlib
+    @title = "atlib"
+  end
+
 end

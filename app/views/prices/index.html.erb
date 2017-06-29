@@ -10,7 +10,7 @@
 </div>
 
 <div class="feature-price tabs">
-  <div class="feature-price-nav">
+  <div class="feature-price-nav" id="feature-price-nav">
     <div class="container">
       <ul class="nav navbar-nav">
         <li>
@@ -22,7 +22,7 @@
         </li>
 
         <li>
-          <%= link_to "计算器", caculator_path, class: "caculator" -%>
+          <%= link_to "价格计算器", caculator_path, class: "caculator" -%>
         </li>
       </ul>
     </div>
@@ -37,8 +37,7 @@
               <h2 class="title">计费方式</h2>
             </div>
 
-            <div class="row bottom-line">
-              <div class="col-sm-12">
+            <div class="row bottom-line details">
                 <dl>
                   <dt>标准存储</dt>
                   <dd>对象存储按照实际使用付费，计费项包括</dd>
@@ -115,7 +114,6 @@
                     </div>
                   </li>
                 </ul>
-              </div>
             </div>
           </div>
 
@@ -232,17 +230,168 @@
             <div class="intro">
               <h2 class="title">计费方式</h2>
             </div>
-            数据处理是一款后付费产品，每月3～5 日生成上个月的帐单并进行结算。除音视频码按分钟收费，部分数据处理按调用次数收费，其他的官方数据处理服务免费。用户自定义数据处理服务按资源配置收费，选择 C1M1 的标准用户和 高级用户，每月有 750 小时的免费额度。第三方数据处理服务根据供应商的计费方式收费。
+            <dl>
+              <dt>融合 CDN</dt>
+              <dd>七牛云CDN加速按国内流量和海外流量阶梯价格计费，当月分别超额累进（以自然月为一个累计周期）。开通七牛云融合CDN的用户可分别享有国内和海外0-10GB HTTP下载流量。</dd>
+            </dl>
           </div>
 
+          <div class="tab-content-pricing">
+            <div class="intro">
+              <h2 class="title">价格详情</h2>
+            </div>
 
+            <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table">
+              <tbody>
+                <tr>
+                  <th width="270" class="thead-title">国内</th>
+                </tr>
+                <tr>
+                  <th width="340">名目</th><th width="360">阶梯</th><th>价格</th>
+                </tr>
+                <tr class="table-linesep"><td colspan="3"><div></div></td></tr>
+                <tr>
+                  <th rowspan="3">HTTP 下载流量</th>
+                  <td>第 0 GB 至 10 GB</td>
+                  <td>免费</td>
+                </tr>
+                <tr>
+                  <td>第 10 GB 至 100 TB</td>
+                  <td>0.29 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 100 TB 以上</td>
+                  <td>0.26 元/GB</td>
+                </tr>
+                <tr class="table-linesep"><td colspan="3"><div></div></td></tr>
+                <tr>
+                  <th rowspan="3">HTTPS 下载流量</th>
+                  <td>第 0 GB 至 10 TB  (含)</td>
+                  <td>0.36 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 10 TB 至 100 TB (含)</td>
+                  <td>0.32 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 100 TB 以上</td>
+                  <td>0.26 元/GB</td>
+                </tr>
+                <tr class="table-linesep"><td colspan="5"><div></div></td></tr>
+              </tbody>
+            </table>
 
-
-
+            <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table">
+              <tbody>
+                <tr>
+                  <th width="180" class="thead-title">海外</th>
+                </tr>
+                <tr>
+                  <th width="180">名目</th>
+                  <th width="180">流量阶梯<span class="grey-unit">/每月</span></th>
+                  <th>欧洲/北美洲</th>
+                  <th>亚洲<p class="grey-unit th-p">（除中国/印度/东南亚）</p></th>
+                  <th>亚洲<p class="grey-unit th-p"> （东南亚/印度）</p></th>
+                  <th>南美洲</th>
+                  <th>大洋洲与其他</th>
+                </tr>
+                <tr class="table-linesep"><td colspan="7"><div></div></td></tr>
+                <tr>
+                  <th rowspan="5">HTTPS 下载流量</th>
+                  <td>第 0 GB 至 10 TB</td>
+                  <td>0.39 元/GB</td>
+                  <td>0.57 元/GB</td>
+                  <td>0.87 元/GB</td>
+                  <td>0.87 元/GB</td>
+                  <td>1.08 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 10 TB 至 100 TB</td>
+                  <td>0.34 元/GB</td>
+                  <td>0.50 元/GB</td>
+                  <td>0.76 元/GB</td>
+                  <td>0.76 元/GB</td>
+                  <td>0.94 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 100 TB 至 1PB</td>
+                  <td>0.30 元/GB</td>
+                  <td>0.44 元/GB</td>
+                  <td>0.66 元/GB</td>
+                  <td>0.66 元/GB</td>
+                  <td>0.82 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 1 PB 至 10 PB</td>
+                  <td>0.26 元/GB</td>
+                  <td>0.38 元/GB</td>
+                  <td>0.57 元/GB</td>
+                  <td>0.57 元/GB</td>
+                  <td>0.71 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 10 PB 以上</td>
+                  <td colspan="5" style="text-align:center">请联系我们以获得更低价格</td>
+                </tr>
+                <tr class="table-linesep"><td colspan="7"><div></div></td></tr>
+                <tr>
+                  <th rowspan="5">HTTPS 下载流量</th>
+                  <td>第 0 GB 至 10 TB</td>
+                  <td>0.46 元/GB</td>
+                  <td>0.68 元/GB</td>
+                  <td>1.04 元/GB</td>
+                  <td>1.04 元/GB</td>
+                  <td>1.29 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 10 TB 至 100 TB</td>
+                  <td>0.40 元/GB</td>
+                  <td>0.60 元/GB</td>
+                  <td>0.91 元/GB</td>
+                  <td>0.91 元/GB</td>
+                  <td>1.12 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 100 TB 至 1PB</td>
+                  <td>0.36 元/GB</td>
+                  <td>0.52 元/GB</td>
+                  <td>0.79 元/GB</td>
+                  <td>0.79 元/GB</td>
+                  <td>0.98 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 1 PB 至 10 PB</td>
+                  <td>0.31 元/GB</td>
+                  <td>0.45 元/GB</td>
+                  <td>0.68 元/GB</td>
+                  <td>0.68 元/GB</td>
+                  <td>0.85 元/GB</td>
+                </tr>
+                <tr>
+                  <td>第 10 PB 以上</td>
+                  <td colspan="5" style="text-align:center">请联系我们以获得更低价格</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section class="tab-pane" id="tab-prices-dora">
+          <div class="tab-content-caculating">
+            <div class="intro">
+              <h2 class="title">计费方式</h2>
+            </div>
+            <dl>
+              <dt>智能处理API</dt>
+              <dd>智能处理API是一款后付费产品，每月3～5 日生成上个月的帐单并进行结算。除音视频码按分钟收费，部分数据处理按调用次数收费，其他的官方数据处理服务免费。用户自定义数据处理服务按资源配置收费，选择 C1M1 的标准用户和 高级用户，每月有 750 小时的免费额度。第三方数据处理服务根据供应商的计费方式收费。</dd>
+            </dl>
 
+            <div class="tab-content-pricing">
+              <div class="intro">
+                <h2 class="title">价格详情</h2>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>

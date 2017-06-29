@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get '/company',     to: 'welcome#company'
   get '/cooperation', to: 'welcome#cooperation'
   get '/case',        to: 'welcome#case'
+  get '/atlib',       to: 'welcome#atlib'
 
   resources 'events', only: [:index]
   get '/tech', to: 'events#tech'
@@ -32,6 +33,6 @@ Rails.application.routes.draw do
   resources 'prices', only: [:index]
   get '/caculator', to: 'prices#caculator'
 
-  post '/feedbacks', to: 'feedbacks#create'
+  resources :feedbacks, only: [:new, :create]
 
 end

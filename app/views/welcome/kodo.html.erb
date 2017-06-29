@@ -5,7 +5,7 @@
         <h2>对象存储</h2>
         <p>七牛云海量存储系统为完全自主研发并拥有核心技术，经过五年时间的大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。</p>
         <div class="actions">
-          <%= link_to "免费试用", "", class: "btn btn-lg btn-default m-r" -%>
+          <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r" -%>
           <%= link_to "产品价格", "", class: "btn btn-lg btn-hollow" -%>
         </div>
       </div>
@@ -79,7 +79,7 @@
             <h4 class="media-heading">⼀站式</h4>
             <p>
               七⽜云对象存储与其他七⽜云服务集成，为您提供⼀站式数据管理服务。集成的服务包括但不限于：
-              <%= link_to "融合 CDN", "" -%>、<%= link_to "直播云", "" -%>和<%= link_to "数据处理", "" -%>。
+              <%= link_to "融合 CDN", "" -%>、<%= link_to "直播云", "" -%>和<%= link_to "多媒体数据处理", "" -%>。
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@
         <div class="thumbnail">
           <%= image_tag "icon-shujuchuli@2x.png", class: "media-object", alt: "数据处理", width: 60 %>
           <div class="caption">
-            <h4>数据处理</h4>
+            <h4>多媒体数据处理</h4>
             <p>基于对象存储，您可以⼀站式地完成图片处理和⾳视频处理。</p>
           </div>
         </div>
@@ -147,18 +147,18 @@
     </div>
 
     <div class="tabs">
-      <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
         <li class="active"><a href="#tab-usage-section-1" data-toggle="tab">私有化部署</a></li>
         <li><a href="#tab-usage-section-2" data-toggle="tab">内容加速分发</a></li>
-        <li><a href="#tab-usage-section-3" data-toggle="tab">数据处理</a></li>
+        <li><a href="#tab-usage-section-3" data-toggle="tab">多媒体数据处理</a></li>
         <li><a href="#tab-usage-section-4" data-toggle="tab">托管静态资源</a></li>
       </ul>
-      <div class="tab-content">
+      <div class="tab-content bottom-line">
         <section class="tab-pane active" id="tab-usage-section-1">
           <div class="media">
             <%= content_tag :div, image_tag("icon-siyouhuabushu@2x.png", alt: "私有化部署", width: "377"), class: "media-left" %>
             <div class="media-body">
-              <p>假设，您的每⼀次旅⾏代表⼀个企业⼯作负载案例。那么，您到新⻄兰的旅程代表⼀次 VDI 部署，到伦敦的⼀次出差代表⼀次CRM 部署。每次旅⾏时需要的交通⼯具代表基础架构，这样您会根据可预测的需求，选择买辆⻋或租⻋。如果您的旅⾏需求不可预测，您⼀般会租⻋，假设您的旅⾏⽬的地始终是新⻄兰，⾃购汽⻋可能更合理，与此类似，私有化部署更适合可预测稳定⼯作负载的企业，购买基础架构是⼀种更经济的选择。</p>
+              <p>企业客户可以选择私有化部署七牛云对象存储系统。基于公有云存储的经验积累，对象存储私有化部署服务具备高可靠、强安全、易扩展等特性。同时还能提供成熟的系统管理和运维，让企业以更低廉的产品及维护成本，满足在容量、性能及稳定性上的需求。</p>
             </div>
           </div>
         </section>
@@ -193,7 +193,7 @@
 </div>
 
 
-<div class="features features-less features-cases tab-content-section-4">
+<div class="features features-less tab-content-section-4">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
@@ -201,15 +201,15 @@
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
-          <div><%= link_to image_tag("client-ch@2x.jpg", alt: "长虹"), "http://cn.changhong.com/", id: "customer-ch", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-changba@2x.jpg", alt: "唱吧"), "https://changba.com/", id: "customer-changba", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-dajian@2x.jpg", alt: "大疆创新"), "http://www.dji.com/cn", id: "customer-dajian", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-dazhong@2x.jpg", alt: "大众点评"), "https://www.dianping.com/", id: "customer-dazhong", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-hujiang@2x.jpg", alt: "沪江网"), "http://www.hujiang.com/", id: "customer-hujiang", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-intel@2x.jpg", alt: "英特尔"), "http://www.intel.cn/content/www/cn/zh/homepage.html", id: "customer-intel", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-oppo@2x.jpg", alt: "OPPO"), "http://www.oppo.com/cn/", id: "customer-oppo", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-qingting@2x.jpg", alt: "蜻蜓 FM"), "http://www.qingting.fm/", id: "customer-qingting", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("client-zte@2x.jpg", alt: "中兴"), "http://www.zte.com.cn/china/", id: "customer-zte", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-ch@2x.jpg", alt: "长虹"), "", id: "customer-ch", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-changba@2x.jpg", alt: "唱吧"), "", id: "customer-changba", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-dajian@2x.jpg", alt: "大疆创新"), "", id: "customer-dajian", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-dazhong@2x.jpg", alt: "大众点评"), "", id: "customer-dazhong", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-hujiang@2x.jpg", alt: "沪江网"), "", id: "customer-hujiang", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-intel@2x.jpg", alt: "英特尔"), "", id: "customer-intel", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-oppo@2x.jpg", alt: "OPPO"), "", id: "customer-oppo", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-qingting@2x.jpg", alt: "蜻蜓 FM"), "", id: "customer-qingting", class: "case", target: "_blank" -%></div>
+          <div><%= link_to image_tag("client-zte@2x.jpg", alt: "中兴"), "", id: "customer-zte", class: "case", target: "_blank" -%></div>
         </div>
       </div>
     </div>
@@ -217,7 +217,7 @@
 </div>
 
 
-<div class="features features-less tab-content-section-5">
+<div class="features features-less features-cases tab-content-section-5">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
