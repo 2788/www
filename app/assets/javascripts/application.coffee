@@ -16,6 +16,7 @@
 #= require jquery.slick
 #= require data
 
+#= require feedbacks
 #= require smint
 #= require events
 #= require prices
@@ -37,26 +38,26 @@ $(document).ready ->
     slidesToShow: 6
     slidesToScroll: 1
     responsive: [{
-        breakpoint: 1024
-        settings:
-          slidesToShow: 3
-          slidesToScroll: 3
-      },{
-        breakpoint: 600
-        settings:
-          slidesToShow: 3
-          slidesToScroll: 3
-      },{
-        breakpoint: 480
-        settings:
-          slidesToShow: 3
-          slidesToScroll: 3
-      },{
-        breakpoint: 320
-        settings:
-          slidesToShow: 2
-          slidesToScroll: 2
-      }]
+      breakpoint: 1024
+      settings:
+        slidesToShow: 3
+        slidesToScroll: 3
+    },{
+      breakpoint: 600
+      settings:
+        slidesToShow: 3
+        slidesToScroll: 3
+    },{
+      breakpoint: 480
+      settings:
+        slidesToShow: 3
+        slidesToScroll: 3
+    },{
+      breakpoint: 320
+      settings:
+        slidesToShow: 2
+        slidesToScroll: 2
+    }]
 
  # 导航栏菜单
   if isMobile
@@ -74,31 +75,26 @@ $(document).ready ->
     slidesToShow: 6
     slidesToScroll: 6
     responsive: [{
-        breakpoint: 1024
-        settings:
-          slidesToShow: 6
-          slidesToScroll: 6
-      },{
-        breakpoint: 600
-        settings:
-          slidesToShow: 4
-          slidesToScroll: 4
-      },{
-        breakpoint: 480
-        settings:
-          slidesToShow: 3
-          slidesToScroll: 3
-      },{
-        breakpoint: 320
-        settings:
-          slidesToShow: 2
-          slidesToScroll: 2
-      }]
-
-# 弹出框自动焦点到咨询内容输入框
-$(document).ready ->
-  $('#feedback-modal').on 'shown.bs.modal', ->
-    $('#feedback-content').focus()
+      breakpoint: 1024
+      settings:
+        slidesToShow: 6
+        slidesToScroll: 6
+    },{
+      breakpoint: 600
+      settings:
+        slidesToShow: 4
+        slidesToScroll: 4
+    },{
+      breakpoint: 480
+      settings:
+        slidesToShow: 3
+        slidesToScroll: 3
+    },{
+      breakpoint: 320
+      settings:
+        slidesToShow: 2
+        slidesToScroll: 2
+    }]
 
 # 监控滚动 中部导航
 $(document).ready ->
@@ -109,18 +105,18 @@ $(document).ready ->
 # ourcompany timeline
 $(document).ready ->
   if document.body.clientWidth <= 768
-        $('.timeline-ul').find('.left-li').addClass('right')
-        $('.timeline-ul').find('.left-li').removeClass('left')
-      else
-        $('.timeline-ul').find('.left-li').addClass('left')
-        $('.timeline-ul').find('.left-li').removeClass('right')
+    $('.timeline-ul').find('.left-li').addClass('right')
+    $('.timeline-ul').find('.left-li').removeClass('left')
+  else
+    $('.timeline-ul').find('.left-li').addClass('left')
+    $('.timeline-ul').find('.left-li').removeClass('right')
 
   ismin = document.body.clientWidth <= 768
   $(window).resize ->
-      if document.body.clientWidth <= 768 && !ismin
-        $('.timeline-ul').find('.left-li').addClass('right')
-        $('.timeline-ul').find('.left-li').removeClass('left')
-      else if ismin
-        $('.timeline-ul').find('.left-li').addClass('left')
-        $('.timeline-ul').find('.left-li').removeClass('right')
+    if document.body.clientWidth <= 768 && !ismin
+      $('.timeline-ul').find('.left-li').addClass('right')
+      $('.timeline-ul').find('.left-li').removeClass('left')
+    else if ismin
+      $('.timeline-ul').find('.left-li').addClass('left')
+      $('.timeline-ul').find('.left-li').removeClass('right')
 
