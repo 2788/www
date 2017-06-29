@@ -25,7 +25,7 @@
   }
 
   .section-row{
-    margin-bottom: 135px;
+    margin-bottom: 80px;
   }
 
   .section-content{
@@ -45,6 +45,10 @@
   }
 
   .img-box{
-    padding: 0 100px;
+    text-align: center;
+
+    img{
+      max-width: 70%;
+    }
   }
 }
