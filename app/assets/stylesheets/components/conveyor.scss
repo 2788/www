@@ -65,12 +65,13 @@
   }
   .index-case{
     display: block;
-    margin: 10px;
+    margin: 3px;
     border: 1px solid #eeeeee;
     height: 118px;
     line-height: 118px;
     background-position: center center;
     background-repeat: no-repeat;
+    outline: none;
     transition: all .3s;
 
     &:hover,
@@ -81,6 +82,7 @@
       -webkit-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
       -moz-box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
       box-shadow: 0 0 0 #EFEFEF, 1px 1px 10px #B9B9B9;
+      outline: none;
     }
   }
 

@@ -80,7 +80,10 @@
     font-weight: 400;
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
-  p{ line-height: 38px; }
+  p{
+    line-height: 38px;
+    font-size: 18px;
+  }
 }
 
 .features-nav{
@@ -111,6 +114,7 @@
   }
   //合作伙伴 案例
   div.feature-case{
+    position: relative;
     border: 1px solid #eeeeee;
     margin-bottom: 30px;
     min-height: 188px;
@@ -328,12 +332,21 @@
   background-position: left center;
   background-size: 140px 140px;
   height: 140px;
+  margin-bottom: 20px;
 }
 //覆盖 bootsrap css
 //.nav > li > a:hover, .nav > li > a:focus
 .nav.navbar-wrapper-middle > li > a:hover, .nav.navbar-wrapper-middle > li > a:focus {
     text-decoration: none;
     background-color: #fff;
+}
+
+//罗列 堆积式的展示图片 图片的大小
+img.list-img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 // 打印
@@ -377,7 +390,22 @@
 
 // iPad
 @media (min-width: 768px) and (max-width: 991px){
+  .jumbotron.hero{
+    p{
+      line-height: 34px;
+      font-size: 16px;
+    }
+  }
+}
 
+//phone
+@media (max-width: 768px){
+  .jumbotron.hero{
+    p{
+      line-height: 34px;
+      font-size: 16px;
+    }
+  }
 }
 
 // @media (min-width: 992px){
