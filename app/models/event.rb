@@ -1,6 +1,6 @@
 class Event
   include Mongoid::Document
 
-  field :type, type: string
-  field :title, type: string
+  field :type, type: String
+  field :title, type: String
 end
