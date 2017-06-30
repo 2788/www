@@ -27,8 +27,13 @@ Rails.application.routes.draw do
   get '/case',        to: 'welcome#case'
   get '/atlib',       to: 'welcome#atlib'
 
-  resources 'events', only: [:index]
-  get '/tech', to: 'events#tech'
+  resources 'events', only: [:index] do
+    collection do
+      ['tech', 'ecug', 'niurenxiu'].each do |r|
+        get r, action: 'list', uni_data: r
+      end
+    end
+  end
 
   resources 'prices', only: [:index]
   get '/caculator', to: 'prices#caculator'
