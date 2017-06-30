@@ -115,7 +115,7 @@
           <div class="col-sm-6">
             <h5>图片瘦身</h5>
             <p>支持对存储在七牛云或使用七牛 CDN的 PNG、JPG图片瘦身，缩小图片体积，节省流量，提升产品体验。</p>
-            <%= link_to raw("查看更多功能 &gt;"), tech_path, class: "more" -%>
+            <%= link_to raw("查看更多功能 &gt;"), "", class: "more" -%>
           </div>
         </div>
       </div>
@@ -129,7 +129,7 @@
           <div class="col-sm-6">
             <h5>视频截图</h5>
             <p>支持对存储在七牛云的视频文件截取视频帧画面并按指定大小缩放成图片。</p>
-            <%= link_to raw("查看更多功能 &gt;"), tech_path, class: "more" -%>
+            <%= link_to raw("查看更多功能 &gt;"), "", class: "more" -%>
           </div>
         </div>
 
@@ -261,12 +261,12 @@
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
-          <div><%= link_to image_tag("client-changba@2x.jpg", alt: "唱吧"), "http://changba.com/", id: "customer-changba", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("dora/client-huanbei@2x.jpg", alt: "还呗"), "http://www.lattebank.com/", id: "customer-huanbei", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("dora/client-jumeiyoupin@2x.jpg", alt: "聚美优品"), "http://bj.jumei.com/", id: "customer-jumeiyoupin", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("dora/client-pinganhaofang@2x.jpg", alt: "平安好房"), "https://www.pinganfang.com/", id: "customer-pinganhaofang", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("dora/client-timelink@2x.jpg", alt: "天英联合"), "http://www.timelink.cn/CN/", id: "customer-timelink", class: "case", target: "_blank" -%></div>
-          <div><%= link_to image_tag("dora/client-zaker@2x.jpg", alt: "zaker"), "https://www.myzaker.com/", id: "customer-zaker", class: "case", target: "_blank" -%></div>
+          <div><%= image_tag "client-changba-highlight@2x.jpg", class: "case", alt: "唱吧" %></div>
+          <div><%= image_tag "dora/client-jumeiyoupin-highlight@2x.jpg", class: "case", alt: "聚美优品" %></div>
+          <div><%= image_tag "dora/client-huanbei-highlight@2x.jpg", class: "case", alt: "还呗" %></div>
+          <div><%= image_tag "dora/client-pinganhaofang-highlight@2x.jpg", class: "case", alt: "平安好房" %></div>
+          <div><%= image_tag "dora/client-zaker-highlight@2x.jpg", class: "case", alt: "zaker" %></div>
+          <div><%= image_tag "dora/client-timelink-highlight@2x.jpg", class: "case", alt: "天英联合" %></div>
         </div>
       </div>
     </div>

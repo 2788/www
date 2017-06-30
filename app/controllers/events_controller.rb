@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   def index
   end
 
-  def tech
-    @title = "tech"
+  def list
+    @title = "list"
+    @uniData = params[:uni_data]
   end
 end

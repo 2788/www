@@ -100,9 +100,16 @@
       }
     }
 
-    .nav li a{
+    ul.client-list li a{
       padding: 0;
-      border-radius: 50%;
+      img{
+        border-radius: 50%;
+      }
+    }
+
+    ul.client-list li.active a:hover,
+    ul.client-list li a:hover{
+      background-color: transparent;
     }
 
     ul.client-list li.active a img, ul.client-list li a img:hover {
