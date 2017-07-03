@@ -296,6 +296,50 @@
   }
 }
 
+//反馈、推荐表单
+.web-form{
+  .title{
+    font-family: PingFangSC Medium;
+    font-size: 16px;
+    color: #2f3033;
+    text-align: center;
+  }
+
+  form{
+    padding: 50px 260px;
+
+    .form-group{
+      margin-bottom: 24px;
+
+      label{
+        font-family: PingFangSC Regular;
+        font-size: 14px;
+        color: #2f3033;
+      }
+
+      textarea{
+        resize: none;
+      }
+
+      .div-error{
+        visibility: hidden;
+      }
+      .div-error.active{
+        visibility: visible;
+        .error-label{
+          font-family: PingFangSC Regular;
+          font-size: 12px;
+          color: #ff3939;
+        }
+      }
+    }
+
+    .actions{
+      text-align: center;
+    }
+  }
+}
+
 //公用fixed
 .fxd{
   position: fixed;

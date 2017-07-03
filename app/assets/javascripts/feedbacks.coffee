@@ -22,6 +22,13 @@ $(document).ready ->
     else
       $submitBtn.prop('disabled', true)
 
+  $('#feedback-form .form-control').change ->
+    if $(this).attr 'validate'
+      myType = $(this).attr 'type'
+
+  # onblur时及时验证
+  new inputValidate("#feedback-form");
+
   $form.on 'ajax:beforeSend', (event, xhr, settings)->
     settings.url = settings.url + '-' + new Date().getTime()
 
