@@ -52,7 +52,7 @@ do (window, document) ->
 
   inputValidate = (form_id) ->
     _module = document.querySelector(form_id)
-    input_arr = _module.querySelectorAll('div.form-group > div.col-sm-10 > input, div.form-group > div.col-sm-10 > textarea')
+    input_arr = _module.querySelectorAll('input, textarea')
     i = 0
     while i < input_arr.length
       #check to validate or not
@@ -77,5 +77,5 @@ do (window, document) ->
 # 使用方式：
 # 1不通用。需要在验证的input框后面添加 验证label
 # 2通过给label添加active来触发其错误信息显示样式
-# 3引用该JS后 直接在自己代码中写入  var validation=new inputValidate("form-id");即可
+# 3引用该JS后 直接在自己代码中写入 new inputValidate("form-id"); 即可
 ###
