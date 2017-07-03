@@ -52,8 +52,7 @@ do (window, document) ->
 
   inputValidate = (form_id) ->
     _module = document.querySelector(form_id)
-    input_arr = _module.querySelectorAll('div.form-group > div.col-sm-10 > input')
-    textarea_arr = _module.querySelectorAll('div.form-group > div.col-sm-10 > textarea')
+    input_arr = _module.querySelectorAll('div.form-group > div.col-sm-10 > input, div.form-group > div.col-sm-10 > textarea')
     i = 0
     while i < input_arr.length
       #check to validate or not
@@ -68,20 +67,6 @@ do (window, document) ->
         input_arr[i] = null
         #destroy element avoid the memory leak
       i++
-    j = 0
-    while j < textarea_arr.length
-      #check to validate or not
-      isvalidate = textarea_arr[j].getAttribute('validate')
-      if isvalidate
-        #bind onblurEvent for every input in this 'demo' form
-        textarea_arr[j].onblur = ((textarea_index) ->
-          ->
-            validate(textarea_arr[textarea_index].id, textarea_arr[textarea_index].type)
-        )(j)
-        #this is a closed scope will be caused by your function maybe!so do this
-        textarea_arr[j] = null
-        #destroy element avoid the memory leak
-      j++
     return
 
   # API
