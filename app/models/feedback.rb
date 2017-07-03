@@ -2,6 +2,8 @@ class Feedback
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  store_in collection: "customer_feedbacks"
+
   field :content, type: String
   field :name, type: String
   field :company, type: String
