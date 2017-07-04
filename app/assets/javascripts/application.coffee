@@ -21,6 +21,7 @@
 #= require events
 #= require prices
 #= require feedbacks
+#= require recommendations
 
 
 isMobile = false; # initiate as false

@@ -321,11 +321,15 @@
         resize: none;
       }
 
+      .form-control.active{
+        border: 1px solid #ff3939;
+      }
+
       .div-error{
-        visibility: hidden;
+        display: none;
       }
       .div-error.active{
-        visibility: visible;
+        display: block;
         .error-label{
           font-family: PingFangSC Regular;
           font-size: 12px;

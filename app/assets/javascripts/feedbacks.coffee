@@ -1,5 +1,6 @@
 $(document).ready ->
   $modal = $('#feedback-modal')
+  $website = $('.web-form')
   $alert = $('#feedback-alert')
   $form = $('#feedback-form')
   $content = $('#feedback-content')
@@ -27,7 +28,7 @@ $(document).ready ->
       myType = $(this).attr 'type'
 
   # onblur时及时验证
-  new inputValidate("#feedback-form");
+  feedbackValidate = new inputValidate("#feedback-form");
 
   $form.on 'ajax:beforeSend', (event, xhr, settings)->
     settings.url = settings.url + '-' + new Date().getTime()
@@ -37,6 +38,7 @@ $(document).ready ->
     $form.hide()
     setTimeout ->
       $modal.modal('hide')
+      $website.hide()
       $('#feedback-form .form-control').val('')
     , 1000 * 1.5
 
@@ -44,4 +46,5 @@ $(document).ready ->
     $alert.attr('class', 'alert alert-danger').html('<i class="glyphicon glyphicon-remove"></i> 提交失败，稍后重试！').show()
     setTimeout ->
       $modal.modal('hide')
+      $website.hide()
     , 1000 * 1.5

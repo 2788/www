@@ -1,12 +1,13 @@
 do (window, document) ->
   tel_rule = /^1[0-9]{10}/ #手机号
   regPhone_rule = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/ #电话
-  email_rule = /[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\.[a-zA-Z0-9]{1,5}/
+  email_rule = /[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\.[a-zA-Z0-9]{1,5}/ # email
 
   # show error filed，edit class -> active
 
   showErrorField = (info_field) ->
     error_field = info_field.nextSibling.nextSibling
+    $(info_field).addClass 'active'
     $(error_field).addClass 'active'
     return
 
@@ -14,6 +15,7 @@ do (window, document) ->
 
   hideErrorField = (info_field) ->
     error_field = info_field.nextSibling.nextSibling
+    $(info_field).removeClass 'active'
     $(error_field).removeClass 'active'
     return
 
@@ -52,21 +54,22 @@ do (window, document) ->
 
   inputValidate = (form_id) ->
     _module = document.querySelector(form_id)
-    input_arr = _module.querySelectorAll('input, textarea')
-    i = 0
-    while i < input_arr.length
-      #check to validate or not
-      isvalidate = input_arr[i].getAttribute('validate')
-      if isvalidate
-        #bind onblurEvent for every input in this 'demo' form
-        input_arr[i].onblur = ((input_index) ->
-          ->
-            validate(input_arr[input_index].id, input_arr[input_index].type)
-        )(i)
-        #this is a closed scope will be caused by your function maybe!so do this
-        input_arr[i] = null
-        #destroy element avoid the memory leak
-      i++
+    if _module
+      input_arr = _module.querySelectorAll('input, textarea')
+      i = 0
+      while i < input_arr.length
+        #check to validate or not
+        isvalidate = input_arr[i].getAttribute('validate')
+        if isvalidate
+          #bind onblurEvent for every input in this 'demo' form
+          input_arr[i].onblur = ((input_index) ->
+            ->
+              validate(input_arr[input_index].id, input_arr[input_index].type)
+          )(i)
+          #this is a closed scope will be caused by your function maybe!so do this
+          input_arr[i] = null
+          #destroy element avoid the memory leak
+        i++
     return
 
   # API
