@@ -95,6 +95,18 @@ footer{
   }
 }
 
+footer.form-footer{
+  padding: 0;
+
+  .links.form-footer-links{
+    border: none;
+
+    ul{
+      border: none;
+    }
+  }
+}
+
 
 // Responsive
 // ---------------------------------------------------------------------

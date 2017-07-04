@@ -16,10 +16,11 @@
 #= require jquery.slick
 #= require data
 
-#= require feedbacks
 #= require smint
+#= require validate
 #= require events
 #= require prices
+#= require feedbacks
 
 
 isMobile = false; # initiate as false
