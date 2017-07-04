@@ -1,12 +1,17 @@
 $(document).ready ->
   $modal = $('#feedback-modal')
-  $website = $('.web-form')
+  $webform = $('.web-form')
   $alert = $('#feedback-alert')
   $form = $('#feedback-form')
   $content = $('#feedback-content')
   $name = $('#feedback-name')
   $phone = $('#feedback-phone')
   $submitBtn = $('#feedback-submit')
+  $submitSuccess = $(".submit-success")
+  $submitErr = $(".submit-err")
+
+  $submitSuccess.hide()
+  $submitErr.hide()
 
   # 弹出框自动焦点到咨询内容输入框
   $modal.on 'shown.bs.modal', ->
@@ -23,10 +28,6 @@ $(document).ready ->
     else
       $submitBtn.prop('disabled', true)
 
-  $('#feedback-form .form-control').change ->
-    if $(this).attr 'validate'
-      myType = $(this).attr 'type'
-
   # onblur时及时验证
   feedbackValidate = new inputValidate("#feedback-form");
 
@@ -35,16 +36,19 @@ $(document).ready ->
 
   $form.on 'ajax:success', (event, xhr, status, error)->
     $alert.attr('class', 'alert alert-success').html('<i class="glyphicon glyphicon-ok"></i> 提交成功！').show()
-    $form.hide()
+    $webform.hide()
+    $submitSuccess.show()
+    $submitErr.hide()
     setTimeout ->
       $modal.modal('hide')
-      $website.hide()
       $('#feedback-form .form-control').val('')
     , 1000 * 1.5
 
   $form.on 'ajax:error', (event, xhr, status, error)->
     $alert.attr('class', 'alert alert-danger').html('<i class="glyphicon glyphicon-remove"></i> 提交失败，稍后重试！').show()
+    $webform.hide()
+    $submitSuccess.hide()
+    $submitErr.show()
     setTimeout ->
       $modal.modal('hide')
-      $website.hide()
     , 1000 * 1.5

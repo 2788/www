@@ -1,5 +1,13 @@
 <div class="features">
   <div class="container">
+    <div class="submit-success">
+      <div class="correct-icon">✓</div>
+        <h5>提交成功</h5>
+      </div>
+    <div class="submit-err">
+      <div class="wrong-icon">✕</div>
+        <h5>提交失败</h5>
+    </div>
     <div class="web-form">
       <h1 class="title">客户推荐表</h1>
       <%= form_for Recommendation.new, url: {controller: "recommendations", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "recommendation-form"} do |f| %>

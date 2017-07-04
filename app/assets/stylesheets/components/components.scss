@@ -120,10 +120,12 @@ label{ font-weight: 300; }
   filter: alpha(opacity=25);
 }
 
-#feedback-modal{
+.alert-modal-css{
   .modal-dialog{ margin-top: 200px; }
   .modal-header{ text-align: center; }
-  .modal-body{ padding: 25px; }
+  .modal-body{
+    padding: 25px;
+  }
   .actions{
     padding-top: 12px;
     text-align: center;
@@ -141,6 +143,37 @@ label{ font-weight: 300; }
     background-color: #ECF7FC;
 
     strong{ white-space: nowrap; }
+  }
+}
+
+.submit-success{
+  .correct-icon{
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    background-color:rgb(70, 155, 75);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 20px auto;
+  }
+  h5{
+    text-align: center;
+  }
+}
+.submit-err{
+  .wrong-icon{
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+    background-color:#e82110;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 20px auto;
+  }
+  h5{
+    text-align: center;
   }
 }
 

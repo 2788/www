@@ -2,8 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  $website = $('.web-form')
-  $alert = $('#recommendation-alert')
+  $webform = $('.web-form')
   $form = $('#recommendation-form')
   $company = $('#recommendation-company')
   $website = $('#recommendation-website')
@@ -13,6 +12,11 @@ $(document).ready ->
   $im = $('#recommendation-im')
   $email = $('#recommendation-email')
   $submitBtn = $('#recommendation-submit')
+  $submitSuccess = $(".submit-success")
+  $submitErr = $(".submit-err")
+
+  $submitSuccess.hide()
+  $submitErr.hide()
 
   # 检验输入框
   $('#recommendation-form .form-control').keyup ->
@@ -21,26 +25,19 @@ $(document).ready ->
     else
       $submitBtn.prop('disabled', true)
 
-  $('#recommendation-form .form-control').change ->
-    if $(this).attr 'validate'
-      myType = $(this).attr 'type'
-
   # onblur时及时验证
-  recommendationValidate = new inputValidate("#recommendation-form");
+  recommendatiomnValidate = new inputValidate("#recommendation-form");
 
   $form.on 'ajax:beforeSend', (event, xhr, settings)->
     settings.url = settings.url + '-' + new Date().getTime()
 
   $form.on 'ajax:success', (event, xhr, status, error)->
-    $alert.attr('class', 'alert alert-success').html('<i class="glyphicon glyphicon-ok"></i> 提交成功！').show()
-    $form.hide()
-    setTimeout ->
-      $website.hide()
-      $('#recommendation-form .form-control').val('')
-    , 1000 * 1.5
+    $webform.hide()
+    $('#recommendation-form .form-control').val('')
+    $submitSuccess.show()
+    $submitErr.hide()
 
   $form.on 'ajax:error', (event, xhr, status, error)->
-    $alert.attr('class', 'alert alert-danger').html('<i class="glyphicon glyphicon-remove"></i> 提交失败，稍后重试！').show()
-    setTimeout ->
-      $website.hide()
-    , 1000 * 1.5
+    $webform.hide()
+    $submitSuccess.hide()
+    $submitErr.show()
