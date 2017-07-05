@@ -16,10 +16,6 @@ $(document).ready ->
   $submitSuccess = $(".submit-success")
   $submitErr = $(".submit-err")
 
-  $submitAfter.hide()
-  $submitSuccess.hide()
-  $submitErr.hide()
-
   # 检验输入框
   $('#recommendation-form .form-control').keyup ->
     if $.trim($company.val()) != "" && $.trim($website.val()) != "" && $.trim($business.val()) != "" && $.trim($name.val()) != "" && $.trim($phone.val()) != "" && $.trim($im.val()) != "" && $.trim($email.val()) != ""

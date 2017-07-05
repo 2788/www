@@ -11,10 +11,6 @@ $(document).ready ->
   $submitSuccess = $(".submit-success")
   $submitErr = $(".submit-err")
 
-  $submitAfter.hide()
-  $submitSuccess.hide()
-  $submitErr.hide()
-
   # 弹出框自动焦点到咨询内容输入框
   $modal.on 'shown.bs.modal', ->
     $('#feedback-content').focus()

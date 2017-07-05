@@ -146,7 +146,7 @@ label{ font-weight: 300; }
   }
 }
 .features.submit-after{
-
+  display: none;
 }
 .submit-after-info{
   padding: 100px;
@@ -166,11 +166,13 @@ label{ font-weight: 300; }
 }
 
 .submit-success{
+  display: none;
   .correct-icon{
     background-color:rgb(70, 155, 75);
   }
 }
 .submit-err{
+  display: none;
   .wrong-icon{
     background-color:#e82110;
   }
