@@ -19,14 +19,7 @@ $(document).ready ->
     $form.show()
     $alert.hide()
 
-  # 检验输入框
-  $('#feedback-form .form-control').keyup ->
-    if $.trim($content.val()) != "" && $.trim($name.val()) != "" && $.trim($phone.val()) != ""
-      $submitBtn.prop('disabled', false)
-    else
-      $submitBtn.prop('disabled', true)
-
-  # onblur时及时验证
+  # input 即使验证，form btn 检验
   feedbackValidate = new inputValidate("#feedback-form");
 
   $form.on 'ajax:beforeSend', (event, xhr, settings)->
