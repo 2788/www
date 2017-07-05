@@ -1,0 +1,91 @@
+<div class="features">
+  <div class="container">
+    <div class="web-form">
+      <h1 class="title">客户推荐表</h1>
+      <%= form_for Recommendation.new, url: {controller: "recommendations", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "recommendation-form"} do |f| %>
+        <%= f.hidden_field :referer, value: request.original_url -%>
+
+        <div class="form-group">
+          <label for="recommendation-company" class="col-sm-2 control-label">公司名称<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :company, class:"form-control", id:"recommendation-company", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写公司名称</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-website" class="col-sm-2 control-label">公司官网<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :website, class:"form-control", id:"recommendation-website", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写公司官网</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-business" class="col-sm-2 control-label">主营业务<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :business, class:"form-control", id:"recommendation-business", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写主营业务</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-name" class="col-sm-2 control-label">联系人姓名<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :name, class:"form-control", id:"recommendation-name", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写联系人姓名</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-phone" class="col-sm-2 control-label">手机<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.telephone_field :phone, class:"form-control", id:"recommendation-phone", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请以正确的格式填写联系电话</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-im" class="col-sm-2 control-label">QQ<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :im, class:"form-control", id:"recommendation-im", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请以填写QQ号</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-email" class="col-sm-2 control-label">E-mail<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :email, type: "email", class:"form-control", id:"recommendation-email", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写E-mail</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-intention" class="col-sm-2 control-label">合作意向</label>
+          <div class="col-sm-10">
+            <%= f.text_area :intention, size: "x5", class: "form-control", id:"recommendation-intention" %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.button "提 交", class:"btn btn-primary", id:"recommendation-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

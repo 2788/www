@@ -40,4 +40,6 @@ Rails.application.routes.draw do
 
   resources :feedbacks, only: [:new, :create]
 
+  resources :recommendations, only: [:new, :create]
+
 end

@@ -38,6 +38,10 @@
 @import "prices";
 @import "solution";
 
+html{
+  position: relative;
+}
+
 // index page
 .jumbotron.hero{
   height: 518px;
@@ -306,7 +310,8 @@
   }
 
   form{
-    padding: 50px 260px;
+    max-width: 650px;
+    margin: 50px auto;
 
     .form-group{
       margin-bottom: 24px;
@@ -321,11 +326,15 @@
         resize: none;
       }
 
+      .form-control.active{
+        border: 1px solid #ff3939;
+      }
+
       .div-error{
-        visibility: hidden;
+        display: none;
       }
       .div-error.active{
-        visibility: visible;
+        display: block;
         .error-label{
           font-family: PingFangSC Regular;
           font-size: 12px;

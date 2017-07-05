@@ -1,6 +1,5 @@
 class FeedbacksController < ApplicationController
   layout "form"
-  before_action :set_feedback, only: [:show, :edit, :update, :destroy]
 
   # POST /feedbacks
   # POST /feedbacks.json

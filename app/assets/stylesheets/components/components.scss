@@ -120,10 +120,12 @@ label{ font-weight: 300; }
   filter: alpha(opacity=25);
 }
 
-#feedback-modal{
+.alert-modal-css{
   .modal-dialog{ margin-top: 200px; }
   .modal-header{ text-align: center; }
-  .modal-body{ padding: 25px; }
+  .modal-body{
+    padding: 25px;
+  }
   .actions{
     padding-top: 12px;
     text-align: center;
@@ -142,6 +144,45 @@ label{ font-weight: 300; }
 
     strong{ white-space: nowrap; }
   }
+}
+.features.submit-after{
+  display: none;
+}
+.submit-after-info{
+  padding: 100px;
+  background-color: #ECF7FC;
+  .submit-icon{
+    font-size: 55px;
+    text-align: center;
+    color: #fff;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    margin: 20px auto;
+  }
+  .submit-tips{
+    text-align: center;
+  }
+}
+
+.submit-success{
+  display: none;
+  .correct-icon{
+    background-color:rgb(70, 155, 75);
+  }
+}
+.submit-err{
+  display: none;
+  .wrong-icon{
+    background-color:#e82110;
+  }
+}
+
+.stripe-submit{
+  position: fixed;
+  bottom: 95px;
+  left: 0;
+  width: 100%;
 }
 
 @media (max-width: 767px){
