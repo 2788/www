@@ -23,14 +23,12 @@ input[type=range]::-webkit-slider-runnable-track {
   border-radius: 10px; /*将轨道设为圆角的*/
   // background-color: rgb(249, 249, 249);
   border: 1px solid rgb(237, 237, 237);
-  box-shadow: 0 1px 1px rgb(249, 249, 249), inset 0 .125em .125em rgb(237, 237, 237); /*轨道内置阴影效果*/
 }
 input[type=range]::-moz-range-runnable-track {//兼容firefox
   height: 10px;
   border-radius: 10px; /*将轨道设为圆角的*/
   // background-color: rgb(249, 249, 249);
   // border: 1px solid rgb(237, 237, 237);
-  box-shadow: 0 1px 1px rgb(249, 249, 249), inset 0 .125em .125em rgb(237, 237, 237); /*轨道内置阴影效果*/
 }
 //滑块添加样式
 input[type=range]::-webkit-slider-thumb {
@@ -64,7 +62,6 @@ input[type=range]::-moz-range-progress {
 input[type=range]::-ms-track {
     height: 25px;
     border-radius: 10px;
-    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112;
     border-color: transparent; /*去除原有边框*/
     color: transparent; /*去除轨道内的竖线*/
 }
