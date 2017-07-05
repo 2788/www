@@ -24,10 +24,10 @@ $(document).ready ->
 
   $form.on 'ajax:success', (event, xhr, status, error)->
     $webform.hide()
-    $('#recommendation-form .form-control').val('')
     $submitAfter.show()
     $submitSuccess.show()
     $submitErr.hide()
+    $('#recommendation-form .form-control').val('')
 
   $form.on 'ajax:error', (event, xhr, status, error)->
     $webform.hide()

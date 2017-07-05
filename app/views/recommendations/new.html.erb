@@ -1,6 +1,6 @@
-<div class="features">
+<div class="features web-form">
   <div class="container">
-    <div class="web-form">
+    <div class="form-box">
       <h1 class="title">客户推荐表</h1>
       <%= form_for Recommendation.new, url: {controller: "recommendations", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "recommendation-form"} do |f| %>
         <%= f.hidden_field :referer, value: request.original_url -%>
