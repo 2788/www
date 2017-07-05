@@ -16,14 +16,7 @@ $(document).ready ->
   $submitSuccess = $(".submit-success")
   $submitErr = $(".submit-err")
 
-  # 检验输入框
-  $('#recommendation-form .form-control').keyup ->
-    if $.trim($company.val()) != "" && $.trim($website.val()) != "" && $.trim($business.val()) != "" && $.trim($name.val()) != "" && $.trim($phone.val()) != "" && $.trim($im.val()) != "" && $.trim($email.val()) != ""
-      $submitBtn.prop('disabled', false)
-    else
-      $submitBtn.prop('disabled', true)
-
-  # onblur时及时验证
+  # input 即使验证，form btn 检验
   recommendatiomnValidate = new inputValidate("#recommendation-form");
 
   $form.on 'ajax:beforeSend', (event, xhr, settings)->
@@ -31,10 +24,10 @@ $(document).ready ->
 
   $form.on 'ajax:success', (event, xhr, status, error)->
     $webform.hide()
-    $('#recommendation-form .form-control').val('')
     $submitAfter.show()
     $submitSuccess.show()
     $submitErr.hide()
+    $('#recommendation-form .form-control').val('')
 
   $form.on 'ajax:error', (event, xhr, status, error)->
     $webform.hide()

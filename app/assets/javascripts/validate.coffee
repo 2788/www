@@ -35,38 +35,74 @@ do (window, document) ->
     switch typeInfo
       when 'email'
         if !email_rule.test(_value)
-          showErrorField element
+          return true
         else
-          hideErrorField element
+          return false
       when 'tel'
         if !tel_rule.test(_value) and !regPhone_rule.test(_value)
-          showErrorField element
+          return true
         else
-          hideErrorField element
+          return false
       else
         if isNull(_value)
-          showErrorField element
+          return true
         else
-          hideErrorField element
+          return false
     true
 
   # validate all inputs that need to validate
-
   inputValidate = (form_id) ->
     _module = document.querySelector(form_id)
     if _module
+      $submitBtn = _module.querySelectorAll("button")[0]
       input_arr = _module.querySelectorAll('input, textarea')
+      validateJSON = {}
       i = 0
       while i < input_arr.length
         #check to validate or not
         isvalidate = input_arr[i].getAttribute('validate')
         if isvalidate
+          # add status of every input which is to be validated,to a JSON
+          bol = validate(input_arr[i].id, input_arr[i].type)
+          validateJSON[i] = bol
           #bind onblurEvent for every input in this 'demo' form
           input_arr[i].onblur = ((input_index) ->
             ->
-              validate(input_arr[input_index].id, input_arr[input_index].type)
+              validatedBol = validate(input_arr[input_index].id, input_arr[input_index].type)
+              if validatedBol
+                showErrorField input_arr[input_index]
+              else
+                hideErrorField input_arr[input_index]
+              # status of JSON to be changed with the input value change
+              validateJSON[input_index] = validatedBol
+              trueNum = 0
+              falseNum = 0
+              for j of validateJSON
+                if validateJSON[j]
+                  trueNum += 1
+                else
+                  falseNum += 1
+              if trueNum <= 0
+                $submitBtn.disabled = false
+              else
+                $submitBtn.disabled = true
           )(i)
           #this is a closed scope will be caused by your function maybe!so do this
+          input_arr[i].onkeyup = ((i) ->
+            ->
+              validatedBol = validate(input_arr[i].id, input_arr[i].type)
+              # status of JSON to be changed with the input value change
+              validateJSON[i] = validatedBol
+              flag = false
+              for j of validateJSON
+                if validateJSON[j]# when there is a wrong input then flag is true,meanning btn is disabled
+                  flag = true
+                  break
+              if !flag
+                $submitBtn.disabled = false
+              else
+                $submitBtn.disabled = true
+          )(i)
           input_arr[i] = null
           #destroy element avoid the memory leak
         i++
