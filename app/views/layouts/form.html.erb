@@ -50,37 +50,35 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <!-- modal
-    <div class="modal fade alert-modal-css" id="alert-modal" tabindex="-1" role="dialog" aria-labelledby="alert-modal-label" data-keyboard="false" data-backdrop="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="submit-success">
-              <div class="correct-icon">✓</div>
-              <h5>提交成功</h5>
-            </div>
-            <div class="submit-err">
-              <div class="wrong-icon">✕</div>
-              <h5>提交失败</h5>
-            </div>
+    <div class="features submit-after">
+      <div class="container">
+        <div class="submit-success submit-after-info">
+          <div class="correct-icon submit-icon">✓</div>
+            <h4 class="submit-tips">提交成功</h4>
           </div>
+        <div class="submit-err submit-after-info">
+          <div class="wrong-icon submit-icon">✕</div>
+            <h4 class="submit-tips">提交失败</h4>
+        </div>
+        <div class="stripe stripe-blue stripe-submit">
+          <h3 class="text-center">
+            注册七牛云账户，即刻享受多款产品免费额度套餐
+            <a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl" target="_blank">马上免费注册</a>
+          </h3>
         </div>
       </div>
     </div>
- -->
 
     <%= yield %>
 
     <footer class="form-footer">
-      <div class="container">
-        <div class="links form-footer-links">
-          <ul>
-            <li><div class="copyright">© 2017 七牛云</div></li>
-            <li><a href="/user-agreement">用户协议</a></li>
-            <li><a href="/sla-kodo">SLA</a></li>
-          </ul>
-          <div class="icp">沪公网安备 31011502000961 号沪 ICP 备 11037377 号-5</div>
-        </div>
+      <div class="links form-footer-links">
+        <ul>
+          <li><div class="copyright">© 2017 七牛云</div></li>
+          <li><a href="/user-agreement">用户协议</a></li>
+          <li><a href="/sla-kodo">SLA</a></li>
+        </ul>
+        <div class="icp">沪公网安备 31011502000961 号沪 ICP 备 11037377 号-5</div>
       </div>
     </footer>
 

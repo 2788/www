@@ -12,9 +12,11 @@ $(document).ready ->
   $im = $('#recommendation-im')
   $email = $('#recommendation-email')
   $submitBtn = $('#recommendation-submit')
+  $submitAfter = $('.submit-after')
   $submitSuccess = $(".submit-success")
   $submitErr = $(".submit-err")
 
+  $submitAfter.hide()
   $submitSuccess.hide()
   $submitErr.hide()
 
@@ -34,10 +36,12 @@ $(document).ready ->
   $form.on 'ajax:success', (event, xhr, status, error)->
     $webform.hide()
     $('#recommendation-form .form-control').val('')
+    $submitAfter.show()
     $submitSuccess.show()
     $submitErr.hide()
 
   $form.on 'ajax:error', (event, xhr, status, error)->
     $webform.hide()
+    $submitAfter.show()
     $submitSuccess.hide()
     $submitErr.show()

@@ -1,13 +1,5 @@
 <div class="features">
   <div class="container">
-    <div class="submit-success">
-      <div class="correct-icon">✓</div>
-        <h5>提交成功</h5>
-      </div>
-    <div class="submit-err">
-      <div class="wrong-icon">✕</div>
-        <h5>提交失败</h5>
-    </div>
     <div class="web-form">
       <h1 class="title">客户推荐表</h1>
       <%= form_for Recommendation.new, url: {controller: "recommendations", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "recommendation-form"} do |f| %>
@@ -76,7 +68,7 @@
         <div class="form-group">
           <label for="recommendation-email" class="col-sm-2 control-label">E-mail<small class="text-danger">*</small></label>
           <div class="col-sm-10">
-            <%= f.text_field :email, class:"form-control", id:"recommendation-email", validate: true %>
+            <%= f.text_field :email, type: "email", class:"form-control", id:"recommendation-email", validate: true %>
             <div class="div-error">
               <label for="" class="error-label">请填写E-mail</label>
             </div>

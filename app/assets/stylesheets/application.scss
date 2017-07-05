@@ -38,6 +38,10 @@
 @import "prices";
 @import "solution";
 
+html{
+  position: relative;
+}
+
 // index page
 .jumbotron.hero{
   height: 518px;

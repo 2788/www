@@ -7,9 +7,11 @@ $(document).ready ->
   $name = $('#feedback-name')
   $phone = $('#feedback-phone')
   $submitBtn = $('#feedback-submit')
+  $submitAfter = $('.submit-after')
   $submitSuccess = $(".submit-success")
   $submitErr = $(".submit-err")
 
+  $submitAfter.hide()
   $submitSuccess.hide()
   $submitErr.hide()
 
@@ -37,6 +39,7 @@ $(document).ready ->
   $form.on 'ajax:success', (event, xhr, status, error)->
     $alert.attr('class', 'alert alert-success').html('<i class="glyphicon glyphicon-ok"></i> 提交成功！').show()
     $webform.hide()
+    $submitAfter.show()
     $submitSuccess.show()
     $submitErr.hide()
     setTimeout ->
@@ -47,6 +50,7 @@ $(document).ready ->
   $form.on 'ajax:error', (event, xhr, status, error)->
     $alert.attr('class', 'alert alert-danger').html('<i class="glyphicon glyphicon-remove"></i> 提交失败，稍后重试！').show()
     $webform.hide()
+    $submitAfter.show()
     $submitSuccess.hide()
     $submitErr.show()
     setTimeout ->
