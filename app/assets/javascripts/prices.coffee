@@ -73,8 +73,10 @@ $(document).ready ->
     defaultVar =
       'fxdClass':'fxd'
       'elem': 'elem'
+      'isrelative': 'relative'
     json = json or defaultVar
     fxd = json.fxdClass
+    isrelative = json.isrelative
     myElem = json.elem
     myOffset = myElem.height()
     stickyTop = myElem.offset().top
@@ -89,7 +91,7 @@ $(document).ready ->
         # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
       else
         myElem.css(
-          'position': 'relative'
+          'position': isrelative
           ).removeClass fxd
 
   #render range
@@ -105,21 +107,34 @@ $(document).ready ->
     for i of prices
       if prices[i]
         #如果存在该板块 总价加进去
-        sum += Number($('#' + i + '-price').text())
-    $('#sum-price').text(sum)
+        sum += Number($('#' + i + '-price').text())*1000
+    $('#sum-price').text(sum/1000)
 
 
   # search data,add to sum
+
+  # cacuSum = (num, obj) ->
+  #   sum = 0
+  #   prev = 0
+  #   for i of obj
+  #     i = +i
+  #     if num <= i
+  #       sum += (num - prev) * (obj[i]*1000)
+  #       return sum
+  #     else
+  #       prev = i
+  #       sum += i * (obj[i]*1000)
+  #   sum
+
   cacuSum = (num, obj) ->
     sum = 0
     prev = 0
     for i of obj
-      if num <= i
-        sum += (num - prev) * obj[i]
-        return sum
-      else
-        prev = i
-        sum += i * obj[i]
+      i = +i
+      item = obj[i]
+      if num > item[0]
+        sum += (num - item[0])*(item[1]*1000)
+        num = item[0]
     sum
 
   # caculate fusion outland
@@ -128,25 +143,20 @@ $(document).ready ->
     prev = 0
     for j of obj
       if region == j
-        for i of obj[j]
-          if num <= i
-            sum += (num - prev) * obj[j][i]
-            return sum
-          else
-            prev = i
-            sum += i * obj[j][i]
+        sum = cacuSum num, obj[j]
+        break
     sum
 
   #caculate all prices and set
   setPrice = (amountJSON) ->
     # kodo的价格计算
-    kodoVal =  cacuSum(amountJSON.kodo.space, kodoData[amountJSON.kodo.area]) + cacuSum(amountJSON.kodo.reads, kodoData[amountJSON.kodo.reads]) + cacuSum(amountJSON.kodo.write, kodoData[amountJSON.kodo.writes])
-    kodoVal = if isNaN(kodoVal) then 0 else kodoVal.toFixed(2)
+    kodoVal =  cacuSum(amountJSON.kodo.space, kodoData[amountJSON.kodo.area]) + cacuSum(amountJSON.kodo.reads, kodoData['reads']) + cacuSum(amountJSON.kodo.writes, kodoData['writes'])
+    kodoVal = if isNaN(kodoVal) then 0 else kodoVal/1000
     $("#kodo-price").text(kodoVal)
 
     # lowKodo的价格计算
-    lowKodoVal =  amountJSON.lowKodo.space*lowKodoData.space + amountJSON.lowKodo.APIs*lowKodoData.APIs + amountJSON.lowKodo.types*lowKodoData.types + cacuSum(amountJSON.lowKodo.HTTPs, kodoData[amountJSON.lowKodo.HTTPs])
-    lowKodoVal = if isNaN(lowKodoVal) then 0 else lowKodoVal.toFixed(2)
+    lowKodoVal =  amountJSON.lowKodo.space*(lowKodoData.space*1000) + amountJSON.lowKodo.APIs*(lowKodoData.APIs*1000) + amountJSON.lowKodo.types*(lowKodoData.types*1000) + cacuSum(amountJSON.lowKodo.HTTPs, lowKodoData['HTTPs'])
+    lowKodoVal = if isNaN(lowKodoVal) then 0 else lowKodoVal/1000
     $("#lowKodo-price").text(lowKodoVal)
 
     # fusion的价格计算
@@ -154,7 +164,7 @@ $(document).ready ->
       fusionVal = cacuSum(amountJSON.fusion.HTTPs, fusionData.inland.HTTPs) + cacuSum(amountJSON.fusion.HTTPSs, fusionData.inland.HTTPSs)
     else
       fusionVal = cacuSumOutFusion(amountJSON.fusion.HTTPs, amountJSON.fusion.area.region, fusionData.outland.HTTPs) + cacuSumOutFusion(amountJSON.fusion.HTTPSs, amountJSON.fusion.area.region, fusionData.outland.HTTPSs)
-    fusionVal = if isNaN(fusionVal) then 0 else fusionVal.toFixed(2)
+    fusionVal = if isNaN(fusionVal) then 0 else fusionVal/1000
     $("#fusion-price").text(fusionVal)
 
     # 总价的计算
@@ -193,16 +203,18 @@ $(document).ready ->
     setFxd
       'elem': $('#feature-price-nav')
       'fxdClass': 'fix-top'
-  if $('#pricing-info').length != 0
-    setFxd
-      'elem': $('#pricing-info')
-      'fxdClass': 'fix-right'
+      'isrelative': 'relative'
+  # if $('#pricing-info').length != 0
+  #   setFxd
+  #     'elem': $('#pricing-info')
+  #     'fxdClass': 'fixed-right'
+  #     'isrelative': 'fixed'
 
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
   $('.amount-input').bind 'input', ->
     key = $(this).attr('key')
-    setAmount(key, $(this).val())
+    setAmount(key, +$(this).val())
 
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致

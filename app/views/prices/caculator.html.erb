@@ -48,20 +48,20 @@
                 </dd>
                 <dd>
                   <h5>存储空间</h5>
-                  <input type="range" value="150000" min="0" max="10000000" step="1" class="input-range amount-input" id="range-kodo-space" key="kodo-space">
-                  <input type="number" class="input-num amount-input" id="num-kodo-space" key="kodo-space">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-kodo-space" key="kodo-space">
+                  <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space">
                   <span>GB/月</span>
                 </dd>
                 <dd>
                   <h5>GET读请求数</h5>
-                  <input type="range" value="100000" min="0" max="10000000" step="1" class="input-range amount-input" id="range-kodo-read" key="kodo-read">
-                  <input type="number" class="input-num amount-input" id="num-kodo-read" key="kodo-read">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-kodo-read" key="kodo-read">
+                  <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read">
                   <span>万次/月</span>
                 </dd>
                 <dd>
                   <h5>PUT/DELET写请求数</h5>
-                  <input type="range" value="400000" min="0" max="10000000" step="1" class="input-range amount-input" id="range-kodo-write" key="kodo-write">
-                  <input type="number" class="input-num amount-input" id="num-kodo-write" key="kodo-write">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-kodo-write" key="kodo-write">
+                  <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write">
                   <span>万次/月</span>
                 </dd>
               </dl>
@@ -86,26 +86,26 @@
                 -->
                 <dd>
                   <h5>存储空间</h5>
-                  <input type="range" value="10" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-space" key="lowKodo-space">
-                  <input type="number" class="input-num amount-input" id="num-lowKodo-space" key="lowKodo-space">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-space" key="lowKodo-space">
+                  <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-space" key="lowKodo-space">
                   <span>GB/月</span>
                 </dd>
                 <dd>
                   <h5>API请求数 (GET/PUT)</h5>
-                  <input type="range" value="20" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-API" key="lowKodo-API">
-                  <input type="number" class="input-num amount-input" id="num-lowKodo-API" key="lowKodo-API">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-API" key="lowKodo-API">
+                  <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-API" key="lowKodo-API">
                   <span>万次/月</span>
                 </dd>
                 <dd>
                   <h5>存储类型转换</h5>
-                  <input type="range" value="30" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-type" key="lowKodo-type">
-                  <input type="number" class="input-num amount-input" id="num-lowKodo-type" key="lowKodo-type">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-type" key="lowKodo-type">
+                  <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-type" key="lowKodo-type">
                   <span>万次/月</span>
                 </dd>
                 <dd>
                   <h5>读取流量(HTTP)</h5>
-                  <input type="range" value="40" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-HTTP" key="lowKodo-HTTP">
-                  <input type="number" class="input-num amount-input" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-lowKodo-HTTP" key="lowKodo-HTTP">
+                  <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
                   <span>GB/月</span>
                 </dd>
               </dl>
@@ -136,14 +136,14 @@
                 </dd>
                 <dd>
                   <h5>HTTP下载流量</h5>
-                  <input type="range" value="1000" min="0" max="10000" step="1" class="input-range amount-input" id="range-fusion-HTTP" key="fusion-HTTP">
-                  <input type="number" class="input-num amount-input" id="num-fusion-HTTP" key="fusion-HTTP">
+                  <input type="range" value="0" min="0" max="10000" step="1" class="input-range amount-input" id="range-fusion-HTTP" key="fusion-HTTP">
+                  <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP">
                   <span class="fusion-unit">TB/月</span>
                 </dd>
                 <dd>
                   <h5>HTTPS下载流量</h5>
-                  <input type="range" value="1000" min="0" max="10000" step="1" class="input-range amount-input" id="range-fusion-HTTPS" key="fusion-HTTPS">
-                  <input type="number" class="input-num amount-input" id="num-fusion-HTTPS" key="fusion-HTTPS">
+                  <input type="range" value="0" min="0" max="10000" step="1" class="input-range amount-input" id="range-fusion-HTTPS" key="fusion-HTTPS">
+                  <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS">
                   <span class="fusion-unit">TB/月</span>
                 </dd>
               </dl>

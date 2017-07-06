@@ -31,6 +31,9 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
     smintA = $('.smint a')
     smintH = smintLi or smintA;
     myOffset = smint.height()
+    offsets = smint.offset()
+    if offsets
+      stickyTop = offsets.top
     fxd = json.fxdClass or 'fxd'
     if settings.scrollSpeed
       scrollSpeed = settings.scrollSpeed
@@ -41,10 +44,10 @@ If you like Smint, or have suggestions on how it could be improved, send me a tw
       if !$(this).hasClass('extLink')
         $(this).attr 'id', id
       #Fill the menu
-      optionLocs.push Array($(mySelector + '.' + id).position().top - menuHeight, $(mySelector + '.' + id).height() + $(mySelector + '.' + id).position().top, id)
+      optionLocs.push Array($(mySelector + '.' + id).position().top - menuHeight, $(mySelector + '.' + id).outerHeight() + $(mySelector + '.' + id).position().top, id)
       #
       # get initial top offset for the menu
-      stickyTop = smint.offset().top
+
       # check position and make sticky if needed
 
       stickyMenu = (direction) ->

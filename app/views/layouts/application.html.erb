@@ -3,11 +3,17 @@
   <head>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
-    <meta name="keywords" content="qiniu" />
-    <meta name="description" content="qiniu.com">
+    <meta name="keywords" content="<%= @keywords -%>" />
+    <meta name="description" content="<%= @description -%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title><%= @title && "#{@title} - " -%>七牛云</title>
+
+    <!--<p><%= seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] -%></p>
+    <p><%= seo[:title] -%></p>
+    <p><%= seo[:keywords] -%></p>
+    <p><%= seo[:description] -%></p>-->
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -179,7 +185,7 @@
                   <dd><%= link_to "品牌标识", "https://developer.qiniu.com/brand" -%></dd>
                   <dd><%= link_to "客户案例", case_path -%></dd>
                   <dd><%= link_to "市场合作", cooperation_path -%></dd>
-                  <dd><%= link_to "加入我们", "" -%></dd>
+                  <dd><%= link_to "加入我们", "http://career.qiniu.com/" -%></dd>
                   <dd><%= link_to "联系我们", contact_path -%></dd>
                 </dl>
               </div>

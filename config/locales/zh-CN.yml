@@ -114,4 +114,96 @@ zh-CN:
       desc: anchang
     - path: cooperation/client-devstore-highlight@2x.png
       desc: devstore
-
+  seo:
+    welcome_index:
+      title: 七牛云-国内领先的企业级云服务商
+      keywords: 七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速
+      description: 七牛云是国内领先的企业级云服务商，致力于打造以数据为核心的场景化 PaaS 服务。围绕富媒体场景，七牛提供对象存储，融合CDN加速，直播云，内容反垃圾等服务。
+    welcome_kodo:
+      title: 对象存储_海量安全高可靠的云存储-七牛云
+      keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管
+      description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省62%的存储成本。
+    welcome_pili:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_pandora:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_contact:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_fusion:
+      title: 融合CDN_CDN加速服务-七牛云
+      keywords: 高防CDN，动态CDN，静态CDN，CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器，内容分发, 云加速,融合CDN,图片CDN，视频CDN
+      description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
+    welcome_dora:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_kirk:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_vance:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_solution:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_about:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_company:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_cooperation:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_case:
+      title: title
+      keywords: keywords
+      description: description
+    welcome_atlib:
+      title: title
+      keywords: keywords
+      description: description
+    events_list:
+      title: title
+      keywords: keywords
+      description: description
+    events_list:
+      title: title
+      keywords: keywords
+      description: description
+    events_list:
+      title: title
+      keywords: keywords
+      description: description
+    events_index:
+      title: title
+      keywords: keywords
+      description: description
+    prices_index:
+      title: title
+      keywords: keywords
+      description: description
+    prices_caculator:
+      title: title
+      keywords: keywords
+      description: description
+    feedbacks_new:
+      title: title
+      keywords: keywords
+      description: description
+    recommendations_new:
+      title: title
+      keywords: keywords
+      description: description
