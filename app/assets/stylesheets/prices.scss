@@ -232,6 +232,7 @@ input[type="range"]{
 .input-num{
   width: 90px;
   color: #3b99fc;
+  outline-style: none;
 }
 
 .displayNone{
@@ -242,9 +243,19 @@ input[type="range"]{
   margin-top: 0;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
-.fix-right{
-  top: 111px;
-  right: 50px;
-}
+// .fix-right{
+//   position: fixed;
+//   top: 60%;
+//   right: 18px;
+//   z-index: 2;
+//   width: 290px;
+// }
+
+// .fixed-right{
+//   top: 111px;
+//   right: 35px;
+//   width: 290px;
+//}

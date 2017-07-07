@@ -1,6 +1,9 @@
 class Event
   include Mongoid::Document
+  include Mongoid::Timestamps
 
-  field :type, type: String
+  store_in collection: "marketing_events"
+
   field :title, type: String
+  field :category, type: String
 end
