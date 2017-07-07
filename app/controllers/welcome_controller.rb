@@ -36,9 +36,6 @@ class WelcomeController < ApplicationController
   def company
   end
 
-  def cooperation
-  end
-
   def case
   end
 

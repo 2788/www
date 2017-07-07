@@ -82,12 +82,11 @@ $(document).ready ->
     stickyTop = myElem.offset().top
     $(window).scroll ->
       # current distance top
-      scrollTop = $(window).scrollTop() + myOffset
+      scrollTop = $(window).scrollTop()
       # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
-      if scrollTop > stickyTop + myOffset
+      if scrollTop > stickyTop
         myElem.css({
           'position': 'fixed'}).addClass fxd
-        # add padding to the body to make up for the loss in heigt when the men goes to a fixed position.
         # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
       else
         myElem.css(
@@ -112,20 +111,6 @@ $(document).ready ->
 
 
   # search data,add to sum
-
-  # cacuSum = (num, obj) ->
-  #   sum = 0
-  #   prev = 0
-  #   for i of obj
-  #     i = +i
-  #     if num <= i
-  #       sum += (num - prev) * (obj[i]*1000)
-  #       return sum
-  #     else
-  #       prev = i
-  #       sum += i * (obj[i]*1000)
-  #   sum
-
   cacuSum = (num, obj) ->
     sum = 0
     prev = 0

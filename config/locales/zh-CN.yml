@@ -163,10 +163,6 @@ zh-CN:
       title: 公司介绍-七牛云
       keywords: keywords
       description: description
-    welcome_cooperation:
-      title: 市场合作-七牛云
-      keywords: keywords
-      description: description
     welcome_case:
       title: 客户案例-七牛云
       keywords: keywords
@@ -207,3 +203,7 @@ zh-CN:
       title: 客户推荐-七牛云
       keywords: keywords
       description: description
+    # cooperations_index:
+    #   title: 市场合作-七牛云
+    #   keywords: keywords
+    #   description: description

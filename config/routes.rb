@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   get '/solution',    to: 'welcome#solution'
   get '/about',       to: 'welcome#about'
   get '/company',     to: 'welcome#company'
-  get '/cooperation', to: 'welcome#cooperation'
   get '/case',        to: 'welcome#case'
   get '/atlib',       to: 'welcome#atlib'
 
@@ -39,5 +38,7 @@ Rails.application.routes.draw do
   resources :feedbacks, only: [:new, :create]
 
   resources :recommendations, only: [:new, :create]
+
+  resources :cooperations, only: [:index]
 
 end

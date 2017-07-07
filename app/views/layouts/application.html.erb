@@ -3,7 +3,7 @@
   <head>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
-    <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] -%>
+    <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] || {} -%>
     <meta name="keywords" content="<%= seo[:keywords] -%>" />
     <meta name="description" content="<%= seo[:description] -%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -180,7 +180,7 @@
                   <dd><%= link_to "近期福利", "" -%></dd>
                   <dd><%= link_to "品牌标识", "https://developer.qiniu.com/brand" -%></dd>
                   <dd><%= link_to "客户案例", case_path -%></dd>
-                  <dd><%= link_to "市场合作", cooperation_path -%></dd>
+                  <dd><%= link_to "市场合作", cooperations_path -%></dd>
                   <dd><%= link_to "加入我们", "http://career.qiniu.com/" -%></dd>
                   <dd><%= link_to "联系我们", contact_path -%></dd>
                 </dl>
