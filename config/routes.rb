@@ -39,6 +39,10 @@ Rails.application.routes.draw do
 
   resources :recommendations, only: [:new, :create]
 
-  resources :cooperations, only: [:index]
+  resources :cooperations, only: [:index] do
+    collection do
+      post 'create_channel', 'create_developer'
+    end
+  end
 
 end

@@ -37,7 +37,7 @@
     </ul>
   </div>
   <div class="container">
-    <%= link_to "立刻申请", "", class: "btn btn-primary" -%>
+    <%= link_to "立刻申请", "", class: "btn btn-primary", data:{toggle: "modal", target: "#developer-modal"} -%>
   </div>
 </div>
 
@@ -80,7 +80,7 @@
     </ul>
   </div>
   <div class="container">
-    <%= link_to "立刻申请", "", class: "btn btn-primary" -%>
+    <%= link_to "立刻申请", "", class: "btn btn-primary", data:{toggle: "modal", target: "#channel-modal"} -%>
   </div>
 </div>
 
@@ -162,3 +162,228 @@
     </ul>
   </div>
 </div>
+
+<!-- channel Modal -->
+    <div class="modal fade alert-modal-css web-form" id="channel-modal" tabindex="-1" role="dialog" aria-labelledby="channel-modal-label" data-keyboard="false" data-backdrop="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="channel-modal-label">七牛云渠道代理合作申请表</h4>
+          </div>
+          <div class="modal-body">
+            <div id="channel-alert" class="alert alert-success" style="display: none;"></div>
+
+
+            <%= form_for ChannelCooperation.new, url: {controller: "cooperations", action: "create_channel", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "channel-form"} do |f| %>
+              <%= f.hidden_field :referer, value: request.original_url -%>
+
+              <div class="form-group">
+                <label for="channel-company" class="col-sm-2 control-label">公司名称<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :company, class: "form-control", id:"channel-company", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写公司名称</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-website" class="col-sm-2 control-label">公司官网<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :website, class:"form-control", id:"channel-website", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写公司官网</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-business" class="col-sm-2 control-label">主营业务<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :business, class:"form-control", id:"channel-business", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写主营业务</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-name" class="col-sm-2 control-label">姓名<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :name, class:"form-control", id:"channel-name", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写联系人姓名</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-phone" class="col-sm-2 control-label">联系电话<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.telephone_field :phone, class:"form-control", id:"channel-phone", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写联系电话</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-im" class="col-sm-2 control-label">QQ<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :im, class:"form-control", id:"channel-im", validate: true, validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请以填写QQ号</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-email" class="col-sm-2 control-label">E-mail<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :email, type: "email", class:"form-control", id:"channel-email", validate: true, validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写E-mail</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="channel-intention" class="col-sm-2 control-label">合作意向</label>
+                <div class="col-sm-10">
+                  <%= f.text_area :intention, class: "form-control", id:"channel-intention" %>
+                </div>
+              </div>
+
+              <div class="actions">
+                <%= f.button "提 交", class:"btn btn-primary", id:"channel-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+              </div>
+            <% end %>
+          </div>
+          <div class="modal-footer alert alert-info" role="alert">感谢您对七牛产品的关注和信任，我们期待您成为七牛云的渠道代理合作伙伴。在表单填写过程中有任何问题欢迎联系 marketing@qiniu.com，邮件标题注明【渠道合作】，会有专人与您联系。</div>
+        </div>
+      </div>
+    </div>
+
+<!--developer Modal-->
+    <div class="modal fade alert-modal-css web-form" id="developer-modal" tabindex="-1" role="dialog" aria-labelledby="developer-modal-label" data-keyboard="false" data-backdrop="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="developer-modal-label">七牛云开发合作申请表</h4>
+          </div>
+          <div class="modal-body">
+            <div id="developer-alert" class="alert alert-success" style="display: none;"></div>
+
+
+            <%= form_for DeveloperCooperation.new, url: {controller: "cooperations", action: "create_developer", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "developer-form"} do |f| %>
+              <%= f.hidden_field :referer, value: request.original_url -%>
+
+              <div class="form-group">
+                <label for="developer-resource_name" class="col-sm-2 control-label">资源名称<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :resource_name, class: "form-control", id:"developer-resource_name", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写资源名称</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-resource_desc" class="col-sm-2 control-label">资源描述<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :resource_desc, class: "form-control", id:"developer-resource_desc", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写资源描述</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-author_name" class="col-sm-2 control-label">姓名<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :author_name, class:"form-control", id:"developer-author_name", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写姓名</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-phone" class="col-sm-2 control-label">手机<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.telephone_field :phone, class:"form-control", id:"developer-phone", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写联系电话</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-im" class="col-sm-2 control-label">QQ<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :im, class:"form-control", id:"developer-im", validate: true, validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请以填写QQ号</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-email" class="col-sm-2 control-label">E-mail<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :email, type: "email", class:"form-control", id:"developer-email", validate: true, validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写E-mail</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-website" class="col-sm-2 control-label">作者主页</label>
+                <div class="col-sm-10">
+                  <%= f.text_field :website, class:"form-control", id:"developer-website" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-download_link" class="col-sm-2 control-label">下载链接<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :download_link, class:"form-control", id:"developer-download_link", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写下载链接</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-doc_link" class="col-sm-2 control-label">文档链接<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :doc_link, class:"form-control", id:"developer-doc_link", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写文档链接</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="developer-sourcecode_link" class="col-sm-2 control-label">源码链接<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :sourcecode_link, class:"form-control", id:"developer-sourcecode_link", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写源码链接</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="actions">
+                <%= f.button "提 交", class:"btn btn-primary", id:"developer-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+              </div>
+            <% end %>
+          </div>
+          <div class="modal-footer alert alert-info" role="alert">感谢您对七牛产品的关注和信任，我们期待您向七牛社区提交您的插件、SDK或工具。在表单填写过程中有任何问题欢迎联系 marketing@qiniu.com，邮件标题注明【开发合作】，会有专人与您联系。</div>
+        </div>
+      </div>
+    </div>
+
