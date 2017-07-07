@@ -331,6 +331,16 @@ html{
         border: 1px solid #ff3939;
       }
 
+      .maxLength-tips{
+        text-align: right;
+
+        .maxLength-label{
+          font-family: PingFangSC Regular;
+          font-size: 12px;
+          color: #ff3939;
+        }
+      }
+
       .div-error{
         display: none;
       }
