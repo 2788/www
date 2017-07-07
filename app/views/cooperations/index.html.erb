@@ -172,7 +172,7 @@
             <h4 class="modal-title" id="channel-modal-label">七牛云渠道代理合作申请表</h4>
           </div>
           <div class="modal-body">
-            <div id="channel-alert" class="alert alert-success" style="display: none;"></div>
+            <div id="channel-alert" class="alert alert-success submit-alert" style="display: none;"></div>
 
 
             <%= form_for ChannelCooperation.new, url: {controller: "cooperations", action: "create_channel", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "channel-form"} do |f| %>
@@ -274,7 +274,7 @@
             <h4 class="modal-title" id="developer-modal-label">七牛云开发合作申请表</h4>
           </div>
           <div class="modal-body">
-            <div id="developer-alert" class="alert alert-success" style="display: none;"></div>
+            <div id="developer-alert" class="alert alert-success submit-alert" style="display: none;"></div>
 
 
             <%= form_for DeveloperCooperation.new, url: {controller: "cooperations", action: "create_developer", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "developer-form"} do |f| %>

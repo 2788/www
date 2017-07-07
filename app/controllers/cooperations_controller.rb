@@ -30,7 +30,7 @@ class CooperationsController < ApplicationController
 
   private
     # Never trust parameters from the scary internet, only allow the white list through.
-    def channel_params
+    def channel_cooperation_params
       params.require(:channel_cooperation).permit(:company, :website, :business, :name, :phone, :im, :email, :intention)
     end
 
