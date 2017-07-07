@@ -22,6 +22,7 @@
 #= require prices
 #= require feedbacks
 #= require recommendations
+#= require cooperations
 
 
 isMobile = false; # initiate as false
