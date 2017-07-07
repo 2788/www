@@ -3,16 +3,12 @@
   <head>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
-    <meta name="keywords" content="<%= @keywords -%>" />
-    <meta name="description" content="<%= @description -%>">
+    <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] -%>
+    <meta name="keywords" content="<%= seo[:keywords] -%>" />
+    <meta name="description" content="<%= seo[:description] -%>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title><%= @title && "#{@title} - " -%>七牛云</title>
-
-    <!--<p><%= seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] -%></p>
-    <p><%= seo[:title] -%></p>
-    <p><%= seo[:keywords] -%></p>
-    <p><%= seo[:description] -%></p>-->
+    <title>seo[:title]</title>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 

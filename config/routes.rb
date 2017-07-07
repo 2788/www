@@ -29,9 +29,7 @@ Rails.application.routes.draw do
 
   resources 'events', only: [:index] do
     collection do
-      ['tech', 'ecug', 'niurenxiu'].each do |r|
-        get r, action: 'list', uni_data: r
-      end
+      get 'tech_online', 'ecug', 'niushow'
     end
   end
 

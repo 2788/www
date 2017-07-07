@@ -124,15 +124,15 @@ zh-CN:
       keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管
       description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省62%的存储成本。
     welcome_pili:
-      title: title
-      keywords: keywords
-      description: description
+      title: 直播云_直播云服务-七牛云
+      keywords: 直播云，直播云服务，直播sdk，直播API，推流sdk，播放sdk，七牛直播，七牛直播云，直播加速，美颜
+      description: 七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。
     welcome_pandora:
-      title: title
-      keywords: keywords
-      description: description
+      title: 大数据_大数据服务-七牛云
+      keywords: 大数据，大数据平台，大数据服务
+      description: 七牛大数据是七牛云的大数据平台，提供安全、简单、高效、开放的一站式大数据服务。
     welcome_contact:
-      title: title
+      title: 联系我们-七牛云
       keywords: keywords
       description: description
     welcome_fusion:
@@ -140,70 +140,70 @@ zh-CN:
       keywords: 高防CDN，动态CDN，静态CDN，CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器，内容分发, 云加速,融合CDN,图片CDN，视频CDN
       description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
     welcome_dora:
-      title: title
-      keywords: keywords
-      description: description
+      title: 智能多媒体API-七牛云
+      keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR,发票识别，场景识别，鉴黄，暴恐审核
+      description: 七牛智能多媒体API支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线API服务。
     welcome_kirk:
-      title: title
-      keywords: keywords
-      description: description
+      title: 容器云_容器云平台-七牛云
+      keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务,微服务，devops
+      description: 七牛容器云是七牛云基于自身公有云业务在容器方面的多年实践经验，针对企业私有部署打造的容器云计算平台。
     welcome_vance:
-      title: title
-      keywords: keywords
-      description: description
+      title: 点播云_点播云服务-七牛云
+      keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
+      description: 七牛点播云汇聚七牛云存储、音视频转码和融合CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播PaaS平台。
     welcome_solution:
-      title: title
-      keywords: keywords
-      description: description
+      title: 解决方案-七牛云
+      keywords: 对象存储私有化部署方案，非结构化数据管理解决方案，智能云相册解决方案，智能硬件与物联网解决方案，广电传媒解决方案，安防终端解决方案，互联网与移动互联网解决方案，应用质量监控解决方案
+      description: 七牛云解决方案平台，基于八大核心产品对象存储、融合CDN、容器云、大数据平台、深度学习平台、智能多媒体API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造的简单、可信的解决方案平台，帮助您快速实现业务需求并创造更多商业价值。
     welcome_about:
-      title: title
+      title: 关于我们-七牛云
       keywords: keywords
       description: description
     welcome_company:
-      title: title
+      title: 公司介绍-七牛云
       keywords: keywords
       description: description
     welcome_cooperation:
-      title: title
+      title: 市场合作-七牛云
       keywords: keywords
       description: description
     welcome_case:
-      title: title
+      title: 客户案例-七牛云
       keywords: keywords
       description: description
     welcome_atlib:
-      title: title
-      keywords: keywords
-      description: description
-    events_list:
-      title: title
-      keywords: keywords
-      description: description
-    events_list:
-      title: title
-      keywords: keywords
-      description: description
-    events_list:
-      title: title
-      keywords: keywords
-      description: description
+      title: 深度学习平台-七牛云
+      keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
+      description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
+    events_tech_online:
+      title: 七牛Tech Online-七牛云
+      keywords: Tech Online，七牛Tech Online
+      description: 七牛Tech Online是在七牛架构师实践日线下沙龙的基础上，全新推出的一款在线技术交流活动。活动采用直播的形式，每期特邀一位技术圈网红与大家一起共话技术、畅谈未来。
+    events_ecug:
+      title: ECUG-七牛云
+      keywords: ECUG，七牛ECUG
+      description: ECUG全称为 Effective Cloud User Group（实效云计算用户组），由七牛云CEO许式伟发起，集结了一批具有高端视角并仍醉心于技术本身的同仁，共同关注云计算前沿技术的最新成果和分布式开发、运维的最佳实践。
+    events_niushow:
+      title: 牛人秀-七牛云
+      keywords: 牛人秀
+      description: 牛人秀是七牛人对外演讲的精粹视频的汇集地。
     events_index:
-      title: title
-      keywords: keywords
+      title: 七牛云活动
+      keywords: 架构师实践日，Tech Online，ECUG，牛人秀
       description: description
     prices_index:
-      title: title
-      keywords: keywords
-      description: description
+      title: 价格详情-七牛云
+      keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱
+      description: 七牛云为您提供的不止优秀的产品，还有极具竞争力的产品定价。
     prices_caculator:
-      title: title
+      title: 预算估计-七牛云
       keywords: keywords
       description: description
     feedbacks_new:
-      title: title
+      title: 产品及服务咨询-七牛云
       keywords: keywords
       description: description
     recommendations_new:
-      title: title
+      title: 客户推荐-七牛云
       keywords: keywords
       description: description
