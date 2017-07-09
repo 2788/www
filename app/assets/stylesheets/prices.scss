@@ -41,8 +41,10 @@
     font-size: 30px;
     color: rgb(47, 48, 51);
   }
-  .details{
-    padding-left: 15px;
+  .row.details{
+    padding: 35px;
+    margin-left: 0;
+    border: 1px solid #e6eaef;
   }
   dl {
     &.dl-border{
@@ -67,6 +69,12 @@
       &.icon-fusion{
         background-image: image-url("prices/icon-cdn@2x.png");
       }
+      &.icon-kodo{
+        background-image: image-url("prices/icon-kodo@2x.png");
+      }
+      &.icon-dora{
+        background-image: image-url("prices/icon-API@2x.png");
+      }
     }
 
     dd{
@@ -90,10 +98,24 @@
   li{
     list-style: none;
     float: left;
-    padding-right: 80px;
+
+    div{
+      padding-left: 40px;
+      padding-right: 40px;
+      border-right: 1px solid #e6eaef;
+
+      &.div-init{
+        padding-left: 0;
+      }
+
+      &.border-init{
+        border-right: 0;
+      }
+    }
 
     p{
       text-align: center;
+      padding-top: 10px;
 
       .big-text{
         color: #000;
@@ -157,6 +179,10 @@ table.pricing-table tr th, table.pricing-table tr td{
   color: #333;
   line-height: 32px;
   padding: 10px 20px;
+
+  &.border-bottom{
+    border-bottom: 1px solid #e6eaef;
+  }
 
   div {
     padding-bottom: 21px;
