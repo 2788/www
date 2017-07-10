@@ -27,6 +27,7 @@ $(document).ready ->
 
   $form.on 'ajax:success', (event, xhr, status, error)->
     $alert.attr('class', 'alert alert-success').html('<i class="glyphicon glyphicon-ok"></i> 提交成功！').show()
+    $form.hide()
     $webform.hide()
     $submitAfter.show()
     $submitSuccess.show()
@@ -38,6 +39,7 @@ $(document).ready ->
 
   $form.on 'ajax:error', (event, xhr, status, error)->
     $alert.attr('class', 'alert alert-danger').html('<i class="glyphicon glyphicon-remove"></i> 提交失败，稍后重试！').show()
+    $form.hide()
     $webform.hide()
     $submitAfter.show()
     $submitSuccess.hide()
