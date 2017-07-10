@@ -34,7 +34,7 @@ class WelcomeController < ApplicationController
     render "about"
   end
 
-  def produc_tnews
+  def product_news
     render "about"
   end
 
