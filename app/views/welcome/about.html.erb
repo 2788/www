@@ -4,11 +4,11 @@
       <div class="col-sm-2">
         <ul class="nav nav-stacked left-tab" role="tablist">
           <li><%= link_to "公司介绍", company_path -%></li>
-          <li class="active"><a href="#news-section" data-toggle="tab">新闻动态</a></li>
-          <li><a href="#moments-section" data-toggle="tab">产品动态</a></li>
-          <li><a href="#benefits-section" data-toggle="tab">近期福利</a></li>
-          <li><a href="#cases-section" data-toggle="tab">客户案例</a></li>
-          <li><%= link_to "市场合作", "" -%></li>
+          <li class="active"><a href="#news" data-toggle="tab">新闻动态</a></li>
+          <li><a href="#products" data-toggle="tab">产品动态</a></li>
+          <li><a href="#welfares" data-toggle="tab">近期福利</a></li>
+          <li><%= link_to "客户案例", case_path -%></li>
+          <li><%= link_to "市场合作", cooperations_path -%></li>
           <li><%= link_to "加入我们", "http://career.qiniu.com/" -%></li>
           <li><%= link_to "联系我们", contact_path -%></li>
         </ul>
@@ -16,24 +16,22 @@
 
       <div class="col-sm-10">
         <div class="tab-content news-section-wrapper">
-          <section class="tab-pane active" id="news-section">
-            <div>
-              <h3>七牛云许世伟荣获上海市青年科技杰出贡献</h3>
-              <time>牛小七 2017年3月24日 发布在 媒体报道</time>
-              <p class="news-content">对于这次苹果 WWDC，中国用户表示这次马屁拍得很舒服。其中 Siri 支持语言自普通话、粤语和台湾话后，芯片的智能音响可以播放其中四千万首曲目</p>
-            </div>
+          <section class="tab-pane active" id="news">
+            <% I18n.t("news").each do |list| %>
+              <%= content_tag :div, link_to(content_tag(:h3, list[:title]) + content_tag(:time, list[:time]) + content_tag(:p, list[:desc], class: "news-content"), list[:link]) -%>
+            <% end %>
+          </section>
 
-            <div>
-              <h3>七牛云许世伟荣获上海市青年科技杰出贡献</h3>
-              <time>牛小七 2017年3月24日 发布在 媒体报道</time>
-              <p class="news-content">对于这次苹果 WWDC，中国用户表示这次马屁拍得很舒服。其中 Siri 支持语言自普通话、粤语和台湾话后，芯片的智能音响可以播放其中四千万首曲目</p>
-            </div>
+          <section class="tab-pane" id="products">
+            <% I18n.t("products").each do |product| %>
+              <%= content_tag :div, link_to(content_tag(:h3, product[:title]) + content_tag(:time, product[:time]) + content_tag(:p, product[:desc], class: "news-content"), product[:link]) -%>
+            <% end %>
+          </section>
 
-            <div>
-              <h3>七牛云许世伟荣获上海市青年科技杰出贡献</h3>
-              <time>牛小七 2017年3月24日 发布在 媒体报道</time>
-              <p class="news-content">对于这次苹果 WWDC，中国用户表示这次马屁拍得很舒服。其中 Siri 支持语言自普通话、粤语和台湾话后，芯片的智能音响可以播放其中四千万首曲目</p>
-            </div>
+          <section class="tab-pane" id="welfares">
+            <% I18n.t("welfares").each do |welfare| %>
+              <%= content_tag :div, link_to(content_tag(:h3, welfare[:title]) + content_tag(:time, welfare[:time]) + content_tag(:p, welfare[:desc], class: "news-content"), welfare[:link]) -%>
+            <% end %>
           </section>
         </div>
       </div>
