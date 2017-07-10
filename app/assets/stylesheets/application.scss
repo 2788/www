@@ -101,6 +101,10 @@ html{
   background: #FFF;
   padding: 80px 0 100px;
 
+  .list li.active a{
+    color: #00a0de;
+  }
+
   .btn.feature-btn{
     color: #28aedf;
     background-color: transparent;

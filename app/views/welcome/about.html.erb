@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <ul class="nav nav-stacked left-tab" role="tablist">
+        <ul class="nav nav-stacked left-tab" id="about-left-bar">
           <li><%= link_to "公司介绍", company_path -%></li>
-          <li class="active"><a href="#news" data-toggle="tab">新闻动态</a></li>
-          <li><a href="#products" data-toggle="tab">产品动态</a></li>
-          <li><a href="#welfares" data-toggle="tab">近期福利</a></li>
+          <li class="news"><%= link_to "新闻动态", news_path -%></li>
+          <li class="productnews"><%= link_to "产品动态", productnews_path -%></li>
+          <li class="welfares"><%= link_to "近期福利", welfares_path -%></li>
           <li><%= link_to "客户案例", case_path -%></li>
           <li><%= link_to "市场合作", cooperations_path -%></li>
           <li><%= link_to "加入我们", "http://career.qiniu.com/" -%></li>
@@ -15,22 +15,10 @@
       </div>
 
       <div class="col-sm-10">
-        <div class="tab-content news-section-wrapper">
-          <section class="tab-pane active" id="news">
-            <% I18n.t("news").each do |list| %>
+        <div class="sections-wrapper">
+          <section id=<%= action_name -%>>
+            <% I18n.t(action_name).each do |list| %>
               <%= content_tag :div, link_to(content_tag(:h3, list[:title]) + content_tag(:time, list[:time]) + content_tag(:p, list[:desc], class: "news-content"), list[:link]) -%>
-            <% end %>
-          </section>
-
-          <section class="tab-pane" id="products">
-            <% I18n.t("products").each do |product| %>
-              <%= content_tag :div, link_to(content_tag(:h3, product[:title]) + content_tag(:time, product[:time]) + content_tag(:p, product[:desc], class: "news-content"), product[:link]) -%>
-            <% end %>
-          </section>
-
-          <section class="tab-pane" id="welfares">
-            <% I18n.t("welfares").each do |welfare| %>
-              <%= content_tag :div, link_to(content_tag(:h3, welfare[:title]) + content_tag(:time, welfare[:time]) + content_tag(:p, welfare[:desc], class: "news-content"), welfare[:link]) -%>
             <% end %>
           </section>
         </div>

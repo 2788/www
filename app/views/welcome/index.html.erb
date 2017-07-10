@@ -170,41 +170,24 @@
     <div class="row">
       <div class="col-sm-3">
         <ul class="list">
-          <li class="hotnews-title">新闻动态</li>
-          <li class="hotnews-title">产品动态</li>
-          <li class="hotnews-title">近期福利</li>
-          <li><%= link_to raw("更多内容 &gt;"), "", class: "more" -%></li>
+          <li class="active hotnews-title"><%= link_to "新闻动态", news_path -%></li>
+          <li class="hotnews-title"><%= link_to "产品动态", productnews_path -%></li>
+          <li class="hotnews-title"><%= link_to "近期福利", welfares_path -%></li>
+          <li><%= link_to raw("更多内容 &gt;"), news_path, class: "more" -%></li>
         </ul>
       </div>
 
       <div class="col-sm-9">
-        <div class="col-sm-6 col-md-4">
-          <div class="hotnews-box">
-            <%= link_to image_tag("test.jpg", alt: "长虹"), "" -%>
-            <div class="infobox">
-              <time>MAY 03, 2016</time>
-              <p>七牛云许世伟荣获上海市青年科技杰出贡献奖</p>
+        <% I18n.t("news").first(3).each do |list| %>
+          <div class="col-sm-6 col-md-4">
+            <div class="hotnews-box">
+              <%= link_to image_tag(list[:img] || "", alt: "图片加载中"), list[:link] -%>
+              <div class="infobox">
+                <%= content_tag :div, content_tag(:time, list[:time]) + content_tag(:p, list[:desc].truncate(50, omission: '...')) -%>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="hotnews-box">
-            <%= link_to image_tag("test.jpg", alt: "长虹"), "" -%>
-            <div class="infobox">
-              <time>MAY 03, 2016</time>
-              <p>七牛云许世伟荣获上海市青年科技杰出贡献奖</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="hotnews-box">
-            <%= link_to image_tag("test.jpg", alt: "长虹"), "" -%>
-            <div class="infobox">
-              <time>MAY 03, 2016</time>
-              <p>七牛云许世伟荣获上海市青年科技杰出贡献奖</p>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

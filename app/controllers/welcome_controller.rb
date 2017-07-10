@@ -30,7 +30,16 @@ class WelcomeController < ApplicationController
   def solution
   end
 
-  def about
+  def news
+    render "about"
+  end
+
+  def productnews
+    render "about"
+  end
+
+  def welfares
+    render "about"
   end
 
   def company
