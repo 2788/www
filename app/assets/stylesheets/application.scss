@@ -58,6 +58,12 @@ html{
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
+  a.out_link{
+    display: inline-block;
+    margin-top: 0;
+    color: #fff;
+  }
+
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
@@ -100,6 +106,10 @@ html{
 .features{
   background: #FFF;
   padding: 80px 0 100px;
+
+  .list li.active a{
+    color: #00a0de;
+  }
 
   .btn.feature-btn{
     color: #28aedf;
@@ -313,7 +323,7 @@ html{
 }
 
 //反馈、推荐表单
-.web-form{
+.form-wrapper{
   .title{
     font-family: PingFangSC Medium;
     font-size: 16px;

@@ -23,6 +23,7 @@
 #= require feedbacks
 #= require recommendations
 #= require cooperations
+#= require about
 
 
 isMobile = false; # initiate as false

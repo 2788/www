@@ -2,38 +2,24 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <ul class="nav nav-stacked left-tab" role="tablist">
+        <ul class="nav nav-stacked left-tab" id="about-left-bar">
           <li><%= link_to "公司介绍", company_path -%></li>
-          <li class="active"><a href="#news-section" data-toggle="tab">新闻动态</a></li>
-          <li><a href="#moments-section" data-toggle="tab">产品动态</a></li>
-          <li><a href="#benefits-section" data-toggle="tab">近期福利</a></li>
-          <li><a href="#cases-section" data-toggle="tab">客户案例</a></li>
-          <li><%= link_to "市场合作", "" -%></li>
+          <li class="news"><%= link_to "新闻动态", news_path -%></li>
+          <li class="product_news"><%= link_to "产品动态", product_news_path -%></li>
+          <li class="welfares"><%= link_to "近期福利", welfares_path -%></li>
+          <li><%= link_to "客户案例", case_path -%></li>
+          <li><%= link_to "市场合作", cooperations_path -%></li>
           <li><%= link_to "加入我们", "http://career.qiniu.com/" -%></li>
           <li><%= link_to "联系我们", contact_path -%></li>
         </ul>
       </div>
 
       <div class="col-sm-10">
-        <div class="tab-content news-section-wrapper">
-          <section class="tab-pane active" id="news-section">
-            <div>
-              <h3>七牛云许世伟荣获上海市青年科技杰出贡献</h3>
-              <time>牛小七 2017年3月24日 发布在 媒体报道</time>
-              <p class="news-content">对于这次苹果 WWDC，中国用户表示这次马屁拍得很舒服。其中 Siri 支持语言自普通话、粤语和台湾话后，芯片的智能音响可以播放其中四千万首曲目</p>
-            </div>
-
-            <div>
-              <h3>七牛云许世伟荣获上海市青年科技杰出贡献</h3>
-              <time>牛小七 2017年3月24日 发布在 媒体报道</time>
-              <p class="news-content">对于这次苹果 WWDC，中国用户表示这次马屁拍得很舒服。其中 Siri 支持语言自普通话、粤语和台湾话后，芯片的智能音响可以播放其中四千万首曲目</p>
-            </div>
-
-            <div>
-              <h3>七牛云许世伟荣获上海市青年科技杰出贡献</h3>
-              <time>牛小七 2017年3月24日 发布在 媒体报道</time>
-              <p class="news-content">对于这次苹果 WWDC，中国用户表示这次马屁拍得很舒服。其中 Siri 支持语言自普通话、粤语和台湾话后，芯片的智能音响可以播放其中四千万首曲目</p>
-            </div>
+        <div class="sections-wrapper">
+          <section id=<%= action_name -%>>
+            <% I18n.t(action_name).each do |list| %>
+              <%= content_tag :div, link_to(content_tag(:h3, list[:title]) + content_tag(:time, list[:time]) + content_tag(:p, list[:desc], class: "news-content"), list[:link]) -%>
+            <% end %>
           </section>
         </div>
       </div>

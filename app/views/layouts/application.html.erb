@@ -60,7 +60,7 @@
               </ul>
             </li>
             <li><%= link_to "价格", prices_path -%></li>
-            <li><%= link_to "关于我们", about_path -%></li>
+            <li><%= link_to "关于我们", company_path -%></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -92,7 +92,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade alert-modal-css web-form" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-modal-label" data-keyboard="false" data-backdrop="true">
+    <div class="modal fade alert-modal-css form-wrapper" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-modal-label" data-keyboard="false" data-backdrop="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -176,17 +176,17 @@
                   <dd><%= link_to "技术支持", "https://support.qiniu.com" -%></dd>
                   <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></dd>
                   <dd><%= link_to "热门活动", events_path -%></dd>
-                  <dd><%= link_to "违规内容举报", "mailto:forensic@qiniu.com", id: "report" -%></dd>
-                  <dd><%= link_to "工单", "https://support.qiniu.com" -%></dd>
+                  <dd><%= link_to "违规内容举报", "mailto:jubao@qiniu.com", id: "report" -%></dd>
+                  <dd><%= link_to "工单系统", "https://support.qiniu.com" -%></dd>
                 </dl>
               </div>
               <div class="col-sm-4">
                 <dl>
                   <dt>关于我们</dt>
                   <dd><%= link_to "公司介绍", company_path -%></dd>
-                  <dd><%= link_to "新闻动态", "" -%></dd>
-                  <dd><%= link_to "产品动态", "" -%></dd>
-                  <dd><%= link_to "近期福利", "" -%></dd>
+                  <dd><%= link_to "新闻动态", news_path -%></dd>
+                  <dd><%= link_to "产品动态", product_news_path -%></dd>
+                  <dd><%= link_to "近期福利", welfares_path -%></dd>
                   <dd><%= link_to "品牌标识", "https://developer.qiniu.com/brand" -%></dd>
                   <dd><%= link_to "客户案例", case_path -%></dd>
                   <dd><%= link_to "市场合作", cooperations_path -%></dd>
