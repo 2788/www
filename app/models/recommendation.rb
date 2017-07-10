@@ -16,4 +16,5 @@ class Recommendation
   field :recommender_phone, type: String
   field :ip, type: String
   field :uid, type: Integer
+  field :referer, type: String
 end
