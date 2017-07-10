@@ -265,29 +265,29 @@ table.pricing-table tr th, table.pricing-table tr td{
     color: rgb(157, 157, 157);
     font-size: 14px;
     dt{
+      font-family: PingFangSC Regular;
       font-size: 18px;
-      color: #000;
-      line-height: 80px;
+      color: #97989c;
+      height: 45px;
+      padding: 10px 20px;
+      background-color: #f6f8fa;
+      border-bottom: 1px solid #e6eaef;
     }
     dd{
-      padding-top: 10px;
-      padding-bottom: 10px;
-
-      select{
-        color: #000;
-      }
+      padding: 10px 20px;
     }
   }
 }
 
 .caculator-sec{
-  border-bottom: 1px solid #eee;
-  padding-top: 60px;
-  padding-bottom: 70px;
+  background-color: #fff;
+  border: 1px solid #e6eaef;
+  margin-bottom: 50px;
 }
 
 .caculator-sec-last{
-  padding-top: 60px;
+  background-color: #fff;
+  border: 1px solid #e6eaef;
 }
 
 input[type="range"]{
@@ -313,16 +313,19 @@ input[type="range"]{
   z-index: 1;
 }
 
-// .fix-right{
-//   position: fixed;
-//   top: 60%;
-//   right: 18px;
-//   z-index: 2;
-//   width: 290px;
-// }
+.pricing-caculator{
+  width: 1024px;
+}
 
-// .fixed-right{
-//   top: 111px;
-//   right: 35px;
-//   width: 290px;
-//}
+.pricing-info-wrapper{
+  position: absolute;
+  top: 680px;
+  right: 88px;
+  width: 290px;
+}
+
+.fixed-right{
+  top: 111px;
+  right: 35px;
+  width: 290px;
+}
