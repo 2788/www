@@ -207,6 +207,9 @@ html{
 .feature-color{
   background: #F7F8F9;
 }
+.light-bkcolor{
+  background-color: #f6f8fa;
+}
 .features-solution{
   background: #F7F8F9;
 }
@@ -300,6 +303,15 @@ html{
   }
 }
 
+.select-lg{
+  outline-style: none;
+  outline-color: #e6eaef;
+  &:active,&:focus{
+    outline-style: none;
+    outline-color: #e6eaef;
+  }
+}
+
 //反馈、推荐表单
 .web-form{
   .title{
@@ -329,6 +341,16 @@ html{
 
       .form-control.active{
         border: 1px solid #ff3939;
+      }
+
+      .maxLength-tips{
+        text-align: right;
+
+        .maxLength-label{
+          font-family: PingFangSC Regular;
+          font-size: 12px;
+          color: #ff3939;
+        }
       }
 
       .div-error{

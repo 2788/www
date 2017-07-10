@@ -78,7 +78,10 @@
         <div class="form-group">
           <label for="recommendation-intention" class="col-sm-2 control-label">合作意向</label>
           <div class="col-sm-10">
-            <%= f.text_area :intention, size: "x5", class: "form-control", id:"recommendation-intention" %>
+            <%= f.text_area :intention, size: "x5", maxLength: 200, class: "form-control", id:"recommendation-intention" %>
+            <div class="maxLength-tips">
+              <label for="" class="maxLength-label">最多可输入200字</label>
+            </div>
           </div>
         </div>
 

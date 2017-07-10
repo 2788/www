@@ -73,10 +73,10 @@ $(document).ready ->
     defaultVar =
       'fxdClass':'fxd'
       'elem': 'elem'
-      'isrelative': 'relative'
+      'prevPosition': 'relative'
     json = json or defaultVar
     fxd = json.fxdClass
-    isrelative = json.isrelative
+    prevPosition = json.prevPosition
     myElem = json.elem
     myOffset = myElem.height()
     stickyTop = myElem.offset().top
@@ -90,7 +90,7 @@ $(document).ready ->
         # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
       else
         myElem.css(
-          'position': isrelative
+          'position': prevPosition
           ).removeClass fxd
 
   #render range
@@ -188,12 +188,12 @@ $(document).ready ->
     setFxd
       'elem': $('#feature-price-nav')
       'fxdClass': 'fix-top'
-      'isrelative': 'relative'
-  # if $('#pricing-info').length != 0
-  #   setFxd
-  #     'elem': $('#pricing-info')
-  #     'fxdClass': 'fixed-right'
-  #     'isrelative': 'fixed'
+      'prevPosition': 'relative'
+  if $('#pricing-info').length != 0
+    setFxd
+      'elem': $('#pricing-info')
+      'fxdClass': 'fixed-right'
+      'prevPosition': 'absolute'
 
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
