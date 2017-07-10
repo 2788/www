@@ -7,7 +7,7 @@
         <div class="actions">
           <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r" -%>
           <%= link_to "产品价格", "", class: "btn btn-lg btn-hollow" -%>
-          <%= link_to raw("域名型 DV SSL 证书免费申请 &gt;"), news_path, class: "more" -%>
+          <h5><%= link_to raw("域名型 DV SSL 证书免费申请 &gt;&gt;"), news_path, class: "out_link" -%></h5>
         </div>
       </div>
     </div>
@@ -189,10 +189,12 @@
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
           <div><%= image_tag "client-zte-highlight@2x.jpg", alt: "中兴", class: "case" %></div>
+          <div><%= image_tag "fusion/client-momo.jpg", alt: "陌陌", class: "case" %></div>
           <div><%= image_tag "fusion/client-anxinzhengquan-highlight@2x.jpg", alt: "安信证券", class: "case" %></div>
-          <div><%= image_tag "fusion/client-tantan-highlight@2x.jpg", alt: "探探", class: "case" %></div>
+          <div><%= image_tag "fusion/client-miaopai.jpg", alt: "秒拍", class: "case" %></div>
           <div><%= image_tag "fusion/client-mangguotv-highlight@2x.jpg", alt: "芒果TV", class: "case" %></div>
           <div><%= image_tag "fusion/client-wifibanlv-highlight@2x.jpg", alt: "wifi伴侣", class: "case" %></div>
+          <div><%= image_tag "fusion/client-kuaikan.jpg", alt: "快看", class: "case" %></div
         </div>
       </div>
     </div>
@@ -208,31 +210,42 @@
       </div>
       <div class="col-sm-10">
         <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <h4>常用文档</h4>
             <ul class="list">
-              <li><%= link_to "产品手册", "" -%></li>
-              <li><%= link_to "API文档", "" -%></li>
+              <li><%= link_to "快速入门", "" -%></li>
+              <li><%= link_to "DV 证书验证指南", "" -%></li>
+              <li><%= link_to "七牛全球下载加速...", "" -%></li>
+              <li><%= link_to "绑定加速域名和域...", "" -%></li>
+            </ul>
+          </div>
+          <div class="col-sm-2">
+            <h4>API 文档</h4>
+            <ul class="list">
+              <li><%= link_to "流量带宽", "" -%></li>
+              <li><%= link_to "缓存刷新与查询", "" -%></li>
+              <li><%= link_to "文件预取与查询", "" -%></li>
+              <li><%= link_to "日志下载", "" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
             <h4>SDK及工具</h4>
             <ul class="list">
-              <li><%= link_to "SDK及工具", "" -%></li>
+              <li><%= link_to "融合 CDN 日志查询", "" -%></li>
             </ul>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-2">
             <h4>常见问题</h4>
             <ul class="list">
-              <li><%= link_to "技术问题", "" -%></li>
-              <li><%= link_to "账户财务", "" -%></li>
+              <li><%= link_to "域名配置问题", "" -%></li>
+              <li><%= link_to "刷新缓存问题", "" -%></li>
+              <li><%= link_to "HTTPS相关问题", "" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
             <h4>产品动态</h4>
             <ul class="list">
-              <li><%= link_to "对象存储国内空间价格下调", "" -%></li>
-              <li><%= link_to "私有化部署服务上线", "" -%></li>
+              <li><%= link_to "斩获 GFIC 2016 ...", "" -%></li>
             </ul>
           </div>
         </div>

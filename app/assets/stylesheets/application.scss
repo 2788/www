@@ -58,6 +58,12 @@ html{
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
+  a.out_link{
+    display: inline-block;
+    margin-top: 0;
+    color: #fff;
+  }
+
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
