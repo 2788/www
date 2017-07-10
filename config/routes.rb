@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get '/vance',       to: 'welcome#vance'
   get '/solution',    to: 'welcome#solution'
   get '/news',        to: 'welcome#news'
-  get '/productnews', to: 'welcome#productnews'
+  get '/product_news', to: 'welcome#product_news'
   get '/welfares',    to: 'welcome#welfares'
   get '/company',     to: 'welcome#company'
   get '/case',        to: 'welcome#case'
