@@ -180,7 +180,10 @@ html{
     .media-body{
       padding: 50px 0 0 50px;
     }
-    p{ line-height: 28px; }
+    p{
+      line-height: 28px;
+      padding: 28px 10px;
+    }
   }
 
   .feature-item{
