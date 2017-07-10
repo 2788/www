@@ -64,6 +64,12 @@ html{
     color: #fff;
   }
 
+  a.aler-modal{
+    display: inline-block;
+    margin-top: 0;
+    color: $brand-primary;
+  }
+
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
@@ -332,6 +338,9 @@ html{
     margin-bottom: 50px;
   }
 
+  .form-box{
+    padding: 10px 10px 50px 10px;
+  }
   form{
     max-width: 650px;
     margin: 0 auto;
