@@ -70,6 +70,9 @@ html{
     color: $brand-primary;
   }
 
+  &.hero-banner1{ background-image: image-url('ssl.jpg');}
+  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
+  &.hero-banner3{ background-image: image-url('southern-price-reduce.jpg')}
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
@@ -317,8 +320,15 @@ html{
   list-style: none;
   margin: 0;
   padding: 0;
-  a{
-    color: #07A0DF;
+
+  li{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    a:hover{
+      color: #07A0DF;
+    }
   }
 }
 
@@ -328,6 +338,20 @@ html{
   &:active,&:focus{
     outline-style: none;
     outline-color: #e6eaef;
+  }
+}
+
+//index banner slider
+.banners-slider .slick-dots.banners-arrow{
+  bottom: 58px;
+}
+.banners-actions{
+  position: relative;
+
+  .btn-absolute{
+    position: absolute;
+    top: -170px;
+    left: 100px;
   }
 }
 

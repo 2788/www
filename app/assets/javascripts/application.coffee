@@ -100,6 +100,15 @@ $(document).ready ->
         slidesToScroll: 2
     }]
 
+  $('.banners-slider').slick
+    dots: true
+    autoplay: true
+    autoplaySpeed: 2000
+    arrows: false
+    slidesToShow: 1
+    slidesToScroll: 1
+  $('.banners-slider .slick-dots').addClass('banners-arrow')
+
 # 监控滚动 中部导航
 $(document).ready ->
   #enabling stickUp on the '.navbar-wrapper' class
