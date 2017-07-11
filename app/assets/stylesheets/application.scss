@@ -164,6 +164,14 @@ html{
     }
   }
 
+  &.kirk-usage{
+    .row{
+      .thumbnail{
+        min-height: 233px;
+      }
+    }
+  }
+
   .intro{
     margin-bottom: 50px;
     .title{
