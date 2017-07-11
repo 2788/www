@@ -325,10 +325,10 @@ html{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
 
-  a{
-    color: #07A0DF;
+    a:hover{
+      color: #07A0DF;
+    }
   }
 }
 
