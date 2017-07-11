@@ -144,6 +144,11 @@ html{
     min-height: 188px;
   }
 
+  video{
+    max-height: 100%;
+    max-width: 100%;
+  }
+
   .row{
     margin-left: -35px;
     margin-right: -35px;
