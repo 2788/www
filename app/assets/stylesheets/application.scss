@@ -74,7 +74,7 @@ html{
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
   &.hero-banner3{ background-image: image-url('southern-price-reduce.jpg')}
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
-  &.hero-pili{ background-image: image-url('banner-radar.jpg'); }
+  &.hero-pili{ background-image: image-url('banner-pili.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
   &.hero-events{background-image: image-url('events-banner.png'); }
   &.hero-tech{background-image: image-url('tech-banner.png'); }
@@ -144,6 +144,11 @@ html{
     min-height: 188px;
   }
 
+  video{
+    max-height: 100%;
+    max-width: 100%;
+  }
+
   .row{
     margin-left: -35px;
     margin-right: -35px;
@@ -161,6 +166,14 @@ html{
 
     .col-padding{
       padding: 50px;
+    }
+  }
+
+  &.kirk-usage{
+    .row{
+      .thumbnail{
+        min-height: 233px;
+      }
     }
   }
 

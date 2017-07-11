@@ -5,7 +5,7 @@
         <h2>容器云</h2>
         <p>七牛容器云（KIRK Enterprise）是七牛云基于自身公有云业务在容器方面的多年实践经验，针对企业私有部署打造的容器云计算平台。提供持续集成、灰度发布、弹性伸缩、应用市场等功能特性，使企业专注于业务逻辑开发，缩短业务上线周期，优化资源利用率，提高服务响应效率。</p>
         <div class="actions">
-          <%= link_to "免费试用", "", class: "btn btn-lg btn-default m-r" -%>
+          <%= link_to "免费试用", "", class: "btn btn-lg btn-default m-r", data: { toggle: "modal", target: "#feedback-modal"} -%>
         </div>
       </div>
     </div>
@@ -119,14 +119,14 @@
   </div>
 </div>
 
-<div class="features features-solution tab-content-section-3">
+<div class="features features-solution kirk-usage tab-content-section-3">
   <div class="container">
     <div class="intro">
       <h2 class="title">核心功能</h2>
     </div>
 
     <div class="row">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-rongqidiaodu@2x.png", class: "media-object", alt: "容器调度", width: 60 %>
           <div class="caption">
@@ -136,7 +136,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-jiqunguanli@2x.png", class: "media-object", alt: "集群管理", width: 60 %>
           <div class="caption">
@@ -146,7 +146,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-yingyongbianpai@2x.png", class: "media-object", alt: "应用编排", width: 60 %>
           <div class="caption">
@@ -156,7 +156,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-jingxiangcangku@2x.png", class: "media-object", alt: "镜像仓库", width: 60 %>
           <div class="caption">
@@ -166,7 +166,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-wangluoguanli@2x.png", class: "media-object", alt: "网络管理", width: 60 %>
           <div class="caption">
@@ -176,7 +176,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-chijiucunchu@2x.png", class: "media-object", alt: "持久存储", width: 60 %>
           <div class="caption">
@@ -186,7 +186,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-fuzaijunheng@2x.png", class: "media-object", alt: "负载均衡", width: 60 %>
           <div class="caption">
@@ -196,7 +196,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-fuwufaxian@2x.png", class: "media-object", alt: "服务发现", width: 60 %>
           <div class="caption">
@@ -206,7 +206,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-jiankonggaojing@2x.png", class: "media-object", alt: "监控告警", width: 60 %>
           <div class="caption">
@@ -216,7 +216,7 @@
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-3">
         <div class="thumbnail">
           <%= image_tag "kirk/icon-rizhishengji@2x.png", class: "media-object", alt: "日志审计", width: 60 %>
           <div class="caption">

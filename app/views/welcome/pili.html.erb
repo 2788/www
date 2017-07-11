@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-sm-6">
         <h2>直播云</h2>
-        <p>七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。</p>
+        <p>七牛直播云服务(PILI)是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。</p>
         <div class="actions">
-          <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r" -%>
+          <%= link_to "立即使用", "https://portal.qiniu.com/signin", class: "btn btn-lg btn-default m-r" -%>
         </div>
       </div>
     </div>
@@ -31,10 +31,11 @@
 <div class="features tab-content-section-1">
   <div class="container">
     <div class="intro">
-      <h2 class="title text-left">产品优势</h2>
+      <h2 class="title">产品优势</h2>
     </div>
 
     <div class="row">
+    <!--
       <div class="col-sm-5">
         <div class="feature-item">
           <h4>
@@ -60,7 +61,8 @@
           <p>提供多平台采集 SDK 和播放 SDK，并开放云端 API 实现透明播控管理，助力企业开发者快速构建直播平台的核心业务，提高开发效率。</p>
         </div>
       </div>
-      <div class="col-sm-7">
+    -->
+      <div class="col-sm-12">
         <%= image_tag "img-chanpinyoushi.png" %>
       </div>
     </div>
@@ -188,6 +190,7 @@
         </div>
       </div>
 
+      <center><%= link_to "更多功能", "https://developer.qiniu.com/pili/manual/1209/live-the-core-function", class: "more" -%></center>
     </div>
   </div>
 </div>
@@ -245,15 +248,15 @@
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
-          <div><%= image_tag "client-ch-highlight@2x.jpg", alt: "长虹", class: "case" %></div>
-          <div><%= image_tag "client-changba-highlight@2x.jpg", alt: "唱吧", class: "case" %></div>
-          <div><%= image_tag "client-dajian-highlight@2x.jpg", alt: "大疆创新", class: "case" %></div>
-          <div><%= image_tag "client-dazhong-highlight@2x.jpg", alt: "大众点评", class: "case" %></div>
-          <div><%= image_tag "client-hujiang-highlight@2x.jpg", alt: "沪江网", class: "case" %></div>
-          <div><%= image_tag "client-intel-highlight@2x.jpg", alt: "英特尔", id: "customer-intel", class: "case" %></div>
-          <div><%= image_tag "client-oppo-highlight@2x.jpg", alt: "OPPO", class: "case" %></div>
-          <div><%= image_tag "client-qingting-highlight@2x.jpg", alt: "蜻蜓 FM", class: "case" %></div>
-          <div><%= image_tag "client-zte-highlight@2x.jpg", alt: "中兴", class: "case" %></div>
+          <div><%= image_tag "client-pandatv-highlight@2x.jpg", alt: "熊猫", class: "case" %></div>
+          <div><%= image_tag "client-quanmintv-highlight@2x.jpg", alt: "全民TV", class: "case" %></div>
+          <div><%= image_tag "client-longzhuzhibo-highlight@2x.jpg", alt: "龙珠", class: "case" %></div>
+          <div><%= image_tag "client-tonghuashun-highlight@2x.jpg", alt: "同花顺", class: "case" %></div>
+          <div><%= image_tag "client-sobey-highlight@2x.jpg", alt: "索贝数码", class: "case" %></div>
+          <div><%= image_tag "client-dongqiudi-highlight@2x.jpg", alt: "懂球帝", class: "case" %></div>
+          <div><%= image_tag "client-qichezhijia-highlight@2x.jpg", alt: "汽车之家", class: "case" %></div>
+          <div><%= image_tag "client-langrensha.jpg", alt: "天天狼人杀", class: "case" %></div>
+          <div><%= image_tag "client-7k7k-highlight@2x.jpg", alt: "7K7K", class: "case" %></div>
         </div>
       </div>
     </div>
@@ -272,23 +275,29 @@
           <div class="col-sm-3">
             <h4>常用文档</h4>
             <ul class="links-list">
-              <li><%= link_to "产品手册", "" -%></li>
-              <li><%= link_to "API文档", "" -%></li>
+              <li><%= link_to "七牛直播云技术白皮书", "https://developer.qiniu.com/pili/manual/1209/live-the-core-function" -%></li>
+              <li><%= link_to "客户端API", "https://developer.qiniu.com/pili/api/1213/k" -%></li>
+              <li><%= link_to "服务端API", "https://developer.qiniu.com/pili/api/1219/the-server-api-reference" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
             <h4>SDK及工具</h4>
             <ul class="links-list">
-              <li><%= link_to "SDK及工具", "" -%></li>
+              <li><%= link_to "Android推流端SDK", "https://developer.qiniu.com/pili/sdk/3715/PLDroidMediaStreaming-overview" -%></li>
+              <li><%= link_to "iOS推流端SDK", "https://developer.qiniu.com/pili/sdk/3778/PLMediaStreamingKit-overview" -%></li>
+              <li><%= link_to "Android播放端SDK", "https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk" -%></li>
+              <li><%= link_to "iOS播放端SDK", "https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk" -%></li>
+              <li><%= link_to "服务端SDK", "https://developer.qiniu.com/pili/sdk/1220/server-sdk" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
             <h4>常见问题</h4>
             <ul class="links-list">
-              <li><%= link_to "技术问题", "" -%></li>
-              <li><%= link_to "账户财务", "" -%></li>
+              <li><%= link_to "iOS/Android 崩溃信息搜集方法", "https://developer.qiniu.com/pili/kb/3646/ios-android-collapse-information-gathering-methods" -%></li>
+              <li><%= link_to "直播封面落是否永久保存", "https://developer.qiniu.com/pili/kb/3876/a-live-cover-is-permanent" -%></li>
             </ul>
           </div>
+          <!--
           <div class="col-sm-3">
             <h4>产品动态</h4>
             <ul class="links-list">
@@ -296,6 +305,7 @@
               <li><%= link_to "私有化部署服务上线", "" -%></li>
             </ul>
           </div>
+          -->
         </div>
       </div>
     </div>
