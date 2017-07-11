@@ -3,10 +3,11 @@
     <div class="row">
       <div class="col-sm-6">
         <h2>对象存储</h2>
-        <p>七牛云海量存储系统为完全自主研发并拥有核心技术，经过五年时间的大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。</p>
+        <p>七牛云海量存储系统(KODO)为完全自主研发并拥有核心技术，经过五年时间的大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。</p>
         <div class="actions">
           <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r" -%>
           <%= link_to "产品价格", "", class: "btn btn-lg btn-hollow" -%>
+          <h5>现已推出私有化部署服务，能够针对企业客户场景进行灵活地部署和运维，如有需要，请<%= link_to raw("点击咨询"), "", class: "alert-modal", data: {toggle: "modal", target: "#feedback-modal"} -%></h5>
         </div>
       </div>
     </div>
@@ -40,7 +41,7 @@
             <%= image_tag "icon-keyongxing@2x.png", class: "media-object", alt: "可⽤性", width: 110 %></a>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">可⽤性</h4>
+            <h4 class="media-heading">高可用</h4>
             <p>七⽜云对象存储的纠删码存储⽅案，为对象提供⾼达 16 个 9 的可⽤性。跨数据中⼼的副本冗余存储，能够保障服务的⾼可⽤性。</p>
           </div>
         </div>
@@ -52,7 +53,7 @@
             <%= image_tag "icon-kekuozhan@2x.png", class: "media-object", alt: "可扩展", width: 110 %>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">可扩展</h4>
+            <h4 class="media-heading">易扩展</h4>
             <p>利⽤七⽜云对象存储，您的存储空间⽆上限的同时也⽆需担⼼扩容问题。您能够实现存储需求的弹性伸缩，从⽽提⾼业务灵活性。</p>
           </div>
         </div>
@@ -76,10 +77,9 @@
             <%= image_tag "icon-yizhanshi@2x.png", class: "media-object", alt: "⼀站式", width: 110 %>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">⼀站式</h4>
+            <h4 class="media-heading">数据智能化</h4>
             <p>
-              七⽜云对象存储与其他七⽜云服务集成，为您提供⼀站式数据管理服务。集成的服务包括但不限于：
-              <%= link_to "融合 CDN", "" -%>、<%= link_to "直播云", "" -%>和<%= link_to "多媒体数据处理", "" -%>。
+              与七牛云其他产品紧密协同，提供标准HDFS访问方式，为大数据和机器学习的海量高速读写场景进行了大量优化。
             </p>
           </div>
         </div>
@@ -96,42 +96,62 @@
     </div>
 
     <div class="row">
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-4 col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag "icon-shezhijingxiangziyuan@2x.png", class: "media-object", alt: "设置镜像源", width: 60 %>
+          <div class="caption">
+            <h4>镜像存储</h4>
+            <p>镜像存储适用于迁移原有业务系统的已有数据。可以帮助用户实现无缝数据迁移，迁移过程中并不影响原有业务系统的访问。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/kb/1376/seven-cattle-image-storage-instruction-manuals", class: "more" -%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag "icon-dipincunchu.png", class: "media-object", alt: "低频存储", width: 60 %>
+          <div class="caption">
+            <h4>低频存储</h4>
+            <p>低频存储具有较高的持久性、高吞吐量和较低的访问延迟。 可以帮助用户以更具性价比的成本存储读取频率较低的数据。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/3737/infrequent-storage", class: "more" -%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
           <%= image_tag "icon-shangchuan-xiazai@2x.png", class: "media-object", alt: "上传／下载", width: 60 %>
           <div class="caption">
             <h4>上传／下载</h4>
-            <p>针对不同的上传／下载场景，七⽜云对象存储提供了丰富的 API 接⼝供您使⽤。</p>
+            <p>针对不同的上传/下载场景，七牛云提供了丰富的API接口和工具供用户使用，同时支持服务端上传和客户端直传，并提供加速服务。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/1234/upload-types", class: "more" -%></p>
           </div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
-          <%= image_tag "icon-shezhijingxiangziyuan@2x.png", class: "media-object", alt: "设置镜像源", width: 60 %>
+          <%= image_tag "icon-shengmingzhouqi.png", class: "media-object", alt: "生命周期管理", width: 60 %>
           <div class="caption">
-            <h4>设置镜像源</h4>
-            <p>通过设置存储空间镜像回源⽹址，⽤于取回资源。</p>
+            <h4>生命周期管理</h4>
+            <p>生命周期管理让用户可以根据业务需要，为存储空间制定规则，存储对象可自动化定时进行存储类型转化或删除操作。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/3699/life-cycle-management", class: "more" -%></p>
           </div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
           <%= image_tag "icon-kuaquyutongbu@2x.png", class: "media-object", alt: "跨区域同步", width: 60 %>
           <div class="caption">
             <h4>跨区域同步</h4>
-            <p>提供跨区域同步功能，实现数据异地容灾。</p>
+            <p>跨区域同步让用户通过简单操作即可对不同存储区域的数据进行高效迁移和同步，实现数据异地容灾。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/1700/cross-regional-synchronization", class: "more" -%></p>
           </div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
+      <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
           <%= image_tag "icon-shujuchuli@2x.png", class: "media-object", alt: "数据处理", width: 60 %>
           <div class="caption">
             <h4>多媒体数据处理</h4>
-            <p>基于对象存储，您可以⼀站式地完成图片处理和⾳视频处理。</p>
+            <p>基于对象存储，您可以⼀站式地完成图片处理和⾳视频处理。<%= link_to raw("了解更多"), "http://www-dev.qiniu.io/dora", class: "more" -%></p>
           </div>
         </div>
       </div>
@@ -151,38 +171,56 @@
         <li class="active"><a href="#tab-usage-section-1" data-toggle="tab">私有化部署</a></li>
         <li><a href="#tab-usage-section-2" data-toggle="tab">内容加速分发</a></li>
         <li><a href="#tab-usage-section-3" data-toggle="tab">多媒体数据处理</a></li>
-        <li><a href="#tab-usage-section-4" data-toggle="tab">托管静态资源</a></li>
+        <li><a href="#tab-usage-section-4" data-toggle="tab">海量数据高并发</a></li>
+        <li><a href="#tab-usage-section-5" data-toggle="tab">备份和归档</a></li>
+        <li><a href="#tab-usage-section-6" data-toggle="tab">静态资源托管</a></li>
       </ul>
       <div class="tab-content bottom-line">
         <section class="tab-pane active" id="tab-usage-section-1">
           <div class="media">
-            <%= content_tag :div, image_tag("icon-siyouhuabushu@2x.png", alt: "私有化部署", width: "377"), class: "media-left" %>
-            <div class="media-body">
+            <%= content_tag :div, image_tag("icon-siyouhuabushu@2x.png", alt: "私有化部署", width: "377"), class: "col-sm-3" %>
+            <div class="col-sm-9">
               <p>企业客户可以选择私有化部署七牛云对象存储系统。基于公有云存储的经验积累，对象存储私有化部署服务具备高可靠、强安全、易扩展等特性。同时还能提供成熟的系统管理和运维，让企业以更低廉的产品及维护成本，满足在容量、性能及稳定性上的需求。</p>
             </div>
           </div>
         </section>
         <section class="tab-pane" id="tab-usage-section-2">
           <div class="media">
-            <%= content_tag :div, image_tag("icon-neirongjiasufenfa@2x.png", alt: "内容加速分发", width: "377"), class: "media-left" %>
-            <div class="media-body">
+            <%= content_tag :div, image_tag("icon-neirongjiasufenfa@2x.png", alt: "内容加速分发", width: "377"), class: "col-sm-3" %>
+            <div class="col-sm-9">
               <p>⾯对视频、游戏等热点资源分发的业务场景，您可以使⽤七⽜云对象存储作为源站，搭配七⽜云融合 CDN 进⾏加速分发，⽅便您通过 CDN 节点就近访问资源，提升⽤户体验。</p>
             </div>
           </div>
         </section>
         <section class="tab-pane" id="tab-usage-section-3">
           <div class="media">
-            <%= content_tag :div, image_tag("icon-shujuchuli2@2x.png", alt: "数据处理", width: "377"), class: "media-left" %>
-            <div class="media-body">
+            <%= content_tag :div, image_tag("icon-shujuchuli2@2x.png", alt: "数据处理", width: "377"), class: "col-sm-3" %>
+            <div class="col-sm-9">
               <p>针对有海量⽤户⽣成内容的场景，七⽜云对象存储服务的⾼并发能⼒使您灵活应对⼤流量的业务场景。您可以对存储在云端的图⽚、⾳视频等⽂件进⾏数据处理。</p>
             </div>
           </div>
         </section>
         <section class="tab-pane" id="tab-usage-section-4">
           <div class="media">
-            <%= content_tag :div, image_tag("icon-tuoguanjingtaiziyuan@2x.png", alt: "托管静态资源", width: "377"), class: "media-left" %>
-            <div class="media-body">
-              <p>软件测试和开发环境通常需要增建、管理和停⽤独⽴重复的存储环境。除了需要⾜够的时间外，还需要投⼊前期成本。七⽜云对象存储按需付费的灵活性消除了您在管理和扩展⽅⾯的困扰，它⽆缝集合了 WordPress,Discuz, Emlog 等社区插件，⽀持⼀键托管各类插件内的静态资源。</p>
+            <%= content_tag :div, image_tag("icon-tuoguanjingtaiziyuan@2x.png", alt: "海量数据高并发", width: "377"), class: "col-sm-3" %>
+            <div class="col-sm-9">
+              <p>七牛云针对海量数据高并发的场景做了深度优化，实现了对象存储访问协议到HDFS协议的转换。相较于传统Hadoop方案，用户可获得更优的读取、分析性能，更强的稳定性和更好的扩展性。</p>
+            </div>
+          </div>
+        </section>
+        <section class="tab-pane" id="tab-usage-section-5">
+          <div class="media">
+            <%= content_tag :div, image_tag("icon-tuoguanjingtaiziyuan@2x.png", alt: "备份和归档", width: "377"), class: "col-sm-3" %>
+            <div class="col-sm-9">
+              <p>七牛云提供高可用和高可靠的存储解决方案来备份和归档用户的关键数据，用户可以设置不同的访问权限和级别，保障数据访问安全。相较于传统自建方案，用户无需采购高昂硬件，无需担心扩容、安全等问题，从而节省更多的存储、维护、人力成本。</p>
+            </div>
+          </div>
+        </section>
+        <section class="tab-pane" id="tab-usage-section-6">
+          <div class="media">
+            <%= content_tag :div, image_tag("icon-tuoguanjingtaiziyuan@2x.png", alt: "静态资源托管", width: "377"), class: "col-sm-3" %>
+            <div class="col-sm-9">
+              <p>七牛云无缝集合各类第三方扩展插件，如 WordPress、Discuz、Emlog 等，并支持一键将各类插件里的静态资源托管到七牛。</p>
             </div>
           </div>
         </section>
@@ -228,28 +266,28 @@
           <div class="col-sm-3">
             <h4>常用文档</h4>
             <ul class="links-list">
-              <li><%= link_to "产品手册", "" -%></li>
-              <li><%= link_to "API文档", "" -%></li>
+              <li><%= link_to "产品文档", "https://developer.qiniu.com/kodo" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
-            <h4>SDK及工具</h4>
+            <h4>技术支持</h4>
             <ul class="links-list">
-              <li><%= link_to "SDK及工具", "" -%></li>
+              <li><%= link_to "技术支持", "https://support.qiniu.com/?ref=developer.qiniu.com" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
             <h4>常见问题</h4>
             <ul class="links-list">
-              <li><%= link_to "技术问题", "" -%></li>
-              <li><%= link_to "账户财务", "" -%></li>
+              <li><%= link_to "如何将线上..", "https://developer.qiniu.com/kodo/kb/how-to-heat-transfer-to-the-seven-niuyun-online-data" -%></li>
+              <li><%= link_to "上传慢如何诊断", "https://developer.qiniu.com/kodo/kb/slowly-upload" -%></li>
             </ul>
           </div>
           <div class="col-sm-3">
             <h4>产品动态</h4>
             <ul class="links-list">
-              <li><%= link_to "对象存储国内空间价格下调", "" -%></li>
-              <li><%= link_to "私有化部署服务上线", "" -%></li>
+              <li><%= link_to "华南机房存储空间降价", "http://blog.qiniu.com/archives/8498?hmsr=huananjiangjiabanner&hmpl=huananjiangjiabanner&hmcu=huananjiangjiabanner&hmkw=&hmci=" -%></li>
+              <li><%= link_to "跨区域同步功能上线", "https://developer.qiniu.com/kodo/manual/1700/cross-regional-synchronization" -%></li>
+              <li><%= link_to "私有化部署服务上线", solution_path -%></li>
             </ul>
           </div>
         </div>

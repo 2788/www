@@ -1,4 +1,4 @@
-<div class="features web-form form-wrapper">
+<div class="features web-form form-wrapper alert-modal-css">
   <div class="container">
     <div class="form-box">
       <h1 class="title">客户推荐表</h1>
@@ -16,21 +16,11 @@
         </div>
 
         <div class="form-group">
-          <label for="recommendation-website" class="col-sm-2 control-label">公司官网<small class="text-danger">*</small></label>
+          <label for="recommendation-city" class="col-sm-2 control-label">城市<small class="text-danger">*</small></label>
           <div class="col-sm-10">
-            <%= f.text_field :website, class:"form-control", id:"recommendation-website", validate: true %>
+            <%= f.text_field :city, class:"form-control", id:"recommendation-city", validate: true %>
             <div class="div-error">
-              <label for="" class="error-label">请填写公司官网</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="recommendation-business" class="col-sm-2 control-label">主营业务<small class="text-danger">*</small></label>
-          <div class="col-sm-10">
-            <%= f.text_field :business, class:"form-control", id:"recommendation-business", validate: true %>
-            <div class="div-error">
-              <label for="" class="error-label">请填写主营业务</label>
+              <label for="" class="error-label">请填写城市</label>
             </div>
           </div>
         </div>
@@ -46,7 +36,27 @@
         </div>
 
         <div class="form-group">
-          <label for="recommendation-phone" class="col-sm-2 control-label">手机<small class="text-danger">*</small></label>
+          <label for="recommendation-position" class="col-sm-2 control-label">职务<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :position, class:"form-control", id:"recommendation-position", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写职务</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-email" class="col-sm-2 control-label">电子邮箱<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :email, type: "email", class:"form-control", id:"recommendation-email", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写电子邮箱</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-phone" class="col-sm-2 control-label">联系电话<small class="text-danger">*</small></label>
           <div class="col-sm-10">
             <%= f.telephone_field :phone, class:"form-control", id:"recommendation-phone", validate: true %>
             <div class="div-error">
@@ -56,31 +66,48 @@
         </div>
 
         <div class="form-group">
-          <label for="recommendation-im" class="col-sm-2 control-label">QQ<small class="text-danger">*</small></label>
+          <label for="recommendation-desc" class="col-sm-2 control-label">需求描述<small class="text-danger">*</small></label>
           <div class="col-sm-10">
-            <%= f.text_field :im, class:"form-control", id:"recommendation-im", validate: true %>
-            <div class="div-error">
-              <label for="" class="error-label">请以填写QQ号</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="recommendation-email" class="col-sm-2 control-label">E-mail<small class="text-danger">*</small></label>
-          <div class="col-sm-10">
-            <%= f.text_field :email, type: "email", class:"form-control", id:"recommendation-email", validate: true %>
-            <div class="div-error">
-              <label for="" class="error-label">请填写E-mail</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="recommendation-intention" class="col-sm-2 control-label">合作意向</label>
-          <div class="col-sm-10">
-            <%= f.text_area :intention, size: "x5", maxLength: 200, class: "form-control", id:"recommendation-intention" %>
+            <%= f.text_area :desc, size: "x5", maxLength: 200, class: "form-control", id:"recommendation-desc", validate: true %>
             <div class="maxLength-tips">
               <label for="" class="maxLength-label">最多可输入200字</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-business" class="col-sm-2 control-label">紧急程度<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <select role="tablist" id="emergency" class="select-lg">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-recommender_name" class="col-sm-2 control-label">推荐人姓名<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.text_field :recommender_name, class:"form-control", id:"recommendation-recommender_name", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请填写推荐人姓名</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recommendation-recommender_phone" class="col-sm-2 control-label">推荐人手机<small class="text-danger">*</small></label>
+          <div class="col-sm-10">
+            <%= f.telephone_field :recommender_phone, class:"form-control", id:"recommendation-recommender_phone", validate: true %>
+            <div class="div-error">
+              <label for="" class="error-label">请以正确的格式填写推荐人手机</label>
             </div>
           </div>
         </div>
@@ -91,4 +118,5 @@
       <% end %>
     </div>
   </div>
+  <div class="modal-footer alert alert-info" role="alert">推荐说明：紧急程度分为1-9级别，1-3代表“暂无需求，有机会合作”，4-6代表“模糊需求，但公司知名度或联系人职位高，需要联系”，7-9代表“明确需求，需尽快联系”。推荐人将被纳入牛人推荐奖励计划。</div>
 </div>
