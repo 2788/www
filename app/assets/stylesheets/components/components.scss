@@ -125,6 +125,11 @@ label{ font-weight: 300; }
   .modal-header{ text-align: center; }
   .modal-body{
     padding: 25px;
+
+    .tips{
+      padding: 0 0 20px 0;
+      color: #07A0DF;
+    }
   }
   .actions{
     padding-top: 12px;
