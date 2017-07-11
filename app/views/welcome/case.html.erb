@@ -75,69 +75,32 @@
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
-        <li class="active"><a href="#tab-usage-section-1" data-toggle="tab">社交网络</a></li>
-        <li><a href="#tab-usage-section-2" data-toggle="tab">时尚生活</a></li>
-        <li><a href="#tab-usage-section-3" data-toggle="tab">文化娱乐</a></li>
-        <li><a href="#tab-usage-section-4" data-toggle="tab">医疗健康</a></li>
-        <li><a href="#tab-usage-section-5" data-toggle="tab">在线教育</a></li>
-        <li><a href="#tab-usage-section-6" data-toggle="tab">交通旅游</a></li>
-        <li><a href="#tab-usage-section-7" data-toggle="tab">智能硬件</a></li>
-        <li><a href="#tab-usage-section-8" data-toggle="tab">工具软件</a></li>
-        <li><a href="#tab-usage-section-9" data-toggle="tab">安防</a></li>
-        <li><a href="#tab-usage-section-10" data-toggle="tab">金融</a></li>
-        <li><a href="#tab-usage-section-11" data-toggle="tab">广电</a></li>
-        <li><a href="#tab-usage-section-12" data-toggle="tab">移动通信</a></li>
+        <li class="active"><a href="#im" data-toggle="tab">社交网络</a></li>
+        <li><a href="#fashion" data-toggle="tab">时尚生活</a></li>
+        <li><a href="#enjoyment" data-toggle="tab">文化娱乐</a></li>
+        <li><a href="#health" data-toggle="tab">医疗健康</a></li>
+        <li><a href="#education" data-toggle="tab">在线教育</a></li>
+        <li><a href="#traffics" data-toggle="tab">交通旅游</a></li>
+        <li><a href="#hardware" data-toggle="tab">智能硬件</a></li>
+        <li><a href="#software" data-toggle="tab">工具软件</a></li>
+        <li><a href="#safe" data-toggle="tab">安防</a></li>
+        <li><a href="#wealth" data-toggle="tab">金融</a></li>
+        <li><a href="#media" data-toggle="tab">广电</a></li>
+        <li><a href="#network" data-toggle="tab">移动通信</a></li>
       </ul>
       <div class="tab-content">
-        <section id="tab-usage-section-1" class="tab-pane fade in active">
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-jiandanyiyong@2x.png", class: "media-object", alt: "简单易用", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-gaoxiaowending@2x.png", class: "media-object", alt: "高效稳定", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-jiandanyiyong@2x.png", class: "media-object", alt: "简单易用", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-gaoxiaowending@2x.png", class: "media-object", alt: "高效稳定", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-kaifangronghe@2x.png", class: "media-object", alt: "开放融合", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-kedingzhihua@2x.png", class: "media-object", alt: "可定制化", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-kaifangronghe@2x.png", class: "media-object", alt: "开放融合", width: 60 %>
-            </div>
-          </div>
-
-          <div class="col-sm-3 col-md-2">
-            <div class="thumbnail feature-case">
-              <%= image_tag "pandora/icon-kedingzhihua@2x.png", class: "media-object", alt: "可定制化", width: 60 %>
-            </div>
-          </div>
-        </section>
+        <% I18n.t("cases").each do |logos| %>
+          <% groupid = logos[:groupid] %>
+          <section id= <%= groupid %> class="tab-pane fade in active">
+            <% logos[:group].each do |logo| %>
+              <div class="col-sm-3 col-md-2">
+                <div class="thumbnail feature-case">
+                  <%= image_tag logo[:imgpath], class: "list-img", alt: "案例", width: 100 %>
+                </div>
+              </div>
+            <% end %>
+          </section>
+        <% end %>
 
       </div>
     </div>
