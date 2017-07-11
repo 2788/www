@@ -58,6 +58,11 @@ html{
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
+  .btn-banner{
+    position: relative;
+    top: 350px;
+  }
+
   a.out_link{
     display: inline-block;
     margin-top: 0;
