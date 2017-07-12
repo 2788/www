@@ -225,12 +225,11 @@ table.pricing-table tr th, table.pricing-table tr td{
   }
 
   .sum{
-    padding: 0;
+    padding: 10px;
+    margin: 0;
     background-color: rgb(67, 158, 217);
     color: #fff;
     font-size: 18px;
-    height: 50px;
-    line-height: 50px;
     text-align: center;
 
     &:hover{
@@ -314,7 +313,7 @@ input[type="range"]{
 }
 
 .pricing-caculator{
-  width: 1024px;
+  width: 840px;
 }
 
 .pricing-info-wrapper{

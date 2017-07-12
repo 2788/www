@@ -505,6 +505,12 @@ img.list-img{
   .features{
     padding: 50px 0 60px;
   }
+  .pricing-caculator{
+    width: 630px;
+  }
+  input[type="range"]{
+    width: 70%;
+  }
 }
 
 
@@ -526,6 +532,19 @@ img.list-img{
       width: auto;
       .media-heading{ text-align: center; }
     }
+  }
+
+  .pricing-caculator{
+    width: 66%;
+  }
+  .pricing-info-wrapper{
+    width: 20%;
+  }
+  input[type="range"]{
+    width: 70%;
+  }
+  .input-num{
+    width: 72px;
   }
 }
 
