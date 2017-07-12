@@ -57,12 +57,10 @@ $(document).ready ->
       fusionoutlandDOM.addClass("displayNone")
       rangeFusionHTTP.attr('max', 10000000)
       rangeFusionHTTPS.attr('max', 10000000)
-      fusionUnit.text('GB/月')
     else if fusionoutlandDOM.hasClass("displayNone")
       fusionoutlandDOM.removeClass("displayNone")
-      rangeFusionHTTP.attr('max', 10000)
-      rangeFusionHTTPS.attr('max', 10000)
-      fusionUnit.text('TB/月')
+      rangeFusionHTTP.attr('max', 100000000)
+      rangeFusionHTTPS.attr('max', 100000000)
     renderRange('#range-fusion-HTTP', $('#range-fusion-HTTP').val())
     renderRange('#range-fusion-HTTPS', $('#range-fusion-HTTPS').val())
     setPrice()
@@ -134,7 +132,7 @@ $(document).ready ->
     prev = 0
     for j of obj
       if region == j
-        sum = cacuSum num*1024, obj[j]
+        sum = cacuSum num, obj[j]
         break
     sum
 
