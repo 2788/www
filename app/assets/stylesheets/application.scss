@@ -63,18 +63,6 @@ html{
     top: 350px;
   }
 
-  a.out_link{
-    display: inline-block;
-    margin-top: 0;
-    color: #fff;
-  }
-
-  a.alert-modal{
-    display: inline-block;
-    margin-top: 0;
-    color: $brand-primary;
-  }
-
   &.hero-banner1{ background-image: image-url('ssl.jpg');}
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
   &.hero-banner3{ background-image: image-url('southern-price-reduce.jpg')}
@@ -111,6 +99,16 @@ html{
   }
 }
 
+a.out_link{
+  display: inline-block;
+  margin-top: 0;
+  color: #fff;
+}
+
+a.underline{
+  text-decoration: underline;
+}
+
 .features-nav{
   height: 46px;
   margin-top: 0;
@@ -123,6 +121,10 @@ html{
 
   .list li.active a{
     color: #00a0de;
+  }
+
+  .list li.hot a{
+    color: #2f3033;
   }
 
   .btn.feature-btn{
