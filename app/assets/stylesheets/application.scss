@@ -37,6 +37,7 @@
 @import "case";
 @import "prices";
 @import "solution";
+@import "dora";
 
 html{
   position: relative;
@@ -182,6 +183,12 @@ a.underline{
 
     .col-padding{
       padding: 50px;
+    }
+
+    .col-clear{
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0;
     }
   }
 

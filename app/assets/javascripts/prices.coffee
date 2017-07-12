@@ -204,6 +204,13 @@ $(document).ready ->
   $('.amount-input').bind 'input', ->
     key = $(this).attr('key')
     setAmount(key, +$(this).val())
+  #///////////////////////////////////////////////////////////////
+  ## input框最大值的限制
+  # $('.amount-input').change (e) ->
+  #   max = $(this).attr('max')
+  #   val = $(this).val()
+  #   if val > max
+  #     $(this).val() = val
 
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
