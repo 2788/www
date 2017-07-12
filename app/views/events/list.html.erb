@@ -10,217 +10,44 @@
     </div>
 
     <div class="row tech-row">
-      <div class="col-sm-6 col-md-4 tech-col">
-        <div class="title">
-          <time>
-            <strong>20</strong>
-            <span>4月</span>
-          </time>
-          <p>第六期 首席架构师的自我修养</p>
-        </div>
-
-        <div class="infobox">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", class: "case" -%>
-
-          <a class="btn-icon" href="" target="_blank"></a>
-          <div class="lecturer">
-            <div class="lecturer-box">
-              <div class="img-box">
-                <%= image_tag "test.jpg", class: "lecturer-photo", alt: "李道兵", width: 50 %>
-              </div>
-
-              <div class="lecturer-info-box">
-                <div class="lecturer-tail">
-                  <h4 class="lecturer-name">李道兵</h4>
-                  <h5 class="lecturer-job">七牛首席架构师</h5>
+      <% @events.each do |event| %>
+        <div class="col-sm-6 col-md-4 tech-col">
+          <div class="title">
+            <time>
+              <strong><%= event[:date].strftime('%d') -%></strong>
+              <span><%= event[:date].strftime('%m') -%>月</span>
+            </time>
+            <p class="text-ellipse"><%= event[:name] -%></p>
+          </div>
+          <div class="infobox">
+            <div class="case">
+              <a class="btn-icon" href="" target="_blank"></a>
+              <%= image_tag event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim" -%>
+            </div>
+            <div class="lecturer">
+              <div class="lecturer-box">
+                <div class="img-box">
+                  <%= image_tag event[:avatar] + '?imageView2/1/w/100/h/100/format/jpg/q/75|imageslim', class: "lecturer-photo", alt: event[:speaker], width: 50 %>
                 </div>
-                <div class="short-line"></div>
-                <div class="short-line"></div>
-                <div class="btn-dwn-wrap">
-                  <%= link_to "PPT", asset_url('client-dazhong@2x.jpg'), download: "ppt", class: "ppt-download", target: "_blank"  -%>
-                  <%= link_to "速记稿", asset_url('client-dazhong@2x.jpg'), download: "text", class: "notes-download", target: "_blank"  -%>
+
+                <div class="lecturer-info-box">
+                  <div class="lecturer-tail">
+                    <h4 class="lecturer-name"><%= event[:speaker] -%></h4>
+                    <h5 class="lecturer-job"><%= event[:title] -%></h5>
+                  </div>
+                  <div class="short-line"></div>
+                  <div class="btn-dwn-wrap">
+                    <%= link_to "PPT", event[:ppt], download: "ppt", class: "ppt-download", target: "_blank"  -%>
+                    <% if event[:note].length != 0 %>
+                      <%= link_to "速记稿", event[:note], download: "text", class: "notes-download", target: "_blank"  -%>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4 tech-col">
-        <div class="title">
-          <time>
-            <strong>20</strong>
-            <span>4月</span>
-          </time>
-          <p>第六期 首席架构师的自我修养</p>
-        </div>
-
-        <div class="infobox">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", class: "case" -%>
-
-          <a class="btn-icon" href="" target="_blank"></a>
-          <div class="lecturer">
-            <div class="lecturer-box">
-              <div class="img-box">
-                <%= image_tag "test.jpg", class: "lecturer-photo", alt: "李道兵", width: 50 %>
-              </div>
-
-              <div class="lecturer-info-box">
-                <div class="lecturer-tail">
-                  <h4 class="lecturer-name">李道兵</h4>
-                  <h5 class="lecturer-job">七牛首席架构师</h5>
-                </div>
-                <div class="short-line"></div>
-                <div class="btn-dwn-wrap">
-                  <%= link_to "PPT", asset_url('client-dazhong@2x.jpg'), download: "ppt", class: "ppt-download", target: "_blank"  -%>
-                  <%= link_to "速记稿", asset_url('client-dazhong@2x.jpg'), download: "text", class: "notes-download", target: "_blank"  -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-sm-6 col-md-4 tech-col">
-        <div class="title">
-          <time>
-            <strong>20</strong>
-            <span>4月</span>
-          </time>
-          <p>第六期 首席架构师的自我修养</p>
-        </div>
-
-        <div class="infobox">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", class: "case" -%>
-
-          <a class="btn-icon" href="" target="_blank"></a>
-          <div class="lecturer">
-            <div class="lecturer-box">
-              <div class="img-box">
-                <%= image_tag "test.jpg", class: "lecturer-photo", alt: "李道兵", width: 50 %>
-              </div>
-
-              <div class="lecturer-info-box">
-                <div class="lecturer-tail">
-                  <h4 class="lecturer-name">李道兵</h4>
-                  <h5 class="lecturer-job">七牛首席架构师</h5>
-                </div>
-                <div class="short-line"></div>
-                <div class="btn-dwn-wrap">
-                  <%= link_to "PPT", asset_url('client-dazhong@2x.jpg'), download: "ppt", class: "ppt-download", target: "_blank"  -%>
-                  <%= link_to "速记稿", asset_url('client-dazhong@2x.jpg'), download: "text", class: "notes-download", target: "_blank"  -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-sm-6 col-md-4 tech-col">
-        <div class="title">
-          <time>
-            <strong>20</strong>
-            <span>4月</span>
-          </time>
-          <p>第六期 首席架构师的自我修养</p>
-        </div>
-
-        <div class="infobox">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", class: "case" -%>
-
-          <a class="btn-icon" href="" target="_blank"></a>
-          <div class="lecturer">
-            <div class="lecturer-box">
-              <div class="img-box">
-                <%= image_tag "test.jpg", class: "lecturer-photo", alt: "李道兵", width: 50 %>
-              </div>
-
-              <div class="lecturer-info-box">
-                <div class="lecturer-tail">
-                  <h4 class="lecturer-name">李道兵</h4>
-                  <h5 class="lecturer-job">七牛首席架构师</h5>
-                </div>
-                <div class="short-line"></div>
-                <div class="btn-dwn-wrap">
-                  <%= link_to "PPT", asset_url('client-dazhong@2x.jpg'), download: "ppt", class: "ppt-download", target: "_blank"  -%>
-                  <%= link_to "速记稿", asset_url('client-dazhong@2x.jpg'), download: "text", class: "notes-download", target: "_blank"  -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-sm-6 col-md-4 tech-col">
-        <div class="title">
-          <time>
-            <strong>20</strong>
-            <span>4月</span>
-          </time>
-          <p>第六期 首席架构师的自我修养</p>
-        </div>
-
-        <div class="infobox">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", class: "case" -%>
-
-          <a class="btn-icon" href="" target="_blank"></a>
-          <div class="lecturer">
-            <div class="lecturer-box">
-              <div class="img-box">
-                <%= image_tag "test.jpg", class: "lecturer-photo", alt: "李道兵", width: 50 %>
-              </div>
-
-              <div class="lecturer-info-box">
-                <div class="lecturer-tail">
-                  <h4 class="lecturer-name">李道兵</h4>
-                  <h5 class="lecturer-job">七牛首席架构师</h5>
-                </div>
-                <div class="short-line"></div>
-                <div class="btn-dwn-wrap">
-                  <%= link_to "PPT", asset_url('client-dazhong@2x.jpg'), download: "ppt", class: "ppt-download", target: "_blank"  -%>
-                  <%= link_to "速记稿", asset_url('client-dazhong@2x.jpg'), download: "text", class: "notes-download", target: "_blank"  -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-       <div class="col-sm-6 col-md-4 tech-col">
-        <div class="title">
-          <time>
-            <strong>20</strong>
-            <span>4月</span>
-          </time>
-          <p>第六期 首席架构师的自我修养</p>
-        </div>
-
-        <div class="infobox">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", class: "case" -%>
-
-          <a class="btn-icon" href="" target="_blank"></a>
-          <div class="lecturer">
-            <div class="lecturer-box">
-              <div class="img-box">
-                <%= image_tag "test.jpg", class: "lecturer-photo", alt: "李道兵", width: 50 %>
-              </div>
-
-              <div class="lecturer-info-box">
-                <div class="lecturer-tail">
-                  <h4 class="lecturer-name">李道兵</h4>
-                  <h5 class="lecturer-job">七牛首席架构师</h5>
-                </div>
-                <div class="short-line"></div>
-                <div class="btn-dwn-wrap">
-                  <%= link_to "PPT", asset_url('client-dazhong@2x.jpg'), download: "ppt", class: "ppt-download", target: "_blank"  -%>
-                  <%= link_to "速记稿", asset_url('client-dazhong@2x.jpg'), download: "text", class: "notes-download", target: "_blank"  -%>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <% end %>
     </div>
   </div>
 </div>

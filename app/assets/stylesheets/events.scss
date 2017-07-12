@@ -18,6 +18,11 @@
     margin: 0 10px 10px;
     float: left;
     height: 100%;
+    cursor: pointer;
+
+    .case {
+      position: relative;
+    }
 
     h5{
       padding:10px;
@@ -35,7 +40,7 @@
 
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 20% 25%;
+      background-size: 50px 50px;
     }
 
     .btn-icon-visited{
