@@ -89,33 +89,7 @@
                 <dd>低频存储的计费项方式如下</dd>
                 <dd class="formula">存储容量费用+API请求费用+读取流量费用+存储类型转换费用</dd>
               </dl>
-
-              <ul class="list-inline list-inline-prices">
-                <li>
-                  <div class="div-init">
-                    <h5>每月免费存储容量</h5>
-                    <p><span class="big-text">0-10 </span><span class="smal-text"> GB</span></p>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <h5>API请求 （GET/PUT）</h5>
-                    <p><span class="big-text">0.1 </span><span class="smal-text"> 元/万次</span></p>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <h5>读取流量</h5>
-                    <p><span class="big-text">+ 0.06 </span><span class="smal-text"> 元/GB</span></p>
-                  </div>
-                </li>
-                <li>
-                  <div class="border-init">
-                    <h5>存储类型转换</h5>
-                    <p><span class="big-text">0.1 </span><span class="smal-text"> 元/万次</span></p>
-                  </div>
-                </li>
-              </ul>
+              <h5>注：低频存储对象 Object 最短存储期限为60天，早于60天删除的Object，其存储费用按60天计算 <a href="https://developer.qiniu.com/kodo/manual/3737/infrequent-storage" class="more">更多说明</a></h5>
             </div>
           </div>
 
@@ -131,15 +105,15 @@
                 </tr>
                 <tr>
                   <th rowspan="5">存储空间（华东）</th>
-                  <td class="border-bottom">第 0 GB 至 10 GB</td>
-                  <td class="border-bottom">免费</td>
+                  <td class="border-bottom light-bkcolor">第 0 GB 至 10 GB</td>
+                  <td class="border-bottom light-bkcolor">免费</td>
                   <th rowspan="5">0.06元/GB/月</th>
                 </tr>
                 <tr>
                   <td class="border-bottom">第 10 GB 至 1 TB</td>
                   <td class="border-bottom">0.148 元/GB/月</td>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 1 TB 至 200 TB</td>
                   <td class="border-bottom">0.145 元/GB/月</td>
                 </tr>
@@ -147,7 +121,7 @@
                   <td class="border-bottom">第 200 TB 至 5120 TB</td>
                   <td class="border-bottom">0.142 元/GB/月</td>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 5120 TB 以上</td>
                   <td class="border-bottom">0.139 元/GB/月</td>
                 </tr>
@@ -157,7 +131,7 @@
                   <td class="border-bottom">免费</td>
                   <th rowspan="5">0.06元/GB/月</th>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 10 GB 至 1 TB</td>
                   <td class="border-bottom">0.134 元/GB/月</td>
                 </tr>
@@ -165,7 +139,7 @@
                   <td class="border-bottom">第 1 TB 至 200 TB</td>
                   <td class="border-bottom">0.131 元/GB/月</td>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 200 TB 至 5120 TB</td>
                   <td class="border-bottom">0.128 元/GB/月</td>
                 </tr>
@@ -175,15 +149,15 @@
                 </tr>
                 <tr>
                   <th rowspan="5">存储空间（华北）</th>
-                  <td class="border-bottom">第 0 GB 至 10 GB</td>
-                  <td class="border-bottom">免费</td>
+                  <td class="border-bottom light-bkcolor">第 0 GB 至 10 GB</td>
+                  <td class="border-bottom light-bkcolor">免费</td>
                   <th rowspan="5">0.06元/GB/月</th>
                 </tr>
                 <tr>
                   <td class="border-bottom">第 10 GB 至 1 TB</td>
                   <td class="border-bottom">0.148 元/GB/月</td>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 1 TB 至 200 TB</td>
                   <td class="border-bottom">0.145 元/GB/月</td>
                 </tr>
@@ -191,7 +165,7 @@
                   <td class="border-bottom">第 200 TB 至 5120 TB</td>
                   <td class="border-bottom">0.142 元/GB/月</td>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 5120 TB 以上</td>
                   <td class="border-bottom">0.139 元/GB/月</td>
                 </tr>
@@ -201,7 +175,7 @@
                   <td class="border-bottom">免费</td>
                   <th rowspan="2">0.1元/万次</th>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 10 万次以上</td>
                   <td class="border-bottom">0.001 元/千次（2017-01-01 起生效此价格）</td>
                 </tr>
@@ -211,7 +185,7 @@
                   <td class="border-bottom">免费</td>
                   <th rowspan="2">0.1元/万次</th>
                 </tr>
-                <tr>
+                <tr class="light-bkcolor">
                   <td class="border-bottom">第 100 万次以上</td>
                   <td class="border-bottom">0.001 元/千次</td>
                 </tr>
@@ -222,8 +196,8 @@
                 </tr>
                 <tr>
                   <th>上传流量</th>
-                  <td class="border-bottom">无限制</td>
-                  <td class="border-bottom">免费</td>
+                  <td class="border-bottom light-bkcolor">无限制</td>
+                  <td class="border-bottom light-bkcolor">免费</td>
                   <th>免费</th>
                 </tr>
                 <tr>
@@ -233,8 +207,8 @@
                   <th>0.29元/GB</th>
                 </tr>
                 <tr>
-                  <td class="border-bottom">100TB-以上</td>
-                  <td class="border-bottom">0.26元/GB</td>
+                  <td class="border-bottom light-bkcolor">100TB-以上</td>
+                  <td class="border-bottom light-bkcolor">0.26元/GB</td>
                   <th>0.26元/GB</th>
                 </tr>
                 <tr>
@@ -244,8 +218,8 @@
                   <th>0.29元/GB</th>
                 </tr>
                 <tr>
-                  <td class="border-bottom">国内<->海外</td>
-                  <td class="border-bottom">0.58元/GB</td>
+                  <td class="border-bottom light-bkcolor">国内<->海外</td>
+                  <td class="border-bottom light-bkcolor">0.58元/GB</td>
                   <th>0.58元/GB</th>
                 </tr>
                 <tr>
@@ -255,7 +229,6 @@
                 </tr>
               </tbody>
             </table>
-            <p>注：低频存储对象 Object 最短存储期限为60天，早于60天删除的Object，其存储费用按60天计算 <a href="https://developer.qiniu.com/kodo/manual/3737/infrequent-storage" class="more">更多说明</a></p>
           </div>
         </section>
 
