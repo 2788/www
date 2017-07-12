@@ -99,7 +99,7 @@ $(document).ready ->
         slidesToShow: 2
         slidesToScroll: 2
     }]
-
+  # banner slider
   $('.banners-slider').slick
     dots: true
     autoplay: true

@@ -101,6 +101,7 @@
           </div>
           <div class="modal-body">
             <div id="feedback-alert" class="alert alert-success" style="display: none;"></div>
+            <div class="tips">温馨提示：此表单仅用于产品及服务售前咨询，如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more" -%>，谢谢!</div>
 
 
             <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| %>
@@ -148,7 +149,7 @@
               </div>
             <% end %>
           </div>
-          <div class="modal-footer alert alert-info" role="alert">温馨提示：我们会尽快与您联系（工作时间：周一至周五， 9:00-18:00）。紧急问题建议您拨打 <strong>400-808-9176 (7&Chi;24)</strong> 或提交工单，谢谢！</div>
+          <!--<div class="modal-footer alert alert-info" role="alert">温馨提示：我们会尽快与您联系（工作时间：周一至周五， 9:00-18:00）。紧急问题建议您拨打 <strong>400-808-9176 (7&Chi;24)</strong> 或提交工单，谢谢！</div>-->
         </div>
       </div>
     </div>
