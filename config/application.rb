@@ -36,5 +36,7 @@ module Official
     config.i18n.default_locale = "zh-CN"
 
     config.exceptions_app = self.routes
+
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
