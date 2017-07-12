@@ -109,6 +109,11 @@ a.underline{
   text-decoration: underline;
 }
 
+.kodo-modal{
+  font-size: 16px;
+  line-height: 1.8;
+}
+
 .features-nav{
   height: 46px;
   margin-top: 0;
@@ -169,6 +174,10 @@ a.underline{
     .col-sm-8.col-init{
       padding-right: 0;
       padding-left: 35px;
+    }
+
+    .col-sm-6.col-sm-6-init{
+      padding-left: 15px;
     }
 
     .col-padding{
@@ -251,6 +260,15 @@ a.underline{
 }
 .light-bkcolor{
   background-color: #f6f8fa;
+}
+
+.features-hotnews{
+  .left-hotnews{
+    padding-left: 50px;
+  }
+  .right-hotnews{
+    padding-right: 50px;
+  }
 }
 .features-solution{
   background: #F7F8F9;
