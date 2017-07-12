@@ -65,6 +65,12 @@ $(document).ready ->
       fusionUnit.text('TB/月')
     renderRange('#range-fusion-HTTP', $('#range-fusion-HTTP').val())
     renderRange('#range-fusion-HTTPS', $('#range-fusion-HTTPS').val())
+    setPrice()
+
+  #//////////////////////////////////////////////////////////////////////
+  ## 控制标准存储 区域select-->price
+  $("#kodo").change (e) ->
+    setPrice()
 
   #/////////////////////////////////////////////////////////////////////
   ## 公用方法
@@ -128,12 +134,32 @@ $(document).ready ->
     prev = 0
     for j of obj
       if region == j
-        sum = cacuSum num, obj[j]
+        sum = cacuSum num*1024, obj[j]
         break
     sum
 
   #caculate all prices and set
-  setPrice = (amountJSON) ->
+  setPrice = () ->
+    # 获取数量
+    amountJSON =
+      kodo:
+        area: kodoDOM.val()
+        space: numkodospaceDOM.val()
+        reads: numkodoreadDOM.val()
+        writes: numkodowriteDOM.val()
+      lowKodo:
+        space: numlowkodospaceDOM.val()
+        APIs: numlowkodoAPIDOM.val()
+        types: numlowkodotypeDOM.val()
+        HTTPs: numlowkodoHTTPDOM.val()
+      fusion:
+        area:
+          land: fusionDOM.val()
+          region: null
+        HTTPs: numfusionHTTPDOM.val()
+        HTTPSs: numfusionHTTPSDOM.val()
+    if amountJSON.fusion.area.land == 'outland'
+      amountJSON.fusion.area.region = fusionoutlandDOM.val()
     # kodo的价格计算
     kodoVal =  cacuSum(amountJSON.kodo.space, kodoData[amountJSON.kodo.area]) + cacuSum(amountJSON.kodo.reads, kodoData['reads']) + cacuSum(amountJSON.kodo.writes, kodoData['writes'])
     kodoVal = if isNaN(kodoVal) then 0 else kodoVal/1000
@@ -161,27 +187,7 @@ $(document).ready ->
     renderRange('#range-' + key, val)
     $('#num-' + key).val(val)
     $('#text-' + key).text(val)
-    # 获取数量
-    amountJSON =
-      kodo:
-        area: kodoDOM.val()
-        space: numkodospaceDOM.val()
-        reads: numkodoreadDOM.val()
-        writes: numkodowriteDOM.val()
-      lowKodo:
-        space: numlowkodospaceDOM.val()
-        APIs: numlowkodoAPIDOM.val()
-        types: numlowkodotypeDOM.val()
-        HTTPs: numlowkodoHTTPDOM.val()
-      fusion:
-        area:
-          land: fusionDOM.val()
-          region: null
-        HTTPs: numfusionHTTPDOM.val()
-        HTTPSs: numfusionHTTPSDOM.val()
-    if amountJSON.fusion.area.land == 'outland'
-      amountJSON.fusion.area.region = fusionoutlandDOM.val()
-    setPrice(amountJSON)
+    setPrice()
 
   # 容错
   if $('#feature-price-nav').length != 0
