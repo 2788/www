@@ -12,21 +12,22 @@ Rails.application.routes.draw do
   end
 
   root to: 'welcome#index'
-  get '/kodo',        to: 'welcome#kodo'
-  get '/pili',        to: 'welcome#pili'
-  get '/pandora',     to: 'welcome#pandora'
+  get '/products/kodo',        to: 'welcome#kodo'
+  get '/products/pili',        to: 'welcome#pili'
+  get '/products/pandora',     to: 'welcome#pandora'
+  get '/products/fusion',      to: 'welcome#fusion'
+  get '/products/dora',        to: 'welcome#dora'
+  get '/products/kirk',        to: 'welcome#kirk'
+  get '/products/vance',       to: 'welcome#vance'
+  get '/products/atlib',       to: 'welcome#atlib'
+
   get '/contact',     to: 'welcome#contact'
-  get '/fusion',      to: 'welcome#fusion'
-  get '/dora',        to: 'welcome#dora'
-  get '/kirk',        to: 'welcome#kirk'
-  get '/vance',       to: 'welcome#vance'
-  get '/solutions',    to: 'welcome#solution'
+  get '/solutions',   to: 'welcome#solution'
   get '/news',        to: 'welcome#news'
-  get '/product_news', to: 'welcome#product_news'
+  get '/product_news',to: 'welcome#product_news'
   get '/welfares',    to: 'welcome#welfares'
   get '/company',     to: 'welcome#company'
   get '/case',        to: 'welcome#case'
-  get '/atlib',       to: 'welcome#atlib'
 
   resources 'events', only: [:index] do
     collection do

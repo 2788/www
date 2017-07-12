@@ -44,7 +44,7 @@
                   <%= content_tag :li, service[:group], class: "menu-title" -%>
 
                   <% service[:list].each do |product| %>
-                    <%= content_tag :li, link_to(content_tag(:h4, product[:label],class: product[:name]) + content_tag(:p, product[:desc]), '/' + product[:name]), class: "service" -%>
+                    <%= content_tag :li, link_to(content_tag(:h4, product[:label],class: product[:name]) + content_tag(:p, product[:desc]), '/products/' + product[:name]), class: "service" -%>
                   <% end %>
                 <% end %>
               </ul>
