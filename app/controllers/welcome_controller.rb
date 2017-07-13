@@ -48,7 +48,7 @@ class WelcomeController < ApplicationController
   def case
   end
 
-  def atlib
+  def atlab
   end
 
   def plsv

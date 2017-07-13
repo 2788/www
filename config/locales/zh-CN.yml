@@ -16,7 +16,7 @@ zh-CN:
 
     - group: 数据•智能
       list:
-        - name: atlib
+        - name: atlab
           label: 深度学习平台
           desc: 针对图片视频的一站式数据集中处理、模型训练平台
 
@@ -167,7 +167,7 @@ zh-CN:
       title: 客户案例 - 七牛云
       keywords: keywords
       description: description
-    welcome_atlib:
+    welcome_atlab:
       title: 深度学习平台 - 七牛云
       keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
       description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
