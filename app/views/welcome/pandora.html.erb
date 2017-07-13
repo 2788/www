@@ -33,24 +33,25 @@
     </div>
 
     <div class="col-sm-12 col-padding">
-        <%= image_tag "pandora/img-productSchema.png", class: "bottom-line" %>
+        <%= image_tag "pandora/img-productSchema.png" %>
     </div>
   </div>
 </div>
 
-<div class="features tab-content-section-2">
+<div class="features feature-color tab-content-section-2">
   <div class="container">
     <div class="intro">
       <h2 class="title">产品优势</h2>
     </div>
 
-    <div class="row bottom-line">
+    <div class="row">
       <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
           <%= image_tag "pandora/icon-jiandanyiyong@2x.png", class: "media-object", alt: "简单易用", width: 60 %>
-          <div class="caption">
+          <div class="caption caption-center">
             <h4>简单</h4>
-            <p>无需大数据技术背景，开箱即用，极易上手，可视化展示分析结果</p>
+            <p>无需大数据技术背景，开箱即用</p>
+            <p>极易上手，可视化展示分析结果</p>
           </div>
         </div>
       </div>
@@ -58,9 +59,11 @@
       <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
           <%= image_tag "pandora/icon-gaoxiaowending@2x.png", class: "media-object", alt: "高效", width: 60 %>
-          <div class="caption">
+          <div class="caption caption-center">
             <h4>高效</h4>
-            <p>低成本高质量的轻松应对海量数据处理，快速实现业务价值提升，用户可将资源聚焦于业务价值提升，无需关注复杂的大数据实现技术</p>
+            <p>低成本高质量的轻松应对海量数据处理</p>
+            <p>用户可将资源聚焦于业务价值提升</p>
+            <p>无需关注复杂的大数据实现技术</p>
           </div>
         </div>
       </div>
@@ -68,9 +71,11 @@
       <div class="col-md-4 col-sm-6">
         <div class="thumbnail">
           <%= image_tag "pandora/icon-kaifangronghe@2x.png", class: "media-object", alt: "开放", width: 60 %>
-          <div class="caption">
+          <div class="caption caption-center">
             <h4>开放</h4>
-            <p>支持多数据源接入，与七牛云生态完美结合，高度可定制化，支持私有化部署，为用户赋能应用大数据的核心能力</p>
+            <p>支持多数据源接入，完美结合七牛云生态</p>
+            <p>高度可定制化，支持私有化部署</p>
+            <p>为用户赋能应用大数据的核心能力</p>
           </div>
         </div>
       </div>
@@ -129,7 +134,7 @@
 
 </div>
 
-<div class="features features-custom-function section tab-content-section-4">
+<div class="features features-scene features-custom-function section tab-content-section-4">
   <div class="container">
     <div class="intro">
       <h2 class="title1">适用场景</h2>
@@ -143,37 +148,45 @@
       </ul>
 
       <div class="tab-content">
-        <div id="tab-usage-section-1" class="row tab-pane fade in active">
-          <div class="col-sm-6 img-box">
-            <%= image_tag "pandora/icon-wulianwangdashujuchuli@2x.png" %>
-          </div>
+        <section id="tab-usage-section-1" class="row tab-pane fade in active">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag "pandora/icon-wulianwangdashujuchuli@2x.png", class: "media-object img-left" %>
+            </div>
 
-          <div class="col-sm-6">
-            <h3 class="title2">数据化运维</h3>
-            <p class="section-content">实时收集与分析海量日志并聚合分类管理，高效搜索日志内容，快速定位信息，提升运维效率，降低投入成本。</p>
+            <div class="media-body">
+              <h3 class="title2">数据化运维</h3>
+              <p class="section-content">实时收集与分析海量日志并聚合分类管理，高效搜索日志内容，快速定位信息，提升运维效率，降低投入成本。</p>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div id="tab-usage-section-2" class="row tab-pane fade">
-          <div class="col-sm-6">
-            <h3 class="title2">数据化运营 </h3>
-            <p class="section-content">屏蔽了复杂的大数据技术体系，使业务部门无需苦等开发部门响应数据需求。自定义灵活配置，轻松得到数据分析结果，随时洞察用户行为，实现精细化运营，盘活海量数据驱动决策。</p>
-          </div>
-          <div class="col-sm-6 img-box">
-            <%= image_tag "pandora/icon-shujuchuliziyuantanxing@2x.png" %>
-          </div>
-        </div>
+        <section id="tab-usage-section-2" class="row tab-pane fade">
+          <div class="media">
+            <div class="media-body">
+              <h3 class="title2">数据化运营 </h3>
+              <p class="section-content">屏蔽了复杂的大数据技术体系，使业务部门无需苦等开发部门响应数据需求。自定义灵活配置，轻松得到数据分析结果，随时洞察用户行为，实现精细化运营，盘活海量数据驱动决策。</p>
+            </div>
 
-        <div id="tab-usage-section-3" class="row tab-pane fade">
-          <div class="col-sm-6 img-box">
-            <%= image_tag "pandora/icon-chuantonghangyeshuju@2x.png" %>
+            <div class="media-left">
+              <%= image_tag "pandora/icon-shujuchuliziyuantanxing@2x.png", class: "media-object img-left" %>
+            </div>
           </div>
+        </section>
 
-          <div class="col-sm-6">
-            <h3 class="title2">应用性能管理</h3>
-            <p class="section-content">用于移动应用及视频应用性能管理，通过对关键业务系统进行监测及分析、告警与优化，不断改善业务可靠性与稳定性，为终端用户提供优秀的体验，提升核心竞争力</p>
+        <section id="tab-usage-section-3" class="row tab-pane fade">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag "pandora/icon-chuantonghangyeshuju@2x.png", class: "media-object img-left" %>
+            </div>
+
+            <div class="media-body">
+              <h3 class="title2">应用性能管理</h3>
+              <p class="section-content">用于移动应用及视频应用性能管理，通过对关键业务系统进行监测及分析、告警与优化，不断改善业务可靠性与稳定性，为终端用户提供优秀的体验，提升核心竞争力</p>
+            </div>
           </div>
-        </div>
+        </section>
+
       </div>
     </div>
   </div>
