@@ -40,7 +40,7 @@ $(document).ready ->
     href = $(this).prop('href')
     hostname = $('<a>').prop('href', href).prop('hostname')
     ref = 'ref=' + window.location.hostname
-    if window.location.hostname != hostname && href.indexOf(ref) < 0
+    if hostname && hostname.length > 0 && window.location.hostname != hostname && href.indexOf(ref) < 0
       connector = if /\?/.test(href) then '&' else '?'
       href += connector + ref
       $(this).prop('href', href)
