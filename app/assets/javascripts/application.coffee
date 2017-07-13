@@ -51,7 +51,7 @@ $(document).ready ->
     autoplaySpeed: 2000
     arrows: false
     slidesToShow: 6
-    slidesToScroll: 1
+    slidesToScroll: 6
     responsive: [{
       breakpoint: 1024
       settings:
