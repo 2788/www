@@ -14,7 +14,7 @@ class Event
   field :speaker, type: String
   field :avatar, type: String
   field :title, type: String
-  field :is_top, type: String
+  field :is_top, type: Boolean
 
   default_scope -> { desc(:date) }
 
