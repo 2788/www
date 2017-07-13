@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   get '/products/dora',        to: 'welcome#dora'
   get '/products/kirk',        to: 'welcome#kirk'
   get '/products/vance',       to: 'welcome#vance'
-  get '/products/atlib',       to: 'welcome#atlib'
-  get 'products/plsv',         to: 'welcome#plsv'
+  get '/products/atlab',       to: 'welcome#atlab'
+  get '/products/plsv',        to: 'welcome#plsv'
 
   get '/contact',     to: 'welcome#contact'
   get '/solutions',   to: 'welcome#solution'
