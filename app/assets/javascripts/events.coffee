@@ -7,7 +7,7 @@ $(document).ready ->
     if src == undefined || src.length == 0
       return
     # 点击瞬间更改图标
-    $(this).find('.btn-icon').addClass('btn-icon-visited');
+    $(this).find('.btn-icon').addClass('btn-icon-visited')
     # 赋值video的src
     $('#edu-video').attr('src', src);
     # 展示video
@@ -16,4 +16,6 @@ $(document).ready ->
 $(document).ready ->
   # 点击完成恢复
     $('#video-play-modal').on 'hidden.bs.modal',->
-      $(".btn-icon").removeClass('btn-icon-visited');
+      $(".btn-icon").removeClass('btn-icon-visited')
+      # console.log $('#edu-video')
+      $('#edu-video').get(0).pause()
