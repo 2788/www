@@ -1,13 +1,18 @@
 .features.feature-solution{
-  margin-top: -30px;
-  padding-top: 0;
+  .left-line{
+    border-left: 1px solid #e5e5e5;
+  }
+
+  .right-line{
+    border-right: 1px solid #e5e5e5;
+  }
 }
 .row-solution{
   position: relative;
   margin-bottom: 40px;
   .col-scene{
-    padding: 100px 20px 70px 20px;
-    height: 550px;
+    padding-left: 35px;
+    padding-right: 35px;
 
     .col-scene_case{
       margin-top: 30px;
@@ -15,7 +20,8 @@
   }
 
   .col-solution{
-    padding: 100px 40px 0px 40px;
+    padding-left: 35px;
+    padding-right: 35px;
   }
 }
 
