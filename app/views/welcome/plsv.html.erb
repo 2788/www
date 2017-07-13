@@ -90,7 +90,7 @@
           <section id= <%= groupid %> class="tab-pane fade in active">
             <div class="row row-clear">
               <% plsv[:group].each do |logo| %>
-                <div class="col-sm-2 col-clear">
+                <div class="col-sm-2 col-clear col-5">
                   <div class="thumbnail thumbnail-icons">
                     <%= image_tag logo[:imgpath], alt: "服务", width: 40 %>
                     <div class="desc">
@@ -107,7 +107,7 @@
           <section id= <%= groupid %> class="tab-pane fade in">
             <div class="row row-clear">
               <% plsv[:group].each do |logo| %>
-                <div class="col-sm-2 col-clear">
+                <div class="col-sm-2 col-clear col-5">
                   <div class="thumbnail thumbnail-icons">
                     <%= image_tag logo[:imgpath], alt: "服务", width: 40 %>
                     <div class="desc">
