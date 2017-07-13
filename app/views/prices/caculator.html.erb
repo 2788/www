@@ -110,7 +110,7 @@
                       </select>
                     </li>
                     <li>
-                      <select class="select-lg" name="fusion-outland" id="fusion-outland" class>
+                      <select class="select-lg" name="fusion-outland" id="fusion-outland">
                         <option value="ENA">欧洲/北美洲</option>
                         <option value="Asia">亚洲（除中国/印度/东南亚）</option>
                         <option value="India">亚洲（东南亚/印度）</option>
@@ -122,15 +122,15 @@
                 </dd>
                 <dd>
                   <h5>HTTP下载流量</h5>
-                  <input type="range" value="0" min="0" max="10000" step="1" class="input-range amount-input" id="range-fusion-HTTP" key="fusion-HTTP">
-                  <input type="number" class="input-num amount-input" min="0" max="10000" id="num-fusion-HTTP" key="fusion-HTTP">
-                  <span class="fusion-unit">TB/月</span>
+                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input" id="range-fusion-HTTP" key="fusion-HTTP">
+                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-fusion-HTTP" key="fusion-HTTP">
+                  <span class="fusion-unit">GB/月</span>
                 </dd>
                 <dd>
                   <h5>HTTPS下载流量</h5>
-                  <input type="range" value="0" min="0" max="10000" step="1" class="input-range amount-input" id="range-fusion-HTTPS" key="fusion-HTTPS">
-                  <input type="number" class="input-num amount-input" min="0" max="10000" id="num-fusion-HTTPS" key="fusion-HTTPS">
-                  <span class="fusion-unit">TB/月</span>
+                  <input type="range" value="0" min="0" max="100000000" step="1" class="input-range amount-input" id="range-fusion-HTTPS" key="fusion-HTTPS">
+                  <input type="number" class="input-num amount-input" min="0" max="100000000" id="num-fusion-HTTPS" key="fusion-HTTPS">
+                  <span class="fusion-unit">GB/月</span>
                 </dd>
               </dl>
             </section>
@@ -159,7 +159,7 @@
                   <li>融合CDN</li>
                   <li class="price">￥<span id="fusion-price">0</span></li>
                 </ul>
-                <p id="fusion-details">HTTP下载流量<span id="text-fusion-HTTP" key="fusion-HTTP"></span><span class="fusion-unit">TB</span>, HTTPS下载流量<span id="text-fusion-HTTPS" key="fusion-HTTPS"></span><span class="fusion-unit">TB</span></p>
+                <p id="fusion-details">HTTP下载流量<span id="text-fusion-HTTP" key="fusion-HTTP"></span><span class="fusion-unit">GB</span>, HTTPS下载流量<span id="text-fusion-HTTPS" key="fusion-HTTPS"></span><span class="fusion-unit">GB</span></p>
               </dd>
               <dd class="sum">
                 <p class="sum"><span>合计： ￥</span><span id="sum-price">0</span><span> / 月</span></p>

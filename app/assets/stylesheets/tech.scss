@@ -8,6 +8,11 @@
     .tech-col{
       margin-bottom: 90px !important;
     }
+    .text-ellipse {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
 /*
@@ -27,16 +32,18 @@
   .infobox{
     position: relative;
     transition: all 0.3s;
-
+    .case{
+      position: relative;
+    }
     .btn-icon{
       transition: all 0.3s;
       opacity: 0;
       position: absolute;
-      top: 28%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+      // top: 28%;
+      // left: 50%;
+      // transform: translate(-50%,-50%);
 
-      height: 57%;
+      height: 100%;
       width: 100%;
 
       background-color: rgba(0, 0, 0, .4);
@@ -64,9 +71,11 @@
         border: 1px solid rgb(65, 154, 217);
         border-radius: 2px;
 
-        &.ppt-download{
-          margin-right: 29px;
-        }
+        margin-left: 10px;
+        margin-right: 10px;
+        // &.ppt-download{
+        //   margin-right: 29px;
+        // }
       }
 
       a:hover{

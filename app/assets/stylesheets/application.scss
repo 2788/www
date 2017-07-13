@@ -14,6 +14,7 @@
  *= require slick-theme
  */
 
+@import "bootstrap-sprockets";
 @import "components/variables";
 @import "bootstrap";
 @import "components/navbar";
@@ -37,6 +38,7 @@
 @import "case";
 @import "prices";
 @import "solution";
+@import "dora";
 
 html{
   position: relative;
@@ -61,18 +63,6 @@ html{
   .btn-banner{
     position: relative;
     top: 350px;
-  }
-
-  a.out_link{
-    display: inline-block;
-    margin-top: 0;
-    color: #fff;
-  }
-
-  a.alert-modal{
-    display: inline-block;
-    margin-top: 0;
-    color: $brand-primary;
   }
 
   &.hero-banner1{ background-image: image-url('ssl.jpg');}
@@ -111,6 +101,21 @@ html{
   }
 }
 
+a.out_link{
+  display: inline-block;
+  margin-top: 0;
+  color: #fff;
+}
+
+a.underline{
+  text-decoration: underline;
+}
+
+.kodo-modal{
+  font-size: 16px;
+  line-height: 1.8;
+}
+
 .features-nav{
   height: 46px;
   margin-top: 0;
@@ -123,6 +128,10 @@ html{
 
   .list li.active a{
     color: #00a0de;
+  }
+
+  .list li.hot a{
+    color: #2f3033;
   }
 
   .btn.feature-btn{
@@ -169,8 +178,18 @@ html{
       padding-left: 35px;
     }
 
+    .col-sm-6.col-sm-6-init{
+      padding-left: 15px;
+    }
+
     .col-padding{
       padding: 50px;
+    }
+
+    .col-clear{
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0;
     }
   }
 
@@ -197,6 +216,12 @@ html{
   .tab-content {
     margin-top: 45px;
     line-height: 28px;
+
+    .tab-desc {
+      padding: 0;
+      text-align: center;
+      margin-top: -20px;
+    }
 
     .media-body{
       padding: 50px 0 0 50px;
@@ -249,6 +274,15 @@ html{
 }
 .light-bkcolor{
   background-color: #f6f8fa;
+}
+
+.features-hotnews{
+  .left-hotnews{
+    padding-left: 50px;
+  }
+  .right-hotnews{
+    padding-right: 50px;
+  }
 }
 .features-solution{
   background: #F7F8F9;

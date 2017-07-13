@@ -5,7 +5,7 @@
         <h2>深度学习平台AVA</h2>
         <p>AVA是一个端到端的人工智能深度学习平台。将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。</p>
         <div class="actions">
-          <%= link_to "申请使用", "", class: "btn btn-lg btn-default", data: { toggle: "modal", target: "#feedback-modal"} -%>
+          <%= link_to "申请使用", "http://qiniuyun.mikecrm.com/KB631j3", class: "btn btn-lg btn-default" -%>
         </div>
       </div>
     </div>
@@ -19,7 +19,6 @@
         <li class=" active"><a href="#tab-content-section-1">功能模块</a></li>
         <li><a href="#tab-content-section-2">应用场景</a></li>
         <li><a href="#tab-content-section-3">产品优势</a></li>
-        <li><a href="#tab-content-section-4">产品相关</a></li>
       </ul>
     </div>
   </div>
@@ -73,70 +72,31 @@
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <li class="active"><a href="#tab-usage-section-1" data-toggle="tab">算法设计</a></li>
+        <li class="active"><a href="#tab-usage-section-3" data-toggle="tab">模型训练</a></li>
+        <li><a href="#tab-usage-section-1" data-toggle="tab">算法设计</a></li>
         <li><a href="#tab-usage-section-2" data-toggle="tab">数据集</a></li>
-        <li><a href="#tab-usage-section-3" data-toggle="tab">模型训练</a></li>
-        <li><a href="#tab-usage-section-4" data-toggle="tab">模型分布</a></li>
+        <li><a href="#tab-usage-section-4" data-toggle="tab">模型发布</a></li>
       </ul>
       <div class="tab-content">
-        <section id="tab-usage-section-1" class="tab-pane fade in active">
+        <section id="tab-usage-section-3" class="tab-pane fade in active">
+          <p class="tab-desc">可视化的模型训练状态仪表盘，监控训练过程和进度</p>
+          <%= image_tag "atlib/moxingxunlian.gif", alt: "模型训练" %>
+        </section>
+
+        <section id="tab-usage-section-1" class="tab-pane fade">
+          <p class="tab-desc">使用AVA的算法模块，无需非常详细地了解深度神经网络，通过修改算法参数配置文件就可以快速地创建一个算法模型</p>
           <%= image_tag "atlib/algorithmd.png", alt: "算法设计" %>
         </section>
 
         <section id="tab-usage-section-2" class="tab-pane fade">
+          <p class="tab-desc">直接使用保存在七牛云中的数据创建数据集，也可以使用打标软件打标，创建满足您特定需求的数据集，得到自定义的算法模型</p>
           <%= image_tag "atlib/datacollection.png", alt: "数据集" %>
         </section>
 
-        <section id="tab-usage-section-3" class="tab-pane fade">
-          <%= image_tag "atlib/moxingfenbu.png", alt: "模型训练" %>
-        </section>
-
         <section id="tab-usage-section-4" class="tab-pane fade">
-          <%= image_tag "atlib/moxingxunlian.png", alt: "模型分布" %>
+          <p class="tab-desc">一键发布已训练完成并满足需求的模型，之后用户就可以通过API直接使用</p>
+          <%= image_tag "atlib/moxingfenbu.png", alt: "模型发布" %>
         </section>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="features features-less feature-color tab-content-section-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2">
-        <h2 class="title">产品相关</h2>
-      </div>
-      <div class="col-sm-10">
-        <div class="row">
-        <!--
-          <div class="col-sm-3">
-            <h4>常用文档</h4>
-            <ul class="links-list">
-              <li><%= link_to "产品手册", "" -%></li>
-              <li><%= link_to "API文档", "" -%></li>
-            </ul>
-          </div>
-        -->
-          <div class="col-sm-3">
-            <h4>SDK及工具</h4>
-            <ul class="links-list">
-              <li><%= link_to "SDK及工具", "" -%></li>
-            </ul>
-          </div>
-          <div class="col-sm-3">
-            <h4>常见问题</h4>
-            <ul class="links-list">
-              <li><%= link_to "技术问题", "" -%></li>
-              <li><%= link_to "账户财务", "" -%></li>
-            </ul>
-          </div>
-          <div class="col-sm-3">
-            <h4>产品动态</h4>
-            <ul class="links-list">
-              <li><%= link_to "对象存储国内空间价格下调", "" -%></li>
-              <li><%= link_to "私有化部署服务上线", "" -%></li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </div>

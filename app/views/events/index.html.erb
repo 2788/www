@@ -11,13 +11,26 @@
   </div>
 </div>
 
+<div class="events-nav">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <li class="intLink active"><a href="#tab-content-section-1">七牛架构师实践日</a></li>
+        <li class="intLink"><a href="#tab-content-section-2">ECUG Con</a></li>
+        <li class="intLink"><a href="#tab-content-section-3">技术课程</a></li>
+        <li class="intLink"><a href="#tab-content-section-4">牛人秀</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="features features-events">
-  <div class="container ipo-class-container">
+  <div class="container tab-content-section-1">
     <div class="row">
       <div class="col-sm-6 ipo-col-title">
         <dl>
           <dt>七牛架构师实践日</dt>
-          <dd><%= link_to raw("更多内容 &gt;"), "http://hd.qiniu.com/arch", class: "more" -%></dd>
+          <dd><%= link_to raw("更多内容 &gt;"), "http://hd.qiniu.com/arch", class: "more", target: "_blank" -%></dd>
         </dl>
       </div>
 
@@ -31,19 +44,25 @@
     <div class="row">
       <div class="events-slider">
         <div class="grid-container">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", id: "customer-ch", class: "case" -%>
-          <h5><strong>第五期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
+          <div class="case" id="customer-ch" >
+            <img src="http://oscoknsb4.bkt.clouddn.com/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9C%BA%E6%99%AF%E5%8C%96%E5%BA%94%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5.jpg?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
+            <a class="btn-icon" href="http://hd.qiniu.com/arch/history/21" target="_blank"></a>
+          </div>
+          <h5>大数据场景化应用最佳实践－上海站</h5>
         </div>
         <div class="grid-container">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "唱吧"), "", id: "customer-changba", class: "case" -%>
-          <h5><strong>第四期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
+          <div class="case" id="customer-ch">
+            <img src="http://oscoknsb4.bkt.clouddn.com/%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.jpg?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
+            <a class="btn-icon" href="http://hd.qiniu.com/arch/history/18" target="_blank"></a>
+          </div>
+          <h5>大数据与机器学习－杭州站</h5>
         </div>
         <div class="grid-container">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "大疆创新"), "", id: "customer-dajian", class: "case" -%>
-          <h5><strong>第3期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
+          <div class="case" id="customer-ch">
+            <img src="http://oscoknsb4.bkt.clouddn.com/%E5%A5%B9%E6%97%B6%E4%BB%A3.jpg?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
+            <a class="btn-icon" href="http://hd.qiniu.com/arch/history/17" target="_blank"></a>
+          </div>
+          <h5>她时代－大数据与机器学习－北京站</h5>
         </div>
       </div>
     </div>
@@ -52,52 +71,12 @@
   <div class="line-container">
     <span class="educa-line"></span>
   </div>
-<!--
-  <div class="container ipo-class-container">
+
+  <div class="container tab-content-section-2">
     <div class="row">
       <div class="col-sm-6 ipo-col-title">
         <dl>
-          <dt>七牛Tech Online</dt>
-          <dd><%= link_to raw("更多内容 &gt;"), tech_online_events_path, class: "more" -%></dd>
-        </dl>
-      </div>
-
-      <div class="col-sm-6">
-        <span>
-          七牛Tech Online 是在七牛架构师实践日线下沙龙的基础上，全新推出的一款在线技术交流活动。活动将采用直播的形式，每期特邀一位技术圈网红，与大家一起共话技术、畅谈未来。
-        </span>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="events-slider">
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "javascript:;", id: "customer-ch", class: "case" -%>
-          <h5><strong>第五期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "唱吧"), "javascript:;", id: "customer-changba", class: "case" -%>
-          <h5><strong>第4期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "大疆创新"), "javascript:;", id: "customer-dajian", class: "case" -%>
-          <h5><strong>第3期</strong> 突破单一语言，进击全</h5>
-        </div>
-      </div>
-    </div>
-  </div>
--->
-  <div class="line-container">
-    <span class="educa-line"></span>
-  </div>
-
-  <div class="container ipo-class-container">
-    <div class="row">
-      <div class="col-sm-6 ipo-col-title">
-        <dl>
-          <dt>ECUG</dt>
+          <dt>ECUG Con</dt>
           <dd><%= link_to raw("更多内容 &gt;"), ecug_events_path, class: "more" -%></dd>
         </dl>
       </div>
@@ -111,21 +90,15 @@
 
     <div class="row">
       <div class="events-slider">
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "javascript:;", id: "customer-ch", class: "case" -%>
-          <h5><strong>第五期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "唱吧"), "javascript:;", id: "customer-changba", class: "case" -%>
-          <h5><strong>第4期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "大疆创新"), "javascript:;", id: "customer-dajian", class: "case" -%>
-          <h5><strong>第3期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
+        <% @ecugs.each do |event| %>
+          <div class="grid-container" data-src="<%= event[:video] -%>">
+            <div class="case" id="customer-ch">
+              <%= image_tag(event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim", alt: "长虹") -%>
+              <a class="btn-icon" href="javascript:;" target="_blank"></a>
+            </div>
+            <h5><%= event[:name] -%></h5>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -134,17 +107,17 @@
     <span class="educa-line"></span>
   </div>
 
-  <div class="container ipo-class-container">
+  <div class="container tab-content-section-3">
     <div class="row">
       <div class="col-sm-6 ipo-col-title">
         <dl>
-          <dt>技术共享技术</dt>
+          <dt>技术课程</dt>
         </dl>
       </div>
 
       <div class="col-sm-6">
         <span>
-          对于企业级用户来说，其在技术层面最迫切的需求是什么？是技术方案能够作为工具，快速应用于产品开发、业务拓展和用户体验，而非单纯对其进行探索和提高。通过技术共享计划，七牛将甄选不同领域的技术主题，从自身产品优势和技术积累出发，结合技术领域内普适的需求和热点，打造“理论＋实践＋开发＋场景”四项全能的课程体系，切实帮助客户实现技术实力的成长，缩短从想法到产品的距离。
+          对于企业级用户来说，其在技术层面最迫切的需求是什么？是技术方案能够作为工具，快速应用于产品开发、业务拓展和用户体验，而非单纯对其进行探索和提高。七牛将甄选不同领域的技术主题，从自身产品优势和技术积累出发，结合技术领域内普适的需求和热点，打造“理论＋实践＋开发＋场景”四项全能的课程体系，切实帮助客户实现技术实力的成长，缩短从想法到产品的距离。
         </span>
       </div>
     </div>
@@ -152,19 +125,18 @@
     <div class="row">
       <div class="events-slider">
         <div class="grid-container">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "", id: "customer-ch", class: "case" -%>
-          <h5><strong>第五期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
+          <div class="case" id="customer-ch">
+            <img src="https://mars-assets.qnssl.com/FnRaJQyTOkvzVgly-lL3jEDfhS9Y?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
+            <a class="btn-icon" href="http://www.imooc.com/learn/707" target="_blank"></a>
+          </div>
+          <h5>2小时搞定移动直播 App 开发  陶泽宇、卜赫</h5>
         </div>
         <div class="grid-container">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "唱吧"), "", id: "customer-changba", class: "case" -%>
-          <h5><strong>第4期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "大疆创新"), "", id: "customer-dajian", class: "case" -%>
-          <h5><strong>第3期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
+          <div class="case" id="customer-ch">
+            <img src="https://mars-assets.qnssl.com/FjYrwRzOqW1lc2BRipC4g8l__9g5?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
+            <a class="btn-icon" href="http://www.stuq.org/course/1192" target="_blank"></a>
+          </div>
+          <h5>视频直播系统搭建核心技能</h5>
         </div>
       </div>
     </div>
@@ -174,7 +146,7 @@
     <span class="educa-line"></span>
   </div>
 
-  <div class="container ipo-class-container">
+  <div class="container tab-content-section-4">
     <div class="row">
       <div class="col-sm-6 ipo-col-title">
         <dl>
@@ -192,21 +164,15 @@
 
     <div class="row">
       <div class="events-slider">
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "长虹"), "javascript:;", id: "customer-ch", class: "case" -%>
-          <h5><strong>第五期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "唱吧"), "javascript:;", id: "customer-changba", class: "case" -%>
-          <h5><strong>第4期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
-        <div class="grid-container" data-src="<%= asset_url('movie.ogg') -%>">
-          <%= link_to image_tag("contact/image-shanghaiHQ@2x.jpg", alt: "大疆创新"), "javascript:;", id: "customer-dajian", class: "case" -%>
-          <h5><strong>第3期</strong> 突破单一语言，进击全</h5>
-          <a class="btn-icon" href="javascript:;" target="_blank"></a>
-        </div>
+        <% @niushows.each do |event| %>
+          <div class="grid-container" data-src="<%= event[:video] -%>">
+            <div class="case" id="customer-ch">
+              <%= image_tag(event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim", alt: "长虹") -%>
+              <a class="btn-icon" href="javascript:;" target="_blank"></a>
+            </div>
+            <h5><%= event[:name] -%></h5>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
 $(document).ready ->
   $('.grid-container').click (e) ->
     src = $(this).data('src')
-    if src == "undefined" || src.length == 0
+    if src == undefined || src.length == 0
       return
     # 点击瞬间更改图标
     $(this).find('.btn-icon').addClass('btn-icon-visited');
