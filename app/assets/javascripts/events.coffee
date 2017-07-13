@@ -11,7 +11,7 @@ $(document).ready ->
     # 赋值video的src
     $('#edu-video').attr('src', src);
     # 展示video
-    $('#video-play-modal').modal('show')
+    $('#video-play-modal').modal({backdrop: 'static', show: true})
 
 $(document).ready ->
   # 点击完成恢复

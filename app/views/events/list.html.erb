@@ -20,8 +20,8 @@
             <p class="text-ellipse"><%= event[:name] -%></p>
           </div>
           <div class="infobox">
-            <div class="case">
-              <a class="btn-icon" href="" target="_blank"></a>
+            <div class="case grid-container" data-src="<%= event[:video] -%>">
+              <a class="btn-icon"></a>
               <%= image_tag event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim" -%>
             </div>
             <div class="lecturer">
@@ -50,4 +50,17 @@
       <% end %>
     </div>
   </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="video-play-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <video src="" controls="controls" id="edu-video">
+            your browser does not support the video tag
+          </video>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
