@@ -4,7 +4,7 @@ zh-CN:
       list:
         - name: kodo
           label: 对象存储
-          desc: 高可用、易拓展、低成本、一站式
+          desc: 高可用、易扩展、低成本、一站式
 
         - name: fusion
           label: 融合CDN
