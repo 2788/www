@@ -84,6 +84,7 @@ html{
   &.hero-prices{background-image: image-url("solution/banner.jpg"); }
   &.hero-caculator{background-image: image-url("solution/banner.jpg"); }
   &.hero-atlib{background-image: image-url("kirk/banner.jpg"); }
+  &.hero-plsv{background-image: image-url("solution/banner.jpg"); }
 
   .container{
     text-align: left;
@@ -193,10 +194,25 @@ a.underline{
     }
   }
 
+  .row-clear{
+    margin: 0;
+  }
+
   &.kirk-usage{
     .row{
       .thumbnail{
         min-height: 233px;
+      }
+    }
+  }
+
+  &.plsv-services{
+    .row.row-clear{
+      padding-left: 20px;
+      padding-right: 20px;
+
+      .thumbnail-icons{
+        min-height: 100px;
       }
     }
   }
@@ -265,6 +281,9 @@ a.underline{
     background: transparent;
     min-height: 300px;
     margin-bottom: 0;
+    .desc{
+      text-align: center;
+    }
     h4{ text-align: center; }
   }
 }

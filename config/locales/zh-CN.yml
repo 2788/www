@@ -297,7 +297,7 @@ zh-CN:
       link: http://blog.qiniu.com/archives/7518
       time: 2016年11月11日发布在 近期福利
       desc: 七牛前端公开库 Staticfile.org 全新改版！永久免费，永不停更！ Staticfile 致力于提供高质量、稳定的前端资源 CDN 服务，同步国外 CDNJS 源站，同时由国内开源贡献者提交其它有价值的库。感谢所有开源库作者和独家合作社区掘金的努力。
-  cases:
+  cases1:
     - groupid: im
       group:
         - imgpath: case/douban.png
@@ -315,6 +315,7 @@ zh-CN:
         - imgpath: case/taijiaohezi.png
         - imgpath: case/weiniao.png
         - imgpath: case/yupaopao.png
+  cases:
     - groupid: fashion
       group:
         - imgpath: case/bantang.png
@@ -421,3 +422,71 @@ zh-CN:
       group:
         - imgpath: case/ailixin.png
         - imgpath: case/zhongyiwulian.png
+  plsvs1:
+    - groupid: collections
+      group:
+        - imgpath: plsv/icon-dayanshoulian.png
+          desc: 大眼瘦脸
+        - imgpath: plsv/icon-dongtaitiezhi.png
+          desc: 动态贴纸
+        - imgpath: plsv/icon-duoduanluzhi.png
+          desc: 多段录制
+        - imgpath: plsv/icon-huishangongneng.png
+          desc: 回删功能
+        - imgpath: plsv/icon-meiyanlvjing.png
+          desc: 美颜滤镜
+        - imgpath: plsv/icon-mianbushibie.png
+          desc: 面部识别
+        - imgpath: plsv/icon-piantoupianwei.png
+          desc: 片头片尾
+        - imgpath: plsv/icon-shuiyingongneng.png
+          desc: 水印功能
+        - imgpath: plsv/icon-wenzitexiao.png
+          desc: 文字特效
+        - imgpath: plsv/icon-zimugongneng.png
+          desc: 字幕功能
+  plsvs:
+    - groupid: editions
+      group:
+        - imgpath: plsv/icon-beijingyinyue.png
+          desc: 背景音乐
+        - imgpath: plsv/icon-bendizhuanma.png
+          desc: 本地转码
+        - imgpath: plsv/icon-duandianxuchuan.png
+          desc: 断点续传
+        - imgpath: plsv/icon-https.png
+          desc: https 支持
+        - imgpath: plsv/icon-shipincaijian.png
+          desc: 视频裁剪
+        - imgpath: plsv/icon-shipinpinjie.png
+          desc: 视频拼接
+        - imgpath: plsv/icon-shipinshangchuan.png
+          desc: 视频上传
+        - imgpath: plsv/icon-yingjianbianma.png
+          desc: 硬件编码
+        - imgpath: plsv/icon-yinpincaijian.png
+          desc: 音频裁剪
+        - imgpath: plsv/icon-zhuanchangdonghua.png
+          desc: 转场动画
+    - groupid: services
+      group:
+        - imgpath: plsv/icon-bofangjianquan.png
+          desc: 播放鉴权
+        - imgpath: plsv/icon-cdnjiasu.png
+          desc: CDN加速
+        - imgpath: plsv/icon-drmshuzibaohu.png
+          desc: DRM 数字版权保护
+        - imgpath: plsv/icon-fuwuduanzhuanma.png
+          desc: 服务端转码
+        - imgpath: plsv/icon-huiyuanjianquan.png
+          desc: 回源鉴权
+        - imgpath: plsv/icon-jianhuangjiankong.png
+          desc: 鉴黄监控
+        - imgpath: plsv/icon-meitiguanli.png
+          desc: 媒体管理
+        - imgpath: plsv/icon-miaokaizhichi.png
+          desc: 秒开支持
+        - imgpath: plsv/icon-shipincunchu.png
+          desc: 视频存储
+        - imgpath: plsv/icon-shuiyingongneng.png
+          desc: 水印功能
