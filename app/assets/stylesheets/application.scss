@@ -67,7 +67,12 @@ html{
 
   &.hero-banner1{ background-image: image-url('ssl.jpg');}
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
-  &.hero-banner3{ background-image: image-url('southern-price-reduce.jpg')}
+  &.hero-banner3{
+    background-image: image-url('southern-price-reduce.jpg');
+    .btn-banner{
+      left: 100px;
+    }
+  }
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-pili.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
@@ -196,6 +201,22 @@ a.underline{
 
   .row-clear{
     margin: 0;
+  }
+
+  .media-object.media-object-index{
+    max-width: 120px;
+  }
+
+  .caption.caption-index{
+    padding: 27px;
+
+    .caption-title{
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    p{
+      line-height: 28px;
+    }
   }
 
   &.kirk-usage{
