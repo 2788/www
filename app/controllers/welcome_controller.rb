@@ -51,4 +51,7 @@ class WelcomeController < ApplicationController
   def atlib
   end
 
+  def plsv
+  end
+
 end

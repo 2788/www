@@ -1,0 +1,143 @@
+<div class="jumbotron hero hero-plsv">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h2>短视频</h2>
+        <p>七牛短视频服务(PLSV)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。</p>
+        <div class="actions">
+          <%= link_to "立即使用", "https://portal.qiniu.com/signin", class: "btn btn-lg btn-default m-r", data: { toggle: "modal", target: "#feedback-modal"} -%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="plsv-nav">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <li class="intLink active"><a href="#tab-content-section-1">产品优势</a></li>
+        <li class="intLink"><a href="#tab-content-section-2">核心功能</a></li>
+        <li class="intLink"><a href="#tab-content-section-3">客户案例</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="features tab-content-section-1">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">产品优势</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag "plsv/icon-shejilinghuo.png", alt: "设计灵活", width: 100 %>
+          <div class="caption">
+            <h4>设计灵活</h4>
+            <p>丰富的数据和信令回调，方便自定义开发。</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag "plsv/icon-keyongxing.png", alt: "产品稳定", width: 100 %>
+          <div class="caption">
+            <h4>产品稳定</h4>
+            <p>继承直播SDK积累的丰富经验，保证产品的高可用性。</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag "plsv/icon-gongnengfengfu.png", alt: "功能丰富", width: 100 %>
+          <div class="caption">
+            <h4>功能丰富</h4>
+            <p>采集、处理、编码、封包、上传，覆盖主流短视频功能。</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag "plsv/icon-zhuanyefuwu.png", alt: "专业服务", width: 100 %>
+          <div class="caption">
+            <h4>专业服务</h4>
+            <p>对接资深工程师，1对1解答您开发中的问题。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="features feature-color plsv-services tab-content-section-2">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">核心功能</h2>
+    </div>
+
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+        <li class="active"><a href="#collections" data-toggle="tab">采集处理</a></li>
+        <li><a href="#editions" data-toggle="tab">编辑上传</a></li>
+        <li><a href="#services" data-toggle="tab">服务端功能</a></li>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("plsvs1").each do |plsv| %>
+          <% groupid = plsv[:groupid] %>
+          <section id= <%= groupid %> class="tab-pane fade in active">
+            <div class="row row-clear">
+              <% plsv[:group].each do |logo| %>
+                <div class="col-sm-2 col-clear col-5">
+                  <div class="thumbnail thumbnail-icons">
+                    <%= image_tag logo[:imgpath], alt: "服务", width: 40 %>
+                    <div class="desc">
+                      <h5><%= logo[:desc] %></h5>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </section>
+        <% end %>
+        <% I18n.t("plsvs").each do |plsv| %>
+          <% groupid = plsv[:groupid] %>
+          <section id= <%= groupid %> class="tab-pane fade in">
+            <div class="row row-clear">
+              <% plsv[:group].each do |logo| %>
+                <div class="col-sm-2 col-clear col-5">
+                  <div class="thumbnail thumbnail-icons">
+                    <%= image_tag logo[:imgpath], alt: "服务", width: 40 %>
+                    <div class="desc">
+                      <h5><%= logo[:desc] %></h5>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </section>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="features tab-content-section-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <h2 class="title">客户案例</h2>
+      </div>
+      <div class="col-sm-10">
+        <div id="cases-slider" class="conveyor slick-slider draggable">
+          <div><%= image_tag "plsv/client-touch.jpg", alt: "touch", class: "case" %></div>
+          <div><%= image_tag "plsv/client-danlan.jpg", alt: "danlan", class: "case" %></div>
+          <div><%= image_tag "plsv/client-xiaomasahuan.jpg", alt: "xiaomasahuan", class: "case" %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
