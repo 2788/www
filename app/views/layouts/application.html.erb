@@ -4,8 +4,12 @@
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] || {} -%>
+    <% unless seo[:keywords].blank? %>
     <meta name="keywords" content="<%= seo[:keywords] -%>" />
+    <% end %>
+    <% unless seo[:description].blank? %>
     <meta name="description" content="<%= seo[:description] -%>">
+    <% end %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title><%= seo[:title] || @title -%></title>
@@ -18,7 +22,10 @@
 
   <body class="<%= controller_name -%>-page <%= "#{controller_name}-page-#{action_name}" -%>">
     <!--[if lt IE 10]>
-      <p class="browsehappy">您正在使用 <strong>旧浏览器</strong> . 为了更好的体验，请 <a href="http://browsehappy.com/">更新</a> 您的浏览器.</p>
+      <div class="browsehappy alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        您正在使用 <strong>旧浏览器</strong> . 为了更好的体验，请 <a href="http://browsehappy.com/" target="_blank">更新</a> 您的浏览器.
+      </div>
     <![endif]-->
 
     <nav class="navbar navbar-default" id="navbar">
@@ -177,7 +184,7 @@
                   <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu", target: "_blank" -%></dd>
                   <dd><%= link_to "热门活动", events_path -%></dd>
                   <dd><%= link_to "违规内容举报", "mailto:jubao@qiniu.com", id: "report" -%></dd>
-                  <dd><%= link_to "工单系统", "https://support.qiniu.com", target: "_blank" -%></dd>
+                  <dd><%= link_to "工单系统", "https://support.qiniu.com/login", target: "_blank" -%></dd>
                   <dd><%= link_to "技术博客", "http://blog.qiniu.com/", target: "blank" -%></dd>
                 </dl>
               </div>

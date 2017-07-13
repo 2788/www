@@ -44,6 +44,11 @@ html{
   position: relative;
 }
 
+.browsehappy{
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
 // index page
 .jumbotron.hero{
   height: 518px;
@@ -67,7 +72,12 @@ html{
 
   &.hero-banner1{ background-image: image-url('ssl.jpg');}
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
-  &.hero-banner3{ background-image: image-url('southern-price-reduce.jpg')}
+  &.hero-banner3{
+    background-image: image-url('southern-price-reduce.jpg');
+    .btn-banner{
+      left: 100px;
+    }
+  }
   &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
   &.hero-pili{ background-image: image-url('banner-pili.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
@@ -113,7 +123,8 @@ a.underline{
 }
 
 .kodo-modal{
-  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -198,6 +209,22 @@ a.underline{
     margin: 0;
   }
 
+  .media-object.media-object-index{
+    max-width: 120px;
+  }
+
+  .caption.caption-index{
+    padding: 27px;
+
+    .caption-title{
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    p{
+      line-height: 28px;
+    }
+  }
+
   &.kirk-usage{
     .row{
       .thumbnail{
@@ -279,13 +306,20 @@ a.underline{
   .thumbnail{
     border: none;
     background: transparent;
-    min-height: 300px;
+    min-height: 200px;
     margin-bottom: 0;
+    .caption.caption-center{
+      text-align: center;
+    }
     .desc{
       text-align: center;
     }
     h4{ text-align: center; }
   }
+}
+
+.features.features-scene .img-left{
+  max-width: 370px;
 }
 
 .feature-color{

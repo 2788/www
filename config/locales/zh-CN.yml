@@ -133,8 +133,6 @@ zh-CN:
       description: 七牛大数据是七牛云的大数据平台，提供安全、简单、高效、开放的一站式大数据服务。
     welcome_contact:
       title: 联系我们 - 七牛云
-      keywords: keywords
-      description: description
     welcome_fusion:
       title: 融合 CDN，CDN 加速服务 - 七牛云
       keywords: 高防 CDN，动态 CDN，静态 CDN，CDN，CDN 加速，CDN 加速服务, 七牛 CDN，CDN 服务器，内容分发，云加速，融合 CDN，图片 CDN，视频 CDN
@@ -157,16 +155,10 @@ zh-CN:
       description: 七牛云解决方案平台，基于八大核心产品对象存储、融合CDN、容器云、大数据平台、深度学习平台、智能多媒体API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造的简单、可信的解决方案平台，帮助您快速实现业务需求并创造更多商业价值。
     welcome_about:
       title: 关于我们 - 七牛云
-      keywords: keywords
-      description: description
     welcome_company:
       title: 公司介绍 - 七牛云
-      keywords: keywords
-      description: description
     welcome_case:
       title: 客户案例 - 七牛云
-      keywords: keywords
-      description: description
     welcome_atlab:
       title: 深度学习平台 - 七牛云
       keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
@@ -186,27 +178,18 @@ zh-CN:
     events_index:
       title: 七牛云活动
       keywords: 架构师实践日，Tech Online，ECUG，牛人秀
-      description: description
     prices_index:
       title: 价格详情 - 七牛云
       keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱
       description: 七牛云为您提供的不止优秀的产品，还有极具竞争力的产品定价。
     prices_caculator:
       title: 预算估计 - 七牛云
-      keywords: keywords
-      description: description
     feedbacks_new:
       title: 产品及服务咨询 - 七牛云
-      keywords: keywords
-      description: description
     recommendations_new:
       title: 客户推荐 - 七牛云
-      keywords: keywords
-      description: description
     cooperations_index:
       title: 市场合作 - 七牛云
-      keywords: keywords
-      description: description
   news:
     - title: 七牛云 CEO 许式伟当选「上海十大互联网创业家」
       link: http://blog.qiniu.com/archives/8504
@@ -473,7 +456,7 @@ zh-CN:
         - imgpath: plsv/icon-bofangjianquan.png
           desc: 播放鉴权
         - imgpath: plsv/icon-cdnjiasu.png
-          desc: CDN加速
+          desc: CDN 加速
         - imgpath: plsv/icon-drmshuzibaohu.png
           desc: DRM 数字版权保护
         - imgpath: plsv/icon-fuwuduanzhuanma.png
