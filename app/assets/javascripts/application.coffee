@@ -34,6 +34,17 @@ isMobile = true if /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|
 
 # 首页成功案例
 $(document).ready ->
+
+  # 添加 ref
+  $('body').on 'click', "a", (e)->
+    href = $(this).prop('href')
+    hostname = $('<a>').prop('href', href).prop('hostname')
+    ref = 'ref=' + window.location.hostname
+    if window.location.hostname != hostname && href.indexOf(ref) < 0
+      connector = if /\?/.test(href) then '&' else '?'
+      href += connector + ref
+      $(this).prop('href', href)
+
   $('#index-cases-slider').slick
     dots: true
     autoplay: true
@@ -110,7 +121,7 @@ $(document).ready ->
   $('.banners-slider .slick-dots').addClass('banners-arrow')
 
 # 监控滚动 中部导航
-$(document).ready ->
+$(window).load ->
   #enabling stickUp on the '.navbar-wrapper' class
   $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
   return
