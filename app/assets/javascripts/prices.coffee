@@ -67,7 +67,8 @@ $(document).ready ->
 
   #//////////////////////////////////////////////////////////////////////
   ## 控制标准存储 区域select-->price
-  $("#kodo").change (e) ->
+  ## 控制融合CDN select
+  $("#kodo, #fusion-outland").change (e) ->
     setPrice()
 
   #/////////////////////////////////////////////////////////////////////
@@ -202,15 +203,12 @@ $(document).ready ->
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
   $('.amount-input').bind 'input', ->
+    max = Number($(this).attr('max'))
+    val = Number($(this).val())
+    if val > max
+      $(this).val(max)
     key = $(this).attr('key')
     setAmount(key, +$(this).val())
-  #///////////////////////////////////////////////////////////////
-  ## input框最大值的限制
-  # $('.amount-input').change (e) ->
-  #   max = $(this).attr('max')
-  #   val = $(this).val()
-  #   if val > max
-  #     $(this).val() = val
 
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
