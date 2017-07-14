@@ -64,40 +64,73 @@
     display: block;
     margin: 3px;
     border: 1px solid #eeeeee;
-    height: 118px;
-    max-height: 118px;
-    line-height: 118px;
+    height: 100px;
+    max-height: 100px;
+    line-height: 100px;
     background-size: 100px auto;
     background-position: center center;
     background-repeat: no-repeat;
   }
 
-  .customer-ch{
-    background-image: image-url("client-ch-highlight@2x.jpg");
+  .customer-changba {
+    background-image: image-url("clientcase/client-changba@2x.jpg");
   }
-  .customer-changba{
-    background-image: image-url("client-changba-highlight@2x.jpg");
+  .customer-changhong {
+    background-image: image-url("clientcase/client-changhong.jpg");
   }
-  .customer-dajian{
-    background-image: image-url("client-dajian-highlight@2x.jpg");
+  .customer-dajiang {
+    background-image: image-url("clientcase/client-dajiang@2x.jpg");
   }
-  .customer-dazhong{
-    background-image: image-url("client-dazhong-highlight@2x.jpg");
+  .customer-dianping {
+    background-image: image-url("clientcase/client-dianping@2x.jpg");
   }
-  .customer-hujiang{
-    background-image: image-url("client-hujiang-highlight@2x.jpg");
+  .customer-guanglianda {
+    background-image: image-url("clientcase/client-guanglianda@2x.jpg");
   }
-  .customer-intel{
-    background-image: image-url("client-intel-highlight@2x.jpg");
+  .customer-haikangweishi {
+    background-image: image-url("clientcase/client-haikangweishi@2x.jpg");
   }
-  .customer-oppo{
-    background-image: image-url("client-oppo-highlight@2x.jpg");
+  .customer-hubeiguangdian {
+    background-image: image-url("clientcase/client-hubeiguangdian@2x.jpg");
   }
-  .customer-qingting{
-    background-image: image-url("client-qingting-highlight@2x.jpg");
+  .customer-hujiang {
+    background-image: image-url("clientcase/client-hujiang@2x.jpg");
   }
-  .customer-zte{
-    background-image: image-url("client-zte-highlight@2x.jpg");
+  .customer-intel {
+    background-image: image-url("clientcase/client-intel@2x.jpg");
+  }
+  .customer-jiangsuweishi {
+    background-image: image-url("clientcase/client-jiangsuweishi@2x.jpg");
+  }
+  .customer-meipai {
+    background-image: image-url("clientcase/client-meipai@2x.jpg");
+  }
+  .customer-oppo {
+    background-image: image-url("clientcase/client-oppo@2x.jpg");
+  }
+  .customer-qingtingfm {
+    background-image: image-url("clientcase/client-qingtingfm@2x.jpg");
+  }
+  .customer-shunfeng {
+    background-image: image-url("clientcase/client-shunfeng@2x.jpg");
+  }
+  .customer-sobey {
+    background-image: image-url("clientcase/client-sobey@2x.jpg");
+  }
+  .customer-souhu {
+    background-image: image-url("clientcase/client-souhu@2x.jpg");
+  }
+  .customer-zhihu {
+    background-image: image-url("clientcase/client-zhihu@2x.jpg");
+  }
+  .customer-zhongguopingan {
+    background-image: image-url("clientcase/client-zhongguopingan@2x.jpg");
+  }
+  .customer-zhongguoyidong {
+    background-image: image-url("clientcase/client-zhongguoyidong@2x.jpg");
+  }
+  .customer-zhongxing {
+    background-image: image-url("clientcase/client-zhongxing@2x.jpg");
   }
 }
 
