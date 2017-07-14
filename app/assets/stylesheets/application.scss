@@ -65,6 +65,10 @@ html{
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
+  &.hero-contact{
+    margin-bottom: -30px;
+  }
+
   .btn-banner{
     position: relative;
     top: 350px;
@@ -78,23 +82,24 @@ html{
       left: 100px;
     }
   }
-  &.hero-kodo{ background-image: image-url('banner-diamond.jpg'); }
+  &.hero-kodo{ background-image: image-url('duixiangcunchu-banner.jpg'); }
   &.hero-pili{ background-image: image-url('banner-pili.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
-  &.hero-events{background-image: image-url('events-banner.png'); }
-  &.hero-tech{background-image: image-url('tech-banner.png'); }
-  &.hero-pandora{background-image: image-url('pandora/banner.jpg'); }
-  &.hero-fusion{background-image: image-url('fusion/banner.jpg'); }
-  &.hero-dora{background-image: image-url("dora/banner.jpg"); }
-  &.hero-kirk{background-image: image-url("kirk/banner.jpg"); }
+  &.hero-events{background-image: image-url('marketing-banner.jpg'); }
+  &.hero-ecug{background-image: image-url('ecug-banner.jpg'); }
+  &.hero-niushow{background-image: image-url('niushow-banner.jpg'); }
+  &.hero-pandora{background-image: image-url('dashuju-banner.jpg'); }
+  &.hero-fusion{background-image: image-url('CDN-banner.jpg'); }
+  &.hero-dora{background-image: image-url("zhinengduomeitiAPI-banner.jpg"); }
+  &.hero-kirk{background-image: image-url("rongqiyun-banner.jpg"); }
   &.hero-vance{background-image: image-url("vance/banner.jpg"); }
   &.hero-company{background-image: image-url("company/banner.jpg"); }
   &.hero-case{background-image: image-url("case/banner.jpg"); }
-  &.hero-solution{background-image: image-url("solution/banner.jpg"); }
-  &.hero-prices{background-image: image-url("solution/banner.jpg"); }
-  &.hero-caculator{background-image: image-url("solution/banner.jpg"); }
-  &.hero-atlab{background-image: image-url("kirk/banner.jpg"); }
-  &.hero-plsv{background-image: image-url("solution/banner.jpg"); }
+  &.hero-solution{background-image: image-url("solutions-banner.jpg"); }
+  &.hero-prices{background-image: image-url("price-banner.jpg"); }
+  &.hero-caculator{background-image: image-url("caculator-banner.jpg"); }
+  &.hero-atlab{background-image: image-url("ava-banner.jpg"); }
+  &.hero-plsv{background-image: image-url("duanshipin-banner.jpg"); }
 
   .container{
     text-align: left;
@@ -107,8 +112,8 @@ html{
     text-shadow: 0 2px 3px rgba(0,0,0,.5);
   }
   p{
-    line-height: 38px;
-    font-size: 18px;
+    line-height: 34px;
+    font-size: 16px;
   }
 }
 
@@ -306,7 +311,7 @@ a.underline{
   .thumbnail{
     border: none;
     background: transparent;
-    min-height: 200px;
+    min-height: 235px;
     margin-bottom: 0;
     .caption.caption-center{
       text-align: center;
@@ -447,6 +452,18 @@ a.underline{
 }
 
 //index banner slider
+.banners-slider{
+   .slick-dots li button::before{
+    font-family: "" !important;
+    font-size: 40px;
+    content: "-";
+    color: #B9B9B9;
+  }
+
+  .slick-dots li.slick-active button::before{
+    color: #3498db;
+  }
+}
 .banners-slider .slick-dots.banners-arrow{
   bottom: 58px;
 }
@@ -545,6 +562,7 @@ a.underline{
   font-size: 14px;
   display: inline-block;
   margin: 0;
+  margin-bottom: 20px;
   padding-left: 50px;
   padding-right: 20px;
   background-repeat: no-repeat;

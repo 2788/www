@@ -7,16 +7,19 @@ class EventsController < ApplicationController
 
   def tech_online
     @events = Event.where( category: 'TechOnline').limit(9)
+    @hero = "hero-tech"
     render "list"
   end
 
   def ecug
     @events = Event.where( category: 'ECUG').limit(9)
+    @hero = "hero-ecug"
     render "list"
   end
 
   def niushow
     @events = Event.where( category: 'NiuShow').limit(9)
+    @hero = "hero-niushow"
     render "list"
   end
 end

@@ -62,7 +62,7 @@
 
               <ul class="dropdown-menu solutions-menu">
                 <% I18n.t("solutions").each do |solution| %>
-                  <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]) + content_tag(:p, solution[:desc]), solutions_path(anchor: solution[:name])) -%>
+                  <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]) + content_tag(:p, solution[:desc]), solutions_path(anchor: solution[:name])), class: "solution" -%>
                 <% end %>
               </ul>
             </li>
