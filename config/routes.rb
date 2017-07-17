@@ -22,13 +22,18 @@ Rails.application.routes.draw do
   get '/products/atlab',       to: 'welcome#atlab'
   get '/products/plsv',        to: 'welcome#plsv'
 
-  get '/contact',     to: 'welcome#contact'
-  get '/solutions',   to: 'welcome#solution'
-  get '/news',        to: 'welcome#news'
-  get '/product_news',to: 'welcome#product_news'
-  get '/welfares',    to: 'welcome#welfares'
-  get '/company',     to: 'welcome#company'
-  get '/case',        to: 'welcome#case'
+  get '/contact',      to: 'welcome#contact'
+  get '/solutions',    to: 'welcome#solution'
+  get '/news',         to: 'welcome#news'
+  get '/product_news', to: 'welcome#product_news'
+  get '/welfares',     to: 'welcome#welfares'
+  get '/company',      to: 'welcome#company'
+  get '/case',         to: 'welcome#case'
+  get 'user_agreement',to: 'welcome#user_agreement'
+  get 'sla_kodo',      to: 'welcome#sla_kodo'
+  get 'sla_fusion',    to: 'welcome#sla_fusion'
+  get 'sla_pili',      to: 'welcome#sla_pili'
+  get 'sla_dora',      to: 'welcome#sla_dora'
 
   resources 'events', only: [:index] do
     collection do
