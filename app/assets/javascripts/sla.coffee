@@ -1,7 +1,7 @@
 # controll a active && section active
 $(document).ready ->
-  $('section').hide()
-  current = $('.action').attr('id')
+  $('.features-sla section').hide()
+  current = $('.features-sla .action').attr('id')
   $('#about-left-bar .active').removeClass('active')
-  $('.li_' + current).addClass('active')
-  $('.' + current).show()
+  $('.features-sla .li_' + current).addClass('active')
+  $('.features-sla .' + current).show()
