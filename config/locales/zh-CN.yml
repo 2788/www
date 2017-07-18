@@ -121,7 +121,7 @@ zh-CN:
       description: 七牛云是国内领先的企业级云服务商，致力于打造以数据为核心的场景化 PaaS 服务。围绕富媒体场景，七牛提供对象存储，融合 CDN 加速，直播云，内容反垃圾等服务。
     welcome_kodo:
       title: 对象存储_海量安全高可靠的云存储 - 七牛云
-      keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管
+      keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管，低频存储，镜像存储，私有部署，静态资源托管，备份归档，数据迁移，数据灾备，弹性扩容
       description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。
     welcome_pili:
       title: 直播云_直播云服务 - 七牛云
@@ -129,7 +129,7 @@ zh-CN:
       description: 七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。
     welcome_pandora:
       title: 大数据_大数据服务 - 七牛云
-      keywords: 大数据，大数据平台，大数据服务
+      keywords: 大数据，大数据平台，大数据服务，数据分析、商业分析、时序数据库、日志检索、消息队列、数据流、离线分析、Spark、HDFS、数据运维、数据运营、质量监控
       description: 七牛大数据是七牛云的大数据平台，提供安全、简单、高效、开放的一站式大数据服务。
     welcome_contact:
       title: 联系我们 - 七牛云
@@ -149,6 +149,30 @@ zh-CN:
       title: 点播云_点播云服务 - 七牛云
       keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
       description: 七牛点播云汇聚七牛云存储、音视频转码和融合CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播PaaS平台。
+    welcome_plsv:
+      title: 短视频 PLSV-七牛云
+      keywords: 短视频解决方案、短视频服务
+      description: 七牛短视频服务(PLSV)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
+    welcome_user_agreement:
+      title: 用户服务协议-七牛云
+      keywords:
+      description:
+    welcome_sla_kodo:
+      title: 对象存储 SLA-七牛云
+      keywords:
+      description:
+    welcome_sla_fusion:
+      title: 融合 CDN SLA-七牛云
+      keywords:
+      description:
+    welcome_sla_pili:
+      title: 直播云 SLA-七牛云
+      keywords:
+      description:
+    welcome_sla_dora:
+      title: 智能多媒体 API SLA-七牛云
+      keywords:
+      description:
     welcome_solution:
       title: 解决方案 - 七牛云
       keywords: 对象存储私有化部署方案，非结构化数据管理解决方案，智能云相册解决方案，智能硬件与物联网解决方案，广电传媒解决方案，安防终端解决方案，互联网与移动互联网解决方案，应用质量监控解决方案

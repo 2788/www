@@ -24,6 +24,7 @@
 #= require recommendations
 #= require cooperations
 #= require about
+#= require sla
 
 
 isMobile = false; # initiate as false

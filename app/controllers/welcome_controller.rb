@@ -54,4 +54,20 @@ class WelcomeController < ApplicationController
   def plsv
   end
 
+  def user_agreement
+    render "sla"
+  end
+  def sla_kodo
+    render "sla"
+  end
+  def sla_fusion
+    render "sla"
+  end
+  def sla_pili
+    render "sla"
+  end
+  def sla_dora
+    render "sla"
+  end
+
 end
