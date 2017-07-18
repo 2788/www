@@ -15,4 +15,3 @@ class ChannelCooperation
   field :uid, type: Integer
   field :ip, type: String
 end
-

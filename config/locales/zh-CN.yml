@@ -62,7 +62,6 @@ zh-CN:
     - name: DQM
       label:  应用质量监控解决方案
       desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
-
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w
