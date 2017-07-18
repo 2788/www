@@ -18,7 +18,7 @@
         <div class="sections-wrapper">
           <section id=<%= action_name -%>>
             <% I18n.t(action_name).each do |list| %>
-              <%= content_tag :div, link_to(content_tag(:h3, list[:title]) + content_tag(:time, list[:time]) + content_tag(:p, list[:desc], class: "news-content"), list[:link]) -%>
+              <%= content_tag :div, link_to(content_tag(:h4, list[:title]) + content_tag(:time, list[:time]) + content_tag(:p, list[:desc], class: "news-content"), list[:link], target: "_blank" ), class: "news-modal" -%>
             <% end %>
           </section>
         </div>

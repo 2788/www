@@ -1,0 +1,45 @@
+.agreement-details {
+  padding: 30px;
+  h2{
+    margin-bottom: 38px;
+    margin-top: -4px;
+  }
+
+  p.condense {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 39px;
+  }
+
+  ol {
+    list-style: none;
+    background: transparent;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 21px;
+
+    li {
+      font-size: 14px;
+      line-height: 24px;
+      margin-bottom: 19px;
+
+      &.last-li{
+        margin-bottom: 0;
+      }
+
+      span{
+        width: 40px;
+        display: block;
+        float: left;
+
+        &.exspan {
+          width: 60px;
+        }
+      }
+    }
+
+    &.last-ol{
+      margin-bottom: 0;
+    }
+  }
+}
