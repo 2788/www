@@ -2,7 +2,7 @@ class DeveloperCooperation
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  store_in collection: "marketing_developer_cooperation"
+  store_in collection: "marketing_developer_cooperations"
 
   field :resource_name, type: String
   field :resource_desc, type: String

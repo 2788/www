@@ -2,7 +2,7 @@ class ChannelCooperation
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  store_in collection: "marketing_channel_cooperation"
+  store_in collection: "marketing_channel_cooperations"
 
   field :company, type: String
   field :website, type: String

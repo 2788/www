@@ -37,8 +37,6 @@ zh-CN:
         - name: vance
           label: 点播云
           desc: 提供上传、存储、转发分发、播放器等服务的一站式点播服务
-
-
   solutions:
     - name: QOS
       label:  对象存储私有化部署
