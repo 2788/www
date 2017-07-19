@@ -174,7 +174,7 @@ a.underline{
     position: relative;
     border: 1px solid #eeeeee;
     margin-bottom: 30px;
-    min-height: 188px;
+    min-height: 146px;
   }
 
   video{
@@ -292,8 +292,12 @@ a.underline{
     }
   }
 
+  .media-left{
+    padding-right: 30px;
+  }
+
   .media-object{
-    max-width: 150px;
+    max-width: 140px;
   }
   .media-heading{
     margin-bottom: 20px;

@@ -30,26 +30,59 @@ input[type=range]::-moz-range-runnable-track {//兼容firefox
   // background-color: rgb(249, 249, 249);
   // border: 1px solid rgb(237, 237, 237);
 }
-//滑块添加样式
-input[type=range]::-webkit-slider-thumb {
+//滑块初始样式
+input.init[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 25px;
-  width: 25px;
-  margin-top: -8px; /*使滑块超出轨道部分的偏移量相等*/
-  background: #ffffff;
+  height: 26px;
+  width: 26px;
+  margin-top: -9px; /*使滑块超出轨道部分的偏移量相等*/
+  background-image: image-url("prices/slider.png");
+  background-size: 26px 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  //background: #ffffff;
   border-radius: 50%; /*外观设置为圆形*/
-  border: solid 0.125em #059CFA; /*设置边框*/
-  // box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+  //border: solid 0.125em #059CFA; /*设置边框*/
+  box-shadow: 0 .125em .125em #f2f2f2; /*添加底部阴影*/
 }
-input[type=range]::-moz-range-thumb {//兼容firefox
-  -webkit-appearance: none;
-  height: 25px;
-  width: 25px;
-  margin-top: -8px; /*使滑块超出轨道部分的偏移量相等*/
-  background: #ffffff;
+input.init[type=range]::-moz-range-thumb {//兼容firefox
+  -moz-appearance: none;
+  height: 26px;
+  width: 26px;
+  margin-top: -9px; /*使滑块超出轨道部分的偏移量相等*/
+  background-image: image-url("prices/slider.png");
+  background-size: 26px 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  //background: #ffffff;
   border-radius: 50%; /*外观设置为圆形*/
-  border: solid 0.125em #059CFA; /*设置边框*/
-  // box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+  //border: solid 0.125em #059CFA; /*设置边框*/
+  box-shadow: 0 .125em .125em #f2f2f2; /*添加底部阴影*/
+}
+//滑块滑动后样式
+input.sliding[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 26px;
+  width: 26px;
+  margin-top: -9px; /*使滑块超出轨道部分的偏移量相等*/
+  background-image: image-url("prices/slider-selected.png");
+  background-size: 26px 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%; /*外观设置为圆形*/
+  box-shadow: 0 .125em .125em #f2f2f2; /*添加底部阴影*/
+}
+input.sliding[type=range]::-moz-range-thumb {//兼容firefox
+  -moz-appearance: none;
+  height: 26px;
+  width: 26px;
+  margin-top: -9px; /*使滑块超出轨道部分的偏移量相等*/
+  background-image: image-url("prices/slider-selected.png");
+  background-size: 26px 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%; /*外观设置为圆形*/
+  box-shadow: 0 .125em .125em #f2f2f2; /*添加底部阴影*/
 }
 //兼容firefox 代替chrome下的range.coffee做的事情
 input[type=range]::-moz-range-progress {
