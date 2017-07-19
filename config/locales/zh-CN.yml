@@ -111,6 +111,8 @@ zh-CN:
       desc: anchang
     - path: cooperation/client-devstore-highlight@2x.png
       desc: devstore
+    - path: cooperation/client-coding-highlight@2x.png
+      desc: coding
   seo:
     welcome_index:
       title: 七牛云-国内领先的企业级云服务商

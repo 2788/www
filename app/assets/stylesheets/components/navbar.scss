@@ -79,20 +79,16 @@ nav.navbar{
       &.menu-title{
         background-color:rgba(229, 229, 229, 0.06);
         font-size: 12px;
-        height: 32px;
-        line-height: 32px;
         color: rgb(151, 152, 156);
-        padding: 0 0 0 20px;
+        padding: 2px 0 2px 20px;
       }
       &.service,
       &.solution{
-        height: 80px;
         padding: 0;
         border-bottom: 1px solid rgba(229, 229, 229, 0.07);
       }
       a{
-        padding: 10px 20px 0 20px;
-        height: 80px;
+        padding: 10px 20px;
         color: #FFF;
         transition: all .3s;
         &:hover{
