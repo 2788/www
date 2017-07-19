@@ -205,6 +205,12 @@ $(document).ready ->
   $('.amount-input').bind 'input', ->
     max = Number($(this).attr('max'))
     val = Number($(this).val())
+    if val > 0
+      $(this).removeClass("init")
+      $(this).addClass("sliding")
+    else
+      $(this).removeClass("sliding")
+      $(this).addClass("init")
     if val > max
       $(this).val(max)
     key = $(this).attr('key')

@@ -79,12 +79,12 @@
         <li><a href="#fashion" data-toggle="tab">时尚生活</a></li>
         <li><a href="#enjoyment" data-toggle="tab">文化娱乐</a></li>
         <li><a href="#health" data-toggle="tab">医疗健康</a></li>
-        <li><a href="#education" data-toggle="tab">在线教育</a></li>
+        <li><a href="#wealth" data-toggle="tab">金融</a></li>
         <li><a href="#traffics" data-toggle="tab">交通旅游</a></li>
         <li><a href="#hardware" data-toggle="tab">智能硬件</a></li>
         <li><a href="#software" data-toggle="tab">工具软件</a></li>
         <li><a href="#safe" data-toggle="tab">安防</a></li>
-        <li><a href="#wealth" data-toggle="tab">金融</a></li>
+        <li><a href="#education" data-toggle="tab">在线教育</a></li>
         <li><a href="#media" data-toggle="tab">广电</a></li>
         <li><a href="#network" data-toggle="tab">移动通信</a></li>
       </ul>
@@ -93,7 +93,7 @@
           <% groupid = logos[:groupid] %>
           <section id= <%= groupid %> class="tab-pane fade in active">
             <% logos[:group].each do |logo| %>
-              <div class="col-sm-3 col-md-2">
+              <div class="col-sm-2">
                 <div class="thumbnail feature-case">
                   <%= image_tag logo[:imgpath], class: "list-img", alt: "案例", width: 100 %>
                 </div>
@@ -105,7 +105,7 @@
           <% groupid = logos[:groupid] %>
           <section id= <%= groupid %> class="tab-pane fade in">
             <% logos[:group].each do |logo| %>
-              <div class="col-sm-3 col-md-2">
+              <div class="col-sm-2">
                 <div class="thumbnail feature-case">
                   <%= image_tag logo[:imgpath], class: "list-img", alt: "案例", width: 100 %>
                 </div>
