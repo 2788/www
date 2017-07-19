@@ -2,7 +2,7 @@ class Recommendation
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  store_in collection: "customer_recommendations"
+  store_in collection: "marketing_recommendations"
 
   field :company, type: String
   field :city, type: String
