@@ -51,7 +51,7 @@ footer{
     ul{
       list-style: none;
       margin: 0;
-      padding: 20px 0 10px;
+      padding: 45px 0 10px;
       border-top: 1px solid #49515F;
       li {
         display: inline-block;
@@ -75,20 +75,20 @@ footer{
 
     .verify-logo {
       display: block;
-      width: 30px;
-      height: 35px;
+      width: 70px;
+      height: 75px;
       background-image: image-url('kexinyun.png');
       background-repeat: no-repeat;
-      background-size: 30px 35px;
+      background-size: 70px 75px;
       float: right;
     }
     .iso-logo {
       display: block;
-      width: 35px;
-      height: 35px;
+      width: 75px;
+      height: 70px;
       background-image: image-url('iso27001.png');
       background-repeat: no-repeat;
-      background-size: 30px 35px;
+      background-size: 75px 70px;
       float: right;
       margin-right: 20px;
     }
