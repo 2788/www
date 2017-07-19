@@ -317,7 +317,7 @@ zh-CN:
         - imgpath: case/mingrenpengyouquan.png
         - imgpath: case/pengpeng.png
         - imgpath: case/shougongke.png
-        - imgpath: case/sobbr.png
+        - imgpath: case/sobrr.png
         - imgpath: case/taijiaohezi.png
         - imgpath: case/weiniao.png
         - imgpath: case/yupaopao.png
@@ -420,7 +420,6 @@ zh-CN:
         - imgpath: case/pinganyinhang.png
     - groupid: media
       group:
-        - imgpath: case/changjiangyun.png
         - imgpath: case/hubeiguangdian.png
         - imgpath: case/jiangxuweishi.png
         - imgpath: case/zhongguolan.png
