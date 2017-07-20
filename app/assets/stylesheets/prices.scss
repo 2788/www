@@ -151,8 +151,7 @@ table.pricing-table tr{
     border-bottom: 1px solid #e6eaef;
 
     &.th-init{
-      border-left: 0;
-      border-right: 0;
+      border: 0;
     }
 
     &.thead-title{
@@ -189,6 +188,10 @@ table.pricing-table tr th, table.pricing-table tr td{
 
   &.border-left{
     border-left: 1px solid #e6eaef;
+  }
+
+  &.border-right{
+    border-right: 1px solid #e6eaef;
   }
 
   div {
