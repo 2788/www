@@ -66,7 +66,13 @@ html{
   background-size: cover;
   -webkit-font-smoothing: antialiased;
 
-  &.hero-contact{
+  .vertical{
+    position: relative;
+    top: 25%;
+  }
+
+  &.hero-contact,
+  &.hero-company{
     margin-bottom: -30px;
   }
 
@@ -90,7 +96,7 @@ html{
   &.hero-ecug{background-image: image-url('ecug-banner.jpg'); }
   &.hero-niushow{background-image: image-url('niushow-banner.jpg'); }
   &.hero-pandora{background-image: image-url('dashuju-banner.jpg'); }
-  &.hero-fusion{background-image: image-url('cdn-banner.jpg'); }
+  &.hero-fusion{background-image: image-url('fusion-banner.jpg'); }
   &.hero-dora{background-image: image-url("zhinengduomeitiAPI-banner.jpg"); }
   &.hero-kirk{background-image: image-url("rongqiyun-banner.jpg"); }
   &.hero-vance{background-image: image-url("dianboyun-banner.jpg"); }
@@ -143,7 +149,7 @@ a.underline{
 // 产品
 .features{
   background: #FFF;
-  padding: 80px 0 100px;
+  padding: 60px 0 100px;
 
   .list li.active a{
     color: #00a0de;

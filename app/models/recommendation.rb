@@ -11,7 +11,7 @@ class Recommendation
   field :email, type: String
   field :phone, type: String
   field :desc, type: String
-  field :emergency, type: String
+  field :emergency, type: Integer
   field :recommender_name, type: String
   field :recommender_phone, type: String
   field :ip, type: String
