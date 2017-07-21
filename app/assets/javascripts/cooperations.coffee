@@ -27,7 +27,7 @@ $(document).ready ->
     $form.hide()
     setTimeout ->
       $modal.modal('hide')
-      $('#channel-form .form-control').val('')
+      $('#channel-form .form-control, #developer-form .form-control').val('')
     , 1000 * 1.5
 
   $form.on 'ajax:error', (event, xhr, status, error)->

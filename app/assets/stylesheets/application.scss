@@ -543,7 +543,7 @@ a.underline{
 }
 
 //反馈、推荐表单
-.features.form-wrapper{
+div.form-wrapper{
   padding-top: 0;
   padding-bottom: 120px;
   .title{
@@ -551,7 +551,6 @@ a.underline{
     font-size: 16px;
     color: #2f3033;
     text-align: center;
-    margin-bottom: 50px;
   }
 
   .form-box{
