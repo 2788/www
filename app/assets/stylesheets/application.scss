@@ -543,7 +543,9 @@ a.underline{
 }
 
 //反馈、推荐表单
-.form-wrapper{
+.features.form-wrapper{
+  padding-top: 0;
+  padding-bottom: 120px;
   .title{
     font-family: PingFangSC Medium;
     font-size: 16px;
