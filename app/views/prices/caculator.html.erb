@@ -11,7 +11,20 @@
 <div class="feature-price tabs">
   <div class="feature-price-nav" id="feature-price-nav">
     <div class="container">
-      <ul class="nav navbar-nav" id="caculatorTabs">
+      <div class="form" id="caculatorTabs">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="caculatorTabs" value="kodo" checked> 标准存储</input>
+          </label>
+          <label>
+            <input type="checkbox" class="caculatorTabs" value="lowKodo" checked> 低频存储</input>
+          </label>
+          <label>
+            <input type="checkbox" class="caculatorTabs" value="fusion" checked> 融合CDN</input>
+          </label>
+        </div>
+      </div>
+      <%#<ul class="nav navbar-nav" id="caculatorTabs">
         <li>
           <input type="checkbox" class="caculatorTabs" value="kodo" checked> 标准存储</input>
         </li>
@@ -21,7 +34,7 @@
         <li>
           <input type="checkbox" class="caculatorTabs" value="fusion" checked> 融合CDN</input>
         </li>
-      </ul>
+      </ul>%>
     </div>
   </div>
 
@@ -100,7 +113,7 @@
             <section class="tab-pane active caculator-sec-last" id="tab-caculator-fusion">
               <dl>
                 <dt>融合CDN</dt>
-                <dd>
+                <dd id="fusion-area-select">
                   <ul class="list-inline">
                     <li><span>区域</span></li>
                     <li>

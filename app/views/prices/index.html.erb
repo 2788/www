@@ -12,19 +12,14 @@
 <div class="feature-price tabs">
   <div class="feature-price-nav" id="feature-price-nav">
     <div class="container">
-      <ul class="nav navbar-nav">
-        <li>
-          <select role="tablist" id="pricesTabs" class="select-lg">
-            <option value="kodo">对象存储</option>
-            <option value="fusion">融合 CDN</option>
-            <option value="dora">智能多媒体 API</option>
-          </select>
-        </li>
-
-        <li>
-          <%= link_to "价格计算器", caculator_path, class: "caculator" -%>
-        </li>
-      </ul>
+      <div>
+        <select role="tablist" id="pricesTabs">
+          <option value="kodo">对象存储</option>
+          <option value="fusion">融合 CDN</option>
+          <option value="dora">智能多媒体 API</option>
+        </select>
+        <%= link_to "价格计算器", caculator_path, class: "caculator" -%>
+      </div>
     </div>
   </div>
 
@@ -53,7 +48,34 @@
                 <dd>每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</dd>
               </dl>
 
-              <ul class="list-inline list-inline-prices">
+              <div class="row list-inline-prices">
+                <div class="col-xs-6 col-md-3 special-price">
+                  <div class="div-init">
+                    <h5>标准存储免费空间</h5>
+                    <p><span class="big-text">0-10 </span><span class="smal-text"> GB</span></p>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-md-3 special-price">
+                  <div>
+                    <h5>每月免费上传流量</h5>
+                    <p><span class="big-text">无上限</span></p>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-md-3 special-price">
+                  <div>
+                    <h5>标准存储每月写请求 Put / Delete</h5>
+                    <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
+                  </div>
+                </div>
+                <div class="col-xs-6 col-md-3 special-price">
+                  <div class="border-init">
+                    <h5>标准存储每月读请求 Get</h5>
+                    <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
+                  </div>
+                </div>
+              </div>
+
+              <%#<ul class="list-inline list-inline-prices">
                 <li>
                   <div class="div-init">
                     <h5>标准存储免费空间</h5>
@@ -78,7 +100,7 @@
                     <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
                   </div>
                 </li>
-              </ul>
+              </ul>%>
             </div>
 
             <div class="row details">
@@ -93,163 +115,164 @@
             <div class="intro">
               <h2 class="title-left">价格详情</h2>
             </div>
-
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table">
-              <tbody>
-                <tr>
-                  <th width="34%">名目</th><th width="33%" colspan="2" class="th-init border-bottom">标准存储</th><th width="33%" colspan="2" class="th-init border-bottom border-left">低频存储</th>
-                </tr>
-                <tr>
-                  <th rowspan="5">存储空间（华东）</th>
-                  <td>第 0 GB 至 10 GB</td>
-                  <td>免费</td>
-                  <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 10 GB 至 1 TB</td>
-                  <td>0.148  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 1 TB 至 200 TB</td>
-                  <td>0.145  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 200 TB 至 5 PB</td>
-                  <td>0.142  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">第 5 PB 以上</td>
-                  <td class="border-bottom">0.139  元/GB/月</td>
-                </tr>
-                <tr>
-                  <th rowspan="5">存储空间（华南）</th>
-                  <td>第 0 GB 至 10 GB</td>
-                  <td>免费</td>
-                  <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 10 GB 至 1 TB</td>
-                  <td>0.134  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 1 TB 至 200 TB</td>
-                  <td>0.131  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 200 TB 至 5 PB</td>
-                  <td>0.128  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">第 5 PB 以上</td>
-                  <td class="border-bottom">0.125  元/GB/月</td>
-                </tr>
-                <tr>
-                  <th rowspan="5">存储空间（华北）</th>
-                  <td>第 0 GB 至 10 GB</td>
-                  <td>免费</td>
-                  <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 10 GB 至 1 TB</td>
-                  <td>0.148  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 1 TB 至 200 TB</td>
-                  <td>0.145  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 200 TB 至 5 PB</td>
-                  <td>0.142  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">第 5 PB 以上</td>
-                  <td class="border-bottom">0.139  元/GB/月</td>
-                </tr>
-                <tr>
-                  <th rowspan="5">存储空间（北美）</th>
-                  <td>第 0 GB 至 10 GB</td>
-                  <td>免费</td>
-                  <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 10 GB 至 1 TB</td>
-                  <td>0.165  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 1 TB 至 200 TB</td>
-                  <td>0.162  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td>第 200 TB 至 5 PB</td>
-                  <td>0.159  元/GB/月</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">第 5 PB 以上</td>
-                  <td class="border-bottom">0.156  元/GB/月</td>
-                </tr>
-                <tr>
-                  <th rowspan="2">PUT / DELETE 请求</th>
-                  <td>第 0 次至 10 万次</td>
-                  <td>免费</td>
-                  <td rowspan="2" colspan="2" class="border-bottom border-left">0.1 元/万次</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">第 10 万次以上</td>
-                  <td class="border-bottom">0.01 元/万次</td>
-                </tr>
-                <tr>
-                  <th rowspan="2">GET 请求</th>
-                  <td>第 0 次至 100 万次</td>
-                  <td>免费</td>
-                  <td rowspan="2" colspan="2" class="border-bottom border-left">0.1 元/万次</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">第 100 万次以上</td>
-                  <td class="border-bottom">0.01 元/万次</td>
-                </tr>
-                <tr>
-                  <th>存储类型转换</th>
-                  <td colspan="2" class="border-bottom">0.1 元/万次</td>
-                  <td colspan="2" class="border-bottom border-left">0.1 元/万次</td>
-                </tr>
-                <tr>
-                  <th>上传流量</th>
-                  <td colspan="2" class="border-bottom">免费</td>
-                  <td colspan="2" class="border-bottom border-left">免费</td>
-                </tr>
-                <tr>
-                  <th rowspan="2">外网流出流量</th>
-                  <td>0GB - 100 TB</td>
-                  <td>0.29  元/GB</td>
-                  <td class="border-left">0GB - 100 TB</td>
-                  <td>0.29  元/GB</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">100TB - 以上</td>
-                  <td class="border-bottom">0.26 元/GB</td>
-                  <td class="border-bottom border-left">100TB - 以上</td>
-                  <td class="border-bottom">0.26 元/GB</td>
-                </tr>
-                <tr>
-                  <th rowspan="2">跨区域同步流量</th>
-                  <td>国内 <-> 国内</td>
-                  <td>0.29 元/GB</td>
-                  <td class="border-left">国内 <-> 国内</td>
-                  <td>0.29 元/GB</td>
-                </tr>
-                <tr>
-                  <td class="border-bottom">国内 <-> 海外</td>
-                  <td class="border-bottom">0.58 元/GB</td>
-                  <td class="border-bottom border-left">国内 <-> 海外</td>
-                  <td class="border-bottom">0.58 元/GB</td>
-                </tr>
-                <tr>
-                  <th class="th-init border-right">数据取回</th>
-                  <td colspan="2">免费</td>
-                  <td colspan="2" class="border-left">0.06  元/GB</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                <tbody>
+                  <tr>
+                    <th width="34%">名目</th><th width="33%" colspan="2" class="th-init border-bottom">标准存储</th><th width="33%" colspan="2" class="th-init border-bottom border-left">低频存储</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="5">存储空间（华东）</th>
+                    <td>第 0 GB 至 10 GB</td>
+                    <td>免费</td>
+                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 GB 至 1 TB</td>
+                    <td>0.148  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 1 TB 至 200 TB</td>
+                    <td>0.145  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 200 TB 至 5 PB</td>
+                    <td>0.142  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">第 5 PB 以上</td>
+                    <td class="border-bottom">0.139  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="5">存储空间（华南）</th>
+                    <td>第 0 GB 至 10 GB</td>
+                    <td>免费</td>
+                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 GB 至 1 TB</td>
+                    <td>0.134  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 1 TB 至 200 TB</td>
+                    <td>0.131  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 200 TB 至 5 PB</td>
+                    <td>0.128  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">第 5 PB 以上</td>
+                    <td class="border-bottom">0.125  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="5">存储空间（华北）</th>
+                    <td>第 0 GB 至 10 GB</td>
+                    <td>免费</td>
+                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 GB 至 1 TB</td>
+                    <td>0.148  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 1 TB 至 200 TB</td>
+                    <td>0.145  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 200 TB 至 5 PB</td>
+                    <td>0.142  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">第 5 PB 以上</td>
+                    <td class="border-bottom">0.139  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="5">存储空间（北美）</th>
+                    <td>第 0 GB 至 10 GB</td>
+                    <td>免费</td>
+                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 GB 至 1 TB</td>
+                    <td>0.165  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 1 TB 至 200 TB</td>
+                    <td>0.162  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td>第 200 TB 至 5 PB</td>
+                    <td>0.159  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">第 5 PB 以上</td>
+                    <td class="border-bottom">0.156  元/GB/月</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">PUT / DELETE 请求</th>
+                    <td>第 0 次至 10 万次</td>
+                    <td>免费</td>
+                    <td rowspan="2" colspan="2" class="border-bottom border-left">0.1 元/万次</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">第 10 万次以上</td>
+                    <td class="border-bottom">0.01 元/万次</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">GET 请求</th>
+                    <td>第 0 次至 100 万次</td>
+                    <td>免费</td>
+                    <td rowspan="2" colspan="2" class="border-bottom border-left">0.1 元/万次</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">第 100 万次以上</td>
+                    <td class="border-bottom">0.01 元/万次</td>
+                  </tr>
+                  <tr>
+                    <th>存储类型转换</th>
+                    <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                    <td colspan="2" class="border-bottom border-left">0.1 元/万次</td>
+                  </tr>
+                  <tr>
+                    <th>上传流量</th>
+                    <td colspan="2" class="border-bottom">免费</td>
+                    <td colspan="2" class="border-bottom border-left">免费</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">外网流出流量</th>
+                    <td>0GB - 100 TB</td>
+                    <td>0.29  元/GB</td>
+                    <td class="border-left">0GB - 100 TB</td>
+                    <td>0.29  元/GB</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">100TB - 以上</td>
+                    <td class="border-bottom">0.26 元/GB</td>
+                    <td class="border-bottom border-left">100TB - 以上</td>
+                    <td class="border-bottom">0.26 元/GB</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="2">跨区域同步流量</th>
+                    <td>国内 <-> 国内</td>
+                    <td>0.29 元/GB</td>
+                    <td class="border-left">国内 <-> 国内</td>
+                    <td>0.29 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">国内 <-> 海外</td>
+                    <td class="border-bottom">0.58 元/GB</td>
+                    <td class="border-bottom border-left">国内 <-> 海外</td>
+                    <td class="border-bottom">0.58 元/GB</td>
+                  </tr>
+                  <tr>
+                    <th class="th-init border-right">数据取回</th>
+                    <td colspan="2">免费</td>
+                    <td colspan="2" class="border-left">0.06  元/GB</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
@@ -268,142 +291,144 @@
             <div class="intro">
               <h2 class="title-left">价格详情</h2>
             </div>
-
-            <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table">
-              <tbody>
-                <tr class="light-bkcolor">
-                  <th width="270" class="thead-title th-init border-bottom">国内</th>
-                  <td class="border-bottom"></td>
-                  <td class="border-bottom"></td>
-                </tr>
-                <tr>
-                  <th width="340">名目</th><th width="360" class="th-init">阶梯</th><th class="th-init">价格</th>
-                </tr>
-                <tr>
-                  <th rowspan="3">HTTP 下载流量</th>
-                  <td class="light-bkcolor">第 0 GB 至 10 GB</td>
-                  <td class="light-bkcolor">免费</td>
-                </tr>
-                <tr>
-                  <td>第 10 GB 至 100 TB</td>
-                  <td>0.29 元/GB</td>
-                </tr>
-                <tr class="light-bkcolor">
-                  <td>第 100 TB 以上</td>
-                  <td>0.26 元/GB</td>
-                </tr>
-                <tr>
-                  <th rowspan="3" class="th-init border-right">HTTPS 下载流量</th>
-                  <td>第 0 GB 至 10 TB  (含)</td>
-                  <td>0.36 元/GB</td>
-                </tr>
-                <tr class="light-bkcolor">
-                  <td>第 10 TB 至 100 TB (含)</td>
-                  <td>0.32 元/GB</td>
-                </tr>
-                <tr>
-                  <td>第 100 TB 以上</td>
-                  <td>0.26 元/GB</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table">
-              <tbody>
-                <tr class="light-bkcolor">
-                  <th width="180" class="thead-title th-init border-bottom">海外</th>
-                  <td class="border-bottom"></td>
-                  <td class="border-bottom"></td>
-                  <td class="border-bottom"></td>
-                  <td class="border-bottom"></td>
-                  <td class="border-bottom"></td>
-                  <td class="border-bottom"></td>
-                </tr>
-                <tr>
-                  <th width="180">名目</th>
-                  <th width="180" class="th-init">流量阶梯<span class="grey-unit">/每月</span></th>
-                  <th class="th-init">欧洲/北美洲</th>
-                  <th class="th-init">亚洲<p class="grey-unit th-p">（除中国/印度/东南亚）</p></th>
-                  <th class="th-init">亚洲<p class="grey-unit th-p"> （东南亚/印度）</p></th>
-                  <th class="th-init">南美洲</th>
-                  <th class="th-init">大洋洲与其他</th>
-                </tr>
-                <tr>
-                  <th rowspan="5">HTTP 下载流量</th>
-                  <td class="light-bkcolor">第 0 GB 至 10 TB</td>
-                  <td class="light-bkcolor">0.39 元/GB</td>
-                  <td class="light-bkcolor">0.57 元/GB</td>
-                  <td class="light-bkcolor">0.87 元/GB</td>
-                  <td class="light-bkcolor">0.87 元/GB</td>
-                  <td class="light-bkcolor">1.08 元/GB</td>
-                </tr>
-                <tr>
-                  <td>第 10 TB 至 100 TB</td>
-                  <td>0.34 元/GB</td>
-                  <td>0.50 元/GB</td>
-                  <td>0.76 元/GB</td>
-                  <td>0.76 元/GB</td>
-                  <td>0.94 元/GB</td>
-                </tr>
-                <tr class="light-bkcolor">
-                  <td>第 100 TB 至 1PB</td>
-                  <td>0.30 元/GB</td>
-                  <td>0.44 元/GB</td>
-                  <td>0.66 元/GB</td>
-                  <td>0.66 元/GB</td>
-                  <td>0.82 元/GB</td>
-                </tr>
-                <tr>
-                  <td>第 1 PB 至 10 PB</td>
-                  <td>0.26 元/GB</td>
-                  <td>0.38 元/GB</td>
-                  <td>0.57 元/GB</td>
-                  <td>0.57 元/GB</td>
-                  <td>0.71 元/GB</td>
-                </tr>
-                <tr class="light-bkcolor">
-                  <td>第 10 PB 以上</td>
-                  <td colspan="5" style="text-align:center">请联系我们以获得更低价格</td>
-                </tr>
-                <tr>
-                  <th rowspan="5" class="th-init border-bottom border-right">HTTPS 下载流量</th>
-                  <td>第 0 GB 至 10 TB</td>
-                  <td>0.46 元/GB</td>
-                  <td>0.68 元/GB</td>
-                  <td>1.04 元/GB</td>
-                  <td>1.04 元/GB</td>
-                  <td>1.29 元/GB</td>
-                </tr>
-                <tr class="light-bkcolor">
-                  <td>第 10 TB 至 100 TB</td>
-                  <td>0.40 元/GB</td>
-                  <td>0.60 元/GB</td>
-                  <td>0.91 元/GB</td>
-                  <td>0.91 元/GB</td>
-                  <td>1.12 元/GB</td>
-                </tr>
-                <tr>
-                  <td>第 100 TB 至 1PB</td>
-                  <td>0.36 元/GB</td>
-                  <td>0.52 元/GB</td>
-                  <td>0.79 元/GB</td>
-                  <td>0.79 元/GB</td>
-                  <td>0.98 元/GB</td>
-                </tr>
-                <tr class="light-bkcolor">
-                  <td>第 1 PB 至 10 PB</td>
-                  <td>0.31 元/GB</td>
-                  <td>0.45 元/GB</td>
-                  <td>0.68 元/GB</td>
-                  <td>0.68 元/GB</td>
-                  <td>0.85 元/GB</td>
-                </tr>
-                <tr>
-                  <td>第 10 PB 以上</td>
-                  <td colspan="5" style="text-align:center">请联系我们以获得更低价格</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                <tbody>
+                  <tr class="light-bkcolor">
+                    <th width="270" class="thead-title th-init border-bottom">国内</th>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
+                  </tr>
+                  <tr>
+                    <th width="340">名目</th><th width="360" class="th-init">阶梯</th><th class="th-init">价格</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="3">HTTP 下载流量</th>
+                    <td class="light-bkcolor">第 0 GB 至 10 GB</td>
+                    <td class="light-bkcolor">免费</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 GB 至 100 TB</td>
+                    <td>0.29 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td>第 100 TB 以上</td>
+                    <td>0.26 元/GB</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="3" class="th-init border-right">HTTPS 下载流量</th>
+                    <td>第 0 GB 至 10 TB  (含)</td>
+                    <td>0.36 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td>第 10 TB 至 100 TB (含)</td>
+                    <td>0.32 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td>第 100 TB 以上</td>
+                    <td>0.26 元/GB</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-responsive">
+              <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                <tbody>
+                  <tr class="light-bkcolor">
+                    <th width="180" class="thead-title th-init border-bottom">海外</th>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
+                  </tr>
+                  <tr>
+                    <th width="180">名目</th>
+                    <th width="180" class="th-init">流量阶梯<span class="grey-unit">/每月</span></th>
+                    <th class="th-init">欧洲/北美洲</th>
+                    <th class="th-init">亚洲<p class="grey-unit th-p">（除中国/印度/东南亚）</p></th>
+                    <th class="th-init">亚洲<p class="grey-unit th-p"> （东南亚/印度）</p></th>
+                    <th class="th-init">南美洲</th>
+                    <th class="th-init">大洋洲与其他</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="5">HTTP 下载流量</th>
+                    <td class="light-bkcolor">第 0 GB 至 10 TB</td>
+                    <td class="light-bkcolor">0.39 元/GB</td>
+                    <td class="light-bkcolor">0.57 元/GB</td>
+                    <td class="light-bkcolor">0.87 元/GB</td>
+                    <td class="light-bkcolor">0.87 元/GB</td>
+                    <td class="light-bkcolor">1.08 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 TB 至 100 TB</td>
+                    <td>0.34 元/GB</td>
+                    <td>0.50 元/GB</td>
+                    <td>0.76 元/GB</td>
+                    <td>0.76 元/GB</td>
+                    <td>0.94 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td>第 100 TB 至 1PB</td>
+                    <td>0.30 元/GB</td>
+                    <td>0.44 元/GB</td>
+                    <td>0.66 元/GB</td>
+                    <td>0.66 元/GB</td>
+                    <td>0.82 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td>第 1 PB 至 10 PB</td>
+                    <td>0.26 元/GB</td>
+                    <td>0.38 元/GB</td>
+                    <td>0.57 元/GB</td>
+                    <td>0.57 元/GB</td>
+                    <td>0.71 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td>第 10 PB 以上</td>
+                    <td colspan="5" style="text-align:center">请联系我们以获得更低价格</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="5" class="th-init border-bottom border-right">HTTPS 下载流量</th>
+                    <td>第 0 GB 至 10 TB</td>
+                    <td>0.46 元/GB</td>
+                    <td>0.68 元/GB</td>
+                    <td>1.04 元/GB</td>
+                    <td>1.04 元/GB</td>
+                    <td>1.29 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td>第 10 TB 至 100 TB</td>
+                    <td>0.40 元/GB</td>
+                    <td>0.60 元/GB</td>
+                    <td>0.91 元/GB</td>
+                    <td>0.91 元/GB</td>
+                    <td>1.12 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td>第 100 TB 至 1PB</td>
+                    <td>0.36 元/GB</td>
+                    <td>0.52 元/GB</td>
+                    <td>0.79 元/GB</td>
+                    <td>0.79 元/GB</td>
+                    <td>0.98 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td>第 1 PB 至 10 PB</td>
+                    <td>0.31 元/GB</td>
+                    <td>0.45 元/GB</td>
+                    <td>0.68 元/GB</td>
+                    <td>0.68 元/GB</td>
+                    <td>0.85 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td>第 10 PB 以上</td>
+                    <td colspan="5" style="text-align:center">请联系我们以获得更低价格</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
@@ -421,213 +446,218 @@
               <div class="intro">
                 <h2 class="title-left">价格详情</h2>
               </div>
-
-              <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table">
-                <tbody>
-                  <tr class="light-bkcolor">
-                    <th width="340" class="thead-title th-init border-bottom">多媒体处理</th>
-                    <td class="border-bottom"></td>
-                    <td class="border-bottom"></td>
-                  </tr>
-                  <tr>
-                    <th width="340">名目</th><th width="360" class="th-init">阶梯</th><th class="th-init">价格</th>
-                  </tr>
-                  <tr>
-                    <th rowspan="7">音视频转码</th>
-                    <td class="light-bkcolor">音频转码</td>
-                    <td class="light-bkcolor">0.0048 元/分钟</td>
-                  </tr>
-                  <tr>
-                    <td>视频转码 sd240（ 320x240）</td>
-                    <td>0.0057 元/分钟</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>视频转码 sd480（640x480） </td>
-                    <td>0.0072 元/分钟</td>
-                  </tr>
-                  <tr>
-                    <td>视频转码 sd（1080x720） </td>
-                    <td>0.0189 元/分钟</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>视频转码 hd（1920x1080）</td>
-                    <td>0.0324 元/分钟</td>
-                  </tr>
-                  <tr>
-                    <td>视频转码 2K（2560x1440）</td>
-                    <td>0.06 元/分钟</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>视频转码 4K（3840x2160）</td>
-                    <td>0.12 元/分钟</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="6" class="th-init border-right">其他请求</th>
-                    <td>imageslim（图片瘦身）</td>
-                    <td>0.1 元/千次</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>avconcat（音视频拼接）</td>
-                    <td>0.1 元/千次</td>
-                  </tr>
-                  <tr>
-                    <td>avinfo（音视频元信息）</td>
-                    <td>0.1 元/千次</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>imageAve（图片主色调）</td>
-                    <td>0.1 元/千次</td>
-                  </tr>
-                  <tr>
-                    <td>vframe, vsample（视频截图）</td>
-                    <td>0.1 元/千次</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>qhash（文件 HASH 值）</td>
-                    <td>0.05 元/GB</td>
-                  </tr>
-                </tbody>
-              </table>
-              <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table">
-                <tbody>
-                  <tr class="light-bkcolor">
-                    <th width="340" class="thead-title th-init border-bottom">图片鉴黄</th>
-                    <td class="border-bottom"></td>
-                    <td class="border-bottom"></td>
-                  </tr>
-                  <tr>
-                    <th width="340" class="th-init">范围</th><th colspan="2" class="th-init">价格</th>
-                  </tr>
-                  <tr>
-                    <td class="light-bkcolor">-</td>
-                    <td class="light-bkcolor"><span style="font-weight:500">确定部分价格</span></td>
-                    <td class="light-bkcolor"><span style="font-weight:500">不确定部分价格</span></td>
-                  </tr>
-                  <tr>
-                    <td>第 0 次 至 300 万次</td>
-                    <td>0.23 元/百次</td>
-                    <td>0.0625 元/百次</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>第 300 万次 至 1500 万次</td>
-                    <td>0.21 元/百次</td>
-                    <td>0.0575 元/百次</td>
-                  </tr>
-                  <tr>
-                    <td>第 1500 万次 至 3000 万次</td>
-                    <td>0.19 元/百次</td>
-                    <td>0.0525 元/百次</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>3000 万次以上</td>
-                    <td>0.16 元/百次</td>
-                    <td>0.045 元/百次</td>
-                  </tr>
-                </tbody>
-              </table>
-              <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table">
-                <tbody>
-                  <tr class="light-bkcolor">
-                    <th width="180" class="thead-title th-init border-bottom">自定义数据处理<br><span style="font-size:12px;width:450px;line-height:18px">选择 C1M1 的标准用户和高级用户</span><br><span style="font-size:12px;width:450px;line-height:18px">每月有 750 小时的免费额度。</span></th>
-                    <td class="border-bottom"></td>
-                    <td class="border-bottom"></td>
-                    <td class="border-bottom"></td>
-                  </tr>
-                  <tr>
-                    <th width="180" class="th-init">规格</th><th width="180" class="th-init">内存/CPU/系统盘/GPU/数据盘</th><th colspan="2" class="th-init">价格</th>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>-</td>
-                    <td>-</td>
-                    <td width="40"><span style="font-weight:500">按需算（每小时）</span></td>
-                    <td width="110"><span style="font-weight:500">按月算（30 天）</span></td>
-                  </tr>
-                  <tr>
-                    <td>C1M1</td>
-                    <td>1 GB / 1 Core / 20 GB / 0 / 0</td>
-                    <td>0.0815 元/小时</td>
-                    <td>58.68 元/月</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C2M2</td>
-                    <td>2 GB / 2 Core / 20 GB / 0 / 0</td>
-                    <td>0.1631 元/小时</td>
-                    <td>117.432 元/月</td>
-                  </tr>
-                  <tr>
-                    <td>C2M4</td>
-                    <td>4 GB / 2 Core / 20 GB / 0 / 0</td>
-                    <td>0.1671 元/小时</td>
-                    <td>120.312 元/月</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C4M4</td>
-                    <td>4 GB / 4 Core / 20 GB / 0 / 0</td>
-                    <td>0.3081 元/小时</td>
-                    <td>221.832 元/月</td>
-                  </tr>
-                  <tr>
-                    <td>C4M8</td>
-                    <td>8 GB / 4 Core / 20 GB / 0 / 0</td>
-                    <td>0.3161 元/小时</td>
-                    <td>227.592 元/月</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C8M8</td>
-                    <td>8 GB / 8 Core / 20 GB / 0 / 0</td>
-                    <td>0.6161 元/小时</td>
-                    <td>443.592 元/月</td>
-                  </tr>
-                  <tr>
-                    <td>C8M16</td>
-                    <td>16 GB / 8 Core / 20 GB / 0 / 0</td>
-                    <td>0.6321 元/小时</td>
-                    <td>455.112 元/月</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C16M16</td>
-                    <td>16 GB / 16 Core / 20 GB / 0 / 0</td>
-                    <td>2.0875 元/小时</td>
-                    <td>1503 元/月</td>
-                  </tr>
-                  <tr>
-                    <td>C16M32</td>
-                    <td>32 GB / 16 Core / 20 GB / 0 / 0</td>
-                    <td>2.1451 元/小时</td>
-                    <td>1544.472 元/月</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C2M4-K80:1</td>
-                    <td>4 GB / 2 Core / 20 GB / K80 1 Core / 0</td>
-                    <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
-                  </tr>
-                  <tr>
-                    <td>C2M4-SSD:100G</td>
-                    <td>4 GB / 2 Core / 20 GB / 0 / 100 GB SSD</td>
-                    <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C4M4-SSD:100G</td>
-                    <td>4 GB / 4 Core / 20 GB / 0 / 100 GB SSD</td>
-                    <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
-                  </tr>
-                  <tr>
-                    <td>C4M8-SSD:100G</td>
-                    <td>8 GB / 4 Core / 20 GB / 0 / 100 GB SSD</td>
-                    <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
-                  </tr>
-                  <tr class="light-bkcolor">
-                    <td>C8M8-SSD:100G</td>
-                    <td>8 GB / 8 Core / 20 GB / 0 / 100 GB SSD</td>
-                    <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
-                  </tr>
-                  <tr>
-                    <td>C8M16-SSD:100G</td>
-                    <td>16 GB / 8 Core / 20 GB / 0 / 100 GB SSD</td>
-                    <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div class="table-responsive">
+                <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="340" class="thead-title th-init border-bottom">多媒体处理</th>
+                      <td class="border-bottom"></td>
+                      <td class="border-bottom"></td>
+                    </tr>
+                    <tr>
+                      <th width="340">名目</th><th width="360" class="th-init">阶梯</th><th class="th-init">价格</th>
+                    </tr>
+                    <tr>
+                      <th rowspan="7">音视频转码</th>
+                      <td class="light-bkcolor">音频转码</td>
+                      <td class="light-bkcolor">0.0048 元/分钟</td>
+                    </tr>
+                    <tr>
+                      <td>视频转码 sd240（ 320x240）</td>
+                      <td>0.0057 元/分钟</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>视频转码 sd480（640x480） </td>
+                      <td>0.0072 元/分钟</td>
+                    </tr>
+                    <tr>
+                      <td>视频转码 sd（1080x720） </td>
+                      <td>0.0189 元/分钟</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>视频转码 hd（1920x1080）</td>
+                      <td>0.0324 元/分钟</td>
+                    </tr>
+                    <tr>
+                      <td>视频转码 2K（2560x1440）</td>
+                      <td>0.06 元/分钟</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>视频转码 4K（3840x2160）</td>
+                      <td>0.12 元/分钟</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="6" class="th-init border-right">其他请求</th>
+                      <td>imageslim（图片瘦身）</td>
+                      <td>0.1 元/千次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>avconcat（音视频拼接）</td>
+                      <td>0.1 元/千次</td>
+                    </tr>
+                    <tr>
+                      <td>avinfo（音视频元信息）</td>
+                      <td>0.1 元/千次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>imageAve（图片主色调）</td>
+                      <td>0.1 元/千次</td>
+                    </tr>
+                    <tr>
+                      <td>vframe, vsample（视频截图）</td>
+                      <td>0.1 元/千次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>qhash（文件 HASH 值）</td>
+                      <td>0.05 元/GB</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="340" class="thead-title th-init border-bottom">图片鉴黄</th>
+                      <td class="border-bottom"></td>
+                      <td class="border-bottom"></td>
+                    </tr>
+                    <tr>
+                      <th width="340" class="th-init">范围</th><th colspan="2" class="th-init">价格</th>
+                    </tr>
+                    <tr>
+                      <td class="light-bkcolor">-</td>
+                      <td class="light-bkcolor"><span style="font-weight:500">确定部分价格</span></td>
+                      <td class="light-bkcolor"><span style="font-weight:500">不确定部分价格</span></td>
+                    </tr>
+                    <tr>
+                      <td>第 0 次 至 300 万次</td>
+                      <td>0.23 元/百次</td>
+                      <td>0.0625 元/百次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>第 300 万次 至 1500 万次</td>
+                      <td>0.21 元/百次</td>
+                      <td>0.0575 元/百次</td>
+                    </tr>
+                    <tr>
+                      <td>第 1500 万次 至 3000 万次</td>
+                      <td>0.19 元/百次</td>
+                      <td>0.0525 元/百次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>3000 万次以上</td>
+                      <td>0.16 元/百次</td>
+                      <td>0.045 元/百次</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+                <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table talbe border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="180" class="thead-title th-init border-bottom">自定义数据处理<br><span style="font-size:12px;width:450px;line-height:18px">选择 C1M1 的标准用户和高级用户</span><br><span style="font-size:12px;width:450px;line-height:18px">每月有 750 小时的免费额度。</span></th>
+                      <td class="border-bottom"></td>
+                      <td class="border-bottom"></td>
+                      <td class="border-bottom"></td>
+                    </tr>
+                    <tr>
+                      <th width="180" class="th-init">规格</th><th width="180" class="th-init">内存/CPU/系统盘/GPU/数据盘</th><th colspan="2" class="th-init">价格</th>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>-</td>
+                      <td>-</td>
+                      <td width="40"><span style="font-weight:500">按需算（每小时）</span></td>
+                      <td width="110"><span style="font-weight:500">按月算（30 天）</span></td>
+                    </tr>
+                    <tr>
+                      <td>C1M1</td>
+                      <td>1 GB / 1 Core / 20 GB / 0 / 0</td>
+                      <td>0.0815 元/小时</td>
+                      <td>58.68 元/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C2M2</td>
+                      <td>2 GB / 2 Core / 20 GB / 0 / 0</td>
+                      <td>0.1631 元/小时</td>
+                      <td>117.432 元/月</td>
+                    </tr>
+                    <tr>
+                      <td>C2M4</td>
+                      <td>4 GB / 2 Core / 20 GB / 0 / 0</td>
+                      <td>0.1671 元/小时</td>
+                      <td>120.312 元/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C4M4</td>
+                      <td>4 GB / 4 Core / 20 GB / 0 / 0</td>
+                      <td>0.3081 元/小时</td>
+                      <td>221.832 元/月</td>
+                    </tr>
+                    <tr>
+                      <td>C4M8</td>
+                      <td>8 GB / 4 Core / 20 GB / 0 / 0</td>
+                      <td>0.3161 元/小时</td>
+                      <td>227.592 元/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C8M8</td>
+                      <td>8 GB / 8 Core / 20 GB / 0 / 0</td>
+                      <td>0.6161 元/小时</td>
+                      <td>443.592 元/月</td>
+                    </tr>
+                    <tr>
+                      <td>C8M16</td>
+                      <td>16 GB / 8 Core / 20 GB / 0 / 0</td>
+                      <td>0.6321 元/小时</td>
+                      <td>455.112 元/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C16M16</td>
+                      <td>16 GB / 16 Core / 20 GB / 0 / 0</td>
+                      <td>2.0875 元/小时</td>
+                      <td>1503 元/月</td>
+                    </tr>
+                    <tr>
+                      <td>C16M32</td>
+                      <td>32 GB / 16 Core / 20 GB / 0 / 0</td>
+                      <td>2.1451 元/小时</td>
+                      <td>1544.472 元/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C2M4-K80:1</td>
+                      <td>4 GB / 2 Core / 20 GB / K80 1 Core / 0</td>
+                      <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
+                    </tr>
+                    <tr>
+                      <td>C2M4-SSD:100G</td>
+                      <td>4 GB / 2 Core / 20 GB / 0 / 100 GB SSD</td>
+                      <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C4M4-SSD:100G</td>
+                      <td>4 GB / 4 Core / 20 GB / 0 / 100 GB SSD</td>
+                      <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
+                    </tr>
+                    <tr>
+                      <td>C4M8-SSD:100G</td>
+                      <td>8 GB / 4 Core / 20 GB / 0 / 100 GB SSD</td>
+                      <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>C8M8-SSD:100G</td>
+                      <td>8 GB / 8 Core / 20 GB / 0 / 100 GB SSD</td>
+                      <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
+                    </tr>
+                    <tr>
+                      <td>C8M16-SSD:100G</td>
+                      <td>16 GB / 8 Core / 20 GB / 0 / 100 GB SSD</td>
+                      <td colspan="2"><a href="https://support.qiniu.com/" target="_blank" class="more">提工单</a> 咨询价格详情</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
