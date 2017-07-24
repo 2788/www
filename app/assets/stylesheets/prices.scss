@@ -376,4 +376,12 @@ input[type="range"]{
     font-size: 12px;
 
   }
+  .tab-content-caculating dl {
+    &.dl-border {
+      padding: 10px;
+    }
+    dt.icon-title {
+      font-size: 18px;
+    }
+  }
 }
