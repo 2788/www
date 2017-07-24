@@ -76,19 +76,19 @@ footer{
     .verify-logo {
       display: block;
       width: 70px;
-      height: 75px;
+      height: 60px;
       background-image: image-url('kexinyun.png');
       background-repeat: no-repeat;
-      background-size: 70px 75px;
+      background-size: auto 60px;
       float: right;
     }
     .iso-logo {
       display: block;
       width: 75px;
-      height: 70px;
+      height: 60px;
       background-image: image-url('iso27001.png');
       background-repeat: no-repeat;
-      background-size: 75px 70px;
+      background-size: auto 60px;
       float: right;
       margin-right: 20px;
     }

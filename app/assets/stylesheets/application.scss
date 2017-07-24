@@ -189,8 +189,6 @@ a.underline{
   }
 
   .row{
-    margin-left: -35px;
-    margin-right: -35px;
     .col-sm-6{
       padding-left: 35px;
       padding-right: 35px;
@@ -373,9 +371,9 @@ a.underline{
   padding-bottom: 50px;
 }
 
-.features.pili-functional {
+.features.pili-media {
   .media {
-    min-height: 100px;
+    min-height: 110px;
   }
   .media-body {
     padding-right: 20px;
@@ -388,7 +386,7 @@ a.underline{
     line-height: 28px;
   }
   .row .col-sm-6 {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
 }
 

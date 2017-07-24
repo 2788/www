@@ -141,7 +141,7 @@ $(document).ready ->
     if document.body.clientWidth <= 768 && !ismin
       $('.timeline-ul').find('.left-li').addClass('right')
       $('.timeline-ul').find('.left-li').removeClass('left')
-    else if ismin
+    else if document.body.clientWidth > 768 && ismin
       $('.timeline-ul').find('.left-li').addClass('left')
       $('.timeline-ul').find('.left-li').removeClass('right')
 
