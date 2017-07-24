@@ -9,9 +9,8 @@
   >li{
     position: relative;
     margin-bottom: -2px;
-    margin-right: 35px;
-
-    &:last-child{ margin-right: 0;}
+    margin-left: 15px;
+    margin-right: 15px;
   }
   >li::before {
     position: absolute;

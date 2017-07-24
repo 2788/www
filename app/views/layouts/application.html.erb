@@ -48,10 +48,10 @@
 
               <ul class="dropdown-menu services-menu">
                 <% I18n.t("services").each do |service| %>
-                  <%= content_tag :li, service[:group], class: "menu-title" -%>
+                  <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
 
                   <% service[:list].each do |product| %>
-                    <%= content_tag :li, link_to(content_tag(:h4, product[:label],class: product[:name]) + content_tag(:p, product[:desc]), '/products/' + product[:name]), class: "service" -%>
+                    <%= content_tag :li, link_to(content_tag(:h4, product[:label],class: product[:name]) + content_tag(:p, product[:desc], class: "hidden-xs"), '/products/' + product[:name]), class: "service" -%>
                   <% end %>
                 <% end %>
               </ul>
@@ -62,13 +62,15 @@
 
               <ul class="dropdown-menu solutions-menu">
                 <% I18n.t("solutions").each do |solution| %>
-                  <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]) + content_tag(:p, solution[:desc]), solutions_path(anchor: solution[:name])), class: "solution" -%>
+                  <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]) + content_tag(:p, solution[:desc], class: "hidden-xs"), solutions_path(anchor: solution[:name])), class: "solution" -%>
                 <% end %>
               </ul>
             </li>
             <li><%= link_to "价格", prices_path -%></li>
             <li><%= link_to "关于我们", company_path -%></li>
           </ul>
+
+          <span class="navbar-btline visible-xs"></span>
 
           <ul class="nav navbar-nav navbar-right">
             <li><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
@@ -77,6 +79,7 @@
 
             <li>
               <div class="actions">
+                <span class="middle-line hidden-xs"></span>
                 <a target="_blank" href="https://portal.qiniu.com/signin" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary">注册有礼</a>
               </div>
@@ -166,7 +169,7 @@
         <div class="row">
           <div class="col-sm-8">
             <div class="row grey-link">
-              <div class="col-sm-4">
+              <div class="col-sm-4 col-xs-4">
                 <dl>
                   <dt>产品与服务</dt>
                   <% I18n.t("services").each do |service| %>
@@ -176,7 +179,7 @@
                   <% end %>
                 </dl>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-4 col-xs-4">
                 <dl>
                   <dt>支持</dt>
                   <dd><%= link_to "开发者中心", "https://developer.qiniu.com", target: "_blank" -%></dd>
@@ -188,7 +191,7 @@
                   <dd><%= link_to "技术博客", "http://blog.qiniu.com/", target: "blank" -%></dd>
                 </dl>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-4 col-xs-4">
                 <dl>
                   <dt>关于我们</dt>
                   <dd><%= link_to "公司介绍", company_path -%></dd>

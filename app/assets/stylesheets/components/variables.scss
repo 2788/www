@@ -872,3 +872,10 @@ $dl-horizontal-offset:        $component-offset-horizontal !default;
 $dl-horizontal-breakpoint:    $grid-float-breakpoint !default;
 //** Horizontal line color.
 $hr-border:                   $gray-lighter !default;
+
+
+
+@function px2rem($px){
+  $rem : 37.5px;
+  @return ($px/$rem) + rem;
+}
