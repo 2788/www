@@ -1,9 +1,9 @@
 .features-tech{
   font-family: PingFangSC Medium;
 
-  .tech-row {
-    margin-left: -15px !important;
-    margin-right: -15px !important;
+  div.tech-row {
+    margin-left: -0.15rem;
+    margin-right: -0.15rem;
 
     .text-ellipse {
       white-space: nowrap;
@@ -15,8 +15,10 @@
 /*
 大标题的css
 */
-  .intro-row{
-    margin-bottom: 80px !important;
+  div.intro-row{
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0.80rem;
       .title{
         font-size: 0.27rem;
         color: rgb(47, 48, 51);
