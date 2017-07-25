@@ -777,3 +777,24 @@ footer .container {
     }
   }
 }
+
+@media (max-width: 767px) {
+  .features .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .nav-tabs.nav-justified.nav-short {
+    width: 100%;
+    text-align: center;
+    li {
+      float: none;
+      display: inline-block;
+      margin-left: 5px;
+      margin-right: 5px;
+      a {
+        padding-bottom: 5px;
+        padding-top: 5px;
+      }
+    }
+  }
+}
