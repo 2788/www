@@ -9,4 +9,13 @@
     padding: 100px 50px 0 50px;
     margin-bottom: 0;
   }
+  .sm-right {
+    float: right;
+  }
+}
+
+@media(max-width: 767px) {
+  .features .row.row-dora .sm-right {
+    float: none;
+  }
 }
