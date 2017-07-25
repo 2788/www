@@ -18,6 +18,7 @@
       .small-padding {
         padding-left: 15px;
         padding-right: 0;
+        margin-bottom: 0;
         h5 {margin-bottom: 0;}
       }
     }
@@ -217,6 +218,12 @@
 }
 
 @media(max-width: 767px) {
+  .row-solution {
+    .col-solution,.col-scene {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
   .col-solution {
     .content {
       padding: 0;
@@ -226,7 +233,14 @@
   .row-solution .col-scene .col-scene_case {
     margin-top: 15px;
   }
+  .row-solution .col-scene .col-scene_scene .small-padding {
+    padding-left: 0;
+  }
   .features.feature-solution .left-line {
     float: none;
+    border-left: none;
+  }
+  .features.feature-solution .right-line {
+    border-right: none;
   }
 }

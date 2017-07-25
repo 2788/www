@@ -193,6 +193,7 @@ a.underline{
     .col-sm-6{
       padding-left: 0.35rem;
       padding-right: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .col-sm-6.col-init,
@@ -781,6 +782,11 @@ footer .container {
   .features .row {
     margin-left: 0;
     margin-right: 0;
+  }
+  .left-hotnews {
+    ul > li {
+      display: inline-block;
+    }
   }
   .nav-tabs.nav-justified.nav-short {
     width: 100%;
