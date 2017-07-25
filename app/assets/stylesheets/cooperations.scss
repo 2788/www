@@ -3,7 +3,7 @@
     margin-bottom: 54px;
   }
   p{
-    line-height: 45px;
+    line-height: 0.45rem;
     margin: 45px 0;
   }
 
@@ -13,18 +13,16 @@
 
     a{
       display: inline-block;
-      padding: 3px 0 3px 56px;
-      height: 35px;
+      padding: 0.05rem 0.36rem;
+      height: 0.35rem;
       background-position: left top;
       background-repeat: no-repeat;
-      background-size: 35px 35px;
+      background-size: 0.35rem 0.35rem;
       text-align: center;
     }
 
     a.email-box{
       background-image: image-url("icon-email@2x.png");
-      float: left;
-
       &:hover{
         background-image: image-url("icon-email-highlight@2x.png");
       }
@@ -32,8 +30,6 @@
 
     a.tel-box{
       background-image: image-url("icon-phone@2x.png");
-      float: right;
-
       &:hover{
         color: #666;
       }
@@ -67,13 +63,13 @@ ul.cooperation-step {
     position: relative;
     top: -23px;
     width: 46px;
-    height: 46px;
+    height: 0.46rem;
     border: 2px solid #e5e5e5;
     font-size: 22px;
     color: #333333;
     text-align: center;
     vertical-align: middle;
-    line-height: 46px;
+    line-height: 0.46rem;
     border-radius: 50%;
     margin-bottom: 26px;
     background: #fff;
@@ -115,5 +111,30 @@ ul.friend-link{
     margin-right: 108px;
     margin-bottom: 13px;
     width: 112px;
+  }
+}
+
+@media (max-width: 768px){
+  ul.cooperation-step {
+    .step-li-first,
+    .step-li,
+    .step-li-no{
+      float: none;
+      margin: 0;
+      width: 2.34rem;
+      padding: 0.25rem;
+      padding-top: 0;
+      border-top: 0;
+      border-left: 2px solid #eee;
+
+      .step-no{
+        top: 0;
+        margin: 0;
+        left: -0.59rem;
+      }
+    }
+    .step-li-no{
+      border: 0;
+    }
   }
 }

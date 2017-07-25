@@ -43,10 +43,6 @@ nav.navbar{
     }
   }
 
-  .navbar-nav:first-child{
-    margin-left: 10px;
-  }
-
   .navbar-nav > li.open a{
     color: $brand-primary;
     background-color: transparent;
@@ -117,6 +113,14 @@ nav.navbar{
     }
   }
 
+  span.navbar-btline{
+    display: block;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color:#97989c;
+  }
+
   .navbar-right{
     margin-right: 0;
     font-size: 12px;
@@ -127,7 +131,7 @@ nav.navbar{
     padding: 7px 0 0 25px;
     position: relative;
 
-    &::before{
+    span.middle-line{
       display: inline-block;
       content: " ";
       width: 1px;

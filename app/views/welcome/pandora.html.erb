@@ -5,8 +5,8 @@
         <h2>大数据平台</h2>
         <p>Pandora 是七牛云的大数据平台，提供简单、高效、开放的一站式大数据服务。</p>
         <div class="actions">
-          <%= link_to "预约咨询", "", class: "btn btn-lg btn-default m-r", data: { toggle: "modal", target: "#feedback-modal"} -%>
-          <%= link_to "产品文档", "http://pandora-docs.qiniu.com", class: "btn btn-lg btn-hollow", target: "_blank" -%>
+          <%= link_to "预约咨询", "", class: "btn btn-lg btn-default m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
+          <%= link_to "产品文档", "http://pandora-docs.qiniu.com", class: "btn btn-lg btn-hollow m-b-xs", target: "_blank" -%>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 <div class="pandora-nav">
   <div class="container">
     <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle hidden-xs">
         <li class="active"><a href="#tab-content-section-1">产品架构</a></li>
         <li><a href="#tab-content-section-2">产品优势</a></li>
         <li><a href="#tab-content-section-3">核心服务及功能</a></li>
@@ -165,13 +165,13 @@
 
         <section id="tab-usage-section-2" class="row tab-pane fade">
           <div class="media">
+            <div class="media-left">
+              <%= image_tag "pandora/icon-shujuchuliziyuantanxing@2x.png", class: "media-object img-left" %>
+            </div>
+
             <div class="media-body">
               <h3 class="title2">数据化运营 </h3>
               <p class="section-content">用户可以利用大数据工作流引擎快速建立业务数据流，实时获取业务运营现状，随时进行多维度的统计与挖掘计算。由于屏蔽了复杂的大数据技术体系，业务部门再也不必苦等开发部门响应数据需求，只需自定义灵活配置即可轻松得到数据分析结果，随时洞察用户行为，驱动产品优化迭代，提升运营效果。</p>
-            </div>
-
-            <div class="media-left">
-              <%= image_tag "pandora/icon-shujuchuliziyuantanxing@2x.png", class: "media-object img-left" %>
             </div>
           </div>
         </section>

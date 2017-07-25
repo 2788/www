@@ -43,6 +43,7 @@
 
 html{
   position: relative;
+  font-size: 100px;
 }
 
 .browsehappy{
@@ -53,8 +54,8 @@ html{
 // index page
 .jumbotron.hero{
   height: 518px;
-  margin-top: -68px;
-  margin-bottom: 30px;
+  margin-top: -0.68rem;
+  margin-bottom: 0.30rem;
   text-align: center;
   background-image: image-url('banner.jpg');
 
@@ -73,12 +74,12 @@ html{
 
   &.hero-contact,
   &.hero-company{
-    margin-bottom: -30px;
+    margin-bottom: -0.30rem;
   }
 
   .btn-banner{
     position: relative;
-    top: 350px;
+    top: 3.50rem;
   }
 
   &.hero-banner1{ background-image: image-url('ssl.jpg');}
@@ -86,7 +87,7 @@ html{
   &.hero-banner3{
     background-image: image-url('southern-price-reduce.jpg');
     .btn-banner{
-      left: 100px;
+      left: 1.00rem;
     }
   }
   &.hero-kodo{ background-image: image-url('duixiangcunchu-banner.jpg'); }
@@ -110,18 +111,18 @@ html{
 
   .container{
     text-align: left;
-    padding-top: 55px;
+    padding-top: 0.55rem;
     color: #FFF;
   }
   h2{
-    margin: 50px auto 30px;
-    font-size: 35px;
+    margin: 0.50rem auto 0.30rem;
+    font-size: 0.35rem;
     font-weight: 400;
-    text-shadow: 0 2px 3px rgba(0,0,0,.5);
+    text-shadow: 0 0.02rem 0.03rem rgba(0,0,0,.5);
   }
   p{
-    line-height: 28px;
-    font-size: 14px;
+    line-height: 0.28rem;
+    font-size: 0.14rem;
   }
 }
 
@@ -137,19 +138,19 @@ a.underline{
 
 .kodo-modal{
   color: rgba(255,255,255,0.75);
-  font-size: 14px;
+  font-size: 0.14rem;
   line-height: 1.8;
 }
 
 .features-nav{
-  height: 46px;
+  height: 0.46rem;
   margin-top: 0;
 }
 
 // 产品
 .features{
   background: #FFF;
-  padding: 60px 0 100px;
+  padding: 0.60rem 0 0.50rem;
 
   .list li.active a{
     color: #00a0de;
@@ -162,7 +163,7 @@ a.underline{
   .btn.feature-btn{
     color: #28aedf;
     background-color: transparent;
-    border: 1px solid #28aedf;
+    border: 0.01rem solid #28aedf;
 
     &:hover{
       color: #fff;
@@ -178,9 +179,9 @@ a.underline{
   //合作伙伴 案例
   div.feature-case{
     position: relative;
-    border: 1px solid #eeeeee;
-    margin-bottom: 30px;
-    min-height: 140px;
+    border: 0.01rem solid #eeeeee;
+    margin-bottom: 0.30rem;
+    min-height: 1.40rem;
   }
 
   video{
@@ -189,26 +190,24 @@ a.underline{
   }
 
   .row{
-    margin-left: -35px;
-    margin-right: -35px;
     .col-sm-6{
-      padding-left: 35px;
-      padding-right: 35px;
-      margin-bottom: 25px;
+      padding-left: 0.35rem;
+      padding-right: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .col-sm-6.col-init,
     .col-sm-8.col-init{
       padding-right: 0;
-      padding-left: 35px;
+      padding-left: 0.35rem;
     }
 
     .col-sm-6.col-sm-6-init{
-      padding-left: 15px;
+      padding-left: 0.15rem;
     }
 
     .col-padding{
-      padding: 50px;
+      padding: 0.50rem;
     }
 
     .col-clear{
@@ -223,46 +222,45 @@ a.underline{
   }
 
   .media-object.media-object-index{
-    max-width: 120px;
+    max-width: 1.20rem;
   }
 
   .caption.caption-index{
-    padding: 27px;
+    padding: 0.27rem;
 
     .caption-title{
       margin-top: 0;
-      margin-bottom: 20px;
+      margin-bottom: 0.20rem;
     }
     p{
-      line-height: 28px;
+      line-height: 0.28rem;
     }
   }
 
   &.kirk-usage{
     .row{
       .thumbnail{
-        min-height: 233px;
+        min-height: 2.33rem;
       }
     }
   }
 
   &.plsv-services{
     .row.row-clear{
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 0.20rem;
+      padding-right: 0.20rem;
 
       .thumbnail-icons{
-        min-height: 100px;
+        min-height: 1.00rem;
       }
     }
   }
 
   .intro{
-    margin-bottom: 50px;
+    margin-bottom: 0.50rem;
     .title{
       margin-top: 0;
-      margin-bottom: 20px;
-      line-height: 34px;
+      margin-bottom: 0.20rem;
       text-align: center;
       font-weight: 300;
     }
@@ -270,52 +268,52 @@ a.underline{
   }
 
   .tab-content {
-    margin-top: 45px;
-    line-height: 28px;
+    margin-top: 0.45rem;
+    line-height: 0.28rem;
 
     .tab-desc {
       padding: 0;
       text-align: center;
-      margin-top: -20px;
+      margin-top: -0.20rem;
     }
 
     .media-body{
-      padding: 50px 0 0 50px;
+      padding: 0 0.50rem;
     }
     p{
-      line-height: 28px;
-      padding: 28px 10px;
+      line-height: 0.28rem;
+      padding: 0.28rem 0.10rem;
     }
   }
 
   .feature-item{
-    margin-bottom: 50px;
-    padding-left: 15px;
+    margin-bottom: 0.50rem;
+    padding-left: 0.15rem;
     &:last-child{ margin-bottom: 0; }
     h4{
-      margin-bottom: 15px;
-      > img{ margin-right: 15px; }
+      margin-bottom: 0.15rem;
+      > img{ margin-right: 0.15rem; }
     }
   }
 
   .media-left{
-    padding-right: 30px;
+    padding-right: 0.30rem;
   }
 
   .media-object{
-    max-width: 140px;
+    max-width: 1.40rem;
   }
   .media-heading{
-    margin-bottom: 20px;
+    margin-bottom: 0.20rem;
   }
   p, a{
     color: #666;
-    line-height: 24px;
+    line-height: 0.24rem;
   }
   a{
     &.icon{
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 0.10rem;
     }
     &:hover{ color: #28aedf; }
   }
@@ -323,14 +321,14 @@ a.underline{
   .thumbnail{
     border: none;
     background: transparent;
-    min-height: 235px;
+    min-height: 2.35rem;
     margin-bottom: 0;
     .caption.caption-center{
       text-align: center;
       padding-left: 0;
       padding-right: 0;
       h4 {
-        margin-bottom: 15px;
+        margin-bottom: 0.15rem;
       }
       p {
         color: #888;
@@ -344,51 +342,48 @@ a.underline{
 }
 
 .features.features-scene .img-left{
-  max-width: 370px;
+  max-width: 2.70rem;
 }
 
 .features.features-superiority {
-  .title { font-size: 28px; }
+  .title { font-size: 0.28rem; }
   .media-left {
-    padding-right: 30px;
+    padding-right: 0.30rem;
   }
   p {
-    line-height: 28px;
+    line-height: 0.28rem;
     color: #888;
   }
   .row .col-sm-6 {
-    margin-bottom: 30px;
+    margin-bottom: 0.30rem;
   }
 }
 
 .features.feature-core {
-  .title { font-size: 28px; }
+  .title { font-size: 0.28rem; }
   p {
-    line-height: 28px;
+    line-height: 0.28rem;
     color: #888;
   }
   h4 {
-    margin-bottom: 15px;
+    margin-bottom: 0.15rem;
   }
-  padding-bottom: 50px;
+  padding-bottom: 0.50rem;
 }
 
-.features.pili-functional {
+.features.pili-media {
   .media {
-    min-height: 100px;
-  }
-  .media-body {
-    padding-right: 20px;
+    min-height: 1.10rem;
   }
   .media-heading {
-    margin-bottom: 15px;
+    margin-bottom: 0.15rem;
   }
   p {
     color:#888;
-    line-height: 28px;
+    line-height: 0.28rem;
   }
   .row .col-sm-6 {
-    margin-bottom: 35px;
+    margin-bottom: 0.30rem;
   }
 }
 
@@ -401,10 +396,10 @@ a.underline{
 
 .features-hotnews{
   .left-hotnews{
-    padding-left: 50px;
+    padding-left: 0.50rem;
   }
   .right-hotnews{
-    padding-right: 50px;
+    padding-right: 0.50rem;
   }
 }
 .features-solution{
@@ -420,28 +415,30 @@ a.underline{
     background: #F8F8F8;
   }
   .row h2.title{
-    margin-top: 5px;
+    text-align: center;
+    margin-top: 0.05rem;
+    margin-bottom: 0.3rem;
   }
 }
 
 .features-hotnews{
-  border-top: 1px solid rgba(0, 0, 0, 0.075);
+  border-top: 0.01rem solid rgba(0, 0, 0, 0.075);
   .row{
-    margin-left: -50px;
-    margin-right: -50px;
+    margin-left: -0.50rem;
+    margin-right: -0.50rem;
 
     font-family: PingFangSC Regular;
 
     .col-sm-6{
-      padding-left: 15px;
-      padding-right: 15px;
+      padding-left: 0.15rem;
+      padding-right: 0.15rem;
       margin-bottom: 0;
     }
   }
   .hotnews-title{
-    padding-bottom: 20px;
+    padding-bottom: 0.20rem;
 
-    font-size: 18px;
+    font-size: 0.18rem;
     font-weight: 400;
     color: #97989c;
     &:hover{
@@ -455,25 +452,25 @@ a.underline{
       width: 100%;
     }
     .infobox{
-      padding: 10px;
+      padding: 0.10rem;
     }
     &:hover{
       transition: all 0.3s;
 
       transform: scale(1.02,1.02);
 
-      -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-      -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-      box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
     }
   }
 
   time{
     color: #97989c;
-    font-size: 12px;
+    font-size: 0.12rem;
 
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 0.10rem;
   }
   p{
     color: #000;
@@ -482,13 +479,13 @@ a.underline{
 
 .features-custom-function{
   background: #F7F8F9;
-  .media-left{ padding-right: 35px; }
-  .media-body{ padding-right: 30px; }
+  .media-left{ padding-right: 0.35rem; }
+  .media-body{ padding-right: 0.30rem; }
 }
 
 .features-scenario{
   text-align: center;
-  img{ margin-bottom: 30px; }
+  img{ margin-bottom: 0.30rem; }
 }
 
 .links-list{
@@ -520,7 +517,7 @@ a.underline{
 .banners-slider{
    .slick-dots li button::before{
     font-family: "" !important;
-    font-size: 40px;
+    font-size: 0.40rem;
     content: "-";
     color: #B9B9B9;
   }
@@ -530,44 +527,44 @@ a.underline{
   }
 }
 .banners-slider .slick-dots.banners-arrow{
-  bottom: 58px;
+  bottom: 0.58rem;
 }
 .banners-actions{
   position: relative;
 
   .btn-absolute{
     position: absolute;
-    top: -170px;
-    left: 100px;
+    top: -1.70rem;
+    left: 1.00rem;
   }
 }
 
 //反馈、推荐表单
 div.form-wrapper{
   padding-top: 0;
-  padding-bottom: 120px;
+  padding-bottom: 1.20rem;
   .title{
     font-family: PingFangSC Medium;
-    font-size: 16px;
+    font-size: 0.16rem;
     color: #2f3033;
     text-align: center;
   }
 
   .form-box{
-    padding: 10px 10px 50px 10px;
+    padding: 0.10rem 0.10rem 0.50rem 0.10rem;
   }
   form{
-    max-width: 650px;
+    max-width: 6.50rem;
     margin: 0 auto;
 
     .form-group{
-      margin-bottom: 24px;
+      margin-bottom: 0.24rem;
 
       label{
         padding-left: 0;
         padding-right: 0;
         font-family: PingFangSC Regular;
-        font-size: 14px;
+        font-size: 0.14rem;
         color: #2f3033;
       }
 
@@ -576,7 +573,7 @@ div.form-wrapper{
       }
 
       .form-control.active{
-        border: 1px solid #ff3939;
+        border: 0.01rem solid #ff3939;
       }
 
       .maxLength-tips{
@@ -584,7 +581,7 @@ div.form-wrapper{
 
         .maxLength-label{
           font-family: PingFangSC Regular;
-          font-size: 12px;
+          font-size: 0.12rem;
           color: #ff3939;
         }
       }
@@ -596,7 +593,7 @@ div.form-wrapper{
         display: block;
         .error-label{
           font-family: PingFangSC Regular;
-          font-size: 12px;
+          font-size: 0.12rem;
           color: #ff3939;
         }
       }
@@ -619,34 +616,35 @@ div.form-wrapper{
 }
 //左边40*40大小的背景图
 .icon40{
-  padding-left: 40px;
+  padding-left: 0.40rem;
   background-repeat: no-repeat;
   background-position: left center;
-  background-size: 40px 40px;
-  height: 40px;
-  line-height: 40px;
+  background-size: 0.40rem 0.40rem;
+  height: 0.40rem;
+  line-height: 0.40rem;
 }
 .icon50{
-  font-size: 14px;
+  font-size: 0.14rem;
   display: inline-block;
   margin: 0;
-  margin-bottom: 20px;
-  padding-left: 50px;
-  padding-right: 20px;
+  margin-bottom: 0.20rem;
+  padding-left: 0.50rem;
+  padding-right: 0.20rem;
   background-repeat: no-repeat;
   background-position: left center;
-  background-size: 50px 50px;
-  height: 50px;
-  line-height: 50px;
+  background-size: 0.50rem 0.50rem;
+  height: 0.50rem;
+  line-height: 0.50rem;
 }
 .icon140{
-  padding-left: 160px;
-  padding-top: 50px;
+  font-size: 0.30rem;
+  padding-left: 1.0rem;
+  padding-top: 0.30rem;
+  padding-bottom: 0.20rem;
   background-repeat: no-repeat;
   background-position: left center;
-  background-size: 140px 140px;
-  height: 140px;
-  margin-bottom: 20px;
+  background-size: 0.80rem 0.80rem;
+  margin-bottom: 0.20rem;
 }
 //覆盖 bootsrap css
 //.nav > li > a:hover, .nav > li > a:focus
@@ -676,7 +674,7 @@ img.list-img{
 // ---------------------------------------------------------------------
 @media (max-width: 1024px){
   .features{
-    padding: 50px 0 60px;
+    padding: 0.50rem 0 0.50rem;
   }
   .pricing-caculator{
     width: 630px;
@@ -747,6 +745,9 @@ footer .container {
 
 //phone
 @media (max-width: 768px){
+  html{
+    font-size: 70px;
+  }
   .jumbotron.hero{
     p{
       line-height: 34px;
@@ -755,6 +756,13 @@ footer .container {
   }
   .features-kodo .nav-tabs.nav-justified.nav-short {
     width: 100%;
+  }
+  .navbar-default .actions{
+    margin-left: 0;
+    padding-left: 15px;
+  }
+  .features .row.row-dora .col-content-middle{
+    padding: 15px;
   }
 }
 

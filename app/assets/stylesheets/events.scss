@@ -14,11 +14,18 @@
     transition: all 0.3s;
     position: relative;
     min-height:100px;
-    width: 31%;
-    margin: 0 10px 10px;
-    float: left;
-    height: 100%;
+    margin-bottom: 10px;
     cursor: pointer;
+
+    &:hover{
+      transition: all 0.3s;
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      .btn-icon{
+        background-image: image-url("btn-play-hover.png");
+      }
+    }
 
     .case {
       position: relative;
@@ -48,16 +55,6 @@
     }
   }
 
-  .grid-container:hover{
-    transition: all 0.3s;
-    -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-    -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-    box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-    .btn-icon{
-      background-image: image-url("btn-play-hover.png");
-    }
-  }
-
 /*
 每一条活动栏的css
 */
@@ -66,9 +63,8 @@
   }
 
   .row .ipo-col-title{
-    padding: 0 !important;
     dt{
-      font-size: 30px;
+      font-size: 0.3rem;
     }
 
     a.more{
@@ -84,8 +80,8 @@
   .line-container{
     margin-right: auto;
     margin-left: auto;
-    margin-top: 130px;
-    margin-bottom: 100px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 
     .educa-line{
       display: block;
@@ -111,7 +107,7 @@ video的css
     position: absolute;
     top: 0;
     right: 12px;
-    font-size: 30px;
+    font-size: 0.3rem;
     z-index: 10;
     color: #000;
     opacity: 1;

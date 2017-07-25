@@ -5,8 +5,8 @@
         <h2>融合 CDN</h2>
         <p>融合 CDN (FUSION) 是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛融合 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。</p>
         <div class="actions">
-          <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r" -%>
-          <%= link_to "产品价格", prices_path, class: "btn btn-lg btn-hollow" -%>
+          <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+          <%= link_to "产品价格", prices_path, class: "btn btn-lg btn-hollow m-b-xs" -%>
           <h5><%= link_to raw("域名型 DV SSL 证书免费申请 &gt;&gt;"), "https://developer.qiniu.com/ssl/manual/3662/ssl-price-overview", target: "_blank", class: "out_link" -%></h5>
         </div>
       </div>
@@ -17,7 +17,7 @@
 <div class="features-nav fusion-nav">
   <div class="container">
     <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle hidden-xs">
         <li class="intLink active"><a href="#tab-content-section-1">产品架构</a></li>
         <li class="intLink"><a href="#tab-content-section-2">产品优势</a></li>
         <li class="intLink"><a href="#tab-content-section-3">节点覆盖</a></li>
@@ -35,8 +35,8 @@
       <h2 class="title">产品架构</h2>
     </div>
 
-    <div class="col-sm-12 col-padding">
-        <%= image_tag "fusion/img-chanpinjiagou.png", class: "bottom-line" %>
+    <div class="bottom-line">
+        <%= image_tag "fusion/img-chanpinjiagou.png" %>
     </div>
   </div>
 </div>
@@ -112,15 +112,11 @@
       </ul>
       <div class="tab-content">
         <section id="tab-points-section-1" class="tab-pane fade in active">
-          <div class="col-sm-12">
-            <%= image_tag "fusion/img-guoneijiedian.png" %>
-          </div>
+          <%= image_tag "fusion/img-guoneijiedian.png" %>
         </section>
 
         <section id="tab-points-section-2" class="tab-pane fade">
-          <div class="col-sm-12">
-            <%= image_tag "fusion/img-guowaijiedian.png" %>
-          </div>
+          <%= image_tag "fusion/img-guowaijiedian.png" %>
         </section>
       </div>
     </div>
