@@ -87,6 +87,8 @@ $(document).ready ->
     stickyTop = myElem.offset().top
     $(window).scroll ->
       # current distance top
+      if $(window).width() < 768
+        return
       scrollTop = $(window).scrollTop()
       # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
       if scrollTop > stickyTop
@@ -189,12 +191,12 @@ $(document).ready ->
     setPrice()
 
   # 容错
-  if $('#feature-price-nav').length != 0
+  if $('#feature-price-nav').length != 0 && $(window).width() >= 768
     setFxd
       'elem': $('#feature-price-nav')
       'fxdClass': 'fix-top'
       'prevPosition': 'relative'
-  if $('#pricing-info').length != 0
+  if $('#pricing-info').length != 0 && $(window).width() < 768
     setFxd
       'elem': $('#pricing-info')
       'fxdClass': 'fixed-right'
