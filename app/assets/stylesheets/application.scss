@@ -53,7 +53,7 @@ html{
 
 // index page
 .jumbotron.hero{
-  height: 518px;
+  height: 5.18rem;
   margin-top: -0.68rem;
   margin-bottom: 0.30rem;
   text-align: center;
@@ -750,8 +750,8 @@ footer .container {
   }
   .jumbotron.hero{
     p{
-      line-height: 34px;
-      font-size: 16px;
+      line-height: 0.34rem;
+      font-size: 0.16rem;
     }
   }
   .features-kodo .nav-tabs.nav-justified.nav-short {
@@ -759,10 +759,10 @@ footer .container {
   }
   .navbar-default .actions{
     margin-left: 0;
-    padding-left: 15px;
+    padding-left: 0.15rem;
   }
   .features .row.row-dora .col-content-middle{
-    padding: 15px;
+    padding: 0.15rem;
   }
 }
 
