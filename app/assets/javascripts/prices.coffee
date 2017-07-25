@@ -196,7 +196,7 @@ $(document).ready ->
       'elem': $('#feature-price-nav')
       'fxdClass': 'fix-top'
       'prevPosition': 'relative'
-  if $('#pricing-info').length != 0 && $(window).width() < 768
+  if $('#pricing-info').length != 0 && $(window).width() >= 768
     setFxd
       'elem': $('#pricing-info')
       'fxdClass': 'fixed-right'
