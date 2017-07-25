@@ -677,7 +677,7 @@ img.list-img{
     padding: 0.50rem 0 0.50rem;
   }
   .pricing-caculator{
-    width: 630px;
+    width: 6.30rem;
   }
   input[type="range"]{
     width: 70%;
@@ -690,9 +690,9 @@ img.list-img{
 
 @media (max-width: 768px){
   .features{
-    padding-top: 10px;
+    padding-top: 0.10rem;
     .intro {
-      margin-bottom: 20px;
+      margin-bottom: 0.20rem;
     }
     .col-sm-6:nth-child(odd){
       clear: left;
@@ -701,7 +701,7 @@ img.list-img{
     .media-left{
       display: block;
       text-align: center;
-      padding: 10px;
+      padding: 0.10rem;
       .media-object{ margin: auto; }
     }
 
@@ -719,7 +719,7 @@ img.list-img{
     width: 55%;
   }
   .input-num{
-    width: 60px;
+    width: 0.60rem;
   }
 }
 
@@ -737,8 +737,8 @@ footer .container {
 @media (min-width: 768px) and (max-width: 991px){
   .jumbotron.hero{
     p{
-      line-height: 34px;
-      font-size: 16px;
+      line-height: 0.34rem;
+      font-size: 0.16rem;
     }
   }
 }
