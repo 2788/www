@@ -5,12 +5,13 @@
 .ipo-features-contact{
   .ipo-row{
     position: relative;
-    padding-top: 20px;
+    padding-top: 0.20rem;
     font-family: PingFangSC Regular;
   }
 
   .ipo-row .col-sm-6.ipo-col{
-    padding-left: 160px;
+    padding-left: 0.80rem;
+    padding-right: 0.80rem;
   }
 
   .middle-line{
@@ -29,11 +30,12 @@
       color:#97989c;
     }
     .service-box-tail{
-      padding-top: 52px;
+      padding-top: 0.15rem;
       em a{
         font-style: normal;
         color:#00a0de;
-        padding-left: 15px;
+        padding-left: 0.07rem;
+        padding-right: 0.07rem;
       }
     }
   }

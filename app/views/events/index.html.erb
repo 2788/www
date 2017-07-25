@@ -46,21 +46,21 @@
 
     <div class="row">
       <div class="events-slider">
-        <div class="grid-container">
+        <div class="col-sm-4 grid-container">
           <div class="case" id="customer-ch" >
             <img src="https://mars-assets.qnssl.com/C1CA280485D973B8EB9DC8715C4C4E7B.jpg?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
             <a class="btn-icon" href="http://hd.qiniu.com/arch/history/21" target="_blank"></a>
           </div>
           <h5>大数据场景化应用最佳实践－上海站</h5>
         </div>
-        <div class="grid-container">
+        <div class="col-sm-4 grid-container">
           <div class="case" id="customer-ch">
             <img src="https://mars-assets.qnssl.com/DC55470EBA2A14779F98BA1E1232D1C3.jpg?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
             <a class="btn-icon" href="http://hd.qiniu.com/arch/history/18" target="_blank"></a>
           </div>
           <h5>大数据与机器学习－杭州站</h5>
         </div>
-        <div class="grid-container">
+        <div class="col-sm-4 grid-container">
           <div class="case" id="customer-ch">
             <img src="https://mars-assets.qnssl.com/FqhKffc0yt701h7Y6_OwSj-DPnbS?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
             <a class="btn-icon" href="http://hd.qiniu.com/arch/history/17" target="_blank"></a>
@@ -94,7 +94,7 @@
     <div class="row">
       <div class="events-slider">
         <% @ecugs.each do |event| %>
-          <div class="grid-container" data-src="<%= event[:video] -%>">
+          <div class="col-sm-4 grid-container" data-src="<%= event[:video] -%>">
             <div class="case" id="customer-ch">
               <%= image_tag(event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim", alt: "长虹") -%>
               <a class="btn-icon" href="javascript:;" target="_blank"></a>
@@ -127,14 +127,14 @@
 
     <div class="row">
       <div class="events-slider">
-        <div class="grid-container">
+        <div class="col-sm-4 grid-container">
           <div class="case" id="customer-ch">
             <img src="https://mars-assets.qnssl.com/FnRaJQyTOkvzVgly-lL3jEDfhS9Y?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
             <a class="btn-icon" href="http://www.imooc.com/learn/707" target="_blank"></a>
           </div>
           <h5>2小时搞定移动直播 App 开发  陶泽宇、卜赫</h5>
         </div>
-        <div class="grid-container">
+        <div class="col-sm-4 grid-container">
           <div class="case" id="customer-ch">
             <img src="https://mars-assets.qnssl.com/FjYrwRzOqW1lc2BRipC4g8l__9g5?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim">
             <a class="btn-icon" href="http://www.stuq.org/course/1192" target="_blank"></a>
@@ -168,7 +168,7 @@
     <div class="row">
       <div class="events-slider">
         <% @niushows.each do |event| %>
-          <div class="grid-container" data-src="<%= event[:video] -%>">
+          <div class="col-sm-4 grid-container" data-src="<%= event[:video] -%>">
             <div class="case" id="customer-ch">
               <%= image_tag(event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim", alt: "长虹") -%>
               <a class="btn-icon" href="javascript:;" target="_blank"></a>

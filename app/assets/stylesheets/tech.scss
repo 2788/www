@@ -5,9 +5,6 @@
     margin-left: -15px !important;
     margin-right: -15px !important;
 
-    .tech-col{
-      margin-bottom: 90px !important;
-    }
     .text-ellipse {
       white-space: nowrap;
       overflow: hidden;
@@ -21,7 +18,7 @@
   .intro-row{
     margin-bottom: 80px !important;
       .title{
-        font-size: 27px;
+        font-size: 0.27rem;
         color: rgb(47, 48, 51);
     }
   }
@@ -60,7 +57,7 @@
 
       a{
         display: inline-block;
-        font-size: 12px;
+        font-size: 0.12rem;
         width: 63px;
         height: 27px;
         line-height: 27px;
@@ -107,7 +104,7 @@
 */
   .tech-col .title{
     color: rgb(94, 97, 102);
-    font-size: 18px;
+    font-size: 0.18rem;
     padding-bottom: 14px;
 
     p{
@@ -116,7 +113,7 @@
 
     time{
       strong{
-        font-size: 27px;
+        font-size: 0.27rem;
 
         display: inline-block;
         padding-right: 5px;
@@ -152,14 +149,14 @@
     .lecturer-info-box .lecturer-name{
       text-align: center;
       font-family: PingFangSC Medium;
-      font-size: 14px;
+      font-size: 0.14rem;
       color: rgb(94, 97, 102);
     }
 
     .lecturer-info-box .lecturer-job{
       text-align: center;
       font-family: PingFangSC Regular;
-      font-size: 14px;
+      font-size: 0.14rem;
       color: rgb(145, 147, 150);
       line-height: 24px;
     }
