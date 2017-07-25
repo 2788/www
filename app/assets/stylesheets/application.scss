@@ -259,7 +259,7 @@ a.underline{
   .intro{
     margin-bottom: 0.50rem;
     .title{
-      margin-top: 0;
+      margin-top: 0.20rem;
       margin-bottom: 0.20rem;
       text-align: center;
       font-weight: 300;
@@ -308,7 +308,6 @@ a.underline{
   }
   p, a{
     color: #666;
-    line-height: 0.24rem;
   }
   a{
     &.icon{
@@ -422,6 +421,7 @@ a.underline{
 }
 
 .features-hotnews{
+  margin-top: 0.20rem;
   border-top: 0.01rem solid rgba(0, 0, 0, 0.075);
   .row{
     margin-left: -0.50rem;
@@ -763,6 +763,13 @@ footer .container {
   }
   .features .row.row-dora .col-content-middle{
     padding: 0.15rem;
+  }
+  .features-eval .evaluation-right ul{
+    padding-left: 2.2rem;
+    li{
+      padding-top: 0.12rem;
+      padding-bottom: 0.12rem;
+    }
   }
 }
 
