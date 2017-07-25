@@ -125,13 +125,18 @@
 
 .tab-content-pricing{
   padding-top: 1rem;
+  .pricing-white-bg {
+    background: #fff;
+    border-right: 1px solid #e6eaef;
+    margin-bottom: 0.50rem;
+  }
 }
 
 table.pricing-table{
   border: 0.01rem solid #e6eaef;
   background-color: #fff;
   border-collapse: separate;
-  margin-bottom: 0.50rem;
+  margin-bottom: 0;
 }
 
 table.pricing-table tr{
@@ -169,8 +174,10 @@ table.pricing-table tr{
 
 table.pricing-table {
   &.border-none {
+    border-right: none;
     td,th {
       border-top: none;
+      border-right: none;
     }
   }
 }
@@ -183,15 +190,15 @@ table.pricing-table tr th, table.pricing-table tr td{
   padding: 0.10rem 0.20rem;
 
   &.border-bottom{
-    border-bottom: 0.01rem solid #e6eaef;
+    border-bottom: 1px solid #e6eaef;
   }
 
   &.border-left{
-    border-left: 0.01rem solid #e6eaef;
+    border-left: 1px solid #e6eaef;
   }
 
   &.border-right{
-    border-right: 0.01rem solid #e6eaef;
+    border-right: 1px solid #e6eaef;
   }
 
   div {
@@ -205,7 +212,7 @@ table.pricing-table tr th, table.pricing-table tr td{
 //right menu
 
 .pricing-info{
-  border: 0.01rem solid #eee;
+  border: 1px solid #eee;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
   -moz-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
