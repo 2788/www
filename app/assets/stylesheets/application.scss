@@ -766,16 +766,6 @@ footer .container {
   }
 }
 
-// @media (min-width: 992px){
-//   .topic-content-wrap .container { max-width: 100%; }
-// }
-
-// @media (min-width: 1200px){
-//   .container {
-//     width: 1170px;
-//   }
-// }
-
 @media (min-width: 992px){
 
 }
@@ -785,12 +775,5 @@ footer .container {
     .col-5{
       width: 20%;
     }
-  }
-}
-
-@media (max-width: 767px) {
-  .features .row {
-    margin-left: -20px;
-    margin-right: -20px;
   }
 }
