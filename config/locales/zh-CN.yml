@@ -495,3 +495,25 @@ zh-CN:
           desc: 视频存储
         - imgpath: plsv/icon-shuiyingongneng.png
           desc: 水印功能
+    - groupid: player
+      group:
+        - imgpath: plsv/icon-beishubofan.png
+          desc: 倍数播放
+        - imgpath: plsv/icon-biansububiandiao.png
+          desc: 变速不变调
+        - imgpath: plsv/icon-bianxiabianbo.png
+          desc: 边下边播
+        - imgpath: plsv/icon-bofanghuancun.png
+          desc: 播放缓存
+        - imgpath: plsv/icon-drmshuzibaohu.png
+          desc: DRM数字保护
+        - imgpath: plsv/icon-H265.png
+          desc: H265
+        - imgpath: plsv/icon-jianhuangjiankong.png
+          desc: 鉴黄监控
+        - imgpath: plsv/icon-jiequfengmian.png
+          desc: 截取封面
+        - imgpath: plsv/icon-miaokaizhichi.png
+          desc: 秒开支持
+        - imgpath: plsv/icon-ruanyingjiezidong.png
+          desc: 软硬解自动
