@@ -149,7 +149,7 @@ nav.navbar{
 }
 
 .nav-tabs.nav-justified.nav-short{
-  width: 60%;
+  width: 70%;
 }
 
 .services-menu{
@@ -254,4 +254,64 @@ nav.navbar{
     background-repeat: no-repeat;
     background-size: 20px 19px;
   }
+}
+
+// Responsive
+// ---------------------------------------------------------------------
+// iPhone
+@media (min-width: 320px) and (max-width: 479px) {
+  .navbar-default .navbar-nav > li{
+    a{ padding: 10px 15px; }
+  }
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+  .navbar-default .navbar-nav > li{
+    padding-top: 0;
+    padding-bottom: 0;
+    a{ padding: 10px; }
+  }
+}
+
+@media (max-width: 767px){
+  .navbar-nav {
+    margin: 0;
+  }
+  .navbar-default .navbar-right{
+    font-size: 14px;
+  }
+  .navbar-default .actions {
+    padding-top: 15px;
+    margin: 15px 0 15px 15px;
+    border-top: 1px solid #9E9E9E;
+    text-align: center;
+  }
+  .navbar-default .navbar-nav .services-menu,
+  .navbar-default .navbar-nav .solutions-menu {
+    margin-bottom: 10px;
+    li a { padding: 5px 20px; }
+  }
+}
+
+// iPad
+@media (min-width: 768px) and (max-width: 991px){
+  .navbar-nav {
+    margin-top: 10px;
+  }
+  .navbar-default .navbar-nav > li > a{
+    padding: 10px;
+  }
+}
+
+// @media (min-width: 992px){
+// }
+
+// @media (min-width: 1200px){
+// }
+
+@media (min-width: 992px){
+
+}
+
+@media (max-width: 1024px){
 }
