@@ -1,0 +1,497 @@
+// 产品
+.features-nav{
+  height: 0.46rem;
+  margin-top: 0;
+}
+
+.features{
+  background: #FFF;
+  padding: 0.60rem 0 0.50rem;
+
+  .list li.active a{
+    color: #00a0de;
+  }
+
+  .list li.hot a{
+    color: #2f3033;
+  }
+
+  .btn.feature-btn{
+    color: #28aedf;
+    background-color: transparent;
+    border: 0.01rem solid #28aedf;
+
+    &:hover{
+      color: #fff;
+      background-color: #28aedf;
+    }
+  }
+
+  a.more{
+    display: inline-block;
+    margin-top: 0;
+    color: $brand-primary;
+  }
+  //合作伙伴 案例
+  div.feature-case{
+    position: relative;
+    border: 0.01rem solid #eeeeee;
+    margin-bottom: 0.30rem;
+    min-height: 1.40rem;
+  }
+
+  video{
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .row{
+    .col-sm-6{
+      margin-bottom: 0.25rem;
+    }
+
+    .col-sm-6.col-init,
+    .col-sm-8.col-init{
+      padding-right: 0;
+      padding-left: 0.35rem;
+    }
+
+    .col-sm-6.col-sm-6-init{
+      padding-left: 0.15rem;
+    }
+
+    .col-padding{
+      padding: 0.50rem;
+    }
+
+    .col-clear{
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0;
+    }
+  }
+
+  .row-clear{
+    margin: 0;
+  }
+
+  .media-object.media-object-index{
+    max-width: 1.20rem;
+  }
+
+  .caption.caption-index{
+    padding: 0.27rem;
+
+    .caption-title{
+      margin-top: 0;
+      margin-bottom: 0.20rem;
+    }
+    p{
+      line-height: 0.28rem;
+    }
+  }
+
+  &.kirk-usage{
+    .row{
+      .thumbnail{
+        min-height: 2.33rem;
+      }
+    }
+  }
+
+  &.plsv-services{
+    .row.row-clear{
+      padding-left: 0.20rem;
+      padding-right: 0.20rem;
+
+      .thumbnail-icons{
+        min-height: 1.00rem;
+      }
+    }
+  }
+
+  .intro{
+    margin-bottom: 0.50rem;
+    .title{
+      margin-top: 0.20rem;
+      margin-bottom: 0.20rem;
+      text-align: center;
+      font-weight: 300;
+    }
+    .desc{ text-align: center; }
+  }
+
+  .tab-content {
+    margin-top: 0.45rem;
+    line-height: 0.28rem;
+
+    .tab-desc {
+      padding: 0;
+      text-align: center;
+      margin-top: -0.20rem;
+    }
+
+    // .media-body{
+    //   padding: 0 0.50rem;
+    // }
+    p{
+      line-height: 0.28rem;
+      padding: 0.28rem 0.10rem;
+    }
+  }
+
+  .feature-item{
+    margin-bottom: 0.50rem;
+    padding-left: 0.15rem;
+    &:last-child{ margin-bottom: 0; }
+    h4{
+      margin-bottom: 0.15rem;
+      > img{ margin-right: 0.15rem; }
+    }
+  }
+
+  .media-left{
+    padding-right: 0.30rem;
+  }
+
+  .media-object{
+    max-width: 1.40rem;
+  }
+  .media-heading{
+    margin-bottom: 0.20rem;
+  }
+  p, a{
+    color: #666;
+  }
+  a{
+    &.icon{
+      display: inline-block;
+      margin-right: 0.10rem;
+    }
+    &:hover{ color: #28aedf; }
+  }
+
+  .thumbnail{
+    border: none;
+    background: transparent;
+    min-height: 2.35rem;
+    margin-bottom: 0;
+    .caption.caption-center{
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0;
+      h4 {
+        margin-bottom: 0.15rem;
+      }
+      p {
+        color: #888;
+      }
+    }
+    .desc{
+      text-align: center;
+    }
+    h4{ text-align: center; }
+  }
+}
+
+.features.features-scene .img-left{
+  max-width: 2.70rem;
+}
+
+.features.features-superiority {
+  .title { font-size: 0.28rem; }
+  .media-left {
+    padding-right: 0.30rem;
+  }
+  p {
+    line-height: 0.28rem;
+    color: #888;
+  }
+  .row .col-sm-6 {
+    margin-bottom: 0.30rem;
+  }
+}
+
+.features.feature-core {
+  .title { font-size: 0.28rem; }
+  p {
+    line-height: 0.28rem;
+    color: #888;
+  }
+  h4 {
+    margin-bottom: 0.15rem;
+  }
+  padding-bottom: 0.50rem;
+}
+
+.features.pili-media {
+  .media {
+    min-height: 1.10rem;
+  }
+  .media-heading {
+    margin-bottom: 0.15rem;
+  }
+  p {
+    color:#888;
+    line-height: 0.28rem;
+  }
+  .row .col-sm-6 {
+    margin-bottom: 0.30rem;
+  }
+}
+
+.feature-color{
+  background: #F7F8F9;
+}
+.light-bkcolor{
+  background-color: #f6f8fa;
+}
+
+.features-solution{
+  background: #F7F8F9;
+}
+
+.features-cases{
+  background: #FFF;
+}
+
+.features-less{
+  &.features-cases{ background: #F8F8F8; }
+  .row h2.title{
+    text-align: center;
+    margin-top: 0.05rem;
+    margin-bottom: 0.3rem;
+  }
+  .row .row > div{
+    margin-bottom: 15px;
+  }
+}
+
+.features-hotnews{
+  margin-top: 0.20rem;
+  border-top: 0.01rem solid rgba(0, 0, 0, 0.075);
+  .hotnews-title{
+    padding-bottom: 0.20rem;
+    font-weight: 400;
+    color: #97989c;
+    &:hover{
+      cursor: pointer;
+      color: #000;
+    }
+  }
+
+  .hotnews-box{
+    img{ width: 100%; }
+    .infobox{ padding: 0.10rem; }
+    &:hover{
+      transition: all 0.3s;
+      transform: scale(1.02,1.02);
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
+         -moz-box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
+              box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
+    }
+  }
+
+  time{
+    color: #97989c;
+    font-size: 0.12rem;
+    display: block;
+    margin-bottom: 0.10rem;
+  }
+  p{color: #000;}
+}
+
+.features-custom-function{
+  background: #F7F8F9;
+  .media-left{ padding-right: 0.35rem; }
+  .media-body{ padding-right: 0.30rem; }
+}
+
+.features-scenario{
+  text-align: center;
+  img{ margin-bottom: 0.30rem; }
+}
+
+.features .list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  a:hover{ color: #00A0DE; }
+}
+
+.features .row.row-dora{
+  .col-video{
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: -5px;
+  }
+
+  .col-content-middle{
+    padding: 100px 50px 0 50px;
+    margin-bottom: 0;
+  }
+  .sm-right { float: right; }
+}
+
+.pandora-btn:hover{
+  color: #28aedf;
+  text-decoration: none;
+  background-color: #fff;
+}
+.pandora-title{ width: 208px; }
+
+.bottom-line{
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.45rem;
+  margin-bottom: 0;
+}
+
+/*
+* section 模块内的样式
+*/
+.section{
+  .title1{
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .section-row{ margin-bottom: 0; }
+  .section-content{ margin: 40px 0; }
+
+  .title2{
+    font-family: PingFangSC Regular;
+    color: rgb(47, 48, 51);
+    font-weight: 400;
+  }
+
+  .title3{
+    margin-bottom: 20px;
+    font-family: PingFangSC Medium;
+    color: rgb(94, 97,102);
+  }
+
+  .img-box{
+    text-align: center;
+    img{ max-width: 70%; }
+  }
+}
+
+// Responsive
+// ---------------------------------------------------------------------
+@media (max-width: 425px) {
+  .features{
+     padding: 0.30rem 0 0.30rem;
+    .intro { margin-bottom: 0.20rem; }
+    .media-left{
+      display: block;
+      text-align: center;
+      padding: 0.10rem;
+      .media-object{ margin: auto; }
+    }
+    .media-body{
+      display: block;
+      width: auto;
+      .media-heading{ text-align: center; }
+    }
+  }
+
+  .features-cases{
+    .conveyor .index-case{ border: none; }
+    .slick-dots { bottom: -15px; }
+  }
+  .features-hotnews{
+    .list{
+      margin-bottom: 10px;
+      text-align: center;
+      li{
+        display: inline-block;
+        padding: 0 2px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px){
+  .jumbotron.hero{
+    .container {
+      padding-top: 0.25rem;
+    }
+    .actions .btn{
+      margin-right: 5px !important;
+    }
+  }
+
+  .features-hotnews{
+    .list{
+      margin-bottom: 10px;
+      text-align: center;
+      li{
+        display: inline-block;
+        padding: 0 2px;
+      }
+    }
+  }
+}
+
+// iPad
+@media (min-width: 768px) and (max-width: 991px){
+  .features{
+    padding-top: 0.10rem;
+    .intro { margin-bottom: 0.20rem; }
+    .col-sm-6:nth-child(odd){
+      clear: left;
+    }
+    .media-left{
+      display: block;
+      text-align: center;
+      padding: 0.10rem;
+      .media-object{ margin: auto; }
+    }
+    .media-body{
+      display: block;
+      width: auto;
+      .media-heading{ text-align: center; }
+    }
+  }
+  .features-kodo .nav-tabs.nav-justified.nav-short {
+    width: 100%;
+  }
+  .navbar-default .actions{
+    margin-left: 0;
+    padding-left: 0.15rem;
+  }
+  .features .row.row-dora .col-content-middle{
+    padding: 0.15rem;
+  }
+  .features-eval .evaluation-right ul{
+    padding-left: 2.2rem;
+    li{
+      padding-top: 0.12rem;
+      padding-bottom: 0.12rem;
+    }
+  }
+
+  .features-less .row {
+    .row > div {
+      margin-bottom: 15px;
+    }
+    h2.title {
+      font-size: 22px;
+    }
+  }
+}
+
+// @media (min-width: 992px){
+//   .topic-content-wrap .container { max-width: 100%; }
+// }
+
+// @media (min-width: 1200px){
+//   .container {
+//     width: 1170px;
+//   }
+// }
+
+@media (min-width: 992px){
+
+}
+

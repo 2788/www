@@ -85,6 +85,13 @@ $(document).ready ->
     , ->
       $(this).removeClass('open')
 
+
+  # 悬浮按钮（咨询反馈）关闭
+  # TODO: 记录 cookie
+  $('.helper .close-btn').click ->
+    $('.helper').hide()
+
+
 # 客户案例
 $(document).ready ->
   $('#cases-slider').slick

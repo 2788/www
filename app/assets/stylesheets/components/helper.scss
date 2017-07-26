@@ -17,9 +17,6 @@
     background: #FFF;
     border: 1px solid #D1D5DB;
     box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    z-index: 9;
-    right: 0;
 
     img{ width: 40px; }
     span{
@@ -27,6 +24,23 @@
       line-height: 16px;
       padding: 5px 12px;
       writing-mode: horizontal-tb;
+    }
+  }
+
+  .close-btn{
+    display: inline-block;
+    width: 42px;
+    height: 35px;
+    padding: 5px 0;
+    text-align: center;
+    background: #FFF;
+    border: 1px solid #D1D5DB;
+    border-top: none;
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.1);
+    img{
+      width: 15px;
+      opacity: 0.6;
+      filter: alpha(opacity=60);
     }
   }
 }

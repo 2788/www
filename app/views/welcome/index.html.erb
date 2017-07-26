@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-6 col-init">
+      <div class="col-sm-6">
         <div class="media">
           <div class="media-left">
             <%= image_tag "icon-massstorage@2x.png", class: "media-object", alt: "海量存储" %>
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-init">
+      <div class="col-sm-6">
         <div class="media">
           <div class="media-left">
             <%= image_tag "icon-num@2x.png", class: "media-object", alt: "数据洞察" %>
@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-init">
+      <div class="col-sm-6">
         <div class="media">
           <div class="media-left">
             <%= image_tag "icon-accelerate@2x.png", class: "media-object", alt: "加速传输" %>
@@ -66,7 +66,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-init">
+      <div class="col-sm-6">
         <div class="media">
           <div class="media-left">
             <%= image_tag "icon-controllale@2x.png", class: "media-object", alt: "高性能计算" %>
@@ -179,7 +179,7 @@
       <h2 class="title">热门动态</h2>
     </div>
     <div class="row">
-      <div class="col-sm-3 left-hotnews">
+      <div class="col-sm-3">
         <ul class="list">
           <li class="hot hotnews-title"><%= link_to "新闻动态", news_path -%></li>
           <li class="hotnews-title"><%= link_to "产品动态", product_news_path -%></li>
@@ -188,17 +188,19 @@
         </ul>
       </div>
 
-      <div class="col-sm-9 right-hotnews">
-        <% I18n.t("news").first(3).each do |list| %>
-          <div class="col-sm-6 col-md-4">
-            <div class="hotnews-box">
-              <%= link_to image_tag(list[:img] || "", alt: "图片加载中"), list[:link], target: "_blank" -%>
-              <div class="infobox">
-                <%= content_tag :div, content_tag(:time, list[:time]) + content_tag(:p, list[:desc].truncate(50, omission: '...')) -%>
+      <div class="col-sm-9">
+        <div class="row">
+          <% I18n.t("news").first(3).each do |list| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="hotnews-box">
+                <%= link_to image_tag(list[:img] || "", alt: "图片加载中"), list[:link], target: "_blank" -%>
+                <div class="infobox">
+                  <%= content_tag :div, content_tag(:time, list[:time]) + content_tag(:p, list[:desc].truncate(50, omission: '...')) -%>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
