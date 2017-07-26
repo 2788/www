@@ -52,7 +52,6 @@ footer{
       list-style: none;
       margin: 0;
       padding: 45px 0 10px;
-      border-top: 1px solid #49515F;
       li {
         display: inline-block;
         padding: 0 14px;
@@ -93,6 +92,11 @@ footer{
       margin-right: 20px;
     }
   }
+
+  .icp span{
+    line-height: 24px;
+    white-space: nowrap;
+  }
 }
 
 footer.form-footer{
@@ -113,9 +117,36 @@ footer.form-footer{
   }
 }
 
-
 // Responsive
 // ---------------------------------------------------------------------
+@media (max-width: 425px) {
+  footer{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 12px;
+
+    .sns {padding: 20px 0 5px; }
+    .container dl dd { line-height: 24px; }
+
+    .links {
+      text-align: center;
+      .cloud-verify{
+        float: none;
+        text-align: center;
+        .verify-logo, .iso-logo {
+          display: inline-block;
+          float: none;
+          margin: 0;
+        }
+      }
+
+      ul {
+        width: 100%;
+        padding-top: 20px;
+      }
+    }
+  }
+}
 
 @media (max-width: 767px){
 

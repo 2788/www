@@ -71,16 +71,12 @@
             <li><%= link_to "关于我们", company_path -%></li>
           </ul>
 
-          <span class="navbar-btline visible-xs"></span>
-
           <ul class="nav navbar-nav navbar-right">
             <li><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li><%= link_to "热门活动", events_path -%></li>
-
             <li>
               <div class="actions">
-                <span class="middle-line hidden-xs"></span>
                 <a target="_blank" href="https://portal.qiniu.com/signin" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary">注册有礼</a>
               </div>
@@ -100,6 +96,7 @@
         <%= image_tag "icon-sevice@2x.png", alt: nil -%>
         <span>服务&bull;咨询</span>
       </a>
+      <%= link_to image_tag("close.png"), "javascript:;", class: "close-btn" %>
     </div>
 
     <!-- Modal -->
@@ -222,16 +219,18 @@
 
         <div class="links grey-link">
           <div class="cloud-verify">
-            <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" style="float: right" title="可信云"></a>
+            <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
           </div>
-
           <ul>
             <li><div class="copyright grey-color">© 2017 七牛云</div></li>
             <li><a href="/user-agreement">用户协议</a></li>
             <li><%= link_to "SLA", user_agreement_path -%></li>
           </ul>
-          <div class="icp grey-color">沪公网安备 31011502000961 号沪 ICP 备 11037377 号-5</div>
+          <div class="icp grey-color">
+            <span>沪公网安备 31011502000961 号</span>
+            <span>沪 ICP 备 11037377 号-5</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,0 +1,118 @@
+
+// index page
+.jumbotron.hero{
+  height: 5.18rem;
+  margin-top: -0.68rem;
+  margin-bottom: 0.30rem;
+  text-align: center;
+  background-image: image-url('banner.jpg');
+
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased;
+
+  .vertical{
+    position: relative;
+    top: 25%;
+  }
+
+  &.hero-contact,
+  &.hero-company{
+    margin-bottom: -0.30rem;
+  }
+
+  .btn-banner{
+    position: relative;
+    top: 3.50rem;
+  }
+
+  &.hero-banner1{ background-image: image-url('ssl.jpg');}
+  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
+  &.hero-banner3{
+    background-image: image-url('southern-price-reduce.jpg');
+    .btn-banner{ left: 1.00rem; }
+  }
+  &.hero-kodo{ background-image: image-url('duixiangcunchu-banner.jpg'); }
+  &.hero-pili{ background-image: image-url('zhiboyun-banner.jpg'); }
+  &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
+  &.hero-events{background-image: image-url('marketing-banner.jpg'); }
+  &.hero-ecug{background-image: image-url('ecug-banner.jpg'); }
+  &.hero-niushow{background-image: image-url('niushow-banner.jpg'); }
+  &.hero-pandora{background-image: image-url('dashuju-banner.jpg'); }
+  &.hero-fusion{background-image: image-url('fusion-banner.jpg'); }
+  &.hero-dora{background-image: image-url("zhinengduomeitiAPI-banner.jpg"); }
+  &.hero-kirk{background-image: image-url("rongqiyun-banner.jpg"); }
+  &.hero-vance{background-image: image-url("dianboyun-banner.jpg"); }
+  &.hero-company{background-image: image-url("company/banner.jpg"); }
+  &.hero-case{background-image: image-url("case/banner.jpg"); }
+  &.hero-solution{background-image: image-url("solutions-banner.jpg"); }
+  &.hero-prices{background-image: image-url("price-banner.jpg"); }
+  &.hero-caculator{background-image: image-url("caculator-banner.jpg"); }
+  &.hero-atlab{background-image: image-url("ava-banner.jpg"); }
+  &.hero-plsv{background-image: image-url("duanshipin-banner.jpg"); }
+
+  .container{
+    text-align: left;
+    padding-top: 0.55rem;
+    color: #FFF;
+  }
+  h2{
+    margin: 0.50rem auto 0.30rem;
+    font-size: 0.35rem;
+    font-weight: 400;
+    text-shadow: 0 0.02rem 0.03rem rgba(0,0,0,.5);
+  }
+  p{
+    line-height: 0.28rem;
+    font-size: 0.14rem;
+  }
+}
+
+
+// Responsive
+// ---------------------------------------------------------------------
+@media (max-width: 425px) {
+  .slick-slider{ margin-bottom: 0; }
+  .jumbotron.hero{
+    p{
+      line-height: 0.34rem;
+      font-size: 0.16rem;
+    }
+    &.hero-banner3{
+      background-position: -540px center;
+      .btn-banner{ left: 0; }
+    }
+  }
+}
+
+@media (max-width: 767px){
+
+}
+
+// iPad
+@media (min-width: 768px) and (max-width: 991px){
+  .jumbotron.hero{
+    p{
+      line-height: 0.34rem;
+      font-size: 0.16rem;
+    }
+  }
+}
+
+// @media (min-width: 992px){
+//   .topic-content-wrap .container { max-width: 100%; }
+// }
+
+// @media (min-width: 1200px){
+//   .container {
+//     width: 1170px;
+//   }
+// }
+
+@media (min-width: 992px){
+
+}
