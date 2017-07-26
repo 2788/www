@@ -1,6 +1,7 @@
 .features.feature-solution{
   .left-line{
     border-left: 1px solid #e5e5e5;
+    float: right;
   }
 
   .right-line{
@@ -13,7 +14,14 @@
   .col-scene{
     padding-left: 35px;
     padding-right: 35px;
-
+    .col-scene_scene {
+      .small-padding {
+        padding-left: 15px;
+        padding-right: 0;
+        margin-bottom: 0;
+        h5 {margin-bottom: 0;}
+      }
+    }
     .col-scene_case{
       margin-top: 30px;
     }
@@ -206,5 +214,33 @@
 
   .icon-shipinwangzhanyunying{
     background-image: image-url("solution/icon-shipinwangzhanyunying@2x.png");
+  }
+}
+
+@media(max-width: 767px) {
+  .row-solution {
+    .col-solution,.col-scene {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .col-solution {
+    .content {
+      padding: 0;
+    }
+    .icon50, .icon40 { margin-bottom: 5px; }
+  }
+  .row-solution .col-scene .col-scene_case {
+    margin-top: 15px;
+  }
+  .row-solution .col-scene .col-scene_scene .small-padding {
+    padding-left: 0;
+  }
+  .features.feature-solution .left-line {
+    float: none;
+    border-left: none;
+  }
+  .features.feature-solution .right-line {
+    border-right: none;
   }
 }

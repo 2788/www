@@ -790,6 +790,11 @@ footer .container {
     margin-left: 0;
     margin-right: 0;
   }
+  .left-hotnews {
+    ul > li {
+      display: inline-block;
+    }
+  }
   .nav-tabs.nav-justified.nav-short {
     width: 100%;
     text-align: center;
