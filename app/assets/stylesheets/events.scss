@@ -115,6 +115,9 @@ video的css
   #edu-video{
     width: 100%;
   }
+  video {
+    display: block;
+  }
 }
 
 @media (min-width: 768px){
