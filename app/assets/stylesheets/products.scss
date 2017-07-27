@@ -316,6 +316,9 @@
 
 .features-custom-function{
   background: #F7F8F9;
+  .col-xs-6 .media-body{
+    padding: 0;
+  }
   .media-left,
   .media-body{
     padding-right: 0.25rem;
@@ -459,6 +462,7 @@
     .title2.title-center{
       text-align: center;
     }
+  }
 
   .feature-case .container .intro .title{
     font-size: 18px;
