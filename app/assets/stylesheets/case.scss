@@ -126,9 +126,7 @@
 
     .tab-content-evaluation-details {
       margin: 0;
-      padding-left: 0.21rem;
-      padding-right: 0.21rem;
-      width: 6.40rem;
+      padding: 0;
     }
 
     .tab-content {
@@ -158,11 +156,5 @@
         }
       }
     }
-  }
-}
-
-@media (max-width: 768px){
-  .features-eval .evaluation-right .tab-content-evaluation-details{
-    padding-left: 2.2rem;
   }
 }
