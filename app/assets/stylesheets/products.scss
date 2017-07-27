@@ -218,9 +218,6 @@
     line-height: 0.28rem;
     color: #888;
   }
-  .row .col-sm-6 {
-    margin-bottom: 0.30rem;
-  }
 }
 
 .features.feature-core {
@@ -414,6 +411,11 @@
       .media-heading{
         text-align: center;
         font-size: 0.21rem;
+      }
+    }
+    .row{
+      .col-sm-6{
+        margin-bottom: 0;
       }
     }
   }
