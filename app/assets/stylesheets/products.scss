@@ -12,6 +12,12 @@
     font-size: 0.30rem;
   }
 
+  h3{
+    font-size: 0.24rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
+  }
+
   h4{
     font-size: 0.21rem;
   }
@@ -212,9 +218,6 @@
     line-height: 0.28rem;
     color: #888;
   }
-  .row .col-sm-6 {
-    margin-bottom: 0.30rem;
-  }
 }
 
 .features.feature-core {
@@ -410,6 +413,11 @@
         font-size: 0.21rem;
       }
     }
+    .row{
+      .col-sm-6{
+        margin-bottom: 0;
+      }
+    }
   }
 
   .features-cases{
@@ -441,6 +449,10 @@
 
   .features{
     .container.container-center{
+      text-align: center;
+    }
+
+    .title2.title-center{
       text-align: center;
     }
   }
@@ -491,6 +503,9 @@
       width: auto;
       .media-heading{ text-align: center; }
     }
+  }
+  .features-sla .nav > li > a{
+    padding: 10px 0;
   }
   .features-kodo .nav-tabs.nav-justified.nav-short {
     width: 100%;
