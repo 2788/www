@@ -97,7 +97,7 @@ a.underline{
   }
   .slick-dots li.slick-active button::before{ color: #3498db; }
 }
-.banners-slider .slick-dots.banners-arrow{ bottom: 0.18rem; }
+.banners-slider .slick-dots.banners-arrow{ bottom: 0.48rem; }
 .banners-actions{
   position: relative;
 
@@ -267,6 +267,9 @@ footer .container {
 @media (max-width: 768px){
   html{
     font-size: 70px;
+  }
+  .banners-slider .slick-dots.banners-arrow{
+    bottom: 0.18rem;
   }
 }
 
