@@ -258,6 +258,12 @@ footer .container {
   color: #adaeb3;
 }
 
+@media (max-width: 736px) {
+  .banners-slider .slick-dots.banners-arrow{
+    bottom: 0.18rem;
+  }
+}
+
 // iPad
 @media (min-width: 768px) and (max-width: 991px){
 
@@ -267,9 +273,6 @@ footer .container {
 @media (max-width: 768px){
   html{
     font-size: 70px;
-  }
-  .banners-slider .slick-dots.banners-arrow{
-    bottom: 0.18rem;
   }
 }
 
