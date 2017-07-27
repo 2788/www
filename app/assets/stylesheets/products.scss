@@ -141,7 +141,7 @@
   }
 
   .tab-content {
-    margin-top: 0.45rem;
+    margin-top: 0.2rem;
     line-height: 0.28rem;
 
     .tab-desc {
@@ -316,6 +316,9 @@
 
 .features-custom-function{
   background: #F7F8F9;
+  .col-xs-6 .media-body{
+    padding: 0;
+  }
   .media-left,
   .media-body{
     padding-right: 0.25rem;
