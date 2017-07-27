@@ -1,10 +1,13 @@
 .feature-cooperation .container{
   h2{
-    margin-bottom: 0.54rem;
+    font-size: 0.30rem;
+    margin-bottom: 0.10rem;
+    margin-top: 0.20rem;
   }
   p{
     line-height: 0.45rem;
-    margin: 45px 0;
+    margin-top: 0.20rem;
+    margin-bottom: 0.20rem;
   }
 
   .feature-contact-box{
@@ -124,15 +127,6 @@ ul.friend-link{
     padding-top: 0;
   }
   .feature-cooperation .container, .features-cooperation .container {
-    h2 {
-      margin-bottom: 20px;
-      margin-top: 10px;
-      font-size: 28px;
-    }
-    p {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
     .bottom-line {
       padding-bottom: 10px;
     }

@@ -8,6 +8,10 @@
   background: #FFF;
   padding: 0.60rem 0 0.50rem;
 
+  h2{
+    font-size: 0.30rem;
+  }
+
   h4{
     font-size: 0.21rem;
   }
@@ -433,6 +437,16 @@
     .actions .btn{
       margin-right: 5px !important;
     }
+  }
+
+  .features{
+    .container.container-center{
+      text-align: center;
+    }
+  }
+
+  .feature-case .container .intro .title{
+    font-size: 18px;
   }
 
   .features .row.row-dora .col-content-middle{

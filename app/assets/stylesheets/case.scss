@@ -62,9 +62,6 @@
 
 .features-eval{
   .evaluation-left{
-    float: left;
-    width: 2.8rem;
-
     h4{
       font-size: 0.21rem;
       color: #666;
@@ -79,9 +76,6 @@
   }
 
   .evaluation-right {
-    float: right;
-    width: 6.40rem;
-
     ul{
       list-style: none;
 
@@ -92,7 +86,7 @@
       }
 
       &.client-list li{
-        float: left;
+        display: inline-block;
 
         a {
           display: block;
@@ -132,9 +126,7 @@
 
     .tab-content-evaluation-details {
       margin: 0;
-      padding-left: 0.21rem;
-      padding-right: 0.21rem;
-      width: 6.40rem;
+      padding: 0;
     }
 
     .tab-content {
@@ -164,11 +156,5 @@
         }
       }
     }
-  }
-}
-
-@media (max-width: 768px){
-  .features-eval .evaluation-right .tab-content-evaluation-details{
-    padding-left: 2.2rem;
   }
 }
