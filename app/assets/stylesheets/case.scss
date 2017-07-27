@@ -62,9 +62,6 @@
 
 .features-eval{
   .evaluation-left{
-    float: left;
-    width: 2.8rem;
-
     h4{
       font-size: 0.21rem;
       color: #666;
@@ -79,9 +76,6 @@
   }
 
   .evaluation-right {
-    float: right;
-    width: 6.40rem;
-
     ul{
       list-style: none;
 
@@ -92,7 +86,7 @@
       }
 
       &.client-list li{
-        float: left;
+        display: inline-block;
 
         a {
           display: block;
