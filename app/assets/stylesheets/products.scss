@@ -12,6 +12,12 @@
     font-size: 0.30rem;
   }
 
+  h3{
+    font-size: 0.24rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
+  }
+
   h4{
     font-size: 0.21rem;
   }
@@ -491,6 +497,9 @@
       width: auto;
       .media-heading{ text-align: center; }
     }
+  }
+  .features-sla .nav > li > a{
+    padding: 10px 0;
   }
   .features-kodo .nav-tabs.nav-justified.nav-short {
     width: 100%;

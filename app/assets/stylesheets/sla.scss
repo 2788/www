@@ -1,14 +1,14 @@
 .agreement-details {
-  padding: 30px;
   h2{
-    margin-bottom: 38px;
-    margin-top: -4px;
+    margin-bottom: 0.38rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.1rem;
   }
 
   p.condense {
-    font-size: 14px;
+    font-size: 0.14rem;
     line-height: 24px;
-    margin-bottom: 39px;
+    margin-bottom: 0.39rem;
   }
 
   ol {
@@ -16,12 +16,12 @@
     background: transparent;
     padding: 0;
     overflow: hidden;
-    margin-bottom: 21px;
+    margin-bottom: 0.21rem;
 
     li {
-      font-size: 14px;
+      font-size: 0.14rem;
       line-height: 24px;
-      margin-bottom: 19px;
+      margin-bottom: 0.19rem;
 
       &.last-li{
         margin-bottom: 0;
