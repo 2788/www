@@ -7,13 +7,13 @@
   }
 
   .slick-arrow{
-    width: 22px;
-    height: 45px;
+    width: 0.22rem;
+    height: 0.45rem;
     top: 20%;
-    -webkit-background-size: 21px 45px;
-    -moz-background-size: 21px 45px;
-    -o-background-size: 21px 45px;
-    background-size: 21px 45px;
+    -webkit-background-size: 0.21rem 0.45rem;
+    -moz-background-size: 0.21rem 0.45rem;
+    -o-background-size: 0.21rem 0.45rem;
+    background-size: 0.21rem 0.45rem;
     background-position: 0 0;
     transition: background-image .1s;
     &:before{ content: '' }
@@ -146,16 +146,6 @@
 @media (min-width: 768px) and (max-width: 991px){
 
 }
-
-// @media (min-width: 992px){
-//   .topic-content-wrap .container { max-width: 100%; }
-// }
-
-// @media (min-width: 1200px){
-//   .container {
-//     width: 1170px;
-//   }
-// }
 
 @media (min-width: 992px){
 
