@@ -8,6 +8,10 @@
   background: #FFF;
   padding: 0.60rem 0 0.50rem;
 
+  h4{
+    font-size: 0.21rem;
+  }
+
   .list li.active a{
     color: #00a0de;
   }
@@ -113,6 +117,7 @@
   .intro{
     margin-bottom: 0.50rem;
     .title{
+      font-size: 0.30rem;
       margin-top: 0.20rem;
       margin-bottom: 0.20rem;
       text-align: center;
@@ -131,12 +136,9 @@
       margin-top: -0.20rem;
     }
 
-    // .media-body{
-    //   padding: 0 0.50rem;
-    // }
     p{
       line-height: 0.28rem;
-      padding: 0.28rem 0.10rem;
+      padding: 0;
     }
   }
 
@@ -176,6 +178,9 @@
     background: transparent;
     min-height: 2.35rem;
     margin-bottom: 0;
+    div.caption{
+      padding: 0;
+    }
     .caption.caption-center{
       text-align: center;
       padding-left: 0;
@@ -199,10 +204,6 @@
 }
 
 .features.features-superiority {
-  .title { font-size: 0.28rem; }
-  .media-left {
-    padding-right: 0.30rem;
-  }
   p {
     line-height: 0.28rem;
     color: #888;
@@ -258,6 +259,7 @@
 .features-less{
   &.features-cases{ background: #F8F8F8; }
   .row h2.title{
+    font-size: 0.30rem;
     text-align: center;
     margin-top: 0.05rem;
     margin-bottom: 0.3rem;
@@ -303,8 +305,11 @@
 
 .features-custom-function{
   background: #F7F8F9;
-  .media-left{ padding-right: 0.35rem; }
-  .media-body{ padding-right: 0.30rem; }
+  .media-left,
+  .media-body{
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+  }
 }
 
 .features-scenario{
@@ -351,17 +356,22 @@
 */
 .section{
   .title1{
+    font-size: 0.30rem;
     text-align: center;
     font-weight: 500;
+    margin-top: 0.20rem;
+    margin-bottom: 0.10rem;
   }
 
   .section-row{ margin-bottom: 0; }
-  .section-content{ margin: 40px 0; }
+  .section-content{ margin: 0 0 0.1rem; }
 
   .title2{
-    font-family: PingFangSC Regular;
+    font-size: 0.24rem;
     color: rgb(47, 48, 51);
-    font-weight: 400;
+    font-weight: 500;
+    margin-top: 0.20rem;
+    margin-bottom: 0.20rem;
   }
 
   .title3{
@@ -391,7 +401,10 @@
     .media-body{
       display: block;
       width: auto;
-      .media-heading{ text-align: center; }
+      .media-heading{
+        text-align: center;
+        font-size: 0.21rem;
+      }
     }
   }
 
@@ -476,7 +489,7 @@
       margin-bottom: 15px;
     }
     h2.title {
-      font-size: 22px;
+      font-size: 0.30rem;
     }
   }
 }
