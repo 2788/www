@@ -2,6 +2,10 @@
   margin-top: -36px;
 }
 
+.welcome-page-company .intro h2.title {
+  text-align: left;
+}
+
 .timeline-ul{
   width: 90%;
   max-width: 1170px;
@@ -252,7 +256,11 @@
   .welcome-page-company .timeline {
     margin-bottom: 10px;
   }
-  .welcome-page-company .intro h2 {
+  .welcome-page-company .intro h2.title {
     font-size: 23px;
+    text-align: center;
+  }
+  .timeline-ul li.time-wrapper {
+    margin-top: 60px;
   }
 }
