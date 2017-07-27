@@ -39,7 +39,7 @@ zh-CN:
           desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   solutions:
     - name: QOS
-      label:  对象存储私有化部署
+      label:  私有云存储解决方案
       desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
     - name: UDMP
       label:  非结构化数据管理解决方案
