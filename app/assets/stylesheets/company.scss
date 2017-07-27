@@ -1,3 +1,11 @@
+.welcome-page-company .timeline {
+  margin-top: -36px;
+}
+
+.welcome-page-company .intro h2.title {
+  text-align: left;
+}
+
 .timeline-ul{
   width: 90%;
   max-width: 1170px;
@@ -75,7 +83,6 @@
     text-align: left;
     padding-left: 20px;
     margin-top: 85px;
-
     .time-span{
       position: relative;
       top: -5px;
@@ -236,5 +243,24 @@
 
   .timeline-ul li.time-wrapper .time-point{
     left: -7px;
+  }
+}
+
+@media (max-width: 767px) {
+  .timeline-ul li.right .info-div {
+    padding-left: 20px;
+  }
+  .timeline-ul li.right .icon-img {
+    right: -30px;
+  }
+  .welcome-page-company .timeline {
+    margin-bottom: 10px;
+  }
+  .welcome-page-company .intro h2.title {
+    font-size: 23px;
+    text-align: center;
+  }
+  .timeline-ul li.time-wrapper {
+    margin-top: 60px;
   }
 }
