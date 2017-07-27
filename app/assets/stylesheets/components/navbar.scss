@@ -56,7 +56,7 @@ nav.navbar{
     }
   }
   .navbar-nav > li {
-    padding: 8px 0 9px;
+    padding: 0.08rem 0 0.09rem;
     > a {
       display: block;
       color: #FFF;
@@ -261,7 +261,7 @@ nav.navbar{
 // iPhone
 @media (min-width: 320px) and (max-width: 479px) {
   .navbar-default .navbar-nav > li{
-    a{ padding: 10px 15px; }
+    a{ padding: 0.10rem 0.15rem; }
   }
 }
 
@@ -269,7 +269,7 @@ nav.navbar{
   .navbar-default .navbar-nav > li{
     padding-top: 0;
     padding-bottom: 0;
-    a{ padding: 10px; }
+    a{ padding: 0.10rem; }
   }
 }
 
@@ -278,11 +278,10 @@ nav.navbar{
     margin: 0;
   }
   .navbar-default .navbar-right{
-    font-size: 14px;
   }
   .navbar-default .actions {
-    padding-top: 15px;
-    margin: 15px 0 15px 15px;
+    padding-top: 0.15rem;
+    margin: 0.15rem 0 0.15rem 0.15rem;
     border-top: 1px solid #9E9E9E;
     text-align: center;
   }
