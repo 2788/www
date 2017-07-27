@@ -17,7 +17,6 @@
 
     color: rgb(94, 97, 102);
     font-size: 0.14rem;
-    font-family: PingFangSC Medium;
 
     &:hover{
       background-color: transparent;
@@ -33,7 +32,6 @@
 
 .tab-content-caculating{
   .info .title-left{
-    font-family:PingFangSC Light;
     font-size: 0.30rem;
     color: rgb(47, 48, 51);
   }
@@ -52,7 +50,6 @@
     dt{
       &.icon-title{
         font-size:0.24rem;
-        font-family:PingFangFC Regular;
         color: rgb(23, 18, 15);
         height: 0.80rem;
         line-height: 0.80rem;
@@ -78,7 +75,6 @@
     }
 
     dd{
-      font-family:PingFangSC Light;
       color: rgb(47, 48, 51);
       line-height: 0.30rem;
     }
@@ -152,7 +148,6 @@ table.pricing-table tr{
     }
 
     &.thead-title{
-      font-family: PingFangSC Regular;
       font-size: 0.18rem;
       color: rgb(151, 152, 156);
       height: 0.60rem;
@@ -282,7 +277,6 @@ table.pricing-table tr th, table.pricing-table tr td{
     color: #2f3033;
     font-size: 0.14rem;
     dt{
-      font-family: PingFangSC Regular;
       font-size: 0.18rem;
       color: #97989c;
       height: 0.45rem;
