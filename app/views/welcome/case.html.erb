@@ -105,7 +105,7 @@
           <% groupid = logos[:groupid] %>
           <section id= <%= groupid %> class="tab-pane fade in">
             <% logos[:group].each do |logo| %>
-              <div class="col-sm-2">
+              <div class="col-sm-2 col-xs-6">
                 <div class="thumbnail feature-case">
                   <%= image_tag logo[:imgpath], class: "list-img", alt: "案例", width: 100 %>
                 </div>
