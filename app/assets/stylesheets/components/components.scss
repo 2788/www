@@ -42,6 +42,7 @@ img{ max-width: 100%; }
 // --------------------------------------------------
 
 .btn{
+  font-size: 0.14rem;
   transition: background-color .3s;
 }
 
@@ -204,4 +205,10 @@ label{ font-weight: 300; }
 
 @media (max-width: 767px){
   #feedback-modal .modal-dialog{ margin-top: 12px; }
+  body{
+    font-size: 0.2rem;
+  }
+  .btn{
+  font-size: 0.2rem;
+  }
 }
