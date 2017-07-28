@@ -331,7 +331,7 @@ input[type="range"]{
 .pricing-info-wrapper{
   position: absolute;
   top: 6.80rem;
-  right: 0.88rem;
+  right: 0.68rem;
   width: 2.90rem;
 }
 
@@ -351,7 +351,7 @@ input[type="range"]{
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .features .row .list-inline-prices {
     margin-left: -0.40rem;
     margin-right: -0.40rem;
