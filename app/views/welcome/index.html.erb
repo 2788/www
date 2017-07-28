@@ -196,7 +196,7 @@
                 <a href=<%= list[:link] %> target="_blank">
                   <%= image_tag list[:img] || "", class: "", alt: "图片加载中" %>
                   <div class="infobox">
-                    <%= content_tag :div, content_tag(:time, list[:time]) + content_tag(:p, list[:desc].truncate(50, omission: '...')) -%>
+                    <%= content_tag :div, content_tag(:time, list[:time]) + content_tag(:p, list[:title].truncate(50, omission: '...')) -%>
                   </div>
                 </a>
               </div>
