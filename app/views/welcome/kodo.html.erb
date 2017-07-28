@@ -99,40 +99,10 @@
     <div class="row">
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="thumbnail">
-          <%= image_tag "icon-shezhijingxiangziyuan@2x.png", class: "media-object", alt: "设置镜像源", width: 60 %>
+          <%= image_tag "icon-shujuchuli@2x.png", class: "media-object", alt: "数据处理", width: 60 %>
           <div class="caption">
-            <h4>镜像存储</h4>
-            <p>镜像存储适用于迁移原有业务系统的已有数据。可以帮助用户实现无缝数据迁移，迁移过程中并不影响原有业务系统的访问。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/kb/1376/seven-cattle-image-storage-instruction-manuals", target: "_blank", class: "more" -%></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "icon-dipincunchu.png", class: "media-object", alt: "低频存储", width: 60 %>
-          <div class="caption">
-            <h4>低频存储</h4>
-            <p>低频存储具有较高的持久性、高吞吐量和较低的访问延迟。 可以帮助用户以更具性价比的成本存储读取频率较低的数据。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/3737/infrequent-storage", target: "_blank", class: "more" -%></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "icon-shengmingzhouqi.png", class: "media-object", alt: "生命周期管理", width: 60 %>
-          <div class="caption">
-            <h4>生命周期管理</h4>
-            <p>生命周期管理让用户可以根据业务需要，为存储空间制定规则，存储对象可自动化定时进行存储类型转化或删除操作。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/3699/life-cycle-management", target: "_blank", class: "more" -%></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "icon-shangchuan-xiazai@2x.png", class: "media-object", alt: "上传／下载", width: 60 %>
-          <div class="caption">
-            <h4>上传／下载</h4>
-            <p>针对不同的上传/下载场景，七牛云提供了丰富的API接口和工具供用户使用，同时支持服务端上传和客户端直传，并提供加速服务。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/1234/upload-types", target: "_blank", class: "more" -%></p>
+            <h4>多媒体数据处理</h4>
+            <p>基于对象存储，您可以⼀站式地完成图片处理和⾳视频处理。<%= link_to raw("了解更多"), products_dora_path, class: "more" -%></p>
           </div>
         </div>
       </div>
@@ -149,13 +119,44 @@
 
       <div class="col-md-4 col-sm-6 col-xs-6">
         <div class="thumbnail">
-          <%= image_tag "icon-shujuchuli@2x.png", class: "media-object", alt: "数据处理", width: 60 %>
+          <%= image_tag "icon-shengmingzhouqi.png", class: "media-object", alt: "生命周期管理", width: 60 %>
           <div class="caption">
-            <h4>多媒体数据处理</h4>
-            <p>基于对象存储，您可以⼀站式地完成图片处理和⾳视频处理。<%= link_to raw("了解更多"), products_dora_path, class: "more" -%></p>
+            <h4>生命周期管理</h4>
+            <p>生命周期管理让用户可以根据业务需要，为存储空间制定规则，存储对象可自动化定时进行存储类型转化或删除操作。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/3699/life-cycle-management", target: "_blank", class: "more" -%></p>
           </div>
         </div>
       </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "icon-dipincunchu.png", class: "media-object", alt: "低频存储", width: 60 %>
+          <div class="caption">
+            <h4>低频存储</h4>
+            <p>低频存储具有较高的持久性、高吞吐量和较低的访问延迟。 可以帮助用户以更具性价比的成本存储读取频率较低的数据。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/3737/infrequent-storage", target: "_blank", class: "more" -%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "icon-shezhijingxiangziyuan@2x.png", class: "media-object", alt: "设置镜像源", width: 60 %>
+          <div class="caption">
+            <h4>镜像存储</h4>
+            <p>镜像存储适用于迁移原有业务系统的已有数据。可以帮助用户实现无缝数据迁移，迁移过程中并不影响原有业务系统的访问。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/kb/1376/seven-cattle-image-storage-instruction-manuals", target: "_blank", class: "more" -%></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "icon-shangchuan-xiazai@2x.png", class: "media-object", alt: "上传／下载", width: 60 %>
+          <div class="caption">
+            <h4>上传／下载</h4>
+            <p>针对不同的上传/下载场景，七牛云提供了丰富的API接口和工具供用户使用，同时支持服务端上传和客户端直传，并提供加速服务。<%= link_to raw("了解更多"), "https://developer.qiniu.com/kodo/manual/1234/upload-types", target: "_blank", class: "more" -%></p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
