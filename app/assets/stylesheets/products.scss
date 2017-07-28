@@ -294,6 +294,7 @@
     img{ width: 100%; }
     .infobox{ padding: 0.10rem; }
     &:hover{
+      cursor: pointer;
       transition: all 0.3s;
       transform: scale(1.02,1.02);
       -webkit-box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
