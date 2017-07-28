@@ -12,6 +12,11 @@ nav.navbar{
   border-radius: 0;
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
 
+  .navbar-collapse{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
   .navbar-header{
     min-height: 68px;
     .navbar-toggle{
