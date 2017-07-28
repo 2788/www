@@ -9,7 +9,12 @@ footer{
   .container dl{
     dt{ margin-bottom: 20px;}
     dd{ line-height: 28px; }
-    a{ color: #FFF; }
+    a{
+      color: #FFF;
+      &:hover{
+        color: $brand-primary;
+      }
+    }
   }
 
   .logo{
