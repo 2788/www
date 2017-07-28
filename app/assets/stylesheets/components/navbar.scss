@@ -12,6 +12,11 @@ nav.navbar{
   border-radius: 0;
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
 
+  .navbar-collapse{
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
   .navbar-header{
     min-height: 68px;
     .navbar-toggle{
@@ -26,8 +31,8 @@ nav.navbar{
     display: inline-block;
     height: auto;
     color: #FFF;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: 16px;
     &:focus,
     &:hover { color: #FFF; }
