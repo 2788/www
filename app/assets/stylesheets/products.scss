@@ -192,7 +192,7 @@
     background: transparent;
     min-height: 2.35rem;
     margin-bottom: 0;
-    div.caption{
+    div.caption.p-clear{
       padding: 0;
     }
     .caption.caption-center{
@@ -422,7 +422,6 @@
       }
     }
   }
-
   .features-cases{
     .conveyor .index-case{ border: none; }
     .slick-dots { bottom: -15px; }
