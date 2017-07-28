@@ -219,6 +219,22 @@ img.list-img{
   transform: translate(-50%,-50%);
 }
 
+.error-page{
+  margin: 50px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  &.error-page-404{
+    max-width: 1130px;
+    min-height: 630px;
+    background-image: image-url('404.jpg');
+  }
+}
+
 // 打印
 // ---------------------------------------------------------------------
 @media print {
