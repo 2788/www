@@ -26,7 +26,9 @@ $(document).ready ->
 
   #/////////////////////////////////////////////////
   ## 控制prices页面tab
-  pre = 'kodo'
+  pre = location.search.slice(6) || 'kodo';
+  $('#tab-prices-' + pre).addClass('active')
+  $('#pricesTabs').val(pre)
   $('#pricesTabs').change (e) ->
     val = $(this).val()
     $('#tab-prices-' + val).addClass('active')

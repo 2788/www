@@ -1,12 +1,22 @@
 <div class="banners-slider">
     <div class="jumbotron hero hero-banner1">
-      <a href="http://blog.qiniu.com/archives/8381" target="_blank" class="btn btn-lg btn-hollow btn-banner">查看详情</a>
+      <div class="banner-container">
+        <div class="banner-desc">
+          <h2>一站式短视频解决方案上线</h2>
+          <p>接口开放、功能丰富、性能卓越、体验极致</p>
+        </div>
+        <%= link_to "查看详情", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
+      </div>
     </div>
     <div class="jumbotron hero hero-banner2">
-      <a href="http://blog.qiniu.com/archives/8498?hmsr=huananjiangjiabanner&hmpl=huananjiangjiabanner&hmcu=huananjiangjiabanner&hmkw=&hmci=" target="_blank" class="btn btn-lg btn-hollow btn-banner">查看详情</a>
+      <div class="banner-container">
+        <a href="http://blog.qiniu.com/archives/8498?hmsr=huananjiangjiabanner&hmpl=huananjiangjiabanner&hmcu=huananjiangjiabanner&hmkw=&hmci=" target="_blank" class="btn btn-lg btn-hollow btn-banner">查看详情</a>
+      </div>
     </div>
     <div class="jumbotron hero hero-banner3">
-      <%= link_to "点击咨询", "", class: "btn btn-lg btn-hollow btn-banner", data: { toggle: "modal", target: "#feedback-modal"} -%>
+      <div class="banner-container">
+        <%= link_to "点击咨询", "", class: "btn btn-lg btn-hollow btn-banner", data: { toggle: "modal", target: "#feedback-modal"} -%>
+      </div>
     </div>
 </div>
 

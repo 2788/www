@@ -1,4 +1,3 @@
-
 // index page
 .jumbotron.hero{
   height: 5.18rem;
@@ -25,16 +24,33 @@
     margin-bottom: -0.30rem;
   }
 
-  .btn-banner{
+  .banner-container{
     position: relative;
-    top: 3.50rem;
+    height: 5.18rem;
+    width: 100%;
+    margin-top: -0.68rem;
+    margin-bottom: 0.30rem;
+    text-align: center;
+    .banner-desc{
+      color: #fff;
+      padding-top: 1.70rem;
+    }
+
+    .btn-banner{
+      position: absolute;
+      bottom: 0.6rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
-  &.hero-banner1{ background-image: image-url('ssl.jpg');}
-  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg')}
+  &.hero-banner1{ background-image: image-url('duanshipin-banner.jpg');}
+  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg');}
   &.hero-banner3{
     background-image: image-url('southern-price-reduce.jpg');
-    .btn-banner{ left: 1.68rem; }
+    .banner-container{
+      left: 1.7rem;
+    }
   }
   &.hero-kodo{ background-image: image-url('duixiangcunchu-banner.jpg'); }
   &.hero-pili{ background-image: image-url('zhiboyun-banner.jpg'); }
@@ -69,6 +85,7 @@
   p{
     line-height: 0.28rem;
     font-size: 0.14rem;
+    text-shadow: 0 0.02rem 0.03rem rgba(0,0,0,.5);
   }
 }
 
@@ -83,8 +100,10 @@
       font-size: 0.16rem;
     }
     &.hero-banner3{
-      background-position: -540px center;
-      .btn-banner{ left: 0; }
+      background-position: -520px center;
+      .banner-container{
+        left: 0;
+      }
     }
   }
 }
