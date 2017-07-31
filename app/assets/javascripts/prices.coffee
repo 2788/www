@@ -25,8 +25,23 @@ $(document).ready ->
   fusionUnit = $('.fusion-unit')
 
   #/////////////////////////////////////////////////
+  ## 解析URL参数 返回对象obj
+  parseQueryString = (url) ->
+    obj = {}
+    keyvalue = []
+    key = ''
+    value = ''
+    paraString = url.substring(url.indexOf('?') + 1, url.length).split('&')
+    for i of paraString
+      keyvalue = paraString[i].split('=')
+      key = keyvalue[0]
+      value = keyvalue[1]
+      obj[key] = value
+    return obj
   ## 控制prices页面tab
-  pre = location.search.slice(6) || 'kodo';
+  if parseQueryString(location.search)['source']
+    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(location.search)['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
+  pre = source || 'kodo';
   $('#tab-prices-' + pre).addClass('active')
   $('#pricesTabs').val(pre)
   $('#pricesTabs').change (e) ->
