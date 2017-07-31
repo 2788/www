@@ -22,7 +22,12 @@ module Official
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.mongoid.logger = Logger.new($stdout, :warn)
+    # https://ruby-doc.org/stdlib-2.1.0/libdoc/logger/rdoc/Logger.html#method-c-new
+    # shift_age:5, shift_size: 500M
+    logger = Logger.new(File.join(Rails.root, "log", "#{Rails.env}.log"), 5, 1024 * 1024 * 500)
+
+    config.logger = logger
+    config.mongoid.logger = logger # Logger.new($stdout, :warn)
 
     config.action_dispatch.perform_deep_munge = false
 
