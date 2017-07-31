@@ -25,11 +25,30 @@ $(document).ready ->
   fusionUnit = $('.fusion-unit')
 
   #/////////////////////////////////////////////////
+  ## 解析URL参数 返回对象obj
+  parseQueryString = (url) ->
+    obj = {}
+    keyvalue = []
+    key = ''
+    value = ''
+    paraString = url.substring(url.indexOf('?') + 1, url.length).split('&')
+    for i of paraString
+      keyvalue = paraString[i].split('=')
+      key = keyvalue[0]
+      value = keyvalue[1]
+      obj[key] = value
+    return obj
   ## 控制prices页面tab
-  pre = 'kodo'
+  if parseQueryString(location.search)['source']
+    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(location.search)['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
+  pre = source || 'kodo';
+  $('#tab-prices-' + pre).addClass('active')
+  $('#pricesTabs').val(pre)
   $('#pricesTabs').change (e) ->
     val = $(this).val()
     $('#tab-prices-' + val).addClass('active')
+    if history && history.pushState
+      history.pushState("","","/prices?source="+val);
     $('#tab-prices-' + pre).removeClass('active')
     pre = val
 
@@ -191,12 +210,12 @@ $(document).ready ->
     setPrice()
 
   # 容错
-  if $('#feature-price-nav').length != 0 && $(window).width() >= 768
+  if $('#feature-price-nav').length != 0 && $(window).width() > 768
     setFxd
       'elem': $('#feature-price-nav')
       'fxdClass': 'fix-top'
       'prevPosition': 'relative'
-  if $('#pricing-info').length != 0 && $(window).width() >= 768
+  if $('#pricing-info').length != 0 && $(window).width() > 768
     setFxd
       'elem': $('#pricing-info')
       'fxdClass': 'fixed-right'

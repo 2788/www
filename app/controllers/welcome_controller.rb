@@ -70,4 +70,41 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def robots
+    if request.host == "www.qiniu.com"
+      render plain: """\
+User-agent: *
+    """
+    else
+      render plain: """\
+User-agent: Baiduspider
+Disallow: /
+User-agent: Sosospider
+Disallow: /
+User-agent: sogou spider
+Disallow: /
+User-agent: YodaoBot
+Disallow: /
+User-agent: Googlebot
+Disallow: /
+User-agent: Bingbot
+Disallow: /
+User-agent: Slurp
+Disallow: /
+User-agent: MSNBot
+Disallow: /
+User-agent: googlebot-image
+Disallow: /
+User-agent: googlebot-mobile
+Disallow: /
+User-agent: yahoo-blogs/v3.9
+Disallow: /
+User-agent: psbot
+Disallow: /
+User-agent: *
+Disallow: /\
+      """
+    end
+  end
+
 end

@@ -19,7 +19,7 @@
   }
 
   h4{
-    font-size: 0.21rem;
+    font-size: 0.20rem;
   }
 
   h5{
@@ -192,7 +192,7 @@
     background: transparent;
     min-height: 2.35rem;
     margin-bottom: 0;
-    div.caption{
+    div.caption.p-clear{
       padding: 0;
     }
     .caption.caption-center{
@@ -294,6 +294,7 @@
     img{ width: 100%; }
     .infobox{ padding: 0.10rem; }
     &:hover{
+      cursor: pointer;
       transition: all 0.3s;
       transform: scale(1.02,1.02);
       -webkit-box-shadow: 0 0 0 #EFEFEF, 0.02rem 0.02rem 0.20rem #B9B9B9;
@@ -422,7 +423,6 @@
       }
     }
   }
-
   .features-cases{
     .conveyor .index-case{ border: none; }
     .slick-dots { bottom: -15px; }

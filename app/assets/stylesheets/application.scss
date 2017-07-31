@@ -75,6 +75,20 @@ a.underline{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    position: relative;
+    padding-left: 0.20rem;
+    margin-bottom: 0.10rem;
+
+    &::before{
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 4px;
+      border: 1px solid #525866;
+      top: 5px;
+      left: 0;
+    }
     a:hover{ color: #07A0DF; }
   }
 }
@@ -187,11 +201,10 @@ div.form-wrapper{
   margin: 0;
   margin-bottom: 0.20rem;
   padding-left: 0.50rem;
-  padding-right: 0.20rem;
+  padding-right: 0.50rem;
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 0.50rem 0.50rem;
-  height: 0.50rem;
   line-height: 0.50rem;
 }
 .icon140{
@@ -219,6 +232,22 @@ img.list-img{
   transform: translate(-50%,-50%);
 }
 
+.error-page{
+  margin: 50px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  &.error-page-404{
+    max-width: 1130px;
+    min-height: 630px;
+    background-image: image-url('404.jpg');
+  }
+}
+
 // 打印
 // ---------------------------------------------------------------------
 @media print {
@@ -244,7 +273,7 @@ img.list-img{
     width: 55%;
   }
   .input-num{
-    width: 0.60rem;
+    width: 0.9rem;
   }
 }
 
