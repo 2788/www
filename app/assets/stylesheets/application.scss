@@ -76,7 +76,8 @@ a.underline{
     overflow: hidden;
     text-overflow: ellipsis;
     position: relative;
-    padding-left: 20px;
+    padding-left: 0.20rem;
+    margin-bottom: 0.10rem;
 
     &::before{
       content: "";

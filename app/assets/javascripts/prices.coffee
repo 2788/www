@@ -47,6 +47,8 @@ $(document).ready ->
   $('#pricesTabs').change (e) ->
     val = $(this).val()
     $('#tab-prices-' + val).addClass('active')
+    if history
+      history.pushState("","","/prices?source="+val);
     $('#tab-prices-' + pre).removeClass('active')
     pre = val
 
