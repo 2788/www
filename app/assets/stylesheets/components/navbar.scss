@@ -286,7 +286,13 @@ nav.navbar{
   }
   .navbar-nav {
     margin: 0;
+    &.navbar-nav-mobile{
+      li{
+        line-height: 40px;
+      }
+    }
   }
+
   .navbar-default .navbar-right{
     font-size: 0.2rem;
   }
@@ -300,6 +306,27 @@ nav.navbar{
   .navbar-default .navbar-nav .solutions-menu {
     margin-bottom: 10px;
     li a { padding: 5px 20px; }
+  }
+  .dropdown-toggle-mobile::after{
+    content: '';
+    border: 2px solid #667180;
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin: auto;
+    position: absolute;
+    top: 20px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    border-top: none;
+    border-right: none;
+    right: 20px;
+  }
+  .dropdown-toggle-mobile.actived::after{
+    border-bottom: none;
+    border-left: none;
+    border-right: 2px solid #667180;
+    border-top: 2px solid #667180;
   }
 }
 
