@@ -21,6 +21,6 @@ class RecommendationsController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def recommendation_params
-      params.require(:recommendation).permit(:company, :city, :name, :position, :email, :phone, :desc, :emergency, :recommender_name, :recommender_phone, :ip, :uid, :referer)
+      params.require(:recommendation).permit(:company, :name, :position, :email, :phone, :desc, :emergency, :recommender_name, :recommender_phone, :ip, :uid, :referer)
     end
 end
