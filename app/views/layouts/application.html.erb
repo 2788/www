@@ -152,6 +152,16 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <label for="feedback-email" class="col-sm-2 control-label">电子邮箱<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :email, type: "email", class:"form-control", id:"feedback-email", validate: true, validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写电子邮箱</label>
+                  </div>
+                </div>
+              </div>
+
               <div class="actions">
                 <%= f.button "提 交", class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
               </div>
