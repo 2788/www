@@ -77,8 +77,10 @@ $(document).ready ->
 
  # 导航栏菜单
   if isMobile
-    $('#spaces-dropdown, #solution-dropdown').on "tap", ->
-      $(this).toggleClass('open')
+    $('.panel').on 'touchstart', ->
+      $(this).find('.panel-sort').toggleClass('actived')
+    $('#spaces-dropdown, #solution-dropdown').on 'touchstart', ->
+      $(this).find('.dropdown-toggle').toggleClass('actived')
   else
     $('#spaces-dropdown, #solution-dropdown').hover ->
       $(this).addClass('open')

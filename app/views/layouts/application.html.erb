@@ -162,7 +162,7 @@
     </div>
 
 
-    <footer>
+    <footer class="hidden-xs">
       <div class="container">
         <div class="row">
           <div class="col-sm-8">
@@ -217,6 +217,90 @@
           </div>
         </div>
 
+        <div class="links grey-link">
+          <div class="cloud-verify">
+            <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
+            <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
+          </div>
+          <ul>
+            <li><div class="copyright grey-color">© 2017 七牛云</div></li>
+            <li><a href="/user-agreement">用户协议</a></li>
+            <li><%= link_to "SLA", user_agreement_path -%></li>
+          </ul>
+          <div class="icp grey-color">
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961"><span>沪公网安备 31011502000961 号</span></a>
+            <a href="http://www.miitbeian.gov.cn/"><span>沪 ICP 备 11037377 号-5</span></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="visible-xs footer-mobile">
+      <div class="container">
+        <div class="collapse-wrapper">
+          <ul class="panel-group" id="accordion">
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseProduct">产品</a>
+              </div>
+
+              <div id="collapseProduct" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <% I18n.t("services").each do |service| %>
+                    <% service[:list].each do |product| %>
+                      <%= content_tag :div, link_to(content_tag(:h4, product[:label],class: product[:name]), '/products/' + product[:name]), class: "menu-unit" -%>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseSupport">支持</a>
+              </div>
+
+              <div id="collapseSupport" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <% I18n.t("supports").each do |support| %>
+                    <%= content_tag :div, link_to(content_tag(:h4, support[:name]), support[:links], target: support[:newtab]), class: "menu-unit" -%>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseUs">关于我们</a>
+              </div>
+
+              <div id="collapseUs" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <% I18n.t("aboutus").each do |us| %>
+                    <%= content_tag :div, link_to(content_tag(:h4, us[:name]), us[:links], target: us[:newtab]), class: "menu-unit" -%>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseCare">关注我们</a>
+              </div>
+
+              <div id="collapseCare" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <div class="text-center">
+                    <%= link_to image_tag("logo.png", alt: "七牛云"), "/", class: "logo" -%>
+                    <div class="qrcode">
+                      <%= image_tag "weixin-qrcode.png" -%>
+                    </div>
+                    <div class="sns">
+                      <a class="github" href="https://github.com/qiniu" target="_blank"></a>
+                      <a class="weibo" href="http://weibo.com/qiniutek" target="_blank"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
         <div class="links grey-link">
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
