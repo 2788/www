@@ -5,6 +5,7 @@ class Recommendation
   store_in collection: "marketing_recommendations"
 
   field :company, type: String
+  field :province, type: String
   field :city, type: String
   field :name, type: String
   field :position, type: String

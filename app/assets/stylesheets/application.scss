@@ -140,6 +140,10 @@ div.form-wrapper{
     .form-group{
       margin-bottom: 0.24rem;
 
+      .context{
+
+      }
+
       label{
         padding-left: 0;
         padding-right: 0;
@@ -156,7 +160,7 @@ div.form-wrapper{
       }
 
       .maxLength-tips{
-        text-align: right;
+        float: right;
 
         .maxLength-label{
           font-size: 0.12rem;
@@ -166,7 +170,7 @@ div.form-wrapper{
 
       .div-error{ display: none; }
       .div-error.active{
-        display: block;
+        display: inline-block;
         .error-label{
           font-size: 0.12rem;
           color: #ff3939;

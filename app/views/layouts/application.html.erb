@@ -106,12 +106,13 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="feedback-modal-label">产品及服务咨询</h4>
-            <h6 style="color:red;">您也可以拨打 400-808-9176 转 2 进行免费咨询</h6>
           </div>
           <div class="modal-body">
             <div id="feedback-alert" class="alert alert-success" style="display: none;"></div>
-            <div class="tips">温馨提示：此表单仅用于产品及服务售前咨询，如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>，谢谢!</div>
-
+            <div class="tips text-center">
+              此表单仅用于产品及服务售前咨询（您也可以拨打400-808-9176转2）<br />
+              如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>
+            </div>
 
             <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| %>
               <%= f.hidden_field :referer, value: request.original_url -%>
@@ -119,9 +120,12 @@
               <div class="form-group">
                 <label for="feedback-content" class="col-sm-2 control-label">咨询内容<small class="text-danger">*</small></label>
                 <div class="col-sm-10">
-                  <%= f.text_area :content, size: "x5", class: "form-control", id:"feedback-content", validate: true %>
+                  <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id:"feedback-content", validate: true %>
                   <div class="div-error">
                     <label for="" class="error-label">请填写咨询内容</label>
+                  </div>
+                  <div class="maxLength-tips">
+                    <label for="" class="maxLength-label">最多可输入255字</label>
                   </div>
                 </div>
               </div>

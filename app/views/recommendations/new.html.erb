@@ -17,12 +17,10 @@
         </div>
 
         <div class="form-group">
-          <label for="recommendation-city" class="col-sm-2 control-label">城市<small class="text-danger">*</small></label>
-          <div class="col-sm-10">
-            <%= f.text_field :city, class:"form-control", id:"recommendation-city", validate: true %>
-            <div class="div-error">
-              <label for="" class="error-label">请填写城市</label>
-            </div>
+          <label for="recommendation-city" class="col-sm-2 control-label">省份<small class="text-danger">*</small>：</label>
+          <div class="col-sm-10" id="province_city" data-required="true">
+            <select name="recommendation[province]" id="province" class="province" data-value="北京" data-required="true"></select>
+            城市<small class="text-danger">*</small>： <select name="recommendation[city]" id="city" class="city" data-value="北京" data-required="true"></select>
           </div>
         </div>
 
@@ -77,7 +75,7 @@
         </div>
 
         <div class="form-group">
-          <label for="recommendation-business" class="col-sm-2 control-label">紧急程度<small class="text-danger">*</small></label>
+          <label for="recommendation-emergency" class="col-sm-2 control-label">紧急程度<small class="text-danger">*</small></label>
           <div class="col-sm-10">
             <select role="tablist" id="emergency" class="select-lg form-control" name="recommendation[emergency]">
               <option value="1">1</option>
