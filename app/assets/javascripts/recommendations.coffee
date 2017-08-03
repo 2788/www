@@ -34,3 +34,11 @@ $(document).ready ->
     $submitAfter.show()
     $submitSuccess.hide()
     $submitErr.show()
+
+  $('#province_city').cxSelect
+    data: window.city
+    selects: [
+      'province'
+      'city'
+    ]
+    emptyStyle: 'none'

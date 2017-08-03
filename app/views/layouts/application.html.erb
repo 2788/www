@@ -109,8 +109,10 @@
           </div>
           <div class="modal-body">
             <div id="feedback-alert" class="alert alert-success" style="display: none;"></div>
-            <div class="tips">温馨提示：此表单仅用于产品及服务售前咨询，如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>，谢谢!</div>
-
+            <div class="tips text-center">
+              此表单仅用于产品及服务售前咨询（您也可以拨打400-808-9176转2）<br />
+              如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>
+            </div>
 
             <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| %>
               <%= f.hidden_field :referer, value: request.original_url -%>
@@ -118,9 +120,12 @@
               <div class="form-group">
                 <label for="feedback-content" class="col-sm-2 control-label">咨询内容<small class="text-danger">*</small></label>
                 <div class="col-sm-10">
-                  <%= f.text_area :content, size: "x5", class: "form-control", id:"feedback-content", validate: true %>
+                  <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id:"feedback-content", validate: true %>
                   <div class="div-error">
                     <label for="" class="error-label">请填写咨询内容</label>
+                  </div>
+                  <div class="maxLength-tips">
+                    <label for="" class="maxLength-label">最多可输入255字</label>
                   </div>
                 </div>
               </div>
@@ -152,6 +157,16 @@
                 </div>
               </div>
 
+              <div class="form-group">
+                <label for="feedback-email" class="col-sm-2 control-label">电子邮箱<small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :email, type: "email", class:"form-control", id:"feedback-email", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label">请填写电子邮箱</label>
+                  </div>
+                </div>
+              </div>
+
               <div class="actions">
                 <%= f.button "提 交", class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
               </div>
@@ -162,7 +177,7 @@
     </div>
 
 
-    <footer>
+    <footer class="hidden-xs">
       <div class="container">
         <div class="row">
           <div class="col-sm-8">
@@ -180,27 +195,17 @@
               <div class="col-sm-4 col-xs-4">
                 <dl>
                   <dt>支持</dt>
-                  <dd><%= link_to "开发者中心", "https://developer.qiniu.com", target: "_blank" -%></dd>
-                  <dd><%= link_to "技术支持", "https://support.qiniu.com", target: "_blank" -%></dd>
-                  <dd><%= link_to "问答社区", "https://segmentfault.com/qiniu", target: "_blank" -%></dd>
-                  <dd><%= link_to "热门活动", events_path -%></dd>
-                  <dd><%= link_to "违规内容举报", "mailto:jubao@qiniu.com", id: "report" -%></dd>
-                  <dd><%= link_to "工单系统", "https://support.qiniu.com/login", target: "_blank" -%></dd>
-                  <dd><%= link_to "技术博客", "http://blog.qiniu.com/", target: "blank" -%></dd>
+                  <% I18n.t("supports").each do |support| %>
+                    <%= content_tag :dd, link_to(support[:name], support[:links], target: support[:newtab]) -%>
+                  <% end %>
                 </dl>
               </div>
               <div class="col-sm-4 col-xs-4">
                 <dl>
                   <dt>关于我们</dt>
-                  <dd><%= link_to "公司介绍", company_path -%></dd>
-                  <dd><%= link_to "新闻动态", news_path -%></dd>
-                  <dd><%= link_to "产品动态", product_news_path -%></dd>
-                  <dd><%= link_to "近期福利", welfares_path -%></dd>
-                  <dd><%= link_to "品牌标识", "https://developer.qiniu.com/brand", target: "_blank" -%></dd>
-                  <dd><%= link_to "客户案例", case_path -%></dd>
-                  <dd><%= link_to "市场合作", cooperations_path -%></dd>
-                  <dd><%= link_to "加入我们", "http://career.qiniu.com/", target: "_blank" -%></dd>
-                  <dd><%= link_to "联系我们", contact_path -%></dd>
+                  <% I18n.t("aboutus").each do |us| %>
+                    <%= content_tag :dd, link_to(us[:name], us[:links], target: us[:newtab]) -%>
+                  <% end %>
                 </dl>
               </div>
             </div>
@@ -217,6 +222,90 @@
           </div>
         </div>
 
+        <div class="links grey-link">
+          <div class="cloud-verify">
+            <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
+            <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
+          </div>
+          <ul>
+            <li><div class="copyright grey-color">© 2017 七牛云</div></li>
+            <li><a href="/user-agreement">用户协议</a></li>
+            <li><%= link_to "SLA", user_agreement_path -%></li>
+          </ul>
+          <div class="icp grey-color">
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961"><span>沪公网安备 31011502000961 号</span></a>
+            <a href="http://www.miitbeian.gov.cn/"><span>沪 ICP 备 11037377 号-5</span></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="visible-xs footer-mobile">
+      <div class="container">
+        <div class="collapse-wrapper">
+          <ul class="panel-group" id="accordion">
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseProduct">产品</a>
+              </div>
+
+              <div id="collapseProduct" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <% I18n.t("services").each do |service| %>
+                    <% service[:list].each do |product| %>
+                      <%= content_tag :div, link_to(content_tag(:h4, product[:label],class: product[:name]), '/products/' + product[:name]), class: "menu-unit" -%>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseSupport">支持</a>
+              </div>
+
+              <div id="collapseSupport" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <% I18n.t("supports").each do |support| %>
+                    <%= content_tag :div, link_to(content_tag(:h4, support[:name]), support[:links], target: support[:newtab]), class: "menu-unit" -%>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseUs">关于我们</a>
+              </div>
+
+              <div id="collapseUs" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <% I18n.t("aboutus").each do |us| %>
+                    <%= content_tag :div, link_to(content_tag(:h4, us[:name]), us[:links], target: us[:newtab]), class: "menu-unit" -%>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseCare">关注我们</a>
+              </div>
+
+              <div id="collapseCare" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <div class="text-center">
+                    <%= link_to image_tag("logo.png", alt: "七牛云"), "/", class: "logo" -%>
+                    <div class="qrcode">
+                      <%= image_tag "weixin-qrcode.png" -%>
+                    </div>
+                    <div class="sns">
+                      <a class="github" href="https://github.com/qiniu" target="_blank"></a>
+                      <a class="weibo" href="http://weibo.com/qiniutek" target="_blank"></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
         <div class="links grey-link">
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
