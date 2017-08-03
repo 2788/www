@@ -16,7 +16,6 @@
 #= require jquery.slick
 #= require data
 #= require cxselect
-#= require globalData
 #= require cityData
 
 #= require smint
