@@ -299,6 +299,10 @@ nav.navbar{
 }
 
 @media (max-width: 767px){
+  nav.navbar{
+    position: relative;
+    background-color: #303848;
+  }
   .navbar-default .navbar-nav .services-menu li a h4, .navbar-default .navbar-nav .solutions-menu li a h4{
     font-size: 12px;
     padding-top: 5px;
