@@ -195,6 +195,7 @@
     &.icon{
       display: inline-block;
       margin-right: 0.10rem;
+      line-height: normal;
     }
     &:hover{ color: #28aedf; }
   }
@@ -455,6 +456,7 @@
 
 @media (max-width: 767px){
   .jumbotron.hero{
+    height: 5.18rem;
     margin-bottom: 0;
     .container {
       padding-top: 0.25rem;
