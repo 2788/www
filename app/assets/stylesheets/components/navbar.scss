@@ -6,12 +6,18 @@
 .welcome-page-sla_pili,
 .welcome-page-sla_dora,
 .welcome-page-product_news,
-.welcome-page-welfares{
+.welcome-page-welfares,
+.errors-page{
   nav.navbar{
     background-color: #303848;
   }
   .features{
     padding-top: 1.5rem;
+  }
+  .error-page.error-page-404{
+    margin: 90px auto;
+    max-width: 666px;
+    min-height: 370px;
   }
 }
 nav.navbar{

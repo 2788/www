@@ -461,15 +461,27 @@
   .welcome-page-sla_kodo,
   .welcome-page-sla_fusion,
   .welcome-page-sla_pili,
-  .welcome-page-sla_dora{
+  .welcome-page-sla_dora,
+  .welcome-page-product_news,
+  .welcome-page-welfares,
+  .errors-page{
     .features{
       padding-top: 0.30rem;
     }
+    .error-page.error-page-404{
+      max-width: 215px;
+      min-height: 120px;
+    }
   }
+
   .jumbotron.hero{
     height: 5.18rem;
     margin-bottom: 0;
     .container {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translateY(0);
       padding-top: 0.25rem;
     }
     .actions .btn{
