@@ -1,6 +1,27 @@
+.welcome-page-news,
+.cooperations-page-index,
+.welcome-page-user_agreement,
+.welcome-page-sla_kodo,
+.welcome-page-sla_fusion,
+.welcome-page-sla_pili,
+.welcome-page-sla_dora{
+  nav.navbar{
+    background-color: #303848;
+  }
+  .features{
+    padding-top: 1.5rem;
+  }
+}
 nav.navbar{
   min-height: 68px;
   margin-bottom: 0;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  background-color: transparent;
+  &:hover{
+    background-color: #303848;
+  }
 }
 
 // 导航栏

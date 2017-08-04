@@ -109,6 +109,8 @@
       margin-bottom: 0.20rem;
     }
     p{
+      color: #888;
+      font-size: 0.14rem;
       line-height: 0.28rem;
     }
   }
@@ -155,6 +157,8 @@
     }
 
     p{
+      color: #888;
+      font-size: 0.14rem;
       line-height: 0.28rem;
       padding: 0;
     }
@@ -181,7 +185,11 @@
     margin-bottom: 0.20rem;
   }
   p, a{
-    color: #666;
+    color: #888;
+  }
+  p{
+    font-size: 0.14rem;
+    line-height: 0.28rem;
   }
   a{
     &.icon{
@@ -223,6 +231,7 @@
 
 .features.features-superiority {
   p {
+    font-size: 0.14rem;
     line-height: 0.28rem;
     color: #888;
   }
@@ -249,6 +258,7 @@
   }
   p {
     color:#888;
+    font-size: 0.14rem;
     line-height: 0.28rem;
   }
 }
@@ -313,7 +323,7 @@
     display: block;
     margin-bottom: 0.10rem;
   }
-  p{color: #000;}
+  p{color: #000; font-size: 14px; line-height: 28px;}
 }
 
 .features-custom-function{
