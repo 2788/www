@@ -455,6 +455,17 @@
 }
 
 @media (max-width: 767px){
+  .welcome-page-news,
+  .cooperations-page-index,
+  .welcome-page-user_agreement,
+  .welcome-page-sla_kodo,
+  .welcome-page-sla_fusion,
+  .welcome-page-sla_pili,
+  .welcome-page-sla_dora{
+    .features{
+      padding-top: 0.30rem;
+    }
+  }
   .jumbotron.hero{
     height: 5.18rem;
     margin-bottom: 0;
