@@ -464,9 +464,14 @@
   .welcome-page-sla_dora,
   .welcome-page-product_news,
   .welcome-page-welfares,
-  .errors-page{
+  .errors-page,
+  .recommendations-page,
+  .feedbacks-page{
     .features{
       padding-top: 0.30rem;
+      &.web-form{
+        padding-top: 0;
+      }
     }
     .error-page.error-page-404{
       max-width: 215px;
