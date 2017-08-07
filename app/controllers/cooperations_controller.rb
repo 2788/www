@@ -7,7 +7,7 @@ class CooperationsController < ApplicationController
   def create_channel
     @channel_cooperation = ChannelCooperation.new(channel_cooperation_params)
     @channel_cooperation.uid = cookies['PORTAL_UID']
-    @channel_cooperation.ip = request.remote_ip
+    @channel_cooperation.ip = client_ip
 
     if @channel_cooperation.save
       render :nothing => true, :status => :created
@@ -19,7 +19,7 @@ class CooperationsController < ApplicationController
   def create_developer
     @developer_cooperation = DeveloperCooperation.new(developer_cooperation_params)
     @developer_cooperation.uid = cookies['PORTAL_UID']
-    @developer_cooperation.ip = request.remote_ip
+    @developer_cooperation.ip = client_ip
 
     if @developer_cooperation.save
       render :nothing => true, :status => :created
