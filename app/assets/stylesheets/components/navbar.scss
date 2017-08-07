@@ -7,12 +7,17 @@
 .welcome-page-sla_dora,
 .welcome-page-product_news,
 .welcome-page-welfares,
-.errors-page{
+.errors-page,
+.recommendations-page,
+.feedbacks-page{
   nav.navbar{
     background-color: #303848;
   }
   .features{
     padding-top: 1.5rem;
+    &.web-form{
+      padding-top: 68px;
+    }
   }
   .error-page.error-page-404{
     margin: 90px auto;
