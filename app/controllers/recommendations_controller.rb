@@ -5,7 +5,7 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new(recommendation_params)
     @recommendation.uid = cookies['PORTAL_UID']
-    @recommendation.ip = request.remote_ip
+    @recommendation.ip = client_ip
 
     if @recommendation.referer.blank?
       @recommendation.referer = params[:referer] || request.referer || request.env['HTTP_REFERER']
