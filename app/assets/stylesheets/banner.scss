@@ -1,6 +1,5 @@
 // index page
 .jumbotron.hero{
-  position: relative;
   height: 5.68rem;
   margin-top: -0.68rem;
   margin-bottom: 0.30rem;
@@ -14,11 +13,6 @@
   -o-background-size: cover;
   background-size: cover;
   -webkit-font-smoothing: antialiased;
-
-  .vertical{
-    position: relative;
-    top: 25%;
-  }
 
   &.hero-contact,
   &.hero-company{
@@ -76,12 +70,24 @@
   &.hero-plsv{background-image: image-url("duanshipin-banner.jpg"); }
 
   .container{
+    position: relative;
+    height: 5.2rem;
+    text-align: left;
+    &.center-container{
+      text-align: center;
+      .middle-container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #FFF;
+      }
+    }
+  }
+  .middle-container{
     position: absolute;
     top: 50%;
-    left: 8%;
     transform: translateY(-50%);
-    text-align: left;
-    padding-top: 0.68rem;
     color: #FFF;
   }
   h2{
