@@ -483,11 +483,12 @@
     height: 5.18rem;
     margin-bottom: 0;
     .container {
+      height: 4.75rem;
       position: relative;
       top: 0;
       left: 0;
       transform: translateY(0);
-      padding-top: 0.25rem;
+      padding-top: 0;
     }
     .actions .btn{
       margin-right: 5px !important;

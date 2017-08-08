@@ -20,6 +20,9 @@
     }
     .col-scene_case{
       margin-top: 30px;
+      ul li{
+        margin-bottom: 0.1rem;
+      }
     }
   }
 
@@ -36,6 +39,10 @@
 
   .icon-UDMP{
     background-image: image-url("solution/icon-feijiegouhuashujuguanlifangan@2x.png");
+  }
+
+  .icon-PLSV{
+    background-image: image-url("solution/icon-duanshipin@2x.png");
   }
 
   .icon-ICA{
@@ -90,6 +97,10 @@
 
   .icon-pili{
     background-image: image-url("solution/icon-shipinzhibo@2x.png");
+  }
+
+  .icon-minplsv{
+    background-image: image-url("solution/icon-duanshipinsdk@2x.png");
   }
 
   .icon-face{
@@ -177,8 +188,6 @@
   .icon-jiatinganfang{
     background-image: image-url("solution/icon-jiatinganfang@2x.png");
   }
-
-
 
   .icon-lvyou{
     background-image: image-url("solution/icon-lvyou@2x.png");

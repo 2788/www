@@ -244,53 +244,37 @@ nav.navbar{
 }
 
 .solutions-menu{
-  .QOS{
-    background-image: image-url("menuicon-duixiangcunchusiyouhua@2x.png");
+  .menu-title{
     background-position: left;
     background-repeat: no-repeat;
     background-size: 20px 19px;
+  }
+  .QOS{
+    background-image: image-url("menuicon-duixiangcunchusiyouhua@2x.png");
   }
   .UDMP{
     background-image: image-url("menuicon-feijiegouhuashujuguanli@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
+  }
+  .PLSV{
+    background-image: image-url("menuicon-duanshipin@2x.png");
   }
   .ICA{
     background-image: image-url("menuicon-zhinengyunxiangce@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
   }
   .IHAIOT{
     background-image: image-url("menuicon-zhinengyingjian@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
   }
   .RTMI{
     background-image: image-url("menuicon-guangdianchuanmei@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
   }
   .HST{
     background-image: image-url("menuicon-anfang@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
   }
   .Internet{
     background-image: image-url("menuicon-hulianwang@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
   }
   .DQM{
     background-image: image-url("menuicon-yingyongzhiliangjiankong@2x.png");
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 20px 19px;
   }
 }
 
