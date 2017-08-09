@@ -78,14 +78,14 @@ $(document).ready ->
     }]
 
  # 导航栏菜单
-  $('#solution-dropdown').on 'click', ->
-    window.location.href = window.location.origin + '/solutions'
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
     $('#spaces-dropdown, #solution-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
+    $('#solution-dropdown').on 'click', ->
+      window.location.href = window.location.origin + '/solutions'
     $('#spaces-dropdown, #solution-dropdown').hover ->
       $(this).addClass('open')
     , ->
