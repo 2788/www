@@ -78,6 +78,8 @@ $(document).ready ->
     }]
 
  # 导航栏菜单
+  $('#solution-dropdown').on 'click', ->
+    window.location.href = window.location.origin + '/solutions'
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
