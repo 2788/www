@@ -84,6 +84,8 @@ $(document).ready ->
     $('#spaces-dropdown, #solution-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
+    $('#solution-dropdown').on 'click', ->
+      window.location.href = window.location.origin + '/solutions'
     $('#spaces-dropdown, #solution-dropdown').hover ->
       $(this).addClass('open')
     , ->

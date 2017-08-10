@@ -42,12 +42,24 @@
     }
   }
 
-  &.hero-banner1{ background-image: image-url('duanshipin-banner.jpg');}
+  &.hero-banner1{ background-image: image-url('duanshipin-banner.jpg');.middle-container{padding-top: 0.7rem;}}
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg');}
   &.hero-banner3{
     background-image: image-url('southern-price-reduce.jpg');
     .banner-container{
       left: 1.7rem;
+    }
+  }
+
+  .right-mask-banner{
+    min-height: 3rem;
+    img{
+      vertical-align: middle;
+      display: inline-block;
+      max-width: 100%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
   &.hero-kodo{ background-image: image-url('duixiangcunchu-banner.jpg'); }
@@ -67,7 +79,7 @@
   &.hero-prices{background-image: image-url("price-banner.jpg"); }
   &.hero-caculator{background-image: image-url("caculator-banner.jpg"); }
   &.hero-atlab{background-image: image-url("ava-banner.jpg"); }
-  &.hero-plsv{background-image: image-url("duanshipin-banner.jpg"); }
+  &.hero-plsv{background-image: image-url("duanshipin-banner.jpg");.middle-container{padding-top: 0.7rem;} }
 
   .container{
     position: relative;
@@ -117,6 +129,12 @@
       background-position: -520px center;
       .banner-container{
         left: 0;
+      }
+    }
+    &.hero-plsv{
+      .middle-container{padding-top: 0;}
+      .right-mask-banner{
+        padding-top: 0.8rem;
       }
     }
   }
