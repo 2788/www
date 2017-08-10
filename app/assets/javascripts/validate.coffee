@@ -1,7 +1,7 @@
 do (window, document) ->
-  tel_rule = /^1[0-9]{10}/ #手机号
+  tel_rule = /^[a-z0-9_]+(\.?[a-z0-9-_])*?@([a-zA-Z0-9]([a-zA-Z0-9\-]*?[a-zA-Z0-9])?\.)+[a-zA-Z]{2,20}$/i #手机号
   regPhone_rule = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/ #电话
-  email_rule = /[a-zA-Z0-9]{1,10}@[a-zA-Z0-9]{1,5}\.[a-zA-Z0-9]{1,5}/ # email
+  email_rule = 	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ # email
 
   # show error filed，edit class -> active
 
@@ -39,7 +39,7 @@ do (window, document) ->
         else
           return false
       when 'tel'
-        if !tel_rule.test(_value) and !regPhone_rule.test(_value)
+        if _value.length > 0 and _value.length < 8
           return true
         else
           return false
