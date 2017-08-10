@@ -39,7 +39,8 @@ do (window, document) ->
         else
           return false
       when 'tel'
-        if !tel_rule.test(_value) and !regPhone_rule.test(_value)
+        # if !tel_rule.test(_value) and !regPhone_rule.test(_value)
+        if _value.length >= 0 and _value.length < 8
           return true
         else
           return false
