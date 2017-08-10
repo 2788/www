@@ -52,44 +52,6 @@ $(document).ready ->
     $('#tab-prices-' + pre).removeClass('active')
     pre = val
 
-  #//////////////////////////////////////////////////
-  ## 控制caculator的tab
-  $('.caculatorTabs').bind 'click', (e) ->
-    id = $(this).val()
-    if $(this).attr('checked') == 'checked'
-      #点击之前是checked,所以点击之后就是false 需要隐藏section
-      $('#tab-caculator-'+id).removeClass('active')
-      $(this).removeAttr 'checked'
-      $('#pricing-info-'+id).addClass('displayNone')
-      caculatePrice(id, false)
-    else
-      $('#tab-caculator-'+id).addClass('active')
-      $(this).attr 'checked', 'checked'
-      $('#pricing-info-'+id).removeClass('displayNone')
-      caculatePrice(id, true)
-
-  #/////////////////////////////////////////////////////////
-  ## 控制fusion 第二个连动select
-  $("#fusion").change (e) ->
-    val = $(this).val()
-    if val == "inland"
-      fusionoutlandDOM.addClass("displayNone")
-      rangeFusionHTTP.attr('max', 10000000)
-      rangeFusionHTTPS.attr('max', 10000000)
-    else if fusionoutlandDOM.hasClass("displayNone")
-      fusionoutlandDOM.removeClass("displayNone")
-      rangeFusionHTTP.attr('max', 100000000)
-      rangeFusionHTTPS.attr('max', 100000000)
-    renderRange('#range-fusion-HTTP', $('#range-fusion-HTTP').val())
-    renderRange('#range-fusion-HTTPS', $('#range-fusion-HTTPS').val())
-    setPrice()
-
-  #//////////////////////////////////////////////////////////////////////
-  ## 控制标准存储 区域select-->price
-  ## 控制融合CDN select
-  $("#kodo, #fusion-outland").change (e) ->
-    setPrice()
-
   #/////////////////////////////////////////////////////////////////////
   ## 公用方法
   # fix some block
@@ -202,11 +164,33 @@ $(document).ready ->
     caculatePrice()
 
   #set Amount and then set prices
-  setAmount = (key, val) ->
-    $('#range-' + key).val(val)
-    renderRange('#range-' + key, val)
-    $('#num-' + key).val(val)
-    $('#text-' + key).text(val)
+  setAmount = (key, val, type) ->
+    max = $('#range-' + key).attr('max')
+    val = parseInt(val)
+    if type == 'range'
+      $('#range-' + key).val(val)
+      renderRange('#range-' + key, val)
+      posit = val/max * 100
+      if posit <= 50
+        @val = posit/50 * 1024
+      else if posit > 50 and posit <= 75
+        @val = (posit-50)/25 * (1024-1) * 1024 + 1024
+      else if posit > 75
+        @val = (posit-75)/25 * (10-1) * 1024 * 1024 + 1024 * 1024
+      @val = parseInt(@val)
+      $('#num-' + key).val(@val)
+      $('#text-' + key).text(@val)
+    else if type == 'number'
+      if val <= 1024
+        @val = val/1024 * (50/100) * (10 * 1024 * 1024)
+      else if val > 1024 and val <= 1024 * 1024
+        @val = [50/100 + (val-1024) * 25 / (1024 * 1023 * 100)] * 10 * 1024 * 1024
+      else if val > 1024 * 1024
+        @val = [75/100 + 25/100 * [(val - 1024 * 1024)/(10 * 1024 * 1024 - 1024 * 1024)]] * 10 * 1024 * 1024
+      @val = parseInt(@val)
+      $('#range-' + key).val(@val)
+      renderRange('#range-' + key, @val)
+      $('#text-' + key).text(@val)
     setPrice()
 
   # 容错
@@ -224,8 +208,8 @@ $(document).ready ->
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
   $('.amount-input').bind 'input', ->
-    max = Number($(this).attr('max'))
-    val = Number($(this).val())
+    max = +$(this).attr('max')
+    val = +$(this).val()
     if val > 0
       $(this).removeClass("init")
       $(this).addClass("sliding")
@@ -235,11 +219,53 @@ $(document).ready ->
     if val > max
       $(this).val(max)
     key = $(this).attr('key')
-    setAmount(key, +$(this).val())
+    type = $(this).attr('type')
+    setAmount(key, +$(this).val(), type)
 
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
   $('.input-range').each (index, item) ->
     key = $(this).attr('key')
-    setAmount(key, $(this).val())
+    type = $(this).attr('type')
+    setAmount(key, $(this).val(), type)
     return
+
+
+  #//////////////////////////////////////////////////
+  ## 控制caculator的tab
+  $('.caculatorTabs').bind 'click', (e) ->
+    id = $(this).val()
+    if $(this).attr('checked') == 'checked'
+      #点击之前是checked,所以点击之后就是false 需要隐藏section
+      $('#tab-caculator-'+id).removeClass('active')
+      $(this).removeAttr 'checked'
+      $('#pricing-info-'+id).addClass('displayNone')
+      caculatePrice(id, false)
+    else
+      $('#tab-caculator-'+id).addClass('active')
+      $(this).attr 'checked', 'checked'
+      $('#pricing-info-'+id).removeClass('displayNone')
+      caculatePrice(id, true)
+
+  #/////////////////////////////////////////////////////////
+  ## 控制fusion 第二个连动select
+  $("#fusion").change (e) ->
+    val = $(this).val()
+    if val == "inland"
+      fusionoutlandDOM.addClass("displayNone")
+      rangeFusionHTTP.attr('max', 10000000)
+      rangeFusionHTTPS.attr('max', 10000000)
+    else if fusionoutlandDOM.hasClass("displayNone")
+      fusionoutlandDOM.removeClass("displayNone")
+      rangeFusionHTTP.attr('max', 100000000)
+      rangeFusionHTTPS.attr('max', 100000000)
+    renderRange('#range-fusion-HTTP', $('#range-fusion-HTTP').val())
+    renderRange('#range-fusion-HTTPS', $('#range-fusion-HTTPS').val())
+    setPrice()
+
+  #//////////////////////////////////////////////////////////////////////
+  ## 控制标准存储 区域select-->price
+  ## 控制融合CDN select
+  $("#kodo, #fusion-outland").change (e) ->
+    setPrice()
+

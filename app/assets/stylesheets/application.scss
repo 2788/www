@@ -265,7 +265,8 @@ img.list-img{
 // ---------------------------------------------------------------------
 @media (max-width: 1024px){
   .pricing-caculator{ width: 6.30rem; }
-  input[type="range"]{ width: 70%; }
+  .range-wrapper{ width: 72%; }
+  .tip-num-wrapper{ width: 103%; }
 }
 
 
@@ -273,9 +274,10 @@ img.list-img{
   .pricing-caculator{
     width: 100%;
   }
-  input[type="range"]{
-    width: 55%;
+  .range-wrapper{
+    width: 98%;
   }
+  .tip-num-wrapper{ width: 103%; }
   .input-num{
     width: 0.9rem;
   }
