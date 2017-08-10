@@ -302,18 +302,6 @@ table.pricing-table tr th, table.pricing-table tr td{
   border: 0.01rem solid #e6eaef;
 }
 
-input[type="range"]{
-  display: inline-block;
-  margin: 0.10rem 0.10rem 0.10rem 0;
-  width: 80%;
-}
-
-.input-num{
-  width: 0.91rem;
-  color: #3b99fc;
-  outline-style: none;
-}
-
 .displayNone{
   display: none;
 }
@@ -334,6 +322,86 @@ input[type="range"]{
   top: 6.80rem;
   right: 0.68rem;
   width: 2.90rem;
+}
+
+.range-wrapper{
+  display: inline-block;
+  margin: 0;
+  padding: 0.10rem  0;
+  width: 80%;
+  font-size: 0;//delete span-inline-block-spacing
+  -webkit-text-size-adjust: none;//fix chrome
+}
+.sign-wrapper{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  padding: 0;
+  margin: 5px 0 0;
+
+  font-size: 0;//delete span-inline-block-spacing
+  -webkit-text-size-adjust: none;//fix chrome
+  .sign-span{
+    text-align: right;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+  }
+  .sign-GB{
+    width: 50%;
+  }
+  .sign-TB{
+    width: 25%;
+  }
+  .sign-PB{
+    width: 25%;
+  }
+}
+.tip-num-wrapper{
+  box-sizing: border-box;
+  width: 103%;
+  overflow: hidden;
+  padding: 0;
+  .tip-num{
+    text-align: right;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+
+    &.GB{
+      width: 50%;
+    }
+    &.TB{
+      width: 25%;
+    }
+    &.PB{
+      width: 25%;
+    }
+  }
+}
+
+input[type="range"]{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.input-num-wrapper{
+  float: right;
+  margin: 0;
+  padding: 0.10rem 0;
+  font-size: 12px;
+}
+.input-num{
+  width: 0.91rem;
+  color: #3b99fc;
+  outline-style: none;
 }
 
 .fixed-right{
