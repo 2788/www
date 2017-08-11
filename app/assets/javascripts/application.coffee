@@ -48,6 +48,8 @@ $(document).ready ->
       href += connector + ref
       $(this).prop('href', href)
 
+  $('[data-toggle="tooltip"]').tooltip()
+
   $('#index-cases-slider').slick
     dots: true
     autoplay: true
