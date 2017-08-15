@@ -37,6 +37,13 @@
         </div>
 
         <div class="form-group">
+          <label for="feedback-city" class="col-sm-2 control-label">省份<small class="text-danger">*</small></label>
+          <div class="col-sm-10" id="province_city" data-required="true">
+            <div class="col-xs-12 col-init-left"><select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select></div>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label for="feedback-phone" class="col-sm-2 control-label">联系电话<small class="text-danger">*</small></label>
           <div class="col-sm-10">
             <%= f.telephone_field :phone, class:"form-control", id:"feedback-phone", validate: true %>
