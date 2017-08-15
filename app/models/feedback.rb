@@ -7,6 +7,7 @@ class Feedback
   field :content, type: String
   field :name, type: String
   field :company, type: String
+  field :province, type: String
   field :phone, type: String
   field :email, type: String
   field :uid, type: Integer
