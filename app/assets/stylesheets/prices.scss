@@ -1,16 +1,65 @@
-.navbar-nav > li > a.caculator{
+.row-clear{
+  margin-left: 0;
+  margin-right: 0;
+}
+.setli-3width{
+  width: 100%;
+  li{
+    width: 32%;
+    margin: 10px auto;
+  }
+}
+.navbar-nav > li > a.tab-links{
   line-height: 0;
+}
+.nav.nav-tabs.nav-justified.nav-prices-links{
+  width: 360px;
+  border-bottom: 0;
+  li {
+    a{
+      padding: 10px 0;
+      border: 1px solid #e6eaef;
+      border-bottom: 0;
+      background-color: #fff;
+    }
+
+    &.active a{
+      border: 0;
+      background-color: #f6f8fa;
+    }
+
+    &.active::before{
+      height: 0;
+    }
+  }
+}
+.nav.nav-tabs.nav-justified.nav-prices-tabs{
+  width: 400px;
+  border-bottom: 0;
+  border: 1px solid #e6eaef;
+  background-color: #fff;
+  li {
+    a{
+      padding: 10px 0;
+      border: 1px solid #e6eaef;
+      background-color: #fff;
+    }
+    &.active a{
+      border: 1px solid #00a0de;
+      background-color: #e4f7ff;
+    }
+
+    &.active::before{
+      height: 0;
+    }
+  }
 }
 
 .feature-price-nav{
   margin-top: -0.30rem;
   padding-top: 0.28rem;
-  padding-bottom: 0.28rem;
+  padding-bottom: 0;
   background-color: #fff;
-
-  #pricesTabs{
-    width: 180px;
-  }
 
   .caculator{
     padding-left: 0.60rem;
@@ -224,15 +273,23 @@ table.pricing-table tr th, table.pricing-table tr td{
   }
 
   dt{
-    padding: 0.05rem 0.20rem;
+    padding: 0.05rem 0.15rem;
     background-color: rgb(234, 241, 251);
     border-bottom: 0.01rem solid #eee;
 
     font-size: 0.16rem;
     line-height: 0.32rem;
+    &.bg-init{
+      background-color: #fff;
+      border-bottom: 0;
+    }
+    &.dt-sm{
+      font-size: 0.14rem;
+      padding: 0.05rem 0.15rem;
+    }
   }
   dd{
-    padding: 0.05rem 0.20rem;
+    padding: 0.05rem 0.15rem;
   }
 
   p{
@@ -281,16 +338,32 @@ table.pricing-table tr th, table.pricing-table tr td{
   section{
     color: #2f3033;
     font-size: 0.14rem;
+    dl{
+      margin-bottom: 0;
+    }
     dt{
       font-size: 0.18rem;
       color: #97989c;
       height: 0.45rem;
-      padding: 0.10rem 0.20rem;
+      padding: 0.10rem 0.50rem;
       background-color: #f6f8fa;
       border-bottom: 0.01rem solid #e6eaef;
+      &.checkbox{
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      &.dt-lighter{
+        font-size: 0.16rem;
+        font-weight: lighter;
+        padding: 0.1rem 0.25rem;
+      }
     }
     dd{
       padding: 0.10rem 0.20rem;
+      border-bottom: 0.01rem solid #e6eaef;
+    }
+    div.active{
+      display: block;
     }
   }
 }
@@ -298,6 +371,7 @@ table.pricing-table tr th, table.pricing-table tr td{
 .caculator-sec{
   background-color: #fff;
   border: 0.01rem solid #e6eaef;
+  border-bottom: 0;
   margin-bottom: 0.50rem;
 }
 
@@ -330,12 +404,12 @@ input[type="range"]{
 }
 
 .pricing-caculator{
-  width: 8.40rem;
+  width: 8.10rem;
 }
 
 .pricing-info-wrapper{
   position: absolute;
-  top: 6.80rem;
+  top: 6.30rem;
   right: 0.68rem;
   width: 2.90rem;
 }
