@@ -106,4 +106,15 @@ module ApplicationHelper
              return nil
          end
     end
+
+    def sigin_url
+        sso_host = Rails.configuration.sso_host
+        client_id = Rails.application.secrets.sso["client_id"]
+
+        if sso_host == "" || client_id == ""
+            return "https://portal.qiniu.com/signin"
+        end
+
+        return Rails.configuration.sso_host+"?client_id="+client_id+"&redirect_path=/"
+    end
 end
