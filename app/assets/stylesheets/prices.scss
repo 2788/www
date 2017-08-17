@@ -465,3 +465,25 @@ input[type="range"]{
     }
   }
 }
+
+//displaynone <--> active
+.inland,
+.ENA,
+.Asia,
+.India,
+.SA,
+.Oceania,
+.east,
+.sourth,
+.north,
+.northAmerica{
+  display: block;
+  &.displayNone{
+    display: none;
+  }
+}
+
+//float right
+.float-right{
+  float: right;
+}

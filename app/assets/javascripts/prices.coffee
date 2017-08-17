@@ -85,18 +85,22 @@ $(document).ready ->
       caculatePrice(id, true)
 
   #//////////////////////////////////////////////////////////////////////
-  ## 控制标准存储 区域select-->price
-  ## 控制融合CDN select
-  $("#kodo, #fusion-outland").change (e) ->
-    setPrice()
+  ## 控制标准存储 区域checkbox-->price
+  ## 控制融合CDN checkbox
   $(".spacecheck").bind 'click', (e) ->
+    console.log $(this).val()
+    console.log $(this).attr('checked')
     id = $(this).val()
     area = $(this).attr('key')
     if $(this).attr('checked') == 'checked'
       #点击之前是checked,所以点击之后就是false 需要隐藏space
-      $('.'+id).removeClass('active')
       $('.'+id).addClass('displayNone')
       caculateEveryPrice area, id, false
+      $(this).removeAttr 'checked'
+    else
+      $('.'+id).removeClass('displayNone')
+      caculateEveryPrice area, id, true
+      $(this).attr 'checked', 'checked'
 
 
   #/////////////////////////////////////////////////////////////////////
@@ -142,7 +146,7 @@ $(document).ready ->
   #unify num
   unifyNum = (price_units) ->
     len = price_units.length
-    num = price_units.substring(0, len-2)
+    num = +price_units.substring(0, len-2)
     units = price_units.substr(len-2, 2)
     if num == 0
       return 0
@@ -152,11 +156,14 @@ $(document).ready ->
       return num*1024
     else if units == 'PB'
       return num*1024*1024
+    else
+      return num
 
   #set amount to price
   setPrice = (price_units,data_obj) ->
     num = unifyNum(price_units)
-    return cacuSum(num, data_obj)
+    sum = cacuSum(num, data_obj)
+    return sum
   #caculate all sum
   caculatePrice = (key, bol) ->
     sum = 0
@@ -176,23 +183,23 @@ $(document).ready ->
     if arguments.length > 0
       prices_area[pro][key] = bol
     for i of prices_area.kodo
-      if prices_area.kodo.i
+      if prices_area.kodo[i]
         #if this area is here add
-        sum_kodo += setPrice($('text-kodo-'+'space'+i).text(), kodoData[amountJSON.kodo.area]) + setPrice($('text-kodo-'+'red'+i).text(), kodoData['reads'])+ setPrice($('text-kodo-'+'red'+i).text(), kodoData['writes'])
+        sum_kodo += setPrice($('#text-kodo-space-'+i).text(), kodoData[i]) + setPrice($('#text-kodo-read-'+i).text(), kodoData['reads'])+ setPrice($('#text-kodo-write-'+i).text(), kodoData['writes'])
     for f of prices_area.fusion
-      if prices_area.fusion.f
-        sum_fusion += setPrice($('text-fusion-'+'HTTP'+f).text(),fusionData.inland.HTTPs) + setPrice($('text-fusion-'+'HTTPS'+f).text(),fusionData.inland.HTTPSs)
-    sum_lowKodo = unifyNum($('text-lowKodo-space').text())*(lowKodoData.space*1000) + unifyNum($('text-lowKodo-API').text())*(lowKodoData.APIs*1000) + unifyNum($('text-lowKodo-type').text())*(lowKodoData.types*1000) + unifyNum($('text-lowKodo-HTTP').text())*(lowKodoData.HTTPs*1000)
-
-    $('#kodo-price').text(sum_kodo)
-    $('#lowKodo-price').text(sum_lowKodo)
-    $('#fusion-price').text(sum_fusion)
+      if prices_area.fusion[f]
+        sum_fusion += setPrice($('#text-fusion-HTTP-'+f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-'+f).text(),fusionData.HTTPSs[f])
+    console.log(sum_fusion)
+    sum_lowKodo = unifyNum($('#text-lowKodo-space').text())*(lowKodoData.space*1000) + unifyNum($('#text-lowKodo-API').text())*(lowKodoData.APIs*1000) + unifyNum($('#text-lowKodo-type').text())*(lowKodoData.types*1000) + setPrice($('#text-lowKodo-HTTP').text(), lowKodoData.HTTPs)
+    $('#kodo-price').text(sum_kodo/1000)
+    $('#lowKodo-price').text(sum_lowKodo/1000)
+    $('#fusion-price').text(sum_fusion/1000)
 
     caculatePrice()
 
   #set Amount and then set prices
-  setAmount = (area, key, val) ->
-    $('#text-' + key + area).text(val)
+  setAmount = (key, val) ->
+    $('#text-' + key).text(val)
     caculateEveryPrice()
 
   # 容错
@@ -204,26 +211,25 @@ $(document).ready ->
 
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
-  $('.amount-input').bind 'input', ->
-    max = Number($(this).attr('max'))
-    val = Number($(this).val())
-    if val > 0
-      $(this).removeClass("init")
-      $(this).addClass("sliding")
-    else
-      $(this).removeClass("sliding")
-      $(this).addClass("init")
-    if val > max
-      $(this).val(max)
+  $('.input-num').bind 'input', ->
     key = $(this).attr('key')
-    setAmount(key, +$(this).val())
+    units = $(this).next().val()|| '万次'
+    val = +$(this).val() + units
+    setAmount(key, val)
+
+  #////////////////////////////////////////////////////////////////
+  ##units change
+  $("select").change (e) ->
+    units = $(this).val()
+    val = +$(this).prev().val() + units
+    key = $(this).prev().attr('key')
+    setAmount(key, val)
 
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
-  $('.input-data').each (index, item) ->
-    area = $(this).attr('key')
-    $('.input-num').each (index, item) ->
-      key = $(this).attr('key')
-      units = $(this).next().text()
-      setAmount(area,key, $(this).val()+units)
+  $('.input-num').each (index, item) ->
+    key = $(this).attr('key')
+    units = $(this).next().val() || '万次'
+    val = +$(this).val() + units
+    setAmount(key, val)
     return
