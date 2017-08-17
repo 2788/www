@@ -86,7 +86,6 @@ module ApplicationHelper
         access_token = token["access_token"]
         client_id = Rails.application.secrets.sso["client_id"]
         uri = URI.parse(Rails.configuration.sso_host+"/uinfo/session?client_id="+client_id+"&ssid="+ssid)
-        puts uri
         req = Net::HTTP::Get.new(uri)
         req["Authorization"] = "Bearer " + access_token
 
