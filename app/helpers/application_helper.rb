@@ -9,6 +9,12 @@ module ApplicationHelper
     end
 
     def get_userinfo
+        sso_host = Rails.configuration.sso_host
+        client_id = Rails.application.secrets.sso["client_id"]
+        if sso_host == "" || client_id == ""
+            return nil
+        end
+
         cookie_value = cookies[:SSID]
         if cookie_value.blank?
             return nil
