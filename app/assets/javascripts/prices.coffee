@@ -88,8 +88,6 @@ $(document).ready ->
   ## 控制标准存储 区域checkbox-->price
   ## 控制融合CDN checkbox
   $(".spacecheck").bind 'click', (e) ->
-    console.log $(this).val()
-    console.log $(this).attr('checked')
     id = $(this).val()
     area = $(this).attr('key')
     if $(this).attr('checked') == 'checked'
@@ -189,7 +187,6 @@ $(document).ready ->
     for f of prices_area.fusion
       if prices_area.fusion[f]
         sum_fusion += setPrice($('#text-fusion-HTTP-'+f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-'+f).text(),fusionData.HTTPSs[f])
-    console.log(sum_fusion)
     sum_lowKodo = unifyNum($('#text-lowKodo-space').text())*(lowKodoData.space*1000) + unifyNum($('#text-lowKodo-API').text())*(lowKodoData.APIs*1000) + unifyNum($('#text-lowKodo-type').text())*(lowKodoData.types*1000) + setPrice($('#text-lowKodo-HTTP').text(), lowKodoData.HTTPs)
     $('#kodo-price').text(sum_kodo/1000)
     $('#lowKodo-price').text(sum_lowKodo/1000)
@@ -214,6 +211,7 @@ $(document).ready ->
   $('.input-num').bind 'input', ->
     key = $(this).attr('key')
     units = $(this).next().val()|| '万次'
+    $(this).val( parseInt($(this).val()) )
     val = +$(this).val() + units
     setAmount(key, val)
 
