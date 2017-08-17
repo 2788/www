@@ -10,137 +10,363 @@
   </div>
 </div>
 
-<div class="feature-price tabs">
-  <div class="feature-price-nav" id="feature-price-nav">
-    <div class="container">
-      <div class="form" id="caculatorTabs">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="caculatorTabs" value="kodo" checked> 标准存储</input>
-          </label>
-          <label>
-            <input type="checkbox" class="caculatorTabs" value="lowKodo" checked> 低频存储</input>
-          </label>
-          <label>
-            <input type="checkbox" class="caculatorTabs" value="fusion" checked> 融合CDN</input>
-          </label>
-        </div>
-      </div>
+<div class="feature-price-nav" id="feature-price-nav">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified nav-prices-links">
+        <li><%= link_to "产品价格", prices_path, class: "tab-links" -%></li>
+        <li class="active"><%= link_to "价格计算器", caculator_path, class: "tab-links" -%></li>
+      </ul>
     </div>
   </div>
+</div>
 
-  <div class="features light-bkcolor">
+<div class="features light-bkcolor">
     <div class="container">
-      <div class="row">
+      <div class="row row-clear">
         <div class="pricing-caculator">
           <div class="tab-content pricing-details">
-            <section class="tab-pane active caculator-sec" id="tab-caculator-kodo">
+            <section class="caculator-sec">
               <dl>
-                <dt>标准存储</dt>
-                <dd>
-                  <ul class="list-inline">
-                    <li><span>存储区域</span></li>
-                    <li>
-                      <select class="select-lg" name="kodo" id="kodo">
-                        <option value="east">华东</option>
-                        <option value="sourth">华南</option>
-                        <option value="north">华北</option>
-                        <option value="northAmerica">北美</option>
-                      </select>
-                    </li>
-                  </ul>
-                </dd>
-                <dd>
-                  <h5>存储空间</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-kodo-space" key="kodo-space">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-kodo-space" key="kodo-space">
-                  <span>GB/月</span>
-                </dd>
-                <dd>
-                  <h5>GET 读请求数</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-kodo-read" key="kodo-read">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-kodo-read" key="kodo-read">
-                  <span>万次/月</span>
-                </dd>
-                <dd>
-                  <h5>PUT/DELET 写请求数</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-kodo-write" key="kodo-write">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-kodo-write" key="kodo-write">
-                  <span>万次/月</span>
-                </dd>
+                <dt class="checkbox"><input type="checkbox" class="caculatorTabs" value="kodo" checked> 标准存储</input></dt>
+                <div class="active" id="tab-caculator-kodo">
+                  <dd>
+                    <ul class="list-inline">
+                      <li><span>存储区域</span></li>
+                      <li>
+                        <ul class="kodo-checkbox list-inline" id="kodo-checkbox">
+                          <li><input type="checkbox" value="east" checked class="spacecheck" key="kodo">华东</input></li>
+                          <li><input type="checkbox" value="sourth" class="spacecheck" key="kodo">华南</input></li>
+                          <li><input type="checkbox" value="north" class="spacecheck" key="kodo">华北</input></li>
+                          <li><input type="checkbox" value="northAmerica" class="spacecheck" key="kodo">北美</input></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </dd>
+                  <dl id="data-east" class="east input-data" key="east">
+                    <dt class="dt-lighter">华东</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>存储空间/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-east">
+                          <select name="kodo-space-measure" id="kodo-space-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>GET 读请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-east">
+                          <span value="万次">万次</span>
+                        </li>
+                        <li>
+                          <h5>PUT/DELET 写请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-east">
+                          <span>万次</span>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-sourth" class="sourth displayNone input-data" key="sourth">
+                    <dt class="dt-lighter">华南</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>存储空间/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-sourth">
+                          <select name="kodo-space-measure" id="kodo-space-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>GET 读请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-sourth">
+                          <span>万次</span>
+                        </li>
+                        <li>
+                          <h5>PUT/DELET 写请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-sourth">
+                          <span>万次</span>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-north" class="north displayNone input-data" key="north">
+                    <dt class="dt-lighter">华北</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>存储空间/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-north">
+                          <select name="kodo-space-measure" id="kodo-space-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>GET 读请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-north">
+                          <span>万次</span>
+                        </li>
+                        <li>
+                          <h5>PUT/DELET 写请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-north">
+                          <span>万次</span>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-northAmerica" class="northAmerica displayNone input-data" key="northAmerica">
+                    <dt class="dt-lighter">北美</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>存储空间/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-northAmerica">
+                          <select name="kodo-space-measure" id="kodo-space-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>GET 读请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-northAmerica">
+                          <span>万次</span>
+                        </li>
+                        <li>
+                          <h5>PUT/DELET 写请求数/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-northAmerica">
+                          <span>万次</span>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+
+                </div>
               </dl>
             </section>
 
-            <section class="tab-pane active caculator-sec" id="tab-caculator-lowKodo">
+            <section class="caculator-sec">
               <dl>
-                <dt>低频存储</dt>
-                <dd>
-                  <h5>存储空间</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-lowKodo-space" key="lowKodo-space">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-lowKodo-space" key="lowKodo-space">
-                  <span>GB/月</span>
-                </dd>
-                <dd>
-                  <h5>API请求数 (GET/PUT)</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-lowKodo-API" key="lowKodo-API">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-lowKodo-API" key="lowKodo-API">
-                  <span>万次/月</span>
-                </dd>
-                <dd>
-                  <h5>存储类型转换</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-lowKodo-type" key="lowKodo-type">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-lowKodo-type" key="lowKodo-type">
-                  <span>万次/月</span>
-                </dd>
-                <dd>
-                  <h5>读取流量(HTTP)</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-lowKodo-HTTP" key="lowKodo-HTTP">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
-                  <span>GB/月</span>
-                </dd>
+                <dt class="checkbox"><input type="checkbox" class="caculatorTabs" value="lowKodo" checked> 低频存储</input></dt>
+                <div class="active" id="tab-caculator-lowKodo">
+                  <dd>
+                    <ul class="list-inline setli-3width input-data" key="">
+                      <li>
+                        <h5>存储空间/月</h5>
+                        <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-space" key="lowKodo-space">
+                        <select name="lowKodo-space-measure" id="lowKodo-space-measure">
+                          <option value="GB">GB</option>
+                          <option value="TB">TB</option>
+                          <option value="PB">PB</option>
+                        </select>
+                      </li>
+                      <li>
+                        <h5>API请求数 (GET/PUT) /月</h5>
+                        <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-API" key="lowKodo-API">
+                        <span>万次</span>
+                      </li>
+                      <li>
+                        <h5>存储类型转换/月</h5>
+                        <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-type" key="lowKodo-type">
+                        <span>万次</span>
+                      </li>
+                      <li>
+                        <h5>读取流量(HTTP) /月</h5>
+                        <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
+                        <select name="lowKodo-HTTP-measure" id="lowKodo-HTTP-measure">
+                          <option value="GB">GB</option>
+                          <option value="TB">TB</option>
+                          <option value="PB">PB</option>
+                        </select>
+                      </li>
+                    </ul>
+                  </dd>
+                </div>
               </dl>
             </section>
 
-            <section class="tab-pane active caculator-sec-last" id="tab-caculator-fusion">
+            <section class="caculator-sec-last">
               <dl>
-                <dt>融合CDN</dt>
-                <dd id="fusion-area-select">
-                  <ul class="list-inline">
-                    <li><span>区域</span></li>
-                    <li>
-                      <select class="select-lg" name="fusion" id="fusion">
-                        <option value="outland">海外</option>
-                        <option value="inland">国内</option>
-                      </select>
-                    </li>
-                    <li>
-                      <select class="select-lg" name="fusion-outland" id="fusion-outland">
-                        <option value="ENA">欧洲/北美洲</option>
-                        <option value="Asia">亚洲（除中国/印度/东南亚）</option>
-                        <option value="India">亚洲（东南亚/印度）</option>
-                        <option value="SA">南美洲</option>
-                        <option value="Oceania">大洋洲与其他</option>
-                      </select>
-                    </li>
-                  </ul>
-                </dd>
-                <dd>
-                  <h5>HTTP 下载流量</h5>
-                  <input type="range" value="0" min="0" max="10000000" step="1" class="input-range amount-input init" id="range-fusion-HTTP" key="fusion-HTTP">
-                  <input type="number" class="input-num amount-input" min="0" max="10000000" id="num-fusion-HTTP" key="fusion-HTTP">
-                  <span class="fusion-unit">GB/月</span>
-                </dd>
-                <dd>
-                  <h5>HTTPS 下载流量</h5>
-                  <input type="range" value="0" min="0" max="100000000" step="1" class="input-range amount-input init" id="range-fusion-HTTPS" key="fusion-HTTPS">
-                  <input type="number" class="input-num amount-input" min="0" max="100000000" id="num-fusion-HTTPS" key="fusion-HTTPS">
-                  <span class="fusion-unit">GB/月</span>
-                </dd>
+                <dt class="checkbox"><input type="checkbox" class="caculatorTabs" value="fusion" checked> 融合 CDN</input></dt>
+                <div class="active" id="tab-caculator-fusion">
+                  <dd id="fusion-area-select">
+                    <ul class="list-inline">
+                      <li><span>区域</span></li>
+                      <li>
+                        <ul class="fusion-checkbox list-inline" id="fusion-checkbox">
+                          <li><input type="checkbox" value="inland" class="spacecheck" key="fusion" checked>国内</input></li>
+                          <li><input type="checkbox" value="ENA" class="spacecheck" key="fusion">欧洲/北美洲</input></li>
+                          <li><input type="checkbox" value="Asia" class="spacecheck" key="fusion">亚洲（除中国/印度/东南亚）</input></li>
+                          <li><input type="checkbox" value="India" class="spacecheck" key="fusion">亚洲（东南亚/印度）</input></li>
+                          <li><input type="checkbox" value="SA" class="spacecheck" key="fusion">南美洲</input></li>
+                          <li><input type="checkbox" value="Oceania" class="spacecheck" key="fusion">大洋洲与其他</input></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </dd>
+                  <dl id="data-inland" class="inland input-data" key="inland">
+                    <dt class="dt-lighter">国内</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>HTTP 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-inland">
+                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>HTTPS 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-inland">
+                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-ENA" class="ENA displayNone input-data" key="ENA">
+                    <dt class="dt-lighter">欧洲/北美洲</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>HTTP 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-ENA">
+                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>HTTPS 下载流量 /月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-ENA">
+                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-Asia" class="Asia displayNone input-data" key="Asia">
+                    <dt class="dt-lighter">亚洲（除中国/印度/东南亚）</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>HTTP 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-Asia">
+                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>HTTPS 下载流量 /月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-Asia">
+                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-India" class="India displayNone input-data" key="India">
+                    <dt class="dt-lighter">亚洲（东南亚/印度）</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>HTTP 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-India">
+                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>HTTPS 下载流量 /月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-India">
+                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-SA" class="SA displayNone input-data" key="SA">
+                    <dt class="dt-lighter">南美洲</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>HTTP 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-SA">
+                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>HTTPS 下载流量 /月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-SA">
+                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                  <dl id="data-Oceania" class="Oceania displayNone input-data" key="Oceania">
+                    <dt class="dt-lighter">大洋洲与其他</dt>
+                    <dd>
+                      <ul class="list-inline setli-3width">
+                        <li>
+                          <h5>HTTP 下载流量/月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-Oceania">
+                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                        <li>
+                          <h5>HTTPS 下载流量 /月</h5>
+                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-Oceania">
+                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                            <option value="PB">PB</option>
+                          </select>
+                        </li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
               </dl>
             </section>
           </div>
         </div>
-        <div class="pricing-info-wrapper" id="pricing-info">
+        <div class="pricing-info-wrapper">
           <div class="pricing-info">
             <dl>
               <dt>价格预算清单</dt>
@@ -149,21 +375,78 @@
                   <li>标准存储</li>
                   <li class="price">￥<span id="kodo-price">0</span></li>
                 </ul>
-                <p id="kodo-details"><span id="text-kodo-space" key="kodo-space"></span>GB/月，<span id="text-kodo-read" key="kodo-read"></span>万次/月读请求，<span id="text-kodo-write" key="kodo-write"></span>万次/月写请求</p>
+                <dl class="east">
+                  <dt class="bg-init dt-sm">华东</dt>
+                  <dd><span>存储空间/月</span><span class="float-right" id="text-kodo-space-east" key="kodo-space-east"></span></dd>
+                  <dd><span>GET 读请求数/月</span><span class="float-right" id="text-kodo-read-east" key="kodo-read-east"></span></dd>
+                  <dd><span>PUT/DELET 写请求数/月</span><span class="float-right" id="text-kodo-write-east" key="kodo-write-east"></span></dd>
+                </dl>
+                <dl class="sourth displayNone">
+                  <dt class="bg-init dt-sm">华南</dt>
+                  <dd><span>存储空间/月</span><span class="float-right" id="text-kodo-space-sourth" key="kodo-space-sourth"></span></dd>
+                  <dd><span>GET 读请求数/月</span><span class="float-right" id="text-kodo-read-sourth" key="kodo-read-sourth"></span></dd>
+                  <dd><span>PUT/DELET 写请求数/月</span><span class="float-right" id="text-kodo-write-sourth" key="kodo-write-sourth"></span></dd>
+                </dl>
+                <dl class="north displayNone">
+                  <dt class="bg-init dt-sm">华北</dt>
+                  <dd><span>存储空间/月</span><span class="float-right" id="text-kodo-space-north" key="kodo-space-north"></span></dd>
+                  <dd><span>GET 读请求数/月</span><span class="float-right" id="text-kodo-read-north" key="kodo-read-north"></span></dd>
+                  <dd><span>PUT/DELET 写请求数/月</span><span class="float-right" id="text-kodo-write-north" key="kodo-write-north"></span></dd>
+                </dl>
+                <dl class="northAmerica displayNone">
+                  <dt class="bg-init dt-sm">北美</dt>
+                  <dd><span>存储空间/月</span><span class="float-right" id="text-kodo-space-northAmerica" key="kodo-space-northAmerica"></span></dd>
+                  <dd><span>GET 读请求数/月</span><span class="float-right" id="text-kodo-read-northAmerica" key="kodo-read-northAmerica"></span></dd>
+                  <dd><span>PUT/DELET 写请求数/月</span><span class="float-right" id="text-kodo-write-northAmerica" key="kodo-write-northAmerica"></span></dd>
+                </dl>
               </dd>
               <dd id="pricing-info-lowKodo">
                 <ul class="pricing-info-details">
                   <li>低频存储</li>
                   <li class="price">￥<span id="lowKodo-price">0</span></li>
                 </ul>
-                <p id="lowKodo-details"><span id="text-lowKodo-space" key="lowKodo-space"></span>GB/月，<span id="text-lowKodo-API" key="lowKodo-API"></span>万次 API 请求，<span id="text-lowKodo-type" key="lowKodo-type"></span>万次存储类型装换，<span id="text-lowKodo-HTTP" key="lowKodo-HTTP"></span>GB的HTTP读取</p>
+                <dl>
+                  <dd><span>存储空间/月</span><span class="float-right" id="text-lowKodo-space" key="lowKodo-space"></span></dd>
+                  <dd><span>API请求数 (GET/PUT) /月</span><span class="float-right" id="text-lowKodo-API" key="lowKodo-API"></span></dd>
+                  <dd><span>存储类型转换/月</span><span class="float-right" id="text-lowKodo-type" key="lowKodo-type"></span></dd>
+                  <dd><span>读取流量(HTTP) /月</span><span class="float-right" id="text-lowKodo-HTTP" key="lowKodo-HTTP"></span></dd>
+                </dl>
               </dd>
               <dd id="pricing-info-fusion">
                 <ul class="pricing-info-details">
                   <li>融合CDN</li>
                   <li class="price">￥<span id="fusion-price">0</span></li>
                 </ul>
-                <p id="fusion-details">HTTP 下载流量 <span id="text-fusion-HTTP" key="fusion-HTTP"></span><span class="fusion-unit">GB</span>，HTTPS 下载流量<span id="text-fusion-HTTPS" key="fusion-HTTPS"></span><span class="fusion-unit">GB</span></p>
+                <dl class="inland">
+                  <dt class="bg-init dt-sm">国内</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-inland" key="fusion-HTTP-inland"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-inland" key="fusion-HTTPS-inland"></span></dd>
+                </dl>
+                <dl class="ENA displayNone">
+                  <dt class="bg-init dt-sm">欧洲/北美洲</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-ENA" key="fusion-HTTP-ENA"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-ENA" key="fusion-HTTPS-ENA"></span></dd>
+                </dl>
+                <dl class="Asia displayNone">
+                  <dt class="bg-init dt-sm">亚洲（除中国/印度/东南亚）</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-Asia" key="fusion-HTTP-Asia"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-Asia" key="fusion-HTTPS-Asia"></span></dd>
+                </dl>
+                <dl class="India displayNone">
+                  <dt class="bg-init dt-sm">亚洲（东南亚/印度）</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-India" key="fusion-HTTP-India"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-India" key="fusion-HTTPS-India"></span></dd>
+                </dl>
+                <dl class="SA displayNone">
+                  <dt class="bg-init dt-sm">南美洲</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-SA" key="fusion-HTTP-SA"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-SA" key="fusion-HTTPS-SA"></span></dd>
+                </dl>
+                <dl class="Oceania displayNone">
+                  <dt class="bg-init dt-sm">大洋洲与其他</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-Oceania" key="fusion-HTTP-Oceania"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-Oceania" key="fusion-HTTPS-Oceania"></span></dd>
+                </dl>
               </dd>
               <dd class="sum">
                 <p class="sum"><span>合计： ￥</span><span id="sum-price">0</span><span> / 月</span></p>
@@ -173,6 +456,4 @@
         </div>
       </div>
     </div>
-  </div>
-
 </div>

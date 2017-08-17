@@ -11,22 +11,27 @@
   </div>
 </div>
 
-<div class="feature-price tabs">
-  <div class="feature-price-nav" id="feature-price-nav">
-    <div class="container">
-      <div>
-        <select role="tablist" id="pricesTabs">
-          <option value="kodo">对象存储</option>
-          <option value="fusion">融合 CDN</option>
-          <option value="dora">智能多媒体 API</option>
-        </select>
-        <%= link_to "价格计算器", caculator_path, class: "caculator" -%>
-      </div>
+<div class="feature-price-nav" id="feature-price-nav">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified nav-prices-links">
+        <li class="active"><%= link_to "产品价格", prices_path, class: "tab-links" -%></li>
+        <li><%= link_to "价格计算器", caculator_path, class: "tab-links" -%></li>
+      </ul>
     </div>
   </div>
+</div>
 
+<div class="feature-price">
   <div class="features light-bkcolor">
     <div class="container">
+      <div class="tabs">
+        <ul class="nav nav-tabs nav-justified nav-prices-tabs" role="tablist">
+          <li class="tab-prices-kodo"><a href="#tab-prices-kodo" data-toggle="tab" key="kodo">对象存储</a></li>
+          <li class="tab-prices-fusion"><a href="#tab-prices-fusion" data-toggle="tab" key="fusion">融合 CDN</a></li>
+          <li class="tab-prices-dora"><a href="#tab-prices-dora" data-toggle="tab" key="dora">智能多媒体 API</a></li>
+        </ul>
+      </div>
       <div class="tab-content">
         <section class="tab-pane" id="tab-prices-kodo">
           <div class="tab-content-caculating">

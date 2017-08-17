@@ -144,6 +144,10 @@ div.form-wrapper{
         padding-left: 0;
       }
 
+      .col-init-right{
+        padding-right: 0;
+      }
+
       label{
         padding-left: 0;
         padding-right: 0;
@@ -264,7 +268,7 @@ img.list-img{
 // Responsive
 // ---------------------------------------------------------------------
 @media (max-width: 1024px){
-  .pricing-caculator{ width: 6.30rem; }
+  .pricing-caculator{ width: 6.0rem; }
   input[type="range"]{ width: 70%; }
 }
 
