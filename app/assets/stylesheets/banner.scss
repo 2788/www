@@ -156,12 +156,15 @@
       }
     }
   }
-}
-
-@media (max-width: 767px){
   .jumbotron.hero .banner-desc-right {
     left: 0;
     text-align: center;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 426px){
+  .jumbotron.hero .banner-desc-right {
+    left: 50%;
   }
 }
 
