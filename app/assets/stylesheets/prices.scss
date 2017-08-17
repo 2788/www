@@ -89,6 +89,8 @@
     color: rgb(47, 48, 51);
   }
   .row.details{
+    margin-left: 0;
+    margin-right: 0;
     background-color: #fff;
     padding: 0.35rem;
     // margin-left: 0;
@@ -486,4 +488,11 @@ input[type="range"]{
 //float right
 .float-right{
   float: right;
+}
+
+.fusion-checkbox,
+.kodo-checkbox{
+  label{
+    margin-left: 0.1rem;
+  }
 }
