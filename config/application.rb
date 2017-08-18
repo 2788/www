@@ -42,6 +42,8 @@ module Official
 
     config.exceptions_app = self.routes
 
+    config.action_dispatch.default_headers.merge!({'X-Frame-Options' => 'Allow-From https://hm.baidu.com'})
+
     config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
