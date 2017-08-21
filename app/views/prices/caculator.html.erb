@@ -34,11 +34,11 @@
                     <ul class="list-inline">
                       <li><span>存储区域</span></li>
                       <li>
-                        <ul class="kodo-checkbox list-inline" id="kodo-checkbox">
-                          <li><input type="checkbox" value="east" checked class="spacecheck" key="kodo"><label>华东</label></li>
-                          <li><input type="checkbox" value="sourth" class="spacecheck" key="kodo"><label>华南</label></li>
-                          <li><input type="checkbox" value="north" class="spacecheck" key="kodo"><label>华北</label></li>
-                          <li><input type="checkbox" value="northAmerica" class="spacecheck" key="kodo"><label>北美</label></li>
+                        <ul class="kodo-checkbox area-select" id="kodo-checkbox">
+                          <li><input type="checkbox" value="east" checked class="spacecheck" key="kodo" id="east-kodo-checkbox"><label for="east-kodo-checkbox">华东</label></li>
+                          <li><input type="checkbox" value="sourth" class="spacecheck" key="kodo" id="sourth-kodo-checkbox"><label for="sourth-kodo-checkbox">华南</label></li>
+                          <li><input type="checkbox" value="north" class="spacecheck" key="kodo" id="north-kodo-checkbox"><label for="north-kodo-checkbox">华北</label></li>
+                          <li><input type="checkbox" value="northAmerica" class="spacecheck" key="kodo" id="na-kodo-checkbox"><label for="na-kodo-checkbox">北美</label></li>
                         </ul>
                       </li>
                     </ul>
@@ -46,105 +46,177 @@
                   <dl id="data-east" class="east input-data" key="east">
                     <dt class="dt-lighter">华东</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>存储空间/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-east">
-                          <select name="kodo-space-measure" id="kodo-space-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>GET 读请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-east">
-                          <span value="万次">万次</span>
-                        </li>
-                        <li>
-                          <h5>PUT/DELET 写请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-east">
-                          <span>万次</span>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-4 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-space" key="kodo-space-east">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">GET 读请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-read" key="kodo-read-east">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">PUT/DELET 写请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-east">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-sourth" class="sourth displayNone input-data" key="sourth">
                     <dt class="dt-lighter">华南</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>存储空间/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-sourth">
-                          <select name="kodo-space-measure" id="kodo-space-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>GET 读请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-sourth">
-                          <span>万次</span>
-                        </li>
-                        <li>
-                          <h5>PUT/DELET 写请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-sourth">
-                          <span>万次</span>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-4 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-space" key="kodo-space-sourth">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GB <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a>GB</a></li>
+                                <li><a>TB</a></li>
+                                <li><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">GET 读请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-read" key="kodo-read-sourth">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GB <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a>GB</a></li>
+                                <li><a>TB</a></li>
+                                <li><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">PUT/DELET 写请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-sourth">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-north" class="north displayNone input-data" key="north">
                     <dt class="dt-lighter">华北</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>存储空间/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-north">
-                          <select name="kodo-space-measure" id="kodo-space-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>GET 读请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-north">
-                          <span>万次</span>
-                        </li>
-                        <li>
-                          <h5>PUT/DELET 写请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-north">
-                          <span>万次</span>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-4 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-space" key="kodo-space-north">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">GET 读请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-read" key="kodo-read-north">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">PUT/DELET 写请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-north">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-northAmerica" class="northAmerica displayNone input-data" key="northAmerica">
                     <dt class="dt-lighter">北美</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>存储空间/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-space" key="kodo-space-northAmerica">
-                          <select name="kodo-space-measure" id="kodo-space-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>GET 读请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-read" key="kodo-read-northAmerica">
-                          <span>万次</span>
-                        </li>
-                        <li>
-                          <h5>PUT/DELET 写请求数/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-kodo-write" key="kodo-write-northAmerica">
-                          <span>万次</span>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-4 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-space" key="kodo-space-northAmerica">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">GET 读请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-read" key="kodo-read-northAmerica">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 m-b">
+                          <label for="">PUT/DELET 写请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-northAmerica">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
 
@@ -157,7 +229,55 @@
                 <dt class="checkbox"><input type="checkbox" class="caculatorTabs" value="lowKodo" checked><label>低频存储</label></dt>
                 <div class="active" id="tab-caculator-lowKodo">
                   <dd>
-                    <ul class="list-inline setli-3width input-data" key="">
+                    <div class="row m-t-sm">
+                      <div class="col-lg-3 col-sm-6 m-b">
+                        <label for="">存储空间/月</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="lowKodo-space">
+                          <div class="input-group-btn unit-select" val="GB">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li val="GB"><a>GB</a></li>
+                              <li val="TB"><a>TB</a></li>
+                              <li val="PB"><a>PB</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 m-b">
+                        <label for="">API请求数 (GET/PUT) /月</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="lowKodo-API">
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-default">万次</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 m-b">
+                        <label for="">存储类型转换/月</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="lowKodo-type">
+                          <div class="input-group-btn">
+                            <button type="button" class="btn btn-default">万次</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 m-b">
+                        <label for="">存储类型转换/月</label>
+                        <div class="input-group">
+                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
+                          <div class="input-group-btn unit-select" val="GB">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                              <li val="GB"><a>GB</a></li>
+                              <li val="TB"><a>TB</a></li>
+                              <li val="PB"><a>PB</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <%#<ul class="list-inline setli-3width input-data" key="">
                       <li>
                         <h5>存储空间/月</h5>
                         <input type="number" class="input-num amount-input" min="0" id="num-lowKodo-space" key="lowKodo-space">
@@ -186,7 +306,7 @@
                           <option value="PB">PB</option>
                         </select>
                       </li>
-                    </ul>
+                    </ul>%>
                   </dd>
                 </div>
               </dl>
@@ -200,11 +320,12 @@
                     <ul class="list-inline">
                       <li><span>区域</span></li>
                       <li>
-                        <ul class="fusion-checkbox list-inline" id="fusion-checkbox">
-                          <li><input type="checkbox" value="inland" class="spacecheck" key="fusion" checked><label>国内</label></li>
+                        <ul class="fusion-checkbox area-select" id="fusion-checkbox">
+                          <li><input type="checkbox" value="inland" class="spacecheck" key="fusion" checked><label>大陆地区</label></li>
+                          <li><input type="checkbox" value="outland" class="spacecheck" key="fusion"><label>港澳台</label></li>
                           <li><input type="checkbox" value="ENA" class="spacecheck" key="fusion"><label>欧洲/北美洲</label></li>
-                          <li><input type="checkbox" value="Asia" class="spacecheck" key="fusion"><label>亚洲（除中国/印度/东南亚）</label></li>
                           <li><input type="checkbox" value="India" class="spacecheck" key="fusion"><label>亚洲（东南亚/印度）</label></li>
+                          <li><input type="checkbox" value="Asia" class="spacecheck" key="fusion"><label>亚洲（其他地区）</label></li>
                           <li><input type="checkbox" value="SA" class="spacecheck" key="fusion"><label>南美洲</label></li>
                           <li><input type="checkbox" value="Oceania" class="spacecheck" key="fusion"><label>大洋洲与其他</label></li>
                         </ul>
@@ -212,153 +333,248 @@
                     </ul>
                   </dd>
                   <dl id="data-inland" class="inland input-data" key="inland">
-                    <dt class="dt-lighter">国内</dt>
+                    <dt class="dt-lighter">大陆地区</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>HTTP 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-inland">
-                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>HTTPS 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-inland">
-                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-inland">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-inland">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl id="data-outland" class="outland displayNone input-data" key="outland">
+                    <dt class="dt-lighter">港澳台</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-outland">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-outland">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-ENA" class="ENA displayNone input-data" key="ENA">
                     <dt class="dt-lighter">欧洲/北美洲</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>HTTP 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-ENA">
-                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>HTTPS 下载流量 /月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-ENA">
-                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-ENA">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-ENA">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-Asia" class="Asia displayNone input-data" key="Asia">
                     <dt class="dt-lighter">亚洲（除中国/印度/东南亚）</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>HTTP 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-Asia">
-                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>HTTPS 下载流量 /月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-Asia">
-                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-Asia">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-Asia">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-India" class="India displayNone input-data" key="India">
                     <dt class="dt-lighter">亚洲（东南亚/印度）</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>HTTP 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-India">
-                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>HTTPS 下载流量 /月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-India">
-                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-India">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-India">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-SA" class="SA displayNone input-data" key="SA">
                     <dt class="dt-lighter">南美洲</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>HTTP 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-SA">
-                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>HTTPS 下载流量 /月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-SA">
-                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-SA">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-SA">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                   <dl id="data-Oceania" class="Oceania displayNone input-data" key="Oceania">
                     <dt class="dt-lighter">大洋洲与其他</dt>
                     <dd>
-                      <ul class="list-inline setli-3width">
-                        <li>
-                          <h5>HTTP 下载流量/月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTP" key="fusion-HTTP-Oceania">
-                          <select name="fusion-HTTP-measure" id="fusion-HTTP-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                        <li>
-                          <h5>HTTPS 下载流量 /月</h5>
-                          <input type="number" class="input-num amount-input" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-Oceania">
-                          <select name="fusion-HTTPS-measure" id="fusion-HTTPS-measure">
-                            <option value="GB">GB</option>
-                            <option value="TB">TB</option>
-                            <option value="PB">PB</option>
-                          </select>
-                        </li>
-                      </ul>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTP 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-Oceania">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6 m-b">
+                          <label for="">HTTPS 下载流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-Oceania">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </dd>
                   </dl>
                 </div>
@@ -418,9 +634,14 @@
                   <li class="price">￥<span id="fusion-price">0</span></li>
                 </ul>
                 <dl class="inland">
-                  <dt class="bg-init dt-sm">国内</dt>
+                  <dt class="bg-init dt-sm">大陆地区</dt>
                   <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-inland" key="fusion-HTTP-inland"></span></dd>
                   <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-inland" key="fusion-HTTPS-inland"></span></dd>
+                </dl>
+                <dl class="outland displayNone">
+                  <dt class="bg-init dt-sm">港澳台</dt>
+                  <dd><span>HTTP 下载流量 /月</span><span class="float-right" id="text-fusion-HTTP-outland" key="fusion-HTTP-outland"></span></dd>
+                  <dd><span>HTTPS 下载流量 /月</span><span class="float-right" id="text-fusion-HTTPS-outland" key="fusion-HTTPS-outland"></span></dd>
                 </dl>
                 <dl class="ENA displayNone">
                   <dt class="bg-init dt-sm">欧洲/北美洲</dt>

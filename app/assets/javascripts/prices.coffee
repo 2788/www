@@ -58,7 +58,7 @@ $(document).ready ->
   pre = source || 'kodo';
   $('#tab-prices-' + pre).addClass('active')
   $('.tab-prices-' + pre).addClass('active')
-  $('.nav-prices a').click (e) ->
+  $('.nav-prices-tabs a').click (e) ->
     e.preventDefault()
     $(this).tab 'show'
     val = $(this).attr('key')
@@ -210,8 +210,8 @@ $(document).ready ->
   ## the entrance of all events
   $('.input-num').bind 'input', ->
     key = $(this).attr('key')
-    units = $(this).next().val()|| '万次'
-    $(this).val( parseInt($(this).val()) )
+    units = $(this).next().attr('val') || '万次'
+    $(this).val( parseInt($(this).val()) | 0 )
     val = +$(this).val() + units
     setAmount(key, val)
 
@@ -223,11 +223,21 @@ $(document).ready ->
     key = $(this).prev().attr('key')
     setAmount(key, val)
 
+  $('.unit-select li').click (e) ->
+    $p = $(this).parents('.unit-select')
+    units = $(this).attr('val')
+    input = $p.prev()
+    val = +input.val() + units
+    key = input.attr('key')
+    $p.attr('val', units)
+    $p.find('.unit-txt').text(units)
+    setAmount(key, val)
+
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
   $('.input-num').each (index, item) ->
     key = $(this).attr('key')
-    units = $(this).next().val() || '万次'
+    units = $(this).next().attr('val') || '万次'
     val = +$(this).val() + units
     setAmount(key, val)
     return

@@ -25,7 +25,7 @@
 <div class="feature-price">
   <div class="features light-bkcolor">
     <div class="container">
-      <div class="tabs">
+      <div class="tabs" id="nav-product">
         <ul class="nav nav-tabs nav-justified nav-prices-tabs" role="tablist">
           <li class="tab-prices-kodo"><a href="#tab-prices-kodo" data-toggle="tab" key="kodo">对象存储</a></li>
           <li class="tab-prices-fusion"><a href="#tab-prices-fusion" data-toggle="tab" key="fusion">融合 CDN</a></li>
@@ -275,38 +275,70 @@
               <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                 <tbody>
                   <tr class="light-bkcolor">
-                    <th width="270" class="thead-title th-init border-bottom">国内</th>
+                    <th width="160" class="thead-title th-init border-bottom">国内</th>
+                    <td class="border-bottom"></td>
+                    <td class="border-bottom"></td>
                     <td class="border-bottom"></td>
                     <td class="border-bottom"></td>
                   </tr>
                   <tr>
-                    <th width="340" class="border-right">名目</th><th width="360" class="th-init">阶梯</th><th class="th-init">价格</th>
+                    <th width="160" class="border-right">名目</th><th width="180" class="th-init">流量阶梯/每月</th><th class="th-init">大陆地区</th><th width="180" class="th-init">流量阶梯/每月</th><th class="th-init">港澳台</th>
                   </tr>
                   <tr>
-                    <th rowspan="3" class="border-right">HTTP 下载流量</th>
+                    <th rowspan="5" class="border-right">HTTP 下载流量</th>
+                    <td class="light-bkcolor">第 0 GB 至 10 GB</td>
+                    <td class="light-bkcolor">免费</td>
                     <td class="light-bkcolor">第 0 GB 至 10 GB</td>
                     <td class="light-bkcolor">免费</td>
                   </tr>
                   <tr>
                     <td>第 10 GB 至 100 TB</td>
                     <td>0.29 元/GB</td>
+                    <td>第 10 GB 至 10 TB</td>
+                    <td>0.76 元/GB</td>
                   </tr>
                   <tr class="light-bkcolor">
                     <td>第 100 TB 以上</td>
                     <td>0.26 元/GB</td>
+                    <td>第 10 TB 至 50 TB</td>
+                    <td>0.66 元/GB</td>
                   </tr>
                   <tr>
-                    <th rowspan="3" class="th-init border-right">HTTPS 下载流量</th>
-                    <td>第 0 GB 至 10 TB  (含)</td>
+                    <td></td>
+                    <td></td>
+                    <td>第 50 TB 至 100 TB</td>
+                    <td>0.57 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td></td>
+                    <td></td>
+                    <td>第 100 TB 以上</td>
+                    <td>请联系我们</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="4" class="th-init border-right">HTTPS 下载流量</th>
+                    <td>第 0 GB 至 10 TB</td>
                     <td>0.36 元/GB</td>
+                    <td>第 0 GB 至 10 TB</td>
+                    <td>0.91 元/GB</td>
                   </tr>
                   <tr class="light-bkcolor">
-                    <td>第 10 TB 至 100 TB (含)</td>
+                    <td>第 10 TB 至 100 TB</td>
                     <td>0.32 元/GB</td>
+                    <td>第 10 TB 至 50 TB</td>
+                    <td>0.79 元/GB</td>
                   </tr>
                   <tr>
                     <td>第 100 TB 以上</td>
                     <td>0.26 元/GB</td>
+                    <td>第 50 TB 至 100 TB</td>
+                    <td>0.68 元/GB</td>
+                  </tr>
+                  <tr class="light-bkcolor">
+                    <td></td>
+                    <td></td>
+                    <td>第 100 TB 以上</td>
+                    <td>请联系我们</td>
                   </tr>
                 </tbody>
               </table>
@@ -327,8 +359,8 @@
                     <th width="180" class="border-right">名目</th>
                     <th width="180" class="th-init">流量阶梯<span class="grey-unit">/每月</span></th>
                     <th class="th-init">欧洲/北美洲</th>
-                    <th class="th-init">亚洲<p class="grey-unit th-p">（除中国/印度/东南亚）</p></th>
                     <th class="th-init">亚洲<p class="grey-unit th-p"> （东南亚/印度）</p></th>
+                    <th class="th-init">亚洲<p class="grey-unit th-p">（其他地区）</p></th>
                     <th class="th-init">南美洲</th>
                     <th class="th-init">大洋洲与其他</th>
                   </tr>
@@ -340,24 +372,24 @@
                   <tr>
                     <td>第 10 GB 至 10 TB</td>
                     <td>0.34 元/GB</td>
-                    <td>0.50 元/GB</td>
                     <td>0.76 元/GB</td>
+                    <td>0.50 元/GB</td>
                     <td>0.76 元/GB</td>
                     <td>0.94 元/GB</td>
                   </tr>
                   <tr class="light-bkcolor">
                     <td>第 10 TB 至 50 TB</td>
                     <td>0.30 元/GB</td>
-                    <td>0.44 元/GB</td>
                     <td>0.66 元/GB</td>
+                    <td>0.44 元/GB</td>
                     <td>0.66 元/GB</td>
                     <td>0.82 元/GB</td>
                   </tr>
                   <tr>
                     <td>第 50 TB 至 100 TB</td>
                     <td>0.26 元/GB</td>
-                    <td>0.38 元/GB</td>
                     <td>0.57 元/GB</td>
+                    <td>0.38 元/GB</td>
                     <td>0.57 元/GB</td>
                     <td>0.71 元/GB</td>
                   </tr>
