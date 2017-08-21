@@ -12,7 +12,7 @@
 .navbar-nav > li > a.tab-links{
   line-height: 0;
 }
-.nav.nav-tabs.nav-justified.nav-prices-links{
+.nav.nav-tabs.nav-prices-links{
   width: 360px;
   border-bottom: 0;
   li {
@@ -33,7 +33,7 @@
     }
   }
 }
-.nav.nav-tabs.nav-justified.nav-prices-tabs{
+.nav.nav-tabs.nav-prices-tabs{
   width: 400px;
   border-bottom: 0;
   border: 1px solid #e6eaef;
@@ -53,6 +53,10 @@
       height: 0;
     }
   }
+}
+
+.prices-page .feature-price-nav {
+  z-index: 10;
 }
 
 .feature-price-nav{
@@ -407,6 +411,20 @@ input[type="range"]{
 
 .pricing-caculator{
   width: 8.10rem;
+  .btn {
+    font-size: 14px;
+  }
+  .list-inline {
+    margin-bottom: 0px;
+  }
+  .area-select {
+    list-style: none;
+    padding-top: 5px;
+    padding-left: 0px;
+    li {
+      display: inline-block;
+    }
+  }
 }
 
 .pricing-info-wrapper{
@@ -428,6 +446,14 @@ input[type="range"]{
         padding-left: 0.20rem;
         padding-right: 0.20rem;
       }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .prices-page {
+    .features {
+      padding-top: 30px;
     }
   }
 }
@@ -464,6 +490,54 @@ input[type="range"]{
     }
     dt.icon-title {
       font-size: 0.18rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .feature-price {
+    padding-top: 10px;
+  }
+  #feature-price-nav {
+
+    .nav-prices-links {
+      li {
+        display: inline-block;
+        margin: 0;
+        position: initial;
+        a {
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  #nav-product {
+    .nav-prices-tabs {
+      width: 100%;
+      // text-align: center;
+      background: initial;
+      border: none;
+      li {
+        display: inline-block;
+        margin: 0;
+        position: initial;
+        margin-left: -5px;
+        a {
+          padding-left: 10px;
+          padding-right: 10px;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .features .row .pricing-caculator {
+    .col-sm-6 {
+      margin-bottom: 15px;
     }
   }
 }
