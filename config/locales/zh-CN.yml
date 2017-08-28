@@ -116,6 +116,8 @@ zh-CN:
       desc: devstore
     - path: cooperation/client-coding-highlight@2x.png
       desc: coding
+    - path: cooperation/client-yunpian.png
+      desc: yunpian
   seo:
     welcome_index:
       title: 七牛云-国内领先的企业级云服务商
