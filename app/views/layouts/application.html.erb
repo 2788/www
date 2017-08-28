@@ -195,7 +195,7 @@
                   <dt>产品与服务</dt>
                   <% I18n.t("services").each do |service| %>
                     <% service[:list].each do |product| %>
-                      <%= content_tag :dd, link_to(product[:label], '/products/' + product[:name]) -%>
+                      <%= content_tag :dd, link_to(raw(product[:label]), '/products/' + product[:name]) -%>
                     <% end %>
                   <% end %>
                 </dl>
@@ -270,7 +270,7 @@
                 <div class="panel-body panel-menu">
                   <% I18n.t("services").each do |service| %>
                     <% service[:list].each do |product| %>
-                      <%= content_tag :div, link_to(content_tag(:h4, product[:label],class: product[:name]), '/products/' + product[:name]), class: "menu-unit" -%>
+                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]),class: product[:name]), '/products/' + product[:name]), class: "menu-unit" -%>
                     <% end %>
                   <% end %>
                 </div>
