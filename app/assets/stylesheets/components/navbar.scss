@@ -129,6 +129,8 @@ nav.navbar{
           transition: all .3s;
           color: $brand-primary;
           background-color: rgba(239, 239, 239, 0.15);
+
+          h4 small{ color: $brand-primary; }
         }
         &:focus{
           transition: all .3s;
@@ -141,6 +143,8 @@ nav.navbar{
           padding-bottom: 10px;
           padding-left: 30px;
           font-size: 14px;
+
+          small{ color: #FFF; }
         }
         p{
           color: rgb(151, 152, 156);

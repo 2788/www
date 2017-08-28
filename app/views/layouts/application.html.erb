@@ -53,7 +53,7 @@
                   <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
 
                   <% service[:list].each do |product| %>
-                    <%= content_tag :li, link_to(content_tag(:h4, product[:label],class: product[:name]) + content_tag(:p, product[:desc], class: "hidden-xs"), '/products/' + product[:name]), class: "service" -%>
+                    <%= content_tag :li, link_to(content_tag(:h4, raw(product[:label]),class: product[:name]) + content_tag(:p, product[:desc], class: "hidden-xs"), '/products/' + product[:name]), class: "service" -%>
                   <% end %>
                 <% end %>
               </ul>
