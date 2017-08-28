@@ -12,37 +12,18 @@
 .navbar-nav > li > a.tab-links{
   line-height: 0;
 }
-.nav.nav-tabs.nav-prices-links{
-  width: 360px;
-  border-bottom: 0;
-  li {
-    a{
-      padding: 10px 0;
-      border: 1px solid #e6eaef;
-      border-bottom: 0;
-      background-color: #fff;
-    }
 
-    &.active a{
-      border: 0;
-      background-color: #f6f8fa;
-    }
-
-    &.active::before{
-      height: 0;
-    }
-  }
-}
+.nav.nav-tabs.nav-prices-links,
 .nav.nav-tabs.nav-prices-tabs{
   width: 400px;
   border-bottom: 0;
-  border: 1px solid #e6eaef;
   background-color: #fff;
   li {
     a{
       padding: 10px 0;
       border: 1px solid #e6eaef;
       background-color: #fff;
+      border-radius: 0;
     }
     &.active a{
       border: 1px solid #00a0de;
@@ -55,14 +36,26 @@
   }
 }
 
-.prices-page .feature-price-nav {
-  z-index: 10;
+.prices-page{
+  .jumbotron.hero {
+    height: 4.65rem;
+  }
+  .jumbotron.hero .container {
+    position: relative;
+    height: 4.2rem;
+    text-align: left;
+  }
+
+  .feature-price-nav {
+    z-index: 10;
+  }
 }
+
 
 .feature-price-nav{
   margin-top: -0.30rem;
   padding-top: 0.28rem;
-  padding-bottom: 0;
+  padding-bottom: 25px;
   background-color: #fff;
 
   .caculator{
