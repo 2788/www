@@ -219,6 +219,11 @@ zh-CN:
     cooperations_index:
       title: 市场合作 - 七牛云
   news:
+    - title: 七牛云完成新一轮 10 亿元融资，阿里集团与云锋基金领投！
+      link: http://blog.qiniu.com/archives/8691
+      time: 2017 年 8 月 28 日发布在 新闻动态
+      desc: 8 月 28 日，七牛云宣布完成新一轮 10 亿人民币的融资，本轮融资由阿里巴巴集团和云锋基金领投。在本轮投资后，七牛云将继续保持自身的高速增长和独立性，为中国云计算产业贡献力量。
+      img: news4.png
     - title: 七牛云 CEO 许式伟当选「上海十大互联网创业家」
       link: http://blog.qiniu.com/archives/8504
       time: 2017 年 6 月 5 日发布在 新闻动态
