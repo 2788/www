@@ -51,4 +51,5 @@ Rails.application.configure do
 
   config.acc_host = 'http://acc.dev.qiniu.io'
   config.sso_host = 'http://sso.dev.qiniu.io'
+  config.www_host = 'http://www-dev.qiniu.io'
 end

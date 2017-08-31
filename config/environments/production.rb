@@ -77,6 +77,7 @@ Rails.application.configure do
 
   config.acc_host = 'https://acc.qbox.me'
   config.sso_host = 'https://sso.qiniu.com'
+  config.www_host = 'https://www.qiniu.com'
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
