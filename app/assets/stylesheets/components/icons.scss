@@ -64,3 +64,10 @@
 .icon-video{ background-image: image-url("icon-video@2x.png");
   &:hover{ background-image: image-url("icon-video-highlight@2x.png"); }
 }
+
+// 备案图标
+.icon-aq{
+  background-image: image-url('aq-icon.png');
+  padding-left: 18px;
+  background-size: 16px 16px;
+}
