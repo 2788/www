@@ -36,6 +36,9 @@ nav.navbar{
     background-color: #303848;
   }
 }
+nav.navbar.nav-bg{
+  background-color: #303848;
+}
 
 // 导航栏
 .navbar-default{
@@ -60,6 +63,10 @@ nav.navbar{
 
       .icon-bar { background-color: #FFF; }
     }
+  }
+  .navbar-brand.navbar-brand-text{
+    padding-top: 23px;
+    padding-bottom: 23px;
   }
   .navbar-brand {
     display: inline-block;
