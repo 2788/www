@@ -46,6 +46,7 @@ footer{
     }
     .github{ background: image-url('github.png') no-repeat 50% 50%; }
     .weibo{  background: image-url('weibo.png') no-repeat 50% 50%; }
+    .weixin{ background: image-url('icon-weichat.png') no-repeat 50% 50%; }
   }
 
   .links{
@@ -109,6 +110,33 @@ footer.form-footer{
   bottom: 0;
   padding: 0;
   width: 100%;
+
+  .links.career-footer-links{
+    display: inline-block;
+    border: none;
+    margin: 0;
+    padding: 0 0 20px;
+  }
+  .contact-links{
+    float: right;
+    .qrcode{
+      position: absolute;
+      top: -40px;
+      left:-120px;
+      opacity: 0;
+    }
+    .weixin{
+      position: relative;
+    }
+    .weixin:hover{
+      .qrcode{
+        opacity: 1;
+      }
+    }
+    .sns{
+      display: inline-block;
+    }
+  }
 
   .links.form-footer-links{
     border: none;

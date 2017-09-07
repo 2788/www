@@ -54,16 +54,25 @@
     <%= yield %>
 
     <footer class="form-footer">
-      <div class="links form-footer-links">
-        <ul>
-          <li><div class="copyright">© 2017 七牛云</div></li>
-          <li><a href="/user-agreement">用户协议</a></li>
-          <li><a href="/sla-kodo">SLA</a></li>
-        </ul>
-        <div class="icp">
-            <a class="out_link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961" target="_blank"><span class="icon icon-aq">沪公网安备 31011502000961 号</span></a>
-            <a class="out_link" href="http://www.miitbeian.gov.cn/" target="_blank"><span>沪 ICP 备 11037377 号-5</span></a>
+      <div class="container">
+        <div class="links career-footer-links">
+          <ul>
+            <li><div class="copyright">© 2017 七牛云</div></li>
+            <li><a href="/user-agreement">用户协议</a></li>
+            <li><a href="/sla-kodo">SLA</a></li>
+          </ul>
+          <div class="icp">
+              <a class="out_link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961" target="_blank"><span>沪公网安备 31011502000961 号</span></a>
+              <a class="out_link" href="http://www.miitbeian.gov.cn/" target="_blank"><span>沪 ICP 备 11037377 号-5</span></a>
           </div>
+        </div>
+        <div class="contact-links">
+          <div class="sns">
+            <a class="weixin" href="javascript:;"><div class="qrcode"><%= image_tag "weixin-qrcode.png" -%></div></a>
+            <a class="github" href="https://github.com/qiniu" target="_blank"></a>
+            <a class="weibo" href="http://weibo.com/qiniutek" target="_blank"></a>
+          </div>
+        </div>
       </div>
     </footer>
 
