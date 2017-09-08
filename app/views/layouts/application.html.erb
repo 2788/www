@@ -251,7 +251,7 @@
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
           <div class="icp grey-color">
-            <% icp = I18n.t("icps")[request.domain.to_sym] %>
+            <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
             <a href="http://www.miitbeian.gov.cn/" target="_blank"><span> <%= icp[0] -%> </span></a>
           </div>
@@ -376,7 +376,7 @@
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
           <div class="icp grey-color">
-            <% icp = I18n.t("icps")[request.domain.to_sym] %>
+            <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
             <a href="http://www.miitbeian.gov.cn/" target="_blank"><span><%= icp[0] -%></span></a>
           </div>
