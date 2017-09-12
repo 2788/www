@@ -80,4 +80,7 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.paths['config/database'] = ["../www_database.yml"]
+  config.paths['config/secrets'] = ["../www_secrets.yml"]
 end
