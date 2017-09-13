@@ -99,6 +99,9 @@ $(document).ready ->
   $('.helper .close-btn').click ->
     $('.helper').hide()
 
+  # mobile 底部注册导航 关闭
+  $('.fixed-b .stripe-close-btn').click ->
+    $('.footer-sign').hide()
 
 # 客户案例
 $(document).ready ->

@@ -262,22 +262,17 @@
     padding-top: 0;
   }
 }
-.link-xsex, .link-violence, .link-face{
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 30px 30px;
+.features {
+  .link-xsex, .link-violence, .link-face{
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px 30px;
+    background-image: image-url("dora/icon-neirongshenghe@2x.png");
 
-  padding-left: 35px;
-  line-height: 55px;
-  font-size: 0.14rem;
-}
-.link-xsex{
-  background-image: image-url("solution/icon-jianhuangjiankong.png");
-}
-.link-violence{
-  background-image: image-url("solution/icon-baokongshenghe@2x.png");
-}
-.link-face{
-  background-image: image-url("solution/icon-renlianshibie@2x.png");
+    padding-left: 35px;
+    line-height: 55px;
+    font-size: 0.14rem;
+    color: #28aedf;
+  }
 }
