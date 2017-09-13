@@ -10,7 +10,7 @@ class CooperationsController < ApplicationController
     @channel_cooperation.ip = client_ip
 
     if @channel_cooperation.save
-      render :nothing => true, :status => :created
+      head :created
     else
       render json: @channel_cooperation.errors, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class CooperationsController < ApplicationController
     @developer_cooperation.ip = client_ip
 
     if @developer_cooperation.save
-      render :nothing => true, :status => :created
+      head :created
     else
       render json: @developer_cooperation.errors, status: :unprocessable_entity
     end
