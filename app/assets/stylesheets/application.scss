@@ -294,6 +294,11 @@ footer .container {
 .grey-color {
   color: #adaeb3;
 }
+.fixed-b{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 
 @media (max-width: 736px) {
   .banners-slider .slick-dots.banners-arrow{
