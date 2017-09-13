@@ -83,4 +83,5 @@ Rails.application.configure do
 
   config.paths['config/database'] = ["../www_database.yml"]
   config.paths['config/secrets'] = ["../www_secrets.yml"]
+  Mongoid.load!("../www_mongoid.yml")
 end
