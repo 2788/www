@@ -12,7 +12,7 @@ class RecommendationsController < ApplicationController
     end
 
     if @recommendation.save
-      render :nothing => true, :status => :created
+      head :created
     else
       render json: @recommendation.errors, status: :unprocessable_entity
     end

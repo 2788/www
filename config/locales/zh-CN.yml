@@ -314,129 +314,78 @@ zh-CN:
       time: 2016 年 11 月 11 日发布在 近期福利
       desc: 七牛前端公开库 Staticfile.org 全新改版！永久免费，永不停更！ Staticfile 致力于提供高质量、稳定的前端资源 CDN 服务，同步国外 CDNJS 源站，同时由国内开源贡献者提交其它有价值的库。感谢所有开源库作者和独家合作社区掘金的努力。
   cases1:
-    - groupid: im
+    - groupid: enterprise
       group:
-        - imgpath: case/douban.png
-        - imgpath: case/duitang.png
-        - imgpath: case/finger.png
-        - imgpath: case/guimiquan.png
-        - imgpath: case/in.png
-        - imgpath: case/lianaiji.png
-        - imgpath: case/maimai.png
-        - imgpath: case/meisubao.png
-        - imgpath: case/mingrenpengyouquan.png
-        - imgpath: case/pengpeng.png
-        - imgpath: case/shougongke.png
-        - imgpath: case/sobrr.png
-        - imgpath: case/taijiaohezi.png
-        - imgpath: case/weiniao.png
-        - imgpath: case/yupaopao.png
+        - imgpath: case/enterprise/bubugao.png
+        - imgpath: case/enterprise/changhong.png
+        - imgpath: case/enterprise/sap.png
+        - imgpath: case/enterprise/sobey.png
   cases:
-    - groupid: fashion
-      group:
-        - imgpath: case/bantang.png
-        - imgpath: case/chuanyizhushou.png
-        - imgpath: case/enjoy.png
-        - imgpath: case/hanguoguan.png
-        - imgpath: case/hunliji.png
-        - imgpath: case/liwushuo.png
-        - imgpath: case/meila.png
-        - imgpath: case/meili.png
-        - imgpath: case/meiya.png
-        - imgpath: case/mocha.png
-        - imgpath: case/run.png
-        - imgpath: case/shiguangbaohe.png
-        - imgpath: case/shiguangxiaowu.png
-        - imgpath: case/tiantianguoyuan.png
-        - imgpath: case/weimeimeizhuang.png
-        - imgpath: case/yoho.png
-    - groupid: enjoyment
-      group:
-        - imgpath: case/buge.png
-        - imgpath: case/cibn.png
-        - imgpath: case/doushi.png
-        - imgpath: case/kemikumanhua.png
-        - imgpath: case/kuaikanmanhua.png
-        - imgpath: case/kuailegongchang.png
-        - imgpath: case/leifengwang.png
-        - imgpath: case/nono.png
-        - imgpath: case/peiyinxiu.png
-        - imgpath: case/rongshuxia.png
-        - imgpath: case/tangshui.png
-        - imgpath: case/tiaotiao.png
-        - imgpath: case/tuangyuanchuangzuo.png
-        - imgpath: case/tujiedianying.png
-        - imgpath: case/wandianying.png
-        - imgpath: case/xiaokan.png
-        - imgpath: case/blued.jpg
-        - imgpath: case/faceu.png
-        - imgpath: case/quanminzhibo.png
-
-    - groupid: health
-      group:
-        - imgpath: case/fittime.png
-        - imgpath: case/kangda.png
-        - imgpath: case/keep.png
-        - imgpath: case/qudong.png
-        - imgpath: case/xinyang.png
-        - imgpath: case/yuedongquan.png
-    - groupid: education
-      group:
-        - imgpath: case/bbtree.png
-        - imgpath: case/beiliao.png
-        - imgpath: case/bomiqinzi.png
-        - imgpath: case/haowaxuetang.png
-        - imgpath: case/jikexueyuan.png
-        - imgpath: case/kuaijixuetang.png
-        - imgpath: case/leci.png
-        - imgpath: case/maizixueyuan.png
-        - imgpath: case/mofanghanyu.png
-        - imgpath: case/qingke.png
-        - imgpath: case/yingyumofngxiu.png
-    - groupid: traffics
-      group:
-        - imgpath: case/dawanju.png
-        - imgpath: case/gailian.png
-        - imgpath: case/renrenche.png
-        - imgpath: case/tushu.png
-        - imgpath: case/zhoumoqunaer.png
-        - imgpath: case/zuji.png
-    - groupid: hardware
-      group:
-        - imgpath: case/jimi.png
-        - imgpath: case/weijing.png
-        - imgpath: case/zhongxing.png
-        - imgpath: case/dajiang.png
-        - imgpath: case/haikang.png
-        - imgpath: case/oppo.png
     - groupid: software
       group:
-        - imgpath: case/aike.png
-        - imgpath: case/huisuoping.png
-        - imgpath: case/maka.png
-        - imgpath: case/mizhuan.png
-        - imgpath: case/shanglishi.png
-        - imgpath: case/testbird.png
-        - imgpath: case/tuzhan.png
-        - imgpath: case/worktile.png
-        - imgpath: case/yipai.png
-    - groupid: safe
-      group:
-        - imgpath: case/huamaiqianliyan.png
-        - imgpath: case/shenzhouying.png
-    - groupid: wealth
-      group:
-        - imgpath: case/kuaiqian.png
-        - imgpath: case/pinganyinhang.png
+        - imgpath: case/software/meitu.png
+        - imgpath: case/software/zhubajie.png
     - groupid: media
       group:
-        - imgpath: case/hubeiguangdian.png
-        - imgpath: case/jiangxuweishi.png
-        - imgpath: case/zhongguolan.png
-    - groupid: network
+        - imgpath: case/media/hubeiguangdian.png
+        - imgpath: case/media/cibn.png
+        - imgpath: case/media/guizhouguangdian.png
+    - groupid: traffics
       group:
-        - imgpath: case/ailixin.png
-        - imgpath: case/zhongyiwulian.png
+        - imgpath: case/traffics/mobaidanche.png
+        - imgpath: case/traffics/qiongyou.png
+        - imgpath: case/traffics/youxinershouche.png
+    - groupid: wealth
+      group:
+        - imgpath: case/wealth/pingankeji.png
+        - imgpath: case/wealth/pinganyinhang.png
+    - groupid: im
+      group:
+        - imgpath: case/im/blued.png
+        - imgpath: case/im/in.png
+        - imgpath: case/im/liehuo.png
+        - imgpath: case/im/taqu.png
+    - groupid: fashion
+      group:
+        - imgpath: case/fashion/jumeiyoupin.png
+        - imgpath: case/fashion/meili.png
+        - imgpath: case/fashion/meipai.png
+    - groupid: enjoyment
+      group:
+       - imgpath: case/enjoyment/baiao.png
+       - imgpath: case/enjoyment/changba.png
+       - imgpath: case/enjoyment/dongqiudi.png
+       - imgpath: case/enjoyment/echo.png
+       - imgpath: case/enjoyment/heixiuzhibo.png
+       - imgpath: case/enjoyment/jiuzhouzhibo.png
+       - imgpath: case/enjoyment/kugouyinyue.png
+       - imgpath: case/enjoyment/ppjuli.png
+       - imgpath: case/enjoyment/qutoutiao.png
+       - imgpath: case/enjoyment/renrenshipin.png
+       - imgpath: case/enjoyment/taptap.png
+       - imgpath: case/enjoyment/tutulive.png
+       - imgpath: case/enjoyment/uplive.png
+       - imgpath: case/enjoyment/xiandanjia.png
+       - imgpath: case/enjoyment/xiaohuaxiu.png
+       - imgpath: case/enjoyment/xiaoying.png
+       - imgpath: case/enjoyment/xiaozhuzhibo.png
+       - imgpath: case/enjoyment/xindongwangluo.png
+       - imgpath: case/enjoyment/xuanpai.png
+    - groupid: health
+      group:
+        - imgpath: case/health/gudong.png
+    - groupid: education
+      group:
+        - imgpath: case/education/xueersi.png
+        - imgpath: case/education/yangcongshuxue.png
+        - imgpath: case/education/yingyuqupeiyin.png
+        - imgpath: case/education/yunxuetang.png
+    - groupid: hardware
+      group:
+        - imgpath: case/hardware/dajiang.png
+        - imgpath: case/hardware/haikangyingshi.png
+        - imgpath: case/hardware/oppo.png
+        - imgpath: case/hardware/shenzhouying.png
   plsvs1:
     - groupid: collections
       group:
@@ -527,3 +476,44 @@ zh-CN:
           desc: 秒开支持
         - imgpath: plsv/icon-ruanyingjiezidong.png
           desc: 软硬解自动
+  icps:
+    qbox.net:             [沪 ICP 备 11037377 号-1,  沪公网安备 31011502006015 号]
+    qbox.me:              [沪 ICP 备 11037377 号-1,  沪公网安备 31011502000961 号]
+    qiniutek.com:         [沪 ICP 备 11037377 号-2,  沪公网安备 31011502000961 号]
+    qiniudn.com:          [沪 ICP 备 11037377 号-3,  沪公网安备 31011502000961 号]
+    qiniup.com:           [沪 ICP 备 11037377 号-4,  沪公网安备 31011502000961 号]
+    qiniu.com:            [沪 ICP 备 11037377 号-5,  沪公网安备 31011502000961 号]
+    ecug.org:             [沪 ICP 备 11037377 号-7,  沪公网安备 31011502050961 号]
+    qiniucc.com:          [沪 ICP 备 11037377 号-8,  沪公网安备 31011502000961 号]
+    qiniuapi.com:         [沪 ICP 备 11037377 号-9,  沪公网安备 31011502000961 号]
+    clouddn.com:          [沪 ICP 备 11037377 号-10, 沪公网安备 31011502040961 号]
+    qiniucdn.com:         [沪 ICP 备 11037377 号-11, 沪公网安备 31011502040961 号]
+    qiniug.com:           [沪 ICP 备 11037377 号-11]
+    qiniurs.com:          [沪 ICP 备 11037377 号-11]
+    qiniudns.com:         [沪 ICP 备 11037377 号-12, 沪公网安备 31011502030961 号]
+    doxygen.io:           [沪 ICP 备 11037377 号-16]
+    qiniupkg.com:         [沪 ICP 备 11037377 号-16, 沪公网安备 31011502020961 号]
+    qiniu.org:            [沪 ICP 备 11037377 号-20, 沪公网安备 31011502020961 号]
+    niu.io:               [沪 ICP 备 11037377 号-21, 沪公网安备 31011502000961 号]
+    qiniu.in:             [沪 ICP 备 11037377 号-22, 沪公网安备 31011502000961 号]
+    qiniudns2.com:        [沪 ICP 备 11037377 号-23, 沪公网安备 31011502000961 号]
+    qiniu.us:             [沪 ICP 备 11037377 号-24, 沪公网安备 31011502000961 号]
+    qnssl.com:            [沪 ICP 备 11037377 号-25, 沪公网安备 31011502000961 号]
+    staticfile.org:       [沪 ICP 备 11037377 号-26, 沪公网安备 31011502010961 号]
+    qiniu-solutions.com:  [沪 ICP 备 11037377 号-27]
+    qiniu-enterprise.com: [沪 ICP 备 11037377 号-28]
+    cloudvdn.com:         [沪 ICP 备 11037377 号-29, 沪公网安备 31011502000961 号]
+    pilidns.com:          [沪 ICP 备 11037377 号-29]
+    qiniudns.net:         [沪 ICP 备 11037377 号-30]
+    qnydns.net:           [沪 ICP 备 11037377 号-31]
+    qnydns.com:           [沪 ICP 备 11037377 号-32]
+    cvoda.com:            [沪 ICP 备 11037377 号-33]
+    cvodb.com:            [沪 ICP 备 11037377 号-34]
+    cloudappl.com:        [沪 ICP 备 11037377 号-35]
+    qiniu.io:             [沪 ICP 备 11037377 号-37]
+    qnfcdn.com:           [沪 ICP 备 11037377 号-38]
+    qiniucloud.net:       [沪 ICP 备 11037377 号-39]
+    atlab.ai:             [沪 ICP 备 11037377 号-40]
+    qiniu.com.cn:         [沪 ICP 备 11037377 号-41]
+    qiniukodo.com:        [沪 ICP 备 11037377 号-42]
+    localhost:       [沪 ICP 备 11037377 号-42]

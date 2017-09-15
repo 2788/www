@@ -76,9 +76,11 @@
       <div class="col-sm-6 col-padding col-content-middle sm-right">
         <h4 class="">内容审核</h4>
         <p>高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。</p>
-        <div class="actions">
-          <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
-        </div>
+        <ul class="list-inline">
+          <li><%= link_to "图片鉴黄", "https://developer.qiniu.com/dora/manual/3701/ai-pulp", target: "_balnk", class: "link-xsex" -%></li>
+          <li><%= link_to "图片鉴暴恐", "https://developer.qiniu.com/dora/manual/3918/terror", target: "_balnk", class: "link-violence" -%></li>
+          <li><%= link_to "政治人物识别", "https://developer.qiniu.com/dora/manual/3922/politician", target: "_balnk", class: "link-face" -%></li>
+        </ul>
       </div>
       <div class="col-sm-6 col-video">
         <video loop autoplay poster="https://mars-assets.qnssl.com/video/content-recognition.jpg" src="https://mars-assets.qnssl.com/video/content-recognition.mp4"></video>

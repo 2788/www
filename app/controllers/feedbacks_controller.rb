@@ -13,7 +13,7 @@ class FeedbacksController < ApplicationController
     end
 
     if @feedback.save
-      render :nothing => true, :status => :created
+      head :created
     else
       render json: @feedback.errors, status: :unprocessable_entity
     end

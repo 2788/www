@@ -39,6 +39,9 @@
 @import "solution";
 @import "products";
 @import "sla";
+@import "careerindex";
+@import "career-social";
+@import "career-postition";
 
 html{
   position: relative;
@@ -293,6 +296,11 @@ footer .container {
 
 .grey-color {
   color: #adaeb3;
+}
+.fixed-b{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 @media (max-width: 736px) {

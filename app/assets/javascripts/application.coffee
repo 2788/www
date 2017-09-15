@@ -27,6 +27,8 @@
 #= require cooperations
 #= require about
 #= require sla
+#= require careerindex
+#= require careerpositions
 
 
 isMobile = false; # initiate as false
@@ -78,6 +80,37 @@ $(document).ready ->
         slidesToShow: 2
         slidesToScroll: 2
     }]
+    
+
+  # career fluid slider
+  $('.fluid-slider').slick
+    dots: false
+    autoplay: true
+    autoplaySpeed: 2000
+    arrows: false
+    slidesToShow: 3
+    slidesToScroll: 1
+  #
+
+  # career wordbutton slider
+  $('.fluid-wordbutton-slider').slick
+    arrows:true
+    slidesToShow: 1
+    slidesToScroll: 1
+  #
+
+  # career media slider
+  $('.fluid-media-slider').slick
+    dots: true
+    autoplay: false
+    autoplaySpeed: 2000
+    arrows: false
+    slidesToShow: 2
+    slidesToScroll:1
+  $('.fluid-media-slider .slick-dots').addClass('turnpage')
+
+
+
 
  # 导航栏菜单
   if isMobile
@@ -99,6 +132,9 @@ $(document).ready ->
   $('.helper .close-btn').click ->
     $('.helper').hide()
 
+  # mobile 底部注册导航 关闭
+  $('.fixed-b .stripe-close-btn').click ->
+    $('.footer-sign').hide()
 
 # 客户案例
 $(document).ready ->

@@ -251,8 +251,9 @@
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
           <div class="icp grey-color">
-            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961" target="_blank"><span class="icon icon-aq">沪公网安备 31011502000961 号</span></a>
-            <a href="http://www.miitbeian.gov.cn/" target="_blank"><span>沪 ICP 备 11037377 号-5</span></a>
+            <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
+            <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank"><span> <%= icp[0] -%> </span></a>
           </div>
         </div>
       </div>
@@ -375,12 +376,19 @@
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
           <div class="icp grey-color">
-            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961" target="_blank"><span class="icon icon-aq">沪公网安备 31011502000961 号</span></a>
-            <a href="http://www.miitbeian.gov.cn/" target="_blank"><span>沪 ICP 备 11037377 号-5</span></a>
+            <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
+            <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank"><span><%= icp[0] -%></span></a>
           </div>
         </div>
       </div>
     </footer>
+    <div class="footer-sign">
+      <div class="stripe stripe-blue p-xxl visible-xs fixed-b">
+        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl" target="_blank">马上免费注册</a></div>
+        <%= link_to image_tag("close.png", class: "stripe-close-img"), "javascript:;", class: "stripe-close-btn" %>
+      </div>
+    </div>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
