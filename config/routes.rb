@@ -3,14 +3,14 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  constraints DomainConstraint.new('career', 'career-source') do
+  constraints DomainConstraint.new('career', 'career-source', 'career-dev') do
     root to: 'career#index'
     get '/social',         to: 'career#social'
     get '/positions',      to: 'career#positions'
   end
 
-  constraints DomainConstraint.new('blog', 'blog-source') do
-    root to: 'articles#index'
+  constraints DomainConstraint.new('blog', 'blog-source', 'blog-dev') do
+    root to: 'blog#index'
   end
 
   root to: 'welcome#index'
