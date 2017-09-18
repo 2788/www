@@ -1,3 +1,166 @@
 // Place all the styles related to the career controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//career index fluid-slider-wrapper
+.fluid-slider-wrapper{
+    margin-top: 162px;
+  }
+  
+  //career index fluid-word-slider
+  .fluid-word-slider{
+    margin-top: 480px; 
+  }
+  
+  .fluid-slider-img-wraaper{
+      padding: 0 20px;
+  }
+  
+  .Btn-prev, .Btn-next {
+      background: #6994B9;
+  }
+  
+  .grid-container{
+    transition: all 0.3s;
+    position: relative;
+    min-height:100px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    &:hover{
+      transition: all 0.3s;
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      .btn-icon{
+        background-image: image-url("icon-player.png");
+      }
+    }
+    .btn-icon{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      height: 100%;
+      width: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100px 100px;
+    }
+    .btn-icon-visited{
+      background-image: image-url("btn-play-highlight.png");
+    }
+  }  
+  
+  .fluid-media-slider{
+    .slick-dots li button::before{
+     font-size: 0.40rem;
+     content: "-";
+     color: #B9B9B9;
+   }
+   .slick-dots li.slick-active button::before{ color: #3498db; }
+  }
+  .banners-slider .slick-dots.banners-arrow{ bottom: 0.48rem; }
+  .banners-actions{
+     position: relative;
+   .btn-absolute{
+     position: absolute;
+     top: -1.70rem;
+     left: 1.00rem;
+   }
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+  }
+  
+  #myModal1 {
+    .modal-dialog { margin-top: 60px; }
+    .modal-body {
+      background: #000;
+      padding: 0px;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 12px;
+      font-size: 0.3rem;
+      z-index: 10;
+      color: #000;
+      opacity: 1;
+    }
+    video {
+      display: block;
+    }
+  }
+  
+  #myModal2 {
+    .modal-dialog { margin-top: 60px; }
+    .modal-body {
+      background: #000;
+      padding: 0px;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 12px;
+      font-size: 0.3rem;
+      z-index: 10;
+      color: #000;
+      opacity: 1;
+    }
+    video {
+      display: block;
+    }
+  }
+  
+  #myModal3 {
+    .modal-dialog { margin-top: 60px; }
+    .modal-body {
+      background: #000;
+      padding: 0px;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 12px;
+      font-size: 0.3rem;
+      z-index: 10;
+      color: #000;
+      opacity: 1;
+    }
+    video {
+      display: block;
+    }
+  }
+  
+//career social page scss
+  .btn-career:hover,
+  .btn-career:focus,
+  .btn-career:active,
+  .btn-career.active {
+    color: #ffffff;
+    background-color: #3276b1;
+    border-color: #285e8e;
+  }
+  .btn-career{
+    background-color:#40A7FF
+  }
+ 
+//career positions page scss 
+  .position{
+    .btn {
+      font-size: 14px;
+    }
+    .list-inline {
+      margin-bottom: 0px;
+    }
+    .area-select {
+      list-style: none;
+      padding-top: 5px;
+      padding-left: 0px;
+      li {
+        display: inline-block;
+      }
+    }
+  }
