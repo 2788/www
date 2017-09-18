@@ -27,7 +27,7 @@
 #= require cooperations
 #= require about
 #= require sla
-
+#= require career
 
 isMobile = false; # initiate as false
 # device detection
@@ -78,7 +78,7 @@ $(document).ready ->
         slidesToShow: 2
         slidesToScroll: 2
     }]
-
+    
  # 导航栏菜单
   if isMobile
     $('.panel').on 'touchstart', ->

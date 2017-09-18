@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   constraints DomainConstraint.new('career', 'career-source') do
     root to: 'career#index'
+    get '/social',         to: 'career#social'
+    get '/positions',      to: 'career#positions'
   end
 
   constraints DomainConstraint.new('blog', 'blog-source') do
