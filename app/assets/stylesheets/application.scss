@@ -275,6 +275,9 @@ img.list-img{
 
 
 @media (max-width: 768px){
+  .visible-xs-inline{
+    display: inline-block !important;
+  }
   .pricing-caculator{
     width: 100%;
   }
