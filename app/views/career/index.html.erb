@@ -216,52 +216,52 @@
     <div class="fluid-slider-img-wraaper">
         <div class="grid-container">
             <%= image_tag "career/shipin-2.jpg", alt: "视频2" -%>
-            <a class="btn-icon" data-toggle="modal" data-target="#myModal1"></a>
+            <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#myModal1"></a>
         </div>
     </div>                                                         
     <div class="fluid-slider-img-wraaper">
         <div class="grid-container">
             <%= image_tag "career/shipin-3.jpg", alt: "视频3" -%>
-            <a class="btn-icon" data-toggle="modal" data-target="#myModal2"></a>
+            <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#myModal2"></a>
         </div>
     </div>
     <div class="fluid-slider-img-wraaper">
         <div class="grid-container">
             <%= image_tag "career/shipin-4.jpg", alt: "视频4" -%>
-            <a class="btn-icon" data-toggle="modal" data-target="#myModal3"></a>
+            <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#myModal3"></a>
         </div>
     </div>
 </div>
 
 <!-- 模态框1（Modal1） -->
 <div class="modal fade bs-example-modal-lg" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <%= video_tag "https://mars-assets.qnssl.com/new_visit.mp4", controls: true, autobuffer: true %>
+                <%= video_tag "https://mars-assets.qnssl.com/new_visit.mp4", class: "video-tag", controls: true, autobuffer: true %>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
 <!-- 模态框2（Modal2） -->
 <div class="modal fade bs-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <%= video_tag "https://mars-assets.qnssl.com/qiniu_annual2017.m4v",controls: true, autobuffer: true %>
+                <%= video_tag "https://mars-assets.qnssl.com/qiniu_annual2017.m4v", class: "video-tag", controls: true, autobuffer: true %>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div> 
 <!-- 模态框3（Modal3） -->
 <div class="modal fade bs-example-modal-lg" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <%= video_tag "https://mars-assets.qnssl.com/qiniuhuaxu2.mp4", controls: true, autobuffer: true %>
+                <%= video_tag "https://mars-assets.qnssl.com/qiniuhuaxu2.mp4", class: "video-tag", controls: true, autobuffer: true %>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->

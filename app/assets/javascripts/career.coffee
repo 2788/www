@@ -10,7 +10,7 @@ $(document).ready ->
         autoplaySpeed: 2000
         arrows: false
         slidesToShow: 3
-        slidesToScroll: 1
+        slidesToScroll: 2
     #
 
     # career wordbutton slider
@@ -23,9 +23,8 @@ $(document).ready ->
     # career media slider
     $('.fluid-media-slider').slick
         dots: true
-        autoplay: false
-        autoplaySpeed: 2000
         arrows: false
         slidesToShow: 2
         slidesToScroll:1
     $('.fluid-media-slider .slick-dots').addClass('turnpage')
+
