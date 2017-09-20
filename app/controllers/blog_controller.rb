@@ -3,4 +3,7 @@ class BlogController < ApplicationController
 
   def index
   end
+  def archives
+    @title = "archives"  
+  end
 end
