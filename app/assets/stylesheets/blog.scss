@@ -1,11 +1,133 @@
-.blog-container {
-  margin-right: 100px;
-  margin-left: 100px;
+a {
+  color: black;
+  text-decoration: none;
 }
 
-.entry-title {
- .h2 {
-  font-size: 60px;
- }
+  .blog-container {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .entry-title {
+  .h2 {
+    font-size: 60px;
+    color: black;
+  }
+  }
+
+  .entry-meta {
+    padding-top: 0.1rem;
+    .img {
+      width: 0.3rem;
+    }
+    a:visited {
+      color: #00a498;
+      color: #ccc;
+    }
+  }
+
+.post {  
+  .entry-utility-prep.entry-utility-prep-page-views {
+    color: #ccc;
+  }
+
+  .entry-utility-prep.entry-utility-prep-cat-links {
+    color: #ccc;
+  }
+
+  .photo-left {
+    padding-right: 33px;
+  }
+
+  .thumbnail-blog {
+    background-color: #fff;
+    display: block;
+    background-color: #fff;
+    border: 0px solid #ddd;
+    -webkit-transition: border 0.2s ease-in-out;
+    -o-transition: border 0.2s ease-in-out;
+    transition: border 0.2s ease-in-out;
+    p {
+      font-size: 0.18rem;
+    }
+    .more-link {
+      font-size: 0.18rem;
+      padding-top: 0.2rem;
+    }
+  }
+
+  .entry-content {
+    padding-top: 0.4rem;
+  }
+
+  .more-link {
+    color: rgb(6, 167, 225);
+    display: block;
+    font-size: 18px;
+  }
 }
-  
+
+.pagination {
+  padding-top: 0.5rem;
+  padding-bottom: 2.0rem;
+}
+
+/**
+|------------------------
+| =Search Form Widget
+|------------------------
+*/
+
+.searchform {
+	width: 300px;
+	background: #fff;
+	border: solid 1px #e7e7e7;
+	padding:  0;
+	margin: 0;
+	overflow: auto;
+}
+
+.searchform .assistive-text {
+	display: none;
+}
+
+.searchform input[type="text"] {
+	width: 260px;
+	height: 38px;
+	float: left;
+	padding: 6px 0 6px 11px;
+	margin: 0;
+	vertical-align: middle;
+	border: 0;
+	color: #ccc;
+	box-shadow: none;
+	border-radius:0;
+}
+.searchform input[type="text"]:focus	 {
+	border-right: solid 1px #e7e7e7;
+	width: 260px;
+	box-shadow: none;
+	border-radius: 0;
+}
+
+.searchform input[type="submit"] {
+	width: 36px;
+	height: 36px;
+	background: image-url('zoom.jpg') no-repeat 50% 50%; 
+	border: 0;
+	cursor: pointer;
+	text-indent: -9999px;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+	text-transform: capitalize;
+	font-size: 0;
+	display: block;
+	line-height: 0;
+}
+
+.sidebar {
+  .cat-item {
+    padding-top: 10px;
+  }
+}
