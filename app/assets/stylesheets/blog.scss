@@ -63,8 +63,8 @@
 
   .sidebar{
     padding-top: 0.45rem;
-    padding-left: 0.12rem;
-    padding-right: 0.12rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   /**
@@ -87,7 +87,7 @@
   }
 
   .searchform input[type="text"] {
-    width: 286px;
+    width: 210px;
     height: 38px;
     float: left;
     padding: 6px 0 6px 11px;
@@ -102,7 +102,7 @@
     border-right: solid 1px #e7e7e7;
     outline-offset: 0;
     outline-width: 0;
-    width: 260px;
+    width: 210px;
     box-shadow: none;
     border-radius: 0;
   }
