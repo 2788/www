@@ -1,0 +1,68 @@
+<div class="jumbotron hero hero-banner1">
+  <div class="container">
+    <div class="middle-container">
+      <div class="col-sm-6">
+        <div class="banner-desc" style="padding-top:30px">
+          <h2>永不停歇的奋斗之路,</h2>
+          <h2>期待能有你的加入！</h2>
+        </div>
+      </div>
+      <div class="col-sm-6 hidden-xs">
+        <div class="right-mask-banner">
+          <%= image_tag "image-banner.png", alt: "招聘图片", width: '90%' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features section tab-content-section-1">
+  <div class="container">
+    <div class="intro">
+      <h3 class="title"><b>招聘流程</b></h3>
+    </div>
+    <div class="bottom-line" style="padding-bottom: 100px">
+      <%= image_tag "xiaozhaoliucheng.jpg"%>
+    </div>
+  </div>
+</div>
+
+<div class="features tab-content-section-2" style="padding-top: 81px; padding-bottom: 200px">
+  <div class="container">
+    <div class="intro">
+      <h3 class="title"><b>岗位列表</b></h3>
+      <p align="center">这些机会，期待你的加入</p>
+      <p align="center">我们是一个简单的团队，希望成就不简单的事。</p>
+      <p align="center">我们是一群充满热情，追求创新的人，期待遇见同样的你。</p>                        
+    </div>
+    <div class="row">
+      <div class="col-sm-2 col-xs-4" align="center">
+        <%= image_tag "career/icon-jishu.png", alt: "技术", width: 120 %>
+        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">技术</font></h4>
+      </div> 
+      <div class="col-sm-2 col-xs-4" align="center">
+        <%= image_tag "career/icon-shichang.png", alt: "市场", width: 120 %>
+        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">市场</font></h4>
+      </div> 
+      <div class="col-sm-2 col-xs-4" align="center">
+        <%= image_tag "career/icon-chanpin.png", alt: "产品", width: 120 %>
+        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">产品</font></h4>
+      </div>
+      <div class="col-sm-2 col-xs-4" align="center">
+        <%= image_tag "career/icon-sheji.png", alt: "设计", width: 120 %>
+        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">设计</font></h4>
+      </div>
+      <div class="col-sm-2 col-xs-4" align="center">
+        <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: 120 %>
+        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">销售</font></h4>
+      </div>                                                        
+      <div class="col-sm-2 col-xs-4"align="center">
+        <%= image_tag "career/icon-zhineng.png", alt: "职能", width: 120 %>
+        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">职能</font></h4>
+      </div>               
+    </div>
+      <div align="center" style="padding-top: 56px">
+        <%= link_to "查看岗位", positions_path, class: "btn btn-lg btn-career", role: "button", style:"color:white" -%>
+      </div>   
+  </div>
+</div>
