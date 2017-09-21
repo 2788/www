@@ -9,4 +9,7 @@ class CareerController < ApplicationController
   def positions
     @title = "positions"
   end
+  def school
+    @title = "school"
+  end
 end
