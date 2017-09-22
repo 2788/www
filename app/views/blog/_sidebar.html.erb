@@ -1,6 +1,4 @@
 <div class="sidebar">
-
-
   <form class="searchform" method="get" action="/">
     <input type="text" name="q" class="field">
     <input type="submit" class="submit">
@@ -11,6 +9,7 @@
       <%= image_tag "blog/architecture-pratice.jpg", alt: "博客图", width: "100%" -%>
     </a>
   </div>
+
   <div class="cat-item hot-clicks">
     <div class="title">热文推荐</div>
     <ul class="hot-clicks-wrapper">
@@ -19,6 +18,7 @@
       <% end %>
     </ul>
   </div>
+
   <div class="cat-item all-articles">
     <%= link_to "所有文章", "/", class: "category" -%>
   </div>
