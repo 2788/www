@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   constraints DomainConstraint.new('blog', 'blog-source', 'blog-dev') do
     root to: 'blog#index'
-    get '/archives',      to: 'blog#archives'
+    get '/archives/:id',                to: 'blog#archives', as: :archives
+    get '/archives/author/:author',     to: 'blog#author',   as: :archives_author
+    get '/archives/category/:category', to: 'blog#category',   as: :archives_category
   end
 
   root to: 'welcome#index'

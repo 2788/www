@@ -130,10 +130,13 @@
   }
 
   .cat-item{
-    color: rgb(2,2,2);
-    h4{
+    .category{
+      color: rgb(2,2,2);
       font-size: 18px;
       line-height: 36px;
+      &:hover{
+        color: rgb(6, 167, 225);
+      }
     }
   }
   .hot-clicks{
@@ -151,9 +154,13 @@
       li{
         margin-top: 0.14rem;
         margin-bottom: 0.14rem;
-        h4{
+        .hot-title{
+          color: rgb(2,2,2);
           font-size: 18px;
           line-height: 36px;
+          &:hover{
+            color: rgb(6, 167, 225);
+          }
         }
       }
     }
