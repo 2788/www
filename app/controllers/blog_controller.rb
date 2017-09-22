@@ -4,7 +4,10 @@ class BlogController < ApplicationController
   before_action :getHot
 
   def index
-    @archives = Archive.page
+    @q = Archive.ransack(title_or_summary_cont: params[:q])
+    @archives = @q.result.page params[:page]
+    # @archives = @q.result.includes(:articles).page(params[:page])
+    # @archives = Archive.page
   end
 
   def archives
@@ -13,12 +16,12 @@ class BlogController < ApplicationController
   end
 
   def author
-    @archives = Archive.where(author: params[:author]).page
+    @archives = Archive.where(author: params[:author]).page params[:page]
     render "index"
   end
 
   def category
-    @archives = Archive.where(category: params[:category]).page
+    @archives = Archive.where(category: params[:category]).page params[:page]
     render "index"
   end
 
