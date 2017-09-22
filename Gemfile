@@ -41,6 +41,7 @@ gem 'jquery-slick-rails', '~> 1.6', '>= 1.6.0.2'
 gem 'mongoid', '~> 6.2', '>= 6.2.1'
 
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
+gem 'kaminari-actionview'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

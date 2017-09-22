@@ -2,37 +2,36 @@
   <div class="container">
     <div class="row row-clear">
       <div class="col-sm-8">
-        <% 5.times do |i| %>
+        <% @archives.each do |archive| %>
           <div class="row">
             <div class="blog-content">
               <div class="col-sm-12">
                 <div class="entry-header">
                   <div class="entry-title">
-                    <a href="" class="title">七牛云GO语言周报【七月第2期】</a>
+                    <a href="" class="title"><%=archive.title %></a>
                   </div>
                   <div class="entry-meta">
-                    <span class="entry-author">
+                    <span class="entry-meta-unit entry-author">
                       <%= image_tag "blog/icon-zuozhe.png", class:"img", alt: "作者" -%>
-                      <a href="" title="by 牛小七">
-                        牛小七
+                      <a href="" title="by" + <%=archive.author %>>
+                        <%=archive.author %>
                       </a>
                     </span>
-                    <span class="entry-date" title="2017年8月28日">
+                    <span class="entry-meta-unit entry-date" title=<%=archive.created_at %>>
                       <%= image_tag "blog/icon-riqi.png", class:"img", alt: "日期" -%>
-                      <a href="" title="七牛云完成新一轮 10 亿元融资，阿里集团与云锋基金领投！">
-                        2017年7月21日
-                      </a>
-                    </span>
-                    <span class="cat-links">
-                      <%= image_tag "blog/icon-fabu.png", class:"img", alt: "发布" -%>
-                      <span class="entry-utility-prep">
-                        发布在
-                      </span>
                       <a href="">
-                        Go语言周报
+                        <%=archive.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
                       </a>
                     </span>
-                    <span class="page-views">
+                    <span class="entry-meta-unit entry-utility-prep">
+                      <%= image_tag "blog/icon-fabu.png", class:"img", alt: "发布" -%>
+                      <span>发布在</span>
+                      <a href="">
+                        <%= Archive::CATEGORIES[archive.category] -%>
+                      </a>
+                    </span>
+                    <!--
+                    <span class="entry-meta-unit page-views">
                       <%= image_tag "blog/icon-liulanliang.png", class:"img", alt: "浏览量" -%>
                       <span class="entry-utility-prep">
                         浏览量
@@ -41,18 +40,19 @@
                         2128
                       </span>
                     </span>
+                    -->
                   </div>
                 </div>
               </div>
               <div class="col-sm-5">
                 <div class="photo-left">
-                  <%= image_tag "photo-1.jpg", alt: "博客图", width: "100%" -%>
+                  <img src=<%=archive.cover %>>
                 </div>
               </div>
               <div class="col-sm-7">
                 <div class="thumbnail-blog">
                   <p class="blog-text">
-                    <span class="ellipsis">全世界有多少Gopher？上周的周报中，我们介绍了Go语言的排名已经进入到前十。那么世界上到底有多少Gopher呢？作者列出了以下计算公式：Gopher数量=全世界的开发者数量</span>
+                    <span class="ellipsis"><%=archive.summary %></span>
                     <span class="more-link-wrap">
                       <a href="" class="more-link">
                         继续阅读...
@@ -64,15 +64,8 @@
             </div>
           </div>
         <% end %>
-        <ul class="pagination paper">
-          <li class="previous disabled"><a href="#">上页</a></li>
-          <li  class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">...</a></li>
-          <li><a href="#">9</a></li>
-          <li class="next"><a href="#">下页</a></li>
-        </ul>
+        <%= @archives %>
+        <%= paginate @archives, window: 2, outer_window: 3 %>
       </div>
       <div class="col-sm-4">
         <div class="sidebar">
