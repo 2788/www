@@ -23,24 +23,24 @@
     <%= link_to "所有文章", "/", class: "category" -%>
   </div>
   <div class="cat-item all-news">
-    <%= link_to "新闻动态", archives_category_path(category: Archive::CAT["新闻动态"]), class: "category" -%>
+    <%= link_to "新闻动态", archives_category_path(category: Archive::CATEGORIES.key("新闻动态")), class: "category" -%>
   </div>
   <div class="cat-item all-products">
-    <%= link_to "产品动态", archives_category_path(category: Archive::CAT["产品动态"]), class: "category" -%>
+    <%= link_to "产品动态", archives_category_path(category: Archive::CATEGORIES.key("产品动态")), class: "category" -%>
   </div>
   <div class="cat-item all-cases">
-    <%= link_to "客户案例", archives_category_path(category: Archive::CAT["客户案例"]), class: "category" -%>
+    <%= link_to "客户案例", archives_category_path(category: Archive::CATEGORIES.key("客户案例")), class: "category" -%>
   </div>
   <div class="cat-item all-bennefits">
-    <%= link_to "近期福利", archives_category_path(category: Archive::CAT["近期福利"]), class: "category" -%>
+    <%= link_to "近期福利", archives_category_path(category: Archive::CATEGORIES.key("近期福利")), class: "category" -%>
   </div>
   <div class="cat-item all-skills">
-    <%= link_to "技术实践", archives_category_path(category: Archive::CAT["技术实践"]), class: "category" -%>
+    <%= link_to "技术实践", archives_category_path(category: Archive::CATEGORIES.key("技术实践")), class: "category" -%>
   </div>
   <div class="cat-item all-comics">
-    <%= link_to "牛棚漫画", archives_category_path(category: Archive::CAT["牛棚漫画"]), class: "category" -%>
+    <%= link_to "牛棚漫画", archives_category_path(category: Archive::CATEGORIES.key("牛棚漫画")), class: "category" -%>
   </div>
   <div class="cat-item all-hirings">
-    <%= link_to "加入我们", "http://career.qiniu.com/", class: "category" -%>
+    <%= link_to "加入我们", "http://career.qiniu.com/", target: "_blank", class: "category" -%>
   </div>
 </div>

@@ -1,4 +1,6 @@
 .features-blog{
+  padding-bottom: 1.5rem;
+  position: relative;
   color: rgb(47,48,51);
   a{
     color: rgb(161,161,161);
@@ -60,9 +62,9 @@
     }
   }
 
-  .pagination {
+  .paginate-wrapper {
     padding-top: 0.45rem;
-    padding-bottom: 0.85rem;
+    padding-bottom: 0;
   }
 // right-sidebar
 
