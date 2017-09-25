@@ -15,7 +15,7 @@
                 <%= image_tag "blog/icon-zuozhe.png", class:"img", alt: "作者" -%>
                 <%= link_to @archive[:author], archives_author_path(author: @archive[:author]) -%>
               </span>
-              <span class="entry-meta-unit entry-date" title=<%= @archive[:created_at] %>>
+              <span class="entry-meta-unit entry-date" %>>
                 <%= image_tag "blog/icon-riqi.png", class:"img", alt: "日期" -%>
                 <a href="javascript:;">
                   <%= @archive[:created_at].strftime("%Y-%m-%d %H:%M:%S") %>
