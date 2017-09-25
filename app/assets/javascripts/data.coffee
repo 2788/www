@@ -36,12 +36,20 @@
         [100, 0.001*10]
         [0, 0]
       ]
+      'oss': [
+        [102400, 0.26]
+        [0, 0.29]
+      ]
     window.lowKodoData =
       'space': 0.06
       'APIs': 0.1
       'types': 0.1
       'HTTPs': [
         [0, 0+0.06]
+      ]
+      'oss': [
+        [102400, 0.26]
+        [0, 0.29]
       ]
     window.fusionData =
       'HTTPs':
