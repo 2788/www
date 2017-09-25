@@ -16,16 +16,6 @@ class Archive < ApplicationRecord
     7 => "加入我们",
   }
 
-  CAT = {
-    "新闻动态" => 1,
-    "产品动态" => 2,
-    "客户案例" => 3,
-    "近期福利" => 4,
-    "技术实践" => 5,
-    "牛棚漫画" => 6,
-    "加入我们" => 7,
-  }
-
   def self.hot_archives
     hot = Archive.hot_sort.limit(3)
     return hot

@@ -71,7 +71,7 @@
             </div>
           </div>
         <% end %>
-        <%= paginate @archives, window: 2, outer_window: 3 %>
+        <div class="paginate-wrapper"><%= paginate @archives, window: 2, outer_window: 3 %></div>
       </div>
       <div class="col-sm-4">
         <%= render :partial => "sidebar" %>
