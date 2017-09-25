@@ -8,7 +8,7 @@
               <div class="col-sm-12">
                 <div class="entry-header">
                   <div class="entry-title">
-                    <a href="javascript:;" class="title"><%=archive.title %></a>
+                    <%= link_to archive.title, archives_path(id: archive.id), class: "title" -%>
                   </div>
                   <div class="entry-meta">
                     <span class="entry-meta-unit entry-author">

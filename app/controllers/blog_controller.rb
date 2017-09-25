@@ -6,8 +6,6 @@ class BlogController < ApplicationController
   def index
     @q = Archive.ransack(title_or_summary_cont: params[:q])
     @archives = @q.result.page params[:page]
-    # @archives = @q.result.includes(:articles).page(params[:page])
-    # @archives = Archive.page
   end
 
   def archives
