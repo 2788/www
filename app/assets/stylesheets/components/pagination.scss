@@ -1,0 +1,40 @@
+.pagination>.page.current{
+  background-color: #008c8c;
+}
+
+.pagination>.first,
+.pagination>.last{
+  display: none;
+}
+
+.pagination>.page,
+.pagination>.first,
+.pagination>.next,
+.pagination>.last,
+.pagination>.prev{
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 6px 12px;
+  color: #fff;
+  background-color: rgb(32, 164, 211);
+  border: none;
+  border-radius: 4px;
+  a{
+    color: #fff;
+    &:hover{
+      color: #fff;
+      background-color: rgb(6, 167, 225);
+    }
+  }
+}
+
+.pagination>.page:first-child{
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.pagination>.page:last-child>a,
+.pagination>.page:last-child>span {
+  margin-right: 0;
+}
