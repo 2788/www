@@ -15,6 +15,7 @@
 #= require bootstrap
 #= require jquery.slick
 #= require data
+#= require queryURL
 #= require cxselect
 #= require cityData
 
@@ -28,6 +29,7 @@
 #= require about
 #= require sla
 #= require career
+#= require blog
 
 isMobile = false; # initiate as false
 # device detection

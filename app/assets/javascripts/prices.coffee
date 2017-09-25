@@ -38,23 +38,9 @@ $(document).ready ->
   rangeFusionHTTPS = $('#range-fusion-HTTPS')
   fusionUnit = $('.fusion-unit')
 
-  #/////////////////////////////////////////////////
-  ## 解析URL参数 返回对象obj
-  parseQueryString = (url) ->
-    obj = {}
-    keyvalue = []
-    key = ''
-    value = ''
-    paraString = url.substring(url.indexOf('?') + 1, url.length).split('&')
-    for i of paraString
-      keyvalue = paraString[i].split('=')
-      key = keyvalue[0]
-      value = keyvalue[1]
-      obj[key] = value
-    return obj
   ## 控制prices页面tab
   if parseQueryString(location.search)['source']
-    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(location.search)['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
+    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(decodeURI(location.search))['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
   pre = source || 'kodo';
   $('#tab-prices-' + pre).addClass('active')
   $('.tab-prices-' + pre).addClass('active')
