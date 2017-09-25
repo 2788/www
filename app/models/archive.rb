@@ -28,7 +28,6 @@ class Archive < ApplicationRecord
 
   def self.hot_archives
     hot = Archive.hot_sort.limit(3)
-    puts hot
     return hot
   end
 
