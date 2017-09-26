@@ -1,12 +1,12 @@
 .features-blog{
   color: rgb(47,48,51);
-  a{
-    color: rgb(161,161,161);
-    &:hover{
-      color: rgb(6, 167, 225);
-    }
-  }
   .blog-content{
+    a{
+      color: rgb(161,161,161);
+      &:hover{
+        color: rgb(6, 167, 225);
+      }
+    }
     width: 100%;
     overflow: hidden;
     padding-top: 0.45rem;
@@ -118,7 +118,12 @@
     font-size: 0;
     display: inline-block;
   }
-
+  a{
+    color: rgb(2,2,2);
+    &:hover{
+      color: rgb(6, 167, 225);
+    }
+  }
   .cat-item-first{
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
