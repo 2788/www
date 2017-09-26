@@ -11,7 +11,7 @@ module ApplicationHelper
     def get_userinfo
         sso_host = Rails.configuration.sso_host
         client_id = Rails.application.secrets.sso[:client_id]
-        if sso_host == "" || client_id == ""
+        if sso_host.nil? || client_id.nil? || sso_host.blank? || client_id.blank?
             return nil
         end
 
@@ -122,7 +122,7 @@ module ApplicationHelper
         client_id = Rails.application.secrets.sso[:client_id]
         www_host = Rails.configuration.www_host
 
-        if sso_host == "" || client_id == ""
+        if sso_host.nil? || client_id.nil? || sso_host.blank? || client_id.blank?
             return "https://portal.qiniu.com/signin"
         end
 
