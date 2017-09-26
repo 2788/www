@@ -13,7 +13,7 @@
 }
 
 .fluid-slider-img-wraaper{
-    padding: 0 20px;
+    padding: 0 0.2rem;
 }
 
 .Btn-prev, .Btn-next {
@@ -134,6 +134,24 @@ video {
   }
 }
 
+.features.tab-content-section-2 {
+  .row {
+    .media-heading {
+      padding-top: 42px;
+      font-size: larger;
+      font-weight: 30px;
+    }
+    .thumbnail{
+      .caption {
+        h4 {
+          font-size: 18px;
+          font-weight: 30px;
+        }
+      }
+    }
+  }
+}
+
 //career social page scss
 .btn-career:hover,
 .btn-career:focus,
@@ -145,6 +163,28 @@ video {
 }
 .btn-career{
   background-color:#40A7FF
+}
+.hiring-content{
+  align: center;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 81px;
+  .small-content {
+    align: center;
+  }
+  p {
+    padding-top: 0.1rem;
+  }
+  li {
+    font-size: 14px;
+    font-weight: 25px;
+    padding-top: 0.1rem;
+    color:rgb(94,97,102);
+  }
+  .row {
+    padding-bottom: 0.4rem;
+  }
 }
 
 //career positions page scss 
