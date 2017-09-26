@@ -10,7 +10,7 @@ module ApplicationHelper
 
     def get_userinfo
         sso_host = Rails.configuration.sso_host
-        client_id = Rails.application.secrets.sso["client_id"]
+        client_id = Rails.application.secrets.sso[:client_id]
         if sso_host == "" || client_id == ""
             return nil
         end
@@ -21,7 +21,7 @@ module ApplicationHelper
         end
 
         store_ssid = session[:SSID]
-        cookie_ssid = get_ssid(cookie_value, Rails.application.secrets.sso["cookie_secret"])
+        cookie_ssid = get_ssid(cookie_value, Rails.application.secrets.sso[:cookie_secret])
         if cookie_ssid.blank?
             return nil
         end
@@ -43,10 +43,12 @@ module ApplicationHelper
             return nil
         end
 
+
         uinfo = get_uinfo(token, cookie_ssid)
         if uinfo.nil?
             return nil
         end
+
 
         session[:SSID] = cookie_ssid
         session[:uinfo] = uinfo
@@ -69,8 +71,8 @@ module ApplicationHelper
     end
 
     def get_admin_token
-        admin_username = Rails.application.secrets.admin["username"]
-        admin_password = Rails.application.secrets.admin["password"]
+        admin_username = Rails.application.secrets.admin[:username]
+        admin_password = Rails.application.secrets.admin[:password]
            
         begin
             res = Net::HTTP.post_form(URI.parse(Rails.configuration.acc_host+"/oauth2/token"),
@@ -90,15 +92,18 @@ module ApplicationHelper
 
     def get_uinfo(token, ssid)
         access_token = token["access_token"]
-        client_id = Rails.application.secrets.sso["client_id"]
+        client_id = Rails.application.secrets.sso[:client_id]
         uri = URI.parse(Rails.configuration.sso_host+"/uinfo/session?client_id="+client_id+"&ssid="+ssid)
         req = Net::HTTP::Get.new(uri)
         req["Authorization"] = "Bearer " + access_token
 
         begin 
-            res = Net::HTTP.start(uri.hostname, uri.port) {|http|
-              http.request(req)
-            }
+            http = Net::HTTP.new(uri.hostname, uri.port)
+            if uri.port == 443
+                http.use_ssl = true
+            end
+
+            res = http.request(req)
         rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
             return nil
         end
@@ -114,13 +119,13 @@ module ApplicationHelper
 
     def sigin_url
         sso_host = Rails.configuration.sso_host
-        client_id = Rails.application.secrets.sso["client_id"]
+        client_id = Rails.application.secrets.sso[:client_id]
         www_host = Rails.configuration.www_host
 
         if sso_host == "" || client_id == ""
             return "https://portal.qiniu.com/signin"
         end
 
-        return Rails.configuration.sso_host+"?client_id="+client_id+"&redirect_url="+www_host
+        return Rails.configuration.sso_host + "?client_id=" + client_id + "&redirect_url=" + www_host
     end
 end
