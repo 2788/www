@@ -6,10 +6,10 @@
 .fluid-slider-wrapper{
     margin-top: 162px;
   }
-  
+
 //career index fluid-word-slider
 .fluid-word-slider{
-  margin-top: 480px; 
+  margin-top: 480px;
 }
 
 .fluid-slider-img-wraaper{
@@ -49,7 +49,7 @@
   .btn-icon-visited{
     background-image: image-url("btn-play-highlight.png");
   }
-}  
+}
 
 .fluid-media-slider{
   .slick-dots li button::before{
@@ -187,7 +187,7 @@ video {
   }
 }
 
-//career positions page scss 
+//career positions page scss
 .position{
   .btn {
     font-size: 14px;
@@ -208,16 +208,19 @@ video {
 //career avater
 .media {
  .modal-body{
-  padding-left:50px; 
+  padding-left:50px;
   padding-right: 50px;
- } 
+ }
  img {
   margin: auto;
   max-height: 100px;
   transition: opacity .1s;
  }
 }
-
-.modal .modal-dialog .modal-dialog-3top{
-  margin-top: 180px;
+#myModal1,
+#myModal2,
+#myModal3{
+  .modal-dialog.modal-dialog-3top{
+    margin-top: 180px;
+  }
 }

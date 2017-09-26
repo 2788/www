@@ -26,6 +26,7 @@
 @import "components/conveyor";
 @import "components/components";
 @import "components/range";
+@import "components/pagination";
 
 @import "banner";
 @import "contact";
@@ -276,6 +277,9 @@ img.list-img{
 
 
 @media (max-width: 768px){
+  .visible-xs-inline{
+    display: inline-block !important;
+  }
   .pricing-caculator{
     width: 100%;
   }

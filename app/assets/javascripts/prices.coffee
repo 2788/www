@@ -38,23 +38,9 @@ $(document).ready ->
   rangeFusionHTTPS = $('#range-fusion-HTTPS')
   fusionUnit = $('.fusion-unit')
 
-  #/////////////////////////////////////////////////
-  ## 解析URL参数 返回对象obj
-  parseQueryString = (url) ->
-    obj = {}
-    keyvalue = []
-    key = ''
-    value = ''
-    paraString = url.substring(url.indexOf('?') + 1, url.length).split('&')
-    for i of paraString
-      keyvalue = paraString[i].split('=')
-      key = keyvalue[0]
-      value = keyvalue[1]
-      obj[key] = value
-    return obj
   ## 控制prices页面tab
   if parseQueryString(location.search)['source']
-    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(location.search)['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
+    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(decodeURI(location.search))['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
   pre = source || 'kodo';
   $('#tab-prices-' + pre).addClass('active')
   $('.tab-prices-' + pre).addClass('active')
@@ -183,11 +169,11 @@ $(document).ready ->
     for i of prices_area.kodo
       if prices_area.kodo[i]
         #if this area is here add
-        sum_kodo += setPrice($('#text-kodo-space-'+i).text(), kodoData[i]) + setPrice($('#text-kodo-read-'+i).text(), kodoData['reads'])+ setPrice($('#text-kodo-write-'+i).text(), kodoData['writes'])
+        sum_kodo += setPrice($('#text-kodo-space-'+i).text(), kodoData[i]) + setPrice($('#text-kodo-read-'+i).text(), kodoData['reads']) + setPrice($('#text-kodo-write-'+i).text(), kodoData['writes']) + setPrice($('#text-kodo-oss-'+i).text(), kodoData['oss'])
     for f of prices_area.fusion
       if prices_area.fusion[f]
         sum_fusion += setPrice($('#text-fusion-HTTP-'+f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-'+f).text(),fusionData.HTTPSs[f])
-    sum_lowKodo = unifyNum($('#text-lowKodo-space').text())*(lowKodoData.space*1000) + unifyNum($('#text-lowKodo-API').text())*(lowKodoData.APIs*1000) + unifyNum($('#text-lowKodo-type').text())*(lowKodoData.types*1000) + setPrice($('#text-lowKodo-HTTP').text(), lowKodoData.HTTPs)
+    sum_lowKodo = unifyNum($('#text-lowKodo-space').text())*(lowKodoData.space*1000) + unifyNum($('#text-lowKodo-API').text())*(lowKodoData.APIs*1000) + unifyNum($('#text-lowKodo-type').text())*(lowKodoData.types*1000) + setPrice($('#text-lowKodo-HTTP').text(), lowKodoData.HTTPs) + setPrice($('#text-lowKodo-oss').text(), lowKodoData['oss'])
     $('#kodo-price').text(sum_kodo/1000)
     $('#lowKodo-price').text(sum_lowKodo/1000)
     $('#fusion-price').text(sum_fusion/1000)

@@ -42,7 +42,8 @@
             <li>
               <div class="actions">
                 <a target="_blank" href="https://portal.qiniu.com/signin" class="btn btn-hollow">登录</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary">注册</a>
+                <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary hidden-xs">注册</a>
+                <a target="_blank" href="https://portal.qiniu.com/signup?type=1" class="btn btn-primary visible-xs-inline">注册</a>
               </div>
             </li>
           </ul>
@@ -61,13 +62,17 @@
             <li><a href="/sla-kodo">SLA</a></li>
           </ul>
           <div class="icp">
-              <a class="out_link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961" target="_blank"><span>沪公网安备 31011502000961 号</span></a>
+              <a class="out_link" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961" target="_blank"><span class="icon icon-aq">沪公网安备 31011502000961 号</span></a>
               <a class="out_link" href="http://www.miitbeian.gov.cn/" target="_blank"><span>沪 ICP 备 11037377 号-5</span></a>
           </div>
         </div>
         <div class="contact-links">
           <div class="sns">
-            <a class="weixin" href="javascript:;"><div class="qrcode"><%= image_tag "weixin-qrcode.png" -%></div></a>
+            <a class="weixin" href="javascript:;"></a>
+            <div class="popover fade top in" id="wexin-qrcode-popover">
+              <div class="arrow"></div>
+              <div class="popover-content"><%= image_tag "weixin-qrcode.png", width: 140 -%></div>
+            </div>
             <a class="github" href="https://github.com/qiniu" target="_blank"></a>
             <a class="weibo" href="http://weibo.com/qiniutek" target="_blank"></a>
           </div>

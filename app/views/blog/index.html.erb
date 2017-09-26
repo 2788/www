@@ -2,123 +2,80 @@
   <div class="container">
     <div class="row row-clear">
       <div class="col-sm-8">
-        <% 5.times do |i| %>
+        <% @archives.each do |archive| %>
           <div class="row">
             <div class="blog-content">
               <div class="col-sm-12">
                 <div class="entry-header">
                   <div class="entry-title">
-                    <a href="" class="title">七牛云GO语言周报【七月第2期】</a>
+                    <%= link_to archive.title, archives_path(id: archive.id), class: "title" -%>
                   </div>
                   <div class="entry-meta">
-                    <span class="entry-author">
+                    <span class="entry-meta-unit entry-author">
                       <%= image_tag "blog/icon-zuozhe.png", class:"img", alt: "作者" -%>
-                      <a href="" title="by 牛小七">
-                        牛小七
-                      </a>
+                      <%= link_to archive.author, archives_author_path(author: archive.author) -%>
                     </span>
-                    <span class="entry-date" title="2017年8月28日">
+                    <span class="entry-meta-unit entry-date">
                       <%= image_tag "blog/icon-riqi.png", class:"img", alt: "日期" -%>
-                      <a href="" title="七牛云完成新一轮 10 亿元融资，阿里集团与云锋基金领投！">
-                        2017年7月21日
-                      </a>
-                    </span> 
-                    <span class="cat-links">
-                      <%= image_tag "blog/icon-fabu.png", class:"img", alt: "发布" -%>
-                      <span class="entry-utility-prep">
-                        发布在
-                      </span>
                       <a href="">
-                        Go语言周报
+                        <%=archive.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
                       </a>
                     </span>
-                    <span class="page-views">
+                    <span class="entry-meta-unit entry-utility-prep">
+                      <%= image_tag "blog/icon-fabu.png", class:"img", alt: "发布" -%>
+                      <span>发布在</span>
+                      <%= link_to Archive::CATEGORIES[archive.category], archives_category_path(category: archive.category) -%>
+                    </span>
+                    <!--
+                    <span class="entry-meta-unit page-views">
                       <%= image_tag "blog/icon-liulanliang.png", class:"img", alt: "浏览量" -%>
                       <span class="entry-utility-prep">
                         浏览量
                       </span>
                       <span class="entry-utility-prep">
                         2128
-                      </span>										    
-                    </span>   
-                  </div>
+                      </span>
+                    </span>
+                    -->
                   </div>
                 </div>
+              </div>
+              <% if archive.cover? %>
                 <div class="col-sm-5">
                   <div class="photo-left">
-                    <%= image_tag "photo-1.jpg", alt: "博客图", width: "100%" -%>
-                  </div>                    
+                    <img src=<%=archive.cover %>>
+                  </div>
                 </div>
                 <div class="col-sm-7">
                   <div class="thumbnail-blog">
                     <p class="blog-text">
-                      <span class="ellipsis">全世界有多少Gopher？上周的周报中，我们介绍了Go语言的排名已经进入到前十。那么世界上到底有多少Gopher呢？作者列出了以下计算公式：Gopher数量=全世界的开发者数量</span>
+                      <span class="ellipsis"><%=archive.summary %></span>
                       <span class="more-link-wrap">
-                        <a href="" class="more-link">
-                          继续阅读...
-                        </a>
+                        <%= link_to "继续阅读...", archives_path(id: archive.id), class: "more-link" -%>
                       </span>
                     </p>
                   </div>
-                </div>    
-              </div>
+                </div>
+              <% else %>
+                <div class="col-sm-12">
+                  <div class="thumbnail-blog">
+                    <p class="blog-text">
+                      <span class="ellipsis"><%=archive.summary %></span>
+                      <span class="more-link-wrap">
+                        <%= link_to "继续阅读...", archives_path(id: archive.id), class: "more-link" -%>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
             </div>
+          </div>
         <% end %>
-          <ul class="pagination paper">
-            <li class="previous disabled"><a href="#">上页</a></li>
-            <li  class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">...</a></li>
-            <li><a href="#">9</a></li>
-            <li class="next"><a href="#">下页</a></li>
-          </ul>					                                      
-      </div>     
+        <div class="paginate-wrapper"><%= paginate @archives, window: 2, outer_window: 3 %></div>
+      </div>
       <div class="col-sm-4">
-        <div class="sidebar">
-          <form method="get" class="searchform" action="http://blog.qiniu.com/">
-            <input type="text" class="field" name="s" id="s" value="Search" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
-            <input type="submit" class="submit" name="submit" id="searchsubmit" value="Search">
-          </form>
-          <div class="cat-item cat-item-first">
-            <a href="http://hd.qiniu.com/arch" title="七牛架构师实践日" target="_blank">
-              <%= image_tag "blog/architecture-pratice.jpg", alt: "博客图", width: "100%" -%> 
-            </a>
-          </div>
-          <div class="cat-item hot-clicks">
-            <div class="title">热文推荐</div>
-            <ul class="hot-clicks-wrapper">
-              <li><h4><a href="">七牛云GO语言周报【七月第2期】</a></h4></li>
-              <li><h4><a href="">七牛云GO语言周报【七月第1期】</a></h4></li>
-              <li><h4><a href=""><独家>七牛为开发者倾情奉献，性能秒杀RAS的ECC证书免费申请</a></h4></li>
-            </ul>
-          </div>
-          <div class="cat-item all-articles">
-            <h4><a href="">所有文章</a></h4>
-          </div>
-          <div class="cat-item all-news">
-            <h4><a href="">新闻动态</a></h4>
-          </div>
-          <div class="cat-item all-products">
-            <h4><a href="">产品动态</a></h4>
-          </div>
-          <div class="cat-item all-cases">
-            <h4><a href="">客户案例</a></h4>
-          </div>                            
-          <div class="cat-item all-bennefits">
-            <h4><a href="">近期福利</a></h4>
-          </div>
-          <div class="cat-item all-skills">
-            <h4><a href="">技术实践</a></h4>
-          </div>
-          <div class="cat-item all-comics">
-            <h4><a href="">牛棚漫画</a></h4>
-          </div>
-          <div class="cat-item all-hirings">
-            <h4><a href="">加入我们</a></h4>
-          </div>                                                                                
-        </div>
-      </div>                                   
-    </div>        
+        <%= render :partial => "sidebar" %>
+      </div>
+    </div>
   </div>
 </div>

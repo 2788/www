@@ -15,6 +15,7 @@
 #= require bootstrap
 #= require jquery.slick
 #= require data
+#= require queryURL
 #= require cxselect
 #= require cityData
 
@@ -28,6 +29,7 @@
 #= require about
 #= require sla
 #= require career
+#= require blog
 
 isMobile = false; # initiate as false
 # device detection
@@ -78,17 +80,17 @@ $(document).ready ->
         slidesToShow: 2
         slidesToScroll: 2
     }]
-    
+
  # 导航栏菜单
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
-    $('#spaces-dropdown, #solution-dropdown').on 'touchstart', ->
+    $('#spaces-dropdown, #solution-dropdown, #user-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
     $('#solution-dropdown-title').on 'click', ->
       window.location.href = window.location.origin + '/solutions'
-    $('#spaces-dropdown, #solution-dropdown').hover ->
+    $('#spaces-dropdown, #solution-dropdown, #user-dropdown').hover ->
       $(this).addClass('open')
     , ->
       $(this).removeClass('open')
@@ -102,6 +104,14 @@ $(document).ready ->
   # mobile 底部注册导航 关闭
   $('.fixed-b .stripe-close-btn').click ->
     $('.footer-sign').hide()
+
+  # weixin
+  $('.weixin').on 'click', (e)->
+    e.stopPropagation()
+    $('#wexin-qrcode-popover').toggle()
+
+  $('html,body').on 'click', ->
+    $('#wexin-qrcode-popover').hide()
 
 # 客户案例
 $(document).ready ->

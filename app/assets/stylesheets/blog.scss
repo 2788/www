@@ -1,4 +1,6 @@
 .features-blog{
+  padding-bottom: 1.5rem;
+  position: relative;
   color: rgb(47,48,51);
   .blog-content{
     a{
@@ -27,6 +29,10 @@
     }
     .entry-meta {
       padding-top: 0.1rem;
+      .entry-meta-unit{
+        margin-left: 2px;
+        margin-right: 2px;
+      }
       .img {
         width: 0.14rem;
       }
@@ -35,9 +41,10 @@
       position: relative;
       min-height: 200px;
       .ellipsis{
+        padding: 5px;
         color: rgb(47,48,51);
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         overflow: hidden;
         word-wrap: break-word;
@@ -49,17 +56,17 @@
         .more-link {
           color: rgb(6, 167, 225);
           display: block;
-          font-size: 18px;
+          font-size: 14px;
         }
       }
     }
   }
 
-  .pagination {
+  .paginate-wrapper {
     padding-top: 0.45rem;
-    padding-bottom: 0.85rem;
+    padding-bottom: 0.45rem;
   }
-// right-sidebar 
+// right-sidebar
 
   .sidebar{
     padding-top: 0.45rem;
@@ -94,15 +101,16 @@
     margin: 0;
     vertical-align: middle;
     border: 0;
-    color: #ccc;
+    color: rgb(161, 161, 161);
     box-shadow: none;
     border-radius:0;
   }
-  .searchform input[type="text"]:focus	 {
+
+  .searchform input[type="text"]:focus {
+    color: rgb(2, 2, 2);
     border-right: solid 1px #e7e7e7;
     outline-offset: 0;
     outline-width: 0;
-    width: 210px;
     box-shadow: none;
     border-radius: 0;
   }
@@ -110,7 +118,7 @@
   .searchform input[type="submit"] {
     width: 36px;
     height: 36px;
-    background: image-url('zoom.jpg') no-repeat 50% 50%; 
+    background: image-url('zoom.jpg') no-repeat 50% 50%;
     border: 0;
     cursor: pointer;
     margin: 0;
@@ -130,10 +138,20 @@
   }
 
   .cat-item{
-    color: rgb(2,2,2);
-    h4{
-      font-size: 18px;
-      line-height: 36px;
+    &.active .category{
+      color: rgb(6, 167, 225);
+    }
+    .category{
+      display: inline-block;
+      width: 100%;
+      color: rgb(2,2,2);
+      font-size: 14px;
+      line-height: 28px;
+      &:hover,
+      &:focus,
+      &:active{
+        color: rgb(6, 167, 225);
+      }
     }
   }
   .hot-clicks{
@@ -151,9 +169,13 @@
       li{
         margin-top: 0.14rem;
         margin-bottom: 0.14rem;
-        h4{
-          font-size: 18px;
-          line-height: 36px;
+        .hot-title{
+          color: rgb(2,2,2);
+          font-size: 14px;
+          line-height: 28px;
+          &:hover{
+            color: rgb(6, 167, 225);
+          }
         }
       }
     }

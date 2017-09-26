@@ -28,3 +28,13 @@ $(document).ready ->
         slidesToScroll:1
     $('.fluid-media-slider .slick-dots').addClass('turnpage')
 
+    # video modal show and hidden
+    $('#myModal1, #myModal2, #myModal3').on 'show.bs.modal', (e) ->
+        vid = this.getElementsByTagName("video")[0]
+        vid.play()
+        return
+    $('#myModal1, #myModal2, #myModal3').on 'hidden.bs.modal', (e) ->
+        vid = this.getElementsByTagName("video")[0]
+        vid.currentTime = 0
+        vid.pause()
+        return

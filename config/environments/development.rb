@@ -48,4 +48,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.acc_host = 'http://acc.dev.qiniu.io'
+  config.sso_host = 'http://sso.dev.qiniu.io'
+  config.www_host = 'http://www-dev.qiniu.io'
 end

@@ -75,12 +75,23 @@
             <li><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li><%= link_to "热门活动", events_path -%></li>
+            <% uinfo = get_userinfo() %>
+            <% if is_signin?&&!uinfo.nil? %>
+            <li class="dropdown" id="user-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= uinfo["email"] %></a>
+              <ul class="dropdown-menu user-menu">
+                <li><%= link_to "退出当前账号", uinfo["logout_url"], class:"text-sub" %></li>
+              </ul>
+            </li>
+            <% else %>
             <li>
               <div class="actions">
-                <a target="_blank" href="https://portal.qiniu.com/signin" class="btn btn-hollow">登录</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary">注册有礼</a>
+                <a href="<%= sigin_url() %>" class="btn btn-hollow">登录</a>
+                <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary hidden-xs">注册有礼</a>
+                <a target="_blank" href="https://portal.qiniu.com/signup?type=1" class="btn btn-primary visible-xs-inline">注册有礼</a>
               </div>
             </li>
+            <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -384,7 +395,8 @@
     </footer>
     <div class="footer-sign">
       <div class="stripe stripe-blue p-xxl visible-xs fixed-b">
-        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl" target="_blank">马上免费注册</a></div>
+        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a></div>
+        <div class="text-center"><a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a></div>
         <%= link_to image_tag("close.png", class: "stripe-close-img"), "javascript:;", class: "stripe-close-btn" %>
       </div>
     </div>
