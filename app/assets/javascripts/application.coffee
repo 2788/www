@@ -85,12 +85,12 @@ $(document).ready ->
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
-    $('#spaces-dropdown, #solution-dropdown').on 'touchstart', ->
+    $('#spaces-dropdown, #solution-dropdown, #user-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
     $('#solution-dropdown-title').on 'click', ->
       window.location.href = window.location.origin + '/solutions'
-    $('#spaces-dropdown, #solution-dropdown').hover ->
+    $('#spaces-dropdown, #solution-dropdown, #user-dropdown').hover ->
       $(this).addClass('open')
     , ->
       $(this).removeClass('open')
