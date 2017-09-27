@@ -21,13 +21,45 @@
     <div class="intro">
       <h3 class="title"><b>招聘流程</b></h3>
     </div>
-    <div class="bottom-line" style="padding-bottom: 100px">
-      <%= image_tag "xiaozhaoliucheng.jpg"%>
+    <div class="hiring-content col-sm-12" style="" align="center">
+      <div class="row">  
+        <div class="col-sm-1 col-xs-4">
+          <%= image_tag "career/icon-jianlitoudi.png", alt: "简历投递", width: '100%' %>
+        </div>
+        <div class="col-sm-4 col-xs-8">
+          <h4 class="title" align="left">简历投递</h4>
+          <li align="left">即日起-10月27日，请投递至fresh@qiniu.com;</li>
+          <li align="left">邮件标题：校招-应聘岗位-姓名；</li>
+          <li align="left">投递简历后的恢复邮件请仔细阅读，完成笔面试报名。</li>              
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-sm-1 col-xs-4">
+          <%= image_tag "career/icon-zaixianbishi.png", alt: "在线笔试", width: '100%' %>
+        </div>
+        <div class="col-sm-4 col-xs-8">
+          <h4 class="title" align="left">在线笔试</h4>
+          <li align="left">共三场可选批次，分别在10月13日、20日、28日19：30-21：30举行；</li>
+          <li align="left">需笔试岗位：前端开发工程师、服务端开发工程师（其他岗位我们将根据你的报名信息，在简历通过筛选后直接邀约面试）；</li>
+          <li align="left">我们将根据你的报名信息，在每批次笔试开始前3-5天，通过邮件或短信最后通知笔试详情，确认参与细节与注意事项。</li>              
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-sm-1 col-xs-4">
+          <%= image_tag "career/icon-mianshioffer.png", alt: "面试&offer", width: '100%' %>
+        </div>
+        <div class="col-sm-4 col-xs-8">
+          <h4 class="title" align="left">面试&录用通知</h4>
+          <li align="left">笔试结束后一周内，通过笔试的同学将收到笔试通过邮件通知；</li>
+          <li align="left">后续我们将电话与你沟通面试的具体安排；</li>
+          <li align="left">通过所有面试，将获得七牛《录取通知书》。</li>              
+        </div>
+      </div>              
     </div>
   </div>
 </div>
 
-<div class="features tab-content-section-2" style="padding-top: 81px; padding-bottom: 200px">
+<div class="features tab-content-section-2" style="padding-top: 40px; padding-bottom: 200px">
   <div class="container">
     <div class="intro">
       <h3 class="title"><b>岗位列表</b></h3>
@@ -38,31 +70,31 @@
     <div class="row">
       <div class="col-sm-2 col-xs-4" align="center">
         <%= image_tag "career/icon-jishu.png", alt: "技术", width: 120 %>
-        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">技术</font></h4>
+        <h4 class="media-heading">技术</h4>
       </div> 
       <div class="col-sm-2 col-xs-4" align="center">
         <%= image_tag "career/icon-shichang.png", alt: "市场", width: 120 %>
-        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">市场</font></h4>
+        <h4 class="media-heading">市场</h4>
       </div> 
       <div class="col-sm-2 col-xs-4" align="center">
         <%= image_tag "career/icon-chanpin.png", alt: "产品", width: 120 %>
-        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">产品</font></h4>
+        <h4 class="media-heading">产品</h4>
       </div>
       <div class="col-sm-2 col-xs-4" align="center">
         <%= image_tag "career/icon-sheji.png", alt: "设计", width: 120 %>
-        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">设计</font></h4>
+        <h4 class="media-heading">设计</h4>
       </div>
       <div class="col-sm-2 col-xs-4" align="center">
         <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: 120 %>
-        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">销售</font></h4>
+        <h4 class="media-heading">销售</h4>
       </div>                                                        
-      <div class="col-sm-2 col-xs-4"align="center">
+      <div class="col-sm-2 col-xs-4" align="center">
         <%= image_tag "career/icon-zhineng.png", alt: "职能", width: 120 %>
-        <h4 class="media-heading" style="padding-top:42px"><font size="3.6">职能</font></h4>
+        <h4 class="media-heading">职能</h4>
       </div>               
     </div>
-      <div align="center" style="padding-top: 56px">
-        <%= link_to "查看岗位", positions_path, class: "btn btn-lg btn-career", role: "button", style:"color:white" -%>
-      </div>   
+    <div align="center" style="padding-top: 56px">
+      <%= link_to "查看岗位", positions_path, class: "btn btn-lg btn-career", role: "button", style:"color:white" -%>
+    </div>   
   </div>
 </div>

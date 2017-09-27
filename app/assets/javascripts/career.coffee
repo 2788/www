@@ -11,14 +11,12 @@ $(document).ready ->
         arrows: false
         slidesToShow: 3
         slidesToScroll: 2
-    #
 
     # career wordbutton slider
     $('.fluid-wordbutton-slider').slick
         arrows:true
         slidesToShow: 1
         slidesToScroll: 1
-    #
 
     # career media slider
     $('.fluid-media-slider').slick
@@ -26,14 +24,16 @@ $(document).ready ->
         arrows: false
         slidesToShow: 2
         slidesToScroll:1
+
     $('.fluid-media-slider .slick-dots').addClass('turnpage')
 
     # video modal show and hidden
-    $('#myModal1, #myModal2, #myModal3').on 'show.bs.modal', (e) ->
+    $('#interview, #eventParty-short, #eventParty-long').on 'show.bs.modal', (e) ->
         vid = this.getElementsByTagName("video")[0]
         vid.play()
         return
-    $('#myModal1, #myModal2, #myModal3').on 'hidden.bs.modal', (e) ->
+
+    $('#interview, #eventParty-short, #eventParty-long').on 'hidden.bs.modal', (e) ->
         vid = this.getElementsByTagName("video")[0]
         vid.currentTime = 0
         vid.pause()
