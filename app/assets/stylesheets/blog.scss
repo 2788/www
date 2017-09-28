@@ -70,6 +70,7 @@
 
   .sidebar{
     padding-top: 0.45rem;
+    padding-bottom: 0.68rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -81,12 +82,13 @@
   */
 
   .searchform {
+    position: relative;
     width: 100%;
     background: #fff;
     border: solid 1px #e7e7e7;
     padding:  0;
     margin: 0;
-    overflow: auto;
+    overflow: hidden;
   }
 
   .searchform .assistive-text {
@@ -94,7 +96,7 @@
   }
 
   .searchform input[type="text"] {
-    width: 210px;
+    width: 100%;
     height: 38px;
     float: left;
     padding: 6px 0 6px 11px;
@@ -116,15 +118,16 @@
   }
 
   .searchform input[type="submit"] {
+    position: absolute;
+    right: -1px;
     width: 36px;
-    height: 36px;
+    height: 100%;
     background: image-url('zoom.jpg') no-repeat 50% 50%;
     border: 0;
     cursor: pointer;
     margin: 0;
     padding: 0;
     font-size: 0;
-    display: inline-block;
   }
   a{
     color: rgb(2,2,2);

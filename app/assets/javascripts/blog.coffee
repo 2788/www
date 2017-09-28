@@ -17,4 +17,4 @@ $(document).ready ->
   curli = $($('.list-blog li')[catnum])
   curli.addClass('active')
   # update search-value
-  $('#blog-search-input').val(curli.find('a').text())
+  $('#blog-search-input').val(curli.find('a').text()||search)
