@@ -39,15 +39,15 @@ footer{
     a{
       display: inline-block;
       width: 18px;
-      height: 18px;
-      background-size: 18px 18px !important;
+      height: auto;
+      background-size: 18px auto !important;
       padding: 10px;
       margin: 0 10px;
       cursor: pointer;
     }
-    .github{ background: image-url('github.png') no-repeat 50% 50%; }
-    .weibo{  background: image-url('weibo.png') no-repeat 50% 50%; }
-    .weixin{ background: image-url('icon-weichat.png') no-repeat 50% 50%; }
+    .github{ background: image-url('github.png') no-repeat; }
+    .weibo{  background: image-url('weibo.png') no-repeat; }
+    .weixin{ background: image-url('icon-weichat.png') no-repeat; }
     #wexin-qrcode-popover{
       left: -68px;
       top: -120px;
