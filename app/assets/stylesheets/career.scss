@@ -6,21 +6,29 @@
 .navbar-default .navbar-brand span.navbar-brand-text{
   margin-top: 5px;
 }
+.hero-career .banner-desc{
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
 .fluid-slider-wrapper{
-    margin-top: 162px;
-  }
+  padding: 1.68rem 0 0.5rem;
+}
 
 //career index fluid-word-slider
 .fluid-word-slider{
   margin-top: 480px;
 }
 
+.conveyor.fluid-wordbutton-slider .slick-slide{
+  text-align: left;
+}
+
 .fluid-slider-img-wraaper{
-    padding: 0 0.2rem;
+  padding: 0 0.2rem;
 }
 
 .Btn-prev, .Btn-next {
-    background: #6994B9;
+  background: #6994B9;
 }
 
 .grid-container{
@@ -55,6 +63,7 @@
 }
 
 .fluid-media-slider{
+  padding-top: 70px;
   .slick-dots li button::before{
     font-size: 0.40rem;
     content: "-";
@@ -78,7 +87,6 @@ video {
 }
 
 #interview {
-  .modal-dialog { margin-top: 60px; }
   .modal-body {
     background: #000;
     padding: 0px;
@@ -98,7 +106,6 @@ video {
 }
 
 #eventParty-short {
-  .modal-dialog { margin-top: 60px; }
   .modal-body {
     background: #000;
     padding: 0px;
@@ -118,7 +125,6 @@ video {
 }
 
 #eventParty-long {
-  .modal-dialog { margin-top: 60px; }
   .modal-body {
     background: #000;
     padding: 0px;
@@ -134,24 +140,6 @@ video {
   }
   video {
     display: block;
-  }
-}
-
-.features.tab-content-section-2 {
-  .row {
-    .media-heading {
-      padding-top: 42px;
-      font-size: larger;
-      font-weight: 30px;
-    }
-    .thumbnail{
-      .caption {
-        h4 {
-          font-size: 18px;
-          font-weight: 30px;
-        }
-      }
-    }
   }
 }
 
@@ -191,7 +179,11 @@ video {
 }
 
 //career positions page scss
-.position{
+.positions{
+  .details{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   .btn {
     font-size: 14px;
   }
@@ -208,6 +200,15 @@ video {
   }
 }
 
+.position-check{
+  padding-top: 56px;
+}
+
+.position-title{
+  display: inline-block;
+  margin-left: -20px;
+}
+
 //career avater
 .media {
  .modal-body{
@@ -220,9 +221,9 @@ video {
   transition: opacity .1s;
  }
 }
-#myModal1,
-#myModal2,
-#myModal3{
+#interview,
+#eventParty-short,
+#eventParty-long{
   .modal-dialog.modal-dialog-3top{
     margin-top: 180px;
   }
