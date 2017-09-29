@@ -10,7 +10,7 @@ class BlogController < ApplicationController
   end
 
   def archives
-    @archive = Archive.where(id: params[:id]).first
+    @archive = Archive.find(params[:id])
     @title = @archive[:title]
   end
 
