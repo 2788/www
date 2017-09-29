@@ -216,15 +216,15 @@
 
       <div class="col-sm-9">
         <div class="row">
-          <% I18n.t("news").first(3).each do |list| %>
+          <% @lists.first(3).each do |list| %>
             <div class="col-sm-6 col-md-4">
               <div class="hotnews-box">
-                <a href=<%= list[:link] %> target="_blank">
-                  <%= image_tag list[:img] || "", class: "", alt: "图片加载中" %>
+                <%= link_to "#{ Rails.application.config.blog_host }/archives/#{ list.id }", target: "_blank" do -%>
+                  <%= image_tag list[:img] || "news4.png", class: "", alt: "图片加载中" %>
                   <div class="infobox">
-                    <%= content_tag :div, content_tag(:time, list[:time]) + content_tag(:p, list[:title].truncate(50, omission: '...')) -%>
+                    <%= content_tag :div, content_tag(:time,list[:created_at].strftime("%Y-%m-%d %H:%M:%S")) + content_tag(:p, list[:title].truncate(50, omission: '...')) -%>
                   </div>
-                </a>
+                <% end %>
               </div>
             </div>
           <% end %>

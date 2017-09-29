@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   before_action :getLists
 
   def index
+    @lists = @news
   end
 
   def kodo
