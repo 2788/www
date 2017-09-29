@@ -17,8 +17,8 @@
       <div class="col-sm-10">
         <div class="sections-wrapper">
           <section id=<%= action_name -%>>
-            <% I18n.t(action_name).each do |list| %>
-              <%= content_tag :div, link_to(content_tag(:h4, list[:title]) + content_tag(:time, list[:time]) + content_tag(:p, list[:desc], class: "news-content"), list[:link], target: "_blank" ), class: "news-modal" -%>
+            <% @lists.each do |list| %>
+              <%= content_tag :div, link_to(content_tag(:h4, list[:title]) + content_tag(:time, list[:created_at].strftime("%Y-%m-%d %H:%M:%S")) + content_tag(:span, "发布在   " + Archive::CATEGORIES[list.category], class: "category") + content_tag(:p, list[:summary], class: "news-content"), archives_path(id: list.id), target: "_blank" ), class: "news-modal" -%>
             <% end %>
           </section>
         </div>
