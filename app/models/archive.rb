@@ -6,6 +6,12 @@ class Archive < ApplicationRecord
 
   scope :hot_sort,  -> { where(:is_hot => 1) }
 
+  scope :new_lists, -> { where(:category => 1) }
+
+  scope :product_lists, -> { where(:category => 2) }
+
+  scope :welfares_lists, -> { where(:category => 4) }
+
   CATEGORIES = {
     1 => "新闻动态",
     2 => "产品动态",
@@ -19,6 +25,21 @@ class Archive < ApplicationRecord
   def self.hot_archives
     hot = Archive.hot_sort.limit(3)
     return hot
+  end
+
+  def self.news_archives
+    news = Archive.new_lists.limit(10)
+    return news
+  end
+
+  def self.product_archives
+    product_news = Archive.product_lists.limit(10)
+    return product_news
+  end
+
+  def self.welfares_archives
+    welfares = Archive.welfares_lists.limit(10)
+    return welfares
   end
 
 end

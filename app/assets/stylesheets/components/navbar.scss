@@ -56,6 +56,19 @@ nav.navbar.nav-bg{
 
   .navbar-header{
     min-height: 68px;
+    .sidebar-toggle {
+      float: left;
+      padding: 6px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-top: 8px;
+      color: #FFF;
+      background-color: rgba(0, 0, 0, 0);
+      background-image: none;
+      border: none;
+      font-size: 24px;
+      margin-right: 12px;
+    }
     .navbar-toggle{
       margin-top: 14px;
       &:focus,
@@ -331,6 +344,7 @@ nav.navbar.nav-bg{
       }
     }
   }
+
   .navbar-default .navbar-collapse{
     padding: 0;
   }

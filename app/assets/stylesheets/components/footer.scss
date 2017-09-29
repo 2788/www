@@ -225,6 +225,15 @@ footer.footer-mobile{
 // Responsive
 // ---------------------------------------------------------------------
 @media (max-width: 425px) {
+  footer.form-footer{
+    .links.career-footer-links, footer.form-footer .links.blog-footer-links{
+      padding: 0;
+    }
+    .contact-links{
+      float: none;
+      text-align: center;
+    }
+  }
   footer{
     padding-top: 25px;
     padding-bottom: 25px;
