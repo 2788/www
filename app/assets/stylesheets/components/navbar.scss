@@ -56,6 +56,29 @@ nav.navbar.nav-bg{
 
   .navbar-header{
     min-height: 68px;
+    .sidebar-toggle {
+      float: left;
+      padding: 6px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-top: 8px;
+      color: #FFF;
+      background-color: rgba(0, 0, 0, 0);
+      background-image: none;
+      border: none;
+      font-size: 24px;
+      margin-right: 12px;
+      .fa{
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+      }
+      .fa-navicon:before, .fa-reorder:before, .fa-bars:before {
+        content: "\f0c9";
+      }
+    }
     .navbar-toggle{
       margin-top: 14px;
       &:focus,
@@ -331,6 +354,7 @@ nav.navbar.nav-bg{
       }
     }
   }
+
   .navbar-default .navbar-collapse{
     padding: 0;
   }

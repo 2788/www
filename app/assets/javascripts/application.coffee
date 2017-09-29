@@ -95,6 +95,10 @@ $(document).ready ->
     , ->
       $(this).removeClass('open')
 
+  # 文档侧边导航栏隐藏与展开
+  $('.sidebar-toggle').click ->
+    $('.blog-page').toggleClass('sidebar-collapse')
+
 
   # 悬浮按钮（咨询反馈）关闭
   # TODO: 记录 cookie

@@ -144,16 +144,19 @@ video {
 }
 
 //career social page scss
-.btn-career:hover,
-.btn-career:focus,
-.btn-career:active,
-.btn-career.active {
-  color: #ffffff;
-  background-color: #3276b1;
-  border-color: #285e8e;
-}
-.btn-career{
-  background-color:#40A7FF
+.features{
+  a.btn-career:hover,
+  a.btn-career:focus,
+  a.btn-career:active,
+  a.btn-career.active {
+    color: #ffffff;
+    background-color: #3276b1;
+    border-color: #285e8e;
+  }
+  a.btn-career{
+    color: white;
+    background-color:#40A7FF
+  }
 }
 .hiring-content{
   align: center;
