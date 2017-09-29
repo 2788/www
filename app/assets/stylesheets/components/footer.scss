@@ -116,11 +116,12 @@ footer.form-footer{
   padding: 0;
   width: 100%;
 
-  .links.career-footer-links{
+  .links.career-footer-links,
+  .links.blog-footer-links,{
     display: inline-block;
     border: none;
     margin: 0;
-    padding: 0 0 20px;
+    padding: 0 0 45px;
   }
   .contact-links{
     float: right;
