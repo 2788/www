@@ -3,17 +3,21 @@
   position: relative;
   color: rgb(47,48,51);
   .blog-content{
+    width: 100%;
+    overflow: hidden;
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid #e5e5e5;
     a{
       color: rgb(161,161,161);
       &:hover{
         color: rgb(6, 167, 225);
       }
     }
-    width: 100%;
-    overflow: hidden;
-    padding-top: 0.45rem;
-    padding-bottom: 0.45rem;
-    border-bottom: 1px solid #e5e5e5;
+    img{
+      max-width: 100% !important;
+      height: auto !important;
+    }
     .entry-header{
       padding-bottom: 41px;
       .entry-utility-prep{
