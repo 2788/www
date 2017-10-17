@@ -6,6 +6,8 @@ class Archive < ApplicationRecord
 
   scope :hot_sort,  -> { where(:is_hot => 1) }
 
+  scope :top_sort,  -> { where(:is_top => 1) }
+
   scope :new_lists, -> { where(:category => 1) }
 
   scope :product_lists, -> { where(:category => 2) }
@@ -25,6 +27,11 @@ class Archive < ApplicationRecord
   def self.hot_archives
     hot = Archive.hot_sort.limit(3)
     return hot
+  end
+
+  def self.top_archives
+    top = Archive.top_sort.limit(3)
+    return top
   end
 
   def self.news_archives
