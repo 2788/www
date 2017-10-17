@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
-  before_action :getLists
 
   def index
-    @lists = @top_archives
+    @top_archives = Archive.top_archives
   end
 
   def kodo
@@ -33,16 +32,19 @@ class WelcomeController < ApplicationController
   end
 
   def news
+    @news = Archive.news_archives
     @lists = @news
     render "about"
   end
 
   def product_news
+    @product_news = Archive.product_archives
     @lists = @product_news
     render "about"
   end
 
   def welfares
+    @welfares = Archive.welfares_archives
     @lists = @welfares
     render "about"
   end
@@ -111,15 +113,5 @@ Disallow: /\
       """
     end
   end
-
-  private
-
-    def getLists
-      @top_archives = Archive.top_archives
-      @news = Archive.news_archives
-      @product_news = Archive.product_archives
-      @welfares = Archive.welfares_archives
-      puts @news
-    end
 
 end
