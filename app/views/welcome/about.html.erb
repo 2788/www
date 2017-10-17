@@ -18,7 +18,7 @@
         <div class="sections-wrapper">
           <section id=<%= action_name -%>>
             <% @lists.each do |list| %>
-              <%= content_tag :div, link_to(content_tag(:h4, list[:title]) + content_tag(:time, list[:created_at].strftime("%Y-%m-%d %H:%M:%S")) + content_tag(:span, "发布在   " + Archive::CATEGORIES[list.category], class: "category") + content_tag(:p, list[:summary], class: "news-content"), archives_path(id: list.id), target: "_blank" ), class: "news-modal" -%>
+              <%= content_tag :div, link_to(content_tag(:h4, list[:title]) + content_tag(:time, list[:created_at].strftime("%Y-%m-%d %H:%M:%S")) + content_tag(:span, "发布在   " + Archive::CATEGORIES[list.category], class: "category") + content_tag(:p, list[:summary], class: "news-content"), archives_path(id: list.id), target: "_blank" ), class: "news-modal clear-pt" -%>
             <% end %>
           </section>
         </div>

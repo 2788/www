@@ -21,6 +21,9 @@
     div.news-modal{
       padding: 30px 0;
       border-bottom: 1px solid #eeeeee;
+      &.clear-pt{
+        padding-top: 0;
+      }
     }
 
     h4{

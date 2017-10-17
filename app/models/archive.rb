@@ -42,4 +42,8 @@ class Archive < ApplicationRecord
     return welfares
   end
 
+  def cover
+    attributes["cover"].blank? ? "/archive-default-cover.png" : attributes["cover"]
+  end
+
 end

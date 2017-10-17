@@ -220,7 +220,7 @@
             <div class="col-sm-6 col-md-4">
               <div class="hotnews-box">
                 <%= link_to "#{ Rails.application.config.blog_host }/archives/#{ list.id }", target: "_blank" do -%>
-                  <%= image_tag list[:img] || "news4.png", class: "", alt: "图片加载中" %>
+                  <%= image_tag list.cover, class: "", alt: "图片加载中" %>
                   <div class="infobox">
                     <%= content_tag :div, content_tag(:time,list[:created_at].strftime("%Y-%m-%d %H:%M:%S")) + content_tag(:p, list[:title].truncate(50, omission: '...')) -%>
                   </div>
