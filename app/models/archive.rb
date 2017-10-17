@@ -6,6 +6,8 @@ class Archive < ApplicationRecord
 
   scope :hot_sort,  -> { where(:is_hot => 1) }
 
+  scope :top_sort,  -> { where(:is_top => 1) }
+
   scope :new_lists, -> { where(:category => 1) }
 
   scope :product_lists, -> { where(:category => 2) }
@@ -27,6 +29,11 @@ class Archive < ApplicationRecord
     return hot
   end
 
+  def self.top_archives
+    top = Archive.top_sort.limit(3)
+    return top
+  end
+
   def self.news_archives
     news = Archive.new_lists.limit(10)
     return news
@@ -40,6 +47,10 @@ class Archive < ApplicationRecord
   def self.welfares_archives
     welfares = Archive.welfares_lists.limit(10)
     return welfares
+  end
+
+  def cover
+    attributes["cover"].blank? ? "/archive-default-cover.png" : attributes["cover"]
   end
 
 end
