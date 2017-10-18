@@ -19,7 +19,6 @@
 #= require cxselect
 #= require cityData
 
-#= require smint
 #= require validate
 #= require events
 #= require prices
@@ -153,11 +152,11 @@ $(document).ready ->
     slidesToScroll: 1
   $('.banners-slider .slick-dots').addClass('banners-arrow')
 
-# 监控滚动 中部导航
-$(window).load ->
-  #enabling stickUp on the '.navbar-wrapper' class
-  $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
-  return
+# # 监控滚动 中部导航
+# $(window).load ->
+#   #enabling stickUp on the '.navbar-wrapper' class
+#   $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
+#   return
 
 # ourcompany timeline
 $(document).ready ->
