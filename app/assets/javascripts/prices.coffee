@@ -90,31 +90,31 @@ $(document).ready ->
   #/////////////////////////////////////////////////////////////////////
   ## 公用方法
   # fix some block
-  setFxd = (json) ->
-    defaultVar =
-      'fxdClass':'fxd'
-      'elem': 'elem'
-      'prevPosition': 'relative'
-    json = json or defaultVar
-    fxd = json.fxdClass
-    prevPosition = json.prevPosition
-    myElem = json.elem
-    myOffset = myElem.height()
-    stickyTop = myElem.offset().top
-    $(window).scroll ->
-      # current distance top
-      if $(window).width() < 768
-        return
-      scrollTop = $(window).scrollTop()
-      # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
-      if scrollTop > stickyTop
-        myElem.css({
-          'position': 'fixed'}).addClass fxd
-        # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
-      else
-        myElem.css(
-          'position': prevPosition
-          ).removeClass fxd
+  # setFxd = (json) ->
+  #   defaultVar =
+  #     'fxdClass':'fxd'
+  #     'elem': 'elem'
+  #     'prevPosition': 'relative'
+  #   json = json or defaultVar
+  #   fxd = json.fxdClass
+  #   prevPosition = json.prevPosition
+  #   myElem = json.elem
+  #   myOffset = myElem.height()
+  #   stickyTop = myElem.offset().top
+  #   $(window).scroll ->
+  #     # current distance top
+  #     if $(window).width() < 768
+  #       return
+  #     scrollTop = $(window).scrollTop()
+  #     # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
+  #     if scrollTop > stickyTop
+  #       myElem.css({
+  #         'position': 'fixed'}).addClass fxd
+  #       # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
+  #     else
+  #       myElem.css(
+  #         'position': prevPosition
+  #         ).removeClass fxd
 
   # search data,add to sum
   cacuSum = (num, obj) ->
@@ -185,12 +185,12 @@ $(document).ready ->
     $('#text-' + key).text(val)
     caculateEveryPrice()
 
-  # 容错
-  if $('#feature-price-nav').length != 0 && $(window).width() > 768
-    setFxd
-      'elem': $('#feature-price-nav')
-      'fxdClass': 'fix-top'
-      'prevPosition': 'relative'
+  # # 容错
+  # if $('#feature-price-nav').length != 0 && $(window).width() > 768
+    # setFxd
+    #   'elem': $('#feature-price-nav')
+    #   'fxdClass': 'fix-top'
+    #   'prevPosition': 'relative'
 
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events

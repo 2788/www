@@ -28,11 +28,15 @@
 nav.navbar{
   min-height: 68px;
   margin-bottom: 0;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   width: 100%;
   background-color: transparent;
   &:hover{
+    background-color: #303848;
+  }
+  &.nav-bg{
+    transition: all linear .8s;
     background-color: #303848;
   }
 }

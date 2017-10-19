@@ -19,7 +19,6 @@
 #= require cxselect
 #= require cityData
 
-#= require smint
 #= require validate
 #= require events
 #= require prices
@@ -153,11 +152,45 @@ $(document).ready ->
     slidesToScroll: 1
   $('.banners-slider .slick-dots').addClass('banners-arrow')
 
-# 监控滚动 中部导航
+listenScroll = (json) ->
+  defaultVar =
+    'fxdClass':'fxd'
+    'elem': 'elem'
+    'prevPosition': 'relative'
+  json = json or defaultVar
+  fxd = json.fxdClass
+  prevPosition = json.prevPosition
+  myElem = json.elem
+  myOffset = myElem.height()
+  stickyTop = myElem.offset().top
+  $(window).scroll ->
+    # current distance top
+    if $(window).width() < 768
+      return
+    scrollTop = $(window).scrollTop()
+    # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
+    if scrollTop > stickyTop
+      myElem.css({
+        'position': 'fixed'}).addClass fxd
+      # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
+    else
+      myElem.css(
+        'position': prevPosition
+        ).removeClass fxd
+
+# 监控滚动 导航
 $(window).load ->
-  #enabling stickUp on the '.navbar-wrapper' class
-  $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
+  listenScroll
+    'elem': $('#navbar')
+    'fxdClass': 'nav-bg'
+    'prevPosition': 'fixed'
   return
+
+# # 监控滚动 中部导航
+# $(window).load ->
+#   #enabling stickUp on the '.navbar-wrapper' class
+#   $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
+#   return
 
 # ourcompany timeline
 $(document).ready ->

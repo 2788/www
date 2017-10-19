@@ -32,17 +32,17 @@ class WelcomeController < ApplicationController
   end
 
   def news
-    @lists = Archive.news_archives
+    @archives = Archive.news_archives
     render "about"
   end
 
   def product_news
-    @lists = Archive.product_archives
+    @archives = Archive.product_archives
     render "about"
   end
 
   def welfares
-    @lists = Archive.welfares_archives
+    @archives = Archive.welfares_archives
     render "about"
   end
 
