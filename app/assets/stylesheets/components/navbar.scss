@@ -31,7 +31,14 @@ nav.navbar{
   position: fixed;
   z-index: 1000;
   width: 100%;
-  background-color: #303848;
+  background-color: transparent;
+  &:hover{
+    background-color: #303848;
+  }
+  &.nav-bg{
+    transition: all linear .8s;
+    background-color: #303848;
+  }
 }
 nav.navbar.nav-bg{
   background-color: #303848;

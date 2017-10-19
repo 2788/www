@@ -187,10 +187,10 @@ $(document).ready ->
 
   # # 容错
   # if $('#feature-price-nav').length != 0 && $(window).width() > 768
-  #   setFxd
-  #     'elem': $('#feature-price-nav')
-  #     'fxdClass': 'fix-top'
-  #     'prevPosition': 'relative'
+    # setFxd
+    #   'elem': $('#feature-price-nav')
+    #   'fxdClass': 'fix-top'
+    #   'prevPosition': 'relative'
 
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
