@@ -18,7 +18,7 @@
         <div class="sections-wrapper">
           <section id=<%= action_name -%>>
             <% @archives.each do |archive| %>
-              <%= content_tag :div, link_to(content_tag(:h4, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d")) + content_tag(:span, "发布在   " + Archive::CATEGORIES[archive.category], class: "category") + content_tag(:p, archive[:summary], class: "news-content"), archives_path(id: archive.id), target: "_blank" ), class: "news-modal clear-pt" -%>
+              <%= content_tag :div, link_to(content_tag(:h4, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d")) + content_tag(:span, "发布在   " + Archive::CATEGORIES[archive.category], class: "category") + content_tag(:p, archive[:summary], class: "news-content"), "#{ Rails.application.config.blog_host }/archives/#{ archive.id }", target: "_blank" ), class: "news-modal clear-pt" -%>
             <% end %>
           </section>
         </div>
