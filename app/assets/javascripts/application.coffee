@@ -191,7 +191,7 @@ $(window).load ->
 
 #中部导航
 $(window).load ->
-  $('.navbar-wrapper-middle').smint 'fxdClass':'positive'
+  $('.navbar-wrapper-middle').smint 'fxdClass':'relative'
   return
 
 # ourcompany timeline
