@@ -59,6 +59,23 @@
   margin: auto;
 }
 
+// 中部导航active样式调为普通
+.nav.nav-tabs.nav-justified{
+  >li.active>a,
+  >li.active>a:focus,
+  >li.active>a:hover {
+    color: #333;
+    cursor: default;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+  }
+  > li::before{
+    width: 0;
+    height: 0;
+  }
+}
+
 .nav.nav-tabs.nav-justified.points-bar > li::before{
   width: 0;
   height: 0;
