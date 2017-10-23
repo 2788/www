@@ -20,6 +20,7 @@
 #= require cityData
 #= require social-share-button
 #= require social-share-button/wechat
+#= require smint
 
 #= require validate
 #= require events
@@ -188,11 +189,10 @@ $(window).load ->
     'prevPosition': 'fixed'
   return
 
-# # 监控滚动 中部导航
-# $(window).load ->
-#   #enabling stickUp on the '.navbar-wrapper' class
-#   $('.navbar-wrapper-middle').smint 'fxdClass':'fxd'
-#   return
+#中部导航
+$(window).load ->
+  $('.navbar-wrapper-middle').smint 'fxdClass':'positive'
+  return
 
 # ourcompany timeline
 $(document).ready ->
