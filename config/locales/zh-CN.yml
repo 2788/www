@@ -41,9 +41,9 @@ zh-CN:
           label: 直播云
           desc: 提供全球化实时流服务和端到端直播场景解决方案
 
-        - name: vance
-          label: 点播云
-          desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
+        # - name: vance
+        #   label: 点播云
+        #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   solutions:
     - name: QOS
       label:  私有云存储解决方案
