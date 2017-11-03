@@ -13,4 +13,9 @@ class Feedback
   field :uid, type: Integer
   field :referer, type: String # 来源网址
   field :ip, type: String
+
+  validates_format_of :email, :with => /\A(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\z/
+  validates :content, length: { maximum: 255 }
+  validates :phone, length: { in: 8..11 }
+  validates :province, :name, presence: true
 end
