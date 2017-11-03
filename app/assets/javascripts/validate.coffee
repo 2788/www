@@ -1,6 +1,5 @@
 do (window, document) ->
-  tel_rule = /^[a-z0-9_]+(\.?[a-z0-9-_])*?@([a-zA-Z0-9]([a-zA-Z0-9\-]*?[a-zA-Z0-9])?\.)+[a-zA-Z]{2,20}$/i #手机号
-  regPhone_rule = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/ #电话
+  phone_rule = /^((\d{11})|^((\+86)|(86))?\d{11}$|^((\d{7,8})|(\d{4}|\d{3})-?(\d{7,8})|(\d{4}|\d{3})-?(\d{7,8})-?(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-?(\d{4}|\d{3}|\d{2}|\d{1}))$)$/ # 11位手机号码-可包含+86|86,3-4位区号，7-8位直播号码，1－4位分机号
   email_rule = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ # email
 
   # show error filed，edit class -> active
@@ -39,8 +38,7 @@ do (window, document) ->
         else
           return false
       when 'tel'
-        # if !tel_rule.test(_value) and !regPhone_rule.test(_value)
-        if _value.length >= 0 and _value.length < 8
+        if !phone_rule.test(_value)
           return true
         else
           return false
