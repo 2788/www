@@ -2,7 +2,7 @@ class Archive < ApplicationRecord
 
   paginates_per 5
 
-  default_scope -> { order(created_at: :desc) }
+  default_scope -> { where(:status => 'published', :deleted_at => nil).order(created_at: :desc) }
 
   scope :hot_sort,  -> { where(:is_hot => 1) }
 
