@@ -60,12 +60,20 @@
     }
   }
 
-  &.hero-banner1{ background-image: image-url('duanshipin-banner.jpg');.middle-container{padding-top: 0.7rem;}}
-  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg');}
+  &.hero-banner1{ background-image: image-url('duanshipin-banner.jpg');.middle-container{padding-top: 0.7rem;} }
+  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg'); }
   &.hero-banner3{
     background-image: image-url('southern-price-reduce.jpg');
     .banner-container{
       left: 1.7rem;
+    }
+  }
+  &.hero-banner4{
+    background-image: image-url('double11.jpg');
+    .btn-banner{
+      bottom: 14px;
+      color: red;
+      background-color: yellow;
     }
   }
 
