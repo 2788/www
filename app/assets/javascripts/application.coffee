@@ -172,14 +172,22 @@ listenScroll = (json) ->
   prevPosition = json.prevPosition
   myElem = json.elem
   myOffset = myElem.height()
-  stickyTop = myElem.offset().top
+  # document.ready set nav-bar-style
+  if $(window).scrollTop() > 0
+    myElem.css({
+      'position': 'fixed'}).addClass fxd
+    # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
+  else
+    myElem.css(
+      'position': prevPosition
+      ).removeClass fxd
   $(window).scroll ->
     # current distance top
     if $(window).width() < 768
       return
     scrollTop = $(window).scrollTop()
     # if we scroll more than the navigation, change its position to fixed and add class 'fxd', otherwise change it back to absolute and remove the class
-    if scrollTop > stickyTop
+    if scrollTop > 0
       myElem.css({
         'position': 'fixed'}).addClass fxd
       # When an item is fixed, its removed from the flow so its height doesnt impact the other items on the page
