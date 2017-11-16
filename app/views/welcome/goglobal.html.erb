@@ -29,7 +29,7 @@
         <li class="step-li">
           <div class="step-no">2</div>
           <p class="step-info text-left">等待资料审核（7个工作日）</p>
-          <%= link_to "立刻申请", "http://wj.qiniu.com/f/h73Wim", class: "step-submit-btn btn btn-primary color-light b-0" -%>
+          <%= link_to "立刻申请", "http://wj.qiniu.com/f/h73Wim", target: "_blank", class: "step-submit-btn btn btn-primary color-light b-0" -%>
         </li>
 
         <li class="step-li step-li-no">
@@ -145,8 +145,8 @@
       <h3 class="text-left">推荐产品</h3>
     </div>
     <div class="row">
-      <div class="col-sm-6"><%= image_tag "goglobal/tuijianchanpin-duanshipin.jpg", class: "case", alt: "pic" %></div>
-      <div class="col-sm-6"><%= image_tag "goglobal/tuijianchanpin-zhiboyun.jpg", class: "case", alt: "pic" %></div>
+      <div class="col-sm-6"><%= link_to image_tag("goglobal/tuijianchanpin-duanshipin.jpg"), products_plsv_path %></div>
+      <div class="col-sm-6"><%= link_to image_tag("goglobal/tuijianchanpin-zhiboyun.jpg"), products_pili_path %></div>
     </div>
   </div>
 </div>
@@ -157,7 +157,7 @@
       <h3 class="text-left">推荐活动</h3>
     </div>
     <div class="row">
-      <div class="col-sm-6"><%= image_tag "goglobal/tuijianhuodong.jpg", class: "case", alt: "pic" %></div>
+      <div class="col-sm-6"><%= link_to image_tag("goglobal/tuijianhuodong.jpg"), "https://0x7.me/Xb20", target: "_blank" %></div>
     </div>
   </div>
 </div>
@@ -168,8 +168,8 @@
       <h3 class="text-left">合作伙伴</h3>
     </div>
     <div class="row">
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuohuoban-daguanziben.png", class: "case", alt: "pic" %></div>
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuohuoban-heishi.png", class: "case", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuohuoban-daguanziben.png", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuohuoban-heishi.png", alt: "pic" %></div>
     </div>
   </div>
 </div>
@@ -180,12 +180,12 @@
       <h3 class="text-left">合作媒体</h3>
     </div>
     <div class="row">
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-chuangtoutiao.png", class: "case", alt: "pic" %></div>
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-huxiu.png", class: "case", alt: "pic" %></div>
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-itjuzi.png", class: "case", alt: "pic" %></div>
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-RTBmeiti.png", class: "case", alt: "pic" %></div>
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-xinjingji100.png", class: "case", alt: "pic" %></div>
-      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-zhudao.png", class: "case", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-chuangtoutiao.png", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-huxiu.png", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-itjuzi.png", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-RTBmeiti.png", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-xinjingji100.png", alt: "pic" %></div>
+      <div class="col-sm-2"><%= image_tag "goglobal/hezuomeiti-zhudao.png", alt: "pic" %></div>
     </div>
   </div>
 </div>
