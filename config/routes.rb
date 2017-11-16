@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get '/sla-fusion',    to: 'welcome#sla_fusion'
   get '/sla-pili',      to: 'welcome#sla_pili'
   get '/sla-dora',      to: 'welcome#sla_dora'
+  get '/goglobal',      to: 'welcome#goglobal'
 
   resources 'events', only: [:index] do
     collection do

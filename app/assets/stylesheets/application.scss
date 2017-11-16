@@ -271,6 +271,97 @@ img.list-img{
   transform: translate(-50%,-50%);
 }
 
+// 分步的ul-li样式
+ul.ul-step{
+  list-style: none;
+  padding: 40px 0;
+  margin-bottom: 40px;
+  .step-li{
+    display: inline-block;
+    width: 234px;
+    border-top: 1px dashed #00A0DE;
+    position: relative;
+    &.step-li-no{
+      border-top: none;
+    }
+    .step-no {
+      position: absolute;
+      top: -23px;
+      width: 46px;
+      height: 46px;
+      border: 1px solid #00A0DE;
+      font-size: 22px;
+      color: #00A0DE;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 46px;
+      border-radius: 50%;
+      background: #fff;
+    }
+    .step-info{
+      margin-top: 35px;
+      margin-left: -35px;
+    }
+    .step-submit-btn{
+      position: absolute;
+      left: -15px;
+      bottom: -60px;
+    }
+  }
+}
+.color-light {
+  color: #fff !important;
+}
+.b-0 {
+  border: none !important;
+}
+.b-2{
+  border: 2px solid rgb(224, 227, 242) !important;
+}
+.p-1{
+  padding: 5px !important;
+}
+.w-100 {
+  width: 100% !important;
+}
+.f-xs p{
+  font-size: 12px !important;
+}
+.p-relative{
+  position: relative;
+  &:hover{
+    .cover{
+      transition: all 0.3s;
+      visibility: visible;
+    }
+  }
+  .middle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 333px;
+  }
+  .cover{
+    transition: all 0.3s;
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    color: #fff;
+    background-color: rgb(54, 160, 223);
+    p{
+      padding:20px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+}
+
 .error-page{
   margin: 50px auto;
   background-repeat: no-repeat;
@@ -333,7 +424,18 @@ footer .container {
   bottom: 0;
   width: 100%;
 }
-
+.p-0 {
+  padding: 0!important;
+}
+.p-t-0{
+  padding-top: 0!important;
+}
+.m-t-0{
+  margin-bottom: 0!important;
+}
+.m-b-0{
+  margin-bottom: 0!important;
+}
 @media (max-width: 736px) {
   .banners-slider .slick-dots.banners-arrow{
     bottom: 0.18rem;
