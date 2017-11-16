@@ -73,7 +73,9 @@ class WelcomeController < ApplicationController
   def sla_dora
     render "sla"
   end
-
+  def goglobal
+    render "goglobal"
+  end
   def robots
     if request.host == "www.qiniu.com"
       render plain: """\
