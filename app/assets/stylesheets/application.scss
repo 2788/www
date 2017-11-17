@@ -278,12 +278,13 @@ ul.ul-step{
   margin-bottom: 40px;
   .step-li{
     display: inline-block;
-    width: 234px;
+    width: 300px;
     margin-bottom: 0;
     border-top: 1px dashed #00A0DE;
     position: relative;
     &.step-li-no{
       border-top: none;
+      width: 105px;
     }
     .step-no {
       position: absolute;
@@ -291,7 +292,7 @@ ul.ul-step{
       width: 46px;
       height: 46px;
       border: 1px solid #00A0DE;
-      font-size: 22px;
+      font-size: 24px;
       color: #00A0DE;
       text-align: center;
       vertical-align: middle;
