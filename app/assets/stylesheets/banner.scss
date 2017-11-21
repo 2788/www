@@ -68,6 +68,7 @@
       left: 1.7rem;
     }
   }
+  &.hero-bannerGoglobal{ background-image: image-url('bannerGoglobal.jpg'); .banner-container{top: 70px;}}
 
   .right-mask-banner{
     min-height: 3rem;
@@ -164,7 +165,11 @@
     text-align: center;
   }
 }
-
+@media (max-width: 768px) {
+  .jumbotron.hero{
+    &.hero-bannerGoglobal{.banner-container{top: 20px;}}
+  }
+}
 @media (max-width: 767px) and (min-width: 426px){
   .jumbotron.hero .banner-desc-right {
     left: 50%;
