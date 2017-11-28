@@ -226,3 +226,18 @@ $(document).ready ->
     else if document.body.clientWidth > 768 && ismin
       $('.timeline-ul').find('.left-li').addClass('left')
       $('.timeline-ul').find('.left-li').removeClass('right')
+
+# get userinfo
+$(document).ready ->
+  $.ajax
+    method: 'GET',
+    url: '/userinfo',
+    success: (res) ->
+      if !res.is_signin
+        $('.need-signin').removeClass 'hidden'
+      else
+        $('.need-signin').addClass 'hidden'
+        $('.user-email').text res.email
+        $('.userinfo').removeClass 'hidden'
+    error: (err) ->
+      $('.need-signin').removeClass 'hidden'
