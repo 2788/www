@@ -37,7 +37,7 @@
               -->
             </div>
           </div>
-          <%= raw @archive[:content] %>
+          <div class="blog-html"><%= raw @archive[:content] %></div>
         </div>
         <!-- social-share-button BEGIN -->
         <%= social_share_button_tag('#分享#' + @archive[:title]) %>
