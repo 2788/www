@@ -1,4 +1,6 @@
 $(document).ready ->
+  $('pre code').each (i, block) ->
+    hljs.highlightBlock(block)
   # /////////////////////////////////////////////////////
   # blog-sidebar-searchform <--> URL-param-q
   search = parseQueryString(location.search)['q'] || ''
