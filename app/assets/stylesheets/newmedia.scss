@@ -102,9 +102,9 @@
       cursor: pointer;
       width: 328px;
       height: 408px;
-      -webkit-box-shadow: 0 0 28px 0 #e3e3e3;
-      -moz-box-shadow: 0 0 28px 0 #e3e3e3;
-      box-shadow: 0 0 28px 0 #e3e3e3;
+      -webkit-box-shadow: 0 0 28px 0 #b9b9b9;
+      -moz-box-shadow: 0 0 28px 0 #b9b9b9;
+      box-shadow: 0 0 28px 0 #b9b9b9;
       .head {
         color: #fff;
         background-image: image-url('newmedia/bg-function-selected.png');
@@ -140,6 +140,12 @@
     &:hover {
       cursor: pointer;
       background-image: image-url('newmedia/bg-gradient-selected.png');
+      .service {
+        .iconlogo {
+          width: 120px;
+          height: 120px;
+        }
+      }
     }
     .service {
       padding: 37px;
@@ -184,6 +190,7 @@
         background-position: left top;
         background-repeat: no-repeat;
         background-size: contain;
+        transition: all .5s;
         &.icon-01 {
           background-image: image-url("newmedia/icon-01.png");
         }
