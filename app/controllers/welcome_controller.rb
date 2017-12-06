@@ -58,6 +58,9 @@ class WelcomeController < ApplicationController
   def plsv
   end
 
+  def newmedia
+  end
+
   def user_agreement
     render "sla"
   end

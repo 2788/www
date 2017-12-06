@@ -61,7 +61,7 @@ zh-CN:
       label:  智能硬件与物联网解决方案
       desc: 满足智能硬件厂商各应用场景下云端计算需求
     - name: RTMI
-      label:  广电传媒解决方案
+      label:  新媒体解决方案
       desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
     - name: HST
       label:  安防解决方案
@@ -72,6 +72,16 @@ zh-CN:
     - name: DQM
       label:  应用质量监控解决方案
       desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
+  nemwmedias:
+    - path: newmedia/beifangwang.jpg
+    - path: newmedia/CIBN.jpg
+    - path: newmedia/cntv.jpg
+    - path: newmedia/dahewang.jpg
+    - path: newmedia/guizhouguangdian.jpg
+    - path: newmedia/heilongjiang.jpg
+    - path: newmedia/henanribao.jpg
+    - path: newmedia/huashu.jpg
+    - path: newmedia/hubeiguangdian.jpg
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w

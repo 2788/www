@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/sla-pili',      to: 'welcome#sla_pili'
   get '/sla-dora',      to: 'welcome#sla_dora'
   get '/goglobal',      to: 'welcome#goglobal'
+  get '/newmedia',         to: 'welcome#newmedia'
 
   # userinfo
   get '/userinfo', to: 'userinfo#userinfo'
