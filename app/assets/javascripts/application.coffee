@@ -32,6 +32,7 @@
 #= require sla
 #= require career
 #= require blog
+#= require newmedia
 
 isMobile = false; # initiate as false
 # device detection
@@ -197,7 +198,7 @@ listenScroll = (json) ->
         ).removeClass fxd
 
 # 监控滚动 导航
-$(window).load ->
+$(document).ready ->
   listenScroll
     'elem': $('#navbar')
     'fxdClass': 'nav-bg'
@@ -205,7 +206,7 @@ $(window).load ->
   return
 
 #中部导航
-$(window).load ->
+$(document).ready ->
   $('.navbar-wrapper-middle').smint 'fxdClass':'relative'
   return
 

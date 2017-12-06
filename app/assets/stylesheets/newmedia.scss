@@ -1,0 +1,188 @@
+.newmedia {
+  &.newmedia-bg {
+    color: #fff;
+    background-image: image-url('newmedia/bg.jpg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .card-wrapper {
+    text-align: center;
+    height: 428px;
+  }
+  .card {
+    display: inline-block;
+    width: 186px;
+    height: 305px;
+    padding: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+    box-shadow: -3.7px 3.3px 9px 0 #e3e3e3;
+    transition: all .5s;
+    .head {
+      width: 100%;
+      overflow: hidden;
+      height: 66px;
+      line-height: 66px;
+      color: rgb(47, 48, 51);
+      background-color: #dff3fc;
+      text-align: center;
+      .icon {
+        padding: 0;
+        background-repeat: no-repeat;
+        background-position-x: 0;
+        background-size: contain;
+        transition: background-position-x 1s;
+      }
+      .icon-content{
+        background-image: image-url("newmedia/icon-content@2x.png");
+      }
+      .icon-cloud {
+        background-image: image-url("newmedia/icon-cloud@2x.png");
+      }
+      .icon-light {
+        background-image: image-url("newmedia/icon-light@2x.png");
+      }
+      .icon-gear {
+        background-image: image-url("newmedia/icon-gear@2x.png");
+      }
+      .icon-file {
+        background-image: image-url("newmedia/icon-file@2x.png");
+      }
+    }
+    .main {
+      a {
+        display: block;
+        height: 46px;
+        padding: 16px 23px;
+        -webkit-transition: height 0.5s;
+        -moz-transition: height 0.5s;
+        transition: height 0.5s;
+        overflow: hidden;
+        color: rgb(94, 97, 102);
+        font-size: 14px;
+        text-align: left;
+        .iconfont {
+          cursor: pointer;
+          font-size: 24px;
+          color: #bae4f5;
+          -webkit-filter: opacity(30);
+          filter: opacity(30);
+          margin-right: 2px;
+          margin-left: 20px;
+          -webkit-transition: margin-left 0.5s;
+          -moz-transition: margin-left 0.5s;
+          transition: margin-left 0.5s;
+        }
+        p {
+          display: none;
+          font-size: 12px;
+          color: rgb(94, 97, 102);
+        }
+      }
+    }
+
+    &.active,
+    &:hover {
+      cursor: pointer;
+      width: 328px;
+      height: 408px;
+      -webkit-box-shadow: 0 0 28px 0 #e3e3e3;
+      -moz-box-shadow: 0 0 28px 0 #e3e3e3;
+      box-shadow: 0 0 28px 0 #e3e3e3;
+      .head {
+        color: #fff;
+        background-image: image-url('newmedia/bg-function-selected.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: contain;
+        .icon {
+          background-position-x: 254px;
+        }
+      }
+      .main {
+        a {
+          color: rgb(47, 48, 51);
+          height: 68px;
+          .iconfont {
+            margin-left: -14px;
+          }
+          p {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .service-wrapper {
+    width: 100%;
+    background-image: image-url('newmedia/bg-gradient.png');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: background-image .5s;
+    &:hover {
+      cursor: pointer;
+      background-image: image-url('newmedia/bg-gradient-selected.png');
+    }
+    .service {
+      padding: 37px;
+      .service-title {
+        font-size: 18px;
+      }
+      .line-light {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background-color: #fff;
+        margin: 28px 0;
+      }
+      p {
+        color: #fff;
+      }
+      .iconum {
+        width: 60px;
+        height: 60px;
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: contain;
+        &.icon-01 {
+          background-image: image-url("newmedia/01.png");
+        }
+        &.icon-02 {
+          background-image: image-url("newmedia/02.png");
+        }
+        &.icon-03 {
+          background-image: image-url("newmedia/03.png");
+        }
+        &.icon-04 {
+          background-image: image-url("newmedia/04.png");
+        }
+      }
+
+      .iconlogo {
+        float: right;
+        margin-top: -20px;
+        width: 100px;
+        height: 100px;
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: contain;
+        &.icon-01 {
+          background-image: image-url("newmedia/icon-01.png");
+        }
+        &.icon-02 {
+          background-image: image-url("newmedia/icon-02.png");
+        }
+        &.icon-03 {
+          background-image: image-url("newmedia/icon-03.png");
+        }
+        &.icon-04 {
+          background-image: image-url("newmedia/icon-04.png");
+        }
+      }
+    }
+  }
+}
