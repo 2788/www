@@ -6,10 +6,24 @@
     background-repeat: no-repeat;
     background-size: 100%;
   }
-
+  .table-wrapper {
+    display: table;
+    .align-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
   .card-wrapper {
-    text-align: center;
+    padding: 0;
+    margin: 0;
     height: 428px;
+    text-align: center;
+    .align-base-line {
+      display: inline-block;
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
   }
   .card {
     display: inline-block;
@@ -32,8 +46,8 @@
         padding: 0;
         background-repeat: no-repeat;
         background-position-x: 0;
-        background-size: contain;
-        transition: background-position-x 1s;
+        background-size: 60px auto;
+        transition: background-position-x .5s;
       }
       .icon-content{
         background-image: image-url("newmedia/icon-content@2x.png");
@@ -52,6 +66,7 @@
       }
     }
     .main {
+      padding: 12px 0;
       a {
         display: block;
         height: 46px;
@@ -83,8 +98,7 @@
       }
     }
 
-    &.active,
-    &:hover {
+    &.active {
       cursor: pointer;
       width: 328px;
       height: 408px;
@@ -96,7 +110,7 @@
         background-image: image-url('newmedia/bg-function-selected.png');
         background-position: left top;
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: auto 66px;
         .icon {
           background-position-x: 254px;
         }
