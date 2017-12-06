@@ -4,7 +4,7 @@
     background-image: image-url('newmedia/bg.jpg');
     background-position: left top;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
   }
   .table-wrapper {
     display: table;
@@ -30,7 +30,8 @@
     width: 186px;
     height: 305px;
     padding: 0;
-    margin-left: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
     vertical-align: middle;
     box-shadow: -3.7px 3.3px 9px 0 #e3e3e3;
     transition: all .5s;
@@ -45,8 +46,9 @@
       .icon {
         padding: 0;
         background-repeat: no-repeat;
-        background-position-x: 0;
-        background-size: 60px auto;
+        background-position-x: 14px;
+        background-position-y: center;
+        background-size: 45px auto;
         transition: background-position-x .5s;
       }
       .icon-content{
@@ -92,14 +94,18 @@
         }
         p {
           display: none;
+          margin: 0;
+          width: 282px;
           font-size: 12px;
+          line-height: 24px;
           color: rgb(94, 97, 102);
         }
       }
     }
-
-    &.active {
+    &:hover {
       cursor: pointer;
+    }
+    &.active {
       width: 328px;
       height: 408px;
       -webkit-box-shadow: 0 0 28px 0 #b9b9b9;
@@ -112,13 +118,13 @@
         background-repeat: no-repeat;
         background-size: auto 66px;
         .icon {
-          background-position-x: 254px;
+          background-position-x: 265px;
         }
       }
       .main {
         a {
           color: rgb(47, 48, 51);
-          height: 68px;
+          height: 79px;
           .iconfont {
             margin-left: -14px;
           }
@@ -132,10 +138,11 @@
 
   .service-wrapper {
     width: 100%;
+    margin: 5px 0;
     background-image: image-url('newmedia/bg-gradient.png');
     background-position: left top;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% 100%;
     transition: background-image .5s;
     &:hover {
       cursor: pointer;
@@ -151,6 +158,7 @@
       padding: 37px;
       .service-title {
         font-size: 18px;
+        line-height: 26px;
       }
       .line-light {
         display: block;
@@ -202,6 +210,60 @@
         }
         &.icon-04 {
           background-image: image-url("newmedia/icon-04.png");
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:1024px) {
+  .newmedia {
+    .table-wrapper {
+      display: block;
+      .align-wrapper {
+        display: block;
+        vertical-align: baseline;
+      }
+    }
+    .card-wrapper {
+      padding: 0;
+      margin: 0 auto;
+      height: auto;
+      .align-base-line {
+        display:none;
+      }
+    }
+
+    .card {
+      display: inline-block;
+      vertical-align: baseline;
+      margin-bottom: 20px;
+      text-align: center;
+      width: 328px;
+      height: 408px;
+      -webkit-box-shadow: 0 0 28px 0 #b9b9b9;
+      -moz-box-shadow: 0 0 28px 0 #b9b9b9;
+      box-shadow: 0 0 28px 0 #b9b9b9;
+      .head {
+        color: #fff;
+        background-image: image-url('newmedia/bg-function-selected.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: auto 66px;
+        .icon {
+          background-position-x: 254px;
+        }
+      }
+      .main {
+        a {
+          color: rgb(47, 48, 51);
+          height: 79px;
+          .iconfont {
+            margin-left: -14px;
+          }
+          p {
+            display: block;
+          }
         }
       }
     }
