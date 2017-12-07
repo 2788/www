@@ -87,6 +87,8 @@ zh-CN:
     - path: newmedia/longhuwang.jpg
     - path: newmedia/mangguotv.jpg
     - path: newmedia/zhejiangribao.jpg
+    - path: newmedia/zhejiangzaixian.jpg
+    - path: newmedia/zhongguowang.jpg
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w
