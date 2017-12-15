@@ -132,7 +132,7 @@
                     <div class="py-2 <%= archive === @tech_social_lists.last ? '' : 'bb-1' %>">
                       <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                      <div class="collapse <%= archive === @tech_social_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
                         <div class="position-details">
                           <h4>岗位职责</h4>
                           <p><%= archive[:description] %></p>
@@ -159,7 +159,7 @@
                     <div class="py-2 <%= archive === @market_social_lists.last ? '' : 'bb-1' %>">
                       <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                      <div class="collapse <%= archive === @market_social_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
                         <div class="position-details">
                           <h4>岗位职责</h4>
                           <p><%= archive[:description] %></p>
@@ -186,7 +186,7 @@
                     <div class="py-2 <%= archive === @product_social_lists.last ? '' : 'bb-1' %>">
                       <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                      <div class="collapse <%= archive === @product_social_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
                         <div class="position-details">
                           <h4>岗位职责</h4>
                           <p><%= archive[:description] %></p>
@@ -213,7 +213,7 @@
                     <div class="py-2 <%= archive === @design_social_lists.last ? '' : 'bb-1' %>">
                       <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                      <div class="collapse <%= archive === @design_social_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
                         <div class="position-details">
                           <h4>岗位职责</h4>
                           <p><%= archive[:description] %></p>
@@ -240,7 +240,7 @@
                     <div class="py-2 <%= archive === @sales_social_lists.last ? '' : 'bb-1' %>">
                       <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                      <div class="collapse <%= archive === @sales_social_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
                         <div class="position-details">
                           <h4>岗位职责</h4>
                           <p><%= archive[:description] %></p>
@@ -267,7 +267,7 @@
                     <div class="py-2 <%= archive === @office_social_lists.last ? '' : 'bb-1' %>">
                       <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                      <div class="collapse <%= archive === @office_social_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
                         <div class="position-details">
                           <h4>岗位职责</h4>
                           <p><%= archive[:description] %></p>

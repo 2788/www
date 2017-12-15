@@ -59,3 +59,8 @@ $(document).ready ->
         modal = $(this)
         modal.find('.modal-body .section').addClass('d-none')
         modal.find('.modal-body .' + recipient).removeClass('d-none')
+
+    # collapse
+    $('.collapse').on 'show.bs.collapse', (event) ->
+        # close all other collapse in
+        $('.collapse.in').collapse('hide')
