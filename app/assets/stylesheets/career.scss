@@ -61,7 +61,11 @@
     background-image: image-url("btn-play-highlight.png");
   }
 }
-
+.fluid-media-slider-wrapper {
+  max-width: 1440px;
+  text-align: center;
+  margin: 0 auto;
+}
 .fluid-media-slider{
   padding-top: 70px;
   .slick-dots li button::before{
@@ -156,6 +160,46 @@ video {
   a.btn-career{
     color: white;
     background-color:#40A7FF
+  }
+}
+#positionModal {
+  .modal-body {
+    .m-r-1 {
+      display: inline-block;
+      margin-right: 5px !important;
+    }
+    a.title{
+      font-size: 18px;
+      line-height: 36px;
+    }
+    a[aria-expanded="false"] {
+      color: rgb(51,51,51);
+      &:hover {
+        color: #28aedf;
+        text-decoration: none;
+      }
+    }
+    a[aria-expanded="true"] {
+      color: #28aedf;
+      text-decoration: none;
+      .glyphicon-triangle-right:before {
+        content: "\e252";
+      }
+    }
+
+    .position-details {
+      padding: 10px;
+      color: rgb(136,136,136);
+      h4{
+        font-size: 18px;
+      }
+      a.btn.btn-primary {
+        margin-top: 10px;
+        color: #fff;
+        background-color: #00A0DE;
+        border-color: #008ec5;
+      }
+    }
   }
 }
 .hiring-content{

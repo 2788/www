@@ -1,18 +1,53 @@
-<div class="jumbotron hero hero-banner1 hero-career">
+<div class="fluid-media-slider-wrapper">
+  <div class="fluid-slider-wrapper">
+    <div class="fluid-slider">
+      <div><div class="fluid-slider-img-wraaper"><%= image_tag "https://dn-group-photos.qbox.me/FvS4_XUTxBId1t7Xx6GhKGQJtkUi?imageView2/1/w/1128/h/800/q/80/format/JPG", width:'100%' %></div></div>
+      <div><div class="fluid-slider-img-wraaper"><%= image_tag "https://dn-group-photos.qbox.me/Fv-lSu4zc2BnspnT7uT9nYXeah7B?imageView2/1/w/1128/h/800/q/80/format/JPG", width:'100%' %></div></div>
+      <div><div class="fluid-slider-img-wraaper"><%= image_tag "https://dn-group-photos.qbox.me/liZ5OaVAPiMtRbX1k8VEshvJjmw8?imageView2/1/w/1128/h/800/q/80/format/JPG", width:'100%' %></div></div>
+      <div><div class="fluid-slider-img-wraaper"><%= image_tag "https://dn-group-photos.qbox.me/lqerAH03J-6sel7fgQJ6T6lhqttY?imageView2/1/w/1128/h/800/q/80/format/JPG", width:'100%' %></div></div>
+      <div><div class="fluid-slider-img-wraaper"><%= image_tag "https://dn-group-photos.qbox.me/ln9uSuvMz9Rg_eR6E98ZXc7gZf_n?imageView2/1/w/1128/h/800/q/80/format/JPG", width:'100%' %></div></div>
+      <div><div class="fluid-slider-img-wraaper"><%= image_tag "https://dn-group-photos.qbox.me/lsX-hF0AT2wUa4zW_HOaxCA29JZ0?imageView2/1/w/1128/h/800/q/80/format/JPG", width:'100%' %></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="features">
   <div class="container">
-    <div class="middle-container">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="banner-desc">
-            <h2>永不停歇的奋斗之路,</h2>
-            <h2>期待能有你的加入！</h2>
-          </div>
-        </div>
-        <div class="col-sm-6 hidden-xs">
-          <div class="right-mask-banner">
-            <%= image_tag "image-banner.png", alt: "招聘图片", width: "90%" %>
-          </div>
-        </div>
+    <div class="intro">
+      <h3 class="title">福利情况</h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-daixinbingjia.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-daixinnianjia.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-lingshichangxiang.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-liwu.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-qiquanjiangli.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-tanxingbangong.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-wuxianyijin.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
+      </div>
+      <div class="col-sm-3 m-b-5 text-center">
+        <%= image_tag "career/icon-xinchou.png", alt: "技术", width: "100" %>
+        <h4 class="media-heading">技术</h4>
       </div>
     </div>
   </div>
@@ -60,33 +95,201 @@
       <p class="text-center">我们是一群充满热情，追求创新的人，期待遇见同样的你。</p>
     </div>
     <div class="row">
-      <div class="col-sm-2 col-xs-4 text-center">
+      <div class="col-sm-2 col-xs-4 text-center" data-toggle="modal" data-target="#positionModal" data-whatever="tech">
         <%= image_tag "career/icon-jishu.png", alt: "技术", width: "100" %>
         <h4 class="media-heading">技术</h4>
       </div>
-      <div class="col-sm-2 col-xs-4 text-center">
+      <div class="col-sm-2 col-xs-4 text-center" data-toggle="modal" data-target="#positionModal" data-whatever="market">
         <%= image_tag "career/icon-shichang.png", alt: "市场", width: "100" %>
         <h4 class="media-heading">市场</h4>
       </div>
-      <div class="col-sm-2 col-xs-4 text-center">
+      <div class="col-sm-2 col-xs-4 text-center" data-toggle="modal" data-target="#positionModal" data-whatever="product">
         <%= image_tag "career/icon-chanpin.png", alt: "产品", width: "100" %>
         <h4 class="media-heading">产品</h4>
       </div>
-      <div class="col-sm-2 col-xs-4 text-center">
+      <div class="col-sm-2 col-xs-4 text-center" data-toggle="modal" data-target="#positionModal" data-whatever="design">
         <%= image_tag "career/icon-sheji.png", alt: "设计", width: "100" %>
         <h4 class="media-heading">设计</h4>
       </div>
-      <div class="col-sm-2 col-xs-4 text-center">
+      <div class="col-sm-2 col-xs-4 text-center" data-toggle="modal" data-target="#positionModal" data-whatever="sales">
         <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: "100" %>
         <h4 class="media-heading">销售</h4>
       </div>
-      <div class="col-sm-2 col-xs-4 text-center">
+      <div class="col-sm-2 col-xs-4 text-center" data-toggle="modal" data-target="#positionModal" data-whatever="office">
         <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
         <h4 class="media-heading">职能</h4>
       </div>
-    </div>
-    <div class="text-center position-check">
-      <%= link_to "查看岗位", positions_path, class: "btn btn-lg btn-career", role: "button" -%>
+      <!-- varying positionModal -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="positionModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="tech d-none section">
+                <% if @tech_social_lists.length == 0 %>
+                  <div>该岗位暂没有招聘信息</div>
+                <% else %>
+                  <% @tech_social_lists.each do |archive| %>
+                    <div class="py-2 <%= archive === @tech_social_lists.last ? '' : 'bb-1' %>">
+                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+
+                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                        <div class="position-details">
+                          <h4>岗位职责</h4>
+                          <p><%= archive[:description] %></p>
+                          <h4>任职要求</h4>
+                          <p><%= archive[:requirement] %></p>
+                          <h4>工作城市</h4>
+                          <p>
+                            <% archive.location.each do |city| %>
+                              <span><%= city -%></span>
+                            <% end %>
+                          </p>
+                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="market d-none section">
+                <% if @market_social_lists.length == 0 %>
+                  <div>该岗位暂没有招聘信息</div>
+                <% else %>
+                  <% @market_social_lists.each do |archive| %>
+                    <div class="py-2 <%= archive === @market_social_lists.last ? '' : 'bb-1' %>">
+                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+
+                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                        <div class="position-details">
+                          <h4>岗位职责</h4>
+                          <p><%= archive[:description] %></p>
+                          <h4>任职要求</h4>
+                          <p><%= archive[:requirement] %></p>
+                          <h4>工作城市</h4>
+                          <p>
+                            <% archive.location.each do |city| %>
+                              <span><%= city -%></span>
+                            <% end %>
+                          </p>
+                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="product d-none section">
+                <% if @product_social_lists.length == 0 %>
+                  <div>该岗位暂没有招聘信息</div>
+                <% else %>
+                  <% @product_social_lists.each do |archive| %>
+                    <div class="py-2 <%= archive === @product_social_lists.last ? '' : 'bb-1' %>">
+                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+
+                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                        <div class="position-details">
+                          <h4>岗位职责</h4>
+                          <p><%= archive[:description] %></p>
+                          <h4>任职要求</h4>
+                          <p><%= archive[:requirement] %></p>
+                          <h4>工作城市</h4>
+                          <p>
+                            <% archive.location.each do |city| %>
+                              <span><%= city -%></span>
+                            <% end %>
+                          </p>
+                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="design d-none section">
+                <% if @design_social_lists.length == 0 %>
+                  <div>该岗位暂没有招聘信息</div>
+                <% else %>
+                  <% @design_social_lists.each do |archive| %>
+                    <div class="py-2 <%= archive === @design_social_lists.last ? '' : 'bb-1' %>">
+                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+
+                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                        <div class="position-details">
+                          <h4>岗位职责</h4>
+                          <p><%= archive[:description] %></p>
+                          <h4>任职要求</h4>
+                          <p><%= archive[:requirement] %></p>
+                          <h4>工作城市</h4>
+                          <p>
+                            <% archive.location.each do |city| %>
+                              <span><%= city -%></span>
+                            <% end %>
+                          </p>
+                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="sales d-none section">
+                <% if @sales_social_lists.length == 0 %>
+                  <div>该岗位暂没有招聘信息</div>
+                <% else %>
+                  <% @sales_social_lists.each do |archive| %>
+                    <div class="py-2 <%= archive === @sales_social_lists.last ? '' : 'bb-1' %>">
+                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+
+                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                        <div class="position-details">
+                          <h4>岗位职责</h4>
+                          <p><%= archive[:description] %></p>
+                          <h4>任职要求</h4>
+                          <p><%= archive[:requirement] %></p>
+                          <h4>工作城市</h4>
+                          <p>
+                            <% archive.location.each do |city| %>
+                              <span><%= city -%></span>
+                            <% end %>
+                          </p>
+                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="office d-none section">
+                <% if @office_social_lists.length == 0 %>
+                  <div>该岗位暂没有招聘信息</div>
+                <% else %>
+                  <% @office_social_lists.each do |archive| %>
+                    <div class="py-2 <%= archive === @office_social_lists.last ? '' : 'bb-1' %>">
+                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+
+                      <div class="collapse" id="<%= archive[:id].to_s %>">
+                        <div class="position-details">
+                          <h4>岗位职责</h4>
+                          <p><%= archive[:description] %></p>
+                          <h4>任职要求</h4>
+                          <p><%= archive[:requirement] %></p>
+                          <h4>工作城市</h4>
+                          <p>
+                            <% archive.location.each do |city| %>
+                              <span><%= city -%></span>
+                            <% end %>
+                          </p>
+                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
     </div>
   </div>
 </div>

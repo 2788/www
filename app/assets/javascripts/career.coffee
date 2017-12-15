@@ -38,3 +38,15 @@ $(document).ready ->
         vid.currentTime = 0
         vid.pause()
         return
+
+    # varying modal content positionModal
+    $('#positionModal').on 'show.bs.modal', (event) ->
+        # Button that triggered the modal
+        button = $(event.relatedTarget)
+        # varying content
+        recipient = button.data('whatever')
+
+        # modal
+        modal = $(this)
+        modal.find('.modal-body .section').addClass('d-none')
+        modal.find('.modal-body .' + recipient).removeClass('d-none')
