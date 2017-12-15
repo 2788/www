@@ -12,6 +12,15 @@ $(document).ready ->
         slidesToShow: 3
         slidesToScroll: 2
 
+    # social fluid slider
+    $('.social-slider').slick
+        dots: false
+        autoplay: false
+        autoplaySpeed: 2000
+        arrows: true
+        slidesToShow: 3
+        slidesToScroll: 2
+
     # career wordbutton slider
     $('.fluid-wordbutton-slider').slick
         arrows:true

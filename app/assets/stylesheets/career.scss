@@ -11,7 +11,47 @@
   padding-bottom: 60px;
 }
 .fluid-slider-wrapper{
-  padding: 1.68rem 0 0.5rem;
+  padding: 1.68rem 0 0;
+}
+
+// social slider
+.social-slider {
+  .slick-prev {
+    z-index: 1;
+    margin-top: -20px;
+    left: 20px;
+    width: 20px;
+    height: 30px;
+    background-image: image-url("career/turnpage.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 30px;
+    transform: rotate(180deg);
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .slick-prev:before {
+    content: '';
+  }
+  .slick-next:before {
+    content: '';
+  }
+  .slick-next {
+    right: 20px;
+    margin-top: -20px;
+    width: 20px;
+    height: 30px;
+    background-image: image-url("career/turnpage.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px 30px;
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 //career index fluid-word-slider
@@ -203,13 +243,11 @@ video {
   }
 }
 .hiring-content{
-  align: center;
+  text-align: center;
   width: 100%;
   overflow: hidden;
-  border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 81px;
   .small-content {
-    align: center;
+    text-align: center;
   }
   p {
     padding-top: 0.1rem;
