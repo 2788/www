@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   constraints DomainConstraint.new('career', 'career-source', 'career-dev') do
     root to: 'career#index'
     get '/social',         to: 'career#social'
-    get '/positions',      to: 'career#positions'
     get '/school',         to: 'career#school'
   end
 

@@ -12,6 +12,15 @@ $(document).ready ->
         slidesToShow: 3
         slidesToScroll: 2
 
+    # social fluid slider
+    $('.social-slider').slick
+        dots: false
+        autoplay: false
+        autoplaySpeed: 2000
+        arrows: true
+        slidesToShow: 3
+        slidesToScroll: 2
+
     # career wordbutton slider
     $('.fluid-wordbutton-slider').slick
         arrows:true
@@ -38,3 +47,20 @@ $(document).ready ->
         vid.currentTime = 0
         vid.pause()
         return
+
+    # varying modal content positionModal
+    $('#positionModal').on 'show.bs.modal', (event) ->
+        # Button that triggered the modal
+        button = $(event.relatedTarget)
+        # varying content
+        recipient = button.data('whatever')
+
+        # modal
+        modal = $(this)
+        modal.find('.modal-body .section').addClass('d-none')
+        modal.find('.modal-body .' + recipient).removeClass('d-none')
+
+    # collapse
+    $('.collapse').on 'show.bs.collapse', (event) ->
+        # close all other collapse in
+        $('.collapse.in').collapse('hide')
