@@ -56,11 +56,16 @@ $(document).ready ->
         recipient = button.data('whatever')
         _index = recipient.indexOf('#')
         recipient_rank = recipient.slice(0,_index)
-        recipient_position = recipient.slice(_index)
+        recipient_position = recipient.slice(_index + 1)
 
         # modal
         modal = $(this)
-        modal.find('.modal-body .section-rank').addClass('d-none')
-        modal.find('.modal-body .section-position').addClass('d-none')
-        modal.find('.modal-body .' + recipient_rank).removeClass('d-none')
-        modal.find('.modal-body .' + recipient_rank + ' ' + recipient_position).removeClass('d-none')
+        modal.find('.modal-content .section-rank').addClass('d-none')
+        modal.find('.modal-content .section-rank .section-position').addClass('d-none')
+        modal.find('.modal-content .' + recipient_rank).removeClass('d-none')
+        modal.find('.modal-content .' + recipient_position).removeClass('d-none')
+
+    # features-positions nav-tabs
+    $('.features-positions .nav-tabs li').click (e) ->
+        e.preventDefault()
+        $(this).find('a').tab('show')

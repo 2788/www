@@ -207,6 +207,7 @@ video {
     display: inline-block;
     margin-left: 25px;
     margin-right: 25px;
+    cursor: pointer;
     img {
       opacity: .5;
     }
@@ -239,7 +240,7 @@ video {
   .table td {
     line-height: 28px;
   }
-  .title{
+  td .title{
     font-size: 14px;
     display: inline-block;
     width: 100%;
