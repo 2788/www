@@ -130,11 +130,11 @@
           <% @tech_social_lists.each do |archive| %>
             <div class="py-2 <%= archive === @tech_social_lists.last ? '' : 'bb-1' %>">
               <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @tech_social_lists.last ? true : false, controls: archive[:id].to_s } do -%>
-                <span class="float-left">
+                <span class="pull-left">
                   <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
                   <span><%= archive[:title] %></span>
                 </span>
-                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <time class="pull-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
                 <span>地点：
                   <% archive.location.each do |city| %>
                     <span><%= city -%></span>
@@ -163,11 +163,11 @@
           <% @market_social_lists.each do |archive| %>
             <div class="py-2 <%= archive === @market_social_lists.last ? '' : 'bb-1' %>">
               <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @market_social_lists.last ? true : false, controls: archive[:id].to_s } do -%>
-                <span class="float-left">
+                <span class="pull-left">
                   <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
                   <span><%= archive[:title] %></span>
                 </span>
-                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <time class="pull-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
                 <span>地点：
                   <% archive.location.each do |city| %>
                     <span><%= city -%></span>
@@ -196,11 +196,11 @@
           <% @product_social_lists.each do |archive| %>
             <div class="py-2 <%= archive === @product_social_lists.last ? '' : 'bb-1' %>">
               <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @product_social_lists.last ? true : false, controls: archive[:id].to_s } do -%>
-                <span class="float-left">
+                <span class="pull-left">
                   <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
                   <span><%= archive[:title] %></span>
                 </span>
-                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <time class="pull-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
                 <span>地点：
                   <% archive.location.each do |city| %>
                     <span><%= city -%></span>
@@ -235,11 +235,11 @@
           <% @design_social_lists.each do |archive| %>
             <div class="py-2 <%= archive === @design_social_lists.last ? '' : 'bb-1' %>">
               <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @design_social_lists.last ? true : false, controls: archive[:id].to_s } do -%>
-                <span class="float-left">
+                <span class="pull-left">
                   <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
                   <span><%= archive[:title] %></span>
                 </span>
-                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <time class="pull-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
                 <span>地点：
                   <% archive.location.each do |city| %>
                     <span><%= city -%></span>
@@ -268,11 +268,11 @@
           <% @sales_social_lists.each do |archive| %>
             <div class="py-2 <%= archive === @sales_social_lists.last ? '' : 'bb-1' %>">
               <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @sales_social_lists.last ? true : false, controls: archive[:id].to_s } do -%>
-                <span class="float-left">
+                <span class="pull-left">
                   <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
                   <span><%= archive[:title] %></span>
                 </span>
-                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <time class="pull-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
                 <span>地点：
                   <% archive.location.each do |city| %>
                     <span><%= city -%></span>
@@ -301,11 +301,11 @@
           <% @office_social_lists.each do |archive| %>
             <div class="py-2 <%= archive === @office_social_lists.last ? '' : 'bb-1' %>">
               <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @office_social_lists.last ? true : false, controls: archive[:id].to_s } do -%>
-                <span class="float-left">
+                <span class="pull-left">
                   <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
                   <span><%= archive[:title] %></span>
                 </span>
-                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <time class="pull-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
                 <span>地点：
                   <% archive.location.each do |city| %>
                     <span><%= city -%></span>
