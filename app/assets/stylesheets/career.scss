@@ -265,10 +265,9 @@ video {
 }
 
 //career positions box scss
-.row-positions {
-  .position-box {
-    cursor: pointer;
-  }
+.row-positions > div {
+  cursor: pointer;
+  text-align: center;
 }
 
 //career avater
