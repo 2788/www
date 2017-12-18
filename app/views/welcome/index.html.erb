@@ -225,9 +225,10 @@
             <div class="col-sm-6 col-md-4">
               <div class="hotnews-box">
                 <%= link_to "#{ Rails.application.config.blog_host }/archives/#{ archive.id }", target: "_blank" do -%>
-                  <%= image_tag archive.cover, class: "", alt: "图片加载中" %>
+                  <div class="hot-im-wrapper"><%= image_tag archive.cover, class: "", alt: "图片加载中" %></div>
                   <div class="infobox">
-                    <%= content_tag :div, content_tag(:time,archive[:created_at].strftime("%Y-%m-%d") + raw(" 发布在 ") + Archive::CATEGORIES[archive.category]) + content_tag(:p, archive[:title].truncate(50, omission: '...')) -%>
+                    <time><%= archive[:created_at].strftime("%Y-%m-%d") + raw(" 发布在 ") + Archive::CATEGORIES[archive.category] %></time>
+                    <p title="<%= archive[:title] %>"><%= archive[:title] %></p>
                   </div>
                 <% end %>
               </div>

@@ -187,61 +187,88 @@ video {
   }
 }
 
-//career social page scss
-.features{
-  a.btn-career:hover,
-  a.btn-career:focus,
-  a.btn-career:active,
-  a.btn-career.active {
-    color: #ffffff;
-    background-color: #3276b1;
-    border-color: #285e8e;
+// positions tab
+.features-positions {
+  .nav.nav-tabs {
+    text-align: center;
   }
-  a.btn-career{
-    color: white;
-    background-color:#40A7FF
+  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: $brand-primary;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
   }
-}
-#positionModal {
-  .modal-body {
-    .m-r-1 {
-      display: inline-block;
-      margin-right: 5px !important;
+  .nav.nav-tabs>li {
+    float: none;
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 25px;
+    img {
+      opacity: .5;
     }
-    a.title{
-      font-size: 18px;
-      line-height: 36px;
+    a {
+      margin-bottom: -1px;
     }
-    a[aria-expanded="false"] {
-      color: rgb(51,51,51);
-      &:hover {
-        color: #28aedf;
-        text-decoration: none;
-      }
+  }
+  .nav>li.active {
+    img {
+      opacity: 1;
     }
-    a[aria-expanded="true"] {
+  }
+  .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 6px 15px;
+    text-align: center;
+  }
+  .nav>li>img {
+    margin-bottom: 15px;
+  }
+  .nav.nav-tabs > li::before {
+    height: 0;
+  }
+  .m-r-1 {
+    display: inline-block;
+    margin-right: 5px !important;
+  }
+  a.title{
+    font-size: 18px;
+    line-height: 36px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  a[aria-expanded="false"] {
+    color: rgb(51,51,51);
+    &:hover {
       color: #28aedf;
       text-decoration: none;
-      .glyphicon-triangle-right:before {
-        content: "\e252";
-      }
     }
+  }
+  a[aria-expanded="true"] {
+    color: #28aedf;
+    text-decoration: none;
+    .glyphicon-triangle-right:before {
+      content: "\e252";
+    }
+  }
 
-    .position-details {
-      padding: 10px;
-      color: rgb(136,136,136);
-      h4{
-        font-size: 18px;
-      }
-      a.btn.btn-primary {
-        margin-top: 10px;
-        color: #fff;
-        background-color: #00A0DE;
-        border-color: #008ec5;
-      }
+  .position-details {
+    padding: 10px;
+    color: rgb(136,136,136);
+    h4{
+      font-size: 18px;
+    }
+    a.btn.btn-primary {
+      margin-top: 10px;
+      color: #fff;
+      background-color: #00A0DE;
+      border-color: #008ec5;
     }
   }
 }
+
 .hiring-content{
   text-align: center;
   width: 100%;
@@ -261,37 +288,6 @@ video {
   .row {
     padding-bottom: 0.4rem;
   }
-}
-
-//career positions page scss
-.positions{
-  .details{
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  .btn {
-    font-size: 14px;
-  }
-  .list-inline {
-    margin-bottom: 0px;
-  }
-  .area-select {
-    list-style: none;
-    padding-top: 5px;
-    padding-left: 0px;
-    li {
-      display: inline-block;
-    }
-  }
-}
-
-.position-check{
-  padding-top: 56px;
-}
-
-.position-title{
-  display: inline-block;
-  margin-left: -20px;
 }
 
 //career avater
