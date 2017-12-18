@@ -189,6 +189,9 @@ video {
 
 // positions tab
 .features-positions {
+  .positionTab {
+    margin: 0;
+  }
   .nav.nav-tabs {
     text-align: center;
   }
@@ -232,25 +235,19 @@ video {
     display: inline-block;
     margin-right: 5px !important;
   }
-  a.title{
-    font-size: 18px;
-    line-height: 36px;
+
+  .table td {
+    line-height: 28px;
+  }
+  .title{
+    font-size: 14px;
     display: inline-block;
     width: 100%;
-    text-align: center;
-  }
-  a[aria-expanded="false"] {
     color: rgb(51,51,51);
     &:hover {
+      cursor: pointer;
       color: #28aedf;
       text-decoration: none;
-    }
-  }
-  a[aria-expanded="true"] {
-    color: #28aedf;
-    text-decoration: none;
-    .glyphicon-triangle-right:before {
-      content: "\e252";
     }
   }
 
@@ -269,10 +266,11 @@ video {
   }
 }
 
-.hiring-content{
+.hiring-content.row{
   text-align: center;
   width: 100%;
   overflow: hidden;
+  margin: 0;
   .small-content {
     text-align: center;
   }
