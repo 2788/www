@@ -202,9 +202,7 @@ video {
     background-color:#40A7FF
   }
 }
-.pointer {
-  cursor: pointer;
-}
+
 #positionModal {
   .modal-body {
     .m-r-1 {
@@ -266,35 +264,11 @@ video {
   }
 }
 
-//career positions page scss
-.positions{
-  .details{
-    padding-top: 20px;
-    padding-bottom: 20px;
+//career positions box scss
+.row-positions {
+  .position-box {
+    cursor: pointer;
   }
-  .btn {
-    font-size: 14px;
-  }
-  .list-inline {
-    margin-bottom: 0px;
-  }
-  .area-select {
-    list-style: none;
-    padding-top: 5px;
-    padding-left: 0px;
-    li {
-      display: inline-block;
-    }
-  }
-}
-
-.position-check{
-  padding-top: 56px;
-}
-
-.position-title{
-  display: inline-block;
-  margin-left: -20px;
 }
 
 //career avater
