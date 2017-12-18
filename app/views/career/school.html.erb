@@ -61,7 +61,7 @@
   </div>
 </div>
 
-<div class="features features-pbt">
+<div class="features features-pbt features-positions">
   <div class="container">
     <div class="intro">
       <h3 class="title">岗位列表</h3>
@@ -69,202 +69,239 @@
       <p class="text-center">我们是一个简单的团队，希望成就不简单的事。</p>
       <p class="text-center">我们是一群充满热情，追求创新的人，期待遇见同样的你。</p>
     </div>
-    <div class="row row-positions">
-      <div class="col-sm-2 col-xs-4" data-toggle="modal" data-target="#positionModal" data-whatever="tech">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
         <%= image_tag "career/icon-jishu.png", alt: "技术", width: "100" %>
-        <h4 class="media-heading">技术</h4>
-      </div>
-      <div class="col-sm-2 col-xs-4" data-toggle="modal" data-target="#positionModal" data-whatever="market">
+        <a href="#tech-position" aria-controls="tech-position" role="tab" data-toggle="tab">技术</a>
+      </li>
+      <li role="presentation">
         <%= image_tag "career/icon-shichang.png", alt: "市场", width: "100" %>
-        <h4 class="media-heading">市场</h4>
-      </div>
-      <div class="col-sm-2 col-xs-4" data-toggle="modal" data-target="#positionModal" data-whatever="product">
+        <a href="#market-position" aria-controls="market-position" role="tab" data-toggle="tab">市场</a>
+      </li>
+      <li role="presentation">
         <%= image_tag "career/icon-chanpin.png", alt: "产品", width: "100" %>
-        <h4 class="media-heading">产品</h4>
-      </div>
-      <div class="col-sm-2 col-xs-4" data-toggle="modal" data-target="#positionModal" data-whatever="design">
+        <a href="#product-position" aria-controls="product-position" role="tab" data-toggle="tab">产品</a>
+      </li>
+      <li role="presentation">
         <%= image_tag "career/icon-sheji.png", alt: "设计", width: "100" %>
-        <h4 class="media-heading">设计</h4>
-      </div>
-      <div class="col-sm-2 col-xs-4" data-toggle="modal" data-target="#positionModal" data-whatever="sales">
+        <a href="#design-position" aria-controls="design-position" role="tab" data-toggle="tab">设计</a>
+      </li>
+      <li role="presentation">
         <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: "100" %>
-        <h4 class="media-heading">销售</h4>
-      </div>
-      <div class="col-sm-2 col-xs-4" data-toggle="modal" data-target="#positionModal" data-whatever="office">
+        <a href="#sales-position" aria-controls="sales-position" role="tab" data-toggle="tab">销售</a>
+      </li>
+      <li role="presentation">
         <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
-        <h4 class="media-heading">职能</h4>
-      </div>
-      <!-- varying positionModal -->
-      <div class="modal fade" tabindex="-1" role="dialog" id="positionModal">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="tech d-none section">
-                <% if @tech_school_lists.length == 0 %>
-                  <div>该岗位暂没有招聘信息</div>
-                <% else %>
-                  <% @tech_school_lists.each do |archive| %>
-                    <div class="py-2 <%= archive === @tech_school_lists.last ? '' : 'bb-1' %>">
-                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+        <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">职能</a>
+      </li>
+    </ul>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
-                        <div class="position-details">
-                          <h4>岗位职责</h4>
-                          <p><%= archive[:description] %></p>
-                          <h4>任职要求</h4>
-                          <p><%= archive[:requirement] %></p>
-                          <h4>工作城市</h4>
-                          <p>
-                            <% archive.location.each do |city| %>
-                              <span><%= city -%></span>
-                            <% end %>
-                          </p>
-                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                        </div>
-                      </div>
-                    </div>
+    <!-- Tab panes -->
+    <div class="tab-content positionTab">
+      <div role="tabpanel" class="tab-pane active" id="tech-position">
+        <% if @tech_school_lists.length == 0 %>
+          <div>该岗位暂没有招聘信息</div>
+        <% else %>
+          <% @tech_school_lists.each do |archive| %>
+            <div class="py-2 <%= archive === @tech_school_lists.last ? '' : 'bb-1' %>">
+              <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @tech_school_lists.last ? true : false, controls: archive[:id].to_s } do -%>
+                <span class="float-left">
+                  <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
+                  <span><%= archive[:title] %></span>
+                </span>
+                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <span>地点：
+                  <% archive.location.each do |city| %>
+                    <span><%= city -%></span>
+                    <span><%= city === archive.location.last ? '' : '/' %></span>
                   <% end %>
-                <% end %>
-              </div>
-              <div class="market d-none section">
-                <% if @market_school_lists.length == 0 %>
-                  <div>该岗位暂没有招聘信息</div>
-                <% else %>
-                  <% @market_school_lists.each do |archive| %>
-                    <div class="py-2 <%= archive === @market_school_lists.last ? '' : 'bb-1' %>">
-                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
+                </span>
+              <% end %>
 
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
-                        <div class="position-details">
-                          <h4>岗位职责</h4>
-                          <p><%= archive[:description] %></p>
-                          <h4>任职要求</h4>
-                          <p><%= archive[:requirement] %></p>
-                          <h4>工作城市</h4>
-                          <p>
-                            <% archive.location.each do |city| %>
-                              <span><%= city -%></span>
-                            <% end %>
-                          </p>
-                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="product d-none section">
-                <% if @product_school_lists.length == 0 %>
-                  <div>该岗位暂没有招聘信息</div>
-                <% else %>
-                  <% @product_school_lists.each do |archive| %>
-                    <div class="py-2 <%= archive === @product_school_lists.last ? '' : 'bb-1' %>">
-                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
-
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
-                        <div class="position-details">
-                          <h4>岗位职责</h4>
-                          <p><%= archive[:description] %></p>
-                          <h4>任职要求</h4>
-                          <p><%= archive[:requirement] %></p>
-                          <h4>工作城市</h4>
-                          <p>
-                            <% archive.location.each do |city| %>
-                              <span><%= city -%></span>
-                            <% end %>
-                          </p>
-                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="design d-none section">
-                <% if @design_school_lists.length == 0 %>
-                  <div>该岗位暂没有招聘信息</div>
-                <% else %>
-                  <% @design_school_lists.each do |archive| %>
-                    <div class="py-2 <%= archive === @design_school_lists.last ? '' : 'bb-1' %>">
-                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
-
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
-                        <div class="position-details">
-                          <h4>岗位职责</h4>
-                          <p><%= archive[:description] %></p>
-                          <h4>任职要求</h4>
-                          <p><%= archive[:requirement] %></p>
-                          <h4>工作城市</h4>
-                          <p>
-                            <% archive.location.each do |city| %>
-                              <span><%= city -%></span>
-                            <% end %>
-                          </p>
-                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="sales d-none section">
-                <% if @sales_school_lists.length == 0 %>
-                  <div>该岗位暂没有招聘信息</div>
-                <% else %>
-                  <% @sales_school_lists.each do |archive| %>
-                    <div class="py-2 <%= archive === @sales_school_lists.last ? '' : 'bb-1' %>">
-                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
-
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
-                        <div class="position-details">
-                          <h4>岗位职责</h4>
-                          <p><%= archive[:description] %></p>
-                          <h4>任职要求</h4>
-                          <p><%= archive[:requirement] %></p>
-                          <h4>工作城市</h4>
-                          <p>
-                            <% archive.location.each do |city| %>
-                              <span><%= city -%></span>
-                            <% end %>
-                          </p>
-                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="office d-none section">
-                <% if @office_school_lists.length == 0 %>
-                  <div>该岗位暂没有招聘信息</div>
-                <% else %>
-                  <% @office_school_lists.each do |archive| %>
-                    <div class="py-2 <%= archive === @office_school_lists.last ? '' : 'bb-1' %>">
-                      <%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-triangle-right m-r-1") + content_tag(:span, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d"), class: "float-right"), "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded:"false", controls: archive[:id].to_s } -%>
-
-                      <div class="collapse" id="<%= archive[:id].to_s %>">
-                        <div class="position-details">
-                          <h4>岗位职责</h4>
-                          <p><%= archive[:description] %></p>
-                          <h4>任职要求</h4>
-                          <p><%= archive[:requirement] %></p>
-                          <h4>工作城市</h4>
-                          <p>
-                            <% archive.location.each do |city| %>
-                              <span><%= city -%></span>
-                            <% end %>
-                          </p>
-                          <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
+              <div class="collapse <%= archive === @tech_school_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
+                <div class="position-details">
+                  <h4>岗位职责</h4>
+                  <p><%= archive[:description] %></p>
+                  <h4>任职要求</h4>
+                  <p><%= archive[:requirement] %></p>
+                  <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                </div>
               </div>
             </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+          <% end %>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="market-position">
+        <% if @market_school_lists.length == 0 %>
+          <div>该岗位暂没有招聘信息</div>
+        <% else %>
+          <% @market_school_lists.each do |archive| %>
+            <div class="py-2 <%= archive === @market_school_lists.last ? '' : 'bb-1' %>">
+              <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @market_school_lists.last ? true : false, controls: archive[:id].to_s } do -%>
+                <span class="float-left">
+                  <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
+                  <span><%= archive[:title] %></span>
+                </span>
+                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <span>地点：
+                  <% archive.location.each do |city| %>
+                    <span><%= city -%></span>
+                    <span><%= city === archive.location.last ? '' : '/' %></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+              <div class="collapse <%= archive === @market_school_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
+                <div class="position-details">
+                  <h4>岗位职责</h4>
+                  <p><%= archive[:description] %></p>
+                  <h4>任职要求</h4>
+                  <p><%= archive[:requirement] %></p>
+                  <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="product-position">
+        <% if @product_school_lists.length == 0 %>
+          <div>该岗位暂没有招聘信息</div>
+        <% else %>
+          <% @product_school_lists.each do |archive| %>
+            <div class="py-2 <%= archive === @product_school_lists.last ? '' : 'bb-1' %>">
+              <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @product_school_lists.last ? true : false, controls: archive[:id].to_s } do -%>
+                <span class="float-left">
+                  <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
+                  <span><%= archive[:title] %></span>
+                </span>
+                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <span>地点：
+                  <% archive.location.each do |city| %>
+                    <span><%= city -%></span>
+                    <span><%= city === archive.location.last ? '' : '/' %></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+              <div class="collapse <%= archive === @product_school_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
+                <div class="position-details">
+                  <h4>岗位职责</h4>
+                  <p><%= archive[:description] %></p>
+                  <h4>任职要求</h4>
+                  <p><%= archive[:requirement] %></p>
+                  <h4>工作城市</h4>
+                  <p>
+                    <% archive.location.each do |city| %>
+                      <span><%= city -%></span>
+                    <% end %>
+                  </p>
+                  <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="design-position">
+        <% if @design_school_lists.length == 0 %>
+          <div>该岗位暂没有招聘信息</div>
+        <% else %>
+          <% @design_school_lists.each do |archive| %>
+            <div class="py-2 <%= archive === @design_school_lists.last ? '' : 'bb-1' %>">
+              <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @design_school_lists.last ? true : false, controls: archive[:id].to_s } do -%>
+                <span class="float-left">
+                  <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
+                  <span><%= archive[:title] %></span>
+                </span>
+                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <span>地点：
+                  <% archive.location.each do |city| %>
+                    <span><%= city -%></span>
+                    <span><%= city === archive.location.last ? '' : '/' %></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+              <div class="collapse <%= archive === @design_school_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
+                <div class="position-details">
+                  <h4>岗位职责</h4>
+                  <p><%= archive[:description] %></p>
+                  <h4>任职要求</h4>
+                  <p><%= archive[:requirement] %></p>
+                  <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="sales-position">
+        <% if @sales_school_lists.length == 0 %>
+          <div>该岗位暂没有招聘信息</div>
+        <% else %>
+          <% @sales_school_lists.each do |archive| %>
+            <div class="py-2 <%= archive === @sales_school_lists.last ? '' : 'bb-1' %>">
+              <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @sales_school_lists.last ? true : false, controls: archive[:id].to_s } do -%>
+                <span class="float-left">
+                  <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
+                  <span><%= archive[:title] %></span>
+                </span>
+                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <span>地点：
+                  <% archive.location.each do |city| %>
+                    <span><%= city -%></span>
+                    <span><%= city === archive.location.last ? '' : '/' %></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+              <div class="collapse <%= archive === @sales_school_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
+                <div class="position-details">
+                  <h4>岗位职责</h4>
+                  <p><%= archive[:description] %></p>
+                  <h4>任职要求</h4>
+                  <p><%= archive[:requirement] %></p>
+                  <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="office-position">
+        <% if @office_school_lists.length == 0 %>
+          <div>该岗位暂没有招聘信息</div>
+        <% else %>
+          <% @office_school_lists.each do |archive| %>
+            <div class="py-2 <%= archive === @office_school_lists.last ? '' : 'bb-1' %>">
+              <%= link_to "#" + archive[:id].to_s, class: "title", data:{ toggle:"collapse" }, aria:{ expanded: archive === @office_school_lists.last ? true : false, controls: archive[:id].to_s } do -%>
+                <span class="float-left">
+                  <span class="glyphicon glyphicon-triangle-right m-r-1"></span>
+                  <span><%= archive[:title] %></span>
+                </span>
+                <time class="float-right"><%= archive[:created_at].strftime("%Y-%m-%d") %></time>
+                <span>地点：
+                  <% archive.location.each do |city| %>
+                    <span><%= city -%></span>
+                    <span><%= city === archive.location.last ? '' : '/' %></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+              <div class="collapse <%= archive === @office_school_lists.last ? 'in' : '' %>" id="<%= archive[:id].to_s %>">
+                <div class="position-details">
+                  <h4>岗位职责</h4>
+                  <p><%= archive[:description] %></p>
+                  <h4>任职要求</h4>
+                  <p><%= archive[:requirement] %></p>
+                  <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

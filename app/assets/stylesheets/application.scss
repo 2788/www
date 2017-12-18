@@ -359,6 +359,14 @@ ul.ul-step{
 .f-xs p{
   font-size: 12px !important;
 }
+//float right
+.float-right{
+  float: right;
+}
+//float left
+.float-left{
+  float: left;
+}
 .p-relative{
   position: relative;
   &:hover{
