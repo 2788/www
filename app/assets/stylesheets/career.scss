@@ -189,11 +189,30 @@ video {
 
 // positions tab
 .features-positions {
+  &.features {
+    h4 { font-size: 17px; }
+    .intro {
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
   .positionTab {
     margin: 0;
+    .info-null {
+      padding: 8px;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      line-height: 28px;
+    }
+    .table-responsive {
+      border: none;
+    }
   }
   .nav.nav-tabs {
+    margin-top: 25px;
     text-align: center;
+    border-bottom: none;
   }
   .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     color: $brand-primary;
@@ -209,6 +228,7 @@ video {
     margin-right: 25px;
     cursor: pointer;
     img {
+      display: block;
       opacity: .5;
     }
     a {
@@ -240,15 +260,26 @@ video {
   .table td {
     line-height: 28px;
   }
-  td .title{
-    font-size: 14px;
-    display: inline-block;
-    width: 100%;
-    color: rgb(51,51,51);
-    &:hover {
-      cursor: pointer;
-      color: #28aedf;
-      text-decoration: none;
+  td {
+    .title{
+      font-size: 14px;
+      display: inline-block;
+      width: 100%;
+      color: rgb(51,51,51);
+      &:hover {
+        cursor: pointer;
+        color: #28aedf;
+        text-decoration: none;
+      }
+    }
+    .space {
+      display: inline-block;
+      margin: 0;
+    }
+    time {
+      display: inline-block;
+      width: 100%;
+      text-align: right;
     }
   }
 
@@ -306,5 +337,30 @@ video {
 #eventParty-long{
   .modal-dialog.modal-dialog-3top{
     margin-top: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features.features-positions {
+    .nav.nav-tabs>li {
+      margin-left: 5px;
+      margin-right: 5px;
+      img {
+        display: none;
+      }
+      a {
+        padding: 6px 10px;
+      }
+    }
+    .positionTab {
+      td {
+        .space {
+          display: none;
+        }
+        time {
+          display: none;
+        }
+      }
+    }
   }
 }

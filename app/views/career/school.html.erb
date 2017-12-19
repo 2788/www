@@ -98,259 +98,41 @@
 
     <!-- Tab panes -->
     <div class="tab-content positionTab">
-      <div role="tabpanel" class="tab-pane active" id="tech-position">
-        <% if @tech_school_lists.length == 0 %>
-          <div>该岗位暂没有招聘信息</div>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <% @tech_school_lists.each do |archive| %>
-                <tr>
-                  <td width="400px"><div class="title" data-toggle="modal" data-target="#positionModal" data-whatever="tech#<%= archive[:id].to_s %>"><%= archive[:title] %></div></td>
-                  <td>地点：
-                    <% archive.location.each do |city| %>
-                      <span><%= city -%></span>
-                      <span><%= city === archive.location.last ? '' : '/' %></span>
-                    <% end %>
-                  </td>
-                  <td width="100px"><%= archive[:created_at].strftime("%Y-%m-%d") %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        <% end %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="market-position">
-        <% if @market_school_lists.length == 0 %>
-          <div>该岗位暂没有招聘信息</div>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <% @market_school_lists.each do |archive| %>
-                <tr>
-                  <td width="400px"><div class="title" data-toggle="modal" data-target="#positionModal" data-whatever="market#<%= archive[:id].to_s %>"><%= archive[:title] %></div></td>
-                  <td>地点：
-                    <% archive.location.each do |city| %>
-                      <span><%= city -%></span>
-                      <span><%= city === archive.location.last ? '' : '/' %></span>
-                    <% end %>
-                  </td>
-                  <td width="100px"><%= archive[:created_at].strftime("%Y-%m-%d") %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        <% end %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="product-position">
-        <% if @product_school_lists.length == 0 %>
-          <div>该岗位暂没有招聘信息</div>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <% @product_school_lists.each do |archive| %>
-                <tr>
-                  <td width="400px"><div class="title" data-toggle="modal" data-target="#positionModal" data-whatever="product#<%= archive[:id].to_s %>"><%= archive[:title] %></div></td>
-                  <td>地点：
-                    <% archive.location.each do |city| %>
-                      <span><%= city -%></span>
-                      <span><%= city === archive.location.last ? '' : '/' %></span>
-                    <% end %>
-                  </td>
-                  <td width="100px"><%= archive[:created_at].strftime("%Y-%m-%d") %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        <% end %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="design-position">
-        <% if @design_school_lists.length == 0 %>
-          <div>该岗位暂没有招聘信息</div>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <% @design_school_lists.each do |archive| %>
-                <tr>
-                  <td width="400px"><div class="title" data-toggle="modal" data-target="#positionModal" data-whatever="design#<%= archive[:id].to_s %>"><%= archive[:title] %></div></td>
-                  <td>地点：
-                    <% archive.location.each do |city| %>
-                      <span><%= city -%></span>
-                      <span><%= city === archive.location.last ? '' : '/' %></span>
-                    <% end %>
-                  </td>
-                  <td width="100px"><%= archive[:created_at].strftime("%Y-%m-%d") %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        <% end %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="sales-position">
-        <% if @sales_school_lists.length == 0 %>
-          <div>该岗位暂没有招聘信息</div>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <% @sales_school_lists.each do |archive| %>
-                <tr>
-                  <td width="400px"><div class="title" data-toggle="modal" data-target="#positionModal" data-whatever="sales#<%= archive[:id].to_s %>"><%= archive[:title] %></div></td>
-                  <td>地点：
-                    <% archive.location.each do |city| %>
-                      <span><%= city -%></span>
-                      <span><%= city === archive.location.last ? '' : '/' %></span>
-                    <% end %>
-                  </td>
-                  <td width="100px"><%= archive[:created_at].strftime("%Y-%m-%d") %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        <% end %>
-      </div>
-      <div role="tabpanel" class="tab-pane" id="office-position">
-        <% if @office_school_lists.length == 0 %>
-          <div>该岗位暂没有招聘信息</div>
-        <% else %>
-          <div class="table-responsive">
-            <table class="table">
-              <% @office_school_lists.each do |archive| %>
-                <tr>
-                  <td width="400px"><div class="title" data-toggle="modal" data-target="#positionModal" data-whatever="office#<%= archive[:id].to_s %>"><%= archive[:title] %></div></td>
-                  <td>地点：
-                    <% archive.location.each do |city| %>
-                      <span><%= city -%></span>
-                      <span><%= city === archive.location.last ? '' : '/' %></span>
-                    <% end %>
-                  </td>
-                  <td width="100px"><%= archive[:created_at].strftime("%Y-%m-%d") %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        <% end %>
-      </div>
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.tech, :type => "tech-position"} %>
+
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.market, :type => "market-position"} %>
+
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.product, :type => "product-position"} %>
+
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.design, :type => "design-position"} %>
+
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.sales, :type => "sales-position"} %>
+
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.office, :type => "office-position"} %>
     </div>
 
     <!-- varying positionModal -->
     <div class="modal fade" tabindex="-1" role="dialog" id="positionModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="tech d-none section-rank">
-            <% @tech_school_lists.each do |archive| %>
-              <div class="<%= archive[:id].to_s %> d-none section-position">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><%= archive[:title] %></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="position-details">
-                    <h4>岗位职责</h4>
-                    <p><%= archive[:description].gsub(/\n/, '<br/>').html_safe %></p>
-                    <h4>任职要求</h4>
-                    <p><%= archive[:requirement].gsub(/\n/, '<br/>').html_safe %></p>
-                    <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"></h4>
           </div>
-          <div class="market d-none section-rank">
-            <% @market_school_lists.each do |archive| %>
-              <div class="<%= archive[:id].to_s %> d-none section-position">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><%= archive[:title] %></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="position-details">
-                    <h4>岗位职责</h4>
-                    <p><%= archive[:description].gsub(/\n/, '<br/>').html_safe %></p>
-                    <h4>任职要求</h4>
-                    <p><%= archive[:requirement].gsub(/\n/, '<br/>').html_safe %></p>
-                    <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+          <div class="modal-body">
+            <div class="position-details">
+              <h4>岗位职责</h4>
+              <p class="position-work"></p>
+              <h4>任职要求</h4>
+              <p class="position-req"></p>
+              <h4>工作地点</h4>
+              <p class="position-space"></p>
+              <h4>发布日期</h4>
+              <p class="position-date"></p>
+              <%= link_to "现在投递", "", class: "btn btn-primary position-theme", role: "button" -%>
+            </div>
           </div>
-          <div class="product d-none section-rank">
-            <% @product_school_lists.each do |archive| %>
-              <div class="<%= archive[:id].to_s %> d-none section-position">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><%= archive[:title] %></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="position-details">
-                    <h4>岗位职责</h4>
-                    <p><%= archive[:description].gsub(/\n/, '<br/>').html_safe %></p>
-                    <h4>任职要求</h4>
-                    <p><%= archive[:requirement].gsub(/\n/, '<br/>').html_safe %></p>
-                    <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="design d-none section-rank">
-            <% @design_school_lists.each do |archive| %>
-              <div class="<%= archive[:id].to_s %> d-none section-position">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><%= archive[:title] %></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="position-details">
-                    <h4>岗位职责</h4>
-                    <p><%= archive[:description].gsub(/\n/, '<br/>').html_safe %></p>
-                    <h4>任职要求</h4>
-                    <p><%= archive[:requirement].gsub(/\n/, '<br/>').html_safe %></p>
-                    <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="sales d-none section-rank">
-            <% @sales_school_lists.each do |archive| %>
-              <div class="<%= archive[:id].to_s %> d-none section-position">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><%= archive[:title] %></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="position-details">
-                    <h4>岗位职责</h4>
-                    <p><%= archive[:description].gsub(/\n/, '<br/>').html_safe %></p>
-                    <h4>任职要求</h4>
-                    <p><%= archive[:requirement].gsub(/\n/, '<br/>').html_safe %></p>
-                    <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="office d-none section-rank">
-            <% @office_school_lists.each do |archive| %>
-              <div class="<%= archive[:id].to_s %> d-none section-position">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title"><%= archive[:title] %></h4>
-                </div>
-                <div class="modal-body">
-                  <div class="position-details">
-                    <h4>岗位职责</h4>
-                    <p><%= archive[:description].gsub(/\n/, '<br/>').html_safe %></p>
-                    <h4>任职要求</h4>
-                    <p><%= archive[:requirement].gsub(/\n/, '<br/>').html_safe %></p>
-                    <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=社招-" + archive[:title], class: "btn btn-primary", role: "button" -%>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div><!-- /.modal-content -->
+        </div>
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   </div>

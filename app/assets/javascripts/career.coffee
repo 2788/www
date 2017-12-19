@@ -11,6 +11,12 @@ $(document).ready ->
         arrows: false
         slidesToShow: 3
         slidesToScroll: 2
+        responsive: [{
+          breakpoint: 768
+          settings:
+            slidesToShow: 1
+            slidesToScroll: 1
+        }]
 
     # social fluid slider
     $('.social-slider').slick
@@ -20,6 +26,12 @@ $(document).ready ->
         arrows: true
         slidesToShow: 3
         slidesToScroll: 2
+        responsive: [{
+          breakpoint: 768
+          settings:
+            slidesToShow: 1
+            slidesToScroll: 1
+        }]
 
     # career wordbutton slider
     $('.fluid-wordbutton-slider').slick
@@ -33,6 +45,12 @@ $(document).ready ->
         arrows: false
         slidesToShow: 2
         slidesToScroll:1
+        responsive: [{
+          breakpoint: 768
+          settings:
+            slidesToShow: 1
+            slidesToScroll: 1
+        }]
 
     $('.fluid-media-slider .slick-dots').addClass('turnpage')
 
@@ -49,21 +67,27 @@ $(document).ready ->
         return
 
     # varying modal content positionModal
-    $('#positionModal').on 'show.bs.modal', (event) ->
-        # Button that triggered the modal
-        button = $(event.relatedTarget)
-        # varying content
-        recipient = button.data('whatever')
-        _index = recipient.indexOf('#')
-        recipient_rank = recipient.slice(0,_index)
-        recipient_position = recipient.slice(_index + 1)
+    $('.features-positions .positionTab td .title').on 'click', ->
+        _url = $(this).attr('data-url')
+        # replace modal text
+        $.ajax
+            method: 'GET',
+            url: _url,
+            success: (res) ->
+                $('.modal-title').text(res.title)
+                $('.position-work').html(res.description.replace("\n", "<br />"))
+                $('.position-req').html(res.requirement.replace("\n", "<br />"))
 
-        # modal
-        modal = $(this)
-        modal.find('.modal-content .section-rank').addClass('d-none')
-        modal.find('.modal-content .section-rank .section-position').addClass('d-none')
-        modal.find('.modal-content .' + recipient_rank).removeClass('d-none')
-        modal.find('.modal-content .' + recipient_position).removeClass('d-none')
+                _space = res.location.join('/')
+                $('.position-space').text(_space)
+
+                _rdate = new Date(res.created_at)
+                _date = _rdate.getFullYear() + '-' + (_rdate.getMonth() + 1 ) + '-' + _rdate.getDate()
+                $('.position-date').text(_date)
+
+                _mailTo = "mailto:hr@qiniu.com?subject=" + res.title
+                $('.position-theme').attr('href', _mailTo)
+                $('#positionModal').modal('show')
 
     # features-positions nav-tabs
     $('.features-positions .nav-tabs li').click (e) ->
