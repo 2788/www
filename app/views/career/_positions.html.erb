@@ -1,0 +1,27 @@
+<div role="tabpanel" class="tab-pane<%= type == 'tech-position' ? ' active' : '' %>" id="<%= type %>">
+  <% if positions.length == 0 %>
+    <div class="info-null">该岗位暂没有招聘信息</div>
+  <% else %>
+    <div class="table-responsive">
+      <table class="table">
+        <% positions.each do |position| %>
+          <tr>
+            <td>
+              <%= link_to position[:title], "#" + position[:id].to_s, data: { url: position_path(id: position[:id],t: SecureRandom.uuid) }, class: "title postion-title" %>
+            </td>
+            <td>
+              <span class="space">
+                地点：
+                <% position.location.each do |city| %>
+                  <span><%= city -%></span>
+                  <span><%= city === position.location.last ? '' : '/' %></span>
+                <% end %>
+              </span>
+            </td>
+            <td><time><%= position[:created_at].strftime("%Y-%m-%d") %></time></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+</div>

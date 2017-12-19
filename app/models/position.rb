@@ -27,44 +27,4 @@ class Position < ApplicationRecord
     6 => "职能",
   }
 
-  # def self.school_positions
-  #   schools = Position.school.all
-  #   return schools
-  # end
-
-  # def self.social_positions
-  #   socials = Position.social.all
-  #   return socials
-  # end
-
-  # def self.tech_positions
-  #   techs = Position.tech.all
-  #   return techs
-  # end
-
-  # def self.market_positions
-  #   markets = Position.market.all
-  #   return markets
-  # end
-
-  # def self.product_positions
-  #   products = Position.product.all
-  #   return products
-  # end
-
-  # def self.design_positions
-  #   designs = Position.design.all
-  #   return designs
-  # end
-
-  # def self.sales_positions
-  #   _sales = Position.sales.all
-  #   return _sales
-  # end
-
-  # def self.office_positions
-  #   offices = Position.office.all
-  #   return offices
-  # end
-
 end
