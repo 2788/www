@@ -54,13 +54,18 @@ $(document).ready ->
         button = $(event.relatedTarget)
         # varying content
         recipient = button.data('whatever')
+        _index = recipient.indexOf('#')
+        recipient_rank = recipient.slice(0,_index)
+        recipient_position = recipient.slice(_index + 1)
 
         # modal
         modal = $(this)
-        modal.find('.modal-body .section').addClass('d-none')
-        modal.find('.modal-body .' + recipient).removeClass('d-none')
+        modal.find('.modal-content .section-rank').addClass('d-none')
+        modal.find('.modal-content .section-rank .section-position').addClass('d-none')
+        modal.find('.modal-content .' + recipient_rank).removeClass('d-none')
+        modal.find('.modal-content .' + recipient_position).removeClass('d-none')
 
-    # collapse
-    $('.collapse').on 'show.bs.collapse', (event) ->
-        # close all other collapse in
-        $('.collapse.in').collapse('hide')
+    # features-positions nav-tabs
+    $('.features-positions .nav-tabs li').click (e) ->
+        e.preventDefault()
+        $(this).find('a').tab('show')
