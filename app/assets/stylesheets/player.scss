@@ -1,0 +1,172 @@
+.features {
+  &.features-player {
+    border-bottom: 0.01rem solid rgba(0, 0, 0, 0.075);
+  }
+}
+
+.features.features-suspension {
+  padding: 0;
+  position: relative;
+  top: -100px;
+  background: transparent;
+  .container {
+    background: transparent;
+  }
+  .suspension {
+    background-color: #fff;
+    box-shadow: 1px 4px 6px #e7ecff;
+    .suspension-item {
+      display: inline-block;
+      width: 100%;
+      background-color: #fff;
+      -webkit-transition: all .3s linear;
+      -moz-transition: all .3s linear;
+      transition: all .3s linear;
+      .icon {
+        display: block;
+        width: 78px;
+        height: 78px;
+        margin: 15px auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        transition: all .3s linear;
+        &.first-icon {
+          background-image: image-url("player/first-icon.png");
+        }
+        &.package-icon {
+          background-image: image-url("player/package-icon.png");
+        }
+        &.crosite-icon {
+          background-image: image-url("player/crosite-icon.png");
+        }
+        &.stable-icon {
+          background-image: image-url("player/stable-icon.png");
+        }
+      }
+      .desc {
+        text-align: center;
+        margin-bottom: 15px;
+        p {
+          font-size: 16px;
+          line-height: 32px;
+          color: #333;
+          margin: 0;
+          -webkit-transition: all .3s linear;
+          -moz-transition: all .3s linear;
+          transition: all .3s linear;
+        }
+      }
+      &:hover {
+        background-color: #0d70ff;
+        .icon {
+          &.first-icon {
+            background-image: image-url("player/hover-first-icon.png");
+          }
+          &.package-icon {
+            background-image: image-url("player/hover-package-icon.png");
+          }
+          &.crosite-icon {
+            background-image: image-url("player/hover-crosite-icon.png");
+          }
+          &.stable-icon {
+            background-image: image-url("player/hover-stable-icon.png");
+          }
+        }
+        .desc {
+          p {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features.features-player {
+  .player-bg {
+    .desc {
+      width: 100%;
+      overflow: hidden;
+      .desc-unit {
+        margin: 0 50px;
+        h3 {
+          margin: 0;
+          color: #0d70ff;
+        }
+        p {
+          margin: 10px 0 0;
+        }
+      }
+    }
+    .bg-img {
+      width: 100%;
+      .player-img {
+        display: block;
+        margin: 5px auto;
+        width: 800px;
+        height: 400px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-image: image-url("player/bofangqi.png");
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .features.features-player {
+    .player-bg {
+      .bg-img {
+        .player-img {
+          width: 660px;
+          height: 320px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .features.features-suspension {
+    top: -50px;
+  }
+  .features.features-player {
+    .player-bg {
+      .bg-img {
+        .player-img {
+          width: 400px;
+          height: 192px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .features.features-suspension {
+    top: -50px;
+  }
+  .features.features-player {
+    .player-bg {
+      .desc {
+        .desc-unit {
+          width: 140px;
+          margin: 0;
+        }
+      }
+      .bg-img {
+        .player-img {
+          width: 310px;
+          height: 150px;
+        }
+      }
+    }
+    .thumbnail {
+      min-height: 3.3rem;
+    }
+  }
+}

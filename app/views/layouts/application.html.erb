@@ -65,6 +65,12 @@
                 <% I18n.t("solutions").each do |solution| %>
                   <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]+" menu-title") + content_tag(:p, solution[:desc], class: "hidden-xs"), solutions_path(anchor: solution[:name])), class: "solution" -%>
                 <% end %>
+                <li class="solution">
+                  <%= link_to products_player_path do -%>
+                    <h4 class="DQM menu-title">播放器解决方案</h4>
+                    <p class="hidden-xs">全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议。</p>
+                  <% end %>
+                </li>
               </ul>
             </li>
             <li><%= link_to "价格", prices_path -%></li>
