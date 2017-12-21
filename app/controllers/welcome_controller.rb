@@ -25,6 +25,9 @@ class WelcomeController < ApplicationController
   def vance
   end
 
+  def player
+  end
+
   def contact
   end
 

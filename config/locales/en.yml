@@ -1,23 +1,520 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  views:
+    language: "en"
+    pagination:
+      first: "first"
+      last: "last"
+      previous: "previous"
+      next: "next"
+      truncate: "&hellip;"
+    welcome:
+      index:
+        feature1:
+          title: "We are continuously extracting infinite value from mass data"
+          desc: ""
+          col:
+            - title: "Mass Storage"
+              icon: "icon-massstorage@2x.png"
+              desc: "How to manage data in increasingly large data fields while all data have their periods of validity?  Qiniu possesses object storage with complete intellectual property rights, which has undergone severe tests and made full preparations for data storage on the EB scale."
+              icons:
+                - name: "Object Storage"
+                  class: "icon icon-storage"
+                  path: "/products/kodo"
+                - name: "Sequence Database"
+                  class: "icon icon-databass"
+                  path: "/products/pandora"
+            - title: "Data Insight"
+              icon: "icon-num@2x.png"
+              desc: "Value extraction from data is the key step to turn data from burdens to assets. The big data product family and machine learning product family provided by Qiniu assist you in managing assets in the best way."
+              icons:
+                - name: "Deep Learning Platform"
+                  class: "icon icon-machine-learning"
+                  path: "/products/atlab"
+                - name: "Spark Service"
+                  class: "icon icon-xspark"
+                  path: "/products/pandora"
+                - name: "Big data Platform"
+                  class: "icon icon-bigdata"
+                  path: "/products/pandora"
+            - title: "Accelerated Transmission"
+              icon: "icon-accelerate@2x.png"
+              desc: "Qiniu’s unique integrated CDN combines advantages of both mainstream CDNs and self-established CDN nodes, which enables you to find an optimum balance between performances and costs."
+              icons:
+                - name: "Integrated CDN"
+                  class: "icon icon-dora"
+                  path: "/products/fusion"
+            - title: "High-performance Computing"
+              icon: "icon-controllale@2x.png"
+              desc: "We need to process data in high speed for data flow. Qiniu has constructed a computing platform based on containers and a multifunctional and open intelligent media cloud platform based on the container platform. You only need to consider ways to process data instead of data scales or system performances."
+              icons:
+                - name: "Intelligent Multimedia API"
+                  class: "icon icon-media"
+                  path: "/products/dora"
+                - name: "Container-based Cloud"
+                  class: "icon icon-container"
+                  path: "/products/kirk"
+        feature2:
+          title: "One-stop Solution to VOD and Live Video"
+          desc: "With integrated storage and CDN, Qiniu combines strong data-processing capability to offer one-stop live video and VOD services, such as live broadcasting, recording, transcoding, publishing, accelerating and broadcasting."
+          icons:
+            - name: "VOD Cloud"
+              class: "icon icon-streaming"
+              path: "/products/vance"
+            - name: "PILI"
+              class: "icon icon-video"
+              path: "/products/pili"
+          col:
+            - title: "Fluency"
+              icon: "icon-fast@2x.png"
+              desc: "The basis of a video solution is based on whether the video can be played fluently or not. Qiniu ultimately optimizes video fluency in every step from hosts to audience."
+            - title: "High Efficiency"
+              icon: "icon-productivity@2x.png"
+              desc: "We supply a complete end-to-end solution, which allows the product development and launch to be completed from more than 6 months to less than one month."
+            - title: "Low Cost"
+              icon: "icon-lowcost@2x.png"
+              desc: "We have adopted various reliable technologies to lower the cost, including content compression, P2P transmission, H.265 encoding and adaptive code streaming."
+            - title: "Controllability"
+              icon: "icon-controllable@2x.png"
+              desc: "We make full use of advantages of big data and machine learning to monitor service quality in real time and deep analyze the service in an open way."
+        feature3:
+          title: "Success Cases from all Walks of Life"
+  services:
+    - group: 基础服务
+      list:
+        - name: kodo
+          label: 对象存储
+          desc: 高可用、易扩展、低成本、一站式
+
+        - name: fusion
+          label: 融合 CDN
+          desc: 融合优质节点、可监控、智能调度的内容分发服务
+
+        - name: kirk
+          label: 容器云 <small>(即将上线)</small>
+          desc: 面向微服务架构的企业级容器管理平台
+
+    - group: 数据•智能
+      list:
+        - name: atlab
+          label: 深度学习平台
+          desc: 针对图片视频的一站式数据集中处理、模型训练平台
+
+        - name: pandora
+          label: 大数据
+          desc: 简单、高效、开放
+
+        - name: dora
+          label: 智能多媒体 API
+          desc: 针对海量图片视频提供鉴黄鉴暴、人脸技术、物体识别等服务
+
+    - group: 视频服务
+      list:
+        - name: pili
+          label: 直播云
+          desc: 提供全球化实时流服务和端到端直播场景解决方案
+
+        # - name: vance
+        #   label: 点播云
+        #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
+  solutions:
+    - name: QOS
+      label:  私有云存储解决方案
+      desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+    - name: UDMP
+      label:  非结构化数据管理解决方案
+      desc: 提供大批量文件打包上传、文档检索、多媒体数据处理等服务
+    - name: PLSV
+      label:  短视频解决方案
+      desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
+    - name: ICA
+      label:  智能云相册解决方案
+      desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
+    - name: IHAIOT
+      label:  智能硬件与物联网解决方案
+      desc: 满足智能硬件厂商各应用场景下云端计算需求
+    - name: RTMI
+      label:  新媒体解决方案
+      desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
+    - name: HST
+      label:  安防解决方案
+      desc: 灵活部署，满足不同安防场景互联网远程监控需求
+    - name: Internet
+      label:  互联网与移动互联网解决方案
+      desc: 为互联网初创企业量身定制，一站式云计算服务平台
+    - name: DQM
+      label:  应用质量监控解决方案
+      desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
+  nemwmedias:
+    - path: newmedia/beifangwang.jpg
+    - path: newmedia/CIBN.jpg
+    - path: newmedia/cntv.jpg
+    - path: newmedia/dahewang.jpg
+    - path: newmedia/guizhouguangdian.jpg
+    - path: newmedia/heilongjiang.jpg
+    - path: newmedia/henanribao.jpg
+    - path: newmedia/huashu.jpg
+    - path: newmedia/hubeiguangdian.jpg
+    - path: newmedia/jiangxuweishi.jpg
+    - path: newmedia/lianhuaweishi.jpg
+    - path: newmedia/longhuwang.jpg
+    - path: newmedia/mangguotv.jpg
+    - path: newmedia/zhejiangribao.jpg
+    - path: newmedia/zhejiangzaixian.jpg
+    - path: newmedia/zhongguowang.jpg
+  partners:
+    - path: cooperation/client-3w-highlight@2x.png
+      desc: 3w
+    - path: cooperation/client-aijiami-highlight@2x.png
+      desc: aijiami
+    - path: cooperation/client-APIcloud-highlight@2x.png
+      desc: APIcloud
+    - path: cooperation/client-dnspod-highlight@2x.png
+      desc: dnspod
+    - path: cooperation/client-duobeifen-highlight@2x.png
+      desc: duobeifen
+    - path: cooperation/client-getui-highlight@2x.png
+      desc: getui
+    - path: cooperation/client-aimei-highlight@2x.png
+      desc: aimei
+    - path: cooperation/client-jiasuhui-highlight@2x.png
+      desc: jiasuhui
+    - path: cooperation/client-leancloud-highlight@2x.png
+      desc: leancloud
+    - path: cooperation/client-maike-highlight@2x.png
+      desc: maike
+    - path: cooperation/client-segmentfault-highlight@2x.png
+      desc: segmentfault
+    - path: cooperation/client-teambiton-highlight@2x.png
+      desc: teambiton
+    - path: cooperation/client-shisuyun-highlight@2x.png
+      desc: shisuyun
+    - path: cooperation/client-jizhiyun-highlight@2x.png
+      desc: jizhiyun
+    - path: cooperation/client-kedaxunfei-highlight@2x.png
+      desc: kedaxunfei
+    - path: cooperation/client-youmi-highlight@2x.png
+      desc: youmi
+    - path: cooperation/client-yunzhixun-highlight@2x.png
+      desc: yunzhixun
+    - path: cooperation/client-juzikongjian-highlight@2x.png
+      desc: juzikongjian
+    - path: cooperation/client-mingdao-highlight@2x.png
+      desc: mingdao
+    - path: cooperation/client-jisiwei-highlight@2x.png
+      desc: jisiwei
+    - path: cooperation/client-testin-highlight@2x.png
+      desc: testin
+    - path: cooperation/client-jinshuju-highlight@2x.png
+      desc: jinshuju
+    - path: cooperation/client-anchang-highlight@2x.png
+      desc: anchang
+    - path: cooperation/client-devstore-highlight@2x.png
+      desc: devstore
+    - path: cooperation/client-coding-highlight@2x.png
+      desc: coding
+    - path: cooperation/client-yunpian.png
+      desc: yunpian
+  seo:
+    welcome_index:
+      title: 七牛云-国内领先的企业级云服务商
+      keywords: 七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速
+      description: 七牛云是国内领先的企业级云服务商，致力于打造以数据为核心的场景化 PaaS 服务。围绕富媒体场景，七牛提供对象存储，融合CDN加速，直播云，内容反垃圾等服务。
+    welcome_kodo:
+      title: 对象存储_海量安全高可靠的云存储 - 七牛云
+      keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管，低频存储，镜像存储，私有部署，静态资源托管，备份归档，数据迁移，数据灾备，弹性扩容
+      description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。
+    welcome_pili:
+      title: 直播云_直播云服务 - 七牛云
+      keywords: 直播云，直播云服务，直播SDK，直播API，推流SDK，播放SDK，七牛直播，七牛直播云，直播加速，美颜
+      description: 七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供RTMP、HLS、HDL直播支持、配套的数据处理服务、端到端SDK支持、APM数据服务。
+    welcome_pandora:
+      title: 大数据_大数据服务 - 七牛云
+      keywords: 大数据，大数据平台，大数据服务，数据分析、商业分析、时序数据库、日志检索、消息队列、数据流、离线分析、Spark、HDFS、数据运维、数据运营、质量监控
+      description: 七牛大数据是七牛云的大数据平台，提供安全、简单、高效、开放的一站式大数据服务。
+    welcome_contact:
+      title: 联系我们 - 七牛云
+    welcome_fusion:
+      title: 融合CDN，CDN加速服务 - 七牛云
+      keywords: 高防CDN，动态CDN，静态CDN，CDN，CDN加速，CDN加速服务, 七牛CDN，CDN服务器，内容分发，云加速，融合CDN，图片CDN，视频CDN
+      description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
+    welcome_dora:
+      title: 智能多媒体API  - 七牛云
+      keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR,发票识别，场景识别，鉴黄，暴恐审核
+      description: 七牛智能多媒体API支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR文字识别和内容审核等在线API服务。
+    welcome_kirk:
+      title: 容器云_容器云平台 - 七牛云
+      keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务,微服务，devops
+      description: 七牛容器云是七牛云基于自身公有云业务在容器方面的多年实践经验，针对企业私有部署打造的容器云计算平台。
+    welcome_vance:
+      title: 点播云_点播云服务 - 七牛云
+      keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
+      description: 七牛点播云汇聚七牛云存储、音视频转码和融合CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播PaaS平台。
+    welcome_plsv:
+      title: 短视频解决方案_短视频服务-七牛云
+      keywords: 短视频解决方案、短视频服务、短视频SDK
+      description: 七牛短视频服务(PLSV)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
+    welcome_user_agreement:
+      title: 用户服务协议-七牛云
+      keywords:
+      description:
+    welcome_sla_kodo:
+      title: 对象存储SLA-七牛云
+      keywords:
+      description:
+    welcome_sla_fusion:
+      title: 融合CDN SLA-七牛云
+      keywords:
+      description:
+    welcome_sla_pili:
+      title: 直播云SLA-七牛云
+      keywords:
+      description:
+    welcome_sla_dora:
+      title: 智能多媒体API SLA-七牛云
+      keywords:
+      description:
+    welcome_solution:
+      title: 解决方案 - 七牛云
+      keywords: 对象存储私有化部署方案，非结构化数据管理解决方案，智能云相册解决方案，智能硬件与物联网解决方案，广电传媒解决方案，安防终端解决方案，互联网与移动互联网解决方案，应用质量监控解决方案
+      description: 七牛云解决方案平台，基于八大核心产品对象存储、融合CDN、容器云、大数据平台、深度学习平台、智能多媒体API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造的简单、可信的解决方案平台，帮助您快速实现业务需求并创造更多商业价值。
+    welcome_about:
+      title: 关于我们 - 七牛云
+    welcome_company:
+      title: 公司介绍 - 七牛云
+    welcome_case:
+      title: 客户案例 - 七牛云
+    welcome_atlab:
+      title: 深度学习平台 - 七牛云
+      keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
+      description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
+    events_tech_online:
+      title: 七牛Tech Online - 七牛云
+      keywords: Tech Online，七牛 Tech Online
+      description: 七牛 Tech Online 是在七牛架构师实践日线下沙龙的基础上，全新推出的一款在线技术交流活动。活动采用直播的形式，每期特邀一位技术圈网红与大家一起共话技术、畅谈未来。
+    events_ecug:
+      title: ECUG - 七牛云
+      keywords: ECUG，七牛ECUG
+      description: ECUG 全称为 Effective Cloud User Group （实效云计算用户组），由七牛云 CEO 许式伟发起，集结了一批具有高端视角并仍醉心于技术本身的同仁，共同关注云计算前沿技术的最新成果和分布式开发、运维的最佳实践。
+    events_niushow:
+      title: 牛人秀 - 七牛云
+      keywords: 牛人秀
+      description: 牛人秀是七牛人对外演讲的精粹视频的汇集地。
+    events_index:
+      title: 七牛云活动
+      keywords: 架构师实践日，Tech Online，ECUG，牛人秀
+    prices_index:
+      title: 价格详情 - 七牛云
+      keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱
+      description: 七牛云为您提供的不止优秀的产品，还有极具竞争力的产品定价。
+    prices_caculator:
+      title: 预算估计 - 七牛云
+    feedbacks_new:
+      title: 产品及服务咨询 - 七牛云
+    recommendations_new:
+      title: 客户推荐 - 七牛云
+    cooperations_index:
+      title: 市场合作 - 七牛云
+  cases1:
+    - groupid: enterprise
+      group:
+        - imgpath: case/enterprise/bubugao.png
+        - imgpath: case/enterprise/changhong.png
+        - imgpath: case/enterprise/sap.png
+        - imgpath: case/enterprise/sobey.png
+  cases:
+    - groupid: software
+      group:
+        - imgpath: case/software/meitu.png
+        - imgpath: case/software/zhubajie.png
+    - groupid: media
+      group:
+        - imgpath: case/media/hubeiguangdian.png
+        - imgpath: case/media/cibn.png
+        - imgpath: case/media/guizhouguangdian.png
+    - groupid: traffics
+      group:
+        - imgpath: case/traffics/mobaidanche.png
+        - imgpath: case/traffics/qiongyou.png
+        - imgpath: case/traffics/youxinershouche.png
+    - groupid: wealth
+      group:
+        - imgpath: case/wealth/pingankeji.png
+        - imgpath: case/wealth/pinganyinhang.png
+    - groupid: im
+      group:
+        - imgpath: case/im/blued.png
+        - imgpath: case/im/in.png
+        - imgpath: case/im/liehuo.png
+        - imgpath: case/im/taqu.png
+    - groupid: fashion
+      group:
+        - imgpath: case/fashion/jumeiyoupin.png
+        - imgpath: case/fashion/meili.png
+        - imgpath: case/fashion/meipai.png
+    - groupid: enjoyment
+      group:
+       - imgpath: case/enjoyment/baiao.png
+       - imgpath: case/enjoyment/changba.png
+       - imgpath: case/enjoyment/dongqiudi.png
+       - imgpath: case/enjoyment/echo.png
+       - imgpath: case/enjoyment/heixiuzhibo.png
+       - imgpath: case/enjoyment/jiuzhouzhibo.png
+       - imgpath: case/enjoyment/kugouyinyue.png
+       - imgpath: case/enjoyment/ppjuli.png
+       - imgpath: case/enjoyment/qutoutiao.png
+       - imgpath: case/enjoyment/renrenshipin.png
+       - imgpath: case/enjoyment/taptap.png
+       - imgpath: case/enjoyment/tutulive.png
+       - imgpath: case/enjoyment/uplive.png
+       - imgpath: case/enjoyment/xiandanjia.png
+       - imgpath: case/enjoyment/xiaohuaxiu.png
+       - imgpath: case/enjoyment/xiaoying.png
+       - imgpath: case/enjoyment/xiaozhuzhibo.png
+       - imgpath: case/enjoyment/xindongwangluo.png
+       - imgpath: case/enjoyment/xuanpai.png
+    - groupid: health
+      group:
+        - imgpath: case/health/gudong.png
+    - groupid: education
+      group:
+        - imgpath: case/education/xueersi.png
+        - imgpath: case/education/yangcongshuxue.png
+        - imgpath: case/education/yingyuqupeiyin.png
+        - imgpath: case/education/yunxuetang.png
+    - groupid: hardware
+      group:
+        - imgpath: case/hardware/dajiang.png
+        - imgpath: case/hardware/haikangyingshi.png
+        - imgpath: case/hardware/oppo.png
+        - imgpath: case/hardware/shenzhouying.png
+  plsvs1:
+    - groupid: collections
+      group:
+        - imgpath: plsv/icon-dayanshoulian.png
+          desc: 大眼瘦脸
+        - imgpath: plsv/icon-dongtaitiezhi.png
+          desc: 动态贴纸
+        - imgpath: plsv/icon-duoduanluzhi.png
+          desc: 多段录制
+        - imgpath: plsv/icon-huishangongneng.png
+          desc: 回删功能
+        - imgpath: plsv/icon-meiyanlvjing.png
+          desc: 美颜滤镜
+        - imgpath: plsv/icon-mianbushibie.png
+          desc: 面部识别
+        - imgpath: plsv/icon-piantoupianwei.png
+          desc: 片头片尾
+        - imgpath: plsv/icon-shuiyingongneng.png
+          desc: 水印功能
+        - imgpath: plsv/icon-wenzitexiao.png
+          desc: 文字特效
+        - imgpath: plsv/icon-zimugongneng.png
+          desc: 字幕功能
+  plsvs:
+    - groupid: editions
+      group:
+        - imgpath: plsv/icon-beijingyinyue.png
+          desc: 背景音乐
+        - imgpath: plsv/icon-bendizhuanma.png
+          desc: 本地转码
+        - imgpath: plsv/icon-duandianxuchuan.png
+          desc: 断点续传
+        - imgpath: plsv/icon-https.png
+          desc: https 支持
+        - imgpath: plsv/icon-shipincaijian.png
+          desc: 视频裁剪
+        - imgpath: plsv/icon-shipinpinjie.png
+          desc: 视频拼接
+        - imgpath: plsv/icon-shipinshangchuan.png
+          desc: 视频上传
+        - imgpath: plsv/icon-yingjianbianma.png
+          desc: 硬件编码
+        - imgpath: plsv/icon-yinpincaijian.png
+          desc: 音频裁剪
+        - imgpath: plsv/icon-zhuanchangdonghua.png
+          desc: 转场动画
+    - groupid: services
+      group:
+        - imgpath: plsv/icon-bofangjianquan.png
+          desc: 播放鉴权
+        - imgpath: plsv/icon-cdnjiasu.png
+          desc: CDN 加速
+        - imgpath: plsv/icon-drmshuzibaohu.png
+          desc: DRM 数字版权保护
+        - imgpath: plsv/icon-fuwuduanzhuanma.png
+          desc: 服务端转码
+        - imgpath: plsv/icon-huiyuanjianquan.png
+          desc: 回源鉴权
+        - imgpath: plsv/icon-jianhuangjiankong.png
+          desc: 鉴黄监控
+        - imgpath: plsv/icon-meitiguanli.png
+          desc: 媒体管理
+        - imgpath: plsv/icon-miaokaizhichi.png
+          desc: 秒开支持
+        - imgpath: plsv/icon-shipincunchu.png
+          desc: 视频存储
+        - imgpath: plsv/icon-shuiyingongneng.png
+          desc: 水印功能
+    - groupid: player
+      group:
+        - imgpath: plsv/icon-beishubofan.png
+          desc: 倍数播放
+        - imgpath: plsv/icon-biansububiandiao.png
+          desc: 变速不变调
+        - imgpath: plsv/icon-bianxiabianbo.png
+          desc: 边下边播
+        - imgpath: plsv/icon-bofanghuancun.png
+          desc: 播放缓存
+        - imgpath: plsv/icon-drmshuzibaohu.png
+          desc: DRM数字保护
+        - imgpath: plsv/icon-H265.png
+          desc: H265
+        - imgpath: plsv/icon-jianhuangjiankong.png
+          desc: 鉴黄监控
+        - imgpath: plsv/icon-jiequfengmian.png
+          desc: 截取封面
+        - imgpath: plsv/icon-miaokaizhichi.png
+          desc: 秒开支持
+        - imgpath: plsv/icon-ruanyingjiezidong.png
+          desc: 软硬解自动
+  icps:
+    qbox.net:             [沪 ICP 备 11037377 号-1,  沪公网安备 31011502006015 号]
+    qbox.me:              [沪 ICP 备 11037377 号-1,  沪公网安备 31011502000961 号]
+    qiniutek.com:         [沪 ICP 备 11037377 号-2,  沪公网安备 31011502000961 号]
+    qiniudn.com:          [沪 ICP 备 11037377 号-3,  沪公网安备 31011502000961 号]
+    qiniup.com:           [沪 ICP 备 11037377 号-4,  沪公网安备 31011502000961 号]
+    qiniu.com:            [沪 ICP 备 11037377 号-5,  沪公网安备 31011502000961 号]
+    ecug.org:             [沪 ICP 备 11037377 号-7,  沪公网安备 31011502050961 号]
+    qiniucc.com:          [沪 ICP 备 11037377 号-8,  沪公网安备 31011502000961 号]
+    qiniuapi.com:         [沪 ICP 备 11037377 号-9,  沪公网安备 31011502000961 号]
+    clouddn.com:          [沪 ICP 备 11037377 号-10, 沪公网安备 31011502040961 号]
+    qiniucdn.com:         [沪 ICP 备 11037377 号-11, 沪公网安备 31011502040961 号]
+    qiniug.com:           [沪 ICP 备 11037377 号-11]
+    qiniurs.com:          [沪 ICP 备 11037377 号-11]
+    qiniudns.com:         [沪 ICP 备 11037377 号-12, 沪公网安备 31011502030961 号]
+    doxygen.io:           [沪 ICP 备 11037377 号-16]
+    qiniupkg.com:         [沪 ICP 备 11037377 号-16, 沪公网安备 31011502020961 号]
+    qiniu.org:            [沪 ICP 备 11037377 号-20, 沪公网安备 31011502020961 号]
+    niu.io:               [沪 ICP 备 11037377 号-21, 沪公网安备 31011502000961 号]
+    qiniu.in:             [沪 ICP 备 11037377 号-22, 沪公网安备 31011502000961 号]
+    qiniudns2.com:        [沪 ICP 备 11037377 号-23, 沪公网安备 31011502000961 号]
+    qiniu.us:             [沪 ICP 备 11037377 号-24, 沪公网安备 31011502000961 号]
+    qnssl.com:            [沪 ICP 备 11037377 号-25, 沪公网安备 31011502000961 号]
+    staticfile.org:       [沪 ICP 备 11037377 号-26, 沪公网安备 31011502010961 号]
+    qiniu-solutions.com:  [沪 ICP 备 11037377 号-27]
+    qiniu-enterprise.com: [沪 ICP 备 11037377 号-28]
+    cloudvdn.com:         [沪 ICP 备 11037377 号-29, 沪公网安备 31011502000961 号]
+    pilidns.com:          [沪 ICP 备 11037377 号-29]
+    qiniudns.net:         [沪 ICP 备 11037377 号-30]
+    qnydns.net:           [沪 ICP 备 11037377 号-31]
+    qnydns.com:           [沪 ICP 备 11037377 号-32]
+    cvoda.com:            [沪 ICP 备 11037377 号-33]
+    cvodb.com:            [沪 ICP 备 11037377 号-34]
+    cloudappl.com:        [沪 ICP 备 11037377 号-35]
+    qiniu.io:             [沪 ICP 备 11037377 号-37]
+    qnfcdn.com:           [沪 ICP 备 11037377 号-38]
+    qiniucloud.net:       [沪 ICP 备 11037377 号-39]
+    atlab.ai:             [沪 ICP 备 11037377 号-40]
+    qiniu.com.cn:         [沪 ICP 备 11037377 号-41]
+    qiniukodo.com:        [沪 ICP 备 11037377 号-42]
+    localhost:       [沪 ICP 备 11037377 号-42]

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/products/vance',       to: 'welcome#vance'
   get '/products/atlab',       to: 'welcome#atlab'
   get '/products/plsv',        to: 'welcome#plsv'
+  get '/products/player',      to: 'welcome#player'
 
   get '/contact',      to: 'welcome#contact'
   get '/solutions',    to: 'welcome#solution'
