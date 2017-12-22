@@ -73,7 +73,7 @@
     <div class="row">
       <% I18n.t("views.welcome.pili.feature3.col").each do |col| %>
       <div class="col-md-4 col-sm-6 col-xs-6">
-        <div class="media">
+        <div class="media <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>">
           <div class="media-left">
             <%= image_tag col[:icon], class: "media-object", width: 43 %>
           </div>

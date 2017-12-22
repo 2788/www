@@ -372,6 +372,81 @@ en:
               icon: "icon-dianshangzhibo@2x.png"
         feature5:
           title: "Customer Cases"
+      solution:
+        banner:
+          title: "Qiniu Cloud Solution Platform"
+          desc: "Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has elaborately established a simple and reliable solution platform to help you realize business needs quickly and create more business value."
+        feature1:
+          title: ""
+      company:
+        title: "What is Our Company?"
+        desc: "Qiniu is affiliated to Shanghai Qiniu Information Technologies Co., Ltd. Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value."
+        feature1:
+          title: "Business Culture of Qiniu—Simple and Reliable"
+          col:
+            - title: "To be a Simple Man"
+              icon: "company/icon-jiandanderen@2x.png"
+              desc: "We stick to the recognized developing direction, which is based on employees. In order to win the trust from employees, we insist that they be paid for their work and that the more they work, the more they be paid."
+            - title: "To Make a Simple Product"
+              icon: "company/icon-jiandandechanpin@2x.png"
+              desc: "Client-focused and result-oriented, we persist in making business simple and pursuing for the ultimate to win the trust from clients."
+            - title: "To be a Simple Company"
+              icon: "company/icon-jiandandegongsi@2x.png"
+              desc: "With social responsibility as our duty and company credit as the most important asset, we keep our promise and adhere to honesty and integrity to win the trust from society."
+        feature2:
+          title: "Histories of Qiniu"
+          ul:
+            li1:
+              time: "2011"
+            li2:
+              time: "August, 2011"
+              desc: "Qiniu was founded."
+            li3:
+              time: "December, 2011"
+              desc: "Cloud platforms went into operation online."
+            li4:
+              time: "2012"
+            li5:
+              time: "February, 2012"
+              desc: "Qiniu gained the first round of financing of millions of yuan from Matrix Partners China."
+            li6:
+              time: "December, 2012"
+              desc: Go Programming Language, a work by Qiniu, is awarded one of the top 10 books in 2012.
+            li7:
+              time: "2013"
+            li8:
+              time: "January, 2013"
+              desc: "Qiniu gained the second round of financing of billions of US dollars from Qiming Venture Partners and Matrix Partners China."
+            li9:
+              time: "2014"
+            li10:
+              time: "July, 2014"
+              desc: "Qiniu launched Storage 2.0, which saved 62% of unit storage costs."
+            li11:
+              time: "August, 2014"
+              desc: "Qiniu gained the third round of financing of billions of US dollars led by CBC Capital and followed by Matrix Partners China and Qiming Venture Partners."
+            li12:
+              time: "December, 2014"
+              desc: "Qiniu launched accelerating service abroad covering 54 areas in 31 countries across the world."
+            li13:
+              time: "2015"
+            li14:
+              time: "January, 2015"
+              desc: "The object storage service of Qiniu was confirmed as a credible cloud service."
+            li15:
+              time: "August, 2015"
+              desc: "Qiniu officially launched the data processing platform based on container service technology."
+            li16:
+              time: "2016"
+            li17:
+              time: "February, 2016"
+              desc: "Qiniu gained the fourth round of financing from well-known investment institutions like F&G Venture, GHII, Zhangjiang High-tech and Telstra."
+            li18:
+              time: "May, 2016"
+              desc: "Qiniu launched PILI in the mobile era."
+            li19:
+              time: "December, 2016"
+              desc: "Qiniu was certified by the ISO/IEC 27001:2013 Information Security Management System."
   services:
     - group: 基础服务
       list:
