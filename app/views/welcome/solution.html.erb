@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2>七牛云解决方案平台</h2>
-          <p>基于八大核心产品对象存储、融合 CDN、容器云、大数据平台、深度学习平台、智能多媒体 API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造了简单、可信的解决方案平台，以帮助您快速实现业务需求并创造更多商业价值。</p>
+          <h2><%= I18n.t("views.welcome.solution.banner.title") %></h2>
+          <p><%= I18n.t("views.welcome.solution.banner.desc") %></p>
         </div>
       </div>
     </div>
@@ -14,13 +14,13 @@
 <div class="features feature-solution">
   <div class="container">
     <div class="row row-solution" id="QOS">
-      <div class="col-sm-8 col-solution">
-        <h2 class="icon140 icon-QOS">私有云存储解决方案</h2>
-        <p class="content">私有云存储解决方案是基于七牛公有云对象存储服务的架构和运营经验设计而成的，能够为企业客户搭建独立的数百 PB 级别的高可靠、强安全、低成本、可扩展的存储系统，满足多样化的非结构化数据存储需求。同时还能提供成熟的系统管理和运维，让企业以更低廉的产品及维护成本，满足在容量、性能及稳定性上的需求。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
+      <div class="col-sm-8 col-solution right-line">
+        <h2 class="icon140 icon-QOS"><%= I18n.t("views.welcome.solution.feature1.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature1.desc") %><%= link_to I18n.t("views.welcome.solution.feature1.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><h5 class="icon50 icon-kodo">对象存储</h5></div>
       </div>
-      <div class="col-sm-4 col-scene left-line">
-        <div class="col-scene_scene">
+      <div class="col-sm-4 col-scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-4">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature1.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-zhongyiwulian@2x.jpg", class: "", alt: "zhongyiwulian", data: { toggle: "tooltip", placement: "bottom" }, title: "中移物联", width: 70 %></li>
             <li><%= image_tag "solution/client-ailixin@2x.png", class: "", alt: "ailixin", data: { toggle: "tooltip", placement: "bottom" }, title: "爱立信", width: 70 %></li>
@@ -56,15 +56,18 @@
   <div class="container">
     <div class="row row-solution" id="UDMP">
       <div class="col-sm-8 col-solution left-line">
-        <h2 class="icon140 icon-UDMP">非结构化数据管理解决方案</h2>
-        <p class="content">七牛云非结构化数据管理平台基于七牛对象存储系统构建，能轻松实现百亿级别非结构化数据，及其结构化业务属性数据的存储；平台具高可用、高并发读写、线性扩展等特性，同时能够提供基于结构化业务属性数据的文档检索等服务，拥有 PaaS 级别的权限管理和安全机制，还能与七牛数据处理智能多媒体 API 平台无缝对接，实现影像处理，智能识别与分析等服务。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-hailiang">海量业务属性管理</h5>
+        <h2 class="icon140 icon-UDMP"><%= I18n.t("views.welcome.solution.feature2.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature2.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature2.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-hailiang">海量业务属性管理</h5>
+        </div>
       </div>
 
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-4">
@@ -74,7 +77,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature2.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-pinganyinhang@2x.png", class: "", alt: "pinganyinhang", data: { toggle: "tooltip", placement: "bottom" }, title: "平安银行", width: 70 %></li>
           </ul>
@@ -87,18 +90,21 @@
   <div class="container">
     <div class="row row-solution" id="PLSV">
       <div class="col-sm-8 col-solution right-line">
-        <h2 class="icon140 icon-PLSV">短视频解决方案</h2>
-        <p class="content">七牛云短视频解决方案是基于快速上传、转码、鉴黄、存储、分发等强大云端能力，集成拍摄、美颜、特效、滤镜、编辑、合成、本地压缩、上传、播放等客户端组件的一站式短视频解决方案。具有功能完善、性能优越、包体轻盈、接口灵活、生态丰富等特点。支持高度定制及二次开发，以满足企业各种业务场景的开发需求。<%= link_to '查看详情', products_plsv_path, class: "more" -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-xsex">鉴黄</h5>
-        <h5 class="icon50 icon-violence">暴恐审核</h5>
-        <h5 class="icon50 icon-fusion">融合 CDN</h5>
-        <h5 class="icon50 icon-minplsv">短视频SDK</h5>
+        <h2 class="icon140 icon-PLSV"><%= I18n.t("views.welcome.solution.feature3.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature3.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature3.btn"), products_plsv_path, class: "more" -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-xsex">鉴黄</h5>
+          <h5 class="icon50 icon-violence">暴恐审核</h5>
+          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-minplsv">短视频SDK</h5>
+        </div>
       </div>
 
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-4">
@@ -117,7 +123,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature3.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "plsv/client-touch.jpg", alt: "touch", data: { toggle: "tooltip", placement: "bottom" }, title: "他趣", class: "", width: 70 %></li>
             <li><%= image_tag "plsv/client-blued.jpg", alt: "blued", data: { toggle: "tooltip", placement: "bottom" }, title: "淡蓝", class: "", width: 70 %></li>
@@ -134,17 +140,20 @@
   <div class="container">
     <div class="row row-solution" id="ICA">
       <div class="col-sm-8 col-solution left-line">
-        <h2 class="icon140 icon-ICA">智能云相册解决方案</h2>
-        <p class="content">七牛云智能云相册解决方案是基于七牛云日均百亿级数据处理需求的机器学习平台，集合了人脸聚类，360 类场景，200 类的物体识别，时间地点场景聚合，照片共享等功能，并自动根据用户相册整理行为反馈形成学习闭环，持续提升识别质量。除了可以与手机 ROM 深度合作定制，还能帮助社交产品精细化用户运营，找到社交产品活跃新增长点。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-fusion">融合 CDN</h5>
-        <h5 class="icon50 icon-face">人脸识别</h5>
-        <h5 class="icon50 icon-scene">场景识别</h5>
-        <h5 class="icon50 icon-object">物体识别</h5>
+        <h2 class="icon140 icon-ICA"><%= I18n.t("views.welcome.solution.feature4.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature4.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature4.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-face">人脸识别</h5>
+          <h5 class="icon50 icon-scene">场景识别</h5>
+          <h5 class="icon50 icon-object">物体识别</h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-6">
@@ -162,7 +171,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature4.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-blued@2x.png", class: "", alt: "blued", data: { toggle: "tooltip", placement: "bottom" }, title: "淡蓝", width: 70 %></li>
             <li><%= image_tag "solution/client-oppo@2x.png", class: "", alt: "oppo", data: { toggle: "tooltip", placement: "bottom" }, title: "oppo", width: 70 %></li>
@@ -177,18 +186,21 @@
   <div class="container">
     <div class="row row-solution" id="IHAIOT">
       <div class="col-sm-8 col-solution right-line">
-        <h2 class="icon140 icon-IHAIOT">智能硬件与物联网解决方案</h2>
-        <p class="content">随着智能手机和移动互联网的发展普及，越来越多的硬件通过软硬结合的方式，具备智能化、连接的能力。实现互联网服务的加载，需要云端提供强有力的支撑，后期更需要大数据的价值分析和挖掘。七牛云智能硬件与物联网解决方案为智能硬件厂商提供稳定可靠的技术服务，包括统一的云端存储，强大的计算能力，高效的数据分发，即插即用的应用能力，大数据分析，智能化的识别能力等。助力创新硬件厂商、传统设备厂商快速向智能硬件方向转型。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-fusion">融合 CDN</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-deepLearn">深度学习平台</h5>
-        <h5 class="icon50 icon-pili">直播云</h5>
-        <h5 class="icon50 icon-vance">点播云</h5>
-        <h5 class="icon50 icon-pandora">大数据平台</h5>
+        <h2 class="icon140 icon-IHAIOT"><%= I18n.t("views.welcome.solution.feature5.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature5.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature5.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-deepLearn">深度学习平台</h5>
+          <h5 class="icon50 icon-pili">直播云</h5>
+          <h5 class="icon50 icon-vance">点播云</h5>
+          <h5 class="icon50 icon-pandora">大数据平台</h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-8">
@@ -198,7 +210,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature5.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-dajiang@2x.png", class: "", alt: "dajiang", data: { toggle: "tooltip", placement: "bottom" }, title: "大疆创新", width: 70 %></li>
             <li><%= image_tag "solution/client-oppo@2x.png", class: "", alt: "oppo", data: { toggle: "tooltip", placement: "bottom" }, title: "oppo", width: 70 %></li>
@@ -214,18 +226,21 @@
   <div class="container">
     <div class="row row-solution" id="RTMI">
       <div class="col-sm-8 col-solution  left-line">
-        <h2 class="icon140 icon-RTMI">新媒体解决方案</h2>
-        <p class="content">移动互联网时代，传统广电业务和互联网业务结合越来越紧密，对广大广电带来巨大挑战，需快速完成新媒体战略部署，向媒体融合转型。七牛云新媒体解决方案致力于打造适配传媒业务的海量数据存储与加速的内容管理平台，统一管理面向集团级别的全媒体资源管理系统。包括多来源内容汇聚、融合媒体中心、直播、智能内容审核平台、云导播平台、全网大数据统计分析等。<%= link_to '查看详情', newmedia_path, class: "more" -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-fusion">融合 CDN</h5>
-        <h5 class="icon50 icon-pili">直播云</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-pandora">大数据平台</h5>
-        <h5 class="icon50 icon-xsex">鉴黄</h5>
-        <h5 class="icon50 icon-violence">暴恐审核</h5>
+        <h2 class="icon140 icon-RTMI"><%= I18n.t("views.welcome.solution.feature6.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature6.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature6.btn"), newmedia_path, class: "more" -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-pili">直播云</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-pandora">大数据平台</h5>
+          <h5 class="icon50 icon-xsex">鉴黄</h5>
+          <h5 class="icon50 icon-violence">暴恐审核</h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-8">
@@ -235,7 +250,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature6.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-changjiangyun@2x.png", class: "", alt: "changjiangyun", data: { toggle: "tooltip", placement: "bottom" }, title: "长江云", width: 70 %></li>
             <li><%= image_tag "solution/client-jiangsuweishi@2x.png", class: "", alt: "jiangsuweishi", data: { toggle: "tooltip", placement: "bottom" }, title: "江苏卫视", width: 70 %></li>
@@ -249,15 +264,18 @@
   <div class="container">
     <div class="row row-solution" id="HST">
       <div class="col-sm-8 col-solution right-line">
-        <h2 class="icon140 icon-HST">安防终端解决方案</h2>
-        <p class="content">市场需求的变化使得安防场景与互联网更加紧密地结合，如家庭安防、校园监控、智慧运动场、平安城市等相继成为热门。七牛云安防解决方案在原有传统安防架构之上能够满足更多互联网远程监控需求，以达到不影响原本设施架构的前提下提高用户体验的目的。该解决方案提供了智能调度网络、云存储集群、多样的数据处理等技术服务，充分利用了云端弹性计算的优势，灵活部署，帮助客户有效降低成本。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-pili">直播云</h5>
-        <h5 class="icon50 icon-fusion">融合 CDN</h5>
+        <h2 class="icon140 icon-HST"><%= I18n.t("views.welcome.solution.feature7.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature7.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature7.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-pili">直播云</h5>
+          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-6">
@@ -275,7 +293,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature7.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-yingshi@2x.png", class: "", alt: "yingshi", data: { toggle: "tooltip", placement: "bottom" }, title: "萤石", width: 70 %></li>
             <li><%= image_tag "solution/client-shenzhouying@2x.png", class: "", alt: "shenzhouying", data: { toggle: "tooltip", placement: "bottom" }, title: "神州鹰", width: 70 %></li>
@@ -290,16 +308,19 @@
   <div class="container">
     <div class="row row-solution" id="Internet">
       <div class="col-sm-8 col-solution left-line">
-        <h2 class="icon140 icon-Internet">互联网与移动互联网解决方案</h2>
-        <p class="content">七牛云作为创业扶持产业中最重要的外部资源，互联网与移动互联网解决方案，为在线教育、旅游、O2O、电商、社交、娱乐等各大行业领域打造贴近业务场景的解决方案，并提供一站式数据管理服务，助力初创企业快速搭建与行业巨头公平竞争的技术基础设施。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-kodo">对象存储</h5>
-        <h5 class="icon50 icon-fusion">融合 CDN</h5>
-        <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-        <h5 class="icon50 icon-pili">直播云</h5>
-        <h5 class="icon50 icon-vance">点播云</h5>
+        <h2 class="icon140 icon-Internet"><%= I18n.t("views.welcome.solution.feature8.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature8.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature8.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">对象存储</h5>
+          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-pili">直播云</h5>
+          <h5 class="icon50 icon-vance">点播云</h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-4 col-sm-6 col-lg-4">
@@ -329,7 +350,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature8.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-zhihu@2x.png", class: "", alt: "zhihu", data: { toggle: "tooltip", placement: "bottom" }, title: "知乎", width: 70 %></li>
             <li><%= image_tag "solution/client-meipai@2x.png", class: "", alt: "meipai", data: { toggle: "tooltip", placement: "bottom" }, title: "美拍", width: 70 %></li>
@@ -345,14 +366,17 @@
   <div class="container">
     <div class="row row-solution" id="DQM">
       <div class="col-sm-8 col-solution right-line">
-        <h2 class="icon140 icon-DQM">应用质量监控解决方案</h2>
-        <p class="content">七牛云应用质量监控解决方案主要用于移动及视频应用性能管理，通过对关键业务系统进行监测及分析、告警与优化，不断改善业务可靠性与稳定性，为终端用户提供良好的体验，提升核心竞争力。<%= link_to '点击咨询', "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <h5 class="icon50 icon-mass">移动 APP 质量分析</h5>
-        <h5 class="icon50 icon-cdn">CDN 质量分析</h5>
-        <h5 class="icon50 icon-kirk">直播质量分析</h5>
+        <h2 class="icon140 icon-DQM"><%= I18n.t("views.welcome.solution.feature9.title") %></h2>
+        <p class="content"><%= I18n.t("views.welcome.solution.feature9.desc") %>
+        <%= link_to I18n.t("views.welcome.solution.feature9.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-mass">移动 APP 质量分析</h5>
+          <h5 class="icon50 icon-cdn">CDN 质量分析</h5>
+          <h5 class="icon50 icon-kirk">直播质量分析</h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
-        <div class="col-scene_scene">
+        <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h4>适用场景</h4>
           <div class="row">
             <div class="col-xs-10">
@@ -362,7 +386,7 @@
         </div>
 
         <div class="col-scene_case">
-          <h4>客户案例</h4>
+          <h4><%= I18n.t("views.welcome.solution.feature9.case") %></h4>
           <ul class="list-inline">
             <li><%= image_tag "solution/client-quanmintv@2x.png", class: "", alt: "quanmintv", data: { toggle: "tooltip", placement: "bottom" }, title: "全民TV", width: 70 %></li>
           </ul>
