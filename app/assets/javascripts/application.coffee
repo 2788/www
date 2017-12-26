@@ -33,6 +33,7 @@
 #= require career
 #= require blog
 #= require newmedia
+#= require alaccelerator
 
 isMobile = false; # initiate as false
 # device detection
