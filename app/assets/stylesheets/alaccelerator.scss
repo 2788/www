@@ -123,6 +123,9 @@ ul.list-style {
   li {
     display: inline-block;
     vertical-align: top;
+    img {
+      margin-bottom: 15px;
+    }
     .dots {
       display: block;
       padding: 0;
