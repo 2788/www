@@ -453,7 +453,7 @@ ul.ul-step{
       }
       .step-submit-btn{
         left: 0;
-        bottom: -110px;
+        bottom: -140px;
       }
     }
   }
@@ -540,5 +540,12 @@ footer .container {
         padding-top: 5px;
       }
     }
+  }
+}
+
+@media (max-width: 415px) {
+  .p-relative .cover p {
+    padding: 5px;
+    line-height: 18px;
   }
 }
