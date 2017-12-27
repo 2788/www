@@ -610,7 +610,15 @@
   }
 }
 
-@media (min-width: 992px){
-
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features {
+    .row {
+      a{
+        &.icon{
+          margin-right: 0;
+        }
+      }
+    }
+  }
 }
 
