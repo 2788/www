@@ -37,6 +37,9 @@ class WelcomeController < ApplicationController
   def alaccelerator
   end
 
+  def cdnprice2018
+  end
+
   def news
     @archives = Archive.news_archives
     render "about"

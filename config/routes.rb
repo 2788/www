@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get '/goglobal',      to: 'welcome#goglobal'
   get '/alaccelerator', to: 'welcome#alaccelerator'
   get '/newmedia',      to: 'welcome#newmedia'
+  get '/cdnprice2018',   to: 'welcome#cdnprice2018'
 
   # userinfo
   get '/userinfo', to: 'userinfo#userinfo'

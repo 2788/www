@@ -70,6 +70,21 @@
   }
   &.hero-bannerGoglobal{ background-image: image-url('bannerGoglobal.jpg'); .banner-container{top: 70px;}}
   &.hero-bannerAI {background-image: image-url('AI-banner.jpg'); .banner-container{top: 70px;}}
+  &.hero-cdnprice {
+    background-image: image-url('cdnprice/cdn-banner.jpg');
+    .banner-container{top: 0;}
+    .tips{
+      font-size: 14px;
+      color: #69c3fb;
+      line-height: 28px;
+      text-align: center;
+      position: absolute;
+      width: 205px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
   &.hero-double{
     background-image: image-url('bannerDouble.jpg');
     .banner-container .btn-banner {

@@ -46,6 +46,7 @@
 @import "newmedia";
 @import "player";
 @import "alaccelerator";
+@import "cdnprice.scss";
 
 html{
   position: relative;
@@ -423,7 +424,7 @@ ul.ul-step{
 
 // Responsive
 // ---------------------------------------------------------------------
-@media (max-width: 1024px){
+@media (max-width: 1199px){
   .pricing-caculator{ width: 6.0rem; }
   input[type="range"]{ width: 70%; }
 }
