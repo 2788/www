@@ -1,9 +1,5 @@
 <div class="banners-slider">
-  <div class="jumbotron hero hero-double">
-    <div class="banner-container">
-      <%= link_to "立即领取", "https://blog.qiniu.com/archives/8721?source=gwbanner", target:"_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-    </div>
-  </div>
+<!--
   <div class="jumbotron hero hero-cdnprice">
     <div class="container">
       <div class="middle-container">
@@ -14,6 +10,7 @@
       </div>
     </div>
   </div>
+-->
   <div class="jumbotron hero hero-banner1">
     <div class="container">
       <div class="middle-container">
@@ -32,31 +29,41 @@
       </div>
     </div>
   </div>
-  <div class="jumbotron hero hero-bannerGoglobal">
-    <div class="banner-container">
-      <%= link_to "限量领取", goglobal_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-    </div>
-  </div>
+
   <div class="jumbotron hero hero-bannerAI">
     <div class="banner-container">
       <%= link_to "立即申请", alaccelerator_path, class:"btn btn-lg btn-hollow btn-banner" -%>
     </div>
   </div>
+
+  <div class="jumbotron hero hero-bannerPlayer">
+    <div class="container">
+      <div class="middle-container">
+        <div class="col-sm-8">
+          <div class="banner-desc">
+            <h2>七牛云播放器重磅上线</h2>
+            <p>秒开 200 ms，包体最小至 400 KB，千万日活验证</p>
+          </div>
+          <%= link_to "免费使用", products_player_path, class:"btn btn-lg btn-hollow btn-banner" -%>
+        </div>
+        <div class="col-sm-4 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "player/banner-right.png", alt: "播放器", width: '80%' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron hero hero-double">
+    <div class="banner-container">
+      <%= link_to "立即领取", "https://blog.qiniu.com/archives/8721?source=gwbanner", target:"_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+    </div>
+  </div>
+
   <div class="jumbotron hero hero-banner2">
     <div class="banner-container">
       <a href="http://blog.qiniu.com/archives/8498?hmsr=huananjiangjiabanner&hmpl=huananjiangjiabanner&hmcu=huananjiangjiabanner&hmkw=&hmci=" target="_blank" class="btn btn-lg btn-hollow btn-banner">查看详情</a>
-    </div>
-  </div>
-  <div class="jumbotron hero hero-banner3">
-    <div class="container">
-      <div class="banner-desc-right">
-        <h3 class="m-b">七牛推出</h3>
-        <p class="highlight-desc">私有云存储解决方案</p>
-        <p>能够针对企业客户场景进行灵活地部署和运维</p>
-        <div>
-          <%= link_to "点击咨询", "", class: "btn btn-lg btn-hollow", data: { toggle: "modal", target: "#feedback-modal"} -%>
-        </div>
-      </div>
     </div>
   </div>
 </div>
