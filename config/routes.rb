@@ -46,6 +46,12 @@ Rails.application.routes.draw do
   get '/newmedia',      to: 'welcome#newmedia'
   get '/cdnprice2018',   to: 'welcome#cdnprice2018'
 
+  resources :resources do
+    collection do
+      get 'plup'
+    end
+  end
+
   # userinfo
   get '/userinfo', to: 'userinfo#userinfo'
 
