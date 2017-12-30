@@ -413,6 +413,24 @@ ul.ul-step{
   }
 }
 
+// resource page
+.resources-page-plup{
+  .media-body{
+    min-height: 190px;
+  }
+  .col-solution-plup{
+    .icon50{
+      margin-bottom: 0;
+      padding-left: 0.3rem;
+      padding-right: 0.1rem;
+      background-size: 0.3rem 0.3rem;
+    }
+  }
+  .table > tbody > tr > td{
+    padding: 12px;
+  }
+}
+
 // 打印
 // ---------------------------------------------------------------------
 @media print {
