@@ -127,6 +127,16 @@
   &.hero-newmedia{ background-image: image-url('newmedia/banner.jpg'); }
   &.hero-player{ background-image: image-url('player/banner.png');}
   &.hero-alaccelerator{ background-image: image-url('alaccelerator/banner.jpg'); }
+  &.hero-plup{ background-image: image-url('bg-security-banner.jpg'); }
+
+  &.hero-plup{
+    .middle-container{
+      padding-top: 50px;
+    }
+    .right-mask-banner img{
+      width: 80%;
+    }
+  }
 
   .container{
     position: relative;
@@ -165,6 +175,11 @@
     font-size: 0.14rem;
     text-shadow: 0 0.02rem 0.03rem rgba(0,0,0,.5);
   }
+  a{
+    color: #FFF;
+    text-decoration: underline;
+    // border-bottom: 1px solid #FFF;
+  }
 }
 
 
@@ -193,6 +208,12 @@
   .jumbotron.hero .banner-desc-right {
     left: 0;
     text-align: center;
+  }
+
+  .jumbotron.hero.hero-plup{
+    .middle-container{
+      padding: 10px;
+    }
   }
 }
 @media (max-width: 768px) {
