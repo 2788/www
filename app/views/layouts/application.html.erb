@@ -118,7 +118,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="feedback-modal-label">产品及服务咨询</h4>
+            <h4 class="modal-title" id="feedback-modal-label"><%= I18n.t("views.welcome.helper.title") %></h4>
           </div>
           <div class="modal-body">
             <div id="feedback-alert" class="alert alert-success" style="display: none;"></div>
@@ -131,7 +131,7 @@
               <%= f.hidden_field :referer, value: request.original_url -%>
 
               <div class="form-group">
-                <label for="feedback-content" class="col-sm-2 control-label">咨询内容<small class="text-danger">*</small></label>
+                <label for="feedback-content" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.content") %><small class="text-danger">*</small></label>
                 <div class="col-sm-10">
                   <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id:"feedback-content", validate: true %>
                   <div class="div-error">
@@ -144,7 +144,7 @@
               </div>
 
               <div class="form-group">
-                <label for="feedback-name" class="col-sm-2 control-label">姓名<small class="text-danger">*</small></label>
+                <label for="feedback-name" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.name") %><small class="text-danger">*</small></label>
                 <div class="col-sm-10">
                   <%= f.text_field :name, class:"form-control", id:"feedback-name", validate: true %>
                   <div class="div-error">
@@ -154,21 +154,21 @@
               </div>
 
               <div class="form-group">
-                <label for="feedback-company" class="col-sm-2 control-label">公司名称</label>
+                <label for="feedback-company" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.company") %></label>
                 <div class="col-sm-10">
                   <%= f.text_field :company, class:"form-control", id:"feedback-company" %>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="feedback-city" class="col-sm-2 control-label">省份<small class="text-danger">*</small></label>
+                <label for="feedback-city" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.country") %><small class="text-danger">*</small></label>
                 <div class="col-sm-10" id="province_city" data-required="true">
                   <select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="feedback-phone" class="col-sm-2 control-label">联系电话<small class="text-danger">*</small></label>
+                <label for="feedback-phone" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.phone") %><small class="text-danger">*</small></label>
                 <div class="col-sm-10">
                   <%= f.telephone_field :phone, class:"form-control", id:"feedback-phone", validate: true %>
                   <div class="div-error">
@@ -178,7 +178,7 @@
               </div>
 
               <div class="form-group">
-                <label for="feedback-email" class="col-sm-2 control-label">电子邮箱<small class="text-danger">*</small></label>
+                <label for="feedback-email" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.email") %><small class="text-danger">*</small></label>
                 <div class="col-sm-10">
                   <%= f.text_field :email, type: "email", class:"form-control", id:"feedback-email", validate: true %>
                   <div class="div-error">
@@ -188,7 +188,7 @@
               </div>
 
               <div class="actions">
-                <%= f.button "提 交", class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+                <%= f.button I18n.t("views.welcome.helper.submit"), class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
               </div>
             <% end %>
           </div>

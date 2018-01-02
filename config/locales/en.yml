@@ -8,6 +8,15 @@ en:
       next: "next"
       truncate: "&hellip;"
     welcome:
+      helper:
+        title: "Contact Us"
+        content: "Leave us a note"
+        name: "Name"
+        company: "Company"
+        country: "Country"
+        phone: "Phone"
+        email: "Email"
+        submit: "Submit"
       index:
         feature1:
           title: "We are continuously extracting infinite value from mass data"
