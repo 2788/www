@@ -47,7 +47,7 @@
             <li class="dropdown" id="spaces-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">产品</a>
 
-              <ul class="dropdown-menu services-menu">
+              <ul class="dropdown-menu services-menu scrollbar-light">
                 <% I18n.t("services").each do |service| %>
                   <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
 
@@ -61,7 +61,7 @@
             <li class="dropdown" id="solution-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">解决方案</a>
 
-              <ul class="dropdown-menu solutions-menu">
+              <ul class="dropdown-menu solutions-menu scrollbar-light">
                 <% I18n.t("solutions").each do |solution| %>
                   <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]+" menu-title") + content_tag(:p, solution[:desc], class: "hidden-xs"), solutions_path(anchor: solution[:name])), class: "solution" -%>
                 <% end %>
