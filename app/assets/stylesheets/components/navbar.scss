@@ -227,6 +227,9 @@ nav.navbar.nav-bg{
 }
 
 .services-menu{
+  width: auto;
+  height: 550px;
+  overflow-y: scroll;
   .service{
     .kodo{
       background-image: image-url("menuicon-duixiangcunchu@2x.png");
@@ -280,6 +283,9 @@ nav.navbar.nav-bg{
 }
 
 .solutions-menu{
+  width: auto;
+  height: 550px;
+  overflow-y: scroll;
   .menu-title{
     background-position: left;
     background-repeat: no-repeat;
@@ -316,6 +322,20 @@ nav.navbar.nav-bg{
     background-image: image-url("menuicon-bofangqijiejuefangan@2x.png");
   }
 }
+
+.scrollbar-light::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #303848;
+  border-radius: 10px; }
+
+.scrollbar-light::-webkit-scrollbar {
+  width: 5px;
+  background-color: #303848; }
+
+.scrollbar-light::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(239, 239, 239, 0.15); }
 
 // Responsive
 // ---------------------------------------------------------------------
