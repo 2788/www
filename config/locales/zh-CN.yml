@@ -8,6 +8,15 @@ zh-CN:
       next: "下页"
       truncate: "&hellip;"
     welcome:
+      helper:
+        title: "产品及服务咨询"
+        content: "咨询内容"
+        name: "姓名"
+        company: "公司名称"
+        country: "省份"
+        phone: "联系电话"
+        email: "电子邮箱"
+        submit: "提交"
       index:
         feature1:
           title: "持续挖掘海量数据的无限价值"
