@@ -645,8 +645,8 @@ en:
             - title: Optical Character Recognition
               class: "col-sm-6 col-padding col-content-middle"
               desc: OCR is a method to process mechanical or electronic conversion of images of typed, handwritten or printed text , including words detection, localization or recognition in natural scenes. It is widely used in automatically recognition ID, invoices, billings, receipts, etc. to reduce the labor cost.
-              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
+              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
             - title: Content Regulation
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Illegal content in images and videos can be recognized with high efficiency and a high accuracy of 99.95%. It can replace more than 80% of manual auditing to reduce the labor cost. Moreover, the recognition accuracy increases gradually through machine learning.
@@ -682,10 +682,10 @@ en:
               icon: "dora/icon-gongnengfengfu.png"
               desc: Rich functions satisfy various usage scenarios in images, audios and videos.
             - title: Stability and Reliability
-              icon: "dora/icon-wendingkekao@2x"
+              icon: "dora/icon-wendingkekao@2x.png"
               desc: Dora is constituted of thousands of high performance physical machines. It can support clusters to process tens of billions of requests every day, with service availability of 99.99%.
             - title: Accuracy
-              icon: "dora/icon-shibiezhunque@2x"
+              icon: "dora/icon-shibiezhunque@2x.png"
               desc: Dora shows state-of-the-art techs in face cluster, scenario recognition and object detection.
         feature3:
           title: "Application Scenarios"

@@ -666,8 +666,8 @@ zh-CN:
             - title: OCR 文字识别
               class: "col-sm-6 col-padding col-content-middle"
               desc: 自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。
-              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
+              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
             - title: 内容审核
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: 高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。
@@ -703,10 +703,10 @@ zh-CN:
               icon: "dora/icon-gongnengfengfu.png"
               desc: 丰富的功能满足各种图片、音视频使用场景
             - title: 稳定可靠
-              icon: "dora/icon-wendingkekao@2x"
+              icon: "dora/icon-wendingkekao@2x.png"
               desc: 近千台高性能物理机，组成的处理集群，每日处理请求数百亿次，服务可用性达到 99.99%
             - title: 识别准确
-              icon: "dora/icon-shibiezhunque@2x"
+              icon: "dora/icon-shibiezhunque@2x.png"
               desc: 人脸聚类、场景识别、物体检测功能均处于业界领先地位
         feature3:
           title: "适用场景"

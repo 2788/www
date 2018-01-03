@@ -73,11 +73,11 @@
                 </li>
               </ul>
             </li>
-            <li><%= link_to "价格", prices_path -%></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "价格", prices_path -%></li>
             <li><%= link_to "关于我们", company_path -%></li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
+          <ul class="nav navbar-nav navbar-right navbar-nav-mobile <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <li><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
