@@ -717,72 +717,79 @@ en:
               desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients’ demand in different scenarios.
         feature4:
           title: "Client Cases"
+  navbar:
+    logo: "img-horizontal-white-en.png"
+    product: Products
+    solution: Solutions
+    price: ""
+    about: About Us
+  footer:
   services:
     - group: 基础服务
       list:
         - name: kodo
-          label: 对象存储
-          desc: 高可用、易扩展、低成本、一站式
+          label: Object Storage（KODO）
+          desc:
 
         - name: fusion
-          label: 融合 CDN
-          desc: 融合优质节点、可监控、智能调度的内容分发服务
+          label: Integrated CDN（FUSION）
+          desc:
 
         - name: kirk
-          label: 容器云 <small>(即将上线)</small>
-          desc: 面向微服务架构的企业级容器管理平台
+          label:
+          desc:
 
     - group: 数据•智能
       list:
         - name: atlab
-          label: 深度学习平台
-          desc: 针对图片视频的一站式数据集中处理、模型训练平台
+          label: Deep Learning Platform（AVA）
+          desc:
 
         - name: pandora
-          label: 大数据
-          desc: 简单、高效、开放
+          label: Smart Big Data Platform（Pandora）
+          desc:
 
         - name: dora
-          label: 智能多媒体 API
-          desc: 针对海量图片视频提供鉴黄鉴暴、人脸技术、物体识别等服务
+          label: Intelligent Multimedia APIs（Dora）
+          desc:
 
     - group: 视频服务
       list:
         - name: pili
-          label: 直播云
-          desc: 提供全球化实时流服务和端到端直播场景解决方案
+          label: Live Video Cloud（PILI）
+          desc:
 
         # - name: vance
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   solutions:
     - name: QOS
-      label:  私有云存储解决方案
-      desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+      label: Storage in Private Cloud
+      desc:
     - name: UDMP
-      label:  非结构化数据管理解决方案
-      desc: 提供大批量文件打包上传、文档检索、多媒体数据处理等服务
+      label: Unstructured Data Management
+      desc:
     - name: PLSV
-      label:  短视频解决方案
-      desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
+      label: Short Videos
+      desc:
     - name: ICA
-      label:  智能云相册解决方案
-      desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
+      label: Intelligent Cloud Album
+      desc:
     - name: IHAIOT
-      label:  智能硬件与物联网解决方案
-      desc: 满足智能硬件厂商各应用场景下云端计算需求
+      label: Smart Device and IOT
+      desc:
     - name: RTMI
-      label:  新媒体解决方案
-      desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
+      label: New Media Industry
+      desc:
     - name: HST
-      label:  安防解决方案
-      desc: 灵活部署，满足不同安防场景互联网远程监控需求
+      label: Safety Protection Terminals
+      desc:
     - name: Internet
-      label:  互联网与移动互联网解决方案
-      desc: 为互联网初创企业量身定制，一站式云计算服务平台
+      label: Internet and Mobile Internet
+      desc:
     - name: DQM
-      label:  应用质量监控解决方案
-      desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
+      label: Application Quality Monitoring
+      desc:
   nemwmedias:
     - path: newmedia/beifangwang.jpg
     - path: newmedia/CIBN.jpg

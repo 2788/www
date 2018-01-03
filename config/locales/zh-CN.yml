@@ -738,6 +738,13 @@ zh-CN:
               desc: 人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。
         feature4:
           title: "客户案例"
+  navbar:
+    logo: "logo-white.png"
+    product: 产品
+    solution: 解决方案
+    price: "价格"
+    about: 关于我们
+  footer:
   services:
     - group: 基础服务
       list:
