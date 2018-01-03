@@ -24,6 +24,9 @@ zh-CN:
           name: "请填写姓名"
           phone: "请以正确的格式填写联系电话"
           email: "请填写电子邮箱"
+          submit: "正在提交中..."
+          success: "提交成功！"
+          error: "提交失败，稍后重试！"
       index:
         feature1:
           title: "持续挖掘海量数据的无限价值"

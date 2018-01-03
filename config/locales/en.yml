@@ -24,6 +24,9 @@ en:
           name: "This is required"
           phone: "This is required"
           email: "This is required"
+          submit: "In the process of submission..."
+          success: "Submit success!"
+          error: "Failure to submit, try again later!"
       index:
         feature1:
           title: "We are continuously extracting infinite value from mass data"

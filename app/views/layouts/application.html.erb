@@ -122,7 +122,12 @@
             <h4 class="modal-title" id="feedback-modal-label"><%= I18n.t("views.welcome.helper.title") %></h4>
           </div>
           <div class="modal-body">
-            <div id="feedback-alert" class="alert alert-success" style="display: none;"></div>
+            <div id="feedback-alert-success" class="alert alert-success" style="display: none;">
+              <i class="glyphicon glyphicon-ok"></i> <%= I18n.t("views.welcome.helper.tips.success") %>
+            </div>
+            <div id="feedback-alert-error" class="alert alert-danger" style="display: none;">
+              <i class="glyphicon glyphicon-remove"></i> <%= I18n.t("views.welcome.helper.tips.error") %>
+            </div>
             <div class="tips text-center <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               此表单仅用于产品及服务售前咨询（您也可以拨打400-808-9176转2）<br />
               如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>
@@ -206,7 +211,7 @@
               </div>
 
               <div class="actions">
-                <%= f.button I18n.t("views.welcome.helper.submit"), class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+                <%= f.button I18n.t("views.welcome.helper.submit"), class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: I18n.t("views.welcome.helper.tips.submit")}  %>
               </div>
             <% end %>
           </div>

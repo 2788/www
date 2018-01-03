@@ -1,7 +1,8 @@
 $(document).ready ->
   $modal = $('#feedback-modal')
   $webform = $('.web-form')
-  $alert = $('#feedback-alert')
+  $alertSuccess = $('#feedback-alert-success')
+  $alertError = $('#feedback-alert-error')
   $form = $('#feedback-form')
   $content = $('#feedback-content')
   $name = $('#feedback-name')
@@ -26,7 +27,8 @@ $(document).ready ->
     settings.url = settings.url + '-' + new Date().getTime()
 
   $form.on 'ajax:success', (event, xhr, status, error)->
-    $alert.attr('class', 'alert alert-success').html('<i class="glyphicon glyphicon-ok"></i> 提交成功！').show()
+    $alertSuccess.show()
+    $alertError.hide()
     $form.hide()
     $webform.hide()
     $submitAfter.show()
@@ -38,7 +40,8 @@ $(document).ready ->
     , 1000 * 1.5
 
   $form.on 'ajax:error', (event, xhr, status, error)->
-    $alert.attr('class', 'alert alert-danger').html('<i class="glyphicon glyphicon-remove"></i> 提交失败，稍后重试！').show()
+    $alertError.show()
+    $alertSuccess.hide()
     $form.hide()
     $webform.hide()
     $submitAfter.show()
