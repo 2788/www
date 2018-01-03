@@ -3,9 +3,9 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2>智能多媒体 API</h2>
-          <p>智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。</p>
-          <div class="actions">
+          <h2><%= I18n.t("views.welcome.dora.title") %></h2>
+          <p><%= I18n.t("views.welcome.dora.desc") %></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "产品价格", prices_path + "?source=dora", class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
@@ -19,11 +19,9 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <li class=" active"><a href="#tab-content-section-1">产品功能</a></li>
-        <li><a href="#tab-content-section-2">产品优势</a></li>
-        <li><a href="#tab-content-section-3">适用场景</a></li>
-        <li><a href="#tab-content-section-4">客户案例</a></li>
-        <li><a href="#tab-content-section-5">产品相关</a></li>
+        <% I18n.t("views.welcome.dora.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
       </ul>
     </div>
   </div>
@@ -31,167 +29,67 @@
 
 <div class="features section tab-content-section-1">
   <div class="container">
-    <div class="row row-dora">
-      <div class="col-sm-6 col-padding col-content-middle">
-        <h4 class="">人脸识别技术</h4>
-        <p>业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。</p>
-        <div class="actions">
-          <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
+    <% I18n.t("views.welcome.dora.feature1.col1").each do |col| %>
+      <div class="row row-dora">
+        <div class="<%= col[:class] %>">
+          <h4 class=""><%= col[:title] %></h4>
+          <p><%= col[:desc] %></p>
+          <ul class="list-inline <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %> <%= col[:title] != '内容审核' ? 'd-none' : '' %>">
+            <li><%= link_to "图片鉴黄", "https://developer.qiniu.com/dora/manual/3701/ai-pulp", target: "_balnk", class: "link-xsex" -%></li>
+            <li><%= link_to "图片鉴暴恐", "https://developer.qiniu.com/dora/manual/3918/terror", target: "_balnk", class: "link-violence" -%></li>
+            <li><%= link_to "政治人物识别", "https://developer.qiniu.com/dora/manual/3922/politician", target: "_balnk", class: "link-face" -%></li>
+          </ul>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %> <%= col[:title] == '内容审核' ? 'd-none' : '' %>">
+            <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
+          </div>
+        </div>
+        <div class="col-sm-6 col-video">
+          <video loop autoplay poster="<%= col[:poster] %>" src="<%= col[:src] %>"></video>
         </div>
       </div>
-      <div class="col-sm-6 col-video">
-        <video loop autoplay poster="https://mars-assets.qnssl.com/video/face-recognition.jpg" src="https://mars-assets.qnssl.com/video/face-recognition.mp4"></video>
-      </div>
-    </div>
+    <% end %>
 
-    <div class="row row-dora">
-
-      <div class="col-sm-6 col-padding col-content-middle sm-right">
-        <h4 class="">场景物体识别</h4>
-        <p>360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。</p>
-        <div class="actions">
-          <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
+    <% I18n.t("views.welcome.dora.feature1.col2").each do |col| %>
+      <div class="row row-dora">
+        <div class="<%= col[:class] %>">
+          <div class="col-sm-6">
+            <h5><%= col[:title1] %></h5>
+            <p><%= col[:desc1] %></p>
+          </div>
+          <div class="col-sm-6">
+            <h5><%= col[:title2] %></h5>
+            <p><%= col[:desc2] %></p>
+            <%= link_to raw("查看更多功能 &gt;"), "https://developer.qiniu.com/dora/manual/3683/img-directions-for-use", target: "_blank", class: "more"+I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>
+          </div>
+        </div>
+        <div class="col-sm-6 col-clear">
+          <%= image_tag col[:src], class: "", alt: col[:alt], width: "100%" %>
         </div>
       </div>
-      <div class="col-sm-6 col-video">
-        <video loop autoplay poster="https://mars-assets.qnssl.com/video/scene-recognition.jpg" src="https://mars-assets.qnssl.com/video/scene-recognition.mp4"></video>
-      </div>
-    </div>
-
-    <div class="row row-dora">
-      <div class="col-sm-6 col-padding col-content-middle">
-        <h4 class="">OCR 文字识别</h4>
-        <p>自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。</p>
-        <div class="actions">
-          <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
-        </div>
-      </div>
-      <div class="col-sm-6 col-video">
-        <video loop autoplay poster="https://mars-assets.qnssl.com/video/ocr-recognition.jpg" src="https://mars-assets.qnssl.com/video/ocr-recognition.mp4"></video>
-      </div>
-    </div>
-
-    <div class="row row-dora">
-
-      <div class="col-sm-6 col-padding col-content-middle sm-right">
-        <h4 class="">内容审核</h4>
-        <p>高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。</p>
-        <ul class="list-inline">
-          <li><%= link_to "图片鉴黄", "https://developer.qiniu.com/dora/manual/3701/ai-pulp", target: "_balnk", class: "link-xsex" -%></li>
-          <li><%= link_to "图片鉴暴恐", "https://developer.qiniu.com/dora/manual/3918/terror", target: "_balnk", class: "link-violence" -%></li>
-          <li><%= link_to "政治人物识别", "https://developer.qiniu.com/dora/manual/3922/politician", target: "_balnk", class: "link-face" -%></li>
-        </ul>
-      </div>
-      <div class="col-sm-6 col-video">
-        <video loop autoplay poster="https://mars-assets.qnssl.com/video/content-recognition.jpg" src="https://mars-assets.qnssl.com/video/content-recognition.mp4"></video>
-      </div>
-    </div>
-
-    <div class="row row-dora">
-      <div class="col-sm-6 col-padding col-content-middle">
-        <h4 class="">物体分割</h4>
-        <p>80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。</p>
-        <div class="actions">
-          <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
-        </div>
-      </div>
-      <div class="col-sm-6 col-video">
-        <video loop autoplay poster="https://mars-assets.qnssl.com/video/object-recognition.jpg" src="https://mars-assets.qnssl.com/video/object-recognition.mp4"></video>
-      </div>
-    </div>
-    <div class="row row-dora">
-
-      <div class="col-sm-6 col-padding col-content-middle col-xs-contain sm-right">
-        <div class="col-sm-6">
-          <h5>图片缩略</h5>
-          <p>支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而最好地满足你的大小、形状和风格需要。</p>
-        </div>
-        <div class="col-sm-6">
-          <h5>图片瘦身</h5>
-          <p>支持对存储在七牛云或使用七牛 CDN 的 PNG、JPG 图片瘦身，缩小图片体积，节省流量，提升产品体验。</p>
-          <%= link_to raw("查看更多功能 &gt;"), "https://developer.qiniu.com/dora/manual/3683/img-directions-for-use", target: "_blank", class: "more" -%>
-        </div>
-      </div>
-      <div class="col-sm-6 col-clear">
-        <%= image_tag "dora/img-pictures.png", class: "", alt: "图片处理", width: "100%" %>
-      </div>
-    </div>
-
-    <div class="row row-dora">
-      <div class="col-sm-6 col-padding col-content-middle col-xs-contain">
-        <div class="col-sm-6">
-          <h5>音视频转码</h5>
-          <p>支持所有主流音视频格式、转码集群强大、效率高，H.265 技术压缩 20%～30% 视频大小。</p>
-        </div>
-        <div class="col-sm-6">
-          <h5>视频截图</h5>
-          <p>支持对存储在七牛云的视频文件截取视频帧画面并按指定大小缩放成图片。</p>
-          <%= link_to raw("查看更多功能 &gt;"), "https://developer.qiniu.com/dora/manual/3685/directions-for-use-av", target: "_blank", class: "more" -%>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-clear">
-        <%= image_tag "dora/img-vedio.png", class: "", alt: "视频处理", width: "100%" %>
-      </div>
-    </div>
-
+    <% end %>
   </div>
 </div>
 
 <div class="features features-less features-cases features-superiority tab-content-section-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title">产品优势</h2>
+      <h2 class="title"><%= I18n.t("views.welcome.dora.feature2.title") %></h2>
     </div>
 
     <div class="row">
-      <div class="col-sm-6 col-xs-6">
-        <div class="media">
-          <div class="media-left">
-            <%= image_tag "dora/icon-jiandanyiyong@2x.png", class: "media-object", alt: "简单易用", width: 110 %>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">简单易用</h4>
-            <p>调用方式简单，缩短产品开发维护时间</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-xs-6">
-        <div class="media">
-          <div class="media-left">
-            <%= image_tag "dora/icon-gongnengfengfu.png", class: "media-object", alt: "功能丰富", width: 110 %>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">功能丰富</h4>
-            <p>丰富的功能满足各种图片、音视频使用场景</p>
+      <% I18n.t("views.welcome.dora.feature2.col").each do |col| %>
+        <div class="col-sm-6 col-xs-6">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 110 %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= col[:title] %></h4>
+              <p><%= col[:desc] %></p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-sm-6 col-xs-6">
-        <div class="media">
-          <div class="media-left">
-            <%= image_tag "dora/icon-wendingkekao@2x.png", class: "media-object", alt: "稳定可靠", width: 110 %>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">稳定可靠</h4>
-            <p>近千台高性能物理机，组成的处理集群，每日处理请求数百亿次，服务可用性达到 99.99%</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-xs-6">
-        <div class="media">
-          <div class="media-left">
-            <%= image_tag "dora/icon-shibiezhunque@2x.png", class: "media-object", alt: "识别准确", width: 110 %>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">识别准确</h4>
-            <p>人脸聚类、场景识别、物体检测功能均处于业界领先地位</p>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -199,51 +97,29 @@
 <div class="features features-dora features-scene tab-content-section-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title">适用场景</h2>
+      <h2 class="title"><%= I18n.t("views.welcome.dora.feature3.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <li class="active"><a href="#tab-usage-section-1" data-toggle="tab">图片处理</a></li>
-        <li><a href="#tab-usage-section-2" data-toggle="tab">音视频处理</a></li>
-        <li><a href="#tab-usage-section-3" data-toggle="tab">智能云相册</a></li>
+        <% I18n.t("views.welcome.dora.feature3.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], data: {toggle: "tab"} -%></li>
+        <% end %>
       </ul>
       <div class="tab-content">
-        <section id="tab-usage-section-1" class="tab-pane fade in active">
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag "dora/icon-tupianchuli@2x.png", class: "media-object img-left", alt: "图片处理" %>
-            </div>
+        <% I18n.t("views.welcome.dora.feature3.sections").each do |unit| %>
+          <section id="<%= unit[:id] %>" class="<%= unit[:class] %>">
+            <div class="media">
+              <div class="media-left">
+                <%= image_tag unit[:icon], class: "media-object img-left", alt: unit[:title] %>
+              </div>
 
-            <div class="media-body">
-              <p>图片缩放功能适用于调整图片尺寸以适应不同设备的使用场景；原图保护、防盗链，图片水印或文字水印，用于防止图片盗用；鉴黄、鉴恐等内容审核服务为图片 UGC 应用和网站省去大量的人工审核成本，规避违规风险。</p>
+              <div class="media-body">
+                <p><%= unit[:desc] %></p>
+              </div>
             </div>
-          </div>
-        </section>
-
-        <section id="tab-usage-section-2" class="tab-pane fade">
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag "dora/icon-yinshipinchuli@2x.png", class: "media-object img-left", alt: "音视频处理" %>
-            </div>
-
-            <div class="media-body">
-              <p>转码服务帮助各种音视频分发平台适应不同设备，满足节省带宽和流量需求；视频剪切、拼接等功能满足各种视频编辑场景；版权保护和视频水印功能，保护视频产品和宣传品牌价值。鉴黄、鉴恐等内容审核服务为视频UGC网站和应用省去大量的人工审核成本，规避违规风险。</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="tab-usage-section-3" class="tab-pane fade">
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag "dora/icon-zhinengyunxiangce@2x.png", class: "media-object img-left", alt: "智能云相册" %>
-            </div>
-
-            <div class="media-body">
-              <p>人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。</p>
-            </div>
-          </div>
-        </section>
+          </section>
+        <% end %>
       </div>
     </div>
   </div>
@@ -253,7 +129,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <h2 class="title">客户案例</h2>
+        <h2 class="title"><%= I18n.t("views.welcome.dora.feature4.title") %></h2>
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
@@ -270,7 +146,7 @@
 </div>
 
 
-<div class="features features-less features-cases tab-content-section-5">
+<div class="features features-less features-cases tab-content-section-5 <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">

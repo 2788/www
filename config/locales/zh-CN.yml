@@ -632,7 +632,112 @@ zh-CN:
               icon: "pandora/icon-youxifanzuobi@2x.png"
               title: "游戏反作弊"
               desc: "根据用户行为模式进行数据建模，通过大数据技术，实现对用户质量的识别与量化，判断真实用户，侦测作弊手段，使游戏平台最大可能的避免薅羊毛等事件发生，进而为用户价值挖掘提供数据支撑，提高运营决策效率，优化推广获客成本。"
-
+      dora:
+        title: "智能多媒体 API"
+        desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
+        middlebar:
+          - title: 产品功能
+            class: "active"
+            href: "#tab-content-section-1"
+          - title: 产品优势
+            class: ""
+            href: "#tab-content-section-2"
+          - title: 适用场景
+            class: ""
+            href: "#tab-content-section-3"
+          - title: 客户案例
+            class: ""
+            href: "#tab-content-section-4"
+          - title: 产品相关
+            class: ""
+            href: "#tab-content-section-5"
+        feature1:
+          col1:
+            - title: 人脸识别技术
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: 业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。
+              poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/face-recognition.mp4"
+            - title: 场景物体识别
+              class: "col-sm-6 col-padding col-content-middle sm-right"
+              desc: 360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。
+              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
+            - title: OCR 文字识别
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: 自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。
+              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
+            - title: 内容审核
+              class: "col-sm-6 col-padding col-content-middle sm-right"
+              desc: 高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。
+              poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/content-recognition.mp4"
+            - title: 物体分割
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: 80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。
+              poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/object-recognition.mp4"
+          col2:
+            - class: "col-sm-6 col-padding col-content-middle sm-right"
+              title1: 图片缩略
+              desc1: 支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而最好地满足你的大小、形状和风格需要。
+              title2: 图片瘦身
+              desc2: 支持对存储在七牛云或使用七牛 CDN 的 PNG、JPG 图片瘦身，缩小图片体积，节省流量，提升产品体验。
+              alt: 图片处理
+              src: "dora/img-pictures.png"
+            - class: "col-sm-6 col-padding col-content-middle"
+              title1: 音视频转码
+              desc1: 支持所有主流音视频格式、转码集群强大、效率高，H.265 技术压缩 20%～30% 视频大小。
+              title2: 视频截图
+              desc2: 支持对存储在七牛云的视频文件截取视频帧画面并按指定大小缩放成图片。
+              alt: 视频处理
+              src: "dora/img-vedio.png"
+        feature2:
+          title: "产品优势"
+          col:
+            - title: 简单易用
+              icon: "dora/icon-jiandanyiyong@2x.png"
+              desc: 调用方式简单，缩短产品开发维护时间
+            - title: 功能丰富
+              icon: "dora/icon-gongnengfengfu.png"
+              desc: 丰富的功能满足各种图片、音视频使用场景
+            - title: 稳定可靠
+              icon: "dora/icon-wendingkekao@2x"
+              desc: 近千台高性能物理机，组成的处理集群，每日处理请求数百亿次，服务可用性达到 99.99%
+            - title: 识别准确
+              icon: "dora/icon-shibiezhunque@2x"
+              desc: 人脸聚类、场景识别、物体检测功能均处于业界领先地位
+        feature3:
+          title: "适用场景"
+          middlebar:
+            - title: 图片处理
+              class: "active"
+              href: "#tab-usage-section-1"
+            - title: 音视频处理
+              class: ""
+              href: "#tab-usage-section-2"
+            - title: 智能云相册
+              class: ""
+              href: "#tab-usage-section-3"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane fade in active"
+              icon: "dora/icon-tupianchuli@2x.png"
+              title: 图片处理
+              desc: 图片缩放功能适用于调整图片尺寸以适应不同设备的使用场景；原图保护、防盗链，图片水印或文字水印，用于防止图片盗用；鉴黄、鉴恐等内容审核服务为图片 UGC 应用和网站省去大量的人工审核成本，规避违规风险。
+            - id: "tab-usage-section-2"
+              class: "tab-pane fade"
+              icon: "dora/icon-yinshipinchuli@2x.png"
+              title: 音视频处理
+              desc: 转码服务帮助各种音视频分发平台适应不同设备，满足节省带宽和流量需求；视频剪切、拼接等功能满足各种视频编辑场景；版权保护和视频水印功能，保护视频产品和宣传品牌价值。鉴黄、鉴恐等内容审核服务为视频UGC网站和应用省去大量的人工审核成本，规避违规风险。
+            - id: "tab-usage-section-3"
+              class: "tab-pane fade"
+              icon: "dora/icon-zhinengyunxiangce@2x.png"
+              title: 智能云相册
+              desc: 人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。
+        feature4:
+          title: "客户案例"
   services:
     - group: 基础服务
       list:
@@ -842,6 +947,10 @@ zh-CN:
       title: 深度学习平台 - 七牛云
       keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
       description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
+    welcome_player:
+      title: 播放器SDK_视频播放SDK-七牛云播放器
+      keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
+      description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
     events_tech_online:
       title: 七牛Tech Online - 七牛云
       keywords: Tech Online，七牛 Tech Online
