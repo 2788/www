@@ -106,8 +106,9 @@
     <%# 悬浮按钮 %>
     <div class="helper">
       <a id="waiter" data-toggle="modal" data-target="#feedback-modal">
-        <%= image_tag "icon-sevice@2x.png", alt: nil -%>
-        <span>服务&bull;咨询</span>
+        <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>
+        <span class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">服务&bull;咨询</span>
+        <span class="en <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">Contact Us</span>
       </a>
       <%= link_to image_tag("close.png"), "javascript:;", class: "close-btn" %>
     </div>
@@ -121,10 +122,18 @@
             <h4 class="modal-title" id="feedback-modal-label"><%= I18n.t("views.welcome.helper.title") %></h4>
           </div>
           <div class="modal-body">
-            <div id="feedback-alert" class="alert alert-success" style="display: none;"></div>
-            <div class="tips text-center">
+            <div id="feedback-alert-success" class="alert alert-success" style="display: none;">
+              <i class="glyphicon glyphicon-ok"></i> <%= I18n.t("views.welcome.helper.tips.success") %>
+            </div>
+            <div id="feedback-alert-error" class="alert alert-danger" style="display: none;">
+              <i class="glyphicon glyphicon-remove"></i> <%= I18n.t("views.welcome.helper.tips.error") %>
+            </div>
+            <div class="tips text-center <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               此表单仅用于产品及服务售前咨询（您也可以拨打400-808-9176转2）<br />
               如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>
+            </div>
+            <div class="tips text-center <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+              <%= I18n.t("views.welcome.helper.desc") %>
             </div>
 
             <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| %>
@@ -135,10 +144,10 @@
                 <div class="col-sm-10">
                   <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id:"feedback-content", validate: true %>
                   <div class="div-error">
-                    <label for="" class="error-label">请填写咨询内容</label>
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.content") %></label>
                   </div>
                   <div class="maxLength-tips">
-                    <label for="" class="maxLength-label">最多可输入255字</label>
+                    <label for="" class="maxLength-label"><%= I18n.t("views.welcome.helper.tips.tip") %></label>
                   </div>
                 </div>
               </div>
@@ -148,7 +157,7 @@
                 <div class="col-sm-10">
                   <%= f.text_field :name, class:"form-control", id:"feedback-name", validate: true %>
                   <div class="div-error">
-                    <label for="" class="error-label">请填写姓名</label>
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.name") %></label>
                   </div>
                 </div>
               </div>
@@ -162,9 +171,19 @@
 
               <div class="form-group">
                 <label for="feedback-city" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.country") %><small class="text-danger">*</small></label>
-                <div class="col-sm-10" id="province_city" data-required="true">
-                  <select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select>
-                </div>
+                <% if I18n.t("views.language") == 'zh' %>
+                  <div class="col-sm-10" id="province_city" data-required="true">
+                    <select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select>
+                  </div>
+                <% else %>
+                  <div class="col-sm-10" id="province_city">
+                  <%= f.text_field :province, class:"form-control", id:"feedback-province", validate: true %>
+                    <div class="div-error">
+                      <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.phone") %></label>
+                    </div>
+                  </div>
+                <% end %>
+
               </div>
 
               <div class="form-group">
@@ -172,7 +191,7 @@
                 <div class="col-sm-10">
                   <%= f.telephone_field :phone, class:"form-control", id:"feedback-phone", validate: true %>
                   <div class="div-error">
-                    <label for="" class="error-label">请以正确的格式填写联系电话</label>
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.phone") %></label>
                   </div>
                 </div>
               </div>
@@ -182,13 +201,17 @@
                 <div class="col-sm-10">
                   <%= f.text_field :email, type: "email", class:"form-control", id:"feedback-email", validate: true %>
                   <div class="div-error">
-                    <label for="" class="error-label">请填写电子邮箱</label>
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.email") %></label>
                   </div>
                 </div>
               </div>
 
+              <div class="form-group <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+                <div class="col-sm-12 text-center tips">Email our Marketing Team：Marketing@Qiniu.com</div>
+              </div>
+
               <div class="actions">
-                <%= f.button I18n.t("views.welcome.helper.submit"), class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+                <%= f.button I18n.t("views.welcome.helper.submit"), class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: I18n.t("views.welcome.helper.tips.submit")}  %>
               </div>
             <% end %>
           </div>
