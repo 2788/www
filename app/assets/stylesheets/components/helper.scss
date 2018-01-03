@@ -10,7 +10,7 @@
   #waiter{
     display: block;
     width: 42px;
-    height: 128px;
+    height: auto;
     word-break: break-all;
     text-align: center;
     color: #333;
@@ -24,6 +24,14 @@
       line-height: 16px;
       padding: 5px 12px;
       writing-mode: horizontal-tb;
+      &.en{
+        writing-mode: vertical-rl;
+        font-weight: bolder;
+        font-size: 18px;
+      }
+      &.d-none{
+        display: none;
+      }
     }
   }
 

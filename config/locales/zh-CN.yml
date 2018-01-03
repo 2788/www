@@ -10,6 +10,7 @@ zh-CN:
     welcome:
       helper:
         title: "产品及服务咨询"
+        desc: ""
         content: "咨询内容"
         name: "姓名"
         company: "公司名称"
@@ -17,6 +18,12 @@ zh-CN:
         phone: "联系电话"
         email: "电子邮箱"
         submit: "提交"
+        tips:
+          content: "请填写咨询内容"
+          tip: "最多可输入255字"
+          name: "请填写姓名"
+          phone: "请以正确的格式填写联系电话"
+          email: "请填写电子邮箱"
       index:
         feature1:
           title: "持续挖掘海量数据的无限价值"
@@ -622,6 +629,7 @@ zh-CN:
               icon: "pandora/icon-youxifanzuobi@2x.png"
               title: "游戏反作弊"
               desc: "根据用户行为模式进行数据建模，通过大数据技术，实现对用户质量的识别与量化，判断真实用户，侦测作弊手段，使游戏平台最大可能的避免薅羊毛等事件发生，进而为用户价值挖掘提供数据支撑，提高运营决策效率，优化推广获客成本。"
+
   services:
     - group: 基础服务
       list:

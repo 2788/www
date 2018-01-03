@@ -10,6 +10,7 @@ en:
     welcome:
       helper:
         title: "Contact Us"
+        desc: Get in touch with our Business Advisors and learn more about our cloud services by submitting this form.
         content: "Leave us a note"
         name: "Name"
         company: "Company"
@@ -17,6 +18,12 @@ en:
         phone: "Phone"
         email: "Email"
         submit: "Submit"
+        tips:
+          content: "Please tell us how can we help you."
+          tip: "Enter up to 255 words"
+          name: "This is required"
+          phone: "This is required"
+          email: "This is required"
       index:
         feature1:
           title: "We are continuously extracting infinite value from mass data"
