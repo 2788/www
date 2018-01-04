@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="features section tab-content-section-1">
+<div class="features section tab-content-section-1 <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <div class="container">
     <div class="intro">
       <h2 class="title1"><%= I18n.t("views.welcome.pandora.feature1.title") %></h2>

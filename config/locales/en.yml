@@ -513,11 +513,11 @@ en:
         title: "Smart Big Data Platform（Pandora）"
         desc: "Pandora is the Smart Big Data Platform for the Qiniu Cloud, providing a simple, efficient and open one-stop big data service."
         middlebar:
-          - title: "Solution Architecture"
+          # - title: "Solution Architecture"
+          #   class: "active"
+          #   href: "#tab-content-section-1"
+          - title: "Why Pandora"
             class: "active"
-            href: "#tab-content-section-1"
-          - title: "Product Advantages"
-            class: ""
             href: "#tab-content-section-2"
           - title: "Core Services and Functions"
             class: ""
@@ -529,7 +529,7 @@ en:
           title: "Solution Architecture"
           img: "pandora/img-productSchema.png"
         feature2:
-          title: "Product Advantages"
+          title: "Why Pandora"
           col:
             - title: "Simplicity"
               icon: "pandora/icon-jiandanyiyong@2x.png"
@@ -582,7 +582,7 @@ en:
             - title: "Recommendation System"
               class: ""
               href: "#tab-usage-section-4"
-            - title: "Growth Hacker"
+            - title: "Growth Hack"
               class: ""
               href: "#tab-usage-section-5"
           sections:
@@ -609,7 +609,7 @@ en:
             - id: "tab-usage-section-5"
               class: "row tab-pane fade"
               icon: "pandora/icon-youxifanzuobi@2x.png"
-              title: "Growth Hacker"
+              title: "Growth Hack"
               desc: ""
       dora:
         title: "Intelligent Multimedia APIs（Dora）"
@@ -725,7 +725,7 @@ en:
     about: About Us
   footer:
   services:
-    - group: 基础服务
+    - group: Storage&CDN
       list:
         - name: kodo
           label: Object Storage（KODO）
