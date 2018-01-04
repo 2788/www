@@ -220,9 +220,9 @@
     </div>
 
 
-    <footer class="hidden-xs">
+    <footer class="hidden-xs <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>">
       <div class="container">
-        <div class="row">
+        <div class="row <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <div class="col-sm-8">
             <div class="row grey-link">
               <div class="col-sm-4 col-xs-4">
@@ -293,9 +293,9 @@
         </div>
       </div>
     </footer>
-    <footer class="visible-xs footer-mobile">
+    <footer class="visible-xs footer-mobile <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>">
       <div class="container">
-        <div class="collapse-wrapper">
+        <div class="collapse-wrapper <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <ul class="panel-group" id="accordion">
             <li class="panel panel-info">
               <div class="panel-heading panel-sort">
@@ -359,6 +359,7 @@
               </div>
               <div id="collapseUs" class="panel-collapse collapse collapse-menu">
                 <div class="panel-body panel-menu">
+                  <%= content_tag :div, link_to(content_tag(:h4, "公司介绍"), company_path), class: "menu-unit" -%>
                   <%= content_tag :div, link_to(content_tag(:h4, "新闻动态"), news_path), class: "menu-unit" -%>
                   <%= content_tag :div, link_to(content_tag(:h4, "产品动态"), product_news_path), class: "menu-unit" -%>
                   <%= content_tag :div, link_to(content_tag(:h4, "近期福利"), welfares_path), class: "menu-unit" -%>

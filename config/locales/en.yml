@@ -582,7 +582,7 @@ en:
             - title: "Recommendation System"
               class: ""
               href: "#tab-usage-section-4"
-            - title: "Growth Hack"
+            - title: "Growth Hacking"
               class: ""
               href: "#tab-usage-section-5"
           sections:
@@ -609,7 +609,7 @@ en:
             - id: "tab-usage-section-5"
               class: "row tab-pane fade"
               icon: "pandora/icon-youxifanzuobi@2x.png"
-              title: "Growth Hack"
+              title: "Growth Hacking"
               desc: ""
       dora:
         title: "Intelligent Multimedia APIs（Dora）"
@@ -723,9 +723,8 @@ en:
     solution: Solutions
     price: ""
     about: About Us
-  footer:
   services:
-    - group: Storage&CDN
+    - group: Storage & CDN
       list:
         - name: kodo
           label: Object Storage（KODO）
@@ -735,11 +734,11 @@ en:
           label: Integrated CDN（FUSION）
           desc:
 
-        - name: kirk
-          label:
-          desc:
+        # - name: kirk
+        #   label:
+        #   desc:
 
-    - group: 数据•智能
+    - group: Qiniu Brain
       list:
         - name: atlab
           label: Deep Learning Platform（AVA）
@@ -753,7 +752,7 @@ en:
           label: Intelligent Multimedia APIs（Dora）
           desc:
 
-    - group: 视频服务
+    - group: Media Service
       list:
         - name: pili
           label: Live Video Cloud（PILI）

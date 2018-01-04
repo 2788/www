@@ -744,7 +744,6 @@ zh-CN:
     solution: 解决方案
     price: "价格"
     about: 关于我们
-  footer:
   services:
     - group: 基础服务
       list:
