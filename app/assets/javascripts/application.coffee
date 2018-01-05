@@ -10,7 +10,6 @@
 # Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 # about supported directives.
 #
-
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
@@ -47,6 +46,7 @@ setSEORefer = () ->
     expire = new Date()
     expire.setDate(expire.getDate() + 3)
     document.cookie = 'qiniu_seo_refer=' + ref + ';domain=.qiniu.com;path=/;expires=' + expire
+
 
 # 首页成功案例
 $(document).ready ->
