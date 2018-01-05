@@ -94,12 +94,16 @@
             <li class="select-unit">
               <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
-                <span class="current">中国站</span> &nbsp;
+                <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
                 <span class="glyphicon glyphicon-chevron-down"></span>
               </a>
               <ul class="language-menu dropdown-menu dropdown-menu-right m-0 p-0">
-                <li val="zh"><a>中国站</a></li>
-                <li val="en"><a>International-English</a></li>
+                <li val="zh">
+                  <%= link_to "中国站", controller: controller_name, action: action_name, locale: nil %>
+                </li>
+                <li val="en">
+                  <%= link_to "International-English", controller: controller_name, action: action_name, locale: "en" %>
+                </li>
               </ul>
             </li>
             <li class="dropdown hidden userinfo <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>" id="user-dropdown">

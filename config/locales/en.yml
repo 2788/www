@@ -1,6 +1,7 @@
 en:
   views:
     language: "en"
+    locale: "International-English"
     pagination:
       first: "first"
       last: "last"
