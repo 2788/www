@@ -132,8 +132,8 @@ nav.navbar.nav-bg{
     }
     .hotTag{
       position: absolute;
-      top: 10px;
-      right: 0px;
+      top: 7px;
+      right: 2px;
       width: 28px;
       height: auto;
     }
@@ -230,6 +230,34 @@ nav.navbar.nav-bg{
 
 .nav-tabs.nav-justified.nav-short{
   width: 80%;
+}
+.navbar-default .navbar-nav li.select-unit {
+  .language {
+    position: relative;
+    .line {
+      position: absolute;
+      left: 3px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 20px;
+      width: 1px;
+      background-color: #fff;
+      &.en {
+        height: 0;
+      }
+    }
+  }
+  .language-menu {
+    background-color: #303848;
+    li a {
+      color: #fff;
+      &:hover {
+        color: $brand-primary;
+        background-color: rgba(239, 239, 239, 0.15);
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .services-menu{
@@ -346,6 +374,15 @@ nav.navbar.nav-bg{
 // Responsive
 // ---------------------------------------------------------------------
 // iPhone
+@media (max-width: 767px) {
+  .select-unit {
+    .language {
+      .line {
+        height: 0;
+      }
+    }
+  }
+}
 @media (min-width: 320px) and (max-width: 479px) {
   .navbar-default .navbar-nav > li{
     a{ padding: 0.10rem 0.15rem; }

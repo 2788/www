@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # set language
   before_action :set_locale
+
   # protect_from_forgery with: :exception
   protect_from_forgery with: :null_session
 
@@ -10,17 +11,16 @@ class ApplicationController < ActionController::Base
     x_forwarded_for.split(",").first || request.remote_ip
   end
 
-  # def default_url_options
-  #   { locale: I18n.locale }
-  # end
-
-  def set_locale
-    I18n.locale = I18n.default_locale
+  def default_url_options
+    if I18n.locale == :"zh-CN"
+      { locale: nil }
+    else
+      { locale: I18n.locale }
+    end
   end
 
-  # def extract_locale
-  #   parsed_locale = I18n.language
-  #   I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
-  # end
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
 end
