@@ -10,6 +10,16 @@
 # Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 # about supported directives.
 #
+
+# This is optional (in case you have `I18n is not defined` error)
+# If you want to put this line, you must put it BEFORE `i18n/translations`
+#= require i18n
+# Some people even need to add the extension to make it work, see https://github.com/fnando/i18n-js/issues/283
+#= require i18n.js
+#
+# This is a must
+#= require i18n/translations
+
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
@@ -35,6 +45,8 @@
 #= require newmedia
 #= require alaccelerator
 
+#= require localization
+
 isMobile = false; # initiate as false
 # device detection
 isMobile = true if /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -46,7 +58,6 @@ setSEORefer = () ->
     expire = new Date()
     expire.setDate(expire.getDate() + 3)
     document.cookie = 'qiniu_seo_refer=' + ref + ';domain=.qiniu.com;path=/;expires=' + expire
-
 
 # 首页成功案例
 $(document).ready ->

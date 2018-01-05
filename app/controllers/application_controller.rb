@@ -10,13 +10,17 @@ class ApplicationController < ActionController::Base
     x_forwarded_for.split(",").first || request.remote_ip
   end
 
-  def set_locale
-    if params[:locale] === 'en'
-      I18n.locale = params[:locale]
-    else
-      I18n.locale = I18n.default_locale
-    end
+  # def default_url_options
+  #   { locale: I18n.locale }
+  # end
 
+  def set_locale
+    I18n.locale = I18n.default_locale
   end
+
+  # def extract_locale
+  #   parsed_locale = I18n.language
+  #   I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
+  # end
 
 end

@@ -22,7 +22,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class="<%= controller_name -%>-page <%= "#{controller_name}-page-#{action_name}" -%>">
+  <body class="<%= controller_name -%>-page <%= "#{controller_name}-page-#{action_name}" -%>" data-locale="<%= I18n.default_locale %>">
     <!--[if lt IE 10]>
       <div class="browsehappy alert alert-warning">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -92,6 +92,22 @@
                 <a href="<%= sigin_url() %>" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary hidden-xs">注册有礼</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup?type=1" class="btn btn-primary visible-xs-inline">注册有礼</a>
+              </div>
+            </li>
+            <li class="select-unit">
+              <div class="actions">
+                <button type="button" class="btn btn-primary dropdown-toggle m-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  <span class="current">中国站</span> &nbsp;
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                <!--
+                  <li><%= link_to '中国站', root_path(locale: :zh) %></li>
+                  <li><%= link_to 'International-English', root_path(locale: :en) %></li>
+                  -->
+                  <li val="zh"><a>中国站</a></li>
+                  <li val="en"><a>International-English</a></li>
+                </ul>
               </div>
             </li>
           </ul>
