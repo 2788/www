@@ -43,7 +43,6 @@ gem 'mongoid', '~> 6.2', '>= 6.2.1'
 gem 'kaminari', '~> 1.0', '>= 1.0.1'
 
 gem 'ransack'
-gem "i18n-js"
 
 gem 'social-share-button'
 
