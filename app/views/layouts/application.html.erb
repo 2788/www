@@ -52,7 +52,12 @@
                   <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
 
                   <% service[:list].each do |product| %>
-                    <%= content_tag :li, link_to(content_tag(:h4, raw(product[:label]),class: product[:name]) + content_tag(:p, product[:desc], class: "hidden-xs"), '/products/' + product[:name]), class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' -%>
+                    <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
+                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                        <%= content_tag :h4, raw(product[:label]), class: product[:name] -%>
+                        <%= content_tag :p, product[:desc], class: "hidden-xs" -%>
+                      <% end %>
+                    <% end %>
                   <% end %>
                 <% end %>
               </ul>
@@ -63,7 +68,12 @@
 
               <ul class="dropdown-menu solutions-menu scrollbar-light">
                 <% I18n.t("solutions").each do |solution| %>
-                  <%= content_tag :li, link_to(content_tag(:h4, solution[:label], class: solution[:name]+" menu-title") + content_tag(:p, solution[:desc], class: "hidden-xs"), solutions_path(anchor: solution[:name])), class: "solution" -%>
+                  <%= content_tag :li, class: "solution" do -%>
+                    <%= link_to(solutions_path(anchor: solution[:name])) do -%>
+                      <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
+                      <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
+                    <% end %>
+                  <% end %>
                 <% end %>
                 <li class="solution <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
                   <%= link_to products_player_path do -%>
@@ -77,17 +87,32 @@
             <li><%= link_to I18n.t("navbar.about"), company_path -%></li>
           </ul>
 
-          <ul class="nav navbar-nav navbar-right navbar-nav-mobile <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-            <li><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
-            <li><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
-            <li><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
-            <li class="dropdown hidden userinfo" id="user-dropdown">
+          <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
+            <li class="select-unit">
+              <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
+                <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
+                <span class="glyphicon glyphicon-chevron-down"></span>
+              </a>
+              <ul class="language-menu dropdown-menu dropdown-menu-right m-0 p-0">
+                <li val="zh">
+                  <%= link_to "中国站", controller: controller_name, action: action_name, locale: nil %>
+                </li>
+                <li val="en">
+                  <%= link_to "International-English", controller: controller_name, action: action_name, locale: "en" %>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown hidden userinfo <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>" id="user-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile user-email" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
               <ul class="dropdown-menu user-menu">
                 <li><a href="https://sso.qiniu.com/signout" class="text-sub">退出当前帐号</a></li>
               </ul>
             </li>
-            <li class="need-signin">
+            <li class="need-signin <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               <div class="actions">
                 <a href="<%= sigin_url() %>" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary hidden-xs">注册有礼</a>
@@ -230,7 +255,7 @@
                   <dt>产品与服务</dt>
                   <% I18n.t("services").each do |service| %>
                     <% service[:list].each do |product| %>
-                      <%= content_tag :dd, link_to(raw(product[:label]), '/products/' + product[:name]) -%>
+                      <%= content_tag :dd, link_to(raw(product[:label]), send("products_#{product[:name]}_path")) -%>
                     <% end %>
                   <% end %>
                 </dl>
@@ -306,7 +331,7 @@
                 <div class="panel-body panel-menu">
                   <% I18n.t("services").each do |service| %>
                     <% service[:list].each do |product| %>
-                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]),class: product[:name]), '/products/' + product[:name]), class: "menu-unit" -%>
+                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]),class: product[:name]), send("products_#{product[:name]}_path")), class: "menu-unit" -%>
                     <% end %>
                   <% end %>
                 </div>

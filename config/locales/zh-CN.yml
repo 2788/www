@@ -1,6 +1,7 @@
 zh-CN:
   views:
     language: "zh"
+    locale: "中国站"
     pagination:
       first: "首页"
       last: "末页"
