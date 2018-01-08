@@ -442,10 +442,10 @@ en:
           btn: ""
           case: "Success Cases"
       company:
-        title: "What is Our Company?"
-        desc: "Qiniu is affiliated to Shanghai Qiniu Information Technologies Co., Ltd. Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value."
+        title: "About Qiniu Cloud"
+        desc: "Qiniu Cloud is affiliated to Shanghai Qiniu Information Technologies Co., Ltd. Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value."
         feature1:
-          title: "Business Culture of Qiniu—Simple and Reliable"
+          title: "Our Culture —— Simple and Reliable"
           col:
             - title: "To be a Simple Man"
               icon: "company/icon-jiandanderen@2x.png"
@@ -457,7 +457,7 @@ en:
               icon: "company/icon-jiandandegongsi@2x.png"
               desc: "With social responsibility as our duty and company credit as the most important asset, we keep our promise and adhere to honesty and integrity to win the trust from society."
         feature2:
-          title: "Histories of Qiniu"
+          title: "Histories of Qiniu Cloud"
           ul:
             li1:
               time: "2011"
@@ -925,31 +925,31 @@ en:
       desc: yunpian
   seo:
     welcome_index:
-      title: 七牛云-国内领先的企业级云服务商
-      keywords: 七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速
-      description: 七牛云是国内领先的企业级云服务商，致力于打造以数据为核心的场景化 PaaS 服务。围绕富媒体场景，七牛提供对象存储，融合CDN加速，直播云，内容反垃圾等服务。
+      title: Qiniu Cloud-the leading enterprise cloud service supplier in China
+      keywords: Qiniu, Qiniu Cloud, CDN, Storage, Big Data,Live Video、API、AI、Solutions
+      description: Qiniu Cloud is the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management.
     welcome_kodo:
-      title: 对象存储_海量安全高可靠的云存储 - 七牛云
-      keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管，低频存储，镜像存储，私有部署，静态资源托管，备份归档，数据迁移，数据灾备，弹性扩容
-      description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。
+      title: Qiniu Cloud-Object Storage（KODO）-Safe、Highly-reliable、Easy to Expand、Low in Cost、Intelligent in Data
+      keywords: Cloud Storage、Object Storage、Qiniu Cloud、Private Cloud Storage、High Concurrency of Mass Data、Backup and Archive、Hosting of Static Resources、Mirrored Storage、Low-frequency Storage、Multimedia Data Processing、Upload/ Download
+      description: Qiniu Cloud-KODO owns the core technology based on completely independent research and development. With the large-scale verification from customers’ experiences in the past five years, it has proved to be absolutely leading in the industry and it can be widely applied to mass data management. Safe、Highly-reliable、Easy to Expand、Low in Cost、Intelligent in Data.
     welcome_pili:
-      title: 直播云_直播云服务 - 七牛云
-      keywords: 直播云，直播云服务，直播SDK，直播API，推流SDK，播放SDK，七牛直播，七牛直播云，直播加速，美颜
-      description: 七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供RTMP、HLS、HDL直播支持、配套的数据处理服务、端到端SDK支持、APM数据服务。
+      title: Qiniu Cloud-Live Video Cloud（PILI）
+      keywords: Live Video Cloud、Live Video Service、Live Video SDK、LIve Video API、Server SDK、Player SDK、Live Streaming SDK、Mic Interaction
+      description: Qiniu Cloud-Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
     welcome_pandora:
-      title: 大数据_大数据服务 - 七牛云
-      keywords: 大数据，大数据平台，大数据服务，数据分析、商业分析、时序数据库、日志检索、消息队列、数据流、离线分析、Spark、HDFS、数据运维、数据运营、质量监控
-      description: 七牛大数据是七牛云的大数据平台，提供安全、简单、高效、开放的一站式大数据服务。
+      title: Qiniu Cloud-Smart Big Data Platform（Pandora）
+      keywords: Big Data、Big Data Platform、Big Data Service、Data analysis、TSDB、LogDB、Workflow、Pipeline、Spark、HDFS、Dataized Operation、Dataized Maintenance、DEM、Recommendation System、Growth Hacking
+      description: Qiniu Cloud-Pandora is the Smart Big Data Platform for the Qiniu Cloud, providing a simple, efficient and open one-stop big data service.
     welcome_contact:
       title: 联系我们 - 七牛云
     welcome_fusion:
-      title: 融合CDN，CDN加速服务 - 七牛云
-      keywords: 高防CDN，动态CDN，静态CDN，CDN，CDN加速，CDN加速服务, 七牛CDN，CDN服务器，内容分发，云加速，融合CDN，图片CDN，视频CDN
-      description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
+      title: Qiniu Cloud-Integrated CDN（FUSION）
+      keywords: CDN、Web Acceleration、Document Downloads、Audio & Video On-demand、International Nodes 、Three-dimensional Quality Control、No Blind Areas、Intelligent Dispatch、Network Quality Tuning、Edge Cache Node
+      description: Qiniu Cloud-FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu’s FUSION guarantees the consistency of users’ service and offers stable and fast Internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
     welcome_dora:
-      title: 智能多媒体API  - 七牛云
-      keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR,发票识别，场景识别，鉴黄，暴恐审核
-      description: 七牛智能多媒体API支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR文字识别和内容审核等在线API服务。
+      title: Qiniu Cloud-Intelligent Multimedia APIs（Dora）
+      keywords: Face Recognition、Scene and object recognition、Optical Character Recognition、Content Regulation、Porn Images Identification、Violence and Terrorism Images Identification、Politicians Recognition、Object Segmentation、Image Previewing、Image Slim、Audio and Video Transcoder、Video snapshot、Smart Cloud Album、Audio and Video Process
+      description: Qiniu Cloud-Intelligent Multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services using deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services.
     welcome_kirk:
       title: 容器云_容器云平台 - 七牛云
       keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务,微服务，devops
@@ -983,19 +983,21 @@ en:
       keywords:
       description:
     welcome_solution:
-      title: 解决方案 - 七牛云
-      keywords: 对象存储私有化部署方案，非结构化数据管理解决方案，智能云相册解决方案，智能硬件与物联网解决方案，广电传媒解决方案，安防终端解决方案，互联网与移动互联网解决方案，应用质量监控解决方案
-      description: 七牛云解决方案平台，基于八大核心产品对象存储、融合CDN、容器云、大数据平台、深度学习平台、智能多媒体API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造的简单、可信的解决方案平台，帮助您快速实现业务需求并创造更多商业价值。
+      title: Qiniu Cloud -Solution Platform
+      keywords: Storage in Private Cloud、Unstructured Data Management、Short Videos、Intelligent Cloud Album、Smart Device and IOT、New Media Industry、Safety Protection Terminals、Internet and Mobile Internet、Application Quality Monitoring
+      description: Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has elaborately established a simple and reliable solution platform to help you realize business needs quickly and create more business value.
     welcome_about:
       title: 关于我们 - 七牛云
     welcome_company:
-      title: 公司介绍 - 七牛云
+      title: About Us-Why Qiniu Cloud
+      keywords: Qiniu, Qiniu Cloud, CDN, Storage, Big Data,Live Video、API、AI、Solutions
+      description: Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value.
     welcome_case:
       title: 客户案例 - 七牛云
     welcome_atlab:
-      title: 深度学习平台 - 七牛云
-      keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
-      description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
+      title: Qiniu Cloud-Deep Learning Platform（AVA）
+      keywords: Deep Learning Platform、Qiniu Cloud Deep Learning Platform、Deep Learning、Machine Learning、Smart Labelling、Labeling Module
+      description: Qiniu Cloud-AVA is a fully managed end-to-end Deep Learning Platform. It allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.
     welcome_player:
       title: 播放器SDK_视频播放SDK-七牛云播放器
       keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
