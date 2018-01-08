@@ -97,7 +97,7 @@ en:
               icon: "icon-controllable@2x.png"
               desc: "We make full use of advantages of big data and machine learning to monitor service quality in real time and deep analyze the service in an open way."
         feature3:
-          title: "Success Cases from all Walks of Life"
+          title: "Success Cases"
       kodo:
         banner:
           title: "Object Storage（KODO）"
@@ -220,7 +220,7 @@ en:
               desc: "Qiniu supports various third-party expansion plug-ins seamlessly, such as WordPress, Discz and Emlog, and offers the hosting of static resources from various expansion plug-ins to Qiniu with one-click."
               link: ""
         feature4:
-          title: "Client Cases"
+          title: "Success Cases"
       fusion:
         banner:
           title: "CDN（FUSION）"
@@ -238,7 +238,7 @@ en:
           - title: "Application Scenarios"
             class: "intLink"
             href: "#tab-content-section-4"
-          - title: "Client Cases"
+          - title: "Success Cases"
             class: "intLink"
             href: "#tab-content-section-5"
         feature1:
@@ -304,7 +304,7 @@ en:
               title: "Audio & Video On-demand"
               desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users’ costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users’ files from being stolen. With Qiniu’s data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
         feature5:
-          title: "Client Cases"
+          title: "Success Cases"
       pili:
         banner:
           title: "Live Video Cloud（PILI）"
@@ -322,7 +322,7 @@ en:
           - title: "Application Scenarios"
             class: "intLink"
             href: "#tab-content-section-4"
-          - title: "Customer Cases"
+          - title: "Success Cases"
             class: "intLink"
             href: "#tab-content-section-5"
         feature1:
@@ -391,7 +391,7 @@ en:
             - title: "E-commerce Live Streaming"
               icon: "icon-dianshangzhibo@2x.png"
         feature5:
-          title: "Customer Cases"
+          title: "Success Cases"
       solution:
         banner:
           title: "Qiniu Cloud Solution Platform"
@@ -400,47 +400,47 @@ en:
           title: "The Solution to Storage in Private Cloud"
           desc: "The solution to storage in private cloud is designed based on the framework and operation experience of Qiniu’s object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of PB which has features of high reliability, strong security, low costs and scalability and satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises’ needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature2:
           title: "The Solution to Unstructured Data Management"
           desc: "Qiniu’s unstructured data management platform is built based on Kodo, which can easily achieves the storage of hundreds PB level unstructured data and its structured business date. This platform has features of high availability, high concurrent reading and writing and linear expansion. It also offers file retrieval and other services based on structured business attribute and has access management and security mechanism of PaaS level. It can cooperate seamlessly with Dora to provide services like image and video processing, intelligent recognition and analysis."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature3:
           title: "The Solution to Short Videos"
           desc: "Qiniu’s one-stop solution to short videos has powerful capability in the clouds consisting of quick upload, transcoding, pornography identifying, storage and distribution and gathers components in the client ends with shooting, beautifying, special effects, filters, editing, composing, local compression, upload and broadcasting. It has features like complete functions, excellent performance, light packs, flexible interfaces and rich ecology. Also, it supports high customization and secondary development to meet enterprises’ development requirements in various business scenarios."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature4:
           title: "The Solution to Intelligent Cloud Album"
           desc: "Qiniu’s solution to intelligent cloud album is developed based on Qiniu’s machine learning platform which has tens of billions of daily requests of data processing on average, consisting of functions such as face clustering, recognition of 360 scenarios and 200 sorts of objects, aggregation of time, locations and scenarios and photo sharing. With the feedbacks from users’ album sorting behaviors, a closed learning loop is formed to improve recognition quality. This solution can work deeply with the ROM of mobile phones in customization and help social contact products refine users’ operation to discover new growth points in the activeness of social contact products."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature5:
           title: "The Solution to Smart Device and IOT"
           desc: "With the development and popularity of smartphones and mobile Internet, more and more hardware is intelligent and equipped with connectivity through the combination of software and hardware.  Both a strong support from the clouds and the value analysis and data mining of big data later are required to load Internet services. Qiniu’s solution to smart device and IOT provides smart device manufacturers stable and reliable technology services, including unified cloud storage, strong computing power, high-efficient data distribution, application capability of plug-and-play, big data analysis and intelligent recognition. It helps innovate hardware manufacturers and transform traditional device manufacturers into smart device manufacturers."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature6:
           title: "The Solution to New Media Industry"
           desc: "In the era of mobile Internet, traditional radio & TV business and Internet business are combined more and more closely, bringing great challenges to radio & TV media, and thus they have to complete the deployment of new media strategies quickly and transform themselves into integrated media. In order to achieve multi-dimension distributions and presentations of contents in radio and TV media and the transformation into cloud-based production of radio and TV media, it’s necessary to improve the model of content production and business processing under the new environment. Qiniu’s solution to New Media strives to make a content management platform for mass data storage and acceleration, adaptive to the video business of New Media, and a unified management system for group-level all-media resource. It includes content aggregation from multiple sources, built-in production of tools in multiple forms, identification and auditing of pornography, violence and terrorism, multi-channel distribution across platforms, command and scheduling with unified schemes, task tracking, cross-screen interactive broadcasting with multi-screen terminals and statistical analysis of network-wide big data."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature7:
           title: "The Solution to Safety Protection Terminals"
           desc: "The change in market demands combines the scenario of safety protection with the Internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu’s solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users’ experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client effectively reduce costs."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature8:
           title: "The Solution to Internet and Mobile Internet"
           desc: "As the most important external resource in the entrepreneurship-supporting industry, Qiniu’s solution to Internet and mobile Internet offers a solution close to business scenarios for various industries and fields such as online education, tourism, O2O, e-commerce, social contact and entertainment. It also provides a one-stop data management service and helps start-ups quickly build technical infrastructures to fairly compete with giants in the industry."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
         feature9:
           title: "The Solution to Application Quality Monitoring"
           desc: "Qiniu’s solution to application quality monitoring is used to manage the quality of mobile and video applications. Through the monitoring, analysis, alarming and optimization of key business systems, it constantly improves the reliability and stability of business and provides end-users with good experience to increase core competitiveness."
           btn: ""
-          case: "Client Cases"
+          case: "Success Cases"
       company:
         title: "What is Our Company?"
         desc: "Qiniu is affiliated to Shanghai Qiniu Information Technologies Co., Ltd. Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value."
@@ -625,7 +625,7 @@ en:
           - title: "Application Scenarios"
             class: ""
             href: "#tab-content-section-3"
-          - title: "Client Cases"
+          - title: "Success Cases"
             class: ""
             href: "#tab-content-section-4"
           - title: ""
@@ -717,7 +717,7 @@ en:
               title: Smart Cloud Album
               desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients’ demand in different scenarios.
         feature4:
-          title: "Client Cases"
+          title: "Success Cases"
       atlab:
         title: Deep Learning Platform（AVA）
         desc: Qiniu AVA is a fully managed end-to-end Deep Learning Platform. It allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.

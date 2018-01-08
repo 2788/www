@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to image_tag(I18n.t("navbar.logo"), width: 100), "/", class: "navbar-brand" %>
+          <%= link_to image_tag(I18n.t("navbar.logo"), width: 100), I18n.t('views.language') == 'zh' ? '/' : '/?locale=en', class: "navbar-brand" %>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -444,7 +444,7 @@
         </div>
       </div>
     </footer>
-    <div class="footer-sign">
+    <div class="footer-sign <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
       <div class="stripe stripe-blue p-xxl visible-xs fixed-b">
         <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a></div>
         <div class="text-center"><a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a></div>
