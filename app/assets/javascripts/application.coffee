@@ -100,7 +100,8 @@ $(document).ready ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
     $('#solution-dropdown-title').on 'click', ->
-      window.location.href = window.location.origin + '/solutions'
+      locale = if window.location.pathname.split('/')[1] == 'en' then '/en/solutions' else '/solutions'
+      window.location.href = window.location.origin + locale
     $('#spaces-dropdown, #solution-dropdown, #user-dropdown').hover ->
       $(this).addClass('open')
     , ->
