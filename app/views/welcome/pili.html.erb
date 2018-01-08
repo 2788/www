@@ -87,7 +87,7 @@
       <% end %>
     </div>
 
-    <div class="row">
+    <div class="row <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
       <center><%= link_to I18n.t("views.welcome.pili.feature3.more"), "https://developer.qiniu.com/pili/manual/1209/live-the-core-function", class: "more" -%></center>
     </div>
   </div>
