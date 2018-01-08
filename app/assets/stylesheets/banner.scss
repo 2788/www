@@ -79,20 +79,6 @@
       transform: translateX(-50%);
     }
   }
-  &.hero-double{
-    background-image: image-url('bannerDouble.jpg');
-    .banner-container .btn-banner {
-      bottom: 118px;
-      border-color: #900011;
-      background-color: #900011;
-      opacity: .8;
-      &:hover{
-        cursor: pointer;
-        color: #fff;
-        opacity: 1;
-      }
-    }
-  }
 
   .right-mask-banner{
     min-height: 3rem;
@@ -217,11 +203,6 @@
     margin-top: 30px;
     &.hero-bannerGoglobal{.banner-container{top: 20px;}}
     &.hero-bannerAI {.banner-container{top: 20px;}}
-    &.hero-double{
-      .banner-container .btn-banner {
-        bottom: 100px;
-      }
-    }
     &.hero-alaccelerator {
       height: 6rem;
       margin-top: 50px;
