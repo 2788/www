@@ -1,4 +1,4 @@
-<div class="jumbotron hero hero-pandora">
+<div class="jumbotron hero">
   <div class="container">
     <div class="middle-container">
       <div class="row">
@@ -8,6 +8,11 @@
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "预约咨询", "http://www.mikecrm.com/HPqsVF", class: "btn btn-lg btn-default m-r m-b-xs", target: "_blank" -%>
             <%= link_to "产品文档", "http://pandora-docs.qiniu.com", class: "btn btn-lg btn-hollow m-b-xs", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="col-xs-4 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "banner/banner-dashuju-right-zh.png", alt: "pandora", width: '100%' %>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-<div class="jumbotron hero hero-dora">
+<div class="jumbotron hero">
   <div class="container">
     <div class="middle-container">
       <div class="row">
@@ -8,6 +8,11 @@
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "产品价格", prices_path + "?source=dora", class: "btn btn-lg btn-hollow m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-4 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "banner/banner-duomeitiAPI-right-zh.png", alt: "duomeitiAPI", width: '100%' %>
           </div>
         </div>
       </div>

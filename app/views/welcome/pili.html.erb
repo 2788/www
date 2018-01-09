@@ -1,12 +1,17 @@
-<div class="jumbotron hero hero-pili">
+<div class="jumbotron hero">
   <div class="container">
     <div class="middle-container">
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-6">
           <h2><%= I18n.t("views.welcome.pili.banner.title") %></h2>
           <p><%= I18n.t("views.welcome.pili.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice",target: "_blank", class: "btn btn-lg btn-default" -%>
+          </div>
+        </div>
+        <div class="col-xs-6 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag I18n.t("views.welcome.pili.banner.icon"), alt: "pili", width: '100%' %>
           </div>
         </div>
       </div>

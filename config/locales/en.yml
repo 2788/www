@@ -309,6 +309,7 @@ en:
         banner:
           title: "Live Video Cloud（PILI）"
           desc: "Qiniu's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported."
+          icon: "banner/banner-pili-right-en.png"
         middlebar:
           - title: "Solution Architecture"
             class: "intLink active"
