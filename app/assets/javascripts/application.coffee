@@ -107,7 +107,7 @@ $(document).ready ->
     , ->
       $(this).removeClass('open')
 
-  if document.documentElement.clientWidth > 415
+  if document.documentElement.clientWidth > 749
     # dropdown menu scroll or not
     $services = $('.services-menu')
     $servicesH = $services.height()
