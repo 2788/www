@@ -91,7 +91,7 @@
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
-            <li class="select-unit d-none">
+            <li class="select-unit">
               <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
                 <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
@@ -131,11 +131,10 @@
     <%# 悬浮按钮 %>
     <div class="helper">
       <a id="waiter" data-toggle="modal" data-target="#feedback-modal">
-        <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>
+        <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != "zh" ? "icon-en" : "" -%>
         <span class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">服务&bull;咨询</span>
-        <span class="en <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">Contact Us</span>
       </a>
-      <%= link_to image_tag("close.png"), "javascript:;", class: "close-btn" %>
+      <%= link_to image_tag("close.png"), "javascript:;", class: "close-btn" + I18n.t("views.language") != "zh" ? "d-none" : "" %>
     </div>
 
     <!-- Modal -->
