@@ -47,7 +47,7 @@
             <li class="dropdown" id="spaces-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.product") %></a>
 
-              <ul class="dropdown-menu services-menu scrollbar-light">
+              <ul class="dropdown-menu services-menu">
                 <% I18n.t("services").each do |service| %>
                   <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
 
@@ -66,7 +66,7 @@
             <li class="dropdown" id="solution-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.solution") %></a>
 
-              <ul class="dropdown-menu solutions-menu scrollbar-light">
+              <ul class="dropdown-menu solutions-menu">
                 <% I18n.t("solutions").each do |solution| %>
                   <%= content_tag :li, class: "solution" do -%>
                     <%= link_to(solutions_path(anchor: solution[:name])) do -%>
@@ -91,7 +91,7 @@
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
-            <li class="select-unit">
+            <li class="select-unit d-none">
               <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
                 <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
