@@ -142,7 +142,6 @@ $(document).ready ->
 
     $(window).resize ->
       $isMobile = document.documentElement.clientWidth < 750
-      console.log($isMobile)
       if document.documentElement.clientHeight - 68 < $servicesH && !$isMobile
         $maxH = document.documentElement.clientHeight - 68 + 'px'
         $services.css({
