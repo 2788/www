@@ -1,4 +1,4 @@
-<div class="banners-slider">
+<div class="banners-slider <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <div class="jumbotron hero hero-cdnprice">
     <div class="container">
       <div class="middle-container">
@@ -77,6 +77,11 @@
     <div class="banner-container">
       <a href="http://blog.qiniu.com/archives/8498?hmsr=huananjiangjiabanner&hmpl=huananjiangjiabanner&hmcu=huananjiangjiabanner&hmkw=&hmci=" target="_blank" class="btn btn-lg btn-hollow btn-banner">查看详情</a>
     </div>
+  </div>
+</div>
+
+<div class="banners-slider <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+  <div class="jumbotron hero hero-bannerEN">
   </div>
 </div>
 

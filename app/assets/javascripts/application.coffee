@@ -47,7 +47,29 @@ setSEORefer = () ->
     expire.setDate(expire.getDate() + 3)
     document.cookie = 'qiniu_seo_refer=' + ref + ';domain=.qiniu.com;path=/;expires=' + expire
 
+setDropdownScroll = ($services, $servicesH, $solutions, $solutionsH) ->
+    $isMobile = document.documentElement.clientWidth < 750
+    if document.documentElement.clientHeight - 68 < $servicesH && !$isMobile
+      $maxH = document.documentElement.clientHeight - 90 + 'px'
+      $services.css({
+        "max-height": $maxH,
+        "overflow-y": "auto"
+      }).addClass("scrollbar-light")
+    else
+      $services.css({
+        "max-height": "none"
+      }).removeClass("scrollbar-light")
 
+    if document.documentElement.clientHeight - 68 < $solutionsH && !$isMobile
+      $maxH = document.documentElement.clientHeight - 90 + 'px'
+      $solutions.css({
+        "max-height": $maxH,
+        "overflow-y": "auto"
+      }).addClass("scrollbar-light")
+    else
+      $solutions.css({
+        "max-height": "none"
+      }).removeClass("scrollbar-light")
 # 首页成功案例
 $(document).ready ->
   setSEORefer()
@@ -107,62 +129,17 @@ $(document).ready ->
     , ->
       $(this).removeClass('open')
 
-  if document.documentElement.clientWidth > 749
-    # dropdown menu scroll or not
-    $services = $('.services-menu')
-    $servicesH = $services.height()
+  # dropdown menu scroll or not
+  $services = $('.services-menu')
+  $servicesH = $services.height()
 
-    $solutions = $('.solutions-menu')
-    $solutionsH = $solutions.height()
+  $solutions = $('.solutions-menu')
+  $solutionsH = $solutions.height()
 
-    _servicesIsmin = document.documentElement.clientHeight - 68 < $servicesH
-    _solutionsIsmin = document.documentElement.clientHeight - 68 < $solutionsH
+  setDropdownScroll($services, $servicesH, $solutions, $solutionsH)
 
-    if _servicesIsmin
-      $maxH = document.documentElement.clientHeight - 68 + 'px'
-      $services.css({
-        "max-height": $maxH,
-        "overflow-y": "auto"
-      }).addClass("scrollbar-light")
-    else
-     $services.css({
-        "max-height": "none"
-      }).removeClass("scrollbar-light")
-
-    if _solutionsIsmin
-      $maxH = document.documentElement.clientHeight - 68 + 'px'
-      $solutions.css({
-        "max-height": $maxH,
-        "overflow-y": "auto"
-      }).addClass("scrollbar-light")
-    else
-      $solutions.css({
-        "max-height": "none"
-      }).removeClass("scrollbar-light")
-
-    $(window).resize ->
-      $isMobile = document.documentElement.clientWidth < 750
-      if document.documentElement.clientHeight - 68 < $servicesH && !$isMobile
-        $maxH = document.documentElement.clientHeight - 68 + 'px'
-        $services.css({
-          "max-height": $maxH,
-          "overflow-y": "auto"
-        }).addClass("scrollbar-light")
-      else
-        $services.css({
-          "max-height": "none"
-        }).removeClass("scrollbar-light")
-
-      if document.documentElement.clientHeight - 68 < $solutionsH && !$isMobile
-        $maxH = document.documentElement.clientHeight - 68 + 'px'
-        $solutions.css({
-          "max-height": $maxH,
-          "overflow-y": "auto"
-        }).addClass("scrollbar-light")
-      else
-        $solutions.css({
-          "max-height": "none"
-        }).removeClass("scrollbar-light")
+  $(window).resize ->
+    setDropdownScroll($services, $servicesH, $solutions, $solutionsH)
 
   # 文档侧边导航栏隐藏与展开
   $('.sidebar-toggle').click ->
