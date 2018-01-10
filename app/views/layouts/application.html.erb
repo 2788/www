@@ -134,7 +134,7 @@
         <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != "zh" ? "icon-en" : "" -%>
         <span class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">服务&bull;咨询</span>
       </a>
-      <%= link_to image_tag("close.png"), "javascript:;", class: "close-btn" + I18n.t("views.language") != "zh" ? "d-none" : "" %>
+      <%= link_to image_tag("close.png"), "javascript:;", class:I18n.t("views.language") != "zh" ? "d-none" : "close-btn" %>
     </div>
 
     <!-- Modal -->
