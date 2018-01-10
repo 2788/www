@@ -1,13 +1,18 @@
-<div class="jumbotron hero hero-vance">
+<div class="jumbotron hero">
   <div class="container">
     <div class="middle-container">
       <div class="row">
-        <div class="col-sm-8 col-xs-10">
+        <div class="col-sm-6 col-xs-10">
           <h2>点播云</h2>
           <p>点播云 (VANCE) 是汇聚七牛云存储、音视频转码和融合 CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播 PaaS 平台。</p>
           <div class="actions">
             <%= link_to "申请试用", "", class: "btn btn-lg btn-default m-r m-b-xs", target: "_blank", data: { toggle: "modal", target: "#feedback-modal"} -%>
             <%= link_to "短视频解决方案", products_plsv_path, class: "btn btn-lg btn-hollow m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-6 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "banner/banner-dianboyun-right-zh.png", alt: "vance", width: '100%' %>
           </div>
         </div>
       </div>

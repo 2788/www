@@ -4,7 +4,7 @@
   margin-top: -0.68rem;
   margin-bottom: 0.30rem;
   text-align: center;
-  background-image: image-url('banner.jpg');
+  background-image: image-url('banner/banner.jpg');
 
   background-repeat: no-repeat;
   background-position: center;
@@ -60,8 +60,7 @@
     }
   }
 
-  &.hero-bannerEN{ background-image: image-url('banner-en.jpg') }
-  &.hero-banner1{ background-image: image-url('duanshipin-banner.jpg');.middle-container{padding-top: 0.7rem;} }
+  &.hero-bannerIdentify{ background-image: image-url('banner-identification.jpg') }
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg'); }
   &.hero-bannerPlayer{ background-image: image-url('player/banner.png');.middle-container{padding-top: 0.7rem;}}
   &.hero-bannerAI {background-image: image-url('AI-banner.jpg'); .banner-container{top: 70px;}}
@@ -92,24 +91,14 @@
       margin-right: auto;
     }
   }
-  &.hero-kodo{ background-image: image-url('duixiangcunchu-banner.jpg'); }
-  &.hero-pili{ background-image: image-url('zhiboyun-banner.jpg'); }
   &.hero-contact{ background-image: image-url('contact/banner.jpg'); }
   &.hero-events{background-image: image-url('marketing-banner.jpg'); }
   &.hero-ecug{background-image: image-url('ecug-banner.jpg'); }
   &.hero-niushow{background-image: image-url('niushow-banner.jpg'); }
-  &.hero-pandora{background-image: image-url('dashuju-banner.jpg'); }
-  &.hero-fusion{background-image: image-url('fusion-banner.jpg'); }
-  &.hero-dora{background-image: image-url("zhinengduomeitiAPI-banner.jpg"); }
-  &.hero-kirk{background-image: image-url("rongqiyun-banner.jpg"); }
-  &.hero-vance{background-image: image-url("dianboyun-banner.jpg"); }
   &.hero-company{background-image: image-url("company/banner.jpg"); }
   &.hero-case{background-image: image-url("case/banner.jpg"); }
-  &.hero-solution{background-image: image-url("solutions-banner.jpg"); }
   &.hero-prices{background-image: image-url("price-banner.jpg"); }
   &.hero-caculator{background-image: image-url("caculator-banner.jpg"); }
-  &.hero-atlab{background-image: image-url("ava-banner.jpg"); }
-  &.hero-plsv{background-image: image-url("duanshipin-banner.jpg");.middle-container{padding-top: 0.7rem;} }
   &.hero-goglobal{ background-image: image-url('goglobal/banner.jpg'); }
   &.hero-newmedia{ background-image: image-url('newmedia/banner.jpg'); }
   &.hero-player{ background-image: image-url('player/banner.png');}
@@ -179,12 +168,6 @@
       background-position: -520px center;
       .banner-container{
         left: 0;
-      }
-    }
-    &.hero-plsv{
-      .middle-container{padding-top: 0;}
-      .right-mask-banner{
-        padding-top: 0.8rem;
       }
     }
   }

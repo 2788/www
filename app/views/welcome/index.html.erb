@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div class="jumbotron hero hero-banner1">
+  <div class="jumbotron hero">
     <div class="container">
       <div class="middle-container">
         <div class="col-sm-6">
@@ -41,7 +41,7 @@
         </div>
         <div class="col-sm-6 hidden-xs">
           <div class="right-mask-banner">
-            <%= image_tag "duanshipin-right.png", alt: "短视频", width: '90%' %>
+            <%= image_tag "banner/banner-duanshipin-right-zh.png", alt: "短视频", width: '90%' %>
           </div>
         </div>
       </div>
@@ -53,7 +53,13 @@
       <%= link_to "立即申请", alaccelerator_path, class:"btn btn-lg btn-hollow btn-banner" -%>
     </div>
   </div>
-
+<!--
+  <div class="jumbotron hero hero-bannerIdentify">
+    <div class="banner-container">
+      <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4171/space-porn-identification-settings", class:"btn btn-lg btn-hollow btn-banner" -%>
+    </div>
+  </div>
+-->
   <div class="jumbotron hero hero-bannerPlayer">
     <div class="container">
       <div class="middle-container">
@@ -81,7 +87,7 @@
 </div>
 
 <div class="banners-slider <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
-  <div class="jumbotron hero hero-bannerEN">
+  <div class="jumbotron hero hero-bannerIdentify">
   </div>
 </div>
 

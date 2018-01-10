@@ -327,6 +327,7 @@ zh-CN:
         banner:
           title: "直播云"
           desc: "七牛直播云服务 (PILI) 是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
+          icon: "banner/banner-pili-right-zh.png"
         middlebar:
           - title: "产品架构"
             class: "intLink active"
