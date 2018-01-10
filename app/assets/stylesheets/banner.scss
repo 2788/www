@@ -138,6 +138,11 @@
     top: 50%;
     transform: translate(-50%, -50%);
     color: #FFF;
+    .banner-desc {
+      span.text-warn {
+        color: yellow;
+      }
+    }
   }
   h2{
     margin: 0.50rem auto 0.30rem;
