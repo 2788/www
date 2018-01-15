@@ -62,7 +62,6 @@
     }
   }
 
-  &.hero-bannerIdentify{ background-image: image-url('banner-identification.jpg') }
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg'); }
   &.hero-bannerPlayer{ background-image: image-url('player/banner.png');.middle-container{padding-top: 0.7rem;}}
   &.hero-bannerAI {background-image: image-url('AI-banner.jpg'); .banner-container{top: 70px;}}
@@ -160,6 +159,12 @@
     text-shadow: 0 0.02rem 0.03rem rgba(0,0,0,.5);
   }
 }
+.jumbotron.en {
+  height: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: transparent;
+}
 
 
 // Responsive
@@ -212,6 +217,16 @@
     p{
       line-height: 0.34rem;
       font-size: 0.16rem;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features {
+    .media {
+      .media-body p.en {
+        min-height: 196px;
+      }
     }
   }
 }

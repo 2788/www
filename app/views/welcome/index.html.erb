@@ -96,9 +96,8 @@
   </div>
 </div>
 
-<div class="banners-slider <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
-  <div class="jumbotron hero hero-bannerIdentify">
-  </div>
+<div class="jumbotron <%= I18n.t("views.language") == 'zh' ? 'd-none' : 'en' %>">
+  <video loop autoplay src="//mars-assets.qnssl.com/lt4MK87BGF0NwxSo1EXSfGNRmabB.mp4"></video>
 </div>
 
 <div class="features">
@@ -116,7 +115,7 @@
             </div>
             <div class="media-body">
               <h4 class="media-heading"><%= unit[:title] %></h4>
-              <p><%= unit[:desc] %></p>
+              <p class="<%= I18n.t("views.language") == 'en' ? 'en' : '' %>"><%= unit[:desc] %></p>
               <p>
                 <% unit[:icons].each do |icon| %>
                   <%= link_to icon[:name], icon[:path], class: icon[:class] -%>

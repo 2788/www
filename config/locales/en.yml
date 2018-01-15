@@ -35,7 +35,7 @@ en:
           col:
             - title: "Mass Storage"
               icon: "icon-massstorage@2x.png"
-              desc: "How to manage data in increasingly large data fields while all data have their periods of validity?  Qiniu possesses object storage with complete intellectual property rights, which has undergone severe tests and made full preparations for data storage on the EB scale."
+              desc: "All data has expiration date. How to manage data in a world where data constantly expands and explodes?  Qiniu's completely independent-researched object storage has undergone severe tests and is fully prepared for data storage on the EB scale."
               icons:
                 - name: "Object Storage"
                   class: "icon icon-storage"
@@ -45,7 +45,7 @@ en:
                   path: "/en/products/pandora"
             - title: "Data Insight"
               icon: "icon-num@2x.png"
-              desc: "Value extraction from data is the key step to turn data from burdens to assets. The big data product family and machine learning product family provided by Qiniu assist you in managing assets in the best way."
+              desc: "Value extraction from data is the key step to turn data from burdens to assets. The big data and machine learning product family from Qiniu will assist you in managing assets in the best way."
               icons:
                 - name: "Deep Learning Platform"
                   class: "icon icon-machine-learning"
@@ -53,12 +53,12 @@ en:
                 - name: "Spark Service"
                   class: "icon icon-xspark"
                   path: "/en/products/pandora"
-                - name: "Big data Platform"
+                - name: "Big Data Platform"
                   class: "icon icon-bigdata"
                   path: "/en/products/pandora"
             - title: "Accelerated Transmission"
               icon: "icon-accelerate@2x.png"
-              desc: "Qiniu's unique integrated CDN combines advantages of both mainstream CDNs and self-established CDN nodes, which enables you to find an optimum balance between performances and costs."
+              desc: "Qiniu's unique integrated CDN combines advantages of both mainstream CDNs and self-established CDN nodes, which enables you to find an equilibrium between performances and costs."
               icons:
                 - name: "Integrated CDN"
                   class: "icon icon-dora"
@@ -84,9 +84,9 @@ en:
               class: "icon icon-video"
               path: "/en/products/pili"
           col:
-            - title: "Fluency"
+            - title: "Smoothness"
               icon: "icon-fast@2x.png"
-              desc: "The basis of a video solution is based on whether the video can be played fluently or not. Qiniu ultimately optimizes video fluency in every step from hosts to audience."
+              desc: "The basis of a video solution is based on whether the video can be played smoothly or not. Qiniu ultimately optimizes video Smoothness in every step from hosts to audience."
             - title: "High Efficiency"
               icon: "icon-productivity@2x.png"
               desc: "We supply a complete end-to-end solution, which allows the product development and launch to be completed from more than 6 months to less than one month."
@@ -95,13 +95,13 @@ en:
               desc: "We have adopted various reliable technologies to lower the cost, including content compression, P2P transmission, H.265 encoding and adaptive code streaming."
             - title: "Controllability"
               icon: "icon-controllable@2x.png"
-              desc: "We make full use of advantages of big data and machine learning to monitor service quality in real time and deep analyze the service in an open way."
+              desc: "We make full use of advantages of big data and machine learning to monitor service quality in real time and deeply analyze the service in an open way."
         feature3:
           title: "Success Cases"
       kodo:
         banner:
           title: "Object Storage（KODO）"
-          desc: "KODO owns the core technology based on completely independent research and development. With the large-scale verification from customers’ experiences in the past five years, it has proved to be absolutely leading in the industry and it can be widely applied to mass data management."
+          desc: "Qiniu Cloud's object storage (KODO), a completely independent-researched core technology which is proven by repeated customer experience has occupied absolute leading market leader position. KODO can be widely applied to mass data management."
         middlebar:
           links:
             - title: "Product Advantages"
@@ -116,7 +116,7 @@ en:
         feature1:
           title: "Product Advantages"
           col:
-            - title: "Highly-Reliable"
+            - title: "Highly Reliable"
               icon: "icon-keyongxing@2x.png"
               desc: "The industry-leading storage scheme with erasure codes can provide 99.99999999999999% data reliability. Replica redundancy across data centers ensures the high availability of service."
             - title: "Easy to Expand"
@@ -134,7 +134,7 @@ en:
             - title: "Multimedia Data Processing"
               icon: "icon-shujuchuli@2x.png"
               more: ""
-              desc: "Based on the object storage, one-stop image, audio and video processing can be achieved."
+              desc: "Based on the object storage, you can achieve one-stop image and audio/video processing."
               link: "/products/dora"
             - title: "Trans-regional Synchronization"
               icon: "icon-kuaquyutongbu@2x.png"
@@ -154,7 +154,7 @@ en:
             - title: "Mirrored Storage"
               icon: "icon-shezhijingxiangziyuan@2x.png"
               more: ""
-              desc: "Mirrored storage is applicable to migrating existed data in original business systems, which helps users complete data migrations seamlessly without affecting access to the original business systems."
+              desc: "Mirrored storage is applicable to migrating existing data in original business systems, which helps users complete data migrations seamlessly without affecting access to the original business systems."
               link: "https://developer.qiniu.com/kodo/kb/1376/seven-cattle-image-storage-instruction-manuals"
             - title: "Upload/ Download"
               icon: "icon-shangchuan-xiazai@2x.png"
@@ -187,7 +187,7 @@ en:
               class: "tab-pane active"
               icon: "icon-siyouhuabushu@2x.png"
               title: "Private Cloud Storage"
-              desc: "Enterprise clients can deploy the KODO system in private. Solutions of the private cloud storage have features of high reliability, strong safety and easy expansion based on accumulated experience from public cloud storage. Meanwhile mature management, operation and maintenance of the system are offered to enable companies to meet their requirements in capacity, performance and stability with inexpensive products and costs on operation and maintenance."
+              desc: "Enterprise clients can deploy the KODO system in private. Solutions of the private cloud storage have features of high reliability, strong safety and easy expansion based on accumulated experience from public cloud storage. Meanwhile mature management, operation and maintenance of the system are offered to enable companies to meet their requirements in capacity, performance and stability with affordable products and costs on operation and maintenance."
               link: ""
             - id: "tab-usage-section-2"
               class: "tab-pane"
@@ -199,25 +199,25 @@ en:
               class: "tab-pane"
               icon: "icon-neirongjiasufenfa@2x.png"
               title: "Accelerated Distribution of Content"
-              desc: "For business scenarios of hotspot resources distributions, such as videos and games, distributions can be accelerated with KODO as the source station and FUSION in order to visit resources nearby through CDN nodes and improve users’ experience."
+              desc: "For business scenarios of hotspot resources distributions, such as videos and games, distributions can be accelerated with KODO as the source station and FUSION in order to visit resources nearby through CDN nodes and improve user experience."
               link: ""
             - id: "tab-usage-section-4"
               class: "tab-pane"
               icon: "icon-hailiangshuju@2x.png"
               title: "High Concurrency of Mass Data"
-              desc: "Qiniu makes a deep optimization for scenarios of high concurrency of mass data to achieve the conversion from object storage access protocols to HDFS protocols. Compared with the traditional Hadoop solution, users can get better performance in reading and analyzing, stronger stability and better expansibility."
+              desc: "Qiniu makes a deep optimization for scenarios of high concurrency of mass data to achieve the conversion from object storage access protocols to HDFS protocols. Compared with the traditional Hadoop solution, users can get better performance in reading and analyzing with more stability and better expansibility."
               link: ""
             - id: "tab-usage-section-5"
               class: "tab-pane"
               icon: "icon-cunchuheguidang@2x.png"
               title: "Backup and Archive"
-              desc: "Qiniu offers highly available and reliable storage solutions to backup and archive key data. Users can set different access permissions and levels to ensure the safety of data access. Compared with the traditional self-established solution, users needn’t purchase expensive hardware or worry about issues of expansion, safety and so on in order to save more costs on storage, operation and human resources."
+              desc: "Qiniu offers highly available and reliable storage solutions to backup and archive key data. Users can set different access permissions and levels to ensure the safety of data access. Compared with the traditional self-established solution, users do not need to purchase expensive hardware or worry about issues of expansion and safety in order to save more costs on storage, operation and human resources."
               link: ""
             - id: "tab-usage-section-6"
               class: "tab-pane"
               icon: "icon-tuoguanjingtaiziyuan@2x.png"
               title: "Hosting of Static Resources"
-              desc: "Qiniu supports various third-party expansion plug-ins seamlessly, such as WordPress, Discz and Emlog, and offers the hosting of static resources from various expansion plug-ins to Qiniu with one-click."
+              desc: "Qiniu supports various third-party expansion plug-ins seamlessly, such as WordPress, Discz and Emlog, and offers the hosting of static resources from various expansion plug-ins to Qiniu with one click."
               link: ""
         feature4:
           title: "Success Cases"
@@ -396,15 +396,15 @@ en:
       solution:
         banner:
           title: "Qiniu Cloud Solution Platform"
-          desc: "Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has elaborately established a simple and reliable solution platform to help you realize business needs quickly and create more business value."
+          desc: "Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has meticulously established a simple and reliable solution platform to help you realize business needs quickly and create more business value."
         feature1:
           title: "Storage in Private Cloud"
-          desc: "The solution to storage in private cloud is designed based on the framework and operation experience of Qiniu's object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of PB which has features of high reliability, strong security, low costs and scalability and satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises’ needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
+          desc: "The solution to storage in private cloud is designed on the framework and operation experience of Qiniu's object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of PB which has high reliability, strong security, low costs and scalability to satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises’ needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
           btn: ""
           case: "Success Cases"
         feature2:
           title: "Unstructured Data Management"
-          desc: "Qiniu's unstructured data management platform is built based on Kodo, which can easily achieves the storage of hundreds PB level unstructured data and its structured business date. This platform has features of high availability, high concurrent reading and writing and linear expansion. It also offers file retrieval and other services based on structured business attribute and has access management and security mechanism of PaaS level. It can cooperate seamlessly with Dora to provide services like image and video processing, intelligent recognition and analysis."
+          desc: "Qiniu's unstructured data management platform is built based on Kodo, which can easily achieves the storage of hundreds PB level unstructured data and its structured business date. This platform has high availability, high concurrent reading and writing and linear expansion. It also offers document retrieval and other services based on structured business date and has permission administration and security mechanism of PaaS level. It can cooperate seamlessly with Dora to provide services like image and video processing, intelligent recognition and analysis."
           btn: ""
           case: "Success Cases"
         feature3:
@@ -419,17 +419,17 @@ en:
           case: "Success Cases"
         feature5:
           title: "Smart Device and IOT"
-          desc: "With the development and popularity of smartphones and mobile Internet, more and more hardware is intelligent and equipped with connectivity through the combination of software and hardware.  Both a strong support from the clouds and the value analysis and data mining of big data later are required to load Internet services. Qiniu's solution to smart device and IOT provides smart device manufacturers stable and reliable technology services, including unified cloud storage, strong computing power, high-efficient data distribution, application capability of plug-and-play, big data analysis and intelligent recognition. It helps innovate hardware manufacturers and transform traditional device manufacturers into smart device manufacturers."
+          desc: "With the development and popularity of smartphones and mobile Internet, more and more hardware is intelligent and equipped with connectivity through the combination of software and hardware.  Both a strong support from the clouds and the value analysis and data mining of big data later are required to load Internet services. Qiniu's solution to smart device and IOT provides smart device manufacturers with stable and reliable technology services, including unified cloud storage, strong computing power, high-efficient data distribution, application capability of plug-and-play, big data analysis and intelligent recognition. It helps innovate hardware manufacturers and transform traditional device manufacturers into smart device manufacturers."
           btn: ""
           case: "Success Cases"
         feature6:
           title: "New Media Industry"
-          desc: "In the era of mobile Internet, traditional radio & TV business and Internet business are combined more and more closely, bringing great challenges to radio & TV media, and thus they have to complete the deployment of new media strategies quickly and transform themselves into integrated media. In order to achieve multi-dimension distributions and presentations of contents in radio and TV media and the transformation into cloud-based production of radio and TV media, it's necessary to improve the model of content production and business processing under the new environment. Qiniu's solution to New Media strives to make a content management platform for mass data storage and acceleration, adaptive to the video business of New Media, and a unified management system for group-level all-media resource. It includes content aggregation from multiple sources, built-in production of tools in multiple forms, identification and auditing of pornography, violence and terrorism, multi-channel distribution across platforms, command and scheduling with unified schemes, task tracking, cross-screen interactive broadcasting with multi-screen terminals and statistical analysis of network-wide big data."
+          desc: "In the era of mobile Internet, traditional radio & TV business and Internet business are combined more and more closely, bringing great challenges to radio & TV media, and thus they have to complete the deployment of new media strategies quickly and transform themselves into integrated media. In order to achieve multi-dimension distributions and presentations of contents in radio and TV media and the transformation into cloud-based production of radio and TV media, it's necessary to improve the model of content production and business processing under the new environment. Qiniu's solution to new media strives to make a content management platform for mass data storage and acceleration, adaptive to the video business of new media, and a unified management system for group-level all-media resource. It includes content aggregation from multiple sources, built-in production of tools in multiple forms, identification and auditing of pornography, violence and terrorism, multi-channel distribution across platforms, command and scheduling with unified schemes, task tracking, cross-screen interactive broadcasting with multi-screen terminals and statistical analysis of network-wide big data."
           btn: ""
           case: "Success Cases"
         feature7:
           title: "Safety Protection Terminals"
-          desc: "The change in market demands combines the scenario of safety protection with the Internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu's solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users’ experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client effectively reduce costs."
+          desc: "The change in market demands combines the scenario of safety protection with the Internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu's solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users’ experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client reduce costs effectively."
           btn: ""
           case: "Success Cases"
         feature8:
@@ -450,15 +450,15 @@ en:
           col:
             - title: "To be a Simple Man"
               icon: "company/icon-jiandanderen@2x.png"
-              desc: "We stick to the recognized developing direction, which is based on employees. In order to win the trust from employees, we insist that they be paid for their work and that the more they work, the more they be paid."
+              desc: "We stick to the principles of achieving goals and developing with hard work. We believe in rewarding people who are diligent and building trust among employees."
             - title: "To Make a Simple Product"
               icon: "company/icon-jiandandechanpin@2x.png"
-              desc: "Client-focused and result-oriented, we persist in making business simple and pursuing for the ultimate to win the trust from clients."
+              desc: "Client oriented and result driven, we persist in making business simple and pursuing the best to gain trust from clients."
             - title: "To be a Simple Company"
               icon: "company/icon-jiandandegongsi@2x.png"
-              desc: "With social responsibility as our duty and company credit as the most important asset, we keep our promise and adhere to honesty and integrity to win the trust from society."
+              desc: "We consider social responsibility to be our own duty. Credibility is our most important asset. We keep our promise and adhere to honesty and integrity to gain trust from society."
         feature2:
-          title: "Histories of Qiniu Cloud"
+          title: "History of Qiniu Cloud"
           ul:
             li1:
               time: "2011"
@@ -472,15 +472,15 @@ en:
               time: "2012"
             li5:
               time: "February, 2012"
-              desc: "Qiniu gained the first round of financing of millions of yuan from Matrix Partners China."
+              desc: "Qiniu raised first round of capital of millions of yuan from Matrix Partners China."
             li6:
               time: "December, 2012"
-              desc: Go Programming Language, a work by Qiniu, is awarded one of the top 10 books in 2012.
+              desc: Go Programming Language, a work by Qiniu, is awarded one of the "Top 10 Books in 2012".
             li7:
               time: "2013"
             li8:
               time: "January, 2013"
-              desc: "Qiniu gained the second round of financing of billions of US dollars from Qiming Venture Partners and Matrix Partners China."
+              desc: "Qiniu raised second round of capital of tens of millions USD from Qiming Venture Partners and Matrix Partners China."
             li9:
               time: "2014"
             li10:
@@ -488,7 +488,7 @@ en:
               desc: "Qiniu launched Storage 2.0, which saved 62% of unit storage costs."
             li11:
               time: "August, 2014"
-              desc: "Qiniu gained the third round of financing of billions of US dollars led by CBC Capital and followed by Matrix Partners China and Qiming Venture Partners."
+              desc: "Qiniu raised third round of capital of tens of millions USD led by CBC Capital and followed by Matrix Partners China and Qiming Venture Partners."
             li12:
               time: "December, 2014"
               desc: "Qiniu launched accelerating service abroad covering 54 areas in 31 countries across the world."
@@ -496,7 +496,7 @@ en:
               time: "2015"
             li14:
               time: "January, 2015"
-              desc: "The object storage service of Qiniu was confirmed as a credible cloud service."
+              desc: "The object storage service of Qiniu achieved Credible Cloud Service Award."
             li15:
               time: "August, 2015"
               desc: "Qiniu officially launched the data processing platform based on container service technology."
@@ -504,7 +504,7 @@ en:
               time: "2016"
             li17:
               time: "February, 2016"
-              desc: "Qiniu gained the fourth round of financing from well-known investment institutions like F&G Venture, GHII, Zhangjiang High-tech and Telstra."
+              desc: "Qiniu raised fourth round of capital from well-known investment institutions like F&G Venture, GHII, Zhangjiang High-tech and Telstra."
             li18:
               time: "May, 2016"
               desc: "Qiniu launched PILI in the mobile era."
@@ -928,29 +928,29 @@ en:
     welcome_index:
       title: Qiniu Cloud-the leading enterprise cloud service supplier in China
       keywords: Qiniu, Qiniu Cloud, CDN, Storage, Big Data, Live Video, API, AI, Solutions
-      description: Qiniu Cloud is the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management.
+      description: Qiniu Cloud is a leading enterprise cloud service supplier in China that specializes in research, development, and operation of cloud computing service that focuses on data management.
     welcome_kodo:
       title: Qiniu Cloud-Object Storage（KODO）-Safe、Highly-reliable、Easy to Expand、Low in Cost、Intelligent in Data
       keywords: Cloud Storage, Object Storage, Qiniu Cloud, Private Cloud Storage, High Concurrency of Mass Data, Backup and Archive, Hosting of Static Resources, Mirrored Storage, Low-frequency Storage, Multimedia Data Processing, Upload/ Download
-      description: Qiniu Cloud-KODO owns the core technology based on completely independent research and development. With the large-scale verification from customers’ experiences in the past five years, it has proved to be absolutely leading in the industry and it can be widely applied to mass data management. Safe、Highly-reliable、Easy to Expand、Low in Cost、Intelligent in Data.
+      description: Qiniu Cloud's object storage (KODO), a completely independent-researched core technology which is proven by repeated customer experience has occupied absolute leading market leader position. KODO can be widely applied to mass data management. It is safe, highly reliable, easy to expand, low-cost, and intelligent in data.
     welcome_pili:
       title: Qiniu Cloud-Live Video Cloud（PILI）
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction
-      description: Qiniu Cloud-Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
+      description: Qiniu Cloud's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
     welcome_pandora:
       title: Qiniu Cloud-Smart Big Data Platform（Pandora）
       keywords: Big Data, Big Data Platform, Big Data Service, Data analysis, TSDB, LogDB, Workflow, Pipeline, Spark, HDFS, Dataized Operation, Dataized Maintenance, DEM, Recommendation System, Growth Hacking
-      description: Qiniu Cloud-Pandora is the Smart Big Data Platform for the Qiniu Cloud, providing a simple, efficient and open one-stop big data service.
+      description: Qiniu Cloud's smart big data platform (Pandora) provides a simple, and open one-stop big data service.
     welcome_contact:
       title: 联系我们 - 七牛云
     welcome_fusion:
       title: Qiniu Cloud-Integrated CDN（FUSION）
       keywords: CDN, Web Acceleration, Document Downloads, Audio & Video On-demand、International Nodes, Three-dimensional Quality Control, No Blind Areas, Intelligent Dispatch, Network Quality Tuning, Edge Cache Node
-      description: Qiniu Cloud-FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast Internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
+      description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast Internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
     welcome_dora:
       title: Qiniu Cloud-Intelligent Multimedia APIs（Dora）
       keywords: Face Recognition, Scene and object recognition, Optical Character Recognition, Content Regulation, Porn Images Identification, Violence and Terrorism, Images Identification, Politicians Recognition, Object Segmentation, Image Previewing, Image Slim, Audio and Video Transcoder, Video snapshot, Smart Cloud Album, Audio and Video Process
-      description: Qiniu Cloud-Intelligent Multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services using deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services.
+      description: Qiniu Cloud's Intelligent Multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services width deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services.
     welcome_kirk:
       title: 容器云_容器云平台 - 七牛云
       keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务,微服务，devops
@@ -986,19 +986,19 @@ en:
     welcome_solution:
       title: Qiniu Cloud -Solution Platform
       keywords: Storage in Private Cloud, Unstructured Data Management, Short Videos, Intelligent Cloud Album, Smart Device and IOT, New Media Industry, Safety Protection Terminals, Internet and Mobile Internet, Application Quality Monitoring
-      description: Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has elaborately established a simple and reliable solution platform to help you realize business needs quickly and create more business value.
+      description: Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has established a simple and reliable solution platform to help clients to realize business needs quickly and increase business value.
     welcome_about:
       title: 关于我们 - 七牛云
     welcome_company:
       title: About Us-Why Qiniu Cloud
       keywords: Qiniu, Qiniu Cloud, CDN, Storage, Big Data, Live Video, API, AI, Solutions
-      description: Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value.
+      description: Qiniu Cloud is a leading enterprise cloud service supplier in China that specializes in research, development, and operation of cloud computing service that focuses on data management. We have launched products for rich media, including object storage, integrated CDN acceleration, container-based computing cloud, big data and AI platform, and one-stop solution to video cloud. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and generate greater business value.
     welcome_case:
       title: 客户案例 - 七牛云
     welcome_atlab:
       title: Qiniu Cloud-Deep Learning Platform（AVA）
       keywords: Deep Learning Platform, Qiniu Cloud Deep Learning Platform, Deep Learning, Machine Learning, Smart Labelling, Labeling Module
-      description: Qiniu Cloud-AVA is a fully managed end-to-end Deep Learning Platform. It allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.
+      description: Qiniu Cloud's fully managed end-to-end Deep Learning Platform (AVA) allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.
     welcome_player:
       title: 播放器SDK_视频播放SDK-七牛云播放器
       keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
