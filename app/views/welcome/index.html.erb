@@ -1,104 +1,12 @@
-<div class="banners-slider <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-  <div class="jumbotron hero hero-cdnprice">
-    <div class="container">
-      <div class="middle-container">
-        <div class="banner-container">
-          <%= link_to "查看详情", cdnprice2018_path, class:"btn btn-lg btn-hollow btn-banner" %>
-          <p class="tips">注：价格生效日期 2018 年 1 月 1 日</p>
-        </div>
-      </div>
-    </div>
+<% if I18n.t("views.language") == 'zh' %>
+  <div class="banners-slider">
+    <% @index_banners.each do |banner| %>
+      <%= render inline: banner.content_zh %>
+    <% end %>
   </div>
-
-  <div class="jumbotron hero hero-plup">
-    <div class="container">
-      <div class="middle-container">
-        <div class="col-sm-5 hidden-xs">
-          <div class="right-mask-banner">
-            <%= image_tag "icon-security.png", alt: "涉稳安全资源包", width: '90%' %>
-          </div>
-        </div>
-        <div class="col-sm-7">
-          <div class="banner-desc">
-            <h2>涉稳安全资源包</h2>
-            <p>集鉴黄、鉴暴恐、政治人物识别为一体的综合涉稳安全系列产品</p>
-          </div>
-          <%= link_to "查看详情", plup_resources_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero">
-    <div class="container">
-      <div class="middle-container">
-        <div class="col-sm-6">
-          <div class="banner-desc">
-            <h2>短视频解决方案重磅上线</h2>
-            <p>小身材大功能，短视频开发从未如此简单</p>
-          </div>
-          <%= link_to "查看详情", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-        </div>
-        <div class="col-sm-6 hidden-xs">
-          <div class="right-mask-banner">
-            <%= image_tag "banner/banner-duanshipin-right-zh.png", alt: "短视频", width: '90%' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-bannerAI">
-    <div class="banner-container">
-      <%= link_to "立即申请", alaccelerator_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-bannerIdentify">
-    <div class="container">
-      <div class="middle-container">
-        <div class="text-center">
-          <div class="banner-desc">
-            <h2 class="identification"><span>对象存储</span> <span class="text-warn">空间上传鉴黄</span> <span>服务上线</span></h2>
-            <p>自动对新上传的图片作鉴黄操作</p>
-            <p>基于深度学习赋能用户高效审核</p>
-          </div>
-          <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4171/space-porn-identification-settings", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          <h6>保障内容安全 降低违规风险</h6>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-bannerPlayer">
-    <div class="container">
-      <div class="middle-container">
-        <div class="col-sm-8">
-          <div class="banner-desc">
-            <h2>七牛云播放器重磅上线</h2>
-            <p>秒开 200 ms，包体最小至 400 KB，千万日活验证</p>
-          </div>
-          <%= link_to "免费使用", products_player_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-        </div>
-        <div class="col-sm-4 hidden-xs">
-          <div class="right-mask-banner">
-            <%= image_tag "player/banner-right.png", alt: "播放器", width: '80%' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-banner2">
-    <div class="banner-container">
-      <a href="http://blog.qiniu.com/archives/8498?hmsr=huananjiangjiabanner&hmpl=huananjiangjiabanner&hmcu=huananjiangjiabanner&hmkw=&hmci=" target="_blank" class="btn btn-lg btn-hollow btn-banner">查看详情</a>
-    </div>
-  </div>
-</div>
-
-<div class="jumbotron <%= I18n.t("views.language") == 'zh' ? 'd-none' : 'en' %>">
-  <video loop autoplay src="//mars-assets.qnssl.com/lt4MK87BGF0NwxSo1EXSfGNRmabB.mp4"></video>
-</div>
+<% else %>
+  <%= render inline: @index_banners.first.content_en %>
+<% end %>
 
 <div class="features">
   <div class="container">

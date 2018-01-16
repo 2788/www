@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
 
   def index
     @top_archives = Archive.top_archives
+    @index_banners = Banner.welcome_index
   end
 
   def kodo
