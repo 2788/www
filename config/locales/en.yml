@@ -264,17 +264,17 @@ en:
           middlebar:
             - title: "Domestic Nodes Distribution"
               class: "active"
-              href: "#inland"
+              href: "#inlandEN"
             - title: "International Nodes Distribution"
               class: ""
-              href: "#oversea"
+              href: "#overseaEN"
           sections:
-            - id: "inland"
+            - id: "inlandEN"
               class: "tab-pane fade in active"
               icon: "fusion/img-guoneijiedian.png"
-            - id: "oversea"
+            - id: "overseaEN"
               class: "tab-pane fade"
-              icon: "fusion/img-guowaijiedian.png"
+              icon: "fusion/img-haiwaijiedian-en.png"
         feature4:
           title: "Application Scenarios"
           middlebar:
