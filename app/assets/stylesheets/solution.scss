@@ -10,6 +10,8 @@
 }
 .row-solution{
   position: relative;
+  padding-top: 80px;
+  margin-top: -80px;
   margin-bottom: 0;
   .col-scene{
     // padding-left: 35px;
@@ -33,39 +35,39 @@
 }
 
 .col-solution{
-  .icon-QOS{
+  .icon-privatization{
     background-image: image-url("solution/icon-duixiangcunchusiyouhuabushu@2x.png");
   }
 
-  .icon-UDMP{
+  .icon-data{
     background-image: image-url("solution/icon-feijiegouhuashujuguanlifangan@2x.png");
   }
 
-  .icon-PLSV{
+  .icon-plsv{
     background-image: image-url("solution/icon-duanshipin@2x.png");
   }
 
-  .icon-ICA{
+  .icon-album{
     background-image: image-url("solution/icon-zhinengyunxiangce@2x.png");
   }
 
-  .icon-IHAIOT{
+  .icon-intelligence{
     background-image: image-url("solution/icon-zhinengyingjianyuwulianwangjiejuefangan@2x.png");
   }
 
-  .icon-RTMI{
+  .icon-media{
     background-image: image-url("solution/icon-guangdianchuanmei@2x.png");
   }
 
-  .icon-HST{
+  .icon-security{
     background-image: image-url("solution/icon-anfangzhongduan@2x.png");
   }
 
-  .icon-Internet{
+  .icon-internet{
     background-image: image-url("solution/icon-hulianwangyuyidonghulianwang@2x.png");
   }
 
-  .icon-DQM{
+  .icon-qualityctrl{
     background-image: image-url("solution/icon-yingyongzhiliangjiankong@2x.png");
   }
 
