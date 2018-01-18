@@ -315,9 +315,7 @@
             <li><%= link_to "用户协议", user_agreement_path -%></li>
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
-          <ul class="<%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
-            <li><div class="copyright grey-color">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div></li>
-          </ul>
+          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
@@ -444,9 +442,7 @@
             <li><%= link_to "用户协议", user_agreement_path -%></li>
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
-          <ul class="<%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
-            <li><div class="copyright grey-color">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div></li>
-          </ul>
+          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
