@@ -573,6 +573,11 @@
 // iPad
 @media (min-width: 768px) and (max-width: 991px){
   .features{
+     &.features-livequiz-architecture {
+      .thumbnail .caption p {
+        min-height:140px;
+      }
+    }
     .intro { margin-bottom: 0.20rem; }
     .col-sm-6:nth-child(odd){
       clear: left;
@@ -624,6 +629,16 @@
         &.icon{
           margin-right: 0;
         }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .features {
+     &.features-livequiz-architecture {
+      .thumbnail .caption p {
+        min-height:84px;
       }
     }
   }
