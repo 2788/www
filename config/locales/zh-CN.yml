@@ -282,15 +282,15 @@ zh-CN:
           middlebar:
             - title: "国内节点分布"
               class: "active"
-              href: "#inland"
+              href: "#inlandZH"
             - title: "海外节点分布"
               class: ""
-              href: "#oversea"
+              href: "#overseaZH"
           sections:
-            - id: "inland"
+            - id: "inlandZH"
               class: "tab-pane fade in active"
               icon: "fusion/img-guoneijiedian.png"
-            - id: "oversea"
+            - id: "overseaZH"
               class: "tab-pane fade"
               icon: "fusion/img-guowaijiedian.png"
         feature4:

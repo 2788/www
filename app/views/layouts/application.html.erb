@@ -67,6 +67,12 @@
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.solution") %></a>
 
               <ul class="dropdown-menu solutions-menu">
+                <li class="solution <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+                  <%= link_to products_pili_livequiz_path do -%>
+                    <h4 class="QUIZ menu-title">直播竞答解决方案</h4>
+                    <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案。</p>
+                  <% end %>
+                </li>
                 <% I18n.t("solutions").each do |solution| %>
                   <%= content_tag :li, class: "solution" do -%>
                     <%= link_to(solutions_path(anchor: solution[:name])) do -%>
@@ -91,7 +97,7 @@
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
-            <li class="select-unit">
+            <li class="select-unit d-none">
               <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
                 <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
@@ -304,11 +310,12 @@
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
           </div>
-          <ul>
+          <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
             <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
             <li><%= link_to "用户协议", user_agreement_path -%></li>
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
+          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
@@ -430,11 +437,12 @@
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
           </div>
-          <ul>
+          <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
             <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
             <li><%= link_to "用户协议", user_agreement_path -%></li>
             <li><%= link_to "SLA", sla_kodo_path -%></li>
           </ul>
+          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>

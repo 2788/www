@@ -40,6 +40,9 @@ class WelcomeController < ApplicationController
   def cdnprice2018
   end
 
+  def livequiz
+  end
+
   def news
     @archives = Archive.news_archives
     render "about"
