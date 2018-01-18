@@ -224,7 +224,7 @@ en:
       fusion:
         banner:
           title: "CDN（FUSION）"
-          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast Internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
+          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
         middlebar:
           - title: "Product Frameworks"
             class: "intLink active"
@@ -292,7 +292,7 @@ en:
               class: "tab-pane fade in active"
               icon: "fusion/icon-wangyejiasu@2x.png"
               title: "Web Acceleration"
-              desc: "The distribution of static resources on the Internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users’ experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
+              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users’ experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
             - id: "tab-usage-section-2"
               class: "tab-pane fade"
               icon: "fusion/icon-wenjianxiazai@2x.png"
@@ -419,22 +419,22 @@ en:
           case: "Success Cases"
         feature5:
           title: "Smart Device and IOT"
-          desc: "With the development and popularity of smartphones and mobile Internet, more and more hardware is intelligent and equipped with connectivity through the combination of software and hardware.  Both a strong support from the clouds and the value analysis and data mining of big data later are required to load Internet services. Qiniu's solution to smart device and IOT provides smart device manufacturers with stable and reliable technology services, including unified cloud storage, strong computing power, high-efficient data distribution, application capability of plug-and-play, big data analysis and intelligent recognition. It helps innovate hardware manufacturers and transform traditional device manufacturers into smart device manufacturers."
+          desc: "With the development and popularity of smartphones and mobile internet, more and more hardware is intelligent and equipped with connectivity through the combination of software and hardware.  Both a strong support from the clouds and the value analysis and data mining of big data later are required to load internet services. Qiniu's solution to smart device and IOT provides smart device manufacturers with stable and reliable technology services, including unified cloud storage, strong computing power, high-efficient data distribution, application capability of plug-and-play, big data analysis and intelligent recognition. It helps innovate hardware manufacturers and transform traditional device manufacturers into smart device manufacturers."
           btn: ""
           case: "Success Cases"
         feature6:
           title: "New Media Industry"
-          desc: "In the era of mobile Internet, traditional radio & TV business and Internet business are combined more and more closely, bringing great challenges to radio & TV media, and thus they have to complete the deployment of new media strategies quickly and transform themselves into integrated media. In order to achieve multi-dimension distributions and presentations of contents in radio and TV media and the transformation into cloud-based production of radio and TV media, it's necessary to improve the model of content production and business processing under the new environment. Qiniu's solution to new media strives to make a content management platform for mass data storage and acceleration, adaptive to the video business of new media, and a unified management system for group-level all-media resource. It includes content aggregation from multiple sources, built-in production of tools in multiple forms, identification and auditing of pornography, violence and terrorism, multi-channel distribution across platforms, command and scheduling with unified schemes, task tracking, cross-screen interactive broadcasting with multi-screen terminals and statistical analysis of network-wide big data."
+          desc: "In the era of mobile internet, traditional radio & TV business and internet business are combined more and more closely, bringing great challenges to radio & TV media, and thus they have to complete the deployment of new media strategies quickly and transform themselves into integrated media. In order to achieve multi-dimension distributions and presentations of contents in radio and TV media and the transformation into cloud-based production of radio and TV media, it's necessary to improve the model of content production and business processing under the new environment. Qiniu's solution to new media strives to make a content management platform for mass data storage and acceleration, adaptive to the video business of new media, and a unified management system for group-level all-media resource. It includes content aggregation from multiple sources, built-in production of tools in multiple forms, identification and auditing of pornography, violence and terrorism, multi-channel distribution across platforms, command and scheduling with unified schemes, task tracking, cross-screen interactive broadcasting with multi-screen terminals and statistical analysis of network-wide big data."
           btn: ""
           case: "Success Cases"
         feature7:
           title: "Safety Protection Terminals"
-          desc: "The change in market demands combines the scenario of safety protection with the Internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu's solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users’ experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client reduce costs effectively."
+          desc: "The change in market demands combines the scenario of safety protection with the internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu's solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users’ experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client reduce costs effectively."
           btn: ""
           case: "Success Cases"
         feature8:
-          title: "Internet and Mobile Internet"
-          desc: "As the most important external resource in the entrepreneurship-supporting industry, Qiniu's solution to Internet and mobile Internet offers a solution close to business scenarios for various industries and fields such as online education, tourism, O2O, e-commerce, social contact and entertainment. It also provides a one-stop data management service and helps start-ups quickly build technical infrastructures to fairly compete with giants in the industry."
+          title: "internet and Mobile internet"
+          desc: "As the most important external resource in the entrepreneurship-supporting industry, Qiniu's solution to internet and mobile internet offers a solution close to business scenarios for various industries and fields such as online education, tourism, O2O, e-commerce, social contact and entertainment. It also provides a one-stop data management service and helps start-ups quickly build technical infrastructures to fairly compete with giants in the industry."
           btn: ""
           case: "Success Cases"
         feature9:
@@ -827,31 +827,31 @@ en:
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   solutions:
-    - name: QOS
+    - name: privatization
       label: Storage in Private Cloud
       desc:
-    - name: UDMP
+    - name: data
       label: Unstructured Data Management
       desc:
-    - name: PLSV
+    - name: plsv
       label: Short Videos
       desc:
-    - name: ICA
+    - name: album
       label: Intelligent Cloud Album
       desc:
-    - name: IHAIOT
+    - name: intelligence
       label: Smart Device and IOT
       desc:
-    - name: RTMI
+    - name: media
       label: New Media Industry
       desc:
-    - name: HST
+    - name: security
       label: Safety Protection Terminals
       desc:
-    - name: Internet
-      label: Internet and Mobile Internet
+    - name: internet
+      label: internet and Mobile internet
       desc:
-    - name: DQM
+    - name: qualityctrl
       label: Application Quality Monitoring
       desc:
   nemwmedias:
@@ -946,7 +946,7 @@ en:
     welcome_fusion:
       title: Qiniu Cloud-Integrated CDN（FUSION）
       keywords: CDN, Web Acceleration, Document Downloads, Audio & Video On-demand、International Nodes, Three-dimensional Quality Control, No Blind Areas, Intelligent Dispatch, Network Quality Tuning, Edge Cache Node
-      description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast Internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
+      description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
     welcome_dora:
       title: Qiniu Cloud-Intelligent Multimedia APIs（Dora）
       keywords: Face Recognition, Scene and object recognition, Optical Character Recognition, Content Regulation, Porn Images Identification, Violence and Terrorism, Images Identification, Politicians Recognition, Object Segmentation, Image Previewing, Image Slim, Audio and Video Transcoder, Video snapshot, Smart Cloud Album, Audio and Video Process
@@ -962,7 +962,7 @@ en:
     welcome_plsv:
       title: 短视频解决方案_短视频服务-七牛云
       keywords: 短视频解决方案、短视频服务、短视频SDK
-      description: 七牛短视频服务(PLSV)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
+      description: 七牛短视频服务(plsv)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
     welcome_user_agreement:
       title: 用户服务协议-七牛云
       keywords:
@@ -985,7 +985,7 @@ en:
       description:
     welcome_solution:
       title: Qiniu Cloud -Solution Platform
-      keywords: Storage in Private Cloud, Unstructured Data Management, Short Videos, Intelligent Cloud Album, Smart Device and IOT, New Media Industry, Safety Protection Terminals, Internet and Mobile Internet, Application Quality Monitoring
+      keywords: Storage in Private Cloud, Unstructured Data Management, Short Videos, Intelligent Cloud Album, Smart Device and IOT, New Media Industry, Safety Protection Terminals, internet and Mobile internet, Application Quality Monitoring
       description: Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has established a simple and reliable solution platform to help clients to realize business needs quickly and increase business value.
     welcome_about:
       title: 关于我们 - 七牛云
