@@ -67,6 +67,12 @@
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.solution") %></a>
 
               <ul class="dropdown-menu solutions-menu">
+                <li class="solution <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+                  <%= link_to products_pili_livequiz_path do -%>
+                    <h4 class="QUIZ menu-title">直播竞答解决方案</h4>
+                    <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案。</p>
+                  <% end %>
+                </li>
                 <% I18n.t("solutions").each do |solution| %>
                   <%= content_tag :li, class: "solution" do -%>
                     <%= link_to(solutions_path(anchor: solution[:name])) do -%>

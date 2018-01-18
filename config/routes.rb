@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     get '/alaccelerator',  to: 'welcome#alaccelerator'
     get '/newmedia',       to: 'welcome#newmedia'
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
+    get '/products/pili/livequiz',       to: 'welcome#livequiz'
 
     resources :resources, only: [] do
       collection do

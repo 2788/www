@@ -6,7 +6,8 @@
           <h2><%= I18n.t("views.welcome.pili.banner.title") %></h2>
           <p><%= I18n.t("views.welcome.pili.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice",target: "_blank", class: "btn btn-lg btn-default" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "直播竞答解决方案", products_pili_livequiz_path, class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-6 hidden-xs">
