@@ -114,6 +114,19 @@ $(document).ready ->
         slidesToScroll: 2
     }]
 
+  # en video
+  # video modal show and hidden
+  $('#englishVideo').on 'show.bs.modal', (e) ->
+    vid = this.getElementsByTagName("video")[0]
+    vid.play()
+    return
+
+  $('#englishVideo').on 'hidden.bs.modal', (e) ->
+    vid = this.getElementsByTagName("video")[0]
+    vid.currentTime = 0
+    vid.pause()
+    return
+
  # 导航栏菜单
   if isMobile
     $('.panel').on 'touchstart', ->

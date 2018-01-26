@@ -14,17 +14,19 @@
     <div class="jumbotron hero hero-plup">
       <div class="container">
         <div class="middle-container">
-          <div class="col-sm-5 hidden-xs">
-            <div class="right-mask-banner">
-              <%= image_tag "icon-security.png", alt: "涉稳安全资源包", width: '90%' %>
+          <div class="row">
+            <div class="col-sm-5 hidden-xs">
+              <div class="right-mask-banner">
+                <%= image_tag "icon-security.png", alt: "涉稳安全资源包", width: '90%' %>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-7">
-            <div class="banner-desc">
-              <h2>涉稳安全资源包</h2>
-              <p>集鉴黄、鉴暴恐、政治人物识别为一体的综合涉稳安全系列产品</p>
+            <div class="col-sm-7">
+              <div class="banner-desc">
+                <h2>涉稳安全资源包</h2>
+                <p>集鉴黄、鉴暴恐、政治人物识别为一体的综合涉稳安全系列产品</p>
+              </div>
+              <%= link_to "查看详情", plup_resources_path, class:"btn btn-lg btn-hollow btn-banner" -%>
             </div>
-            <%= link_to "查看详情", plup_resources_path, class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -33,16 +35,18 @@
     <div class="jumbotron hero">
       <div class="container">
         <div class="middle-container">
-          <div class="col-sm-6">
-            <div class="banner-desc">
-              <h2>短视频解决方案重磅上线</h2>
-              <p>小身材大功能，短视频开发从未如此简单</p>
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="banner-desc">
+                <h2>短视频解决方案重磅上线</h2>
+                <p>小身材大功能，短视频开发从未如此简单</p>
+              </div>
+              <%= link_to "查看详情", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
             </div>
-            <%= link_to "查看详情", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-          <div class="col-sm-6 hidden-xs">
-            <div class="right-mask-banner">
-              <%= image_tag "banner/banner-duanshipin-right-zh.png", alt: "短视频", width: '90%' %>
+            <div class="col-sm-5 hidden-xs">
+              <div class="right-mask-banner">
+                <%= image_tag "banner/banner-duanshipin-right-zh.png", alt: "短视频", width: '90%' %>
+              </div>
             </div>
           </div>
         </div>
@@ -74,16 +78,18 @@
     <div class="jumbotron hero hero-bannerPlayer">
       <div class="container">
         <div class="middle-container">
-          <div class="col-sm-8">
-            <div class="banner-desc">
-              <h2>七牛云播放器重磅上线</h2>
-              <p>秒开 200 ms，包体最小至 400 KB，千万日活验证</p>
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="banner-desc">
+                <h2>七牛云播放器重磅上线</h2>
+                <p>秒开 200 ms，包体最小至 400 KB，千万日活验证</p>
+              </div>
+              <%= link_to "免费使用", products_player_path, class:"btn btn-lg btn-hollow btn-banner" -%>
             </div>
-            <%= link_to "免费使用", products_player_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-          <div class="col-sm-4 hidden-xs">
-            <div class="right-mask-banner">
-              <%= image_tag "player/banner-right.png", alt: "播放器", width: '80%' %>
+            <div class="col-sm-5 hidden-xs">
+              <div class="right-mask-banner">
+                <%= image_tag "player/banner-right.png", alt: "播放器", width: '80%' %>
+              </div>
             </div>
           </div>
         </div>
@@ -97,10 +103,23 @@
     </div>
   </div>
 <% else %>
-  <div class="jumbotron en">
-    <video loop autoplay src="//mars-assets.qnssl.com/lt4MK87BGF0NwxSo1EXSfGNRmabB.mp4"></video>
+  <div class="jumbotron hero en">
+    <div class="videoWrapper">
+      <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#englishVideo" tabindex="0"></a>
+    </div>
   </div>
 <% end %>
+<!-- englishVideo modal -->
+<div class="modal fade bs-example-modal-lg" id="englishVideo" tabindex="-1" role="dialog" aria-labelledby="englishVideo" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <video class="video-tag" controls="controls" autobuffer="true" poster="//odum9helk.qnssl.com/FspZJF8xgIz24cG8xWeq8Sq3yIKB" src="//odum9helk.qnssl.com/lgSQ_FaDMw2L9swKzf_waziy1wbe"></video>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
 
 <div class="features">
   <div class="container">
