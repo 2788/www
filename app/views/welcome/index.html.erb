@@ -103,10 +103,23 @@
     </div>
   </div>
 <% else %>
-  <div class="jumbotron en">
-    <video loop autoplay src="//mars-assets.qnssl.com/lt4MK87BGF0NwxSo1EXSfGNRmabB.mp4"></video>
+  <div class="jumbotron hero en">
+    <div class="videoWrapper">
+      <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#englishVideo" tabindex="0"></a>
+    </div>
   </div>
 <% end %>
+<!-- englishVideo modal -->
+<div class="modal fade bs-example-modal-lg" id="englishVideo" tabindex="-1" role="dialog" aria-labelledby="englishVideo" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <video class="video-tag" controls="controls" autobuffer="true" poster="//odum9helk.qnssl.com/FspZJF8xgIz24cG8xWeq8Sq3yIKB" src="//odum9helk.qnssl.com/lgSQ_FaDMw2L9swKzf_waziy1wbe"></video>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
 
 <div class="features">
   <div class="container">

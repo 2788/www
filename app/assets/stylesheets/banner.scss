@@ -161,11 +161,44 @@
     text-shadow: 0 0.02rem 0.03rem rgba(0,0,0,.5);
   }
 }
-.jumbotron.en {
-  height: auto;
+.jumbotron.hero.en {
   padding-top: 0;
   padding-bottom: 0;
   background-color: transparent;
+  .videoWrapper {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url("//odum9helk.qnssl.com/FspZJF8xgIz24cG8xWeq8Sq3yIKB");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .btn-icon.video-initial-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;
+      width: 100%;
+      background-image: url("https://img.alicdn.com/tfs/TB1ZClwgnvI8KJjSspjXXcgjXXa-112-112.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100px 100px;
+    }
+  }
+}
+#englishVideo .modal-body {
+  padding: 0;
+  .close {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    font-size: 0.3rem;
+    z-index: 10;
+    color: #000;
+    opacity: 1;
+  }
 }
 
 

@@ -638,12 +638,12 @@ en:
               class: "col-sm-6 col-padding col-content-middle"
               desc: Qiniu offers state-of-the-art computer vision services like face detection, facial key features localization, facial features analysis and fast face clustering. They can be widely applied in face beautification, smart cloud albums, new retail, security monitoring, financial identification, and some other scenarios.
               poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/face-recognition.mp4"
+              src: "https://odum9helk.qnssl.com/lhpyip8f4-wQlar37IwI-NcO4ruv"
             - title: scene and object recognition
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Qiniu offers more than 360 scene recognition and more than 200 objects recognition, with 90.07% in Top-5 accuracy. They can be applied in objects sorting in smart albums, marketing, object recognition&retrieval, and some other scenarios.
               poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
+              src: "https://odum9helk.qnssl.com/FndMXibB1keuiyHTXa9xkNyQ2Prq"
             - title: Optical Character Recognition
               class: "col-sm-6 col-padding col-content-middle"
               desc: OCR is a method to process mechanical or electronic conversion of images of typed, handwritten or printed text , including words detection, localization or recognition in natural scenes. It is widely used in automatically recognition ID, invoices, billings, receipts, etc. to reduce the labor cost.
@@ -653,7 +653,7 @@ en:
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Illegal content in images and videos can be recognized with high efficiency and a high accuracy of 99.95%. It can replace more than 80% of manual auditing to reduce the labor cost. Moreover, the recognition accuracy increases gradually through machine learning.
               poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/content-recognition.mp4"
+              src: "https://odum9helk.qnssl.com/li4jdu3kRkf3jYAvG5KTXhYDmrgD"
             - title: Object Segmentation
               class: "col-sm-6 col-padding col-content-middle"
               desc: Object Segmentation is capable of recognizing and localizing more than 80 kinds of objects, along with detecting their edges precisely. It can be applied in fields like image matting and AR.
