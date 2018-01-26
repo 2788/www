@@ -181,23 +181,31 @@
       transform: translate(-50%, -50%);
       height: 100%;
       width: 100%;
-      background-image: url("btn-white-play.png");
+      background-image: image-url("btn-white-play.png");
       background-position: center;
       background-repeat: no-repeat;
       background-size: 100px 100px;
     }
   }
 }
-#englishVideo .modal-body {
-  padding: 0;
-  .close {
-    position: absolute;
-    top: 0;
-    right: 12px;
-    font-size: 0.3rem;
-    z-index: 10;
-    color: #000;
-    opacity: 1;
+#englishVideo {
+  .modal-content {
+    top: 200px;
+  }
+  .modal-body {
+    padding: 0;
+    video {
+      margin-bottom: -5px;
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 12px;
+      font-size: 0.3rem;
+      z-index: 10;
+      color: #000;
+      opacity: 1;
+    }
   }
 }
 
