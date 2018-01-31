@@ -372,9 +372,8 @@
                       <li>
                         <ul class="fusion-checkbox area-select" id="fusion-checkbox">
                           <li><input type="checkbox" value="inland" class="spacecheck" key="fusion" checked><label>大陆地区</label></li>
-                          <li><input type="checkbox" value="outland" class="spacecheck" key="fusion"><label>港澳台</label></li>
                           <li><input type="checkbox" value="ENA" class="spacecheck" key="fusion"><label>欧洲/北美洲</label></li>
-                          <li><input type="checkbox" value="India" class="spacecheck" key="fusion"><label>亚洲（东南亚/印度）</label></li>
+                          <li><input type="checkbox" value="India" class="spacecheck" key="fusion"><label>亚洲（港澳台/东南亚/印度）</label></li>
                           <li><input type="checkbox" value="Asia" class="spacecheck" key="fusion"><label>亚洲（其他地区）</label></li>
                           <li><input type="checkbox" value="SA" class="spacecheck" key="fusion"><label>南美洲</label></li>
                           <li><input type="checkbox" value="Oceania" class="spacecheck" key="fusion"><label>大洋洲与其他</label></li>
@@ -404,41 +403,6 @@
                           <label for="">HTTPS 下载流量/月</label>
                           <div class="input-group">
                             <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-inland">
-                            <div class="input-group-btn unit-select" val="GB">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li val="GB"><a>GB</a></li>
-                                <li val="TB"><a>TB</a></li>
-                                <li val="PB"><a>PB</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </dd>
-                  </dl>
-                  <dl id="data-outland" class="outland displayNone input-data" key="outland">
-                    <dt class="dt-lighter">港澳台</dt>
-                    <dd>
-                      <div class="row m-t-sm">
-                        <div class="col-sm-6 m-b">
-                          <label for="">HTTP 下载流量/月</label>
-                          <div class="input-group">
-                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTP" key="fusion-HTTP-outland">
-                            <div class="input-group-btn unit-select" val="GB">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
-                              <ul class="dropdown-menu dropdown-menu-right">
-                                <li val="GB"><a>GB</a></li>
-                                <li val="TB"><a>TB</a></li>
-                                <li val="PB"><a>PB</a></li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-6 m-b">
-                          <label for="">HTTPS 下载流量/月</label>
-                          <div class="input-group">
-                            <input type="number" class="form-control input-num" min="0" id="num-fusion-HTTPS" key="fusion-HTTPS-outland">
                             <div class="input-group-btn unit-select" val="GB">
                               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
                               <ul class="dropdown-menu dropdown-menu-right">
@@ -523,7 +487,7 @@
                     </dd>
                   </dl>
                   <dl id="data-India" class="India displayNone input-data" key="India">
-                    <dt class="dt-lighter">亚洲（东南亚/印度）</dt>
+                    <dt class="dt-lighter">亚洲（港澳台/东南亚/印度）</dt>
                     <dd>
                       <div class="row m-t-sm">
                         <div class="col-sm-6 m-b">
@@ -693,11 +657,6 @@
                   <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-inland" key="fusion-HTTP-inland"></span></dd>
                   <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-inland" key="fusion-HTTPS-inland"></span></dd>
                 </dl>
-                <dl class="outland displayNone">
-                  <dt class="bg-init dt-sm">港澳台</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-outland" key="fusion-HTTP-outland"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-outland" key="fusion-HTTPS-outland"></span></dd>
-                </dl>
                 <dl class="ENA displayNone">
                   <dt class="bg-init dt-sm">欧洲/北美洲</dt>
                   <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-ENA" key="fusion-HTTP-ENA"></span></dd>
@@ -709,7 +668,7 @@
                   <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-Asia" key="fusion-HTTPS-Asia"></span></dd>
                 </dl>
                 <dl class="India displayNone">
-                  <dt class="bg-init dt-sm">亚洲（东南亚/印度）</dt>
+                  <dt class="bg-init dt-sm">亚洲（港澳台/东南亚/印度）</dt>
                   <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-India" key="fusion-HTTP-India"></span></dd>
                   <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-India" key="fusion-HTTPS-India"></span></dd>
                 </dl>
