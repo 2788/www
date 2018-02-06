@@ -1,4 +1,5 @@
 $(document).ready ->
+  # services mouseenter
   $('.plsv-services .direction .img-box').mouseenter ->
     desc = '.plsv-services .description.' + $(this).attr('data')
     phone = '.plsv-services .iphone-box.' + $(this).attr('data')
@@ -15,6 +16,11 @@ $(document).ready ->
     $('.plsv-services .iphone-box').removeClass('hover')
     $(phone).addClass('hover')
 
+  # programme mouseenter
   $('.programme .step').mouseenter ->
     $('.programme .step').removeClass('active')
     $(this).addClass('active')
+
+  # allfunction mouseenter
+  $('.tab-content-allfunction .nav-tabs-allfunction a').mouseenter ->
+    $(this).tab('show')

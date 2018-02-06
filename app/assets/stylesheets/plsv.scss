@@ -30,18 +30,18 @@
   .description-box {
     .description {
       display: none;
-      padding: 1rem 0;
+      padding: 0.8rem 0;
       color: rgb(94, 97, 102);
       &.hover {
         display: block;
       }
       .number {
-        display: inline-block;
+        float: left;
         width: 109px;
         font-size: 60px;
       }
       .content {
-        display: inline-block;
+        margin-left: 109px;
         padding: 0 0.43rem;
         border-left: 2px solid rgb(94, 97, 102);
       }
@@ -163,7 +163,6 @@
 
   .steps-box {
     padding-left: 120px;
-    margin-top: 15px;
     .time-line {
       border-left: 1px dotted #fff;
       ul.steps {
@@ -175,9 +174,19 @@
             width: 100%;
             overflow: hidden;
             &:hover, &.active {
-              .content .desc {
-                height: auto;
+              .content {
+                margin: 0;
+                .step-title {
+                  padding: 0.15rem 0;
+                }
+
+                .desc {
+                  opacity: 1;
+                  height: auto;
+                  margin-bottom: 0.25rem;
+                }
               }
+
               .step-icon {
                 margin-left: 0;
                 margin-right: 25px;
@@ -206,11 +215,14 @@
             }
             .content {
               padding-left: 113px;
+              margin-top: -0.1rem;
               .step-title {
-                padding: 0.25rem 0;
+                padding: 0;
               }
               .desc {
-                height: 0;
+                opacity: 0;
+                height: 0.45rem;
+                margin: 0;
               }
               .link {
                 color: #00A0DE;
@@ -273,5 +285,33 @@
     .access .steps .step.line {
       display: none;
     }
+  }
+  .features.tab-content-programme .steps-box .time-line ul.steps .step-desc .step .content .desc {
+    height: 0.25rem;
+  }
+  .features.tab-content-programme .iphone-box {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  .jumbotron.hero.plsv .middle-container {
+    top: 60%;
+  }
+}
+
+.row {
+  .five-sm-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .row .five-sm-1 {
+    float: left;
+    width: 20%;
   }
 }
