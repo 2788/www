@@ -460,57 +460,118 @@ en:
         feature2:
           title: "History of Qiniu Cloud"
           ul:
-            li1:
-              time: "2011"
-            li2:
-              time: "August, 2011"
-              desc: "Qiniu was founded."
-            li3:
-              time: "December, 2011"
-              desc: "Cloud platforms went into operation online."
-            li4:
-              time: "2012"
-            li5:
-              time: "February, 2012"
-              desc: "Qiniu raised first round of capital of millions of yuan from Matrix Partners China."
-            li6:
-              time: "December, 2012"
-              desc: Go Programming Language, a work by Qiniu, is awarded one of the "Top 10 Books in 2012".
-            li7:
-              time: "2013"
-            li8:
-              time: "January, 2013"
-              desc: "Qiniu raised second round of capital of tens of millions USD from Qiming Venture Partners and Matrix Partners China."
-            li9:
-              time: "2014"
-            li10:
-              time: "July, 2014"
-              desc: "Qiniu launched Storage 2.0, which saved 62% of unit storage costs."
-            li11:
-              time: "August, 2014"
-              desc: "Qiniu raised third round of capital of tens of millions USD led by CBC Capital and followed by Matrix Partners China and Qiming Venture Partners."
-            li12:
-              time: "December, 2014"
-              desc: "Qiniu launched accelerating service abroad covering 54 areas in 31 countries across the world."
-            li13:
-              time: "2015"
-            li14:
-              time: "January, 2015"
-              desc: "The object storage service of Qiniu achieved Credible Cloud Service Award."
-            li15:
-              time: "August, 2015"
-              desc: "Qiniu officially launched the data processing platform based on container service technology."
-            li16:
-              time: "2016"
-            li17:
-              time: "February, 2016"
-              desc: "Qiniu raised fourth round of capital from well-known investment institutions like F&G Venture, GHII, Zhangjiang High-tech and Telstra."
-            li18:
-              time: "May, 2016"
-              desc: "Qiniu launched PILI in the mobile era."
-            li19:
-              time: "December, 2016"
-              desc: "Qiniu was certified by the ISO/IEC 27001:2013 Information Security Management System."
+            - time: "2011"
+              li:
+                - left:
+                    time: "August, 2011"
+                    desc: "Qiniu was founded."
+                    icon: "icon-img chenli"
+                  right:
+                    time: "December, 2011"
+                    desc: "Cloud platforms went into operation online."
+                    icon: "icon-img yunpingtai"
+            - time: "2012"
+              li:
+                - left:
+                    time: "February, 2012"
+                    desc: "Qiniu raised first round of capital of millions of yuan from Matrix Partners China."
+                    icon: "icon-img alun"
+                  right:
+                    time: "December, 2012"
+                    desc: Go Programming Language, a work by Qiniu, is awarded one of the "Top 10 Books in 2012".
+                    icon: "icon-img go"
+            - time: "2013"
+              li:
+                - left:
+                    time: "January, 2013"
+                    desc: "Qiniu raised second round of capital of tens of millions USD from Qiming Venture Partners and Matrix Partners China."
+                    icon: "icon-img blun"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2014"
+              li:
+                - left:
+                    time: "July, 2014"
+                    desc: "Qiniu launched Storage 2.0, which saved 62% of unit storage costs."
+                    icon: "icon-img cunchu"
+                  right:
+                    time: "August, 2014"
+                    desc: "Qiniu raised third round of capital of tens of millions USD led by CBC Capital and followed by Matrix Partners China and Qiming Venture Partners."
+                    icon: "icon-img clun"
+                - left:
+                    time: "December, 2014"
+                    desc: "Qiniu launched accelerating service abroad covering 54 areas in 31 countries across the world."
+                    icon: "icon-img haiwaijiasu"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2015"
+              li:
+                - left:
+                    time: "January, 2015"
+                    desc: "The object storage service of Qiniu achieved Credible Cloud Service Award."
+                    icon: "icon-img kexinyun"
+                  right:
+                    time: "August, 2015"
+                    desc: "Qiniu officially launched the data processing platform based on container service technology."
+                    icon: "icon-img shujuchuli"
+            - time: "2016"
+              li:
+                - left:
+                    time: "February, 2016"
+                    desc: "Qiniu raised fourth round of capital from well-known investment institutions like F&G Venture, GHII, Zhangjiang High-tech and Telstra."
+                    icon: "icon-img dlun"
+                  right:
+                    time: "May, 2016"
+                    desc: "Qiniu launched PILI in the mobile era."
+                    icon: "icon-img zhibo"
+                - left:
+                    time: "December, 2016"
+                    desc: "Qiniu was certified by the ISO/IEC 27001:2013 Information Security Management System."
+                    icon: "icon-img xinxianquan"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2017"
+              li:
+                - left:
+                    time: "January 2017"
+                    desc: "Qiniu launched smart big data platform."
+                    icon: "icon-img dashuju"
+                  right:
+                    time: "April 2017"
+                    desc: "Qiniu launched fusion CDN abroad covering over 100 countries on 6 continents."
+                    icon: "icon-img cdnhaiwai"
+                - left:
+                    time: "August 2017"
+                    desc: "Qiniu raised fifth round of capital of 1,000 million led by Alibaba group and YunFeng capital. "
+                    icon: "icon-img flun"
+                  right:
+                    time: "September 2017"
+                    desc: "Qiniu AI team won the runner-up prize in ACMMM LSVC, and video identification ability was recognized by international."
+                    icon: "icon-img acmmmlsvc"
+                - left:
+                    time: "October 2017"
+                    desc: "Qiniu was certified with CDN service certificate and cloud service certificate by MIIT."
+                    icon: "icon-img cdnpaizhao"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2018"
+              li:
+                - left:
+                    time: "January 2018"
+                    desc: "Qiniu released its own-developed multimedia player."
+                    icon: "icon-img duomeitibofangqi"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
       pandora:
         title: "Smart Big Data Platform（Pandora）"
         desc: "Pandora is the Smart Big Data Platform for the Qiniu Cloud, providing a simple, efficient and open one-stop big data service."

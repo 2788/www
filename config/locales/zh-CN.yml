@@ -481,57 +481,118 @@ zh-CN:
         feature2:
           title: "七牛云点点滴滴"
           ul:
-            li1:
-              time: "2011 年"
-            li2:
-              time: "2011 年 08 月"
-              desc: "七牛云成立"
-            li3:
-              time: "2011 年 12 月"
-              desc: "云平台上线运营"
-            li4:
-              time: "2012 年"
-            li5:
-              time: "2012 年 02 月"
-              desc: "获得数百万元 A 轮融资，由经纬中国投资"
-            li6:
-              time: "2012 年 12 月"
-              desc: 七牛云著作《Go 语言编程》被评为“2012 年度十大图书之一”
-            li7:
-              time: "2013 年"
-            li8:
-              time: "2013 年 01 月"
-              desc: "获得启明创投、经纬中国千万美元 B 轮投资"
-            li9:
-              time: "2014 年"
-            li10:
-              time: "2014 年 07 月"
-              desc: "存储 2.0 上线，节省单位存储成本 62%"
-            li11:
-              time: "2014 年 08 月"
-              desc: "获得 C 轮数千万美元融资，由宽带资本领投，经纬中国和启明创投跟投"
-            li12:
-              time: "2014 年 12 月"
-              desc: "海外加速服务上线，覆盖全球 31 个国家共 54 个地区"
-            li13:
-              time: "2015 年"
-            li14:
-              time: "2015 年 01 月"
-              desc: "七牛云对象存储服务通过可信云认证"
-            li15:
-              time: "2015 年 08 月"
-              desc: "基于容器服务技术的数据处理平台正式发布"
-            li16:
-              time: "2016 年"
-            li17:
-              time: "2016 年 02 月"
-              desc: "完成 D 轮融资，投资方包括方广资本、嘉实投资、张江高科、澳洲电信等知名机构"
-            li18:
-              time: "2016 年 05 月"
-              desc: "移动时代的直播云服务上线"
-            li19:
-              time: "2016 年 12 月"
-              desc: "获得 ISO/IEC 27001:2013 信息安全管理体系认证证书"
+            - time: "2011 年"
+              li:
+                - left:
+                    time: "2011 年 08 月"
+                    desc: "七牛云成立"
+                    icon: "icon-img chenli"
+                  right:
+                    time: "2011 年 12 月"
+                    desc: "云平台上线运营"
+                    icon: "icon-img yunpingtai"
+            - time: "2012 年"
+              li:
+                - left:
+                    time: "2012 年 02 月"
+                    desc: "获得数百万元 A 轮融资，由经纬中国投资"
+                    icon: "icon-img alun"
+                  right:
+                    time: "2012 年 12 月"
+                    desc: "七牛云著作《Go 语言编程》被评为“2012 年度十大图书之一"
+                    icon: "icon-img go"
+            - time: "2013 年"
+              li:
+                - left:
+                    time: "2013 年 01 月"
+                    desc: "获得启明创投、经纬中国千万美元 B 轮投资"
+                    icon: "icon-img blun"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2014 年"
+              li:
+                - left:
+                    time: "2014 年 07 月"
+                    desc: "存储 2.0 上线，节省单位存储成本 62%"
+                    icon: "icon-img cunchu"
+                  right:
+                    time: "2014 年 08 月"
+                    desc: "获得 C 轮数千万美元融资，由宽带资本领投，经纬中国和启明创投跟投"
+                    icon: "icon-img clun"
+                - left:
+                    time: "2014 年 12 月"
+                    desc: "海外加速服务上线，覆盖全球 31 个国家共 54 个地区"
+                    icon: "icon-img haiwaijiasu"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2015 年"
+              li:
+                - left:
+                    time: "2015 年 01 月"
+                    desc: "七牛云对象存储服务通过可信云认证"
+                    icon: "icon-img kexinyun"
+                  right:
+                    time: "2015 年 08 月"
+                    desc: "基于容器服务技术的数据处理平台正式发布"
+                    icon: "icon-img shujuchuli"
+            - time: "2016 年"
+              li:
+                - left:
+                    time: "2016 年 02 月"
+                    desc: "完成 D 轮融资，投资方包括方广资本、嘉实投资、张江高科、澳洲电信等知名机构"
+                    icon: "icon-img dlun"
+                  right:
+                    time: "2016 年 05 月"
+                    desc: "移动时代的直播云服务上线"
+                    icon: "icon-img zhibo"
+                - left:
+                    time: "2016 年 12 月"
+                    desc: "获得 ISO/IEC 27001:2013 信息安全管理体系认证证书"
+                    icon: "icon-img xinxianquan"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2017 年"
+              li:
+                - left:
+                    time: "2017 年 01 月"
+                    desc: "智能大数据平台上线，结合七牛云生态，为用户赋能应用大数据的核心能力"
+                    icon: "icon-img dashuju"
+                  right:
+                    time: "2017 年 04 月"
+                    desc: "CDN海外融合上线，融合 Highwinds、Edgecast、CDNetworks等海外 CDN 厂商。覆盖 6 大洲 100 多个国家。"
+                    icon: "icon-img cdnhaiwai"
+                - left:
+                    time: "2017 年 08 月"
+                    desc: "宣布完成新一轮10亿元融资，阿里集团、云锋基金领投"
+                    icon: "icon-img flun"
+                  right:
+                    time: "2017 年 09 月"
+                    desc: "七牛云人工智能团队勇斩ACMMM LSVC 竞赛亚军，视频识别能力获国际认可"
+                    icon: "icon-img acmmmlsvc"
+                - left:
+                    time: "2017 年 10 月"
+                    desc: "七牛云获工信部颁发的CDN牌照及云服务牌照"
+                    icon: "icon-img cdnpaizhao"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
+            - time: "2018 年"
+              li:
+                - left:
+                    time: "2018 年 01 月"
+                    desc: "推出全自研内核跨平台多媒体播放器"
+                    icon: "icon-img duomeitibofangqi"
+                  right:
+                    time: ""
+                    desc: ""
+                    icon: ""
       pandora:
         title: "大数据平台"
         desc: "Pandora 是七牛云的大数据平台，提供简单、高效、开放的一站式大数据服务。"
