@@ -1133,10 +1133,12 @@ zh-CN:
           desc: 大眼瘦脸
         - imgpath: plsv/icon-dongtaitiezhi.png
           desc: 动态贴纸
-        - imgpath: plsv/icon-duoduanluzhi.png
-          desc: 多段录制
+        - imgpath: plsv/icon-artexiao.png
+          desc: AR 特效
+        - imgpath: plsv/icon-beishupaishe.png
+          desc: 倍数拍摄
         - imgpath: plsv/icon-huishangongneng.png
-          desc: 回删功能
+          desc: 分段回删
         - imgpath: plsv/icon-meiyanlvjing.png
           desc: 美颜滤镜
         - imgpath: plsv/icon-mianbushibie.png
@@ -1145,29 +1147,27 @@ zh-CN:
           desc: 片头片尾
         - imgpath: plsv/icon-shuiyingongneng.png
           desc: 水印功能
-        - imgpath: plsv/icon-wenzitexiao.png
-          desc: 文字特效
-        - imgpath: plsv/icon-zimugongneng.png
-          desc: 字幕功能
+        - imgpath: plsv/icon-texiaozimu.png
+          desc: 特效字幕
   plsvs:
     - groupid: editions
       group:
+        - imgpath: plsv/icon-douyintexiao.png
+          desc: 抖音特效
         - imgpath: plsv/icon-beijingyinyue.png
           desc: 背景音乐
+        - imgpath: plsv/icon-peiyinluzhi.png
+          desc: 配音录制
+        - imgpath: plsv/icon-shiguangzhoutexiao.png
+          desc: 时光特效
         - imgpath: plsv/icon-bendizhuanma.png
           desc: 本地转码
         - imgpath: plsv/icon-duandianxuchuan.png
           desc: 断点续传
-        - imgpath: plsv/icon-https.png
-          desc: https 支持
         - imgpath: plsv/icon-shipincaijian.png
-          desc: 视频裁剪
+          desc: 视频剪裁
         - imgpath: plsv/icon-shipinpinjie.png
           desc: 视频拼接
-        - imgpath: plsv/icon-shipinshangchuan.png
-          desc: 视频上传
-        - imgpath: plsv/icon-yingjianbianma.png
-          desc: 硬件编码
         - imgpath: plsv/icon-yinpincaijian.png
           desc: 音频裁剪
         - imgpath: plsv/icon-zhuanchangdonghua.png
@@ -1207,7 +1207,7 @@ zh-CN:
         - imgpath: plsv/icon-drmshuzibaohu.png
           desc: DRM数字保护
         - imgpath: plsv/icon-H265.png
-          desc: H265
+          desc: H.265
         - imgpath: plsv/icon-jianhuangjiankong.png
           desc: 鉴黄监控
         - imgpath: plsv/icon-jiequfengmian.png

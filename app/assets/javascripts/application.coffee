@@ -34,6 +34,7 @@
 #= require blog
 #= require newmedia
 #= require alaccelerator
+#= require plsv
 
 isMobile = false; # initiate as false
 # device detection

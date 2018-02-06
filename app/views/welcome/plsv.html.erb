@@ -1,13 +1,14 @@
 <div class="jumbotron hero">
   <div class="container">
     <div class="middle-container">
-      <div class="row m-t-md">
+      <div class="row">
         <div class="col-xs-6">
-          <h2>短视频</h2>
-          <p>七牛短视频服务 (PLSV) 是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。</p>
+          <h2>短视频解决方案</h2>
+          <p>七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。</p>
           <div class="actions">
-            <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
-            <%= link_to "播放器 SDK", products_player_path, class: "btn btn-lg btn-hollow m-b-xs" -%>
+            <%= link_to "立即咨询", "https://jinshuju.net/f/IeOD89", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
+            <%= link_to "短视频 SDK", "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
+            <%= link_to "播放器 SDK", products_player_path, target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-6 hidden-xs">
@@ -24,137 +25,422 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <li class="intLink active"><a href="#tab-content-section-1">产品优势</a></li>
-        <li class="intLink"><a href="#tab-content-section-2">核心功能</a></li>
-        <li class="intLink"><a href="#tab-content-section-3">客户案例</a></li>
-        <li class="intLink"><a href="#tab-content-section-4">产品相关</a></li>
+        <li class="intLink active"><a href="#tab-content-advantage">方案优势</a></li>
+        <li class="intLink"><a href="#tab-content-function">特色功能</a></li>
+        <li class="intLink"><a href="#tab-content-allfunction">功能大全</a></li>
+        <li class="intLink"><a href="#tab-content-programme">一站式解决方案</a></li>
+        <li class="intLink"><a href="#tab-content-cases">客户案例</a></li>
+        <li class="intLink"><a href="#tab-content-access">快速接入</a></li>
+        <li class="intLink"><a href="#tab-content-products">产品相关</a></li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="features tab-content-section-1">
+<div class="features tab-content-advantage">
   <div class="container">
     <div class="intro">
-      <h2 class="title">产品优势</h2>
+      <h2 class="title">方案优势</h2>
+      <p class="desc">化繁为简精细化产品，轻松上线应用程序</p>
     </div>
 
     <div class="row">
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="thumbnail">
-          <%= image_tag "plsv/icon-shejilinghuo.png", alt: "设计灵活", width: 100 %>
+          <%= image_tag "plsv/icon-gongnengwanshan.png", alt: "功能完善，兼容性强", width: 100 %>
           <div class="caption">
-            <h4>设计灵活</h4>
-            <p>丰富的信令和数据回调，可灵活进行二次开放。</p>
+            <h4>功能完善，兼容性强</h4>
+            <p>涵盖短视频应用的所有主流功能，智能软硬编切换， 兼容安卓等多种机型</p>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="thumbnail">
-          <%= image_tag "plsv/icon-keyongxing.png", alt: "产品稳定", width: 100 %>
+          <%= image_tag "plsv/icon-baotiqingying.png", alt: "包体轻盈，性能优异", width: 100 %>
           <div class="caption">
-            <h4>产品稳定</h4>
-            <p>继承直播SDK积累的丰富经验，保证产品的高可用性。</p>
+            <h4>包体轻盈，性能优异</h4>
+            <p>可插拔式设计，包体最小至 1.5M ；功耗低，内存占用小，速度/效率一流</p>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="thumbnail">
-          <%= image_tag "plsv/icon-gongnengfengfu.png", alt: "功能丰富", width: 100 %>
+          <%= image_tag "plsv/icon-jierujiandan.png", alt: "接入简单，方便二次开发", width: 100 %>
           <div class="caption">
-            <h4>功能丰富</h4>
-            <p>采集、处理、编码、封包、上传，覆盖主流短视频功能。</p>
+            <h4>接入简单，方便二次开发</h4>
+            <p>3 小时集成短视频；丰富的信令和数据回调，可灵活进行二次开发</p>
           </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="thumbnail">
-          <%= image_tag "plsv/icon-zhuanyefuwu.png", alt: "专业服务", width: 100 %>
+          <%= image_tag "plsv/icon-yizhanshiyunduan.png", alt: "一站式云端方案", width: 100 %>
           <div class="caption">
-            <h4>专业服务</h4>
-            <p>对接资深工程师，1对1解答您开发中的问题。</p>
+            <h4>一站式云端方案</h4>
+            <p>提供终端到云端全链路服务，集采集编辑、合成上传、转码、分发到播放于一体</p>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
-<div class="features feature-color plsv-services tab-content-section-2">
+<div class="features feature-color plsv-services tab-content-function">
   <div class="container">
     <div class="intro">
-      <h2 class="title">核心功能</h2>
+      <h2 class="title">特色功能</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="desc-1 iphone-box hover">
+          <%= image_tag 'plsv/img-phone.png', class:'iphone' %>
+          <div class="video-box">
+            <video loop autoplay poster="" src="https://odum9helk.qnssl.com/lmJftwXMqXYw4wcLzZvwwT34llim"></video>
+          </div>
+        </div>
+        <div class="desc-2 iphone-box">
+          <%= image_tag 'plsv/img-phone.png', class:'iphone' %>
+          <div class="video-box">
+            <video loop autoplay poster="" src="https://odum9helk.qnssl.com/ltftz-CSo0GJo5tIj5DUHKYfj8MT"></video>
+          </div>
+        </div>
+        <div class="desc-3 iphone-box">
+          <%= image_tag 'plsv/img-phone.png', class:'iphone' %>
+          <div class="video-box">
+            <video loop autoplay poster="" src="https://odum9helk.qnssl.com/lhthZWXHQ8D2C3EpHuV7BoHNDBTV"></video>
+          </div>
+        </div>
+        <div class="desc-4 iphone-box">
+          <%= image_tag 'plsv/img-phone.png', class:'iphone' %>
+          <div class="video-box">
+            <video loop autoplay poster="" src="https://odum9helk.qnssl.com/lqZGmZdqvVd_YOCfPt8UqOweEvMq"></video>
+          </div>
+        </div>
+        <div class="desc-5 iphone-box">
+          <%= image_tag 'plsv/img-phone.png', class:'iphone' %>
+          <div class="video-box">
+            <video loop autoplay poster="" src="https://odum9helk.qnssl.com/ljFVFd7xi0vxI4Wx6VtFTeoWIqaD"></video>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="description-box">
+          <div>
+            <div class="desc-1 description hover">
+              <h1 class="number">01</h1>
+              <div class="content">
+                <h2>专业滤镜</h2>
+                <p>提供专业级实时滤镜特效；接口灵活，可接入第三方效果或定制开发。</p>
+              </div>
+            </div>
+            <div class="desc-2 description">
+              <h1 class="number">02</h1>
+              <div class="content">
+                <h2>人脸识别</h2>
+                <p>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸。</p>
+              </div>
+            </div>
+            <div class="desc-3 description">
+              <h1 class="number">03</h1>
+              <div class="content">
+                <h2>抖音特效</h2>
+                <p>无需复杂开发，即可实现灵魂出窍、幻觉、抖动等魔性抖音效果。</p>
+              </div>
+            </div>
+            <div class="desc-4 description">
+              <h1 class="number">04</h1>
+              <div class="content">
+                <h2>AR 特效</h2>
+                <p>实现逼真 3D 物体绘制、背景替换等效果。</p>
+              </div>
+            </div>
+            <div class="desc-5 description">
+              <h1 class="number">05</h1>
+              <div class="content">
+                <h2>时光轴特效</h2>
+                <p>提供时光倒流、延时拍摄、倍速播放等功能。</p>
+              </div>
+            </div>
+          </div>
+          <div class="direction">
+            <div class="direc-row">
+              <div class="direc-col">
+                <div data="desc-1" class="desc-1 img-box hover">
+                  <%= image_tag 'plsv/img-photo-selected.jpg', class:"img-btn" %>
+                  <div class="mask"></div>
+                  <div class="icon-box">
+                    <%= image_tag 'plsv/icon-zhuanyelvjing.png', class:"direction-icon" %>
+                    <p>专业滤镜</p>
+                  </div>
+                </div>
+              </div>
+              <div class="direc-col">
+                <div data="desc-2" class="desc-2 img-box">
+                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <div class="mask"></div>
+                  <div class="icon-box">
+                    <%= image_tag 'plsv/icon-renlianshibie.png', class:"direction-icon" %>
+                    <p>人脸识别</p>
+                  </div>
+                </div>
+              </div>
+              <div class="direc-col">
+                <div data="desc-3" class="desc-3 img-box">
+                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <div class="mask"></div>
+                  <div class="icon-box">
+                    <%= image_tag 'plsv/icon-douyintexiao-white.png', class:"direction-icon" %>
+                    <p>抖音特效</p>
+                  </div>
+                </div>
+              </div>
+              <div class="direc-col">
+                <div data="desc-4" class="desc-4 img-box">
+                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <div class="mask"></div>
+                  <div class="icon-box">
+                    <%= image_tag 'plsv/icon-artexiao-white.png', class:"direction-icon" %>
+                    <p>AR 特效</p>
+                  </div>
+                </div>
+              </div>
+              <div class="direc-col">
+                <div data="desc-5" class="desc-5 img-box">
+                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <div class="mask"></div>
+                  <div class="icon-box">
+                    <%= image_tag 'plsv/icon-shiguangzhoutexiao-white.png', class:"direction-icon" %>
+                    <p>时光轴特效</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features tab-content-allfunction">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">功能大全</h2>
+      <p class="desc">美颜、特效、表情、贴纸，让用户更加愉快的“玩耍”</p>
     </div>
 
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <li class="active"><a href="#collections" data-toggle="tab">采集处理</a></li>
-        <li><a href="#editions" data-toggle="tab">编辑上传</a></li>
-        <li><a href="#services" data-toggle="tab">服务端功能</a></li>
-        <li><a href="#player" data-toggle="tab">播放器功能</a></li>
+    <div class="allfunction-tabs">
+      <div class="tabs">
+        <ul class="nav nav-tabs nav-justified nav-tabs-allfunction" role="tablist">
+          <li class="first active"><a href="#collections" data-toggle="tab">采集处理</a></li>
+          <li><a href="#editions" data-toggle="tab">编辑上传</a></li>
+          <li><a href="#services" data-toggle="tab">服务端功能</a></li>
+          <li><a href="#player" data-toggle="tab">播放器功能</a></li>
+        </ul>
+        <div class="tab-content">
+          <% I18n.t("plsvs1").each do |units| %>
+            <div class="tab-pane fade in active" id="<%= units[:groupid] -%>">
+              <div class="row">
+                <% units[:group].each do |unit| %>
+                  <div class="col-sm-2 col-xs-6">
+                    <div class="thumbnail">
+                      <%= image_tag unit[:imgpath], width: '80' %>
+                      <div class="caption">
+                        <h5 class="text-center"><%= unit[:desc] -%></h5>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <% I18n.t("plsvs").each do |units| %>
+            <div class="tab-pane fade" id="<%= units[:groupid] -%>">
+              <div class="row">
+                <% units[:group].each do |unit| %>
+                  <div class="col-sm-2 col-xs-6">
+                    <div class="thumbnail">
+                      <%= image_tag unit[:imgpath], width: '80' %>
+                      <div class="caption">
+                        <h5 class="text-center"><%= unit[:desc] -%></h5>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="action">
+      <%= link_to '更多功能', 'https://developer.qiniu.com/pili/manual/1209/live-the-core-function?ref=www.qiniu.com', target: '_blank', class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<div class="features tab-content-programme">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">端到云到端的一站式解决方案</h2>
+      <p class="desc">一站式短视频服务，让你专注核心业务创新</p>
+    </div>
+
+    <div class="programme">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="iphone-box">
+            <%= image_tag 'plsv/solution-phone.png', class:'iphone' %>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="steps-box">
+            <div class="time-line">
+              <ul class="steps">
+                <li class="step-desc">
+                  <div class="step active">
+                    <span class="step-icon">
+                      <%= image_tag 'plsv/icon-shipinpaishebianji.png', width: '88' %>
+                    </span>
+                    <div class="content">
+                      <h4 class="step-title">视频拍摄编辑</h4>
+                      <div class="desc">
+                        <p>短视频 SDK 小至 1.5M，1 天快速对接。同时包含丰富的基础功能，可灵活使用剪辑、拼接、添加滤镜等特效。</p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="step-desc">
+                  <div class="step">
+                    <span class="step-icon">
+                      <%= image_tag 'plsv/icon-shipinshangchuanzhuanma.png', width: '88' %>
+                      <div></div>
+                    </span>
+                    <div class="content">
+                      <h4 class="step-title">视频上传转码</h4>
+                      <div class="desc">
+                        <p>灵活上传，快速转码，提供服务端 H.265 和 H.264 互转码服务。</p>
+                        <p>相关文档：<%= link_to '实时转码', 'https://developer.qiniu.com/dora/manual/1249/real-time-audio-and-video-transcoding-avvod', class: 'link', target: '_blank' %></p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="step-desc">
+                  <div class="step">
+                    <span class="step-icon">
+                      <%= image_tag 'plsv/icon-shipinzhinengfenxi.png', width: '88' %>
+                    </span>
+                    <div class="content">
+                      <h4 class="step-title">视频智能分析</h4>
+                      <div class="desc">
+                        <p>利用 AI 技术对视频内容进行智能分析。开发者可使用色情识别、暴恐识别、政治人物识别来智能审核视频，大大提高运营效率。</p>
+                        <p>相关产品：<%= link_to 'AI 创新扶持计划', alaccelerator_path, class: 'link m-r' %><%= link_to '智能多媒体 API', products_dora_path, class: 'link' %></p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="step-desc">
+                  <div class="step">
+                    <span class="step-icon">
+                      <%= image_tag 'plsv/icon-jizhibofangtiyan.png', width: '88' %>
+                    </span>
+                    <div class="content">
+                      <h4 class="step-title">极致播放体验</h4>
+                      <div class="desc">
+                        <p>提供免费的播放器 SDK，秒开 200ms，包体最小至 400K，千万日活验证，给用户畅享流畅无卡顿的视频体验。</p>
+                        <p>相关产品：<%= link_to '播放器 SDK', products_player_path, class: 'link' %></p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="step-desc">
+                  <div class="step">
+                    <span class="step-icon">
+                      <%= image_tag 'plsv/icon-dashujuyunying.png', width: '88' %>
+                    </span>
+                    <div class="content">
+                      <h4 class="step-title">大数据运营</h4>
+                      <div class="desc">
+                        <p>大数据实时监控各个性能指标，同步分析用户行为数据，助力短视频平台完善业务。</p>
+                        <p>相关产品：<%= link_to '大数据', products_pandora_path, class: 'link' %></p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-less tab-content-cases">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">客户案例</h2>
+      <p class="desc">群雄逐鹿短视频，他们都在用七牛</p>
+    </div>
+    <div id="cases-slider" class="conveyor slick-slider draggable">
+      <dd><div class="index-case"><%= image_tag "plsv/client-zuwome.jpg", alt: "zuwome", title: "租我么", class: "case" %></div></dd>
+      <dd><div class="index-case"><%= image_tag "plsv/client-touch.jpg", alt: "touch", title: "他趣", class: "case" %></div></dd>
+      <dd><div class="index-case"><%= image_tag "plsv/client-xiaomasahuan.jpg", alt: "xiaomasahuan", title: "小马撒欢", class: "case" %></div></dd>
+      <dd><div class="index-case"><%= image_tag "plsv/client-blued.jpg", alt: "blued", title: "淡蓝", class: "case" %></div></dd>
+      <dd><div class="index-case"><%= image_tag "plsv/client-transsion.png", alt: "transsion", title: "transsion", class: "case" %></div></dd>
+    </div>
+  </div>
+</div>
+
+<div class="features tab-content-access">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">快速接入</h2>
+      <p class="desc">7*24 及时响应客户需求，3 小时快速集成短视频</p>
+    </div>
+    <div class="access">
+      <ul class="steps">
+        <li class="step">
+          <div class="thumbnail">
+            <%= image_tag "plsv/icon-dingzhifangan.png", alt: "定制方案", width: 100 %>
+            <div class="caption">
+              <h4>定制方案</h4>
+              <p>1V1 专业咨询，提供定制化解决方案</p>
+            </div>
+          </div>
+        </li>
+        <li class="step line">
+          <span class="glyphicon glyphicon-triangle-right"></span>
+        </li>
+        <li class="step">
+          <div class="thumbnail">
+            <%= image_tag "plsv/icon-ceshidujie.png", alt: "测试对接", width: 100 %>
+            <div class="caption">
+              <h4>测试对接</h4>
+              <p>免费测试，全程监控，快速响应迭代</p>
+            </div>
+          </div>
+        </li>
+        <li class="step line">
+          <span class="glyphicon glyphicon-triangle-right"></span>
+        </li>
+        <li class="step">
+          <div class="thumbnail">
+            <%= image_tag "plsv/icon-zhengshishangxian.png", alt: "正式上线", width: 100 %>
+            <div class="caption">
+              <h4>正式上线</h4>
+              <p>1V1售后服务，确保业务稳定运行</p>
+            </div>
+          </div>
+        </li>
       </ul>
-      <div class="tab-content">
-        <% I18n.t("plsvs1").each do |plsv| %>
-          <% groupid = plsv[:groupid] %>
-          <section id= <%= groupid %> class="tab-pane fade in active">
-            <div class="row row-clear">
-              <% plsv[:group].each do |logo| %>
-                <div class="col-sm-2 col-clear col-5 col-xs-4">
-                  <div class="thumbnail thumbnail-icons">
-                    <%= image_tag logo[:imgpath], alt: "服务", width: 40 %>
-                    <div class="desc">
-                      <h5><%= logo[:desc] %></h5>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </section>
-        <% end %>
-        <% I18n.t("plsvs").each do |plsv| %>
-          <% groupid = plsv[:groupid] %>
-          <section id= <%= groupid %> class="tab-pane fade in">
-            <div class="row row-clear">
-              <% plsv[:group].each do |logo| %>
-                <div class="col-sm-2 col-clear col-5 col-xs-4">
-                  <div class="thumbnail thumbnail-icons">
-                    <%= image_tag logo[:imgpath], alt: "服务", width: 40 %>
-                    <div class="desc">
-                      <h5><%= logo[:desc] %></h5>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </section>
-        <% end %>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="features features-less tab-content-section-3">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2">
-        <h2 class="title">客户案例</h2>
-      </div>
-      <div class="col-sm-10">
-        <div id="cases-slider" class="conveyor slick-slider draggable">
-          <dd><%= image_tag "plsv/client-touch.jpg", alt: "touch", title: "他趣", class: "case" %></dd>
-          <dd><%= image_tag "plsv/client-blued.jpg", alt: "blued", title: "淡蓝", class: "case" %></dd>
-          <dd><%= image_tag "plsv/client-xiaomasahuan.jpg", alt: "xiaomasahuan", title: "小马撒欢", class: "case" %></dd>
-          <dd><%= image_tag "plsv/client-xiaoaiai.jpg", alt: "xiaoaiai", title: "小爱爱", class: "case" %></dd>
-          <dd><%= image_tag "plsv/client-zuwome@2x.jpg", alt: "zuwome", title: "租我么", class: "case" %></dd>
-        </div>
-      </div>
+      <div class="action"><%= link_to '立即咨询', 'https://jinshuju.net/f/IeOD89', target: '_blank', class: 'btn btn-primary' %></div>
     </div>
   </div>
 </div>
 
-<div class="features features-less feature-color tab-content-section-4">
+<div class="features features-less feature-color tab-content-products">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
@@ -176,6 +462,7 @@
               <li><%= link_to "iOS 采集端 SDK", "https://developer.qiniu.com/pili/sdk/3733/short-video-ios-sdk", target: "_blank", title: "iOS 采集端 SDK" -%></li>
               <li><%= link_to "Android 播放端 SDK", "https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk", target: "_blank", title: "Android 播放端 SDK" -%></li>
               <li><%= link_to "iOS 播放端 SDK", "https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk", target: "_blank", title: "iOS 播放端 SDK" -%></li>
+              <li><%= link_to "Windows 播放端 SDK", "https://developer.qiniu.com/pili/sdk/4164/windows-player-sdk", target: "_blank", title: "Windows 播放端 SDK" -%></li>
             </ul>
           </div>
           <div class="col-sm-4 col-xs-4">
