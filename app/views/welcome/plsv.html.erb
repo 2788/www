@@ -1,8 +1,8 @@
-<div class="jumbotron hero">
+<div class="jumbotron hero plsv">
   <div class="container">
     <div class="middle-container">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-sm-6 col-xs-12">
           <h2>短视频解决方案</h2>
           <p>七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。</p>
           <div class="actions">
@@ -11,7 +11,7 @@
             <%= link_to "播放器 SDK", products_player_path, target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
         </div>
-        <div class="col-xs-6 hidden-xs">
+        <div class="col-sm-6 hidden-xs">
           <div class="right-mask-banner">
             <%= image_tag "banner/banner-duanshipin-right-zh.png", alt: "短视频", width: '100%' %>
           </div>
@@ -41,7 +41,7 @@
   <div class="container">
     <div class="intro">
       <h2 class="title">方案优势</h2>
-      <p class="desc">化繁为简精细化产品，轻松上线应用程序</p>
+      <p class="desc">化繁为简，轻松上线应用程序</p>
     </div>
 
     <div class="row">
@@ -137,7 +137,7 @@
               <h1 class="number">02</h1>
               <div class="content">
                 <h2>人脸识别</h2>
-                <p>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸。</p>
+                <p>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果。</p>
               </div>
             </div>
             <div class="desc-3 description">
@@ -151,7 +151,7 @@
               <h1 class="number">04</h1>
               <div class="content">
                 <h2>AR 特效</h2>
-                <p>实现逼真 3D 物体绘制、背景替换等效果。</p>
+                <p>逼真的 3D 物体绘制、背景替换，轻松实现场景虚拟化效果。</p>
               </div>
             </div>
             <div class="desc-5 description">
@@ -166,7 +166,7 @@
             <div class="direc-row">
               <div class="direc-col">
                 <div data="desc-1" class="desc-1 img-box hover">
-                  <%= image_tag 'plsv/img-photo-selected.jpg', class:"img-btn" %>
+                  <%= image_tag 'plsv/img-zhuanyelvjing.jpg', class:"img-btn" %>
                   <div class="mask"></div>
                   <div class="icon-box">
                     <%= image_tag 'plsv/icon-zhuanyelvjing.png', class:"direction-icon" %>
@@ -176,7 +176,7 @@
               </div>
               <div class="direc-col">
                 <div data="desc-2" class="desc-2 img-box">
-                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <%= image_tag 'plsv/img-renlianshibie.jpg', class:"img-btn" %>
                   <div class="mask"></div>
                   <div class="icon-box">
                     <%= image_tag 'plsv/icon-renlianshibie.png', class:"direction-icon" %>
@@ -186,7 +186,7 @@
               </div>
               <div class="direc-col">
                 <div data="desc-3" class="desc-3 img-box">
-                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <%= image_tag 'plsv/img-douyintexiao.jpg', class:"img-btn" %>
                   <div class="mask"></div>
                   <div class="icon-box">
                     <%= image_tag 'plsv/icon-douyintexiao-white.png', class:"direction-icon" %>
@@ -196,7 +196,7 @@
               </div>
               <div class="direc-col">
                 <div data="desc-4" class="desc-4 img-box">
-                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <%= image_tag 'plsv/img-artexiao.jpg', class:"img-btn" %>
                   <div class="mask"></div>
                   <div class="icon-box">
                     <%= image_tag 'plsv/icon-artexiao-white.png', class:"direction-icon" %>
@@ -206,7 +206,7 @@
               </div>
               <div class="direc-col">
                 <div data="desc-5" class="desc-5 img-box">
-                  <%= image_tag 'plsv/img-photo.jpg', class:"img-btn" %>
+                  <%= image_tag 'plsv/img-shiguangzhoutexiao.jpg', class:"img-btn" %>
                   <div class="mask"></div>
                   <div class="icon-box">
                     <%= image_tag 'plsv/icon-shiguangzhoutexiao-white.png', class:"direction-icon" %>
@@ -226,7 +226,7 @@
   <div class="container">
     <div class="intro">
       <h2 class="title">功能大全</h2>
-      <p class="desc">美颜、特效、表情、贴纸，让用户更加愉快的“玩耍”</p>
+      <p class="desc">美颜、特效、表情、贴纸，让用户更加愉快地“玩耍”</p>
     </div>
 
     <div class="allfunction-tabs">
@@ -242,7 +242,7 @@
             <div class="tab-pane fade in active" id="<%= units[:groupid] -%>">
               <div class="row">
                 <% units[:group].each do |unit| %>
-                  <div class="col-sm-2 col-xs-6">
+                  <div class="even-sm-1 col-xs-6">
                     <div class="thumbnail">
                       <%= image_tag unit[:imgpath], width: '80' %>
                       <div class="caption">
@@ -258,7 +258,7 @@
             <div class="tab-pane fade" id="<%= units[:groupid] -%>">
               <div class="row">
                 <% units[:group].each do |unit| %>
-                  <div class="col-sm-2 col-xs-6">
+                  <div class="even-sm-1 col-xs-6">
                     <div class="thumbnail">
                       <%= image_tag unit[:imgpath], width: '80' %>
                       <div class="caption">
@@ -275,7 +275,7 @@
     </div>
 
     <div class="action">
-      <%= link_to '更多功能', 'https://developer.qiniu.com/pili/manual/1209/live-the-core-function?ref=www.qiniu.com', target: '_blank', class: 'btn btn-primary' %>
+      <%= link_to '更多功能', 'https://developer.qiniu.com/pili/sdk/3734/short-video-android-sdk', target: '_blank', class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
@@ -306,7 +306,7 @@
                     <div class="content">
                       <h4 class="step-title">视频拍摄编辑</h4>
                       <div class="desc">
-                        <p>短视频 SDK 小至 1.5M，1 天快速对接。同时包含丰富的基础功能，可灵活使用剪辑、拼接、添加滤镜等特效。</p>
+                        <p>短视频 SDK 小至 1.5M，1 天快速对接。同时包含丰富的基础功能，可灵活使用剪辑、拼接、添加滤镜等功能。</p>
                       </div>
                     </div>
                   </div>
