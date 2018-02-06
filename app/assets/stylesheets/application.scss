@@ -45,6 +45,7 @@
 @import "blog";
 @import "newmedia";
 @import "player";
+@import "plsv";
 @import "alaccelerator";
 @import "cdnprice.scss";
 
@@ -527,17 +528,6 @@ footer .container {
 
 @media (min-width: 992px){
 
-}
-
-@media (min-width: 768px){
-  .plsv-services{
-    .col-5{
-      width: 20%;
-    }
-  }
-  .nav-tabs.nav-justified.nav-short{
-    width: 80%;
-  }
 }
 
 @media (max-width: 767px) {

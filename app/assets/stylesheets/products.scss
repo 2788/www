@@ -132,13 +132,10 @@
   }
 
   &.plsv-services{
+    padding-bottom: 0;
     .row.row-clear{
       padding-left: 0.20rem;
       padding-right: 0.20rem;
-
-      .thumbnail-icons{
-        min-height: 1.00rem;
-      }
     }
   }
 
