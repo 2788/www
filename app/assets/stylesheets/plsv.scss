@@ -62,6 +62,9 @@
         position: relative;
         padding: 146% 0 0;
         margin-right: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
         &:hover, &.hover {
           cursor: pointer;
           .mask {
