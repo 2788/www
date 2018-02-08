@@ -28,7 +28,7 @@
         <li class="intLink active"><a href="#tab-content-advantage">方案优势</a></li>
         <li class="intLink"><a href="#tab-content-function">特色功能</a></li>
         <li class="intLink"><a href="#tab-content-allfunction">功能大全</a></li>
-        <li class="intLink"><a href="#tab-content-programme">一站式解决方案</a></li>
+        <li class="intLink"><a href="#tab-content-programme">解决方案</a></li>
         <li class="intLink"><a href="#tab-content-cases">客户案例</a></li>
         <li class="intLink"><a href="#tab-content-access">快速接入</a></li>
         <li class="intLink"><a href="#tab-content-products">产品相关</a></li>
@@ -239,7 +239,7 @@
         </ul>
         <div class="tab-content">
           <% I18n.t("plsvs1").each do |units| %>
-            <div class="tab-pane fade in active" id="<%= units[:groupid] -%>">
+            <div class="tab-pane in active" id="<%= units[:groupid] -%>">
               <div class="row">
                 <% units[:group].each do |unit| %>
                   <div class="five-sm-1 col-xs-6">
@@ -255,7 +255,7 @@
             </div>
           <% end %>
           <% I18n.t("plsvs").each do |units| %>
-            <div class="tab-pane fade" id="<%= units[:groupid] -%>">
+            <div class="tab-pane" id="<%= units[:groupid] -%>">
               <div class="row">
                 <% units[:group].each do |unit| %>
                   <div class="five-sm-1 col-xs-6">
@@ -283,7 +283,7 @@
 <div class="features tab-content-programme">
   <div class="container">
     <div class="intro">
-      <h2 class="title">端到云到端的一站式解决方案</h2>
+      <h2 class="title">端到端的解决方案</h2>
       <p class="desc">一站式短视频服务，让你专注核心业务创新</p>
     </div>
 
@@ -335,7 +335,7 @@
                       <h4 class="step-title">视频智能分析</h4>
                       <div class="desc">
                         <p>利用 AI 技术对视频内容进行智能分析。开发者可使用色情识别、暴恐识别、政治人物识别来智能审核视频，大大提高运营效率。</p>
-                        <p>相关产品：<%= link_to 'AI 创新扶持计划', alaccelerator_path, class: 'link m-r' %><%= link_to '智能多媒体 API', products_dora_path, class: 'link' %></p>
+                        <p>相关产品：<%= link_to 'AI 创新扶持计划', alaccelerator_path, class: 'link m-r' %><%= link_to '智能多媒体 API', products_dora_path, class: 'link', target: '_blank' %></p>
                       </div>
                     </div>
                   </div>
@@ -349,7 +349,7 @@
                       <h4 class="step-title">极致播放体验</h4>
                       <div class="desc">
                         <p>提供免费的播放器 SDK，秒开 200ms，包体最小至 400K，千万日活验证，给用户畅享流畅无卡顿的视频体验。</p>
-                        <p>相关产品：<%= link_to '播放器 SDK', products_player_path, class: 'link' %></p>
+                        <p>相关产品：<%= link_to '播放器 SDK', products_player_path, class: 'link', target: '_blank' %></p>
                       </div>
                     </div>
                   </div>
@@ -363,7 +363,7 @@
                       <h4 class="step-title">大数据运营</h4>
                       <div class="desc">
                         <p>大数据实时监控各个性能指标，同步分析用户行为数据，助力短视频平台完善业务。</p>
-                        <p>相关产品：<%= link_to '大数据', products_pandora_path, class: 'link' %></p>
+                        <p>相关产品：<%= link_to '大数据', products_pandora_path, class: 'link', target: '_blank' %></p>
                       </div>
                     </div>
                   </div>
@@ -430,7 +430,7 @@
             <%= image_tag "plsv/icon-zhengshishangxian.png", alt: "正式上线", width: 100 %>
             <div class="caption">
               <h4>正式上线</h4>
-              <p>1V1售后服务，确保业务稳定运行</p>
+              <p>1V1 售后服务，确保业务稳定运行</p>
             </div>
           </div>
         </li>
