@@ -915,23 +915,6 @@ en:
     - name: qualityctrl
       label: Application Quality Monitoring
       desc:
-  nemwmedias:
-    - path: newmedia/beifangwang.jpg
-    - path: newmedia/CIBN.jpg
-    - path: newmedia/cntv.jpg
-    - path: newmedia/dahewang.jpg
-    - path: newmedia/guizhouguangdian.jpg
-    - path: newmedia/heilongjiang.jpg
-    - path: newmedia/henanribao.jpg
-    - path: newmedia/huashu.jpg
-    - path: newmedia/hubeiguangdian.jpg
-    - path: newmedia/jiangxuweishi.jpg
-    - path: newmedia/lianhuaweishi.jpg
-    - path: newmedia/longhuwang.jpg
-    - path: newmedia/mangguotv.jpg
-    - path: newmedia/zhejiangribao.jpg
-    - path: newmedia/zhejiangzaixian.jpg
-    - path: newmedia/zhongguowang.jpg
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w
