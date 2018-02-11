@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<div class="tab-content">
+<div class="tab-content features-newmedia">
   <div class="tab-pane in active" id="center">
     <div class="features">
       <div class="container">
@@ -326,18 +326,18 @@
               </div>
               <div class="right">
                 <div class="content-box">
-                  <div class="content">
-                    <div class="middleline"></div>
-
-                    <div class="thumbnail">
+                  <div class="thumbnail first">
+                    <div class="middle">
                       <%= image_tag 'newmedia/icon-xinwenyulunshishiredian.png', width:'50' %>
                       <div class="caption">
                         <h4 class="title">新闻舆情实时热点</h4>
                         <p>按地域实时显示新闻热点的传播路径和热度变化，作为舆情监控、内容策划和传播总结的依据</p>
                       </div>
                     </div>
+                  </div>
 
-                    <div class="thumbnail">
+                  <div class="thumbnail">
+                    <div class="middle">
                       <%= image_tag 'newmedia/icon-xinwenyulunredianpanduan.png', width:'50' %>
                       <div class="caption">
                         <h4 class="title">新闻舆情热点预判</h4>
@@ -363,18 +363,18 @@
               </div>
               <div class="right">
                 <div class="content-box">
-                  <div class="content">
-                    <div class="middleline"></div>
-
-                    <div class="thumbnail">
+                  <div class="thumbnail first">
+                    <div class="middle">
                       <%= image_tag 'newmedia/icon-yunduanneirongtezhengku.png', width:'50' %>
                       <div class="caption">
                         <h4 class="title">云端内容特征库</h4>
                         <p>多维度地抽取云端媒资内容特征，方便用户按特征查询、调取，并将内容用于检索学习或产品包装</p>
                       </div>
                     </div>
+                  </div>
 
-                    <div class="thumbnail">
+                  <div class="thumbnail">
+                    <div class="middle">
                       <%= image_tag 'newmedia/icon-meitineirongkelihua.png', width:'50' %>
                       <div class="caption">
                         <h4 class="title">媒体内容颗粒化</h4>
@@ -423,18 +423,18 @@
               </div>
               <div class="right">
                 <div class="content-box">
-                  <div class="content">
-                    <div class="middleline"></div>
-
-                    <div class="thumbnail">
+                  <div class="thumbnail first">
+                    <div class="middle">
                       <%= image_tag 'newmedia/icon-shipinbaikequanshu.png', width:'50' %>
                       <div class="caption">
                         <h4 class="title">视频百科全书</h4>
                         <p>抽取视频中的知识点，建立知识点之间的关联，形成知识性的视频出版物或有针对性的视频百科</p>
                       </div>
                     </div>
+                  </div>
 
-                    <div class="thumbnail">
+                  <div class="thumbnail">
+                    <div class="middle">
                       <%= image_tag 'newmedia/icon-neirongzhishixuexiyinqing.png', width:'50' %>
                       <div class="caption">
                         <h4 class="title">内容知识学习引擎</h4>
@@ -468,7 +468,8 @@
       <div class="container">
         <div class="boxes">
           <div class="title-box pull-left">
-            <%= image_tag 'newmedia/img-ronghemeitichanpinbaozhangxitong.jpg' %>
+            <%= image_tag 'newmedia/img-ronghemeitichanpinbaozhangxitong.jpg', class: "img" %>
+            <%= image_tag 'newmedia/icon-ronghemeitichanpinbaozhangxitong.png', class: "icon" %>
             <h4 class="title">融合媒体产品包装系统</h4>
           </div>
           <div class="content-box">
@@ -477,7 +478,7 @@
                 <div class="thumbnail first">
                   <%= image_tag "newmedia/icon-chanpinneironghuijupingtai.png", alt: "产品内容汇聚平台", width:'50' %>
                   <div class="caption">
-                    <h4>产品内容汇聚平台</h4>
+                    <h4 class="title">产品内容汇聚平台</h4>
                     <p>统一管理视频内容，有效整合分类编目，灵活控制内容流动，是融媒体产品的内容资源池</p>
                   </div>
                 </div>
@@ -486,7 +487,7 @@
                 <div class="thumbnail">
                   <%= image_tag "newmedia/icon-chanpinbaozhuangguanlipingtai.png", alt: "产品包装管理平台", width:'50' %>
                   <div class="caption">
-                    <h4>产品包装管理平台</h4>
+                    <h4 class="title">产品包装管理平台</h4>
                     <p>有效组织视频内容、智能调整内容抽取策略，是融合媒体产品的内容发动机</p>
                   </div>
                 </div>
@@ -495,7 +496,7 @@
                 <div class="thumbnail">
                   <%= image_tag "newmedia/icon-chanpindingdanguanlixitong.png", alt: "产品订单管理系统", width:'50' %>
                   <div class="caption">
-                    <h4>产品订单管理系统</h4>
+                    <h4 class="title">产品订单管理系统</h4>
                     <p>按需调取、发布视频内容产品，为结算、清分提供依据，是融媒体产品的调度方向盘</p>
                   </div>
                 </div>
@@ -511,7 +512,8 @@
 
         <div class="boxes">
           <div class="title-box pull-right">
-            <%= image_tag 'newmedia/img-chuanbojuecexitong.jpg' %>
+            <%= image_tag 'newmedia/img-chuanbojuecexitong.jpg', class: "img" %>
+            <%= image_tag 'newmedia/icon-chuanbojuecexitong.png', class: "icon" %>
             <h4 class="title">传播决策系统</h4>
           </div>
           <div class="content-box">
@@ -520,7 +522,7 @@
                 <div class="thumbnail first">
                   <%= image_tag "newmedia/icon-chuanbolujingzhuizong.png", alt: "传播路径追踪", width:'50' %>
                   <div class="caption">
-                    <h4>传播路径追踪</h4>
+                    <h4 class="title">传播路径追踪</h4>
                     <p>追踪内容传播路径，分析普通传播路径、传播支点、传播杠杆等影响传播效果的要素，解决融合媒体内容传播过程中的决策盲区</p>
                   </div>
                 </div>
@@ -529,7 +531,7 @@
                 <div class="thumbnail">
                   <%= image_tag "newmedia/icon-chuanboqudaoguanli.png", alt: "传播渠道管理", width:'50' %>
                   <div class="caption">
-                    <h4>传播渠道管理</h4>
+                    <h4 class="title">传播渠道管理</h4>
                     <p>采集各大传播渠道的云端数据流，判断各渠道对特定内容传播有效性、传导率和渗透率，解决融合媒体内容传播过程中的渠道抉择</p>
                   </div>
                 </div>
@@ -543,7 +545,7 @@
                 <div class="thumbnail last">
                   <%= image_tag "newmedia/icon-chuanboshouzhonghuaxiang.png", alt: "传播受众画像", width:'50' %>
                   <div class="caption">
-                    <h4>传播受众画像</h4>
+                    <h4 class="title">传播受众画像</h4>
                     <p>为媒体平台描绘出精确的受众画像，解决融合媒体内容传播过程中的用户感知</p>
                   </div>
                 </div>
@@ -554,7 +556,8 @@
 
         <div class="boxes">
           <div class="title-box pull-left">
-            <%= image_tag 'newmedia/icon-chuanbojuecexitong.jpg' %>
+            <%= image_tag 'newmedia/img-rongheyanshengxitong.jpg', class: "img" %>
+            <%= image_tag 'newmedia/icon-rongheyanshengxitong.png', class: "icon" %>
             <h4 class="title">融合衍生系统</h4>
           </div>
           <div class="content-box">
@@ -563,7 +566,7 @@
                 <div class="thumbnail first">
                   <%= image_tag "newmedia/icon-kuapingqingyingyongdingzhi.png", alt: "跨屏轻应用定制", width:'50' %>
                   <div class="caption">
-                    <h4>跨屏轻应用定制</h4>
+                    <h4 class="title">跨屏轻应用定制</h4>
                     <p>为频道、栏目及特别节目快速定制跨屏互动轻应用，包含APP、H5和小程序等多种终端形式</p>
                   </div>
                 </div>
@@ -572,7 +575,7 @@
                 <div class="thumbnail">
                   <%= image_tag "newmedia/icon-kuapingshejiaogongneng.png", alt: "跨屏社交功能", width:'50' %>
                   <div class="caption">
-                    <h4>跨屏社交功能</h4>
+                    <h4 class="title">跨屏社交功能</h4>
                     <p>在轻应用端形成以内容为中心的异步社交网络，助力融合媒体构建轻型社区</p>
                   </div>
                 </div>
@@ -581,7 +584,7 @@
                 <div class="thumbnail">
                   <%= image_tag "newmedia/icon-kuapingdianshanggongneng.png", alt: "跨屏电商功能", width:'50' %>
                   <div class="caption">
-                    <h4>跨屏电商功能</h4>
+                    <h4 class="title">跨屏电商功能</h4>
                     <p>识别视频中的特征物件，快速对接本地电商服务平台，创建内容与商业的快捷方式</p>
                   </div>
                 </div>
