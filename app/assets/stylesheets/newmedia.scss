@@ -1,3 +1,14 @@
+.features-newmedia {
+  .thumbnail {
+    h4.title {
+      font-size: 0.18rem;
+      margin-bottom: 0.2rem;
+    }
+    img {
+      margin-top: 0.2rem;
+    }
+  }
+}
 .banner-box {
   position: relative;
   padding: 17% 0;
@@ -89,14 +100,38 @@
     padding: 20px 0;
     .title-box {
       position: relative;
-      display: inline-block;
       width: 317px;
-      .title {
+      height: 576px;
+
+      .img {
+        width: 100%;
+        height: auto;
+      }
+
+      .icon {
+        padding: 0;
+        margin: 0;
+        padding-bottom: 100px;
+        width: 100px;
+        height: auto;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      h4.title {
+        background-image: image-url("newmedia/img-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
         color: #fff;
         position: absolute;
         width: 100%;
-        bottom: 10%;
+        bottom: 0;
+        margin: 0;
         text-align: center;
+        padding: 64px 0;
       }
     }
     .content-box {
@@ -106,14 +141,14 @@
       -moz-box-sizing: border-box;
       -ms-box-sizing: border-box;
       width: 800px;
-      padding: 18px;
+      padding: 58px;
       background-color: #fff;
       .row {
         margin: 0;
       }
       .thumbnail {
         position: relative;
-        min-height: 267px;
+        min-height: 230px;
 
         .summary {
           width: 100%;
@@ -227,7 +262,7 @@
         background-size: cover;
 
         .paragraph {
-          min-height: 100px;
+          min-height: 120px;
           padding: 0;
           position: relative;
 
@@ -256,31 +291,32 @@
 
       .content-box {
         position: relative;
+        min-height: 7rem;
+        padding: 0 15px;
 
-        min-height: 552px;
+        .thumbnail {
+          min-height: 3.5rem;
+          position: relative;
+          &.first { border-bottom: 1px solid #dadbdd; }
+
+          .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+          }
+          p {
+            padding: 0 30px;
+            text-align: left;
+          }
+        }
 
         .content {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-
-          .thumbnail {
-            min-height: 2.7rem;
-          }
-          .thumbnail p {
-            padding: 0 20px;
-          }
-
-          .middleline {
-            width: 80%;
-            height: 1px;
-            background-color: #dadbdd;
-
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
         }
       }
     }
@@ -335,6 +371,7 @@
         margin: 0;
         width: 100%;
         text-align: center;
+        font-size: 0.2rem;
         color: #fff;
         background-image: image-url("newmedia/img-bg.jpg");
         background-repeat: no-repeat;
@@ -348,7 +385,7 @@
       width: 75%;
       margin-left: 25%;
       margin-right: 0;
-      padding: 5px;
+      padding: 58px;
 
       &.pu-left {
         margin-left: 0;
@@ -368,7 +405,7 @@
           position: relative;
           text-align: center;
           border-right: 1px solid #dadbdd;
-          min-height: 2.02rem;
+          min-height: 2.6rem;
 
           &.thumbnail-right-last {
             border-right: none;
@@ -457,6 +494,14 @@
       }
     }
   }
+
+  .features.features-newmedia-engine .boxes .right .content-box .thumbnail {
+    min-height: 4rem;
+
+    p{
+      padding: 0 5px;
+    }
+  }
 }
 
 @media(min-width: 768px) and (max-width: 991px) {
@@ -489,8 +534,19 @@
     }
   }
 
-  .features.features-newmedia-engine .boxes .right .content-box {
-    min-height: 736px;
+  .features.features-newmedia-engine .boxes {
+    .left{
+      .desc .paragraph {
+        min-height: 210px;
+      }
+    }
+    .right .content-box {
+      min-height: 12rem;
+
+      .thumbnail {
+        min-height: 6rem;
+      }
+    }
   }
 }
 
@@ -500,6 +556,7 @@
 
     .title-box {
       width: 100%;
+      height: auto;
 
       img {
         width: 100%;
@@ -524,13 +581,18 @@
 
     .title-box {
       width: 376px;
+      height: 802px;
+
+      .img {
+        height: 802px;
+      }
     }
 
     .content-box {
       width: 505px;
 
       .thumbnail {
-        min-height: 320px;
+        min-height: 343px;
       }
     }
   }
