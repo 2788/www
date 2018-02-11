@@ -32,7 +32,6 @@
 #= require sla
 #= require career
 #= require blog
-#= require newmedia
 #= require alaccelerator
 #= require plsv
 
