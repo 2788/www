@@ -456,20 +456,11 @@
 }
 
 @media(max-width: 767px) {
-  .features p{
-    padding: 0 50px;
-  }
   .features-newmedia .thumbnail p{
     padding: 0 30px; 
   }
-  .features .intro .title{
-    font-size: 0.25rem;
-  }
   .features-newmedia .img-box img{
     display: none;
-  }
-  .intro p{
-    padding: 0 52px;
   }
   .features.newmedia-nav .tabs .nav-justified.nav.nav-tabs.nav-tabs-newmedia > li, .nav-tabs.nav-justified > li{
     display: table-cell;
@@ -478,7 +469,6 @@
       font-size: 14px;
     }
   }
-
   .banner-box {
     margin-top: 68px;
     .content-box .content {
