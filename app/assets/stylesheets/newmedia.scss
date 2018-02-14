@@ -475,6 +475,9 @@
 }
 
 @media(max-width: 767px) {
+  .features.features-newmedia-bg.features-newmedia-engine{
+    padding-top:0;
+  }
   .features-newmedia{
      .title{
         font-size:1.2em;
@@ -667,10 +670,6 @@
   }
   .features.features-newmedia-engine .boxes .right{
     margin-left:0;
-  }
-  .features.features-newmedia-engine .boxes .right .content-box .content{
-    top: 50%;
-    left: 22%;
   }
   .features.features-newmedia-engine .boxes .right .content-box{
     min-height: 300px
