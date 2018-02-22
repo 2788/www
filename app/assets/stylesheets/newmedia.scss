@@ -338,6 +338,13 @@
       left: 0;
       right: auto;
       padding-bottom: 100px;
+
+      background-image: image-url("newmedia/img-bg.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+
       &.pu-right {
         right: 0;
         left: auto;
@@ -346,7 +353,7 @@
       .img {
         position: absolute;
         width: 100%;
-        height: 100%;
+        // height: 100%;
         top: 0;
         left: 0;
       }
@@ -409,7 +416,6 @@
 
           &.thumbnail-right-last {
             border-right: none;
-            margin-left: -15px;
           }
 
           p.summary {
@@ -446,6 +452,7 @@
 
   .banner-box {
     margin-top: 68px;
+    min-height: 150px;
     .content-box .content {
       position: absolute;
       width: 100%;
