@@ -38,6 +38,7 @@
                           <li><input type="checkbox" value="east" checked class="spacecheck" key="kodo" id="east-kodo-checkbox"><label for="east-kodo-checkbox">华东</label></li>
                           <li><input type="checkbox" value="sourth" class="spacecheck" key="kodo" id="sourth-kodo-checkbox"><label for="sourth-kodo-checkbox">华南</label></li>
                           <li><input type="checkbox" value="north" class="spacecheck" key="kodo" id="north-kodo-checkbox"><label for="north-kodo-checkbox">华北</label></li>
+                          <li><input type="checkbox" value="singapore" class="spacecheck" key="kodo" id="singapore-kodo-checkbox"><label for="singapore-kodo-checkbox">新加坡</label></li>
                           <li><input type="checkbox" value="northAmerica" class="spacecheck" key="kodo" id="na-kodo-checkbox"><label for="na-kodo-checkbox">北美</label></li>
                         </ul>
                       </li>
@@ -194,6 +195,59 @@
                           <label for="">PUT/DELET 写请求数/月</label>
                           <div class="input-group">
                             <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-north">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl id="data-singapore" class="singapore displayNone input-data" key="singapore">
+                    <dt class="dt-lighter">新加坡</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-sm-3 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-space" key="kodo-space-singapore">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">外网流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-oss" key="kodo-oss-singapore">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">GET 读请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-read" key="kodo-read-singapore">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">PUT/DELET 写请求数/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-singapore">
                             <div class="input-group-btn">
                               <button type="button" class="btn btn-default">万次</button>
                             </div>
@@ -625,6 +679,13 @@
                   <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-north" key="kodo-oss-north"></span></dd>
                   <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-north" key="kodo-read-north"></span></dd>
                   <dd><span>PUT/DELET 写请求数/月</span><span class="pull-right" id="text-kodo-write-north" key="kodo-write-north"></span></dd>
+                </dl>
+                <dl class="singapore displayNone">
+                  <dt class="bg-init dt-sm">新加坡</dt>
+                  <dd><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-singapore" key="kodo-space-singapore"></span></dd>
+                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-singapore" key="kodo-oss-singapore"></span></dd>
+                  <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-singapore" key="kodo-read-singapore"></span></dd>
+                  <dd><span>PUT/DELET 写请求数/月</span><span class="pull-right" id="text-kodo-write-singapore" key="kodo-write-singapore"></span></dd>
                 </dl>
                 <dl class="northAmerica displayNone">
                   <dt class="bg-init dt-sm">北美</dt>
