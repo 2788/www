@@ -294,6 +294,8 @@ table.pricing-table tr th, table.pricing-table tr td{
   }
   dd{
     padding: 0.05rem 0.15rem;
+    width: 100%;
+    overflow: hidden;
   }
 
   p{
