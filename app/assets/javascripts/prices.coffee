@@ -185,30 +185,17 @@ $(document).ready ->
     $('#text-' + key).text(val)
     caculateEveryPrice()
 
-  # # 容错
-  # if $('#feature-price-nav').length != 0 && $(window).width() > 768
-    # setFxd
-    #   'elem': $('#feature-price-nav')
-    #   'fxdClass': 'fix-top'
-    #   'prevPosition': 'relative'
-
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
   $('.input-num').bind 'input', ->
     key = $(this).attr('key')
     units = $(this).next().attr('val') || '万次'
     $(this).val( parseInt($(this).val()) | 0 )
-    val = +$(this).val() + units
+    val = $(this).val() + units
     setAmount(key, val)
 
   #////////////////////////////////////////////////////////////////
   ##units change
-  $("select").change (e) ->
-    units = $(this).val()
-    val = +$(this).prev().val() + units
-    key = $(this).prev().attr('key')
-    setAmount(key, val)
-
   $('.unit-select li').click (e) ->
     $p = $(this).parents('.unit-select')
     units = $(this).attr('val')
