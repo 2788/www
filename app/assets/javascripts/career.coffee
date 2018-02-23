@@ -75,8 +75,8 @@ $(document).ready ->
       url: _url,
       success: (res) ->
         $('.modal-title').text(res.title)
-        $('.position-work').html(res.description.replace("\n", "<br />"))
-        $('.position-req').html(res.requirement.replace("\n", "<br />"))
+        $('.position-work').html(res.description.replace(/\n/g, "<br />"))
+        $('.position-req').html(res.requirement.replace(/\n/g, "<br />"))
 
         _space = res.location.join('/')
         $('.position-space').text(_space)

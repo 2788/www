@@ -190,7 +190,9 @@ video {
 // positions tab
 .features-positions {
   &.features {
-    h4 { font-size: 17px; }
+    h4 {
+      font-size: 17px;
+    }
     .intro {
       p {
         margin-bottom: 0;
@@ -340,7 +342,38 @@ video {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 517px) {
+  .features.features-positions {
+    h4.media-heading {
+      min-height: 36px;
+    }
+
+    .nav.nav-tabs>li {
+      margin-left: 0;
+      margin-right: 0;
+      img {
+        display: none;
+      }
+
+      a {
+        padding: 5px;
+      }
+    }
+
+    .positionTab {
+      td {
+        .space {
+          display: none;
+        }
+        time {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 517px) and (max-width: 768px) {
   .features.features-positions {
     .nav.nav-tabs>li {
       margin-left: 5px;
@@ -352,6 +385,7 @@ video {
         padding: 6px 10px;
       }
     }
+
     .positionTab {
       td {
         .space {
