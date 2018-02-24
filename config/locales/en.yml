@@ -888,33 +888,35 @@ en:
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   solutions:
-    - name: privatization
-      label: Storage in Private Cloud
-      desc:
-    - name: data
-      label: Unstructured Data Management
-      desc:
-    - name: plsv
-      label: Short Videos
-      desc:
-    - name: album
-      label: Intelligent Cloud Album
-      desc:
-    - name: intelligence
-      label: Smart Device and IOT
-      desc:
-    - name: media
-      label: New Media Industry
-      desc:
-    - name: security
-      label: Safety Protection Terminals
-      desc:
-    - name: internet
-      label: internet and Mobile internet
-      desc:
-    - name: qualityctrl
-      label: Application Quality Monitoring
-      desc:
+    arr1:
+      - name: plsv
+        label: Short Videos
+        desc:
+      - name: newmedia
+        label: New Media Industry
+        desc:
+    arr2:
+      - name: qualityctrl
+        label: Application Quality Monitoring
+        desc:
+      - name: privatization
+        label: Storage in Private Cloud
+        desc:
+      - name: data
+        label: Unstructured Data Management
+        desc:
+      - name: security
+        label: Safety Protection Terminals
+        desc:
+      - name: intelligence
+        label: Smart Device and IOT
+        desc:
+      - name: album
+        label: Intelligent Cloud Album
+        desc:
+      - name: internet
+        label: internet and Mobile internet
+        desc:
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w
