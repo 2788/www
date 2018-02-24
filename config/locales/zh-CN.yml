@@ -499,7 +499,7 @@ zh-CN:
                     icon: "icon-img alun"
                   right:
                     time: "2012 年 12 月"
-                    desc: "七牛云著作《Go 语言编程》被评为“2012 年度十大图书之一"
+                    desc: 七牛云著作《Go 语言编程》被评为“2012 年度十大图书之一”
                     icon: "icon-img go"
             - time: "2013 年"
               li:
@@ -565,19 +565,19 @@ zh-CN:
                     icon: "icon-img dashuju"
                   right:
                     time: "2017 年 04 月"
-                    desc: "CDN海外融合上线，融合 Highwinds、Edgecast、CDNetworks等海外 CDN 厂商。覆盖 6 大洲 100 多个国家。"
+                    desc: "CDN 海外融合上线，融合 Highwinds、Edgecast、CDNetworks 等海外 CDN 厂商。覆盖 6 大洲 100 多个国家。"
                     icon: "icon-img cdnhaiwai"
                 - left:
                     time: "2017 年 08 月"
-                    desc: "宣布完成新一轮10亿元融资，阿里集团、云锋基金领投"
+                    desc: "宣布完成新一轮 10 亿元融资，阿里集团、云锋基金领投"
                     icon: "icon-img flun"
                   right:
                     time: "2017 年 09 月"
-                    desc: "七牛云人工智能团队勇斩ACMMM LSVC 竞赛亚军，视频识别能力获国际认可"
+                    desc: "七牛云人工智能团队勇斩 ACMMM LSVC 竞赛亚军，视频识别能力获国际认可"
                     icon: "icon-img acmmmlsvc"
                 - left:
                     time: "2017 年 10 月"
-                    desc: "七牛云获工信部颁发的CDN牌照及云服务牌照"
+                    desc: "七牛云获工信部颁发的 CDN 牌照及云服务牌照"
                     icon: "icon-img cdnpaizhao"
                   right:
                     time: ""

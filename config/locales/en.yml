@@ -719,7 +719,7 @@ en:
               class: "col-sm-6 col-padding col-content-middle"
               desc: Object Segmentation is capable of recognizing and localizing more than 80 kinds of objects, along with detecting their edges precisely. It can be applied in fields like image matting and AR.
               poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/object-recognition.mp4"
+              src: "https://odum9helk.qnssl.com/Fgw_MuDAseUiqL8gXb16fnlBFj3R"
           col2:
             - class: "col-sm-6 col-padding col-content-middle sm-right"
               title1: Image Previewing
@@ -827,22 +827,22 @@ en:
               id: "tab-usage-section-3"
               class: "tab-pane fade in active"
               desc: Visual Interface of dashboard for monitoring status during model training process.
-              img: "atlab/moxingxunlian.gif"
+              img: "atlab/moxingxunlianEN.gif"
             - title: Algorithm Design
               id: "tab-usage-section-1"
               class: "tab-pane fade"
               desc: Fast creation of deep learning models without need for much knowledge of deep learning framework, simply by modifying configuration file in AVA Algorithm module.
-              img: "atlab/algorithmd.png"
+              img: "atlab/algorithmdEN.png"
             - title: Dataset
               id: "tab-usage-section-2"
               class: "tab-pane fade"
               desc: You can use data already provided by Qiniu Cloud to create dataset, or custom your dataset by our labelling system.
-              img: "atlab/datacollection.png"
+              img: "atlab/datacollectionEN.png"
             - title: Publish Model
               id: "tab-usage-section-4"
               class: "tab-pane fade"
               desc: Simply one step to publish model online, for various use case through API.
-              img: "atlab/moxingfenbu.png"
+              img: "atlab/moxingfenbuEN.png"
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
