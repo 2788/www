@@ -67,13 +67,16 @@
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.solution") %></a>
 
               <ul class="dropdown-menu solutions-menu">
-                <li class="solution <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-                  <%= link_to products_pili_livequiz_path do -%>
-                    <h4 class="quiz menu-title">直播竞答解决方案</h4>
-                    <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案。</p>
+                <% I18n.t("solutions.arr1").each do |solution| %>
+                  <%= content_tag :li, class: "solution" do -%>
+                    <%= link_to(send("products_#{solution[:name]}_path")) do -%>
+                      <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
+                      <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
+                    <% end %>
                   <% end %>
-                </li>
-                <% I18n.t("solutions").each do |solution| %>
+                <% end %>
+
+                <% I18n.t("solutions.arr2").each do |solution| %>
                   <%= content_tag :li, class: "solution" do -%>
                     <%= link_to(solutions_path(anchor: solution[:name])) do -%>
                       <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
@@ -81,10 +84,11 @@
                     <% end %>
                   <% end %>
                 <% end %>
+
                 <li class="solution <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-                  <%= link_to products_player_path do -%>
-                    <h4 class="player menu-title">播放器解决方案</h4>
-                    <p class="hidden-xs">全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议。</p>
+                  <%= link_to products_pili_livequiz_path do -%>
+                    <h4 class="quiz menu-title">直播竞答解决方案</h4>
+                    <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案</p>
                   <% end %>
                 </li>
               </ul>

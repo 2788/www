@@ -909,33 +909,38 @@ zh-CN:
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   solutions:
-    - name: privatization
-      label:  私有云存储解决方案
-      desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
-    - name: data
-      label:  非结构化数据管理解决方案
-      desc: 提供大批量文件打包上传、文档检索、多媒体数据处理等服务
-    - name: plsv
-      label:  短视频解决方案
-      desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
-    - name: album
-      label:  智能云相册解决方案
-      desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
-    - name: intelligence
-      label:  智能硬件与物联网解决方案
-      desc: 满足智能硬件厂商各应用场景下云端计算需求
-    - name: media
-      label:  新媒体解决方案
-      desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
-    - name: security
-      label:  安防解决方案
-      desc: 灵活部署，满足不同安防场景互联网远程监控需求
-    - name: internet
-      label:  互联网与移动互联网解决方案
-      desc: 为互联网初创企业量身定制，一站式云计算服务平台
-    - name: qualityctrl
-      label:  应用质量监控解决方案
-      desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
+    arr1:
+      - name: plsv
+        label:  短视频解决方案
+        desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
+      - name: player
+        label: 播放器解决方案
+        desc: 全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议
+      - name: newmedia
+        label:  新媒体解决方案
+        desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
+    arr2:
+      - name: qualityctrl
+        label:  应用质量监控解决方案
+        desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
+      - name: privatization
+        label:  私有云存储解决方案
+        desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+      - name: data
+        label:  非结构化数据管理解决方案
+        desc: 提供大批量文件打包上传、文档检索、多媒体数据处理等服务
+      - name: security
+        label:  安防解决方案
+        desc: 灵活部署，满足不同安防场景互联网远程监控需求
+      - name: intelligence
+        label:  智能硬件与物联网解决方案
+        desc: 满足智能硬件厂商各应用场景下云端计算需求
+      - name: album
+        label:  智能云相册解决方案
+        desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
+      - name: internet
+        label:  互联网与移动互联网解决方案
+        desc: 为互联网初创企业量身定制，一站式云计算服务平台
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w

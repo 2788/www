@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get '/products/atlab',       to: 'welcome#atlab'
     get '/products/plsv',        to: 'welcome#plsv'
     get '/products/player',      to: 'welcome#player'
+    get '/products/newmedia',    to: 'welcome#newmedia'
 
     get '/contact',        to: 'welcome#contact'
     get '/solutions',      to: 'welcome#solution'
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
     get '/sla-dora',       to: 'welcome#sla_dora'
     get '/goglobal',       to: 'welcome#goglobal'
     get '/alaccelerator',  to: 'welcome#alaccelerator'
-    get '/newmedia',       to: 'welcome#newmedia'
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
     get '/products/pili/livequiz',       to: 'welcome#livequiz'
 
