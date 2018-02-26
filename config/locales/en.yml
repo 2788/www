@@ -727,14 +727,14 @@ en:
               title2: Image Slim
               desc2: Image Slim is capable to compress PNG or JPG images stored in Qiniu or from Qiniu CDN to reduce data usage and improve product experience.
               alt: Picture processing
-              src: "dora/img-pictures.png"
+              src: "dora/img-pictures-en.jpg"
             - class: "col-sm-6 col-padding col-content-middle"
               title1: Audio and Video Transcoder
               desc1: Audio and Video Transcoder supports all mainstream formats of audios and videos with strong and high-efficient transcoding clusters. It can process 20%—30% size of the video using H.265 technology.
               title2: Video snapshot
               desc2: Video snapshot prints frames in videos stored in Qiniuc to generate thumbnails of specified size.
               alt: video processing
-              src: "dora/img-vedio.png"
+              src: "dora/img-vedio-en.jpg"
         feature2:
           title: "Why Dora"
           col:
