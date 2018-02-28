@@ -101,7 +101,7 @@
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
-            <li class="select-unit d-none">
+            <li class="select-unit" id="language-dropdown">
               <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
                 <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
@@ -132,7 +132,7 @@
 
             <li class="<%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
               <div class="actions">
-                <a href="#" class="btn btn-hollow hidden-xs" data-toggle="modal" data-target="#feedback-modal">contact us</a>
+                <a href="#" class="btn btn-hollow hidden-xs" data-toggle="modal" data-target="#feedback-modal">Contact Us</a>
               </div>
             </li>
           </ul>
