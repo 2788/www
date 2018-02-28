@@ -190,6 +190,10 @@ table.pricing-table{
   background-color: #fff;
   border-collapse: separate;
   margin-bottom: 0;
+
+  .text-center {
+    text-align: center;
+  }
 }
 
 table.pricing-table tr{
