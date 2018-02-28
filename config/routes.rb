@@ -47,7 +47,6 @@ Rails.application.routes.draw do
     get '/goglobal',       to: 'welcome#goglobal'
     get '/alaccelerator',  to: 'welcome#alaccelerator'
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
-    get ''
 
     resources :resources, only: [] do
       collection do
