@@ -81,6 +81,15 @@
       transform: translateX(-50%);
     }
   }
+  &.hero-bannerGoglobal {
+    background-image: image-url('bannerGoglobal.jpg');
+
+    .banner-container{
+      .btn-banner{
+        bottom: -25px;
+      }
+    }
+  }
 
   .right-mask-banner{
     min-height: 3rem;
@@ -215,6 +224,7 @@
 @media (max-width: 425px) {
   .slick-slider{ margin-bottom: 0; }
   .jumbotron.hero{
+    margin-top: 30px;
     p{
       line-height: 0.32rem;
       font-size: 0.16rem;
@@ -239,12 +249,18 @@
 }
 @media (max-width: 768px) {
   .jumbotron.hero{
-    margin-top: 30px;
     &.hero-bannerGoglobal{.banner-container{top: 20px;}}
     &.hero-bannerAI {.banner-container{top: 20px;}}
     &.hero-alaccelerator {
       height: 6rem;
       margin-top: 50px;
+    }
+    &.hero-bannerGoglobal {
+      .banner-container{
+        .btn-banner{
+          bottom: 25px;
+        }
+      }
     }
   }
 }
