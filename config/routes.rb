@@ -19,17 +19,18 @@ Rails.application.routes.draw do
 
   scope "(:locale)", locale: /en/ do
     root to: 'welcome#index'
-    get '/products/kodo',        to: 'welcome#kodo'
-    get '/products/pili',        to: 'welcome#pili'
-    get '/products/pandora',     to: 'welcome#pandora'
-    get '/products/fusion',      to: 'welcome#fusion'
-    get '/products/dora',        to: 'welcome#dora'
-    get '/products/kirk',        to: 'welcome#kirk'
-    get '/products/vance',       to: 'welcome#vance'
-    get '/products/atlab',       to: 'welcome#atlab'
-    get '/products/plsv',        to: 'welcome#plsv'
-    get '/products/player',      to: 'welcome#player'
-    get '/products/newmedia',    to: 'welcome#newmedia'
+    get '/products/kodo',           to: 'welcome#kodo'
+    get '/products/pili',           to: 'welcome#pili'
+    get '/products/pandora',        to: 'welcome#pandora'
+    get '/products/fusion',         to: 'welcome#fusion'
+    get '/products/dora',           to: 'welcome#dora'
+    get '/products/kirk',           to: 'welcome#kirk'
+    get '/products/vance',          to: 'welcome#vance'
+    get '/products/atlab',          to: 'welcome#atlab'
+    get '/products/plsv',           to: 'welcome#plsv'
+    get '/products/player',         to: 'welcome#player'
+    get '/products/newmedia',       to: 'welcome#newmedia'
+    get '/products/pili/livequiz',  to: 'welcome#livequiz'
 
     get '/contact',        to: 'welcome#contact'
     get '/solutions',      to: 'welcome#solution'
@@ -46,7 +47,7 @@ Rails.application.routes.draw do
     get '/goglobal',       to: 'welcome#goglobal'
     get '/alaccelerator',  to: 'welcome#alaccelerator'
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
-    get '/products/pili/livequiz',       to: 'welcome#livequiz'
+    get ''
 
     resources :resources, only: [] do
       collection do
