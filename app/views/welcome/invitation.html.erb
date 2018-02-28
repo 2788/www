@@ -18,7 +18,7 @@
 
     <div class="content">
       <%= image_tag 'invitation/img-diyongquan.png', class:'' %>
-      <p>备注：抵用劵总金额为 666 元</p>
+      <p class="my">备注：抵用劵总金额为 666 元</p>
       <div class="actions">
         <%= link_to "立即领取", "https://portal.qiniu.com/signup/choice", target:"_blank", class:"btn btn-lg btn-primary btn-banner" -%>
       </div>
@@ -37,5 +37,156 @@
     <p>4.抵用券有效期：1个月</p>
     <p>5.有任何问题，欢迎邮件联系：<a href="mailto:marketing@qiniu.com">marketing@qiniu.com</a></p>
     <p>6.本活动解释权归七牛云所有</p>
+  </div>
+</div>
+
+<div class="features feature-invitation">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">新人专享包领取流程</h2>
+    </div>
+
+    <div class="content">
+      <div class="row steps">
+        <div class="seven-sm-1 col-xs-6">
+          <div class="inline-box">
+            <%= image_tag "invitation/icon-lijilingqu.png", class: "media-object", alt: "icon-lijilingqu.png", width:80 %>
+            <h5 class="text-center">点击“立即领取”</h5>
+          </div>
+        </div>
+        <div class="seven-sm-1 hidden-xs">
+          <div class="inline-box">
+            <div class="step-line">
+              <span class="glyphicon glyphicon-play arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="inline-box">
+            <%= image_tag "invitation/icon-zhuceqiniuyunzhanghu.png", class: "media-object", alt: "icon-zhuceqiniuyunzhanghu.png", width:80 %>
+            <h5 class="text-center">注册七牛云账户</h5>
+          </div>
+        </div>
+        <div class="seven-sm-1 hidden-xs">
+          <div class="inline-box">
+            <div class="step-line">
+              <span class="glyphicon glyphicon-play arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="inline-box">
+            <%= image_tag "invitation/icon-xitongfafangdiyongquan.png", class: "media-object", alt: "icon-xitongfafangdiyongquan.png", width:80 %>
+            <h5 class="text-center">系统发放抵用劵</h5>
+          </div>
+        </div>
+        <div class="seven-sm-1 hidden-xs">
+          <div class="inline-box">
+            <div class="step-line">
+              <span class="glyphicon glyphicon-play arrow"></span>
+            </div>
+          </div>
+        </div>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="inline-box">
+            <%= image_tag "invitation/icon-caiwuzhongxin.png", class: "media-object", alt: "icon-caiwuzhongxin.png", width:80 %>
+            <h5 class="text-center">“财务中心”查看抵用劵</h5>
+          </div>
+        </div>
+      </div>
+      <p class="my">注册成为七牛云实名认证账户，在享受新人专享包的同时还能即刻享受以下产品免费额度套餐</p>
+      <div class="row list-inline-prices">
+        <div class="col-xs-6 col-md-3 special-price">
+          <p>标准存储免费空间</p>
+          <p><span class="big-text">0-10 </span><span class="smal-text"> GB</span></p>
+        </div>
+        <div class="col-xs-6 col-md-3 special-price">
+          <p>每月免费上传流量</p>
+          <p><span class="big-text">无上限</span></p>
+        </div>
+        <div class="col-xs-6 col-md-3 special-price">
+          <p>标准存储每月写请求 Put / Delete</p>
+          <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
+        </div>
+        <div class="col-xs-6 col-md-3 special-price border-init">
+          <p>标准存储每月读请求 Get</p>
+          <p><span class="big-text">0-100 </span><span class="smal-text"> 万次</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features feature-invitation feature-invitation-bg">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">更多产品与服务</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 col-xs-6">
+        <div class="logo">
+          <%= image_tag 'invitation/img-aichuangxin.jpg', width:'100%' %>
+          <div class="actions">
+            <%= link_to '立刻了解', alaccelerator_path -%>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="logo">
+          <%= image_tag 'invitation/img-chuanghaichuangyefuchi.jpg', width:'100%' %>
+          <div class="actions">
+            <%= link_to '立刻了解', goglobal_path -%>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="logo">
+          <%= image_tag 'invitation/img-shewenanquanziyuanbao.jpg', width:'100%' %>
+          <div class="actions">
+            <%= link_to '立刻了解', plup_resources_path -%>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-xs-6">
+        <div class="logo">
+          <%= image_tag 'invitation/img-cdn.jpg', width:'100%' %>
+          <div class="actions">
+            <%= link_to '立刻了解', cdnprice2018_path -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features feature-invitation">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">与 700,000+ 企业和开发者一起使用七牛</h2>
+    </div>
+
+    <div id="index-cases-slider" class="conveyor slick-slider draggable">
+      <div><div class="customer-changba index-case"></div></div>
+      <div><div class="customer-changhong index-case"></div></div>
+      <div><div class="customer-dajiang index-case"></div></div>
+      <div><div class="customer-dianping index-case"></div></div>
+      <div><div class="customer-guanglianda index-case"></div></div>
+      <div><div class="customer-haikangweishi index-case"></div></div>
+      <div><div class="customer-hubeiguangdian index-case"></div></div>
+      <div><div class="customer-hujiang index-case"></div></div>
+      <div><div class="customer-intel index-case"></div></div>
+      <div><div class="customer-jiangsuweishi index-case"></div></div>
+      <div><div class="customer-meipai index-case"></div></div>
+      <div><div class="customer-oppo index-case"></div></div>
+      <div><div class="customer-qingtingfm index-case"></div></div>
+      <div><div class="customer-shunfeng index-case"></div></div>
+      <div><div class="customer-sobey index-case"></div></div>
+      <div><div class="customer-souhu index-case"></div></div>
+      <div><div class="customer-zhihu index-case"></div></div>
+      <div><div class="customer-zhongguopingan index-case"></div></div>
+      <div><div class="customer-zhongguoyidong index-case"></div></div>
+      <div><div class="customer-zhongxing index-case"></div></div>
+    </div>
   </div>
 </div>
