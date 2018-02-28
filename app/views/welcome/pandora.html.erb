@@ -55,7 +55,7 @@
         <div class="col-md-4 col-sm-6">
           <div class="thumbnail">
             <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 60 %>
-            <div class="caption caption-center">
+            <div class="caption <%= I18n.t("views.language") == 'zh' ? 'caption-center' : '' %>">
               <h4><%= col[:title] %></h4>
               <% col[:descs].each do |desc| %>
                 <p><%= desc[:desc] %></p>

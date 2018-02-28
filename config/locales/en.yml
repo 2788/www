@@ -149,7 +149,7 @@ en:
             - title: "Low-frequency Storage"
               icon: "icon-dipincunchu.png"
               more: ""
-              desc: "Low-frequency storage provides less expensive prices than standard storage and can be applied to business scenarios with real-time access to data and low RF, such as enterprises’ data backups, data monitoring, applications of net disks and so on."
+              desc: "Low-frequency storage provides less expensive prices than standard storage and can be applied to business scenarios with real-time access to data and low RF, such as enterprises'data backups, data monitoring, applications of net disks and so on."
               link: "https://developer.qiniu.com/kodo/manual/3737/infrequent-storage"
             - title: "Mirrored Storage"
               icon: "icon-shezhijingxiangziyuan@2x.png"
@@ -193,7 +193,7 @@ en:
               class: "tab-pane"
               icon: "icon-shujuchuli2@2x.png"
               title: "Multimedia Data Processing"
-              desc: "For scenarios of mass users’ content generating, the ability of high concurrence of KODO enables you to flexibly deal with business scenarios with mass traffic. Data, such as images, audios, videos and other files stored in the cloud, can be processed."
+              desc: "For scenarios of mass users'content generating, the ability of high concurrence of KODO enables you to flexibly deal with business scenarios with mass traffic. Data, such as images, audios, videos and other files stored in the cloud, can be processed."
               link: ""
             - id: "tab-usage-section-3"
               class: "tab-pane"
@@ -224,7 +224,7 @@ en:
       fusion:
         banner:
           title: "CDN（FUSION）"
-          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
+          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
         middlebar:
           - title: "Product Frameworks"
             class: "intLink active"
@@ -292,7 +292,7 @@ en:
               class: "tab-pane fade in active"
               icon: "fusion/icon-wangyejiasu@2x.png"
               title: "Web Acceleration"
-              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users’ experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
+              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users'experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
             - id: "tab-usage-section-2"
               class: "tab-pane fade"
               icon: "fusion/icon-wenjianxiazai@2x.png"
@@ -302,7 +302,7 @@ en:
               class: "tab-pane fade"
               icon: "fusion/icon-yinshipindianbo@2x.png"
               title: "Audio & Video On-demand"
-              desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users’ costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users’ files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
+              desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
         feature5:
           title: "Success Cases"
       pili:
@@ -340,7 +340,7 @@ en:
               desc: "The Live Real-Time Streaming Networks use the latest network technology, it performs real-time nodes status calculation,and realizes instant loading,low latency and fast management of node failure."
             - title: "End-to-end Solution"
               icon: "icon-scenes@2x.png"
-              desc: "We provide collection SDKs and player SDKs for multiple platforms, we also open API to for customrization.Our product aims to help developers build the core business of live stream platform quickly and improve development efficiency."
+              desc: "We provide collection SDKs and player SDKs for multiple platforms, we also open API for customrization.Our product aims to help developers build the core business of live stream platform quickly and improve development efficiency."
         feature3:
           title: "Unique Functions"
           desc: "PILI adopts the development pattern like lego and it is able to continuously accept third-party audio and visual effects with self-defining open interfaces."
@@ -399,7 +399,7 @@ en:
           desc: "Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has meticulously established a simple and reliable solution platform to help you realize business needs quickly and create more business value."
         feature1:
           title: "Storage in Private Cloud"
-          desc: "The solution to storage in private cloud is designed on the framework and operation experience of Qiniu's object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of PB which has high reliability, strong security, low costs and scalability to satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises’ needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
+          desc: "The solution to storage in private cloud is designed on the framework and operation experience of Qiniu's object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of PB which has high reliability, strong security, low costs and scalability to satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises'needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
           btn: ""
           case: "Success Cases"
         feature2:
@@ -409,12 +409,12 @@ en:
           case: "Success Cases"
         feature3:
           title: "Short Videos"
-          desc: "Qiniu's one-stop solution to short videos has powerful capability in the clouds consisting of quick upload, transcoding, pornography identifying, storage and distribution and gathers components in the client ends with shooting, beautifying, special effects, filters, editing, composing, local compression, upload and broadcasting. It has features like complete functions, excellent performance, light packs, flexible interfaces and rich ecology. Also, it supports high customization and secondary development to meet enterprises’ development requirements in various business scenarios."
+          desc: "Qiniu's one-stop solution to short videos has powerful capability in the clouds consisting of quick upload, transcoding, pornography identifying, storage and distribution and gathers components in the client ends with shooting, beautifying, special effects, filters, editing, composing, local compression, upload and broadcasting. It has features like complete functions, excellent performance, light packs, flexible interfaces and rich ecology. Also, it supports high customization and secondary development to meet enterprises'development requirements in various business scenarios."
           btn: ""
           case: "Success Cases"
         feature4:
           title: "Intelligent Cloud Album"
-          desc: "Qiniu's solution to intelligent cloud album is developed based on Qiniu's machine learning platform which has tens of billions of daily requests of data processing on average, consisting of functions such as face clustering, recognition of 360 scenarios and 200 sorts of objects, aggregation of time, locations and scenarios and photo sharing. With the feedbacks from users’ album sorting behaviors, a closed learning loop is formed to improve recognition quality. This solution can work deeply with the ROM of mobile phones in customization and help social contact products refine users’ operation to discover new growth points in the activeness of social contact products."
+          desc: "Qiniu's solution to intelligent cloud album is developed based on Qiniu's machine learning platform which has tens of billions of daily requests of data processing on average, consisting of functions such as face clustering, recognition of 360 scenarios and 200 sorts of objects, aggregation of time, locations and scenarios and photo sharing. With the feedbacks from users'album sorting behaviors, a closed learning loop is formed to improve recognition quality. This solution can work deeply with the ROM of mobile phones in customization and help social contact products refine users'operation to discover new growth points in the activeness of social contact products."
           btn: ""
           case: "Success Cases"
         feature5:
@@ -429,7 +429,7 @@ en:
           case: "Success Cases"
         feature7:
           title: "Safety Protection Terminals"
-          desc: "The change in market demands combines the scenario of safety protection with the internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu's solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users’ experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client reduce costs effectively."
+          desc: "The change in market demands combines the scenario of safety protection with the internet more and more closely. Family safety protection, campus monitoring, intelligent sports fields, safe cities have become popular. Qiniu's solution to safety protection is developed based on traditional safety protection frameworks which satisfies more requests of online remote monitoring to improve users'experience without affecting original facilities or frameworks. This solution provides technologies and services like intelligent scheduling networks, clusters stored in clouds and various data processing. It takes the advantage of elastic computing in the clouds to deploy flexibly and help client reduce costs effectively."
           btn: ""
           case: "Success Cases"
         feature8:
@@ -653,7 +653,7 @@ en:
               class: "row tab-pane fade in active"
               icon: "pandora/icon-wulianwangdashujuchuli@2x.png"
               title: "Dataized Maintenance"
-              desc: "Unified log management and real-time monitoring of business quality provide more comprehensive data support for daily diagnostic and tune and security issues tracking of users’ systems, which enables technicians to search logs with high efficiency in real time and thus quickly locate information, identify root causes of the problems and finally inmprove operational and maintenance efficiency."
+              desc: "Unified log management and real-time monitoring of business quality provide more comprehensive data support for daily diagnostic and tune and security issues tracking of users'systems, which enables technicians to search logs with high efficiency in real time and thus quickly locate information, identify root causes of the problems and finally inmprove operational and maintenance efficiency."
             - id: "tab-usage-section-2"
               class: "row tab-pane fade"
               icon: "pandora/icon-shujuchuliziyuantanxing@2x.png"
@@ -663,7 +663,7 @@ en:
               class: "row tab-pane fade"
               icon: "pandora/icon-shipinapm@2x.png"
               title: "DEM"
-              desc: "Real-time monitoring and analysis and alarm optimization of critical business systems can be achieved through real-time acquisition of various performance indicators of platforms (eg, the rate of opening the first screen in seconds, users' terminal fluency and the distribution of users’ hotspots).Continuously improving business reliability and stability of platforms,providing excellent experience for the end user ."
+              desc: "Real-time monitoring and analysis and alarm optimization of critical business systems can be achieved through real-time acquisition of various performance indicators of platforms (e.g. the rate of opening the first screen in seconds, users'terminal fluency and the distribution of users'hotspots).Continuously improving business reliability and stability of platforms,providing excellent experience for the end user ."
             - id: "tab-usage-section-4"
               class: "row tab-pane fade"
               icon: "pandora/icon-wulianwangdashujuchuli@2x.png"
@@ -723,7 +723,7 @@ en:
           col2:
             - class: "col-sm-6 col-padding col-content-middle sm-right"
               title1: Image Previewing
-              desc1: Image Previewing generates high-quality thumbnails from images stored in Qiniu or from Qiniu CDN to better satisfy clients' needs for images of differnet sizes, shapes and styles.
+              desc1: Image Previewing generates high-quality thumbnails from images stored in Qiniu or from Qiniu CDN to better satisfy clients'needs for images of differnet sizes, shapes and styles.
               title2: Image Slim
               desc2: Image Slim is capable to compress PNG or JPG images stored in Qiniu or from Qiniu CDN to reduce data usage and improve product experience.
               alt: Picture processing
@@ -777,7 +777,7 @@ en:
               class: "tab-pane fade"
               icon: "dora/icon-zhinengyunxiangce@2x.png"
               title: Smart Cloud Album
-              desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients’ demand in different scenarios.
+              desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients'demand in different scenarios.
         feature4:
           title: "Success Cases"
       atlab:
@@ -915,7 +915,7 @@ en:
         label: Intelligent Cloud Album
         desc:
       - name: internet
-        label: internet and Mobile internet
+        label: Internet and Mobile internet
         desc:
   partners:
     - path: cooperation/client-3w-highlight@2x.png
@@ -992,7 +992,7 @@ en:
     welcome_fusion:
       title: Qiniu Cloud-Integrated CDN（FUSION）
       keywords: CDN, Web Acceleration, Document Downloads, Audio & Video On-demand、International Nodes, Three-dimensional Quality Control, No Blind Areas, Intelligent Dispatch, Network Quality Tuning, Edge Cache Node
-      description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users’ service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
+      description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
     welcome_dora:
       title: Qiniu Cloud-Intelligent Multimedia APIs（Dora）
       keywords: Face Recognition, Scene and object recognition, Optical Character Recognition, Content Regulation, Porn Images Identification, Violence and Terrorism, Images Identification, Politicians Recognition, Object Segmentation, Image Previewing, Image Slim, Audio and Video Transcoder, Video snapshot, Smart Cloud Album, Audio and Video Process

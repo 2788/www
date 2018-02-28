@@ -68,7 +68,7 @@
 
               <ul class="dropdown-menu solutions-menu">
                 <% I18n.t("solutions.arr1").each do |solution| %>
-                  <%= content_tag :li, class: "solution" do -%>
+                  <%= content_tag :li, class: I18n.t("views.language") == 'en' ? 'd-none' : 'solution' do -%>
                     <%= link_to(send("products_#{solution[:name]}_path")) do -%>
                       <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
                       <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
@@ -85,7 +85,7 @@
                   <% end %>
                 <% end %>
 
-                <li class="solution <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+                <li class="solution <%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
                   <%= link_to products_pili_livequiz_path do -%>
                     <h4 class="quiz menu-title">直播竞答解决方案</h4>
                     <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案</p>
@@ -127,6 +127,12 @@
                 <a href="<%= sigin_url() %>" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary hidden-xs">注册有礼</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup?type=1" class="btn btn-primary visible-xs-inline">注册有礼</a>
+              </div>
+            </li>
+
+            <li class="<%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+              <div class="actions">
+                <a href="#" class="btn btn-hollow hidden-xs" data-toggle="modal" data-target="#feedback-modal">contact us</a>
               </div>
             </li>
           </ul>
