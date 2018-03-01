@@ -102,11 +102,19 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        min-width: 300px;
+        min-width: 800px;
         text-align: center;
 
         p {
           color: #52caff;
+          font-size: 0.18rem;
+          margin-top: -56px;
+        }
+
+        .actions {
+          a.btn-banner-invitation {
+            color:#14315b;
+          }
         }
       }
     }
@@ -281,6 +289,13 @@
         .btn-banner{
           bottom: 25px;
         }
+      }
+    }
+
+    &.hero-invitation .container .content-box {
+      min-width: 330px;
+      p {
+        margin-top: -30px;
       }
     }
   }
