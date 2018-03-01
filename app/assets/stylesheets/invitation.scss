@@ -1,0 +1,76 @@
+.features.feature-invitation {
+  &.feature-invitation-bg {
+    background-color: #f2f2f2;
+  }
+  .content {
+    text-align: center;
+
+    .row.steps {
+      margin-bottom: 50px;
+    }
+
+    p.my {
+      margin: 0.25rem auto;
+    }
+
+    .actions {
+      a {
+        color: #fff;
+      }
+    }
+
+    .inline-box {
+      text-align: center;
+
+      img {
+        margin: 0 auto;
+      }
+    }
+
+    .step-line {
+      position: relative;
+      top: 40px;
+      left: -8px;
+      width: 100%;
+      border-bottom: 2px solid #888;
+      .arrow {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        color: #888;
+      }
+    }
+  }
+
+  .logo {
+    margin-bottom: 15px;
+
+    .actions {
+      text-align: center;
+
+      a{
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        background-color: #00A0DE;
+        text-align: center;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.row {
+  .seven-sm-1 {
+    position: relative;
+    min-height: 1px;
+    padding: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .row .seven-sm-1 {
+    float: left;
+    width: 14%;
+  }
+}

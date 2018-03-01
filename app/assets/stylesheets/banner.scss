@@ -91,6 +91,27 @@
     }
   }
 
+  &.hero-invitation {
+    background-image: image-url('invitation/banner.jpg');
+
+    .container {
+      position: relative;
+
+      .content-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 300px;
+        text-align: center;
+
+        p {
+          color: #52caff;
+        }
+      }
+    }
+  }
+
   .right-mask-banner{
     min-height: 3rem;
     img{

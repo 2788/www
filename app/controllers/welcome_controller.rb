@@ -76,21 +76,31 @@ class WelcomeController < ApplicationController
   def user_agreement
     render "sla"
   end
+
   def sla_kodo
     render "sla"
   end
+
   def sla_fusion
     render "sla"
   end
+
   def sla_pili
     render "sla"
   end
+
   def sla_dora
     render "sla"
   end
+
   def goglobal
     render "goglobal"
   end
+
+  def invitation
+    render "invitation"
+  end
+
   def robots
     if request.host == "www.qiniu.com"
       render plain: """\

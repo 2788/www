@@ -143,18 +143,10 @@
 
     border-right: 0.01rem solid #e6eaef;
 
-    // &.col-md-3 {
-    //   padding-left: 20px;
-    //   padding-right: 20px;
-    // }
-
-    .div-init{
-      padding-left: 0;
+    &.border-init {
+      border: 0;
     }
 
-    .border-init{
-      border-right: 0;
-    }
     p{
       padding-top: 0.10rem;
 
