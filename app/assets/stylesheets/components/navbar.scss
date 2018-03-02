@@ -247,7 +247,8 @@ nav.navbar.nav-bg{
       }
     }
   }
-  .language-menu {
+  .language-menu,
+  .presentation-menu {
     background-color: #303848;
     li a {
       color: #fff;
@@ -370,6 +371,12 @@ nav.navbar.nav-bg{
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: rgba(239, 239, 239, 0.15); }
 
+.navbar-default .navbar-nav>li {
+  &.presentation-more {
+    display: none;
+  }
+}
+
 // Responsive
 // ---------------------------------------------------------------------
 // iPhone
@@ -471,6 +478,27 @@ nav.navbar.nav-bg{
   .navbar-default .navbar-nav > li > a{
     padding: 10px;
   }
+
+  .navbar-default .navbar-nav>li {
+    &.hot-events,
+    &.developer-center,
+    &.manage-control {
+      display: none;
+    }
+
+    &.presentation-more {
+      display: block;
+
+      .presentation-menu {
+        li {
+          display: block;
+          .hot-events {
+            display: block;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 768px){
@@ -484,4 +512,25 @@ nav.navbar.nav-bg{
 }
 
 @media (max-width: 1024px){
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-default .navbar-nav>li {
+    &.hot-events {
+      display: none;
+    }
+
+    &.presentation-more {
+      display: block;
+
+      .presentation-menu {
+        li {
+          display: none;
+          &.hot-events {
+            display: block;
+          }
+        }
+      }
+    }
+  }
 }

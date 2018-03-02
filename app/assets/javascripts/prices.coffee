@@ -190,7 +190,7 @@ $(document).ready ->
   $('.input-num').bind 'input', ->
     key = $(this).attr('key')
     units = $(this).next().attr('val') || '万次'
-    $(this).val( parseInt(+$(this).val()) | 0 )
+    $(this).val( Math.round($(this).val() | 0, 10) )
     val = $(this).val() + units
     setAmount(key, val)
 
