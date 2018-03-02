@@ -98,9 +98,17 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
-            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
-            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
-            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'manage-control' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'developer-center' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'hot-events' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'presentation-more select-unit' %>" id="more-dropdown">
+              <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">更多</a>
+              <ul class="presentation-menu dropdown-menu dropdown-menu-right m-0 p-0">
+                <li class="manage-control"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+                <li class="developer-center"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
+                <li class="hot-events"><%= link_to "热门活动", events_path -%></li>
+              </ul>
+            </li>
             <li class="select-unit" id="language-dropdown">
               <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
