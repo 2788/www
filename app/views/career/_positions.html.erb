@@ -7,7 +7,7 @@
         <% positions.each do |position| %>
           <tr>
             <td>
-              <%= link_to position[:title], "#" + position[:id].to_s, data: { url: position_path(id: position[:id],t: SecureRandom.uuid) }, class: "title postion-title" %>
+              <%= link_to position[:title], position_path(id: position.id), target: "_blank", class: "title postion-title" %>
             </td>
             <td>
               <span class="space">

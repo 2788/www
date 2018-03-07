@@ -1,0 +1,37 @@
+<div class="features features-position features-position-bg">
+  <div class="container">
+    <div class="position-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4 class="desc"><%= Position::DEPARTMENTSMAP[@position.department_id] %></h4>
+          <h2 class="title"><%= @position[:title] %></h2>
+          <h4 class="desc"><%= @position[:location].join("，") %></h4>
+          <div class="tags">
+            <span><%= Position::CATEGORIES[@position.category] %></span>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="action pull-right">
+            <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=" + @position[:title], class: "btn btn-primary position-theme", role: "button" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-position features-last">
+  <div class="container">
+    <div class="position-details">
+      <h4 class="title">职位描述：</h4>
+      <p>工作职责：</p>
+      <p class="position-unit position-work"><%= @position[:description].gsub(/\n/, "<br />").html_safe %></p>
+      <p>职责要求：</p>
+      <p class="position-unit position-req"><%= @position[:requirement].gsub(/\n/, "<br />").html_safe %></p>
+      <h4 class="title">工作地址：</h4>
+      <p class="position-unit position-space"><%= @position[:location].join("，") %></p>
+      <h4 class="title">发布日期：</h4>
+      <p class="position-unit position-date"><%= @position[:created_at].strftime("%Y-%m-%d") %></p>
+    </div>
+  </div>
+</div>

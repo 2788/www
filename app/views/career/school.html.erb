@@ -110,30 +110,5 @@
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.office, :type => "office-position"} %>
     </div>
-
-    <!-- varying positionModal -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="positionModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title"></h4>
-          </div>
-          <div class="modal-body">
-            <div class="position-details">
-              <h4>岗位职责</h4>
-              <p class="position-work"></p>
-              <h4>任职要求</h4>
-              <p class="position-req"></p>
-              <h4>工作地点</h4>
-              <p class="position-space"></p>
-              <h4>发布日期</h4>
-              <p class="position-date"></p>
-              <%= link_to "现在投递", "", class: "btn btn-primary position-theme", role: "button" -%>
-            </div>
-          </div>
-        </div>
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
   </div>
 </div>

@@ -191,7 +191,7 @@ video {
 .features-positions {
   &.features {
     h4 {
-      font-size: 17px;
+      font-size: 18px;
     }
     .intro {
       p {
@@ -284,18 +284,61 @@ video {
       text-align: right;
     }
   }
+}
+
+// position
+.features.features-position {
+  &.features-position-bg {
+    background-color: #f2f2f2;
+  }
+
+  &.features-last {
+    margin-bottom: 152px;
+  }
+
+  .position-title {
+    padding-top: 51px;
+  }
+
+  .desc {
+    font-size: 18px;
+    color: rgb(136,136,136);
+  }
+
+  h2.title {
+    font-size: 36px;
+    color: rgb(51,51,51);
+    margin: 20px 0;
+  }
+
+  .tags {
+    span {
+      display: inline-block;
+      border-radius: 5px;
+      font-size: 14px;
+      color: rgb(173,174,179);
+      margin-right: 15px;
+      padding: 10px 15px;
+      background-color: #fff;
+    }
+  }
+
+  .action a.btn.btn-primary {
+    margin-top: 10px;
+    color: #fff;
+    background-color: #00A0DE;
+    border-color: #008ec5;
+  }
 
   .position-details {
-    padding: 10px;
     color: rgb(136,136,136);
-    h4{
+    .title{
       font-size: 18px;
+      color: rgb(51, 51, 51);
     }
-    a.btn.btn-primary {
-      margin-top: 10px;
-      color: #fff;
-      background-color: #00A0DE;
-      border-color: #008ec5;
+
+    .position-unit {
+      margin-bottom: 20px;
     }
   }
 }
