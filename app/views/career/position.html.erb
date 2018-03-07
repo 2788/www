@@ -2,7 +2,7 @@
   <div class="container">
     <div class="position-title">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xs-6">
           <h4 class="desc"><%= Position::DEPARTMENTSMAP[@position.department_id] %></h4>
           <h2 class="title"><%= @position[:title] %></h2>
           <h4 class="desc"><%= @position[:location].join("，") %></h4>
@@ -10,7 +10,7 @@
             <span><%= Position::CATEGORIES[@position.category] %></span>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-xs-6">
           <div class="action pull-right">
             <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=" + @position[:title], class: "btn btn-primary position-theme", role: "button" -%>
           </div>
