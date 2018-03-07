@@ -66,29 +66,6 @@ $(document).ready ->
     vid.pause()
     return
 
-  # varying modal content positionModal
-  $('.features-positions .positionTab td .title').on 'click', ->
-    _url = $(this).attr('data-url')
-    # replace modal text
-    $.ajax
-      method: 'GET',
-      url: _url,
-      success: (res) ->
-        $('.modal-title').text(res.title)
-        $('.position-work').html(res.description.replace(/\n/g, "<br />"))
-        $('.position-req').html(res.requirement.replace(/\n/g, "<br />"))
-
-        _space = res.location.join('/')
-        $('.position-space').text(_space)
-
-        _rdate = new Date(res.created_at)
-        _date = _rdate.getFullYear() + '-' + (_rdate.getMonth() + 1 ) + '-' + _rdate.getDate()
-        $('.position-date').text(_date)
-
-        _mailTo = "mailto:hr@qiniu.com?subject=" + res.title
-        $('.position-theme').attr('href', _mailTo)
-        $('#positionModal').modal('show')
-
   # features-positions nav-tabs
   $('.features-positions .nav-tabs li').click (e) ->
     e.preventDefault()
