@@ -49,6 +49,7 @@
 @import "alaccelerator";
 @import "cdnprice.scss";
 @import "invitation";
+@import "ssl";
 
 html{
   position: relative;
@@ -94,6 +95,9 @@ a.out_link{
   display: inline-block;
   margin-top: 0;
   color: #fff;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 a.underline{

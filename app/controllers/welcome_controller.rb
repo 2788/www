@@ -101,6 +101,10 @@ class WelcomeController < ApplicationController
     render "invitation"
   end
 
+  def ssl
+    render "ssl"
+  end
+
   def robots
     if request.host == "www.qiniu.com"
       render plain: """\

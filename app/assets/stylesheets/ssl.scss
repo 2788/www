@@ -1,0 +1,79 @@
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  border-top: 1px solid #fff;
+}
+
+.table.table-ssl {
+  tr {
+    background-color: #f2f2f2;
+    color: rgb(51, 51, 51);
+
+    &.title {
+      th {
+        background-color: #00a0de;
+        color: #fff;
+      }
+    }
+
+    th {
+      font-size: 18px;
+      padding: 0.2rem 0.3rem;
+      vertical-align: middle;
+    }
+
+    td {
+      font-size: 14px;
+      padding: 0.3rem;
+    }
+
+    .border-right {
+      border-right: 1px solid #fff;
+    }
+  }
+}
+
+.features.certificate {
+  .actions {
+    text-align: center;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .table.table-ssl tr {
+    th {
+      padding: 0.2rem;
+    }
+
+    td {
+      padding: 0.3rem 0.2rem;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .table.table-ssl tr {
+    th {
+      font-size: 14px;
+      padding: 0.15rem;
+    }
+
+    td {
+      padding: 0.3rem 0.15rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .table.table-ssl tr {
+    th {
+      font-size: 14px;
+      padding: 0.15rem;
+    }
+
+    td {
+      padding: 0.3rem 0.15rem;
+    }
+  }
+}
