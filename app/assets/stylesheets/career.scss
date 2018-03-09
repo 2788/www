@@ -344,22 +344,16 @@ video {
   }
 }
 
-.hiring-content.row{
-  text-align: center;
-  width: 100%;
-  overflow: hidden;
-  margin: 0;
-  .small-content {
-    text-align: center;
-  }
-  p {
-    padding-top: 0.1rem;
-  }
-  li {
-    font-size: 14px;
-    font-weight: 25px;
-    padding-top: 0.1rem;
-    color:rgb(94,97,102);
+.features .hiring-content {
+  ul.career-list {
+    padding-left: 20px;
+    padding-right: 20px;
+    li {
+      font-size: 14px;
+      line-height: 28px;
+      color:rgb(94,97,102);
+      margin-bottom: 5px;
+    }
   }
   .row {
     padding-bottom: 0.4rem;
@@ -415,6 +409,10 @@ video {
       }
     }
   }
+}
+
+.banner-box.banner-career-school {
+  margin-top: 68px;
 }
 
 @media (min-width: 517px) and (max-width: 768px) {
