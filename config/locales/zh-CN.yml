@@ -388,7 +388,7 @@ zh-CN:
                   link: ""
             - id: "tab-usage-section-5"
               class: "tab-pane"
-              icon: "lili/icon-anquanfangdaolian.png"
+              icon: "pili/icon-anquanfangdaolian.png"
               title: "安全防盗链"
               desc: "支持 HTTPS 安全协议、时间戳、防盗链、回源鉴权等多种鉴权方式，充分保护资源不被盗链，极大提升直播服务安全性。"
               link: ""
