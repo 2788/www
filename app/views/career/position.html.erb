@@ -12,7 +12,8 @@
         </div>
         <div class="col-xs-6">
           <div class="action pull-right">
-            <%= link_to "现在投递", "mailto:hr@qiniu.com?subject=" + @position[:title], class: "btn btn-primary position-theme", role: "button" -%>
+            <% mail = @position[:on_campus] ? "mailto:fresh@qiniu.com?subject=" : "mailto:hr@qiniu.com?subject=" %>
+            <%= link_to "现在投递", mail + @position[:title], class: "btn btn-primary position-theme", role: "button" -%>
           </div>
         </div>
       </div>

@@ -45,6 +45,18 @@
         &.stable-icon {
           background-image: image-url("player/stable-icon.png");
         }
+        &.yanchi-icon {
+          background-image: image-url("pili/icon-haomiaojiyanchi.png");
+        }
+        &.diubao-icon {
+          background-image: image-url("pili/icon-kangdiubao.png");
+        }
+        &.baoti-icon {
+          background-image: image-url("pili/icon-xiaobaoti.png");
+        }
+        &.gongneng-icon {
+          background-image: image-url("pili/icon-100gongneng.png");
+        }
       }
       .desc {
         text-align: center;
