@@ -71,30 +71,12 @@
           transition: all .3s linear;
         }
       }
-      &:hover {
-        background-color: #0d70ff;
-        .icon {
-          &.first-icon {
-            background-image: image-url("player/hover-first-icon.png");
-          }
-          &.package-icon {
-            background-image: image-url("player/hover-package-icon.png");
-          }
-          &.crosite-icon {
-            background-image: image-url("player/hover-crosite-icon.png");
-          }
-          &.stable-icon {
-            background-image: image-url("player/hover-stable-icon.png");
-          }
-        }
-        .desc {
-          p {
-            color: #fff;
-          }
-        }
-      }
     }
   }
+}
+
+.features.features-suspension-next {
+  margin-top: -100px;
 }
 
 .features.features-player {
