@@ -64,6 +64,22 @@
   background-image: image-url("pili/img-net.png");
 }
 
+.features.features-bottom-line {
+  padding-bottom: 0;
+  .bottom-line {
+    padding-bottom: 0.68rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .features.features-bottom-line {
+    padding-bottom: 0;
+    .bottom-line {
+      padding-bottom: 0.3rem;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .card {
     min-height: auto;
