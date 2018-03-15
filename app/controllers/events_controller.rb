@@ -22,4 +22,7 @@ class EventsController < ApplicationController
     @hero = "hero-niushow"
     render "list"
   end
+
+  def arch
+  end
 end

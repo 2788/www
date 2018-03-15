@@ -154,6 +154,17 @@
     }
   }
 
+  &.hero-arch {
+    background-image: image-url('arch/banner');
+
+    .img-wrapper {
+      width: 100%;
+      text-align: center;
+      vertical-align: middle;
+      padding: 15px 0;
+    }
+  }
+
   .container{
     position: relative;
     height: 4.52rem;
@@ -274,6 +285,12 @@
     }
   }
 }
+@media (max-width: 767px) {
+  .jumbotron.hero {
+    margin-top: 68px;
+  }
+}
+
 @media (max-width: 768px) {
   .jumbotron.hero{
     &.hero-bannerGoglobal{.banner-container{top: 20px;}}
