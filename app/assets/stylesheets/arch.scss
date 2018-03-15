@@ -12,6 +12,10 @@
   padding-bottom: 0;
 
   .conveyor.conveyor-rectangle {
+    margin-bottom: 0;
+    max-height: 334px;
+    overflow: hidden;
+
     .slick-prev {
       z-index: 1;
       top: 42%;
