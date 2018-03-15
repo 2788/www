@@ -889,6 +889,224 @@ zh-CN:
               icon: "ssl/icon-apijiekou.png"
               title: "API 接口"
               desc: "API接口是第三方网站进行信息交互的重要形式，因为大多涉及敏感信息或重要操作指令的传输，因此其安全性至关重要。使用SSL证书进行信息传输的高强度加密，可有效杜绝信息劫持。"
+      arch:
+        events:
+          - img: "arch/img-shenzhen.jpg"
+            time: 10 月 21 日
+            title: Kubernetes 落地最佳实践
+            site: 深圳
+            details:
+              time: 2017/10/21 13:30
+              site: 深圳 思微空间
+              link: "http://hd.qiniu.com/arch/history/28"
+          - img: "arch/img-shanghai.jpg"
+            time: 09 月 23 日
+            title: 移动架构与性能优化最佳实践
+            site: 上海
+            details:
+              time: 2017/09/23 13:30
+              site: 上海  创业邦
+              link: "http://hd.qiniu.com/arch/history/27"
+          - img: "arch/img-guangzhou.jpg"
+            time: 09 月 02 日
+            title: 移动性能优化最佳实践
+            site: 广州
+            details:
+              time: 2017/09/02 13:30
+              site: 广州 E杯咖啡
+              link: "http://hd.qiniu.com/arch/history/26"
+          - img: "arch/img-hangzhou.jpg"
+            time: 09 月 02 日
+            title: 七牛云&amp;蘑菇街架构师实践日：CI／CD落地最佳实践
+            site: 杭州
+            details:
+              time: 2017/09/02 13:30
+              site: 杭州 浙商财富中心a座蘑菇街一楼
+              link: "http://hd.qiniu.com/arch/history/25"
+          - img: "arch/img-beijing.jpg"
+            time: 08 月 19 日
+            title: 大数据最新场景化应用实践
+            site: 北京
+            details:
+              time: 2017/08/19 13:30
+              site: 北京 上地开拓路11号福道大厦链家网
+              link: "http://hd.qiniu.com/arch/history/24"
+          - img: "arch/img-xiamen.jpg"
+            time: 07 月 30 日
+            title: 大数据场景化应用最佳实践
+            site: 厦门
+            details:
+              time: 2017/07/30 13:30
+              site: 厦门 诚硕空间
+              link: "http://hd.qiniu.com/arch/history/23"
+          - img: "arch/img-chengdu.jpg"
+            time: 07 月 01 日
+            title: 大数据与机器学习
+            site: 成都
+            details:
+              time: 2017/07/01 13:30
+              site: 成都 小样社区
+              link: "http://hd.qiniu.com/arch/history/22"
+          - img: "arch/img-shanghai.jpg"
+            time: 06 月 11 日
+            title: 大数据最新场景化应用实践
+            site: 上海
+            details:
+              time: 2017/06/11 13:30
+              site: 上海 普陀 饿了么总部
+              link: "http://hd.qiniu.com/arch/history/21"
+          - img: "arch/img-beijing.jpg"
+            time: 05 月 13 日
+            title: 新时代下的高效运维之道
+            site: 北京
+            details:
+              time: 2017/05/13 13:30
+              site: 北京 中关村 P2联合办公社
+              link: "http://hd.qiniu.com/arch/history/20"
+          - img: "arch/img-shenzhen.jpg"
+            time: 04 月 08 日
+            title: 大数据技术最佳实践
+            site: 深圳
+            details:
+              time: 2017/04/08 13:30
+              site: 深圳 南山区 虚拟大学园 R3-B1 楼
+              link: "http://hd.qiniu.com/arch/history/19"
+          - img: "arch/img-hangzhou.jpg"
+            time: 03 月 25 日
+            title: 大数据与机器学习的最佳实践
+            site: 杭州
+            details:
+              time: 2017/03/25 13:30
+              site: 杭州 楼友会咖啡
+              link: "http://hd.qiniu.com/arch/history/18"
+          - img: "arch/img-beijing.jpg"
+            time: 03 月 04 日
+            title: “她时代”- 大数据与机器学习
+            site: 北京
+            details:
+              time: 2017/03/04 13:30
+              site: 北京  中关村大街  联合创业办公社
+              link: "http://hd.qiniu.com/arch/history/17"
+          - img: "arch/img-beijing.jpg"
+            time: 12 月 04 日
+            title: 从 0 到 1，直播系统养成记
+            site: 北京
+            details:
+              time: 2016/12/04 13:30
+              site: 北京  中关村大街  联合创业办公社
+              link: "http://hd.qiniu.com/arch/history/16"
+          - img: "arch/img-hangzhou.jpg"
+            time: 10 月 23 日
+            title: 移动直播技术最佳实践
+            site: 杭州
+            details:
+              time: 2016/10/23 13:30
+              site: 杭州 西湖区教工路 88 号立元大厦 3F 沃创空间
+              link: "http://hd.qiniu.com/arch/history/14"
+          - img: "arch/img-guangzhou.jpg"
+            time: 09 月 25 日
+            title: 直播技术最佳实践
+            site: 广州
+            details:
+              time: 2016/09/25 13:30
+              site: 广州   大道中 289 号印报楼 3 楼 301 酷窝空间
+              link: "http://hd.qiniu.com/arch/history/13"
+          - img: "arch/img-xiamen.jpg"
+            time: 09 月 03 日
+            title: 「泛娱乐+直播」技术最佳实践
+            site: 厦门
+            details:
+              time: 2016/09/03 13:30
+              site: 厦门 软件园二期望海路 61 号北一楼    3W 唯你孵化器
+              link: "http://hd.qiniu.com/arch/history/12"
+          - img: "arch/img-beijing.jpg"
+            time: 08 月 14 日
+            title: 体育+直播 技术最佳实践
+            site: 北京
+            details:
+              time: 2016/08/14 13:30
+              site: 北京
+              link: "http://hd.qiniu.com/arch/history/11"
+          - img: "arch/img-shanghai.jpg"
+            time: 07 月 31 日
+            title: 「泛娱乐+直播」技术最佳实践
+            site: 上海
+            details:
+              time: 2016/07/31 13:30
+              site: 上海 浦东新区金科路2966号 创智空间
+              link: "http://hd.qiniu.com/arch/history/10"
+          - img: "arch/img-shenzhen.jpg"
+            time: 06 月 18 日
+            title: 微服务架构最佳实践
+            site: 深圳
+            details:
+              time: 2016/06/18 13:30
+              site: 深圳 南山区科发路1号富利臻大厦三层 思微空间
+              link: "http://hd.qiniu.com/arch/history/9"
+          - img: "arch/img-hangzhou.jpg"
+            time: 05 月 29 日
+            title: 亿级移动应用架构最佳实践
+            site: 杭州
+            details:
+              time: 2016/05/29 13:30
+              site: 杭州 西湖区教工路88号立元大厦3F  沃创空间
+              link: "http://hd.qiniu.com/arch/history/8"
+          - img: "arch/img-chengdu.jpg"
+            time: 05 月 07 日
+            title: 微服务架构与Docker技术最佳实践
+            site: 成都
+            details:
+              time: 2016/05/07 13:30
+              site: 成都 长虹科技大厦 36-5会议室
+              link: "http://hd.qiniu.com/arch/history/7"
+          - img: "arch/img-beijing.jpg"
+            time: 04 月 10 日
+            title: 在线视频技术最佳实践
+            site: 北京
+            details:
+              time: 2016/04/10 13:30
+              site: 北京 wepac空间
+              link: "http://hd.qiniu.com/arch/history/6"
+          - img: "arch/img-shanghai.jpg"
+            time: 03 月 13 日
+            title: 容器核心技术与最佳实践
+            site: 上海
+            details:
+              time: 2016/03/13 13:30
+              site: 上海  创智天地7号楼1层 多功能剧场
+              link: "http://hd.qiniu.com/arch/history/5"
+          - img: "arch/img-guangzhou.jpg"
+            time: 01 月 09 日
+            title: 瞩目电商：从架构开发到系统优化
+            site: 广州
+            details:
+              time: 2016/01/09 13:30
+              site: 广州 羊城同创汇
+              link: "http://hd.qiniu.com/arch/history/4"
+          - img: "arch/img-beijing.jpg"
+            time: 12 月 20 日
+            title: 高性能服务端开发实践
+            site: 北京
+            details:
+              time: 2015/12/20 13:30
+              site: 北京 Wepac空间
+              link: "http://hd.qiniu.com/arch/history/3"
+          - img: "arch/img-shanghai.jpg"
+            time: 11 月 28 日
+            title: 大型分布式系统架构实践
+            site: 上海
+            details:
+              time: 2015/11/28 13:30
+              site: 上海 WE+金钟广场旗舰店
+              link: "http://hd.qiniu.com/arch/history/2"
+          - img: "arch/img-shenzhen.jpg"
+            time: 11 月 01 日
+            title: 智能硬件+物联网架构实践
+            site: 深圳
+            details:
+              time: 2015/11/01 13:30
+              site: 深圳 意启创业 路演厅
+              link: "http://hd.qiniu.com/arch/history/1"
   navbar:
     logo: "logo-white.png"
     product: 产品
