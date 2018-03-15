@@ -256,11 +256,15 @@
   }
 }
 
-
+.banners-slider {
+  max-height: 5rem;
+  overflow: hidden;
+}
 // Responsive
 // ---------------------------------------------------------------------
 @media (max-width: 425px) {
   .slick-slider{ margin-bottom: 0; }
+
   .jumbotron.hero{
     margin-top: 30px;
     p{

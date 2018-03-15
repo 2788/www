@@ -19,36 +19,38 @@
 </div>
 
 <div class="features features-black-bg feature-arch-actions">
-  <div class="intro">
-    <h2 class="title">活动推荐</h2>
-  </div>
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">活动推荐</h2>
+    </div>
 
-  <div id="rectangle-cases-slider" class="conveyor conveyor-rectangle slick-slider draggable">
-    <% I18n.t("views.welcome.arch.events").each do |unit| %>
-      <div>
-        <div class="rectangle-slider">
-          <%= image_tag unit[:img] %>
-          <div class="bg"></div>
-          <div class="mask">
-            <div class="middle">
-              <div class="info">
-                <time><%= unit[:time] %></time>
-                <h4 class="title"><%= unit[:title] %></h4>
-                <h3 class="site">
-                  <%= unit[:site] %>
-                  <div class="site-spec"></div>
-                </h3>
-              </div>
-              <div class="details">
-                <time><%= unit[:details][:time] %></time>
-                <h3 class="site"><%= unit[:details][:site] %></h3>
-                <%= link_to '精彩回顾', unit[:details][:link], class: 'btn btn-hollow' %>
+    <div id="rectangle-cases-slider" class="conveyor conveyor-rectangle slick-slider draggable">
+      <% I18n.t("views.welcome.arch.events").each do |unit| %>
+        <div>
+          <div class="rectangle-slider">
+            <%= image_tag unit[:img] %>
+            <div class="bg"></div>
+            <div class="mask">
+              <div class="middle">
+                <div class="info">
+                  <time><%= unit[:time] %></time>
+                  <h4 class="title"><%= unit[:title] %></h4>
+                  <h3 class="site">
+                    <%= unit[:site] %>
+                    <div class="site-spec"></div>
+                  </h3>
+                </div>
+                <div class="details">
+                  <time><%= unit[:details][:time] %></time>
+                  <h3 class="site"><%= unit[:details][:site] %></h3>
+                  <%= link_to '精彩回顾', unit[:details][:link], class: 'btn btn-hollow' %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 

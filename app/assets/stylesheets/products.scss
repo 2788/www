@@ -8,6 +8,10 @@
   background: #FFF;
   padding: 0.68rem 0 0.50rem;
 
+  #cases-slider {
+    max-height: 45px;
+    overflow: hidden;
+  }
   .architecture {
     padding: 0 150px;
   }
@@ -519,6 +523,8 @@
       min-height: 120px;
     }
   }
+
+  .banners-slider{ max-height: 5.18rem; }
 
   .jumbotron.hero{
     height: 5.18rem;
