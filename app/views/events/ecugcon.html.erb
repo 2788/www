@@ -1,0 +1,99 @@
+<div class="jumbotron hero hero-ecugcon">
+  <div class="container">
+    <div class="img-wrapper">
+      <%= image_tag 'ecug/banner-wenzi.png', width: '60%' %>
+    </div>
+  </div>
+</div>
+
+<div class="features features-bottom-line">
+  <div class="container bottom-line">
+    <div class="intro">
+      <h2 class="title">ECUG Con</h2>
+    </div>
+    <p class="text-center">ECUG全称为 Effective Cloud User Group（实效云计算用户组），</p>
+    <p class="text-center">由七牛云CEO许式伟发起，集结了一批具有高端视角并仍醉心于技术本身的同仁，共同关注云计算前沿技术的最新成果和分布式开发、运维的最佳实践。</p>
+    <p class="text-center">从 2007 年至今，ECUG社区每年都会组织一场全国性的 ECUG Con 大会，期间众多领域内权威技术大神纷纷参与，</p>
+    <p class="text-center">他们或许在大众技术会议已经鲜少露面，但会在 ECUG Con 畅谈心得，共同奉献一场半公开的高规格技术分享盛会。</p>
+  </div>
+</div>
+
+<div class="features features-tech features-bottom-line">
+  <div class="container bottom-line">
+    <div class="intro">
+      <h2 class="title">ECUG 十周年精彩回顾</h2>
+    </div>
+
+    <div class="row tech-row">
+      <% @events.each do |event| %>
+        <div class="col-sm-6 col-md-4 tech-col">
+          <div class="title">
+            <time>
+              <strong><%= event[:date].strftime('%d') -%></strong>
+              <span><%= event[:date].strftime('%m') -%>月</span>
+            </time>
+            <p class="text-ellipse"><%= event[:name] -%></p>
+          </div>
+          <div class="infobox">
+            <div class="case grid-container" data-src="<%= event[:video] -%>">
+              <a class="btn-icon"></a>
+              <%= image_tag event[:cover] + "?imageView2/1/w/640/h/360/format/jpg/q/75|imageslim" -%>
+            </div>
+            <div class="lecturer">
+              <div class="lecturer-box">
+                <div class="img-box">
+                  <%= image_tag event[:avatar] + '?imageView2/1/w/100/h/100/format/jpg/q/75|imageslim', class: "lecturer-photo", alt: event[:speaker], width: 50 %>
+                </div>
+
+                <div class="lecturer-info-box">
+                  <div class="lecturer-tail">
+                    <h4 class="lecturer-name"><%= event[:speaker] -%></h4>
+                    <h5 class="lecturer-job"><%= event[:title] -%></h5>
+                  </div>
+                  <div class="short-line"></div>
+                  <div class="btn-dwn-wrap">
+                    <%= link_to "PPT", event[:ppt], download: "ppt", class: "ppt-download", target: "_blank"  -%>
+                    <% if event[:note].length != 0 %>
+                      <%= link_to "速记稿", event[:note], download: "text", class: "notes-download", target: "_blank"  -%>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="video-play-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <video src="" controls="controls" id="edu-video">
+            your browser does not support the video tag
+          </video>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
+<div class="features features-less">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">合作伙伴</h2>
+    </div>
+
+    <div id="cases-slider" class="conveyor slick-slider draggable">
+      <div><%= image_tag "ecug/logo-baiduyun.jpg", alt: "baiduyun", title: "baiduyun", class: "case" %></div>
+      <div><%= image_tag "ecug/logo-huanjushidai.jpg", alt: "huanjushidai", title: "huanjushidai", class: "case" %></div>
+      <div><%= image_tag "ecug/logo-Kyligence.jpg", alt: "Kyligence", title: "Kyligence", class: "case" %></div>
+      <div><%= image_tag "ecug/logo-linkedin.jpg", alt: "linkedin", title: "linkedin", class: "case" %></div>
+      <div><%= image_tag "ecug/logo-meizu.jpg", alt: "meizu", title: "meizu", class: "case" %></div>
+      <div><%= image_tag "ecug/logo-xiecheng.jpg", alt: "xiecheng", title: "xiecheng", class: "case" %></div>
+      <div><%= image_tag "ecug/logo-zhenyouqu.jpg", alt: "zhenyouqu", title: "zhenyouqu", class: "case" %></div>
+    </div>
+  </div>
+</div>

@@ -25,4 +25,9 @@ class EventsController < ApplicationController
 
   def arch
   end
+
+  def ecugcon
+    @events = Event.where( category: 'ECUG')
+    render "ecugcon"
+  end
 end
