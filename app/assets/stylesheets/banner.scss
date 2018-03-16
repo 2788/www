@@ -86,7 +86,7 @@
     .banner-container{
       height: 4.5rem;
       .btn-banner{
-        bottom: -25px;
+        bottom: -50px;
       }
     }
   }
@@ -162,7 +162,25 @@
       width: 100%;
       text-align: center;
       vertical-align: middle;
-      padding: 15px 0;
+      padding-top: 60px;
+
+      .arch-text {
+        width: 456px;
+        height: auto;
+      }
+    }
+  }
+
+  &.hero-ecugcon {
+    background-image: image-url('ecug/banner.jpg');
+
+    .img-wrapper {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      text-align: center;
     }
   }
 
@@ -293,12 +311,19 @@
 @media (max-width: 767px) {
   .jumbotron.hero {
     margin-top: 68px;
+    &.hero-arch {
+      .img-wrapper {
+        padding-top: 50px;
+        .arch-text {
+          width: 330px;
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 768px) {
   .jumbotron.hero{
-    &.hero-bannerGoglobal{.banner-container{top: 20px;}}
     &.hero-bannerAI {.banner-container{top: 20px;}}
     &.hero-alaccelerator {
       height: 6rem;
@@ -306,8 +331,9 @@
     }
     &.hero-bannerGoglobal {
       .banner-container{
+        top: 20px;
         .btn-banner{
-          bottom: 25px;
+          bottom: -15px;
         }
       }
     }
@@ -316,6 +342,13 @@
       min-width: 330px;
       p {
         margin-top: -30px;
+      }
+    }
+
+    &.hero-ecugcon .img-wrapper {
+      img {
+        width: 80%;
+        height: auto;
       }
     }
   }
