@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
     get '/invitation',     to: 'welcome#invitation'
     get '/ssl',            to: 'welcome#ssl'
+    get '/partner',        to: 'welcome#partner'
 
     resources :resources, only: [] do
       collection do

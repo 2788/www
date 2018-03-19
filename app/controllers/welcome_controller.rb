@@ -105,6 +105,9 @@ class WelcomeController < ApplicationController
     render "ssl"
   end
 
+  def partner
+  end
+
   def robots
     if request.host == "www.qiniu.com"
       render plain: """\
