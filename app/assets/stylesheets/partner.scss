@@ -1,0 +1,131 @@
+.table-parter-wrapper {
+  padding: 88px 10px 10px;
+
+  .shadow{
+    box-shadow: 0 0 20px #B9B9B9;
+  }
+
+  .table.table-partner {
+    margin: 0;
+    tbody tr {
+      th {
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.18rem;
+        color: rgb(51, 51, 51);
+        padding: 30px 8px;
+
+        .img-wrapper {
+          margin-top: -88px;
+          padding-bottom: 18px;
+        }
+      }
+
+      td {
+        padding: 30px 50px;
+        font-size: 14px;
+        color: rgb(136, 136, 136);
+      }
+
+      .border-right {
+        border-right: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+.list-step-center {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  .step-li {
+    display: inline-block;
+
+    .unit {
+      .unit-text {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+
+        .step-num-center {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 70px;
+          height: 70px;
+          border: 2px solid #e5e5e5;
+          border-radius: 50%;
+          color: rgb(0, 160, 222);
+          background-color: #fff;
+          font-size: 30px;
+          text-align: center;
+          line-height: 60px;
+        }
+
+        .step-text {
+          margin-top: 80px;
+          text-align: center;
+          font-size: 0.18rem;
+          color: rgb(51, 51, 51);
+        }
+      }
+
+      .unit-line {
+        display: inline-block;
+        width: 150px;
+        height: 2px;
+        background-color: #e5e5e5;
+        margin: 0 -30px 75px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .table-responsive.table-parter-wrapper {
+    border: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .list-step-center .step-li .unit .unit-line {
+    width: 130px;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-step-center .step-li .unit .unit-line {
+    width: 50px;
+    margin: 0 -15px 68px;
+  }
+}
+
+@media (max-width: 465px) {
+  .list-step-center .step-li {
+    display: block;
+    .unit {
+      .unit-line {
+        display: none;
+      }
+
+      .unit-text {
+        display: block;
+
+        .step-num-center {
+          position: initial;
+          left: 0;
+          transform: initial;
+          display: inline-block;
+        }
+
+        .step-text {
+          display: inline-block;
+          margin-top: 48px;
+        }
+      }
+    }
+  }
+}
+

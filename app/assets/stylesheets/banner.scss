@@ -184,6 +184,10 @@
     }
   }
 
+  &.hero-partner {
+    background-image: image-url('partner/banner.jpg');
+  }
+
   .container{
     position: relative;
     height: 4.52rem;
