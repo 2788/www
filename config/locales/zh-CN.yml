@@ -1386,6 +1386,7 @@ zh-CN:
         - imgpath: case/fashion/jumeiyoupin.png
         - imgpath: case/fashion/meili.png
         - imgpath: case/fashion/meipai.png
+        - imgpath: client-qudong.jpg
     - groupid: enjoyment
       group:
        - imgpath: case/enjoyment/baiao.png
@@ -1416,6 +1417,8 @@ zh-CN:
         - imgpath: case/education/yangcongshuxue.png
         - imgpath: case/education/yingyuqupeiyin.png
         - imgpath: case/education/yunxuetang.png
+        - imgpath: client-beiliao.png
+        - imgpath: client-yuekezaixianxuexi.jpg
     - groupid: hardware
       group:
         - imgpath: case/hardware/dajiang.png

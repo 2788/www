@@ -10,7 +10,6 @@
 
   #cases-slider {
     max-height: 45px;
-    overflow: hidden;
   }
   .architecture {
     padding: 0 150px;
@@ -159,6 +158,7 @@
   .tab-content {
     margin-top: 0.2rem;
     line-height: 0.28rem;
+    overflow: hidden;
 
     .tab-desc {
       padding: 0;
