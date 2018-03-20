@@ -88,6 +88,10 @@
   color: rgb(0, 160, 222);
 }
 
+.nav.nav-tabs.points-bar > li > a[aria-expanded="false"] {
+  color: #333;
+}
+
 // 左侧切换导航
 .nav.nav-stacked.left-tab{
   border-bottom: 0;
