@@ -40,7 +40,7 @@
 
   .banner-container{
     position: relative;
-    height: 5.18rem;
+    height: 4.5rem;
     width: 100%;
     margin-top: -0.68rem;
     margin-bottom: 0.30rem;
@@ -61,10 +61,11 @@
     }
   }
 
+  &.hero-sourth-asia{background-image: image-url('sourth-asia-banner.jpg');}
   &.hero-bannerIdentify{background-image: image-url('banner-identification.jpg');}
-  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg'); }
+  &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg'); .banner-container .btn-banner { bottom: 0.4rem; } }
   &.hero-bannerPlayer{ background-image: image-url('player/banner.png');.middle-container{padding-top: 0.7rem;}}
-  &.hero-bannerAI {background-image: image-url('AI-banner.jpg'); .banner-container{top: 0;}}
+  &.hero-bannerAI {background-image: image-url('AI-banner.jpg'); .banner-container{top: 40px;}}
   &.hero-cdnprice {
     background-image: image-url('cdnprice/cdn-banner.jpg');
     .banner-container{top: 0;}

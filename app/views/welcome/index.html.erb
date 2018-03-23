@@ -1,5 +1,28 @@
 <% if I18n.t("views.language") == 'zh' %>
   <div class="banners-slider">
+    <div class="jumbotron hero hero-sourth-asia">
+      <div class="container">
+        <div class="middle-container">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="banner-desc">
+                <h2>东南亚存储区域上线</h2>
+                <p>七牛云致力于赋能客户全球化布局</p>
+                <p>持续挖掘洞察海量数据的无限价值</p>
+              </div>
+              <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4263/operational-guidelines-for-the-new-bucket", target: '_blank', class:"btn btn-lg btn-hollow btn-banner" -%>
+            </div>
+
+            <div class="col-sm-5 hidden-xs">
+              <div class="right-mask-banner">
+                <%= image_tag "icon-sourth-asia.png", alt: "东南亚存储", width: '90%' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="jumbotron hero hero-cdnprice">
       <div class="container">
         <div class="middle-container">
