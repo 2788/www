@@ -15,6 +15,28 @@
     padding: 0 150px;
   }
 
+  &.features-niuday {
+    background-color: rgb(7, 9, 23);
+
+    .img-wrapper.blue-shadow {
+      padding: 0 5px;
+    }
+
+    .intro {
+      text-align: center;
+      .title {
+        display: inline-block;
+        padding: 8px 0;
+        color: #fff;
+      }
+    }
+
+    p.desc {
+      color: #fff;
+      text-align: center;
+    }
+  }
+
   &.features-pbt{
     padding-bottom: 2.5rem;
   }
@@ -151,6 +173,11 @@
       margin-bottom: 0.20rem;
       text-align: center;
       font-weight: 300;
+
+      &.border-y {
+        border-top: 2px solid rgb(48, 116, 213);
+        border-bottom: 2px solid rgb(217, 67, 140);
+      }
     }
     .desc{ text-align: center; }
   }

@@ -71,6 +71,8 @@ Rails.application.routes.draw do
 
     resources :feedbacks, only: [:new, :create]
 
+    resources 'niuday', only: [:index]
+
     resources :recommendations, only: [:new, :create]
 
     resources :cooperations, only: [:index] do

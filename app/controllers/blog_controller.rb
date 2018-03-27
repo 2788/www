@@ -5,8 +5,9 @@ class BlogController < ApplicationController
 
   def index
     @title = "博客"
-    @q = Archive.ransack(title_or_summary_cont: params[:q])
-    @archives = @q.result.page params[:page]
+    # @q = Archive.ransack(title_or_summary_cont: params[:q])
+    # @archives = @q.result.page params[:page]
+    redirect_to(:action => 'category', :category => '5')
   end
 
   def archives

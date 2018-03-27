@@ -23,6 +23,7 @@ class Archive < ApplicationRecord
     6 => "牛棚漫画",
     7 => "加入我们",
     8 => "NewTech 观察圈",
+    9 => "其他分类"
   }
 
   def self.hot_archives

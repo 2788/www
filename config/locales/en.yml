@@ -305,7 +305,78 @@ en:
               desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
         feature5:
           title: "Success Cases"
-
+      pili:
+        banner:
+          title: "直播云"
+          desc: "七牛直播云服务 (PILI) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
+          icon: "banner/banner-pili-right-zh.png"
+        scene:
+          title: "全面的云端服务"
+          desc: "打造直播生态链，提供更好的使用体验"
+          middlebar:
+            - name: "视频 AI 服务"
+              class: "active"
+              href: "#tab-usage-section-1"
+            - name: "视频大数据服务"
+              class: ""
+              href: "#tab-usage-section-2"
+            - name: "服务端实时转码"
+              class: ""
+              href: "#tab-usage-section-3"
+            - name: "HLS+ 低延迟"
+              class: ""
+              href: "#tab-usage-section-4"
+            - name: "安全防盗链"
+              class: ""
+              href: "#tab-usage-section-5"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane active"
+              icon: "pili/icon-shipinaifuwu.png"
+              title: "视频 AI 服务"
+              desc: "支持对涉黄、涉恐、涉暴等行为进行高效自动识，快速集成人脸识别、图像智能识别、OCR 等技术与应用。"
+              link: "相关产品："
+              linkarr:
+                - title: "智能多媒体 API"
+                  link: "https://www.qiniu.com/products/dora"
+                - title: "AI 创新扶持计划"
+                  link: "https://www.qiniu.com/alaccelerator"
+            - id: "tab-usage-section-2"
+              class: "tab-pane"
+              icon: "pili/icon-shipindashujufuwu.png"
+              title: "视频大数据服务"
+              desc: "支持对业务关键系统的实时监测分析、告警优化，助力直播平台不断改善升级业务，提高可靠性与稳定性，为终端用户提供优秀的体验。"
+              link: "相关产品："
+              linkarr:
+                - title: "大数据"
+                  link: "https://www.qiniu.com/products/pandora"
+            - id: "tab-usage-section-3"
+              class: "tab-pane"
+              icon: "pili/icon-zhaikuandaigaoqingzhuanma.png"
+              title: "服务端实时转码"
+              desc: "提供 HP.264 转码技术，完整的云端 H.265 解决方案，降低 30%-50% 的带宽成本，同等码率下提供更加卓越的画质。提供多码率实时转码服务，将一路原始直播视频流编码为高清、普清、低清三种码流。方便客户根据不同场景灵活切换不同码率的流。"
+              link: ""
+              linkarr:
+                - title: ""
+                  link: ""
+            - id: "tab-usage-section-4"
+              class: "tab-pane"
+              icon: "pili/icon-hls.png"
+              title: "HLS+ 低延迟"
+              desc: "HLS+ 是将标准的 HLS 进行流式处理，大幅度降低标准 HLS 延迟，首开时间更稳定，回源量小。"
+              link: ""
+              linkarr:
+                - title: ""
+                  link: ""
+            - id: "tab-usage-section-5"
+              class: "tab-pane"
+              icon: "pili/icon-anquanfangdaolian.png"
+              title: "安全防盗链"
+              desc: "支持 HTTPS 安全协议、时间戳、防盗链、回源鉴权等多种鉴权方式，充分保护资源不被盗链，极大提升直播服务安全性。"
+              link: ""
+              linkarr:
+                - title: ""
+                  link: ""
       solution:
         banner:
           title: "Qiniu Cloud Solution Platform"
@@ -756,6 +827,347 @@ en:
               class: "tab-pane fade"
               desc: Simply one step to publish model online, for various use case through API.
               img: "atlab/moxingfenbuEN.png"
+      ssl:
+        feature3:
+          middlebar:
+            - name: "企业网站"
+              class: "active"
+              href: "#tab-usage-section-1"
+            - name: "企业应用"
+              class: ""
+              href: "#tab-usage-section-2"
+            - name: "政务信息"
+              class: ""
+              href: "#tab-usage-section-3"
+            - name: "支付体系"
+              class: ""
+              href: "#tab-usage-section-4"
+            - name: "API 接口"
+              class: ""
+              href: "#tab-usage-section-5"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane active"
+              icon: "ssl/icon-qiyewangzhan.png"
+              title: "企业网站"
+              desc: "启用企业网站全站https安全加密，激活绿色安全标识(DV/OV)或地址栏企业名称标识(EV)，为潜在客户带来更可信、更放心的访问体验，极大增强企业诚信力和用户信赖感，有效提升成单率。"
+            - id: "tab-usage-section-2"
+              class: "tab-pane"
+              icon: "ssl/icon-qiyeyingyong.png"
+              title: "企业应用"
+              desc: "越来越多的企业将OA、CRM、ERP等企业应用系统部署于云端，享受云计算的高效和便捷性。而升级为https安全加密，可进一步提升系统安全性，确保敏感信息不被劫持。"
+            - id: "tab-usage-section-3"
+              class: "tab-pane"
+              icon: "ssl/icon-zhengwuxinxi.png"
+              title: "政务信息"
+              desc: "公信力是政务平台要打造的最重要特性。而越来越多的钓鱼欺诈网站和信息劫持手段，对政务平台的信息安全带来严重威胁。启用权威认证的SSL证书能最大化保障信息安全和网站公信力。"
+            - id: "tab-usage-section-4"
+              class: "tab-pane"
+              icon: "ssl/icon-zhifutixi.png"
+              title: "支付体系"
+              desc: "支付环节是用户最敏感也最容易受到安全威胁的部分，极易成为不法用户信息劫持和伪装欺诈的重要目标。因此，实现网站支付环节的https信息传输加密，已经成为各大网站的标配。"
+            - id: "tab-usage-section-5"
+              class: "tab-pane"
+              icon: "ssl/icon-apijiekou.png"
+              title: "API 接口"
+              desc: "API接口是第三方网站进行信息交互的重要形式，因为大多涉及敏感信息或重要操作指令的传输，因此其安全性至关重要。使用SSL证书进行信息传输的高强度加密，可有效杜绝信息劫持。"
+      arch:
+        events:
+          - img: "arch/img-shenzhen.jpg"
+            time: 10 月 21 日
+            title: Kubernetes 落地最佳实践
+            site: 深圳
+            details:
+              time: 2017/10/21 13:30
+              site: 深圳 思微空间
+              link: "http://hd.qiniu.com/arch/history/28"
+          - img: "arch/img-shanghai.jpg"
+            time: 09 月 23 日
+            title: 移动架构与性能优化最佳实践
+            site: 上海
+            details:
+              time: 2017/09/23 13:30
+              site: 上海  创业邦
+              link: "http://hd.qiniu.com/arch/history/27"
+          - img: "arch/img-guangzhou.jpg"
+            time: 09 月 02 日
+            title: 移动性能优化最佳实践
+            site: 广州
+            details:
+              time: 2017/09/02 13:30
+              site: 广州 E杯咖啡
+              link: "http://hd.qiniu.com/arch/history/26"
+          - img: "arch/img-hangzhou.jpg"
+            time: 09 月 02 日
+            title: 七牛云&amp;蘑菇街架构师实践日：CI／CD落地最佳实践
+            site: 杭州
+            details:
+              time: 2017/09/02 13:30
+              site: 杭州 浙商财富中心a座蘑菇街一楼
+              link: "http://hd.qiniu.com/arch/history/25"
+          - img: "arch/img-beijing.jpg"
+            time: 08 月 19 日
+            title: 大数据最新场景化应用实践
+            site: 北京
+            details:
+              time: 2017/08/19 13:30
+              site: 北京 上地开拓路11号福道大厦链家网
+              link: "http://hd.qiniu.com/arch/history/24"
+          - img: "arch/img-xiamen.jpg"
+            time: 07 月 30 日
+            title: 大数据场景化应用最佳实践
+            site: 厦门
+            details:
+              time: 2017/07/30 13:30
+              site: 厦门 诚硕空间
+              link: "http://hd.qiniu.com/arch/history/23"
+          - img: "arch/img-chengdu.jpg"
+            time: 07 月 01 日
+            title: 大数据与机器学习
+            site: 成都
+            details:
+              time: 2017/07/01 13:30
+              site: 成都 小样社区
+              link: "http://hd.qiniu.com/arch/history/22"
+          - img: "arch/img-shanghai.jpg"
+            time: 06 月 11 日
+            title: 大数据最新场景化应用实践
+            site: 上海
+            details:
+              time: 2017/06/11 13:30
+              site: 上海 普陀 饿了么总部
+              link: "http://hd.qiniu.com/arch/history/21"
+          - img: "arch/img-beijing.jpg"
+            time: 05 月 13 日
+            title: 新时代下的高效运维之道
+            site: 北京
+            details:
+              time: 2017/05/13 13:30
+              site: 北京 中关村 P2联合办公社
+              link: "http://hd.qiniu.com/arch/history/20"
+          - img: "arch/img-shenzhen.jpg"
+            time: 04 月 08 日
+            title: 大数据技术最佳实践
+            site: 深圳
+            details:
+              time: 2017/04/08 13:30
+              site: 深圳 南山区 虚拟大学园 R3-B1 楼
+              link: "http://hd.qiniu.com/arch/history/19"
+          - img: "arch/img-hangzhou.jpg"
+            time: 03 月 25 日
+            title: 大数据与机器学习的最佳实践
+            site: 杭州
+            details:
+              time: 2017/03/25 13:30
+              site: 杭州 楼友会咖啡
+              link: "http://hd.qiniu.com/arch/history/18"
+          - img: "arch/img-beijing.jpg"
+            time: 03 月 04 日
+            title: “她时代”- 大数据与机器学习
+            site: 北京
+            details:
+              time: 2017/03/04 13:30
+              site: 北京  中关村大街  联合创业办公社
+              link: "http://hd.qiniu.com/arch/history/17"
+          - img: "arch/img-beijing.jpg"
+            time: 12 月 04 日
+            title: 从 0 到 1，直播系统养成记
+            site: 北京
+            details:
+              time: 2016/12/04 13:30
+              site: 北京  中关村大街  联合创业办公社
+              link: "http://hd.qiniu.com/arch/history/16"
+          - img: "arch/img-hangzhou.jpg"
+            time: 10 月 23 日
+            title: 移动直播技术最佳实践
+            site: 杭州
+            details:
+              time: 2016/10/23 13:30
+              site: 杭州 西湖区教工路 88 号立元大厦 3F 沃创空间
+              link: "http://hd.qiniu.com/arch/history/14"
+          - img: "arch/img-guangzhou.jpg"
+            time: 09 月 25 日
+            title: 直播技术最佳实践
+            site: 广州
+            details:
+              time: 2016/09/25 13:30
+              site: 广州   大道中 289 号印报楼 3 楼 301 酷窝空间
+              link: "http://hd.qiniu.com/arch/history/13"
+          - img: "arch/img-xiamen.jpg"
+            time: 09 月 03 日
+            title: 「泛娱乐+直播」技术最佳实践
+            site: 厦门
+            details:
+              time: 2016/09/03 13:30
+              site: 厦门 软件园二期望海路 61 号北一楼    3W 唯你孵化器
+              link: "http://hd.qiniu.com/arch/history/12"
+          - img: "arch/img-beijing.jpg"
+            time: 08 月 14 日
+            title: 体育+直播 技术最佳实践
+            site: 北京
+            details:
+              time: 2016/08/14 13:30
+              site: 北京
+              link: "http://hd.qiniu.com/arch/history/11"
+          - img: "arch/img-shanghai.jpg"
+            time: 07 月 31 日
+            title: 「泛娱乐+直播」技术最佳实践
+            site: 上海
+            details:
+              time: 2016/07/31 13:30
+              site: 上海 浦东新区金科路2966号 创智空间
+              link: "http://hd.qiniu.com/arch/history/10"
+          - img: "arch/img-shenzhen.jpg"
+            time: 06 月 18 日
+            title: 微服务架构最佳实践
+            site: 深圳
+            details:
+              time: 2016/06/18 13:30
+              site: 深圳 南山区科发路1号富利臻大厦三层 思微空间
+              link: "http://hd.qiniu.com/arch/history/9"
+          - img: "arch/img-hangzhou.jpg"
+            time: 05 月 29 日
+            title: 亿级移动应用架构最佳实践
+            site: 杭州
+            details:
+              time: 2016/05/29 13:30
+              site: 杭州 西湖区教工路88号立元大厦3F  沃创空间
+              link: "http://hd.qiniu.com/arch/history/8"
+          - img: "arch/img-chengdu.jpg"
+            time: 05 月 07 日
+            title: 微服务架构与Docker技术最佳实践
+            site: 成都
+            details:
+              time: 2016/05/07 13:30
+              site: 成都 长虹科技大厦 36-5会议室
+              link: "http://hd.qiniu.com/arch/history/7"
+          - img: "arch/img-beijing.jpg"
+            time: 04 月 10 日
+            title: 在线视频技术最佳实践
+            site: 北京
+            details:
+              time: 2016/04/10 13:30
+              site: 北京 wepac空间
+              link: "http://hd.qiniu.com/arch/history/6"
+          - img: "arch/img-shanghai.jpg"
+            time: 03 月 13 日
+            title: 容器核心技术与最佳实践
+            site: 上海
+            details:
+              time: 2016/03/13 13:30
+              site: 上海  创智天地7号楼1层 多功能剧场
+              link: "http://hd.qiniu.com/arch/history/5"
+          - img: "arch/img-guangzhou.jpg"
+            time: 01 月 09 日
+            title: 瞩目电商：从架构开发到系统优化
+            site: 广州
+            details:
+              time: 2016/01/09 13:30
+              site: 广州 羊城同创汇
+              link: "http://hd.qiniu.com/arch/history/4"
+          - img: "arch/img-beijing.jpg"
+            time: 12 月 20 日
+            title: 高性能服务端开发实践
+            site: 北京
+            details:
+              time: 2015/12/20 13:30
+              site: 北京 Wepac空间
+              link: "http://hd.qiniu.com/arch/history/3"
+          - img: "arch/img-shanghai.jpg"
+            time: 11 月 28 日
+            title: 大型分布式系统架构实践
+            site: 上海
+            details:
+              time: 2015/11/28 13:30
+              site: 上海 WE+金钟广场旗舰店
+              link: "http://hd.qiniu.com/arch/history/2"
+          - img: "arch/img-shenzhen.jpg"
+            time: 11 月 01 日
+            title: 智能硬件+物联网架构实践
+            site: 深圳
+            details:
+              time: 2015/11/01 13:30
+              site: 深圳 意启创业 路演厅
+              link: "http://hd.qiniu.com/arch/history/1"
+      niuday:
+        events:
+          - img: "img-hangzhou.jpg"
+            site: 杭州
+            time: 2018/04/11
+            details:
+              time: 2018/04/11
+              site: 杭州海外海皇冠大酒店
+              link:
+          - img: "img-beijing.jpg"
+            site: 北京
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-changsha.jpg"
+            site: 长沙
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-chengdu.jpg"
+            site: 成都
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-chongqing.jpg"
+            site: 重庆
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-guangzhou.jpg"
+            site: 广州
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-nanjing.jpg"
+            site: 南京
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-shenzhen.jpg"
+            site: 深圳
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-wuhan.jpg"
+            site: 武汉
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-xiamen.jpg"
+            site: 厦门
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "img-xian.jpg"
+            site: 西安
+            time:
+            details:
+              time:
+              site:
+              link:
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products

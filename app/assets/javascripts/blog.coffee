@@ -12,9 +12,9 @@ $(document).ready ->
   # get URL
   # get category
   curlink = location.href.split('/')
-  catnum = +curlink.slice(curlink.indexOf("category")+1 , curlink.indexOf("category")+2)[0]
+  catnum = +curlink.slice(curlink.indexOf("category")+1 , curlink.indexOf("category")+2)[0] || 0
   # rm active
-  $('.list-blog a.active').removeClass('active')
+  $('.list-blog li.active').removeClass('active')
   # add active
   curli = $($('.list-blog li')[catnum])
   curli.addClass('active')

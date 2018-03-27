@@ -6,6 +6,13 @@ footer{
   transition: left .4s ease-in;
   font-weight: 300;
 
+  &.niuday {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: image-url('niuday/bottom-bg.jpg');
+  }
+
   &.en{
     padding: 0 0 15px;
     .cloud-verify {
@@ -18,6 +25,29 @@ footer{
         padding: 10px 0;
       }
     }
+  }
+
+  a.contact {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    margin-bottom: 15px;
+    height: 0.35rem;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 0.35rem 0.35rem;
+    text-align: center;
+  }
+
+  .contact-niuday {
+    padding: 45px 0 10px;
+  }
+
+  .tel-box-grey {
+    background-image: image-url("niuday/icon-email.png");
+  }
+
+  .email-box-grey {
+    background-image: image-url("niuday/icon-phone.png");
   }
 
   .container dl{
