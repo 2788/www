@@ -40,10 +40,13 @@ nav.navbar{
   &.nav-bg{
     transition: all linear .8s;
     background-color: #303848;
+    &.nav-niuday {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-image: image-url('niuday/bottom-bg.jpg');
+    }
   }
-}
-nav.navbar.nav-bg{
-  background-color: #303848;
 }
 
 // 导航栏

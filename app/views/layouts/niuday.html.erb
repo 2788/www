@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">var qns = window._qns || []; window._qns=qns;qns.push(["setStartLoadTime",new Date().getTime()]);qns.push(["setAccountID","591ead7b54630dd7aed533df"]);</script>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] || {} -%>
+    <% unless seo[:keywords].blank? %>
+    <meta name="keywords" content="<%= seo[:keywords] -%>" />
+    <% end %>
+    <% unless seo[:description].blank? %>
+    <meta name="description" content="<%= seo[:description] -%>">
+    <meta name="baidu-site-verification" content="otBvF33R0a" />
+    <% end %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title><%= seo[:title] || @title || "七牛云" -%></title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body class="<%= controller_name -%>-page <%= "#{controller_name}-page-#{action_name}" -%>">
+    <!--[if lt IE 10]>
+      <div class="browsehappy alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        您正在使用 <strong>旧浏览器</strong> . 为了更好的体验，请 <a href="http://browsehappy.com/" target="_blank">更新</a> 您的浏览器.
+      </div>
+    <![endif]-->
+
+    <nav class="navbar navbar-default nav-niuday" id="navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to image_tag(I18n.t("navbar.logo"), width: 100), I18n.t('views.language') == 'zh' ? '/' : '/en', class: "navbar-brand" %>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-nav-mobile">
+            <li class="dropdown" id="spaces-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.product") %></a>
+
+              <ul class="dropdown-menu services-menu">
+                <% I18n.t("services").each do |service| %>
+                  <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
+
+                  <% service[:list].each do |product| %>
+                    <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
+                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                        <%= content_tag :h4, raw(product[:label]), class: product[:name] -%>
+                        <%= content_tag :p, product[:desc], class: "hidden-xs" -%>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+
+            <li class="dropdown" id="solution-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.solution") %></a>
+
+              <ul class="dropdown-menu solutions-menu">
+                <% I18n.t("solutions.arr1").each do |solution| %>
+                  <%= content_tag :li, class: I18n.t("views.language") == 'en' ? 'd-none' : 'solution' do -%>
+                    <%= link_to(send("products_#{solution[:name]}_path")) do -%>
+                      <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
+                      <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+                <% I18n.t("solutions.arr2").each do |solution| %>
+                  <%= content_tag :li, class: "solution" do -%>
+                    <%= link_to(solutions_path(anchor: solution[:name])) do -%>
+                      <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
+                      <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+                <li class="solution <%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
+                  <%= link_to products_pili_livequiz_path do -%>
+                    <h4 class="quiz menu-title">直播竞答解决方案</h4>
+                    <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案</p>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to I18n.t("navbar.price"), prices_path -%></li>
+            <li><%= link_to I18n.t("navbar.about"), company_path -%></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'manage-control' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'developer-center' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'hot-events' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'presentation-more select-unit' %>" id="more-dropdown">
+              <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">更多</a>
+              <ul class="presentation-menu dropdown-menu dropdown-menu-right m-0 p-0">
+                <li class="manage-control"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+                <li class="developer-center"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
+                <li class="hot-events"><%= link_to "热门活动", events_path -%></li>
+              </ul>
+            </li>
+            <li class="select-unit" id="language-dropdown">
+              <a class="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="line <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>"></span>
+                <span class="current"><%= I18n.t("views.locale") %></span> &nbsp;
+                <span class="glyphicon glyphicon-chevron-down"></span>
+              </a>
+              <ul class="language-menu dropdown-menu dropdown-menu-right m-0 p-0">
+                <li val="zh">
+                  <%= link_to "中国站", controller: controller_name, action: action_name, locale: nil %>
+                </li>
+                <li val="en">
+                  <%= link_to "International-English", controller: controller_name, action: action_name, locale: "en" %>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown hidden userinfo <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>" id="user-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile user-email" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+              <ul class="dropdown-menu user-menu">
+                <li><a href="https://sso.qiniu.com/signout" class="text-sub">退出当前帐号</a></li>
+              </ul>
+            </li>
+            <li class="need-signin <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+              <div class="actions">
+                <a href="<%= sigin_url() %>" class="btn btn-hollow">登录</a>
+                <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary hidden-xs">注册有礼</a>
+                <a target="_blank" href="https://portal.qiniu.com/signup?type=1" class="btn btn-primary visible-xs-inline">注册有礼</a>
+              </div>
+            </li>
+
+            <li class="<%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+              <div class="actions">
+                <a href="#" class="btn btn-hollow hidden-xs" data-toggle="modal" data-target="#feedback-modal">Contact Us</a>
+              </div>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <%= yield %>
+
+
+    <%# 悬浮按钮 %>
+    <div class="helper">
+      <a id="waiter" data-toggle="modal" data-target="#feedback-modal">
+        <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != "zh" ? "icon-en" : "" -%>
+        <span class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">服务&bull;咨询</span>
+      </a>
+      <%= link_to image_tag("close.png"), "javascript:;", class:I18n.t("views.language") != "zh" ? "d-none" : "close-btn" %>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade alert-modal-css form-wrapper" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-modal-label" data-keyboard="false" data-backdrop="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="feedback-modal-label"><%= I18n.t("views.welcome.helper.title") %></h4>
+          </div>
+          <div class="modal-body">
+            <div id="feedback-alert-success" class="alert alert-success" style="display: none;">
+              <i class="glyphicon glyphicon-ok"></i> <%= I18n.t("views.welcome.helper.tips.success") %>
+            </div>
+            <div id="feedback-alert-error" class="alert alert-danger" style="display: none;">
+              <i class="glyphicon glyphicon-remove"></i> <%= I18n.t("views.welcome.helper.tips.error") %>
+            </div>
+            <div class="tips text-center <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+              此表单仅用于产品及服务售前咨询（您也可以拨打400-808-9176转2）<br />
+              如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", class: "more underline" -%>
+            </div>
+            <div class="tips text-center <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+              <%= I18n.t("views.welcome.helper.desc") %>
+            </div>
+
+            <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| %>
+              <%= f.hidden_field :referer, value: request.original_url -%>
+
+              <div class="form-group">
+                <label for="feedback-content" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.content") %><small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id:"feedback-content", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.content") %></label>
+                  </div>
+                  <div class="maxLength-tips">
+                    <label for="" class="maxLength-label"><%= I18n.t("views.welcome.helper.tips.tip") %></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="feedback-name" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.name") %><small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :name, class:"form-control", id:"feedback-name", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.name") %></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="feedback-company" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.company") %></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :company, class:"form-control", id:"feedback-company" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="feedback-city" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.country") %><small class="text-danger">*</small></label>
+                <% if I18n.t("views.language") == 'zh' %>
+                  <div class="col-sm-10" id="province_city" data-required="true">
+                    <select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select>
+                  </div>
+                <% else %>
+                  <div class="col-sm-10" id="province_city">
+                  <%= f.text_field :province, class:"form-control", id:"feedback-province", validate: true %>
+                    <div class="div-error">
+                      <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.phone") %></label>
+                    </div>
+                  </div>
+                <% end %>
+
+              </div>
+
+              <div class="form-group">
+                <label for="feedback-phone" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.phone") %><small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.telephone_field :phone, class:"form-control", id:"feedback-phone", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.phone") %></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="feedback-email" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.email") %><small class="text-danger">*</small></label>
+                <div class="col-sm-10">
+                  <%= f.text_field :email, type: "email", class:"form-control", id:"feedback-email", validate: true %>
+                  <div class="div-error">
+                    <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.email") %></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
+                <div class="col-sm-12 text-center tips">Email our Marketing Team：Marketing@Qiniu.com</div>
+              </div>
+
+              <div class="actions">
+                <%= f.button I18n.t("views.welcome.helper.submit"), class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: I18n.t("views.welcome.helper.tips.submit")}  %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="niuday <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>">
+      <div class="container">
+        <div class="links grey-link">
+          <div class="contact-niuday">
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="col-sm-6">
+                  <h4>合作咨询</h4>
+                  <%= link_to "huangqianqian@qiniu.com", "mailto:huangqianqian@qiniu.com", class:"email-box-grey contact" -%>
+                  <%= link_to "15800411083", "tel:15800411083", class:"tel-box-grey contact" -%>
+                </div>
+                <div class="col-sm-6">
+                  <h4>会务咨询</h4>
+                  <%= link_to "xujiancheng@qiniu.com", "mailto:xujiancheng@qiniu.com", class:"email-box-grey contact" -%>
+                  <%= link_to "18621774121", "tel:18621774121", class:"tel-box-grey contact" -%>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="qrcode-wrapper text-center">
+                  <h4 class="text-center">关注主办方</h4>
+                  <%= image_tag 'niuday/img-code.jpg' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="links grey-link">
+          <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
+            <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
+            <li><%= link_to "用户协议", user_agreement_path -%></li>
+            <li><%= link_to "SLA", sla_kodo_path -%></li>
+            <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
+          </ul>
+          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
+          <div class="icp grey-color">
+            <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
+            <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank"><span class="icon icon-aq"> <%= icp[0] -%> </span></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="footer-sign <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+      <div class="stripe stripe-blue p-xxl visible-xs fixed-b">
+        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a></div>
+        <div class="text-center"><a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a></div>
+        <%= link_to image_tag("close.png", class: "stripe-close-img"), "javascript:;", class: "stripe-close-btn" %>
+      </div>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-40857860-16', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?204fcf6777f8efa834fe7c45a2336bf1";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script src="https://mars-assets.qnssl.com/stalker.js"></script>
+  </body>
+</html>

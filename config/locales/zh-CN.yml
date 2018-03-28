@@ -1107,6 +1107,115 @@ zh-CN:
               time: 2015/11/01 13:30
               site: 深圳 意启创业 路演厅
               link: "http://hd.qiniu.com/arch/history/1"
+      niuday:
+        events:
+          - img: "niuday/img-hangzhou.jpg"
+            site: 杭州
+            time: 2018/04/11
+            details:
+              time: 2018/04/11
+              site: 杭州海外海皇冠大酒店
+              link:
+          - img: "niuday/img-beijing.jpg"
+            site: 北京
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-changsha.jpg"
+            site: 长沙
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-chengdu.jpg"
+            site: 成都
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-chongqing.jpg"
+            site: 重庆
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-guangzhou.jpg"
+            site: 广州
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-nanjing.jpg"
+            site: 南京
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-shenzhen.jpg"
+            site: 深圳
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-wuhan.jpg"
+            site: 武汉
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-xiamen.jpg"
+            site: 厦门
+            time:
+            details:
+              time:
+              site:
+              link:
+          - img: "niuday/img-xian.jpg"
+            site: 西安
+            time:
+            details:
+              time:
+              site:
+              link:
+        medias:
+          - img: 'niuday/logo-chuangyebang.png'
+          - img: 'niuday/logo-yiou.png'
+          - img: 'niuday/logo-leifengwang.png'
+          - img: 'niuday/logo-51cto.png'
+          - img: 'niuday/logo-csdn.png'
+          - img: 'niuday/logo-jikebang.png'
+          - img: 'niuday/logo-tuopushe.png'
+          - img: 'niuday/logo-zhongguoidcquan.png'
+          - img: 'niuday/logo-ruanjianicwang.png'
+          - img: 'niuday/logo-doit.png'
+          - img: 'niuday/logo-bitewang.png'
+        partners:
+          - img: 'niuday/logo-haikangweishi.png'
+          - img: 'niuday/logo-jiguang.png'
+          - img: 'niuday/logo-juejin.png'
+          - img: 'niuday/logo-daguanshuju.png'
+          - img: 'niuday/logo-ping.png'
+          - img: 'niuday/logo-weilian.png'
+          - img: 'niuday/logo-getui.png'
+          - img: 'niuday/logo-rongdukeji.png'
+          - img: 'niuday/logo-yunheenmo.png'
+          - img: 'niuday/logo-apicloud.png'
+          - img: 'niuday/logo-cobub.png'
+          - img: 'niuday/logo-pudongruanjianyuan.png'
+          - img: 'niuday/logo-rongyun.png'
+          - img: 'niuday/logo-huanxin.png'
+          - img: 'niuday/logo-yunsuo.png'
+          - img: 'niuday/logo-dakashuo.png'
+          - img: 'niuday/logo-huodongxing.png'
   navbar:
     logo: "logo-white.png"
     product: 产品
