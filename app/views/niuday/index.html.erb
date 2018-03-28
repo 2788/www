@@ -53,51 +53,18 @@
 <div class="features features-niuday">
   <div class="container">
     <div class="intro">
-      <h2 class="title border-y">合作伙伴</h2>
+      <h2 class="title border-y">合作媒体</h2>
     </div>
 
     <div class="row">
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-haikangweishi.png' %>
-        </div>
-      </div>
 
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-getui.png' %>
+      <% I18n.t("views.welcome.niuday.medias").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
         </div>
-      </div>
-
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-weilian.png' %>
-        </div>
-      </div>
-
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-rongdukeji.png' %>
-        </div>
-      </div>
-
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-juejin.png' %>
-        </div>
-      </div>
-
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-jiguang.png' %>
-        </div>
-      </div>
-
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-daguanshuju.png' %>
-        </div>
-      </div>
+      <% end %>
 
     </div>
   </div>
@@ -106,33 +73,19 @@
 <div class="features features-niuday">
   <div class="container">
     <div class="intro">
-      <h2 class="title border-y">合作媒体</h2>
+      <h2 class="title border-y">合作伙伴</h2>
     </div>
 
     <div class="row">
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-chuangyebang.png' %>
-        </div>
-      </div>
 
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-tuopushe.png' %>
+      <% I18n.t("views.welcome.niuday.partners").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-yiou.png' %>
-        </div>
-      </div>
-
-      <div class="seven-sm-1 col-xs-6">
-        <div class="img-wrapper blue-shadow">
-          <%= image_tag 'niuday/logo-jikebang.png' %>
-        </div>
-      </div>
     </div>
   </div>
 </div>
