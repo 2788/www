@@ -10,6 +10,13 @@ class BlogController < ApplicationController
     redirect_to(:action => 'category', :category => '5')
   end
 
+  def all
+    @title = "博客"
+    @q = Archive.ransack(title_or_summary_cont: params[:q])
+    @archives = @q.result.page params[:page]
+    render "index"
+  end
+
   def archives
     @archive = Archive.find(params[:id])
     @title = @archive[:title]

@@ -143,6 +143,7 @@ nav.navbar{
   }
   .navbar-nav .services-menu,
   .navbar-nav .solutions-menu,
+  .navbar-nav .events-menu,
   .navbar-nav .user-menu{
     background-color: #303848;
     padding: 0;
@@ -318,6 +319,47 @@ nav.navbar{
   }
 }
 
+.events-menu {
+  width: auto;
+
+  .niuday {
+    background-image: image-url("icon-niuday.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+  }
+  .arch {
+    background-image: image-url("icon-jiagoushi.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+  }
+  .ecug {
+    background-image: image-url("icon-ecug.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+  }
+  .goglobal {
+    background-image: image-url("icon-chuhai.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+  }
+  .alaccelerator {
+    background-image: image-url("icon-ai.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+  }
+  .partners {
+    background-image: image-url("icon-hezuohuoban.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20px 19px;
+  }
+}
+
 .solutions-menu{
   width: auto;
   .menu-title{
@@ -411,7 +453,9 @@ nav.navbar{
     position: relative;
     background-color: #303848;
   }
-  .navbar-default .navbar-nav .services-menu li a h4, .navbar-default .navbar-nav .solutions-menu li a h4{
+  .navbar-default .navbar-nav .services-menu li a h4,
+  .navbar-default .navbar-nav .solutions-menu li a h4,
+  .navbar-default .navbar-nav .events-menu li a h4{
     font-size: 12px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -446,6 +490,7 @@ nav.navbar{
     text-align: center;
   }
   .navbar-default .navbar-nav .services-menu,
+  .navbar-default .navbar-nav .events-menu,
   .navbar-default .navbar-nav .solutions-menu {
     margin-bottom: 0;
     li a { padding: 0.10rem 0.15rem; }
@@ -483,7 +528,7 @@ nav.navbar{
   }
 
   .navbar-default .navbar-nav>li {
-    &.hot-events,
+    &.company-more,
     &.developer-center,
     &.manage-control {
       display: none;
@@ -495,9 +540,6 @@ nav.navbar{
       .presentation-menu {
         li {
           display: block;
-          .hot-events {
-            display: block;
-          }
         }
       }
     }
@@ -519,7 +561,7 @@ nav.navbar{
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .navbar-default .navbar-nav>li {
-    &.hot-events {
+    &.developer-center {
       display: none;
     }
 
@@ -529,7 +571,7 @@ nav.navbar{
       .presentation-menu {
         li {
           display: none;
-          &.hot-events {
+          &.developer-center {
             display: block;
           }
         }

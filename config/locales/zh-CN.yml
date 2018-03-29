@@ -1,7 +1,7 @@
 zh-CN:
   views:
     language: "zh"
-    locale: "中国站"
+    locale: "中文站"
     pagination:
       first: "首页"
       last: "末页"
@@ -136,10 +136,10 @@ zh-CN:
               desc: "业界领先的纠删码存储方案，能够提供高达 16 个 9 的数据可靠性。跨数据中心的副本冗余，能够保障服务的超高可用性。"
             - title: "易扩展"
               icon: "icon-kekuozhan@2x.png"
-              desc: "利⽤七⽜云对象存储，您的存储空间⽆上限的同时也⽆需担⼼扩容问题。您能够实现存储需求的弹性伸缩，从⽽提⾼业务灵活性。"
+              desc: "利用七牛云对象存储，您的存储空间无上限的同时也无需担心扩容问题。您能够实现存储需求的弹性伸缩，从而提高业务灵活性。"
             - title: "低成本"
               icon: "icon-dichengben@2x.png"
-              desc: "您⽆需前期投⼊。七⽜云对象存储按需使⽤、按需付费的便捷性，能够有效避免存储及带宽资源的闲置浪费。"
+              desc: "您无需前期投入。七牛云对象存储按需使用、按需付费的便捷性，能够有效避免存储及带宽资源的闲置浪费。"
             - title: "数据智能化"
               icon: "icon-yizhanshi@2x.png"
               desc: "与七牛云其他产品紧密协同，提供标准 HDFS 访问方式，为大数据和机器学习的海量高速读写场景进行了大量优化。"
@@ -149,7 +149,7 @@ zh-CN:
             - title: "多媒体数据处理"
               icon: "icon-shujuchuli@2x.png"
               more: "了解更多"
-              desc: "基于对象存储，您可以⼀站式地完成图片处理和⾳视频处理。"
+              desc: "基于对象存储，您可以一站式地完成图片处理和音视频处理。"
               link: "/products/dora"
             - title: "跨区域同步"
               icon: "icon-kuaquyutongbu@2x.png"
@@ -208,13 +208,13 @@ zh-CN:
               class: "tab-pane"
               icon: "icon-shujuchuli2@2x.png"
               title: "多媒体数据处理"
-              desc: "针对有海量⽤户⽣成内容的场景，七⽜云对象存储服务的⾼并发能⼒使您灵活应对⼤流量的业务场景。您可以对存储在云端的图⽚、⾳视频等⽂件进⾏数据处理。"
+              desc: "针对有海量用户生成内容的场景，七牛云对象存储服务的高并发能力使您灵活应对大流量的业务场景。您可以对存储在云端的图片、音视频等文件进行数据处理。"
               link: ""
             - id: "tab-usage-section-3"
               class: "tab-pane"
               icon: "icon-neirongjiasufenfa@2x.png"
               title: "内容加速分发"
-              desc: "⾯对视频、游戏等热点资源分发的业务场景，您可以使⽤七⽜云对象存储作为源站，搭配七⽜云融合 CDN 进⾏加速分发，⽅便您通过 CDN 节点就近访问资源，提升⽤户体验。"
+              desc: "面对视频、游戏等热点资源分发的业务场景，您可以使用七牛云对象存储作为源站，搭配七牛云融合 CDN 进行加速分发，方便您通过 CDN 节点就近访问资源，提升用户体验。"
               link: ""
             - id: "tab-usage-section-4"
               class: "tab-pane"
@@ -1115,112 +1115,149 @@ zh-CN:
             details:
               time: 2018/04/11
               site: 杭州海外海皇冠大酒店
-              link:
+              link: view
           - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-changsha.jpg"
             site: 长沙
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-chengdu.jpg"
             site: 成都
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-chongqing.jpg"
             site: 重庆
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-guangzhou.jpg"
             site: 广州
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-nanjing.jpg"
             site: 南京
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-shenzhen.jpg"
             site: 深圳
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-wuhan.jpg"
             site: 武汉
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-xiamen.jpg"
             site: 厦门
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
           - img: "niuday/img-xian.jpg"
             site: 西安
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
+        avatars:
+          - img: 'niuday/avatar-lixingbo.png'
+            name: 李兴波
+            title: 海康萤石副总裁
+          - img: 'niuday/avatar-lilei.png'
+            name: 李磊
+            title: 浙报集团产品研发中心视听产品部主任
+          - img: 'niuday/avatar.png'
+            name: name
+            title: title
+          - img: 'niuday/avatar.png'
+            name: name
+            title: title
+          - img: 'niuday/avatar.png'
+            name: name
+            title: title
+          - img: 'niuday/avatar-xushiwei.png'
+            name: 许式伟
+            title: '七牛云 CEO'
+          - img: 'niuday/avatar-lvguihua.png'
+            name: 吕桂华
+            title: '七牛云总裁'
+          - img: 'niuday/avatar-pengyao.png'
+            name: 彭垚
+            title: '七牛云技术总监'
+          - img: 'niuday/avatar-daiwenjun.png'
+            name: 戴文军
+            title: 七牛云技术总监
+          - img: 'niuday/avatar-qianjihua.png'
+            name: 钱骥华
+            title: 七牛云市场总监
         medias:
-          - img: 'niuday/logo-chuangyebang.png'
-          - img: 'niuday/logo-yiou.png'
-          - img: 'niuday/logo-leifengwang.png'
-          - img: 'niuday/logo-51cto.png'
-          - img: 'niuday/logo-csdn.png'
-          - img: 'niuday/logo-jikebang.png'
-          - img: 'niuday/logo-tuopushe.png'
-          - img: 'niuday/logo-zhongguoidcquan.png'
-          - img: 'niuday/logo-ruanjianicwang.png'
-          - img: 'niuday/logo-doit.png'
-          - img: 'niuday/logo-bitewang.png'
+          - img: 'niuday/mediaslog/logo-leifengwang.png'
+          - img: 'niuday/mediaslog/logo-yiou.png'
+          - img: 'niuday/mediaslog/logo-chuangyebang.png'
+          - img: 'niuday/mediaslog/logo-jikebang.png'
+          - img: 'niuday/mediaslog/logo-51cto.png'
+          - img: 'niuday/mediaslog/logo-csdn.png'
+          - img: 'niuday/mediaslog/logo-kaiyuanzhongguo.png'
+          - img: 'niuday/mediaslog/logo-doit.png'
+          - img: 'niuday/mediaslog/logo-bitewang.png'
+          - img: 'niuday/mediaslog/logo-tuopushe.png'
+          - img: 'niuday/mediaslog/logo-cioshidai.png'
+          - img: 'niuday/mediaslog/logo-yibangdongli.png'
+          - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
+          - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
+          - img: 'niuday/mediaslog/logo-d1net.png'
         partners:
-          - img: 'niuday/logo-haikangweishi.png'
-          - img: 'niuday/logo-jiguang.png'
-          - img: 'niuday/logo-juejin.png'
-          - img: 'niuday/logo-daguanshuju.png'
-          - img: 'niuday/logo-ping.png'
-          - img: 'niuday/logo-weilian.png'
-          - img: 'niuday/logo-getui.png'
-          - img: 'niuday/logo-rongdukeji.png'
-          - img: 'niuday/logo-yunheenmo.png'
-          - img: 'niuday/logo-apicloud.png'
-          - img: 'niuday/logo-cobub.png'
-          - img: 'niuday/logo-pudongruanjianyuan.png'
-          - img: 'niuday/logo-rongyun.png'
-          - img: 'niuday/logo-huanxin.png'
-          - img: 'niuday/logo-yunsuo.png'
-          - img: 'niuday/logo-dakashuo.png'
-          - img: 'niuday/logo-huodongxing.png'
+          - img: 'niuday/partnerslog/logo-haikangweishi.png'
+          - img: 'niuday/partnerslog/logo-ping.png'
+          - img: 'niuday/partnerslog/logo-daguanshuju.png'
+          - img: 'niuday/partnerslog/logo-jiguang.png'
+          - img: 'niuday/partnerslog/logo-juejin.png'
+          - img: 'niuday/partnerslog/logo-weilian.png'
+          - img: 'niuday/partnerslog/logo-pudongruanjianyuan.png'
+          - img: 'niuday/partnerslog/logo-apicloud.png'
+          - img: 'niuday/partnerslog/logo-getui.png'
+          - img: 'niuday/partnerslog/logo-rongdukeji.png'
+          - img: 'niuday/partnerslog/logo-yunheenmo.png'
+          - img: 'niuday/partnerslog/logo-cobub.png'
+          - img: 'niuday/partnerslog/logo-rongyun.png'
+          - img: 'niuday/partnerslog/logo-huanxin.png'
+          - img: 'niuday/partnerslog/logo-yunsuo.png'
+          - img: 'niuday/partnerslog/logo-segmentfault.png'
+          - img: 'niuday/partnerslog/logo-3wqifu.png'
+          - img: 'niuday/partnerslog/logo-huodongxing.png'
   navbar:
     logo: "logo-white.png"
     product: 产品
     solution: 解决方案
-    price: "价格"
+    price: 价格
+    events: 活动与支持
     about: 关于我们
   services:
     - group: 基础服务
@@ -1260,6 +1297,31 @@ zh-CN:
         # - name: vance
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
+  events:
+    - group: 热门活动
+      list:
+        - name: niuday
+          label: NIUDAY 小牛汇共享日
+          path: niudays
+        - name: arch
+          label: 七牛架构师实践日
+          path: arch_events
+        - name: ecug
+          label: ECUG
+          path: ecugcon_events
+    - group: 云扶持
+      list:
+        - name: goglobal
+          label: 出海创业扶持计划
+          path: goglobal
+        - name: alaccelerator
+          label: AI 创新扶持计划
+          path: alaccelerator
+    - group: 云合作
+      list:
+        - name: partners
+          label: 七牛云合作伙伴发展计划
+          path: partner
   solutions:
     arr1:
       - name: plsv

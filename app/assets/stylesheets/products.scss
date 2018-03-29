@@ -31,9 +31,61 @@
       }
     }
 
+    .desc-wrapper {
+      position: relative;
+      .content {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
     p.desc {
       color: #fff;
       text-align: center;
+    }
+
+    p.time {
+      font-size: 0.18rem;
+      color: rgb(55, 134, 244);
+    }
+
+    .guest {
+      text-align: center;
+      padding: 0;
+      min-height: 190px;
+      h5 {
+        color: #fff;
+        text-align: center;
+      }
+    }
+
+    .table.table-niuday-meeting {
+      font-size: 14px;
+      color: rgb(55, 134, 244);
+
+      .title {
+        color: #fff;
+      }
+
+      &.table-bordered {
+        border: 1px solid rgb(55, 134, 244);
+      }
+
+      &.table-bordered > thead > tr > th {
+        color: #000;
+        background-color: rgb(55, 134, 244);
+      }
+
+      &.table-bordered > thead > tr > th,
+      &.table-bordered > thead > tr > td,
+      &.table-bordered > tbody > tr > th,
+      &.table-bordered > tbody > tr > td,
+      &.table-bordered > tfoot > tr > th,
+      &.table-bordered > tfoot > tr > td {
+        padding: 0.15rem;
+        text-align: center;
+        border: 1px solid rgb(55, 134, 244);
+      }
     }
   }
 
@@ -618,6 +670,11 @@
         min-height:140px;
       }
     }
+
+    &.features-niuday .guest {
+      min-height: 239px;
+    }
+
     .intro { margin-bottom: 0.20rem; }
     .col-sm-6:nth-child(odd){
       clear: left;

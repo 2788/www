@@ -1168,6 +1168,41 @@ en:
               time:
               site:
               link:
+        medias:
+          - img: 'niuday/logo-leifengwang.png'
+          - img: 'niuday/logo-yiou.png'
+          - img: 'niuday/logo-chuangyebang.png'
+          - img: 'niuday/logo-jikebang.png'
+          - img: 'niuday/logo-51cto.png'
+          - img: 'niuday/logo-csdn.png'
+          - img: 'niuday/logo-kaiyuanzhongguo.png'
+          - img: 'niuday/logo-doit.png'
+          - img: 'niuday/logo-bitewang.png'
+          - img: 'niuday/logo-tuopushe.png'
+          - img: 'niuday/logo-cioshidai.png'
+          - img: 'niuday/logo-yibangdongli.png'
+          - img: 'niuday/logo-zhongguoidcquan.png'
+          - img: 'niuday/logo-ruanjianicwang.png'
+          - img: 'niuday/logo-d1net.png'
+        partners:
+          - img: 'niuday/logo-haikangweishi.png'
+          - img: 'niuday/logo-ping.png'
+          - img: 'niuday/logo-daguanshuju.png'
+          - img: 'niuday/logo-jiguang.png'
+          - img: 'niuday/logo-juejin.png'
+          - img: 'niuday/logo-weilian.png'
+          - img: 'niuday/logo-pudongruanjianyuan.png'
+          - img: 'niuday/logo-apicloud.png'
+          - img: 'niuday/logo-getui.png'
+          - img: 'niuday/logo-rongdukeji.png'
+          - img: 'niuday/logo-yunheenmo.png'
+          - img: 'niuday/logo-cobub.png'
+          - img: 'niuday/logo-rongyun.png'
+          - img: 'niuday/logo-huanxin.png'
+          - img: 'niuday/logo-yunsuo.png'
+          - img: 'niuday/logo-segmentfault.png'
+          - img: 'niuday/logo-3wqifu.png'
+          - img: 'niuday/logo-huodongxing.png'
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products

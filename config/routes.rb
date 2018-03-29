@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   constraints DomainConstraint.new('blog', 'blog-source', 'blog-dev') do
     root to: 'blog#index'
+    get '/archives/all',                to: 'blog#all'
     get '/archives/:id',                to: 'blog#archives', as: :archives
     get '/archives/author/:author',     to: 'blog#author',   as: :archives_author
     get '/archives/category/:category', to: 'blog#category', as: :archives_category
@@ -71,7 +72,8 @@ Rails.application.routes.draw do
 
     resources :feedbacks, only: [:new, :create]
 
-    resources 'niuday', only: [:index]
+    resources 'niudays', only: [:index]
+    get '/view', to: 'niudays#view'
 
     resources :recommendations, only: [:new, :create]
 

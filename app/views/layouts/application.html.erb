@@ -94,19 +94,35 @@
               </ul>
             </li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to I18n.t("navbar.price"), prices_path -%></li>
-            <li><%= link_to I18n.t("navbar.about"), company_path -%></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'dropdown' %>" id="events-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.events") %></a>
+
+              <ul class="dropdown-menu events-menu">
+                <% I18n.t("events").each do |units| %>
+                  <%= content_tag :li, units[:group], class: "menu-title hidden-xs" -%>
+
+                  <% units[:list].each do |unit| %>
+                    <%= content_tag :li, class: I18n.t("views.language") != 'zh'? 'd-none' : 'units' do -%>
+                      <%= link_to(send("#{unit[:path]}_path")) do -%>
+                        <%= content_tag :h4, raw(unit[:label]), class: unit[:name] -%>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+            <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'manage-control' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'developer-center' %>"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
-            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'hot-events' %>"><%= link_to "热门活动", events_path -%><%= image_tag "hot.png", class: "hotTag", alt: "hot" %></li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'presentation-more select-unit' %>" id="more-dropdown">
               <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">更多</a>
               <ul class="presentation-menu dropdown-menu dropdown-menu-right m-0 p-0">
                 <li class="manage-control"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
                 <li class="developer-center"><a target="_blank" href="https://developer.qiniu.com">开发者中心</a></li>
-                <li class="hot-events"><%= link_to "热门活动", events_path -%></li>
+                <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
               </ul>
             </li>
             <li class="select-unit" id="language-dropdown">
@@ -117,7 +133,7 @@
               </a>
               <ul class="language-menu dropdown-menu dropdown-menu-right m-0 p-0">
                 <li val="zh">
-                  <%= link_to "中国站", controller: controller_name, action: action_name, locale: nil %>
+                  <%= link_to "中文站", controller: controller_name, action: action_name, locale: nil %>
                 </li>
                 <li val="en">
                   <%= link_to "International-English", controller: controller_name, action: action_name, locale: "en" %>
@@ -467,8 +483,8 @@
           <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
-            <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
-            <a href="http://www.miitbeian.gov.cn/" target="_blank"><span class="icon icon-aq"><%= icp[0] -%></span></a>
+            <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", rel:'nofollow', target: "_blank" unless icp[1].blank? %>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow"><span class="icon icon-aq"><%= icp[0] -%></span></a>
           </div>
         </div>
       </div>
