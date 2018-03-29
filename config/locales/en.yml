@@ -1091,118 +1091,165 @@ en:
               link: "http://hd.qiniu.com/arch/history/1"
       niuday:
         events:
-          - img: "img-hangzhou.jpg"
+          - img: "niuday/img-hangzhou.jpg"
             site: 杭州
             time: 2018/04/11
             details:
               time: 2018/04/11
               site: 杭州海外海皇冠大酒店
-              link:
-          - img: "img-beijing.jpg"
+              link: view
+          - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-changsha.jpg"
+              link: niudays
+          - img: "niuday/img-changsha.jpg"
             site: 长沙
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-chengdu.jpg"
+              link: niudays
+          - img: "niuday/img-chengdu.jpg"
             site: 成都
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-chongqing.jpg"
+              link: niudays
+          - img: "niuday/img-chongqing.jpg"
             site: 重庆
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-guangzhou.jpg"
+              link: niudays
+          - img: "niuday/img-guangzhou.jpg"
             site: 广州
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-nanjing.jpg"
+              link: niudays
+          - img: "niuday/img-nanjing.jpg"
             site: 南京
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-shenzhen.jpg"
+              link: niudays
+          - img: "niuday/img-shenzhen.jpg"
             site: 深圳
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-wuhan.jpg"
+              link: niudays
+          - img: "niuday/img-wuhan.jpg"
             site: 武汉
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-xiamen.jpg"
+              link: niudays
+          - img: "niuday/img-xiamen.jpg"
             site: 厦门
             time:
             details:
               time:
               site:
-              link:
-          - img: "img-xian.jpg"
+              link: niudays
+          - img: "niuday/img-xian.jpg"
             site: 西安
             time:
             details:
               time:
               site:
-              link:
+              link: niudays
+        avatars:
+          - img: 'niuday/avatar-lixingbo.png'
+            name: 李兴波
+            title: 海康萤石副总裁
+            title1:
+          - img: 'niuday/avatar-lilei.png'
+            name: 李磊
+            title: 浙报集团产品研发中心
+            title1: 视听产品部主任
+          - img: 'niuday/avatar.png'
+            name: name
+            title: title
+            title1:
+          - img: 'niuday/avatar.png'
+            name: name
+            title: title
+            title1:
+          - img: 'niuday/avatar.png'
+            name: name
+            title: title
+            title1:
+          - img: 'niuday/avatar-xushiwei.png'
+            name: 许式伟
+            title: '七牛云 CEO'
+            title1:
+          - img: 'niuday/avatar-lvguihua.png'
+            name: 吕桂华
+            title: '七牛云总裁'
+            title1:
+          - img: 'niuday/avatar-pengyao.png'
+            name: 彭垚
+            title: '七牛云技术总监'
+            title1:
+          - img: 'niuday/avatar-daiwenjun.png'
+            name: 戴文军
+            title: 七牛云技术总监
+            title1:
+          - img: 'niuday/avatar-qianjihua.png'
+            name: 钱骥华
+            title: 七牛云市场总监
+            title1:
         medias:
-          - img: 'niuday/logo-leifengwang.png'
-          - img: 'niuday/logo-yiou.png'
-          - img: 'niuday/logo-chuangyebang.png'
-          - img: 'niuday/logo-jikebang.png'
-          - img: 'niuday/logo-51cto.png'
-          - img: 'niuday/logo-csdn.png'
-          - img: 'niuday/logo-kaiyuanzhongguo.png'
-          - img: 'niuday/logo-doit.png'
-          - img: 'niuday/logo-bitewang.png'
-          - img: 'niuday/logo-tuopushe.png'
-          - img: 'niuday/logo-cioshidai.png'
-          - img: 'niuday/logo-yibangdongli.png'
-          - img: 'niuday/logo-zhongguoidcquan.png'
-          - img: 'niuday/logo-ruanjianicwang.png'
-          - img: 'niuday/logo-d1net.png'
+          - img: 'niuday/mediaslog/logo-leifengwang.png'
+          - img: 'niuday/mediaslog/logo-yiou.png'
+          - img: 'niuday/mediaslog/logo-chuangyebang.png'
+          - img: 'niuday/mediaslog/logo-itjuzi.png'
+          - img: 'niuday/mediaslog/logo-huxiu.png'
+          - img: 'niuday/mediaslog/logo-pinwan.png'
+          - img: 'niuday/mediaslog/logo-chuangyeheima.png'
+          - img: 'niuday/mediaslog/logo-chuangtoutiao.png'
+          - img: 'niuday/mediaslog/logo-jikebang.png'
+          - img: 'niuday/mediaslog/logo-51cto.png'
+          - img: 'niuday/mediaslog/logo-csdn.png'
+          - img: 'niuday/mediaslog/logo-kaiyuanzhongguo.png'
+          - img: 'niuday/mediaslog/logo-doit.png'
+          - img: 'niuday/mediaslog/logo-bitewang.png'
+          - img: 'niuday/mediaslog/logo-tuopushe.png'
+          - img: 'niuday/mediaslog/logo-cioshidai.png'
+          - img: 'niuday/mediaslog/logo-yibangdongli.png'
+          - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
+          - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
+          - img: 'niuday/mediaslog/logo-d1net.png'
         partners:
-          - img: 'niuday/logo-haikangweishi.png'
-          - img: 'niuday/logo-ping.png'
-          - img: 'niuday/logo-daguanshuju.png'
-          - img: 'niuday/logo-jiguang.png'
-          - img: 'niuday/logo-juejin.png'
-          - img: 'niuday/logo-weilian.png'
-          - img: 'niuday/logo-pudongruanjianyuan.png'
-          - img: 'niuday/logo-apicloud.png'
-          - img: 'niuday/logo-getui.png'
-          - img: 'niuday/logo-rongdukeji.png'
-          - img: 'niuday/logo-yunheenmo.png'
-          - img: 'niuday/logo-cobub.png'
-          - img: 'niuday/logo-rongyun.png'
-          - img: 'niuday/logo-huanxin.png'
-          - img: 'niuday/logo-yunsuo.png'
-          - img: 'niuday/logo-segmentfault.png'
-          - img: 'niuday/logo-3wqifu.png'
-          - img: 'niuday/logo-huodongxing.png'
+          - img: 'niuday/partnerslog/logo-haikangweishi.png'
+          - img: 'niuday/partnerslog/logo-ping.png'
+          - img: 'niuday/partnerslog/logo-daguanshuju.png'
+          - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
+          - img: 'niuday/partnerslog/logo-jiguang.png'
+          - img: 'niuday/partnerslog/logo-juejin.png'
+          - img: 'niuday/partnerslog/logo-weilian.png'
+          - img: 'niuday/partnerslog/logo-pudongruanjianyuan.png'
+          - img: 'niuday/partnerslog/logo-apicloud.png'
+          - img: 'niuday/partnerslog/logo-getui.png'
+          - img: 'niuday/partnerslog/logo-rongdukeji.png'
+          - img: 'niuday/partnerslog/logo-yunheenmo.png'
+          - img: 'niuday/partnerslog/logo-cobub.png'
+          - img: 'niuday/partnerslog/logo-rongyun.png'
+          - img: 'niuday/partnerslog/logo-huanxin.png'
+          - img: 'niuday/partnerslog/logo-yunsuo.png'
+          - img: 'niuday/partnerslog/logo-segmentfault.png'
+          - img: 'niuday/partnerslog/logo-3wqifu.png'
+          - img: 'niuday/partnerslog/logo-huodongxing.png'
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products

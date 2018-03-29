@@ -1190,40 +1190,49 @@ zh-CN:
           - img: 'niuday/avatar-lixingbo.png'
             name: 李兴波
             title: 海康萤石副总裁
+            title1:
           - img: 'niuday/avatar-lilei.png'
             name: 李磊
-            title: 浙报集团产品研发中心视听产品部主任
+            title: 浙报集团产品研发中心
+            title1: 视听产品部主任
           - img: 'niuday/avatar.png'
             name: name
             title: title
+            title1:
           - img: 'niuday/avatar.png'
             name: name
             title: title
+            title1:
           - img: 'niuday/avatar.png'
             name: name
             title: title
+            title1:
           - img: 'niuday/avatar-xushiwei.png'
             name: 许式伟
             title: '七牛云 CEO'
+            title1:
           - img: 'niuday/avatar-lvguihua.png'
             name: 吕桂华
             title: '七牛云总裁'
+            title1:
           - img: 'niuday/avatar-pengyao.png'
             name: 彭垚
             title: '七牛云技术总监'
+            title1:
           - img: 'niuday/avatar-daiwenjun.png'
             name: 戴文军
             title: 七牛云技术总监
+            title1:
           - img: 'niuday/avatar-qianjihua.png'
             name: 钱骥华
             title: 七牛云市场总监
+            title1:
         medias:
           - img: 'niuday/mediaslog/logo-leifengwang.png'
           - img: 'niuday/mediaslog/logo-yiou.png'
           - img: 'niuday/mediaslog/logo-chuangyebang.png'
           - img: 'niuday/mediaslog/logo-itjuzi.png'
           - img: 'niuday/mediaslog/logo-huxiu.png'
-          - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
           - img: 'niuday/mediaslog/logo-pinwan.png'
           - img: 'niuday/mediaslog/logo-chuangyeheima.png'
           - img: 'niuday/mediaslog/logo-chuangtoutiao.png'
@@ -1243,6 +1252,7 @@ zh-CN:
           - img: 'niuday/partnerslog/logo-haikangweishi.png'
           - img: 'niuday/partnerslog/logo-ping.png'
           - img: 'niuday/partnerslog/logo-daguanshuju.png'
+          - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
           - img: 'niuday/partnerslog/logo-jiguang.png'
           - img: 'niuday/partnerslog/logo-juejin.png'
           - img: 'niuday/partnerslog/logo-weilian.png'
