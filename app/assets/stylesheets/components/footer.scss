@@ -29,12 +29,12 @@ footer{
 
   a.contact {
     display: inline-block;
-    padding: 0.1rem 0.4rem;
+    padding: 0.05rem 0.3rem;
     margin-bottom: 15px;
-    height: 0.35rem;
+    height: 0.25rem;
     background-position: left top;
     background-repeat: no-repeat;
-    background-size: 0.35rem 0.35rem;
+    background-size: 0.25rem 0.25rem;
     text-align: center;
   }
 
@@ -43,11 +43,11 @@ footer{
   }
 
   .tel-box-grey {
-    background-image: image-url("niuday/icon-email.png");
+    background-image: image-url("niuday/icon-phone.png");
   }
 
   .email-box-grey {
-    background-image: image-url("niuday/icon-phone.png");
+    background-image: image-url("niuday/icon-email.png");
   }
 
   .container dl{

@@ -24,7 +24,7 @@
     </div>
     <ul class="list list-blog">
       <li class="cat-item all-articles">
-        <%= link_to "所有文章", "/", class: "category" -%>
+        <%= link_to "所有文章", archives_all_path, class: "category" -%>
       </li>
       <li class="cat-item all-news">
         <%= link_to "新闻动态", archives_category_path(category: Archive::CATEGORIES.key("新闻动态")), class: "category" -%>
