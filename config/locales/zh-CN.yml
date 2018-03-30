@@ -1196,16 +1196,16 @@ zh-CN:
             title: 浙报集团产品研发中心
             title1: 视听产品部主任
           - img: 'niuday/avatar.png'
-            name: name
-            title: title
+            name: 神秘嘉宾
+            title: 敬请期待
             title1:
           - img: 'niuday/avatar.png'
-            name: name
-            title: title
+            name: 神秘嘉宾
+            title: 敬请期待
             title1:
           - img: 'niuday/avatar.png'
-            name: name
-            title: title
+            name: 神秘嘉宾
+            title: 敬请期待
             title1:
           - img: 'niuday/avatar-xushiwei.png'
             name: 许式伟
@@ -1248,6 +1248,7 @@ zh-CN:
           - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
           - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
           - img: 'niuday/mediaslog/logo-d1net.png'
+          - img: 'niuday/mediaslog/logo-jingjishenghuo.png'
         partners:
           - img: 'niuday/partnerslog/logo-haikangweishi.png'
           - img: 'niuday/partnerslog/logo-ping.png'
@@ -1268,6 +1269,7 @@ zh-CN:
           - img: 'niuday/partnerslog/logo-segmentfault.png'
           - img: 'niuday/partnerslog/logo-3wqifu.png'
           - img: 'niuday/partnerslog/logo-huodongxing.png'
+          - img: 'niuday/partnerslog/logo-datastory.png'
   navbar:
     logo: "logo-white.png"
     product: 产品
