@@ -1178,16 +1178,16 @@ en:
             title: 浙报集团产品研发中心
             title1: 视听产品部主任
           - img: 'niuday/avatar.png'
-            name: name
-            title: title
+            name: 神秘嘉宾
+            title: 敬请期待
             title1:
           - img: 'niuday/avatar.png'
-            name: name
-            title: title
+            name: 神秘嘉宾
+            title: 敬请期待
             title1:
           - img: 'niuday/avatar.png'
-            name: name
-            title: title
+            name: 神秘嘉宾
+            title: 敬请期待
             title1:
           - img: 'niuday/avatar-xushiwei.png'
             name: 许式伟
@@ -1199,7 +1199,7 @@ en:
             title1:
           - img: 'niuday/avatar-pengyao.png'
             name: 彭垚
-            title: '七牛云技术总监'
+            title: '七牛云人工智能实验室负责人'
             title1:
           - img: 'niuday/avatar-daiwenjun.png'
             name: 戴文军
@@ -1230,6 +1230,7 @@ en:
           - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
           - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
           - img: 'niuday/mediaslog/logo-d1net.png'
+          - img: 'niuday/mediaslog/logo-jingjishenghuo.png'
         partners:
           - img: 'niuday/partnerslog/logo-haikangweishi.png'
           - img: 'niuday/partnerslog/logo-ping.png'
@@ -1250,11 +1251,13 @@ en:
           - img: 'niuday/partnerslog/logo-segmentfault.png'
           - img: 'niuday/partnerslog/logo-3wqifu.png'
           - img: 'niuday/partnerslog/logo-huodongxing.png'
+          - img: 'niuday/partnerslog/logo-datastory.png'
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
     solution: Solutions
     price: ""
+    events:
     about: About Us
   services:
     - group: Storage & CDN
@@ -1294,6 +1297,31 @@ en:
         # - name: vance
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
+  events:
+    - group: 热门活动
+      list:
+        - name: niuday
+          label: NIUDAY 小牛汇共享日
+          path: niudays
+        - name: arch
+          label: 架构师实践日
+          path: arch_events
+        - name: ecug
+          label: ECUG
+          path: ecugcon_events
+    - group: 云扶持
+      list:
+        - name: goglobal
+          label: 出海创业扶持计划
+          path: goglobal
+        - name: alaccelerator
+          label: AI 创新扶持计划
+          path: alaccelerator
+    - group: 云合作
+      list:
+        - name: partners
+          label: 合作伙伴发展计划
+          path: partner
   solutions:
     arr1:
       - name: plsv

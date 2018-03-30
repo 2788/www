@@ -1217,7 +1217,7 @@ zh-CN:
             title1:
           - img: 'niuday/avatar-pengyao.png'
             name: 彭垚
-            title: '七牛云技术总监'
+            title: '七牛云人工智能实验室负责人'
             title1:
           - img: 'niuday/avatar-daiwenjun.png'
             name: 戴文军
@@ -1338,7 +1338,7 @@ zh-CN:
     - group: 云合作
       list:
         - name: partners
-          label: 云合作伙伴发展计划
+          label: 合作伙伴发展计划
           path: partner
   solutions:
     arr1:
