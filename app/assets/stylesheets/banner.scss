@@ -22,7 +22,9 @@
   &.hero-niuday {
     background-image: image-url('niuday/banner-bg.jpg');
     margin: 0;
+    padding-top: 68px;
     .img-wrapper {
+      width: 100%;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -167,7 +169,7 @@
   &.hero-goglobal{ background-image: image-url('goglobal/banner.jpg'); }
   &.hero-newmedia{ background-image: image-url('newmedia/banner.jpg'); }
   &.hero-player{ background-image: image-url('player/banner.png');}
-  &.hero-alaccelerator{ background-image: image-url('alaccelerator/banner.jpg'); }
+  &.hero-alaccelerator{ padding-top: 68px; background-image: image-url('alaccelerator/banner.jpg'); }
   &.hero-livequiz{ background-image: image-url('livequiz/banner-bg.jpg'); }
   &.hero-plup{ background-image: image-url('bg-security-banner.jpg'); }
 

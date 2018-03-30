@@ -1320,7 +1320,7 @@ zh-CN:
           label: NIUDAY 小牛汇共享日
           path: niudays
         - name: arch
-          label: 七牛架构师实践日
+          label: 架构师实践日
           path: arch_events
         - name: ecug
           label: ECUG
@@ -1336,7 +1336,7 @@ zh-CN:
     - group: 云合作
       list:
         - name: partners
-          label: 七牛云合作伙伴发展计划
+          label: 云合作伙伴发展计划
           path: partner
   solutions:
     arr1:
