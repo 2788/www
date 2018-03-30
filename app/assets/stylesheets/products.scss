@@ -41,6 +41,12 @@
         transform: translate(-50%, -50%);
       }
     }
+
+    p.text {
+      color: #fff;
+      padding: 0 0.5rem;
+    }
+
     p.desc {
       color: #fff;
       text-align: center;
@@ -86,6 +92,7 @@
       &.table-bordered > tfoot > tr > td {
         padding: 0.15rem;
         text-align: center;
+        vertical-align: middle;
         border: 1px solid rgb(55, 134, 244);
       }
     }
