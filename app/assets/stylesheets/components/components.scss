@@ -108,6 +108,10 @@ label{ font-weight: 300; }
   &.stripe-blue{
     background-color: $brand-primary;
     color: #FFF;
+
+    a.contact {
+      color: #fff;
+    }
   }
 
   h3{
