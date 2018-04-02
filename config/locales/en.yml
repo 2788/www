@@ -1232,9 +1232,9 @@ en:
           - img: 'niuday/mediaslog/logo-d1net.png'
           - img: 'niuday/mediaslog/logo-jingjishenghuo.png'
         partners:
-          - img: 'niuday/partnerslog/logo-haikangweishi.png'
-          - img: 'niuday/partnerslog/logo-ping.png'
           - img: 'niuday/partnerslog/logo-daguanshuju.png'
+          - img: 'niuday/partnerslog/logo-ping.png'
+          - img: 'niuday/partnerslog/logo-haikangweishi.png'
           - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
           - img: 'niuday/partnerslog/logo-jiguang.png'
           - img: 'niuday/partnerslog/logo-juejin.png'
@@ -1252,6 +1252,7 @@ en:
           - img: 'niuday/partnerslog/logo-3wqifu.png'
           - img: 'niuday/partnerslog/logo-huodongxing.png'
           - img: 'niuday/partnerslog/logo-datastory.png'
+          - img: 'niuday/partnerslog/logo-aozhouitjiangrenquan.png'
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products

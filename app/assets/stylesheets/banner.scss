@@ -15,6 +15,29 @@
   h2.identification {
     font-size: 0.34rem;
   }
+  .img-wrapper {
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 15px 30px;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+
+    .btn-banner {
+      color: #fff;
+      background-color: #00A0DE;
+      border-color: #008ec5;
+    }
+
+    img.text {
+      width: 50%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
   &.hero-contact,
   &.hero-company{
     margin-bottom: -0.30rem;
@@ -42,6 +65,7 @@
       .text {
         width: 540px;
         height: auto;
+        margin: 0 auto;
       }
     }
   }
@@ -91,7 +115,7 @@
   &.hero-bannerIdentify{background-image: image-url('banner-identification.jpg');}
   &.hero-banner2{ background-image: image-url('southern-price-reduce-1.jpg'); .banner-container .btn-banner { bottom: 0.4rem; } }
   &.hero-bannerPlayer{ background-image: image-url('player/banner.png');.middle-container{padding-top: 0.7rem;}}
-  &.hero-bannerAI {background-image: image-url('AI-banner.jpg'); .banner-container{top: 40px;}}
+  &.hero-bannerAI {background-image: image-url('banner-aichuangxinfuchijiahua.jpg');}
   &.hero-cdnprice {
     background-image: image-url('cdnprice/cdn-banner.jpg');
     .banner-container{top: 0;}
@@ -317,6 +341,9 @@
 
   .jumbotron.hero{
     margin-top: 30px;
+    .img-wrapper img.text {
+      width: 80%;
+    }
     p{
       line-height: 0.32rem;
       font-size: 0.16rem;
@@ -381,6 +408,15 @@
         width: 80%;
         height: auto;
       }
+    }
+  }
+
+  .banners-slider .jumbotron.hero.hero-niuday .img-wrapper {
+    top: 10%;
+    transform: translate(-50%, 0);
+
+    img.text {
+      width: 340px;
     }
   }
 }
