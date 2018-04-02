@@ -102,9 +102,10 @@
                   <%= content_tag :li, units[:group], class: "menu-title hidden-xs" -%>
 
                   <% units[:list].each do |unit| %>
-                    <%= content_tag :li, class: I18n.t("views.language") != 'zh'? 'd-none' : 'units' do -%>
+                    <%= content_tag :li, class: I18n.t("views.language") != 'zh'? 'd-none' : 'events' do -%>
                       <%= link_to(send("#{unit[:path]}_path")) do -%>
                         <%= content_tag :h4, raw(unit[:label]), class: unit[:name] -%>
+                        <%= content_tag :p, '', class: "hidden-xs" -%>
                       <% end %>
                     <% end %>
                   <% end %>
