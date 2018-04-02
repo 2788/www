@@ -18,6 +18,15 @@
   &.features-niuday {
     background-color: rgb(7, 9, 23);
 
+    .niudays-actions {
+      text-align: center;
+      padding: 15px 0;
+      .btn-niudays {
+        color: #fff;
+        background-color: #3f66cf;
+      }
+    }
+
     .img-wrapper.blue-shadow {
       padding: 0 0.1rem 0.5rem;
     }
@@ -33,12 +42,11 @@
 
     .desc-wrapper {
       position: relative;
-      margin: 100px 0;
+      height: 210px;
       .content {
         position: absolute;
-        top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
       }
     }
 

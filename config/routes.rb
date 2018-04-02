@@ -73,7 +73,7 @@ Rails.application.routes.draw do
     resources :feedbacks, only: [:new, :create]
 
     resources 'niudays', only: [:index]
-    get '/view', to: 'niudays#view'
+    get '/niudays/hangzhou', to: 'niudays#view'
 
     resources :recommendations, only: [:new, :create]
 
