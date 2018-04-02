@@ -42,6 +42,7 @@
       .text {
         width: 540px;
         height: auto;
+        margin: 0 auto;
       }
     }
   }
@@ -381,6 +382,15 @@
         width: 80%;
         height: auto;
       }
+    }
+  }
+
+  .banners-slider .jumbotron.hero.hero-niuday .img-wrapper {
+    top: 10%;
+    transform: translate(-50%, 0);
+
+    img.text {
+      width: 340px;
     }
   }
 }
