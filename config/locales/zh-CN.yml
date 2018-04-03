@@ -1512,6 +1512,12 @@ zh-CN:
       title: SSL证书_SSL证书服务-七牛云
       keywords: ssl证书，ssl证书服务，ssl证书购买，ssl证书申请，ssl数字证书，ssl免费证书、ev ssl证书、dv ssl证书、ov ssl证书、https证书
       description: 七牛云 SSL证书服务提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。
+    welcome_goglobal:
+      title: 出海创业扶持计划
+    welcome_alaccelerator:
+      title: AI 创新扶持计划
+    welcome_partner:
+      title: 七牛云合作伙伴发展计划
     events_tech_online:
       title: 七牛Tech Online - 七牛云
       keywords: Tech Online，七牛 Tech Online
@@ -1527,6 +1533,10 @@ zh-CN:
     events_index:
       title: 七牛云活动
       keywords: 架构师实践日，Tech Online，ECUG，牛人秀
+    events_arch:
+      title: 架构师实践日
+    events_ecugcon:
+      title: ECUG 大会
     prices_index:
       title: 价格详情 - 七牛云
       keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱
@@ -1539,6 +1549,10 @@ zh-CN:
       title: 客户推荐 - 七牛云
     cooperations_index:
       title: 市场合作 - 七牛云
+    niudays_index:
+      title: NIUDAY小牛汇共享日
+    niudays_view:
+      title: NIUDAY小牛汇共享日_杭州站
   cases1:
     - groupid: enterprise
       group:
