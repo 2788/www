@@ -1485,6 +1485,12 @@ en:
       title: 播放器SDK_视频播放SDK-七牛云播放器
       keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
       description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
+    welcome_goglobal:
+      title: 出海创业扶持计划
+    welcome_alaccelerator:
+      title: AI 创新扶持计划
+    welcome_partner:
+      title: 七牛云合作伙伴发展计划
     events_tech_online:
       title: 七牛Tech Online - 七牛云
       keywords: Tech Online，七牛 Tech Online
@@ -1500,6 +1506,10 @@ en:
     events_index:
       title: 七牛云活动
       keywords: 架构师实践日，Tech Online，ECUG，牛人秀
+    events_arch:
+      title: 架构师实践日
+    events_ecugcon:
+      title: ECUG 大会
     prices_index:
       title: 价格详情 - 七牛云
       keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱
@@ -1512,6 +1522,10 @@ en:
       title: 客户推荐 - 七牛云
     cooperations_index:
       title: 市场合作 - 七牛云
+    niudays_index:
+      title: NIUDAY小牛汇共享日
+    niudays_view:
+      title: NIUDAY小牛汇共享日_杭州站
   cases1:
     - groupid: enterprise
       group:
