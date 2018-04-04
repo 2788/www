@@ -1189,6 +1189,10 @@ en:
             name: 邹冬冬
             title: in CTO
             title1:
+          - img: 'niuday/avatar-zhaolili.png'
+            name: 赵丽丽
+            title: 美图云视觉技术部技术总监
+            title1:
           - img: 'niuday/avatar-xushiwei.png'
             name: 许式伟
             title: '七牛云 CEO'
@@ -1204,10 +1208,6 @@ en:
           - img: 'niuday/avatar-daiwenjun.png'
             name: 戴文军
             title: 七牛云高级技术总监
-            title1:
-          - img: 'niuday/avatar-zhaolili.png'
-            name: 赵丽丽
-            title: 美图云视觉技术部技术总监
             title1:
         medias:
           - img: 'niuday/mediaslog/logo-leifengwang.png'
