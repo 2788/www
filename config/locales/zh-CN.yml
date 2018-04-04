@@ -1195,17 +1195,17 @@ zh-CN:
             name: 李磊
             title: 浙报集团产品研发中心
             title1: 视听产品部主任
-          - img: 'niuday/avatar.png'
-            name: 神秘嘉宾
-            title: 敬请期待
+          - img: 'niuday/avatar-yaojianbin.png'
+            name: 姚建兵
+            title: 华数互联网技术部技术总监
             title1:
-          - img: 'niuday/avatar.png'
-            name: 神秘嘉宾
-            title: 敬请期待
+          - img: 'niuday/avatar-chenlili.png'
+            name: 陈立力
+            title: 大华智能云服务技术负责人
             title1:
-          - img: 'niuday/avatar.png'
-            name: 神秘嘉宾
-            title: 敬请期待
+          - img: 'niuday/zoudongdong.png'
+            name: 邹冬冬
+            title: in CTO
             title1:
           - img: 'niuday/avatar-xushiwei.png'
             name: 许式伟
@@ -1223,9 +1223,9 @@ zh-CN:
             name: 戴文军
             title: 七牛云技术总监
             title1:
-          - img: 'niuday/avatar-qianjihua.png'
-            name: 钱骥华
-            title: 七牛云市场总监
+          - img: 'niuday/avatar-zhaolili.png'
+            name: 赵丽丽
+            title: 美图云视觉技术部技术总监
             title1:
         medias:
           - img: 'niuday/mediaslog/logo-leifengwang.png'
