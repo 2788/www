@@ -1290,7 +1290,7 @@ zh-CN:
           desc: 融合优质节点、可监控、智能调度的内容分发服务
 
         - name: kirk
-          label: 容器云 <small>(即将上线)</small>
+          label: 容器云
           desc: 面向微服务架构的企业级容器管理平台
 
     - group: 数据•智能
