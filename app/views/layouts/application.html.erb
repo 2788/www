@@ -4,20 +4,15 @@
     <script type="text/javascript">var qns = window._qns || []; window._qns=qns;qns.push(["setStartLoadTime",new Date().getTime()]);qns.push(["setAccountID","591ead7b54630dd7aed533df"]);</script>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
-    <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] || {} -%>
-    <% unless seo[:keywords].blank? %>
-    <meta name="keywords" content="<%= seo[:keywords] -%>" />
-    <% end %>
-    <% unless seo[:description].blank? %>
-    <meta name="description" content="<%= seo[:description] -%>">
+    <% seo = I18n.t("seo")["#{controller_name}_#{action_name}".to_sym] || {} %>
+    <%= tag("meta", name: "keywords", content: seo[:keywords]) unless seo[:keywords].blank? %>
+    <%= tag("meta", name: "description", content: seo[:description]) unless seo[:description].blank? %>
+    <%= meta_go_import %>
     <meta name="baidu-site-verification" content="otBvF33R0a" />
-    <% end %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title><%= seo[:title] || @title || "七牛云" -%></title>
-
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
