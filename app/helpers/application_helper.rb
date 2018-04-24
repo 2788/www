@@ -15,7 +15,14 @@ module ApplicationHelper
   # <meta name="go-import" content="qiniu.com/<package> git https://github.com/qbox/<package>">
   def meta_go_import
     package = request.original_fullpath.split('/')[1]
-    tag("meta", name: "go-import", content: "qiniu.com/#{package} git https://github.com/qbox/#{package}") if package
+
+    if package
+      if params["go-get"] == "1"
+        tag("meta", name: "go-import", content: "qiniu.com/#{package}?go-get=1 git https://github.com/qbox/#{package}")
+      else
+        tag("meta", name: "go-import", content: "qiniu.com/#{package} git https://github.com/qbox/#{package}")
+      end
+    end
   end
 
 end
