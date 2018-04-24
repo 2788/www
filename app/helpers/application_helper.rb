@@ -20,11 +20,15 @@ module ApplicationHelper
       return
     end
 
-    package = paths.split('/')[1]
+    package = paths.split('/').reject { |c| c.empty? }.first
 
-    if package
-      tag("meta", name: "go-import", content: "qiniu.com/#{package} git git@github.com:qbox/#{package}.git")
+    if package.blank?
+      return
     end
+
+
+    tag("meta", name: "go-import", content: "qiniu.com/#{package} git https://github.com/qbox/#{package}") +
+    tag("meta", name: "go-source", content: "qiniu.com/#{package} https://github.com/qbox/#{package}/ https://github.com/qbox/#{package}/tree/master{/dir} https://github.com/qbox/#{package}/blob/master{/dir}/{file}#L{line}")
   end
 
 end
