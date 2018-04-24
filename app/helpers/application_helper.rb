@@ -23,7 +23,7 @@ module ApplicationHelper
     package = paths.split('/')[1]
 
     if package
-      tag("meta", name: "go-import", content: "qiniu.com/#{package} git https://github.com/qbox/#{package}")
+      tag("meta", name: "go-import", content: "qiniu.com/#{package} git git@github.com:qbox/#{package}.git")
     end
   end
 
