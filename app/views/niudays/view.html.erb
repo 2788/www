@@ -1,9 +1,9 @@
 <div class="jumbotron hero hero-niuday">
   <div class="container">
     <div class="img-wrapper">
-      <%= image_tag 'niuday/banner-wenzi.png', class: 'text' %>
+      <%= image_tag "niuday/banner-wenzi.png", class: "text" %>
       <h4 class="text-center p-sm">2018 年 4 月 11 日 · 杭州 海外海皇冠大酒店</h4>
-      <%#= link_to '立即报名', 'http://www.huodongxing.com/event/1433079159200?view=widget3', target:"_blank", class: 'btn btn-lg btn-primary btn-banner m-sm' %>
+      <%= link_to "立即报名", "http://www.huodongxing.com/event/1433079159200?view=widget3", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
     </div>
   </div>
 </div>
@@ -12,6 +12,59 @@
   <div class="container">
     <p class="text">人工智能在2018年将面临爆发式的商业化着陆，在这个智能时代，小牛汇共享日将在全国10多个城市围绕行业、技术和创新展开全方位的的探讨和分享，利用这个开放的共享平台，希望聚集全国有技术创新梦想的小牛，能够互相结识并交流，用技术创新改变世界。</p>
   </div>
+</div>
+
+<div class="features features-niuday features-tech">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">精彩回顾</h2>
+    </div>
+
+    <div class="row tech-row">
+     <% I18n.t("niudays.hangzhou").each do |event| %>
+        <div class="col-sm-6 col-md-4 tech-col">
+          <div class="title">
+            <p class="text-ellipse color-light"><%= event[:name] -%></p>
+          </div>
+          <div class="infobox">
+            <div class="case grid-container" data-src="<%= event[:link] -%>">
+              <a class="btn-icon"></a>
+              <%= image_tag "niuday/niudai-kv.jpg" -%>
+            </div>
+            <div class="lecturer">
+              <div class="lecturer-box">
+                <div class="img-box">
+                  <% if event[:avatar] != '' %>
+                    <%= image_tag event[:avatar], class: "lecturer-photo", alt: event[:speaker], width: 50 %>
+                  <% end %>
+                </div>
+                <div class="lecturer-info-box">
+                  <div class="lecturer-tail">
+                    <h4 class="lecturer-name color-light"><%= event[:speaker] -%></h4>
+                    <h5 class="lecturer-job color-light"><%= event[:title] -%></h5>
+                  </div>
+                  <div class="short-line color-light"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="video-play-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <video src="" controls="controls" id="edu-video">
+            your browser does not support the video tag
+          </video>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
 
 <div class="features features-niuday">

@@ -24,42 +24,17 @@
   <div class="container">
     <div class="suspension">
       <div class="row">
-        <div class="col-sm-3 col-xs-6 col-clear">
-          <a href="javascript:;" class="suspension-item">
-            <i class="icon yanchi-icon"></i>
-            <div class="desc">
-              <p>毫秒级延迟</p>
-              <p>直播更实时</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-3 col-xs-6 col-clear">
-          <a href="javascript:;" class="suspension-item">
-            <i class="icon diubao-icon"></i>
-            <div class="desc">
-              <p>10% 抗丢包</p>
-              <p>弱网下仍能正常推流</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-3 col-xs-6 col-clear">
-          <a href="javascript:;" class="suspension-item">
-            <i class="icon baoti-icon"></i>
-            <div class="desc">
-              <p>948KB 小包体</p>
-              <p>打造轻量应用</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-3 col-xs-6 col-clear">
-          <a href="javascript:;" class="suspension-item">
-            <i class="icon gongneng-icon"></i>
-            <div class="desc">
-              <p>100+ 功能</p>
-              <p>满足各类直播场景需求</p>
-            </div>
-          </a>
-        </div>
+        <% I18n.t("views.welcome.pili.specialty").each do |event| %>
+          <div class="col-sm-3 col-xs-6 col-clear">
+            <a href="javascript:;" class="suspension-item">
+              <i class="icon diubao-icon"></i>
+              <div class="desc">
+                <p><%= event[:title] -%></p>
+                <p><%= event[:desc] -%></p>
+              </div>
+            </a>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -68,11 +43,11 @@
 <div class="features features-suspension-next">
   <div class="container">
     <div class="intro">
-      <h2 class="title">端到端的解决方案</h2>
+      <h2 class="title"><%= I18n.t("views.welcome.pili.scheme.title") -%></h2>
     </div>
 
     <div class="text-center">
-      <%= image_tag "pili/img-jiagoutu.png", width:"80%" %>
+      <%= image_tag I18n.t("views.welcome.pili.scheme.link"), width:"80%" %>
     </div>
 
   </div>
@@ -81,49 +56,30 @@
 <div class="features feature-color">
   <div class="container">
     <div class="intro">
-      <h3 class="title">精心打造的客户端服务</h3>
-      <p class="desc">跨平台推流播放服务，支持 SDK 无缝嵌入应用</p>
+      <h3 class="title"><%= I18n.t("views.welcome.pili.serve.title") -%></h3>
+      <p class="desc"><%= I18n.t("views.welcome.pili.serve.desc") -%></p>
     </div>
 
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="details-card">
-          <div class="card-title">
-            <h3 class="title tuiliu-icon">完善的推流端功能</h3>
-            <p class="desc">功能强大，开放易用，方便开发者自由选择直播推流采集方式。</p>
-          </div>
-          <div class="card-body">
-            <h3 class="title">Android/iOS 推流 SDK</h3>
-            <p class="desc">提供 Android/iOS 推流 SDK，涵盖美颜滤镜、面部特效、弱网优化、混音、水印等所有视频直播主流功能，为手机直播打造一站式解决方案。</p>
-            <h3 class="title">开放云端 API</h3>
-            <p class="desc">支持将 IP Camera、摄像机、PC桌面、点播视频、无人机、其他直播平台流等多种信号源推送到云端，实现媒体分发和透明播控管理，助力企业开发者快速构建直播的核心业务，提高开发效率。</p>
-          </div>
-          <div class="action">
-            <%= link_to '查看详情', 'https://developer.qiniu.com/pili/manual/3808/streaming-sdk-intro', class:"btn btn-primary" %>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="details-card">
-          <div class="card-title">
-            <h3 class="title play-icon">全自研内核播放器</h3>
-            <p class="desc">提供免费的播放器 SDK，秒开 200ms，包体最小至 400K，功能全，给用户畅享流畅无卡顿的视频体验。</p>
-          </div>
-          <div class="card-body">
-            <h3 class="title">DRM 版权保护</h3>
-            <p class="desc">防止数字媒体的非法复制</p>
-            <h3 class="title">智能调整播放策略</h3>
-            <p class="desc">有效降低播放延迟和卡顿</p>
-            <h3 class="title">HLS 自适应码率</h3>
-            <p class="desc">轻松应对终端用户复杂网络环境</p>
-            <h3 class="title">大数据分析</h3>
-            <p class="desc">性能数据实时监测分析、告警，优化终端用户体验</p>
-          </div>
-          <div class="action">
-            <%= link_to '查看详情', 'https://www.qiniu.com/products/player', class:"btn btn-primary" %>
+    <div class="row">      
+      <% I18n.t("views.welcome.pili.serve.content").each do |event| %>
+        <div class="col-sm-6">
+          <div class="details-card">
+            <div class="card-title">
+              <h3 class="title play-icon"><%= event[:title] -%></h3>
+              <p class="desc"><%= event[:desc] -%></p>
+            </div>
+            <div class="card-body">
+              <% event[:children].each do |item| %>
+                <h3 class="title"><%= item[:name] -%></h3>
+                <p class="desc"><%= item[:desc] -%></p>
+              <% end %>
+            </div>
+            <div class="action">
+              <%= link_to event[:tagName], event[:link], class:"btn btn-primary" -%>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -131,47 +87,22 @@
 <div class="features features-bottom-line">
   <div class="container container-net-bg bottom-line">
     <div class="intro">
-      <h3 class="title">全球化实时流网络</h3>
-      <p class="desc">轻量级刷机扩建节点，快速响应全球分发需求</p>
+      <h3 class="title"><%= I18n.t("views.welcome.pili.network.title") -%></h3>
+      <p class="desc"><%= I18n.t("views.welcome.pili.network.desc") -%></p>
     </div>
 
     <div class="row">
-      <div class="col-sm-3 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "pili/icon-anxushensuo.png", class:"media-object", alt:"按需伸缩", width:"100" %>
-          <div class="caption">
-            <h4>按需伸缩</h4>
-            <p>采用全新网络技术，实时计算全链路状态，按需智能伸缩最佳路径节点。</p>
+      <% I18n.t("views.welcome.pili.network.children").each do |item| %>
+        <div class="col-sm-3 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag "pili/icon-anxushensuo.png", class:"media-object", alt: item[:name], width:"100" %>
+            <div class="caption">
+              <h4><%= item[:name] -%></h4>
+              <p><%= item[:desc] -%></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "pili/icon-zhinengxuanxian.png", class:"media-object", alt:"智能选线", width:"100" %>
-          <div class="caption">
-            <h4>智能选线</h4>
-            <p>采用软件定义网络的方式，动态制定线路组合，更新实时数据，决策调度最优线路。</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "pili/icon-guzhangrongcuo.png", class:"media-object", alt:"故障容错", width:"100" %>
-          <div class="caption">
-            <h4>故障容错</h4>
-            <p>全网对称部署服务节点，任一节点失效均可立即摘除，及时容错保障服务的高可用。</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="thumbnail">
-          <%= image_tag "pili/icon-ruowangshaokadun.png", class:"media-object", alt:"弱网少卡顿", width:"100" %>
-          <div class="caption">
-            <h4>弱网少卡顿</h4>
-            <p>采用七牛优化后的 QUIC 传输协议，帮助用户减少复杂网络下的卡顿率，提高流畅度。</p>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -215,7 +146,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <h2 class="title">客户案例</h2>
+        <h2 class="title"><%= I18n.t("views.welcome.pili.case.title") -%></h2>
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
