@@ -328,6 +328,56 @@ zh-CN:
           title: "直播云"
           desc: "七牛直播云服务 (PILI) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
           icon: "banner/banner-pili-right-zh.png"
+        specialty:
+          - title: 毫秒级延迟
+            desc: 直播更实时
+          - title: 10% 抗丢包
+            desc: 弱网下仍能正常推流
+          - title: 948KB 小包体
+            desc: 打造轻量应用
+          - title: 100+ 功能
+            desc: 满足各类直播场景需求
+        scheme:
+          title: 端到端的解决方案
+          link: pili/img-jiagoutu.png
+        serve:
+          title: 精心打造的客户端服务
+          desc: 跨平台推流播放服务，支持 SDK 无缝嵌入应用
+          content:
+            - title: 完善的推流端功能
+              desc: 功能强大，开放易用，方便开发者自由选择直播推流采集方式。
+              tagName: 查看详情
+              link: https://developer.qiniu.com/pili/manual/3808/streaming-sdk-intro
+              children:
+                - name: Android/iOS 推流 SDK
+                  desc: 提供 Android/iOS 推流 SDK，涵盖美颜滤镜、面部特效、弱网优化、混音、水印等所有视频直播主流功能，为手机直播打造一站式解决方案。
+                - name: 开放云端 API
+                  desc: 支持将 IP Camera、摄像机、PC桌面、点播视频、无人机、其他直播平台流等多种信号源推送到云端，实现媒体分发和透明播控管理，助力企业开发者快速构建直播的核心业务，提高开发效率。
+            - title: 全自研内核播放器
+              desc: 提供免费的播放器 SDK，秒开 200ms，包体最小至 400K，功能全，给用户畅享流畅无卡顿的视频体验。
+              tagName: 查看详情
+              link: https://www.qiniu.com/products/player
+              children:
+                - name: DRM 版权保护
+                  desc: 防止数字媒体的非法复制
+                - name: 智能调整播放策略
+                  desc: 有效降低播放延迟和卡顿
+                - name: HLS 自适应码率
+                  desc: 轻松应对终端用户复杂网络环境
+                - name: 大数据分析
+                  desc: 性能数据实时监测分析、告警，优化终端用户体验
+        network:
+          title: 全球化实时流网络
+          desc: 轻量级刷机扩建节点，快速响应全球分发需求
+          children:
+            - name: 按需伸缩
+              desc: 采用全新网络技术，实时计算全链路状态，按需智能伸缩最佳路径节点。
+            - name: 智能选线
+              desc: 采用软件定义网络的方式，动态制定线路组合，更新实时数据，决策调度最优线路。
+            - name: 故障容错
+              desc: 全网对称部署服务节点，任一节点失效均可立即摘除，及时容错保障服务的高可用。
+            - name: 弱网少卡顿
+              desc: 采用七牛优化后的 QUIC 传输协议，帮助用户减少复杂网络下的卡顿率，提高流畅度。
         scene:
           title: "全面的云端服务"
           desc: "打造直播生态链，提供更好的使用体验"
@@ -395,6 +445,8 @@ zh-CN:
               linkarr:
                 - title: ""
                   link: ""
+        case:
+          title: 客户案例
       solution:
         banner:
           title: "七牛云解决方案平台"
@@ -1447,7 +1499,7 @@ zh-CN:
     welcome_contact:
       title: 联系我们 - 七牛云
     welcome_fusion:
-      title: 融合CDN，CDN加速服务 - 七牛云
+      title: CDN加速_CDN加速服务-七牛云
       keywords: 高防CDN，动态CDN，静态CDN，CDN，CDN加速，CDN加速服务, 七牛CDN，CDN服务器，内容分发，云加速，融合CDN，图片CDN，视频CDN
       description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
     welcome_dora:
@@ -1759,4 +1811,41 @@ zh-CN:
     atlab.ai:             [沪 ICP 备 11037377 号-40]
     qiniu.com.cn:         [沪 ICP 备 11037377 号-41]
     qiniukodo.com:        [沪 ICP 备 11037377 号-42]
-    localhost:       [沪 ICP 备 11037377 号-42]
+    localhost:            [沪 ICP 备 11037377 号-42]
+  niudays:
+    hangzhou:
+      - speaker: 许式伟
+        title: 七牛云CEO
+        name: 对智能时代到来的思考与探索
+        avatar: 'niuday/avatar-xushiwei.png'
+        link: https://odum9helk.qnssl.com/lh0deLH8Ii4xsqkY__VUytNg-WXK
+
+      - speaker: 彭垚
+        title: 七牛云人工智能实验室创始人
+        name: “视觉智能的革命”—打造视频云时代的AI创新服务体系
+        avatar: 'niuday/avatar-pengyao.png'
+        link: https://odum9helk.qnssl.com/lguD-RpZ7a4bHzVk4vGfBTvO7jus
+
+      - speaker: 李磊
+        title: 浙报集团产品研发中心视听产品部主任
+        name: “融合媒体大变局”—如何打造新媒体智能媒资管理平台
+        avatar: 'niuday/avatar-lilei.png'
+        link: https://odum9helk.qnssl.com/lgSMTyQlCaFpby14hWChjJ3vuxJ2
+
+      - speaker: 戴文军
+        title: 高级技术总监
+        name: 智能视频云的下一个起点,
+        avatar: 'niuday/avatar-daiwenjun.png'
+        link: https://odum9helk.qnssl.com/lqfLo5aVYjV8d6ixO8YD3s5y4ssT
+
+      - speaker: 李兴波
+        title: 海康萤石副总裁
+        name: 人工智能将如何变革视频监控行业
+        avatar: 'niuday/avatar-lixingbo.png'
+        link: https://odum9helk.qnssl.com/liqIV1dm6uVS265Q5jt7naDSqjYy
+
+      - speaker: 圆桌讨论
+        name: 如何能让人工智能科研成果真正商业化
+        avatar: ''
+        link: https://odum9helk.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
+      
