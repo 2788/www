@@ -1782,3 +1782,39 @@ en:
     qiniu.com.cn:         [沪 ICP 备 11037377 号-41]
     qiniukodo.com:        [沪 ICP 备 11037377 号-42]
     localhost:       [沪 ICP 备 11037377 号-42]
+  niudays:
+    hangzhou:
+      - speaker: 许式伟
+        title: 七牛云CEO
+        name: 对智能时代到来的思考与探索
+        avatar: 'niuday/avatar-xushiwei.png'
+        link: https://odum9helk.qnssl.com/lh0deLH8Ii4xsqkY__VUytNg-WXK
+
+      - speaker: 彭垚
+        title: 七牛云人工智能实验室创始人
+        name: “视觉智能的革命”—打造视频云时代的AI创新服务体系
+        avatar: 'niuday/avatar-pengyao.png'
+        link: https://odum9helk.qnssl.com/lguD-RpZ7a4bHzVk4vGfBTvO7jus
+
+      - speaker: 李磊
+        title: 浙报集团产品研发中心视听产品部主任
+        name: “融合媒体大变局”—如何打造新媒体智能媒资管理平台
+        avatar: 'niuday/avatar-lilei.png'
+        link: https://odum9helk.qnssl.com/lgSMTyQlCaFpby14hWChjJ3vuxJ2
+
+      - speaker: 戴文军
+        title: 高级技术总监
+        name: 智能视频云的下一个起点,
+        avatar: 'niuday/avatar-daiwenjun.png'
+        link: https://odum9helk.qnssl.com/lqfLo5aVYjV8d6ixO8YD3s5y4ssT
+
+      - speaker: 李兴波
+        title: 海康萤石副总裁
+        name: 人工智能将如何变革视频监控行业
+        avatar: 'niuday/avatar-lixingbo.png'
+        link: https://odum9helk.qnssl.com/liqIV1dm6uVS265Q5jt7naDSqjYy
+
+      - speaker: 圆桌讨论
+        name: 如何能让人工智能科研成果真正商业化
+        avatar: ''
+        link: https://odum9helk.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
