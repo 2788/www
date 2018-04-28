@@ -428,7 +428,7 @@ en:
                 - title: ""
                   link: ""
         case:
-          title: Client Cases
+          title: Success Cases
       solution:
         banner:
           title: "Qiniu Cloud Solution Platform"
@@ -1816,5 +1816,5 @@ en:
 
       - speaker: 圆桌讨论
         name: 如何能让人工智能科研成果真正商业化
-        avatar: ''
+        avatar: 'niuday/avatar-yuanzhuo.png'
         link: https://odum9helk.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
