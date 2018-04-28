@@ -89,3 +89,13 @@
     }
   }
 }
+
+@media (min-width: 767px) {
+  .row-flex {
+    display: flex;
+    
+    .details-card {
+      height: 100%;
+    }
+  }
+}

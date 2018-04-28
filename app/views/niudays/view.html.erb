@@ -3,7 +3,9 @@
     <div class="img-wrapper">
       <%= image_tag "niuday/banner-wenzi.png", class: "text" %>
       <h4 class="text-center p-sm">2018 年 4 月 11 日 · 杭州 海外海皇冠大酒店</h4>
+      <!--
       <%= link_to "立即报名", "http://www.huodongxing.com/event/1433079159200?view=widget3", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
+      -->
     </div>
   </div>
 </div>
@@ -23,9 +25,6 @@
     <div class="row tech-row">
      <% I18n.t("niudays.hangzhou").each do |event| %>
         <div class="col-sm-6 col-md-4 tech-col">
-          <div class="title">
-            <p class="text-ellipse color-light"><%= event[:name] -%></p>
-          </div>
           <div class="infobox">
             <div class="case grid-container" data-src="<%= event[:link] -%>">
               <a class="btn-icon"></a>
@@ -34,9 +33,7 @@
             <div class="lecturer">
               <div class="lecturer-box">
                 <div class="img-box">
-                  <% if event[:avatar] != '' %>
-                    <%= image_tag event[:avatar], class: "lecturer-photo", alt: event[:speaker], width: 50 %>
-                  <% end %>
+                  <%= image_tag event[:avatar], class: "lecturer-photo", alt: event[:speaker], width: 50 %>
                 </div>
                 <div class="lecturer-info-box">
                   <div class="lecturer-tail">

@@ -446,7 +446,7 @@ zh-CN:
                 - title: ""
                   link: ""
         case:
-          title: 客户案例
+          title: 成功案例
       solution:
         banner:
           title: "七牛云解决方案平台"
@@ -1846,6 +1846,6 @@ zh-CN:
 
       - speaker: 圆桌讨论
         name: 如何能让人工智能科研成果真正商业化
-        avatar: ''
+        avatar: 'avatar-yuanzhuo.png'
         link: https://odum9helk.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
       
