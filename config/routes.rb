@@ -74,6 +74,7 @@ Rails.application.routes.draw do
 
     resources 'niudays', only: [:index]
     get '/niudays/hangzhou', to: 'niudays#view'
+    get '/niudays/xian', to: 'niudays#xian'
 
     resources :recommendations, only: [:new, :create]
 
