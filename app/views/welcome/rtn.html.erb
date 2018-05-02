@@ -1,0 +1,63 @@
+<div class="jumbotron hero">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-8">
+          <h2><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
+          <p><%= I18n.t("views.welcome.rtn.banner.desc") %></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+            <%= link_to "立即使用", "https://jinshuju.net/f/ELAmUP",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-4 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag I18n.t("views.welcome.rtn.banner.icon"), alt: "rtn", width: '90%' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="plsv-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <li class="intLink active"><a href="#rtn-services">直播</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="features rtn-services tab-content-function">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">特色功能</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= image_tag 'plsv/img-zhuanyelvjing.png', class:"main-img" %>
+      </div>
+      <div class="col-sm-8 contentBox">
+        <h4 class="title">直播</h4>
+        <div class="content">七牛直播云服务是基于专为直播打造的全球化实时流网络、完善的客户端服务和云端强大的音视频处理能力的一站式直播云服务。助力用户轻送打造社交直播、秀场直播、游戏直播等直播应用。相关产品：七牛直播云https://www.qiniu.com/products/pili</div>
+        <div class="dec">
+          <h5>功能描述</h2>
+          <p>1. 多样的编码方式：支持 H.264 以及 H.265 编码，且 H.264 支持硬编和软编</p>
+          <p>1. 多样的编码方式：支持 H.264 以及 H.265 编码，且 H.264 支持硬编和软编</p>
+        </div>
+        <div class="interlinkage">
+          <div class="client">
+            <div class="title">客户案例</div>
+            <div class="imgBox">
+              <%= image_tag 'rtn/logo-xiongmaozhibo.jpg', class:"main-img", width:"100" %>
+              <%= image_tag 'rtn/logo-quanmintv.jpg', class:"main-img", width:"100" %>
+              <%= image_tag 'rtn/logo-tonghuashun.jpg', class:"main-img", width:"100" %>
+            </div>
+          </div>
+          <div class="sdk"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

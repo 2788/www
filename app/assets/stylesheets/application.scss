@@ -54,6 +54,7 @@
 @import "arch";
 @import "ecug";
 @import "partner";
+@import "rtn";
 
 html{
   position: relative;
@@ -569,4 +570,8 @@ footer .container {
     padding: 5px;
     line-height: 18px;
   }
+}
+
+li {
+  list-style: none
 }
