@@ -1,0 +1,171 @@
+<div class="jumbotron hero hero-niuday">
+  <div class="container">
+    <div class="img-wrapper">
+      <%= image_tag "niuday/banner-wenzi.png", class: "text" %>
+      <h4 class="text-center p-sm">2018 年 5 月 12 日 · 西安市 高新区沣惠南路22号希尔顿酒店</h4>
+      <%= link_to "立即报名", "http://www.huodongxing.com/event/5437700012000", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <p class="text">随着人工智能在我国移动互联网、智能家居、智能安防、智慧教育等等领域的发展，我国人工智能产业持续高速成长。从2014年起，中国人工智能产业的创业潮就开始兴起，直至2018年，机器学习、深度学习等算法能力的增强将促进计算机视觉等技术不断突破。人工智能在2018年将面临爆发式的商业化着陆，在这个智能时代，七牛云NIUDAY小牛汇共享日活动围绕自身产品重点产品线将在全国10多个城市围绕行业、技术和创新展开全方位的探讨和分享，一起用AI技术赋能未来，“智”造梦想。</p>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">大会嘉宾</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.xian.guest").each do |unit| %>
+        <div class="five-sm-1 col-xs-6">
+          <div class="guest">
+            <%= image_tag unit[:img], width: '100' %>
+            <h5><%= unit[:name] %></h5>
+            <h5><%= unit[:title] %></h5>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">大会议程</h2>
+      <p class="time">13:30 - 17:30</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-niuday-meeting">
+        <thead>
+          <tr>
+            <th colspan="2">议题</th>
+            <th>演讲人</th>
+            <th>时长</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>议题一</td>
+            <td>对智能时代到来的思考与探索</td>
+            <td>许式伟 七牛云CEO</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题二</td>
+            <td>人工智能的前世今生</td>
+            <td>罗立群 北京大学信息管理系数据科学与人工智能所所长</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题三</td>
+            <td>“视觉智能的革命”—打造视频云时代的AI创新服务体系</td>
+            <td>林博 人工智能实验室联合创始人</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td colspan="4">茶歇 30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题四</td>
+            <td>智能视频云的下一个起点</td>
+            <td>戴文军 七牛云高级技术总监</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题五</td>
+            <td>PP+DATA+AI=PPDAI</td>
+            <td>王春平 拍拍贷高级数据工程专家</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>圆桌</td>
+            <td>圆桌论坛： 人工智能技术与实践如何能更好的结合</td>
+            <td>
+              <div class="m-b-sm">李泽辰 蒲公英开发者平台市场总监</div>
+              <div class="m-b-sm">郑山桥 数拓技术总监联合创始人</div>
+              <div class="m-b-sm">朱君涛 西部信息港运维经理</div>
+              <div class="m-b-sm">林亦宁 七牛云人工智能实验室联合创始人</div>
+              <div class="m-b-sm">刘靳 西安电子科技大学电子工程学院副教授</div>
+              <div>罗立群（主持人） 北京大学信息管理系数据科学与人工智能所所长</div>
+            </td>
+            <td>60 min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">合作媒体</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.xian.medias").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">合作伙伴</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.xian.partners").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="intro">
+    <h2 class="title border-y">参会指南</h2>
+  </div>
+
+  <div class="desc-wrapper">
+    <div class="content">
+      <p class="desc text-left">1.报名审核成功后，主办方会统一短信通知会议地址及详情。</p>
+      <p class="desc text-left">2.会议签到凭证为成功报名后收到的二维码，一人一票。</p>
+      <p class="desc text-left">3.线上报名截止日为4月11号0时，不接受现场报名。</p>
+      <div class="niudays-actions">
+        <%#= link_to '立即报名', 'http://www.huodongxing.com/event/1433079159200?view=widget3', target:"_blank", class: 'btn btn-lg btn-primary btn-niudays m-sm' %>
+      </div>
+    </div>
+  </div>
+</div>

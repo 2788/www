@@ -1168,6 +1168,13 @@ zh-CN:
               time: 2018/04/11
               site: 杭州海外海皇冠大酒店
               link: niudays_hangzhou
+          - img: "niuday/img-xian.jpg"
+            site: 西安
+            time: 2018/05/12
+            details:
+              time: 2018/05/12
+              site: 西安市高新区沣惠南路22号希尔顿酒店
+              link: niudays_xian
           - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
@@ -1226,13 +1233,6 @@ zh-CN:
               link: niudays
           - img: "niuday/img-xiamen.jpg"
             site: 厦门
-            time:
-            details:
-              time:
-              site:
-              link: niudays
-          - img: "niuday/img-xian.jpg"
-            site: 西安
             time:
             details:
               time:
@@ -1848,4 +1848,75 @@ zh-CN:
         name: 如何能让人工智能科研成果真正商业化
         avatar: 'niuday/avatar-yuanzhuo.png'
         link: https://odum9helk.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
-      
+    xian:
+      guest:
+        - img: 'niuday/avatar-luoliqun.png'
+          name: 罗立群
+          title: 北京大学信息管理系数据科学与人工智能所所长
+        - img: 'niuday/avatar-zhenshanqiao.png'
+          name: 郑山桥
+          title: 数拓科技技术总监联合创始人
+        - img: 'niuday/avatar-lizechen.png'
+          name: 李泽辰
+          title: 蒲公英开发者平台市场总监
+        - img: 'niuday/avatar-wangchunping.png'
+          name: 王春平
+          title: 拍拍贷智慧金融研究院研究专家
+        - img: 'niuday/avatar-xushiwei.png'
+          name: 许式伟
+          title: 七牛云CEO
+        - img: 'niuday/avatar-daiwenjun.png'
+          name: 戴文军
+          title: 七牛云高级技术总监
+        - img: 'niuday/avatar-linyining.png'
+          name: 林亦宁
+          title: 七牛云人工智能实验室联合创始人
+        - img: 'niuday/avatar-zhujuntao.png'
+          name: 朱君涛
+          title: 西部信息港运维经理
+        - img: 'niuday/avatar-liujin.png'
+          name: 刘靳
+          title: '西安电子科技大学电子工程学院副教授'
+      medias:
+        - img: 'niuday/mediaslog/logo-leifengwang.png'
+        - img: 'niuday/mediaslog/logo-yiou.png'
+        - img: 'niuday/mediaslog/logo-chuangyebang.png'
+        - img: 'niuday/mediaslog/logo-itjuzi.png'
+        - img: 'niuday/mediaslog/logo-huxiu.png'
+        - img: 'niuday/mediaslog/logo-pinwan.png'
+        - img: 'niuday/mediaslog/logo-chuangyeheima.png'
+        - img: 'niuday/mediaslog/logo-chuangtoutiao.png'
+        - img: 'niuday/mediaslog/logo-jikebang.png'
+        - img: 'niuday/mediaslog/logo-51cto.png'
+        - img: 'niuday/mediaslog/logo-csdn.png'
+        - img: 'niuday/mediaslog/logo-kaiyuanzhongguo.png'
+        - img: 'niuday/mediaslog/logo-meikewang.png'
+        - img: 'niuday/mediaslog/logo-doit.png'
+        - img: 'niuday/mediaslog/logo-bitewang.png'
+        - img: 'niuday/mediaslog/logo-tuopushe.png'
+        - img: 'niuday/mediaslog/logo-cioshidai.png'
+        - img: 'niuday/mediaslog/logo-yibangdongli.png'
+        - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
+        - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
+      partners:
+        - img: 'niuday/partnerslog/logo-daguanshuju.png'
+        - img: 'niuday/partnerslog/logo-ping.png'
+        - img: 'niuday/partnerslog/logo-haikangweishi.png'
+        - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
+        - img: 'niuday/partnerslog/logo-jiguang.png'
+        - img: 'niuday/partnerslog/logo-juejin.png'
+        - img: 'niuday/partnerslog/logo-weilian.png'
+        - img: 'niuday/partnerslog/logo-pudongruanjianyuan.png'
+        - img: 'niuday/partnerslog/logo-apicloud.png'
+        - img: 'niuday/partnerslog/logo-getui.png'
+        - img: 'niuday/partnerslog/logo-rongdukeji.png'
+        - img: 'niuday/partnerslog/logo-yunheenmo.png'
+        - img: 'niuday/partnerslog/logo-cobub.png'
+        - img: 'niuday/partnerslog/logo-rongyun.png'
+        - img: 'niuday/partnerslog/logo-huanxin.png'
+        - img: 'niuday/partnerslog/logo-yunsuo.png'
+        - img: 'niuday/partnerslog/logo-segmentfault.png'
+        - img: 'niuday/partnerslog/logo-3wqifu.png'
+        - img: 'niuday/partnerslog/logo-huodongxing.png'
+        - img: 'niuday/partnerslog/logo-datastory.png'
+    
