@@ -48,11 +48,11 @@
           <div class="flows">
             <h5>功能描述</h2>
             <div class="pullDown">
-              <p>1. 多样的编码方式：支持 H.264 以及 H.265 编码，且 H.264 支持硬编和软编</p>
+              <p>1. 多样的编码方式：支持 H.264，且 H.264 支持硬编和软编</p>
               <p>2. 码流自适应：支持多种清晰度直播画面选择，以满足不同带宽的接入需要</p>
               <p>3. 弱网优化：采用七牛优化后的 QUIC 传输协议，减少复杂网络下的卡顿率，提高流畅度</p>
               <p>4. 提供直播预览、混音、美颜滤镜、截图等功能</p>
-              <p>5. 支持本地视频文件上传、服务端转码、在线分享等功能</p>
+              <p>5. 支持服务端转码、在线分享等功能</p>
             </div>
           </div>
           <span></span>
@@ -107,7 +107,7 @@
 </div>
 
 <div class="features tab-content-function feature-color part-realTime">
-  <div class="rtn-services pos">
+  <div class="rtn-services">
     <div class="row">
       <div class="col-sm-4 main-img">
         <%= image_tag 'rtn/img-yinshipin.png' %>
@@ -119,11 +119,11 @@
           <div class="flows">
             <h5>功能描述</h2>
             <div class="pullDown">
-              <p>1. 提供实时音视频美颜滤镜、人脸特效等功能</p>
-              <p>2. 多种合流方式：支持推流端、云端和拉流端混流多种方式</p>
-              <p>3. 个性化管理：支持踢人、禁言等多种管理权限</p>
-              <p>4. 实时录制：支持音视频录制、存储、转码、分发和点播</p>
-              <p>5. 鉴黄鉴暴恐：云端实现黄暴恐图自动鉴别，有效规避涉黄、涉政风险</p>
+              <p>1. 多种合流方式：支持服务端、客户端合流</p>
+              <p>2. 个性化管理：支持踢人、禁言等多种管理权限</p>
+              <p>3. 实时录制：支持音视频录制、存储、转码、分发和点播</p>
+              <p>4. 鉴黄鉴暴恐：云端实现黄暴恐图自动鉴别，有效规避涉黄、涉政风险提供实时音视频美颜滤镜、人脸特效等功能</p>
+              <p>5. 提供实时音视频美颜滤镜、人脸特效等功能</p>
             </div>
           </div>
           <span></span>
@@ -321,10 +321,6 @@
                 <p class="hover">
                   <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLPlayerKit/tree/master/Example",target: "_blank" -%>
                 </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/ios播放器.png' %>
-                </div>
               </div>
             </div>
             <div class="item active">
