@@ -1476,6 +1476,10 @@ en:
       title: Qiniu Cloud-Live Video Cloud（PILI）
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction
       description: Qiniu Cloud's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
+    welcome_rtn:
+      title: 视频直播SDK_视频SDK_直播SDK-七牛云
+      keywords: 视频直播SDK，视频SDK，直播SDK，音视频SDK，第三方直播SDK，ios直播SDK，android直播SDK，短视频SDK，播放器SDK
+      description: 七牛云音视频SDK 包含直播推流SDK、实时音视频SDK、短视频SDK和播放器SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。
     welcome_pandora:
       title: Qiniu Cloud-Smart Big Data Platform（Pandora）
       keywords: Big Data, Big Data Platform, Big Data Service, Data analysis, TSDB, LogDB, Workflow, Pipeline, Spark, HDFS, Dataized Operation, Dataized Maintenance, DEM, Recommendation System, Growth Hacking

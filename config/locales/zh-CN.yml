@@ -1497,6 +1497,10 @@ zh-CN:
       title: 直播云_直播云服务 - 七牛云
       keywords: 直播云，直播云服务，直播SDK，直播API，推流SDK，播放SDK，七牛直播，七牛直播云，直播加速，美颜，quic推流
       description: 七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供RTMP、HLS、HDL直播支持、配套的数据处理服务、端到端SDK支持、APM数据服务。
+    welcome_rtn:
+      title: 视频直播SDK_视频SDK_直播SDK-七牛云
+      keywords: 视频直播SDK，视频SDK，直播SDK，音视频SDK，第三方直播SDK，ios直播SDK，android直播SDK，短视频SDK，播放器SDK
+      description: 七牛云音视频SDK 包含直播推流SDK、实时音视频SDK、短视频SDK和播放器SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。
     welcome_pandora:
       title: 大数据_大数据服务 - 七牛云
       keywords: 大数据，大数据平台，大数据服务，数据分析、商业分析、时序数据库、日志检索、消息队列、数据流、离线分析、Spark、HDFS、数据运维、数据运营、质量监控
