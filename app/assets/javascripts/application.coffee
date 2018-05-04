@@ -34,6 +34,7 @@
 #= require blog
 #= require alaccelerator
 #= require plsv
+#= require rtn
 
 isMobile = false; # initiate as false
 # device detection

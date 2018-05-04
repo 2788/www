@@ -433,7 +433,7 @@ en:
         banner:
           title: "直播云"
           desc: "七牛直播云服务 (PILI) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
-          icon: "banner/banner-pili-right-zh.png"
+          icon: "rtn/banner-img.png"
       solution:
         banner:
           title: "Qiniu Cloud Solution Platform"

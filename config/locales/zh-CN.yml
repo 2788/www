@@ -451,7 +451,7 @@ zh-CN:
         banner:
           title: "音视频 SDK"
           desc: "七牛云音视频 SDK 包含直播推流 SDK、实时音视频 SDK、短视频 SDK 和播放器 SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。"
-          icon: "banner/banner-pili-right-zh.png"
+          icon: "rtn/banner-img.png"
       solution:
         banner:
           title: "七牛云解决方案平台"
