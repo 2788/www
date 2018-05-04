@@ -1,5 +1,5 @@
  .rtn-banner.jumbotron.hero {
-    background-image: url('rtn/banner-background.jpg');
+    background-image: image-url('rtn/banner-background.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -29,9 +29,13 @@
         line-height: 0.28rem;
         color: #888;
 
-        a,
-        a:hover {
+        a {
+          color: #00A0DE;
           text-decoration: underline;
+
+          &:hover {
+            color: #28aedf;
+          }
         }
       }
 
@@ -76,7 +80,8 @@
           position: absolute;
           right: 10px;
           bottom: 10px;
-          background: url('rtn/icon-1.png') no-repeat;
+          background-image: image-url('rtn/icon-1.png');
+          background-repeat: no-repeat;
           background-size: cover;
           cursor: pointer;
         }
@@ -110,7 +115,7 @@
             height: 50px;
             line-height: 50px;
             text-align: center;
-            background-color: #e4e7f0;
+            background-color: #b9b9b9;
             color: #fff;
             position: relative;
             cursor: default;
@@ -140,6 +145,7 @@
 
                 a {
                   color: #fff;
+                  display: block;
 
                   &:hover {
                     color: #fff
@@ -169,6 +175,10 @@
             }
           }
         }
+      }
+
+      a.danger {
+        color: #ff3939 !important;
       }
 
       &.active {
