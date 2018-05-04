@@ -1,0 +1,6 @@
+language: ruby
+sudo: required
+script:
+  cd $TRAVIS_BUILD_DIR
+  bundle
+  bundle exec rake assets:precompile

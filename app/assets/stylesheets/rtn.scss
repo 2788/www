@@ -43,7 +43,7 @@
         background-color: #f2f2f2;
         padding: 20px 20px 40px;
         flex-grow: 2;
-        margin-top: 25px;
+        margin: 25px 0 5px 0;
         display: flex;
         align-items: stretch;
         position: relative;
@@ -68,9 +68,6 @@
           p {
             margin: 0;
             color: #888;
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
           }
         }
 
@@ -227,24 +224,3 @@
       }
     }
  }
- @media (min-width: 768px) {
-  .pos {
-    position: relative;
-    padding-left: 290px;
-
-    .main-img {
-      position: absolute;
-      left: -7.6%;
-      top: 0;
-      width: 46%;
-    }
-
-    .contentBox {
-      width: 100%;
-
-      .interlinkage {
-        margin-top: 5px
-      }
-    }
-  }
-}
