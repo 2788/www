@@ -181,6 +181,10 @@ div.form-wrapper{
     text-align: center;
   }
 
+  &.feedbacks-new {
+    padding-top: 68px !important;
+  }
+
   .form-box{ padding: 0.10rem 0.10rem 0.50rem 0.10rem; }
   form{
     max-width: 6.50rem;
