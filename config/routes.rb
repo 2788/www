@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     root to: 'welcome#index'
     get '/products/kodo',           to: 'welcome#kodo'
     get '/products/pili',           to: 'welcome#pili'
-    get '/products/rtn',            to: 'welcome#rtn'
+    get '/products/sdk',            to: 'welcome#rtn'
     get '/products/pandora',        to: 'welcome#pandora'
     get '/products/fusion',         to: 'welcome#fusion'
     get '/products/dora',           to: 'welcome#dora'
