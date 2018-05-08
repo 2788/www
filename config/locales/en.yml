@@ -1365,7 +1365,7 @@ en:
           label: 架构师实践日
           path: arch_events
         - name: ecug
-          label: ECUG
+          label: ECUG大会
           path: ecugcon_events
     - group: 云扶持
       list:
@@ -1841,9 +1841,9 @@ en:
         - img: 'niuday/avatar-wangchunping.png'
           name: 王春平
           title: 拍拍贷智慧金融研究院研究专家
-        - img: 'niuday/avatar-xushiwei.png'
-          name: 许式伟
-          title: 七牛云CEO
+        - img: 'niuday/avatar-lvguihua.png'
+          name: 吕桂华
+          title: 七牛云总裁
         - img: 'niuday/avatar-daiwenjun.png'
           name: 戴文军
           title: 七牛云高级技术总监
