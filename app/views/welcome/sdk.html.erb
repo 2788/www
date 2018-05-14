@@ -3,15 +3,15 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
-          <p><%= I18n.t("views.welcome.rtn.banner.desc") %></p>
+          <h2><%= I18n.t("views.welcome.sdk.banner.title") %></h2>
+          <p><%= I18n.t("views.welcome.sdk.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即咨询", "https://jinshuju.net/f/ELAmUP",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
           <div class="right-mask-banner">
-            <%= image_tag I18n.t("views.welcome.rtn.banner.icon"), alt: "rtn", width: '90%' %>
+            <%= image_tag I18n.t("views.welcome.sdk.banner.icon"), alt: "rtn", width: '90%' %>
           </div>
         </div>
       </div>

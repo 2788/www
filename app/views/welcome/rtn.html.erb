@@ -1,0 +1,143 @@
+<div class="jumbotron hero">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-8">
+          <h2><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
+          <p><%= I18n.t("views.welcome.rtn.banner.desc") %></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+            <%= link_to "在线体验", "http://s.qnsdk.com/s/guMCz", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "内测试用", "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-4 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag I18n.t("views.welcome.rtn.banner.icon"), alt: "rtn", width: '90%' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="features features-suspension">
+  <div class="container">
+    <div class="suspension">
+      <div class="row">
+        <% I18n.t("views.welcome.rtn.specialty").each do |event| %>
+          <div class="col-sm-3 col-xs-6 col-clear">
+            <a href="javascript:;" class="suspension-item rtn-specialty">
+              <%= image_tag event[:img] %>
+              <div class="desc">
+                <p><%= event[:title] -%></p>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-suspension-next">
+  <div class="container rtn-scheme">
+    <ul>
+      <% I18n.t("views.welcome.rtn.scheme").each do |event| %>
+        <li>
+          <p class="title"><%= event[:title] -%></p>
+          <% event[:desc].each do |desc| %>
+            <p><%= desc -%></p>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="features feature-color">
+  <div class="container">
+    <div class="intro">
+      <h3 class="title"><%= I18n.t("views.welcome.rtn.serve.title") -%></h3>
+      <p class="desc"><%= I18n.t("views.welcome.rtn.serve.desc") -%></p>
+    </div>
+    <ul class="rtn-serve">
+      <% I18n.t("views.welcome.rtn.serve.content").each do |event| %>
+        <li>
+          <div class="active cont">
+            <%= image_tag event[:active_img] %>
+            <div>
+              <p class="title"><%= event[:title] -%></p>
+              <p class="desc"><%= event[:desc] -%></p>
+            </div>
+          </div>
+          <div class="normal cont">
+            <%= image_tag event[:img] %>
+            <p class="title"><%= event[:title] -%></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="features features-scene">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.rtn.scene.title") %></h2>
+      <p class="desc"><%= I18n.t("views.welcome.rtn.scene.desc") %></p>
+    </div>
+
+    <div class="tabs rtn-scene">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+        <% I18n.t("views.welcome.rtn.scene.middlebar").each do |col| %>
+          <li class="<%= col[:class] %>"><%= link_to col[:name], col[:href], data:{ toggle: "tab" } -%></li>
+        <% end %>
+      </ul>
+      <div class="tab-content bottom-line">
+        <% I18n.t("views.welcome.rtn.scene.sections").each do |sec| %>
+          <section class="<%= sec[:class] %>" id="<%= sec[:id] -%>">
+            <div class="media">
+              <%= content_tag :div, image_tag(sec[:icon], alt: sec[:title], class: "media-object img-left"), class: "media-left" %>
+              <div class="media-body">
+                <h3 class="title"><%= sec[:title] %></h3>
+                <p><%= sec[:desc] %></p>
+                <h5><%= sec[:link] %></h5>
+                <p>
+                  <% sec[:scenes].each do |item| %>
+                    <span><%= item %></span>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          </section>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="features feature-color">
+  <div class="container">
+    <div class="intro">
+      <h3 class="title"><%= I18n.t("views.welcome.rtn.demo.title") -%></h3>
+    </div>
+
+    <div class="row rtn-demo">      
+      <ul>
+        <% I18n.t("views.welcome.rtn.demo.items").each do |item| %>
+          <li>
+            <%= image_tag item[:img] %>
+            <p><%= item[:desc] %></p>
+          </li>
+        <% end %>
+      </ul>
+      <div class="btn-box">
+        <% I18n.t("views.welcome.rtn.demo.btns").each do |btn| %>
+          <%= link_to btn[:name], btn[:link], target: "_blank", class:"btn btn-primary" -%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
