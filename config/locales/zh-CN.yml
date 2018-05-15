@@ -1521,6 +1521,7 @@ zh-CN:
         - name: rtn
           label: 实时音视频云
           desc: 基于 Webrtc 的一站式解决方案，零基础搭建音视频平台
+          isNew: true
 
         # - name: vance
         #   label: 点播云

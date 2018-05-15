@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     get '/alaccelerator',  to: 'welcome#alaccelerator'
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
     get '/invitation',     to: 'welcome#invitation'
+    get '/invite',         to: 'welcome#invite'
     get '/ssl',            to: 'welcome#ssl'
     get '/partner',        to: 'welcome#partner'
 

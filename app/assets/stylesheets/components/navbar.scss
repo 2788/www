@@ -161,6 +161,20 @@ nav.navbar{
     padding: 0;
     border: 0;
     li{
+
+      i {
+        display: inline-block;
+        width: 28px;
+        height: 12px;
+
+        &.new-icon {
+          background-image: image-url("icon-new.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+
       &.menu-title{
         background-color:rgba(229, 229, 229, 0.06);
         font-size: 12px;
@@ -319,6 +333,12 @@ nav.navbar{
     }
     .pili{
       background-image: image-url("menuicon-shipinzhibo@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
+    .rtn {
+      background-image: image-url("menuicon-shishiyinshipinyun@2x.png");
       background-position: left;
       background-repeat: no-repeat;
       background-size: 20px 19px;

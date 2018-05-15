@@ -7,7 +7,7 @@
           <p><%= I18n.t("views.welcome.rtn.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "在线体验", "http://s.qnsdk.com/s/guMCz", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
-            <%= link_to "内测试用", "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
+            <%= link_to "公测试用", "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
@@ -41,6 +41,10 @@
 </div>
 
 <div class="features features-suspension-next">
+  <div class="intro rtn-network-title">
+    <h3 class="title">自研 RTC 加速网络</h3>
+    <p class="desc">自研边缘加速方案，实现全球信息实时共享</p>
+  </div>
   <div class="container rtn-scheme">
     <ul>
       <% I18n.t("views.welcome.rtn.scheme").each do |event| %>
