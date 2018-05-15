@@ -48,8 +48,11 @@
 
                   <% service[:list].each do |product| %>
                     <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
-                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
-                        <%= content_tag :h4, raw(product[:label]), class: product[:name] -%>
+                      <%= link_to(send("products_#{product[:name]}_path")) do -%>      
+                        <h4 class="<%= product[:name] -%>">
+                          <%= product[:label] -%>
+                          <% if product[:isNew] %><i class="new-icon"></i><% end %>
+                        </h4> 
                         <%= content_tag :p, product[:desc], class: "hidden-xs" -%>
                       <% end %>
                     <% end %>

@@ -176,8 +176,17 @@
     }
   }
 }
+
 .features-suspension-next {
-  padding-top: 30px;
+  position: relative;
+  padding-top: 1.58rem;
+
+  .rtn-network-title {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: .6rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -208,5 +217,17 @@
         }
       }
     }
+  }
+
+  .features-suspension-next {
+    padding-top: 1.88rem;
+
+    .rtn-network-title {
+      top: 1.8rem;
+    }
+  }
+  
+  .features-suspension {
+    z-index: 11 !important;
   }
 }
