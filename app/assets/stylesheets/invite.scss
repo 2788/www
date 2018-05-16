@@ -1,3 +1,25 @@
+.invite-title {
+  h2 {
+    padding-bottom: .2rem;
+    width: 412px;
+    max-width: 90%;
+    margin: 0 auto;
+    background-image: image-url('invite/img-fengexian.png');
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+    background-size: contain;
+    color: #2089cb;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    color: #2089cb;
+    padding: .2rem 0 .2rem;
+  }
+}
+
 .invite-banner {
   height: 5.15rem;
   text-align: center;
@@ -16,41 +38,23 @@
     background:#ffffff;
     border-radius:.38rem;
     width:2.94rem;
-    height:.8rem;
-    line-height: .8rem;
-    font-size: .4rem;
+    height:.74rem;
+    line-height: .74rem;
+    font-size: .36rem;
 
     a:hover {
       background-color: #e6e6e6
     }
   }
-}
 
-.invite-award {
-  padding-top: .25rem;
-
-  .title > h2 {
-    padding: .27rem 0;
-    width: 567px;
-    max-width: 90%;
-    margin: 0 auto;
-    background-image: image-url('invite/img-fengexian.png');
-    background-repeat: no-repeat;
-    background-position-y: 100%;
-    background-size: contain;
-    font-family:PingFangSC-Semibold;
-    font-size:.36rem;
-    color:#2089cb;
-    letter-spacing:3px;
+  .actions > p.desc {
+    position: absolute;
+    left: 0;
+    bottom: 2rem;
+    font-size: .28rem;
+    color:#ffffff;
     text-align: center;
-  }
-
-  .title > p {
-    text-align: center;
-    font-family:PingFangSC-Regular;
-    font-size:.24rem;
-    color:#2089cb;
-    padding: .15rem 0 .55rem;
+    width: 100%;
   }
 }
 
@@ -79,29 +83,149 @@
 
       td {
         vertical-align: middle !important;
-        padding: 25px .4rem 25px .2rem !important;
+        padding: .25rem .4rem .25rem .4rem !important;
         border: 1px solid #2ba2f0 !important;
+        font-size: .18rem;
 
-        li::before {
-          display: block;
-          width: 3px;
-          height: 3px;
-          background: red;
+        li {
+          padding-left: .25rem;
+          position: relative;
+          
+          &::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: .09rem;
+          }
         }
       }
     }
   }
 
   .hint {
-    font-family:PingFangSC-Medium;
     color:#265470;
     line-height: .4rem;
     text-align:left;
-    padding: .2rem;
+    font-size: .18rem
   }
 
   ul {
     padding: 0
+  }
+}
+
+.invite-flow {
+  .content {
+    padding: .7rem 0 .2rem;
+
+    p {
+      display: inline;
+      font-size: .18rem;
+      color:#2ba2f0;
+
+      span {
+        border:1px solid #2ba2f0;
+        padding: .15rem .3rem;
+        border-radius: .3rem
+      }
+
+      &.pr::after {
+        content: "";
+        display: inline-block;
+        width:0px;
+        height:0px;
+        border-bottom: .1rem solid transparent;
+        border-top: .1rem solid transparent;
+        border-left: .1rem solid #2ba2f0;
+        margin: 0 .2rem;
+        vertical-align: middle
+      }
+    }
+  }
+}
+
+.invite-rule > .content {
+  padding-top: .4rem;
+
+  p {
+    text-align: left;
+    font-size: .16rem;
+    color:#033859;
+    letter-spacing:1.18px;
+    line-height: .35rem;
+  }
+}
+
+.invite-customer > .invite-title > h2 {
+  width: 742px;
+  margin-bottom: .6rem;
+}
+
+.invite-footer {
+  height: 2.6rem;
+  background-image: image-url('invite/footer-banner.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: .4rem;
+  position: relative;
+
+  h2 {
+    font-size: .36rem;
+    color:#ffffff;
+    text-align:center;
+    font-weight: normal;
+
+    &.font-bold {
+      font-weight: bold
+    }
+  }
+
+  .actions>a {
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -1.03rem;
+    bottom: .22rem;
+    background: #ffffff;
+    border-radius: .25rem;
+    width: 2.06rem;
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .24rem;
+    text-align: center;
+    
+    a:hover {
+      background-color: #e6e6e6
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .invite-flow>.content {
+    padding-top: .4rem;
+    p {
+      display: block;
+      margin: 0;
+      span {
+        display: block;
+        width: 2.5rem;
+        margin: 0 auto;
+      }
+      &.pr::after {
+        display: block;
+        border-left: .1rem solid transparent;
+        border-right: .1rem solid transparent;
+        border-top: .1rem solid #2ba2f0;
+        border-bottom: 0 solid #2ba2f0;
+        margin: .2rem auto;
+      }
+    }
   }
 }
 
@@ -112,11 +236,16 @@
     .actions>a {
       margin-left: -1.2rem;
       bottom: .46rem;
-      border-radius: .34rem;
+      border-radius: .32rem;
       width: 2.4rem;
-      height: .68rem;
-      line-height: .68rem;
-      font-size: .34rem;
+      height: .64rem;
+      line-height: .64rem;
+      font-size: .32rem;
+    }
+
+    .actions>p.desc {
+      bottom: 1.4rem;
+      font-size: .28rem;
     }
   }
 }
