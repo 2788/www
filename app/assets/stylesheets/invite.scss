@@ -33,14 +33,14 @@
     display: block;
     position: absolute;
     left: 50%;
-    margin-left: -1.47rem;
+    margin-left: -1.3rem;
     bottom: .68rem;
     background:#ffffff;
-    border-radius:.38rem;
-    width:2.94rem;
-    height:.74rem;
-    line-height: .74rem;
-    font-size: .36rem;
+    border-radius:.32rem;
+    width:2.6rem;
+    height:.64rem;
+    line-height: .64rem;
+    font-size: .34rem;
 
     a:hover {
       background-color: #e6e6e6
@@ -51,7 +51,7 @@
     position: absolute;
     left: 0;
     bottom: 2rem;
-    font-size: .28rem;
+    font-size: .24rem;
     color:#ffffff;
     text-align: center;
     width: 100%;
@@ -60,7 +60,7 @@
 
 .invite-table {
   padding-top: .38rem;
-  font-size: .24rem;
+  font-size: .18rem;
 
   table {
     font-family:PingFangSC-Regular;
@@ -85,7 +85,7 @@
         vertical-align: middle !important;
         padding: .25rem .4rem .25rem .4rem !important;
         border: 1px solid #2ba2f0 !important;
-        font-size: .18rem;
+        font-size: .16rem;
 
         li {
           padding-left: .25rem;
@@ -111,7 +111,7 @@
     color:#265470;
     line-height: .4rem;
     text-align:left;
-    font-size: .18rem
+    font-size: .14rem
   }
 
   ul {
@@ -125,7 +125,7 @@
 
     p {
       display: inline;
-      font-size: .18rem;
+      font-size: .16rem;
       color:#2ba2f0;
 
       span {
@@ -154,10 +154,10 @@
 
   p {
     text-align: left;
-    font-size: .16rem;
+    font-size: .14rem;
     color:#033859;
     letter-spacing:1.18px;
-    line-height: .35rem;
+    line-height: .3rem;
   }
 }
 
@@ -179,7 +179,7 @@
     font-size: .36rem;
     color:#ffffff;
     text-align:center;
-    font-weight: normal;
+    font-weight: lighter;
 
     &.font-bold {
       font-weight: bold
