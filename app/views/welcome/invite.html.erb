@@ -1,12 +1,13 @@
 <div class="invite-banner">
   <div class="actions">
+    <p class="desc">活动时间：5月21日-8月21日</p>
     <%= link_to "立即邀请", "https://portal.qiniu.com/", target:"_blank" -%>
   </div>
 </div>
 
-<div class="features feature-invitation invite-award">
+<div class="features feature-invitation">
   <div class="container">
-    <div class="title">
+    <div class="invite-title">
       <h2>丰厚奖励</h2>
       <p>邀请好友注册七牛云，邀请人即可获得以下丰厚奖励</p>
     </div>
@@ -58,131 +59,56 @@
 </div>
 
 <div class="features feature-invitation">
-  <div class="container">
-    <div class="intro">
-      <h2 class="title">新人专享包领取流程</h2>
+  <div class="container invite-flow">
+    <div class="invite-title">
+      <h2>邀请流程</h2>
     </div>
-
     <div class="content">
-      <div class="row steps">
-        <div class="seven-sm-1 col-xs-6">
-          <div class="inline-box">
-            <%= image_tag "invitation/icon-lijilingqu.png", class: "media-object", alt: "icon-lijilingqu.png", width:80 %>
-            <h5 class="text-center">点击“立即领取”</h5>
-          </div>
-        </div>
-        <div class="seven-sm-1 hidden-xs">
-          <div class="inline-box">
-            <div class="step-line">
-              <span class="glyphicon glyphicon-play arrow"></span>
-            </div>
-          </div>
-        </div>
-        <div class="seven-sm-1 col-xs-6">
-          <div class="inline-box">
-            <%= image_tag "invitation/icon-zhuceqiniuyunzhanghu.png", class: "media-object", alt: "icon-zhuceqiniuyunzhanghu.png", width:80 %>
-            <h5 class="text-center">注册七牛云账户</h5>
-          </div>
-        </div>
-        <div class="seven-sm-1 hidden-xs">
-          <div class="inline-box">
-            <div class="step-line">
-              <span class="glyphicon glyphicon-play arrow"></span>
-            </div>
-          </div>
-        </div>
-        <div class="seven-sm-1 col-xs-6">
-          <div class="inline-box">
-            <%= image_tag "invitation/icon-xitongfafangdiyongquan.png", class: "media-object", alt: "icon-xitongfafangdiyongquan.png", width:80 %>
-            <h5 class="text-center">系统发放抵用劵</h5>
-          </div>
-        </div>
-        <div class="seven-sm-1 hidden-xs">
-          <div class="inline-box">
-            <div class="step-line">
-              <span class="glyphicon glyphicon-play arrow"></span>
-            </div>
-          </div>
-        </div>
-        <div class="seven-sm-1 col-xs-6">
-          <div class="inline-box">
-            <%= image_tag "invitation/icon-caiwuzhongxin.png", class: "media-object", alt: "icon-caiwuzhongxin.png", width:80 %>
-            <h5 class="text-center">“财务中心”查看抵用劵</h5>
-          </div>
-        </div>
-      </div>
-      <p class="my">注册成为七牛云实名认证账户，在享受新人专享包的同时还能即刻享受以下产品免费额度套餐</p>
-      <div class="row list-inline-prices">
-        <div class="col-xs-6 col-md-3 special-price">
-          <p>标准存储免费空间</p>
-          <p><span class="big-text">0-10 </span><span class="smal-text"> GB</span></p>
-        </div>
-        <div class="col-xs-6 col-md-3 special-price">
-          <p>每月免费上传流量</p>
-          <p><span class="big-text">无上限</span></p>
-        </div>
-        <div class="col-xs-6 col-md-3 special-price">
-          <p>标准存储每月写请求 Put / Delete</p>
-          <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
-        </div>
-        <div class="col-xs-6 col-md-3 special-price border-init">
-          <p>标准存储每月读请求 Get</p>
-          <p><span class="big-text">0-100 </span><span class="smal-text"> 万次</span></p>
-        </div>
-      </div>
+      <p class="pr">
+        <span>注册/登录七牛云账户</span>
+      </p>
+      <p class="pr">
+        <span>点击“邀请好友”</span>
+      </p>
+      <p class="pr">
+        <span>分享链接邀请好友</span>
+      </p>
+      <p>
+        <span>邀请成功获得奖励</span>
+      </p>
     </div>
   </div>
 </div>
 
 <div class="features feature-invitation feature-invitation-bg">
-  <div class="container">
-    <div class="intro">
-      <h2 class="title">更多产品与服务</h2>
+  <div class="container invite-rule">
+    <div class="invite-title">
+      <h2>活动规则</h2>
     </div>
-
-    <div class="row">
-      <div class="col-sm-3 col-xs-6">
-        <div class="logo">
-          <%= image_tag 'invitation/img-aichuangxin.jpg', width:'100%' %>
-          <div class="actions">
-            <%= link_to '立刻了解', alaccelerator_path -%>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="logo">
-          <%= image_tag 'invitation/img-chuanghaichuangyefuchi.jpg', width:'100%' %>
-          <div class="actions">
-            <%= link_to '立刻了解', goglobal_path -%>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="logo">
-          <%= image_tag 'invitation/img-shewenanquanziyuanbao.jpg', width:'100%' %>
-          <div class="actions">
-            <%= link_to '立刻了解', plup_resources_path -%>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="logo">
-          <%= image_tag 'invitation/img-cdn.jpg', width:'100%' %>
-          <div class="actions">
-            <%= link_to '立刻了解', cdnprice2018_path -%>
-          </div>
-        </div>
-      </div>
+    <div class="content">
+      <p>1 &nbsp; 活动时间：2018年5月21日-2018年8月21日</p>
+      <p>2 &nbsp; 标准用户指完成实名认证的个人用户或企业用户。</p>
+      <p>3 &nbsp; 首充指受邀人第一次充值，充值奖励发放额度以受邀人首次充值为准。首充时间应发生在受邀人注册的3个月之内，逾期充值不计在奖励范围内。</p>
+      <p>4 &nbsp; 邀请标准用户（个人/企业）所获得的免费CDN下载流量，每个邀请人（以邀请人注册邮箱为准）最高可累计40GB/月，邀请成功后，免费流量次月生效，永久有效。</p>
+      <p>5 &nbsp; 抵用券有效期为6个月，有效期的起始时间以抵用券到账时间为准。</p>
+      <p>6 &nbsp; 抵用券的发放，产品抵用券在受邀人实名认证后，自动发放至邀请人账户，每个账户（以注册邮箱为准）仅发放一次。</p>
+      <p>7 &nbsp; 邀请成功后，邀请人可在“财务中心>抵用券”查看200元产品抵用券，500元充值抵用券在邀请人充值达到5000元后自动发放至“财务中心>抵用券”。</p>
+      <p>8 &nbsp; 购物卡奖励，每月结算一次，由市场部统一发放给符合购物卡奖励标准的邀请人。</p>
+      <p>9 &nbsp; 七牛云神秘大礼包奖励，活动结束后，由市场部统一进行邀请人评选，并邮寄奖品。</p>
+      <p>10 &nbsp; 邀请者与被邀请者实际是同一用户不可获得奖励（同一用户指包含但不仅限于根据不同七牛云账号在注册、登录、使用中的关联信息，七牛云判断其实际为同一用户。关联信息举例：同一证件、同一手机号、同一支付账号、同一设备、同一地址等）。</p>
+      <p>11 &nbsp; 如用户存在作弊、欺诈或通过其他非正常手段获取利益的行为，七牛云有权收回相关权益。</p>
+      <p>12 &nbsp; 此次活动奖励不可与其他优惠同享。</p>
+      <p>13 &nbsp; 代理商不参与此次活动。</p>
+      <p>14 &nbsp; 本次活动解释权归七牛云所有，如有任何问题，欢迎邮件联系marketing@qiniu.com。</p>
     </div>
   </div>
 </div>
 
 <div class="features feature-invitation">
-  <div class="container">
-    <div class="intro">
-      <h2 class="title">与 700,000+ 企业和开发者一起使用七牛</h2>
+  <div class="container invite-customer">
+    <div class="invite-title">
+      <h2>与 700,000+ 企业和开发者一起使用七牛</h2>
     </div>
-
     <div id="index-cases-slider" class="conveyor slick-slider draggable">
       <div><div class="customer-changba index-case"></div></div>
       <div><div class="customer-changhong index-case"></div></div>
@@ -205,5 +131,13 @@
       <div><div class="customer-zhongguoyidong index-case"></div></div>
       <div><div class="customer-zhongxing index-case"></div></div>
     </div>
+  </div>
+</div>
+
+<div class="invite-footer">
+  <h2 class="font-bold">邀请好友用七牛云</h2>
+  <h2>携手创造更多的商业价值</h2>
+  <div class="actions">
+    <%= link_to "立即邀请", "https://portal.qiniu.com/", target:"_blank" -%>
   </div>
 </div>

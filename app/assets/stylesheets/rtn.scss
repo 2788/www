@@ -138,10 +138,6 @@
         h5 {
           margin-top: 40px;
         }
-
-        p>span {
-          padding-right: 30px;
-        }
       }
     }
   }
@@ -177,9 +173,10 @@
   }
 }
 
-.features-suspension-next {
+.rtn-suspension-next {
   position: relative;
   padding-top: 1.58rem;
+  margin-top: -94px !important;
 
   .rtn-network-title {
     width: 100%;
