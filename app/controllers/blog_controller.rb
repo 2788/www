@@ -29,7 +29,11 @@ class BlogController < ApplicationController
   end
 
   def category
-    @archives = Archive.where(category: params[:category]).page params[:page]
+    category = params[:category]
+    if category == "5"
+      category = [5,51,52,53,54,55,56]
+    end
+    @archives = Archive.where(category: category).page params[:page]
     @title = "博客"
     render "index"
   end
