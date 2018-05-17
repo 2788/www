@@ -1097,6 +1097,15 @@ zh-CN:
               desc: "API接口是第三方网站进行信息交互的重要形式，因为大多涉及敏感信息或重要操作指令的传输，因此其安全性至关重要。使用SSL证书进行信息传输的高强度加密，可有效杜绝信息劫持。"
       arch:
         events:
+          - img: "arch/img-shanghai.jpg"
+            time: 05 月 26 日
+            title: 深度学习技术的实践与分享
+            site: 上海
+            details:
+              time: 2018/5/26 13:00
+              site: 上海 创业邦
+              link: "http://t.cn/RueEIgk"
+              button: 查看详情
           - img: "arch/img-shenzhen.jpg"
             time: 10 月 21 日
             title: Kubernetes 落地最佳实践
