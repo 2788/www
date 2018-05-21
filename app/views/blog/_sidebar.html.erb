@@ -6,11 +6,11 @@
 
   <div class="sidebar-content">
     <div class="cat-item cat-item-first">
-      <a href="https://www.qiniu.com/products/player" title="播放器" target="_blank">
-        <%= image_tag "blog/architecture-pratice.png", alt: "博客图", width: "100%", class: "m-b-sm" -%>
+      <a href="https://www.qiniu.com/events/arch?hmsr=blog&hmpl=AD-blog&hmcu=arch&hmkw=&hmci=" title="架构师" target="_blank">
+        <%= image_tag "blog/jiagoushi.jpg", width: "100%", class: "m-b-sm" -%>
       </a>
-      <a href="https://www.qiniu.com/goglobal" title="以梦为马 御风出海" target="_blank">
-        <%= image_tag "blog/architecture-advertising.png", alt: "广告", width: "100%" -%>
+      <a href="https://developer.qiniu.com/kodo/sdk/1283/javascript?hmsr=blog&hmpl=AD-blog&hmcu=jssdk&hmkw=&hmci=" title="对象存储" target="_blank">
+        <%= image_tag "blog/duixiangcunchu.jpg", width: "100%" -%>
       </a>
     </div>
 
@@ -51,5 +51,9 @@
         <%= link_to "其他分类", archives_category_path(category: Archive::CATEGORIES.key("其他分类")), class: "category" -%>
       </li>
     </ul>
+    <div class="cat-item cat-item-first">
+      <%= image_tag "blog/wechat.png", alt: "公众号", width: "110px", class: "m-b-sm" -%>
+      <p>关注七牛云公众号</p>
+    </div>
   </div>
 </div>
