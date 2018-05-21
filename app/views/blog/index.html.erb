@@ -1,7 +1,36 @@
-<div class="features features-blog">
+<div class="jumbotron hero blog-banner">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-7 banner-title">
+          <h3>七牛直播云</br>一站式直播解决方案</h3>
+          <h4>快速搭建完整的视频直播系统</h4>
+          <div class="actions">
+            <%= link_to "立即搭建", "https://www.qiniu.com/products/pili?hmsr=blog&hmpl=AD-blog&hmcu=pili&hmkw=&hmci=",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-5 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "banner/banner-pili-right-zh.png", alt: "pili", width: '90%' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-blog container-blog">
   <div class="container">
     <div class="row row-clear">
       <div class="col-sm-8">
+        <div class="tapbar">
+          <%= link_to '大数据', '/archives/category/51', class: 'link' %>
+          <%= link_to '人工智能', '/archives/category/52', class: 'link' %>
+          <%= link_to '容器云', '/archives/category/53', class: 'link' %>
+          <%= link_to '基础设施', '/archives/category/54', class: 'link' %>
+          <%= link_to '音视频', '/archives/category/55', class: 'link' %>
+          <%= link_to 'Go 语言', '/archives/category/56', class: 'link' %>
+        </div>
         <% @archives.each do |archive| %>
           <div class="row">
             <div class="blog-content">
@@ -41,18 +70,15 @@
                 </div>
               </div>
               <% if archive.cover? %>
-                <div class="col-sm-5">
+                <div class="col-sm-4">
                   <div class="photo-left">
                     <img src=<%=archive.cover %>>
                   </div>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                   <div class="thumbnail-blog">
                     <p class="blog-text">
                       <span class="ellipsis"><%=archive.summary %></span>
-                      <span class="more-link-wrap">
-                        <%= link_to "继续阅读...", archives_path(id: archive.id), class: "more-link" -%>
-                      </span>
                     </p>
                   </div>
                 </div>
@@ -61,9 +87,6 @@
                   <div class="thumbnail-blog">
                     <p class="blog-text">
                       <span class="ellipsis"><%=archive.summary %></span>
-                      <span class="more-link-wrap">
-                        <%= link_to "继续阅读...", archives_path(id: archive.id), class: "more-link" -%>
-                      </span>
                     </p>
                   </div>
                 </div>
