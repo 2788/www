@@ -6,8 +6,8 @@
   .blog-content {
     width: 100%;
     overflow: hidden;
-    padding-top: 0.45rem;
-    padding-bottom: 0.45rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
     border-bottom: 1px solid #e5e5e5;
 
     a {
@@ -21,14 +21,13 @@
       height: auto !important;
     }
     .entry-header {
-      padding-bottom: 41px;
       .entry-utility-prep {
         color: rgb(161, 161, 161);
       }
     }
     .entry-title {
       .title {
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 100;
         color: rgb(47, 48, 51);
       }
@@ -41,27 +40,6 @@
       }
       .img {
         width: 0.14rem;
-      }
-    }
-    .blog-text {
-      position: relative;
-      min-height: 200px;
-      .ellipsis {
-        padding: 5px;
-        color: rgb(47, 48, 51);
-        display: -webkit-box;
-        overflow: hidden;
-        word-wrap: break-word;
-      }
-      .more-link-wrap {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        .more-link {
-          color: rgb(6, 167, 225);
-          display: block;
-          font-size: 14px;
-        }
       }
     }
     .blog-html {
@@ -207,13 +185,22 @@
     }
   }
   .blog-content {
-    padding-bottom: 0 !important;
     .blog-text {
-      min-height: 130px;
-      margin-bottom: 20px;
+      margin: 10px 0;
+      color: #9b9ea0;
+      max-height: 40px;
+      overflow: hidden;
+      font-size: 14px;
     }
     .entry-meta>.entry-meta-unit {
       margin-right: 10px;
+    }
+
+    .blog-imgBox {
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   .hot-clicks>ul.hot-clicks-wrapper {
@@ -262,22 +249,18 @@
       margin-bottom: 5px;
     }
     .blog-content {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding: 20px 0;
+
+      .blog-imgBox {
+        margin-top: 10px;
+      }
       .entry-header {
-        padding-bottom: 5px;
         .entry-title .title {
           font-size: 16px;
         }
       }
       a {
         font-size: 12px;
-      }
-      .blog-text {
-        min-height: 130px;
-        .more-link-wrap .more-link {
-          font-size: 12px;
-        }
       }
     }
   }

@@ -34,11 +34,18 @@
         <% @archives.each do |archive| %>
           <div class="row">
             <div class="blog-content">
-              <div class="col-sm-12">
+              <% if archive.cover? %><div class="col-sm-8">
+              <% else %><div class="col-sm-12"><% end %>
                 <div class="entry-header">
                   <div class="entry-title">
                     <%= link_to archive.title, archives_path(id: archive.id), class: "title" -%>
                   </div>
+                  <% if archive.cover? %>
+                    <div class="blog-text"><%= truncate(archive.summary, length: 70) %></div>
+                  <% else %>
+                    <div class="blog-text"><%= truncate(archive.summary, length: 100) %></div>
+                  <% end %>
+                  
                   <div class="entry-meta">
                     <span class="entry-meta-unit entry-author">
                       <%= image_tag "blog/icon-zuozhe.png", class:"img", alt: "作者" -%>
@@ -71,23 +78,8 @@
               </div>
               <% if archive.cover? %>
                 <div class="col-sm-4">
-                  <div class="photo-left">
+                  <div class="blog-imgBox">
                     <img src=<%=archive.cover %>>
-                  </div>
-                </div>
-                <div class="col-sm-8">
-                  <div class="thumbnail-blog">
-                    <p class="blog-text">
-                      <span class="ellipsis"><%=archive.summary %></span>
-                    </p>
-                  </div>
-                </div>
-              <% else %>
-                <div class="col-sm-12">
-                  <div class="thumbnail-blog">
-                    <p class="blog-text">
-                      <span class="ellipsis"><%=archive.summary %></span>
-                    </p>
                   </div>
                 </div>
               <% end %>

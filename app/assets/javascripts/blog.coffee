@@ -20,3 +20,6 @@ $(document).ready ->
   curli.addClass('active')
   # update search-value
   $('#blog-search-input').val(curli.find('a').text()||search)
+
+  width = $('.blog-content .blog-imgBox').width()
+  $('.blog-content .blog-imgBox').css({'height': width * 0.6})
