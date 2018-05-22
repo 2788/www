@@ -22,4 +22,4 @@ $(document).ready ->
   $('#blog-search-input').val(curli.find('a').text()||search)
 
   width = $('.blog-content .blog-imgBox').width()
-  $('.blog-content .blog-imgBox').css({'height': width * 0.6})
+  $('.blog-content .blog-imgBox').css({'height': width * 5 / 9})
