@@ -30,7 +30,7 @@
   background-size: cover;
   position: relative;
 
-  .actions > a {
+  .actions > a.link {
     display: block;
     position: absolute;
     left: 50%;
@@ -46,6 +46,13 @@
     a:hover {
       background-color: #e6e6e6
     }
+  }
+
+  .actions > a.invite-btn {
+    position: absolute;
+    left: 50%;
+    margin-left: -.67rem;
+    bottom: 1rem;
   }
 
   .actions > p.desc {
