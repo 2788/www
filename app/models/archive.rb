@@ -27,8 +27,7 @@ class Archive < ApplicationRecord
     55 => '音视频',
     56 => 'Go 语言',
     6 => "牛棚漫画",
-    7 => "加入我们",
-    9 => "其他分类"
+    7 => "加入我们"
   }
 
   def self.hot_archives
