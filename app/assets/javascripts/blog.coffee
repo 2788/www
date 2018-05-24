@@ -12,11 +12,15 @@ $(document).ready ->
   # get URL
   # get category
   curlink = location.href.split('/')
-  catnum = +curlink.slice(curlink.indexOf("category")+1 , curlink.indexOf("category")+2)[0] || 0
+  catnum = curlink.slice(curlink.indexOf("category")+1 , curlink.indexOf("category")+2)[0] || 0
   # rm active
   $('.list-blog li.active').removeClass('active')
   # add active
-  curli = $($('.list-blog li')[catnum])
+  if catnum.indexOf('?') == -1
+    pCatnum = +catnum
+  else
+    pCatnum = +catnum.split('?')[0]
+  curli = $($('.list-blog li')[pCatnum])
   curli.addClass('active')
   # update search-value
   $('#blog-search-input').val(curli.find('a').text()||search)
