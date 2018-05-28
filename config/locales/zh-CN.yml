@@ -457,9 +457,9 @@ zh-CN:
             img: sdk/ icon-pingjunyanchi.png
           - title: 270ms 首开
             img: sdk/icon-shoukai.png
-          - title: 99.99%连通率
+          - title: 99.93%连通率
             img: sdk/icon-liantonglv.png
-          - title: 99.96%可用性
+          - title: 99.95%可用性
             img: sdk/icon-keyongxing.png
         scheme:
           - title: 全球节点
