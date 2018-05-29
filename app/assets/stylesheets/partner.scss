@@ -87,6 +87,12 @@
   .table-responsive.table-parter-wrapper {
     border: none;
   }
+  .table.table-partner td,
+  .table.table-partner th {
+    width: auto !important;
+    white-space: normal !important;
+    padding: 10px !important;
+  }
 }
 
 @media (max-width: 991px) {
