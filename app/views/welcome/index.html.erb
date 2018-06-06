@@ -1,5 +1,26 @@
 <% if I18n.t("views.language") == 'zh' %>
   <div class="banners-slider">
+    <div class="jumbotron hero hero-plsv">
+      <div class="container">
+        <div class="middle-container">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="banner-desc">
+                <h2>短视频<span class="text-warn"> 0 元</span>体验包限量领取</h2>
+                <p>1.5M 最小包体，100+ 丰富功能，3 小时集成应用</p>
+              </div>
+              <%= link_to "立即领取", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
+            </div>
+            <div class="col-sm-5 hidden-xs">
+              <div class="right-mask-banner">
+                <%= image_tag "banner/banner-plsv-right-zh.png", alt: "短视频", width: "90%" -%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="jumbotron hero hero-sourth-asia">
       <div class="container">
         <div class="middle-container">
@@ -56,27 +77,6 @@
                 <p>集鉴黄、鉴暴恐、政治人物识别为一体的综合涉稳安全系列产品</p>
               </div>
               <%= link_to "查看详情", plup_resources_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-plsv">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-7">
-              <div class="banner-desc">
-                <h2>短视频<span class="text-warn"> 0 元</span>体验包限量领取</h2>
-                <p>1.5M 最小包体，100+ 丰富功能，3 小时集成应用</p>
-              </div>
-              <%= link_to "立即领取", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-            <div class="col-sm-5 hidden-xs">
-              <div class="right-mask-banner">
-                <%= image_tag "banner/banner-plsv-right-zh.png", alt: "短视频", width: "90%" -%>
-              </div>
             </div>
           </div>
         </div>
