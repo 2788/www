@@ -18,7 +18,8 @@ $(document).ready ->
 
   $modal.on 'hidden.bs.modal', ->
     $form.show()
-    $alert.hide()
+    $alertSuccess.hide()
+    $alertError.hide()
 
   # input 即使验证，form btn 检验
   feedbackValidate = new inputValidate("#feedback-form");

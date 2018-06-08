@@ -1,18 +1,18 @@
-<div class="jumbotron hero">
+<div class="jumbotron hero hero-rtn">
   <div class="container">
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
           <h2><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
           <p><%= I18n.t("views.welcome.rtn.banner.desc") %></p>
-          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" %>">
             <%= link_to "在线体验", "http://s.qnsdk.com/s/guMCz", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "公测试用", "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
           <div class="right-mask-banner">
-            <%= image_tag I18n.t("views.welcome.rtn.banner.icon"), alt: "rtn", width: '90%' %>
+            <%= image_tag I18n.t("views.welcome.rtn.banner.icon"), alt: "rtn", width: "90%" %>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
 <div class="features features-suspension">
   <div class="container">
     <div class="suspension">
-      <div class="row">
+      <div class="row rtn-row">
         <% I18n.t("views.welcome.rtn.specialty").each do |event| %>
           <div class="col-sm-3 col-xs-6 col-clear">
             <a href="javascript:;" class="suspension-item rtn-specialty">
@@ -42,12 +42,12 @@
 
 <div class="features features-suspension-next rtn-suspension-next">
   <div class="intro rtn-network-title">
-    <h3 class="title">自研 RTC 加速网络</h3>
-    <p class="desc">自研边缘加速方案，实现全球信息实时共享</p>
+    <h3 class="title"><%= I18n.t("views.welcome.rtn.scheme.title") -%></h3>
+    <p class="desc"><%= I18n.t("views.welcome.rtn.scheme.desc") -%></p>
   </div>
   <div class="container rtn-scheme">
     <ul>
-      <% I18n.t("views.welcome.rtn.scheme").each do |event| %>
+      <% I18n.t("views.welcome.rtn.scheme.content").each do |event| %>
         <li>
           <p class="title"><%= event[:title] -%></p>
           <% event[:desc].each do |desc| %>
@@ -71,13 +71,13 @@
           <div class="active cont">
             <%= image_tag event[:active_img] %>
             <div>
-              <p class="title"><%= event[:title] -%></p>
-              <p class="desc"><%= event[:desc] -%></p>
+              <p class="title <%= I18n.t("views.language") != "zh" ? "tiny-title" : "" %>"><%= event[:title] -%></p>
+              <p class="desc <%= I18n.t("views.language") != "zh" ? "tiny-desc" : "" %>"><%= event[:desc] -%></p>
             </div>
           </div>
           <div class="normal cont">
             <%= image_tag event[:img] %>
-            <p class="title"><%= event[:title] -%></p>
+            <p class="title <%= I18n.t("views.language") != "zh" ? "tiny-title" : "" %>"><%= event[:title] -%></p>
           </div>
         </li>
       <% end %>
@@ -128,7 +128,7 @@
       <h3 class="title"><%= I18n.t("views.welcome.rtn.demo.title") -%></h3>
     </div>
 
-    <div class="row rtn-demo">      
+    <div class="row rtn-demo">
       <ul>
         <% I18n.t("views.welcome.rtn.demo.items").each do |item| %>
           <li>
@@ -146,7 +146,7 @@
   </div>
 </div>
 
-<div class="features features-less tab-content-products">
+<div class="features features-less tab-content-products <%= I18n.t("views.language") != "zh" ? "d-none" : "" %>">
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
