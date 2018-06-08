@@ -294,7 +294,8 @@
 }
 
 .row {
-    .five-sm-1 {
+    .five-sm-1,
+    .three-sm-1 {
         position: relative;
         min-height: 1px;
         padding-left: 15px;
@@ -306,5 +307,9 @@
     .row .five-sm-1 {
         float: left;
         width: 20%;
+    }
+    .row .three-sm-1 {
+        float: left;
+        width: 33%;
     }
 }

@@ -454,7 +454,7 @@ zh-CN:
           icon: "sdk/img-banner.png"
         specialty:
           - title: 150ms 延迟
-            img: sdk/ icon-pingjunyanchi.png
+            img: sdk/icon-pingjunyanchi.png
           - title: 270ms 首开
             img: sdk/icon-shoukai.png
           - title: 99.93%连通率
@@ -462,29 +462,32 @@ zh-CN:
           - title: 99.95%可用性
             img: sdk/icon-keyongxing.png
         scheme:
-          - title: 全球节点
-            desc: 
-              - 全球节点 180+
-              - 支持全球 200+ 国家和地区互动
-          - title: 实时性
-            desc: 
-              - 延迟 150ms 左右
-          - title: 传输协议
-            desc: 
-              - 基于 WebRTC
-              - 接入门槛低，兼容性强，用户体验好
-          - title: 加速方案
-            desc: 
-              - 全自研边缘加速方案
-              - 实现信息在全球网络的实时共享交互
-          - title: 调度策略
-            desc: 
-              - 智能分配流媒体服务器和加速线路
-              - 快速响应全球实时互动需求
-          - title: 质量监控
-            desc: 
-              - 网络品质监控与自动调度系统
-              - 实时优化传输质量
+            title: 自研 RTC 加速网络
+            desc: 自研边缘加速方案，实现全球信息实时共享
+            content:
+              - title: 全球节点
+                desc: 
+                  - 全球节点 180+
+                  - 支持全球 200+ 国家和地区互动
+              - title: 实时性
+                desc: 
+                  - 延迟 150ms 左右
+              - title: 传输协议
+                desc: 
+                  - 基于 WebRTC
+                  - 接入门槛低，兼容性强，用户体验好
+              - title: 加速方案
+                desc: 
+                  - 全自研边缘加速方案
+                  - 实现信息在全球网络的实时共享交互
+              - title: 调度策略
+                desc: 
+                  - 智能分配流媒体服务器和加速线路
+                  - 快速响应全球实时互动需求
+              - title: 质量监控
+                desc: 
+                  - 网络品质监控与自动调度系统
+                  - 实时优化传输质量
         serve:
           title: 特色功能
           desc: 全平台极简 SDK，快速接入实现实时通信
@@ -1337,6 +1340,13 @@ zh-CN:
               time: 2018/05/12
               site: 西安市高新区沣惠南路22号希尔顿酒店
               link: niudays_xian
+          - img: "niuday/img-shenzhen.jpg"
+            site: 深圳
+            time: 2018/06/23
+            details:
+              time: 2018/06/23
+              site: 深圳中洲圣廷苑酒店
+              link: niudays_shenzhen
           - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
@@ -1374,13 +1384,6 @@ zh-CN:
               link: niudays
           - img: "niuday/img-nanjing.jpg"
             site: 南京
-            time:
-            details:
-              time:
-              site:
-              link: niudays
-          - img: "niuday/img-shenzhen.jpg"
-            site: 深圳
             time:
             details:
               time:
@@ -1787,6 +1790,10 @@ zh-CN:
       title: NIUDAY小牛汇共享日
     niudays_view:
       title: NIUDAY小牛汇共享日_杭州站
+    niudays_xian:
+      title: NIUDAY小牛汇共享日_西安站
+    niudays_shenzhen:
+      title: NIUDAY小牛汇共享日_深圳站
   cases1:
     - groupid: enterprise
       group:
@@ -2104,4 +2111,65 @@ zh-CN:
         - img: 'niuday/partnerslog/logo-3wqifu.png'
         - img: 'niuday/partnerslog/logo-huodongxing.png'
         - img: 'niuday/partnerslog/logo-datastory.png'
-    
+    shenzhen:
+      guest:
+        - img: 'niuday/avatar.png'
+          name: 张海龙
+          title: CODING CEO
+        - img: 'niuday/avatar-lvguihua.png'
+          name: 吕桂华
+          title: 七牛云总裁
+        - img: 'niuday/avatar.png'
+          name: 李旭日
+          title: DataStory CTO
+        - img: 'niuday/avatar.png'
+          name: 卢俊
+          title: 七牛视频云解决方案架构师
+        - img: 'niuday/avatar.png'
+          name: 陈鸿威
+          title: 云财经大数据CTO
+        - img: 'niuday/avatar.png'
+          name: 陈超
+          title: 七牛云技术总监
+      medias:
+        - img: 'niuday/mediaslog/logo-leifengwang.png'
+        - img: 'niuday/mediaslog/logo-yiou.png'
+        - img: 'niuday/mediaslog/logo-chuangyebang.png'
+        - img: 'niuday/mediaslog/logo-itjuzi.png'
+        - img: 'niuday/mediaslog/logo-huxiu.png'
+        - img: 'niuday/mediaslog/logo-pinwan.png'
+        - img: 'niuday/mediaslog/logo-chuangyeheima.png'
+        - img: 'niuday/mediaslog/logo-chuangtoutiao.png'
+        - img: 'niuday/mediaslog/logo-jikebang.png'
+        - img: 'niuday/mediaslog/logo-51cto.png'
+        - img: 'niuday/mediaslog/logo-csdn.png'
+        - img: 'niuday/mediaslog/logo-kaiyuanzhongguo.png'
+        - img: 'niuday/mediaslog/logo-meikewang.png'
+        - img: 'niuday/mediaslog/logo-doit.png'
+        - img: 'niuday/mediaslog/logo-bitewang.png'
+        - img: 'niuday/mediaslog/logo-tuopushe.png'
+        - img: 'niuday/mediaslog/logo-cioshidai.png'
+        - img: 'niuday/mediaslog/logo-yibangdongli.png'
+        - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
+        - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
+      partners:
+        - img: 'niuday/partnerslog/logo-haikangweishi.png'
+        - img: 'niuday/partnerslog/logo-ping.png'
+        - img: 'niuday/partnerslog/logo-daguanshuju.png'
+        - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
+        - img: 'niuday/partnerslog/logo-jiguang.png'
+        - img: 'niuday/partnerslog/logo-juejin.png'
+        - img: 'niuday/partnerslog/logo-weilian.png'
+        - img: 'niuday/partnerslog/logo-pudongruanjianyuan.png'
+        - img: 'niuday/partnerslog/logo-apicloud.png'
+        - img: 'niuday/partnerslog/logo-getui.png'
+        - img: 'niuday/partnerslog/logo-rongdukeji.png'
+        - img: 'niuday/partnerslog/logo-yunheenmo.png'
+        - img: 'niuday/partnerslog/logo-cobub.png'
+        - img: 'niuday/partnerslog/logo-rongyun.png'
+        - img: 'niuday/partnerslog/logo-huanxin.png'
+        - img: 'niuday/partnerslog/logo-yunsuo.png'
+        - img: 'niuday/partnerslog/logo-segmentfault.png'
+        - img: 'niuday/partnerslog/logo-3wqifu.png'
+        - img: 'niuday/partnerslog/logo-huodongxing.png'
+        - img: 'niuday/partnerslog/logo-datastory.png'
