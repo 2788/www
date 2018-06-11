@@ -429,6 +429,79 @@ en:
                   link: ""
         case:
           title: Success Cases
+      vcs:
+        banner:
+          title: "视频冷存储解决方案"
+          desc: "七牛云视频冷存储解决方案是专为综合视频平台打造的 PB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
+          icon: "banner/banner-vcs-right-zh.png"
+        specialty:
+          - title: 成本 60% OFF
+            img: vcs/icon-cost.png
+            class: right-divider
+          - title: 时延 ≤ 50ms
+            img: vcs/icon-delay.png
+            class: right-divider
+          - title: 突发流量承载 100Gbps+
+            img: vcs/icon-flow.png
+            class: right-divider
+          - title: 写入性能 50Gbps+
+            img: vcs/icon-performance.png
+        painpoint:
+          title: "行业痛点"
+          content:
+            - title: "painpoint1"
+              desc: "归档与合规需求和数据资产化趋势使得存储规模和成本增加，自建存储的研发、管理成本上升。"
+              icon: "vcs/icon-painpoint1.png"
+            - title: "painpoint2"
+              desc: "在线视频的访问热度会随着时间变化，而常规方案缺乏有效的生命周期管理方案，无法智能处理冷热数据。"
+              icon: "vcs/icon-painpoint2.png"
+            - title: "painpoint3"
+              desc: "常规冷备存储方案访问性能不足，无法应对突发访问流量，并且在成本控制下灾备能力不足。"
+              icon: "vcs/icon-painpoint3.png"
+        advantage:
+          title: "方案优势"
+          content:
+            - title: "高可用低成本"
+              desc: "七牛云独有的三机房纠删码方案，生命周期管理，相较于常规存储方案，存储成本降低 60%。"
+              icon: "vcs/icon-advantages1.png"
+            - title: "高吞吐低时延"
+              desc: "七牛云可承载 100Gbps 以上突发流量，访问时延可控制在 50ms 以内，聚合写入性能在 50Gbps 以上。"
+              icon: "vcs/icon-advantages2.png"
+            - title: "增量数据同步"
+              desc: "七牛云支持与源站同步保持数据更新，异步的拉取数据，且时间、带宽、并发均可控。"
+              icon: "vcs/icon-advantages3.png"
+            - title: "无忧数据迁移"
+              desc: "七牛云有着多种久经验证的数据迁移方案，覆盖线上线下全场景，简单，可信赖。"
+              icon: "vcs/icon-advantages4.png"
+        scenario:
+          title: "典型应用场景"
+          content:
+            - title: "scenario1"
+              desc: "高清视频原片 - 归档存储"
+              icon: "vcs/icon-scenarios1.png"
+            - title: "scenario2"
+              desc: "媒体资源库 - 数据冷备"
+              icon: "vcs/icon-scenarios2.png"
+            - title: "scenario3"
+              desc: "直播录制资源 - 实时点播"
+              icon: "vcs/icon-scenarios3.png"
+        case:
+          title: "成功案例"
+          content:
+            - name: "bilibili"
+              desc:
+                - "七牛云存储将 B 站用户上传的所有高清原片进行了归档存储，帮助 B 站第一家实现了支持用户上传 1080P 原片并直接存储；"
+                - "因为点播与审查的需要，七牛存储了 B 站直播的近 60 天的录播数据，并实现了实时点播；"
+                - "七牛云承载了 B 站 50Gpbs 以上的突发流量，保障了 B 站在 CDN 故障的情况下依然可以顺畅访问；"
+                - "同时提供多域名和多 IP 下载避免域名劫持的问题"
+              icon: "vcs/icon-bilibili.png"
+            - name: "souhu"
+              desc:
+                - "七牛云帮助搜狐视频对其全站的数据进行冷备，总量达到数 PB 级；"
+                - "整体数据迁移流程在 1 个月内完成，并实现了新增数据的实时同步；"
+                - "在保证低成本存储的同时，在华东区域内实现数据访问的高可用；"
+                - "项目稳定运行 1 年多时间，0 故障，数据同步成功率 100%"
+              icon: "vcs/icon-souhu.png"
       rtn:
         banner:
           title: "Real-time Video Communication Service"
@@ -1308,20 +1381,6 @@ en:
               link: "http://hd.qiniu.com/arch/history/1"
       niuday:
         events:
-          - img: "niuday/img-hangzhou.jpg"
-            site: 杭州
-            time: 2018/04/11
-            details:
-              time: 2018/04/11
-              site: 杭州海外海皇冠大酒店
-              link: niudays_hangzhou
-          - img: "niuday/img-xian.jpg"
-            site: 西安
-            time: 2018/05/12
-            details:
-              time: 2018/05/12
-              site: 西安市高新区沣惠南路22号希尔顿酒店
-              link: niudays_xian
           - img: "niuday/img-shenzhen.jpg"
             site: 深圳
             time: 2018/06/23
@@ -1329,6 +1388,20 @@ en:
               time: 2018/06/23
               site: 深圳中洲圣廷苑酒店
               link: niudays_shenzhen
+          - img: "niuday/img-xian.jpg"
+            site: 西安
+            time: 2018/05/12
+            details:
+              time: 2018/05/12
+              site: 西安市高新区沣惠南路22号希尔顿酒店
+              link: niudays_xian
+          - img: "niuday/img-hangzhou.jpg"
+            site: 杭州
+            time: 2018/04/11
+            details:
+              time: 2018/04/11
+              site: 杭州海外海皇冠大酒店
+              link: niudays_hangzhou
           - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
@@ -1548,6 +1621,9 @@ en:
       - name: plsv
         label: Short Videos
         desc:
+      - name: vcs
+        label: Videos Cold Storage
+        desc:
       - name: newmedia
         label: New Media Industry
         desc:
@@ -1639,6 +1715,10 @@ en:
       title: Qiniu Cloud-Live Video Cloud（PILI）
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction
       description: Qiniu Cloud's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
+    welcome_vcs:
+      title: 视频冷存储解决方案-七牛云
+      keywords:
+      description:
     welcome_newmedia:
       title: 广电新媒体解决方案-七牛云
       keywords: 新媒体解决方案，融合媒体解决方案，广电新媒体解决方案，媒体融合服务，媒资管理
@@ -1675,8 +1755,8 @@ en:
       description: 七牛短视频服务(plsv)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
     welcome_rtn:
       title: 实时音视频_实时音视频SDK-七牛云
-      keywords: 连麦，实时语音，实时语音SDK，语音通话SDK，语音聊天SDK，互动直播，实时通信，webrtc
-      description: 七牛云实时音视频是基于七牛在直播产品上的积累，结合实时音视频SDK和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，无需音视频技术基础，也可以从零开始打造主播与观众多画面、实时连麦互动的实时音视频应用。
+      keywords: rtn
+      description: rtn
     welcome_user_agreement:
       title: 用户服务协议-七牛云
       keywords:
@@ -2082,22 +2162,22 @@ en:
         - img: 'niuday/partnerslog/logo-datastory.png'
     shenzhen:
       guest:
-        - img: 'niuday/avatar.png'
-          name: 张海龙
-          title: CODING CEO
-        - img: 'niuday/avatar-lvguihua.png'
-          name: 吕桂华
-          title: 七牛云总裁
-        - img: 'niuday/avatar.png'
-          name: 李旭日
-          title: DataStory CTO
-        - img: 'niuday/avatar.png'
-          name: 卢俊
-          title: 七牛视频云解决方案架构师
-        - img: 'niuday/avatar.png'
+        - img: 'niuday/avatar-chenhongwei.png'
           name: 陈鸿威
           title: 云财经大数据CTO
-        - img: 'niuday/avatar.png'
+        - img: 'niuday/avatar-lixuri.png'
+          name: 李旭日
+          title: DataStory CTO
+        - img: 'niuday/avatar-shekun.png'
+          name: 佘坤
+          title: 努比亚技术有限公司互联网产品开发部部长
+        - img: 'niuday/avatar-lujun.png'
+          name: 卢俊
+          title: 七牛视频云解决方案架构师
+        - img: 'niuday/avatar-zhanghailong.png'
+          name: 张海龙
+          title: CODING CEO
+        - img: 'niuday/avatar-chenchao.png'
           name: 陈超
           title: 七牛云技术总监
       medias:
