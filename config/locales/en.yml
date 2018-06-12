@@ -507,6 +507,15 @@ en:
           title: "Real-time Video Communication Service"
           desc: "Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast."
           icon: "sdk/img-banner.png"
+        action:
+          - title: "Try Now"
+            link: "http://s.qnsdk.com/s/guMCz"
+            target: "_blank"
+            class: "btn btn-lg btn-default m-r m-b-xs"
+          - title: "Apply for Beta Version"
+            link: "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com"
+            target: "_blank"
+            class: "btn btn-lg btn-hollow m-b-xs"
         specialty:
           - title: 150ms Global latency
             img: sdk/icon-pingjunyanchi.png
@@ -548,27 +557,27 @@ en:
           desc: Quick access makes it possible to achieve real-time communication with the minimal SDK across the platform.
           content:
             - title: Confluence of Servers
-              desc: 解决主流混流方案的上下行带宽瓶颈问题和编解码问题，降低计算资源和网络带宽成本。
+              desc: Solve the bottleneck in upstream and downstream bandwidth and the problem in coding and decoding in the scheme of mainstream and multi-stream and reduce computing resources and costs on network bandwidth.
               img: sdk/icon-fuwuduanheliu.png
               active_img: sdk/icon-fuwuduanheliu-2.png
             - title: Bypass Live Broadcasting
-              desc: 支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看。
+              desc: Support the global accelerated dispatch of audios and videos and transcode upstream data into RTMP, HTTP and HLS protocols, easy for users to watch through Web or streaming media players.
               img: sdk/icon-pangluzhibo.png
               active_img: sdk/icon-pangluzhibo-2.png
             - title: Real-time Recording
-              desc: 支持音视频录制、存储、转码、分发和点播，可录制观众观看到的流，用于点播回放。
+              desc: Support the record, storage, transcoding, dispatch and on-demand services of audios and videos and record the streaming audience has watched for video-on-demand and playback.
               img: sdk/icon-shishiluzhi.png
               active_img: sdk/icon-shishiluzhi-2.png
             - title: Personalized Management
-              desc: 支持动态邀人、踢人、禁音等多种管理权限，使聊天互动更加有序。
+              desc: Support multiple administrative powers such as dynamic invitation, kicking and muting, to keep chats and interactions in a more orderly way.
               img: sdk/icon-gexinghuaguanli.png
               active_img: sdk/icon-gexinghuaguanli-2.png
             - title: Intelligent Processing of Rich Media
-              desc: 提供水印、音视频转码、切片和拼接等基础的数据处理服务及自定义数据处理服务，满足各类音视频互动场景。
+              desc: Provide basic data processing services, like watermarks, transcoding of audios and videos, clipping and editing, and user-defined data processing services, to satisfy various audio and video interaction scenarios.
               img: sdk/icon-zhinengfumeitichuli.png
               active_img: sdk/icon-zhinengfumeitichuli-2.png
             - title: Auditing of Pornography, Violence and Terrorism
-              desc: 云端实现黄暴恐图自动鉴别，有效规避涉黄、涉暴恐、涉政风险，让平台更安全稳定地运营。
+              desc: Automatically identify images with pornography, violence and terrorism in the clouds and effectively avoid risks from contents of pornography, violence, terrorism and politics, to operate the platform in a safer and more stable way.
               img: sdk/icon-jianhuangjianbaokong.png
               active_img: sdk/icon-jianhuangjianbaokong-2.png
         scene:
@@ -1621,9 +1630,9 @@ en:
       - name: plsv
         label: Short Videos
         desc:
-      - name: vcs
-        label: Videos Cold Storage
-        desc:
+      # - name: vcs
+      #   label: Videos Cold Storage
+      #   desc:
       - name: newmedia
         label: New Media Industry
         desc:
@@ -1754,9 +1763,9 @@ en:
       keywords: 短视频SDK，七牛短视频，短视频服务，短视频解决方案，ios短视频sdk，android短视频sdk
       description: 七牛短视频服务(plsv)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
     welcome_rtn:
-      title: 实时音视频_实时音视频SDK-七牛云
-      keywords: rtn
-      description: rtn
+      title: Qiniu Cloud-Real-time Video Communication Service
+      keywords: WebRTC，RTC，real-time communication，WebRTC Platform，WebRTC API，WebRTC Mobile，WebRTC iOS，WebRTC Android，video communications，video
+      description: Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network  and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast.
     welcome_user_agreement:
       title: 用户服务协议-七牛云
       keywords:

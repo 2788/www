@@ -1,101 +1,90 @@
 .details-card {
-  background-color: #fff;
-  box-shadow: 1px 4px 6px #e7ecff;
-  min-height: 647px;
-  padding-bottom: 70px;
-  margin-bottom: 15px;
-  position: relative;
-
-  .card-title {
-    min-height: 187px;
-    padding: 15px 30px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-image: image-url("pili/img-background.jpg");
-    color: #fff;
-
-    .title {
-      font-size: 18px;
-      line-height: 36px;
-      padding-left: 44px;
-      background-repeat: no-repeat;
-      background-size: 36px auto;
-      background-position: left center;
-
-      &.tuiliu-icon {
-        background-image: image-url("pili/icon-wanshandetuiliuduangongneng.png");
-      }
-
-      &.play-icon {
-        background-image: image-url("pili/icon-quanziyanneihebofangqi.png");
-      }
+    background-color: #fff;
+    box-shadow: 1px 4px 6px #e7ecff;
+    min-height: 647px;
+    padding-bottom: 70px;
+    margin-bottom: 15px;
+    position: relative;
+    .card-title {
+        min-height: 187px;
+        padding: 15px 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-image: image-url("pili/img-background.jpg");
+        color: #fff;
+        .title {
+            font-size: 18px;
+            line-height: 36px;
+            padding-left: 44px;
+            background-repeat: no-repeat;
+            background-size: 36px auto;
+            background-position: left center;
+            &.tuiliu-icon {
+                background-image: image-url("pili/icon-wanshandetuiliuduangongneng.png");
+            }
+            &.play-icon {
+                background-image: image-url("pili/icon-quanziyanneihebofangqi.png");
+            }
+        }
+        .desc {
+            color: #fff;
+        }
     }
-
-    .desc {
-      color: #fff;
+    .card-body {
+        padding: 15px 30px;
+        color: rgb(51, 51, 51);
+        .title {
+            font-size: 18px;
+        }
     }
-  }
-
-  .card-body  {
-    padding: 15px 30px;
-    color: rgb(51, 51, 51);
-
-    .title {
-      font-size: 18px;
+    .action {
+        position: absolute;
+        left: 30px;
+        bottom: 36px;
+        a.btn.btn-primary {
+            color: #fff;
+        }
     }
-  }
-
-  .action {
-    position: absolute;
-    left: 30px;
-    bottom: 36px;
-
-    a.btn.btn-primary {
-      color: #fff;
-    }
-  }
 }
 
 .container.container-net-bg {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: image-url("pili/img-net.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: image-url("pili/img-net.png");
 }
 
 .features.features-bottom-line {
-  padding-bottom: 0;
-  .bottom-line {
-    padding-bottom: 0.68rem;
-  }
+    padding-bottom: 0;
+    .bottom-line {
+        padding-bottom: 0.68rem;
+    }
 }
 
 @media (max-width: 425px) {
-  .features.features-bottom-line {
-    padding-bottom: 0;
-    .bottom-line {
-      padding-bottom: 0.3rem;
+    .features.features-bottom-line {
+        padding-bottom: 0;
+        .bottom-line {
+            padding-bottom: 0.3rem;
+        }
     }
-  }
 }
 
 @media (max-width: 767px) {
-  .card {
-    min-height: auto;
-
-    .card-title {
-      min-height: auto;
+    .card {
+        min-height: auto;
+        .card-title {
+            min-height: auto;
+        }
     }
-  }
 }
 
 @media (min-width: 767px) {
-  .row-flex {
-    display: flex;
-    
-    .details-card {
-      height: 100%;
+    .row-flex {
+        display: flex;
+        .details-card {
+            height: 100%;
+        }
     }
-  }
 }

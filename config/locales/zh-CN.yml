@@ -525,6 +525,15 @@ zh-CN:
           title: "实时音视频云"
           desc: "七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
           icon: "sdk/img-banner.png"
+        action:
+          - title: "在线体验"
+            link: "http://s.qnsdk.com/s/guMCz"
+            target: "_blank"
+            class: "btn btn-lg btn-default m-r m-b-xs"
+          - title: "公测试用"
+            link: "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com"
+            target: "_blank"
+            class: "btn btn-lg btn-hollow m-b-xs"
         specialty:
           - title: 150ms 延迟
             img: sdk/icon-pingjunyanchi.png
@@ -1639,9 +1648,9 @@ zh-CN:
       - name: plsv
         label: 短视频解决方案
         desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
-      - name: vcs
-        label: 视频冷存储解决方案
-        desc: 视频冷存储解决方案
+      # - name: vcs
+      #   label: 视频冷存储解决方案
+      #   desc: 视频冷存储解决方案
       - name: player
         label: 播放器解决方案
         desc: 全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议
