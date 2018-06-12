@@ -1,0 +1,130 @@
+<%# banner %>
+<div class="jumbotron hero hero-vcs">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-8">
+          <h2><%= I18n.t("views.welcome.vcs.banner.title") -%></h2>
+          <p><%= I18n.t("views.welcome.vcs.banner.desc") -%></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
+            <%= link_to "立即咨询", "",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-12 hidden-xs right-mask-vcs">
+          <div class="right-mask-banner">
+            <%= image_tag I18n.t("views.welcome.vcs.banner.icon"), alt: "vcs" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 特点 %>
+<div class="features features-suspension specialty-vcs">
+  <div class="container">
+    <div class="suspension">
+      <div class="row row-vcs">
+        <% I18n.t("views.welcome.vcs.specialty").each do |event| -%>
+          <div class="col-sm-3 col-xs-6 col-clear">
+            <a href="javascript:;" class="suspension-item item-vcs <%= event[:class] -%>">
+              <%= image_tag event[:img] -%>
+              <div class="desc">
+                <p><%= event[:title] -%></p>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 行业痛点 %>
+<div class="features pain-point-vcs">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.vcs.painpoint.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.vcs.painpoint.content").each do |event| -%>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag event[:icon], alt: event[:title], width: 150 -%>
+            <div class="caption caption-vcs">
+              <p><%= event[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# 方案优势 %>
+<div class="features features-superiority advantages-vcs">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.vcs.advantage.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.vcs.advantage.content").each do |event| -%>
+        <div class="col-sm-6 col-xs-6">
+            <div class="media">
+            <div class="media-left">
+                <%= image_tag event[:icon], class: "media-object", alt: event[:title], width: 100 -%>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><%= event[:title] -%></h4>
+                <p><%= event[:desc] -%></p>
+            </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# 典型应用场景 %>
+<div class="features scenarios-vcs">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.vcs.scenario.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.vcs.scenario.content").each do |event| -%>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag event[:icon], alt: event[:title], width: 150 -%>
+            <div class="caption caption-vcs">
+              <p><%= event[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# 成功案例 %>
+<div class="features cases-vcs">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.vcs.case.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.vcs.case.content").each do |event| -%>
+        <div class="col-sm-6">
+          <div class="thumbnail">
+            <%= image_tag event[:icon], alt: event[:name], width: 180 -%>
+            <div class="caption caption-vcs">
+              <% event[:desc].each do |item| -%>
+                <p><%= item -%></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

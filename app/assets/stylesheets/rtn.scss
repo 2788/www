@@ -61,7 +61,7 @@
                 align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
-                padding: 20px;
+                padding: 20px 0.10rem 0.10rem 0.10rem;
                 overflow: hidden;
                 p {
                     width: 100%;
@@ -71,12 +71,6 @@
                         font-size: 16px;
                         margin-bottom: 5px;
                     }
-                    &.tiny-title {
-                        font-size: 0.15rem;
-                    }
-                    &.tiny-desc {
-                        font-size: 0.10rem;
-                    }
                 }
                 img {
                     width: 60px;
@@ -85,6 +79,30 @@
                 }
                 &.active {
                     display: none
+                }
+                .en-title {
+                    @media (min-width: 1200px), (max-width: 1199px) and (min-width: 992px), (max-width: 991px) and (min-width: 768px) {
+                        font-size: 0.14rem !important;
+                        line-height: 0.16rem !important;
+                    }
+                    @media (max-width:768px) {
+                        font-size: 0.20rem !important;
+                    }
+                }
+                .en-desc {
+                    @media (min-width: 1200px) {
+                        font-size: 0.14rem !important;
+                        line-height: 0.16rem !important;
+                    }
+                    @media (max-width: 1199px) and (min-width: 992px),
+                    (max-width: 991px) and (min-width: 768px) {
+                        font-size: 0.10rem !important;
+                        line-height: 0.14rem !important;
+                    }
+                    @media (max-width:768px) {
+                        font-size: 0.15rem !important;
+                        line-height: 0.17rem !important;
+                    }
                 }
             }
             &:hover {
@@ -167,13 +185,33 @@
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
+    .hero-rtn h2 {
+        &.en-version {
+            font-size: 0.30rem !important;
+        }
+    }
     .hero-rtn p {
         line-height: 0.25rem !important;
         font-size: 0.15rem !important;
+        &.en-version {
+            line-height: 0.20rem !important;
+            font-size: 0.16rem !important;
+        }
     }
 }
 
 @media (max-width: 768px) {
+    .hero-rtn h2 {
+        &.en-version {
+            font-size: 0.30rem !important;
+        }
+    }
+    .hero-rtn p {
+        &.en-version {
+            line-height: 0.22rem !important;
+            font-size: 0.20rem !important;
+        }
+    }
     .container {
         &.rtn-scheme {
             ul {
@@ -186,8 +224,10 @@
                 }
             }
         }
-        ul.rtn-serve>li {
-            width: 48.5%;
+        ul.rtn-serve {
+            &>li {
+                width: 48.5%;
+            }
         }
         .rtn-scene {
             .media-left,
