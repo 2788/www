@@ -39,14 +39,24 @@
         <div class="<%= col[:class] %>">
           <h4 class=""><%= col[:title] %></h4>
           <p><%= col[:desc] %></p>
-          <ul class="list-inline <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %> <%= col[:title] != '内容审核' ? 'd-none' : '' %>">
-            <li><%= link_to "图片鉴黄", "https://developer.qiniu.com/dora/manual/3701/ai-pulp", target: "_balnk", class: "link-xsex" -%></li>
-            <li><%= link_to "图片鉴暴恐", "https://developer.qiniu.com/dora/manual/3918/terror", target: "_balnk", class: "link-violence" -%></li>
-            <li><%= link_to "政治人物识别", "https://developer.qiniu.com/dora/manual/3922/politician", target: "_balnk", class: "link-face" -%></li>
-          </ul>
-          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %> <%= col[:title] == '内容审核' ? 'd-none' : '' %>">
-            <%= link_to "立即申请", "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
-          </div>
+          <%# 判断立即申请按钮并渲染 %>
+          <% if col[:actions] then %>
+            <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
+              <% col[:actions].each do |action| %>
+                <%= link_to action[:title], "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
+              <% end %>
+            </div>
+          <% end %>
+          <%# 判断文档连接并渲染 %>
+          <% if col[:links] then %>
+            <% col[:links].each do |link| %>
+              <ul class="list-inline <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
+                <% link[:group].each do |item| %>
+                  <li><%= link_to item[:title], item[:target], target: "_balnk", class: item[:class] -%></li>                  
+                <% end %>
+              </ul>
+            <% end %>
+          <% end %>
         </div>
         <div class="col-sm-6 col-video">
           <video loop autoplay poster="<%= col[:poster] %>" src="<%= col[:src] %>"></video>
@@ -104,7 +114,6 @@
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.welcome.dora.feature3.title") %></h2>
     </div>
-
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
         <% I18n.t("views.welcome.dora.feature3.middlebar").each do |linkbar| %>
@@ -118,7 +127,6 @@
               <div class="media-left">
                 <%= image_tag unit[:icon], class: "media-object img-left", alt: unit[:title] %>
               </div>
-
               <div class="media-body">
                 <p><%= unit[:desc] %></p>
               </div>
@@ -181,7 +189,6 @@
               <li><%= link_to "部分 mp4 在网页播放器兼容问题", "https://developer.qiniu.com/dora/kb/2637/some-customers-mp4-problems-in-distributed-web-page" -%></li>
             </ul>
           </div>
-
         </div>
       </div>
     </div>
