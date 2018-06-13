@@ -974,26 +974,73 @@ en:
               desc: Qiniu offers state-of-the-art computer vision services like face detection, facial key features localization, facial features analysis and fast face clustering. They can be widely applied in face beautification, smart cloud albums, new retail, security monitoring, financial identification, and some other scenarios.
               poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
               src: "https://odum9helk.qnssl.com/lhpyip8f4-wQlar37IwI-NcO4ruv"
+              actions:
+                - title: "立即申请"
+              links:
+                - group:
+                  - title: "人脸检测"
+                    target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
+                    class: "link-document"
+                  - title: "1:1人脸比对"
+                    target: "https://developer.qiniu.io/dora/manual/4282/face-sim"
+                    class: "link-document"
+                  - title: "1:N人脸比对"
+                    target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
+                    class: "link-document"
             - title: scene and object recognition
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Qiniu offers more than 360 scene recognition and more than 200 objects recognition, with 90.07% in Top-5 accuracy. They can be applied in objects sorting in smart albums, marketing, object recognition&retrieval, and some other scenarios.
               poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
               src: "https://odum9helk.qnssl.com/FndMXibB1keuiyHTXa9xkNyQ2Prq"
+              actions:
+                - title: "立即申请"
+              links:
             - title: Optical Character Recognition
               class: "col-sm-6 col-padding col-content-middle"
               desc: OCR is a method to process mechanical or electronic conversion of images of typed, handwritten or printed text , including words detection, localization or recognition in natural scenes. It is widely used in automatically recognition ID, invoices, billings, receipts, etc. to reduce the labor cost.
               poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
               src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
+              actions:
+                - title: "立即申请"
+              links:
             - title: Content Regulation
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Illegal content in images and videos can be recognized with high efficiency and a high accuracy of 99.95%. It can replace more than 80% of manual auditing to reduce the labor cost. Moreover, the recognition accuracy increases gradually through machine learning.
               poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
               src: "https://odum9helk.qnssl.com/li4jdu3kRkf3jYAvG5KTXhYDmrgD"
+              actions:
+              links:
+                - group:
+                  - title: "图片鉴黄"
+                    target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
+                    class: "link-document"
+                  - title: "图片鉴暴恐"
+                    target: "https://developer.qiniu.com/dora/manual/3918/terror"
+                    class: "link-document"
+                  - title: "图片政治人物识别"
+                    target: "https://developer.qiniu.com/dora/manual/3922/politician"
+                    class: "link-document"
+                - group:
+                  - title: "图片审核"
+                    target: "https://developer.qiniu.io/dora/manual/4252/image-review"
+                    class: "link-document"
+                  - title: "视频鉴黄"
+                    target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
+                    class: "link-document"
+                  - title: "视频鉴暴恐"
+                    target: "https://developer.qiniu.com/dora/manual/4480/video-terror"
+                    class: "link-document"
+                  - title: "视频政治人物识别"
+                    target: "https://developer.qiniu.com/dora/manual/4481/video-politician"
+                    class: "link-document"
             - title: Object Segmentation
               class: "col-sm-6 col-padding col-content-middle"
               desc: Object Segmentation is capable of recognizing and localizing more than 80 kinds of objects, along with detecting their edges precisely. It can be applied in fields like image matting and AR.
               poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
               src: "https://odum9helk.qnssl.com/Fgw_MuDAseUiqL8gXb16fnlBFj3R"
+              actions:
+                - title: "立即申请"
+              links:
           col2:
             - class: "col-sm-6 col-padding col-content-middle sm-right"
               title1: Image Previewing
@@ -1630,9 +1677,9 @@ en:
       - name: plsv
         label: Short Videos
         desc:
-      # - name: vcs
-      #   label: Videos Cold Storage
-      #   desc:
+      - name: vcs
+        label: Videos Cold Storage
+        desc:
       - name: newmedia
         label: New Media Industry
         desc:
@@ -1725,9 +1772,9 @@ en:
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction
       description: Qiniu Cloud's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
     welcome_vcs:
-      title: 视频冷存储解决方案-七牛云
-      keywords:
-      description:
+      title: 视频冷存储_视频冷存储解决方案-七牛云
+      keywords: 视频冷存储，冷备，冷存储，归档存储，点播存储，高清视频原片，媒体资源库
+      description: 七牛云视频冷存储解决方案是专为综合视频平台打造的PB级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。
     welcome_newmedia:
       title: 广电新媒体解决方案-七牛云
       keywords: 新媒体解决方案，融合媒体解决方案，广电新媒体解决方案，媒体融合服务，媒资管理
@@ -1796,6 +1843,12 @@ en:
       title: About Us-Why Qiniu Cloud
       keywords: Qiniu, Qiniu Cloud, CDN, Storage, Big Data, Live Video, API, AI, Solutions
       description: Qiniu Cloud is a leading enterprise cloud service supplier in China that specializes in research, development, and operation of cloud computing service that focuses on data management. We have launched products for rich media, including object storage, integrated CDN acceleration, container-based computing cloud, big data and AI platform, and one-stop solution to video cloud. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and generate greater business value.
+    welcome_news:
+      title: 新闻动态 - 七牛云
+    welcome_product_news:
+      title: 产品动态 - 七牛云
+    welcome_welfares:
+      title: 活动 - 七牛云
     welcome_case:
       title: 客户案例 - 七牛云
     welcome_atlab:
@@ -1862,6 +1915,7 @@ en:
         - imgpath: case/enterprise/changhong.png
         - imgpath: case/enterprise/sap.png
         - imgpath: case/enterprise/sobey.png
+        - imgpath: case/enterprise/lianxiang.jpg
   cases:
     - groupid: software
       group:
@@ -1872,6 +1926,8 @@ en:
         - imgpath: case/media/hubeiguangdian.png
         - imgpath: case/media/cibn.png
         - imgpath: case/media/guizhouguangdian.png
+        - imgpath: case/media/zhongguojunwang.jpg
+        - imgpath: case/media/renminwang.jpg
     - groupid: traffics
       group:
         - imgpath: case/traffics/mobaidanche.png
@@ -1887,6 +1943,7 @@ en:
         - imgpath: case/im/in.png
         - imgpath: case/im/liehuo.png
         - imgpath: case/im/taqu.png
+        - imgpath: case/im/xiandanjia.png
     - groupid: fashion
       group:
         - imgpath: case/fashion/jumeiyoupin.png
@@ -1913,6 +1970,7 @@ en:
        - imgpath: case/enjoyment/xiaozhuzhibo.png
        - imgpath: case/enjoyment/xindongwangluo.png
        - imgpath: case/enjoyment/xuanpai.png
+       - imgpath: case/enjoyment/jiuxiuzhibo.png
     - groupid: health
       group:
         - imgpath: case/health/gudong.png
@@ -1922,6 +1980,8 @@ en:
         - imgpath: case/education/yangcongshuxue.png
         - imgpath: case/education/yingyuqupeiyin.png
         - imgpath: case/education/yunxuetang.png
+        - imgpath: case/education/xindongfang.jpg
+        - imgpath: case/education/xueersi.jpg
     - groupid: hardware
       group:
         - imgpath: case/hardware/dajiang.png

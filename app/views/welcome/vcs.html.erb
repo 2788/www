@@ -6,8 +6,8 @@
         <div class="col-xs-8">
           <h2><%= I18n.t("views.welcome.vcs.banner.title") -%></h2>
           <p><%= I18n.t("views.welcome.vcs.banner.desc") -%></p>
-          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "立即咨询", "",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+          <div class="actions">
+            <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
           </div>
         </div>
         <div class="col-xs-12 hidden-xs right-mask-vcs">
