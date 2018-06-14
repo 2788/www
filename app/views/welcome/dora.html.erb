@@ -39,7 +39,8 @@
         <div class="<%= col[:class] %>">
           <h4 class=""><%= col[:title] %></h4>
           <p><%= col[:desc] %></p>
-          <%# 判断立即申请按钮并渲染 %>
+          <%# 改为判断形式遍历进行渲染 %>
+          <%# 判断是否存在actions项并渲染 %>
           <% if col[:actions] then %>
             <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
               <% col[:actions].each do |action| %>
@@ -47,7 +48,8 @@
               <% end %>
             </div>
           <% end %>
-          <%# 判断文档连接并渲染 %>
+          <%# 改为判断形式遍历进行渲染 %>
+          <%# 判断是否存在links项并渲染 %>
           <% if col[:links] then %>
             <% col[:links].each do |link| %>
               <ul class="list-inline <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
