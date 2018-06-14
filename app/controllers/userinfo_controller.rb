@@ -11,7 +11,7 @@ class UserinfoController < ActionController::Base
       client_id = Rails.application.secrets.sso[:client_id]
       if sso_host.nil? || client_id.nil? || sso_host.blank? || client_id.blank?
         render json: {
-          "can_use": false, 
+          "can_use": false,
         }
         return
       end
@@ -100,7 +100,7 @@ class UserinfoController < ActionController::Base
          else
            puts res.message
            return nil
-       end
+      end
   end
 
   def get_uinfo(token, ssid)
@@ -128,6 +128,6 @@ class UserinfoController < ActionController::Base
          else
            puts res.message
            return nil
-       end
+      end
   end
 end
