@@ -453,7 +453,7 @@ en:
               desc: "归档与合规需求和数据资产化趋势使得存储规模和成本增加，自建存储的研发、管理成本上升。"
               icon: "vcs/icon-painpoint1.png"
             - title: "painpoint2"
-              desc: "在线视频的访问热度会随着时间变化，而常规方案缺乏有效的生命周期管理方案，无法智能处理冷热数据。"
+              desc: "在线视频的访问热度会随着时间变化，而常规方案缺乏有效生命周期管理方案，无法智能处理冷热数据。"
               icon: "vcs/icon-painpoint2.png"
             - title: "painpoint3"
               desc: "常规冷备存储方案访问性能不足，无法应对突发访问流量，并且在成本控制下灾备能力不足。"
@@ -495,6 +495,7 @@ en:
                 - "七牛云承载了 B 站 50Gpbs 以上的突发流量，保障了 B 站在 CDN 故障的情况下依然可以顺畅访问；"
                 - "同时提供多域名和多 IP 下载避免域名劫持的问题"
               icon: "vcs/icon-bilibili.png"
+              height: "100%"
             - name: "souhu"
               desc:
                 - "七牛云帮助搜狐视频对其全站的数据进行冷备，总量达到数 PB 级；"
@@ -502,6 +503,7 @@ en:
                 - "在保证低成本存储的同时，在华东区域内实现数据访问的高可用；"
                 - "项目稳定运行 1 年多时间，0 故障，数据同步成功率 100%"
               icon: "vcs/icon-souhu.png"
+              height: "30%"
       rtn:
         banner:
           title: "Real-time Video Communication Service"
@@ -981,10 +983,10 @@ en:
                   - title: "人脸检测"
                     target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
                     class: "link-document"
-                  - title: "1:1人脸比对"
+                  - title: "1:1 人脸比对"
                     target: "https://developer.qiniu.io/dora/manual/4282/face-sim"
                     class: "link-document"
-                  - title: "1:N人脸比对"
+                  - title: "1:N 人脸比对"
                     target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
                     class: "link-document"
             - title: scene and object recognition
@@ -1011,6 +1013,9 @@ en:
               actions:
               links:
                 - group:
+                  - title: "图片审核"
+                    target: "https://developer.qiniu.io/dora/manual/4252/image-review"
+                    class: "link-document"
                   - title: "图片鉴黄"
                     target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
                     class: "link-document"
@@ -1021,9 +1026,6 @@ en:
                     target: "https://developer.qiniu.com/dora/manual/3922/politician"
                     class: "link-document"
                 - group:
-                  - title: "图片审核"
-                    target: "https://developer.qiniu.io/dora/manual/4252/image-review"
-                    class: "link-document"
                   - title: "视频鉴黄"
                     target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
                     class: "link-document"
