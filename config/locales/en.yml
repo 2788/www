@@ -1679,9 +1679,9 @@ en:
       - name: plsv
         label: Short Videos
         desc:
-      - name: vcs
-        label: Videos Cold Storage
-        desc:
+      # - name: vcs
+      #   label: Videos Cold Storage
+      #   desc:
       - name: newmedia
         label: New Media Industry
         desc:
