@@ -488,22 +488,24 @@ en:
         case:
           title: "成功案例"
           content:
-            - name: "bilibili"
-              desc:
-                - "七牛云存储将 B 站用户上传的所有高清原片进行了归档存储，帮助 B 站第一家实现了支持用户上传 1080P 原片并直接存储；"
-                - "因为点播与审查的需要，七牛存储了 B 站直播的近 60 天的录播数据，并实现了实时点播；"
-                - "七牛云承载了 B 站 50Gpbs 以上的突发流量，保障了 B 站在 CDN 故障的情况下依然可以顺畅访问；"
-                - "同时提供多域名和多 IP 下载避免域名劫持的问题"
-              icon: "vcs/icon-bilibili.png"
-              height: "100%"
+            # - name: "bilibili"
+            #   desc:
+            #     - "七牛云存储将 B 站用户上传的所有高清原片进行了归档存储，帮助 B 站第一家实现了支持用户上传 1080P 原片并直接存储；"
+            #     - "因为点播与审查的需要，七牛存储了 B 站直播的近 60 天的录播数据，并实现了实时点播；"
+            #     - "七牛云承载了 B 站 50Gpbs 以上的突发流量，保障了 B 站在 CDN 故障的情况下依然可以顺畅访问；"
+            #     - "同时提供多域名和多 IP 下载避免域名劫持的问题"
+            #   icon: "vcs/icon-bilibili.png"
+            #   width: "100%"
             - name: "souhu"
               desc:
                 - "七牛云帮助搜狐视频对其全站的数据进行冷备，总量达到数 PB 级；"
                 - "整体数据迁移流程在 1 个月内完成，并实现了新增数据的实时同步；"
                 - "在保证低成本存储的同时，在华东区域内实现数据访问的高可用；"
-                - "项目稳定运行 1 年多时间，0 故障，数据同步成功率 100%"
+                - "项目稳定运行 1 年多时间，0 故障，数据同步成功率 100%。"
               icon: "vcs/icon-souhu.png"
-              height: "30%"
+              width: "30%"
+        more:
+          - "欢迎联系我们了解更多行业成功案例经验。"
       rtn:
         banner:
           title: "Real-time Video Communication Service"
@@ -1679,9 +1681,9 @@ en:
       - name: plsv
         label: Short Videos
         desc:
-      # - name: vcs
-      #   label: Videos Cold Storage
-      #   desc:
+      - name: vcs
+        label: Videos Cold Storage
+        desc:
       - name: newmedia
         label: New Media Industry
         desc:
