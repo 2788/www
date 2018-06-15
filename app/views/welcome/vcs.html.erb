@@ -128,11 +128,12 @@
       <h2 class="title"><%= I18n.t("views.welcome.vcs.case.title") -%></h2>
     </div>
     <div class="row">
+    <%# 成功案例 %>
       <% I18n.t("views.welcome.vcs.case.content").each do |event| -%>
-        <div class="col-sm-6">
-          <div class="thumbnail">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <div class="thumbnail thumbnail-vcs">
             <div class="case-logo">
-              <%= image_tag event[:icon], alt: event[:name], height: event[:height] -%>
+              <%= image_tag event[:icon], alt: event[:name], width: event[:width] -%>
             </div>
             <div class="caption caption-vcs">
               <% event[:desc].each do |item| -%>
@@ -142,6 +143,14 @@
           </div>
         </div>
       <% end %>
+      <%# 更多 %>
+      <div class="col-sm-12 col-md-12 col-xs-12">
+        <div class="more-vcs">
+          <% I18n.t("views.welcome.vcs.more").each do |event| -%>
+            <p><%= event -%></p>
+          <% end %>
+        </div>
+      </div>
       <div class="col-sm-12 col-md-12 col-xs-12">
         <div class="actions">
           <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-primary m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
