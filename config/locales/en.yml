@@ -503,7 +503,7 @@ en:
                 - "在保证低成本存储的同时，在华东区域内实现数据访问的高可用；"
                 - "项目稳定运行 1 年多时间，0 故障，数据同步成功率 100%。"
               icon: "vcs/icon-souhu.png"
-              width: "30%"
+              width: "20%"
         more:
           - "欢迎联系我们了解更多行业成功案例经验。"
       rtn:
@@ -1681,9 +1681,9 @@ en:
       - name: plsv
         label: Short Videos
         desc:
-      - name: vcs
-        label: Videos Cold Storage
-        desc:
+      # - name: vcs
+      #   label: Videos Cold Storage
+      #   desc:
       - name: newmedia
         label: New Media Industry
         desc:
