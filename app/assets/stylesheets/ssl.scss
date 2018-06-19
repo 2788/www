@@ -1,4 +1,15 @@
-.table.table-ssl > tbody > tr > th, .table.table-ssl > tbody > tr > td, .table.table-ssl > tfoot > tr > th, .table.table-ssl > tfoot > tr > td {
+.hero-ssl {
+  .container {
+    h1 {
+      font-size: 36px;
+    }
+  }
+}
+
+.table.table-ssl>tbody>tr>th,
+.table.table-ssl>tbody>tr>td,
+.table.table-ssl>tfoot>tr>th,
+.table.table-ssl>tfoot>tr>td {
   border-top: 1px solid #fff;
 }
 
@@ -6,25 +17,21 @@
   tr {
     background-color: #f2f2f2;
     color: rgb(51, 51, 51);
-
     &.title {
       th {
         background-color: #00a0de;
         color: #fff;
       }
     }
-
     th {
       font-size: 18px;
       padding: 0.2rem 0.3rem;
       vertical-align: middle;
     }
-
     td {
       font-size: 14px;
       padding: 0.3rem;
     }
-
     .border-right {
       border-right: 1px solid #fff;
     }
@@ -45,7 +52,6 @@
     th {
       padding: 0.2rem;
     }
-
     td {
       padding: 0.3rem 0.2rem;
     }
@@ -58,7 +64,6 @@
       font-size: 14px;
       padding: 0.15rem;
     }
-
     td {
       padding: 0.3rem 0.15rem;
     }
@@ -71,7 +76,6 @@
       font-size: 14px;
       padding: 0.15rem;
     }
-
     td {
       padding: 0.3rem 0.15rem;
     }
