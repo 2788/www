@@ -512,12 +512,12 @@ en:
           desc: "Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast."
           icon: "sdk/img-banner.png"
         action:
-          - title: "Try Now"
-            link: "http://s.qnsdk.com/s/guMCz"
+          - title: "Apply for Beta Version"
+            link: "https://jinshuju.net/f/LSkxxL"
             target: "_blank"
             class: "btn btn-lg btn-default m-r m-b-xs"
-          - title: "Apply for Beta Version"
-            link: "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com"
+          - title: "Try Now"
+            link: "https://demo-rtc.qnsdk.com/"
             target: "_blank"
             class: "btn btn-lg btn-hollow m-b-xs"
         specialty:
