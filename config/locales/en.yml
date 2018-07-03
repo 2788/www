@@ -1728,8 +1728,6 @@ en:
       desc: jiasuhui
     - path: cooperation/client-leancloud-highlight@2x.png
       desc: leancloud
-    - path: cooperation/client-maike-highlight@2x.png
-      desc: maike
     - path: cooperation/client-segmentfault-highlight@2x.png
       desc: segmentfault
     - path: cooperation/client-teambiton-highlight@2x.png
