@@ -1,16 +1,17 @@
 // Place all the styles related to the career controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 //career index fluid-slider-wrapper
-.navbar-default .navbar-brand span.navbar-brand-text{
+.navbar-default .navbar-brand span.navbar-brand-text {
   margin-top: 5px;
 }
-.hero-career .banner-desc{
+
+.hero-career .banner-desc {
   padding-top: 60px;
   padding-bottom: 60px;
 }
-.fluid-slider-wrapper{
+
+.fluid-slider-wrapper {
   padding: 1.68rem 0 0;
 }
 
@@ -55,70 +56,79 @@
 }
 
 //career index fluid-word-slider
-.fluid-word-slider{
+.fluid-word-slider {
   margin-top: 480px;
 }
 
-.conveyor.fluid-wordbutton-slider .slick-slide{
+.conveyor.fluid-wordbutton-slider .slick-slide {
   text-align: left;
 }
 
-.fluid-slider-img-wraaper{
+.fluid-slider-img-wraaper {
   padding: 0 0.2rem;
 }
 
-.Btn-prev, .Btn-next {
+.Btn-prev,
+.Btn-next {
   background: #6994B9;
 }
 
-.grid-container{
+.grid-container {
   transition: all 0.3s;
   position: relative;
-  min-height:100px;
+  min-height: 100px;
   margin-bottom: 10px;
   cursor: pointer;
-  &:hover{
+  &:hover {
     transition: all 0.3s;
     -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
     -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
     box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-    .btn-icon{
+    .btn-icon {
       background-image: image-url("icon-player.png");
     }
   }
-  .btn-icon{
+  .btn-icon {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     height: 100%;
     width: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100px 100px;
   }
-  .btn-icon-visited{
+  .btn-icon-visited {
     background-image: image-url("btn-play-highlight.png");
   }
 }
+
 .fluid-media-slider-wrapper {
   max-width: 1440px;
   text-align: center;
   margin: 0 auto;
 }
-.fluid-media-slider{
+
+.fluid-media-slider {
   padding-top: 70px;
-  .slick-dots li button::before{
+  .slick-dots li button::before {
     font-size: 0.40rem;
     content: "-";
     color: #B9B9B9;
   }
-  .slick-dots li.slick-active button::before{ color: #3498db; }
+  .slick-dots li.slick-active button::before {
+    color: #3498db;
+  }
 }
-.banners-slider .slick-dots.banners-arrow{ bottom: 0.48rem; }
-.banners-actions{
-    position: relative;
-  .btn-absolute{
+
+.banners-slider .slick-dots.banners-arrow {
+  bottom: 0.48rem;
+}
+
+.banners-actions {
+  position: relative;
+  .btn-absolute {
     position: absolute;
     top: -1.70rem;
     left: 1.00rem;
@@ -209,7 +219,8 @@ video {
     }
     .table-responsive {
       border: none;
-      .table>tbody>tr>th, .table>tbody>tr>td {
+      .table>tbody>tr>th,
+      .table>tbody>tr>td {
         border-top: 1px solid #ddd;
       }
     }
@@ -219,7 +230,9 @@ video {
     text-align: center;
     border-bottom: none;
   }
-  .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  .nav-tabs>li.active>a,
+  .nav-tabs>li.active>a:focus,
+  .nav-tabs>li.active>a:hover {
     color: $brand-primary;
     cursor: default;
     background-color: #fff;
@@ -254,23 +267,22 @@ video {
   .nav>li>img {
     margin-bottom: 15px;
   }
-  .nav.nav-tabs > li::before {
+  .nav.nav-tabs>li::before {
     height: 0;
   }
   .m-r-1 {
     display: inline-block;
     margin-right: 5px !important;
   }
-
   .table td {
     line-height: 28px;
   }
   td {
-    .title{
+    .title {
       font-size: 14px;
       display: inline-block;
       width: 100%;
-      color: rgb(51,51,51);
+      color: rgb(51, 51, 51);
       &:hover {
         cursor: pointer;
         color: #28aedf;
@@ -294,53 +306,45 @@ video {
   &.features-position-bg {
     background-color: #f2f2f2;
   }
-
   &.features-last {
     margin-bottom: 152px;
   }
-
   .position-title {
     padding-top: 51px;
   }
-
   .desc {
     font-size: 18px;
-    color: rgb(136,136,136);
+    color: rgb(136, 136, 136);
   }
-
   h2.title {
     font-size: 36px;
-    color: rgb(51,51,51);
+    color: rgb(51, 51, 51);
     margin: 20px 0;
   }
-
   .tags {
     span {
       display: inline-block;
       border-radius: 5px;
       font-size: 14px;
-      color: rgb(173,174,179);
+      color: rgb(173, 174, 179);
       margin-right: 15px;
       padding: 6px 12px;
       background-color: #fff;
     }
   }
-
   .action a.btn.btn-primary {
     margin-top: 10px;
     color: #fff;
     background-color: #00A0DE;
     border-color: #008ec5;
   }
-
   .position-details {
-    color: rgb(136,136,136);
+    color: rgb(136, 136, 136);
     margin-top: -30px;
-    .title{
+    .title {
       font-size: 18px;
       color: rgb(51, 51, 51);
     }
-
     .position-unit {
       margin-bottom: 20px;
     }
@@ -354,7 +358,7 @@ video {
     li {
       font-size: 14px;
       line-height: 28px;
-      color:rgb(94,97,102);
+      color: rgb(94, 97, 102);
       margin-bottom: 5px;
     }
   }
@@ -365,20 +369,21 @@ video {
 
 //career avater
 .features-career .media {
- .modal-body{
-  padding-left:50px;
-  padding-right: 50px;
- }
- img {
-  margin: auto;
-  max-height: 100px;
-  transition: opacity .1s;
- }
+  .modal-body {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  img {
+    margin: auto;
+    max-height: 100px;
+    transition: opacity .1s;
+  }
 }
+
 #interview,
 #eventParty-short,
-#eventParty-long{
-  .modal-dialog.modal-dialog-3top{
+#eventParty-long {
+  .modal-dialog.modal-dialog-3top {
     margin-top: 180px;
   }
 }
@@ -388,19 +393,16 @@ video {
     h4.media-heading {
       min-height: 36px;
     }
-
     .nav.nav-tabs>li {
       margin-left: 0;
       margin-right: 0;
       img {
         display: none;
       }
-
       a {
         padding: 5px;
       }
     }
-
     .positionTab {
       td {
         .space {
@@ -430,7 +432,6 @@ video {
         padding: 6px 10px;
       }
     }
-
     .positionTab {
       td {
         .space {
@@ -449,7 +450,6 @@ video {
     .desc {
       font-size: 14px;
     }
-
     h2.title {
       font-size: 18px;
       margin: 15px 0;

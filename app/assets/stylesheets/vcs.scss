@@ -1,139 +1,138 @@
 .hero-vcs {
-    .left-mask-vcs {
-        z-index: 1;
-    }
-    .right-mask-vcs {
-        z-index: 0;
-    }
+  .left-mask-vcs {
+    z-index: 1;
+  }
+  .right-mask-vcs {
+    z-index: 0;
+  }
 }
 
 .nav-vcs {
-    .tabs {
-        margin-bottom: 0.80rem;
-        .nav {
-            border-bottom: none;
-            .right-border {
-                border-right: 1px solid #e5e5e5;
-            }
-        }
+  .tabs {
+    margin-bottom: 0.80rem;
+    .nav {
+      border-bottom: none;
+      .right-border {
+        border-right: 1px solid #e5e5e5;
+      }
     }
+  }
 }
 
 .specialty-vcs {
-    .row-vcs {
-        margin: 0;
-        .item-vcs {
-            text-align: center;
-            img {
-                width: 80px;
-                height: 80px;
-                margin-top: 15px;
-            }
-            &:hover {
-                background-color: #F7F8F9;
-            }
-        }
+  .row-vcs {
+    margin: 0;
+    .item-vcs {
+      text-align: center;
+      img {
+        width: 80px;
+        height: 80px;
+        margin-top: 15px;
+      }
+      &:hover {
+        background-color: #f8f8f8;
+      }
     }
+  }
 }
 
 .pain-point-vcs {
-    padding-top: 0;
-    .thumbnail {
-        .caption-vcs {
-            padding-top: 0.20rem;
-        }
+  padding-top: 0;
+  .thumbnail {
+    .caption-vcs {
+      padding-top: 0.20rem;
     }
+  }
 }
 
 .advantages-vcs {
-    background-color: #F7F8F9;
-    .media {
-        .media-left {
-            vertical-align: middle;
-        }
+  .media {
+    .media-left {
+      vertical-align: middle;
     }
+  }
 }
 
 .scenarios-vcs {
-    .container {
-        border-bottom: 2px solid #F7F8F9;
-        .row {
-            margin-bottom: 1.00rem;
-        }
+  .container {
+    border-bottom: 2px solid #f8f8f8;
+    .row {
+      margin-bottom: 1.00rem;
     }
-    .thumbnail {
-        min-height: 0;
-        margin-bottom: 0.10rem;
-        background-color: #F7F8F9;
-        border-radius: 0.10rem;
-        img {
-            margin-top: 0.20rem;
-        }
-        .caption-vcs {
-            text-align: center;
-        }
+  }
+  .thumbnail {
+    min-height: 0;
+    margin-bottom: 0.10rem;
+    background-color: #f8f8f8;
+    border-radius: 0.10rem;
+    img {
+      margin-top: 0.20rem;
     }
+    .caption-vcs {
+      text-align: center;
+    }
+  }
 }
 
 .cases-vcs {
-    .thumbnail {
-        &.thumbnail-vcs {
-            width: 60%;
-            position: relative;
-            left: 20%;
-        }
-        .case-logo {
-            width: 100%;
-            text-align: center;
-        }
-        .caption-vcs {
-            margin-top: 0.30rem;
-            padding: 0.40rem;
-            background-color: #F7F8F9;
-            border-radius: 0.10rem;
-            overflow: hidden;
-            p {
-                margin: 0 0 20px;
-            }
-        }
+  .thumbnail {
+    &.thumbnail-vcs {
+      width: 60%;
+      position: relative;
+      left: 20%;
     }
-    .more-vcs {
-        width: 60%;
-        position: relative;
-        left: 20%;
-        margin-top: 0.40rem;
-        padding: 0.20rem;
-        background-color: #F7F8F9;
-        border-radius: 0.10rem;
-        overflow: hidden;
-        text-align: center;
-        p {
-            margin: 0;
-        }
+    .case-logo {
+      width: 100%;
+      text-align: center;
     }
-    .actions {
-        margin-top: 0.40rem;
-        text-align: center;
+    .caption-vcs {
+      margin-top: 0.30rem;
+      padding: 0.40rem;
+      background-color: #f8f8f8;
+      border-radius: 0.10rem;
+      overflow: hidden;
+      p {
+        margin: 0 0 20px;
+      }
     }
+  }
+  .more-vcs {
+    width: 60%;
+    position: relative;
+    left: 20%;
+    margin-top: 0.40rem;
+    padding: 0.20rem;
+    background-color: #f8f8f8;
+    border-radius: 0.10rem;
+    overflow: hidden;
+    text-align: center;
+    p {
+      margin: 0;
+    }
+  }
+  .actions {
+    margin-top: 0.40rem;
+    text-align: center;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .hero-vcs {
-        .middle-container {
-            .right-mask-vcs {
-                top: 0.12rem !important;
-                right: -1.50rem !important;
-            }
-        }
+  .hero-vcs {
+    .middle-container {
+      .right-mask-vcs {
+        top: 0.12rem !important;
+        right: -1.50rem !important;
+      }
     }
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-    .hero-vcs {
-        .middle-container {
-            .right-mask-vcs {
-                top: -0.60rem !important;
-            }
-        }
+  .hero-vcs {
+    .middle-container {
+      .right-mask-vcs {
+        top: -0.60rem !important;
+      }
     }
+  }
 }

@@ -1,0 +1,182 @@
+<%# banner %>
+<div class="jumbotron hero intlog-hero">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-sm-8 col-xs-10 col-left">
+          <h1><%= I18n.t("views.welcome.intlog.title") -%></h1>
+          <p><%= I18n.t("views.welcome.intlog.desc") -%></p>
+          <div class="actions">
+            <% I18n.t("views.welcome.intlog.actions").each do |action| -%>
+              <%= link_to action[:title], action[:link], class: action[:class], target: action[:target] -%>
+            <% end -%>
+          </div>
+          <p>免费额度：新增日志数据 1GB/月，存量日志数据 1GB/月，日志仓库 31 个*天/月，API调用次数 100万次/月，
+            <%= link_to "了解详细", "https://developer.qiniu.com/insight/manual/4676/free-allowances", class: "know-more", target: "_blank", title: "了解详情" -%>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# nav %>
+<div class="intlog-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.welcome.intlog.navs").each do |nav| -%>
+          <li class="<%= nav[:class] -%>"><a href="<%= nav[:href] -%>"><%= nav[:title] -%></a></li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# panoramic tab %>
+<div class="features tab-content-panoramic">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.intlog.panoramic.title") -%></h2>
+    </div>
+    <div class="text-center">
+      <%= image_tag I18n.t("views.welcome.intlog.panoramic.image"), width:"80%" -%>
+    </div>
+  </div>
+</div>
+
+<%# advantage tab %>
+<div class="features features-less features-cases intlog-advantage tab-content-advantage">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.intlog.advantage.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.intlog.advantage.cols").each do |col| -%>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="thumbnail">
+            <div class="caption">
+              <h4><%= col[:title] -%></h4>
+              <p class="advantage-desc"><%= col[:desc] -%></p>
+              <p class="advantage-more">了解更多<%= image_tag "arrow-right-circle.png", alt: "", width: 14 %></p>
+              <p class="more-link"><%= link_to col[:more], col[:link], target: "_blank" -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# application tab %>
+<div class="features intlog-application tab-content-application">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.intlog.application.title") -%></h2>
+    </div>
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+        <% I18n.t("views.welcome.intlog.application.tabs").each do |tab| -%>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.welcome.intlog.application.sections").each do |sec| -%>
+          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+            <%# <div class="media"> %>
+              <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                  <%= content_tag :div, image_tag(sec[:image], alt: sec[:title]), class: "col-left" -%>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                  <div class="col-right">
+                    <h3><%= sec[:title] -%></h3>
+                    <h5><%= sec[:subtitle] -%></h5>
+                    <p class="desc"><%= sec[:desc] -%></p>
+                    <h5><%= sec[:worth] -%></h5>
+                    <% sec[:list].each do |item| -%>
+                        <p><%= item[:title] -%></p>
+                        <p><%= item[:desc] -%></p>
+                    <% end -%>
+                  </div>
+                </div>
+              </div>
+            <%# </div> %>
+          </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# solution tab %>
+<div class="features features-less features-cases intlog-solution tab-content-solution">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.intlog.solution.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.intlog.solution.items").each do |item| -%>
+        <div class="col-sm-2 col-xs-4">
+          <%= image_tag item[:image], width: "80%" -%>
+          <p><%= item[:title] -%></p>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# client tab %>
+<div class="features features-less tab-content-client">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.intlog.client.title") -%></h2>
+    </div>
+    <div class="row">
+      <div id="cases-slider" class="conveyor slick-slider draggable">
+        <% I18n.t("views.welcome.intlog.client.list").each do |item| -%>
+          <div><%= image_tag item[:image], alt: item[:title], title: item[:title], class: "case" -%></div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# product tab %>
+<div class="features features-less features-cases tab-content-product <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h2 class="title">产品相关</h2>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-5 col-xs-12">
+            <h4><%= I18n.t("views.welcome.intlog.product.start.title") -%></h4>
+            <ul class="links-list">
+              <% I18n.t("views.welcome.intlog.product.start.links").each do |item| -%>
+                <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+              <% end -%>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <h4><%= I18n.t("views.welcome.intlog.product.document.title") -%></h4>
+            <ul class="links-list">
+              <% I18n.t("views.welcome.intlog.product.document.links").each do |item| -%>
+                <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+              <% end -%>
+            </ul>
+          </div>
+          <div class="col-sm-3 col-xs-12">
+            <h4><%= I18n.t("views.welcome.intlog.product.tool.title") -%></h4>
+            <ul class="links-list">
+              <% I18n.t("views.welcome.intlog.product.tool.links").each do |item| -%>
+                <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+              <% end -%>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
