@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get '/products/sdk',            to: 'welcome#sdk'
     get '/products/rtn',            to: 'welcome#rtn'
     get '/products/pandora',        to: 'welcome#pandora'
+    get '/products/intlog',         to: 'welcome#intlog'
     get '/products/fusion',         to: 'welcome#fusion'
     get '/products/dora',           to: 'welcome#dora'
     get '/products/kirk',           to: 'welcome#kirk'
