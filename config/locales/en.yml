@@ -1038,7 +1038,7 @@ en:
               image: "insight/application-data-center.png"
               title: "数据中心监控"
               subtitle: "场景描述"
-              desc: "针对本地 IDC、单一或多个公有云的复杂 IT 环境，搭建稳定高效的监控系统，实现跨平台的 IT 资源监控、安全审计和成本管理"
+              desc: "针对本地 IDC、单一或多个公有云的复杂 IT 环境，搭建稳定高效的监控系统，实现跨平台的 IT 资源监控、安全审计和成本管理。"
               worth: "业务价值"
               list:
                 - title: "实时监控："
@@ -1052,7 +1052,7 @@ en:
               image: "insight/application-app-quality.png"
               title: "应用质量管理"
               subtitle: "场景描述"
-              desc: "基于应用运行过程中产生的大量日志，实时感知质量趋势，及时全面的对应用质量进行追踪和优化，管理终端用户体验"
+              desc: "基于应用运行过程中产生的大量日志，实时感知质量趋势，及时全面的对应用质量进行追踪和优化，管理终端用户体验。"
               worth: "业务价值"
               list:
                 - title: "性能追踪："
@@ -1066,7 +1066,7 @@ en:
               image: "insight/application-unified-log.png"
               title: "统一日志管理"
               subtitle: "场景描述"
-              desc: "作为统一的日志中心，集中管理来自多个数据源的日志。帮助用户进行高效检索与分析，更快定位问题，持续挖掘数据价值"
+              desc: "作为统一的日志中心，集中管理来自多个数据源的日志。帮助用户进行高效检索与分析，更快定位问题，持续挖掘数据价值。"
               worth: "业务价值"
               list:
                 - title: "实时分析："
@@ -1080,7 +1080,7 @@ en:
               image: "insight/application-tings-data.png"
               title: "物联网数据监控"
               subtitle: "场景描述"
-              desc: "对物联网设备产生的数据进行高效的收集与计算，快速进行数据可视化展示与告警配置，实现海量物联网设备的生命周期管理"
+              desc: "对物联网设备产生的数据进行高效的收集与计算，快速进行数据可视化展示与告警配置，实现海量物联网设备的生命周期管理。"
               worth: "业务价值"
               list:
                 - title: "实时感知："
