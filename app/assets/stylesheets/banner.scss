@@ -312,8 +312,8 @@
       }
     }
   }
-  &.hero-intlog {
-    background-image: image-url("banner/banner-intlog.jpg");
+  &.hero-insight {
+    background-image: image-url("banner/banner-insight.jpg");
     .middle-container {
       top: 40%;
       .banner-desc {
@@ -463,7 +463,7 @@
 }
 
 @media (max-width: 510px) {
-  .jumbotron.hero.hero-intlog .middle-container .banner-desc {
+  .jumbotron.hero.hero-insight .middle-container .banner-desc {
     h1 {
       font-size: 0.40rem;
     }
