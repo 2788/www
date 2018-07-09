@@ -1199,7 +1199,7 @@ en:
                 link: "https://developer.qiniu.io/insight/sdk/4645/java-sdk"
                 target: "_blank"
               - title: "REST API 详解"
-                link: "https://developer.qiniu.io/insight/api/4615/rest-api"
+                link: "https://developer.qiniu.io/insight/api/4747/workflow-api"
                 target: "_blank"
       dora:
         title: "Intelligent Multimedia APIs（Dora）"
