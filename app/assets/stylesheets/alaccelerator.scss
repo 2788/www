@@ -1,4 +1,4 @@
-.alaccelerator-price{
+.alaccelerator-price {
   text-align: center;
   .intro {
     padding: 0 30px;
@@ -26,7 +26,7 @@
 }
 
 .features-alaccelerator {
-  .thumbnail .alaccelerator-service{
+  .thumbnail .alaccelerator-service {
     border: 0.01rem solid #eeeeee;
     padding: 0;
     min-height: 367px;
@@ -39,37 +39,40 @@
         font-size: 17px;
       }
     }
-    .action{
+    .action {
       padding: 0 15px;
       margin-bottom: 15px;
       text-align: center;
-      a{
+      a {
         display: inline-block;
         margin: 0 10px;
       }
     }
   }
 }
+
 .features.alaccelerator-bg {
   background-image: image-url("alaccelerator/price.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-.features .intro .title.light-color{
+
+.features .intro .title.light-color {
   color: #fff;
 }
+
 .features.features-alaccelerator {
   .price-box {
     padding: 0;
     margin: 0 0 15px;
     background-color: #fff;
     transition: all 0.3s;
-    &:hover{
+    &:hover {
       cursor: pointer;
     }
-    &.active{
+    &.active {
       transition: all 0.3s;
-      transform: scale(1.02,1.02);
+      transform: scale(1.02, 1.02);
       .price-title {
         background-image: image-url("alaccelerator/bg-price.jpg");
         background-repeat: no-repeat;
@@ -82,19 +85,19 @@
       background-color: #F7F8F9;
       border: none;
       text-align: center;
-      color: rgb(0,160,222);
+      color: rgb(0, 160, 222);
       .num {
         font-size: 35px;
       }
-      .tail{
+      .tail {
         font-size: 14px;
       }
     }
     .price-info {
       text-align: center;
-      color: rgb(47,48,51);
+      color: rgb(47, 48, 51);
       padding: 0 15px;
-      .begin{
+      .begin {
         padding: 15px 0;
         font-size: 18px;
         line-height: 36px;
@@ -138,7 +141,7 @@ ul.list-style {
 
 @media (max-width: 767px) {
   .features.features-alaccelerator {
-    .thumbnail .alaccelerator-service{
+    .thumbnail .alaccelerator-service {
       min-height: auto;
       .caption {
         min-height: auto;
@@ -147,10 +150,9 @@ ul.list-style {
   }
 }
 
-
 @media (min-width: 768px) and (max-width: 991px) {
   .features.features-alaccelerator {
-    .thumbnail .alaccelerator-service{
+    .thumbnail .alaccelerator-service {
       min-height: auto;
       .caption {
         min-height: 228px;
@@ -161,7 +163,7 @@ ul.list-style {
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .features.features-alaccelerator {
-    .thumbnail .alaccelerator-service{
+    .thumbnail .alaccelerator-service {
       min-height: auto;
       .caption {
         min-height: 200px;
