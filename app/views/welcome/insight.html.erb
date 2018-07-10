@@ -58,7 +58,10 @@
             <div class="caption">
               <h4><%= col[:title] -%></h4>
               <p class="advantage-desc"><%= col[:desc] -%></p>
-              <p class="advantage-more">了解更多<%= image_tag "arrow-right-circle.png", alt: "", width: 14 %></p>
+              <p class="advantage-more">
+                <%= link_to "了解更多", col[:link], target: "_blank" -%>
+                <%= image_tag "arrow-right-circle.png", alt: "", width: 14 %>
+              </p>
               <p class="more-link"><%= link_to col[:more], col[:link], target: "_blank" -%></p>
             </div>
           </div>
