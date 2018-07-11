@@ -1,72 +1,100 @@
-.icon{
+.icon {
   padding-left: 24px;
   padding-top: 0.02rem;
   padding-bottom: 0.02rem;
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: 0 2px;
-
   -webkit-background-size: 20px 20px;
   -moz-background-size: 20px 20px;
   -o-background-size: 20px 20px;
   background-size: 20px 20px;
   background-repeat: no-repeat;
-
   transition: background-image .3s;
 }
 
 // 对象存储
-.icon-storage{ background-image: image-url("icon-storage@2x.png");
-  &:hover{ background-image: image-url("icon-storage-highlight@2x.png"); }
+.icon-storage {
+  background-image: image-url("icon-storage@2x.png");
+  &:hover {
+    background-image: image-url("icon-storage-highlight@2x.png");
+  }
 }
 
 // 时序数据库
-.icon-databass{ background-image: image-url("icon-databass@2x.png");
-  &:hover{ background-image: image-url("icon-databass-highlight@2x.png"); }
+.icon-databass {
+  background-image: image-url("icon-databass@2x.png");
+  &:hover {
+    background-image: image-url("icon-databass-highlight@2x.png");
+  }
 }
 
 // 机器学习
-.icon-machine-learning{ background-image: image-url("icon-machine-learning@2x.png");
-  &:hover{ background-image: image-url("icon-machine-learning-highlight@2x.png"); }
+.icon-machine-learning {
+  background-image: image-url("icon-machine-learning@2x.png");
+  &:hover {
+    background-image: image-url("icon-machine-learning-highlight@2x.png");
+  }
 }
 
 // XSpark
-.icon-xspark{ background-image: image-url("icon-xspark@2x.png");
-  &:hover{ background-image: image-url("icon-xspark-highlight@2x.png"); }
+.icon-xspark {
+  background-image: image-url("icon-xspark@2x.png");
+  &:hover {
+    background-image: image-url("icon-xspark-highlight@2x.png");
+  }
 }
 
 // 大数据平台
-.icon-bigdata{ background-image: image-url("icon-bigdata@2x.png");
-  &:hover{ background-image: image-url("icon-bigdata-highlight@2x.png"); }
+.icon-bigdata {
+  background-image: image-url("icon-bigdata@2x.png");
+  &:hover {
+    background-image: image-url("icon-bigdata-highlight@2x.png");
+  }
 }
 
 // 融合dora
-.icon-dora{ background-image: image-url("icon-dora@2x.png");
-  &:hover{ background-image: image-url("icon-dora-highlight@2x.png"); }
+.icon-dora {
+  background-image: image-url("icon-dora@2x.png");
+  &:hover {
+    background-image: image-url("icon-dora-highlight@2x.png");
+  }
 }
 
 // 智能媒体云
-.icon-media{ background-image: image-url("icon-media@2x.png");
-  &:hover{ background-image: image-url("icon-media-highlight@2x.png"); }
+.icon-media {
+  background-image: image-url("icon-media@2x.png");
+  &:hover {
+    background-image: image-url("icon-media-highlight@2x.png");
+  }
 }
 
 // 容器计算平台
-.icon-container{ background-image: image-url("icon-container@2x.png");
-  &:hover{ background-image: image-url("icon-container-highlight@2x.png"); }
+.icon-container {
+  background-image: image-url("icon-container@2x.png");
+  &:hover {
+    background-image: image-url("icon-container-highlight@2x.png");
+  }
 }
 
 // 点播云
-.icon-streaming{ background-image: image-url("icon-streaming@2x.png");
-  &:hover{ background-image: image-url("icon-streaming-highlight@2x.png"); }
+.icon-streaming {
+  background-image: image-url("icon-streaming@2x.png");
+  &:hover {
+    background-image: image-url("icon-streaming-highlight@2x.png");
+  }
 }
 
 // 直播云
-.icon-video{ background-image: image-url("icon-video@2x.png");
-  &:hover{ background-image: image-url("icon-video-highlight@2x.png"); }
+.icon-video {
+  background-image: image-url("icon-video@2x.png");
+  &:hover {
+    background-image: image-url("icon-video-highlight@2x.png");
+  }
 }
 
 // 备案图标
-.icon-aq{
+.icon-aq {
   background-image: image-url('aq-icon.png');
   padding-left: 18px;
   background-size: 16px 16px;
