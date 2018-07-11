@@ -3,7 +3,6 @@
     <div class="img-wrapper">
       <%= image_tag "niuday/banner-wenzi.png", class: "text" %>
       <h4 class="text-center p-sm">2018 年 5 月 12 日 · 西安市 高新区沣惠南路22号希尔顿酒店</h4>
-      <%= link_to "立即报名", "http://www.huodongxing.com/event/5437700012000", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
     </div>
   </div>
 </div>
@@ -14,14 +13,59 @@
   </div>
 </div>
 
+<div class="features features-niuday features-tech">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">精彩回顾</h2>
+    </div>
+    <div class="row tech-row">
+     <% I18n.t("niudays.xian.video").each do |event| %>
+        <div class="col-sm-6 col-md-4 tech-col">
+          <div class="infobox">
+            <div class="case grid-container" data-src="<%= event[:link] -%>">
+              <a class="btn-icon"></a>
+              <%= image_tag "niuday/niuday-kv-xian.jpg" -%>
+            </div>
+            <div class="lecturer">
+              <div class="lecturer-box">
+                <div class="img-box">
+                  <%= image_tag event[:avatar], class: "lecturer-photo", alt: event[:speaker], width: 50 %>
+                </div>
+                <div class="lecturer-info-box">
+                  <div class="lecturer-tail">
+                    <h4 class="lecturer-name color-light"><%= event[:speaker] -%></h4>
+                    <h5 class="lecturer-job color-light"><%= event[:title] -%></h5>
+                  </div>
+                  <div class="short-line color-light"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="video-play-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <video src="" controls="controls" id="edu-video">
+            your browser does not support the video tag
+          </video>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
+
 <div class="features features-niuday">
   <div class="container">
     <div class="intro">
       <h2 class="title border-y">大会嘉宾</h2>
     </div>
-
     <div class="row">
-
       <% I18n.t("niudays.xian.guest").each do |unit| %>
         <div class="five-sm-1 col-xs-6">
           <div class="guest">
@@ -31,7 +75,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -42,7 +85,6 @@
       <h2 class="title border-y">大会议程</h2>
       <p class="time">13:30 - 18:00</p>
     </div>
-
     <div class="table-responsive">
       <table class="table table-bordered table-niuday-meeting">
         <thead>
@@ -116,7 +158,6 @@
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
 
@@ -125,9 +166,7 @@
     <div class="intro">
       <h2 class="title border-y">合作媒体</h2>
     </div>
-
     <div class="row">
-
       <% I18n.t("niudays.xian.medias").each do |unit| %>
         <div class="seven-sm-1 col-xs-6">
           <div class="img-wrapper blue-shadow">
@@ -135,7 +174,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -145,9 +183,7 @@
     <div class="intro">
       <h2 class="title border-y">合作伙伴</h2>
     </div>
-
     <div class="row">
-
       <% I18n.t("niudays.xian.partners").each do |unit| %>
         <div class="seven-sm-1 col-xs-6">
           <div class="img-wrapper blue-shadow">
@@ -155,7 +191,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -164,14 +199,12 @@
   <div class="intro">
     <h2 class="title border-y">参会指南</h2>
   </div>
-
   <div class="desc-wrapper">
     <div class="content">
       <p class="desc text-left">1.报名审核成功后，主办方会统一短信通知会议地址及详情。</p>
       <p class="desc text-left">2.会议签到凭证为成功报名后收到的二维码，一人一票。</p>
       <p class="desc text-left">3.线上报名截止日为4月11号0时，不接受现场报名。</p>
       <div class="niudays-actions">
-        <%#= link_to '立即报名', 'http://www.huodongxing.com/event/1433079159200?view=widget3', target:"_blank", class: 'btn btn-lg btn-primary btn-niudays m-sm' %>
       </div>
     </div>
   </div>
