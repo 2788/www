@@ -3,7 +3,6 @@
     <div class="img-wrapper">
       <%= image_tag "niuday/banner-wenzi.png", class: "text" %>
       <h4 class="text-center p-sm">2018 年 6 月 23 日 · 深圳市 中洲圣廷苑酒店</h4>
-      <%= link_to "立即报名", "http://www.huodongxing.com/event/5442324112200?qd=guanwang", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
     </div>
   </div>
 </div>
@@ -12,6 +11,53 @@
   <div class="container">
     <p class="text">随着人工智能在我国移动互联网、智能家居、智能安防、智慧教育等等领域的发展，我国人工智能产业持续高速成长。从2014年起，中国人工智能产业的创业潮就开始兴起，直至2018年，机器学习、深度学习等算法能力的增强将促进计算机视觉等技术不断突破。人工智能在2018年将面临爆发式的商业化着陆，在这个智能时代，七牛云NIUDAY小牛汇共享日活动围绕自身产品重点产品线将在全国10多个城市围绕行业、技术和创新展开全方位的探讨和分享，一起用AI技术赋能未来，“智”造梦想。</p>
   </div>
+</div>
+
+<div class="features features-niuday features-tech">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">精彩回顾</h2>
+    </div>
+    <div class="row tech-row">
+     <% I18n.t("niudays.shenzhen.video").each do |event| %>
+        <div class="col-sm-6 col-md-4 tech-col">
+          <div class="infobox">
+            <div class="case grid-container" data-src="<%= event[:link] -%>">
+              <a class="btn-icon"></a>
+              <%= image_tag "niuday/niuday-kv-shenzhen.jpg" -%>
+            </div>
+            <div class="lecturer">
+              <div class="lecturer-box">
+                <div class="img-box">
+                  <%= image_tag event[:avatar], class: "lecturer-photo", alt: event[:speaker], width: 50 %>
+                </div>
+                <div class="lecturer-info-box">
+                  <div class="lecturer-tail">
+                    <h4 class="lecturer-name color-light"><%= event[:speaker] -%></h4>
+                    <h5 class="lecturer-job color-light"><%= event[:title] -%></h5>
+                  </div>
+                  <div class="short-line color-light"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="video-play-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <video src="" controls="controls" id="edu-video">
+            your browser does not support the video tag
+          </video>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
 
 <div class="features features-niuday">

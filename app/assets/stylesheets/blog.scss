@@ -2,14 +2,12 @@
   padding-bottom: 2.5rem;
   position: relative;
   color: rgb(47, 48, 51);
-
   .blog-content {
     width: 100%;
     overflow: hidden;
     padding-top: 0.35rem;
     padding-bottom: 0.35rem;
     border-bottom: 1px solid #e5e5e5;
-
     a {
       color: rgb(161, 161, 161);
       &:hover {
@@ -57,8 +55,7 @@
   .paginate-wrapper {
     padding-top: 0.45rem;
     padding-bottom: 0.45rem;
-  }
-  // right-sidebar
+  } // right-sidebar
   .sidebar {
     padding-top: 0.45rem;
     padding-bottom: 0.68rem;
@@ -180,8 +177,9 @@
   .tapbar {
     border-bottom: 1px solid #e2e2e2;
     padding: 60px 0 10px;
+    word-break: keep-all;
     a {
-      padding-right: 40px;
+      padding-right: 30px;
     }
   }
   .blog-content {
@@ -195,7 +193,6 @@
     .entry-meta>.entry-meta-unit {
       margin-right: 10px;
     }
-
     .blog-imgBox {
       overflow: hidden;
       display: flex;
@@ -215,19 +212,16 @@
   .middle-container {
     width: 950px !important;
     max-width: 100%;
-
     h3 {
       line-height: .56rem;
       font-weight: 900 !important;
       font-size: .44rem !important;
       margin-bottom: .30rem;
     }
-
     h4 {
       font-size: .34rem !important;
       margin-bottom: .40rem;
     }
-
     .right-mask-banner {
       max-width: 4.1rem;
       text-align: right
@@ -250,7 +244,6 @@
     }
     .blog-content {
       padding: 20px 0;
-
       .blog-imgBox {
         margin-top: 10px;
       }
@@ -272,7 +265,7 @@
       padding: 20px 0;
       a {
         display: inline-block;
-        width: 30%;
+        width: 25%;
         padding: 0;
         margin-top: 10px;
       }

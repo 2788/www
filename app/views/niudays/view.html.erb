@@ -21,14 +21,13 @@
     <div class="intro">
       <h2 class="title border-y">精彩回顾</h2>
     </div>
-
     <div class="row tech-row">
-     <% I18n.t("niudays.hangzhou").each do |event| %>
+     <% I18n.t("niudays.hangzhou.video").each do |event| %>
         <div class="col-sm-6 col-md-4 tech-col">
           <div class="infobox">
             <div class="case grid-container" data-src="<%= event[:link] -%>">
               <a class="btn-icon"></a>
-              <%= image_tag "niuday/niudai-kv.jpg" -%>
+              <%= image_tag "niuday/niuday-kv-hangzhou.jpg" -%>
             </div>
             <div class="lecturer">
               <div class="lecturer-box">
@@ -69,10 +68,8 @@
     <div class="intro">
       <h2 class="title border-y">大会嘉宾</h2>
     </div>
-
     <div class="row">
-
-      <% I18n.t("views.welcome.niuday.avatars").each do |unit| %>
+      <% I18n.t("niudays.hangzhou.guest").each do |unit| %>
         <div class="five-sm-1 col-xs-6">
           <div class="guest">
             <%= image_tag unit[:img], width: '100' %>
@@ -82,7 +79,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -93,7 +89,6 @@
       <h2 class="title border-y">大会议程</h2>
       <p class="time">13:30 - 18:00</p>
     </div>
-
     <div class="table-responsive">
       <table class="table table-bordered table-niuday-meeting">
         <thead>
@@ -162,7 +157,6 @@
         </tbody>
       </table>
     </div>
-
   </div>
 </div>
 
@@ -171,9 +165,7 @@
     <div class="intro">
       <h2 class="title border-y">合作媒体</h2>
     </div>
-
     <div class="row">
-
       <% I18n.t("views.welcome.niuday.medias").each do |unit| %>
         <div class="seven-sm-1 col-xs-6">
           <div class="img-wrapper blue-shadow">
@@ -181,7 +173,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -191,9 +182,7 @@
     <div class="intro">
       <h2 class="title border-y">合作伙伴</h2>
     </div>
-
     <div class="row">
-
       <% I18n.t("views.welcome.niuday.partners").each do |unit| %>
         <div class="seven-sm-1 col-xs-6">
           <div class="img-wrapper blue-shadow">
@@ -201,7 +190,6 @@
           </div>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -210,7 +198,6 @@
   <div class="intro">
     <h2 class="title border-y">参会指南</h2>
   </div>
-
   <div class="desc-wrapper">
     <div class="content">
       <p class="desc text-left">1.报名审核成功后，主办方会统一短信通知会议地址及详情。</p>
