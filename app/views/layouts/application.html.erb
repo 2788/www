@@ -343,6 +343,7 @@
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
+            <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>
           </div>
           <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
             <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
@@ -350,6 +351,9 @@
             <li><%= link_to "SLA", sla_kodo_path -%></li>
             <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
           </ul>
+          <div class="report-call grey-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
+            <span>24小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com</span>
+          </div>
           <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
@@ -472,6 +476,7 @@
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
+            <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>            
           </div>
           <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
             <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
@@ -479,6 +484,9 @@
             <li><%= link_to "SLA", sla_kodo_path -%></li>
             <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
           </ul>
+          <div class="report-call grey-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
+            <span>24小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com</span>
+          </div>
           <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>

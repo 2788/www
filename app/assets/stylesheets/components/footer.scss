@@ -1,19 +1,17 @@
-footer{
+footer {
   padding: 70px 0;
   background-color: #303848;
   color: #FFF;
   vertical-align: baseline;
   transition: left .4s ease-in;
   font-weight: 300;
-
   &.niuday {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-image: image-url('niuday/bottom-bg.jpg');
   }
-
-  &.en{
+  &.en {
     padding: 0 0 15px;
     .cloud-verify {
       margin-top: 10px;
@@ -26,7 +24,6 @@ footer{
       }
     }
   }
-
   a.contact {
     display: inline-block;
     padding: 0.05rem 0.3rem;
@@ -37,50 +34,51 @@ footer{
     background-size: 0.25rem 0.25rem;
     text-align: center;
   }
-
   .contact-niuday {
     padding: 45px 0 10px;
   }
-
   .tel-box-grey {
     background-image: image-url("niuday/icon-phone.png");
   }
-
   .email-box-grey {
     background-image: image-url("niuday/icon-email.png");
   }
-
-  .container dl{
-    dt{ margin-bottom: 20px;}
-    dd{ line-height: 28px; }
-    a{
+  .container dl {
+    dt {
+      margin-bottom: 20px;
+    }
+    dd {
+      line-height: 28px;
+    }
+    a {
       color: #FFF;
-      &:hover{
+      &:hover {
         color: $brand-primary;
       }
     }
   }
-
-  .logo{
+  .logo {
     display: inline-block;
     margin-left: -10px;
     padding: 15px 0 20px;
-    img{ width: 125px; }
+    img {
+      width: 125px;
+    }
   }
-
-  .qrcode{
+  .qrcode {
     margin: 0 auto 5px;
     width: 112px;
     height: 112px;
     padding: 6px;
     background: #FFF;
-    img{ max-width: 100%; }
+    img {
+      max-width: 100%;
+    }
   }
-
-  .sns{
+  .sns {
     position: relative;
     padding: 50px 0 5px;
-    a{
+    a {
       display: inline-block;
       width: 18px;
       height: auto;
@@ -89,24 +87,28 @@ footer{
       margin: 0 10px;
       cursor: pointer;
     }
-    .github{ background: image-url('github.png') no-repeat; }
-    .weibo{  background: image-url('weibo.png') no-repeat; }
-    .weixin{ background: image-url('icon-weichat.png') no-repeat; }
-    #wexin-qrcode-popover{
+    .github {
+      background: image-url('github.png') no-repeat;
+    }
+    .weibo {
+      background: image-url('weibo.png') no-repeat;
+    }
+    .weixin {
+      background: image-url('icon-weichat.png') no-repeat;
+    }
+    #wexin-qrcode-popover {
       left: -68px;
       top: -120px;
     }
   }
-
-  .links{
+  .links {
     margin: 35px 0 20px;
     border-top: 1px solid #4C5461;
     font-size: 12px;
-
-    ul{
+    ul {
       list-style: none;
       margin: 0;
-      padding: 45px 0 10px;
+      padding: 20px 0 0;
       li {
         display: inline-block;
         padding: 0 14px;
@@ -118,15 +120,26 @@ footer{
           border-left: none;
           padding-left: 0px;
         }
-        a{ color: #FFF; }
+        a {
+          color: #FFF;
+        }
       }
     }
   }
-
-  .cloud-verify{
+  .cloud-verify {
     float: right;
     margin-top: 25px;
-
+    .report-logo {
+      display: block;
+      width: 120px;
+      height: 60px;
+      background-image: image-url('report.png');
+      background-repeat: no-repeat;
+      background-size: auto 60px;
+      background-color: #fff;
+      float: right;
+      margin-right: 20px;
+    }
     .verify-logo {
       display: block;
       width: 70px;
@@ -147,77 +160,74 @@ footer{
       margin-right: 20px;
     }
   }
-
-  .icp span{
+  .icp span,
+  .report-call span {
     line-height: 24px;
     white-space: nowrap;
   }
 }
 
-footer.form-footer{
+footer.form-footer {
   position: absolute;
   bottom: 0;
   padding: 0;
   width: 100%;
-
   .links.career-footer-links,
-  .links.blog-footer-links,{
+  .links.blog-footer-links,
+    {
     display: inline-block;
     border: none;
     margin: 0;
     padding: 0 0 45px;
   }
-  .contact-links{
+  .contact-links {
     float: right;
-    .qrcode{
+    .qrcode {
       position: absolute;
       top: -40px;
-      left:-120px;
+      left: -120px;
       opacity: 0;
     }
-    .sns{
+    .sns {
       display: inline-block;
     }
   }
-
-  .links.form-footer-links{
+  .links.form-footer-links {
     border: none;
     text-align: center;
     margin: 0;
     padding: 0 0 20px;
-
-    ul{
+    ul {
       border: none;
     }
   }
 }
 
-footer.footer-mobile{
-  .collapse-wrapper{
+footer.footer-mobile {
+  .collapse-wrapper {
     margin-left: -15px;
     margin-right: -15px;
-
-    ul{
+    ul {
       list-style: none;
       padding: 0;
       margin: 0;
-      li.panel{
+      li.panel {
         border: 0;
         border-radius: 0;
         background-color: #303848;
         position: relative;
-        .panel-sort{
+        .panel-sort {
           color: #fff;
           background-color: #303848;
           border: 0;
-          a{
+          a {
             display: block;
           }
-          .sort-name{
+          .sort-name {
             color: #fff;
             font-size: 14px;
           }
-          &::after{
+          &::after {
             content: '';
             border: 2px solid #667180;
             display: block;
@@ -232,7 +242,7 @@ footer.footer-mobile{
             border-right: none;
             right: 20px;
           }
-          &.actived::after{
+          &.actived::after {
             top: 15px;
             border-bottom: none;
             border-left: none;
@@ -240,22 +250,22 @@ footer.footer-mobile{
             border-top: 2px solid #667180;
           }
         }
-        .collapse-menu{
-          .panel-menu{
+        .collapse-menu {
+          .panel-menu {
             padding: 0;
             border-top-color: #4C5461;
-            .menu-unit{
+            .menu-unit {
               padding-left: 15px;
               border-bottom: 1px solid rgba(229, 229, 229, 0.07);
             }
-            a{
+            a {
               display: block;
               &.github,
-              &.weibo{
+              &.weibo {
                 display: inline-block;
               }
             }
-            h4{
+            h4 {
               font-size: 12px;
               color: #777;
             }
@@ -277,11 +287,9 @@ footer.footer-mobile{
     background-repeat: no-repeat;
     background-size: 0.25rem 0.25rem;
     text-align: center;
-
     &.tel-box-grey {
       background-image: image-url("niuday/icon-phone.png");
     }
-
     &.email-box-grey {
       background-image: image-url("niuday/icon-email.png");
     }
@@ -291,39 +299,41 @@ footer.footer-mobile{
 // Responsive
 // ---------------------------------------------------------------------
 @media (max-width: 425px) {
-  footer.form-footer{
-    .links.career-footer-links, footer.form-footer .links.blog-footer-links{
+  footer.form-footer {
+    .links.career-footer-links,
+    footer.form-footer .links.blog-footer-links {
       padding: 0;
     }
-    .contact-links{
+    .contact-links {
       float: none;
       text-align: center;
     }
   }
-  footer{
+  footer {
     padding-top: 25px;
     padding-bottom: 25px;
     font-size: 12px;
-
-    .sns {padding: 20px 0 5px; }
-    .container dl dd { line-height: 24px; }
-
+    .sns {
+      padding: 20px 0 5px;
+    }
+    .container dl dd {
+      line-height: 24px;
+    }
     .links {
       text-align: center;
-      .cloud-verify{
+      .cloud-verify {
         float: none;
         text-align: center;
-        .verify-logo, .iso-logo {
+        .verify-logo,
+        .iso-logo {
           display: inline-block;
           float: none;
           margin: 0;
         }
       }
-
       ul {
         width: 100%;
         padding-top: 20px;
-
         li {
           padding: 0 8px;
         }
@@ -332,15 +342,9 @@ footer.footer-mobile{
   }
 }
 
-@media (max-width: 767px){
-
-}
+@media (max-width: 767px) {}
 
 // iPad
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px) {}
 
-}
-
-@media (min-width: 992px){
-
-}
+@media (min-width: 992px) {}
