@@ -57,7 +57,7 @@
       width: 100%;
       position: relative;
       text-align: center;
-      display: table;
+      display: flex;
       .slide-item {
         position: relative;
         padding: 0.05rem;
@@ -65,17 +65,14 @@
         opacity: 0.3;
         vertical-align: middle;
         display: table-cell;
+        box-sizing: border-box;
         cursor: pointer;
-        &:not(.upload-item).active,
-        &:not(.upload-item):hover {
+        &.active,
+        &:hover {
           opacity: 1;
           border: 1px solid #00a0de;
         }
-        &.upload-item {
-          border-radius: 0;
-          opacity: 1;
-        }
-        &:not(.upload-item) img {
+        img {
           border-radius: 5px;
         }
         img,
@@ -162,6 +159,9 @@
 @media (max-width:768px) {
   .censor-demo {
     padding: 0 0.20rem;
+    .result-container {
+      width: 2.50rem !important;
+    }
   }
 }
 
