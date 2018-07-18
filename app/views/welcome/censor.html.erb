@@ -6,8 +6,8 @@
           <h1><%= I18n.t("views.welcome.censor.title") -%></h1>
           <h3><%= I18n.t("views.welcome.censor.subtitle") -%></h3>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即使用", "", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
-            <%= link_to "产品接入文档", "", target: "_blank", class: "product-link underline" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "产品接入文档", "https://developer.qiniu.com/censor/manual/4829/censor-introduction", target: "_blank", class: "product-link underline" -%>
           </div>
           <p><%= I18n.t("views.welcome.censor.describe") -%></p>
         </div>
@@ -102,7 +102,7 @@
           <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
         <% end -%>
       </ul>
-      <div class="tab-censor">
+      <div class="tab-content tab-censor">
         <% I18n.t("views.welcome.censor.scene.sections").each do |sec| -%>
           <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
             <p><%= sec[:describe] -%></p>
@@ -142,15 +142,21 @@
             </tr>
             <tr>
               <th class="border-right text-center">机器智能审核</th>
-              <th class="border-right text-center">按次阶梯价格</th>
+              <th class="border-right text-center">
+                <%= link_to "按次阶梯价格", "https://developer.qiniu.com/censor/manual/4833/censor-price", target: "_blank", class: "cell-link" -%>
+              </th>
               <th class="text-center">
-                <%= link_to "特惠套餐包", "#", target: "_blank", class: "cell-link" -%>
+                <%= link_to "特惠套餐包", "https://developer.qiniu.com/censor/manual/4835/censor-plus-manual", target: "_blank", class: "cell-link" -%>
               </th>
             </tr>
             <tr>
               <th class="border-right text-center">机器智能审核+人工审核</th>
-              <th class="border-right text-center">按次阶梯价格</th>
-              <th class="text-center"></th>
+              <th class="border-right text-center">
+                <%= link_to "按次阶梯价格", "https://developer.qiniu.com/censor/manual/4839/autocensor-and-manualcensor", target: "_blank", class: "cell-link" -%>                
+              </th>
+              <th class="text-center">
+                <%= link_to "特惠套餐包", "https://developer.qiniu.com/censor/manual/4840/auto-and-manual-package", target: "_blank", class: "cell-link" -%>
+              </th>
             </tr>
           </tbody>
         </table>
@@ -160,9 +166,9 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="info-container">
-        <h3>首次使用更可享&nbsp;<span class="text-warn text-huge">16&nbsp;万</span>张</h3>
+        <h3>首次使用更可享&nbsp;<span class="text-warn text-huge">18&nbsp;万张</span></h3>
         <h3>免费机器智能审核+人工审核额度</h3>
-        <p><%= link_to "立即使用", "", target: "_blank", class: "btn btn-lg btn-default btn-warn m-r m-b-xs" -%></p>
+        <p><%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-default btn-warn m-r m-b-xs" -%></p>
       </div>
       <div class="intro tip-intro">
         <p class="desc"><%= I18n.t("views.welcome.censor.price.describe") -%></p>
