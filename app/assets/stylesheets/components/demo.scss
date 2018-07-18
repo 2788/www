@@ -1,0 +1,212 @@
+.censor-demo {
+  .nav-image-video {
+    li {
+      font-size: 0.16rem;
+    }
+  }
+  .tab-content {
+    margin-bottom: 0.30rem;
+  }
+  .thumbnail-upload {
+    width: 80%;
+    position: relative;
+    left: 10%;
+    padding: 0.10rem;
+    border-radius: 0;
+    min-height: 0;
+    &.video-upload {
+      .video-mask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+      }
+    }
+    .image-overlay,
+    .video-overlay {
+      width: calc(100% - 0.20rem);
+      height: calc(100% - 0.10rem);
+      position: absolute;
+      background: transparent;
+      z-index: 4;
+      display: none
+    }
+    .image-scan,
+    .video-scan {
+      width: calc(100% - 0.20rem);
+      height: calc(100% - 0.10rem);
+      position: absolute;
+      border-radius: 10px;
+      background-image: image-url("censor/image-scan.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      z-index: 4;
+      display: none;
+      &.active {
+        display: block;
+        -webkit-animation: scan-top-bottom 1s ease-in-out infinite;
+        -moz-animation: scan-top-bottom 1s ease-in-out infinite;
+        -ms-animation: scan-top-bottom 1s ease-in-out infinite;
+        -o-animation: scan-top-bottom 1s ease-in-out infinite;
+        animation: scan-top-bottom 1s ease-in-out infinite;
+      }
+    }
+    .slide-container {
+      width: 100%;
+      position: relative;
+      text-align: center;
+      display: table;
+      .slide-item {
+        position: relative;
+        padding: 0.05rem;
+        border-radius: 5px;
+        opacity: 0.3;
+        vertical-align: middle;
+        display: table-cell;
+        cursor: pointer;
+        &:not(.upload-item).active,
+        &:not(.upload-item):hover {
+          opacity: 1;
+          border: 1px solid #00a0de;
+        }
+        &.upload-item {
+          border-radius: 0;
+          opacity: 1;
+        }
+        &:not(.upload-item) img {
+          border-radius: 5px;
+        }
+        img,
+        video {
+          vertical-align: middle;
+        }
+      }
+    }
+    .image-container,
+    .video-container {
+      width: 100%;
+      position: relative;
+      top: 0.10rem;
+      padding: 0.10rem;
+      border-radius: 10px;
+      text-align: center;
+      .image-violate,
+      .video-violate,
+      .image-pass,
+      .video-pass {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        background-size: 1.50rem 1.50rem;
+        background-position: center;
+        z-index: 2;
+      }
+      .image-violate,
+      .video-violate {
+        background-image: image-url("censor/image-violate.png");
+        display: none;
+      }
+      .image-pass,
+      .video-pass {
+        background-image: image-url("censor/image-pass.png");
+      }
+      .result-container {
+        width: 2.00rem;
+        position: absolute;
+        top: 0.10rem;
+        left: 0.10rem;
+        border-radius: 5px;
+        background-color: rgba($color: #000, $alpha: 0.8);
+        z-index: 1;
+        p {
+          position: relative;
+          margin: 10px;
+          color: #fff;
+          font-size: 0.14rem;
+          line-height: 0.16rem;
+          text-align: left;
+          .result-word {
+            position: absolute;
+            right: 10px;
+          }
+        }
+        .text-error {
+          color: #d9534f;
+        }
+      }
+      .video-control,
+      .image-control {
+        width: 100%;
+        height: 0.80rem;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 3;
+        input {
+          width: 50%;
+          height: 34px;
+          color: #fff;
+          background-color: rgba($color: #000, $alpha: 0.8);
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:768px) {
+  .censor-demo {
+    padding: 0 0.20rem;
+  }
+}
+
+// 扫描动画
+@keyframes scan-top-bottom {
+  from {
+    top: -100%
+  }
+  to {
+    top: 0
+  }
+}
+
+@-webkit-keyframes scan-top-bottom {
+  from {
+    top: -100%
+  }
+  to {
+    top: 0
+  }
+}
+
+@-moz-keyframes scan-top-bottom {
+  from {
+    top: -100%
+  }
+  to {
+    top: 0
+  }
+}
+
+@-ms-keyframes scan-top-bottom {
+  from {
+    top: -100%
+  }
+  to {
+    top: 0
+  }
+}
+
+@-o-keyframes scan-top-bottom {
+  from {
+    top: -100%
+  }
+  to {
+    top: 0
+  }
+}

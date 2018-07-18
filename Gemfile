@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'jquery-slick-rails', '~> 1.6', '>= 1.6.0.2'
 
+gem 'qiniu', '>= 6.9.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

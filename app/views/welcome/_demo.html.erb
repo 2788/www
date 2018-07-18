@@ -1,0 +1,112 @@
+<div class="tabs censor-demo">
+  <ul class="nav nav-tabs nav-justified points-bar nav-short nav-image-video" role="tablist">
+    <li class="image-tab-li active">
+      <a data-toggle="tab" href="#upload-tab-image">图片审核</a>
+    </li>
+    <li class="video-tab-li">
+      <a data-toggle="tab" href="#upload-tab-video">视频审核</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <section class="tab-pane fade in active" id="upload-tab-image">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 col-demo">
+        
+          <div class="thumbnail thumbnail-upload image-upload">
+            <div class="image-overlay"></div>
+            <div class="image-scan"></div>
+            <div class="slide-container">
+              <div class="slide-item active">
+                <%= image_tag "censor/image-huang", key: 'Flm400wajEHohD2sFZgyLpc7fbIQ', alt: "image-huang", width: "100%"-%>
+              </div>
+              <div class="slide-item">
+                <%= image_tag "censor/image-baokong-1", key: 'Fg79yNfEzERf9ouOMFoBqUVQQuDB', alt: "image-baokong-1", width: "100%"-%>
+              </div>
+              <div class="slide-item">
+                <%= image_tag "censor/image-baokong-2", key: 'Fg79yNfEzERf9ouOMFoBqUVQQuAC', alt: "image-baokong-2", width: "100%"-%>
+              </div>
+              <div class="slide-item">
+                <%= image_tag "censor/image-zhengzhi", key: 'FvPIoyT7NXuBiIxvHRPbEM6wRhrN', alt: "image-zhengzhi", width: "100%"-%>
+              </div>
+            </div>
+            <div class="image-container">
+              <%= image_tag "censor/image-huang", id: "upload-image-show", alt: "image-show", width: "100%" -%>
+              <div class="image-pass"></div>
+              <div class="image-violate"></div>
+              <div class="image-control">
+                <input class="form-control" id="upload-image-input" type="text" placeholder="请输入网络图片 URL">
+                <div class="btn btn-primary" id="upload-image-btn">检测</div>
+              </div>
+              <div class="result-container image-result-container">
+                <p id= "image-pulp" class="text-error">
+                  <span>色情识别</span>
+                  <span class="result-word">性感</span>
+                </p>
+                <p id="image-terror">
+                  <span>暴恐识别</span>
+                  <span class="result-word">正常</span>
+                </p>
+                <p id="image-politician">
+                  <span>政治敏感人物识别</span>
+                  <span class="result-word">正常</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="tab-pane fade" id="upload-tab-video">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 col-demo">
+          <div class="thumbnail thumbnail-upload video-upload">
+            <div class="video-overlay"></div>
+            <div class="video-scan"></div>
+            <div class="slide-container">
+              <div class="slide-item active">
+                <%= video_tag "censor/video-1", key: 'lhsawSRA9-0L8b0s-cXmojaMhGss', controls: false, type: "video/mp4", autobuffer: false, width: "100%" -%>
+                <div class="video-mask"></div>
+              </div>
+              <div class="slide-item">
+                <%= video_tag "censor/video-2", key: 'lhsahSRA9-0L8b0d-cXmojaMhGcc', controls: false, type: "video/mp4", autobuffer: false, width: "100%" -%>
+                <div class="video-mask"></div>
+              </div>
+              <div class="slide-item">
+                <%= video_tag "censor/video-3", key: 'lhsawSRA9-0L9b0s-cXmojaMhGmk', controls: false, type: "video/mp4", autobuffer: false, width: "100%" -%>
+                <div class="video-mask"></div>
+              </div>
+              <div class="slide-item">
+                <%= video_tag "censor/video-4", key: 'lhsahSRA9-0L6b0d-cXmojaMhBcg', controls: false, type: "video/mp4", autobuffer: false, width: "100%" -%>
+                <div class="video-mask"></div>
+              </div>
+            </div>
+
+            <div class="video-container">
+              <%= video_tag "censor/video-1", id: "upload-video-show", controls: false, width: "100%" -%>
+              <div class="video-pass"></div>
+              <div class="video-violate"></div>
+              <div class="video-control">
+                <input class="form-control" id="upload-video-input" type="text" placeholder="请输入网络视频 URL">
+                <div class="btn btn-primary" id="upload-video-btn">检测</div>
+              </div>
+              <div class="result-container video-result-container">
+                <p id= "video-pulp" class="text-error">
+                  <span>色情识别</span>
+                  <span class="result-word">性感</span>
+                </p>
+                <p id="video-terror">
+                  <span>暴恐识别</span>
+                  <span class="result-word">正常</span>
+                </p>
+                <p id="video-politician">
+                  <span>政治敏感人物识别</span>
+                  <span class="result-word">正常</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

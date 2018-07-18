@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get '/products/rtn',            to: 'welcome#rtn'
     get '/products/pandora',        to: 'welcome#pandora'
     get '/products/insight',        to: 'welcome#insight'
+    get '/products/censor',         to: 'welcome#censor'
     get '/products/fusion',         to: 'welcome#fusion'
     get '/products/dora',           to: 'welcome#dora'
     get '/products/kirk',           to: 'welcome#kirk'
@@ -65,12 +66,19 @@ Rails.application.routes.draw do
 
     # userinfo
     get '/userinfo', to: 'userinfo#userinfo'
-
+    
     resources 'events', only: [:index] do
       collection do
         get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon'
       end
     end
+
+    # img_censor
+    post '/img_censor', to: 'welcome#img_censor'
+
+    # video_censor
+    post '/video_censor', to: 'welcome#video_censor'
+
 
     resources 'prices', only: [:index]
     get '/caculator', to: 'prices#caculator'

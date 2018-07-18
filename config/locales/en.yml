@@ -1201,6 +1201,74 @@ en:
               - title: "REST API 详解"
                 link: "https://developer.qiniu.io/insight/api/4747/workflow-api"
                 target: "_blank"
+      censor:
+        title: "内容审核"
+        subtitle: "双重审核 运营无忧"
+        describe: "七牛云内容审核基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。帮助多媒体内容平台避免色情、暴恐和涉政等违规风险，大幅缩减人工审核成本。"
+        process:
+          title: "标准化内容审核流程"
+          image: "censor/process-image.png"
+        advantage:
+          title: "产品优势"
+          cols:
+            - image: "censor/advantage-custom.png"
+              title: "灵活定制"
+              describe: "支持自定义审核维度、阈值，并在 AVA 深度学习平台快速定制模型。为您设置最适合业务场景需求的审核标准。"
+            - image: "censor/advantage-policy.png"
+              title: "紧贴政策"
+              describe: "与多个政府监管部门深度合作，第一时间严格执行最新鉴黄、鉴暴恐、政治敏感人物识别要求，迅速响应模型迭代。"
+            - image: "censor/advantage-performe.png"
+              title: "性能卓越"
+              describe: "内容审核准确率达到 99.5%，同时响应时间小于 0.1s，可替代 90% 以上人工审核，并提供 7*24 小时全天候服务。"
+        supervise:
+          title: "监管合作"
+          cols:
+            - icon: "censor/icon-country.png"
+              content:
+                - "公安部网络安全保卫局"
+                - "北京市网信办"
+            - icon: "censor/icon-police.png"
+              content:
+                - "北京市公安局"
+                - "上海市公安局"
+                - "江苏省公安厅"
+        demo:
+          title: "功能演示"
+        scene:
+          title: "应用场景"
+          tabs:
+            - name: "视频直播平台内容审核"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "UGC 平台内容审核"
+              class: ""
+              href: "#tab-scene-2"
+          sections:
+            - id: "tab-scene-1"
+              class: "tab-pane fade in active"
+              describe: "采用七牛云内容审核技术，实现视频直播场景中的涉黄、涉暴恐、政治敏感人物等内容的实时自动审核。操作简单，极大提高内容审核效率。现已支持主流直播平台内容审核，并对网红直播、电竞直播、秀场直播等场景进行大量针对性算法优化。"
+            - id: "tab-scene-2"
+              class: "tab-pane fade"
+              describe: "七牛云内容审核服务支持主流云服务平台空间，可对存储于第三方的资源进行审核，自动识别违规内容。有效减少运营方人工审核成本，控制业务违规风险。并针对互联网社交、电商平台等场景进行大量算法优化。"
+          client:
+            title: "客户案例"
+            cols:
+              - title: "中国平安"
+                image: "censor/client-pingan.png"
+              - title: "Faceu"
+                image: "censor/client-faceu.png"
+              - title: "blued"
+                image: "censor/client-blued.png"
+              - title: "时光网"
+                image: "censor/client-shiguang.png"
+              - title: "糖豆"
+                image: "censor/client-tangdou.png"
+              - title: "酷我音乐"
+                image: "censor/client-kuwo.png"
+        price:
+          title: "产品定价"
+          subtitle: "七牛云内容审核产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
+          describe: "注：16 万张免费额度包含鉴黄、鉴暴恐、政治敏感人物识别三类各 5 万张，以及 1 万张不确定部分。免费额度需在开通功能日所在自然月内使用完毕，次月起不再享受。"
       dora:
         title: "Intelligent Multimedia APIs（Dora）"
         desc: "Qiniu's intelligent multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services using deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services."

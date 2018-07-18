@@ -1,0 +1,150 @@
+.hero-censor {
+  background-image: image-url("censor/banner.png") !important;
+  .container {
+    h1 {
+      font-size: 0.50rem;
+    }
+    h3 {
+      margin-bottom: 20px;
+    }
+    .product-link {
+      color: #5bc0de;
+      position: relative;
+      top: 0.15rem;
+      font-size: 0.18rem;
+    }
+    p {
+      margin-top: 10px;
+      font-size: 0.13rem;
+    }
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+}
+
+.features-censor-adva {
+  .thumbnail {
+    padding: 0.20rem;
+    background-color: #fff;
+    margin-bottom: 0.20rem;
+    h4 {
+      margin-top: 0.20rem;
+    }
+    p {
+      margin-top: 0.20rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.features-censor-sup {
+  .border-right {
+    border-right: 2px solid #e5e5e5
+  }
+  .thumbnail {
+    min-height: 0;
+    .caption {
+      padding-top: 0.30rem;
+      font-size: 0.16rem;
+      text-align: center;
+      span {
+        padding: 0 0.20rem;
+      }
+    }
+  }
+}
+
+.features-censor-scene {
+  .tab-pane {
+    p {
+      padding-top: 0.30rem;
+    }
+  }
+  .client-row {
+    padding: 0.30rem 0;
+    h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    #cases-slider {
+      margin: 0;
+      max-height: 73px;
+      .case {
+        height: 73px;
+        max-height: 73px;
+      }
+      .slick-arrow {
+        top: 42%;
+        &.slick-prev {
+          left: 0;
+        }
+        &.slick-next {
+          right: 0;
+        }
+      }
+    }
+  }
+}
+
+.features-censor-price {
+  .tab-content-pricing {
+    padding-top: 0;
+    th {
+      .cell-link {
+        color: #5bc0de;
+      }
+    }
+  }
+  .info-container {
+    height: 3.00rem;
+    background-image: image-url("censor/banner-bottom.png") !important;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    h3,
+    p {
+      position: relative;
+      top: 0.70rem;
+      text-align: center;
+    }
+    h3 {
+      color: #fff;
+    }
+    .text-warn {
+      color: #fbef12;
+    }
+    .text-huge {
+      font-size: 0.35rem;
+    }
+    p {
+      padding-top: 0.20rem;
+      .btn-warn {
+        background-color: #fbef12;
+      }
+    }
+  }
+  .tip-intro {
+    margin: 0.30rem 0.30rem 0;
+    .desc {
+      margin-bottom: 0;
+      font-size: 0.12rem;
+    }
+  }
+}
+
+@media (max-width:991px) {
+  .features-censor-sup {
+    .border-right {
+      border: none;
+    }
+  }
+  .features-censor-price {
+    .info-container {
+      height: 2.50rem;
+      h3,
+      p {
+        top: 0.50rem;
+      }
+    }
+  }
+}

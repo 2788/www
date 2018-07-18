@@ -80,6 +80,9 @@ Rails.application.configure do
   config.www_host = 'https://www.qiniu.com'
   config.blog_host = 'https://blog.qiniu.com'
 
+  config.img_audit_host = 'https://argus.atlab.ai/v1/image/censor'
+  config.video_audit_host = 'https://argus.atlab.ai/v1/video/'
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
