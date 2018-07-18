@@ -207,7 +207,7 @@ $(document).ready ->
   # banner slider
   $('.banners-slider').slick
     dots: true
-    autoplay: false
+    autoplay: true
     autoplaySpeed: 2000
     arrows: false
     slidesToShow: 1
