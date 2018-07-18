@@ -152,7 +152,7 @@ $(document).ready ->
   # image部分
   # 激活img的slide
   $('.image-upload .slide-container .slide-item').bind 'click', (e) ->
-    if $(this).hasClass('active') || $(this).hasClass('upload-item')
+    if $(this).hasClass('active')
       return
     # 消除所有slide的active样式
     $('.image-upload .slide-container .slide-item').removeClass('active')
@@ -189,7 +189,7 @@ $(document).ready ->
   # 激活video的slide
   $('.video-upload .slide-container .slide-item').bind 'click', (e) ->
     e.preventDefault()
-    if $(this).hasClass('active') || $(this).hasClass('upload-item')
+    if $(this).hasClass('active')
       return
     # 消除所有slide的active样式
     $('.video-upload .slide-container .slide-item').removeClass('active')
@@ -215,6 +215,7 @@ $(document).ready ->
       return
     $('.video-upload .slide-container .slide-item').removeClass('active')
     $('#upload-video-show')[0].src = videoURL
+    $('#upload-video-show')[0].play()
     resetVideoUI()
     videoAudit(videoURL, 'url')
 

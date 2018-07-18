@@ -113,13 +113,17 @@ class WelcomeController < ApplicationController
   end
 
   def censor
+    @videoSrc_1 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk")
+    @videoSrc_2 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ")
+    @videoSrc_3 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/FgV6wvTgRv8ZgUZBecKojdIlfs58")
+    @videoSrc_4 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/lrBYuiLwg0zFRUP97w59FmmN6H01")
   end
 
   # 生成下载授权
   def authorize_download_url(url)
     download_url = url
-    # 授权期计算，设置为一分钟(60秒)
-    e = Time.now.to_i + 60
+    # 授权期计算，设置为一小时
+    e = Time.now.to_i + 3600
     # URL变换：追加授权期参数
     download_url = "#{download_url}?e=#{e}"
 
