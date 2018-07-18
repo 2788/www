@@ -122,26 +122,8 @@ class WelcomeController < ApplicationController
   # 生成下载授权
   def authorize_download_url(url)
     download_url = url
-    # 授权期计算，设置为一分钟(60秒)
-    e = Time.now.to_i + 60
-    # URL变换：追加授权期参数
-    download_url = "#{download_url}?e=#{e}"
-
-    ### 生成数字签名
-    encoded_sign = generate_encoded_sign(download_url)
-
-    ### 生成下载授权凭证
-    dntoken = "#{Rails.application.secrets.access_key}:#{encoded_sign}"
-
-    ### 返回下载授权URL
-    return "#{download_url}&token=#{dntoken}"
-  end
-
-  # 生成下载授权
-  def authorize_download_url(url)
-    download_url = url
-    # 授权期计算，设置为一分钟(60秒)
-    e = Time.now.to_i + 60
+    # 授权期计算，设置为一小时
+    e = Time.now.to_i + 3600
     # URL变换：追加授权期参数
     download_url = "#{download_url}?e=#{e}"
 

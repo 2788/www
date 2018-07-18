@@ -11,10 +11,8 @@
     <section class="tab-pane fade in active" id="upload-tab-image">
       <div class="row">
         <div class="col-sm-12 col-xs-12 col-demo">
-        
           <div class="thumbnail thumbnail-upload image-upload">
             <div class="image-overlay"></div>
-            <div class="image-scan"></div>
             <div class="slide-container">
               <div class="slide-item active">
                 <%= image_tag "censor/image-huang.png", key: 'Flm400wajEHohD2sFZgyLpc7fbIQ', alt: "image-huang", width: "100%"-%>
@@ -31,6 +29,7 @@
             </div>
             <div class="image-container">
               <%= image_tag "censor/image-huang.png", id: "upload-image-show", alt: "image-show", width: "100%" -%>
+              <div class="image-scan"></div>
               <div class="image-pass"></div>
               <div class="image-violate"></div>
               <div class="image-control">
@@ -61,7 +60,6 @@
         <div class="col-sm-12 col-xs-12 col-demo">
           <div class="thumbnail thumbnail-upload video-upload">
             <div class="video-overlay"></div>
-            <div class="video-scan"></div>
             <div class="slide-container">
               <div class="slide-item active">
                 <video src="<%= @videoSrc_1 -%>" key="Fi1UC6waXtXYCpnTGHa8XxIziGNk", type="video/mp4", autobuffer="false", width="100%"></video>
@@ -80,9 +78,9 @@
                 <div class="video-mask"></div>
               </div>
             </div>
-
             <div class="video-container">
               <video src="<%= @videoSrc_1 -%>", id="upload-video-show", width="100%"></video>
+              <div class="video-scan"></div>
               <div class="video-pass"></div>
               <div class="video-violate"></div>
               <div class="video-control">
