@@ -35,6 +35,7 @@
 #= require alaccelerator
 #= require plsv
 #= require sdk
+#= require censor
 
 isMobile = false; # initiate as false
 # device detection
