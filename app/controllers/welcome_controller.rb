@@ -127,7 +127,7 @@ class WelcomeController < ApplicationController
     encoded_sign = generate_encoded_sign(download_url)
 
     ### 生成下载授权凭证
-    dntoken = "#{Rails.application.secrets.access_key}:#{encoded_sign}"
+    dntoken = "#{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
 
     ### 返回下载授权URL
     return "#{download_url}&token=#{dntoken}"
@@ -135,7 +135,7 @@ class WelcomeController < ApplicationController
 
   # 生成签名(base64编码后)
   def generate_encoded_sign(originStr)
-    hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), Rails.application.secrets.secret_key, originStr)
+    hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), Rails.application.secrets.atlab_sec_key, originStr)
     return Qiniu::Utils.urlsafe_base64_encode(hmac_digest)
   end
 
@@ -163,7 +163,7 @@ class WelcomeController < ApplicationController
     originStr = "POST " + uri.path + "\nHost: " + uri.host + "\nContent-Type: application/json\n\n"
     originStr += body.to_json.encode('UTF-8')
     encoded_sign = generate_encoded_sign(originStr)
-    qiniu_token = "Qiniu #{Rails.application.secrets.access_key}:#{encoded_sign}"
+    qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
 
     header = {
       'Authorization' => qiniu_token,
@@ -232,7 +232,7 @@ class WelcomeController < ApplicationController
     originStr += body.to_json.encode('UTF-8')
 
     encoded_sign = generate_encoded_sign(originStr)
-    qiniu_token = "Qiniu #{Rails.application.secrets.access_key}:#{encoded_sign}"
+    qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
 
     header = {
       'Authorization' => qiniu_token,
