@@ -189,6 +189,8 @@ $(document).ready ->
           $(this).height(cwidth / rate)
         else
           $(this).width((iwidth / iheight) * 400)
+    $('#upload-image-show').one 'error', () =>
+      $('#upload-image-show')[0].src = $('.image-upload .slide-container .slide-item img')[0].src
     resetImgUI()
     imgAudit(imageURL, 'url')
 
@@ -204,6 +206,8 @@ $(document).ready ->
     videoSrc = $(this).children('video')[0].src
     key = $(this).children('video').attr('key')
     $('#upload-video-show')[0].src = videoSrc
+    $('#upload-video-show').one 'error', () =>
+      $('#upload-video-show')[0].src = $('.video-upload .slide-container .slide-item video')[0].src
     # 播放视频
     $('#upload-video-show')[0].play()
     # 为选中项添加active样式
