@@ -178,10 +178,17 @@ $(document).ready ->
     $('.image-upload .slide-container .slide-item').removeClass('active')
     $('#upload-image-show')[0].src = imageURL
     $('#upload-image-show').one 'load', () ->
+      # 矫正图片大小
+      cwidth = $('.image-container').width()
       iwidth = $(this).width()
       iheight = $(this).height()
+      rate = iwidth / iheight
       if iheight > 400
-        $(this).width((iwidth / iheight) * 400)
+        nwidth = rate * 400
+        if nwidth >= cwidth
+          $(this).height(cwidth / rate)
+        else
+          $(this).width((iwidth / iheight) * 400)
     resetImgUI()
     imgAudit(imageURL, 'url')
 
