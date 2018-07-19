@@ -1221,7 +1221,7 @@ en:
               title: "性能卓越"
               describe: "内容审核准确率达到 99.5%，同时响应时间小于 0.1s，可替代 90% 以上人工审核，并提供 7*24 小时全天候服务。"
         supervise:
-          title: "监管合作"
+          title: "监管部门技术合作"
           cols:
             - icon: "censor/icon-country.png"
               content:
