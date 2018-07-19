@@ -1930,25 +1930,25 @@ zh-CN:
 
     - group: 数据•智能
       list:
-        - name: atlab
-          label: 深度学习平台
-          desc: 针对图片视频的一站式数据集中处理、模型训练平台
+        - name: insight
+          label: 智能日志管理平台
+          desc: 海量异构数据采集，秒级实时日志检索，高效智能业务洞察
 
         - name: pandora
           label: 大数据
           desc: 简单、高效、开放
 
-        - name: insight
-          label: 智能日志管理平台
-          desc: 海量异构数据采集，秒级实时日志检索，高效智能业务洞察
-        
         - name: censor
           label: 内容审核
           desc: 机器+人工一站式内容审核服务，最高标准保障内容安全
-
+        
         - name: dora
           label: 智能多媒体 API
           desc: 针对海量图片视频提供鉴黄鉴暴、人脸技术、物体识别等服务
+
+        - name: atlab
+          label: 深度学习平台
+          desc: 针对图片视频的一站式数据集中处理、模型训练平台
 
     - group: 视频服务
       list:
