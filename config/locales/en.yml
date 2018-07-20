@@ -637,7 +637,7 @@ en:
                 - surgery teaching
             - id: "tab-usage-section-4"
               class: "tab-pane"
-              icon: "sdk/img-jiaoyu.png"
+              icon: "sdk/img-jiaoyu.jpg"
               title: "Online Education"
               desc: "Both small interactive classes and classes of tens of thousands of people are supported in a flexible way. Native and Web can interwork to satisfy education needs under various scenarios."
               link: "Application scenarios:"
@@ -648,7 +648,7 @@ en:
                 - trainings of professional skills
             - id: "tab-usage-section-5"
               class: "tab-pane"
-              icon: "sdk/img-kefu.png"
+              icon: "sdk/img-kefu.jpg"
               title: "Online Customer Services"
               desc: "Demands for video calls to technical staff are supported. Those technical staff can instruct users to operate as well as quickly locate and solve problems through videos, to improve service quality and product reputation."
               link: "Application scenarios:"
@@ -1467,7 +1467,7 @@ en:
               id: "tab-usage-section-2"
               class: "tab-pane fade"
               desc: You can use data already provided by Qiniu Cloud to create dataset, or custom your dataset by our labelling system.
-              img: "atlab/datacollectionEN.png"
+              img: "atlab/datacollectionEN.jpg"
             - title: Publish Model
               id: "tab-usage-section-4"
               class: "tab-pane fade"
@@ -2762,3 +2762,6 @@ en:
         - img: 'niuday/partnerslog/logo-xiamenwulianwang.png'
         - img: 'niuday/partnerslog/logo-kuaishangtong.png'
         - img: 'niuday/partnerslog/logo-yunpian.png'
+        - img: 'niuday/partnerslog/logo-xmsir.png'
+        - img: 'niuday/partnerslog/logo-yiketalks.png'
+        - img: 'niuday/partnerslog/logo-chandashi.png'

@@ -12,7 +12,6 @@
     letter-spacing: 3px;
     text-align: center;
   }
-
   p {
     text-align: center;
     color: #2089cb;
@@ -24,43 +23,39 @@
 .invite-banner {
   height: 5.15rem;
   text-align: center;
-  background-image: image-url('invite/banner.png');
+  background-image: image-url('invite/banner.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   position: relative;
-
-  .actions > a.link {
+  .actions>a.link {
     display: block;
     position: absolute;
     left: 50%;
     margin-left: -1.09rem;
     bottom: .68rem;
-    background:#ffffff;
-    border-radius:.29rem;
-    width:2.18rem;
-    height:.58rem;
+    background: #ffffff;
+    border-radius: .29rem;
+    width: 2.18rem;
+    height: .58rem;
     line-height: .58rem;
     font-size: .30rem;
-
     a:hover {
       background-color: #e6e6e6
     }
   }
-
-  .actions > a.invite-btn {
+  .actions>a.invite-btn {
     position: absolute;
     left: 50%;
     margin-left: -.67rem;
     bottom: 1rem;
   }
-
-  .actions > p.desc {
+  .actions>p.desc {
     position: absolute;
     left: 0;
     bottom: 1.5rem;
     font-size: .24rem;
-    color:#ffffff;
+    color: #ffffff;
     text-align: center;
     width: 100%;
   }
@@ -69,18 +64,14 @@
 .invite-table {
   padding-top: .38rem;
   font-size: .18rem;
-
   table {
-    font-family:PingFangSC-Regular;
-    color:#104261;
+    font-family: PingFangSC-Regular;
+    color: #104261;
     border: 1px solid #2ba2f0 !important;
-
     &>tbody>tr:nth-of-type(even) {
       background-color: rgba(43, 162, 240, .17)
     }
-
     tr {
-
       th {
         background: #2ba2f0;
         height: .80rem;
@@ -88,17 +79,14 @@
         text-align: center;
         color: #fff
       }
-
       td {
         vertical-align: middle !important;
         padding: .25rem .4rem .25rem .4rem !important;
         border: 1px solid #2ba2f0 !important;
         font-size: .16rem;
-
         li {
           padding-left: .25rem;
           position: relative;
-          
           &::before {
             content: "";
             display: inline-block;
@@ -114,14 +102,12 @@
       }
     }
   }
-
   .hint {
-    color:#265470;
+    color: #265470;
     line-height: .4rem;
-    text-align:left;
+    text-align: left;
     font-size: .14rem
   }
-
   ul {
     padding: 0
   }
@@ -130,23 +116,20 @@
 .invite-flow {
   .content {
     padding: .7rem 0 .2rem;
-
     p {
       display: inline;
       font-size: .16rem;
-      color:#2ba2f0;
-
+      color: #2ba2f0;
       span {
-        border:1px solid #2ba2f0;
+        border: 1px solid #2ba2f0;
         padding: .15rem .3rem;
         border-radius: .3rem
       }
-
       &.pr::after {
         content: "";
         display: inline-block;
-        width:0px;
-        height:0px;
+        width: 0px;
+        height: 0px;
         border-bottom: .1rem solid transparent;
         border-top: .1rem solid transparent;
         border-left: .1rem solid #2ba2f0;
@@ -157,19 +140,18 @@
   }
 }
 
-.invite-rule > .content {
+.invite-rule>.content {
   padding-top: .4rem;
-
   p {
     text-align: left;
     font-size: .14rem;
-    color:#033859;
-    letter-spacing:1.18px;
+    color: #033859;
+    letter-spacing: 1.18px;
     line-height: .25rem;
   }
 }
 
-.invite-customer > .invite-title > h2 {
+.invite-customer>.invite-title>h2 {
   width: 742px;
   margin-bottom: .6rem;
 }
@@ -182,18 +164,15 @@
   background-size: cover;
   padding-top: .4rem;
   position: relative;
-
   h2 {
     font-size: .30rem;
-    color:#ffffff;
-    text-align:center;
+    color: #ffffff;
+    text-align: center;
     font-weight: lighter;
-
     &.font-bold {
       font-weight: bold
     }
   }
-
   .actions>a {
     display: block;
     position: absolute;
@@ -207,7 +186,6 @@
     line-height: .4rem;
     font-size: .22rem;
     text-align: center;
-    
     a:hover {
       background-color: #e6e6e6
     }
@@ -240,7 +218,6 @@
 @media (max-width: 768px) {
   .invite-banner {
     height: 5.15rem;
-
     .actions>a {
       margin-left: -1.2rem;
       bottom: .46rem;
