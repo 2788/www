@@ -59,6 +59,19 @@
       }
     }
   }
+  &.hero-niuday.niuday-meitu {
+    background-image: image-url('niuday/banner-bg-meitu.jpg') !important;
+    .img-wrapper {
+      top: 3.50rem;
+      padding-bottom: 0;
+      h4 {
+        font-size: 20px;
+      }
+      .btn-banner {
+        margin-top: 0;
+      }
+    }
+  }
   .banner-desc-right {
     width: 100%;
     left: 60%;
@@ -239,7 +252,6 @@
       .banner-desc {
         h2 {
           font-size: 0.35rem;
-          font-weight: 800;
         }
         p {
           padding-top: 0.10rem;
@@ -542,6 +554,16 @@
       img {
         width: 80%;
         height: auto;
+      }
+    }
+    &.niuday-meitu {
+      .img-wrapper {
+        top: 3.20rem !important;
+        h4 {
+          font-size: 16px !important;
+          padding-bottom: 10px;
+          margin-bottom: 0;
+        }
       }
     }
   }
