@@ -1220,18 +1220,6 @@ en:
             - image: "censor/advantage-performe.png"
               title: "性能卓越"
               describe: "内容审核准确率达到 99.5%，同时响应时间小于 0.1s，可替代 90% 以上人工审核，并提供 7*24 小时全天候服务。"
-        supervise:
-          title: "监管部门技术合作"
-          cols:
-            - icon: "censor/icon-country.png"
-              content:
-                - "公安部网络安全保卫局"
-                - "北京市网信办"
-            - icon: "censor/icon-police.png"
-              content:
-                - "北京市公安局"
-                - "上海市公安局"
-                - "江苏省公安厅"
         demo:
           title: "功能演示"
         scene:
@@ -1787,13 +1775,6 @@ en:
               time: 2018/04/11
               site: 杭州海外海皇冠大酒店
               link: niudays_hangzhou
-          - img: "niuday/img-xiamen.jpg"
-            site: 厦门
-            time:
-            details:
-              time:
-              site:
-              link: niudays
           - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
@@ -1838,6 +1819,13 @@ en:
               link: niudays
           - img: "niuday/img-wuhan.jpg"
             site: 武汉
+            time:
+            details:
+              time:
+              site:
+              link: niudays
+          - img: "niuday/img-xiamen.jpg"
+            site: 厦门
             time:
             details:
               time:
