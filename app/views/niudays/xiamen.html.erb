@@ -1,0 +1,165 @@
+<div class="jumbotron hero hero-niuday niuday-meitu">
+  <div class="container">
+    <div class="img-wrapper">
+      <h4 class="text-center p-sm">2018 年 7 月 28 日 · 厦门市 福建厦门软件园二期观日路33号3F</h4>
+      <%= link_to "立即报名", "", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <p class="text">随着人工智能在我国移动互联网、智能家居、智能安防、智慧教育等等领域的发展，我国人工智能产业持续高速成长。从2014年起，中国人工智能产业的创业潮就开始兴起，直至2018年，机器学习、深度学习等算法能力的增强将促进计算机视觉等技术不断突破。人工智能在2018年将面临爆发式的商业化着陆，在这个智能时代，七牛云NIUDAY小牛汇共享日活动围绕自身产品重点产品线将在全国10多个城市围绕行业、技术和创新展开全方位的探讨和分享，一起用AI技术赋能未来，“智”造梦想。</p>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">大会嘉宾</h2>
+      <p class="time">以下排名不分先后</p>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.xiamen.guest").each do |unit| %>
+        <div class="three-sm-1 col-xs-6">
+          <div class="guest">
+            <%= image_tag unit[:img], width: '100' %>
+            <h5><%= unit[:name] %></h5>
+            <h5><%= unit[:title] %></h5>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">大会议程</h2>
+      <p class="time">13:00 – 17:30</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-niuday-meeting">
+        <thead>
+          <tr>
+            <th colspan="2">议题</th>
+            <th>演讲人</th>
+            <th>时长</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>议题一</td>
+            <td>“视觉智能的革命” — 打造视频云时代的AI创新服务体系</td>
+            <td>姚唐仁 - 七牛云人工智能实验室首席架构师</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题二</td>
+            <td>美图在海量多媒体数据检索方面的探索和应用</td>
+            <td>刘旭 - 美图云高级计算机视觉研发专家</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题三</td>
+            <td>基于深度学习的目标检测算法实践</td>
+            <td>苏松志 - 厦门大学智能科学与技术系副教授</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题四</td>
+            <td>视频监控场景中人工智能技术的探索与落地</td>
+            <td>刘晓程 - 罗普特人工智能产业研究院 策略算法部负责人</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题五</td>
+            <td>基于用户行为的短视频聚类实践</td>
+            <td>白杨 - 美图云高级算法专家</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题六</td>
+            <td>广电新媒体业务融合的探索与实践</td>
+            <td>姚建兵 - 华数互联网技术部技术负责人</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题七</td>
+            <td>自然语言人机交互的伪人工智能困境</td>
+            <td>蔡振华 - 快商通合伙人，AI引擎平台研发中心副总监</td>
+            <td>30 min</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">合作媒体</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.xiamen.medias").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">合作伙伴</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.xiamen.partners").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="intro">
+    <h2 class="title border-y">参会指南</h2>
+  </div>
+
+  <div class="desc-wrapper">
+    <div class="content">
+      <p class="desc text-left">1.报名审核成功后，主办方会统一短信通知会议地址及详情。</p>
+      <p class="desc text-left">2.会议签到凭证为成功报名后收到的二维码，一人一票。</p>
+      <p class="desc text-left">3.线上报名截止日为7月28日0时，不接受现场报名。</p>
+    </div>
+  </div>
+</div> 

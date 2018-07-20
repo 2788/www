@@ -1806,6 +1806,13 @@ zh-CN:
               time: 2018/04/11
               site: 杭州海外海皇冠大酒店
               link: niudays_hangzhou
+          - img: "niuday/img-xiamen.jpg"
+            site: 厦门
+            time:
+            details:
+              time:
+              site:
+              link: niudays
           - img: "niuday/img-beijing.jpg"
             site: 北京
             time:
@@ -1850,13 +1857,6 @@ zh-CN:
               link: niudays
           - img: "niuday/img-wuhan.jpg"
             site: 武汉
-            time:
-            details:
-              time:
-              site:
-              link: niudays
-          - img: "niuday/img-xiamen.jpg"
-            site: 厦门
             time:
             details:
               time:
@@ -2239,6 +2239,8 @@ zh-CN:
       title: NIUDAY小牛汇共享日_西安站
     niudays_shenzhen:
       title: NIUDAY小牛汇共享日_深圳站
+    niudays_xiamen:
+      title: NIUDAY小牛汇共享日_厦门站
   cases1:
     - groupid: enterprise
       group:
@@ -2736,3 +2738,79 @@ zh-CN:
         - img: 'niuday/partnerslog/logo-itdakashuo.png'
         - img: 'niuday/partnerslog/logo-3wqifu.png'
         - img: 'niuday/partnerslog/logo-huodongxing.png'
+    xiamen:
+      guest:
+        - img: 'niuday/avatar-yaotangren.png'
+          name: 姚唐仁
+          title: 七牛云人工智能实验室首席架构师
+        - img: 'niuday/avatar-liuxu.png'
+          name: 刘旭
+          title: 美图云高级计算机视觉研发专家
+        - img: 'niuday/avatar-susongzhi.png'
+          name: 苏松志
+          title: 厦门大学智能科学与技术系副教授
+        - img: 'niuday/avatar-liuxiaocheng.png'
+          name: 刘晓程
+          title: 罗普特人工智能产业研究院 策略算法部 部门经理
+        - img: 'niuday/avatar-baiyang.png'
+          name: 白杨
+          title: 美图云高级算法专家
+        - img: 'niuday/avatar-yaojianbing.png'
+          name: 姚建兵
+          title: 华数互联网技术部技术负责人
+        - img: 'niuday/avatar-caizhenhua.png'
+          name: 蔡振华
+          title: 快商通合伙人，AI引擎平台研发中心副总监
+      medias:
+        - img: 'niuday/mediaslog/logo-leifengwang.png'
+        - img: 'niuday/mediaslog/logo-yiou.png'
+        - img: 'niuday/mediaslog/logo-chuangyebang.png'
+        - img: 'niuday/mediaslog/logo-itjuzi.png'
+        - img: 'niuday/mediaslog/logo-huxiu.png'
+        - img: 'niuday/mediaslog/logo-pinwan.png'
+        - img: 'niuday/mediaslog/logo-chuangyeheima.png'
+        - img: 'niuday/mediaslog/logo-chuangtoutiao.png'
+        - img: 'niuday/mediaslog/logo-jikebang.png'
+        - img: 'niuday/mediaslog/logo-51cto.png'
+        - img: 'niuday/mediaslog/logo-csdn.png'
+        - img: 'niuday/mediaslog/logo-kaiyuanzhongguo.png'
+        - img: 'niuday/mediaslog/logo-meikewang.png'
+        - img: 'niuday/mediaslog/logo-doit.png'
+        - img: 'niuday/mediaslog/logo-tongxinshijie.png'
+        - img: 'niuday/mediaslog/logo-chuangkemao.png'
+        - img: 'niuday/mediaslog/logo-cioshidai.png'
+        - img: 'niuday/mediaslog/logo-yibangdongli.png'
+        - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
+        - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
+        - img: 'niuday/mediaslog/logo-bitewang.png'
+        - img: 'niuday/mediaslog/logo-tuopushe.png'
+      partners:
+        - img: 'niuday/partnerslog/logo-haikangweishi.png'
+        - img: 'niuday/partnerslog/logo-ping.png'
+        - img: 'niuday/partnerslog/logo-daguanshuju.png'
+        - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
+        - img: 'niuday/partnerslog/logo-jiguang.png'
+        - img: 'niuday/partnerslog/logo-juejin.png'
+        - img: 'niuday/partnerslog/logo-weilian.png'
+        - img: 'niuday/partnerslog/logo-pudongruanjianyuan.png'
+        - img: 'niuday/partnerslog/logo-apicloud.png'
+        - img: 'niuday/partnerslog/logo-getui.png'
+        - img: 'niuday/partnerslog/logo-rongdukeji.png'
+        - img: 'niuday/partnerslog/logo-yunheenmo.png'
+        - img: 'niuday/partnerslog/logo-cobub.png'
+        - img: 'niuday/partnerslog/logo-rongyun.png'
+        - img: 'niuday/partnerslog/logo-huanxin.png'
+        - img: 'niuday/partnerslog/logo-yunsuo.png'
+        - img: 'niuday/partnerslog/logo-segmentfault.png'
+        - img: 'niuday/partnerslog/logo-livevideostack.png'
+        - img: 'niuday/partnerslog/logo-it.png'
+        - img: 'niuday/partnerslog/logo-datastory.png'
+        - img: 'niuday/partnerslog/logo-saiia.png'
+        - img: 'niuday/partnerslog/logo-paipaidai.png'
+        - img: 'niuday/partnerslog/logo-chilunyichuang.png'
+        - img: 'niuday/partnerslog/logo-itdakashuo.png'
+        - img: 'niuday/partnerslog/logo-3wqifu.png'
+        - img: 'niuday/partnerslog/logo-huodongxing.png'
+        - img: 'niuday/partnerslog/logo-xiamenwulianwang.png'
+        - img: 'niuday/partnerslog/logo-kuaishangtong.png'
+        - img: 'niuday/partnerslog/logo-yunpian.png'
