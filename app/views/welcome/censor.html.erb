@@ -67,31 +67,8 @@
   </div>
 </div>
 
-<%# supervise tab %>
-<div class="features features-less features-cases features-censor-sup">
-  <div class="container">
-    <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.supervise.title") -%></h2>
-    </div>
-    <div class="row">
-      <% I18n.t("views.welcome.censor.supervise.cols").each do |col| -%>
-        <div class="col-md-6 col-sm-12 col-xs-12 <%= col[:class] -%>">
-          <div class="thumbnail">
-            <%= image_tag col[:icon], class: "media-object", alt: "监管合作", width: 60 -%>
-            <div class="caption">
-              <% col[:content].each do |item| -%>
-                <span><%= item -%></span>
-              <% end -%>
-            </div>
-          </div>
-        </div>
-      <% end -%>
-    </div>
-  </div>
-</div>
-
 <%# scene tab %>
-<div class="features features-censor-scene">
+<div class="features features-less features-cases features-censor-scene">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.welcome.censor.scene.title") -%></h2>
@@ -126,7 +103,7 @@
 </div>
 
 <%# price tab %>
-<div class="features features-less features-cases features-censor-price">
+<div class="features features-censor-price">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.welcome.censor.price.title") -%></h2>
