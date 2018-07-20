@@ -655,7 +655,7 @@ zh-CN:
                 - 手术教学
             - id: "tab-usage-section-4"
               class: "tab-pane"
-              icon: "sdk/img-jiaoyu.png"
+              icon: "sdk/img-jiaoyu.jpg"
               title: "在线教育"
               desc: "灵活支持互动小班、万人大班，Native 和 Web 互通，满足多场景下的教育需求。"
               link: "适用场景："
@@ -666,7 +666,7 @@ zh-CN:
                 - 职业技能培训
             - id: "tab-usage-section-5"
               class: "tab-pane"
-              icon: "sdk/img-kefu.png"
+              icon: "sdk/img-kefu.jpg"
               title: "在线客服"
               desc: "支持向技术支持人员发起视频通话请求，技术支持人员通过视频指导用户操作，快速定位、解决问题，提升服务品质和产品美誉度。"
               link: "适用场景："
@@ -1485,7 +1485,7 @@ zh-CN:
               id: "tab-usage-section-2"
               class: "tab-pane fade"
               desc: 直接使用保存在七牛云中的数据创建数据集，也可以使用打标软件打标，创建满足您特定需求的数据集，得到自定义的算法模型
-              img: "atlab/datacollection.png"
+              img: "atlab/datacollection.jpg"
             - title: 模型发布
               id: "tab-usage-section-4"
               class: "tab-pane fade"
@@ -2800,3 +2800,6 @@ zh-CN:
         - img: 'niuday/partnerslog/logo-xiamenwulianwang.png'
         - img: 'niuday/partnerslog/logo-kuaishangtong.png'
         - img: 'niuday/partnerslog/logo-yunpian.png'
+        - img: 'niuday/partnerslog/logo-xmsir.png'
+        - img: 'niuday/partnerslog/logo-yiketalks.png'
+        - img: 'niuday/partnerslog/logo-chandashi.png'
