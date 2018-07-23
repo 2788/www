@@ -1275,6 +1275,216 @@ zh-CN:
           title: "产品定价"
           subtitle: "七牛云内容审核产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
           describe: "注：18 万张免费额度包含鉴黄、鉴暴恐、政治敏感人物识别三类各 6 万张。免费额度需在开通功能日所在自然月内使用完毕，次月起不再享受。"
+      qavs:
+        title: "智能视频云"
+        describe: "七牛云智能视频云为企业提供智能、一站式的视频解决方案；集海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。"
+        advantage:
+          title: "产品优势"
+          col:
+            - title: "稳定的网络传输与分发"
+              class: "col-md-6 col-sm-6 col-xs-12"
+              icon: "qavs/icon-wangluochuanshu.png"
+              desc: "直播延迟不高于 1s，互动延迟不高于 150ms"
+            - title: "可扩展的海量存储服务"
+              class: "col-md-6 col-sm-6 col-xs-12"
+              icon: "qavs/icon-hailiangcunchu.png"
+              desc: "可实现业务层无感知 PB 级扩容"
+            - title: "云端媒体的编辑处理"
+              class: "col-md-6 col-sm-6 col-xs-12"
+              icon: "qavs/icon-yunduanmeiti.png"
+              desc: "可在数秒内创建独立计算实例，执行自定义媒体编辑操作"
+            - title: "视频内容的智能分析"
+              class: "col-md-6 col-sm-6 col-xs-12"
+              icon: "qavs/icon-zhinengfenxi.png"
+              desc: "视频内容识别率高于 95%"
+            - title: "完备的权限控制"
+              class: "col-md-12 col-sm-12 col-xs-12"
+              icon: "qavs/icon-quanxiankongzhi.png"
+              desc: "彻底杜绝非法拷贝，秒级封禁盗链流量"
+        service:
+          title: "一站式智能视频云专属服务"
+          table:
+            titleimg: "qavs/icon-shipinyun.png"
+            titlealt: "七牛智能视频云"
+            titleh: 22
+            tableleft:
+              row1:
+                - img: "qavs/icon-zhibo.png"
+                  class: "m-r-2 m-l-2 icon-link"
+                  alt: "直播"
+                  height: 22
+                  link: "/products/pili"
+                  target: "_self"
+                - img: "qavs/icon-dianbo.png"
+                  class: "m-r-2 m-l-2 icon-link"
+                  alt: "点播"
+                  height: 22
+                  link: "/products/plsv"
+                  target: "_self"
+                - img: "qavs/icon-yinshipin.png"
+                  class: "m-r-2 m-l-2 icon-link"
+                  alt: "实时音视频"
+                  height: 22
+                  link: "/products/rtn"
+                  target: "_self"
+              row2:
+                - img: "qavs/icon-tuiliusdk.png"
+                  colclass: "m-r-2"
+                  class: "icon-link"
+                  alt: "推流 SDK"
+                  height: 22
+                  link: "https://developer.qiniu.com/pili/manual/3808/streaming-sdk-intro"
+                  target: "_blank"
+                - img: "qavs/icon-bofangsdk.png"
+                  colclass: "m-r-2"
+                  class: "icon-link"
+                  alt: "播放 SDK"
+                  height: 22
+                  link: "/products/player"
+                  target: "_self"
+                - img: "qavs/icon-duanshipinsdk.png"
+                  colclass: ""
+                  class: "icon-link"
+                  alt: "短视频 SDK"
+                  height: 22
+                  link: "https://developer.qiniu.com/pili/sdk/3919/a-short-video-the-white-paper"
+                  target: "_blank"
+              row3:
+                - img: "qavs/icon-neirongchuli.png"
+                  colclass: "m-r-2"
+                  class: "icon-link"
+                  alt: "内容处理"
+                  height: 22
+                  link: "/products/dora"
+                  target: "_self"
+                - img: "qavs/icon-shipinzhineng.png"
+                  colclass: ""
+                  class: "icon-link"
+                  alt: "视频智能"
+                  height: 22
+                  link: "/products/censor"
+                  target: "_self"
+              row4:
+                - img: "qavs/icon-duixiangcunchu.png"
+                  colclass: "m-r-2 m-b-0"
+                  class: "icon-link"
+                  alt: "对象存储"
+                  height: 22
+                  link: "/products/kodo"
+                  target: "_self"
+                - img: "qavs/icon-shishiliuwangluo.png"
+                  colclass: "m-r-2 m-b-0"
+                  class: "icon-link"
+                  alt: "实时流网络"
+                  height: 22
+                  link: "https://developer.qiniu.com/pili/manual/3812/LiveNet-intro"
+                  target: "_blank"
+                - img: "qavs/icon-neirongfenfa.png"
+                  colclass: "m-r-2 m-b-0"
+                  class: "icon-link"
+                  alt: "内容分发网络"
+                  height: 22
+                  link: "/products/fusion"
+                  target: "_self"
+                - img: "qavs/icon-liumeitijisuan.png"
+                  colclass: "m-b-0"
+                  class: ""
+                  alt: "流媒体计算平台"
+                  height: 22
+                  link: ""
+                  target: ""
+            tableright:
+              - img: "qavs/icon-yunyingxitong.png"
+                rowclass: "content-light m-b-5px"
+                alt: "统一运营系统"
+                height: 22
+              - img: "qavs/icon-zhinengfabuguanli.png"
+                rowclass: ""
+                alt: "智能发布管理"
+                height: 36
+              - img: "qavs/icon-zhinengneirongyunying.png"
+                rowclass: ""
+                alt: "智能内容运营"
+                height: 36
+              - img: "qavs/icon-zhinengshujufenxi.png"
+                rowclass: "m-b-10px"
+                alt: "智能数据分析"
+                height: 36
+        scene:
+          title: "试用场景"
+          tabs:
+            - name: "安防监控"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "在线教育"
+              class: ""
+              href: "#tab-scene-2"
+            - name: "广电新媒体"
+              class: ""
+              href: "#tab-scene-3"
+            - name: "智慧法院"
+              class: ""
+              href: "#tab-scene-4"
+            - name: "远程医疗"
+              class: ""
+              href: "#tab-scene-5"
+          sections:
+            - id: "tab-scene-1"
+              class: "tab-pane fade in active"
+              image: "qavs/img-scene-anfang.jpg"
+              title: "安防监控"
+              desc: "视频监控领域正在面临着产业升级，使得安防监控与互联网更加紧密地结合。七牛智能视频云助力用户快速打造道路交通监控、城市安全监控、公共区域监控、家庭安防监控场景下的智能监控平台。"
+            - id: "tab-scene-2"
+              class: "tab-pane fade"
+              image: "qavs/img-scene-jiaoyu.jpg"
+              title: "在线教育"
+              desc: "利用互联网音视频技术，在线教育解决了优质教育资源传递的时空限制。七牛智能视频云助力用户打造集直播课堂、实时互动、点播回放、智能视频标签、智能视频推荐等功能为一体的在线教育平台。"
+            - id: "tab-scene-3"
+              class: "tab-pane fade"
+              image: "qavs/img-scene-xinmeiti.jpg"
+              title: "广电新媒体"
+              desc: "面对传统广电媒体向融合媒体转型的需求，七牛智能视频云提供从制作生产、多级审核、媒资管理、传播分发到智能数据采集分析的一站式解决方案。"
+            - id: "tab-scene-4"
+              class: "tab-pane fade"
+              image: "qavs/img-scene-fayuan.jpg"
+              title: "智慧法院"
+              desc: "依托七牛智能视频云，司法机构可以充分运用互联网、大数据、云计算、人工智能等先进信息技术实现海量视频存储、公开开庭案件实时直播、视频及文书内容检索分析等场景。"
+            - id: "tab-scene-5"
+              class: "tab-pane fade"
+              image: "qavs/img-scene-yiliao.jpg"
+              title: "远程医疗"
+              desc: "当前医疗资源还存在着地区分布不均问题，远程医疗解决了跨区域医疗问题。依托七牛智能视频云，医疗机构可以打造一站式新医疗生态，实现临床交互式会诊、远程影像会诊、远程医疗培训等。"
+        product:
+          document:
+            title: "常用文档"
+            links:
+              - title: "直播云技术白皮书"
+                link: "https://developer.qiniu.com/pili/manual/1209/live-the-core-function"
+                target: "_blank"
+              - title: "直播架构快速搭建"
+                link: "https://developer.qiniu.com/pili/manual/1217/live-architecture-fleetly"
+                target: "_blank"
+              - title: "七牛短视频白皮书"
+                link: "https://developer.qiniu.com/pili/sdk/3919/a-short-video-the-white-paper"
+                target: "_blank"
+              - title: "实时音视频白皮书"
+                link: "https://developer.qiniu.com/rtn/manual/4373/cloud-real-time-audio-and-video-interaction"
+                target: "_blank"
+          sdk:
+            title: "SDK 及工具"
+            links:
+              - title: "音视频 SDK 下载"
+                link: "https://www.qiniu.com/products/sdk"
+                target: "_blank"
+          other:
+            title: "其他"
+            links:
+              - title: "短视频 demo 体验"
+                link: "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download?ref=www.qiniu.com"
+                target: "_blank"
+              - title: "实时音视频 demo 体验"
+                link: "https://developer.qiniu.io/rtn/manual/4374/the-demo-experience?ref=www.qiniu.com"
+                target: "_blank"
       dora:
         title: "智能多媒体 API"
         desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
@@ -2104,8 +2314,12 @@ zh-CN:
       title: CDN加速_CDN加速服务-七牛云
       keywords: 高防CDN，动态CDN，静态CDN，CDN，CDN加速，CDN加速服务, 七牛CDN，CDN服务器，内容分发，云加速，融合CDN，图片CDN，视频CDN
       description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
+    welcome_qavs:
+      title: 智能视频云 - 七牛云
+      keywords: 
+      description: 
     welcome_dora:
-      title: 智能多媒体API  - 七牛云
+      title: 智能多媒体API - 七牛云
       keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR,发票识别，场景识别，鉴黄，暴恐审核
       description: 七牛智能多媒体API支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR文字识别和内容审核等在线API服务。
     welcome_kirk:

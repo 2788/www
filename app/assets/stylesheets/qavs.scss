@@ -1,0 +1,117 @@
+.hero-qavs {
+  .container {
+    h1 {
+      margin-top: 0.40rem;
+      font-size: 0.50rem;
+    }
+    p {
+      margin-top: 0.20rem;
+      font-size: 0.13rem;
+    }
+    .actions {
+      margin-top: 0.20rem;
+    }
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+}
+
+.features-qavs-service {
+  .table-container {
+    overflow-x: auto;
+  }
+  .service-table {
+    width: 100%;
+    border: 1px solid #6997E2;
+    border-radius: 0.10rem;
+    min-width: 940px;
+    .service-row {
+      margin: 0;
+      .service-col {
+        height: 0.50rem;
+        line-height: 0.50rem;
+        text-align: center;
+      }
+      .content-border {
+        border: 1px solid #B8CDEE;
+        border-radius: 0.10rem;
+      }
+      .content-light {
+        border-top-left-radius: 0.10rem;
+        border-top-right-radius: 0.10rem;
+        background-color: #E5EBF5;
+      }
+      .col-3 {
+        width: 23.5%;
+      }
+      .col-4 {
+        width: 32%;
+      }
+      .col-6 {
+        width: 49%;
+      }
+      .m-r-2 {
+        margin-right: 2%;
+      }
+      .m-l-2 {
+        margin-left: 2%;
+      }
+      .m-b-0 {
+        margin-bottom: 0;
+      }
+      .m-b-5px {
+        margin-bottom: 5px;
+      }
+      .m-b-10px {
+        margin-bottom: 10px;
+      }
+    }
+    .icon-link {
+      cursor: pointer;
+      -webkit-transition: all .3s linear;
+      -moz-transition: all .3s linear;
+      transition: all .3s linear;
+      &:hover {
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+      }
+    }
+  }
+}
+
+.features-qavs-scene {
+  .container {
+    .col-left {
+      margin-bottom: 0.20rem;
+    }
+    .col-right {
+      h3 {
+        margin-top: 0;
+      }
+      .desc {
+        margin-top: 0.30rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .features-qavs-adva {
+    .media-body {
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-qavs-adva {
+    .media-body {
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
