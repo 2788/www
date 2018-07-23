@@ -1964,6 +1964,13 @@ en:
               link: "http://hd.qiniu.com/arch/history/1"
       niuday:
         events:
+          - img: "niuday/img-xiamen.jpg"
+            site: 厦门
+            time: 2018/07/28
+            details:
+              time: 2018/07/28
+              site: 福建厦门软件园二期观日路33号3F
+              link: niudays_xiamen
           - img: "niuday/img-shenzhen.jpg"
             site: 深圳
             time: 2018/06/23
@@ -2029,13 +2036,6 @@ en:
               link: niudays
           - img: "niuday/img-wuhan.jpg"
             site: 武汉
-            time:
-            details:
-              time:
-              site:
-              link: niudays
-          - img: "niuday/img-xiamen.jpg"
-            site: 厦门
             time:
             details:
               time:
