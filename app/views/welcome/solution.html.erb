@@ -101,8 +101,12 @@
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
           <h5 class="icon50 icon-kodo">对象存储</h5>
           <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-          <h5 class="icon50 icon-xsex">鉴黄</h5>
-          <h5 class="icon50 icon-violence">暴恐审核</h5>
+          <h5 class="icon50 icon-xsex">
+            <%= link_to "鉴黄", products_censor_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-violence">
+            <%= link_to "暴恐审核", products_censor_path, target: "_blank" -%>
+          </h5>
           <h5 class="icon50 icon-fusion">融合 CDN</h5>
           <h5 class="icon50 icon-minplsv">短视频SDK</h5>
         </div>
@@ -152,9 +156,15 @@
           <h5 class="icon50 icon-kodo">对象存储</h5>
           <h5 class="icon50 icon-dora">智能多媒体 API</h5>
           <h5 class="icon50 icon-fusion">融合 CDN</h5>
-          <h5 class="icon50 icon-face">人脸识别</h5>
-          <h5 class="icon50 icon-scene">场景识别</h5>
-          <h5 class="icon50 icon-object">物体识别</h5>
+          <h5 class="icon50 icon-face">
+            <%= link_to "人脸识别", products_dora_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-scene">
+            <%= link_to "场景识别", products_dora_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-object">
+            <%= link_to "物体识别", products_dora_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
       <div class="col-sm-4 col-scene">
@@ -200,8 +210,12 @@
           <h5 class="icon50 icon-dora">智能多媒体 API</h5>
           <h5 class="icon50 icon-deepLearn">深度学习平台</h5>
           <h5 class="icon50 icon-pili">直播云</h5>
-          <h5 class="icon50 icon-vance">点播云</h5>
-          <h5 class="icon50 icon-pandora">大数据平台</h5>
+          <h5 class="icon50 icon-vance">
+            <%= link_to "点播云", products_plsv_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-pandora">
+            <%= link_to "大数据平台", products_insight_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
       <div class="col-sm-4 col-scene">
@@ -239,9 +253,15 @@
           <h5 class="icon50 icon-fusion">融合 CDN</h5>
           <h5 class="icon50 icon-pili">直播云</h5>
           <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-          <h5 class="icon50 icon-pandora">大数据平台</h5>
-          <h5 class="icon50 icon-xsex">鉴黄</h5>
-          <h5 class="icon50 icon-violence">暴恐审核</h5>
+          <h5 class="icon50 icon-pandora">
+            <%= link_to "大数据平台", products_insight_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-xsex">
+            <%= link_to "鉴黄", products_censor_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-violence">
+            <%= link_to "暴恐审核", products_censor_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
       <div class="col-sm-4 col-scene">
@@ -375,9 +395,15 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature9.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature9.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-mass">移动 APP 质量分析</h5>
-          <h5 class="icon50 icon-cdn">CDN 质量分析</h5>
-          <h5 class="icon50 icon-kirk">直播质量分析</h5>
+          <h5 class="icon50 icon-mass">
+            <%= link_to "移动 APP 质量分析", products_insight_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-cdn">
+            <%= link_to "CDN 质量分析", products_insight_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-kirk">
+            <%= link_to "直播质量分析", products_insight_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
       <div class="col-sm-4 col-scene">

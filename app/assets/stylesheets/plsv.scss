@@ -1,3 +1,17 @@
+.jumbotron.hero.plsv {
+  .actions {
+    white-space: nowrap;
+    .btn {
+      margin-right: 5px;
+      padding: 0.10rem;
+    }
+  }
+  .sdk-link {
+    font-size: 0.18rem;
+    color: #FFF;
+  }
+}
+
 .features.plsv-services {
   .iphone-box {
     display: none;
