@@ -62,13 +62,9 @@
   &.hero-niuday.niuday-meitu {
     background-image: image-url('niuday/banner-bg-meitu.jpg') !important;
     .img-wrapper {
-      top: 3.50rem;
-      padding-bottom: 0;
+      top: 3.30rem;
       h4 {
         font-size: 20px;
-      }
-      .btn-banner {
-        margin-top: 0;
       }
     }
   }
@@ -559,7 +555,7 @@
     }
     &.niuday-meitu {
       .img-wrapper {
-        top: 3.20rem !important;
+        top: 3.00rem !important;
         h4 {
           font-size: 16px !important;
           padding-bottom: 10px;
