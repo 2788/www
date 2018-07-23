@@ -22,7 +22,11 @@
       <div class="col-sm-8 col-solution right-line">
         <h2 class="icon140 icon-privatization"><%= I18n.t("views.welcome.solution.feature1.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature1.desc") %><%= link_to I18n.t("views.welcome.solution.feature1.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
-        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><h5 class="icon50 icon-kodo">对象存储</h5></div>
+        <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+        </div>
       </div>
       <div class="col-sm-4 col-scene">
         <div class="col-scene_scene <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
@@ -65,8 +69,12 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature2.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature2.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
           <h5 class="icon50 icon-hailiang">海量业务属性管理</h5>
         </div>
       </div>
@@ -99,16 +107,24 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature3.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature3.btn"), products_plsv_path, class: "more" -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
           <h5 class="icon50 icon-xsex">
             <%= link_to "鉴黄", products_censor_path, target: "_blank" -%>
           </h5>
           <h5 class="icon50 icon-violence">
             <%= link_to "暴恐审核", products_censor_path, target: "_blank" -%>
           </h5>
-          <h5 class="icon50 icon-fusion">融合 CDN</h5>
-          <h5 class="icon50 icon-minplsv">短视频SDK</h5>
+          <h5 class="icon50 icon-fusion">
+            <%= link_to "融合 CDN", products_fusion_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-minplsv">
+            <%= link_to "短视频 SDK", products_plsv_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
 
@@ -153,9 +169,15 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature4.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature4.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-fusion">
+            <%= link_to "融合 CDN", products_fusion_path, target: "_blank" -%>
+          </h5>
           <h5 class="icon50 icon-face">
             <%= link_to "人脸识别", products_dora_path, target: "_blank" -%>
           </h5>
@@ -205,11 +227,21 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature5.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature5.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-fusion">融合 CDN</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-          <h5 class="icon50 icon-deepLearn">深度学习平台</h5>
-          <h5 class="icon50 icon-pili">直播云</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-fusion">
+            <%= link_to "融合 CDN", products_fusion_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-deepLearn">
+            <%= link_to "深度学习平台", products_atlab_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-pili">
+            <%= link_to "直播云", products_pili_path, target: "_blank" -%>
+          </h5>
           <h5 class="icon50 icon-vance">
             <%= link_to "点播云", products_plsv_path, target: "_blank" -%>
           </h5>
@@ -249,10 +281,18 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature6.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature6.btn"), products_newmedia_path, class: "more" -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-fusion">融合 CDN</h5>
-          <h5 class="icon50 icon-pili">直播云</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-fusion">
+            <%= link_to "融合 CDN", products_fusion_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-pili">
+            <%= link_to "直播云", products_pili_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
           <h5 class="icon50 icon-pandora">
             <%= link_to "大数据平台", products_insight_path, target: "_blank" -%>
           </h5>
@@ -293,10 +333,18 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature7.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature7.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-          <h5 class="icon50 icon-pili">直播云</h5>
-          <h5 class="icon50 icon-fusion">融合 CDN</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-pili">
+            <%= link_to "直播云", products_pili_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-fusion">
+            <%= link_to "融合 CDN", products_fusion_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
       <div class="col-sm-4 col-scene">
@@ -337,11 +385,21 @@
         <p class="content"><%= I18n.t("views.welcome.solution.feature8.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature8.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
         <div class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <h5 class="icon50 icon-kodo">对象存储</h5>
-          <h5 class="icon50 icon-fusion">融合 CDN</h5>
-          <h5 class="icon50 icon-dora">智能多媒体 API</h5>
-          <h5 class="icon50 icon-pili">直播云</h5>
-          <h5 class="icon50 icon-vance">点播云</h5>
+          <h5 class="icon50 icon-kodo">
+            <%= link_to "对象存储", products_kodo_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-fusion">
+            <%= link_to "融合 CDN", products_fusion_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-dora">
+            <%= link_to "智能多媒体 API", products_dora_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-pili">
+            <%= link_to "直播云", products_pili_path, target: "_blank" -%>
+          </h5>
+          <h5 class="icon50 icon-vance">
+            <%= link_to "点播云", products_plsv_path, target: "_blank" -%>
+          </h5>
         </div>
       </div>
       <div class="col-sm-4 col-scene">

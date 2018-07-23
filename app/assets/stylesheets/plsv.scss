@@ -9,6 +9,9 @@
   .sdk-link {
     font-size: 0.18rem;
     color: #FFF;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
