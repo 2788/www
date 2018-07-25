@@ -1412,7 +1412,7 @@ zh-CN:
                 alt: "智能数据分析"
                 height: 36
         scene:
-          title: "试用场景"
+          title: "适用场景"
           tabs:
             - name: "安防监控"
               class: "active"

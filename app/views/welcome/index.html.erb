@@ -23,11 +23,11 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="banner-desc">
-                <h1>实时音视频云正式上线</h1>
+                <h1>实时音视频云</h1>
                 <p>基于&nbsp;<span class="text-warn">WebRTC</span>&nbsp;的一站式解决方案</p>
                 <p>零基础搭建实时音视频平台</p>
               </div>
-              <%= link_to "免费使用", products_rtn_path, class:"btn btn-lg btn-primary btn-banner" -%>
+              <%= link_to "免费使用", products_rtn_path, class:"btn btn-lg btn-hollow btn-banner" -%>
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@
                 <h1>智能日志管理平台 <span class="text-warn">重磅升级</span></h1>
                 <p>海量异构数据采集，秒级实时日志检索，高效智能业务洞察，企业数据统一管理</p>
               </div>
-              <%= link_to "查看详情", products_insight_path, class:"btn btn-lg btn-default btn-banner" -%>
+              <%= link_to "免费开通", products_insight_path, class:"btn btn-lg btn-hollow btn-banner" -%>
             </div>
           </div>
         </div>
@@ -54,18 +54,13 @@
       <div class="container">
         <div class="middle-container">
           <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-12">
               <div class="banner-desc">
                 <h2>短视频
                   <span class="text-warn"> 0 元</span>体验包限量领取</h2>
                 <p>1.5M 最小包体，100+ 丰富功能，3 小时集成应用</p>
               </div>
               <%= link_to "立即领取", products_plsv_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-            <div class="col-sm-5 hidden-xs">
-              <div class="right-mask-banner">
-                <%= image_tag "banner/banner-plsv-right-zh.png", alt: "短视频", width: "90%" -%>
-              </div>
             </div>
           </div>
         </div>
@@ -75,9 +70,16 @@
     <div class="jumbotron hero hero-cdnprice">
       <div class="container">
         <div class="middle-container">
-          <div class="banner-container">
-            <%= link_to "查看详情", cdnprice2018_path, class:"btn btn-lg btn-hollow btn-banner" %>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="banner-desc">
+                <h2>融合 CDN 全面降价</h2>
+                <p>最多可节省 <span class="text-warn">46%</span></p>
+                <p>最低只需 <span class="text-warn">0.14 元/GB</span></p>
+              </div>
+              <%= link_to "查看详情", cdnprice2018_path, class:"btn btn-lg btn-hollow btn-banner" %>
               <p class="tips">注：价格生效日期 2018 年 1 月 1 日</p>
+            </div>
           </div>
         </div>
       </div>
@@ -97,7 +99,7 @@
               <p>基于深度学习赋能用户高效审核</p>
             </div>
             <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4431/bucket-audit", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-              <h6>保障内容安全 降低违规风险</h6>
+            <p class="tips">保障内容安全 降低违规风险</p>
           </div>
         </div>
       </div>
@@ -107,17 +109,12 @@
       <div class="container">
         <div class="middle-container">
           <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-12">
               <div class="banner-desc">
-                <h2>七牛云播放器重磅上线</h2>
-                <p>秒开 200 ms，包体最小至 400 KB，千万日活验证</p>
+                <h2>七牛云播放器</h2>
+                <p>秒开 <span class="text-warn">200 ms</span>，包体最小至 <span class="text-warn">400 KB</span>，千万日活验证</p>
               </div>
               <%= link_to "免费使用", products_player_path, class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-            <div class="col-sm-5 hidden-xs">
-              <div class="right-mask-banner">
-                <%= image_tag "player/banner-right.png", alt: "播放器", width: '80%' %>
-              </div>
             </div>
           </div>
         </div>
