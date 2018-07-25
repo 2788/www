@@ -958,7 +958,7 @@ en:
         actions:
           - title: "免费开通"
             class: "btn btn-lg btn-default m-r m-b-xs"
-            link: "https://portal.qiniu.com/apply-insight"
+            link: "https://portal.qiniu.com/signup/choice"
             target: "_blank"
           - title: "快速入门"
             class: "btn btn-lg btn-default m-r m-b-xs"
@@ -1260,7 +1260,7 @@ en:
           describe: "注：18 万张免费额度包含鉴黄、鉴暴恐、政治敏感人物识别三类各 6 万张。免费额度需在开通功能日所在自然月内使用完毕，次月起不再享受。"
       qavs:
         title: "智能视频云"
-        describe: "七牛云智能视频云为企业提供智能、一站式的视频解决方案；集海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。"
+        describe: "七牛智能视频云为企业提供智能、高效、一站式的视频解决方案，帮助企业节省70%系统自建成本，并集成海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。"
         advantage:
           title: "产品优势"
           col:
@@ -1297,19 +1297,19 @@ en:
                   alt: "直播"
                   height: 22
                   link: "/products/pili"
-                  target: "_self"
+                  target: "_blank"
                 - img: "qavs/icon-dianbo.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "点播"
                   height: 22
                   link: "/products/plsv"
-                  target: "_self"
+                  target: "_blank"
                 - img: "qavs/icon-yinshipin.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "实时音视频"
                   height: 22
                   link: "/products/rtn"
-                  target: "_self"
+                  target: "_blank"
               row2:
                 - img: "qavs/icon-tuiliusdk.png"
                   colclass: "m-r-2"
@@ -1324,7 +1324,7 @@ en:
                   alt: "播放 SDK"
                   height: 22
                   link: "/products/player"
-                  target: "_self"
+                  target: "_blank"
                 - img: "qavs/icon-duanshipinsdk.png"
                   colclass: ""
                   class: "icon-link"
@@ -1339,14 +1339,14 @@ en:
                   alt: "内容处理"
                   height: 22
                   link: "/products/dora"
-                  target: "_self"
+                  target: "_blank"
                 - img: "qavs/icon-shipinzhineng.png"
                   colclass: ""
                   class: "icon-link"
                   alt: "视频智能"
                   height: 22
                   link: "/products/censor"
-                  target: "_self"
+                  target: "_blank"
               row4:
                 - img: "qavs/icon-duixiangcunchu.png"
                   colclass: "m-r-2 m-b-0"
@@ -1354,7 +1354,7 @@ en:
                   alt: "对象存储"
                   height: 22
                   link: "/products/kodo"
-                  target: "_self"
+                  target: "_blank"
                 - img: "qavs/icon-shishiliuwangluo.png"
                   colclass: "m-r-2 m-b-0"
                   class: "icon-link"
@@ -1368,7 +1368,7 @@ en:
                   alt: "内容分发网络"
                   height: 22
                   link: "/products/fusion"
-                  target: "_self"
+                  target: "_blank"
                 - img: "qavs/icon-liumeitijisuan.png"
                   colclass: "m-b-0"
                   class: ""
@@ -1379,20 +1379,32 @@ en:
             tableright:
               - img: "qavs/icon-yunyingxitong.png"
                 rowclass: "content-light m-b-5px"
+                class: ""
                 alt: "统一运营系统"
                 height: 22
+                link: ""
+                target: ""
               - img: "qavs/icon-zhinengfabuguanli.png"
                 rowclass: ""
+                class: ""
                 alt: "智能发布管理"
                 height: 36
+                link: ""
+                target: ""
               - img: "qavs/icon-zhinengneirongyunying.png"
                 rowclass: ""
+                class: ""
                 alt: "智能内容运营"
                 height: 36
+                link: ""
+                target: ""
               - img: "qavs/icon-zhinengshujufenxi.png"
                 rowclass: "m-b-10px"
+                class: "icon-link"
                 alt: "智能数据分析"
                 height: 36
+                link: "/products/insight"
+                target: "_blank"
         scene:
           title: "适用场景"
           tabs:
