@@ -7,7 +7,7 @@
           <p><%= I18n.t("views.welcome.qavs.describe") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
-            <%= link_to "下载白皮书", "https://odum9helk.qnssl.com/lnqwe6Cd22-IsQ6yy-dkbTyd_WGc", target: "_blank", id: "qiniu-gartner", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "下载白皮书", "https://odum9helk.qnssl.com/lsm7Yon7_XwirC_mGIQvRe1Fmkx3", target: "_blank", id: "qiniu-gartner", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-5 hidden-xs">
@@ -16,31 +16,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<%# advantage tab %>
-<div class="features features-qavs-adva">
-  <div class="container">
-    <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qavs.advantage.title") -%></h2>
-    </div>
-
-    <div class="row">
-      <% I18n.t("views.welcome.qavs.advantage.col").each do |col| -%>
-        <div class="<%= col[:class] -%>">
-          <div class="media">
-            <div class="media-left">
-              <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 110 -%></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading"><%= col[:title] -%></h4>
-              <p><%= col[:desc] -%></p>
-            </div>
-          </div>
-        </div>
-      <% end -%>
     </div>
   </div>
 </div>
@@ -115,7 +90,11 @@
               <div class="row service-row content-border">
                 <% I18n.t("views.welcome.qavs.service.table.tableright").each do |row| -%>
                   <div class="col-md-12 col-sm-12 col-xs-12 service-col <%= row[:rowclass] -%>">
-                    <%= image_tag row[:img], alt: row[:alt], height: row[:height] -%>
+                    <% if row[:class].include?"icon-link" -%>
+                      <%= image_tag row[:img], class: row[:class], alt: row[:alt], height: row[:height], onclick: "window.open('" + row[:link] + "', '" + row[:target] + "');" -%>
+                    <% else -%>
+                      <%= image_tag row[:img], class: row[:class], alt: row[:alt], height: row[:height] -%>
+                    <% end -%>
                   </div>
                 <% end -%>
               </div>
@@ -123,6 +102,31 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<%# advantage tab %>
+<div class="features features-qavs-adva">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.qavs.advantage.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.qavs.advantage.col").each do |col| -%>
+        <div class="<%= col[:class] -%>">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 110 -%></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= col[:title] -%></h4>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
     </div>
   </div>
 </div>
