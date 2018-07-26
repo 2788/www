@@ -176,7 +176,7 @@ nav.navbar {
       }
       &.menu-title {
         background-color: rgba(229, 229, 229, 0.06);
-        font-size: 12px;
+        font-size: 14px;
         color: rgb(151, 152, 156);
         padding: 2px 0 2px 20px;
       }
@@ -452,6 +452,26 @@ nav.navbar {
   }
 }
 
+.solutions-menu-col2 {
+  li {
+    display: table;
+    a {
+      display: table-cell;
+      min-width: 3.80rem;
+      p {
+        white-space: normal;
+      }
+    }
+    span {
+      min-width: 3.80rem;
+      display: table-cell;
+      &.group-title {
+        padding: 2px 0 2px 20px;
+      }
+    }
+  }
+}
+
 .scrollbar-light::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #303848;
@@ -518,6 +538,9 @@ nav.navbar {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 25px;
+  }
+  .navbar-default .navbar-nav .solutions-menu-col2 li {
+    width: 100%;
   }
   .navbar-nav {
     margin: 0;
@@ -598,6 +621,12 @@ nav.navbar {
           display: block;
         }
       }
+    }
+  }
+  .navbar-default .navbar-nav .solutions-menu-col2 li {
+    a,
+    span {
+      min-width: 2.80rem;
     }
   }
 }
