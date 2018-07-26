@@ -1220,9 +1220,9 @@ zh-CN:
                 link: "https://developer.qiniu.io/insight/api/4747/workflow-api"
                 target: "_blank"
       censor:
-        title: "内容审核"
+        title: "内容安全"
         subtitle: "双重审核 运营无忧"
-        describe1: "七牛云内容审核基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。"
+        describe1: "七牛云内容安全基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。"
         describe2: "帮助多媒体内容平台避免色情、暴恐和涉政等违规风险，大幅缩减人工审核成本。"
         process:
           title: "标准化内容审核流程"
@@ -1253,10 +1253,10 @@ zh-CN:
           sections:
             - id: "tab-scene-1"
               class: "tab-pane fade in active"
-              describe: "采用七牛云内容审核技术，实现视频直播场景中的涉黄、涉暴恐、政治敏感人物等内容的实时自动审核。操作简单，极大提高内容审核效率。现已支持主流直播平台内容审核，并对网红直播、电竞直播、秀场直播等场景进行大量针对性算法优化。"
+              describe: "采用七牛云内容安全技术，实现视频直播场景中的涉黄、涉暴恐、政治敏感人物等内容的实时自动审核。操作简单，极大提高内容审核效率。现已支持主流直播平台内容审核，并对网红直播、电竞直播、秀场直播等场景进行大量针对性算法优化。"
             - id: "tab-scene-2"
               class: "tab-pane fade"
-              describe: "七牛云内容审核服务支持主流云服务平台空间，可对存储于第三方的资源进行审核，自动识别违规内容。有效减少运营方人工审核成本，控制业务违规风险。并针对互联网社交、电商平台等场景进行大量算法优化。"
+              describe: "七牛云内容安全服务支持主流云服务平台空间，可对存储于第三方的资源进行审核，自动识别违规内容。有效减少运营方人工审核成本，控制业务违规风险。并针对互联网社交、电商平台等场景进行大量算法优化。"
           client:
             title: "客户案例"
             cols:
@@ -1274,7 +1274,7 @@ zh-CN:
                 image: "censor/client-kuwo.png"
         price:
           title: "产品定价"
-          subtitle: "七牛云内容审核产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
+          subtitle: "七牛云内容安全产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
           describe: "注：18 万张免费额度包含鉴黄、鉴暴恐、政治敏感人物识别三类各 6 万张。免费额度需在开通功能日所在自然月内使用完毕，次月起不再享受。"
       qavs:
         title: "智能视频云"
@@ -2146,10 +2146,16 @@ zh-CN:
         - name: pandora
           label: 大数据
           desc: 简单、高效、开放
+
+        - name: censor
+          label: 内容安全
+          desc: 机器+人工一站式内容审核服务，最高标准保障内容安全
+          isNew: true
         
         - name: insight
           label: 智能日志管理平台
           desc: 海量异构数据采集，秒级实时日志检索，高效智能业务洞察
+          isNew: true
 
         - name: dora
           label: 智能多媒体 API
@@ -2226,14 +2232,23 @@ zh-CN:
           desc: 满足智能硬件厂商各应用场景下云端计算需求
           type: solution
       - cols:
-        - name: privatization
-          label: 私有云存储解决方案
-          desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
-          type: solution
+        - name: qavs
+          label: 智能视频云解决方案
+          desc: 集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
+          type: product
         - name: internet
           label: 互联网与移动互联网解决方案
           desc: 为互联网初创企业量身定制，一站式云计算服务平台
           type: solution
+      - cols:
+        - name: privatization
+          label: 私有云存储解决方案
+          desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+          type: solution
+        - name:
+          label:
+          desc:
+          type:
       - cols:
         - name: qualityctrl
           label: 应用质量监控解决方案
@@ -2337,8 +2352,8 @@ zh-CN:
       keywords: 日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控
       description: 实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计、业务数据分析等场景，帮助互联网、智能制造、金融、新媒体、物联网等行业数字化升级。
     welcome_censor:
-      title: 内容审核_视频审核_图片审核 - 七牛云
-      keywords: 内容审核，视频审核，图片审核，智能鉴黄，鉴暴恐，政治人物识别
+      title: 内容安全_内容审核 - 七牛云
+      keywords: 内容审核，视频审核，图片审核，智能鉴黄，鉴暴恐，政治人物识别，内容安全
       description: 七牛云内容审核基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。帮助多媒体内容平台降低色情、暴恐和涉政等违规风险，大幅降低人工审核成本。
     welcome_contact:
       title: 联系我们 - 七牛云
