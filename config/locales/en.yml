@@ -1296,19 +1296,19 @@ en:
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "直播"
                   height: 22
-                  link: "/products/pili"
+                  link: "https://www.qiniu.com/products/pili"
                   target: "_blank"
                 - img: "qavs/icon-dianbo.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "点播"
                   height: 22
-                  link: "/products/plsv"
+                  link: "https://www.qiniu.com/products/plsv"
                   target: "_blank"
                 - img: "qavs/icon-yinshipin.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "实时音视频"
                   height: 22
-                  link: "/products/rtn"
+                  link: "https://www.qiniu.com/products/rtn"
                   target: "_blank"
               row2:
                 - img: "qavs/icon-tuiliusdk.png"
@@ -1323,7 +1323,7 @@ en:
                   class: "icon-link"
                   alt: "播放 SDK"
                   height: 22
-                  link: "/products/player"
+                  link: "https://www.qiniu.com/products/player"
                   target: "_blank"
                 - img: "qavs/icon-duanshipinsdk.png"
                   colclass: ""
@@ -1338,14 +1338,14 @@ en:
                   class: "icon-link"
                   alt: "内容处理"
                   height: 22
-                  link: "/products/dora"
+                  link: "https://www.qiniu.com/products/dora"
                   target: "_blank"
                 - img: "qavs/icon-shipinzhineng.png"
                   colclass: ""
                   class: "icon-link"
                   alt: "视频智能"
                   height: 22
-                  link: "/products/censor"
+                  link: "https://www.qiniu.com/products/censor"
                   target: "_blank"
               row4:
                 - img: "qavs/icon-duixiangcunchu.png"
@@ -1353,7 +1353,7 @@ en:
                   class: "icon-link"
                   alt: "对象存储"
                   height: 22
-                  link: "/products/kodo"
+                  link: "https://www.qiniu.com/products/kodo"
                   target: "_blank"
                 - img: "qavs/icon-shishiliuwangluo.png"
                   colclass: "m-r-2 m-b-0"
@@ -1367,7 +1367,7 @@ en:
                   class: "icon-link"
                   alt: "内容分发网络"
                   height: 22
-                  link: "/products/fusion"
+                  link: "https://www.qiniu.com/products/fusion"
                   target: "_blank"
                 - img: "qavs/icon-liumeitijisuan.png"
                   colclass: "m-b-0"
@@ -1403,7 +1403,7 @@ en:
                 class: "icon-link"
                 alt: "智能数据分析"
                 height: 36
-                link: "/products/insight"
+                link: "https://www.qiniu.com/products/insight"
                 target: "_blank"
         scene:
           title: "适用场景"
