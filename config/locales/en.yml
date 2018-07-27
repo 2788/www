@@ -2257,6 +2257,8 @@ en:
       desc: coding
     - path: cooperation/client-yunpian.png
       desc: yunpian
+    - path: cooperation/client-rongyun.png
+      desc: rongyun
   seo:
     welcome_index:
       title: Qiniu Cloud-the leading enterprise cloud service supplier in China

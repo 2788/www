@@ -2318,6 +2318,8 @@ zh-CN:
       desc: coding
     - path: cooperation/client-yunpian.png
       desc: yunpian
+    - path: cooperation/client-rongyun.png
+      desc: rongyun
   seo:
     welcome_index:
       title: 七牛云-国内领先的企业级云服务商
