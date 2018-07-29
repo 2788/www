@@ -65,71 +65,71 @@
             <li class="dropdown" id="solution-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" id="solution-dropdown-title" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.solution") %></a>
 
-                <% if I18n.t("views.language") == 'zh' -%>
+              <% if I18n.t("views.language") == 'zh' -%>
 
-                  <ul class="dropdown-menu solutions-menu solutions-menu-col2">
-                    <li class="solution menu-title hidden-xs">
-                      <%= content_tag :span, I18n.t("solutions.title1"), class: "group-title" -%>
-                      <%= content_tag :span, I18n.t("solutions.title2"), class: "group-title" -%>
-                    </li>
+                <ul class="dropdown-menu solutions-menu solutions-menu-col2">
+                  <li class="solution menu-title hidden-xs">
+                    <%= content_tag :span, I18n.t("solutions.title1"), class: "group-title" -%>
+                    <%= content_tag :span, I18n.t("solutions.title2"), class: "group-title" -%>
+                  </li>
 
-                    <% I18n.t("solutions.list").each do |item| -%>
-                      <li class="solution">
-                        <% item[:cols].each do |col| -%>
-                          <% if col[:type].blank? -%>
-
-                            <%= content_tag :span do -%>
-                              <h4 class="menu-title"></h4>
-                              <p class="hidden-xs"></p>
-                            <% end -%>
-
-                          <% else -%>
-
-                            <%= link_to(raw(col[:type] == 'product' ? send("products_#{col[:name]}_path") : solutions_path(anchor: col[:name]))) do -%>
-                              <%= content_tag :h4, col[:label], class: col[:name]+" menu-title" -%>
-                              <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
-                            <% end -%>
-
-                          <% end -%>
-                          
-                        <% end -%>
-                      </li>
-                    <% end -%>
-
+                  <% I18n.t("solutions.list").each do |item| -%>
                     <li class="solution">
-                      <%= link_to products_pili_livequiz_path do -%>
-                        <h4 class="quiz menu-title">直播竞答解决方案</h4>
-                        <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案</p>
-                      <% end %>
-                      <%= content_tag :span do -%>
-                        <h4 class="menu-title"></h4>
-                        <p class="hidden-xs"></p>
-                      <% end %>
+                      <% item[:cols].each do |col| -%>
+                        <% if col[:type].blank? -%>
+
+                          <%= content_tag :span do -%>
+                            <h4 class="menu-title"></h4>
+                            <p class="hidden-xs"></p>
+                          <% end -%>
+
+                        <% else -%>
+
+                          <%= link_to(raw(col[:type] == 'product' ? send("products_#{col[:name]}_path") : solutions_path(anchor: col[:name]))) do -%>
+                            <%= content_tag :h4, col[:label], class: col[:name]+" menu-title" -%>
+                            <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
+                          <% end -%>
+
+                        <% end -%>
+                        
+                      <% end -%>
                     </li>
-                  </ul>
+                  <% end -%>
 
-                <% elsif I18n.t("views.language") == 'en' -%>
-                  <ul class="dropdown-menu solutions-menu">
-                    <% I18n.t("solutions.arr1").each do |solution| %>
-                      <%= content_tag :li, class: I18n.t("views.language") == 'en' ? 'd-none' : 'solution' do -%>
-                        <%= link_to(send("products_#{solution[:name]}_path")) do -%>
-                          <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
-                          <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
-                        <% end %>
+                  <li class="solution">
+                    <%= link_to products_pili_livequiz_path do -%>
+                      <h4 class="quiz menu-title">直播竞答解决方案</h4>
+                      <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案</p>
+                    <% end %>
+                    <%= content_tag :span do -%>
+                      <h4 class="menu-title"></h4>
+                      <p class="hidden-xs"></p>
+                    <% end %>
+                  </li>
+                </ul>
+
+              <% elsif I18n.t("views.language") == 'en' -%>
+                <ul class="dropdown-menu solutions-menu">
+                  <% I18n.t("solutions.arr1").each do |solution| %>
+                    <%= content_tag :li, class: I18n.t("views.language") == 'en' ? 'd-none' : 'solution' do -%>
+                      <%= link_to(send("products_#{solution[:name]}_path")) do -%>
+                        <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
+                        <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
                       <% end %>
                     <% end %>
+                  <% end %>
 
-                    <% I18n.t("solutions.arr2").each do |solution| %>
-                      <%= content_tag :li, class: "solution" do -%>
-                        <%= link_to(solutions_path(anchor: solution[:name])) do -%>
-                          <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
-                          <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
-                        <% end %>
+                  <% I18n.t("solutions.arr2").each do |solution| %>
+                    <%= content_tag :li, class: "solution" do -%>
+                      <%= link_to(solutions_path(anchor: solution[:name])) do -%>
+                        <%= content_tag :h4, solution[:label], class: solution[:name]+" menu-title" -%>
+                        <%= content_tag :p, solution[:desc], class: "hidden-xs" -%>
                       <% end %>
                     <% end %>
-                  </ul>
+                  <% end %>
+                </ul>
 
-                <% end -%>
+              <% end -%>
 
             </li>
 
