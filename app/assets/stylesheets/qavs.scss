@@ -23,7 +23,7 @@
   }
   .service-table {
     width: 100%;
-    border: 1px solid #6997E2;
+    border: 1px solid rgba(0, 160, 222, 0.75);
     border-radius: 0.10rem;
     min-width: 940px;
     .service-row {
@@ -36,17 +36,17 @@
         -moz-transition: all .3s linear;
         transition: all .3s linear;
         &:hover {
-          background-color: #E5EBF5;
+          background-color: rgba(0, 160, 222, 0.1);
         }
       }
       .content-border {
-        border: 1px solid #B8CDEE;
+        border: 1px solid rgba(0, 160, 222, 0.35);
         border-radius: 0.10rem;
       }
       .content-light {
         border-top-left-radius: 0.10rem;
         border-top-right-radius: 0.10rem;
-        background-color: #E5EBF5;
+        background-color: rgba(0, 160, 222, 0.1);
       }
       .col-3 {
         width: 23.5%;
