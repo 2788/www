@@ -68,6 +68,17 @@
       }
     }
   }
+  &.hero-niuday.niuday-aicloud {
+    background-image: image-url('niuday/banner-bg-aicloud.jpg') !important;
+    .img-wrapper {
+      top: 3.20rem;
+      h4 {
+        padding-right: 0;
+        padding-left: 0;
+        font-size: 20px;
+      }
+    }
+  }
   .banner-desc-right {
     width: 100%;
     left: 60%;
@@ -618,7 +629,8 @@
         height: auto;
       }
     }
-    &.niuday-meitu {
+    &.niuday-meitu,
+    &.niuday-aicloud {
       .img-wrapper {
         top: 3.00rem !important;
         h4 {

@@ -2490,6 +2490,8 @@ zh-CN:
       title: NIUDAY小牛汇共享日_深圳站
     niudays_xiamen:
       title: NIUDAY小牛汇共享日_厦门站
+    niudays_chengdu:
+      title: NIUDAY小牛汇共享日_成都站
   cases1:
     - groupid: enterprise
       group:
@@ -3010,6 +3012,89 @@ zh-CN:
         - img: 'niuday/avatar-caizhenhua.png'
           name: 蔡振华
           title: 快商通合伙人，AI引擎平台研发中心副总监
+      medias:
+        - img: 'niuday/mediaslog/logo-leifengwang.png'
+        - img: 'niuday/mediaslog/logo-yiou.png'
+        - img: 'niuday/mediaslog/logo-chuangyebang.png'
+        - img: 'niuday/mediaslog/logo-itjuzi.png'
+        - img: 'niuday/mediaslog/logo-huxiu.png'
+        - img: 'niuday/mediaslog/logo-pinwan.png'
+        - img: 'niuday/mediaslog/logo-chuangyeheima.png'
+        - img: 'niuday/mediaslog/logo-chuangtoutiao.png'
+        - img: 'niuday/mediaslog/logo-jikebang.png'
+        - img: 'niuday/mediaslog/logo-51cto.png'
+        - img: 'niuday/mediaslog/logo-csdn.png'
+        - img: 'niuday/mediaslog/logo-kaiyuanzhongguo.png'
+        - img: 'niuday/mediaslog/logo-meikewang.png'
+        - img: 'niuday/mediaslog/logo-doit.png'
+        - img: 'niuday/mediaslog/logo-tongxinshijie.png'
+        - img: 'niuday/mediaslog/logo-chuangkemao.png'
+        - img: 'niuday/mediaslog/logo-cioshidai.png'
+        - img: 'niuday/mediaslog/logo-yibangdongli.png'
+        - img: 'niuday/mediaslog/logo-zhongguoidcquan.png'
+        - img: 'niuday/mediaslog/logo-ruanjianicwang.png'
+        - img: 'niuday/mediaslog/logo-bitewang.png'
+        - img: 'niuday/mediaslog/logo-tuopushe.png'
+      partners:
+        - img: 'niuday/partnerslog/logo-haikangweishi.png'
+        - img: 'niuday/partnerslog/logo-ping.png'
+        - img: 'niuday/partnerslog/logo-daguanshuju.png'
+        - img: 'niuday/mediaslog/logo-xinjingji100ren.png'
+        - img: 'niuday/partnerslog/logo-jiguang.png'
+        - img: 'niuday/partnerslog/logo-juejin.png'
+        - img: 'niuday/partnerslog/logo-weilian.png'
+        - img: 'niuday/partnerslog/logo-pudongruanjianyuan.png'
+        - img: 'niuday/partnerslog/logo-apicloud.png'
+        - img: 'niuday/partnerslog/logo-getui.png'
+        - img: 'niuday/partnerslog/logo-rongdukeji.png'
+        - img: 'niuday/partnerslog/logo-yunheenmo.png'
+        - img: 'niuday/partnerslog/logo-cobub.png'
+        - img: 'niuday/partnerslog/logo-rongyun.png'
+        - img: 'niuday/partnerslog/logo-huanxin.png'
+        - img: 'niuday/partnerslog/logo-yunsuo.png'
+        - img: 'niuday/partnerslog/logo-segmentfault.png'
+        - img: 'niuday/partnerslog/logo-livevideostack.png'
+        - img: 'niuday/partnerslog/logo-it.png'
+        - img: 'niuday/partnerslog/logo-datastory.png'
+        - img: 'niuday/partnerslog/logo-saiia.png'
+        - img: 'niuday/partnerslog/logo-paipaidai.png'
+        - img: 'niuday/partnerslog/logo-chilunyichuang.png'
+        - img: 'niuday/partnerslog/logo-itdakashuo.png'
+        - img: 'niuday/partnerslog/logo-3wqifu.png'
+        - img: 'niuday/partnerslog/logo-huodongxing.png'
+        - img: 'niuday/partnerslog/logo-xiamenwulianwang.png'
+        - img: 'niuday/partnerslog/logo-kuaishangtong.png'
+        - img: 'niuday/partnerslog/logo-yunpian.png'
+        - img: 'niuday/partnerslog/logo-xmsir.png'
+        - img: 'niuday/partnerslog/logo-yiketalks.png'
+        - img: 'niuday/partnerslog/logo-chandashi.png'
+    chengdu:
+      guest:
+        - img: 'niuday/avatar.png'
+          name: 许式伟
+          title:
+            - 七牛云CEO
+        - img: 'niuday/avatar.png'
+          name: 申恒涛
+          title:
+            - 成都电子科大计算机学院院长
+        - img: 'niuday/avatar.png'
+          name: 彭垚
+          title:
+            - 七牛云人工智能实验室负责人
+        - img: 'niuday/avatar.png'
+          name: 刘东
+          title:
+            - 长虹软件与服务中心总经理
+        - img: 'niuday/avatar.png'
+          name: 龚俊衡
+          title:
+            - Camera360数据部门技术总监
+        - img: 'niuday/avatar.png'
+          name: 滕龙
+          title:
+            - 深圳市中钞信达金融科技有限公司研发中心副主任
+            - 深圳市中钞信达金融科技有限公司成都分公司总经理助理
       medias:
         - img: 'niuday/mediaslog/logo-leifengwang.png'
         - img: 'niuday/mediaslog/logo-yiou.png'
