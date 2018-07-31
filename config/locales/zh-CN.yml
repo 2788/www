@@ -1307,25 +1307,25 @@ zh-CN:
           table:
             titleimg: "qavs/icon-shipinyun.png"
             titlealt: "七牛智能视频云"
-            titleh: 22
+            titleh: 44
             tableleft:
               row1:
                 - img: "qavs/icon-zhibo.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "直播"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/pili"
                   target: "_blank"
                 - img: "qavs/icon-dianbo.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "点播"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/plsv"
                   target: "_blank"
                 - img: "qavs/icon-yinshipin.png"
                   class: "m-r-2 m-l-2 icon-link"
                   alt: "实时音视频"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/rtn"
                   target: "_blank"
               row2:
@@ -1333,21 +1333,21 @@ zh-CN:
                   colclass: "m-r-2"
                   class: "icon-link"
                   alt: "推流 SDK"
-                  height: 22
+                  height: 44
                   link: "https://developer.qiniu.com/pili/manual/3808/streaming-sdk-intro"
                   target: "_blank"
                 - img: "qavs/icon-bofangsdk.png"
                   colclass: "m-r-2"
                   class: "icon-link"
                   alt: "播放 SDK"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/player"
                   target: "_blank"
                 - img: "qavs/icon-duanshipinsdk.png"
                   colclass: ""
                   class: "icon-link"
                   alt: "短视频 SDK"
-                  height: 22
+                  height: 44
                   link: "https://developer.qiniu.com/pili/sdk/3919/a-short-video-the-white-paper"
                   target: "_blank"
               row3:
@@ -1355,14 +1355,14 @@ zh-CN:
                   colclass: "m-r-2"
                   class: "icon-link"
                   alt: "内容处理"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/dora"
                   target: "_blank"
                 - img: "qavs/icon-shipinzhineng.png"
                   colclass: ""
                   class: "icon-link"
                   alt: "视频智能"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/censor"
                   target: "_blank"
               row4:
@@ -1370,28 +1370,28 @@ zh-CN:
                   colclass: "m-r-2 m-b-0"
                   class: "icon-link"
                   alt: "对象存储"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/kodo"
                   target: "_blank"
                 - img: "qavs/icon-shishiliuwangluo.png"
                   colclass: "m-r-2 m-b-0"
                   class: "icon-link"
                   alt: "实时流网络"
-                  height: 22
+                  height: 44
                   link: "https://developer.qiniu.com/pili/manual/3812/LiveNet-intro"
                   target: "_blank"
                 - img: "qavs/icon-neirongfenfa.png"
                   colclass: "m-r-2 m-b-0"
                   class: "icon-link"
                   alt: "内容分发网络"
-                  height: 22
+                  height: 44
                   link: "https://www.qiniu.com/products/fusion"
                   target: "_blank"
                 - img: "qavs/icon-liumeitijisuan.png"
                   colclass: "m-b-0"
                   class: ""
                   alt: "流媒体计算平台"
-                  height: 22
+                  height: 44
                   link: ""
                   target: ""
             tableright:
@@ -1399,28 +1399,28 @@ zh-CN:
                 rowclass: "content-light m-b-5px"
                 class: ""
                 alt: "统一运营系统"
-                height: 22
+                height: 44
                 link: ""
                 target: ""
               - img: "qavs/icon-zhinengfabuguanli.png"
                 rowclass: ""
                 class: ""
                 alt: "智能发布管理"
-                height: 36
+                height: 40
                 link: ""
                 target: ""
               - img: "qavs/icon-zhinengneirongyunying.png"
                 rowclass: ""
                 class: ""
                 alt: "智能内容运营"
-                height: 36
+                height: 40
                 link: ""
                 target: ""
               - img: "qavs/icon-zhinengshujufenxi.png"
                 rowclass: "m-b-10px"
                 class: "icon-link"
                 alt: "智能数据分析"
-                height: 36
+                height: 40
                 link: "https://www.qiniu.com/products/insight"
                 target: "_blank"
         scene:
