@@ -79,6 +79,8 @@
 .insight-application {
   .tab-content {
     .col-left {
+      border-radius: 0.10rem;
+      background-color: #f8f8f8;
       img {
         width: 100%;
       }
@@ -171,6 +173,10 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .insight-application {
+    .col-left {
+      height: 3.30rem;
+      line-height: 3.30rem;
+    }
     .tab-content {
       .col-right {
         overflow-x: auto;
@@ -183,6 +189,15 @@
           white-space: nowrap;
         }
       }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .insight-application {
+    .col-left {
+      height: 4.00rem;
+      line-height: 4.00rem;
     }
   }
 }

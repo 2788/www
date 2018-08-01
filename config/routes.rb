@@ -91,6 +91,7 @@ Rails.application.routes.draw do
     get '/niudays/xian', to: 'niudays#xian'
     get '/niudays/shenzhen', to: 'niudays#shenzhen'
     get '/niudays/xiamen', to: 'niudays#xiamen'
+    # get '/niudays/chengdu', to: 'niudays#chengdu'
 
     resources :recommendations, only: [:new, :create]
 
