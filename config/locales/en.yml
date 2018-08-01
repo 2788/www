@@ -1977,6 +1977,13 @@ en:
               link: "http://hd.qiniu.com/arch/history/1"
       niuday:
         events:
+          - img: "niuday/img-chengdu.jpg"
+            site: 成都
+            time: 2018/08/11
+            details:
+              time: 2018/08/11
+              site: 成都市高新区天府大道中段666号M层银河A厅
+              link: niudays_chengdu
           - img: "niuday/img-xiamen.jpg"
             site: 厦门
             time: 2018/07/28
@@ -2014,13 +2021,6 @@ en:
               link: niudays
           - img: "niuday/img-changsha.jpg"
             site: 长沙
-            time:
-            details:
-              time:
-              site:
-              link: niudays
-          - img: "niuday/img-chengdu.jpg"
-            site: 成都
             time:
             details:
               time:
@@ -3000,27 +3000,27 @@ en:
         - img: 'niuday/partnerslog/logo-chandashi.png'
     chengdu:
       guest:
-        - img: 'niuday/avatar.png'
+        - img: 'niuday/avatar-xushiwei-1.png'
           name: 许式伟
           title:
             - 七牛云CEO
-        - img: 'niuday/avatar.png'
-          name: 申恒涛
+        - img: 'niuday/avatar-shenfumin.png'
+          name: 沈复民
           title:
-            - 成都电子科大计算机学院院长
-        - img: 'niuday/avatar.png'
+            - 成都电子科技大学教授
+        - img: 'niuday/avatar-pengyao-1.png'
           name: 彭垚
           title:
             - 七牛云人工智能实验室负责人
-        - img: 'niuday/avatar.png'
+        - img: 'niuday/avatar-liudong.png'
           name: 刘东
           title:
             - 长虹软件与服务中心总经理
-        - img: 'niuday/avatar.png'
+        - img: 'niuday/avatar-gongjunheng.png'
           name: 龚俊衡
           title:
             - Camera360数据部门技术总监
-        - img: 'niuday/avatar.png'
+        - img: 'niuday/avatar-tenglong.png'
           name: 滕龙
           title:
             - 深圳市中钞信达金融科技有限公司研发中心副主任
@@ -3081,3 +3081,5 @@ en:
         - img: 'niuday/partnerslog/logo-xmsir.png'
         - img: 'niuday/partnerslog/logo-yiketalks.png'
         - img: 'niuday/partnerslog/logo-chandashi.png'
+        - img: 'niuday/partnerslog/logo-modao.png'
+        - img: 'niuday/partnerslog/logo-maike.png'
