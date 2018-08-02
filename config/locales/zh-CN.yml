@@ -3072,29 +3072,22 @@ zh-CN:
       guest:
         - img: 'niuday/avatar-xushiwei-1.png'
           name: 许式伟
-          title:
-            - 七牛云CEO
+          title: 七牛云CEO
         - img: 'niuday/avatar-shenfumin.png'
           name: 沈复民
-          title:
-            - 成都电子科技大学教授
+          title: 成都电子科技大学教授
         - img: 'niuday/avatar-pengyao-1.png'
           name: 彭垚
-          title:
-            - 七牛云人工智能实验室负责人
+          title: 七牛云人工智能实验室负责人
         - img: 'niuday/avatar-liudong.png'
           name: 刘东
-          title:
-            - 长虹软件与服务中心总经理
+          title: 长虹软件与服务中心总经理
         - img: 'niuday/avatar-gongjunheng.png'
           name: 龚俊衡
-          title:
-            - Camera360数据部门技术总监
+          title: Camera360数据部门技术总监
         - img: 'niuday/avatar-tenglong.png'
           name: 滕龙
-          title:
-            - 深圳市中钞信达金融科技有限公司研发中心副主任
-            - 深圳市中钞信达金融科技有限公司成都分公司总经理助理
+          title: 深圳市中钞信达金融科技有限公司成都分公司总经理助理
       medias:
         - img: 'niuday/mediaslog/logo-leifengwang.png'
         - img: 'niuday/mediaslog/logo-yiou.png'
