@@ -1,370 +1,370 @@
 <% if I18n.t("views.language") == 'zh' %>
-  <div class="banners-slider">
+<div class="banners-slider">
 
-    <div class="jumbotron hero hero-censor-index">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h1>内容安全</h1>
-                <p>首次使用即享&nbsp;<span class="text-warn">18&nbsp;万张</span>免费审核额度</p>
-                <p>双重审核 运营无忧</p>
-              </div>
-              <%= link_to "立即使用", products_censor_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-gartner">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h1>七牛云 &amp; Gartner</h1>
-                <p>联合发布《新一代智能视频云的五个关键因素》白皮书</p>
-              </div>
-              <%= link_to "查看详情", products_qavs_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-rtn-index">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h1>实时音视频云</h1>
-                <p>基于&nbsp;<span class="text-warn">WebRTC</span>&nbsp;的一站式解决方案</p>
-                <p>零基础搭建实时音视频平台</p>
-              </div>
-              <%= link_to "免费使用", products_rtn_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-insight">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h1>智能日志管理平台 <span class="text-warn">重磅升级</span></h1>
-                <p>海量异构数据采集，秒级实时日志检索，高效智能业务洞察，企业数据统一管理</p>
-              </div>
-              <%= link_to "免费开通", products_insight_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-plsv">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h2>短视频
-                  <span class="text-warn"> 0 元</span>体验包限量领取</h2>
-                <p>1.5M 最小包体，100+ 丰富功能，3 小时集成应用</p>
-              </div>
-              <%= link_to "立即领取", products_plsv_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-cdnprice">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h2>融合 CDN 全面降价</h2>
-                <p>最多可节省 <span class="text-warn">46%</span></p>
-                <p>最低只需 <span class="text-warn">0.14 元/GB</span></p>
-              </div>
-              <%= link_to "查看详情", cdnprice2018_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" %>
-              <p class="tips">注：价格生效日期 2018 年 1 月 1 日</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-bannerIdentify">
-      <div class="container">
-        <div class="middle-container">
-          <div class="text-center">
+  <div class="jumbotron hero hero-censor-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
             <div class="banner-desc">
-              <h2 class="identification">
-                <span>对象存储</span>
-                <span class="text-warn">空间上传鉴黄</span>
-                <span>服务上线</span>
-              </h2>
-              <p>自动对新上传的图片作鉴黄操作 基于深度学习赋能用户高效审核</p>
+              <h1>内容安全</h1>
+              <p>首次使用即享&nbsp;<span class="text-warn">18&nbsp;万张</span>免费审核额度</p>
+              <p>双重审核 运营无忧</p>
             </div>
-            <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4431/bucket-audit", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            <p class="tips">保障内容安全 降低违规风险</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="jumbotron hero hero-bannerPlayer">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="banner-desc">
-                <h2>七牛云播放器</h2>
-                <p>秒开 <span class="text-warn">200 ms</span>，包体最小至 <span class="text-warn">400 KB</span>，千万日活验证</p>
-              </div>
-              <%= link_to "免费使用", products_player_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-            </div>
+            <%= link_to "立即使用", products_censor_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <% else %>
-    <div class="jumbotron hero en">
-      <div class="videoWrapper">
-        <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#englishVideo" tabindex="0"></a>
+
+  <div class="jumbotron hero hero-gartner">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>七牛云 &amp; Gartner</h1>
+              <p>联合发布《新一代智能视频云的五个关键因素》白皮书</p>
+            </div>
+            <%= link_to "查看详情", products_qavs_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
       </div>
     </div>
-    <% end %>
-      <!-- englishVideo modal -->
-      <div class="modal fade bs-example-modal-lg" id="englishVideo" tabindex="-1" role="dialog" aria-labelledby="englishVideo" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-              <video class="video-tag" controls="controls" autobuffer="true" poster="//odum9helk.qnssl.com/FspZJF8xgIz24cG8xWeq8Sq3yIKB" src="//odum9helk.qnssl.com/lgSQ_FaDMw2L9swKzf_waziy1wbe"></video>
+  </div>
+
+  <div class="jumbotron hero hero-rtn-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>实时音视频云</h1>
+              <p>基于&nbsp;<span class="text-warn">WebRTC</span>&nbsp;的一站式解决方案</p>
+              <p>零基础搭建实时音视频平台</p>
             </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal -->
-      </div>
-
-      <div class="features">
-        <div class="container">
-          <div class="intro">
-            <h2 class="title">
-              <%= I18n.t("views.welcome.index.feature1.title") %>
-            </h2>
-          </div>
-
-          <div class="row">
-            <% I18n.t("views.welcome.index.feature1.col").each do |unit| %>
-              <div class="col-sm-6">
-                <div class="media">
-                  <div class="media-left">
-                    <%= image_tag unit[:icon], class: "media-object", alt: unit[:title] %>
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">
-                      <%= unit[:title] %>
-                    </h4>
-                    <p class="<%= I18n.t(" views.language ") == 'en' ? 'en' : '' %>">
-                      <%= unit[:desc] %>
-                    </p>
-                    <p>
-                      <% unit[:icons].each do |icon| %>
-                        <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
-                          <% end %>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <% end %>
+            <%= link_to "免费使用", products_rtn_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-
-      <div class="features features-solution">
-        <div class="container">
-          <div class="intro">
-            <h2 class="title">
-              <%= I18n.t("views.welcome.index.feature2.title") %>
-            </h2>
-            <p class="desc">
-              <%= I18n.t("views.welcome.index.feature2.desc") %>
-            </p>
-            <p class="desc">
-              <% I18n.t("views.welcome.index.feature2.icons").each do |icon| %>
-                <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
-                  <% end %>
-            </p>
-          </div>
-
-          <div class="row">
-            <% I18n.t("views.welcome.index.feature2.col").each do |unit| %>
-              <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                  <%= image_tag unit[:icon], class: "media-object media-object-index", width: 120, alt: unit[:title] %>
-                    <div class="caption caption-index">
-                      <h4 class="caption-title">
-                        <%= unit[:title] %>
-                      </h4>
-                      <p>
-                        <%= unit[:desc] %>
-                      </p>
-                    </div>
-                </div>
-              </div>
-              <% end %>
+  <div class="jumbotron hero hero-insight">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>智能日志管理平台 <span class="text-warn">重磅升级</span></h1>
+              <p>海量异构数据采集，秒级实时日志检索，高效智能业务洞察，企业数据统一管理</p>
+            </div>
+            <%= link_to "免费开通", products_insight_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-
-      <div class="features features-cases">
-        <div class="container">
-          <div class="intro">
-            <h2 class="title">
-              <%= I18n.t("views.welcome.index.feature3.title") %>
-            </h2>
-          </div>
-
-          <div id="index-cases-slider" class="conveyor slick-slider draggable">
-            <div>
-              <div class="customer-changba index-case"></div>
+  <div class="jumbotron hero hero-plsv">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h2>短视频
+                <span class="text-warn"> 0 元</span>体验包限量领取</h2>
+              <p>1.5M 最小包体，100+ 丰富功能，3 小时集成应用</p>
             </div>
-            <div>
-              <div class="customer-changhong index-case"></div>
-            </div>
-            <div>
-              <div class="customer-dajiang index-case"></div>
-            </div>
-            <div>
-              <div class="customer-dianping index-case"></div>
-            </div>
-            <div>
-              <div class="customer-guanglianda index-case"></div>
-            </div>
-            <div>
-              <div class="customer-haikangweishi index-case"></div>
-            </div>
-            <div>
-              <div class="customer-hubeiguangdian index-case"></div>
-            </div>
-            <div>
-              <div class="customer-hujiang index-case"></div>
-            </div>
-            <div>
-              <div class="customer-intel index-case"></div>
-            </div>
-            <div>
-              <div class="customer-jiangsuweishi index-case"></div>
-            </div>
-            <div>
-              <div class="customer-meipai index-case"></div>
-            </div>
-            <div>
-              <div class="customer-oppo index-case"></div>
-            </div>
-            <div>
-              <div class="customer-qingtingfm index-case"></div>
-            </div>
-            <div>
-              <div class="customer-shunfeng index-case"></div>
-            </div>
-            <div>
-              <div class="customer-sobey index-case"></div>
-            </div>
-            <div>
-              <div class="customer-souhu index-case"></div>
-            </div>
-            <div>
-              <div class="customer-zhihu index-case"></div>
-            </div>
-            <div>
-              <div class="customer-zhongguopingan index-case"></div>
-            </div>
-            <div>
-              <div class="customer-zhongguoyidong index-case"></div>
-            </div>
-            <div>
-              <div class="customer-zhongxing index-case"></div>
-            </div>
+            <%= link_to "立即领取", products_plsv_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="features features-hotnews <%= I18n.t(" views.language ") != 'zh' ? 'd-none' : '' %>">
-        <div class="container">
-          <div class="intro">
-            <h2 class="title">热门动态</h2>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <ul class="list">
-                <li class="hot hotnews-title">
-                  <%= link_to "新闻动态", news_path -%>
-                </li>
-                <li class="hotnews-title">
-                  <%= link_to "产品动态", product_news_path -%>
-                </li>
-                <li class="hotnews-title">
-                  <%= link_to "近期福利", welfares_path -%>
-                </li>
-                <li>
-                  <%= link_to raw("更多内容 &gt;"), news_path, class: "more" -%>
-                </li>
-              </ul>
+  <div class="jumbotron hero hero-cdnprice">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h2>融合 CDN 全面降价</h2>
+              <p>最多可节省 <span class="text-warn">46%</span></p>
+              <p>最低只需 <span class="text-warn">0.14 元/GB</span></p>
             </div>
-
-            <div class="col-sm-9">
-              <div class="row">
-                <% @top_archives.each do |archive| %>
-                  <div class="col-sm-6 col-md-4">
-                    <div class="hotnews-box">
-                      <%= link_to "#{ Rails.application.config.blog_host }/archives/#{ archive.id }", target: "_blank" do -%>
-                        <div class="hot-im-wrapper">
-                          <%= image_tag archive.cover, class: "", alt: "图片加载中" %>
-                        </div>
-                        <div class="infobox">
-                          <time>
-                            <%= archive[:created_at].strftime("%Y-%m-%d") + raw(" 发布在 ") + Archive::CATEGORIES[archive.category] %>
-                          </time>
-                          <p title="<%= archive[:title] %>">
-                            <%= archive[:title] %>
-                          </p>
-                        </div>
-                        <% end %>
-                    </div>
-                  </div>
-                  <% end %>
-              </div>
-            </div>
+            <%= link_to "查看详情", cdnprice2018_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" %>
+            <p class="tips">注：价格生效日期 2018 年 1 月 1 日</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-
-      <div class="stripe stripe-blue p-xxl <%= I18n.t(" views.language ") != 'zh' ? 'd-none' : '' %>">
-        <h3 class="text-center">
-          注册七牛云账户，即刻享受多款产品免费额度套餐
-        </h3>
+  <div class="jumbotron hero hero-bannerIdentify">
+    <div class="container">
+      <div class="middle-container">
         <div class="text-center">
-          <a href="https://portal.qiniu.com/signup/choice" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a>
-        </div>
-        <div class="text-center">
-          <a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a>
+          <div class="banner-desc">
+            <h2 class="identification">
+              <span>对象存储</span>
+              <span class="text-warn">空间上传鉴黄</span>
+              <span>服务上线</span>
+            </h2>
+            <p>自动对新上传的图片作鉴黄操作 基于深度学习赋能用户高效审核</p>
+          </div>
+          <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4431/bucket-audit", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+          <p class="tips">保障内容安全 降低违规风险</p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="jumbotron hero hero-bannerPlayer">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h2>七牛云播放器</h2>
+              <p>秒开 <span class="text-warn">200 ms</span>，包体最小至 <span class="text-warn">400 KB</span>，千万日活验证</p>
+            </div>
+            <%= link_to "免费使用", products_player_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+  <div class="jumbotron hero en">
+    <div class="videoWrapper">
+      <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#englishVideo" tabindex="0"></a>
+    </div>
+  </div>
+<% end %>
+<!-- englishVideo modal -->
+<div class="modal fade bs-example-modal-lg" id="englishVideo" tabindex="-1" role="dialog" aria-labelledby="englishVideo" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <video class="video-tag" controls="controls" autobuffer="true" poster="//odum9helk.qnssl.com/FspZJF8xgIz24cG8xWeq8Sq3yIKB" src="//odum9helk.qnssl.com/lgSQ_FaDMw2L9swKzf_waziy1wbe"></video>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal -->
+</div>
+
+<div class="features">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= I18n.t("views.welcome.index.feature1.title") %>
+      </h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.index.feature1.col").each do |unit| %>
+        <div class="col-sm-6">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag unit[:icon], class: "media-object", alt: unit[:title] %>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= unit[:title] %>
+              </h4>
+              <p class="<%= I18n.t(" views.language ") == 'en' ? 'en' : '' %>">
+                <%= unit[:desc] %>
+              </p>
+              <p>
+                <% unit[:icons].each do |icon| %>
+                  <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
+                    <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="features features-solution">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= I18n.t("views.welcome.index.feature2.title") %>
+      </h2>
+      <p class="desc">
+        <%= I18n.t("views.welcome.index.feature2.desc") %>
+      </p>
+      <p class="desc">
+        <% I18n.t("views.welcome.index.feature2.icons").each do |icon| %>
+          <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
+            <% end %>
+      </p>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.index.feature2.col").each do |unit| %>
+        <div class="col-md-3 col-sm-6">
+          <div class="thumbnail">
+            <%= image_tag unit[:icon], class: "media-object media-object-index", width: 120, alt: unit[:title] %>
+              <div class="caption caption-index">
+                <h4 class="caption-title">
+                  <%= unit[:title] %>
+                </h4>
+                <p>
+                  <%= unit[:desc] %>
+                </p>
+              </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="features features-cases">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= I18n.t("views.welcome.index.feature3.title") %>
+      </h2>
+    </div>
+
+    <div id="index-cases-slider" class="conveyor slick-slider draggable">
+      <div>
+        <div class="customer-changba index-case"></div>
+      </div>
+      <div>
+        <div class="customer-changhong index-case"></div>
+      </div>
+      <div>
+        <div class="customer-dajiang index-case"></div>
+      </div>
+      <div>
+        <div class="customer-dianping index-case"></div>
+      </div>
+      <div>
+        <div class="customer-guanglianda index-case"></div>
+      </div>
+      <div>
+        <div class="customer-haikangweishi index-case"></div>
+      </div>
+      <div>
+        <div class="customer-hubeiguangdian index-case"></div>
+      </div>
+      <div>
+        <div class="customer-hujiang index-case"></div>
+      </div>
+      <div>
+        <div class="customer-intel index-case"></div>
+      </div>
+      <div>
+        <div class="customer-jiangsuweishi index-case"></div>
+      </div>
+      <div>
+        <div class="customer-meipai index-case"></div>
+      </div>
+      <div>
+        <div class="customer-oppo index-case"></div>
+      </div>
+      <div>
+        <div class="customer-qingtingfm index-case"></div>
+      </div>
+      <div>
+        <div class="customer-shunfeng index-case"></div>
+      </div>
+      <div>
+        <div class="customer-sobey index-case"></div>
+      </div>
+      <div>
+        <div class="customer-souhu index-case"></div>
+      </div>
+      <div>
+        <div class="customer-zhihu index-case"></div>
+      </div>
+      <div>
+        <div class="customer-zhongguopingan index-case"></div>
+      </div>
+      <div>
+        <div class="customer-zhongguoyidong index-case"></div>
+      </div>
+      <div>
+        <div class="customer-zhongxing index-case"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-hotnews <%= I18n.t(" views.language ") != 'zh' ? 'd-none' : '' %>">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">热门动态</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <ul class="list">
+          <li class="hot hotnews-title">
+            <%= link_to "新闻动态", news_path -%>
+          </li>
+          <li class="hotnews-title">
+            <%= link_to "产品动态", product_news_path -%>
+          </li>
+          <li class="hotnews-title">
+            <%= link_to "近期福利", welfares_path -%>
+          </li>
+          <li>
+            <%= link_to raw("更多内容 &gt;"), news_path, class: "more" -%>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="row">
+          <% @top_archives.each do |archive| %>
+            <div class="col-sm-6 col-md-4">
+              <div class="hotnews-box">
+                <%= link_to "#{ Rails.application.config.blog_host }/archives/#{ archive.id }", target: "_blank" do -%>
+                  <div class="hot-im-wrapper">
+                    <%= image_tag archive.cover, class: "", alt: "图片加载中" %>
+                  </div>
+                  <div class="infobox">
+                    <time>
+                      <%= archive[:created_at].strftime("%Y-%m-%d") + raw(" 发布在 ") + Archive::CATEGORIES[archive.category] %>
+                    </time>
+                    <p title="<%= archive[:title] %>">
+                      <%= archive[:title] %>
+                    </p>
+                  </div>
+                  <% end %>
+              </div>
+            </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="stripe stripe-blue p-xxl <%= I18n.t(" views.language ") != 'zh' ? 'd-none' : '' %>">
+  <h3 class="text-center">
+    注册七牛云账户，即刻享受多款产品免费额度套餐
+  </h3>
+  <div class="text-center">
+    <a href="https://portal.qiniu.com/signup/choice" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a>
+  </div>
+  <div class="text-center">
+    <a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a>
+  </div>
+</div>
