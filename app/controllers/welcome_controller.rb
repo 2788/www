@@ -113,10 +113,10 @@ class WelcomeController < ApplicationController
   end
 
   def censor
-    @videoSrc_1 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk")
-    @videoSrc_2 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ")
-    @videoSrc_3 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/FgV6wvTgRv8ZgUZBecKojdIlfs58")
-    @videoSrc_4 = authorize_download_url("http://pbxwdyktb.bkt.clouddn.com/lrBYuiLwg0zFRUP97w59FmmN6H01")
+    @videoSrc_1 = authorize_download_url("http://pcts024be.bkt.clouddn.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk")
+    @videoSrc_2 = authorize_download_url("http://pcts024be.bkt.clouddn.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ")
+    @videoSrc_3 = authorize_download_url("http://pcts024be.bkt.clouddn.com/FgV6wvTgRv8ZgUZBecKojdIlfs58")
+    @videoSrc_4 = authorize_download_url("http://pcts024be.bkt.clouddn.com/lrBYuiLwg0zFRUP97w59FmmN6H01")
   end
 
   # 生成下载授权
@@ -158,7 +158,7 @@ class WelcomeController < ApplicationController
     }
 
     if type == 'slide'
-      body[:data][:uri] = authorize_download_url('http://pbxwdyktb.bkt.clouddn.com/' + path)
+      body[:data][:uri] = authorize_download_url('http://pcts024be.bkt.clouddn.com/' + path)
     elsif type == 'url'
       body[:data][:uri] = path
     end
@@ -226,7 +226,7 @@ class WelcomeController < ApplicationController
     }
 
     if type == 'slide'
-      body[:data][:uri] = authorize_download_url('http://pbxwdyktb.bkt.clouddn.com/' + path)
+      body[:data][:uri] = authorize_download_url('http://pcts024be.bkt.clouddn.com/' + path)
     elsif type == 'url'
       body[:data][:uri] = path
     end
