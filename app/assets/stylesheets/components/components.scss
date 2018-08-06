@@ -2,249 +2,249 @@
 // -------------------------
 html,
 body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    font-family: 'microsoft yahei ui', 'microsoft yahei', PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, simsun, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'microsoft yahei ui', 'microsoft yahei', PingFangSC-Light, 'helvetica neue', 'hiragino sans gb', arial, simsun, sans-serif;
 }
 
 html {
-    min-height: 100%;
-    height: auto;
-    position: relative;
-    background-color: #FFF;
+  min-height: 100%;
+  height: auto;
+  position: relative;
+  background-color: #FFF;
 }
 
 body {
-    font-size: 0.14rem;
+  font-size: 0.14rem;
 }
 
 code {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 a {
-    cursor: pointer;
-    &:hover {
-        color: #28aedf;
-        text-decoration: none;
-    }
+  cursor: pointer;
+  &:hover {
+    color: #28aedf;
+    text-decoration: none;
+  }
 }
 
 a[data-lightbox] {
-    display: inline-block;
+  display: inline-block;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .text-left {
-    text-align: left !important;
+  text-align: left !important;
 }
 
 // Buttons
 // --------------------------------------------------
 .btn {
-    font-size: 0.14rem;
-    transition: background-color .3s;
+  font-size: 0.14rem;
+  transition: background-color .3s;
 }
 
 .btn-lg,
 .btn-group-lg>.btn {
-    padding: 0.10rem 0.30rem;
-    font-size: 0.18rem;
-    line-height: 1.3333333;
-    border-radius: 4px;
+  padding: 0.10rem 0.30rem;
+  font-size: 0.18rem;
+  line-height: 1.3333333;
+  border-radius: 4px;
 }
 
 .btn.btn-primary {
-    color: #fff;
+  color: #fff;
 }
 
 .btn-hollow {
-    color: #FFF;
-    background-color: transparent;
+  color: #FFF;
+  background-color: transparent;
+  border-color: #FFF;
+  &:hover,
+  &:focus {
+    color: darken($brand-primary, 15%);
+    background-color: #FFF;
     border-color: #FFF;
-    &:hover,
-    &:focus {
-        color: darken($brand-primary, 15%);
-        background-color: #FFF;
-        border-color: #FFF;
-    }
+  }
 }
 
 .btn-outline {
-    background-color: transparent;
-    border-color: #FFF;
+  background-color: transparent;
+  border-color: #FFF;
 }
 
 // custome btn
 .btn.btn-normal {
-    color: #fff;
-    background: #1989fa;
-    border-radius: 0;
-    &:hover {
-        color: #FFF;
-    }
+  color: #fff;
+  background: #1989fa;
+  border-radius: 0;
+  &:hover {
+    color: #FFF;
+  }
 }
 
 // Form
 // --------------------------------------------------
 .form-control {
-    border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  &:focus {
     -webkit-box-shadow: none;
     box-shadow: none;
-    &:focus {
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
+  }
 }
 
 label {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 // Stripe
 // --------------------------------------------------
 .stripe {
-    padding: 30px;
-    &.stripe-blue {
-        background-color: $brand-primary;
-        color: #FFF;
-        a.contact {
-            color: #fff;
-        }
+  padding: 30px;
+  &.stripe-blue {
+    background-color: $brand-primary;
+    color: #FFF;
+    a.contact {
+      color: #fff;
     }
-    h3 {
-        line-height: 2;
-    }
+  }
+  h3 {
+    line-height: 2;
+  }
 }
 
 // mobile stripe
 .stripe.stripe-blue.p-xxl.visible-xs {
-    padding: 5px;
-    .stripe-close-btn {
-        float: right;
-        margin-top: -30px;
-        margin-right: 5px;
-        .stripe-close-img {
-            width: 15px;
-            height: 15px;
-        }
+  padding: 5px;
+  .stripe-close-btn {
+    float: right;
+    margin-top: -30px;
+    margin-right: 5px;
+    .stripe-close-img {
+      width: 15px;
+      height: 15px;
     }
+  }
 }
 
 // Modal
 // --------------------------------------------------
 .modal-content {
-    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
 }
 
 .modal-backdrop.in {
-    opacity: 0.25;
-    filter: alpha(opacity=25);
+  opacity: 0.25;
+  filter: alpha(opacity=25);
 }
 
 .alert-modal-css {
-    .modal-dialog {
-        margin-top: 130px;
+  .modal-dialog {
+    margin-top: 130px;
+  }
+  .modal-header {
+    text-align: center;
+  }
+  .modal-body {
+    padding: 25px;
+    .tips {
+      padding: 0 0 20px 0;
+      color: #07A0DF;
     }
-    .modal-header {
-        text-align: center;
+  }
+  .actions {
+    padding-top: 12px;
+    text-align: center;
+    .btn {
+      min-width: 80px;
     }
-    .modal-body {
-        padding: 25px;
-        .tips {
-            padding: 0 0 20px 0;
-            color: #07A0DF;
-        }
+  }
+  label i {
+    margin-right: 3px;
+  }
+  .modal-footer {
+    padding: 15px;
+    text-align: left;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #ECF7FC;
+    strong {
+      white-space: nowrap;
     }
-    .actions {
-        padding-top: 12px;
-        text-align: center;
-        .btn {
-            min-width: 80px;
-        }
-    }
-    label i {
-        margin-right: 3px;
-    }
-    .modal-footer {
-        padding: 15px;
-        text-align: left;
-        margin: 0;
-        border-radius: 0;
-        border: none;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
-        background-color: #ECF7FC;
-        strong {
-            white-space: nowrap;
-        }
-    }
+  }
 }
 
 .features.submit-after {
-    display: none;
-    background-color: #ECF7FC;
-    .submit-info-wrapper {
-        background-color: #fff;
-        padding: 100px;
-        .submit-after-info {
-            .submit-icon {
-                font-size: 55px;
-                text-align: center;
-                color: #fff;
-                height: 80px;
-                width: 80px;
-                border-radius: 50%;
-                margin: 20px auto;
-            }
-            .submit-tips {
-                text-align: center;
-            }
-        }
-        .submit-success {
-            display: none;
-            .correct-icon {
-                background-color: rgb(70, 155, 75);
-            }
-        }
-        .submit-err {
-            display: none;
-            .wrong-icon {
-                background-color: #e82110;
-            }
-        }
-        .stripe-submit {
-            margin-top: 100px;
-            a {
-                color: #fff;
-            }
-            .top-border {
-                border-top: 1px solid #eee;
-                padding: 95px 0 40px;
-            }
-        }
+  display: none;
+  background-color: #ECF7FC;
+  .submit-info-wrapper {
+    background-color: #fff;
+    padding: 100px;
+    .submit-after-info {
+      .submit-icon {
+        font-size: 55px;
+        text-align: center;
+        color: #fff;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        margin: 20px auto;
+      }
+      .submit-tips {
+        text-align: center;
+      }
     }
+    .submit-success {
+      display: none;
+      .correct-icon {
+        background-color: rgb(70, 155, 75);
+      }
+    }
+    .submit-err {
+      display: none;
+      .wrong-icon {
+        background-color: #e82110;
+      }
+    }
+    .stripe-submit {
+      margin-top: 100px;
+      a {
+        color: #fff;
+      }
+      .top-border {
+        border-top: 1px solid #eee;
+        padding: 95px 0 40px;
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
-    #feedback-modal .modal-dialog {
-        margin-top: 12px;
+  #feedback-modal .modal-dialog {
+    margin-top: 12px;
+  }
+  body {
+    font-size: 0.2rem;
+  }
+  .btn {
+    font-size: 0.2rem;
+  }
+  .stripe.stripe-blue {
+    padding: 15px;
+    h3 {
+      font-size: 12px;
     }
-    body {
-        font-size: 0.2rem;
-    }
-    .btn {
-        font-size: 0.2rem;
-    }
-    .stripe.stripe-blue {
-        padding: 15px;
-        h3 {
-            font-size: 12px;
-        }
-    }
+  }
 }
