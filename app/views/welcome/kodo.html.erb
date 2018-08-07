@@ -42,7 +42,7 @@
 
     <div class="row">
       <% I18n.t("views.welcome.kodo.feature1.col").each do |col| %>
-        <div class="col-sm-6 col-xs-6">
+        <div class="col-sm-6 <%= I18n.t("views.language") !='zh' ? 'col-xs-12 kodo-feature-col' : 'col-xs-6' -%>">
           <div class="media">
             <div class="media-left">
               <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 110 %></a>
