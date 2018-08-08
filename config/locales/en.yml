@@ -1505,7 +1505,7 @@ en:
               class: "col-sm-6 col-padding col-content-middle"
               desc: Qiniu offers state-of-the-art computer vision services like face detection, facial key features localization, facial features analysis and fast face clustering. They can be widely applied in face beautification, smart cloud albums, new retail, security monitoring, financial identification, and some other scenarios.
               poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
-              src: "https://odum9helk.qnssl.com/lhpyip8f4-wQlar37IwI-NcO4ruv"
+              src: "https://mars-assets.qnssl.com/lhpyip8f4-wQlar37IwI-NcO4ruv"
               actions:
                 - title: "立即申请"
               links:
@@ -1523,7 +1523,7 @@ en:
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Qiniu offers more than 360 scene recognition and more than 200 objects recognition, with 90.07% in Top-5 accuracy. They can be applied in objects sorting in smart albums, marketing, object recognition&retrieval, and some other scenarios.
               poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://odum9helk.qnssl.com/FndMXibB1keuiyHTXa9xkNyQ2Prq"
+              src: "https://mars-assets.qnssl.com/FndMXibB1keuiyHTXa9xkNyQ2Prq"
               actions:
                 - title: "立即申请"
               links:
@@ -1539,7 +1539,7 @@ en:
               class: "col-sm-6 col-padding col-content-middle sm-right"
               desc: Illegal content in images and videos can be recognized with high efficiency and a high accuracy of 99.95%. It can replace more than 80% of manual auditing to reduce the labor cost. Moreover, the recognition accuracy increases gradually through machine learning.
               poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
-              src: "https://odum9helk.qnssl.com/li4jdu3kRkf3jYAvG5KTXhYDmrgD"
+              src: "https://mars-assets.qnssl.com/li4jdu3kRkf3jYAvG5KTXhYDmrgD"
               actions:
               links:
                 - group:
@@ -1569,7 +1569,7 @@ en:
               class: "col-sm-6 col-padding col-content-middle"
               desc: Object Segmentation is capable of recognizing and localizing more than 80 kinds of objects, along with detecting their edges precisely. It can be applied in fields like image matting and AR.
               poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
-              src: "https://odum9helk.qnssl.com/Fgw_MuDAseUiqL8gXb16fnlBFj3R"
+              src: "https://mars-assets.qnssl.com/Fgw_MuDAseUiqL8gXb16fnlBFj3R"
               actions:
                 - title: "立即申请"
               links:
@@ -2684,31 +2684,31 @@ en:
           title: 七牛云CEO
           name: 对智能时代到来的思考与探索
           avatar: 'niuday/avatar-xushiwei.png'
-          link: https://odum9helk.qnssl.com/lh0deLH8Ii4xsqkY__VUytNg-WXK
+          link: https://mars-assets.qnssl.com/lh0deLH8Ii4xsqkY__VUytNg-WXK
         - speaker: 彭垚
           title: 七牛云人工智能实验室创始人
           name: “视觉智能的革命”—打造视频云时代的AI创新服务体系
           avatar: 'niuday/avatar-pengyao.png'
-          link: https://odum9helk.qnssl.com/lguD-RpZ7a4bHzVk4vGfBTvO7jus
+          link: https://mars-assets.qnssl.com/lguD-RpZ7a4bHzVk4vGfBTvO7jus
         - speaker: 李磊
           title: 浙报集团产品研发中心视听产品部主任
           name: “融合媒体大变局”—如何打造新媒体智能媒资管理平台
           avatar: 'niuday/avatar-lilei.png'
-          link: https://odum9helk.qnssl.com/lgSMTyQlCaFpby14hWChjJ3vuxJ2
+          link: https://mars-assets.qnssl.com/lgSMTyQlCaFpby14hWChjJ3vuxJ2
         - speaker: 戴文军
           title: 高级技术总监
           name: 智能视频云的下一个起点
           avatar: 'niuday/avatar-daiwenjun.png'
-          link: https://odum9helk.qnssl.com/lqfLo5aVYjV8d6ixO8YD3s5y4ssT
+          link: https://mars-assets.qnssl.com/lqfLo5aVYjV8d6ixO8YD3s5y4ssT
         - speaker: 李兴波
           title: 海康萤石副总裁
           name: 人工智能将如何变革视频监控行业
           avatar: 'niuday/avatar-lixingbo.png'
-          link: https://odum9helk.qnssl.com/liqIV1dm6uVS265Q5jt7naDSqjYy
+          link: https://mars-assets.qnssl.com/liqIV1dm6uVS265Q5jt7naDSqjYy
         - speaker: 圆桌讨论
           name: 如何能让人工智能科研成果真正商业化
           avatar: 'niuday/avatar-yuanzhuo.png'
-          link: https://odum9helk.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
+          link: https://mars-assets.qnssl.com/lv4ErMhJQmm2nVxUAABiWamkvFMz
     xian:
       guest:
         - img: 'niuday/avatar-luoliqun.png'
@@ -2746,36 +2746,36 @@ en:
           title: 七牛云总裁
           name: 对智能时代到来的思考与探索
           avatar: 'niuday/avatar-lvguihua.png'
-          link: https://odum9helk.qnssl.com/lq6yYsBpdWc6eAKhEyc4wehqYkKN
+          link: https://mars-assets.qnssl.com/lq6yYsBpdWc6eAKhEyc4wehqYkKN
         - speaker: 罗立群
           title: 北京大学信息管理系数据科学与人工智能所所长
           name: 人工智能的前世今生
           avatar: 'niuday/avatar-luoliqun.png'
-          link: https://odum9helk.qnssl.com/lktFbthy7VUE6QcQZzNyIVxHHJqN
+          link: https://mars-assets.qnssl.com/lktFbthy7VUE6QcQZzNyIVxHHJqN
         - speaker: 林亦宁
           title: 七牛云人工智能实验室联合创始人
           name: “视觉智能的革命”—打造视频云时代的AI创新服务体系
           avatar: 'niuday/avatar-linyining.png'
-          link: https://odum9helk.qnssl.com/lqzZ7Uth64cPzwJX03HSfc0j8war
+          link: https://mars-assets.qnssl.com/lqzZ7Uth64cPzwJX03HSfc0j8war
         - speaker: 杨理想
           title: 中电28研究所AI lab副主任、军事智能化负责人
           name: 人工智能在军事领域的发展及应用
           avatar: 'niuday/avatar-yanglixiang.png'
-          link: https://odum9helk.qnssl.com/lv_wTseinO4LlwHwQohacHYZrX5e
+          link: https://mars-assets.qnssl.com/lv_wTseinO4LlwHwQohacHYZrX5e
         - speaker: 戴文军
           title: 七牛云高级技术总监
           name: 智能视频云的下一个起点
           avatar: 'niuday/avatar-daiwenjun.png'
-          link: https://odum9helk.qnssl.com/lmv0Clot_lq58Z-8953ZkL18Az2N
+          link: https://mars-assets.qnssl.com/lmv0Clot_lq58Z-8953ZkL18Az2N
         - speaker: 王春平
           title: 拍拍贷高级数据工程专家
           name: PP+DATA+AI=PPDAI
           avatar: 'niuday/avatar-wangchunping.png'
-          link: https://odum9helk.qnssl.com/lkYErOOrBuL0IWftneJtNw7RMljb
+          link: https://mars-assets.qnssl.com/lkYErOOrBuL0IWftneJtNw7RMljb
         - speaker: 圆桌论坛
           name: 人工智能技术与实践如何能更好的结合
           avatar: 'niuday/avatar-yuanzhuo.png'
-          link: https://odum9helk.qnssl.com/lsFJlQX7vVlgq5wR5aBVanNbeUY3
+          link: https://mars-assets.qnssl.com/lsFJlQX7vVlgq5wR5aBVanNbeUY3
       medias:
         - img: 'niuday/mediaslog/logo-leifengwang.png'
         - img: 'niuday/mediaslog/logo-yiou.png'
@@ -2843,32 +2843,32 @@ en:
           title: Coding Cloud Studio研发总监
           name: 人工智能在软件工程领域的应用革命
           avatar: 'niuday/avatar-yangzhen.png'
-          link: https://odum9helk.qnssl.com/lnkCnWCwEy_6IjmhYxjz14LDy-6c
+          link: https://mars-assets.qnssl.com/lnkCnWCwEy_6IjmhYxjz14LDy-6c
         - speaker: 卢俊
           title: 七牛视频云解决方案架构师
           name: 如何打造场景化的实时音视频云
           avatar: 'niuday/avatar-lujun.png'
-          link: https://odum9helk.qnssl.com/lktLfTK5EtwNm1NFuVcTtDkEkZeu
+          link: https://mars-assets.qnssl.com/lktLfTK5EtwNm1NFuVcTtDkEkZeu
         - speaker: 佘坤
           title: 努比亚技术有限公司互联网产品开发部部长
           name: 大数据在努比亚的应用
           avatar: 'niuday/avatar-shekun.png'
-          link: https://odum9helk.qnssl.com/lgIyJpOByBSatktWi-iemvG9nLw9
+          link: https://mars-assets.qnssl.com/lgIyJpOByBSatktWi-iemvG9nLw9
         - speaker: 陈超
           title: 七牛云技术总监
           name: 七牛云智能日志管理平台的设计与实践
           avatar: 'niuday/avatar-chenchao.png'
-          link: https://odum9helk.qnssl.com/ljQRr_C9ZGfFDKtE9Kb3MU17JcmU
+          link: https://mars-assets.qnssl.com/ljQRr_C9ZGfFDKtE9Kb3MU17JcmU
         - speaker: Susan.Sun
           title: DataStory VP高级助理、大数据解决方案专家
           name: 图像识别技术在新零售场景的智能应用
           avatar: 'niuday/avatar-susan.sun.png'
-          link: https://odum9helk.qnssl.com/lk_SPo8kdfeTyttsUJXjWG-yNoSZ
+          link: https://mars-assets.qnssl.com/lk_SPo8kdfeTyttsUJXjWG-yNoSZ
         - speaker: 陈鸿威
           title: 云财经大数据CTO
           name: 大数据和机器学习在证券行业的落地与探索
           avatar: 'niuday/avatar-chenhongwei.png'
-          link: https://odum9helk.qnssl.com/lv6OOJO5XOrXg4Tuwu9Npd4Ystl7
+          link: https://mars-assets.qnssl.com/lv6OOJO5XOrXg4Tuwu9Npd4Ystl7
       medias:
         - img: 'niuday/mediaslog/logo-leifengwang.png'
         - img: 'niuday/mediaslog/logo-yiou.png'
