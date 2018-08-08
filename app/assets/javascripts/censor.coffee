@@ -36,7 +36,6 @@ $(document).ready ->
       error: (err) ->
         $imageOverlay.hide()
         $imageScan.removeClass('active')
-        console.log err
   
   # 视频审核
   videoAudit = (path, type) ->
@@ -58,7 +57,6 @@ $(document).ready ->
       error: (err) ->
         $videoOverlay.hide()
         $videoScan.removeClass('active')
-        console.log err
   
   # 重置图片审核UI
   resetImgUI = () ->

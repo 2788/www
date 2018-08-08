@@ -113,28 +113,10 @@ class WelcomeController < ApplicationController
   end
 
   def censor
-    @videoSrc_1 = authorize_download_url("http://pcts024be.bkt.clouddn.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk")
-    @videoSrc_2 = authorize_download_url("http://pcts024be.bkt.clouddn.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ")
-    @videoSrc_3 = authorize_download_url("http://pcts024be.bkt.clouddn.com/FgV6wvTgRv8ZgUZBecKojdIlfs58")
-    @videoSrc_4 = authorize_download_url("http://pcts024be.bkt.clouddn.com/lrBYuiLwg0zFRUP97w59FmmN6H01")
-  end
-
-  # 生成下载授权
-  def authorize_download_url(url)
-    download_url = url
-    # 授权期计算，设置为一小时
-    e = Time.now.to_i + 3600
-    # URL变换：追加授权期参数
-    download_url = "#{download_url}?e=#{e}"
-
-    ### 生成数字签名
-    encoded_sign = generate_encoded_sign(download_url)
-
-    ### 生成下载授权凭证
-    dntoken = "#{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
-
-    ### 返回下载授权URL
-    return "#{download_url}&token=#{dntoken}"
+    @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
+    @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
+    @videoSrc_3 = "https://mars-assets.qnssl.com/FgV6wvTgRv8ZgUZBecKojdIlfs58"
+    @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
   end
 
   # 生成签名(base64编码后)
@@ -158,7 +140,7 @@ class WelcomeController < ApplicationController
     }
 
     if type == 'slide'
-      body[:data][:uri] = authorize_download_url('http://pcts024be.bkt.clouddn.com/' + path)
+      body[:data][:uri] = 'https://mars-assets.qnssl.com/' + path
     elsif type == 'url'
       body[:data][:uri] = path
     end
@@ -226,7 +208,7 @@ class WelcomeController < ApplicationController
     }
 
     if type == 'slide'
-      body[:data][:uri] = authorize_download_url('http://pcts024be.bkt.clouddn.com/' + path)
+      body[:data][:uri] = 'https://mars-assets.qnssl.com/' + path
     elsif type == 'url'
       body[:data][:uri] = path
     end
