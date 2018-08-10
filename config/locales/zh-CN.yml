@@ -1503,13 +1503,13 @@ zh-CN:
         describe: "七牛主机云服务是围绕云主机为核心，推出的含云磁盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
         navs:
           - name: "了解更多"
-            link: ""
+            link: "https://developer.qiniu.com/qvm"
           - name: "产品简介"
-            link: ""
+            link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
           - name: "帮助文档"
-            link: ""
+            link: "https://developer.qiniu.com/qvm"
           - name: "常见问题"
-            link: ""
+            link: "https://developer.qiniu.com/faq?space=qvm"
         advantage:
           title: "产品优势"
           col:
@@ -1767,27 +1767,27 @@ zh-CN:
             - type: "right"
               title: "专有网络"
               desc: "专有网络（Virtual Private Cloud，VPC）是自定义的逻辑隔离网络空间，托管在专有网络内的服务资源包括：云服务器、负载均衡器、云数据库等云服务资源。你可以完全掌握你的专有网络环境，包括自定义专有网络的拓扑和 IP 地址，适用于对网络安全性要求较高和熟悉网络管理的用户。"
-              link: ""
+              link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
               image: "qvm/veins-zhuanyouwangluo.png"
             - type: "left"
               title: "弹性公网 IP"
               desc: "弹性公网 IP（Elastic IP Address，EIP）是可以独立购买和持有的公网IP地址资源，并且可以弹性绑定，您可以在需要时将弹性公网IP绑定到需要的资源上；在不需要时，将之解绑并释放，避免不必要的计费。并且弹性公网IP支持根据需要随时调整带宽，实时响应您的业务需求。"
-              link: ""
+              link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
               image: "qvm/veins-tanxinggongwang.png"
             - type: "right"
               title: "高速通道"
               desc: "高速通道（Express Connect）是一款基于 IPVPN 的便捷高效的网络服务，用于在云上的不同网络环境间实现高速、稳定、安全的私网通信，包括跨地域/跨用户的 VPC 内网互通、专线接入等场景，有效提高网络拓扑的灵活性和跨网络通信的质量和安全性。"
-              link: ""
+              link: "https://portal.qiniu.com/qvm/network/expressConnect"
               image: "qvm/veins-gaosutongdao.png"
             - type: "left"
               title: "云数据库"
               desc: "云数据库（Cloud Database）是被优化或部署到一个虚拟计算环境中的数据库，七牛主机云服务提供 MySQL、Redis、MongoDB、SQL Server、PostgreSQL 及 PPAS 等主流数据库产品，帮助您快速构建安全高效的产品。"
-              link: ""
+              link: "https://developer.qiniu.com/qvm/manual/4272/mysql-introduction"
               image: "qvm/veins-yunshujuku.png"
             - type: "right"
               title: "负载均衡"
               desc: "负载均衡（Server Load Balancer，SLB）是将访问流量根据转发策略分发到后端多台云主机的流量分发控制服务，提供四层和七层负载均衡服务。负载均衡能够扩展应用的服务能力，增强应用的可用性。"
-              link: ""
+              link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
               image: "qvm/veins-fuzaijunheng.png"
             - type: "left"
               title: "安全产品"
@@ -1817,7 +1817,7 @@ zh-CN:
               title: "企业官网、简单Web应用"
               class: "tab-pane fade in active"
               image: "qvm/icon-scene-1.png"
-              link: ""
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t5-lc1m1.small"
               rows:
                 - title: "场景特性"
                   content:
@@ -1836,7 +1836,7 @@ zh-CN:
               title: "网站、App 、小程序后端服务"
               class: "tab-pane fade"
               image: "qvm/icon-scene-2.png"
-              link: ""
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.g5.large"
               rows:
                 - title: "场景特性"
                   content:
@@ -1856,7 +1856,7 @@ zh-CN:
               title: "自建数据库集群服务"
               class: "tab-pane fade"
               image: "qvm/icon-scene-3.png"
-              link: ""
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.r5.large"
               rows:
                 - title: "场景特性"
                   content:
@@ -1875,7 +1875,7 @@ zh-CN:
               title: "高性能计算、科学计算"
               class: "tab-pane fade"
               image: "qvm/icon-scene-4.png"
-              link: ""
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.hfc5.large"
               rows:
                 - title: "场景特性"
                   content:
@@ -1894,7 +1894,7 @@ zh-CN:
               title: "编解码、GPU计算、机器学习"
               class: "tab-pane fade"
               image: "qvm/icon-scene-5.png"
-              link: ""
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.gn5-c4g1.xlarge"
               rows:
                 - title: "场景特性"
                   content:
@@ -1915,64 +1915,52 @@ zh-CN:
             title: "产品文档"
             links:
               - title: "产品简介"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
                 target: "_blank"
               - title: "计费说明"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/manual/4238/qvm-billing-contrast"
                 target: "_blank"
               - title: "备案相关"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/manual/4294/record-introduction"
                 target: "_blank"
               - title: "网络与安全性概述"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/manual/4305/qvm-netsec-overview"
                 target: "_blank"
               - title: "实例规格族"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/manual/4208/qvm-instance-family"
                 target: "_blank"
               - title: "磁盘管理"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
                 target: "_blank"
           problem:
             title: "常见问题"
             links:
               - title: "为什么云主机连不上 Redis?"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/kb/4271/qvm-connection-redis"
                 target: "_blank"
               - title: "如何为 Linux 服务器安装 GRUB?"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/kb/4283/linux-install-grub"
                 target: "_blank"
               - title: "负载均衡各监听连接超时时间是多少？"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/kb/4321/qvm-slb-common-problems"
                 target: "_blank"
               - title: "启动实例发现原数据盘目录下没有数据？"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/kb/4287/qvm-migration-faq"
                 target: "_blank"
               - title: "启动 Others Linux 实例后，网络服务不正常？"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/kb/4287/qvm-migration-faq"
                 target: "_blank"
               - title: "QVM 实例设置权重的作用是什么？"
-                link: ""
+                link: "https://developer.qiniu.com/qvm/kb/4323/qvm-backend-server-faq"
                 target: "_blank"
           news:
-            title: "最新动态"
+            title: "最佳实践"
             links:
-              - title: "不会选？手把手教你挑选合适实例"
-                link: ""
+              - title: "使用迁移工具迁移服务器至 QVM"
+                link: "https://developer.qiniu.com/qvm/manual/4288/server-migration-qiniu"
                 target: "_blank"
-              - title: "2018 年 8 月 1 日 QVM 价格调整通知"
-                link: ""
-                target: "_blank"
-              - title: "云主机大促，注册享好礼"
-                link: ""
-                target: "_blank"
-              - title: "高级监控报警功能上线"
-                link: ""
-                target: "_blank"
-              - title: "云主机还能这么玩？（下篇）"
-                link: ""
-                target: "_blank"
-              - title: "主机安全产品上线啦"
-                link: ""
+              - title: "云主机与对象存储内网相互连接使用"
+                link: "https://developer.qiniu.com/qvm/manual/4269/qvm-kodo"
                 target: "_blank"
       dora:
         title: "智能多媒体 API"
@@ -2608,6 +2596,11 @@ zh-CN:
         - name: fusion
           label: 融合 CDN
           desc: 融合优质节点、可监控、智能调度的内容分发服务
+        
+        - name: qvm
+          label: 云主机
+          desc: 提供云主机、专有网络、云数据库、高防等服务
+          isNew: true
 
         - name: kirk
           label: 容器云
