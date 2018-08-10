@@ -1483,6 +1483,15 @@ en:
       qvm:
         title: "云主机服务"
         describe: "七牛主机云服务是围绕云主机为核心，推出的含云磁盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
+        navs:
+          - name: "了解更多"
+            link: ""
+          - name: "产品简介"
+            link: ""
+          - name: "帮助文档"
+            link: ""
+          - name: "常见问题"
+            link: ""
         advantage:
           title: "产品优势"
           col:
