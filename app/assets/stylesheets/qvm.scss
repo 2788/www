@@ -1,0 +1,272 @@
+.hero-qvm {
+  .container {
+    h1 {
+      margin-top: 0.35rem;
+      font-size: 0.50rem;
+    }
+    p {
+      margin-top: 0.20rem;
+      font-size: 0.16rem;
+    }
+    .actions {
+      margin-top: 0.20rem;
+    }
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+}
+
+.features-qvm-adva {
+  .thumbnail {
+    height: 3.00rem;
+  }
+}
+
+.features-qvm-product {
+  .icon-col {
+    width: 14.25%;
+    padding: 0;
+    text-align: center;
+    .title {
+      margin-top: 0.10rem;
+      font-size: 0.14rem;
+    }
+    p {
+      font-size: 0.12rem;
+      margin: 0;
+    }
+  }
+  .product-row {
+    margin-top: 0.40rem;
+    margin-right: 0;
+    margin-left: 0;
+    .col-content,
+    .col-image,
+    .col-content-lg,
+    .col-image-lg {
+      padding: 0;
+    }
+    .col-content {
+      padding: 40px;
+      background-color: #FFF;
+      h4 {
+        display: none;
+      }
+      .more-btn {
+        position: absolute;
+        right: 40px;
+        bottom: 40px;
+        a {
+          color: #28AEDF;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+        img {
+          margin-top: -2px;
+        }
+      }
+    }
+    .col-content-lg {
+      padding: 20px;
+      background-color: #FFF;
+      h4 {
+        display: none;
+      }
+    }
+    .nav-qvm-product {
+      border: 1px solid #ddd;
+      border-radius: 0.10rem;
+      li {
+        vertical-align: middle;
+        a {
+          padding: 5px 0;
+        }
+        &.active {
+          border: 1px solid #00a0de;
+          border-radius: 0.10rem;
+        }
+      }
+    }
+    .tab-content {
+      overflow: auto;
+      .table {
+        min-width: 665px;
+        tr>td {
+          padding: 10px 5px;
+          font-size: 12px;
+          border: none;
+        }
+        .font-huge>td {
+          font-size: 18px;
+        }
+        .font-normal {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.features-qvm-scene {
+  .nav-tabs {
+    li {
+      padding-left: 0.10rem;
+      padding-right: 0.10rem;
+      a {
+        font-size: 0.13rem;
+      }
+    }
+  }
+  .tab-content {
+    h4 {
+      margin: 0;
+      padding-bottom: 0.05rem;
+    }
+    p {
+      font-size: 0.13rem;
+      margin: 0.05rem 0 0.10rem 0;
+    }
+    .col-right {
+      padding: 0;
+      .buy-btn {
+        position: absolute;
+        bottom: 0.40rem;
+        left: calc(50% - 67px);
+        color: #FFF;
+        &:hover {
+          color: #28AEDF;
+        }
+      }
+    }
+  }
+}
+
+.features-qvm-doc {
+  .row {
+    h4 {
+      padding: 0.20rem 0;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .features-qvm-product {
+    .product-row {
+      .nav-qvm-product {
+        margin-top: 0.30rem;
+      }
+      .tab-content {
+        margin-top: 0.50rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features-qvm-product {
+    .icon-col {
+      width: 25%;
+      height: 1.30rem;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-qvm-product {
+    .icon-col {
+      width: 25%;
+      height: 1.50rem;
+    }
+    .product-row {
+      .tab-content {
+        margin-top: 0;
+        height: 1.70rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .features-qvm-product {
+    .col-content {
+      p {
+        font-size: 0.12rem;
+      }
+      .more-btn {
+        a {
+          font-size: 0.12rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features-qvm-product {
+    .icon-col {
+      width: 25%;
+      height: 2.00rem;
+    }
+    .product-row {
+      .nav-qvm-product {
+        li {
+          display: table-cell;
+          width: 1%;
+          a {
+            font-size: 0.12rem;
+            margin: 0;
+          }
+        }
+      }
+      .tab-content {
+        height: 3.20rem;
+      }
+      .col-content {
+        height: 3.00rem !important;
+        padding: 20px;
+        h4 {
+          display: block;
+        }
+        .more-btn {
+          right: 20px;
+          bottom: 20px;
+        }
+      }
+      .col-content-lg {
+        height: 5.00rem !important;
+        h4 {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .features-qvm-scene {
+    .buy-btn {
+      left: calc(50% - 50px) !important;
+      bottom: 0.50rem !important;
+    }
+  }
+}
+
+@media (max-width: 510px) {
+  .features-qvm-scene {
+    .buy-btn {
+      bottom: 0.20rem !important;
+    }
+  }
+}
+
+@media(width: 768px) {
+  .features-qvm-product {
+    .product-row {
+      .tab-content {
+        height: 2.50rem;
+      }
+    }
+  }
+}

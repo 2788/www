@@ -1,0 +1,231 @@
+<div class="jumbotron hero hero-qvm">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-10 col-sm-7">
+          <h1><%= I18n.t("views.welcome.qvm.title") -%></h1>
+          <p><%= I18n.t("views.welcome.qvm.describe") -%></p>
+          <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+            <%= link_to "立即购买", "", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "控制台", "", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+          </div>
+        </div>
+        <div class="col-xs-5 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "banner/banner-qvm-right-zh.png", alt: "qvm-right", width: "100%" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# advantage tab %>
+<div class="features features-qvm-adva">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.qvm.advantage.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.qvm.advantage.col").each do |col| -%>
+        <div class="col-md-4 col-sm-6 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag col[:icon], alt: col[:title], width: 80 -%>
+            <div class="caption">
+              <h4><%= col[:title] -%></h4>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+
+  </div>
+</div>
+
+<%# product tab %>
+<div class="features features-less features-cases features-qvm-product">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.qvm.product.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.qvm.product.icons").each do |icon| -%>
+        <div class="icon-col col-xs-4">
+          <%= image_tag icon[:icon], alt: icon[:title], width: 50 -%>
+          <p class="title"><%= icon[:title] -%></p>
+          <p><%= icon[:subtitle] -%></p>
+        </div>
+      <% end -%>
+    </div>
+
+    <%# 云主机 %>
+    <div class="row product-row">
+      <div class="col-md-3 col-sm-3 hidden-xs col-image-lg">
+        <%= image_tag I18n.t("views.welcome.qvm.product.host.image"), alt: I18n.t("views.welcome.qvm.product.host.title"), width: "100%" -%>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-12 col-content-lg">
+        <h4><%= I18n.t("views.welcome.qvm.product.host.title") -%></h4>
+        <div class="tabs">
+          <ul class="nav nav-tabs nav-justified points-bar nav-qvm-product" role="tablist">
+            <% I18n.t("views.welcome.qvm.product.host.tabs").each do |tab| -%>
+              <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+            <% end -%>
+          </ul>
+          <div class="tab-content">
+            <% I18n.t("views.welcome.qvm.product.host.sections").each do |sec| -%>
+              <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+                <table class="table">
+                  <tbody>
+                    <tr class="font-huge">
+                      <td><%= sec[:row1][:col1] -%></td>
+                      <td><%= sec[:row1][:col2] -%></td>
+                      <td><%= sec[:row1][:col3] -%><span class="font-normal"> GHz<span></td>
+                      <td><%= sec[:row1][:col4] -%><span class="font-normal"> Gbps</span></td>
+                      <td><%= sec[:row1][:col5] -%><span class="font-normal">万 PPS</span></td>
+                    </tr>
+                    <tr>
+                      <td><%= sec[:row2][:col1] -%></td>
+                      <td><%= sec[:row2][:col2] -%></td>
+                      <td><%= sec[:row2][:col3] -%></td>
+                      <td><%= sec[:row2][:col4] -%></td>
+                      <td><%= sec[:row2][:col5] -%></td>
+                    </tr>
+                    <tr class="font-huge">
+                      <td><%= sec[:row3][:col1] -%></td>
+                      <td><%= sec[:row3][:col2] -%></td>
+                      <td><%= sec[:row3][:col3] -%><span class="font-normal"> GHz</span></td>
+                      <td><%= sec[:row3][:col4] -%><span class="font-normal"> Gbps</span></td>
+                      <td><%= sec[:row3][:col5] -%><span class="font-normal">万 PPS</span></td>
+                    </tr>
+
+                    <tr>
+                      <td><%= sec[:row4][:col1] -%></td>
+                      <td><%= sec[:row4][:col2] -%></td>
+                      <td><%= sec[:row4][:col3] -%></td>
+                      <td><%= sec[:row4][:col4] -%></td>
+                      <td><%= sec[:row4][:col5] -%></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# 其余六个 %>
+    <% I18n.t("views.welcome.qvm.product.others").each do |item| -%>
+      <div class="row product-row">
+
+        <% if item[:type] == "right" -%>
+
+          <div class="col-md-9 col-sm-9 col-xs-12 col-content">
+            <h4><%= item[:title] -%></h4>
+            <p><%= item[:desc] -%></p>
+            <span class="more-btn">
+              <%= link_to "了解更多", item[:link], target: "_blank" -%>&nbsp;
+              <%= image_tag "qvm/know-more.png", alt: "了解更多", width: 24 -%>
+            </span>
+          </div>
+          <div class="col-md-3 col-sm-3 hidden-xs col-image">
+            <%= image_tag item[:image], alt: item[:title], width: "100%" -%>
+          </div>
+
+        <% elsif item[:type] == "left" -%>
+
+          <div class="col-md-3 col-sm-3 hidden-xs col-image">
+            <%= image_tag item[:image], alt: item[:title], width: "100%" -%>
+          </div>
+          <div class="col-md-9 col-sm-9 col-xs-12 col-content">
+            <h4><%= item[:title] -%></h4>
+            <p><%= item[:desc] -%></p>
+            <span class="more-btn">
+              <%= link_to "了解更多", item[:link], target: "_blank" -%>&nbsp;
+              <%= image_tag "qvm/know-more.png", alt: "了解更多", width: 24 -%>
+            </span>
+          </div>
+          
+        <% end -%>
+
+      </div>
+    <% end -%>
+
+  </div>
+</div>
+
+<%# scene tab %>
+<div class="features features-qvm-scene">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.qvm.scene.title") -%></h2>
+    </div>
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
+        <% I18n.t("views.welcome.qvm.scene.tabs").each do |tab| -%>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.welcome.qvm.scene.sections").each do |sec| -%>
+          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+            <div class="row">
+              <div class="col-md-8 col-sm-6 col-xs-6">
+                <div class="col-left">
+                  <% sec[:rows].each do |row| -%>
+                    <h4><%= row[:title] -%></h4>
+                    <% row[:content].each do |item| -%>
+                      <p><%= item -%></p>
+                    <% end -%>
+                  <% end -%>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-6 col-right">
+                <%= image_tag sec[:image], alt: sec[:title], width: "100%" -%>
+                <%= link_to "立即购买", sec[:link], target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs buy-btn" -%>
+              </div>
+            </div>
+          </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# document tab %>
+<div class="features features-less features-cases features-qvm-doc <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.qvm.doc.title") -%></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 col-xs-12">
+        <h4><%= I18n.t("views.welcome.qvm.doc.document.title") -%></h4>
+        <ul class="links-list">
+          <% I18n.t("views.welcome.qvm.doc.document.links").each do |item| -%>
+            <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+          <% end -%>
+        </ul>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <h4><%= I18n.t("views.welcome.qvm.doc.problem.title") -%></h4>
+        <ul class="links-list">
+          <% I18n.t("views.welcome.qvm.doc.problem.links").each do |item| -%>
+            <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+          <% end -%>
+        </ul>
+      </div>
+      <div class="col-sm-4 col-xs-12">
+        <h4><%= I18n.t("views.welcome.qvm.doc.news.title") -%></h4>
+        <ul class="links-list">
+          <% I18n.t("views.welcome.qvm.doc.news.links").each do |item| -%>
+            <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+          <% end -%>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
