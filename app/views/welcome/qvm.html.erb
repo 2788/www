@@ -20,6 +20,15 @@
   </div>
 </div>
 
+<%# nav tab %>
+<div class="features features-less features-cases features-qvm-nav">
+  <ul class="nav nav-tabs nav-justified nav-short points-bar">
+    <% I18n.t("views.welcome.qvm.navs").each do |nav| -%>
+      <li><%= link_to nav[:name], nav[:link], target: "_blank" -%></li>
+    <% end -%>
+  </ul>
+</div>
+
 <%# advantage tab %>
 <div class="features features-qvm-adva">
   <div class="container">
