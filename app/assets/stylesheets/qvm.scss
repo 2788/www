@@ -20,13 +20,13 @@
 
 .features-qvm-nav {
   padding: 0.10rem 0;
-  .nav>li {
-    a {
-      color: #333 !important;
+  .nav {
+    li>span {
+      position: relative;
+      padding: 12px 0;
+      display: block;
     }
-    a:hover {
-      color: #00a0de !important;
-    }
+    border-bottom: none;
   }
 }
 
@@ -37,6 +37,10 @@
 }
 
 .features-qvm-product {
+  padding-top: 0.40rem;
+  .navbar-wrapper-middle {
+    padding: 0;
+  }
   .icon-col {
     width: 14.25%;
     padding: 0;
@@ -44,16 +48,19 @@
     .title {
       margin-top: 0.10rem;
       font-size: 0.14rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     p {
       font-size: 0.12rem;
       margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   .product-row {
-    margin-top: 0.40rem;
-    margin-right: 0;
-    margin-left: 0;
     .col-content,
     .col-image,
     .col-content-lg,
@@ -123,6 +130,14 @@
   }
 }
 
+.qvm-product-section-1 {
+  padding-top: 0;
+}
+
+.qvm-product-section-7 {
+  padding-bottom: 1.00rem;
+}
+
 .features-qvm-scene {
   .nav-tabs {
     li {
@@ -174,29 +189,47 @@
       .tab-content {
         margin-top: 0.50rem;
       }
+      .col-content {
+        height: 338px;
+      }
+      .col-content-lg {
+        height: 387px;
+      }
     }
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .features-qvm-product {
-    .icon-col {
-      width: 25%;
-      height: 1.30rem;
+    .product-row {
+      .nav-qvm-product {
+        margin-top: 0.20rem;
+      }
+      .tab-content {
+        margin-top: 0.20rem;
+      }
+      .col-content {
+        height: 282px;
+      }
+      .col-content-lg {
+        height: 320px;
+      }
     }
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .features-qvm-product {
-    .icon-col {
-      width: 25%;
-      height: 1.50rem;
-    }
     .product-row {
       .tab-content {
         margin-top: 0;
-        height: 1.70rem;
+        height: 1.80rem;
+      }
+      .col-content {
+        height: 218px;
+      }
+      .col-content-lg {
+        height: 248px;
       }
     }
   }
@@ -209,6 +242,7 @@
         font-size: 0.12rem;
       }
       .more-btn {
+        font-size: 0.12rem;
         a {
           font-size: 0.12rem;
         }
@@ -219,10 +253,6 @@
 
 @media (max-width: 767px) {
   .features-qvm-product {
-    .icon-col {
-      width: 25%;
-      height: 2.00rem;
-    }
     .product-row {
       .nav-qvm-product {
         li {
@@ -238,7 +268,7 @@
         height: 3.20rem;
       }
       .col-content {
-        height: 3.00rem !important;
+        height: 210px;
         padding: 20px;
         h4 {
           display: block;
@@ -249,7 +279,7 @@
         }
       }
       .col-content-lg {
-        height: 5.00rem !important;
+        height: 350px;
         h4 {
           display: block;
         }
@@ -279,7 +309,7 @@
   .features-qvm-product {
     .product-row {
       .tab-content {
-        height: 2.50rem;
+        height: 2.60rem;
       }
     }
   }
