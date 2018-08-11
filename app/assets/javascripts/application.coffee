@@ -36,7 +36,6 @@
 #= require plsv
 #= require sdk
 #= require censor
-#= require qvm
 
 #= require uuid
 
