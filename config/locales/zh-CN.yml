@@ -2756,10 +2756,10 @@ zh-CN:
           label: 融合 CDN
           desc: 融合优质节点、可监控、智能调度的内容分发服务
         
-        - name: qvm
-          label: 云主机
-          desc: 提供云主机、专有网络、云数据库、高防等服务
-          isNew: true
+        # - name: qvm
+        #   label: 云主机
+        #   desc: 提供云主机、专有网络、云数据库、高防等服务
+        #   isNew: true
 
         - name: kirk
           label: 容器云
