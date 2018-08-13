@@ -67,8 +67,11 @@
       <div class="row">
         <% I18n.t("views.welcome.qvm.product.icons").each do |icon| -%>
           <div class="icon-col col-xs-4">
-            <%= image_tag icon[:icon], alt: icon[:title], width: 50 -%>
-            <li class="title intLink"><%= link_to icon[:title], icon[:href], title: icon[:title] -%></li>
+            <li class="intLink">
+              <%= image_tag icon[:icon], class: "normal-image", alt: icon[:title], width: 50 -%>
+              <%= image_tag icon[:active], class: "active-image", alt: icon[:title], width: 50 -%>
+              <p class="title"><%= link_to icon[:title], icon[:href], title: icon[:title] -%></p>
+            </li>
           </div>
         <% end -%>
       </div>

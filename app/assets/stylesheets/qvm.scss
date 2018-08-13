@@ -45,12 +45,30 @@
     width: 14.25%;
     padding: 0;
     text-align: center;
+    .normal-image {
+      display: inline-block;
+    }
+    .active-image {
+      display: none;
+    }
     .title {
       margin-top: 0.10rem;
       font-size: 0.14rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    &:hover {
+      cursor: pointer;
+      .normal-image {
+        display: none;
+      }
+      .active-image {
+        display: inline-block;
+      }
+      a {
+        color: #28aedf;
+      }
     }
   }
   .product-row {

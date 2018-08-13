@@ -8,7 +8,7 @@
           <p><%= I18n.t("views.welcome.insight.desc") -%></p>
           <div class="actions">
             <% I18n.t("views.welcome.insight.actions").each do |action| -%>
-              <%= link_to action[:title], action[:link], class: action[:class], target: action[:target] -%>
+              <%= link_to action[:title], action[:link], class: action[:class], id: action[:id], target: action[:target] -%>
             <% end -%>
           </div>
           <p>免费额度：新增日志数据 1 GB/月，存量日志数据 1 GB/月，日志仓库 1 个/月，API 调用次数 100 万次/月，
