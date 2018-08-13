@@ -1516,31 +1516,24 @@ en:
           icons:
             - icon: "qvm/icon-yunzhuji-b.png"
               title: "云主机"
-              subtitle: ""
               href: "#qvm-product-section-1"
             - icon: "qvm/icon-zhuanyouwangluo-b.png"
               title: "专有网络"
-              subtitle: ""
               href: "#qvm-product-section-2"
             - icon: "qvm/icon-tanxinggongwang-b.png"
               title: "弹性公网 IP"
-              subtitle: "(Elastic IP Address, EIP)"
               href: "#qvm-product-section-3"
             - icon: "qvm/icon-gaosutongdao-b.png"
               title: "高速通道"
-              subtitle: ""
               href: "#qvm-product-section-4"
             - icon: "qvm/icon-yunshujuku-b.png"
               title: "云数据库"
-              subtitle: ""
               href: "#qvm-product-section-5"
             - icon: "qvm/icon-fuzaijunheng-b.png"
               title: "负载均衡"
-              subtitle: "(Server Load Balancer, SLB)"
               href: "#qvm-product-section-6"
             - icon: "qvm/icon-anquanchanpin-b.png"
               title: "安全产品"
-              subtitle: ""
               href: "#qvm-product-section-7"
           host:
             title: "云主机"
@@ -1819,12 +1812,13 @@ en:
                   content:
                     - 网站初始阶段访问量小，只需要一台低配置的云服务器即可运行应用程序、数据库、存储文件等
                     - 随着业务发展，你可以随时提高配置，增加云服务器数量，无需担心低配服务器在业务突增时带来的资源不足问题
-                - title: "相关产品"
-                  content:
-                    - 云磁盘 专有网络 弹性公网 IP
-                - title: "热门机型"
-                  content:
-                    - 突发实例型 T5 （1核CPU/1G内存/1M带宽/40G云磁盘/34.9元每月）
+              prolinks:
+                - title: "云磁盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc?ref=www-dev.qiniu.io"
+                - title: "弹性公网 IP"
+                  link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip?ref=www-dev.qiniu.io"
             - id: "tab-scene-2"
               title: "网站、App 、小程序后端服务"
               class: "tab-pane fade"
@@ -1839,12 +1833,17 @@ en:
                     - 可将云服务器与 对象存储 及 融合CDN 搭配，降低存储费用，减少用户访问等待时间、降低带宽费用、提高可用性
                     - 通过使用弹性伸缩，实现在业务增长/下降时自动增减实例，保证满足访问量达到峰值时对资源的要求，同时降低成本
                     - 搭配负载均衡实现高可用架构
-                - title: "相关产品"
-                  content:
-                    - 对象存储 融合 CDN 负载均衡 弹性公网 IP 安全产品
-                - title: "热门机型"
-                  content:
-                    - 通用型 G5（2核CPU/8G内存/1M带宽/40G云磁盘/242.8元每月）
+              prolinks:
+                - title: "对象存储"
+                  link: "https://www.qiniu.com/products/kodo"
+                - title: "融合 CDN"
+                  link: "https://www.qiniu.com/products/fusion"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction?ref=www-dev.qiniu.io"
+                - title: "弹性公网 IP"
+                  link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip?ref=www-dev.qiniu.io"
+                - title: "安全产品"
+                  link: ""
             - id: "tab-scene-3"
               title: "自建数据库集群服务"
               class: "tab-pane fade"
@@ -1858,12 +1857,13 @@ en:
                   content:
                     - 使用较高配置的 I/O 优化型云服务器，同时采用 SSD 云磁盘，可实现支持高 I/O 并发和更高的数据可靠性
                     - 也可以采用多台稍微低配的 I/O 优化型云服务器，搭配负载均衡，实现高可用架构
-                - title: "相关产品"
-                  content:
-                    - 云磁盘 专有网络 负载均衡
-                - title: "热门机型"
-                  content:
-                    - 内存型 R5（2核CPU/16G内存/1M带宽/40G云磁盘/306.7元每月）
+              prolinks:
+                - title: "云磁盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc?ref=www-dev.qiniu.io"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction?ref=www-dev.qiniu.io"
             - id: "tab-scene-4"
               title: "高性能计算、科学计算"
               class: "tab-pane fade"
@@ -1877,12 +1877,15 @@ en:
                   content:
                     - 主要用于大型科学工程计算，数值模拟等
                     - 主要应用领域包括石油、气象、CAE、核能、制药、环境监测分析、系统仿真等
-                - title: "相关产品"
-                  content:
-                    - 云磁盘 对象存储 专有网络 负载均衡
-                - title: "热门机型"
-                  content:
-                    - 高主频计算型 HFC5（2核CPU/4G内存/1M带宽/40G云磁盘/239.2元每月）
+              prolinks:
+                - title: "云磁盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "对象存储"
+                  link: "https://www.qiniu.com/products/kodo"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc?ref=www-dev.qiniu.io"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction?ref=www-dev.qiniu.io"
             - id: "tab-scene-5"
               title: "编解码、GPU计算、机器学习"
               class: "tab-pane fade"
@@ -1896,12 +1899,15 @@ en:
                   content:
                     - 主要应用于科学计算，如计算流体动力学、计算金融学、基因组学研究、环境分析等场景
                     - 也包括音视频渲染、多媒体编解码及其他服务器端GPU计算工作等
-                - title: "相关产品"
-                  content:
-                    - 云磁盘 对象存储 专有网络 负载均衡
-                - title: "热门机型"
-                  content:
-                    - GPU 计算型 GN5（4核CPU/30G内存/1M带宽/40G云磁盘/3326.2元每月）
+              prolinks:
+                - title: "云磁盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "对象存储"
+                  link: "https://www.qiniu.com/products/kodo"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc?ref=www-dev.qiniu.io"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction?ref=www-dev.qiniu.io"
         doc:
           title: "快速入门"
           document:

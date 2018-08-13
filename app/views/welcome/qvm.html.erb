@@ -6,7 +6,7 @@
           <h1><%= I18n.t("views.welcome.qvm.title") -%></h1>
           <p><%= I18n.t("views.welcome.qvm.describe") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "控制台", "https://portal.qiniu.com/qvm", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
         </div>
@@ -69,7 +69,6 @@
           <div class="icon-col col-xs-4">
             <%= image_tag icon[:icon], alt: icon[:title], width: 50 -%>
             <li class="title intLink"><%= link_to icon[:title], icon[:href], title: icon[:title] -%></li>
-            <p title="<%= icon[:subtitle] -%>"><%= icon[:subtitle] -%></p>
           </div>
         <% end -%>
       </div>
@@ -210,6 +209,16 @@
                       <p><%= item -%></p>
                     <% end -%>
                   <% end -%>
+                  <h4>相关产品</h4>
+                  <p>
+                    <% sec[:prolinks].each do |item| -%>
+                      <% if item[:link] != "" -%>
+                        <%= link_to item[:title], item[:link], target: "_blank", class: "product-item" -%>
+                      <% else -%>
+                        <span class="product-item"><%= item[:title] -%></span>
+                      <% end -%>
+                    <% end -%>
+                  </p>
                 </div>
               </div>
               <div class="col-md-4 col-sm-6 col-xs-6 col-right">
