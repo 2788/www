@@ -57,7 +57,7 @@
 </div>
 
 <%# product tab %>
-<div class="features features-less features-cases features-qvm-product">
+<div class="features features-less features-cases features-qvm-product qvm-product-title">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.welcome.qvm.product.title") -%></h2>
@@ -80,7 +80,7 @@
 </div>
 
 <%# 云主机 %>
-<div class="features features-less features-cases features-qvm-product qvm-product-section-1">
+<div class="features features-less features-cases features-qvm-product qvm-product-item qvm-product-section-1">
   <div class="container">
     <div class="row product-row">
       <div class="col-md-3 col-sm-3 hidden-xs col-image-lg">
@@ -141,13 +141,13 @@
 
 <%# 其余六个 %>
 <% I18n.t("views.welcome.qvm.product.others").each do |item| -%>
-  <div class="features features-less features-cases features-qvm-product <%= item[:class] -%>">
+  <div class="features features-less features-cases features-qvm-product qvm-product-item <%= item[:class] -%>">
     <div class="container">
       <div class="row product-row">
 
         <% if item[:type] == "right" -%>
 
-          <div class="col-md-9 col-sm-9 col-xs-12 col-content">
+          <div class="col-md-10 col-sm-10 col-xs-12 col-content">
             <h4><%= item[:title] -%></h4>
             <p><%= item[:desc] -%></p>
             <span class="more-btn">
@@ -159,16 +159,16 @@
               <% end -%>
             </span>
           </div>
-          <div class="col-md-3 col-sm-3 hidden-xs col-image">
+          <div class="col-md-2 col-sm-2 hidden-xs col-image">
             <%= image_tag item[:image], alt: item[:title], width: "100%" -%>
           </div>
 
         <% elsif item[:type] == "left" -%>
 
-          <div class="col-md-3 col-sm-3 hidden-xs col-image">
+          <div class="col-md-2 col-sm-2 hidden-xs col-image">
             <%= image_tag item[:image], alt: item[:title], width: "100%" -%>
           </div>
-          <div class="col-md-9 col-sm-9 col-xs-12 col-content">
+          <div class="col-md-10 col-sm-10 col-xs-12 col-content">
             <h4><%= item[:title] -%></h4>
             <p><%= item[:desc] -%></p>
             <span class="more-btn">
