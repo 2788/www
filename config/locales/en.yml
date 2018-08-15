@@ -1973,9 +1973,9 @@ en:
                 target: "_blank"
       edu:
         title: "在线教育解决方案"
-        desc: "满足一对一教学、小班教学、双师课堂等多种教育场景，帮助企业快速开发上线低延迟、高可用的互联网教育产品。"
+        desc: "满足一对一教学、小班教学、双师课堂等多种教育场景，助力企业快速上线低延迟、高可用的互联网教育产品。"
         middlebars:
-          - title: "在线教育解决方案"
+          - title: "方案详情"
             class: "intLink active"
             href: "#tab-edu-section-1"
           - title: "应用场景"
@@ -1988,7 +1988,7 @@ en:
             class: "intLink"
             href: "#tab-edu-section-4"
         solution:
-          title: "在线教育解决方案"
+          title: "方案详情"
           desc: "国内首家标准 WebRTC 研发的一站式解决方案"
           image: "edu/image-solution.jpg"
           left:
@@ -2042,37 +2042,30 @@ en:
           title: "接入流程"
           items:
             - title: "咨询集成方案"
-              subtitle: ""
               class: "icon-item"
               image: "edu/icon-process-1.png"
               width: 80
             - title: ""
-              subtitle: ""
               class: "arrow-item"
               image: "edu/icon-process-arrow.png"
               width: 40
             - title: "确认接入清单"
-              subtitle: "存储、CDN、实时音视频、内容安全审核、大数据分析"
               class: "icon-item"
               image: "edu/icon-process-2.png"
               width: 80
             - title: ""
-              subtitle: ""
               class: "arrow-item"
               image: "edu/icon-process-arrow.png"
               width: 40
             - title: "测试部署集成环境"
-              subtitle: ""
               class: "icon-item"
               image: "edu/icon-process-3.png"
               width: 80
             - title: ""
-              subtitle: ""
               class: "arrow-item"
               image: "edu/icon-process-arrow.png"
               width: 40
             - title: "30 天内上线"
-              subtitle: ""
               class: "icon-item"
               image: "edu/icon-process-4.png"
               width: 80
