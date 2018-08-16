@@ -38,8 +38,8 @@ Rails.application.routes.draw do
     get '/products/newmedia',       to: 'welcome#newmedia'
     get '/products/pili/livequiz',  to: 'welcome#livequiz'
     get '/products/qavs',           to: 'welcome#qavs'
-    get '/products/qvm',            to: 'welcome#qvm'
-    get '/products/edu',            to: 'welcome#edu'
+    # get '/products/qvm',            to: 'welcome#qvm'
+    # get '/products/edu',            to: 'welcome#edu'
 
     get '/contact',        to: 'welcome#contact'
     get '/solutions',      to: 'welcome#solution'
