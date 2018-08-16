@@ -1226,7 +1226,7 @@ zh-CN:
         title: "内容安全"
         subtitle: "双重审核 运营无忧"
         describe1: "七牛云内容安全基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。"
-        describe2: "帮助多媒体内容平台避免色情、暴恐和涉政等违规风险，大幅缩减人工审核成本。"
+        describe2: "帮助多媒体内容平台规避色情、暴恐和涉政等违规风险，大幅缩减人工审核成本。"
         process:
           title: "标准化内容审核流程"
           image: "censor/process-image.jpg"
@@ -1503,7 +1503,7 @@ zh-CN:
                 target: "_blank"
       qvm:
         title: "云主机服务"
-        describe: "七牛主机云服务是围绕云主机为核心，推出的含云磁盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
+        describe: "七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
         navs:
           - name: "产品简介"
             link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
@@ -1793,7 +1793,7 @@ zh-CN:
             - class: "qvm-product-section-5"
               type: "left"
               title: "云数据库"
-              desc: "云数据库（Cloud Database）是被优化或部署到一个虚拟计算环境中的数据库，七牛主机云服务提供 MySQL、Redis、MongoDB、SQL Server、PostgreSQL 及 PPAS 等主流数据库产品，帮助您快速构建安全高效的产品。"
+              desc: "云数据库（Cloud Database）是被优化或部署到一个虚拟计算环境中的数据库，七牛云主机服务提供 MySQL、Redis、MongoDB、SQL Server、PostgreSQL 及 PPAS 等主流数据库产品，帮助您快速构建安全高效的产品。"
               link: "https://developer.qiniu.com/qvm/manual/4272/mysql-introduction"
               image: "qvm/veins-yunshujuku.png"
             - class: "qvm-product-section-6"
@@ -1841,7 +1841,7 @@ zh-CN:
                     - 网站初始阶段访问量小，只需要一台低配置的云服务器即可运行应用程序、数据库、存储文件等
                     - 随着业务发展，你可以随时提高配置，增加云服务器数量，无需担心低配服务器在业务突增时带来的资源不足问题
               prolinks:
-                - title: "云磁盘"
+                - title: "云硬盘"
                   link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
                 - title: "专有网络"
                   link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc?ref=www-dev.qiniu.io"
@@ -1883,10 +1883,10 @@ zh-CN:
                     - 高 I/O、高内存需求
                 - title: "应用建议"
                   content:
-                    - 使用较高配置的 I/O 优化型云服务器，同时采用 SSD 云磁盘，可实现支持高 I/O 并发和更高的数据可靠性
+                    - 使用较高配置的 I/O 优化型云服务器，同时采用 SSD 云硬盘，可实现支持高 I/O 并发和更高的数据可靠性
                     - 也可以采用多台稍微低配的 I/O 优化型云服务器，搭配负载均衡，实现高可用架构
               prolinks:
-                - title: "云磁盘"
+                - title: "云硬盘"
                   link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
                 - title: "专有网络"
                   link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc?ref=www-dev.qiniu.io"
@@ -1906,7 +1906,7 @@ zh-CN:
                     - 主要用于大型科学工程计算，数值模拟等
                     - 主要应用领域包括石油、气象、CAE、核能、制药、环境监测分析、系统仿真等
               prolinks:
-                - title: "云磁盘"
+                - title: "云硬盘"
                   link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
                 - title: "对象存储"
                   link: "https://www.qiniu.com/products/kodo"
@@ -1928,7 +1928,7 @@ zh-CN:
                     - 主要应用于科学计算，如计算流体动力学、计算金融学、基因组学研究、环境分析等场景
                     - 也包括音视频渲染、多媒体编解码及其他服务器端GPU计算工作等
               prolinks:
-                - title: "云磁盘"
+                - title: "云硬盘"
                   link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
                 - title: "对象存储"
                   link: "https://www.qiniu.com/products/kodo"
@@ -2006,7 +2006,7 @@ zh-CN:
             class: "intLink"
             href: "#tab-edu-section-4"
         solution:
-          title: "方案详情"
+          title: "在线教育解决方案"
           desc: "国内首家标准 WebRTC 研发的一站式解决方案"
           image: "edu/image-solution.jpg"
           left:
@@ -2749,10 +2749,10 @@ zh-CN:
           label: 融合 CDN
           desc: 融合优质节点、可监控、智能调度的内容分发服务
         
-        - name: qvm
-          label: 云主机
-          desc: 提供云主机、专有网络、云数据库、高防等服务
-          isNew: true
+        # - name: qvm
+        #   label: 云主机
+        #   desc: 提供云主机、专有网络、云数据库、高防等服务
+        #   isNew: true
 
         - name: kirk
           label: 容器云
@@ -2830,46 +2830,66 @@ zh-CN:
           label: 短视频解决方案
           desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
           type: product
-        - name: edu
-          label: 在线教育解决方案
-          desc: 帮助快速上线 1 对 1 、小班课、大班课等教学应用
+        # - name: edu
+        #   label: 在线教育解决方案
+        #   desc: 帮助快速上线 1 对 1 、小班课、大班课等教学应用
+        #   type: product
+        - name: newmedia
+          label: 新媒体解决方案
+          desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
           type: product
       - cols:
         - name: player
           label: 播放器解决方案
           desc: 全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议
           type: product
-        - name: newmedia
-          label: 新媒体解决方案
-          desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
-          type: product
+        # - name: newmedia
+        #   label: 新媒体解决方案
+        #   desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
+        #   type: product
+        - name: security
+          label: 安防解决方案
+          desc: 灵活部署，满足不同安防场景互联网远程监控需求
+          type: solution
       - cols:
         - name: vcs
           label: 视频冷存储解决方案
           desc: 专为综合视频平台打造，高可用低成本的 PB 级数据存储解决方案
           type: product
-        - name: security
-          label: 安防解决方案
-          desc: 灵活部署，满足不同安防场景互联网远程监控需求
+        # - name: security
+        #   label: 安防解决方案
+        #   desc: 灵活部署，满足不同安防场景互联网远程监控需求
+        #   type: solution
+        - name: intelligence
+          label: 智能硬件与物联网解决方案
+          desc: 满足智能硬件厂商各应用场景下云端计算需求
           type: solution
       - cols:
         - name: qavs
           label: 智能视频云解决方案
           desc: 集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
           type: product
-        - name: intelligence
-          label: 智能硬件与物联网解决方案
-          desc: 满足智能硬件厂商各应用场景下云端计算需求
+        # - name: intelligence
+        #   label: 智能硬件与物联网解决方案
+        #   desc: 满足智能硬件厂商各应用场景下云端计算需求
+        #   type: solution
+        - name: internet
+          label: 互联网与移动互联网解决方案
+          desc: 为互联网初创企业量身定制，一站式云计算服务平台
           type: solution
       - cols:
         - name: privatization
           label: 私有云存储解决方案
           desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
           type: solution
-        - name: internet
-          label: 互联网与移动互联网解决方案
-          desc: 为互联网初创企业量身定制，一站式云计算服务平台
-          type: solution
+        # - name: internet
+        #   label: 互联网与移动互联网解决方案
+        #   desc: 为互联网初创企业量身定制，一站式云计算服务平台
+        #   type: solution
+        - name:
+          label:
+          desc:
+          type:
       - cols:
         - name: qualityctrl
           label: 应用质量监控解决方案
@@ -2991,7 +3011,7 @@ zh-CN:
     welcome_qvm:
       title: 云主机_云服务器 - 七牛云
       keywords: 云服务器，云主机，云虚拟主机，vps，弹性计算
-      description: 七牛主机云服务是围绕云主机为核心，推出的含云磁盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。
+      description: 七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。
     welcome_edu:
       title: 在线教育解决方案 - 七牛云
       keywords: 在线教育，教育云，教育音视频，在线教育直播，WebRTC，实时音视频，互联网教育，智慧教育，在线职业培训，高校慕课

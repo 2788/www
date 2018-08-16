@@ -26,7 +26,6 @@ module ApplicationHelper
       return
     end
 
-
     tag("meta", name: "go-import", content: "qiniu.com/#{package} git https://github.com/qbox/#{package}") +
     tag("meta", name: "go-source", content: "qiniu.com/#{package} https://github.com/qbox/#{package}/ https://github.com/qbox/#{package}/tree/master{/dir} https://github.com/qbox/#{package}/blob/master{/dir}/{file}#L{line}")
   end

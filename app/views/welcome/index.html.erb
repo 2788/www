@@ -339,7 +339,7 @@
                   </div>
                   <div class="infobox">
                     <time>
-                      <%= archive[:created_at].strftime("%Y-%m-%d") + raw(" 发布在 ") + Archive::CATEGORIES[archive.category] %>
+                      <%= archive_publish_meta(archive) %>
                     </time>
                     <p title="<%= archive[:title] %>">
                       <%= archive[:title] %>
@@ -355,7 +355,9 @@
     </div>
   </div>
 </div>
+-->
 
+<!--
 <div class="stripe stripe-blue p-xxl <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <h3 class="text-center">
     注册七牛云账户，即刻享受多款产品免费额度套餐
