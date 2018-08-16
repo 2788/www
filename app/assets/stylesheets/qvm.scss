@@ -89,6 +89,9 @@
     .col-image-lg {
       padding: 0;
     }
+    .col-image-lg {
+      width: 20%;
+    }
     .col-content {
       padding: 40px;
       background-color: #FFF;
@@ -101,6 +104,9 @@
         bottom: 40px;
         color: #28AEDF;
         line-height: 22px;
+        span {
+          margin-right: 0.15rem;
+        }
       }
       .more-btn {
         position: absolute;
@@ -120,6 +126,7 @@
       }
     }
     .col-content-lg {
+      width: 80%;
       padding: 20px;
       background-color: #FFF;
       h4 {
@@ -187,11 +194,12 @@
     h4 {
       margin: 0;
       padding: 0.10rem 0 0;
+      font-size: 0.19rem;
     }
     p {
       font-size: 0.13rem;
       margin: 0.10rem 0;
-      line-height: 0.18rem;
+      line-height: 0.19rem;
     }
     .col-left {
       .product-item {
@@ -259,16 +267,16 @@
   .features-qvm-product {
     .product-row {
       .nav-qvm-product {
-        margin-top: 0.30rem;
+        margin-top: 0.25rem;
       }
       .tab-content {
-        margin-top: 0.50rem;
+        margin-top: 0.25rem;
       }
       .col-content {
         height: 225px;
       }
       .col-content-lg {
-        height: 387px;
+        height: 310px;
       }
     }
   }
@@ -287,16 +295,17 @@
   .features-qvm-product {
     .product-row {
       .nav-qvm-product {
-        margin-top: 0.20rem;
+        margin-top: 0.10rem;
       }
       .tab-content {
-        margin-top: 0.20rem;
+        height: 1.70rem;
+        margin-top: 0.10rem;
       }
       .col-content {
         height: 186px;
       }
       .col-content-lg {
-        height: 320px;
+        height: 256px;
       }
     }
   }
@@ -327,7 +336,7 @@
     .product-row {
       .tab-content {
         margin-top: 0;
-        height: 1.80rem;
+        height: 1.30rem;
       }
       .col-content {
         height: 144px;
@@ -342,7 +351,7 @@
         }
       }
       .col-content-lg {
-        height: 248px;
+        height: 198px;
       }
     }
   }
@@ -409,7 +418,7 @@
         }
       }
       .tab-content {
-        height: 3.20rem;
+        height: 3.00rem;
       }
       .col-content {
         height: 200px;
@@ -427,7 +436,8 @@
         }
       }
       .col-content-lg {
-        height: 350px;
+        width: 100% !important;
+        height: 330px;
         h4 {
           display: block;
         }

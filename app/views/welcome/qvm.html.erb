@@ -83,10 +83,10 @@
 <div class="features features-less features-cases features-qvm-product qvm-product-item qvm-product-section-1">
   <div class="container">
     <div class="row product-row">
-      <div class="col-md-3 col-sm-3 hidden-xs col-image-lg">
+      <div class="col-md-2 col-sm-2 hidden-xs col-image-lg">
         <%= image_tag I18n.t("views.welcome.qvm.product.host.image"), alt: I18n.t("views.welcome.qvm.product.host.title"), width: "100%" -%>
       </div>
-      <div class="col-md-9 col-sm-9 col-xs-12 col-content-lg">
+      <div class="col-md-10 col-sm-10 col-content-lg">
         <h4><%= I18n.t("views.welcome.qvm.product.host.title") -%></h4>
         <div class="tabs">
           <ul class="nav nav-tabs nav-justified points-bar nav-qvm-product" role="tablist">
@@ -150,7 +150,11 @@
           <div class="col-md-10 col-sm-10 col-xs-12 col-content">
             <h4><%= item[:title] -%></h4>
             <p><%= item[:desc] -%></p>
-            <span class="item-labels"><%= item[:labels] -%></span>
+            <span class="item-labels">
+              <% item[:labels].each do |label| -%>
+                <span><%= label -%></span>
+              <% end -%>
+            </span>
             <span class="more-btn">
               <% if item[:link] != "" -%>
                 <%= link_to "了解更多", item[:link], target: "_blank" -%>&nbsp;
@@ -172,7 +176,11 @@
           <div class="col-md-10 col-sm-10 col-xs-12 col-content">
             <h4><%= item[:title] -%></h4>
             <p><%= item[:desc] -%></p>
-            <span class="item-labels"><%= item[:labels] -%></span>
+            <span class="item-labels">
+              <% item[:labels].each do |label| -%>
+                <span><%= label -%></span>
+              <% end -%>
+            </span>
             <span class="more-btn">
               <% if item[:link] != "" -%>
                 <%= link_to "了解更多", item[:link], target: "_blank" -%>&nbsp;
