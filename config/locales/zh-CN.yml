@@ -1776,36 +1776,42 @@ zh-CN:
               type: "right"
               title: "专有网络"
               desc: "专有网络（Virtual Private Cloud，VPC）是自定义的逻辑隔离网络空间，托管在专有网络内的服务资源包括：云服务器、负载均衡器、云数据库等云服务资源。你可以完全掌握你的专有网络环境，包括自定义专有网络的拓扑和 IP 地址，适用于对网络安全性要求较高和熟悉网络管理的用户。"
+              labels: "⽹络隔离、访问控制、软件定义网络"
               link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
               image: "qvm/veins-zhuanyouwangluo.png"
             - class: "qvm-product-section-3"
               type: "left"
               title: "弹性公网 IP"
-              desc: "弹性公网 IP（Elastic IP Address，EIP）是可以独立购买和持有的公网IP地址资源，并且可以弹性绑定，您可以在需要时将弹性公网IP绑定到需要的资源上；在不需要时，将之解绑并释放，避免不必要的计费。并且弹性公网IP支持根据需要随时调整带宽，实时响应您的业务需求。"
+              desc: "弹性公⽹ IP（Elastic IP Address，EIP）是可以独⽴购买和持有的公⽹ IP 地址资源，并且可以弹性绑定，您可以在需要时将弹性公⽹ IP 绑定到需要的资源上；在不需要时，将之解绑并释放，避免不必要的计费。弹性公⽹ IP ⽀持根据需要随时调整带宽，实时响应您的业务需求。"
+              labels: "弹性伸缩、灵活插拔、低成本"
               link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
               image: "qvm/veins-tanxinggongwang.png"
             - class: "qvm-product-section-4"
               type: "right"
               title: "高速通道"
               desc: "高速通道（Express Connect）是一款基于 IPVPN 的便捷高效的网络服务，用于在云上的不同网络环境间实现高速、稳定、安全的私网通信，包括跨地域/跨用户的 VPC 内网互通、专线接入等场景，有效提高网络拓扑的灵活性和跨网络通信的质量和安全性。"
+              labels: "高速互通、稳定可靠、安全易用"
               link: "https://portal.qiniu.com/qvm/network/expressConnect"
               image: "qvm/veins-gaosutongdao.png"
             - class: "qvm-product-section-5"
               type: "left"
               title: "云数据库"
               desc: "云数据库（Cloud Database）是被优化或部署到一个虚拟计算环境中的数据库，七牛云主机服务提供 MySQL、Redis、MongoDB、SQL Server、PostgreSQL 及 PPAS 等主流数据库产品，帮助您快速构建安全高效的产品。"
+              labels: "灵活计费、即开即用、按需变配、管理便捷"
               link: "https://developer.qiniu.com/qvm/manual/4272/mysql-introduction"
               image: "qvm/veins-yunshujuku.png"
             - class: "qvm-product-section-6"
               type: "right"
               title: "负载均衡"
               desc: "负载均衡（Server Load Balancer，SLB）是将访问流量根据转发策略分发到后端多台云主机的流量分发控制服务，提供四层和七层负载均衡服务。负载均衡能够扩展应用的服务能力，增强应用的可用性。"
+              labels: "⾼可⽤、低成本、健康检查"
               link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
               image: "qvm/veins-fuzaijunheng.png"
             - class: "qvm-product-section-7"
               type: "left"
               title: "安全产品"
               desc: "七牛针对网络防护提供的安全产品，包括 DDos 高防 IP、Web 应用防火墙、主机安全，多维度防御策略全面防护网站的系统及业务安全。"
+              labels: "⾼防 BGP IP、Web应用防⽕墙、主机安全"
               link: ""
               image: "qvm/veins-anquanchanpin.png"
         scene:
@@ -2018,7 +2024,7 @@ zh-CN:
               desc: "1080P 视频高清播放，48KHz 音频播放"
           right:
             - title: "低功耗 不发热"
-              desc: "服务端合流降低带宽，减少终端功耗"
+              desc: "减少终端 80% 的功耗，合流降低至少 50% 的带宽"
             - title: "授课场景智能分析"
               desc: "智能识别人脸，匹配签到、人物离开告警、互动次数分析、违规内容识别"
             - title: "随时随地复习课程"
@@ -2749,10 +2755,10 @@ zh-CN:
           label: 融合 CDN
           desc: 融合优质节点、可监控、智能调度的内容分发服务
         
-        # - name: qvm
-        #   label: 云主机
-        #   desc: 提供云主机、专有网络、云数据库、高防等服务
-        #   isNew: true
+        - name: qvm
+          label: 云主机
+          desc: 提供云主机、专有网络、云数据库、高防等服务
+          isNew: true
 
         - name: kirk
           label: 容器云
@@ -2830,66 +2836,46 @@ zh-CN:
           label: 短视频解决方案
           desc: 集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
           type: product
-        # - name: edu
-        #   label: 在线教育解决方案
-        #   desc: 帮助快速上线 1 对 1 、小班课、大班课等教学应用
-        #   type: product
-        - name: newmedia
-          label: 新媒体解决方案
-          desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
+        - name: edu
+          label: 在线教育解决方案
+          desc: 帮助快速上线 1 对 1 、小班课、大班课等教学应用
           type: product
       - cols:
         - name: player
           label: 播放器解决方案
           desc: 全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议
           type: product
-        # - name: newmedia
-        #   label: 新媒体解决方案
-        #   desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
-        #   type: product
-        - name: security
-          label: 安防解决方案
-          desc: 灵活部署，满足不同安防场景互联网远程监控需求
-          type: solution
+        - name: newmedia
+          label: 新媒体解决方案
+          desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
+          type: product
       - cols:
         - name: vcs
           label: 视频冷存储解决方案
           desc: 专为综合视频平台打造，高可用低成本的 PB 级数据存储解决方案
           type: product
-        # - name: security
-        #   label: 安防解决方案
-        #   desc: 灵活部署，满足不同安防场景互联网远程监控需求
-        #   type: solution
-        - name: intelligence
-          label: 智能硬件与物联网解决方案
-          desc: 满足智能硬件厂商各应用场景下云端计算需求
+        - name: security
+          label: 安防解决方案
+          desc: 灵活部署，满足不同安防场景互联网远程监控需求
           type: solution
       - cols:
         - name: qavs
           label: 智能视频云解决方案
           desc: 集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
           type: product
-        # - name: intelligence
-        #   label: 智能硬件与物联网解决方案
-        #   desc: 满足智能硬件厂商各应用场景下云端计算需求
-        #   type: solution
-        - name: internet
-          label: 互联网与移动互联网解决方案
-          desc: 为互联网初创企业量身定制，一站式云计算服务平台
+        - name: intelligence
+          label: 智能硬件与物联网解决方案
+          desc: 满足智能硬件厂商各应用场景下云端计算需求
           type: solution
       - cols:
         - name: privatization
           label: 私有云存储解决方案
           desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
           type: solution
-        # - name: internet
-        #   label: 互联网与移动互联网解决方案
-        #   desc: 为互联网初创企业量身定制，一站式云计算服务平台
-        #   type: solution
-        - name:
-          label:
-          desc:
-          type:
+        - name: internet
+          label: 互联网与移动互联网解决方案
+          desc: 为互联网初创企业量身定制，一站式云计算服务平台
+          type: solution
       - cols:
         - name: qualityctrl
           label: 应用质量监控解决方案
