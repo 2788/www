@@ -152,7 +152,7 @@
             <p><%= item[:desc] -%></p>
             <span class="item-labels">
               <% item[:labels].each do |label| -%>
-                <span><%= label -%></span>
+                <%= content_tag :span, label[:name], class: label[:isOnline] ? "" : "offline", data: { toggle: "tooltip", placement: "bottom" }, title: label[:isOnline] ? label[:name] : "即将上线" -%>                
               <% end -%>
             </span>
             <span class="more-btn">
@@ -178,7 +178,7 @@
             <p><%= item[:desc] -%></p>
             <span class="item-labels">
               <% item[:labels].each do |label| -%>
-                <span><%= label -%></span>
+                <%= content_tag :span, label[:name], class: label[:isOnline] ? "" : "offline", data: { toggle: "tooltip", placement: "bottom" }, title: label[:isOnline] ? label[:name] : "即将上线" -%>
               <% end -%>
             </span>
             <span class="more-btn">
