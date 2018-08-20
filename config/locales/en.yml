@@ -2140,7 +2140,7 @@ en:
               image: "edu/icon-func-11.png"
             - title: "课程质询管理"
               image: "edu/icon-func-12.png"
-      cloud:
+      free:
         product:
           title: "热门云产品"
           subtitle: "完成实名认证 即可免费体验以下产品。"
@@ -2195,7 +2195,7 @@ en:
                 - • 首开 200 ms
                 - • 包体小至 400 KB
                 - • Android/iOS/Windows 跨平台播放
-              receive: ""
+              receive: "https://www.qiniu.com/products/player"
             - title: "短视频解决方案"
               desc: "集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体"
               class: "background-plsv"
@@ -2224,22 +2224,22 @@ en:
           cols:
             - title: "AI 创新扶持活动"
               desc: "让 AI 在业务中落地，助力产品智能升级"
-              image: "cloud/image-ai.jpg"
+              image: "free/image-ai.jpg"
               class: "text-center"
               link: "https://jinshuju.net/f/PmruT3?ref=www.qiniu.com"
             - title: "出海创业扶持计划"
               desc: "整合出海相关产品和服务资源，共同助力创业者占领全球市场"
-              image: "cloud/image-business.jpg"
+              image: "free/image-business.jpg"
               class: "text-left"
               link: "https://jinshuju.net/f/NjYedm?ref=www.qiniu.com"
             - title: "AVA 高校计算机视觉科研支持计划"
               desc: "多媒体数据存储空间、GPU 等计算资源、共享数据集、AVA 深度学习平台试用等"
-              image: "cloud/image-ava.jpg"
+              image: "free/image-ava.jpg"
               class: "text-left"
-              link: "https://jinshuju.net/f/DK7a1E"
+              link: "https://jinshuju.net/f/DK7a1E?ref=www.qiniu.com"
             - title: "敬请期待"
               desc: ""
-              image: "cloud/image-other.jpg"
+              image: "free/image-other.jpg"
               class: "text-center"
               link: ""
       dora:
@@ -3171,6 +3171,8 @@ en:
       title: 架构师实践日
     events_ecugcon:
       title: ECUG 大会
+    events_free:
+      title: 免费云服务套餐 - 七牛云
     prices_index:
       title: 价格详情 - 七牛云
       keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱

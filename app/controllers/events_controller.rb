@@ -31,4 +31,7 @@ class EventsController < ApplicationController
     @events = Event.where( category: 'ECUG')
     render "ecugcon"
   end
+
+  def free
+  end
 end
