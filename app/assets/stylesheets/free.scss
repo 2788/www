@@ -1,9 +1,9 @@
-.hero-cloud {
-  background-image: image-url("banner/banner-cloud-page.jpg") !important;
+.hero-free {
+  background-image: image-url("banner/banner-free-page.jpg") !important;
   margin-bottom: 0;
 }
 
-.features-cloud-product {
+.features-free-product {
   .intro {
     .title,
     .desc {
@@ -56,36 +56,36 @@
       }
     }
     &.background-kodo {
-      background-image: image-url("cloud/icon-kodo.png");
+      background-image: image-url("free/icon-kodo.png");
     }
     &.background-fusion {
-      background-image: image-url("cloud/icon-fusion.png");
+      background-image: image-url("free/icon-fusion.png");
     }
     &.background-censor {
-      background-image: image-url("cloud/icon-censor.png");
+      background-image: image-url("free/icon-censor.png");
     }
     &.background-insight {
-      background-image: image-url("cloud/icon-insight.png");
+      background-image: image-url("free/icon-insight.png");
     }
     &.background-dora {
-      background-image: image-url("cloud/icon-dora.png");
+      background-image: image-url("free/icon-dora.png");
     }
     &.background-player {
-      background-image: image-url("cloud/icon-player.png");
+      background-image: image-url("free/icon-player.png");
     }
     &.background-plsv {
-      background-image: image-url("cloud/icon-plsv.png");
+      background-image: image-url("free/icon-plsv.png");
     }
     &.background-rtn {
-      background-image: image-url("cloud/icon-rtn.png");
+      background-image: image-url("free/icon-rtn.png");
     }
     &.background-ssl {
-      background-image: image-url("cloud/icon-ssl.png");
+      background-image: image-url("free/icon-ssl.png");
     }
   }
 }
 
-.features-cloud-reco {
+.features-free-reco {
   .intro {
     .title {
       text-align: left;
@@ -145,7 +145,7 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .features-cloud-reco {
+  .features-free-reco {
     .thumbnail {
       .content {
         p {
@@ -169,7 +169,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .features-cloud-reco {
+  .features-free-reco {
     .thumbnail {
       .content {
         p {
@@ -193,7 +193,7 @@
 }
 
 @media (width: 768px) {
-  .features-cloud-reco {
+  .features-free-reco {
     .thumbnail {
       .content {
         p {
@@ -218,7 +218,7 @@
 }
 
 @media (max-width: 767px) {
-  .features-cloud-product {
+  .features-free-product {
     .thumbnail {
       margin-top: 0.20rem;
       height: 3.60rem;
@@ -232,7 +232,7 @@
       }
     }
   }
-  .features-cloud-reco {
+  .features-free-reco {
     .thumbnail {
       margin-top: 0.20rem;
       .content {

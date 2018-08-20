@@ -1,16 +1,16 @@
 <%# banner part %>
-<div class="jumbotron hero hero-cloud"></div>
+<div class="jumbotron hero hero-free"></div>
 
 <%# product part %>
-<div class="features features-cloud-product">
+<div class="features features-free-product">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.cloud.product.title") -%></h2>
-      <p class="desc"><%= I18n.t("views.welcome.cloud.product.subtitle") -%></p>
+      <h2 class="title"><%= I18n.t("views.welcome.free.product.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.welcome.free.product.subtitle") -%></p>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.cloud.product.cols").each do |col| -%>
+      <% I18n.t("views.welcome.free.product.cols").each do |col| -%>
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="thumbnail <%= col[:class] -%>">
             <div class="caption">
@@ -35,14 +35,14 @@
 </div>
 
 <%# recommend part %>
-<div class="features features-cloud-reco">
+<div class="features features-free-reco">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.cloud.recommend.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.free.recommend.title") -%></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.cloud.recommend.cols").each do |col| -%>
+      <% I18n.t("views.welcome.free.recommend.cols").each do |col| -%>
         <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="thumbnail">
             <%= image_tag col[:image], alt: col[:title], width: "100%" -%>
