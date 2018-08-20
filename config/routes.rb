@@ -74,9 +74,6 @@ Rails.application.routes.draw do
       collection do
         get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon'
       end
-      # collection do
-      #   get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'cloud'
-      # end
     end
 
     # img_censor

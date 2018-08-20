@@ -104,8 +104,12 @@
         bottom: 40px;
         color: #28AEDF;
         line-height: 22px;
+        cursor: default;
         span {
           margin-right: 0.15rem;
+        }
+        .offline {
+          color: #888;
         }
       }
       .more-btn {
