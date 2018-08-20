@@ -1,1 +1,64 @@
+<%# banner part %>
 <div class="jumbotron hero hero-cloud"></div>
+
+<%# product part %>
+<div class="features features-cloud-product">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.cloud.product.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.welcome.cloud.product.subtitle") -%></p>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.cloud.product.cols").each do |col| -%>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="thumbnail <%= col[:class] -%>">
+            <div class="caption">
+              <h4><%= col[:title] -%></h4>
+              <p><%= col[:desc] -%></p>
+              <%= link_to "了解更多 > >", col[:morelink], target: "_blank", class: "know-more" -%>
+              <ul class="details-list">
+                <% col[:details].each do |item| -%>
+                  <li><%= item -%></li>
+                <% end -%>
+              </ul>
+              <div class="btn-container">
+                <%= link_to "免费领取", col[:receive], target: "_blank", class: "btn btn-primary m-r m-b-xs" -%>                
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+
+  </div>
+</div>
+
+<%# recommend part %>
+<div class="features features-cloud-reco">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.cloud.recommend.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.welcome.cloud.recommend.cols").each do |col| -%>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="thumbnail">
+            <%= image_tag col[:image], alt: col[:title], width: "100%" -%>
+            <% if col[:desc] != "" -%>
+              <div class="content">
+                <p class="title"><%= col[:title] -%></p>
+                <p class="desc <%= col[:class] -%>"><%= col[:desc] -%></p>
+                <%= link_to "立即申请", col[:link], target: "_blank", class: "btn btn-primary m-r m-b-xs" -%>
+              </div>
+            <% else -%>
+              <div class="content"><div class="expect">敬请期待</div></div>
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+
+  </div>
+</div>
