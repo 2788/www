@@ -2139,6 +2139,108 @@ zh-CN:
               image: "edu/icon-func-11.png"
             - title: "课程质询管理"
               image: "edu/icon-func-12.png"
+      cloud:
+        product:
+          title: "热门云产品"
+          subtitle: "完成实名认证 即可免费体验以下产品。"
+          cols:
+            - title: "对象存储"
+              desc: "广泛应用于海量数据管理的场景"
+              class: "background-kodo"
+              morelink: "https://www.qiniu.com/products/kodo"
+              details:
+                - • 标准存储免费空间 0-10 GB
+                - • 每月免费上传流量 无上限
+                - • 标准存储每月写请求Put/Delete 0-10 万次
+              receive: "https://portal.qiniu.com/signup/choice"
+            - title: "融合 CDN"
+              desc: "无盲区、智能调度、立体品控、降低回源"
+              class: "background-fusion"
+              morelink: "https://www.qiniu.com/products/fusion"
+              details:
+                - • HTTP 免费下载流量 第 0 GB 至 10 GB
+              receive: "https://portal.qiniu.com/signup/choice"
+            - title: "内容安全"
+              desc: "双重审核 运营无忧"
+              class: "background-censor"
+              morelink: "https://www.qiniu.com/products/censor"
+              details:
+                - • 免费鉴黄额度 6 万张
+                - • 免费鉴暴恐额度 6 万张
+                - • 免费政治敏感人物识别额度 6 万张
+              receive: "https://portal.qiniu.com/signup/choice"
+            - title: "智能日志管理平台"
+              desc: "适用于运维监控、安全审计及业务数据分析等场景"
+              class: "background-insight"
+              morelink: "https://www.qiniu.com/products/insight"
+              details:
+                - • 新增日志数据 1 GB/月
+                - • 存量日志数据 1 GB/月
+                - • 日志仓库 1 个/月
+              receive: "https://portal.qiniu.com/apply-insight"
+            - title: "智能多媒体 API"
+              desc: "针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
+              class: "background-dora"
+              morelink: "https://www.qiniu.com/products/dora"
+              details:
+                - • 750 小时/月 免费自定义数据处理服务 
+                - • 20 元/月 多媒体处理服务
+              receive: "https://portal.qiniu.com/signup/choice"
+            - title: "七牛云播放器"
+              desc: "一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议"
+              class: "background-player"
+              morelink: "https://www.qiniu.com/products/player"
+              details:
+                - • 首开 200 ms
+                - • 包体小至 400 KB
+                - • Android/iOS/Windows 跨平台播放
+              receive: ""
+            - title: "短视频解决方案"
+              desc: "集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体"
+              class: "background-plsv"
+              morelink: "https://www.qiniu.com/products/plsv"
+              details:
+                - • 80+ 功能免费使用；30 天 0 元体验包
+              receive: "https://jinshuju.net/f/IeOD89?ref=www.qiniu.com"
+            - title: "实时音视频云"
+              desc: "基于 WebRTC 的一站式解决方案，零基础搭建实时音视频平台"
+              class: "background-rtn"
+              morelink: "https://www.qiniu.com/products/rtn"
+              details:
+                - • 全球节点
+                - • 实时性
+                - • 传输协议
+              receive: "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com"
+            - title: "SSL 证书服务"
+              desc: "数据加密传输、高兼容性、提升搜索排名"
+              class: "background-ssl"
+              morelink: "https://developer.qiniu.com/ssl"
+              details:
+                - • 域名型 DV SSL 证书免费申请
+              receive: "https://portal.qiniu.com/signup/choice"
+        recommend:
+          title: "活动推荐"
+          cols:
+            - title: "AI 创新扶持活动"
+              desc: "让 AI 在业务中落地，助力产品智能升级"
+              image: "cloud/image-ai.jpg"
+              class: "text-center"
+              link: "https://jinshuju.net/f/PmruT3?ref=www.qiniu.com"
+            - title: "出海创业扶持计划"
+              desc: "整合出海相关产品和服务资源，共同助力创业者占领全球市场"
+              image: "cloud/image-business.jpg"
+              class: "text-left"
+              link: "https://jinshuju.net/f/NjYedm?ref=www.qiniu.com"
+            - title: "AVA 高校计算机视觉科研支持计划"
+              desc: "多媒体数据存储空间、GPU 等计算资源、共享数据集、AVA 深度学习平台试用等"
+              image: "cloud/image-ava.jpg"
+              class: "text-left"
+              link: "https://jinshuju.net/f/DK7a1E"
+            - title: "敬请期待"
+              desc: ""
+              image: "cloud/image-other.jpg"
+              class: "text-center"
+              link: ""
       dora:
         title: "智能多媒体 API"
         desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
