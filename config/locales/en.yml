@@ -2150,16 +2150,16 @@ en:
               class: "background-kodo"
               morelink: "https://www.qiniu.com/products/kodo"
               details:
-                - • 标准存储免费空间 0-10 GB
+                - • 标准存储免费空间 10 GB
                 - • 每月免费上传流量 无上限
-                - • 标准存储每月写请求Put/Delete 0-10 万次
+                - • 10 万次 PUT/月，100 万次 GET/月
               receive: "https://portal.qiniu.com/signup/choice"
             - title: "融合 CDN"
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
               morelink: "https://www.qiniu.com/products/fusion"
               details:
-                - • HTTP 免费下载流量 第 0 GB 至 10 GB
+                - • HTTP 免费下载流量 10 GB/月
               receive: "https://portal.qiniu.com/signup/choice"
             - title: "内容安全"
               desc: "双重审核 运营无忧"
@@ -2203,15 +2203,6 @@ en:
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
               receive: "https://jinshuju.net/f/IeOD89?ref=www.qiniu.com"
-            - title: "实时音视频云"
-              desc: "基于 WebRTC 的一站式解决方案，零基础搭建实时音视频平台"
-              class: "background-rtn"
-              morelink: "https://www.qiniu.com/products/rtn"
-              details:
-                - • 全球节点
-                - • 实时性
-                - • 传输协议
-              receive: "https://jinshuju.net/f/LSkxxL?ref=www.qiniu.com"
             - title: "SSL 证书服务"
               desc: "数据加密传输、高兼容性、提升搜索排名"
               class: "background-ssl"
@@ -3172,7 +3163,9 @@ en:
     events_ecugcon:
       title: ECUG 大会
     events_free:
-      title: 免费云服务套餐 - 七牛云
+      title: 免费云服务 - 七牛云
+      keywords: 免费云服务，对象存储，CDN加速，内容安全，日志管理，短视频SDK，SSL证书
+      description: 七牛云为客户提供对象存储、CDN加速、内容安全、智能日志管理、短视频SDK、播放器SDK、SSL证书、智能多媒体API等产品和服务免费套餐，助力企业和开发者零门槛上云。
     prices_index:
       title: 价格详情 - 七牛云
       keywords: 云存储价格，cdn价格，直播云价格，对象存储价格，cdn费用，cdn多少钱

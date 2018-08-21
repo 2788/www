@@ -114,6 +114,7 @@
         width: 80%;
         position: relative;
         left: 10%;
+        font-size: 0.20rem;
         &.text-center {
           text-align: center !important;
         }
@@ -149,9 +150,12 @@
     .thumbnail {
       .content {
         p {
-          margin: 0.30rem 0 0 0;
+          margin: 0.35rem 0 0 0;
           font-size: 0.20rem;
           line-height: 0.30rem;
+        }
+        .desc {
+          font-size: 0.16rem;
         }
         .expect {
           width: 140px;
@@ -173,9 +177,13 @@
     .thumbnail {
       .content {
         p {
-          margin: 0.25rem 0 0 0;
+          margin: 0.30rem 0 0 0;
           font-size: 0.16rem;
           line-height: 0.20rem;
+        }
+        .desc {
+          margin-top: 0.25rem;
+          font-size: 0.14rem;
         }
         .expect {
           width: 120px;
@@ -200,6 +208,9 @@
           margin: 0.35rem 0 0 0;
           font-size: 0.22rem;
           line-height: 0.35rem;
+        }
+        .desc {
+          font-size: 0.20rem;
         }
         .expect {
           width: 120px;
@@ -238,11 +249,12 @@
       .content {
         p {
           margin: 10% 0 0 0;
-          font-size: 0.30rem;
+          font-size: 0.28rem;
           line-height: 0.40rem;
         }
         .desc {
-          margin: 3% 0 0 0;
+          margin: 5% 0 0 0;
+          font-size: 0.22rem;
         }
         .expect {
           width: 140px;
@@ -252,7 +264,7 @@
           line-height: 50px;
         }
         a {
-          bottom: 8%;
+          bottom: 10%;
         }
       }
     }
