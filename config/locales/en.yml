@@ -2176,7 +2176,7 @@ en:
             - title: "智能日志管理平台"
               desc: "适用于运维监控、安全审计及业务数据分析等场景"
               class: "background-insight"
-              id: ""
+              id: "free-events-insight"
               morelink: "https://www.qiniu.com/products/insight"
               details:
                 - • 新增日志数据 1 GB/月
@@ -2195,7 +2195,7 @@ en:
             - title: "七牛云播放器"
               desc: "一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议"
               class: "background-player"
-              id: ""
+              id: "free-events-player"
               morelink: "https://www.qiniu.com/products/player"
               details:
                 - • 首开 200 ms
@@ -2205,7 +2205,7 @@ en:
             - title: "短视频解决方案"
               desc: "集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体"
               class: "background-plsv"
-              id: ""
+              id: "free-events-plsv"
               morelink: "https://www.qiniu.com/products/plsv"
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
