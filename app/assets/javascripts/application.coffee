@@ -85,6 +85,8 @@ $(document).ready ->
     if hostname && hostname.length > 0 && window.location.hostname != hostname && href.indexOf(ref) < 0
       connector = if /\?/.test(href) then '&' else '?'
       href += connector + ref
+      if $(e.target).hasClass 'free-events-signup'
+        href += '&promotion=' + $(e.target).attr('id') || ''
       $(this).prop('href', href)
 
   $('[data-toggle="tooltip"]').tooltip()
