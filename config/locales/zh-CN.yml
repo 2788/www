@@ -2166,6 +2166,7 @@ zh-CN:
             - title: "对象存储"
               desc: "广泛应用于海量数据管理的场景"
               class: "background-kodo"
+              id: "free-events-kodo"
               morelink: "https://www.qiniu.com/products/kodo"
               details:
                 - • 标准存储免费空间 10 GB
@@ -2175,6 +2176,7 @@ zh-CN:
             - title: "融合 CDN"
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
+              id: "free-events-fusion"
               morelink: "https://www.qiniu.com/products/fusion"
               details:
                 - • HTTP 免费下载流量 10 GB/月
@@ -2182,6 +2184,7 @@ zh-CN:
             - title: "内容安全"
               desc: "双重审核 运营无忧"
               class: "background-censor"
+              id: "free-events-censor"
               morelink: "https://www.qiniu.com/products/censor"
               details:
                 - • 免费鉴黄额度 6 万张
@@ -2191,6 +2194,7 @@ zh-CN:
             - title: "智能日志管理平台"
               desc: "适用于运维监控、安全审计及业务数据分析等场景"
               class: "background-insight"
+              id: ""
               morelink: "https://www.qiniu.com/products/insight"
               details:
                 - • 新增日志数据 1 GB/月
@@ -2200,6 +2204,7 @@ zh-CN:
             - title: "智能多媒体 API"
               desc: "针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
               class: "background-dora"
+              id: "free-events-dora"
               morelink: "https://www.qiniu.com/products/dora"
               details:
                 - • 750 小时/月 免费自定义数据处理服务 
@@ -2208,6 +2213,7 @@ zh-CN:
             - title: "七牛云播放器"
               desc: "一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议"
               class: "background-player"
+              id: ""
               morelink: "https://www.qiniu.com/products/player"
               details:
                 - • 首开 200 ms
@@ -2217,6 +2223,7 @@ zh-CN:
             - title: "短视频解决方案"
               desc: "集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体"
               class: "background-plsv"
+              id: ""
               morelink: "https://www.qiniu.com/products/plsv"
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
@@ -2224,6 +2231,7 @@ zh-CN:
             - title: "SSL 证书服务"
               desc: "数据加密传输、高兼容性、提升搜索排名"
               class: "background-ssl"
+              id: "free-events-ssl"
               morelink: "https://developer.qiniu.com/ssl"
               details:
                 - • 域名型 DV SSL 证书免费申请
@@ -2235,12 +2243,12 @@ zh-CN:
               desc: "让 AI 在业务中落地，助力产品智能升级"
               image: "free/image-ai.jpg"
               class: "text-center"
-              link: "https://jinshuju.net/f/PmruT3?ref=www.qiniu.com"
+              link: "https://www.qiniu.com/alaccelerator"
             - title: "出海创业扶持计划"
               desc: "整合出海相关产品和服务资源，共同助力创业者占领全球市场"
               image: "free/image-business.jpg"
               class: "text-left"
-              link: "https://jinshuju.net/f/NjYedm?ref=www.qiniu.com"
+              link: "https://www.qiniu.com/goglobal"
             - title: "AVA 高校计算机视觉科研支持计划"
               desc: "多媒体数据存储空间、GPU 等计算资源、共享数据集、AVA 深度学习平台试用等"
               image: "free/image-ava.jpg"
