@@ -23,7 +23,7 @@
                 <% end -%>
               </ul>
               <div class="btn-container">
-                <%= link_to "免费领取", col[:receive], target: "_blank", class: "btn btn-primary m-r m-b-xs", id: col[:id] -%>
+                <%= link_to "免费领取", col[:receive], target: "_blank", class: "btn btn-primary m-r m-b-xs #{col[:isSignup] ? "free-events-signup" : ""}", id: col[:id] -%>
               </div>
             </div>
           </div>

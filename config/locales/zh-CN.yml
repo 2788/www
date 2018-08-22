@@ -2173,6 +2173,7 @@ zh-CN:
                 - • 每月免费上传流量 无上限
                 - • 10 万次 PUT/月，100 万次 GET/月
               receive: "https://portal.qiniu.com/signup/choice"
+              isSignup: true
             - title: "融合 CDN"
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
@@ -2181,6 +2182,7 @@ zh-CN:
               details:
                 - • HTTP 免费下载流量 10 GB/月
               receive: "https://portal.qiniu.com/signup/choice"
+              isSignup: true
             - title: "内容安全"
               desc: "双重审核 运营无忧"
               class: "background-censor"
@@ -2191,6 +2193,7 @@ zh-CN:
                 - • 免费鉴暴恐额度 6 万张
                 - • 免费政治敏感人物识别额度 6 万张
               receive: "https://portal.qiniu.com/signup/choice"
+              isSignup: true
             - title: "智能日志管理平台"
               desc: "适用于运维监控、安全审计及业务数据分析等场景"
               class: "background-insight"
@@ -2201,6 +2204,7 @@ zh-CN:
                 - • 存量日志数据 1 GB/月
                 - • 日志仓库 1 个/月
               receive: "https://portal.qiniu.com/apply-insight"
+              isSignup: false
             - title: "智能多媒体 API"
               desc: "针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
               class: "background-dora"
@@ -2210,6 +2214,7 @@ zh-CN:
                 - • 750 小时/月 免费自定义数据处理服务 
                 - • 20 元/月 多媒体处理服务
               receive: "https://portal.qiniu.com/signup/choice"
+              isSignup: true
             - title: "七牛云播放器"
               desc: "一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议"
               class: "background-player"
@@ -2220,6 +2225,7 @@ zh-CN:
                 - • 包体小至 400 KB
                 - • Android/iOS/Windows 跨平台播放
               receive: "https://www.qiniu.com/products/player"
+              isSignup: false
             - title: "短视频解决方案"
               desc: "集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体"
               class: "background-plsv"
@@ -2227,7 +2233,8 @@ zh-CN:
               morelink: "https://www.qiniu.com/products/plsv"
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
-              receive: "https://jinshuju.net/f/IeOD89?ref=www.qiniu.com"
+              receive: "https://jinshuju.net/f/IeOD89"
+              isSignup: false
             - title: "SSL 证书服务"
               desc: "数据加密传输、高兼容性、提升搜索排名"
               class: "background-ssl"
@@ -2236,6 +2243,7 @@ zh-CN:
               details:
                 - • 域名型 DV SSL 证书免费申请
               receive: "https://portal.qiniu.com/signup/choice"
+              isSignup: true
         recommend:
           title: "活动推荐"
           cols:
@@ -2253,7 +2261,7 @@ zh-CN:
               desc: "多媒体数据存储空间、GPU 等计算资源、共享数据集、AVA 深度学习平台试用等"
               image: "free/image-ava.jpg"
               class: "text-left"
-              link: "https://jinshuju.net/f/DK7a1E?ref=www.qiniu.com"
+              link: "https://jinshuju.net/f/DK7a1E"
             - title: "敬请期待"
               desc: ""
               image: "free/image-other.jpg"
