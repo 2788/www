@@ -85,7 +85,7 @@ $(document).ready ->
     if hostname && hostname.length > 0 && window.location.hostname != hostname && href.indexOf(ref) < 0
       connector = if /\?/.test(href) then '&' else '?'
       href += connector + ref
-      if $(e.target).hasClass 'free-events-signup'
+      if $(e.target).hasClass 'free-receive-unsignin'
         href += '&promotion=' + $(e.target).attr('id') || ''
       $(this).prop('href', href)
 
@@ -346,10 +346,25 @@ $(document).ready ->
     url: '/userinfo?u=' + uuid + '&t=' + timestamp,
     success: (res) ->
       if !res.is_signin
+        # not signin
+        # login banner
         $('.need-signin').removeClass 'hidden'
+        # free event page
+        $('.features-free-product .free-receive-unsignin').removeClass 'hidden'
+        $('.features-free-product .free-receive-signin').addClass 'hidden'
       else
+        # signin
+        # login banner
         $('.need-signin').addClass 'hidden'
         $('.user-email').text res.email
         $('.userinfo').removeClass 'hidden'
+        # free event page
+        $('.features-free-product .free-receive-unsignin').addClass 'hidden'
+        $('.features-free-product .free-receive-signin').removeClass 'hidden'
     error: (err) ->
+      # error
+      # login banner
       $('.need-signin').removeClass 'hidden'
+      # free event page
+      $('.features-free-product .free-receive-unsignin').removeClass 'hidden'
+      $('.features-free-product .free-receive-signin').addClass 'hidden'

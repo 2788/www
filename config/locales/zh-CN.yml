@@ -2161,7 +2161,7 @@ zh-CN:
       free:
         product:
           title: "热门云产品"
-          subtitle: "完成实名认证 即可免费体验以下产品。"
+          subtitle: "完成实名认证 即可免费体验以下产品"
           cols:
             - title: "对象存储"
               desc: "广泛应用于海量数据管理的场景"
@@ -2172,8 +2172,8 @@ zh-CN:
                 - • 标准存储免费空间 10 GB
                 - • 每月免费上传流量 无上限
                 - • 10 万次 PUT/月，100 万次 GET/月
-              receive: "https://portal.qiniu.com/signup/choice"
-              isSignup: true
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/financial/price"
             - title: "融合 CDN"
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
@@ -2181,8 +2181,8 @@ zh-CN:
               morelink: "https://www.qiniu.com/products/fusion"
               details:
                 - • HTTP 免费下载流量 10 GB/月
-              receive: "https://portal.qiniu.com/signup/choice"
-              isSignup: true
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/financial/price"
             - title: "内容安全"
               desc: "双重审核 运营无忧"
               class: "background-censor"
@@ -2192,8 +2192,8 @@ zh-CN:
                 - • 免费鉴黄额度 6 万张
                 - • 免费鉴暴恐额度 6 万张
                 - • 免费政治敏感人物识别额度 6 万张
-              receive: "https://portal.qiniu.com/signup/choice"
-              isSignup: true
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/censor"
             - title: "智能日志管理平台"
               desc: "适用于运维监控、安全审计及业务数据分析等场景"
               class: "background-insight"
@@ -2203,8 +2203,8 @@ zh-CN:
                 - • 新增日志数据 1 GB/月
                 - • 存量日志数据 1 GB/月
                 - • 日志仓库 1 个/月
-              receive: "https://portal.qiniu.com/apply-insight"
-              isSignup: false
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://www.qiniu.com/products/insight"
             - title: "智能多媒体 API"
               desc: "针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
               class: "background-dora"
@@ -2213,8 +2213,8 @@ zh-CN:
               details:
                 - • 750 小时/月 免费自定义数据处理服务 
                 - • 20 元/月 多媒体处理服务
-              receive: "https://portal.qiniu.com/signup/choice"
-              isSignup: true
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/financial/price"
             - title: "七牛云播放器"
               desc: "一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议"
               class: "background-player"
@@ -2224,8 +2224,8 @@ zh-CN:
                 - • 首开 200 ms
                 - • 包体小至 400 KB
                 - • Android/iOS/Windows 跨平台播放
-              receive: "https://www.qiniu.com/products/player"
-              isSignup: false
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://developer.qiniu.com/pili/sdk/4262/player-sdk-introduction-and-demo-download"
             - title: "短视频解决方案"
               desc: "集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体"
               class: "background-plsv"
@@ -2233,8 +2233,8 @@ zh-CN:
               morelink: "https://www.qiniu.com/products/plsv"
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
-              receive: "https://jinshuju.net/f/IeOD89"
-              isSignup: false
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download"
             - title: "SSL 证书服务"
               desc: "数据加密传输、高兼容性、提升搜索排名"
               class: "background-ssl"
@@ -2242,8 +2242,8 @@ zh-CN:
               morelink: "https://developer.qiniu.com/ssl"
               details:
                 - • 域名型 DV SSL 证书免费申请
-              receive: "https://portal.qiniu.com/signup/choice"
-              isSignup: true
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/certificate/apply"
         recommend:
           title: "活动推荐"
           cols:
@@ -2252,21 +2252,21 @@ zh-CN:
               image: "free/image-ai.jpg"
               class: "text-center"
               link: "https://www.qiniu.com/alaccelerator"
-            - title: "出海创业扶持计划"
-              desc: "整合出海相关产品和服务资源，共同助力创业者占领全球市场"
-              image: "free/image-business.jpg"
+            - title: "合作伙伴发展计划"
+              desc: "我们协助你一起聚焦客户的数据智能与管理，提供更有价值的解决方案和服务"
+              image: "free/image-partner.jpg"
               class: "text-left"
-              link: "https://www.qiniu.com/goglobal"
+              link: "https://www.qiniu.com/partner"
             - title: "AVA 高校计算机视觉科研支持计划"
               desc: "多媒体数据存储空间、GPU 等计算资源、共享数据集、AVA 深度学习平台试用等"
               image: "free/image-ava.jpg"
               class: "text-left"
               link: "https://jinshuju.net/f/DK7a1E"
-            - title: "敬请期待"
-              desc: ""
-              image: "free/image-other.jpg"
-              class: "text-center"
-              link: ""
+            - title: "出海创业扶持计划"
+              desc: "整合出海相关产品和服务资源，共同助力创业者占领全球市场"
+              image: "free/image-business.jpg"
+              class: "text-left"
+              link: "https://www.qiniu.com/goglobal"
       dora:
         title: "智能多媒体 API"
         desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
