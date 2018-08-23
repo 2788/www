@@ -6,7 +6,7 @@
           <h2><%= I18n.t("views.welcome.pili.banner.title") %></h2>
           <p><%= I18n.t("views.welcome.pili.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-            <%= link_to "立即使用", "https://jinshuju.net/f/NhLqLx",target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "立即使用", "https://jinshuju.net/f/NhLqLx", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
@@ -60,7 +60,7 @@
       <p class="desc"><%= I18n.t("views.welcome.pili.serve.desc") -%></p>
     </div>
 
-    <div class="row row-flex">      
+    <div class="row row-flex">
       <% I18n.t("views.welcome.pili.serve.content").each do |event| %>
         <div class="col-sm-6">
           <div class="details-card">
@@ -70,12 +70,16 @@
             </div>
             <div class="card-body">
               <% event[:children].each do |item| %>
-                <h3 class="title"><%= item[:name] -%></h3>
+                <% if item[:isLink] -%>
+                  <h3 class="title"><%= link_to item[:name], item[:link], target: "_blank" -%></h3>
+                <% else -%>
+                  <h3 class="title"><%= item[:name] -%></h3>
+                <% end -%>
                 <p class="desc"><%= item[:desc] -%></p>
               <% end %>
             </div>
             <div class="action">
-              <%= link_to event[:tagName], event[:link], class:"btn btn-primary" -%>
+              <%= link_to event[:tagName], event[:link], target: "_blank", class:"btn btn-primary" -%>
             </div>
           </div>
         </div>
@@ -177,27 +181,27 @@
           <div class="col-sm-3 col-xs-4">
             <h4>常用文档</h4>
             <ul class="links-list">
-              <li><%= link_to "产品简介", "https://developer.qiniu.com/pili/manual/3694/pili-product-introduction" -%></li>
-              <li><%= link_to "直播架构快速搭建", "https://developer.qiniu.com/pili/manual/1217/live-architecture-fleetly" -%></li>
-              <li><%= link_to "七牛直播云技术白皮书", "https://developer.qiniu.com/pili/manual/1209/live-the-core-function" -%></li>
-              <li><%= link_to '小程序直播接入文档', 'https://developer.qiniu.com/pili/manual/4211/small-program-live-access-to-documents' %></li>
+              <li><%= link_to "产品简介", "https://developer.qiniu.com/pili/manual/3694/pili-product-introduction", target: "_blank" -%></li>
+              <li><%= link_to "直播架构快速搭建", "https://developer.qiniu.com/pili/manual/1217/live-architecture-fleetly", target: "_blank" -%></li>
+              <li><%= link_to "七牛直播云技术白皮书", "https://developer.qiniu.com/pili/manual/1209/live-the-core-function", target: "_blank" -%></li>
+              <li><%= link_to '小程序直播接入文档', 'https://developer.qiniu.com/pili/manual/4211/small-program-live-access-to-documents', target: "_blank" -%></li>
             </ul>
           </div>
           <div class="col-sm-3 col-xs-4">
             <h4>SDK及工具</h4>
             <ul class="links-list">
-              <li><%= link_to "Android 推流端 SDK", "https://developer.qiniu.com/pili/sdk/3715/PLDroidMediaStreaming-overview" -%></li>
-              <li><%= link_to "iOS 推流端 SDK", "https://developer.qiniu.com/pili/sdk/3778/PLMediaStreamingKit-overview" -%></li>
-              <li><%= link_to "Android 播放端 SDK", "https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk" -%></li>
-              <li><%= link_to "iOS 播放端 SDK", "https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk" -%></li>
-              <li><%= link_to "服务端 SDK", "https://developer.qiniu.com/pili/sdk/1220/server-sdk" -%></li>
+              <li><%= link_to "Android 推流端 SDK", "https://developer.qiniu.com/pili/sdk/3715/PLDroidMediaStreaming-overview", target: "_blank" -%></li>
+              <li><%= link_to "iOS 推流端 SDK", "https://developer.qiniu.com/pili/sdk/3778/PLMediaStreamingKit-overview", target: "_blank" -%></li>
+              <li><%= link_to "Android 播放端 SDK", "https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk", target: "_blank" -%></li>
+              <li><%= link_to "iOS 播放端 SDK", "https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk", target: "_blank" -%></li>
+              <li><%= link_to "服务端 SDK", "https://developer.qiniu.com/pili/sdk/1220/server-sdk", target: "_blank" -%></li>
             </ul>
           </div>
           <div class="col-sm-3 col-xs-4">
             <h4>常见问题</h4>
             <ul class="links-list">
-              <li><%= link_to "iOS/Android 崩溃信息搜集方法", "https://developer.qiniu.com/pili/kb/3646/ios-android-collapse-information-gathering-methods" -%></li>
-              <li><%= link_to "直播封面落是否永久保存", "https://developer.qiniu.com/pili/kb/3876/a-live-cover-is-permanent" -%></li>
+              <li><%= link_to "iOS/Android 崩溃信息搜集方法", "https://developer.qiniu.com/pili/kb/3646/ios-android-collapse-information-gathering-methods", target: "_blank" -%></li>
+              <li><%= link_to "直播封面落是否永久保存", "https://developer.qiniu.com/pili/kb/3876/a-live-cover-is-permanent", target: "_blank" -%></li>
             </ul>
           </div>
         </div>

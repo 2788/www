@@ -351,8 +351,12 @@ zh-CN:
               children:
                 - name: Android/iOS 推流 SDK
                   desc: 提供 Android/iOS 推流 SDK，涵盖美颜滤镜、面部特效、弱网优化、混音、水印等所有视频直播主流功能，为手机直播打造一站式解决方案。
-                - name: 开放云端 API
-                  desc: 支持将 IP Camera、摄像机、PC桌面、点播视频、无人机、其他直播平台流等多种信号源推送到云端，实现媒体分发和透明播控管理，助力企业开发者快速构建直播的核心业务，提高开发效率。
+                  isLink: false
+                  link: ""
+                - name: 云导播台
+                  desc: 面向广电、活动、赛事直播的轻量级导播服务。支持接入网络点播直播流媒体，功能强大，开放易用，导播人员可随时随地进行导播切流操作。
+                  isLink: true
+                  link: "https://developer.qiniu.com/pili/manual/4731/caster"
             - title: 全自研内核播放器
               desc: 提供免费的播放器 SDK，秒开 200ms，包体最小至 400K，功能全，给用户畅享流畅无卡顿的视频体验。
               tagName: 查看详情
@@ -360,12 +364,20 @@ zh-CN:
               children:
                 - name: DRM 版权保护
                   desc: 防止数字媒体的非法复制
+                  isLink: false
+                  link: ""
                 - name: 智能调整播放策略
                   desc: 有效降低播放延迟和卡顿
+                  isLink: false
+                  link: ""
                 - name: HLS 自适应码率
                   desc: 轻松应对终端用户复杂网络环境
+                  isLink: false
+                  link: ""
                 - name: 大数据分析
                   desc: 性能数据实时监测分析、告警，优化终端用户体验
+                  isLink: false
+                  link: ""
         network:
           title: 全球化实时流网络
           desc: 轻量级刷机扩建节点，快速响应全球分发需求

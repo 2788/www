@@ -333,8 +333,12 @@ en:
               children:
                 - name: Offering live streaming SDK for Android/iOS Platform
                   desc: The live streaming SDK for Android/iOS platform is offered as a one-stop solution to the live through mobile phones, covering all mainstream functions in the live through videos like face beautifying with filters, special effects in faces, optimizing in poor networks, audio remixing and watermarks.
+                  isLink: false
+                  link: ""
                 - name: Opening API in the cloud
                   desc: Several signal sources can be pushed to the cloud, such as IP cameras, video cameras, PC desktops, videos on-demand, UAVs and the streaming of other live platforms, to distribute media and manage broadcasting and controlling transparently, which helps enterprise developers establish core services in live broadcasting quickly and increases development efficiency.
+                  isLink: false
+                  link: ""
             - title: Fully Self-Developed Kernel Players
               desc: With a minimum package of 400KB and complete functions, free player SDK is offered, which can be opened in 200ms and gives users smooth video experience.
               tagName: Click for More
@@ -342,12 +346,20 @@ en:
               children:
                 - name: Protecting the copyright of DRM
                   desc: Avoid illegal copying of digital media
+                  isLink: false
+                  link: ""
                 - name: Adjusting broadcasting strategies intelligently
                   desc: Diminishing delays and sudden stops effectively when broadcasting
+                  isLink: false
+                  link: ""
                 - name: Offering the HLS adaptive bitrate
                   desc: Coping with end-users’ complex network environment easily
+                  isLink: false
+                  link: ""
                 - name: Analyzing big data
-                  desc: Data of performance is monitored and analyzed in real time and emergencies are reported to improve end-users’ experience.
+                  desc: Data of performance is monitored and analyzed in real time and emergencies are reported to improve end-users’ experience
+                  isLink: false
+                  link: ""
         network:
           title: Globalized Real Time Streaming Networks
           desc: A lightweight recovery is offered and nodes can be expanded. Global distribution requirements can be responded to quickly.
