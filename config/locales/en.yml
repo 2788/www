@@ -1868,7 +1868,7 @@ en:
             - id: "tab-scene-1"
               title: "企业官网、简单Web应用"
               class: "tab-pane fade in active"
-              image: "qvm/icon-scene-1.png"
+              image: "qvm/icon-scene-1.jpg"
               link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t5-lc1m1.small"
               rows:
                 - title: "场景特性"
@@ -1888,7 +1888,7 @@ en:
             - id: "tab-scene-2"
               title: "网站、App 、小程序后端服务"
               class: "tab-pane fade"
-              image: "qvm/icon-scene-2.png"
+              image: "qvm/icon-scene-2.jpg"
               link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.g5.large"
               rows:
                 - title: "场景特性"
@@ -1913,7 +1913,7 @@ en:
             - id: "tab-scene-3"
               title: "自建数据库集群服务"
               class: "tab-pane fade"
-              image: "qvm/icon-scene-3.png"
+              image: "qvm/icon-scene-3.jpg"
               link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.r5.large"
               rows:
                 - title: "场景特性"
@@ -1933,7 +1933,7 @@ en:
             - id: "tab-scene-4"
               title: "高性能计算、科学计算"
               class: "tab-pane fade"
-              image: "qvm/icon-scene-4.png"
+              image: "qvm/icon-scene-4.jpg"
               link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.hfc5.large"
               rows:
                 - title: "场景特性"
@@ -1955,7 +1955,7 @@ en:
             - id: "tab-scene-5"
               title: "编解码、GPU计算、机器学习"
               class: "tab-pane fade"
-              image: "qvm/icon-scene-5.png"
+              image: "qvm/icon-scene-5.jpg"
               link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.gn5-c4g1.xlarge"
               rows:
                 - title: "场景特性"
