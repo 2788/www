@@ -322,7 +322,8 @@
   </div>
 </div>
 
-<!--
+<%# 屏蔽 %>
+<% if false -%>
 <div class="features features-hotnews <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <div class="container">
     <div class="intro">
@@ -357,7 +358,7 @@
                   </div>
                   <div class="infobox">
                     <time>
-                      <%= archive_publish_meta(archive) %>
+                      <%= index_archive_publish_meta(archive) %>
                     </time>
                     <p title="<%= archive[:title] %>">
                       <%= archive[:title] %>
@@ -373,9 +374,10 @@
     </div>
   </div>
 </div>
--->
+<% end -%>
 
-<!--
+<%# 屏蔽 %>
+<% if false -%>
 <div class="stripe stripe-blue p-xxl <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <h3 class="text-center">
     注册七牛云账户，即刻享受多款产品免费额度套餐
@@ -387,4 +389,4 @@
     <a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a>
   </div>
 </div>
--->
+<% end -%>
