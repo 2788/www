@@ -71,6 +71,9 @@ Rails.application.routes.draw do
     get '/userinfo', to: 'userinfo#userinfo'
     
     resources 'events', only: [:index] do
+      # collection do
+      #   get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', '7event'
+      # end
       collection do
         get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free'
       end
