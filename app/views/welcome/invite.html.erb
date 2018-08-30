@@ -1,12 +1,7 @@
 <div class="invite-banner">
   <div class="actions">
-    <% if Time.now.to_i < Time.new(2018, 9, 1).to_i -%>
-      <%# 老活动 %>
-      <p class="desc">活动时间：5月23日-8月31日</p>
-    <% else -%>
-      <%# 新活动 %>
-      <p class="desc">活动开始时间：2018年9月1日</p>
-    <% end -%>
+    <%# 老活动 %>
+    <p class="desc">活动时间：5月23日-8月31日</p>
     <%= link_to "立即邀请", "https://portal.qiniu.com/invitation", target:"_blank", class:"link" -%>
   </div>
 </div>
@@ -18,18 +13,12 @@
       <p>邀请好友注册七牛云，邀请人即可获得以下丰厚奖励</p>
     </div>
     <div class="content">
-      <% if Time.now.to_i < Time.new(2018, 9, 1).to_i -%>
-        <%# 老活动 %>
-        <%= image_tag 'invite/img-jiangli-old.jpg', alt: '奖励', width:'100%' %>
-      <% else -%>
-        <%# 新活动 %>
-        <%= image_tag 'invite/img-jiangli-new.jpg', alt: '奖励', width:'100%' %>
-      <% end -%>
+      <%# 老活动 %>
+      <%= image_tag 'invite/img-jiangli-old.jpg', alt: '奖励', width:'100%' %>
     </div>
   </div>
 </div>
 
-<% if Time.now.to_i < Time.new(2018, 9, 1).to_i -%>
 <%# 老活动 %>
 <div class="features feature-invitation feature-invitation-bg invite-table">
   <div class="container">
@@ -42,7 +31,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>邀请一个标准用户</td>
+          <td>邀请1个标准用户</td>
           <td>
             <ul>
               <li>5GB/月 CDN免费下载流量（最高累计40GB/月）</li>
@@ -71,49 +60,6 @@
     </div>
   </div>
 </div>
-<% else -%>
-<%# 新活动 %>
-<div class="features feature-invitation feature-invitation-bg invite-table">
-  <div class="container">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>达成目标</th>
-          <th>邀请人奖励</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>邀请1个标准用户</td>
-          <td>
-            <ul>
-              <li>5GB/月 CDN免费下载流量（最高累计40GB/月）</li>
-              <li>100元对象存储抵用券 （不可累计）</li>
-              <li>100元智能多媒体API抵用券 （不可累计）</li>
-              <li>500元充值抵用券（充5000送500，不可累计）</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>每自然月邀请2个及以上企业标准用户</td>
-          <td>额外获得价值100元购物卡</td>
-        </tr>
-        <tr>
-          <td>受邀人首充金额≥1000元，并<5000元</td>
-          <td>100元购物卡</td>
-        </tr>
-        <tr>
-          <td>受邀人首充金额≥5000元</td>
-          <td>500元购物卡</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="hint">
-      注：每个邀请人最多可累计获得1000元购物卡。
-    </div>
-  </div>
-</div>
-<% end -%>
 
 <div class="features feature-invitation">
   <div class="container invite-flow">
@@ -137,7 +83,6 @@
   </div>
 </div>
 
-<% if Time.now.to_i < Time.new(2018, 9, 1).to_i -%>
 <%# 老活动 %>
 <div class="features feature-invitation feature-invitation-bg">
   <div class="container invite-rule">
@@ -163,32 +108,6 @@
     </div>
   </div>
 </div>
-<% else -%>
-<%# 新活动 %>
-<div class="features feature-invitation feature-invitation-bg">
-  <div class="container invite-rule">
-    <div class="invite-title">
-      <h2>活动规则</h2>
-    </div>
-    <div class="content">
-      <p>1 &nbsp; 活动开始时间：2018年9月1日。</p>
-      <p>2 &nbsp; 标准用户指完成实名认证的个人用户或企业用户。</p>
-      <p>3 &nbsp; 首充指受邀人第一次充值，充值奖励发放额度以受邀人首次充值为准。首充时间应发生在受邀人注册的1个月之内，逾期充值不计在奖励范围内。</p>
-      <p>4 &nbsp; 每个邀请人最多可累计获得1000元购物卡。</p>
-      <p>5 &nbsp; 邀请标准用户（个人/企业）所获得的免费CDN下载流量，每个邀请人（以邀请人注册邮箱为准）最高可累计40GB/月，邀请成功后，免费流量次月生效，永久有效。</p>
-      <p>6 &nbsp; 抵用券有效期为6个月，有效期的起始时间以抵用券到账时间为准。</p>
-      <p>7 &nbsp; 抵用券的发放：产品抵用券在受邀人实名认证后，自动发放至邀请人账户，每个账户（以注册邮箱为准）仅发放一次，不可累计。</p>
-      <p>8 &nbsp; 邀请成功后，邀请人可在“财务中心>抵用券”查看200元产品抵用券，500元充值抵用券在邀请人充值达到5000元后自动发放至“财务中心>抵用券”。</p>
-      <p>9 &nbsp; 购物卡奖励，每自然月结算一次，由市场部统一发放给符合购物卡奖励标准的邀请人。</p>
-      <p>10 &nbsp; 邀请者与被邀请者实际是同一用户不可获得奖励（同一用户指包含但不仅限于根据不同七牛云账号在注册、登录、使用中的关联信息，七牛云判断其实际为同一用户。关联信息举例：同一证件、同一手机号、同一支付账号、同一设备、同一地址等）。</p>
-      <p>11 &nbsp; 如用户存在作弊、欺诈或通过其他非正常手段获取利益的行为，七牛云有权收回相关权益。</p>
-      <p>12 &nbsp; 此次活动奖励不可与其他优惠同享。</p>
-      <p>13 &nbsp; 已签约代理商不参与此次活动。</p>
-      <p>14 &nbsp; 本次活动解释权归七牛云所有，如有任何问题，欢迎邮件联系marketing@qiniu.com。</p>
-    </div>
-  </div>
-</div>
-<% end -%>
 
 <div class="features feature-invitation">
   <div class="container invite-customer">

@@ -13,7 +13,6 @@
  *= require slick
  *= require slick-theme
  */
-
 @import "bootstrap-sprockets";
 @import "components/variables";
 @import "bootstrap";
@@ -65,6 +64,8 @@
 @import "qvm";
 @import "edu";
 @import "free";
+@import "7event";
+
 html {
   position: relative;
   font-size: 100px;
@@ -92,6 +93,7 @@ body {
     top: 0;
     left: 0;
     padding: 46px 15px;
+
     .sidebar-content {
       position: absolute;
       top: 120px;
@@ -109,6 +111,7 @@ a.out_link {
   display: inline-block;
   margin-top: 0;
   color: #fff;
+
   &:hover {
     text-decoration: underline;
   }
@@ -128,6 +131,7 @@ a.underline {
   list-style: none;
   margin: 0;
   padding: 0;
+
   li {
     white-space: nowrap;
     overflow: hidden;
@@ -135,6 +139,7 @@ a.underline {
     position: relative;
     padding-left: 0.20rem;
     margin-bottom: 0.10rem;
+
     &::before {
       content: "";
       position: absolute;
@@ -145,6 +150,7 @@ a.underline {
       top: 5px;
       left: 0;
     }
+
     a:hover {
       color: #07A0DF;
     }
@@ -154,6 +160,7 @@ a.underline {
 .select-lg {
   outline-style: none;
   outline-color: #e6eaef;
+
   &:active,
   &:focus {
     outline-style: none;
@@ -168,6 +175,7 @@ a.underline {
     content: "-";
     color: #B9B9B9;
   }
+
   .slick-dots li.slick-active button::before {
     color: #3498db;
   }
@@ -179,6 +187,7 @@ a.underline {
 
 .banners-actions {
   position: relative;
+
   .btn-absolute {
     position: absolute;
     top: -1.70rem;
@@ -190,58 +199,74 @@ a.underline {
 div.form-wrapper {
   padding-top: 0;
   padding-bottom: 1.4rem;
+
   .title {
     font-size: 0.16rem;
     color: #2f3033;
     text-align: center;
   }
+
   &.feedbacks-new {
     padding-top: 68px !important;
   }
+
   .form-box {
     padding: 0.10rem 0.10rem 0.50rem 0.10rem;
   }
+
   form {
     max-width: 6.50rem;
     margin: 0 auto;
+
     .form-group {
       margin-bottom: 0.24rem;
+
       .col-init-left {
         padding-left: 0;
       }
+
       .col-init-right {
         padding-right: 0;
       }
+
       label {
         padding-left: 0;
         padding-right: 0;
         font-size: 0.14rem;
         color: #2f3033;
       }
+
       textarea {
         resize: none;
       }
+
       .form-control.active {
         border: 1px solid #ff3939;
       }
+
       .maxLength-tips {
         float: right;
+
         .maxLength-label {
           font-size: 0.12rem;
           color: #ff3939;
         }
       }
+
       .div-error {
         display: none;
       }
+
       .div-error.active {
         display: inline-block;
+
         .error-label {
           font-size: 0.12rem;
           color: #ff3939;
         }
       }
     }
+
     .actions {
       text-align: center;
     }
@@ -317,16 +342,19 @@ ul.ul-step {
   list-style: none;
   padding: 40px 0;
   margin-bottom: 40px;
+
   .step-li {
     display: inline-block;
     width: 300px;
     margin-bottom: 0;
     border-top: 1px dashed #00A0DE;
     position: relative;
+
     &.step-li-no {
       border-top: none;
       width: 105px;
     }
+
     .step-no {
       position: absolute;
       top: -23px;
@@ -341,10 +369,12 @@ ul.ul-step {
       border-radius: 50%;
       background: #fff;
     }
+
     .step-info {
       margin-top: 35px;
       margin-left: -35px;
     }
+
     .step-submit-btn {
       position: absolute;
       left: -15px;
@@ -413,13 +443,16 @@ ul.ul-step {
 
 .p-relative {
   position: relative;
+
   &:hover {
     cursor: pointer;
+
     .cover {
       transition: opacity 0.5s;
       opacity: 1;
     }
   }
+
   .middle {
     position: absolute;
     top: 50%;
@@ -427,6 +460,7 @@ ul.ul-step {
     transform: translate(-50%, -50%);
     min-width: 333px;
   }
+
   .cover {
     transition: opacity 0.5s;
     opacity: 0;
@@ -437,6 +471,7 @@ ul.ul-step {
     top: 0;
     color: #fff;
     background-color: rgb(54, 160, 223);
+
     p {
       padding: 10px;
       color: #fff;
@@ -454,6 +489,7 @@ ul.ul-step {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
   &.error-page-404 {
     max-width: 1130px;
     min-height: 630px;
@@ -466,6 +502,7 @@ ul.ul-step {
   .media-body {
     min-height: 190px;
   }
+
   .col-solution-plup {
     .icon50 {
       margin-bottom: 0;
@@ -474,6 +511,7 @@ ul.ul-step {
       background-size: 0.3rem 0.3rem;
     }
   }
+
   .table>tbody>tr>td {
     padding: 12px;
   }
@@ -485,9 +523,11 @@ ul.ul-step {
   body {
     padding-top: 0;
   }
+
   .topic-sidebar-wrap {
     display: none;
   }
+
   .topic-content-wrap {
     margin-left: 0;
   }
@@ -499,6 +539,7 @@ ul.ul-step {
   .pricing-caculator {
     width: 6.0rem;
   }
+
   input[type="range"] {
     width: 70%;
   }
@@ -508,24 +549,30 @@ ul.ul-step {
   .visible-xs-inline {
     display: inline-block !important;
   }
+
   .pricing-caculator {
     width: 100%;
   }
+
   input[type="range"] {
     width: 55%;
   }
+
   .input-num {
     width: 0.9rem;
   }
+
   ul.ul-step {
     .step-li {
       border: none;
       display: block;
       margin-bottom: 45px;
+
       .step-info {
         margin-top: -8px;
         margin-left: 55px;
       }
+
       .step-submit-btn {
         left: 0;
         bottom: -140px;
@@ -590,17 +637,21 @@ footer .container {
       display: inline-block;
     }
   }
+
   .modal .modal-dialog {
     margin-top: 12px;
   }
+
   .nav-tabs.nav-justified.nav-short {
     width: 100%;
     text-align: center;
+
     li {
       float: none;
       display: inline-block;
       margin-left: 5px;
       margin-right: 5px;
+
       a {
         padding-bottom: 5px;
         padding-top: 5px;
