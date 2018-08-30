@@ -13,13 +13,56 @@
 .features-7event-present {
   background: transparent !important;
 
+  .present-container {
+    position: relative;
+
+    .block-left,
+    .block-right {
+      position: absolute;
+    }
+
+    .block-left {
+      left: 0;
+    }
+
+    .block-right {
+      right: 0;
+    }
+
+    .trapezoid-large-lr,
+    .trapezoid-small-lr {
+      border-left: 0 solid rgba(255, 255, 255, 0.04);
+      border-top: 0.20rem solid transparent;
+      border-bottom: 0.20rem solid transparent;
+    }
+
+    .trapezoid-large-rl,
+    .trapezoid-small-rl {
+      border-right: 0 solid rgba(255, 255, 255, 0.04);
+      border-top: 0.20rem solid transparent;
+      border-bottom: 0.20rem solid transparent;
+    }
+
+    .trapezoid-large-lr,
+    .trapezoid-large-rl {
+      height: 50%;
+      bottom: 10%;
+    }
+
+    .trapezoid-small-lr,
+    .trapezoid-small-rl {
+      height: 30%;
+      bottom: 20%;
+    }
+  }
+
   .container {
     margin-bottom: 0.50rem;
   }
 
   .intro {
     .title {
-      margin-bottom: 0;
+      margin-bottom: 0.05rem;
       color: #FFF;
       line-height: 0.50rem;
       background-image: image-url("7event/title-background.png");
@@ -29,14 +72,14 @@
     }
 
     .desc {
-      color: #FFF;
+      color: #F9804B;
       font-size: 0.25rem;
     }
   }
 
   .table-container {
     width: 100%;
-    // background-color: #D3D3D3;
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 0.10rem;
     overflow-x: auto;
 
@@ -45,11 +88,15 @@
       min-width: 720px;
 
       tr>td {
-        font-size: 14px;
+        font-size: 0.16rem;
         padding: 0.12rem 8px;
         color: #FFF;
         border: none;
         vertical-align: middle;
+
+        &.font-blue {
+          color: #5EC4FB;
+        }
 
         &.vertical-top {
           vertical-align: top;
@@ -62,12 +109,32 @@
         p {
           margin-bottom: 0.10rem;
           color: #FFF;
-          font-size: 12px;
+          font-size: 0.14rem;
           line-height: 18px;
         }
 
         a {
           color: #FFF;
+
+          &.recharge-btn-1:hover {
+            color: #22185B;
+          }
+
+          &.recharge-btn-2:hover {
+            color: #2D1A6D;
+          }
+
+          &.recharge-btn-3:hover {
+            color: #3B1E81;
+          }
+
+          &.recharge-btn-4:hover {
+            color: #482094;
+          }
+
+          &.recharge-btn-5:hover {
+            color: #5323A6;
+          }
         }
       }
     }
@@ -80,7 +147,8 @@
   background: transparent;
   background-image: image-url("7event/foot-background.png");
   background-size: contain;
-  background-repeat: no-repeat;
+  background-position: bottom;
+  background-repeat: repeat-x;
 
   h2,
   p {
@@ -97,5 +165,41 @@
 
   p {
     font-size: 0.20rem;
+  }
+}
+
+@media (max-width:991px) {
+  .features-7event-present {
+    .table-container {
+      tr>td {
+        font-size: 0.14rem !important;
+
+        p {
+          font-size: 0.12rem !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .features-7event-present {
+    .present-container {
+
+      .block-left,
+      .block-right {
+        display: none;
+      }
+    }
+  }
+
+  .features-7event-foot {
+    h2 {
+      font-size: 0.28rem;
+    }
+
+    p {
+      font-size: 0.18rem;
+    }
   }
 }

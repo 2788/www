@@ -11,9 +11,11 @@
   -o-background-size: cover;
   background-size: cover;
   -webkit-font-smoothing: antialiased;
+
   h2.identification {
     font-size: 0.34rem;
   }
+
   .img-wrapper {
     width: 100%;
     position: absolute;
@@ -24,20 +26,24 @@
     text-align: center;
     vertical-align: middle;
     color: #fff;
+
     img.text {
       width: 50%;
       height: auto;
       margin: 0 auto;
     }
   }
+
   &.hero-contact,
   &.hero-company {
     margin-bottom: -0.30rem;
   }
+
   &.hero-niuday {
     background-image: image-url('niuday/banner-bg.jpg');
     margin: 0;
     padding-top: 68px;
+
     .img-wrapper {
       width: 100%;
       position: absolute;
@@ -48,10 +54,12 @@
       text-align: center;
       vertical-align: middle;
       color: #fff;
+
       .btn-banner {
         color: #fff;
         background-color: #3f66cf;
       }
+
       .text {
         width: 540px;
         height: auto;
@@ -59,19 +67,25 @@
       }
     }
   }
+
   &.hero-niuday.niuday-meitu {
     background-image: image-url('niuday/banner-bg-meitu.jpg') !important;
+
     .img-wrapper {
       top: 3.30rem;
+
       h4 {
         font-size: 20px;
       }
     }
   }
+
   &.hero-niuday.niuday-aicloud {
     background-image: image-url('niuday/banner-bg-aicloud.jpg') !important;
+
     .img-wrapper {
       top: 3.20rem;
+
       h4 {
         padding-right: 0;
         padding-left: 0;
@@ -79,16 +93,19 @@
       }
     }
   }
+
   .banner-desc-right {
     width: 100%;
     left: 60%;
     position: absolute;
     bottom: 1.2rem;
     color: #fff;
+
     p {
       text-shadow: none;
     }
   }
+
   .highlight-desc {
     padding: 10px;
     background: #3f66cf;
@@ -96,6 +113,7 @@
     display: inline-block;
     font-weight: bold;
   }
+
   .banner-container {
     position: relative;
     height: 4.5rem;
@@ -103,13 +121,16 @@
     margin-top: -0.68rem;
     margin-bottom: 0.30rem;
     text-align: center;
+
     .banner-desc {
       color: #fff;
       padding-top: 1.70rem;
+
       p {
         margin-bottom: 0;
       }
     }
+
     .btn-banner {
       position: absolute;
       bottom: 0.6rem;
@@ -117,96 +138,123 @@
       transform: translateX(-50%);
     }
   }
+
   &.hero-sourth-asia {
     background-image: image-url('sourth-asia-banner.jpg');
   }
+
   &.hero-bannerIdentify {
     background-image: image-url('banner/banner-identification.jpg');
+
     .middle-container {
       top: 50%;
       text-align: center;
+
       .banner-desc {
         h2 {
           font-size: 0.50rem;
         }
+
         p {
           padding-top: 0.10rem;
           font-size: 0.20rem;
         }
       }
+
       .btn {
         margin-top: 0.10rem;
       }
+
       .tips {
         padding-top: 0.20rem;
         font-size: 0.14rem;
       }
     }
   }
+
   &.hero-banner2 {
     background-image: image-url('southern-price-reduce-1.jpg');
+
     .banner-container .btn-banner {
       bottom: 0.4rem;
     }
   }
+
   &.hero-bannerPlayer {
     background-image: image-url('banner/banner-player.jpg');
+
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h2 {
           font-size: 0.50rem;
         }
+
         p {
           padding-top: 0.10rem;
           font-size: 0.20rem;
         }
       }
+
       .btn {
         margin-top: 0.30rem;
       }
     }
   }
+
   &.hero-bannerAI {
     background-image: image-url('banner-aichuangxinfuchijiahua.jpg');
   }
+
   &.hero-cdnprice {
     background-image: image-url('banner/banner-cdn.jpg');
+
     .middle-container {
       top: 48%;
       text-align: center;
+
       .banner-desc {
         h2 {
           font-size: 0.50rem;
         }
+
         p {
           padding-top: 0.10rem;
           font-size: 0.20rem;
         }
       }
+
       .btn {
         margin-top: 0.10rem;
       }
+
       .tips {
         padding-top: 0.20rem;
         font-size: 0.14rem;
       }
     }
   }
+
   &.hero-bannerGoglobal {
     background-image: image-url('bannerGoglobal.jpg');
+
     .banner-container {
       height: 4.5rem;
+
       .btn-banner {
         bottom: -50px;
       }
     }
   }
+
   &.hero-invitation {
     background-image: image-url('invitation/banner.jpg');
+
     .container {
       position: relative;
+
       .content-box {
         position: absolute;
         top: 50%;
@@ -214,11 +262,13 @@
         transform: translate(-50%, -50%);
         min-width: 800px;
         text-align: center;
+
         p {
           color: #52caff;
           font-size: 0.18rem;
           margin-top: -56px;
         }
+
         .actions {
           a.btn-banner-invitation {
             color: #14315b;
@@ -227,8 +277,10 @@
       }
     }
   }
+
   .right-mask-banner {
     min-height: 3rem;
+
     img {
       vertical-align: middle;
       display: inline-block;
@@ -238,93 +290,119 @@
       margin-right: auto;
     }
   }
+
   &.hero-contact {
     background-image: image-url('contact/banner.jpg');
   }
+
   &.hero-events {
     background-image: image-url('marketing-banner.jpg');
   }
+
   &.hero-ecug {
     background-image: image-url('ecug-banner.jpg');
   }
+
   &.hero-niushow {
     background-image: image-url('niushow-banner.jpg');
   }
+
   &.hero-company {
     background-image: image-url("company/banner.jpg");
   }
+
   &.hero-case {
     background-image: image-url("case/banner.jpg");
   }
+
   &.hero-prices {
     background-image: image-url("price-banner.jpg");
   }
+
   &.hero-caculator {
     background-image: image-url("caculator-banner.jpg");
   }
+
   &.hero-goglobal {
     background-image: image-url('goglobal/banner.jpg');
   }
+
   &.hero-newmedia {
     background-image: image-url('newmedia/banner.jpg');
   }
+
   &.hero-player {
     background-image: image-url('player/banner.png');
   }
+
   &.hero-alaccelerator {
     padding-top: 68px;
     background-image: image-url('alaccelerator/banner.jpg');
   }
+
   &.hero-livequiz {
     background-image: image-url('livequiz/banner-bg.jpg');
   }
+
   &.hero-plup {
     background-image: image-url('bg-security-banner.jpg');
   }
+
   &.hero-plup {
     .middle-container {
       padding-top: 50px;
     }
+
     .right-mask-banner img {
       width: 80%;
     }
   }
+
   &.hero-plsv {
     background-image: image-url('banner/banner-plsv.jpg');
   }
+
   &.hero-plsv {
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h2 {
           font-size: 0.50rem;
         }
+
         p {
           padding-top: 0.10rem;
           font-size: 0.20rem;
         }
       }
+
       .btn {
         margin-top: 0.30rem;
       }
     }
   }
+
   &.hero-arch {
     background-image: image-url('arch/banner');
+
     .img-wrapper {
       width: 100%;
       text-align: center;
       vertical-align: middle;
       padding-top: 60px;
+
       .arch-text {
         width: 456px;
         height: auto;
       }
     }
   }
+
   &.hero-ecugcon {
     background-image: image-url('ecug/banner.jpg');
+
     .img-wrapper {
       position: absolute;
       left: 0;
@@ -334,13 +412,17 @@
       text-align: center;
     }
   }
+
   &.hero-partner {
     background-image: image-url('partner/banner.jpg');
   }
+
   &.hero-vcs {
     background-image: image-url("vcs/banner.png");
+
     .middle-container {
       top: 35%;
+
       .right-mask-vcs {
         position: absolute;
         top: -1.00rem;
@@ -348,109 +430,135 @@
       }
     }
   }
+
   &.hero-gartner {
     background-image: image-url("banner/banner-gartner.jpg");
+
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h1 {
           font-size: 0.50rem;
           font-weight: 600;
         }
+
         p {
           margin-top: 0.30rem;
           font-size: 0.20rem;
           font-weight: 600;
         }
       }
+
       .btn-banner {
         margin-top: 0.30rem;
       }
     }
   }
+
   &.hero-insight {
     background-image: image-url("banner/banner-insight.jpg");
+
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h1 {
           font-size: 0.50rem;
         }
+
         p {
           margin-top: 0.20rem;
           font-size: 0.20rem;
         }
       }
+
       .btn-banner {
         margin-top: 0.30rem;
       }
     }
   }
+
   &.hero-rtn-index {
     background-image: image-url("banner/banner-rtn.jpg");
+
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h1 {
           margin-top: 0.30rem;
           margin-bottom: 0.20rem;
           font-size: 0.50rem;
         }
+
         p {
           margin: 0 0 0.05rem 0;
           font-size: 0.20rem;
         }
       }
+
       .btn-banner {
         margin-top: 0.20rem;
       }
     }
   }
+
   &.hero-censor-index {
     background-image: image-url("banner/banner-censor.jpg");
+
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h1 {
           margin-top: 0.30rem;
           margin-bottom: 0.20rem;
           font-size: 0.50rem;
         }
+
         p {
           margin: 0 0 0.05rem 0;
           font-size: 0.20rem;
         }
       }
+
       .btn-banner {
         margin-top: 0.20rem;
       }
     }
   }
+
   &.hero-qvm-index {
     background-image: image-url("banner/banner-qvm.jpg");
+
     .middle-container {
       top: 45%;
       text-align: center;
       z-index: 1;
+
       .banner-desc {
         h1 {
           margin-top: 0.30rem;
           margin-bottom: 0.20rem;
           font-size: 0.50rem;
         }
+
         p {
           margin: 0.30rem 0 0 0;
           font-size: 0.20rem;
         }
       }
+
       .btn-banner {
         margin-top: 0.30rem;
       }
     }
+
     .right-image-container {
       height: 70%;
       position: absolute;
@@ -459,54 +567,80 @@
       z-index: 0;
     }
   }
+
   &.hero-edu-index {
     background-image: image-url("banner/banner-edu.jpg");
+
     .middle-container {
       top: 50%;
       text-align: center;
+
       .banner-desc {
         h1 {
           margin-top: 0.30rem;
           margin-bottom: 0.20rem;
           font-size: 0.50rem;
         }
+
         p {
           margin: 0 0 0.05rem 0;
           font-size: 0.20rem;
         }
       }
+
       .btn-banner {
         margin-top: 0.20rem;
       }
     }
   }
+
   &.hero-pili {
     background-image: image-url("banner/banner-pili.jpg");
+
     .middle-container {
       top: 45%;
       text-align: center;
+
       .banner-desc {
         h1 {
           margin-top: 0.30rem;
           margin-bottom: 0.20rem;
           font-size: 0.50rem;
         }
+
         p {
           margin: 0 0 0.05rem 0;
           font-size: 0.20rem;
         }
       }
+
       .btn-banner {
         margin-top: 0.20rem;
       }
     }
   }
+
+  &.hero-7event-index {
+    background-image: image-url("banner/banner-7event.jpg");
+
+    .middle-container {
+      top: 75%;
+      text-align: center;
+
+      .btn-banner:hover {
+        color: #120B4E;
+      }
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;
     text-align: left;
+
     &.center-container {
       text-align: center;
+
       .middle-container {
         width: 100%;
         position: absolute;
@@ -517,6 +651,7 @@
       }
     }
   }
+
   .middle-container {
     padding: 0 10px;
     width: 100%;
@@ -525,26 +660,32 @@
     top: 50%;
     transform: translate(-50%, -50%);
     color: #FFF;
+
     .banner-desc {
       span.text-warn {
         color: #FFE23F;
       }
+
       span.text-strong {
         color: #27B6FF;
       }
+
       span.text-bold {
         font-weight: 600;
       }
     }
   }
+
   h2 {
     font-size: 0.35rem;
     font-weight: 400;
     text-shadow: 0 0.02rem 0.03rem rgba(0, 0, 0, .5);
+
     small {
       color: #FFF;
     }
   }
+
   p {
     line-height: 0.28rem;
     font-size: 0.14rem;
@@ -556,6 +697,7 @@
   padding-top: 0;
   padding-bottom: 0;
   background-color: transparent;
+
   .videoWrapper {
     display: block;
     position: relative;
@@ -565,6 +707,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
     .btn-icon.video-initial-btn {
       position: absolute;
       top: 50%;
@@ -584,11 +727,14 @@
   .modal-content {
     top: 50px;
   }
+
   .modal-body {
     padding: 0;
+
     video {
       margin-bottom: -5px;
     }
+
     .close {
       position: absolute;
       top: 0;
@@ -612,26 +758,33 @@
   .slick-slider {
     margin-bottom: 0;
   }
+
   .jumbotron.hero {
     margin-top: 30px;
+
     .img-wrapper img.text {
       width: 80%;
     }
+
     p {
       line-height: 0.32rem;
       font-size: 0.16rem;
     }
+
     &.hero-banner3 {
       background-position: -520px center;
+
       .banner-container {
         left: 0;
       }
     }
   }
+
   .jumbotron.hero .banner-desc-right {
     left: 0;
     text-align: center;
   }
+
   .jumbotron.hero.hero-plup {
     .middle-container {
       padding: 10px;
@@ -644,10 +797,12 @@
     h1 {
       font-size: 0.40rem;
     }
+
     p {
       font-size: 0.15rem;
     }
   }
+
   .jumbotron.hero.hero-plsv .middle-container .banner-desc {
     h2 {
       font-size: 0.40rem;
@@ -658,9 +813,11 @@
 @media (max-width: 767px) {
   .jumbotron.hero {
     margin-top: 68px;
+
     &.hero-arch {
       .img-wrapper {
         padding-top: 50px;
+
         .arch-text {
           width: 330px;
         }
@@ -676,34 +833,42 @@
         top: 20px;
       }
     }
+
     &.hero-alaccelerator {
       height: 6rem;
       margin-top: 50px;
     }
+
     &.hero-bannerGoglobal {
       .banner-container {
         top: 20px;
+
         .btn-banner {
           bottom: -15px;
         }
       }
     }
+
     &.hero-invitation .container .content-box {
       min-width: 330px;
+
       p {
         margin-top: -30px;
       }
     }
+
     &.hero-ecugcon .img-wrapper {
       img {
         width: 80%;
         height: auto;
       }
     }
+
     &.niuday-meitu,
     &.niuday-aicloud {
       .img-wrapper {
         top: 3.00rem !important;
+
         h4 {
           font-size: 16px !important;
           padding-bottom: 10px;
@@ -712,9 +877,11 @@
       }
     }
   }
+
   .banners-slider .jumbotron.hero.hero-niuday .img-wrapper {
     top: 10%;
     transform: translate(-50%, 0);
+
     img.text {
       width: 340px;
     }

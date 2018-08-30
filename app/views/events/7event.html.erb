@@ -1,222 +1,249 @@
 <%# banner part %>
 <div class="jumbotron hero hero-7event"></div>
 
+<%# body part %>
 <div class="page-body-7event">
 
   <%# present part %>
   <div class="features features-7event-present">
-    <div class="container">
-      <div class="intro">
-        <h2 class="title">好礼一</h2>
-        <p class="desc">多充多送，万元产品抵用券等你拿</p>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="table-container">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
-              <tbody>
-                <tr>
-                  <td width="120px" class="horizontal-center">奖励规则</td>
-                  <td>充值【5000-29999】</td>
-                  <td>充值【30000-59999】</td>
-                  <td>充值【60000-100000】</td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center">所获奖励</td>
-                  <td><%= image_tag "7event/image-quan-1.png", alt: "优惠券", width: "80%" -%></td>
-                  <td><%= image_tag "7event/image-quan-2.png", alt: "优惠券", width: "80%" -%></td>
-                  <td><%= image_tag "7event/image-quan-3.png", alt: "优惠券", width: "80%" -%></td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center vertical-top">活动规则</td>
-                  <td colspan="3" class="vertical-top">
-                    <p>活动时间：9月1日-9月30日</p>
-                    <p>“充值”释义：活动期间累计充值</p>
-                    <p>产品抵用券适用于全部七牛产品，有效期6个月</p>
-                    <p>抵用券在活动结束一周内统一发放至用户七牛云账户</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="horizontal-center">
-                    <%= link_to "立即充值", "https://www.baidu.com", target: "_blank", class: "btn btn-lg btn-hollow" -%>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+    <%# 好礼一 %>
+    <div class="present-container">
+      <div class="block-left trapezoid-small-rl"></div>
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">好礼一</h2>
+          <p class="desc">多充多送，万元产品抵用券等你拿</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-container">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">奖励规则</td>
+                    <td>充值【5000-29999】</td>
+                    <td>充值【30000-59999】</td>
+                    <td>充值【60000-100000】</td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">所获奖励</td>
+                    <td><%= image_tag "7event/image-quan-1.png", alt: "优惠券", width: "80%" -%></td>
+                    <td><%= image_tag "7event/image-quan-2.png", alt: "优惠券", width: "80%" -%></td>
+                    <td><%= image_tag "7event/image-quan-3.png", alt: "优惠券", width: "80%" -%></td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center vertical-top">活动规则</td>
+                    <td colspan="3" class="vertical-top">
+                      <p>活动时间：9月1日-9月30日</p>
+                      <p>“充值”释义：活动期间累计充值</p>
+                      <p>产品抵用券适用于全部七牛产品，有效期6个月</p>
+                      <p>抵用券在活动结束一周内统一发放至用户七牛云账户</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="horizontal-center">
+                      <%= link_to "立即充值", "https://portal.qiniu.com/financial/recharge", target: "_blank", class: "btn btn-lg btn-hollow recharge-btn-1" -%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
+      <div class="block-right trapezoid-large-rl"></div>
+    </div>
+    
+    <%# 好礼二 %>
+    <div class="present-container">
+      <div class="block-left trapezoid-large-lr"></div>
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">好礼二</h2>
+          <p class="desc">购内容安全资源包，最高赢取100%返现</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-container">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">奖励规则</td>
+                    <td>首次购买内容安全100元资源包</td>
+                    <td>首次购买内容安全1000元资源包</td>
+                    <td width= "30%" rowspan="3"><%= image_tag "7event/image-tianmaoka.png", alt: "天猫卡", width: "90%" -%></td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">所获奖励</td>
+                    <td>100元天猫购物卡</td>
+                    <td>300元天猫购物卡</td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center vertical-top">活动规则</td>
+                    <td colspan="2" class="vertical-top">
+                      <p>活动时间：9月1日-9月30日</p>
+                      <p>两种资源包，每个用户仅限各购买一次，资源包有效期为1年</p>
+                      <p>资源包购买请至“开发者平台->内容安全”目录下【URL短链接】</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="horizontal-center">
+                      <%= link_to "立即充值", "https://portal.qiniu.com/financial/recharge", target: "_blank", class: "btn btn-lg btn-hollow recharge-btn-2" -%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="block-right trapezoid-small-lr"></div>
     </div>
 
-    <div class="container">
-      <div class="intro">
-        <h2 class="title">好礼二</h2>
-        <p class="desc">购内容安全资源包，最高赢取100%返现</p>
-      </div>
+    <%# 好礼三 %>
+    <div class="present-container">
+      <div class="block-left trapezoid-small-rl"></div>
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">好礼三</h2>
+          <p class="desc">80+短视频功能随心用</p>
+        </div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="table-container">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
-              <tbody>
-                <tr>
-                  <td width="120px" class="horizontal-center">奖励规则</td>
-                  <td>首次购买内容安全100元资源包</td>
-                  <td>首次购买内容安全1000元资源包</td>
-                  <td width= "30%" rowspan="3"><%= image_tag "7event/image-tianmaoka.png", alt: "天猫卡", width: "80%" -%></td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center">所获奖励</td>
-                  <td>100元天猫购物卡</td>
-                  <td>300元天猫购物卡</td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center vertical-top">活动规则</td>
-                  <td colspan="2" class="vertical-top">
-                    <p>活动时间：9月1日-9月30日</p>
-                    <p>两种资源包，每个用户仅限各购买一次，资源包有效期为1年</p>
-                    <p>资源包购买请至“开发者平台->内容安全”目录下【URL短链接】</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="horizontal-center">
-                    <%= link_to "立即充值", "https://www.baidu.com", target: "_blank", class: "btn btn-lg btn-hollow" -%>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-container">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">奖励规则</td>
+                    <td>充值>=30000</td>
+                    <td>充值>=60000</td>
+                    <td width= "30%" rowspan="3"><%= image_tag "7event/image-sdk.png", alt: "SDK", width: "80%" -%></td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">所获奖励</td>
+                    <td>1年短视频开发包商业授权</td>
+                    <td>2年短视频开发包商业授权</td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center vertical-top">活动规则</td>
+                    <td colspan="2" class="vertical-top">
+                      <p>活动时间：9月1日-9月30日</p>
+                      <p>“充值”释义：活动期间累计充值</p>
+                      <p>开发包商业授权在活动结束一周内发放至用户七牛云账户</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="horizontal-center">
+                      <%= link_to "立即充值", "https://portal.qiniu.com/financial/recharge", target: "_blank", class: "btn btn-lg btn-hollow recharge-btn-3" -%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
+      <div class="block-right trapezoid-large-rl"></div>
     </div>
 
-    <div class="container">
-      <div class="intro">
-        <h2 class="title">好礼三</h2>
-        <p class="desc">80+短视频功能随心用</p>
-      </div>
+    <%# 好礼四 %>
+    <div class="present-container">
+      <div class="block-left trapezoid-large-lr"></div>
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">好礼四</h2>
+          <p class="desc">七周年纪念礼包感恩相伴</p>
+        </div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="table-container">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
-              <tbody>
-                <tr>
-                  <td width="120px" class="horizontal-center">奖励范围</td>
-                  <td>充值>=30000</td>
-                  <td>充值>=60000</td>
-                  <td width= "30%" rowspan="3"><%= image_tag "7event/image-sdk.png", alt: "SDK", width: "80%" -%></td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center">所获奖励</td>
-                  <td>1年短视频开发包商业授权</td>
-                  <td>2年短视频开发包商业授权</td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center vertical-top">活动规则</td>
-                  <td colspan="2" class="vertical-top">
-                    <p>活动时间：9月1日-9月30日</p>
-                    <p>“充值”释义：活动期间累计充值</p>
-                    <p>开发包商业授权在活动结束一周内发放至用户七牛云账户</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="horizontal-center">
-                    <%= link_to "立即充值", "https://www.baidu.com", target: "_blank", class: "btn btn-lg btn-hollow" -%>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-container">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">奖励规则</td>
+                    <td colspan="2">充值>=30000</td>
+                    <td width= "30%" rowspan="3"><%= image_tag "7event/image-fudai.png", alt: "七周年纪念福袋", width: "80%" -%></td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">所获奖励</td>
+                    <td colspan="2">送价值520元七周年纪念礼包</td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center vertical-top">活动规则</td>
+                    <td colspan="2" class="vertical-top">
+                      <p>活动时间：9月1日-9月30日</p>
+                      <p>“充值”释义：活动期间累计充值</p>
+                      <p>七周年纪念礼包在活动结束一周内联系并寄送给用户</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="horizontal-center">
+                      <%= link_to "立即充值", "https://portal.qiniu.com/financial/recharge", target: "_blank", class: "btn btn-lg btn-hollow recharge-btn-4" -%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
 
+      </div>
+      <div class="block-right trapezoid-small-lr"></div>
     </div>
 
-    <div class="container">
-      <div class="intro">
-        <h2 class="title">好礼四</h2>
-        <p class="desc">七周年纪念礼包感恩相伴</p>
-      </div>
+    <%# 好礼五 %>
+    <div class="present-container">
+      <div class="block-left trapezoid-small-rl"></div>
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">好礼五</h2>
+          <p class="desc">互联网大会门票免费拿</p>
+        </div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="table-container">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
-              <tbody>
-                <tr>
-                  <td width="120px" class="horizontal-center">奖励范围</td>
-                  <td colspan="2">充值>=30000</td>
-                  <td width= "30%" rowspan="3"><%= image_tag "7event/image-fudai.png", alt: "七周年纪念福袋", width: "80%" -%></td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center">所获奖励</td>
-                  <td colspan="2">送价值520元七周年纪念礼包</td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center vertical-top">活动规则</td>
-                  <td colspan="2" class="vertical-top">
-                    <p>活动时间：9月1日-9月30日</p>
-                    <p>“充值”释义：活动期间累计充值</p>
-                    <p>七周年纪念礼包在活动结束一周内联系并寄送给用户</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="horizontal-center">
-                    <%= link_to "立即充值", "https://www.baidu.com", target: "_blank", class: "btn btn-lg btn-hollow" -%>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-container">
+              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
+                <tbody>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">奖励规则</td>
+                    <td colspan="2">充值>=60000</td>
+                    <td width= "30%" rowspan="3"><%= image_tag "7event/image-ruchangquan.png", alt: "云栖大会入场券", width: "90%" -%></td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center font-blue">所获奖励</td>
+                    <td colspan="2">送2018年云栖大会单日门票2张</td>
+                  </tr>
+                  <tr>
+                    <td width="180px" class="horizontal-center vertical-top">活动规则</td>
+                    <td colspan="2" class="vertical-top">
+                      <p>活动时间：9月1日-9月10日</p>
+                      <p>“充值”释义：活动期间累计充值</p>
+                      <p>用户可选杭州云栖大会单日门票2张或等值300元天猫卡</p>
+                      <p>大会门票为2018年9月20日/21日杭州云栖大会单日票，9月10日一周内发出</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="horizontal-center">
+                      <%= link_to "立即充值", "https://portal.qiniu.com/financial/recharge", target: "_blank", class: "btn btn-lg btn-hollow recharge-btn-5" -%>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+
       </div>
-
-    </div>
-
-    <div class="container">
-      <div class="intro">
-        <h2 class="title">好礼五</h2>
-        <p class="desc">互联网大会门票免费拿</p>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="table-container">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">
-              <tbody>
-                <tr>
-                  <td width="120px" class="horizontal-center">奖励范围</td>
-                  <td colspan="2">充值>=60000</td>
-                  <td width= "30%" rowspan="3"><%= image_tag "7event/image-menpiao.png", alt: "云栖大会门票", width: "80%" -%></td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center">所获奖励</td>
-                  <td colspan="2">送2018年云栖大会单日门票2张</td>
-                </tr>
-                <tr>
-                  <td width="120px" class="horizontal-center vertical-top">活动规则</td>
-                  <td colspan="2" class="vertical-top">
-                    <p>活动时间：9月1日-9月10日</p>
-                    <p>“充值”释义：活动期间累计充值</p>
-                    <p>活动期间会限量赠送100张杭州云栖大会单日门票，先充先得，数量有限</p>
-                    <p>大会门票为9月20日/21日杭州云栖大会单日票，9月10日一周内发出</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4" class="horizontal-center">
-                    <%= link_to "立即充值", "https://www.baidu.com", target: "_blank", class: "btn btn-lg btn-hollow" -%>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
+      <div class="block-right trapezoid-large-rl"></div>
     </div>
   </div>
 
