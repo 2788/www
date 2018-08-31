@@ -1,7 +1,18 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
-  <% if false -%>
+  <div class="jumbotron hero hero-censor-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= link_to "立即购买", "https://portal.qiniu.com/financial/phsource", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="jumbotron hero hero-7event-index">
     <div class="container">
       <div class="middle-container">
@@ -9,7 +20,6 @@
       </div>
     </div>
   </div>
-  <% end -%>
 
   <div class="jumbotron hero hero-edu-index">
     <div class="container">
@@ -59,23 +69,6 @@
       </div>
       <div class="right-image-container">
         <%= image_tag "banner/banner-qvm-right-index.png", height: "100%", alt: "云主机服务" -%>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-censor-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>内容安全</h1>
-              <p>首次使用即享&nbsp;<span class="text-warn">18&nbsp;万张</span>免费审核额度</p>
-              <p>双重审核 运营无忧</p>
-            </div>
-            <%= link_to "立即使用", products_censor_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
       </div>
     </div>
   </div>
