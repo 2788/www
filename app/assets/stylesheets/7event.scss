@@ -116,23 +116,28 @@
         a {
           color: #FFF;
 
-          &.recharge-btn-1:hover {
+          &.recharge-btn-1:hover,
+          &.recharge-btn-1:focus {
             color: #22185B;
           }
 
-          &.recharge-btn-2:hover {
+          &.recharge-btn-2:hover,
+          &.recharge-btn-2:focus {
             color: #2D1A6D;
           }
 
-          &.recharge-btn-3:hover {
+          &.recharge-btn-3:hover,
+          &.recharge-btn-3:focus {
             color: #3B1E81;
           }
 
-          &.recharge-btn-4:hover {
+          &.recharge-btn-4:hover,
+          &.recharge-btn-4:focus {
             color: #482094;
           }
 
-          &.recharge-btn-5:hover {
+          &.recharge-btn-5:hover,
+          &.recharge-btn-5:focus {
             color: #5323A6;
           }
         }
