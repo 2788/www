@@ -62,7 +62,7 @@
 
   .intro {
     .title {
-      margin-bottom: 0.05rem;
+      margin-bottom: 0.20rem;
       color: #FFF;
       line-height: 0.50rem;
       background-image: image-url("7event/title-background.png");
@@ -140,6 +140,11 @@
           &.recharge-btn-5:focus {
             color: #5323A6;
           }
+        }
+
+        .short-link {
+          color: #5EC4FB;
+          text-decoration: underline;
         }
       }
     }
