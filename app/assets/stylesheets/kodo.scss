@@ -1,7 +1,25 @@
+.hero-kodo {
+  .middle-container {
+    top: 48% !important;
+
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .features {
     .kodo-feature-col {
       min-height: 2.20rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .feature-core {
+    .thumbnail {
+      min-height: 2.80rem;
     }
   }
 }

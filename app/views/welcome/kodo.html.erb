@@ -1,4 +1,4 @@
-<div class="jumbotron hero">
+<div class="jumbotron hero hero-kodo">
   <div class="container">
     <div class="middle-container">
       <div class="row">
@@ -7,9 +7,10 @@
           <p><%= I18n.t("views.welcome.kodo.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
-            <%= link_to "产品价格", prices_path + "?source=kodo", class: "btn btn-lg btn-hollow m-b-xs" -%>
+            <%= link_to "产品价格", prices_path + "?source=kodo", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
             <h5 class="kodo-modal m-b-none">现已推出私有云存储解决方案，能够针对企业客户场景进行灵活地部署和运维，</h5>
             <h5 class="kodo-modal m-t-none">如有需要，请 <%= link_to "点击咨询", "", class: "out_link underline", data: {toggle: "modal", target: "#feedback-modal"} -%></h5>
+            <h5 class="kodo-modal m-t-none">体验边缘存储服务，请 <%= link_to "点击咨询", "", class: "out_link underline", data: {toggle: "modal", target: "#feedback-modal"} -%></h5>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
@@ -72,7 +73,7 @@
             <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 60 %>
             <div class="caption">
               <h4><%= col[:title] %></h4>
-              <p><%= col[:desc] %><%= link_to col[:more], col[:link], class: "more" -%></p>
+              <p><%= col[:desc] %><%= link_to col[:more], col[:link], target: "_blank", class: "more" -%></p>
             </div>
           </div>
         </div>
@@ -100,7 +101,13 @@
             <div class="media">
               <%= content_tag :div, image_tag(sec[:icon], alt: sec[:title], class: "media-object img-left"), class: "media-left" %>
               <div class="media-body">
-                <p><%= sec[:desc] %><%= link_to sec[:link], solutions_path(anchor: "QOS"), class: "more" -%></p>
+                <% if sec[:type] == "solution" -%>
+                  <p><%= sec[:desc] -%><%= link_to "了解更多", solutions_path(anchor: sec[:link]), target: "_blank", class: "more" -%></p>
+                <% elsif sec[:type] == "link" -%>
+                  <p><%= sec[:desc] -%><%= link_to "了解更多", sec[:link], target: "_blank", class: "more" -%></p>
+                <% elsif sec[:type] == "none" -%>
+                  <p><%= sec[:desc] -%></p>
+                <% end -%>
               </div>
             </div>
           </section>
