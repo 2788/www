@@ -260,7 +260,7 @@ zh-CN:
               icon: "icon-bianyuancunchu@2x.png"
               title: "边缘存储"
               desc: "七牛云面向视频监控行业，为解决监控设备多，分布广，数据量大，传输成本高，速度慢等行业痛点，提出在七牛云边缘节点或用户侧边缘节点部署边缘存储服务，最大限度靠近监控视频数据源；采用七牛自研上行加速技术，加速将数据存储至边缘节点，并最终将持久化数据保存至数据中心。同时可集成边缘计算服务，就近处理视频监控数据，降低响应延时，减少中间数据量。"
-              type: "link"
+              type: "none"
               link: ""
         feature4:
           title: "客户案例"
@@ -2322,9 +2322,9 @@ zh-CN:
           - class: "intLink"
             href: "#ess-tab-content-4"
             title: "方案优势"
-          - class: "intLink"
-            href: "#ess-tab-content-5"
-            title: "典型应用场景"
+          # - class: "intLink"
+          #   href: "#ess-tab-content-5"
+          #   title: "典型应用场景"
         panoramic:
           title: "方案架构"
           image: "ess/image-panoramic.png"

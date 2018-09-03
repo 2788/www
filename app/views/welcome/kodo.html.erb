@@ -73,7 +73,11 @@
             <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 60 %>
             <div class="caption">
               <h4><%= col[:title] %></h4>
-              <p><%= col[:desc] %><%= link_to col[:more], col[:link], target: "_blank", class: "more" -%></p>
+              <% if col[:link] != "" -%>
+                <p><%= col[:desc] %><%= link_to col[:more], col[:link], target: "_blank", class: "more" -%></p>
+              <% else -%>
+                <p><%= col[:desc] %></p>
+              <% end -%>
             </div>
           </div>
         </div>

@@ -2282,9 +2282,9 @@ en:
           - class: "intLink"
             href: "#ess-tab-content-4"
             title: "方案优势"
-          - class: "intLink"
-            href: "#ess-tab-content-5"
-            title: "典型应用场景"
+          # - class: "intLink"
+          #   href: "#ess-tab-content-5"
+          #   title: "典型应用场景"
         panoramic:
           title: "方案架构"
           image: "ess/image-panoramic.png"
