@@ -37,6 +37,7 @@
 #= require sdk
 #= require censor
 #= require 7event
+#= require qvm1rmb
 
 #= require uuid
 
