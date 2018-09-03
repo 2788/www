@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     get '/products/qavs',           to: 'welcome#qavs'
     get '/products/qvm',            to: 'welcome#qvm'
     get '/products/edu',            to: 'welcome#edu'
-    get '/products/edge',           to: 'welcome#edge'
+    get '/products/ess',           to: 'welcome#ess'
 
     get '/contact',        to: 'welcome#contact'
     get '/solutions',      to: 'welcome#solution'
