@@ -2266,64 +2266,64 @@ en:
               image: "free/image-business.jpg"
               class: "text-left"
               link: "https://www.qiniu.com/goglobal"
-      edge:
+      ess:
         title: "监控视频边缘存储解决方案"
         desc: "面向视频监控行业，在七牛云边缘节点和用户侧部署边缘存储服务，加速视频数据边缘上传，自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。"
         navs:
           - class: "intLink active"
-            href: "#edge-tab-content-1"
+            href: "#ess-tab-content-1"
             title: "方案架构"
           - class: "intLink"
-            href: "#edge-tab-content-2"
+            href: "#ess-tab-content-2"
             title: "行业痛点"
           - class: "intLink"
-            href: "#edge-tab-content-3"
+            href: "#ess-tab-content-3"
             title: "独特功能"
           - class: "intLink"
-            href: "#edge-tab-content-4"
+            href: "#ess-tab-content-4"
             title: "方案优势"
           - class: "intLink"
-            href: "#edge-tab-content-5"
+            href: "#ess-tab-content-5"
             title: "典型应用场景"
         panoramic:
           title: "方案架构"
-          image: "edge/image-panoramic.png"
+          image: "ess/image-panoramic.png"
         painpoint:
           title: "行业痛点"
           items:
             - title: "上传链路差"
               desc: "监控视频直接上传至云端，因链路路由和多运营商等问题造成上传传输链路质量差。"
-              image: "edge/icon-shangchuanlianlu.png"
+              image: "ess/icon-shangchuanlianlu.png"
             - title: "带宽利用率低"
               desc: "监控视频直接上传至云端会受到中心带宽限制，造成本地带宽利用率低，成本浪费。"
-              image: "edge/icon-kuandailiyong.png"
+              image: "ess/icon-kuandailiyong.png"
             - title: "本地存储受限"
               desc: "当前监控视频SD或NVR的本地存储方案，空间有限，成本较高，读写寿命短，数据安全无法保障。"
-              image: "edge/icon-bendicunchu.png"
+              image: "ess/icon-bendicunchu.png"
         unique:
           title: "独特功能"
           items:
             - title: "就近高速上传"
               desc: "选取就近边缘节点，多维调度智能选取最优链路，保障监控视频数据上传至边缘。"
-              image: "edge/icon-jiujingaosu.png"
+              image: "ess/icon-jiujingaosu.png"
             - title: "自动同步中心"
               desc: "边缘数据自动同步至中心备份，保证数据完整性及安全性，同时支持用户主动备份业务数据至中心。"
-              image: "edge/icon-zidongtongbu.png"
+              image: "ess/icon-zidongtongbu.png"
             - title: "全网实时查看"
               desc: "采用多策略多层次调度，智能选取最优线路，保障用户可全网实时查看监控视频。"
-              image: "edge/icon-quanwangshishi.png"
+              image: "ess/icon-quanwangshishi.png"
         advantage:
           title: "方案优势"
           items:
             - title: "传输高速可靠"
               desc: "多维调度策略选取传输链路，保障传输链路高速可靠，可最大化利用链路带宽。"
-              image: "edge/icon-chuanshugaosu.png"
+              image: "ess/icon-chuanshugaosu.png"
             - title: "数据多重保护"
               desc: "对数据传输及存储实行网银级加密保护，边缘可自定义处理敏感数据，及时脱敏。"
-              image: "edge/icon-shujuduochong.png"
+              image: "ess/icon-shujuduochong.png"
             - title: "全面兼容扩展"
               desc: "兼容七牛云对象存储已有功能特性及接口，支持与边缘计算相结合，拓展边缘智能。"
-              image: "edge/icon-quanmianjianrong.png"
+              image: "ess/icon-quanmianjianrong.png"
         scene:
           title: "典型应用场景"
           tabs:
@@ -2339,17 +2339,17 @@ en:
           sections:
             - id: "tab-scene-1"
               class: "tab-pane fade in active"
-              image: "edge/image-shipinjiankong.jpg"
+              image: "ess/image-shipinjiankong.jpg"
               title: "视频监控"
               desc: "视频监控场景具有设备数量多、分布广、数据实时产生传输、数据密度高等特点。边缘存储服务可将监控视频快速上传至边缘节点，并将持久化数据保存至中心，显著降低视频上传延时，降低中心带宽消耗。"
             - id: "tab-scene-2"
               class: "tab-pane fade"
-              image: "edge/image-wulianwang.jpg"
+              image: "ess/image-wulianwang.jpg"
               title: "物联网"
               desc: "工业及农业物联网具有设备种类多、数量多、数据实时性高、数据密度高、网络安全性高等特点。边缘存储服务可就近存储边缘数据，并对数据进行脱敏处理，实现低延时，高安全。"
             - id: "tab-scene-3"
               class: "tab-pane fade"
-              image: "edge/image-teshushengchan.jpg"
+              image: "ess/image-teshushengchan.jpg"
               title: "特殊生产环境"
               desc: "加油站，海上油井等特殊生产环境具有网络状况差，机房部署环境差、数据敏感等特点。边缘存储服务可就近存储，处理敏感数据，并在网络可用情况下，自动将脱敏数据同步至云端存储。"
       dora:
@@ -3206,10 +3206,10 @@ en:
       title: Qiniu Cloud-Real-time Video Communication Service
       keywords: WebRTC，RTC，real-time communication，WebRTC Platform，WebRTC API，WebRTC Mobile，WebRTC iOS，WebRTC Android，video communications，video
       description: Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network  and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast.
-    welcome_edge:
-      title: 边缘存储解决方案 - 七牛云
-      keywords:
-      description:
+    welcome_ess:
+      title: 监控视频边缘存储解决方案 - 七牛云
+      keywords: 边缘存储，边缘计算，七牛云，视频监控，物联网
+      description: 面向视频监控行业，在七牛云边缘节点和用户侧部署边缘存储服务，加速视频数据边缘上传，自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。
     welcome_user_agreement:
       title: 用户服务协议-七牛云
       keywords:

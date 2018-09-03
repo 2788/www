@@ -1,18 +1,18 @@
 <%# banner part %>
-<div class="jumbotron hero hero-edge">
+<div class="jumbotron hero hero-ess">
   <div class="container">
     <div class="middle-container">
       <div class="row">
         <div class="col-sm-7 col-xs-10">
-          <h2><%= I18n.t("views.welcome.edge.title") -%></h2>
-          <p><%= I18n.t("views.welcome.edge.desc") -%></p>
+          <h2><%= I18n.t("views.welcome.ess.title") -%></h2>
+          <p><%= I18n.t("views.welcome.ess.desc") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "咨询详情", "", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "咨询详情", "", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
           </div>
         </div>
         <div class="col-sm-5 hidden-xs">
           <div class="right-mask-banner">
-            <%= image_tag "banner/banner-edge-right-zh.png", alt: "edge", width: '100%' -%>
+            <%= image_tag "banner/banner-ess-right-zh.png", alt: "ess", width: '100%' -%>
           </div>
         </div>
       </div>
@@ -21,11 +21,11 @@
 </div>
 
 <%# nav part %>
-<div class="edge-nav hidden-xs">
+<div class="ess-nav hidden-xs">
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.welcome.edge.navs").each do |nav| -%>
+        <% I18n.t("views.welcome.ess.navs").each do |nav| -%>
           <li class="<%= nav[:class] -%>"><a href="<%= nav[:href] -%>"><%= nav[:title] -%></a></li>
         <% end -%>
       </ul>
@@ -34,25 +34,25 @@
 </div>
 
 <%# panoramic part %>
-<div class="features edge-tab-content-1">
+<div class="features ess-tab-content-1">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edge.panoramic.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.ess.panoramic.title") -%></h2>
     </div>
     <div class="text-center">
-      <%= image_tag I18n.t("views.welcome.edge.panoramic.image"), width:"80%" -%>
+      <%= image_tag I18n.t("views.welcome.ess.panoramic.image"), width:"80%" -%>
     </div>
   </div>
 </div>
 
 <%# pain point part %>
-<div class="features features-less features-cases features-edge edge-tab-content-2">
+<div class="features features-less features-cases features-ess ess-tab-content-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edge.painpoint.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.ess.painpoint.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.edge.painpoint.items").each do |item| -%>
+      <% I18n.t("views.welcome.ess.painpoint.items").each do |item| -%>
         <div class="col-sm-4 col-xs-6 col-item">
           <%= image_tag item[:image], width: 120 -%>
           <h4><%= item[:title] -%></h4>
@@ -64,13 +64,13 @@
 </div>
 
 <%# unique part %>
-<div class="features features-edge edge-tab-content-3">
+<div class="features features-ess ess-tab-content-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edge.unique.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.ess.unique.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.edge.unique.items").each do |item| -%>
+      <% I18n.t("views.welcome.ess.unique.items").each do |item| -%>
         <div class="col-sm-4 col-xs-6 col-item">
           <%= image_tag item[:image], width: 120 -%>
           <h4><%= item[:title] -%></h4>
@@ -82,13 +82,13 @@
 </div>
 
 <%# advantage part %>
-<div class="features features-less features-cases features-edge edge-tab-content-4">
+<div class="features features-less features-cases features-ess ess-tab-content-4">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edge.advantage.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.ess.advantage.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.edge.advantage.items").each do |item| -%>
+      <% I18n.t("views.welcome.ess.advantage.items").each do |item| -%>
         <div class="col-sm-4 col-xs-6 col-item">
           <%= image_tag item[:image], width: 120 -%>
           <h4><%= item[:title] -%></h4>
@@ -100,19 +100,19 @@
 </div>
 
 <%# scene part %>
-<div class="features features-edge-scene edge-tab-content-5">
+<div class="features features-ess-scene ess-tab-content-5">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edge.scene.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.ess.scene.title") -%></h2>
     </div>
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.edge.scene.tabs").each do |tab| -%>
+        <% I18n.t("views.welcome.ess.scene.tabs").each do |tab| -%>
           <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
         <% end -%>
       </ul>
       <div class="tab-content">
-        <% I18n.t("views.welcome.edge.scene.sections").each do |sec| -%>
+        <% I18n.t("views.welcome.ess.scene.sections").each do |sec| -%>
           <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12">
