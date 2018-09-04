@@ -48,18 +48,18 @@
 
     .qvm1rmb-progress-title {
       padding: 0 10px;
-      font-size: 0.18rem;
+      font-size: 0.16rem;
       color: #FFF;
       text-align: left;
     }
 
     .qvm1rmb-progress-tip {
-      width: 30px;
-      height: 38px;
+      width: 28px;
+      height: 36px;
       position: absolute;
-      top: -4px;
+      top: calc(100% - 15px);
       font-size: 12px;
-      line-height: 32px;
+      line-height: 42px;
       text-align: center;
       background-image: image-url("qvmevent/progress-tip.png");
       background-repeat: no-repeat;
