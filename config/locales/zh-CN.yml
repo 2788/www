@@ -259,7 +259,7 @@ zh-CN:
               class: "tab-pane fade"
               icon: "icon-bianyuancunchu@2x.png"
               title: "边缘存储"
-              desc: "七牛云面向视频监控行业，为解决监控设备多，分布广，数据量大，传输成本高，速度慢等行业痛点，提出在七牛云边缘节点或用户侧边缘节点部署边缘存储服务，最大限度靠近监控视频数据源；采用七牛自研上行加速技术，加速将数据存储至边缘节点，并最终将持久化数据保存至数据中心。同时可集成边缘计算服务，就近处理视频监控数据，降低响应延时，减少中间数据量。"
+              desc: "七牛云边缘存储服务面向监控视频存储场景，在七牛云大规模边缘节点和用户侧部署服务，加速视频数据存储至边缘，并最终将持久化数据保存至中心，有效解决监控视频存储上传链路差，带宽利用率低等行业痛点，降低本地存储成本。"
               type: "none"
               link: ""
         feature4:
@@ -2322,9 +2322,9 @@ zh-CN:
           - class: "intLink"
             href: "#ess-tab-content-4"
             title: "方案优势"
-          # - class: "intLink"
-          #   href: "#ess-tab-content-5"
-          #   title: "典型应用场景"
+          - class: "intLink"
+            href: "#ess-tab-content-5"
+            title: "典型应用场景"
         panoramic:
           title: "方案架构"
           image: "ess/image-panoramic.png"
@@ -2367,31 +2367,31 @@ zh-CN:
         scene:
           title: "典型应用场景"
           tabs:
-            - name: "视频监控"
+            - name: "公共交通监控"
               class: "active"
               href: "#tab-scene-1"
-            - name: "物联网"
+            - name: "楼宇小区监控"
               class: ""
               href: "#tab-scene-2"
-            - name: "特殊生产环境"
+            - name: "工厂园区监控"
               class: ""
               href: "#tab-scene-3"
           sections:
             - id: "tab-scene-1"
               class: "tab-pane fade in active"
-              image: "ess/image-shipinjiankong.jpg"
-              title: "视频监控"
-              desc: "视频监控场景具有设备数量多、分布广、数据实时产生传输、数据密度高等特点。边缘存储服务可将监控视频快速上传至边缘节点，并将持久化数据保存至中心，显著降低视频上传延时，降低中心带宽消耗。"
+              image: "ess/image-gonggongjiaotong.jpg"
+              title: "公共交通监控"
+              desc: "城市公共交通监控视频路数多，数据量大，边缘存储解决方案可灵活部署，就近高速存储。"
             - id: "tab-scene-2"
               class: "tab-pane fade"
-              image: "ess/image-wulianwang.jpg"
-              title: "物联网"
-              desc: "工业及农业物联网具有设备种类多、数量多、数据实时性高、数据密度高、网络安全性高等特点。边缘存储服务可就近存储边缘数据，并对数据进行脱敏处理，实现低延时，高安全。"
+              image: "ess/image-louyuxiaoqu.jpg"
+              title: "楼宇小区监控"
+              desc: "楼宇小区监控视频涉及租住户隐私，边缘存储解决方案可就近处理视频数据，及时脱敏。"
             - id: "tab-scene-3"
               class: "tab-pane fade"
-              image: "ess/image-teshushengchan.jpg"
-              title: "特殊生产环境"
-              desc: "加油站，海上油井等特殊生产环境具有网络状况差，机房部署环境差、数据敏感等特点。边缘存储服务可就近存储，处理敏感数据，并在网络可用情况下，自动将脱敏数据同步至云端存储。"
+              image: "ess/image-gongchangyuanqu.jpg"
+              title: "工厂园区监控"
+              desc: "工厂园区生产环境及网络环境复杂，边缘存储解决方案可就近存储监控数据，稳定可靠。"
       dora:
         title: "智能多媒体 API"
         desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
@@ -3021,7 +3021,7 @@ zh-CN:
       list:
         - name: kodo
           label: 对象存储
-          desc: 高可用、易扩展、低成本、一站式
+          desc: 高可用、易扩展、低成本、一站式、支持边缘存储
 
         - name: fusion
           label: 融合 CDN
@@ -3127,8 +3127,8 @@ zh-CN:
           desc: 专为综合视频平台打造，高可用低成本的 PB 级数据存储解决方案
           type: product
         - name: ess
-          label: 边缘存储解决方案
-          desc: 满足监控设备视频及图片就近存储、传输加速、倍速播放等关键需求
+          label: 监控视频边缘存储解决方案
+          desc: 满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
           type: product
       - cols:
         - name: qavs

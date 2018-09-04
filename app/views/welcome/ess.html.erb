@@ -7,7 +7,7 @@
           <h2><%= I18n.t("views.welcome.ess.title") -%></h2>
           <p><%= I18n.t("views.welcome.ess.desc") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "咨询详情", "", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
+            <%= link_to "咨询详情", "http://qiniu-kodoedge.mikecrm.com/yGntQCJ", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
         </div>
         <div class="col-sm-5 hidden-xs">
@@ -99,7 +99,6 @@
   </div>
 </div>
 
-<% if false -%>
 <%# scene part %>
 <div class="features features-ess-scene ess-tab-content-5">
   <div class="container">
@@ -132,4 +131,3 @@
     </div>
   </div>
 </div>
-<% end -%>
