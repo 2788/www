@@ -57,12 +57,13 @@
       width: 30px;
       height: 38px;
       position: absolute;
-      top: -3px;
+      top: -4px;
       font-size: 12px;
       line-height: 32px;
+      text-align: center;
       background-image: image-url("qvmevent/progress-tip.png");
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
     }
 
     .qvm1rmb-progress-bar {
@@ -71,6 +72,9 @@
 
       .progress-bar {
         background-color: #FFE300;
+        -webkit-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
       }
     }
   }
