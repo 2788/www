@@ -73,11 +73,8 @@ Rails.application.routes.draw do
     
     resources 'events', only: [:index] do
       collection do
-        get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', '7event'
+        get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', '7event', 'qvm1rmb'
       end
-      # collection do
-      #   get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', '7event', 'qvm1rmb'
-      # end
     end
 
     # img_censor
