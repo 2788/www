@@ -31,7 +31,7 @@ $(document).ready ->
       $progressTitle.html('活动已结束')
       $progressTip.hide()
     else
-      $progressTitle.html('距离活动结束')
+      $progressTitle.html('距离活动结束还有')
       $progressTip.show()
       # 经过时间的比例
       ratio = (passTime / durationTime).toFixed(2) * 100

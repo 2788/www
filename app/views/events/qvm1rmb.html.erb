@@ -39,9 +39,9 @@
       </div>
 
       <div class="row qvm1rmb-progress-row">
-        <%# 标题 %>
+        <%# title %>
         <h5 class="qvm1rmb-progress-title"></h5>
-        <%# 剩余天数 %>
+        <%# days left %>
         <div class="qvm1rmb-progress-tip"></div>
         <div class="qvm1rmb-progress-bar">
           <div class="progress">
@@ -65,25 +65,31 @@
         <div class="join-container">
           <div class="row">
             <div class="col-md-2 col-sm-2 col-xs-2 col-join">
-              <%= image_tag "qvmevent/join-zhuce-w.png", alt: "注册", class: "image-normal", height: "100%" -%>
-              <%= image_tag "qvmevent/join-zhuce-h.png", alt: "注册", class: "image-hover", height: "100%" -%>
-              <h4>注册</h4>
+              <a href="https://portal.qiniu.com/signin" target="_blank">
+                <%= image_tag "qvmevent/join-zhuce-w.png", alt: "注册", class: "image-normal", height: "100%" -%>
+                <%= image_tag "qvmevent/join-zhuce-h.png", alt: "注册", class: "image-hover", height: "100%" -%>
+                <h4>注册</h4>
+              </a>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 col-join">
               <%= image_tag "qvmevent/join-arrow.png", alt: "箭头", width: "60%" -%>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 col-join">
-              <%= image_tag "qvmevent/join-renzheng-w.png", alt: "认证", class: "image-normal", height: "100%" -%>
-              <%= image_tag "qvmevent/join-renzheng-h.png", alt: "认证", class: "image-hover", height: "100%" -%>
-              <h4>认证</h4>
+              <a href="https://portal.qiniu.com/identity" target="_blank">
+                <%= image_tag "qvmevent/join-renzheng-w.png", alt: "认证", class: "image-normal", height: "100%" -%>
+                <%= image_tag "qvmevent/join-renzheng-h.png", alt: "认证", class: "image-hover", height: "100%" -%>
+                <h4>认证</h4>
+              </a>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 col-join">
               <%= image_tag "qvmevent/join-arrow.png", alt: "箭头", width: "60%" -%>
             </div>
             <div class="col-md-2 col-sm-2 col-xs-2 col-join">
-              <%= image_tag "qvmevent/join-goumai-w.png", alt: "购买", class: "image-normal", height: "100%" -%>
-              <%= image_tag "qvmevent/join-goumai-h.png", alt: "购买", class: "image-hover", height: "100%" -%>
-              <h4>购买</h4>
+              <a href="https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb" target="_blank">
+                <%= image_tag "qvmevent/join-goumai-w.png", alt: "购买", class: "image-normal", height: "100%" -%>
+                <%= image_tag "qvmevent/join-goumai-h.png", alt: "购买", class: "image-hover", height: "100%" -%>
+                <h4>购买</h4>
+              </a>
             </div>
           </div>
         </div>

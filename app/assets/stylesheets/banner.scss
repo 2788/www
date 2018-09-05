@@ -514,19 +514,6 @@
       top: 55%;
       text-align: center;
 
-      .banner-desc {
-        h1 {
-          margin-top: 0.30rem;
-          margin-bottom: 0.20rem;
-          font-size: 0.50rem;
-        }
-
-        p {
-          margin: 0 0 0.05rem 0;
-          font-size: 0.20rem;
-        }
-      }
-
       .btn-banner {
         margin-top: 0.20rem;
       }
@@ -629,6 +616,21 @@
 
       .btn-banner:hover {
         color: #120B4E;
+      }
+    }
+  }
+
+  &.hero-qvm1rmb-index {
+    background-image: image-url("banner/banner-qvm1rmb-index.jpg");
+
+    .middle-container {
+      top: 72%;
+      text-align: center;
+
+      .btn-banner {
+        color: #333;
+        border: none;
+        background-color: #FFE300;
       }
     }
   }
@@ -880,6 +882,12 @@
     &.hero-censor-index {
       .middle-container {
         top: 65%;
+      }
+    }
+
+    &.hero-qvm1rmb-index {
+      .middle-container {
+        top: 76%;
       }
     }
   }
