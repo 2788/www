@@ -150,13 +150,18 @@
       margin-bottom: 0.20rem;
     }
 
-    h4 {
+    h4,
+    p,
+    .email-box {
       color: #FFF;
     }
 
     p {
-      color: #FFF;
       margin-bottom: 0;
+    }
+
+    .email-box:hover {
+      color: #00A0DE;
     }
   }
 }
