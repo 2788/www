@@ -1,18 +1,31 @@
 .hero-qvm {
   margin-bottom: 0 !important;
+
   .container {
     h1 {
-      margin-top: 0.35rem;
+      margin-top: 0.30rem;
       font-size: 0.35rem;
       text-shadow: 0 0.02rem 0.03rem rgba(0, 0, 0, 0.5);
     }
+
     p {
       margin-top: 0.20rem;
       font-size: 0.16rem;
+
+      a {
+        color: #FFF;
+        text-decoration: underline;
+      }
+
+      &.none-text-shadow {
+        text-shadow: none;
+      }
     }
+
     .actions {
       margin-top: 0.20rem;
     }
+
     .right-mask-banner {
       line-height: 3.00rem;
     }
@@ -21,12 +34,14 @@
 
 .features-qvm-nav {
   padding: 0.10rem 0;
+
   .nav {
     li>span {
       position: relative;
       padding: 12px 0;
       display: block;
     }
+
     border-bottom: none;
   }
 }
@@ -34,6 +49,7 @@
 .features-qvm-adva {
   .thumbnail {
     height: 3.00rem;
+
     .caption p {
       word-break: break-all;
     }
@@ -42,26 +58,33 @@
 
 .features-qvm-product {
   padding-top: 0.40rem;
+
   &.qvm-product-title {
     padding-top: 0.68rem;
   }
+
   &.qvm-product-item {
     padding-top: 0.20rem;
     padding-bottom: 0.20rem;
   }
+
   .navbar-wrapper-middle {
     padding: 0;
   }
+
   .icon-col {
     width: 14.25%;
     padding: 0;
     text-align: center;
+
     .normal-image {
       display: inline-block;
     }
+
     .active-image {
       display: none;
     }
+
     .title {
       margin-top: 0;
       font-size: 0.14rem;
@@ -69,35 +92,45 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     &:hover {
       cursor: pointer;
+
       .normal-image {
         display: none;
       }
+
       .active-image {
         display: inline-block;
       }
+
       a {
         color: #28aedf;
       }
     }
   }
+
   .product-row {
+
     .col-content,
     .col-image,
     .col-content-lg,
     .col-image-lg {
       padding: 0;
     }
+
     .col-image-lg {
       width: 20%;
     }
+
     .col-content {
       padding: 40px;
       background-color: #FFF;
+
       h4 {
         display: none;
       }
+
       .item-labels {
         position: absolute;
         left: 40px;
@@ -105,65 +138,82 @@
         color: #28AEDF;
         line-height: 22px;
         cursor: default;
+
         span {
           margin-right: 0.15rem;
         }
+
         .offline {
           color: #888;
         }
       }
+
       .more-btn {
         position: absolute;
         right: 40px;
         bottom: 40px;
         color: #888;
+
         a {
           color: #28AEDF;
         }
+
         a:hover {
           text-decoration: underline;
         }
+
         img {
           margin-top: -2px;
           margin-left: 5px;
         }
       }
     }
+
     .col-content-lg {
       width: 80%;
       padding: 20px;
       background-color: #FFF;
+
       h4 {
         display: none;
       }
     }
+
     .nav-qvm-product {
       border: 1px solid #ddd;
       border-radius: 0.10rem;
+
       li {
         vertical-align: middle;
+
         a {
           padding: 5px 0;
         }
+
         &.active {
           border: 1px solid #00a0de;
           border-radius: 0.10rem;
         }
       }
     }
+
     .tab-content {
       overflow: auto;
+
       .table {
         min-width: 665px;
+
         tr>td {
           padding: 0 5px 20px 5px;
           font-size: 12px;
           border: none;
         }
+
         .font-huge>td {
           padding: 10px 5px;
           font-size: 18px;
         }
+
         .font-normal {
           font-size: 12px;
         }
@@ -182,45 +232,55 @@
 
 .features-qvm-scene {
   padding-bottom: 0.68rem;
+
   .nav-tabs {
     li {
       padding-left: 0.10rem;
       padding-right: 0.10rem;
+
       a {
         font-size: 0.13rem;
       }
+
       &.active {
         border-bottom: 2px solid #00a0de;
       }
     }
   }
+
   .tab-content {
     h4 {
       margin: 0;
       padding: 0.10rem 0 0;
       font-size: 0.19rem;
     }
+
     p {
       font-size: 0.13rem;
       margin: 0.10rem 0;
       line-height: 0.19rem;
     }
+
     .col-left {
       .product-item {
         margin-right: 0.10rem;
       }
     }
+
     .col-right {
       padding: 0;
       text-align: center;
+
       img {
         padding-top: 0.10rem;
       }
+
       .buy-btn {
         position: absolute;
         bottom: 0.20rem;
         left: calc(50% - 67px);
         color: #FFF;
+
         &:hover {
           color: #28AEDF;
         }
@@ -231,14 +291,17 @@
 
 .features-qvm-doc {
   padding-bottom: 1.00rem;
+
   .intro {
     margin-bottom: 0.68rem;
   }
+
   .row {
     h4 {
       padding: 0.20rem 0;
     }
   }
+
   .qvm-bottom-win {
     position: absolute;
     width: 1170px;
@@ -252,10 +315,12 @@
     line-height: 1.00rem;
     background-color: #FFF;
     box-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.3);
+
     span {
       margin-left: 105px;
       font-size: 0.20rem;
     }
+
     a {
       position: absolute;
       top: calc(50% - 23px);
@@ -273,17 +338,21 @@
       .nav-qvm-product {
         margin-top: 0.25rem;
       }
+
       .tab-content {
         margin-top: 0.25rem;
       }
+
       .col-content {
         height: 225px;
       }
+
       .col-content-lg {
         height: 310px;
       }
     }
   }
+
   .features-qvm-scene {
     .tab-content {
       .col-right {
@@ -301,18 +370,22 @@
       .nav-qvm-product {
         margin-top: 0.10rem;
       }
+
       .tab-content {
         height: 1.70rem;
         margin-top: 0.10rem;
       }
+
       .col-content {
         height: 186px;
       }
+
       .col-content-lg {
         height: 256px;
       }
     }
   }
+
   .features-qvm-scene {
     .tab-content {
       .col-right {
@@ -322,12 +395,15 @@
       }
     }
   }
+
   .features-qvm-doc {
     .qvm-bottom-win {
       width: 970px;
+
       span {
         margin-left: 80px;
       }
+
       a {
         margin-right: 110px;
       }
@@ -342,23 +418,28 @@
         margin-top: 0;
         height: 1.30rem;
       }
+
       .col-content {
         height: 144px;
         padding: 20px;
+
         .item-labels {
           left: 20px;
           bottom: 20px;
         }
+
         .more-btn {
           right: 20px;
           bottom: 20px;
         }
       }
+
       .col-content-lg {
         height: 198px;
       }
     }
   }
+
   .features-qvm-scene {
     .tab-content {
       .col-right {
@@ -368,12 +449,15 @@
       }
     }
   }
+
   .features-qvm-doc {
     .qvm-bottom-win {
       width: 750px;
+
       span {
         margin-left: 40px;
       }
+
       a {
         margin-right: 70px;
       }
@@ -387,11 +471,14 @@
       p {
         font-size: 0.12rem;
       }
+
       .item-labels {
         font-size: 0.12rem;
       }
+
       .more-btn {
         font-size: 0.12rem;
+
         a {
           font-size: 0.12rem;
         }
@@ -403,58 +490,71 @@
 @media (max-width: 767px) {
   .features-qvm-nav {
     .nav>li {
+
       span,
       a {
         font-size: 0.12rem;
       }
     }
   }
+
   .features-qvm-product {
     .product-row {
       .nav-qvm-product {
         li {
           display: table-cell;
           width: 1%;
+
           a {
             font-size: 0.12rem;
             margin: 0;
           }
         }
       }
+
       .tab-content {
         height: 3.00rem;
       }
+
       .col-content {
         height: 200px;
         padding: 20px;
+
         h4 {
           display: block;
         }
+
         .item-labels {
           left: 20px;
           bottom: 20px;
         }
+
         .more-btn {
           right: 20px;
           bottom: 20px;
         }
       }
+
       .col-content-lg {
         width: 100% !important;
         height: 330px;
+
         h4 {
           display: block;
         }
       }
     }
   }
+
   .features-qvm-doc {
     .qvm-bottom-win {
       width: 80%;
       left: 10%;
+
       span {
         margin-left: 0;
       }
+
       a {
         margin-right: 30px;
         top: calc(50% - 17px);
@@ -496,6 +596,7 @@
       }
     }
   }
+
   .features-qvm-doc {
     .qvm-bottom-win {
       a {

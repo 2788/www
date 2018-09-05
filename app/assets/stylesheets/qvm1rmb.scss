@@ -37,7 +37,7 @@
         bottom: 8%;
         left: calc(50% - 45px);
         background-color: #FFE300;
-        color: #000;
+        color: #333;
       }
     }
   }
@@ -70,8 +70,12 @@
       width: 100%;
       padding: 0 10px;
 
+      .progress {
+        background-color: #FFE300 !important;
+      }
+
       .progress-bar {
-        background-color: #FFE300;
+        background-color: #F5F5F5;
         -webkit-transition: none !important;
         -o-transition: none !important;
         transition: none !important;
