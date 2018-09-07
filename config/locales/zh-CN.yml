@@ -3021,7 +3021,8 @@ zh-CN:
       list:
         - name: kodo
           label: 对象存储
-          desc: 高可用、易扩展、低成本、一站式、支持边缘存储
+          desc: 高可用、易扩展、低成本、一站式、
+          highlight: 支持边缘存储
 
         - name: fusion
           label: 融合 CDN
@@ -3130,6 +3131,7 @@ zh-CN:
           label: 监控视频边缘存储解决方案
           desc: 满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
           type: product
+          isNew: true
       - cols:
         - name: qavs
           label: 智能视频云解决方案
