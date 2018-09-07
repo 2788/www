@@ -48,12 +48,15 @@
 
                   <% service[:list].each do |product| %>
                     <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
-                      <%= link_to(send("products_#{product[:name]}_path")) do -%>      
+                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
                         <h4 class="<%= product[:name] -%>">
                           <%= product[:label] -%>
-                          <% if product[:isNew] %><i class="new-icon"></i><% end %>
-                        </h4> 
-                        <%= content_tag :p, product[:desc], class: "hidden-xs" -%>
+                          <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
+                        </h4>
+                        <p>
+                          <%= product[:desc] -%>
+                          <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
+                        </p>
                       <% end %>
                     <% end %>
                   <% end %>
@@ -86,7 +89,10 @@
                         <% else -%>
 
                           <%= link_to(raw(col[:type] == 'product' ? send("products_#{col[:name]}_path") : solutions_path(anchor: col[:name]))) do -%>
-                            <%= content_tag :h4, col[:label], class: col[:name]+" menu-title" -%>
+                            <h4 class="<%= col[:name] -%> menu-title">
+                              <%= col[:label] -%>
+                              <% if col[:isNew] -%><i class="new-icon"></i><% end -%>
+                            </h4>
                             <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
                           <% end -%>
 
