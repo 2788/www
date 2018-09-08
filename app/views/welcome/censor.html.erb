@@ -8,7 +8,10 @@
           <p><%= I18n.t("views.welcome.censor.describe1") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
-            <%= link_to "特惠资源包", "https://portal.qiniu.com/financial/phsource", target: "_blank", class: "btn btn-lg btn-primary m-r m-b-xs" -%>
+            <a class="btn btn-lg btn-hollow m-r m-b-xs" style="position: relative;" href="https://portal.qiniu.com/financial/phsource" target="_blank">
+              特惠资源包
+              <%= image_tag "censor/icon-hot.png", class: "hot-tip", alt: "hot", title: "hot", width: 30 -%>
+            </a>
             <%= link_to "产品接入文档", "https://developer.qiniu.com/censor/manual/4829/censor-introduction", target: "_blank", class: "product-link underline" -%>
           </div>
           <p><%= I18n.t("views.welcome.censor.describe2") -%></p>
@@ -20,12 +23,39 @@
 
 <%# process tab %>
 <div class="features features-censor-pro">
-  <div class="container">
+  <div class="container censor-pro-container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.welcome.censor.process.title") -%></h2>
     </div>
-    <div class="text-center">
-      <%= image_tag I18n.t("views.welcome.censor.process.image"), width:"90%" -%>
+    <div class="text-center img-container">
+      <%= image_tag I18n.t("views.welcome.censor.process.image"), width:"100%" -%>
+    </div>
+  </div>
+</div>
+
+<%# special tab %>
+<div class="features features-censor-special">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.censor.special.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.censor.special.cols").each do |col| -%>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag col[:image], alt: col[:title], width: "100%" -%>
+            <div class="caption">
+              <h2><%= col[:title] -%></h2>
+              <h4><%= col[:subtitle] -%></h4>
+            </div>
+            <div class="special-list">
+              <% col[:items].each do |item| -%>
+                <p><%= item -%></p>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      <% end -%>
     </div>
   </div>
 </div>
@@ -42,21 +72,30 @@
   </div>
 </div>
 
-<%# advantage tab %>
-<div class="features features-censor-adva">
+<%# scene tab %>
+<div class="features features-censor-scene">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.advantage.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.censor.scene.title") -%></h2>
     </div>
-    <div class="row">
-      <% I18n.t("views.welcome.censor.advantage.cols").each do |col| -%>
-        <div class="col-md-4 col-sm-6 col-xs-6">
-          <div class="thumbnail">
-            <%= image_tag col[:image], class: "media-object", alt: col[:title], width: "40%" -%>
-            <div class="caption">
-              <h4><%= col[:title] -%></h4>
-              <p><%= col[:describe] -%></p>
-            </div>
+    <div class="row scene-row">
+      <% I18n.t("views.welcome.censor.scene.row1").each do |col| -%>
+        <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
+          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
+          <div class="hide-block">
+            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
+            <p><%= col[:title] -%></p>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+    <div class="row scene-row">
+      <% I18n.t("views.welcome.censor.scene.row2").each do |col| -%>
+        <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
+          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
+          <div class="hide-block">
+            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
+            <p><%= col[:title] -%></p>
           </div>
         </div>
       <% end -%>
@@ -64,35 +103,18 @@
   </div>
 </div>
 
-<%# scene tab %>
-<div class="features features-less features-cases features-censor-scene">
+<%# client tab %>
+<div class="features features-less features-cases features-censor-client">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.scene.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.welcome.censor.client.title") -%></h2>
     </div>
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.censor.scene.tabs").each do |tab| -%>
-          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
-        <% end -%>
-      </ul>
-      <div class="tab-content tab-censor">
-        <% I18n.t("views.welcome.censor.scene.sections").each do |sec| -%>
-          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
-            <p><%= sec[:describe] -%></p>
-          </section>
-        <% end -%>
-      </div>
-      <div class="row client-row">
-        <div class="col-md-2 col-sm-3 col-xs-12">
-          <h2 class="title"><%= I18n.t("views.welcome.censor.scene.client.title") %></h2>
-        </div>
-        <div class="col-md-10 col-sm-9 col-xs-12">
-          <div id="cases-slider" class="conveyor slick-slider draggable">
-            <% I18n.t("views.welcome.censor.scene.client.cols").each do |col| -%>
-              <div><%= image_tag col[:image], class: "case", alt: col[:title], title: col[:title] -%></div>
-            <% end -%>
-          </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div id="cases-slider" class="conveyor slick-slider draggable">
+          <% I18n.t("views.welcome.censor.client.items").each do |item| -%>
+            <div><%= image_tag item[:image], class: "case", alt: item[:title], title: item[:title] -%></div>
+          <% end -%>
         </div>
       </div>
     </div>
@@ -126,7 +148,7 @@
             <tr>
               <th class="border-right text-center">机器智能审核+人工审核</th>
               <th class="border-right text-center">
-                <%= link_to "按次阶梯价格", "https://developer.qiniu.com/censor/manual/4839/autocensor-and-manualcensor", target: "_blank", class: "cell-link" -%>                
+                <%= link_to "按次阶梯价格", "https://developer.qiniu.com/censor/manual/4839/autocensor-and-manualcensor", target: "_blank", class: "cell-link" -%>
               </th>
               <th class="text-center">
                 <%= link_to "特惠套餐包", "https://developer.qiniu.com/censor/manual/4840/auto-and-manual-package", target: "_blank", class: "cell-link" -%>
@@ -134,18 +156,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="info-container">
-        <h3>首次使用更可享&nbsp;<span class="text-warn text-huge">18&nbsp;万张</span></h3>
-        <h3>免费机器智能审核+人工审核额度</h3>
-        <p><%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-default btn-warn m-r m-b-xs" -%></p>
-      </div>
-      <div class="intro tip-intro">
-        <p class="desc"><%= I18n.t("views.welcome.censor.price.describe") -%></p>
       </div>
     </div>
   </div>
