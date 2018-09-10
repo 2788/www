@@ -35,84 +35,129 @@
       margin-bottom: 15px;
       font-size: 0.13rem;
     }
+
+    .hot-tip {
+      position: absolute;
+      top: 5px;
+      right: -5px;
+    }
   }
 }
 
 .features-censor-pro {
-  padding-bottom: 1.00rem;
+  padding-bottom: 0;
+
+  .censor-pro-container {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
 }
 
-.features-censor-adva {
+.features-censor-special {
+  margin-bottom: 1.00rem;
+  background-color: #557CED;
+
+  .intro {
+    .title {
+      color: #FFF;
+    }
+  }
+
   .thumbnail {
-    padding: 0.20rem;
-    background-color: #fff;
+    padding: 0;
     margin-bottom: 0.20rem;
 
-    h4 {
-      margin-top: 0.20rem;
-    }
-
-    p {
-      margin-top: 0.20rem;
-      margin-bottom: 0;
-    }
-  }
-}
-
-.features-censor-sup {
-  .border-right {
-    border-right: 2px solid #e5e5e5
-  }
-
-  .thumbnail {
-    min-height: 0;
-
     .caption {
-      padding-top: 0.30rem;
-      font-size: 0.16rem;
-      text-align: center;
+      position: absolute;
+      width: calc(100% - 30px);
+      top: 0;
+      padding: 0;
 
-      span {
-        padding: 0 0.20rem;
+      h2,
+      h4 {
+        color: #557CED;
+      }
+
+      h2 {
+        margin-top: 10%;
+        text-align: center;
+      }
+    }
+
+    .special-list {
+      width: calc(100% - 30px);
+      position: absolute;
+      bottom: 10%;
+
+      p {
+        margin: 6% 0;
+        text-align: center;
       }
     }
   }
 }
 
 .features-censor-scene {
-  .tab-pane {
-    p {
-      padding-top: 0.30rem;
-    }
-  }
+  padding-bottom: 1.00rem;
 
-  .client-row {
-    padding: 0.30rem 0;
+  .scene-row {
+    .scene-col {
+      padding: 0;
+      cursor: pointer;
 
-    h2 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
+      .hide-block {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-color: rgba(70, 158, 217, 0.9);
+        text-align: center;
+        opacity: 0;
+        display: block;
+        -webkit-transition: opacity .3s linear;
+        -moz-transition: opacity .3s linear;
+        transition: opacity .3s linear;
 
-    #cases-slider {
-      margin: 0;
-      max-height: 73px;
+        img {
+          margin-top: 13%;
+        }
 
-      .case {
-        height: 73px;
-        max-height: 73px;
+        p {
+          margin-top: 3%;
+          color: #FFF;
+        }
       }
 
-      .slick-arrow {
-        top: 42%;
-
-        &.slick-prev {
-          left: 0;
+      &:hover {
+        .hide-block {
+          opacity: 1;
         }
+      }
+    }
+  }
+}
 
-        &.slick-next {
-          right: 0;
-        }
+.features-censor-client {
+  #cases-slider {
+    margin: 0;
+    max-height: 100px;
+
+    .case {
+      height: 100px;
+      max-height: 100px;
+    }
+
+    .slick-arrow {
+      top: 44%;
+
+      &.slick-prev {
+        left: 0;
+      }
+
+      &.slick-next {
+        right: 0;
       }
     }
   }
@@ -128,58 +173,9 @@
       }
     }
   }
-
-  .info-container {
-    height: 3.00rem;
-    background-image: image-url("censor/banner-bottom.jpg") !important;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-    h3,
-    p {
-      position: relative;
-      top: 0.70rem;
-      text-align: center;
-    }
-
-    h3 {
-      color: #fff;
-    }
-
-    .text-warn {
-      color: #fbef12;
-    }
-
-    .text-huge {
-      font-size: 0.35rem;
-    }
-
-    p {
-      padding-top: 0.20rem;
-
-      .btn-warn {
-        background-color: #fbef12;
-      }
-    }
-  }
-
-  .tip-intro {
-    margin: 0.30rem 0.30rem 0;
-
-    .desc {
-      margin-bottom: 0;
-      font-size: 0.12rem;
-    }
-  }
 }
 
-@media (max-width:991px) {
-  .features-censor-sup {
-    .border-right {
-      border: none;
-    }
-  }
-
+@media (max-width: 991px) {
   .features-censor-price {
     .info-container {
       height: 2.50rem;
@@ -192,7 +188,54 @@
   }
 }
 
-@media (max-width:767px) {
+// 流程图样式控制
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features-censor-pro {
+    .censor-pro-container {
+      height: 5.10rem;
+
+      .img-container {
+        position: absolute;
+        width: 1200px;
+        left: 50%;
+        margin-left: -600px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-censor-pro {
+    .censor-pro-container {
+      height: 4.80rem;
+
+      .img-container {
+        position: absolute;
+        width: 1200px;
+        left: 50%;
+        margin-left: -600px;
+      }
+    }
+  }
+
+  .features-censor-special {
+    .caption {
+      h2 {
+        font-size: 0.25rem !important;
+      }
+
+      h4 {
+        font-size: 0.15rem !important;
+      }
+    }
+
+    .special-list {
+      bottom: 6% !important;
+    }
+  }
+}
+
+@media (max-width: 767px) {
   .hero-censor {
     .container {
       h1 {
@@ -215,6 +258,112 @@
       .product-link {
         font-size: 0.16rem;
       }
+
+      .hot-tip {
+        width: 20px;
+        position: absolute;
+        top: 4px;
+        right: -4px;
+      }
+    }
+  }
+
+  .features-censor-pro {
+    .censor-pro-container {
+      height: 5.90rem;
+
+      .img-container {
+        position: absolute;
+        width: 1000px;
+        left: 50%;
+        margin-left: -500px;
+      }
+    }
+  }
+
+  .features-censor-special {
+    .caption {
+      h2 {
+        font-size: 0.40rem !important;
+      }
+
+      h4 {
+        font-size: 0.30rem !important;
+      }
+    }
+
+    .special-list {
+      p {
+        margin: 8% 0 !important;
+        font-size: 0.24rem !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .features-censor-pro {
+    .censor-pro-container {
+      height: 4.40rem;
+
+      .img-container {
+        position: absolute;
+        width: 700px;
+        left: 50%;
+        margin-left: -350px;
+      }
+    }
+  }
+
+  .features-censor-special {
+    .caption {
+      h2 {
+        margin-top: 8% !important;
+        font-size: 0.30rem !important;
+      }
+
+      h4 {
+        font-size: 0.20rem !important;
+      }
+    }
+
+    .special-list {
+      p {
+        margin: 6% 0 !important;
+        font-size: 0.14rem !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .features-censor-pro {
+    .censor-pro-container {
+      height: 4.10rem;
+    }
+  }
+}
+
+@media (width: 768px) {
+  .features-censor-pro {
+    .censor-pro-container {
+      height: 6.60rem;
+    }
+  }
+
+  .features-censor-special {
+    .caption {
+      h2 {
+        font-size: 0.30rem !important;
+      }
+
+      h4 {
+        font-size: 0.20rem !important;
+      }
+    }
+
+    .special-list {
+      bottom: 10% !important;
     }
   }
 }
