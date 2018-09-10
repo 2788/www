@@ -81,6 +81,8 @@ $(document).ready ->
     if aduitRes.label == 1
       $imageViolate.show()
     else
+      # 修改审核图标的图片
+      $imagePass.removeClass('image-pass-xinggan')
       $imagePass.show()
     # 判断渲染违规项
     for item in aduitRes.details
@@ -92,6 +94,8 @@ $(document).ready ->
           else if item.label == 1
             $('#image-pulp').addClass('text-error')
             $('#image-pulp').find('.result-word').html('性感')
+            # 修改审核图标的图片
+            $imagePass.addClass('image-pass-xinggan')
         when 'terror'
           if item.label == 1
             $('#image-terror').addClass('text-error')
