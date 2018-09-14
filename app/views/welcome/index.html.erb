@@ -33,6 +33,23 @@
     </div>
   </div>
 
+  <div class="jumbotron hero hero-ess-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>边缘存储服务</h1>
+              <h1>监控视频边缘存储解决方案 <span class="text-warn">正式发布</span></h1>
+              <p>监控视频及图片就近存储、加速传输、倍速播放 <span class="text-warn">一键激活</span></p>
+            </div>
+            <%= link_to "查看详情", products_ess_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="jumbotron hero hero-edu-index">
     <div class="container">
       <div class="middle-container">
@@ -66,109 +83,6 @@
     </div>
   </div>
 
-  <div class="jumbotron hero hero-qvm-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>云主机服务 <span class="text-warn">重磅来袭</span></h1>
-              <p>多种 GPU 主机任选，助力 AI 训练、推理业务</span></p>
-            </div>
-            <%= link_to "立即选购", products_qvm_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-      <div class="right-image-container">
-        <%= image_tag "banner/banner-qvm-right-index.png", height: "100%", alt: "云主机服务" -%>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-rtn-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>实时音视频云</h1>
-              <p>基于&nbsp;<span class="text-warn">WebRTC</span>&nbsp;的一站式解决方案</p>
-              <p>零基础搭建实时音视频平台</p>
-            </div>
-            <%= link_to "免费使用", products_rtn_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-insight">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>智能日志管理平台 <span class="text-warn">重磅升级</span></h1>
-              <p>海量异构数据采集，秒级实时日志检索，高效智能业务洞察，企业数据统一管理</p>
-            </div>
-            <%= link_to "免费开通", products_insight_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-plsv">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h2>短视频
-                <span class="text-warn"> 0 元</span>体验包限量领取</h2>
-              <p>1.5M 最小包体，100+ 丰富功能，3 小时集成应用</p>
-            </div>
-            <%= link_to "立即领取", products_plsv_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-bannerIdentify">
-    <div class="container">
-      <div class="middle-container">
-        <div class="text-center">
-          <div class="banner-desc">
-            <h2 class="identification">
-              <span>对象存储</span>
-              <span class="text-warn">空间上传鉴黄</span>
-              <span>服务上线</span>
-            </h2>
-            <p>自动对新上传的图片作鉴黄操作 基于深度学习赋能用户高效审核</p>
-          </div>
-          <%= link_to "查看详情", "https://developer.qiniu.com/kodo/manual/4431/bucket-audit", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          <p class="tips">保障内容安全 降低违规风险</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-bannerPlayer">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h2>七牛云播放器</h2>
-              <p>秒开 <span class="text-warn">200 ms</span>，包体最小至 <span class="text-warn">400 KB</span>，千万日活验证</p>
-            </div>
-            <%= link_to "免费使用", products_player_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 <% else %>
   <div class="jumbotron hero en">
