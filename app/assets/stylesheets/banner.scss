@@ -559,7 +559,7 @@
     background-image: image-url("banner/banner-ess-index.jpg");
 
     .middle-container {
-      top: 38%;
+      top: 35%;
       text-align: center;
 
       .banner-desc {
@@ -918,7 +918,7 @@
 
     &.hero-ess-index {
       .middle-container {
-        top: 40% !important;
+        top: 38% !important;
 
         .banner-desc {
           h1 {
@@ -959,7 +959,7 @@
 
     &.hero-ess-index {
       .middle-container {
-        top: 40% !important;
+        top: 38% !important;
 
         .banner-desc {
           h1 {
@@ -970,6 +970,17 @@
             font-size: 0.16rem !important;
           }
         }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .jumbotron.hero {
+
+    &.hero-ess-index {
+      .middle-container {
+        top: 30% !important;
       }
     }
   }

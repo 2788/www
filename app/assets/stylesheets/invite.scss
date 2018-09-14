@@ -64,10 +64,14 @@
 .invite-table {
   padding-top: .38rem;
   font-size: .18rem;
+  .container {
+    overflow-x: auto;
+  }
   table {
     font-family: PingFangSC-Regular;
     color: #104261;
     border: 1px solid #2ba2f0 !important;
+    min-width: 940px;
     &>tbody>tr:nth-of-type(even) {
       background-color: rgba(43, 162, 240, .17)
     }
@@ -98,6 +102,16 @@
             left: 0;
             top: .09rem;
           }
+        }
+        .question-mark {
+          margin-top: -18px;
+          cursor: pointer;
+        }
+        .tooltip-inner {
+          background-color: #2ba2f0 !important;
+        }
+        .tooltip-arrow {
+          border-right-color: #2ba2f0 !important;
         }
       }
     }
@@ -224,3 +238,4 @@
     }
   }
 }
+
