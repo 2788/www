@@ -1267,10 +1267,10 @@ zh-CN:
         describe1: "精准识别色情、暴恐、敏感人物等内容"
         describe2: "新用户可享 18 万次免费调用额度，另有更多超值套餐可供选择"
         process:
-          title: "明镜这样保护你"
+          title: "明瞳这样保护你"
           image: "censor/process-image.jpg"
         special:
-          title: "明镜让你拥有"
+          title: "明瞳让你拥有"
           cols:
             - image: "censor/image-special-bg.png"
               title: "零风险"
@@ -1299,7 +1299,7 @@ zh-CN:
         demo:
           title: "在此体验"
         scene:
-          title: "明镜被广泛应用于"
+          title: "明瞳被广泛应用于"
           row1:
             - image: "censor/image-shipinpingtai.jpg"
               icon: "censor/icon-shipinpingtai.png"
@@ -1327,7 +1327,7 @@ zh-CN:
               icon: "censor/icon-sheyingtongxun.png"
               title: "摄影通讯"
         client:
-          title: "他们选择相信明镜"
+          title: "他们选择相信明瞳"
           items:
             - title: "Faceu"
               image: "censor/client-faceu.png"
