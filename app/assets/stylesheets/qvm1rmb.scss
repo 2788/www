@@ -1,7 +1,51 @@
+// 由于 qvm1rmb 和 qvm0rmb 这两个页面的样式是统一的，所以共用这个 scss 文件里定义的样式
+
 .hero-qvm1rmb {
   background-color: #161295;
   background-image: image-url("banner/banner-qvm1rmb.png") !important;
   margin-bottom: 0 !important;
+}
+
+.features-qvm1rmb-nav {
+  padding: 0.50rem 0 0 0;
+  background-color: transparent !important;
+
+  .container {
+    padding: 0;
+
+    .nav-qvm1rmb {
+      li {
+        a {
+          height: 1.20rem;
+          padding: 0 !important;
+          font-size: 0.40rem;
+          color: rgba(255, 255, 255, 0.05) !important;
+          line-height: 1.20rem;
+          border-radius: 0.10rem !important;
+          background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .enterprise-item {
+          margin-right: 0.10rem;
+        }
+
+        .person-item {
+          margin-left: 0.10rem;
+        }
+
+        &:hover,
+        &.active {
+          a {
+            color: #FFF !important;
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+    }
+  }
 }
 
 .page-body-qvm1rmb {
@@ -38,6 +82,19 @@
         left: calc(50% - 45px);
         background-color: #FFE300;
         color: #333;
+      }
+    }
+  }
+
+  .more-model-btn {
+    position: relative;
+    top: 0.40rem;
+    text-align: right;
+    a {
+      color: #FFF;
+      font-size: 0.18rem;
+      &:hover {
+        color: #00A0DE;
       }
     }
   }
@@ -178,6 +235,22 @@
 }
 
 @media (max-width: 767px) {
+  .features-qvm1rmb-nav {
+    .nav-qvm1rmb {
+      li {
+        width: 1%;
+
+        .enterprise-item {
+          margin-left: 10px;
+        }
+
+        .person-item {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
   .features-qvm1rmb-model {
     .row {
       .col-model {

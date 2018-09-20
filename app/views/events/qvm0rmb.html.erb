@@ -6,58 +6,62 @@
   <div class="features features-qvm1rmb-nav">
     <div class="container">
       <ul class="nav nav-tabs nav-justified points-bar nav-qvm1rmb">
-        <li>
+        <li class="active">
           <%= link_to "企业版", "/events/qvm0rmb", class: "enterprise-item", target: "_self" -%>
         </li>
-        <li class="active">
+        <li>
           <%= link_to "个人版", "/events/qvm1rmb", class: "person-item", target: "_self" -%>
         </li>
       </ul>
     </div>
   </div>
 
-  <%# 个人优惠 %>
+  <%# 企业优惠 %>
   <div class="page-body-qvm1rmb">
     <%# model part %>
     <div class="features features-qvm1rmb features-qvm1rmb-model">
       <div class="container">
         <div class="intro">
-          <%= image_tag "qvmevent/title-gerenyouhuijixing.png", alt: "优惠机型", width: 250 -%>
+          <%= image_tag "qvmevent/title-qiyeyouhuijixing.png", alt: "优惠机型", width: 250 -%>
         </div>
 
         <div class="row">
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
-            <%= image_tag "qvmevent/model-gongwangdaikuan-person.png", alt: "公网带宽", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=onermb", target: "_blank", class: "btn" -%>
+            <%= image_tag "qvmevent/model-gongxiangjisuan-qiye-1.png", alt: "共享计算-1", width: "100%" -%>
+            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
-            <%= image_tag "qvmevent/model-tufaxingneng-person-1.png", alt: "突发性能实例-1", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc2m1.nano", target: "_blank", class: "btn" -%>
+            <%= image_tag "qvmevent/model-gongxiangjisuan-qiye-2.png", alt: "共享计算-2", width: "100%" -%>
+            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
-            <%= image_tag "qvmevent/model-tufaxingneng-person-2.png", alt: "突发性能实例-2", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc1m1.small", target: "_blank", class: "btn" -%>
+            <%= image_tag "qvmevent/model-gongxiangtongyong-qiye.png", alt: "共享通用", width: "100%" -%>
+            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
-            <%= image_tag "qvmevent/model-gongxiangjiben-person-1.png", alt: "共享基本型-1", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.xn4.small", target: "_blank", class: "btn" -%>
+            <%= image_tag "qvmevent/model-jisuanji-qiye.png", alt: "计算机", width: "100%" -%>
+            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
-            <%= image_tag "qvmevent/model-tufaxingneng-person-3.png", alt: "突发性能实例-3", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc1m2.small", target: "_blank", class: "btn" -%>
+            <%= image_tag "qvmevent/model-tufaxingneng-qiye-1.png", alt: "突发性能实例-1", width: "100%" -%>
+            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
-            <%= image_tag "qvmevent/model-gongxiangjiben-person-2.png", alt: "共享基本型-2", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.n4.small", target: "_blank", class: "btn" -%>
+            <%= image_tag "qvmevent/model-tufaxingneng-qiye-2.png", alt: "突发性能实例-2", width: "100%" -%>
+            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn" -%>
           </div>
+        </div>
+
+        <div class="more-model-btn">
+          <%= link_to "查看更多机型 >>>", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank" -%>
         </div>
 
         <div class="row qvm1rmb-progress-row">
           <%# title %>
-          <h5 class="qvm1rmb-progress-title person-title"></h5>
+          <h5 class="qvm1rmb-progress-title enterprise-title"></h5>
           <%# days left %>
-          <div class="qvm1rmb-progress-tip person-tip"></div>
-          <div class="qvm1rmb-progress-bar person-bar">
+          <div class="qvm1rmb-progress-tip enterprise-tip"></div>
+          <div class="qvm1rmb-progress-bar enterprise-bar">
             <div class="progress">
               <div class="progress-bar" role="progressbar"
                   aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0"></div>
@@ -125,29 +129,23 @@
 
               <div class="rule-item">
                 <h4>一. 活动时间</h4>
-                <p>2018年9月5日 — 2018年12月5日</p>
+                <p>2018年9月18日 — 2018年10月17日（每天限量50台）</p>
               </div>
 
               <div class="rule-item">
                 <h4>二. 活动规则</h4>
-                <p>1. 活动截止时间之前完成实名认证的用户，激活后下单购买指定预付费机型，选择包月购买，订单价格自动优惠至 1 元</p>
-                <p>2. 优惠订单价格包括：指定机型主机 + 40G 系统盘（高效云盘类型）</p>
-              </div>
-
-              <div class="rule-item">
-                <h4>三. 活动限制</h4>
-                <p>1. 同一身份认证的用户只能享有一次优惠（主机和带宽可分别享有），OEM父子账号的子账号无法享受活动优惠</p>
-                <p>2. 订单下单时，需选择指定活动机型、时长为 1个月及以上（超过 1个月自动减免首月价格）</p>
-                <p>3. 订单下单时，如果系统盘选择其他配置，优惠金额按照 40G 高效云盘自动减免</p>
-                <p>4. 订单下单时，需开启 “到期自动续费” 功能（开通后用户可自主关闭）</p>
-                <p>5. 仅支持中国大陆机型</p>
-                <p>6. 本次活动限制名额为 1000</p>
+                <p>1. 本活动面向七牛云主机官网已注册且完成实名认证的企业用户</p>
+                <p>2. 本活动可以0元价领取指定七牛云机型</p>
+                <p>3. 本次活动区域限制在中国大陆地区</p>
+                <p>4. 由于本活动为0元购机活动，暂不支持退款</p>
+                <p>5. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+                <p>6. 所有参加本活动的用户，均视为认可并同意遵守《七牛云用户协议》</p>
+                <p>6. 活动最终解释权在法律允许范围内归七牛云所有</p>
               </div>
 
               <div class="rule-item">
                 <h4>四. 活动支持</h4>
-                <p>1. 如您在活动或使用过程中有任何疑问，请<%= link_to "点击此处", "https://support.qiniu.com/tickets/category", class: "email-box", target: "_blank" -%>提交工单或发送邮件至 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"email-box" -%></p>
-                <p>2. 本活动最终解释权归七牛云所有</p>
+                <p>如您在活动或使用过程中有任何疑问，请<%= link_to "点击此处", "https://support.qiniu.com/tickets/category", class: "email-box", target: "_blank" -%>提交工单或发送邮件至 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"email-box" -%></p>
               </div>
             </div>
           </div>
@@ -157,3 +155,5 @@
   </div>
 
 </div>
+
+
