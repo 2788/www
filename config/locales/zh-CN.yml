@@ -1263,8 +1263,8 @@ zh-CN:
                 link: "https://developer.qiniu.io/insight/api/4747/workflow-api"
                 target: "_blank"
       censor:
-        subtitle: "无惧尘埃 还你明净 双重审核 无忧运营"
-        describe1: "精准识别色情、暴恐、敏感人物等内容"
+        subtitle: "双重审核 无忧运营"
+        describe1: "七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物等内容"
         describe2: "新用户可享 18 万次免费调用额度，另有更多超值套餐可供选择"
         process:
           title: "明瞳这样保护你"
@@ -1581,7 +1581,7 @@ zh-CN:
           col:
             - title: "弹性"
               icon: "qvm/icon-tanxing.png"
-              desc: "千台主机一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择。"
+              desc: "千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择。"
             - title: "稳定"
               icon: "qvm/icon-wending.png"
               desc: "高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便。"
@@ -1590,7 +1590,7 @@ zh-CN:
               desc: "专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行。"
             - title: "易用"
               icon: "qvm/icon-yiyong.png"
-              desc: "上千台主机多重实时管理，一键部署，快速复制环境，轻松扩展。"
+              desc: "上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展。"
             - title: "可拓展"
               icon: "qvm/icon-ketuozhan.png"
               desc: "无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案。"
@@ -3075,7 +3075,7 @@ zh-CN:
 
         - name: censor
           label: 内容安全
-          desc: 机器+人工一站式内容审核服务，最高标准保障内容安全
+          desc: 七牛云人工智能实验室提供的机器+人工一站式内容审核服务
           isNew: true
         
         - name: insight
