@@ -649,10 +649,26 @@
     background-image: image-url("banner/banner-qvm1rmb-index.jpg");
 
     .middle-container {
-      top: 75%;
+      top: 45%;
       text-align: center;
 
+      .banner-desc {
+        h1 {
+          margin: 0.20rem 0;
+          font-size: 1.00rem;
+          font-weight: 600;
+        }
+
+        h2 {
+          margin: 0.10rem 0;
+          font-size: 0.40rem;
+          font-weight: 600;
+          text-shadow: none;
+        }
+      }
+
       .btn-banner {
+        margin-top: 0.20rem;
         color: #530B7B;
         border: none;
         background-color: #FFE300;
@@ -911,8 +927,8 @@
     }
 
     &.hero-qvm1rmb-index {
-      .middle-container {
-        top: 77%;
+      .btn-banner {
+        margin-top: 0.10rem !important;
       }
     }
 

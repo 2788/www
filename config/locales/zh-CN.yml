@@ -905,9 +905,17 @@ zh-CN:
                     desc: "推出全自研内核跨平台多媒体播放器"
                     icon: "icon-img duomeitibofangqi"
                   right:
-                    time: ""
-                    desc: ""
-                    icon: ""
+                    time: "2018 年 6 月"
+                    desc: "七牛云人工智能实验室荣获 ActivityNet 2018 竞赛季军"
+                    icon: "icon-img acmmmlsvc"
+                - left:
+                    time: "2018 年 7 月"
+                    desc: "推出一站式 AI 内容安全产品「明瞳 2.0」"
+                    icon: "icon-img mingtong"
+                  right:
+                    time: "2018 年 9 月"
+                    desc: "与复旦大学合作成立「复旦-七牛深度学习联合实验室」"
+                    icon: "icon-img lianheshiyanshi"
       pandora:
         title: "大数据平台"
         desc: "Pandora 是七牛云的大数据平台，提供简单、高效、开放的一站式大数据服务。"
