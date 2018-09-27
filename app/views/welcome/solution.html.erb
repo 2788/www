@@ -61,6 +61,7 @@
     </div>
   </div>
 </div>
+
 <div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="data">
@@ -99,6 +100,7 @@
     </div>
   </div>
 </div>
+
 <div class="features feature-solution">
   <div class="container">
     <div class="row row-solution" id="plsv">
@@ -161,6 +163,9 @@
     </div>
   </div>
 </div>
+
+<%# BO-5120 暂时隐藏 智能云相册解决方案 tab页 %>
+<% if false %>
 <div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="album">
@@ -219,10 +224,12 @@
     </div>
   </div>
 </div>
-<div class="features feature-solution">
+<% end %>
+
+<div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="intelligence">
-      <div class="col-sm-8 col-solution right-line">
+      <div class="col-sm-8 col-solution left-line">
         <h2 class="icon140 icon-intelligence"><%= I18n.t("views.welcome.solution.feature5.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature5.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature5.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
@@ -273,10 +280,11 @@
     </div>
   </div>
 </div>
-<div class="features feature-solution light-bkcolor">
+
+<div class="features feature-solution">
   <div class="container">
     <div class="row row-solution" id="media">
-      <div class="col-sm-8 col-solution  left-line">
+      <div class="col-sm-8 col-solution right-line">
         <h2 class="icon140 icon-media"><%= I18n.t("views.welcome.solution.feature6.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature6.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature6.btn"), products_newmedia_path, class: "more" -%></p>
@@ -325,10 +333,11 @@
     </div>
   </div>
 </div>
-<div class="features feature-solution">
+
+<div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="security">
-      <div class="col-sm-8 col-solution right-line">
+      <div class="col-sm-8 col-solution left-line">
         <h2 class="icon140 icon-security"><%= I18n.t("views.welcome.solution.feature7.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature7.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature7.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
@@ -377,10 +386,11 @@
     </div>
   </div>
 </div>
-<div class="features feature-solution light-bkcolor">
+
+<div class="features feature-solution">
   <div class="container">
     <div class="row row-solution" id="internet">
-      <div class="col-sm-8 col-solution left-line">
+      <div class="col-sm-8 col-solution right-line">
         <h2 class="icon140 icon-internet"><%= I18n.t("views.welcome.solution.feature8.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature8.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature8.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
@@ -444,11 +454,11 @@
     </div>
   </div>
 </div>
-<div class="features feature-solution">
 
+<div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="qualityctrl">
-      <div class="col-sm-8 col-solution right-line">
+      <div class="col-sm-8 col-solution left-line">
         <h2 class="icon140 icon-qualityctrl"><%= I18n.t("views.welcome.solution.feature9.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature9.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature9.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal"} -%></p>
