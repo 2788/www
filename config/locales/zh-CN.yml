@@ -2317,6 +2317,26 @@ zh-CN:
                 - • 域名型 DV SSL 证书免费申请
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://portal.qiniu.com/certificate/apply"
+            - title: "云主机"
+              desc: "提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
+              class: "background-frame"
+              id: "free-events-frame"
+              morelink: "https://www.qiniu.com/products/qvm"
+              details:
+                - • 高达 4C 8G 的专业云服务器 0 元起
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/qvm/vm/instance/create"
+            - title: "云镜像"
+              desc: "提供启动云主机实例所需的所有信息，包括特定操作系统和用户自定义镜像系统"
+              class: "background-mirror"
+              id: "free-events-mirror"
+              morelink: "https://developer.qiniu.com/qvm/manual/4292/qvm-mirror-overview"
+              details:
+                - • 快速灵活迁移部署的工具
+                - • 支持多副本镜像
+                - • 免费
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/qvm/vm/image"
         recommend:
           title: "活动推荐"
           cols:
