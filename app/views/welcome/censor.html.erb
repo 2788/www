@@ -8,10 +8,6 @@
           <p><%= I18n.t("views.welcome.censor.describe1") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
-            <a class="btn btn-lg btn-hollow m-r m-b-xs" style="position: relative;" href="https://portal.qiniu.com/financial/phsource" target="_blank">
-              特惠资源包
-              <%= image_tag "censor/icon-hot.png", class: "hot-tip", alt: "hot", title: "hot", width: 30 -%>
-            </a>
             <%= link_to "产品接入文档", "https://developer.qiniu.com/censor/manual/4829/censor-introduction", target: "_blank", class: "product-link underline" -%>
           </div>
           <p><%= I18n.t("views.welcome.censor.describe2") -%></p>

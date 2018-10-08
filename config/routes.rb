@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     
     resources 'events', only: [:index] do
       collection do
-        get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', '7event', 'qvm1rmb', 'qvm0rmb'
+        get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', 'qvm1rmb', 'qvm0rmb'
       end
     end
 
