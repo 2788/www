@@ -3075,8 +3075,8 @@ zh-CN:
       list:
         - name: kodo
           label: 对象存储
-          desc: 高可用、易扩展、低成本、一站式、
-          highlight: 支持边缘存储
+          desc: 高可用、易扩展、低成本、一站式、支持边缘存储
+          isNew: true
 
         - name: fusion
           label: 融合 CDN
