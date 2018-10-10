@@ -6,11 +6,22 @@
   position: fixed;
   top: 50%;
   right: 8px;
-  .free-icon {
+  .helper-image {
     position: relative;
     left: -1px;
     img {
       width: 44px;
+    }
+    .hover-image {
+      display: none;
+    }
+    &:hover {
+      .normal-image {
+        display: none;
+      }
+      .hover-image {
+        display: block;
+      }
     }
   }
   #waiter {

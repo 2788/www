@@ -676,6 +676,15 @@
     }
   }
 
+  &.hero-kodo-pili-event {
+    background-image: image-url("banner/banner-kodo-pili-event.jpg");
+    .middle-container {
+      top: auto;
+      bottom: 20%;
+      text-align: center;
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;
@@ -929,6 +938,13 @@
     &.hero-qvm1rmb-index {
       .btn-banner {
         margin-top: 0.10rem !important;
+      }
+    }
+
+    &.hero-kodo-pili-event {
+      .middle-container {
+        top: auto;
+        bottom: 14%;
       }
     }
 
