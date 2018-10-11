@@ -36,7 +36,7 @@
   }
 }
 
-.prices-page{
+.prices-page {
   .jumbotron.hero {
     height: 4.65rem;
   }
@@ -52,7 +52,7 @@
 }
 
 
-.feature-price-nav{
+.feature-price-nav {
   margin-top: -0.30rem;
   padding-top: 0.28rem;
   padding-bottom: 25px;
@@ -76,6 +76,24 @@
     &:focus{
       background-color: transparent;
       outline-style: none;
+    }
+  }
+}
+
+.feature-price {
+  .container {
+    .tip-text {
+      margin: 0.10rem 0 0.20rem 0;
+      .strong-text {
+        color: #000;
+        font-weight: 600;
+      }
+      a {
+        color: #00A0DE;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
