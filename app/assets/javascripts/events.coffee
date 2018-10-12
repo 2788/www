@@ -17,5 +17,4 @@ $(document).ready ->
   # 点击完成恢复
     $('#video-play-modal').on 'hidden.bs.modal',->
       $(".btn-icon").removeClass('btn-icon-visited')
-      # console.log $('#edu-video')
       $('#edu-video').get(0).pause()

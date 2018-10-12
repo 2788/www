@@ -38,6 +38,7 @@
 #= require censor
 #= require 7event
 #= require qvm1rmb
+#= require rtn
 
 #= require uuid
 

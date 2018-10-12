@@ -1,15 +1,188 @@
+<%# 中文和英文版页面区分开 %>
+<% if I18n.t("views.language") == "zh" -%>
+
+<%# 中文版页面 %>
 <div class="jumbotron hero hero-rtn">
   <div class="container">
     <div class="middle-container">
       <div class="row">
-        <div class="col-xs-8">
-          <h2 class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
-          <p class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.welcome.rtn.banner.desc") -%></p>
-          <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <% I18n.t("views.welcome.rtn.action").each do |event| %>
-              <%= link_to event[:title], event[:link], target: event[:target], class: event[:class] -%>
-            <% end %>
+        <div class="col-xs-12">
+          <h2><%= I18n.t("views.welcome.rtn.banner.title") -%></h2>
+          <p><%= I18n.t("views.welcome.rtn.banner.desc1") -%></p>
+          <p><%= I18n.t("views.welcome.rtn.banner.desc2") -%></p>
+          <div class="actions">
+            <%= link_to "申请试用", "https://jinshuju.net/f/LSkxxL", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <div class="dropdown" id="rtn-demo-dropdown">
+              <a class="btn btn-lg btn-default m-r m-b-xs" data-toggle="dropdown" role="button" href="#" target="_blank" aria-haspopup="true" aria-expanded="false">
+                <%= I18n.t("views.language") != "zh" ? "Try Now" : "在线体验" -%>
+                <%= image_tag "rtn/icon-arrow-down.png", class: "icon-arrow-down" -%>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="rtn-demo-dropdown">
+                <li>
+                  iOS
+                  <%= image_tag "rtn/icon-qrcode-ios.png", class: "icon-qrcode" -%>
+                </li>
+                <li>
+                  Android
+                  <%= image_tag "rtn/icon-qrcode-android.png", class: "icon-qrcode" -%>
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%# 背景 video 节点 %>
+  <video class="rtn-banner-video"
+         src="https://mars-assets.qnssl.com/rtn-product-page-video"
+         poster="https://mars-assets.qnssl.com/rtn-product-page-poster"
+         loop="true"
+         muted="true"
+         autoplay="true"
+         autobuffer="true">
+    your browser does not support the video tag
+  </video>
+</div>
+
+<div class="features features-rtn-structure <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.welcome.rtn.structure.title") -%></h2>
+    </div>
+    <div class="image-container">
+      <%= image_tag I18n.t("views.welcome.rtn.structure.image"), width: "80%" -%>
+    </div>
+    <div class="row">
+      <% I18n.t("views.welcome.rtn.structure.content").each do |item| -%>
+        <div class="col-xs-6">
+          <h2 class="title"><%= item[:title] -%></h2>
+          <p class="desc"><%= item[:desc] -%></p>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<div class="features features-rtn-scene feature-color <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+  <div class="container">
+    <div class="intro">
+      <h3 class="title"><%= I18n.t("views.welcome.rtn.scene.title") -%></h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <% I18n.t("views.welcome.rtn.scene.content").each do |item| -%>
+          <div class="scene-item">
+            <h4><%= item[:title] -%></h4>
+            <p><%= item[:desc] -%></p>
+          </div>
+        <% end -%>
+        <div class="btn-container">
+        <%= link_to "立即咨询", "https://jinshuju.net/f/LSkxxL", target: "_blank", class: "btn btn-lg btn-primary m-r m-b-xs" -%>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xs-12 image-container">
+        <% I18n.t("views.welcome.rtn.scene.images").each do |item| -%>
+          <div class="image-item <%= item[:class] -%>">
+            <%= image_tag item[:image], width: "100%" -%>
+          </div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-rtn-special <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+  <%= image_tag I18n.t("views.welcome.rtn.special.image"), width: "100%" -%>
+  <div class="special-item special-right">
+    <h2 class="title"><%= I18n.t("views.welcome.rtn.special.right.title") -%></h2>
+    <% I18n.t("views.welcome.rtn.special.right.content").each do |item| -%>
+      <h4><%= item[:title] -%></h4>
+      <p><%= item[:desc] -%></p>
+    <% end -%>
+  </div>
+  <div class="special-item special-left">
+    <h2 class="title"><%= I18n.t("views.welcome.rtn.special.left.title") -%></h2>
+    <% I18n.t("views.welcome.rtn.special.left.content").each do |item| -%>
+      <h4><%= item[:title] -%></h4>
+      <p><%= item[:desc] -%></p>
+    <% end -%>
+  </div>
+</div>
+
+<div class="features features-rtn-serve feature-color">
+  <div class="container">
+    <div class="intro">
+      <h3 class="title"><%= I18n.t("views.welcome.rtn.serve.title") -%></h3>
+    </div>
+    <ul class="rtn-serve">
+      <% I18n.t("views.welcome.rtn.serve.content").each do |event| -%>
+        <li>
+          <div class="active cont">
+            <%= image_tag event[:active_img] -%>
+            <div>
+              <p class="title <%= I18n.t("views.language") != "zh" ? "en-title" : "" -%>"><%= event[:title] -%></p>
+              <p class="desc <%= I18n.t("views.language") != "zh" ? "en-desc" : "" -%>"><%= event[:desc] -%></p>
+            </div>
+          </div>
+          <div class="normal cont">
+            <%= image_tag event[:img] %>
+            <p class="title <%= I18n.t("views.language") != "zh" ? "en-title" : "" -%>"><%= event[:title] -%></p>
+          </div>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
+</div>
+
+<div class="features features-less <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <h2 class="title">产品相关</h2>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-4 col-xs-4">
+            <h4>常用文档</h4>
+            <ul class="links-list">
+              <li><%= link_to "产品简介", "https://developer.qiniu.com/rtn/manual/4373/cloud-real-time-audio-and-video-interaction", target: "_blank", title: "产品简介" -%></li>
+              <li><%= link_to "核心功能", "https://developer.qiniu.com/rtn/manual/4358/function-is-introduced", target: "_blank", title: "核心功能" -%></li>
+              <li><%= link_to "接入流程", "https://developer.qiniu.com/rtn/manual/4359/access-to-the-process", target: "_blank", title: "接入流程" -%></li>
+              <li><%= link_to "SDK 下载", "https://developer.qiniu.com/rtn/sdk/4330/download-the-sdk", target: "_blank", title: "SDK 下载" -%></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-xs-4">
+            <h4>开发手册</h4>
+            <ul class="links-list">
+              <li><%= link_to "Android 开发手册", "https://developer.qiniu.com/rtn/sdk/4351/summary-of-the-android-sdk", target: "_blank", title: "Android 开发手册" -%></li>
+              <li><%= link_to "iOS 开发手册", "https://developer.qiniu.com/rtn/sdk/4379/an-overview-of-iOS-SDK", target: "_blank", title: "iOS 开发手册" -%></li>
+              <li><%= link_to "Web 开发手册", "https://developer.qiniu.com/rtn/sdk/4412/description-of-web-sdk", target: "_blank", title: "Web 开发手册" -%></li>
+              <li><%= link_to "服务端开发手册", "https://developer.qiniu.com/rtn/sdk/4354/the-server-sdk-development-manual", target: "_blank", title: "服务端开发手册" -%></li>
+            </ul>
+          </div>
+          <div class="col-sm-4 col-xs-4">
+            <h4>其他</h4>
+            <ul class="links-list">
+              <li><%= link_to "Demo 体验及源码下载", "https://developer.qiniu.io/rtn/manual/4374/the-demo-experience", target: "_blank", title: "Demo 体验及源码下载" -%></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% else -%>
+
+<%# 英文版页面 %>
+<div class="jumbotron hero hero-rtn">
+  <div class="container">
+    <div class="middle-container en-version">
+      <div class="row">
+        <div class="col-xs-8">
+          <h2 class="en-version"><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
+          <p class="en-version"><%= I18n.t("views.welcome.rtn.banner.desc") -%></p>
         </div>
         <div class="col-xs-4 hidden-xs">
           <div class="right-mask-banner">
@@ -22,26 +195,26 @@
 </div>
 
 
-<div class="features features-suspension">
+<div class="features features-suspension features-rtn-suspension">
   <div class="container">
     <div class="suspension">
       <div class="row rtn-row">
-        <% I18n.t("views.welcome.rtn.specialty").each do |event| %>
+        <% I18n.t("views.welcome.rtn.specialty").each do |event| -%>
           <div class="col-sm-3 col-xs-6 col-clear">
             <a href="javascript:;" class="suspension-item rtn-specialty">
-              <%= image_tag event[:img] %>
+              <%= image_tag event[:img] -%>
               <div class="desc">
                 <p><%= event[:title] -%></p>
               </div>
             </a>
           </div>
-        <% end %>
+        <% end -%>
       </div>
     </div>
   </div>
 </div>
 
-<div class="features features-suspension-next rtn-suspension-next">
+<div class="features features-suspension-next features-rtn-suspension-next">
   <div class="intro rtn-network-title">
     <h3 class="title"><%= I18n.t("views.welcome.rtn.scheme.title") -%></h3>
     <p class="desc"><%= I18n.t("views.welcome.rtn.scheme.desc") -%></p>
@@ -60,7 +233,7 @@
   </div>
 </div>
 
-<div class="features feature-color">
+<div class="features feature-color features-rtn-serve">
   <div class="container">
     <div class="intro">
       <h3 class="title"><%= I18n.t("views.welcome.rtn.serve.title") -%></h3>
@@ -86,7 +259,7 @@
   </div>
 </div>
 
-<div class="features features-scene">
+<div class="features features-scene features-rtn-scene">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.welcome.rtn.scene.title") %></h2>
@@ -122,7 +295,7 @@
 </div>
 
 
-<div class="features feature-color">
+<div class="features feature-color features-rtn-demo">
   <div class="container">
     <div class="intro">
       <h3 class="title"><%= I18n.t("views.welcome.rtn.demo.title") -%></h3>
@@ -145,40 +318,4 @@
   </div>
 </div>
 
-<div class="features features-less tab-content-products <%= I18n.t("views.language") != "zh" ? "d-none" : "" %>">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-2">
-        <h2 class="title">产品相关</h2>
-      </div>
-      <div class="col-sm-10">
-        <div class="row">
-          <div class="col-sm-4 col-xs-4">
-            <h4>常用文档</h4>
-            <ul class="links-list">
-              <li><%= link_to "产品简介", "https://developer.qiniu.com/rtn/manual/4373/cloud-real-time-audio-and-video-interaction", target: "_blank", title: "产品简介" -%></li>
-              <li><%= link_to "核心功能", "https://developer.qiniu.com/rtn/manual/4358/function-is-introduced", target: "_blank", title: "核心功能" -%></li>
-              <li><%= link_to "接入流程", "https://developer.qiniu.com/rtn/manual/4359/access-to-the-process", target: "_blank", title: "接入流程" -%></li>
-              <li><%= link_to "SDK 下载", "https://developer.qiniu.com/rtn/sdk/4330/download-the-sdk", target: "_blank", title: "SDK 下载" -%></li>
-            </ul>
-          </div>
-          <div class="col-sm-4 col-xs-4">
-            <h4>开发手册</h4>
-            <ul class="links-list">
-              <li><%= link_to "Android 开发手册", "https://developer.qiniu.com/rtn/sdk/4351/summary-of-the-android-sdk", target: "_blank", title: "Android 开发手册" -%></li>
-              <li><%= link_to "iOS 开发手册", "https://developer.qiniu.com/rtn/sdk/4379/an-overview-of-iOS-SDK", target: "_blank", title: "iOS 开发手册" -%></li>
-              <li><%= link_to "Web 开发手册", "https://developer.qiniu.com/rtn/sdk/4412/description-of-web-sdk", target: "_blank", title: "Web 开发手册" -%></li>
-              <li><%= link_to "服务端开发手册", "https://developer.qiniu.com/rtn/sdk/4354/the-server-sdk-development-manual", target: "_blank", title: "服务端开发手册" -%></li>
-            </ul>
-          </div>
-          <div class="col-sm-4 col-xs-4">
-            <h4>其他</h4>
-            <ul class="links-list">
-              <li><%= link_to "Demo 体验及源码下载", "https://developer.qiniu.io/rtn/manual/4374/the-demo-experience", target: "_blank", title: "Demo 体验及源码下载" -%></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<% end -%>
