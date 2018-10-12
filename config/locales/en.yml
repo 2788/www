@@ -529,15 +529,6 @@ en:
           title: "Real-time Video Communication Service"
           desc: "Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast."
           icon: "sdk/img-banner.png"
-        action:
-          - title: "Apply for Beta Version"
-            link: "https://jinshuju.net/f/LSkxxL"
-            target: "_blank"
-            class: "btn btn-lg btn-default m-r m-b-xs"
-          - title: "Try Now"
-            link: "https://demo-rtc.qnsdk.com/"
-            target: "_blank"
-            class: "btn btn-lg btn-hollow m-b-xs"
         specialty:
           - title: 150ms Global latency
             img: sdk/icon-pingjunyanchi.png
@@ -623,7 +614,7 @@ en:
               href: "#tab-usage-section-5"
           sections:
             - id: "tab-usage-section-1"
-              class: "tab-pane active"
+              class: "tab-pane fade in active"
               icon: "sdk/img-shejiao.png"
               title: "Social Contact"
               desc: "Interactions with microphones between hosts or between hosts and audience are supported. Functions, like face beautifying, filters, eyes enlarging and face thinning, are offered for entertaining interactions."
@@ -633,7 +624,7 @@ en:
                 - live broadcasting in Changba and 
                 - talk shows
             - id: "tab-usage-section-2"
-              class: "tab-pane"
+              class: "tab-pane fade in"
               icon: "sdk/img-huiyi.png"
               title: "Interactive Conferences"
               desc: "Both online communication of small teams and large-scale online conferences are supported. Applications similar to WebEx can be easily produced with the real-time audio& video interaction technology of Qiniu."
@@ -644,7 +635,7 @@ en:
                 - large-scale live conferences and 
                 - tele/audio conferences
             - id: "tab-usage-section-3"
-              class: "tab-pane"
+              class: "tab-pane fade in"
               icon: "sdk/img-yiliao.png"
               title: "Telemedicine"
               desc: "Remote multi-party video consultations are supported, which breaks restrictions in medical resources of different regions and in systems as well as platforms so that the flexibility in time and regions of doctors and patients is improved and diagnosis costs are reduced."
@@ -654,7 +645,7 @@ en:
                 - remote consolations and 
                 - surgery teaching
             - id: "tab-usage-section-4"
-              class: "tab-pane"
+              class: "tab-pane fade in"
               icon: "sdk/img-jiaoyu.jpg"
               title: "Online Education"
               desc: "Both small interactive classes and classes of tens of thousands of people are supported in a flexible way. Native and Web can interwork to satisfy education needs under various scenarios."
@@ -665,7 +656,7 @@ en:
                 - online tutoring for K12 and 
                 - trainings of professional skills
             - id: "tab-usage-section-5"
-              class: "tab-pane"
+              class: "tab-pane fade in"
               icon: "sdk/img-kefu.jpg"
               title: "Online Customer Services"
               desc: "Demands for video calls to technical staff are supported. Those technical staff can instruct users to operate as well as quickly locate and solve problems through videos, to improve service quality and product reputation."

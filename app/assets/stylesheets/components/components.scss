@@ -124,6 +124,7 @@ label {
 // mobile stripe
 .stripe.stripe-blue.p-xxl.visible-xs {
   padding: 5px;
+  z-index: 999;
   .stripe-close-btn {
     float: right;
     margin-top: -30px;
