@@ -1,0 +1,85 @@
+.hero-ecp {
+  .middle-container {
+    top: 50% !important;
+
+    h2 {
+      margin-top: 0.30rem;
+    }
+
+    p {
+      margin-top: 0.30rem;
+    }
+
+    .actions {
+      margin-top: 0.30rem;
+    }
+
+    .right-mask-banner {
+      text-align: center;
+    }
+  }
+
+  .right-mask-banner {
+    line-height: 3.00rem;
+  }
+}
+
+.features-ecp {
+  padding: 0.68rem 0 0.80rem 0;
+
+  .col-item {
+    text-align: center;
+
+    img {
+      margin-bottom: 0.05rem;
+    }
+
+    p {
+      margin-top: 0.20rem;
+      margin-bottom: 0.30rem;
+      text-align: left;
+    }
+  }
+}
+
+.features-ecp-scene {
+  padding: 0.68rem 0;
+
+  .container {
+    .col-left {
+      margin-bottom: 0.30rem;
+    }
+
+    .col-right {
+      h3 {
+        margin-top: 0;
+      }
+
+      .desc {
+        margin-top: 0.30rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero-ecp {
+    .middle-container {
+      h2 {
+        font-size: 0.32rem;
+      }
+
+      p {
+        font-size: 0.14rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features-ecp-advantage {
+    .col-item {
+      height: 3.50rem;
+    }
+  }
+}
