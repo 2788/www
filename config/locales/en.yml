@@ -581,10 +581,6 @@ en:
               desc: Support the record, storage, transcoding, dispatch and on-demand services of audios and videos and record the streaming audience has watched for video-on-demand and playback.
               img: sdk/icon-shishiluzhi.png
               active_img: sdk/icon-shishiluzhi-2.png
-            - title: Personalized Management
-              desc: Support multiple administrative powers such as dynamic invitation, kicking and muting, to keep chats and interactions in a more orderly way.
-              img: sdk/icon-gexinghuaguanli.png
-              active_img: sdk/icon-gexinghuaguanli-2.png
             - title: Intelligent Processing of Rich Media
               desc: Provide basic data processing services, like watermarks, transcoding of audios and videos, clipping and editing, and user-defined data processing services, to satisfy various audio and video interaction scenarios.
               img: sdk/icon-zhinengfumeitichuli.png
@@ -593,6 +589,10 @@ en:
               desc: Automatically identify images with pornography, violence and terrorism in the clouds and effectively avoid risks from contents of pornography, violence, terrorism and politics, to operate the platform in a safer and more stable way.
               img: sdk/icon-jianhuangjianbaokong.png
               active_img: sdk/icon-jianhuangjianbaokong-2.png
+            - title: Personalized Management
+              desc: Support multiple administrative powers such as dynamic invitation, kicking and muting, to keep chats and interactions in a more orderly way.
+              img: sdk/icon-gexinghuaguanli.png
+              active_img: sdk/icon-gexinghuaguanli-2.png
         scene:
           title: Application Scenarios
           desc: Various application scenarios can be supported with perfect solutions.

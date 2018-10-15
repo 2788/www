@@ -581,16 +581,22 @@ zh-CN:
           title: "场景化功能，让视频通话更贴合行业"
           content:
             - title: "社交互动"
+              icon: "rtn/icon-shejiao.png"
               desc: "美颜、滤镜、各类人脸特效"
             - title: "在线教育"
+              icon: "rtn/icon-jiaoyu.png"
               desc: "屏幕共享、互动白板"
             - title: "远程会议"
+              icon: "rtn/icon-huiyi.png"
               desc: "多人音视频对话、旁路直播"
             - title: "金融双录"
+              icon: "rtn/icon-shuanglu.png"
               desc: "安全加密、实时录制"
             - title: "在线医疗"
+              icon: "rtn/icon-yiliao.png"
               desc: "支持 1080P 超清画质"
             - title: "智能客服"
+              icon: "rtn/icon-kefu.png"
               desc: "纯语音连麦通话"
           images:
             - class: "image-one"
@@ -634,10 +640,6 @@ zh-CN:
               desc: 支持在云端进行实时录制、存储，可用于点播回放。
               img: sdk/icon-shishiluzhi.png
               active_img: sdk/icon-shishiluzhi-2.png
-            - title: 安全加密
-              desc: 使用安全协议 SRTP/SRTCP/Secure WebSocket，加密一切音视频数据。
-              img: sdk/icon-gexinghuaguanli.png
-              active_img: sdk/icon-gexinghuaguanli-2.png
             - title: 智能富媒体处理
               desc: 提供水印、切片、拼接等数据处理服务，满足各类互动场景。
               img: sdk/icon-zhinengfumeitichuli.png
@@ -646,6 +648,10 @@ zh-CN:
               desc: 自动鉴别黄暴恐图，有效规避涉黄、涉暴恐、涉政风险，让平台运营更安全。
               img: sdk/icon-jianhuangjianbaokong.png
               active_img: sdk/icon-jianhuangjianbaokong-2.png
+            - title: 安全加密
+              desc: 使用安全协议 SRTP/SRTCP/Secure WebSocket，加密一切音视频数据。
+              img: sdk/icon-gexinghuaguanli.png
+              active_img: sdk/icon-gexinghuaguanli-2.png
       sdk: 
         banner:
           title: "音视频 SDK"
@@ -3379,19 +3385,19 @@ zh-CN:
       keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管，低频存储，镜像存储，私有部署，静态资源托管，备份归档，数据迁移，数据灾备，弹性扩容
       description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。
     welcome_pili:
-      title: 直播云_云直播_直播SDK_直播云服务- 七牛云
+      title: 直播云_云直播_直播SDK_直播云服务 - 七牛云
       keywords: 直播云，云直播，直播SDK，视频直播云服务，直播云服务，直播API，推流SDK，播放SDK，七牛直播，七牛直播云，quic推流
       description: 七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供RTMP、HLS、HDL直播支持、配套的数据处理服务、端到端SDK支持、APM数据服务。
     welcome_vcs:
-      title: 视频冷存储_视频冷存储解决方案-七牛云
+      title: 视频冷存储_视频冷存储解决方案 - 七牛云
       keywords: 视频冷存储，冷备，冷存储，归档存储，点播存储，高清视频原片，媒体资源库
       description: 七牛云视频冷存储解决方案是专为综合视频平台打造的PB级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。
     welcome_newmedia:
-      title: 广电新媒体解决方案-七牛云
+      title: 广电新媒体解决方案 - 七牛云
       keywords: 新媒体解决方案，融合媒体解决方案，广电新媒体解决方案，媒体融合服务，媒资管理
       description: 七牛云广电新媒体解决方案提供超越传统IT的定制服务，实现统一的跨终端交互体验，云端数据永不过期、永远在线，大于三级等保的安全防护。
     welcome_sdk:
-      title: 视频直播SDK_视频SDK_直播SDK-七牛云
+      title: 视频直播SDK_视频SDK_直播SDK - 七牛云
       keywords: 视频直播SDK，视频SDK，直播SDK，音视频SDK，第三方直播SDK，ios直播SDK，android直播SDK，短视频SDK，播放器SDK
       description: 七牛云音视频SDK 包含直播推流SDK、实时音视频SDK、短视频SDK和播放器SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。
     welcome_pandora:
@@ -3437,11 +3443,11 @@ zh-CN:
       keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
       description: 七牛点播云汇聚七牛云存储、音视频转码和融合CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播PaaS平台。
     welcome_plsv:
-      title: 短视频SDK_短视频解决方案_短视频服务-七牛云
+      title: 短视频SDK_短视频解决方案_短视频服务 - 七牛云
       keywords: 短视频SDK，七牛短视频，短视频服务，短视频解决方案，ios短视频sdk，android短视频sdk
       description: 七牛短视频服务(plsv)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
     welcome_rtn:
-      title: 实时音视频_实时音视频SDK-七牛云
+      title: 实时音视频_实时音视频SDK - 七牛云
       keywords: 连麦，实时语音，实时语音SDK，语音通话SDK，语音聊天SDK，互动直播，实时通信，webrtc
       description: 七牛云实时音视频是基于七牛在直播产品上的积累，结合实时音视频SDK和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，无需音视频技术基础，也可以从零开始打造主播与观众多画面、实时连麦互动的实时音视频应用。
     welcome_ess:

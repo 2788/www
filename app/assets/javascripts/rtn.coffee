@@ -9,8 +9,6 @@ $(document).ready ->
     $('#rtn-demo-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
-    $('#rtn-demo-dropdown .btn').on 'click', ->
-      window.open 'https://demo-rtc.qnsdk.com', '_blank'
     $('#rtn-demo-dropdown').hover ->
       $(this).addClass('open')
     , ->
