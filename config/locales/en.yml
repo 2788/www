@@ -2389,6 +2389,178 @@ en:
               image: "ess/image-gongchangyuanqu.jpg"
               title: "工厂园区监控"
               desc: "工厂园区生产环境及网络环境具有较严重的不可靠性，边缘存储解决方案可在客户侧灵活部署存储节点，脱离公网也可继续服务，稳定可靠。"
+      ecp:
+        title: "边缘计算平台"
+        desc: "七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。"
+        navs:
+          - class: "intLink active"
+            href: "#ecp-tab-content-1"
+            title: "产品架构"
+          - class: "intLink"
+            href: "#ecp-tab-content-2"
+            title: "产品优势"
+          - class: "intLink"
+            href: "#ecp-tab-content-3"
+            title: "核心功能及服务"
+          - class: "intLink"
+            href: "#ecp-tab-content-4"
+            title: "典型应用场景"
+        panoramic:
+          title: "产品架构"
+          image: "ecp/image-panoramic.png"
+        advantage:
+          title: "产品优势"
+          items:
+            - title: "低延迟"
+              desc: "就近部署计算服务，多维智能调度，保障边缘数据及时传输和处理。"
+              image: "ecp/icon-diyanchi.png"
+            - title: "容器化"
+              desc: "边缘节点容器化承载计算服务，大规模定制化批量更新和升级应用。"
+              image: "ecp/icon-rongqihua.png"
+            - title: "易运维"
+              desc: "全局监控及分布式管理，边缘设备自动激活及下线。"
+              image: "ecp/icon-yiyunwei.png"
+            - title: "易扩展"
+              desc: "就近集成边缘存储及边缘缓存服务，结合人工智能技术，拓展边缘智能。"
+              image: "ecp/icon-yikuozhan.png"
+        core:
+          title: "核心功能及服务"
+          items:
+            - title: "按需部署服务"
+              desc: "在七牛云边缘和客户侧边缘灵活部署服务，按需承载客户应用。"
+              image: "ecp/icon-anxubushufuwu.png"
+            - title: "界面及 CLI 管理"
+              desc: "提供界面及命令行管理方式，实现界面及自动化编程处理能力。"
+              image: "ecp/icon-jiemianguanli.png"
+            - title: "集成边缘存储"
+              desc: "就近集成边缘存储服务，缩短数据流链路，节点内处理数据。"
+              image: "ecp/icon-jichengbianyuan.png"
+            - title: "数据安全及加密"
+              desc: "就近处理敏感数据，实现数据分拣，网银级数据通信加密保护。"
+              image: "ecp/icon-shujuanquan.png"
+        scene:
+          title: "典型应用场景"
+          tabs:
+            - name: "视频 AI 边缘分析"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "数据边缘分拣"
+              class: ""
+              href: "#tab-scene-2"
+            - name: "边缘多媒体处理（敬请期待）"
+              class: ""
+              href: "#tab-scene-3"
+          sections:
+            - id: "tab-scene-1"
+              class: "tab-pane fade in active"
+              image: "ecp/image-shipinfenxi.jpg"
+              title: "视频 AI 边缘分析"
+              desc: "针对需要及时处理的视频及图像数据，采用边缘节点服务，可以极大的提高关键业务时效，通过 docker 镜像可灵活管理，批量配置和升级，加速边缘 AI 快速落地。"
+            - id: "tab-scene-2"
+              class: "tab-pane fade"
+              image: "ecp/image-shujufenjian.jpg"
+              title: "数据边缘分拣"
+              desc: "针对本地存储需求较大，本地计算能力不足的场景，可以在边缘节点进行存储和分拣，利用边缘弹性计算能力，过滤无价值数据，保留核心数据。"
+            - id: "tab-scene-3"
+              class: "tab-pane fade"
+              image: "ecp/image-duomeitichuli.jpg"
+              title: "边缘多媒体处理"
+              desc: "针对图片及音视频处理延迟敏感的场景，采用边缘节点提供多媒体处理能力，通过稳定的链路提供高吞吐低延迟的多媒体及时处理能力。"
+      ecs:
+        title: "视频 AI 边缘分析解决方案"
+        desc: "面向视频 AI 行业，视频数据通过边缘可靠链路高速上传并由边缘计算服务及时处理，可极大降低关键业务延迟，加速视频 AI 在安防监控，智能商业等多领域落地。"
+        navs:
+          - class: "intLink active"
+            href: "#ecs-tab-content-1"
+            title: "方案架构"
+          - class: "intLink"
+            href: "#ecs-tab-content-2"
+            title: "行业痛点"
+          - class: "intLink"
+            href: "#ecs-tab-content-3"
+            title: "独特功能"
+          - class: "intLink"
+            href: "#ecs-tab-content-4"
+            title: "方案优势"
+          - class: "intLink"
+            href: "#ecs-tab-content-5"
+            title: "典型应用场景"
+        panoramic:
+          title: "方案架构"
+          image: "ecs/image-panoramic.png"
+        painpoint:
+          title: "行业痛点"
+          items:
+            - title: "应用场景种类多"
+              desc: "多行业寻求视频 AI 落地，应用场景种类多，生产环境及业务需求变化多。"
+              image: "ecs/icon-yingyongchangjing.png"
+            - title: "业务时效不可控"
+              desc: "网络不稳定及高时延导致视频 AI 分析时效无法保证，终端用户体验差。"
+              image: "ecs/icon-yewushixiao.png"
+            - title: "交付上线周期长"
+              desc: "现有混合及私有云解决方案部署交付周期冗长，难以应对业务快速扩张。"
+              image: "ecs/icon-jiaofushangxian.png"
+            - title: "部署运维成本高"
+              desc: "现有混合及私有云解决方案部署成本高昂，后期运维方式传统，难度大。"
+              image: "ecs/icon-bushuyunwei.png"
+        unique:
+          title: "独特功能"
+          items:
+            - title: "按需部署服务"
+              desc: "在七牛云边缘和客户侧边缘灵活部署服务，按需承载客户应用。"
+              image: "ecs/icon-anxubushu.png"
+            - title: "全局批量管理"
+              desc: "全局视角批量管理边缘 AI 应用，应用快速部署升级，节点服务全局调配。"
+              image: "ecs/icon-quanjupiliang.png"
+            - title: "数据安全及加密"
+              desc: "就近存储及处理敏感数据，网银级数据通信加密保护。"
+              image: "ecs/icon-shujuanquan.png"
+            - title: "整体 SLA 保障"
+              desc: "提供 99.8% SLA 保障，99.999999% 可靠性。"
+              image: "ecs/icon-zhengtibaozhang.png"
+        advantage:
+          title: "方案优势"
+          items:
+            - title: "低延迟"
+              desc: "智能调度就近优质链路，并提供节点内存储及计算服务，全方位降低业务响应时延。"
+              image: "ecp/icon-diyanchi.png"
+            - title: "容器化"
+              desc: "边缘节点容器化承载计算服务，降低业务迁移技术成本。"
+              image: "ecp/icon-rongqihua.png"
+            - title: "易运维"
+              desc: "全局监控及分布式管理，边缘设备自动激活及下线，批量配置升级应用。"
+              image: "ecp/icon-yiyunwei.png"
+            - title: "易扩展"
+              desc: "提供整体基础设施及运维能力，满足客户多应用场景需求并提供业务快速复制能力。"
+              image: "ecp/icon-yikuozhan.png"
+        scene:
+          title: "典型应用场景"
+          tabs:
+            - name: "智能安防"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "智能商业"
+              class: ""
+              href: "#tab-scene-2"
+            - name: "特殊生产环境"
+              class: ""
+              href: "#tab-scene-3"
+          sections:
+            - id: "tab-scene-1"
+              class: "tab-pane fade in active"
+              image: "ecs/image-zhinenganfang.jpg"
+              title: "智能安防"
+              desc: "智能安防场景具有监控设备分布广，数量多，数据量巨大等传统特点，同时具有 AI 应用迭代频繁，延时敏感等关键需求，视频 AI 边缘分析解决方案集成边缘存储及边缘计算，实现就近快速存储视频数据，弹性承载 AI 应用，快速部署迭代应用，推进 AI+ 安防快速发展。"
+            - id: "tab-scene-2"
+              class: "tab-pane fade"
+              image: "ecs/image-zhinengshangye.jpg"
+              title: "智能商业"
+              desc: "智慧商业场景具有隐私敏感，业务波动大，响应时效要求高等特点，视频 AI 边缘分析解决方案可就近部署 AI 应用，对数据及时分析处理，同时可满足私有部署方式，通过提供基础设施及运维服务，实现客户业务快速复制，加速商业智能落地。"
+            - id: "tab-scene-3"
+              class: "tab-pane fade"
+              image: "ecs/image-teshuhuanjing.jpg"
+              title: "特殊生产环境"
+              desc: "海上油井，加油站，矿场等特殊生产环境具有网络不可靠，环境复杂，数据敏感等特点，视频 AI 边缘分析解决方案可就近部署边缘存储及边缘计算服务，对数据进行本地分拣处理，支持离线运行。"
       dora:
         title: "Intelligent Multimedia APIs（Dora）"
         desc: "Qiniu's intelligent multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services using deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services."
@@ -3247,6 +3419,14 @@ en:
       title: 监控视频边缘存储解决方案 - 七牛云
       keywords: 边缘存储，边缘计算，七牛云，视频监控，物联网
       description: 面向视频监控行业，在七牛云边缘节点和用户侧部署边缘存储服务，加速视频数据边缘上传，自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。
+    welcome_ecp:
+      title: 边缘计算平台 - 七牛云
+      keywords: 边缘计算
+      description: 七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。
+    welcome_ecs:
+      title: 视频 AI 边缘分析解决方案 - 七牛云
+      keywords: 边缘分析
+      description: 面向视频 AI 行业，视频数据通过边缘可靠链路高速上传并由边缘计算服务及时处理，可极大降低关键业务延迟，加速视频 AI 在安防监控，智能商业等多领域落地。
     welcome_user_agreement:
       title: 用户服务协议-七牛云
       keywords:
