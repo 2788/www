@@ -3,8 +3,9 @@
   overflow: hidden;
   resize: both;
   .container {
-    z-index: 1;
+    z-index: 2;
     .middle-container {
+      top: 40%;
       text-align: center;
       p {
         margin: 0.05rem 0;
@@ -38,11 +39,33 @@
                 -moz-transition: opacity .3s linear;
                 transition: opacity .3s linear;
               }
+              a {
+                color: #FFF;
+              }
+              .icon-brand {
+                margin-top: -5px;
+                display: inline-block;
+                &.hover {
+                  display: none;
+                }
+              }
               &:hover {
                 color: #00a0de;
                 background-color: rgba(255, 255, 255, 0.5);
                 .icon-qrcode {
                   opacity: 1;
+                }
+                a {
+                  color: #00a0de;
+                  background: transparent;
+                }
+                .icon-brand {
+                  &.normal {
+                    display: none;
+                  }
+                  &.hover {
+                    display: inline-block;
+                  }
                 }
               }
             }
@@ -68,6 +91,15 @@
     object-fit: cover;
     overflow: hidden;
   }
+  .video-mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 .features-rtn-structure {
@@ -86,7 +118,7 @@
 .features-rtn-scene {
   .scene-item {
     width: 48%;
-    margin-top: 0.50rem;
+    margin-top: 0.20rem;
     margin-right: 1%;
     display: inline-block;
     p {
@@ -109,11 +141,11 @@
       }
       &.image-two {
         z-index: 2;
-        margin-left: -5%;
+        margin-left: -15%;
       }
       &.image-three {
         z-index: 1;
-        margin-left: -5%;
+        margin-left: -15%;
       }
     }
   }
@@ -184,6 +216,7 @@
 }
 
 .features-rtn-serve {
+  padding-bottom: 0;
   ul.rtn-serve {
     display: flex;
     justify-content: space-around;
@@ -260,6 +293,24 @@
           color: #fff
         }
       }
+    }
+  }
+  .bottom-banner {
+    width: 100%;
+    height: 2.00rem;
+    margin-top: 0.68rem;
+    background-image: image-url("rtn/bottom-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    h2 {
+      padding-top: 0.40rem;
+      font-size: 0.35rem;
+      color: #FFF;
+    }
+    .btn {
+      margin-top: 0.20rem;
+      color: #00A0DE;
     }
   }
 }
@@ -353,8 +404,8 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .features-rtn-scene {
-    .scene-item {
-      margin-top: 0.30rem;
+    .image-container {
+      margin-top: 0.40rem;
     }
     .btn-container {
       margin-top: 0.60rem;
@@ -384,7 +435,7 @@
   }
 }
 
-@media (max-width: 991px) and (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .hero-rtn h2 {
     &.en-version {
       font-size: 0.30rem !important;
@@ -399,8 +450,10 @@
     }
   }
   .features-rtn-scene {
+    .image-container {
+      margin-top: 0.60rem;
+    }
     .scene-item {
-      margin-top: 0.10rem;
       p {
         font-size: 0.12rem;
       }
@@ -448,7 +501,6 @@
 @media (width: 768px) {
   .features-rtn-scene {
     .scene-item {
-      margin-top: 0.30rem;
       p {
         font-size: 0.12rem;
       }
