@@ -7,7 +7,7 @@
           <h2><%= I18n.t("views.welcome.ecs.title") -%></h2>
           <p><%= I18n.t("views.welcome.ecs.desc") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "咨询详情", "http://qiniu-kodoedge.mikecrm.com/SLTyoPC", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "咨询详情", "http://qiniu-kodoedge.mikecrm.com/XhIYMUM", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
         </div>
         <div class="col-sm-5 hidden-xs">
@@ -108,7 +108,7 @@
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
         <% I18n.t("views.welcome.ecs.scene.tabs").each do |tab| -%>
-          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data: { toggle: "tab" } -%></li>
         <% end -%>
       </ul>
       <div class="tab-content">

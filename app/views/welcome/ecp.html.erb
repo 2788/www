@@ -90,7 +90,13 @@
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
         <% I18n.t("views.welcome.ecp.scene.tabs").each do |tab| -%>
-          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+          <li class="<%= tab[:class] -%>">
+            <% if tab[:subtitle] -%>
+              <%= link_to content_tag(:span, tab[:name]) + content_tag(:span, tab[:subtitle], class: "tab-subtitle"), tab[:href], data: { toggle: "tab" } -%>
+            <% else -%>
+              <%= link_to tab[:name], tab[:href], data: { toggle: "tab" } -%>
+            <% end -%>
+          </li>
         <% end -%>
       </ul>
       <div class="tab-content">

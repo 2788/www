@@ -64,6 +64,11 @@
         word-break: break-all;
       }
     }
+    .nav {
+      .tab-subtitle {
+        font-size: 12px;
+      }
+    }
   }
 }
 
@@ -79,12 +84,22 @@
       }
     }
   }
+  .features-ecp-scene {
+    .col-right {
+      margin: 0 !important;
+    }
+  }
 }
 
 @media (max-width: 767px) {
   .features-ecp-advantage {
     .col-item {
       height: 3.50rem;
+    }
+  }
+  .features-ecp-scene {
+    .col-right {
+      margin: 0 !important;
     }
   }
 }
