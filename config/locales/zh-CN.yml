@@ -3257,6 +3257,11 @@ zh-CN:
           label: 融合 CDN
           desc: 融合优质节点、可监控、智能调度的内容分发服务
 
+        - name: ecp
+          label: 边缘计算平台
+          desc: 灵活配置管理大规模边缘计算应用，加速边缘智能落地
+          isNew: true
+
         - name: qvm
           label: 云主机
           desc: 提供云主机、负载均衡、云数据库、高防等服务
@@ -3366,37 +3371,38 @@ zh-CN:
           label: 智能视频云解决方案
           desc: 集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
           type: product
-        - name: security
-          label: 安防解决方案
-          desc: 灵活部署，满足不同安防场景互联网远程监控需求
-          type: solution
+        - name: ecs
+          label: 视频 AI 边缘分析解决方案
+          desc: 极大降低关键业务延迟，加速视频 AI 在安防监控，智能商业等多领域落地
+          type: product
+          isNew: true
       - cols:
         - name: privatization
           label: 私有云存储解决方案
           desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
           type: solution
-        - name: intelligence
-          label: 智能硬件与物联网解决方案
-          desc: 满足智能硬件厂商各应用场景下云端计算需求
+        - name: security
+          label: 安防解决方案
+          desc: 灵活部署，满足不同安防场景互联网远程监控需求
           type: solution
       - cols:
         - name: qualityctrl
           label: 应用质量监控解决方案
           desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
           type: solution
-        - name: internet
-          label: 互联网与移动互联网解决方案
-          desc: 为互联网初创企业量身定制，一站式云计算服务平台
+        - name: intelligence
+          label: 智能硬件与物联网解决方案
+          desc: 满足智能硬件厂商各应用场景下云端计算需求
           type: solution
       - cols:
         - name: album
           label: 智能云相册解决方案
           desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
           type: solution
-        - name:
-          label:
-          desc:
-          type:
+        - name: internet
+          label: 互联网与移动互联网解决方案
+          desc: 为互联网初创企业量身定制，一站式云计算服务平台
+          type: solution
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w

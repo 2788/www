@@ -434,6 +434,13 @@ nav.navbar {
       background-repeat: no-repeat;
       background-size: 20px 19px;
     }
+
+    .ecp {
+      background-image: image-url("menuicon-bianyuanjisuan@2x.png");
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: 20px 19px;
+    }
   }
 }
 
@@ -550,6 +557,10 @@ nav.navbar {
 
   .ess {
     background-image: image-url("menuicon-bianyuancunchu.png");
+  }
+
+  .ecs {
+    background-image: image-url("menuicon-bianyuanshipin.png");
   }
 }
 
