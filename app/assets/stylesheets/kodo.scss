@@ -5,6 +5,18 @@
     .right-mask-banner {
       line-height: 3.00rem;
     }
+    .icon-new {
+      width: 28px;
+      height: 12px;
+      position: relative;
+      top: 0.02rem;
+      left: 0.05rem;
+      background-image: image-url("icon-new.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: inline-block;
+    }
   }
 }
 
