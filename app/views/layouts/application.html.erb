@@ -196,7 +196,7 @@
             </li>
             <li class="need-signin <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               <div class="actions">
-                <a href="<%= sigin_url() %>" class="btn btn-hollow">登录</a>
+                <a href="<%= sigin_url('') %>" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary">注册有礼</a>
               </div>
             </li>
@@ -576,5 +576,6 @@
     </script>
     <script src="https://mars-assets.qnssl.com/stalker.js"></script>
     <script src="https://mars-assets.qnssl.com/polyfill.object-fit.min.js"></script>
+    <script src="https://mars-assets.qnssl.com/clipboard.min.js"></script>
   </body>
 </html>

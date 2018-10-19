@@ -78,12 +78,17 @@ Rails.application.routes.draw do
       end
     end
 
+    # 1024 活动页
+    get '/events/1024event', to: 'events#event1024'
+
     # img_censor
     post '/img_censor', to: 'welcome#img_censor'
 
     # video_censor
     post '/video_censor', to: 'welcome#video_censor'
 
+    # calc_heat
+    get '/calc_heat', to: 'events#calc_heat'
 
     resources 'prices', only: [:index]
     get '/caculator', to: 'prices#caculator'

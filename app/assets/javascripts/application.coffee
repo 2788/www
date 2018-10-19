@@ -39,6 +39,7 @@
 #= require 7event
 #= require qvm1rmb
 #= require rtn
+#= require event1024
 
 #= require uuid
 
