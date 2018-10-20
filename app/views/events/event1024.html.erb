@@ -11,19 +11,19 @@
         <div class="row event1024-progress-row">
           <%# 宝箱 %>
           <div class="award-box award-box-0">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">4618</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">5018</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-0.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <div class="award-box award-box-1">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">6606</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">7006</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-1.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <div class="award-box award-box-2">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">11605</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">12005</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-2.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <div class="award-box award-box-3">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">21105</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">23005</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-3.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <%# 进度条 %>
@@ -48,23 +48,27 @@
       <div class="container">
         <div class="intro">
           <h2 class="title">
-            参与狂欢，赢取万元豪礼
-            <%= link_to image_tag("event1024/icon-rules.png", width: 25, class: "icon-rules"), "", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-one"} -%>
+            参与狂欢，赢取万元锦牛豪礼
+            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-one"} -%>
           </h2>
-          <p class="desc">如何参与抽奖</p>
+          <p class="desc">完成以下任一任务，即可参与抽取万元锦牛豪礼</p>
         </div>
 
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-4 col-join col-weibo border-right" title="微博转发活动链接">
-            <%= image_tag "event1024/image-weibo.png", alt: "微博分享", width: 100 -%>
-            <p>微博转发活动链接</p>
+          <div class="col-md-4 col-sm-4 col-xs-12 col-join col-jinniu">
+            <%= link_to image_tag("event1024/icon-jinniu-mark.png", alt: "金牛用户专享", class: "icon-jinniu-mark", width: 60), "", data: { toggle: "modal", target: "#rules-modal-jinniu"} -%>
+            <%= image_tag "event1024/image-jinniu.png", alt: "金牛用户", width: 120 -%>
+            <p class="getting-status">您的信息正在获取中，请稍候...</p>
+            <p class="signin-to-get"><%= link_to "登录免费抽奖", signin_url('/events/1024event'), class: "btn btn-event1024", target: "_blank" -%></p>
+            <p class="can-get"><button class="btn btn-event1024">立即领取</button></p>
+            <p class="can-not-get">您已领取过抽奖资格</p>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4 col-join border-right">
-            <%= image_tag "event1024/image-renzheng.png", alt: "实名认证", width: 100 -%>
+          <div class="col-md-4 col-sm-4 col-xs-12 col-join border-l-r">
+            <%= image_tag "event1024/image-renzheng.png", alt: "实名认证", width: 120 -%>
             <p>实名认证注册并下单活动产品</p>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-4 col-join">
-            <%= image_tag "event1024/image-yaoqing.png", alt: "邀请好友", width: 100 -%>
+          <div class="col-md-4 col-sm-4 col-xs-12 col-join">
+            <%= image_tag "event1024/image-yaoqing.png", alt: "邀请好友", width: 120 -%>
             <p>邀请好友实名认证注册</p>
           </div>
         </div>
@@ -80,24 +84,31 @@
           <div class="col-md-2 col-sm-12 col-xs-12 col-cloud cloud-title">云盛典</div>
           <div class="col-md-10 col-sm-12 col-xs-12">
             <div class="row">
-              <div class="col-md-4 col-sm-4 col-xs-4 col-cloud">
-                <%= image_tag "event1024/image-guaguale.png", class: "mg-t-2", alt: "刮刮乐抽奖", width: 100 -%>
-                <h4>刮刮乐抽奖</h4>
-                <p>刮刮乐抽奖 + 免费云服务套餐</p>
-                <p class="mg-b-2">实名注册即可抽取</p>
-              </div>
-              <div class="col-md-4 col-sm-4 col-xs-4 col-cloud">
-                <%= image_tag "event1024/image-zhekou.png", class: "mg-t-2", alt: "热门产品冰点折扣", width: 100 -%>
-                <h4>热门产品冰点折扣低至 0 元</h4>
-                <p>热门产品冰点价</p>
-                <p class="mg-b-2">超优惠资源包大放送</p>
-              </div>
-              <div class="col-md-4 col-sm-4 col-xs-4 col-cloud">
-                <%= image_tag "event1024/image-haoli.png", class: "mg-t-2", alt: "推荐赢双重好礼", width: 100 -%>
-                <h4>推荐赢双重好礼</h4>
-                <p>抽奖 + 返现</p>
-                <p class="mg-b-2">至尊大奖万元返现等你拿</p>
-              </div>
+              <ul class="navbar-wrapper-middle">
+                <li class="intLink">
+                  <div class="col-md-4 col-sm-4 col-xs-4 col-cloud nav-cloud">
+                    <%= image_tag "event1024/image-guaguale.png", class: "mg-t-2", alt: "注册玩转刮刮乐", width: 100 -%>
+                    <h4><%= link_to "注册玩转刮刮乐", "#event1024-section-1" -%></h4>
+                    <p>刮刮乐抽奖 + 免费云服务套餐</p>
+                    <p class="mg-b-2">实名注册即可抽取</p>
+                  </div>
+                </li>
+                <li class="intLink">
+                  <div class="col-md-4 col-sm-4 col-xs-4 col-cloud nav-cloud">
+                    <%= image_tag "event1024/image-zhekou.png", class: "mg-t-2", alt: "热门产品冰点折扣", width: 100 -%>
+                    <h4><%= link_to "热门产品冰点折扣", "#event1024-section-2" -%></h4>
+                    <p>热门产品冰点价</p>
+                    <p class="mg-b-2">超优惠资源包大放送</p>
+                  </div>
+                </li>
+                <li class="intLink">
+                  <div class="col-md-4 col-sm-4 col-xs-4 col-cloud nav-cloud">
+                    <%= image_tag "event1024/image-haoli.png", class: "mg-t-2", alt: "推荐赢好礼", width: 100 -%>
+                    <h4><%= link_to "推荐赢好礼", "#event1024-section-3" -%></h4>
+                    <p class="mg-b-2">至尊千元天猫券等你拿</p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -105,14 +116,14 @@
     </div>
 
     <%# 注册领免费云服务套餐部分 %>
-    <div class="features features-event1024 features-event1024-signup">
+    <div class="features features-event1024 features-event1024-signup event1024-section-1">
       <div class="container">
         <div class="intro">
-          <h1 class="title">/ / 注册领免费云服务套餐，赢 1024 专属好礼 / /</h1>
+          <h1 class="title">/ / 注册玩转刮刮乐 / /</h1>
         </div>
         <div class="image-container">
           <div class="rules-container">
-            <h4>活动规则</h4>
+            <h4>活动说明</h4>
             <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，注册七牛云并完成实名认证，即可获得一次刮刮乐抽奖资格，请留意短信抽奖通知；每个实名认证账户仅有一次抽奖机会。</p>
             <p>2. 活动期间，所有注册并实名认证的用户可获得免费云资源大礼包一份，<a href="https://www.qiniu.com/events/free" target="_blank">查看礼包详情</a></p>
           </div>
@@ -121,16 +132,16 @@
     </div>
 
     <%# 热门产品部分 %>
-    <div class="features features-event1024 features-event1024-hot">
+    <div class="features features-event1024 features-event1024-hot event1024-section-2">
       <div class="container">
         <%# qvm 部分 %>
         <div class="intro">
           <h1 class="title">/ / 热门产品冰点折扣 / /</h1>
           <h3 class="subtitle">
             云主机低至 0.9 元，带宽低至 0.1 元
-            <%= link_to image_tag("event1024/icon-rules.png", width: 25, class: "icon-rules"), "", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-two"} -%>
+            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-two"} -%>
           </h3>
-          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/qvm", target: "_blank", class: "product-detail" -%></p>
+          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/qvm", target: "_blank", id: "event1024-product-qvm", class: "product-detail event1024-product-detail" -%></p>
         </div>
 
         <div class="row">
@@ -138,13 +149,13 @@
             <%= image_tag "event1024/image-qvm-1.png", alt: "云主机-1", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.t5-lc1m1.small", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.n4.small", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.t5-lc1m2.large", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -152,13 +163,13 @@
             <%= image_tag "event1024/image-qvm-2.png", alt: "云主机-2", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/rds/create?region=cn-qingdao&activity=20181024&db_instance_type=primary&db_instance_class=mysql.n2.small.1&db_instance_storage=30", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/redis/create?region=cn-qingdao&activity=20181024&instance_class=redis.basic.stand.default", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/rds/create?region=cn-qingdao&activity=20181024&db_instance_type=primary&db_instance_class=mysql.n2.medium.1&db_instance_storage=50", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -166,7 +177,7 @@
             <%= image_tag "event1024/image-qvm-3-1.png", alt: "云主机-3-1", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=20181024&bandwidth=1", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -174,7 +185,7 @@
             <%= image_tag "event1024/image-qvm-3-2.png", alt: "云主机-3-2", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=20181024&bandwidth=5", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -182,7 +193,7 @@
             <%= image_tag "event1024/image-qvm-3-3.png", alt: "云主机-3-3", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.n4.xlarge&buymonth=12", class: "btn btn-lg btn-event1024", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -192,9 +203,9 @@
         <div class="intro">
           <h3 class="subtitle">
             新购云存储资源包，低至 5 折，CDN 流量免费送
-            <%= link_to image_tag("event1024/icon-rules.png", width: 25, class: "icon-rules"), "", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-three"} -%>
+            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-three"} -%>
           </h3>
-          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/kodo", target: "_blank", class: "product-detail" -%></p>
+          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/kodo", target: "_blank", id: "event1024-product-kodo", class: "product-detail event1024-product-detail" -%></p>
         </div>
 
         <div class="row">
@@ -207,8 +218,8 @@
         <%# pili 部分 %>
         <div class="intro">
           <h3 class="subtitle">
-            一站限时抢购音视频超值体验包
-            <%= link_to image_tag("event1024/icon-rules.png", width: 25, class: "icon-rules"), "", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-four"} -%>
+            音视频超值体验包
+            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-four"} -%>
           </h3>
         </div>
 
@@ -218,7 +229,7 @@
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
                 <%= link_to "立即购买", "https://portal.qiniu.com/rtn/rtc/report/duration", class: "btn btn-lg btn-event1024", target: "_blank" -%>
-                <%= link_to "查看产品详情", "https://www.qiniu.com/products/rtn", class: "more-link", target: "_blank" -%>
+                <%= link_to "查看产品详情", "https://www.qiniu.com/products/rtn", id: "event1024-product-rtn", class: "product-detail event1024-product-detail", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -226,8 +237,8 @@
             <%= image_tag "event1024/image-pili-2.png", alt: "音视频-2", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "", class: "btn btn-lg btn-event1024", target: "_blank" -%>
-                <%= link_to "查看产品详情", "https://www.qiniu.com/products/plsv", class: "more-link", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/kodo", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "查看产品详情", "https://www.qiniu.com/products/plsv", id: "event1024-product-plsv", class: "product-detail event1024-product-detail", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -236,7 +247,7 @@
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
                 <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/pili", class: "btn btn-lg btn-event1024", target: "_blank" -%>
-                <%= link_to "查看产品详情", "https://www.qiniu.com/products/pili", class: "more-link", target: "_blank" -%>
+                <%= link_to "查看产品详情", "https://www.qiniu.com/products/pili", id: "event1024-product-pili", class: "product-detail event1024-product-detail", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -245,20 +256,20 @@
     </div>
 
     <%# 推荐赢好礼部分 %>
-    <div class="features features-event1024 features-event1024-recommend">
+    <div class="features features-event1024 features-event1024-recommend event1024-section-3">
       <div class="container">
         <div class="intro">
           <h1 class="title">
             / / 推荐赢好礼 / /
-            <%= link_to image_tag("event1024/icon-rules.png", width: 25, class: "icon-rules"), "", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-five"} -%>
+            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-five"} -%>
           </h1>
         </div>
         <div class="recommend-container">
           <p>如果好友通过您分享的活动专属链接，注册并实名认证七牛云，累计下单金额每满 500 元，您将获得 1 张 100 元天猫券。</p>
-          <p class="achievement-tip">您的推荐成果正在统计更新中，敬请期待~</p>
-          <p class="recommend-unsignin">您的推荐成果可在登陆后查看&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "获取专属链接", sigin_url('/events/1024event'), target: "_blank", class: "btn btn-lg btn-event1024" -%></p>
+          <p class="achievement-tip">您的推荐成果正在统计更新中，请稍候...</p>
+          <p class="recommend-unsignin">您的推荐成果可在登陆后查看&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "获取专属链接", signin_url('/events/1024event'), target: "_blank", class: "btn btn-lg btn-event1024" -%></p>
           <p class="recommend-signin">
-            <button class="btn btn-lg btn-event1024 copy-btn">复制链接</button>
+            <button class="btn btn-lg btn-event1024 copy-btn disabled">获取链接中...</button>
             <%= image_tag "event1024/image-weibo.png", width: 35, class: "icon-weibo", title: "微博分享专属链接" -%>
           </p>
         </div>
@@ -335,7 +346,7 @@
             <h3 class="modal-title" id="rules-modal-one-label">活动说明</h3>
           </div>
           <div class="modal-body">
-            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，凡在此活动页面领取免费抽奖资格的有历史充值记录七牛云用户（2018 年 10 月 24 日之前有充值记录）、活动期间实名注册并下单的用户、活动期间邀请好友实名注册的用户均可获得一次抽锦牛的资格。</p>
+            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，凡在此活动页面领取免费抽奖资格的有历史充值记录七牛云用户（2018 年 11 月 9 日之前有充值记录的实名认证用户）、活动期间实名注册并下单的用户（订单金额 > 0 元）、活动期间邀请好友实名注册的用户均可获得一次抽锦牛的资格。</p>
             <p>2. 每个七牛云注册账户仅限一次抽奖机会。</p>
             <p>3. 2018 年 11 月 13 日将在所有符合抽奖资格的用户中抽取一名锦牛，锦牛将获得高达万元的超级豪礼（豪礼清单随活动热度增加进行升级，2018 年 11 月 9 日决出最终豪礼清单）。</p>
             <p>4. 抽奖结果将于 2018 年 11 月 13 日在七牛云微信公众号平台公布，敬请期待。</p>
@@ -356,11 +367,12 @@
           <div class="modal-body">
             <p>1. 活动时间：2018 年 10 月 24 日 - 2018 年 11 月 9 日。</p>
             <p>2. 活动对象：未购买过七牛云主机的客户。</p>
-            <p>3. 同一用户同一品类只能任选一款（主机类、云数据库、公网带宽均三选一）。</p>
-            <p>4. 本次活动区域限制在中国大陆地区。</p>
-            <p>5. 本活动暂不支持退款。</p>
-            <p>6. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源。</p>
-            <p>7. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
+            <p>3. 同一用户同一品类只能任选一款（主机类、云数据库、公网带宽均可选一）。</p>
+            <p>4. 参与活动产品（云主机、云数据库、公网带宽）每款每天限量 500 名，先到先得。</p>
+            <p>5. 本次活动区域限制在中国大陆地区。</p>
+            <p>6. 本活动暂不支持退款。</p>
+            <p>7. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源。</p>
+            <p>8. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
           </div>
         </div>
       </div>
@@ -381,8 +393,9 @@
             <p>4. 覆盖区域：提供国内、东南亚、北美不同区域资源包，国内资源包区域分为：华东、华南、华北，统一价，分区售卖。</p>
             <p>5. 有效期限：订单生效日起，单个资源包有效期为 1 个月，可购买多个月，资源包过期即无法抵扣账单用量。</p>
             <p>6. 存储类型：资源包只支持标准存储服务，低频存储服务暂不支持。</p>
-            <p>7. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源。</p>
-            <p>8. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
+            <p>7. 免费赠送的 100G 国内 CDN 流量和 300 分钟音视频转码资源，活动结束后 15 个工作日内统一发放。</p>
+            <p>8. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源。</p>
+            <p>9. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
           </div>
         </div>
       </div>
@@ -397,11 +410,13 @@
             <h3 class="modal-title" id="rules-modal-four-label">活动说明</h3>
           </div>
           <div class="modal-body">
-            <p>1. 活动时间：2018 年 10 月24 日 - 2018 年 11 月 9 日。</p>
+            <p>1. 活动时间：2018 年 10 月 24 日 - 2018 年 11 月 9 日。</p>
             <p>2. 活动对象：2018 年 10 月 10 日起注册并完成认证的新用户。</p>
-            <p>3. 音视频通话体验包和短视频超值体验包，每个账户仅限各领取/购买一次。</p>
-            <p>4. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源。</p>
-            <p>5. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
+            <p>3. 音视频通话体验包和短视频超值体验包，每个账户仅限领取/购买一次。</p>
+            <p>4. 短视频超值体验包中除 50G 存储资源外，其他资源均在活动结束后 15 个工作日发放。</p>
+            <p>5. 直播体验包中赠送的 100G 免费流量在活动结束后 15 个工作日发放。</p>
+            <p>6. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源。</p>
+            <p>7. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
           </div>
         </div>
       </div>
@@ -418,12 +433,42 @@
           <div class="modal-body">
             <p>1. 活动时间：2018 年 10 月 24 日 - 2018 年 11 月 9 日。</p>
             <p>2. 推荐的下单好友必须为 2018 年 10 月 24 日 - 2018 年 11 月 9 日期间新注册并实名认证用户。（如推荐的下单好友为 2018 年 10 月 24 日以前注册用户，请联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>）。</p>
-            <p>3. 好友成功下单后，推荐人所获得的天猫券奖励 10000 元封顶；天猫券将在活动结束一个月内统一发放。</p>
+            <p>3. 好友成功下单后，推荐人所获得的天猫券奖励 1000 元封顶；天猫券将在活动结束一个月内统一发放。</p>
             <p>4. 活动期间，新注册好友在以下任何产品线（云主机全品类、对象存储、直播云；不限于 1024 活动爆款）下单成功均可累计活动下单金额。</p>
             <p>5. 邀请者与被邀请者实际是同一用户不可获得奖励（同一用户指包含但不仅限于根据不同七牛云账号在注册、登录、使用中的关联信息，七牛云判断其实际为同一用户。关联信息举例：同一证件、同一手机号、同一支付账号、同一设备、同一地址等）。</p>
             <p>6. 如用户存在作弊、欺诈或通过其他非正常手段获取利益的行为，七牛云有权收回相关权益。</p>
             <p>7. 已签约代理商不参与此次活动。</p>
             <p>8. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# 金牛用户说明 %>
+    <div class="modal fade alert-modal-css form-wrapper event1024-modal" id="rules-modal-jinniu" tabindex="-1" role="dialog" aria-labelledby="rules-modal-jinniu-label" data-keyboard="true" data-backdrop="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="rules-modal-jinniu-label">金牛用户专享</h3>
+          </div>
+          <div class="modal-body">
+            <p>金牛用户：2018 年 11 月 10日之前有历史充值记录的七牛云实名认证用户。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%# 金牛用户领取成功 %>
+    <div class="modal fade alert-modal-css form-wrapper event1024-modal" id="success-modal-jinniu" tabindex="-1" role="dialog" aria-labelledby="success-modal-jinniu-label" data-keyboard="true" data-backdrop="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3 class="modal-title" id="success-modal-jinniu-label">恭喜您成功领取一次抽奖资格！</h3>
+          </div>
+          <div class="modal-body">
+            <p>2018 年 11 月 13 日将在所有符合抽奖资格的用户中抽取一名锦牛，并在七牛云微信公众号平台公布中奖结果，敬请期待！</p>
           </div>
         </div>
       </div>

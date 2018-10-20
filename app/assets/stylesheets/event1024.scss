@@ -57,14 +57,22 @@
       color: #EFC8A0;
     }
   }
-  .icon-rules {
+  .check-rules {
     position: relative;
     top: -0.20rem;
-    left: 0.10rem;
+    font-size: 0.16rem;
+    color: #FFD100;
+    &:hover {
+      color: #FFF;
+      text-decoration: underline;
+    }
   }
   .btn-event1024 {
     color: #000;
     background-color: #FFD100;
+    &.disabled:hover {
+      color: #000;
+    }
     &:hover {
       color: #FFF;
     }
@@ -167,14 +175,27 @@
       margin-top: 0.20rem;
       color: #EFC8A0;
     }
-    &.col-weibo {
-      cursor: pointer;
-      p {
-        color: #FFD100;
-      }
+  }
+  .col-jinniu {
+    .icon-jinniu-mark {
+      position: absolute;
+      left: calc(50% + 50px);
+    }
+    p {
+      color: #FFD100;
+    }
+    .signin-to-get {
+      display: none;
+    }
+    .can-get {
+      display: none;
+    }
+    .can-not-get {
+      display: none;
     }
   }
-  .border-right {
+  .border-l-r {
+    border-left: 2px solid #EFC8A0;
     border-right: 2px solid #EFC8A0;
   }
 }
@@ -203,7 +224,7 @@
   .col-cloud {
     padding: 0;
     text-align: center;
-    h4 {
+    h4 a {
       color: #EFC8A0;
     }
     p {
@@ -215,6 +236,15 @@
     }
     .mg-b-2 {
       margin-bottom: 0.20rem;
+    }
+  }
+  .nav-cloud {
+    cursor: pointer;
+    &:hover {
+      h4 a,
+      p {
+        color: #FFD100;
+      }
     }
   }
 }
@@ -263,7 +293,7 @@
         color: #EFC8A0;
       }
       .product-detail {
-        color: #FFD100;
+        color: rgba($color: #FFD100, $alpha: 0.5);
         font-size: 0.18rem;
         &:hover {
           text-decoration: underline;
@@ -283,8 +313,8 @@
         padding: 0 15px;
         .col-btn {
           text-align: center;
-          .more-link {
-            color: #FFD100;
+          .product-detail {
+            color: rgba($color: #FFD100, $alpha: 0.5);
             position: absolute;
             right: 10%;
             &:hover {
@@ -295,7 +325,7 @@
       }
       .btn-kodo {
         position: absolute;
-        right: 0.40rem;
+        right: 0.60rem;
       }
     }
   }
@@ -315,9 +345,19 @@
         color: #FFF;
         text-align: center;
       }
-      .icon-weibo {
-        margin-left: 0.20rem;
-        cursor: pointer;
+      .achievement-tip {
+        display: none;
+      }
+      .recommend-signin {
+        display: none;
+        .copy-btn {
+          display: none;
+        }
+        .icon-weibo {
+          margin-left: 0.20rem;
+          cursor: pointer;
+          display: none;
+        }
       }
     }
   }
@@ -334,7 +374,7 @@
   .features-event1024-hot {
     .btn-row {
       bottom: 0.40rem;
-      .more-link {
+      .product-detail {
         bottom: 1.20rem;
         font-size: 0.18rem;
       }
@@ -356,7 +396,7 @@
   .features-event1024-hot {
     .btn-row {
       bottom: 0.25rem;
-      .more-link {
+      .product-detail {
         bottom: 1.00rem;
         font-size: 0.16rem;
       }
@@ -384,13 +424,20 @@
   .features-event1024-hot {
     .btn-row {
       bottom: 0.15rem;
-      .more-link {
+      .product-detail {
         bottom: 0.80rem;
         font-size: 0.12rem;
       }
     }
     .btn-kodo {
       bottom: 0.45rem;
+    }
+  }
+  .features-event1024-recommend {
+    .recommend-container {
+      p {
+        font-size: 0.13rem;
+      }
     }
   }
 }
@@ -411,7 +458,7 @@
   .features-event1024-hot {
     .btn-row {
       bottom: 0.30rem;
-      .more-link {
+      .product-detail {
         bottom: 1.10rem;
         font-size: 0.12rem;
       }
@@ -428,7 +475,17 @@
       top: 0.40rem !important;
     }
   }
+  .features-event1024-join {
+    .col-join {
+      margin: 0.20rem 0;
+    }
+    .border-l-r {
+      border-right: none !important;
+      border-left: none !important;
+    }
+  }
   .features-event1024-cloud {
+    padding-top: 0.20rem;
     .cloud-title {
       margin-top: 0.30rem !important;
       margin-bottom: 0.30rem;
@@ -451,7 +508,7 @@
         padding: 0.05rem 0.15rem;
         font-size: 0.14rem;
       }
-      .more-link {
+      .product-detail {
         position: relative !important;
         right: 0 !important;
         font-size: 0.12rem;
