@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def sigin_url(path)
+  def signin_url(path)
     sso_host = Rails.configuration.sso_host
     client_id = Rails.application.secrets.sso[:client_id]
     www_host = Rails.configuration.www_host
@@ -10,6 +10,15 @@ module ApplicationHelper
     end
 
     return Rails.configuration.sso_host + "?client_id=" + client_id + "&redirect_url=" + www_host + path
+  end
+
+  def signout_url
+    sso_host = Rails.configuration.sso_host
+    if sso_host.nil? || sso_host.blank?
+      return "https://sso.qiniu.com/signout"
+    end
+
+    return sso_host + "/signout"
   end
 
   # <meta name="go-import" content="qiniu.com/<package> git https://github.com/qbox/<package>">

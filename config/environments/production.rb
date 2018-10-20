@@ -79,6 +79,11 @@ Rails.application.configure do
   config.sso_host = 'https://sso.qiniu.com'
   config.www_host = 'https://www.qiniu.com'
   config.blog_host = 'https://blog.qiniu.com'
+  config.portal_host = 'http://portalv4.dev.qiniu.io'
+  config.gaea_admin_host = 'http://bo-gaea-admin-spock-public.cs-spock.cloudappl.com'
+  # TODO: 上线前需要改成线上的环境
+  # config.portal_host = 'https://portal.qiniu.com'
+  # config.gaea_admin_host = 'https://gaea-admin.bo.internal.qiniu.io'
 
   config.img_audit_host = 'https://argus.atlab.ai/v1/image/censor'
   config.video_audit_host = 'https://argus.atlab.ai/v1/video/'

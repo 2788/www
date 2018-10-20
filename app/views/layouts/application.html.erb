@@ -191,12 +191,12 @@
             <li class="dropdown hidden userinfo <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>" id="user-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile user-email" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
               <ul class="dropdown-menu user-menu">
-                <li><a href="https://sso.qiniu.com/signout" class="text-sub">退出当前帐号</a></li>
+                <li><a href="<%= signout_url() -%>" class="text-sub">退出当前帐号</a></li>
               </ul>
             </li>
             <li class="need-signin <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               <div class="actions">
-                <a href="<%= sigin_url('') %>" class="btn btn-hollow">登录</a>
+                <a href="<%= signin_url('') %>" class="btn btn-hollow">登录</a>
                 <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary">注册有礼</a>
               </div>
             </li>

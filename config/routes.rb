@@ -78,8 +78,14 @@ Rails.application.routes.draw do
       end
     end
 
-    # 1024 活动页
+    # 1024 活动页定位到 events#event1024
     get '/events/1024event', to: 'events#event1024'
+    # 获取分享链接
+    get '/get_share_link/:uid', to: 'events#get_share_link'
+    # 获取用户邀请信息
+    get '/get_invited_info/:uid', to: 'events#get_invited_info'
+    # 创建 1024 活动抽奖资格
+    post '/event1024_create_award', to: 'events#event1024_create_award'
 
     # img_censor
     post '/img_censor', to: 'welcome#img_censor'
@@ -87,8 +93,8 @@ Rails.application.routes.draw do
     # video_censor
     post '/video_censor', to: 'welcome#video_censor'
 
-    # calc_heat
-    get '/calc_heat', to: 'events#calc_heat'
+    # get_heat
+    get '/get_heat', to: 'events#get_heat'
 
     resources 'prices', only: [:index]
     get '/caculator', to: 'prices#caculator'
