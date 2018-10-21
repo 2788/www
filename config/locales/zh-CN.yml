@@ -2501,15 +2501,12 @@ zh-CN:
             - name: "视频 AI 边缘分析"
               class: "active"
               href: "#tab-scene-1"
-              subtitle:
             - name: "数据边缘分拣"
               class: ""
               href: "#tab-scene-2"
-              subtitle:
             - name: "边缘多媒体处理"
               class: ""
               href: "#tab-scene-3"
-              subtitle: "（敬请期待）"
           sections:
             - id: "tab-scene-1"
               class: "tab-pane fade in active"
