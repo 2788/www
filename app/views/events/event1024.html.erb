@@ -51,7 +51,7 @@
             参与狂欢，赢取万元锦牛豪礼
             <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-one"} -%>
           </h2>
-          <p class="desc">完成以下任一任务，即可参与抽取万元锦牛豪礼</p>
+          <p class="desc">完成以下一项任务，即可参与抽奖</p>
         </div>
 
         <div class="row">
@@ -125,7 +125,7 @@
           <div class="rules-container">
             <h4>活动说明</h4>
             <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，注册七牛云并完成实名认证，即可获得一次刮刮乐抽奖资格，请留意短信抽奖通知；每个实名认证账户仅有一次抽奖机会。</p>
-            <p>2. 活动期间，所有注册并实名认证的用户可获得免费云资源大礼包一份，<a href="https://www.qiniu.com/events/free" target="_blank">查看礼包详情</a></p>
+            <p>2. 活动期间，所有注册并实名认证的用户可获得免费云资源大礼包一份，<%= link_to "查看礼包详情", "https://www.qiniu.com/events/free", id: "event1024-event-free", class: "event1024-jump-link", target: "_blank" -%></p>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
             云主机低至 0.9 元，带宽低至 0.1 元
             <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-two"} -%>
           </h3>
-          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/qvm", target: "_blank", id: "event1024-product-qvm", class: "product-detail event1024-product-detail" -%></p>
+          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/qvm", target: "_blank", id: "event1024-product-qvm", class: "product-detail event1024-jump-link" -%></p>
         </div>
 
         <div class="row">
@@ -149,13 +149,13 @@
             <%= image_tag "event1024/image-qvm-1.png", alt: "云主机-1", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.t5-lc1m1.small", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.t5-lc1m1.small", id: "event1024-buy-qvm-1", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.n4.small", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.n4.small", id: "event1024-buy-qvm-2", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.t5-lc1m2.large", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.t5-lc1m2.large", id: "event1024-buy-qvm-3", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -163,13 +163,13 @@
             <%= image_tag "event1024/image-qvm-2.png", alt: "云主机-2", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/rds/create?region=cn-qingdao&activity=20181024&db_instance_type=primary&db_instance_class=mysql.n2.small.1&db_instance_storage=30", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/rds/create?region=cn-qingdao&activity=20181024&db_instance_type=primary&db_instance_class=mysql.n2.small.1&db_instance_storage=30", id: "event1024-buy-qvm-4", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/redis/create?region=cn-qingdao&activity=20181024&instance_class=redis.basic.stand.default", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/redis/create?region=cn-qingdao&activity=20181024&instance_class=redis.basic.stand.default", id: "event1024-buy-qvm-5", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-4 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/rds/create?region=cn-qingdao&activity=20181024&db_instance_type=primary&db_instance_class=mysql.n2.medium.1&db_instance_storage=50", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/db/rds/create?region=cn-qingdao&activity=20181024&db_instance_type=primary&db_instance_class=mysql.n2.medium.1&db_instance_storage=50", id: "event1024-buy-qvm-6", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@
             <%= image_tag "event1024/image-qvm-3-1.png", alt: "云主机-3-1", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=20181024&bandwidth=1", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=20181024&bandwidth=1", id: "event1024-buy-qvm-7", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@
             <%= image_tag "event1024/image-qvm-3-2.png", alt: "云主机-3-2", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=20181024&bandwidth=5", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=20181024&bandwidth=5", id: "event1024-buy-qvm-8", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@
             <%= image_tag "event1024/image-qvm-3-3.png", alt: "云主机-3-3", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.n4.xlarge&buymonth=12", class: "btn btn-lg btn-event1024", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=20181024&instance_type=ecs.n4.xlarge&buymonth=12", id: "event1024-buy-qvm-9", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -205,13 +205,13 @@
             新购云存储资源包，低至 5 折，CDN 流量免费送
             <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-three"} -%>
           </h3>
-          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/kodo", target: "_blank", id: "event1024-product-kodo", class: "product-detail event1024-product-detail" -%></p>
+          <p><%= link_to "查看产品详情", "https://www.qiniu.com/products/kodo", target: "_blank", id: "event1024-product-kodo", class: "product-detail event1024-jump-link" -%></p>
         </div>
 
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12 col-hot mg-b-0">
             <%= image_tag "event1024/image-kodo.png", alt: "云存储", width: "100%" -%>
-            <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/kodo", class: "btn btn-lg btn-event1024 btn-kodo", target: "_blank" -%>
+            <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/kodo", id: "event1024-buy-kodo", class: "btn btn-lg btn-event1024 btn-kodo event1024-jump-link", target: "_blank" -%>
           </div>
         </div>
 
@@ -228,8 +228,8 @@
             <%= image_tag "event1024/image-pili-1.png", alt: "音视频-1", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/rtn/rtc/report/duration", class: "btn btn-lg btn-event1024", target: "_blank" -%>
-                <%= link_to "查看产品详情", "https://www.qiniu.com/products/rtn", id: "event1024-product-rtn", class: "product-detail event1024-product-detail", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/rtn/rtc/report/duration", id: "event1024-buy-pili-1", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
+                <%= link_to "查看产品详情", "https://www.qiniu.com/products/rtn", id: "event1024-product-rtn", class: "product-detail event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -237,8 +237,8 @@
             <%= image_tag "event1024/image-pili-2.png", alt: "音视频-2", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/kodo", class: "btn btn-lg btn-event1024", target: "_blank" -%>
-                <%= link_to "查看产品详情", "https://www.qiniu.com/products/plsv", id: "event1024-product-plsv", class: "product-detail event1024-product-detail", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/kodo", id: "event1024-buy-pili-2", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
+                <%= link_to "查看产品详情", "https://www.qiniu.com/products/plsv", id: "event1024-product-plsv", class: "product-detail event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -246,8 +246,8 @@
             <%= image_tag "event1024/image-pili-3.png", alt: "音视频-3", width: "100%" -%>
             <div class="row btn-row">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
-                <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/pili", class: "btn btn-lg btn-event1024", target: "_blank" -%>
-                <%= link_to "查看产品详情", "https://www.qiniu.com/products/pili", id: "event1024-product-pili", class: "product-detail event1024-product-detail", target: "_blank" -%>
+                <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/pili", id: "event1024-buy-pili-3", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
+                <%= link_to "查看产品详情", "https://www.qiniu.com/products/pili", id: "event1024-product-pili", class: "product-detail event1024-jump-link", target: "_blank" -%>
               </div>
             </div>
           </div>
@@ -346,8 +346,8 @@
             <h3 class="modal-title" id="rules-modal-one-label">活动说明</h3>
           </div>
           <div class="modal-body">
-            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，凡在此活动页面领取免费抽奖资格的有历史充值记录七牛云用户（2018 年 11 月 9 日之前有充值记录的实名认证用户）、活动期间实名注册并下单的用户（订单金额 > 0 元）、活动期间邀请好友实名注册的用户均可获得一次抽锦牛的资格。</p>
-            <p>2. 每个七牛云注册账户仅限一次抽奖机会。</p>
+            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，符合抽奖资格的用户包括：此活动页面领取免费抽奖资格的有历史充值记录七牛云用户（2018 年 11 月 10 日之前有充值记录的实名认证用户）、活动期间实名注册并下单的用户（订单金额 > 0 元）、活动期间邀请好友实名注册的用户。</p>
+            <p>2. 每个符合抽奖资格的七牛云账户仅限一次抽奖机会。</p>
             <p>3. 2018 年 11 月 13 日将在所有符合抽奖资格的用户中抽取一名锦牛，锦牛将获得高达万元的超级豪礼（豪礼清单随活动热度增加进行升级，2018 年 11 月 9 日决出最终豪礼清单）。</p>
             <p>4. 抽奖结果将于 2018 年 11 月 13 日在七牛云微信公众号平台公布，敬请期待。</p>
             <p>5. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
@@ -450,7 +450,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="rules-modal-jinniu-label">金牛用户专享</h3>
+            <h3 class="modal-title" id="rules-modal-jinniu-label">金牛用户免费领取抽奖资格</h3>
           </div>
           <div class="modal-body">
             <p>金牛用户：2018 年 11 月 10日之前有历史充值记录的七牛云实名认证用户。</p>

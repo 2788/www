@@ -91,7 +91,7 @@ $(document).ready ->
       href += connector + ref
       if $(e.target).hasClass 'free-receive-unsignin'
         href += '&promotion=' + $(e.target).attr('id') || ''
-      else if $(e.target).hasClass 'event1024-product-detail'
+      else if $(e.target).hasClass 'event1024-jump-link'
         href += '/events/1024event'
       $(this).prop('href', href)
 
