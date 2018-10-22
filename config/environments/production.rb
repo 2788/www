@@ -81,6 +81,20 @@ Rails.application.configure do
   config.blog_host = 'https://blog.qiniu.com'
   config.portal_host = 'https://portal.qiniu.com'
   config.gaea_admin_host = 'https://gaea-admin.bo.internal.qiniu.io'
+  # 2018 年 1024 活动热度计算配置
+  # https://jira.qiniu.io/browse/BO-5294
+  config.event1024 = {
+    start_time: {
+      year: 2018,
+      month: 10,
+      date: 24
+    },
+    end_time: {
+      year: 2018,
+      month: 10,
+      date: 28
+    }
+  }
 
   config.img_audit_host = 'https://argus.atlab.ai/v1/image/censor'
   config.video_audit_host = 'https://argus.atlab.ai/v1/video/'
