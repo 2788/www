@@ -42,10 +42,19 @@ class EventsController < ApplicationController
   # 2018 年 1024 活动
   # https://jira.qiniu.io/browse/BO-5294
   def get_heat
-    # 活动开始时间 2018 年 10 月 24 日 00:00:00
-    start_time = Time.local(2018, 10, 24)
-    # 热度判定结束时间 2018 年 10 月 28 日 00:00:00
-    end_time = Time.local(2018, 10, 28)
+    # 读取配置文件中的时间
+    date_conf = is_date_conf_valid()
+    if date_conf.nil?
+      render json: {
+        "is_valid": false,
+        "value": 0
+      }
+      return
+    end
+    # 活动开始时间（从配置文件中获取）
+    start_time = Time.local(date_conf[:start_time][:year], date_conf[:start_time][:month], date_conf[:start_time][:date])
+    # 热度判定结束时间（从配置文件中获取）
+    end_time = Time.local(date_conf[:end_time][:year], date_conf[:end_time][:month], date_conf[:end_time][:date])
     # 当前时间
     current_time = Time.now
     # 活动未开始
@@ -101,6 +110,51 @@ class EventsController < ApplicationController
       "is_valid": true,
       "value": heat_ratio
     }
+  end
+
+  # 判断 1024 活动的时间配置是否有效
+  def is_date_conf_valid
+    res_date_conf = nil
+    if Rails.configuration.event1024.nil? || Rails.configuration.event1024.blank?
+      return res_date_conf
+    end
+
+    date_conf = Rails.configuration.event1024
+    if date_conf.nil? || date_conf.blank?
+      return res_date_conf
+    end
+    start_time = date_conf[:start_time]
+    if start_time.nil? || start_time.blank?
+      return res_date_conf
+    end
+
+    end_time = date_conf[:end_time]
+    if end_time.nil? || end_time.blank?
+      return res_date_conf
+    end
+
+    if start_time[:year].nil? || start_time[:year].blank? || start_time[:month].nil? || start_time[:month].blank? || start_time[:date].nil? || start_time[:date].blank?
+      return res_date_conf
+    end
+
+    if end_time[:year].nil? || end_time[:year].blank? || end_time[:month].nil? || end_time[:month].blank? || end_time[:date].nil? || end_time[:date].blank?
+      return res_date_conf
+    end
+
+    res_date_conf = {
+      "start_time": {
+        "year": start_time[:year].to_i,
+        "month": start_time[:month].to_i,
+        "date": start_time[:date].to_i
+      },
+      "end_time": {
+        "year": end_time[:year].to_i,
+        "month": end_time[:month].to_i,
+        "date": end_time[:date].to_i
+      }
+    }
+
+    return res_date_conf
   end
 
   # 计算热度的函数
@@ -186,6 +240,7 @@ class EventsController < ApplicationController
 
     req_uri = gaea_admin_host + "/api/marketing/promotion/bo5310/info/" + uid
     invited_info = get_remote_data(req_uri, admin_token)
+
     if invited_info.nil?
       render json: {
         "is_valid": false,
@@ -235,10 +290,10 @@ class EventsController < ApplicationController
       return
     end
 
-    req_body = render json: {
+    req_body = {
       "uid": uid_number
     }
-    req_uri = gaea_admin_host + "/api/marketing/promotion/bo5310/info"
+    req_uri = gaea_admin_host + "/api/marketing/promotion/bo5310/info/" + uid.to_s
     res = post_remote_data(req_uri, admin_token, req_body)
 
     if res.nil?
@@ -269,11 +324,11 @@ class EventsController < ApplicationController
     req["Content-Type"] = "application/json"
 
     begin
-        http = Net::HTTP.new(uri.hostname, uri.port)
-        if uri.port == 443
-          http.use_ssl = true
-        end
-        res = http.request(req)
+      http = Net::HTTP.new(uri.hostname, uri.port)
+      if uri.port == 443
+        http.use_ssl = true
+      end
+      res = http.request(req)
     rescue
       return nil
     end
@@ -291,17 +346,17 @@ class EventsController < ApplicationController
   def post_remote_data(req_uri, admin_token, req_body)
     access_token = admin_token["access_token"]
     uri = URI.parse(req_uri)
-    req = Net::HTTP::POST.new(uri)
+    req = Net::HTTP::Post.new(uri)
     req["body"] = req_body.to_json.encode("UTF-8")
     req["Authorization"] = "Bearer " + access_token
     req["Content-Type"] = "application/json"
 
     begin
-        http = Net::HTTP.new(uri.hostname, uri.port)
-        if uri.port == 443
-          http.use_ssl = true
-        end
-        res = http.request(req)
+      http = Net::HTTP.new(uri.hostname, uri.port)
+      if uri.port == 443
+        http.use_ssl = true
+      end
+      res = http.request(req)
     rescue
       return nil
     end
