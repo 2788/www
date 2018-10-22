@@ -75,15 +75,35 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.acc_host = 'https://acc.qbox.me'
-  config.sso_host = 'https://sso.qiniu.com'
-  config.www_host = 'https://www.qiniu.com'
-  config.blog_host = 'https://blog.qiniu.com'
-  config.portal_host = 'http://portalv4.dev.qiniu.io'
-  config.gaea_admin_host = 'http://bo-gaea-admin-spock-public.cs-spock.cloudappl.com'
-  # TODO: 上线前需要改成线上的环境
+  # TODO: 上线前要把地址改回线上的
+  # config.acc_host = 'https://acc.qbox.me'
+  # config.sso_host = 'https://sso.qiniu.com'
+  # config.www_host = 'https://www.qiniu.com'
+  # config.blog_host = 'https://blog.qiniu.com'
   # config.portal_host = 'https://portal.qiniu.com'
   # config.gaea_admin_host = 'https://gaea-admin.bo.internal.qiniu.io'
+
+  config.acc_host = 'http://acc.dev.qiniu.io'
+  config.sso_host = 'https://sso-dev.qiniu.io'
+  config.www_host = 'http://www-dev.qiniu.io'
+  config.blog_host = 'http://blog-dev.qiniu.io'
+  config.portal_host = 'http://portalv4.dev.qiniu.io'
+  config.gaea_admin_host = 'http://bo-gaea-admin-spock-public.cs-spock.cloudappl.com'
+  
+  # 2018 年 1024 活动热度计算配置
+  # https://jira.qiniu.io/browse/BO-5294
+  config.event1024 = {
+    start_time: {
+      year: 2018,
+      month: 10,
+      date: 24
+    },
+    end_time: {
+      year: 2018,
+      month: 10,
+      date: 28
+    }
+  }
 
   config.img_audit_host = 'https://argus.atlab.ai/v1/image/censor'
   config.video_audit_host = 'https://argus.atlab.ai/v1/video/'
