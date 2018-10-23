@@ -109,9 +109,12 @@
         .color-words {
           color: #FDBC24;
         }
+        &.narrow {
+          display: none;
+        }
       }
       &.award-box-0 {
-        left: 0
+        left: 0;
       }
       &.award-box-1 {
         left: calc(33.33% - 36px);
@@ -470,6 +473,53 @@
 
 @media (max-width: 767px) {
   .features-event1024-progress {
+    .event1024-progress-row {
+      .award-box {
+        top: calc(-100% - 45px) !important;
+        img {
+          width: 72px !important;
+        }
+        .award-title {
+          margin-left: 0 !important;
+          text-align: center;
+          &.broad {
+            display: none;
+          }
+          &.narrow {
+            display: block;
+          }
+        }
+        &.award-box-0 {
+          left: 0 !important;
+        }
+        &.award-box-1 {
+          left: calc(33.33% - 24px) !important;
+        }
+        &.award-box-2 {
+          left: calc(66.66% - 48px) !important;
+        }
+        &.award-box-3 {
+          left: calc(100% - 72px) !important;
+        }
+      }
+      .icon-award {
+        width: 40px !important;
+        top: 100% !important;
+        cursor: pointer;
+        &.award-one {
+          left: 10px !important;
+        }
+        &.award-two {
+          left: calc(33.33% - 12px) !important;
+        }
+        &.award-three {
+          left: calc(66.66% - 36px) !important;
+        }
+        &.award-four {
+          left: calc(100% - 58px) !important;
+        }
+      }
+    }
     .heat-tip {
       top: 0.40rem !important;
     }
@@ -522,6 +572,14 @@
     }
   }
 }
+
+@media (min-width: 601px) and (max-width: 622px) {
+  .features-event1024-hot {
+    .btn-row-pili {
+      bottom: 0;
+    }
+  }
+} 
 
 @media (max-width: 600px) {
   .features-event1024-signup {

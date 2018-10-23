@@ -11,19 +11,23 @@
         <div class="row event1024-progress-row">
           <%# 宝箱 %>
           <div class="award-box award-box-0">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">5018</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title broad"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">5018</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title narrow"><span class="change-words">未解锁</span><br/><span class="strong-number">5018</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-0.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <div class="award-box award-box-1">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">7006</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title broad"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">7006</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title narrow"><span class="change-words">未解锁</span><br/><span class="strong-number">7006</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-1.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <div class="award-box award-box-2">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">12005</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title broad"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">12005</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title narrow"><span class="change-words">未解锁</span><br/><span class="strong-number">12005</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-2.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <div class="award-box award-box-3">
-            <p class="award-title"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">23005</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title broad"><span class="change-words">未解锁</span>&nbsp;<span class="strong-number">23005</span>&nbsp;<span class="color-words">元</span>礼单</p>
+            <p class="award-title narrow"><span class="change-words">未解锁</span><br/><span class="strong-number">23005</span>&nbsp;<span class="color-words">元</span>礼单</p>
             <%= image_tag "event1024/icon-box-open-3.png", width: 108, class: "icon-box icon-active" -%>
           </div>
           <%# 进度条 %>
@@ -86,7 +90,7 @@
             <div class="row">
               <ul class="navbar-wrapper-middle">
                 <li class="intLink">
-                  <div class="col-md-4 col-sm-4 col-xs-4 col-cloud nav-cloud">
+                  <div class="col-md-4 col-sm-4 col-xs-12 col-cloud nav-cloud">
                     <%= image_tag "event1024/image-guaguale.png", class: "mg-t-2", alt: "注册玩转刮刮乐", width: 100 -%>
                     <h4><%= link_to "注册玩转刮刮乐", "#event1024-section-1" -%></h4>
                     <p>刮刮乐抽奖 + 免费云服务套餐</p>
@@ -94,7 +98,7 @@
                   </div>
                 </li>
                 <li class="intLink">
-                  <div class="col-md-4 col-sm-4 col-xs-4 col-cloud nav-cloud">
+                  <div class="col-md-4 col-sm-4 col-xs-12 col-cloud nav-cloud">
                     <%= image_tag "event1024/image-zhekou.png", class: "mg-t-2", alt: "热门产品冰点折扣", width: 100 -%>
                     <h4><%= link_to "热门产品冰点折扣", "#event1024-section-2" -%></h4>
                     <p>热门产品冰点价</p>
@@ -102,7 +106,7 @@
                   </div>
                 </li>
                 <li class="intLink">
-                  <div class="col-md-4 col-sm-4 col-xs-4 col-cloud nav-cloud">
+                  <div class="col-md-4 col-sm-4 col-xs-12 col-cloud nav-cloud">
                     <%= image_tag "event1024/image-haoli.png", class: "mg-t-2", alt: "推荐赢好礼", width: 100 -%>
                     <h4><%= link_to "推荐赢好礼", "#event1024-section-3" -%></h4>
                     <p class="mg-b-2">至尊千元天猫券等你拿</p>
@@ -226,7 +230,7 @@
         <div class="row">
           <div class="col-md-4 col-sm-4 col-xs-4 col-hot">
             <%= image_tag "event1024/image-pili-1.png", alt: "音视频-1", width: "100%" -%>
-            <div class="row btn-row">
+            <div class="row btn-row btn-row-pili">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
                 <%= link_to "立即购买", "https://portal.qiniu.com/rtn/rtc/report/duration", id: "event1024-buy-pili-1", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
                 <%= link_to "查看产品详情", "https://www.qiniu.com/products/rtn", id: "event1024-product-rtn", class: "product-detail event1024-jump-link", target: "_blank" -%>
@@ -235,7 +239,7 @@
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4 col-hot">
             <%= image_tag "event1024/image-pili-2.png", alt: "音视频-2", width: "100%" -%>
-            <div class="row btn-row">
+            <div class="row btn-row btn-row-pili">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
                 <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/kodo", id: "event1024-buy-pili-2", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
                 <%= link_to "查看产品详情", "https://www.qiniu.com/products/plsv", id: "event1024-product-plsv", class: "product-detail event1024-jump-link", target: "_blank" -%>
@@ -244,7 +248,7 @@
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4 col-hot">
             <%= image_tag "event1024/image-pili-3.png", alt: "音视频-3", width: "100%" -%>
-            <div class="row btn-row">
+            <div class="row btn-row btn-row-pili">
               <div class="col-md-12 col-sm-12 col-xs-12 col-btn">
                 <%= link_to "立即购买", "https://portal.qiniu.com/financial/respack/pili", id: "event1024-buy-pili-3", class: "btn btn-lg btn-event1024 event1024-jump-link", target: "_blank" -%>
                 <%= link_to "查看产品详情", "https://www.qiniu.com/products/pili", id: "event1024-product-pili", class: "product-detail event1024-jump-link", target: "_blank" -%>
