@@ -3,6 +3,8 @@
 
 <div class="gradual-bg-qvm1rmb">
   <%# tab 切换按钮 %>
+  <%# 1024 活动期间 云主机活动个人版 下线 %>
+  <%# https://jira.qiniu.io/browse/BO-5362 %>
   <div class="features features-qvm1rmb-nav">
     <div class="container">
       <ul class="nav nav-tabs nav-justified points-bar nav-qvm1rmb">
@@ -10,7 +12,7 @@
           <%= link_to "企业版", "/events/qvm0rmb", class: "enterprise-item", target: "_self" -%>
         </li>
         <li class="active">
-          <%= link_to "个人版", "/events/qvm1rmb", class: "person-item", target: "_self" -%>
+          <%= link_to content_tag(:span, content_tag(:span, "个人版") + content_tag(:span, "（活动已结束）", class: "nav-tip")), "/events/qvm1rmb", class: "person-item", target: "_self" -%>
         </li>
       </ul>
     </div>
@@ -24,43 +26,46 @@
         <div class="intro">
           <%= image_tag "qvmevent/title-gerenyouhuijixing.png", alt: "优惠机型", width: 250 -%>
         </div>
-
+        <%# 1024 活动期间 云主机活动个人版 下线 %>
+        <%# https://jira.qiniu.io/browse/BO-5362 %>
         <div class="row">
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-gongwangdaikuan-person.png", alt: "公网带宽", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=onermb", target: "_blank", class: "btn" -%>
+            <%= link_to "活动已结束", "https://portal.qiniu.com/qvm/network/eip?region_id=cn-qingdao&modal=create&activity=onermb", target: "_blank", class: "btn disabled" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-tufaxingneng-person-1.png", alt: "突发性能实例-1", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc2m1.nano", target: "_blank", class: "btn" -%>
+            <%= link_to "活动已结束", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc2m1.nano", target: "_blank", class: "btn disabled" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-tufaxingneng-person-2.png", alt: "突发性能实例-2", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc1m1.small", target: "_blank", class: "btn" -%>
+            <%= link_to "活动已结束", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc1m1.small", target: "_blank", class: "btn disabled" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-gongxiangjiben-person-1.png", alt: "共享基本型-1", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.xn4.small", target: "_blank", class: "btn" -%>
+            <%= link_to "活动已结束", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.xn4.small", target: "_blank", class: "btn disabled" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-tufaxingneng-person-3.png", alt: "突发性能实例-3", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc1m2.small", target: "_blank", class: "btn" -%>
+            <%= link_to "活动已结束", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.t5-lc1m2.small", target: "_blank", class: "btn disabled" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-gongxiangjiben-person-2.png", alt: "共享基本型-2", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.n4.small", target: "_blank", class: "btn" -%>
+            <%= link_to "活动已结束", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb&instance_type=ecs.n4.small", target: "_blank", class: "btn disabled" -%>
           </div>
         </div>
 
         <div class="row qvm1rmb-progress-row">
+          <%# 1024 活动期间 云主机活动个人版 下线 %>
+          <%# https://jira.qiniu.io/browse/BO-5362 %>
           <%# title %>
-          <h5 class="qvm1rmb-progress-title person-title"></h5>
+          <h5 class="qvm1rmb-progress-title person-title">活动已结束</h5>
           <%# days left %>
           <div class="qvm1rmb-progress-tip person-tip"></div>
           <div class="qvm1rmb-progress-bar person-bar">
             <div class="progress">
               <div class="progress-bar" role="progressbar"
-                  aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0"></div>
+                  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
             </div>
           </div>
         </div>
@@ -122,10 +127,11 @@
         <div class="rule-bg-container">
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-
+              <%# 1024 活动期间 云主机活动个人版 下线 %>
+              <%# https://jira.qiniu.io/browse/BO-5362 %>
               <div class="rule-item">
                 <h4>一. 活动时间</h4>
-                <p class="activity-time person">活动未开始</p>
+                <p class="activity-time person">活动已结束</p>
               </div>
 
               <div class="rule-item">
