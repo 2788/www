@@ -166,7 +166,14 @@ class EventsController < ApplicationController
 
   # 获取好友分享链接
   def get_share_link
-    uid = params[:uid]
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "is_valid": false,
+        "link": ""
+      }
+    end
+    uid = uinfo["uid"]
     portal_host = Rails.configuration.portal_host
     if uid.nil? || uid.blank? || portal_host.nil? || portal_host.blank?
       render json: {
@@ -185,7 +192,7 @@ class EventsController < ApplicationController
       return
     end
 
-    req_uri = portal_host + "/api/gaea/user/promotion/" + uid + "/invite/url"
+    req_uri = portal_host + "/api/gaea/user/promotion/" + uid.to_s + "/invite/url"
     share_link = get_remote_data(req_uri, admin_token)
     if share_link.nil?
       render json: {
@@ -219,7 +226,14 @@ class EventsController < ApplicationController
 
   # 获取用户邀请信息
   def get_invited_info
-    uid = params[:uid]
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "is_valid": false,
+        "invited_info": nil
+      }
+    end
+    uid = uinfo["uid"]
     gaea_admin_host = Rails.configuration.gaea_admin_host
     if uid.nil? || uid.blank? || gaea_admin_host.nil? || gaea_admin_host.blank?
       render json: {
@@ -238,7 +252,7 @@ class EventsController < ApplicationController
       return
     end
 
-    req_uri = gaea_admin_host + "/api/marketing/promotion/bo5310/info/" + uid
+    req_uri = gaea_admin_host + "/api/marketing/promotion/bo5310/info/" + uid.to_s
     invited_info = get_remote_data(req_uri, admin_token)
 
     if invited_info.nil?
@@ -265,7 +279,13 @@ class EventsController < ApplicationController
 
   # 创建抽奖资格
   def event1024_create_award
-    uid = params[:uid]
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "is_success": false
+      }
+    end
+    uid = uinfo["uid"]
     gaea_admin_host = Rails.configuration.gaea_admin_host
     if uid.nil? || uid.blank? || gaea_admin_host.nil? || gaea_admin_host.blank?
       render json: {

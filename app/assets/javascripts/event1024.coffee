@@ -18,7 +18,6 @@ $(document).ready ->
   $recommendCopyBtn = $('.features-event1024-recommend .recommend-container .copy-btn')
   $weiboShareIcon = $('.features-event1024-recommend .recommend-container .icon-weibo')
 
-  userID = 0
   heatNodeList = [0, 33.33, 66.66, 100]
   weiboShareTitle = encodeURIComponent '七牛云 1024 采购狂欢节进行时，不撸代码，快来撸牛毛，抽万元锦牛豪礼（https://www.qiniu.com/events/1024event）@七牛云'
   unlockText = '已解锁'
@@ -116,7 +115,7 @@ $(document).ready ->
   getShareURL = () ->
     $.ajax
       method: 'GET',
-      url: '/get_share_link/' + userID,
+      url: '/get_share_link',
       success: (res) ->
         if !res.is_valid
           # 获取链接失败
@@ -137,7 +136,7 @@ $(document).ready ->
   getInvitedInfo = () ->
     $.ajax
       method: 'GET',
-      url: '/get_invited_info/' + userID,
+      url: '/get_invited_info',
       success: (res) ->
         if !res.is_valid
           # 邀请信息获取失败
@@ -174,8 +173,6 @@ $(document).ready ->
     $.ajax
       method: 'POST',
       url: '/event1024_create_award',
-      data:
-        uid: userID
       success: (res) ->
         if !res.is_success
           # 创建抽奖资格失败
@@ -237,12 +234,10 @@ $(document).ready ->
           $achievementTip.show()
           $recommendSignin.show()
           $recommendCopyBtn.show()
-          if res.uid
-            userID = res.uid
-            # 获取邀请信息
-            getInvitedInfo()
-            # 获取好友分享链接
-            getShareURL()
+          # 获取邀请信息
+          getInvitedInfo()
+          # 获取好友分享链接
+          getShareURL()
 
       error: (err) ->
         # error
