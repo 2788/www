@@ -25,7 +25,7 @@ $(document).ready ->
   copyLinkText = '复制链接'
   copySuccessText = '复制成功'
   getLinkFailText = '获取链接失败'
-  getInvitedInfoFailText = '获取荐成果失败'
+  getInvitedInfoFailText = '获取推荐成果失败'
   getUserStatusFailText = '获取用户信息失败'
   jinniuGetBtnText = '立即领取'
   jinniuGettingText = '领取中...'
