@@ -81,7 +81,7 @@ Rails.application.configure do
   config.www_host = 'https://www.qiniu.com'
   config.blog_host = 'https://blog.qiniu.com'
   config.portal_host = 'https://portal.qiniu.com'
-  config.gaea_admin_host = 'http://gaea-admin.bo.internal.qiniu.io'
+  config.gaea_admin_host = 'http://gaea-admin.qiniu.io'
   # 测试环境
   # config.acc_host = 'http://acc.dev.qiniu.io'
   # config.sso_host = 'https://sso-dev.qiniu.io'
