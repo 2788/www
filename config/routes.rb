@@ -81,9 +81,9 @@ Rails.application.routes.draw do
     # 1024 活动页定位到 events#event1024
     get '/events/1024event', to: 'events#event1024'
     # 获取分享链接
-    get '/get_share_link/:uid', to: 'events#get_share_link'
+    get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
-    get '/get_invited_info/:uid', to: 'events#get_invited_info'
+    get '/get_invited_info', to: 'events#get_invited_info'
     # 创建 1024 活动抽奖资格
     post '/event1024_create_award', to: 'events#event1024_create_award'
 
