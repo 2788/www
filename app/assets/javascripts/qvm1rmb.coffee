@@ -152,18 +152,21 @@ $(document).ready ->
     activityTimeEnterprise = startTimeEnterprise.getFullYear() + ' 年 ' + (startTimeEnterprise.getMonth() + 1) + ' 月 ' + startTimeEnterprise.getDate() + ' 日 - ' + endTimeEnterprise.getFullYear() + ' 年 ' + (endTimeEnterprise.getMonth() + 1) + ' 月 ' + endTimeEnterprise.getDate() + ' 日（每天限量 50 台）'
     $activityTimeEnterprise.html(activityTimeEnterprise)
 
-  if currentTime.getTime() < personStartTime.getTime()
-    # 如果当前时间活动没有开始
-    timeObjPerson =
-      durationTime: 0
-      passTime: -1
-      leftTime: 0
-    handleProgressPerson timeObjPerson
-  else
-    timeDurationPerson = timeLoop personStartTime.getFullYear(), personStartTime.getMonth(), personStartTime.getDate(), 'person'
-    timeObjPerson = handleDuration timeDurationPerson
-    handleProgressPerson timeObjPerson
-    resetActivityTimePerson timeDurationPerson
+  # 1024 活动期间 云主机活动个人版 下线
+  # https://jira.qiniu.io/browse/BO-5362
+  $progressTipPerson.hide()
+  # if currentTime.getTime() < personStartTime.getTime()
+  #   # 如果当前时间活动没有开始
+  #   timeObjPerson =
+  #     durationTime: 0
+  #     passTime: -1
+  #     leftTime: 0
+  #   handleProgressPerson timeObjPerson
+  # else
+  #   timeDurationPerson = timeLoop personStartTime.getFullYear(), personStartTime.getMonth(), personStartTime.getDate(), 'person'
+  #   timeObjPerson = handleDuration timeDurationPerson
+  #   handleProgressPerson timeObjPerson
+  #   resetActivityTimePerson timeDurationPerson
 
   if currentTime.getTime() < enterpriseStartTime.getTime()
     # 如果当前时间活动没有开始

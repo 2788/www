@@ -3,6 +3,8 @@
 
 <div class="gradual-bg-qvm1rmb">
   <%# tab 切换按钮 %>
+  <%# 1024 活动期间 云主机活动个人版 下线 %>
+  <%# https://jira.qiniu.io/browse/BO-5362 %>
   <div class="features features-qvm1rmb-nav">
     <div class="container">
       <ul class="nav nav-tabs nav-justified points-bar nav-qvm1rmb">
@@ -10,7 +12,7 @@
           <%= link_to "企业版", "/events/qvm0rmb", class: "enterprise-item", target: "_self" -%>
         </li>
         <li>
-          <%= link_to "个人版", "/events/qvm1rmb", class: "person-item", target: "_self" -%>
+          <%= link_to content_tag(:span, content_tag(:span, "个人版") + content_tag(:span, "（活动已结束）", class: "nav-tip")), "/events/qvm1rmb", class: "person-item", target: "_self" -%>
         </li>
       </ul>
     </div>
