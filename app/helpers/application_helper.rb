@@ -39,4 +39,68 @@ module ApplicationHelper
     tag("meta", name: "go-source", content: "qiniu.com/#{package} https://github.com/qbox/#{package}/ https://github.com/qbox/#{package}/tree/master{/dir} https://github.com/qbox/#{package}/blob/master{/dir}/{file}#L{line}")
   end
 
+  def is_1024event_on
+    # 1024 活动页面 banner 添加定时显示功能
+    # https://jira.qiniu.io/browse/BO-5294
+    is1024EventBegin = false
+    # 判断日期配置是否有效
+    date_conf = is_date_conf_valid()
+    if !date_conf.nil?
+      # 当前时间
+      current_time = Time.now
+      # 从配置文件中读取的 1024 活动开始时间
+      start_time =  Time.local(date_conf[:start_time][:year], date_conf[:start_time][:month], date_conf[:start_time][:date])
+      # 1024 活动结束时间 2018 年 11 月 10 日 零点（11 月 9 日晚上 12 点）
+      end_time = Time.local(2018, 11, 10)
+      if current_time.to_i >= start_time.to_i && current_time.to_i <= end_time.to_i
+        is1024EventBegin = true
+      end
+    end
+    return is1024EventBegin
+  end
+
+  # 判断 1024 活动的时间配置是否有效
+  def is_date_conf_valid
+    res_date_conf = nil
+    if Rails.configuration.event1024.nil? || Rails.configuration.event1024.blank?
+      return res_date_conf
+    end
+
+    date_conf = Rails.configuration.event1024
+    if date_conf.nil? || date_conf.blank?
+      return res_date_conf
+    end
+    start_time = date_conf[:start_time]
+    if start_time.nil? || start_time.blank?
+      return res_date_conf
+    end
+
+    end_time = date_conf[:end_time]
+    if end_time.nil? || end_time.blank?
+      return res_date_conf
+    end
+
+    if start_time[:year].nil? || start_time[:year].blank? || start_time[:month].nil? || start_time[:month].blank? || start_time[:date].nil? || start_time[:date].blank?
+      return res_date_conf
+    end
+
+    if end_time[:year].nil? || end_time[:year].blank? || end_time[:month].nil? || end_time[:month].blank? || end_time[:date].nil? || end_time[:date].blank?
+      return res_date_conf
+    end
+
+    res_date_conf = {
+      "start_time": {
+        "year": start_time[:year].to_i,
+        "month": start_time[:month].to_i,
+        "date": start_time[:date].to_i
+      },
+      "end_time": {
+        "year": end_time[:year].to_i,
+        "month": end_time[:month].to_i,
+        "date": end_time[:date].to_i
+      }
+    }
+
+    return res_date_conf
+  end
 end

@@ -223,6 +223,12 @@
     font-size: 0.30rem;
     color: #EFC8A0;
   }
+  .navbar-wrapper-middle {
+    li {
+      width: calc(100% + 40px);
+      margin-left: -40px;
+    }
+  }
   .col-cloud {
     padding: 0;
     text-align: center;
@@ -370,7 +376,7 @@
     .rules-container {
       width: 48%;
       left: 26%;
-      bottom: 7%;
+      bottom: 5%;
     }
   }
   .features-event1024-hot {
@@ -392,7 +398,7 @@
     .rules-container {
       width: 58%;
       left: 21%;
-      bottom: 7%;
+      bottom: 5%;
     }
   }
   .features-event1024-hot {
@@ -527,10 +533,17 @@
   .features-event1024-join {
     .col-join {
       margin: 0.20rem 0;
+      img {
+        width: 80px !important;
+        
+      }
     }
-    .border-l-r {
-      border-right: none !important;
-      border-left: none !important;
+    .col-jinniu {
+      .icon-jinniu-mark {
+        width: 40px !important;
+        position: absolute;
+        left: calc(50% + 25px);
+      }
     }
   }
   .features-event1024-cloud {
@@ -539,12 +552,17 @@
       margin-top: 0.30rem !important;
       margin-bottom: 0.30rem;
     }
+    .col-cloud {
+      img {
+        width: 80px !important;
+      }
+    }
   }
   .features-event1024-signup {
     .rules-container {
       width: 56%;
       left: 22%;
-      bottom: 3%;
+      bottom: 1%;
     }
   }
   .features-event1024-hot {
@@ -587,8 +605,8 @@
       background-size: cover !important;
     }
     .rules-container {
-      width: 72%;
-      left: 14%;
+      width: 74%;
+      left: 13%;
       bottom: 0;
     }
   }

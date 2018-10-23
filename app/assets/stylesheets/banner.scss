@@ -685,6 +685,23 @@
     }
   }
 
+  &.hero-event1024-index {
+    background-image: image-url("banner/banner-event1024-index.jpg");
+    .middle-container {
+      top: auto;
+      bottom: 20%;
+      text-align: center;
+      .btn-banner {
+        color: #000;
+        border: none;
+        background-color: #FFD100;
+        &:hover {
+          color: #FFF;
+        }
+      }
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;
@@ -945,6 +962,12 @@
       .middle-container {
         top: auto;
         bottom: 12%;
+      }
+    }
+
+    &.hero-event1024-index {
+      .middle-container {
+        bottom: 15% !important;
       }
     }
 
