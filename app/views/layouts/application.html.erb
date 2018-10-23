@@ -218,8 +218,13 @@
     <%# 悬浮按钮 %>
     <div class="helper">
       <div class="helper-image">
-        <%= link_to image_tag("free/icon-helper-normal.png"), "https://blog.qiniu.com/archives/8810", class: "normal-image", title: "云产品特惠", target: "_blank" -%>
-        <%= link_to image_tag("free/icon-helper-hover.png"), "https://blog.qiniu.com/archives/8810", class: "hover-image", title: "最低享 5 折", target: "_blank" -%>
+        <% if is_1024event_on() -%>
+          <%= link_to image_tag("event1024/icon-helper-normal.jpg"), "https://www.qiniu.com/events/1024event", id: "helper-1024event-index-normal", class: "normal-image", title: "云采购 0 元", target: "_blank" -%>
+          <%= link_to image_tag("event1024/icon-helper-hover.jpg"), "https://www.qiniu.com/events/1024event", id: "helper-1024event-index-hover", class: "hover-image", title: "豪礼独享", target: "_blank" -%>
+        <% else -%>
+          <%= link_to image_tag("free/icon-helper-normal.png"), "https://blog.qiniu.com/archives/8810", class: "normal-image", title: "云产品特惠", target: "_blank" -%>
+          <%= link_to image_tag("free/icon-helper-hover.png"), "https://blog.qiniu.com/archives/8810", class: "hover-image", title: "最低享 5 折", target: "_blank" -%>
+        <% end -%>
       </div>
       <a id="waiter" data-toggle="modal" data-target="#feedback-modal">
         <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != "zh" ? "icon-en" : "" -%>
