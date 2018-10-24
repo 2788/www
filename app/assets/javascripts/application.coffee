@@ -89,10 +89,15 @@ $(document).ready ->
     if hostname && hostname.length > 0 && window.location.hostname != hostname && href.indexOf(ref) < 0
       connector = if /\?/.test(href) then '&' else '?'
       href += connector + ref
+      # 免费云服务套餐页面注册跳转
       if $(e.target).hasClass 'free-receive-unsignin'
         href += '&promotion=' + $(e.target).attr('id') || ''
+      # 1024 活动页面查看产品详情/购买跳转
       else if $(e.target).hasClass 'event1024-jump-link'
         href += '/events/1024event'
+        # 1024 活动页面注册跳转
+        if $(e.target).hasClass 'event1024-signup-link'
+          href += '&promotion=Event1024'
       $(this).prop('href', href)
 
   $('[data-toggle="tooltip"]').tooltip()
@@ -218,7 +223,9 @@ $(document).ready ->
   $('.banners-slider').slick
     dots: true
     autoplay: true
-    autoplaySpeed: 2000
+    # autoplaySpeed: 2000
+    # 增长官网首页 banner 停留时间
+    autoplaySpeed: 4000
     arrows: false
     slidesToShow: 1
     slidesToScroll: 1
