@@ -213,10 +213,7 @@
     border-right: 2px solid #EFC8A0;
   }
   .col-rules {
-    padding-top: 0.40rem;
-    h3 {
-      color: #EFC8A0;
-    }
+    padding-top: 0.50rem;
     p {
       color: #EFC8A0;
       .link-item {
@@ -557,10 +554,17 @@
       img {
         width: 80px !important;
       }
+      .navbar-wrapper-middle {
+        width: 62px !important;
+      }
       .btn-container {
         position: absolute !important;
-        left: calc(50% - 42px);
+        left: calc(50% - 31px);
         bottom: 0;
+      }
+      .btn {
+        font-size: 0.14rem;
+        padding: 6px;
       }
     }
     .col-jinniu {
@@ -569,9 +573,8 @@
         position: absolute;
         left: calc(50% + 25px);
       }
-      .btn {
-        font-size: 0.14rem;
-        padding: 6px;
+      .signin-to-get {
+        left: calc(50% - 43px) !important;
       }
     }
   }
