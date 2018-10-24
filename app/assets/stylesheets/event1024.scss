@@ -87,9 +87,18 @@
       background-color: transparent;
     }
   }
+  .navbar-wrapper-middle {
+    padding-left: 0;
+  }
 }
 
 .features-event1024-progress {
+  .intro {
+    .desc {
+      padding-bottom: 0.60rem;
+      font-size: 0.25rem;
+    }
+  }
   .event1024-progress-row {
     position: relative;
     margin: 1.00rem 0;
@@ -163,8 +172,7 @@
   .heat-tip {
     position: relative;
     top: 0.20rem;
-    left: calc(100% - 120px);
-    font-size: 0.14rem;
+    font-size: 0.20rem;
     color: #FDBC24;
   }
 }
@@ -177,14 +185,18 @@
       margin-top: 0.20rem;
       color: #EFC8A0;
     }
+    .mg-t-0 {
+      margin-top: 0;
+    }
+    .navbar-wrapper-middle {
+      width: 82px;
+      display: inline-block;
+    }
   }
   .col-jinniu {
     .icon-jinniu-mark {
       position: absolute;
       left: calc(50% + 50px);
-    }
-    p {
-      color: #FFD100;
     }
     .signin-to-get {
       display: none;
@@ -200,10 +212,25 @@
     border-left: 2px solid #EFC8A0;
     border-right: 2px solid #EFC8A0;
   }
+  .col-rules {
+    padding-top: 0.40rem;
+    h3 {
+      color: #EFC8A0;
+    }
+    p {
+      color: #EFC8A0;
+      .link-item {
+        color: #FFD100;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }
 
 .features-event1024-cloud {
-  padding-top: 1.00rem;
+  padding-top: 0.60rem;
   .container {
     position: relative;
     background-color: rgba($color: #FFF, $alpha: 0.3)
@@ -222,12 +249,6 @@
     margin-top: 0.90rem;
     font-size: 0.30rem;
     color: #EFC8A0;
-  }
-  .navbar-wrapper-middle {
-    li {
-      width: calc(100% + 40px);
-      margin-left: -40px;
-    }
   }
   .col-cloud {
     padding: 0;
@@ -527,15 +548,19 @@
       }
     }
     .heat-tip {
-      top: 0.40rem !important;
+      top: 0 !important;
     }
   }
   .features-event1024-join {
     .col-join {
-      margin: 0.20rem 0;
+      height: 2.35rem;
       img {
         width: 80px !important;
-        
+      }
+      .btn-container {
+        position: absolute !important;
+        left: calc(50% - 42px);
+        bottom: 0;
       }
     }
     .col-jinniu {

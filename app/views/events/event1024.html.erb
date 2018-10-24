@@ -8,6 +8,12 @@
     <%# 进度条部分 %>
     <div class="features features-event1024 features-event1024-progress">
       <div class="container">
+        <div class="intro">
+          <p class="desc">
+            活动将抽取一名锦牛独享万元礼单
+            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-one"} -%>
+          </p>
+        </div>
         <div class="row event1024-progress-row">
           <%# 宝箱 %>
           <div class="award-box award-box-0">
@@ -51,10 +57,7 @@
     <div class="features features-event1024 features-event1024-join">
       <div class="container">
         <div class="intro">
-          <h2 class="title">
-            参与狂欢，赢取万元锦牛豪礼
-            <%= link_to "活动说明", "", class: "check-rules", title: "查看活动说明", data: { toggle: "modal", target: "#rules-modal-one"} -%>
-          </h2>
+          <h2 class="title">参与狂欢，赢取万元锦牛豪礼</h2>
           <p class="desc">完成以下一项任务，即可参与抽奖</p>
         </div>
 
@@ -62,18 +65,36 @@
           <div class="col-md-4 col-sm-4 col-xs-4 col-join col-jinniu">
             <%= link_to image_tag("event1024/icon-jinniu-mark.png", alt: "金牛用户专享", class: "icon-jinniu-mark", width: 60), "", data: { toggle: "modal", target: "#rules-modal-jinniu"} -%>
             <%= image_tag "event1024/image-jinniu.png", alt: "金牛用户", width: 120 -%>
-            <p class="getting-status">您的信息正在获取中，请稍候...</p>
-            <p class="signin-to-get"><%= link_to "登录免费抽奖", signin_url('/events/1024event'), class: "btn btn-event1024", target: "_blank" -%></p>
-            <p class="can-get"><button class="btn btn-event1024">立即领取</button></p>
-            <p class="can-not-get">您已领取过抽奖资格</p>
+            <p>金牛用户免费领取抽奖资格</p>
+            <p class="getting-status mg-t-0">您的信息正在获取中，请稍候...</p>
+            <p class="signin-to-get mg-t-0 btn-container"><%= link_to "登录免费抽奖", signin_url('/events/1024event'), class: "btn btn-event1024", target: "_blank" -%></p>
+            <p class="can-get mg-t-0 btn-container"><button class="btn btn-event1024">立即领取</button></p>
+            <p class="can-not-get mg-t-0">您已领取过抽奖资格</p>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4 col-join border-l-r">
             <%= image_tag "event1024/image-renzheng.png", alt: "实名认证", width: 120 -%>
             <p>实名认证注册并下单活动产品</p>
+            <p class="mg-t-0 btn-container">
+              <%= link_to "立即注册", signup_url(), id: "event1024-event-signup-1", class: "btn btn-event1024 event1024-jump-link event1024-signup-link", target: "_blank" -%>
+            </p>
           </div>
           <div class="col-md-4 col-sm-4 col-xs-4 col-join">
             <%= image_tag "event1024/image-yaoqing.png", alt: "邀请好友", width: 120 -%>
             <p>邀请好友实名认证注册</p>
+            <ul class="navbar-wrapper-middle btn-container">
+              <li class="intLink">
+                <%= link_to "立即邀请", "#event1024-section-3", class: "btn btn-event1024" -%>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12 col-rules">
+            <h3>活动说明</h3>
+            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，符合抽奖资格的用户包括：此活动页面领取免费抽奖资格的有历史充值记录七牛云用户（2018 年 11 月 10 日之前有充值记录的实名认证用户）、活动期间实名注册并下单的用户（订单金额 > 0 元）、活动期间邀请好友实名注册的用户。</p>
+            <p>2. 每个符合抽奖资格的七牛云账户仅限一次抽奖机会。</p>
+            <p>3. 2018 年 11 月 13 日将在所有符合抽奖资格的用户中抽取一名锦牛（抽奖过程和结果将由第三方公证监督），锦牛将获得高达万元的超级豪礼（豪礼清单随活动热度增加进行升级，2018 年 11 月 9 日决出最终豪礼清单）。</p>
+            <p>4. 抽奖结果将于 2018 年 11 月 13 日在七牛云微信公众号平台公布，敬请期待。</p>
+            <p>5. 活动最终解释权在法律允许范围内归七牛云所有，参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", class: "link-item", target: "_blank" -%>，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-item" -%>。</p>
           </div>
         </div>
       </div>
@@ -126,7 +147,7 @@
         <div class="image-container">
           <div class="rules-container">
             <h4>活动说明</h4>
-            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，<%= link_to "注册", "https://portal.qiniu.com/signup/choice", id: "event1024-event-signup", class: "event1024-jump-link", target: "_blank" -%>七牛云并完成实名认证，即可获得一次刮刮乐抽奖资格，请留意短信抽奖通知（抽奖资格仅在活动期间有效）；每个实名认证账户仅有一次抽奖机会。</p>
+            <p>1. 2018 年 10 月 24 日 - 2018 年 11 月 9 日，<%= link_to "注册", signup_url(), id: "event1024-event-signup-2", class: "event1024-jump-link event1024-signup-link", target: "_blank" -%>七牛云并完成实名认证，即可获得一次刮刮乐抽奖资格，请留意短信抽奖通知（抽奖资格仅在活动期间有效）；每个实名认证账户仅有一次抽奖机会。</p>
             <p>2. 活动期间，所有注册并实名认证的用户可获得免费云资源大礼包一份，<%= link_to "查看礼包详情", "https://www.qiniu.com/events/free", id: "event1024-event-free", class: "event1024-jump-link", target: "_blank" -%></p>
           </div>
         </div>

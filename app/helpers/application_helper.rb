@@ -21,6 +21,14 @@ module ApplicationHelper
     return sso_host + "/signout"
   end
 
+  def signup_url
+    portal_host = Rails.configuration.portal_host
+    if portal_host.nil? || portal_host.blank?
+      return "https://portal.qiniu.com/signup/choice"
+    end
+    return portal_host + "/signup/choice"
+  end
+
   # <meta name="go-import" content="qiniu.com/<package> git https://github.com/qbox/<package>">
   def meta_go_import
     paths = request.original_fullpath.split('?').first
