@@ -101,6 +101,11 @@ $(document).ready ->
           # 1024 活动页面注册跳转
           if $(e.target).hasClass 'event1024-signup-link'
             href += '&promotion=Event1024'
+          # 对象存储立即购买跳转 portal
+          if $(e.target).hasClass 'event1024-kodo-link'
+            href += '&entry=kodo'
+          if $(e.target).hasClass 'event1024-plsv-link'
+            href += '&entry=plsv'
         $(this).prop('href', href)
 
   $('[data-toggle="tooltip"]').tooltip()

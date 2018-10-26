@@ -219,8 +219,8 @@
     <div class="helper">
       <div class="helper-image">
         <% if is_1024event_on() -%>
-          <%= link_to image_tag("event1024/icon-helper-normal.jpg"), "https://www.qiniu.com/events/1024event", id: "helper-1024event-index-normal", class: "normal-image", title: "云采购 0 元", target: "_blank" -%>
-          <%= link_to image_tag("event1024/icon-helper-hover.jpg"), "https://www.qiniu.com/events/1024event", id: "helper-1024event-index-hover", class: "hover-image", title: "豪礼独享", target: "_blank" -%>
+          <%= link_to image_tag("event1024/icon-helper-normal.jpg"), "https://www.qiniu.com/events/1024event?entry=index-floatwin", id: "helper-1024event-index-normal", class: "normal-image", title: "云采购 0 元", target: "_blank" -%>
+          <%= link_to image_tag("event1024/icon-helper-hover.jpg"), "https://www.qiniu.com/events/1024event?entry=index-floatwin", id: "helper-1024event-index-hover", class: "hover-image", title: "豪礼独享", target: "_blank" -%>
         <% else -%>
           <%= link_to image_tag("free/icon-helper-normal.png"), "https://blog.qiniu.com/archives/8810", class: "normal-image", title: "云产品特惠", target: "_blank" -%>
           <%= link_to image_tag("free/icon-helper-hover.png"), "https://blog.qiniu.com/archives/8810", class: "hover-image", title: "最低享 5 折", target: "_blank" -%>
@@ -385,7 +385,7 @@
             </div>
           </div>
           <div class="col-sm-4 text-center">
-            <%= link_to image_tag("logo.png", alt: "七牛云"), "/", class: "logo" -%>
+            <%= link_to image_tag("logo-zh.png", alt: "七牛云"), "/", class: "logo" -%>
             <div class="qrcode">
               <%= image_tag "weixin-qrcode.png" -%>
             </div>
@@ -401,6 +401,7 @@
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
+            <a target="_blank" rel="noopener" href="https://www.cncf.io/" class="cncf-logo" title="cncf"></a>
             <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>
           </div>
           <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
@@ -515,7 +516,7 @@
               <div id="collapseCare" class="panel-collapse collapse collapse-menu">
                 <div class="panel-body panel-menu">
                   <div class="text-center">
-                    <%= link_to image_tag("logo.png", alt: "七牛云"), "/", class: "logo" -%>
+                    <%= link_to image_tag("logo-zh.png", alt: "七牛云"), "/", class: "logo" -%>
                     <div class="qrcode">
                       <%= image_tag "weixin-qrcode.png" -%>
                     </div>
@@ -534,7 +535,8 @@
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="iso-logo" title="iso"></a>
-            <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>            
+            <a target="_blank" rel="noopener" href="https://www.cncf.io/" class="cncf-logo" title="cncf"></a>
+            <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>
           </div>
           <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
             <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
