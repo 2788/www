@@ -7,13 +7,30 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "立即参加", "/events/1024event", target: "_blank", id: "banner-1024event-btn", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "立即参加", "/events/1024event?entry=index-banner", target: "_blank", id: "banner-1024event-btn", class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
     </div>
   </div>
   <% end -%>
+
+  <div class="jumbotron hero hero-qvm1rmb-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h2><span class="text-warn">15</span>&nbsp;款&nbsp;热销配置<span class="text-warn">企业专享</span></h2>
+              <h1><span class="text-warn">全民计算</span></h1>
+              <h2>最高可达<span class="text-warn">&nbsp;4&nbsp;核&nbsp;8G</span></h2>
+            </div>
+            <%= link_to "即刻启动", "/events/qvm0rmb", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%# 屏蔽 云存储直播云 5 折大促 banner %>
   <% if false -%>
@@ -86,23 +103,6 @@
               <p>直播内容在线编辑输出，随时随地轻松导播</p>
             </div>
             <%= link_to "立即使用", "https://developer.qiniu.com/pili/manual/4731/caster", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-qvm1rmb-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h2><span class="text-warn">15</span>&nbsp;款&nbsp;热销配置<span class="text-warn">企业专享</span></h2>
-              <h1><span class="text-warn">全民计算</span></h1>
-              <h2>最高可达<span class="text-warn">&nbsp;4&nbsp;核&nbsp;8G</span></h2>
-            </div>
-            <%= link_to "即刻启动", "/events/qvm0rmb", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>

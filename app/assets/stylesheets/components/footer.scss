@@ -137,6 +137,7 @@ footer {
       background-repeat: no-repeat;
       background-size: auto 60px;
       background-color: #fff;
+      background-position: center;
       float: right;
       margin-right: 20px;
     }
@@ -147,6 +148,7 @@ footer {
       background-image: image-url('kexinyun.png');
       background-repeat: no-repeat;
       background-size: auto 60px;
+      background-position: center;
       float: right;
     }
     .iso-logo {
@@ -156,6 +158,19 @@ footer {
       background-image: image-url('iso27001.png');
       background-repeat: no-repeat;
       background-size: auto 60px;
+      background-position: center;
+      float: right;
+      margin-right: 20px;
+    }
+    .cncf-logo {
+      display: block;
+      width: 75px;
+      height: 60px;
+      background-image: image-url('cncf.png');
+      background-repeat: no-repeat;
+      background-size: auto 60px;
+      background-color: #fff;
+      background-position: center;
       float: right;
       margin-right: 20px;
     }
@@ -325,7 +340,9 @@ footer.footer-mobile {
         float: none;
         text-align: center;
         .verify-logo,
-        .iso-logo {
+        .iso-logo,
+        .cncf-logo,
+        .report-logo {
           display: inline-block;
           float: none;
           margin: 0;
