@@ -78,7 +78,7 @@ en:
           desc: "With integrated storage and CDN, Qiniu combines strong data-processing capability to offer one-stop live video and VOD services, such as live broadcasting, recording, transcoding, publishing, accelerating and broadcasting."
           icons:
             # - name: "VOD Cloud"
-            #   class: "icon icon-streaming"
+            #   class: "icon icon-streaming index-icons"
             #   path: "/en/products/plsv"
             - name: "PILI"
               class: "icon icon-video index-icons"
