@@ -157,7 +157,7 @@
               </p>
               <p>
                 <% unit[:icons].each do |icon| %>
-                  <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
+                  <%= link_to icon[:name], icon[:path], class: icon[:class], target: "_blank" -%>
                 <% end %>
               </p>
             </div>
@@ -179,7 +179,7 @@
       </p>
       <p class="desc">
         <% I18n.t("views.welcome.index.feature2.icons").each do |icon| %>
-          <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
+          <%= link_to icon[:name], icon[:path], class: icon[:class], target: "_blank" -%>
         <% end %>
       </p>
     </div>
