@@ -38,50 +38,53 @@ zh-CN:
               desc: "所有数据都有有效期，面对不断膨胀的数据领域，数据如何管理？七牛云完全自主知识产权的对象存储，已经过最严酷的考验，为 EB 规模的数据存储做好充分准备。"
               icons:
                 - name: "对象存储"
-                  class: "icon icon-storage"
+                  class: "icon icon-storage index-icons"
                   path: "/products/kodo"
                 - name: "时序数据库"
-                  class: "icon icon-databass"
+                  class: "icon icon-database index-icons"
                   path: "/products/pandora"
             - title: "数据洞察"
               icon: "icon-num@2x.png"
               desc: "让数据从负担变成资产的关键步骤是数据的价值挖掘。七牛云提供的大数据产品集和机器学习产品集可以帮助您以最佳的方式理解自己的资产。"
               icons:
                 - name: "深度学习平台"
-                  class: "icon icon-machine-learning"
+                  class: "icon icon-machine-learning index-icons"
                   path: "/products/atlab"
                 - name: "Spark 服务"
-                  class: "icon icon-xspark"
+                  class: "icon icon-xspark index-icons"
                   path: "/products/pandora"
                 - name: "大数据平台"
-                  class: "icon icon-bigdata"
+                  class: "icon icon-bigdata index-icons"
                   path: "/products/pandora"
             - title: "加速传输"
               icon: "icon-accelerate@2x.png"
               desc: "七牛云独家的融合 CDN 结合了主流 CDN 和自建 CDN 节点的优势，让您能够在性能和成本之间得到一个最佳的平衡。"
               icons:
                 - name: "融合 CDN"
-                  class: "icon icon-dora"
+                  class: "icon icon-dora index-icons"
                   path: "/products/fusion"
             - title: "高性能计算"
               icon: "icon-controllale@2x.png"
               desc: "为了能让数据流转，我们需要对数据进行高速处理。七牛云构建了基于容器的计算平台，并基于容器平台构建了功能丰富且开放性的智能媒体云平台。您只需考虑怎么处理数据，而无需考虑数据的规模和系统性能。"
               icons:
-                - name: "智能多媒体 API"
-                  class: "icon icon-media"
-                  path: "/products/dora"
+                - name: "云主机"
+                  class: "icon icon-qvm index-icons"
+                  path: "/products/qvm"
                 - name: "容器云"
-                  class: "icon icon-container"
+                  class: "icon icon-container index-icons"
                   path: "/products/kirk"
+                - name: "智能多媒体 API"
+                  class: "icon icon-media index-icons"
+                  path: "/products/dora"
         feature2:
           title: "一站式视频点播和直播解决方案"
           desc: "集成存储与融合 CDN，汇聚七牛强大的数据处理能力，提供直播、录制、转码、发布、加速、播放等一站式视频直播、点播服务。"
           icons:
             - name: "点播云"
-              class: "icon icon-streaming"
-              path: "/products/vance"
+              class: "icon icon-streaming index-icons"
+              path: "/products/plsv"
             - name: "直播云"
-              class: "icon icon-video"
+              class: "icon icon-video index-icons"
               path: "/products/pili"
           col:
             - title: "流畅"
@@ -2256,6 +2259,26 @@ zh-CN:
                 - • HTTP 免费下载流量 10 GB/月
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://portal.qiniu.com/financial/price"
+            - title: "云主机"
+              desc: "提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
+              class: "background-frame"
+              id: "free-events-frame"
+              morelink: "https://www.qiniu.com/products/qvm"
+              details:
+                - • 高达 4C 8G 的专业云服务器 0 元起
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/qvm/vm/instance/create"
+            - title: "云镜像"
+              desc: "提供启动云主机实例所需的所有信息，包括特定操作系统和用户自定义镜像系统"
+              class: "background-mirror"
+              id: "free-events-mirror"
+              morelink: "https://developer.qiniu.com/qvm/manual/4292/qvm-mirror-overview"
+              details:
+                - • 快速灵活迁移部署的工具
+                - • 支持多副本镜像
+                - • 免费
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/qvm/vm/image"
             - title: "内容安全"
               desc: "双重审核 运营无忧"
               class: "background-censor"
@@ -2317,26 +2340,6 @@ zh-CN:
                 - • 域名型 DV SSL 证书免费申请
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://portal.qiniu.com/certificate/apply"
-            - title: "云主机"
-              desc: "提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
-              class: "background-frame"
-              id: "free-events-frame"
-              morelink: "https://www.qiniu.com/products/qvm"
-              details:
-                - • 高达 4C 8G 的专业云服务器 0 元起
-              unsignlink: "https://portal.qiniu.com/signup/choice"
-              signlink: "https://portal.qiniu.com/qvm/vm/instance/create"
-            - title: "云镜像"
-              desc: "提供启动云主机实例所需的所有信息，包括特定操作系统和用户自定义镜像系统"
-              class: "background-mirror"
-              id: "free-events-mirror"
-              morelink: "https://developer.qiniu.com/qvm/manual/4292/qvm-mirror-overview"
-              details:
-                - • 快速灵活迁移部署的工具
-                - • 支持多副本镜像
-                - • 免费
-              unsignlink: "https://portal.qiniu.com/signup/choice"
-              signlink: "https://portal.qiniu.com/qvm/vm/image"
         recommend:
           title: "活动推荐"
           cols:

@@ -38,50 +38,50 @@ en:
               desc: "All data has expiration date. How to manage data in a world where data constantly expands and explodes?  Qiniu's completely independent-researched object storage has undergone severe tests and is fully prepared for data storage on the EB scale."
               icons:
                 - name: "Object Storage"
-                  class: "icon icon-storage"
+                  class: "icon icon-storage index-icons"
                   path: "/en/products/kodo"
                 - name: "Sequence Database"
-                  class: "icon icon-databass"
+                  class: "icon icon-database index-icons"
                   path: "/en/products/pandora"
             - title: "Data Insight"
               icon: "icon-num@2x.png"
               desc: "Value extraction from data is the key step to turn data from burdens to assets. The big data and machine learning product family from Qiniu will assist you in managing assets in the best way."
               icons:
                 - name: "Deep Learning Platform"
-                  class: "icon icon-machine-learning"
+                  class: "icon icon-machine-learning index-icons"
                   path: "/en/products/atlab"
                 - name: "Spark Service"
-                  class: "icon icon-xspark"
+                  class: "icon icon-xspark index-icons"
                   path: "/en/products/pandora"
                 - name: "Big Data Platform"
-                  class: "icon icon-bigdata"
+                  class: "icon icon-bigdata index-icons"
                   path: "/en/products/pandora"
             - title: "Accelerated Transmission"
               icon: "icon-accelerate@2x.png"
               desc: "Qiniu's unique integrated CDN combines advantages of both mainstream CDNs and self-established CDN nodes, which enables you to find an equilibrium between performances and costs."
               icons:
                 - name: "Integrated CDN"
-                  class: "icon icon-dora"
+                  class: "icon icon-dora index-icons"
                   path: "/en/products/fusion"
             - title: "High-performance Computing"
               icon: "icon-controllale@2x.png"
               desc: "We need to process data in high speed for data flow. Qiniu has constructed a computing platform based on containers and a multifunctional and open intelligent media cloud platform based on the container platform. You only need to consider ways to process data instead of data scales or system performances."
               icons:
-                - name: "Intelligent Multimedia API"
-                  class: "icon icon-media"
-                  path: "/en/products/dora"
                 - name: "Container-based Cloud"
-                  class: "icon icon-container"
+                  class: "icon icon-container index-icons"
                   path: "/en/products/kirk"
+                - name: "Intelligent Multimedia API"
+                  class: "icon icon-media index-icons"
+                  path: "/en/products/dora"
         feature2:
           title: "One-stop Solution to VOD and Live Video"
           desc: "With integrated storage and CDN, Qiniu combines strong data-processing capability to offer one-stop live video and VOD services, such as live broadcasting, recording, transcoding, publishing, accelerating and broadcasting."
           icons:
             # - name: "VOD Cloud"
             #   class: "icon icon-streaming"
-            #   path: "/en/products/vance"
+            #   path: "/en/products/plsv"
             - name: "PILI"
-              class: "icon icon-video"
+              class: "icon icon-video index-icons"
               path: "/en/products/pili"
           col:
             - title: "Smoothness"
@@ -2208,6 +2208,26 @@ en:
                 - • HTTP 免费下载流量 10 GB/月
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://portal.qiniu.com/financial/price"
+            - title: "云主机"
+              desc: "提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
+              class: "background-frame"
+              id: "free-events-frame"
+              morelink: "https://www.qiniu.com/products/qvm"
+              details:
+                - • 高达 4C 8G 的专业云服务器 0 元起
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/qvm/vm/instance/create"
+            - title: "云镜像"
+              desc: "提供启动云主机实例所需的所有信息，包括特定操作系统和用户自定义镜像系统"
+              class: "background-mirror"
+              id: "free-events-mirror"
+              morelink: "https://developer.qiniu.com/qvm/manual/4292/qvm-mirror-overview"
+              details:
+                - • 快速灵活迁移部署的工具
+                - • 支持多副本镜像
+                - • 免费
+              unsignlink: "https://portal.qiniu.com/signup/choice"
+              signlink: "https://portal.qiniu.com/qvm/vm/image"
             - title: "内容安全"
               desc: "双重审核 运营无忧"
               class: "background-censor"
@@ -2269,26 +2289,6 @@ en:
                 - • 域名型 DV SSL 证书免费申请
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://portal.qiniu.com/certificate/apply"
-            - title: "云主机"
-              desc: "提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
-              class: "background-frame"
-              id: "free-events-frame"
-              morelink: "https://www.qiniu.com/products/qvm"
-              details:
-                - • 高达 4C 8G 的专业云服务器 0 元起
-              unsignlink: "https://portal.qiniu.com/signup/choice"
-              signlink: "https://portal.qiniu.com/qvm/vm/instance/create"
-            - title: "云镜像"
-              desc: "提供启动云主机实例所需的所有信息，包括特定操作系统和用户自定义镜像系统"
-              class: "background-mirror"
-              id: "free-events-mirror"
-              morelink: "https://developer.qiniu.com/qvm/manual/4292/qvm-mirror-overview"
-              details:
-                - • 快速灵活迁移部署的工具
-                - • 支持多副本镜像
-                - • 免费
-              unsignlink: "https://portal.qiniu.com/signup/choice"
-              signlink: "https://portal.qiniu.com/qvm/vm/image"
         recommend:
           title: "活动推荐"
           cols:
