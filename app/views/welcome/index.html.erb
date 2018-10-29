@@ -133,7 +133,7 @@
   <!-- /.modal -->
 </div>
 
-<div class="features">
+<div class="features features-value">
   <div class="container">
     <div class="intro">
       <h2 class="title">
@@ -158,12 +158,12 @@
               <p>
                 <% unit[:icons].each do |icon| %>
                   <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
-                    <% end %>
+                <% end %>
               </p>
             </div>
           </div>
         </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -180,7 +180,7 @@
       <p class="desc">
         <% I18n.t("views.welcome.index.feature2.icons").each do |icon| %>
           <%= link_to icon[:name], icon[:path], class: icon[:class] -%>
-            <% end %>
+        <% end %>
       </p>
     </div>
 
@@ -199,7 +199,7 @@
               </div>
           </div>
         </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

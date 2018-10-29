@@ -13,82 +13,68 @@
   transition: background-image .3s;
 }
 
-// 对象存储
-.icon-storage {
-  background-image: image-url("icon-storage@2x.png");
+.index-icons {
+  margin-right: 0.15rem !important;
+  color: #28aedf !important;
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  transition: all .3s linear;
   &:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+  }
+  // 对象存储
+  &.icon-storage {
     background-image: image-url("icon-storage-highlight@2x.png");
   }
-}
 
-// 时序数据库
-.icon-databass {
-  background-image: image-url("icon-databass@2x.png");
-  &:hover {
-    background-image: image-url("icon-databass-highlight@2x.png");
+  // 时序数据库
+  &.icon-database {
+    background-image: image-url("icon-database-highlight@2x.png");
   }
-}
 
-// 机器学习
-.icon-machine-learning {
-  background-image: image-url("icon-machine-learning@2x.png");
-  &:hover {
+  // 机器学习
+  &.icon-machine-learning {
     background-image: image-url("icon-machine-learning-highlight@2x.png");
   }
-}
 
-// XSpark
-.icon-xspark {
-  background-image: image-url("icon-xspark@2x.png");
-  &:hover {
+  // XSpark
+  &.icon-xspark {
     background-image: image-url("icon-xspark-highlight@2x.png");
   }
-}
 
-// 大数据平台
-.icon-bigdata {
-  background-image: image-url("icon-bigdata@2x.png");
-  &:hover {
+  // 大数据平台
+  &.icon-bigdata {
     background-image: image-url("icon-bigdata-highlight@2x.png");
   }
-}
 
-// 融合dora
-.icon-dora {
-  background-image: image-url("icon-dora@2x.png");
-  &:hover {
+  // 融合dora
+  &.icon-dora {
     background-image: image-url("icon-dora-highlight@2x.png");
   }
-}
 
-// 智能媒体云
-.icon-media {
-  background-image: image-url("icon-media@2x.png");
-  &:hover {
+  // 智能媒体云
+  &.icon-media {
     background-image: image-url("icon-media-highlight@2x.png");
   }
-}
 
-// 容器计算平台
-.icon-container {
-  background-image: image-url("icon-container@2x.png");
-  &:hover {
+  // 容器计算平台
+  &.icon-container {
     background-image: image-url("icon-container-highlight@2x.png");
   }
-}
 
-// 点播云
-.icon-streaming {
-  background-image: image-url("icon-streaming@2x.png");
-  &:hover {
+  // 云主机
+  &.icon-qvm {
+    background-image: image-url("icon-qvm-highlight@2x.png");
+  }
+
+  // 点播云
+  &.icon-streaming {
     background-image: image-url("icon-streaming-highlight@2x.png");
   }
-}
 
-// 直播云
-.icon-video {
-  background-image: image-url("icon-video@2x.png");
-  &:hover {
+  // 直播云
+  &.icon-video {
     background-image: image-url("icon-video-highlight@2x.png");
   }
 }
