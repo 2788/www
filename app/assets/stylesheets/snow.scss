@@ -1,4 +1,4 @@
-.hero-ecp {
+.hero-snow {
   .middle-container {
     top: 50% !important;
 
@@ -24,7 +24,7 @@
   }
 }
 
-.features-ecp {
+.features-snow {
   padding: 0.68rem 0 0.80rem 0;
 
   .col-item {
@@ -44,7 +44,7 @@
   }
 }
 
-.features-ecp-scene {
+.features-snow-scene {
   padding: 0.68rem 0;
 
   .container {
@@ -68,7 +68,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .hero-ecp {
+  .hero-snow {
     .middle-container {
       h2 {
         font-size: 0.32rem;
@@ -79,7 +79,7 @@
       }
     }
   }
-  .features-ecp-scene {
+  .features-snow-scene {
     .col-right {
       margin: 0 !important;
     }
@@ -87,12 +87,12 @@
 }
 
 @media (max-width: 767px) {
-  .features-ecp-advantage {
+  .features-snow-advantage {
     .col-item {
       height: 3.50rem;
     }
   }
-  .features-ecp-scene {
+  .features-snow-scene {
     .col-right {
       margin: 0 !important;
     }
