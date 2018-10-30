@@ -1262,7 +1262,7 @@ zh-CN:
                 link: "https://developer.qiniu.com/insight/manual/4677/billing-way"
                 target: "_blank"
               - title: "概念&术语"
-                link: "https://developer.qiniu.com/insight/glossary/4643/concept"
+                link: "https://developer.qiniu.com/insight/glossary/5101/real-time-warehouse"
                 target: "_blank"
           tool:
             title: "SDK 及工具"
@@ -1271,7 +1271,7 @@ zh-CN:
                 link: "https://developer.qiniu.com/insight/sdk/4645/java-sdk"
                 target: "_blank"
               - title: "REST API 详解"
-                link: "https://developer.qiniu.com/insight/api/4747/workflow-api"
+                link: "https://developer.qiniu.com/insight/api/4824/overview"
                 target: "_blank"
       censor:
         subtitle: "双重审核 无忧运营"
