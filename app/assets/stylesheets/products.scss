@@ -183,6 +183,17 @@
             }
         }
     }
+    &.kirk-aptitude {
+      .row {
+        .thumbnail {
+          min-height: 0;
+          p {
+            margin: 0.10rem 0 0 0;
+            text-align: center;
+          }
+        }
+      }
+    }
     &.plsv-services {
         padding-bottom: 0;
         .row.row-clear {
