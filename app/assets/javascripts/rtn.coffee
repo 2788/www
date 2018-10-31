@@ -15,7 +15,7 @@ $(document).ready ->
       $(this).removeClass('open')
   
   # 使用 object-fit 使 banner 中的 video 自适应
-  if objectFit
+  if objectFit?
     fillParas =
       selector: '.hero-rtn .rtn-banner-video'
       fittype: 'cover'
