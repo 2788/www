@@ -8,9 +8,6 @@ class WelcomeController < ApplicationController
     @top_archives = Archive.top_archives
   end
 
-  def kodo
-  end
-
   def pili
   end
 
@@ -264,36 +261,36 @@ class WelcomeController < ApplicationController
   def robots
     if request.host == "www.qiniu.com"
       render plain: """\
-User-agent: *
-    """
+        User-agent: *
+      """
     else
       render plain: """\
-User-agent: Baiduspider
-Disallow: /
-User-agent: Sosospider
-Disallow: /
-User-agent: sogou spider
-Disallow: /
-User-agent: YodaoBot
-Disallow: /
-User-agent: Googlebot
-Disallow: /
-User-agent: Bingbot
-Disallow: /
-User-agent: Slurp
-Disallow: /
-User-agent: MSNBot
-Disallow: /
-User-agent: googlebot-image
-Disallow: /
-User-agent: googlebot-mobile
-Disallow: /
-User-agent: yahoo-blogs/v3.9
-Disallow: /
-User-agent: psbot
-Disallow: /
-User-agent: *
-Disallow: /\
+        User-agent: Baiduspider
+        Disallow: /
+        User-agent: Sosospider
+        Disallow: /
+        User-agent: sogou spider
+        Disallow: /
+        User-agent: YodaoBot
+        Disallow: /
+        User-agent: Googlebot
+        Disallow: /
+        User-agent: Bingbot
+        Disallow: /
+        User-agent: Slurp
+        Disallow: /
+        User-agent: MSNBot
+        Disallow: /
+        User-agent: googlebot-image
+        Disallow: /
+        User-agent: googlebot-mobile
+        Disallow: /
+        User-agent: yahoo-blogs/v3.9
+        Disallow: /
+        User-agent: psbot
+        Disallow: /
+        User-agent: *
+        Disallow: /\
       """
     end
   end

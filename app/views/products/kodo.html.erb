@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-10 col-sm-8">
-          <h2><%= I18n.t("views.welcome.kodo.banner.title") %></h2>
-          <p><%= I18n.t("views.welcome.kodo.banner.desc") %></p>
+          <h2><%= I18n.t("views.products.kodo.banner.title") %></h2>
+          <p><%= I18n.t("views.products.kodo.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "产品价格", prices_path + "?source=kodo", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
@@ -30,7 +30,7 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.welcome.kodo.middlebar.links").each do |linkbar| %>
+        <% I18n.t("views.products.kodo.middlebar.links").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], class:linkbar[:class] -%></li>
         <% end %>
       </ul>
@@ -41,11 +41,11 @@
 <div class="features features-superiority tab-content-section-1">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.kodo.feature1.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.kodo.feature1.title") %></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.kodo.feature1.col").each do |col| %>
+      <% I18n.t("views.products.kodo.feature1.col").each do |col| %>
         <div class="col-sm-6 <%= I18n.t("views.language") !='zh' ? 'col-xs-12 kodo-feature-col' : 'col-xs-6' -%>">
           <div class="media">
             <div class="media-left">
@@ -66,11 +66,11 @@
 <div class="features features-solution feature-core tab-content-section-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.kodo.feature2.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.kodo.feature2.title") %></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.kodo.feature2.col").each do |col| %>
+      <% I18n.t("views.products.kodo.feature2.col").each do |col| %>
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="thumbnail">
             <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 60 %>
@@ -93,17 +93,17 @@
 <div class="features features-kodo features-scene tab-content-section-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.kodo.feature3.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.kodo.feature3.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.kodo.feature3.middlebar").each do |col| %>
+        <% I18n.t("views.products.kodo.feature3.middlebar").each do |col| %>
           <li class="<%= col[:class] %>"><%= link_to col[:name], col[:href], data:{ toggle: "tab" } -%></li>
         <% end %>
       </ul>
       <div class="tab-content bottom-line">
-        <% I18n.t("views.welcome.kodo.feature3.sections").each do |sec| %>
+        <% I18n.t("views.products.kodo.feature3.sections").each do |sec| %>
           <section class="<%= sec[:class] %>" id="<%= sec[:id] -%>">
             <div class="media">
               <%= content_tag :div, image_tag(sec[:icon], alt: sec[:title], class: "media-object img-left"), class: "media-left" %>
@@ -129,7 +129,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <h2 class="title"><%= I18n.t("views.welcome.kodo.feature4.title") %></h2>
+        <h2 class="title"><%= I18n.t("views.products.kodo.feature4.title") %></h2>
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">
