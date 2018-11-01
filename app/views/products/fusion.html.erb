@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2><%= I18n.t("views.welcome.fusion.banner.title") %></h2>
-          <p><%= I18n.t("views.welcome.fusion.banner.desc") %></p>
+          <h2><%= I18n.t("views.products.fusion.banner.title") %></h2>
+          <p><%= I18n.t("views.products.fusion.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "产品价格", prices_path + "?source=fusion", class: "btn btn-lg btn-hollow m-b-xs" -%>
@@ -25,7 +25,7 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.welcome.fusion.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.fusion.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
         <% end %>
       </ul>
@@ -36,11 +36,11 @@
 <div class="features section tab-content-section-1">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.fusion.feature1.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.fusion.feature1.title") %></h2>
     </div>
 
     <div class="bottom-line" style="text-align: center;">
-        <%= image_tag I18n.t("views.welcome.fusion.feature1.icon"), width: "80%" %>
+        <%= image_tag I18n.t("views.products.fusion.feature1.icon"), width: "80%" %>
     </div>
   </div>
 </div>
@@ -48,11 +48,11 @@
 <div class="features features-superiority tab-content-section-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.fusion.feature2.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.fusion.feature2.title") %></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.fusion.feature2.col").each do |col| %>
+      <% I18n.t("views.products.fusion.feature2.col").each do |col| %>
         <div class="col-sm-6 col-xs-6">
           <div class="media">
             <div class="media-left">
@@ -72,19 +72,19 @@
 <div class="features features-fusion feature-color tab-content-section-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.fusion.feature3.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.fusion.feature3.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.fusion.feature3.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.fusion.feature3.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>">
             <%= link_to linkbar[:title], linkbar[:href], data:{toggle:"tab"} -%>
           </li>
         <% end %>
       </ul>
       <div class="tab-content">
-        <% I18n.t("views.welcome.fusion.feature3.sections").each do |sec| %>
+        <% I18n.t("views.products.fusion.feature3.sections").each do |sec| %>
           <section id="<%= sec[:id] %>" class="<%= sec[:class] %>">
             <%= image_tag sec[:icon] %>
           </section>
@@ -97,17 +97,17 @@
 <div class="features features-fusion features-scene tab-content-section-4">
   <div class="container bottom-line">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.fusion.feature4.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.fusion.feature4.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.fusion.feature4.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.fusion.feature4.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], data:{toggle:"tab"} -%></li>
         <% end %>
       </ul>
       <div class="tab-content">
-        <% I18n.t("views.welcome.fusion.feature4.sections").each do |sec| %>
+        <% I18n.t("views.products.fusion.feature4.sections").each do |sec| %>
           <section id="<%= sec[:id] %>" class="<%= sec[:class] %>">
             <div class="media">
               <div class="media-left">
@@ -129,7 +129,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-2">
-        <h2 class="title"><%= I18n.t("views.welcome.fusion.feature5.title") %></h2>
+        <h2 class="title"><%= I18n.t("views.products.fusion.feature5.title") %></h2>
       </div>
       <div class="col-sm-10">
         <div id="cases-slider" class="conveyor slick-slider draggable">

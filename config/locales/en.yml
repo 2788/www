@@ -98,90 +98,6 @@ en:
               desc: "We make full use of advantages of big data and machine learning to monitor service quality in real time and deeply analyze the service in an open way."
         feature3:
           title: "Success Cases"
-      fusion:
-        banner:
-          title: "CDN（FUSION）"
-          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
-        middlebar:
-          - title: "Product Frameworks"
-            class: "intLink active"
-            href: "#tab-content-section-1"
-          - title: "Product Advantages"
-            class: "intLink"
-            href: "#tab-content-section-2"
-          - title: "Nodes Distribution"
-            class: "intLink"
-            href: "#tab-content-section-3"
-          - title: "Application Scenarios"
-            class: "intLink"
-            href: "#tab-content-section-4"
-          - title: "Success Cases"
-            class: "intLink"
-            href: "#tab-content-section-5"
-        feature1:
-          title: "Product Frameworks"
-          icon: "fusion/en-chanpinjiagoutu.png"
-        feature2:
-          title: "Product Advantages"
-          col:
-            - title: "No Blind Areas"
-              icon: "fusion/icon-wumangqu@2x.png"
-              desc: "Fusion is a mature integrated control scheme with multiple CDNs which chooses high-quality nodes from mainstream CDN manufacturers to combine with Qiniu's high-quality nodes and fully covers networks of various operators in different areas to truly have no blind areas."
-            - title: "Intelligent Dispatch"
-              icon: "fusion/icon-zhinengdiaodu@2x.png"
-              desc: "Based on Qiniu's IP database and combined with the network downtime and performance monitoring, the intelligent and integrated dispatch system is developed to support dispatch methods such as DNS, HttpDNS and IP302, which effectively prevents access hijacking and achieves 100% accurate and controllable dispatch in real time."
-            - title: "Three-dimensional Quality Control"
-              icon: "fusion/icon-litipinkong@2x.png"
-              desc: "With the coverage performance monitoring from authoritative APM manufacturers, Qiniu develops real-time network availability monitoring and real-time access performance monitoring from SDK logs to create a three-dimensional quality control system of Qiniu's FUSION."
-            - title: "Reduction of Returning to Source Stations"
-              icon: "fusion/icon-jiangdihuiyuan@2x.png"
-              desc: "With the establishment of BGP network intermediate sources, problems like low speed or unreachable network return to the source station among operators are removed to protect the bandwidth of source station from being affected by fluctuations in requests of edge nodes and save costs on the return to the source station."
-        feature3:
-          title: "Nodes Distribution"
-          middlebar:
-            - title: "Domestic Nodes Distribution"
-              class: "active"
-              href: "#inlandEN"
-            - title: "International Nodes Distribution"
-              class: ""
-              href: "#overseaEN"
-          sections:
-            - id: "inlandEN"
-              class: "tab-pane fade in active"
-              icon: "fusion/img-guoneijiedian.png"
-            - id: "overseaEN"
-              class: "tab-pane fade"
-              icon: "fusion/img-haiwaijiedian-en.png"
-        feature4:
-          title: "Application Scenarios"
-          middlebar:
-            - title: "Web Acceleration"
-              class: "active"
-              href: "#tab-usage-section-1"
-            - title: "Document Downloads"
-              class: ""
-              href: "#tab-usage-section-2"
-            - title: "Audio & Video On-demand"
-              class: ""
-              href: "#tab-usage-section-3"
-          sections:
-            - id: "tab-usage-section-1"
-              class: "tab-pane fade in active"
-              icon: "fusion/icon-wangyejiasu@2x.png"
-              title: "Web Acceleration"
-              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users'experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
-            - id: "tab-usage-section-2"
-              class: "tab-pane fade"
-              icon: "fusion/icon-wenjianxiazai@2x.png"
-              title: "Document Downloads"
-              desc: "The distribution of lager files, such as apk, mp3, exe, zip and so on can be optimized and accelerated. FUSION enables users to get a faster download speed with thousands of nodes globally and improves the stability of downloading and transferring large files with segmental caching technology. With Qiniu's storage services, FUSION can effectively reduce costs on the return to the source station and on the storage."
-            - id: "tab-usage-section-3"
-              class: "tab-pane fade"
-              icon: "fusion/icon-yinshipindianbo@2x.png"
-              title: "Audio & Video On-demand"
-              desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
-        feature5:
-          title: "Success Cases"
       pili:
         banner:
           title: "PILI"
@@ -3189,6 +3105,90 @@ en:
               link: ""
         feature4:
           title: "Success Cases"
+      fusion:
+        banner:
+          title: "CDN（FUSION）"
+          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
+        middlebar:
+          - title: "Product Frameworks"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "Product Advantages"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "Nodes Distribution"
+            class: "intLink"
+            href: "#tab-content-section-3"
+          - title: "Application Scenarios"
+            class: "intLink"
+            href: "#tab-content-section-4"
+          - title: "Success Cases"
+            class: "intLink"
+            href: "#tab-content-section-5"
+        feature1:
+          title: "Product Frameworks"
+          icon: "fusion/en-chanpinjiagoutu.png"
+        feature2:
+          title: "Product Advantages"
+          col:
+            - title: "No Blind Areas"
+              icon: "fusion/icon-wumangqu@2x.png"
+              desc: "Fusion is a mature integrated control scheme with multiple CDNs which chooses high-quality nodes from mainstream CDN manufacturers to combine with Qiniu's high-quality nodes and fully covers networks of various operators in different areas to truly have no blind areas."
+            - title: "Intelligent Dispatch"
+              icon: "fusion/icon-zhinengdiaodu@2x.png"
+              desc: "Based on Qiniu's IP database and combined with the network downtime and performance monitoring, the intelligent and integrated dispatch system is developed to support dispatch methods such as DNS, HttpDNS and IP302, which effectively prevents access hijacking and achieves 100% accurate and controllable dispatch in real time."
+            - title: "Three-dimensional Quality Control"
+              icon: "fusion/icon-litipinkong@2x.png"
+              desc: "With the coverage performance monitoring from authoritative APM manufacturers, Qiniu develops real-time network availability monitoring and real-time access performance monitoring from SDK logs to create a three-dimensional quality control system of Qiniu's FUSION."
+            - title: "Reduction of Returning to Source Stations"
+              icon: "fusion/icon-jiangdihuiyuan@2x.png"
+              desc: "With the establishment of BGP network intermediate sources, problems like low speed or unreachable network return to the source station among operators are removed to protect the bandwidth of source station from being affected by fluctuations in requests of edge nodes and save costs on the return to the source station."
+        feature3:
+          title: "Nodes Distribution"
+          middlebar:
+            - title: "Domestic Nodes Distribution"
+              class: "active"
+              href: "#inlandEN"
+            - title: "International Nodes Distribution"
+              class: ""
+              href: "#overseaEN"
+          sections:
+            - id: "inlandEN"
+              class: "tab-pane fade in active"
+              icon: "fusion/img-guoneijiedian.png"
+            - id: "overseaEN"
+              class: "tab-pane fade"
+              icon: "fusion/img-haiwaijiedian-en.png"
+        feature4:
+          title: "Application Scenarios"
+          middlebar:
+            - title: "Web Acceleration"
+              class: "active"
+              href: "#tab-usage-section-1"
+            - title: "Document Downloads"
+              class: ""
+              href: "#tab-usage-section-2"
+            - title: "Audio & Video On-demand"
+              class: ""
+              href: "#tab-usage-section-3"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane fade in active"
+              icon: "fusion/icon-wangyejiasu@2x.png"
+              title: "Web Acceleration"
+              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users'experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
+            - id: "tab-usage-section-2"
+              class: "tab-pane fade"
+              icon: "fusion/icon-wenjianxiazai@2x.png"
+              title: "Document Downloads"
+              desc: "The distribution of lager files, such as apk, mp3, exe, zip and so on can be optimized and accelerated. FUSION enables users to get a faster download speed with thousands of nodes globally and improves the stability of downloading and transferring large files with segmental caching technology. With Qiniu's storage services, FUSION can effectively reduce costs on the return to the source station and on the storage."
+            - id: "tab-usage-section-3"
+              class: "tab-pane fade"
+              icon: "fusion/icon-yinshipindianbo@2x.png"
+              title: "Audio & Video On-demand"
+              desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
+        feature5:
+          title: "Success Cases"
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -3389,7 +3389,7 @@ en:
       description: 七牛云内容审核基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。帮助多媒体内容平台降低色情、暴恐和涉政等违规风险，大幅降低人工审核成本。
     welcome_contact:
       title: 联系我们 - 七牛云
-    welcome_fusion:
+    products_fusion:
       title: Qiniu Cloud-Integrated CDN（FUSION）
       keywords: CDN, Web Acceleration, Document Downloads, Audio & Video On-demand、International Nodes, Three-dimensional Quality Control, No Blind Areas, Intelligent Dispatch, Network Quality Tuning, Edge Cache Node
       description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
