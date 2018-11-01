@@ -4,4 +4,7 @@ class ProductsController < ApplicationController
 
   def kodo
   end
+
+  def fusion
+  end
 end

@@ -14,9 +14,6 @@ class WelcomeController < ApplicationController
   def pandora
   end
 
-  def fusion
-  end
-
   def dora
   end
 
