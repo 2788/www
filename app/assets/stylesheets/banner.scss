@@ -655,12 +655,13 @@
       .banner-desc {
         h1 {
           margin: 0.20rem 0;
-          font-size: 1.00rem;
+          font-size: 0.80rem;
           font-weight: 600;
         }
 
         h2 {
-          margin: 0.10rem 0;
+          margin-top: 0.40rem;
+          margin-bottom: 0;
           font-size: 0.40rem;
           font-weight: 600;
           text-shadow: none;
@@ -668,7 +669,7 @@
       }
 
       .btn-banner {
-        margin-top: 0.20rem;
+        margin-top: 0.40rem;
         color: #530B7B;
         border: none;
         background-color: #FFE300;
@@ -953,8 +954,10 @@
     }
 
     &.hero-qvm1rmb-index {
-      .btn-banner {
-        margin-top: 0.10rem !important;
+      .banner-desc {
+        h1 {
+          font-size: 0.70rem !important;
+        }
       }
     }
 
