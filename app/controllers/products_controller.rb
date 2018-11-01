@@ -7,4 +7,7 @@ class ProductsController < ApplicationController
 
   def fusion
   end
+
+  def qvm
+  end
 end

@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-10 col-sm-7">
-          <h1><%= I18n.t("views.welcome.qvm.title") -%></h1>
-          <p><%= I18n.t("views.welcome.qvm.describe") -%></p>
+          <h1><%= I18n.t("views.products.qvm.title") -%></h1>
+          <p><%= I18n.t("views.products.qvm.describe") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "控制台", "https://portal.qiniu.com/qvm", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
@@ -26,7 +26,7 @@
   <div class="container">
     <ul class="nav nav-tabs">
       <li><span>了解更多：</span></li>
-      <% I18n.t("views.welcome.qvm.navs").each do |nav| -%>
+      <% I18n.t("views.products.qvm.navs").each do |nav| -%>
         <li><%= link_to nav[:name], nav[:link], target: "_blank" -%></li>
       <% end -%>
     </ul>
@@ -37,11 +37,11 @@
 <div class="features features-qvm-adva">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qvm.advantage.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qvm.advantage.title") -%></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.qvm.advantage.col").each do |col| -%>
+      <% I18n.t("views.products.qvm.advantage.col").each do |col| -%>
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="thumbnail">
             <%= image_tag col[:icon], alt: col[:title], width: 80 -%>
@@ -61,12 +61,12 @@
 <div class="features features-less features-cases features-qvm-product qvm-product-title">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qvm.product.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qvm.product.title") -%></h2>
     </div>
 
     <ul class="navbar-wrapper-middle">
       <div class="row">
-        <% I18n.t("views.welcome.qvm.product.icons").each do |icon| -%>
+        <% I18n.t("views.products.qvm.product.icons").each do |icon| -%>
           <div class="icon-col col-xs-4">
             <li class="intLink">
               <%= image_tag icon[:icon], class: "normal-image", alt: icon[:title], width: 90 -%>
@@ -85,18 +85,18 @@
   <div class="container">
     <div class="row product-row">
       <div class="col-md-2 col-sm-2 hidden-xs col-image-lg">
-        <%= image_tag I18n.t("views.welcome.qvm.product.host.image"), alt: I18n.t("views.welcome.qvm.product.host.title"), width: "100%" -%>
+        <%= image_tag I18n.t("views.products.qvm.product.host.image"), alt: I18n.t("views.products.qvm.product.host.title"), width: "100%" -%>
       </div>
       <div class="col-md-10 col-sm-10 col-content-lg">
-        <h4><%= I18n.t("views.welcome.qvm.product.host.title") -%></h4>
+        <h4><%= I18n.t("views.products.qvm.product.host.title") -%></h4>
         <div class="tabs">
           <ul class="nav nav-tabs nav-justified points-bar nav-qvm-product" role="tablist">
-            <% I18n.t("views.welcome.qvm.product.host.tabs").each do |tab| -%>
+            <% I18n.t("views.products.qvm.product.host.tabs").each do |tab| -%>
               <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
             <% end -%>
           </ul>
           <div class="tab-content">
-            <% I18n.t("views.welcome.qvm.product.host.sections").each do |sec| -%>
+            <% I18n.t("views.products.qvm.product.host.sections").each do |sec| -%>
               <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
                 <table class="table">
                   <tbody>
@@ -141,7 +141,7 @@
 </div>
 
 <%# 其余六个 %>
-<% I18n.t("views.welcome.qvm.product.others").each do |item| -%>
+<% I18n.t("views.products.qvm.product.others").each do |item| -%>
   <div class="features features-less features-cases features-qvm-product qvm-product-item <%= item[:class] -%>">
     <div class="container">
       <div class="row product-row">
@@ -203,16 +203,16 @@
 <div class="features features-qvm-scene">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qvm.scene.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qvm.scene.title") -%></h2>
     </div>
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
-        <% I18n.t("views.welcome.qvm.scene.tabs").each do |tab| -%>
+        <% I18n.t("views.products.qvm.scene.tabs").each do |tab| -%>
           <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
         <% end -%>
       </ul>
       <div class="tab-content">
-        <% I18n.t("views.welcome.qvm.scene.sections").each do |sec| -%>
+        <% I18n.t("views.products.qvm.scene.sections").each do |sec| -%>
           <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
             <div class="row">
               <div class="col-md-8 col-sm-6 col-xs-6">
@@ -251,29 +251,29 @@
 <div class="features features-less features-cases features-qvm-doc <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qvm.doc.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qvm.doc.title") -%></h2>
     </div>
     <div class="row">
       <div class="col-sm-4 col-xs-12">
-        <h4><%= I18n.t("views.welcome.qvm.doc.document.title") -%></h4>
+        <h4><%= I18n.t("views.products.qvm.doc.document.title") -%></h4>
         <ul class="links-list">
-          <% I18n.t("views.welcome.qvm.doc.document.links").each do |item| -%>
+          <% I18n.t("views.products.qvm.doc.document.links").each do |item| -%>
             <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
           <% end -%>
         </ul>
       </div>
       <div class="col-sm-4 col-xs-12">
-        <h4><%= I18n.t("views.welcome.qvm.doc.problem.title") -%></h4>
+        <h4><%= I18n.t("views.products.qvm.doc.problem.title") -%></h4>
         <ul class="links-list">
-          <% I18n.t("views.welcome.qvm.doc.problem.links").each do |item| -%>
+          <% I18n.t("views.products.qvm.doc.problem.links").each do |item| -%>
             <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
           <% end -%>
         </ul>
       </div>
       <div class="col-sm-4 col-xs-12">
-        <h4><%= I18n.t("views.welcome.qvm.doc.news.title") -%></h4>
+        <h4><%= I18n.t("views.products.qvm.doc.news.title") -%></h4>
         <ul class="links-list">
-          <% I18n.t("views.welcome.qvm.doc.news.links").each do |item| -%>
+          <% I18n.t("views.products.qvm.doc.news.links").each do |item| -%>
             <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
           <% end -%>
         </ul>
