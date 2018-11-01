@@ -1313,538 +1313,6 @@ en:
               - title: "实时音视频 demo 体验"
                 link: "https://developer.qiniu.com/rtn/manual/4374/the-demo-experience?ref=www.qiniu.com"
                 target: "_blank"
-      qvm:
-        title: "云主机服务"
-        describe: "七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
-        navs:
-          - name: "产品简介"
-            link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
-          - name: "帮助文档"
-            link: "https://developer.qiniu.com/qvm"
-          - name: "常见问题"
-            link: "https://developer.qiniu.com/faq?space=qvm"
-        advantage:
-          title: "产品优势"
-          col:
-            - title: "弹性"
-              icon: "qvm/icon-tanxing.png"
-              desc: "千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择。"
-            - title: "稳定"
-              icon: "qvm/icon-wending.png"
-              desc: "高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便。"
-            - title: "安全"
-              icon: "qvm/icon-anquan.png"
-              desc: "专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行。"
-            - title: "易用"
-              icon: "qvm/icon-yiyong.png"
-              desc: "上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展。"
-            - title: "可拓展"
-              icon: "qvm/icon-ketuozhan.png"
-              desc: "无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案。"
-            - title: "高性能"
-              icon: "qvm/icon-gaoxingneng.png"
-              desc: "单实例最高可选 88vCPU，内存704GB，700万PPS 网络收发包，35Gbps 带宽。"
-        product:
-          title: "产品与服务"
-          icons:
-            - icon: "qvm/icon-yunzhuji-b.png"
-              active: "qvm/icon-yunzhuji-h.png"
-              title: "云主机"
-              href: "#qvm-product-section-1"
-            - icon: "qvm/icon-zhuanyouwangluo-b.png"
-              active: "qvm/icon-zhuanyouwangluo-h.png"
-              title: "专有网络"
-              href: "#qvm-product-section-2"
-            - icon: "qvm/icon-tanxinggongwang-b.png"
-              active: "qvm/icon-tanxinggongwang-h.png"
-              title: "弹性公网 IP"
-              href: "#qvm-product-section-3"
-            - icon: "qvm/icon-gaosutongdao-b.png"
-              active: "qvm/icon-gaosutongdao-h.png"
-              title: "高速通道"
-              href: "#qvm-product-section-4"
-            - icon: "qvm/icon-yunshujuku-b.png"
-              active: "qvm/icon-yunshujuku-h.png"
-              title: "云数据库"
-              href: "#qvm-product-section-5"
-            - icon: "qvm/icon-fuzaijunheng-b.png"
-              active: "qvm/icon-fuzaijunheng-h.png"
-              title: "负载均衡"
-              href: "#qvm-product-section-6"
-            - icon: "qvm/icon-anquanchanpin-b.png"
-              active: "qvm/icon-anquanchanpin-h.png"
-              title: "安全产品"
-              href: "#qvm-product-section-7"
-          host:
-            title: "云主机"
-            image: "qvm/veins-yunzhuji.png"
-            tabs:
-              - name: "通用型"
-                class: "active"
-                href: "#tab-host-1"
-              - name: "大数据型"
-                class: ""
-                href: "#tab-host-2"
-              - name: "计算型"
-                class: ""
-                href: "#tab-host-3"
-              - name: "内存型"
-                class: ""
-                href: "#tab-host-4"
-              - name: "高主频型"
-                class: ""
-                href: "#tab-host-5"
-              - name: "本地 SSD 型"
-                class: ""
-                href: "#tab-host-6"
-              - name: "异构型"
-                class: ""
-                href: "#tab-host-7"
-            sections:
-              - id: "tab-host-1"
-                class: "tab-pane fade in active"
-                row1:
-                  col1: "通用型 G5"
-                  col2: "1:4"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "30"
-                row2:
-                  col1: "高网络包收发、企业级应用、数据处理"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon Platinum 8163 (Skylake)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "通用网络增强型 SN2NE"
-                  col2: "1:4"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "30"
-                row4:
-                  col1: "高网络包收发、企业级应用、数据处理"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-              - id: "tab-host-2"
-                class: "tab-pane fade"
-                row1:
-                  col1: "大数据型 D1"
-                  col2: "1:4"
-                  col3: "2.5"
-                  col4: "3"
-                  col5: "30"
-                row2:
-                  col1: "海量数据存储和计算的业务场景"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "大数据网络增强型 D1NE"
-                  col2: "1:4"
-                  col3: "2.5"
-                  col4: "6"
-                  col5: "100"
-                row4:
-                  col1: "海量数据存储和计算的业务场景"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-              - id: "tab-host-3"
-                class: "tab-pane fade"
-                row1:
-                  col1: "计算型 C5"
-                  col2: "1:2"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "30"
-                row2:
-                  col1: "Web 前端服务器、游戏前端、批量计算"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon Platinum 8163 (Skylake)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "计算网络增强型 SN1NE"
-                  col2: "1:2"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "30"
-                row4:
-                  col1: "Web 前端服务器、游戏前端、批量计算"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-              - id: "tab-host-4"
-                class: "tab-pane fade"
-                row1:
-                  col1: "内存型 R5"
-                  col2: "1:8"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "30"
-                row2:
-                  col1: "高性能数据库、数据分析与挖掘、分布式内存缓存"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon Platinum 8163 (Skylake)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "内存网络增强型 SE1NE"
-                  col2: "1:8"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "30"
-                row4:
-                  col1: "高性能数据库、数据分析与挖掘、分布式内存缓存"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-              - id: "tab-host-5"
-                class: "tab-pane fade"
-                row1:
-                  col1: "高主频计算型 C4"
-                  col2: "1:2"
-                  col3: "3.2"
-                  col4: "1.5"
-                  col5: "20"
-                row2:
-                  col1: "高性能科学和工程应用、MMO游戏、视频编码"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2667 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "高主频内存型 EC4"
-                  col2: "1:8"
-                  col3: "3.2"
-                  col4: "1.5"
-                  col5: "20"
-                row4:
-                  col1: "高性能科学和工程应用、MMO游戏、视频编码"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2667 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-              - id: "tab-host-6"
-                class: "tab-pane fade"
-                row1:
-                  col1: "本地 SSD 型 L1"
-                  col2: "1:4"
-                  col3: "2.5"
-                  col4: "0.8"
-                  col5: "20"
-                row2:
-                  col1: "OLTP、高性能关系型数据库、NoSQL 数据库"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "本地 SSD 型 L2"
-                  col2: "1:8"
-                  col3: "2.5"
-                  col4: "1"
-                  col5: "50"
-                row4:
-                  col1: "OLTP、高性能关系型数据库、NoSQL 数据库"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon Platinum 8163 (Skylake)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-              - id: "tab-host-7"
-                class: "tab-pane fade"
-                row1:
-                  col1: "GPU 计算型 GN5"
-                  col2: "1:7.5"
-                  col3: "2.5"
-                  col4: "3"
-                  col5: "30"
-                row2:
-                  col1: "深度学习、科学计算、高性能计算、渲染、多媒体编解码"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-                row3:
-                  col1: "FPGA 计算型 F1"
-                  col2: "1:7.5"
-                  col3: "2.5"
-                  col4: "2"
-                  col5: "80"
-                row4:
-                  col1: "深度学习、基因组学研究、金融分析、转码"
-                  col2: "CPU/内存"
-                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
-                  col4: "最大内网带宽"
-                  col5: "最大网络收发包能力"
-          others:
-            - class: "qvm-product-section-2"
-              type: "right"
-              title: "专有网络"
-              desc: "专有网络（Virtual Private Cloud，VPC）是自定义的逻辑隔离网络空间，托管在专有网络内的服务资源包括：云服务器、负载均衡器、云数据库等云服务资源。你可以完全掌握你的专有网络环境，包括自定义专有网络的拓扑和 IP 地址，适用于对网络安全性要求较高和熟悉网络管理的用户。"
-              labels:
-                - name: "⽹络隔离"
-                  isOnline: true
-                - name: "访问控制"
-                  isOnline: true
-                - name: "软件定义网络"
-                  isOnline: true
-              link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
-              image: "qvm/veins-zhuanyouwangluo.png"
-            - class: "qvm-product-section-3"
-              type: "left"
-              title: "弹性公网 IP"
-              desc: "弹性公⽹ IP（Elastic IP Address，EIP）是可以独⽴购买和持有的公⽹ IP 地址资源，并且可以弹性绑定，您可以在需要时将弹性公⽹ IP 绑定到需要的资源上；在不需要时，将之解绑并释放，避免不必要的计费。弹性公⽹ IP ⽀持根据需要随时调整带宽，实时响应您的业务需求。"
-              labels:
-                - name: "弹性伸缩"
-                  isOnline: true
-                - name: "灵活插拔"
-                  isOnline: true
-                - name: "低成本"
-                  isOnline: true
-              link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
-              image: "qvm/veins-tanxinggongwang.png"
-            - class: "qvm-product-section-4"
-              type: "right"
-              title: "高速通道"
-              desc: "高速通道（Express Connect）是一款基于 IPVPN 的便捷高效的网络服务，用于在云上的不同网络环境间实现高速、稳定、安全的私网通信，包括跨地域/跨用户的 VPC 内网互通、专线接入等场景，有效提高网络拓扑的灵活性和跨网络通信的质量和安全性。"
-              labels:
-                - name: "高速互通"
-                  isOnline: true
-                - name: "稳定可靠"
-                  isOnline: true
-                - name: "安全易用"
-                  isOnline: true
-              link: "https://portal.qiniu.com/qvm/network/expressConnect"
-              image: "qvm/veins-gaosutongdao.png"
-            - class: "qvm-product-section-5"
-              type: "left"
-              title: "云数据库"
-              desc: "云数据库（Cloud Database）是被优化或部署到一个虚拟计算环境中的数据库，七牛云主机服务提供 MySQL、Redis、MongoDB、SQL Server、PostgreSQL 及 PPAS 等主流数据库产品，帮助您快速构建安全高效的产品。"
-              labels:
-                - name: "灵活计费"
-                  isOnline: true
-                - name: "即开即用"
-                  isOnline: true
-                - name: "按需变配"
-                  isOnline: true
-                - name: "管理便捷"
-                  isOnline: true
-              link: "https://developer.qiniu.com/qvm/manual/4272/mysql-introduction"
-              image: "qvm/veins-yunshujuku.png"
-            - class: "qvm-product-section-6"
-              type: "right"
-              title: "负载均衡"
-              desc: "负载均衡（Server Load Balancer，SLB）是将访问流量根据转发策略分发到后端多台云主机的流量分发控制服务，提供四层和七层负载均衡服务。负载均衡能够扩展应用的服务能力，增强应用的可用性。"
-              labels:
-                - name: "⾼可⽤"
-                  isOnline: true
-                - name: "低成本"
-                  isOnline: true
-                - name: "健康检查"
-                  isOnline: true
-              link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
-              image: "qvm/veins-fuzaijunheng.png"
-            - class: "qvm-product-section-7"
-              type: "left"
-              title: "安全产品"
-              desc: "七牛针对网络防护提供的安全产品，包括 DDos 高防 IP、Web 应用防火墙、主机安全，多维度防御策略全面防护网站的系统及业务安全。"
-              labels:
-                - name: "⾼防 BGP IP"
-                  isOnline: true
-                - name: "Web应用防⽕墙"
-                  isOnline: false
-                - name: "主机安全"
-                  isOnline: false
-              link: "https://portal.qiniu.com/qvm/security/bgpip"
-              image: "qvm/veins-anquanchanpin.png"
-        scene:
-          title: "应用场景"
-          tabs:
-            - name: "企业官网、简单Web应用"
-              class: "active"
-              href: "#tab-scene-1"
-            - name: "网站、App 、小程序后端服务"
-              class: ""
-              href: "#tab-scene-2"
-            - name: "自建数据库集群服务"
-              class: ""
-              href: "#tab-scene-3"
-            - name: "高性能计算、科学计算"
-              class: ""
-              href: "#tab-scene-4"
-            - name: "编解码、GPU计算、机器学习"
-              class: ""
-              href: "#tab-scene-5"
-          sections:
-            - id: "tab-scene-1"
-              title: "企业官网、简单Web应用"
-              class: "tab-pane fade in active"
-              image: "qvm/icon-scene-1.jpg"
-              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t5-lc1m1.small"
-              rows:
-                - title: "场景特性"
-                  content:
-                    - 轻量级、计算量较少
-                - title: "应用建议"
-                  content:
-                    - 网站初始阶段访问量小，只需要一台低配置的云服务器即可运行应用程序、数据库、存储文件等
-                    - 随着业务发展，你可以随时提高配置，增加云服务器数量，无需担心低配服务器在业务突增时带来的资源不足问题
-              prolinks:
-                - title: "云硬盘"
-                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
-                - title: "专有网络"
-                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
-                - title: "弹性公网 IP"
-                  link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
-            - id: "tab-scene-2"
-              title: "网站、App 、小程序后端服务"
-              class: "tab-pane fade"
-              image: "qvm/icon-scene-2.jpg"
-              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.g5.large"
-              rows:
-                - title: "场景特性"
-                  content:
-                    - 波动性大、高可用需求
-                - title: "应用建议"
-                  content:
-                    - 可将云服务器与 对象存储 及 融合CDN 搭配，降低存储费用，减少用户访问等待时间、降低带宽费用、提高可用性
-                    - 通过使用弹性伸缩，实现在业务增长/下降时自动增减实例，保证满足访问量达到峰值时对资源的要求，同时降低成本
-                    - 搭配负载均衡实现高可用架构
-              prolinks:
-                - title: "对象存储"
-                  link: "https://www.qiniu.com/products/kodo"
-                - title: "融合 CDN"
-                  link: "https://www.qiniu.com/products/fusion"
-                - title: "负载均衡"
-                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
-                - title: "弹性公网 IP"
-                  link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
-                - title: "安全产品"
-                  link: ""
-            - id: "tab-scene-3"
-              title: "自建数据库集群服务"
-              class: "tab-pane fade"
-              image: "qvm/icon-scene-3.jpg"
-              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.r5.large"
-              rows:
-                - title: "场景特性"
-                  content:
-                    - 高 I/O、高内存需求
-                - title: "应用建议"
-                  content:
-                    - 使用较高配置的 I/O 优化型云服务器，同时采用 SSD 云硬盘，可实现支持高 I/O 并发和更高的数据可靠性
-                    - 也可以采用多台稍微低配的 I/O 优化型云服务器，搭配负载均衡，实现高可用架构
-              prolinks:
-                - title: "云硬盘"
-                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
-                - title: "专有网络"
-                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
-                - title: "负载均衡"
-                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
-            - id: "tab-scene-4"
-              title: "高性能计算、科学计算"
-              class: "tab-pane fade"
-              image: "qvm/icon-scene-4.jpg"
-              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.hfc5.large"
-              rows:
-                - title: "场景特性"
-                  content:
-                    - CPU密集型计算、要求计算性能稳定
-                - title: "应用建议"
-                  content:
-                    - 主要用于大型科学工程计算，数值模拟等
-                    - 主要应用领域包括石油、气象、CAE、核能、制药、环境监测分析、系统仿真等
-              prolinks:
-                - title: "云硬盘"
-                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
-                - title: "对象存储"
-                  link: "https://www.qiniu.com/products/kodo"
-                - title: "专有网络"
-                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
-                - title: "负载均衡"
-                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
-            - id: "tab-scene-5"
-              title: "编解码、GPU计算、机器学习"
-              class: "tab-pane fade"
-              image: "qvm/icon-scene-5.jpg"
-              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.gn5-c4g1.xlarge"
-              rows:
-                - title: "场景特性"
-                  content:
-                    - 高性能计算能力、高图形处理能力
-                - title: "应用建议"
-                  content:
-                    - 主要应用于科学计算，如计算流体动力学、计算金融学、基因组学研究、环境分析等场景
-                    - 也包括音视频渲染、多媒体编解码及其他服务器端GPU计算工作等
-              prolinks:
-                - title: "云硬盘"
-                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
-                - title: "对象存储"
-                  link: "https://www.qiniu.com/products/kodo"
-                - title: "专有网络"
-                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
-                - title: "负载均衡"
-                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
-        doc:
-          title: "快速入门"
-          document:
-            title: "产品文档"
-            links:
-              - title: "产品简介"
-                link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
-                target: "_blank"
-              - title: "计费说明"
-                link: "https://developer.qiniu.com/qvm/manual/4238/qvm-billing-contrast"
-                target: "_blank"
-              - title: "备案相关"
-                link: "https://developer.qiniu.com/qvm/manual/4294/record-introduction"
-                target: "_blank"
-              - title: "网络与安全性概述"
-                link: "https://developer.qiniu.com/qvm/manual/4305/qvm-netsec-overview"
-                target: "_blank"
-              - title: "实例规格族"
-                link: "https://developer.qiniu.com/qvm/manual/4208/qvm-instance-family"
-                target: "_blank"
-              - title: "磁盘管理"
-                link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
-                target: "_blank"
-          problem:
-            title: "常见问题"
-            links:
-              - title: "为什么云主机连不上 Redis?"
-                link: "https://developer.qiniu.com/qvm/kb/4271/qvm-connection-redis"
-                target: "_blank"
-              - title: "如何为 Linux 服务器安装 GRUB?"
-                link: "https://developer.qiniu.com/qvm/kb/4283/linux-install-grub"
-                target: "_blank"
-              - title: "负载均衡各监听连接超时时间是多少？"
-                link: "https://developer.qiniu.com/qvm/kb/4321/qvm-slb-common-problems"
-                target: "_blank"
-              - title: "启动实例发现原数据盘目录下没有数据？"
-                link: "https://developer.qiniu.com/qvm/kb/4287/qvm-migration-faq"
-                target: "_blank"
-              - title: "启动 Others Linux 实例后，网络服务不正常？"
-                link: "https://developer.qiniu.com/qvm/kb/4287/qvm-migration-faq"
-                target: "_blank"
-              - title: "QVM 实例设置权重的作用是什么？"
-                link: "https://developer.qiniu.com/qvm/kb/4323/qvm-backend-server-faq"
-                target: "_blank"
-          news:
-            title: "最佳实践"
-            links:
-              - title: "使用迁移工具迁移服务器至 QVM"
-                link: "https://developer.qiniu.com/qvm/manual/4288/server-migration-qiniu"
-                target: "_blank"
-              - title: "云主机与对象存储内网相互连接使用"
-                link: "https://developer.qiniu.com/qvm/manual/4269/qvm-kodo"
-                target: "_blank"
       edu:
         title: "在线教育解决方案"
         desc: "满足一对一教学、小班教学、双师课堂等多种教育场景，助力企业快速上线低延迟、高可用的互联网教育产品。"
@@ -3189,6 +2657,532 @@ en:
               desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
         feature5:
           title: "Success Cases"
+      qvm:
+        title: "云主机服务"
+        describe: "七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
+        navs:
+          - name: "产品简介"
+            link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
+          - name: "帮助文档"
+            link: "https://developer.qiniu.com/qvm"
+          - name: "常见问题"
+            link: "https://developer.qiniu.com/faq?space=qvm"
+        advantage:
+          title: "产品优势"
+          col:
+            - title: "弹性"
+              icon: "qvm/icon-tanxing.png"
+              desc: "千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择。"
+            - title: "稳定"
+              icon: "qvm/icon-wending.png"
+              desc: "高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便。"
+            - title: "安全"
+              icon: "qvm/icon-anquan.png"
+              desc: "专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行。"
+            - title: "易用"
+              icon: "qvm/icon-yiyong.png"
+              desc: "上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展。"
+            - title: "可拓展"
+              icon: "qvm/icon-ketuozhan.png"
+              desc: "无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案。"
+            - title: "高性能"
+              icon: "qvm/icon-gaoxingneng.png"
+              desc: "单实例最高可选 88vCPU，内存704GB，700万PPS 网络收发包，35Gbps 带宽。"
+        product:
+          title: "产品与服务"
+          icons:
+            - icon: "qvm/icon-yunzhuji-b.png"
+              active: "qvm/icon-yunzhuji-h.png"
+              title: "云主机"
+              href: "#qvm-product-section-1"
+            - icon: "qvm/icon-zhuanyouwangluo-b.png"
+              active: "qvm/icon-zhuanyouwangluo-h.png"
+              title: "专有网络"
+              href: "#qvm-product-section-2"
+            - icon: "qvm/icon-tanxinggongwang-b.png"
+              active: "qvm/icon-tanxinggongwang-h.png"
+              title: "弹性公网 IP"
+              href: "#qvm-product-section-3"
+            - icon: "qvm/icon-gaosutongdao-b.png"
+              active: "qvm/icon-gaosutongdao-h.png"
+              title: "高速通道"
+              href: "#qvm-product-section-4"
+            - icon: "qvm/icon-yunshujuku-b.png"
+              active: "qvm/icon-yunshujuku-h.png"
+              title: "云数据库"
+              href: "#qvm-product-section-5"
+            - icon: "qvm/icon-fuzaijunheng-b.png"
+              active: "qvm/icon-fuzaijunheng-h.png"
+              title: "负载均衡"
+              href: "#qvm-product-section-6"
+            - icon: "qvm/icon-anquanchanpin-b.png"
+              active: "qvm/icon-anquanchanpin-h.png"
+              title: "安全产品"
+              href: "#qvm-product-section-7"
+          host:
+            title: "云主机"
+            image: "qvm/veins-yunzhuji.png"
+            tabs:
+              - name: "通用型"
+                class: "active"
+                href: "#tab-host-1"
+              - name: "大数据型"
+                class: ""
+                href: "#tab-host-2"
+              - name: "计算型"
+                class: ""
+                href: "#tab-host-3"
+              - name: "内存型"
+                class: ""
+                href: "#tab-host-4"
+              - name: "高主频型"
+                class: ""
+                href: "#tab-host-5"
+              - name: "本地 SSD 型"
+                class: ""
+                href: "#tab-host-6"
+              - name: "异构型"
+                class: ""
+                href: "#tab-host-7"
+            sections:
+              - id: "tab-host-1"
+                class: "tab-pane fade in active"
+                row1:
+                  col1: "通用型 G5"
+                  col2: "1:4"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "30"
+                row2:
+                  col1: "高网络包收发、企业级应用、数据处理"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon Platinum 8163 (Skylake)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "通用网络增强型 SN2NE"
+                  col2: "1:4"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "30"
+                row4:
+                  col1: "高网络包收发、企业级应用、数据处理"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+              - id: "tab-host-2"
+                class: "tab-pane fade"
+                row1:
+                  col1: "大数据型 D1"
+                  col2: "1:4"
+                  col3: "2.5"
+                  col4: "3"
+                  col5: "30"
+                row2:
+                  col1: "海量数据存储和计算的业务场景"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "大数据网络增强型 D1NE"
+                  col2: "1:4"
+                  col3: "2.5"
+                  col4: "6"
+                  col5: "100"
+                row4:
+                  col1: "海量数据存储和计算的业务场景"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+              - id: "tab-host-3"
+                class: "tab-pane fade"
+                row1:
+                  col1: "计算型 C5"
+                  col2: "1:2"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "30"
+                row2:
+                  col1: "Web 前端服务器、游戏前端、批量计算"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon Platinum 8163 (Skylake)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "计算网络增强型 SN1NE"
+                  col2: "1:2"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "30"
+                row4:
+                  col1: "Web 前端服务器、游戏前端、批量计算"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+              - id: "tab-host-4"
+                class: "tab-pane fade"
+                row1:
+                  col1: "内存型 R5"
+                  col2: "1:8"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "30"
+                row2:
+                  col1: "高性能数据库、数据分析与挖掘、分布式内存缓存"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon Platinum 8163 (Skylake)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "内存网络增强型 SE1NE"
+                  col2: "1:8"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "30"
+                row4:
+                  col1: "高性能数据库、数据分析与挖掘、分布式内存缓存"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+              - id: "tab-host-5"
+                class: "tab-pane fade"
+                row1:
+                  col1: "高主频计算型 C4"
+                  col2: "1:2"
+                  col3: "3.2"
+                  col4: "1.5"
+                  col5: "20"
+                row2:
+                  col1: "高性能科学和工程应用、MMO游戏、视频编码"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2667 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "高主频内存型 EC4"
+                  col2: "1:8"
+                  col3: "3.2"
+                  col4: "1.5"
+                  col5: "20"
+                row4:
+                  col1: "高性能科学和工程应用、MMO游戏、视频编码"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2667 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+              - id: "tab-host-6"
+                class: "tab-pane fade"
+                row1:
+                  col1: "本地 SSD 型 L1"
+                  col2: "1:4"
+                  col3: "2.5"
+                  col4: "0.8"
+                  col5: "20"
+                row2:
+                  col1: "OLTP、高性能关系型数据库、NoSQL 数据库"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "本地 SSD 型 L2"
+                  col2: "1:8"
+                  col3: "2.5"
+                  col4: "1"
+                  col5: "50"
+                row4:
+                  col1: "OLTP、高性能关系型数据库、NoSQL 数据库"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon Platinum 8163 (Skylake)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+              - id: "tab-host-7"
+                class: "tab-pane fade"
+                row1:
+                  col1: "GPU 计算型 GN5"
+                  col2: "1:7.5"
+                  col3: "2.5"
+                  col4: "3"
+                  col5: "30"
+                row2:
+                  col1: "深度学习、科学计算、高性能计算、渲染、多媒体编解码"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+                row3:
+                  col1: "FPGA 计算型 F1"
+                  col2: "1:7.5"
+                  col3: "2.5"
+                  col4: "2"
+                  col5: "80"
+                row4:
+                  col1: "深度学习、基因组学研究、金融分析、转码"
+                  col2: "CPU/内存"
+                  col3: "Intel Xeon E5-2682 v4 (Broadwell)"
+                  col4: "最大内网带宽"
+                  col5: "最大网络收发包能力"
+          others:
+            - class: "qvm-product-section-2"
+              type: "right"
+              title: "专有网络"
+              desc: "专有网络（Virtual Private Cloud，VPC）是自定义的逻辑隔离网络空间，托管在专有网络内的服务资源包括：云服务器、负载均衡器、云数据库等云服务资源。你可以完全掌握你的专有网络环境，包括自定义专有网络的拓扑和 IP 地址，适用于对网络安全性要求较高和熟悉网络管理的用户。"
+              labels:
+                - name: "⽹络隔离"
+                  isOnline: true
+                - name: "访问控制"
+                  isOnline: true
+                - name: "软件定义网络"
+                  isOnline: true
+              link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
+              image: "qvm/veins-zhuanyouwangluo.png"
+            - class: "qvm-product-section-3"
+              type: "left"
+              title: "弹性公网 IP"
+              desc: "弹性公⽹ IP（Elastic IP Address，EIP）是可以独⽴购买和持有的公⽹ IP 地址资源，并且可以弹性绑定，您可以在需要时将弹性公⽹ IP 绑定到需要的资源上；在不需要时，将之解绑并释放，避免不必要的计费。弹性公⽹ IP ⽀持根据需要随时调整带宽，实时响应您的业务需求。"
+              labels:
+                - name: "弹性伸缩"
+                  isOnline: true
+                - name: "灵活插拔"
+                  isOnline: true
+                - name: "低成本"
+                  isOnline: true
+              link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
+              image: "qvm/veins-tanxinggongwang.png"
+            - class: "qvm-product-section-4"
+              type: "right"
+              title: "高速通道"
+              desc: "高速通道（Express Connect）是一款基于 IPVPN 的便捷高效的网络服务，用于在云上的不同网络环境间实现高速、稳定、安全的私网通信，包括跨地域/跨用户的 VPC 内网互通、专线接入等场景，有效提高网络拓扑的灵活性和跨网络通信的质量和安全性。"
+              labels:
+                - name: "高速互通"
+                  isOnline: true
+                - name: "稳定可靠"
+                  isOnline: true
+                - name: "安全易用"
+                  isOnline: true
+              link: "https://portal.qiniu.com/qvm/network/expressConnect"
+              image: "qvm/veins-gaosutongdao.png"
+            - class: "qvm-product-section-5"
+              type: "left"
+              title: "云数据库"
+              desc: "云数据库（Cloud Database）是被优化或部署到一个虚拟计算环境中的数据库，七牛云主机服务提供 MySQL、Redis、MongoDB、SQL Server、PostgreSQL 及 PPAS 等主流数据库产品，帮助您快速构建安全高效的产品。"
+              labels:
+                - name: "灵活计费"
+                  isOnline: true
+                - name: "即开即用"
+                  isOnline: true
+                - name: "按需变配"
+                  isOnline: true
+                - name: "管理便捷"
+                  isOnline: true
+              link: "https://developer.qiniu.com/qvm/manual/4272/mysql-introduction"
+              image: "qvm/veins-yunshujuku.png"
+            - class: "qvm-product-section-6"
+              type: "right"
+              title: "负载均衡"
+              desc: "负载均衡（Server Load Balancer，SLB）是将访问流量根据转发策略分发到后端多台云主机的流量分发控制服务，提供四层和七层负载均衡服务。负载均衡能够扩展应用的服务能力，增强应用的可用性。"
+              labels:
+                - name: "⾼可⽤"
+                  isOnline: true
+                - name: "低成本"
+                  isOnline: true
+                - name: "健康检查"
+                  isOnline: true
+              link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
+              image: "qvm/veins-fuzaijunheng.png"
+            - class: "qvm-product-section-7"
+              type: "left"
+              title: "安全产品"
+              desc: "七牛针对网络防护提供的安全产品，包括 DDos 高防 IP、Web 应用防火墙、主机安全，多维度防御策略全面防护网站的系统及业务安全。"
+              labels:
+                - name: "⾼防 BGP IP"
+                  isOnline: true
+                - name: "Web应用防⽕墙"
+                  isOnline: false
+                - name: "主机安全"
+                  isOnline: false
+              link: "https://portal.qiniu.com/qvm/security/bgpip"
+              image: "qvm/veins-anquanchanpin.png"
+        scene:
+          title: "应用场景"
+          tabs:
+            - name: "企业官网、简单Web应用"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "网站、App 、小程序后端服务"
+              class: ""
+              href: "#tab-scene-2"
+            - name: "自建数据库集群服务"
+              class: ""
+              href: "#tab-scene-3"
+            - name: "高性能计算、科学计算"
+              class: ""
+              href: "#tab-scene-4"
+            - name: "编解码、GPU计算、机器学习"
+              class: ""
+              href: "#tab-scene-5"
+          sections:
+            - id: "tab-scene-1"
+              title: "企业官网、简单Web应用"
+              class: "tab-pane fade in active"
+              image: "qvm/icon-scene-1.jpg"
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t5-lc1m1.small"
+              rows:
+                - title: "场景特性"
+                  content:
+                    - 轻量级、计算量较少
+                - title: "应用建议"
+                  content:
+                    - 网站初始阶段访问量小，只需要一台低配置的云服务器即可运行应用程序、数据库、存储文件等
+                    - 随着业务发展，你可以随时提高配置，增加云服务器数量，无需担心低配服务器在业务突增时带来的资源不足问题
+              prolinks:
+                - title: "云硬盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
+                - title: "弹性公网 IP"
+                  link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
+            - id: "tab-scene-2"
+              title: "网站、App 、小程序后端服务"
+              class: "tab-pane fade"
+              image: "qvm/icon-scene-2.jpg"
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.g5.large"
+              rows:
+                - title: "场景特性"
+                  content:
+                    - 波动性大、高可用需求
+                - title: "应用建议"
+                  content:
+                    - 可将云服务器与 对象存储 及 融合CDN 搭配，降低存储费用，减少用户访问等待时间、降低带宽费用、提高可用性
+                    - 通过使用弹性伸缩，实现在业务增长/下降时自动增减实例，保证满足访问量达到峰值时对资源的要求，同时降低成本
+                    - 搭配负载均衡实现高可用架构
+              prolinks:
+                - title: "对象存储"
+                  link: "https://www.qiniu.com/products/kodo"
+                - title: "融合 CDN"
+                  link: "https://www.qiniu.com/products/fusion"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
+                - title: "弹性公网 IP"
+                  link: "https://developer.qiniu.com/qvm/manual/4231/qvm-elasticip"
+                - title: "安全产品"
+                  link: ""
+            - id: "tab-scene-3"
+              title: "自建数据库集群服务"
+              class: "tab-pane fade"
+              image: "qvm/icon-scene-3.jpg"
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.r5.large"
+              rows:
+                - title: "场景特性"
+                  content:
+                    - 高 I/O、高内存需求
+                - title: "应用建议"
+                  content:
+                    - 使用较高配置的 I/O 优化型云服务器，同时采用 SSD 云硬盘，可实现支持高 I/O 并发和更高的数据可靠性
+                    - 也可以采用多台稍微低配的 I/O 优化型云服务器，搭配负载均衡，实现高可用架构
+              prolinks:
+                - title: "云硬盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
+            - id: "tab-scene-4"
+              title: "高性能计算、科学计算"
+              class: "tab-pane fade"
+              image: "qvm/icon-scene-4.jpg"
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.hfc5.large"
+              rows:
+                - title: "场景特性"
+                  content:
+                    - CPU密集型计算、要求计算性能稳定
+                - title: "应用建议"
+                  content:
+                    - 主要用于大型科学工程计算，数值模拟等
+                    - 主要应用领域包括石油、气象、CAE、核能、制药、环境监测分析、系统仿真等
+              prolinks:
+                - title: "云硬盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "对象存储"
+                  link: "https://www.qiniu.com/products/kodo"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
+            - id: "tab-scene-5"
+              title: "编解码、GPU计算、机器学习"
+              class: "tab-pane fade"
+              image: "qvm/icon-scene-5.jpg"
+              link: "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.gn5-c4g1.xlarge"
+              rows:
+                - title: "场景特性"
+                  content:
+                    - 高性能计算能力、高图形处理能力
+                - title: "应用建议"
+                  content:
+                    - 主要应用于科学计算，如计算流体动力学、计算金融学、基因组学研究、环境分析等场景
+                    - 也包括音视频渲染、多媒体编解码及其他服务器端GPU计算工作等
+              prolinks:
+                - title: "云硬盘"
+                  link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                - title: "对象存储"
+                  link: "https://www.qiniu.com/products/kodo"
+                - title: "专有网络"
+                  link: "https://developer.qiniu.com/qvm/manual/4206/qvm-vpc"
+                - title: "负载均衡"
+                  link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
+        doc:
+          title: "快速入门"
+          document:
+            title: "产品文档"
+            links:
+              - title: "产品简介"
+                link: "https://developer.qiniu.com/qvm/manual/4289/qvm-overview"
+                target: "_blank"
+              - title: "计费说明"
+                link: "https://developer.qiniu.com/qvm/manual/4238/qvm-billing-contrast"
+                target: "_blank"
+              - title: "备案相关"
+                link: "https://developer.qiniu.com/qvm/manual/4294/record-introduction"
+                target: "_blank"
+              - title: "网络与安全性概述"
+                link: "https://developer.qiniu.com/qvm/manual/4305/qvm-netsec-overview"
+                target: "_blank"
+              - title: "实例规格族"
+                link: "https://developer.qiniu.com/qvm/manual/4208/qvm-instance-family"
+                target: "_blank"
+              - title: "磁盘管理"
+                link: "https://developer.qiniu.com/qvm/manual/4233/qvm-disk"
+                target: "_blank"
+          problem:
+            title: "常见问题"
+            links:
+              - title: "为什么云主机连不上 Redis?"
+                link: "https://developer.qiniu.com/qvm/kb/5099/connection-on-redis"
+                target: "_blank"
+              - title: "如何为 Linux 服务器安装 GRUB?"
+                link: "https://developer.qiniu.com/qvm/kb/5146/how-to-install-grub-for-linux-server"
+                target: "_blank"
+              - title: "负载均衡常见问题"
+                link: "https://developer.qiniu.com/qvm/kb/5144/the-common-problems-in-load-balancing"
+                target: "_blank"
+              - title: "后端服务器常见问题"
+                link: "https://developer.qiniu.com/qvm/kb/5147/the-backend-server-common-problems"
+                target: "_blank"
+          news:
+            title: "最佳实践"
+            links:
+              - title: "使用迁移工具迁移服务器至 QVM"
+                link: "https://developer.qiniu.com/qvm/manual/4288/server-migration-qiniu"
+                target: "_blank"
+              - title: "云主机与对象存储内网相互连接使用"
+                link: "https://developer.qiniu.com/qvm/manual/4269/qvm-kodo"
+                target: "_blank"
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -3397,7 +3391,7 @@ en:
       title: 智能视频云 - 七牛云
       keywords: 智能视频云，智能视频，视频云，视频云服务，视频云存储，视频云平台
       description: 七牛云智能视频云为企业提供智能、一站式的视频解决方案；集海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。
-    welcome_qvm:
+    products_qvm:
       title: 云主机_云服务器 - 七牛云
       keywords: 七牛云，云服务器，云主机，云数据库，高防
       description: 七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。
