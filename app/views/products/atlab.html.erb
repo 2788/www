@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2><%= I18n.t("views.welcome.atlab.title") %></h2>
-          <p><%= I18n.t("views.welcome.atlab.desc") %></p>
+          <h2><%= I18n.t("views.products.atlab.title") %></h2>
+          <p><%= I18n.t("views.products.atlab.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "AI 创新扶持计划", alaccelerator_path, class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
@@ -23,7 +23,7 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.welcome.atlab.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.atlab.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
         <% end %>
       </ul>
@@ -34,11 +34,11 @@
 <div class="features section tab-content-section-1">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.atlab.feature1.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.atlab.feature1.title") %></h2>
     </div>
 
     <div class="bottom-line">
-        <%= image_tag I18n.t("views.welcome.atlab.feature1.img") %>
+        <%= image_tag I18n.t("views.products.atlab.feature1.img") %>
     </div>
   </div>
 </div>
@@ -46,25 +46,25 @@
 <div class="features tab-content-section-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.atlab.feature2.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.atlab.feature2.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified nav-short points-bar" role="tablist">
-        <% I18n.t("views.welcome.atlab.feature2.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.atlab.feature2.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], data: {toggle: "tab"} -%></li>
         <% end %>
       </ul>
       <div class="tab-content">
         <section id="algorithm" class="tab-pane fade in active">
           <div class="col-sm-12">
-            <%= image_tag I18n.t("views.welcome.atlab.feature2.img1") %>
+            <%= image_tag I18n.t("views.products.atlab.feature2.img1") %>
           </div>
         </section>
 
         <section id="enterprise" class="tab-pane fade">
           <div class="col-sm-12">
-            <%= image_tag I18n.t("views.welcome.atlab.feature2.img2") %>
+            <%= image_tag I18n.t("views.products.atlab.feature2.img2") %>
           </div>
         </section>
       </div>
@@ -75,17 +75,17 @@
 <div class="features feature-color tab-content-section-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.atlab.feature3.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.atlab.feature3.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.atlab.feature3.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.atlab.feature3.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], data: {toggle: "tab"} -%></li>
         <% end %>
       </ul>
       <div class="tab-content">
-        <% I18n.t("views.welcome.atlab.feature3.sections").each do |unit| %>
+        <% I18n.t("views.products.atlab.feature3.sections").each do |unit| %>
           <section id="<%= unit[:id] %>" class="<%= unit[:class] %>">
             <p class="tab-desc"><%= unit[:desc] %></p>
             <%= image_tag unit[:img], alt: unit[:title] %>

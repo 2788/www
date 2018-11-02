@@ -1912,69 +1912,6 @@ zh-CN:
               desc: 人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。
         feature4:
           title: "客户案例"
-      atlab:
-        title: 深度学习平台AVA
-        desc: AVA 是一个端到端的人工智能深度学习平台。将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
-        middlebar:
-          - title: 功能模块
-            class: active
-            href: "#tab-content-section-1"
-          - title: 应用场景
-            class:
-            href: "#tab-content-section-2"
-          - title: 产品优势
-            class:
-            href: "#tab-content-section-3"
-        feature1:
-          title: "功能模块"
-          img: "atlab/img-functional-module.png"
-        feature2:
-          title: 应用场景
-          middlebar:
-            - title: 算法专家
-              class: active
-              href: "#algorithm"
-            - title: AI企业运营部门
-              class:
-              href: "#enterprise"
-          img1: "atlab/img-algorithm-experts.jpg"
-          img2: "atlab/img-ai-enterprise-operation.jpg"
-        feature3:
-          title: "产品优势"
-          middlebar:
-            - title: 模型训练
-              class: "active"
-              href: "#tab-usage-section-3"
-            - title: 算法设计
-              class:
-              href: "#tab-usage-section-1"
-            - title: 数据集
-              class:
-              href: "#tab-usage-section-2"
-            - title: 模型发布
-              class:
-              href: "#tab-usage-section-4"
-          sections:
-            - title: 模型训练
-              id: "tab-usage-section-3"
-              class: "tab-pane fade in active"
-              desc: 可视化的模型训练状态仪表盘，监控训练过程和进度
-              img: "atlab/moxingxunlian.gif"
-            - title: 算法设计
-              id: "tab-usage-section-1"
-              class: "tab-pane fade"
-              desc: 使用AVA的算法模块，无需非常详细地了解深度神经网络，通过修改算法参数配置文件就可以快速地创建一个算法模型
-              img: "atlab/algorithmd.png"
-            - title: 数据集
-              id: "tab-usage-section-2"
-              class: "tab-pane fade"
-              desc: 直接使用保存在七牛云中的数据创建数据集，也可以使用打标软件打标，创建满足您特定需求的数据集，得到自定义的算法模型
-              img: "atlab/datacollection.jpg"
-            - title: 模型发布
-              id: "tab-usage-section-4"
-              class: "tab-pane fade"
-              desc: 一键发布已训练完成并满足需求的模型，之后用户就可以通过 API 直接使用
-              img: "atlab/moxingfenbu.png"
       ssl:
         feature3:
           middlebar:
@@ -3233,6 +3170,69 @@ zh-CN:
               image: "snow/image-duomeitichuli.jpg"
               title: "边缘多媒体处理"
               desc: "针对图片及音视频处理延迟敏感的场景，采用边缘节点提供多媒体处理能力，通过稳定的链路提供高吞吐低延迟的多媒体及时处理能力。"
+      atlab:
+        title: 深度学习平台 AVA
+        desc: AVA 是一个端到端的人工智能深度学习平台。将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
+        middlebar:
+          - title: 功能模块
+            class: active
+            href: "#tab-content-section-1"
+          - title: 应用场景
+            class:
+            href: "#tab-content-section-2"
+          - title: 产品优势
+            class:
+            href: "#tab-content-section-3"
+        feature1:
+          title: "功能模块"
+          img: "atlab/img-functional-module.png"
+        feature2:
+          title: 应用场景
+          middlebar:
+            - title: 算法专家
+              class: active
+              href: "#algorithm"
+            - title: AI 企业运营部门
+              class:
+              href: "#enterprise"
+          img1: "atlab/img-algorithm-experts.jpg"
+          img2: "atlab/img-ai-enterprise-operation.jpg"
+        feature3:
+          title: "产品优势"
+          middlebar:
+            - title: 模型训练
+              class: "active"
+              href: "#tab-usage-section-3"
+            - title: 算法设计
+              class:
+              href: "#tab-usage-section-1"
+            - title: 数据集
+              class:
+              href: "#tab-usage-section-2"
+            - title: 模型发布
+              class:
+              href: "#tab-usage-section-4"
+          sections:
+            - title: 模型训练
+              id: "tab-usage-section-3"
+              class: "tab-pane fade in active"
+              desc: 可视化的模型训练状态仪表盘，监控训练过程和进度
+              img: "atlab/moxingxunlian.gif"
+            - title: 算法设计
+              id: "tab-usage-section-1"
+              class: "tab-pane fade"
+              desc: 使用 AVA 的算法模块，无需非常详细地了解深度神经网络，通过修改算法参数配置文件就可以快速地创建一个算法模型
+              img: "atlab/algorithmd.png"
+            - title: 数据集
+              id: "tab-usage-section-2"
+              class: "tab-pane fade"
+              desc: 直接使用保存在七牛云中的数据创建数据集，也可以使用打标软件打标，创建满足您特定需求的数据集，得到自定义的算法模型
+              img: "atlab/datacollection.jpg"
+            - title: 模型发布
+              id: "tab-usage-section-4"
+              class: "tab-pane fade"
+              desc: 一键发布已训练完成并满足需求的模型，之后用户就可以通过 API 直接使用
+              img: "atlab/moxingfenbu.png"
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -3574,7 +3574,7 @@ zh-CN:
       title: 活动 - 七牛云
     welcome_case:
       title: 客户案例 - 七牛云
-    welcome_atlab:
+    products_atlab:
       title: 深度学习平台 - 七牛云
       keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
       description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
