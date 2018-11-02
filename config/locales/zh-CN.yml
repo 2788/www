@@ -1193,28 +1193,28 @@ zh-CN:
                   target: "_blank"
               row4:
                 - img: "qavs/icon-duixiangcunchu.png"
-                  colclass: "m-r-2 m-b-0"
+                  colclass: "m-r-2 m-b-10px"
                   class: "icon-link"
                   alt: "对象存储"
                   height: 44
                   link: "https://www.qiniu.com/products/kodo"
                   target: "_blank"
                 - img: "qavs/icon-shishiliuwangluo.png"
-                  colclass: "m-r-2 m-b-0"
+                  colclass: "m-r-2 m-b-10px"
                   class: "icon-link"
                   alt: "实时流网络"
                   height: 44
                   link: "https://developer.qiniu.com/pili/manual/3812/LiveNet-intro"
                   target: "_blank"
                 - img: "qavs/icon-neirongfenfa.png"
-                  colclass: "m-r-2 m-b-0"
+                  colclass: "m-r-2 m-b-10px"
                   class: "icon-link"
                   alt: "内容分发网络"
                   height: 44
                   link: "https://www.qiniu.com/products/fusion"
                   target: "_blank"
                 - img: "qavs/icon-liumeitijisuan.png"
-                  colclass: "m-b-0"
+                  colclass: "m-b-10px"
                   class: ""
                   alt: "流媒体计算平台"
                   height: 44
@@ -1243,7 +1243,7 @@ zh-CN:
                 link: ""
                 target: ""
               - img: "qavs/icon-zhinengshujufenxi.png"
-                rowclass: "m-b-10px"
+                rowclass: "m-b-5px"
                 class: "icon-link"
                 alt: "智能数据分析"
                 height: 40

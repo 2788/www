@@ -30,8 +30,10 @@
     .service-row {
       margin: 0;
       .service-col {
-        height: 0.50rem;
-        line-height: 0.50rem;
+        height: 50px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        line-height: 46px;
         text-align: center;
         -webkit-transition: all .3s linear;
         -moz-transition: all .3s linear;
@@ -63,9 +65,6 @@
       }
       .m-l-2 {
         margin-left: 2%;
-      }
-      .m-b-0 {
-        margin-bottom: 0;
       }
       .m-b-5px {
         margin-bottom: 5px;
