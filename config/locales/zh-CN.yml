@@ -35,7 +35,7 @@ zh-CN:
           col:
             - title: "海量存储"
               icon: "icon-massstorage@2x.png"
-              desc: "所有数据都有有效期，面对不断膨胀的数据领域，数据如何管理？七牛云完全自主知识产权的对象存储，已经过最严酷的考验，为 EB 规模的数据存储做好充分准备。"
+              desc: "所有数据都有有效期，面对不断膨胀的数据领域，数据如何管理？七牛云完全自主知识产权的对象存储，已经过较严酷的考验，为 EB 规模的数据存储做好充分准备。"
               icons:
                 - name: "对象存储"
                   class: "icon icon-storage index-icons"
@@ -45,7 +45,7 @@ zh-CN:
                   path: "/products/pandora"
             - title: "数据洞察"
               icon: "icon-num@2x.png"
-              desc: "让数据从负担变成资产的关键步骤是数据的价值挖掘。七牛云提供的大数据产品集和机器学习产品集可以帮助您以最佳的方式理解自己的资产。"
+              desc: "让数据从负担变成资产的关键步骤是数据的价值挖掘。七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产。"
               icons:
                 - name: "深度学习平台"
                   class: "icon icon-machine-learning index-icons"
@@ -58,7 +58,7 @@ zh-CN:
                   path: "/products/pandora"
             - title: "加速传输"
               icon: "icon-accelerate@2x.png"
-              desc: "七牛云独家的融合 CDN 结合了主流 CDN 和自建 CDN 节点的优势，让您能够在性能和成本之间得到一个最佳的平衡。"
+              desc: "七牛云独家的融合 CDN 结合了主流 CDN 和自建 CDN 节点的优势，让您能够在性能和成本之间得到一个良好的平衡。"
               icons:
                 - name: "融合 CDN"
                   class: "icon icon-dora index-icons"
@@ -98,7 +98,7 @@ zh-CN:
               desc: "我们采用了各种可靠的技术方式，包括内容压缩、P2P 传输、H.265 编码、自适应码流等手段来降低成本。"
             - title: "可控"
               icon: "icon-controllable@2x.png"
-              desc: "充分发挥大数据和机器学习的优势，以最实时的方式监测服务质量，并能以开放的方式进行深度的业务分析。"
+              desc: "充分发挥大数据和机器学习的优势，以实时的方式监测服务质量，并能以开放的方式进行深度的业务分析。"
         feature3:
           title: "各行各业的成功案例"
       pili:
