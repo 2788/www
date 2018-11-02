@@ -17,9 +17,6 @@ class WelcomeController < ApplicationController
   def dora
   end
 
-  def kirk
-  end
-
   def vance
   end
 

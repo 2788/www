@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     get '/products/censor',         to: 'welcome#censor'
     get '/products/fusion',         to: 'products#fusion'
     get '/products/dora',           to: 'welcome#dora'
-    get '/products/kirk',           to: 'welcome#kirk'
+    get '/products/kirk',           to: 'products#kirk'
     get '/products/vance',          to: 'welcome#vance'
     get '/products/atlab',          to: 'welcome#atlab'
     get '/products/plsv',           to: 'welcome#plsv'
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     get '/products/qvm',            to: 'products#qvm'
     get '/products/edu',            to: 'welcome#edu'
     get '/products/ess',            to: 'welcome#ess'
-    get '/products/snow',           to: 'welcome#snow'
+    get '/products/snow',           to: 'products#snow'
     get '/products/ecs',            to: 'welcome#ecs'
 
     get '/contact',        to: 'welcome#contact'

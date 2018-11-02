@@ -10,4 +10,10 @@ class ProductsController < ApplicationController
 
   def qvm
   end
+
+  def kirk
+  end
+
+  def snow
+  end
 end
