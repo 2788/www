@@ -1664,83 +1664,6 @@ zh-CN:
               image: "ess/image-gongchangyuanqu.jpg"
               title: "工厂园区监控"
               desc: "工厂园区生产环境及网络环境具有较严重的不可靠性，边缘存储解决方案可在客户侧灵活部署存储节点，脱离公网也可继续服务，稳定可靠。"
-      snow:
-        title: "边缘计算平台"
-        desc: "七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。"
-        navs:
-          - class: "intLink active"
-            href: "#snow-tab-content-1"
-            title: "产品架构"
-          - class: "intLink"
-            href: "#snow-tab-content-2"
-            title: "产品优势"
-          - class: "intLink"
-            href: "#snow-tab-content-3"
-            title: "核心功能及服务"
-          - class: "intLink"
-            href: "#snow-tab-content-4"
-            title: "典型应用场景"
-        panoramic:
-          title: "产品架构"
-          image: "snow/image-panoramic.png"
-        advantage:
-          title: "产品优势"
-          items:
-            - title: "低延迟"
-              desc: "就近部署计算服务，多维智能调度，保障边缘数据及时传输和处理。"
-              image: "snow/icon-diyanchi.png"
-            - title: "容器化"
-              desc: "边缘节点容器化承载计算服务，大规模定制化批量更新和升级应用。"
-              image: "snow/icon-rongqihua.png"
-            - title: "易运维"
-              desc: "全局监控及分布式管理，边缘设备自动激活及下线。"
-              image: "snow/icon-yiyunwei.png"
-            - title: "易扩展"
-              desc: "就近集成边缘存储及边缘缓存服务，结合人工智能技术，拓展边缘智能。"
-              image: "snow/icon-yikuozhan.png"
-        core:
-          title: "核心功能及服务"
-          items:
-            - title: "按需部署服务"
-              desc: "在七牛云边缘和客户侧边缘灵活部署服务，按需承载客户应用。"
-              image: "snow/icon-anxubushufuwu.png"
-            - title: "界面及 CLI 管理"
-              desc: "提供界面及命令行管理方式，实现界面及自动化编程处理能力。"
-              image: "snow/icon-jiemianguanli.png"
-            - title: "集成边缘存储"
-              desc: "就近集成边缘存储服务，缩短数据流链路，节点内处理数据。"
-              image: "snow/icon-jichengbianyuan.png"
-            - title: "数据安全及加密"
-              desc: "就近处理敏感数据，实现数据分拣，网银级数据通信加密保护。"
-              image: "snow/icon-shujuanquan.png"
-        scene:
-          title: "典型应用场景"
-          tabs:
-            - name: "视频 AI 边缘分析"
-              class: "active"
-              href: "#tab-scene-1"
-            - name: "数据边缘分拣"
-              class: ""
-              href: "#tab-scene-2"
-            - name: "边缘多媒体处理"
-              class: ""
-              href: "#tab-scene-3"
-          sections:
-            - id: "tab-scene-1"
-              class: "tab-pane fade in active"
-              image: "snow/image-shipinfenxi.jpg"
-              title: "视频 AI 边缘分析"
-              desc: "针对需要及时处理的视频及图像数据，采用边缘节点服务，可以极大的提高关键业务时效，通过 docker 镜像可灵活管理，批量配置和升级，加速边缘 AI 快速落地。"
-            - id: "tab-scene-2"
-              class: "tab-pane fade"
-              image: "snow/image-shujufenjian.jpg"
-              title: "数据边缘分拣"
-              desc: "针对本地存储需求较大，本地计算能力不足的场景，可以在边缘节点进行存储和分拣，利用边缘弹性计算能力，过滤无价值数据，保留核心数据。"
-            - id: "tab-scene-3"
-              class: "tab-pane fade"
-              image: "snow/image-duomeitichuli.jpg"
-              title: "边缘多媒体处理"
-              desc: "针对图片及音视频处理延迟敏感的场景，采用边缘节点提供多媒体处理能力，通过稳定的链路提供高吞吐低延迟的多媒体及时处理能力。"
       ecs:
         title: "视频 AI 边缘分析解决方案"
         desc: "面向视频 AI 行业，视频数据通过边缘可靠链路高速上传并由边缘计算服务及时处理，可极大降低关键业务延迟，加速视频 AI 在安防监控，智能商业等多领域落地。"
@@ -3233,6 +3156,83 @@ zh-CN:
               - title: "云主机与对象存储内网相互连接使用"
                 link: "https://developer.qiniu.com/qvm/manual/4269/qvm-kodo"
                 target: "_blank"
+      snow:
+        title: "边缘计算平台"
+        desc: "七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。"
+        navs:
+          - class: "intLink active"
+            href: "#snow-tab-content-1"
+            title: "产品架构"
+          - class: "intLink"
+            href: "#snow-tab-content-2"
+            title: "产品优势"
+          - class: "intLink"
+            href: "#snow-tab-content-3"
+            title: "核心功能及服务"
+          - class: "intLink"
+            href: "#snow-tab-content-4"
+            title: "典型应用场景"
+        panoramic:
+          title: "产品架构"
+          image: "snow/image-panoramic.png"
+        advantage:
+          title: "产品优势"
+          items:
+            - title: "低延迟"
+              desc: "就近部署计算服务，多维智能调度，保障边缘数据及时传输和处理。"
+              image: "snow/icon-diyanchi.png"
+            - title: "容器化"
+              desc: "边缘节点容器化承载计算服务，大规模定制化批量更新和升级应用。"
+              image: "snow/icon-rongqihua.png"
+            - title: "易运维"
+              desc: "全局监控及分布式管理，边缘设备自动激活及下线。"
+              image: "snow/icon-yiyunwei.png"
+            - title: "易扩展"
+              desc: "就近集成边缘存储及边缘缓存服务，结合人工智能技术，拓展边缘智能。"
+              image: "snow/icon-yikuozhan.png"
+        core:
+          title: "核心功能及服务"
+          items:
+            - title: "按需部署服务"
+              desc: "在七牛云边缘和客户侧边缘灵活部署服务，按需承载客户应用。"
+              image: "snow/icon-anxubushufuwu.png"
+            - title: "界面及 CLI 管理"
+              desc: "提供界面及命令行管理方式，实现界面及自动化编程处理能力。"
+              image: "snow/icon-jiemianguanli.png"
+            - title: "集成边缘存储"
+              desc: "就近集成边缘存储服务，缩短数据流链路，节点内处理数据。"
+              image: "snow/icon-jichengbianyuan.png"
+            - title: "数据安全及加密"
+              desc: "就近处理敏感数据，实现数据分拣，网银级数据通信加密保护。"
+              image: "snow/icon-shujuanquan.png"
+        scene:
+          title: "典型应用场景"
+          tabs:
+            - name: "视频 AI 边缘分析"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "数据边缘分拣"
+              class: ""
+              href: "#tab-scene-2"
+            - name: "边缘多媒体处理"
+              class: ""
+              href: "#tab-scene-3"
+          sections:
+            - id: "tab-scene-1"
+              class: "tab-pane fade in active"
+              image: "snow/image-shipinfenxi.jpg"
+              title: "视频 AI 边缘分析"
+              desc: "针对需要及时处理的视频及图像数据，采用边缘节点服务，可以极大的提高关键业务时效，通过 docker 镜像可灵活管理，批量配置和升级，加速边缘 AI 快速落地。"
+            - id: "tab-scene-2"
+              class: "tab-pane fade"
+              image: "snow/image-shujufenjian.jpg"
+              title: "数据边缘分拣"
+              desc: "针对本地存储需求较大，本地计算能力不足的场景，可以在边缘节点进行存储和分拣，利用边缘弹性计算能力，过滤无价值数据，保留核心数据。"
+            - id: "tab-scene-3"
+              class: "tab-pane fade"
+              image: "snow/image-duomeitichuli.jpg"
+              title: "边缘多媒体处理"
+              desc: "针对图片及音视频处理延迟敏感的场景，采用边缘节点提供多媒体处理能力，通过稳定的链路提供高吞吐低延迟的多媒体及时处理能力。"
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -3510,9 +3510,9 @@ zh-CN:
       title: 智能多媒体API - 七牛云
       keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR,发票识别，场景识别，鉴黄，暴恐审核
       description: 七牛智能多媒体API支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR文字识别和内容审核等在线API服务。
-    welcome_kirk:
+    products_kirk:
       title: 容器云_容器云平台 - 七牛云
-      keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务,微服务，devops
+      keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务，微服务，devops
       description: 七牛容器云是七牛云基于自身公有云业务在容器方面的多年实践经验，针对企业私有部署打造的容器云计算平台。
     welcome_vance:
       title: 点播云_点播云服务 - 七牛云
@@ -3530,7 +3530,7 @@ zh-CN:
       title: 监控视频边缘存储解决方案 - 七牛云
       keywords: 边缘存储，边缘计算，七牛云，视频监控，物联网
       description: 面向视频监控行业，在七牛云边缘节点和用户侧部署边缘存储服务，加速视频数据边缘上传，自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。
-    welcome_snow:
+    products_snow:
       title: 边缘计算平台 - 七牛云
       keywords: 边缘存储，边缘计算，边缘计算平台，边缘计算服务，边缘计算 AI，边缘计算视频分析，视频 AI 边缘计算，视频 AI 边缘计算解决方案，图片 AI 边缘计算解决方案
       description: 七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。
