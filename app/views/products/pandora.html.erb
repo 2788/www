@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2><%= I18n.t("views.welcome.pandora.title") %></h2>
-          <p><%= I18n.t("views.welcome.pandora.desc") %></p>
+          <h2><%= I18n.t("views.products.pandora.title") %></h2>
+          <p><%= I18n.t("views.products.pandora.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "预约咨询", "http://www.mikecrm.com/HPqsVF", class: "btn btn-lg btn-default m-r m-b-xs", target: "_blank" -%>
             <%= link_to "产品文档", "http://pandora-docs.qiniu.com", class: "btn btn-lg btn-hollow m-b-xs", target: "_blank" -%>
@@ -24,7 +24,7 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.welcome.pandora.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.pandora.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
         <% end %>
       </ul>
@@ -35,11 +35,11 @@
 <div class="features section tab-content-section-1 <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <div class="container">
     <div class="intro">
-      <h2 class="title1"><%= I18n.t("views.welcome.pandora.feature1.title") %></h2>
+      <h2 class="title1"><%= I18n.t("views.products.pandora.feature1.title") %></h2>
     </div>
 
     <div class="col-sm-12 col-padding">
-        <%= image_tag I18n.t("views.welcome.pandora.feature1.img") %>
+        <%= image_tag I18n.t("views.products.pandora.feature1.img") %>
     </div>
   </div>
 </div>
@@ -47,11 +47,11 @@
 <div class="features feature-color tab-content-section-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.pandora.feature2.title") %></h2>
+      <h2 class="title"><%= I18n.t("views.products.pandora.feature2.title") %></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.pandora.feature2.col").each do |col| %>
+      <% I18n.t("views.products.pandora.feature2.col").each do |col| %>
         <div class="col-md-4 col-sm-6">
           <div class="thumbnail">
             <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 60 %>
@@ -71,11 +71,10 @@
 <div class="features section tab-content-section-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title1"><%= I18n.t("views.welcome.pandora.feature3.title") %></h2>
+      <h2 class="title1"><%= I18n.t("views.products.pandora.feature3.title") %></h2>
     </div>
 
-
-    <% I18n.t("views.welcome.pandora.feature3.col").each do |col| %>
+    <% I18n.t("views.products.pandora.feature3.col").each do |col| %>
       <div class="row section-row row-dora">
         <div class="col-sm-6 <%= col[:class] %>">
           <h3 class="title2 title-center"><%= col[:title] %></h3>
@@ -93,18 +92,18 @@
 <div class="features features-scene features-custom-function section tab-content-section-4">
   <div class="container">
     <div class="intro">
-      <h2 class="title1"><%= I18n.t("views.welcome.pandora.feature4.title") %></h2>
+      <h2 class="title1"><%= I18n.t("views.products.pandora.feature4.title") %></h2>
     </div>
 
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.pandora.feature4.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.pandora.feature4.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><a href="<%= linkbar[:href] %>" data-toggle="tab"><%= linkbar[:title] %></a></li>
         <% end %>
       </ul>
 
       <div class="tab-content">
-        <% I18n.t("views.welcome.pandora.feature4.sections").each do |unit| %>
+        <% I18n.t("views.products.pandora.feature4.sections").each do |unit| %>
           <section id="<%= unit[:id] %>" class="<%= unit[:class] %>">
             <div class="media">
               <div class="media-left">

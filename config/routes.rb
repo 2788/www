@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get '/products/pili',           to: 'welcome#pili'
     get '/products/sdk',            to: 'welcome#sdk'
     get '/products/rtn',            to: 'welcome#rtn'
-    get '/products/pandora',        to: 'welcome#pandora'
+    get '/products/pandora',        to: 'products#pandora'
     get '/products/insight',        to: 'welcome#insight'
     get '/products/censor',         to: 'welcome#censor'
     get '/products/fusion',         to: 'products#fusion'
