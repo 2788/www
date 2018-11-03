@@ -655,108 +655,6 @@ en:
                     time: ""
                     desc: ""
                     icon: ""
-      pandora:
-        title: "Smart Big Data Platform（Pandora）"
-        desc: "Pandora is the Smart Big Data Platform for the Qiniu Cloud, providing a simple, efficient and open one-stop big data service."
-        middlebar:
-          # - title: "Solution Architecture"
-          #   class: "active"
-          #   href: "#tab-content-section-1"
-          - title: "Why Pandora"
-            class: "active"
-            href: "#tab-content-section-2"
-          - title: "Core Services and Functions"
-            class: ""
-            href: "#tab-content-section-3"
-          - title: "Typical Application Scenarios"
-            class: ""
-            href: "#tab-content-section-4"
-        feature1:
-          title: "Solution Architecture"
-          img: "pandora/img-productSchema.png"
-        feature2:
-          title: "Why Pandora"
-          col:
-            - title: "Simplicity"
-              icon: "pandora/icon-jiandanyiyong@2x.png"
-              descs:
-                - desc: "People can use it without any big data technology background because of its out-of-the-box feature."
-                - desc: "It is quite easy to use with visualized charts showing analysis results."
-            - title: "High-efficiency"
-              icon: "pandora/icon-gaoxiaowending@2x.png"
-              descs:
-                - desc: It's easy to deal with massive data processing with high quality and low cost.
-                - desc: Users can focus resources on business value enhancement.
-                - desc: There is no need to focus on complex big data implementations.
-            - title: "Openness"
-              icon: "pandora/icon-kaifangronghe@2x.png"
-              descs:
-                - desc: It supports multiple data sources access, perfectly combined with Qiniu's product chain.
-                - desc: It is highly customizable and can support privatization deployments.
-                - desc: Empower users with the core capabilities of big data.
-        feature3:
-          title: "Core Services and Functions"
-          col:
-            - title: "Workflow"
-              class: ""
-              desc: "Visible big data access, transform, export engine help to achieve massive data processing. Topology management of data flows make the data flow modeling convenient and fast for users and give users intuitive grasp of business data flow."
-              icon: "pandora/icon-dashujugongzuoliu@2x.png"
-            - title: "LogDB"
-              class: "sm-right"
-              desc: "Provide log-type data storage and retrieval services. Users can quickly achieve customized word segmentation, data storage, data retrieval and data analysis without any development. Massive amounts of data can be indexed and searched, then operational and maintenance efficiency is improved. And problems can be found and located quickly."
-              icon: "pandora/icon-rizhijiansuo@2x.png"
-            - title: "TSDB"
-              class: ""
-              desc: "A high-performance database that stores time series data is developed specifically for handling high-write and high-concurrent queries. It supports functional computation and group and aggregation of times series data."
-              icon: "pandora/icon-shixushujuku@2x.png"
-            - title: "XSpark"
-              class: "sm-right"
-              desc: "Spark services are developed based on container technologies. It supports fast one-click cluster deployment with performance of flexible scalability of computing resources,on-demand charges,providing users with fast-food style big data spending power."
-              icon: "pandora/icon-baobiaogongzuoshi@2x.png"
-        feature4:
-          title: "Typical Application Scenarios"
-          middlebar:
-            - title: "Dataized Maintenance"
-              class: "active"
-              href: "#tab-usage-section-1"
-            - title: "Dataized Operation"
-              class: ""
-              href: "#tab-usage-section-2"
-            - title: "DEM"
-              class: ""
-              href: "#tab-usage-section-3"
-            - title: "Recommendation System"
-              class: ""
-              href: "#tab-usage-section-4"
-            - title: "Growth Hacking"
-              class: ""
-              href: "#tab-usage-section-5"
-          sections:
-            - id: "tab-usage-section-1"
-              class: "row tab-pane fade in active"
-              icon: "pandora/icon-wulianwangdashujuchuli@2x.png"
-              title: "Dataized Maintenance"
-              desc: "Unified log management and real-time monitoring of business quality provide more comprehensive data support for daily diagnostic and tune and security issues tracking of users'systems, which enables technicians to search logs with high efficiency in real time and thus quickly locate information, identify root causes of the problems and finally inmprove operational and maintenance efficiency."
-            - id: "tab-usage-section-2"
-              class: "row tab-pane fade"
-              icon: "pandora/icon-shujuchuliziyuantanxing@2x.png"
-              title: "Dataized Operation"
-              desc: "Users can use big data workflow engine to quickly set up business data flow, gain real-time access to business operation status and conduct multi-dimensional statistics as well as data mining calculations at any time. Due to the shielding of complex big data technology, the business sector no longer have to wait for the development department to respond to data requests. They can easily get data analysis results by simply customizing the flexible configuration and  keep abreast of user behavior, drive product optimization iteration and improve operational effectiveness ."
-            - id: "tab-usage-section-3"
-              class: "row tab-pane fade"
-              icon: "pandora/icon-shipinapm@2x.png"
-              title: "DEM"
-              desc: "Real-time monitoring and analysis and alarm optimization of critical business systems can be achieved through real-time acquisition of various performance indicators of platforms (e.g. the rate of opening the first screen in seconds, users'terminal fluency and the distribution of users'hotspots).Continuously improving business reliability and stability of platforms,providing excellent experience for the end user ."
-            - id: "tab-usage-section-4"
-              class: "row tab-pane fade"
-              icon: "pandora/icon-wulianwangdashujuchuli@2x.png"
-              title: "Recommendation System"
-              desc: "The user's profile is mined by analyzing the user's behavior data based on the leading-edge big data algorithm to update personalized strategy in real time. Effectively improving the retention rate, pay rate, active level and other key business indicators."
-            - id: "tab-usage-section-5"
-              class: "row tab-pane fade"
-              icon: "pandora/icon-youxifanzuobi@2x.png"
-              title: "Growth Hacking"
-              desc: ""
       insight:
         title: "智能日志管理平台"
         desc: "智能日志管理平台实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计及业务数据分析等场景，已帮助上千家互联网、智能制造、金融、新媒体及物联网等行业客户数字化升级。"
@@ -3183,6 +3081,108 @@ en:
               class: "tab-pane fade"
               desc: Simply one step to publish model online, for various use case through API.
               img: "atlab/moxingfenbuEN.png"
+      pandora:
+        title: "Smart Big Data Platform（Pandora）"
+        desc: "Pandora is the Smart Big Data Platform for the Qiniu Cloud, providing a simple, efficient and open one-stop big data service."
+        middlebar:
+          # - title: "Solution Architecture"
+          #   class: "active"
+          #   href: "#tab-content-section-1"
+          - title: "Why Pandora"
+            class: "active"
+            href: "#tab-content-section-2"
+          - title: "Core Services and Functions"
+            class: ""
+            href: "#tab-content-section-3"
+          - title: "Typical Application Scenarios"
+            class: ""
+            href: "#tab-content-section-4"
+        feature1:
+          title: "Solution Architecture"
+          img: "pandora/img-productSchema.png"
+        feature2:
+          title: "Why Pandora"
+          col:
+            - title: "Simplicity"
+              icon: "pandora/icon-jiandanyiyong@2x.png"
+              descs:
+                - desc: "People can use it without any big data technology background because of its out-of-the-box feature."
+                - desc: "It is quite easy to use with visualized charts showing analysis results."
+            - title: "High-efficiency"
+              icon: "pandora/icon-gaoxiaowending@2x.png"
+              descs:
+                - desc: It's easy to deal with massive data processing with high quality and low cost.
+                - desc: Users can focus resources on business value enhancement.
+                - desc: There is no need to focus on complex big data implementations.
+            - title: "Openness"
+              icon: "pandora/icon-kaifangronghe@2x.png"
+              descs:
+                - desc: It supports multiple data sources access, perfectly combined with Qiniu's product chain.
+                - desc: It is highly customizable and can support privatization deployments.
+                - desc: Empower users with the core capabilities of big data.
+        feature3:
+          title: "Core Services and Functions"
+          col:
+            - title: "Workflow"
+              class: ""
+              desc: "Visible big data access, transform, export engine help to achieve massive data processing. Topology management of data flows make the data flow modeling convenient and fast for users and give users intuitive grasp of business data flow."
+              icon: "pandora/icon-dashujugongzuoliu@2x.png"
+            - title: "LogDB"
+              class: "sm-right"
+              desc: "Provide log-type data storage and retrieval services. Users can quickly achieve customized word segmentation, data storage, data retrieval and data analysis without any development. Massive amounts of data can be indexed and searched, then operational and maintenance efficiency is improved. And problems can be found and located quickly."
+              icon: "pandora/icon-rizhijiansuo@2x.png"
+            - title: "TSDB"
+              class: ""
+              desc: "A high-performance database that stores time series data is developed specifically for handling high-write and high-concurrent queries. It supports functional computation and group and aggregation of times series data."
+              icon: "pandora/icon-shixushujuku@2x.png"
+            - title: "XSpark"
+              class: "sm-right"
+              desc: "Spark services are developed based on container technologies. It supports fast one-click cluster deployment with performance of flexible scalability of computing resources,on-demand charges,providing users with fast-food style big data spending power."
+              icon: "pandora/icon-baobiaogongzuoshi@2x.png"
+        feature4:
+          title: "Typical Application Scenarios"
+          middlebar:
+            - title: "Dataized Maintenance"
+              class: "active"
+              href: "#tab-usage-section-1"
+            - title: "Dataized Operation"
+              class: ""
+              href: "#tab-usage-section-2"
+            - title: "DEM"
+              class: ""
+              href: "#tab-usage-section-3"
+            - title: "Recommendation System"
+              class: ""
+              href: "#tab-usage-section-4"
+            - title: "Growth Hacking"
+              class: ""
+              href: "#tab-usage-section-5"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "row tab-pane fade in active"
+              icon: "pandora/icon-wulianwangdashujuchuli@2x.png"
+              title: "Dataized Maintenance"
+              desc: "Unified log management and real-time monitoring of business quality provide more comprehensive data support for daily diagnostic and tune and security issues tracking of users'systems, which enables technicians to search logs with high efficiency in real time and thus quickly locate information, identify root causes of the problems and finally inmprove operational and maintenance efficiency."
+            - id: "tab-usage-section-2"
+              class: "row tab-pane fade"
+              icon: "pandora/icon-shujuchuliziyuantanxing@2x.png"
+              title: "Dataized Operation"
+              desc: "Users can use big data workflow engine to quickly set up business data flow, gain real-time access to business operation status and conduct multi-dimensional statistics as well as data mining calculations at any time. Due to the shielding of complex big data technology, the business sector no longer have to wait for the development department to respond to data requests. They can easily get data analysis results by simply customizing the flexible configuration and  keep abreast of user behavior, drive product optimization iteration and improve operational effectiveness ."
+            - id: "tab-usage-section-3"
+              class: "row tab-pane fade"
+              icon: "pandora/icon-shipinapm@2x.png"
+              title: "DEM"
+              desc: "Real-time monitoring and analysis and alarm optimization of critical business systems can be achieved through real-time acquisition of various performance indicators of platforms (e.g. the rate of opening the first screen in seconds, users'terminal fluency and the distribution of users'hotspots).Continuously improving business reliability and stability of platforms,providing excellent experience for the end user ."
+            - id: "tab-usage-section-4"
+              class: "row tab-pane fade"
+              icon: "pandora/icon-wulianwangdashujuchuli@2x.png"
+              title: "Recommendation System"
+              desc: "The user's profile is mined by analyzing the user's behavior data based on the leading-edge big data algorithm to update personalized strategy in real time. Effectively improving the retention rate, pay rate, active level and other key business indicators."
+            - id: "tab-usage-section-5"
+              class: "row tab-pane fade"
+              icon: "pandora/icon-youxifanzuobi@2x.png"
+              title: "Growth Hacking"
+              desc: ""
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -3371,7 +3371,7 @@ en:
       title: 视频直播SDK_视频SDK_直播SDK-七牛云
       keywords: 视频直播SDK，视频SDK，直播SDK，音视频SDK，第三方直播SDK，ios直播SDK，android直播SDK，短视频SDK，播放器SDK
       description: 七牛云音视频SDK 包含直播推流SDK、实时音视频SDK、短视频SDK和播放器SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。
-    welcome_pandora:
+    products_pandora:
       title: Qiniu Cloud-Smart Big Data Platform（Pandora）
       keywords: Big Data, Big Data Platform, Big Data Service, Data analysis, TSDB, LogDB, Workflow, Pipeline, Spark, HDFS, Dataized Operation, Dataized Maintenance, DEM, Recommendation System, Growth Hacking
       description: Qiniu Cloud's smart big data platform (Pandora) provides a simple, and open one-stop big data service.
