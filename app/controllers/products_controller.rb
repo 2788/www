@@ -16,4 +16,16 @@ class ProductsController < ApplicationController
 
   def snow
   end
+
+  def atlab
+  end
+
+  def pandora
+  end
+
+  def insight
+  end
+
+  def dora
+  end
 end

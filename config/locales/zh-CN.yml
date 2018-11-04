@@ -1405,159 +1405,6 @@ zh-CN:
               image: "ecs/image-teshuhuanjing.jpg"
               title: "特殊生产环境"
               desc: "海上油井，加油站，矿场等特殊生产环境具有网络不可靠，环境复杂，数据敏感等特点，视频 AI 边缘分析解决方案可就近部署边缘存储及边缘计算服务，对数据进行本地分拣处理，支持离线运行。"
-      dora:
-        title: "智能多媒体 API"
-        desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
-        middlebar:
-          - title: 产品功能
-            class: "active"
-            href: "#tab-content-section-1"
-          - title: 产品优势
-            class: ""
-            href: "#tab-content-section-2"
-          - title: 适用场景
-            class: ""
-            href: "#tab-content-section-3"
-          - title: 客户案例
-            class: ""
-            href: "#tab-content-section-4"
-          - title: 产品相关
-            class: ""
-            href: "#tab-content-section-5"
-        feature1:
-          col1:
-            - title: 人脸识别技术
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: 业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。
-              poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/face-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-                - group:
-                  - title: "人脸检测"
-                    target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
-                    class: "link-document"
-                  - title: "1:1 人脸比对"
-                    target: "https://developer.qiniu.com/dora/manual/4282/face-sim"
-                    class: "link-document"
-                  - title: "1:N 人脸比对"
-                    target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
-                    class: "link-document"
-            - title: 场景物体识别
-              class: "col-sm-6 col-padding col-content-middle sm-right"
-              desc: 360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。
-              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-            - title: OCR 文字识别
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: 自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。
-              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-            - title: 内容审核
-              class: "col-sm-6 col-padding col-content-middle sm-right"
-              desc: 高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。
-              poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/content-recognition.mp4"
-              actions:
-              links:
-                - group:
-                  - title: "图片审核"
-                    target: "https://developer.qiniu.com/dora/manual/4252/image-review"
-                    class: "link-document"
-                  - title: "图片鉴黄"
-                    target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
-                    class: "link-document"
-                  - title: "图片鉴暴恐"
-                    target: "https://developer.qiniu.com/dora/manual/3918/terror"
-                    class: "link-document"
-                  - title: "图片政治人物识别"
-                    target: "https://developer.qiniu.com/dora/manual/3922/politician"
-                    class: "link-document"
-                - group:
-                  - title: "视频鉴黄"
-                    target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
-                    class: "link-document"
-                  - title: "视频鉴暴恐"
-                    target: "https://developer.qiniu.com/dora/manual/4480/video-terror"
-                    class: "link-document"
-                  - title: "视频政治人物识别"
-                    target: "https://developer.qiniu.com/dora/manual/4481/video-politician"
-                    class: "link-document"
-            - title: 物体分割
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: 80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。
-              poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/object-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-          col2:
-            - class: "col-sm-6 col-padding col-content-middle sm-right"
-              title1: 图片缩略
-              desc1: 支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而最好地满足你的大小、形状和风格需要。
-              title2: 图片瘦身
-              desc2: 支持对存储在七牛云或使用七牛 CDN 的 PNG、JPG 图片瘦身，缩小图片体积，节省流量，提升产品体验。
-              alt: 图片处理
-              src: "dora/img-pictures.png"
-            - class: "col-sm-6 col-padding col-content-middle"
-              title1: 音视频转码
-              desc1: 支持所有主流音视频格式、转码集群强大、效率高，H.265 技术压缩 20%～30% 视频大小。
-              title2: 视频截图
-              desc2: 支持对存储在七牛云的视频文件截取视频帧画面并按指定大小缩放成图片。
-              alt: 视频处理
-              src: "dora/img-vedio.png"
-        feature2:
-          title: "产品优势"
-          col:
-            - title: 简单易用
-              icon: "dora/icon-jiandanyiyong@2x.png"
-              desc: 调用方式简单，缩短产品开发维护时间
-            - title: 功能丰富
-              icon: "dora/icon-gongnengfengfu.png"
-              desc: 丰富的功能满足各种图片、音视频使用场景
-            - title: 稳定可靠
-              icon: "dora/icon-wendingkekao@2x.png"
-              desc: 近千台高性能物理机，组成的处理集群，每日处理请求数百亿次，服务可用性达到 99.99%
-            - title: 识别准确
-              icon: "dora/icon-shibiezhunque@2x.png"
-              desc: 人脸聚类、场景识别、物体检测功能均处于业界领先地位
-        feature3:
-          title: "适用场景"
-          middlebar:
-            - title: 图片处理
-              class: "active"
-              href: "#tab-usage-section-1"
-            - title: 音视频处理
-              class: ""
-              href: "#tab-usage-section-2"
-            - title: 智能云相册
-              class: ""
-              href: "#tab-usage-section-3"
-          sections:
-            - id: "tab-usage-section-1"
-              class: "tab-pane fade in active"
-              icon: "dora/icon-tupianchuli@2x.png"
-              title: 图片处理
-              desc: 图片缩放功能适用于调整图片尺寸以适应不同设备的使用场景；原图保护、防盗链，图片水印或文字水印，用于防止图片盗用；鉴黄、鉴恐等内容审核服务为图片 UGC 应用和网站省去大量的人工审核成本，规避违规风险。
-            - id: "tab-usage-section-2"
-              class: "tab-pane fade"
-              icon: "dora/icon-yinshipinchuli@2x.png"
-              title: 音视频处理
-              desc: 转码服务帮助各种音视频分发平台适应不同设备，满足节省带宽和流量需求；视频剪切、拼接等功能满足各种视频编辑场景；版权保护和视频水印功能，保护视频产品和宣传品牌价值。鉴黄、鉴恐等内容审核服务为视频UGC网站和应用省去大量的人工审核成本，规避违规风险。
-            - id: "tab-usage-section-3"
-              class: "tab-pane fade"
-              icon: "dora/icon-zhinengyunxiangce@2x.png"
-              title: 智能云相册
-              desc: 人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。
-        feature4:
-          title: "客户案例"
       ssl:
         feature3:
           middlebar:
@@ -3233,6 +3080,159 @@ zh-CN:
               - title: "REST API 详解"
                 link: "https://developer.qiniu.com/insight/api/4824/overview"
                 target: "_blank"
+      dora:
+        title: "智能多媒体 API"
+        desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
+        middlebar:
+          - title: 产品功能
+            class: "active"
+            href: "#tab-content-section-1"
+          - title: 产品优势
+            class: ""
+            href: "#tab-content-section-2"
+          - title: 适用场景
+            class: ""
+            href: "#tab-content-section-3"
+          - title: 客户案例
+            class: ""
+            href: "#tab-content-section-4"
+          - title: 产品相关
+            class: ""
+            href: "#tab-content-section-5"
+        feature1:
+          col1:
+            - title: 人脸识别技术
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: 业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。
+              poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/face-recognition.mp4"
+              actions:
+                - title: "立即申请"
+              links:
+                - group:
+                  - title: "人脸检测"
+                    target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
+                    class: "link-document"
+                  - title: "1:1 人脸比对"
+                    target: "https://developer.qiniu.com/dora/manual/4282/face-sim"
+                    class: "link-document"
+                  - title: "1:N 人脸比对"
+                    target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
+                    class: "link-document"
+            - title: 场景物体识别
+              class: "col-sm-6 col-padding col-content-middle sm-right"
+              desc: 360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。
+              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
+              actions:
+                - title: "立即申请"
+              links:
+            - title: OCR 文字识别
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: 自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。
+              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
+              actions:
+                - title: "立即申请"
+              links:
+            - title: 内容审核
+              class: "col-sm-6 col-padding col-content-middle sm-right"
+              desc: 高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。
+              poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/content-recognition.mp4"
+              actions:
+              links:
+                - group:
+                  - title: "图片审核"
+                    target: "https://developer.qiniu.com/dora/manual/4252/image-review"
+                    class: "link-document"
+                  - title: "图片鉴黄"
+                    target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
+                    class: "link-document"
+                  - title: "图片鉴暴恐"
+                    target: "https://developer.qiniu.com/dora/manual/3918/terror"
+                    class: "link-document"
+                  - title: "图片政治人物识别"
+                    target: "https://developer.qiniu.com/dora/manual/3922/politician"
+                    class: "link-document"
+                - group:
+                  - title: "视频鉴黄"
+                    target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
+                    class: "link-document"
+                  - title: "视频鉴暴恐"
+                    target: "https://developer.qiniu.com/dora/manual/4480/video-terror"
+                    class: "link-document"
+                  - title: "视频政治人物识别"
+                    target: "https://developer.qiniu.com/dora/manual/4481/video-politician"
+                    class: "link-document"
+            - title: 物体分割
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: 80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。
+              poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/object-recognition.mp4"
+              actions:
+                - title: "立即申请"
+              links:
+          col2:
+            - class: "col-sm-6 col-padding col-content-middle sm-right"
+              title1: 图片缩略
+              desc1: 支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而最好地满足你的大小、形状和风格需要。
+              title2: 图片瘦身
+              desc2: 支持对存储在七牛云或使用七牛 CDN 的 PNG、JPG 图片瘦身，缩小图片体积，节省流量，提升产品体验。
+              alt: 图片处理
+              src: "dora/img-pictures.png"
+            - class: "col-sm-6 col-padding col-content-middle"
+              title1: 音视频转码
+              desc1: 支持所有主流音视频格式、转码集群强大、效率高，H.265 技术压缩 20%～30% 视频大小。
+              title2: 视频截图
+              desc2: 支持对存储在七牛云的视频文件截取视频帧画面并按指定大小缩放成图片。
+              alt: 视频处理
+              src: "dora/img-vedio.png"
+        feature2:
+          title: "产品优势"
+          col:
+            - title: 简单易用
+              icon: "dora/icon-jiandanyiyong@2x.png"
+              desc: 调用方式简单，缩短产品开发维护时间
+            - title: 功能丰富
+              icon: "dora/icon-gongnengfengfu.png"
+              desc: 丰富的功能满足各种图片、音视频使用场景
+            - title: 稳定可靠
+              icon: "dora/icon-wendingkekao@2x.png"
+              desc: 近千台高性能物理机，组成的处理集群，每日处理请求数百亿次，服务可用性达到 99.99%
+            - title: 识别准确
+              icon: "dora/icon-shibiezhunque@2x.png"
+              desc: 人脸聚类、场景识别、物体检测功能均处于业界领先地位
+        feature3:
+          title: "适用场景"
+          middlebar:
+            - title: 图片处理
+              class: "active"
+              href: "#tab-usage-section-1"
+            - title: 音视频处理
+              class: ""
+              href: "#tab-usage-section-2"
+            - title: 智能云相册
+              class: ""
+              href: "#tab-usage-section-3"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane fade in active"
+              icon: "dora/icon-tupianchuli@2x.png"
+              title: 图片处理
+              desc: 图片缩放功能适用于调整图片尺寸以适应不同设备的使用场景；原图保护、防盗链，图片水印或文字水印，用于防止图片盗用；鉴黄、鉴恐等内容审核服务为图片 UGC 应用和网站省去大量的人工审核成本，规避违规风险。
+            - id: "tab-usage-section-2"
+              class: "tab-pane fade"
+              icon: "dora/icon-yinshipinchuli@2x.png"
+              title: 音视频处理
+              desc: 转码服务帮助各种音视频分发平台适应不同设备，满足节省带宽和流量需求；视频剪切、拼接等功能满足各种视频编辑场景；版权保护和视频水印功能，保护视频产品和宣传品牌价值。鉴黄、鉴恐等内容审核服务为视频UGC网站和应用省去大量的人工审核成本，规避违规风险。
+            - id: "tab-usage-section-3"
+              class: "tab-pane fade"
+              icon: "dora/icon-zhinengyunxiangce@2x.png"
+              title: 智能云相册
+              desc: 人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。
+        feature4:
+          title: "客户案例"
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -3506,10 +3506,10 @@ zh-CN:
       title: 在线教育解决方案 - 七牛云
       keywords: 在线教育，教育云，教育音视频，在线教育直播，WebRTC，实时音视频，互联网教育，智慧教育，在线职业培训，高校慕课
       description: 七牛在线教育解决方案，满足一对一教学、小班教学、在线职业培训、高校慕课、双师课堂等多种教育场景，帮助企业快速开发上线低延迟、高可用的互联网教育产品。
-    welcome_dora:
-      title: 智能多媒体API - 七牛云
-      keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR,发票识别，场景识别，鉴黄，暴恐审核
-      description: 七牛智能多媒体API支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR文字识别和内容审核等在线API服务。
+    products_dora:
+      title: 智能多媒体 API - 七牛云
+      keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR，发票识别，场景识别，鉴黄，暴恐审核
+      description: 七牛智能多媒体 API 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。
     products_kirk:
       title: 容器云_容器云平台 - 七牛云
       keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务，微服务，devops

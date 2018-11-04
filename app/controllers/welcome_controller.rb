@@ -11,12 +11,6 @@ class WelcomeController < ApplicationController
   def pili
   end
 
-  def pandora
-  end
-
-  def dora
-  end
-
   def vance
   end
 
@@ -57,9 +51,6 @@ class WelcomeController < ApplicationController
   end
 
   def case
-  end
-
-  def atlab
   end
 
   def plsv

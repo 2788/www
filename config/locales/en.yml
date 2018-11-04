@@ -1394,159 +1394,6 @@ en:
               image: "ecs/image-teshuhuanjing.jpg"
               title: "特殊生产环境"
               desc: "海上油井，加油站，矿场等特殊生产环境具有网络不可靠，环境复杂，数据敏感等特点，视频 AI 边缘分析解决方案可就近部署边缘存储及边缘计算服务，对数据进行本地分拣处理，支持离线运行。"
-      dora:
-        title: "Intelligent Multimedia APIs（Dora）"
-        desc: "Qiniu's intelligent multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services using deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services."
-        middlebar:
-          - title: "Product Function"
-            class: "active"
-            href: "#tab-content-section-1"
-          - title: "Why Dora"
-            class: ""
-            href: "#tab-content-section-2"
-          - title: "Application Scenarios"
-            class: ""
-            href: "#tab-content-section-3"
-          - title: "Success Cases"
-            class: ""
-            href: "#tab-content-section-4"
-          - title: ""
-            class: ""
-            href: "#tab-content-section-5"
-        feature1:
-          col1:
-            - title: Face Recognition
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: Qiniu offers state-of-the-art computer vision services like face detection, facial key features localization, facial features analysis and fast face clustering. They can be widely applied in face beautification, smart cloud albums, new retail, security monitoring, financial identification, and some other scenarios.
-              poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/lhpyip8f4-wQlar37IwI-NcO4ruv"
-              actions:
-                - title: "立即申请"
-              links:
-                - group:
-                  - title: "人脸检测"
-                    target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
-                    class: "link-document"
-                  - title: "1:1 人脸比对"
-                    target: "https://developer.qiniu.com/dora/manual/4282/face-sim"
-                    class: "link-document"
-                  - title: "1:N 人脸比对"
-                    target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
-                    class: "link-document"
-            - title: scene and object recognition
-              class: "col-sm-6 col-padding col-content-middle sm-right"
-              desc: Qiniu offers more than 360 scene recognition and more than 200 objects recognition, with 90.07% in Top-5 accuracy. They can be applied in objects sorting in smart albums, marketing, object recognition&retrieval, and some other scenarios.
-              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/FndMXibB1keuiyHTXa9xkNyQ2Prq"
-              actions:
-                - title: "立即申请"
-              links:
-            - title: Optical Character Recognition
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: OCR is a method to process mechanical or electronic conversion of images of typed, handwritten or printed text , including words detection, localization or recognition in natural scenes. It is widely used in automatically recognition ID, invoices, billings, receipts, etc. to reduce the labor cost.
-              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-            - title: Content Regulation
-              class: "col-sm-6 col-padding col-content-middle sm-right"
-              desc: Illegal content in images and videos can be recognized with high efficiency and a high accuracy of 99.95%. It can replace more than 80% of manual auditing to reduce the labor cost. Moreover, the recognition accuracy increases gradually through machine learning.
-              poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/li4jdu3kRkf3jYAvG5KTXhYDmrgD"
-              actions:
-              links:
-                - group:
-                  - title: "图片审核"
-                    target: "https://developer.qiniu.com/dora/manual/4252/image-review"
-                    class: "link-document"
-                  - title: "图片鉴黄"
-                    target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
-                    class: "link-document"
-                  - title: "图片鉴暴恐"
-                    target: "https://developer.qiniu.com/dora/manual/3918/terror"
-                    class: "link-document"
-                  - title: "图片政治人物识别"
-                    target: "https://developer.qiniu.com/dora/manual/3922/politician"
-                    class: "link-document"
-                - group:
-                  - title: "视频鉴黄"
-                    target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
-                    class: "link-document"
-                  - title: "视频鉴暴恐"
-                    target: "https://developer.qiniu.com/dora/manual/4480/video-terror"
-                    class: "link-document"
-                  - title: "视频政治人物识别"
-                    target: "https://developer.qiniu.com/dora/manual/4481/video-politician"
-                    class: "link-document"
-            - title: Object Segmentation
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: Object Segmentation is capable of recognizing and localizing more than 80 kinds of objects, along with detecting their edges precisely. It can be applied in fields like image matting and AR.
-              poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/Fgw_MuDAseUiqL8gXb16fnlBFj3R"
-              actions:
-                - title: "立即申请"
-              links:
-          col2:
-            - class: "col-sm-6 col-padding col-content-middle sm-right"
-              title1: Image Previewing
-              desc1: Image Previewing generates high-quality thumbnails from images stored in Qiniu or from Qiniu CDN to better satisfy clients'needs for images of differnet sizes, shapes and styles.
-              title2: Image Slim
-              desc2: Image Slim is capable to compress PNG or JPG images stored in Qiniu or from Qiniu CDN to reduce data usage and improve product experience.
-              alt: Picture processing
-              src: "dora/img-pictures-en.jpg"
-            - class: "col-sm-6 col-padding col-content-middle"
-              title1: Audio and Video Transcoder
-              desc1: Audio and Video Transcoder supports all mainstream formats of audios and videos with strong and high-efficient transcoding clusters. It can process 20%—30% size of the video using H.265 technology.
-              title2: Video snapshot
-              desc2: Video snapshot prints frames in videos stored in Qiniuc to generate thumbnails of specified size.
-              alt: video processing
-              src: "dora/img-vedio-en.jpg"
-        feature2:
-          title: "Why Dora"
-          col:
-            - title: Easy to use
-              icon: "dora/icon-jiandanyiyong@2x.png"
-              desc: Easy usage reduces development and maintenance periods.
-            - title: Rich in Functions
-              icon: "dora/icon-gongnengfengfu.png"
-              desc: Rich functions satisfy various usage scenarios in images, audios and videos.
-            - title: Stability and Reliability
-              icon: "dora/icon-wendingkekao@2x.png"
-              desc: Dora is constituted of thousands of high performance physical machines. It can support clusters to process tens of billions of requests every day, with service availability of 99.99%.
-            - title: Accuracy
-              icon: "dora/icon-shibiezhunque@2x.png"
-              desc: Dora shows state-of-the-art techs in face cluster, scenario recognition and object detection.
-        feature3:
-          title: "Application Scenarios"
-          middlebar:
-            - title: Image Process
-              class: "active"
-              href: "#tab-usage-section-1"
-            - title: Audio and Video Process
-              class: ""
-              href: "#tab-usage-section-2"
-            - title: Smart Cloud Album
-              class: ""
-              href: "#tab-usage-section-3"
-          sections:
-            - id: "tab-usage-section-1"
-              class: "tab-pane fade in active"
-              icon: "dora/icon-tupianchuli@2x.png"
-              title: Image Process
-              desc: Zoom of images adjusts the size of images to fit scenarios of different devices. Image and link protection as well as image and text watermarks can be used to avoid stealing images. Content regulation like identifying pornography and terrorism largely reduces the cost of manual regulation for image UGC applications and websites and avoids risks of violating rules.
-            - id: "tab-usage-section-2"
-              class: "tab-pane fade"
-              icon: "dora/icon-yinshipinchuli@2x.png"
-              title: Audio and Video Process
-              desc: Transcoding assists various audio and video distribution platforms in fitting different devices to save bandwidth and satisfy traffic needs. Functions of video cutting and mosaicking satisfy various video editing scenarios. Functions of copyright protection and video watermarking protect videos and promote brand value. Content regulation like identifying pornography and terrorism largely reduces the cost of manual regulation for image UGC applications and websites and avoids risks of violating rules.
-            - id: "tab-usage-section-3"
-              class: "tab-pane fade"
-              icon: "dora/icon-zhinengyunxiangce@2x.png"
-              title: Smart Cloud Album
-              desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients'demand in different scenarios.
-        feature4:
-          title: "Success Cases"
       ssl:
         feature3:
           middlebar:
@@ -3183,6 +3030,159 @@ en:
               - title: "REST API 详解"
                 link: "https://developer.qiniu.com/insight/api/4824/overview"
                 target: "_blank"
+      dora:
+        title: "Intelligent Multimedia APIs（Dora）"
+        desc: "Qiniu's intelligent multimedia APIs（DORA） are capable of processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services using deep learning algorithms, such as face recognition, scene and object recognition, OCR, content regulation and other online API services."
+        middlebar:
+          - title: "Product Function"
+            class: "active"
+            href: "#tab-content-section-1"
+          - title: "Why Dora"
+            class: ""
+            href: "#tab-content-section-2"
+          - title: "Application Scenarios"
+            class: ""
+            href: "#tab-content-section-3"
+          - title: "Success Cases"
+            class: ""
+            href: "#tab-content-section-4"
+          - title: ""
+            class: ""
+            href: "#tab-content-section-5"
+        feature1:
+          col1:
+            - title: Face Recognition
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: Qiniu offers state-of-the-art computer vision services like face detection, facial key features localization, facial features analysis and fast face clustering. They can be widely applied in face beautification, smart cloud albums, new retail, security monitoring, financial identification, and some other scenarios.
+              poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/lhpyip8f4-wQlar37IwI-NcO4ruv"
+              actions:
+                - title: "立即申请"
+              links:
+                - group:
+                  - title: "人脸检测"
+                    target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
+                    class: "link-document"
+                  - title: "1:1 人脸比对"
+                    target: "https://developer.qiniu.com/dora/manual/4282/face-sim"
+                    class: "link-document"
+                  - title: "1:N 人脸比对"
+                    target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
+                    class: "link-document"
+            - title: scene and object recognition
+              class: "col-sm-6 col-padding col-content-middle sm-right"
+              desc: Qiniu offers more than 360 scene recognition and more than 200 objects recognition, with 90.07% in Top-5 accuracy. They can be applied in objects sorting in smart albums, marketing, object recognition&retrieval, and some other scenarios.
+              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/FndMXibB1keuiyHTXa9xkNyQ2Prq"
+              actions:
+                - title: "立即申请"
+              links:
+            - title: Optical Character Recognition
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: OCR is a method to process mechanical or electronic conversion of images of typed, handwritten or printed text , including words detection, localization or recognition in natural scenes. It is widely used in automatically recognition ID, invoices, billings, receipts, etc. to reduce the labor cost.
+              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
+              actions:
+                - title: "立即申请"
+              links:
+            - title: Content Regulation
+              class: "col-sm-6 col-padding col-content-middle sm-right"
+              desc: Illegal content in images and videos can be recognized with high efficiency and a high accuracy of 99.95%. It can replace more than 80% of manual auditing to reduce the labor cost. Moreover, the recognition accuracy increases gradually through machine learning.
+              poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/li4jdu3kRkf3jYAvG5KTXhYDmrgD"
+              actions:
+              links:
+                - group:
+                  - title: "图片审核"
+                    target: "https://developer.qiniu.com/dora/manual/4252/image-review"
+                    class: "link-document"
+                  - title: "图片鉴黄"
+                    target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
+                    class: "link-document"
+                  - title: "图片鉴暴恐"
+                    target: "https://developer.qiniu.com/dora/manual/3918/terror"
+                    class: "link-document"
+                  - title: "图片政治人物识别"
+                    target: "https://developer.qiniu.com/dora/manual/3922/politician"
+                    class: "link-document"
+                - group:
+                  - title: "视频鉴黄"
+                    target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
+                    class: "link-document"
+                  - title: "视频鉴暴恐"
+                    target: "https://developer.qiniu.com/dora/manual/4480/video-terror"
+                    class: "link-document"
+                  - title: "视频政治人物识别"
+                    target: "https://developer.qiniu.com/dora/manual/4481/video-politician"
+                    class: "link-document"
+            - title: Object Segmentation
+              class: "col-sm-6 col-padding col-content-middle"
+              desc: Object Segmentation is capable of recognizing and localizing more than 80 kinds of objects, along with detecting their edges precisely. It can be applied in fields like image matting and AR.
+              poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
+              src: "https://mars-assets.qnssl.com/Fgw_MuDAseUiqL8gXb16fnlBFj3R"
+              actions:
+                - title: "立即申请"
+              links:
+          col2:
+            - class: "col-sm-6 col-padding col-content-middle sm-right"
+              title1: Image Previewing
+              desc1: Image Previewing generates high-quality thumbnails from images stored in Qiniu or from Qiniu CDN to better satisfy clients'needs for images of differnet sizes, shapes and styles.
+              title2: Image Slim
+              desc2: Image Slim is capable to compress PNG or JPG images stored in Qiniu or from Qiniu CDN to reduce data usage and improve product experience.
+              alt: Picture processing
+              src: "dora/img-pictures-en.jpg"
+            - class: "col-sm-6 col-padding col-content-middle"
+              title1: Audio and Video Transcoder
+              desc1: Audio and Video Transcoder supports all mainstream formats of audios and videos with strong and high-efficient transcoding clusters. It can process 20%—30% size of the video using H.265 technology.
+              title2: Video snapshot
+              desc2: Video snapshot prints frames in videos stored in Qiniuc to generate thumbnails of specified size.
+              alt: video processing
+              src: "dora/img-vedio-en.jpg"
+        feature2:
+          title: "Why Dora"
+          col:
+            - title: Easy to use
+              icon: "dora/icon-jiandanyiyong@2x.png"
+              desc: Easy usage reduces development and maintenance periods.
+            - title: Rich in Functions
+              icon: "dora/icon-gongnengfengfu.png"
+              desc: Rich functions satisfy various usage scenarios in images, audios and videos.
+            - title: Stability and Reliability
+              icon: "dora/icon-wendingkekao@2x.png"
+              desc: Dora is constituted of thousands of high performance physical machines. It can support clusters to process tens of billions of requests every day, with service availability of 99.99%.
+            - title: Accuracy
+              icon: "dora/icon-shibiezhunque@2x.png"
+              desc: Dora shows state-of-the-art techs in face cluster, scenario recognition and object detection.
+        feature3:
+          title: "Application Scenarios"
+          middlebar:
+            - title: Image Process
+              class: "active"
+              href: "#tab-usage-section-1"
+            - title: Audio and Video Process
+              class: ""
+              href: "#tab-usage-section-2"
+            - title: Smart Cloud Album
+              class: ""
+              href: "#tab-usage-section-3"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane fade in active"
+              icon: "dora/icon-tupianchuli@2x.png"
+              title: Image Process
+              desc: Zoom of images adjusts the size of images to fit scenarios of different devices. Image and link protection as well as image and text watermarks can be used to avoid stealing images. Content regulation like identifying pornography and terrorism largely reduces the cost of manual regulation for image UGC applications and websites and avoids risks of violating rules.
+            - id: "tab-usage-section-2"
+              class: "tab-pane fade"
+              icon: "dora/icon-yinshipinchuli@2x.png"
+              title: Audio and Video Process
+              desc: Transcoding assists various audio and video distribution platforms in fitting different devices to save bandwidth and satisfy traffic needs. Functions of video cutting and mosaicking satisfy various video editing scenarios. Functions of copyright protection and video watermarking protect videos and promote brand value. Content regulation like identifying pornography and terrorism largely reduces the cost of manual regulation for image UGC applications and websites and avoids risks of violating rules.
+            - id: "tab-usage-section-3"
+              class: "tab-pane fade"
+              icon: "dora/icon-zhinengyunxiangce@2x.png"
+              title: Smart Cloud Album
+              desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients'demand in different scenarios.
+        feature4:
+          title: "Success Cases"
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -3401,10 +3401,10 @@ en:
       title: 在线教育解决方案 - 七牛云
       keywords: 在线教育，教育云，教育音视频，在线教育直播，WebRTC，实时音视频，互联网教育，智慧教育，在线职业培训，高校慕课
       description: 七牛在线教育解决方案，满足一对一教学、小班教学、在线职业培训、高校慕课、双师课堂等多种教育场景，帮助企业快速开发上线低延迟、高可用的互联网教育产品。
-    welcome_dora:
+    products_dora:
       title: Qiniu Cloud-Intelligent Multimedia APIs（Dora）
       keywords: Face Recognition, Scene and object recognition, Optical Character Recognition, Content Regulation, Porn Images Identification, Violence and Terrorism, Images Identification, Politicians Recognition, Object Segmentation, Image Previewing, Image Slim, Audio and Video Transcoder, Video snapshot, Smart Cloud Album, Audio and Video Process
-      description: Qiniu Cloud's Intelligent Multimedia APIs（DORA） are capable of  processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services width deep learning algorithms , such as face recognition,scene and object recognition,OCR, content regulation and other online API services.
+      description: Qiniu Cloud's Intelligent Multimedia APIs（DORA） are capable of processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services width deep learning algorithms, such as face recognition, scene and object recognition, OCR, content regulation and other online API services.
     products_kirk:
       title: 容器云_容器云平台 - 七牛云
       keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务，微服务，devops
