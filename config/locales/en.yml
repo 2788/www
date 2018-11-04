@@ -3404,7 +3404,7 @@ en:
     products_dora:
       title: Qiniu Cloud-Intelligent Multimedia APIs（Dora）
       keywords: Face Recognition, Scene and object recognition, Optical Character Recognition, Content Regulation, Porn Images Identification, Violence and Terrorism, Images Identification, Politicians Recognition, Object Segmentation, Image Previewing, Image Slim, Audio and Video Transcoder, Video snapshot, Smart Cloud Album, Audio and Video Process
-      description: Qiniu Cloud's Intelligent Multimedia APIs（DORA） are capable of processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services width deep learning algorithms, such as face recognition,scene and object recognition, OCR, content regulation and other online API services.
+      description: Qiniu Cloud's Intelligent Multimedia APIs（DORA） are capable of processing more than ten billions of pictures, audio and videos on a daily basis. Moreover, DORA provides computer vision services width deep learning algorithms, such as face recognition, scene and object recognition, OCR, content regulation and other online API services.
     products_kirk:
       title: 容器云_容器云平台 - 七牛云
       keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务，微服务，devops
