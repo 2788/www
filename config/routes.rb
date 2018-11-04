@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get '/products/insight',        to: 'products#insight'
     get '/products/censor',         to: 'welcome#censor'
     get '/products/fusion',         to: 'products#fusion'
-    get '/products/dora',           to: 'welcome#dora'
+    get '/products/dora',           to: 'products#dora'
     get '/products/kirk',           to: 'products#kirk'
     get '/products/vance',          to: 'welcome#vance'
     get '/products/atlab',          to: 'products#atlab'
