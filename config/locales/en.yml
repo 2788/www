@@ -175,166 +175,6 @@ en:
               width: "20%"
         more:
           - "欢迎联系我们了解更多行业成功案例经验。"
-      rtn:
-        banner:
-          title: "Real-time Video Communication Service"
-          desc: "Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast."
-          icon: "sdk/img-banner.png"
-        action:
-          - title: "Apply for Beta Version"
-            link: "https://jinshuju.net/f/LSkxxL"
-            target: "_blank"
-            class: "btn btn-lg btn-default m-r m-b-xs"
-          - title: "Try Now"
-            link: "https://demo-rtc.qnsdk.com/"
-            target: "_blank"
-            class: "btn btn-lg btn-hollow m-b-xs"
-        specialty:
-          - title: 150ms Global latency
-            img: sdk/icon-pingjunyanchi.png
-          - title: 270ms Accessing
-            img: sdk/icon-shoukai.png
-          - title: 99.93% High Connectivity
-            img: sdk/icon-liantonglv.png
-          - title: 99.95% High Availability
-            img: sdk/icon-keyongxing.png
-        scheme:
-          title: Self-developed RTC Acceleration Network
-          desc: Information can be shared in real time globally with the self-developed solution to edge acceleration.
-          content:
-            - title: Global Nodes
-              desc: 
-                - More than 180 nodes all over the world
-                - Supporting interactions in more than 200 countries and regions in the world
-            - title: Real-time Performance
-              desc: 
-                - Delays in about 150ms
-            - title: Transport Protocols
-              desc: 
-                - Based on WebRTC
-                - Easy access, high compatibility and excellent user experience
-            - title: Acceleration Solutions
-              desc: 
-                - Fully self-developed solutions to edge acceleration
-                - Real-time sharing and interaction of information in the global network
-            - title: Scheduling Strategies
-              desc: 
-                - Intelligent allocation of streaming media servers and acceleration circuits
-                - Promptly responding to global real-time demands for interactions
-            - title: Quality Monitoring
-              desc: 
-                - Network quality monitoring and automatic scheduling systems
-                - Real-time optimization of transmission quality
-        serve:
-          title: Key Features
-          desc: Quick access makes it possible to achieve real-time communication with the minimal SDK across the platform.
-          content:
-            - title: Confluence of Servers
-              desc: Solve the bottleneck in upstream and downstream bandwidth and the problem in coding and decoding in the scheme of mainstream and multi-stream and reduce computing resources and costs on network bandwidth.
-              img: sdk/icon-fuwuduanheliu.png
-              active_img: sdk/icon-fuwuduanheliu-2.png
-            - title: Bypass Live Broadcasting
-              desc: Support the global accelerated dispatch of audios and videos and transcode upstream data into RTMP, HTTP and HLS protocols, easy for users to watch through Web or streaming media players.
-              img: sdk/icon-pangluzhibo.png
-              active_img: sdk/icon-pangluzhibo-2.png
-            - title: Real-time Recording
-              desc: Support the record, storage, transcoding, dispatch and on-demand services of audios and videos and record the streaming audience has watched for video-on-demand and playback.
-              img: sdk/icon-shishiluzhi.png
-              active_img: sdk/icon-shishiluzhi-2.png
-            - title: Personalized Management
-              desc: Support multiple administrative powers such as dynamic invitation, kicking and muting, to keep chats and interactions in a more orderly way.
-              img: sdk/icon-gexinghuaguanli.png
-              active_img: sdk/icon-gexinghuaguanli-2.png
-            - title: Intelligent Processing of Rich Media
-              desc: Provide basic data processing services, like watermarks, transcoding of audios and videos, clipping and editing, and user-defined data processing services, to satisfy various audio and video interaction scenarios.
-              img: sdk/icon-zhinengfumeitichuli.png
-              active_img: sdk/icon-zhinengfumeitichuli-2.png
-            - title: Auditing of Pornography, Violence and Terrorism
-              desc: Automatically identify images with pornography, violence and terrorism in the clouds and effectively avoid risks from contents of pornography, violence, terrorism and politics, to operate the platform in a safer and more stable way.
-              img: sdk/icon-jianhuangjianbaokong.png
-              active_img: sdk/icon-jianhuangjianbaokong-2.png
-        scene:
-          title: Application Scenarios
-          desc: Various application scenarios can be supported with perfect solutions.
-          middlebar:
-            - name: "Social Contact"
-              class: "active"
-              href: "#tab-usage-section-1"
-            - name: "Interactive Conferences"
-              class: ""
-              href: "#tab-usage-section-2"
-            - name: "Telemedicine"
-              class: ""
-              href: "#tab-usage-section-3"
-            - name: "Online Education"
-              class: ""
-              href: "#tab-usage-section-4"
-            - name: "Online Customer Services"
-              class: ""
-              href: "#tab-usage-section-5"
-          sections:
-            - id: "tab-usage-section-1"
-              class: "tab-pane fade in active"
-              icon: "sdk/img-shejiao.png"
-              title: "Social Contact"
-              desc: "Interactions with microphones between hosts or between hosts and audience are supported. Functions, like face beautifying, filters, eyes enlarging and face thinning, are offered for entertaining interactions."
-              link: "Application scenarios:"
-              scenes:
-                - live broadcasting in show fields, 
-                - live broadcasting in Changba and 
-                - talk shows
-            - id: "tab-usage-section-2"
-              class: "tab-pane fade in"
-              icon: "sdk/img-huiyi.png"
-              title: "Interactive Conferences"
-              desc: "Both online communication of small teams and large-scale online conferences are supported. Applications similar to WebEx can be easily produced with the real-time audio& video interaction technology of Qiniu."
-              link: "Application scenarios:"
-              scenes:
-                - traditional video conferences, 
-                - new types of net meetings, 
-                - large-scale live conferences and 
-                - tele/audio conferences
-            - id: "tab-usage-section-3"
-              class: "tab-pane fade in"
-              icon: "sdk/img-yiliao.png"
-              title: "Telemedicine"
-              desc: "Remote multi-party video consultations are supported, which breaks restrictions in medical resources of different regions and in systems as well as platforms so that the flexibility in time and regions of doctors and patients is improved and diagnosis costs are reduced."
-              link: "Application scenarios:"
-              scenes:
-                - remote cooperation, 
-                - remote consolations and 
-                - surgery teaching
-            - id: "tab-usage-section-4"
-              class: "tab-pane fade in"
-              icon: "sdk/img-jiaoyu.jpg"
-              title: "Online Education"
-              desc: "Both small interactive classes and classes of tens of thousands of people are supported in a flexible way. Native and Web can interwork to satisfy education needs under various scenarios."
-              link: "Application scenarios:"
-              scenes:
-                - small interactive classes, 
-                - large-scale open classes, 
-                - online tutoring for K12 and 
-                - trainings of professional skills
-            - id: "tab-usage-section-5"
-              class: "tab-pane fade in"
-              icon: "sdk/img-kefu.jpg"
-              title: "Online Customer Services"
-              desc: "Demands for video calls to technical staff are supported. Those technical staff can instruct users to operate as well as quickly locate and solve problems through videos, to improve service quality and product reputation."
-              link: "Application scenarios:"
-              scenes:
-                - opening accounts in banks or of securities, 
-                - online customer services of E-commerce and 
-                - obtaining evidence for insurance companies
-        demo:
-          title: Experience demo
-          items:
-            - img: sdk/code-ios.jpg
-              desc: Experience demo for iOS
-            - img: sdk/code-android.jpg
-              desc: Experience demo for Android
-          btns:
-            - name: Experience live demo on the website
-              link: http://s.qnsdk.com/s/guMCz
       sdk: 
         banner:
           title: "音视频 SDK"
@@ -3183,6 +3023,166 @@ en:
                   link: ""
         case:
           title: Success Cases
+      rtn:
+        banner:
+          title: "Real-time Video Communication Service"
+          desc: "Qiniu's real-time communication network service is a powerful platform, which includes a real-time communication SDK, self-developed real-time interactive streaming media network and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast."
+          icon: "sdk/img-banner.png"
+        action:
+          - title: "Apply for Beta Version"
+            link: "https://jinshuju.net/f/LSkxxL"
+            target: "_blank"
+            class: "btn btn-lg btn-default m-r m-b-xs"
+          - title: "Try Now"
+            link: "https://demo-rtc.qnsdk.com/"
+            target: "_blank"
+            class: "btn btn-lg btn-hollow m-b-xs"
+        specialty:
+          - title: 150ms Global latency
+            img: sdk/icon-pingjunyanchi.png
+          - title: 270ms Accessing
+            img: sdk/icon-shoukai.png
+          - title: 99.93% High Connectivity
+            img: sdk/icon-liantonglv.png
+          - title: 99.95% High Availability
+            img: sdk/icon-keyongxing.png
+        scheme:
+          title: Self-developed RTC Acceleration Network
+          desc: Information can be shared in real time globally with the self-developed solution to edge acceleration.
+          content:
+            - title: Global Nodes
+              desc: 
+                - More than 180 nodes all over the world
+                - Supporting interactions in more than 200 countries and regions in the world
+            - title: Real-time Performance
+              desc: 
+                - Delays in about 150ms
+            - title: Transport Protocols
+              desc: 
+                - Based on WebRTC
+                - Easy access, high compatibility and excellent user experience
+            - title: Acceleration Solutions
+              desc: 
+                - Fully self-developed solutions to edge acceleration
+                - Real-time sharing and interaction of information in the global network
+            - title: Scheduling Strategies
+              desc: 
+                - Intelligent allocation of streaming media servers and acceleration circuits
+                - Promptly responding to global real-time demands for interactions
+            - title: Quality Monitoring
+              desc: 
+                - Network quality monitoring and automatic scheduling systems
+                - Real-time optimization of transmission quality
+        serve:
+          title: Key Features
+          desc: Quick access makes it possible to achieve real-time communication with the minimal SDK across the platform.
+          content:
+            - title: Confluence of Servers
+              desc: Solve the bottleneck in upstream and downstream bandwidth and the problem in coding and decoding in the scheme of mainstream and multi-stream and reduce computing resources and costs on network bandwidth.
+              img: sdk/icon-fuwuduanheliu.png
+              active_img: sdk/icon-fuwuduanheliu-2.png
+            - title: Bypass Live Broadcasting
+              desc: Support the global accelerated dispatch of audios and videos and transcode upstream data into RTMP, HTTP and HLS protocols, easy for users to watch through Web or streaming media players.
+              img: sdk/icon-pangluzhibo.png
+              active_img: sdk/icon-pangluzhibo-2.png
+            - title: Real-time Recording
+              desc: Support the record, storage, transcoding, dispatch and on-demand services of audios and videos and record the streaming audience has watched for video-on-demand and playback.
+              img: sdk/icon-shishiluzhi.png
+              active_img: sdk/icon-shishiluzhi-2.png
+            - title: Personalized Management
+              desc: Support multiple administrative powers such as dynamic invitation, kicking and muting, to keep chats and interactions in a more orderly way.
+              img: sdk/icon-gexinghuaguanli.png
+              active_img: sdk/icon-gexinghuaguanli-2.png
+            - title: Intelligent Processing of Rich Media
+              desc: Provide basic data processing services, like watermarks, transcoding of audios and videos, clipping and editing, and user-defined data processing services, to satisfy various audio and video interaction scenarios.
+              img: sdk/icon-zhinengfumeitichuli.png
+              active_img: sdk/icon-zhinengfumeitichuli-2.png
+            - title: Auditing of Pornography, Violence and Terrorism
+              desc: Automatically identify images with pornography, violence and terrorism in the clouds and effectively avoid risks from contents of pornography, violence, terrorism and politics, to operate the platform in a safer and more stable way.
+              img: sdk/icon-jianhuangjianbaokong.png
+              active_img: sdk/icon-jianhuangjianbaokong-2.png
+        scene:
+          title: Application Scenarios
+          desc: Various application scenarios can be supported with perfect solutions.
+          middlebar:
+            - name: "Social Contact"
+              class: "active"
+              href: "#tab-usage-section-1"
+            - name: "Interactive Conferences"
+              class: ""
+              href: "#tab-usage-section-2"
+            - name: "Telemedicine"
+              class: ""
+              href: "#tab-usage-section-3"
+            - name: "Online Education"
+              class: ""
+              href: "#tab-usage-section-4"
+            - name: "Online Customer Services"
+              class: ""
+              href: "#tab-usage-section-5"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane fade in active"
+              icon: "sdk/img-shejiao.png"
+              title: "Social Contact"
+              desc: "Interactions with microphones between hosts or between hosts and audience are supported. Functions, like face beautifying, filters, eyes enlarging and face thinning, are offered for entertaining interactions."
+              link: "Application scenarios:"
+              scenes:
+                - live broadcasting in show fields, 
+                - live broadcasting in Changba and 
+                - talk shows
+            - id: "tab-usage-section-2"
+              class: "tab-pane fade in"
+              icon: "sdk/img-huiyi.png"
+              title: "Interactive Conferences"
+              desc: "Both online communication of small teams and large-scale online conferences are supported. Applications similar to WebEx can be easily produced with the real-time audio& video interaction technology of Qiniu."
+              link: "Application scenarios:"
+              scenes:
+                - traditional video conferences, 
+                - new types of net meetings, 
+                - large-scale live conferences and 
+                - tele/audio conferences
+            - id: "tab-usage-section-3"
+              class: "tab-pane fade in"
+              icon: "sdk/img-yiliao.png"
+              title: "Telemedicine"
+              desc: "Remote multi-party video consultations are supported, which breaks restrictions in medical resources of different regions and in systems as well as platforms so that the flexibility in time and regions of doctors and patients is improved and diagnosis costs are reduced."
+              link: "Application scenarios:"
+              scenes:
+                - remote cooperation, 
+                - remote consolations and 
+                - surgery teaching
+            - id: "tab-usage-section-4"
+              class: "tab-pane fade in"
+              icon: "sdk/img-jiaoyu.jpg"
+              title: "Online Education"
+              desc: "Both small interactive classes and classes of tens of thousands of people are supported in a flexible way. Native and Web can interwork to satisfy education needs under various scenarios."
+              link: "Application scenarios:"
+              scenes:
+                - small interactive classes, 
+                - large-scale open classes, 
+                - online tutoring for K12 and 
+                - trainings of professional skills
+            - id: "tab-usage-section-5"
+              class: "tab-pane fade in"
+              icon: "sdk/img-kefu.jpg"
+              title: "Online Customer Services"
+              desc: "Demands for video calls to technical staff are supported. Those technical staff can instruct users to operate as well as quickly locate and solve problems through videos, to improve service quality and product reputation."
+              link: "Application scenarios:"
+              scenes:
+                - opening accounts in banks or of securities, 
+                - online customer services of E-commerce and 
+                - obtaining evidence for insurance companies
+        demo:
+          title: Experience demo
+          items:
+            - img: sdk/code-ios.jpg
+              desc: Experience demo for iOS
+            - img: sdk/code-android.jpg
+              desc: Experience demo for Android
+          btns:
+            - name: Experience live demo on the website
+              link: http://s.qnsdk.com/s/guMCz
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -3417,10 +3417,10 @@ en:
       title: 短视频SDK_短视频解决方案_短视频服务-七牛云
       keywords: 短视频SDK，七牛短视频，短视频服务，短视频解决方案，ios短视频sdk，android短视频sdk
       description: 七牛短视频服务(plsv)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
-    welcome_rtn:
+    products_rtn:
       title: Qiniu Cloud-Real-time Video Communication Service
-      keywords: WebRTC，RTC，real-time communication，WebRTC Platform，WebRTC API，WebRTC Mobile，WebRTC iOS，WebRTC Android，video communications，video
-      description: Qiniu's real-time communication network service is a powerful platform ,which includes a real-time communication SDK, self-developed real-time interactive streaming media network  and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast.
+      keywords: WebRTC, RTC, real-time communication, WebRTC Platform, WebRTC API, WebRTC Mobile, WebRTC iOS, WebRTC Android, video communications, video
+      description: Qiniu's real-time communication network service is a powerful platform, which includes a real-time communication SDK, self-developed real-time interactive streaming media network and a range of capabilities in the cloud. Based on our experience in live broadcasting product, Qiniu's real-time video communication service provides clients with the cross-platform, high-quality and customizable one-stop solution, which supports typical scenarios such video calls, online meetings, interactions in live broadcast.
     welcome_ess:
       title: 监控视频边缘存储解决方案 - 七牛云
       keywords: 边缘存储，边缘计算，七牛云，视频监控，物联网

@@ -3,17 +3,17 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8">
-          <h2 class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.welcome.rtn.banner.title") %></h2>
-          <p class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.welcome.rtn.banner.desc") -%></p>
+          <h2 class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.products.rtn.banner.title") %></h2>
+          <p class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.products.rtn.banner.desc") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <% I18n.t("views.welcome.rtn.action").each do |event| %>
+            <% I18n.t("views.products.rtn.action").each do |event| %>
               <%= link_to event[:title], event[:link], target: event[:target], class: event[:class] -%>
             <% end %>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
           <div class="right-mask-banner">
-            <%= image_tag I18n.t("views.welcome.rtn.banner.icon"), alt: "rtn", width: "100%" %>
+            <%= image_tag I18n.t("views.products.rtn.banner.icon"), alt: "rtn", width: "100%" %>
           </div>
         </div>
       </div>
@@ -21,12 +21,11 @@
   </div>
 </div>
 
-
 <div class="features features-suspension">
   <div class="container">
     <div class="suspension">
       <div class="row rtn-row">
-        <% I18n.t("views.welcome.rtn.specialty").each do |event| %>
+        <% I18n.t("views.products.rtn.specialty").each do |event| %>
           <div class="col-sm-3 col-xs-6 col-clear">
             <a href="javascript:;" class="suspension-item rtn-specialty">
               <%= image_tag event[:img] %>
@@ -43,12 +42,12 @@
 
 <div class="features features-suspension-next rtn-suspension-next">
   <div class="intro rtn-network-title">
-    <h3 class="title"><%= I18n.t("views.welcome.rtn.scheme.title") -%></h3>
-    <p class="desc"><%= I18n.t("views.welcome.rtn.scheme.desc") -%></p>
+    <h3 class="title"><%= I18n.t("views.products.rtn.scheme.title") -%></h3>
+    <p class="desc"><%= I18n.t("views.products.rtn.scheme.desc") -%></p>
   </div>
   <div class="container rtn-scheme">
     <ul>
-      <% I18n.t("views.welcome.rtn.scheme.content").each do |event| %>
+      <% I18n.t("views.products.rtn.scheme.content").each do |event| %>
         <li>
           <p class="title"><%= event[:title] -%></p>
           <% event[:desc].each do |desc| %>
@@ -63,11 +62,11 @@
 <div class="features feature-color">
   <div class="container">
     <div class="intro">
-      <h3 class="title"><%= I18n.t("views.welcome.rtn.serve.title") -%></h3>
-      <p class="desc"><%= I18n.t("views.welcome.rtn.serve.desc") -%></p>
+      <h3 class="title"><%= I18n.t("views.products.rtn.serve.title") -%></h3>
+      <p class="desc"><%= I18n.t("views.products.rtn.serve.desc") -%></p>
     </div>
     <ul class="rtn-serve">
-      <% I18n.t("views.welcome.rtn.serve.content").each do |event| %>
+      <% I18n.t("views.products.rtn.serve.content").each do |event| %>
         <li>
           <div class="active cont">
             <%= image_tag event[:active_img] %>
@@ -89,17 +88,17 @@
 <div class="features features-scene">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.rtn.scene.title") %></h2>
-      <p class="desc"><%= I18n.t("views.welcome.rtn.scene.desc") %></p>
+      <h2 class="title"><%= I18n.t("views.products.rtn.scene.title") %></h2>
+      <p class="desc"><%= I18n.t("views.products.rtn.scene.desc") %></p>
     </div>
     <div class="tabs rtn-scene">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.rtn.scene.middlebar").each do |col| %>
+        <% I18n.t("views.products.rtn.scene.middlebar").each do |col| %>
           <li class="<%= col[:class] %>"><%= link_to col[:name], col[:href], data:{ toggle: "tab" } -%></li>
         <% end %>
       </ul>
       <div class="tab-content bottom-line">
-        <% I18n.t("views.welcome.rtn.scene.sections").each do |sec| %>
+        <% I18n.t("views.products.rtn.scene.sections").each do |sec| %>
           <section class="<%= sec[:class] %>" id="<%= sec[:id] -%>">
             <div class="media">
               <%= content_tag :div, image_tag(sec[:icon], alt: sec[:title], class: "media-object img-left"), class: "media-left" %>
@@ -125,11 +124,11 @@
 <div class="features feature-color">
   <div class="container">
     <div class="intro">
-      <h3 class="title"><%= I18n.t("views.welcome.rtn.demo.title") -%></h3>
+      <h3 class="title"><%= I18n.t("views.products.rtn.demo.title") -%></h3>
     </div>
     <div class="row rtn-demo">
       <ul>
-        <% I18n.t("views.welcome.rtn.demo.items").each do |item| %>
+        <% I18n.t("views.products.rtn.demo.items").each do |item| %>
           <li>
             <%= image_tag item[:img] %>
             <p><%= item[:desc] %></p>
@@ -137,7 +136,7 @@
         <% end %>
       </ul>
       <div class="btn-box">
-        <% I18n.t("views.welcome.rtn.demo.btns").each do |btn| %>
+        <% I18n.t("views.products.rtn.demo.btns").each do |btn| %>
           <%= link_to btn[:name], btn[:link], target: "_blank", class:"btn btn-primary" -%>
         <% end %>
       </div>
@@ -148,10 +147,10 @@
 <div class="features features-less tab-content-products <%= I18n.t("views.language") != "zh" ? "d-none" : "" %>">
   <div class="container">
     <div class="row">
-      <div class="col-sm-2">
+      <div class="col-md-2 col-sm-12 col-xs-12">
         <h2 class="title">产品相关</h2>
       </div>
-      <div class="col-sm-10">
+      <div class="col-md-10 col-sm-12 col-xs-12">
         <div class="row">
           <div class="col-sm-4 col-xs-4">
             <h4>常用文档</h4>
