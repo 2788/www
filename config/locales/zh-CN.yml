@@ -246,7 +246,7 @@ zh-CN:
               desc: "以客户为中心，以结果为导向，坚持化繁为简，追求极致，赢得客户的信赖。"
             - title: "做一家简单的公司"
               icon: "company/icon-jiandandegongsi@2x.png"
-              desc: "以社会责任为己任，以公司信用为最重要资产，坚持言出必行，诚实守信，赢得社会的信赖。"
+              desc: "以社会责任为己任，以公司信用为重要资产，坚持言出必行，诚实守信，赢得社会的信赖。"
         feature2:
           title: "七牛云点点滴滴"
           ul:
@@ -1205,7 +1205,7 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/25"
           - img: "arch/img-beijing.jpg"
             time: 08 月 19 日
-            title: 大数据最新场景化应用实践
+            title: 大数据新场景化应用实践
             site: 北京
             details:
               time: 2017/08/19 13:30
@@ -1229,7 +1229,7 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/22"
           - img: "arch/img-shanghai.jpg"
             time: 06 月 11 日
-            title: 大数据最新场景化应用实践
+            title: 大数据新场景化应用实践
             site: 上海
             details:
               time: 2017/06/11 13:30
