@@ -31,4 +31,7 @@ class ProductsController < ApplicationController
 
   def pili
   end
+
+  def rtn
+  end
 end
