@@ -8,9 +8,6 @@ class WelcomeController < ApplicationController
     @top_archives = Archive.top_archives
   end
 
-  def pili
-  end
-
   def vance
   end
 

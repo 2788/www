@@ -28,4 +28,7 @@ class ProductsController < ApplicationController
 
   def dora
   end
+
+  def pili
+  end
 end
