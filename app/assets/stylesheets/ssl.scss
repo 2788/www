@@ -47,6 +47,26 @@
   }
 }
 
+.features.allfunction {
+  .row {
+    .thumbnail {
+      p {
+        word-break: break-all;
+      }
+    }
+  }
+}
+
+.features.cases {
+  .row {
+    h2 {
+      margin-top: 0.05rem;
+      margin-bottom: 0.30rem;
+      text-align: center;
+    }
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .table.table-ssl tr {
     th {
@@ -78,6 +98,13 @@
     }
     td {
       padding: 0.3rem 0.15rem;
+    }
+  }
+  .features.allfunction {
+    .row {
+      .thumbnail {
+        min-height: 3.80rem;
+      }
     }
   }
 }
