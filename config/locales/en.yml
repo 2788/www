@@ -98,142 +98,6 @@ en:
               desc: "We make full use of advantages of big data and machine learning to monitor service quality in real time and deeply analyze the service in an open way."
         feature3:
           title: "Success Cases"
-      pili:
-        banner:
-          title: "PILI"
-          desc: "Based on powerful globalized real time streaming networks and perfect services in client ends and clouds, PILI is a solution to the end-to-end live, designed to provide a one-stop live cloud service with fewer delays, stable and smooth broadcast as well as high availability."
-          icon: "banner/banner-pili-right-en.png"
-        specialty:
-          - title: delays in milliseconds
-            desc: More real-time live
-          - title: 10% anti packet loss
-            desc: Smooth live streaming in poor networks
-          - title: a small package of 948KB
-            desc: A light application 
-          - title: More than 100 functions
-            desc: satisfy needs in various live scenarios
-        scheme:
-          title: A Solution to the End-to-end Live
-          link: pili/en-pili-jiagoutu.png
-        serve:
-          title: Elaborate Services in Client Ends
-          desc: Services of live streaming broadcasting across platforms and direct access of SDK into the application are included.
-          content:
-            - title: Perfect Functions in Live Streaming Ends
-              desc: The live streaming ends, with powerful functions, are open and easy to use, which makes it convenient for developers to freely choose methods of sampling live streaming.
-              tagName: Click for More
-              link: https://developer.qiniu.com/pili/manual/3808/streaming-sdk-intro
-              children:
-                - name: Offering live streaming SDK for Android/iOS Platform
-                  desc: The live streaming SDK for Android/iOS platform is offered as a one-stop solution to the live through mobile phones, covering all mainstream functions in the live through videos like face beautifying with filters, special effects in faces, optimizing in poor networks, audio remixing and watermarks.
-                  isLink: false
-                  link: ""
-                - name: Opening API in the cloud
-                  desc: Several signal sources can be pushed to the cloud, such as IP cameras, video cameras, PC desktops, videos on-demand, UAVs and the streaming of other live platforms, to distribute media and manage broadcasting and controlling transparently, which helps enterprise developers establish core services in live broadcasting quickly and increases development efficiency.
-                  isLink: false
-                  link: ""
-            - title: Fully Self-Developed Kernel Players
-              desc: With a minimum package of 400KB and complete functions, free player SDK is offered, which can be opened in 200ms and gives users smooth video experience.
-              tagName: Click for More
-              link: https://www.qiniu.com/en/products/player
-              children:
-                - name: Protecting the copyright of DRM
-                  desc: Avoid illegal copying of digital media
-                  isLink: false
-                  link: ""
-                - name: Adjusting broadcasting strategies intelligently
-                  desc: Diminishing delays and sudden stops effectively when broadcasting
-                  isLink: false
-                  link: ""
-                - name: Offering the HLS adaptive bitrate
-                  desc: Coping with end-users’ complex network environment easily
-                  isLink: false
-                  link: ""
-                - name: Analyzing big data
-                  desc: Data of performance is monitored and analyzed in real time and emergencies are reported to improve end-users’ experience
-                  isLink: false
-                  link: ""
-        network:
-          title: Globalized Real Time Streaming Networks
-          desc: A lightweight recovery is offered and nodes can be expanded. Global distribution requirements can be responded to quickly.
-          children:
-            - name: Scalability on Demand
-              desc: The situation of full process can be computed in real time with completely new Internet technologies and the intelligent scalability of the best path node can be reached as required.
-            - name: Intelligent Choice of Tracks
-              desc: With SDN, combinations of tracks are deployed dynamically and data is updated in real time to decide and dispatch the best track.
-            - name: Fault Tolerance
-              desc: Service nodes are deployed symmetrically across the network so that any ineffective node can be removed immediately. The timely fault tolerance guarantees the high availability of the service.
-            - name: Fewer Sudden Stops in Poor Networks
-              desc: The QUIC Transport Protocol optimized by Qiniu helps users decrease the rate of sudden rates in complex networks and makes broadcasting smoother.
-        scene:
-          title: "A Comprehensive Range of Services in the Cloud"
-          desc: "The ecological chain in the live broadcasting is designed to provide users with better experience."
-          middlebar:
-            - name: "Services of AI in Videos"
-              class: "active"
-              href: "#tab-usage-section-1"
-            - name: "Services of Big Data in Videos"
-              class: ""
-              href: "#tab-usage-section-2"
-            - name: "Real-time Transcoding in the Server"
-              class: ""
-              href: "#tab-usage-section-3"
-            - name: "Few Delays in HLS+"
-              class: ""
-              href: "#tab-usage-section-4"
-            - name: "Anti-theft of Clients’ Content"
-              class: ""
-              href: "#tab-usage-section-5"
-          sections:
-            - id: "tab-usage-section-1"
-              class: "tab-pane active"
-              icon: "pili/icon-shipinaifuwu.png"
-              title: "Services of AI in Videos"
-              desc: "High-efficient and automatic recognition is offered in terms of behaviors like pornography, terrorism and violence. Technologies and applications, like facial recognition, intelligent image recognition and OCR, can be quickly integrated."
-              link: "Related Products："
-              linkarr:
-                - title: "Intelligent Multimedia API"
-                  link: "https://www.qiniu.com/en/products/dora"
-                - title: "The Plan for Supporting AI Innovation"
-                  link: "https://www.qiniu.com/en/alaccelerator"
-            - id: "tab-usage-section-2"
-              class: "tab-pane"
-              icon: "pili/icon-shipindashujufuwu.png"
-              title: "Services of Big Data in Videos"
-              desc: "The real-time monitoring, analysis, alarming and optimization of key business systems are offered to constantly help improve and upgrade the business of live broadcasting platforms, increase the reliability and stability and provides end-users with excellent experience."
-              link: "Related Products："
-              linkarr:
-                - title: "Big Data"
-                  link: "https://www.qiniu.com/en/products/pandora"
-            - id: "tab-usage-section-3"
-              class: "tab-pane"
-              icon: "pili/icon-zhaikuandaigaoqingzhuanma.png"
-              title: "Real-time Transcoding in the Server"
-              desc: "With the HP. 264 Transcoding Technology and the complete H.265 Solution in the Cloud, bandwidth costs can be reduced by 30%-50% and better image quality can be offered under the same bitrate. Services of real-time transcoding under multiple bitrates are offered so that the original live video streaming can be coded into three different kinds of streaming, HD, SD and LD, which makes it convenient for clients to flexibly switch into the streaming of a different bitrate according to different scenarios."
-              link: ""
-              linkarr:
-                - title: ""
-                  link: ""
-            - id: "tab-usage-section-4"
-              class: "tab-pane"
-              icon: "pili/icon-hls.png"
-              title: "Few Delays in HLS+"
-              desc: "HLS+ is processed from the standard HLS in a streaming way, which greatly decreases delays in standard HLS and makes the time for opening the first screen more stable with a small chance of playing back to the source."
-              link: ""
-              linkarr:
-                - title: ""
-                  link: ""
-            - id: "tab-usage-section-5"
-              class: "tab-pane"
-              icon: "pili/icon-anquanfangdaolian.png"
-              title: "Anti-theft of Clients’ Content"
-              desc: "Multiple methods of authentication are offered, like HTTP Security Protocol, timestamp, anti-theft of clients’ content and authentication back to the source, to fully protect resources and avoid the theft, which greatly increases the safety level in services of live broadcasting."
-              link: ""
-              linkarr:
-                - title: ""
-                  link: ""
-        case:
-          title: Success Cases
       vcs:
         banner:
           title: "视频冷存储解决方案"
@@ -3183,6 +3047,142 @@ en:
               desc: Face detection, face recognition, image sorting and clustering algorithms help quickly recognize faces and images in photos and automatically group photos of the same person or manage albums in a more direct and intelligent way. Storage of photos in the cloud satisfies clients'demand in different scenarios.
         feature4:
           title: "Success Cases"
+      pili:
+        banner:
+          title: "PILI"
+          desc: "Based on powerful globalized real time streaming networks and perfect services in client ends and clouds, PILI is a solution to the end-to-end live, designed to provide a one-stop live cloud service with fewer delays, stable and smooth broadcast as well as high availability."
+          icon: "banner/banner-pili-right-en.png"
+        specialty:
+          - title: delays in milliseconds
+            desc: More real-time live
+          - title: 10% anti packet loss
+            desc: Smooth live streaming in poor networks
+          - title: a small package of 948KB
+            desc: A light application 
+          - title: More than 100 functions
+            desc: satisfy needs in various live scenarios
+        scheme:
+          title: A Solution to the End-to-end Live
+          link: pili/en-pili-jiagoutu.png
+        serve:
+          title: Elaborate Services in Client Ends
+          desc: Services of live streaming broadcasting across platforms and direct access of SDK into the application are included.
+          content:
+            - title: Perfect Functions in Live Streaming Ends
+              desc: The live streaming ends, with powerful functions, are open and easy to use, which makes it convenient for developers to freely choose methods of sampling live streaming.
+              tagName: Click for More
+              link: https://developer.qiniu.com/pili/manual/3808/streaming-sdk-intro
+              children:
+                - name: Offering live streaming SDK for Android/iOS Platform
+                  desc: The live streaming SDK for Android/iOS platform is offered as a one-stop solution to the live through mobile phones, covering all mainstream functions in the live through videos like face beautifying with filters, special effects in faces, optimizing in poor networks, audio remixing and watermarks.
+                  isLink: false
+                  link: ""
+                - name: Opening API in the cloud
+                  desc: Several signal sources can be pushed to the cloud, such as IP cameras, video cameras, PC desktops, videos on-demand, UAVs and the streaming of other live platforms, to distribute media and manage broadcasting and controlling transparently, which helps enterprise developers establish core services in live broadcasting quickly and increases development efficiency.
+                  isLink: false
+                  link: ""
+            - title: Fully Self-Developed Kernel Players
+              desc: With a minimum package of 400KB and complete functions, free player SDK is offered, which can be opened in 200ms and gives users smooth video experience.
+              tagName: Click for More
+              link: https://www.qiniu.com/en/products/player
+              children:
+                - name: Protecting the copyright of DRM
+                  desc: Avoid illegal copying of digital media
+                  isLink: false
+                  link: ""
+                - name: Adjusting broadcasting strategies intelligently
+                  desc: Diminishing delays and sudden stops effectively when broadcasting
+                  isLink: false
+                  link: ""
+                - name: Offering the HLS adaptive bitrate
+                  desc: Coping with end-users’ complex network environment easily
+                  isLink: false
+                  link: ""
+                - name: Analyzing big data
+                  desc: Data of performance is monitored and analyzed in real time and emergencies are reported to improve end-users’ experience
+                  isLink: false
+                  link: ""
+        network:
+          title: Globalized Real Time Streaming Networks
+          desc: A lightweight recovery is offered and nodes can be expanded. Global distribution requirements can be responded to quickly.
+          children:
+            - name: Scalability on Demand
+              desc: The situation of full process can be computed in real time with completely new Internet technologies and the intelligent scalability of the best path node can be reached as required.
+            - name: Intelligent Choice of Tracks
+              desc: With SDN, combinations of tracks are deployed dynamically and data is updated in real time to decide and dispatch the best track.
+            - name: Fault Tolerance
+              desc: Service nodes are deployed symmetrically across the network so that any ineffective node can be removed immediately. The timely fault tolerance guarantees the high availability of the service.
+            - name: Fewer Sudden Stops in Poor Networks
+              desc: The QUIC Transport Protocol optimized by Qiniu helps users decrease the rate of sudden rates in complex networks and makes broadcasting smoother.
+        scene:
+          title: "A Comprehensive Range of Services in the Cloud"
+          desc: "The ecological chain in the live broadcasting is designed to provide users with better experience."
+          middlebar:
+            - name: "Services of AI in Videos"
+              class: "active"
+              href: "#tab-usage-section-1"
+            - name: "Services of Big Data in Videos"
+              class: ""
+              href: "#tab-usage-section-2"
+            - name: "Real-time Transcoding in the Server"
+              class: ""
+              href: "#tab-usage-section-3"
+            - name: "Few Delays in HLS+"
+              class: ""
+              href: "#tab-usage-section-4"
+            - name: "Anti-theft of Clients’ Content"
+              class: ""
+              href: "#tab-usage-section-5"
+          sections:
+            - id: "tab-usage-section-1"
+              class: "tab-pane fade in active"
+              icon: "pili/icon-shipinaifuwu.png"
+              title: "Services of AI in Videos"
+              desc: "High-efficient and automatic recognition is offered in terms of behaviors like pornography, terrorism and violence. Technologies and applications, like facial recognition, intelligent image recognition and OCR, can be quickly integrated."
+              link: "Related Products："
+              linkarr:
+                - title: "Intelligent Multimedia API"
+                  link: "https://www.qiniu.com/en/products/dora"
+                - title: "The Plan for Supporting AI Innovation"
+                  link: "https://www.qiniu.com/en/alaccelerator"
+            - id: "tab-usage-section-2"
+              class: "tab-pane fade in"
+              icon: "pili/icon-shipindashujufuwu.png"
+              title: "Services of Big Data in Videos"
+              desc: "The real-time monitoring, analysis, alarming and optimization of key business systems are offered to constantly help improve and upgrade the business of live broadcasting platforms, increase the reliability and stability and provides end-users with excellent experience."
+              link: "Related Products："
+              linkarr:
+                - title: "Big Data"
+                  link: "https://www.qiniu.com/en/products/pandora"
+            - id: "tab-usage-section-3"
+              class: "tab-pane fade in"
+              icon: "pili/icon-zhaikuandaigaoqingzhuanma.png"
+              title: "Real-time Transcoding in the Server"
+              desc: "With the HP. 264 Transcoding Technology and the complete H.265 Solution in the Cloud, bandwidth costs can be reduced by 30%-50% and better image quality can be offered under the same bitrate. Services of real-time transcoding under multiple bitrates are offered so that the original live video streaming can be coded into three different kinds of streaming, HD, SD and LD, which makes it convenient for clients to flexibly switch into the streaming of a different bitrate according to different scenarios."
+              link: ""
+              linkarr:
+                - title: ""
+                  link: ""
+            - id: "tab-usage-section-4"
+              class: "tab-pane fade in"
+              icon: "pili/icon-hls.png"
+              title: "Few Delays in HLS+"
+              desc: "HLS+ is processed from the standard HLS in a streaming way, which greatly decreases delays in standard HLS and makes the time for opening the first screen more stable with a small chance of playing back to the source."
+              link: ""
+              linkarr:
+                - title: ""
+                  link: ""
+            - id: "tab-usage-section-5"
+              class: "tab-pane fade in"
+              icon: "pili/icon-anquanfangdaolian.png"
+              title: "Anti-theft of Clients’ Content"
+              desc: "Multiple methods of authentication are offered, like HTTP Security Protocol, timestamp, anti-theft of clients’ content and authentication back to the source, to fully protect resources and avoid the theft, which greatly increases the safety level in services of live broadcasting."
+              link: ""
+              linkarr:
+                - title: ""
+                  link: ""
+        case:
+          title: Success Cases
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -3355,10 +3355,10 @@ en:
       title: Qiniu Cloud-Object Storage（KODO）-Safe、Highly-reliable、Easy to Expand、Low in Cost、Intelligent in Data
       keywords: Cloud Storage, Object Storage, Qiniu Cloud, Private Cloud Storage, High Concurrency of Mass Data, Backup and Archive, Hosting of Static Resources, Mirrored Storage, Low-frequency Storage, Multimedia Data Processing, Upload/ Download
       description: Qiniu Cloud's object storage (KODO), a completely independent-researched core technology which is proven by repeated customer experience has occupied absolute leading market leader position. KODO can be widely applied to mass data management. It is safe, highly reliable, easy to expand, low-cost, and intelligent in data.
-    welcome_pili:
+    products_pili:
       title: Qiniu Cloud-Live Video Cloud（PILI）
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction
-      description: Qiniu Cloud's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP,HLS, HDL) ,data processing services, end-to-end SDK and application performance monitoring are completely supported.
+      description: Qiniu Cloud's Live Video Cloud (PILI) is a live streaming broadcast platform which provides global video delivery network and end-to-end services. A number of protocols (RTMP, HLS, HDL), data processing services, end-to-end SDK and application performance monitoring are completely supported.
     welcome_vcs:
       title: 视频冷存储_视频冷存储解决方案-七牛云
       keywords: 视频冷存储，冷备，冷存储，归档存储，点播存储，高清视频原片，媒体资源库
