@@ -3479,6 +3479,10 @@ en:
       title: 播放器SDK_视频播放SDK-七牛云播放器
       keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
       description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
+    welcome_ssl:
+      title: SSL证书_SSL证书申请_SSL企业证书_SSL证书服务 - 七牛云
+      keywords: ssl，ssl 证书，ssl 证书申请，ssl 企业证书，ssl 数字证书，免费 ssl 证书，企业 ssl 证书，ssl 证书购买，ssl 证书服务，ssl 证书价格，ev ssl 证书，dv ssl 证书，ov ssl 证书，https 证书
+      description: 七牛云 SSL 证书服务提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。
     welcome_goglobal:
       title: 出海创业扶持计划
     welcome_alaccelerator:
