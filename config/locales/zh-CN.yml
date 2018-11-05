@@ -224,7 +224,7 @@ zh-CN:
           case: "客户案例"
         feature8:
           title: "互联网与移动互联网解决方案"
-          desc: "七牛云作为创业扶持产业中最重要的外部资源，互联网与移动互联网解决方案，为在线教育、旅游、O2O、电商、社交、娱乐等各大行业领域打造贴近业务场景的解决方案，并提供一站式数据管理服务，助力初创企业快速搭建与行业巨头公平竞争的技术基础设施。"
+          desc: "七牛云作为创业扶持产业中重要的外部资源，互联网与移动互联网解决方案，为在线教育、旅游、O2O、电商、社交、娱乐等各大行业领域打造贴近业务场景的解决方案，并提供一站式数据管理服务，助力初创企业快速搭建与行业巨头公平竞争的技术基础设施。"
           btn: "点击咨询"
           case: "客户案例"
         feature9:
@@ -234,7 +234,7 @@ zh-CN:
           case: "客户案例"
       company:
         title: "七牛是一家怎样的公司？"
-        desc: "七牛云（隶属于上海七牛信息技术有限公司）是国内领先的以视觉智能和数据智能为核心的企业级云计算服务商，同时也是国内最有特色的智能视频云服务商，累计为 70 多万家企业提供服务，覆盖了国内80%网民。围绕富媒体场景推出了对象存储、融合 CDN 加速、容器云、大数据平台、深度学习平台等产品、并提供一站式智能视频云解决方案。为各行业及应用提供可持续发展的智能视频云生态，帮助企业快速上云，创造更广阔的商业价值。"
+        desc: "七牛云（隶属于上海七牛信息技术有限公司）是国内领先的以视觉智能和数据智能为核心的企业级云计算服务商，同时也是国内知名智能视频云服务商，累计为 70 多万家企业提供服务，覆盖了国内80%网民。围绕富媒体场景推出了对象存储、融合 CDN 加速、容器云、大数据平台、深度学习平台等产品、并提供一站式智能视频云解决方案。为各行业及应用提供可持续发展的智能视频云生态，帮助企业快速上云，创造更广阔的商业价值。"
         feature1:
           title: "七牛云文化——简单·可信赖"
           col:
@@ -966,19 +966,19 @@ zh-CN:
           title: "独特功能"
           items:
             - title: "就近高速上传"
-              desc: "选取就近边缘节点，多维调度智能选取最优链路，保障监控视频数据上传至边缘。"
+              desc: "选取就近边缘节点，多维调度智能选取优质链路，保障监控视频数据上传至边缘。"
               image: "ess/icon-jiujingaosu.png"
             - title: "自动同步中心"
               desc: "边缘数据自动同步至中心备份，保证数据完整性及安全性，同时支持用户主动备份至云存储。"
               image: "ess/icon-zidongtongbu.png"
             - title: "全网实时查看"
-              desc: "采用多策略多层次调度，智能选取最优线路，保障用户可全网实时查看监控视频，且支持最高64倍速播放。"
+              desc: "采用多策略多层次调度，智能选取优质线路，保障用户可全网实时查看监控视频，且支持最高 64 倍速播放。"
               image: "ess/icon-quanwangshishi.png"
         advantage:
           title: "方案优势"
           items:
             - title: "传输高速可靠"
-              desc: "多维调度策略选取传输链路，保障传输高速可靠，可最大化利用链路带宽。"
+              desc: "多维调度策略选取传输链路，保障传输高速可靠，可充分利用链路带宽。"
               image: "ess/icon-chuanshugaosu.png"
             - title: "数据多重保护"
               desc: "对数据传输及存储采用网银级加密保护，边缘可自定义处理敏感数据，及时脱敏。"
@@ -1157,11 +1157,11 @@ zh-CN:
         events:
           - img: "arch/img-hangzhou.jpg"
             time: 06 月 30 日
-            title: 视觉AI技术的实践与分享
+            title: 视觉 AI 技术的实践与分享
             site: 杭州
             details:
               time: 2018/6/30 13:30
-              site: 杭州 西湖区颐高创业大厦A座4楼
+              site: 杭州 西湖区颐高创业大厦 A 座 4 楼
               link: "http://hd.qiniu.com/arch/history/31?ref=www.qiniu.com"
           - img: "arch/img-shanghai.jpg"
             time: 05 月 26 日
@@ -1173,7 +1173,7 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/30?ref=www.qiniu.com"
           - img: "arch/img-shenzhen.jpg"
             time: 10 月 21 日
-            title: Kubernetes 落地最佳实践
+            title: Kubernetes 落地实践
             site: 深圳
             details:
               time: 2017/10/21 13:30
@@ -1181,27 +1181,27 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/28"
           - img: "arch/img-shanghai.jpg"
             time: 09 月 23 日
-            title: 移动架构与性能优化最佳实践
+            title: 移动架构与性能优化实践
             site: 上海
             details:
               time: 2017/09/23 13:30
-              site: 上海  创业邦
+              site: 上海 创业邦
               link: "http://hd.qiniu.com/arch/history/27"
           - img: "arch/img-guangzhou.jpg"
             time: 09 月 02 日
-            title: 移动性能优化最佳实践
+            title: 移动性能优化实践
             site: 广州
             details:
               time: 2017/09/02 13:30
-              site: 广州 E杯咖啡
+              site: 广州 E 杯咖啡
               link: "http://hd.qiniu.com/arch/history/26"
           - img: "arch/img-hangzhou.jpg"
             time: 09 月 02 日
-            title: 七牛云&amp;蘑菇街架构师实践日：CI／CD落地最佳实践
+            title: 七牛云 & 蘑菇街架构师实践日：CI／CD 落地实践
             site: 杭州
             details:
               time: 2017/09/02 13:30
-              site: 杭州 浙商财富中心a座蘑菇街一楼
+              site: 杭州 浙商财富中心 A 座蘑菇街一楼
               link: "http://hd.qiniu.com/arch/history/25"
           - img: "arch/img-beijing.jpg"
             time: 08 月 19 日
@@ -1209,11 +1209,11 @@ zh-CN:
             site: 北京
             details:
               time: 2017/08/19 13:30
-              site: 北京 上地开拓路11号福道大厦链家网
+              site: 北京 上地开拓路 11 号福道大厦链家网
               link: "http://hd.qiniu.com/arch/history/24"
           - img: "arch/img-xiamen.jpg"
             time: 07 月 30 日
-            title: 大数据场景化应用最佳实践
+            title: 大数据场景化应用实践
             site: 厦门
             details:
               time: 2017/07/30 13:30
@@ -1241,11 +1241,11 @@ zh-CN:
             site: 北京
             details:
               time: 2017/05/13 13:30
-              site: 北京 中关村 P2联合办公社
+              site: 北京 中关村 P2 联合办公社
               link: "http://hd.qiniu.com/arch/history/20"
           - img: "arch/img-shenzhen.jpg"
             time: 04 月 08 日
-            title: 大数据技术最佳实践
+            title: 大数据技术实践
             site: 深圳
             details:
               time: 2017/04/08 13:30
@@ -1253,7 +1253,7 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/19"
           - img: "arch/img-hangzhou.jpg"
             time: 03 月 25 日
-            title: 大数据与机器学习的最佳实践
+            title: 大数据与机器学习的实践
             site: 杭州
             details:
               time: 2017/03/25 13:30
@@ -1261,11 +1261,11 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/18"
           - img: "arch/img-beijing.jpg"
             time: 03 月 04 日
-            title: “她时代”- 大数据与机器学习
+            title: “她时代” - 大数据与机器学习
             site: 北京
             details:
               time: 2017/03/04 13:30
-              site: 北京  中关村大街  联合创业办公社
+              site: 北京 中关村大街 联合创业办公社
               link: "http://hd.qiniu.com/arch/history/17"
           - img: "arch/img-beijing.jpg"
             time: 12 月 04 日
@@ -1273,11 +1273,11 @@ zh-CN:
             site: 北京
             details:
               time: 2016/12/04 13:30
-              site: 北京  中关村大街  联合创业办公社
+              site: 北京 中关村大街 联合创业办公社
               link: "http://hd.qiniu.com/arch/history/16"
           - img: "arch/img-hangzhou.jpg"
             time: 10 月 23 日
-            title: 移动直播技术最佳实践
+            title: 移动直播技术实践
             site: 杭州
             details:
               time: 2016/10/23 13:30
@@ -1285,23 +1285,23 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/14"
           - img: "arch/img-guangzhou.jpg"
             time: 09 月 25 日
-            title: 直播技术最佳实践
+            title: 直播技术实践
             site: 广州
             details:
               time: 2016/09/25 13:30
-              site: 广州   大道中 289 号印报楼 3 楼 301 酷窝空间
+              site: 广州 大道中 289 号印报楼 3 楼 301 酷窝空间
               link: "http://hd.qiniu.com/arch/history/13"
           - img: "arch/img-xiamen.jpg"
             time: 09 月 03 日
-            title: 「泛娱乐+直播」技术最佳实践
+            title: 「泛娱乐+直播」技术实践
             site: 厦门
             details:
               time: 2016/09/03 13:30
-              site: 厦门 软件园二期望海路 61 号北一楼    3W 唯你孵化器
+              site: 厦门 软件园二期望海路 61 号北一楼 3W 唯你孵化器
               link: "http://hd.qiniu.com/arch/history/12"
           - img: "arch/img-beijing.jpg"
             time: 08 月 14 日
-            title: 体育+直播 技术最佳实践
+            title: 体育+直播 技术实践
             site: 北京
             details:
               time: 2016/08/14 13:30
@@ -1309,51 +1309,51 @@ zh-CN:
               link: "http://hd.qiniu.com/arch/history/11"
           - img: "arch/img-shanghai.jpg"
             time: 07 月 31 日
-            title: 「泛娱乐+直播」技术最佳实践
+            title: 「泛娱乐+直播」技术实践
             site: 上海
             details:
               time: 2016/07/31 13:30
-              site: 上海 浦东新区金科路2966号 创智空间
+              site: 上海 浦东新区金科路 2966 号 创智空间
               link: "http://hd.qiniu.com/arch/history/10"
           - img: "arch/img-shenzhen.jpg"
             time: 06 月 18 日
-            title: 微服务架构最佳实践
+            title: 微服务架构实践
             site: 深圳
             details:
               time: 2016/06/18 13:30
-              site: 深圳 南山区科发路1号富利臻大厦三层 思微空间
+              site: 深圳 南山区科发路 1 号富利臻大厦三层 思微空间
               link: "http://hd.qiniu.com/arch/history/9"
           - img: "arch/img-hangzhou.jpg"
             time: 05 月 29 日
-            title: 亿级移动应用架构最佳实践
+            title: 亿级移动应用架构实践
             site: 杭州
             details:
               time: 2016/05/29 13:30
-              site: 杭州 西湖区教工路88号立元大厦3F  沃创空间
+              site: 杭州 西湖区教工路 88 号立元大厦 3F 沃创空间
               link: "http://hd.qiniu.com/arch/history/8"
           - img: "arch/img-chengdu.jpg"
             time: 05 月 07 日
-            title: 微服务架构与Docker技术最佳实践
+            title: 微服务架构与 Docker 技术实践
             site: 成都
             details:
               time: 2016/05/07 13:30
-              site: 成都 长虹科技大厦 36-5会议室
+              site: 成都 长虹科技大厦 36-5 会议室
               link: "http://hd.qiniu.com/arch/history/7"
           - img: "arch/img-beijing.jpg"
             time: 04 月 10 日
-            title: 在线视频技术最佳实践
+            title: 在线视频技术实践
             site: 北京
             details:
               time: 2016/04/10 13:30
-              site: 北京 wepac空间
+              site: 北京 wepac 空间
               link: "http://hd.qiniu.com/arch/history/6"
           - img: "arch/img-shanghai.jpg"
             time: 03 月 13 日
-            title: 容器核心技术与最佳实践
+            title: 容器核心技术与实践
             site: 上海
             details:
               time: 2016/03/13 13:30
-              site: 上海  创智天地7号楼1层 多功能剧场
+              site: 上海 创智天地 7 号楼 1 层 多功能剧场
               link: "http://hd.qiniu.com/arch/history/5"
           - img: "arch/img-guangzhou.jpg"
             time: 01 月 09 日
@@ -1369,7 +1369,7 @@ zh-CN:
             site: 北京
             details:
               time: 2015/12/20 13:30
-              site: 北京 Wepac空间
+              site: 北京 wepac 空间
               link: "http://hd.qiniu.com/arch/history/3"
           - img: "arch/img-shanghai.jpg"
             time: 11 月 28 日
@@ -1377,7 +1377,7 @@ zh-CN:
             site: 上海
             details:
               time: 2015/11/28 13:30
-              site: 上海 WE+金钟广场旗舰店
+              site: 上海 WE+ 金钟广场旗舰店
               link: "http://hd.qiniu.com/arch/history/2"
           - img: "arch/img-shenzhen.jpg"
             time: 11 月 01 日
@@ -1549,7 +1549,7 @@ zh-CN:
               desc: "与七牛云其他产品紧密协同，提供标准 HDFS 访问方式，为大数据和机器学习的海量高速读写场景进行了大量优化。"
             - title: "存储加速"
               icon: "icon-cunchujiasu@2x.png"
-              desc: "边缘存储可最大化利用可用链路带宽，数据在边缘节点上传和下载可平均提速60%以上。"
+              desc: "边缘存储可充分利用可用链路带宽，数据在边缘节点上传和下载可平均提速 60% 以上。"
             - title: "边缘计算"
               icon: "icon-bianyuanjisuan@2x.png"
               desc: "就近集成边缘计算及边缘缓存服务，边缘存储节点具备本地数据处理能力。"
@@ -2282,7 +2282,7 @@ zh-CN:
                 link: "https://developer.qiniu.com/qvm/kb/5147/the-backend-server-common-problems"
                 target: "_blank"
           news:
-            title: "最佳实践"
+            title: "上云实践"
             links:
               - title: "使用迁移工具迁移服务器至 QVM"
                 link: "https://developer.qiniu.com/qvm/manual/4288/server-migration-qiniu"
@@ -2586,7 +2586,7 @@ zh-CN:
                 link: "https://portal.qiniu.com/apply-insight"
               - title: "智能运维辅助"
                 desc: "异常检测，坏盘预测，告警优化"
-                more: "异常检测最佳实践"
+                more: "异常检测实践"
                 link: "https://developer.qiniu.com/insight/manual/4707/scenario-analysis"
               - title: "跨平台融合"
                 desc: "七牛云/本地 IDC/第三方公有云数据统一管理"
@@ -2880,7 +2880,7 @@ zh-CN:
           col2:
             - class: "col-sm-6 col-padding col-content-middle sm-right"
               title1: 图片缩略
-              desc1: 支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而最好地满足你的大小、形状和风格需要。
+              desc1: 支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而很好地满足你的大小、形状和风格需要。
               title2: 图片瘦身
               desc2: 支持对存储在七牛云或使用七牛 CDN 的 PNG、JPG 图片瘦身，缩小图片体积，节省流量，提升产品体验。
               alt: 图片处理
@@ -2972,7 +2972,7 @@ zh-CN:
                   isLink: true
                   link: "https://developer.qiniu.com/pili/manual/4731/caster"
             - title: 全自研内核播放器
-              desc: 提供免费的播放器 SDK，秒开 200ms，包体最小至 400K，功能全，给用户畅享流畅无卡顿的视频体验。
+              desc: 提供免费的播放器 SDK，秒开 200ms，包体小至 400K，功能全，给用户畅享流畅无卡顿的视频体验。
               tagName: 查看详情
               link: https://www.qiniu.com/products/player
               children:
@@ -2997,9 +2997,9 @@ zh-CN:
           desc: 轻量级刷机扩建节点，快速响应全球分发需求
           children:
             - name: 按需伸缩
-              desc: 采用全新网络技术，实时计算全链路状态，按需智能伸缩最佳路径节点。
+              desc: 采用全新网络技术，实时计算全链路状态，按需智能伸缩较好路径节点。
             - name: 智能选线
-              desc: 采用软件定义网络的方式，动态制定线路组合，更新实时数据，决策调度最优线路。
+              desc: 采用软件定义网络的方式，动态制定线路组合，更新实时数据，决策调度优质线路。
             - name: 故障容错
               desc: 全网对称部署服务节点，任一节点失效均可立即摘除，及时容错保障服务的高可用。
             - name: 弱网少卡顿
@@ -3607,7 +3607,7 @@ zh-CN:
     events_ecug:
       title: ECUG - 七牛云
       keywords: ECUG，七牛ECUG
-      description: ECUG 全称为 Effective Cloud User Group （实效云计算用户组），由七牛云 CEO 许式伟发起，集结了一批具有高端视角并仍醉心于技术本身的同仁，共同关注云计算前沿技术的最新成果和分布式开发、运维的最佳实践。
+      description: ECUG 全称为 Effective Cloud User Group （实效云计算用户组），由七牛云 CEO 许式伟发起，集结了一批具有高端视角并仍醉心于技术本身的同仁，共同关注云计算前沿技术的新成果和分布式开发、运维的实践。
     events_niushow:
       title: 牛人秀 - 七牛云
       keywords: 牛人秀

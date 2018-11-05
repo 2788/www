@@ -85,7 +85,7 @@
   </div>
 </div>
 
-<div class="features features-bottom-line">
+<div class="features features-bottom-line <%= I18n.t("views.language") != 'zh' ? 'features-en-pili-network' : '' -%>">
   <div class="container container-net-bg bottom-line">
     <div class="intro">
       <h3 class="title"><%= I18n.t("views.products.pili.network.title") -%></h3>
