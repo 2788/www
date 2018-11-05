@@ -84,6 +84,13 @@
       min-height: auto;
     }
   }
+  .features-en-pili-network {
+    .row {
+      .thumbnail {
+        min-height: 5.20rem;
+      }
+    }
+  }
 }
 
 @media (min-width: 767px) {
