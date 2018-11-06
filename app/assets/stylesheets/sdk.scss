@@ -12,6 +12,7 @@
 
     .main-img {
       padding: 0 30px 0 0;
+      text-align: center;
     }
 
     .contentBox {
@@ -21,7 +22,7 @@
 
       h4 {
         margin-top: 0;
-        font-weight: bold
+        font-weight: bold;
       }
 
       .content {
@@ -167,7 +168,7 @@
               background-color: #00A0DE;
 
               &:hover .item-content {
-                display: block
+                display: block;
               }
             }
           }
@@ -182,18 +183,26 @@
         .dec {
           flex-grow: 0;
           .pullDown {
-            position: static
+            position: static;
           }
 
           span {
-            transform: rotate(180deg)
+            transform: rotate(180deg);
           }
         }
 
         .interlinkage {
-          display: none
+          display: none;
         }
       }
+    }
+ }
+
+ @media (min-width: 768px) and (max-width: 991px) {
+   .rtn-services {
+     .left-img {
+       margin-top: 0.50rem;
+     }
    }
  }
 
@@ -203,7 +212,7 @@
 
       .main-img {
         margin-bottom: .2rem;
-        padding: 0 15px
+        padding: 0 15px;
       }
 
       .contentBox {

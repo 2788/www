@@ -33,69 +33,71 @@
 </div>
 
 <div class="features tab-content-function part-live">
-  <div class="rtn-services">
-    <div class="intro">
-      <h2 class="title">DEMO 及 SDK 下载</h2>
-    </div>
-    <div class="row">
-      <div class="col-sm-4 main-img">
-        <%= image_tag 'rtn/img-zhibo.jpg' %>
+  <div class="container">
+    <div class="rtn-services">
+      <div class="intro">
+        <h2 class="title">DEMO 及 SDK 下载</h2>
       </div>
-      <div class="col-sm-8 contentBox">
-        <h4 class="title">直播</h4>
-        <div class="content">七牛直播云服务是基于专为直播打造的全球化实时流网络、完善的客户端服务和云端强大的音视频处理能力的一站式直播云服务。助力用户轻送打造社交直播、秀场直播、游戏直播等直播应用。<%= link_to "相关产品：七牛直播云", "https://www.qiniu.com/products/pili", target: "_blank" -%></div>
-        <div class="dec">
-          <div class="flows">
-            <h5>功能描述</h2>
-            <div class="pullDown">
-              <p>1. 多样的编码方式：支持 H.264，且 H.264 支持硬编和软编</p>
-              <p>2. 码流自适应：支持多种清晰度直播画面选择，以满足不同带宽的接入需要</p>
-              <p>3. 弱网优化：采用七牛优化后的 QUIC 传输协议，减少复杂网络下的卡顿率，提高流畅度</p>
-              <p>4. 提供直播预览、混音、美颜滤镜、截图等功能</p>
-              <p>5. 支持服务端转码、在线分享等功能</p>
-            </div>
-          </div>
-          <span></span>
+      <div class="row">
+        <div class="col-sm-4 main-img left-img">
+          <%= image_tag 'rtn/img-zhibo.jpg', width: "100%" %>
         </div>
-        <div class="interlinkage">
-          <div class="client">
-            <div class="title">客户案例</div>
-            <div class="imgBox">
-              <%= image_tag 'rtn/logo-xiongmaozhibo.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-quanmintv.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-dongqiudi.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-tonghuashun.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-suobei.jpg', class:"main-img" %>
-            </div>
-          </div>
-          <div class="sdk">
-            <div class="item mr-3 active">
-              Android SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLDroidMediaStreaming", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidMediaStreaming/tree/master/PLDroidMediaStreamingDemo", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/android直播.png' %>
-                </div>
+        <div class="col-sm-8 contentBox">
+          <h4 class="title">直播</h4>
+          <div class="content">七牛直播云服务是基于专为直播打造的全球化实时流网络、完善的客户端服务和云端强大的音视频处理能力的一站式直播云服务。助力用户轻送打造社交直播、秀场直播、游戏直播等直播应用。<%= link_to "相关产品：七牛直播云", "https://www.qiniu.com/products/pili", target: "_blank" -%></div>
+          <div class="dec">
+            <div class="flows">
+              <h5>功能描述</h2>
+              <div class="pullDown">
+                <p>1. 多样的编码方式：支持 H.264，且 H.264 支持硬编和软编</p>
+                <p>2. 码流自适应：支持多种清晰度直播画面选择，以满足不同带宽的接入需要</p>
+                <p>3. 弱网优化：采用七牛优化后的 QUIC 传输协议，减少复杂网络下的卡顿率，提高流畅度</p>
+                <p>4. 提供直播预览、混音、美颜滤镜、截图等功能</p>
+                <p>5. 支持服务端转码、在线分享等功能</p>
               </div>
             </div>
-            <div class="item active">
-              iOS SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLMediaStreamingKit", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLMediaStreamingKit/tree/master/Example", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/ios直播.png' %>
+            <span></span>
+          </div>
+          <div class="interlinkage">
+            <div class="client">
+              <div class="title">客户案例</div>
+              <div class="imgBox">
+                <%= image_tag 'rtn/logo-xiongmaozhibo.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-quanmintv.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-dongqiudi.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-tonghuashun.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-suobei.jpg', class:"main-img" %>
+              </div>
+            </div>
+            <div class="sdk">
+              <div class="item mr-3 active">
+                Android SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLDroidMediaStreaming", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidMediaStreaming/tree/master/PLDroidMediaStreamingDemo", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/android直播.png' %>
+                  </div>
+                </div>
+              </div>
+              <div class="item active">
+                iOS SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLMediaStreamingKit", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLMediaStreamingKit/tree/master/Example", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/ios直播.png' %>
+                  </div>
                 </div>
               </div>
             </div>
@@ -107,80 +109,82 @@
 </div>
 
 <div class="features tab-content-function feature-color part-realTime">
-  <div class="rtn-services">
-    <div class="row">
-      <div class="col-sm-4 main-img">
-        <%= image_tag 'rtn/img-yinshipin.jpg' %>
-      </div>
-      <div class="col-sm-8 contentBox">
-        <h4 class="title">实时音视频</h4>
-        <div class="content">七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，助力用户轻松打造主播与观众多画面、实时连麦互动的实时音视频应用。<%= link_to "公测中，申请试用", "https://jinshuju.net/f/LSkxxL", target: "_blank", class: "danger" -%></div>
-        <div class="dec">
-          <div class="flows">
-            <h5>功能描述</h2>
-            <div class="pullDown">
-              <p>1. 多种合流方式：支持服务端、客户端合流</p>
-              <p>2. 个性化管理：支持踢人、禁言等多种管理权限</p>
-              <p>3. 实时录制：支持音视频录制、存储、转码、分发和点播</p>
-              <p>4. 鉴黄鉴暴恐：云端实现黄暴恐图自动鉴别，有效规避涉黄、涉政风险提供实时音视频美颜滤镜、人脸特效等功能</p>
-              <p>5. 提供实时音视频美颜滤镜、人脸特效等功能</p>
-            </div>
-          </div>
-          <span></span>
+  <div class="container">
+    <div class="rtn-services">
+      <div class="row">
+        <div class="col-sm-4 main-img left-img">
+          <%= image_tag 'rtn/img-yinshipin.jpg', width: "100%" %>
         </div>
-        <div class="interlinkage">
-          <div class="sdk">
-            <div class="item mr-3 active mb-3">
-              Android SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/QNRTC-Android", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/QNRTC-Android/tree/master/QNDroidRTCDemo", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/android会议.png' %>
+        <div class="col-sm-8 contentBox">
+          <h4 class="title">实时音视频</h4>
+          <div class="content">七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，助力用户轻松打造主播与观众多画面、实时连麦互动的实时音视频应用。<%= link_to "公测中，申请试用", "https://jinshuju.net/f/LSkxxL", target: "_blank", class: "danger" -%></div>
+          <div class="dec">
+            <div class="flows">
+              <h5>功能描述</h2>
+              <div class="pullDown">
+                <p>1. 多种合流方式：支持服务端、客户端合流</p>
+                <p>2. 个性化管理：支持踢人、禁言等多种管理权限</p>
+                <p>3. 实时录制：支持音视频录制、存储、转码、分发和点播</p>
+                <p>4. 鉴黄鉴暴恐：云端实现黄暴恐图自动鉴别，有效规避涉黄、涉政风险提供实时音视频美颜滤镜、人脸特效等功能</p>
+                <p>5. 提供实时音视频美颜滤镜、人脸特效等功能</p>
+              </div>
+            </div>
+            <span></span>
+          </div>
+          <div class="interlinkage">
+            <div class="sdk">
+              <div class="item mr-3 active mb-3">
+                Android SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/QNRTC-Android", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/QNRTC-Android/tree/master/QNDroidRTCDemo", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/android会议.png' %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item active mr-3">
-              iOS SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/QNRTC-iOS", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/QNRTC-iOS/tree/master/Example", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/ios会议.png' %>
+              <div class="item active mr-3">
+                iOS SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/QNRTC-iOS", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/QNRTC-iOS/tree/master/Example", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/ios会议.png' %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item active">
-              Web SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/QNRTC-Web", target: "_blank" -%>
-                </p>
-                <p class="border-bottom hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/QNRTC-Web/tree/master/Demo", target: "_blank" -%>
-                </p>
-                <p class="border-bottom hover">
-                  <%= link_to "点击体验", "http://s.qnsdk.com/s/guMCz", target: "_blank" -%>
-                </p>
+              <div class="item active">
+                Web SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/QNRTC-Web", target: "_blank" -%>
+                  </p>
+                  <p class="border-bottom hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/QNRTC-Web/tree/master/Demo", target: "_blank" -%>
+                  </p>
+                  <p class="border-bottom hover">
+                    <%= link_to "点击体验", "http://s.qnsdk.com/s/guMCz", target: "_blank" -%>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="item">
-              Windows SDK
-              <div class="item-content">
-                <p class="border-bottom hover">下载 SDK</p>
-                <p class="hover">查看 DEMO 源码</p>
-                <p>体验 DEMO</p>
-                <div class="imgBox"></div>
+              <div class="item">
+                Windows SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">下载 SDK</p>
+                  <p class="hover">查看 DEMO 源码</p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -191,67 +195,69 @@
 </div>
 
 <div class="features tab-content-function part-shortVideo">
-  <div class="rtn-services">
-    <div class="row">
-      <div class="col-sm-4 main-img">
-        <%= image_tag 'rtn/duanshipin.png' %>
-      </div>
-      <div class="col-sm-8 contentBox">
-        <h4 class="title">短视频</h4>
-        <div class="content">七牛短视频解决方案提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。助力用户轻松优化移动端视频点播、社交、资讯社区、电商产品展示等场景。<%= link_to "相关产品：短视频解决方案", "https://www.qiniu.com/products/plsv", target: "_blank" -%></div>
-        <div class="dec">
-          <div class="flows">
-            <h5>功能描述</h2>
-            <div class="pullDown">
-              <p>1. 专业滤镜：提供专业级实时滤镜特效；接口灵活，可接入第三方效果或定制开发</p>
-              <p>2. 人脸识别：基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果</p>
-              <p>3. 抖音特效：无需复杂开发，即可实现灵魂出窍、幻觉、抖动等魔性抖音效果</p>
-              <p>4. AR 特效：逼真的 3D 物体绘制、背景替换，轻松实现场景虚拟化效果</p>
-              <p>5. 时光轴特效：提供时光倒流、延时拍摄、倍速播放等功能</p>
-              <p>6. 可配合存储、分发加速、播放、内容审核、大数据分析等产品使用</p>
-            </div>
-          </div>
-          <span></span>
+  <div class="container">
+    <div class="rtn-services">
+      <div class="row">
+        <div class="col-sm-4 main-img left-img">
+          <%= image_tag 'rtn/duanshipin.png', width: "100%" %>
         </div>
-        <div class="interlinkage">
-          <div class="client">
-            <div class="title">客户案例</div>
-            <div class="imgBox">
-              <%= image_tag 'rtn/logo-taqu.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-blued.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-chuanyinkonggu.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-zuwome.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-xiaomasahuan.jpg', class:"main-img" %>
-            </div>
-          </div>
-          <div class="sdk">
-            <div class="item mr-3 active">
-              Android SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLDroidShortVideo", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidShortVideo/tree/master/PLDroidShortVideoDemo", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/短视频Android.png' %>
-                </div>
+        <div class="col-sm-8 contentBox">
+          <h4 class="title">短视频</h4>
+          <div class="content">七牛短视频解决方案提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。助力用户轻松优化移动端视频点播、社交、资讯社区、电商产品展示等场景。<%= link_to "相关产品：短视频解决方案", "https://www.qiniu.com/products/plsv", target: "_blank" -%></div>
+          <div class="dec">
+            <div class="flows">
+              <h5>功能描述</h2>
+              <div class="pullDown">
+                <p>1. 专业滤镜：提供专业级实时滤镜特效；接口灵活，可接入第三方效果或定制开发</p>
+                <p>2. 人脸识别：基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果</p>
+                <p>3. 抖音特效：无需复杂开发，即可实现灵魂出窍、幻觉、抖动等魔性抖音效果</p>
+                <p>4. AR 特效：逼真的 3D 物体绘制、背景替换，轻松实现场景虚拟化效果</p>
+                <p>5. 时光轴特效：提供时光倒流、延时拍摄、倍速播放等功能</p>
+                <p>6. 可配合存储、分发加速、播放、内容审核、大数据分析等产品使用</p>
               </div>
             </div>
-            <div class="item active">
-              iOS SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLShortVideoKit", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidShortVideo/tree/master/PLDroidShortVideoDemo", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/短视频iOS.png' %>
+            <span></span>
+          </div>
+          <div class="interlinkage">
+            <div class="client">
+              <div class="title">客户案例</div>
+              <div class="imgBox">
+                <%= image_tag 'rtn/logo-taqu.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-blued.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-chuanyinkonggu.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-zuwome.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-xiaomasahuan.jpg', class:"main-img" %>
+              </div>
+            </div>
+            <div class="sdk">
+              <div class="item mr-3 active">
+                Android SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLDroidShortVideo", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidShortVideo/tree/master/PLDroidShortVideoDemo", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/短视频Android.png' %>
+                  </div>
+                </div>
+              </div>
+              <div class="item active">
+                iOS SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLShortVideoKit", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidShortVideo/tree/master/PLDroidShortVideoDemo", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/短视频iOS.png' %>
+                  </div>
                 </div>
               </div>
             </div>
@@ -263,75 +269,77 @@
 </div>
 
 <div class="features tab-content-function feature-color part-player">
-  <div class="rtn-services">
-    <div class="row">
-      <div class="col-sm-4 main-img">
-        <%= image_tag 'rtn/img-duanshipin.jpg' %>
-      </div>
-      <div class="col-sm-8 contentBox">
-        <h4 class="title">播放器</h4>
-        <div class="content">七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议。<%= link_to "相关产品：播放器解决方案", "https://www.qiniu.com/products/player", target: "_blank" -%></div>
-        <div class="dec">
-          <div class="flows">
-            <h5>功能描述</h2>
-            <div class="pullDown">
-              <p>1. 毫秒级首开：直播、短视频、长视频均可实现毫秒级首开</p>
-              <p>2. 自适应码率切换播放：支持多种清晰度直播画面选择，以满足不同带宽的接入需要</p>
-              <p>3. H.265 播放：支持 H.265 软解，可节省将近 40% 的 CDN 带宽</p>
-              <p>4. 智能动态追帧：无感知动态追帧策略，为用户提供极致播放体验</p>
-              <p>5. SEI 附加增强信息：支持 SEI 数据回调，更多数据交互，支持直播答题场景</p>
-              <p>6. 安全稳定：DRM 版权保护，防止数字媒体的非法复制；支持智能 DNS 管理</p>
-            </div>
-          </div>
-          <span></span>
+  <div class="container">
+    <div class="rtn-services">
+      <div class="row">
+        <div class="col-sm-4 main-img left-img">
+          <%= image_tag 'rtn/img-duanshipin.jpg', width: "100%" %>
         </div>
-        <div class="interlinkage">
-          <div class="client">
-            <div class="title">客户案例</div>
-            <div class="imgBox">
-              <%= image_tag 'rtn/logo-renminribao.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-maimai.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-qichezhijia.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-xiaohongshu.jpg', class:"main-img" %>
-              <%= image_tag 'rtn/logo-vipkid.jpg', class:"main-img" %>
+        <div class="col-sm-8 contentBox">
+          <h4 class="title">播放器</h4>
+          <div class="content">七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持多种视频格式及流媒体协议。<%= link_to "相关产品：播放器解决方案", "https://www.qiniu.com/products/player", target: "_blank" -%></div>
+          <div class="dec">
+            <div class="flows">
+              <h5>功能描述</h2>
+              <div class="pullDown">
+                <p>1. 毫秒级首开：直播、短视频、长视频均可实现毫秒级首开</p>
+                <p>2. 自适应码率切换播放：支持多种清晰度直播画面选择，以满足不同带宽的接入需要</p>
+                <p>3. H.265 播放：支持 H.265 软解，可节省将近 40% 的 CDN 带宽</p>
+                <p>4. 智能动态追帧：无感知动态追帧策略，为用户提供极致播放体验</p>
+                <p>5. SEI 附加增强信息：支持 SEI 数据回调，更多数据交互，支持直播答题场景</p>
+                <p>6. 安全稳定：DRM 版权保护，防止数字媒体的非法复制；支持智能 DNS 管理</p>
+              </div>
             </div>
+            <span></span>
           </div>
-         <div class="sdk">
-            <div class="item mr-3 active">
-              Android SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLDroidPlayer", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidPlayer/tree/master/PLDroidPlayerDemo", target: "_blank" -%>
-                </p>
-                <p>体验 DEMO</p>
-                <div class="imgBox">
-                  <%= image_tag 'rtn/Android播放器.png' %>
+          <div class="interlinkage">
+            <div class="client">
+              <div class="title">客户案例</div>
+              <div class="imgBox">
+                <%= image_tag 'rtn/logo-renminribao.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-maimai.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-qichezhijia.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-xiaohongshu.jpg', class:"main-img" %>
+                <%= image_tag 'rtn/logo-vipkid.jpg', class:"main-img" %>
+              </div>
+            </div>
+          <div class="sdk">
+              <div class="item mr-3 active">
+                Android SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLDroidPlayer", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLDroidPlayer/tree/master/PLDroidPlayerDemo", target: "_blank" -%>
+                  </p>
+                  <p>体验 DEMO</p>
+                  <div class="imgBox">
+                    <%= image_tag 'rtn/Android播放器.png' %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="item active mr-3">
-              iOS SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLPlayerKit", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLPlayerKit/tree/master/Example", target: "_blank" -%>
-                </p>
+              <div class="item active mr-3">
+                iOS SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLPlayerKit", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLPlayerKit/tree/master/Example", target: "_blank" -%>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="item active">
-              Windows SDK
-              <div class="item-content">
-                <p class="border-bottom hover">
-                  <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLWinPlayer", target: "_blank" -%>
-                </p>
-                <p class="hover">
-                  <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLWinPlayer/tree/master/PLWinPlayerDemo", target: "_blank" -%>
-                </p>
+              <div class="item active">
+                Windows SDK
+                <div class="item-content">
+                  <p class="border-bottom hover">
+                    <%= link_to "下载 SDK", "https://github.com/pili-engineering/PLWinPlayer", target: "_blank" -%>
+                  </p>
+                  <p class="hover">
+                    <%= link_to "查看 DEMO 源码", "https://github.com/pili-engineering/PLWinPlayer/tree/master/PLWinPlayerDemo", target: "_blank" -%>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
