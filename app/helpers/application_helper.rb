@@ -57,10 +57,10 @@ module ApplicationHelper
       # 当前时间
       current_time = Time.now
       # 从配置文件中读取的 1024 活动开始时间
-      start_time =  Time.local(date_conf[:start_time][:year], date_conf[:start_time][:month], date_conf[:start_time][:date])
-      # 1024 活动结束时间 2018 年 11 月 10 日 零点（11 月 9 日晚上 12 点）
-      end_time = Time.local(2018, 11, 10)
-      if current_time.to_i >= start_time.to_i && current_time.to_i <= end_time.to_i
+      start_time = Time.local(date_conf[:start_time][:year], date_conf[:start_time][:month], date_conf[:start_time][:date])
+      # 从配置文件中读取的 1024 活动过期时间
+      expired_time = Time.local(date_conf[:expired_time][:year], date_conf[:expired_time][:month], date_conf[:expired_time][:date])
+      if current_time.to_i >= start_time.to_i && current_time.to_i < expired_time.to_i
         is1024EventBegin = true
       end
     end
@@ -88,11 +88,20 @@ module ApplicationHelper
       return res_date_conf
     end
 
+    expired_time = date_conf[:expired_time]
+    if expired_time.nil? || expired_time.blank?
+      return res_date_conf
+    end
+
     if start_time[:year].nil? || start_time[:year].blank? || start_time[:month].nil? || start_time[:month].blank? || start_time[:date].nil? || start_time[:date].blank?
       return res_date_conf
     end
 
     if end_time[:year].nil? || end_time[:year].blank? || end_time[:month].nil? || end_time[:month].blank? || end_time[:date].nil? || end_time[:date].blank?
+      return res_date_conf
+    end
+
+    if expired_time[:year].nil? || expired_time[:year].blank? || expired_time[:month].nil? || expired_time[:month].blank? || expired_time[:date].nil? || expired_time[:date].blank?
       return res_date_conf
     end
 
@@ -106,6 +115,11 @@ module ApplicationHelper
         "year": end_time[:year].to_i,
         "month": end_time[:month].to_i,
         "date": end_time[:date].to_i
+      },
+      "expired_time": {
+        "year": expired_time[:year].to_i,
+        "month": expired_time[:month].to_i,
+        "date": expired_time[:date].to_i
       }
     }
 

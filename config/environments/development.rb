@@ -68,6 +68,11 @@ Rails.application.configure do
       year: 2018,
       month: 10,
       date: 28
+    },
+    expired_time: {
+      year: 2018,
+      month: 11,
+      date: 10
     }
   }
 

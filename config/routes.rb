@@ -84,6 +84,8 @@ Rails.application.routes.draw do
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
     get '/get_invited_info', to: 'events#get_invited_info'
+    # 获取 1024 活动是否过期
+    get '/get_expired', to: 'events#get_expired'
     # 创建 1024 活动抽奖资格
     post '/event1024_create_award', to: 'events#event1024_create_award'
 

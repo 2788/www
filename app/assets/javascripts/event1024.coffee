@@ -2,6 +2,8 @@ $(document).ready ->
   $hero1024Event = $('.hero-event1024')
   # 进度条部分
   $event1024ProgressBar = $('.features-event1024-progress .event1024-progress-bar .progress-bar')
+  # 礼单 tip 部分
+  $event1024HeatTip = $('.features-event1024-progress .heat-tip')
   # 金牛部分
   $gettingStatus = $('.features-event1024-join .col-jinniu .getting-status')
   $signinToGet = $('.features-event1024-join .col-jinniu .signin-to-get')
@@ -17,6 +19,10 @@ $(document).ready ->
   $recommendSignin = $('.features-event1024-recommend .recommend-container .recommend-signin')
   $recommendCopyBtn = $('.features-event1024-recommend .recommend-container .copy-btn')
   $weiboShareIcon = $('.features-event1024-recommend .recommend-container .icon-weibo')
+  # 所有按钮
+  $allBtns = $('.features-event1024 .btn-event1024')
+  # 活动结束提示 modal
+  $eventFinishModal = $('#event-finish-modal')
 
   heatNodeList = [0, 33.33, 66.66, 100]
   weiboShareTitle = encodeURIComponent '七牛云 1024 采购狂欢节进行时，不撸代码，快来撸牛毛，抽万元锦牛豪礼（https://www.qiniu.com/events/1024event）@七牛云'
@@ -29,6 +35,7 @@ $(document).ready ->
   jinniuGetBtnText = '立即领取'
   jinniuGettingText = '领取中...'
   jinniuGetFailText = '领取失败'
+  activityExpiredText = '活动已结束'
 
   uuid = generateUUID()
   timestamp = new Date().getTime()
@@ -53,7 +60,7 @@ $(document).ready ->
     # 加锁
     $canGetBtn.addClass 'disabled'
     $canGetBtn.html jinniuGettingText
-    create_award()
+    createAward()
 
   # 复制链接按钮单击事件
   $recommendCopyBtn.on 'click', () ->
@@ -168,7 +175,7 @@ $(document).ready ->
         $achievementTip.html getInvitedInfoFailText
 
   # 创建抽奖资格
-  create_award = () ->
+  createAward = () ->
     # 获取当前热度
     $.ajax
       method: 'POST',
@@ -192,8 +199,24 @@ $(document).ready ->
         $canGetBtn.html jinniuGetBtnText
         showPopover $canGetBtn, jinniuGetFailText, 'top'
 
-  if $hero1024Event.length != 0
-    # 获取当前热度
+  # 获取 1024 活动是否过期
+  getIsExpired = (callback) ->
+    $.ajax
+      method: 'GET',
+      url: '/get_expired',
+      success: (res) ->
+        if res && res.is_expired
+          # 已过期
+          callback true
+        else
+          # 未过期
+          callback false
+      error: (err) ->
+        # error
+        callback true
+  
+  # 获取 1024 活动热度
+  getHeat = () ->
     $.ajax
       method: 'GET',
       url: '/get_heat',
@@ -202,9 +225,10 @@ $(document).ready ->
           updateProgress res.value
       error: (err) ->
         # error
+        updateProgress 0
   
-  if $hero1024Event.length != 0
-    # 获取用户信息，判断是否登录
+  # 获取用户信息，判断是否登录
+  getUserInfo = () ->
     $.ajax
       method: 'GET',
       url: '/userinfo?u=' + uuid + '&t=' + timestamp,
@@ -238,7 +262,6 @@ $(document).ready ->
           getInvitedInfo()
           # 获取好友分享链接
           getShareURL()
-
       error: (err) ->
         # error
         # 金牛部分
@@ -252,3 +275,31 @@ $(document).ready ->
         $recommendSignin.remove()
         $recommendCopyBtn.remove()
         $weiboShareIcon.remove()
+
+  if $hero1024Event.length != 0
+    # 获取 1024 活动是否过期
+    getIsExpired (expiredRes) ->
+      if !expiredRes
+        # 活动未过期
+        # 获取热度
+        getHeat()
+        # 获取用户信息
+        getUserInfo()
+      else
+        # 活动已过期
+        $event1024HeatTip.html activityExpiredText
+        # 金牛部分
+        $gettingStatus.html activityExpiredText
+        $signinToGet.remove()
+        $canGet.remove()
+        $canNotGet.remove()
+        # 推荐部分
+        $recommendUnSignin.show()
+        $achievementTip.remove()
+        $recommendSignin.remove()
+        $recommendCopyBtn.remove()
+        $weiboShareIcon.remove()
+        $allBtns.html activityExpiredText
+        $allBtns.addClass 'disabled'
+        # 显示活动结束 modal
+        # $eventFinishModal.modal 'show'
