@@ -511,5 +511,19 @@
       </div>
     </div>
 
+    <%# 提示活动结束并跳转至 qvm 活动 %>
+    <div class="modal fade alert-modal-css form-wrapper event1024-modal" id="event-finish-modal" tabindex="-1" role="dialog" aria-labelledby="event-finish-modal-label" data-keyboard="false" data-backdrop="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="event-finish-modal-label">活动已结束</h3>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">活动已结束，更多优惠活动请点击&nbsp;<%= link_to "qvm 活动促销", "", class: "link-item", target: "_blank" -%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
