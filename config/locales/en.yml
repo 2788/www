@@ -3367,10 +3367,10 @@ en:
       title: 广电新媒体解决方案-七牛云
       keywords: 新媒体解决方案，融合媒体解决方案，广电新媒体解决方案，媒体融合服务，媒资管理
       description: 七牛云广电新媒体解决方案提供超越传统IT的定制服务，实现统一的跨终端交互体验，云端数据永不过期、永远在线，大于三级等保的安全防护。
-    welcome_sdk:
-      title: 视频直播SDK_视频SDK_直播SDK-七牛云
-      keywords: 视频直播SDK，视频SDK，直播SDK，音视频SDK，第三方直播SDK，ios直播SDK，android直播SDK，短视频SDK，播放器SDK
-      description: 七牛云音视频SDK 包含直播推流SDK、实时音视频SDK、短视频SDK和播放器SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。
+    products_sdk:
+      title: 视频直播SDK_视频SDK_直播SDK - 七牛云
+      keywords: 视频直播 SDK，视频 SDK，直播 SDK，音视频 SDK，第三方直播 SDK，ios 直播 SDK，android 直播 SDK，短视频 SDK，播放器 SDK
+      description: 七牛云音视频 SDK，包含直播推流 SDK、实时音视频 SDK、短视频 SDK 和播放器 SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。
     products_pandora:
       title: Qiniu Cloud-Smart Big Data Platform（Pandora）
       keywords: Big Data, Big Data Platform, Big Data Service, Data analysis, TSDB, LogDB, Workflow, Pipeline, Spark, HDFS, Dataized Operation, Dataized Maintenance, DEM, Recommendation System, Growth Hacking
