@@ -34,4 +34,7 @@ class ProductsController < ApplicationController
 
   def rtn
   end
+
+  def sdk
+  end
 end
