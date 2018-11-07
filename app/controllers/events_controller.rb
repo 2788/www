@@ -37,6 +37,9 @@ class EventsController < ApplicationController
 
   def event1024
   end
+  
+  def double11
+  end
 
   # 根据时间计算热度
   # 2018 年 1024 活动
