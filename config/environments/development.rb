@@ -76,6 +76,21 @@ Rails.application.configure do
     }
   }
 
+  # 2018 年 qvm 双十一活动时间配置
+  # https://jira.qiniu.io/browse/BO-5517
+  config.double11 = {
+    start_time: {
+      year: 2018,
+      month: 11,
+      date: 10
+    },
+    end_time: {
+      year: 2019,
+      month: 1,
+      date: 1
+    }
+  }
+
   config.img_audit_host = 'https://argus.atlab.ai/v1/image/censor'
   config.video_audit_host = 'https://argus.atlab.ai/v1/video/'
 end

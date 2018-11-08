@@ -106,6 +106,9 @@ $(document).ready ->
             href += '&entry=kodo'
           if $(e.target).hasClass 'event1024-plsv-link'
             href += '&entry=plsv'
+        # qvm 双十一活动页立即购买跳转链接
+        else if $(e.target).hasClass 'btn-double11'
+          href += '/events/double11'
         $(this).prop('href', href)
 
   $('[data-toggle="tooltip"]').tooltip()
