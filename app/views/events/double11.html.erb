@@ -1,1 +1,330 @@
-<div>qvm 双十一活动</div>
+<%# qvm 双十一活动页 %>
+<%# 产品线最终修改的页面设计，如果觉得页面丑，详见 issue 设计附件 %>
+<%# https://jira.qiniu.io/browse/BO-5508 %>
+
+<%# banner 部分 %>
+<div class="jumbotron hero hero-double11"></div>
+
+<%# 主体部分 %>
+<div class="gradual-bg-double11">
+  <%# 新用户专享部分 %>
+  <div class="features features-double11 features-double11-new">
+    <div class="container double11-decorate-bg top-right">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "double11/icon-decorate-left.png", class: "icon-decorate left", width: 120 -%>
+          新用户专享
+          <%= image_tag "double11/icon-decorate-right.png", class: "icon-decorate right", width: 120 -%>
+        </h2>
+        <p class="desc">新人福利，限领一次</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-new-rumen.png", alt: "新用户专享-入门型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 个月", "#double11-tab-new-1-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+              <li><%= link_to "3 个月", "#double11-tab-new-1-2", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-new-1-1">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-discount-new-2.png", alt: "新用户专享入门型 2 折", class: "icon-tag-left", width: 60 -%>
+                  <span class="price-span">9.9 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+              <section class="tab-pane fade in" id="double11-tab-new-1-2">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-discount-new-3.png", alt: "新用户专享入门型 3 折", class: "icon-tag-left", width: 60 -%>
+                  <span class="price-span">49.9 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-new-jinjie.png", alt: "新用户专享-进阶型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 个月", "#double11-tab-new-2-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+              <li><%= link_to "3 个月", "#double11-tab-new-2-2", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-new-2-1">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-discount-new-3-5.png", alt: "新用户专享进阶型 3.5 折", class: "icon-tag-left", width: 60 -%>
+                  <span class="price-span">19.9 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+              <section class="tab-pane fade in" id="double11-tab-new-2-2">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-discount-new-4.png", alt: "新用户专享入门型 4 折", class: "icon-tag-left", width: 60 -%>
+                  <span class="price-span">69.9 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 热销主机部分 %>
+  <div class="features features-double11 features-double11-hot">
+    <div class="container double11-decorate-bg top-left">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "double11/icon-decorate-left.png", class: "icon-decorate left", width: 120 -%>
+          热销主机专区
+          <%= image_tag "double11/icon-decorate-right.png", class: "icon-decorate right", width: 120 -%>
+        </h2>
+        <p class="desc">爆款机型，先来先得</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12 col-double11">
+          <%= image_tag "double11/image-hot-tongyong.png", alt: "热销主机专区-通用型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 年", "#double11-tab-hot-1-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+              <li><%= link_to "3 年", "#double11-tab-hot-1-2", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-hot-1-1">
+                <p class="double11-tabs-p">
+                  <span class="price-span">668 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+              <section class="tab-pane fade in" id="double11-tab-hot-1-2">
+                <p class="double11-tabs-p">
+                  <span class="price-span">1557 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12 col-double11">
+          <%= image_tag "double11/image-hot-jinjie.png", alt: "热销主机专区-进阶型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 年", "#double11-tab-hot-2-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+              <li><%= link_to "3 年", "#double11-tab-hot-2-2", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-hot-2-1">
+                <p class="double11-tabs-p">
+                  <span class="price-span">999 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+              <section class="tab-pane fade in" id="double11-tab-hot-2-2">
+                <p class="double11-tabs-p">
+                  <span class="price-span">3549 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-12 col-double11">
+          <%= image_tag "double11/image-hot-jinjie.png", alt: "热销主机专区-计算型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 年", "#double11-tab-hot-3-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+              <li><%= link_to "3 年", "#double11-tab-hot-3-2", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-hot-3-1">
+                <p class="double11-tabs-p">
+                  <span class="price-span">3305 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+              <section class="tab-pane fade in" id="double11-tab-hot-3-2">
+                <p class="double11-tabs-p">
+                  <span class="price-span">6999 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 云数据库部分 %>
+  <div class="features features-double11 features-double11-db">
+    <div class="container double11-decorate-bg top-right">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "double11/icon-decorate-left.png", class: "icon-decorate left", width: 120 -%>
+          云数据库专区
+          <%= image_tag "double11/icon-decorate-right.png", class: "icon-decorate right", width: 120 -%>
+        </h2>
+        <p class="desc">高性价比，灵活扩展</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-db-rumen.png", alt: "云数据库专区-入门型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "3 个月", "#double11-tab-db-1-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-db-1-1">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-save-db-93.png", alt: "云数据库专区入门型节省 93 元", class: "icon-tag-left", width: 80 -%>
+                  <span class="price-span">699 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-db-jinjie.png", alt: "云数据库专区-进阶型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "3 个月", "#double11-tab-db-2-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-db-2-1">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-save-db-165.png", alt: "云数据库专区进阶型节省 165 元", class: "icon-tag-left", width: 80 -%>
+                  <span class="price-span">1347 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 套餐专区部分 %>
+  <div class="features features-double11 features-double11-combo">
+    <div class="container double11-decorate-bg top-left">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "double11/icon-decorate-left.png", class: "icon-decorate left", width: 120 -%>
+          套餐专区
+          <%= image_tag "double11/icon-decorate-right.png", class: "icon-decorate right", width: 120 -%>
+        </h2>
+        <p class="desc">主机+数据库+公网带宽 一套配齐，云上应用一套拉起</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-combo-1.png", alt: "套餐专区-组合套餐一", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <p class="double11-tabs-p">
+              <span class="content-span">套餐总价</span>
+              <span class="price-span">289 元<%= image_tag "double11/icon-save-combo-183.png", alt: "组合套餐一节省 183 元", class: "icon-tag-top", width: 80 -%></span>
+              <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-combo-2.png", alt: "套餐专区-组合套餐二", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <p class="double11-tabs-p">
+              <span class="content-span">套餐总价</span>
+              <span class="price-span">4722 元<%= image_tag "double11/icon-save-combo-702.png", alt: "组合套餐二节省 702 元", class: "icon-tag-top", width: 80 -%></span>
+              <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 补给专区部分 %>
+  <div class="features features-double11 features-double11-supply">
+    <div class="container double11-decorate-bg top-right">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "double11/icon-decorate-left.png", class: "icon-decorate left", width: 120 -%>
+          补给专区
+          <%= image_tag "double11/icon-decorate-right.png", class: "icon-decorate right", width: 120 -%>
+        </h2>
+        <p class="desc">专业补给，今晚「吃机」</p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-supply-jiaqiang.png", alt: "补给专区-GPU 加强型", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 年", "#double11-tab-supply-1-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-supply-1-1">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-save-supply-3344.png", alt: "补给专区 GPU 加强型节省 3344 元", class: "icon-tag-left", width: 80 -%>
+                  <span class="price-span">20562 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-double11">
+          <%= image_tag "double11/image-supply-daikuan.png", alt: "补给专区-5M 带宽", width: "100%" -%>
+          <div class="tabs double11-tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short nav-double11" role="tablist">
+              <li class="active"><%= link_to "1 年", "#double11-tab-supply-2-1", class: "btn btn-hollow btn-double11-tab", data:{ toggle: "tab" } -%></li>
+            </ul>
+            <div class="tab-content">
+              <section class="tab-pane fade in active" id="double11-tab-supply-2-1">
+                <p class="double11-tabs-p">
+                  <%= image_tag "double11/icon-save-supply-216.png", alt: "补给专区 5M 带宽节省 216 元", class: "icon-tag-left", width: 80 -%>
+                  <span class="price-span">999 元</span>
+                  <%= link_to "立即购买", "", class: "btn btn-lg btn-double11", target: "_blank" -%>
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 活动规则部分 %>
+  <div class="features features-double11 features-double11-rules">
+    <div class="container double11-decorate-bg top-left">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "double11/icon-decorate-left.png", class: "icon-decorate left", width: 120 -%>
+          活动规则
+          <%= image_tag "double11/icon-decorate-right.png", class: "icon-decorate right", width: 120 -%>
+        </h2>
+      </div>
+
+      <div class="row double11-decorate-bg bottom-right">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-rules">
+          <p>1. 活动时间：2018 年 11 月 10 日 - 2018 年 12 月 31 日</p>
+          <p>2. 本活动面向七牛云主机官网已注册且完成实名认证的云主机用户</p>
+          <p>3. 新用户指新注册七牛云的用户、以及注册但未产生七牛云主机消费记录的用户</p>
+          <p>4. 新用户专享产品仅针对满足活动规则 3 定义的新客户开放</p>
+          <p>5. 除新用户专享产品外，其余产品购买数量、种类不受限制</p>
+          <p>6. 本次活动区域限制在中国大陆地区</p>
+          <p>7. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+          <p>8. 所有参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "https://www.qiniu.com/user-agreement", target: "_blank" -%></p>
+          <p>9. 活动最终解释权在法律允许范围内归七牛云所有</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
