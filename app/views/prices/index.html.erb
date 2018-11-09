@@ -25,8 +25,10 @@
 <div class="feature-price">
   <div class="features light-bkcolor">
     <div class="container">
+      <% if is_1024event_on() -%>
       <%= image_tag "hot.png", alt: "云采购狂欢", width: 30, class: "icon-hot" -%>
       <p class="tip-text">云采购狂欢进行中，云主机、云存储、直播云等产品低至 0.1 元，下单更有机会抽取 iPhoneXS 等好礼，<%= link_to "立即抢购", "https://www.qiniu.com/events/1024event?entry=price", target: "_blank" -%></p>
+      <% end -%>
       <div class="tabs" id="nav-product">
         <ul class="nav nav-tabs nav-justified nav-prices-tabs" role="tablist">
           <li class="tab-prices-kodo"><a href="#tab-prices-kodo" data-toggle="tab" key="kodo">对象存储</a></li>

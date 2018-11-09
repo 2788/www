@@ -302,4 +302,4 @@ $(document).ready ->
         $allBtns.html activityExpiredText
         $allBtns.addClass 'disabled'
         # 显示活动结束 modal
-        # $eventFinishModal.modal 'show'
+        $eventFinishModal.modal 'show'
