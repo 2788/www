@@ -126,6 +126,19 @@
   }
 }
 
+.features-double11-hot {
+  .col-double11 {
+    .double11-tabs-p {
+      .price-span {
+        font-size: 0.24rem !important;
+      }
+      .btn-double11 {
+        padding: 0.10rem 0.20rem !important;
+      }
+    }
+  }
+}
+
 .features-double11-db {
   .col-double11 {
     .nav-double11 {
@@ -180,6 +193,24 @@
       }
     }
   }
+  .features-double11-hot {
+    .col-double11 {
+      .double11-tabs-p {
+        .icon-tag-left {
+          width: 70px !important;
+          margin-bottom: 0.08rem !important;
+        }
+        .price-span {
+          margin: 0 0.05rem !important;
+          font-size: 0.20rem !important;
+        }
+        .btn-double11 {
+          padding: 0.10rem 0.15rem !important;
+          margin-bottom: 0.08rem !important;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -208,6 +239,25 @@
           margin-bottom: 0.08rem !important;
           padding: 0.05rem;
           font-size: 0.14rem;
+        }
+      }
+    }
+  }
+
+  .features-double11-hot {
+    .col-double11 {
+      .double11-tabs-p {
+        .icon-tag-left {
+          width: 60px !important;
+          margin-bottom: 0.08rem !important;
+        }
+        .price-span {
+          margin: 0 !important;
+          font-size: 0.18rem !important;
+        }
+        .btn-double11 {
+          padding: 0.05rem !important;
+          margin-bottom: 0.08rem !important;
         }
       }
     }
@@ -255,6 +305,20 @@
   .features-double11 {
     .double11-tabs {
       bottom: 0.30rem !important;
+    }
+  }
+  .features-double11-db {
+    .col-double11 {
+      .tab-content {
+        margin-top: 0.10rem !important;
+      }
+    }
+  }
+  .features-double11-supply {
+    .col-double11 {
+      .tab-content {
+        margin-top: 0.10rem !important;
+      }
     }
   }
 }
