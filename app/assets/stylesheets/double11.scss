@@ -73,6 +73,9 @@
             color: #FFD100 !important;
             border-color: #FFD100 !important;
           }
+          &.disabled {
+            opacity: 1 !important;
+          }
         }
         .active {
           .btn-double11-tab {
@@ -109,10 +112,8 @@
     p {
       color: #FFF;
       a {
-        color: #FFD100;
-        &:hover {
-          text-decoration: underline;
-        }
+        color: #FFF;
+        text-decoration: underline;
       }
     }
   }

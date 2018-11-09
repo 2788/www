@@ -15,6 +15,20 @@
   </div>
   <% end -%>
 
+  <% if is_double11_on() -%>
+  <div class="jumbotron hero hero-double11-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= link_to "即刻参与", "/events/double11?entry=index-banner", target: "_blank", id: "banner-double11-btn", class:"btn btn-lg btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <div class="jumbotron hero hero-qvm1rmb-index">
     <div class="container">
       <div class="middle-container">
