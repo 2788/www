@@ -43,6 +43,10 @@ Rails.application.routes.draw do
     get '/products/ess',            to: 'welcome#ess'
     get '/products/snow',           to: 'products#snow'
     get '/products/ecs',            to: 'welcome#ecs'
+    # qvm 推广广告位链接暂时定位到 qvm0rmb 活动页 events#qvm0rmb
+    get '/products/qvmfeeds',       to: 'events#qvm0rmb'
+    # censor 推广广告位链接暂时定位到明瞳产品页 welcome#censor
+    get '/products/censorfeeds',    to: 'welcome#censor'
 
     get '/contact',        to: 'welcome#contact'
     get '/solutions',      to: 'welcome#solution'
