@@ -40,4 +40,7 @@ class ProductsController < ApplicationController
 
   def vance
   end
+
+  def plsv
+  end
 end
