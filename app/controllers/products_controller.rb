@@ -37,4 +37,7 @@ class ProductsController < ApplicationController
 
   def sdk
   end
+
+  def vance
+  end
 end
