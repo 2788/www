@@ -3413,10 +3413,10 @@ en:
       title: 点播云_点播云服务 - 七牛云
       keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
       description: 七牛点播云汇聚七牛云存储、音视频转码和融合 CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播 PaaS 平台。
-    welcome_plsv:
-      title: 短视频SDK_短视频解决方案_短视频服务-七牛云
-      keywords: 短视频SDK，七牛短视频，短视频服务，短视频解决方案，ios短视频sdk，android短视频sdk
-      description: 七牛短视频服务(plsv)是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
+    products_plsv:
+      title: 短视频SDK_短视频解决方案_短视频服务 - 七牛云
+      keywords: 短视频 SDK，七牛短视频，短视频服务，短视频解决方案，ios 短视频 sdk，android 短视频 sdk
+      description: 七牛短视频服务（plsv）是为企业用户提供极速稳定的视频上传、存储、转码、播放和下载等功能的一站式短视频解决方案。
     products_rtn:
       title: Qiniu Cloud-Real-time Video Communication Service
       keywords: WebRTC, RTC, real-time communication, WebRTC Platform, WebRTC API, WebRTC Mobile, WebRTC iOS, WebRTC Android, video communications, video
@@ -3719,7 +3719,7 @@ en:
         - imgpath: plsv/icon-bofanghuancun.png
           desc: 播放缓存
         - imgpath: plsv/icon-drmshuzibaohu.png
-          desc: DRM数字保护
+          desc: DRM 数字保护
         - imgpath: plsv/icon-H265.png
           desc: H.265
         - imgpath: plsv/icon-jianhuangjiankong.png

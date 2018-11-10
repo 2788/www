@@ -47,9 +47,6 @@ class WelcomeController < ApplicationController
   def case
   end
 
-  def plsv
-  end
-
   def newmedia
   end
 
