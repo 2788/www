@@ -4,8 +4,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-8 left-mask-vcs">
-          <h2><%= I18n.t("views.welcome.vcs.banner.title") -%></h2>
-          <p><%= I18n.t("views.welcome.vcs.banner.desc") -%></p>
+          <h2><%= I18n.t("views.products.vcs.banner.title") -%></h2>
+          <p><%= I18n.t("views.products.vcs.banner.desc") -%></p>
           <div class="actions">
             <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
             <%= link_to "了解更多", "/products/kodo", target: "_self", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
@@ -13,7 +13,7 @@
         </div>
         <div class="col-xs-12 hidden-xs right-mask-vcs">
           <div class="right-mask-banner">
-            <%= image_tag I18n.t("views.welcome.vcs.banner.icon"), alt: "vcs" -%>
+            <%= image_tag I18n.t("views.products.vcs.banner.icon"), alt: "vcs" -%>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
   <div class="container">
     <div class="suspension">
       <div class="row row-vcs">
-        <% I18n.t("views.welcome.vcs.specialty").each do |event| -%>
+        <% I18n.t("views.products.vcs.specialty").each do |event| -%>
           <div class="col-sm-3 col-xs-6 col-clear">
             <a href="javascript:;" class="suspension-item item-vcs <%= event[:class] -%>">
               <%= image_tag event[:img] -%>
@@ -59,10 +59,10 @@
 <div class="features pain-point-vcs tab-content-painpoint">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.vcs.painpoint.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.vcs.painpoint.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.vcs.painpoint.content").each do |event| -%>
+      <% I18n.t("views.products.vcs.painpoint.content").each do |event| -%>
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="thumbnail">
             <%= image_tag event[:icon], alt: event[:title], width: 150 -%>
@@ -80,10 +80,10 @@
 <div class="features features-superiority features-less features-cases advantages-vcs tab-content-advantages">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.vcs.advantage.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.vcs.advantage.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.vcs.advantage.content").each do |event| -%>
+      <% I18n.t("views.products.vcs.advantage.content").each do |event| -%>
         <div class="col-sm-6 col-xs-6">
             <div class="media">
             <div class="media-left">
@@ -104,10 +104,10 @@
 <div class="features scenarios-vcs tab-content-scenarios">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.vcs.scenario.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.vcs.scenario.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.vcs.scenario.content").each do |event| -%>
+      <% I18n.t("views.products.vcs.scenario.content").each do |event| -%>
         <div class="col-md-4 col-sm-6 col-xs-6">
           <div class="thumbnail">
             <%= image_tag event[:icon], alt: event[:title], width: 150 -%>
@@ -125,11 +125,11 @@
 <div class="features cases-vcs tab-content-cases">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.vcs.case.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.vcs.case.title") -%></h2>
     </div>
     <div class="row">
     <%# 成功案例 %>
-      <% I18n.t("views.welcome.vcs.case.content").each do |event| -%>
+      <% I18n.t("views.products.vcs.case.content").each do |event| -%>
         <div class="col-sm-12 col-md-12 col-xs-12">
           <div class="thumbnail thumbnail-vcs">
             <div class="case-logo">
@@ -146,7 +146,7 @@
       <%# 更多 %>
       <div class="col-sm-12 col-md-12 col-xs-12">
         <div class="more-vcs">
-          <% I18n.t("views.welcome.vcs.more").each do |event| -%>
+          <% I18n.t("views.products.vcs.more").each do |event| -%>
             <p><%= event -%></p>
           <% end %>
         </div>

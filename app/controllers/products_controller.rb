@@ -43,4 +43,7 @@ class ProductsController < ApplicationController
 
   def plsv
   end
+
+  def vcs
+  end
 end
