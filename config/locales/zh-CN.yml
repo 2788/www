@@ -3233,6 +3233,97 @@ zh-CN:
           btns:
             - name: Web 端在线体验
               link: http://s.qnsdk.com/s/guMCz
+      plsv:
+        plsvs_one:
+          - groupid: collections
+            group:
+              - imgpath: plsv/icon-dayanshoulian.png
+                desc: 大眼瘦脸
+              - imgpath: plsv/icon-dongtaitiezhi.png
+                desc: 动态贴纸
+              - imgpath: plsv/icon-artexiao.png
+                desc: AR 特效
+              - imgpath: plsv/icon-beishupaishe.png
+                desc: 倍数拍摄
+              - imgpath: plsv/icon-huishangongneng.png
+                desc: 分段回删
+              - imgpath: plsv/icon-meiyanlvjing.png
+                desc: 美颜滤镜
+              - imgpath: plsv/icon-mianbushibie.png
+                desc: 面部识别
+              - imgpath: plsv/icon-piantoupianwei.png
+                desc: 片头片尾
+              - imgpath: plsv/icon-shuiyingongneng.png
+                desc: 水印功能
+              - imgpath: plsv/icon-texiaozimu.png
+                desc: 特效字幕
+        plsvs_two:
+          - groupid: editions
+            group:
+              - imgpath: plsv/icon-douyintexiao.png
+                desc: 抖音特效
+              - imgpath: plsv/icon-beijingyinyue.png
+                desc: 背景音乐
+              - imgpath: plsv/icon-peiyinluzhi.png
+                desc: 配音录制
+              - imgpath: plsv/icon-shiguangzhoutexiao.png
+                desc: 时光特效
+              - imgpath: plsv/icon-bendizhuanma.png
+                desc: 本地转码
+              - imgpath: plsv/icon-duandianxuchuan.png
+                desc: 断点续传
+              - imgpath: plsv/icon-shipincaijian.png
+                desc: 视频剪裁
+              - imgpath: plsv/icon-shipinpinjie.png
+                desc: 视频拼接
+              - imgpath: plsv/icon-yinpincaijian.png
+                desc: 音频裁剪
+              - imgpath: plsv/icon-zhuanchangdonghua.png
+                desc: 转场动画
+          - groupid: services
+            group:
+              - imgpath: plsv/icon-bofangjianquan.png
+                desc: 播放鉴权
+              - imgpath: plsv/icon-cdnjiasu.png
+                desc: CDN 加速
+              - imgpath: plsv/icon-drmshuzibaohu.png
+                desc: DRM 数字版权保护
+              - imgpath: plsv/icon-fuwuduanzhuanma.png
+                desc: 服务端转码
+              - imgpath: plsv/icon-huiyuanjianquan.png
+                desc: 回源鉴权
+              - imgpath: plsv/icon-jianhuangjiankong.png
+                desc: 鉴黄监控
+              - imgpath: plsv/icon-meitiguanli.png
+                desc: 媒体管理
+              - imgpath: plsv/icon-miaokaizhichi.png
+                desc: 秒开支持
+              - imgpath: plsv/icon-shipincunchu.png
+                desc: 视频存储
+              - imgpath: plsv/icon-shuiyingongneng.png
+                desc: 水印功能
+          - groupid: player
+            group:
+              - imgpath: plsv/icon-beishubofan.png
+                desc: 倍数播放
+              - imgpath: plsv/icon-biansububiandiao.png
+                desc: 变速不变调
+              - imgpath: plsv/icon-bianxiabianbo.png
+                desc: 边下边播
+              - imgpath: plsv/icon-bofanghuancun.png
+                desc: 播放缓存
+              - imgpath: plsv/icon-drmshuzibaohu.png
+                desc: DRM 数字保护
+              - imgpath: plsv/icon-H265.png
+                desc: H.265
+              - imgpath: plsv/icon-jianhuangjiankong.png
+                desc: 鉴黄监控
+              - imgpath: plsv/icon-jiequfengmian.png
+                desc: 截取封面
+              - imgpath: plsv/icon-miaokaizhichi.png
+                desc: 秒开支持
+              - imgpath: plsv/icon-ruanyingjiezidong.png
+                desc: 软硬解自动
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -3750,96 +3841,6 @@ zh-CN:
         - imgpath: case/hardware/haikangyingshi.png
         - imgpath: case/hardware/oppo.png
         - imgpath: case/hardware/shenzhouying.png
-  plsvs1:
-    - groupid: collections
-      group:
-        - imgpath: plsv/icon-dayanshoulian.png
-          desc: 大眼瘦脸
-        - imgpath: plsv/icon-dongtaitiezhi.png
-          desc: 动态贴纸
-        - imgpath: plsv/icon-artexiao.png
-          desc: AR 特效
-        - imgpath: plsv/icon-beishupaishe.png
-          desc: 倍数拍摄
-        - imgpath: plsv/icon-huishangongneng.png
-          desc: 分段回删
-        - imgpath: plsv/icon-meiyanlvjing.png
-          desc: 美颜滤镜
-        - imgpath: plsv/icon-mianbushibie.png
-          desc: 面部识别
-        - imgpath: plsv/icon-piantoupianwei.png
-          desc: 片头片尾
-        - imgpath: plsv/icon-shuiyingongneng.png
-          desc: 水印功能
-        - imgpath: plsv/icon-texiaozimu.png
-          desc: 特效字幕
-  plsvs:
-    - groupid: editions
-      group:
-        - imgpath: plsv/icon-douyintexiao.png
-          desc: 抖音特效
-        - imgpath: plsv/icon-beijingyinyue.png
-          desc: 背景音乐
-        - imgpath: plsv/icon-peiyinluzhi.png
-          desc: 配音录制
-        - imgpath: plsv/icon-shiguangzhoutexiao.png
-          desc: 时光特效
-        - imgpath: plsv/icon-bendizhuanma.png
-          desc: 本地转码
-        - imgpath: plsv/icon-duandianxuchuan.png
-          desc: 断点续传
-        - imgpath: plsv/icon-shipincaijian.png
-          desc: 视频剪裁
-        - imgpath: plsv/icon-shipinpinjie.png
-          desc: 视频拼接
-        - imgpath: plsv/icon-yinpincaijian.png
-          desc: 音频裁剪
-        - imgpath: plsv/icon-zhuanchangdonghua.png
-          desc: 转场动画
-    - groupid: services
-      group:
-        - imgpath: plsv/icon-bofangjianquan.png
-          desc: 播放鉴权
-        - imgpath: plsv/icon-cdnjiasu.png
-          desc: CDN 加速
-        - imgpath: plsv/icon-drmshuzibaohu.png
-          desc: DRM 数字版权保护
-        - imgpath: plsv/icon-fuwuduanzhuanma.png
-          desc: 服务端转码
-        - imgpath: plsv/icon-huiyuanjianquan.png
-          desc: 回源鉴权
-        - imgpath: plsv/icon-jianhuangjiankong.png
-          desc: 鉴黄监控
-        - imgpath: plsv/icon-meitiguanli.png
-          desc: 媒体管理
-        - imgpath: plsv/icon-miaokaizhichi.png
-          desc: 秒开支持
-        - imgpath: plsv/icon-shipincunchu.png
-          desc: 视频存储
-        - imgpath: plsv/icon-shuiyingongneng.png
-          desc: 水印功能
-    - groupid: player
-      group:
-        - imgpath: plsv/icon-beishubofan.png
-          desc: 倍数播放
-        - imgpath: plsv/icon-biansububiandiao.png
-          desc: 变速不变调
-        - imgpath: plsv/icon-bianxiabianbo.png
-          desc: 边下边播
-        - imgpath: plsv/icon-bofanghuancun.png
-          desc: 播放缓存
-        - imgpath: plsv/icon-drmshuzibaohu.png
-          desc: DRM 数字保护
-        - imgpath: plsv/icon-H265.png
-          desc: H.265
-        - imgpath: plsv/icon-jianhuangjiankong.png
-          desc: 鉴黄监控
-        - imgpath: plsv/icon-jiequfengmian.png
-          desc: 截取封面
-        - imgpath: plsv/icon-miaokaizhichi.png
-          desc: 秒开支持
-        - imgpath: plsv/icon-ruanyingjiezidong.png
-          desc: 软硬解自动
   icps:
     qbox.net:             [沪 ICP 备 11037377 号-1,  沪公网安备 31011502006015 号]
     qbox.me:              [沪 ICP 备 11037377 号-1,  沪公网安备 31011502000961 号]
