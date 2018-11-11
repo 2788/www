@@ -239,7 +239,7 @@
           <li><a href="#player" data-toggle="tab">播放器功能</a></li>
         </ul>
         <div class="tab-content">
-          <% I18n.t("plsvs1").each do |units| -%>
+          <% I18n.t("views.products.plsv.plsvs_one").each do |units| -%>
             <div class="tab-pane in active" id="<%= units[:groupid] -%>">
               <div class="row">
                 <% units[:group].each do |unit| -%>
@@ -255,7 +255,7 @@
               </div>
             </div>
           <% end -%>
-          <% I18n.t("plsvs").each do |units| -%>
+          <% I18n.t("views.products.plsv.plsvs_two").each do |units| -%>
             <div class="tab-pane" id="<%= units[:groupid] -%>">
               <div class="row">
                 <% units[:group].each do |unit| -%>
