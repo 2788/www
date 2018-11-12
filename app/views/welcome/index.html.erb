@@ -146,6 +146,30 @@
   <!-- /.modal -->
 </div>
 
+<%# 官网首页广告位（中文页面显示） %>
+<%# https://jira.qiniu.io/browse/BO-5547 %>
+<% if I18n.t("views.language") == "zh" -%>
+<div class="features features-advert-index">
+  <div class="row">
+    <% I18n.t("views.welcome.index.adverts").each do |advert| -%>
+      <a href="<%= advert[:link] -%>" target="_blank">
+        <div class="col-xs-4 col-advert <%= advert[:col_class] -%>">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag advert[:icon], class: "media-object", alt: advert[:title], width: 100 -%>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><%= advert[:title] -%></h4>
+              <p><%= advert[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end -%>
+  </div>
+</div>
+<% end -%>
+
 <div class="features features-value">
   <div class="container">
     <div class="intro">
