@@ -373,6 +373,7 @@
 }
 
 .features-advert-index {
+  margin-top: -30px;
   padding-top: 0 !important;
   .media {
     width: 100%;
@@ -405,6 +406,7 @@
 }
 
 .features-value {
+  padding: 0.38rem 0 0.50rem 0 !important;
   .media-body {
     overflow: visible;
   }
@@ -829,5 +831,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 425px) {
+  .features-advert-index {
+    margin-top: 0 !important;
   }
 }
