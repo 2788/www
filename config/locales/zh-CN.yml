@@ -784,7 +784,7 @@ zh-CN:
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://portal.qiniu.com/qvm/vm/image"
             - title: "内容安全"
-              desc: "双重审核 运营无忧"
+              desc: "精准识别色情、暴恐、敏感人物等内容"
               class: "background-censor"
               id: "free-events-censor"
               morelink: "https://www.qiniu.com/products/censor"
