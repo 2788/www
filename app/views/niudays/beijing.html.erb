@@ -1,0 +1,185 @@
+<div class="jumbotron hero hero-niuday niuday-beijing">
+  <div class="container">
+    <div class="img-wrapper">
+      <h4 class="text-center p-sm">2018 年 11 月 23 日 · 北京市 北京悠唐皇冠假日酒店</h4>
+      <%= link_to "立即报名", "http://www.huodongxing.com/event/2464773427600", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <p class="text">随着人工智能在我国移动互联网、智能家居、智能安防、智慧教育等等领域的发展，我国人工智能产业持续高速成长。从 2014 年起，中国人工智能产业的创业潮就开始兴起，直至 2018 年，机器学习、深度学习等算法能力的增强将促进计算机视觉等技术不断突破。人工智能在 2018 年将面临爆发式的商业化、行业化着陆，广电新媒体、教育、安防、互联网、O2O、电商、视频、汽车等各个行业都在深入研发应用 AI 相关技术。七牛云 NIUDAY 小牛汇共享日活动围绕自身产品重点产品线将在全国 10 多个城市围绕行业、技术和创新展开全方位的探讨和分享，一起用 AI 技术赋能未来，“智”造梦想。</p>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">大会嘉宾</h2>
+      <p class="time">以下排名不分先后</p>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.beijing.guest").each do |unit| %>
+        <div class="three-sm-1 col-xs-6">
+          <div class="guest">
+            <%= image_tag unit[:img], title: unit[:name], alt: unit[:name], width: '100' %>
+            <h5><%= unit[:name] %></h5>
+            <h5><%= unit[:title] %></h5>
+            <h5><%= unit[:subtitle] %></h5>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">大会议程</h2>
+      <p class="time">13:00 – 17:30</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-niuday-meeting">
+        <thead>
+          <tr>
+            <th colspan="2">议题</th>
+            <th>演讲人</th>
+            <th>时长</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td colspan="4">嘉宾签到 30min</td>
+          </tr>
+
+          <tr>
+            <td colspan="4">主持人开场 10min</td>
+          </tr>
+
+          <tr>
+            <td>议题一</td>
+            <td>人工智能产业发展水平分析</td>
+            <td>孙明俊 - 中国信息通信研究院人工智能部副主任<br/>中国人工智能产业发展联盟总体组组长</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题二</td>
+            <td>数据智能时代的智慧工厂实践</td>
+            <td>陈超 - 七牛云技术总监</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题三</td>
+            <td>AI 在 Blued 上的应用</td>
+            <td>佘超杰 - Blued 技术专家</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td colspan="4">茶歇 20min</td>
+          </tr>
+
+          <tr>
+            <td>议题四</td>
+            <td>七牛云 & 中国网战略合作签约仪式</td>
+            <td>杜江华 & 杨新华 - 七牛云执行副总裁 & 中国互联网新闻中心 · 中国网副总编辑</td>
+            <td>10 min</td>
+          </tr>
+
+          <tr>
+            <td>议题五</td>
+            <td>AI 如何讲好中国故事</td>
+            <td>杨新华 - 中国互联网新闻中心 · 中国网 副总编辑</td>
+            <td>20 min</td>
+          </tr>
+
+          <tr>
+            <td>议题六</td>
+            <td>一站式审核助力无忧运营</td>
+            <td>杨叶青 - 七牛云人工智能实验室资深产品经理</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题七</td>
+            <td>AI 在教育行业中的应用</td>
+            <td>谢华亮 - 好未来 SEG 智慧教育事业部技术总监</td>
+            <td>30 min</td>
+          </tr>
+
+          <tr>
+            <td>议题八</td>
+            <td>人工智能赋能客户互动之现状与未来</td>
+            <td>刘俊彦 - 环信 CEO</td>
+            <td>30 min</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">合作媒体</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.beijing.medias").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">合作伙伴</h2>
+    </div>
+
+    <div class="row">
+
+      <% I18n.t("niudays.beijing.partners").each do |unit| %>
+        <div class="seven-sm-1 col-xs-6">
+          <div class="img-wrapper blue-shadow">
+            <%= image_tag unit[:img] %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="features features-niuday">
+  <div class="intro">
+    <h2 class="title border-y">参会指南</h2>
+  </div>
+
+  <div class="desc-wrapper">
+    <div class="content">
+      <p class="desc text-left">1. 报名审核成功后，主办方会统一短信通知会议地址及详情。</p>
+      <p class="desc text-left">2. 会议签到凭证为成功报名后收到的二维码，一人一票。</p>
+      <p class="desc text-left">3. 线上报名截止日为 11 月 23 日 0 时，不接受现场报名。</p>
+    </div>
+  </div>
+</div> 

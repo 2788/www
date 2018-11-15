@@ -94,6 +94,20 @@
     }
   }
 
+  &.hero-niuday.niuday-beijing {
+    background-image: image-url('niuday/banner-bg-beijing.jpg') !important;
+
+    .img-wrapper {
+      top: 3.20rem;
+
+      h4 {
+        padding-right: 0;
+        padding-left: 0;
+        font-size: 20px;
+      }
+    }
+  }
+
   .banner-desc-right {
     width: 100%;
     left: 60%;
@@ -954,7 +968,8 @@
     }
 
     &.niuday-meitu,
-    &.niuday-aicloud {
+    &.niuday-aicloud,
+    &.niuday-beijing {
       .img-wrapper {
         top: 3.00rem !important;
 
