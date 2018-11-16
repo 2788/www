@@ -252,6 +252,6 @@ $(document).ready ->
     dom.popover(paras)
     dom.popover('show')
     timeOut = setTimeout ->
-      dom.popover('hide')
+      dom.popover('destroy')
       clearTimeout(timeOut)
     , 1500

@@ -40,6 +40,7 @@
 #= require qvm1rmb
 #= require rtn
 #= require event1024
+#= require censorfeeds
 
 #= require uuid
 

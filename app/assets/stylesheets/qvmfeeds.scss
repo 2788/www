@@ -44,7 +44,7 @@
   .row-operation {
     width: 100%;
     position: absolute;
-    bottom: 5%;
+    bottom: 0.20rem;
     left: 15px;
     z-index: 103;
   }
@@ -114,7 +114,7 @@
       }
   
       .rules-container {
-        padding: 20px 10px !important;
+        padding: 20px 5px !important;
         p {
           font-size: 0.20rem !important;
           line-height: 0.30rem !important;
