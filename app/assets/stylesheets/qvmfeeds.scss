@@ -12,15 +12,18 @@
     z-index: 101;
   }
 
-  .image-banner {
-    position: relative;
-    z-index: 101;
-  }
-
-  .icon-red-packet {
-    position: relative;
-    margin-top: -90%;
-    z-index: 102
+  .col-hero {
+    text-align: center;
+    .image-banner {
+      position: relative;
+      z-index: 101;
+    }
+  
+    .icon-red-packet {
+      position: relative;
+      margin-top: -90%;
+      z-index: 102
+    }
   }
 }
 
@@ -28,17 +31,21 @@
   position: relative;
   padding: 0 !important;
 
-  .image-body {
-    position: relative;
-    margin-top: -80%;
-    z-index: 100;
+  .col-body-image {
+    text-align: center;
+
+    .image-body {
+      position: relative;
+      margin-top: -80%;
+      z-index: 100;
+    }
   }
 
   .row-operation {
     width: 100%;
     position: absolute;
     bottom: 5%;
-    left: 0;
+    left: 15px;
     z-index: 103;
   }
 
