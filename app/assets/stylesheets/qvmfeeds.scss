@@ -1,0 +1,118 @@
+.qvmfeeds-bg {
+  background-color: #FFEABA;
+}
+
+.hero-qvmfeeds {
+  height: auto !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  background-image: none !important;
+
+  .container {
+    z-index: 101;
+  }
+
+  .image-banner {
+    position: relative;
+    z-index: 101;
+  }
+
+  .icon-red-packet {
+    position: relative;
+    margin-top: -90%;
+    z-index: 102
+  }
+}
+
+.features-qvmfeeds-body {
+  position: relative;
+  padding: 0 !important;
+
+  .image-body {
+    position: relative;
+    margin-top: -80%;
+    z-index: 100;
+  }
+
+  .row-operation {
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    z-index: 103;
+  }
+
+  .col-operation {
+    text-align: center;
+
+    .btn-qvmfeeds {
+      width: 100%;
+      padding: 15px 30px;
+      margin-bottom: 8%;
+      color: #FFF;
+      font-size: 30px;
+      background-color: #E0644D;
+      border-radius: 100px;
+      &:hover {
+        color: #FACD48;
+      }
+    }
+
+    .rules-container {
+      width: 100%;
+      position: relative;
+      padding: 20px 30px;
+      border-radius: 32px;
+      background-color: rgba($color: #FACD48, $alpha: 0.6);
+
+      .icon-coin {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+      }
+
+      p {
+        margin: 0.10rem 0;
+        color: #804700;
+        font-size: 0.24rem;
+        line-height: 0.40rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-qvmfeeds {
+    .container {
+      height: auto !important;
+      padding: 0 !important;
+    }
+  }
+
+  .features-qvmfeeds-body {
+    .container {
+      padding: 0 !important;
+    }
+
+    .image-body {
+      margin-top: -60% !important;
+    }
+
+    .col-operation {
+      text-align: center;
+  
+      .btn-qvmfeeds {
+        padding: 12px 24px !important;
+        font-size: 24px !important;
+      }
+  
+      .rules-container {
+        padding: 20px 10px !important;
+        p {
+          font-size: 0.20rem !important;
+          line-height: 0.30rem !important;
+        }
+      }
+    }
+  }
+}
