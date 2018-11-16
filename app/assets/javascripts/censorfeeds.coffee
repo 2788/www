@@ -91,7 +91,7 @@ $(document).ready ->
 
   # 绑定三个小图标切换事件
   $selectImages.bind 'click', (e) ->
-    if $(this).hasClass 'selected' || $(this).hasClass 'disabled'
+    if $(this).hasClass('selected') || $(this).hasClass('disabled')
       return
     # 消除所有 selected 样式
     $selectImages.removeClass 'selected'
