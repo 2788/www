@@ -66,8 +66,9 @@
     }
 
     .rules-container {
-      width: 100%;
+      width: 80%;
       position: relative;
+      left: 10%;
       padding: 20px 30px;
       border-radius: 32px;
       background-color: rgba($color: #FACD48, $alpha: 0.6);
@@ -102,7 +103,8 @@
     }
 
     .image-body {
-      margin-top: -60% !important;
+      margin-top: -70% !important;
+      padding-bottom: 0.40rem;
     }
 
     .col-operation {
@@ -114,7 +116,6 @@
       }
   
       .rules-container {
-        padding: 20px 5px !important;
         p {
           font-size: 0.20rem !important;
           line-height: 0.30rem !important;
