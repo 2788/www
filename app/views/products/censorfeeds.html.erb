@@ -42,16 +42,16 @@
       <%# 输入 url %>
       <div class="col-xs-12 col-sm-12 col-md-12 col-url-input">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="输入图片 URL">
+          <input type="text" class="form-control input-censorfeeds" placeholder="输入图片 URL">
           <span class="input-group-btn">
-            <div class="btn btn-primary btn-lg btn-censorfeeds btn-detection" type="button">检测</div>
+            <div class="btn btn-primary btn-lg btn-censorfeeds btn-detection" id="censorfeeds-detection-btn" type="button">检测</div>
           </span>
         </div>
       </div>
 
       <%# 立即咨询 %>
       <div class="col-xs-12 col-sm-12 col-md-12 col-consult">
-        <%= link_to "立即咨询", "", class: "btn btn-primary btn-lg btn-censorfeeds btn-consult", id: "btn-censorfeeds-consult", target: "_blank" -%>
+        <%= link_to "立即咨询", "https://jinshuju.net/f/pRS9oF?ref=www.qiniu.com/products/censorfeeds", class: "btn btn-primary btn-lg btn-censorfeeds btn-consult", id: "btn-censorfeeds-consult", target: "_blank" -%>
       </div>
 
       <%# 两句文案 %>

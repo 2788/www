@@ -55,7 +55,7 @@
       position: relative;
       background-color: #4748BF;
       background-image: url("https://mars-assets.qnssl.com/image-censorfeeds-1.jpg");
-      background-size: 95%;
+      background-size: contain;
       background-position-x: center;
       background-position-y: center;
       background-repeat: no-repeat;
@@ -72,6 +72,16 @@
         }
       }
     }
+
+    .popover {
+      color: #FFF;
+      font-size: 16px;
+      background-color: rgba($color: #000, $alpha: 0.6) !important;
+
+      .arrow:after {
+        border-top-color: rgba($color: #000, $alpha: 0.6) !important;
+      }
+    }
   }
 
   .col-select-img {
@@ -82,7 +92,7 @@
       width: 100%;
       height: 100%;
       background-color: #4748BF;
-      background-size: 95%;
+      background-size: cover;
       background-position-x: center;
       background-position-y: center;
       background-repeat: no-repeat;
@@ -124,6 +134,16 @@
     .btn-detection {
       padding: 16px 40px;
       font-size: 20px;
+    }
+
+    .popover {
+      color: #FFF;
+      font-size: 16px;
+      background-color: rgba($color: #000, $alpha: 0.6) !important;
+
+      .arrow:after {
+        border-top-color: rgba($color: #000, $alpha: 0.6) !important;
+      }
     }
   }
 
