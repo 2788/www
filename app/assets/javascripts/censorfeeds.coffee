@@ -1,4 +1,7 @@
 $(document).ready ->
+  # 隐藏 helper
+  if $('.hero.hero-censorfeeds').length > 0
+    $('.helper').hide()
   # demo 标题
   $demoTitle = $('.features-censorfeeds-demo .demo-title')
   # 大图

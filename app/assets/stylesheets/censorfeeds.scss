@@ -46,7 +46,7 @@
   }
 
   .col-main-img {
-    height: 6.00rem;
+    height: 4.50rem;
     margin-top: 0.20rem;
 
     .image-censorfeeds-main {
@@ -85,7 +85,7 @@
   }
 
   .col-select-img {
-    height: 2.00rem;
+    height: 1.50rem;
     margin-top: 0.20rem;
 
     .image-censorfeeds-select {
@@ -119,10 +119,10 @@
     margin-top: 0.20rem;
 
     input {
-      height: 60px;
+      height: 48px;
       color: #FFF;
-      font-size: 20px;
-      line-height: 60px;
+      font-size: 16px;
+      line-height: 48px;
       border: none;
       background-color: rgba($color: #4748BF, $alpha: 0.7);
 
@@ -132,8 +132,8 @@
     }
 
     .btn-detection {
-      padding: 16px 40px;
-      font-size: 20px;
+      padding: 12px 40px 13px 40px;
+      font-size: 16px;
     }
 
     .popover {
@@ -148,12 +148,11 @@
   }
 
   .col-consult {
-    margin-top: 0.80rem;
+    margin-top: 0.60rem;
     text-align: center;
 
     .btn-consult {
-      width: 80%;
-      padding: 20px 30px !important;
+      padding: 10px 40px !important;
       font-size: 32px;
       line-height: 45px;
       border-radius: 10px;
@@ -161,16 +160,16 @@
   }
 
   .col-words {
-    margin: 0.80rem 0 0 0;
+    margin: 0.40rem 0 0 0;
 
     p {
       color: #FFF;
-      font-size: 32px;
-      line-height: 45px;
+      font-size: 26px;
+      line-height: 32px;
       text-align: center;
 
       .strong {
-        font-size: 45px;
+        font-size: 32px;
         color: #53B7F4;
       }
 
@@ -181,7 +180,7 @@
   }
 
   .col-bottom {
-    margin-bottom: 0.80rem;
+    margin-bottom: 0.60rem;
   }
 
   .btn-censorfeeds {
