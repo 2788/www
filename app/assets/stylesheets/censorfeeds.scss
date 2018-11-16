@@ -1,0 +1,198 @@
+.censorfeeds-bg {
+  background-color: #13145D;
+}
+
+.hero-censorfeeds {
+  height: 3.50rem !important;
+  margin: 0 !important;
+  background-image: none !important;
+
+  .container {
+    height: 3.00rem !important;
+  }
+
+  .middle-container {
+    h1 {
+      font-size: 0.48rem;
+      text-align: center;
+    }
+    p {
+      margin: 0.10rem 0 0 0;
+      color: rgba($color: #FFF, $alpha: 0.6);
+      font-size: 0.30rem;
+      text-align: center;
+    }
+  }
+}
+
+.features-censorfeeds-demo {
+  padding: 0 !important;
+
+  .col-title {
+    width: calc(100% - 30px);
+    height: 1.00rem;
+    left: 15px;
+    background-color: #4748BF;
+    border-top-left-radius: 1.00rem;
+    border-top-right-radius: 1.00rem;
+
+    p {
+      margin: 0;
+      color: #FFF;
+      font-size: 0.40rem;
+      line-height: 1.00rem;
+      text-align: center;
+    }
+  }
+
+  .col-main-img {
+    height: 6.00rem;
+    margin-top: 0.20rem;
+
+    .image-censorfeeds-main {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background-color: #4748BF;
+      background-image: url("https://mars-assets.qnssl.com/image-censorfeeds-1.jpg");
+      background-size: 95%;
+      background-position-x: center;
+      background-position-y: center;
+      background-repeat: no-repeat;
+
+      .icon-censorfeeds-result {
+        position: absolute;
+        top: calc(50% - 80px);
+        left: calc(50% - 80px);
+        &.icon-zhengchang {
+          display: none;
+        }
+        &.icon-weigui {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .col-select-img {
+    height: 2.00rem;
+    margin-top: 0.20rem;
+
+    .image-censorfeeds-select {
+      width: 100%;
+      height: 100%;
+      background-color: #4748BF;
+      background-size: 95%;
+      background-position-x: center;
+      background-position-y: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+
+      &.image-1 {
+        background-image: image-url("censorfeeds/image-censorfeeds-1.png");
+      }
+      &.image-2 {
+        background-image: image-url("censorfeeds/image-censorfeeds-2.png");
+      }
+      &.image-3 {
+        background-image: image-url("censorfeeds/image-censorfeeds-3.png");
+      }
+
+      &.selected,
+      &:hover {
+        border: 2px solid #53B7F4;
+      }
+    }
+  }
+
+  .col-url-input {
+    margin-top: 0.20rem;
+
+    input {
+      height: 60px;
+      color: #FFF;
+      font-size: 20px;
+      line-height: 60px;
+      border: none;
+      background-color: rgba($color: #4748BF, $alpha: 0.7);
+
+      &::placeholder {
+        color: rgba($color: #53B7F4, $alpha: 0.7);
+      }
+    }
+
+    .btn-detection {
+      padding: 16px 40px;
+      font-size: 20px;
+    }
+  }
+
+  .col-consult {
+    margin-top: 0.80rem;
+    text-align: center;
+
+    .btn-consult {
+      width: 80%;
+      padding: 20px 30px !important;
+      font-size: 32px;
+      line-height: 45px;
+      border-radius: 10px;
+    }
+  }
+
+  .col-words {
+    margin: 0.80rem 0 0 0;
+
+    p {
+      color: #FFF;
+      font-size: 32px;
+      line-height: 45px;
+      text-align: center;
+
+      .strong {
+        font-size: 45px;
+        color: #53B7F4;
+      }
+
+      .color {
+        color: #53B7F4;
+      }
+    }
+  }
+
+  .col-bottom {
+    margin-bottom: 0.80rem;
+  }
+
+  .btn-censorfeeds {
+    color: #FFF;
+    border-color: #4748BF;
+    background-color: #4748BF;
+
+    &:hover {
+      color: #53B7F4;
+    }
+  }
+}
+
+@media (width: 768px) {
+  .hero-censorfeeds {
+    .container {
+      height: 2.50rem !important;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-censorfeeds {
+    .container {
+      height: 4.00rem !important;
+    }
+  }
+
+  .features-censorfeeds-demo {
+    .container {
+      padding: 0 !important;
+    }
+  }
+}

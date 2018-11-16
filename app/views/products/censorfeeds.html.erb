@@ -1,0 +1,66 @@
+<div class="jumbotron hero hero-censorfeeds censorfeeds-bg">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <h1>明瞳图片鉴黄</h1>
+          <p>违规内容一扫而光</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features features-censorfeeds-demo censorfeeds-bg">
+  <div class="container">
+    <div class="row">
+      <%# title %>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-title">
+        <p class="demo-title">AI 鉴黄体验区</p>
+      </div>
+
+      <%# 主图像 %>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-main-img">
+        <div class="image-censorfeeds-main" id="image-censorfeeds-main">
+          <%= image_tag "censorfeeds/icon-zhengchang.png", class: "icon-censorfeeds-result icon-zhengchang", id: "icon-censorfeeds-zhengchang", width: 160 -%>
+          <%= image_tag "censorfeeds/icon-xinggan.png", class: "icon-censorfeeds-result icon-xinggan", id: "icon-censorfeeds-xinggan", width: 160 -%>
+          <%= image_tag "censorfeeds/icon-weigui.png", class: "icon-censorfeeds-result icon-weigui", id: "icon-censorfeeds-weigui", width: 160 -%>
+        </div>
+      </div>
+
+      <%# 三个选择图像 %>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-select-img">
+        <div class="image-censorfeeds-select image-1 selected" id="image-censorfeeds-1"></div>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-select-img">
+        <div class="image-censorfeeds-select image-2" id="image-censorfeeds-2"></div>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-select-img">
+        <div class="image-censorfeeds-select image-3" id="image-censorfeeds-3"></div>
+      </div>
+
+      <%# 输入 url %>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-url-input">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="输入图片 URL">
+          <span class="input-group-btn">
+            <div class="btn btn-primary btn-lg btn-censorfeeds btn-detection" type="button">检测</div>
+          </span>
+        </div>
+      </div>
+
+      <%# 立即咨询 %>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-consult">
+        <%= link_to "立即咨询", "", class: "btn btn-primary btn-lg btn-censorfeeds btn-consult", id: "btn-censorfeeds-consult", target: "_blank" -%>
+      </div>
+
+      <%# 两句文案 %>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-words">
+        <p><span class="strong">0</span>&nbsp;<span class="color">风险</span>安全运营</p>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-words col-bottom">
+        <p><span class="strong">18</span>&nbsp;<span class="color">万次</span>免费额度</p>
+      </div>
+    </div>
+  </div>
+</div>
