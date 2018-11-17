@@ -1,6 +1,20 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <div class="jumbotron hero hero-csvc">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= link_to "立即参赛", "http://csvc.qiniu.com/", target: "_blank", id: "banner-csvc-join-btn", class:"btn btn-lg btn-warning" -%>
+            <%= link_to "邀请好友", "http://csvc.qiniu.com/", target: "_blank", id: "banner-csvc-invite-btn", class:"btn btn-lg btn-hollow" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 1024 活动 banner %>
   <% if is_1024event_on() -%>
   <div class="jumbotron hero hero-event1024-index">
     <div class="container">
@@ -15,6 +29,7 @@
   </div>
   <% end -%>
 
+  <%# qvm 双十一活动 banner %>
   <% if is_double11_on() -%>
   <div class="jumbotron hero hero-double11-index">
     <div class="container">

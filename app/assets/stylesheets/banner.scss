@@ -736,6 +736,32 @@
     }
   }
 
+  &.hero-csvc {
+    background-image: image-url("banner/banner-csvc.jpg");
+    .middle-container {
+      top: auto;
+      bottom: 22%;
+      text-align: center;
+      .btn-warning {
+        color: #0039D0;
+        border: none;
+        background-color: #F5CC2E;
+        &:hover {
+          color: #FFF;
+        }
+      }
+      .btn-hollow {
+        margin-left: 0.10rem;
+        color: #F5CC2E;
+        border: 1px solid #F5CC2E;
+        background-color: transparent;
+        &:hover {
+          color: #FFF;
+        }
+      }
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;
@@ -1020,6 +1046,12 @@
       }
     }
 
+    &.hero-csvc {
+      .middle-container {
+        bottom: 18%;
+      }
+    }
+
     &.hero-ess-index {
       .middle-container {
         top: 38% !important;
@@ -1085,6 +1117,12 @@
     &.hero-ess-index {
       .middle-container {
         top: 30% !important;
+      }
+    }
+
+    &.hero-csvc {
+      .middle-container {
+        bottom: 24% !important;
       }
     }
   }
