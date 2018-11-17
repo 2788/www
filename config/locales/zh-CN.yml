@@ -4342,38 +4342,38 @@ zh-CN:
         - img: 'niuday/partnerslog/logo-maike.png'
     beijing:
       guest:
-        - img: 'niuday/avatar-dujianghua.png'
-          name: 杜江华
-          title: 七牛云执行副总裁
-          subtitle: ''
         - img: 'niuday/avatar-yangxinhua.png'
           name: 杨新华
           title: 中国互联网新闻中心 · 中国网副总编辑
-          subtitle: ''
-        - img: 'niuday/avatar-chenchao.png'
-          name: 陈超
-          title: 七牛云技术总监
-          subtitle: ''
-        - img: 'niuday/avatar-shechaojie.png'
-          name: 佘超杰
-          title: Blued 技术专家
-          subtitle: ''
-        - img: 'niuday/avatar-yangyeqing.png'
-          name: 杨叶青
-          title: 七牛云人工智能实验室资深产品经理
-          subtitle: ''
-        - img: 'niuday/avatar-xiehualiang.png'
-          name: 谢华亮
-          title: 好未来 SEG 智慧教育事业部技术总监
-          subtitle: ''
-        - img: 'niuday/avatar-liujunyan.png'
-          name: 刘俊彦
-          title: 环信 CEO
           subtitle: ''
         - img: 'niuday/avatar-sunmingjun.png'
           name: 孙明俊
           title: 中国信息通信研究院人工智能部副主任
           subtitle: 中国人工智能产业发展联盟总体组组长
+        - img: 'niuday/avatar-dujianghua.png'
+          name: 杜江华
+          title: 七牛云执行副总裁
+          subtitle: ''
+        - img: 'niuday/avatar-shechaojie.png'
+          name: 佘超杰
+          title: Blued 技术专家
+          subtitle: ''
+        - img: 'niuday/avatar-xiehualiang.png'
+          name: 谢华亮
+          title: 好未来 SEG 智慧教育事业部技术总监
+          subtitle: ''
+        - img: 'niuday/avatar-chenchao.png'
+          name: 陈超
+          title: 七牛云技术总监
+          subtitle: ''
+        - img: 'niuday/avatar-liujunyan.png'
+          name: 刘俊彦
+          title: 环信 CEO
+          subtitle: ''
+        - img: 'niuday/avatar-yangyeqing.png'
+          name: 杨叶青
+          title: 七牛云人工智能实验室资深产品经理
+          subtitle: ''
       medias:
         - img: 'niuday/mediaslog/logo-51cto.png'
         - img: 'niuday/mediaslog/logo-bitewang.png'
