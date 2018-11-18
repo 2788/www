@@ -3685,9 +3685,9 @@ zh-CN:
       title: 深度学习平台 - 七牛云
       keywords: 深度学习平台，七牛深度学习平台，深度学习，机器学习，智能打标
       description: 七牛深度学习平台，是一个端到端的人工智能深度学习平台。针对图片视频的一站式数据集中处理，模拟训练，将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
-    welcome_player:
-      title: 播放器SDK_视频播放SDK-七牛云播放器
-      keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
+    products_player:
+      title: 播放器SDK_视频播放SDK - 七牛云播放器
+      keywords: 播放器 SDK，七牛播放器，android 播放器 sdk，ios 播放器 SDK，视频播放 SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web 播放器 SDK
       description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
     welcome_livequiz:
       title: 直播竞答解决方案-七牛云
