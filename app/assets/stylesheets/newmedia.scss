@@ -74,7 +74,7 @@
       }
 
       .desc {
-        max-width: 363px;
+        max-width: 380px;
         overflow: hidden;
         margin: 0 auto;
         line-height: 28px;
@@ -547,6 +547,7 @@
 
   .features.newmedia-nav .tabs .nav-justified.nav.nav-tabs.nav-tabs-newmedia>li,
   .nav-tabs.nav-justified>li {
+    width: 1%;
     display: table-cell;
 
     a {

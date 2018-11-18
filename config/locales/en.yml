@@ -3454,10 +3454,10 @@ en:
       title: 视频冷存储_视频冷存储解决方案 - 七牛云
       keywords: 视频冷存储，冷备，冷存储，归档存储，点播存储，高清视频原片，媒体资源库
       description: 七牛云视频冷存储解决方案是专为综合视频平台打造的 PB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。
-    welcome_newmedia:
+    products_newmedia:
       title: 广电新媒体解决方案-七牛云
       keywords: 新媒体解决方案，融合媒体解决方案，广电新媒体解决方案，媒体融合服务，媒资管理
-      description: 七牛云广电新媒体解决方案提供超越传统IT的定制服务，实现统一的跨终端交互体验，云端数据永不过期、永远在线，大于三级等保的安全防护。
+      description: 七牛云广电新媒体解决方案提供超越传统 IT 的定制服务，实现统一的跨终端交互体验，云端数据永不过期、永远在线，大于三级等保的安全防护。
     products_sdk:
       title: 视频直播SDK_视频SDK_直播SDK - 七牛云
       keywords: 视频直播 SDK，视频 SDK，直播 SDK，音视频 SDK，第三方直播 SDK，ios 直播 SDK，android 直播 SDK，短视频 SDK，播放器 SDK

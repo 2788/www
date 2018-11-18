@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get '/products/plsv',           to: 'products#plsv'
     get '/products/vcs',            to: 'products#vcs'
     get '/products/player',         to: 'products#player'
-    get '/products/newmedia',       to: 'welcome#newmedia'
+    get '/products/newmedia',       to: 'products#newmedia'
     get '/products/pili/livequiz',  to: 'welcome#livequiz'
     get '/products/qavs',           to: 'welcome#qavs'
     get '/products/qvm',            to: 'products#qvm'
