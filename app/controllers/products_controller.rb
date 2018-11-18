@@ -47,6 +47,9 @@ class ProductsController < ApplicationController
   def vcs
   end
 
+  def player
+  end
+
   def censorfeeds
   end
 end

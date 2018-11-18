@@ -3566,9 +3566,9 @@ en:
       title: Qiniu Cloud-Deep Learning Platform（AVA）
       keywords: Deep Learning Platform, Qiniu Cloud Deep Learning Platform, Deep Learning, Machine Learning, Smart Labelling, Labeling Module
       description: Qiniu Cloud's fully managed end-to-end Deep Learning Platform (AVA) allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.
-    welcome_player:
-      title: 播放器SDK_视频播放SDK-七牛云播放器
-      keywords: 播放器SDK，七牛播放器，android播放器sdk，ios播放器SDK，视频播放SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web播放器SDK
+    products_player:
+      title: 播放器SDK_视频播放SDK - 七牛云播放器
+      keywords: 播放器 SDK，七牛播放器，android 播放器 sdk，ios 播放器 SDK，视频播放 SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web 播放器 SDK
       description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
     welcome_ssl:
       title: SSL证书_SSL证书申请_SSL企业证书_SSL证书服务 - 七牛云
