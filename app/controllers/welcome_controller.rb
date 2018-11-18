@@ -44,9 +44,6 @@ class WelcomeController < ApplicationController
   def case
   end
 
-  def newmedia
-  end
-
   def user_agreement
     render "sla"
   end

@@ -50,6 +50,9 @@ class ProductsController < ApplicationController
   def player
   end
 
+  def newmedia
+  end
+
   def censorfeeds
   end
 end
