@@ -3689,8 +3689,8 @@ zh-CN:
       title: 播放器SDK_视频播放SDK - 七牛云播放器
       keywords: 播放器 SDK，七牛播放器，android 播放器 sdk，ios 播放器 SDK，视频播放 SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web 播放器 SDK
       description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
-    welcome_livequiz:
-      title: 直播竞答解决方案-七牛云
+    products_livequiz:
+      title: 直播竞答解决方案 - 七牛云
       keywords: 直播竞答，直播问答，问答直播，直播竞答解决方案
       description: 七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案，帮助客户快速搭建稳定、低延迟、高并发的直播竞答应用。
     welcome_ssl:

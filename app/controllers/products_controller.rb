@@ -53,6 +53,9 @@ class ProductsController < ApplicationController
   def newmedia
   end
 
+  def livequiz
+  end
+
   def censorfeeds
   end
 end
