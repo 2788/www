@@ -3570,6 +3570,10 @@ en:
       title: 播放器SDK_视频播放SDK - 七牛云播放器
       keywords: 播放器 SDK，七牛播放器，android 播放器 sdk，ios 播放器 SDK，视频播放 SDK，PLWinPlayer，PLDroidPlayer，PLPlayerKit，web 播放器 SDK
       description: 七牛云播放器是一款全自研内核的跨平台多媒体播放器，支持 Android、iOS、Windows 等多种视频格式及多媒体协议，拥有丰富的功能和优异的性能，可高度定制化和二次开发。
+    products_livequiz:
+      title: 直播竞答解决方案 - 七牛云
+      keywords: 直播竞答，直播问答，问答直播，直播竞答解决方案
+      description: 七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案，帮助客户快速搭建稳定、低延迟、高并发的直播竞答应用。
     welcome_ssl:
       title: SSL证书_SSL证书申请_SSL企业证书_SSL证书服务 - 七牛云
       keywords: ssl，ssl 证书，ssl 证书申请，ssl 企业证书，ssl 数字证书，免费 ssl 证书，企业 ssl 证书，ssl 证书购买，ssl 证书服务，ssl 证书价格，ev ssl 证书，dv ssl 证书，ov ssl 证书，https 证书
