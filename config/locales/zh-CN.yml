@@ -3417,25 +3417,43 @@ zh-CN:
         - name: niuday
           label: NIUDAY 小牛汇共享日
           path: niudays
+          url: ""
+          type: "path"
+          isHot: false
         - name: arch
           label: 架构师实践日
           path: arch_events
+          url: ""
+          type: "path"
+          isHot: false
         - name: ecug
           label: ECUG大会
           path: ecugcon_events
+          url: "https://ecug.netlify.com/"
+          type: "url"
+          isHot: true
     - group: 云扶持
       list:
         - name: goglobal
           label: 出海创业扶持计划
           path: goglobal
+          url: ""
+          type: "path"
+          isHot: false
         - name: alaccelerator
           label: AI 创新扶持计划
           path: alaccelerator
+          url: ""
+          type: "path"
+          isHot: false
     - group: 云合作
       list:
         - name: partners
           label: 合作伙伴发展计划
           path: partner
+          url: ""
+          type: "path"
+          isHot: false
   solutions:
     title1: "通用解决方案"
     title2: "行业解决方案"

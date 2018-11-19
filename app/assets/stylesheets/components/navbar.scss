@@ -203,6 +203,13 @@ nav.navbar {
           background-repeat: no-repeat;
           background-size: cover;
         }
+
+        &.hot-icon {
+          background-image: image-url("icon-hot.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
       }
 
       &.menu-title {

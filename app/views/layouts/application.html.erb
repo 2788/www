@@ -151,10 +151,23 @@
 
                   <% units[:list].each do |unit| %>
                     <%= content_tag :li, class: I18n.t("views.language") != 'zh'? 'd-none' : 'events' do -%>
+                      <% if unit[:type] == "path" -%>
                       <%= link_to(send("#{unit[:path]}_path")) do -%>
-                        <%= content_tag :h4, raw(unit[:label]), class: unit[:name] -%>
+                        <h4 class="<%= unit[:name] -%>">
+                          <%= raw(unit[:label]) -%>
+                          <% if unit[:isHot] -%><i class="hot-icon"></i><% end -%>
+                        </h4>
                         <%= content_tag :p, '', class: "hidden-xs" -%>
                       <% end %>
+                      <% elsif unit[:type] == "url" -%>
+                      <%= link_to(unit[:url], {target: "_blank"}) do -%>
+                        <h4 class="<%= unit[:name] -%>">
+                          <%= raw(unit[:label]) -%>
+                          <% if unit[:isHot] -%><i class="hot-icon"></i><% end -%>
+                        </h4>
+                        <%= content_tag :p, '', class: "hidden-xs" -%>
+                      <% end %>
+                      <% end -%>
                     <% end %>
                   <% end %>
                 <% end %>
