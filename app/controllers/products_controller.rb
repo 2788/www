@@ -56,6 +56,9 @@ class ProductsController < ApplicationController
   def livequiz
   end
 
+  def qavs
+  end
+
   def censorfeeds
   end
 end

@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-xs-10 col-sm-7">
-          <h1><%= I18n.t("views.welcome.qavs.title") -%></h1>
-          <p><%= I18n.t("views.welcome.qavs.describe") -%></p>
+          <h1><%= I18n.t("views.products.qavs.title") -%></h1>
+          <p><%= I18n.t("views.products.qavs.describe") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
             <%= link_to "下载白皮书", "https://mars-assets.qnssl.com/lsm7Yon7_XwirC_mGIQvRe1Fmkx3", target: "_blank", id: "qiniu-gartner", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
@@ -24,7 +24,7 @@
 <div class="features features-qavs-service">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qavs.service.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qavs.service.title") -%></h2>
     </div>
 
     <div class="row">
@@ -33,14 +33,14 @@
           <%# title %>
           <div class="row service-row">
             <div class="col-md-12 col-sm-12 col-xs-12 service-col content-light">
-              <%= image_tag I18n.t("views.welcome.qavs.service.table.titleimg"), alt: I18n.t("views.welcome.qavs.service.table.titlealt"), height: I18n.t("views.welcome.qavs.service.table.titleh") -%>
+              <%= image_tag I18n.t("views.products.qavs.service.table.titleimg"), alt: I18n.t("views.products.qavs.service.table.titlealt"), height: I18n.t("views.products.qavs.service.table.titleh") -%>
             </div>
           </div>
           <div class="row service-row">
             <div class="col-md-8 col-sm-8 col-xs-8">
               <div class="row service-row">
                 <div class="col-md-12 col-sm-12 col-xs-12 service-col content-border">
-                  <% I18n.t("views.welcome.qavs.service.table.tableleft.row1").each do |col| -%>
+                  <% I18n.t("views.products.qavs.service.table.tableleft.row1").each do |col| -%>
                     <% if col[:class].include?"icon-link" -%>
                       <%= image_tag col[:img], class: col[:class], alt: col[:alt], height: col[:height], onclick: "window.open('" + col[:link] + "', '" + col[:target] + "');" -%>
                     <% else -%>
@@ -51,7 +51,7 @@
               </div>
 
               <div class="row service-row">
-                <% I18n.t("views.welcome.qavs.service.table.tableleft.row2").each do |col| -%>
+                <% I18n.t("views.products.qavs.service.table.tableleft.row2").each do |col| -%>
                   <div class="col-md-4 col-sm-4 col-xs-4 col-4 service-col content-border <%= col[:colclass] -%>">
                     <% if col[:class].include?"icon-link" -%>
                       <%= image_tag col[:img], class: col[:class], alt: col[:alt], height: col[:height], onclick: "window.open('" + col[:link] + "', '" + col[:target] + "');" -%>
@@ -63,7 +63,7 @@
               </div>
 
               <div class="row service-row">
-                <% I18n.t("views.welcome.qavs.service.table.tableleft.row3").each do |col| -%>
+                <% I18n.t("views.products.qavs.service.table.tableleft.row3").each do |col| -%>
                   <div class="col-md-6 col-sm-6 col-xs-6 col-6 service-col content-border <%= col[:colclass] -%>">
                     <% if col[:class].include?"icon-link" -%>
                       <%= image_tag col[:img], class: col[:class], alt: col[:alt], height: col[:height], onclick: "window.open('" + col[:link] + "', '" + col[:target] + "');" -%>
@@ -75,7 +75,7 @@
               </div>
 
               <div class="row service-row">
-                <% I18n.t("views.welcome.qavs.service.table.tableleft.row4").each do |col| -%>
+                <% I18n.t("views.products.qavs.service.table.tableleft.row4").each do |col| -%>
                   <div class="col-md-3 col-sm-3 col-xs-3 col-3 service-col content-border <%= col[:colclass] -%>">
                     <% if col[:class].include?"icon-link" -%>
                       <%= image_tag col[:img], class: col[:class], alt: col[:alt], height: col[:height], onclick: "window.open('" + col[:link] + "', '" + col[:target] + "');" -%>
@@ -88,7 +88,7 @@
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
               <div class="row service-row content-border">
-                <% I18n.t("views.welcome.qavs.service.table.tableright").each do |row| -%>
+                <% I18n.t("views.products.qavs.service.table.tableright").each do |row| -%>
                   <div class="col-md-12 col-sm-12 col-xs-12 service-col <%= row[:rowclass] -%>">
                     <% if row[:class].include?"icon-link" -%>
                       <%= image_tag row[:img], class: row[:class], alt: row[:alt], height: row[:height], onclick: "window.open('" + row[:link] + "', '" + row[:target] + "');" -%>
@@ -110,11 +110,11 @@
 <div class="features features-less features-cases features-qavs-adva">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qavs.advantage.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qavs.advantage.title") -%></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.qavs.advantage.col").each do |col| -%>
+      <% I18n.t("views.products.qavs.advantage.col").each do |col| -%>
         <div class="<%= col[:class] -%>">
           <div class="media">
             <div class="media-left">
@@ -135,16 +135,16 @@
 <div class="features features-qavs-scene">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.qavs.scene.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.qavs.scene.title") -%></h2>
     </div>
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
-        <% I18n.t("views.welcome.qavs.scene.tabs").each do |tab| -%>
+        <% I18n.t("views.products.qavs.scene.tabs").each do |tab| -%>
           <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
         <% end -%>
       </ul>
       <div class="tab-content">
-        <% I18n.t("views.welcome.qavs.scene.sections").each do |sec| -%>
+        <% I18n.t("views.products.qavs.scene.sections").each do |sec| -%>
           <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
             <div class="row">
               <div class="col-md-8 col-sm-12 col-xs-12">
@@ -174,25 +174,25 @@
       <div class="col-sm-9">
         <div class="row">
           <div class="col-sm-5 col-xs-12">
-            <h4><%= I18n.t("views.welcome.qavs.product.document.title") -%></h4>
+            <h4><%= I18n.t("views.products.qavs.product.document.title") -%></h4>
             <ul class="links-list">
-              <% I18n.t("views.welcome.qavs.product.document.links").each do |item| -%>
+              <% I18n.t("views.products.qavs.product.document.links").each do |item| -%>
                 <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
               <% end -%>
             </ul>
           </div>
           <div class="col-sm-4 col-xs-12">
-            <h4><%= I18n.t("views.welcome.qavs.product.sdk.title") -%></h4>
+            <h4><%= I18n.t("views.products.qavs.product.sdk.title") -%></h4>
             <ul class="links-list">
-              <% I18n.t("views.welcome.qavs.product.sdk.links").each do |item| -%>
+              <% I18n.t("views.products.qavs.product.sdk.links").each do |item| -%>
                 <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
               <% end -%>
             </ul>
           </div>
           <div class="col-sm-3 col-xs-12">
-            <h4><%= I18n.t("views.welcome.qavs.product.other.title") -%></h4>
+            <h4><%= I18n.t("views.products.qavs.product.other.title") -%></h4>
             <ul class="links-list">
-              <% I18n.t("views.welcome.qavs.product.other.links").each do |item| -%>
+              <% I18n.t("views.products.qavs.product.other.links").each do |item| -%>
                 <li><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
               <% end -%>
             </ul>
