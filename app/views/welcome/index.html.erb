@@ -1,6 +1,9 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 屏蔽 csvc banner %>
+  <%# https://jira.qiniu.io/browse/BO-5604 %>
+  <% if false -%>
   <div class="jumbotron hero hero-csvc">
     <div class="container">
       <div class="middle-container">
@@ -13,6 +16,7 @@
       </div>
     </div>
   </div>
+  <% end -%>
 
   <%# 1024 活动 banner %>
   <% if is_1024event_on() -%>
