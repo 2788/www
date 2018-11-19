@@ -121,3 +121,11 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .features-qavs-scene {
+    .nav.nav-tabs li {
+      display: table-cell !important;
+    }
+  }
+}
