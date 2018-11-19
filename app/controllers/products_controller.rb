@@ -62,6 +62,9 @@ class ProductsController < ApplicationController
   def edu
   end
 
+  def ess
+  end
+
   def censorfeeds
   end
 end

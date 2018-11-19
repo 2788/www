@@ -74,4 +74,10 @@
       height: 3.50rem;
     }
   }
+
+  .features-ess-scene {
+    .nav.nav-tabs li {
+      display: table-cell !important;
+    }
+  }
 }
