@@ -391,131 +391,6 @@ zh-CN:
         price:
           title: "价格与套餐"
           subtitle: "七牛云内容安全产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
-      edu:
-        title: "在线教育解决方案"
-        desc: "满足一对一教学、小班教学、双师课堂等多种教育场景，助力企业快速上线低延迟、高可用的互联网教育产品。"
-        middlebars:
-          - title: "方案详情"
-            class: "intLink active"
-            href: "#tab-edu-section-1"
-          - title: "应用场景"
-            class: "intLink"
-            href: "#tab-edu-section-2"
-          - title: "接入流程"
-            class: "intLink"
-            href: "#tab-edu-section-3"
-          - title: "功能"
-            class: "intLink"
-            href: "#tab-edu-section-4"
-        solution:
-          title: "独有的强大方案"
-          desc: "国内首家标准 WebRTC 研发的一站式解决方案"
-          image: "edu/image-solution.jpg"
-          left:
-            - title: "低延时 高可用"
-              desc: "端到端延迟 150ms 内，连通率达 99.9%"
-            - title: "流畅白板 实时互动"
-              desc: "白板操作流畅，还原线下授课场景"
-            - title: "高清画质 还原音质"
-              desc: "1080P 视频高清播放，48KHz 音频播放"
-          right:
-            - title: "低功耗 不发热"
-              desc: "减少终端 80% 的功耗，合流降低至少 50% 的带宽"
-            - title: "授课场景智能分析"
-              desc: "智能识别人脸，匹配签到、人物离开告警、互动次数分析、违规内容识别"
-            - title: "随时随地复习课程"
-              desc: "互动课程可存储在云端或本地"
-        scene:
-          title: "广泛的应用场景"
-          items:
-            - title: "一对一教学"
-              normal:
-                image: "edu/image-scene-n-1.jpg"
-              active:
-                image: "edu/image-scene-h-1.jpg"
-                link: "https://jinshuju.net/f/hkhJRz"
-            - title: "小班教学"
-              normal:
-                image: "edu/image-scene-n-2.jpg"
-              active:
-                image: "edu/image-scene-h-2.jpg"
-                link: "https://jinshuju.net/f/hkhJRz"
-            - title: "双师教育"
-              normal:
-                image: "edu/image-scene-n-3.jpg"
-              active:
-                image: "edu/image-scene-h-3.jpg"
-                link: "https://jinshuju.net/f/hkhJRz"
-            - title: "在线职业培训"
-              normal:
-                image: "edu/image-scene-n-4.jpg"
-              active:
-                image: "edu/image-scene-h-4.jpg"
-                link: "https://jinshuju.net/f/hkhJRz"
-            - title: "高校慕课"
-              normal:
-                image: "edu/image-scene-n-5.jpg"
-              active:
-                image: "edu/image-scene-h-5.jpg"
-                link: "https://jinshuju.net/f/hkhJRz"
-        process:
-          title: "极简的接入流程"
-          items:
-            - title: "咨询集成方案"
-              class: "icon-item"
-              image: "edu/icon-process-1.png"
-              width: 80
-            - title: ""
-              class: "arrow-item"
-              image: "edu/icon-process-arrow.png"
-              width: 40
-            - title: "确认接入清单"
-              class: "icon-item"
-              image: "edu/icon-process-2.png"
-              width: 80
-            - title: ""
-              class: "arrow-item"
-              image: "edu/icon-process-arrow.png"
-              width: 40
-            - title: "测试部署集成环境"
-              class: "icon-item"
-              image: "edu/icon-process-3.png"
-              width: 80
-            - title: ""
-              class: "arrow-item"
-              image: "edu/icon-process-arrow.png"
-              width: 40
-            - title: "30 天内上线"
-              class: "icon-item"
-              image: "edu/icon-process-4.png"
-              width: 80
-        func:
-          title: "丰富的功能"
-          items:
-            - title: "电子白板"
-              image: "edu/icon-func-1.png"
-            - title: "实时音视频"
-              image: "edu/icon-func-2.png"
-            - title: "课堂直播"
-              image: "edu/icon-func-3.png"
-            - title: "课程录制"
-              image: "edu/icon-func-4.png"
-            - title: "桌面共享"
-              image: "edu/icon-func-5.png"
-            - title: "课件共享"
-              image: "edu/icon-func-6.png"
-            - title: "课堂讨论"
-              image: "edu/icon-func-7.png"
-            - title: "直播问答"
-              image: "edu/icon-func-8.png"
-            - title: "人脸签到"
-              image: "edu/icon-func-9.png"
-            - title: "权限管理"
-              image: "edu/icon-func-10.png"
-            - title: "课堂管理"
-              image: "edu/icon-func-11.png"
-            - title: "课程质询管理"
-              image: "edu/icon-func-12.png"
       free:
         product:
           title: "热门云产品"
@@ -3340,6 +3215,131 @@ zh-CN:
               - title: "实时音视频 demo 体验"
                 link: "https://developer.qiniu.com/rtn/manual/4374/the-demo-experience?ref=www.qiniu.com"
                 target: "_blank"
+      edu:
+        title: "在线教育解决方案"
+        desc: "满足一对一教学、小班教学、双师课堂等多种教育场景，助力企业快速上线低延迟、高可用的互联网教育产品。"
+        middlebars:
+          - title: "方案详情"
+            class: "intLink active"
+            href: "#tab-edu-section-1"
+          - title: "应用场景"
+            class: "intLink"
+            href: "#tab-edu-section-2"
+          - title: "接入流程"
+            class: "intLink"
+            href: "#tab-edu-section-3"
+          - title: "功能"
+            class: "intLink"
+            href: "#tab-edu-section-4"
+        solution:
+          title: "独有的强大方案"
+          desc: "国内首家标准 WebRTC 研发的一站式解决方案"
+          image: "edu/image-solution.jpg"
+          left:
+            - title: "低延时 高可用"
+              desc: "端到端延迟 150ms 内，连通率达 99.9%"
+            - title: "流畅白板 实时互动"
+              desc: "白板操作流畅，还原线下授课场景"
+            - title: "高清画质 还原音质"
+              desc: "1080P 视频高清播放，48KHz 音频播放"
+          right:
+            - title: "低功耗 不发热"
+              desc: "减少终端 80% 的功耗，合流降低至少 50% 的带宽"
+            - title: "授课场景智能分析"
+              desc: "智能识别人脸，匹配签到、人物离开告警、互动次数分析、违规内容识别"
+            - title: "随时随地复习课程"
+              desc: "互动课程可存储在云端或本地"
+        scene:
+          title: "广泛的应用场景"
+          items:
+            - title: "一对一教学"
+              normal:
+                image: "edu/image-scene-n-1.jpg"
+              active:
+                image: "edu/image-scene-h-1.jpg"
+                link: "https://jinshuju.net/f/hkhJRz"
+            - title: "小班教学"
+              normal:
+                image: "edu/image-scene-n-2.jpg"
+              active:
+                image: "edu/image-scene-h-2.jpg"
+                link: "https://jinshuju.net/f/hkhJRz"
+            - title: "双师教育"
+              normal:
+                image: "edu/image-scene-n-3.jpg"
+              active:
+                image: "edu/image-scene-h-3.jpg"
+                link: "https://jinshuju.net/f/hkhJRz"
+            - title: "在线职业培训"
+              normal:
+                image: "edu/image-scene-n-4.jpg"
+              active:
+                image: "edu/image-scene-h-4.jpg"
+                link: "https://jinshuju.net/f/hkhJRz"
+            - title: "高校慕课"
+              normal:
+                image: "edu/image-scene-n-5.jpg"
+              active:
+                image: "edu/image-scene-h-5.jpg"
+                link: "https://jinshuju.net/f/hkhJRz"
+        process:
+          title: "极简的接入流程"
+          items:
+            - title: "咨询集成方案"
+              class: "icon-item"
+              image: "edu/icon-process-1.png"
+              width: 80
+            - title: ""
+              class: "arrow-item"
+              image: "edu/icon-process-arrow.png"
+              width: 40
+            - title: "确认接入清单"
+              class: "icon-item"
+              image: "edu/icon-process-2.png"
+              width: 80
+            - title: ""
+              class: "arrow-item"
+              image: "edu/icon-process-arrow.png"
+              width: 40
+            - title: "测试部署集成环境"
+              class: "icon-item"
+              image: "edu/icon-process-3.png"
+              width: 80
+            - title: ""
+              class: "arrow-item"
+              image: "edu/icon-process-arrow.png"
+              width: 40
+            - title: "30 天内上线"
+              class: "icon-item"
+              image: "edu/icon-process-4.png"
+              width: 80
+        func:
+          title: "丰富的功能"
+          items:
+            - title: "电子白板"
+              image: "edu/icon-func-1.png"
+            - title: "实时音视频"
+              image: "edu/icon-func-2.png"
+            - title: "课堂直播"
+              image: "edu/icon-func-3.png"
+            - title: "课程录制"
+              image: "edu/icon-func-4.png"
+            - title: "桌面共享"
+              image: "edu/icon-func-5.png"
+            - title: "课件共享"
+              image: "edu/icon-func-6.png"
+            - title: "课堂讨论"
+              image: "edu/icon-func-7.png"
+            - title: "直播问答"
+              image: "edu/icon-func-8.png"
+            - title: "人脸签到"
+              image: "edu/icon-func-9.png"
+            - title: "权限管理"
+              image: "edu/icon-func-10.png"
+            - title: "课堂管理"
+              image: "edu/icon-func-11.png"
+            - title: "课程质询管理"
+              image: "edu/icon-func-12.png"
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -3609,7 +3609,7 @@ zh-CN:
       title: 云主机_云服务器 - 七牛云
       keywords: 七牛云，云服务器，云主机，云数据库，高防
       description: 七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。
-    welcome_edu:
+    products_edu:
       title: 在线教育解决方案 - 七牛云
       keywords: 在线教育，教育云，教育音视频，在线教育直播，WebRTC，实时音视频，互联网教育，智慧教育，在线职业培训，高校慕课
       description: 七牛在线教育解决方案，满足一对一教学、小班教学、在线职业培训、高校慕课、双师课堂等多种教育场景，帮助企业快速开发上线低延迟、高可用的互联网教育产品。

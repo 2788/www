@@ -3,8 +3,8 @@
     <div class="middle-container">
       <div class="row">
         <div class="col-sm-7 col-xs-10">
-          <h1><%= I18n.t("views.welcome.edu.title") -%></h1>
-          <p><%= I18n.t("views.welcome.edu.desc") -%></p>
+          <h1><%= I18n.t("views.products.edu.title") -%></h1>
+          <p><%= I18n.t("views.products.edu.desc") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "获取 Demo", "https://jinshuju.net/f/hkhJRz", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
@@ -28,9 +28,9 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.welcome.edu.middlebars").each do |bar| %>
+        <% I18n.t("views.products.edu.middlebars").each do |bar| -%>
           <li class="<%= bar[:class] -%>"><%= link_to bar[:title], bar[:href] -%></li>
-        <% end %>
+        <% end -%>
       </ul>
     </div>
   </div>
@@ -40,13 +40,13 @@
 <div class="features features-edu-solution tab-edu-section-1">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edu.solution.title") -%></h2>
-      <p class="desc"><%= I18n.t("views.welcome.edu.solution.desc") -%></p>
+      <h2 class="title"><%= I18n.t("views.products.edu.solution.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.products.edu.solution.desc") -%></p>
     </div>
 
     <div class="row">
       <div class="col-md-3 col-sm-12 col-xs-12">
-        <% I18n.t("views.welcome.edu.solution.left").each do |item| -%>
+        <% I18n.t("views.products.edu.solution.left").each do |item| -%>
           <div class="solution-item">
             <h4><%= item[:title] -%></h4>
             <p><%= item[:desc] -%></p>
@@ -54,10 +54,10 @@
         <% end -%>
       </div>
       <div class="col-md-6 col-sm-12 col-xs-12">
-        <%= image_tag I18n.t("views.welcome.edu.solution.image"), alt: I18n.t("views.welcome.edu.solution.title"), width: "100%" -%>
+        <%= image_tag I18n.t("views.products.edu.solution.image"), alt: I18n.t("views.products.edu.solution.title"), width: "100%" -%>
       </div>
       <div class="col-md-3 col-sm-12 col-xs-12">
-        <% I18n.t("views.welcome.edu.solution.right").each do |item| -%>
+        <% I18n.t("views.products.edu.solution.right").each do |item| -%>
           <div class="solution-item">
             <h4><%= item[:title] -%></h4>
             <p><%= item[:desc] -%></p>
@@ -75,11 +75,11 @@
 <div class="features features-less features-cases features-edu-scene tab-edu-section-2">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edu.scene.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.edu.scene.title") -%></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.edu.scene.items").each do |item| -%>
+      <% I18n.t("views.products.edu.scene.items").each do |item| -%>
         <div class="col-xs-2 col-sm-2 col-item">
           <div class="normal">
             <%= image_tag item[:normal][:image], alt: item[:title], width: "100%" -%>
@@ -98,11 +98,11 @@
 <div class="features features-edu-process tab-edu-section-3">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edu.process.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.edu.process.title") -%></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.edu.process.items").each do |item| -%>
+      <% I18n.t("views.products.edu.process.items").each do |item| -%>
         <div class="col-xs-2 col-item <%= item[:class] -%>">
           <%= image_tag item[:image], alt: item[:title], width: item[:width] -%>
           <p><%= item[:title] -%></p>
@@ -120,11 +120,11 @@
 <div class="features features-less features-cases features-edu-func tab-edu-section-4">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.edu.func.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.edu.func.title") -%></h2>
     </div>
 
     <div class="row">
-      <% I18n.t("views.welcome.edu.func.items").each do |item| -%>
+      <% I18n.t("views.products.edu.func.items").each do |item| -%>
         <div class="col-md-2 col-sm-2 col-xs-3 col-item">
           <%= image_tag item[:image], alt: item[:title], width: 60 -%>
           <p><%= item[:title] -%></p>
