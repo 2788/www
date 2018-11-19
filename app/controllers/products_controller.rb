@@ -59,6 +59,9 @@ class ProductsController < ApplicationController
   def qavs
   end
 
+  def edu
+  end
+
   def censorfeeds
   end
 end
