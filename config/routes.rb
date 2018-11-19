@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     get '/products/qavs',           to: 'products#qavs'
     get '/products/qvm',            to: 'products#qvm'
     get '/products/edu',            to: 'products#edu'
-    get '/products/ess',            to: 'welcome#ess'
+    get '/products/ess',            to: 'products#ess'
     get '/products/snow',           to: 'products#snow'
     get '/products/ecs',            to: 'welcome#ecs'
     # qvm 广告推广页
