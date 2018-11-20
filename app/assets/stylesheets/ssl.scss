@@ -107,4 +107,11 @@
       }
     }
   }
+  .features-ssl-scene {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
 }

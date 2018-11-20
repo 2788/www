@@ -142,6 +142,13 @@
       }
     }
   }
+  .insight-application {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
   .insight-solution {
     img {
       width: 60%;

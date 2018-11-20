@@ -1,0 +1,10 @@
+@media (max-width: 767px) {
+  .features-atlab-scene,
+  .features-atlab-adva {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
+}

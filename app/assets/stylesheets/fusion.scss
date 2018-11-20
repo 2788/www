@@ -1,0 +1,10 @@
+@media (max-width: 767px) {
+  .features-fusion.features-distribute,
+  .features-fusion.features-scene {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
+}

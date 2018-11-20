@@ -91,6 +91,13 @@
       }
     }
   }
+  .features-pili-scene {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
 }
 
 @media (min-width: 767px) {
