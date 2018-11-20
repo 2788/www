@@ -1813,7 +1813,7 @@ zh-CN:
               class: ""
               desc: "存储时序数据的高性能数据库，专为处理高写入和高并发查询而研制，支持对时序数据进行函数计算与分组聚合。"
               icon: "pandora/icon-shixushujuku@2x.png"
-            - title: "Spark服务"
+            - title: "Spark 服务"
               class: "sm-right"
               desc: "基于容器技术研发的 Spark 服务。支持快速一键式集群部署，计算资源弹性伸缩，按需收费，为用户提供快餐式大数据消费能力。"
               icon: "pandora/icon-baobiaogongzuoshi@2x.png"

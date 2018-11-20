@@ -29,6 +29,13 @@
 }
 
 @media (max-width: 767px) {
+  .features-kodo.features-scene {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
   .feature-core {
     .thumbnail {
       min-height: 2.80rem;

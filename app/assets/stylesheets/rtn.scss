@@ -248,4 +248,11 @@
   .features-suspension {
     z-index: 11 !important;
   }
+  .features-rtn-scene {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
+  }
 }

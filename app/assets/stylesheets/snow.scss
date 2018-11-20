@@ -93,6 +93,11 @@
     }
   }
   .features-snow-scene {
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
     .col-right {
       margin: 0 !important;
     }

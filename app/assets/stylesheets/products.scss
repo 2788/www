@@ -495,6 +495,11 @@
 
 .features-custom-function {
     background: #F7F8F9;
+    .nav.nav-tabs {
+      li {
+        display: table-cell !important;
+      }
+    }
     .col-xs-6 .media-body {
         padding: 0;
     }
