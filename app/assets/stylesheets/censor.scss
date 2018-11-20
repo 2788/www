@@ -170,6 +170,10 @@
     th {
       .cell-link {
         color: #5bc0de;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

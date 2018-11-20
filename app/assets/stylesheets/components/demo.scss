@@ -1,7 +1,9 @@
+// 内容安全 demo 样式
 .censor-demo {
   .nav-image-video {
     li {
       font-size: 0.16rem;
+      display: table-cell !important;
     }
   }
 
