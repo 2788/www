@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-xs-10 col-sm-10">
           <h1>「 明瞳 」内容安全</h1>
-          <h3><%= I18n.t("views.welcome.censor.subtitle") -%></h3>
-          <p><%= I18n.t("views.welcome.censor.describe1") -%></p>
+          <h3><%= I18n.t("views.products.censor.subtitle") -%></h3>
+          <p><%= I18n.t("views.products.censor.describe1") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
             <%= link_to "产品接入文档", "https://developer.qiniu.com/censor/manual/4829/censor-introduction", target: "_blank", class: "product-link underline" -%>
           </div>
-          <p><%= I18n.t("views.welcome.censor.describe2") -%></p>
+          <p><%= I18n.t("views.products.censor.describe2") -%></p>
         </div>
       </div>
     </div>
@@ -21,10 +21,10 @@
 <div class="features features-censor-pro">
   <div class="container censor-pro-container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.process.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.censor.process.title") -%></h2>
     </div>
     <div class="text-center img-container">
-      <%= image_tag I18n.t("views.welcome.censor.process.image"), width:"100%" -%>
+      <%= image_tag I18n.t("views.products.censor.process.image"), width: "100%" -%>
     </div>
   </div>
 </div>
@@ -33,10 +33,10 @@
 <div class="features features-censor-special">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.special.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.censor.special.title") -%></h2>
     </div>
     <div class="row">
-      <% I18n.t("views.welcome.censor.special.cols").each do |col| -%>
+      <% I18n.t("views.products.censor.special.cols").each do |col| -%>
         <div class="col-md-4 col-sm-4 col-xs-6">
           <div class="thumbnail">
             <%= image_tag col[:image], alt: col[:title], width: "100%" -%>
@@ -60,7 +60,7 @@
 <div class="features features-less features-cases features-censor-demo">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.demo.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.censor.demo.title") -%></h2>
     </div>
     <div class="row">
       <%= render :partial => "demo" -%>
@@ -72,10 +72,10 @@
 <div class="features features-censor-scene">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.scene.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.censor.scene.title") -%></h2>
     </div>
     <div class="row scene-row">
-      <% I18n.t("views.welcome.censor.scene.row1").each do |col| -%>
+      <% I18n.t("views.products.censor.scene.row1").each do |col| -%>
         <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
           <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
           <div class="hide-block">
@@ -86,7 +86,7 @@
       <% end -%>
     </div>
     <div class="row scene-row">
-      <% I18n.t("views.welcome.censor.scene.row2").each do |col| -%>
+      <% I18n.t("views.products.censor.scene.row2").each do |col| -%>
         <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
           <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
           <div class="hide-block">
@@ -103,12 +103,12 @@
 <div class="features features-less features-cases features-censor-client">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.client.title") -%></h2>
+      <h2 class="title"><%= I18n.t("views.products.censor.client.title") -%></h2>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div id="cases-slider" class="conveyor slick-slider draggable">
-          <% I18n.t("views.welcome.censor.client.items").each do |item| -%>
+          <% I18n.t("views.products.censor.client.items").each do |item| -%>
             <div><%= image_tag item[:image], class: "case", alt: item[:title], title: item[:title] -%></div>
           <% end -%>
         </div>
@@ -121,8 +121,8 @@
 <div class="features features-censor-price">
   <div class="container">
     <div class="intro">
-      <h2 class="title"><%= I18n.t("views.welcome.censor.price.title") -%></h2>
-      <p class="desc"><%= I18n.t("views.welcome.censor.price.subtitle") -%></p>
+      <h2 class="title"><%= I18n.t("views.products.censor.price.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.products.censor.price.subtitle") -%></p>
     </div>
     <div class="tab-content-pricing">
       <div class="table-responsive pricing-white-bg">

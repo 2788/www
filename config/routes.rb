@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get '/products/rtn',            to: 'products#rtn'
     get '/products/pandora',        to: 'products#pandora'
     get '/products/insight',        to: 'products#insight'
-    get '/products/censor',         to: 'welcome#censor'
+    get '/products/censor',         to: 'products#censor'
     get '/products/fusion',         to: 'products#fusion'
     get '/products/dora',           to: 'products#dora'
     get '/products/kirk',           to: 'products#kirk'
@@ -94,10 +94,10 @@ Rails.application.routes.draw do
     post '/event1024_create_award', to: 'events#event1024_create_award'
 
     # img_censor
-    post '/img_censor', to: 'welcome#img_censor'
+    post '/img_censor', to: 'products#img_censor'
 
     # video_censor
-    post '/video_censor', to: 'welcome#video_censor'
+    post '/video_censor', to: 'products#video_censor'
 
     # get_heat
     get '/get_heat', to: 'events#get_heat'

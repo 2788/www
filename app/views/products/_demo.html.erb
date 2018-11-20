@@ -1,3 +1,4 @@
+<%# 内容安全 demo template %>
 <div class="tabs censor-demo">
   <ul class="nav nav-tabs nav-justified points-bar nav-short nav-image-video" role="tablist">
     <li class="image-tab-li active">
@@ -62,24 +63,24 @@
             <div class="video-overlay"></div>
             <div class="slide-container">
               <div class="slide-item active">
-                <video src="<%= @videoSrc_1 -%>" key="Fi1UC6waXtXYCpnTGHa8XxIziGNk", type="video/mp4", autobuffer="false", width="100%"></video>
+                <video src="<%= @videoSrc_1 -%>" key="Fi1UC6waXtXYCpnTGHa8XxIziGNk" type="video/mp4" autobuffer="false" width="100%"></video>
                 <div class="video-mask"></div>
               </div>
               <div class="slide-item">
-                <video src="<%= @videoSrc_2 -%>" key="Fos2uiHzcuvF6HZF3RarMp9J1ewZ", type="video/mp4", autobuffer="false", width="100%"></video>
+                <video src="<%= @videoSrc_2 -%>" key="Fos2uiHzcuvF6HZF3RarMp9J1ewZ" type="video/mp4" autobuffer="false" width="100%"></video>
                 <div class="video-mask"></div>
               </div>
               <div class="slide-item">
-                <video src="<%= @videoSrc_3 -%>" key="FgV6wvTgRv8ZgUZBecKojdIlfs58", type="video/mp4", autobuffer="false", width="100%"></video>
+                <video src="<%= @videoSrc_3 -%>" key="FgV6wvTgRv8ZgUZBecKojdIlfs58" type="video/mp4" autobuffer="false" width="100%"></video>
                 <div class="video-mask"></div>
               </div>
               <div class="slide-item">
-                <video src="<%= @videoSrc_4 -%>" key="lrBYuiLwg0zFRUP97w59FmmN6H01", type="video/mp4", autobuffer="false", width="100%"></video>
+                <video src="<%= @videoSrc_4 -%>" key="lrBYuiLwg0zFRUP97w59FmmN6H01" type="video/mp4" autobuffer="false" width="100%"></video>
                 <div class="video-mask"></div>
               </div>
             </div>
             <div class="video-container">
-              <video src="<%= @videoSrc_1 -%>", id="upload-video-show", width="100%"></video>
+              <video src="<%= @videoSrc_1 -%>" id="upload-video-show" autobuffer="true" loop="true" width="100%"></video>
               <div class="video-scan"></div>
               <div class="video-pass"></div>
               <div class="video-violate"></div>
@@ -90,7 +91,7 @@
               <div class="result-container video-result-container">
                 <p id= "video-pulp" class="text-error">
                   <span>色情识别</span>
-                  <span class="result-word">性感</span>
+                  <span class="result-word">性感，色情</span>
                 </p>
                 <p id="video-terror">
                   <span>暴恐识别</span>

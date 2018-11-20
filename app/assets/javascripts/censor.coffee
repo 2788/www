@@ -121,7 +121,7 @@ $(document).ready ->
         pulpList.push('性感')
     if pulpList.length != 0
       $('#video-pulp').addClass('text-error')
-      $('#video-pulp').find('.result-word').html(pulpList.join(','))
+      $('#video-pulp').find('.result-word').html(pulpList.join('，'))
     # 对terror内容进行判断
     terrorRes = result['terror']
     terrorLabels = if terrorRes.labels then terrorRes.labels else []

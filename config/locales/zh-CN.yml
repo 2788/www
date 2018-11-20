@@ -309,88 +309,6 @@ zh-CN:
                     time: "2018 年 9 月"
                     desc: "与复旦大学合作成立「复旦-七牛深度学习联合实验室」"
                     icon: "icon-img lianheshiyanshi"
-      censor:
-        subtitle: "双重审核 无忧运营"
-        describe1: "七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物等内容"
-        describe2: "新用户可享 18 万次免费调用额度，另有更多超值套餐可供选择"
-        process:
-          title: "明瞳这样保护你"
-          image: "censor/process-image.jpg"
-        special:
-          title: "明瞳让你拥有"
-          cols:
-            - image: "censor/image-special-bg.png"
-              title: "零风险"
-              subtitle: "安全运营"
-              items:
-                - "机审+人审完整体系"
-                - "行业领先审核准确率"
-                - "违规内容自动封禁"
-                - "监管标准实时迭代"
-            - image: "censor/image-special-bg.png"
-              title: "零开发"
-              subtitle: "系统搭建"
-              items:
-                - "免费试用省钱省心"
-                - "一键开启审核服务"
-                - "灵活制定审核标准"
-                - "秒级扩容无惧并发"
-            - image: "censor/image-special-bg.png"
-              title: "零负担"
-              subtitle: "业务管理"
-              items:
-                - "无需管理庞大团队"
-                - "审核结果直观可视"
-                - "节省 98% 人力资源"
-                - "节省 80% 综合成本"
-        demo:
-          title: "在此体验"
-        scene:
-          title: "明瞳被广泛应用于"
-          row1:
-            - image: "censor/image-shipinpingtai.jpg"
-              icon: "censor/icon-shipinpingtai.png"
-              title: "视频平台"
-            - image: "censor/image-zhibopingtai.jpg"
-              icon: "censor/icon-zhibopingtai.png"
-              title: "直播平台"
-            - image: "censor/image-dianshangpingtai.jpg"
-              icon: "censor/icon-dianshangpingtai.png"
-              title: "电商平台"
-            - image: "censor/image-luntanshequ.jpg"
-              icon: "censor/icon-luntanshequ.png"
-              title: "论坛社区"
-          row2:
-            - image: "censor/image-shejiaomeiti.jpg"
-              icon: "censor/icon-shejiaomeiti.png"
-              title: "社交媒体"
-            - image: "censor/image-gonggongwangpan.jpg"
-              icon: "censor/icon-gonggongwangpan.png"
-              title: "公共网盘"
-            - image: "censor/image-guangbodianshi.jpg"
-              icon: "censor/icon-guangbodianshi.png"
-              title: "广播电视"
-            - image: "censor/image-sheyingtongxun.jpg"
-              icon: "censor/icon-sheyingtongxun.png"
-              title: "摄影通讯"
-        client:
-          title: "他们选择相信明瞳"
-          items:
-            - title: "Faceu"
-              image: "censor/client-faceu.png"
-            - title: "blued"
-              image: "censor/client-blued.png"
-            - title: "时光网"
-              image: "censor/client-shiguang.png"
-            - title: "糖豆"
-              image: "censor/client-tangdou.png"
-            - title: "酷我音乐"
-              image: "censor/client-kuwo.png"
-            - title: "懂球帝"
-              image: "censor/client-dongqiudi.png"
-        price:
-          title: "价格与套餐"
-          subtitle: "七牛云内容安全产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
       free:
         product:
           title: "热门云产品"
@@ -3340,6 +3258,88 @@ zh-CN:
               image: "ecs/image-teshuhuanjing.jpg"
               title: "特殊生产环境"
               desc: "海上油井，加油站，矿场等特殊生产环境具有网络不可靠，环境复杂，数据敏感等特点，视频 AI 边缘分析解决方案可就近部署边缘存储及边缘计算服务，对数据进行本地分拣处理，支持离线运行。"
+      censor:
+        subtitle: "双重审核 无忧运营"
+        describe1: "七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物等内容"
+        describe2: "新用户可享 18 万次免费调用额度，另有更多超值套餐可供选择"
+        process:
+          title: "明瞳这样保护你"
+          image: "censor/process-image.jpg"
+        special:
+          title: "明瞳让你拥有"
+          cols:
+            - image: "censor/image-special-bg.png"
+              title: "零风险"
+              subtitle: "安全运营"
+              items:
+                - "机审+人审完整体系"
+                - "行业领先审核准确率"
+                - "违规内容自动封禁"
+                - "监管标准实时迭代"
+            - image: "censor/image-special-bg.png"
+              title: "零开发"
+              subtitle: "系统搭建"
+              items:
+                - "免费试用省钱省心"
+                - "一键开启审核服务"
+                - "灵活制定审核标准"
+                - "秒级扩容无惧并发"
+            - image: "censor/image-special-bg.png"
+              title: "零负担"
+              subtitle: "业务管理"
+              items:
+                - "无需管理庞大团队"
+                - "审核结果直观可视"
+                - "节省 98% 人力资源"
+                - "节省 80% 综合成本"
+        demo:
+          title: "在此体验"
+        scene:
+          title: "明瞳被广泛应用于"
+          row1:
+            - image: "censor/image-shipinpingtai.jpg"
+              icon: "censor/icon-shipinpingtai.png"
+              title: "视频平台"
+            - image: "censor/image-zhibopingtai.jpg"
+              icon: "censor/icon-zhibopingtai.png"
+              title: "直播平台"
+            - image: "censor/image-dianshangpingtai.jpg"
+              icon: "censor/icon-dianshangpingtai.png"
+              title: "电商平台"
+            - image: "censor/image-luntanshequ.jpg"
+              icon: "censor/icon-luntanshequ.png"
+              title: "论坛社区"
+          row2:
+            - image: "censor/image-shejiaomeiti.jpg"
+              icon: "censor/icon-shejiaomeiti.png"
+              title: "社交媒体"
+            - image: "censor/image-gonggongwangpan.jpg"
+              icon: "censor/icon-gonggongwangpan.png"
+              title: "公共网盘"
+            - image: "censor/image-guangbodianshi.jpg"
+              icon: "censor/icon-guangbodianshi.png"
+              title: "广播电视"
+            - image: "censor/image-sheyingtongxun.jpg"
+              icon: "censor/icon-sheyingtongxun.png"
+              title: "摄影通讯"
+        client:
+          title: "他们选择相信明瞳"
+          items:
+            - title: "Faceu"
+              image: "censor/client-faceu.png"
+            - title: "blued"
+              image: "censor/client-blued.png"
+            - title: "时光网"
+              image: "censor/client-shiguang.png"
+            - title: "糖豆"
+              image: "censor/client-tangdou.png"
+            - title: "酷我音乐"
+              image: "censor/client-kuwo.png"
+            - title: "懂球帝"
+              image: "censor/client-dongqiudi.png"
+        price:
+          title: "价格与套餐"
+          subtitle: "七牛云内容安全产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -3609,7 +3609,7 @@ zh-CN:
       title: 日志_智能日志管理_智能日志管理平台 - 七牛云
       keywords: 日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控
       description: 实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计、业务数据分析等场景，帮助互联网、智能制造、金融、新媒体、物联网等行业数字化升级。
-    welcome_censor:
+    products_censor:
       title: 内容安全_内容审核 - 七牛云
       keywords: 内容审核，视频审核，图片审核，智能鉴黄，鉴暴恐，政治人物识别，内容安全
       description: 七牛云内容审核基于深度学习技术，精准识别图片和视频中的涉黄、涉暴恐、政治敏感人物等违规内容。帮助多媒体内容平台降低色情、暴恐和涉政等违规风险，大幅降低人工审核成本。
