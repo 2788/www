@@ -65,6 +65,9 @@ class ProductsController < ApplicationController
   def ess
   end
 
+  def ecs
+  end
+
   def censorfeeds
   end
 end

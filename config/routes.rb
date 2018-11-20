@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get '/products/edu',            to: 'products#edu'
     get '/products/ess',            to: 'products#ess'
     get '/products/snow',           to: 'products#snow'
-    get '/products/ecs',            to: 'welcome#ecs'
+    get '/products/ecs',            to: 'products#ecs'
     # qvm 广告推广页
     get '/products/qvmfeeds',       to: 'products#qvmfeeds'
     # censor 广告推广页
