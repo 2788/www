@@ -699,6 +699,13 @@
         .title2.title-center {
             text-align: center;
         }
+        &.kirk-usage {
+          .row {
+            .thumbnail {
+              min-height: 2.80rem !important;
+            }
+          }
+        }
     }
     .feature-case .container .intro .title {
         font-size: 18px;
