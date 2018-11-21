@@ -3576,6 +3576,8 @@ zh-CN:
       desc: yunpian
     - path: cooperation/client-rongyun.png
       desc: rongyun
+    - path: cooperation/client-chaojibiaoge.png
+      desc: chaojibiaoge
   seo:
     welcome_index:
       title: 七牛云 - 国内领先的企业级云服务商
