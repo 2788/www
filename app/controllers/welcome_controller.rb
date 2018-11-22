@@ -5,7 +5,13 @@ require 'json'
 class WelcomeController < ApplicationController
 
   def index
-    @top_archives = Archive.top_archives
+    # @top_archives = Archive.top_archives
+    # 根据 current_editor 判断查询条件
+    if current_editor.nil? == false
+      @top_archives = Archive.where(status: ['published', 'offline']).top_archives
+    else
+      @top_archives = Archive.where(status: 'published').top_archives
+    end
   end
 
   def contact
@@ -21,17 +27,34 @@ class WelcomeController < ApplicationController
   end
 
   def news
-    @archives = Archive.news_archives
+    # @archives = Archive.news_archives
+    # 根据 current_editor 判断查询条件
+    if current_editor.nil? == false
+      @archives = Archive.where(status: ['published', 'offline']).news_archives
+    else
+      @archives = Archive.where(status: 'published').news_archives
+    end
     render "about"
   end
 
   def product_news
-    @archives = Archive.product_archives
+    # @archives = Archive.product_archives
+    # 根据 current_editor 判断查询条件
+    if current_editor.nil? == false
+      @archives = Archive.where(status: ['published', 'offline']).product_archives
+    else
+      @archives = Archive.where(status: 'published').product_archives
+    end
     render "about"
   end
 
   def welfares
-    @archives = Archive.welfares_archives
+    # @archives = Archive.welfares_archives
+    if current_editor.nil? == false
+      @archives = Archive.where(status: ['published', 'offline']).welfares_archives
+    else
+      @archives = Archive.where(status: 'published').welfares_archives
+    end
     render "about"
   end
 

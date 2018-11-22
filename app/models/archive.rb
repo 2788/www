@@ -1,12 +1,16 @@
 class Archive < ApplicationRecord
 
   paginates_per 5
+  
+  # BO-5655 修改官网博文查询条件
+  # status 条件根据 current_editor 值进行判断
+  # https://jira.qiniu.io/browse/BO-5655
+  # default_scope -> { where(:status => 'published', :deleted_at => nil).order(created_at: :desc) }
+  default_scope -> { where(:deleted_at => nil).order(created_at: :desc) }
 
-  default_scope -> { where(:status => 'published', :deleted_at => nil).order(created_at: :desc) }
+  scope :hot_sort, -> { where(:is_hot => 1) }
 
-  scope :hot_sort,  -> { where(:is_hot => 1) }
-
-  scope :top_sort,  -> { where(:is_top => 1) }
+  scope :top_sort, -> { where(:is_top => 1) }
 
   scope :new_lists, -> { where(:category => 1) }
 
