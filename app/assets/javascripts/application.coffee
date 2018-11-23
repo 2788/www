@@ -112,6 +112,12 @@ $(document).ready ->
         # qvm 双十一活动页立即购买跳转链接
         else if $(e.target).hasClass 'btn-double11'
           href += '/events/double11'
+        # qvm0rmb 活动页购买按钮跳转链接
+        else if $(e.target).hasClass 'btn-qvm0rmb'
+          href += '/events/qvm0rmb'
+        # qvm1rmb 活动页购买按钮跳转链接
+        else if $(e.target).hasClass 'btn-qvm1rmb'
+          href += '/events/qvm1rmb'
         $(this).prop('href', href)
 
   $('[data-toggle="tooltip"]').tooltip()

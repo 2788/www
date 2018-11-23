@@ -6,14 +6,23 @@ $(document).ready ->
   $progressTitleEnterprise = $('.qvm1rmb-progress-row .qvm1rmb-progress-title.enterprise-title')
   $progressTipEnterprise = $('.qvm1rmb-progress-row .qvm1rmb-progress-tip.enterprise-tip')
   $activityTimeEnterprise = $('.features-qvm1rmb-rule .activity-time.enterprise')
+  # 企业优惠所有跳转按钮
+  $jumpBtnsEnterprise = $('.qvm-evnets-enterprise .btn.btn-qvm0rmb')
+
   # 个人优惠部分
   $progressBarPerson = $('.qvm1rmb-progress-row .qvm1rmb-progress-bar.person-bar .progress-bar')
   $progressTitlePerson = $('.qvm1rmb-progress-row .qvm1rmb-progress-title.person-title')
   $progressTipPerson = $('.qvm1rmb-progress-row .qvm1rmb-progress-tip.person-tip')
   $activityTimePerson = $('.features-qvm1rmb-rule .activity-time.person')
+  # 个人优惠所有跳转按钮
+  $jumpBtnsPerson = $('.qvm-evnets-person .btn.btn-qvm1rmb')
 
-  # 个人活动开始时间 2018年9月5日00:00:00
-  personStartTime = new Date(2018, 8, 5, 0, 0, 0)
+  # qvm1rmb 页面改版
+  # https://jira.qiniu.io/browse/BO-5681
+  # 个人活动开始时间 2018年11月23日00:00:00
+  personStartTime = new Date(2018, 10, 23, 0, 0, 0)
+  # 个人活动开始时间 2018年12月31日23:59:59
+  personEndTime = new Date(2018, 11, 31, 23, 59, 59)
   # 个人活动刷新间隔为3个月
   personInterval = 3
 
@@ -80,11 +89,15 @@ $(document).ready ->
       $progressBarPerson.css('width', 0)
       $progressTitlePerson.html('活动未开始')
       $progressTipPerson.hide()
+      $jumpBtnsPerson.html('活动未开始')
+      $jumpBtnsPerson.addClass('disabled')
     else if leftTime <= 0
       $progressBarPerson.attr('aria-valuenow', 100)
       $progressBarPerson.css('width', '100%')
       $progressTitlePerson.html('活动已结束')
       $progressTipPerson.hide()
+      $jumpBtnsPerson.html('活动已结束')
+      $jumpBtnsPerson.addClass('disabled')
     else
       $progressTitlePerson.html('距离活动结束还有')
       $progressTipPerson.show()
@@ -109,11 +122,15 @@ $(document).ready ->
       $progressBarEnterprise.css('width', 0)
       $progressTitleEnterprise.html('活动未开始')
       $progressTipEnterprise.hide()
+      $jumpBtnsEnterprise.html('活动未开始')
+      $jumpBtnsEnterprise.addClass('disabled')
     else if leftTime <= 0
       $progressBarEnterprise.attr('aria-valuenow', 100)
       $progressBarEnterprise.css('width', '100%')
       $progressTitleEnterprise.html('活动已结束')
       $progressTipEnterprise.hide()
+      $jumpBtnsEnterprise.html('活动已结束')
+      $jumpBtnsEnterprise.addClass('disabled')
     else
       $progressTitleEnterprise.html('距离活动结束还有')
       $progressTipEnterprise.show()
@@ -152,21 +169,24 @@ $(document).ready ->
     activityTimeEnterprise = startTimeEnterprise.getFullYear() + ' 年 ' + (startTimeEnterprise.getMonth() + 1) + ' 月 ' + startTimeEnterprise.getDate() + ' 日 - ' + endTimeEnterprise.getFullYear() + ' 年 ' + (endTimeEnterprise.getMonth() + 1) + ' 月 ' + endTimeEnterprise.getDate() + ' 日（每天限量 50 台）'
     $activityTimeEnterprise.html(activityTimeEnterprise)
 
-  # 1024 活动期间 云主机活动个人版 下线
-  # https://jira.qiniu.io/browse/BO-5362
-  $progressTipPerson.hide()
-  # if currentTime.getTime() < personStartTime.getTime()
-  #   # 如果当前时间活动没有开始
-  #   timeObjPerson =
-  #     durationTime: 0
-  #     passTime: -1
-  #     leftTime: 0
-  #   handleProgressPerson timeObjPerson
-  # else
-  #   timeDurationPerson = timeLoop personStartTime.getFullYear(), personStartTime.getMonth(), personStartTime.getDate(), 'person'
-  #   timeObjPerson = handleDuration timeDurationPerson
-  #   handleProgressPerson timeObjPerson
-  #   resetActivityTimePerson timeDurationPerson
+  # qvm1rmb 页面改版
+  # https://jira.qiniu.io/browse/BO-5681
+  if currentTime.getTime() < personStartTime.getTime()
+    # 如果当前时间活动没有开始
+    timeObjPerson =
+      durationTime: 0
+      passTime: -1
+      leftTime: 0
+    handleProgressPerson timeObjPerson
+  else
+    # timeDurationPerson = timeLoop personStartTime.getFullYear(), personStartTime.getMonth(), personStartTime.getDate(), 'person'
+    # qvm1rmb 活动时间为 2018 年 11 月 23 日 - 2018 年 12 月 31 日
+    timeDurationPerson =
+      startTime: personStartTime,
+      endTime: personEndTime
+    timeObjPerson = handleDuration timeDurationPerson
+    handleProgressPerson timeObjPerson
+    resetActivityTimePerson timeDurationPerson
 
   if currentTime.getTime() < enterpriseStartTime.getTime()
     # 如果当前时间活动没有开始
