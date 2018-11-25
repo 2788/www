@@ -18,6 +18,19 @@
   </div>
   <% end -%>
 
+  <%# 新版 qvm1rmb 页面 banner %>
+  <div class="jumbotron hero hero-qvm1rmb-1123-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= link_to "立即开启", "/events/qvm1rmb?entry=index-banner", target: "_blank", id: "banner-qvm1rmb-1123-btn", class:"btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <%# 1024 活动 banner %>
   <% if is_1024event_on() -%>
   <div class="jumbotron hero hero-event1024-index">
