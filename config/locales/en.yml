@@ -23,6 +23,7 @@ en:
           content: "Please tell us how can we help you."
           tip: "Enter up to 255 words"
           name: "This is required"
+          company: "This is required"
           phone: "This is required"
           email: "This is required"
           submit: "In the process of submission..."

@@ -23,6 +23,7 @@ zh-CN:
           content: "请填写咨询内容"
           tip: "最多可输入255字"
           name: "请填写姓名"
+          company: "请填写公司名称"
           phone: "请以正确的格式填写联系电话"
           email: "请填写电子邮箱"
           submit: "正在提交中..."
