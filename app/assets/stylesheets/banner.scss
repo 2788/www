@@ -762,6 +762,23 @@
     }
   }
 
+  &.hero-qvm1rmb-1123-index {
+    background-image: image-url("banner/banner-qvm1rmb-1123-index.jpg");
+    .middle-container {
+      top: auto;
+      bottom: 18%;
+      text-align: center;
+      .btn-hollow {
+        color: #C744DC;
+        border: none;
+        background-color: #FFE300;
+        &:hover {
+          color: #FFF;
+        }
+      }
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;
@@ -1049,6 +1066,12 @@
     &.hero-csvc {
       .middle-container {
         bottom: 18%;
+      }
+    }
+
+    &.hero-qvm1rmb-1123-index {
+      .middle-container {
+        bottom: 13%;
       }
     }
 
