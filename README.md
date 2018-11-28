@@ -1,7 +1,22 @@
 # 新官网
+
 ## start
-bundle install
-rails server
+
+```bash
+bundle install # 安装依赖
+rails server # 启动
+```
+
+本地需要启动 MySQL，创建名为 `mars` 的数据库。
+
+配置文件:
+
+```bash
+/config/environments/development.rb # 本地配置
+/config/environments/test.rb # 测试环境配置，用不到
+/config/environments/production.rb # 线上环境配置，用不到
+```
+
 ## nginx config
 ```
 #################### WORKS API SERVICE ####################
