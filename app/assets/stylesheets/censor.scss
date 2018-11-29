@@ -179,6 +179,30 @@
   }
 }
 
+.features-censor-joinup {
+  padding-top: 0.10rem;
+  .joinup-container {
+    dl dt,
+    dl dd {
+      text-align: center;
+      float: left;
+    }
+    dl dt {
+      width: 26.6667%;
+      img {
+        padding: 0px 20% 10%;
+      }
+    }
+    dl dd {
+      width: 10%;
+      img {
+        margin-top: 65%;
+        padding: 0px 10%;
+      }
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .features-censor-price {
     .info-container {
@@ -200,6 +224,7 @@
 
       .img-container {
         position: absolute;
+        bottom: 0;
         width: 1200px;
         left: 50%;
         margin-left: -600px;
@@ -211,10 +236,11 @@
 @media (min-width: 768px) and (max-width: 991px) {
   .features-censor-pro {
     .censor-pro-container {
-      height: 4.80rem;
+      height: 5.20rem;
 
       .img-container {
         position: absolute;
+        bottom: 0;
         width: 1200px;
         left: 50%;
         margin-left: -600px;
@@ -278,6 +304,7 @@
 
       .img-container {
         position: absolute;
+        bottom: 0;
         width: 1000px;
         left: 50%;
         margin-left: -500px;
@@ -320,6 +347,7 @@
 
       .img-container {
         position: absolute;
+        bottom: 0;
         width: 700px;
         left: 50%;
         margin-left: -350px;
@@ -351,7 +379,7 @@
 @media (max-width: 425px) {
   .features-censor-pro {
     .censor-pro-container {
-      height: 4.10rem;
+      height: 4.40rem;
     }
   }
 }
@@ -359,7 +387,7 @@
 @media (width: 768px) {
   .features-censor-pro {
     .censor-pro-container {
-      height: 6.60rem;
+      height: 7.00rem;
     }
   }
 

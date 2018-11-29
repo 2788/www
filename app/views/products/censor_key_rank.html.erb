@@ -1,0 +1,199 @@
+<div class="jumbotron hero hero-censor">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-8 col-sm-8">
+          <% if @type == "photo" -%>
+            <h1>「 明瞳 」图片鉴黄</h1>
+            <p>七牛明瞳内容安全服务帮您快速、准确的识别出色情、低俗等违规图片，解决电商、社交、摄影通讯等领域的违规内容问题。</p>
+          <% elsif @type == "video" -%>
+            <h1>「 明瞳 」视频审核</h1>
+            <p>七牛明瞳视频审核服务帮您快速、准确的识别出色情、低俗等违规视频，解决视频、直播、电商、社交等领域的违规内容问题。</p>
+          <% end -%>
+          <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
+            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# process tab %>
+<div class="features features-censor-pro">
+  <div class="container censor-pro-container">
+    <div class="intro">
+      <% if @type == "photo" -%>
+        <h2 class="title">图片鉴黄，只需一个「 明瞳 」</h2>
+        <p class="desc">一站式智能机审+专员复审服务体系，过滤 99.5% 违规图片，节省 80% 成本</p>
+      <% elsif @type == "video" -%>
+        <h2 class="title">视频审核，只需一个「 明瞳 」</h2>
+        <p class="desc">一站式智能机审+专员复审服务体系，过滤 99.5% 违规视频，节省 80% 成本</p>
+      <% end -%>
+    </div>
+    <div class="text-center img-container">
+      <%= image_tag I18n.t("views.products.censor.process.image"), width: "100%" -%>
+    </div>
+  </div>
+</div>
+
+<%# special tab %>
+<div class="features features-censor-special">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.censor.special.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.products.censor.special.cols").each do |col| -%>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag col[:image], alt: col[:title], width: "100%" -%>
+            <div class="caption">
+              <h2><%= col[:title] -%></h2>
+              <h4><%= col[:subtitle] -%></h4>
+            </div>
+            <div class="special-list">
+              <% col[:items].each do |item| -%>
+                <p><%= item -%></p>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# demo tab %>
+<div class="features features-less features-cases features-censor-demo">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">免费体验</h2>
+    </div>
+    <div class="row">
+      <%= render :partial => "demo" -%>
+    </div>
+  </div>
+</div>
+
+<%# scene tab %>
+<div class="features features-censor-scene">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">应用场景</h2>
+    </div>
+    <div class="row scene-row">
+      <% I18n.t("views.products.censor.scene.row1").each do |col| -%>
+        <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
+          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
+          <div class="hide-block">
+            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
+            <p><%= col[:title] -%></p>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+    <div class="row scene-row">
+      <% I18n.t("views.products.censor.scene.row2").each do |col| -%>
+        <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
+          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
+          <div class="hide-block">
+            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
+            <p><%= col[:title] -%></p>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# join up tab %>
+<div class="features features-censor-joinup">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">接入流程</h2>
+    </div>
+
+    <div class="joinup-container">
+      <dl>
+        <dt>
+          <% if @type == "photo" -%>
+            <%= image_tag "censor/icon-joinup-step1.png", alt: "将图片上传七牛云存储空间", title: "将图片上传七牛云存储空间" -%>
+            <p>将图片上传七牛云存储空间</p>
+          <% elsif @type == "video" -%>
+            <%= image_tag "censor/icon-joinup-step1.png", alt: "将视频上传七牛云存储空间", title: "将视频上传七牛云存储空间" -%>
+            <p>将视频上传七牛云存储空间</p>
+          <% end -%>
+        </dt>
+        <dd><%= image_tag "censor/icon-joinup-arrow.png", alt: "箭头", title: "箭头" -%></dd>
+        <dt>
+          <%= image_tag "censor/icon-joinup-step2.png", alt: "开启存储空间内容审核", title: "开启存储空间内容审核" -%>
+          <p>开启存储空间内容审核</p>
+        </dt>
+        <dd><%= image_tag "censor/icon-joinup-arrow.png", alt: "箭头", title: "箭头" -%></dd>
+        <dt>
+          <%= image_tag "censor/icon-joinup-step3.png", alt: "查看审核结果", title: "查看审核结果" -%>
+          <p>查看审核结果</p>
+        </dt>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<%# price tab %>
+<div class="features features-censor-price">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.censor.price.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.products.censor.price.subtitle") -%></p>
+    </div>
+    <div class="tab-content-pricing">
+      <div class="table-responsive pricing-white-bg">
+        <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+          <tbody>
+            <tr class="light-bkcolor">
+              <th class="thead-title text-center border-right border-bottom">服务内容</th>
+              <th colspan="2" class="thead-title text-center border-bottom">定价</th>
+            </tr>
+            <tr>
+              <th class="border-right text-center">机器智能审核</th>
+              <th class="border-right text-center">
+                <%= link_to "按次阶梯价格", "https://developer.qiniu.com/censor/manual/4833/censor-price", target: "_blank", class: "cell-link" -%>
+              </th>
+              <th class="text-center">
+                <%= link_to "特惠套餐包", "https://developer.qiniu.com/censor/manual/4835/censor-plus-manual", target: "_blank", class: "cell-link" -%>
+              </th>
+            </tr>
+            <tr>
+              <th class="border-right text-center">机器智能审核+人工审核</th>
+              <th class="border-right text-center">
+                <%= link_to "按次阶梯价格", "https://developer.qiniu.com/censor/manual/4839/autocensor-and-manualcensor", target: "_blank", class: "cell-link" -%>
+              </th>
+              <th class="text-center">
+                <%= link_to "特惠套餐包", "https://developer.qiniu.com/censor/manual/4840/auto-and-manual-package", target: "_blank", class: "cell-link" -%>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# client tab %>
+<div class="features features-less features-cases features-censor-client">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">客户案例</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div id="cases-slider" class="conveyor slick-slider draggable">
+          <% I18n.t("views.products.censor.client.items").each do |item| -%>
+            <div><%= image_tag item[:image], class: "case", alt: item[:title], title: item[:title] -%></div>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
