@@ -3434,7 +3434,7 @@ zh-CN:
         - name: ecug
           label: ECUG大会
           path: ecugcon_events
-          url: "https://ecug.netlify.com/"
+          url: "https://www.ecug.org/"
           type: "url"
           isHot: true
     - group: 云扶持
