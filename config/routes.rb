@@ -48,6 +48,11 @@ Rails.application.routes.draw do
     # censor 广告推广页
     get '/products/censorfeeds',    to: 'products#censorfeeds'
 
+    # censor 新增的两个页面，用于关键词排名，只增加路由不新增入口
+    # https://jira.qiniu.io/browse/BO-5767
+    get '/products/censor/photo',   to: 'products#censor_photo'
+    get '/products/censor/video',   to: 'products#censor_video'
+
     get '/contact',        to: 'welcome#contact'
     get '/solutions',      to: 'welcome#solution'
     get '/news',           to: 'welcome#news'

@@ -81,6 +81,24 @@ class ProductsController < ApplicationController
     @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
   end
 
+  def censor_photo
+    @type = "photo"
+    @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
+    @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
+    @videoSrc_3 = "https://mars-assets.qnssl.com/FgV6wvTgRv8ZgUZBecKojdIlfs58"
+    @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
+    render "censor_key_rank"
+  end
+
+  def censor_video
+    @type = "video"
+    @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
+    @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
+    @videoSrc_3 = "https://mars-assets.qnssl.com/FgV6wvTgRv8ZgUZBecKojdIlfs58"
+    @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
+    render "censor_key_rank"
+  end
+
   # 生成签名(base64编码后)
   def generate_encoded_sign(originStr)
     hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), Rails.application.secrets.atlab_sec_key, originStr)
