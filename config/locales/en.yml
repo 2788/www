@@ -458,6 +458,30 @@ en:
               desc: "API 接口是第三方网站进行信息交互的重要形式，因为大多涉及敏感信息或重要操作指令的传输，因此其安全性至关重要。使用 SSL 证书进行信息传输的高强度加密，可有效杜绝信息劫持。"
       arch:
         events:
+          - img: "arch/img-chengdu.jpg"
+            time: 11 月 23 日
+            title: 容器技术的实践与分享
+            site: 成都
+            details:
+              time: 2018/11/23 13:30
+              site: 成都 高新区天府五街菁蓉汇 4 号楼 B 座 10F
+              link: "http://hd.qiniu.com/arch/history/34"
+          - img: "arch/img-nanjing.jpg"
+            time: 11 月 09 日
+            title: 大数据技术的实践与分享
+            site: 南京
+            details:
+              time: 2018/11/09 14:00
+              site: 南京 建邺区嘉陵江东街 18 号 6 号楼 1 层
+              link: "http://hd.qiniu.com/arch/history/33"
+          - img: "arch/img-beijing.jpg"
+            time: 08 月 18 日
+            title: 智慧教育技术的实践与分享
+            site: 北京
+            details:
+              time: 2018/08/18 13:30
+              site: 北京 中关村大街 11 号 E 世界财富中心 A 座 B2 层
+              link: "http://hd.qiniu.com/arch/history/32"
           - img: "arch/img-hangzhou.jpg"
             time: 06 月 30 日
             title: 视觉 AI 技术的实践与分享
@@ -465,7 +489,7 @@ en:
             details:
               time: 2018/6/30 13:30
               site: 杭州 西湖区颐高创业大厦 A 座 4 楼
-              link: "http://hd.qiniu.com/arch/history/31?ref=www.qiniu.com"
+              link: "http://hd.qiniu.com/arch/history/31"
           - img: "arch/img-shanghai.jpg"
             time: 05 月 26 日
             title: 深度学习技术的实践与分享
