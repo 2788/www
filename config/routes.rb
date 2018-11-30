@@ -128,6 +128,9 @@ Rails.application.routes.draw do
       end
     end
 
+    # qvm
+    post "/qvm/user/action", to: 'qvm#report_user_action'
+
     get "robots.txt" => "welcome#robots"
 
     match "/404", :to => "errors#not_found", :via => :all
