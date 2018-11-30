@@ -15,7 +15,7 @@ class BlogController < ApplicationController
     # @q = Archive.ransack(title_or_summary_cont: params[:q])
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @q = Archive.where(status: ['published', 'offline']).ransack(title_or_summary_cont: params[:q])
+      @q = Archive.where(status: ['published', 'offline', 'draft']).ransack(title_or_summary_cont: params[:q])
     else
       @q = Archive.where(status: 'published').ransack(title_or_summary_cont: params[:q])
     end
@@ -27,7 +27,7 @@ class BlogController < ApplicationController
     # @archive = Archive.find(params[:id])
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archive = Archive.where(status: ['published', 'offline']).find(params[:id])
+      @archive = Archive.where(status: ['published', 'offline', 'draft']).find(params[:id])
     else
       @archive = Archive.where(status: 'published').find(params[:id])
     end
@@ -38,7 +38,7 @@ class BlogController < ApplicationController
     # @archives = Archive.where(author: params[:author]).page params[:page]
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline'], author: params[:author]).page params[:page]
+      @archives = Archive.where(status: ['published', 'offline', 'draft'], author: params[:author]).page params[:page]
     else
       @archives = Archive.where(status: 'published', author: params[:author]).page params[:page]
     end
@@ -54,7 +54,7 @@ class BlogController < ApplicationController
     # @archives = Archive.where(category: category).page params[:page]
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline'], category: category).page params[:page]
+      @archives = Archive.where(status: ['published', 'offline', 'draft'], category: category).page params[:page]
     else
       @archives = Archive.where(status: 'published', category: category).page params[:page]
     end
@@ -68,7 +68,7 @@ class BlogController < ApplicationController
       # @hot_archives = Archive.hot_archives
       # 根据 current_editor 判断查询条件
       if current_editor.nil? == false
-        @hot_archives = Archive.where(status: ['published', 'offline']).hot_archives
+        @hot_archives = Archive.where(status: ['published', 'offline', 'draft']).hot_archives
       else
         @hot_archives = Archive.where(status: 'published').hot_archives
       end

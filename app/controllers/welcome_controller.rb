@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     # @top_archives = Archive.top_archives
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @top_archives = Archive.where(status: ['published', 'offline']).top_archives
+      @top_archives = Archive.where(status: ['published', 'offline', 'draft']).top_archives
     else
       @top_archives = Archive.where(status: 'published').top_archives
     end
@@ -30,7 +30,7 @@ class WelcomeController < ApplicationController
     # @archives = Archive.news_archives
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline']).news_archives
+      @archives = Archive.where(status: ['published', 'offline', 'draft']).news_archives
     else
       @archives = Archive.where(status: 'published').news_archives
     end
@@ -41,7 +41,7 @@ class WelcomeController < ApplicationController
     # @archives = Archive.product_archives
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline']).product_archives
+      @archives = Archive.where(status: ['published', 'offline', 'draft']).product_archives
     else
       @archives = Archive.where(status: 'published').product_archives
     end
@@ -50,8 +50,9 @@ class WelcomeController < ApplicationController
 
   def welfares
     # @archives = Archive.welfares_archives
+    # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline']).welfares_archives
+      @archives = Archive.where(status: ['published', 'offline', 'draft']).welfares_archives
     else
       @archives = Archive.where(status: 'published').welfares_archives
     end
