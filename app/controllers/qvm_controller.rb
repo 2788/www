@@ -22,27 +22,23 @@ class QvmController < ApplicationController
 
     uid = uinfo["uid"]
 
-    endpoint_url = "#{Rails.application.qvm_host}/api/v1/www/user/#{uid}/action"
+    endpoint_url = "#{Rails.configuration.qvm_host}/api/v1/www/user/#{uid}/action"
 
-    puts endpoint_url
-
-    call_qvm_with_parameter(endpoint_url, "POST", {})
-  end
-
-  def call_qvm_with_parameter(endpoint_url, method, params)
-
-    params[:Signature] = compute_signature(method, params)
+    query = {}
+    query[:Signature] = compute_signature("POST", query)
 
     uri = URI(endpoint_url)
-
-    uri.query = URI.encode_www_form(params)
-
+    uri.query = URI.encode_www_form(query)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = (uri.scheme == "https")
-
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    request = Net::HTTP::Post.new(uri.request_uri)
+    header = {
+      'Content-Type' => 'application/json'
+    }
+    request = Net::HTTP::Post.new(uri.request_uri, header)
+    request.body = params["qvm"].to_json.encode("UTF-8")
+
     response = http.request(request)
 
     case response

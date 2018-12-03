@@ -43,6 +43,7 @@
 
 #= require qvmfeeds
 #= require censorfeeds
+#= require qvm
 
 #= require uuid
 
