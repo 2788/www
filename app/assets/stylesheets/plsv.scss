@@ -13,6 +13,31 @@
       text-decoration: underline;
     }
   }
+  .csvc-link {
+    position: relative;
+    margin-top: 0.40rem;
+    font-size: 0.18rem;
+    a {
+      color: #F5CC2E;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .icon-hot {
+    width: 28px;
+    height: 20px;
+    position: absolute;
+    top: calc(-100% - 0.05rem);
+    left: 0;
+    background-image: image-url("hot.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .right-mask-banner {
+    line-height: 3.00rem;
+  }
 }
 
 .features.plsv-services {
@@ -290,6 +315,22 @@
   }
 }
 
+.row {
+  .five-sm-1,
+  .three-sm-1 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .jumbotron.hero.plsv .middle-container {
+    top: 55%;
+  }
+}
+
 @media (max-width: 1199px) {
   .features.tab-content-access {
     .access .steps .step.line {
@@ -304,19 +345,26 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) and (max-width: 1199px) {
   .jumbotron.hero.plsv .middle-container {
-    top: 60%;
+    top: 45%;
   }
 }
 
-.row {
-  .five-sm-1,
-  .three-sm-1 {
-    position: relative;
-    min-height: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
+@media (min-width: 768px) and (max-width: 991px) {
+  .jumbotron.hero.plsv .middle-container {
+    top: 45%;
+    .icon-hot {
+      top: calc(-50% - 0.05rem) !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .jumbotron.hero.plsv .middle-container {
+    .icon-hot {
+      top: calc(-100% - 0.15rem) !important;
+    }
   }
 }
 
