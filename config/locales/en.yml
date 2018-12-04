@@ -3374,6 +3374,12 @@ en:
           url: "https://www.ecug.org/"
           type: "url"
           isHot: true
+        - name: csvc
+          label: 中国短视频开发者创意大赛
+          path: csvc_events
+          url: "http://csvc.qiniu.com"
+          type: "url"
+          isHot: true
     - group: 云扶持
       list:
         - name: goglobal

@@ -2,17 +2,18 @@
   <div class="container">
     <div class="middle-container">
       <div class="row">
-        <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-7 col-xs-12">
           <h2>短视频解决方案</h2>
           <p>七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。</p>
-          <div class="actions">
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
             <%= link_to "0 元体验", "https://jinshuju.net/f/IeOD89", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
             <%= link_to "短视频 SDK", "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
             <%= link_to "播放器 SDK", products_player_path, target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
             <%= link_to "SDK 功能列表", "https://developer.qiniu.com/pili/sdk/3731/short-video", target: "_blank", class: "sdk-link" -%>
           </div>
+          <h5 class="csvc-link <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>"><i class="icon-hot"></i><%= link_to "中国短视频开发者创意大赛震撼来袭！万元现金大奖等你来拿", "http://csvc.qiniu.com", target: "_blank" -%></h5>
         </div>
-        <div class="col-sm-6 hidden-xs">
+        <div class="col-sm-5 hidden-xs">
           <div class="right-mask-banner">
             <%= image_tag "banner/banner-duanshipin-right-zh.png", alt: "短视频", width: "100%" -%>
           </div>
