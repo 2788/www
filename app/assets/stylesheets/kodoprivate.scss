@@ -1,0 +1,138 @@
+.hero-kodo-private {
+  .middle-container {
+    top: 45% !important;
+    .desc {
+      margin-top: 0.30rem;
+    }
+    .actions {
+      margin-top: 0.30rem;
+    }
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+}
+
+.features-kodo-private-framework {
+  .image-container {
+    text-align: center;
+  }
+}
+
+.features-kodo-private-challenge {
+  .thumbnail .caption {
+    h4 {
+      font-size: 0.24rem;
+    }
+  }
+}
+
+.features-kodo-private-new {
+  .thumbnail .caption {
+    h4 {
+      margin-bottom: 0.20rem;
+      font-size: 0.24rem;
+    }
+    p {
+      margin: 0.05rem 0;
+      text-align: center;
+    }
+  }
+}
+
+.features-kodo-private-why {
+  .thumbnail .caption {
+    h4 {
+      font-size: 24px;
+      text-align: left;
+      img {
+        margin-bottom: 5px;
+      }
+    }
+    p {
+      padding-left: 40px;
+    }
+  }
+}
+
+.features-kodo-private-own {
+  .col-own {
+    .media-left {
+      padding-right: 0.10rem;
+    }
+  }
+}
+
+.features-kodo-private-scene {
+  padding: 0.68rem 0;
+  .container {
+    .col-left {
+      margin-bottom: 0.30rem;
+    }
+    .col-right {
+      h3 {
+        margin-top: 0;
+      }
+      .desc {
+        margin-top: 0.30rem;
+      }
+    }
+  }
+}
+
+.features-kodo-private-client {
+  .col-client {
+    margin-top: 0.30rem;
+    margin-bottom: 0.30rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .features-kodo-private-own {
+    .col-own {
+      height: 2.50rem;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-kodo-private-own {
+    .col-own {
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .features-kodo-private-why {
+    .col-new {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features-kodo-private-challenge {
+    .thumbnail {
+      height: 4.00rem;
+    }
+  }
+  .features-kodo-private-scene {
+    .nav.nav-tabs li {
+      display: table-cell !important;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .features-kodo-private-own {
+    .col-own {
+      p {
+        text-align: center;
+      }
+    }
+  }
+}

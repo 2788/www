@@ -68,6 +68,9 @@ class ProductsController < ApplicationController
   def ecs
   end
 
+  def kodoprivate
+  end
+
   def qvmfeeds
   end
 
