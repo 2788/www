@@ -5,7 +5,8 @@
       <div class="row">
         <div class="col-xs-10 col-sm-8">
           <h2><%= I18n.t("views.products.kodoprivate.banner.title") -%></h2>
-          <p class="desc"><%= I18n.t("views.products.kodoprivate.banner.desc") -%></p>
+          <p class="desc"><%= I18n.t("views.products.kodoprivate.banner.desc1") -%></p>
+          <p class="desc mg-t-0"><%= I18n.t("views.products.kodoprivate.banner.desc2") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
             <%= link_to "咨询详情", "https://jinshuju.net/f/9nMcnt", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
           </div>
@@ -20,21 +21,8 @@
   </div>
 </div>
 
-<%# 导航条 %>
-<div class="kodo-private-nav hidden-xs">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.kodoprivate.navs").each do |nav| -%>
-          <li class="<%= nav[:class] -%>"><a href="<%= nav[:href] -%>"><%= nav[:title] -%></a></li>
-        <% end -%>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <%# 架构图 %>
-<div class="features features-less features-kodo-private-framework tab-content-framework">
+<div class="features features-less features-kodo-private-framework">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.kodoprivate.framework.title") -%></h2>
@@ -47,7 +35,7 @@
 </div>
 
 <%# 企业 IT 的挑战 %>
-<div class="features features-less features-cases features-kodo-private-challenge tab-content-challenge">
+<div class="features features-less features-cases features-kodo-private-challenge">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.kodoprivate.challenge.title") -%></h2>
@@ -86,7 +74,7 @@
 </div>
 
 <%# 助您迎接挑战 %>
-<div class="features features-less features-kodo-private-new tab-content-new">
+<div class="features features-less features-kodo-private-new">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.kodoprivate.new.title") -%></h2>
@@ -118,7 +106,7 @@
 </div>
 
 <%# 为什么选择七牛 %>
-<div class="features features-less features-cases features-kodo-private-why tab-content-why">
+<div class="features features-less features-cases features-kodo-private-why">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.kodoprivate.why.title") -%></h2>
@@ -141,7 +129,7 @@
             <h4><%= image_tag "kodoprivate/icon-why-2.png", alt: "成熟可靠的存储", width: 40 -%><span>成熟可靠的存储</span></h4>
             <p>16 个 9 的数据可靠性</p>
             <p>具备双活及跨地域多中心的服务能力</p>
-            <p>公有云验证的架构和方案</p>
+            <p>公有云多年验证的架构和方案</p>
           </div>
         </div>
       </div>
@@ -159,7 +147,7 @@
 </div>
 
 <%# 七牛让你拥有 %>
-<div class="features features-less features-kodo-private-own tab-content-own">
+<div class="features features-less features-kodo-private-own">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.kodoprivate.own.title") -%></h2>
@@ -188,7 +176,7 @@
 </div>
 
 <%# 应用场景 %>
-<div class="features features-less features-cases features-kodo-private-scene tab-content-scene">
+<div class="features features-less features-cases features-kodo-private-scene">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.kodoprivate.scene.title") -%></h2>
@@ -221,7 +209,7 @@
 </div>
 
 <%# 他们信任七牛 %>
-<div class="features features-less features-kodo-private-client tab-content-client">
+<div class="features features-less features-kodo-private-client">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
