@@ -3306,29 +3306,8 @@ en:
       kodoprivate:
         banner:
           title: "私有云存储"
-          desc: "七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 PB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
-        navs:
-          - class: "intLink active"
-            href: "#tab-content-framework"
-            title: "架构图"
-          - class: "intLink"
-            href: "#tab-content-challenge"
-            title: "企业 IT 的挑战"
-          - class: "intLink"
-            href: "#tab-content-new"
-            title: "助您迎接挑战"
-          - class: "intLink"
-            href: "#tab-content-why"
-            title: "为什么选择七牛"
-          - class: "intLink"
-            href: "#tab-content-own"
-            title: "七牛让你拥有"
-          - class: "intLink"
-            href: "#tab-content-scene"
-            title: "应用场景"
-          - class: "intLink"
-            href: "#tab-content-client"
-            title: "他们信任七牛"
+          desc1: "七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。"
+          desc2: "能够为客户搭建数百 PB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
         framework:
           title: "架构图"
           image: "kodoprivate/image-framework.png"
@@ -3406,7 +3385,7 @@ en:
               class: "tab-pane fade"
               image: "kodoprivate/image-scene-4.jpg"
               title: "多媒体数据处理"
-              desc: "集成七牛云 AI 、图片、音视频等多媒体数据处理服务。同时支持自定义数据处理应用，兼容接口协议即可集成。只需在文件的访问URL 之后附加上对应的处理命令以及请求参数，即可实现对存储数据灵活的访问并完成加工处理。"
+              desc: "集成七牛云 AI 、图片、音视频等多媒体数据处理服务。同时支持自定义数据处理应用，兼容接口协议即可集成。只需在文件的访问 URL 之后附加上对应的处理命令以及请求参数，即可实现对存储数据灵活的访问并完成加工处理。"
         client:
           title: "他们信任七牛"
   navbar:
