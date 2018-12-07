@@ -3607,6 +3607,10 @@ en:
       title: Qiniu Cloud-Object Storage（KODO）-Safe、Highly-reliable、Easy to Expand、Low in Cost、Intelligent in Data
       keywords: Cloud Storage, Object Storage, Qiniu Cloud, Private Cloud Storage, High Concurrency of Mass Data, Backup and Archive, Hosting of Static Resources, Mirrored Storage, Low-frequency Storage, Multimedia Data Processing, Upload/ Download
       description: Qiniu Cloud's object storage (KODO), a completely independent-researched core technology which is proven by repeated customer experience has occupied absolute leading market leader position. KODO can be widely applied to mass data management. It is safe, highly reliable, easy to expand, low-cost, and intelligent in data.
+    products_kodoprivate:
+      title: 私有云_私有云存储 - 七牛云
+      keywords: 私有云，私有云存储，企业私有云，私有云系统，私有云方案，私有化存储
+      description: 七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 PB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。
     products_pili:
       title: Qiniu Cloud-Live Video Cloud（PILI）
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction
