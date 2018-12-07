@@ -3489,6 +3489,11 @@ zh-CN:
           label: 对象存储
           desc: 高可用、易扩展、低成本、一站式、支持边缘存储
           isNew: true
+        
+        - name: private_cloud_kodo
+          label: 私有云存储
+          desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+          isNew: true
 
         - name: fusion
           label: 融合 CDN
@@ -3638,23 +3643,40 @@ zh-CN:
           type: product
           isNew: true
       - cols:
-        - name: privatization
-          label: 私有云存储解决方案
-          desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+        # 隐藏 私有云存储解决方案 项
+        # https://jira.qiniu.io/browse/BO-5888
+        # - name: privatization
+        #   label: 私有云存储解决方案
+        #   desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+        #   type: solution
+        - name: qualityctrl
+          label: 应用质量监控解决方案
+          desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
           type: solution
         - name: security
           label: 安防解决方案
           desc: 灵活部署，满足不同安防场景互联网远程监控需求
           type: solution
       - cols:
-        - name: qualityctrl
-          label: 应用质量监控解决方案
-          desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
-          type: solution
+        - name: pili_livequiz
+          label: 直播竞答解决方案
+          desc: 七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案
+          type: product
         - name: intelligence
           label: 智能硬件与物联网解决方案
           desc: 满足智能硬件厂商各应用场景下云端计算需求
           type: solution
+      - cols:
+        - name:
+          label:
+          desc:
+          type:
+        - name: internet
+          label: 互联网与移动互联网解决方案
+          desc: 为互联网初创企业量身定制，一站式云计算服务平台
+          type: solution
+      # BO-5466 隐藏 智能云相册解决方案 项
+      # https://jira.qiniu.io/browse/BO-5466
       # - cols:
       #   - name: album
       #     label: 智能云相册解决方案
@@ -3728,6 +3750,10 @@ zh-CN:
       title: 对象存储_海量安全高可靠的云存储 - 七牛云
       keywords: 云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案，视频托管，图片托管，低频存储，镜像存储，私有部署，静态资源托管，备份归档，数据迁移，数据灾备，弹性扩容
       description: 七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。
+    products_kodoprivate:
+      title: 私有云_私有云存储 - 七牛云
+      keywords: 私有云，私有云存储，企业私有云，私有云系统，私有云方案，私有化存储
+      description: 七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 PB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。
     products_pili:
       title: 直播云_云直播_直播SDK_直播云服务 - 七牛云
       keywords: 直播云，云直播，直播 SDK，视频直播云服务，直播云服务，直播 API，推流 SDK，播放 SDK，七牛直播，七牛直播云，quic 推流

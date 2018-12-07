@@ -102,18 +102,6 @@
                       <% end -%>
                     </li>
                   <% end -%>
-                  <%# BO-5466 隐藏 智能云相册解决方案 项后重新排列顺序 %>
-                  <%# https://jira.qiniu.io/browse/BO-5466 %>
-                  <li class="solution">
-                    <%= link_to products_pili_livequiz_path do -%>
-                      <h4 class="quiz menu-title">直播竞答解决方案</h4>
-                      <p class="hidden-xs">七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案</p>
-                    <% end -%>
-                    <%= link_to(solutions_path(anchor: "internet")) do -%>
-                      <h4 class="internet menu-title">互联网与移动互联网解决方案</h4>
-                      <p class="hidden-xs">为互联网初创企业量身定制，一站式云计算服务平台</p>
-                    <% end -%>
-                  </li>
                 </ul>
 
               <% elsif I18n.t("views.language") == 'en' -%>
