@@ -44,10 +44,13 @@ Rails.application.routes.draw do
     get '/products/snow',                  to: 'products#snow'
     get '/products/ecs',                   to: 'products#ecs'
     get '/products/private-cloud-kodo',    to: 'products#kodoprivate'
+
+    # 推广结束，屏蔽 qvmfeeds 和 censorfeeds 的路由
+    # https://jira.qiniu.io/browse/BO-5919
     # qvm 广告推广页
-    get '/products/qvmfeeds',       to: 'products#qvmfeeds'
+    # get '/products/qvmfeeds',       to: 'products#qvmfeeds'
     # censor 广告推广页
-    get '/products/censorfeeds',    to: 'products#censorfeeds'
+    # get '/products/censorfeeds',    to: 'products#censorfeeds'
 
     # censor 新增的两个页面，用于关键词排名，只增加路由不新增入口
     # https://jira.qiniu.io/browse/BO-5767
