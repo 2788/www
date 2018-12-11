@@ -103,8 +103,8 @@ class ProductsController < ApplicationController
   end
 
   # 生成签名(base64编码后)
-  def generate_encoded_sign(originStr)
-    hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), Rails.application.secrets.atlab_sec_key, originStr)
+  def generate_encoded_sign(key, originStr)
+    hmac_digest = OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha1'), key, originStr)
     return Qiniu::Utils.urlsafe_base64_encode(hmac_digest)
   end
 
@@ -131,7 +131,7 @@ class ProductsController < ApplicationController
     # 生成qiniu_token
     originStr = "POST " + uri.path + "\nHost: " + uri.host + "\nContent-Type: application/json\n\n"
     originStr += body.to_json.encode('UTF-8')
-    encoded_sign = generate_encoded_sign(originStr)
+    encoded_sign = generate_encoded_sign(Rails.application.secrets.atlab_sec_key, originStr)
     qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
 
     header = {
@@ -200,7 +200,7 @@ class ProductsController < ApplicationController
     originStr = "POST " + uri.path + "\nHost: " + uri.host + "\nContent-Type: application/json\n\n"
     originStr += body.to_json.encode('UTF-8')
 
-    encoded_sign = generate_encoded_sign(originStr)
+    encoded_sign = generate_encoded_sign(Rails.application.secrets.atlab_sec_key, originStr)
     qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
 
     header = {
@@ -241,6 +241,52 @@ class ProductsController < ApplicationController
           result: nil
         }
         return
+    end
+  end
+
+
+  # POST /qvm/user/action
+  # 上报QVM相关用户行为
+  def report_user_action
+
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "success": false,
+      }
+      return
+    end
+
+    uid = uinfo["uid"]
+
+    endpoint_url = "#{Rails.configuration.qvm_host}/api/v1/www/user/#{uid}/action"
+
+    query = {}
+    query[:Signature] = generate_encoded_sign(Rails.application.secrets.qvm_secret_key+"&", "POST&%2F&")
+
+    uri = URI(endpoint_url)
+    uri.query = URI.encode_www_form(query)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = (uri.scheme == "https")
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    header = {
+      'Content-Type' => 'application/json'
+    }
+    request = Net::HTTP::Post.new(uri.request_uri, header)
+    request.body = params["product"].to_json.encode("UTF-8")
+
+    response = http.request(request)
+
+    case response
+    when Net::HTTPSuccess
+      render json: response.body
+      return
+    else
+      render json: {
+        "success": false
+      } 
+      return
     end
   end
 

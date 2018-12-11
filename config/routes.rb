@@ -108,6 +108,9 @@ Rails.application.routes.draw do
     # video_censor
     post '/video_censor', to: 'products#video_censor'
 
+    # qvm
+    post "/qvm/user/action", to: 'products#report_user_action'
+
     # get_heat
     get '/get_heat', to: 'events#get_heat'
 
