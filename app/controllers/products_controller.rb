@@ -262,7 +262,7 @@ class ProductsController < ApplicationController
     endpoint_url = "#{Rails.configuration.qvm_host}/api/v1/www/user/#{uid}/action"
 
     query = {}
-    query[:Signature] = generate_encoded_sign(Rails.application.secrets.qvm_secret_key+"&", "POST&%2F&")
+    query[:Signature] = generate_encoded_sign(Rails.application.secrets.qvm_secret_key + "&", "POST&%2F&")
 
     uri = URI(endpoint_url)
     uri.query = URI.encode_www_form(query)
