@@ -30,9 +30,9 @@ class WelcomeController < ApplicationController
     # @archives = Archive.news_archives
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline', 'draft']).news_archives
+      @archives = Archive.where(status: ['published', 'offline', 'draft']).news_archives.page params[:page]
     else
-      @archives = Archive.where(status: 'published').news_archives
+      @archives = Archive.where(status: 'published').news_archives.page params[:page]
     end
     render "about"
   end
@@ -41,9 +41,9 @@ class WelcomeController < ApplicationController
     # @archives = Archive.product_archives
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline', 'draft']).product_archives
+      @archives = Archive.where(status: ['published', 'offline', 'draft']).product_archives.page params[:page]
     else
-      @archives = Archive.where(status: 'published').product_archives
+      @archives = Archive.where(status: 'published').product_archives.page params[:page]
     end
     render "about"
   end
@@ -52,9 +52,9 @@ class WelcomeController < ApplicationController
     # @archives = Archive.welfares_archives
     # 根据 current_editor 判断查询条件
     if current_editor.nil? == false
-      @archives = Archive.where(status: ['published', 'offline', 'draft']).welfares_archives
+      @archives = Archive.where(status: ['published', 'offline', 'draft']).welfares_archives.page params[:page]
     else
-      @archives = Archive.where(status: 'published').welfares_archives
+      @archives = Archive.where(status: 'published').welfares_archives.page params[:page]
     end
     render "about"
   end
