@@ -28,6 +28,7 @@
               </div>
               <%# <%= content_tag :div, link_to(content_tag(:h4, archive[:title]) + content_tag(:time, archive[:created_at].strftime("%Y-%m-%d")) + content_tag(:span, "发布在   " + Archive::CATEGORIES[archive.category], class: "category") + content_tag(:p, archive[:summary], class: "news-content"), "#{ Rails.application.config.blog_host }/archives/#{ archive.id }", target: "_blank" ), class: "news-modal clear-pt" -%>
             <% end %>
+            <div class="paginate-wrapper"><%= paginate @archives, window: 2, outer_window: 3 %></div>
           </section>
         </div>
       </div>

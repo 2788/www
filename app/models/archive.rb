@@ -46,17 +46,20 @@ class Archive < ApplicationRecord
   end
 
   def self.news_archives
-    news = Archive.new_lists.limit(10)
+    # news = Archive.new_lists.limit(10)
+    news = Archive.new_lists
     return news
   end
 
   def self.product_archives
-    product_news = Archive.product_lists.limit(10)
+    # product_news = Archive.product_lists.limit(10)
+    product_news = Archive.product_lists
     return product_news
   end
 
   def self.welfares_archives
-    welfares = Archive.welfares_lists.limit(10)
+    # welfares = Archive.welfares_lists.limit(10)
+    welfares = Archive.welfares_lists
     return welfares
   end
 
