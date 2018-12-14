@@ -371,6 +371,14 @@ $(document).ready ->
       $('.timeline-ul').find('.left-li').addClass('left')
       $('.timeline-ul').find('.left-li').removeClass('right')
 
+# 下载 gartner atlab 白皮书
+$(document).ready ->
+  $('#gartner-atlab-btn-index').on 'click', (e) ->
+    e.preventDefault()
+    if saveAs?
+      saveAs "https://mars-assets.qnssl.com/gartner_atlab_white_book.pdf", "深度学习平台完全实践指南.pdf"
+
+
 # get userinfo
 $(document).ready ->
   uuid = generateUUID()
