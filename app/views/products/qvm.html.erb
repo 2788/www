@@ -28,6 +28,59 @@
   </div>
 </div>
 
+<%# buy tab %>
+<%# qvm 产品页购买板块暂时隐藏，等 qvm portal 上线 %>
+<%# https://jira.qiniu.io/browse/BO-5911 %>
+<% if false -%>
+<div class="features features-less features-cases features-qvm-buy">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.qvm.buy.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.products.qvm.buy.col").each do |col| -%>
+        <div class="col-md-3 col-sm-6 col-xs-12 col-buy">
+          <div class="thumbnail">
+            <div class="title-container">
+              <p class="title"><%= col[:title] -%></p>
+              <p class="desc"><%= col[:desc1] -%></p>
+              <p class="desc"><%= col[:desc2] -%></p>
+            </div>
+            <div class="row row-icon">
+              <% col[:icons].each do |item| -%>
+                <div class="col-md-4 col-sm-4 col-xs-4 col-icon">
+                  <%= image_tag item[:icon], title: item[:title], alt: item[:title], width: 50 -%>
+                  <p><%= item[:title] -%></p>
+                  <p class="<%= item[:class] -%>"><%= item[:param] -%></p>
+                </div>
+              <% end -%>
+            </div>
+            <div class="tabs tabs-buy">
+              <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+                <% col[:navs].each do |nav| -%>
+                  <li class="<%= nav[:class] -%>"><%= link_to nav[:title], nav[:link], class: "btn btn-hollow tabs-buy-btn", data:{ toggle: "tab" } -%></li>
+                <% end -%>
+              </ul>
+              <div class="tab-content">
+                <% col[:sections].each do |section| -%>
+                  <section class="<%= section[:class] -%>" id="<%= section[:id] -%>">
+                    <p class="tabs-buy-container">
+                      <span class="price-span"><%= section[:price] -%></span><span class="tag-span">&nbsp;元</span>
+                      <%= link_to "立即购买", section[:link], class: "btn btn-hollow btn-buy", id: section[:btnID], target: "_blank" -%>
+                    </p>
+                  </section>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+<% end -%>
+
 <%# advantage tab %>
 <div class="features features-qvm-adva">
   <div class="container">
