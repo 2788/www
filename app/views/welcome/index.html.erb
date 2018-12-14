@@ -6,8 +6,8 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "立即参赛", "http://csvc.qiniu.com", target: "_blank", id: "banner-csvc-join-btn", class:"btn btn-lg btn-warning" -%>
-            <%= link_to "邀请好友", "http://csvc.qiniu.com", target: "_blank", id: "banner-csvc-invite-btn", class:"btn btn-lg btn-hollow" -%>
+            <%= link_to "立即参赛", "http://csvc.qiniu.com", target: "_blank", id: "banner-csvc-join-btn", class: "btn btn-lg btn-warning" -%>
+            <%= link_to "邀请好友", "http://csvc.qiniu.com", target: "_blank", id: "banner-csvc-invite-btn", class: "btn btn-lg btn-hollow" -%>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "立即开启", "/events/qvm1rmb?entry=index-banner", target: "_blank", id: "banner-qvm1rmb-1123-btn", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "立即开启", "/events/qvm1rmb?entry=index-banner", target: "_blank", id: "banner-qvm1rmb-1123-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "立即参加", "/events/1024event?entry=index-banner", target: "_blank", id: "banner-1024event-btn", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "立即参加", "/events/1024event?entry=index-banner", target: "_blank", id: "banner-1024event-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -49,13 +49,29 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "即刻参与", "/events/double11?entry=index-banner", target: "_blank", id: "banner-double11-btn", class:"btn btn-lg btn-banner" -%>
+            <%= link_to "即刻参与", "/events/double11?entry=index-banner", target: "_blank", id: "banner-double11-btn", class: "btn btn-lg btn-banner" -%>
           </div>
         </div>
       </div>
     </div>
   </div>
   <% end -%>
+
+  <div class="jumbotron hero hero-gartner">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>七牛云&nbsp;&amp;&nbsp;Gartner</h1>
+              <p>联合发布《深度学习平台完全实践指南》白皮书</p>
+            </div>
+            <%= link_to "立即下载", "", id: "gartner-atlab-btn-index", class: "btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="jumbotron hero hero-qvm1rmb-index">
     <div class="container">
@@ -66,7 +82,7 @@
               <h1>企业&nbsp;<span class="text-warn text-huge">0</span>&nbsp;成本上云</h1>
               <h2>最高可达<span class="text-warn">&nbsp;4&nbsp;核&nbsp;8G</span></h2>
             </div>
-            <%= link_to "立即领取", "/events/qvm0rmb?entry=index-banner", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "立即领取", "/events/qvm0rmb?entry=index-banner", target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -80,7 +96,7 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "了解详情", "https://blog.qiniu.com/archives/8810", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "了解详情", "https://blog.qiniu.com/archives/8810", target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -93,7 +109,7 @@
       <div class="middle-container">
         <div class="row">
           <div class="col-sm-12">
-            <%= link_to "立即使用", products_censor_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "立即使用", products_censor_path, target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -110,7 +126,7 @@
               <h1>监控视频边缘存储解决方案 <span class="text-warn">正式发布</span></h1>
               <p>监控视频及图片就近存储、加速传输、倍速播放 <span class="text-warn">一键激活</span></p>
             </div>
-            <%= link_to "查看详情", products_ess_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "查看详情", products_ess_path, target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -126,24 +142,7 @@
               <h1>在线教育解决方案</h1>
               <p><span class="text-warn">150ms</span> 低延迟，<span class="text-warn">99.9%</span> 连通率，<span class="text-warn">9Kbps</span> 互动白板，<span class="text-warn">30 天</span>实现直播课堂</p>
             </div>
-            <%= link_to "查看详情", products_edu_path, target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="jumbotron hero hero-pili">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>七牛云导播台</h1>
-              <p>面向广电、活动、赛事直播的轻量级导播服务</p>
-              <p>直播内容在线编辑输出，随时随地轻松导播</p>
-            </div>
-            <%= link_to "立即使用", "https://developer.qiniu.com/pili/manual/4731/caster", target: "_blank", class:"btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "查看详情", products_edu_path, target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
