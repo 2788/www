@@ -1,16 +1,62 @@
 <div class="jumbotron hero hero-niuday niuday-meitu">
   <div class="container">
     <div class="img-wrapper">
-      <h4 class="text-center p-sm">2018 年 7 月 28 日 · 厦门市 福建厦门软件园二期观日路33号3F</h4>
-      <%= link_to "立即报名", "http://www.huodongxing.com/event/5447491881911?qd=guanw", target: "_blank", class: "btn btn-lg btn-primary btn-banner m-sm" %>
+      <h4 class="text-center p-sm">2018 年 7 月 28 日 · 厦门市 福建厦门软件园二期观日路 33 号 3F</h4>
     </div>
   </div>
 </div>
 
 <div class="features features-niuday">
   <div class="container">
-    <p class="text">随着人工智能在我国移动互联网、智能家居、智能安防、智慧教育等等领域的发展，我国人工智能产业持续高速成长。从2014年起，中国人工智能产业的创业潮就开始兴起，直至2018年，机器学习、深度学习等算法能力的增强将促进计算机视觉等技术不断突破。人工智能在2018年将面临爆发式的商业化着陆，在这个智能时代，七牛云NIUDAY小牛汇共享日活动围绕自身产品重点产品线将在全国10多个城市围绕行业、技术和创新展开全方位的探讨和分享，一起用AI技术赋能未来，“智”造梦想。</p>
+    <p class="text">随着人工智能在我国移动互联网、智能家居、智能安防、智慧教育等等领域的发展，我国人工智能产业持续高速成长。从 2014 年起，中国人工智能产业的创业潮就开始兴起，直至 2018 年，机器学习、深度学习等算法能力的增强将促进计算机视觉等技术不断突破。人工智能在 2018 年将面临爆发式的商业化着陆，在这个智能时代，七牛云 NIUDAY 小牛汇共享日活动围绕自身产品重点产品线将在全国 10 多个城市围绕行业、技术和创新展开全方位的探讨和分享，一起用 AI 技术赋能未来，“智”造梦想。</p>
   </div>
+</div>
+
+<div class="features features-niuday features-tech">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title border-y">精彩回顾</h2>
+    </div>
+    <div class="row tech-row">
+     <% I18n.t("niudays.xiamen.video").each do |event| -%>
+        <div class="col-sm-6 col-md-4 tech-col">
+          <div class="infobox">
+            <div class="case grid-container" data-src="<%= event[:link] -%>">
+              <a class="btn-icon"></a>
+              <%= image_tag "niuday/niuday-kv-xiamen.jpg" -%>
+            </div>
+            <div class="lecturer">
+              <div class="lecturer-box">
+                <div class="img-box">
+                  <%= image_tag event[:avatar], class: "lecturer-photo", alt: event[:speaker], width: 50 -%>
+                </div>
+                <div class="lecturer-info-box">
+                  <div class="lecturer-tail">
+                    <h4 class="lecturer-name color-light"><%= event[:speaker] -%></h4>
+                    <h5 class="lecturer-job color-light"><%= event[:title] -%></h5>
+                  </div>
+                  <div class="short-line color-light"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="video-play-modal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <video src="" controls="controls" id="edu-video">
+            your browser does not support the video tag
+          </video>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
 
 <div class="features features-niuday">
@@ -56,7 +102,7 @@
         <tbody>
           <tr>
             <td>议题一</td>
-            <td>“视觉智能的革命” — 打造视频云时代的AI创新服务体系</td>
+            <td>“视觉智能的革命” — 打造视频云时代的 AI 创新服务体系</td>
             <td>姚唐仁 - 七牛云人工智能实验室首席架构师</td>
             <td>30 min</td>
           </tr>
@@ -99,7 +145,7 @@
           <tr>
             <td>议题七</td>
             <td>自然语言人机交互的伪人工智能困境</td>
-            <td>蔡振华 - 快商通合伙人，AI引擎平台研发中心副总监</td>
+            <td>蔡振华 - 快商通合伙人，AI 引擎平台研发中心副总监</td>
             <td>30 min</td>
           </tr>
 
@@ -159,7 +205,7 @@
     <div class="content">
       <p class="desc text-left">1.报名审核成功后，主办方会统一短信通知会议地址及详情。</p>
       <p class="desc text-left">2.会议签到凭证为成功报名后收到的二维码，一人一票。</p>
-      <p class="desc text-left">3.线上报名截止日为7月28日0时，不接受现场报名。</p>
+      <p class="desc text-left">3.线上报名截止日为 7 月 28 日 0 时，不接受现场报名。</p>
     </div>
   </div>
 </div> 
