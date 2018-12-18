@@ -1,744 +1,173 @@
-<div class="banner-box">
-  <%= image_tag "newmedia/banner.jpg", class: "banner-image" -%>
-  <div class="content-box">
-    <div class="container">
-      <div class="content newmedia-content">
-        <h1 class="title">媒体融合一站式解决方案</h1>
-        <h4 class="key">全面  ·  智能  ·  深度  ·  融合</h4>
-        <p class="desc">提供超越传统 IT 的定制服务，实现统一的跨终端交互体验，云端数据永不过期、永远在线，大于三级等保的安全防护</p>
-      </div>
+<div class="banner-box banner-box-newmedia">
+    <div class="tittle-newmedia">
+        <h1>融合媒体效率解决方案</h1>
+        <p>整合广播、电视、网站、移动端、新媒体等多个渠道</p>
+        <p>为省市县各级媒体融合提供完整的解决方案</p>
     </div>
-  </div>
+  <%= image_tag "newmedia/banner", class: "banner-newmedia" %>
 </div>
-
-<div class="features newmedia-nav">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified nav-tabs-newmedia" role="tablist">
-        <li class="first active"><a href="#center" data-toggle="tab">
-          播控中心
-          <span class="line hidden-xs"></span></a>
-        </li>
-        <li><a href="#engine" data-toggle="tab">
-          数据引擎
-          <span class="line hidden-xs"></span></a>
-        </li>
-        <li><a href="#matrix" data-toggle="tab">
-          产品矩阵
-          <span class="line hidden-xs"></span></a>
-        </li>
-        <li><a href="#commerce" data-toggle="tab">商业增值</a></li>
-      </ul>
+<div class="container newmedia">
+    <h2>新媒体行业产品体系</h2>
+    <div class="content-matrix-newmedia container">
+        <div class="col-sm-4">
+            <h5 class="blue">媒体数据加工</h5>
+            <ul>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengbokong" %>
+                    </div>
+                    <p>智能播控</p>
+                    <p class="detail">简洁易用的云端直播在线生产系统</p>
+                    <p class="detail">无需传统导播台的巨额成本</p>
+                    <p class="detail">显著提升直播体验和互动效果</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-chaojifenbianlv" %></div>
+                    <p>超级分辨率</p>
+                    <p class="detail">稳定高效的直播流量压缩工具</p>
+                    <p class="detail">基于超分辩率成像技术对视频流进行重构</p>
+                    <p class="detail">大幅度降低 CDN 带宽成本</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengchaitiao" %></div>
+                    <p>智能拆条</p>
+                    <p class="detail">快速智能的新闻内容拆条工具</p>
+                    <p class="detail">基于深度学习系统的算法优化</p>
+                    <p class="detail">有效提高人工效率和传播速度</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-yunfeibian" %></div>
+                    <p>云非编</p>
+                    <p class="detail">云快编以强大云端资源作支持</p>
+                    <p class="detail">实现多轨无上限编辑、主流视频特效及音频、</p>
+                    <p class="detail">字幕、转场模版等丰富功能</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <h5 class="orange">媒体数据管理</h5>
+            <ul>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-neirongguanlipingtai" %></div>
+                    <p>内容管理平台</p>
+                    <p class="detail">集成图文编辑能力、音频和视频编辑能力</p>
+                    <p class="detail">搭建统一的融合媒体生产平台</p>
+                    <p class="detail">赋能广电新媒体以及大型企事业单位的新闻中心</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengmeizi" %></div>
+                    <p>智能媒资</p>
+                    <p class="detail">智能媒资以强大的工作流引擎</p>
+                    <p class="detail">组织调度采编流程中的各个环节</p>
+                    <p class="detail">提高采编效率，保障内容安全、编目可用</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengshenhe" %></div>
+                    <p>智能审核</p>
+                    <p class="detail">智能审核从技审、文字、音频、画面等方面</p>
+                    <p class="detail">全维度保障播出内容安全</p>
+                    <p class="detail">强大的智能学习平台助力敏感信息快速学习</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-yewuweifuwuyinqing" %></div>
+                    <p>业务微服务引擎</p>
+                    <p class="detail">灵活便捷的资源整合平台</p>
+                    <p class="detail">基于微服务架构的容器云技术推进融合发展</p>
+                    <p class="detail">满足业务应用的多变性和敏捷交付要求</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <h5 class="green">媒体数据经营</h5>
+            <ul>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengshujujiankong" %></div>
+                    <p>智能数据监控系统</p>
+                    <p class="detail">智能化、体系化运维管理工具，</p>
+                    <p class="detail">降低运维人员工作强度，</p>
+                    <p class="detail">为精细化资源管理提供决策依据</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-banquanjiaoyi" %></div>
+                    <p>版权交易</p>
+                    <p class="detail">优质媒体资产的经营分发平台，</p>
+                    <p class="detail">淘宝式的交易流程管理，降低运营成本，</p>
+                    <p class="detail">促进地区版权交易良性发展</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-shujukeshihua" %></div>
+                    <p>数据可视化</p>
+                    <p class="detail">轻松搭建专业水准的大屏幕可视化应用，</p>
+                    <p class="detail">定制数十种行业专业数据模版，</p>
+                    <p class="detail">满足业务监控、成果汇聚等多种展示需求</p>
+                </li>
+                <li>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-weihudongpingtai" %></div>
+                    <p>微互动平台</p>
+                    <p class="detail">免开发快速搭建直播互动页面，</p>
+                    <p class="detail">实时接入公众号菜单，</p>
+                    <p class="detail">伴随电视直播流同步提供互动模块化功能</p>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
-
-<div class="tab-content features-newmedia">
-  <div class="tab-pane fade in active" id="center">
-    <div class="features">
-      <div class="container">
-        <div class="intro">
-          <div class="title">融合媒体统合播控中心</div>
-          <p class="desc">服务媒体融合过程中的一切环节，从制作生产、多级审核、媒资管理到传播分发</p>
+<div class="container newmedia index-solution-wrap-newmedia">
+    <h2>新媒体行业解决方案全景</h2>
+    <div class="container index-solution-newmedia">
+        <div class="center-newmedia">
+            <div class="col-sm-4 col-xs-6">
+                <div class="index-scene-newmedia">
+                    <%= image_tag "newmedia/icon-ronghemeiti1" %>
+                    <p>融合媒体效率解决方案</p>
+                    <div class="line-newmedia"></div>
+                    <div class="entrance-newmedia">
+                        <p>整合全媒体渠道</p>
+                        <p>为省市县各级媒体融合</p>
+                        <p>提供完整的解决方案</p>
+                        <div class="btn-newmedia undone-newmedia">敬请期待</div>
+                    </div>
+                </div>
+                <%= image_tag "newmedia/img-ronghemeiti1.jpg", class: "fanganquanjing-newmedia" %>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+            <div class="index-scene-newmedia">
+                <%= image_tag "newmedia/icon-ronghemeiti2" %>
+                <p>互动直播管理解决方案</p>
+                <div class="line-newmedia"></div>
+                <div class="entrance-newmedia">
+                    <p>以实时音视频云为平台，支持</p>
+                    <p>多码率自适应云转码、多径传输</p>
+                    <p>实现大规模低延时直播互动</p>
+                    <div class="btn-newmedia undone-newmedia">敬请期待</div>
+                </div>
+            </div>
+            <%= image_tag "newmedia/img-ronghemeiti2.jpg", class: "fanganquanjing-newmedia" %>
         </div>
-        <div class="img-box">
-          <%= image_tag "newmedia/img-center.png" -%>
+            <div class="col-sm-4 col-xs-6">
+            <div class="index-scene-newmedia">
+                <%= image_tag "newmedia/icon-ronghemeiti3" %>
+                <p>智能流化解决方案</p>
+                <div class="line-newmedia"></div>
+                <div class="entrance-newmedia">
+                    <p>以容器虚拟化技术为核心</p>
+                    <p>将终端负载，迁至云端容器</p>
+                    <p>实现可低延时交互的流化业务</p>
+                    <div class="btn-newmedia undone-newmedia">敬请期待</div>
+                </div>
+            </div>
+            <%= image_tag "newmedia/img-ronghemeiti3.jpg", class: "fanganquanjing-newmedia" %>
         </div>
-      </div>
-    </div>
-
-    <div class="features features-newmedia-bg features-newmedia-center">
-      <div class="container">
-        <div class="boxes">
-          <div class="left">
-            <%= image_tag "newmedia/img-chaomeitironghebochu.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-chaomeitironghebochu.png", class: "icon" -%>
-            <h4 class="title">超媒体融合播出</h4>
-          </div>
-          <div class="right">
-            <div class="row-box line">
-              <div class="row">
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-duoqudaoxinyuancaiji.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">多渠道信源采集</h4>
-                      <p>兼容多种采集终端、多种网络环境</p>
-                      <p>多机位的直播信源</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-yunduanlingjulidaobo.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">云端零距离导播</h4>
-                      <p>随时随地享有广播级导播台</p>
-                      <p>方便直播节目创作</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <%= image_tag "newmedia/icon-diyanshizhibohudong.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">低延时直播互动</h4>
-                      <p>十毫秒级的直播延时</p>
-                      <p>无滞后感的用户交互</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row-box">
-              <div class="row">
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-shishizhiboliubianji.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">实时直播流编辑</h4>
-                      <p>识别、处理直播流中的敏感信息</p>
-                      <p>可预设的编辑模板</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-zhiboliuyunduancunchu.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">直播流云端存储</h4>
-                      <p>直播流按需存储为点播格式</p>
-                      <p>便于后续业务调用</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <p class="summary">实时视频流收录，多格式转码封装，超低延时分发，快速搭建直播服务，便捷调度直播信源，推送多屏终端，共享内容红利</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxes">
-          <div class="left pu-right">
-            <%= image_tag "newmedia/img-kuapingtaiwuxianziyuanchi.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-kuapingtaiwuxianziyuanchi.png", class: "icon" -%>
-            <h4 class="title">跨平台无限资源池</h4>
-          </div>
-          <div class="right pu-left">
-            <div class="row-box line">
-              <div class="row">
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-meitisiyouyun.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">媒体私有云</h4>
-                      <p>私有部署，保障业务私密性</p>
-                      <p>公有支撑，计算能力无上限</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-yunduanzhuanmanenglichi.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">云端转码能力池</h4>
-                      <p>一个容器集纳多种资源，一套策略</p>
-                      <p>满足多种需求，一步操作多屏发布</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <%= image_tag "newmedia/icon-yunduanwenjiangui.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">云端文件柜</h4>
-                      <p>云端存储、云端加密</p>
-                      <p>随时随处调用</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row-box">
-              <div class="row">
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-ronghecdn.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">融合 CDN</h4>
-                      <p>低延时、高稳定、广覆盖的</p>
-                      <p>跨供应商 CDN 无缝调度</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-yunduananquanfanghu.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">云端安全防护</h4>
-                      <p>以云端算力防御各类攻击渗透</p>
-                      <p>即开即用，业务无中断之忧</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="thumbnail thumbnail-right-last">
-                    <p class="summary">从计算能力、存储能力到带宽服务、安全防护，为各类系统资源需求提供无限量的资源池服务；无限资源、自主管理、按需付费</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxes">
-          <div class="left">
-            <%= image_tag "newmedia/img-tanxingmeiziguanlifuwu.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-tanxingmeiziguanlifuwu.png", class: "icon" -%>
-            <h4 class="title">弹性媒资管理</h4>
-          </div>
-          <div class="right">
-            <div class="row-box line">
-              <div class="row">
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-cuqieshipin.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">粗切视频多码率媒资存储</h4>
-                      <p>存储高码率视频</p>
-                      <p>实时输出多种下级码率</p>
-                      <p>一份存储，多种调用</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <%= image_tag "newmedia/icon-jingqieshipin.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">精切视频自动标签化存储</h4>
-                      <p>人工智能自动识别关键帧、转场帧</p>
-                      <p>标识标签信息，便于视频二次使用</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row-box">
-              <div class="row">
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-yanshengshipin.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">衍生视频弹性关联存储</h4>
-                      <p>通过机器学习，抓取存储相关视频</p>
-                      <p>让媒资自动归类、自动增长、主动管理</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <p class="summary narrow">在为粗、精切视频提供云端媒资的同时，对多码率、多格式副本和传播中产生的二次内容弹性入库，辅以全媒体内容特征库，完善内容分类标签，升格媒资管理</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxes">
-          <div class="left pu-right">
-            <%= image_tag "newmedia/img-srgaojingdushenhefuwu.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-srgaojingdushenhefuwu.png", class: "icon" -%>
-            <h4 class="title">SR 高精度审核</h4>
-          </div>
-          <div class="right pu-left">
-            <div class="row-box line">
-              <div class="row">
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-yunduanzhinengshenhefuwu.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">云端智能审核服务</h4>
-                      <p>利用云端审核数据库比对待审信息</p>
-                      <p>智能预审，提高效率，节约人力</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <%= image_tag "newmedia/icon-yunduanzhinengfushenfuwu.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">云端智能复审服务</h4>
-                      <p>人工审核后的内容进行机器复审</p>
-                      <p>并判断工作人员疲劳度等潜在风险</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row-box">
-              <div class="row">
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail">
-                    <%= image_tag "newmedia/icon-minganxinxixuexinengli.png", width: "50" -%>
-                    <div class="caption">
-                      <h4 class="title">敏感信息学习能力</h4>
-                      <p>主动提示、主动屏蔽舆论热点</p>
-                      <p>通过机器学习，拓宽信息来源</p>
-                      <p>对比同类标准，实时调整尺度</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-clear">
-                  <div class="thumbnail thumbnail-right-last">
-                    <p class="summary narrow">基于高级 AI 解析算法的 SR 高精度审核服务，为媒体融合过程中来源复杂的审核工作节约 90% 的时间和 30% 的人力。随时管控敏感内容，随时调整审核尺度，实时评估工作进度</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane fade in" id="engine">
-    <div class="features">
-      <div class="container">
-        <div class="intro">
-          <div class="title">融合媒体云端数据引擎</div>
-          <p class="desc">智能采集媒体在采、编、播各流程中产生的数据</p>
-          <p class="desc">结合数据分析能力，探索背景关联，挖掘数据价值</p>
-        </div>
-        <div class="img-box">
-          <%= image_tag "newmedia/img-engine.png" -%>
-        </div>
-      </div>
-    </div>
-
-    <div class="features features-newmedia-bg features-newmedia-engine">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="boxes">
-              <div class="left">
-                <%= image_tag "newmedia/img-xinwenyulunditi.jpg", class: "img" -%>
-                <%= image_tag "newmedia/icon-xinwenyulunditi.png", class: "icon" -%>
-                <h4 class="title">新闻舆情地图</h4>
-                <div class="desc">
-                  <p>不间断追踪热点事件</p>
-                  <p>准确捕捉舆情发展趋势</p>
-                  <p>可视化的数据参考</p>
-                </div>
-              </div>
-              <div class="right">
-                <div class="content-box">
-                  <div class="thumbnail first">
-                    <div class="middle">
-                      <%= image_tag "newmedia/icon-xinwenyulunshishiredian.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">新闻舆情实时热点</h4>
-                        <p>按地域实时显示新闻热点的传播路径</p>
-                        <p>和热度变化，作为舆情监控、内容策划和</p>
-                        <p>传播总结的依据</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="thumbnail">
-                    <div class="middle">
-                      <%= image_tag "newmedia/icon-xinwenyulunredianpanduan.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">新闻舆情热点预判</h4>
-                        <p>深度学习新闻热点传播过程</p>
-                        <p>预判传播路径、传播爆点</p>
-                        <p>为预防管控提供参考</p>
-                        <p>为专题制作预留时间</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="boxes">
-              <div class="left">
-                <%= image_tag "newmedia/img-quanmeitineirongtezhengku.jpg", class: "img" -%>
-                <%= image_tag "newmedia/icon-quanmeitineirongtezhengku.png", class: "icon" -%>
-                <h4 class="title">全媒体内容特征库</h4>
-                <div class="desc">
-                  <p>标准化的特征采集</p>
-                  <p>按特征统一分类和管理</p>
-                  <p>快捷包装内容专题产品</p>
-                </div>
-              </div>
-              <div class="right">
-                <div class="content-box">
-                  <div class="thumbnail first">
-                    <div class="middle">
-                      <%= image_tag "newmedia/icon-yunduanneirongtezhengku.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">云端内容特征库</h4>
-                        <p>多维度地抽取云端媒资内容特征，</p>
-                        <p>方便用户按特征查询、调取，</p>
-                        <p>并将内容用于检索学习或产品包装</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="thumbnail">
-                    <div class="middle">
-                      <%= image_tag "newmedia/icon-meitineirongkelihua.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">媒体内容颗粒化</h4>
-                        <p>利用云端数据分析能力将</p>
-                        <p>视频内容按预设分类进一步细分，</p>
-                        <p>达成 5 秒级别的超短视频颗粒，</p>
-                        <p>便于调取和传播</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="boxes">
-              <div class="left">
-                <%= image_tag "newmedia/img-ronghemeitixianfengzhishu.jpg", class: "img" -%>
-                <%= image_tag "newmedia/icon-ronghemeitixianfengzhishu.png", class: "icon" -%>
-                <h4 class="title">融合媒体先锋指数</h4>
-                <div class="desc">
-                  <div class="paragraph"><p>集纳跨媒体传播过程中的各类数据流，提供多类别、多维度、可订制的精确排行数据，用作内容产品影响力和媒体机构传播力的度量标尺</p></div>
-                </div>
-              </div>
-              <div class="right">
-                <div class="content-box">
-                  <div class="content">
-                    <div class="thumbnail">
-                      <%= image_tag "newmedia/icon-neirongfenleipaihangbang.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">内容分类排行榜</h4>
-                        <p>基于云端大数据分析结果</p>
-                        <p>为媒体提供全内容的融合</p>
-                        <p>传播数据，如：按地域</p>
-                        <p>人群、时段的传播速度</p>
-                        <p>传播渗透度、传播反馈</p>
-                        <p>传播交集、关联传播等</p>
-                        <p>参数排行榜，佐证市场地位</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="boxes">
-              <div class="left">
-                <%= image_tag "newmedia/img-kuakexueneirongzhishuku.jpg", class: "img" -%>
-                <%= image_tag "newmedia/icon-kuakexueneirongzhishuku.png", class: "icon" -%>
-                <h4 class="title">跨学科内容知识库</h4>
-                <div class="desc">
-                  <div class="paragraph"><p>通过科目管理、衍生挖掘、智能关联，让内容兼具传播、学习价值，通过知识库体系，最大化数据价值</p></div>
-                </div>
-              </div>
-              <div class="right">
-                <div class="content-box">
-                  <div class="thumbnail first">
-                    <div class="middle">
-                      <%= image_tag "newmedia/icon-shipinbaikequanshu.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">视频百科全书</h4>
-                        <p>抽取视频中的知识点，建立关联</p>
-                        <p>形成知识性的视频出版物</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="thumbnail">
-                    <div class="middle">
-                      <%= image_tag "newmedia/icon-neirongzhishixuexiyinqing.png", width: "50" -%>
-                      <div class="caption">
-                        <h4 class="title">内容知识学习引擎</h4>
-                        <p>该引擎具有主动关联相关知识、识别同类知识专家、判断争议知识点等多种基础智能，媒体创作团队可据此开拓内容策划，挖掘节目价值</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane fade in" id="matrix">
-    <div class="features">
-      <div class="container">
-        <div class="intro">
-          <h2 class="title">融合媒体产品管理矩阵</h2>
-          <p class="desc">参与媒体运营，智能提供产品支持，协助进行终端</p>
-          <p class="desc">内容、互动和衍生产品的加工、传播和管理</p>
-        </div>
-        <div class="img-box">
-          <%= image_tag "newmedia/img-matrix.png" -%>
-        </div>
-      </div>
-    </div>
-    <div class="features features-newmedia-bg features-newmedia-matix">
-      <div class="container">
-        <div class="boxes">
-          <div class="title-box pull-left">
-            <%= image_tag "newmedia/img-ronghemeitichanpinbaozhangxitong.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-ronghemeitichanpinbaozhangxitong.png", class: "icon" -%>
-            <h4 class="title">融合媒体产品包装系统</h4>
-          </div>
-          <div class="content-box">
-            <div class="row">
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail first">
-                  <%= image_tag "newmedia/icon-chanpinneironghuijupingtai.png", alt: "产品内容汇聚平台", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">产品内容汇聚平台</h4>
-                    <p>统一管理视频内容，有效整合分类编目</p>
-                    <p>是融媒体产品的内容资源池</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail">
-                  <%= image_tag "newmedia/icon-chanpinbaozhuangguanlipingtai.png", alt: "产品包装管理平台", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">产品包装管理平台</h4>
-                    <p>有效组织视频内容、智能调整抽取策略</p>
-                    <p>是融合媒体产品的内容发动机</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail">
-                  <%= image_tag "newmedia/icon-chanpindingdanguanlixitong.png", alt: "产品订单管理系统", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">产品订单管理系统</h4>
-                    <p>按需调取、发布视频产品</p>
-                    <p>为结算、清分提供依据</p>
-                    <p>是融媒体产品的调度方向盘</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail last">
-                  <p class="summary narrow">深度挖掘内容潜能，根据媒体机构运营需求，快速进行产品包装，建立起平台类、数据类、内容类和功能类四大产品资源池。让内容新生，为媒体赋能</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxes">
-          <div class="title-box pull-right">
-            <%= image_tag "newmedia/img-chuanbojuecexitong.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-chuanbojuecexitong.png", class: "icon" -%>
-            <h4 class="title">传播决策系统</h4>
-          </div>
-          <div class="content-box">
-            <div class="row">
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail first">
-                  <%= image_tag "newmedia/icon-chuanbolujingzhuizong.png", alt: "传播路径追踪", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">传播路径追踪</h4>
-                    <p>分析普通传播路径、传播支点、传播杠杆等影响传播效果的要素，解决融合媒体内容传播中的决策盲区</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail">
-                  <%= image_tag "newmedia/icon-chuanboqudaoguanli.png", alt: "传播渠道管理", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">传播渠道管理</h4>
-                    <p>采集各渠道的云端数据流，判断特定内容的传播有效性、传导率和渗透率，解决内容传播中的渠道抉择</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail ">
-                  <%= image_tag "newmedia/icon-chuanboshouzhonghuaxiang.png", alt: "传播受众画像", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">传播受众画像</h4>
-                    <p>描绘精确的受众画像，解决内容传播中的用户感知</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail last">
-                  <p class="summary">深入理解媒体宣传属性，借助融合媒体大数据产品能力，为媒体内容传播提供决策辅助，实现内容在传播范围、渠道、周期、受众及反响等各个方面的精细化决策管理</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="boxes">
-          <div class="title-box pull-left">
-            <%= image_tag "newmedia/img-rongheyanshengxitong.jpg", class: "img" -%>
-            <%= image_tag "newmedia/icon-rongheyanshengxitong.png", class: "icon" -%>
-            <h4 class="title">融合衍生系统</h4>
-          </div>
-          <div class="content-box">
-            <div class="row">
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail first">
-                  <%= image_tag "newmedia/icon-kuapingqingyingyongdingzhi.png", alt: "跨屏轻应用定制", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">跨屏轻应用定制</h4>
-                    <p>为频道、栏目及节目快速定制互动应用</p>
-                    <p>包含APP、H5和小程序等多种终端形式</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail">
-                  <%= image_tag "newmedia/icon-kuapingshejiaogongneng.png", alt: "跨屏社交功能", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">跨屏社交功能</h4>
-                    <p>在应用端形成以内容为中心的社交网络</p>
-                    <p>助力融合媒体构建轻型社区</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail">
-                  <%= image_tag "newmedia/icon-kuapingdianshanggongneng.png", alt: "跨屏电商功能", width: "50" -%>
-                  <div class="caption">
-                    <h4 class="title">跨屏电商功能</h4>
-                    <p>识别视频中的特征物，快速对接本地电商</p>
-                    <p>创建内容与商业的快捷方式</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-6 col-clear">
-                <div class="thumbnail last">
-                  <p class="summary narrow">集成跨屏互动、跨平台社交、场景电商、云端小程序等产品能力，辅以跨平台无限资源池，迅速解决各类媒体融合创新需求</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-pane fade in" id="commerce">
-    <div class="features">
-      <div class="container">
-        <div class="intro">
-          <h2 class="title">融合媒体商业增值系统</h2>
-          <p class="desc">为媒体实现内容、数据和产品的商业价值，为运营提供依据，为决策提供支持</p>
-        </div>
-        <div class="img-box">
-          <%= image_tag "newmedia/img-commerce.png" -%>
-        </div>
-      </div>
-    </div>
-
-    <div class="features features-newmedia-bg features-newmedia-commerce">
-      <div class=container>
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="thumbnail thumbnail-commerce">
-              <%= image_tag "newmedia/img-kuapingguanggaoguanlipingtai.jpg" -%>
-              <div class="caption">
-                <h4 class="title">跨屏广告管理平台</h4>
-                <p>统筹广告内容在多屏的呈现、管理和数据</p>
-                <p>为广告主展现融合媒体的全景商业图</p>
-                <p>是融合效果的试金石</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="thumbnail thumbnail-commerce">
-              <%= image_tag "newmedia/img-neirongjingyingpingguxitong.jpg" -%>
-              <div class="caption">
-                <h4 class="title">内容经营评估系统</h4>
-                <p>对视频内容的构成要素进行智能分析</p>
-                <p>评估商业价值，追踪代言效果、实时热度</p>
-                <p>确定视频内容的经营价值</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="thumbnail thumbnail-commerce">
-              <%= image_tag "newmedia/img-banquanneirongqukuailian.jpg" -%>
-              <div class="caption">
-                <h4 class="title">版权内容区块链交易平台</h4>
-                <p>兼容媒体和个人版权内容，利用区块链</p>
-                <p>分布式、防篡改、小区块等技术优势，</p>
-                <p>实现版权内容的传播保护、就近交易、</p>
-                <p>审核监控和便捷管理</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <%= image_tag "newmedia/icon-kuaijiezhibo.png", width: "50" -%>
-                <div class="caption">
-                  <h4 class="title">N+ 快捷直播</h4>
-                  <p>设备+网络+账号，即刻开始服务</p>
-                  <p>云端管控，实时互动</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <%= image_tag "newmedia/icon-yunduanfeibian.png", width: "50" -%>
-                <div class="caption">
-                  <h4 class="title">N+ 云端非编</h4>
-                  <p>基于 APP 和轻应用的云端非编</p>
-                  <p>是集编辑、编转码和审核发布</p>
-                  <p>于一体的零资产专业工作站</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <%= image_tag "newmedia/icon-meiziziku.png", width: "50" -%>
-                <div class="caption">
-                  <h4 class="title">N+ 媒资子库</h4>
-                  <p>在媒体私有云内开设媒资子集</p>
-                  <p>独立内容管理，共享信息架构</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-3">
-              <div class="thumbnail">
-                <%= image_tag "newmedia/icon-shujubaogao.png", width: "50" -%>
-                <div class="caption">
-                  <h4 class="title">N+ 数据报告</h4>
-                  <p>提供各类数据分析报告</p>
-                  <p>订制数据挖掘方向</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </div> 
 </div>
