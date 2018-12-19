@@ -471,6 +471,30 @@
     }
   }
 
+  &.hero-kodo-private-index {
+    background-image: image-url("banner/banner-kodo-private.jpg");
+
+    .middle-container {
+      top: 40%;
+      text-align: center;
+
+      .banner-desc {
+        h1 {
+          font-size: 0.50rem;
+        }
+
+        p {
+          margin-top: 0.10rem;
+          font-size: 0.24rem;
+        }
+      }
+
+      .btn-banner {
+        margin-top: 0.10rem;
+      }
+    }
+  }
+
   &.hero-insight {
     background-image: image-url("banner/banner-insight.jpg");
 
