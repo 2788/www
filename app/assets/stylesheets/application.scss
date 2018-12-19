@@ -560,10 +560,6 @@ ul.ul-step {
 }
 
 @media (max-width: 768px) {
-  .visible-xs-inline {
-    display: inline-block !important;
-  }
-
   .pricing-caculator {
     width: 100%;
   }
@@ -646,6 +642,10 @@ footer .container {
 @media (min-width: 992px) {}
 
 @media (max-width: 767px) {
+  .visible-xs-inline {
+    display: inline-block !important;
+  }
+
   .left-hotnews {
     ul>li {
       display: inline-block;

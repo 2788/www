@@ -3599,6 +3599,7 @@ zh-CN:
     solution: 解决方案
     price: 价格
     events: 活动与合作
+    supports: 服务与支持
     about: 关于我们
   services:
     - group: 基础服务
@@ -3718,6 +3719,16 @@ zh-CN:
           url: ""
           type: "path"
           isHot: false
+  supports:
+    - name: "developer"
+      label: "开发者中心"
+      url: "https://developer.qiniu.com"
+    - name: "support"
+      label: "技术支持"
+      url: "https://support.qiniu.com"
+    - name: "status"
+      label: "服务健康状态"
+      url: "https://status.qiniu.com"
   solutions:
     title1: "通用解决方案"
     title2: "行业解决方案"
