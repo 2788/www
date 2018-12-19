@@ -53,6 +53,9 @@ class ProductsController < ApplicationController
   def newmedia
   end
 
+  def playout
+  end
+
   def livequiz
   end
 

@@ -6,7 +6,7 @@
                     <h1 class="bokong-text">飞影 | 智能播控</h1>
                     <p>智能播控以人工智能云计算为能力核心，智能汇聚、编排直播内容,添加专业级视音效果</p>
                     <p>最终自动化安全播出，为您搭建一个云上演播室！</p>
-                    <%= link_to "查看详情", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn-newmedia" -%>
+                    <%= link_to "查看详情", "https://developer.qiniu.com/", target: "_blank", class: "btn-newmedia" -%>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
   <div class="container">
     <div class="tabs">
       <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.newmedia.playout.middlebar").each do |linkbar| %>
+        <% I18n.t("views.products.playout.middlebar").each do |linkbar| %>
           <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
         <% end %>
       </ul>
@@ -29,19 +29,19 @@
     <h2>产品介绍</h2>
     <div class="container center-newmedia intro-newmedia">
         <div class="col-sm-6 introword-newmedia">
-            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp智能播控以人工智能云计算为能力核心，汇聚直播内容；通过智能识别，自动编排播出脚本；添加专业级视音效果，最终自动化安全播出。</p>
-            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp智能播控采用预付费的购买使用模式，根据用户输入源数目、输出分辨率和使用时长进行计费，购买后，即开即播。</p>
-            <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp智能播控同样支持在用户私有化环境中进行部署，对直播环境中的系统进行智能化自动化的播出控制。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;智能播控以人工智能云计算为能力核心，汇聚直播内容；通过智能识别，自动编排播出脚本；添加专业级视音效果，最终自动化安全播出。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;智能播控采用预付费的购买使用模式，根据用户输入源数目、输出分辨率和使用时长进行计费，购买后，即开即播。</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;智能播控同样支持在用户私有化环境中进行部署，对直播环境中的系统进行智能化自动化的播出控制。</p>
         </div>
         <div class="col-sm-6">
-            <%= image_tag 'newmedia/img-bokongjiemian.jpg', class: "bokongjiemian-newmedia" %></div>
+            <%= image_tag "newmedia/img-bokongjiemian.jpg", class: "bokongjiemian-newmedia" %></div>
         </div>
     </div>
 </div>
 <div class="tab-content-section-2 container newmedia changjieshao-newmedia white">
     <h2>产品优势</h2>
     <div class="container center-newmedia">
-        <% I18n.t("views.products.newmedia.playout.feature2").each do |adv| %>
+        <% I18n.t("views.products.playout.feature2").each do |adv| %>
             <div class=" col-sm-6 col-xs-12">
                 <div class="changjieshao-wrap-newmedia col-xs-4">
                     <div class="icon-bokongyoushi-newmedia">
@@ -61,24 +61,24 @@
 <div class="tab-content-section-3 container newmedia bokong-jieshao bokong-func-newmedia">
     <h2>核心功能</h2>
     <div class="container center-newmedia">
-    <div class="col-sm-3">
-        <div class="icon-bokongfunc-newmedia">
-            <%= image_tag "newmedia/icon-bokong-func.png"%>
+        <div class="col-sm-3">
+            <div class="icon-bokongfunc-newmedia">
+                <%= image_tag "newmedia/icon-bokong-func.png"%>
+            </div>
+            <p>多路音视频直播源接入</p>
         </div>
-        <p>多路音视频直播源接入</p>
-    </div>
-    <div class="col-sm-3">
-        <div class="icon-bokongfunc-newmedia">
-            <%= image_tag "newmedia/icon-bokong-func.png", class:"icon-tuiliuzhibo"%>
+        <div class="col-sm-3">
+            <div class="icon-bokongfunc-newmedia">
+                <%= image_tag "newmedia/icon-bokong-func.png", class:"icon-tuiliuzhibo"%>
+            </div>
+            <p>多路本地素材推流直播</p>
         </div>
-        <p>多路本地素材推流直播</p>
-    </div>
-    <div class="col-sm-3">
-        <div class="icon-bokongfunc-newmedia">
-            <%= image_tag "newmedia/icon-bokong-func.png", class:"icon-neirongjiankong"%>
+        <div class="col-sm-3">
+            <div class="icon-bokongfunc-newmedia">
+                <%= image_tag "newmedia/icon-bokong-func.png", class:"icon-neirongjiankong"%>
+            </div>
+            <p>内容监控</p>
         </div>
-        <p>内容监控</p>
-    </div>
         <div class="col-sm-3">
             <div class="icon-bokongfunc-newmedia">
                 <%= image_tag "newmedia/icon-bokong-func.png", class:"icon-shichuangxiaoguo"%>
