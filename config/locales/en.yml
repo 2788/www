@@ -3533,6 +3533,7 @@ en:
     solution: Solutions
     price: ""
     events: ""
+    supports: ""
     about: About Us
   services:
     - group: Storage & CDN
@@ -3626,6 +3627,16 @@ en:
           url: ""
           type: "path"
           isHot: false
+  supports:
+    - name: "developer"
+      label: "开发者中心"
+      url: "https://developer.qiniu.com"
+    - name: "support"
+      label: "技术支持"
+      url: "https://support.qiniu.com"
+    - name: "status"
+      label: "服务健康状态"
+      url: "https://status.qiniu.com"
   solutions:
     arr1:
       - name: plsv
