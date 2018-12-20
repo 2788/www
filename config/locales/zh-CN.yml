@@ -1909,7 +1909,7 @@ zh-CN:
           - title: "多平台类型部署"
             class: "icon-duopingtaileixingbushu"
             desc:
-              - text: "公有云SaaS服务，计费简单，即开即播" 
+              - text: "公有云 SaaS 服务，计费简单，即开即播" 
               - text: "支持私有化部署，全直播环境整合"
           - title: "跨终端互动"
             class: "icon-kuazhongduanhudong"
