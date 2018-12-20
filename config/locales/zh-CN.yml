@@ -1860,6 +1860,62 @@ zh-CN:
               image: "snow/image-duomeitichuli.jpg"
               title: "边缘多媒体处理"
               desc: "针对图片及音视频处理延迟敏感的场景，采用边缘节点提供多媒体处理能力，通过稳定的链路提供高吞吐低延迟的多媒体及时处理能力。"
+      playout:
+        middlebar:
+          - title: "产品介绍"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "产品优势"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab-content-section-3"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-4"
+        feature2:
+          - title: "专业直播效果"
+            class: ""
+            desc:
+              - text: "多路音视频处理，支持推拉流直播，切换、" 
+              - text: "特效添加、输出等延时可控" 
+              - text: "多视窗、虚拟抠像、图文包装、画面动态切换等" 
+              - text: "直播内容效果"
+          - title: "自动化播出控制"
+            class: "icon-zidonghuabochu"
+            desc:
+              - text: "基于脚本自动化播控，支持 MOS、VDCP、GPI 等" 
+              - text: "文稿与播控协议" 
+          - title: "智能直播安全"
+            class: "icon-zhinengzhiboanquan"
+            desc:
+              - text: "智能黄暴恐内容监控、质量监控、延时控制、" 
+              - text: "垫片应急等安全播出保障" 
+          - title: "智能直播编排"
+            class: "icon-zhinengzhibobianpai"
+            desc:
+              - text: "基于切换画面识别、音频节奏视频深度学习" 
+              - text: "的智能化播控" 
+          - title: "融合行业体验"
+            class: "icon-ronghehangyetiyan"
+            desc:
+              - text: "融合广电和互联网媒体行业特点" 
+              - text: "的用户界面和用户体验" 
+          - title: "多样内容增值"
+            class: "icon-duoyangneirongzengzhi"
+            desc:
+              - text: "直播广告植入等内容增值应用场景" 
+          - title: "多平台类型部署"
+            class: "icon-duopingtaileixingbushu"
+            desc:
+              - text: "公有云SaaS服务，计费简单，即开即播" 
+              - text: "支持私有化部署，全直播环境整合"
+          - title: "跨终端互动"
+            class: "icon-kuazhongduanhudong"
+            desc:
+              - text: "多平台，多终端，多媒体形式间的无缝互动" 
+              - text: "多种形式的同步、极低延时的信息交流"
       atlab:
         title: 深度学习平台 AVA
         desc: AVA 是一个端到端的人工智能深度学习平台。将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。
