@@ -1850,6 +1850,28 @@ en:
             desc:
               - text: "多平台，多终端，多媒体形式间的无缝互动" 
               - text: "多种形式的同步、极低延时的信息交流"
+      mam:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "产品功能"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-3"
+      convergence:
+        middlebar:
+          - title: "方案架构"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "方案优势"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-3"
       atlab:
         title: Deep Learning Platform（AVA）
         desc: Qiniu AVA is a fully managed end-to-end Deep Learning Platform. It allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.

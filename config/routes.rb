@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     get '/products/player',                to: 'products#player'
     get '/products/newmedia',              to: 'products#newmedia'
     get '/products/newmedia/playout',      to: 'products#playout'
+    get '/products/newmedia/mam',          to: 'products#mam'
+    get '/products/newmedia/convergence',  to: 'products#convergence'
     get '/products/pili/livequiz',         to: 'products#livequiz'
     get '/products/qavs',                  to: 'products#qavs'
     get '/products/qvm',                   to: 'products#qvm'

@@ -1,0 +1,162 @@
+<div class="banner-box banner-box-newmedia banner-left-newmedia banner-meizi">
+    <div class="tittle-newmedia tittle-meizi">
+        <div class="banner-wrap">
+            <div class="tittle-newmedia">
+                    <div class="title-detail bokong-title-wrap">
+                    <h1 class="meizi-detail-title">太仓 | 智能媒资</h1>
+                    <p>智能媒资以强大的工作流引擎，组织调度采编流程，</p>
+                    <p>提高采编效率，保障内容安全、编目可用</p>
+                    <%= link_to "申请试用", "https://developer.qiniu.com/", target: "_blank", class: "btn-newmedia" -%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.mam.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia iconlist-14-newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png" %>
+            </div>
+            <p>智能识别辅助编目</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-linghuopeizhi" %>
+            </div>
+            <p>灵活配置编目模版</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-bianmuzujian" %>
+            </div>
+            <p>预置规范编目组件</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-gongzuoliu" %>
+            </div>
+            <p>高自由度工作流</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-2 container newmedia iconlist-14-newmedia">
+    <h2>产品功能</h2>
+    <div class="container center-newmedia meizi-gn">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-gongzuoliuyinqing" %>
+            </div>
+            <p>工作流引擎</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-bianmumoban" %>
+            </div>
+            <p>编目模版</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-zhuanmamoban" %>
+            </div>
+            <p>转码模版</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-dadiangongju" %>
+            </div>
+            <p>打点工具</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-jingqiegongju" %>
+            </div>
+            <p>精切工具</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-ocrjiegouhua" %>
+            </div>
+            <p>OCR结构化</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-yinpinjiegouhua" %>
+            </div>
+            <p>音频结构化</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-meizi-newmedia icon-meizifunc-newmedia">
+                <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-tuxiangjiegouhua" %>
+            </div>
+            <p>图像结构化</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 container task-view newmedia changjieshao-newmedia white">
+    <h2>适用场景</h2>
+        <div class="container center-newmedia">    
+            <div class="col-sm-6 col-xs-12">
+                <div class="changjieshao-wrap-newmedia col-xs-4">
+                    <div class="icon-meizi-newmedia">
+                        <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-zhinengfuzhu"%>
+                    </div>
+                </div>
+                <div class="word-newmedia col-xs-8">
+                    <h3>智能辅助，采编增效</h3>
+                    <p>图像、语音、文字中多路径智能提取编目信息</p>
+                    <p>辅助人工，提高人效</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="changjieshao-wrap-newmedia col-xs-4">
+                    <div class="icon-meizi-newmedia">
+                        <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-tishengbianmuweidu"%>
+                    </div>
+                </div>
+                <div class="word-newmedia col-xs-8">
+                    <h3>提升编目维度，挖掘素材价值</h3>
+                    <p>素材多层次颗粒化智能处理</p>
+                    <p>让制作人员快速获得所需素材</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="changjieshao-wrap-newmedia col-xs-4">
+                    <div class="icon-meizi-newmedia">
+                        <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-kuaisujulei"%>
+                    </div>
+                </div>
+                <div class="word-newmedia col-xs-8">
+                    <h3>快速聚类，优化运营</h3>
+                    <p>内容多维度标签聚类</p>
+                    <p>帮助编辑快速搭建专题</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="changjieshao-wrap-newmedia col-xs-4">
+                    <div class="icon-meizi-newmedia">
+                        <%= image_tag "mam/icon-zhinengmeizi.png", class:"icon-ziyuanyunhua"%>
+                    </div>
+                </div>
+                <div class="word-newmedia col-xs-8">
+                    <h3>资源云化，开放经营</h3>
+                    <p>经营超配能力</p>
+                    <p>提高资源转化率</p>
+                </div>
+            </div>
+        </div>
+</div>
