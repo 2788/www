@@ -169,13 +169,13 @@ $(document).ready ->
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
-    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').on 'touchstart', ->
+    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #supports-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
     $('#solution-dropdown-title').on 'click', ->
       locale = if window.location.pathname.split('/')[1] == 'en' then '/en/solutions' else '/solutions'
       window.location.href = window.location.origin + locale
-    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').hover ->
+    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #supports-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').hover ->
       $(this).addClass('open')
     , ->
       $(this).removeClass('open')
@@ -375,8 +375,13 @@ $(document).ready ->
 $(document).ready ->
   $('#gartner-atlab-btn-index').on 'click', (e) ->
     e.preventDefault()
-    if saveAs?
-      saveAs "https://mars-assets.qnssl.com/gartner_atlab_white_book.pdf", "深度学习平台完全实践指南.pdf"
+    if isMobile
+      # 移动端新建 tab 页打开 pdf 文件
+      window.open 'https://mars-assets.qnssl.com/gartner_atlab_white_book.pdf', '_blank'
+    else
+      # 非移动端使用 filesaver 下载
+      if saveAs?
+        saveAs 'https://mars-assets.qnssl.com/gartner_atlab_white_book.pdf', '深度学习平台完全实践指南.pdf'
 
 
 # get userinfo
@@ -399,6 +404,7 @@ $(document).ready ->
         # login banner
         $('.need-signin').addClass 'hidden'
         $('.user-email').text res.email
+        $('.user-email').attr 'title', res.email
         $('.userinfo').removeClass 'hidden'
         # free event page
         $('.features-free-product .free-receive-unsignin').addClass 'hidden'
