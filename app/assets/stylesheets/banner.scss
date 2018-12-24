@@ -818,13 +818,27 @@
   &.hero-invite-index {
     background-image: image-url("banner/banner-invite-index.jpg");
     .middle-container {
-      top: 78%;
+      top: 45%;
       text-align: center;
+      .invite-image {
+        width: 4.80rem;
+        position: relative;
+        left: calc(50% - 2.40rem);
+      }
+      .invite-text {
+        margin-top: 0.40rem;
+        margin-bottom: 0;
+        font-size: 0.20rem;
+        color: #000;
+        text-shadow: none;
+        span {
+          padding: 0.05rem 0.20rem;
+          border-radius: 0.20rem;
+          background-color: #FAD352;
+        }
+      }
       .btn-banner {
-        width: 1.40rem;
-        position: absolute;
-        bottom: 0;
-        left: calc(50% - 0.70rem);
+        margin-top: 0.40rem;
         font-weight: 600;
         &:hover {
           color: #DC143C;
@@ -1149,18 +1163,6 @@
         }
       }
     }
-
-    &.hero-invite-index {
-      .middle-container {
-        top: 83%;
-        .btn-banner {
-          width: 1.20rem;
-          left: calc(50% - 0.60rem);
-          padding: 0.05rem;
-          line-height: 0.30rem;
-        }
-      }
-    }
   }
 
   .banners-slider .jumbotron.hero.hero-niuday .img-wrapper {
@@ -1219,12 +1221,6 @@
         bottom: 24% !important;
       }
     }
-
-    &.hero-invite-index {
-      .middle-container {
-        top: 75%;
-      }
-    }
   }
 }
 
@@ -1243,16 +1239,6 @@
     .media {
       .media-body p.en {
         min-height: 196px;
-      }
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .jumbotron.hero {
-    &.hero-invite-index {
-      .middle-container {
-        top: 80%;
       }
     }
   }
