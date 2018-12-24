@@ -815,6 +815,26 @@
     }
   }
 
+  &.hero-invite-index {
+    background-image: image-url("banner/banner-invite-index.jpg");
+    .middle-container {
+      top: 78%;
+      text-align: center;
+      .btn-banner {
+        width: 1.40rem;
+        position: absolute;
+        bottom: 0;
+        left: calc(50% - 0.70rem);
+        font-weight: 600;
+        &:hover {
+          color: #DC143C;
+          background-color: #FFF;
+          border: none;
+        }
+      }
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;
@@ -1129,6 +1149,18 @@
         }
       }
     }
+
+    &.hero-invite-index {
+      .middle-container {
+        top: 83%;
+        .btn-banner {
+          width: 1.20rem;
+          left: calc(50% - 0.60rem);
+          padding: 0.05rem;
+          line-height: 0.30rem;
+        }
+      }
+    }
   }
 
   .banners-slider .jumbotron.hero.hero-niuday .img-wrapper {
@@ -1187,6 +1219,12 @@
         bottom: 24% !important;
       }
     }
+
+    &.hero-invite-index {
+      .middle-container {
+        top: 75%;
+      }
+    }
   }
 }
 
@@ -1205,6 +1243,16 @@
     .media {
       .media-body p.en {
         min-height: 196px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .jumbotron.hero {
+    &.hero-invite-index {
+      .middle-container {
+        top: 80%;
       }
     }
   }
