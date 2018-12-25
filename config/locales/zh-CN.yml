@@ -1938,6 +1938,28 @@ zh-CN:
           - title: "适用场景"
             class: "intLink"
             href: "#tab-content-section-3"
+      cms:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-3"
+      operation:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-3"
       atlab:
         title: 深度学习平台 AVA
         desc: AVA 是一个端到端的人工智能深度学习平台。将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。

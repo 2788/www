@@ -59,6 +59,12 @@ class ProductsController < ApplicationController
   def mam
   end
 
+  def cms
+  end
+
+  def operation
+  end
+
   def convergence
   end
 

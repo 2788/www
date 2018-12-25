@@ -1,0 +1,146 @@
+.iconlist-13-newmedia{
+    h4{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+        margin-bottom:50px;
+    }
+        padding-bottom: 80px;
+    p.details-newmedia{
+        margin-bottom: 10px;
+    }
+}
+.jiankong-sec-bg {
+    background: #f8f8f8;
+}
+.newmedia {
+    .icon-adv-newmedia {
+        width: 1.6rem;
+        height: 1.5rem;
+        margin: auto;
+        overflow: hidden;
+        img {
+            width: 6.4rem;
+            max-width: none;
+        }
+        .icon-linghuopeizhi{
+            margin: 0 0 0 -1.6rem;
+        }
+        .icon-zidongtuopu{
+            margin: 0 0 0 -3.2rem;
+        }
+        .icon-shengxiaojiangben{
+            margin: 0 0 0 -4.8rem;
+        }
+        .icon-shengxiaojiangben{
+            margin: 0 0 0 -4.8rem;
+        }
+        .icon-shujucaiji{
+            margin: -1.5rem 0 0 0;
+        }
+        .icon-shujuchuli{
+            margin: -1.5rem 0 0 -1rem;
+        }
+        .icon-zichanguanli{
+            margin: -1.5rem 0 0 -2rem;
+        }
+        .icon-yunweiguanli{
+            margin: -1.5rem 0 0 -3rem;
+        }
+        .icon-gaojingguanli{
+            margin: -1.5rem 0 0 -4rem;
+        }
+        .icon-keshihuayanshi{
+            margin: -1.5rem 0 0 -5rem;
+        }
+    }
+    .icon-func-newmedia{
+        width: 1rem;
+        height: 1rem;
+    }
+}
+.jiankong-newmedia {
+    .banner-wrap {
+        background-image: image-url("operation/banner-shujujiankong.jpg");
+        .tittle-newmedia {
+            .jiankong-title-wrap {
+                text-align: left;
+                >h1 {
+                    margin-bottom: .36rem;
+                }
+            }
+        }
+    }
+}
+.jiankong-sec-tran {
+    .center-newmedia {
+        .col-sm-3 {
+            width: 22%;
+            margin-right: 3%;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            img {
+                width: 100%;
+                display: block;
+                border-radius: .1rem;
+            }
+            .feibian-scenarios-newmedia {
+                position: absolute;
+                transform: translate3d(-50%, -200%, 0);
+                opacity: 0;
+                left: 50%;
+                width: 100%;
+                transition: all .3s ease-out;
+                height: 100%;
+                color: #fff;
+                background: rgba(3, 160, 222, .6);
+                text-align: center;
+                bottom: 0;
+                border-radius: .1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                h4 {
+                    font-size: .18rem;
+                }
+            }
+        }
+        .col-sm-3:hover {
+            .feibian-scenarios-newmedia {
+                transform: translate3d(-50%, 50%, 0);
+                opacity: 1;
+                bottom: 50%;
+            }
+        }
+    }
+}
+@media(max-width: 768px){
+    .jiankong-sec-tran {
+        .center-newmedia {
+            .col-sm-3 {
+                width: 22%;
+                margin-right: 3%;
+                position: relative;
+                overflow: hidden;
+                padding: 0;
+                img {
+                    width: 100%;
+                    display: block;
+                }
+                .feibian-scenarios-newmedia {
+                    border-radius: 8px;
+                }
+            }
+            .col-sm-3:hover {
+                .feibian-scenarios-newmedia {
+                    >p{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
