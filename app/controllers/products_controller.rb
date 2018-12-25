@@ -56,6 +56,12 @@ class ProductsController < ApplicationController
   def playout
   end
 
+  def mam
+  end
+
+  def convergence
+  end
+
   def livequiz
   end
 

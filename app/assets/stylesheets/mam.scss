@@ -1,0 +1,81 @@
+.banner-meizi{
+    width: 100%;
+    height: 5.6rem;
+    overflow: hidden;
+    .banner-wrap {
+        background-image: image-url("mam/banner-meizi.jpg");
+        .tittle-newmedia{
+            > img {
+               position: absolute;
+               right: 0;
+               top: 50%;
+               width: 5.5rem;
+               height: 3.6rem;
+               transform: translate3d(0, -50%, 0); 
+            }
+            .bokong-title-wrap {
+                text-align: left;
+            }
+            .meizi-detail-title {
+                margin: 0 0 .6rem 0;
+            }
+        }
+    }
+  }
+.icon-meizi-newmedia{
+    width: 1.6rem;
+    height: 1.5rem;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+    img{
+        width: 6.4rem;
+        max-width: none;
+    }
+    .icon-linghuopeizhi{margin:0 0 0 -1.6rem;}
+    .icon-bianmuzujian{margin:0 0 0 -3.2rem;}
+    .icon-gongzuoliu{margin:0 0 0 -4.8rem;}
+    .icon-gongzuoliuyinqing{margin:-3rem 0 0 0;}
+    .icon-bianmumoban{margin:-3rem 0 0 -1rem;}
+    .icon-zhuanmamoban{margin:-3rem 0 0 -2rem;}
+    .icon-dadiangongju{margin:-3rem 0 0 -3rem;}
+    .icon-jingqiegongju{margin:-4rem 0 0 0;}
+    .icon-ocrjiegouhua{margin:-4rem 0 0 -1rem;}
+    .icon-yinpinjiegouhua{margin:-4rem 0 0 -2rem;}
+    .icon-tuxiangjiegouhua{margin:-4rem 0 0 -3rem;}
+    .icon-zhinengfuzhu{margin: -1.5rem 0 0 0;}
+    .icon-tishengbianmuweidu{margin: -1.5rem 0 0 -1.6rem;}
+    .icon-kuaisujulei{margin: -1.5rem 0 0 -3.2rem;}
+    .icon-ziyuanyunhua{margin: -1.5rem 0 0 -4.8rem;}
+}
+  
+.icon-meizifunc-newmedia{
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+}
+.iconlist-14-newmedia {
+    .col-sm-3 {
+        text-align: center;
+        >p {
+            text-align: center;
+            width: 100%;
+        }
+    }
+    .meizi-gn {
+        .col-sm-3 {
+            text-align: center;
+            >p {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
+}
+.task-view {
+    .center-newmedia {
+        .word-newmedia {
+            top: .2rem;
+        }
+    }
+}

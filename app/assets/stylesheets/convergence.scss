@@ -1,0 +1,103 @@
+.architecture-newmedia{
+    padding-bottom: 80px;
+}
+.newmedia {
+    .icon-adv-newmedia {
+        .icon-tongyidiaodu{margin: 0 0 0 -100px;}
+        .icon-caibianbo{margin: 0 0 0 -200px;}
+        .icon-ziyuanguanli{margin: -100px 0 0 0;}
+        .icon-chuanbofenxi{margin: -100px 0 0 -100px;}
+        .icon-yuqingjiance{margin: -100px 0 0 -200px;}
+    }
+}
+.ronghemeiti-newmedia {
+    .icon-adv-newmedia {
+        img {
+            width: 300px;
+        }
+    }
+}
+.img-scene-newmedia.ronghemeiti-scene-newmedia {
+    .col-sm-4 {
+        width: 29%;
+        margin: 0 2%;
+        .tittle-newmedia {
+            background: linear-gradient(60deg, rgba(41, 227, 242, 0.7), rgba(8, 171, 235, 0.7));
+            p {
+                color: #fff;
+                text-align: center;
+            }
+        }
+    }
+    img {
+        width: 100%;
+    }
+    .col-sm-4:hover {
+        .tittle-newmedia {
+            height: 100px;
+            p {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+@media(max-width: 768px) {
+    .img-scene-newmedia.ronghemeiti-scene-newmedia {
+        .col-xs-6 {
+            width: 46%;
+            margin: 2%;
+            .tittle-newmedia {
+                bottom: -1px;
+            }
+        }
+    }
+}
+.banner-box-newmedia {
+    .ronghe-banner {
+        background-image: image-url("convergence/banner-ronghemeiti.jpg");
+        .tittle-newmedia {
+            .title-detail {
+                text-align: left;
+                h1 {
+                    margin-top: 0;
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+    }
+}
+.ronghemeiti-newmedia {
+    background: #f6f6f6;
+    .center-newmedia {
+        .col-sm-4 {
+            text-align: center;
+            .icon-func-newmedia {
+                width: 1.1rem;
+                height: 1.1rem;
+                display: inline-block;
+                overflow: hidden;
+                img {
+                    width: 4rem;
+                    max-width: none;
+                    margin: -.1rem 0 0 -.15rem;
+                }
+                .icon-tongyidiaodu {
+                    margin: -.07rem 0 0 -1.48rem;
+                }
+                .icon-caibianbo {
+                    margin: -.1rem 0 0 -2.8rem;
+                }
+                .icon-ziyuanguanli {
+                    margin: -1.4rem 0 0 -.15rem;
+                }
+                .icon-chuanbofenxi {
+                    margin: -1.4rem 0 0 -1.45rem;
+                }
+                .icon-yuqingjiance {
+                    margin: -1.4rem 0 0 -2.8rem;
+                }
+            }
+        }
+    }
+}
