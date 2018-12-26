@@ -1960,6 +1960,64 @@ zh-CN:
           - title: "适用场景"
             class: "intLink"
             href: "#tab-content-section-3"
+      live:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab1-content-section-1"
+          - title: "方案架构"
+            class: "intLink"
+            href: "#tab1-content-section-2"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab1-content-section-3"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab1-content-section-4" 
+        feature1:
+          middlebar:
+            - title: "传统广电媒体直播"
+              class: "active"
+              href: "#tab-content-section-1"
+            - title: "互联网直播"
+              class: 
+              href: "#tab-content-section-2"
+            - title: "机顶盒运营商直播"
+              class: 
+              href: "#tab-content-section-3" 
+            - title: "直播审核"
+              class: 
+              href: "#tab-content-section-4"      
+          sections:
+            - id: "tab-content-section-1"
+              class: "tab-pane active"
+              img: "live/img-hudongzhibo-scene1.png"
+              title: "传统广电媒体直播"
+              desc: 
+                - text: "即开即播、一站式解决方案，使驻外记者可以快速、灵活地回传、发布直播内容，使得新闻事件第一时间传播。"
+                - text: "开播端可以采集广电专业拍摄设备、以及演播室 PGM 直播信号。"
+                - text: "完善的直播事件、轮播事件管理，可以使用户日常常规化地管理运营直播内容。"
+            - id: "tab-content-section-2"
+              class: "tab-pane "
+              img: "live/img-hudongzhibo-scene2.png"
+              title: "互联网直播"
+              desc: 
+                - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
+                - text: "端到端的直播解决方案，提供完整的直播客户端及 SDK，可以直接提供直播播放平台，或集成用户自有的移动应用。"
+                - text: "全网融合 CDN 节点实现了加速稳定的同步直播、同步互动。"
+            - id: "tab-content-section-3"
+              class: "tab-pane "
+              img: "live/img-hudongzhibo-scene3.png"
+              title: "机顶盒运营商直播"
+              desc: 
+                - text: "提供“机顶盒+智能手机”的终端融合方案，使得机顶盒运营商及客厅观众也可以随时收看直播，融入互动。"
+                - text: "与第三方收录系统的整合，可以将直播内容无缝对接任何 IP 和 QAM 环境，进行发布。"
+            - id: "tab-content-section-4"
+              class: "tab-pane "
+              img: "live/img-hudongzhibo-scene4.png"
+              title: "直播审核"
+              desc: 
+                - text: "基于人工、人工智能图像识别的直播监审以及全直播流程整体安全设计，可以确保对直播内容与直播质量的广电级安全保障。"
       atlab:
         title: 深度学习平台 AVA
         desc: AVA 是一个端到端的人工智能深度学习平台。将复杂的富媒体数据传输至平台的人工智能神经网络中进行分析和处理，专注为计算机视觉领域提供一套完整的数据集和模型生产工具链。

@@ -1,0 +1,119 @@
+<div class="banner-box banner-box-newmedia banner-left-newmedia hudongzhibo-banner">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">互动直播管理解决方案</h1>
+                <p>专为直播生产、运营平台打造的全球化、智能化、专业化、</p>
+                <p>强互动化的直播流服务和端到端直播场景解决方案</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.live.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="feature tab1-content-section-1 container newmedia iconlist-15-newmedia white zhibohudong-newmedia">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "live/icon-zhibohudong.png" %>
+            </div>
+            <p>高效流畅的生产能力</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "live/icon-zhibohudong.png", class: "icon-guanlinengli" %>
+            </div>
+            <p>安全智能的管理能力</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "live/icon-zhibohudong.png", class: "icon-hudongnengli" %>
+            </div>
+            <p>无缝跨屏的互动能力</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "live/icon-zhibohudong.png", class: "icon-jierunengli" %>
+            </div>
+            <p>全面开发的接入能力</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "live/icon-zhibohudong.png", class: "icon-zhibonengli" %>
+            </div>
+            <p>专业规范的直播能力</p>
+        </div>
+    </div>
+</div>
+<div class="feature tab1-content-section-2 container newmedia  architecture-newmedia">
+    <h2>方案架构</h2>
+    <div class="container center-newmedia">
+        <%= image_tag "live/img-hudongzhibo-frame.png" %>
+    </div>
+</div>
+<div class="feature tab1-content-section-3 container zhibohudong-newmedia newmedia iconlist-14-newmedia white">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6 ">
+            <div class="icon-adv-newmedia icon-core-newmedia">
+                <%= image_tag "live/icon-hudongzhibo-func.png" %>   
+            </div>
+        </div>
+         <div class="col-sm-3 col-xs-6 ">
+            <div class="icon-adv-newmedia icon-core-newmedia">
+                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-zhushoupingtai" %>   
+            </div>
+        </div>
+         <div class="col-sm-3 col-xs-6 ">
+            <div class="icon-adv-newmedia icon-core-newmedia">
+                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-guanlipingtai" %>   
+            </div>
+        </div>
+         <div class="col-sm-3 col-xs-6 ">
+            <div class="icon-adv-newmedia icon-core-newmedia">
+                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-hudongzhinengbokong" %>   
+            </div>
+        </div>
+    </div>
+</div>
+<div class="feature tab1-content-section-4 newmedia hudongzhibo-scene-newmedia">
+    <div class="container">
+        <div class="intro">
+            <h2 class="title">适用场景</h2>
+        </div>
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+                <% I18n.t("views.products.live.feature1.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], data: {toggle: "tab"} -%></li>
+                <% end %>
+            </ul>
+            <div class="tab-content center-newmedia container">
+                <% I18n.t("views.products.live.feature1.sections").each do |unit| %>
+                    <div id="<%= unit[:id] %>" class="<%= unit[:class] %>">
+                        <div class="img-wrap-newmedia col-sm-6">
+                            <%= image_tag unit[:img], alt: unit[:title] %>
+                        </div>
+                        <div class="col-sm-6">
+                            <% unit[:desc].each do |des| %>
+                                <p class="tab-desc-newmedia"><i></i><%= des[:text] %></p>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
