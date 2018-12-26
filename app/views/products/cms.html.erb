@@ -1,0 +1,115 @@
+<div class="banner-box banner-box-newmedia banner-neirong">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">内容管理平台</h1>
+                <p>集成图文编辑能力、音频和视频编辑能力，搭建统一的融合媒体生产平台，</p>
+                <p>赋能广电新媒体以及大型企事业单位的新闻中心</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.cms.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia iconlist-13-newmedia white neirongguanli-newmedia">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-ziyuangongxiang"%>
+            </div>
+            <h4>全媒体资源共享</h4>
+            <p class="details-newmedia">平台内共享素材资源</p>
+            <p class="details-newmedia">无需下载，直接取用</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-shengchanxietong"%>
+            </div>
+            <h4>多工种生产协同</h4>
+            <p class="details-newmedia">完成的稿件一键进入审核环节</p>
+            <p class="details-newmedia">无需传递，即时响应</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-lishidangan"%>
+            </div>
+            <h4>历史档案管理</h4>
+            <p class="details-newmedia">已发布的稿件进入历史资源库</p>
+            <p class="details-newmedia">高效检索，随时调取</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-2 container newmedia neirongguanli-bg iconlist-14-newmedia neirongguanli-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-zaixianbianji"%>
+            </div>
+            <p>图文、音视频在线编辑</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-jiegouhua"%>
+            </div>
+            <p>图片、音视频结构化</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-gaoxiaosoujiansuo"%>
+            </div>
+            <p>高效搜检索</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "cms/icon-neirongguanli.png",class:"icon-duojishenhe"%>
+            </div>
+            <p>多级审核</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 container newmedia imglist-13-newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6">
+            <div class="neirongguanli-scenarios-newmedia">
+                <h4>各级广电媒体融合</h4>
+                <div class="line-newmedia"></div>
+                <p>为省市县各级广播、电视、报业、网站等</p>
+                <p>媒体融合提供整体解决方案</p>
+            </div>
+            <%= image_tag "cms/img-neirongguanli-scene1.jpg"%>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="neirongguanli-scenarios-newmedia">
+                <h4>互联网新媒体融合</h4>
+                <div class="line-newmedia"></div>
+                <p>为互联网新媒体提供图文、音视频</p>
+                <p>智能化处理能力的综合解决方案</p>
+            </div>
+            <%= image_tag "cms/img-neirongguanli-scene2.jpg"%>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="neirongguanli-scenarios-newmedia">
+                <h4>大型企事业单位新闻中心</h4>
+                <div class="line-newmedia"></div>
+                <p>为大型企事业单位新闻中心提供</p>
+                <p>线上协作和内容管理平台</p>
+            </div>
+            <%= image_tag "cms/img-neirongguanli-scene3.jpg"%>
+        </div>
+    </div>
+</div>
