@@ -703,6 +703,13 @@ nav.navbar {
 
   .navbar-default .navbar-nav .solutions-menu-col2 li {
     width: 100%;
+    border-bottom: none !important;
+
+    a, span {
+      width: 100%;
+      display: inline-block;
+      border-bottom: 1px solid rgba(229, 229, 229, 0.07);
+    }
   }
 
   .navbar-nav {
@@ -824,6 +831,13 @@ nav.navbar {
 
     li>.dropdown-menu {
       margin-top: 6px !important;
+    }
+  }
+
+  .navbar-default .navbar-nav .solutions-menu-col2 li {
+    a,
+    span {
+      min-width: 4.00rem;
     }
   }
 }
