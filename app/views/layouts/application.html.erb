@@ -84,7 +84,7 @@
                       <% item[:cols].each do |col| -%>
                         <% if col[:type].blank? -%>
 
-                          <%= content_tag :span do -%>
+                          <%= content_tag :span, class: "hidden-xs" do -%>
                             <h4 class="menu-title"></h4>
                             <p class="hidden-xs"></p>
                           <% end -%>

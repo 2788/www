@@ -815,6 +815,40 @@
     }
   }
 
+  &.hero-invite-index {
+    background-image: image-url("banner/banner-invite-index.jpg");
+    .middle-container {
+      top: 45%;
+      text-align: center;
+      .invite-image {
+        width: 4.80rem;
+        position: relative;
+        left: calc(50% - 2.40rem);
+      }
+      .invite-text {
+        margin-top: 0.40rem;
+        margin-bottom: 0;
+        font-size: 0.20rem;
+        color: #000;
+        text-shadow: none;
+        span {
+          padding: 0.05rem 0.20rem;
+          border-radius: 0.20rem;
+          background-color: #FAD352;
+        }
+      }
+      .btn-banner {
+        margin-top: 0.40rem;
+        font-weight: 600;
+        &:hover {
+          color: #DC143C;
+          background-color: #FFF;
+          border: none;
+        }
+      }
+    }
+  }
+
   .container {
     position: relative;
     height: 4.52rem;

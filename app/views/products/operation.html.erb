@@ -12,86 +12,89 @@
 </div>
 
 <div class="features-nav hidden-xs">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.operation.middlebar").each do |linkbar| %>
-          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
-        <% end %>
-      </ul>
+    <div class="container">
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+                <% I18n.t("views.products.operation.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
+
 <div class="tab-content-section-1 container newmedia iconlist-14-newmedia white">
     <h2>产品优势</h2>
     <div class="container center-newmedia">
         <div class="col-sm-3 col-xs-6">
             <div class="icon-adv-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png'%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png"%>
             </div>
             <p>简单设置</p>
         </div>
         <div class="col-sm-3 col-xs-6">
             <div class="icon-adv-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-linghuopeizhi"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-linghuopeizhi"%>
             </div>
             <p>灵活配置</p>
         </div>
         <div class="col-sm-3 col-xs-6">
             <div class="icon-adv-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-zidongtuopu"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-zidongtuopu"%>
             </div>
             <p>自动拓扑</p>
         </div>
         <div class="col-sm-3 col-xs-6">
             <div class="icon-adv-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-shengxiaojiangben"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-shengxiaojiangben"%>
             </div>
             <p>升效降本</p>
         </div>
     </div>
 </div>
+
 <div class="tab-content-section-2 container jiankong-sec-bg newmedia iconlist-13-newmedia">
     <h2>核心功能</h2>
     <div class="container center-newmedia">
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-shujucaiji"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-shujucaiji"%>
             </div>
             <p>数据采集</p>
         </div>
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-shujuchuli"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-shujuchuli"%>
             </div>
             <p>数据处理</p>
         </div>
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-zichanguanli"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-zichanguanli"%>
             </div>
             <p>资产管理</p>
         </div>
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-yunweiguanli"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-yunweiguanli"%>
             </div>
             <p>运维管理</p>
         </div>
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-gaojingguanli"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-gaojingguanli"%>
             </div>
             <p>告警管理</p>
         </div>
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
-                <%= image_tag 'operation/icon-zhinengshujujiankong.png', class:"icon-keshihuayanshi"%>
+                <%= image_tag "operation/icon-zhinengshujujiankong.png", class:"icon-keshihuayanshi"%>
             </div>
             <p>可视化演示</p>
         </div>
     </div>
 </div>
+
 <div class="tab-content-section-3 container jiankong-sec-tran newmedia imglist-14-newmedia white">
     <h2>适用场景</h2>
     <div class="container center-newmedia">
@@ -102,7 +105,7 @@
                 <p>帮助企业实现应用性能的最优化</p>
                 <p>改进与优化终端用户体验</p>
             </div>
-            <%= image_tag 'operation/img-jiankong-scene1.jpg'%>
+            <%= image_tag "operation/img-jiankong-scene1.jpg"%>
         </div>
         <div class="col-sm-3 col-xs-6">
             <h4 class="operation-pos-wrap">综合日志分析场景</h4>
@@ -111,7 +114,7 @@
                 <p>对日志进行分析，剖析</p>
                 <p>业务事务、系统异常等</p>
             </div>
-            <%= image_tag 'operation/img-jiankong-scene2.jpg'%>
+            <%= image_tag "operation/img-jiankong-scene2.jpg"%>
         </div>
         <div class="col-sm-3 col-xs-6">
             <h4 class="operation-pos-wrap">基础资源监控场景</h4>
@@ -121,18 +124,18 @@
                 <p>网络以及平台虚拟化等平台</p>
                 <p>基础环境及应用的全面监控</p>
             </div>
-            <%= image_tag 'operation/img-jiankong-scene3.jpg'%>
+            <%= image_tag "operation/img-jiankong-scene3.jpg"%>
         </div>
         <div class="col-sm-3 col-xs-6">
             <h4 class="operation-pos-wrap">智能告警分析场景</h4>
             <div class="feibian-scenarios-newmedia">
                 <h4>智能告警分析场景</h4>
-                <p>通过机器学习和AI算法，建立</p>
+                <p>通过机器学习和 AI 算法，建立</p>
                 <p>灵活的告警归并、压制和静默能力，</p>
                 <p>并提供异常点检测、关联分析、</p>
                 <p>根因分析等能力，辅助用户运维决策</p>
             </div>
-            <%= image_tag 'operation/img-jiankong-scene4.jpg'%>
+            <%= image_tag "operation/img-jiankong-scene4.jpg"%>
         </div>
     </div>
 </div>

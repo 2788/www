@@ -1,6 +1,25 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 2018 年最后一波邀请活动 banner %>
+  <%# 时间：2018 年 12 月 24 日 - 2019 年 1 月 1 日 %>
+  <%# https://jira.qiniu.io/browse/BO-6068 %>
+  <% if Time.now.to_i < Time.local(2019, 1, 1).to_i -%>
+  <div class="jumbotron hero hero-invite-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= image_tag "banner/banner-invite-middle.png", class: "invite-image", title: "邀请好友赢好礼 新年上上签", alt: "邀请好友赢好礼 新年上上签" -%>
+            <p class="invite-text"><span>活动时间：12 月 24 日 - 12 月 31 日</span></p>
+            <%= link_to "立即参与", "https://portal.qiniu.com/invitation", target: "_blank", id: "banner-invite-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <div class="jumbotron hero hero-csvc">
     <div class="container">
       <div class="middle-container">
@@ -52,21 +71,6 @@
         <div class="row">
           <div class="col-sm-12">
             <%= link_to "立即参加", "/events/1024event?entry=index-banner", target: "_blank", id: "banner-1024event-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# qvm 双十一活动 banner %>
-  <% if is_double11_on() -%>
-  <div class="jumbotron hero hero-double11-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= link_to "即刻参与", "/events/double11?entry=index-banner", target: "_blank", id: "banner-double11-btn", class: "btn btn-lg btn-banner" -%>
           </div>
         </div>
       </div>
