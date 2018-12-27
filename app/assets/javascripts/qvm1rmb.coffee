@@ -21,8 +21,10 @@ $(document).ready ->
   # https://jira.qiniu.io/browse/BO-5681
   # 个人活动开始时间 2018年11月23日00:00:00
   personStartTime = new Date(2018, 10, 23, 0, 0, 0)
-  # 个人活动开始时间 2018年12月31日23:59:59
-  personEndTime = new Date(2018, 11, 31, 23, 59, 59)
+  # qvm1rmb 页面下线
+  # https://jira.qiniu.io/browse/BO-6105
+  # 个人活动结束时间 2018年12月26日23:59:59
+  personEndTime = new Date(2018, 11, 26, 23, 59, 59)
   # 个人活动刷新间隔为3个月
   personInterval = 3
 
@@ -156,8 +158,13 @@ $(document).ready ->
     # 个人
     startTimePerson = timeDurationPerson.startTime
     endTimePerson = timeDurationPerson.endTime
-    activityTimePerson = startTimePerson.getFullYear() + ' 年 ' + (startTimePerson.getMonth() + 1) + ' 月 ' + startTimePerson.getDate() + ' 日 - ' + endTimePerson.getFullYear() + ' 年 ' + (endTimePerson.getMonth() + 1) + ' 月 ' + endTimePerson.getDate() + ' 日'
-    $activityTimePerson.html(activityTimePerson)
+    if currentTime.getTime() < startTimePerson.getTime()
+      $activityTimePerson.html '活动未开始'
+    else if currentTime.getTime() > endTimePerson.getTime()
+      $activityTimePerson.html '活动已结束'
+    else
+      activityTimePerson = startTimePerson.getFullYear() + ' 年 ' + (startTimePerson.getMonth() + 1) + ' 月 ' + startTimePerson.getDate() + ' 日 - ' + endTimePerson.getFullYear() + ' 年 ' + (endTimePerson.getMonth() + 1) + ' 月 ' + endTimePerson.getDate() + ' 日'
+      $activityTimePerson.html(activityTimePerson)
 
   # 设置活动规则里面的活动时间（企业）
   resetActivityTimeEnterprise = (timeDurationEnterprise) ->
@@ -166,8 +173,13 @@ $(document).ready ->
     # 企业
     startTimeEnterprise = timeDurationEnterprise.startTime
     endTimeEnterprise = timeDurationEnterprise.endTime
-    activityTimeEnterprise = startTimeEnterprise.getFullYear() + ' 年 ' + (startTimeEnterprise.getMonth() + 1) + ' 月 ' + startTimeEnterprise.getDate() + ' 日 - ' + endTimeEnterprise.getFullYear() + ' 年 ' + (endTimeEnterprise.getMonth() + 1) + ' 月 ' + endTimeEnterprise.getDate() + ' 日（每天限量 50 台）'
-    $activityTimeEnterprise.html(activityTimeEnterprise)
+    if currentTime.getTime() < startTimeEnterprise.getTime()
+      $activityTimeEnterprise.html '活动未开始'
+    else if currentTime.getTime() > endTimeEnterprise.getTime()
+      $activityTimeEnterprise.html '活动已结束'
+    else
+      activityTimeEnterprise = startTimeEnterprise.getFullYear() + ' 年 ' + (startTimeEnterprise.getMonth() + 1) + ' 月 ' + startTimeEnterprise.getDate() + ' 日 - ' + endTimeEnterprise.getFullYear() + ' 年 ' + (endTimeEnterprise.getMonth() + 1) + ' 月 ' + endTimeEnterprise.getDate() + ' 日（每天限量 50 台）'
+      $activityTimeEnterprise.html(activityTimeEnterprise)
 
   # qvm1rmb 页面改版
   # https://jira.qiniu.io/browse/BO-5681
