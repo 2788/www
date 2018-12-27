@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get '/products/newmedia/convergence',  to: 'products#convergence'
     get '/products/newmedia/cms',          to: 'products#cms'
     get '/products/newmedia/operation',    to: 'products#operation'
+    get '/products/newmedia/live',         to: 'products#live'
     get '/products/pili/livequiz',         to: 'products#livequiz'
     get '/products/qavs',                  to: 'products#qavs'
     get '/products/qvm',                   to: 'products#qvm'

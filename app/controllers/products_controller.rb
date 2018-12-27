@@ -68,6 +68,9 @@ class ProductsController < ApplicationController
   def convergence
   end
 
+  def live
+  end
+
   def livequiz
   end
 

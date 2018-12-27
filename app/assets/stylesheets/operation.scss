@@ -84,21 +84,21 @@
             img {
                 width: 100%;
                 display: block;
-                border-radius: .1rem;
+                border-radius: .12rem;
             }
             .feibian-scenarios-newmedia {
                 position: absolute;
                 transform: translate3d(-50%, -200%, 0);
                 opacity: 0;
                 left: 50%;
-                width: 100%;
+                width: 101%;
                 transition: all .3s ease-out;
-                height: 100%;
+                height: 101%;
                 color: #fff;
                 background: rgba(3, 160, 222, .6);
                 text-align: center;
                 bottom: 0;
-                border-radius: .1rem;
+                border-radius: .12rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -107,12 +107,27 @@
                     font-size: .18rem;
                 }
             }
+            .operation-pos-wrap {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                transition: all .1s ease;
+                color: #fff;
+                font-size: .16rem;
+                width: 100%;
+                text-align: center;
+                opacity: 1;
+            }
         }
         .col-sm-3:hover {
             .feibian-scenarios-newmedia {
                 transform: translate3d(-50%, 50%, 0);
                 opacity: 1;
                 bottom: 50%;
+            }
+            .operation-pos-wrap {
+                opacity: 0;
             }
         }
     }
