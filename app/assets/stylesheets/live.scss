@@ -92,17 +92,6 @@
         }
     }
 }
-@media (max-width: 767px) {
-    .hudongzhibo-scene-newmedia {
-        .nav-tabs.nav-justified.nav-short li {
-            margin: 0;
-            width: 24%;
-        }
-    }
-    .hudongzhibo-scene-newmedia.features .tab-desc {
-        margin-top: 2em;
-    }
-}
 .wu-newmedia{
     display: inline-block;
     width: 19.5%;
@@ -131,5 +120,26 @@
                 padding-right: .3rem;
             }
         }
+    }
+}
+@media (max-width: 767px) {
+    .hudongzhibo-scene-newmedia {
+        .nav-tabs.nav-justified.nav-short li {
+            margin: 0;
+            width: 24%;
+        }
+    }
+    .hudongzhibo-scene-newmedia.features .tab-desc {
+        margin-top: 2em;
+    }
+    .hudongzhibo-scene-newmedia .tabs .tab-content .img-wrap-newmedia {
+        padding-right: 0;
+        padding-bottom: .4rem;
+        text-align: center;
+    }
+    .nav-tabs.nav-justified.nav-short li a {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }
