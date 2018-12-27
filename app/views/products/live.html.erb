@@ -12,15 +12,15 @@
 </div>
 
 <div class="features-nav hidden-xs">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.live.middlebar").each do |linkbar| %>
-          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
-        <% end %>
-      </ul>
+    <div class="container">
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+                <% I18n.t("views.products.live.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="feature tab1-content-section-1 container newmedia iconlist-15-newmedia white zhibohudong-newmedia">
@@ -69,22 +69,22 @@
     <div class="container center-newmedia">
         <div class="col-sm-3 col-xs-6 ">
             <div class="icon-adv-newmedia icon-core-newmedia">
-                <%= image_tag "live/icon-hudongzhibo-func.png" %>   
+                <%= image_tag "live/icon-hudongzhibo-func.png" %>
             </div>
         </div>
          <div class="col-sm-3 col-xs-6 ">
             <div class="icon-adv-newmedia icon-core-newmedia">
-                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-zhushoupingtai" %>   
+                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-zhushoupingtai" %>
             </div>
         </div>
          <div class="col-sm-3 col-xs-6 ">
             <div class="icon-adv-newmedia icon-core-newmedia">
-                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-guanlipingtai" %>   
+                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-guanlipingtai" %>
             </div>
         </div>
          <div class="col-sm-3 col-xs-6 ">
             <div class="icon-adv-newmedia icon-core-newmedia">
-                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-hudongzhinengbokong" %>   
+                <%= image_tag "live/icon-hudongzhibo-func.png", class: "icon-hudongzhinengbokong" %>
             </div>
         </div>
     </div>
