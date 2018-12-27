@@ -92,6 +92,17 @@
         }
     }
 }
+@media (max-width: 767px) {
+    .hudongzhibo-scene-newmedia {
+        .nav-tabs.nav-justified.nav-short li {
+            margin: 0;
+            width: 24%;
+        }
+    }
+    .hudongzhibo-scene-newmedia.features .tab-desc {
+        margin-top: 2em;
+    }
+}
 .wu-newmedia{
     display: inline-block;
     width: 19.5%;
