@@ -1,0 +1,119 @@
+<div class="banner-box banner-box-newmedia demolition-banner banner-left-newmedia">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">智能拆条</h1>
+                <p>智能拆条是通过智能识别算法、机器深度学习和专业人员的相互配合，有效提高新闻类、</p>
+                <p>体育类等视频的拆条质量，有效解决节约人力和硬件成本</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.demolition.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab1-content-section-1 container newmedia iconlist-14-newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png"%>
+            </div>
+            <p>边播边拆，分钟级呈现</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png",class:"icon-qiedianzhimiao"%>
+            </div>
+            <p>切点至秒，高精准成片</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png",class:"icon-dongtaizhuanma"%>
+            </div>
+            <p>动态转码，优品质分发</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png",class:"icon-anquanwending"%>
+            </div>
+            <p>安全稳定，全链路保障</p>
+        </div>
+    </div>
+</div>
+
+<div class="tab1-content-section-2 container newmedia shenhe-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png", class:"icon-yuanliujiankong"%>
+            </div>
+            <p>源流监控</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png", class:"icon-zhinengchai"%>
+            </div>
+            <p>智能拆条</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png", class:"icon-rengongfushen"%>
+            </div>
+            <p>人工复审</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png", class:"icon-anxufenfa"%>
+            </div>
+            <p>按需分发</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "demolition/icon-zhinengchaitiao.png", class:"icon-anquanfangdao"%>
+            </div>
+            <p>安全防盗</p>
+        </div>
+    </div>
+</div>
+
+<div class="feature tab1-content-section-3 newmedia hudongzhibo-scene-newmedia">
+    <div class="container">
+        <div class="intro">
+            <h2 class="title">适用场景</h2>
+        </div>
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+                <% I18n.t("views.products.demolition.feature1.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], data: {toggle: "tab"} -%></li>
+                <% end %>
+            </ul>
+            <div class="tab-content center-newmedia container">
+                <% I18n.t("views.products.demolition.feature1.sections").each do |unit| %>
+                    <div id="<%= unit[:id] %>" class="<%= unit[:class] %>">
+                        <div class="img-wrap-newmedia col-sm-6">
+                            <%= image_tag unit[:img], alt: unit[:title] %>
+                        </div>
+                        <div class="col-sm-6">
+                            <% unit[:desc].each do |des| %>
+                                <p class="tab-desc-newmedia"><i></i><%= des[:text] %></p>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

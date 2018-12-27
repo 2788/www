@@ -1925,7 +1925,7 @@ en:
           sections:
             - id: "tab-content-section-1"
               class: "tab-pane active"
-              img: "live/img-hudongzhibo-scene1.png"
+              img: "live/img-hudongzhibo-scene1.jpg"
               title: "传统广电媒体直播"
               desc: 
                 - text: "即开即播、一站式解决方案，使驻外记者可以快速、灵活地回传、发布直播内容，使得新闻事件第一时间传播。"
@@ -1933,7 +1933,7 @@ en:
                 - text: "完善的直播事件、轮播事件管理，可以使用户日常常规化地管理运营直播内容。"
             - id: "tab-content-section-2"
               class: "tab-pane "
-              img: "live/img-hudongzhibo-scene2.png"
+              img: "live/img-hudongzhibo-scene2.jpg"
               title: "互联网直播"
               desc: 
                 - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
@@ -1941,17 +1941,132 @@ en:
                 - text: "全网融合 CDN 节点实现了加速稳定的同步直播、同步互动。"
             - id: "tab-content-section-3"
               class: "tab-pane "
-              img: "live/img-hudongzhibo-scene3.png"
+              img: "live/img-hudongzhibo-scene3.jpg"
               title: "机顶盒运营商直播"
               desc: 
                 - text: "提供“机顶盒+智能手机”的终端融合方案，使得机顶盒运营商及客厅观众也可以随时收看直播，融入互动。"
                 - text: "与第三方收录系统的整合，可以将直播内容无缝对接任何 IP 和 QAM 环境，进行发布。"
             - id: "tab-content-section-4"
               class: "tab-pane "
-              img: "live/img-hudongzhibo-scene4.png"
+              img: "live/img-hudongzhibo-scene4.jpg"
               title: "直播审核"
               desc: 
                 - text: "基于人工、人工智能图像识别的直播监审以及全直播流程整体安全设计，可以确保对直播内容与直播质量的广电级安全保障。"
+      demolition:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab1-content-section-1"
+          - title: "方案架构"
+            class: "intLink"
+            href: "#tab1-content-section-2"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab1-content-section-3"
+        feature1:
+          middlebar:
+            - title: "体育拆条"
+              class: "active"
+              href: "#tab-content-section-1"
+            - title: "新闻拆条"
+              class: 
+              href: "#tab-content-section-2"
+          sections:
+            - id: "tab-content-section-1"
+              class: "tab-pane active"
+              img: "live/img-hudongzhibo-scene2.png"
+              title: "体育拆条"
+              desc: 
+                - text: "即开即播、一站式解决方案，使驻外记者可以快速、灵活地回传、发布直播内容，使得新闻事件第一时间传播。"
+                - text: "开播端可以采集广电专业拍摄设备、以及演播室 PGM 直播信号。"
+                - text: "完善的直播事件、轮播事件管理，可以使用户日常常规化地管理运营直播内容。"
+            - id: "tab-content-section-2"
+              class: "tab-pane"
+              img: "live/img-hudongzhibo-scene1.png"
+              title: "新闻拆条"
+              desc: 
+                - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
+                - text: "端到端的直播解决方案，提供完整的直播客户端及 SDK，可以直接提供直播播放平台，或集成用户自有的移动应用。"
+                - text: "全网融合 CDN节 点实现了加速稳定的同步直播、同步互动。" 
+      resolution:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-3"
+        feature1:
+          - title: "编码格式全、效率高"
+            class: ""
+            desc:
+              - text: "编码支持所有主流视频格式" 
+              - text: "H.265 编码技术可压缩 20%～30% 视频大小" 
+          - title: "播放器大幅增强视频主观质量"
+            class: "icon-zhuguanzhiliang"
+            desc:
+              - text: "提供 Andorid,iOS,H5 各终端智能滤波播放器" 
+              - text: "专业工具支持用户对视频主观质量发起测试"
+          - title: "移动端性能出色"
+            class: "icon-quanzhongduanfugai"
+            desc:
+              - text: "优化算法效率，降低终端 CPU 负载" 
+              - text: "负载较普通播放增幅小于 10%"
+          - title: "滤波算法，智能优化"
+            class: "icon-lvbosuanfa"
+            desc:
+              - text: "针对不同视频内容的质量评分" 
+              - text: "智能学习，不断优化滤波器算法"
+      demolition:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab1-content-section-1"
+          - title: "方案架构"
+            class: "intLink"
+            href: "#tab1-content-section-2"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab1-content-section-3"
+        feature1:
+          middlebar:
+            - title: "体育拆条"
+              class: "active"
+              href: "#tab-content-section-1"
+            - title: "新闻拆条"
+              class: 
+              href: "#tab-content-section-2"
+          sections:
+            - id: "tab-content-section-1"
+              class: "tab-pane active"
+              img: "live/img-hudongzhibo-scene2.jpg"
+              title: "体育拆条"
+              desc: 
+                - text: "即开即播、一站式解决方案，使驻外记者可以快速、灵活地回传、发布直播内容，使得新闻事件第一时间传播。"
+                - text: "开播端可以采集广电专业拍摄设备、以及演播室 PGM 直播信号。"
+                - text: "完善的直播事件、轮播事件管理，可以使用户日常常规化地管理运营直播内容。"
+            - id: "tab-content-section-2"
+              class: "tab-pane"
+              img: "live/img-hudongzhibo-scene1.jpg"
+              title: "新闻拆条"
+              desc: 
+                - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
+                - text: "端到端的直播解决方案，提供完整的直播客户端及 SDK，可以直接提供直播播放平台，或集成用户自有的移动应用。"
+                - text: "全网融合 CDN节 点实现了加速稳定的同步直播、同步互动。" 
+      microservices:
+        middlebar:
+          - title: "产品优势"
+            class: "intLink active"
+            href: "#tab-content-section-1"
+          - title: "核心功能"
+            class: "intLink"
+            href: "#tab-content-section-2"
+          - title: "适用场景"
+            class: "intLink"
+            href: "#tab-content-section-3"
       atlab:
         title: Deep Learning Platform（AVA）
         desc: Qiniu AVA is a fully managed end-to-end Deep Learning Platform. It allows data scientists and AI developers to easily process Image/Video data, build, train and deploy deep learning models. It provides a rich set of computational units to enable users to solve various computer vision problems.

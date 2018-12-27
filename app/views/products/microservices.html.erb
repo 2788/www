@@ -1,0 +1,102 @@
+<div class="banner-box banner-box-newmedia microservices-banner banner-left-newmedia">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">业务微服务引擎</h1>
+                <p>将行业需求拆分至最小工具集，并封装智能能力</p>
+                <p>多个系统共用相同功能，统一运维升级</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.microservices.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container microservices-func-newmedia newmedia iconlist-13-newmedia">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png"%>
+            </div>
+            <h4>能力标准化</h4>
+            <p class="details-newmedia">以标准化的能力满足广电新媒体行业</p>
+            <p class="details-newmedia">的通用需求</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-fuwumokuaihua"%>
+            </div>
+            <h4>服务模块化</h4>
+            <p class="details-newmedia">将智能处理能力分解为</p>
+            <p class="details-newmedia">模块化的服务</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-diaoyongbianlihua"%>
+            </div>
+            <h4>调用便利化</h4>
+            <p class="details-newmedia">通过接口可直接调用</p>
+            <p class="details-newmedia">平台上的智能服务</p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-content-section-2 container newmedia iconlist-13-newmedia microservices-sec-bg microservices-func-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-meizichuli"%>
+            </div>
+            <p>智能媒资处理</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-jiegouhua"%>
+            </div>
+            <p>视频结构化</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-neironganquan"%>
+            </div>
+            <p>内容安全</p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-content-section-3 container newmedia iconlist-13-newmedia white microservices-func-newmedia">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia"> 
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-xingganseqing"%>
+            </div>
+            <p>性感、色情图片识别</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-baolikongbu"%>
+            </div>
+            <p>暴力恐怖场景识别</p>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-minganrenwu"%>
+            </div>
+            <p>敏感人物识别</p>
+        </div>
+    </div>
+</div>

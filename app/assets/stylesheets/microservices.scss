@@ -1,0 +1,31 @@
+.newmedia.microservices-func-newmedia {
+    .icon-adv-newmedia {
+        .icon-fuwumokuaihua {margin: 0 0 0 -1.6rem;}
+        .icon-diaoyongbianlihua {margin: 0 0 0 -3.2rem;}
+    }
+    .icon-func-newmedia{
+        margin-bottom: .3rem;
+            .icon-meizichuli {margin: -1.5rem 0 0 0;}
+            .icon-jiegouhua {margin: -1.5rem 0 0 -1rem;}
+            .icon-neironganquan {margin: -1.5rem 0 0 -2rem;}
+            .icon-xingganseqing{margin: -1.5rem 0 0 -3rem;}
+            .icon-baolikongbu{margin: -1.5rem 0 0 -4rem;}
+            .icon-minganrenwu{margin: -1.5rem 0 0 -5rem;}
+        }
+}
+.microservices-banner {
+    .banner-wrap {
+        background-image: image-url("microservices/banner-weifuwuyinqing.jpg");
+        .tittle-newmedia {
+            .nrirong-title-wrap {
+                text-align: left;
+                >h1 {
+                    margin-bottom: .36rem;
+                }
+            }
+        }
+    }
+}
+.microservices-sec-bg {
+    background: #f6f6f6;
+}
