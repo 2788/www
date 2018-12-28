@@ -1,0 +1,106 @@
+<div class="banner-box banner-box-newmedia banner-left-newmedia banner-chaofen">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">超级分辨率</h1>
+                <p>以高效的编解码、智能滤波播放技术，在播放器终端实现低码率效果优化，</p>
+                <p>网络传输优化功能</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.resolution.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia changjieshao-newmedia changjieshao-newmedias chaofen-newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <% I18n.t("views.products.resolution.feature1").each do |adv| %>
+            <div class=" col-sm-6 col-xs-12">
+                <div class="changjieshao-wrap-newmedia col-xs-4">
+                    <div class="icon-adv-newmedia">
+                        <%= image_tag "resolution/icon-chaojifenbianlv.png", class: adv[:class] %>
+                    </div>
+                </div>
+                <div class="word-newmedia col-xs-8">
+                    <h3><%= adv[:title] %></h3>
+                    <% adv[:desc].each do |des|%>
+                        <p><%= des[:text] %></p>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="tab-content-section-2 container newmedia iconlist-14-newmedia chaofen-func-bg chaofen-func-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "resolution/icon-chaojifenbianlv.png",class: "icon-gaoxiaobianma"%>
+            </div>
+            <p>基于 H.265</p>
+            <p>高效编码技术</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "resolution/icon-chaojifenbianlv.png",class: "icon-duozhongduan"%>
+            </div>
+            <p>支持多终端的</p>
+            <p>智能滤波播放器</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "resolution/icon-chaojifenbianlv.png",class: "icon-shenduxuexi"%>
+            </div>
+            <p>滤波算法</p>
+            <p>深度学习平台</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "resolution/icon-chaojifenbianlv.png",class: "icon-fuzaiyouhua"%>
+            </div>
+            <p>终端 CPU</p>
+            <p>负载优化</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 container newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia">
+    <div class="container chaofen-scene-newmedia">
+        <div class="col-sm-6 col-xs-6">
+            <h4>保障视频质量，优化传输成本</h4>
+            <p>在编解码两端优化，保障质量同时，</p>
+            <p>能节省 70% 带宽成本</p>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+            <h4>高清直播，降低传输延迟</h4>
+            <p>高并发直播中，在保障质量的同时，</p>
+            <p>使用低码率传输，最大程度避免卡顿</p>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+            <h4>弱网络环境中，视频效果增强</h4>
+            <p>为移动端弱网环境用户，</p>
+            <p>提供更优质的观看体验</p>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+            <h4>云游戏效果增强</h4>
+            <p>在带宽固定的情况下，</p>
+            <p>增强云游戏视觉效果</p>
+        </div>
+    </div>
+        <%= image_tag "resolution/img-chaofen-bg.jpg", class: "chaofen-scenebg-newmedia" %>
+    </div>
+</div>

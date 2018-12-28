@@ -71,6 +71,15 @@ class ProductsController < ApplicationController
   def live
   end
 
+  def resolution
+  end
+
+  def demolition
+  end
+
+  def microservices
+  end
+
   def livequiz
   end
 
