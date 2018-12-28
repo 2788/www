@@ -2038,7 +2038,7 @@ zh-CN:
           - title: "播放器大幅增强视频主观质量"
             class: "icon-zhuguanzhiliang"
             desc:
-              - text: "提供 Andorid,iOS,H5 各终端智能滤波播放器" 
+              - text: "提供 Andorid, iOS, H5 各终端智能滤波播放器" 
               - text: "专业工具支持用户对视频主观质量发起测试"
           - title: "移动端性能出色"
             class: "icon-quanzhongduanfugai"
@@ -2055,10 +2055,10 @@ zh-CN:
           - title: "产品优势"
             class: "intLink active"
             href: "#tab1-content-section-1"
-          - title: "方案架构"
+          - title: "核心功能"
             class: "intLink"
             href: "#tab1-content-section-2"
-          - title: "核心功能"
+          - title: "适用场景"
             class: "intLink"
             href: "#tab1-content-section-3"
         feature1:

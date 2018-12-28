@@ -102,3 +102,13 @@
         margin-top: .2rem;
     }
 }
+@media (min-width: 768px) {
+    .chaofen-newmedia .word-newmedia {
+        margin-left: .3rem;
+    }
+}
+@media (min-width: 992px) {
+    .chaofen-newmedia .word-newmedia {
+        margin-left: 0;
+    }
+}
