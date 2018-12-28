@@ -2033,7 +2033,7 @@ zh-CN:
           - title: "编码格式全、效率高"
             class: ""
             desc:
-              - text: "编码支持所有主流视频格式" 
+              - text: "编码支持所有主流视频格式"
               - text: "H.265 编码技术可压缩 20%～30% 视频大小"
           - title: "播放器大幅增强视频主观质量"
             class: "icon-zhuguanzhiliang"
