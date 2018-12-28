@@ -80,6 +80,15 @@ class ProductsController < ApplicationController
   def microservices
   end
 
+  def editor
+  end
+
+  def auditor
+  end
+
+  def copyright
+  end
+
   def livequiz
   end
 

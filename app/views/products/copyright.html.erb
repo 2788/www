@@ -1,0 +1,122 @@
+<div class="banner-box banner-box-newmedia copyright-banner banner-left-newmedia">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">版权交易</h1>
+                <p>智能审核从技审、文字、音频、画面等方面，全维度保障播出内容安全。</p>
+                <p>强大的智能学习平台助力敏感信息快速学习</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.copyright.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia iconlist-14-newmedia white ">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png"%>
+            </div>
+            <p>传播保护</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-jiujinjiaoyi"%>
+            </div>
+            <p>就近交易</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-shenhejiankong"%>
+            </div>
+            <p>审核监控</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-bianjieguanli"%>
+            </div>
+            <p>便捷管理</p>
+        </div>
+        
+    </div>
+</div>
+<div class="tab-content-section-2 container newmedia iconlist-15-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-neirongcunchu"%>
+            </div>
+            <p>内容存储</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-neirongchuli"%>
+            </div>
+            <p>内容处理</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-neirongfenfa"%>
+            </div>
+            <p>内容分发</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-neirongbanquan"%>
+            </div>
+            <p>内容版权</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "copyright/icon-banquanjiaoyi.png",class:"icon-neirongbanquanjiaoyi"%>
+            </div>
+            <p>内容版权交易</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 container newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6 ">
+            <div class="banqaunjiaoyi-sceneblock-newmedia">
+            <div class="line-newmedia"></div>
+            <h4>信息共享</h4>
+            <p>版权信息互通有无，</p>
+            <p>解决信息不对称导致的效率低下</p>
+            <%= image_tag "copyright/img-banquanjiaoyi-scene1.jpg"%>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="banqaunjiaoyi-sceneblock-newmedia">
+                <div class="line-newmedia"></div>
+                <h4>版权保护</h4>
+                <p>打造版权交易和监管平台，</p>
+                <p>实现版权数字化全流程管理</p>
+                <%= image_tag "copyright/img-banquanjiaoyi-scene2.jpg"%>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="banqaunjiaoyi-sceneblock-newmedia">
+            <div class="line-newmedia"></div>
+            <h4>资产数字化</h4>
+            <p>实体资产数字化，</p>
+            <p>实现交易公开、透明、永久存储、可追溯</p>
+            <%= image_tag "copyright/img-banquanjiaoyi-scene3.jpg"%>
+            </div>
+        </div>
+    </div>
+</div>

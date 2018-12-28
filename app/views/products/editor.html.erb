@@ -1,0 +1,147 @@
+<div class="banner-box banner-box-newmedia banner-left-newmedia banner-meizi banner-feibian">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">云快编</h1>
+                <p>云快编以强大云端资源作支持，实现多轨无上限编辑、</p>
+                <p>主流视频特效及音频、字幕、转场模版等丰富功能</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.editor.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia iconlist-14-newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png" %>
+            </div>
+            <p>专业制作工具</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-yunduannengli" %>
+            </div>
+            <p>云端能力不设限</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-shejimoban" %>
+            </div>
+            <p>丰富设计模板，易于上手</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-biaozhunhuajiekou" %>
+            </div>
+            <p>标准化接口，方便接入</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-2 container newmedia iconlist-14-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-zhizuoxiangmu" %>
+            </div>
+            <p>制作项目管理</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-sucaiguanli" %>
+            </div>
+            <p>素材管理</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-chengpianguanli" %>
+            </div>
+            <p>成片管理</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-duoguifeibian" %>
+            </div>
+            <p>多轨非编</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-zimuzhizuo" %>
+            </div>
+            <p>字幕制作</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-guoduxiaoguo" %>
+            </div>
+            <p>过渡效果</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-yinpinxiaoguo" %>
+            </div>
+            <p>音频效果</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-feibian-newmedia icon-feibianfunc-newmedia">
+                <%= image_tag "editor/icon-zhinengyunfeibian.png",class:"icon-wenzitupian" %>
+            </div>
+            <p>文字图片特效</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 container newmedia imglist-14-newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="feibian-scenarios-newmedia">
+                <h4>内容非编制作</h4>
+                <p>根据国家政策和当前宣传需要</p>
+                <p>严格审核内容，对于故障、</p>
+                <p>违规内容报警并标记位置</p>
+            </div>
+            <%= image_tag "editor/img-feibian-scene1.jpg"%>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="feibian-scenarios-newmedia">
+                <h4>视频批量处理</h4>
+                <p>对大量视频进行打水印、</p>
+                <p>去除水印、自动去片头片尾</p>
+                <p>等批量操作</p>
+            </div>
+            <%= image_tag "editor/img-feibian-scene2.jpg"%>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="feibian-scenarios-newmedia">
+                <h4>采编快速处理</h4>
+                <p>对接媒资系统，快速导入</p>
+                <p>处理违规内容，保障采编效率</p>
+            </div>
+            <%= image_tag "editor/img-feibian-scene3.jpg"%>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="feibian-scenarios-newmedia">
+                <h4>直播快速拆条</h4>
+                <p>接入正在播出的视频流</p>
+                <p>快速拆条，填写编目后</p>
+                <p>进入媒资库</p>
+            </div>
+            <%= image_tag "editor/img-feibian-scene4.jpg"%>
+        </div>
+    </div>
+</div>
