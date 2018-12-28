@@ -12,15 +12,15 @@
 </div>
 
 <div class="features-nav hidden-xs">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.resolution.middlebar").each do |linkbar| %>
-          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
-        <% end %>
-      </ul>
+    <div class="container">
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+                <% I18n.t("views.products.resolution.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="tab-content-section-1 container newmedia changjieshao-newmedia changjieshao-newmedias chaofen-newmedia white">

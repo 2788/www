@@ -39,8 +39,8 @@
     }
   }
 }
-.changjieshao-newmedia{
-  .icon-bokongyoushi-newmedia{
+.changjieshao-newmedia {
+  .icon-bokongyoushi-newmedia {
     position: relative;
     margin-bottom:.5rem;
     width: 1.2rem;
@@ -48,28 +48,28 @@
     overflow: hidden;
     padding: 0;
     margin-left: .2rem;
-    img{
+    img {
       display: block;
       width: 4.8rem;
       max-width: none;
     }
   }
-  .col-xs-12{
+  .col-xs-12 {
     padding: 0;
   }
-  .center-newmedia{
+  .center-newmedia {
     padding: 0;
   }
-  .word-newmedia{
+  .word-newmedia {
     position: absolute;
     min-height: 100px;
     left: 170px;
     text-align: left;
-    h3{
+    h3 {
       font-size: .2rem;
       margin:.2rem 0 .1rem 0;
     }
-    p{
+    p {
       font-size:.12rem;
       line-height: .2rem;
       margin: 0;
@@ -90,20 +90,20 @@
       left: 150px;
     }
   }
-  .icon-zidonghuabochu{margin: 0 0 0 -1.2rem;}
-  .icon-zhinengzhiboanquan{margin: 0 0 0 -2.4rem;}
-  .icon-zhinengzhibobianpai{margin: 0 0 0 -3.6rem;}
-  .icon-ronghehangyetiyan{margin: -1.2rem 0 0 0;}
-  .icon-duoyangneirongzengzhi{margin: -1.26rem 0 0 -1.2rem;}
-  .icon-duopingtaileixingbushu{margin: -1.2rem 0 0 -2.4rem;}
-  .icon-kuazhongduanhudong{margin: -1.15rem 0 0 -3.6rem;}
+  .icon-zidonghuabochu {margin: 0 0 0 -1.2rem;}
+  .icon-zhinengzhiboanquan {margin: 0 0 0 -2.4rem;}
+  .icon-zhinengzhibobianpai {margin: 0 0 0 -3.6rem;}
+  .icon-ronghehangyetiyan {margin: -1.2rem 0 0 0;}
+  .icon-duoyangneirongzengzhi {margin: -1.26rem 0 0 -1.2rem;}
+  .icon-duopingtaileixingbushu {margin: -1.2rem 0 0 -2.4rem;}
+  .icon-kuazhongduanhudong {margin: -1.15rem 0 0 -3.6rem;}
 }
 @media(max-width: 768px) {
-  .changjieshao-newmedia{
-    .changjieshao-wrap-newmedia{
+  .changjieshao-newmedia {
+    .changjieshao-wrap-newmedia {
       margin: 0 auto;
     }
-    .word-newmedia{
+    .word-newmedia {
       position: relative;
       margin: 0;
       left: 0;
@@ -116,42 +116,42 @@
     left: 210px;
   }
 }
-.newmedia.white{
+.newmedia.white {
     background: #fff;
 }
-.bokong-func-newmedia{
-  p{
+.bokong-func-newmedia {
+  p {
     text-align: center;
     margin-bottom: 50px;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
   }
-  .icon-bokongfunc-newmedia{
+  .icon-bokongfunc-newmedia {
     width: 1rem;
     height: 1rem;
     overflow: hidden;
     margin: auto;
-    img{
+    img {
       width: 4rem;
       max-width: none;
     }
-    .icon-tuiliuzhibo{margin:0 0 0 -1rem;}
-    .icon-neirongjiankong{margin:0 0 0 -2rem;}
-    .icon-shichuangxiaoguo{margin:0 0 0 -3rem;}
-    .icon-kouxiangxiaoguo{margin:-1rem 0 0 0;}
-    .icon-qiehuankongzhi{margin:-1rem 0 0 -1rem;}
-    .icon-yinpinxiaoguo{margin:-1rem 0 0 -2rem;}
-    .icon-tuwenxiaoguo{margin:-1rem 0 0 -3rem;}
-    .icon-yanshiguanli{margin:-2rem 0 0 0;}
-    .icon-tuiliushuchu{margin:-2rem 0 0 -1rem;}
-    .icon-xitongjicheng{margin:-2rem 0 0 -2rem;}
-    .icon-zhinenghuabokong{margin:-2rem 0 0 -3rem;}
+    .icon-tuiliuzhibo {margin:0 0 0 -1rem;}
+    .icon-neirongjiankong {margin:0 0 0 -2rem;}
+    .icon-shichuangxiaoguo {margin:0 0 0 -3rem;}
+    .icon-kouxiangxiaoguo {margin:-1rem 0 0 0;}
+    .icon-qiehuankongzhi {margin:-1rem 0 0 -1rem;}
+    .icon-yinpinxiaoguo {margin:-1rem 0 0 -2rem;}
+    .icon-tuwenxiaoguo {margin:-1rem 0 0 -3rem;}
+    .icon-yanshiguanli {margin:-2rem 0 0 0;}
+    .icon-tuiliushuchu {margin:-2rem 0 0 -1rem;}
+    .icon-xitongjicheng {margin:-2rem 0 0 -2rem;}
+    .icon-zhinenghuabokong {margin:-2rem 0 0 -3rem;}
   }
 }
-@media(max-width: 768px){
-  .bokong-func-newmedia{
-    .col-sm-3{
+@media (max-width: 768px) {
+  .bokong-func-newmedia {
+    .col-sm-3 {
       width: 49%;
       display: inline-block;
     }
@@ -159,24 +159,24 @@
 }
 .img-scene-newmedia {
   padding: .8rem 0 2rem 0;
-  .col-sm-3,.col-sm-4{
+  .col-sm-3,.col-sm-4 {
     cursor: pointer;
     padding:0;
-    .tittle-newmedia{
+    .tittle-newmedia {
       position: absolute;
       bottom: 0;
       width: 100%;
       transition: all 0.2s;
       height: 45px;
       background: rgba(0,0,0,0.5);
-      h4{
+      h4 {
         margin: 0 auto;
         text-align: center;
         color: #fff;
         line-height: 45px;
         font-size: 16px;
       }
-      p{
+      p {
         display: none;
         color: #C1C1C1;
         padding: 0 15px;
@@ -187,13 +187,13 @@
       }
     }
   }
-  img{
+  img {
     width: 100%;
   }
-  .col-sm-3:hover,.col-sm-4:hover{
-    .tittle-newmedia{
+  .col-sm-3:hover,.col-sm-4:hover {
+    .tittle-newmedia {
       height: 100px;
-      p{
+      p {
         display:-webkit-box;
         -webkit-line-clamp:3;
         -webkit-box-orient:vertical;

@@ -2034,21 +2034,21 @@ zh-CN:
             class: ""
             desc:
               - text: "编码支持所有主流视频格式" 
-              - text: "H.265 编码技术可压缩 20%～30% 视频大小" 
+              - text: "H.265 编码技术可压缩 20%～30% 视频大小"
           - title: "播放器大幅增强视频主观质量"
             class: "icon-zhuguanzhiliang"
             desc:
-              - text: "提供 Andorid, iOS, H5 各终端智能滤波播放器" 
+              - text: "提供 Andorid, iOS, H5 各终端智能滤波播放器"
               - text: "专业工具支持用户对视频主观质量发起测试"
           - title: "移动端性能出色"
             class: "icon-quanzhongduanfugai"
             desc:
-              - text: "优化算法效率，降低终端 CPU 负载" 
+              - text: "优化算法效率，降低终端 CPU 负载"
               - text: "负载较普通播放增幅小于 10%"
           - title: "滤波算法，智能优化"
             class: "icon-lvbosuanfa"
             desc:
-              - text: "针对不同视频内容的质量评分" 
+              - text: "针对不同视频内容的质量评分"
               - text: "智能学习，不断优化滤波器算法"
       demolition:
         middlebar:
@@ -2067,14 +2067,14 @@ zh-CN:
               class: "active"
               href: "#tab-content-section-1"
             - title: "新闻拆条"
-              class: 
+              class:
               href: "#tab-content-section-2"
           sections:
             - id: "tab-content-section-1"
               class: "tab-pane active"
               img: "live/img-hudongzhibo-scene2.jpg"
               title: "体育拆条"
-              desc: 
+              desc:
                 - text: "即开即播、一站式解决方案，使驻外记者可以快速、灵活地回传、发布直播内容，使得新闻事件第一时间传播。"
                 - text: "开播端可以采集广电专业拍摄设备、以及演播室 PGM 直播信号。"
                 - text: "完善的直播事件、轮播事件管理，可以使用户日常常规化地管理运营直播内容。"
@@ -2082,10 +2082,10 @@ zh-CN:
               class: "tab-pane"
               img: "live/img-hudongzhibo-scene1.jpg"
               title: "新闻拆条"
-              desc: 
+              desc:
                 - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
                 - text: "端到端的直播解决方案，提供完整的直播客户端及 SDK，可以直接提供直播播放平台，或集成用户自有的移动应用。"
-                - text: "全网融合 CDN节 点实现了加速稳定的同步直播、同步互动。" 
+                - text: "全网融合 CDN 节点实现了加速稳定的同步直播、同步互动。"
       microservices:
         middlebar:
           - title: "产品优势"

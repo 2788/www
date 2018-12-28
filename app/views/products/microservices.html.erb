@@ -12,15 +12,15 @@
 </div>
 
 <div class="features-nav hidden-xs">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.microservices.middlebar").each do |linkbar| %>
-          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
-        <% end %>
-      </ul>
+    <div class="container">
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+                <% I18n.t("views.products.microservices.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="tab-content-section-1 container microservices-func-newmedia newmedia iconlist-13-newmedia">
@@ -79,7 +79,7 @@
 
 <div class="tab-content-section-3 container newmedia iconlist-13-newmedia white microservices-func-newmedia">
     <h2>适用场景</h2>
-    <div class="container center-newmedia"> 
+    <div class="container center-newmedia">
         <div class="col-sm-4 col-xs-6">
             <div class="icon-adv-newmedia icon-func-newmedia">
                 <%= image_tag "microservices/icon-weifuwuyinqing.png",class:"icon-xingganseqing"%>
