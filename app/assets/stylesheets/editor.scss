@@ -1,0 +1,108 @@
+.banner-feibian{
+    .banner-wrap {
+        background-image: image-url("editor/banner-feibian.jpg");
+        .tittle-newmedia {
+            position: relative;
+            .nrirong-title-wrap {
+                text-align: left;
+                >h1 {
+                    margin-bottom: .36rem;
+                }
+            }
+        }
+    }
+}
+@media(max-width: 992px){
+    .right-img {
+        display: none;
+    }
+}
+.newmedia{
+    .icon-feibian-newmedia{
+        width: 1.6rem;
+        height: 1.5rem;
+        margin: auto;
+        overflow: hidden;
+        img{
+            width: 6.4rem;
+            max-width: none;
+        }
+        .icon-yunduannengli{margin: 0 0 0 -1.6rem;}
+        .icon-shejimoban{margin: 0 0 0 -3.2rem;}
+        .icon-biaozhunhuajiekou{margin: 0 0 0 -4.8rem;}
+        .icon-zhizuoxiangmu{margin:-1.5rem 0 0 0;}
+        .icon-sucaiguanli{margin:-1.5rem 0 0 -1rem;}
+        .icon-chengpianguanli{margin:-1.5rem 0 0 -2rem;}
+        .icon-duoguifeibian{margin:-1.5rem 0 0 -3rem;}
+        .icon-zimuzhizuo{margin:-2.5rem 0 0 0;}
+        .icon-guoduxiaoguo{margin:-2.5rem 0 0 -1rem;}
+        .icon-yinpinxiaoguo{margin:-2.5rem 0 0 -2rem;}
+        .icon-wenzitupian{margin:-2.5rem 0 0 -3rem;}
+    }
+    .icon-feibianfunc-newmedia{
+        width: 1rem;
+        height: 1rem;
+    }
+    .feibian-scenarios-newmedia{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        padding-top:60%;
+        cursor: pointer;
+        transition: all 0.2s;
+        img{
+            display: block;
+        }
+        text-align: center;
+        color: #fff;
+        border-radius:6px;
+        h4{
+            font-size: .14rem;
+            text-align: center;
+            margin-bottom: .2rem;
+        }
+        p{
+            display: none;
+            font-size: .12rem;
+            text-align: center;
+        }
+    }
+    .feibian-scenarios-newmedia:hover{
+        padding-top:40%;
+        background: rgba(3,160,222,0.6);
+        p{
+            display: block
+        }
+    }
+  
+}
+.imglist-14-newmedia{
+    padding-bottom: .5rem;
+    .container{
+        padding: 0;
+    }
+    .col-sm-3{
+        width: 22.5%;
+        box-sizing: border-box;
+        position: relative;
+        padding: 0;
+        margin: 0 1.25%;
+    }
+  
+}
+.editor-center-me {
+    background: #f6f6f6;
+}
+@media(max-width: 768px){
+    .imglist-14-newmedia{
+        .col-xs-6{
+            width: 47.5%;
+            box-sizing: border-box;
+            margin: 1.25% 1.25%;
+            img{
+                width: 100%;
+                height: inherit;
+            }
+        }
+    }
+}

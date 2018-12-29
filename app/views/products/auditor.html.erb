@@ -1,0 +1,128 @@
+<div class="banner-box banner-box-newmedia banner-auditor banner-left-newmedia">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">智能审核</h1>
+                <p>智能审核从技审、文字、音频、画面全维度保障播出内容安全</p>
+                <p>强大的智能学习平台助力敏感信息快速学习</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.auditor.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia iconlist-14-newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png" %>
+            </div>
+            <p>快速审核</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-zhunqueshibie"%>
+            </div>
+            <p>准确识别</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-yangbenku"%>
+            </div>
+            <p>样本库丰富</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-dingzhihua"%>
+            </div>
+            <p>定制化学习</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-2 shenhe-center-m container newmedia shenhe-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-tuxiangshenhe"%>
+            </div>
+            <p>图像审核</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-yinpinzhuanwenzi"%>
+            </div>
+            <p>音频转文字</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-fencishenhe"%>
+            </div>
+            <p>分词审核</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-pipeidujiaoyan"%>
+            </div>
+            <p>音、图、字匹配度校验</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-shenhe-newmedia">
+                <%= image_tag "auditor/icon-zhinengshenhe.png", class:"icon-xuexipingtai"%>
+            </div>
+            <p>高效学习平台</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 container newmedia zuoyouban-newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia ">
+        <div class="col-sm-6">
+            <%= image_tag "auditor/img-shenhechangjing1.jpg" %>
+        </div>
+        <div class="col-sm-6">
+            <h4>播出管理</h4>
+            <p>根据国家政策和当前宣传需要，严格审核内容，
+                对于故障、违规内容报警并标记位置。</p>
+        </div>
+    </div>
+    <div class="container center-newmedia right-newmedia">
+        <div class="col-sm-6 youban-newmedia">
+            <h4>过往媒资筛查</h4>
+            <p>批量审核过往媒资，标记其中敏感内容。</p>
+        </div>
+        <div class="col-sm-6">
+            <%= image_tag "auditor/img-shenhechangjing2.jpg" %>
+        </div>
+    </div>
+    <div class="container center-newmedia ">
+        <div class="col-sm-6">
+            <%= image_tag "auditor/img-shenhechangjing3.jpg" %>
+        </div>
+        <div class="col-sm-6">
+            <h4>敏感信息快速学习审核</h4>
+            <p>根据最新宣传规定，智能学习新的审核内容。</p>
+        </div>
+    </div>
+    <div class="container center-newmedia right-newmedia">
+        <div class="col-sm-6 youban-newmedia">
+            <h4>识别音视频时间轴同步性</h4>
+            <p>音视频时间轴同步性校准。</p>
+        </div>
+        <div class="col-sm-6">
+            <%= image_tag "auditor/img-shenhechangjing4.jpg" %>
+        </div>
+    </div>
+</div>
