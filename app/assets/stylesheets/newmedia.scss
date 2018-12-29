@@ -213,8 +213,8 @@
       height: 100%;
       background: rgba(0,0,0,0.3);
       cursor: pointer;
+      transition: all .3s ease;
       img{
-        margin:30% 0 20px 0 ;
         width: 1rem;
         height: 1rem;
         transition: all 0.2s;
@@ -268,18 +268,22 @@
     }
   }
 }
+.index-scence-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    width: 100%;
+    >img {
+      margin-top: 0;
+    }
+}
 @media(max-width: 830px){
   .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia .entrance-newmedia .btn-newmedia{
     margin-top: 30px;
     height: 30px;
     line-height: 30px;
     width: 120px;
-  }
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia img {
-    margin-top: 1rem;
-  }
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia:hover img {
-    margin-top: 40px;
   }
 }
 @media(max-width: 767px){
@@ -312,34 +316,28 @@
   .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia .entrance-newmedia .btn-newmedia {
     margin-top: 40px;
   }
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia img {
-    margin-top: 1.4rem;
+  .index-solution-wrap-newmedia .index-solution-newmedia .col-sm-4 {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+}
+@media(max-width: 680px){
+  .index-solution-wrap-newmedia .index-solution-newmedia .col-sm-4 {
+    width: 100%;
   }
 }
 @media(max-width: 515px){ 
   .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia .entrance-newmedia .btn-newmedia {
     margin-top: 30px;
   }
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia img {
-    margin-top: .8rem;
-  }
 }
 @media(max-width: 400px){ 
   .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia .entrance-newmedia .btn-newmedia {
     margin-top: 10px;
   }
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia img {
-    margin-top: .3rem;
-  }
 }
 
 @media(max-width: 320px){
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia img {
-    margin-top: 10px;
-  }
-  .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia:hover img {
-    margin-top: 20px;
-  }
   .index-solution-wrap-newmedia .index-solution-newmedia .index-scene-newmedia .entrance-newmedia .btn-newmedia {
     margin-top: 10px;
   }

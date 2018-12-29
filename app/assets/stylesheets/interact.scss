@@ -1,0 +1,97 @@
+.banner-left-newmedia{
+    text-align: left;
+    a{
+        margin-left:0;
+    }
+}
+.inter-banner {
+    .banner-wrap {
+        background-image: image-url("interact/banner-weihudongpingtai.jpg");
+        .tittle-newmedia {
+            position: relative;
+            .nrirong-title-wrap {
+                text-align: left;
+                >h1 {
+                    margin-bottom: .36rem;
+                }
+            }
+        }
+    }
+}
+.iner-center-ba {
+    background: #f6f6f6;
+}
+.op-title {
+    display: none;
+    font-size: .32rem;
+    color: #fff;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+@media(max-width: 996px){
+    .banner-left-newmedia{
+        a{
+            margin-left:auto;
+        }
+    }
+}
+@media (max-width: 992px) {
+    .ins-fin-wrap {
+        .col-xs-6 {
+            .op-title {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                display: block;
+                font-size: .24rem;
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    .ins-fin-wrap {
+        .col-xs-6 {
+            position: relative;
+            width: 100%;
+            margin-bottom: .2rem;
+            .op-title {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+                display: block;
+            }
+        }
+    }
+}
+.iconlist-14-newmedia{
+    padding-bottom: .5rem;
+    p{
+        text-align: center;
+        margin: .2rem auto .3rem auto;
+    }
+    .icon-hudongadv-newmedia{
+        width: 1rem;
+        height: 1rem;
+        margin: auto;
+        overflow: hidden;
+        img{
+            width: 4rem;
+            max-width: none;
+            object-fit: cover;
+        }
+        .icon-kuaisupeizhi{margin:0 0 0 -1rem;}
+        .icon-mobanhua{margin:0 0 0 -2rem;}
+        .icon-caijishuju{margin:0 0 0 -3rem;}
+        .icon-dianzan{margin: -1rem 0 0 0;}
+        .icon-dati{margin: -1rem 0 0 -1rem;}
+        .icon-choujiang{margin: -1rem 0 0 -2rem;}
+        .icon-liuyan{margin: -1rem 0 0 -3rem;}
+        .icon-toupiao{margin: -2rem 0 0 0;}
+        .icon-wenjuandiaocha{margin: -2rem 0 0 -1rem;}
+        .icon-baomingzhengji{margin: -2rem 0 0 -2rem;}
+        .icon-tuwenbobao{margin: -2rem 0 0 -3rem;}
+    }
+}

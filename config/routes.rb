@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     get '/products/newmedia/demolition',   to: 'products#demolition'
     get '/products/newmedia/microservices',to: 'products#microservices'
     get '/products/newmedia/editor',       to: 'products#editor'
+    get '/products/newmedia/visualization',to: 'products#visualization'
+    get '/products/newmedia/interact',     to: 'products#interact'
     get '/products/newmedia/auditor',      to: 'products#auditor'
     get '/products/newmedia/copyright',    to: 'products#copyright'
     get '/products/pili/livequiz',         to: 'products#livequiz'

@@ -156,4 +156,13 @@
 }
 .neirongguanli-bg {
     background: #f8f8f8;
+    .col-sm-3 > p {
+        margin-top: 0;
+    }
+}
+.cms-youshi-wrap {
+    background: #f8f8f8;
+    .col-sm-4 > p {
+        color: #666;
+    } 
 }
