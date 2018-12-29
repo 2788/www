@@ -1,15 +1,15 @@
-.newmedia{
+.newmedia {
     .icon-adv-newmedia {
         .icon-jiujinjiaoyi {margin: 0 0 0 -1.6rem;}
         .icon-shenhejiankong {margin: 0 0 0 -3.2rem;}
         .icon-bianjieguanli {margin: 0 0 0 -4.8rem;}
     }
-    .icon-func-newmedia{
+    .icon-func-newmedia {
         .icon-neirongcunchu {margin: -1.5rem 0 0 0;}
-        .icon-neirongchuli{margin: -1.5rem 0 0 -1rem;}
-        .icon-neirongfenfa{margin: -1.5rem 0 0 -2rem;}
-        .icon-neirongbanquan{margin: -1.5rem 0 0 -3rem;}
-        .icon-neirongbanquanjiaoyi{margin: -1.5rem 0 0 -4rem;}
+        .icon-neirongchuli {margin: -1.5rem 0 0 -1rem;}
+        .icon-neirongfenfa {margin: -1.5rem 0 0 -2rem;}
+        .icon-neirongbanquan {margin: -1.5rem 0 0 -3rem;}
+        .icon-neirongbanquanjiaoyi {margin: -1.5rem 0 0 -4rem;}
     }
     .banqaunjiaoyi-sceneblock-newmedia{
         position: relative;
@@ -18,25 +18,25 @@
         border-radius:5px;
         padding:.7rem 0 0 .2rem;
         margin-bottom: .3rem;
-        .line-newmedia{
+        .line-newmedia {
             width: .26rem;
             height: 2px;
             margin-left:2px;
             background: #408EF5;
         }
-        h4{
+        h4 {
             font-size: .16rem;
             color: #408EF5;
             margin-bottom: .2rem;
         }
-        p{
+        p {
             font-size: .12rem;
             color: #525252;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        img{
+        img {
             position: absolute;
             top:.1rem;
             right: 0;
@@ -61,14 +61,14 @@
 .copyright-center-m {
     background: #f6f6f6;
 }
-@media(max-width: 998px) {
-    .banqaunjiaoyi-sceneblock-newmedia{
-        img{
+@media (max-width: 998px) {
+    .banqaunjiaoyi-sceneblock-newmedia {
+        img {
             opacity: 0.2;
         }
     }
 }
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     .newmedia .banqaunjiaoyi-sceneblock-newmedia {
         padding-top: .5rem;
     }
