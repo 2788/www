@@ -1,0 +1,84 @@
+.newmedia{
+    .icon-adv-newmedia{
+      .icon-zujianbianpai{margin: 0 0 0 -1.6rem;}
+      .icon-juecefuzhu{margin: 0 0 0 -3.2rem;}
+      .icon-hudongchengxian{margin: 0 0 0 -4.8rem;}
+      .icon-zhongduanzhichi{margin: -1.5rem 0 0 0;}
+      .icon-shujuyuan{margin: -3rem 0 0 0;}
+      .icon-chuli{margin: -3rem 0 0 -1rem;}
+      .icon-fenxi{margin: -3rem 0 0 -2rem;}
+      .icon-keshihuabian{margin: -3rem 0 0 -3rem;}
+      .icon-daping{margin: -3rem 0 0 -4rem;}
+      .icon-hudong{margin: -3rem 0 0 -5rem;}
+      .icon-changjingzhanshi{margin: -4rem 0 0 0;}
+      .icon-shujuzhanshi{margin: -4rem 0 0 -1rem;}
+      .icon-liuchengzhanshi{margin: -4rem 0 0 -2rem;}
+    }
+    .shujukeshihua-func-block{
+        p{
+            text-align: center;
+        }
+        margin: 5px;
+        padding-top: 10px;
+        height: 1.7rem;
+    }
+    .shujukeshihua-scene-block{
+        position: relative;
+        .upright-line-newmedia{
+            position: absolute;
+            top:40px;
+            right: -10px;
+            width: 1px;
+            height: 1.6rem;
+            background: #f0f0f0;
+        }
+        h4{
+            color: #2273DD;
+            text-align: center;
+        }
+        p{
+            margin-bottom: 4px;
+            text-align: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .line-newmedia{
+            width: 26px;
+            height: 2px;
+            margin: 10px auto 10px auto;
+            background: #408EF5;
+            opacity: 0.6;
+        }
+    }
+}
+.vis-banner {
+    .banner-wrap {
+        background-image: image-url("visualization/banner-shujukeshihua.jpg");
+        .tittle-newmedia {
+            position: relative;
+            .nrirong-title-wrap {
+                text-align: left;
+                >h1 {
+                    margin-bottom: .36rem;
+                }
+            }
+        }
+    }
+}
+.vis-cen-bg {
+    background: #f6f6f6;
+}
+@media(max-width: 768px) {
+    .shujukeshihua-scene-block{
+        .upright-line-newmedia{
+            display: none;
+        }
+    }
+    .vis-fin-bg {
+        .col-xs-6 {
+            width: 100%;
+            margin-bottom: .3rem;
+        }
+    }
+}

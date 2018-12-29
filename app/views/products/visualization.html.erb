@@ -1,0 +1,156 @@
+<div class="banner-box banner-box-newmedia vis-banner banner-left-newmedia">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">数据可视化</h1>
+                <p>七牛云数据可视化平台（苍穹）帮助企业搭建一站式业务数据可视化平台，</p>
+                <p>提供数据采集、处理、分析、可视化的完整解决方案</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.visualization.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png"%>
+            </div>
+            <p>异构数据融合</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png", class:"icon-zujianbianpai"%>
+            </div>
+            <p>可视化组件编排</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png", class:"icon-juecefuzhu"%>
+            </div>
+            <p>决策辅助</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png", class:"icon-hudongchengxian"%>
+            </div>
+            <p>实时数据互动呈现</p>
+        </div>
+        <div class="wu-newmedia col-xs-6">
+            <div class="icon-adv-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png", class:"icon-zhongduanzhichi"%>
+            </div>
+            <p>全终端支持</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-2 container vis-cen-bg newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6 ">
+            <div class="shujukeshihua-func-block">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-shujuyuan"%>
+            </div>
+            <p>数据源管理</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-func-block">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-chuli"%>
+            </div>
+            <p>数据处理</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-func-block">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-fenxi"%>
+            </div>
+            <p>数据分析</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6 ">
+            <div class="shujukeshihua-func-block">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-keshihuabian"%>
+            </div>
+            <p>可视化编排</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-func-block">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-daping"%>
+            </div>
+            <p>大屏呈现</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-func-block">
+            <div class="icon-adv-newmedia icon-func-newmedia">
+                <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-hudong"%>
+            </div>
+            <p>跨终端互动</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-3 vis-fin-bg container newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia">
+       <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-scene-block">
+                <div class="icon-adv-newmedia icon-func-newmedia">
+                    <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-changjingzhanshi"%>
+                </div>
+                <h4>场景展示</h4>
+                <div class="line-newmedia"></div>
+                <p>对数据和相关元素的组合</p>
+                <p>及艺术化处理,构成一个相对抽象</p>
+                <p>元素简洁精炼的空间整体</p>
+                <div class="upright-line-newmedia"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-scene-block">
+                <div class="icon-adv-newmedia icon-func-newmedia">
+                    <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-shujuzhanshi"%>
+                </div>
+                <h4>数据展示</h4>
+                <div class="line-newmedia"></div>
+                <p>对场景的详细数据进行分析，</p>
+                <p>图形化的方式增强场景的可信度</p>
+                <p>和说服力</p>
+                <div class="upright-line-newmedia"></div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="shujukeshihua-scene-block">
+                <div class="icon-adv-newmedia icon-func-newmedia">
+                    <%= image_tag "visualization/icon-shujukeshihua.png",class:"icon-liuchengzhanshi"%>
+                </div>
+                <h4>流程展示</h4>
+                <div class="line-newmedia"></div>
+                <p>对特定场景下数据流向进行</p>
+                <p>图形化分析，以互动的方式</p>
+                <p>体现价值</p>
+            </div>
+        </div>
+    </div>
+</div>

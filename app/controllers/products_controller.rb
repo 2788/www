@@ -85,8 +85,14 @@ class ProductsController < ApplicationController
 
   def auditor
   end
-
+  
   def copyright
+  end
+
+  def visualization
+  end
+
+  def interact
   end
 
   def livequiz

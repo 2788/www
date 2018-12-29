@@ -1,0 +1,143 @@
+<div class="banner-box banner-box-newmedia inter-banner banner-left-newmedia">
+    <div class="banner-wrap">
+        <div class="tittle-newmedia">
+            <div class="title-detail nrirong-title-wrap">
+                <h1 class="meizi-detail-title">飞鱼 | 微互动平台</h1>
+                <p>七牛微互动平台（飞鱼）是专为电视新媒体团队量身定制的直播互动解决方案，一分钟轻松配置互动模块，</p>
+                <p>一键生成H5页面，让您在微信公众号内快速形成直播互动能力</p>
+                <%= link_to "点击咨询", "", class: "btn-newmedia", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="features-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.interact.middlebar").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content-section-1 container newmedia iconlist-14-newmedia white">
+    <h2>产品优势</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png" %>
+            </div>
+            <p>基础功能免费使用</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-kuaisupeizhi" %>
+            </div>
+            <p>免开发快速配置功能模块</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-mobanhua" %>
+            </div>
+            <p>模版化创建H5互动页</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-caijishuju" %>
+            </div>
+            <p>实时采集互动数据</p>
+        </div>
+    </div>
+</div>
+<div class="tab-content-section-2 container iner-center-ba newmedia iconlist-14-newmedia">
+    <h2>核心功能</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-dianzan" %>
+            </div>
+            <p>点赞</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-dati" %>
+            </div>
+            <p>答题</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-choujiang" %>
+            </div>
+            <p>抽奖</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-liuyan" %>
+            </div>
+            <p>留言</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-toupiao" %>
+            </div>
+            <p>投票</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-wenjuandiaocha" %>
+            </div>
+            <p>问卷调查</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-baomingzhengji" %>
+            </div>
+            <p>报名征集</p>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            <div class="icon-hudongadv-newmedia">
+                <%= image_tag "interact/icon-weihudongpingtai.png", class:"icon-tuwenbobao" %>
+            </div>
+            <p>图文播报</p>
+        </div>
+    </div>
+</div>
+
+<div class="tab-content-section-3 container ins-fin-wrap newmedia imglist-13-newmedia white">
+    <h2>适用场景</h2>
+    <div class="container center-newmedia">
+        <div class="col-sm-4 col-xs-6">
+            <div class="op-title">电视节目直播互动</div>
+            <div class="neirongguanli-scenarios-newmedia">
+                <h4>电视节目直播互动</h4>
+                <div class="line-newmedia"></div>
+                <p>节目播出时同步在微信公众号内</p>
+                <p>提供视频流和互动模块</p>
+            </div>
+            <%= image_tag "interact/img-weihudong-scene1.jpg"%>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="op-title">新媒体直播互动</div>
+            <div class="neirongguanli-scenarios-newmedia">
+                <h4>新媒体直播互动</h4>
+                <div class="line-newmedia"></div>
+                <p>为网络主播提供更多玩法</p>
+                <p>快速配置功能，实时与观众互动</p>
+            </div>
+            <%= image_tag "interact/img-weihudong-scene2.jpg"%>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <div class="op-title">突发事件直播互动</div>
+            <div class="neirongguanli-scenarios-newmedia">
+                <h4>突发事件直播互动</h4>
+                <div class="line-newmedia"></div>
+                <p>移动设备快速推流，实时互动</p>
+                <p>收集观众反馈，引导舆论视听</p>
+            </div>
+            <%= image_tag "interact/img-weihudong-scene3.jpg"%>
+        </div>
+    </div>
+</div>
