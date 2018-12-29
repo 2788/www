@@ -85,7 +85,7 @@ class ProductsController < ApplicationController
 
   def auditor
   end
-  
+
   def copyright
   end
 
