@@ -1,20 +1,20 @@
-.icon-shenhe-newmedia{
+.icon-shenhe-newmedia {
     width: 1.6rem;
     height: 1.5rem;
     margin: auto;
     overflow: hidden;
-    img{
+    img {
         width: 6.4rem;
         max-width: none;
     }
-    .icon-zhunqueshibie{margin: 0 0 0 -1.6rem;}
-    .icon-yangbenku{margin: 0 0 0 -3.2rem;}
-    .icon-dingzhihua{margin: 0 0 0 -4.8rem;}
-    .icon-tuxiangshenhe{margin: -1.5rem 0 0 0;}
-    .icon-yinpinzhuanwenzi{margin: -1.5rem 0 0 -1rem;}
-    .icon-fencishenhe{margin: -1.5rem 0 0 -2rem;}
-    .icon-pipeidujiaoyan{margin: -1.5rem 0 0 -3rem;}
-    .icon-xuexipingtai{margin: -1.5rem 0 0 -4rem;}
+    .icon-zhunqueshibie {margin: 0 0 0 -1.6rem;}
+    .icon-yangbenku {margin: 0 0 0 -3.2rem;}
+    .icon-dingzhihua {margin: 0 0 0 -4.8rem;}
+    .icon-tuxiangshenhe {margin: -1.5rem 0 0 0;}
+    .icon-yinpinzhuanwenzi {margin: -1.5rem 0 0 -1rem;}
+    .icon-fencishenhe {margin: -1.5rem 0 0 -2rem;}
+    .icon-pipeidujiaoyan {margin: -1.5rem 0 0 -3rem;}
+    .icon-xuexipingtai {margin: -1.5rem 0 0 -4rem;}
 }
 .banner-auditor {
     .banner-wrap {
@@ -30,46 +30,46 @@
         }
     }
 }
-.shenhe-newmedia{
+.shenhe-newmedia {
     padding-bottom: 1rem;
-    .icon-shenhe-newmedia{
+    .icon-shenhe-newmedia {
         width: 1rem;
         height: 1rem;
     }
 }
-.wu-newmedia{
+.wu-newmedia {
     display: inline-block;
     width: 19.5%;
     font-size: 0;
-    p{
+    p {
         font-size: .14rem;
         text-align: center;
     }
 }
-.zuoyouban-newmedia{
+.zuoyouban-newmedia {
     padding-bottom: 1rem;
-    img{
+    img {
         width: 100%;
     }
-    .container{
+    .container {
         padding: 0;
     }
     .center-newmedia {
         background: #f8f8f8;
     }
-    .right-newmedia{
+    .right-newmedia {
         position: relative;
         text-align: right;
     }
-    .col-sm-6{
+    .col-sm-6 {
         padding: 0;
         width: 50%;
         float: left;
     }
-    h4{
+    h4 {
         margin:.8rem 10% .2rem 10%;
     }
-    p{
+    p {
         margin:0 10% 0 10%;
         line-height: .24rem;
     }
@@ -77,29 +77,29 @@
 .shenhe-center-m {
     background: #f6f6f6;
 }
-@media(max-width: 768px){
+@media (max-width: 768px) {
     .zuoyouban-newmedia {
-        h4{
+        h4 {
             margin-top:.4rem;
         }
-        p{
+        p {
             margin-bottom: .5rem;
         }
     }
-    .wu-newmedia{
+    .wu-newmedia {
         width: 50%;
     }
 }
-@media(max-width: 615px){
+@media (max-width: 615px) {
     .zuoyouban-newmedia {
         p {
             display: none;
         }
     }
 }
-@media(max-width: 350px){
+@media (max-width: 350px) {
     .zuoyouban-newmedia {
-        h4{
+        h4 {
             margin-top:.3rem;
         }
     }
