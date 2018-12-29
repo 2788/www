@@ -12,15 +12,15 @@
 </div>
 
 <div class="features-nav hidden-xs">
-  <div class="container">
-    <div class="tabs">
-      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
-        <% I18n.t("views.products.copyright.middlebar").each do |linkbar| %>
-          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
-        <% end %>
-      </ul>
+    <div class="container">
+        <div class="tabs">
+            <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+                <% I18n.t("views.products.copyright.middlebar").each do |linkbar| %>
+                    <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+                <% end %>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="tab-content-section-1 container newmedia iconlist-14-newmedia white ">
@@ -50,9 +50,9 @@
             </div>
             <p>便捷管理</p>
         </div>
-        
     </div>
 </div>
+
 <div class="tab-content-section-2 container copyright-center-m newmedia iconlist-15-newmedia">
     <h2>核心功能</h2>
     <div class="container center-newmedia">
@@ -88,6 +88,7 @@
         </div>
     </div>
 </div>
+
 <div class="tab-content-section-3 container newmedia white">
     <h2>适用场景</h2>
     <div class="container center-newmedia">
