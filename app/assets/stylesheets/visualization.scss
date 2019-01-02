@@ -15,8 +15,8 @@
         .icon-shujuzhanshi{margin: -4rem 0 0 -1rem;}
         .icon-liuchengzhanshi{margin: -4rem 0 0 -2rem;}
     }
-    .shujukeshihua-func-block{
-        p{
+    .shujukeshihua-func-block {
+        p {
             text-align: center;
         }
         margin: 5px;
@@ -24,9 +24,9 @@
         height: 1.7rem;
         background: #fff;
     }
-    .shujukeshihua-scene-block{
+    .shujukeshihua-scene-block {
         position: relative;
-        .upright-line-newmedia{
+        .upright-line-newmedia {
             position: absolute;
             top:40px;
             right: -10px;
@@ -34,18 +34,18 @@
             height: 1.6rem;
             background: #f0f0f0;
         }
-        h4{
+        h4 {
             color: #2273DD;
             text-align: center;
         }
-        p{
+        p {
             margin-bottom: 4px;
             text-align: center;
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
         }
-        .line-newmedia{
+        .line-newmedia {
             width: 26px;
             height: 2px;
             margin: 10px auto 10px auto;
@@ -83,8 +83,8 @@
     }
 }
 @media(max-width: 768px) {
-    .shujukeshihua-scene-block{
-        .upright-line-newmedia{
+    .shujukeshihua-scene-block {
+        .upright-line-newmedia {
             display: none;
         }
     }
