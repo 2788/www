@@ -80,24 +80,27 @@
             position: relative;
             overflow: hidden;
             padding: 0;
+            .jk-img-cj {
+                border-radius: 12px;
+                overflow: hidden;
+            }
             img {
                 width: 100%;
                 display: block;
-                border-radius: .12rem;
             }
             .feibian-scenarios-newmedia {
                 position: absolute;
                 transform: translate3d(-50%, -200%, 0);
                 opacity: 0;
                 left: 50%;
-                width: 101%;
+                width: 100%;
                 transition: all .3s ease-out;
-                height: 101%;
+                height: 100%;
                 color: #fff;
                 background: rgba(3, 160, 222, .6);
                 text-align: center;
                 bottom: 0;
-                border-radius: .12rem;
+                border-radius: 12px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -135,7 +138,7 @@
     .jiankong-sec-tran {
         .center-newmedia {
             .col-sm-3 {
-                width: 22%;
+                width: 100%;
                 position: relative;
                 overflow: hidden;
                 padding: 0;
@@ -144,7 +147,7 @@
                     display: block;
                 }
                 .feibian-scenarios-newmedia {
-                    border-radius: 8px;
+                    border-radius: 12px;
                 }
             }
             .col-sm-3:hover {

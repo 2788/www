@@ -1,10 +1,10 @@
 .newmedia{
     .icon-adv-newmedia{
-        .icon-yigoushuju {margin: 0 0 0 -.2rem}
-        .icon-zujianbianpai{margin: 0 0 0 -1.8rem;}
-        .icon-juecefuzhu{margin: 0 0 0 -3.4rem;}
-        .icon-hudongchengxian{margin: 0 0 0 -4.97rem;}
-        .icon-zhongduanzhichi{margin: -1.5rem 0 0 -.2rem;}
+        .icon-yigoushuju {margin: 0 0 0 0}
+        .icon-zujianbianpai{margin: 0 0 0 -1.6rem;}
+        .icon-juecefuzhu{margin: 0 0 0 -3.2rem;}
+        .icon-hudongchengxian{margin: 0 0 0 -4.8rem;}
+        .icon-zhongduanzhichi{margin: -1.5rem 0 0 0;}
         .icon-shujuyuan{margin: -3rem 0 0 0;}
         .icon-chuli{margin: -3rem 0 0 -1rem;}
         .icon-fenxi{margin: -3rem 0 0 -2rem;}
@@ -22,6 +22,7 @@
         margin: 5px;
         padding-top: 10px;
         height: 1.7rem;
+        background: #fff;
     }
     .shujukeshihua-scene-block{
         position: relative;
@@ -70,6 +71,17 @@
 .vis-cen-bg {
     background: #f6f6f6;
 }
+@media(max-width: 992px) {
+    .newmedia{
+        .icon-adv-newmedia{
+            .icon-yigoushuju {margin: 0 0 0 -.2rem}
+            .icon-zujianbianpai{margin: 0 0 0 -1.8rem;}
+            .icon-juecefuzhu{margin: 0 0 0 -3.4rem;}
+            .icon-hudongchengxian{margin: 0 0 0 -4.97rem;}
+            .icon-zhongduanzhichi{margin: -1.5rem 0 0 -.2rem;}
+        }
+    }
+}
 @media(max-width: 768px) {
     .shujukeshihua-scene-block{
         .upright-line-newmedia{
@@ -80,6 +92,15 @@
         .col-xs-6 {
             width: 100%;
             margin-bottom: .3rem;
+        }
+    }
+    .newmedia{
+        .icon-adv-newmedia{
+            .icon-yigoushuju {margin: 0 0 0 0}
+            .icon-zujianbianpai{margin: 0 0 0 -1.6rem;}
+            .icon-juecefuzhu{margin: 0 0 0 -3.2rem;}
+            .icon-hudongchengxian{margin: 0 0 0 -4.8rem;}
+            .icon-zhongduanzhichi{margin: -1.5rem 0 0 0;}
         }
     }
 }

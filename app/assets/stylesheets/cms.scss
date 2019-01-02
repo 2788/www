@@ -88,12 +88,16 @@
 @media(max-width: 768px) {
     .imglist-13-newmedia {
         .col-xs-6 {
-            width: 47%;
-            margin: 1.5% 1.5%;
             img {
                 width: 100%;
                 height: inherit;
             }
+        }
+    }
+    .cms-section-wrap {
+        .col-xs-6 {
+            width: 100%;
+            margin-bottom: .3rem;
         }
     }
 }
