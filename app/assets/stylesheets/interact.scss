@@ -22,7 +22,7 @@
     background: #f6f6f6;
 }
 .op-title {
-    font-size: .24rem;
+    font-size: .16rem;
     color: #fff;
     font-weight: 500;
     width: 100%;
@@ -87,9 +87,10 @@
             width: 4rem;
             max-width: none;
         }
-        .icon-kuaisupeizhi{margin:0 0 0 -1rem;}
-        .icon-mobanhua{margin:0 0 0 -2rem;}
-        .icon-caijishuju{margin:0 0 0 -3rem;}
+        .icon-kuaisupeizhi1{margin:.25rem 0 0 0;}
+        .icon-kuaisupeizhi{margin:.25rem  0 0 -1rem;}
+        .icon-mobanhua{margin:.25rem 0 0 -2rem;}
+        .icon-caijishuju{margin:0.25rem 0 0 -3rem;}
         .icon-dianzan{margin: 0 0 0 0;}
         .icon-dati{margin: 0 0 0 -1rem;}
         .icon-choujiang{margin: 0 0 0 -2rem;}
@@ -98,5 +99,17 @@
         .icon-wenjuandiaocha{margin: -1rem 0 0 -1rem;}
         .icon-baomingzhengji{margin: -1rem 0 0 -2rem;}
         .icon-tuwenbobao{margin: -1rem 0 0 -3rem;}
+    }
+}
+.interact-youshi-wrap {
+    .icon-hudongadv-newmedia {
+        img {
+            width: 6rem;
+            max-width: none;
+        }
+        .icon-kuaisupeizhi1{margin:-.15rem 0 0 -.25rem;}
+        .icon-kuaisupeizhi{margin:-.15rem  0 0 -1.7rem;}
+        .icon-mobanhua{margin:-.15rem 0 0 -3.25rem;}
+        .icon-caijishuju{margin:0-.15rem 0 0 -4.75rem;}
     }
 }

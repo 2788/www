@@ -122,7 +122,7 @@ Rails.application.configure do
     },
     end_time: {
       year: 2019,
-      month: 1,
+      month: 2,
       date: 1
     }
   }
