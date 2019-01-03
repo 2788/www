@@ -27,21 +27,24 @@
         }
     }
     .icon-core-newmedia {
-        width: 2.23rem;
-        height: 2.64rem;
+        width: 100%;
+        height: 2.2rem;
         margin-bottom: 50px;
-        img {
-            width: 8.92rem;
-        }
-        .icon-zhushoupingtai {
-            margin: 0 0 0 -2.23rem;
-        }
-        .icon-guanlipingtai {
-            margin: 0 0 0 -4.46rem;
-        }
-        .icon-hudongzhinengbokong {
-            margin: 0 0 0 -6.69rem;
-        }
+    }
+    .icon-core-newmedia {
+        background-image: image-url("live/icon-hudongzhibo-func1.png");
+        background-position: left center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .icon-core-newmedia2 {
+        background-image: image-url("live/icon-hudongzhibo-func2.png");
+    }
+    .icon-core-newmedia3 {
+        background-image: image-url("live/icon-hudongzhibo-func3.png");
+    }
+    .icon-core-newmedia4 {
+        background-image: image-url("live/icon-hudongzhibo-func4.png");
     }
     .img-wrap-newmedia {
         text-align: center;
@@ -72,26 +75,7 @@
     }
 }
 
-@media(max-width: 1080px) {
-    .newmedia {
-        .icon-core-newmedia {
-            width: 1.5rem;
-            margin-bottom: -40px;
-            img {
-                width: 6rem;
-            }
-            .icon-zhushoupingtai {
-                margin: 0 0 0 -1.5rem;
-            }
-            .icon-guanlipingtai {
-                margin: 0 0 0 -3rem;
-            }
-            .icon-hudongzhinengbokong {
-                margin: 0 0 0 -4.5rem;
-            }
-        }
-    }
-}
+
 @media (max-width: 767px) {
     .hudongzhibo-scene-newmedia {
         .nav-tabs.nav-justified.nav-short li {
@@ -101,6 +85,9 @@
     }
     .hudongzhibo-scene-newmedia.features .tab-desc {
         margin-top: 2em;
+    }
+    .zhibohudong-newmedia .icon-core-newmedia {
+        background-position: center center;
     }
 }
 .wu-newmedia {
