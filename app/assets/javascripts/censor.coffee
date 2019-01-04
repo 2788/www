@@ -36,7 +36,7 @@ $(document).ready ->
       error: (err) ->
         $imageOverlay.hide()
         $imageScan.removeClass('active')
-  
+
   # 视频审核
   videoAudit = (path, type) ->
     $videoOverlay.show()
@@ -57,7 +57,7 @@ $(document).ready ->
       error: (err) ->
         $videoOverlay.hide()
         $videoScan.removeClass('active')
-  
+
   # 重置图片审核UI
   resetImgUI = () ->
     $imageResultContainer.children('p').removeClass('text-error')
@@ -65,7 +65,7 @@ $(document).ready ->
     $imageResultContainer.hide()
     $imagePass.hide()
     $imageViolate.hide()
-  
+
   # 重置视频审核UI
   resetVideoUI = () ->
     $videoResultContainer.children('p').removeClass('text-error')
@@ -73,7 +73,7 @@ $(document).ready ->
     $videoResultContainer.hide()
     $videoPass.hide()
     $videoViolate.hide()
-  
+
   # 更新图片审核UI
   updateImgUI = (result) ->
     aduitRes = result.result
@@ -138,7 +138,7 @@ $(document).ready ->
     politicianLabels = if politicianRes.labels then politicianRes.labels else []
     politicianList = []
     for item in politicianLabels
-      if item.label != '' && politicianList.indexOf('涉政') == -1
+      if item.label != '0' && politicianList.indexOf('涉政') == -1
         politicianList.push('涉政')
         isViolate = true
     if politicianList.length != 0
@@ -150,7 +150,7 @@ $(document).ready ->
       $videoViolate.show()
     else
       $videoPass.show()
-  
+
   # image部分
   # 激活img的slide
   $('.image-upload .slide-container .slide-item').bind 'click', (e) ->
@@ -165,9 +165,7 @@ $(document).ready ->
     # 替换当前图片
     imgSrc = $(this).children('img')[0].src
     key = $(this).children('img').attr('key')
-    $('#upload-image-show')[0].src = imgSrc
-    $('#upload-image-show').one 'load', () ->
-      $(this).width('100%')
+    $('#upload-image-show').css 'background-image', 'url("' + imgSrc + '")'
     resetImgUI()
     imgAudit(key, 'slide')
 
@@ -178,21 +176,15 @@ $(document).ready ->
       showPop($uploadImageBtn, '请输入图片 URL 地址', 'top')
       return
     $('.image-upload .slide-container .slide-item').removeClass('active')
-    $('#upload-image-show')[0].src = imageURL
-    $('#upload-image-show').one 'load', () ->
-      # 矫正图片大小
-      cwidth = $('.image-container').width()
-      iwidth = $(this).width()
-      iheight = $(this).height()
-      rate = iwidth / iheight
-      if iheight > 400
-        nwidth = rate * 400
-        if nwidth >= cwidth
-          $(this).height(cwidth / rate)
-        else
-          $(this).width((iwidth / iheight) * 400)
-    $('#upload-image-show').one 'error', () =>
-      $('#upload-image-show')[0].src = $('.image-upload .slide-container .slide-item img')[0].src
+    # 校验图片是否可用
+    verifyImage = new Image()
+    verifyImage.onload = () =>
+      $('#upload-image-show').css 'background-image', 'url("' + imageURL + '")'
+    verifyImage.onerror = () =>
+      firstSlideImageURL = $('.image-upload .slide-container .slide-item img')[0].src
+      $('#upload-image-show').css 'background-image', 'url("' + firstSlideImageURL + '")'
+    verifyImage.src = imageURL
+    verifyImage = null
     resetImgUI()
     imgAudit(imageURL, 'url')
 
@@ -218,7 +210,6 @@ $(document).ready ->
     $uploadVideoInput.val('')
     resetVideoUI()
     videoAudit(key, 'slide')
-
 
   # 输入网络视频URL
   $uploadVideoBtn.bind 'click', (e) ->

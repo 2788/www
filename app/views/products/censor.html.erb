@@ -17,8 +17,21 @@
   </div>
 </div>
 
+<%# nav %>
+<div class="censor-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.censor.navs").each do |nav| -%>
+          <li class="<%= nav[:class] -%>"><a href="<%= nav[:href] -%>"><%= nav[:title] -%></a></li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <%# process tab %>
-<div class="features features-censor-pro">
+<div class="features features-censor-pro tab-content-process">
   <div class="container censor-pro-container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.process.title") -%></h2>
@@ -30,7 +43,7 @@
 </div>
 
 <%# special tab %>
-<div class="features features-censor-special">
+<div class="features features-censor-special tab-content-special">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.special.title") -%></h2>
@@ -57,7 +70,7 @@
 </div>
 
 <%# demo tab %>
-<div class="features features-less features-cases features-censor-demo">
+<div class="features features-less features-cases features-censor-demo tab-content-demo">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.demo.title") -%></h2>
@@ -69,7 +82,7 @@
 </div>
 
 <%# scene tab %>
-<div class="features features-censor-scene">
+<div class="features features-censor-scene tab-content-scene">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.scene.title") -%></h2>
@@ -100,7 +113,7 @@
 </div>
 
 <%# client tab %>
-<div class="features features-less features-cases features-censor-client">
+<div class="features features-less features-cases features-censor-client tab-content-client">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.client.title") -%></h2>
@@ -118,7 +131,7 @@
 </div>
 
 <%# price tab %>
-<div class="features features-censor-price">
+<div class="features features-censor-price tab-content-price">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.price.title") -%></h2>

@@ -28,8 +28,7 @@
                 <%= image_tag "censor/image-zhengzhi.jpg", key: 'FvPIoyT7NXuBiIxvHRPbEM6wRhrN', alt: "image-zhengzhi", width: "100%"-%>
               </div>
             </div>
-            <div class="image-container">
-              <%= image_tag "censor/image-xinggan.jpg", id: "upload-image-show", alt: "image-show", width: "100%" -%>
+            <div class="image-container" id="upload-image-show">
               <div class="image-scan"></div>
               <div class="image-pass image-pass-xinggan"></div>
               <div class="image-violate"></div>
@@ -91,7 +90,7 @@
               <div class="result-container video-result-container">
                 <p id= "video-pulp" class="text-error">
                   <span>色情识别</span>
-                  <span class="result-word">性感，色情</span>
+                  <span class="result-word">性感</span>
                 </p>
                 <p id="video-terror">
                   <span>暴恐识别</span>
