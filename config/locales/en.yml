@@ -4250,6 +4250,8 @@ en:
       description: 七牛云为您提供的不止优秀的产品，还有极具竞争力的产品定价。
     prices_caculator:
       title: 预算估计 - 七牛云
+    prices_caculator_qvm:
+      title: 云主机价格计算器 - 七牛云
     feedbacks_new:
       title: 产品及服务咨询 - 七牛云
     recommendations_new:
