@@ -106,6 +106,16 @@
       border-radius: 10px;
       text-align: center;
 
+      video {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+      }
+
       .image-violate,
       .video-violate,
       .image-pass,
@@ -139,8 +149,8 @@
       .result-container {
         width: 2.00rem;
         position: absolute;
-        top: 0.10rem;
-        left: 0.10rem;
+        top: 0;
+        left: 0;
         border-radius: 5px;
         background-color: rgba($color: #000, $alpha: 0.8);
         z-index: 1;
@@ -164,8 +174,8 @@
         }
       }
 
-      .video-control,
-      .image-control {
+      .image-control,
+      .video-control {
         width: 100%;
         height: 0.50rem;
         position: absolute;
@@ -184,22 +194,95 @@
       }
     }
 
-    .video-container {
-      height: 4.00rem;
-
-      .video-control {
-        top: 3.00rem;
-      }
+    .image-container {
+      background-image: image-url("censor/image-xinggan.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
     }
   }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .censor-demo {
     padding: 0 0.20rem;
 
     .result-container {
       width: 2.50rem !important;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .censor-demo {
+    .nav-image-video {
+      li {
+        width: 1%;
+      }
+    }
+
+    .thumbnail-upload {
+      .image-container,
+      .video-container {
+        height: 4.20rem;
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .thumbnail-upload {
+    .image-container,
+    .video-container {
+      height: 4.20rem !important;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .censor-demo {
+    .thumbnail-upload {
+      .image-container,
+      .video-container {
+        height: 3.20rem;
+
+        .image-control,
+        .video-control {
+          bottom: 0.30rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .censor-demo {
+    .thumbnail-upload {
+      .image-container,
+      .video-container {
+        height: 4.00rem;
+
+        .image-control,
+        .video-control {
+          bottom: 0.30rem;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .censor-demo {
+    .thumbnail-upload {
+      .image-container,
+      .video-container {
+        height: 4.00rem;
+
+        .image-control,
+        .video-control {
+          bottom: 0.30rem;
+        }
+      }
     }
   }
 }

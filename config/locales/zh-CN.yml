@@ -3722,6 +3722,25 @@ zh-CN:
         subtitle: "双重审核 无忧运营"
         describe1: "七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物等内容"
         describe2: "新用户可享 18 万次免费调用额度，另有更多超值套餐可供选择"
+        navs:
+          - class: "intLink active"
+            href: "#tab-content-process"
+            title: "明瞳这样保护你"
+          - class: "intLink"
+            href: "#tab-content-special"
+            title: "明瞳让你拥有"
+          - class: "intLink"
+            href: "#tab-content-demo"
+            title: "在此体验"
+          - class: "intLink"
+            href: "#tab-content-scene"
+            title: "明瞳被广泛应用于"
+          - class: "intLink"
+            href: "#tab-content-client"
+            title: "他们选择相信明瞳"
+          - class: "intLink"
+            href: "#tab-content-price"
+            title: "价格与套餐"
         process:
           title: "明瞳这样保护你"
           image: "censor/process-image.jpg"
@@ -4043,6 +4062,7 @@ zh-CN:
           label: 新媒体解决方案
           desc: 满足传统媒体向融合媒体转型需求，构建全媒体资源管理系统
           type: product
+          isNew: true
       - cols:
         - name: vcs
           label: 视频冷存储解决方案
