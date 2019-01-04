@@ -130,6 +130,7 @@ Rails.application.routes.draw do
 
     resources 'prices', only: [:index]
     get '/caculator', to: 'prices#caculator'
+    get '/caculator_qvm', to: 'prices#caculator_qvm'
 
     resources :feedbacks, only: [:new, :create]
 

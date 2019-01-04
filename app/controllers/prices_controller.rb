@@ -5,4 +5,8 @@ class PricesController < ApplicationController
   def caculator
     @title = "caculator"
   end
+
+  def caculator_qvm
+    @title = "caculator_qvm"
+  end
 end
