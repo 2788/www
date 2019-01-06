@@ -41,7 +41,8 @@
                 <div class="details">
                   <time><%= unit[:details][:time] %></time>
                   <h3 class="site"><%= unit[:details][:site] %></h3>
-                  <%= link_to unit[:details][:button] || '精彩回顾', unit[:details][:link], class: 'btn btn-hollow' %>
+                  <%# hd.qiniu.com 页面下掉了，先干掉入口 %>
+                  <%#= link_to unit[:details][:button] || '精彩回顾', unit[:details][:link], class: 'btn btn-hollow' %>
                 </div>
               </div>
             </div>
