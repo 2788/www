@@ -178,6 +178,7 @@ $(document).ready ->
     $('.image-upload .slide-container .slide-item').removeClass('active')
     # 校验图片是否可用
     verifyImage = new Image()
+    verifyImage.crossOrigin = 'anonymous'
     verifyImage.onload = () =>
       $('#upload-image-show').css 'background-image', 'url("' + imageURL + '")'
     verifyImage.onerror = () =>
