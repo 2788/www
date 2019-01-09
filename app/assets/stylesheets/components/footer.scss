@@ -129,6 +129,17 @@ footer {
   .cloud-verify {
     float: right;
     margin-top: 25px;
+    .cmmi3-logo {
+      display: block;
+      width: 75px;
+      height: 60px;
+      background-image: image-url('cmmi3.png');
+      background-repeat: no-repeat;
+      background-size: auto 75px;
+      background-position: center;
+      float: right;
+      margin-right: 20px;
+    }
     .report-logo {
       display: block;
       width: 75px;
@@ -340,7 +351,8 @@ footer.footer-mobile {
         .verify-logo,
         .iso-logo,
         .cncf-logo,
-        .report-logo {
+        .report-logo,
+        .cmmi3-logo {
           display: inline-block;
           float: none;
           margin: 0;
@@ -357,7 +369,32 @@ footer.footer-mobile {
   }
 }
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+  footer {
+    .cloud-verify {
+      .cmmi3-logo,
+      .report-logo,
+      .verify-logo,
+      .iso-logo,
+      .cncf-logo {
+        width: 50px;
+        height: 40px;
+        margin-right: 10px;
+        background-size: auto 50px;
+      }
+      .verify-logo {
+        margin-right: 0;
+        background-size: auto 40px;
+      }
+      .iso-logo {
+        background-size: auto 40px;
+      }
+      .cncf-logo {
+        background-size: auto 60px;
+      }
+    }
+  }
+}
 
 // iPad
 @media (min-width: 768px) and (max-width: 991px) {}
