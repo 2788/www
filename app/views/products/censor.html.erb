@@ -90,22 +90,16 @@
     <div class="row scene-row">
       <% I18n.t("views.products.censor.scene.row1").each do |col| -%>
         <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
-          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
-          <div class="hide-block">
-            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
-            <p><%= col[:title] -%></p>
-          </div>
+          <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: 60 -%>
+          <p><%= col[:title] -%></p>
         </div>
       <% end -%>
     </div>
     <div class="row scene-row">
       <% I18n.t("views.products.censor.scene.row2").each do |col| -%>
         <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
-          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
-          <div class="hide-block">
-            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
-            <p><%= col[:title] -%></p>
-          </div>
+          <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: 60 -%>
+          <p><%= col[:title] -%></p>
         </div>
       <% end -%>
     </div>

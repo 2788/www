@@ -103,38 +103,9 @@
   padding-bottom: 1.00rem;
 
   .scene-row {
+    margin-top: 0.20rem;
     .scene-col {
-      padding: 0;
-      cursor: pointer;
-
-      .hide-block {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        background-color: rgba(70, 158, 217, 0.9);
-        text-align: center;
-        opacity: 0;
-        display: block;
-        -webkit-transition: opacity .3s linear;
-        -moz-transition: opacity .3s linear;
-        transition: opacity .3s linear;
-
-        img {
-          margin-top: 15%;
-        }
-
-        p {
-          margin-top: 3%;
-          color: #FFF;
-        }
-      }
-
-      &:hover {
-        .hide-block {
-          opacity: 1;
-        }
-      }
+      text-align: center;
     }
   }
 }
@@ -327,14 +298,6 @@
       p {
         margin: 8% 0 !important;
         font-size: 0.24rem !important;
-      }
-    }
-  }
-
-  .features-censor-scene {
-    .hide-block {
-      p {
-        font-size: 0.12rem;
       }
     }
   }

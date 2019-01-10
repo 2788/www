@@ -14,28 +14,11 @@
         <div class="col-sm-12 col-xs-12 col-demo">
           <div class="thumbnail thumbnail-upload image-upload">
             <div class="image-overlay"></div>
-            <div class="slide-container">
-              <div class="slide-item active">
-                <%= image_tag "censor/image-xinggan.jpg", key: 'Flm400wajEHohD2sFZgyLpc7fbCD', alt: "image-xinggan", width: "100%"-%>
-              </div>
-              <div class="slide-item">
-                <%= image_tag "censor/image-baokong-1.jpg", key: 'Fg79yNfEzERf9ouOMFoBqUVQQuDB', alt: "image-baokong-1", width: "100%"-%>
-              </div>
-              <div class="slide-item">
-                <%= image_tag "censor/image-baokong-2.jpg", key: 'Fg79yNfEzERf9ouOMFoBqUVQQuAC', alt: "image-baokong-2", width: "100%"-%>
-              </div>
-              <div class="slide-item">
-                <%= image_tag "censor/image-zhengzhi.jpg", key: 'FvPIoyT7NXuBiIxvHRPbEM6wRhrN', alt: "image-zhengzhi", width: "100%"-%>
-              </div>
-            </div>
-            <div class="image-container" id="upload-image-show">
+            <div class="image-container">
+              <div class="upload-image-show" id="upload-image-show"></div>
               <div class="image-scan"></div>
               <div class="image-pass image-pass-xinggan"></div>
               <div class="image-violate"></div>
-              <div class="image-control">
-                <input class="form-control" id="upload-image-input" type="text" placeholder="请输入网络图片 URL">
-                <div class="btn btn-primary" id="upload-image-btn">检测</div>
-              </div>
               <div class="result-container image-result-container">
                 <p id= "image-pulp" class="text-error">
                   <span>色情识别</span>
@@ -50,6 +33,25 @@
                   <span class="result-word">正常</span>
                 </p>
               </div>
+
+            </div>
+            <div class="slide-container">
+              <div class="slide-item active">
+                <%= image_tag "censor/image-xinggan.jpg", key: 'Flm400wajEHohD2sFZgyLpc7fbCD', alt: "image-xinggan", width: "100%"-%>
+              </div>
+              <div class="slide-item">
+                <%= image_tag "censor/image-baokong-1.jpg", key: 'Fg79yNfEzERf9ouOMFoBqUVQQuDB', alt: "image-baokong-1", width: "100%"-%>
+              </div>
+              <div class="slide-item">
+                <%= image_tag "censor/image-baokong-2.jpg", key: 'Fg79yNfEzERf9ouOMFoBqUVQQuAC', alt: "image-baokong-2", width: "100%"-%>
+              </div>
+              <div class="slide-item">
+                <%= image_tag "censor/image-zhengzhi.jpg", key: 'FvPIoyT7NXuBiIxvHRPbEM6wRhrN', alt: "image-zhengzhi", width: "100%"-%>
+              </div>
+            </div>
+            <div class="image-control">
+              <input class="form-control" id="upload-image-input" type="text" placeholder="请输入网络图片 URL">
+              <div class="btn btn-primary" id="upload-image-btn">检测</div>
             </div>
           </div>
         </div>
@@ -60,6 +62,26 @@
         <div class="col-sm-12 col-xs-12 col-demo">
           <div class="thumbnail thumbnail-upload video-upload">
             <div class="video-overlay"></div>
+            <div class="video-container">
+              <video src="<%= @videoSrc_1 -%>" id="upload-video-show" autobuffer="true" loop="true" width="100%"></video>
+              <div class="video-scan"></div>
+              <div class="video-pass"></div>
+              <div class="video-violate"></div>
+              <div class="result-container video-result-container">
+                <p id= "video-pulp" class="text-error">
+                  <span>色情识别</span>
+                  <span class="result-word">性感</span>
+                </p>
+                <p id="video-terror">
+                  <span>暴恐识别</span>
+                  <span class="result-word">正常</span>
+                </p>
+                <p id="video-politician">
+                  <span>政治敏感人物识别</span>
+                  <span class="result-word">正常</span>
+                </p>
+              </div>
+            </div>
             <div class="slide-container">
               <div class="slide-item active">
                 <video src="<%= @videoSrc_1 -%>" key="Fi1UC6waXtXYCpnTGHa8XxIziGNk" type="video/mp4" autobuffer="false" width="100%"></video>
@@ -78,29 +100,9 @@
                 <div class="video-mask"></div>
               </div>
             </div>
-            <div class="video-container">
-              <video src="<%= @videoSrc_1 -%>" id="upload-video-show" autobuffer="true" loop="true" width="100%"></video>
-              <div class="video-scan"></div>
-              <div class="video-pass"></div>
-              <div class="video-violate"></div>
-              <div class="video-control">
-                <input class="form-control" id="upload-video-input" type="text" placeholder="请输入网络视频 URL">
-                <div class="btn btn-primary" id="upload-video-btn">检测</div>
-              </div>
-              <div class="result-container video-result-container">
-                <p id= "video-pulp" class="text-error">
-                  <span>色情识别</span>
-                  <span class="result-word">性感</span>
-                </p>
-                <p id="video-terror">
-                  <span>暴恐识别</span>
-                  <span class="result-word">正常</span>
-                </p>
-                <p id="video-politician">
-                  <span>政治敏感人物识别</span>
-                  <span class="result-word">正常</span>
-                </p>
-              </div>
+            <div class="video-control">
+              <input class="form-control" id="upload-video-input" type="text" placeholder="请输入网络视频 URL">
+              <div class="btn btn-primary" id="upload-video-btn">检测</div>
             </div>
           </div>
         </div>
