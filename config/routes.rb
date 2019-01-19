@@ -129,8 +129,13 @@ Rails.application.routes.draw do
     get '/get_heat', to: 'events#get_heat'
 
     resources 'prices', only: [:index]
+    # https://jira.qiniu.io/browse/BO-6267
+    # caculator 路由改为 calculator, caculator_qvm 路由改为 calculator_qvm
+    # 为了防止现有的路由 404，因此不关闭现有路由
     get '/caculator', to: 'prices#caculator'
     get '/caculator_qvm', to: 'prices#caculator_qvm'
+    get '/calculator', to: 'prices#caculator'
+    get '/calculator_qvm', to: 'prices#caculator_qvm'
 
     resources :feedbacks, only: [:new, :create]
 
