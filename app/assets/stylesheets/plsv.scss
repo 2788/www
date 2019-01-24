@@ -325,6 +325,14 @@
   }
 }
 
+.features.tab-content-cases {
+  .slick-slider {
+    .slick-arrow {
+      top: 90%;
+    }
+  }
+}
+
 @media (min-width: 1200px) {
   .jumbotron.hero.plsv .middle-container {
     top: 55%;
@@ -373,5 +381,11 @@
   .row .three-sm-1 {
     float: left;
     width: 33%;
+  }
+}
+
+@media (max-width: 425px) {
+  .features.tab-content-cases {
+    height: 3.80rem;
   }
 }
