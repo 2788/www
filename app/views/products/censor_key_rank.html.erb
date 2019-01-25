@@ -11,7 +11,8 @@
             <p>七牛明瞳视频审核服务帮您快速、准确的识别出色情、低俗等违规视频，解决视频、直播、电商、社交等领域的违规内容问题。</p>
           <% end -%>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "censor-" + @type + "-use-btn" -%>
+            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-" + @type + "-consult-btn" -%>
           </div>
         </div>
       </div>
@@ -85,22 +86,16 @@
     <div class="row scene-row">
       <% I18n.t("views.products.censor.scene.row1").each do |col| -%>
         <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
-          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
-          <div class="hide-block">
-            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
-            <p><%= col[:title] -%></p>
-          </div>
+          <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: 60 -%>
+          <p><%= col[:title] -%></p>
         </div>
       <% end -%>
     </div>
     <div class="row scene-row">
       <% I18n.t("views.products.censor.scene.row2").each do |col| -%>
         <div class="col-md-3 col-sm-3 col-xs-3 scene-col">
-          <%= image_tag col[:image], alt: col[:title], title: col[:title], width: "100%" -%>
-          <div class="hide-block">
-            <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: "20%" -%>
-            <p><%= col[:title] -%></p>
-          </div>
+          <%= image_tag col[:icon], alt: col[:title], title: col[:title], width: 60 -%>
+          <p><%= col[:title] -%></p>
         </div>
       <% end -%>
     </div>
