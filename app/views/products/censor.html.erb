@@ -7,7 +7,7 @@
           <h3><%= I18n.t("views.products.censor.subtitle") -%></h3>
           <p><%= I18n.t("views.products.censor.describe1") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" id: "censor-product-use-btn" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "censor-product-use-btn" -%>
             <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
             <%= link_to "产品接入文档", "https://developer.qiniu.com/censor/manual/4829/censor-introduction", target: "_blank", class: "product-link underline" -%>
           </div>
