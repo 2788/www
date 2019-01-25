@@ -117,13 +117,17 @@ footer {
         line-height: 14px;
         border-left: 1px solid #adaeb3;
         &:first-child {
-          border-left: none;
+          border-left: none !important;
           padding-left: 0px;
         }
         a {
           color: #FFF;
         }
       }
+    }
+
+    &.grey-darker-link ul li {
+      border-left: 1px solid #6F6F74;
     }
   }
   .cloud-verify {
