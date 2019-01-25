@@ -1,0 +1,73 @@
+.qvm-partner-page {
+  ul { padding: 0 }
+  .clea { float: none }
+  .jumbotron h1 { margin-top: 0; font-size: 0.50rem !important; }
+  .jumbotron.hero { background-image: image-url("qvmpartner/banner-qvmpartner.jpg"); }
+  .jumbotron p { margin: 0.40rem auto !important; font-size: 0.25rem !important; }
+  .jumbotron p strong { color: #FFCD00; }
+  .btn-hollow { color: #0084FF; background-color: #FFF; border-color: #FFF; }
+  .btn-hollow:hover, .btn-hollow:focus { color: #0084FF; }
+  .btn-lg { font-size: 0.24rem; }
+  .table { border-left: 1px solid #DDD; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; }
+  .table {
+    .tooltip {
+      .tooltip-inner {
+        background-color: #4BA0F7;
+      }
+      &.right .tooltip-arrow {
+        border-right-color: #4BA0F7;
+      }
+    }
+  }
+  .table td { display: table-cell; vertical-align: middle; font-size: 0.16rem; border-left: 1px solid #DDD; border-right: 1px solid #DDD; }
+  .table .tr-header { text-align: center; font-weight: 500; background-color:#4BA0F7; }
+  .table .tr-header td { color: #FFF !important; font-size: 0.24rem; }
+  .table td span { font-weight: 600; font-size: 0.18rem; }
+  .table tr td:nth-child(3) { text-align: center; color: #0084FF; font-weight: 500; display: table-cell; vertical-align: middle; }
+  .table tr td:nth-child(2) { display: table-cell; vertical-align: middle; color:#A6A6A6; }
+  .table tr td:nth-child(1) { display: table-cell; vertical-align: middle; }
+  .table td strong { text-align: center; padding: 0.02rem; width: 0.20rem; color:#FFF; background-color:#4BA0F7; font-weight: 500; border-radius: 0.20rem; height: 0.20rem; line-height: 0.16rem; display: inline-block; margin-left: 10px; cursor: pointer; }
+  .bottom-join-btn { width: 150px; margin: 0.50rem auto auto; color:#FFF !important; display: block; text-align: center; font-size: 0.18rem; background-color:#51A5FD; padding: 0.10rem 0; border-radius: 0.20rem; }
+  .td { color: #333; }
+  .step-ul li { width: 30%; height: 3.00rem; margin: auto 1.667% auto 1.667%; float: left; border:#CCC solid 1px; text-align: center; padding: 0.50rem 0 0.50rem 0; border-radius: 0.20rem; background: image-url("qvmpartner/icon-step-1-hover.png") no-repeat 90% bottom; background-size: 30%; background-color:#FFF; }
+  .step-ul li:nth-child(2) { background: image-url("qvmpartner/icon-step-2-hover.png") no-repeat 90% bottom; background-size: 30%; background-color:#FFF; }
+  .step-ul li:nth-child(3) { background: image-url("qvmpartner/icon-step-3-hover.png") no-repeat 90% bottom; background-size: 30%; background-color:#FFF; }
+  .step-ul li img { width: 30%; margin-bottom: 0.10rem; }
+  .step-ul li p { margin: 0.20rem 10px 0 10px; font-size: 0.16rem; color:#666; }
+  .step-ul li:hover { background-color:#AAD6FF; }
+  .features { padding: 0.68rem 0 0.50rem; }
+  .footer { background-color:#51A5FD; padding: 0.30rem 0 0.30rem; vertical-align: center; display: block; height: 150px; }
+  .footer img { float: left; width: 100px; margin-left: 50px; margin-right: 20px; }
+  .rule-item h4 { font-size: 0.14rem;	padding-top: 10px; padding-bottom: 10px; font-family: inherit; font-weight: 500; line-height: 0.20rem; }
+  .rule-item p { margin: 0; padding: 0; color:#666; line-height: 0.30rem; }
+  .footer p { margin-top: 25px; color:#FFF; font-size: 0.18rem; line-height: 0.30rem; }
+  .features-qvmpartner-step {
+    background: image-url("qvmpartner/image-step-bg.jpg") no-repeat center center;
+    background-size: cover;
+
+    .intro .title {
+      color: #FFF;
+    }
+  }
+  @media screen and (min-width: 1001px) {
+    .table td { padding: 0.40rem !important; }
+  }
+  @media (min-width: 768px) {}
+  @media screen and (max-width: 1000px) and (min-width: 771px) {
+    .table td { padding: 0.20rem 0.30rem !important; }
+  }
+  @media screen and (max-width: 770px) and (min-width: 471px) {
+    .table td { padding: 0.10rem 0.20rem !important; }
+    .table td strong { margin-left: 5px; }
+    .features { padding: 0.32rem 0 0.20rem; }
+    .bottom-join-btn { width: 120px; }
+  }
+  @media screen and (max-width: 470px) and (min-width: 320px) {
+    .table td { padding: 0.10rem 0.05rem !important; }
+    .table td strong { margin-left: 5px; }
+    .table .tr-header td { font-size: 0.20rem; }
+    .footer img { margin-left: 0px; margin-right: 10px; }
+    .features { padding: 0.20rem 0 0.20rem; }
+    .bottom-join-btn { width: 120px; }
+  }
+}

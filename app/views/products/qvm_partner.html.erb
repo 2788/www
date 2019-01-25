@@ -1,0 +1,129 @@
+<div class="qvm-partner-page">
+  <div class="jumbotron hero">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>七牛云主机合伙人计划</h1>
+            <p>赢取高达&nbsp;<strong>30%</strong>&nbsp;现金奖励，长期有效</p>
+            <div class="actions">
+              <%= link_to "我要加入", "https://portal.qiniu.com/qvm/partner", class: "btn btn-lg btn-hollow m-r m-b-xs", title: "加入七牛云主机合伙人计划", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="intro">
+      <h2 class="title">丰厚奖励</h2>
+    </div>
+    <div class="container">
+      <table width="80%" border="0" cellspacing="0" cellpadding="0" class="table">
+        <tr class="tr-header">
+          <td width="29%">客户类型</td>
+          <td width="49%">返现条件</td>
+          <td width="22%">返现比率</td>
+        </tr>
+        <tr>
+          <td><span>新用户 | 首单奖励</span><br>新用户：被邀请用户从未付费买过云主机系列产品</td>
+          <td>
+            <div class="td">
+              被邀请用户第一次下单购买指定包年包月产品
+              <%= content_tag :strong, "?", data: { toggle: "tooltip", placement: "right" }, title: "指定包年包月产品包括：云主机、云硬盘、公网 IP、负载均衡、高速通道、RDS 及 Redis" -%>
+            </div>
+          <td>30%</td>
+        </tr>
+        <tr>
+          <td><span>老用户 | 首购奖励</span><br>老用户：被邀请用户从未付费买过该产品</td>
+          <td>
+            <div class="td">
+              被邀请用户首次购买该包年包月产品
+              <%= content_tag :strong, "?", data: { toggle: "tooltip", placement: "right" }, title: "该包年包月产品：指首单之外的其他指定包年包月产品" -%>
+            </div>
+          <td>20%</td>
+        </tr>
+        <tr>
+          <td><span>老用户 | 复购续费奖励</span></td>
+          <td>
+            <div class="td">
+              被邀请用户复购、续费该包年包月产品
+              <%= content_tag :strong, "?", data: { toggle: "tooltip", placement: "right" }, title: "升级订单不参与返现" -%>
+            </div>
+          <td>5%</td>
+        </tr>
+        <tr>
+          <td colspan="3">注：被邀请用户享受 5% 首购优惠折扣（下单时自动进行折扣计算并扣除相应金额)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="features features-qvmpartner-step">
+    <div class="intro">
+      <h2 class="title">简单 3 步，成为合伙人</h2>
+    </div>
+    <div class="container">
+    <ul class="step-ul">
+      <li><%= image_tag "qvmpartner/icon-step-1.png", title: "七牛云主机合伙人计划 - 注册", alt: "七牛云主机合伙人计划 - 注册" -%><p>注册</p><p>注册七牛云账号，完成实名认证</p></li>
+      <li><%= image_tag "qvmpartner/icon-step-2.png", title: "七牛云主机合伙人计划 - 推广", alt: "七牛云主机合伙人计划 - 推广" -%><p>推广</p><p>获取推广链接，分享推广</p></li>
+      <li><%= image_tag "qvmpartner/icon-step-3.png", title: "七牛云主机合伙人计划 - 返利", alt: "七牛云主机合伙人计划 - 返利" -%><p>返利</p><p>推广成功，结算并获得奖励</p></li>
+    </ul>
+    </div>
+  </div>
+
+  <div class="features feature-color">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">合伙人推广返利规则</h2>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="rule-item">
+          <h4>1. 推广奖励金 = 有效推广收入 × 佣金比例，针对首单 / 首购的单笔订单封顶 1 万元，其他订单无封顶限制</h4>
+        </div>
+        <div class="rule-item">
+          <h4>2. 有效推广收入</h4>
+          <p>（1）指定推广云产品为七牛云按照包年包月方式售卖的云主机、云硬盘、公网 IP、负载均衡、高速通道、RDS 及 Redis</p>
+          <p>（2）被邀请用户通过推广链接完成注册、购买并支付的订单，支付的现金部分属于有效推广收入</p>
+          <p>（3）推广者如果代理过七牛云非指定推广云产品（如存储、CDN 等），仍可成为主机合伙人</p>
+          <p>（4）升级订单、发生退款订单均不参与推广奖励</p>
+          <p>（5）老用户（被邀请用户不是使用推广链接注册）的新购 / 升级 / 续费 / 复购，不计入有效推广收入</p>
+          <p>（6）被邀请用户已经按照按量付费购买过指定推广云产品仍可享受首单奖励</p>
+          <p>（7）2 年及以上的包年包月产品不参与返利（以订单的购买时长计算）</p>
+          <p>（8）此次活动奖励不可与其他优惠同享</p>
+        </div>
+        <div class="rule-item">
+          <h4>3. 推广结算</h4>
+          <p>（1）七牛云推广将在订单创建确认一季度后由七牛云进行结算</p>
+          <p>（2）七牛云结算规则及结算数据均以七牛云统计数据为准</p>
+        </div>
+        <div class="rule-item">
+          <h4>4. 禁止利用恶意代码强制改变用户电脑设置，禁止强制捆绑等恶意方式或其它使用户反感或违反法律法规的非正当方式推广</h4>
+        </div>
+        <div class="rule-item">
+          <h4>5. 首次提现推广奖励金时会有七牛工作人员与您签署合作协议（含您的收款信息），提现时需提供相应金额的发票</h4>
+        </div>
+        <div class="rule-item">
+          <h4>6. 返佣金额也可发到七牛云钱包，用于购买七牛云全线产品</h4>
+        </div>
+        <div class="rule-item">
+          <h4>7. 七牛云会根据市场变化情况在每个月月底对推广奖励佣金规则进行调整</h4>
+        </div>
+        <div class="rule-item">
+          <h4>8. 活动最终解释权在法律允许范围内归七牛云所有</h4>
+        </div>
+      </div>
+      <div class="container"></div>
+      <%= link_to "我要加入", "https://portal.qiniu.com/qvm/partner", class: "bottom-join-btn", title: "加入七牛云主机合伙人计划", target: "_blank" -%>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <%= image_tag "qvmpartner/qq-qvmpartner.jpg", title: "QQ 扫码加入七牛云主机合伙人交流群", alt: "QQ 扫码加入七牛云主机合伙人交流群" -%>
+      <p>QQ 扫码加入<br/>七牛云主机合伙人交流群</p>
+    </div>
+    <div class="clea"></div>
+  </div>
+</div>

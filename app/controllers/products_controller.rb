@@ -119,6 +119,9 @@ class ProductsController < ApplicationController
   def censorfeeds
   end
 
+  def qvm_partner
+  end
+
   def censor
     @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
     @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
