@@ -48,6 +48,13 @@
     .intro .title {
       color: #FFF;
     }
+
+    .step-ul li {
+      p.title {
+        font-size: 0.24rem;
+        font-weight: 600;
+      }
+    }
   }
   @media screen and (min-width: 1001px) {
     .table td { padding: 0.40rem !important; }
