@@ -374,9 +374,9 @@
     <footer class="hidden-xs <%= I18n.t("views.language") != 'zh' ? 'en' : '' %>">
       <div class="container">
         <div class="row <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-          <div class="col-sm-8">
+          <div class="col-sm-9">
             <div class="row grey-link">
-              <div class="col-sm-4 col-xs-4">
+              <div class="col-sm-3 col-xs-3">
                 <dl>
                   <dt>产品与服务</dt>
                   <% I18n.t("services").each do |service| %>
@@ -387,7 +387,7 @@
                   <dd><%= link_to "SSL 证书", "/ssl" -%></dd>
                 </dl>
               </div>
-              <div class="col-sm-4 col-xs-4">
+              <div class="col-sm-3 col-xs-3">
                 <dl>
                   <dt>支持</dt>
                   <dd><%= link_to "开发者中心", "https://developer.qiniu.com", target: "_blank" -%></dd>
@@ -399,7 +399,7 @@
                   <dd><%= link_to "技术博客", "https://blog.qiniu.com/", target: "blank" -%></dd>
                 </dl>
               </div>
-              <div class="col-sm-4 col-xs-4">
+              <div class="col-sm-3 col-xs-3">
                 <dl>
                   <dt>关于我们</dt>
                   <dd><%= link_to "公司介绍", company_path -%></dd>
@@ -413,9 +413,15 @@
                   <dd><%= link_to "联系我们", contact_path -%></dd>
                 </dl>
               </div>
+              <div class="col-sm-3 col-xs-3">
+                <dl>
+                  <dt>售前咨询</dt>
+                  <dd class="grey-tip">400-808-9176 转 1</dd>
+                </dl>
+              </div>
             </div>
           </div>
-          <div class="col-sm-4 text-center">
+          <div class="col-sm-3 text-center">
             <%= link_to image_tag("logo-zh.png", alt: "七牛云"), "/", class: "logo" -%>
             <div class="qrcode">
               <%= image_tag "weixin-qrcode.png" -%>
@@ -443,7 +449,7 @@
             <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
           </ul>
           <div class="report-call grey-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
-            <span>24 小时互联网违法和不良信息举报：021-20703838，举报邮箱：jubao@qiniu.com</span>
+            <span>24 小时互联网违法和不良信息举报：举报电话：021-20703838，举报邮箱：jubao@qiniu.com</span>
           </div>
           <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
           <div class="icp grey-color">
@@ -542,6 +548,18 @@
             </li>
             <li class="panel panel-info">
               <div class="panel-heading panel-sort">
+                <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#pre-consultation">售前咨询</a>
+              </div>
+              <div id="pre-consultation" class="panel-collapse collapse collapse-menu">
+                <div class="panel-body panel-menu">
+                  <div class="menu-unit">
+                    <%= content_tag :h4, "400-808-9176 转 1" -%>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="panel panel-info">
+              <div class="panel-heading panel-sort">
                 <a class="sort-name" data-toggle="collapse" data-parent="#accordion" href="#collapseCare">关注我们</a>
               </div>
 
@@ -578,7 +596,7 @@
             <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
           </ul>
           <div class="report-call grey-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
-            <span>24 小时互联网违法和不良信息举报：021-20703838</span>
+            <span>24 小时互联网违法和不良信息举报：举报电话：021-20703838</span>
             <span>举报邮箱：jubao@qiniu.com</span>
           </div>
           <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
