@@ -243,12 +243,11 @@
     <%# 悬浮按钮 %>
     <div class="helper">
       <div class="helper-image">
-        <% if is_1024event_on() -%>
-          <%# 1024 活动上线状态 %>
-          <%= link_to image_tag("event1024/icon-helper-normal.jpg"), "https://www.qiniu.com/events/1024event?entry=index-floatwin", id: "helper-1024event-index-normal", class: "normal-image", title: "云采购 0 元", target: "_blank" -%>
-          <%= link_to image_tag("event1024/icon-helper-hover.jpg"), "https://www.qiniu.com/events/1024event?entry=index-floatwin", id: "helper-1024event-index-hover", class: "hover-image", title: "豪礼独享", target: "_blank" -%>
+        <% if Time.now.to_i < Time.local(2019, 2, 20).to_i -%>
+          <%# 短视频大赛上线状态 %>
+          <%= link_to image_tag("plsv/icon-helper.jpg"), "http://csvc.qiniu.com?entry=index-floatwin", id: "helper-plsv-icon", class: "plsv-icon", title: "短视频大赛", target: "_blank" -%>
         <% else -%>
-          <%# 1024 活动下线状态 %>
+          <%# 短视频大赛下线状态 %>
           <%= link_to image_tag("free/icon-helper.png"), "https://www.qiniu.com/events/free?entry=index-floatwin", id: "helper-free-icon", class: "free-icon", title: "免费云服务套餐", target: "_blank" -%>
         <% end -%>
       </div>
@@ -434,7 +433,7 @@
           </div>
         </div>
 
-        <div class="links grey-link">
+        <div class="links grey-link grey-darker-link">
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="cmmi3-logo" title="CMMI3 国际认证企业"></a>
@@ -443,16 +442,16 @@
             <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>
           </div>
           <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
-            <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
+            <li><div class="copyright grey-darker-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
             <li><%= link_to "用户协议", user_agreement_path -%></li>
             <li><%= link_to "SLA", sla_kodo_path -%></li>
             <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
           </ul>
-          <div class="report-call grey-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
+          <div class="report-call grey-darker-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
             <span>24 小时互联网违法和不良信息举报：举报电话：021-20703838，举报邮箱：jubao@qiniu.com</span>
           </div>
-          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
-          <div class="icp grey-color">
+          <div class="copyright grey-darker-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
+          <div class="icp grey-darker-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", target: "_blank" unless icp[1].blank? %>
             <a href="http://www.miitbeian.gov.cn/" target="_blank"><span class="icon icon-aq"> <%= icp[0] -%> </span></a>
@@ -581,7 +580,7 @@
             </li>
           </ul>
         </div>
-        <div class="links grey-link">
+        <div class="links grey-link grey-darker-link">
           <div class="cloud-verify">
             <a target="_blank" rel="noopener" href="http://www.dca.org.cn/" class="verify-logo" title="可信云"></a>
             <a target="_blank" rel="noopener" href="#" class="cmmi3-logo" title="CMMI3 国际认证企业"></a>
@@ -590,17 +589,17 @@
             <a target="_blank" rel="noopener" href="http://www.shjbzx.cn/" class="report-logo" title="违法和不良信息举报中心"></a>
           </div>
           <ul class="<%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
-            <li><div class="copyright grey-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
+            <li><div class="copyright grey-darker-color">© <%= Time.now.strftime "%Y" -%> 七牛云</div></li>
             <li><%= link_to "用户协议", user_agreement_path -%></li>
             <li><%= link_to "SLA", sla_kodo_path -%></li>
             <li><%= link_to "服务状态", "https://status.qiniu.com/", target: "_blank" -%></li>
           </ul>
-          <div class="report-call grey-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
+          <div class="report-call grey-darker-color <%= I18n.t("views.language") == 'zh' ? '' : 'd-none' %>">
             <span>24 小时互联网违法和不良信息举报：举报电话：021-20703838</span>
             <span>举报邮箱：jubao@qiniu.com</span>
           </div>
-          <div class="copyright grey-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
-          <div class="icp grey-color">
+          <div class="copyright grey-darker-color p-h-sm <%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">© 2011-<%= Time.now.strftime "%Y" -%> Copyright by Qiniu Cloud All rights reserved</div>
+          <div class="icp grey-darker-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", rel:'nofollow', target: "_blank" unless icp[1].blank? %>
             <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow"><span class="icon icon-aq"><%= icp[0] -%></span></a>
