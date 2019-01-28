@@ -53,7 +53,8 @@ Rails.application.routes.draw do
     get '/products/pili/livequiz',         to: 'products#livequiz'
     get '/products/qavs',                  to: 'products#qavs'
     get '/products/qvm',                   to: 'products#qvm'
-    get '/products/qvm/partner',           to: 'products#qvm_partner'
+    # qvm 产品线要求，暂时下掉 qvm 合伙人计划落地页
+    # get '/products/qvm/partner',           to: 'products#qvm_partner'
     get '/products/edu',                   to: 'products#edu'
     get '/products/ess',                   to: 'products#ess'
     get '/products/snow',                  to: 'products#snow'
