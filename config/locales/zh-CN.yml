@@ -2384,7 +2384,7 @@ zh-CN:
               - title: "极致用户体验"
                 desc: "操作简便易上手，降低用户学习成本"
                 more: "更多产品功能"
-                link: "https://developer.qiniu.com/insight/manual/4627/real-time-analysis"
+                link: "https://developer.qiniu.com/insight/manual/4834/10-minutes-to-play-smart-logging-platform"
         application:
           title: "典型应用场景"
           tabs:
@@ -2530,6 +2530,9 @@ zh-CN:
           start:
             title: "快速入门"
             links:
+              - title: "10 分钟玩转智能日志平台"
+                link: "https://developer.qiniu.com/insight/manual/4834/10-minutes-to-play-smart-logging-platform"
+                target: "_blank"
               - title: "Nginx 日志分析"
                 link: "https://developer.qiniu.com/insight/manual/4612/usage-scenarios"
                 target: "_blank"
@@ -2537,7 +2540,7 @@ zh-CN:
                 link: "https://developer.qiniu.com/insight/manual/4667/off-line-calculation"
                 target: "_blank"
               - title: "日志搜索和关键字报警"
-                link: "https://developer.qiniu.com/insight/manual/4745/log-search-and-keyword-report-to-the-police"
+                link: "https://developer.qiniu.com/insight/manual/5460/start"
                 target: "_blank"
               - title: "Apache 日志分析"
                 link: "https://developer.qiniu.com/insight/manual/4666/real-time-computing"
