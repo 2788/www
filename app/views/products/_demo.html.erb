@@ -17,12 +17,13 @@
             <div class="image-container">
               <div class="upload-image-show" id="upload-image-show"></div>
               <div class="image-scan"></div>
-              <div class="image-pass image-pass-xinggan"></div>
-              <div class="image-violate"></div>
+              <div class="image-block"></div>
+              <div class="image-review"></div>
+              <div class="image-pass"></div>
               <div class="result-container image-result-container">
                 <p id= "image-pulp" class="text-error">
                   <span>色情识别</span>
-                  <span class="result-word">性感</span>
+                  <span class="result-word">疑似</span>
                 </p>
                 <p id="image-terror">
                   <span>暴恐识别</span>
@@ -65,12 +66,13 @@
             <div class="video-container">
               <video src="<%= @videoSrc_1 -%>" id="upload-video-show" autobuffer="true" loop="true" width="100%"></video>
               <div class="video-scan"></div>
+              <div class="video-block"></div>
+              <div class="video-review"></div>
               <div class="video-pass"></div>
-              <div class="video-violate"></div>
               <div class="result-container video-result-container">
                 <p id= "video-pulp" class="text-error">
                   <span>色情识别</span>
-                  <span class="result-word">性感</span>
+                  <span class="result-word">疑似</span>
                 </p>
                 <p id="video-terror">
                   <span>暴恐识别</span>

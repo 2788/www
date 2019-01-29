@@ -124,6 +124,9 @@ Rails.application.routes.draw do
     # video_censor
     post '/video_censor', to: 'products#video_censor'
 
+    # 根据 jobID 获取视频审核结果，jobID 存在 session 中
+    get '/video_censor_result', to: 'products#video_censor_result'
+
     # qvm
     post "/qvm/user/action", to: 'products#report_user_action'
 

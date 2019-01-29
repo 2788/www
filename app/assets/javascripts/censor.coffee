@@ -5,16 +5,18 @@ $(document).ready ->
   $imageResultContainer = $('.image-result-container')
   $imageOverlay = $('.image-overlay')
   $imageScan = $('.image-scan')
+  $imageBlock = $('.image-block')
+  $imageReview = $('.image-review')
   $imagePass = $('.image-pass')
-  $imageViolate = $('.image-violate')
 
   $uploadVideoBtn = $('#upload-video-btn')
   $uploadVideoInput = $('#upload-video-input')
   $videoResultContainer = $('.video-result-container')
   $videoOverlay = $('.video-overlay')
   $videoScan = $('.video-scan')
+  $videoBlock = $('.video-block')
+  $videoReview = $('.video-review')
   $videoPass = $('.video-pass')
-  $videoViolate = $('.video-violate')
 
   # 图片审核
   imgAudit = (path, type) ->
@@ -36,6 +38,37 @@ $(document).ready ->
       error: (err) ->
         $imageOverlay.hide()
         $imageScan.removeClass('active')
+        showPop($uploadImageBtn, '审核失败', 'top')
+  
+  getVideoAuidtResult = () ->
+    $.ajax
+      method: 'GET',
+      url: '/video_censor_result',
+      success: (res) ->
+        if res && res.is_success
+          resData = res.data
+          if resData && resData.status == 'FINISHED'
+            $videoOverlay.hide()
+            $videoScan.removeClass('active')
+            updateVideoUI(resData.result)
+          else if resData && resData.status == 'FAILED'
+            $videoOverlay.hide()
+            $videoScan.removeClass('active')
+            showPop($uploadVideoBtn, '审核失败', 'top')
+          else
+            # 视频还在审核中 循环获取结果 间隔 2s
+            timeOut = setTimeout ->
+              getVideoAuidtResult()
+              clearTimeout(timeOut)
+            , 2000
+        else
+          $videoOverlay.hide()
+          $videoScan.removeClass('active')
+          showPop($uploadVideoBtn, '审核失败', 'top')
+      error: (err) ->
+        $videoOverlay.hide()
+        $videoScan.removeClass('active')
+        showPop($uploadVideoBtn, '审核失败', 'top')
 
   # 视频审核
   videoAudit = (path, type) ->
@@ -48,119 +81,138 @@ $(document).ready ->
         path: path,
         type: type
       success: (res) ->
-        $videoOverlay.hide()
-        $videoScan.removeClass('active')
-        if res && res.result
-          updateVideoUI(res.result)
+        if res && res.is_success
+          # 2s 后获取视频审核结果
+          timeOut = setTimeout ->
+            getVideoAuidtResult()
+            clearTimeout(timeOut)
+          , 2000
         else
+          $videoOverlay.hide()
+          $videoScan.removeClass('active')
           showPop($uploadVideoBtn, '审核失败', 'top')
       error: (err) ->
         $videoOverlay.hide()
         $videoScan.removeClass('active')
+        showPop($uploadVideoBtn, '审核失败', 'top')
 
-  # 重置图片审核UI
+  # 重置图片审核 UI
   resetImgUI = () ->
     $imageResultContainer.children('p').removeClass('text-error')
     $imageResultContainer.children('p').children('.result-word').html('正常')
     $imageResultContainer.hide()
+    $imageBlock.hide()
+    $imageReview.hide()
     $imagePass.hide()
-    $imageViolate.hide()
 
-  # 重置视频审核UI
+  # 重置视频审核 UI
   resetVideoUI = () ->
     $videoResultContainer.children('p').removeClass('text-error')
     $videoResultContainer.children('p').children('.result-word').html('正常')
     $videoResultContainer.hide()
+    $videoBlock.hide()
+    $videoReview.hide()
     $videoPass.hide()
-    $videoViolate.hide()
 
-  # 更新图片审核UI
+  # 更新图片审核 UI
   updateImgUI = (result) ->
     aduitRes = result.result
     # 显示是否违规
-    if aduitRes.label == 1
-      $imageViolate.show()
+    if aduitRes.suggestion == 'block'
+      $imageBlock.show()
+      $imageReview.hide()
+      $imagePass.hide()
+    else if aduitRes.suggestion == 'review'
+      $imageReview.show()
+      $imageBlock.hide()
+      $imagePass.hide()
     else
-      # 修改审核图标的图片
-      $imagePass.removeClass('image-pass-xinggan')
       $imagePass.show()
+      $imageReview.hide()
+      $imageBlock.hide()
     # 判断渲染违规项
-    for item in aduitRes.details
-      switch item.type
+    aduitScenes = aduitRes.scenes || {}
+    for key, info of aduitScenes
+      switch key
         when 'pulp'
-          if item.label == 0
+          if info.suggestion == 'review'
             $('#image-pulp').addClass('text-error')
-            $('#image-pulp').find('.result-word').html('色情')
-          else if item.label == 1
+            $('#image-pulp').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
             $('#image-pulp').addClass('text-error')
-            $('#image-pulp').find('.result-word').html('性感')
-            # 修改审核图标的图片
-            $imagePass.addClass('image-pass-xinggan')
+            $('#image-pulp').find('.result-word').html('违规')
         when 'terror'
-          if item.label == 1
+          if info.suggestion == 'review'
             $('#image-terror').addClass('text-error')
-            $('#image-terror').find('.result-word').html('暴恐')
+            $('#image-terror').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#image-terror').addClass('text-error')
+            $('#image-terror').find('.result-word').html('违规')
         when 'politician'
-          if item.label == 1
+          if info.suggestion == 'review'
             $('#image-politician').addClass('text-error')
-            $('#image-politician').find('.result-word').html('涉政')
+            $('#image-politician').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#image-politician').addClass('text-error')
+            $('#image-politician').find('.result-word').html('违规')
     $imageResultContainer.show()
 
-  # 更新视频审核UI
+  # 更新视频审核 UI
   updateVideoUI = (result) ->
-    isViolate = false
-    # 对pulp内容进行判断
-    pulpRes = result['pulp']
-    pulpLabels = if pulpRes.labels then pulpRes.labels else []
-    pulpList = []
-    for item in pulpLabels
-      if item.label == '0' && pulpList.indexOf('色情') == -1
-        pulpList.push('色情')
-        isViolate = true
-      else if item.label == '1' && pulpList.indexOf('性感') == -1
-        pulpList.push('性感')
-    if pulpList.length != 0
-      $('#video-pulp').addClass('text-error')
-      $('#video-pulp').find('.result-word').html(pulpList.join('，'))
-    # 对terror内容进行判断
-    terrorRes = result['terror']
-    terrorLabels = if terrorRes.labels then terrorRes.labels else []
-    terrorList = []
-    for item in terrorLabels
-      if item.label == '1' && terrorList.indexOf('暴恐') == -1
-        terrorList.push('暴恐')
-        isViolate = true
-    if terrorList.length != 0
-      $('#video-terror').addClass('text-error')
-      $('#video-terror').find('.result-word').html(terrorList.join(','))
-    # 对politician内容进行判断
-    politicianRes = result['politician']
-    politicianLabels = if politicianRes.labels then politicianRes.labels else []
-    politicianList = []
-    for item in politicianLabels
-      if item.label != '0' && politicianList.indexOf('涉政') == -1
-        politicianList.push('涉政')
-        isViolate = true
-    if politicianList.length != 0
-      $('#video-politician').addClass('text-error')
-      $('#video-politician').find('.result-word').html(politicianList.join(','))
-    $videoResultContainer.show()
+    if result.code != 200
+      showPop($uploadVideoBtn, '审核失败', 'top')
+      return
+    aduitRes = result.result
     # 显示是否违规
-    if isViolate
-      $videoViolate.show()
+    if aduitRes.suggestion == 'block'
+      $videoBlock.show()
+      $videoReview.hide()
+      $videoPass.hide()
+    else if aduitRes.suggestion == 'review'
+      $videoReview.show()
+      $videoBlock.hide()
+      $videoPass.hide()
     else
       $videoPass.show()
+      $videoReview.hide()
+      $videoBlock.hide()
+    # 判断渲染违规项
+    aduitScenes = aduitRes.scenes || {}
+    for key, info of aduitScenes
+      switch key
+        when 'pulp'
+          if info.suggestion == 'review'
+            $('#video-pulp').addClass('text-error')
+            $('#video-pulp').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#video-pulp').addClass('text-error')
+            $('#video-pulp').find('.result-word').html('违规')
+        when 'terror'
+          if info.suggestion == 'review'
+            $('#video-terror').addClass('text-error')
+            $('#video-terror').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#video-terror').addClass('text-error')
+            $('#video-terror').find('.result-word').html('违规')
+        when 'politician'
+          if info.suggestion == 'review'
+            $('#video-politician').addClass('text-error')
+            $('#video-politician').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#video-politician').addClass('text-error')
+            $('#video-politician').find('.result-word').html('违规')
+    $videoResultContainer.show()
 
-  # image部分
-  # 激活img的slide
+  # image 部分
+  # 激活 img 的 slide
   $('.image-upload .slide-container .slide-item').bind 'click', (e) ->
     if $(this).hasClass('active')
       return
-    # 消除所有slide的active样式
+    # 消除所有 slide 的 active 样式
     $('.image-upload .slide-container .slide-item').removeClass('active')
-    # 为选中项添加active样式
+    # 为选中项添加 active 样式
     $(this).addClass('active')
-    # 清空upload-image-input的值
+    # 清空 upload-image-input 的值
     $uploadImageInput.val('')
     # 替换当前图片
     imgSrc = $(this).children('img')[0].src
@@ -169,7 +221,7 @@ $(document).ready ->
     resetImgUI()
     imgAudit(key, 'slide')
 
-  # 图片url按钮
+  # 图片 url 按钮
   $uploadImageBtn.bind 'click', (e) ->
     imageURL = $uploadImageInput.val().trim()
     if !imageURL
@@ -189,13 +241,13 @@ $(document).ready ->
     resetImgUI()
     imgAudit(imageURL, 'url')
 
-  # video部分
-  # 激活video的slide
+  # video 部分
+  # 激活 video 的 slide
   $('.video-upload .slide-container .slide-item').bind 'click', (e) ->
     e.preventDefault()
     if $(this).hasClass('active')
       return
-    # 消除所有slide的active样式
+    # 消除所有 slide 的 active 样式
     $('.video-upload .slide-container .slide-item').removeClass('active')
     # 替换当前图片
     videoSrc = $(this).children('video')[0].src
@@ -205,14 +257,14 @@ $(document).ready ->
       $('#upload-video-show')[0].src = $('.video-upload .slide-container .slide-item video')[0].src
     # 播放视频
     $('#upload-video-show')[0].play()
-    # 为选中项添加active样式
+    # 为选中项添加 active 样式
     $(this).addClass('active')
-    # 清空upload-video-input的值
+    # 清空 upload-video-input 的值
     $uploadVideoInput.val('')
     resetVideoUI()
     videoAudit(key, 'slide')
 
-  # 输入网络视频URL
+  # 输入网络视频 URL
   $uploadVideoBtn.bind 'click', (e) ->
     videoURL = $uploadVideoInput.val().trim()
     if !videoURL
@@ -225,7 +277,7 @@ $(document).ready ->
     videoAudit(videoURL, 'url')
 
   # 公用部分
-  # 切换tab页暂停视频播放
+  # 切换 tab 页暂停视频播放
   $('.censor-demo .nav-tabs li').bind 'click', (e) ->
     video = $('#upload-video-show')[0]
     if $(this).hasClass('image-tab-li')
@@ -235,7 +287,7 @@ $(document).ready ->
       if video.currentSrc
         video.play()
 
-  # 显示popover
+  # 显示 popover
   showPop = (dom, message, position) ->
     paras =
       content: message

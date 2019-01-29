@@ -92,6 +92,7 @@ Rails.application.configure do
     }
   }
 
-  config.img_audit_host = 'https://argus.atlab.ai/v1/image/censor'
-  config.video_audit_host = 'https://argus.atlab.ai/v1/video/'
+  config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'
+  config.video_audit_host = 'http://ai.qiniuapi.com/v3/video/censor'
+  config.video_jobs_host = 'http://ai.qiniuapi.com/v3/jobs/video'
 end

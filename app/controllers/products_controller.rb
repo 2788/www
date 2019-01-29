@@ -164,75 +164,10 @@ class ProductsController < ApplicationController
     body = {
       data: {
         uri: ''
-      }
-    }
-
-    if type == 'slide'
-      body[:data][:uri] = 'https://mars-assets.qnssl.com/' + path
-    elsif type == 'url'
-      body[:data][:uri] = path
-    end
-
-    # 生成qiniu_token
-    originStr = "POST " + uri.path + "\nHost: " + uri.host + "\nContent-Type: application/json\n\n"
-    originStr += body.to_json.encode('UTF-8')
-    encoded_sign = generate_encoded_sign(Rails.application.secrets.atlab_sec_key, originStr)
-    qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
-
-    header = {
-      'Authorization' => qiniu_token,
-      'Content-Type' => 'application/json'
-    }
-
-    request = Net::HTTP::Post.new(uri, header)
-    request.body = body.to_json.encode('UTF-8')
-
-    begin
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      res = http.request(request)
-    rescue
-      render json: {
-        result: nil
-      }
-      return
-    end
-
-    case res
-      when Net::HTTPSuccess
-        resBody = JSON.parse res.body
-        if resBody.nil?
-          render json: {
-            result: nil
-          }
-          return
-        end
-        render json: {
-          result: resBody
-        }
-        return
-      else
-        p res.message
-        render json: {
-          result: nil
-        }
-        return
-    end
-  end
-
-  # 视频审核
-  def video_censor
-
-    uri = URI.parse(Rails.configuration.video_audit_host + 'video_demo')
-
-    path = params[:path]
-    type = params[:type]
-
-    body = {
-      data: {
-        uri: ''
       },
-      ops: [{op: 'pulp'}, {op: 'terror'}, {op: 'politician'}]
+      params: {
+        scenes: ['pulp', 'terror', 'politician']
+      }
     }
 
     if type == 'slide'
@@ -258,7 +193,9 @@ class ProductsController < ApplicationController
 
     begin
       http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
+      if uri.port == 443
+        http.use_ssl = true
+      end
       res = http.request(request)
     rescue
       render json: {
@@ -289,6 +226,146 @@ class ProductsController < ApplicationController
     end
   end
 
+  # 视频审核
+  def video_censor
+
+    uri = URI.parse(Rails.configuration.video_audit_host)
+
+    path = params[:path]
+    type = params[:type]
+
+    body = {
+      data: {
+        uri: ''
+      },
+      params: {
+        scenes: ['pulp', 'terror', 'politician']
+      }
+    }
+
+    if type == 'slide'
+      body[:data][:uri] = 'https://mars-assets.qnssl.com/' + path
+    elsif type == 'url'
+      body[:data][:uri] = path
+    end
+
+    # 生成qiniu_token
+    originStr = "POST " + uri.path + "\nHost: " + uri.host + "\nContent-Type: application/json\n\n"
+    originStr += body.to_json.encode('UTF-8')
+
+    encoded_sign = generate_encoded_sign(Rails.application.secrets.atlab_sec_key, originStr)
+    qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
+
+    header = {
+      'Authorization' => qiniu_token,
+      'Content-Type' => 'application/json'
+    }
+
+    request = Net::HTTP::Post.new(uri, header)
+    request.body = body.to_json.encode('UTF-8')
+
+    begin
+      http = Net::HTTP.new(uri.host, uri.port)
+      if uri.port == 443
+        http.use_ssl = true
+      end
+      res = http.request(request)
+    rescue
+      render json: {
+        is_success: false,
+      }
+      session[:video_censor_job] = ''
+      return
+    end
+
+    case res
+      when Net::HTTPSuccess
+        resBody = JSON.parse res.body
+        if resBody.nil?
+          render json: {
+            is_success: false,
+          }
+          session[:video_censor_job] = ''
+          return
+        end
+        render json: {
+          is_success: true,
+        }
+        session[:video_censor_job] = resBody['job'] || ''
+        return
+      else
+        p res
+        render json: {
+          is_success: false,
+        }
+        session[:video_censor_job] = ''
+        return
+    end
+  end
+
+  # 获取视频审核结果
+  def video_censor_result
+    video_censor_job = session[:video_censor_job]
+    if video_censor_job.nil? || video_censor_job.blank?
+      render json: {
+        is_success: false,
+        data: nil
+      }
+      return
+    end
+
+    uri = URI.parse(Rails.configuration.video_jobs_host + '/' + video_censor_job)
+    # 生成qiniu_token
+    originStr = "GET " + uri.path + "\nHost: " + uri.host + "\nContent-Type: application/json\n\n"
+
+    encoded_sign = generate_encoded_sign(Rails.application.secrets.atlab_sec_key, originStr)
+    qiniu_token = "Qiniu #{Rails.application.secrets.atlab_acc_key}:#{encoded_sign}"
+
+    header = {
+      'Authorization' => qiniu_token,
+      'Content-Type' => 'application/json'
+    }
+
+    request = Net::HTTP::Get.new(uri, header)
+
+    begin
+      http = Net::HTTP.new(uri.host, uri.port)
+      if uri.port == 443
+        http.use_ssl = true
+      end
+      res = http.request(request)
+    rescue
+      render json: {
+        is_success: false,
+        data: nil
+      }
+      return
+    end
+
+    case res
+      when Net::HTTPSuccess
+        resBody = JSON.parse res.body
+        if resBody.nil?
+          render json: {
+            is_success: false,
+            data: nil
+          }
+          return
+        end
+        render json: {
+          is_success: true,
+          data: resBody
+        }
+        return
+      else
+        p res
+        render json: {
+          is_success: false,
+          data: nil
+        }
+        return
+    end
+  end
 
   # POST /qvm/user/action
   # 上报QVM相关用户行为
