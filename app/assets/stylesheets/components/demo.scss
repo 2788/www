@@ -51,10 +51,20 @@
 
           .panel-heading {
             background-color: #F8F8F8;
+            border-bottom: 1px solid #E1E1E1;
           }
 
           .panel-body {
-            padding: 10px;
+            padding: 10px 15px;
+            border-top: none;
+
+            .tip-success {
+              color: #008000;
+            }
+
+            .tip-error {
+              color: #D9534F;
+            }
 
             .jsonview {
               font-size: 0.14rem;
@@ -198,7 +208,7 @@
         top: 0;
         left: 0;
         background-repeat: no-repeat;
-        background-size: 1.50rem 1.50rem;
+        background-size: 1.20rem 1.20rem;
         background-position: center;
         z-index: 2;
       }
