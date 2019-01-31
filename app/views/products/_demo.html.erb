@@ -1,6 +1,6 @@
 <%# 内容安全 demo template %>
 <div class="tabs censor-demo">
-  <ul class="nav nav-tabs nav-justified points-bar nav-short nav-image-video" role="tablist">
+  <ul class="nav nav-tabs nav-justified points-bar nav-image-video" role="tablist">
     <li class="image-tab-li active">
       <a data-toggle="tab" href="#upload-tab-image">图片审核</a>
     </li>
@@ -11,7 +11,7 @@
   <div class="tab-content">
     <section class="tab-pane fade in active" id="upload-tab-image">
       <div class="row">
-        <div class="col-sm-12 col-xs-12 col-demo">
+        <div class="col-md-8 col-sm-8 col-xs-12 col-demo">
           <div class="thumbnail thumbnail-upload image-upload">
             <div class="image-overlay"></div>
             <div class="image-container">
@@ -56,11 +56,40 @@
             </div>
           </div>
         </div>
+        <%# 图片审核代码展示区 %>
+        <div class="col-md-4 col-sm-4 col-xs-12 col-code">
+          <div class="panel-group" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default border-none image-request-container">
+              <div class="panel-heading" role="tab" id="image-request-title">
+                <h5 class="panel-title">
+                  <a role="button" data-toggle="collapse" href="#image-request-panel" aria-expanded="true" aria-controls="image-request-panel">
+                    Request
+                  </a>
+                </h5>
+              </div>
+              <div id="image-request-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="image-request-title">
+                <div class="panel-body image-request-view"></div>
+              </div>
+            </div>
+            <div class="panel panel-default border-none image-response-container">
+              <div class="panel-heading" role="tab" id="image-response-title">
+                <h5 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" href="#image-response-panel" aria-expanded="false" aria-controls="image-response-panel">
+                    Response
+                  </a>
+                </h5>
+              </div>
+              <div id="image-response-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="image-response-title">
+                <div class="panel-body image-response-view"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
     <section class="tab-pane fade" id="upload-tab-video">
       <div class="row">
-        <div class="col-sm-12 col-xs-12 col-demo">
+        <div class="col-md-8 col-sm-8 col-xs-12 col-demo">
           <div class="thumbnail thumbnail-upload video-upload">
             <div class="video-overlay"></div>
             <div class="video-container">
@@ -105,6 +134,35 @@
             <div class="video-control">
               <input class="form-control" id="upload-video-input" type="text" placeholder="请输入网络视频 URL">
               <div class="btn btn-primary" id="upload-video-btn">检测</div>
+            </div>
+          </div>
+        </div>
+        <%# 视频审核代码展示区 %>
+        <div class="col-md-4 col-sm-4 col-xs-12 col-code col-code-video">
+          <div class="panel-group" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default border-none video-request-container">
+              <div class="panel-heading" role="tab" id="video-request-title">
+                <h5 class="panel-title">
+                  <a role="button" data-toggle="collapse" href="#video-request-panel" aria-expanded="true" aria-controls="video-request-panel">
+                    Request
+                  </a>
+                </h5>
+              </div>
+              <div id="video-request-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="video-request-title">
+                <div class="panel-body video-request-view"></div>
+              </div>
+            </div>
+            <div class="panel panel-default border-none video-response-container">
+              <div class="panel-heading" role="tab" id="video-response-title">
+                <h5 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" href="#video-response-panel" aria-expanded="false" aria-controls="video-response-panel">
+                    Response
+                  </a>
+                </h5>
+              </div>
+              <div id="video-response-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="video-response-title">
+                <div class="panel-body video-response-view"></div>
+              </div>
             </div>
           </div>
         </div>

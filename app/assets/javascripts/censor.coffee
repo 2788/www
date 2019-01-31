@@ -18,10 +18,31 @@ $(document).ready ->
   $videoReview = $('.video-review')
   $videoPass = $('.video-pass')
 
+  imageRequestBody = {'Method': 'POST /v3/image/censor HTTP/1.1', 'Host': 'ai.qiniuapi.com', 'Content-Type': 'application/json', 'Authorization': 'Qiniu <AccessKey>:<Sign>', 'body': {'data': {'uri': 'https://mars-assets.qnssl.com/Flm400wajEHohD2sFZgyLpc7fbCD'}, 'params': {'scenes': ['pulp', 'terror', 'politician']}}}
+  defaultImageResponseBody = {'suggestion': 'review', 'scenes': {'politician': {'suggestion': 'pass'}, 'pulp': {'suggestion': 'review', 'details': [{'suggestion': 'review', 'label': 'sexy', 'score': 0.63456}]}, 'terror': {'suggestion': 'pass', 'details': [{'suggestion': 'pass', 'label': 'normal', 'score': 0.931}]}}}
+  videoRequestBody = {'Method': 'POST /v3/video/censor HTTP/1.1', 'Host': 'ai.qiniuapi.com', 'Content-Type': 'application/json', 'Authorization': 'Qiniu <AccessKey>:<Sign>', 'body': {'data': {'uri': 'https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk'}, 'params': {'scenes': ['pulp', 'terror', 'politician']}}}
+  defaultVideoResponseBody = {'suggestion': 'review', 'scenes': {'politician': {'cuts': [{'offset': 500, 'suggestion': 'pass'}, {'offset': 5505, 'suggestion': 'pass'}, {'offset': 10510, 'suggestion': 'pass'}], 'suggestion': 'pass'}, 'pulp': {'cuts': [{'details': [{'label': 'normal', 'score': 0.74941, 'suggestion': 'pass'}], 'offset': 500, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.64107, 'suggestion': 'pass'}], 'offset': 5505, 'suggestion': 'pass'}, {'details': [{'label': 'sexy', 'score': 0.6379033, 'suggestion': 'review'}], 'offset': 10510, 'suggestion': 'review'}], 'suggestion': 'review'}, 'terror': {'cuts': [{'details': [{'label': 'normal', 'score': 0.87464666, 'suggestion': 'pass'}], 'offset': 500, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.8754, 'suggestion': 'pass'}], 'offset': 5505, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.93217665, 'suggestion': 'pass'}], 'offset': 10510, 'suggestion': 'pass'}], 'suggestion': 'pass'}}}
+
+  $imageRequestView = $('.image-request-container .image-request-view')
+  $imageResponseView = $('.image-response-container .image-response-view')
+  $videoRequestView = $('.video-request-container .video-request-view')
+  $videoResponseView = $('.video-response-container .video-response-view')
+
+  $imageRequestView.JSONView(imageRequestBody)
+  $imageResponseView.JSONView(defaultImageResponseBody).JSONView('collapse', [3])
+  $videoRequestView.JSONView(videoRequestBody)
+  $videoResponseView.JSONView(defaultVideoResponseBody).JSONView('collapse', [3])
+
   # 图片审核
   imgAudit = (path, type) ->
     $imageOverlay.show()
     $imageScan.addClass('active')
+    if type == 'slide'
+      imageRequestBody.body.data.uri = 'https://mars-assets.qnssl.com/' + path
+    else if type == 'url'
+      imageRequestBody.body.data.uri = path
+    $imageRequestView.JSONView(imageRequestBody)
+    $imageResponseView.JSONView(null)
     $.ajax
       method: 'POST',
       url: '/img_censor',
@@ -74,6 +95,12 @@ $(document).ready ->
   videoAudit = (path, type) ->
     $videoOverlay.show()
     $videoScan.addClass('active')
+    if type == 'slide'
+      videoRequestBody.body.data.uri = 'https://mars-assets.qnssl.com/' + path
+    else if type == 'url'
+      videoRequestBody.body.data.uri = path
+    $videoRequestView.JSONView(videoRequestBody)
+    $videoResponseView.JSONView(null)
     $.ajax
       method: 'POST',
       url: '/video_censor',
@@ -116,6 +143,9 @@ $(document).ready ->
 
   # 更新图片审核 UI
   updateImgUI = (result) ->
+    if result.code != 200
+      showPop($uploadImageBtn, '审核失败', 'top')
+      return
     aduitRes = result.result
     # 显示是否违规
     if aduitRes.suggestion == 'block'
@@ -156,6 +186,7 @@ $(document).ready ->
             $('#image-politician').addClass('text-error')
             $('#image-politician').find('.result-word').html('违规')
     $imageResultContainer.show()
+    $imageResponseView.JSONView(aduitRes).JSONView('collapse', [3])
 
   # 更新视频审核 UI
   updateVideoUI = (result) ->
@@ -202,6 +233,7 @@ $(document).ready ->
             $('#video-politician').addClass('text-error')
             $('#video-politician').find('.result-word').html('违规')
     $videoResultContainer.show()
+    $videoResponseView.JSONView(aduitRes).JSONView('collapse', [3])
 
   # image 部分
   # 激活 img 的 slide
