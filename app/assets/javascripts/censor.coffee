@@ -42,7 +42,7 @@ $(document).ready ->
     else if type == 'url'
       imageRequestBody.body.data.uri = path
     $imageRequestView.JSONView(imageRequestBody)
-    $imageResponseView.JSONView(null)
+    $imageResponseView.html('<span class="tip-success">审核中...</span>')
     $.ajax
       method: 'POST',
       url: '/img_censor',
@@ -56,10 +56,12 @@ $(document).ready ->
           updateImgUI(res.result)
         else
           showPop($uploadImageBtn, '审核失败', 'top')
+          $imageResponseView.html('<span class="tip-error">审核失败...</span>')
       error: (err) ->
         $imageOverlay.hide()
         $imageScan.removeClass('active')
         showPop($uploadImageBtn, '审核失败', 'top')
+        $imageResponseView.html('<span class="tip-error">审核失败...</span>')
   
   getVideoAuidtResult = () ->
     $.ajax
@@ -100,7 +102,7 @@ $(document).ready ->
     else if type == 'url'
       videoRequestBody.body.data.uri = path
     $videoRequestView.JSONView(videoRequestBody)
-    $videoResponseView.JSONView(null)
+    $videoResponseView.html('<span class="tip-success">审核中...</span>')
     $.ajax
       method: 'POST',
       url: '/video_censor',
@@ -118,10 +120,12 @@ $(document).ready ->
           $videoOverlay.hide()
           $videoScan.removeClass('active')
           showPop($uploadVideoBtn, '审核失败', 'top')
+          $videoResponseView.html('<span class="tip-error">审核失败...</span>')
       error: (err) ->
         $videoOverlay.hide()
         $videoScan.removeClass('active')
         showPop($uploadVideoBtn, '审核失败', 'top')
+        $videoResponseView.html('<span class="tip-error">审核失败...</span>')
 
   # 重置图片审核 UI
   resetImgUI = () ->
@@ -145,6 +149,7 @@ $(document).ready ->
   updateImgUI = (result) ->
     if result.code != 200
       showPop($uploadImageBtn, '审核失败', 'top')
+      $imageResponseView.html('<span class="tip-error">审核失败...</span>')
       return
     aduitRes = result.result
     # 显示是否违规
@@ -192,6 +197,7 @@ $(document).ready ->
   updateVideoUI = (result) ->
     if result.code != 200
       showPop($uploadVideoBtn, '审核失败', 'top')
+      $videoResponseView.html('<span class="tip-error">审核失败...</span>')
       return
     aduitRes = result.result
     # 显示是否违规
