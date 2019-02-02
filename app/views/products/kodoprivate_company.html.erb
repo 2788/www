@@ -1,0 +1,241 @@
+<%# banner %>
+<div class="jumbotron hero hero-kodo-private">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-10 col-sm-8">
+          <h2><%= I18n.t("views.products.kodoprivate_company.banner.title") -%></h2>
+          <p class="desc"><%= I18n.t("views.products.kodoprivate_company.banner.desc1") -%></p>
+          <p class="desc mg-t-0"><%= I18n.t("views.products.kodoprivate_company.banner.desc2") -%></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
+            <%= link_to "立即体验", "", target: "", class: "btn btn-lg btn-hollow m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
+          </div>
+        </div>
+        <div class="col-xs-4 hidden-xs">
+          <div class="right-mask-banner">
+            <%= image_tag "banner/banner-kodo-private-right.png", alt: "kodo-private", width: "100%" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 七牛私有云架构图 %>
+<div class="features features-less features-kodo-private-framework">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.framework.title") -%></h2>
+    </div>
+
+    <div class="image-container">
+      <%= image_tag I18n.t("views.products.kodoprivate_company.framework.image"), width: "80%" -%>
+    </div>
+  </div>
+</div>
+
+<%# 企业私有云建设挑战 %>
+<div class="features features-less features-cases features-kodo-private-challenge">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.challenge.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "kodoprivate/icon-challenge-1.png", alt: "高昂成本", width: 150 -%>
+          <div class="caption">
+            <h4>高昂成本</h4>
+            <p>传统存储设备无法按需使用，在数据量激增时，企业的运维成本和扩展成本远超预期</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "kodoprivate/icon-challenge-2.png", alt: "存储壁垒", width: 150 -%>
+          <div class="caption">
+            <h4>存储壁垒</h4>
+            <p>传统的存储方案，数据散落在多种设备之中，无法打破数据孤岛挖掘数据价值</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "kodoprivate/icon-challenge-3.png", alt: "运维复杂", width: 150 -%>
+          <div class="caption">
+            <h4>运维复杂</h4>
+            <p>传统存储运维工作在大规模数据部署环境中行进艰难，在故障情况下数据重建时间缓慢，性能降级明显</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 助力企业搭建私有云 %>
+<div class="features features-less features-kodo-private-new">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.new.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "kodoprivate/icon-new-1.png", alt: "应云而生", width: 150 -%>
+          <div class="caption">
+            <h4>应云而生</h4>
+            <p>七牛为传统企业提供高可靠</p>
+            <p>高可用的企业级混合私有云产品</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="thumbnail">
+          <%= image_tag "kodoprivate/icon-new-2.png", alt: "一站式管理", width: 150 -%>
+          <div class="caption">
+            <h4>一站式管理</h4>
+            <p>为企业定制一站式数据保护策略</p>
+            <p>实现数据生命周期闭环管理</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 企业私有云为什么选七牛 %>
+<div class="features features-less features-cases features-kodo-private-why">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.why.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12 col-new">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4><%= image_tag "kodoprivate/icon-why-1.png", alt: "加速企业 IT 架构革新", width: 40 -%><span>加速企业 IT 架构革新</span></h4>
+            <p>企业 IT 架构“云原生”转型</p>
+            <p>多云平台支持</p>
+            <p>无缝对接公有云</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12 col-new">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4><%= image_tag "kodoprivate/icon-why-2.png", alt: "成熟可靠的存储", width: 40 -%><span>成熟可靠的存储</span></h4>
+            <p>16 个 9 的数据可靠性</p>
+            <p>具备双活及跨地域多中心的服务能力</p>
+            <p>公有云验证的架构和方案</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12 col-new">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4><%= image_tag "kodoprivate/icon-why-3.png", alt: "显著降低成本", width: 40 -%><span>显著降低成本</span></h4>
+            <p>通用硬件，降低硬件成本</p>
+            <p>简便运维，智能监控，降低企业运维成本</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 七牛让企业拥有 %>
+<div class="features features-less features-kodo-private-own">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.own.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.products.kodoprivate_company.own.col").each do |col| -%>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-own">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 120 -%></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= col[:title] -%>
+              </h4>
+              <p><%= col[:desc1] -%></p>
+              <p><%= col[:desc2] -%></p>
+              <p><%= col[:desc3] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 私有云应用场景 %>
+<div class="features features-less features-cases features-kodo-private-scene">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.scene.title") -%></h2>
+    </div>
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+        <% I18n.t("views.products.kodoprivate_company.scene.tabs").each do |tab| -%>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.products.kodoprivate_company.scene.sections").each do |sec| -%>
+          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <%= content_tag :div, image_tag(sec[:image], alt: sec[:title]), class: "col-left" -%>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="col-right">
+                  <h3><%= sec[:title] -%></h3>
+                  <p class="desc"><%= sec[:desc] -%></p>
+                </div>
+              </div>
+            </div>
+          </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 客户案例 %>
+<div class="features features-less features-kodo-private-client">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h2 class="title"><%= I18n.t("views.products.kodoprivate_company.client.title") -%></h2>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-1.png", alt: "凡普金科", title: "凡普金科", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-2.png", alt: "江苏卫视", title: "江苏卫视", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-3.png", alt: "平安银行", title: "平安银行", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-4.png", alt: "人民网", title: "人民网", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-5.png", alt: "中国移动", title: "中国移动", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-6.png", alt: "中国石油", title: "中国石油", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "kodoprivate/client-logo-7.png", alt: "萤石", title: "萤石", width: "100%" -%>
+      </div>
+    </div>
+  </div>
+</div>
