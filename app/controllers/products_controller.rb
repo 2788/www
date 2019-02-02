@@ -113,6 +113,9 @@ class ProductsController < ApplicationController
   def kodoprivate
   end
 
+  def kodoprivate_company
+  end
+
   def qvmfeeds
   end
 
