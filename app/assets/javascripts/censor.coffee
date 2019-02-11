@@ -28,10 +28,14 @@ $(document).ready ->
   $videoRequestView = $('.video-request-container .video-request-view')
   $videoResponseView = $('.video-response-container .video-response-view')
 
-  $imageRequestView.JSONView(imageRequestBody)
-  $imageResponseView.JSONView(defaultImageResponseBody).JSONView('collapse', [3])
-  $videoRequestView.JSONView(videoRequestBody)
-  $videoResponseView.JSONView(defaultVideoResponseBody).JSONView('collapse', [3])
+  if $imageRequestView.length > 0
+    $imageRequestView.JSONView(imageRequestBody)
+  if $imageResponseView.length > 0
+    $imageResponseView.JSONView(defaultImageResponseBody).JSONView('collapse', [3])
+  if $videoRequestView.length > 0
+    $videoRequestView.JSONView(videoRequestBody)
+  if $videoResponseView.length > 0
+    $videoResponseView.JSONView(defaultVideoResponseBody).JSONView('collapse', [3])
 
   # 图片审核
   imgAudit = (path, type) ->
