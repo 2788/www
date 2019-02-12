@@ -157,9 +157,53 @@ label {
   }
   .modal-body {
     padding: 25px;
+    .feedback-alert-success,
+    .feedback-alert-error {
+      text-align: center;
+      display: none;
+      .title-feedback {
+        margin-top: 0.30rem;
+      }
+      .desc-feedback {
+        color: #A0A0A0;
+        font-size: 0.18rem;
+      }
+    }
+    .feedback-alert-link {
+      text-align: center;
+      margin-top: 0.30rem;
+      display: none;
+      .feedback-link {
+        text-decoration: underline;
+      }
+    }
+    .valid-bottom-border {
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #C8C8C8;
+    }
+    .valid-up-border {
+      padding-top: 0.24rem;
+    }
     .tips {
       padding: 0 0 20px 0;
-      color: #07A0DF;
+      color: #A0A0A0;
+      .tips-dark {
+        color: #000;
+      }
+      &.bottom-tips {
+        padding: 30px 0 0 0;
+      }
+      &.p-b-0 {
+        padding-bottom: 0;
+      }
+    }
+    .required-mark {
+      position: relative;
+      top: -4px;
+      margin-right: 4px;
+    }
+    select {
+      text-indent: 4px;
     }
   }
   .actions {
@@ -167,6 +211,13 @@ label {
     text-align: center;
     .btn {
       min-width: 80px;
+      &.submit-btn {
+        padding: 10px 0;
+        min-width: 180px;
+        border: 1px solid #4A90E2;
+        border-radius: 2px;
+        background-color: #4A90E2;
+      }
     }
   }
   label i {
