@@ -408,6 +408,9 @@ $(document).ready ->
         # free event page
         $('.features-free-product .free-receive-unsignin').addClass 'hidden'
         $('.features-free-product .free-receive-signin').removeClass 'hidden'
+        # feedback alert link
+        # 在登录成功状态下变更文案和跳转链接
+        $('#feedback-alert-link').html '<a class="feedback-link" target="_blank" title="邀请好友 乐享千元好礼" href="invite?entry=feedback-form">邀请好友 乐享千元好礼 &gt;&gt;</a>'
     error: (err) ->
       # error
       # login banner
