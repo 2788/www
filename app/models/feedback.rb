@@ -17,7 +17,7 @@ class Feedback
   validates_format_of :email, :with => /\A(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))\z/
   validates :content, length: { maximum: 255 }
   validates_format_of :phone, :with => /\A((\d{11})|^((\+86)|(86))?\d{11}$|^((\d{7,8})|(\d{4}|\d{3})-?(\d{7,8})|(\d{4}|\d{3})-?(\d{7,8})-?(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-?(\d{4}|\d{3}|\d{2}|\d{1}))$)\z/
-  # 表单改版，姓名改为非必填，保存时不做校验
-  # https://jira.qiniu.io/browse/BO-6391
-  validates :province, presence: true
+  # 表单改版，姓名改回必填
+  # https://jira.qiniu.io/browse/BO-6428
+  validates :province, :name, presence: true
 end

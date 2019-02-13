@@ -261,6 +261,7 @@
     <!-- Modal -->
     <%# 表单改版 %>
     <%# https://jira.qiniu.io/browse/BO-6391 %>
+    <%# https://jira.qiniu.io/browse/BO-6428 %>
     <div class="modal fade alert-modal-css form-wrapper" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="feedback-modal-label" data-keyboard="false" data-backdrop="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -320,9 +321,9 @@
               </div>
 
               <div class="form-group">
-                <label for="feedback-name" class="col-sm-2 control-label"><%= I18n.t("views.welcome.helper.name") %></label>
+                <label for="feedback-name" class="col-sm-2 control-label"><small class="text-danger required-mark">*</small><%= I18n.t("views.welcome.helper.name") %></label>
                 <div class="col-sm-10">
-                  <%= f.text_field :name, class:"form-control", placeholder: I18n.t("views.welcome.helper.placeholder.name"), id:"feedback-name" %>
+                  <%= f.text_field :name, class:"form-control", placeholder: I18n.t("views.welcome.helper.placeholder.name"), id:"feedback-name", validate: true %>
                   <div class="div-error">
                     <label for="" class="error-label"><%= I18n.t("views.welcome.helper.tips.name") %></label>
                   </div>
