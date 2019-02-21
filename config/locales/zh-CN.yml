@@ -2644,27 +2644,11 @@ zh-CN:
               actions:
               links:
                 - group:
-                  - title: "图片审核"
+                  - title: "图片内容审核"
                     target: "https://developer.qiniu.com/dora/manual/4252/image-review"
                     class: "link-document"
-                  - title: "图片鉴黄"
-                    target: "https://developer.qiniu.com/dora/manual/3701/ai-pulp"
-                    class: "link-document"
-                  - title: "图片鉴暴恐"
-                    target: "https://developer.qiniu.com/dora/manual/3918/terror"
-                    class: "link-document"
-                  - title: "图片政治人物识别"
-                    target: "https://developer.qiniu.com/dora/manual/3922/politician"
-                    class: "link-document"
-                - group:
-                  - title: "视频鉴黄"
+                  - title: "视频内容审核"
                     target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
-                    class: "link-document"
-                  - title: "视频鉴暴恐"
-                    target: "https://developer.qiniu.com/dora/manual/4480/video-terror"
-                    class: "link-document"
-                  - title: "视频政治人物识别"
-                    target: "https://developer.qiniu.com/dora/manual/4481/video-politician"
                     class: "link-document"
             - title: 物体分割
               class: "col-sm-6 col-padding col-content-middle"
