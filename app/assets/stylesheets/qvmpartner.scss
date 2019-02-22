@@ -36,11 +36,11 @@
   .step-ul li p { margin: 0.20rem 10px 0 10px; font-size: 0.16rem; color:#666; }
   .step-ul li:hover { background-color:#AAD6FF; }
   .features { padding: 0.68rem 0 0.50rem; }
-  .footer { background-color:#51A5FD; padding: 0.30rem 0 0.30rem; vertical-align: center; display: block; height: 150px; }
-  .footer img { float: left; width: 100px; margin-left: 50px; margin-right: 20px; }
+  .footer { background-color:#51A5FD; padding: 0; display: block; height: 250px; }
+  .footer img { float: left; height: 200px; margin-top: 25px; margin-left: 50px; margin-right: 20px; }
   .rule-item h4 { font-size: 0.14rem;	padding-top: 10px; padding-bottom: 10px; font-family: inherit; font-weight: 500; line-height: 0.20rem; }
   .rule-item p { margin: 0; padding: 0; color:#666; line-height: 0.30rem; }
-  .footer p { margin-top: 25px; color:#FFF; font-size: 0.18rem; line-height: 0.30rem; }
+  .footer p { margin-top: 75px; color:#FFF; font-size: 0.30rem; line-height: 0.50rem; }
   .features-qvmpartner-step {
     background: image-url("qvmpartner/image-step-bg.jpg") no-repeat center center;
     background-size: cover;
@@ -76,5 +76,8 @@
     .footer img { margin-left: 0px; margin-right: 10px; }
     .features { padding: 0.20rem 0 0.20rem; }
     .bottom-join-btn { width: 120px; }
+  }
+  @media screen and (max-width: 768px) {
+    .footer p { margin-top: 83px; font-size: 0.24rem; line-height: 0.60rem; }
   }
 }
