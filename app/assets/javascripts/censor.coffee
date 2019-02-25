@@ -28,6 +28,17 @@ $(document).ready ->
   $videoRequestView = $('.video-request-container .video-request-view')
   $videoResponseView = $('.video-response-container .video-response-view')
 
+  $censorProtectContainer = $('.features-censor-protect')
+  $platformNumberContainer = $('.features-censor-protect #censor-protect-platform')
+  $totalVideoNumberContainer = $('.features-censor-protect #censor-total-video')
+  $totalImageNumberContainer = $('.features-censor-protect #censor-total-image')
+  $totalTextNumberContainer = $('.features-censor-protect #censor-total-text')
+  $forbidSexyNumberContainer = $('.features-censor-protect #censor-forbid-sexy')
+  $forbidViolenceNumberContainer = $('.features-censor-protect #censor-forbid-violence')
+  $forbidPoliticalNumberContainer = $('.features-censor-protect #censor-forbid-political')
+  $forbidVulgarNumberContainer = $('.features-censor-protect #censor-forbid-vulgar')
+  $forbidADSNumberContainer = $('.features-censor-protect #censor-forbid-ads')
+
   if $imageRequestView.length > 0
     $imageRequestView.JSONView(imageRequestBody)
   if $imageResponseView.length > 0
@@ -36,6 +47,131 @@ $(document).ready ->
     $videoRequestView.JSONView(videoRequestBody)
   if $videoResponseView.length > 0
     $videoResponseView.JSONView(defaultVideoResponseBody).JSONView('collapse', [3])
+
+  platformAnimNumber = null
+  totalVideoAnimNumber = null
+  totalImageAnimNumber = null
+  totalTextAnimNumber = null
+  forbidSexyAnimNumber = null
+  forbidViolenceAnimNumber = null
+  forbidPoliticalAnimNumber = null
+  forbidVulgarAnimNumber = null
+  forbidADSAnimNumber = null
+
+  # 部署方式部分 slider
+  $('.censor-deploy-slider').slick
+    dots: true
+    autoplay: true
+    autoplaySpeed: 4000
+    arrows: false
+    slidesToShow: 1
+    slidesToScroll: 1
+
+  getCensorQuantityData = () ->
+    $.ajax
+      method: 'GET',
+      url: '/censor_quantity_data',
+      success: (res) ->
+        if res && res.is_success
+          startOrUpdateAnimNumber res.data
+          # 每隔 10 秒获取一次审核数量数据
+          timeOut = setTimeout ->
+            getCensorQuantityData()
+            clearTimeout(timeOut)
+          , 10000
+        else
+          startOrUpdateAnimNumber null
+      error: () ->
+        startOrUpdateAnimNumber null
+
+  if $censorProtectContainer.length > 0
+    getCensorQuantityData()
+
+  startOrUpdateAnimNumber = (data) ->
+    if data
+      # 保护平台数
+      if platformAnimNumber
+        platformAnimNumber.update data.protect_platform
+      else
+        platformAnimNumber = new CountUp('censor-protect-platform', 0, data.protect_platform)
+        if !platformAnimNumber.error
+          platformAnimNumber.start()
+      # 今日审核总量 - 视频
+      if totalVideoAnimNumber
+        totalVideoAnimNumber.update data.total_video
+      else
+        totalVideoAnimNumber = new CountUp('censor-total-video', 0, data.total_video)
+        if !totalVideoAnimNumber.error
+          totalVideoAnimNumber.start()
+      # 今日审核总量 - 图片
+      if totalImageAnimNumber
+        totalImageAnimNumber.update data.total_image
+      else
+        totalImageAnimNumber = new CountUp('censor-total-image', 0, data.total_image)
+        if !totalImageAnimNumber.error
+          totalImageAnimNumber.start()
+      # 今日审核总量 - 文本
+      if totalTextAnimNumber
+        totalTextAnimNumber.update data.total_text
+      else
+        totalTextAnimNumber = new CountUp('censor-total-text', 0, data.total_text)
+        if !totalTextAnimNumber.error
+          totalTextAnimNumber.start()
+      # 今日已封禁违规内容 - 色情
+      if forbidSexyAnimNumber
+        forbidSexyAnimNumber.update data.forbid_sexy
+      else
+        forbidSexyAnimNumber = new CountUp('censor-forbid-sexy', 0, data.forbid_sexy)
+        if !forbidSexyAnimNumber.error
+          forbidSexyAnimNumber.start()
+      # 今日已封禁违规内容 - 暴恐
+      if forbidViolenceAnimNumber
+        forbidViolenceAnimNumber.update data.forbid_violence
+      else
+        forbidViolenceAnimNumber = new CountUp('censor-forbid-violence', 0, data.forbid_violence)
+        if !forbidViolenceAnimNumber.error
+          forbidViolenceAnimNumber.start()
+      # 今日已封禁违规内容 - 政治敏感
+      if forbidPoliticalAnimNumber
+        forbidPoliticalAnimNumber.update data.forbid_political
+      else
+        forbidPoliticalAnimNumber = new CountUp('censor-forbid-political', 0, data.forbid_political)
+        if !forbidPoliticalAnimNumber.error
+          forbidPoliticalAnimNumber.start()
+      # 今日已封禁违规内容 - 低俗
+      if forbidVulgarAnimNumber
+        forbidVulgarAnimNumber.update data.forbid_vulgar
+      else
+        forbidVulgarAnimNumber = new CountUp('censor-forbid-vulgar', 0, data.forbid_vulgar)
+        if !forbidVulgarAnimNumber.error
+          forbidVulgarAnimNumber.start()
+      if forbidADSAnimNumber
+        forbidADSAnimNumber.update data.forbid_ads
+      else
+        forbidADSAnimNumber = new CountUp('censor-forbid-ads', 0, data.forbid_ads)
+        if !forbidADSAnimNumber.error
+          forbidADSAnimNumber.start()
+    else
+      # 所有数字重置为 0
+      $platformNumberContainer.html '0'
+      $totalVideoNumberContainer.html '0'
+      $totalImageNumberContainer.html '0'
+      $totalTextNumberContainer.html '0'
+      $forbidSexyNumberContainer.html '0'
+      $forbidViolenceNumberContainer.html '0'
+      $forbidPoliticalNumberContainer.html '0'
+      $forbidVulgarNumberContainer.html '0'
+      $forbidADSNumberContainer.html '0'
+      # CountUp 对象重置为 null
+      platformAnimNumber = null
+      totalVideoAnimNumber = null
+      totalImageAnimNumber = null
+      totalTextAnimNumber = null
+      forbidSexyAnimNumber = null
+      forbidViolenceAnimNumber = null
+      forbidPoliticalAnimNumber = null
+      forbidVulgarAnimNumber = null
+      forbidADSAnimNumber = null
 
   # 图片审核
   imgAudit = (path, type) ->

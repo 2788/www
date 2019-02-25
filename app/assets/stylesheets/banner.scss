@@ -549,18 +549,24 @@
     background-image: image-url("banner/banner-censor-index.jpg");
 
     .middle-container {
-      top: 45%;
+      top: 48%;
       text-align: center;
-      .censor-image {
-        width: 6.40rem;
-        position: relative;
-        left: calc(50% - 3.20rem);
+
+      .banner-desc {
+        h1 {
+          margin-top: 0.30rem;
+          margin-bottom: 0.20rem;
+          font-size: 0.50rem;
+        }
+
+        p {
+          margin: 0.30rem 0 0 0;
+          font-size: 0.20rem;
+        }
       }
+
       .btn-banner {
-        width: 1.40rem;
-        position: absolute;
-        bottom: 1.00rem;
-        left: calc(50% - 0.60rem);
+        margin-top: 0.30rem;
       }
     }
   }
@@ -703,6 +709,7 @@
           .icon-insight-flag {
             position: absolute;
             top: 0.20rem;
+            margin-left: 10px;
             display: inline-block;
           }
         }
@@ -1146,16 +1153,7 @@
 
     &.hero-censor-index {
       .middle-container {
-        .censor-image {
-          width: 5.40rem;
-          left: calc(50% - 2.70rem);
-        }
-        .btn-banner {
-          width: 1.40rem;
-          position: absolute;
-          bottom: 0.80rem;
-          left: calc(50% - 0.60rem);
-        }
+        top: 54%;
       }
     }
 

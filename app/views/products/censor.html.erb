@@ -4,14 +4,14 @@
       <div class="row">
         <div class="col-xs-10 col-sm-10">
           <h1>「 明瞳 」内容安全</h1>
-          <h3><%= I18n.t("views.products.censor.subtitle") -%></h3>
-          <p><%= I18n.t("views.products.censor.describe1") -%></p>
+          <h3><span class="white-content">全维</span>审核 无忧运营</h3>
+          <p>七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物<span class="white-content">、低俗、广告等违规内容</span></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "censor-product-use-btn" -%>
-            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
-            <%= link_to "产品接入文档", "https://developer.qiniu.com/censor/manual/4829/censor-introduction", target: "_blank", class: "product-link underline" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow btn-gray m-r m-b-xs", id: "censor-product-use-btn" -%>
+            <%= link_to "产品咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
+            <%= link_to "接入文档", "https://developer.qiniu.com/censor/api/5588/image-censor", target: "_blank", class: "product-link underline" -%>
           </div>
-          <p><%= I18n.t("views.products.censor.describe2") -%></p>
+          <p class="white-content <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">新用户可享 24 万次免费额度，更有<%= link_to "超值套餐包", "https://developer.qiniu.com/censor/manual/4835/censor-plus-manual", target: "_blank", class: "product-link underline" -%>可供选择</p>
         </div>
       </div>
     </div>
@@ -31,8 +31,11 @@
   </div>
 </div>
 
+<%# censor 页面改版，屏蔽流程图 %>
+<%# https://jira.qiniu.io/browse/BO-6459 %>
+<% if false -%>
 <%# process tab %>
-<div class="features features-censor-pro tab-content-process">
+<div class="features features-censor-pro">
   <div class="container censor-pro-container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.process.title") -%></h2>
@@ -42,9 +45,102 @@
     </div>
   </div>
 </div>
+<% end -%>
+
+<%# protect tab %>
+<div class="features features-censor-protect tab-content-protect">
+  <div class="container">
+      <div class="intro">
+        <h2 class="title"><%= I18n.t("views.products.censor.protect.title") -%></h2>
+      </div>
+
+      <div class="row protect-row">
+        <div class="col-md-4 col-sm-4 col-xs-12 protect-platform-col">
+          <%= image_tag I18n.t("views.products.censor.protect.platformImage"), alt: I18n.t("views.products.censor.protect.title"), title: I18n.t("views.products.censor.protect.title"), class: "protect-platform-image", width: "100%" -%>
+          <div class="protect-platform-content">
+            <p>保护平台数</p>
+            <h1 id="censor-protect-platform">0</h1>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12 ">
+          <table border="0" cellpadding="0" cellspacing="0" class="censor-protect-table">
+            <tbody>
+              <tr>
+                <th class="head-image"><%= image_tag "censor/icon-protect-shenhe.jpg", alt: "今日审核总量", title: "今日审核总量", height: 60 -%></th>
+                <th class="head-gray">今日审核总量</th>
+                <th class="head-image"><%= image_tag "censor/icon-protect-weigui.jpg", alt: "今日已封禁违规内容", title: "今日已封禁违规内容", height: 60 -%></th>
+                <th class="head-gray">今日已封禁违规内容</th>
+              </tr>
+              <tr>
+                <th class="body-label">视频&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-total-video">0</th>
+                <th class="body-label">色情&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-forbid-sexy">0</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th class="body-label">暴恐&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-forbid-violence">0</th>
+              </tr>
+              <tr>
+                <th class="body-label">图片&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-total-image">0</th>
+                <th class="body-label">政治敏感&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-forbid-political">0</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th class="body-label">低俗&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-forbid-vulgar">0</th>
+              </tr>
+              <tr>
+                <th class="body-label">文本&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-total-text">0</th>
+                <th class="body-label">广告&nbsp;&nbsp;</th>
+                <th class="body-number" id="censor-forbid-ads">0</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+
+<%# support tab %>
+<div class="features features-less features-cases features-censor-support">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.censor.support.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.products.censor.support.cols").each do |col| -%>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="thumbnail">
+            <%= image_tag col[:image], alt: col[:title], width: 100 -%>
+            <div class="caption">
+              <h4><%= col[:title] -%></h4>
+              <p><%= col[:desc] -%></p>
+              <% if col[:isOnline] -%>
+              <%# 已上线 %>
+              <%= link_to "接入文档", col[:link], class: "jump-link", target: "_blank" -%>
+              <% else -%>
+              <%# 未上线 %>
+              <p class="coming-soon">即将上线</p>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
 
 <%# special tab %>
-<div class="features features-censor-special tab-content-special">
+<div class="features features-censor-special">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.special.title") -%></h2>
@@ -63,6 +159,46 @@
                 <p><%= item -%></p>
               <% end -%>
             </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# experience tab %>
+<div class="features features-less features-cases features-censor-experience">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.censor.experience.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.products.censor.experience.subtitle") -%></p>
+    </div>
+    <div class="text-center">
+      <%= image_tag I18n.t("views.products.censor.experience.image"), width: "80%", alt: I18n.t("views.products.censor.experience.title"), title: I18n.t("views.products.censor.experience.title") -%>
+    </div>
+  </div>
+</div>
+
+<%# deploy tab %>
+<div class="features features-censor-deploy">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.censor.deploy.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.products.censor.deploy.subtitle") -%></p>
+    </div>
+
+    <div class="censor-deploy-slider">
+      <% I18n.t("views.products.censor.deploy.sliders").each do |slider| -%>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <%= image_tag slider[:image], alt: I18n.t("views.products.censor.deploy.title"), title: I18n.t("views.products.censor.deploy.title") -%>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 deploy-btn-container">
+            <% if slider[:type] == "link" -%>
+              <%= link_to slider[:btnText], slider[:link], target: "_blank", class: "btn btn-lg btn-primary" -%>
+            <% elsif slider[:type] == "form" -%>
+              <%= link_to slider[:btnText], "", target: "", class: "btn btn-lg btn-primary", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            <% end -%>
           </div>
         </div>
       <% end -%>
@@ -163,4 +299,13 @@
       </div>
     </div>
   </div>
+</div>
+
+<%# bottom banner %>
+<div class="censor-bottom-banner">
+  <p>
+    <%= I18n.t("views.products.censor.bottomBanner.desc") -%>
+    &nbsp;&nbsp;
+    <%= link_to "立即开通", "", class: "btn btn-lg btn-hollow", target: "", data: { toggle: "modal", target: "#feedback-modal"} -%>
+  </p>
 </div>

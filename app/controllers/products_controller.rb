@@ -370,6 +370,52 @@ class ProductsController < ApplicationController
     end
   end
 
+  # 获取 atlab 审核数量数据
+  def censor_quantity_data
+    # atlab 成立的日子
+    date_atlab_found = Time.local(2017, 4, 1)
+    current_time = Time.now
+    begin_of_today = Time.local(current_time.year, current_time.month, current_time.day)
+
+    diff_days = (begin_of_today.to_i - date_atlab_found.to_i) / (24 * 60 * 60)
+    diff_hours = current_time.hour
+    diff_milli_seconds = (current_time.to_i - begin_of_today.to_i) * 1000
+
+    # 23 个节点把一天分为 24 个小时，所以这里除以的是 23
+    increase_value_average = ((diff_days * 1000) / 23).to_i
+
+    # 保护平台数
+    protect_platform = ((1000 + diff_days.to_i) * 0.72).to_i
+
+    # 今日审核总量
+    total_video = ((diff_milli_seconds * 0.73) + (diff_hours * increase_value_average) + rand(701)).to_i
+    total_image = ((diff_milli_seconds * 0.75) + (diff_hours * increase_value_average) + rand(701)).to_i
+    total_text = ((diff_milli_seconds * 0.71) + (diff_hours * increase_value_average) + rand(701)).to_i
+
+    # 今日已封禁违规内容
+    forbid_sexy = ((diff_milli_seconds * 0.55) + (diff_hours * increase_value_average) + rand(551)).to_i
+    forbid_violence = ((diff_milli_seconds * 0.15) + (diff_hours * increase_value_average) + rand(151)).to_i
+    forbid_political = ((diff_milli_seconds * 0.14) + (diff_hours * increase_value_average) + rand(141)).to_i
+    forbid_vulgar = ((diff_milli_seconds * 0.13) + (diff_hours * increase_value_average) + rand(131)).to_i
+    forbid_ads = ((diff_milli_seconds * 0.12) + (diff_hours * increase_value_average) + rand(121)).to_i
+
+    render json: {
+      "is_success": true,
+      "data": {
+        "protect_platform": protect_platform,
+        "total_video": total_video,
+        "total_image": total_image,
+        "total_text": total_text,
+        "forbid_sexy": forbid_sexy,
+        "forbid_violence": forbid_violence,
+        "forbid_political": forbid_political,
+        "forbid_vulgar": forbid_vulgar,
+        "forbid_ads": forbid_ads
+      }
+    }
+    return
+  end
+
   # POST /qvm/user/action
   # 上报QVM相关用户行为
   def report_user_action
