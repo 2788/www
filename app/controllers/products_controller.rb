@@ -379,25 +379,27 @@ class ProductsController < ApplicationController
 
     diff_days = (begin_of_today.to_i - date_atlab_found.to_i) / (24 * 60 * 60)
     diff_hours = current_time.hour
-    diff_milli_seconds = (current_time.to_i - begin_of_today.to_i) * 1000
+    diff_seconds = current_time.to_i - begin_of_today.to_i
+    diff_milli_seconds = diff_seconds * 1000
 
     # 23 个节点把一天分为 24 个小时，所以这里除以的是 23
-    increase_value_average = ((diff_days * 1000) / 23).to_i
+    increase_value_average_milli = ((diff_days * 1000) / 23).to_i
+    increase_value_average = (diff_days / 23).to_i
 
     # 保护平台数
     protect_platform = ((1000 + diff_days.to_i) * 0.72).to_i
 
     # 今日审核总量
-    total_video = ((diff_milli_seconds * 0.73) + (diff_hours * increase_value_average) + rand(701)).to_i
-    total_image = ((diff_milli_seconds * 0.75) + (diff_hours * increase_value_average) + rand(701)).to_i
-    total_text = ((diff_milli_seconds * 0.71) + (diff_hours * increase_value_average) + rand(701)).to_i
+    total_video = ((diff_milli_seconds * 0.75) + (diff_hours * increase_value_average_milli) + rand(751)).to_i
+    total_image = ((diff_milli_seconds * 0.85) + (diff_hours * increase_value_average_milli) + rand(851)).to_i
+    total_text = ((diff_milli_seconds * 0.73) + (diff_hours * increase_value_average_milli) + rand(731)).to_i
 
     # 今日已封禁违规内容
-    forbid_sexy = ((diff_milli_seconds * 0.55) + (diff_hours * increase_value_average) + rand(551)).to_i
-    forbid_violence = ((diff_milli_seconds * 0.15) + (diff_hours * increase_value_average) + rand(151)).to_i
-    forbid_political = ((diff_milli_seconds * 0.14) + (diff_hours * increase_value_average) + rand(141)).to_i
-    forbid_vulgar = ((diff_milli_seconds * 0.13) + (diff_hours * increase_value_average) + rand(131)).to_i
-    forbid_ads = ((diff_milli_seconds * 0.12) + (diff_hours * increase_value_average) + rand(121)).to_i
+    forbid_sexy = ((diff_seconds * 0.65) + (diff_hours * increase_value_average)).to_i
+    forbid_violence = ((diff_seconds * 0.18) + (diff_hours * increase_value_average)).to_i
+    forbid_political = ((diff_seconds * 0.15) + (diff_hours * increase_value_average)).to_i
+    forbid_vulgar = ((diff_seconds * 0.14) + (diff_hours * increase_value_average)).to_i
+    forbid_ads = ((diff_seconds * 0.13) + (diff_hours * increase_value_average)).to_i
 
     render json: {
       "is_success": true,
