@@ -169,7 +169,7 @@ class ProductsController < ApplicationController
         uri: ''
       },
       params: {
-        scenes: ['pulp', 'terror', 'politician']
+        scenes: ['pulp', 'terror', 'politician', 'ads']
       }
     }
 
@@ -242,7 +242,7 @@ class ProductsController < ApplicationController
         uri: ''
       },
       params: {
-        scenes: ['pulp', 'terror', 'politician']
+        scenes: ['pulp', 'terror', 'politician', 'ads']
       }
     }
 

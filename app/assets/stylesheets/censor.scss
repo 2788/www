@@ -43,10 +43,6 @@
       }
     }
 
-    .white-content {
-      color: #FFF;
-    }
-
     .btn-gray {
       border-color: #D3D3D3;
       color: #D3D3D3;
@@ -225,8 +221,12 @@
 .features-censor-deploy {
   padding-bottom: 0;
 
+  .intro {
+    margin-bottom: 0.20rem;
+  }
+
   .censor-deploy-slider {
-    height: 6.80rem;
+    height: 7.20rem;
     margin-bottom: 0;
 
     .slick-list {
@@ -236,6 +236,10 @@
     .row {
       margin-left: 0;
       margin-right: 0;
+
+      .desc {
+        margin-bottom: 0.20rem;
+      }
     }
 
     img {
@@ -246,7 +250,7 @@
     .deploy-btn-container {
       padding-left: 0;
       padding-right: 0;
-      bottom: -0.80rem;
+      bottom: -0.60rem;
       text-align: center;
 
       .btn {
@@ -264,12 +268,20 @@
     }
 
     .slick-dots {
-      bottom: 1.20rem;
+      bottom: 1.30rem;
       margin: 0;
 
-      li.slick-active button:before,
-      li button:before {
-        color: #557CEC;
+      li {
+        margin: 0 10px;
+
+        button:before {
+          font-size: 16px;
+          color: #557CEC;
+        }
+
+        &.slick-active button:before {
+          color: #557CEC;
+        }
       }
     }
   }
@@ -582,7 +594,7 @@
 
   .features-censor-deploy {
     .censor-deploy-slider {
-      height: 5.20rem;
+      height: 5.60rem;
 
       img {
         height: 3.40rem;

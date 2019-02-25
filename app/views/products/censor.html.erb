@@ -4,14 +4,14 @@
       <div class="row">
         <div class="col-xs-10 col-sm-10">
           <h1>「 明瞳 」内容安全</h1>
-          <h3><span class="white-content">全维</span>审核 无忧运营</h3>
-          <p>七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物<span class="white-content">、低俗、广告等违规内容</span></p>
+          <h3>全维审核 无忧运营</h3>
+          <p>七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物、低俗、广告等违规内容</p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow btn-gray m-r m-b-xs", id: "censor-product-use-btn" -%>
-            <%= link_to "产品咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
+            <%= link_to "产品咨询", "", target: "", class: "btn btn-lg btn-hollow btn-gray m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
             <%= link_to "接入文档", "https://developer.qiniu.com/censor/api/5588/image-censor", target: "_blank", class: "product-link underline" -%>
           </div>
-          <p class="white-content <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">新用户可享 24 万次免费额度，更有<%= link_to "超值套餐包", "https://developer.qiniu.com/censor/manual/4835/censor-plus-manual", target: "_blank", class: "product-link underline" -%>可供选择</p>
+          <p class="<%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">新用户可享 24 万次免费额度，更有<%= link_to "超值套餐包", "https://developer.qiniu.com/censor/manual/4835/censor-plus-manual", target: "_blank", class: "product-link underline" -%>可供选择</p>
         </div>
       </div>
     </div>
@@ -66,10 +66,10 @@
           <table border="0" cellpadding="0" cellspacing="0" class="censor-protect-table">
             <tbody>
               <tr>
-                <th class="head-image"><%= image_tag "censor/icon-protect-shenhe.jpg", alt: "今日审核总量", title: "今日审核总量", height: 60 -%></th>
-                <th class="head-gray">今日审核总量</th>
-                <th class="head-image"><%= image_tag "censor/icon-protect-weigui.jpg", alt: "今日已封禁违规内容", title: "今日已封禁违规内容", height: 60 -%></th>
-                <th class="head-gray">今日已封禁违规内容</th>
+                <th class="head-image" width="18%"><%= image_tag "censor/icon-protect-shenhe.jpg", alt: "今日审核总量", title: "今日审核总量", height: 60 -%></th>
+                <th class="head-gray" width="32%">今日审核总量</th>
+                <th class="head-image" width="18%"><%= image_tag "censor/icon-protect-weigui.jpg", alt: "今日已封禁违规内容", title: "今日已封禁违规内容", height: 60 -%></th>
+                <th class="head-gray" width="32%">今日已封禁违规内容</th>
               </tr>
               <tr>
                 <th class="body-label">视频&nbsp;&nbsp;</th>
@@ -184,13 +184,13 @@
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.deploy.title") -%></h2>
-      <p class="desc"><%= I18n.t("views.products.censor.deploy.subtitle") -%></p>
     </div>
 
     <div class="censor-deploy-slider">
       <% I18n.t("views.products.censor.deploy.sliders").each do |slider| -%>
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <p class="desc"><%= slider[:desc] -%></p>
             <%= image_tag slider[:image], alt: I18n.t("views.products.censor.deploy.title"), title: I18n.t("views.products.censor.deploy.title") -%>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 deploy-btn-container">
@@ -306,6 +306,6 @@
   <p>
     <%= I18n.t("views.products.censor.bottomBanner.desc") -%>
     &nbsp;&nbsp;
-    <%= link_to "立即开通", "", class: "btn btn-lg btn-hollow", target: "", data: { toggle: "modal", target: "#feedback-modal"} -%>
+    <%= link_to "立即开启", "https://portal.qiniu.com/censor", class: "btn btn-lg btn-hollow", target: "_blank" -%>
   </p>
 </div>

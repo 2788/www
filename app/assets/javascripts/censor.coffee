@@ -19,9 +19,9 @@ $(document).ready ->
   $videoPass = $('.video-pass')
 
   imageRequestBody = {'Method': 'POST /v3/image/censor HTTP/1.1', 'Host': 'ai.qiniuapi.com', 'Content-Type': 'application/json', 'Authorization': 'Qiniu <AccessKey>:<Sign>', 'body': {'data': {'uri': 'https://mars-assets.qnssl.com/Flm400wajEHohD2sFZgyLpc7fbCD'}, 'params': {'scenes': ['pulp', 'terror', 'politician']}}}
-  defaultImageResponseBody = {'suggestion': 'review', 'scenes': {'politician': {'suggestion': 'pass'}, 'pulp': {'suggestion': 'review', 'details': [{'suggestion': 'review', 'label': 'sexy', 'score': 0.63456}]}, 'terror': {'suggestion': 'pass', 'details': [{'suggestion': 'pass', 'label': 'normal', 'score': 0.931}]}}}
+  defaultImageResponseBody = {'suggestion': 'review', 'scenes': {'ads': {'suggestion': 'pass'}, 'politician': {'suggestion': 'pass'}, 'pulp': {'suggestion': 'review', 'details': [{'suggestion': 'review', 'label': 'sexy', 'score': 0.63456}]}, 'terror': {'suggestion': 'pass', 'details': [{'suggestion': 'pass', 'label': 'normal', 'score': 0.931}]}}}
   videoRequestBody = {'Method': 'POST /v3/video/censor HTTP/1.1', 'Host': 'ai.qiniuapi.com', 'Content-Type': 'application/json', 'Authorization': 'Qiniu <AccessKey>:<Sign>', 'body': {'data': {'uri': 'https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk'}, 'params': {'scenes': ['pulp', 'terror', 'politician']}}}
-  defaultVideoResponseBody = {'suggestion': 'review', 'scenes': {'politician': {'cuts': [{'offset': 500, 'suggestion': 'pass'}, {'offset': 5505, 'suggestion': 'pass'}, {'offset': 10510, 'suggestion': 'pass'}], 'suggestion': 'pass'}, 'pulp': {'cuts': [{'details': [{'label': 'normal', 'score': 0.74941, 'suggestion': 'pass'}], 'offset': 500, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.64107, 'suggestion': 'pass'}], 'offset': 5505, 'suggestion': 'pass'}, {'details': [{'label': 'sexy', 'score': 0.6379033, 'suggestion': 'review'}], 'offset': 10510, 'suggestion': 'review'}], 'suggestion': 'review'}, 'terror': {'cuts': [{'details': [{'label': 'normal', 'score': 0.87464666, 'suggestion': 'pass'}], 'offset': 500, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.8754, 'suggestion': 'pass'}], 'offset': 5505, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.93217665, 'suggestion': 'pass'}], 'offset': 10510, 'suggestion': 'pass'}], 'suggestion': 'pass'}}}
+  defaultVideoResponseBody = {'suggestion': 'review', 'scenes': {'ads': {'cuts': [{"offset": 500, "suggestion": "pass"}, {"offset": 5505, "suggestion": "pass"}, {"offset": 10510, "suggestion": "pass"}], 'suggestion': 'pass'}, 'politician': {'cuts': [{'offset': 500, 'suggestion': 'pass'}, {'offset': 5505, 'suggestion': 'pass'}, {'offset': 10510, 'suggestion': 'pass'}], 'suggestion': 'pass'}, 'pulp': {'cuts': [{'details': [{'label': 'normal', 'score': 0.74941, 'suggestion': 'pass'}], 'offset': 500, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.64107, 'suggestion': 'pass'}], 'offset': 5505, 'suggestion': 'pass'}, {'details': [{'label': 'sexy', 'score': 0.6379033, 'suggestion': 'review'}], 'offset': 10510, 'suggestion': 'review'}], 'suggestion': 'review'}, 'terror': {'cuts': [{'details': [{'label': 'normal', 'score': 0.87464666, 'suggestion': 'pass'}], 'offset': 500, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.8754, 'suggestion': 'pass'}], 'offset': 5505, 'suggestion': 'pass'}, {'details': [{'label': 'normal', 'score': 0.93217665, 'suggestion': 'pass'}], 'offset': 10510, 'suggestion': 'pass'}], 'suggestion': 'pass'}}}
 
   $imageRequestView = $('.image-request-container .image-request-view')
   $imageResponseView = $('.image-response-container .image-response-view')
@@ -330,6 +330,13 @@ $(document).ready ->
           else if info.suggestion == 'block'
             $('#image-politician').addClass('text-error')
             $('#image-politician').find('.result-word').html('违规')
+        when 'ads'
+          if info.suggestion == 'review'
+            $('#image-ads').addClass('text-error')
+            $('#image-ads').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#image-ads').addClass('text-error')
+            $('#image-ads').find('.result-word').html('违规')
     $imageResultContainer.show()
     $imageResponseView.JSONView(aduitRes).JSONView('collapse', [3])
 
@@ -378,6 +385,13 @@ $(document).ready ->
           else if info.suggestion == 'block'
             $('#video-politician').addClass('text-error')
             $('#video-politician').find('.result-word').html('违规')
+        when 'ads'
+          if info.suggestion == 'review'
+            $('#video-ads').addClass('text-error')
+            $('#video-ads').find('.result-word').html('疑似')
+          else if info.suggestion == 'block'
+            $('#video-ads').addClass('text-error')
+            $('#video-ads').find('.result-word').html('违规')
     $videoResultContainer.show()
     $videoResponseView.JSONView(aduitRes).JSONView('collapse', [3])
 
