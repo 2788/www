@@ -3649,15 +3649,9 @@ en:
               title: "特殊生产环境"
               desc: "海上油井，加油站，矿场等特殊生产环境具有网络不可靠，环境复杂，数据敏感等特点，视频 AI 边缘分析解决方案可就近部署边缘存储及边缘计算服务，对数据进行本地分拣处理，支持离线运行。"
       censor:
-        subtitle: "双重审核 无忧运营"
-        describe1: "七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物等内容"
-        describe2: "新用户可享 18 万次免费调用额度，另有更多超值套餐可供选择"
         navs:
           - class: "intLink active"
-            href: "#tab-content-process"
-            title: "产品功能"
-          - class: "intLink"
-            href: "#tab-content-special"
+            href: "#tab-content-protect"
             title: "产品优势"
           - class: "intLink"
             href: "#tab-content-demo"
@@ -3674,8 +3668,44 @@ en:
         process:
           title: "产品功能"
           image: "censor/process-image.jpg"
+        protect:
+          title: "明瞳保护平台内容的纯净和安全"
+          platformImage: "censor/image-protect.jpg"
+        support:
+          title: "支持 6 类互联网有害内容审核"
+          cols:
+            - image: "censor/icon-support-seqing.jpg"
+              title: "色情内容审核"
+              desc: "精准识别图片、视频、直播中的涉黄内容，准确率高达 98%。"
+              isOnline: true
+              link: "https://developer.qiniu.com/censor/api/5588/image-censor"
+            - image: "censor/icon-support-baokong.jpg"
+              title: "暴恐内容审核"
+              desc: "支持识别血腥、爆炸、枪支等 10 余种贴合真实场景的暴恐类型。"
+              isOnline: true
+              link: "https://developer.qiniu.com/censor/api/5588/image-censor"
+            - image: "censor/icon-support-zhengzhi.jpg"
+              title: "政治敏感审核"
+              desc: "覆盖 2500+ 政治、敏感人物。第一时间更新，从容应对突发事件。"
+              isOnline: true
+              link: "https://developer.qiniu.com/censor/api/5588/image-censor"
+            - image: "censor/icon-support-eyi.jpg"
+              title: "恶意广告审核"
+              desc: "实时过滤图片、视频中的二维码、QQ 号等恶意广告信息。"
+              isOnline: true
+              link: "https://developer.qiniu.com/censor/api/5588/image-censor"
+            - image: "censor/icon-support-disu.jpg"
+              title: "低俗内容审核"
+              desc: "识别性暗示、恶搞、裸露等，消灭违规擦边球，保障内容合规。"
+              isOnline: true
+              link: "https://developer.qiniu.com/censor/api/5588/image-censor"
+            - image: "censor/icon-support-weifa.jpg"
+              title: "违法违禁审核"
+              desc: "对涉赌、涉毒、违禁药物、贩卖人口等严重违法内容专项审核。"
+              isOnline: false
+              link: ""
         special:
-          title: "产品优势"
+          title: "快速搭建完善审核体系"
           cols:
             - image: "censor/image-special-bg.png"
               title: "零风险"
@@ -3701,10 +3731,30 @@ en:
                 - "审核结果直观可视"
                 - "节省 98% 人力资源"
                 - "节省 80% 综合成本"
+        experience:
+          title: "分秒即用的可视化审核体验"
+          subtitle: "一屏展示全局进程 违规资源直观可视"
+          image: "censor/image-experience.png"
+        deploy:
+          title: "灵活的服务部署方式"
+          subtitle: "一键开启存储空间审核"
+          sliders:
+            - image: "censor/image-deploy-1.jpg"
+              btnText: "立即开启"
+              type: "form"
+              link: ""
+            - image: "censor/image-deploy-2.jpg"
+              btnText: "立即调用"
+              type: "link"
+              link: "https://developer.qiniu.com/censor/api/5588/image-censor"
+            - image: "censor/image-deploy-3.jpg"
+              btnText: "立即购买"
+              type: "form"
+              link: ""
         demo:
-          title: "在线体验"
+          title: "在此体验丰富功能"
         scene:
-          title: "应用场景"
+          title: "更贴合您的使用场景"
           row1:
             - icon: "censor/icon-shipinpingtai.jpg"
               title: "视频平台"
@@ -3724,8 +3774,10 @@ en:
             - icon: "censor/icon-tupianyingyong.jpg"
               title: "图片应用"
         client:
-          title: "客户案例"
+          title: "他们信任明瞳"
           items:
+            - title: "沪江"
+              image: "censor/client-hujiang.png"
             - title: "Faceu"
               image: "censor/client-faceu.png"
             - title: "blued"
@@ -3738,9 +3790,13 @@ en:
               image: "censor/client-kuwo.png"
             - title: "懂球帝"
               image: "censor/client-dongqiudi.png"
+            - title: "虎扑"
+              image: "censor/client-hupu.png"
         price:
-          title: "价格与套餐"
+          title: "优惠价格与资源套餐"
           subtitle: "七牛云内容安全产品采用按 API 调用次数计费模式，同时提供多种优惠套餐包，满足各类产品需求。"
+        bottomBanner:
+          desc: "体验全方位内容安全保护 更享 24 万次免费使用额度"
       kodoprivate:
         banner:
           title: "私有云存储"

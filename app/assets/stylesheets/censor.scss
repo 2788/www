@@ -14,6 +14,7 @@
     h3 {
       margin-top: 30px;
       margin-bottom: 20px;
+      color: #D3D3D3;
       font-size: 0.22rem;
     }
 
@@ -33,7 +34,26 @@
     p {
       margin-top: 10px;
       margin-bottom: 15px;
+      color: #D3D3D3;
       font-size: 0.13rem;
+
+      .product-link {
+        top: 0;
+        font-size: 0.13rem;
+      }
+    }
+
+    .white-content {
+      color: #FFF;
+    }
+
+    .btn-gray {
+      border-color: #D3D3D3;
+      color: #D3D3D3;
+
+      &:hover {
+        color: #006992;
+      }
     }
 
     .hot-tip {
@@ -41,6 +61,12 @@
       top: 5px;
       right: -5px;
     }
+  }
+}
+
+.censor-nav {
+  .nav {
+    border-bottom: none;
   }
 }
 
@@ -55,8 +81,101 @@
   }
 }
 
+.features-censor-protect {
+  .protect-row {
+    height: 4.20rem;
+
+    .protect-platform-image {
+      margin-top: 0.35rem;
+    }
+
+    .protect-platform-content {
+      position: absolute;
+      top: calc(50% + 0.10rem);
+      left: calc(50% + 0.05rem);
+      text-align: center;
+      transform: translate(-50%, -50%);
+
+      p {
+        margin: 0;
+        color: #999;
+        font-size: 0.16rem;
+      }
+
+      h1 {
+        margin: 0;
+        color: #0F0F46;
+        font-size: 0.52rem;
+      }
+    }
+
+    .censor-protect-table {
+      width: 100%;
+
+      .head-image {
+        text-align: right;
+        padding-bottom: 0.20rem;
+      }
+
+      .head-gray {
+        padding-bottom: 0.20rem;
+        color: #999;
+        font-size: 0.16rem;
+        text-align: center;
+      }
+
+      .body-label {
+        padding: 0.20rem 0;
+        color: #557CEC;
+        font-size: 0.16rem;
+        text-align: right;
+      }
+
+      .body-number {
+        color: #0F0F46;
+        font-size: 0.22rem;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.features-censor-support {
+  .thumbnail {
+    margin-top: 0.30rem;
+    padding: 0.40rem 0.60rem 0.20rem 0.60rem;
+    background-color: #FFF;
+    text-align: center;
+
+    h4 {
+      color: #999;
+    }
+
+    p {
+      margin: 0.30rem 0;
+      color: #999;
+      line-height: 0.30rem;
+      text-align: left;
+
+      &.coming-soon {
+        margin: 0;
+        line-height: 20px;
+        text-align: center;
+      }
+    }
+
+    .jump-link {
+      color: #557CEC;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .features-censor-special {
-  margin-bottom: 1.00rem;
+  margin-bottom: 0;
   background-color: #557CED;
 
   .intro {
@@ -99,6 +218,63 @@
   }
 }
 
+.features-censor-experience {
+  padding-bottom: 0.80rem;
+}
+
+.features-censor-deploy {
+  padding-bottom: 0;
+
+  .censor-deploy-slider {
+    height: 6.80rem;
+    margin-bottom: 0;
+
+    .slick-list {
+      height: 100%;
+    }
+
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    img {
+      height: 5.00rem;
+      display: inline-block;
+    }
+
+    .deploy-btn-container {
+      padding-left: 0;
+      padding-right: 0;
+      bottom: -0.80rem;
+      text-align: center;
+
+      .btn {
+        width: 2.00rem;
+        background-color: #3A65EB;
+
+        &:hover {
+          color: #FFF;
+          background-color: #184ADE;
+          -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+        }
+      }
+    }
+
+    .slick-dots {
+      bottom: 1.20rem;
+      margin: 0;
+
+      li.slick-active button:before,
+      li button:before {
+        color: #557CEC;
+      }
+    }
+  }
+}
+
 .features-censor-scene {
   padding-bottom: 1.00rem;
 
@@ -121,14 +297,15 @@
     }
 
     .slick-arrow {
-      top: 44%;
+      top: 36%;
+      z-index: 1;
 
       &.slick-prev {
-        left: 0;
+        left: -10px;
       }
 
       &.slick-next {
-        right: 0;
+        right: -10px;
       }
     }
   }
@@ -174,6 +351,27 @@
   }
 }
 
+.censor-bottom-banner {
+  width: 100%;
+  height: 2.00rem;
+  background-image: image-url("censor/image-bottom-banner.jpg");
+  background-position: center center;
+  background-size: cover;
+
+  p {
+    position: relative;
+    top: calc(50% - 0.06rem);
+    color: #FFF;
+    font-size: 0.24rem;
+    text-align: center;
+  }
+
+  .btn {
+    position: relative;
+    top: -0.03rem;
+  }
+}
+
 @media (max-width: 991px) {
   .features-censor-price {
     .info-container {
@@ -202,6 +400,26 @@
       }
     }
   }
+
+  .features-censor-protect {
+    .protect-row {
+      height: 3.60rem;
+
+      .protect-platform-image {
+        margin-top: 0.40rem;
+      }
+
+      .protect-platform-content {
+        top: calc(50% + 0.20rem);
+      }
+
+      .censor-protect-table {
+        .body-label {
+          padding: 0.14rem 0;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -216,6 +434,37 @@
         left: 50%;
         margin-left: -600px;
       }
+    }
+  }
+
+  .features-censor-protect {
+    .protect-row {
+      height: 3.10rem;
+
+      .protect-platform-image {
+        margin-top: 0.60rem;
+      }
+
+      .protect-platform-content {
+        top: calc(50% + 0.30rem);
+
+        h1 {
+          font-size: 0.35rem;
+        }
+      }
+
+      .censor-protect-table {
+        .body-label {
+          padding: 0.12rem 0;
+        }
+      }
+    }
+  }
+
+  .features-censor-support {
+    .thumbnail {
+      padding-left: 0.40rem;
+      padding-right: 0.40rem;
     }
   }
 
@@ -283,6 +532,35 @@
     }
   }
 
+  .features-censor-protect {
+    .protect-row {
+      .protect-platform-col {
+        text-align: center;
+      }
+
+      .protect-platform-image {
+        margin-top: 0;
+        width: 250px;
+      }
+
+      .protect-platform-content {
+        top: 50%;
+      }
+
+      .censor-protect-table {
+        margin-top: 0.50rem;
+      }
+    }
+  }
+
+  .features-censor-support {
+    .thumbnail {
+      p {
+        text-align: center;
+      }
+    }
+  }
+
   .features-censor-special {
     .caption {
       h2 {
@@ -299,6 +577,36 @@
         margin: 8% 0 !important;
         font-size: 0.24rem !important;
       }
+    }
+  }
+
+  .features-censor-deploy {
+    .censor-deploy-slider {
+      height: 5.20rem;
+
+      img {
+        height: 3.40rem;
+      }
+
+      .deploy-btn-container {
+        .btn {
+          width: 1.60rem;
+        }
+      }
+    }
+  }
+
+  .features-censor-client {
+    #cases-slider {
+      .slick-arrow {
+        top: 44%;
+      }
+    }
+  }
+
+  .censor-bottom-banner {
+    p {
+      font-size: 0.16rem;
     }
   }
 }
@@ -367,6 +675,14 @@
 
     .special-list {
       bottom: 10% !important;
+    }
+  }
+
+  .features-censor-client {
+    #cases-slider {
+      .slick-arrow {
+        top: 44%;
+      }
     }
   }
 }
