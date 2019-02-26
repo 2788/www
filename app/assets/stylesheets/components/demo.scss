@@ -6,6 +6,16 @@
       background-color: #FFF;
       display: table-cell !important;
 
+      &.image-tab-li {
+        border-top: 1px solid #E1E1E1;
+        border-left: 1px solid #E1E1E1;
+      }
+
+      &.video-tab-li {
+        border-top: 1px solid #E1E1E1;
+        border-right: 1px solid #E1E1E1;
+      }
+
       a {
         color: #000 !important;
       }

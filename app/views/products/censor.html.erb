@@ -8,7 +8,7 @@
           <p>七牛云人工智能实验室为你精准识别色情、暴恐、敏感人物、低俗、广告等违规内容</p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即使用", "https://portal.qiniu.com/censor", target: "_blank", class: "btn btn-lg btn-hollow btn-gray m-r m-b-xs", id: "censor-product-use-btn" -%>
-            <%= link_to "产品咨询", "", target: "", class: "btn btn-lg btn-hollow btn-gray m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
+            <%= link_to "免费试用", "", target: "", class: "btn btn-lg btn-hollow btn-gray m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-product-consult-btn" -%>
             <%= link_to "接入文档", "https://developer.qiniu.com/censor/api/5588/image-censor", target: "_blank", class: "product-link underline" -%>
           </div>
           <p class="<%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">新用户可享 24 万次免费额度，更有<%= link_to "超值套餐包", "https://developer.qiniu.com/censor/manual/4835/censor-plus-manual", target: "_blank", class: "product-link underline" -%>可供选择</p>
@@ -140,6 +140,8 @@
 </div>
 
 <%# special tab %>
+<%# 屏蔽 %>
+<% if false -%>
 <div class="features features-censor-special">
   <div class="container">
     <div class="intro">
@@ -162,6 +164,19 @@
           </div>
         </div>
       <% end -%>
+    </div>
+  </div>
+</div>
+<% end -%>
+
+<%# demo tab %>
+<div class="features features-censor-demo tab-content-demo">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.censor.demo.title") -%></h2>
+    </div>
+    <div class="row">
+      <%= render :partial => "demo" -%>
     </div>
   </div>
 </div>
@@ -206,20 +221,8 @@
   </div>
 </div>
 
-<%# demo tab %>
-<div class="features features-less features-cases features-censor-demo tab-content-demo">
-  <div class="container">
-    <div class="intro">
-      <h2 class="title"><%= I18n.t("views.products.censor.demo.title") -%></h2>
-    </div>
-    <div class="row">
-      <%= render :partial => "demo" -%>
-    </div>
-  </div>
-</div>
-
 <%# scene tab %>
-<div class="features features-censor-scene tab-content-scene">
+<div class="features features-less features-cases features-censor-scene tab-content-scene">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.scene.title") -%></h2>
@@ -244,7 +247,7 @@
 </div>
 
 <%# client tab %>
-<div class="features features-less features-cases features-censor-client tab-content-client">
+<div class="features features-censor-client tab-content-client">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.client.title") -%></h2>
@@ -262,7 +265,7 @@
 </div>
 
 <%# price tab %>
-<div class="features features-censor-price tab-content-price">
+<div class="features features-less features-cases features-censor-price tab-content-price">
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.products.censor.price.title") -%></h2>
@@ -306,6 +309,6 @@
   <p>
     <%= I18n.t("views.products.censor.bottomBanner.desc") -%>
     &nbsp;&nbsp;
-    <%= link_to "立即开启", "https://portal.qiniu.com/censor", class: "btn btn-lg btn-hollow", target: "_blank" -%>
+    <%= link_to "免费试用", "https://portal.qiniu.com/censor", class: "btn btn-lg btn-hollow", target: "_blank" -%>
   </p>
 </div>

@@ -299,12 +299,16 @@
 }
 
 .features-censor-client {
+  padding-bottom: 0.80rem;
+
   #cases-slider {
     margin: 0;
     max-height: 100px;
 
     .case {
       height: 100px;
+      border-radius: 0.16rem;
+      background-color: #F8F8F8;
       max-height: 100px;
     }
 
@@ -340,7 +344,6 @@
 }
 
 .features-censor-joinup {
-  padding-top: 0.10rem;
   .joinup-container {
     dl dt,
     dl dd {
@@ -369,18 +372,20 @@
   background-image: image-url("censor/image-bottom-banner.jpg");
   background-position: center center;
   background-size: cover;
+  background-repeat:no-repeat;
 
   p {
     position: relative;
-    top: calc(50% - 0.06rem);
+    top: calc(50% - 0.23rem);
     color: #FFF;
     font-size: 0.24rem;
+    line-height: 0.46rem;
     text-align: center;
   }
 
   .btn {
     position: relative;
-    top: -0.03rem;
+    top: -0.02rem;
   }
 }
 
@@ -618,7 +623,15 @@
 
   .censor-bottom-banner {
     p {
-      font-size: 0.16rem;
+      top: calc(50% - 35px);
+      font-size: 0.20rem;
+
+      .btn {
+        width: 2.00rem;
+        top: 10px;
+        left: calc(50% - 1.00rem);
+        display: block;
+      }
     }
   }
 }
