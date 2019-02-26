@@ -193,6 +193,7 @@ nav.navbar {
   .navbar-nav .solutions-menu,
   .navbar-nav .events-menu,
   .navbar-nav .supports-menu,
+  .navbar-nav .about-us-menu,
   .navbar-nav .user-menu {
     background-color: #303848;
     padding: 0;
@@ -233,6 +234,7 @@ nav.navbar {
       &.service,
       &.events,
       &.supports,
+      &.about-item,
       &.solution {
         padding: 0;
         border-bottom: 1px solid rgba(229, 229, 229, 0.07);
@@ -284,7 +286,8 @@ nav.navbar {
     }
   }
 
-  .navbar-nav .supports-menu {
+  .navbar-nav .supports-menu,
+  .navbar-nav .about-us-menu {
     li a h4 {
       padding-left: 0;
     }
@@ -693,7 +696,8 @@ nav.navbar {
     padding-left: 25px;
   }
 
-  .navbar-default .navbar-nav .supports-menu li a h4 {
+  .navbar-default .navbar-nav .supports-menu li a h4,
+  .navbar-default .navbar-nav .about-us-menu li a h4 {
     padding-left: 0;
   }
 
@@ -749,6 +753,7 @@ nav.navbar {
   .navbar-default .navbar-nav .services-menu,
   .navbar-default .navbar-nav .events-menu,
   .navbar-default .navbar-nav .supports-menu,
+  .navbar-default .navbar-nav .about-us-menu,
   .navbar-default .navbar-nav .solutions-menu {
     margin-bottom: 0;
 

@@ -23,6 +23,9 @@
   </div>
 </div>
 
+<%# 屏蔽 %>
+<%# https://jira.qiniu.io/browse/BO-6548 %>
+<% if false -%>
 <div class="features features-career features-less">
   <div class="container">
     <div class="fluid-wordbutton-slider conveyor slick-slider draggable">
@@ -163,68 +166,10 @@
     </div><!-- /.fluid-wordbutton-slider -->
   </div><!-- /.container -->
 </div>
-
-<div class="fluid-media-slider-wrapper">
-  <div class="fluid-media-slider">
-    <div class="fluid-slider-img-wraaper">
-      <div class="grid-container">
-        <%= image_tag "career/shipin-2.jpg", alt: "视频2" -%>
-        <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#interview"></a>
-      </div>
-    </div>
-    <div class="fluid-slider-img-wraaper">
-      <div class="grid-container">
-        <%= image_tag "career/shipin-3.jpg", alt: "视频3" -%>
-        <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#eventParty-short"></a>
-      </div>
-    </div>
-    <div class="fluid-slider-img-wraaper">
-      <div class="grid-container">
-        <%= image_tag "career/shipin-4.jpg", alt: "视频4" -%>
-        <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#eventParty-long"></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- interview（Modal） -->
-<div class="modal fade bs-example-modal-lg" id="interview" tabindex="-1" role="dialog" aria-labelledby="interview" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <%= video_tag "https://mars-assets.qnssl.com/new_visit.mp4", class: "video-tag", controls: true, autobuffer: true %>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal -->
-</div>
-
-<!-- eventParty-short（Modal） -->
-<div class="modal fade bs-example-modal-lg" id="eventParty-short" tabindex="-1" role="dialog" aria-labelledby="eventParty-short" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <%= video_tag "https://mars-assets.qnssl.com/qiniu_annual2017.m4v", class: "video-tag", controls: true, autobuffer: true %>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal -->
-</div>
-
-<!-- eventParty-long（Modal） -->
-<div class="modal fade bs-example-modal-lg" id="eventParty-long" tabindex="-1" role="dialog" aria-labelledby="eventParty-long" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <%= video_tag "https://mars-assets.qnssl.com/qiniuhuaxu2.mp4", class: "video-tag", controls: true, autobuffer: true %>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal -->
-</div>
+<% end -%>
 
 <div class="features features-career features-less">
-  <div class="container bottom-line">
+  <div class="container">
     <div class="fluid-wordbutton-slider conveyor slick-slider draggable">
       <div class="row">
         <div class="col-sm-12">
@@ -374,6 +319,69 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="features features-career features-fluid-media">
+  <div class="container bottom-line">
+    <div class="fluid-media-slider-wrapper">
+      <div class="fluid-media-slider">
+        <div class="fluid-slider-img-wraaper">
+          <div class="grid-container">
+            <%= image_tag "career/shipin-2.jpg", alt: "视频2" -%>
+            <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#interview"></a>
+          </div>
+        </div>
+        <div class="fluid-slider-img-wraaper">
+          <div class="grid-container">
+            <%= image_tag "career/shipin-3.jpg", alt: "视频3" -%>
+            <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#eventParty-short"></a>
+          </div>
+        </div>
+        <div class="fluid-slider-img-wraaper">
+          <div class="grid-container">
+            <%= image_tag "career/shipin-4.jpg", alt: "视频4" -%>
+            <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#eventParty-long"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- interview（Modal） -->
+<div class="modal fade bs-example-modal-lg" id="interview" tabindex="-1" role="dialog" aria-labelledby="interview" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <%= video_tag "https://mars-assets.qnssl.com/new_visit.mp4", class: "video-tag", controls: true, autobuffer: true %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
+
+<!-- eventParty-short（Modal） -->
+<div class="modal fade bs-example-modal-lg" id="eventParty-short" tabindex="-1" role="dialog" aria-labelledby="eventParty-short" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <%= video_tag "https://mars-assets.qnssl.com/qiniu_annual2017.m4v", class: "video-tag", controls: true, autobuffer: true %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
+
+<!-- eventParty-long（Modal） -->
+<div class="modal fade bs-example-modal-lg" id="eventParty-long" tabindex="-1" role="dialog" aria-labelledby="eventParty-long" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-3top" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <%= video_tag "https://mars-assets.qnssl.com/qiniuhuaxu2.mp4", class: "video-tag", controls: true, autobuffer: true %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
 </div>
 
 <div class="features features-career">
