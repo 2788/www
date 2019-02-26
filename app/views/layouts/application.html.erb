@@ -186,7 +186,28 @@
             </li>
 
             <%# 关于我们 %>
+            <% if I18n.t("views.language") == 'zh' -%>
+            <%# 中文站显示下拉菜单 %>
+            <li class="dropdown company-more" id="about-us-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.about") %></a>
+
+              <ul class="dropdown-menu about-us-menu">
+                <% I18n.t("aboutUs").each do |about| -%>
+                  <%= content_tag :li, class: I18n.t("views.language") != 'zh'? 'd-none' : 'about-item' do -%>
+                    <%= link_to(about[:url], {target: "_blank"}) do -%>
+                      <h4 class="<%= about[:name] -%>">
+                        <%= raw(about[:label]) -%>
+                      </h4>
+                      <%= content_tag :p, '', class: "hidden-xs" -%>
+                    <% end -%>
+                  <% end %>
+                <% end -%>
+              </ul>
+            </li>
+            <% else -%>
+            <%# 英文站显示跳转链接 %>
             <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
+            <% end -%>
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-nav-mobile">

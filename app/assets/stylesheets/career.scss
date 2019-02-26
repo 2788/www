@@ -120,8 +120,6 @@
 }
 
 .fluid-media-slider {
-  padding-top: 70px;
-
   .slick-dots li button::before {
     font-size: 0.40rem;
     content: "-";
@@ -417,16 +415,30 @@ video {
 }
 
 //career avater
-.features-career .media {
-  .modal-body {
-    padding-left: 50px;
-    padding-right: 50px;
+.features-career {
+  .container {
+    padding-bottom: 0;
   }
 
-  img {
-    margin: auto;
-    max-height: 100px;
-    transition: opacity .1s;
+  .media {
+    .modal-body {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+
+    img {
+      margin: auto;
+      max-height: 100px;
+      transition: opacity .1s;
+    }
+  }
+}
+
+.features-fluid-media {
+  padding-top: 0 !important;
+
+  .container {
+    padding-bottom: 1.00rem;
   }
 }
 

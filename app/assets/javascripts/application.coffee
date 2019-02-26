@@ -168,13 +168,13 @@ $(document).ready ->
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
-    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #supports-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').on 'touchstart', ->
+    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #supports-dropdown, #about-us-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').on 'touchstart', ->
       $(this).find('.dropdown-toggle').toggleClass('actived')
   else
     $('#solution-dropdown-title').on 'click', ->
       locale = if window.location.pathname.split('/')[1] == 'en' then '/en/solutions' else '/solutions'
       window.location.href = window.location.origin + locale
-    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #supports-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').hover ->
+    $('#spaces-dropdown, #solution-dropdown, #events-dropdown, #supports-dropdown, #about-us-dropdown, #user-dropdown, #language-dropdown, #more-dropdown').hover ->
       $(this).addClass('open')
     , ->
       $(this).removeClass('open')
