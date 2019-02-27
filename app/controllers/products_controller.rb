@@ -276,8 +276,8 @@ class ProductsController < ApplicationController
     rescue
       render json: {
         is_success: false,
+        job_id: ''
       }
-      session[:video_censor_job] = ''
       return
     end
 
@@ -287,28 +287,30 @@ class ProductsController < ApplicationController
         if resBody.nil?
           render json: {
             is_success: false,
+            job_id: ''
           }
-          session[:video_censor_job] = ''
           return
         end
         render json: {
           is_success: true,
+          job_id: resBody['job'] || ''
         }
-        session[:video_censor_job] = resBody['job'] || ''
         return
       else
         p res
         render json: {
           is_success: false,
+          job_id: ''
         }
-        session[:video_censor_job] = ''
         return
     end
   end
 
   # 获取视频审核结果
   def video_censor_result
-    video_censor_job = session[:video_censor_job]
+
+    video_censor_job = params[:jobID]
+
     if video_censor_job.nil? || video_censor_job.blank?
       render json: {
         is_success: false,
@@ -423,6 +425,7 @@ class ProductsController < ApplicationController
   def report_user_action
 
     uinfo = session[:uinfo]
+
     if uinfo.nil? || uinfo.blank?
       render json: {
         "success": false,

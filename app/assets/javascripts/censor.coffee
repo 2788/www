@@ -203,10 +203,12 @@ $(document).ready ->
         showPop($uploadImageBtn, '审核失败', 'top')
         $imageResponseView.html('<span class="tip-error">审核失败...</span>')
   
-  getVideoAuidtResult = () ->
+  getVideoAuidtResult = (jobID) ->
     $.ajax
-      method: 'GET',
+      method: 'POST',
       url: '/video_censor_result',
+      data:
+        jobID: jobID
       success: (res) ->
         if res && res.is_success
           resData = res.data
@@ -221,7 +223,7 @@ $(document).ready ->
           else
             # 视频还在审核中 循环获取结果 间隔 2s
             timeOut = setTimeout ->
-              getVideoAuidtResult()
+              getVideoAuidtResult jobID
               clearTimeout(timeOut)
             , 2000
         else
@@ -253,7 +255,7 @@ $(document).ready ->
         if res && res.is_success
           # 2s 后获取视频审核结果
           timeOut = setTimeout ->
-            getVideoAuidtResult()
+            getVideoAuidtResult res.job_id
             clearTimeout(timeOut)
           , 2000
         else
