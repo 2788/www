@@ -120,6 +120,8 @@
 }
 
 .fluid-media-slider {
+  padding-top: 70px;
+
   .slick-dots li button::before {
     font-size: 0.40rem;
     content: "-";
@@ -416,9 +418,9 @@ video {
 
 //career avater
 .features-career {
-  .container {
-    padding-bottom: 0;
-  }
+  // .container {
+  //   padding-bottom: 0;
+  // }
 
   .media {
     .modal-body {
@@ -434,13 +436,13 @@ video {
   }
 }
 
-.features-fluid-media {
-  padding-top: 0 !important;
+// .features-fluid-media {
+//   padding-top: 0 !important;
 
-  .container {
-    padding-bottom: 1.00rem;
-  }
-}
+//   .container {
+//     padding-bottom: 1.00rem;
+//   }
+// }
 
 #interview,
 #eventParty-short,
