@@ -455,11 +455,11 @@
                   <p><span class="big-text">20 </span><span class="smal-text"> 元</span></p>
                 </div>
                 <div class="col-xs-6 col-md-4 special-price">
-                  <h5>每月图片处理服务</h5>
+                  <h5>每月部分图片处理服务</h5>
                   <p><span class="big-text">20 </span><span class="smal-text"> TB</span></p>
                 </div>
                 <div class="col-xs-6 col-md-4 special-price border-init">
-                  <h5>每月自定义数据处理服务</h5>
+                  <h5>每月 C1M1 自定义数据处理服务</h5>
                   <p><span class="big-text">750 </span><span class="smal-text"> 小时</span></p>
                 </div>
               </div>
@@ -652,9 +652,11 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" style="padding-bottom: 0.10rem" colspan="3">
-                          多媒体处理 - 文件处理<br/>
-                          <span style="font-size: 12px; line-height: 18px;">文件处理服务将于 2019 年 4 月 1 日起开始收费。</span>
+                        <th width="340" class="thead-title th-init border-bottom" style="padding-bottom: 0.10rem" colspan="2">
+                          多媒体处理 - 文件处理
+                          <% if Time.now.to_i < Time.local(2019, 4, 1).to_i -%>
+                          <br/><span style="font-size: 12px; line-height: 18px;">文件处理服务将于 2019 年 4 月 1 日起开始收费。</span>
+                          <% end -%>
                         </th>
                       </tr>
                       <tr>
