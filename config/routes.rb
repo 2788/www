@@ -125,8 +125,8 @@ Rails.application.routes.draw do
     # video_censor
     post '/video_censor', to: 'products#video_censor'
 
-    # 根据 jobID 获取视频审核结果，jobID 存在 session 中
-    get '/video_censor_result', to: 'products#video_censor_result'
+    # 根据 jobID 获取视频审核结果
+    post '/video_censor_result', to: 'products#video_censor_result'
 
     # 获取 censor 产品页 今日审核总量 和 今日已封禁违规内容 数据
     get '/censor_quantity_data', to: 'products#censor_quantity_data'
