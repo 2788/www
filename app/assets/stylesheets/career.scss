@@ -538,3 +538,87 @@ video {
     }
   }
 }
+
+.career-school-2019 {
+  ul { padding: 0 }
+  .intro1100 {
+    max-width: 1100px;
+    width: 100% !important;
+    margin: auto;
+    &.m-t-custom {
+      margin-top: 0.60rem;
+    }
+  }
+  .intro900 {
+    max-width: 780px;
+    width: 100% !important;
+    margin: auto;
+  }
+  .features {
+    background-size: 21% !important;
+    background-position: 8% 60% !important;
+    .intro {
+      h3 {
+        font-weight: 100;
+        text-align: center;
+      }
+    }
+    &.features-career-harvest {
+      padding: 0.38rem 0 0.20rem;
+      background-image: image-url("career/career-harvest-bg.png");
+      background-repeat: no-repeat;
+    }
+  }
+  .timeline-ul img { width: 100%; max-width: 170px; margin-bottom: 10px; }
+  .timeline-ul li.right .info-div {
+    text-align: left !important;
+  }
+  .timeline-ul li.left .info-div {
+    text-align: right !important;
+  }
+  .timeline-ul li:nth-child(8) {
+    margin-top: -225px !important;
+  }
+  .timeline-ul li:nth-child(6) {
+    margin-bottom: 20px !important;
+  }
+  .ul2 { overflow: auto; margin-bottom: 0.30rem; }
+  .ul2 li { width: 25%; margin: 0.20rem 0; float: left; text-align: center; }
+  .ul2 li { font-size: 0.20rem; }
+  .ul2 img { width: 80%; max-width: 80px; margin-bottom: 0.30rem; }
+  .ul3 { overflow: auto; margin-bottom: 0.30rem; margin-left: 25%; }
+  .ul3 font { color: #00A0DE; }
+  .ul3 li { width: 50%; margin: 0.20rem 0; float: left; text-align: left; font-size: 0.20rem; color: #000; line-height: 0.40rem; }
+  .intro32a { width: 150px; margin: 0.50rem auto auto; color: #FFF !important; display: block; text-align: center; font-size: 0.18rem; background-color: #51A5FD; padding: 10px 0; border-radius: 0.20rem; }
+  .intro32a:hover { color: #FFF !important; }
+
+  @media screen and (max-width: 1200px) {
+    .features { background-size: 20% !important; }
+  }
+
+  @media screen and (max-width: 960px) {
+    .features { background-size: 20% !important; }
+  }
+
+  @media screen and (max-width: 780px) {
+    .features { background-position: left 60% !important; }
+    .timeline-ul li:nth-child(8) {
+      margin-top: 0px !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .ul3 li { font-size: 0.18rem; line-height: 0.30rem; }
+  }
+
+  @media screen and (max-width: 480px) {
+    .ul2 li { width: 50%; margin: 0.20rem 0; float: left; text-align: center; }
+    .ul2 img { width: 60%; max-width: 80px; margin-bottom: 0.30rem; }
+  }
+
+  @media screen and (max-width: 630px) {
+    .ul3 { margin-left: 39%; }
+    .ul3 li { width: 100%; }
+    .features { background-size: 36% !important; }
+  }
+}
