@@ -1,29 +1,31 @@
-.contact-box{
+.contact-box {
   background-color:#F7F8F9;
 }
 
-.features-contact{
-  .ipo-row{
+.features-contact {
+  .ipo-row {
     position: relative;
     padding-top: 0.20rem;
   }
 
-  .ipo-row .col-sm-6.ipo-col{
+  .ipo-row .col-sm-6.ipo-col {
     padding-left: 0.80rem;
     padding-right: 0.80rem;
   }
 
-  .right-line{
+  .right-line {
     border-right: 1px solid #97989c;
   }
 
-  .service-box{
-    h6{
+  .service-box {
+    h6 {
       color:#97989c;
     }
-    .service-box-tail{
+
+    .service-box-tail {
       padding-top: 0.15rem;
-      em a{
+
+      em a {
         font-style: normal;
         color:#00a0de;
         padding-left: 0.07rem;
@@ -32,41 +34,38 @@
     }
   }
 
-  .thumbnail{
-    .mask-layer{
+  .thumbnail {
+    .mask-layer {
       position: relative;
       min-height: 100px;
       border: none;
       margin: 0;
 
-      img{
+      img {
         width:100%;
       }
 
-      .layer{
+      .layer {
         padding: 0;
         position: absolute;
         width: 100%;
         height: 100%;
-
         background-color: #000;
         opacity: 0.35;
         color: #ffffff;
         font-size: 16px;
         transition: opacity 0.3s;
 
-        span{
+        span {
           padding-bottom: 6px;
           margin: 0;
-
           text-align: center;
-
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%,-50%);
 
-          i{
+          i {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -78,26 +77,32 @@
         }
       }
 
-      .layer:hover{
+      .layer:hover {
         cursor: pointer;
         opacity: 0;
         transition: opacity 0.3s;
       }
     }
 
-    div.caption.caption-contact{
+    div.caption.caption-contact {
       padding: 0.1rem 0 0 0;
       margin: 0;
 
-      p{
+      p {
         padding-top: 20px;
       }
     }
   }
 }
 
-@media (max-width: 767px){
-  .features-contact .right-line{
+@media (min-width: 1200px) {
+  .features-contact .row .thumbnail {
+    height: 3.50rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .features-contact .right-line {
     border: 0;
   }
 }
