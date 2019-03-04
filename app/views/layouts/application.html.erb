@@ -188,7 +188,6 @@
             <%# 关于我们 %>
             <%# 新增下拉菜单 %>
             <%# https://jira.qiniu.io/browse/BO-6548 %>
-            <% if false -%>
             <% if I18n.t("views.language") == 'zh' -%>
             <%# 中文站显示下拉菜单 %>
             <li class="dropdown company-more" id="about-us-dropdown">
@@ -200,6 +199,7 @@
                     <%= link_to(about[:url], {target: "_blank"}) do -%>
                       <h4 class="<%= about[:name] -%>">
                         <%= raw(about[:label]) -%>
+                        <% if about[:isHot] -%><i class="hot-icon"></i><% end -%>
                       </h4>
                       <%= content_tag :p, '', class: "hidden-xs" -%>
                     <% end -%>
@@ -211,10 +211,6 @@
             <%# 英文站显示跳转链接 %>
             <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
             <% end -%>
-            <% end -%>
-
-            <%# 关于我们 %>
-            <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
