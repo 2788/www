@@ -1,7 +1,7 @@
 // Place all the styles related to the career controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-//career index fluid-slider-wrapper
+// career index fluid-slider-wrapper
 .navbar-default .navbar-brand span.navbar-brand-text {
   margin-top: 5px;
 }
@@ -60,7 +60,7 @@
   }
 }
 
-//career index fluid-word-slider
+// career index fluid-word-slider
 .fluid-word-slider {
   margin-top: 480px;
 }
@@ -424,11 +424,11 @@ video {
   }
 }
 
-//career avater
+// career avater
 .features-career {
-  // .container {
-  //   padding-bottom: 0;
-  // }
+  .container {
+    padding-bottom: 0;
+  }
 
   .media {
     .modal-body {
@@ -444,13 +444,13 @@ video {
   }
 }
 
-// .features-fluid-media {
-//   padding-top: 0 !important;
+.features-fluid-media {
+  padding-top: 0 !important;
 
-//   .container {
-//     padding-bottom: 1.00rem;
-//   }
-// }
+  .container {
+    padding-bottom: 1.00rem;
+  }
+}
 
 #interview,
 #eventParty-short,

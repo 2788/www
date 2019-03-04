@@ -4175,18 +4175,23 @@ zh-CN:
     - name: "company-introduction"
       label: "公司介绍"
       url: "/company"
+      isHot: false
     - name: "people-in-qiniu"
       label: "人在七牛"
       url: " https://career.qiniu.com/"
+      isHot: false
     - name: "social-invite"
       label: "社会招聘"
       url: "https://career.qiniu.com/social"
+      isHot: false
     - name: "school-invite"
       label: "校园招聘"
       url: "https://career.qiniu.com/school"
+      isHot: true
     - name: "contact-us"
       label: "联系我们"
       url: "/contact"
+      isHot: false
   solutions:
     title1: "通用解决方案"
     title2: "行业解决方案"
