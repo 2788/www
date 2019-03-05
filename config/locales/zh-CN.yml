@@ -3426,7 +3426,7 @@ zh-CN:
             href: "#tab-edu-section-4"
         solution:
           title: "独有的强大方案"
-          desc: "国内首家标准 WebRTC 研发的一站式解决方案"
+          desc: "国内标准 WebRTC 研发的一站式解决方案"
           image: "edu/image-solution.jpg"
           left:
             - title: "低延时 高可用"
