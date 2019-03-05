@@ -89,7 +89,7 @@
       .btn {
         position: absolute;
         left: calc(50% - 40px);
-        bottom: 10%;
+        bottom: 9%;
         color: #FFF;
         &:hover {
           color: #5A96E6;
@@ -192,12 +192,22 @@
   }
 }
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero-edu {
+    .container {
+      h1 {
+        font-size: 0.30rem;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .features-edu-scene {
     .col-item {
       .active {
         .btn {
-          bottom: 8%;
+          bottom: 6%;
           left: calc(50% - 37px);
           font-size: 0.12rem;
         }
@@ -220,7 +230,7 @@
       .active {
         .btn {
           padding: 3px;
-          bottom: 4%;
+          bottom: 3%;
           left: calc(50% - 28px);
         }
       }
