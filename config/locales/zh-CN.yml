@@ -3869,7 +3869,7 @@ zh-CN:
         banner:
           title: "私有云存储"
           desc1: "七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。"
-          desc2: "能够为客户搭建数百 PB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
+          desc2: "能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
         framework:
           title: "架构图"
           image: "kodoprivate/image-framework.png"
@@ -4053,7 +4053,7 @@ zh-CN:
 
         - name: private_cloud_kodo
           label: 私有云存储
-          desc: 可定制化的数百 PB 级别、高可靠、强安全的存储系统
+          desc: 可定制化的数百 EB 级别、高可靠、强安全的存储系统
           isNew: true
 
         - name: fusion
@@ -4346,7 +4346,7 @@ zh-CN:
     products_kodoprivate:
       title: 私有云_私有云存储 - 七牛云
       keywords: 私有云，私有云存储，企业私有云，私有云系统，私有云方案，私有化存储
-      description: 七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 PB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。
+      description: 七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。
     products_kodoprivate_company:
       title: 企业私有云_企业私有云存储 - 七牛私有云解决方案
       keywords: 企业私有云，企业私有云存储，企业私有云方案，企业私有云解决方案，企业私有云搭建，企业私有云服务
