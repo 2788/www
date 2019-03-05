@@ -3343,7 +3343,7 @@ en:
                 link: "https://developer.qiniu.com/rtn/manual/4374/the-demo-experience?ref=www.qiniu.com"
                 target: "_blank"
       edu:
-        title: "在线教育解决方案"
+        title: "NiuClass 在线教育解决方案"
         desc: "满足一对一教学、小班教学、双师课堂等多种教育场景，助力企业快速上线低延迟、高可用的互联网教育产品。"
         middlebars:
           - title: "方案详情"
