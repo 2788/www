@@ -119,12 +119,12 @@ en:
           desc: "Based on Qiniu core products, with years of accumulation of technology and experience of services and operations in cloud services, Qiniu has meticulously established a simple and reliable solution platform to help you realize business needs quickly and create more business value."
         feature1:
           title: "Storage in Private Cloud"
-          desc: "The solution to storage in private cloud is designed on the framework and operation experience of Qiniu's object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of PB which has high reliability, strong security, low costs and scalability to satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises'needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
+          desc: "The solution to storage in private cloud is designed on the framework and operation experience of Qiniu's object storage services in public cloud to enable enterprises to build independent storage systems with the level of hundreds of EB which has high reliability, strong security, low costs and scalability to satisfy various requirements of unstructured data storage. Meanwhile, it offers mature system management, operation and maintenance to meet enterprises'needs in capacity, performance and stability with more inexpensive products and costs on maintenance."
           btn: ""
           case: "Success Cases"
         feature2:
           title: "Unstructured Data Management"
-          desc: "Qiniu's unstructured data management platform is built based on Kodo, which can easily achieves the storage of hundreds PB level unstructured data and its structured business date. This platform has high availability, high concurrent reading and writing and linear expansion. It also offers document retrieval and other services based on structured business date and has permission administration and security mechanism of PaaS level. It can cooperate seamlessly with Dora to provide services like image and video processing, intelligent recognition and analysis."
+          desc: "Qiniu's unstructured data management platform is built based on Kodo, which can easily achieves the storage of hundreds EB level unstructured data and its structured business date. This platform has high availability, high concurrent reading and writing and linear expansion. It also offers document retrieval and other services based on structured business date and has permission administration and security mechanism of PaaS level. It can cooperate seamlessly with Dora to provide services like image and video processing, intelligent recognition and analysis."
           btn: ""
           case: "Success Cases"
         feature3:
@@ -3046,7 +3046,7 @@ en:
       vcs:
         banner:
           title: "视频冷存储解决方案"
-          desc: "七牛云视频冷存储解决方案是专为综合视频平台打造的 PB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
+          desc: "七牛云视频冷存储解决方案是专为综合视频平台打造的 EB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
           icon: "banner/banner-vcs-right-zh.png"
         specialty:
           - title: 成本 60% OFF
@@ -3112,7 +3112,7 @@ en:
             #   width: "100%"
             - name: "souhu"
               desc:
-                - "七牛云帮助搜狐视频对其全站的数据进行冷备，总量达到数 PB 级；"
+                - "七牛云帮助搜狐视频对其全站的数据进行冷备，总量达到数 EB 级；"
                 - "整体数据迁移流程在 1 个月内完成，并实现了新增数据的实时同步；"
                 - "在保证低成本存储的同时，在华东区域内实现数据访问的高可用；"
                 - "项目稳定运行 1 年多时间，0 故障，数据同步成功率 100%。"
@@ -3133,7 +3133,7 @@ en:
             - title: "可扩展的海量存储服务"
               class: "col-md-6 col-sm-6 col-xs-12"
               icon: "qavs/icon-hailiangcunchu.png"
-              desc: "可实现业务层无感知 PB 级扩容"
+              desc: "可实现业务层无感知 EB 级扩容"
             - title: "云端媒体的编辑处理"
               class: "col-md-6 col-sm-6 col-xs-12"
               icon: "qavs/icon-yunduanmeiti.png"
@@ -4193,7 +4193,7 @@ en:
     products_vcs:
       title: 视频冷存储_视频冷存储解决方案 - 七牛云
       keywords: 视频冷存储，冷备，冷存储，归档存储，点播存储，高清视频原片，媒体资源库
-      description: 七牛云视频冷存储解决方案是专为综合视频平台打造的 PB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。
+      description: 七牛云视频冷存储解决方案是专为综合视频平台打造的 EB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。
     products_newmedia:
       title: 广电新媒体解决方案-七牛云
       keywords: 新媒体解决方案，融合媒体解决方案，广电新媒体解决方案，媒体融合服务，媒资管理
