@@ -91,16 +91,34 @@
 
                         <% else -%>
 
-                          <%= link_to(raw(col[:type] == 'product' ? send("products_#{col[:name]}_path") : solutions_path(anchor: col[:name]))) do -%>
-                            <h4 class="<%= col[:name] -%> menu-title">
-                              <%= col[:label] -%>
-                              <% if col[:isNew] -%><i class="new-icon"></i><% end -%>
-                            </h4>
-                            <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
+                          <% if col[:type] == 'product' -%>
+                            <%= link_to(raw(send("products_#{col[:name]}_path"))) do -%>
+                              <h4 class="<%= col[:name] -%> menu-title">
+                                <%= col[:label] -%>
+                                <% if col[:isNew] -%><i class="new-icon"></i><% end -%>
+                              </h4>
+                              <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
+                            <% end -%>
+                          <% elsif col[:type] == 'solution_page' -%>
+                            <%= link_to(raw(send("solutions_#{col[:name]}_path"))) do -%>
+                              <h4 class="<%= col[:name] -%> menu-title">
+                                <%= col[:label] -%>
+                                <% if col[:isNew] -%><i class="new-icon"></i><% end -%>
+                              </h4>
+                              <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
+                            <% end -%>
+                          <% elsif col[:type] == 'solution_hash' -%>
+                            <%= link_to(raw(solutions_path(anchor: col[:name]))) do -%>
+                              <h4 class="<%= col[:name] -%> menu-title">
+                                <%= col[:label] -%>
+                                <% if col[:isNew] -%><i class="new-icon"></i><% end -%>
+                              </h4>
+                              <%= content_tag :p, col[:desc], class: "hidden-xs" -%>
+                            <% end -%>
                           <% end -%>
 
                         <% end -%>
-                        
+
                       <% end -%>
                     </li>
                   <% end -%>
