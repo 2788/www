@@ -93,6 +93,8 @@ Rails.application.routes.draw do
     get '/ssl',            to: 'welcome#ssl'
     get '/partner',        to: 'welcome#partner'
 
+    get '/solutions/kodoe',                        to: 'solutions#kodoe'
+
     resources :resources, only: [] do
       collection do
         get 'plup'
