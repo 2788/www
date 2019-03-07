@@ -164,7 +164,7 @@ $(document).ready ->
     vid.pause()
     return
 
- # 导航栏菜单
+  # 导航栏菜单
   if isMobile
     $('.panel').on 'touchstart', ->
       $(this).find('.panel-sort').toggleClass('actived')
@@ -178,6 +178,23 @@ $(document).ready ->
       $(this).addClass('open')
     , ->
       $(this).removeClass('open')
+
+  # kodoe 页面客户案例 tab
+  # /solutions/kodoe
+  if isMobile
+    $('.features-kodoe-case .kodoe-case-nav a').on 'touchstart', (e) ->
+      e.preventDefault()
+      $(this).tab 'show'
+    $('.features-kodoe-case .nav-stacked a').on 'touchstart', (e) ->
+      e.preventDefault()
+      $(this).tab 'show'
+  else
+    $('.features-kodoe-case .kodoe-case-nav a').hover (e) ->
+      e.preventDefault()
+      $(this).tab 'show'
+    $('.features-kodoe-case .nav-stacked a').hover (e) ->
+      e.preventDefault()
+      $(this).tab 'show'
 
   # dropdown menu scroll or not
   $services = $('.services-menu')

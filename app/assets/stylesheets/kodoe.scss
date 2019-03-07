@@ -1,0 +1,413 @@
+.hero-kodoe {
+  margin-bottom: 0 !important;
+  background-image: image-url("banner/banner-kodoe.jpg") !important;
+  .middle-container {
+    top: 45% !important;
+    .desc {
+      margin-top: 0.30rem;
+    }
+    .mg-t-0 {
+      margin-top: 0;
+    }
+    .actions {
+      margin-top: 0.30rem;
+    }
+  }
+}
+
+.kodoe-nav {
+  margin-bottom: 0.30rem;
+  background-color: #F3F3F3;
+  .nav.nav-tabs {
+    border-bottom: none;
+    li {
+      a {
+        font-size: 0.18rem;
+        line-height: 0.80rem;
+      }
+      &:hover,
+      &.active:hover {
+        background-color: #FFF;
+        a {
+          color: #61ADE8;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.features-kodoe-eight {
+  .thumbnail {
+    min-height: 1.50rem;
+    .caption {
+      h1 {
+        margin-bottom: 0.10rem;
+        font-size: 0.30rem;
+        color: #61ADE8;
+        text-align: center;
+      }
+      p {
+        margin: 0.05rem 0;
+        font-size: 0.18rem;
+        color: #888;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.features-kodoe-case {
+  padding-bottom: 0.80rem;
+  .intro {
+    margin-bottom: 0.80rem;
+  }
+  .kodoe-case-nav {
+    li {
+      width: 200px;
+      background-color: transparent;
+      a {
+        margin-left: 0.30rem;
+        margin-right: 0.30rem;
+        border-top-left-radius: 0.20rem;
+        border-top-right-radius: 0.20rem;
+        font-size: 0.18rem;
+        color: #333;
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          bottom: 0 !important;
+          border-bottom-width: 0.40rem !important;
+          border-bottom-color: #E7E7E7;
+          border-bottom-style: solid;
+          background-color: transparent;
+          -webkit-transition: none;
+          -moz-transition: none;
+          transition: none;
+        }
+        &:before {
+          left: -0.30rem;
+          border-left: 0.33rem solid transparent;
+        }
+        &:after {
+          right: -0.30rem;
+          border-right: 0.33rem solid transparent;
+        }
+      }
+      &.tab-xinmeiti {
+        z-index: 3;
+        a {
+          background-color: #E7E7E7;
+        }
+      }
+      &.tab-anfang {
+        left: -50px;
+        z-index: 2;
+        a {
+          background-color: #DADADA;
+          &:before,
+          &:after {
+            border-bottom-color: #DADADA;
+          }
+        }
+      }
+      &.tab-jinrong {
+        left: -100px;
+        z-index: 1;
+        a {
+          background-color: #E7E7E7;
+        }
+      }
+      &:hover {
+        a {
+          color: #66BAFF;
+          border-top-left-radius: 0.20rem !important;
+          border-top-right-radius: 0.20rem !important;
+        }
+      }
+      &.active {
+        z-index: 4;
+        a {
+          border-top-left-radius: 0.20rem !important;
+          border-top-right-radius: 0.20rem !important;
+          color: #FFF !important;
+          background-color: #66BAFF !important;
+          &:before,
+          &:after {
+            border-bottom-color: #66BAFF;
+          }
+        }
+      }
+    }
+  }
+  .tab-content {
+    height: 6.60rem;
+    position: relative;
+    margin-top: 0;
+    .nav-stacked {
+      width: 140px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      -moz-transform: translate(0, -50%);
+      -webkit-transform: translate(0, -50%);
+      -o-transform: translate(0, -50%);
+      z-index: 1;
+      li {
+        margin: 0.20rem 0;
+        text-align: center;
+        a {
+          color: #FFF;
+          font-size: 0.18rem;
+          border-radius: 0.5rem 0 0 0.5rem;
+          background-color: #4B4B4B;
+        }
+        &.active {
+          a {
+            background-color: #66BAFF;
+          }
+        }
+      }
+    }
+    .row {
+      height: 100%;
+      .col-case {
+        height: 100%;
+        padding: 0;
+      }
+    }
+    section {
+      height: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      &.tab-pane-xinmeiti {
+        background-image: image-url("kodoe/image-xinmeiti.jpg");
+      }
+      &.tab-pane-anfang {
+        background-image: image-url("kodoe/image-anfang.jpg");
+      }
+      &.tab-pane-jinrong {
+        background-image: image-url("kodoe/image-jinrong.jpg");
+      }
+    }
+    .col-left {
+      margin-top: 0.80rem;
+      margin-bottom: 0.30rem;
+      text-align: center;
+      h2 {
+        margin: 0;
+        color: #FFF;
+      }
+    }
+    .col-right {
+      width: calc(100% - 180px);
+      position: absolute;
+      top: 50%;
+      max-height: 90%;
+      overflow-y: auto;
+      transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+      -moz-transform: translate(0, -50%);
+      -webkit-transform: translate(0, -50%);
+      -o-transform: translate(0, -50%);
+      h4 {
+        margin: 0.20rem 0;
+        color: #65BBFE;
+        font-size: 0.16rem;
+      }
+      .desc {
+        margin: 0.05rem 0;
+        color: #FFF;
+      }
+    }
+  }
+}
+
+.features-kodoe-cloud {
+  .cloud-col {
+    text-align: center;
+  }
+  .divide-line {
+    width: 2px;
+    position: relative;
+    left: calc(50% - 1px);
+    margin-top: 50%;
+    margin-bottom: 0;
+    background-color: #E8E8E8;
+    line-height: 2.50rem;
+    display: inline-block;
+  }
+}
+
+.features-kodoe-server {
+  .thumbnail .caption {
+    h4 {
+      margin-bottom: 0.20rem;
+      font-size: 0.24rem;
+    }
+    p {
+      margin: 0.05rem 0;
+      text-align: center;
+    }
+  }
+
+  .btn-container {
+    text-align: center;
+
+    .btn.btn-primary {
+      border: none;
+      border-radius: 0.20rem;
+      background-color: #51A5FD;
+
+      &:hover {
+        color: #FFF;
+        -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+        -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+        box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      }
+    }
+  }
+}
+
+.features-kodoe-client {
+  .col-client {
+    margin-top: 0.30rem;
+    margin-bottom: 0.30rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features-kodoe-cloud {
+    .divide-line {
+      margin-top: 70%;
+      line-height: 2.00rem;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-kodoe-cloud {
+    .divide-line {
+      line-height: 1.80rem;
+    }
+  }
+}
+
+@media (width: 768px) {
+  .features-kodoe-case {
+    .kodoe-case-nav {
+      li {
+        a {
+          &:before,
+          &:after {
+            border-bottom-width: 0.50rem !important;
+          }
+        }
+      }
+    }
+  }
+  .features-kodoe-cloud {
+    .divide-line {
+      line-height: 2.50rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features-kodoe-eight {
+    .thumbnail {
+      height: 1.80rem;
+      .caption {
+        h1 {
+          font-size: 0.22rem;
+        }
+        p {
+          font-size: 0.14rem;
+        }
+      }
+    }
+  }
+  .features-kodoe-case {
+    .kodoe-case-nav {
+      li {
+        width: 160px;
+        display: table-cell !important;
+        a {
+          margin-bottom: 0;
+          font-size: 0.18rem;
+          &:before,
+          &:after {
+            border-bottom-width: 0.50rem !important;
+          }
+        }
+        &.tab-anfang {
+          left: -20px;
+        }
+        &.tab-jinrong {
+          left: -40px;
+        }
+      }
+    }
+    .tab-content {
+      height: 8.00rem;
+      .nav-stacked {
+        width: 100px;
+        top: auto;
+        bottom: 0;
+        transform: none;
+        -ms-transform: none;
+        -moz-transform: none;
+        -webkit-transform: none;
+        -o-transform: none;
+        li {
+          margin: 0.10rem 0;
+        }
+      }
+      .row {
+        .col-case {
+          height: auto;
+          .col-left {
+            margin-top: 0.50rem;
+            margin-bottom: 0.10rem;
+          }
+          .col-right {
+            width: 80%;
+            position: relative;
+            top: 0;
+            left: 10%;
+            max-height: 100%;
+            transform: none;
+            -ms-transform: none;
+            -moz-transform: none;
+            -webkit-transform: none;
+            -o-transform: none;
+          }
+          &.col-content {
+            height: calc(100% - 2.30rem);
+          }
+        }
+      }
+    }
+  }
+  .features-kodoe-cloud {
+    .cloud-col {
+      margin-bottom: 0.30rem;
+      img {
+        width: 60%;
+      }
+    }
+  }
+
+  .features-kodoe-server {
+    .thumbnail {
+      height: 3.20rem;
+    }
+  }
+}

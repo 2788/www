@@ -1,0 +1,173 @@
+<%# banner %>
+<div class="jumbotron hero hero-kodoe">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h2><%= I18n.t("views.solutions.kodoe.banner.title") -%></h2>
+          <p class="desc"><%= I18n.t("views.solutions.kodoe.banner.desc1") -%></p>
+          <p class="desc mg-t-0"><%= I18n.t("views.solutions.kodoe.banner.desc2") -%></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
+            <%= link_to "咨询详情", "https://jinshuju.net/f/9nMcnt", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 导航条 %>
+<div class="kodoe-nav hidden-xs">
+  <div class="tabs">
+    <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+      <% I18n.t("views.solutions.kodoe.middlebar").each do |linkbar| %>
+        <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href] -%></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<%# 八年云存储部署经验为您保驾护航 %>
+<div class="features features-less features-kodoe-eight">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.solutions.kodoe.eight.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.solutions.kodoe.eight.cols").each do |col| -%>
+        <div class="col-md-3 col-sm-4 col-xs-4">
+          <div class="thumbnail">
+            <div class="caption">
+              <h1><%= col[:title] -%></h1>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 客户案例 %>
+<div class="features features-less features-cases features-kodoe-case">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.solutions.kodoe.case.title") -%></h2>
+    </div>
+
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar kodoe-case-nav" role="tablist">
+        <% I18n.t("views.solutions.kodoe.case.tabs").each do |tab| -%>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data: { toggle: "tab" } -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.solutions.kodoe.case.sections").each do |sec| -%>
+          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+            <div class="tabs">
+              <ul class="nav nav-pills nav-stacked" role="tablist">
+                <% sec[:tabs].each do |tab| -%>
+                  <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data: { toggle: "tab" } -%></li>
+                <% end -%>
+              </ul>
+              <div class="tab-content">
+                <% sec[:sections].each do |companySec| -%>
+                  <section class="<%= companySec[:class] -%>" id="<%= companySec[:id] -%>">
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3 col-xs-12 col-case">
+                        <div class="col-left"><h2><%= companySec[:title] -%></h2></div>
+                      </div>
+                      <div class="col-md-9 col-sm-9 col-xs-12 col-case col-content">
+                        <div class="col-right">
+                          <% companySec[:content].each do |item| -%>
+                            <h4><%= item[:title] -%></h4>
+                            <% item[:descs].each do |desc| -%>
+                              <p class="desc"><%= desc -%></p>
+                            <% end -%>
+                          <% end -%>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                <% end -%>
+              </div>
+            </div>
+          </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云上智能 %>
+<div class="features features-less features-kodoe-cloud">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.solutions.kodoe.cloud.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.solutions.kodoe.cloud.desc") -%></p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5 col-sm-5 col-xs-12 cloud-col">
+        <div class="thumbnail">
+          <%= image_tag "kodoe/image-shujuchuli.jpg", alt: "数据处理", title: "数据处理", width: "100%" -%>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-0 hidden-xs">
+        <p class="divide-line">&nbsp;</p>
+      </div>
+      <div class="col-md-5 col-sm-5 col-xs-12 cloud-col">
+        <div class="thumbnail">
+          <%= image_tag "kodoe/image-rengongzhineng.jpg", alt: "人工智能", title: "人工智能", width: "100%" -%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 1 对 1 专属服务 %>
+<div class="features features-less features-cases features-kodoe-server">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.solutions.kodoe.server.title") -%></h2>
+      <p class="desc"><%= I18n.t("views.solutions.kodoe.server.desc") -%></p>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.solutions.kodoe.server.cols").each do |col| -%>
+        <div class="col-md-3 col-sm-6 col-xs-6">
+          <div class="thumbnail">
+            <%= image_tag col[:image], alt: col[:title], title: col[:title], width: 100 -%>
+            <div class="caption">
+              <h4><%= col[:title] -%></h4>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 btn-container">
+        <%= link_to "立即申请", "https://jinshuju.net/f/9nMcnt", target: "_blank", class: "btn btn-lg btn-primary m-b-xs" -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 他们都在用七牛云 %>
+<div class="features features-less features-kodoe-client">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h2 class="title"><%= I18n.t("views.solutions.kodoe.client.title") -%></h2>
+      </div>
+      <% I18n.t("views.solutions.kodoe.client.cols").each do |col| -%>
+        <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+          <%= image_tag col[:image], alt: col[:name], title: col[:name], width: col[:width] -%>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>

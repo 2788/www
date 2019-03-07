@@ -3969,6 +3969,267 @@ en:
               desc: "集成七牛云 AI 、图片、音视频等多媒体数据处理服务。同时支持自定义数据处理应用，兼容接口协议即可集成。只需在文件的访问 URL 之后附加上对应的处理命令以及请求参数，即可实现对存储数据灵活的访问并完成加工处理。"
         client:
           title: "客户案例"
+    solutions:
+      kodoe:
+        banner:
+          title: "私有云行业解决方案"
+          desc1: "为传统媒体、安防、金融等行业用户提供一站式专属解决方案"
+          desc2: "帮助企业快速实现云转型"
+        middlebar:
+          - title: "关于七牛私有云"
+            class: ""
+            href: "#features-kodoe-eight"
+          - title: "客户案例"
+            class: ""
+            href: "#features-kodoe-case"
+          - title: "云上智能"
+            class: ""
+            href: "#features-kodoe-cloud"
+          - title: "一对一专属服务"
+            class: ""
+            href: "#features-kodoe-server"
+          - title: "他们都在用七牛云"
+            class: ""
+            href: "#features-kodoe-client"
+        eight:
+          title: "八年云存储部署经验为您保驾护航"
+          cols:
+            - title: "7 天"
+              desc: "迁移方案"
+            - title: "EB 级"
+              desc: "扩展能力"
+            - title: "Tb 级"
+              desc: "带宽承载能力"
+            - title: "60 %"
+              desc: "成本节省"
+            - title: "30 分钟"
+              desc: "私有云部署"
+            - title: "12 个 9"
+              desc: "安全系数"
+            - title: "定制化"
+              desc: "数据框架"
+            - title: "1 对 1"
+              desc: "专属服务"
+        case:
+          title: "客户案例"
+          tabs:
+            - name: "新媒体"
+              class: "tab-xinmeiti active"
+              href: "#tab-case-xinmeiti"
+            - name: "安防监控"
+              class: "tab-anfang"
+              href: "#tab-case-anfang"
+            - name: "金融"
+              class: "tab-jinrong"
+              href: "#tab-case-jinrong"
+          sections:
+            - id: "tab-case-xinmeiti"
+              class: "tab-pane-xinmeiti tab-pane fade in active"
+              tabs:
+                - name: "人民网"
+                  class: "active"
+                  href: "#tab-company-renminwang"
+                - name: "江苏电视台"
+                  class: ""
+                  href: "#tab-company-jiangsutv"
+              sections:
+                - id: "tab-company-renminwang"
+                  class: "tab-pane fade in active"
+                  title: "人民网"
+                  content:
+                    - title: "客户痛点："
+                      descs:
+                        - "海量存储瓶颈：传统方案无法满足日益增长的计算与高并发需求"
+                        - "数据安全问题：传统方案系统稳定性较差、数据保护能力不完善"
+                        - "集团运营需求：缺少建设供子公司与最终客户共享的一站式媒体云经验"
+                    - title: "解决方案："
+                      descs:
+                        - "稳定的分布式集群与双活技术，无需担心扩容问题，保障数据万无一失"
+                        - "基于七牛多年的对象存储运营经验，帮助企业构建完整的用户侧运营系统"
+                        - "精细化的大数据服务，帮助企业满足网信办对媒体云的各类运营监管要求"
+                        - "七牛完善的 SDK 生态，满足用户各类功能需求，帮助企业提供最佳用户体验"
+                    - title: "实现价值："
+                      descs:
+                        - "打破原有数据孤岛格局，节省系统调度资源，完善系统稳定性与数据保护能力"
+                        - "建设子公司与最终用户共享的一站式媒体云，构建了完整的用户侧运营系统"
+                        - "新业务上线时间缩短 85%，新闻制作及时效性提升 60%，媒体资产回迁效率提升 60%"
+                - id: "tab-company-jiangsutv"
+                  class: "tab-pane fade"
+                  title: "江苏电视台"
+                  content:
+                    - title: "客户痛点："
+                      descs:
+                        - "变革迫在眉睫：原有形式已难以满足大众需求，需从技术层面改变电视生产的运营模式与管理机制"
+                        - "效率低下问题：手动管理与资源调整效率低下，制作与发布时间冗长，难以满足信息爆发的形势"
+                        - "数据信息孤岛：不同部门之间存在信息孤岛问题，没有统一高效的平台进行统一管理调配"
+                        - "粗旷运营模式：数据混乱，缺少统一标准，难以进行加工分析，严重影响数据化运营进程"
+                    - title: "解决方案："
+                      descs:
+                        - "建立云平台资源池，打破原有数据孤岛格局，提高资源利用率，节省系统调度资源"
+                        - "实现服务自动化，一键式部署资源配置，真正实现新业务分钟级上线"
+                        - "提供丰富的多媒体数据加工和处理功能，图片和音视频处理效率显著提成"
+                        - "与 Hadoop、Spark 等大数据处理平台无缝对接，为打造数据驱动业务模式提供有力支撑"
+                    - title: "实现价值："
+                      descs:
+                        - "高效制作：打通各平台的信息流通，随时挑选新闻素材、编辑加工内容、传输发布节目"
+                        - "实时交互：将云平台与全媒体演播室相结合形成全即时、全互动的立体传播格局"
+                        - "用户分析：对用户行为信息进行深度分析与挖掘，更深层次地理解客户行为和消费趋势"
+            - id: "tab-case-anfang"
+              class: "tab-pane-anfang tab-pane fade"
+              tabs:
+                - name: "中移物联"
+                  class: "active"
+                  href: "#tab-company-zhongyiwulian"
+                - name: "海康萤石"
+                  class: ""
+                  href: "#tab-company-haikangyingshi"
+              sections:
+                - id: "tab-company-zhongyiwulian"
+                  class: "tab-pane fade in active"
+                  title: "中移物联"
+                  content:
+                    - title: "客户痛点："
+                      descs:
+                        - "原有的开源存储系统集群规模越大稳定性越差，难以维持大体量的存储系统"
+                        - "原有系统无法满足现有业务对数据的快速写入、快速回收等关键需求"
+                        - "原有系统维护服务严重滞后，服务质量差，运营效率低下"
+                    - title: "解决方案："
+                      descs:
+                        - "可利用现有服务器 + 七牛私有云存储搭建高性能对象存储"
+                        - "搭建云平台后真正实现 PB 级在线扩容，满足客户长期容量要求"
+                        - "数据误删后的可实现快速回收机制，节省了总体拥有成本"
+                        - "多地实现数据就近落地，重要数据实现互备，保障数据高可用"
+                    - title: "实现价值："
+                      descs:
+                        - "七牛云企业服务团队与客户一起完成方案规划，并进行了充分的测试验证，最终采用了性能卓越、"
+                        - "稳定经济的七牛私有云存储替换原有存储。针对监控场景中空间回收、快速扩容高等要求，"
+                        - "七牛私有云存储能够提供更为成熟高效的解决方案。"
+                - id: "tab-company-haikangyingshi"
+                  class: "tab-pane fade"
+                  title: "海康萤石"
+                  content:
+                    - title: "客户痛点："
+                      descs:
+                        - "传统存储、媒体服务器并立运行，系统瓶颈明显"
+                        - "原有存储技术可扩展性较差，难以满足视频数据爆炸的今日"
+                        - "传统专用存储设备成本较高，且不采用 EC 纠删码技术，可靠性较差"
+                        - "市场需求推动传统商业模式改革，革新技术占领市场高点"
+                    - title: "解决方案："
+                      descs:
+                        - "存储，媒体服务器分离部署，媒体服务器不再转发视频流，视频流直接落存储，消除系统瓶颈"
+                        - "分布式对象存储支持扩展到 EB 级别，并采用 scale-out 存储架构，可支持更多的摄像头路数"
+                        - "采用通用 x86 服务器，相对于传统专用存储设备成本降低"
+                        - "基于 EC 纠删码技术，降低存储成本同时提升可靠性"
+                        - "集中存储便于跨地域，时间，进行视频智能分析，公有云部署便于移动平台多种场景在线视频浏览"
+                        - "创新性提供边缘存储&边缘计算功能，实现监控视频去 SD 化、带宽利用率平均提升 30% 以上"
+                    - title: "实现价值："
+                      descs:
+                        - "在消除原有各类痛点的同时，降低原有存储设备成本，同时利用边缘存储与边缘计算技术提高带宽利用率。真"
+                        - "正实现监控视频去 SD 化，解决了传统监控设备的 SD 或 NVR 空间有限，成本较高，读写寿命短，数据安全，"
+                        - "无法保障且运维复杂等问题。厂商无需再担心底层关键技术，专心业务层拓展。"
+            - id: "tab-case-jinrong"
+              class: "tab-pane-jinrong tab-pane fade"
+              tabs:
+                - name: "平安银行"
+                  class: "active"
+                  href: "#tab-company-pinganyinhang"
+                - name: "凤凰金融"
+                  class: ""
+                  href: "#tab-company-fenghuangjinrong"
+              sections:
+                - id: "tab-company-pinganyinhang"
+                  class: "tab-pane fade in active"
+                  title: "平安银行"
+                  content:
+                    - title: "客户痛点："
+                      descs:
+                        - "访问困难：传统数据库无法满足上亿文件的查询需求,访问效率极低"
+                        - "扩容问题：原有存储无法满足爆炸式增长的线性透明扩容需求"
+                        - "成本高昂：传统存储方案投入成本极高，前期投入资金庞大"
+                        - "运维艰难：原有 GlusterFS 系统稳定性不佳，运维压力极大"
+                    - title: "解决方案："
+                      descs:
+                        - "提供 UDMP（非结构化数据管理平台），实现 10 亿级别的影像标签数据管理和”秒级”查询"
+                        - "业内领先的对象存储服务完美满足线性扩容需求，无需担心扩容问题"
+                        - "提供整体解决方案，每年为企业节省数百万存储成本"
+                        - "提供高可靠远程代维服务，帮助企业解决运维困难问题"
+                        - "引入鉴黄、OCR 等视觉服务，保障数据安全，满足各类监管需求"
+                    - title: "实现价值："
+                      descs:
+                        - "提供支持百亿级业务属性存取的数据管理平台（UDMP），确保了平安银行各业务系统平滑在线迁移，实现了"
+                        - "行内影像数据的统一存储、处理和管理，解决了业务系统之间数据实时共享和快速访问响应。"
+                - id: "tab-company-fenghuangjinrong"
+                  class: "tab-pane fade"
+                  title: "凤凰金融"
+                  content:
+                    - title: "客户痛点："
+                      descs:
+                        - "场景复杂：双录系统诉求复杂，需要现场、远程、自主等业务模式"
+                        - "业务效率低：在符合监管要求等同时，提高业务办理效率和质检效率"
+                        - "投资大：采用自建双录系统，不仅投资大周期长，也无法满足业务快速上线"
+                    - title: "解决方案："
+                      descs:
+                        - "实时音视频云："
+                        - "支持多种双录模式（远程双录，自助双录）"
+                        - "支持多种风险揭示方式（图片、视频、语音、PPT ）"
+                        - "后台管理系统，支持检索、回放、审核"
+                        - " "
+                        - "监管需求与易用性："
+                        - "实时叠加水印、时间戳、防止篡改"
+                        - "朗读声明及电子签名，留痕符合监管要求"
+                        - "开放 SDK ，可与客户 APP 快速集成"
+                    - title: "实现价值："
+                      descs:
+                        - "AI 赋能金融场景、人脸识别及 OCR 技术"
+                        - "实时监控不合规信息及时预警"
+                        - "加强风控，符合监管要求"
+                        - "提升业务效率，降低运营成本"
+        cloud:
+          title: "云上智能"
+          desc: "助力业务高效运作，挖掘数据潜在价值"
+        server:
+          title: "1 对 1 专属服务"
+          desc: "结合公司业务场景，定制专属解决方案"
+          cols:
+            - title: "专业咨询"
+              desc: "1 对 1 架构师技术咨询与培训"
+              image: "kodoe/icon-server-1.png"
+            - title: "迁移指导"
+              desc: "专属人员全程指导迁移方案"
+              image: "kodoe/icon-server-2.png"
+            - title: "7 X 24h 服务"
+              desc: "7 X 24 小时 on call VIP 技术支持服务"
+              image: "kodoe/icon-server-3.png"
+            - title: "无忧售后"
+              desc: "质量巡检报告及运营巡检报告"
+              image: "kodoe/icon-server-4.png"
+        client:
+          title: "他们都在用七牛云"
+          cols:
+            - name: "凡普金科"
+              image: "kodoprivate/client-logo-1.png"
+              width: "100%"
+            - name: "江苏卫视"
+              image: "kodoprivate/client-logo-2.png"
+              width: "100%"
+            - name: "平安银行"
+              image: "kodoprivate/client-logo-3.png"
+              width: "100%"
+            - name: "人民网"
+              image: "kodoprivate/client-logo-4.png"
+              width: "100%"
+            - name: "中国移动"
+              image: "kodoprivate/client-logo-5.png"
+              width: "100%"
+            - name: "中国石油"
+              image: "kodoprivate/client-logo-6.png"
+              width: "100%"
+            - name: "萤石"
+              image: "kodoprivate/client-logo-7.png"
+              width: "100%"
+            - name: "爱立信"
+              image: "kodoprivate/client-logo-8.png"
+              width: "34%"
   navbar:
     logo: "img-horizontal-white-en.png"
     product: Products
@@ -4320,6 +4581,10 @@ en:
       title: 视频 AI 边缘分析解决方案 - 七牛云
       keywords: 边缘存储，边缘计算，边缘计算平台，边缘计算服务，边缘计算 AI，边缘计算视频分析，视频 AI 边缘计算，视频 AI 边缘计算解决方案，图片 AI 边缘计算解决方案，图像分析边缘解决方案
       description: 面向视频 AI 行业，视频数据通过边缘可靠链路高速上传并由边缘计算服务及时处理，可极大降低关键业务延迟，加速视频 AI 在安防监控，智能商业等多领域落地。
+    solutions_kodoe:
+      title: 私有云解决方案_私有云搭建方案 - 七牛云
+      keywords: 私有云解决方案，私有云搭建方案，企业私有云解决方案，私有云解决方案，私有云存储方案
+      description: 七牛私有云解决方案为传统媒体、安防、金融等行业企业提供一站式专属解决方案，帮助企业快速实现云转型。
     welcome_user_agreement:
       title: 用户服务协议 - 七牛云
       keywords:
