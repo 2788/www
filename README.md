@@ -76,7 +76,8 @@ app
     ├── layouts # 页面框架，包括页面的 head, foot, 侧边悬浮框都在这里
     ├── niudays # 小牛汇共享日
     ├── prices # 价格
-    ├── products # 产品页面
+    ├── products # 产品落地页
+    ├── solutions # 解决方案落地页
     ├── recommendations # 客户推荐
     ├── resources
     └── welcome # 其他页面，包括 index 首页等
