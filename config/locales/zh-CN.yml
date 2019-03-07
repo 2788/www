@@ -4039,7 +4039,7 @@ zh-CN:
       kodoe:
         banner:
           title: "私有云行业解决方案"
-          desc1: "为传统媒体、安防、金融等行业用户提供一站式专属解决方案"
+          desc1: "为传统媒体、安防、金融等行业用户提供一站式专属解决方案，"
           desc2: "帮助企业快速实现云转型"
         middlebar:
           - title: "关于七牛私有云"
@@ -4502,15 +4502,15 @@ zh-CN:
         # - name: privatization
         #   label: 私有云存储解决方案
         #   desc: 可定制化的数百 EB 级别、高可靠、强安全的存储系统
-        #   type: solution
+        #   type: solution_hash
         - name: qualityctrl
           label: 应用质量监控解决方案
           desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
-          type: solution
+          type: solution_hash
         - name: security
           label: 安防解决方案
           desc: 灵活部署，满足不同安防场景互联网远程监控需求
-          type: solution
+          type: solution_hash
       - cols:
         - name: pili_livequiz
           label: 直播竞答解决方案
@@ -4519,27 +4519,27 @@ zh-CN:
         - name: intelligence
           label: 智能硬件与物联网解决方案
           desc: 满足智能硬件厂商各应用场景下云端计算需求
-          type: solution
+          type: solution_hash
       - cols:
-        - name:
-          label:
-          desc:
-          type:
+        - name: kodoe
+          label: 私有云行业解决方案
+          desc: 为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
+          type: solution_page
         - name: internet
           label: 互联网与移动互联网解决方案
           desc: 为互联网初创企业量身定制，一站式云计算服务平台
-          type: solution
+          type: solution_hash
       # BO-5466 隐藏 智能云相册解决方案 项
       # https://jira.qiniu.io/browse/BO-5466
       # - cols:
       #   - name: album
       #     label: 智能云相册解决方案
       #     desc: 满足各场景照片智能分类需求，提供与手机ROM深度定制服务
-      #     type: solution
+      #     type: solution_hash
       #   - name: internet
       #     label: 互联网与移动互联网解决方案
       #     desc: 为互联网初创企业量身定制，一站式云计算服务平台
-      #     type: solution
+      #     type: solution_hash
   partners:
     - path: cooperation/client-3w-highlight@2x.png
       desc: 3w
