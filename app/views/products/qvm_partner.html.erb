@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td><span>新用户 | 首单奖励</span><br>新用户：被邀请用户从未付费买过指定包年包月产品</td>
-          <td>
+          <td class="desc-td">
             <div class="td">
               被邀请用户第一次下单购买指定包年包月（限 1 年及 1 年以内）产品
               <%= content_tag :strong, "?", data: { toggle: "tooltip", placement: "right" }, title: "指定包年包月产品包括：云主机、云硬盘、公网 IP、负载均衡、高速通道、RDS 及 Redis" -%>
@@ -37,7 +37,7 @@
         </tr>
         <tr>
           <td><span>老用户 | 首购奖励</span><br>老用户：被邀请用户从未付费买过该包年包月产品</td>
-          <td>
+          <td class="desc-td">
             <div class="td">
               被邀请用户首次购买该包年包月（限 1 年及 1 年以内）产品
               <%= content_tag :strong, "?", data: { toggle: "tooltip", placement: "right" }, title: "该包年包月产品：指首单之外的其他指定包年包月产品" -%>
@@ -46,7 +46,7 @@
         </tr>
         <tr>
           <td><span>老用户 | 复购续费奖励</span></td>
-          <td>
+          <td class="desc-td">
             <div class="td">
               被邀请用户复购、续费该包年包月（限 1 年及 1 年以内）产品
               <%= content_tag :strong, "?", data: { toggle: "tooltip", placement: "right" }, title: "升级订单不参与返现" -%>
@@ -65,15 +65,15 @@
       <h2 class="title">简单 3 步，成为合伙人</h2>
     </div>
     <div class="container">
-    <ul class="step-ul">
-      <a href="https://portal.qiniu.com/signup" target="_blank">
-        <li>
-          <%= image_tag "qvmpartner/icon-step-1.png", title: "七牛云主机合伙人计划 - 注册", alt: "七牛云主机合伙人计划 - 注册" -%><p class="title">注册</p><p>注册七牛云账号，完成实名认证</p>
-        </li>
-      </a>
-      <li><%= image_tag "qvmpartner/icon-step-2.png", title: "七牛云主机合伙人计划 - 推广", alt: "七牛云主机合伙人计划 - 推广" -%><p class="title">推广</p><p>获取专属推广链接，分享推广</p></li>
-      <li><%= image_tag "qvmpartner/icon-step-3.png", title: "七牛云主机合伙人计划 - 返利", alt: "七牛云主机合伙人计划 - 返利" -%><p class="title">返利</p><p>推广成功，结算并获得奖励</p></li>
-    </ul>
+      <ul class="step-ul">
+        <a href="https://portal.qiniu.com/signup" target="_blank" title="七牛云主机合伙人计划 - 注册">
+          <li>
+            <%= image_tag "qvmpartner/icon-step-1.png", title: "七牛云主机合伙人计划 - 注册", alt: "七牛云主机合伙人计划 - 注册" -%><p class="title">注册</p><p>注册七牛云账号，完成实名认证</p>
+          </li>
+        </a>
+        <li><%= image_tag "qvmpartner/icon-step-2.png", title: "七牛云主机合伙人计划 - 推广", alt: "七牛云主机合伙人计划 - 推广" -%><p class="title">推广</p><p>获取专属推广链接，分享推广</p></li>
+        <li><%= image_tag "qvmpartner/icon-step-3.png", title: "七牛云主机合伙人计划 - 返利", alt: "七牛云主机合伙人计划 - 返利" -%><p class="title">返利</p><p>推广成功，结算并获得奖励</p></li>
+      </ul>
     </div>
   </div>
 
@@ -132,6 +132,5 @@
       <%= image_tag "qvmpartner/qq-qvmpartner.jpg", title: "欢迎 QQ 扫码加入七牛云主机合伙人交流群", alt: "欢迎 QQ 扫码加入七牛云主机合伙人交流群" -%>
       <p>欢迎 QQ 扫码加入<br/>七牛云主机合伙人交流群</p>
     </div>
-    <div class="clea"></div>
   </div>
 </div>

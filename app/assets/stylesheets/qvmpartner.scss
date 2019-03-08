@@ -1,6 +1,5 @@
 .qvm-partner-page {
   ul { padding: 0 }
-  .clea { float: none }
   .jumbotron h1 { margin-top: 0; font-size: 0.50rem !important; }
   .jumbotron.hero { background-image: image-url("qvmpartner/banner-qvmpartner.jpg"); }
   .jumbotron p { margin: 0.40rem auto !important; font-size: 0.25rem !important; }
@@ -28,27 +27,30 @@
   .table tr td:nth-child(1) { display: table-cell; vertical-align: middle; }
   .table td strong { text-align: center; padding: 0.02rem; width: 0.20rem; color:#FFF; background-color:#4BA0F7; font-weight: 500; border-radius: 0.20rem; height: 0.20rem; line-height: 0.16rem; display: inline-block; margin-left: 10px; cursor: pointer; }
   .bottom-join-btn { width: 150px; margin: 0.50rem auto auto; color:#FFF !important; display: block; text-align: center; font-size: 0.18rem; background-color:#51A5FD; padding: 0.10rem 0; border-radius: 0.20rem; }
-  .td { color: #333; }
+  .td { color: #333; word-break: break-word; }
   .step-ul li { width: 30%; height: 3.00rem; margin: auto 1.667% auto 1.667%; float: left; border:#CCC solid 1px; text-align: center; padding: 0.50rem 0 0.50rem 0; border-radius: 0.20rem; background: image-url("qvmpartner/icon-step-1-hover.png") no-repeat 90% bottom; background-size: 30%; background-color:#FFF; }
   .step-ul li:nth-child(2) { background: image-url("qvmpartner/icon-step-2-hover.png") no-repeat 90% bottom; background-size: 30%; background-color:#FFF; }
   .step-ul li:nth-child(3) { background: image-url("qvmpartner/icon-step-3-hover.png") no-repeat 90% bottom; background-size: 30%; background-color:#FFF; }
   .step-ul li img { width: 30%; margin-bottom: 0.10rem; }
-  .step-ul li p { margin: 0.20rem 10px 0 10px; font-size: 0.16rem; color:#666; }
+  .step-ul li p { margin: 0.20rem 15px 0 15px; font-size: 0.16rem; color:#666; word-break: break-word; }
   .step-ul li:hover { background-color:#AAD6FF; }
-  .features { padding: 0.68rem 0 0.50rem; }
+  .features {
+    padding: 0.80rem 0 0.68rem;
+    .intro .title {
+      margin-bottom: 0.80rem;
+    }
+  }
   .footer { background-color:#51A5FD; padding: 0; display: block; height: 250px; }
   .footer img { float: left; height: 200px; margin-top: 25px; margin-left: 50px; margin-right: 20px; }
-  .rule-item h4 { font-size: 0.14rem;	padding-top: 10px; padding-bottom: 10px; font-family: inherit; font-weight: 500; line-height: 0.20rem; }
-  .rule-item p { margin: 0; padding: 0; color:#666; line-height: 0.30rem; }
+  .rule-item h4 { font-size: 0.14rem; font-family: inherit; font-weight: 500; line-height: 0.38rem; }
+  .rule-item p { margin: 0.10rem 0; padding: 0; color:#666; line-height: 0.38rem; word-break: break-word; }
   .footer p { margin-top: 75px; color:#FFF; font-size: 0.30rem; line-height: 0.50rem; }
   .features-qvmpartner-step {
     background: image-url("qvmpartner/image-step-bg.jpg") no-repeat center center;
     background-size: cover;
-
     .intro .title {
       color: #FFF;
     }
-
     .step-ul li {
       p.title {
         font-size: 0.24rem;
@@ -56,28 +58,128 @@
       }
     }
   }
-  @media screen and (min-width: 1001px) {
-    .table td { padding: 0.40rem !important; }
+  @media (min-width: 1200px) {
+    .table td {
+      &.desc-td {
+        padding-left: 1.00rem !important;
+        padding-right: 1.00rem !important;
+      }
+    }
   }
-  @media (min-width: 768px) {}
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .jumbotron {
+      h1 {
+        font-size: 0.40rem !important;
+      }
+      p, .btn-hollow {
+        font-size: 0.22rem !important;
+      }
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .jumbotron {
+      h1 {
+        font-size: 0.36rem !important;
+      }
+      p, .btn-hollow {
+        font-size: 0.22rem !important;
+      }
+    }
+    .features-qvmpartner-step {
+      .container {
+        .step-ul li {
+          p {
+            margin-left: 20px;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 1001px) {
+    .table td {
+      padding: 0.40rem !important;
+    }
+  }
   @media screen and (max-width: 1000px) and (min-width: 771px) {
     .table td { padding: 0.20rem 0.30rem !important; }
   }
   @media screen and (max-width: 770px) and (min-width: 471px) {
     .table td { padding: 0.10rem 0.20rem !important; }
     .table td strong { margin-left: 5px; }
-    .features { padding: 0.32rem 0 0.20rem; }
     .bottom-join-btn { width: 120px; }
   }
   @media screen and (max-width: 470px) and (min-width: 320px) {
     .table td { padding: 0.10rem 0.05rem !important; }
     .table td strong { margin-left: 5px; }
-    .table .tr-header td { font-size: 0.20rem; }
+    .table .tr-header td { font-size: 0.18rem; }
     .footer img { margin-left: 0px; margin-right: 10px; }
-    .features { padding: 0.20rem 0 0.20rem; }
     .bottom-join-btn { width: 120px; }
   }
-  @media screen and (max-width: 768px) {
-    .footer p { margin-top: 83px; font-size: 0.22rem; line-height: 0.60rem; }
+  @media (width: 768px) {
+    .table td {
+      &.desc-td {
+        padding-left: 0.40rem !important;
+        padding-right: 0.40rem !important;
+      }
+    }
+    .footer {
+      height: 340px;
+      .container {
+        text-align: center;
+        img {
+          float: none;
+          margin: 0.40rem 0 0 0;
+        }
+        p {
+          margin-top: 0.30rem;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .jumbotron {
+      h1 {
+        font-size: 0.30rem !important;
+      }
+      p, .btn-hollow {
+        font-size: 0.18rem !important;
+      }
+    }
+    .table td {
+      padding: 0.20rem !important;
+      &.desc-td {
+        padding-left: 0.30rem !important;
+        padding-right: 0.30rem !important;
+      }
+    }
+    .features-qvmpartner-step {
+      .container {
+        padding-left: 5px;
+        padding-right: 5px;
+        .step-ul li {
+          p {
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 0.14rem;
+          }
+        }
+      }
+    }
+    .footer {
+      height: 340px;
+      .container {
+        text-align: center;
+        img {
+          float: none;
+          margin: 0.45rem 0 0 0;
+        }
+        p {
+          margin-top: 0.30rem;
+          font-size: 0.26rem;
+          line-height: 0.45rem;
+        }
+      }
+    }
   }
 }
