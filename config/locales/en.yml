@@ -4340,7 +4340,7 @@ en:
         - name: qvmpartner
           label: 云主机合伙人计划
           path: qvm_partner
-          url: "/products/qvm/partner"
+          url: "/products/qvm/partner?entry=events-dropdown"
           type: "url"
           isHot: false
           target: "_self"
