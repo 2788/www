@@ -571,6 +571,43 @@
     }
   }
 
+  &.hero-qvmpartner-index {
+    background-image: image-url("banner/banner-qvmpartner-index.jpg");
+
+    .middle-container {
+      top: 45%;
+      text-align: center;
+
+      .banner-desc {
+        h1 {
+          margin-top: 0.30rem;
+          margin-bottom: 0.20rem;
+          font-size: 0.50rem;
+        }
+
+        p {
+          margin: 0.30rem 0 0 0;
+          font-size: 0.28rem;
+          .text-warn {
+            color: #FFCD00;
+          }
+        }
+      }
+
+      .btn-banner {
+        border: none;
+        color: #0084FF;
+        background-color: #FFF;
+        margin-top: 0.30rem;
+        &:hover {
+          -webkit-box-shadow: 4px 4px 10px #323232;
+          -moz-box-shadow: 4px 4px 10px #323232;
+          box-shadow: 4px 4px 10px #323232;
+        }
+      }
+    }
+  }
+
   &.hero-career-school {
     background-image: image-url("banner/banner-career-school.jpg");
   }
@@ -1158,6 +1195,19 @@
     &.hero-censor-index {
       .middle-container {
         top: 54%;
+      }
+    }
+
+    &.hero-qvmpartner-index {
+      .middle-container {
+        .banner-desc {
+          h1 {
+            font-size: 0.35rem;
+          }
+          p {
+            font-size: 0.20rem;
+          }
+        }
       }
     }
 

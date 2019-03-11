@@ -4382,24 +4382,28 @@ zh-CN:
           url: ""
           type: "path"
           isHot: false
+          target: ""
         - name: arch
           label: 架构师实践日
           path: arch_events
           url: ""
           type: "path"
           isHot: false
+          target: ""
         - name: ecug
           label: ECUG大会
           path: ecugcon_events
           url: "https://www.ecug.org/"
           type: "url"
           isHot: true
+          target: "_blank"
         - name: csvc
           label: 中国短视频开发者创意大赛
           path: csvc_events
           url: "http://csvc.qiniu.com"
           type: "url"
           isHot: true
+          target: "_blank"
     - group: 云扶持
       list:
         - name: goglobal
@@ -4408,12 +4412,14 @@ zh-CN:
           url: ""
           type: "path"
           isHot: false
+          target: ""
         - name: alaccelerator
           label: AI 创新扶持计划
           path: alaccelerator
           url: ""
           type: "path"
           isHot: false
+          target: ""
     - group: 云合作
       list:
         - name: partners
@@ -4422,6 +4428,14 @@ zh-CN:
           url: ""
           type: "path"
           isHot: false
+          target: ""
+        - name: qvmpartner
+          label: 云主机合伙人计划
+          path: qvm_partner
+          url: "/products/qvm/partner"
+          type: "url"
+          isHot: false
+          target: "_self"
   supports:
     - name: "developer"
       label: "开发者中心"
