@@ -4376,6 +4376,13 @@ zh-CN:
   events:
     - group: 热门活动
       list:
+        - name: qvmpartner
+          label: 云主机合伙人计划
+          path: qvm_partner
+          url: "/products/qvm/partner?entry=events-dropdown"
+          type: "url"
+          isHot: true
+          target: "_self"
         - name: niuday
           label: NIUDAY 小牛汇共享日
           path: niudays
@@ -4391,11 +4398,11 @@ zh-CN:
           isHot: false
           target: ""
         - name: ecug
-          label: ECUG大会
+          label: ECUG 大会
           path: ecugcon_events
           url: "https://www.ecug.org/"
           type: "url"
-          isHot: true
+          isHot: false
           target: "_blank"
         - name: csvc
           label: 中国短视频开发者创意大赛
@@ -4429,13 +4436,6 @@ zh-CN:
           type: "path"
           isHot: false
           target: ""
-        - name: qvmpartner
-          label: 云主机合伙人计划
-          path: qvm_partner
-          url: "/products/qvm/partner?entry=events-dropdown"
-          type: "url"
-          isHot: false
-          target: "_self"
   supports:
     - name: "developer"
       label: "开发者中心"
