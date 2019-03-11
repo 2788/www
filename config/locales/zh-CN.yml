@@ -4398,7 +4398,7 @@ zh-CN:
           isHot: false
           target: ""
         - name: ecug
-          label: ECUG大会
+          label: ECUG 大会
           path: ecugcon_events
           url: "https://www.ecug.org/"
           type: "url"
