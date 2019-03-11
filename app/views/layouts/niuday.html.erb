@@ -173,7 +173,7 @@
                         <%= content_tag :p, '', class: "hidden-xs" -%>
                       <% end %>
                       <% elsif unit[:type] == "url" -%>
-                      <%= link_to(unit[:url], {target: "_blank"}) do -%>
+                      <%= link_to(unit[:url], {target: unit[:target]}) do -%>
                         <h4 class="<%= unit[:name] -%>">
                           <%= raw(unit[:label]) -%>
                           <% if unit[:isHot] -%><i class="hot-icon"></i><% end -%>

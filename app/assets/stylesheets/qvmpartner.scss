@@ -5,7 +5,12 @@
   .jumbotron p { margin: 0.40rem auto !important; font-size: 0.25rem !important; }
   .jumbotron p strong { color: #FFCD00; }
   .btn-hollow { color: #0084FF; background-color: #FFF; border-color: #FFF; }
-  .btn-hollow:hover, .btn-hollow:focus { color: #0084FF; }
+  .btn-hollow:hover, .btn-hollow:focus {
+    color: #0084FF;
+    -webkit-box-shadow: 4px 4px 10px #323232;
+    -moz-box-shadow: 4px 4px 10px #323232;
+    box-shadow: 4px 4px 10px #323232;
+  }
   .btn-lg { font-size: 0.24rem; }
   .table { border-left: 1px solid #DDD; border-right: 1px solid #DDD; border-bottom: 1px solid #DDD; }
   .table {
