@@ -100,6 +100,27 @@
         s.parentNode.insertBefore(hm, s);
       })();
     </script>
+    <script>
+      // 自动推送新的 url 链接到百度资源平台
+      // https://jira.qiniu.io/browse/BO-6748
+      // https://ziyuan.baidu.com/linksubmit/index
+      (function() {
+        var hostname = window.location.hostname;
+        var domain = hostname.split('.').slice(-2).join('.');
+        if (domain && domain !== 'localhost' && domain.indexOf('qiniu.io') < 0) {
+          // 非 localhost 或测试环境（*.qiniu.io）
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+        }
+      })();
+    </script>
     <script src="https://mars-assets.qnssl.com/stalker.js"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.8.0/highlight.min.js"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.8.0/languages/go.min.js"></script>
