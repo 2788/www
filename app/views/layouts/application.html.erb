@@ -692,14 +692,10 @@
       })();
     </script>
     <script>
-      // 自动推送新的 url 链接到百度资源平台
-      // https://jira.qiniu.io/browse/BO-6748
-      // https://ziyuan.baidu.com/linksubmit/index
       (function() {
         var hostname = window.location.hostname;
         var domain = hostname.split('.').slice(-2).join('.');
         if (domain && domain !== 'localhost' && domain.indexOf('qiniu.io') < 0) {
-          // 非 localhost 或测试环境（*.qiniu.io）
           var bp = document.createElement('script');
           var curProtocol = window.location.protocol.split(':')[0];
           if (curProtocol === 'https') {
