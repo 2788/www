@@ -18,6 +18,8 @@ class Position < ApplicationRecord
 
   scope :office, -> { where(:category => 6) }
 
+  scope :operate, -> { where(:category => 7) }
+
   CATEGORIES = {
     1 => "技术",
     2 => "市场",
@@ -25,6 +27,7 @@ class Position < ApplicationRecord
     4 => "设计",
     5 => "销售",
     6 => "职能",
+    7 => "运营"
   }
 
   DEPARTMENTSMAP = {

@@ -276,8 +276,8 @@ video {
   .nav.nav-tabs>li {
     float: none;
     display: inline-block;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
     cursor: pointer;
 
     img {
@@ -305,6 +305,9 @@ video {
 
   .nav>li>img {
     margin-bottom: 15px;
+    &.m-b-20px {
+      margin-bottom: 20px;
+    }
   }
 
   .nav.nav-tabs>li::before {
@@ -464,6 +467,20 @@ video {
   .features-career.features-pbt {
     .col-pbt-item {
       min-height: 2.50rem;
+    }
+  }
+  .features-positions {
+    .container .row {
+      .social-interview-col {
+        padding: 0;
+      }
+    }
+    &.features-positions-social {
+      .container .row {
+        &>div {
+          height: 2.00rem;
+        }
+      }
     }
   }
 }

@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div class="features features-positions">
+<div class="features features-positions features-positions-social">
   <div class="container">
     <div class="intro">
       <h3 class="title">福利情况</h3>
@@ -64,11 +64,11 @@
         <h4 class="title text-center">简历投递</h4>
         <p class="text-left">发送个人简历到：hr@qiniu.com，如果邮件正文有简单的自我介绍和求职信就更好了~</p>
       </div>
-      <div class="col-sm-6 text-center">
+      <div class="col-sm-6 col-xs-12 text-center">
         <div class="col-sm-3 hidden-xs text-center" style="padding-top:0.9rem">
           <%= image_tag "career/arrow.png", alt: "箭头", width: "100%" %>
         </div>
-        <div class="col-sm-6 col-xs-12 text-center">
+        <div class="col-sm-6 col-xs-12 text-center social-interview-col">
           <%= image_tag "career/icon-mianshiyaoqing.png", alt: "面试邀约", width: "50" %>
           <h4 class="title text-center">面试邀约</h4>
           <p class="text-left">我们会在一周的时间内，电话联系简历通过筛选的候选人，安排面试；</p>
@@ -119,6 +119,10 @@
         <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
         <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">职能</a>
       </li>
+      <li role="presentation">
+        <%= image_tag "career/icon-yunying.png", alt: "运营", width: "auto", height: "86", class: "m-b-20px" %>
+        <a href="#operate-position" aria-controls="operate-position" role="tab" data-toggle="tab">运营</a>
+      </li>
     </ul>
 
     <!-- Tab panes -->
@@ -134,6 +138,8 @@
       <%= render :partial => "positions", :locals => {:positions => @social_positions.sales, :type => "sales-position"} %>
 
       <%= render :partial => "positions", :locals => {:positions => @social_positions.office, :type => "office-position"} %>
+
+      <%= render :partial => "positions", :locals => {:positions => @social_positions.operate, :type => "operate-position"} %>
     </div>
   </div>
 </div>
