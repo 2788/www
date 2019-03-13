@@ -263,10 +263,14 @@
         <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: "100" %>
         <a href="#sales-position" aria-controls="sales-position" role="tab" data-toggle="tab">销售</a>
       </li>
+      <li role="presentation">
+        <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
+        <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">职能</a>
+      </li>
       <% end -%>
       <li role="presentation">
-        <%= image_tag "career/icon-zhineng.png", alt: "运营", width: "100" %>
-        <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">运营</a>
+        <%= image_tag "career/icon-yunying.png", alt: "运营", width: "auto", height: "86", class: "m-b-20px" %>
+        <a href="#operate-position" aria-controls="operate-position" role="tab" data-toggle="tab">运营</a>
       </li>
     </ul>
 
@@ -284,9 +288,11 @@
       <%= render :partial => "positions", :locals => {:positions => @school_positions.design, :type => "design-position"} %>
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.sales, :type => "sales-position"} %>
-      <% end -%>
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.office, :type => "office-position"} %>
+      <% end -%>
+
+      <%= render :partial => "positions", :locals => {:positions => @school_positions.operate, :type => "operate-position"} %>
     </div>
   </div>
 </div>
