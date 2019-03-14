@@ -2861,14 +2861,17 @@ zh-CN:
             link: "https://portal.qiniu.com/rtn/rtc/report/duration"
             target: "_blank"
             class: "btn btn-lg btn-default m-r m-b-xs"
+            type: "link"
           - title: "立即咨询"
-            link: "https://jinshuju.net/f/LSkxxL"
-            target: "_blank"
+            link: ""
+            target: ""
             class: "btn btn-lg btn-default m-r m-b-xs"
+            type: "form"
           - title: "在线体验"
             link: "https://demo-rtc.qnsdk.com/"
             target: "_blank"
             class: "btn btn-lg btn-hollow m-b-xs"
+            type: "link"
         specialty:
           - title: 150ms 延迟
             img: sdk/icon-pingjunyanchi.png

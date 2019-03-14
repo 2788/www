@@ -2795,14 +2795,17 @@ en:
             link: "https://portal.qiniu.com/rtn/rtc/report/duration"
             target: "_blank"
             class: "btn btn-lg btn-default m-r m-b-xs"
+            type: "link"
           - title: "Apply for Beta Version"
-            link: "https://jinshuju.net/f/LSkxxL"
-            target: "_blank"
+            link: ""
+            target: ""
             class: "btn btn-lg btn-default m-r m-b-xs"
+            type: "form"
           - title: "Try Now"
             link: "https://demo-rtc.qnsdk.com/"
             target: "_blank"
             class: "btn btn-lg btn-hollow m-b-xs"
+            type: "link"
         specialty:
           - title: 150ms Global latency
             img: sdk/icon-pingjunyanchi.png

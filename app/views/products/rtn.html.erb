@@ -7,7 +7,11 @@
           <p class="<%= I18n.t("views.language") != "zh" ? "en-version" : "" -%>"><%= I18n.t("views.products.rtn.banner.desc") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <% I18n.t("views.products.rtn.action").each do |event| %>
+              <% if event[:type] == "link" -%>
               <%= link_to event[:title], event[:link], target: event[:target], class: event[:class] -%>
+              <% elsif event[:type] == "form" -%>
+              <%= link_to event[:title], event[:link], target: event[:target], class: event[:class], data: { toggle: "modal", target: "#feedback-modal"}, id: "rtn-consult-button" -%>
+              <% end -%>
             <% end %>
           </div>
         </div>
