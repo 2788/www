@@ -85,6 +85,10 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def privacy_right
+    render "sla"
+  end
+
   def goglobal
     render "goglobal"
   end
