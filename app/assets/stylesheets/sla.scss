@@ -1,5 +1,5 @@
 .agreement-details {
-  h2{
+  h2 {
     margin-bottom: 0.38rem;
     margin-top: 0.2rem;
     margin-bottom: 0.1rem;
@@ -11,6 +11,15 @@
     margin-bottom: 0.39rem;
   }
 
+  span.content-bold {
+    color: #000;
+    font-weight: 600;
+  }
+
+  span.content-underline {
+    text-decoration: underline;
+  }
+
   ol {
     list-style: none;
     background: transparent;
@@ -20,14 +29,14 @@
 
     li {
       font-size: 0.14rem;
-      line-height: 24px;
+      line-height: 0.28rem;
       margin-bottom: 0.19rem;
 
-      &.last-li{
+      &.last-li {
         margin-bottom: 0;
       }
 
-      span{
+      span:not(.content-bold):not(.content-underline) {
         width: 40px;
         display: block;
         float: left;
@@ -38,8 +47,12 @@
       }
     }
 
-    &.last-ol{
+    &.last-ol {
       margin-bottom: 0;
     }
+  }
+
+  .date-stamp {
+    text-align: right;
   }
 }

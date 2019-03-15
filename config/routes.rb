@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     get '/sla-fusion',     to: 'welcome#sla_fusion'
     get '/sla-pili',       to: 'welcome#sla_pili'
     get '/sla-dora',       to: 'welcome#sla_dora'
+    get '/privacy-right',  to: 'welcome#privacy_right'
     get '/goglobal',       to: 'welcome#goglobal'
     get '/alaccelerator',  to: 'welcome#alaccelerator'
     get '/cdnprice2018',   to: 'welcome#cdnprice2018'
