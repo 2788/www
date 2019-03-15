@@ -4,10 +4,15 @@
   .container {
     .middle-container {
       h2 {
+        margin-top: 0.40rem;
         margin-bottom: 0.20rem;
+      }
+      p {
+        margin: 0.15rem 0;
       }
       .actions {
         .btn {
+          margin-top: 0.10rem;
           &:hover {
             color: #3B43D9;
           }
@@ -198,6 +203,19 @@
 }
 
 @media (max-width: 991px) {
+  .jumbotron.hero.hero-partner {
+    .container {
+      .middle-container {
+        h2 {
+          font-size: 0.30rem;
+        }
+        p {
+          font-size: 0.12rem;
+          line-height: 0.30rem;
+        }
+      }
+    }
+  }
   .features-partner-framework {
     .row .col-framework {
       margin-top: 0.40rem;
