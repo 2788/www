@@ -4765,23 +4765,23 @@ zh-CN:
       keywords: 私有云解决方案，私有云搭建方案，企业私有云解决方案，私有云解决方案，私有云存储方案
       description: 七牛私有云解决方案为传统媒体、安防、金融等行业企业提供一站式专属解决方案，帮助企业快速实现云转型。
     welcome_user_agreement:
-      title: 用户服务协议 - 七牛云
+      title: 服务用户协议 - 七牛云
       keywords:
       description:
     welcome_sla_kodo:
-      title: 对象存储SLA - 七牛云
+      title: 对象存储 SLA - 七牛云
       keywords:
       description:
     welcome_sla_fusion:
-      title: 融合CDN SLA - 七牛云
+      title: 融合 CDN SLA - 七牛云
       keywords:
       description:
     welcome_sla_pili:
-      title: 直播云SLA - 七牛云
+      title: 直播云 SLA - 七牛云
       keywords:
       description:
     welcome_sla_dora:
-      title: 智能多媒体API SLA - 七牛云
+      title: 智能多媒体 API SLA - 七牛云
       keywords:
       description:
     welcome_privacy_right:
