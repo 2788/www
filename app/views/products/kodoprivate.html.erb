@@ -8,7 +8,7 @@
           <p class="desc"><%= I18n.t("views.products.kodoprivate.banner.desc1") -%></p>
           <p class="desc mg-t-0"><%= I18n.t("views.products.kodoprivate.banner.desc2") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "咨询详情", "https://jinshuju.net/f/9nMcnt", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
+            <%= link_to "咨询详情", "", target: "", class: "btn btn-lg btn-hollow m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
