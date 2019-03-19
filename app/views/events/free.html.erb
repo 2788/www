@@ -51,7 +51,11 @@
               <div class="content">
                 <p class="title"><%= col[:title] -%></p>
                 <p class="desc <%= col[:class] -%>"><%= col[:desc] -%></p>
-                <%= link_to "立即申请", col[:link], target: "_blank", class: "btn btn-primary m-r m-b-xs" -%>
+                <% if col[:type] == "link" -%>
+                <%= link_to "立即申请", col[:link], target: "_blank", class: "btn btn-primary m-r m-b-xs", title: "立即申请 - #{col[:title]}" -%>
+                <% elsif col[:type] == "form" -%>
+                <%= link_to "立即申请", col[:link], target: "", class: "btn btn-primary m-r m-b-xs", title: "立即申请 - #{col[:title]}", data: {toggle: "modal", target: "#feedback-modal"} -%>
+                <% end -%>
               </div>
             <% else -%>
               <div class="content"><div class="expect">敬请期待</div></div>
