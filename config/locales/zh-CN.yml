@@ -4408,13 +4408,6 @@ zh-CN:
         #   type: "url"
         #   isHot: false
         #   target: "_blank"
-        - name: csvc
-          label: 中国短视频开发者创意大赛
-          path: csvc_events
-          url: "http://csvc.qiniu.com"
-          type: "url"
-          isHot: true
-          target: "_blank"
     - group: 云扶持
       list:
         - name: goglobal
