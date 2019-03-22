@@ -20,6 +20,24 @@
   </div>
   <% end -%>
 
+  <% if Time.now.to_i < Time.local(2019, 4, 7).to_i -%>
+  <div class="jumbotron hero hero-cloud-report">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h3>计世资讯 2018 中国视频云市场现状报告发布</h3>
+              <h1>七牛云位列创新者象限</h1>
+            </div>
+            <%= link_to "点击查看", "https://blog.qiniu.com/archives/8871", target: "_blank", class: "btn btn-lg btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <div class="jumbotron hero hero-qvmpartner-index">
     <div class="container">
       <div class="middle-container">

@@ -604,6 +604,39 @@
     }
   }
 
+  &.hero-cloud-report {
+    background-image: image-url("banner/banner-cloud-report.jpg");
+
+    .middle-container {
+      top: 45%;
+      text-align: center;
+
+      .banner-desc {
+        h3 {
+          margin: 0.30rem 0 0 0;
+          font-size: 0.20rem;
+        }
+
+        h1 {
+          margin: 0.30rem 0;
+          font-size: 0.46rem;
+          font-weight: 600;
+        }
+      }
+
+      .btn-banner {
+        border: none;
+        color: #FFF;
+        background-color: #03DEC0;
+        &:hover {
+          -webkit-box-shadow: 4px 4px 10px #323232;
+          -moz-box-shadow: 4px 4px 10px #323232;
+          box-shadow: 4px 4px 10px #323232;
+        }
+      }
+    }
+  }
+
   &.hero-career-school {
     background-image: image-url("banner/banner-career-school.jpg");
   }
@@ -1202,6 +1235,16 @@
           }
           p {
             font-size: 0.20rem;
+          }
+        }
+      }
+    }
+
+    &.hero-cloud-report {
+      .middle-container {
+        .banner-desc {
+          h1 {
+            font-size: 0.42rem;
           }
         }
       }
