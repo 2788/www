@@ -184,6 +184,7 @@ nav.navbar {
     }
 
     &.userinfo .user-email {
+      max-width: 2.60rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -814,6 +815,7 @@ nav.navbar {
 
   .navbar-default .navbar-nav>li {
 
+    &.company-news,
     &.company-more,
     &.manage-control {
       display: none;
@@ -876,8 +878,8 @@ nav.navbar {
 @media (min-width: 992px) and (max-width: 1199px) {
   .navbar-default .navbar-nav>li {
     a {
-      padding-left: 10px;
-      padding-right: 10px;
+      padding-left: 8px;
+      padding-right: 8px;
     }
 
     &.presentation-more {
@@ -891,7 +893,7 @@ nav.navbar {
     }
 
     &.userinfo .user-email {
-      max-width: 2.20rem;
+      max-width: 1.80rem;
     }
   }
 }

@@ -187,7 +187,7 @@
               </ul>
             </li>
 
-            <%# 服务于支持下拉菜单 %>
+            <%# 服务与支持下拉菜单 %>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'dropdown' %>" id="supports-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.supports") %></a>
 
@@ -204,6 +204,9 @@
                 <% end -%>
               </ul>
             </li>
+
+            <%# 新闻动态 %>
+            <li class="company-news <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>"><%= link_to "新闻动态", news_path -%></li>
 
             <%# 关于我们 %>
             <%# 新增下拉菜单 %>
@@ -240,6 +243,7 @@
               <ul class="presentation-menu dropdown-menu dropdown-menu-right m-0 p-0">
                 <li class="manage-control"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
                 <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
+                <li class="company-news"><%= link_to "新闻动态", news_path -%></li>
               </ul>
             </li>
             <li class="select-unit" id="language-dropdown">
