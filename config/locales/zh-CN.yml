@@ -4424,15 +4424,17 @@ zh-CN:
           type: "path"
           isHot: false
           target: ""
-    - group: 云合作
-      list:
-        - name: partners
-          label: 合作伙伴发展计划
-          path: partner
-          url: ""
-          type: "path"
-          isHot: false
-          target: ""
+    # 暂时隐藏合作伙伴发展计划入口，落地页保留
+    # https://jira.qiniu.io/browse/BO-6834
+    # - group: 云合作
+    #   list:
+    #     - name: partners
+    #       label: 合作伙伴发展计划
+    #       path: partner
+    #       url: ""
+    #       type: "path"
+    #       isHot: false
+    #       target: ""
   supports:
     - name: "developer"
       label: "开发者中心"
