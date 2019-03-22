@@ -4385,7 +4385,7 @@ en:
       - name: intelligence
         label: Smart Device and IOT
         desc:
-      # BO-5466 隐藏 智能云相册解决方案
+      # 隐藏 智能云相册解决方案
       # https://jira.qiniu.io/browse/BO-5466
       # - name: album
       #   label: Intelligent Cloud Album
