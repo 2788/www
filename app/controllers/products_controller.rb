@@ -102,6 +102,10 @@ class ProductsController < ApplicationController
   end
 
   def edu
+    # 在线教育解决方案页面下线
+    # 不隐藏路由，访问页面重定向到官网主页
+    # https://jira.qiniu.io/browse/BO-6826
+    redirect_to :controller => 'welcome', :action => 'index'
   end
 
   def ess
