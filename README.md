@@ -15,6 +15,7 @@ rails server # 启动
 
 ```bash
 本地需要启动 MySQL，创建名为 `mars` 的数据库，MySQL 数据库主要保存博客文章和招聘职位数据
+本地 MySQL 数据库的 username 为 root，password 为 root（这里需要修改一下本地 MySQL 的密码，否则本地启官网会报数据库连接失败的错）
 MySQL 数据库本地的配置文件为 /config/database.yml
 线上 MySQL 数据库配置为 deploy/floy/mars-www/_package/www_database.yml
 
