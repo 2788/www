@@ -305,10 +305,10 @@
                       <td class="border-bottom"></td>
                     </tr>
                     <tr>
-                      <th width="180" class="border-right">名目</th><th class="th-init">流量阶梯/每月</th><th class="th-init">价格</th>
+                      <th width="240" class="border-right">名目</th><th class="th-init">流量阶梯/每月</th><th class="th-init">价格</th>
                     </tr>
                     <tr>
-                      <th rowspan="4" class="border-right">HTTP 下载流量</th>
+                      <th rowspan="4" class="border-right">HTTP 下载流量/动态加速 HTTP 流量</th>
                       <td class="light-bkcolor">第 0 GB 至 10 GB</td>
                       <td class="light-bkcolor">免费</td>
                     </tr>
@@ -325,7 +325,7 @@
                       <td>0.14 元/GB</td>
                     </tr>
                     <tr>
-                      <th rowspan="3" class="th-init border-right">HTTPS 下载流量</th>
+                      <th rowspan="3" class="th-init border-right">HTTPS 下载流量/动态加速 HTTPS 流量</th>
                       <td class="light-bkcolor">第 0 GB 至 100 TB</td>
                       <td class="light-bkcolor">0.28 元/GB</td>
                     </tr>
@@ -355,7 +355,7 @@
                       <td class="border-bottom"></td>
                     </tr>
                     <tr>
-                      <th width="180" class="border-right">名目</th>
+                      <th width="240" class="border-right">名目</th>
                       <th width="180" class="th-init">流量阶梯<span class="grey-unit">/每月</span></th>
                       <th class="th-init">亚洲<p class="grey-unit th-p"> （港澳台/东南亚/印度）</p></th>
                       <th class="th-init">亚洲<p class="grey-unit th-p">（其他地区）</p></th>
@@ -364,7 +364,7 @@
                       <th class="th-init">大洋洲与其他</th>
                     </tr>
                     <tr>
-                      <th rowspan="5" class="border-right">HTTP 下载流量</th>
+                      <th rowspan="5" class="border-right">HTTP 下载流量/动态加速 HTTP 流量</th>
                       <td class="light-bkcolor">第 0 GB 至 10 GB</td>
                       <td class="light-bkcolor" colspan="5" style="text-align:center">免费</td>
                     </tr>
@@ -397,7 +397,7 @@
                       <td colspan="5" style="text-align:center">请联系我们 400-808-9176 转 1</td>
                     </tr>
                     <tr>
-                      <th rowspan="5" class="th-init border-bottom border-right">HTTPS 下载流量</th>
+                      <th rowspan="5" class="th-init border-bottom border-right">HTTPS 下载流量/动态加速 HTTPS 流量</th>
                       <td>第 0 GB 至 10 TB</td>
                       <td>0.91 元/GB</td>
                       <td>0.60 元/GB</td>
@@ -428,7 +428,31 @@
                   </tbody>
                 </table>
               </div>
-              <p>注：该价格仅适用于中国大陆地区使用，如果您对 CDN 需要大量采购，您可以通过商务洽谈的方式获得更多优惠的价格及更加灵活的计费方式。欢迎拨打 400-808-9176 转 1 或<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", style: "color: #28aedf", target: "_blank" -%>咨询。</p>
+              <p style="margin-bottom: 50px;">注：该价格仅适用于中国大陆地区使用，如果您对 CDN 需要大量采购，您可以通过商务洽谈的方式获得更多优惠的价格及更加灵活的计费方式。欢迎拨打 400-808-9176 转 1 或<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", style: "color: #28aedf", target: "_blank" -%>咨询。</p>
+            </div>
+            <div class="hash" id="dongtaijiasuqingqiushu" name="dongtaijiasuqingqiushu">
+              <div class="table-responsive pricing-white-bg" style="margin-bottom: 0.10rem">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="180" class="thead-title th-init border-bottom">动态加速请求数</th>
+                      <td class="border-bottom"></td>
+                    </tr>
+                    <tr>
+                      <th width="240" class="border-right">名目</th>
+                      <th class="th-init">价格</th>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <th class="border-right">动态 HTTP 请求数</th>
+                      <td>0.19 元/万次</td>
+                    </tr>
+                    <tr>
+                      <th class="th-init border-bottom border-right">动态 HTTPS 请求数</th>
+                      <td>0.19 元/万次</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
