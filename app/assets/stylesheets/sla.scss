@@ -11,13 +11,34 @@
     margin-bottom: 0.39rem;
   }
 
+  p .more.more-underline {
+    text-decoration: underline;
+    text-decoration-color: #00A0DE;
+    &:hover {
+      text-decoration-color: #28AEDF;
+    }
+  }
+
+  p.content-italic {
+    font-style: italic;
+  }
+
+  p.content-bold,
   span.content-bold {
     color: #000;
     font-weight: 600;
   }
 
+  p.content-underline,
   span.content-underline {
     text-decoration: underline;
+  }
+
+  p.content-underline {
+    .more {
+      text-decoration: underline;
+      text-decoration-color: #000;
+    }
   }
 
   ol {
