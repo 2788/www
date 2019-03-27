@@ -6,6 +6,7 @@
           <li class="li_user_agreement"><%= link_to "服务用户协议", user_agreement_path -%></li>
           <li class="li_privacy_right"><%= link_to "隐私权政策", privacy_right_path -%></li>
           <li class="li_sla_kodo"><%= link_to "对象存储 SLA", sla_kodo_path -%></li>
+          <li class="li_sla_kodo_new"><%= link_to "对象存储 SLA 新", sla_kodo_new_path -%></li>
           <li class="li_sla_fusion"><%= link_to "融合 CDN SLA", sla_fusion_path -%></li>
           <li class="li_sla_pili"><%= link_to "直播云 SLA", sla_pili_path -%></li>
           <li class="li_sla_dora"><%= link_to "智能多媒体API SLA", sla_dora_path -%></li>
@@ -413,6 +414,231 @@
               <p>6.4 本协议的订立、执行和解释及争议的解决均应适用中国法律并受中国法院管辖。若用户和七牛云之间发生任何纠纷或争议，首先应友好协商解决；协商不成功的，双方均同意将纠纷或争议提交本协议签订地有管辖权的人民法院管辖。</p>
               <p>6.5 本协议构成双方对本协议之约定事项及其他有关事宜的完整协议，除本协议规定的之外，未赋予本协议各方其他权利。</p>
               <p>6.6 如本协议中的任何协议无论因何种原因完全或部分无效或不具有执行力，本协议的其余部分仍应有效并且有约束力。</p>
+            </div>
+          </section>
+
+          <section class="sla_kodo_new">
+            <div class="agreement-details">
+              <h2 style="margin-bottom: 38px;">七牛云对象存储服务等级协议（SLA）</h2>
+              <p class="condense content-bold content-italic">本协议自 2019 年 03 月 27 日起首次公示，2019 年 04 月 27 日起生效</p>
+              <p class="condense content-bold content-underline">为使用七牛云对象存储服务（以下简称“本服务”），您应当阅读并遵守《七牛云对象存储服务等级协议》（以下简称“本协议”或“SLA”），以及<a href="/user-agreement" target="_blank" class="more">《七牛云服务用户协议》</a>和<a href="/privacy-right" target="_blank" class="more">《七牛云隐私权政策》</a>。本协议包含本服务的术语和定义、服务可用性指标、赔偿方案、免责条款等相关内容。请您务必审慎阅读、充分理解各条款内容，特别是限制、免责条款或者其他涉及您重大权益的条款，这类条款可能会以加粗或/和加下划线等形式提示您重点注意。</p>
+              <p class="condense content-bold content-underline">除非您已充分阅读、完全理解并接受本协议所有条款，否则，请您不要购买本服务。您单击“同意”、“下一步”或您的购买、使用等行为或者您以其他任何明示或者默示方式表示接受本协议的，即视为您已阅读并同意本协议的约束。本协议即在您与七牛云之间产生法律效力，成为对双方均具有约束力的法律文件。</p>
+              <ol>
+                <li>
+                  <h3><span>1. </span>术语和定义</h3>
+                </li>
+                <li>
+                  <p><span class="content-bold">七牛云对象存储</span>：对象存储是一种基于 HTTP 协议网络接口上传、下载和管理数据资源，按需扩容的非结构化数据存储服务。对象存储以预付费或后付费的方式提供服务。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">服务周期</span>：服务周期是指购买本服务的服务期限所包含的自然月。如用户是 3 月 11 日开通服务，则服务周期计算到 3 月 31 日。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">月度服务费用</span>：指客户的某一个七牛云账号在一个自然月中使用七牛云对象存储服务按地域和存储类型分别统计的服务费用。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">有效请求</span>：七牛云对象存储服务端收到的请求视为有效请求，但不包括以下类型的请求：</p>
+                </li>
+                <li>
+                  <p>（1）未通过身份验证和鉴权失败的请求或欠费停服状态下的请求；</p>
+                </li>
+                <li>
+                  <p>（2）跨区域同步数据和生命周期管理等各类后端异步处理发起的所有请求；</p>
+                </li>
+                <li>
+                  <p>（3）获取 Bucket 列表发起的所有请求；</p>
+                </li>
+                <li>
+                  <p>（4）查询统计数据的请求；</p>
+                </li>
+                <li>
+                  <p>（5）客户的应用程序受到黑客攻击而发起的请求。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">失败请求</span>：七牛云对象存储服务将 HTTP 状态码为 5XX 的请求和因七牛对象存储服务故障导致的用户正常请求未能到达服务端的请求均视为失败请求，<span class="content-bold">但不包括以下类型的请求</span>：</p>
+                </li>
+                <li>
+                  <p>（1）因采用不适当的访问模式导致请求超出对象存储服务的规定配额，造成请求被对象存储限制的错误请求 (HTTP 状态码 573)；</p>
+                </li>
+                <li>
+                  <p>（2）跨区域同步数据和生命周期管理等各类后端异步处理发起的失败请求；</p>
+                </li>
+                <li>
+                  <p>（3）获取 Bucket 列表产生的失败请求；</p>
+                </li>
+                <li>
+                  <p>（4）非七牛服务造成的慢请求或失败请求 (HTTP 状态码 579)：</p>
+                </li>
+                <li>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1）镜像回源超时或失败的请求；</p>
+                </li>
+                <li>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2）Callback 超时或失败的请求；</p>
+                </li>
+                <li>
+                  <p>（5）查询统计数据的失败请求；</p>
+                </li>
+                <li>
+                  <p>（6）由七牛云对象存储服务发起的合理升级、变更、停机而导致的错误请求或服务不可用情况；</p>
+                </li>
+                <li>
+                  <p>（7）客户的应用程序受到黑客攻击而导致被七牛云存储服务限制的请求。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">每 5 分钟错误率</span>：根据地域和存储类型分别统计的失败请求占 5 分钟内客户有效请求数的比例，同一账号下相同地域、相同存储类型的多个 Bucket，将合并计算错误率。具体计算方式如下：</p>
+                </li>
+                <li>
+                  <p>每 5 分钟错误率 = (每 5 分钟失败请求数 / 每 5 分钟有效请求数) × 100%</p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>2. </span>服务可用性</h3>
+                </li>
+                <li>
+                  <p><span class="content-bold">2.1 服务可用性计算</span></p>
+                </li>
+                <li>
+                  <p>七牛云存对象存储根据不同地域和存储类型统计对应的服务可用性，同一账号下相同地域、相同存储类型的多个 Bucket，将合并计算服务可用性。服务可用性的具体计算方式如下：</p>
+                </li>
+                <li>
+                  <p>服务可用性 = (1 - (服务周期内的每 5 分钟错误率之和 / 服务周期内的 5 分钟总个数)) × 100%</p>
+                </li>
+                <li>
+                  <p>注：服务周期内的 5 分钟总个数 = 12 × 24 × 该服务周期的天数</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">2.2 服务可用性承诺</span></p>
+                </li>
+                <li>
+                  <p>客户可以通过七牛云对象存储提供的 API、SDK、控制台或工具对数据进行上传、下载和管理。针对不同的存储类型，七牛云对象存储分别承诺服务可用性如下：</p>
+                </li>
+                <li>
+                  <table cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                    <tbody>
+                      <tr>
+                        <th width="240" class="border-right">存储类型</th>
+                        <th class="th-init border-right border-bottom">服务可用性标准</th>
+                      </tr>
+                      <tr class="light-bkcolor">
+                        <td class="border-right">标准存储</td>
+                        <td class="border-right border-bottom">99.9%</td>
+                      </tr>
+                      <tr>
+                        <td class="border-right">低频存储</td>
+                        <td class="border-right">99.0%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">如七牛云对象存储服务未达到上述服务可用性承诺，客户可依据本协议第 3 条约定获得赔偿<span></p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>3. </span>赔偿方案</h3>
+                </li>
+                <li>
+                  <p>客户账号按地域及存储类型分别统计各服务周期内的服务可用性，如低于 2.2 承诺的可用性标准，可按照以下条款约定获得赔偿：</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">3.1 赔偿标准</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">（1）赔偿只针对已经使用七牛云对象存储服务并且正常支付费用的客户（除法律法规另有规定外，免费型服务不在赔偿范围内）；赔偿方式仅限于用于支付七牛云对象存储的抵用券，抵用券的使用遵循七牛云发布的相关规则。</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">（2）赔偿额按照服务可用性未达标的服务月度单独计算，且不超过该服务周期内该地域该存储类型所支付月度服务费用的 50%（不含抵用券、优惠券等抵扣费用）。赔偿额具体计算方式如下：</span></p>
+                </li>
+                <li>
+                  <table cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                    <tbody>
+                      <tr>
+                        <th width="240" class="border-right">存储类型</th>
+                        <th class="th-init border-right border-bottom">服务可用性</th>
+                        <th class="th-init border-right border-bottom">赔偿抵用券金额</th>
+                      </tr>
+                      <tr>
+                        <td rowspan="2" class="border-right border-bottom">标准存储</td>
+                        <td class="border-right border-bottom light-bkcolor">低于 99.90% 但高于或等于 95%</td>
+                        <td class="border-right border-bottom light-bkcolor">月度服务费用的 30%</td>
+                      </tr>
+                      <tr>
+                        <td class="border-right border-bottom">低于 95%</td>
+                        <td class="border-right border-bottom">月度服务费用的 50%</td>
+                      </tr>
+                      <tr>
+                        <td rowspan="2" class="border-right">低频存储</td>
+                        <td class="border-right border-bottom light-bkcolor">低于 99.00% 但高于或等于 95%</td>
+                        <td class="border-right border-bottom light-bkcolor">月度服务费用的 30%</td>
+                      </tr>
+                      <tr>
+                        <td class="border-right border-bottom">低于 95%</td>
+                        <td class="border-right border-bottom">月度服务费用的 50%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li>
+                  <p><span class="content-bold">3.2 赔偿申请时限</span></p>
+                </li>
+                <li>
+                  <p>（1）客户可以每月<span class="content-bold">第五（5）个工作日</span>后，对上个服务周期没有达到可用性的服务，通过账户的工单系统提出赔偿申请。赔偿申请提出后七牛云会进行相应审核，对于服务周期的服务可用性计算，若双方出现争议，<span class="content-bold">双方均同意最终以七牛云的后台记录为准</span>。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">（2）赔偿申请必须在服务可用性未达标的服务周期结束后两（2）个月内提出。若在两（2）个月内未提出赔偿申请，或是在服务可用性未达标的服务周期结束后的两（2）个月以后才提出赔偿申请，均视为客户主动放弃要求赔偿及向七牛云主张其他权利的权利，七牛云有权不受理客户的赔偿申请，不对客户进行任何赔偿或补偿。</span></p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>4. </span>免责条款</h3>
+                </li>
+                <li>
+                  <p>由于以下原因造成的服务不可用，相应服务不可用时间不属于服务不可用的计算范畴和七牛云的赔偿范围，七牛云无需向客户承担责任：</p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.1 七牛云预先通知客户后进行系统维护所引起的，包括割接、维修、升级和模拟故障演练；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.2 任何七牛云所属设备以外的网络、设备或配置调整引起的故障；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.3 客户的应用程序或数据信息受到黑客攻击而引起的；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.4 客户维护不当或保密不当致使数据、口令、密码等丢失或泄漏所引起的；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.5 客户自行升级操作系统所引起的；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.6 客户的应用程序或安装活动所引起的；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.7 客户的疏忽或由用户授权的操作所引起的；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.8 不可抗力以及意外事件引起的；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.9 其他非七牛云原因所造成的不可用或服务不达标；</span></p>
+                </li>
+                <li>
+                  <p><span class="content-bold content-underline">4.10 属于相关法律法规、相关协议、相关规则或七牛云单独发布的相关规则、说明等中所述的七牛云可以免责、免除赔偿责任等的情况。</span></p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>5. </span>其他</h3>
+                </li>
+                <li>
+                  <p><span class="content-bold">5.1</span> 七牛云有权根据变化适时或必要时对本协议条款做出修改，您可以在七牛云官网的最新版本中查阅相关协议条款。如您不同意七牛云对协议所做的修改，您有权停止使用本服务，如您继续使用本服务，则视为您接受修改后的协议。</p>
+                </li>
+                <li>
+                  <p><span class="content-bold">5.2</span> 本协议作为<a href="/user-agreement" target="_blank" class="more more-underline">《七牛云服务用户协议》</a>的附属协议，具有与<a href="/user-agreement" target="_blank" class="more more-underline">《七牛云服务用户协议》</a>同等效力，本协议未约定事项，您需遵守<a href="/user-agreement" target="_blank" class="more more-underline">《七牛云服务用户协议》</a>的相关约定。若本协议与<a href="/user-agreement" target="_blank" class="more more-underline">《七牛云服务用户协议》</a>中的条款相冲突或不一致，则以本协议为准，但仅在该冲突或不一致范围内适用。</p>
+                </li>
+              </ol>
             </div>
           </section>
 

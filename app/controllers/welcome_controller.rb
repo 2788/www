@@ -73,6 +73,10 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def sla_kodo_new
+    render "sla"
+  end
+
   def sla_fusion
     render "sla"
   end

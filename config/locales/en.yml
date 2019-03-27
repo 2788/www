@@ -4606,6 +4606,10 @@ en:
       title: 对象存储 SLA - 七牛云
       keywords:
       description:
+    welcome_sla_kodo_new:
+      title: 新版对象存储 SLA - 七牛云
+      keywords:
+      description:
     welcome_sla_fusion:
       title: 融合 CDN SLA - 七牛云
       keywords:
