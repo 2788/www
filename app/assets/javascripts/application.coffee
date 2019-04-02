@@ -44,6 +44,7 @@
 #= require qvmfeeds
 #= require censorfeeds
 #= require qvm
+#= require fusion
 
 #= require uuid
 
