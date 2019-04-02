@@ -637,6 +637,31 @@
     }
   }
 
+  &.hero-fusion-index {
+    background-image: image-url("banner/banner-fusion-index.jpg");
+
+    .middle-container {
+      top: 45%;
+      text-align: center;
+
+      .banner-desc {
+        h1 {
+          margin: 0.30rem 0;
+          font-size: 0.46rem;
+        }
+
+        h3 {
+          margin: 0.20rem 0 0 0;
+          font-size: 0.20rem;
+        }
+      }
+
+      .btn-banner {
+        margin-top: 0.30rem;
+      }
+    }
+  }
+
   &.hero-career-school {
     background-image: image-url("banner/banner-career-school.jpg");
   }
@@ -1245,6 +1270,16 @@
         .banner-desc {
           h1 {
             font-size: 0.42rem;
+          }
+        }
+      }
+    }
+
+    &.hero-fusion-index {
+      .middle-container {
+        .banner-desc {
+          h1 {
+            font-size: 0.38rem;
           }
         }
       }

@@ -38,6 +38,26 @@
   </div>
   <% end -%>
 
+  <% if Time.now.to_i < Time.local(2019, 5, 5).to_i -%>
+  <div class="jumbotron hero hero-fusion-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>CDN&nbsp;动态加速&nbsp;全新上线</h1>
+              <h3>动态路由实时探测&nbsp;传输协议深度优化</h3>
+              <h3>1500+&nbsp;全球节点&nbsp;30TB 带宽储备</h3>
+            </div>
+            <%= link_to "查看详情", (raw(products_fusion_path(anchor: "products-fusion-scene"))), target: "_blank", class: "btn btn-lg btn-hollow btn-banner m-r" -%>
+            <%= link_to "申请开通", "http://qiniu.mikecrm.com/n2RpUKn", target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <div class="jumbotron hero hero-qvmpartner-index">
     <div class="container">
       <div class="middle-container">
