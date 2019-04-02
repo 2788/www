@@ -1,8 +1,21 @@
+.hero-fusion {
+  .container .middle-container {
+    top: 48%;
+    h5 {
+      line-height: 0.20rem;
+      &.margin-l-negative {
+        margin-left: -0.08rem;
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .features-fusion.features-distribute,
   .features-fusion.features-scene {
     .nav.nav-tabs {
       li {
+        width: 1%;
         display: table-cell !important;
       }
     }

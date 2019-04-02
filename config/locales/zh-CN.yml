@@ -1085,6 +1085,12 @@ zh-CN:
             - title: "降低回源"
               icon: "fusion/icon-jiangdihuiyuan@2x.png"
               desc: "自建 BGP 网络中间源，消除跨运营商网络回源慢甚至不可达等问题，保护源站带宽不受边缘节点请求波动影响，节省回源成本。"
+            - title: "链路优化"
+              icon: "fusion/icon-lianluyouhua@2x.png"
+              desc: "七牛融合 CDN 探测点到点之间的链路质量，凭借七牛在全球的数千个节点和特有的链路决策算法，可以保证 CDN 到源站以及 CDN 内部之间的链路最优。"
+            - title: "私有协议优化"
+              icon: "fusion/icon-siyouxieyiyouhua@2x.png"
+              desc: "七牛融合 CDN 内部使用私有协议传输，确保客户内容在 CDN 内部以安全可靠高效的方式进行分发。"
         feature3:
           title: "节点覆盖"
           middlebar:
@@ -1113,6 +1119,9 @@ zh-CN:
             - title: "音视频点播"
               class: ""
               href: "#tab-usage-section-3"
+            - title: "动态加速"
+              class: ""
+              href: "#tab-usage-section-4"
           sections:
             - id: "tab-usage-section-1"
               class: "tab-pane fade in active"
@@ -1129,6 +1138,11 @@ zh-CN:
               icon: "fusion/icon-yinshipindianbo@2x.png"
               title: "音视频点播"
               desc: "音视频点播优化加速服务，例如：mp4、flv、rmvb、wmv、hls 等；七牛融合 CDN 利用 BGP 网络中间源技术降低回源带宽压力节省了用户回源成本、分段预取技术使用户在浏览音视频时更加的流畅，高级防盗链技术有效防止用户文件被盗用。配合七牛云-数据处理服务，还可以进行音视频转码、转格式、压缩等数据处理服务。"
+            - id: "tab-usage-section-4"
+              class: "tab-pane fade"
+              icon: "fusion/icon-dongtaijiasu@2x.png"
+              title: "动态加速"
+              desc: "动态加速针对动态资源进行加速分发，基于七牛融合 CDN 在全球的数千个节点，借助特有的动态路由探测技术和私有传输协议优化，可以保证客户源站的内容通过安全稳定的最优链路分发到用户端，在电商、社交、社区论坛、金融支付和游戏娱乐等方面可以显著提升用户的访问性能。使用动态加速时，域名下面的所有请求都将通过动态路由回到客户源站。如果您的业务同时有静态资源和动态资源，建议您将业务拆分成静态域名和动态域名，静态域名使用我们的普通 CDN（点播 / 下载 / 网页），动态域名使用动态加速。"
         feature5:
           title: "客户案例"
       qvm:
