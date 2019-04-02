@@ -872,7 +872,7 @@ en:
           col:
             - title: "Highly Reliable"
               icon: "icon-keyongxing@2x.png"
-              desc: "The industry-leading storage scheme with erasure codes can provide 99.99999999999999% data reliability. Replica redundancy across data centers ensures the high availability of service."
+              desc: "The industry-leading storage scheme with erasure codes can provide 99.999999999% data reliability. Replica redundancy across data centers ensures the high availability of service."
             - title: "Easy to Expand"
               icon: "icon-kekuozhan@2x.png"
               desc: "The flexible storage system increases the agility of your business.There's no need to worry about both the ceiling and the expansion of the storage space with KODO."

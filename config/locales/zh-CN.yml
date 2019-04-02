@@ -904,7 +904,7 @@ zh-CN:
           col:
             - title: "高可靠"
               icon: "icon-keyongxing@2x.png"
-              desc: "业界领先的纠删码存储方案，能够提供高达 16 个 9 的数据可靠性。跨数据中心的副本冗余，能够保障服务的超高可用性。"
+              desc: "业界领先的纠删码存储方案，能够提供高达 11 个 9 的数据可靠性。跨数据中心的副本冗余，能够保障服务的超高可用性。"
             - title: "易扩展"
               icon: "icon-kekuozhan@2x.png"
               desc: "利用七牛云对象存储，您的存储空间无上限的同时也无需担心扩容问题。您能够实现存储需求的弹性伸缩，从而提高业务灵活性。"
@@ -1120,7 +1120,7 @@ zh-CN:
               class: ""
               href: "#tab-usage-section-3"
             - title: "动态加速"
-              class: ""
+              class: "dynamic-accelerate"
               href: "#tab-usage-section-4"
           sections:
             - id: "tab-usage-section-1"
