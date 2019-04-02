@@ -2,3 +2,236 @@
 
 <%# banner 部分 %>
 <div class="jumbotron hero hero-qvm2for3"></div>
+
+<%# 代金券部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-voucher">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
+        <%= image_tag "qvm2for3/voucher-50.jpg", alt: "新用户专享 - 50 元代金券", title: "新用户专享 - 50 元代金券", width: "100%" -%>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
+        <%= image_tag "qvm2for3/voucher-100.jpg", alt: "新用户专享 - 100 元代金券", title: "新用户专享 - 100 元代金券", width: "100%" -%>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
+        <%= image_tag "qvm2for3/voucher-200.jpg", alt: "新用户专享 - 200 元代金券", title: "新用户专享 - 200 元代金券", width: "100%" -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 入门爆款云主机部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-primer">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">入门爆款云主机 买二月送一月</h2>
+      <p class="desc">个人用户及小型网站首选，新老用户均可购买，每人限购一台</p>
+    </div>
+    <div class="row row-primer">
+      <% I18n.t("views.events.qvm2for3.primer").each do |primer| -%>
+      <div class="col-md-12 col-sm-12 col-xs-12 col-primer-title"><%= primer[:title] -%></div>
+      <% primer[:list].each do |item| -%>
+      <div class="col-md-3 col-sm-5 col-xs-12 col-item col-primer">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= item[:title] -%></h4>
+            <p class="desc"><%= item[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-specs">
+                <div class="row">
+                  <% item[:specs].each do |spec| -%>
+                  <div class="col-md-6 col-sm-6 col-xs-6 col-specs">
+                    <span class="span-specs"><%= spec[:name].html_safe -%></span><span class="span-bold"><%= spec[:value].html_safe -%></span>
+                  </div>
+                  <% end -%>
+                </div>
+              </div>
+              <div class="content-flag">
+                <% item[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= item[:price] -%></span><span>/3 个月</span></p>
+              <p><span class="span-red">节省 ￥<%= item[:save] -%></span></p>
+              <%= link_to "立即购买", item[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 热卖机型部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-hot">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">热卖机型随意购 买得越久越划算</h2>
+      <p class="desc">适用于个人及企业用户等多种场景，新老用户均可购买，数量不限</p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.qvm2for3.hot").each do |hot| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-hot">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= hot[:title] -%></h4>
+            <p class="desc"><%= hot[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-specs">
+                <div class="row">
+                  <% hot[:specs].each do |spec| -%>
+                  <div class="col-md-6 col-sm-6 col-xs-6 col-specs">
+                    <span class="span-specs"><%= spec[:name].html_safe -%></span><span class="span-bold"><%= spec[:value].html_safe -%></span>
+                  </div>
+                  <% end -%>
+                </div>
+              </div>
+              <div class="content-dropdown">
+                <select class="form-control qvm2for3-dropdown qvm2for3-hot-dropdown">
+                  <% hot[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <div class="content-flag">
+                <% hot[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <% hot[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span><span>/天</span></p>
+                <%= link_to "立即购买", section[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云数据库部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-db">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">云数据库专场</h2>
+      <p class="desc">涵盖多种主流型号，为您省去自建成本</p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.qvm2for3.db").each do |db| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-db">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= db[:title] -%></h4>
+            <p class="desc"><%= db[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-specs">
+                <div class="row">
+                  <% db[:specs].each do |spec| -%>
+                  <div class="col-md-4 col-sm-4 col-xs-4 col-specs">
+                    <p><span class="span-specs"><%= spec[:name].html_safe -%></span></p>
+                    <p class="<%= spec[:name] == "" ? "p-t-small" : "" -%>"><span class="span-bold"><%= spec[:value].html_safe -%></span></p>
+                  </div>
+                  <% end -%>
+                </div>
+              </div>
+              <div class="content-dropdown">
+                <select class="form-control qvm2for3-dropdown qvm2for3-db-dropdown">
+                  <% db[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <div class="content-flag">
+                <% db[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <% db[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span><span>/天</span></p>
+                <%= link_to "立即购买", section[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云通信部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-comm">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">云通信专场</h2>
+      <p class="desc">云短信新年钜惠，低至 3.5 分/条，新老用户均可购买</p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.qvm2for3.comm").each do |comm| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-comm">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= comm[:title] -%></h4>
+            <p class="desc"><%= comm[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-specs">
+                <% comm[:specs].each do |spec| -%>
+                <p><%= spec -%></p>
+                <% end -%>
+              </div>
+              <div class="content-flag">
+                <% comm[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= comm[:price] -%></span><span>/条</span></p>
+              <%= link_to "立即购买", comm[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 活动规则部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-rules">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">活动规则</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <p>1. 活动时间：即日起至 2019 年 04 月 30 日</p>
+        <p>2. 活动对象：七牛云官网已注册且完成实名认证的新老用户</p>
+        <p>3. 订购限制：本次活动不支持代金券或折扣券；如退订退款，再次购买相同资源不再享受同等折扣</p>
+        <p>4. 为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>5. 所有参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "/user-agreement", class: "link-box", title: "《七牛云用户协议》", target: "_blank" -%></p>
+        <p>6. 活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 邀请好友部分 %>
+<div class="features features-qvm2for3 features-qvm2for3-invite">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">邀请朋友参与，赢取更多好礼</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 col-invite">
+        <%= link_to "立即邀请", "https://portal.qiniu.com/invitation", class: "btn btn-lg", title: "邀请朋友参与，赢取更多好礼", target: "_blank" -%>
+      </div>
+    </div>
+  </div>
+</div>

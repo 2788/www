@@ -39,6 +39,7 @@
 #= require 7event
 #= require qvm1rmb
 #= require event1024
+#= require qvm2for3
 
 #= require qvmfeeds
 #= require censorfeeds
