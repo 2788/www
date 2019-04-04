@@ -671,15 +671,16 @@
       .banner-desc {
         h1 {
           margin: 0.10rem 0 0.20rem 0;
-          color: #000;
+          color: #FFF;
           font-size: 0.48rem;
+          font-weight: 600;
           .text-huge {
             font-size: 0.68rem;
           }
         }
         p {
           margin-bottom: 0;
-          color: rgba(0, 0, 0, 0.4);
+          color: rgba(255, 255, 255, 0.5);
           font-size: 0.22rem;
           font-weight: 600;
           text-shadow: none;
@@ -689,7 +690,7 @@
         margin-top: 0.20rem;
         border: none;
         color: #FFF;
-        background-color: #03DEC0;
+        background-color: #3998FF;
         &:hover {
           -webkit-box-shadow: 4px 4px 10px #323232;
           -moz-box-shadow: 4px 4px 10px #323232;
