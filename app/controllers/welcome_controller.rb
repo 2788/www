@@ -7,11 +7,12 @@ class WelcomeController < ApplicationController
   def index
     # @top_archives = Archive.top_archives
     # 根据 current_editor 判断查询条件
-    if current_editor.nil? == false
-      @top_archives = Archive.where(status: ['published', 'offline', 'draft']).top_archives
-    else
-      @top_archives = Archive.where(status: 'published').top_archives
-    end
+    # index 首页不查找数据库获取文章
+    # if current_editor.nil? == false
+    #   @top_archives = Archive.where(status: ['published', 'offline', 'draft']).top_archives
+    # else
+    #   @top_archives = Archive.where(status: 'published').top_archives
+    # end
   end
 
   def contact
