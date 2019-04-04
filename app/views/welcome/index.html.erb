@@ -20,6 +20,26 @@
   </div>
   <% end -%>
 
+  <%# qvm2for3 活动还未上线 %>
+  <%# 暂时屏蔽 %>
+  <% if false -%>
+  <div class="jumbotron hero hero-qvm2for3-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>一年之&nbsp;<span class="text-huge">机</span>&nbsp;在于春&nbsp;云主机&nbsp;<span class="text-huge">买二送一</span></h1>
+              <p>活动时间：2019 年 4 月 1 日 - 2019 年 4 月 30 日</p>
+            </div>
+            <%= link_to "点击查看", "/events/qvm2for3?entry=index-banner", target: "_blank", class: "btn btn-lg btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <% if Time.now.to_i < Time.local(2019, 4, 7).to_i -%>
   <div class="jumbotron hero hero-cloud-report">
     <div class="container">

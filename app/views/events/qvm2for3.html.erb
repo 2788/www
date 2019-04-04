@@ -1,20 +1,33 @@
 <%# qvm 2019 年清明坟头蹦迪活动 %>
 
 <%# banner 部分 %>
-<div class="jumbotron hero hero-qvm2for3"></div>
+<div class="jumbotron hero hero-qvm2for3">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="banner-desc">
+            <h1>一年之&nbsp;<span class="text-huge">机</span>&nbsp;在于春&nbsp;云主机&nbsp;<span class="text-huge">买二送一</span></h1>
+            <p>活动时间：2019 年 4 月 1 日 - 2019 年 4 月 30 日</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%# 代金券部分 %>
 <div class="features features-qvm2for3 features-qvm2for3-voucher">
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
-        <%= image_tag "qvm2for3/voucher-50.jpg", alt: "新用户专享 - 50 元代金券", title: "新用户专享 - 50 元代金券", width: "100%" -%>
+        <%= image_tag "qvm2for3/voucher-50.jpg", class: "voucher-50", alt: "新用户专享 - 50 元代金券", title: "新用户专享 - 50 元代金券", width: "100%" -%>
       </div>
       <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
-        <%= image_tag "qvm2for3/voucher-100.jpg", alt: "新用户专享 - 100 元代金券", title: "新用户专享 - 100 元代金券", width: "100%" -%>
+        <%= image_tag "qvm2for3/voucher-100.jpg", class: "voucher-100", alt: "新用户专享 - 100 元代金券", title: "新用户专享 - 100 元代金券", width: "100%" -%>
       </div>
       <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
-        <%= image_tag "qvm2for3/voucher-200.jpg", alt: "新用户专享 - 200 元代金券", title: "新用户专享 - 200 元代金券", width: "100%" -%>
+        <%= image_tag "qvm2for3/voucher-200.jpg", class: "voucher-200", alt: "新用户专享 - 200 元代金券", title: "新用户专享 - 200 元代金券", width: "100%" -%>
       </div>
     </div>
   </div>
@@ -53,7 +66,7 @@
               </div>
               <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= item[:price] -%></span><span>/3 个月</span></p>
               <p><span class="span-red">节省 ￥<%= item[:save] -%></span></p>
-              <%= link_to "立即购买", item[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+              <%= link_to "立即购买", item[:link], class: "btn btn-lg btn-qvm2for3 disabled", target: "_blank" -%>
             </div>
           </div>
         </div>
@@ -103,7 +116,7 @@
               <% hot[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span><span>/天</span></p>
-                <%= link_to "立即购买", section[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+                <%= link_to "立即购买", section[:link], class: "btn btn-lg btn-qvm2for3 disabled", target: "_blank" -%>
               </section>
               <% end -%>
             </div>
@@ -155,7 +168,7 @@
               <% db[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span><span>/天</span></p>
-                <%= link_to "立即购买", section[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+                <%= link_to "立即购买", section[:link], class: "btn btn-lg btn-qvm2for3 disabled", target: "_blank" -%>
               </section>
               <% end -%>
             </div>
@@ -193,7 +206,7 @@
                 <% end -%>
               </div>
               <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= comm[:price] -%></span><span>/条</span></p>
-              <%= link_to "立即购买", comm[:link], class: "btn btn-lg btn-qvm2for3", target: "_blank" -%>
+              <%= link_to "立即购买", comm[:link], class: "btn btn-lg btn-qvm2for3 disabled", target: "_blank" -%>
             </div>
           </div>
         </div>
@@ -231,6 +244,21 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12 col-invite">
         <%= link_to "立即邀请", "https://portal.qiniu.com/invitation", class: "btn btn-lg", title: "邀请朋友参与，赢取更多好礼", target: "_blank" -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 新用户专享代金券提示模态框 %>
+<div class="modal fade alert-modal-css form-wrapper qvm2for3-modal" id="exclusive-voucher-modal" tabindex="-1" role="dialog" aria-labelledby="exclusive-voucher-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="exclusive-voucher-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">此代金券为新用户专享</p>
       </div>
     </div>
   </div>
