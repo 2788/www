@@ -1,0 +1,129 @@
+<%# banner %>
+<div class="jumbotron hero hero-linking">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-xs-10 col-sm-8">
+          <h2><%= I18n.t("views.products.linking.banner.title") -%></h2>
+          <p class="desc"><%= I18n.t("views.products.linking.banner.desc") -%></p>
+          <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
+            <%= link_to "咨询详情", "https://jinshuju.net/f/y9P9t9", class: "btn btn-lg btn-hollow m-b-xs", target: "_blank" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 导航栏 %>
+<div class="features-nav linking-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.products.linking.middlebar.links").each do |linkbar| %>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], class:linkbar[:class] -%></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# 产品架构 %>
+<div class="features features-less features-linking-framework">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.linking.framework.title") -%></h2>
+    </div>
+
+    <div class="image-container">
+      <%= image_tag I18n.t("views.products.linking.framework.image"), width: "80%" -%>
+    </div>
+  </div>
+</div>
+
+<%# 产品功能 %>
+<div class="features features-less features-cases features-linking-function">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.linking.function.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.products.linking.function.col").each do |col| -%>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-function">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag col[:icon], class: "media-object", title: col[:title], alt: col[:title], width: 120 -%></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= col[:title] -%>
+              </h4>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 产品优势 %>
+<div class="features features-less features-linking-advantage">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.linking.advantage.title") -%></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.products.linking.advantage.col").each do |col| -%>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-advantage">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag col[:icon], class: "media-object", title: col[:title], alt: col[:title], width: 120 -%></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= col[:title] -%>
+              </h4>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 应用场景 %>
+<div class="features features-less features-cases features-linking-scene">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.linking.scene.title") -%></h2>
+    </div>
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+        <% I18n.t("views.products.linking.scene.tabs").each do |tab| -%>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.products.linking.scene.sections").each do |sec| -%>
+          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+            <div class="row">
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <%= content_tag :div, image_tag(sec[:image], alt: sec[:title], title: sec[:title]), class: "col-left" -%>
+              </div>
+              <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-right">
+                  <h3><%= sec[:title] -%></h3>
+                  <p class="desc"><%= sec[:desc] -%></p>
+                </div>
+              </div>
+            </div>
+          </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
