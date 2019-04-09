@@ -7,8 +7,8 @@ $(document).ready ->
   $dbPartDropdown = $('.features-qvm2for3-db .content-dropdown .qvm2for3-db-dropdown')
   $exclusiveVoucherModal = $qvm2for3EventsPage.find('#exclusive-voucher-modal')
 
-  # qvm2for3 活动结束时间 2019 年 5 月 1 号 0 点
-  qvm2for3EventEndTime = new Date(2019, 4, 1, 0, 0, 0).getTime()
+  # qvm2for3 活动结束时间 2019 年 5 月 15 号 0 点
+  qvm2for3EventEndTime = new Date(2019, 4, 15, 0, 0, 0).getTime()
 
   # 判断 qvm2for3 活动是否过期
   isQvm2for3EventExpired = () ->

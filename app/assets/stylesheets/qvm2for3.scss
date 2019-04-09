@@ -1,5 +1,8 @@
 .hero-qvm2for3 {
   margin-bottom: 0 !important;
+  .middle-container {
+    top: 28% !important;
+  }
 }
 
 .features-qvm2for3 {
@@ -158,7 +161,7 @@
   .col-hot {
     .thumbnail {
       height: 4.30rem;
-      background-color: #3B43D9;
+      background-color: #3E5ED8;
       .caption {
         .desc {
           height: 0.72rem;
@@ -179,7 +182,7 @@
   .col-db {
     .thumbnail {
       height: 3.80rem;
-      background-color: #4011A7;
+      background-color: #3B43D9;
       .caption {
         .content-container {
           height: calc(100% - 0.68rem);
@@ -357,6 +360,11 @@
 }
 
 @media (width: 768px) {
+  .hero-qvm2for3 {
+    .middle-container {
+      top: 25% !important;
+    }
+  }
   .features-qvm2for3-primer {
     .col-primer {
       .thumbnail {
@@ -388,6 +396,11 @@
 }
 
 @media (max-width: 767px) {
+  .hero-qvm2for3 {
+    .middle-container {
+      top: 40% !important;
+    }
+  }
   .features-qvm2for3-voucher {
     .col-voucher {
       margin-bottom: 0.40rem;
@@ -400,6 +413,7 @@
     .col-primer {
       margin-bottom: 0.45rem !important;
       .thumbnail {
+        height: 4.00rem;
         .caption {
           .content-container {
             height: calc(100% - 0.68rem);
