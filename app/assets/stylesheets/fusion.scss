@@ -1,10 +1,27 @@
 .hero-fusion {
   .container .middle-container {
-    top: 48%;
+    top: 45%;
     h5 {
       line-height: 0.20rem;
       &.margin-l-negative {
         margin-left: -0.08rem;
+      }
+    }
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-fusion {
+    .container .middle-container {
+      top: 48%;
+      h5 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 0.14rem;
+        line-height: 1.8;
       }
     }
   }

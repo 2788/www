@@ -82,6 +82,10 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def sla_fusion_new
+    render "sla"
+  end
+
   def sla_pili
     render "sla"
   end
