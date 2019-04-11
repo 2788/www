@@ -8,8 +8,9 @@
           <li class="li_sla_kodo"><%= link_to "对象存储 SLA", sla_kodo_path -%></li>
           <li class="li_sla_kodo_new"><%= link_to "对象存储 SLA（新）", sla_kodo_new_path -%></li>
           <li class="li_sla_fusion"><%= link_to "融合 CDN SLA", sla_fusion_path -%></li>
+          <li class="li_sla_fusion_new"><%= link_to "融合 CDN SLA（新）", sla_fusion_new_path -%></li>
           <li class="li_sla_pili"><%= link_to "直播云 SLA", sla_pili_path -%></li>
-          <li class="li_sla_dora"><%= link_to "智能多媒体API SLA", sla_dora_path -%></li>
+          <li class="li_sla_dora"><%= link_to "智能多媒体 API SLA", sla_dora_path -%></li>
         </ul>
       </div>
 
@@ -822,6 +823,293 @@
                 </li>
                 <li class="last-li"><span>6.5</span>
                   <p>如本协议中的任何协议无论因何种原因完全或部分无效或不具有执行力，本协议的其余部分仍应有效并且有约束力。</p>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <section class="sla_fusion_new">
+            <div class="agreement-details">
+              <h2 style="margin-bottom: 38px;">七牛云融合 CDN 服务等级协议（融合 CDN SLA）</h2>
+              <p class="condense content-bold content-italic">本协议自 2019 年 04 月 12 日起首次公示，2019 年 05 月 12 日起生效</p>
+              <ol>
+                <li>
+                  <h3><span>1. </span>服务内容</h3>
+                  <p>七牛云融合 CDN（内容分发网络 Content Delivery Network）服务将源站内容分发至全国所有的节点，将用户网页 / 图片等资源自动分发到用户购买了七牛云服务的 CDN 节点中，从而缩短用户查看对象的延迟，提高用户访问网站的响应速度与网站的可用性，解决网络带宽小、用户访问量大、网点分布不均等问题。</p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>2. </span>定义</h3>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;服务</span>：指七牛云融合 CDN 根据本协议向开发者提供的付费服务（未付费情况，不适用本协议）。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;网页 / 图片等小文件</span>：指用户使用七牛云融合 CDN 服务的域名下所有的 .html 和 .jpg 和 .gif 等网页内容的总称。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;下载内容</span>：指用户使用七牛云 CDN 服务的域名下所有供用户下载的文件。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;点播流媒体内容</span>：指目前互联网常用的流媒体格式文件。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;服务周期</span>：以一个自然月做为一个服务周期，如果不满一个月则按一个月计算。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;服务区域</span>：中国大陆地区。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;服务周期总分钟数</span>：按照每月每周 7（七）天每天 24（二十四）小时计算。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;失败请求</span>：因 CDN 系统原因导致的域名返回的 5XX 请求和因为 CDN 服务故障导致用户正常请求未能到达 CDN 服务器端的请求视为失败请求。
+                  </p>
+                  <p>因 CDN 服务故障导致的用户正常请求未能到达 CDN 服务器端的失败请求，将通过故障前 7 天内用户域名的平均请求数计算。</p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;有效请求</span>：客户在七牛云服务账号下所有 CDN 的域名加速服务，在 CDN 服务器收到的请求视为有效请求。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;每 5 分钟错误率</span>：每 5 分钟错误率 =（每 5 分钟失败请求数 / 每 5 分钟有效请求总数）* 100 %。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;不可用时间</span>：CDN 在连续的 10 分钟或更长时间出现每 5 分钟错误率大于 0.05 % 的情况，方计为不可用时间。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;月度服务费用</span>：客户在一个自然月中在七牛云账号下 CDN 产品服务费用总额。
+                  </p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>3. </span>指标项</h3>
+                </li>
+                <li>
+                  <h4><span>3.1</span>服务可用性</h4>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>七牛云融合 CDN 保证用户购买的服务的"服务可用性"达到 99.9%，即每月服务不可用时间累计小于 44 分钟。
+                  </p>
+                  <p>服务可用性计算公式：域名服务周期内正常服务时间 / 域名服务周期内可服务总时间。</p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>服务可用性按服务周期统计，一个服务周期为一个自然月，如不满一个月不计算为一个服务周期。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>统计对象为某一七牛云账户下的所有开启 CDN 服务的域名（月请求量小于 100 万的域名除外）。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>七牛云融合 CDN 服务的不可用时间不包括日常系统维护时间、由用户原因、第三方原因或不可抗力导致的不可用时间。
+                  </p>
+                </li>
+                <li>
+                  <h4><span>3.2</span>持久性</h4>
+                </li>
+                <li>
+                  <p>七牛云融合 CDN 提供的是缓存服务，节点上保存的数据，按访问热度自动淘汰, 不会永久保存。</p>
+                </li>
+                <li>
+                  <h4><span>3.3</span>私密性</h4>
+                </li>
+                <li>
+                  <p>用户在七牛云融合 CDN 服务创建的加速域名等资源，在未经用户合法授权的情况下，其他用户无法对其配置进行更改。七牛云为用户分配最多 2 对 Access Key ID/Secret Access Key 密钥对，从七牛云服务访问接口上进行权限控制和隔离，保障用户数据的私密性。</p>
+                </li>
+                <li>
+                  <h4><span>3.4</span>可审查性</h4>
+                </li>
+                <li>
+                  <p>依据现行法律法规或根据政府监管部门监管、安全合规、审计或取证调查等原因的需要，在符合流程和手续完备的情况下，七牛云可以提供用户所使用的服务的相关信息。</p>
+                </li>
+                <li>
+                  <h4><span>3.5</span>服务资源调配能力</h4>
+                </li>
+                <li>
+                  <p>七牛云融合 CDN 为用户提供内容分发、加速服务，并支持引入安全防护功能，保障用户源站安全。用户申请使用融合 CDN 服务时，不设置带宽、存储限制，根据需要，容量将实时动态扩展。随着访问量的增长，融合 CDN 后台的带宽、存储处理能力会自动扩展，无需用户干预，但大规模流量突增（业务突发增长大于上月计费带宽的 30% 或总带宽增加 50Gbps 以上），需至少提前 3 个工作日告知七牛云服务团队，否则将可能影响可用性，即若因此影响服务可用性的，七牛云不承担责任。</p>
+                </li>
+                <li>
+                  <p>在未提前告知的情况下，七牛云 CDN 服务可提供额外 30% 以内（包含）上月计费带宽供客户使用，确保接入的域名可用性不会明显降低。</p>
+                </li>
+                <li>
+                  <h4><span>3.6</span>故障恢复能力及客服保证</h4>
+                </li>
+                <li>
+                  <p>七牛云融合 CDN 为用户提供全天候的运行维护，并以在线自助工单系统、客服电话报障等方式提供技术支持。七牛云具备完善的故障监控、自动告警、快速定位、快速恢复等一系列故障应急响应机制。</p>
+                </li>
+                <li>
+                  <p>客服咨询电话：400-808-9176；服务时间：7*24 小时。</p>
+                </li>
+                <li>
+                  <h4><span>3.7</span>网络接入性能</h4>
+                </li>
+                <li>
+                  <p>七牛云融合 CDN 对用户不限制公网出口带宽，七牛云在全国部署数百个缓存节点，保障用户的网络接入质量。</p>
+                </li>
+                <li>
+                  <h4><span>3.8</span>服务计量准确性</h4>
+                </li>
+                <li>
+                  <p>七牛云融合 CDN 服务具备准确、透明的计量计费系统。七牛云融合 CDN 根据用户的实际使用量据实结算，价格及计费模式见七牛云官网。</p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>4. </span>服务赔偿条款</h3>
+                </li>
+                <li>
+                  <h4><span>4.1</span>赔偿范围</h4>
+                </li>
+                <li>
+                  <p>因七牛云设备故障、设计缺陷或操作不当导致用户所购买的融合 CDN 服务无法正常使用，七牛云将对不可用时间进行赔偿，但不包括以下原因所导致的服务不可用时间：</p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>七牛云预先通知用户后进行系统维护所引起的，包括割接、维修、升级和模拟故障演练；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>任何七牛云所属设备以外的网络、设备故障或配置调整引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>用户的应用程序或数据信息受到黑客攻击而引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>用户维护不当或保密不当致使数据、口令、密码等丢失或泄漏所引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>用户自行升级操作系统所引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>用户的应用程序或安装活动所引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>用户的疏忽或由用户授权的操作所引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>不可抗力以及意外事件引起的；
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>其他非七牛云原因所造成的不可用。
+                  </p>
+                </li>
+                <li>
+                  <h4><span>4.2</span>赔偿方案</h4>
+                </li>
+                <li>
+                  <p>七牛云对用户存在故障的每个域名按不可用时间进行 10 倍赔偿，赔付金额 = 发生故障的域名故障前 24 小时平均每分钟费用 × 故障不可用时间 × 10 倍。</p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>赔偿只针对使用融合 CDN 服务已产生费用的用户，以代金券的形式赔偿，不折算现金返还。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>故障不可用时间 = 故障解决时间 - 故障开始时间，不可用时间按分钟计算。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>如果用户没有使用到 24 小时，按实际使用时长计算平均每分钟费用。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>赔付金额不超过客户对该故障域名所支付的费用平均值（前 12 个月费用折算平均值）或当月客户支付的月度服务费用的 25%（服务不满 12 个月，不包含本月）。
+                  </p>
+                </li>
+                <li>
+                  <h4><span>4.3</span>赔偿申请时限</h4>
+                </li>
+                <li>
+                  <p>客户可在每月第五个工作日之后对上个自然月没有达到可用性的情况提出赔偿申请。赔偿申请必须限于在 CDN 服务没有达到可用性的相关月份结束后两个月内提出；超出申请时限的赔偿申请将不被受理。</p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>5. </span>免责声明</h3>
+                </li>
+                <li>
+                  <p>详见《用户服务协议》中的"免责声明"相关条款内容。</p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <h3><span>6. </span>其他</h3>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>本协议一经公布立即生效，七牛云有权随时对协议内容进行修改。如用户不同意七牛云对本协议相关内容所做的修改，用户有权停止使用七牛云 CDN 服务。若用户继续使用七牛云 CDN 服务，则视为用户接受七牛云对本协议相关内容所做的修改。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>本协议项下七牛云 CDN 服务对于用户所有的通知均可通过网页公告、站内信、电子邮件、手机短信或其他形式等方式进行；该通知于发送之日视为已送达收件人。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>本协议的订立、执行和解释及争议的解决均应适用中国法律并受中国法院管辖。如双方就本协议内容或其执行发生任何争议，双方应尽量友好协商解决；协商不成时，任何一方均可向上海市浦东新区人民法院提起诉讼。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>本协议构成双方对本协议之约定事项及其他有关事宜的完整协议，除本协议规定的之外，未赋予本协议各方其他权利。
+                  </p>
+                </li>
+                <li class="p-l-2">
+                  <p>
+                    <span class="content-bold">&bull;&nbsp;</span>如本协议中的任何协议无论因何种原因完全或部分无效或不具有执行力，本协议的其余协议仍应有效并且有约束力。
+                  </p>
+                </li>
+              </ol>
+              <ol>
+                <li>
+                  <p class="content-bold text-center">旧版融合 CDN 服务等级协议（SLA）<a href="/sla-fusion" target="_blank" class="more more-underline">点击查阅</a></p>
                 </li>
               </ol>
             </div>
