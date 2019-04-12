@@ -63,6 +63,9 @@
               <dl>
                 <dd>开通七牛云对象存储服务的标准用户，每月可享受一定量的标准存储免费存储空间、标准存储免费请求数目。</dd>
                 <dd>每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</dd>
+                <% if Time.now.to_i < Time.local(2019, 6, 6).to_i -%>
+                <dd>标准存储 CDN 回源流出流量自 2019 年 4 月 1 日起新增 10GB 免费额度，免费额度将首次体现在 2019 年 4 月服务账单中。</dd>
+                <% end -%>
               </dl>
 
               <div class="row list-inline-prices">
@@ -252,9 +255,14 @@
                     <td class="border-bottom">0.26 元/GB</td>
                   </tr>
                   <tr>
-                    <th class="border-right">CDN 回源流出流量</th>
-                    <td colspan="2" class="border-bottom">0.15 元/GB</td>
-                    <td colspan="2" class="border-bottom border-left">0.15 元/GB</td>
+                    <th rowspan="2" class="border-right">CDN 回源流出流量</th>
+                    <td>0GB - 10GB</td>
+                    <td>免费</td>
+                    <td rowspan="2" colspan="2" class="border-bottom border-left">0.15 元/GB</td>
+                  </tr>
+                  <tr>
+                    <td class="border-bottom">10GB - 以上</td>
+                    <td class="border-bottom">0.15 元/GB</td>
                   </tr>
                   <tr>
                     <th rowspan="2" class="border-right">跨区域同步流量</th>
