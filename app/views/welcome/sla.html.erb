@@ -8,7 +8,9 @@
           <li class="li_sla_kodo"><%= link_to "对象存储 SLA", sla_kodo_path -%></li>
           <li class="li_sla_kodo_new"><%= link_to "对象存储 SLA（新）", sla_kodo_new_path -%></li>
           <li class="li_sla_fusion"><%= link_to "融合 CDN SLA", sla_fusion_path -%></li>
+          <% if false -%>
           <li class="li_sla_fusion_new"><%= link_to "融合 CDN SLA（新）", sla_fusion_new_path -%></li>
+          <% end -%>
           <li class="li_sla_pili"><%= link_to "直播云 SLA", sla_pili_path -%></li>
           <li class="li_sla_dora"><%= link_to "智能多媒体 API SLA", sla_dora_path -%></li>
         </ul>
@@ -828,6 +830,7 @@
             </div>
           </section>
 
+          <% if false -%>
           <section class="sla_fusion_new">
             <div class="agreement-details">
               <h2 style="margin-bottom: 38px;">七牛云融合 CDN 服务等级协议（融合 CDN SLA）</h2>
@@ -1059,7 +1062,7 @@
                 </li>
                 <li class="p-l-2">
                   <p>
-                    <span class="content-bold">&bull;&nbsp;</span>赔付金额不超过客户对该故障域名所支付的费用平均值（前 12 个月费用折算平均值）或当月客户支付的月度服务费用的 25%（服务不满 12 个月，不包含本月）。
+                    <span class="content-bold">&bull;&nbsp;</span>赔付金额不超过客户对该故障域名所支付的费用平均值（前 12 个月费用折算平均值）或故障当月客户支付的月度服务费用的 25%（服务不满 12 个月，不包含本月）。
                   </p>
                 </li>
                 <li>
@@ -1114,6 +1117,7 @@
               </ol>
             </div>
           </section>
+          <% end -%>
 
           <section class="sla_pili">
             <div class="agreement-details">
