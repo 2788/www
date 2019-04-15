@@ -5,6 +5,7 @@ $(document).ready ->
   $buyButtons = $('.features-qvm2for3 .container .row .content-container .btn-qvm2for3')
   $hotPartDropdown = $('.features-qvm2for3-hot .content-dropdown .qvm2for3-hot-dropdown')
   $dbPartDropdown = $('.features-qvm2for3-db .content-dropdown .qvm2for3-db-dropdown')
+  $voucherRulesModal = $qvm2for3EventsPage.find('#voucher-rules-modal')
   $exclusiveVoucherModal = $qvm2for3EventsPage.find('#exclusive-voucher-modal')
 
   # qvm2for3 活动结束时间 2019 年 5 月 15 号 0 点
@@ -47,12 +48,12 @@ $(document).ready ->
   updateBuyButtonStatus = (eventStatus) ->
     if eventStatus == 'not_signin'
       # not signin
-      $buyButtons.html '注册'
       $buyButtons.attr 'href', 'https://portal.qiniu.com/signup?promotion=qvm2for3'
       $buyButtons.removeClass 'disabled'
     else if eventStatus == 'signin'
       # signin
       $buyButtons.removeClass 'disabled'
+      $voucherRulesModal.find('.modal-body').html '<p class="text-center">新用户专享，<a class="voucher-modal-signup" id="qvm2for3-modal-signup" href="https://portal.qiniu.com/signup?promotion=qvm2for3" target="_blank">点击注册>></a></p>'
     else if eventStatus == 'event_expired'
       $buyButtons.html '活动已结束'
       $buyButtons.attr 'href', ''
