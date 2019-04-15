@@ -118,8 +118,14 @@
 .features-qvm2for3-voucher {
   padding-top: 1.00rem;
   padding-bottom: 0.20rem;
+  .voucher-rules-link {
+    color: #3A65EB;
+    font-size: 0.14rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   .col-voucher {
-    margin-bottom: 0.40rem;
     text-align: center;
     img {
       &.active {
@@ -160,6 +166,7 @@
 }
 
 .features-qvm2for3-hot {
+  padding-top: 0 !important;
   .col-hot {
     .thumbnail {
       height: 4.30rem;
@@ -181,6 +188,7 @@
 }
 
 .features-qvm2for3-db {
+  padding-top: 0 !important;
   .col-db {
     .thumbnail {
       height: 3.80rem;
@@ -212,6 +220,7 @@
 }
 
 .features-qvm2for3-comm {
+  padding-top: 0 !important;
   .col-comm {
     .thumbnail {
       height: 3.40rem;
@@ -239,6 +248,7 @@
 }
 
 .features-qvm2for3-rules {
+  padding-top: 0 !important;
   .container .row {
     .link-box {
       color: #3A65EB;
@@ -281,6 +291,26 @@
       .modal-body {
         p {
           font-size: 0.18rem;
+        }
+      }
+    }
+    &.voucher-rules-modal {
+      .modal-dialog {
+        .modal-header {
+          .modal-title {
+            font-size: 0.20rem;
+          }
+        }
+        .modal-body {
+          p {
+            font-size: 0.14rem;
+          }
+          .voucher-modal-signup {
+            color: #3A65EB;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
