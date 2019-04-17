@@ -299,31 +299,17 @@
     .modal-dialog {
       .modal-header {
         .modal-title {
-          font-size: 0.24rem;
+          font-size: 0.20rem;
         }
       }
       .modal-body {
         p {
-          font-size: 0.18rem;
+          font-size: 0.14rem;
         }
-      }
-    }
-    &.voucher-rules-modal {
-      .modal-dialog {
-        .modal-header {
-          .modal-title {
-            font-size: 0.20rem;
-          }
-        }
-        .modal-body {
-          p {
-            font-size: 0.14rem;
-          }
-          .voucher-modal-signup {
-            color: #3A65EB;
-            &:hover {
-              text-decoration: underline;
-            }
+        .voucher-modal-signup {
+          color: #3A65EB;
+          &:hover {
+            text-decoration: underline;
           }
         }
       }
