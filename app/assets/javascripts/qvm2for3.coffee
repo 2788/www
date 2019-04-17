@@ -8,8 +8,8 @@ $(document).ready ->
   $voucherRulesModal = $qvm2for3EventsPage.find('#voucher-rules-modal')
   $exclusiveVoucherModal = $qvm2for3EventsPage.find('#exclusive-voucher-modal')
 
-  # qvm2for3 活动结束时间 2019 年 5 月 15 号 0 点
-  qvm2for3EventEndTime = new Date(2019, 4, 15, 0, 0, 0).getTime()
+  # qvm2for3 活动结束时间 2019 年 5 月 19 号 0 点
+  qvm2for3EventEndTime = new Date(2019, 4, 19, 0, 0, 0).getTime()
 
   # 判断 qvm2for3 活动是否过期
   isQvm2for3EventExpired = () ->
