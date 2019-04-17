@@ -664,7 +664,7 @@
 
   &.hero-qvm2for3-index,
   &.hero-qvm2for3 {
-    background-image: image-url("banner/banner-qvm2for3.jpg");
+    background-image: image-url("banner/banner-qvm2for3-index.jpg");
     .middle-container {
       top: 35%;
       text-align: center;
@@ -689,8 +689,8 @@
       .btn-banner {
         margin-top: 0.20rem;
         border: none;
-        color: #FFF;
-        background-color: #3998FF;
+        color: #3998FF;
+        background-color: #FFF;
         &:hover {
           -webkit-box-shadow: 4px 4px 10px #323232;
           -moz-box-shadow: 4px 4px 10px #323232;
