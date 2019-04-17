@@ -20,7 +20,7 @@
 <div class="features features-qvm2for3 features-qvm2for3-voucher">
   <div class="container">
     <div class="intro">
-      <h2 class="title">新人无门槛券&nbsp;<%= link_to "使用规则", "", class: "voucher-rules-link", title: "新人无门槛券使用规则", data: { toggle: "modal", target: "#voucher-rules-modal"} -%></h2>
+      <h2 class="title">新人有礼&nbsp;<%= link_to "领取规则", "", class: "voucher-rules-link", title: "新人有礼代金券领取规则", data: { toggle: "modal", target: "#voucher-rules-modal"} -%></h2>
     </div>
     <div class="row">
       <div class="col-md-4 col-sm-4 col-xs-12 col-voucher">
@@ -254,23 +254,25 @@
   </div>
 </div>
 
-<%# 新用户专享代金券使用规则模态框 %>
-<div class="modal fade alert-modal-css form-wrapper qvm2for3-modal voucher-rules-modal" id="voucher-rules-modal" tabindex="-1" role="dialog" aria-labelledby="voucher-rules-modal-label" data-keyboard="true" data-backdrop="true">
+<%# 新用户专享代金券领取规则模态框 %>
+<div class="modal fade alert-modal-css form-wrapper qvm2for3-modal" id="voucher-rules-modal" tabindex="-1" role="dialog" aria-labelledby="voucher-rules-modal-label" data-keyboard="true" data-backdrop="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="voucher-rules-modal-label">代金券使用规则</h3>
+        <h3 class="modal-title" id="voucher-rules-modal-label">代金券领取规则</h3>
       </div>
       <div class="modal-body">
         <p>一、代金券获得途径</p>
-        <p>通过活动、邮箱、短信或纸质礼品卡等获得唯一的代金券代码，在选择包年包月主机订单结算时输入代码，即可使用；</p>
-        <p>本券将在领取后 5 个工作日内通过电子邮件的形式发放。</p>
-        <p>二、代金券有效期</p>
+        <p>在活动期间内，通过指定代金券领取链接注册成为七牛云用户，即可获得相应福利；</p>
+        <p>注册成功后，代金券将在 10 个工作日内通过邮件发送；</p>
+        <p>二、代金券使用方法</p>
+        <p>通过活动、邮件、短信或纸质礼品卡等获得唯一的代金券代码，在选择包年包月主机订单结算时输入代码，即可使用；</p>
+        <p>三、代金券有效期</p>
         <p>本券自发放日起生效，有效期为 1 年。</p>
-        <p>三、代金券使用金额</p>
+        <p>四、代金券使用金额</p>
         <p>卡券面值 50、100、200，订单分别满 100、200、400 可使用。</p>
-        <p>四、代金券使用细则</p>
+        <p>五、代金券使用细则</p>
         <p>每笔订单只能使用一张代金券；</p>
         <p>使用抵用券购买的订单，代金券不可退费；</p>
         <p>代金券严禁出售或转让，如经发现并证实的，该券将予以作废处理。</p>
@@ -289,6 +291,19 @@
       </div>
       <div class="modal-body">
         <p class="text-center">此代金券为新用户专享</p>
+        <p>一、代金券获得途径</p>
+        <p>在活动期间内，通过指定代金券领取链接注册成为七牛云用户，即可获得相应福利；</p>
+        <p>注册成功后，代金券将在 10 个工作日内通过邮件发送；</p>
+        <p>二、代金券使用方法</p>
+        <p>通过活动、邮件、短信或纸质礼品卡等获得唯一的代金券代码，在选择包年包月主机订单结算时输入代码，即可使用；</p>
+        <p>三、代金券有效期</p>
+        <p>本券自发放日起生效，有效期为 1 年。</p>
+        <p>四、代金券使用金额</p>
+        <p>卡券面值 50、100、200，订单分别满 100、200、400 可使用。</p>
+        <p>五、代金券使用细则</p>
+        <p>每笔订单只能使用一张代金券；</p>
+        <p>使用抵用券购买的订单，代金券不可退费；</p>
+        <p>代金券严禁出售或转让，如经发现并证实的，该券将予以作废处理。</p>
       </div>
     </div>
   </div>
