@@ -4422,7 +4422,7 @@ en:
                     class: "flag-empty"
                 price: "105"
                 save: "52.5"
-                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=ap-southeast-1&instance_type=ecs.t5-lc2m1.nano&buymonth=3&eip=1"
+                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=us-west-1&instance_type=ecs.t5-lc2m1.nano&buymonth=3&eip=1"
               - specs:
                 - name: "CPU："
                   value: "1 核"
@@ -4439,7 +4439,7 @@ en:
                     class: "flag-empty"
                 price: "135.2"
                 save: "67.6"
-                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=ap-southeast-1&instance_type=ecs.t5-lc1m1.small&buymonth=3&eip=1"
+                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=us-west-1&instance_type=ecs.t5-lc1m1.small&buymonth=3&eip=1"
               - specs:
                 - name: "CPU："
                   value: "1 核"
@@ -4456,7 +4456,7 @@ en:
                     class: "flag-empty"
                 price: "176"
                 save: "88"
-                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=ap-southeast-1&instance_type=ecs.t5-lc1m2.small&buymonth=3&eip=1"
+                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=us-west-1&instance_type=ecs.t5-lc1m2.small&buymonth=3&eip=1"
               - specs:
                 - name: "CPU："
                   value: "2 核"
@@ -4473,7 +4473,7 @@ en:
                     class: "flag-empty"
                 price: "280.4"
                 save: "140.2"
-                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=ap-southeast-1&instance_type=ecs.t5-lc1m2.large&buymonth=3&eip=1"
+                link: "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=us-west-1&instance_type=ecs.t5-lc1m2.large&buymonth=3&eip=1"
         hot:
           - title: "共享性云服务器 XN4"
             desc: "Web 应用前端机，轻负载应用、微服务等开发测试压测服务应用搭建"
