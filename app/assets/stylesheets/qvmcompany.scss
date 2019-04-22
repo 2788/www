@@ -1,0 +1,479 @@
+.qvm-company-page {
+  .jumbotron.hero.hero-qvm-company {
+    background-color: transparent !important;
+    background-image: image-url("banner/banner-qvm-company.jpg");
+    .middle-container {
+      h2, p {
+        color: #FFF;
+      }
+      .actions {
+        .btn {
+          border: none;
+          border-radius: 0.25rem;
+          background-color: #00A7E1;
+          &:hover {
+            color: #FFF;
+            -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+            -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+            box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          }
+        }
+      }
+    }
+    .right-mask-banner {
+      line-height: 3.00rem;
+    }
+  }
+
+  .features-qvmcompany-adva {
+    background-image: image-url("qvmcompany/image-adva-bg.jpg");
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-position: center 0;
+    .container {
+      .intro .title {
+        color: #FFF;
+      }
+      .cloud-3 {
+        .divide-dom {
+          height: 1;
+          clear: both;
+        }
+      }
+    }
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  .middle-container .row .col-xs-4 {
+    width: 60% !important;
+  }
+
+  .jumbotron.hero h2 {
+    margin-top: 0.50rem;
+    color: #000;
+    text-shadow: none;
+  }
+
+  .jumbotron.hero p {
+    margin: 0.30rem 0;
+    color: #000;
+    text-shadow: none;
+  }
+
+  .cloud-1 {
+    max-width: 1000px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .cloud-1 ul {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .cloud-1 ul li {
+    width: 33%;
+    margin: 0.30rem 0;
+    padding-left: 3%;
+    display: inline-block;
+  }
+
+  .cloud-1 ul li img {
+    width: 0.60rem;
+    margin: 0.30rem 0.10rem;
+    float: left;
+  }
+
+  .cloud-1 ul li p {
+    margin: 0.15rem 0 0.10rem;
+    float: left;
+    color: #9B9B9B;
+    line-height: 0.28rem;
+    text-align: left;
+    a {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .cloud-1 ul li p strong {
+    font-size: 0.18rem;
+    margin: 0.10rem 0;
+    color: #000;
+  }
+
+  .cloud-2 .cloud-2-1 {
+    width: 100%;
+    height: 1.32rem;
+    -moz-box-shadow: 0 5px 10px #1780E0;
+    box-shadow: 0px 5px 10px #1780E0;
+    margin-bottom: 0.40rem;
+  }
+
+  .cloud-2-1-l {
+    width: 6.00rem;
+    height: 0.80rem;
+    margin: 0.26rem 0 0.26rem 3%;
+    float: left;
+  }
+
+  .cloud-2-1-l h3 {
+    margin-top: 0.10rem;
+    font-size: 0.20rem;
+  }
+
+  .cloud-2-1-l h3 a {
+    height: 0.24rem;
+    position: relative;
+    top: -2px;
+    margin-left: 0.1rem;
+    padding: 0 0.1rem;
+    font-size: 0.15rem;
+    color: #FFF;
+    border-radius: 5px;
+    background-color: #00A7E1;
+    text-align: center;
+    line-height: 0.24rem;
+    display: inline-block;
+    cursor: default;
+  }
+
+  .cloud-2-1-l h3 i {
+    float: left;
+    width: 0px;
+    height: 0px;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    position: absolute;
+    border-width: 0.05rem;
+    border-style: dashed solid dashed dashed;
+    border-color: transparent #00A7E1 transparent transparent;
+    margin: 0.07rem 0 0 -0.20rem;
+  }
+
+  .cloud-2-1-l p {
+    font-size: 0.15rem;
+  }
+
+  .cloud-2-1-l p strong {
+    color: #000;
+  }
+
+  .cloud-2-1-r {
+    width: 30%;
+    height: 1.52rem;
+    float: right;
+    margin-right: 3%;
+  }
+
+  .cloud-2-1-r p {
+    line-height: 1.32rem;
+    float: right;
+    font-size: 0.15rem;
+    color: #000;
+  }
+
+  .cloud-2-1-r p strong {
+    font-size: 0.40rem;
+  }
+
+  .cloud-2-1-r a {
+    padding: 0.05rem 0.20rem;
+    color: #FFF;
+    font-size: 0.15rem;
+    background-color: #BD3333;
+    border-radius: 17px;
+    margin: 0.50rem 0 0 5%;
+    display: inline-block;
+    &:hover {
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    }
+  }
+
+  .know-more-models {
+    margin-top: 0.60rem;
+    text-align: center;
+    a {
+      color: #00A7E1;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .cloud-3 {
+    display: inline-block;
+  }
+
+  .cloud-3 li {
+    float: left;
+    width: 33.33%;
+    margin: 0.40rem 0;
+    text-align: center;
+    padding: 0 4%;
+  }
+
+  .cloud-3 li p {
+    color: #FFF;
+  }
+
+  .cloud-3 li h3 {
+    color: #FFF;
+    margin-bottom: 0.23rem;
+  }
+
+  .cloud-4 {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .cloud-4 li {
+    float: left;
+    width: 16.66%;
+    margin: 0.40rem 0 0;
+    text-align: center;
+    padding: 0 4%;
+  }
+
+  .cloud-4 li img {
+    width: 0.60rem;
+    margin-bottom: 0.20rem;
+  }
+
+  .cloud-4 li p {
+    color: #000;
+  }
+
+  .cloud-5 {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .cloud-5 li {
+    float: left;
+    width: 33.33%;
+    margin: 0.40rem 0;
+    padding: 0 4%;
+  }
+
+  .cloud-5 li p a {
+    color: #000;
+    &:hover {
+      color: #28AEDF;
+    }
+  }
+
+  .cloud-5 li a {
+    color: #28AEDF;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .cloud-5 li h3 {
+    padding-bottom: 0.20rem;
+    border-bottom: solid 1px #D8D8D8;
+  }
+
+  .footer {
+    width: 100%;
+    height: 100px;
+    padding: 0;
+    color: #FFF;
+    font-size: 20px;
+    background-color: #0066EA;
+    display: table;
+    .container {
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .footer a {
+    margin-left: 20px;
+    padding: 0.05rem 0.20rem;
+    border: none;
+    border-radius: 18px;
+    color: #0066EA;
+    background-color: #FFF;
+    display: inline-block;
+    &:hover {
+      -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+      box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .jumbotron.hero.hero-qvm-company {
+      .middle-container {
+        h2, p, .actions {
+          padding-left: 1.20rem;
+        }
+
+        h2 {
+          margin-top: 0.30rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .jumbotron.hero h2 {
+      margin-top: 0.25rem;
+    }
+
+    .jumbotron.hero p {
+      margin: 0.20rem 0;
+    }
+
+    .cloud-2-1-l {
+      width: 5.30rem;
+    }
+
+    .cloud-2-1-r {
+      width: 36%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .jumbotron.hero h2 {
+      margin-top: 0;
+      font-size: 0.24rem;
+    }
+
+    .jumbotron.hero p {
+      margin: 0.10rem 0;
+      font-size: 0.12rem;
+    }
+
+    .cloud-1 ul li {
+      width: 30%;
+      padding-left: 0;
+    }
+
+    .cloud-2 .cloud-2-1 {
+      height: 2.00rem;
+    }
+
+    .cloud-2-1-l {
+      width: 100%;
+      margin: 0.26rem 0 0.16rem 0;
+      text-align: center;
+    }
+
+    .cloud-2-1-r {
+      width: 100%;
+      height: 0.50rem;
+      margin-right: 0;
+      text-align: center;
+       a {
+         margin: 0;
+       }
+       p {
+         position: relative;
+         top: 8px;
+         margin-left: 10px;
+         float: none;
+         line-height: 1;
+         display: inline-block;
+       }
+    }
+
+    .cloud-5 li {
+      width: 50%;
+    }
+  }
+
+  @media (width: 768px) {
+    .jumbotron.hero h2,
+    .jumbotron.hero p,
+    .jumbotron.hero .actions {
+      padding-left: 0.50rem;
+    }
+
+    .jumbotron.hero h2 {
+      margin-top: -0.15rem;
+    }
+
+    .cloud-2-1-r {
+       p {
+         top: 5px;
+       }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .jumbotron.hero h2,
+    .jumbotron.hero p {
+      text-shadow: 0 0.02rem 0.03rem rgba(0, 0, 0, 0.8);
+    }
+
+    .cloud-1 ul li {
+      width: 100%;
+      padding-left: 10%;
+    }
+
+    .cloud-1 ul li img {
+      width: 0.60rem;
+      margin: 0.30rem;
+      float: left;
+    }
+
+    .cloud-2 .cloud-2-1 {
+      height: 2.30rem;
+    }
+
+    .cloud-2-1-l h3 a {
+      top: 0;
+      margin-top: 10px;
+      margin-left: 0;
+      color: #00A7E1;
+      background-color: #FFF;
+      display: block;
+    }
+
+    .cloud-2-1-l h3 i {
+      display: none;
+    }
+
+    .cloud-2-1-l {
+      width: 100%;
+      margin: 0.26rem 0 0.16rem 0;
+      text-align: center;
+    }
+
+    .cloud-2-1-r {
+      width: 100%;
+      height: 0.50rem;
+      margin-top: 20px;
+      margin-right: 0;
+      text-align: center;
+       a {
+         margin: 0;
+       }
+       p {
+         position: relative;
+         top: 5px;
+         margin-left: 10px;
+         float: none;
+         line-height: 1;
+         display: inline-block;
+       }
+    }
+
+    .cloud-5 li {
+      width: 100%;
+    }
+  }
+}
