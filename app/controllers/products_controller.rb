@@ -129,6 +129,9 @@ class ProductsController < ApplicationController
   def qvm_partner
   end
 
+  def qvm_company
+  end
+
   def linking
   end
 
