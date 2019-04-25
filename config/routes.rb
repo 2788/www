@@ -54,7 +54,7 @@ Rails.application.routes.draw do
     get '/products/qavs',                          to: 'products#qavs'
     get '/products/qvm',                           to: 'products#qvm'
     get '/products/qvm/partner',                   to: 'products#qvm_partner'
-    # get '/products/qvm-company',                   to: 'products#qvm_company'
+    get '/products/qvm-company',                   to: 'products#qvm_company'
     get '/products/edu',                           to: 'products#edu'
     get '/products/ess',                           to: 'products#ess'
     get '/products/snow',                          to: 'products#snow'
