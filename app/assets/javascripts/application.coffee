@@ -45,6 +45,7 @@
 #= require censorfeeds
 #= require qvm
 #= require fusion
+#= require dora
 
 #= require uuid
 

@@ -2532,9 +2532,6 @@ en:
           - title: "Success Cases"
             class: ""
             href: "#tab-content-section-4"
-          - title: ""
-            class: ""
-            href: "#tab-content-section-5"
         feature1:
           col1:
             - title: Face Recognition

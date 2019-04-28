@@ -2597,141 +2597,367 @@ zh-CN:
                 link: "https://developer.qiniu.com/insight/api/4824/overview"
                 target: "_blank"
       dora:
-        title: "智能多媒体 API"
-        desc: "智能多媒体 API (DORA) 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。"
+        title: "智能多媒体服务"
+        desc: "智能多媒体服务（DORA），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
+        tip: "免费额度：20 元/月多媒体处理， 20TB/月图片处理，750 小时/月自定义数据处理服务。"
         middlebar:
-          - title: 产品功能
+          - title: "核心优势"
             class: "active"
             href: "#tab-content-section-1"
-          - title: 产品优势
+          - title: "产品功能"
             class: ""
             href: "#tab-content-section-2"
-          - title: 适用场景
+          - title: "应用场景"
             class: ""
             href: "#tab-content-section-3"
-          - title: 客户案例
+          - title: "客户案例"
             class: ""
             href: "#tab-content-section-4"
-          - title: 产品相关
+          - title: "文档 & 资源"
             class: ""
             href: "#tab-content-section-5"
-        feature1:
-          col1:
-            - title: 人脸识别技术
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: 业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。
-              poster: "https://mars-assets.qnssl.com/video/face-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/face-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-                - group:
-                  - title: "人脸检测"
-                    target: "https://developer.qiniu.com/dora/manual/4281/face-detection"
-                    class: "link-document"
-                  - title: "1:1 人脸比对"
-                    target: "https://developer.qiniu.com/dora/manual/4282/face-sim"
-                    class: "link-document"
-                  - title: "1:N 人脸比对"
-                    target: "https://developer.qiniu.com/dora/manual/4438/face-recognition"
-                    class: "link-document"
-            - title: 场景物体识别
-              class: "col-sm-6 col-padding col-content-middle sm-right"
-              desc: 360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。
-              poster: "https://mars-assets.qnssl.com/video/scene-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/scene-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-            - title: OCR 文字识别
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: 自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。
-              poster: "https://mars-assets.qnssl.com/video/ocr-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/ocr-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-            - title: 内容审核
-              class: "col-sm-6 col-padding col-content-middle sm-right"
-              desc: 高效精准识别图片及视频中的违规内容，准确率高达 99.95%，可替代80%以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。
-              poster: "https://mars-assets.qnssl.com/video/content-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/content-recognition.mp4"
-              actions:
-              links:
-                - group:
-                  - title: "图片内容审核"
-                    target: "https://developer.qiniu.com/dora/manual/4252/image-review"
-                    class: "link-document"
-                  - title: "视频内容审核"
-                    target: "https://developer.qiniu.com/dora/manual/4258/video-pulp"
-                    class: "link-document"
-            - title: 物体分割
-              class: "col-sm-6 col-padding col-content-middle"
-              desc: 80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。
-              poster: "https://mars-assets.qnssl.com/video/object-recognition.jpg"
-              src: "https://mars-assets.qnssl.com/video/object-recognition.mp4"
-              actions:
-                - title: "立即申请"
-              links:
-          col2:
-            - class: "col-sm-6 col-padding col-content-middle sm-right"
-              title1: 图片缩略
-              desc1: 支持对存储在七牛云或使用七牛 CDN 的图片生成高质量缩略图，从而很好地满足你的大小、形状和风格需要。
-              title2: 图片瘦身
-              desc2: 支持对存储在七牛云或使用七牛 CDN 的 PNG、JPG 图片瘦身，缩小图片体积，节省流量，提升产品体验。
-              alt: 图片处理
-              src: "dora/img-pictures.png"
-            - class: "col-sm-6 col-padding col-content-middle"
-              title1: 音视频转码
-              desc1: 支持所有主流音视频格式、转码集群强大、效率高，H.265 技术压缩 20%～30% 视频大小。
-              title2: 视频截图
-              desc2: 支持对存储在七牛云的视频文件截取视频帧画面并按指定大小缩放成图片。
-              alt: 视频处理
-              src: "dora/img-vedio.png"
-        feature2:
-          title: "产品优势"
-          col:
-            - title: 简单易用
-              icon: "dora/icon-jiandanyiyong@2x.png"
-              desc: 调用方式简单，缩短产品开发维护时间
-            - title: 功能丰富
-              icon: "dora/icon-gongnengfengfu.png"
-              desc: 丰富的功能满足各种图片、音视频使用场景
-            - title: 稳定可靠
-              icon: "dora/icon-wendingkekao@2x.png"
-              desc: 近千台高性能物理机，组成的处理集群，每日处理请求数百亿次，服务可用性达到 99.99%
-            - title: 识别准确
-              icon: "dora/icon-shibiezhunque@2x.png"
-              desc: 人脸聚类、场景识别、物体检测功能均处于业界领先地位
-        feature3:
-          title: "适用场景"
+        advantage:
+          title: "核心优势"
+          cols:
+            - title: "稳定可靠"
+              icon: "dora/icon-adva-wendingkekao.png"
+              desc1: "近千台高性能物理机组成的处理集群，可应对高并发处理需求"
+              desc2: "每日处理请求数百亿次，服务可用性达到 99.99%"
+            - title: "灵活接入"
+              icon: "dora/icon-adva-linghuojieru.png"
+              desc1: "成熟完善 SDK 和 API ，调用方式简单，缩短产品开发运维时间"
+              desc2: "专业服务团队 7X24 小时服务"
+            - title: "功能丰富"
+              icon: "dora/icon-adva-gongnengfengfu.png"
+              desc1: "丰富的媒体处理功能满足各种图片、音视频应用场景"
+              desc2: "高可扩展的媒体处理模板，支持自定义处理，满足多样化的媒体数据处理需求"
+            - title: "识别准确"
+              icon: "dora/icon-adva-shibiezhunque.png"
+              desc1: "内容审核、场景识别、物体检测功能处于业界领先水平"
+              desc2: "平均复审率低于 10%，大幅降低运营成本"
+        func:
+          title: "产品功能"
+          leftbar:
+            - title: "图片处理"
+              class: "active"
+              href: "#tab-func-section-1"
+            - title: "音视频处理"
+              class: ""
+              href: "#tab-func-section-2"
+            - title: "智能识别"
+              class: ""
+              href: "#tab-func-section-3"
+            - title: "视频分析"
+              class: ""
+              href: "#tab-func-section-4"
+            - title: "视频画质优化"
+              class: ""
+              href: "#tab-func-section-5"
+            - title: "自定义数据处理"
+              class: ""
+              href: "#tab-func-section-6"
+            - title: "智能审核"
+              class: ""
+              href: "#tab-func-section-7"
+            - title: "版权保护"
+              class: ""
+              href: "#tab-func-section-8"
+          sections:
+            - id: "tab-func-section-1"
+              class: "tab-pane fade in active"
+              title: "图片处理"
+              list:
+                - title: "图片瘦身"
+                  desc: "支持对 PNG、JPG 图片实时压缩，缩小图片体积，节省流量，提升产品体验。"
+                  btnType: "link"
+                  btnText: "立即试用 ->"
+                  flag: "image-pro-thin"
+                  url: "https://portal.qiniu.com/dora/fop/imageslim"
+                - title: "图片基本处理"
+                  desc: "提供简单快捷的图片格式转换、缩略、剪裁、自定义裁剪功能。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "图片高级处理"
+                  desc: "提供一系列高级图片处理功能，并支持控制台操作，包括格式转换、缩放、裁剪、旋转等。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "image-pro-advanced"
+                  url: "https://developer.qiniu.com/dora/manual/1270/the-advanced-treatment-of-images-imagemogr2"
+                - title: "图片水印处理"
+                  desc: "提供添加图片、文字、图文混合水印三种处理方式。"
+                  btnType: "link"
+                  btnText: "立即试用 ->"
+                  flag: "image-pro-watermark"
+                  url: "https://portal.qiniu.com/dora/fop/imageprocess"
+            - id: "tab-func-section-2"
+              class: "tab-pane fade in"
+              title: "音视频处理"
+              list:
+                - title: "音视频转码"
+                  desc: "超大规模转码集群，主流转码格式全覆盖，支持转封装、水印、截图等功能满足您的各种场景应用。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "转码模板"
+                  desc: "提供控制台图形化操作，通过设置任务模板，可对海量音视频文件进行流程化处理，一站式完成转码、截图、水印、鉴黄等基本操作，满足您的多样化转码需求。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-pro-template"
+                  url: ""
+                - title: "视频瘦身"
+                  desc: "利用视频内容自适应转码技术，在相同的观看体验下，在节省码率的同时降低宽带成本，并可通过视频增强处理，达到更优的观看效果。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "video-pro-thin"
+                  url: "https://developer.qiniu.com/dora/manual/5135/avsmart"
+                - title: "倍速转码"
+                  desc: "适用于 25 分钟以上的长视频，通过对视频分片并行转码，大幅提升转码速度。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "水印"
+                  desc: "支持在输出视频上覆盖图片、文字水印，各类分辨率视频均可支持，满足开发者各种需要。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "安全加密"
+                  desc: "提供多样化的视频加密服务，可有效保障视频资源安全性，防止文件泄露或盗用，适用于在线教育，付费观看等场景。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "完善的 API 体系"
+                  desc: "转码服务提供完善全面的服务端 API 和简洁易懂的接入文档，方便客户快速对接。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+            - id: "tab-func-section-3"
+              class: "tab-pane fade in"
+              title: "智能识别"
+              list:
+                - title: "人脸识别"
+                  desc: "业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "smart-identify-face"
+                  url: "https://developer.qiniu.com/dora/manual/4281/face-detection"
+                - title: "OCR 文字识别"
+                  desc: "自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "smart-identify-ocr"
+                  url: ""
+                - title: "以图搜图"
+                  desc: "可对一张图片在底库中进行相似图片搜索，结果返回与搜索图语义最相似的多张图片，实现精准的图像匹配。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "smart-identify-search"
+                  url: "https://developer.qiniu.com/dora/manual/4680/image-search"
+                - title: "场景物体识别"
+                  desc: "360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "smart-identify-scene"
+                  url: ""
+                - title: "物体分割"
+                  desc: "80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "smart-identify-divide"
+                  url: ""
+            - id: "tab-func-section-4"
+              class: "tab-pane fade in"
+              title: "视频分析"
+              list:
+                - title: "视频截图"
+                  desc: "从视频流中截取指定时刻的截图，提供雪碧图、视频首图功能，优化视觉体验，提升视频点击率。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "视频摘要"
+                  desc: "对视频内容进行深度学习和理解，提取一组截图，自动生成视频摘要。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-analyze-abstract"
+                  url: ""
+                - title: "视频精彩集锦"
+                  desc: "通过对视频内容的全面分析，对视频进行关键点识别，智能生成视频精彩集锦。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-analyze-highlights"
+                  url: ""
+                - title: "智能封面"
+                  desc: "抽取精彩画面，智能推荐更吸引用户的视频封面。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-analyze-cover"
+                  url: ""
+                - title: "智能标签"
+                  desc: "对视频进行场景分类、任务识别、语音识别、文字识别等多维度分析，形成层次化的分类标签，可用于视频搜索和视频推荐等应用场景。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-analyze-tag"
+                  url: ""
+                - title: "智能识别"
+                  desc: "利用人脸识别、语音识别、 OCR 文本识别以及图像识别等技术，对直播、点播、UGC 视频进行全媒体内容识别，支持涉黄、涉暴、涉恐、涉政检测等功能。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-analyze-identify"
+                  url: ""
+            - id: "tab-func-section-5"
+              class: "tab-pane fade in"
+              title: "视频画质优化"
+              list:
+                - title: "高帧率重制服务"
+                  desc: "对于 30 帧/秒以内的普通帧率高清节目，生成 60 帧/秒的高帧率版本，消除在播放中的顿挫感。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-optimize-H"
+                  url: ""
+                - title: "超高清重制服务"
+                  desc: "使用超分辨率、HDR、噪音抑制等技术，将标清的影片重置为高清版本和将 1080p 影片重制为 4K 版本，提供极致清晰的视频观感。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-optimize-superH"
+                  url: ""
+                - title: "受损片源修复"
+                  desc: "针对被过度压缩的网络视频，去除画面中的毛刺和马赛克，生成更高清晰度的修复重制版。"
+                  btnType: "form"
+                  btnText: "立即申请 ->"
+                  flag: "video-optimize-repair"
+                  url: ""
+            - id: "tab-func-section-6"
+              class: "tab-pane fade in"
+              title: "自定义数据处理"
+              list:
+                - title: "自定义数据处理平台"
+                  desc: "容器化的形式运行用户自定义的数据处理程序，为您的数据处理业务提供稳定、可靠、按需弹性缩放的运行平台，支持各种主流开发语言，并提供可视化管理界面让您更好地监控各种应用运行和使用状态。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "custom-pro-platform"
+                  url: "https://developer.qiniu.com/dora/manual/3687/ufop-directions-for-use"
+                - title: "安全可靠"
+                  desc: "使用内核级别的资源隔离和访问控制，数据安全可靠，您无需担心您的运行实例及其相关数据会被相同物理主机上的其他实例非法访问。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+            - id: "tab-func-section-7"
+              class: "tab-pane fade in"
+              title: "智能审核"
+              list:
+                - title: "图片审核"
+                  desc: "高效精准识别图片中的违规内容，支持的审核类型包括：图片鉴黄、图片鉴暴恐、图片敏感人物识别、图片广告识别。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "smart-audit-image"
+                  url: "https://developer.qiniu.com/censor/api/5588/image-censor"
+                - title: "视频审核"
+                  desc: "高效精准识别视频中的违规内容，包括涉黄、涉暴、涉恐、涉政检测等，准确率高达 99.95%，可替代 80% 以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "smart-audit-video"
+                  url: "https://developer.qiniu.com/censor/api/5620/video-censor"
+                - title: "文本内容审核"
+                  desc: "能够有效帮助您识别文本中的垃圾广告、色情暴恐、政治违规、不文明用语等垃圾、恶意内容；提高平台用户体验，降低平台运营成本。"
+                  btnType: "link"
+                  btnText: "了解详情 ->"
+                  flag: "smart-audit-text"
+                  url: "https://developer.qiniu.com/dora/manual/1307/garbage-text-recognition-service-smtextidentify"
+            - id: "tab-func-section-8"
+              class: "tab-pane fade in"
+              title: "版权保护"
+              list:
+                - title: "视频加密"
+                  desc: "提供多密钥加密、视频防盗链的视频加密服务，实现对视频的全方位加密保护。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+                - title: "DRM 算法加密"
+                  desc: "广泛认可的视频版权保护系统，可有效保障视频资源安全性。"
+                  btnType: ""
+                  btnText: ""
+                  flag: ""
+                  url: ""
+        scene:
+          title: "应用场景"
           middlebar:
-            - title: 图片处理
+            - title: "社区电商"
               class: "active"
               href: "#tab-usage-section-1"
-            - title: 音视频处理
+            - title: "在线视频"
               class: ""
               href: "#tab-usage-section-2"
-            - title: 智能云相册
+            - title: "泛娱乐"
               class: ""
               href: "#tab-usage-section-3"
+            - title: "在线教育"
+              class: ""
+              href: "#tab-usage-section-4"
           sections:
             - id: "tab-usage-section-1"
               class: "tab-pane fade in active"
-              icon: "dora/icon-tupianchuli@2x.png"
-              title: 图片处理
-              desc: 图片缩放功能适用于调整图片尺寸以适应不同设备的使用场景；原图保护、防盗链，图片水印或文字水印，用于防止图片盗用；鉴黄、鉴恐等内容审核服务为图片 UGC 应用和网站省去大量的人工审核成本，规避违规风险。
+              icon: "dora/image-scene-shequdianshang.jpg"
+              title: "社区电商"
+              desc: "针对 UGC 社区和 B2C 电商类场景，提供包括图片处理、水印、转码、智能标签、智能识别等一站式媒体资源处理解决方案。"
+              list:
+                - title: "图片/视频水印"
+                  desc: "对图片和视频添加水印，保护视频产品和宣传品牌价值"
+                - title: "音视频转码"
+                  desc: "提供全面的转码服务，支持多码率、多终端播放，为用户提供流畅清晰的观看体验"
+                - title: "图片处理"
+                  desc: "提供高可用、高质量的图片处理服务，如图片压缩、裁剪、转码、水印、瘦身等，满足多种业务场景下的图片需求"
+                - title: "智能识别"
+                  desc: "针对大量的图片和视频，提供鉴黄、鉴政、鉴暴恐等多种类型的敏感内容审核服务，有效识别违禁图片，规避违规风险，降低人工审核成本"
             - id: "tab-usage-section-2"
-              class: "tab-pane fade"
-              icon: "dora/icon-yinshipinchuli@2x.png"
-              title: 音视频处理
-              desc: 转码服务帮助各种音视频分发平台适应不同设备，满足节省带宽和流量需求；视频剪切、拼接等功能满足各种视频编辑场景；版权保护和视频水印功能，保护视频产品和宣传品牌价值。鉴黄、鉴恐等内容审核服务为视频UGC网站和应用省去大量的人工审核成本，规避违规风险。
+              class: "tab-pane fade in"
+              icon: "dora/image-scene-zaixianshipin.jpg"
+              title: "在线视频"
+              desc: "针对短视频、长视频、直播等应用，为海量在线视频提供自动化转码、智能封面、智能标签及智能识别等功能，提供更稳当、更流畅的播放体验。"
+              list:
+                - title: "个性化转码模板"
+                  desc: "转码覆盖主流格式，支持自定义个性化转码模板，灵活满足客户各种定制化的场景需求"
+                - title: "视频瘦身"
+                  desc: "在相同的视频画质下，码率更低，同时降低宽带成本，并可通过视频增强处理，达到更优的观看效果"
+                - title: "智能标签"
+                  desc: "识别视频内容，智能生成有价值的标签，提升检索的成功率以及推荐的准确率"
+                - title: "智能集锦"
+                  desc: "通过对视频内容的全面分析，对视频进行关键点识别，智能生成视频精彩集锦"
             - id: "tab-usage-section-3"
-              class: "tab-pane fade"
-              icon: "dora/icon-zhinengyunxiangce@2x.png"
-              title: 智能云相册
-              desc: 人脸检测、人脸识别以及图像分类和聚类算法，能够快速对照片进行人脸和图像识别，自动将属于同一人的照片或相同类别的照片归为一组，使相册的管理更加直观智能。照片云端存储，满足客户的各种应用场景。
-        feature4:
+              class: "tab-pane fade in"
+              icon: "dora/image-scene-fanyule.jpg"
+              title: "泛娱乐"
+              desc: "针对泛娱乐中的直播、游戏提供解决方案，包括直播内容封面、游戏视频的精彩片段剪辑、智能识别等功能，为泛娱乐用户提供完善的视频服务。"
+              list:
+                - title: "降低成本"
+                  desc: "提供视频瘦身服务，节省流量，成本降低 20% - 30%"
+                - title: "视频转码"
+                  desc: "转码同时，可以快速实现视频资源的转分辨率、转封装格式、增加水印操作"
+                - title: "智能封面"
+                  desc: "通过对直播内容的全面分析，智能推荐更吸引用户的视频封面"
+                - title: "智能集锦"
+                  desc: "针对不同类型的直播和游戏进行训练，提取精彩画面特征数据，智能剪辑精彩片段"
+            - id: "tab-usage-section-4"
+              class: "tab-pane fade in"
+              icon: "dora/image-scene-zaixianjiaoyu.jpg"
+              title: "在线教育"
+              desc: "具备强大的视频转码功能，可针对多端教学生成不同规格的视频，给用户极致的观看体验；完备的 DRM 加密功能，对视频本身进行加密，可保护您的教学内容不被外泄。"
+              list:
+                - title: "音视频转码"
+                  desc: "提供全面的转码服务，保证视频内容快速转码、流畅播放，满足节省宽带和流量的同时，提升用户体验"
+                - title: "品牌宣传"
+                  desc: "支持对输出视频添加水印，保护视频产品和宣传品牌价值"
+                - title: "版权保护"
+                  desc: "针对拥有版权的音视频及图片，不仅支持对资源添加图片和文字水印 ，还拥有 DRM 加密、防盗链、链接鉴权功能"
+        client:
           title: "客户案例"
       pili:
         banner:
@@ -4994,7 +5220,7 @@ zh-CN:
 
         - name: dora
           label: 智能多媒体 API
-          desc: 针对海量图片视频提供鉴黄鉴暴、人脸技术、物体识别等服务
+          desc: 提供云端图片、音视频基础处理、丰富的人工智能服务
 
     - group: 视频服务
       list:
@@ -5371,9 +5597,9 @@ zh-CN:
       keywords: 在线教育，教育云，教育音视频，在线教育直播，WebRTC，实时音视频，互联网教育，智慧教育，在线职业培训，高校慕课
       description: 七牛在线教育解决方案，满足一对一教学、小班教学、在线职业培训、高校慕课、双师课堂等多种教育场景，帮助企业快速开发上线低延迟、高可用的互联网教育产品。
     products_dora:
-      title: 智能多媒体 API - 七牛云
-      keywords: 人脸识别，图片处理，视频处理，智能云相册，音视频处理，图片处理服务，音视频处理服务，转码，物体识别，OCR，发票识别，场景识别，鉴黄，暴恐审核
-      description: 七牛智能多媒体 API 支持每日数百亿次的图片、音视频基础处理请求，更提供丰富的基于海量数据深度学习算法的计算机视觉服务，如人脸技术、场景物体识别、OCR 文字识别和内容审核等在线 API 服务。
+      title: 智能多媒体服务 - 七牛云
+      keywords: 图片处理，音视频处理，智能识别，视频分析，视频画质优化，智能审核，版权保护，音视频转码，图片瘦身
+      description: 七牛云智能多媒体服务（DORA），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。
     products_kirk:
       title: 容器云_容器云平台 - 七牛云
       keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务，微服务，devops
