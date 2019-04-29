@@ -23,7 +23,7 @@
   padding-bottom: 0.80rem;
   background-image: image-url("dora/image-adva-bg.jpg");
   background-size: 100% auto;
-  background-position-y: 100%;
+  background-position-y: calc(100% + 1.00rem);
   background-repeat: no-repeat;
   .container {
     .thumbnail {
@@ -71,7 +71,17 @@
       }
     }
     .tabs {
+      .row {
+        display: flex;
+        .col-tab-nav {
+          height: auto;
+        }
+        .col-tab-content {
+          flex: 1;
+        }
+      }
       .nav.nav-tabs {
+        height: 100%;
         border-right: 2px solid #888;
         li {
           display: inline;
@@ -79,11 +89,20 @@
             padding-right: 0.10rem;
             right: -3px;
             color: #FFF;
+            transition: all 0.30s;
+            -moz-transition: all 0.30s;
+            -webkit-transition: all 0.30s;
+            -o-transition: all 0.30s;
           }
           &.active,
           &:hover {
             a {
               color: #5BC0DE;
+            }
+          }
+          &.active {
+            a {
+              font-size: 0.16rem;
               border-right: 4px solid #5BC0DE;
             }
           }
@@ -126,14 +145,23 @@
         .media-body {
           h4 {
             margin-top: 0;
+            font-size: 0.24rem;
+          }
+          .title-solve-problem {
+            margin-top: 0.20rem;
+            font-size: 0.20rem;
+          }
+          .desc-p {
+            color: #000;
           }
           ul {
-            margin-top: 0.10rem;
+            margin-top: 0.20rem;
             padding-left: 0.25rem;
             li {
               list-style-type: disc;
               h5 {
                 margin: 0;
+                font-size: 0.18rem;
               }
             }
           }
@@ -202,6 +230,12 @@
   .features-dora-func {
     .container {
       .tabs {
+        .row {
+          display: block;
+          .col-tab-content {
+            flex: none;
+          }
+        }
         .nav.nav-tabs {
           width: 100%;
           border-right: none;
@@ -219,6 +253,11 @@
             &:hover {
               a {
                 border-right: none;
+              }
+            }
+            &.active {
+              a {
+                font-size: 0.13rem;
                 border-bottom: 4px solid #5BC0DE;
               }
             }
@@ -249,6 +288,23 @@
       }
     }
   }
+
+  .features-dora-func {
+    .container {
+      .tabs {
+        .nav.nav-tabs {
+          li {
+            &.active {
+              a {
+                font-size: 0.18rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .features-dora-client {
     .container {
       .conveyor {
@@ -272,6 +328,12 @@
   .features-dora-func {
     .container {
       .tabs {
+        .row {
+          display: block;
+          .col-tab-content {
+            flex: none;
+          }
+        }
         .nav.nav-tabs {
           width: 100%;
           border: none;
@@ -286,6 +348,11 @@
             &:hover {
               a {
                 border: none;
+              }
+            }
+            &.active {
+              a {
+                font-size: 0.24rem;
               }
             }
           }
