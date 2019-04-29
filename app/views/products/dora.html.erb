@@ -12,11 +12,11 @@
           <h2><%= I18n.t("views.products.dora.title") -%></h2>
           <p><%= I18n.t("views.products.dora.desc") -%></p>
           <div class="actions">
-            <%= link_to "立即使用", "https://portal.qiniu.com/create", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs", id: "dora-banner-create" -%>
-            <%= link_to "产品价格", prices_path + "?source=dora", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "dora-banner-price" -%>
-            <%= link_to "帮助文档", "https://developer.qiniu.com/dora", target: "_blank", class: "link link-underline m-b-xs", id: "dora-banner-doc" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/create?source_page=dora", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs", id: "dora-banner-create" -%>
+            <%= link_to "产品价格", prices_path + "?source=dora&source_page=dora", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "dora-banner-price" -%>
+            <%= link_to "帮助文档", "https://developer.qiniu.com/dora?source_page=dora", target: "_blank", class: "link link-underline m-b-xs", id: "dora-banner-doc" -%>
           </div>
-          <p><%= I18n.t("views.products.dora.tip") %>&nbsp;&nbsp;<%= link_to "了解详情 ->", prices_path + "?source=dora", target: "_blank", class: "link m-b-xs", id: "dora-banner-detail" -%></p>
+          <p><%= I18n.t("views.products.dora.tip") %>&nbsp;&nbsp;<%= link_to "了解详情 ->", prices_path + "?source=dora&source_page=dora", target: "_blank", class: "link m-b-xs", id: "dora-banner-detail" -%></p>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
     </div>
     <div class="tabs">
       <div class="row">
-        <div class="col-md-2 col-sm-12 col-xs-12">
+        <div class="col-md-2 col-sm-12 col-xs-12 col-tab-nav">
           <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
             <% I18n.t("views.products.dora.func.leftbar").each do |linkbar| -%>
               <li class="<%= linkbar[:class] -%>"><%= link_to linkbar[:title], linkbar[:href], data: {toggle: "tab"} -%></li>
@@ -122,12 +122,12 @@
                 <%= image_tag unit[:icon], class: "media-object", alt: unit[:title], title: unit[:title] -%>
               </div>
               <div class="media-body">
-                <h4><%= unit[:title] -%></h3>
-                <p><%= unit[:desc] -%></p>
-                <h4>能够解决的问题</h4>
+                <h4><%= unit[:title] -%></h4>
+                <p class="desc-p"><%= unit[:desc] -%></p>
+                <h4 class="title-solve-problem">能够解决的问题</h4>
                 <ul>
                   <% unit[:list].each do |item| -%>
-                  <li><h5><%= item[:title] -%></h4><p><%= item[:desc] -%></p></li>
+                  <li><h5><%= item[:title] -%></h5><p><%= item[:desc] -%></p></li>
                   <% end -%>
                 </ul>
               </div>
@@ -172,19 +172,19 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <h4>用户指南</h4>
             <ul class="links-list">
-              <li><%= link_to "如何使用智能多媒体服务", "https://developer.qiniu.com/dora", title: "如何使用智能多媒体服务", target: "_blank", id: "dora-doc-guide" -%></li>
+              <li><%= link_to "如何使用智能多媒体服务", "https://developer.qiniu.com/dora?source_page=dora", title: "如何使用智能多媒体服务", target: "_blank", id: "dora-doc-guide" -%></li>
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <h4>SDK 及文档</h4>
             <ul class="links-list">
-              <li><%= link_to "快速实现 API 调用及 SDK集成开发", "https://developer.qiniu.com/dora/tools/1222/qdoractl", title: "快速实现 API 调用及 SDK集成开发", target: "_blank", id: "dora-doc-sdk" -%></li>
+              <li><%= link_to "快速实现 API 调用及 SDK集成开发", "https://developer.qiniu.com/dora/tools/1222/qdoractl?source_page=dora", title: "快速实现 API 调用及 SDK集成开发", target: "_blank", id: "dora-doc-sdk" -%></li>
             </ul>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <h4>常见问题</h4>
             <ul class="links-list">
-              <li><%= link_to "智能多媒体服务使用过程中常遇到的问题", "https://developer.qiniu.com/faq?space=dora", title: "智能多媒体服务使用过程中常遇到的问题", target: "_blank", id: "dora-doc-faq" -%></li>
+              <li><%= link_to "智能多媒体服务使用过程中常遇到的问题", "https://developer.qiniu.com/faq?space=dora?source_page=dora", title: "智能多媒体服务使用过程中常遇到的问题", target: "_blank", id: "dora-doc-faq" -%></li>
             </ul>
           </div>
         </div>
@@ -198,7 +198,7 @@
   <div class="container">
     <p>
       注册即可免费试用智能多媒体服务&nbsp;&nbsp;
-      <%= link_to "立即开通", "https://portal.qiniu.com/create", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs", id: "dora-bottom-create" -%>
+      <%= link_to "立即开通", "https://portal.qiniu.com/create?source_page=dora", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs", id: "dora-bottom-create" -%>
     </p>
   </div>
 </div>
@@ -280,7 +280,7 @@
           <div class="col-sm-6">
             <h5><%= col[:title2] %></h5>
             <p><%= col[:desc2] %></p>
-            <%= link_to raw("查看更多功能 &gt;"), "https://developer.qiniu.com/dora/manual/3683/img-directions-for-use", target: "_blank", class: "more"+I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>
+            <%= link_to raw("查看更多功能 &gt;"), "https://developer.qiniu.com/dora/manual/3683/img-directions-for-use?source_page=dora", target: "_blank", class: "more"+I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>
           </div>
         </div>
         <div class="col-sm-6 col-clear">
