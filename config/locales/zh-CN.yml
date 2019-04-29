@@ -99,7 +99,7 @@ zh-CN:
                 - name: "容器云"
                   class: "icon icon-container index-icons"
                   path: "/products/kirk"
-                - name: "智能多媒体 API"
+                - name: "智能多媒体服务"
                   class: "icon icon-media index-icons"
                   path: "/products/dora"
         feature2:
@@ -135,7 +135,7 @@ zh-CN:
       solution:
         banner:
           title: "七牛云解决方案平台"
-          desc: "基于八大核心产品对象存储、融合 CDN、容器云、大数据平台、深度学习平台、智能多媒体 API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造了简单、可信的解决方案平台，以帮助您快速实现业务需求并创造更多商业价值。"
+          desc: "基于八大核心产品对象存储、融合 CDN、容器云、大数据平台、深度学习平台、智能多媒体服务、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造了简单、可信的解决方案平台，以帮助您快速实现业务需求并创造更多商业价值。"
         feature1:
           title: "私有云存储解决方案"
           desc: "私有云存储解决方案是基于七牛公有云对象存储服务的架构和运营经验设计而成的，能够为企业客户搭建独立的数百 EB 级别的高可靠、强安全、低成本、可扩展的存储系统，满足多样化的非结构化数据存储需求。同时还能提供成熟的系统管理和运维，让企业以更低廉的产品及维护成本，满足在容量、性能及稳定性上的需求。"
@@ -143,7 +143,7 @@ zh-CN:
           case: "客户案例"
         feature2:
           title: "非结构化数据管理解决方案"
-          desc: "七牛云非结构化数据管理平台基于七牛对象存储系统构建，能轻松实现百亿级别非结构化数据，及其结构化业务属性数据的存储；平台具高可用、高并发读写、线性扩展等特性，同时能够提供基于结构化业务属性数据的文档检索等服务，拥有 PaaS 级别的权限管理和安全机制，还能与七牛数据处理智能多媒体 API 平台无缝对接，实现影像处理，智能识别与分析等服务。"
+          desc: "七牛云非结构化数据管理平台基于七牛对象存储系统构建，能轻松实现百亿级别非结构化数据，及其结构化业务属性数据的存储；平台具高可用、高并发读写、线性扩展等特性，同时能够提供基于结构化业务属性数据的文档检索等服务，拥有 PaaS 级别的权限管理和安全机制，还能与七牛数据处理智能多媒体服务平台无缝对接，实现影像处理，智能识别与分析等服务。"
           btn: "点击咨询"
           case: "客户案例"
         feature3:
@@ -386,7 +386,7 @@ zh-CN:
                 - • 日志仓库 1 个/月
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://www.qiniu.com/products/insight"
-            - title: "智能多媒体 API"
+            - title: "智能多媒体服务"
               desc: "针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
               class: "background-dora"
               id: "free-events-dora"
@@ -3053,7 +3053,7 @@ zh-CN:
               desc: "支持对涉黄、涉恐、涉暴等行为进行高效自动识，快速集成人脸识别、图像智能识别、OCR 等技术与应用。"
               link: "相关产品："
               linkarr:
-                - title: "智能多媒体 API"
+                - title: "智能多媒体服务"
                   link: "https://www.qiniu.com/products/dora"
                 - title: "AI 创新扶持计划"
                   link: "https://www.qiniu.com/alaccelerator"
@@ -5219,7 +5219,7 @@ zh-CN:
           isNew: true
 
         - name: dora
-          label: 智能多媒体 API
+          label: 智能多媒体服务
           desc: 提供云端图片、音视频基础处理、丰富的人工智能服务
 
     - group: 视频服务
@@ -5661,7 +5661,7 @@ zh-CN:
       keywords:
       description:
     welcome_sla_dora:
-      title: 智能多媒体 API SLA - 七牛云
+      title: 智能多媒体服务 SLA - 七牛云
       keywords:
       description:
     welcome_privacy_right:
@@ -5671,7 +5671,7 @@ zh-CN:
     welcome_solution:
       title: 解决方案 - 七牛云
       keywords: 对象存储私有化部署方案，非结构化数据管理解决方案，智能云相册解决方案，智能硬件与物联网解决方案，广电传媒解决方案，安防终端解决方案，互联网与移动互联网解决方案，应用质量监控解决方案
-      description: 七牛云解决方案平台，基于八大核心产品对象存储、融合CDN、容器云、大数据平台、深度学习平台、智能多媒体API、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造的简单、可信的解决方案平台，帮助您快速实现业务需求并创造更多商业价值。
+      description: 七牛云解决方案平台，基于八大核心产品对象存储、融合 CDN、容器云、大数据平台、深度学习平台、智能多媒体服务、直播云、点播云，以及自身多年的云服务领域的技术积累和服务运营经验，七牛云精心打造的简单、可信的解决方案平台，帮助您快速实现业务需求并创造更多商业价值。
     welcome_about:
       title: 关于我们 - 七牛云
     welcome_company:
@@ -5732,7 +5732,7 @@ zh-CN:
     events_free:
       title: 免费云服务 - 七牛云
       keywords: 免费云服务，对象存储，CDN 加速，内容安全，日志管理，短视频 SDK，SSL 证书
-      description: 七牛云为客户提供对象存储、CDN 加速、内容安全、智能日志管理、短视频 SDK、播放器 SDK、SSL 证书、智能多媒体 API 等产品和服务免费套餐，助力企业和开发者零门槛上云。
+      description: 七牛云为客户提供对象存储、CDN 加速、内容安全、智能日志管理、短视频 SDK、播放器 SDK、SSL 证书、智能多媒体服务等产品和服务免费套餐，助力企业和开发者零门槛上云。
     events_7event:
       title: 七周年献好礼活动 - 七牛云
       keywords: 七牛云，抵用券，内容安全，短视频开发包，云栖大会

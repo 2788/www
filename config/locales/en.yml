@@ -359,7 +359,7 @@ en:
                 - • 日志仓库 1 个/月
               unsignlink: "https://portal.qiniu.com/signup/choice"
               signlink: "https://www.qiniu.com/products/insight"
-            - title: "智能多媒体 API"
+            - title: "智能多媒体服务"
               desc: "针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
               class: "background-dora"
               id: "free-events-dora"
@@ -5247,7 +5247,7 @@ en:
       keywords:
       description:
     welcome_sla_dora:
-      title: 智能多媒体 API SLA - 七牛云
+      title: 智能多媒体服务 SLA - 七牛云
       keywords:
       description:
     welcome_privacy_right:
@@ -5320,7 +5320,7 @@ en:
     events_free:
       title: 免费云服务 - 七牛云
       keywords: 免费云服务，对象存储，CDN 加速，内容安全，日志管理，短视频 SDK，SSL 证书
-      description: 七牛云为客户提供对象存储、CDN 加速、内容安全、智能日志管理、短视频 SDK、播放器 SDK、SSL 证书、智能多媒体 API 等产品和服务免费套餐，助力企业和开发者零门槛上云。
+      description: 七牛云为客户提供对象存储、CDN 加速、内容安全、智能日志管理、短视频 SDK、播放器 SDK、SSL 证书、智能多媒体服务等产品和服务免费套餐，助力企业和开发者零门槛上云。
     events_qvm1rmb:
       title: 1元云服务器_1元云主机 - 七牛云
       keywords: 1元云服务器，1元云主机，七牛云，云主机试用，云服务器活动，便宜服务器，云服务器优惠，ECS
