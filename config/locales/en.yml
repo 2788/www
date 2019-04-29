@@ -5230,8 +5230,8 @@ en:
       title: 对象存储 SLA - 七牛云
       keywords:
       description:
-    welcome_sla_kodo_new:
-      title: 新版对象存储 SLA - 七牛云
+    welcome_sla_kodo_old:
+      title: 旧版对象存储 SLA - 七牛云
       keywords:
       description:
     welcome_sla_fusion:

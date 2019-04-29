@@ -74,7 +74,7 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
-  def sla_kodo_new
+  def sla_kodo_old
     render "sla"
   end
 
