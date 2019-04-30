@@ -85,6 +85,7 @@ Rails.application.routes.draw do
     get '/user-agreement',         to: 'welcome#user_agreement'
     get '/sla-kodo',               to: 'welcome#sla_kodo'
     get '/sla-kodo-old',           to: 'welcome#sla_kodo_old'
+    get '/sla-kodo-new',           to: 'welcome#sla_kodo_new'
     get '/sla-fusion',             to: 'welcome#sla_fusion'
     get '/sla-fusion-new',         to: 'welcome#sla_fusion_new'
     get '/sla-pili',               to: 'welcome#sla_pili'
