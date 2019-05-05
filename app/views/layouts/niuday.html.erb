@@ -475,7 +475,7 @@
           <div class="icp grey-darker-color">
             <% icp = I18n.t("icps")[(request.domain || "qiniu.com").to_sym] || I18n.t("icps")[("qiniu.com").to_sym] %>
             <%= link_to content_tag(:span, icp[1], class: "icon icon-aq"), "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502000961", rel:"nofollow", target: "_blank" unless icp[1].blank? %>
-            <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow"><span class="icon icon-aq"> <%= icp[0] -%> </span></a>
+            <a href="http://www.beian.miit.gov.cn/" target="_blank" rel="nofollow"><span class="icon icon-aq"> <%= icp[0] -%> </span></a>
           </div>
         </div>
       </div>
