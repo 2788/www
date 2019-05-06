@@ -22,16 +22,21 @@
       <h2 class="title"><%= I18n.t("views.products.sms.combo.title") -%><a class="sms-title-tag"><i></i>hot</a></h2>
       <p class="desc"><%= I18n.t("views.products.sms.combo.desc") -%></p>
     </div>
-    <div class="sms-combo-container">
+    <div class="row">
       <% I18n.t("views.products.sms.combo.list").each do |combo| -%>
-      <div class="sms-combo-item">
-        <div class="sms-combo-l">
-          <h3><%= combo[:title] -%><a><i></i><%= combo[:tag] -%></a></h3>
-        </div>
-        <div class="sms-combo-r">
-          <span class="sms-combo-tag">惠</span>
-          <p><span class="symbol-money">￥</span><strong><%= combo[:price] -%></strong>&nbsp;/条</p>
-          <%= link_to "立即购买", combo[:link], title: combo[:title], target: "_blank" -%>
+      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 col-combo">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= combo[:title] -%></h4>
+            <div class="content-container">
+              <p class="sub-title"><%= combo[:tag] -%></p>
+              <div class="buy-container">
+                <span class="sms-combo-tag">惠</span>
+                <p class="price-p"><span class="symbol-money">￥</span><strong><%= combo[:price] -%></strong>&nbsp;/条</p>
+                <%= link_to "立即购买", combo[:link], title: combo[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <% end -%>
