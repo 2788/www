@@ -2870,7 +2870,7 @@ zh-CN:
                   btnType: "link"
                   btnText: "了解详情 ->"
                   flag: "smart-audit-text"
-                  url: "https://developer.qiniu.com/dora/manual/1307/garbage-text-recognition-service-smtextidentify?source_page=dora"
+                  url: "https://developer.qiniu.com/dora/manual/1258/text-as-jian-zheng-huang-service?source_page=dora"
             - id: "tab-func-section-8"
               class: "tab-pane fade in"
               title: "版权保护"
