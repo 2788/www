@@ -1,0 +1,126 @@
+<%# banner 部分 %>
+<div class="jumbotron hero hero-sms">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-10">
+          <h2><%= I18n.t("views.products.sms.banner.title") -%></h2>
+          <p><%= I18n.t("views.products.sms.banner.desc") -%></p>
+          <div class="actions">
+            <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r m-b-xs", title: "云短信 - 立即使用", target: "_blank" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云短信优惠套餐 %>
+<div class="features features-less features-sms-combo">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.sms.combo.title") -%><a class="sms-title-tag"><i></i>hot</a></h2>
+      <p class="desc"><%= I18n.t("views.products.sms.combo.desc") -%></p>
+    </div>
+    <div class="sms-combo-container">
+      <% I18n.t("views.products.sms.combo.list").each do |combo| -%>
+      <div class="sms-combo-item">
+        <div class="sms-combo-l">
+          <h3><%= combo[:title] -%><a><i></i><%= combo[:tag] -%></a></h3>
+        </div>
+        <div class="sms-combo-r">
+          <span class="sms-combo-tag">惠</span>
+          <p><span class="symbol-money">￥</span><strong><%= combo[:price] -%></strong>&nbsp;/条</p>
+          <%= link_to "立即购买", combo[:link], title: combo[:title], target: "_blank" -%>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+    <h4 class="know-more-combo">
+      <%= link_to "了解更多套餐", "", title: "了解更多套餐", target: "_blank" -%>
+    </h4>
+  </div>
+</div>
+
+<%# 产品优势 %>
+<div class="features features-less features-sms-adva">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.sms.adva.title") -%></h2>
+    </div>
+    <div class="row">
+      <% I18n.t("views.products.sms.adva.list").each do |col| -%>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= col[:title] -%></h4>
+            <p class="desc"><%= col[:desc] -%></p>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 应用场景 %>
+<div class="features features-less features-sms-scene">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.sms.scene.title") -%></h2>
+    </div>
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar nav-short" role="tablist">
+        <% I18n.t("views.products.sms.scene.middlebar").each do |linkbar| -%>
+          <li class="<%= linkbar[:class] -%>"><%= link_to content_tag(:span, linkbar[:title]), linkbar[:href], data: {toggle: "tab"} -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.products.sms.scene.sections").each do |sec| -%>
+          <section id="<%= sec[:id] -%>" class="<%= sec[:class] -%>">
+            <div class="thumbnail">
+              <div class="caption">
+                <p class="desc"><%= sec[:desc] -%></p>
+                <%= image_tag sec[:image], class: "image-scene", title: sec[:title], alt: sec[:title] -%>
+              </div>
+            </div>
+          </section>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 他们都在用七牛 %>
+<div class="features features-less features-sms-customer">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.sms.customer.title") -%></h2>
+    </div>
+    <div class="conveyor">
+      <% I18n.t("views.products.sms.customer.list").each do |item| -%>
+      <div>
+        <div class="<%= item[:class] -%> sms-customer" title="<%= item[:title] -%>"></div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 底部 %>
+<div class="features features-less features-sms-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1 hidden-sm hidden-xs">&nbsp;</div>
+      <div class="col-md-5 col-sm-12 col-xs-12 col-bottom-title">
+        <h3>开始使用七牛云 SMS</h3>
+        <h4>完成实名认证，即可轻松使用七牛云 SMS</h4>
+      </div>
+      <div class="col-md-5 col-sm-12 col-xs-12 col-bottom-btn">
+        <%= link_to "立即选购", "", class: "btn btn-lg btn-default", title: "云短信 - 立即选购", target: "_blank" -%>
+        <%= link_to "联系我们", "", class: "btn btn-lg btn-default m-l", title: "云短信 - 联系我们", target: "_blank" -%>
+      </div>
+      <div class="col-md-1 hidden-sm hidden-xs">&nbsp;</div>
+    </div>
+  </div>
+</div>
