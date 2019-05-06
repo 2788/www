@@ -1039,13 +1039,13 @@ en:
           title: "Application Scenarios"
           middlebar:
             - title: "Web Acceleration"
-              class: "active"
+              class: "web-acceleration active"
               href: "#tab-usage-section-1"
             - title: "Document Downloads"
-              class: ""
+              class: "document-downloads"
               href: "#tab-usage-section-2"
             - title: "Audio & Video On-demand"
-              class: ""
+              class: "video-on-demand"
               href: "#tab-usage-section-3"
           sections:
             - id: "tab-usage-section-1"
