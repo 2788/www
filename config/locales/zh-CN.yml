@@ -4372,6 +4372,96 @@ zh-CN:
               image: "linking/image-scene-4.png"
               title: "智慧教育"
               desc: "可解决整套幼儿园宝宝在线可视产品所面临存储空间不足、扩展性架构单薄、难以承载高并发导致业务性能崩塌等问题，助力快速构筑开放共享、敏捷高效、安全可信的幼教体系。"
+      sms:
+        banner:
+          title: "云短信"
+          desc: "七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类 短信使用场景，如验证码、通知类短信以及营销短信等。"
+        combo:
+          title: "云短信优惠套餐"
+          desc: "云短信钜惠，低至 3.5 分/条，新老用户均可购买"
+          list:
+            - title: "100 元短信起跑包"
+              tag: "2600 条 1 年有效"
+              price: "0.038"
+              link: ""
+            - title: "200 元短信加油包"
+              tag: "5400 条 1 年有效"
+              price: "0.037"
+              link: ""
+            - title: "500 元短信冲刺包"
+              tag: "14000 条 2 年有效"
+              price: "0.0357"
+              link: ""
+            - title: "1000 元短信致胜包"
+              tag: "28000 条 2 年有效"
+              price: "0.0357"
+              link: ""
+        adva:
+          title: "产品优势"
+          list:
+            - title: "智能调度"
+              desc: "七牛短信服务平台融合多家专属运营商，多通道智能调度，轻松应对业务高峰。"
+            - title: "快速稳定"
+              desc: "专属通道，3-5 秒到达，国内短信具备 99% 超高到达率（空号或不在服务区除外），保障终端用户体验。"
+            - title: "三网合一"
+              desc: "移动、联通、电信网全覆盖，充分满足跨网发送的需求。"
+            - title: "智能分流"
+              desc: "海量数据多通道智能分流，到达率可靠。"
+            - title: "满足个性化"
+              desc: "支持自定义签名，支持为不同的客户提供独享通道、专用通道、大客户通道。"
+            - title: "便捷接入"
+              desc: "提供详尽、完善的短信接入文档，简单易懂，快速上线。"
+        scene:
+          title: "应用场景"
+          middlebar:
+            - title: "验证码类短信"
+              class: "active"
+              href: "#tab-sms-section-1"
+            - title: "通知类短信"
+              class: ""
+              href: "#tab-sms-section-2"
+            - title: "营销类短信"
+              class: ""
+              href: "#tab-sms-section-3"
+          sections:
+            - id: "tab-sms-section-1"
+              class: "tab-pane fade in active"
+              image: "sms/image-scene-verification.png"
+              title: "验证码类短信"
+              desc: "通过短信将验证码发送到用户手机上，安全有效的完成用户信息验证。适用于注册、登录、找回密码、支付等验证场景。"
+            - id: "tab-sms-section-2"
+              class: "tab-pane fade in"
+              image: "sms/image-scene-notification.png"
+              title: "通知类短信"
+              desc: "通过发送短信的形式将企业的产品，服务等信息通知给用户。适用于服务通知（如账号开通、账单）、物流通知、系统通知（如升级、故障）等场景。"
+            - id: "tab-sms-section-3"
+              class: "tab-pane fade in"
+              image: "sms/image-scene-marketing.png"
+              title: "营销类短信"
+              desc: "通过发送短信的形式将营销活动，节日祝福等信息传递给用户。适用于营销活动（如促销、赠送福利）、客户节日关怀等营销场景。"
+        customer:
+          title: "他们都在用七牛"
+          list:
+            - title: "唱吧"
+              class: "customer-changba"
+            - title: "长虹"
+              class: "customer-changhong"
+            - title: "蜻蜓 FM"
+              class: "customer-qingtingfm"
+            - title: "顺丰"
+              class: "customer-shunfeng"
+            - title: "sobey"
+              class: "customer-sobey"
+            - title: "搜狐视频"
+              class: "customer-souhu"
+            - title: "知乎"
+              class: "customer-zhihu"
+            - title: "中国平安"
+              class: "customer-zhongguopingan"
+            - title: "中国移动"
+              class: "customer-zhongguoyidong"
+            - title: "中兴"
+              class: "customer-zhongxing"
     solutions:
       kodoe:
         banner:
@@ -5632,6 +5722,10 @@ zh-CN:
       title: 云端 NVR - 七牛云
       keywords: 云端 NVR，NVR，七牛云，智慧家居，智慧安防，物联网，物联网汽车
       description: 云端 NVR（Linking）是以视频为核心的物联网数据云服务，通过设备端嵌入式 sdk 上传视音频，云端接收后进行存储、管理、回放等处理，帮助智能视频硬件厂商更快捷地使用设备接入云服务。同时与七牛云众多云产品打通，帮助企业节约人力成本，快速实现智能化转型。
+    products_sms:
+      title: 短信平台_短信验证码 - 七牛云
+      keywords: 短信平台，SMS，云短信，短信服务，短信验证码，群发短信
+      description: 七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类 短信使用场景，如验证码、通知类短信以及营销短信等。
     solutions_kodoe:
       title: 私有云解决方案_私有云搭建方案 - 七牛云
       keywords: 私有云解决方案，私有云搭建方案，企业私有云解决方案，私有云解决方案，私有云存储方案
