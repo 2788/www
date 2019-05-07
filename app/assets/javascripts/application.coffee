@@ -46,6 +46,7 @@
 #= require qvm
 #= require fusion
 #= require dora
+#= require kodoprivate
 
 #= require uuid
 
@@ -431,6 +432,8 @@ $(document).ready ->
         # feedback alert link
         # 在登录成功状态下变更文案和跳转链接
         $('#feedback-alert-link').html '<a class="feedback-link" target="_blank" title="邀请好友 乐享千元好礼" href="invite?entry=feedback-form">邀请好友 乐享千元好礼 &gt;&gt;</a>'
+        # 登录状态下改变私有云存储 banner 下载试用按钮的行为
+        modifyKodoPrivateBannerDownloadBtn res.email, res.name
     error: (err) ->
       # error
       # login banner
@@ -438,3 +441,30 @@ $(document).ready ->
       # free event page
       $('.features-free-product .free-receive-unsignin').removeClass 'hidden'
       $('.features-free-product .free-receive-signin').addClass 'hidden'
+
+  modifyKodoPrivateBannerDownloadBtn = (email, name) ->
+    $kodoPrivateBannerDownloadBtn = $('#kodoprivate-index-download')
+    if $kodoPrivateBannerDownloadBtn.length > 0
+      # 改变 href
+      $kodoPrivateBannerDownloadBtn.attr 'href', 'https://developer.qiniu.com/kodoe/manual/5867/a-free-trial'
+      # 单击后向后台推一个反馈表单
+      $kodoPrivateBannerDownloadBtn.on 'click', () ->
+        feedbackEmail = if email then email else 'marketing@qiniu.com'
+        feedbackName = if name then name else '市场部'
+
+        feedbackData = new FormData()
+        feedbackData.append 'feedback[email]', feedbackEmail
+        feedbackData.append 'feedback[content]', '私有云存储首页 banner 下载试用'
+        feedbackData.append 'feedback[phone]', '00000000000'
+        feedbackData.append 'feedback[province]', '上海市'
+        feedbackData.append 'feedback[name]', feedbackName
+
+        uuid = generateUUID()
+        timestamp = new Date().getTime()
+
+        $.ajax
+          method: 'POST',
+          url: '/feedbacks?t=' + uuid + '-' + timestamp,
+          data: feedbackData,
+          processData: false,
+          contentType: false
