@@ -447,6 +447,7 @@ $(document).ready ->
     if $kodoPrivateBannerDownloadBtn.length > 0
       # 改变 href
       $kodoPrivateBannerDownloadBtn.attr 'href', 'https://developer.qiniu.com/kodoe/manual/5867/a-free-trial'
+      $kodoPrivateBannerDownloadBtn.attr 'target', '_blank'
       # 单击后向后台推一个反馈表单
       $kodoPrivateBannerDownloadBtn.on 'click', () ->
         feedbackEmail = if email then email else 'marketing@qiniu.com'

@@ -19,6 +19,7 @@ $(document).ready ->
       if $kodoPrivatePageDownloadBtn.length > 0
         # 改变 href
         $kodoPrivatePageDownloadBtn.attr 'href', 'https://developer.qiniu.com/kodoe/manual/5867/a-free-trial'
+        $kodoPrivatePageDownloadBtn.attr 'target', '_blank'
         # 单击后向后台推一个反馈表单
         $kodoPrivatePageDownloadBtn.on 'click', (e) ->
 
