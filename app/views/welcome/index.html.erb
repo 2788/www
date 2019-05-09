@@ -20,6 +20,26 @@
   </div>
   <% end -%>
 
+  <%# sms banner 上线时间 2019 年 5 月 15 日凌晨，下线时间 2019 年 7 月 15 日凌晨 %>
+  <% if Time.now.to_i >= Time.local(2019, 5, 15).to_i && Time.now.to_i < Time.local(2019, 7, 15).to_i -%>
+  <div class="jumbotron hero hero-sms-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>七牛云短信&nbsp;一触即发</h1>
+              <p>三网合一、秒级送达、快速接入、灵活调用</p>
+              <p>超值优惠&nbsp;低至&nbsp;￥<span class="price-span">0.0357</span>/条</p>
+            </div>
+            <%= link_to "立即使用", "/products/sms?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# qvm2for3 活动下线时间为 2019 年 5 月 19 日零点 %>
   <% if Time.now.to_i < Time.local(2019, 5, 19).to_i -%>
   <div class="jumbotron hero hero-qvm2for3-index">
