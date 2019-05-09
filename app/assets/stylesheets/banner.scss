@@ -662,6 +662,34 @@
     }
   }
 
+  &.hero-sms-index {
+    background-image: image-url("banner/banner-sms-index.jpg");
+    .middle-container {
+      top: 45%;
+      text-align: center;
+      .banner-desc {
+        h1 {
+          margin-bottom: 0.20rem;
+          font-size: 0.54rem;
+          font-weight: 600;
+        }
+        p {
+          margin: 0.10rem 0;
+          font-size: 0.18rem;
+          font-weight: 500;
+          text-shadow: none;
+          .price-span {
+            font-size: 0.28rem;
+          }
+        }
+      }
+      .btn-banner {
+        margin-top: 0.10rem;
+        color: #09206B;
+      }
+    }
+  }
+
   &.hero-qvm2for3-index,
   &.hero-qvm2for3 {
     background-image: image-url("banner/banner-qvm2for3-index.jpg");
@@ -1226,6 +1254,16 @@
 
         .arch-text {
           width: 330px;
+        }
+      }
+    }
+
+    &.hero-sms-index {
+      .middle-container {
+        .banner-desc {
+          h1 {
+            font-size: 0.44rem;
+          }
         }
       }
     }
