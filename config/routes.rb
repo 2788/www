@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     get '/products/private-cloud-kodo',            to: 'products#kodoprivate'
     get '/products/private-cloud-kodo/company',    to: 'products#kodoprivate_company'
     get '/products/linking',                       to: 'products#linking'
-    # get '/products/sms',                           to: 'products#sms'
+    get '/products/sms',                           to: 'products#sms'
 
     # 推广结束，屏蔽 qvmfeeds 和 censorfeeds 的路由
     # https://jira.qiniu.io/browse/BO-5919
@@ -118,6 +118,8 @@ Rails.application.routes.draw do
 
     # 1024 活动页定位到 events#event1024
     get '/events/1024event', to: 'events#event1024'
+    # 限时 cdn 流量包活动页面路由
+    get '/events/cdn-package', to: 'events#cdn_package'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
