@@ -44,6 +44,9 @@ class EventsController < ApplicationController
   def qvm2for3
   end
 
+  def cdn_package
+  end
+
   # 根据时间计算热度
   # 2018 年 1024 活动
   # https://jira.qiniu.io/browse/BO-5294
