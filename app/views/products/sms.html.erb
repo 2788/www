@@ -7,7 +7,7 @@
           <h2><%= I18n.t("views.products.sms.banner.title") -%></h2>
           <p><%= I18n.t("views.products.sms.banner.desc") -%></p>
           <div class="actions">
-            <%= link_to "立即使用", "", class: "btn btn-lg btn-default m-r m-b-xs", title: "云短信 - 立即使用", target: "_blank" -%>
+            <%= link_to "立即咨询", "", class: "btn btn-lg btn-default m-r m-b-xs", title: "云短信 - 立即咨询", target: "", data: {toggle: "modal", target: "#feedback-modal"} -%>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
               <div class="buy-container">
                 <span class="sms-combo-tag">惠</span>
                 <p class="price-p"><span class="symbol-money">￥</span><strong><%= combo[:price] -%></strong>&nbsp;/条</p>
-                <%= link_to "立即购买", combo[:link], title: combo[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
+                <%= link_to "立即咨询", combo[:link], title: combo[:title] + " - 立即咨询", target: "", class: "btn btn-lg btn-default", data: {toggle: "modal", target: "#feedback-modal"} -%>
               </div>
             </div>
           </div>
@@ -41,9 +41,11 @@
       </div>
       <% end -%>
     </div>
+    <% if false -%>
     <h4 class="know-more-combo">
       <%= link_to "了解更多套餐", "", title: "了解更多套餐", target: "_blank" -%>
     </h4>
+    <% end -%>
   </div>
 </div>
 
@@ -122,8 +124,11 @@
         <h4>完成实名认证，即可轻松使用七牛云 SMS</h4>
       </div>
       <div class="col-md-5 col-sm-12 col-xs-12 col-bottom-btn">
+        <%= link_to "立即咨询", "", class: "btn btn-lg btn-default", title: "云短信 - 立即咨询", target: "", data: {toggle: "modal", target: "#feedback-modal"} -%>
+        <% if false -%>
         <%= link_to "立即选购", "", class: "btn btn-lg btn-default", title: "云短信 - 立即选购", target: "_blank" -%>
         <%= link_to "联系我们", "", class: "btn btn-lg btn-default m-l", title: "云短信 - 联系我们", target: "_blank" -%>
+        <% end -%>
       </div>
       <div class="col-md-1 hidden-sm hidden-xs">&nbsp;</div>
     </div>
