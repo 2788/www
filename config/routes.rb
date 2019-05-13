@@ -119,7 +119,7 @@ Rails.application.routes.draw do
     # 1024 活动页定位到 events#event1024
     get '/events/1024event', to: 'events#event1024'
     # 限时 cdn 流量包活动页面路由
-    get '/events/cdn-package', to: 'events#cdn_package'
+    # get '/events/cdn-package', to: 'events#cdn_package'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
