@@ -18,9 +18,8 @@
     <div class="row">
       <div class="col-md-6 col-sm-12 col-xs-12 col-desc-left">
         <div class="thumbnail">
-          <p class="title"><%= I18n.t("views.events.cdnpackage.desc.left.title") -%></p>
-          <%= image_tag I18n.t("views.events.cdnpackage.desc.left.image"), title: I18n.t("views.events.cdnpackage.desc.left.title"), alt: I18n.t("views.events.cdnpackage.desc.left.title"), class: "image-line-chart", width: "100%" -%>
-          <p class="bottom"><%= raw(I18n.t("views.events.cdnpackage.desc.left.bottom")) -%></p>
+          <p class="title"><%= raw(I18n.t("views.events.cdnpackage.desc.left.title")) -%></p>
+          <%= image_tag I18n.t("views.events.cdnpackage.desc.left.image"), title: I18n.t("views.events.cdnpackage.desc.left.imageTitle"), alt: I18n.t("views.events.cdnpackage.desc.left.imageTitle"), class: "image-line-chart", width: "90%" -%>
         </div>
       </div>
       <div class="col-md-6 col-sm-12 col-xs-12 col-desc-right">
@@ -30,7 +29,7 @@
           <div class="row">
             <% I18n.t("views.events.cdnpackage.desc.right.list").each do |item| -%>
               <div class="col-md-3 col-sm-3 col-xs-3 col-right-icons">
-                <%= image_tag item[:icon], title: item[:title], alt: item[:title], width: 60 -%>
+                <%= image_tag item[:icon], title: item[:title], alt: item[:title], width: 50 -%>
                 <p class="icon-title"><%= item[:title] -%></p>
               </div>
             <% end -%>
@@ -49,7 +48,7 @@
       <h2 class="title"><%= I18n.t("views.events.cdnpackage.get.title") -%></h2>
       <p class="desc"><%= I18n.t("views.events.cdnpackage.get.desc") -%></p>
     </div>
-    <p class="btn-container"><%= link_to "立即领取", "", class: "btn btn-lg btn-default cdnpackage-get-btn", target: "_blank" -%></p>
+    <p class="btn-container"><%= link_to "立即抢购", "http://index-zhuhao.cs-spock.cloudappl.com/financial/respack/fusion", class: "btn btn-lg btn-default cdnpackage-get-btn", target: "_blank" -%></p>
   </div>
   <%= image_tag "cdnpackage/image-divide-2.jpg", class: "image-divide" -%>
 </div>
@@ -64,12 +63,11 @@
     <div class="row">
       <% I18n.t("views.events.cdnpackage.buy.list").each do |buy| -%>
       <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 col-buy">
-        <div class="thumbnail">
+        <div class="thumbnail <%= buy[:class] -%>">
           <div class="caption">
             <h4 class="title"><%= buy[:title] -%></h4>
             <p class="sub-title"><%= buy[:subTitle] -%></p>
             <div class="content-container">
-              <p class="content-tag"><%= buy[:tag] -%></p>
               <div class="buy-container">
                 <p class="tag-p"><span class="buy-activity-tag">活动价</span></p>
                 <p class="price-p"><span class="symbol-money">￥</span><strong><%= buy[:price] -%></strong>&nbsp;&nbsp;<span class="origin-money"><%= buy[:originPrice] -%>&nbsp;元</span></p>
@@ -105,9 +103,8 @@
     </div>
     <div class="row">
       <% I18n.t("views.events.cdnpackage.why.list").each do |item| -%>
-      <div class="col-md-6 col-sm-6 col-xs-12 col-why">
-        <h3><%= item[:title] -%></h3>
-        <p><%= item[:desc] -%></p>
+      <div class="col-md-12 col-sm-12 col-xs-12 col-why">
+        <p><%= raw(item) -%></p>
       </div>
       <% end -%>
     </div>
