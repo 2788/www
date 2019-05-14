@@ -21,3 +21,5 @@ $(document).ready ->
         # 非移动端使用 filesaver 下载
         if saveAs?
           saveAs fileLink, fileTitle + '.pdf'
+        else
+          window.open fileLink, '_blank'
