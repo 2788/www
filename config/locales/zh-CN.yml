@@ -5387,6 +5387,219 @@ zh-CN:
               class: "client-kuaikan"
             - title: "粤科学习在线"
               class: "client-yueke"
+    download:
+      snow:
+        banner:
+          title: "边缘计算白皮书"
+          desc: "七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。"
+          icon: "download/icon-snow-white-paper.png"
+          tag: "边缘计算、边缘存储、边缘计算白皮书"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%A1%8C%E4%B8%9A%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+          recommend:
+            - title: "短视频白皮书"
+              mark: "plsv"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "私有云白皮书"
+              mark: "kodoe"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。"
+          list:
+            - "一、边缘存储"
+            - "二、边缘计算"
+            - "三、边缘计算综合架构"
+            - "四、场景解决方案"
+            - "五、定价模型"
+            - "六、FAQ"
+        detail:
+          list:
+            - "边缘计算产业的诞⽣为该部分产业的发展将会从资源配给结构性上带来突破性的改善，七牛云作为国内领先的云计算⼚商，始终致力于打造以数据为核心的场景化 PaaS 服务。2018 年，七牛云推出边缘计算与边缘存储技术，以提供容器部署能力与边缘存储能力来满足客户对于数据及用户侧数据的存储、实时分析、低延迟响应等需求。"
+      plsv:
+        banner:
+          title: "短视频白皮书"
+          desc: "七牛短视频解决方案是基于快速上传、转码、鉴黄、存储、分发等强大云端能力，集成拍摄、美颜、特效、滤镜、编辑、合成、本地压缩、上传、播放等客户端组件的一站式短视频解决方案。"
+          icon: "download/icon-plsv-white-paper.png"
+          tag: "短视频解决方案、短视频 SDK、短视频白皮书"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+          recommend:
+            - title: "直播云白皮书"
+              mark: "pili"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "实时音视频白皮书"
+              mark: "rtn"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E5%AE%9E%E6%97%B6%E9%9F%B3%E8%A7%86%E9%A2%91%E4%BA%91%E7%99%BD%E7%9A%AE%E4%B9%A6_1.0.pdf"
+        catalog:
+          desc: "七牛短视频解决方案是基于快速上传、转码、鉴黄、存储、分发等强大云端能力，集成拍摄、美颜、特效、滤镜、编辑、合成、本地压缩、上传、播放等客户端组件的一站式短视频解决方案。"
+          list:
+            - "一、七牛云短视频解决方案"
+            - "二、七牛云短视频 SDK"
+            - "三、短视频 SDK 功能"
+            - "四、重要功能详解"
+            - "五、短视频 SDK 特点"
+            - "六、播放器 SDK"
+            - "七、短视频数据处理"
+            - "八、短视频融合 CDN"
+            - "九、短视频落存储"
+            - "十、客户案例"
+        detail:
+          list:
+            - "伴随着移动终端普及和不断降低的带宽成本，用户获取内容的场景不断演化，从内容的生产、消费，到智能分发，短视频链路上催生了各种商业机会，也重塑着教育、电商、文娱等各个行业。对于众多的开发者来说，选择合适的短视频解决方案提供商对业务的创新和发展至关重要。"
+            - "继直播元年后，七牛云认识到短视频技术在未来将颠覆当前音视频市场的可能性，迅速投入到短视频的研发。七牛云致力于开发一款端到云到端的一体化解决方案，帮助更多行业用户高效省心地上云。七牛短视频研发团队包括了直播原班人马、18 年音视频领域的技术专家等。短视频解决方案已经全面上线使用，并广泛应用于社交、电商等泛娱乐场景。"
+      kodo:
+        banner:
+          title: "对象存储白皮书"
+          desc: "七牛云对象存储是七牛云提供的高可靠、强安全、低成本、可扩展的存储服务。本白皮书详细介绍七牛云对象存储优势、服务场景、资费、功能以及操作指南。"
+          icon: "download/icon-kodo-white-paper.png"
+          tag: "对象存储、对象存储白皮书、对象存储解决方案"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+          recommend:
+            - title: "私有云白皮书"
+              mark: "kodoe"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "边缘计算白皮书"
+              mark: "snow"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%A1%8C%E4%B8%9A%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "七牛云海量存储系统（KODO）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
+          list:
+            - "一、对象存储服务背景知识"
+            - "二、对象存储服务场景与优势"
+            - "三、对象存储服务资费能"
+            - "四、对象存储服务功能介绍"
+            - "五、控制台操作指南"
+        detail:
+          list:
+            - "对象存储服务是一个基于对象的海量存储服务，是七牛云自主研发的能够为用户提供高可靠、强安全、低成本、可扩展的对象存储能力，包括创建对象存储服务 、修改、删除存储空间，上传、下载、删除对象等等，从而满足多样化的非结构化数据存储需求。"
+      atlab:
+        banner:
+          title: "深度学习平台完全实践指南白皮书"
+          desc: "《深度学习平台完全实践指南》白皮书主要介绍如何选择最能满足业务需求场景的深度学习平台，并展示深度学习技术在今后行业应用中体现的巨大价值。"
+          icon: "download/icon-atlab-white-paper.png"
+          tag: "深度学习、深度学习平台、深度学习实践"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0%E5%AE%8C%E5%85%A8%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97.pdf"
+          recommend:
+            - title: "对象存储白皮书"
+              mark: "kodo"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "直播云白皮书"
+              mark: "pili"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "《深度学习平台完全实践指南》白皮书主要介绍如何选择最能满足业务需求场景的深度学习平台，并展示深度学习技术在今后行业应用中体现的巨大价值。"
+          list:
+            - "一、选择深度学习平台须参考的标准"
+            - "二、搭建深度学习平台的挑战及应对方案"
+            - "三、AVA 深度学习平台的特点与优势"
+            - "四、基于 AVA 深度学习平台的应用，创造行业价值"
+            - "五、总结"
+        detail:
+          list:
+            - "深度学习始于研究人脑神经元，其涉及如概率论、统计学等多个学科，目的是使机器有能力自主 “学习”，辅助人们检测、决策，便利人们的生活，广泛应用于数据挖掘、计算机视觉和语音识别等领域。近年来，随着 GPU 运算能力的显著提升，深度学习又被推到了 AI 舞台的前端。"
+            - "对于任何一项技术而言，从学术研究到真正应用于生产必定会经历较大的磨砺与改变。深度学习技术在当前行业智能化转型的过程中能够发挥的作用已经不言而喻，因此，如何选择一款真正便于应用的高度集成化深度学习平台就成了决策者们需要考虑的问题。"
+      rtn:
+        banner:
+          title: "实时音视频云白皮书"
+          desc: "七牛基于直播云的技术积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
+          icon: "download/icon-rtn-white-paper.png"
+          tag: "实时音视频、webrtc、实时音视频云白皮书"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E5%AE%9E%E6%97%B6%E9%9F%B3%E8%A7%86%E9%A2%91%E4%BA%91%E7%99%BD%E7%9A%AE%E4%B9%A6_1.0.pdf"
+          recommend:
+            - title: "短视频白皮书"
+              mark: "plsv"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "直播云白皮书"
+              mark: "pili"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "七牛基于直播云的技术积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
+          list:
+            - "一、实时音视频云概述"
+            - "二、实时音视频 SDK"
+            - "三、高可用、高品质的实时互动流媒体网络"
+            - "四、丰富的数据处理服务"
+            - "五、应用场景"
+            - "六、DEMO 体验"
+        detail:
+          list:
+            - "基于 RTMP/HLS 标准协议的单向直播方案，已经不能满足所有的应用场景，在线教育、社交视频、远程医疗、金融等行业的业务场景中，互动直播的需求越发旺盛。开发商都希望为用户带来更加生动的视频交互。"
+            - "七牛云基于强大的在线并发能力与内容分发网络，自研实时音视频 SDK，提供多路音视频实时互动服务，企业客户能够轻松打造高质量低延时、具备和单向直播一样强大推流能力的语音通话、视频通话、全互动直播产品。"
+      kodoe:
+        banner:
+          title: "私有云白皮书"
+          desc: "七牛私有云存储（Kodo Enterprise）是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
+          icon: "download/icon-kodoe-white-paper.png"
+          tag: "私有云、私有云存储、私有云白皮书、私有云解决方案"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+          recommend:
+            - title: "短视频白皮书"
+              mark: "plsv"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "直播云白皮书"
+              mark: "pili"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "七牛私有云存储（Kodo Enterprise）是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
+          list:
+            - "一、私有云概述"
+            - "二、私有云产品特性"
+            - "三、私有云架构设计"
+            - "四、总结"
+        detail:
+          list:
+            - "七牛私有云存储同时支持对象和文件协议的数据访问方式，能够轻松管理整个系统的软硬件架构和用户使用。它提供企业级稳定的存储引擎，能够实现高效的数据保护和弹性扩展。它支持市面上主流的商用服务器，能够针对客户情况进行灵活的部署规划和实施。"
+      pili:
+        banner:
+          title: "直播云白皮书"
+          desc: "七牛直播云服务（PILI）是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
+          icon: "download/icon-pili-white-paper.png"
+          tag: "直播云、直播云白皮书、直播解决方案"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+          recommend:
+            - title: "短视频白皮书"
+              mark: "plsv"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "私有云白皮书"
+              mark: "kodoe"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "七牛直播云是在视频直播大爆发时代，推出专为直播场景打造的全球化直播流服务和端到端的直播场景解决方案。完美解决直播场景的的三高之痛：技术门槛高、成本高、卡顿延时率高。"
+          list:
+            - "一、七牛直播云的整体架构设计"
+            - "二、七牛直播云 LiveNet 分发网络"
+            - "三、配套的数据处理服务"
+            - "四、移动端 SDK 介绍"
+            - "五、APM 数据服务介绍"
+        detail:
+          list:
+            - "七牛直播云是在视频直播大爆发时代，推出专为直播场景打造的全球化直播流服务和端到端的直播场景解决方案。完美解决直播场景的的三高之痛：技术门槛高、成本高、卡顿延时率高。"
+            - "七牛直播云在直播应用架构中可提供稳定高性能的客户端 SDK、播放器 SDK、服务端 SDK 以及高可用的 LiveNet 实时流网络。"
+      qavs:
+        banner:
+          title: "智能视频云白皮书"
+          desc: "白皮书针对各行业在视频应用领域升级过程中面临的技术痛点及挑战，提出了构建新一代视频云的 5 个关键要素和相关参考标准，并描述了智能视频云如何以更便捷的服务和更低的成本帮助客户加速升级。"
+          icon: "download/icon-qavs-white-paper.png"
+          tag: "智能视频云、视频云、智能视频云白皮书"
+          link: "http://ozrirfjeb.bkt.clouddn.com/%E6%99%BA%E8%83%BD%E8%A7%86%E9%A2%91%E4%BA%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+          recommend:
+            - title: "短视频白皮书"
+              mark: "plsv"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+            - title: "直播云白皮书"
+              mark: "pili"
+              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+        catalog:
+          desc: "白皮书报告针对各行业在视频应用领域升级过程中面临的技术痛点及挑战，提出了构建新一代视频云的 5 个关键要素和相关参考标准，并描述了智能视频云如何以更便捷的服务和更低的成本帮助客户加速升级。"
+          list:
+            - "一、导读"
+            - "二、各行业在视频时代的新兴场景"
+            - "三、智能视频云的关键要素"
+            - "四、智能视频云的成本优势"
+            - "五、AI 在智能视频云的增值应用"
+            - "六、借助灵活的智能视频云从容应对未来产业升级的未知挑战"
+        detail:
+          list:
+            - "5G 时代也即将到来，视频的内容和展现形式将更加多元化，在直播、点播等基础场景上，又增加了短视频和实时音视频互动的新浪潮，同时视频技术也在安防、医疗、教育、司法、广电等领域有着全新的应用。"
+            - "每个企业都需要拥有对于文件和富媒体素材的使用和存储的弹性能力，但只有极少数企业才需要拥有自建视频云的能力和资源，大部分企业只需要借助一套稳定并可持续升级的视频云平台，迎接未来产业中不断变化和升级的未知挑战。"
   navbar:
     logo: "logo-white.png"
     product: 产品
@@ -6021,6 +6234,38 @@ zh-CN:
       title: NIUDAY小牛汇共享日_成都站
     niudays_beijing:
       title: NIUDAY小牛汇共享日_北京站
+    download_snow_white_paper:
+      title: 边缘计算白皮书 - 七牛云
+      keywords: 边缘计算、边缘存储、边缘计算白皮书、边缘计算解决方案
+      description: 七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。
+    download_plsv_white_paper:
+      title: 短视频白皮书 - 七牛云
+      keywords: 短视频解决方案、短视频 SDK、短视频白皮书
+      description: 七牛短视频解决方案是基于快速上传、转码、鉴黄、存储、分发等强大云端能力，集成拍摄、美颜、特效、滤镜、编辑、合成、本地压缩、上传、播放等客户端组件的一站式短视频解决方案。
+    download_kodo_white_paper:
+      title: 对象存储白皮书 - 七牛云
+      keywords: 对象存储、对象存储白皮书、对象存储解决方案
+      description: 七牛云对象存储是七牛云提供的高可靠、强安全、低成本、可扩展的存储服务。本白皮书详细介绍七牛云对象存储优势、服务场景、资费、功能以及操作指南。
+    download_atlab_white_paper:
+      title: 深度学习平台完全实践指南白皮书 - 七牛云
+      keywords: 深度学习、深度学习平台、深度学习解决方案
+      description: 深度学习平台完全实践指南白皮书主要介绍如何选择最能满足业务需求场景的深度学习平台，并展示深度学习技术在今后行业应用中体现的巨大价值。
+    download_rtn_white_paper:
+      title: 实时音视频云白皮书 - 七牛云
+      keywords: 实时音视频、实时音视频云、webrtc、实时音视频云白皮书
+      description: 七牛基于直播云的技术积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。
+    download_kodoe_white_paper:
+      title: 私有云白皮书 - 七牛云
+      keywords: 私有云、私有云存储、私有云白皮书、私有云解决方案
+      description: 七牛私有云存储（Kodo Enterprise）是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。
+    download_pili_white_paper:
+      title: 直播云白皮书 - 七牛云
+      keywords: 直播云、直播云白皮书、直播解决方案
+      description: 七牛直播云服务（PILI）是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。
+    download_qavs_white_paper:
+      title: 智能视频云白皮书 - 七牛云
+      keywords: 智能视频云、视频云、智能视频云白皮书、智能视频云解决方案
+      description: 白皮书针对各行业在视频应用领域升级过程中面临的技术痛点及挑战，提出了构建新一代视频云的 5 个关键要素和相关参考标准，并描述了智能视频云如何以更便捷的服务和更低的成本帮助客户加速升级。
   cases1:
     - groupid: enterprise
       group:

@@ -1,0 +1,116 @@
+.jumbotron.hero.hero-download {
+  background-image: none !important;
+  background-color: #00268B;
+  .container {
+    .middle-container {
+      .left-mask-banner {
+        text-align: center;
+        line-height: 3.40rem;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      .sub-title {
+        margin-bottom: 0.10rem;
+        font-size: 0.16rem;
+        font-weight: 600;
+      }
+      p {
+        font-size: 0.16rem;
+      }
+      .actions {
+        .btn {
+          margin-bottom: 0.15rem;
+          color: #000;
+          border-color: #23F8DC;
+          background-color: #23F8DC;
+          &:hover {
+            -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+            -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+            box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          }
+        }
+      }
+      .related-recom {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.features-download-introduce {
+  .container {
+    .row {
+      display: flex;
+      .col-catalog,
+      .col-detail {
+        .sub-title {
+          margin-top: 0.30rem;
+          margin-bottom: 0.05rem;
+          color: #000;
+          font-size: 0.16rem;
+          font-weight: 600;
+        }
+      }
+      .col-catalog {
+        height: auto;
+      }
+      .col-detail {
+        flex: 1;
+        .sub-title {
+          margin-top: 0;
+        }
+        .detail-container {
+          height: calc(100% - 0.56rem);
+          padding: 0.20rem 0.25rem;
+          background-color: #F0F0F0;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .jumbotron.hero.hero-download {
+    .container {
+      .middle-container {
+        h2 {
+          font-size: 0.30rem;
+        }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .jumbotron.hero.hero-download {
+    .container {
+      .middle-container {
+        .left-mask-banner {
+          line-height: 4.00rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .features-download-introduce {
+    .container {
+      .row {
+        display: block;
+        .col-catalog {
+          height: auto;
+        }
+        .col-detail {
+          flex: none;
+          .detail-container {
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}

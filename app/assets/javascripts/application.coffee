@@ -47,6 +47,7 @@
 #= require fusion
 #= require dora
 #= require kodoprivate
+#= require download
 
 #= require uuid
 
