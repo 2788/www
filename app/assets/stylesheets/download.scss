@@ -72,6 +72,19 @@
   }
 }
 
+.download-page {
+  #need-signin-modal {
+    .modal-body {
+      h4 {
+        margin-bottom: 0.30rem;
+      }
+      .signin-link {
+        font-size: 0.16rem;
+      }
+    }
+  }
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
   .jumbotron.hero.hero-download {
     .container {

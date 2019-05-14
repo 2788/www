@@ -16,7 +16,7 @@
           <div class="actions">
             <%= link_to "立即下载", I18n.t(raw("views.download.#{@product}.banner.link")), class: "btn btn-lg btn-default btn-download", title: I18n.t(raw("views.download.#{@product}.banner.title")), id: raw("download-#{@product}-btn"), target: "_blank" -%>
           </div>
-          <p>相关推荐：<% I18n.t(raw("views.download.#{@product}.banner.recommend")).each do |recommend| -%><%= link_to recommend[:title], recommend[:link], title: recommend[:title], class: "related-recom btn-download", id: raw("download-#{@product}-#{recommend[:mark]}"), target: "_blank" -%>&nbsp;<% end -%>
+          <p>相关推荐：<% I18n.t(raw("views.download.#{@product}.banner.recommend")).each do |recommend| -%><%= link_to recommend[:title], send(recommend[:link]), title: recommend[:title], class: "related-recom", id: raw("download-#{@product}-#{recommend[:mark]}"), target: "_blank" -%>&nbsp;<% end -%>
           </p>
         </div>
       </div>
@@ -43,6 +43,24 @@
           <% I18n.t(raw("views.download.#{@product}.detail.list")).each do |item| -%>
           <p><%= item -%></p>
           <% end -%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 提示登录模态框 %>
+<div class="modal fade alert-modal-css form-wrapper" id="need-signin-modal" tabindex="-1" role="dialog" aria-labelledby="need-signin-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="need-signin-modal-label">提示</h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h4>请先登录</h4>
+          <%= link_to "登录 >>>", signin_url(@path || ''), class: "more underline tips-dark signin-link", target: "_blank", title: "登录" -%>
         </div>
       </div>
     </div>
