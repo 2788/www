@@ -1,9 +1,9 @@
 .jumbotron.hero.hero-cdn-package {
-  margin-bottom: 0;
+  margin-bottom: -2px;
   background-image: image-url("banner/banner-cdn-package.jpg") !important;
   .container {
     .middle-container {
-      top: 48%;
+      top: 65%;
       text-align: center;
       p {
         margin: 0.05rem 0;
@@ -29,12 +29,13 @@
   }
   .image-divide {
     position: absolute;
-    bottom: 0;
+    bottom: -2px;
   }
 }
 
 .features-cdnpackage-desc {
-  padding-bottom: 1.60rem;
+  padding-top: 0;
+  padding-bottom: 0.80rem;
   background-color: #011D5C;
   .container {
     .col-desc-left,
@@ -58,20 +59,21 @@
           font-size: 0.20rem;
           text-align: center;
           .warning-span {
-            color: #CC473E;
+            color: #FA5A50;
             font-size: 0.26rem;
           }
           &.title {
-            font-size: 0.22rem;
-            margin: 0.30rem 0 0 0;
+            font-size: 0.20rem;
+            margin: 0.20rem 0 0 0;
           }
           &.desc {
-            margin: 0.40rem 0;
+            margin: 0.10rem 0;
+            font-size: 0.16rem;
             text-align: left;
-            line-height: 2.00;
-          }
-          &.bottom {
-            margin: 0 0 0.20rem 0;
+            line-height: 1.60;
+            .warning-span {
+              font-size: 0.22rem;
+            }
           }
         }
       }
@@ -81,7 +83,8 @@
         padding-left: 0.40rem;
         padding-right: 0.40rem;
         .col-right-icons {
-          margin-top: 0.04rem;
+          padding-top: 0.10rem;
+          margin-bottom: 0;
           text-align: center;
           .icon-title {
             margin-top: 0.10rem;
@@ -94,9 +97,13 @@
 }
 
 .features-cdnpackage-get {
-  padding-bottom: 1.20rem;
+  padding-top: 0.40rem;
+  padding-bottom: 0.80rem;
   background-color: #1E2D80;
   .container {
+    .intro {
+      margin-bottom: 0.30rem;
+    }
     .btn-container {
       text-align: center;
       .cdnpackage-get-btn {
@@ -105,9 +112,9 @@
         color: #FFF;
         background-color: #CC473E;
         &:hover {
-          -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-          -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
-          box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+          -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
       }
     }
@@ -124,10 +131,18 @@
       background-color: #0A256A;
       .col-buy {
         .thumbnail {
-          height: 3.60rem;
+          height: 3.20rem;
           padding: 0;
           border-radius: 0.10rem;
-          background-color: #182A96;
+          &.blue-light {
+            background-color: #1EA3F0;
+          }
+          &.blue-medium {
+            background-color: #1A6DE5;
+          }
+          &.blue-dark {
+            background-color: #1B3DC8;
+          }
           .caption {
             height: 100%;
             padding: 0;
@@ -140,7 +155,7 @@
             .sub-title {
               margin: 0;
               padding: 0 0 0.20rem 0;
-              color: #808DAD;
+              color: #FFF;
               text-align: center;
             }
             .content-container {
@@ -148,15 +163,8 @@
               padding: 0.20rem 0.10rem;
               border-radius: 0.10rem;
               background-color: #FFF;
-              .content-tag {
-                margin: 0;
-                padding: 0 0 0.20rem 0;
-                color: #000;
-                border-bottom: 1px dashed #E8E8E8;
-                text-align: center;
-              }
               .buy-container {
-                margin-top: 0.15rem;
+                margin-top: 0.10rem;
                 .tag-p {
                   margin-bottom: 0.25rem;
                   text-align: center;
@@ -196,7 +204,7 @@
                 }
                 .btn {
                   width: 100%;
-                  margin-top: 0.15rem;
+                  margin-top: 0.20rem;
                   color: #FFF;
                   border: none;
                   background-color: #CC473E;
@@ -232,21 +240,26 @@
   background-color: #1E2D80;
   .container {
     .intro {
-      margin-bottom: 0.80rem;
+      margin-bottom: 0.30rem;
     }
     .row {
       .col-why {
-        h3, p {
-          color: #FFF;
-        }
         p {
           margin-top: 0.30rem;
+          color: #FFF;
+          word-break: break-all;
+          .know-more {
+            color: #28AEDF;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
   }
   .client-container {
-    margin-top: 0.60rem;
+    margin-top: 0.40rem;
     .conveyor {
       text-align: center;
       &>div {
@@ -312,9 +325,9 @@
             &.title {
               font-size: 0.18rem;
             }
-            &.bottom {
-              font-size: 0.18rem;
-            }
+          }
+          .image-line-chart {
+            padding-top: 0.20rem;
           }
         }
       }
@@ -328,14 +341,13 @@
               font-size: 0.18rem;
             }
             &.desc {
-              margin: 0.30rem 0;
               font-size: 0.14rem;
             }
           }
           .col-right-icons {
             margin-top: 0.08rem;
             img {
-              width: 50px
+              width: 50px;
             }
           }
         }
@@ -347,6 +359,13 @@
 @media (max-width: 991px) {
   .features-cdnpackage-desc {
     .container {
+      .col-desc-left {
+        .thumbnail {
+          .image-line-chart {
+            margin-bottom: 0.20rem;
+          }
+        }
+      }
       .col-desc-right {
         .thumbnail {
           margin-top: 0.40rem;
@@ -378,8 +397,9 @@
       .col-desc-right {
         .thumbnail {
           .col-right-icons {
+            padding-top: 0.25rem;
             img {
-              width: 40px
+              width: 40px;
             }
           }
         }
@@ -392,7 +412,7 @@
   .jumbotron.hero.hero-cdn-package {
     .container {
       .middle-container {
-        top: 62%;
+        top: 78%;
         p {
           font-size: 0.18rem;
         }
@@ -402,18 +422,21 @@
 
   .features-cdnpackage-desc {
     .container {
+      .col-desc-left {
+        .thumbnail {
+          .image-line-chart {
+            margin-top: 0.30rem;
+            margin-bottom: 0.20rem;
+          }
+        }
+      }
       .col-desc-right {
         .thumbnail {
           margin-top: 0.40rem;
-          p {
-            &.title {
-              margin-top: 0.40rem;
-            }
-          }
           .col-right-icons {
             margin-top: 0.08rem;
             img {
-              width: 40px
+              width: 40px;
             }
           }
         }
@@ -448,7 +471,7 @@
     .container {
       .row {
         .col-why {
-          h3, p {
+          p {
             text-align: center;
           }
         }
