@@ -5,21 +5,53 @@ isMobile = true if /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|
 
 $(document).ready ->
   $downloadPage = $('.download-page')
-  $pageDownloadBtns = $downloadPage.find('.jumbotron.hero.hero-download .container .middle-container .btn-download')
+  $navSigninBtn = $downloadPage.find('.navbar.navbar-default .nav.navbar-nav.navbar-right .need-signin .actions .btn.btn-hollow')
+  $pageDownloadBtn = $downloadPage.find('.jumbotron.hero.hero-download .container .middle-container .btn-download')
+  $needSigninModal = $downloadPage.find('#need-signin-modal')
 
-  if $downloadPage.length > 0 && $pageDownloadBtns.length > 0
-    $pageDownloadBtns.on 'click', (e) ->
-      e.preventDefault()
+  if $downloadPage.length > 0 && $pageDownloadBtn.length > 0
 
-      fileLink = $(this).attr 'href'
-      fileTitle = $(this).attr 'title'
+    bindPageDownloadBtnClickEvent = (isSignin) ->
+      if !isSignin
+        $pageDownloadBtn.attr 'href', ''
+        $pageDownloadBtn.attr 'target', ''
+        # 改变顶部导航栏登录按钮 redirect_url 地址
+        navbarSigninURL = $navSigninBtn.attr 'href'
+        $navSigninBtn.attr 'href', navbarSigninURL + window.location.pathname
 
-      if isMobile
-        # 移动端新建 tab 页打开 pdf 文件
-        window.open fileLink, '_blank'
-      else
-        # 非移动端使用 filesaver 下载
-        if saveAs?
-          saveAs fileLink, fileTitle + '.pdf'
+      $pageDownloadBtn.on 'click', (e) ->
+        e.preventDefault()
+
+        if !isSignin
+          # 当前为非登录状态
+          $needSigninModal.modal 'show'
         else
-          window.open fileLink, '_blank'
+          # 当前为登录状态
+          fileLink = $(this).attr 'href'
+          fileTitle = $(this).attr 'title'
+
+          if isMobile
+            # 移动端新建 tab 页打开 pdf 文件
+            window.open fileLink, '_blank'
+          else
+            # 非移动端使用 filesaver 下载
+            if saveAs?
+              saveAs fileLink, fileTitle + '.pdf'
+            else
+              window.open fileLink, '_blank'
+
+    getUserInfo = () ->
+      uuid = generateUUID()
+      timestamp = new Date().getTime()
+      $.ajax
+        method: 'GET',
+        url: '/userinfo?u=' + uuid + '&t=' + timestamp,
+        success: (res) ->
+          if res.is_signin
+            bindPageDownloadBtnClickEvent true
+          else
+            bindPageDownloadBtnClickEvent false
+        error: (err) ->
+          bindPageDownloadBtnClickEvent false
+
+    getUserInfo()

@@ -5089,10 +5089,10 @@ en:
           recommend:
             - title: "短视频白皮书"
               mark: "plsv"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_plsv_white_paper_path"
             - title: "私有云白皮书"
               mark: "kodoe"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_kodoe_white_paper_path"
         catalog:
           desc: "七牛云边缘计算平台提供基于七牛云边缘节点和客户侧节点的弹性计算服务，可满足客户在业务实时响应，数据就近处理，数据智能分析，应用快速部署等方面的关键需求，可灵活配置管理大规模边缘计算应用，加速边缘智能落地。"
           list:
@@ -5115,10 +5115,10 @@ en:
           recommend:
             - title: "直播云白皮书"
               mark: "pili"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_pili_white_paper_path"
             - title: "实时音视频白皮书"
               mark: "rtn"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E5%AE%9E%E6%97%B6%E9%9F%B3%E8%A7%86%E9%A2%91%E4%BA%91%E7%99%BD%E7%9A%AE%E4%B9%A6_1.0.pdf"
+              link: "download_rtn_white_paper_path"
         catalog:
           desc: "七牛短视频解决方案是基于快速上传、转码、鉴黄、存储、分发等强大云端能力，集成拍摄、美颜、特效、滤镜、编辑、合成、本地压缩、上传、播放等客户端组件的一站式短视频解决方案。"
           list:
@@ -5146,10 +5146,10 @@ en:
           recommend:
             - title: "私有云白皮书"
               mark: "kodoe"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_kodoe_white_paper_path"
             - title: "边缘计算白皮书"
               mark: "snow"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97%E8%A1%8C%E4%B8%9A%E4%BA%A7%E5%93%81%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_snow_white_paper_path"
         catalog:
           desc: "七牛云海量存储系统（KODO）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
           list:
@@ -5171,10 +5171,10 @@ en:
           recommend:
             - title: "对象存储白皮书"
               mark: "kodo"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_kodo_white_paper_path"
             - title: "直播云白皮书"
               mark: "pili"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_pili_white_paper_path"
         catalog:
           desc: "《深度学习平台完全实践指南》白皮书主要介绍如何选择最能满足业务需求场景的深度学习平台，并展示深度学习技术在今后行业应用中体现的巨大价值。"
           list:
@@ -5197,10 +5197,10 @@ en:
           recommend:
             - title: "短视频白皮书"
               mark: "plsv"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_plsv_white_paper_path"
             - title: "直播云白皮书"
               mark: "pili"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_pili_white_paper_path"
         catalog:
           desc: "七牛基于直播云的技术积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
           list:
@@ -5224,10 +5224,10 @@ en:
           recommend:
             - title: "短视频白皮书"
               mark: "plsv"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_plsv_white_paper_path"
             - title: "直播云白皮书"
               mark: "pili"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_pili_white_paper_path"
         catalog:
           desc: "七牛私有云存储（Kodo Enterprise）是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
           list:
@@ -5248,10 +5248,10 @@ en:
           recommend:
             - title: "短视频白皮书"
               mark: "plsv"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_plsv_white_paper_path"
             - title: "私有云白皮书"
               mark: "kodoe"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%A7%81%E6%9C%89%E4%BA%91%E5%AD%98%E5%82%A8%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_kodoe_white_paper_path"
         catalog:
           desc: "七牛直播云是在视频直播大爆发时代，推出专为直播场景打造的全球化直播流服务和端到端的直播场景解决方案。完美解决直播场景的的三高之痛：技术门槛高、成本高、卡顿延时率高。"
           list:
@@ -5274,10 +5274,10 @@ en:
           recommend:
             - title: "短视频白皮书"
               mark: "plsv"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9F%AD%E8%A7%86%E9%A2%91%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_plsv_white_paper_path"
             - title: "直播云白皮书"
               mark: "pili"
-              link: "http://ozrirfjeb.bkt.clouddn.com/%E7%9B%B4%E6%92%AD%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf"
+              link: "download_pili_white_paper_path"
         catalog:
           desc: "白皮书报告针对各行业在视频应用领域升级过程中面临的技术痛点及挑战，提出了构建新一代视频云的 5 个关键要素和相关参考标准，并描述了智能视频云如何以更便捷的服务和更低的成本帮助客户加速升级。"
           list:
