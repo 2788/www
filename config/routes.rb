@@ -174,6 +174,16 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :download, only: []
+    get '/download/snow-white-paper',    to: 'download#snow_white_paper'
+    get '/download/plsv-white-paper',    to: 'download#plsv_white_paper'
+    get '/download/kodo-white-paper',    to: 'download#kodo_white_paper'
+    get '/download/atlab-white-paper',   to: 'download#atlab_white_paper'
+    get '/download/rtn-white-paper',     to: 'download#rtn_white_paper'
+    get '/download/kodoe-white-paper',   to: 'download#kodoe_white_paper'
+    get '/download/pili-white-paper',    to: 'download#pili_white_paper'
+    get '/download/qavs-white-paper',    to: 'download#qavs_white_paper'
+
     get "robots.txt" => "welcome#robots"
 
     match "/404", :to => "errors#not_found", :via => :all

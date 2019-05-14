@@ -1,0 +1,50 @@
+<%# banner 部分 %>
+<div class="jumbotron hero hero-download">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 hidden-xs">
+          <div class="left-mask-banner">
+            <%= image_tag I18n.t(raw("views.download.#{@product}.banner.icon")), alt: I18n.t(raw("views.download.#{@product}.banner.title")), title: I18n.t(raw("views.download.#{@product}.banner.title")), width: "80%" -%>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <h2><%= I18n.t(raw("views.download.#{@product}.banner.title")) -%></h2>
+          <p class="sub-title">内容简介：</p>
+          <p><%= I18n.t(raw("views.download.#{@product}.banner.desc")) -%></p>
+          <p><span class="sub-title">标签</span>：<%= I18n.t(raw("views.download.#{@product}.banner.tag")) -%></p>
+          <div class="actions">
+            <%= link_to "立即下载", I18n.t(raw("views.download.#{@product}.banner.link")), class: "btn btn-lg btn-default btn-download", title: I18n.t(raw("views.download.#{@product}.banner.title")), id: raw("download-#{@product}-btn"), target: "_blank" -%>
+          </div>
+          <p>相关推荐：<% I18n.t(raw("views.download.#{@product}.banner.recommend")).each do |recommend| -%><%= link_to recommend[:title], recommend[:link], title: recommend[:title], class: "related-recom btn-download", id: raw("download-#{@product}-#{recommend[:mark]}"), target: "_blank" -%>&nbsp;<% end -%>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 目录和精彩内容 %>
+<div class="features features-less features-download-introduce">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 col-catalog">
+        <h3>目录</h3>
+        <p class="sub-title">内容概况：</p>
+        <p><%= I18n.t(raw("views.download.#{@product}.catalog.desc")) -%></p>
+        <% I18n.t(raw("views.download.#{@product}.catalog.list")).each do |item| -%>
+        <p><%= item -%></p>
+        <% end -%>
+      </div>
+      <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 col-detail">
+        <h3>精彩内容</h3>
+        <div class="detail-container">
+          <p class="sub-title">摘录：</p>
+          <% I18n.t(raw("views.download.#{@product}.detail.list")).each do |item| -%>
+          <p><%= item -%></p>
+          <% end -%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
