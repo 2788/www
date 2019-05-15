@@ -185,13 +185,13 @@
                   text-align: center;
                   .symbol-money {
                     position: relative;
-                    left: -0.05rem;
-                    font-size: 0.22rem;
+                    left: -0.08rem;
+                    font-size: 0.30rem;
                     font-weight: 600;
                   }
                   strong {
                     position: relative;
-                    left: -0.05rem;
+                    left: -0.08rem;
                     font-size: 0.40rem;
                   }
                   .origin-money {
@@ -356,6 +356,30 @@
   }
 }
 
+@media (max-width: 1199px) {
+  .features-cdnpackage-buy {
+    .container {
+      .row {
+        .col-buy {
+          .thumbnail {
+            .caption {
+              .content-container {
+                .buy-container {
+                  .price-p {
+                    .origin-money {
+                      right: calc(50% - 130px);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 991px) {
   .features-cdnpackage-desc {
     .container {
@@ -408,6 +432,30 @@
   }
 }
 
+@media (max-width: 768px) {
+  .features-cdnpackage-buy {
+    .container {
+      .row {
+        .col-buy {
+          .thumbnail {
+            .caption {
+              .content-container {
+                .buy-container {
+                  .price-p {
+                    .origin-money {
+                      right: calc(50% - 100px);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .jumbotron.hero.hero-cdn-package {
     .container {
@@ -437,29 +485,6 @@
             margin-top: 0.08rem;
             img {
               width: 40px;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .features-cdnpackage-buy {
-    .container {
-      .row {
-        .col-buy {
-          .thumbnail {
-            margin-bottom: 0.20rem;
-            .caption {
-              .content-container {
-                .buy-container {
-                  .price-p {
-                    .origin-money {
-                      right: calc(50% - 100px);
-                    }
-                  }
-                }
-              }
             }
           }
         }
