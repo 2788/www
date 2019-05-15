@@ -5628,6 +5628,11 @@ zh-CN:
           desc: 提供云主机、负载均衡、云数据库、高防等服务
           isNew: true
 
+        - name: sms
+          label: 云短信
+          desc: 致力于为用户提供快捷高效的通信服务能力
+          isNew: true
+
         - name: kirk
           label: 容器云
           desc: 面向微服务架构的企业级容器管理平台
@@ -5635,7 +5640,6 @@ zh-CN:
         - name: snow
           label: 边缘计算平台
           desc: 灵活配置管理大规模边缘计算应用，加速边缘智能落地
-          isNew: true
 
     - group: 数据 • 智能
       list:
