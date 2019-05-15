@@ -5251,6 +5251,7 @@ zh-CN:
             link: ""
       cdnpackage:
         banner:
+          title: "<span class='line-top'>CDN&nbsp;<span class='content-huge'>深夜不打烊</span></span>&nbsp;<span class='line-bottom'><span class='content-huge content-marked'>5&nbsp;折</span>闲时包<span class='content-huge content-marked'>限量抢</span></span>"
           time: "活动时间：2019 年 5 月 15 日 - 6 月 30 日"
           desc: "活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）"
         desc:
