@@ -20,6 +20,23 @@
   </div>
   <% end -%>
 
+  <%# cdn-package 活动时间为 2019 年 5 月 17 日 - 2019 年 6 月 30 日 %>
+  <% if Time.now.to_i >= Time.local(2019, 5, 17).to_i && Time.now.to_i < Time.local(2019, 7, 1).to_i -%>
+  <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h1><%= raw(I18n.t("views.events.cdnpackage.banner.title")) -%></h1>
+            <p><%= I18n.t("views.events.cdnpackage.banner.time") -%></p>
+            <%= link_to "点击抢购", events_cdn_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# qvm2for3 活动下线时间为 2019 年 5 月 19 日零点 %>
   <% if Time.now.to_i < Time.local(2019, 5, 19).to_i -%>
   <div class="jumbotron hero hero-qvm2for3-index">

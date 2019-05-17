@@ -59,7 +59,7 @@
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.events.cdnpackage.buy.title") -%></h2>
-      <p class="desc"><%= I18n.t("views.events.cdnpackage.buy.desc") -%></p>
+      <p class="desc"><%= raw(I18n.t("views.events.cdnpackage.buy.desc")) -%></p>
     </div>
 
     <%# 静态加速资源包 %>
