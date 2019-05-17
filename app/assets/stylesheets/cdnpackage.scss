@@ -1,6 +1,6 @@
 .jumbotron.hero.hero-cdn-package {
   margin-bottom: -2px;
-  background-image: image-url("banner/banner-cdn-package.jpg") !important;
+  background-image: image-url("banner/banner-cdn-package.jpg");
   .container {
     .middle-container {
       top: 45%;
@@ -138,6 +138,16 @@
   padding-bottom: 1.60rem;
   background-color: #011D5C;
   .container {
+    .intro {
+      .desc {
+        .desc-link {
+          color: #28AEDF;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
     .row {
       padding: 0.25rem 0 0 0;
       border-radius: 0.10rem;
@@ -209,13 +219,13 @@
                   .symbol-money {
                     position: relative;
                     left: -0.08rem;
-                    font-size: 0.30rem;
+                    font-size: 0.26rem;
                     font-weight: 600;
                   }
                   strong {
                     position: relative;
                     left: -0.08rem;
-                    font-size: 0.40rem;
+                    font-size: 0.36rem;
                   }
                   .origin-money {
                     position: absolute;
