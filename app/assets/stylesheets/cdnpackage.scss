@@ -142,19 +142,29 @@
       padding: 0.25rem 0 0 0;
       border-radius: 0.10rem;
       background-color: #0A256A;
+      .sub-intro {
+        margin-bottom: 0.20rem;
+      }
       .col-buy {
+        margin-bottom: 0.40rem;
         .thumbnail {
-          height: 3.20rem;
+          height: 2.70rem;
           padding: 0;
           border-radius: 0.10rem;
           &.blue-light {
             background-color: #1EA3F0;
           }
-          &.blue-medium {
+          &.blue-medium-light {
             background-color: #1A6DE5;
           }
+          &.blue-medium {
+            background-color: #3755D9;
+          }
+          &.blue-medium-dark {
+            background-color: #2731BB;
+          }
           &.blue-dark {
-            background-color: #1B3DC8;
+            background-color: #1F309B;
           }
           .caption {
             height: 100%;
@@ -162,24 +172,24 @@
             .title {
               margin-top: 0;
               margin-bottom: 0.10rem;
-              padding-top: 0.30rem;
+              padding-top: 0.20rem;
               color: #FFF;
             }
             .sub-title {
               margin: 0;
-              padding: 0 0 0.20rem 0;
+              padding: 0 0 0.10rem 0;
               color: #FFF;
               text-align: center;
             }
             .content-container {
-              height: calc(100% - 1.10rem);
-              padding: 0.20rem 0.10rem;
+              height: calc(100% - 0.90rem);
+              padding: 0.10rem;
               border-radius: 0.10rem;
               background-color: #FFF;
               .buy-container {
                 margin-top: 0.10rem;
                 .tag-p {
-                  margin-bottom: 0.25rem;
+                  margin-bottom: 0.20rem;
                   text-align: center;
                   .buy-activity-tag {
                     padding: 0 0.08rem;
@@ -217,7 +227,7 @@
                 }
                 .btn {
                   width: 100%;
-                  margin-top: 0.20rem;
+                  margin-top: 0.15rem;
                   color: #FFF;
                   border: none;
                   background-color: #CC473E;
@@ -231,6 +241,9 @@
             }
           }
         }
+      }
+      &.dynamic-row {
+        margin-top: 0.60rem;
       }
     }
   }
@@ -448,6 +461,18 @@
         text-align: left;
         &>div {
           width: calc(25% - 4px);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-cdnpackage-buy {
+    .container {
+      .row {
+        .col-buy {
+          left: 8.33%;
         }
       }
     }
