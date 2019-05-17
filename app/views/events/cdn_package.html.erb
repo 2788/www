@@ -61,18 +61,47 @@
       <h2 class="title"><%= I18n.t("views.events.cdnpackage.buy.title") -%></h2>
       <p class="desc"><%= I18n.t("views.events.cdnpackage.buy.desc") -%></p>
     </div>
-    <div class="row">
-      <% I18n.t("views.events.cdnpackage.buy.list").each do |buy| -%>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 col-buy">
-        <div class="thumbnail <%= buy[:class] -%>">
+
+    <%# 静态加速资源包 %>
+    <div class="row static-row">
+      <div class="intro sub-intro">
+        <h2 class="title"><%= I18n.t("views.events.cdnpackage.buy.static.title") -%></h2>
+      </div>
+      <% I18n.t("views.events.cdnpackage.buy.static.list").each do |static| -%>
+      <div class="col-lg-3 col-md-6 col-sm-5 col-xs-12 col-buy">
+        <div class="thumbnail <%= static[:class] -%>">
           <div class="caption">
-            <h4 class="title"><%= buy[:title] -%></h4>
-            <p class="sub-title"><%= buy[:subTitle] -%></p>
+            <h4 class="title"><%= static[:title] -%></h4>
+            <p class="sub-title"><%= static[:subTitle] -%></p>
             <div class="content-container">
               <div class="buy-container">
                 <p class="tag-p"><span class="buy-activity-tag">活动价</span></p>
-                <p class="price-p"><span class="symbol-money">￥</span><strong><%= buy[:price] -%></strong>&nbsp;&nbsp;<span class="origin-money"><%= buy[:originPrice] -%>&nbsp;元</span></p>
-                <%= link_to "立即购买", buy[:link], title: buy[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
+                <p class="price-p"><span class="symbol-money">￥</span><strong><%= static[:price] -%></strong>&nbsp;&nbsp;<span class="origin-money"><%= static[:originPrice] -%>&nbsp;元</span></p>
+                <%= link_to "立即购买", static[:link], title: static[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+
+    <%# 动态加速资源包 %>
+    <div class="row dynamic-row">
+      <div class="intro sub-intro">
+        <h2 class="title"><%= I18n.t("views.events.cdnpackage.buy.dynamic.title") -%></h2>
+      </div>
+      <% I18n.t("views.events.cdnpackage.buy.dynamic.list").each do |dynamic| -%>
+      <div class="col-lg-3 col-md-6 col-sm-5 col-xs-12 col-buy">
+        <div class="thumbnail <%= dynamic[:class] -%>">
+          <div class="caption">
+            <h4 class="title"><%= dynamic[:title] -%></h4>
+            <p class="sub-title"><%= dynamic[:subTitle] -%></p>
+            <div class="content-container">
+              <div class="buy-container">
+                <p class="tag-p"><span class="buy-activity-tag">活动价</span></p>
+                <p class="price-p"><span class="symbol-money">￥</span><strong><%= dynamic[:price] -%></strong>&nbsp;&nbsp;<span class="origin-money"><%= dynamic[:originPrice] -%>&nbsp;元</span></p>
+                <%= link_to "立即购买", dynamic[:link], title: dynamic[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
               </div>
             </div>
           </div>
@@ -81,6 +110,8 @@
       <% end -%>
     </div>
   </div>
+
+  <%# 活动规则部分 %>
   <div class="container rules-container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.events.cdnpackage.rules.title") -%></h2>
