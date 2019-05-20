@@ -471,6 +471,14 @@ en:
               desc: "API 接口是第三方网站进行信息交互的重要形式，因为大多涉及敏感信息或重要操作指令的传输，因此其安全性至关重要。使用 SSL 证书进行信息传输的高强度加密，可有效杜绝信息劫持。"
       arch:
         events:
+          - img: "arch/img-guangzhou.jpg"
+            time: "05 月 18 日"
+            title: "高性能后端开发最佳实践"
+            site: "广州"
+            details:
+              time: "2019/05/18 13:30"
+              site: "广州"
+              link: "http://hd.qiniu.com/arch/history/35"
           - img: "arch/img-chengdu.jpg"
             time: 11 月 23 日
             title: 容器技术的实践与分享
