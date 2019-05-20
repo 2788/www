@@ -88,8 +88,13 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
-  def sla_fusion_new
+  def sla_fusion_old
     render "sla"
+  end
+
+  def sla_fusion_new
+    # 重定向到 /sla-fusion
+    redirect_to('https://www.qiniu.com/sla-fusion', :status => 301)
   end
 
   def sla_pili

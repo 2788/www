@@ -7,7 +7,6 @@
           <li class="li_privacy_right"><%= link_to "隐私权政策", privacy_right_path -%></li>
           <li class="li_sla_kodo"><%= link_to "对象存储 SLA", sla_kodo_path -%></li>
           <li class="li_sla_fusion"><%= link_to "融合 CDN SLA", sla_fusion_path -%></li>
-          <li class="li_sla_fusion_new"><%= link_to "融合 CDN SLA（新）", sla_fusion_new_path -%></li>
           <li class="li_sla_pili"><%= link_to "直播云 SLA", sla_pili_path -%></li>
           <li class="li_sla_dora"><%= link_to "智能多媒体服务 SLA", sla_dora_path -%></li>
         </ul>
@@ -651,9 +650,10 @@
             </div>
           </section>
 
-          <section class="sla_fusion">
+          <section class="sla_fusion_old">
             <div class="agreement-details">
               <h2>七牛云融合 CDN 服务等级协议（融合 CDN SLA）</h2>
+              <p class="condense content-bold date-stamp">版本有效期至：2019 年 5 月 18 日</p>
               <ol>
                 <li>
                   <h3><span>1.</span>服务内容</h3>
@@ -831,10 +831,13 @@
             </div>
           </section>
 
-          <section class="sla_fusion_new">
+          <section class="sla_fusion">
             <div class="agreement-details">
               <h2 style="margin-bottom: 38px;">七牛云融合 CDN 服务等级协议（融合 CDN SLA）</h2>
+              <% if false -%>
               <p class="condense content-bold content-italic">本协议自 2019 年 04 月 18 日起首次公示，2019 年 05 月 18 日起生效</p>
+              <% end -%>
+              <p class="condense content-bold date-stamp">版本生效日期：2019 年 5 月 19 日</p>
               <ol>
                 <li>
                   <h3><span>1. </span>服务内容</h3>
@@ -1112,7 +1115,7 @@
               </ol>
               <ol>
                 <li>
-                  <p class="content-bold text-center">旧版融合 CDN 服务等级协议（SLA）<a href="/sla-fusion" target="_blank" class="more more-underline">点击查阅</a></p>
+                  <p class="content-bold text-center">历史融合 CDN 服务等级协议（SLA）<a href="/sla-fusion-old" target="_blank" class="more more-underline">点击查阅</a></p>
                 </li>
               </ol>
             </div>
