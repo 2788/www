@@ -247,6 +247,24 @@ div.form-wrapper {
 
   &.feedbacks-new {
     padding-top: 68px !important;
+    .container {
+      .form-group {
+        .required-mark {
+          position: relative;
+          top: -4px;
+          margin-right: 4px;
+        }
+      }
+      .actions {
+        .submit-btn {
+          padding: 10px 16px;
+          border: 1px solid #4A90E2;
+          border-radius: 2px;
+          min-width: 180px;
+          background-color: #4A90E2;
+        }
+      }
+    }
   }
 
   .form-box {

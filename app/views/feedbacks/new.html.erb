@@ -4,31 +4,21 @@
       <h1 class="title">
         产品及服务咨询
       </h1>
-      <p class="tip">此表单仅用于产品及服务售前咨询（您也可以拨打 400-808-9176 转 1）</p>
-      <p class="tip mb-3">如有售后技术咨询，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category",target: "_blank", class:"more" -%></p>
 
-      <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| %>
+      <p class="tip mb-3">如有售后问题，请<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", target: "_blank", class: "more" -%></p>
+
+      <%= form_for Feedback.new, url: {controller: "feedbacks", action: "create", t: SecureRandom.uuid}, :remote => true, html: {class: "form-horizontal", id: "feedback-form"} do |f| -%>
         <%= f.hidden_field :referer, value: request.original_url -%>
 
         <div class="form-group">
-          <label for="feedback-content" class="col-sm-2 control-label">咨询内容<small class="text-danger">*</small></label>
+          <label for="feedback-content" class="col-sm-2 control-label">咨询内容</label>
           <div class="col-sm-10">
-            <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id:"feedback-content", validate: true %>
+            <%= f.text_area :content, size: "x5", maxLength: 255, class: "form-control", id: "feedback-content" -%>
             <div class="div-error">
               <label for="" class="error-label">请填写咨询内容</label>
             </div>
             <div class="maxLength-tips">
-              <label for="" class="maxLength-label">最多可输入255字</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="feedback-name" class="col-sm-2 control-label">姓名<small class="text-danger">*</small></label>
-          <div class="col-sm-10">
-            <%= f.text_field :name, class:"form-control", id:"feedback-name", validate: true %>
-            <div class="div-error">
-              <label for="" class="error-label">请填写姓名</label>
+              <label for="" class="maxLength-label">最多可输入 255 字</label>
             </div>
           </div>
         </div>
@@ -36,21 +26,24 @@
         <div class="form-group">
           <label for="feedback-company" class="col-sm-2 control-label">公司名称</label>
           <div class="col-sm-10">
-            <%= f.text_field :company, class:"form-control", id:"feedback-company" %>
+            <%= f.text_field :company, class: "form-control", id: "feedback-company" -%>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="feedback-city" class="col-sm-2 control-label">省份<small class="text-danger">*</small></label>
-          <div class="col-sm-10" id="province_city" data-required="true">
-            <select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="feedback-phone" class="col-sm-2 control-label">联系电话<small class="text-danger">*</small></label>
+          <label for="feedback-name" class="col-sm-2 control-label"><small class="text-danger required-mark">*</small>称呼</label>
           <div class="col-sm-10">
-            <%= f.telephone_field :phone, class:"form-control", id:"feedback-phone", validate: true %>
+            <%= f.text_field :name, class: "form-control", id: "feedback-name", validate: true -%>
+            <div class="div-error">
+              <label for="" class="error-label">请填写姓名</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feedback-phone" class="col-sm-2 control-label"><small class="text-danger required-mark">*</small>电话</label>
+          <div class="col-sm-10">
+            <%= f.telephone_field :phone, class: "form-control", id: "feedback-phone", validate: true -%>
             <div class="div-error">
               <label for="" class="error-label">请以正确的格式填写联系电话</label>
             </div>
@@ -58,19 +51,28 @@
         </div>
 
         <div class="form-group">
-          <label for="feedback-email" class="col-sm-2 control-label">电子邮箱<small class="text-danger">*</small></label>
+          <label for="feedback-email" class="col-sm-2 control-label"><small class="text-danger required-mark">*</small>邮箱</label>
           <div class="col-sm-10">
-            <%= f.text_field :email, type: "email", class:"form-control", id:"feedback-email", validate: true %>
+            <%= f.text_field :email, type: "email", class: "form-control", id: "feedback-email", validate: true -%>
             <div class="div-error">
               <label for="" class="error-label">请填写电子邮箱</label>
             </div>
           </div>
         </div>
 
-        <div class="actions">
-          <%= f.button "提 交", class:"btn btn-primary", id:"feedback-submit", disabled: true, data: {disable_with: "正在提交中..."}  %>
+        <div class="form-group">
+          <label for="feedback-city" class="col-sm-2 control-label"><small class="text-danger required-mark">*</small>省份</label>
+          <div class="col-sm-10" id="province_city" data-required="true">
+            <select name="feedback[province]" id="province" class="province form-control" data-value="北京" data-required="true"></select>
+          </div>
         </div>
-      <% end %>
+
+        <div class="actions">
+          <%= f.button "提 交", class: "btn btn-primary submit-btn", id: "feedback-submit", disabled: true, data: {disable_with: "正在提交中..."} -%>
+        </div>
+      <% end -%>
+
+      <p class="tip mt-3">您也可以拨打 400-808-9176 转 1 进行电话咨询</p>
 
     </div>
   </div>
