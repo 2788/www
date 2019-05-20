@@ -240,11 +240,11 @@ label {
 
 .features.submit-after {
   display: none;
-  padding-bottom: 0.80rem;
+  padding-bottom: 0.90rem;
   background-color: #ECF7FC;
   .submit-info-wrapper {
     background-color: #fff;
-    padding: 100px;
+    padding: 100px 80px;
     .submit-after-info {
       .submit-icon {
         font-size: 55px;
@@ -286,7 +286,7 @@ label {
 
 @media (width: 768px) {
   .features.submit-after {
-    padding-bottom: 1.48rem;
+    padding-bottom: 1.64rem;
   }
 }
 
@@ -307,6 +307,14 @@ label {
     }
   }
   .features.submit-after {
-    padding-bottom: 1.66rem;
+    padding-bottom: 1.80rem;
+    .submit-info-wrapper {
+      padding: 100px 10px;
+      .stripe-submit {
+        h3 {
+          line-height: 2.00;
+        }
+      }
+    }
   }
 }
