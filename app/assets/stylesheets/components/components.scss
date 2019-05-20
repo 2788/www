@@ -240,6 +240,7 @@ label {
 
 .features.submit-after {
   display: none;
+  padding-bottom: 0.80rem;
   background-color: #ECF7FC;
   .submit-info-wrapper {
     background-color: #fff;
@@ -283,6 +284,12 @@ label {
   }
 }
 
+@media (width: 768px) {
+  .features.submit-after {
+    padding-bottom: 1.48rem;
+  }
+}
+
 @media (max-width: 767px) {
   #feedback-modal .modal-dialog {
     margin-top: 12px;
@@ -298,5 +305,8 @@ label {
     h3 {
       font-size: 12px;
     }
+  }
+  .features.submit-after {
+    padding-bottom: 1.66rem;
   }
 }
