@@ -1,31 +1,31 @@
-.row-clear{
+.row-clear {
   margin-left: 0;
   margin-right: 0;
 }
-.setli-3width{
+.setli-3width {
   width: 100%;
-  li{
+  li {
     width: 32%;
     margin: 10px auto;
   }
 }
-.navbar-nav > li > a.tab-links{
+.navbar-nav > li > a.tab-links {
   line-height: 0;
 }
 
 .nav.nav-tabs.nav-prices-links,
-.nav.nav-tabs.nav-prices-tabs{
+.nav.nav-tabs.nav-prices-tabs {
   width: 400px;
   border-bottom: 0;
   background-color: #fff;
   li {
-    a{
+    a {
       padding: 10px 0;
       border: 1px solid #e6eaef;
       background-color: #fff;
       border-radius: 0;
     }
-    &.active a{
+    &.active a {
       border: 1px solid #00a0de !important;
       background-color: #e4f7ff !important;
       &:hover {
@@ -34,7 +34,7 @@
       }
     }
 
-    &.active::before{
+    &.active::before {
       height: 0;
     }
   }
@@ -72,12 +72,12 @@
     color: rgb(94, 97, 102);
     font-size: 0.14rem;
 
-    &:hover{
+    &:hover {
       background-color: transparent;
       color: #00A0DE;
     }
 
-    &:focus{
+    &:focus {
       background-color: transparent;
       outline-style: none;
     }
@@ -102,12 +102,12 @@
   }
 }
 
-.tab-content-caculating{
-  .info .title-left{
+.tab-content-caculating {
+  .info .title-left {
     font-size: 0.30rem;
     color: rgb(47, 48, 51);
   }
-  .row.details{
+  .row.details {
     margin-left: 0;
     margin-right: 0;
     background-color: #fff;
@@ -116,13 +116,13 @@
     border: 0.01rem solid #e6eaef;
   }
   dl {
-    &.dl-border{
+    &.dl-border {
       border: 0.01rem solid #e6eaef;
       padding: 0.38rem 0.30rem;
       background-color: #fff;
     }
-    dt{
-      &.icon-title{
+    dt {
+      &.icon-title {
         font-size:0.24rem;
         color: rgb(23, 18, 15);
         height: 0.80rem;
@@ -134,34 +134,34 @@
         background-repeat: no-repeat;
       }
 
-      &.icon-fusion{
+      &.icon-fusion {
         background-image: image-url("prices/icon-cdn@2x.png");
       }
-      &.icon-kodo{
+      &.icon-kodo {
         background-image: image-url("prices/icon-kodo@2x.png");
       }
-      &.icon-dipin{
+      &.icon-dipin {
         background-image: image-url("prices/icon-dipingcunchu@2x.png");
       }
-      &.icon-dora{
+      &.icon-dora {
         background-image: image-url("prices/icon-API@2x.png");
       }
     }
 
-    dd{
+    dd {
       color: rgb(47, 48, 51);
       line-height: 0.30rem;
     }
 
-    .formula{
+    .formula {
       font-weight: bold;
     }
   }
 }
 
-.list-inline-prices{
+.list-inline-prices {
 
-  .special-price{
+  .special-price {
 
     border-right: 0.01rem solid #e6eaef;
 
@@ -169,15 +169,15 @@
       border: 0;
     }
 
-    p{
+    p {
       padding-top: 0.10rem;
 
-      .big-text{
+      .big-text {
         color: #000;
         font-size: 0.32rem;
         font-weight: 500;
       }
-      .smal-text{
+      .smal-text {
         font-size: 0.18rem;
         font-weight: 500;
       }
@@ -185,7 +185,7 @@
   }
 }
 
-.tab-content-pricing{
+.tab-content-pricing {
   padding-top: 1rem;
   .hash {
     padding-top: 80px;
@@ -199,7 +199,7 @@
   }
 }
 
-table.pricing-table{
+table.pricing-table {
   border: 0.01rem solid #e6eaef;
   background-color: #fff;
   border-collapse: separate;
@@ -210,30 +210,30 @@ table.pricing-table{
   }
 }
 
-table.pricing-table tr{
+table.pricing-table tr {
   border-bottom: 0.01rem solid #f5f5f5;
-  th{
+  th {
     font-size: 0.16rem;
     font-weight: 400;
     border-right: 0.01rem solid #e6eaef;
     border-bottom: 0.01rem solid #e6eaef;
 
-    &.th-init{
+    &.th-init {
       border: 0;
     }
 
-    &.thead-title{
+    &.thead-title {
       font-size: 0.18rem;
       color: rgb(151, 152, 156);
       height: 0.60rem;
     }
 
-    .grey-unit{
+    .grey-unit {
       font-size: 0.12rem;
       color: #666;
     }
 
-    .th-p{
+    .th-p {
       padding: 0;
       margin: 0;
       margin-left: -0.09rem;
@@ -245,29 +245,29 @@ table.pricing-table tr{
 table.pricing-table {
   &.border-none {
     border-right: none;
-    td,th {
+    td, th {
       border-top: none;
       border-right: none;
     }
   }
 }
 
-table.pricing-table tr th, table.pricing-table tr td{
+table.pricing-table tr th, table.pricing-table tr td {
   vertical-align: middle;
   text-align: left;
   color: #333;
   line-height: 0.32rem;
   padding: 0.10rem 0.20rem;
 
-  &.border-bottom{
+  &.border-bottom {
     border-bottom: 1px solid #e6eaef;
   }
 
-  &.border-left{
+  &.border-left {
     border-left: 1px solid #e6eaef;
   }
 
-  &.border-right{
+  &.border-right {
     border-right: 1px solid #e6eaef;
   }
 
@@ -275,13 +275,17 @@ table.pricing-table tr th, table.pricing-table tr td{
     padding-bottom: 0.21rem;
     margin-bottom: 0.22rem;
   }
+
+  .text-danger {
+    color: #FA5A50;
+  }
 }
 
 //caculator css
 
 //right menu
 
-.pricing-info{
+.pricing-info {
   border: 1px solid #eee;
   border-radius: 2px;
   -webkit-box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
@@ -289,41 +293,41 @@ table.pricing-table tr th, table.pricing-table tr td{
   box-shadow: 0 0 0 #eee, 2px 2px 20px #eee;
   background-color: #fff;
 
-  dl{
+  dl {
     padding: 0;
     margin: 0;
   }
 
-  dt{
+  dt {
     padding: 0.05rem 0.15rem;
     background-color: rgb(234, 241, 251);
     border-bottom: 0.01rem solid #eee;
 
     font-size: 0.16rem;
     line-height: 0.32rem;
-    &.bg-init{
+    &.bg-init {
       background-color: #fff;
       border-bottom: 0;
     }
-    &.dt-sm{
+    &.dt-sm {
       font-size: 0.14rem;
       padding: 0.05rem 0.15rem;
     }
   }
-  dd{
+  dd {
     padding: 0.05rem 0.15rem;
     width: 100%;
     overflow: hidden;
   }
 
-  p{
+  p {
     word-wrap: break-word;
     color: rgb(168, 168, 168);
     font-size: 0.12rem;
     line-height: 0.24rem;
   }
 
-  .sum{
+  .sum {
     padding: 0.10rem;
     margin: 0;
     background-color: rgb(67, 158, 217);
@@ -331,20 +335,20 @@ table.pricing-table tr th, table.pricing-table tr td{
     font-size: 0.18rem;
     text-align: center;
 
-    &:hover{
+    &:hover {
       color: #fff;
     }
   }
 }
 
-.pricing-info-details{
+.pricing-info-details {
   list-style: none;
   padding: 0;
-  li{
+  li {
     font-size: 0.18rem;
     display: inline-block;
 
-    &.price{
+    &.price {
       float: right;
       color: #3b99fc;
     }
@@ -356,37 +360,37 @@ table.pricing-table tr th, table.pricing-table tr td{
 **left select
 */
 
-.features div.pricing-details{
+.features div.pricing-details {
   margin-top: 0;
 
-  section{
+  section {
     color: #2f3033;
     font-size: 0.14rem;
-    dl{
+    dl {
       margin-bottom: 0;
     }
-    dt{
+    dt {
       font-size: 0.18rem;
       color: #97989c;
       height: 0.45rem;
       padding: 0.10rem 0.50rem;
       background-color: #f6f8fa;
       border-bottom: 0.01rem solid #e6eaef;
-      &.checkbox{
+      &.checkbox {
         margin-top: 0;
         margin-bottom: 0;
       }
-      &.dt-lighter{
+      &.dt-lighter {
         font-size: 0.16rem;
         font-weight: lighter;
         padding: 0.1rem 0.25rem;
       }
     }
-    dd{
+    dd {
       padding: 0.10rem 0.20rem;
       border-bottom: 0.01rem solid #e6eaef;
     }
-    div.active{
+    div.active {
       display: block;
     }
   }
@@ -576,16 +580,16 @@ input[type="range"] {
 .east,
 .sourth,
 .north,
-.northAmerica{
+.northAmerica {
   display: block;
-  &.displayNone{
+  &.displayNone {
     display: none;
   }
 }
 
 .fusion-checkbox,
-.kodo-checkbox{
-  label{
+.kodo-checkbox {
+  label {
     margin-left: 0.1rem;
     margin-right: 0.1rem;
   }
