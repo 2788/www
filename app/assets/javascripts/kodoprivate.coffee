@@ -25,8 +25,10 @@ $(document).ready ->
 
           feedbackEmail = if email then email else 'marketing@qiniu.com'
           feedbackName = if name then name else '市场部'
+          token = $('meta[name="csrf-token"]').attr 'content'
 
           feedbackData = new FormData()
+          feedbackData.append 'authenticity_token', token
           feedbackData.append 'feedback[email]', feedbackEmail
           feedbackData.append 'feedback[content]', '私有云存储产品页下载试用'
           feedbackData.append 'feedback[phone]', '00000000000'
@@ -39,6 +41,9 @@ $(document).ready ->
           $.ajax
             method: 'POST',
             url: '/feedbacks?t=' + uuid + '-' + timestamp,
+            beforeSend: (xhr) ->
+              xhr.setRequestHeader 'X-Requested-With', 'XMLHttpRequest'
+              xhr.setRequestHeader 'X-CSRF-Token', token
             data: feedbackData,
             processData: false,
             contentType: false
