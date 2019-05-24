@@ -404,6 +404,30 @@
   }
 }
 
+.features-qvm-customer {
+  padding-bottom: 0.80rem;
+  .container {
+    .conveyor {
+      &>div {
+        width: calc(20% - 6px);
+        height: 100px;
+        line-height: 100px;
+        display: inline-block;
+      }
+      .qvm-customer {
+        width: 100%;
+        height: 100%;
+        margin: 3px;
+        border: 1px solid #979797;
+        max-height: 100px;
+        background-size: 100px auto;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
+
 .features-qvm-doc {
   padding-bottom: 1.00rem;
 
@@ -621,6 +645,17 @@
     }
   }
 
+  .features-qvm-customer {
+    .container {
+      .conveyor {
+        margin-top: 0.50rem;
+        &>div {
+          width: calc(25% - 6px);
+        }
+      }
+    }
+  }
+
   .features-qvm-doc {
     .qvm-bottom-win {
       width: 750px;
@@ -737,6 +772,16 @@
 
         h4 {
           display: block;
+        }
+      }
+    }
+  }
+
+  .features-qvm-customer {
+    .container {
+      .conveyor {
+        &>div {
+          width: calc(50% - 6px);
         }
       }
     }
