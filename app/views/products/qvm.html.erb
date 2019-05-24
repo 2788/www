@@ -295,6 +295,22 @@
   </div>
 </div>
 
+<%# customer tab %>
+<div class="features features-less features-qvm-customer">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.qvm.customer.title") -%></h2>
+    </div>
+    <div class="conveyor">
+      <% I18n.t("views.products.qvm.customer.list").each do |item| -%>
+      <div>
+        <div class="<%= item[:class] -%> qvm-customer" title="<%= item[:title] -%>"></div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
 <%# document tab %>
 <div class="features features-less features-cases features-qvm-doc <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
   <div class="container">
