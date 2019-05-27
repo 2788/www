@@ -67,7 +67,7 @@
             <%= image_tag "event1024/image-jinniu.png", alt: "金牛用户", width: 120 -%>
             <p>金牛用户免费领取抽奖资格</p>
             <p class="getting-status mg-t-0">您的信息正在获取中，请稍候...</p>
-            <p class="signin-to-get mg-t-0 btn-container"><%= link_to "登录免费抽奖", signin_url('/events/1024event'), class: "btn btn-event1024", target: "_blank" -%></p>
+            <p class="signin-to-get mg-t-0 btn-container"><%= link_to "登录免费抽奖", signin_url('www', '/events/1024event'), class: "btn btn-event1024", target: "_blank" -%></p>
             <p class="can-get mg-t-0 btn-container"><button class="btn btn-event1024">立即领取</button></p>
             <p class="can-not-get mg-t-0">您已领取过抽奖资格</p>
           </div>
@@ -304,7 +304,7 @@
         <div class="recommend-container">
           <p>如果好友通过您分享的活动专属链接，注册并实名认证七牛云，累计下单金额每满 500 元，您将获得 1 张 100 元天猫券。</p>
           <p class="achievement-tip">您的推荐成果正在统计更新中，请稍候...</p>
-          <p class="recommend-unsignin">您的推荐成果可在登录后查看&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "获取专属链接", signin_url('/events/1024event'), target: "_blank", class: "btn btn-lg btn-event1024" -%></p>
+          <p class="recommend-unsignin">您的推荐成果可在登录后查看&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "获取专属链接", signin_url('www', '/events/1024event'), target: "_blank", class: "btn btn-lg btn-event1024" -%></p>
           <p class="recommend-signin">
             <button class="btn btn-lg btn-event1024 copy-btn disabled">获取链接中...</button>
             <%= image_tag "event1024/image-weibo.png", width: 35, class: "icon-weibo", title: "微博分享专属链接" -%>

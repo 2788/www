@@ -1,15 +1,23 @@
 module ApplicationHelper
 
-  def signin_url(path)
+  def signin_url(host, path)
     sso_host = Rails.configuration.sso_host
     client_id = Rails.application.secrets.sso[:client_id]
-    www_host = Rails.configuration.www_host
+    site_host = ""
+
+    if host == "www"
+      site_host = Rails.configuration.www_host
+    elsif host == "blog"
+      site_host = Rails.configuration.blog_host
+    elsif host == "career"
+      site_host = Rails.configuration.career_host
+    end
 
     if sso_host.nil? || client_id.nil? || sso_host.blank? || client_id.blank?
       return "https://portal.qiniu.com/signin"
     end
 
-    return Rails.configuration.sso_host + "?client_id=" + client_id + "&redirect_url=" + www_host + path
+    return Rails.configuration.sso_host + "?client_id=" + client_id + "&redirect_url=" + site_host + path
   end
 
   def signout_url
@@ -24,9 +32,9 @@ module ApplicationHelper
   def signup_url
     portal_host = Rails.configuration.portal_host
     if portal_host.nil? || portal_host.blank?
-      return "https://portal.qiniu.com/signup/choice"
+      return "https://portal.qiniu.com/signup"
     end
-    return portal_host + "/signup/choice"
+    return portal_host + "/signup"
   end
 
   # <meta name="go-import" content="qiniu.com/<package> git https://github.com/qbox/<package>">

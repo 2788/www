@@ -6,7 +6,7 @@
           <h2><%= I18n.t("views.products.fusion.banner.title") %></h2>
           <p><%= I18n.t("views.products.fusion.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/signup/choice", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "立即使用", "https://portal.qiniu.com/signup", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "产品价格", prices_path + "?source=fusion", class: "btn btn-lg btn-hollow m-b-xs" -%>
             <h5><%= link_to raw("域名型 DV SSL 证书免费申请 &gt;&gt;"), ssl_path, target: "_blank", class: "out_link" -%></h5>
             <h5 class="margin-l-negative">「 CDN 动态加速&nbsp;&nbsp;<%= link_to "申请开通", "", target: "", class: "out_link", id: "fusion-page-apply", data: {toggle: "modal", target: "#feedback-modal"} -%>&nbsp;&nbsp;<%= link_to "立即使用", "https://portal.qiniu.com/cdn/domain/create?platform=dynamic&guideDynamic#platform", target: "_blank", class: "out_link", id: "fusion-page-employ" -%> 」</h5>

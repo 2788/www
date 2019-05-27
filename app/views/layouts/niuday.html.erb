@@ -15,6 +15,11 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title><%= seo[:title] || @title || "七牛云" -%></title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <script type='text/javascript'>
+      !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement('script'),tag=t.getElementsByTagName('script')[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,'script','assets.growingio.com/2.1/gio.js','gio');
+      gio('init', '8306bd146b670f2d', {});
+      gio('send');
+    </script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -268,8 +273,8 @@
             </li>
             <li class="need-signin <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               <div class="actions">
-                <a href="<%= signin_url('') %>" class="btn btn-hollow">登录</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup/choice" class="btn btn-primary">注册有礼</a>
+                <a href="<%= signin_url('www', '/niudays') %>" class="btn btn-hollow">登录</a>
+                <a href="<%= signup_url() %>" target="_blank" class="btn btn-primary">注册有礼</a>
               </div>
             </li>
 
@@ -483,7 +488,7 @@
     <div class="footer-sign <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
       <div class="stripe stripe-blue p-xxl visible-xs fixed-b">
         <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a></div>
-        <div class="text-center"><a href="https://portal.qiniu.com/signup?type=1" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a></div>
+        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a></div>
         <%= link_to image_tag("close.png", class: "stripe-close-img"), "javascript:;", class: "stripe-close-btn" %>
       </div>
     </div>

@@ -9,7 +9,11 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title><%= @title && "#{@title} - " -%>七牛云</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
+    <script type='text/javascript'>
+      !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement('script'),tag=t.getElementsByTagName('script')[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,'script','assets.growingio.com/2.1/gio.js','gio');
+      gio('init', '8306bd146b670f2d', {});
+      gio('send');
+    </script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -39,11 +43,16 @@
             <li><%= link_to "校园招聘", school_path -%></li>
           </ul>
           <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
-            <li>
+            <li class="dropdown hidden userinfo <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>" id="user-dropdown">
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile user-email" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+              <ul class="dropdown-menu user-menu">
+                <li><a href="<%= signout_url() -%>" class="text-sub">退出当前帐号</a></li>
+              </ul>
+            </li>
+            <li class="need-signin <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
               <div class="actions">
-                <a target="_blank" href="https://portal.qiniu.com/signin" class="btn btn-hollow">登录</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary hidden-xs">注册</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup?type=1" class="btn btn-primary visible-xs-inline">注册</a>
+                <a href="<%= signin_url('career', '') %>" class="btn btn-hollow">登录</a>
+                <a href="<%= signup_url() %>" target="_blank" class="btn btn-primary">注册有礼</a>
               </div>
             </li>
           </ul>
