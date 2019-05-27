@@ -3,13 +3,13 @@ module ApplicationHelper
   def signin_url(host, path)
     sso_host = Rails.configuration.sso_host
     client_id = Rails.application.secrets.sso[:client_id]
-    site_host = ''
+    site_host = ""
 
-    if host == 'www'
+    if host == "www"
       site_host = Rails.configuration.www_host
-    elsif host == 'blog'
+    elsif host == "blog"
       site_host = Rails.configuration.blog_host
-    elsif host == 'career'
+    elsif host == "career"
       site_host = Rails.configuration.career_host
     end
 
