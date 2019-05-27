@@ -10,7 +10,11 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title><%= seo[:title] || @title || "七牛云" -%></title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-
+    <script type='text/javascript'>
+      !function(e,t,n,g,i){e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},n=t.createElement('script'),tag=t.getElementsByTagName('script')[0],n.async=1,n.src=('https:'==document.location.protocol?'https://':'http://')+g,tag.parentNode.insertBefore(n,tag)}(window,document,'script','assets.growingio.com/2.1/gio.js','gio');
+      gio('init', '8306bd146b670f2d', {});
+      gio('send');
+    </script>
     <%= stylesheet_link_tag    'application', media: 'all' -%>
     <%= javascript_include_tag 'application' -%>
   </head>
@@ -38,16 +42,6 @@
             <li><%= link_to "开发者中心", "https://developer.qiniu.com" -%></li>
             <li><%= link_to "技术支持", "https://support.qiniu.com" -%></li>
             <li><%= link_to "问答社区", "https://segmentfault.com/qiniu" -%></li>
-
-            <% if false -%>
-            <li>
-              <div class="actions">
-                <a target="_blank" href="https://portal.qiniu.com/signin" class="btn btn-hollow">登录</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary hidden-xs">注册</a>
-                <a target="_blank" href="https://portal.qiniu.com/signup" class="btn btn-primary visible-xs-inline">注册</a>
-              </div>
-            </li>
-            <% end -%>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

@@ -76,21 +76,23 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   # 线上环境
-  config.acc_host = 'https://acc.qbox.me'
-  config.sso_host = 'https://sso.qiniu.com'
-  config.www_host = 'https://www.qiniu.com'
-  config.blog_host = 'https://blog.qiniu.com'
-  config.portal_host = 'https://portal.qiniu.com'
-  config.gaea_admin_host = 'http://gaea-admin.qiniu.io'
-  config.qvm_host = 'http://qvm-admin.qiniu.io'
+  # config.acc_host = 'https://acc.qbox.me'
+  # config.sso_host = 'https://sso.qiniu.com'
+  # config.www_host = 'https://www.qiniu.com'
+  # config.blog_host = 'https://blog.qiniu.com'
+  # config.career_host = 'https://career.qiniu.com'
+  # config.portal_host = 'https://portal.qiniu.com'
+  # config.gaea_admin_host = 'http://gaea-admin.qiniu.io'
+  # config.qvm_host = 'http://qvm-admin.qiniu.io'
   # 测试环境
-  # config.acc_host = 'http://acc.dev.qiniu.io'
-  # config.sso_host = 'https://sso-dev.qiniu.io'
-  # config.www_host = 'http://www-dev.qiniu.io'
-  # config.blog_host = 'http://blog-dev.qiniu.io'
-  # config.portal_host = 'http://portalv4.dev.qiniu.io'
-  # config.gaea_admin_host = 'http://bo-gaea-admin-spock-public.cs-spock.cloudappl.com'
-  # config.qvm_host = 'http://qvm-admin.dev.qiniu.io'
+  config.acc_host = 'http://acc.dev.qiniu.io'
+  config.sso_host = 'https://sso-dev.qiniu.io'
+  config.www_host = 'http://www-dev.qiniu.io'
+  config.blog_host = 'http://blog-dev.qiniu.io'
+  config.career_host = 'http://career-dev.qiniu.io'
+  config.portal_host = 'http://index-spock-public.cs-spock.cloudappl.com'
+  config.gaea_admin_host = 'http://bo-gaea-admin-spock-public.cs-spock.cloudappl.com'
+  config.qvm_host = 'http://qvm-admin.dev.qiniu.io'
 
   # 2018 年 1024 活动热度计算配置
   # https://jira.qiniu.io/browse/BO-5294

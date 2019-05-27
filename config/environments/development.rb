@@ -53,7 +53,8 @@ Rails.application.configure do
   config.sso_host = 'https://sso-dev.qiniu.io'
   config.www_host = 'http://www-dev.qiniu.io'
   config.blog_host = 'http://blog-dev.qiniu.io'
-  config.portal_host = 'http://portalv4.dev.qiniu.io'
+  config.career_host = 'http://career-dev.qiniu.io'
+  config.portal_host = 'http://index-spock-public.cs-spock.cloudappl.com'
   config.gaea_admin_host = 'http://bo-gaea-admin-spock-public.cs-spock.cloudappl.com'
   config.qvm_host = 'http://qvm-admin.dev.qiniu.io'
 
