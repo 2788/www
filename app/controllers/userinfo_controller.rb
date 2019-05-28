@@ -40,7 +40,6 @@ class UserinfoController < ActionController::Base
         render json: {
             "email": uinfo["email"],
             "name": uinfo["name"],
-            "uid": uinfo["uid"],
             "is_signin": true,
         }
         return
@@ -69,7 +68,6 @@ class UserinfoController < ActionController::Base
       render json: {
           "email": uinfo["email"],
           "name": uinfo["name"],
-          "uid": uinfo["uid"],
           "is_signin": true,
       }
   end
