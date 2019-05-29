@@ -258,17 +258,14 @@
         <%= image_tag "career/icon-jishu.png", alt: "技术", width: "100" %>
         <a href="#tech-position" aria-controls="tech-position" role="tab" data-toggle="tab">技术</a>
       </li>
-      <% if false -%>
       <li role="presentation">
         <%= image_tag "career/icon-shichang.png", alt: "市场", width: "100" %>
         <a href="#market-position" aria-controls="market-position" role="tab" data-toggle="tab">市场</a>
       </li>
-      <% end -%>
       <li role="presentation">
         <%= image_tag "career/icon-chanpin.png", alt: "产品", width: "100" %>
         <a href="#product-position" aria-controls="product-position" role="tab" data-toggle="tab">产品</a>
       </li>
-      <% if false -%>
       <li role="presentation">
         <%= image_tag "career/icon-sheji.png", alt: "设计", width: "100" %>
         <a href="#design-position" aria-controls="design-position" role="tab" data-toggle="tab">设计</a>
@@ -281,7 +278,6 @@
         <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
         <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">职能</a>
       </li>
-      <% end -%>
       <li role="presentation">
         <%= image_tag "career/icon-yunying.png", alt: "运营", width: "auto", height: "86", class: "m-b-20px" %>
         <a href="#operate-position" aria-controls="operate-position" role="tab" data-toggle="tab">运营</a>
@@ -292,19 +288,15 @@
     <div class="tab-content positionTab">
       <%= render :partial => "positions", :locals => {:positions => @school_positions.tech, :type => "tech-position"} %>
 
-      <% if false -%>
       <%= render :partial => "positions", :locals => {:positions => @school_positions.market, :type => "market-position"} %>
-      <% end -%>
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.product, :type => "product-position"} %>
 
-      <% if false -%>
       <%= render :partial => "positions", :locals => {:positions => @school_positions.design, :type => "design-position"} %>
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.sales, :type => "sales-position"} %>
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.office, :type => "office-position"} %>
-      <% end -%>
 
       <%= render :partial => "positions", :locals => {:positions => @school_positions.operate, :type => "operate-position"} %>
     </div>
