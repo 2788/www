@@ -1,0 +1,204 @@
+<%# banner 部分 %>
+<div class="jumbotron hero hero-qvmsumsale">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="banner-desc">
+            <p><%= I18n.t("views.events.qvmsumsale.banner.time") -%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 页面主体部分 %>
+<div class="qvmsumsale-bg">
+  <%# 爆款每日限时抢部分 %>
+  <div class="features features-qvmsumsale features-qvmsumsale-hot">
+    <div class="container">
+      <div class="intro">
+        <%= image_tag I18n.t("views.events.qvmsumsale.hot.titleImg"), title: I18n.t("views.events.qvmsumsale.hot.title"), alt: I18n.t("views.events.qvmsumsale.hot.title"), width: 400 -%>
+        <p class="desc"><%= raw(I18n.t("views.events.qvmsumsale.hot.desc")) -%></p>
+      </div>
+      <div class="row">
+        <% I18n.t("views.events.qvmsumsale.hot.list").each do |item| -%>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-hot">
+          <div class="row">
+            <div class="col-md-7 col-sm-7 col-xs-12 col-left">
+              <h4><span class="type"><%= raw(item[:type]) -%></span><span class="sub-title"><%= item[:subTitle] -%></span></h4>
+              <p><%= item[:desc] -%></p>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12 col-right">
+              <span class="limit-tag">限量抢</span>
+              <span class="money-symbol">￥</span>
+              <span class="price"><%= item[:price] -%></span>
+              <span class="origin-price"><%= item[:originPrice] -%>&nbsp;元</span>
+              <%= link_to "免费领取", item[:link], title: raw(item[:type]) + item[:subTitle] + " - 免费领取", class: "btn btn-lg btn-primary btn-qvmsumsale btn-qvmsumsale-hot " + item[:class], target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+
+  <%# 热卖机型无限购部分 %>
+  <div class="features features-qvmsumsale features-qvmsumsale-server">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title"><%= I18n.t("views.events.qvmsumsale.server.title") -%></h2>
+        <p class="desc"><%= raw(I18n.t("views.events.qvmsumsale.server.desc")) -%></p>
+      </div>
+      <div class="row">
+        <% I18n.t("views.events.qvmsumsale.server.list").each do |server| -%>
+        <div class="col-md-3 col-sm-6 col-xs-12 col-item col-server">
+          <div class="thumbnail <%= server[:class] -%>">
+            <div class="caption">
+              <h4 class="title"><%= server[:title] -%></h4>
+              <p class="desc"><%= server[:desc] -%></p>
+              <div class="content-container">
+                <div class="content-specs">
+                  <div class="row">
+                    <% server[:specs].each do |spec| -%>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-specs">
+                      <span class="span-specs"><%= spec[:name].html_safe -%></span><span class="span-bold"><%= spec[:value].html_safe -%></span>
+                    </div>
+                    <% end -%>
+                  </div>
+                </div>
+                <div class="content-dropdown">
+                  <select class="form-control qvmsumsale-dropdown qvmsumsale-server-dropdown">
+                    <% server[:durations].each do |duration| -%>
+                    <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                    <% end -%>
+                  </select>
+                </div>
+                <div class="content-flag">
+                  <% server[:flags].each do |flag| -%>
+                  <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                  <% end -%>
+                </div>
+                <% server[:sections].each do |section| -%>
+                <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                  <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span></p>
+                  <%= link_to "立即购买", section[:link], title: server[:title] + " - 立即购买", class: "btn btn-lg btn-qvmsumsale disabled", target: "_blank" -%>
+                </section>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+
+  <%# 云通信专场 %>
+  <div class="features features-qvmsumsale features-qvmsumsale-sms">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title"><%= I18n.t("views.events.qvmsumsale.sms.title") -%></h2>
+        <p class="desc"><%= raw(I18n.t("views.events.qvmsumsale.sms.desc")) -%></p>
+      </div>
+      <div class="row">
+        <% I18n.t("views.events.qvmsumsale.sms.list").each do |sms| -%>
+        <div class="col-md-3 col-sm-6 col-xs-12 col-item col-sms">
+          <div class="thumbnail">
+            <div class="caption">
+              <h4 class="title"><%= sms[:title] -%></h4>
+              <div class="content-container">
+                <div class="content-desc">
+                  <% sms[:desc].each do |desc| -%>
+                  <p class="desc"><%= desc -%></p>
+                  <% end -%>
+                </div>
+                <div class="content-flag">
+                  <% sms[:flags].each do |flag| -%>
+                  <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                  <% end -%>
+                </div>
+                <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= sms[:price] -%></span><span class="span-unit">/条</span></p>
+                <%= link_to "立即购买", sms[:link], title: sms[:title] + " - 立即购买", class: "btn btn-lg btn-qvmsumsale disabled", target: "_blank" -%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 爆款每日限时抢 - 了解详情模态框 %>
+<div class="modal fade alert-modal-css form-wrapper qvmsumsale-modal" id="qvmsumsale-hot-modal" tabindex="-1" role="dialog" aria-labelledby="qvmsumsale-hot-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="qvmsumsale-hot-modal-label">爆款每日限时抢 - 了解详情</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日，每天 <span class="qvmsumsale-start-time">- 点</span>限量开抢</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>(1) 抢购数量：两款云主机产品为每日限时抢购产品，每位用户仅可抢购其中 1 台</p>
+        <p>(2) 套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为青岛</p>
+        <p>(3) 抢购资格：个人用户可抢购 2C/4G/40G/1Mbps T5 主机，企业用户可任意选择抢购</p>
+        <p>(4) 续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 热卖机型无限购 - 了解详情模态框 %>
+<div class="modal fade alert-modal-css form-wrapper qvmsumsale-modal" id="qvmsumsale-server-modal" tabindex="-1" role="dialog" aria-labelledby="qvmsumsale-server-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="qvmsumsale-server-modal-label">热卖机型无限购 - 了解详情</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>(1) 抢购数量：新老用户不限购买数量</p>
+        <p>(2) 套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为中国大陆</p>
+        <p>(3) 续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云通信专场 - 了解详情模态框 %>
+<div class="modal fade alert-modal-css form-wrapper qvmsumsale-modal" id="qvmsumsale-sms-modal" tabindex="-1" role="dialog" aria-labelledby="qvmsumsale-sms-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="qvmsumsale-sms-modal-label">云通信专场 - 了解详情</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>(1) 抢购数量：短信服务包每名用户最多只能购买 3 个套餐包（类型不限）</p>
+        <p>(2) 套餐配置：短信包内含标识的短信条数，用户需选择短信类型，即验证码、通知、营销中的一类</p>
+        <p>(3) 抢购资格：个人用户仅可发送验证码和通知类短信，企业用户可发送验证码、通知、和营销类短信，详情请参考<a href='https://developer.qiniu.com/sms/manual/5793/sms-auditing-standard' class='link-box' title='《七牛云短信审核标准》' target='_blank'>《七牛云短信审核标准》</a></p>
+        <p>(4) 使用说明：短信包可以叠加使用，使用顺序以购买时间计算，优先使用先到期的包</p>
+        <p>(5) 有效期：短信套餐包自生效起 1 年内有效，逾期未使用将自动作废</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>

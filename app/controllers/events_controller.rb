@@ -47,6 +47,63 @@ class EventsController < ApplicationController
   def cdn_package
   end
 
+  def qvmsumsale
+  end
+
+  def qvmsumsale_is_start
+    time_conf = is_qvmsumsale_conf_valid()
+    if time_conf.nil?
+      render json: {
+        "is_start": false,
+        "start_time_text": "10 点",
+      }
+      return
+    end
+
+    current_time = Time.now
+    begin_time = Time.local(current_time.year, current_time.month, current_time.day, time_conf[:start_hour].to_i, time_conf[:start_minute].to_i, 0)
+
+    start_time_text = time_conf[:start_hour] + " 点"
+    if time_conf[:start_minute].to_i > 0
+      start_time_text = start_time_text + " " + time_conf[:start_minute] + " 分"
+    end
+
+    if current_time.to_i >= begin_time.to_i
+      render json: {
+        "is_start": true,
+        "start_time_text": start_time_text,
+      }
+      return
+    end
+
+    render json: {
+      "is_start": false,
+      "start_time_text": start_time_text,
+    }
+    return
+  end
+
+  def is_qvmsumsale_conf_valid
+    qvmsumsale_conf = nil
+    if Rails.configuration.qvmsumsale.nil? || Rails.configuration.qvmsumsale.blank?
+      return qvmsumsale_conf
+    end
+
+    conf = Rails.configuration.qvmsumsale
+    start_hour = conf[:start_hour]
+    start_minute = conf[:start_minute]
+    if start_hour.nil? || start_hour.blank? || start_minute.nil? || start_minute.blank?
+      return qvmsumsale_conf
+    end
+
+    qvmsumsale_conf = {
+      "start_hour": start_hour,
+      "start_minute": start_minute,
+    }
+
+    return qvmsumsale_conf
+  end
+
   # 根据时间计算热度
   # 2018 年 1024 活动
   # https://jira.qiniu.io/browse/BO-5294
