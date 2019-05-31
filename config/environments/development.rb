@@ -93,6 +93,12 @@ Rails.application.configure do
     }
   }
 
+  # qvmsumsale 限量机型每天开抢时间
+  config.qvmsumsale = {
+    start_hour: "10",
+    start_minute: "0"
+  }
+
   config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'
   config.video_audit_host = 'http://ai.qiniuapi.com/v3/video/censor'
   config.video_jobs_host = 'http://ai.qiniuapi.com/v3/jobs/video'

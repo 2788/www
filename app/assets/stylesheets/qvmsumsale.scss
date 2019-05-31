@@ -1,0 +1,644 @@
+.jumbotron.hero.hero-qvmsumsale {
+  margin-bottom: 0 !important;
+  background-image: image-url("banner/banner-qvmsumsale.jpg") !important;
+  .middle-container {
+    top: 68%;
+    text-align: center;
+    .banner-desc {
+      p {
+        margin-bottom: 0;
+        color: #FFF;
+        font-size: 0.18rem;
+        font-weight: 600;
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+.qvmsumsale-bg {
+  background: -webkit-linear-gradient(left top, #0092FF, #4F9BFB, #B635F8);
+  background: -o-linear-gradient(left top, #0092FF, #4F9BFB, #B635F8);
+  background: -moz-linear-gradient(left top, #0092FF, #4F9BFB, #B635F8);
+  background: linear-gradient(left top, #0092FF, #4F9BFB, #B635F8);
+}
+
+.features-qvmsumsale {
+  background-color: transparent;
+  .container {
+    .intro {
+      margin-bottom: 0.40rem;
+      text-align: center;
+      .title {
+        color: #FFF;
+      }
+      .desc {
+        color: rgba(255, 255, 255, 0.7);
+        .jump-link {
+          color: #FFF;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .row {
+      .col-item {
+        .thumbnail {
+          border-radius: 0.15rem;
+          .caption {
+            height: 100%;
+            .title, .desc {
+              text-align: center;
+            }
+            .title {
+              color: #FFF;
+            }
+            .desc {
+              color: #FFF;
+              font-size: 0.12rem;
+              line-height: 0.24rem;
+            }
+            .content-container {
+              width: calc(100% + 27px);
+              margin-top: 0.15rem;
+              margin-left: -13px;
+              padding: 0.10rem;
+              border-radius: 0.10rem;
+              background-color: #FFF;
+              .content-specs {
+                padding: 0 0.20rem;
+                .col-specs {
+                  margin-bottom: 0.10rem;
+                }
+                .span-specs, .span-bold {
+                  font-size: 0.12rem;
+                }
+                .span-bold {
+                  font-weight: 600;
+                }
+              }
+              .content-dropdown {
+                margin: 0.10rem 0 0.20rem;
+                .qvmsumsale-dropdown {
+                  height: 40px;;
+                  background-color: #FBFBFB;
+                  cursor: pointer;
+                }
+              }
+              .content-flag {
+                margin-top: 0.10rem;
+                text-align: center;
+                .flag-empty {
+                  padding: 0.02rem 0.10rem;
+                  color: #E96329;
+                  border: 1px solid #E96329;
+                  border-radius: 0.04rem;
+                  font-size: 0.12rem;
+                }
+              }
+              .content-section {
+                display: none;
+                &.active {
+                  display: block;
+                }
+              }
+              .content-price {
+                margin-top: 0.20rem;
+                margin-bottom: 0.10rem;
+                margin-left: -0.20rem;
+                font-size: 0.22rem;
+                text-align: center;
+              }
+              .span-bold {
+                font-weight: 600;
+              }
+              .span-red {
+                color: #CC483F;
+              }
+              .span-huge {
+                font-size: 0.35rem;
+              }
+              .span-unit {
+                color: #000;
+                font-size: 0.15rem;
+              }
+            }
+          }
+        }
+      }
+      .btn-qvmsumsale {
+        width: 100%;
+        padding: 0.10rem;
+        border: none;
+        color: #FFF;
+        font-size: 0.16rem;
+        background-color: #DD524B;
+        &.disabled {
+          color: #868686;
+          background-color: #D6D6D6;
+        }
+        &:hover {
+          color: #FFF;
+          -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+        }
+      }
+    }
+  }
+}
+
+.features-qvmsumsale-hot {
+  .container {
+    .intro {
+      .desc {
+        margin-top: 0.20rem;
+      }
+    }
+    .row {
+      .col-hot {
+        position: relative;
+        margin-bottom: 0.30rem;
+        padding: 0.30rem 0.40rem 0.20rem 0.40rem;
+        border-radius: 0.10rem;
+        background-color: #FFF;
+        -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+        .col-left {
+          padding-left: 0;
+          h4 {
+            font-weight: 600;
+          }
+        }
+        .col-right {
+          position: absolute;
+          right: 0.20rem;
+          top: calc(50% + 0.06rem);
+          transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          -o-transform: translateY(-50%);
+          .limit-tag {
+            position: absolute;
+            left: 0;
+            top: -0.10rem;
+            padding: 0 0.04rem;
+            font-size: 0.12rem;
+            font-weight: 600;
+            color: #E96329;
+            border: 2px solid #E96329;
+            border-radius: 0.05rem;
+          }
+          .money-symbol, .price, .origin-price {
+            color: #DD524B;
+          }
+          .money-symbol {
+            font-size: 0.24rem;
+            font-weight: 600;
+          }
+          .price {
+            position: relative;
+            top: 0.02rem;
+            font-size: 0.50rem;
+            font-weight: 600;
+          }
+          .origin-price {
+            font-size: 0.18rem;
+            text-decoration: line-through;
+          }
+          .btn-qvmsumsale-hot {
+            width: auto;
+            position: absolute;
+            top: 0.14rem;
+            right: 0;
+            left: 1.60rem;
+            padding: 0.10rem 0;
+            font-size: 0.18rem;
+            border-radius: 0.10rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-qvmsumsale-server {
+  padding-top: 0;
+  .container {
+    .row {
+      .col-server {
+        .thumbnail {
+          background-color: #8720ED;
+          &.thumbnail-huge {
+            height: 4.50rem;
+          }
+          &.thumbnail-normal {
+            height: 4.30rem;
+            .caption {
+              .desc {
+                height: 0.72rem;
+              }
+              .content-container {
+                height: calc(100% - 1.16rem);
+              }
+            }
+          }
+          .caption {
+            .desc {
+              height: 0.92rem;
+            }
+            .content-container {
+              height: calc(100% - 1.36rem);
+              border: 1px solid #D3D3D3;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-qvmsumsale-sms {
+  padding-top: 0;
+  padding-bottom: 1.40rem;
+  .container {
+    .row {
+      .col-sms {
+        .thumbnail {
+          height: 3.10rem;
+          background-color: #0EB9CD;
+          .caption {
+            .title {
+              margin-bottom: 0.20rem;
+            }
+            .content-container {
+              .content-desc {
+                margin-top: 0.10rem;
+                margin-bottom: 0.20rem;
+                border-bottom: 1px dashed #D3D3D3;
+                .desc {
+                  color: #000;
+                  font-size: 0.12rem;
+                  line-height: 0.18rem;
+                }
+              }
+              height: calc(100% - 0.36rem);
+              border: 1px solid #D3D3D3;
+              .content-price {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.events-page-qvmsumsale {
+  .qvmsumsale-modal {
+    .modal-dialog {
+      .modal-header {
+        .modal-title {
+          font-size: 0.20rem;
+        }
+      }
+      .modal-body {
+        p {
+          font-size: 0.14rem;
+          line-height: 2.00;
+          .link-box {
+            color: #0092FF;
+            &:hover {
+              text-decoration: underline;
+              text-decoration-color: #0092FF;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features-qvmsumsale-hot {
+    .container {
+      .row {
+        .col-hot {
+          .col-left {
+            h4 {
+              font-size: 0.18rem;
+              .type, .sub-title {
+                display: block;
+              }
+              .sub-title {
+                margin-top: 0.10rem;
+              }
+            }
+            p {
+              font-size: 0.12rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-qvmsumsale-server {
+    .container {
+      .row {
+        .col-server {
+          padding-left: 5px;
+          padding-right: 5px;
+          .thumbnail {
+            &.thumbnail-huge {
+              height: 4.70rem;
+            }
+            &.thumbnail-normal {
+              height: 4.20rem;
+              .caption {
+                .content-container {
+                  height: calc(100% - 1.12rem);
+                }
+              }
+            }
+            .caption {
+              .title {
+                font-size: 0.18rem;
+              }
+              .desc {
+                height: 1.20rem;
+              }
+              .content-container {
+                height: calc(100% - 1.60rem);
+                .content-specs {
+                  padding: 0 0.10rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-qvmsumsale-hot {
+    .container {
+      .row {
+        .col-hot {
+          .col-left {
+            h4 {
+              .type, .sub-title {
+                display: block;
+              }
+              .type {
+                font-size: 0.18rem;
+              }
+              .sub-title {
+                margin-top: 0.10rem;
+                font-size: 0.16rem;
+              }
+            }
+            p {
+              font-size: 0.12rem;
+            }
+          }
+          .col-right {
+            .btn-qvmsumsale-hot {
+              left: 1.50rem;
+              padding: 0.11rem 0;
+              font-size: 0.16rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-qvmsumsale-server {
+    .container {
+      .row {
+        .col-server {
+          .thumbnail {
+            &.thumbnail-huge {
+              height: 4.30rem;
+            }
+            &.thumbnail-normal {
+              height: 4.10rem;
+              .caption {
+                .desc {
+                  height: 0.52rem;
+                }
+                .content-container {
+                  height: calc(100% - 0.96rem);
+                }
+              }
+            }
+            .caption {
+              .desc {
+                height: 0.72rem;
+              }
+              .content-container {
+                height: calc(100% - 1.16rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .features-qvmsumsale-hot {
+    .container {
+      .row {
+        .col-hot {
+          .col-left {
+            padding-left: 0.20rem;
+            h4 {
+              .type, .sub-title {
+                font-size: 0.20rem;
+              }
+              .sub-title {
+                margin-top: 0.10rem;
+              }
+            }
+            p {
+              font-size: 0.14rem;
+            }
+          }
+          .col-right {
+            top: calc(50% + 0.16rem);
+            .limit-tag {
+              top: -0.24rem;
+            }
+            .btn-qvmsumsale-hot {
+              right: 0.20rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-qvmsumsale-server {
+    .container {
+      .row {
+        .col-server {
+          .thumbnail {
+            &.thumbnail-huge {
+              height: 4.80rem;
+            }
+            &.thumbnail-normal {
+              height: 4.60rem;
+              .caption {
+                .desc {
+                  height: 0.52rem;
+                }
+                .content-container {
+                  height: calc(100% - 0.98rem);
+                }
+              }
+            }
+            .caption {
+              .content-container {
+                height: calc(100% - 1.18rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-qvmsumsale-sms {
+    .container {
+      .row {
+        .col-sms {
+          .thumbnail {
+            height: 3.30rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron.hero.hero-qvmsumsale {
+    .middle-container {
+      top: 80%;
+    }
+  }
+
+  .features-qvmsumsale-hot {
+    .container {
+      .intro {
+        img {
+          width: 50%;
+        }
+      }
+      .row {
+        margin-left: 0;
+        margin-right: 0;
+        .col-hot {
+          .col-left {
+            text-align: center;
+            h4 {
+              line-height: 1.80;
+            }
+            p {
+              margin-bottom: 0.20rem;
+            }
+          }
+          .col-right {
+            position: relative;
+            top: 0;
+            right: 0;
+            margin-top: 0.20rem;
+            text-align: center;
+            transform: none;
+            -ms-transform: none;
+            -moz-transform: none;
+            -webkit-transform: none;
+            -o-transform: none;
+            .limit-tag {
+              left: calc(50% - 1.20rem);
+            }
+            .btn-qvmsumsale-hot {
+              position: relative;
+              top: 0;
+              left: 0;
+              margin-top: 0.10rem;
+              margin-bottom: 0.20rem;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-qvmsumsale-server {
+    .container {
+      .row {
+        .col-server {
+          margin-bottom: 0.25rem;
+          .thumbnail {
+            &.thumbnail-huge {
+              height: 5.12rem;
+            }
+            &.thumbnail-normal {
+              height: 4.86rem;
+              .caption {
+                .content-container {
+                  height: calc(100% - 1.18rem);
+                }
+              }
+            }
+            .caption {
+              .desc {
+                height: 1.00rem;
+              }
+              .content-container {
+                height: calc(100% - 1.38rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-qvmsumsale-sms {
+    .container {
+      .row {
+        .col-sms {
+          margin-bottom: 0.40rem;
+          .thumbnail {
+            height: 3.40rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .features-qvmsumsale-hot {
+    .container {
+      .intro {
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

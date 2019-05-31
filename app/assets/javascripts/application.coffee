@@ -48,6 +48,7 @@
 #= require dora
 #= require kodoprivate
 #= require download
+#= require qvmsumsale
 
 #= require uuid
 
