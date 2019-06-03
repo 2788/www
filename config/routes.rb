@@ -122,9 +122,9 @@ Rails.application.routes.draw do
     # 限时 cdn 流量包活动页面路由
     get '/events/cdn-package', to: 'events#cdn_package'
     # qvm 燃情一夏活动
-    # get '/events/qvmsumsale', to: 'events#qvmsumsale'
+    get '/events/qvmsumsale', to: 'events#qvmsumsale'
     # qvmsumsale 10 点开抢限制
-    # get '/events/qvmsumsale/is_start', to: 'events#qvmsumsale_is_start'
+    get '/events/qvmsumsale/is_start', to: 'events#qvmsumsale_is_start'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
