@@ -423,9 +423,6 @@ $(document).ready ->
         $('.features-free-product .free-receive-signin').addClass 'hidden'
       else
         # signin
-        # 如果 uid 存在，以 string 格式上报到 GrowingIO
-        if res.uid
-          gio 'setUserId', res.uid + ''
         # login banner
         $('.need-signin').addClass 'hidden'
         $('.user-email').text res.email
