@@ -6,7 +6,7 @@
           <h2><%= I18n.t("views.products.kodo.banner.title") %></h2>
           <p><%= I18n.t("views.products.kodo.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/signup", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "立即使用", signup_url(), target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs kodo-banner-btn" -%>
             <%= link_to "产品价格", prices_path + "?source=kodo", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
             <h5 class="kodo-modal">体验边缘存储服务，请 <%= link_to "点击咨询", "http://qiniu-exp.mikecrm.com/yGntQCJ", target: "_blank", class: "out_link underline" -%></h5>
             <% if false -%>

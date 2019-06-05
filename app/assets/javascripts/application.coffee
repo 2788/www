@@ -436,6 +436,8 @@ $(document).ready ->
         $('#feedback-alert-link').html '<a class="feedback-link" target="_blank" title="邀请好友 乐享千元好礼" href="invite?entry=feedback-form">邀请好友 乐享千元好礼 &gt;&gt;</a>'
         # 登录状态下改变私有云存储 banner 下载试用按钮的行为
         modifyKodoPrivateBannerDownloadBtn res.email, res.name
+        # 登录状态下改变产品页 banner 指定按钮的跳转行为
+        modifyProductsBannerBtnLink()
     error: (err) ->
       # error
       # login banner
@@ -477,3 +479,13 @@ $(document).ready ->
           data: feedbackData,
           processData: false,
           contentType: false
+  modifyProductsBannerBtnLink = () ->
+    $kodoPageBannerBtn = $('.products-page-kodo .hero-kodo .actions .kodo-banner-btn')
+    $fusionPageBannerBtn = $('.products-page-fusion .hero-fusion .actions .fusion-banner-btn')
+    $insightPageBannerBtn = $('.products-page-insight .insight-hero .actions .insight-banner-btn')
+    if $kodoPageBannerBtn.length > 0
+      $kodoPageBannerBtn.attr 'href', 'https://portal.qiniu.com/bucket/create'
+    if $fusionPageBannerBtn.length > 0
+      $fusionPageBannerBtn.attr 'href', 'https://portal.qiniu.com/cdn/domain/create'
+    if $insightPageBannerBtn.length > 0
+      $insightPageBannerBtn.attr 'href', 'https://portal.qiniu.com/apply-pandora'
