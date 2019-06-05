@@ -45,11 +45,11 @@ zh-CN:
             desc: "0 元体验多款热门云产品"
             icon: "icon-advert-1.png"
             link: "/events/free?entry=index-advert"
-          - title: "春季特卖"
+          - title: "盛夏特惠"
             class: "border-l-r"
-            desc: "爆款云主机 买 2 个月送 1 个月"
+            desc: "热门云主机 0 元起"
             icon: "icon-advert-2.png"
-            link: "/events/qvm2for3?entry=index-advert"
+            link: "/events/qvmsumsale?entry=index-advert"
           - title: "新手入门"
             class: ""
             desc: "帮你快速入门，轻松上云"
@@ -5474,7 +5474,7 @@ zh-CN:
               class: "client-yueke"
       qvmsumsale:
         banner:
-          time: "活动时间：2019年 5 月 31 日 - 2019 年 6 月 30 日"
+          time: "活动时间：2019 年 6 月 5 日 - 2019 年 6 月 30 日"
         hot:
           title: "每日爆款限时抢"
           titleImg: "qvmsumsale/image-hot-calendar.png"
@@ -5838,7 +5838,7 @@ zh-CN:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.038"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
             - title: "222 元短信加油包"
               desc:
                 - "6000 条"
@@ -5847,7 +5847,7 @@ zh-CN:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.037"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
             - title: "720 元短信冲刺包"
               desc:
                 - "20000 条"
@@ -5856,7 +5856,7 @@ zh-CN:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.036"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
             - title: "1050 元短信致胜包"
               desc:
                 - "30000 条"
@@ -5865,7 +5865,7 @@ zh-CN:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.035"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
     download:
       snow:
         banner:

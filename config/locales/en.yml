@@ -5165,7 +5165,7 @@ en:
               class: "client-yueke"
       qvmsumsale:
         banner:
-          time: "活动时间：2019年 5 月 31 日 - 2019 年 6 月 30 日"
+          time: "活动时间：2019 年 6 月 5 日 - 2019 年 6 月 30 日"
         hot:
           title: "每日爆款限时抢"
           titleImg: "qvmsumsale/image-hot-calendar.png"
@@ -5529,7 +5529,7 @@ en:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.038"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
             - title: "222 元短信加油包"
               desc:
                 - "6000 条"
@@ -5538,7 +5538,7 @@ en:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.037"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
             - title: "720 元短信冲刺包"
               desc:
                 - "20000 条"
@@ -5547,7 +5547,7 @@ en:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.036"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
             - title: "1050 元短信致胜包"
               desc:
                 - "30000 条"
@@ -5556,7 +5556,7 @@ en:
                 - content: "活动价"
                   class: "flag-empty"
               price: "0.035"
-              link: ""
+              link: "https://portal.qiniu.com/sms/resource"
     download:
       snow:
         banner:
