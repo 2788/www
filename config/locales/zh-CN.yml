@@ -6088,78 +6088,66 @@ zh-CN:
     supports: 服务与支持
     about: 关于我们
   services:
-    - group: 基础服务
-      list:
-        - name: kodo
-          label: 对象存储
-          desc: 高可用、易扩展、低成本、一站式、支持边缘存储
-          isNew: true
-
-        - name: private_cloud_kodo
-          label: 私有云存储
-          desc: 可定制化的数百 EB 级别、高可靠、强安全的存储系统
-          isNew: true
-
-        - name: fusion
-          label: 融合 CDN
-          desc: 融合优质节点、可监控、智能调度的内容分发服务
-
-        - name: qvm
-          label: 云主机
-          desc: 提供云主机、负载均衡、云数据库、高防等服务
-          isNew: true
-
-        - name: sms
-          label: 云短信
-          desc: 致力于为用户提供快捷高效的通信服务能力
-          isNew: true
-
-        - name: kirk
-          label: 容器云
-          desc: 面向微服务架构的企业级容器管理平台
-
-        - name: snow
-          label: 边缘计算平台
-          desc: 灵活配置管理大规模边缘计算应用，加速边缘智能落地
-
-    - group: 数据 • 智能
-      list:
-        - name: atlab
-          label: 深度学习平台
-          desc: 针对图片视频的一站式数据集中处理、模型训练平台
-        
-        - name: pandora
-          label: 大数据
-          desc: 简单、高效、开放
-
-        - name: censor
-          label: 内容安全
-          desc: 七牛云人工智能实验室提供的机器+人工一站式内容审核服务
-          isNew: true
-        
-        - name: insight
-          label: 智能日志管理平台
-          desc: 海量异构数据采集，秒级实时日志检索，高效智能业务洞察
-          isNew: true
-
-        - name: dora
-          label: 智能多媒体服务
-          desc: 提供云端图片、音视频基础处理、丰富的人工智能服务
-
-    - group: 视频服务
-      list:
-        - name: pili
-          label: 直播云
-          desc: 提供全球化实时流服务和端到端直播场景解决方案
-        
-        - name: rtn
-          label: 实时音视频云
-          desc: 基于 WebRTC 的一站式解决方案，零基础搭建音视频平台
-          isNew: true
-
-        # - name: vance
-        #   label: 点播云
-        #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
+    left:
+      - group: 基础服务
+        list:
+          - name: kodo
+            label: 对象存储
+            desc: 高可用、易扩展、低成本、一站式、支持边缘存储
+            isNew: true
+          - name: private_cloud_kodo
+            label: 私有云存储
+            desc: 可定制化的数百 EB 级别、高可靠、强安全的存储系统
+            isNew: true
+          - name: fusion
+            label: 融合 CDN
+            desc: 融合优质节点、可监控、智能调度的内容分发服务
+          - name: qvm
+            label: 云主机
+            desc: 提供云主机、负载均衡、云数据库、高防等服务
+            isNew: true
+          - name: sms
+            label: 云短信
+            desc: 致力于为用户提供快捷高效的通信服务能力
+            isNew: true
+          - name: kirk
+            label: 容器云
+            desc: 面向微服务架构的企业级容器管理平台
+          - name: snow
+            label: 边缘计算平台
+            desc: 灵活配置管理大规模边缘计算应用，加速边缘智能落地
+    right:
+      - group: 数据 • 智能
+        list:
+          - name: atlab
+            label: 深度学习平台
+            desc: 针对图片视频的一站式数据集中处理、模型训练平台
+          - name: pandora
+            label: 大数据
+            desc: 简单、高效、开放
+          - name: censor
+            label: 内容安全
+            desc: 七牛云人工智能实验室提供的机器 + 人工一站式内容审核服务
+            isNew: true
+          - name: insight
+            label: 智能日志管理平台
+            desc: 海量异构数据采集，秒级实时日志检索，高效智能业务洞察
+            isNew: true
+          - name: dora
+            label: 智能多媒体服务
+            desc: 提供云端图片、音视频基础处理、丰富的人工智能服务
+      - group: 视频服务
+        list:
+          - name: pili
+            label: 直播云
+            desc: 提供全球化实时流服务和端到端直播场景解决方案
+          - name: rtn
+            label: 实时音视频云
+            desc: 基于 WebRTC 的一站式解决方案，零基础搭建音视频平台
+            isNew: true
+          # - name: vance
+          #   label: 点播云
+          #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
   events:
     - group: 热门活动
       list:

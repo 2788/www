@@ -42,13 +42,55 @@
 
             <%# 产品下拉菜单 %>
             <li class="dropdown" id="spaces-dropdown">
-              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.product") %></a>
+              <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.product") -%></a>
 
+              <% if I18n.t("views.language") == 'zh' -%>
+              <ul class="dropdown-menu services-menu services-menu-multicols">
+                <ul class="services-col-left">
+                  <% I18n.t("services.left").each do |left| -%>
+                    <%= content_tag :li, left[:group], class: "menu-title hidden-xs" -%>
+                    <% left[:list].each do |product| -%>
+                      <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
+                        <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                          <h4 class="<%= product[:name] -%>">
+                            <%= product[:label] -%>
+                            <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
+                          </h4>
+                          <p>
+                            <%= product[:desc] -%>
+                            <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
+                          </p>
+                        <% end -%>
+                      <% end -%>
+                    <% end -%>
+                  <% end -%>
+                </ul>
+
+                <ul class="services-col-right">
+                  <% I18n.t("services.right").each do |right| -%>
+                    <%= content_tag :li, right[:group], class: "menu-title hidden-xs" -%>
+                    <% right[:list].each do |product| -%>
+                      <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
+                        <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                          <h4 class="<%= product[:name] -%>">
+                            <%= product[:label] -%>
+                            <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
+                          </h4>
+                          <p>
+                            <%= product[:desc] -%>
+                            <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
+                          </p>
+                        <% end -%>
+                      <% end -%>
+                    <% end -%>
+                  <% end -%>
+                </ul>
+              </ul>
+              <% elsif I18n.t("views.language") == 'en' -%>
               <ul class="dropdown-menu services-menu">
-                <% I18n.t("services").each do |service| %>
+                <% I18n.t("services").each do |service| -%>
                   <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
-
-                  <% service[:list].each do |product| %>
+                  <% service[:list].each do |product| -%>
                     <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
                       <%= link_to(send("products_#{product[:name]}_path")) do -%>
                         <h4 class="<%= product[:name] -%>">
@@ -59,11 +101,13 @@
                           <%= product[:desc] -%>
                           <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
                         </p>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
+                      <% end -%>
+                    <% end -%>
+                  <% end -%>
+                <% end -%>
               </ul>
+              <% end -%>
+
             </li>
 
             <%# 解决方案下拉菜单 %>
@@ -72,7 +116,7 @@
 
               <% if I18n.t("views.language") == 'zh' -%>
 
-                <ul class="dropdown-menu solutions-menu solutions-menu-col2">
+                <ul class="dropdown-menu solutions-menu solutions-menu-multicols">
                   <li class="solution menu-title hidden-xs">
                     <%= content_tag :span, I18n.t("solutions.title1"), class: "group-title" -%>
                     <%= content_tag :span, I18n.t("solutions.title2"), class: "group-title" -%>
@@ -439,12 +483,26 @@
               <div class="col-sm-3 col-xs-3">
                 <dl>
                   <dt>产品与服务</dt>
-                  <% I18n.t("services").each do |service| %>
-                    <% service[:list].each do |product| %>
+                  <% if I18n.t("views.language") == 'zh' -%>
+                  <% I18n.t("services.left").each do |left| -%>
+                    <% left[:list].each do |product| -%>
                       <%= content_tag :dd, link_to(raw(product[:label]), send("products_#{product[:name]}_path")) -%>
-                    <% end %>
-                  <% end %>
+                    <% end -%>
+                  <% end -%>
+                  <% I18n.t("services.right").each do |right| -%>
+                    <% right[:list].each do |product| -%>
+                      <%= content_tag :dd, link_to(raw(product[:label]), send("products_#{product[:name]}_path")) -%>
+                    <% end -%>
+                  <% end -%>
                   <dd><%= link_to "SSL 证书", "/ssl" -%></dd>
+                  <% elsif I18n.t("views.language") == 'en' -%>
+                  <% I18n.t("services").each do |service| -%>
+                    <% service[:list].each do |product| -%>
+                      <%= content_tag :dd, link_to(raw(product[:label]), send("products_#{product[:name]}_path")) -%>
+                    <% end -%>
+                  <% end -%>
+                  <dd><%= link_to "SSL Certificate", "/en/ssl" -%></dd>
+                  <% end -%>
                 </dl>
               </div>
               <div class="col-sm-3 col-xs-3">
@@ -534,11 +592,26 @@
 
               <div id="collapseProduct" class="panel-collapse collapse collapse-menu">
                 <div class="panel-body panel-menu">
-                  <% I18n.t("services").each do |service| %>
-                    <% service[:list].each do |product| %>
-                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]),class: product[:name]), send("products_#{product[:name]}_path")), class: "menu-unit" -%>
-                    <% end %>
-                  <% end %>
+                  <% if I18n.t("views.language") == 'zh' -%>
+                  <% I18n.t("services.left").each do |left| -%>
+                    <% left[:list].each do |product| -%>
+                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]), class: product[:name]), send("products_#{product[:name]}_path")), class: "menu-unit" -%>
+                    <% end -%>
+                  <% end -%>
+                  <% I18n.t("services.right").each do |right| -%>
+                    <% right[:list].each do |product| -%>
+                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]), class: product[:name]), send("products_#{product[:name]}_path")), class: "menu-unit" -%>
+                    <% end -%>
+                  <% end -%>
+                  <%= content_tag :div, link_to(content_tag(:h4, "SSL 证书", class: "ssl"), "/ssl"), class: "menu-unit" -%>
+                  <% elsif I18n.t("views.language") == 'en' -%>
+                  <% I18n.t("services").each do |service| -%>
+                    <% service[:list].each do |product| -%>
+                      <%= content_tag :div, link_to(content_tag(:h4, raw(product[:label]), class: product[:name]), send("products_#{product[:name]}_path")), class: "menu-unit" -%>
+                    <% end -%>
+                  <% end -%>
+                  <%= content_tag :div, link_to(content_tag(:h4, "SSL Certificate", class: "ssl"), "/en/ssl"), class: "menu-unit" -%>
+                  <% end -%>
                 </div>
               </div>
             </li>

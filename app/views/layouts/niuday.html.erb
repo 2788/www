@@ -46,25 +46,70 @@
             <li class="dropdown" id="spaces-dropdown">
               <a href="#" class="dropdown-toggle dropdown-toggle-mobile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t("navbar.product") %></a>
 
-              <ul class="dropdown-menu services-menu">
-                <% I18n.t("services").each do |service| %>
-                  <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
-                  <% service[:list].each do |product| %>
+              <% if I18n.t("views.language") == 'zh' -%>
+              <ul class="dropdown-menu services-menu services-menu-multicols">
+                <ul class="services-col-left">
+                  <% I18n.t("services.left").each do |left| -%>
+                    <%= content_tag :li, left[:group], class: "menu-title hidden-xs" -%>
+                    <% left[:list].each do |product| -%>
                     <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
                       <%= link_to(send("products_#{product[:name]}_path")) do -%>
                         <h4 class="<%= product[:name] -%>">
                           <%= product[:label] -%>
-                          <% if product[:isNew] %><i class="new-icon"></i><% end %>
+                          <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
                         </h4>
                         <p>
                           <%= product[:desc] -%>
                           <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
                         </p>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
+                      <% end -%>
+                    <% end -%>
+                    <% end -%>
+                  <% end -%>
+                </ul>
+
+                <ul class="services-col-right">
+                  <% I18n.t("services.right").each do |right| -%>
+                    <%= content_tag :li, right[:group], class: "menu-title hidden-xs" -%>
+                    <% right[:list].each do |product| -%>
+                    <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
+                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                        <h4 class="<%= product[:name] -%>">
+                          <%= product[:label] -%>
+                          <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
+                        </h4>
+                        <p>
+                          <%= product[:desc] -%>
+                          <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
+                        </p>
+                      <% end -%>
+                    <% end -%>
+                    <% end -%>
+                  <% end -%>
+                </ul>
               </ul>
+              <% elsif I18n.t("views.language") == 'en' -%>
+              <ul class="dropdown-menu services-menu">
+                <% I18n.t("services").each do |service| -%>
+                  <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
+                  <% service[:list].each do |product| -%>
+                    <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
+                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                        <h4 class="<%= product[:name] -%>">
+                          <%= product[:label] -%>
+                          <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
+                        </h4>
+                        <p>
+                          <%= product[:desc] -%>
+                          <% if product[:highlight] -%><span class="text-highlight"><%= product[:highlight] -%></span><% end -%>
+                        </p>
+                      <% end -%>
+                    <% end -%>
+                  <% end -%>
+                <% end -%>
+              </ul>
+              <% end -%>
+
             </li>
 
             <%# 解决方案下拉菜单 %>
@@ -73,7 +118,7 @@
 
               <% if I18n.t("views.language") == 'zh' -%>
 
-                <ul class="dropdown-menu solutions-menu solutions-menu-col2">
+                <ul class="dropdown-menu solutions-menu solutions-menu-multicols">
                   <li class="solution menu-title hidden-xs">
                     <%= content_tag :span, I18n.t("solutions.title1"), class: "group-title" -%>
                     <%= content_tag :span, I18n.t("solutions.title2"), class: "group-title" -%>
