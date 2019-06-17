@@ -110,11 +110,10 @@ $(document).ready ->
   # 页面向下滚动到一定程度，导航栏固定在顶部
   if $bigPromotionPage.length > 0 && $bigPromotionBlockNav.length > 0
     windowWidth = $(window).width()
-    if windowWidth < 768
-      return
-    listenBigPromotionPageScroll
-      'elem': $bigPromotionBlockNav
-      'fxdClass': 'fixed'
+    if windowWidth >= 768
+      listenBigPromotionPageScroll
+        'elem': $bigPromotionBlockNav
+        'fxdClass': 'fixed'
 
   if $bigPromotionPage.length > 0
     isBigPromotionEnd (isEnd) ->
