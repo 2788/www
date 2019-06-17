@@ -506,6 +506,26 @@
     }
   }
 
+  .features-bigpromotion-kodo {
+    .container {
+      .row {
+        .col-kodo {
+          .thumbnail {
+            height: 3.38rem;
+            .caption {
+              .desc {
+                height: 0.48rem;
+              }
+              .content-container {
+                height: calc(100% - 0.92rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .features-bigpromotion-qvm {
     .container {
       .row {
@@ -624,6 +644,26 @@
                     font-size: 0.22rem;
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-bigpromotion-kodo {
+    .container {
+      .row {
+        .col-kodo {
+          .thumbnail {
+            height: 3.40rem;
+            .caption {
+              .desc {
+                height: 0.52rem;
+              }
+              .content-container {
+                height: calc(100% - 0.96rem);
               }
             }
           }
@@ -769,13 +809,13 @@
       .row {
         .col-kodo {
           .thumbnail {
-            height: 3.50rem;
+            height: 3.78rem;
             .caption {
               .desc {
-                height: 0.36rem;
+                height: 0.60rem;
               }
               .content-container {
-                height: calc(100% - 0.82rem);
+                height: calc(100% - 1.06rem);
               }
             }
           }
@@ -910,14 +950,14 @@
       .row {
         .col-kodo {
           .thumbnail {
-            height: 3.60rem;
+            height: 3.90rem;
             margin-bottom: 0.40rem;
             .caption {
               .desc {
-                height: 0.36rem;
+                height: 0.60rem;
               }
               .content-container {
-                height: calc(100% - 0.82rem);
+                height: calc(100% - 1.06rem);
               }
             }
           }
