@@ -637,7 +637,7 @@
       .row {
         .col-fusion {
           .thumbnail {
-            height: 2.76rem;
+            height: 2.60rem;
             .caption {
               .title {
                 .title-huge {
@@ -648,11 +648,8 @@
                   font-size: 0.12rem;
                 }
               }
-              .desc {
-                height: 0.46rem;
-              }
               .content-container {
-                height: calc(100% - 0.94rem);
+                height: calc(100% - 0.78rem);
               }
             }
           }
