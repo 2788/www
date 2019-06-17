@@ -1,0 +1,371 @@
+<%# 2019 年 618 大促活动落地页 %>
+<%# https://jira.qiniu.io/browse/BO-7519 %>
+
+<%# banner 部分 %>
+<div class="jumbotron hero hero-bigpromotion">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row hero-bigpromotion-row">
+        <div class="col-sm-12">
+          <p><%= raw(I18n.t("views.events.bigpromotion.banner.rule")) -%></p>
+          <div class="row hero-icons-row">
+            <div class="col-md-1 col-sm-1 col-xs-1 col-placeholder"></div>
+            <% I18n.t("views.events.bigpromotion.banner.list").each do |item| -%>
+              <div class="col-md-2 col-sm-2 col-xs-2 col-icon">
+                <a class="<%= item[:class] -%>" href="<%= Rails.configuration.portal_host + item[:link] -%>" target="_blank" title="<%= item[:title] -%>">
+                  <%= image_tag item[:icon], alt: item[:title], width: "100%" -%>
+                </a>
+              </div>
+            <% end -%>
+            <div class="col-md-1 col-sm-1 col-xs-1 col-placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 企业上云侧边栏 %>
+<div class="ecloud-helper">
+  <a href="<%= I18n.t("views.events.bigpromotion.ecloud.link") -%>" title="<%= I18n.t("views.events.bigpromotion.ecloud.title") -%>" target="_blank">
+    <%= image_tag I18n.t("views.events.bigpromotion.ecloud.icon"), alt: I18n.t("views.events.bigpromotion.ecloud.title"), width: "100%" -%>
+  </a>
+</div>
+
+<%# 导航 %>
+<div class="features-nav bigpromotion-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.events.bigpromotion.middlebar").each do |linkbar| -%>
+          <% if linkbar[:type] == "icon" -%>
+          <li class="<%= linkbar[:class] -%>">
+            <a href="<%= linkbar[:href] -%>">
+              <%= image_tag linkbar[:icon], title: linkbar[:title], alt: linkbar[:title], width: "100%" -%>
+            </a>
+          </li>
+          <% elsif linkbar[:type] == "link" -%>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], title: linkbar[:title] -%></li>
+          <% end -%>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# 存储专场 %>
+<div class="features features-bigpromotion features-bigpromotion-kodo tab-content-bigpromotion-kodo">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.bigpromotion.kodo.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.bigpromotion.kodo.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.bigpromotion.kodo.list").each do |kodo| -%>
+      <div class="col-md-4 col-sm-4 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= kodo[:title] -%></h4>
+            <p class="desc"><%= kodo[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <select class="form-control bigpromotion-dropdown bigpromotion-kodo-dropdown">
+                  <% kodo[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <p class="content-price">
+                  <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                  <span class="span-red span-bold m-l">￥</span><span class="span-red span-normal span-bold span-elide"><%= section[:originPrice] -%></span>
+                </p>
+                <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: kodo[:title] + " - 立即购买", class: "btn btn-lg btn-bigpromotion disabled", target: "_blank" -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场 %>
+<div class="features features-bigpromotion features-bigpromotion-fusion tab-content-bigpromotion-fusion">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.bigpromotion.fusion.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.bigpromotion.fusion.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.bigpromotion.fusion.list").each do |fusion| -%>
+      <div class="col-md-4 col-sm-4 col-xs-12 col-item col-fusion">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= raw(fusion[:title]) -%></h4>
+            <p class="desc"><%= fusion[:desc] -%></p>
+            <div class="content-container">
+             <p class="content-price">
+                <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= fusion[:price] -%></span>
+                <span class="span-red span-bold m-l">￥</span><span class="span-red span-normal span-bold span-elide"><%= fusion[:originPrice] -%></span>
+              </p>
+              <%= link_to "立即购买", Rails.configuration.portal_host + fusion[:link], title: fusion[:title] + " - 立即购买", class: "btn btn-lg btn-bigpromotion disabled", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云主机专场 %>
+<div class="features features-bigpromotion features-bigpromotion-qvm tab-content-bigpromotion-qvm">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.bigpromotion.qvm.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.bigpromotion.qvm.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.bigpromotion.qvm.hots").each do |hot| -%>
+      <div class="col-md-6 col-sm-6 col-xs-12 col-item col-qvm-hot">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= hot[:title] -%></h4>
+            <h4 class="sub-title"><%= hot[:subTitle] -%></h4>
+            <p class="desc"><%= hot[:desc] -%></p>
+            <div class="content-container">
+              <span class="<%= hot[:flagClass] -%>"><%= hot[:flagContent] -%></span>
+              <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= hot[:price] -%></span>
+              <span class="span-red span-bold m-l">￥</span><span class="span-red span-normal span-bold span-elide"><%= hot[:originPrice] -%></span>
+              <%= link_to "免费抢", Rails.configuration.portal_host + hot[:link], title: hot[:title] + " - 免费抢", class: "btn btn-lg btn-bigpromotion disabled", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+    <div class="intro">
+      <p class="desc"><%= raw(I18n.t("views.events.bigpromotion.qvm.subDesc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.bigpromotion.qvm.list").each do |qvm| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-qvm">
+        <div class="thumbnail <%= qvm[:class] -%>">
+          <div class="caption">
+            <h4 class="title"><%= qvm[:title] -%></h4>
+            <p class="desc"><%= qvm[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-specs">
+                <div class="row">
+                  <% qvm[:specs].each do |spec| -%>
+                  <div class="col-md-6 col-sm-6 col-xs-6 col-specs">
+                    <span class="span-specs"><%= raw(spec[:name]) -%></span><span class="span-bold"><%= raw(spec[:value]) -%></span>
+                  </div>
+                  <% end -%>
+                </div>
+              </div>
+              <div class="content-dropdown">
+                <select class="form-control bigpromotion-dropdown bigpromotion-qvm-dropdown">
+                  <% qvm[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <div class="content-flag">
+                <% qvm[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <% qvm[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span></p>
+                <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: qvm[:title] + " - 立即购买", class: "btn btn-lg btn-bigpromotion disabled", target: "_blank" -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云通信专场 %>
+<div class="features features-bigpromotion features-bigpromotion-sms tab-content-bigpromotion-sms">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.bigpromotion.sms.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.bigpromotion.sms.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.bigpromotion.sms.list").each do |sms| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-sms">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= sms[:title] -%></h4>
+            <div class="content-container">
+              <div class="content-desc">
+                <% sms[:desc].each do |desc| -%>
+                <p class="desc"><%= desc -%></p>
+                <% end -%>
+              </div>
+              <div class="content-flag">
+                <% sms[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= sms[:price] -%></span><span class="span-red span-unit">/条</span></p>
+              <%= link_to "立即购买", Rails.configuration.portal_host + sms[:link], title: sms[:title] + " - 立即购买", class: "btn btn-lg btn-bigpromotion disabled", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# banner kodo 抢购部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper bigpromotion-modal" id="bigpromotion-banner-modal" tabindex="-1" role="dialog" aria-labelledby="bigpromotion-banner-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="bigpromotion-banner-modal-label">618 年中盛惠 1 元秒杀 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：2019 年 6 月 1 日前未产生过 KODO 相应区域标准存储空间消费的用户</p>
+        <p>购买说明：</p>
+        <p>1、五款产品均为限量抢购产品，每位用户每款仅可购买 1 次</p>
+        <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 存储专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper bigpromotion-modal" id="bigpromotion-kodo-modal" tabindex="-1" role="dialog" aria-labelledby="bigpromotion-kodo-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="bigpromotion-kodo-modal-label">存储专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：完成实名认证注册的新老用户均可参加</p>
+        <p>购买说明：</p>
+        <p>1、以下各资源包为限量产品，每位用户每款至多购买 5 个</p>
+        <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月1日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper bigpromotion-modal" id="bigpromotion-fusion-modal" tabindex="-1" role="dialog" aria-labelledby="bigpromotion-fusion-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="bigpromotion-fusion-modal-label">CDN 专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）</p>
+        <p>购买说明：</p>
+        <p>1、资源包可叠加购买，每档每名用户最多购买 10 个，出账时将按照资源包过期先后顺序依次抵扣</p>
+        <p>2、若当月使用量大于已购买资源包额度，出账时将先抵扣完资源包额度，再按照标准价格为剩余用量出具账单</p>
+        <p>3、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效；协议期为一年</p>
+        <p>4、资源包只能使用现金充值余额支付</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云主机部分 - 爆款每日限时抢 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper bigpromotion-modal" id="bigpromotion-qvmhot-modal" tabindex="-1" role="dialog" aria-labelledby="bigpromotion-qvmhot-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="bigpromotion-qvmhot-modal-label">爆款每日限时抢 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日，每天 10 点限量开抢</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：两款云主机产品为每日限时抢购产品，每位用户仅可抢购其中 1 台</p>
+        <p>2、套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为青岛</p>
+        <p>3、抢购资格：个人用户可抢购 2C/4G/40G/1Mbps T5 主机，企业用户可任意选择抢购</p>
+        <p>4、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云主机部分 - 热卖机型无限购 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper bigpromotion-modal" id="bigpromotion-qvm-modal" tabindex="-1" role="dialog" aria-labelledby="bigpromotion-qvm-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="bigpromotion-qvm-modal-label">热卖机型无限购 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：新老用户不限购买数量</p>
+        <p>2、套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为中国大陆</p>
+        <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云通信专场 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper bigpromotion-modal" id="bigpromotion-sms-modal" tabindex="-1" role="dialog" aria-labelledby="bigpromotion-sms-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="bigpromotion-sms-modal-label">云通信专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 6 月 30 日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：短信服务包每名用户最多只能购买 3 个套餐包（类型不限）</p>
+        <p>2、套餐配置：短信包内含标识的短信条数，用户需选择短信类型，即验证码、通知、营销中的一类</p>
+        <p>3、抢购资格：个人用户仅可发送验证码和通知类短信，企业用户可发送验证码、通知、和营销类短信，详情请参考<a href='https://developer.qiniu.com/sms/manual/5793/sms-auditing-standard' class='link-box' title='《七牛云短信审核标准》' target='_blank'>《七牛云短信审核标准》</a></p>
+        <p>4、使用说明：短信包可以叠加使用，使用顺序以购买时间计算，优先使用先到期的包</p>
+        <p>5、有效期：短信套餐包自生效起 1 年内有效，逾期未使用将自动作废</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -125,6 +125,11 @@ Rails.application.routes.draw do
     get '/events/qvmsumsale', to: 'events#qvmsumsale'
     # qvmsumsale 10 点开抢限制
     get '/events/qvmsumsale/is_start', to: 'events#qvmsumsale_is_start'
+    # 2019 年 618 活动
+    # https://jira.qiniu.io/browse/BO-7519
+    get '/events/2019618', to: 'events#big_promotion'
+    # 2019 年 618 活动是否结束
+    get '/events/2019618/is_end', to: 'events#is_big_promotion_end'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息

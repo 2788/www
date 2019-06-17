@@ -125,6 +125,14 @@ Rails.application.configure do
     start_minute: "0"
   }
 
+  # 2019 年 618 活动结束时间
+  # https://jira.qiniu.io/browse/BO-7519
+  config.bigpromotion = {
+    end_year: 2019,
+    end_month: 7,
+    end_date: 1
+  }
+
   config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'
   config.video_audit_host = 'http://ai.qiniuapi.com/v3/video/censor'
   config.video_jobs_host = 'http://ai.qiniuapi.com/v3/jobs/video'

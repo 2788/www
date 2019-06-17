@@ -49,6 +49,7 @@
 #= require kodoprivate
 #= require download
 #= require qvmsumsale
+#= require bigpromotion
 
 #= require uuid
 

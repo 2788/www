@@ -689,6 +689,31 @@
     }
   }
 
+  &.hero-bigpromotion-index {
+    background-image: image-url("banner/banner-bigpromotion.jpg");
+    .container {
+      .middle-container {
+        top: 42%;
+        text-align: center;
+        .icon-bigpromotion {
+          width: 8.00rem;
+          margin: 0 auto;
+        }
+        .btn-banner {
+          width: 1.40rem;
+          margin: 0 auto;
+          margin-top: 0.30rem;
+          display: block;
+          &:hover {
+            -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+
   &.hero-qvmsumsale-index {
     background-image: image-url("banner/banner-qvmsumsale-index.jpg") !important;
     .container {
@@ -1328,6 +1353,19 @@
       }
     }
 
+    &.hero-bigpromotion-index {
+      .container {
+        .middle-container {
+          .icon-bigpromotion {
+            width: 6.00rem;
+          }
+          .btn-banner {
+            margin-top: 0.40rem;
+          }
+        }
+      }
+    }
+
     &.hero-qvmsumsale-index {
       .container {
         .middle-container {
@@ -1551,6 +1589,16 @@
 
 @media (max-width: 425px) {
   .jumbotron.hero {
+    &.hero-bigpromotion-index {
+      .container {
+        .middle-container {
+          .btn-banner {
+            margin-top: 0.60rem;
+          }
+        }
+      }
+    }
+
     &.hero-qvm2for3-index,
     &.hero-qvm2for3 {
       .middle-container {
