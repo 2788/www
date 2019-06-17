@@ -4,6 +4,9 @@ $(document).ready ->
   # banner
   $bigPromotionBannerIconsRow = $bigPromotionPage.find('.jumbotron.hero.hero-bigpromotion .container .middle-container .hero-icons-row')
   $bigPromotionBannerIcons = $bigPromotionBannerIconsRow.find('.col-icon a')
+  # nav
+  $bigPromotionTopNav = $bigPromotionPage.find('nav.navbar.navbar-default')
+  $bigPromotionBlockNav = $bigPromotionPage.find('.features-nav.bigpromotion-nav')
   # dropdown
   $bigPromotionKodoDropdown = $bigPromotionPage.find('.features-bigpromotion-kodo .content-dropdown .bigpromotion-kodo-dropdown')
   $bigPromotionQvmDropdown = $bigPromotionPage.find('.features-bigpromotion-qvm .content-dropdown .bigpromotion-qvm-dropdown')
@@ -76,6 +79,26 @@ $(document).ready ->
       $bigPromotionBuyBtns.html '活动已结束'
       $bigPromotionBuyBtns.attr 'href', ''
 
+  listenBigPromotionPageScroll = (json) ->
+    fxd = json.fxdClass
+    myElem = json.elem
+    myElemOffset = myElem.offset().top
+    topNavHeight = $bigPromotionTopNav.height()
+    if $(window).scrollTop() > myElemOffset - topNavHeight
+      myElem.addClass fxd
+      myElem.css({'top': topNavHeight})
+    else
+      myElem.removeClass fxd
+      myElem.css({'top': 0})
+    $(window).scroll ->
+      scrollTop = $(window).scrollTop()
+      if scrollTop > myElemOffset - topNavHeight
+        myElem.addClass fxd
+        myElem.css({'top': topNavHeight})
+      else
+        myElem.removeClass fxd
+        myElem.css({'top': 0})
+
   # 去掉页面的 helper
   if $bigPromotionPage.length > 0
     $bigPromotionPage.find('div.helper').remove()
@@ -83,6 +106,15 @@ $(document).ready ->
   # 绑定页面的 dropdown
   if $bigPromotionPage.length > 0
     bindDropdownList()
+
+  # 页面向下滚动到一定程度，导航栏固定在顶部
+  if $bigPromotionPage.length > 0 && $bigPromotionBlockNav.length > 0
+    windowWidth = $(window).width()
+    if windowWidth < 768
+      return
+    listenBigPromotionPageScroll
+      'elem': $bigPromotionBlockNav
+      'fxdClass': 'fixed'
 
   if $bigPromotionPage.length > 0
     isBigPromotionEnd (isEnd) ->

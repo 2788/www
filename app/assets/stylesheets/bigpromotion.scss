@@ -103,6 +103,14 @@
       }
     }
   }
+  &.fixed {
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFF;
+    z-index: 10000;
+  }
 }
 
 .features-bigpromotion {
