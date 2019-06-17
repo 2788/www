@@ -103,6 +103,18 @@
       }
     }
   }
+  &.fixed {
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    background-color: #FFF;
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    z-index: 10000;
+  }
 }
 
 .features-bigpromotion {
