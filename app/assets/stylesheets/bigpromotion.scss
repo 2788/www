@@ -518,6 +518,14 @@
               }
               .content-container {
                 height: calc(100% - 0.92rem);
+                .content-price {
+                  .span-huge {
+                    font-size: 0.32rem;
+                  }
+                  .span-normal {
+                    font-size: 0.18rem;
+                  }
+                }
               }
             }
           }
@@ -664,6 +672,14 @@
               }
               .content-container {
                 height: calc(100% - 0.96rem);
+                .content-price {
+                  .span-huge {
+                    font-size: 0.20rem;
+                  }
+                  .span-normal {
+                    font-size: 0.12rem;
+                  }
+                }
               }
             }
           }
@@ -816,6 +832,14 @@
               }
               .content-container {
                 height: calc(100% - 1.06rem);
+                .content-price {
+                  .span-huge {
+                    font-size: 0.28rem;
+                  }
+                  .span-normal {
+                    font-size: 0.18rem;
+                  }
+                }
               }
             }
           }

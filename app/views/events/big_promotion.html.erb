@@ -79,6 +79,7 @@
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <p class="content-price">
                   <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                  <span class="span-red span-unit">/<%= section[:unit] -%></span>
                   <span class="span-red span-bold m-l">￥</span><span class="span-red span-normal span-bold span-elide"><%= section[:originPrice] -%></span>
                 </p>
                 <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: kodo[:title] + " - 立即购买", class: "btn btn-lg btn-bigpromotion disabled", target: "_blank" -%>
@@ -262,10 +263,10 @@
       </div>
       <div class="modal-body">
         <p>活动时间：即日起至 2019 年 6 月 30 日</p>
-        <p>活动对象：完成实名认证注册的新老用户均可参加</p>
+        <p>活动对象：体验包面向 2019 年 6 月 1 日前未产生过 KODO 相应区域标准存储空间消费的用户；其他资源包面向完成实名认证注册的新老用户</p>
         <p>购买说明：</p>
-        <p>1、以下各资源包为限量产品，每位用户每款至多购买 5 个</p>
-        <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月1日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>1、以下各资源包为限量产品，每位用户每款至多购买 5 个；体验包每位用户至多购买 1 个</p>
+        <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
         <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
         <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
         <p>活动最终解释权在法律允许范围内归七牛云所有</p>
