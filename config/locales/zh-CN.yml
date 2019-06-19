@@ -5894,7 +5894,7 @@ zh-CN:
         ecloud:
           title: "企业上云计划 - 上海中小企业专享 - 全场低至 3 折"
           icon: "bigpromotion/icon-ecloud.gif"
-          link: "https://jinshuju.net/f/pgpBJU"
+          link: "/events/enterpriseoncloud?entry=big-promotion"
         middlebar:
           - title: "更多特惠，限时促销，0 元起"
             class: ""
