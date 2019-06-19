@@ -1,12 +1,12 @@
 .events-page-enterpriseoncloud {
   // 通用部分
-  ul {
+  .enterpriseoncloud-ul {
     padding: 0;
   }
-  .right {
+  .enterpriseoncloud-right {
     float: right !important;
   }
-  .bt2 {
+  .enterpriseoncloud-bt2 {
     width: 100%;
     margin: auto auto 0.60rem;
     color: #FFF;
@@ -49,7 +49,7 @@
     color: #04F5F5;
   }
   // 套餐部分
-  .set-meal {
+  .enterpriseoncloud-set-meal {
     position: relative;
     padding-top: 0.40rem;
     background: -webkit-linear-gradient(to bottom left, #242345, #024885);
@@ -57,7 +57,7 @@
     background: -moz-linear-gradient(to bottom left, #242345, #024885);
     background: linear-gradient(to bottom left, #242345, #024885);
   }
-  .set-meal .ul1 {
+  .enterpriseoncloud-set-meal .ul1 {
     width: 100%;
     margin-top: -2.00rem;
     margin-bottom: 0;
@@ -66,7 +66,7 @@
     text-align: center;
     vertical-align: middle;
   }
-  .set-meal .ul1 li {
+  .enterpriseoncloud-set-meal .ul1 li {
     width: 30%;
     margin-left: 1.5%;
     margin-right: 1.5%;
@@ -78,7 +78,7 @@
     background-color: #FFF;
     min-width: 184px;
   }
-  .set-meal .ul1 li .li1 {
+  .enterpriseoncloud-set-meal .ul1 li .li1 {
     padding: 0.18rem 0.05rem 0.05rem 0.22rem;
     font-size: 0.20rem;
     line-height: 0.28rem;
@@ -88,35 +88,35 @@
     text-align: center;
     font-weight: bolder;
   }
-  .set-meal .ul1 li .li1 span {
+  .enterpriseoncloud-set-meal .ul1 li .li1 span {
     font-size: 0.16rem;
     font-weight: 300;
     line-height: 0.18rem;
   }
-  .set-meal .ul1 li .li1 span strong {
+  .enterpriseoncloud-set-meal .ul1 li .li1 span strong {
     color: #EC6E48;
     font-size: 0.20rem;
   }
-  .set-meal .ul1 li .li2 {
+  .enterpriseoncloud-set-meal .ul1 li .li2 {
     padding: 0.20rem 0.15rem;
     background: #F4F9FD;
     line-height: 0.30rem;
   }
-  .set-meal .ul1 li .li2 .opacity {
+  .enterpriseoncloud-set-meal .ul1 li .li2 .opacity {
     opacity: 0;
   }
-  .set-meal .ul1 li .li2 span {
+  .enterpriseoncloud-set-meal .ul1 li .li2 span {
     padding-right: 10px;
     color: #4169FF;
     display: inline-block;
   }
-  .set-meal .ul1 li .li2 .conf-container {
+  .enterpriseoncloud-set-meal .ul1 li .li2 .conf-container {
     height: 1.60rem;
   }
-  .set-meal .ul1 li .li2 .desc-container {
+  .enterpriseoncloud-set-meal .ul1 li .li2 .desc-container {
     height: 0.90rem;
   }
-  .set-meal .ul1 li .li4 a {
+  .enterpriseoncloud-set-meal .ul1 li .li4 a {
     width: 1.00rem;
     height: 0.35rem;
     margin: auto;
@@ -128,34 +128,34 @@
     line-height: 0.35rem;
     display: block;
   }
-  .set-meal .ul1 li .li4 p {
+  .enterpriseoncloud-set-meal .ul1 li .li4 p {
     font-size: 0.16rem;
     text-align: center;
     line-height: 0.30rem;
   }
-  .set-meal .ul1 li .li4 p strong b {
+  .enterpriseoncloud-set-meal .ul1 li .li4 p strong b {
     font-size: 0.28rem;
     text-align: center;
     line-height: 0.30rem;
   }
-  .set-meal .ul1 li .li4 p strong {
+  .enterpriseoncloud-set-meal .ul1 li .li4 p strong {
     color: #EC6E48;
     font-size: 0.20rem;
     font-weight: 100;
     text-align: center;
     line-height: 0.30rem;
   }
-  .set-meal .ul1 li .li4 p span {
+  .enterpriseoncloud-set-meal .ul1 li .li4 p span {
     font-size: 0.16rem;
     line-height: 0.18rem;
     text-decoration: line-through;
   }
-  .set-meal .ul1 li .li3 {
+  .enterpriseoncloud-set-meal .ul1 li .li3 {
     padding: 0.15rem 0.15rem 0.05rem;
     font-size: 0.12rem;
     line-height: 0.23rem;
   }
-  .set-meal .ul1 li .li4 {
+  .enterpriseoncloud-set-meal .ul1 li .li4 {
     padding-bottom: 0.10rem;
     padding-left: 0.10rem;
     font-size: 0.12rem;
@@ -165,7 +165,7 @@
     background: image-url("enterpriseoncloud/meal-bottom-mark.png") no-repeat left bottom;
     background-size: 100%
   }
-  .set-meal .p1 {
+  .enterpriseoncloud-set-meal .p1 {
     width: 100%;
     margin-bottom: 0;
     padding-bottom: 1.00rem;
@@ -174,7 +174,7 @@
     text-align: center;
     vertical-align: middle;
   }
-  .set-meal .p1 span {
+  .enterpriseoncloud-set-meal .p1 span {
     width: 70%;
     margin: auto;
     margin-bottom: 0;
@@ -183,7 +183,7 @@
     display: block;
   }
   // 专属私有云部署部分
-  .bt1 {
+  .enterpriseoncloud-bt1 {
     height: 1.00rem;
     text-align: center;
     line-height: 1.00rem;
@@ -193,12 +193,12 @@
     -o-background-size: cover;
     background-size: cover;
   }
-  .bt1 span {
+  .enterpriseoncloud-bt1 span {
     padding-right: 0.20rem;
     color: #FFF;
     font-size: 0.24rem;
   }
-  .bt1 a {
+  .enterpriseoncloud-bt1 a {
     padding: 0.08rem 0.20rem;
     color: #4068FE;
     font-size: 0.18rem;
@@ -206,60 +206,57 @@
     background-color: #FFF;
   }
   // 云上空间部分
-  .cloud-space-bt {
+  .enterpriseoncloud-cloud-space-bt {
     background: -webkit-linear-gradient(#024885, #042962);
     background: -o-linear-gradient(#024885, #042962);
     background: -moz-linear-gradient(#024885, #042962);
     background: linear-gradient(#024885, #042962);
   }
-  .cloud-space {
+  .enterpriseoncloud-cloud-space {
     padding: 0.60rem 0;
     background-size: 100%;
     text-align: center
   }
-  .cloud-space .ul2 {
+  .enterpriseoncloud-cloud-space .ul2 {
     margin-bottom: 0.60rem;
   }
-  .cloud-space .ul2 li {
+  .enterpriseoncloud-cloud-space .ul2 li {
     width: 30%;
     margin: 0.30rem 1.5%;
     color: #FFF;
     float: left;
     text-align: center;
   }
-  .cloud-space .ul2 img {
+  .enterpriseoncloud-cloud-space .ul2 img {
     width: 0.55rem;
   }
-  .cloud-space .ul2 p {
+  .enterpriseoncloud-cloud-space .ul2 p {
     margin: 0.30rem 0;
     font-size: 0.16rem;
   }
   // 增值服务部分
-  #rectangle-cases-slider div p {
-    color: #FFF;
-    margin-top: 0.20rem;
-  }
-  .service {
+  
+  .enterpriseoncloud-service {
     padding: 0.60rem 0;
     background: #022E5A;
     background-size: 100%;
   }
-  .service .bk {
+  .enterpriseoncloud-service .bk {
     width: 60%;
     margin: 0.30rem auto 0.60rem;
     border: dashed 1px #264DB6;
   }
-  .service-er {
+  .enterpriseoncloud-service-er {
     width: 100%;
     margin: 0.60rem auto auto;
     max-width: 535px;
   }
-  .service-er img {
+  .enterpriseoncloud-service-er img {
     width: 45%;
     border-radius: 0.10rem;
     float: left;
   }
-  .service-er p {
+  .enterpriseoncloud-service-er p {
     width: 47.5%;
     margin-top: 0.30rem;
     color: #FFF;
@@ -267,36 +264,36 @@
     float: left;
     text-align: center;
   }
-  .service .center {
+  .enterpriseoncloud-service .center {
     color: #FFF;
     text-align: center;
   }
-  .service .conveyor.conveyor.conveyor-rectangle {
+  .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle {
     margin-bottom: 0;
     max-height: 208.5px !important;
     overflow: inherit !important;
   }
-  .service .conveyor.conveyor.conveyor-rectangle .slick-prev {
+  .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-prev {
     top: 34%;
     left: -0.50rem !important;
     z-index: 1;
   }
-  .service .conveyor.conveyor.conveyor-rectangle .slick-next {
+  .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-next {
     top: 34%;
     right: -0.50rem !important;
     z-index: 1;
   }
-  .service .conveyor img {
+  .enterpriseoncloud-service .conveyor img {
     width: 100%;
     height: 145px;
     margin: auto;
     max-height: 145px;
     transition: opacity .1s;
   }
-  .conveyor {
+  .enterpriseoncloud-conveyor {
     margin: 0.5rem 15px !important;
   }
-  .conveyor .slick-arrow {
+  .enterpriseoncloud-conveyor .slick-arrow {
     width: 0.45rem !important;
     height: 0.45rem !important;
     top: 20%;
@@ -307,50 +304,54 @@
     background-position: 0 0;
     transition: background-image .1s;
   }
-  .conveyor .slick-prev {
+  .enterpriseoncloud-conveyor div p {
+    color: #FFF;
+    margin-top: 0.20rem;
+  }
+  .enterpriseoncloud-conveyor .slick-prev {
     background-image: image-url("enterpriseoncloud/arrow-left-gray@2x.png");
   }
-  .conveyor .slick-prev:hover {
+  .enterpriseoncloud-conveyor .slick-prev:hover {
     background-image: image-url("enterpriseoncloud/arrow-left-blue@2x.png");
   }
-  .conveyor .slick-next {
+  .enterpriseoncloud-conveyor .slick-next {
     background-image: image-url("enterpriseoncloud/arrow-right-gray@2x.png");
   }
-  .conveyor .slick-next:hover {
+  .enterpriseoncloud-conveyor .slick-next:hover {
     background-image: image-url("enterpriseoncloud/arrow-right-blue@2x.png");
   }
-  .slick-slide {
+  .enterpriseoncloud-conveyor .slick-slide {
     margin: 10px;
   }
   // 上云经验
-  .experience {
+  .enterpriseoncloud-experience {
     padding: 0.60rem 0;
     background: #04255D;
     background-size: 100%;
   }
-  .experience-er img {
+  .enterpriseoncloud-experience-er img {
     width: 12%;
     margin-left: 1.9%;
     margin-right: 1.7%;
     margin-bottom: 0.30rem;
   }
-  .experience .center {
+  .enterpriseoncloud-experience .center {
     margin-top: 0.20rem;
     color: #B9B9D5;
     text-align: center;
   }
 
   @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .set-meal .ul1 li .li2 .conf-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .conf-container {
       height: 1.80rem;
     }
-    .set-meal .ul1 li .li2 .desc-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .desc-container {
       height: 1.20rem;
     }
-    .service .conveyor.conveyor.conveyor-rectangle .slick-prev {
+    .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-prev {
       top: 36%;
     }
-    .service .conveyor.conveyor.conveyor-rectangle .slick-next {
+    .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-next {
       top: 36%;
     }
   }
@@ -362,65 +363,65 @@
     .jumbotron.hero.hero-enterpriseoncloud .img-wrapper .p2 {
       padding-top: 0.15rem;
     }
-    .ul1 li {
+    .enterpriseoncloud-set-meal .ul1 li {
       width: 45% !important;
       min-width: 184px;
     }
-    .set-meal .ul1 li .li2 .desc-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .desc-container {
       height: 1.00rem;
     }
-    .service .conveyor.conveyor.conveyor-rectangle .slick-prev {
+    .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-prev {
       top: 36%;
       left: -0.40rem !important;
     }
-    .service .conveyor.conveyor.conveyor-rectangle .slick-next {
+    .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-next {
       top: 36%;
       right: -0.40rem !important;
     }
   }
 
   @media screen and (width: 768px) {
-    .set-meal .ul1 li .li2 .conf-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .conf-container {
       height: 1.80rem;
     }
   }
 
   @media screen and (max-width: 768px) {
-    .service .conveyor.conveyor.conveyor-rectangle .slick-prev {
+    .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-prev {
       top: 40%;
       left: -0.40rem !important;
     }
-    .service .conveyor.conveyor.conveyor-rectangle .slick-next {
+    .enterpriseoncloud-service .conveyor.conveyor.conveyor-rectangle .slick-next {
       top: 40%;
       right: -0.40rem !important;
     }
   }
 
   @media screen and (min-width: 577px) and (max-width: 767px) {
-    .set-meal .ul1 li .li2 .conf-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .conf-container {
       height: 2.00rem;
     }
-    .set-meal .ul1 li .li2 .desc-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .desc-container {
       height: 1.40rem;
     }
   }
 
   @media screen and (max-width: 576px) {
-    .set-meal .ul1 li .li2 .conf-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .conf-container {
       height: auto;
     }
-    .set-meal .ul1 li .li2 .desc-container {
+    .enterpriseoncloud-set-meal .ul1 li .li2 .desc-container {
       height: auto;
       margin-top: 0.20rem;
     }
-    .bt1 {
+    .enterpriseoncloud-bt1 {
       height: auto;
       padding-bottom: 0.30rem;
     }
-    .bt1 span {
+    .enterpriseoncloud-bt1 span {
       font-size: 0.20rem !important;
     }
-    .bt1 a {
+    .enterpriseoncloud-bt1 a {
       width: 1.60rem;
       margin: 0 auto;
       padding: 0.08rem 0.15rem !important;
@@ -428,7 +429,7 @@
       line-height: 0.30rem;
       display: block;
     }
-    .ul1 li {
+    .enterpriseoncloud-set-meal .ul1 li {
       width: 97% !important;
       margin-left: 1.5% !important;
       margin-right: 1.5% !important;
@@ -443,7 +444,7 @@
     .jumbotron.hero.hero-enterpriseoncloud .img-wrapper .p111 {
       width: 70%;
     }
-    .img-wrapper {
+    .jumbotron.hero.hero-enterpriseoncloud .img-wrapper {
       top: 0.40rem !important;
     }
   }
@@ -463,14 +464,14 @@
   }
 
   @media screen and (max-width: 400px) {
-    .bt1 span {
+    .enterpriseoncloud-bt1 span {
       font-size: 0.18rem;
     }
-    .bt1 a {
+    .enterpriseoncloud-bt1 a {
       padding: 0.08rem 0.10rem;
       font-size: 0.14rem;
     }
-    .experience-er img {
+    .enterpriseoncloud-experience-er img {
       width: 24% !important;
       margin-left: 3.8% !important;
       margin-right: 3.2% !important;
