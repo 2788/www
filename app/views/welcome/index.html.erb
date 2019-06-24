@@ -183,6 +183,9 @@
     </div>
   </div>
 
+  <% if false -%>
+  <%# 内容安全 banner 下线 %>
+  <%# https://jira.qiniu.io/browse/BO-7671 %>
   <div class="jumbotron hero hero-censor-index">
     <div class="container">
       <div class="middle-container">
@@ -198,6 +201,7 @@
       </div>
     </div>
   </div>
+  <% end -%>
 
   <% if Time.now.to_i < Time.local(2019, 5, 15).to_i -%>
   <a title="七牛云 2020 届 春季实习生招聘" href="https://career.qiniu.com/school?entry=index-banner" target="_blank">
