@@ -1,6 +1,26 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 企业上云活动 banner 2019 年 10 月 1 日凌晨下线 %>
+  <% if Time.now.to_i < Time.local(2019, 10, 1).to_i -%>
+  <div class="jumbotron hero hero-enterpriseoncloud-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>“上海市企业服务云”</h1>
+              <h1>中小企业上云扶持项目</h1>
+              <p>上海政府扶持资金到位，活动时间即日起至 2019 年 9 月 30 日，<span class="content-marked">3 折</span>即可购企业云服务套餐</p>
+            </div>
+            <%= link_to "查看详情", "/events/enterpriseoncloud?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 2018 年最后一波邀请活动 banner %>
   <%# 时间：2018 年 12 月 24 日 - 2019 年 1 月 1 日 %>
   <%# https://jira.qiniu.io/browse/BO-6068 %>
