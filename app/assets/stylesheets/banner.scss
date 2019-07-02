@@ -689,6 +689,37 @@
     }
   }
 
+  &.hero-enterpriseoncloud-index {
+    background-image: image-url("banner/banner-enterpriseoncloud-index.jpg") !important;
+    .container {
+      .middle-container {
+        top: 44%;
+        text-align: center;
+        h1 {
+          margin-bottom: 0.20rem;
+          font-size: 0.50rem;
+          font-weight: 600;
+          text-shadow: none;
+        }
+        .content-marked {
+          color: #FDD94D;
+          font-size: 0.22rem;
+        }
+        .btn-banner {
+          margin-top: 0.10rem;
+          border: none;
+          color: #011D5C;
+          background-color: #FDD94D;
+          &:hover {
+            -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+
   &.hero-bigpromotion-index {
     background-image: image-url("banner/banner-bigpromotion.jpg");
     .container {
@@ -1404,6 +1435,23 @@
             .text-huge {
               font-size: 0.46rem !important;
             }
+          }
+        }
+      }
+    }
+
+    &.hero-enterpriseoncloud-index {
+      .container {
+        .middle-container {
+          top: 42%;
+          h1 {
+            font-size: 0.38rem;
+          }
+          p {
+            font-size: 0.12rem;
+          }
+          .content-marked {
+            font-size: 0.24rem;
           }
         }
       }
