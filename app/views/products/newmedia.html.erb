@@ -14,49 +14,6 @@
     <h2>新媒体行业产品体系</h2>
     <div class="content-matrix-newmedia container">
         <div class="col-sm-4">
-            <h5 class="blue">媒体数据加工</h5>
-            <ul>
-                <li>
-                    <%= link_to "", "/products/newmedia/playout",class: "link-index-newmedia" -%>
-                    <div class="icon-matrix-newmedia">
-                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengbokong" %>
-                    </div>
-                    <p>智能播控</p>
-                    <p class="detail">简洁易用的云端直播在线生产系统</p>
-                    <p class="detail">无需传统导播台的巨额成本</p>
-                    <p class="detail">显著提升直播体验和互动效果</p>
-                    <span class="list-item-tips">HOT</span>
-                </li>
-                <li>
-                    <%= link_to "", "/products/newmedia/resolution",class: "link-index-newmedia" -%>
-                    <div class="icon-matrix-newmedia">
-                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-chaojifenbianlv" %></div>
-                    <p>超级分辨率</p>
-                    <p class="detail">稳定高效的直播流量压缩工具</p>
-                    <p class="detail">基于超分辩率成像技术对视频流进行重构</p>
-                    <p class="detail">大幅度降低 CDN 带宽成本</p>
-                </li>
-                <li>
-                    <%= link_to "", "/products/newmedia/demolition",class: "link-index-newmedia" -%>
-                    <div class="icon-matrix-newmedia">
-                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengchaitiao" %></div>
-                    <p>智能拆条</p>
-                    <p class="detail">快速智能的新闻内容拆条工具</p>
-                    <p class="detail">基于深度学习系统的算法优化</p>
-                    <p class="detail">有效提高人工效率和传播速度</p>
-                </li>
-                <li>
-                    <%= link_to "", "/products/newmedia/editor",class: "link-index-newmedia" -%>
-                    <div class="icon-matrix-newmedia">
-                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-yunfeibian" %></div>
-                    <p>云快编</p>
-                    <p class="detail">云快编以强大云端资源作支持</p>
-                    <p class="detail">实现多轨无上限编辑、主流视频特效及音频、</p>
-                    <p class="detail">字幕、转场模版等丰富功能</p>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-4">
             <h5 class="orange">媒体数据管理</h5>
             <ul>
                 <li>
@@ -137,6 +94,52 @@
                     <p class="detail">实时接入公众号菜单，</p>
                     <p class="detail">伴随电视直播流同步提供互动模块化功能</p>
                 </li>
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <h5 class="blue">媒体数据加工</h5>
+            <ul>
+                <li>
+                    <%= link_to "", "/products/newmedia/playout",class: "link-index-newmedia" -%>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengbokong" %>
+                    </div>
+                    <p>智能播控</p>
+                    <p class="detail">简洁易用的云端直播在线生产系统</p>
+                    <p class="detail">无需传统导播台的巨额成本</p>
+                    <p class="detail">显著提升直播体验和互动效果</p>
+                    <span class="list-item-tips">HOT</span>
+                </li>
+                <li>
+                    <%= link_to "", "/products/newmedia/resolution",class: "link-index-newmedia" -%>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-chaojifenbianlv" %></div>
+                    <p>超级分辨率</p>
+                    <p class="detail">稳定高效的直播流量压缩工具</p>
+                    <p class="detail">基于超分辩率成像技术对视频流进行重构</p>
+                    <p class="detail">大幅度降低 CDN 带宽成本</p>
+                </li>
+                <li>
+                    <%= link_to "", "/products/newmedia/demolition",class: "link-index-newmedia" -%>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-zhinengchaitiao" %></div>
+                    <p>智能拆条</p>
+                    <p class="detail">快速智能的新闻内容拆条工具</p>
+                    <p class="detail">基于深度学习系统的算法优化</p>
+                    <p class="detail">有效提高人工效率和传播速度</p>
+                </li>
+                <%# 云快编页面下线，去掉入口 %>
+                <% if false -%>
+                <li>
+                    <%= link_to "", "/products/newmedia/editor",class: "link-index-newmedia" -%>
+                    <div class="icon-matrix-newmedia">
+                        <%= image_tag "newmedia/icon-chanpintixi.png", class: "icon-yunfeibian" %></div>
+                    <p>云快编</p>
+                    <p class="detail">云快编以强大云端资源作支持</p>
+                    <p class="detail">实现多轨无上限编辑、主流视频特效及音频、</p>
+                    <p class="detail">字幕、转场模版等丰富功能</p>
+                </li>
+                <% end -%>
             </ul>
         </div>
     </div>
