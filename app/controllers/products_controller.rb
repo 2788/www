@@ -81,6 +81,10 @@ class ProductsController < ApplicationController
   end
 
   def editor
+    # 云快编页面下线
+    # 不隐藏路由，访问页面重定向到新媒体解决方案落地页
+    # https://jira.qiniu.io/browse/BO-7814
+    redirect_to(products_newmedia_url, :status => 301)
   end
 
   def auditor
