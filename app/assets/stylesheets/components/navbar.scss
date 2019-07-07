@@ -740,6 +740,11 @@ nav.navbar {
     background-color: #303848;
   }
 
+  nav.navbar.navbar-default {
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
   .navbar-default .navbar-nav .services-menu li a h4,
   .navbar-default .navbar-nav .solutions-menu li a h4,
   .navbar-default .navbar-nav .events-menu li a h4 {
@@ -786,12 +791,12 @@ nav.navbar {
       }
     }
     .open {
-      .dropdown-menu.services-menu-multicols {
+      .dropdown-menu {
         li a {
-          color: #777;
+          color: #FFF;
           &:hover,
           &:focus {
-            color: #333;
+            color: $brand-primary;
             background-color: transparent;
           }
         }
