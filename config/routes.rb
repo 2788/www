@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     get '/sla-fusion-new',         to: 'welcome#sla_fusion_new'
     get '/sla-pili',               to: 'welcome#sla_pili'
     get '/sla-dora',               to: 'welcome#sla_dora'
+    get '/sla-sms',                to: 'welcome#sla_sms'
     get '/privacy-right',          to: 'welcome#privacy_right'
     get '/goglobal',               to: 'welcome#goglobal'
     get '/alaccelerator',          to: 'welcome#alaccelerator'

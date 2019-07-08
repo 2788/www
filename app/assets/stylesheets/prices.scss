@@ -242,6 +242,10 @@ table.pricing-table tr {
   }
 }
 
+table.pricing-table.border-bold {
+  border: 1px solid #000;
+}
+
 table.pricing-table {
   &.border-none {
     border-right: none;
@@ -261,14 +265,23 @@ table.pricing-table tr th, table.pricing-table tr td {
 
   &.border-bottom {
     border-bottom: 1px solid #e6eaef;
+    &.border-bold {
+      border-bottom: 1px solid #000;
+    }
   }
 
   &.border-left {
     border-left: 1px solid #e6eaef;
+    &.border-bold {
+      border-left: 1px solid #000;
+    }
   }
 
   &.border-right {
     border-right: 1px solid #e6eaef;
+    &.border-bold {
+      border-right: 1px solid #000;
+    }
   }
 
   div {

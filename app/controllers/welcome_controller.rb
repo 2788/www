@@ -105,6 +105,10 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def sla_sms
+    render "sla"
+  end
+
   def privacy_right
     render "sla"
   end
