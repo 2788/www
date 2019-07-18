@@ -57,6 +57,23 @@
   </div>
   <% end -%>
 
+  <%# cdn-package 活动时间为 2019 年 5 月 17 日 - 2019 年 7 月 30 日 %>
+  <% if Time.now.to_i >= Time.local(2019, 5, 17).to_i && Time.now.to_i < Time.local(2019, 7, 31).to_i -%>
+  <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h1><%= raw(I18n.t("views.events.cdnpackage.banner.title")) -%></h1>
+            <p><%= I18n.t("views.events.cdnpackage.banner.time") -%></p>
+            <%= link_to "点击抢购", events_cdn_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# qvmsumsale 活动时间为 2019 年 6 月 5 日 - 2019 年 7 月 30 日 %>
   <% if Time.now.to_i >= Time.local(2019, 6, 5).to_i && Time.now.to_i < Time.local(2019, 7, 31).to_i -%>
   <div class="jumbotron hero hero-qvmsumsale-index">
@@ -69,23 +86,6 @@
               <h2>爆款云主机&nbsp;<span class='content-huge content-marked'>0</span>&nbsp;元起</h2>
               <%= link_to "立即抢购", events_qvmsumsale_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# cdn-package 活动时间为 2019 年 5 月 17 日 - 2019 年 7 月 30 日 %>
-  <% if Time.now.to_i >= Time.local(2019, 5, 17).to_i && Time.now.to_i < Time.local(2019, 7, 31).to_i -%>
-  <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1><%= raw(I18n.t("views.events.cdnpackage.banner.title")) -%></h1>
-            <p><%= I18n.t("views.events.cdnpackage.banner.time") -%></p>
-            <%= link_to "点击抢购", events_cdn_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
           </div>
         </div>
       </div>
