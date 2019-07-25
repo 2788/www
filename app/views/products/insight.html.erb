@@ -70,7 +70,13 @@
                 <% end -%>
                 <%= image_tag "arrow-right-circle.png", alt: "", width: 14 %>
               </p>
-              <p class="more-link"><%= link_to col[:more], col[:link], target: "_blank" -%></p>
+              <p class="more-link">
+                <% if col[:jumphost] == "portal" -%>
+                  <%= link_to col[:more], Rails.configuration.portal_host + col[:link], target: "_blank" -%>
+                <% else -%>
+                  <%= link_to col[:more], col[:link], target: "_blank" -%>
+                <% end -%>
+              </p>
             </div>
           </div>
         </div>
