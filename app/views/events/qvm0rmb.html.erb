@@ -30,32 +30,32 @@
         <div class="row">
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-gongxiangjisuan-qiye-1.png", alt: "共享计算-1", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.n4.small", target: "_blank", class: "btn btn-qvm0rmb" -%>
+            <%= link_to "立即抢购", Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.n4.small", target: "_blank", class: "btn btn-qvm0rmb" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-gongxiangjisuan-qiye-2.png", alt: "共享计算-2", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.n4.large", target: "_blank", class: "btn btn-qvm0rmb" -%>
+            <%= link_to "立即抢购", Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.n4.large", target: "_blank", class: "btn btn-qvm0rmb" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-gongxiangtongyong-qiye.png", alt: "共享通用", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.mn4.small", target: "_blank", class: "btn btn-qvm0rmb" -%>
+            <%= link_to "立即抢购", Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.mn4.small", target: "_blank", class: "btn btn-qvm0rmb" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-jisuanji-qiye.png", alt: "计算机", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.c5.large", target: "_blank", class: "btn btn-qvm0rmb" -%>
+            <%= link_to "立即抢购", Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.c5.large", target: "_blank", class: "btn btn-qvm0rmb" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-tufaxingneng-qiye-1.png", alt: "突发性能实例-1", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.t5-lc1m4.large", target: "_blank", class: "btn btn-qvm0rmb" -%>
+            <%= link_to "立即抢购", Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.t5-lc1m4.large", target: "_blank", class: "btn btn-qvm0rmb" -%>
           </div>
           <div class="col-md-2 col-sm-2 col-xs-4 gradual-bg-qvm1rmb col-model">
             <%= image_tag "qvmevent/model-tufaxingneng-qiye-2.png", alt: "突发性能实例-2", width: "100%" -%>
-            <%= link_to "立即抢购", "https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.t5-c1m1.xlarge", target: "_blank", class: "btn btn-qvm0rmb" -%>
+            <%= link_to "立即抢购", Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=enterprisefree&instance_type=ecs.t5-c1m1.xlarge", target: "_blank", class: "btn btn-qvm0rmb" -%>
           </div>
         </div>
 
         <div class="more-model-btn">
-          <%= link_to "查看更多机型 >>>", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn-qvm0rmb" -%>
+          <%= link_to "查看更多机型 >>>", Rails.configuration.portal_host + "/qvm/vm/instance/create", target: "_blank", class: "btn-qvm0rmb" -%>
         </div>
 
         <div class="row qvm1rmb-progress-row">
@@ -85,31 +85,19 @@
           <div class="join-container">
             <div class="row">
               <div class="col-md-2 col-sm-2 col-xs-2 col-join">
-                <a href="https://portal.qiniu.com/signup" target="_blank">
-                  <%= image_tag "qvmevent/join-zhuce-w.png", alt: "注册", class: "image-normal", height: "100%" -%>
-                  <%= image_tag "qvmevent/join-zhuce-h.png", alt: "注册", class: "image-hover", height: "100%" -%>
-                  <h4>注册</h4>
-                </a>
+                <%= link_to image_tag("qvmevent/join-zhuce-w.png", alt: "注册", class: "image-normal", height: "100%") + image_tag("qvmevent/join-zhuce-h.png", alt: "注册", class: "image-hover", height: "100%") + content_tag(:h4, "注册"), Rails.configuration.portal_host + "/signup", target: "_blank" -%>
               </div>
               <div class="col-md-2 col-sm-2 col-xs-2 col-join">
                 <%= image_tag "qvmevent/join-arrow.png", alt: "箭头", width: "60%" -%>
               </div>
               <div class="col-md-2 col-sm-2 col-xs-2 col-join">
-                <a href="https://portal.qiniu.com/identity" target="_blank">
-                  <%= image_tag "qvmevent/join-renzheng-w.png", alt: "认证", class: "image-normal", height: "100%" -%>
-                  <%= image_tag "qvmevent/join-renzheng-h.png", alt: "认证", class: "image-hover", height: "100%" -%>
-                  <h4>认证</h4>
-                </a>
+                <%= link_to image_tag("qvmevent/join-renzheng-w.png", alt: "认证", class: "image-normal", height: "100%") + image_tag("qvmevent/join-renzheng-h.png", alt: "认证", class: "image-hover", height: "100%") + content_tag(:h4, "认证"), Rails.configuration.portal_host + "/identity", target: "_blank" -%>
               </div>
               <div class="col-md-2 col-sm-2 col-xs-2 col-join">
                 <%= image_tag "qvmevent/join-arrow.png", alt: "箭头", width: "60%" -%>
               </div>
               <div class="col-md-2 col-sm-2 col-xs-2 col-join">
-                <a href="https://portal.qiniu.com/qvm/vm/instance/create?region=cn-qingdao&activity=onermb" target="_blank">
-                  <%= image_tag "qvmevent/join-goumai-w.png", alt: "购买", class: "image-normal", height: "100%" -%>
-                  <%= image_tag "qvmevent/join-goumai-h.png", alt: "购买", class: "image-hover", height: "100%" -%>
-                  <h4>购买</h4>
-                </a>
+                <%= link_to image_tag("qvmevent/join-goumai-w.png", alt: "购买", class: "image-normal", height: "100%") + image_tag("qvmevent/join-goumai-h.png", alt: "购买", class: "image-hover", height: "100%") + content_tag(:h4, "购买"), Rails.configuration.portal_host + "/qvm/vm/instance/create?region=cn-qingdao&activity=onermb", target: "_blank" -%>
               </div>
             </div>
           </div>

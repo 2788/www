@@ -35,7 +35,7 @@
               <span class="money-symbol">￥</span>
               <span class="price"><%= item[:price] -%></span>
               <span class="origin-price"><%= item[:originPrice] -%>&nbsp;元</span>
-              <%= link_to "免费领取", item[:link], title: raw(item[:type]) + item[:subTitle] + " - 免费领取", class: "btn btn-lg btn-primary btn-qvmsumsale btn-qvmsumsale-hot " + item[:class], target: "_blank" -%>
+              <%= link_to "免费领取", Rails.configuration.portal_host + item[:link], title: raw(item[:type]) + item[:subTitle] + " - 免费领取", class: "btn btn-lg btn-primary btn-qvmsumsale btn-qvmsumsale-hot " + item[:class], target: "_blank" -%>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
                 <% server[:sections].each do |section| -%>
                 <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                   <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span></p>
-                  <%= link_to "立即购买", section[:link], title: server[:title] + " - 立即购买", class: "btn btn-lg btn-qvmsumsale disabled", target: "_blank" -%>
+                  <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: server[:title] + " - 立即购买", class: "btn btn-lg btn-qvmsumsale disabled", target: "_blank" -%>
                 </section>
                 <% end -%>
               </div>
@@ -120,7 +120,7 @@
                   <% end -%>
                 </div>
                 <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= sms[:price] -%></span><span class="span-unit">/条</span></p>
-                <%= link_to "立即购买", sms[:link], title: sms[:title] + " - 立即购买", class: "btn btn-lg btn-qvmsumsale disabled", target: "_blank" -%>
+                <%= link_to "立即购买", Rails.configuration.portal_host + sms[:link], title: sms[:title] + " - 立即购买", class: "btn btn-lg btn-qvmsumsale disabled", target: "_blank" -%>
               </div>
             </div>
           </div>

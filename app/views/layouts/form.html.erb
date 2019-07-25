@@ -89,8 +89,8 @@
               注册七牛云账户，即刻享受多款产品免费额度套餐
             </h3>
             <div class="text-center">
-              <a href="https://portal.qiniu.com/signup" class="btn btn-primary hidden-xs" target="_blank">马上免费注册</a>
-              <a href="https://portal.qiniu.com/signup" class="btn btn-primary visible-xs-inline" target="_blank">马上免费注册</a>
+              <%= link_to "马上免费注册", Rails.configuration.portal_host + "/signup", class: "btn btn-primary hidden-xs", target: "_blank" -%>
+              <%= link_to "马上免费注册", Rails.configuration.portal_host + "/signup", class: "btn btn-primary visible-xs-inline", target: "_blank" -%>
             </div>
           </div>
         </div>

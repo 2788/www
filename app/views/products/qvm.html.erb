@@ -6,8 +6,8 @@
           <h1><%= I18n.t("views.products.qvm.title") -%></h1>
           <p><%= I18n.t("views.products.qvm.describe") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即购买", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
-            <%= link_to "控制台", "https://portal.qiniu.com/qvm", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "控制台", Rails.configuration.portal_host + "/qvm", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
           <p class="none-text-shadow">免费使用最高 4 核 8G 主机，<%= link_to "立即参与", "/events/qvm0rmb", target: "_blank" -%></p>
         </div>
@@ -67,7 +67,7 @@
                   <section class="<%= section[:class] -%>" id="<%= section[:id] -%>">
                     <p class="tabs-buy-container">
                       <span class="price-span"><%= section[:price] -%></span><span class="tag-span">&nbsp;元</span>
-                      <%= link_to "立即购买", section[:link], class: "btn btn-hollow btn-buy", id: section[:btnID], target: "_blank" -%>
+                      <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], class: "btn btn-hollow btn-buy", id: section[:btnID], target: "_blank" -%>
                     </p>
                   </section>
                 <% end -%>
@@ -206,7 +206,11 @@
             </span>
             <span class="more-btn">
               <% if item[:link] != "" -%>
-                <%= link_to "了解更多", item[:link], target: "_blank" -%>&nbsp;
+                <% if item[:jumphost] == "portal" -%>
+                  <%= link_to "了解更多", Rails.configuration.portal_host + item[:link], target: "_blank" -%>
+                <% else -%>
+                  <%= link_to "了解更多", item[:link], target: "_blank" -%>
+                <% end -%>
                 <%= image_tag "qvm/know-more.png", alt: "了解更多", width: 24 -%>
               <% else -%>
                 即将上线
@@ -232,7 +236,11 @@
             </span>
             <span class="more-btn">
               <% if item[:link] != "" -%>
-                <%= link_to "了解更多", item[:link], target: "_blank" -%>&nbsp;
+                <% if item[:jumphost] == "portal" -%>
+                  <%= link_to "了解更多", Rails.configuration.portal_host + item[:link], target: "_blank" -%>
+                <% else -%>
+                  <%= link_to "了解更多", item[:link], target: "_blank" -%>
+                <% end -%>
                 <%= image_tag "qvm/know-more.png", alt: "了解更多", width: 24 -%>
               <% else -%>
                 即将上线
@@ -285,7 +293,7 @@
               </div>
               <div class="col-md-4 col-sm-6 col-xs-6 col-right">
                 <%= image_tag sec[:image], alt: sec[:title], width: "90%" -%>
-                <%= link_to "立即购买", sec[:link], target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs buy-btn" -%>
+                <%= link_to "立即购买", Rails.configuration.portal_host + sec[:link], target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs buy-btn" -%>
               </div>
             </div>
           </section>
@@ -346,7 +354,7 @@
 
     <div class="qvm-bottom-win">
       <span>准备好了吗？</span>
-      <%= link_to "立即创建主机", "https://portal.qiniu.com/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-primary m-r m-b-xs" -%>
+      <%= link_to "立即创建主机", Rails.configuration.portal_host + "/qvm/vm/instance/create", target: "_blank", class: "btn btn-lg btn-primary m-r m-b-xs" -%>
     </div>
   </div>
 </div>

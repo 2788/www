@@ -1,7 +1,7 @@
 <div class="invite-banner">
   <div class="actions">
     <p class="desc">活动开始时间：2018 年 9 月 1 日</p>
-    <%= link_to "立即邀请", "https://portal.qiniu.com/invitation", target: "_blank", class: "link" -%>
+    <%= link_to "立即邀请", Rails.configuration.portal_host + "/invitation", target: "_blank", class: "link" -%>
   </div>
 </div>
 
@@ -146,6 +146,6 @@
   <h2 class="font-bold">邀请好友用七牛云</h2>
   <h2>携手创造更多的商业价值</h2>
   <div class="actions">
-    <%= link_to "立即邀请", "https://portal.qiniu.com/invitation", target:"_blank" -%>
+    <%= link_to "立即邀请", Rails.configuration.portal_host + "/invitation", target:"_blank" -%>
   </div>
 </div>

@@ -251,7 +251,7 @@
               <p class="text-left">识别图片及视频中的色情内容，包括有明显的敏感部分裸露的图片，血腥图片，描述性交行为的体位或姿势和色情场景的图片等。</p>
             </div>
             <div class="action">
-              <%= link_to "立即使用", "https://portal.qiniu.com/dora/fop/pulp", target: "_blank", class: "more" -%>
+              <%= link_to "立即使用", Rails.configuration.portal_host + "/dora/fop/pulp", target: "_blank", class: "more" -%>
               <%= link_to "查看文档", "https://developer.qiniu.com/censor", target: "_blank", class: "more" -%>
             </div>
           </div>
@@ -266,7 +266,7 @@
               <p class="text-left">识别图片及视频中的暴恐元素，包括爆炸、血腥、打架斗殴等暴力恐怖主义特征或游行集会等。</p>
             </div>
             <div class="action">
-              <%= link_to "立即使用", "https://portal.qiniu.com/dora/fop/terror", target: "_blank", class: "more" -%>
+              <%= link_to "立即使用", Rails.configuration.portal_host + "/dora/fop/terror", target: "_blank", class: "more" -%>
               <%= link_to "查看文档", "https://developer.qiniu.com/censor", target: "_blank", class: "more" -%>
             </div>
           </div>
@@ -281,7 +281,7 @@
               <p class="text-left">高效精准识别图片及视频中的政治敏感人物。</p>
             </div>
             <div class="action">
-              <%= link_to "立即使用", "https://portal.qiniu.com/dora/fop/politician", target: "_blank", class: "more" -%>
+              <%= link_to "立即使用", Rails.configuration.portal_host + "/dora/fop/politician", target: "_blank", class: "more" -%>
               <%= link_to "查看文档", "https://developer.qiniu.com/censor", target: "_blank", class: "more" -%>
             </div>
           </div>

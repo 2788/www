@@ -6,9 +6,9 @@
           <h1>SSL 证书</h1>
           <p>七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。</p>
           <div class="actions <%= I18n.t("views.language") == 'en' ? 'd-none' : '' %>">
-            <%= link_to "立即使用", "https://portal.qiniu.com/signup", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "立即使用", Rails.configuration.portal_host + "/signup", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
             <%= link_to "价格", "https://developer.qiniu.com/ssl/manual/3662/ssl-price-overview", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs" -%>
-            <h5><%= link_to '域名型 DV SSL 证书免费申请 >>', "https://portal.qiniu.com/signup", target: "_blank", class: "out_link" %></h5>
+            <h5><%= link_to '域名型 DV SSL 证书免费申请 >>', Rails.configuration.portal_host + "/signup", target: "_blank", class: "out_link" %></h5>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">
@@ -74,7 +74,7 @@
     </div>
 
     <div class="actions">
-      <%= link_to "立即使用", "https://portal.qiniu.com/signup", target: "_blank", class: "btn btn-primary" %>
+      <%= link_to "立即使用", Rails.configuration.portal_host + "/signup", target: "_blank", class: "btn btn-primary" %>
     </div>
   </div>
 </div>

@@ -12,7 +12,7 @@
           <h2><%= I18n.t("views.products.dora.title") -%></h2>
           <p><%= I18n.t("views.products.dora.desc") -%></p>
           <div class="actions">
-            <%= link_to "立即使用", "https://portal.qiniu.com/create?source_page=dora", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs", id: "dora-banner-create" -%>
+            <%= link_to "立即使用", Rails.configuration.portal_host + "/create?source_page=dora", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs", id: "dora-banner-create" -%>
             <%= link_to "产品价格", prices_path + "?source=dora&source_page=dora", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "dora-banner-price" -%>
             <%= link_to "帮助文档", "https://developer.qiniu.com/dora?source_page=dora", target: "_blank", class: "link link-underline m-b-xs", id: "dora-banner-doc" -%>
           </div>
@@ -88,7 +88,11 @@
                 <p><%= item[:desc] -%></p>
                 <%# 按钮部分 %>
                 <% if item[:btnType] == "link" -%>
-                <%= link_to item[:btnText], item[:url], class: "tab-content-link", id: item[:flag], title: item[:title], target: "_blank" -%>
+                  <% if item[:jumphost] == "portal" -%>
+                    <%= link_to item[:btnText], Rails.configuration.portal_host + item[:url], class: "tab-content-link", id: item[:flag], title: item[:title], target: "_blank" -%>
+                  <% else -%>
+                    <%= link_to item[:btnText], item[:url], class: "tab-content-link", id: item[:flag], title: item[:title], target: "_blank" -%>
+                  <% end -%>
                 <% elsif item[:btnType] == "form" -%>
                 <%= link_to item[:btnText], "", class: "tab-content-link tab-content-form", id: item[:flag], title: item[:title], target: "", data: { toggle: "modal", target: "#feedback-modal"} -%>
                 <% end -%>
@@ -198,7 +202,7 @@
   <div class="container">
     <p>
       注册即可免费试用智能多媒体服务&nbsp;&nbsp;
-      <%= link_to "立即开通", "https://portal.qiniu.com/create?source_page=dora", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs", id: "dora-bottom-create" -%>
+      <%= link_to "立即开通", Rails.configuration.portal_host + "/create?source_page=dora", target: "_blank", class: "btn btn-lg btn-hollow m-b-xs", id: "dora-bottom-create" -%>
     </p>
   </div>
 </div>

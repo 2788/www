@@ -14,7 +14,12 @@ module ApplicationHelper
     end
 
     if sso_host.nil? || client_id.nil? || sso_host.blank? || client_id.blank?
-      return "https://portal.qiniu.com/signin"
+      portal_host = Rails.configuration.portal_host
+      if portal_host.nil? || portal_host.blank?
+        return "https://portal.qiniu.com/signin"
+      else
+        return portal_host + "/signin"
+      end
     end
 
     return Rails.configuration.sso_host + "?client_id=" + client_id + "&redirect_url=" + site_host + path

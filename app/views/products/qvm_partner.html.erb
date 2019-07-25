@@ -7,7 +7,7 @@
             <h1>加入七牛云主机合伙人计划</h1>
             <p>赢取高达&nbsp;<strong>25%</strong>&nbsp;现金奖励</p>
             <div class="actions">
-              <%= link_to "我要加入", "https://portal.qiniu.com/qvm/partner", class: "btn btn-lg btn-hollow m-r m-b-xs", title: "加入七牛云主机合伙人计划", target: "_blank" -%>
+              <%= link_to "我要加入", Rails.configuration.portal_host + "/qvm/partner", class: "btn btn-lg btn-hollow m-r m-b-xs", title: "加入七牛云主机合伙人计划", target: "_blank" -%>
             </div>
           </div>
         </div>
@@ -66,11 +66,7 @@
     </div>
     <div class="container">
       <ul class="step-ul">
-        <a href="https://portal.qiniu.com/signup" target="_blank" title="七牛云主机合伙人计划 - 注册">
-          <li>
-            <%= image_tag "qvmpartner/icon-step-1.png", title: "七牛云主机合伙人计划 - 注册", alt: "七牛云主机合伙人计划 - 注册" -%><p class="title">注册</p><p>注册七牛云账号，完成实名认证</p>
-          </li>
-        </a>
+        <%= link_to content_tag(:li, image_tag("qvmpartner/icon-step-1.png", title: "七牛云主机合伙人计划 - 注册", alt: "七牛云主机合伙人计划 - 注册") + content_tag(:p, "注册", class: "title") + content_tag(:p, "注册七牛云账号，完成实名认")), Rails.configuration.portal_host + "/signup", title: "七牛云主机合伙人计划 - 注册", target: "_blank" -%>
         <li><%= image_tag "qvmpartner/icon-step-2.png", title: "七牛云主机合伙人计划 - 推广", alt: "七牛云主机合伙人计划 - 推广" -%><p class="title">推广</p><p>获取专属推广链接，分享推广</p></li>
         <li><%= image_tag "qvmpartner/icon-step-3.png", title: "七牛云主机合伙人计划 - 返利", alt: "七牛云主机合伙人计划 - 返利" -%><p class="title">返利</p><p>推广成功，结算并获得奖励</p></li>
       </ul>
@@ -123,7 +119,7 @@
         </div>
       </div>
       <div class="container"></div>
-      <%= link_to "我要加入", "https://portal.qiniu.com/qvm/partner", class: "bottom-join-btn", title: "加入七牛云主机合伙人计划", target: "_blank" -%>
+      <%= link_to "我要加入", Rails.configuration.portal_host + "/qvm/partner", class: "bottom-join-btn", title: "加入七牛云主机合伙人计划", target: "_blank" -%>
     </div>
   </div>
 

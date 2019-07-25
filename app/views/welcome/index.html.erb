@@ -32,7 +32,7 @@
           <div class="col-sm-12">
             <%= image_tag "banner/banner-invite-middle.png", class: "invite-image", title: "邀请好友赢好礼 新年上上签", alt: "邀请好友赢好礼 新年上上签" -%>
             <p class="invite-text"><span>活动时间：12 月 24 日 - 12 月 31 日</span></p>
-            <%= link_to "立即参与", "https://portal.qiniu.com/invitation", target: "_blank", id: "banner-invite-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
+            <%= link_to "立即参与", Rails.configuration.portal_host + "/invitation", target: "_blank", id: "banner-invite-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
           </div>
         </div>
       </div>
@@ -141,7 +141,7 @@
               <h3>动态路由实时探测&nbsp;传输协议深度优化</h3>
               <h3>1500+&nbsp;全球节点&nbsp;30Tbps 带宽储备</h3>
             </div>
-            <%= link_to "立即使用", "https://portal.qiniu.com/cdn/domain/create?platform=dynamic&guideDynamic#platform", target: "_blank", class: "btn btn-lg btn-hollow btn-banner m-r", id: "fusion-banner-employ" -%>
+            <%= link_to "立即使用", Rails.configuration.portal_host + "/cdn/domain/create?platform=dynamic&guideDynamic#platform", target: "_blank", class: "btn btn-lg btn-hollow btn-banner m-r", id: "fusion-banner-employ" -%>
             <%= link_to "申请开通", "", target: "", class: "btn btn-lg btn-hollow btn-banner", id: "fusion-banner-apply", data: {toggle: "modal", target: "#feedback-modal"} -%>
           </div>
         </div>
@@ -597,10 +597,10 @@
     注册七牛云账户，即刻享受多款产品免费额度套餐
   </h3>
   <div class="text-center">
-    <a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a>
+    <%= link_to "马上免费注册", Rails.configuration.portal_host + "/signup", class: "btn btn-lg btn-hollow around-xl hidden-xs", target: "_blank" -%>
   </div>
   <div class="text-center">
-    <a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a>
+    <%= link_to "马上免费注册", Rails.configuration.portal_host + "/signup", class: "btn btn-lg btn-hollow around-xl visible-xs-inline", target: "_blank" -%>
   </div>
 </div>
 <% end -%>
