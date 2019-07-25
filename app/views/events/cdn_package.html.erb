@@ -49,7 +49,7 @@
       <h2 class="title"><%= I18n.t("views.events.cdnpackage.get.title") -%></h2>
       <p class="desc"><%= I18n.t("views.events.cdnpackage.get.desc") -%></p>
     </div>
-    <p class="btn-container"><%= link_to "立即抢购", "https://portal.qiniu.com/financial/respack/fusion?%E5%9B%BD%E5%86%85HTTPS%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F&capacity=10GB", class: "btn btn-lg btn-default cdnpackage-get-btn", target: "_blank" -%></p>
+    <p class="btn-container"><%= link_to "立即抢购", Rails.configuration.portal_host + "/financial/respack/fusion?%E5%9B%BD%E5%86%85HTTPS%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F&capacity=10GB", class: "btn btn-lg btn-default cdnpackage-get-btn", target: "_blank" -%></p>
   </div>
   <%= image_tag "cdnpackage/image-divide-2.jpg", class: "image-divide" -%>
 </div>
@@ -59,7 +59,9 @@
   <div class="container">
     <div class="intro">
       <h2 class="title"><%= I18n.t("views.events.cdnpackage.buy.title") -%></h2>
-      <p class="desc"><%= raw(I18n.t("views.events.cdnpackage.buy.desc")) -%></p>
+      <p class="desc">
+        开启动态加速 畅享超低价格 更多规格详见<%= link_to "订购页面", Rails.configuration.portal_host + "/financial/respack/fusion", class: "desc-link", title: "闲时流量资源包低至 5 折 - 订购页面", target: "_blank" -%>
+      </p>
     </div>
 
     <%# 静态加速资源包 %>
@@ -77,7 +79,7 @@
               <div class="buy-container">
                 <p class="tag-p"><span class="buy-activity-tag">活动价</span></p>
                 <p class="price-p"><span class="symbol-money">￥</span><strong><%= static[:price] -%></strong>&nbsp;&nbsp;<span class="origin-money"><%= static[:originPrice] -%>&nbsp;元</span></p>
-                <%= link_to "立即购买", static[:link], title: static[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
+                <%= link_to "立即购买", Rails.configuration.portal_host + static[:link], title: static[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
               </div>
             </div>
           </div>
@@ -101,7 +103,7 @@
               <div class="buy-container">
                 <p class="tag-p"><span class="buy-activity-tag">活动价</span></p>
                 <p class="price-p"><span class="symbol-money">￥</span><strong><%= dynamic[:price] -%></strong>&nbsp;&nbsp;<span class="origin-money"><%= dynamic[:originPrice] -%>&nbsp;元</span></p>
-                <%= link_to "立即购买", dynamic[:link], title: dynamic[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
+                <%= link_to "立即购买", Rails.configuration.portal_host + dynamic[:link], title: dynamic[:title] + " - 立即购买", target: "_blank", class: "btn btn-lg btn-default" -%>
               </div>
             </div>
           </div>

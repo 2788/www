@@ -8,7 +8,7 @@
             <h2>企业云主机</h2>
             <p>七牛云为企业提供安全、稳定、易用的云主机服务，帮助企业快速上云。通过七牛云主机服务，企业只需根据业务发展需要创建相应规模的虚拟机实例、云硬盘和网络服务，无需采购其他相关资源，缩短业务部署上线周期，大大降低企业运维成本。</p>
             <div class="actions">
-              <a target="_blank" class="btn btn-lg btn-hollow m-r m-b-xs" href="https://portal.qiniu.com/qvm/dashboard">立即选购</a>
+              <%= link_to "立即选购", Rails.configuration.portal_host + "/qvm/dashboard", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
             </div>
           </div>
           <div class="col-md-6 col-sm-6 hidden-xs">
@@ -50,7 +50,8 @@
             <p><strong>热门机型</strong> - CPU 1 核 内存 1 G 云硬盘 40G</p>
           </div>
           <div class="cloud-2-1-r">
-            <a href="https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.t5-lc1m1.small&buymonth=1" title="企业官网、简单 Web 应用" target="_blank">立即购买</a><p><span class="symbol-money">￥</span><strong>34.9</strong>/月</p>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.t5-lc1m1.small&buymonth=1", title: "企业官网、简单 Web 应用", target: "_blank" -%>
+            <p><span class="symbol-money">￥</span><strong>34.9</strong>/月</p>
           </div>
         </div>
 
@@ -60,7 +61,8 @@
             <p><strong>热门机型</strong> - CPU 2 核 内存 8 G 云硬盘 40G</p>
           </div>
           <div class="cloud-2-1-r">
-            <a href="https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.g5.large&buymonth=1" title="网站、App、小程序后端服务" target="_blank">立即购买</a><p><span class="symbol-money">￥</span><strong>242.8</strong>/月</p>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.g5.large&buymonth=1", title: "网站、App、小程序后端服务", target: "_blank" -%>
+            <p><span class="symbol-money">￥</span><strong>242.8</strong>/月</p>
           </div>
         </div>
 
@@ -70,7 +72,8 @@
             <p><strong>热门机型</strong> - CPU 2 核 内存 16G 云硬盘 40G</p>
           </div>
           <div class="cloud-2-1-r">
-            <a href="https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.r5.large&buymonth=1" title="自建数据库集群服务" target="_blank">立即购买</a><p><span class="symbol-money">￥</span><strong>306.7</strong>/月</p>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.r5.large&buymonth=1", title: "自建数据库集群服务", target: "_blank" -%>
+            <p><span class="symbol-money">￥</span><strong>306.7</strong>/月</p>
           </div>
         </div>
 
@@ -80,7 +83,8 @@
             <p><strong>热门机型</strong> - CPU 2 核 内存 4 G 云硬盘 40G</p>
           </div>
           <div class="cloud-2-1-r">
-            <a href="https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.hfc5.large&buymonth=1" title="高性能计算、科学计算" target="_blank">立即购买</a><p><span class="symbol-money">￥</span><strong>239.2</strong>/月</p>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.hfc5.large&buymonth=1", title: "高性能计算、科学计算", target: "_blank" -%>
+            <p><span class="symbol-money">￥</span><strong>239.2</strong>/月</p>
           </div>
         </div>
 
@@ -90,11 +94,13 @@
             <p><strong>热门机型</strong> - CPU 4 核 内存 30 G 云硬盘 40G</p>
           </div>
           <div class="cloud-2-1-r">
-            <a href="https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.gn5-c4g1.xlarge&buymonth=1" title="编解码、GPU 计算、机器学习" target="_blank">立即购买</a><p><span class="symbol-money">￥</span><strong>312.1</strong>/月</p>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/qvm/vm/instance/create?mode=DirectOrder&region_id=cn-shanghai&instance_type=ecs.gn5-c4g1.xlarge&buymonth=1", title: "编解码、GPU 计算、机器学习", target: "_blank" -%>
+            <p><span class="symbol-money">￥</span><strong>312.1</strong>/月</p>
           </div>
         </div>
       </div>
-      <h4 class="know-more-models"><a href="https://portal.qiniu.com/qvm/vm/instance/create" title="了解更多机型" target=_blank"">了解更多机型</a></h4>
+      <h4 class="know-more-models">
+        <%= link_to "了解更多机型", Rails.configuration.portal_host + "/qvm/vm/instance/create", title: "了解更多机型", target: "_blank" -%>
     </div>
   </div>
 

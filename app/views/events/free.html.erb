@@ -23,8 +23,12 @@
                 <% end -%>
               </ul>
               <div class="btn-container">
-                <%= link_to "免费领取", col[:unsignlink], target: "_blank", class: "btn btn-primary m-r m-b-xs free-receive-unsignin", id: col[:id] -%>
-                <%= link_to "免费领取", col[:signlink], target: "_blank", class: "btn btn-primary m-r m-b-xs free-receive-signin hidden" -%>
+                <%= link_to "免费领取", Rails.configuration.portal_host + col[:unsignlink], target: "_blank", class: "btn btn-primary m-r m-b-xs free-receive-unsignin", id: col[:id] -%>
+                <% if col[:jumphost] == "portal" -%>
+                  <%= link_to "免费领取", Rails.configuration.portal_host + col[:signlink], target: "_blank", class: "btn btn-primary m-r m-b-xs free-receive-signin hidden" -%>
+                <% else -%>
+                  <%= link_to "免费领取", col[:signlink], target: "_blank", class: "btn btn-primary m-r m-b-xs free-receive-signin hidden" -%>
+                <% end -%>
               </div>
             </div>
           </div>

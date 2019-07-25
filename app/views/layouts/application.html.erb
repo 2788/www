@@ -307,11 +307,15 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right navbar-nav-mobile">
-            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'manage-control' %>"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+            <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'manage-control' %>">
+              <%= link_to "管理控制台", Rails.configuration.portal_host, target: "_blank" -%>
+            </li>
             <li class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : 'presentation-more select-unit' %>" id="more-dropdown">
               <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">更多</a>
               <ul class="presentation-menu dropdown-menu dropdown-menu-right m-0 p-0">
-                <li class="manage-control"><a target="_blank" href="https://portal.qiniu.com">管理控制台</a></li>
+                <li class="manage-control">
+                  <%= link_to "管理控制台", Rails.configuration.portal_host, target: "_blank" -%>
+                </li>
                 <li class="company-more"><%= link_to I18n.t("navbar.about"), company_path -%></li>
                 <li class="company-news"><%= link_to "新闻动态", news_path -%></li>
               </ul>
@@ -779,8 +783,12 @@
     </footer>
     <div class="footer-sign <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
       <div class="stripe stripe-blue p-xxl visible-xs fixed-b">
-        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl hidden-xs" target="_blank">马上免费注册</a></div>
-        <div class="text-center"><a href="https://portal.qiniu.com/signup" class="btn btn-lg btn-hollow around-xl visible-xs-inline" target="_blank">马上免费注册</a></div>
+        <div class="text-center">
+          <%= link_to "马上免费注册", Rails.configuration.portal_host + "/signup", class: "btn btn-lg btn-hollow around-xl hidden-xs", target: "_blank" -%>
+        </div>
+        <div class="text-center">
+          <%= link_to "马上免费注册", Rails.configuration.portal_host + "/signup", class: "btn btn-lg btn-hollow around-xl visible-xs-inline", target: "_blank" -%>
+        </div>
         <%= link_to image_tag("close.png", class: "stripe-close-img"), "javascript:;", class: "stripe-close-btn" %>
       </div>
     </div>

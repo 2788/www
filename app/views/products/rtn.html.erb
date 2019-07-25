@@ -8,7 +8,11 @@
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <% I18n.t("views.products.rtn.action").each do |event| %>
               <% if event[:type] == "link" -%>
-              <%= link_to event[:title], event[:link], target: event[:target], class: event[:class] -%>
+                <% if event[:jumphost] == "portal" -%>
+                  <%= link_to event[:title], Rails.configuration.portal_host + event[:link], target: event[:target], class: event[:class] -%>
+                <% else -%>
+                  <%= link_to event[:title], event[:link], target: event[:target], class: event[:class] -%>
+                <% end -%>
               <% elsif event[:type] == "form" -%>
               <%= link_to event[:title], event[:link], target: event[:target], class: event[:class], data: { toggle: "modal", target: "#feedback-modal"}, id: "rtn-consult-button" -%>
               <% end -%>
