@@ -375,7 +375,7 @@
   <div class="row">
     <% I18n.t("views.welcome.index.adverts").each do |advert| -%>
       <a href="<%= if advert[:jumphost] == "blog" then Rails.configuration.blog_host + advert[:link] else advert[:link] end -%>" target="_blank" title="<%= raw(advert[:desc]) -%>">
-        <div class="col-advert <%= advert[:class] -%>">
+        <div class="col-xs-2 col-advert <%= advert[:class] -%>">
           <div class="media">
             <div class="media-body">
               <h4 class="media-heading"><%= raw(advert[:title]) -%></h4>
