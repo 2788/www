@@ -374,15 +374,12 @@
 <div class="features features-advert-index">
   <div class="row">
     <% I18n.t("views.welcome.index.adverts").each do |advert| -%>
-      <a href="<%= advert[:link] -%>" target="_blank">
-        <div class="col-xs-4 col-advert <%= advert[:class] -%>">
+      <a href="<%= if advert[:jumphost] == "blog" then Rails.configuration.blog_host + advert[:link] else advert[:link] end -%>" target="_blank" title="<%= raw(advert[:desc]) -%>">
+        <div class="col-xs-2 col-advert <%= advert[:class] -%>">
           <div class="media">
-            <div class="media-left">
-              <%= image_tag advert[:icon], class: "media-object", alt: advert[:title], width: 100 -%>
-            </div>
             <div class="media-body">
-              <h4 class="media-heading"><%= advert[:title] -%></h4>
-              <p><%= advert[:desc] -%></p>
+              <h4 class="media-heading"><%= raw(advert[:title]) -%></h4>
+              <p><%= raw(advert[:desc]) -%></p>
             </div>
           </div>
         </div>
