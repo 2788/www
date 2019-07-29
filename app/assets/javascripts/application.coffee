@@ -424,6 +424,9 @@ $(document).ready ->
         $('.features-free-product .free-receive-signin').addClass 'hidden'
       else
         # signin
+        # 如果存在 uid，则绑定 sensors login id
+        if res.uid
+          sensors.login res.uid + ''
         # login banner
         $('.need-signin').addClass 'hidden'
         $('.user-email').text res.email
