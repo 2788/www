@@ -5353,7 +5353,7 @@ zh-CN:
       cdnpackage:
         banner:
           title: "<span class='line-top'>CDN&nbsp;<span class='content-huge'>深夜不打烊</span></span>&nbsp;<span class='line-bottom'><span class='content-huge content-marked'>5&nbsp;折</span>闲时包<span class='content-huge content-marked'>限量抢</span></span>"
-          time: "活动时间：2019 年 5 月 17 日 - 7 月 30 日"
+          time: "活动时间：2019 年 5 月 17 日 - 8 月 2 日"
           desc: "活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）"
         desc:
           left:
@@ -5506,7 +5506,7 @@ zh-CN:
         rules:
           title: "活动规则"
           list:
-            - "1. 活动时间：2019 年 5 月 17 日 - 7 月 30 日；"
+            - "1. 活动时间：2019 年 5 月 17 日 - 8 月 2 日；"
             - "2. 资源包可叠加购买，账单将按照资源包使用先后顺序依次抵扣；"
             - "3. 闲时流量包只可用于每天 0:00 - 9:00 的流量，在生效期内当月闲时用量超出可用资源包额度，出账时将优先抵扣资源包额度，超出部分再按照标准官网价格结算；"
             - "4. 由于活动优惠力度较大，因此购买后无法退款，请确认后再购买；"
@@ -5540,7 +5540,7 @@ zh-CN:
               class: "client-yueke"
       qvmsumsale:
         banner:
-          time: "活动时间：2019 年 6 月 5 日 - 2019 年 7 月 30 日"
+          time: "活动时间：2019 年 6 月 5 日 - 2019 年 8 月 15 日"
         hot:
           title: "每日爆款限时抢"
           titleImg: "qvmsumsale/image-hot-calendar.png"
@@ -7018,6 +7018,8 @@ zh-CN:
       desc: rongyun
     - path: cooperation/client-chaojibiaoge.png
       desc: chaojibiaoge
+    - path: cooperation/client-xiangxiangpai-highlight@2x.png
+      desc: xiangxiangpai
   seo:
     welcome_index:
       title: 七牛云 - 国内领先的企业级云服务商
