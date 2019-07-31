@@ -1,0 +1,534 @@
+.jumbotron.hero.hero-kodogoglobal {
+  height: 6.40rem;
+  margin-bottom: 0;
+  background-image: image-url("banner/banner-kodogoglobal.jpg");
+  .middle-container {
+    top: 30%;
+    text-align: center;
+    h3 {
+      margin-top: 0.20rem;
+      color: rgba($color: #FFF, $alpha: 0.6);
+      font-size: 0.20rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.kodogoglobal-page-bg {
+  background-color:#020225;
+}
+
+.features-kodogoglobal-combo {
+  padding: 0 0 0.80rem;
+  background-color: transparent;
+  .container {
+    .row {
+      .col-combo {
+        height: 4.60rem;
+        position: relative;
+        margin-top: -3.20rem;
+        padding: 0.20rem 0.40rem;
+        color: rgba(255, 255, 255, 0.6);
+        background-color: #323251;
+        overflow: hidden;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        transition: all .3s linear;
+        .top-mark {
+          width: 0.60rem;
+          height: 0.60rem;
+          position: absolute;
+          top: -0.30rem;
+          left: -0.30rem;
+          background-color: #E9E027;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          opacity: 0;
+        }
+        .title-container {
+          padding-bottom: 0.15rem;
+          border-bottom: 1px dashed;
+          text-align: center;
+          h2 {
+            position: relative;
+            margin-top: 0;
+            font-size: 0.26rem;
+            .tip {
+              position: absolute;
+              top: 0;
+              left: calc(50% + 0.50rem);
+              padding: 0.01rem 0.03rem;
+              color: rgba(255, 255, 255, 0.6);
+              font-size: 0.12rem;
+              border-radius: 0.02rem;
+              border: 1px solid rgba(255, 255, 255, 0.6);
+              background-color: transparent;
+            }
+          }
+          h5 {
+            margin: 0.15rem 0 0;
+            font-size: 0.16rem;
+          }
+        }
+        .content-container {
+          width: calc(100% - 0.80rem);
+          position: absolute;
+          top: 52%;
+          left: 0.40rem;
+          text-align: center;
+          -webkit-transform: translateY(-50%);
+          -moz-transform: translateY(-50%);
+          transform: translateY(-50%);
+          p {
+            margin: 0.05rem 0;
+            font-size: 0.16rem;
+            color: rgba(255, 255, 255, 0.6);
+            &.title {
+              margin: 0.10rem 0;
+            }
+            &.price {
+              margin-top: 0.26rem;
+              .origin-price {
+                margin-left: 0.10rem;
+                text-decoration: line-through;
+              }
+            }
+          }
+          .text-warn {
+            color: #CC483F;
+            font-weight: 600;
+          }
+          .text-huge {
+            font-size: 0.54rem;
+          }
+        }
+        .btn-combo {
+          width: calc(100% - 0.80rem);
+          position: absolute;
+          left: 0.40rem;
+          bottom: 0.20rem;
+          border: none;
+          color: rgba(255, 255, 255, 0.6);
+          background-color: rgba(204, 72, 63, 0.6);
+          &:hover {
+            -webkit-box-shadow: 2px 2px 20px #000;
+            -moz-box-shadow: 2px 2px 20px #000;
+            box-shadow: 2px 2px 20px #000;
+          }
+        }
+        &.col-active {
+          margin-top: -3.50rem;
+          background-color: #13B7D9;
+          color: #FFF;
+          -webkit-box-shadow: 0 0 20px #000;
+          -moz-box-shadow: 0 0 20px #000;
+          box-shadow: 0 0 20px #000;
+          .top-mark {
+            opacity: 1;
+          }
+          .title-container {
+            h2 {
+              .tip {
+                color: #000;
+                border: none;
+                background-color: #E9E027;
+              }
+            }
+            h5 {
+              &.text-warn {
+                color: #E9E027;
+              }
+            }
+          }
+          .content-container {
+            p {
+              color: #FFF;
+            }
+          }
+          .btn-combo {
+            color: #FFF;
+            background-color: #CC483F;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-kodogoglobal-rules {
+  padding-bottom: 1.20rem;
+  background-color: transparent;
+  .container {
+    .row {
+      width: calc(100% + 10px);
+      padding: 0.80rem 0;
+      background-color: #13B7D9;
+      text-align: center;
+      -webkit-box-shadow: 20px 20px 0 #045FA8;
+      -moz-box-shadow: 20px 20px 0 #045FA8;
+      box-shadow: 20px 20px 0 #045FA8;
+      .rules-title {
+        padding: 0.10rem 0.30rem;
+        color: #000;
+        font-size: 0.30rem;
+        font-weight: 600;
+        background-color: #E9E027;
+      }
+      .col-rules {
+        margin-top: 0.60rem;
+        padding: 0 1.40rem;
+        text-align: left;
+        p {
+          color: #FFF;
+          font-size: 0.16rem;
+        }
+      }
+    }
+  }
+}
+
+.features-kodogoglobal-why {
+  background-color: #09132F;
+  .container {
+    .intro {
+      .title {
+        color: #FFF;
+      }
+    }
+    .row {
+      .col-why {
+        margin-bottom: 0.40rem;
+        .content-container {
+          padding: 0.10rem 0.30rem;
+          background-color: #13B7D9;
+          -webkit-box-shadow: 0 10px 0 #045FA8;
+          -moz-box-shadow: 0 10px 0 #045FA8;
+          box-shadow: 0 10px 0 #045FA8;
+          p {
+            margin: 0.10rem 0;
+            color: #FFF;
+            font-size: 0.18rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-kodogoglobal-client {
+  padding-bottom: 1.00rem;
+  background-color: transparent;
+  .container {
+    .intro {
+      .title {
+        color: #FFF;
+      }
+    }
+    .kodogoglobal-client-slider {
+      .row {
+        .desc-logo {
+          width: 3.00rem;
+          height: 0.80rem;
+          position: relative;
+          left: 0.10rem;
+          margin: 0 auto;
+          margin-top: 0.20rem;
+          margin-bottom: 0.40rem;
+          background-color: #FFF;
+          img {
+            height: 80%;
+            position: relative;
+            top: 10%;
+            margin: 0 auto;
+          }
+        }
+        .col-client {
+          margin: 0.50rem 0 1.20rem;
+          position: relative;
+          .desc-symbol, .desc-content {
+            color: #FFF;
+            font-size: 0.18rem;
+          }
+          .desc-content {
+            padding: 0 0.50rem;
+            line-height: 0.36rem;
+          }
+          .desc-symbol {
+            position: absolute;
+            font-size: 1.20rem;
+            font-family: 'helvetica neue', 'hiragino sans gb', arial, simsun, sans-serif;
+            line-height: 0.52rem;
+            &.symbol-left {
+              top: -0.10rem;
+              left: 0.15rem;
+            }
+            &.symbol-right {
+              top: calc(100% + 0.10rem);
+              right: 0.15rem;
+            }
+          }
+          .desc-sign {
+            position: absolute;
+            right: 0.20rem;
+            top: calc(100% + 0.60rem);
+            p {
+              margin: 0.05rem 0;
+              color: #FFF;
+              font-size: 0.18rem;
+            }
+          }
+        }
+      }
+      .slick-dots {
+        margin-bottom: 0;
+        li {
+          margin: 0 10px;
+          button:before {
+            font-size: 16px;
+            color: #22305A;
+          }
+          &.slick-active button:before {
+            color: #646881;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-kodogoglobal-faq {
+  padding-bottom: 1.00rem;
+  background-color: #09132F;
+  .container {
+    .intro {
+      .title {
+        color: #FFF;
+      }
+    }
+    .row {
+      .col-faq {
+        margin-top: 0.20rem;
+        margin-bottom: 0.30rem;
+        line-height: 0.42rem;
+        h4 {
+          color: #FFF;
+        }
+        a {
+          margin-right: 0.20rem;
+          color: rgba($color: #FFF, $alpha: 0.8);
+          &:hover {
+            color: #28AEDF;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-kodogoglobal-footer {
+  padding: 0.68rem 0;
+  background-color: #13B7D9;
+  .container {
+    text-align: center;
+    span {
+      position: relative;
+      top: 0.05rem;
+      color: #FFF;
+      font-size: 0.24rem;
+    }
+    .btn {
+      margin-left: 0.30rem;
+    }
+    .btn-default {
+      color: #13B7D9;
+    }
+    .btn-hollow {
+      color: #FFF;
+      &:hover,
+      &:focus {
+        color: #13B7D9;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features-kodogoglobal-why {
+    .container {
+      .row {
+        .col-why {
+          .content-container {
+            p {
+              font-size: 0.16rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .features-kodogoglobal-combo {
+    .container {
+      .row {
+        .col-combo {
+          .title-container {
+            h2 {
+              font-size: 0.24rem;
+              .tip {
+                left: calc(50% + 0.42rem);
+              }
+            }
+            h5 {
+              font-size: 0.12rem;
+            }
+          }
+          .content-container {
+            width: calc(100% - 0.40rem);
+            left: 0.20rem;
+            p {
+              font-size: 0.12rem;
+            }
+            .text-huge {
+              font-size: 0.48rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-kodogoglobal-rules {
+    .container {
+      .row {
+        .col-rules {
+          padding: 0 0.60rem;
+        }
+      }
+    }
+  }
+
+  .features-kodogoglobal-why {
+    .container {
+      .row {
+        .col-why {
+          margin-top: 0.20rem;
+          margin-bottom: 0.20rem;
+        }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .jumbotron.hero.hero-kodogoglobal {
+    .middle-container {
+      .img-banner-title {
+        width: 400px;
+      }
+      h3 {
+        font-size: 0.24rem;
+        margin-top: 0.40rem;
+      }
+    }
+  }
+
+  .features-kodogoglobal-combo {
+    .container {
+      .row {
+        .col-combo {
+          margin-top: -3.00rem;
+          &.col-active {
+            margin-top: -3.20rem;
+          }
+        }
+      }
+    }
+  }
+
+  .features-kodogoglobal-faq {
+    .container {
+      .row {
+        .col-faq {
+          h4 {
+            font-size: 0.24rem;
+          }
+          a {
+            font-size: 0.18rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron.hero.hero-kodogoglobal {
+    height: 5.00rem;
+    .middle-container {
+      top: 60%;
+      .img-banner-title {
+        width: 400px;
+      }
+      h3 {
+        font-size: 0.24rem;
+        margin-top: 0.40rem;
+      }
+    }
+  }
+
+  .features-kodogoglobal-combo {
+    .container {
+      .row {
+        .col-combo {
+          width: calc(100% - 0.30rem);
+          margin: 0 0.15rem 0.40rem;
+          &.col-active {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .features-kodogoglobal-rules {
+    .container {
+      .row {
+        width: calc(100% - 0.20rem);
+        margin: 0 0.20rem 0 0;
+        .col-rules {
+          padding: 0 0.40rem;
+        }
+      }
+    }
+  }
+
+  .features-kodogoglobal-why {
+    .container {
+      .row {
+        .col-why {
+          margin-top: 0.20rem;
+          margin-bottom: 0.40rem;
+        }
+      }
+    }
+  }
+
+  .features-kodogoglobal-footer {
+    .container {
+      span {
+        display: block;
+      }
+      .btn {
+        margin-top: 0.30rem;
+        margin-left: 0;
+      }
+      .btn-hollow {
+        margin-left: 0.30rem;
+      }
+    }
+  }
+}
