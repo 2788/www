@@ -24,13 +24,17 @@
   .container {
     .row {
       .col-combo {
-        height: 4.60rem;
+        height: 5.00rem;
         position: relative;
         margin-top: -3.20rem;
         padding: 0.20rem 0.40rem;
         color: rgba(255, 255, 255, 0.6);
         background-color: #323251;
         overflow: hidden;
+        z-index: 0;
+        -webkit-box-shadow: 0 0 20px #000;
+        -moz-box-shadow: 0 0 20px #000;
+        box-shadow: 0 0 20px #000;
         -webkit-transition: all .3s linear;
         -moz-transition: all .3s linear;
         transition: all .3s linear;
@@ -72,31 +76,49 @@
           }
         }
         .content-container {
-          width: calc(100% - 0.80rem);
+          width: max-content;
+          width: -moz-max-content;
+          width: -webkit-max-content;
+          width: -o-max-content;
           position: absolute;
-          top: 52%;
-          left: 0.40rem;
-          text-align: center;
-          -webkit-transform: translateY(-50%);
-          -moz-transform: translateY(-50%);
-          transform: translateY(-50%);
+          top: 53%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
           p {
+            position: relative;
             margin: 0.05rem 0;
             font-size: 0.16rem;
             color: rgba(255, 255, 255, 0.6);
-            &.title {
-              margin: 0.10rem 0;
+            .tip {
+              position: relative;
+              top: -0.02rem;
+              padding: 0.03rem;
+              margin-right: 0.08rem;
+              font-size: 0.12rem;
+              border-radius: 0.02rem;
+              background-color: rgba(204, 72, 63, 0.6);
+              line-height: 1.00;
+              &.placeholder {
+                background-color: transparent;
+              }
             }
             &.price {
-              margin-top: 0.26rem;
+              margin-top: 0.50rem;
+              margin-left: 0;
+              text-align: center;
               .origin-price {
                 margin-left: 0.10rem;
                 text-decoration: line-through;
               }
             }
+            &.margin-top {
+              margin-top: 1.24rem;
+            }
           }
           .text-warn {
-            color: #CC483F;
+            color: rgba(204, 72, 63, 0.6);
             font-weight: 600;
           }
           .text-huge {
@@ -121,9 +143,7 @@
           margin-top: -3.50rem;
           background-color: #13B7D9;
           color: #FFF;
-          -webkit-box-shadow: 0 0 20px #000;
-          -moz-box-shadow: 0 0 20px #000;
-          box-shadow: 0 0 20px #000;
+          z-index: 1;
           .top-mark {
             opacity: 1;
           }
@@ -144,6 +164,15 @@
           .content-container {
             p {
               color: #FFF;
+              .tip {
+                background-color: #CC483F;
+                &.placeholder {
+                  background-color: transparent;
+                }
+              }
+            }
+            .text-warn {
+              color: #CC483F;
             }
           }
           .btn-combo {
@@ -387,10 +416,11 @@
             }
           }
           .content-container {
-            width: calc(100% - 0.40rem);
-            left: 0.20rem;
             p {
               font-size: 0.12rem;
+              .tip {
+                top: -0.01rem;
+              }
             }
             .text-huge {
               font-size: 0.48rem;
@@ -486,6 +516,13 @@
         .col-combo {
           width: calc(100% - 0.30rem);
           margin: 0 0.15rem 0.40rem;
+          .content-container {
+            p {
+              .tip {
+                top: 0;
+              }
+            }
+          }
           &.col-active {
             margin-top: 0;
           }
