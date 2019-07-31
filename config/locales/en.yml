@@ -6589,6 +6589,10 @@ en:
       title: 企业私有云_企业私有云存储 - 七牛私有云解决方案
       keywords: 企业私有云，企业私有云存储，企业私有云方案，企业私有云解决方案，企业私有云搭建，企业私有云服务
       description: 七牛企业私有云存储是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统，能够为企业搭建 EB 级别的高可靠、强安全、低成本、可扩展的存储系统，满足企业多样化的非结构化数据存储需求。
+    products_kodo_goglobal:
+      title: 海外云存储_海外云存储服务 - 七牛云
+      keywords: 海外云存储，东南亚云存储，北美云存储，七牛云存储，国外云存储
+      description: 作为国内领先云服务商，七牛云陪伴了几十万家优秀企业的成长，其中不乏许多出海的企业。本次七牛云为国内出海企业提供免费海外云存储资源，助力企业出海快人一步，创造更大的商业价值。
     products_pili:
       title: Qiniu Cloud-Live Video Cloud（PILI）
       keywords: Live Video Cloud, Live Video Service, Live Video SDK, LIve Video API, Server SDK, Player SDK, Live Streaming SDK, Mic Interaction

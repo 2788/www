@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en/ do
     root to: 'welcome#index'
     get '/products/kodo',                          to: 'products#kodo'
+    get '/products/kodo/goglobal',                 to: 'products#kodo_goglobal'
     get '/products/pili',                          to: 'products#pili'
     get '/products/sdk',                           to: 'products#sdk'
     get '/products/rtn',                           to: 'products#rtn'

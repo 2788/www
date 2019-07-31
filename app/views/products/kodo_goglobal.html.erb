@@ -1,0 +1,231 @@
+<%# banner 部分 %>
+<div class="jumbotron hero hero-kodogoglobal">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <%= image_tag "kodo_goglobal/image-banner-title.png", class: "img-banner-title", title: "GO-GLOBAL 海外云存储优惠专场", alt: "GO-GLOBAL 海外云存储优惠专场", width: 500 -%>
+          <h3>免费套餐任你选&nbsp;出海快人一步</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="kodogoglobal-page-bg">
+  <%# 套餐部分 %>
+  <div class="features features-less features-kodogoglobal features-kodogoglobal-combo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12 col-combo stan-combo">
+          <div class="top-mark"></div>
+          <div class="title-container">
+            <h2>标准版</h2>
+            <h5>10GB/月&nbsp;免费额度&nbsp;注册即得</h5>
+          </div>
+          <div class="content-container">
+            <p class="title">标准存储</p>
+            <p>时长：永久</p>
+            <p>地区：东南亚/北美</p>
+            <p>PUT/DELETE 请求：10 万次/月</p>
+            <p>GET 请求：100 万次/月</p>
+            <p>上传流量：不限</p>
+            <p class="price"><span class="text-warn">￥<span class="text-warn text-huge">0</span></span>&nbsp;元/月</p>
+          </div>
+          <%= link_to "立即使用", Rails.configuration.portal_host + "/signup?promotion=kodo-goglobal-stan", class: "btn btn-lg btn-primary btn-combo", title: "标准版 - 立即使用", target: "_blank" -%>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 col-combo col-active pro-combo">
+          <div class="top-mark"></div>
+          <div class="title-container">
+            <h2>专业版<span class="tip">New</span></h2>
+            <h5 class="text-warn">10TB/月&nbsp;免费额度&nbsp;抢先申请</h5>
+          </div>
+          <div class="content-container">
+            <p class="title">标准存储</p>
+            <p>时长：3 年</p>
+            <p>地区：东南亚/北美</p>
+            <p>PUT/DELETE 请求：10 万次/月</p>
+            <p>GET 请求：100 万次/月</p>
+            <p>上传流量：不限</p>
+            <p class="price">
+              <span class="text-warn">￥<span class="text-warn text-huge">0</span></span>&nbsp;元/月
+              <span class="origin-price">1687.95</span><span>&nbsp;元/月</span>
+            </p>
+          </div>
+          <%= link_to "立即申请", Rails.configuration.portal_host + "/signup?promotion=kodo-goglobal-pro", class: "btn btn-lg btn-primary btn-combo", title: "专业版 - 立即申请", target: "_blank" -%>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 col-combo exce-combo">
+          <div class="top-mark"></div>
+          <div class="title-container">
+            <h2>卓越版</h2>
+            <h5>专属项目专家&nbsp;敬待垂询</h5>
+          </div>
+          <div class="content-container">
+            <p>根据企业不同需求</p>
+            <p>做企业专属定制</p>
+            <p class="price">7*24 小时在线</p>
+            <p class="price">联系销售顾问</p>
+          </div>
+          <%= link_to "立即咨询", Rails.configuration.portal_host + "/signup?promotion=kodo-goglobal-exce", class: "btn btn-lg btn-primary btn-combo", title: "卓越版 - 立即咨询", target: "_blank" -%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 活动规则部分 %>
+  <div class="features features-less features-kodogoglobal features-kodogoglobal-rules">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <span class="rules-title">活动规则</span>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-rules">
+          <p>1. 本次活动仅面向实名认证企业用户；</p>
+          <p>2. 海外区域标准存储 10TB 免费额度，指用户每月可获得 10TB 免费额度，有效期 3 年，仅限专业版免费套餐；</p>
+          <p>3. 用户选择免费额度的区域可在北美或者东南亚二选一，不可同享；</p>
+          <p>4. 免费额度在审核通过的当月即生效，从当月 1 日起的使用量即享受免费额度；</p>
+          <p>5. 使用服务需遵守政策法规。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 为什么选择七牛云部分 %>
+  <div class="features features-less features-kodogoglobal features-kodogoglobal-why">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">为什么选择七牛云</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12 col-why">
+          <div class="content-container">
+            <p>业内领先的多副本和纠删码存储</p>
+            <p>可靠性高达 11 个 9</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-why">
+          <div class="content-container">
+            <p>基于异地多活的高可用架构</p>
+            <p>可用性达 99.9%</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-why">
+          <div class="content-container">
+            <p>EB 级别海量存储</p>
+            <p>支撑 80 万企业用户</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-why">
+          <div class="content-container">
+            <p>成本最优</p>
+            <p>行业首创 10TB 免费额度</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-why">
+          <div class="content-container">
+            <p>兼容 AWS S3 API</p>
+            <p>可以无缝迁移数据</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-why">
+          <div class="content-container">
+            <p>细粒度的访问管理控制</p>
+            <p>保证数据安全</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 他们都选择七牛云部分 %>
+  <div class="features features-less features-kodogoglobal features-kodogoglobal-client">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">他们都选择七牛云</h2>
+      </div>
+
+      <div class="kodogoglobal-client-slider">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="desc-logo">
+              <%= image_tag "kodo_goglobal/icon-client-starcam.png", title: "威视达康", alt: "威视达康" -%>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-client">
+            <span class="desc-symbol symbol-left">“</span>
+            <div class="desc-content">康视达康主营海外网络摄像机业务，海外云服务也已经上线两三年了，简单、稳定、可靠是我对七牛云产品的印象；在产品研发过程中对接过不少云存储服务商，是七牛人对产品的极致追求, 让我们选择了七牛云！</div>
+            <span class="desc-symbol symbol-right">”</span>
+            <div class="desc-sign">
+              <p>严国潮</p>
+              <p>威视达康&nbsp;CEO</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="desc-logo">
+              <%= image_tag "kodo_goglobal/icon-client-mizhi.png", title: "觅知网", alt: "觅知网" -%>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 col-client">
+            <span class="desc-symbol symbol-left">“</span>
+            <div class="desc-content">使用七牛云的服务已经很长几年时间了，云服务一直很稳定 。 CDN、加速下载服务、云作图全部都在稳定使用中，很少遇到问题，还有专门的维护人员定期做回访，努力改进自己的产品功能，而且服务链一直在扩展，云服务器、高防 IP、通信服务等等，渐渐形成了自己服务生态，总之使用七牛云服务，值得！放心！</div>
+            <span class="desc-symbol symbol-right">”</span>
+            <div class="desc-sign">
+              <p>乔金宝</p>
+              <p>觅知网&nbsp;CTO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 常见问题部分 %>
+  <div class="features features-less features-kodogoglobal features-kodogoglobal-faq">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">常见问题</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 col-sm-12 col-xs-12 col-faq">
+          <h4>产品 / 使用</h3>
+        </div>
+        <div class="col-md-10 col-sm-12 col-xs-12 col-faq">
+          <%= link_to "对象存储的快速入门", "https://developer.qiniu.com/kodo/manual/1233/console-quickstart", title: "对象存储的快速入门", target: "_blank" -%>
+          <%= link_to "存储区域", "https://developer.qiniu.com/kodo/manual/1671/region-endpoint", title: "存储区域", target: "_blank" -%>
+          <%= link_to "安全机制", "https://developer.qiniu.com/kodo/manual/1644/security", title: "安全机制", target: "_blank" -%>
+          <%= link_to "上传资源", "https://developer.qiniu.com/kodo/manual/1234/upload-types", title: "上传资源", target: "_blank" -%>
+          <%= link_to "下载资源", "https://developer.qiniu.com/kodo/manual/1232/download-process", title: "下载资源", target: "_blank" -%>
+          <%= link_to "管理存储空间", "https://developer.qiniu.com/kodo/manual/1728/buckets", title: "管理存储空间", target: "_blank" -%>
+          <%= link_to "API 概览", "https://developer.qiniu.com/kodo/api/1731/api-overview", title: "API 概览", target: "_blank" -%>
+          <%= link_to "AWS S3 兼容示例", "https://developer.qiniu.com/kodo/manual/4096/s3-compatible-sdk", title: "AWS S3 兼容示例", target: "_blank" -%>
+          <%= link_to "数据统计接口", "https://developer.qiniu.com/kodo/api/3906/statistic-interface", title: "数据统计接口", target: "_blank" -%>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-sm-12 col-xs-12 col-faq">
+          <h4>账户 / 计费</h3>
+        </div>
+        <div class="col-md-10 col-sm-12 col-xs-12 col-faq">
+          <%= link_to "如何进行实名认证？", "https://developer.qiniu.com/af/kb/1465/seven-cattle-real-name-authentication-details-information", title: "如何进行实名认证？", target: "_blank" -%>
+          <%= link_to "个人如何升级企业账号？", "https://developer.qiniu.com/af/kb/1730/personal-upgrade-corporate-account", title: "个人如何升级企业账号？", target: "_blank" -%>
+          <%= link_to "收不到激活验证信息怎么办？", "https://developer.qiniu.com/af/kb/1215/don-t-get-message-authentication-code", title: "收不到激活验证信息怎么办？", target: "_blank" -%>
+          <%= link_to "产品价格与免费额度是什么？", "https://developer.qiniu.com/af/kb/1574/free-credit-information", title: "产品价格与免费额度是什么？", target: "_blank" -%>
+          <%= link_to "充值、发票和扣费", "https://developer.qiniu.com/af/kb/1361/about-seven-niuyun-stored-billing-and-billing-instructions", title: "充值、发票和扣费", target: "_blank" -%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 底部 banner 部分 %>
+  <div class="features features-less features-kodogoglobal features-kodogoglobal-footer">
+    <div class="container">
+      <span>扬帆上云&nbsp;&nbsp;开启你的出海之旅</span>
+      <%= link_to "立即开始", "", class: "btn btn-lg btn-default btn-start" -%>
+      <%= link_to "咨询我们", "", class: "btn btn-lg btn-hollow", data: {toggle: "modal", target: "#feedback-modal"} -%>
+    </div>
+  </div>
+</div>

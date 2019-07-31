@@ -1,6 +1,26 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 存储海外促销活动 banner 2022 年 8 月 1 日凌晨下线，为期三年 %>
+  <% if Time.now.to_i < Time.local(2022, 8, 1).to_i -%>
+  <div class="jumbotron hero hero-kodogoglobal-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>GO-GLOBAL</h1>
+              <h1>海外云存储<span class="text-warn">优惠专场</span></h1>
+              <p><span class="text-warn">免费套餐</span>任你选&nbsp;出海快人一步</p>
+            </div>
+            <%= link_to "了解详情", products_kodo_goglobal_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 企业上云活动 banner 2019 年 10 月 1 日凌晨下线 %>
   <% if Time.now.to_i < Time.local(2019, 10, 1).to_i -%>
   <div class="jumbotron hero hero-enterpriseoncloud-index">
