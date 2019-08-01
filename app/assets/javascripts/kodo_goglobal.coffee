@@ -12,8 +12,8 @@ $(document).ready ->
 
   $kodoGoglobalBottomStartBtn = $('.products-page-kodo_goglobal .features-kodogoglobal-footer .container .btn-start')
 
-  # TODO: 金数据表单是测试用的表单，上线前需要改成线上的
-  kodoGoglobalJinshujuURL = 'https://jinshuju.net/f/gO1bre?x_field_1='
+  kodoGoglobalJinshujuURL = 'https://jinshuju.net/f/IT4S7n?x_field_1='
+
   kodoGoglobalProComboOffsetTop = 0
 
   bindKodoGoglobalWindowResize = () ->
