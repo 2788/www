@@ -349,6 +349,25 @@
   }
 }
 
+.events-page-cdn_package {
+  .cdnpackage-modal {
+    .modal-dialog {
+      .modal-header {
+        .modal-title {
+          font-size: 0.22rem;
+        }
+      }
+      .modal-body {
+        p {
+          margin: 0.10rem 0;
+          font-size: 0.18rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .features-cdnpackage-desc {
     .container {
