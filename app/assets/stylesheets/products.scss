@@ -829,6 +829,24 @@
     }
 }
 
+@media (max-width: 991px) {
+  .features-advert-index {
+    .col-advert {
+      .media {
+        .media-body {
+          .media-heading {
+            margin: 0.26rem 0 0.05rem 0;
+            font-size: 0.16rem;
+          }
+          p {
+            font-size: 0.12rem;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .features-advert-index {
     .col-advert {

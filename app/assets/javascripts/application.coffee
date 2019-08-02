@@ -51,6 +51,7 @@
 #= require qvmsumsale
 #= require bigpromotion
 #= require kodo_goglobal
+#= require cdnpackage
 
 #= require uuid
 
