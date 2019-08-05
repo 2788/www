@@ -6,7 +6,7 @@
           <h2><%= I18n.t("views.welcome.sdk.banner.title") %></h2>
           <p><%= I18n.t("views.welcome.sdk.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
-            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-default m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: "音视频 SDK"}, id: "sdk-consult-button-index" -%>
+            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-default m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: I18n.t("views.welcome.sdk.banner.title")}, id: "sdk-consult-button-index" -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">

@@ -45,8 +45,8 @@ $(document).ready ->
     location = window.location
 
     options =
-      $url: location.href
-      $url_path: location.pathname
+      feedback_url: location.href
+      feedback_url_path: location.pathname
       feedback_content: $content.val() || ''
       feedback_company: $company.val() || ''
       feedback_name: $name.val() || ''

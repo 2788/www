@@ -136,8 +136,8 @@ $(document).ready ->
       if dataToggle == 'modal'
         # 如果呼出的是模态框则上报
         options =
-          $url: window.location.href
-          $url_path: window.location.pathname
+          feedback_url: window.location.href
+          feedback_url_path: window.location.pathname
           feedback_intention: dataIntention || ''
         sensorsService.track 'ClickFeedback', options
 
