@@ -14,7 +14,7 @@
                   <%= link_to event[:title], event[:link], target: event[:target], class: event[:class] -%>
                 <% end -%>
               <% elsif event[:type] == "form" -%>
-              <%= link_to event[:title], event[:link], target: event[:target], class: event[:class], data: { toggle: "modal", target: "#feedback-modal"}, id: "rtn-consult-button" -%>
+              <%= link_to event[:title], event[:link], target: event[:target], class: event[:class], data: { toggle: "modal", target: "#feedback-modal", intention: "实时音视频云"}, id: "rtn-consult-button" -%>
               <% end -%>
             <% end %>
           </div>

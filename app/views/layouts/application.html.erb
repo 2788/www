@@ -349,7 +349,7 @@
             </li>
             <li class="<%= I18n.t("views.language") == 'zh' ? 'd-none' : '' %>">
               <div class="actions">
-                <a href="#" class="btn btn-hollow hidden-xs" data-toggle="modal" data-target="#feedback-modal">Contact Us</a>
+                <a href="#" class="btn btn-hollow hidden-xs" data-toggle="modal" data-target="#feedback-modal" data-intention="Contact Us">Contact Us</a>
               </div>
             </li>
           </ul>
@@ -373,7 +373,7 @@
           <%= link_to image_tag("free/icon-helper.png"), "/events/free?entry=index-floatwin", id: "helper-free-icon", class: "free-icon", title: "免费云服务套餐", target: "_blank" -%>
         <% end -%>
       </div>
-      <a id="waiter" data-toggle="modal" data-target="#feedback-modal">
+      <a id="waiter" data-toggle="modal" data-target="#feedback-modal" data-intention="服务咨询">
         <%= image_tag "icon-sevice@2x.png", alt: nil, class: I18n.t("views.language") != "zh" ? "icon-en" : "" -%>
         <span class="<%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">服务&bull;咨询</span>
       </a>

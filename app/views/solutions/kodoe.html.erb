@@ -8,7 +8,7 @@
           <p class="desc"><%= I18n.t("views.solutions.kodoe.banner.desc1") -%></p>
           <p class="desc mg-t-0"><%= I18n.t("views.solutions.kodoe.banner.desc2") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "咨询详情", "", target: "", class: "btn btn-lg btn-hollow m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
+            <%= link_to "咨询详情", "", target: "", class: "btn btn-lg btn-hollow m-b-xs", data: {toggle: "modal", target: "#feedback-modal", intention: "私有云行业解决方案"} -%>
           </div>
         </div>
       </div>
@@ -150,7 +150,7 @@
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12 btn-container">
-        <%= link_to "立即申请", "", target: "", class: "btn btn-lg btn-primary m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
+        <%= link_to "立即申请", "", target: "", class: "btn btn-lg btn-primary m-b-xs", data: {toggle: "modal", target: "#feedback-modal", intention: "1 对 1 专属服务"} -%>
       </div>
     </div>
   </div>

@@ -75,6 +75,7 @@ $(document).ready ->
       $kodoGoglobalExceComboBtn.attr 'target', ''
       $kodoGoglobalExceComboBtn.attr 'data-toggle', 'modal'
       $kodoGoglobalExceComboBtn.attr 'data-target', '#feedback-modal'
+      $kodoGoglobalExceComboBtn.attr 'data-intention', '存储海外促销卓越版套餐'
 
   getUserInfo = () ->
     uuid = generateUUID()

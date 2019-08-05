@@ -8,7 +8,7 @@
           <p class="desc"><%= I18n.t("views.products.kodoprivate.banner.desc1") -%></p>
           <p class="desc mg-t-0"><%= I18n.t("views.products.kodoprivate.banner.desc2") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "咨询详情", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
+            <%= link_to "咨询详情", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: {toggle: "modal", target: "#feedback-modal", intention: "私有云存储"} -%>
             <%= link_to "下载试用", signin_url('www', '/products/private-cloud-kodo'), target: "_self", class: "btn btn-lg btn-default btn-download m-b-xs", id: "kodoprivate-page-download" -%>
           </div>
         </div>

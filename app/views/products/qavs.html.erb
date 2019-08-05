@@ -6,7 +6,7 @@
           <h1><%= I18n.t("views.products.qavs.title") -%></h1>
           <p><%= I18n.t("views.products.qavs.describe") -%></p>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
-            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: "智能视频云"} -%>
             <%= link_to "下载白皮书", "https://mars-assets.qnssl.com/lsm7Yon7_XwirC_mGIQvRe1Fmkx3", target: "_blank", id: "qiniu-gartner", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
         </div>
