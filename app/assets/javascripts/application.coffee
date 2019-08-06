@@ -132,8 +132,13 @@ $(document).ready ->
         $(this).prop('href', href)
 
       dataToggle = $(this).attr('data-toggle')
+      dataTarget = $(this).attr('data-target')
       dataIntention = $(this).attr('data-intention')
-      if dataToggle == 'modal'
+
+      feedbackModalToggleStr = 'modal'
+      feedbackModalTargetStr = '#feedback-modal'
+
+      if dataToggle == feedbackModalToggleStr && dataTarget == feedbackModalTargetStr
         # 如果呼出的是模态框则上报
         options =
           feedback_url: window.location.href
