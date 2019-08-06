@@ -22,9 +22,6 @@ $(document).ready ->
 
   shouldReportFeedbackDataTOSensors = () ->
     shouldReport = false
-    location = window.location
-    # 判断是否为英文页面
-    isEnPage = begin_with_en_rule.test location.pathname
 
     if !!$content.val() ||
        !!$company.val() ||
@@ -32,6 +29,10 @@ $(document).ready ->
        !!$phone.val() ||
        !!$email.val()
       shouldReport = true
+
+    path = window.location.pathname
+    # 判断是否为英文页面
+    isEnPage = begin_with_en_rule.test path
 
     if !isEnPage && !!$provinceCN.find('option:selected').val()
       shouldReport = true
@@ -42,19 +43,16 @@ $(document).ready ->
     return shouldReport
 
   getFeedbackReportOptions = () ->
-    location = window.location
-
     options =
-      feedback_url: location.href
-      feedback_url_path: location.pathname
       feedback_content: $content.val() || ''
       feedback_company: $company.val() || ''
       feedback_name: $name.val() || ''
       feedback_phone: $phone.val() || ''
       feedback_email: $email.val() || ''
 
+    path = window.location.pathname
     # 判断是否为英文页面
-    isEnPage = begin_with_en_rule.test location.pathname
+    isEnPage = begin_with_en_rule.test path
 
     if !isEnPage
       options.feedback_province = $provinceCN.find('option:selected').val() || ''

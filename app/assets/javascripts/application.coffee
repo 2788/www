@@ -141,8 +141,6 @@ $(document).ready ->
       if dataToggle == feedbackModalToggleStr && dataTarget == feedbackModalTargetStr
         # 如果呼出的是模态框则上报
         options =
-          feedback_url: window.location.href
-          feedback_url_path: window.location.pathname
           feedback_intention: dataIntention || ''
         sensorsService.track 'ClickFeedback', options
 
