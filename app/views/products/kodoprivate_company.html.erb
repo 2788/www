@@ -8,7 +8,7 @@
           <p class="desc"><%= I18n.t("views.products.kodoprivate_company.banner.desc1") -%></p>
           <p class="desc mg-t-0"><%= I18n.t("views.products.kodoprivate_company.banner.desc2") -%></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "立即体验", "", target: "", class: "btn btn-lg btn-hollow m-b-xs", data: {toggle: "modal", target: "#feedback-modal"} -%>
+            <%= link_to "立即体验", "", target: "", class: "btn btn-lg btn-hollow m-b-xs", data: {toggle: "modal", target: "#feedback-modal", intention: I18n.t("views.products.kodoprivate_company.banner.title")} -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">

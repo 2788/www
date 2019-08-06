@@ -7,7 +7,7 @@
           <p><%= I18n.t("views.products.pili.banner.desc") %></p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
             <%= link_to "立即使用", Rails.configuration.portal_host + "/apply-pili", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
-            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "pili-consult-button" -%>
+            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: I18n.t("views.products.pili.banner.title")}, id: "pili-consult-button" -%>
           </div>
         </div>
         <div class="col-xs-4 hidden-xs">

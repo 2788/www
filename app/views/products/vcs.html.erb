@@ -7,7 +7,7 @@
           <h2><%= I18n.t("views.products.vcs.banner.title") -%></h2>
           <p><%= I18n.t("views.products.vcs.banner.desc") -%></p>
           <div class="actions">
-            <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
+            <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: I18n.t("views.products.vcs.banner.title")} -%>
             <%= link_to "了解更多", "/products/kodo", target: "_self", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
           </div>
         </div>
@@ -153,7 +153,7 @@
       </div>
       <div class="col-sm-12 col-md-12 col-xs-12">
         <div class="actions">
-          <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-primary m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"} -%>
+          <%= link_to "立即咨询", "", target: "_balnk", class: "btn btn-lg btn-primary m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: "#{I18n.t("views.products.vcs.banner.title")}成功案例"} -%>
         </div>
       </div>
     </div>

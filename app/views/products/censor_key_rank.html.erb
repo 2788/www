@@ -12,7 +12,7 @@
           <% end -%>
           <div class="actions <%= I18n.t("views.language") != "zh" ? "d-none" : "" -%>">
             <%= link_to "立即使用", Rails.configuration.portal_host + "/censor", target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs", id: "censor-" + @type + "-use-btn" -%>
-            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal"}, id: "censor-" + @type + "-consult-btn" -%>
+            <%= link_to "立即咨询", "", target: "", class: "btn btn-lg btn-hollow m-r m-b-xs", data: { toggle: "modal", target: "#feedback-modal", intention: "明瞳#{if @type == "video" then "视频审核" else "图片鉴黄" end}"}, id: "censor-" + @type + "-consult-btn" -%>
           </div>
         </div>
       </div>

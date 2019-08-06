@@ -54,6 +54,7 @@
 #= require cdnpackage
 
 #= require uuid
+#= require sensors_service
 
 isMobile = false; # initiate as false
 # device detection
@@ -94,13 +95,14 @@ setDropdownScroll = ($services, $servicesH, $solutions, $solutionsH) ->
 $(document).ready ->
   setSEORefer()
   # 添加 ref
-  $('body').on 'click', "a", (e)->
+  $('body').on 'click', 'a', (e)->
     href = $(this).prop('href')
     unless href == 'javascript:;'
       hostname = $('<a>').prop('href', href).prop('hostname')
       window_host = window.location.hostname
       ref = 'ref=' + window_host
       firstdomain = window_host.split('.').slice(-2).join('.')
+
       if hostname && hostname.length > 0 && window_host != hostname && href.indexOf(ref) < 0 && href.indexOf(firstdomain) > 0
         connector = if /\?/.test(href) then '&' else '?'
         href += connector + ref
@@ -128,6 +130,19 @@ $(document).ready ->
         else if $(e.target).hasClass 'btn-qvm1rmb'
           href += '/events/qvm1rmb'
         $(this).prop('href', href)
+
+      dataToggle = $(this).attr('data-toggle')
+      dataTarget = $(this).attr('data-target')
+      dataIntention = $(this).attr('data-intention')
+
+      feedbackModalToggleStr = 'modal'
+      feedbackModalTargetStr = '#feedback-modal'
+
+      if dataToggle == feedbackModalToggleStr && dataTarget == feedbackModalTargetStr
+        # 如果呼出的是模态框则上报
+        options =
+          feedback_intention: dataIntention || ''
+        sensorsService.track 'ClickFeedback', options
 
   $('[data-toggle="tooltip"]').tooltip()
 

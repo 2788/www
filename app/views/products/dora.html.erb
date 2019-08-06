@@ -94,7 +94,7 @@
                     <%= link_to item[:btnText], item[:url], class: "tab-content-link", id: item[:flag], title: item[:title], target: "_blank" -%>
                   <% end -%>
                 <% elsif item[:btnType] == "form" -%>
-                <%= link_to item[:btnText], "", class: "tab-content-link tab-content-form", id: item[:flag], title: item[:title], target: "", data: { toggle: "modal", target: "#feedback-modal"} -%>
+                <%= link_to item[:btnText], "", class: "tab-content-link tab-content-form", id: item[:flag], title: item[:title], target: "", data: { toggle: "modal", target: "#feedback-modal", intention: item[:title]} -%>
                 <% end -%>
                 <% end -%>
               </section>
@@ -252,7 +252,7 @@
           <% if col[:actions] then %>
             <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
               <% col[:actions].each do |action| %>
-                <%= link_to action[:title], "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal"} -%>
+                <%= link_to action[:title], "", target: "_balnk", class: "btn feature-btn", data: { toggle: "modal", target: "#feedback-modal", intention: col[:title]} -%>
               <% end %>
             </div>
           <% end %>

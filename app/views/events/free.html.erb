@@ -58,7 +58,7 @@
                 <% if col[:type] == "link" -%>
                 <%= link_to "立即申请", col[:link], target: "_blank", class: "btn btn-primary m-r m-b-xs", title: "立即申请 - #{col[:title]}" -%>
                 <% elsif col[:type] == "form" -%>
-                <%= link_to "立即申请", col[:link], target: "", class: "btn btn-primary m-r m-b-xs", title: "立即申请 - #{col[:title]}", data: {toggle: "modal", target: "#feedback-modal"} -%>
+                <%= link_to "立即申请", col[:link], target: "", class: "btn btn-primary m-r m-b-xs", title: "立即申请 - #{col[:title]}", data: {toggle: "modal", target: "#feedback-modal", intention: col[:title]} -%>
                 <% end -%>
               </div>
             <% else -%>
