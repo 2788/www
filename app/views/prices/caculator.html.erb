@@ -95,6 +95,20 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-cdnBS" key="kodo-cdnBS-east">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </dd>
                   </dl>
@@ -145,6 +159,20 @@
                             <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-sourth">
                             <div class="input-group-btn">
                               <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-cdnBS" key="kodo-cdnBS-sourth">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
                             </div>
                           </div>
                         </div>
@@ -201,6 +229,20 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-cdnBS" key="kodo-cdnBS-north">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </dd>
                   </dl>
@@ -251,6 +293,20 @@
                             <input type="number" class="form-control input-num" min="0" id="num-kodo-write" key="kodo-write-singapore">
                             <div class="input-group-btn">
                               <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-cdnBS" key="kodo-cdnBS-singapore">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
                             </div>
                           </div>
                         </div>
@@ -307,6 +363,20 @@
                             </div>
                           </div>
                         </div>
+                        <div class="col-sm-3 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-kodo-cdnBS" key="kodo-cdnBS-northAmerica">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </dd>
                   </dl>
@@ -320,69 +390,424 @@
                 <dt class="checkbox"><input type="checkbox" class="caculatorTabs" value="lowKodo" checked><label>低频存储</label></dt>
                 <div class="active" id="tab-caculator-lowKodo">
                   <dd>
-                    <div class="row m-t-sm">
-                      <div class="col-lg-4 col-sm-6 m-b">
-                        <label for="">存储空间/月</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="lowKodo-space">
-                          <div class="input-group-btn unit-select" val="GB">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li val="GB"><a>GB</a></li>
-                              <li val="TB"><a>TB</a></li>
-                              <li val="PB"><a>PB</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-sm-6 m-b">
-                        <label for="">外网流出流量/月</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-oss" key="lowKodo-oss">
-                          <div class="input-group-btn unit-select" val="GB">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li val="GB"><a>GB</a></li>
-                              <li val="TB"><a>TB</a></li>
-                              <li val="PB"><a>PB</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-sm-6 m-b">
-                        <label for="">数据读取/月</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="lowKodo-HTTP">
-                          <div class="input-group-btn unit-select" val="GB">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                              <li val="GB"><a>GB</a></li>
-                              <li val="TB"><a>TB</a></li>
-                              <li val="PB"><a>PB</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-sm-6 m-b">
-                        <label for="">API请求数 (GET/PUT) /月</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="lowKodo-API">
-                          <div class="input-group-btn">
-                            <button type="button" class="btn btn-default">万次</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-sm-6 m-b">
-                        <label for="">存储类型转换/月</label>
-                        <div class="input-group">
-                          <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="lowKodo-type">
-                          <div class="input-group-btn">
-                            <button type="button" class="btn btn-default">万次</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <ul class="list-inline">
+                      <li><span>存储区域</span></li>
+                      <li>
+                        <ul class="lowKodo-checkbox area-select" id="lowKodo-checkbox">
+                          <li><input type="checkbox" value="east-lowKodo" checked class="spacecheck" key="lowKodo" id="east-lowKodo-checkbox"><label for="east-lowKodo-checkbox">华东</label></li>
+                          <li><input type="checkbox" value="sourth-lowKodo" class="spacecheck" key="lowKodo" id="sourth-lowKodo-checkbox"><label for="sourth-lowKodo-checkbox">华南</label></li>
+                          <li><input type="checkbox" value="north-lowKodo" class="spacecheck" key="lowKodo" id="north-lowKodo-checkbox"><label for="north-lowKodo-checkbox">华北</label></li>
+                          <li><input type="checkbox" value="singapore-lowKodo" class="spacecheck" key="lowKodo" id="singapore-lowKodo-checkbox"><label for="singapore-lowKodo-checkbox">东南亚</label></li>
+                          <li><input type="checkbox" value="northAmerica-lowKodo" class="spacecheck" key="lowKodo" id="na-lowKodo-checkbox"><label for="na-lowKodo-checkbox">北美</label></li>
+                        </ul>
+                      </li>
+                    </ul>
                   </dd>
+                  <dl id="data-east-lowKodo" class="east-lowKodo input-data" key="east">
+                    <dt class="dt-lighter">华东</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="space-east-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">外网流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-oss" key="oss-east-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">数据读取/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="HTTP-east-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">API请求数 (GET/PUT) /月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="API-east-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储类型转换/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="type-east-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-cdnBS" key="cdnBS-east-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl id="data-sourth-lowKodo" class="sourth-lowKodo displayNone input-data" key="sourth">
+                    <dt class="dt-lighter">华南</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="space-sourth-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">外网流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-oss" key="oss-sourth-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">数据读取/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="HTTP-sourth-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">API请求数 (GET/PUT) /月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="API-sourth-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储类型转换/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="type-sourth-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-cdnBS" key="cdnBS-sourth-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl id="data-north-lowKodo" class="north-lowKodo displayNone input-data" key="north">
+                    <dt class="dt-lighter">华北</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="space-north-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">外网流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-oss" key="oss-north-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">数据读取/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="HTTP-north-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">API请求数 (GET/PUT) /月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="API-north-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储类型转换/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="type-north-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-cdnBS" key="cdnBS-north-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl id="data-singapore-lowKodo" class="singapore-lowKodo displayNone input-data" key="singapore">
+                    <dt class="dt-lighter">东南亚</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="space-singapore-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">外网流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-oss" key="oss-singapore-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">数据读取/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="HTTP-singapore-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">API请求数 (GET/PUT) /月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="API-singapore-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储类型转换/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="type-singapore-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-cdnBS" key="cdnBS-singapore-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                  <dl id="data-northAmerica-lowKodo" class="northAmerica-lowKodo displayNone input-data" key="northAmerica">
+                    <dt class="dt-lighter">北美</dt>
+                    <dd>
+                      <div class="row m-t-sm">
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储空间/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-space" key="space-northAmerica-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">外网流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-oss" key="oss-northAmerica-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">数据读取/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-HTTP" key="HTTP-northAmerica-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">API请求数 (GET/PUT) /月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-API" key="API-northAmerica-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">存储类型转换/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-type" key="type-northAmerica-lowKodo">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default">万次</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 m-b">
+                          <label for="">CDN 回源流出流量/月</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control input-num" min="0" id="num-lowKodo-cdnBS" key="cdnBS-northAmerica-lowKodo">
+                            <div class="input-group-btn unit-select" val="GB">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="unit-txt">GB</span> <span class="caret"></span></button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li val="GB"><a>GB</a></li>
+                                <li val="TB"><a>TB</a></li>
+                                <li val="PB"><a>PB</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
                 </div>
               </dl>
             </section>
@@ -632,38 +1057,43 @@
                 </ul>
                 <dl class="east">
                   <dt class="bg-init dt-sm">华东</dt>
-                  <dd><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-east" key="kodo-space-east"></span></dd>
-                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-east" key="kodo-oss-east"></span></dd>
-                  <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-east" key="kodo-read-east"></span></dd>
-                  <dd><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-east" key="kodo-write-east"></span></dd>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-east" key="kodo-space-east"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-east" key="kodo-oss-east"></span></dd>
+                  <dd class="displayNone"><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-east" key="kodo-read-east"></span></dd>
+                  <dd class="displayNone"><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-east" key="kodo-write-east"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-kodo-cdnBS-east" key="kodo-cdnBS-east"></span></dd>
                 </dl>
                 <dl class="sourth displayNone">
                   <dt class="bg-init dt-sm">华南</dt>
-                  <dd><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-sourth" key="kodo-space-sourth"></span></dd>
-                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-sourth" key="kodo-oss-sourth"></span></dd>
-                  <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-sourth" key="kodo-read-sourth"></span></dd>
-                  <dd><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-sourth" key="kodo-write-sourth"></span></dd>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-sourth" key="kodo-space-sourth"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-sourth" key="kodo-oss-sourth"></span></dd>
+                  <dd class="displayNone"><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-sourth" key="kodo-read-sourth"></span></dd>
+                  <dd class="displayNone"><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-sourth" key="kodo-write-sourth"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-kodo-cdnBS-sourth" key="kodo-cdnBS-sourth"></span></dd>
                 </dl>
                 <dl class="north displayNone">
                   <dt class="bg-init dt-sm">华北</dt>
-                  <dd><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-north" key="kodo-space-north"></span></dd>
-                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-north" key="kodo-oss-north"></span></dd>
-                  <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-north" key="kodo-read-north"></span></dd>
-                  <dd><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-north" key="kodo-write-north"></span></dd>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-north" key="kodo-space-north"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-north" key="kodo-oss-north"></span></dd>
+                  <dd class="displayNone"><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-north" key="kodo-read-north"></span></dd>
+                  <dd class="displayNone"><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-north" key="kodo-write-north"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-kodo-cdnBS-north" key="kodo-cdnBS-north"></span></dd>
                 </dl>
                 <dl class="singapore displayNone">
                   <dt class="bg-init dt-sm">东南亚</dt>
-                  <dd><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-singapore" key="kodo-space-singapore"></span></dd>
-                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-singapore" key="kodo-oss-singapore"></span></dd>
-                  <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-singapore" key="kodo-read-singapore"></span></dd>
-                  <dd><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-singapore" key="kodo-write-singapore"></span></dd>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-singapore" key="kodo-space-singapore"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-singapore" key="kodo-oss-singapore"></span></dd>
+                  <dd class="displayNone"><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-singapore" key="kodo-read-singapore"></span></dd>
+                  <dd class="displayNone"><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-singapore" key="kodo-write-singapore"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-kodo-cdnBS-singapore" key="kodo-cdnBS-singapore"></span></dd>
                 </dl>
                 <dl class="northAmerica displayNone">
                   <dt class="bg-init dt-sm">北美</dt>
-                  <dd><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-northAmerica" key="kodo-space-northAmerica"></span></dd>
-                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-northAmerica" key="kodo-oss-northAmerica"></span></dd>
-                  <dd><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-northAmerica" key="kodo-read-northAmerica"></span></dd>
-                  <dd><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-northAmerica" key="kodo-write-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-kodo-space-northAmerica" key="kodo-space-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-kodo-oss-northAmerica" key="kodo-oss-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>GET 读请求数/月</span><span class="pull-right" id="text-kodo-read-northAmerica" key="kodo-read-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>PUT/DELETE 写请求数/月</span><span class="pull-right" id="text-kodo-write-northAmerica" key="kodo-write-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-kodo-cdnBS-northAmerica" key="kodo-cdnBS-northAmerica"></span></dd>
                 </dl>
               </dd>
               <dd id="pricing-info-lowKodo">
@@ -671,12 +1101,50 @@
                   <li>低频存储</li>
                   <li class="price">￥<span id="lowKodo-price">0</span></li>
                 </ul>
-                <dl>
-                  <dd><span>存储空间/月</span><span class="pull-right" id="text-lowKodo-space" key="lowKodo-space"></span></dd>
-                  <dd><span>外网流出流量/月</span><span class="pull-right" id="text-lowKodo-oss" key="lowKodo-oss"></span></dd>
-                  <dd><span>API请求数 (GET/PUT) /月</span><span class="pull-right" id="text-lowKodo-API" key="lowKodo-API"></span></dd>
-                  <dd><span>存储类型转换/月</span><span class="pull-right" id="text-lowKodo-type" key="lowKodo-type"></span></dd>
-                  <dd><span>数据读取/月</span><span class="pull-right" id="text-lowKodo-HTTP" key="lowKodo-HTTP"></span></dd>
+                <dl class="east-lowKodo">
+                  <dt class="bg-init dt-sm">华东</dt>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-space-east-lowKodo" key="lowKodo-space-east"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-oss-east-lowKodo" key="lowKodo-oss-east"></span></dd>
+                  <dd class="displayNone"><span>API请求数 (GET/PUT) /月</span><span class="pull-right" id="text-API-east-lowKodo" key="lowKodo-API-east"></span></dd>
+                  <dd class="displayNone"><span>存储类型转换/月</span><span class="pull-right" id="text-type-east-lowKodo" key="lowKodo-type-east"></span></dd>
+                  <dd class="displayNone"><span>数据读取/月</span><span class="pull-right" id="text-HTTP-east-lowKodo" key="lowKodo-HTTP-east"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-cdnBS-east-lowKodo" key="lowKodo-cdnBS-east"></span></dd>
+                </dl>
+                <dl class="sourth-lowKodo displayNone">
+                  <dt class="bg-init dt-sm">华南</dt>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-space-sourth-lowKodo" key="lowKodo-space-sourth"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-oss-sourth-lowKodo" key="lowKodo-oss-sourth"></span></dd>
+                  <dd class="displayNone"><span>API请求数 (GET/PUT) /月</span><span class="pull-right" id="text-API-sourth-lowKodo" key="lowKodo-API-sourth"></span></dd>
+                  <dd class="displayNone"><span>存储类型转换/月</span><span class="pull-right" id="text-type-sourth-lowKodo" key="lowKodo-type-sourth"></span></dd>
+                  <dd class="displayNone"><span>数据读取/月</span><span class="pull-right" id="text-HTTP-sourth-lowKodo" key="lowKodo-HTTP-sourth"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-cdnBS-sourth-lowKodo" key="lowKodo-cdnBS-sourth"></span></dd>
+                </dl>
+                <dl class="north-lowKodo displayNone">
+                  <dt class="bg-init dt-sm">华南</dt>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-space-north-lowKodo" key="lowKodo-space-north"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-oss-north-lowKodo" key="lowKodo-oss-north"></span></dd>
+                  <dd class="displayNone"><span>API请求数 (GET/PUT) /月</span><span class="pull-right" id="text-API-north-lowKodo" key="lowKodo-API-north"></span></dd>
+                  <dd class="displayNone"><span>存储类型转换/月</span><span class="pull-right" id="text-type-north-lowKodo" key="lowKodo-type-north"></span></dd>
+                  <dd class="displayNone"><span>数据读取/月</span><span class="pull-right" id="text-HTTP-north-lowKodo" key="lowKodo-HTTP-north"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-cdnBS-north-lowKodo" key="lowKodo-cdnBS-north"></span></dd>
+                </dl>
+                <dl class="singapore-lowKodo displayNone">
+                  <dt class="bg-init dt-sm">东南亚</dt>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-space-singapore-lowKodo" key="lowKodo-space-singapore"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-oss-singapore-lowKodo" key="lowKodo-oss-singapore"></span></dd>
+                  <dd class="displayNone"><span>API请求数 (GET/PUT) /月</span><span class="pull-right" id="text-API-singapore-lowKodo" key="lowKodo-API-singapore"></span></dd>
+                  <dd class="displayNone"><span>存储类型转换/月</span><span class="pull-right" id="text-type-singapore-lowKodo" key="lowKodo-type-singapore"></span></dd>
+                  <dd class="displayNone"><span>数据读取/月</span><span class="pull-right" id="text-HTTP-singapore-lowKodo" key="lowKodo-HTTP-singapore"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-cdnBS-singapore-lowKodo" key="lowKodo-cdnBS-singapore"></span></dd>
+                </dl>
+                <dl class="northAmerica-lowKodo displayNone">
+                  <dt class="bg-init dt-sm">北美</dt>
+                  <dd class="displayNone"><span>存储空间/月</span><span class="pull-right" id="text-space-northAmerica-lowKodo" key="lowKodo-space-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>外网流出流量/月</span><span class="pull-right" id="text-oss-northAmerica-lowKodo" key="lowKodo-oss-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>API请求数 (GET/PUT) /月</span><span class="pull-right" id="text-API-northAmerica-lowKodo" key="lowKodo-API-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>存储类型转换/月</span><span class="pull-right" id="text-type-northAmerica-lowKodo" key="lowKodo-type-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>数据读取/月</span><span class="pull-right" id="text-HTTP-northAmerica-lowKodo" key="lowKodo-HTTP-northAmerica"></span></dd>
+                  <dd class="displayNone"><span>CDN 回源流出流量/月</span><span class="pull-right" id="text-cdnBS-northAmerica-lowKodo" key="lowKodo-cdnBS-northAmerica"></span></dd>
                 </dl>
               </dd>
               <dd id="pricing-info-fusion">
@@ -686,33 +1154,33 @@
                 </ul>
                 <dl class="inland">
                   <dt class="bg-init dt-sm">大陆地区</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-inland" key="fusion-HTTP-inland"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-inland" key="fusion-HTTPS-inland"></span></dd>
+                  <dd class="displayNone"><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-inland" key="fusion-HTTP-inland"></span></dd>
+                  <dd class="displayNone"><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-inland" key="fusion-HTTPS-inland"></span></dd>
                 </dl>
                 <dl class="ENA displayNone">
                   <dt class="bg-init dt-sm">欧洲/北美洲</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-ENA" key="fusion-HTTP-ENA"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-ENA" key="fusion-HTTPS-ENA"></span></dd>
+                  <dd class="displayNone"><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-ENA" key="fusion-HTTP-ENA"></span></dd>
+                  <dd class="displayNone"><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-ENA" key="fusion-HTTPS-ENA"></span></dd>
                 </dl>
                 <dl class="Asia displayNone">
                   <dt class="bg-init dt-sm">亚洲（其他地区）</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-Asia" key="fusion-HTTP-Asia"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-Asia" key="fusion-HTTPS-Asia"></span></dd>
+                  <dd class="displayNone"><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-Asia" key="fusion-HTTP-Asia"></span></dd>
+                  <dd class="displayNone"><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-Asia" key="fusion-HTTPS-Asia"></span></dd>
                 </dl>
                 <dl class="India displayNone">
                   <dt class="bg-init dt-sm">亚洲（港澳台/东南亚/印度）</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-India" key="fusion-HTTP-India"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-India" key="fusion-HTTPS-India"></span></dd>
+                  <dd class="displayNone"><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-India" key="fusion-HTTP-India"></span></dd>
+                  <dd class="displayNone"><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-India" key="fusion-HTTPS-India"></span></dd>
                 </dl>
                 <dl class="SA displayNone">
                   <dt class="bg-init dt-sm">南美洲</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-SA" key="fusion-HTTP-SA"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-SA" key="fusion-HTTPS-SA"></span></dd>
+                  <dd class="displayNone"><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-SA" key="fusion-HTTP-SA"></span></dd>
+                  <dd class="displayNone"><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-SA" key="fusion-HTTPS-SA"></span></dd>
                 </dl>
                 <dl class="Oceania displayNone">
                   <dt class="bg-init dt-sm">大洋洲与其他</dt>
-                  <dd><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-Oceania" key="fusion-HTTP-Oceania"></span></dd>
-                  <dd><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-Oceania" key="fusion-HTTPS-Oceania"></span></dd>
+                  <dd class="displayNone"><span>HTTP 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTP-Oceania" key="fusion-HTTP-Oceania"></span></dd>
+                  <dd class="displayNone"><span>HTTPS 下载流量 /月</span><span class="pull-right" id="text-fusion-HTTPS-Oceania" key="fusion-HTTPS-Oceania"></span></dd>
                 </dl>
               </dd>
               <dd class="sum">
