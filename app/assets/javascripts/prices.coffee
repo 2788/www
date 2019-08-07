@@ -1,34 +1,45 @@
 $(document).ready ->
   ## 控制总价格是否加上隐藏的模块价格
   prices =
-    kodo: true
-    lowKodo: true
-    fusion: true
+    'kodo': true
+    'lowKodo': true
+    'fusion': true
 
   prices_area =
     kodo:
-      east: true
-      sourth: false
-      north: false
-      northAmerica: false
+      'east': true
+      'sourth': false
+      'north': false
+      'singapore': false
+      'northAmerica': false
+    lowKodo:
+      'east-lowKodo': true
+      'sourth-lowKodo': false
+      'north-lowKodo': false
+      'singapore-lowKodo': false
+      'northAmerica-lowKodo': false
     fusion:
-      inland: true
-      ENA: false
-      Asia: false
-      India: false
-      SA: false
-      Oceania: false
+      'inland': true
+      'ENA': false
+      'Asia': false
+      'India': false
+      'SA': false
+      'Oceania': false
 
   ## 获取dom节点
   kodoDOM = $('#kodo')
   numkodospaceDOM = $('#num-kodo-space')
   numkodoreadDOM = $('#num-kodo-read')
   numkodowriteDOM = $('#num-kodo-write')
+  numkodoossDOM = $('#num-kodo-oss')
+  numkodocdnBSDOM = $('#num-kodo-cdnBS')
 
   numlowkodospaceDOM = $('#num-lowKodo-space')
   numlowkodoAPIDOM = $('#num-lowKodo-API')
   numlowkodotypeDOM = $('#num-lowKodo-type')
   numlowkodoHTTPDOM = $('#num-lowKodo-HTTP')
+  numlowkodoossDOM = $('#num-lowKodo-oss')
+  numlowkodocdnBSDOM = $('#num-lowKodo-cdnBS')
 
   fusionDOM = $('#fusion')
   numfusionHTTPDOM = $('#num-fusion-HTTP')
@@ -169,11 +180,17 @@ $(document).ready ->
     for i of prices_area.kodo
       if prices_area.kodo[i]
         #if this area is here add
-        sum_kodo += setPrice($('#text-kodo-space-'+i).text(), kodoData[i]) + setPrice($('#text-kodo-read-'+i).text(), kodoData['reads']) + setPrice($('#text-kodo-write-'+i).text(), kodoData['writes']) + setPrice($('#text-kodo-oss-'+i).text(), kodoData['oss'])
+        sum_kodo += setPrice($('#text-kodo-space-'+i).text(), kodoData[i]) + setPrice($('#text-kodo-read-'+i).text(), kodoData['reads']) + setPrice($('#text-kodo-write-'+i).text(), kodoData['writes']) + setPrice($('#text-kodo-oss-'+i).text(), kodoData['oss']) + setPrice($('#text-kodo-cdnBS-'+i).text(), kodoData['cdnBS'])
+
+    for m of prices_area.lowKodo
+      if prices_area.lowKodo[m]
+        #if this area is here add
+        sum_lowKodo += setPrice($('#text-space-'+m).text(), lowKodoData[m]) + unifyNum($('#text-API-'+m).text())*(lowKodoData.APIs*1000) + unifyNum($('#text-type-'+m).text())*(lowKodoData.types*1000) + setPrice($('#text-HTTP-'+m).text(), lowKodoData.HTTPs) + setPrice($('#text-oss-'+m).text(), lowKodoData['oss']) + setPrice($('#text-cdnBS-'+m).text(), lowKodoData['cdnBS'])
+
     for f of prices_area.fusion
       if prices_area.fusion[f]
         sum_fusion += setPrice($('#text-fusion-HTTP-'+f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-'+f).text(),fusionData.HTTPSs[f])
-    sum_lowKodo = unifyNum($('#text-lowKodo-space').text())*(lowKodoData.space*1000) + unifyNum($('#text-lowKodo-API').text())*(lowKodoData.APIs*1000) + unifyNum($('#text-lowKodo-type').text())*(lowKodoData.types*1000) + setPrice($('#text-lowKodo-HTTP').text(), lowKodoData.HTTPs) + setPrice($('#text-lowKodo-oss').text(), lowKodoData['oss'])
+
     $('#kodo-price').text(sum_kodo/1000)
     $('#lowKodo-price').text(sum_lowKodo/1000)
     $('#fusion-price').text(sum_fusion/1000)
@@ -185,14 +202,29 @@ $(document).ready ->
     $('#text-' + key).text(val)
     caculateEveryPrice()
 
+  #set price info item show or hide
+  setPriceInfoItemDisplay = (key, val) ->
+    priceText = $('#text-' + key)
+    priceItemContainer = priceText.parent('dd')
+
+    if priceItemContainer.length == 0
+      return
+
+    if val > 0
+      priceItemContainer.removeClass('displayNone')
+    else
+      priceItemContainer.addClass('displayNone')
+
   #////////////////////////////////////////////////////////////////
   ## the entrance of all events
   $('.input-num').bind 'input', ->
     key = $(this).attr('key')
     units = $(this).next().attr('val') || '万次'
     $(this).val( parseInt($(this).val()) | 0 )
-    val = $(this).val() + units
-    setAmount(key, val)
+    val = $(this).val()
+    valWithUnits = val + units
+    setAmount(key, valWithUnits)
+    setPriceInfoItemDisplay(key, val)
 
   #////////////////////////////////////////////////////////////////
   ##units change
@@ -200,17 +232,19 @@ $(document).ready ->
     $p = $(this).parents('.unit-select')
     units = $(this).attr('val')
     input = $p.prev()
-    val = +input.val() + units
+    val = +input.val()
+    valWithUnits = val + units
     key = input.attr('key')
     $p.attr('val', units)
     $p.find('.unit-txt').text(units)
-    setAmount(key, val)
+    setAmount(key, valWithUnits)
 
   #/////////////////////////////////////////////////////////////////
   ## 初始化 range num text一致
   $('.input-num').each (index, item) ->
     key = $(this).attr('key')
     units = $(this).next().attr('val') || '万次'
-    val = +$(this).val() + units
-    setAmount(key, val)
+    val = +$(this).val()
+    valWithUnits = val + units
+    setAmount(key, valWithUnits)
     return
