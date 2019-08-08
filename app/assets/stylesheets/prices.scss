@@ -538,6 +538,13 @@ input[type="range"] {
       font-size: 0.18rem;
     }
   }
+  .prices-page-caculator {
+    .input-group {
+      .input-group-btn {
+        min-width: 0.84rem;
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
