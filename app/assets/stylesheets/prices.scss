@@ -474,6 +474,17 @@ input[type="range"] {
   z-index: 2;
 }
 
+.prices-page-caculator {
+  .input-group {
+    .input-group-btn {
+      min-width: 0.58rem;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
+
 @media (min-width: 1024px) {
   .list-inline-prices {
     .special-price {
