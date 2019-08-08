@@ -813,13 +813,24 @@
     background-image: image-url("banner/banner-cdnpackage-index.jpg") !important;
     .container {
       .middle-container {
+        top: 44%;
+        text-align: center;
         h1 {
-          margin-bottom: 0.20rem !important;
-          font-size: 0.40rem !important;
+          margin-bottom: 0.20rem;
+          font-size: 0.58rem;
+          font-weight: 600;
           text-shadow: 0 0.02rem 0.03rem rgba(0, 0, 0, 0.5);
-          .content-huge {
-            font-size: 0.58rem !important;
+        }
+        p {
+          margin-top: 0.30rem;
+          font-size: 0.26rem;
+          font-weight: 600;
+          .text-huge {
+            font-size: 0.32rem;
           }
+        }
+        .text-warn {
+          color: #FDD94D;
         }
         .btn-banner {
           margin-top: 0.20rem;
@@ -1448,8 +1459,15 @@
     &.hero-cdnpackage-index {
       .container {
         .middle-container {
+          top: 40%;
           h1 {
-            margin-bottom: 0.30rem !important;
+            font-size: 0.38rem;
+          }
+          p {
+            font-size: 0.14rem;
+            .text-huge {
+              font-size: 0.20rem;
+            }
           }
         }
       }
@@ -1729,19 +1747,6 @@
 
           p {
             font-size: 0.16rem !important;
-          }
-        }
-      }
-    }
-
-    &.hero-cdnpackage-index {
-      .container {
-        .middle-container {
-          h1 {
-            font-size: 0.34rem !important;
-            .content-huge {
-              font-size: 0.52rem !important;
-            }
           }
         }
       }
