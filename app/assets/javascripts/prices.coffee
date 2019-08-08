@@ -51,7 +51,7 @@ $(document).ready ->
 
   ## 控制prices页面tab
   if parseQueryString(location.search)['source']
-    source = if ['kodo','fusion','dora'].indexOf(parseQueryString(decodeURI(location.search))['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
+    source = if ['kodo', 'fusion', 'dora'].indexOf(parseQueryString(decodeURI(location.search))['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
   pre = source || 'kodo';
   $('#tab-prices-' + pre).addClass('active')
   $('.tab-prices-' + pre).addClass('active')
@@ -60,7 +60,7 @@ $(document).ready ->
     $(this).tab 'show'
     val = $(this).attr('key')
     if history && history.pushState
-      history.pushState("","","/prices?source="+val);
+      history.pushState("", "", "/prices?source=" + val);
     pre = val
 
   #//////////////////////////////////////////////////
@@ -69,16 +69,16 @@ $(document).ready ->
     id = $(this).val()
     if $(this).attr('checked') == 'checked'
       #点击之前是checked,所以点击之后就是false 需要隐藏section
-      $('#tab-caculator-'+id).removeClass('active')
-      $('#tab-caculator-'+id).addClass('displayNone')
+      $('#tab-caculator-' + id).removeClass('active')
+      $('#tab-caculator-' + id).addClass('displayNone')
       $(this).removeAttr 'checked'
-      $('#pricing-info-'+id).addClass('displayNone')
+      $('#pricing-info-' + id).addClass('displayNone')
       caculatePrice(id, false)
     else
-      $('#tab-caculator-'+id).removeClass('displayNone')
-      $('#tab-caculator-'+id).addClass('active')
+      $('#tab-caculator-' + id).removeClass('displayNone')
+      $('#tab-caculator-' + id).addClass('active')
       $(this).attr 'checked', 'checked'
-      $('#pricing-info-'+id).removeClass('displayNone')
+      $('#pricing-info-' + id).removeClass('displayNone')
       caculatePrice(id, true)
 
   #//////////////////////////////////////////////////////////////////////
@@ -89,14 +89,13 @@ $(document).ready ->
     area = $(this).attr('key')
     if $(this).attr('checked') == 'checked'
       #点击之前是checked,所以点击之后就是false 需要隐藏space
-      $('.'+id).addClass('displayNone')
+      $('.' + id).addClass('displayNone')
       caculateEveryPrice area, id, false
       $(this).removeAttr 'checked'
     else
-      $('.'+id).removeClass('displayNone')
+      $('.' + id).removeClass('displayNone')
       caculateEveryPrice area, id, true
       $(this).attr 'checked', 'checked'
-
 
   #/////////////////////////////////////////////////////////////////////
   ## 公用方法
@@ -135,7 +134,7 @@ $(document).ready ->
       i = +i
       item = obj[i]
       if num > item[0]
-        sum += (num - item[0])*(item[1]*1000)
+        sum += (num - item[0]) * (item[1] * 1000)
         num = item[0]
     sum
   #unify num
@@ -148,14 +147,14 @@ $(document).ready ->
     else if units == 'GB'
       return num
     else if units == 'TB'
-      return num*1024
+      return num * 1024
     else if units == 'PB'
-      return num*1024*1024
+      return num * 1024 * 1024
     else
       return num
 
   #set amount to price
-  setPrice = (price_units,data_obj) ->
+  setPrice = (price_units, data_obj) ->
     num = unifyNum(price_units)
     sum = cacuSum(num, data_obj)
     return sum
@@ -167,11 +166,11 @@ $(document).ready ->
     for i of prices
       if prices[i]
         #如果存在该板块 总价加进去
-        sum += Number($('#' + i + '-price').text())*1000
-    $('#sum-price').text(sum/1000)
+        sum += Number($('#' + i + '-price').text()) * 1000
+    $('#sum-price').text(sum / 1000)
 
   #caculate every product sum
-  caculateEveryPrice = (pro,key,bol) ->
+  caculateEveryPrice = (pro, key, bol) ->
     sum_kodo = 0
     sum_lowKodo = 0
     sum_fusion = 0
@@ -180,20 +179,20 @@ $(document).ready ->
     for i of prices_area.kodo
       if prices_area.kodo[i]
         #if this area is here add
-        sum_kodo += setPrice($('#text-kodo-space-'+i).text(), kodoData[i]) + setPrice($('#text-kodo-read-'+i).text(), kodoData['reads']) + setPrice($('#text-kodo-write-'+i).text(), kodoData['writes']) + setPrice($('#text-kodo-oss-'+i).text(), kodoData['oss']) + setPrice($('#text-kodo-cdnBS-'+i).text(), kodoData['cdnBS'])
+        sum_kodo += setPrice($('#text-kodo-space-' + i).text(), kodoData[i]) + setPrice($('#text-kodo-read-' + i).text(), kodoData['reads']) + setPrice($('#text-kodo-write-' + i).text(), kodoData['writes']) + setPrice($('#text-kodo-oss-' + i).text(), kodoData['oss']) + setPrice($('#text-kodo-cdnBS-' + i).text(), kodoData['cdnBS'])
 
     for m of prices_area.lowKodo
       if prices_area.lowKodo[m]
         #if this area is here add
-        sum_lowKodo += setPrice($('#text-space-'+m).text(), lowKodoData[m]) + unifyNum($('#text-API-'+m).text())*(lowKodoData.APIs*1000) + unifyNum($('#text-type-'+m).text())*(lowKodoData.types*1000) + setPrice($('#text-HTTP-'+m).text(), lowKodoData.HTTPs) + setPrice($('#text-oss-'+m).text(), lowKodoData['oss']) + setPrice($('#text-cdnBS-'+m).text(), lowKodoData['cdnBS'])
+        sum_lowKodo += setPrice($('#text-space-' + m).text(), lowKodoData[m]) + unifyNum($('#text-API-' + m).text()) * (lowKodoData.APIs * 1000) + unifyNum($('#text-type-' + m).text()) * (lowKodoData.types * 1000) + setPrice($('#text-HTTP-' + m).text(), lowKodoData.HTTPs) + setPrice($('#text-oss-' + m).text(), lowKodoData['oss']) + setPrice($('#text-cdnBS-' + m).text(), lowKodoData['cdnBS'])
 
     for f of prices_area.fusion
       if prices_area.fusion[f]
-        sum_fusion += setPrice($('#text-fusion-HTTP-'+f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-'+f).text(),fusionData.HTTPSs[f])
+        sum_fusion += setPrice($('#text-fusion-HTTP-' + f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-' + f).text(),fusionData.HTTPSs[f])
 
-    $('#kodo-price').text(sum_kodo/1000)
-    $('#lowKodo-price').text(sum_lowKodo/1000)
-    $('#fusion-price').text(sum_fusion/1000)
+    $('#kodo-price').text(sum_kodo / 1000)
+    $('#lowKodo-price').text(sum_lowKodo / 1000)
+    $('#fusion-price').text(sum_fusion / 1000)
 
     caculatePrice()
 
