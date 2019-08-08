@@ -1,3 +1,4 @@
+<% if false -%>
 <%# banner 部分 %>
 <div class="jumbotron hero hero-cdn-package">
   <div class="container">
@@ -163,6 +164,423 @@
       </div>
       <div class="modal-body">
         <p>活动已结束，敬请期待下次优惠活动！</p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end -%>
+
+<%# 新上 cdn 闲时包活动，直接占用原来的路由 %>
+<%# https://jira.qiniu.io/browse/BO-8284 %>
+<div class="new-cdn-package-page">
+  <div class="jumbotron hero">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="CND-Progress-bar">
+              <div class="pro"></div>
+              <div class="clear"></div>
+              <p class="CND-Progress-bar-p">每日 <span>100</span> 个名额</p>
+              <div class="clear"></div>
+              <%= link_to "立即抢购", Rails.configuration.portal_host + "/financial/respack/fusion", class: "CND-Progress-bar-a", title: "每日 100 个名额 - 立即抢购", target: "_blank" -%>
+            </div>
+          </div>
+          <div class="clear"></div>
+          <font class="immediately"> 活动对象：新老客户均可参加（带宽计费用户或享有特殊价格折扣用户除外）<br /> CDN 闲时包：针对 0:00 - 9:00 闲时流量，推出的特惠闲时流量包。<%= link_to raw("活动规则&gt;&gt;"), "", class: "a-blue", title: "活动规则", target: "", data: { toggle: "modal", target: "#new-cdnpackage-rules-modal"} -%></font>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features features-less features-cases">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "静态加速资源包", alt: "静态加速资源包" -%>
+          &nbsp;静态加速资源包&nbsp;
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "静态加速资源包", alt: "静态加速资源包" -%>
+        </h2>
+        <h3 class="title-p">开启静态加速 畅享超低价格 更多规格详见<%= link_to "订购页面", Rails.configuration.portal_host + "/financial/respack/fusion", class: "a-blue", title: "静态加速资源包 - 订购页面", target: "_blank" -%></h3>
+      </div>
+      <div class="CDN-staticstate">
+        <div class="CDN-frame">
+          <div class="corner">
+            5.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 500G</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>67.2
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%26capacity%3D500GB", title: "闲时流量包 HTTP 500G - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.3 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 1T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>130.3
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%26capacity%3D1TB", title: "闲时流量包 HTTP 1T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 10T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>1130.5
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%26capacity%3D10TB", title: "闲时流量包 HTTP 10T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.5 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 100T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>8755.2
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%26capacity%3D100TB", title: "闲时流量包 HTTP 100T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 500G</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>78.4
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D500GB", title: "闲时流量包 HTTPS 500G - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.3 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 1T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>152.0
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D1TB", title: "闲时流量包 HTTPS 1T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 10T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>1318.9
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D10TB", title: "闲时流量包 HTTPS 10T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.5 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 100T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>10598.4
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E9%9D%99%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D100TB", title: "闲时流量包 HTTPS 100T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features features-less features-cases">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "动态加速资源包", alt: "动态加速资源包" -%>
+          &nbsp;动态加速资源包&nbsp;
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "动态加速资源包", alt: "动态加速资源包" -%>
+        </h2>
+        <h3 class="title-p">开启动态加速 畅享超低价格 更多规格详见<%= link_to "订购页面", Rails.configuration.portal_host + "/financial/respack/fusion", class: "a-blue", title: "动态加速资源包 - 订购页面", target: "_blank" -%></h3>
+      </div>
+      <div class="CDN-dynamic">
+        <div class="CDN-frame">
+          <div class="corner">
+            5.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 500G</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>67.2
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D500GB", title: "闲时流量包 HTTP 500G - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.3 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 1T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>130.3
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D1TB", title: "闲时流量包 HTTP 1T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 10T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>1130.5
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D10TB", title: "闲时流量包 HTTP 10T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.5 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTP 100T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>8755.2
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTP%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D100TB", title: "闲时流量包 HTTP 100T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 500G</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>78.4
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D500GB", title: "闲时流量包 HTTPS 500G - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.3 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 1T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>152.0
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D1TB", title: "闲时流量包 HTTPS 1T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.6 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 10T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>1318.9
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D10TB", title: "闲时流量包 HTTPS 10T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.5 折
+          </div>
+          <h3>闲时流量包<br /><span>HTTPS 100T</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>10598.4
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%9B%BD%E5%86%85HTTPS%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E6%B5%81%E9%87%8F%26capacity%3D100TB", title: "闲时流量包 HTTPS 100T - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            6.0 折
+          </div>
+          <h3>闲时请求数<br /><span>100 万次</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>11.4
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E8%AF%B7%E6%B1%82%26capacity%3D100%E4%B8%87", title: "闲时请求数 100 万次 - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.6 折
+          </div>
+          <h3>闲时请求数<br /><span>1000 万次</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>106.4
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E8%AF%B7%E6%B1%82%26capacity%3D1000%E4%B8%87", title: "闲时请求数 1000 万次 - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            5.3 折
+          </div>
+          <h3>闲时请求数<br /><span>1 亿次</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>1007.0
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E8%AF%B7%E6%B1%82%26capacity%3D1%E4%BA%BF", title: "闲时请求数 1 亿次 - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+        <div class="CDN-frame">
+          <div class="corner">
+            4.8 折
+          </div>
+          <h3>闲时请求数<br /><span>10 亿次</span></h3>
+          <div class="clear"></div>
+          <div class="Price">
+            <p>活动价</p>
+            <div>
+              <span>￥</span>9120.0
+            </div>
+            <%= link_to "立即购买", Rails.configuration.portal_host + "/financial/respack/fusion?type%3D%E5%8A%A8%E6%80%81%E5%8A%A0%E9%80%9F%E9%97%B2%E6%97%B6%E8%AF%B7%E6%B1%82%26capacity%3D10%E4%BA%BF", title: "闲时请求数 10 亿次 - 立即购买", target: "_blank" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features features-less features-cases">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "关于 CDN 闲时流量包", alt: "关于 CDN 闲时流量包" -%>
+          &nbsp;关于&nbsp;CDN&nbsp;闲时流量包&nbsp;
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "关于 CDN 闲时流量包", alt: "关于 CDN 闲时流量包" -%>
+        </h2>
+        <h3 class="title-p title-p-l">CDN 闲时流量包是七牛云针对 0:00 - 9:00 闲时流量，推出的特惠流量包，用户可以用 5 折的价格购买 0:00 - 9:00 的 CDN 流量，在该时间段节省 50% 的费用。</h3>
+      </div>
+      <div class="CND-about">
+        <%= image_tag "cdnpackage/image-cdn-idle-traffic5l.png", title: "闲时段 0:00 - 9:00 低至 4.5 折", alt: "闲时段 0:00 - 9:00 低至 4.5 折" -%>
+      </div>
+      <div class="CND-about CND-about-right">
+        <%= image_tag "cdnpackage/image-cdn-idle-traffic5r.png", title: "CDN 成本高？忙时拉取慢？", alt: "CDN 成本高？忙时拉取慢？" -%>
+      </div>
+    </div>
+  </div>
+
+  <div class="features features-less features-cases">
+    <div class="container">
+      <div class="intro">
+        <h2 class="title">
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "谁选择使用七牛云融合 CDN", alt: "谁选择使用七牛云融合 CDN" -%>
+          &nbsp;谁选择使用七牛云融合&nbsp;CDN&nbsp;
+          <%= image_tag "cdnpackage/icon-cdn-idle-bt.png", title: "谁选择使用七牛云融合 CDN", alt: "谁选择使用七牛云融合 CDN" -%>
+        </h2>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case1.png", title: "ZET 中兴", alt: "ZET 中兴", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case2.png", title: "陌陌", alt: "陌陌", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case3.png", title: "安信证券", alt: "安信证券", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case4.png", title: "秒拍", alt: "秒拍", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case5.png", title: "芒果 TV", alt: "芒果 TV", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case6.png", title: "wifi 伴侣", alt: "wifi 伴侣", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case7.png", title: "汽车之家", alt: "汽车之家", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case8.png", title: "探探", alt: "探探", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case9.png", title: "快看漫画", alt: "快看漫画", width: "100%" -%>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-3 col-client">
+        <%= image_tag "cdnpackage/icon-cdn-idle-traffic-case10.png", title: "粤科学习在线", alt: "粤科学习在线", width: "100%" -%>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade alert-modal-css form-wrapper new-cdnpackage-modal" id="new-cdnpackage-rules-modal" tabindex="-1" role="dialog" aria-labelledby="new-cdnpackage-rules-modal-label" data-keyboard="true" data-backdrop="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="new-cdnpackage-rules-modal-label">活动规则</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 9 月 15 日</p>
+        <p>活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）</p>
+        <p>购买说明：</p>
+        <p>(1) 闲时流量包只可用于每天 0:00 - 9:00 的流量；</p>
+        <p>(2) 在闲时资源包生效期间内，若当月闲时用量超出可用闲时资源包额度，出账时将优先抵扣完闲时资源包额度，超出部分再按照官网标准结算；</p>
+        <p>(3) 闲时资源包与全时段资源包统称为资源包，出账时将按照各个资源包过期先后顺序依次抵扣，当过期时间相同时，将优先抵扣闲时资源包；</p>
+        <p>(4) 由于活动优惠力度较大，因此购买后无特殊情况无法退款，请确认后再购买；</p>
+        <p>(5) 资源包只能使用现金充值余额支付。</p>
+      </div>
       </div>
     </div>
   </div>

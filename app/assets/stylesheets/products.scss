@@ -379,9 +379,9 @@
     width: 20%;
     padding: 0.10rem 0;
     background-color: #F8F8F8;
-    -webkit-transition: all .3s linear;
-    -moz-transition: all .3s linear;
-    transition: all .3s linear;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    transition: all .15s linear;
     .media {
       .media-body {
         width: 100%;
@@ -868,6 +868,7 @@
   .features-advert-index {
     .col-advert {
       width: 33.33%;
+      padding-bottom: 0.34rem;
       .media {
         .media-body {
           .media-heading {

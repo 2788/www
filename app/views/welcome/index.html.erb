@@ -21,6 +21,24 @@
   </div>
   <% end -%>
 
+  <%# cdn 闲时包新活动 %>
+  <%# 活动时间为 2019 年 8 月 8 日 - 2019 年 9 月 15 日 %>
+  <% if Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
+  <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h1>CDN&nbsp;闲时包&nbsp;<span class="text-warn">低至&nbsp;4.5&nbsp;折</span></h1>
+            <p><span class="text-huge text-warn">10G</span>&nbsp;闲时流量&nbsp;<span class="text-huge text-warn">1&nbsp;分</span>抢&nbsp;全场&nbsp;<span class="text-huge text-warn">4.5&nbsp;折</span>起购不停</p>
+            <%= link_to "立即购买", events_cdn_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 企业上云活动 banner 2019 年 10 月 1 日凌晨下线 %>
   <% if Time.now.to_i < Time.local(2019, 10, 1).to_i -%>
   <div class="jumbotron hero hero-enterpriseoncloud-index">
@@ -70,23 +88,6 @@
           <div class="col-sm-12">
             <%= image_tag "banner/banner-bigpromotion-middle.png", class: "icon-bigpromotion", title: "七牛云 618 年中盛惠", alt: "七牛云 618 年中盛惠" -%>
             <%= link_to "立即抢购", "/events/2019618?entry=index-banner", class: "btn btn-lg btn-default btn-banner", target: "_blank", id: "banner-bigpromotion-btn", title: "七牛云 618 年中盛惠 - 立即抢购" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# cdn-package 活动时间为 2019 年 5 月 17 日 - 2019 年 8 月 2 日 %>
-  <% if false -%>
-  <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1><%= raw(I18n.t("views.events.cdnpackage.banner.title")) -%></h1>
-            <p><%= I18n.t("views.events.cdnpackage.banner.time") -%></p>
-            <%= link_to "点击抢购", events_cdn_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
           </div>
         </div>
       </div>
@@ -399,7 +400,7 @@
           <div class="media">
             <div class="media-body">
               <h4 class="media-heading"><%= raw(advert[:title]) -%></h4>
-              <p><%= raw(advert[:desc]) -%></p>
+              <p class="hidden-xs"><%= raw(advert[:desc]) -%></p>
             </div>
           </div>
         </div>

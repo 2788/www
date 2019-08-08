@@ -21,6 +21,7 @@
 #= require social-share-button
 #= require social-share-button/wechat
 #= require smint
+#= require common_progress
 
 #= require validate
 #= require events
