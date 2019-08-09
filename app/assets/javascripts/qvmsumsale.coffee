@@ -7,8 +7,8 @@ $(document).ready ->
   $smsPartBuyButtons = $qvmSumSalePage.find('.features-qvmsumsale-sms .container .row .btn-qvmsumsale')
   $hotPartStartTimeSpan = $qvmSumSalePage.find('.qvmsumsale-start-time')
 
-  # qvmsumsale 活动结束时间 2019 年 8 月 16 号 0 点
-  qvmSumSaleEndTime = new Date(2019, 7, 16, 0, 0, 0).getTime()
+  # qvmsumsale 活动结束时间 2019 年 9 月 1 号 0 点
+  qvmSumSaleEndTime = new Date(2019, 8, 1, 0, 0, 0).getTime()
 
   # 判断 qvmsumsale 活动是否过期
   isQvmSumSaleExpired = () ->
