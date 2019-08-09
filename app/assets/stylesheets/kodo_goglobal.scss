@@ -389,24 +389,26 @@
   }
 }
 
-.kodogoglobal-modal {
-  .modal-dialog {
-    .modal-header {
-      .modal-title {
-        font-size: 0.20rem;
+.products-page-kodo_goglobal {
+  .kodogoglobal-modal {
+    .modal-dialog {
+      .modal-header {
+        .modal-title {
+          font-size: 0.20rem;
+        }
       }
-    }
-    .modal-body {
-      p {
-        font-size: 0.14rem;
-        line-height: 2.00;
-      }
-      .btn-container {
-        margin-top: 0.20rem;
-        text-align: center;
-        .btn {
-          border: none;
-          background-color: #13B7D9;
+      .modal-body {
+        p {
+          font-size: 0.14rem;
+          line-height: 2.00;
+        }
+        .btn-container {
+          margin-top: 0.20rem;
+          text-align: center;
+          .btn {
+            border: none;
+            background-color: #13B7D9;
+          }
         }
       }
     }
