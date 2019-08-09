@@ -78,7 +78,7 @@
           <span class="rules-title">活动规则</span>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12 col-rules">
-          <p>1. 本次活动仅面向实名认证企业用户；</p>
+          <p>1. 本次活动仅面向<%= link_to "实名认证企业用户", "", class: "modal-link", title: "实名认证企业用户", target: "", data: { toggle: "modal", target: "#kodogoglobal-identity-modal" } -%>；</p>
           <p>2. 海外区域标准存储 10TB 免费额度，指用户每月可获得 10TB 免费额度，有效期 3 年，仅限专业版免费套餐；</p>
           <p>3. 用户选择免费额度的区域可在北美或者东南亚二选一，不可同享；</p>
           <p>4. 免费额度在审核通过的当月即生效，从当月 1 日起的使用量即享受免费额度；</p>
@@ -224,6 +224,24 @@
       <span>扬帆上云&nbsp;&nbsp;开启你的出海之旅</span>
       <%= link_to "立即开始", "", class: "btn btn-lg btn-default btn-start" -%>
       <%= link_to "咨询我们", "", class: "btn btn-lg btn-hollow", data: {toggle: "modal", target: "#feedback-modal", intention: "扬帆上云开启你的出海之旅"} -%>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade alert-modal-css form-wrapper kodogoglobal-modal" id="kodogoglobal-identity-modal" tabindex="-1" role="dialog" aria-labelledby="kodogoglobal-identity-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="kodogoglobal-identity-modal-label">实名认证企业用户规则</h3>
+      </div>
+      <div class="modal-body">
+        <p>1. 新注册企业认证用户，将由客户经理确认企业真实业务需求后，发放免费额度；</p>
+        <p>2. 历史注册个人认证用户活动期间切换为企业用户的，需近半年累计消费金额（除存储产品外）超 100 元，才可参与此次活动。</p>
+        <div class="btn-container">
+          <%= link_to "登录并认证企业", Rails.configuration.portal_host + "/identity/enterprise", title: "登录并认证企业", class: "btn btn-primary", target: "_blank" -%>
+        </div>
+      </div>
     </div>
   </div>
 </div>
