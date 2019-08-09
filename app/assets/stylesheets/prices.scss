@@ -40,6 +40,10 @@
   }
 }
 
+.nav.nav-tabs.nav-prices-products-tabs {
+  width: 532px !important;
+}
+
 .prices-page {
   .jumbotron.hero {
     height: 4.65rem;
@@ -55,17 +59,16 @@
   }
 }
 
-
 .feature-price-nav {
-  margin-top: -0.30rem;
+  margin-top: -0.3rem;
   padding-top: 0.28rem;
   padding-bottom: 25px;
   background-color: #fff;
 
   .caculator {
-    padding-left: 0.60rem;
-    background-image: image-url("prices/icon-caculator@2x.png");
-    background-size: 0.50rem 0.50rem;
+    padding-left: 0.6rem;
+    background-image: image-url('prices/icon-caculator@2x.png');
+    background-size: 0.5rem 0.5rem;
     background-repeat: no-repeat;
     background-position: 0.16rem;
 
@@ -74,7 +77,7 @@
 
     &:hover {
       background-color: transparent;
-      color: #00A0DE;
+      color: #00a0de;
     }
 
     &:focus {
@@ -87,13 +90,13 @@
 .feature-price {
   .container {
     .tip-text {
-      margin: 0 0 0.20rem 0;
+      margin: 0 0 0.2rem 0;
       .strong-text {
         color: #000;
         font-weight: 600;
       }
       a {
-        color: #00A0DE;
+        color: #00a0de;
         &:hover {
           text-decoration: underline;
         }
@@ -104,7 +107,7 @@
 
 .tab-content-caculating {
   .info .title-left {
-    font-size: 0.30rem;
+    font-size: 0.3rem;
     color: rgb(47, 48, 51);
   }
   .row.details {
@@ -118,39 +121,39 @@
   dl {
     &.dl-border {
       border: 0.01rem solid #e6eaef;
-      padding: 0.38rem 0.30rem;
+      padding: 0.38rem 0.3rem;
       background-color: #fff;
     }
     dt {
       &.icon-title {
-        font-size:0.24rem;
+        font-size: 0.24rem;
         color: rgb(23, 18, 15);
-        height: 0.80rem;
-        line-height: 0.80rem;
-        padding-left: 0.70rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        padding-left: 0.7rem;
 
         background-position: left;
-        background-size: 0.60rem 0.60rem;
+        background-size: 0.6rem 0.6rem;
         background-repeat: no-repeat;
       }
 
       &.icon-fusion {
-        background-image: image-url("prices/icon-cdn@2x.png");
+        background-image: image-url('prices/icon-cdn@2x.png');
       }
       &.icon-kodo {
-        background-image: image-url("prices/icon-kodo@2x.png");
+        background-image: image-url('prices/icon-kodo@2x.png');
       }
       &.icon-dipin {
-        background-image: image-url("prices/icon-dipingcunchu@2x.png");
+        background-image: image-url('prices/icon-dipingcunchu@2x.png');
       }
       &.icon-dora {
-        background-image: image-url("prices/icon-API@2x.png");
+        background-image: image-url('prices/icon-API@2x.png');
       }
     }
 
     dd {
       color: rgb(47, 48, 51);
-      line-height: 0.30rem;
+      line-height: 0.3rem;
     }
 
     .formula {
@@ -160,9 +163,7 @@
 }
 
 .list-inline-prices {
-
   .special-price {
-
     border-right: 0.01rem solid #e6eaef;
 
     &.border-init {
@@ -170,7 +171,7 @@
     }
 
     p {
-      padding-top: 0.10rem;
+      padding-top: 0.1rem;
 
       .big-text {
         color: #000;
@@ -195,7 +196,7 @@
   .pricing-white-bg {
     background: #fff;
     border-right: 1px solid #e6eaef;
-    margin-bottom: 0.50rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -225,7 +226,12 @@ table.pricing-table tr {
     &.thead-title {
       font-size: 0.18rem;
       color: rgb(151, 152, 156);
-      height: 0.60rem;
+      height: 0.6rem;
+    }
+
+    .pricing-table-subtitle {
+      font-size: 0.12rem;
+      line-height: 0.17rem;
     }
 
     .grey-unit {
@@ -249,19 +255,21 @@ table.pricing-table.border-bold {
 table.pricing-table {
   &.border-none {
     border-right: none;
-    td, th {
+    td,
+    th {
       border-top: none;
       border-right: none;
     }
   }
 }
 
-table.pricing-table tr th, table.pricing-table tr td {
+table.pricing-table tr th,
+table.pricing-table tr td {
   vertical-align: middle;
   text-align: left;
   color: #333;
   line-height: 0.32rem;
-  padding: 0.10rem 0.20rem;
+  padding: 0.1rem 0.2rem;
 
   &.border-bottom {
     border-bottom: 1px solid #e6eaef;
@@ -290,7 +298,7 @@ table.pricing-table tr th, table.pricing-table tr td {
   }
 
   .text-danger {
-    color: #FA5A50;
+    color: #fa5a50;
   }
 }
 
@@ -341,7 +349,7 @@ table.pricing-table tr th, table.pricing-table tr td {
   }
 
   .sum {
-    padding: 0.10rem;
+    padding: 0.1rem;
     margin: 0;
     background-color: rgb(67, 158, 217);
     color: #fff;
@@ -386,7 +394,7 @@ table.pricing-table tr th, table.pricing-table tr td {
       font-size: 0.18rem;
       color: #97989c;
       height: 0.45rem;
-      padding: 0.10rem 0.50rem;
+      padding: 0.1rem 0.5rem;
       background-color: #f6f8fa;
       border-bottom: 0.01rem solid #e6eaef;
       &.checkbox {
@@ -400,7 +408,7 @@ table.pricing-table tr th, table.pricing-table tr td {
       }
     }
     dd {
-      padding: 0.10rem 0.20rem;
+      padding: 0.1rem 0.2rem;
       border-bottom: 0.01rem solid #e6eaef;
     }
     div.active {
@@ -413,7 +421,7 @@ table.pricing-table tr th, table.pricing-table tr td {
   background-color: #fff;
   border: 0.01rem solid #e6eaef;
   border-bottom: 0;
-  margin-bottom: 0.50rem;
+  margin-bottom: 0.5rem;
 }
 
 .caculator-sec-last {
@@ -421,9 +429,9 @@ table.pricing-table tr th, table.pricing-table tr td {
   border: 0.01rem solid #e6eaef;
 }
 
-input[type="range"] {
+input[type='range'] {
   display: inline-block;
-  margin: 0.10rem 0.10rem 0.10rem 0;
+  margin: 0.1rem 0.1rem 0.1rem 0;
   width: 80%;
 }
 
@@ -445,7 +453,7 @@ input[type="range"] {
 }
 
 .pricing-caculator {
-  width: 8.10rem;
+  width: 8.1rem;
   .btn {
     font-size: 14px;
   }
@@ -464,9 +472,9 @@ input[type="range"] {
 
 .pricing-info-wrapper {
   position: absolute;
-  top: 6.30rem;
+  top: 6.3rem;
   right: 0.68rem;
-  width: 2.90rem;
+  width: 2.9rem;
 }
 
 .fixed-right {
@@ -489,8 +497,8 @@ input[type="range"] {
   .list-inline-prices {
     .special-price {
       &.col-md-3 {
-        padding-left: 0.20rem;
-        padding-right: 0.20rem;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
       }
     }
   }
@@ -506,17 +514,17 @@ input[type="range"] {
 
 @media (max-width: 768px) {
   .features .row .list-inline-prices {
-    margin-left: -0.40rem;
-    margin-right: -0.40rem;
+    margin-left: -0.4rem;
+    margin-right: -0.4rem;
   }
   .tab-content-caculating {
     .row.details {
-      padding-top: 0.20rem;
-      padding-bottom: 0.20rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
     }
   }
   .tab-content-pricing {
-    padding-top: 0.40rem;
+    padding-top: 0.4rem;
   }
   .pricing-caculator {
     width: 100%;
@@ -524,15 +532,14 @@ input[type="range"] {
   .pricing-info-wrapper {
     position: initial;
     width: 100%;
-    margin-top: 0.20rem;
+    margin-top: 0.2rem;
   }
   #fusion-area-select {
     font-size: 0.12rem;
-
   }
   .tab-content-caculating dl {
     &.dl-border {
-      padding: 0.10rem;
+      padding: 0.1rem;
     }
     dt.icon-title {
       font-size: 0.18rem;
@@ -552,7 +559,6 @@ input[type="range"] {
     padding-top: 10px;
   }
   #feature-price-nav {
-
     .nav-prices-links {
       li {
         display: inline-block;
