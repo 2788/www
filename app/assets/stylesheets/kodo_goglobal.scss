@@ -210,6 +210,12 @@
         p {
           color: #FFF;
           font-size: 0.16rem;
+          .modal-link {
+            color: #0023F4;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
@@ -378,6 +384,32 @@
       &:hover,
       &:focus {
         color: #13B7D9;
+      }
+    }
+  }
+}
+
+.products-page-kodo_goglobal {
+  .kodogoglobal-modal {
+    .modal-dialog {
+      .modal-header {
+        .modal-title {
+          font-size: 0.20rem;
+        }
+      }
+      .modal-body {
+        p {
+          font-size: 0.14rem;
+          line-height: 2.00;
+        }
+        .btn-container {
+          margin-top: 0.20rem;
+          text-align: center;
+          .btn {
+            border: none;
+            background-color: #13B7D9;
+          }
+        }
       }
     }
   }
