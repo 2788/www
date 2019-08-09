@@ -18,7 +18,12 @@
                 <% end %>
               </span>
             </td>
+            <%# 岗位发布日期修改为当天日期，每天刷新 %>
+            <%# https://jira.qiniu.io/browse/BO-8288 %>
+            <td><time><%= Time.now.strftime("%Y-%m-%d") -%></time></td>
+            <% if false -%>
             <td><time><%= position[:created_at].strftime("%Y-%m-%d") %></time></td>
+            <% end -%>
           </tr>
         <% end %>
       </table>
