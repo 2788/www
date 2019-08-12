@@ -6572,6 +6572,8 @@ en:
       desc: chaojibiaoge
     - path: cooperation/client-xiangxiangpai-highlight@2x.png
       desc: xiangxiangpai
+    - path: cooperation/client-w3cschool.png
+      desc: W3Cschool
   seo:
     welcome_index:
       title: Qiniu Cloud-the leading enterprise cloud service supplier in China

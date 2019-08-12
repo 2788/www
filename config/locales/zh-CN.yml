@@ -7020,6 +7020,8 @@ zh-CN:
       desc: chaojibiaoge
     - path: cooperation/client-xiangxiangpai-highlight@2x.png
       desc: xiangxiangpai
+    - path: cooperation/client-w3cschool.png
+      desc: W3Cschool
   seo:
     welcome_index:
       title: 七牛云 - 国内领先的企业级云服务商
