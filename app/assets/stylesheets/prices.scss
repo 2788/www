@@ -102,6 +102,28 @@
   }
 }
 
+.features .price-events-link {
+  font-size: 0.14rem;
+  color: #00A0DE;
+  vertical-align: bottom;
+  .text-danger {
+    color: #FA5A50;
+    vertical-align: bottom;
+  }
+  &.m-l-1 {
+    margin-left: 0.10rem;
+  }
+  &.v-a-base {
+    vertical-align: baseline;
+    .text-danger {
+      vertical-align: baseline;
+    }
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .tab-content-caculating {
   .info .title-left {
     font-size: 0.30rem;
