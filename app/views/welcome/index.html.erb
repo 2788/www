@@ -39,6 +39,24 @@
   </div>
   <% end -%>
 
+  <%# dora 锐智转码活动 %>
+  <%# 活动时间为 2019 年 8 月 15 日 - 2019 年 9 月 15 日 %>
+  <% if Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
+  <div class="jumbotron hero hero-dora-avsmart-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <h1>锐智转码&nbsp;<span class="text-warn">500&nbsp;元</span>优惠券&nbsp;抢先领取</h1>
+            <p>视频瘦身火热上线，成本与体验的合理配置，节省不止一点点</p>
+            <%= link_to "免费申领", events_dora_avsmart_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 企业上云活动 banner 2019 年 10 月 1 日凌晨下线 %>
   <% if Time.now.to_i < Time.local(2019, 10, 1).to_i -%>
   <div class="jumbotron hero hero-enterpriseoncloud-index">

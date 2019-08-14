@@ -125,6 +125,8 @@ Rails.application.routes.draw do
     get '/events/cdn-package', to: 'events#cdn_package'
     # qvm 燃情一夏活动
     get '/events/qvmsumsale', to: 'events#qvmsumsale'
+    # dora 促销活动
+    get '/events/dora-avsmart', to: 'events#dora_avsmart'
     # qvmsumsale 10 点开抢限制
     get '/events/qvmsumsale/is_start', to: 'events#qvmsumsale_is_start'
     # 2019 年 618 活动

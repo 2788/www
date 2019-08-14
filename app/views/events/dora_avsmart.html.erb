@@ -1,0 +1,212 @@
+<div class="dora-avsmart-page">
+  <div class="jumbotron hero Transcod">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <h2>
+            <%= image_tag "banner/banner-transcoding-middle.png", class: "img", alt: "锐智转码 500 元优惠券 抢先领取", title: "锐智转码 500 元优惠券 抢先领取" -%>
+          </h2>
+          <h4>视频瘦身火热上线，成本与体验的合理配置，节省不止一点点</h4>
+          <h4>
+            <%= link_to raw("数量有限 先到先得 了解详情 &gt;&gt;"), "https://developer.qiniu.com/dora/manual/5135/avsmart", title: "数量有限 先到先得 了解详情", target: "_blank" -%>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body Transcoding">
+    <div class="features">
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">
+            <%= image_tag "dora_avsmart/img-transcoding-btl.png", alt: "产品亮点", title: "产品亮点" -%>
+            产品亮点
+            <%= image_tag "dora_avsmart/img-transcoding-btr.png", alt: "产品亮点", title: "产品亮点" -%>
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="media">
+              <div class="media-left">
+                <%= image_tag "dora_avsmart/img-transcoding-highlights1.png", class: "media-object", alt: "节省带宽", title: "节省带宽" -%>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">节省带宽</h4>
+                <p>锐智转码融合感知编码、深度学习、图像处理、画质增强等技术，在保证画质的前提下，节省 20% 以上码率，为用户降低成本。</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="media">
+              <div class="media-left">
+                <%= image_tag "dora_avsmart/img-transcoding-highlights2.png", class: "media-object", alt: "视频编码技术", title: "视频编码技术" -%>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">视频编码技术</h4>
+                <p>根据视频内容自适应码率以及自适应分辨率，不同场景可以适配最优的算法提升压缩和画质效果，追求最佳的收益效果。</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="media">
+              <div class="media-left">
+                <%= image_tag "dora_avsmart/img-transcoding-highlights3.png", class: "media-object", alt: "提升画质", title: "提升画质" -%>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">提升画质</h4>
+                <p>AI 视频前处理包括：去编码脏效应、去燥、去毛刺、锐化、饱和度增强、去模糊等，并引入 Vmaf 和 Mos 质量评价体系，提升视频主观画质。</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="media">
+              <div class="media-left">
+                <%= image_tag "dora_avsmart/img-transcoding-highlights3.png", class: "media-object", alt: "精细处理", title: "精细处理" -%>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">精细处理</h4>
+                <p>为了能让数据流转，我们需要对数据进行高速处理。七牛云构建了基于容器的计算平台，并基于容器平台构建了功能丰富且</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features features-dora-avsmart-progress d-none">
+      <div class="container">
+        <div class="Transcoding-Progress">
+          <p class="title">距离活动结束还有</p>
+          <div class="clear"></div>
+          <div id="dora-avsmart-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">
+            <%= image_tag "dora_avsmart/img-transcoding-btl.png", alt: "如何参与", title: "如何参与" -%>
+            如何参与
+            <%= image_tag "dora_avsmart/img-transcoding-btr.png", alt: "如何参与", title: "如何参与" -%>
+          </h2>
+        </div>
+        <div class="Transcoding-participate">
+          <ul>
+            <li>
+              <a href="<%= Rails.configuration.portal_host + "/signup?promotion=dora-avsmart" -%>" title="注册" target="_blank">
+                <%= image_tag "dora_avsmart/img-transcoding-participate1.png", class: "image-normal", alt: "注册", title: "注册" -%>
+                <%= image_tag "dora_avsmart/img-transcoding-participate1-hover.png", class: "image-hover", alt: "注册", title: "注册" -%>
+                <br/>
+                注册
+              </a>
+            </li>
+            <li class="li">
+              <%= image_tag "dora_avsmart/img-transcoding-participate.png", alt: "如何参与", title: "如何参与" -%>
+            </li>
+            <li>
+              <a href="<%= Rails.configuration.portal_host + "/identity" -%>" title="认证" target="_blank">
+                <%= image_tag "dora_avsmart/img-transcoding-participate2.png", class: "image-normal", alt: "认证", title: "认证" -%>
+                <%= image_tag "dora_avsmart/img-transcoding-participate2-hover.png", class: "image-hover", alt: "认证", title: "认证" -%>
+                <br/>
+                认证
+              </a>
+            </li>
+            <li class="li">
+              <%= image_tag "dora_avsmart/img-transcoding-participate.png", alt: "如何参与", title: "如何参与" -%>
+            </li>
+            <li>
+              <%= image_tag "dora_avsmart/img-transcoding-participate3.png", alt: "申请", title: "申请" -%>
+              <br/>
+              申请
+            </li>
+          </ul>
+          <div class="clear"></div>
+          <%= link_to "立即申请", "", class: "Transcoding-participate-a", title: "立即申请", target: "", data: { toggle: "modal", target: "#dora-avsmart-apply-modal" } -%>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">
+            <%= image_tag "dora_avsmart/img-transcoding-btl.png", alt: "Dome 样例展示", title: "Dome 样例展示" -%>
+            Dome 样例展示
+            <%= image_tag "dora_avsmart/img-transcoding-btr.png", alt: "Dome 样例展示", title: "Dome 样例展示" -%>
+          </h2>
+        </div>
+        <div class="Transcoding-wrap">
+          <ul class="tab clearfix">
+            <li class="tab-item active">游戏</li>
+            <li class="tab-item">影视剧</li>
+            <li class="tab-item">运动</li>
+          </ul>
+          <div class="product">
+            <div class="main selected">
+              <%= video_tag "http://ptzw4y4vx.bkt.clouddn.com/%E6%B8%B8%E6%88%8F%E6%BC%94%E7%A4%BA.mp4", loop: true, muted: true, autoplay: true, controls: true, autobuffer: true, width: "100%" -%>
+            </div>
+            <div class="main">
+              <%= video_tag "http://ptzw4y4vx.bkt.clouddn.com/%E5%BD%B1%E8%A7%86%E5%89%A7.mp4", loop: true, muted: true, autoplay: true, controls: true, autobuffer: true, width: "100%" -%>
+            </div>
+            <div class="main">
+              <%= video_tag "http://ptzw4y4vx.bkt.clouddn.com/%E8%BF%90%E5%8A%A8.mp4", loop: true, muted: true, autoplay: true, controls: true, autobuffer: true, width: "100%" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="container">
+        <div class="intro">
+          <h2 class="title">
+            <%= image_tag "dora_avsmart/img-transcoding-btl.png", alt: "活动规则", title: "活动规则" -%>
+            活动规则
+            <%= image_tag "dora_avsmart/img-transcoding-btr.png", alt: "活动规则", title: "活动规则" -%>
+          </h2>
+        </div>
+        <div class="Transcoding-rule">
+          <p>一、活动时间</p>
+          <p>2019 年 8 月 15 日 - 2019 年 9 月 15 日（ 限量 50 张，领完即止 ）</p>
+          <p>二、活动规则</p>
+          <p>1. 本活动面向七牛云官网已注册且完成实名认证的所有企业用户</p>
+          <p>2. 报名成功后，500 元优惠仅限开始使用锐智转码当月有效</p>
+          <p>3. 本活动仅限首次使用锐智转码用户参与，非首次使用用户不能享受上述优惠</p>
+          <p>4. 本次活动区域限制在中国大陆地区</p>
+          <p>5. 所有参加本活动的用户，均视为认可并同意遵守<%= link_to "《七牛云用户协议》", "/user-agreement", class: "link-box", title: "《七牛云用户协议》", target: "_blank" -%></p>
+          <p>6. 活动最终解释权在法律允许范围内归七牛云所有</p>
+          <p>三、活动支持</p>
+          <p>如您在活动或使用过程中有任何疑问，请<%= link_to "点击此处", "https://support.qiniu.com/tickets/category", class: "link-box", target: "_blank" -%>提交工单或发送邮件至 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"link-box", title: "marketing@qiniu.com" -%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade alert-modal-css form-wrapper" id="dora-avsmart-apply-modal" tabindex="-1" role="dialog" aria-labelledby="dora-avsmart-apply-modal-label" data-keyboard="true" data-backdrop="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="Transcoding-modal1">新用户专享</div>
+          <div class="clear"></div>
+          <div class="Transcoding-modal2">
+            <%= image_tag "dora_avsmart/img-transcoding-modal2.png", alt: "500 元抵用券", title: "500 元抵用券" -%>
+          </div>
+          <div class="clear"></div>
+          <div class="Transcoding-modal3">
+            <p>抱歉，请登录七牛账户（新用户请先注册）并实名认证企业用户后，申请优惠券。</p>
+            <%= link_to "登录", signin_url('www', '/events/dora-avsmart'), title: "登录", target: "_blank" -%>
+            <%= link_to "立即注册", Rails.configuration.portal_host + "/signup?promotion=dora-avsmart", title: "立即注册", target: "_blank" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

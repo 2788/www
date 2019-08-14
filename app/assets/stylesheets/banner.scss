@@ -847,6 +847,42 @@
     }
   }
 
+  &.hero-dora-avsmart-index {
+    background-image: image-url("banner/banner-dora-avsmart-index.jpg") !important;
+    .container {
+      .middle-container {
+        top: 44%;
+        text-align: center;
+        h1 {
+          margin-bottom: 0.20rem;
+          font-size: 0.58rem;
+          font-weight: 600;
+          text-shadow: none;
+        }
+        p {
+          margin-top: 0.20rem;
+          font-size: 0.20rem;
+          font-weight: 600;
+          text-shadow: none;
+        }
+        .text-warn {
+          color: #FDD94D;
+        }
+        .btn-banner {
+          margin-top: 0.20rem;
+          border: none;
+          color: #011D5C;
+          background-color: #FDD94D;
+          &:hover {
+            -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+
   &.hero-qvm2for3-index,
   &.hero-qvm2for3 {
     background-image: image-url("banner/banner-qvm2for3-index.jpg");
@@ -1473,6 +1509,22 @@
       }
     }
 
+    &.hero-dora-avsmart-index {
+      .container {
+        .middle-container {
+          h1 {
+            font-size: 0.34rem;
+          }
+          p {
+            font-size: 0.14rem;
+          }
+          .btn-banner {
+            margin: 0;
+          }
+        }
+      }
+    }
+
     &.hero-qvm2for3-index,
     &.hero-qvm2for3 {
       .middle-container {
@@ -1815,6 +1867,19 @@
     p {
       line-height: 0.34rem;
       font-size: 0.16rem;
+    }
+
+    &.hero-dora-avsmart-index {
+      .container {
+        .middle-container {
+          h1 {
+            font-size: 0.46rem;
+          }
+          p {
+            font-size: 0.18rem;
+          }
+        }
+      }
     }
   }
 }
