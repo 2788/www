@@ -22,6 +22,7 @@
 #= require social-share-button/wechat
 #= require smint
 #= require common_progress
+#= require dora_progress
 
 #= require validate
 #= require events
@@ -53,6 +54,7 @@
 #= require bigpromotion
 #= require kodo_goglobal
 #= require cdnpackage
+#= require dora_avsmart
 
 #= require uuid
 #= require sensors_service
