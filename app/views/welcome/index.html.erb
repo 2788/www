@@ -41,7 +41,7 @@
 
   <%# dora 锐智转码活动 %>
   <%# 活动时间为 2019 年 8 月 15 日 - 2019 年 9 月 15 日 %>
-  <% if Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
+  <% if Time.now.to_i >= Time.local(2019, 8, 15).to_i && Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
   <div class="jumbotron hero hero-dora-avsmart-index">
     <div class="container">
       <div class="middle-container">
