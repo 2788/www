@@ -6403,12 +6403,12 @@ en:
         - name: pili
           label: Live Video Cloud（PILI）
           desc:
-        
+
         - name: rtn
           label: Real-time Video Communication Service
-          desc: 
+          desc:
           isNew: true
-        
+
         # - name: vance
         #   label: 点播云
         #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
@@ -6501,9 +6501,11 @@ en:
       - name: data
         label: Unstructured Data Management
         desc:
-      - name: security
-        label: Safety Protection Terminals
-        desc:
+      # 安防解决方案下线，隐藏入口
+      # https://jira.qiniu.io/browse/BO-7148
+      # - name: security
+      #   label: Safety Protection Terminals
+      #   desc:
       - name: intelligence
         label: Smart Device and IOT
         desc:

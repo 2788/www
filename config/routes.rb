@@ -43,11 +43,17 @@ Rails.application.routes.draw do
     get '/products/newmedia/cms',                  to: 'products#cms'
     get '/products/newmedia/operation',            to: 'products#operation'
     get '/products/newmedia/live',                 to: 'products#live'
-    get '/products/newmedia/resolution',           to: 'products#resolution'
+    # 超级分辨率下线，去掉路由
+    # https://jira.qiniu.io/browse/BO-7148
+    # get '/products/newmedia/resolution',           to: 'products#resolution'
     get '/products/newmedia/demolition',           to: 'products#demolition'
-    get '/products/newmedia/microservices',        to: 'products#microservices'
+    # 业务微服务引擎下线，去掉路由
+    # https://jira.qiniu.io/browse/BO-7148
+    # get '/products/newmedia/microservices',        to: 'products#microservices'
     get '/products/newmedia/editor',               to: 'products#editor'
-    get '/products/newmedia/visualization',        to: 'products#visualization'
+    # 数据可视化下线，去掉路由
+    # https://jira.qiniu.io/browse/BO-7148
+    # get '/products/newmedia/visualization',        to: 'products#visualization'
     get '/products/newmedia/interact',             to: 'products#interact'
     get '/products/newmedia/auditor',              to: 'products#auditor'
     get '/products/newmedia/copyright',            to: 'products#copyright'
