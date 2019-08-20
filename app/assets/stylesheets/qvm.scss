@@ -473,8 +473,10 @@
 
 @media (min-width: 1200px) {
   .features-qvm-buy {
-    .col-buy {
-      height: 4.80rem;
+    .container .row {
+      .col-buy {
+        height: 4.80rem;
+      }
     }
   }
 
@@ -511,34 +513,39 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .features-qvm-buy {
-    .col-buy {
-      height: 4.60rem;
-      .thumbnail {
-        .title-container {
-          background-size: contain !important;
-          background-position-y: 20px !important;
-          .title {
-            font-size: 0.20rem !important;
-          }
-          .desc {
-            font-size: 0.12rem !important;
-          }
-        }
-        .row-icon {
-          top: 0.50rem !important;
-          .col-icon {
+    .container .row {
+      .col-buy {
+        height: 4.60rem;
+        .thumbnail {
+          .title-container {
+            background-size: contain !important;
+            background-position-y: 20px !important;
             p {
-              font-size: 0.12rem;
+              padding-right: 12px;
+            }
+            .title {
+              font-size: 0.20rem !important;
+            }
+            .desc {
+              font-size: 0.12rem !important;
             }
           }
-        }
-        .tabs-buy {
-          top: 0.50rem !important;
-          .nav-tabs.nav-justified.nav-short {
-            width: 100%;
+          .row-icon {
+            top: 0.50rem !important;
+            .col-icon {
+              p {
+                font-size: 0.12rem;
+              }
+            }
           }
-          .tabs-buy-btn {
-            width: 80px !important;
+          .tabs-buy {
+            top: 0.50rem !important;
+            .nav-tabs.nav-justified.nav-short {
+              width: 100%;
+            }
+            .tabs-buy-btn {
+              width: 80px !important;
+            }
           }
         }
       }
@@ -593,14 +600,16 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
   .features-qvm-buy {
-    .col-buy {
-      height: 4.80rem;
-      .thumbnail {
-        .title-container {
-          background-size: contain !important;
-          background-position-x: 60px !important;
-          p {
-            padding-right: 40px !important;
+    .container .row {
+      .col-buy {
+        height: 4.80rem;
+        .thumbnail {
+          .title-container {
+            background-size: contain !important;
+            background-position-x: 60px !important;
+            p {
+              padding-right: 40px !important;
+            }
           }
         }
       }
@@ -695,23 +704,25 @@
 
 @media (max-width: 767px) {
   .features-qvm-buy {
-    .col-buy {
-      height: 5.40rem;
-      margin-bottom: 0.30rem !important;
-      .thumbnail {
-        .title-container {
-          background-size: contain !important;
-          background-position-x: 100% !important;
-          p {
-            padding-right: 40px !important;
+    .container .row {
+      .col-buy {
+        height: 5.40rem;
+        margin-bottom: 0.30rem !important;
+        .thumbnail {
+          .title-container {
+            background-size: contain !important;
+            background-position-x: 100% !important;
+            p {
+              padding-right: 40px !important;
+            }
           }
-        }
-        .tabs-buy {
-          .nav-tabs.nav-justified.nav-short {
-            width: 80%;
-            li {
-              width: 1%;
-              display: table-cell !important;
+          .tabs-buy {
+            .nav-tabs.nav-justified.nav-short {
+              width: 80%;
+              li {
+                width: 1%;
+                display: table-cell !important;
+              }
             }
           }
         }
@@ -831,22 +842,24 @@
 
 @media(width: 768px) {
   .features-qvm-buy {
-    .col-buy {
-      height: 5.30rem;
-      margin-bottom: 0.30rem !important;
-      .thumbnail {
-        .title-container {
-          background-size: contain !important;
-          background-position-x: 100% !important;
-          p {
-            padding-right: 40px !important;
+    .container .row {
+      .col-buy {
+        height: 5.30rem;
+        margin-bottom: 0.30rem !important;
+        .thumbnail {
+          .title-container {
+            background-size: contain !important;
+            background-position-x: 100% !important;
+            p {
+              padding-right: 40px !important;
+            }
           }
-        }
-        .tabs-buy {
-          .nav-tabs.nav-justified.nav-short {
-            width: 80%;
-            li {
-              display: table-cell !important;
+          .tabs-buy {
+            .nav-tabs.nav-justified.nav-short {
+              width: 80%;
+              li {
+                display: table-cell !important;
+              }
             }
           }
         }
