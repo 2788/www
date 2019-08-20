@@ -29,9 +29,6 @@
 </div>
 
 <%# buy tab %>
-<%# qvm 产品页购买板块暂时隐藏，等 qvm portal 上线 %>
-<%# https://jira.qiniu.io/browse/BO-5911 %>
-<% if false -%>
 <div class="features features-less features-cases features-qvm-buy">
   <div class="container">
     <div class="intro">
@@ -67,7 +64,7 @@
                   <section class="<%= section[:class] -%>" id="<%= section[:id] -%>">
                     <p class="tabs-buy-container">
                       <span class="price-span"><%= section[:price] -%></span><span class="tag-span">&nbsp;元</span>
-                      <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], class: "btn btn-hollow btn-buy", id: section[:btnID], target: "_blank" -%>
+                      <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: col[:title] + " - 立即购买", class: "btn btn-hollow btn-buy", id: section[:btnID], target: "_blank" -%>
                     </p>
                   </section>
                 <% end -%>
@@ -79,7 +76,6 @@
     </div>
   </div>
 </div>
-<% end -%>
 
 <%# advantage tab %>
 <div class="features features-qvm-adva">
