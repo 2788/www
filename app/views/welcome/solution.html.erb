@@ -334,6 +334,9 @@
   </div>
 </div>
 
+<%# 安防解决方案下线 %>
+<%# https://jira.qiniu.io/browse/BO-7148 %>
+<% if false -%>
 <div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="security">
@@ -386,11 +389,12 @@
     </div>
   </div>
 </div>
+<% end -%>
 
-<div class="features feature-solution">
+<div class="features feature-solution light-bkcolor">
   <div class="container">
     <div class="row row-solution" id="internet">
-      <div class="col-sm-8 col-solution right-line">
+      <div class="col-sm-8 col-solution left-line">
         <h2 class="icon140 icon-internet"><%= I18n.t("views.welcome.solution.feature8.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature8.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature8.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal", intention: I18n.t("views.welcome.solution.feature8.title")} -%></p>
@@ -455,10 +459,10 @@
   </div>
 </div>
 
-<div class="features feature-solution light-bkcolor">
+<div class="features feature-solution">
   <div class="container">
     <div class="row row-solution" id="qualityctrl">
-      <div class="col-sm-8 col-solution left-line">
+      <div class="col-sm-8 col-solution right-line">
         <h2 class="icon140 icon-qualityctrl"><%= I18n.t("views.welcome.solution.feature9.title") %></h2>
         <p class="content"><%= I18n.t("views.welcome.solution.feature9.desc") %>
         <%= link_to I18n.t("views.welcome.solution.feature9.btn"), "", class: "more", data: { toggle: "modal", target: "#feedback-modal", intention: I18n.t("views.welcome.solution.feature9.title")} -%></p>

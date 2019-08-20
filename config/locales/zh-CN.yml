@@ -6915,10 +6915,16 @@ zh-CN:
           label: 智能视频云解决方案
           desc: 集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
           type: product
-        - name: security
-          label: 安防解决方案
-          desc: 灵活部署，满足不同安防场景互联网远程监控需求
+        - name: intelligence
+          label: 智能硬件与物联网解决方案
+          desc: 满足智能硬件厂商各应用场景下云端计算需求
           type: solution_hash
+        # 安防解决方案下线，隐藏入口
+        # https://jira.qiniu.io/browse/BO-7148
+        # - name: security
+        #   label: 安防解决方案
+        #   desc: 灵活部署，满足不同安防场景互联网远程监控需求
+        #   type: solution_hash
       - cols:
         # 隐藏 私有云存储解决方案 项
         # https://jira.qiniu.io/browse/BO-5888
@@ -6930,19 +6936,19 @@ zh-CN:
           label: 应用质量监控解决方案
           desc: 满足移动及视频应用性能管理需求，可定制化的质量监控平台
           type: solution_hash
-        - name: intelligence
-          label: 智能硬件与物联网解决方案
-          desc: 满足智能硬件厂商各应用场景下云端计算需求
+        - name: internet
+          label: 互联网与移动互联网解决方案
+          desc: 为互联网初创企业量身定制，一站式云计算服务平台
           type: solution_hash
       - cols:
         - name: pili_livequiz
           label: 直播竞答解决方案
           desc: 七牛云直播竞答解决方案是专为直播竞答产品打造的全球化直播流服务和端到端场景解决方案
           type: product
-        - name: internet
-          label: 互联网与移动互联网解决方案
-          desc: 为互联网初创企业量身定制，一站式云计算服务平台
-          type: solution_hash
+        - name: ""
+          label: ""
+          desc: ""
+          type: ""
       - cols:
         - name: kodoe
           label: 私有云行业解决方案
