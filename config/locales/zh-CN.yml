@@ -6727,28 +6727,39 @@ zh-CN:
           - name: kodo
             label: 对象存储
             desc: 高可用、易扩展、低成本、一站式、支持边缘存储
+            catalog: product
             isNew: true
           - name: private_cloud_kodo
             label: 私有云存储
             desc: 可定制化的数百 EB 级别、高可靠、强安全的存储系统
+            catalog: product
             isNew: true
           - name: fusion
             label: 融合 CDN
             desc: 融合优质节点、可监控、智能调度的内容分发服务
+            catalog: product
           - name: qvm
             label: 云主机
             desc: 提供云主机、负载均衡、云数据库、高防等服务
+            catalog: product
             isNew: true
           - name: sms
             label: 云短信
             desc: 致力于为用户提供快捷高效的通信服务能力
+            catalog: product
             isNew: true
           - name: kirk
             label: 容器云
             desc: 面向微服务架构的企业级容器管理平台
+            catalog: product
           - name: snow
             label: 边缘计算平台
             desc: 灵活配置管理大规模边缘计算应用，加速边缘智能落地
+            catalog: product
+          - name: ssl
+            label: SSL 证书
+            desc: 提供 SSL 证书申请、管理等一站式服务
+            catalog: welcome
     right:
       - group: 数据 • 智能
         list:

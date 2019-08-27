@@ -83,7 +83,11 @@
                     <%= content_tag :li, left[:group], class: "menu-title hidden-xs" -%>
                     <% left[:list].each do |product| -%>
                     <%= content_tag :li, class: I18n.t("views.language") != 'zh' && product[:name]=='kirk' ? 'd-none' : 'service' do -%>
-                      <%= link_to(send("products_#{product[:name]}_path")) do -%>
+                      <% service_path = "products_#{product[:name]}_path" -%>
+                      <% if product[:catalog] == "welcome" -%>
+                        <% service_path = "#{product[:name]}_path" -%>
+                      <% end -%>
+                      <%= link_to(send(service_path)) do -%>
                         <h4 class="<%= product[:name] -%>">
                           <%= product[:label] -%>
                           <% if product[:isNew] -%><i class="new-icon"></i><% end -%>
