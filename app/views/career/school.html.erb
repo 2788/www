@@ -1,5 +1,7 @@
 <div class="banner-box banner-career-school">
-  <%= image_tag "career/career-school-banner.jpg", class: "banner-image", alt: "七牛云 2020 届 春季实习生招聘", title: "七牛云 2020 届 春季实习生招聘" -%>
+  <a href="https://www.nowcoder.com/careers/qiniuyun/7667?ncsr=iRPiMR" target="_blank">
+    <%= image_tag "career/career-school-banner-2019-autumn.jpg", class: "banner-image", alt: "七牛云 2020 秋季校园招聘", title: "七牛云 2020 秋季校园招聘" -%>
+  </a>
 </div>
 
 <%# 校招页面改版 %>
@@ -53,93 +55,66 @@
 </div>
 <% end -%>
 
+
 <div class="career-school-2019">
-  <%# 我们在寻找 %>
-  <div class="features">
+
+  <%# 2019 年校招屏蔽部分职位 %>
+  <%# https://jira.qiniu.io/browse/BO-6616 %>
+  <div class="features  features-less features-cases features-positions features-positions-school">
     <div class="container">
       <div class="intro">
-        <h2 class="title">我们在寻找</h2>
-        <h3>2020 届毕业生（含海外留学生）</h3>
+        <h3 class="title">岗位列表</h3>
+        <p class="text-center">这些机会，期待你的加入</p>
+        <p class="text-center">我们是一个简单的团队，希望成就不简单的事。</p>
+        <p class="text-center">我们是一群充满热情，追求创新的人，期待遇见同样的你。</p>
       </div>
 
-      <div class="intro1100 m-t-custom">
-        <ul class="ul2">
-          <li>
-            <%= image_tag "career/position-fuwu.png", alt: "服务端开发实习生", title: "服务端开发实习生" -%>
-            <br>
-            服务端开发实习生
-          </li>
-          <% if false -%>
-          <li>
-            <%= image_tag "career/position-qianduan.png", alt: "前端开发实习生", title: "前端开发实习生" -%>
-            <br>
-            前端开发实习生
-          </li>
-          <% end -%>
-          <li>
-            <%= image_tag "career/position-dashuju.png", alt: "大数据开发实习生", title: "大数据开发实习生" -%>
-            <br>
-            大数据开发实习生
-          </li>
-          <li>
-            <%= image_tag "career/position-sdk.png", alt: "Android/iOS SDK 开发实习生", title: "Android/iOS SDK 开发实习生" -%>
-            <br>
-            Android/iOS SDK 开发实习生
-          </li>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <%= image_tag "career/icon-jishu.png", alt: "技术", width: "100" %>
+          <a href="#tech-position" aria-controls="tech-position" role="tab" data-toggle="tab">技术</a>
+        </li>
+        <li role="presentation">
+          <%= image_tag "career/icon-shichang.png", alt: "市场", width: "100" %>
+          <a href="#market-position" aria-controls="market-position" role="tab" data-toggle="tab">市场</a>
+        </li>
+        <li role="presentation">
+          <%= image_tag "career/icon-chanpin.png", alt: "产品", width: "100" %>
+          <a href="#product-position" aria-controls="product-position" role="tab" data-toggle="tab">产品</a>
+        </li>
+        <li role="presentation">
+          <%= image_tag "career/icon-sheji.png", alt: "设计", width: "100" %>
+          <a href="#design-position" aria-controls="design-position" role="tab" data-toggle="tab">设计</a>
+        </li>
+        <li role="presentation">
+          <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: "100" %>
+          <a href="#sales-position" aria-controls="sales-position" role="tab" data-toggle="tab">销售</a>
+        </li>
+        <li role="presentation">
+          <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
+          <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">职能</a>
+        </li>
+        <li role="presentation">
+          <%= image_tag "career/icon-yunying.png", alt: "运营", width: "auto", height: "86", class: "m-b-20px" %>
+          <a href="#operate-position" aria-controls="operate-position" role="tab" data-toggle="tab">运营</a>
+        </li>
+      </ul>
 
-          <% if false -%>
-          <li>
-            <%= image_tag "career/position-shuju.png", alt: "数据开发实习生", title: "数据开发实习生" -%>
-            <br>
-            数据开发实习生
-          </li>
-          <li>
-            <%= image_tag "career/position-suanfa.png", alt: "算法实习生", title: "算法实习生" -%>
-            <br>
-            算法实习生
-          </li>
-          <% end -%>
-          <li>
-            <%= image_tag "career/position-chanpin.png", alt: "产品实习生", title: "产品实习生" -%>
-            <br>
-            产品实习生
-          </li>
-          <% if false -%>
-          <li>
-            <%= image_tag "career/position-yunying.png", alt: "运营实习生", title: "运营实习生" -%>
-            <br>
-            运营实习生
-          </li>
-          <% end -%>
-          <li>
-            <%= image_tag "career/position-c-plus-plus.png", alt: "C++ 开发实习生", title: "C++ 开发实习生" -%>
-            <br>
-            C++ 开发实习生
-          </li>
-          <li>
-            <%= image_tag "career/position-frontend.png", alt: "前端开发实习生", title: "前端开发实习生" -%>
-            <br>
-            前端开发实习生
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+      <!-- Tab panes -->
+      <div class="tab-content positionTab">
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.tech, :type => "tech-position"} %>
 
-  <%# 你将会收获 %>
-  <div class="features features-less features-cases features-career-harvest">
-    <div class="container">
-      <div class="intro">
-        <h2 class="title">你将会收获</h2>
-      </div>
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.market, :type => "market-position"} %>
 
-      <div class="intro1100">
-        <ul class="ul3">
-          <li><font>●</font>&nbsp;参与核心代码，与 git 大牛为友</li>
-          <li><font>●</font>&nbsp;简单的工作环境，只专注工作</li>
-          <li><font>●</font>&nbsp;斗志满满、追求极致的小伙伴</li>
-          <li><font>●</font>&nbsp;节日礼物、走心福利、关爱多多</li>
-        </ul>
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.product, :type => "product-position"} %>
+
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.design, :type => "design-position"} %>
+
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.sales, :type => "sales-position"} %>
+
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.office, :type => "office-position"} %>
+
+        <%= render :partial => "positions", :locals => {:positions => @school_positions.operate, :type => "operate-position"} %>
       </div>
     </div>
   </div>
@@ -152,153 +127,140 @@
 
     <div class="container">
       <div class="timeline">
-      <ul class="timeline-ul">
-        <li class="left left-li">
-          <div class="li-content">
-            <div class="info-div">
-              <span class="icon-point icon-point-left"></span>
-              <span class="icon-point icon-point-right icon-event"></span>
-              <time>简历投递</time>
-              <p>(2 月 20 日 - 4 月 22 日)</p>
+        <ul class="timeline-ul">
+          <li class="left left-li">
+            <div class="li-content">
+              <div class="info-div">
+                <span class="icon-point icon-point-left"></span>
+                <span class="icon-point icon-point-right icon-event"></span>
+                <time>网申</time>
+                <p>(即日起开启，<%= link_to "点击申请", "https://www.nowcoder.com/careers/qiniuyun/7667?ncsr=iRPiMR", target:"_blank", style: "text-decoration: underline" -%>)</p>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="right">
-          <div class="li-content">
-            <div class="info-div">
-              <time>第一批次线上笔试</time>
-              <p>(3 月 15 日 19 点)</p>
-              <span class="icon-point icon-point-right"></span>
-              <span class="icon-point icon-point-left icon-event"></span>
+          </li>
+          <li class="right">
+            <div class="li-content">
+              <div class="info-div">
+                <span class="icon-point icon-point-left"></span>
+                <span class="icon-point icon-point-right icon-event"></span>
+                <time>内推</time>
+                <p>(寻找七牛云内部员工获取内推二维码或链接，可优先进入简历筛选，抢先拿到OFFER，不影响后续网申)</p>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="left left-li">
-          <div class="li-content">
-            <div class="info-div">
-              <span class="icon-point icon-point-left"></span>
-              <span class="icon-point icon-point-right icon-event"></span>
-              <time>第二批次线上笔试</time>
-              <p>(4 月 23 日 19 点)</p>
+          </li>
+          <li class="left left-li">
+            <div class="li-content">
+              <div class="info-div">
+                <time>无需笔试的岗位</time>
+                <p>(筛选成功后可直接进入面试)</p>
+                <span class="icon-point icon-point-right"></span>
+                <span class="icon-point icon-point-left icon-event"></span>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="right">
-          <div class="li-content">
-            <div class="info-div">
-              <time>线下宣讲会和技术分享请留意公共号后续推送</time>
-              <p>(3 月中旬以后)</p>
-              <span class="icon-point icon-point-right"></span>
-              <span class="icon-point icon-point-left icon-event"></span>
+          </li>
+          <li class="right">
+            <div class="li-content">
+              <div class="info-div">
+                <span class="icon-point icon-point-left"></span>
+                <span class="icon-point icon-point-right icon-event"></span>
+                <time>需笔试的职位</time>
+                <p>(笔试时间：10月16日19点，注意：仅有一次笔试机会)</p>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="left left-li">
-          <div class="li-content">
-            <div class="info-div">
-              <span class="icon-point icon-point-left"></span>
-              <span class="icon-point icon-point-right icon-event"></span>
-              <time>面试</time>
-              <p>(3 月 25 日 - 5 月中下旬)</p>
+          </li>
+          <li class="left left-li">
+            <div class="li-content">
+              <div class="info-div">
+                <time>线下宣讲会</time>
+                <p>(请留意『七牛官网』和『七牛招聘』公众号后续更新)</p>
+                <span class="icon-point icon-point-right"></span>
+                <span class="icon-point icon-point-left icon-event"></span>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="right">
-          <div class="li-content">
-            <div class="info-div">
-              <time>OFFER</time>
-              <p>(3 月底开始陆续发放 offer)</p>
-              <span class="icon-point icon-point-right"></span>
-              <span class="icon-point icon-point-left icon-event"></span>
+          </li>
+          <li class="right">
+            <div class="li-content">
+              <div class="info-div">
+                <span class="icon-point icon-point-left"></span>
+                <span class="icon-point icon-point-right icon-event"></span>
+                <time>面试</time>
+                <p>(9月中旬开始，2轮业务部门面试+1轮HR面试)</p>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="left left-li">
-          <div class="li-content">
-            <div class="info-div">
-              <span class="icon-point icon-point-left"></span>
-              <span class="icon-point icon-point-right icon-event"></span>
-              <p>简历投递二维码</p>
-              <%= image_tag "career/qrcode-resume.jpg", alt: "简历投递二维码", title: "简历投递二维码" -%>
+          </li>
+          <li class="left left-li">
+            <div class="li-content">
+              <div class="info-div">
+                <time>OFFER</time>
+                <p>(按照面试情况，通过即发OFFER)</p>
+                <span class="icon-point icon-point-right"></span>
+                <span class="icon-point icon-point-left icon-event"></span>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="right">
-          <div class="li-content">
-            <div class="info-div">
-              <p>春招 QQ 群二维码</p>
-              <%= image_tag "career/qrcode-qq.jpg", alt: "春招 QQ 群二维码", title: "春招 QQ 群二维码" -%>
-              <span class="icon-point icon-point-right"></span>
-              <span class="icon-point icon-point-left icon-event"></span>
+          </li>
+          <li class="right">
+            <div class="li-content">
+              <div class="info-div">
+                <p>七牛云秋季校招QQ讨论群，加群请备注：姓名+学校+求职方向</p>
+                <%= image_tag "career/qrcode-qq-school-2019-autumn.jpg", alt: "QQ七牛云秋季校招讨论群二维码", title: "QQ七牛云秋季校招讨论群二维码" -%>
+                <span class="icon-point icon-point-right"></span>
+                <span class="icon-point icon-point-left icon-event"></span>
+              </div>
             </div>
-          </div>
-        </li>
-        <li class="left left-li">
-          <div class="li-content"></div>
-        </li>
-      </ul>
+          </li>
+          <li class="left left-li">
+            <div class="li-content">
+              <div class="info-div">
+                <span class="icon-point icon-point-left"></span>
+                <span class="icon-point icon-point-right icon-event"></span>
+                <p>简历投递二维码</p>
+                <%= image_tag "career/qrcode-resume-school-2019-autumn.png", alt: "简历投递二维码", title: "简历投递二维码" -%>
+              </div>
+            </div>
+          </li>
+          <li class="right">
+            <div class="li-content"></div>
+          </li>
+        </ul>
+      </div>
     </div>
-    <%= link_to "加入七牛云", "http://a02w15hcibrumjzd.mikecrm.com/tgWJiKE", class: "intro32a", title: "加入七牛云", target: "_blank" -%>
+    <%= link_to "加入七牛云", "https://www.nowcoder.com/careers/qiniuyun/7667?ncsr=iRPiMR", class: "intro32a", title: "加入七牛云", target: "_blank" -%>
   </div>
-</div>
 
-<%# 2019 年校招屏蔽部分职位 %>
-<%# https://jira.qiniu.io/browse/BO-6616 %>
-<div class="features features-less features-cases features-pbt features-positions features-positions-school">
-  <div class="container">
-    <div class="intro">
-      <h3 class="title">岗位列表</h3>
-      <p class="text-center">这些机会，期待你的加入</p>
-      <p class="text-center">我们是一个简单的团队，希望成就不简单的事。</p>
-      <p class="text-center">我们是一群充满热情，追求创新的人，期待遇见同样的你。</p>
-    </div>
-
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <%= image_tag "career/icon-jishu.png", alt: "技术", width: "100" %>
-        <a href="#tech-position" aria-controls="tech-position" role="tab" data-toggle="tab">技术</a>
-      </li>
-      <li role="presentation">
-        <%= image_tag "career/icon-shichang.png", alt: "市场", width: "100" %>
-        <a href="#market-position" aria-controls="market-position" role="tab" data-toggle="tab">市场</a>
-      </li>
-      <li role="presentation">
-        <%= image_tag "career/icon-chanpin.png", alt: "产品", width: "100" %>
-        <a href="#product-position" aria-controls="product-position" role="tab" data-toggle="tab">产品</a>
-      </li>
-      <li role="presentation">
-        <%= image_tag "career/icon-sheji.png", alt: "设计", width: "100" %>
-        <a href="#design-position" aria-controls="design-position" role="tab" data-toggle="tab">设计</a>
-      </li>
-      <li role="presentation">
-        <%= image_tag "career/icon-xiaoshou.png", alt: "销售", width: "100" %>
-        <a href="#sales-position" aria-controls="sales-position" role="tab" data-toggle="tab">销售</a>
-      </li>
-      <li role="presentation">
-        <%= image_tag "career/icon-zhineng.png", alt: "职能", width: "100" %>
-        <a href="#office-position" aria-controls="office-position" role="tab" data-toggle="tab">职能</a>
-      </li>
-      <li role="presentation">
-        <%= image_tag "career/icon-yunying.png", alt: "运营", width: "auto", height: "86", class: "m-b-20px" %>
-        <a href="#operate-position" aria-controls="operate-position" role="tab" data-toggle="tab">运营</a>
-      </li>
-    </ul>
-
-    <!-- Tab panes -->
-    <div class="tab-content positionTab">
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.tech, :type => "tech-position"} %>
-
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.market, :type => "market-position"} %>
-
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.product, :type => "product-position"} %>
-
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.design, :type => "design-position"} %>
-
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.sales, :type => "sales-position"} %>
-
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.office, :type => "office-position"} %>
-
-      <%= render :partial => "positions", :locals => {:positions => @school_positions.operate, :type => "operate-position"} %>
+  <%# 你将会收获 %>
+  <div class="features features-less features-cases features-positions features-pbt">
+    <div class="container">
+      <div class="intro">
+        <h3 class="title">福利情况</h3>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 col-xs-6 m-b-5 text-center">
+          <%= image_tag "career/icon-liwu.png", alt: "给七牛家人的节日礼物", width: "50" %>
+          <h4 class="media-heading">给七牛家人的节日礼物</h4>
+        </div>
+        <div class="col-sm-4 col-xs-6 m-b-5 text-center">
+          <%= image_tag "career/icon-wuxianyijin.png", alt: "五险一金 + 商业保险", width: "50" %>
+          <h4 class="media-heading">五险一金 + 商业保险</h4>
+        </div>
+        <div class="col-sm-4 col-xs-6 m-b-5 text-center">
+          <%= image_tag "career/icon-lingshichangxiang.png", alt: "零食畅享 + 免费健身", width: "50" %>
+          <h4 class="media-heading">零食畅享 + 免费健身</h4>
+        </div>
+        <div class="col-sm-4 col-xs-6 m-b-5 text-center">
+          <%= image_tag "career/icon-daixinnianjia.png", alt: "年假不少于 12 天的带薪年假", width: "50" %>
+          <h4 class="media-heading">不少于 12 天的带薪年假</h4>
+        </div>
+        <div class="col-sm-4 col-xs-6 m-b-5 text-center">
+          <%= image_tag "career/icon-daixinbingjia.png", alt: "天带薪病假 + 年度体检", width: "50" %>
+          <h4 class="media-heading">5 天带薪病假 + 年度体检</h4>
+        </div>
+        <div class="col-sm-4 col-xs-6 m-b-5 text-center">
+          <%= image_tag "career/icon-xinchou.png", alt: "有竞争力的薪酬", width: "50" %>
+          <h4 class="media-heading">有竞争力的薪酬</h4>
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
+
