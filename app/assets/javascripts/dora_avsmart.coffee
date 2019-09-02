@@ -4,6 +4,7 @@ $(document).ready ->
   $doraAvsmartProgressContainer = $('.events-page-dora_avsmart .body.Transcoding .features-dora-avsmart-progress')
   $doraAvsmartProgress = $('.events-page-dora_avsmart .body.Transcoding .Transcoding-Progress #dora-avsmart-progress')
 
+  $doraAvsmartBannerApplyBtn = $('.events-page-dora_avsmart .jumbotron.hero.Transcod .row .btn.btn-lg.btn-default')
   $doraAvsmartApplyBtn = $('.events-page-dora_avsmart .body.Transcoding .Transcoding-participate .Transcoding-participate-a')
 
   $doraAvsmartDemoTabs = $('.events-page-dora_avsmart .body.Transcoding .Transcoding-wrap ul li.tab-item')
@@ -23,11 +24,17 @@ $(document).ready ->
       method: 'GET',
       url: '/userinfo?u=' + uuid + '&t=' + timestamp,
       success: (res) ->
-        if res.is_signin && $doraAvsmartApplyBtn.length > 0
-          $doraAvsmartApplyBtn.attr 'href', doraAvsmartJinshujuURL + res.uid
-          $doraAvsmartApplyBtn.attr 'target', '_blank'
-          $doraAvsmartApplyBtn.attr 'data-toggle', ''
-          $doraAvsmartApplyBtn.attr 'data-target', ''
+        if res.is_signin
+          if $doraAvsmartApplyBtn.length > 0
+            $doraAvsmartApplyBtn.attr 'href', doraAvsmartJinshujuURL + res.uid
+            $doraAvsmartApplyBtn.attr 'target', '_blank'
+            $doraAvsmartApplyBtn.attr 'data-toggle', ''
+            $doraAvsmartApplyBtn.attr 'data-target', ''
+          if $doraAvsmartBannerApplyBtn.length > 0
+            $doraAvsmartBannerApplyBtn.attr 'href', doraAvsmartJinshujuURL + res.uid
+            $doraAvsmartBannerApplyBtn.attr 'target', '_blank'
+            $doraAvsmartBannerApplyBtn.attr 'data-toggle', ''
+            $doraAvsmartBannerApplyBtn.attr 'data-target', ''
 
   # 进度条 && 申请按钮
   if $doraAvsmartEventPage.length > 0
@@ -46,6 +53,13 @@ $(document).ready ->
         $doraAvsmartApplyBtn.attr 'target', ''
         $doraAvsmartApplyBtn.attr 'data-toggle', ''
         $doraAvsmartApplyBtn.attr 'data-target', ''
+      if $doraAvsmartBannerApplyBtn.length > 0
+        $doraAvsmartBannerApplyBtn.html btnText
+        $doraAvsmartBannerApplyBtn.attr 'title', btnText
+        $doraAvsmartBannerApplyBtn.attr 'href', ''
+        $doraAvsmartBannerApplyBtn.attr 'target', ''
+        $doraAvsmartBannerApplyBtn.attr 'data-toggle', ''
+        $doraAvsmartBannerApplyBtn.attr 'data-target', ''
     else
       getUserInfo()
       if $doraAvsmartProgress.length > 0

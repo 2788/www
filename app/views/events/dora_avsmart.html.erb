@@ -6,10 +6,8 @@
           <h2>
             <%= image_tag "banner/banner-transcoding-middle.png", class: "img", alt: "锐智转码 500 元优惠券 抢先领取", title: "锐智转码 500 元优惠券 抢先领取" -%>
           </h2>
-          <h4>视频瘦身火热上线，成本与体验的合理配置，节省不止一点点</h4>
-          <h4>
-            <%= link_to raw("数量有限 先到先得 了解详情 &gt;&gt;"), "https://developer.qiniu.com/dora/manual/5135/avsmart", title: "数量有限 先到先得 了解详情", target: "_blank" -%>
-          </h4>
+          <h4>视频瘦身火热上线，成本与体验的合理配置，节省不止一点点&nbsp;<%= link_to raw("了解详情 &gt;&gt;"), "https://developer.qiniu.com/dora/manual/5135/avsmart", title: "数量有限 先到先得 了解详情", target: "_blank" -%></h4>
+          <%= link_to "抢先领取", "", class: "btn btn-lg btn-default", title: "抢先领取", target: "", data: { toggle: "modal", target: "#dora-avsmart-apply-modal" } -%>
         </div>
       </div>
     </div>
