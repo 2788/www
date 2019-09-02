@@ -164,7 +164,7 @@ en:
           case: "Success Cases"
       company:
         title: "About Qiniu Cloud"
-        desc: "Qiniu Cloud is affiliated to Shanghai Qiniu Information Technologies Co., Ltd. Qiniu, the leading enterprise cloud service supplier in China, specializes in the research, development and operation of cloud computing service focusing on data management. We have launched products for rich media, including object storage, integrated CDN accelerating, container-based computing cloud, big data platform and AI platform, and offered one-stop solution to video cloud as well. Our company has so far led the domestic cloud computing industry and supplied services to more than 700,000 enterprises in order to help enterprises quickly get their own clouds and create larger business value."
+        desc: "Qiniu Cloud is a leading enterprise cloud service provider in China. It is committed to driving social industry development with cloud technology, and it focuses on the cloud computing industry with data intelligence and visual intelligence as its core. Through massive data and rich media scenarios across industries, Qiniu Cloud launches the intelligent video cloud integrated with CDN, object storage, cloud host, big data, content recognition platform and other product portfolios, which provides comprehensive cloud computing service for users. Qiniu Cloud has provided service to more than 800,000 enterprises so far, covering 80% of Chinese netizens. It provides cloud plus smart technology empowerment for users in various industries to meet the new opportunities of Artificial Intelligence and the arrival of 5G era."
         feature1:
           title: "Our Culture —— Simple and Reliable"
           col:
