@@ -927,6 +927,12 @@
 
   &.hero-career-school-2019-autumn {
     background-image: image-url("banner/banner-career-school-2019-autumn.jpg");
+    .middle-container {
+      top: 48%;
+      .col-img-left {
+        margin-top: 0.60rem;
+      }
+    }
   }
 
   &.hero-qvm-index {
@@ -1574,6 +1580,18 @@
         }
       }
     }
+
+    &.hero-career-school-2019-autumn {
+      .middle-container {
+        top: 44%;
+        .col-img-left {
+          margin-top: 0;
+          img {
+            width: 400px;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1885,10 +1903,28 @@
         }
       }
     }
+
+    &.hero-career-school-2019-autumn {
+      .middle-container {
+        .col-img-left {
+          margin-top: 0.40rem;
+        }
+      }
+    }
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
+  .jumbotron.hero {
+    &.hero-career-school-2019-autumn {
+      .middle-container {
+        .col-img-left {
+          margin-top: 0.50rem;
+        }
+      }
+    }
+  }
+
   .features {
     .media {
       .media-body p.en {
