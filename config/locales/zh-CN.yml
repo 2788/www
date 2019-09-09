@@ -1183,6 +1183,8 @@ zh-CN:
             link: "https://developer.qiniu.com/qvm"
           - name: "常见问题"
             link: "https://developer.qiniu.com/faq?space=qvm"
+          - name: "价格计算器"
+            link: "/calculator_qvm?entry=product-qvm"
         buy:
           title: "热销推荐"
           col:
