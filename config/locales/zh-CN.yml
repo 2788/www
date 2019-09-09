@@ -448,12 +448,6 @@ zh-CN:
         recommend:
           title: "活动推荐"
           cols:
-            - title: "AI 创新扶持活动"
-              desc: "让 AI 在业务中落地，助力产品智能升级"
-              image: "free/image-ai.jpg"
-              class: "text-center"
-              link: "https://www.qiniu.com/alaccelerator"
-              type: "link"
             - title: "合作伙伴发展计划"
               desc: "我们协助你一起聚焦客户的数据智能与管理，提供更有价值的解决方案和服务"
               image: "free/image-partner.jpg"
@@ -466,11 +460,11 @@ zh-CN:
               class: "text-left"
               link: ""
               type: "form"
-            - title: "出海创业扶持计划"
+            - title: "出海企业扶持"
               desc: "整合出海相关产品和服务资源，共同助力创业者占领全球市场"
               image: "free/image-business.jpg"
               class: "text-left"
-              link: "https://www.qiniu.com/goglobal"
+              link: "https://www.qiniu.com/products/kodo/goglobal"
               type: "link"
       ssl:
         feature3:
@@ -3155,8 +3149,6 @@ zh-CN:
               linkarr:
                 - title: "智能多媒体服务"
                   link: "https://www.qiniu.com/products/dora"
-                - title: "AI 创新扶持计划"
-                  link: "https://www.qiniu.com/alaccelerator"
             - id: "tab-usage-section-2"
               class: "tab-pane fade in"
               icon: "pili/icon-shipindashujufuwu.png"
@@ -6828,15 +6820,8 @@ zh-CN:
     - group: 云扶持
       list:
         - name: goglobal
-          label: 出海创业扶持计划
-          path: goglobal
-          url: ""
-          type: "path"
-          isHot: false
-          target: ""
-        - name: alaccelerator
-          label: AI 创新扶持计划
-          path: alaccelerator
+          label: 出海企业扶持
+          path: products_kodo_goglobal
           url: ""
           type: "path"
           isHot: false
