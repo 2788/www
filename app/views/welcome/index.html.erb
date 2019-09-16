@@ -22,8 +22,8 @@
   <% end -%>
 
   <%# cdn 闲时包新活动 %>
-  <%# 活动时间为 2019 年 8 月 8 日 - 2019 年 9 月 15 日 %>
-  <% if Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
+  <%# 活动延长，先不设置下线时间 %>
+  <%# https://jira.qiniu.io/browse/BO-8873 %>
   <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
     <div class="container">
       <div class="middle-container">
@@ -37,7 +37,6 @@
       </div>
     </div>
   </div>
-  <% end -%>
 
   <a title="七牛云 2020 届秋季校园招聘" alt="七牛云 2020 届秋季校园招聘" href="<%= Rails.configuration.career_host + "/school?entry=index-banner" -%>" target="_blank">
     <div class="jumbotron hero hero-career-school-2019-autumn">
