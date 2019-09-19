@@ -6796,13 +6796,15 @@ zh-CN:
           type: "url"
           isHot: true
           target: "_self"
-        - name: niuday
-          label: NIUDAY 小牛汇共享日
-          path: niudays
-          url: ""
-          type: "path"
-          isHot: false
-          target: ""
+        # 下线小牛汇共享日入口
+        # https://jira.qiniu.io/browse/BO-8921
+        # - name: niuday
+        #   label: NIUDAY 小牛汇共享日
+        #   path: niudays
+        #   url: ""
+        #   type: "path"
+        #   isHot: false
+        #   target: ""
         - name: arch
           label: 架构师实践日
           path: arch_events
