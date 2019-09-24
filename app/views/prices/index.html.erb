@@ -1263,7 +1263,7 @@
             <div class="row details">
               <dl>
                 <dt class="icon-title icon-pili">直播云</dt>
-                <dd>直播云服务的基础计费项为流量宽带费用，可以选择按照直播观看的下行流量活直播峰值带宽两种方式进行计费。若选择按下行流量计费，支持购买直播力量资源包进行流量抵扣。</dd>
+                <dd>直播云服务的基础计费项为带宽计费。若需要选择下行流量计费，也支持购买直播流量资源包进行流量抵扣（如需开通下行流量计费请联系销售400-808-9176 转 1）。</dd>
               </dl>
               <dl>
                 <dd>此外还提供直播转码，导播台等服务，会根据您的使用情况单独进行计费。</dd>
@@ -1281,42 +1281,65 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
-                          直播按日峰值带宽计算
+                        <th width="340" class="thead-title th-init border-bottom" colspan="6">
+                          直播日峰值带宽计算
                           <br>
                           <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：直播观看流量</span><br>
-                            <span>计费规则：按日峰值带宽的阶梯价格计费，统计一个自然日内产生的带宽最高值（单位：Mbps）乘以对应的阶梯价格</span><br>
-                            <span>计费周期：按日计费，每日零点后出前一日账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
+                            <br>
+                            <span>按峰值带宽计费是以当日直播观看区域所在节点直播加速服务分别产生的带宽最高值（单位Mbps）为结算标准。</span><br>
+                            <span>如需使用95峰值带宽计费，请联系销售或提交工单申请。</span>
                           </p>
                         </th>
                       </tr>
                       <tr>
-                        <th class="th-init border-right">带宽阶梯</th>
-                        <th class="th-init border-right">中国大陆<span class="grey-unit">（元/Mbps/天）</span></th>
-                        <th class="th-init border-right">港澳台及海外<span class="grey-unit">（元/Mbps/天）</span></th>
+                        <th class="th-init border-right">带宽阶梯<span class="grey-unit">（元/Mbps/天）</span></th>
+                        <th class="th-init border-right">中国大陆</th>
+                        <th class="th-init border-right">亚洲<p class="grey-unit th-p"> （港澳台/东南亚/印度）</p></th>
+                        <th class="th-init border-right">欧洲/北美洲</th>
+                        <th class="th-init border-right">南美洲</th>
+                        <th class="th-init border-right">大洋洲与其他</th>
                       </tr>
                       <tr class="light-bkcolor">
                         <td class="border-right">0-500Mbps</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">0.65</td>
+                        <td class="border-right">3.93</td>
+                        <td class="border-right">1.95</td>
+                        <td class="border-right">5.25</td>
+                        <td class="border-right">3.61</td>
                       </tr>
                       <tr>
                         <td class="border-right">500Mbps（含）-5Gbps</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">0.63</td>
+                        <td class="border-right">3.81</td>
+                        <td class="border-right">1.83</td>
+                        <td class="border-right">5.13</td>
+                        <td class="border-right">3.48</td>
                       </tr>
                       <tr class="light-bkcolor">
                         <td class="border-right">5Gbps（含）-20Gbps</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">0.60</td>
+                        <td class="border-right">3.66</td>
+                        <td class="border-right">1.70</td>
+                        <td class="border-right">5.00</td>
+                        <td class="border-right">3.34</td>
                       </tr>
                       <tr>
-                        <td class="border-right">大于 20Gbps</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">大于等于 20Gbps</td>
+                        <td class="border-right">0.597</td>
+                        <td class="border-right">3.61</td>
+                        <td class="border-right">1.63</td>
+                        <td class="border-right">4.85</td>
+                        <td class="border-right">3.28</td>
+                      </tr>
+                      <tr class="light-bkcolor">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="6">
+                          <p class="pricing-table-subtitle">
+                            <span>计费方式：每月出账后付费（账单）</span><br>
+                            <span>计费规则：按直播日峰值带宽的阶梯价格计费，统计一个自然日内产生的带宽最高值（单位：Mbps）乘以对应的阶梯价格，为最终结算标准</span><br>
+                            <span>计费周期：按月出账，具体出账时间以系统为准</span><br>
+                            <span>计费方向：默认只收取下行播放费用，针对上下行不均衡业务（上行推流：下行播放 > 1 : 40）需要收取上行推流费用</span>
+                          </p>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
@@ -1329,47 +1352,71 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
-                          直播按流量计费
+                        <th width="340" class="thead-title th-init border-bottom" colspan="6">
+                          直播流量计费<span class="grey-unit">（如需使用流量计费请联系销售开通服务）</span>
                           <br>
                           <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：直播观看流量</span><br>
-                            <span>计费规则：按当月达到的流量阶梯价格计费，当月进行超额累进，流量累积到自然月底，下月自动清零重新累积</span><br>
-                            <span>计费周期：一个自然月，每月初零点后出上月账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
+                            <br>
+                            <span>按不同区域流量阶梯价格计费，流量累积到自然月底，下月自动清零重新累积。</span>
                             </p>
                         </th>
                       </tr>
                       <tr>
-                        <th class="th-init border-right">流量阶梯</th>
-                        <th class="th-init border-right">中国大陆<span class="grey-unit">（元/GB/天）</span></th>
-                        <th class="th-init border-right">港澳台及海外<span class="grey-unit">（元/GB/天）</span></th>
+                        <th class="th-init border-right">流量阶梯<span class="grey-unit">（元/GB/天）</span></th>
+                        <th class="th-init border-right">中国大陆</th>
+                        <th class="th-init border-right">亚洲<p class="grey-unit th-p"> （港澳台/东南亚/印度）</p></th>
+                        <th class="th-init border-right">欧洲/北美洲</th>
+                        <th class="th-init border-right">南美洲</th>
+                        <th class="th-init border-right">大洋洲与其他</th>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">0-10TB（含）</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">0-10TB</td>
+                        <td class="border-right">0.26</td>
+                        <td class="border-right">0.86</td>
+                        <td class="border-right">0.46</td>
+                        <td class="border-right">1.32</td>
+                        <td class="border-right">1.32</td>
                       </tr>
                       <tr>
-                        <td class="border-right">10TB-50TB（含）</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">10TB（含）-50TB</td>
+                        <td class="border-right">0.25</td>
+                        <td class="border-right">0.84</td>
+                        <td class="border-right">0.46</td>
+                        <td class="border-right">1.32</td>
+                        <td class="border-right">1.32</td>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">50TB-100TB（含）</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">50TB（含）-100TB</td>
+                        <td class="border-right">0.23</td>
+                        <td class="border-right">0.71</td>
+                        <td class="border-right">0.39</td>
+                        <td class="border-right">1.18</td>
+                        <td class="border-right">1.18</td>
                       </tr>
                       <tr>
-                        <td class="border-right">100TB-1PB（含）</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">100TB（含）-1PB</td>
+                        <td class="border-right">0.19</td>
+                        <td class="border-right">0.63</td>
+                        <td class="border-right">0.35</td>
+                        <td class="border-right">0.91</td>
+                        <td class="border-right">0.91</td>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">大于1PB（含）</td>
-                        <td class="border-right"></td>
-                        <td class="border-right"></td>
+                        <td class="border-right">大于等于1PB</td>
+                        <td class="border-right">0.16</td>
+                        <td class="border-right">0.55</td>
+                        <td class="border-right">0.30</td>
+                        <td class="border-right">0.84</td>
+                        <td class="border-right">0.84</td>
+                      </tr>
+                      <tr>
+                        <th width="340" class="thead-title th-init border-bottom" colspan="6">
+                          <p class="pricing-table-subtitle">
+                            <span>计费规则：</span><br>
+                            <span>1. 计费规则：按月到达阶梯计费，统计一个自然月内的流量累计值乘以对应的阶梯价格</span><br>
+                            <span>2. 计费周期：按月出账，具体出账时间以系统为准</span><br>
+                            </p>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
@@ -1382,21 +1429,13 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
-                          预付费直播流量资源包
-                          <br>
-                          <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：直播观看流量</span><br>
-                            <span>计费规则：按当月达到的流量阶梯价格计费，当月进行超额累进，流量累积到自然月底，下月自动清零重新累积</span><br>
-                            <span>计费周期：一个自然月，每月初零点后出上月账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
-                            </p>
+                        <th width="340" class="thead-title th-init border-bottom" colspan="2">
+                          预付费直播流量包
                         </th>
                       </tr>
                       <tr>
-                        <th class="th-init border-right">流量资源包规格</th>
-                        <th class="th-init border-right">价格<span class="grey-unit">（元/年）</span></th>
+                        <th class="th-init border-right">流量包规格</th>
+                        <th class="th-init border-right">流量包价格<span class="grey-unit">（元/年）</span></th>
                       </tr>
                       <tr class="light-bkcolor">
                         <td class="border-right">100GB</td>
@@ -1404,31 +1443,42 @@
                       </tr>
                       <tr>
                         <td class="border-right">500GB</td>
-                        <td class="border-right">118</td>
+                        <td class="border-right">116</td>
                       </tr>
                       <tr class="light-bkcolor">
                         <td class="border-right">1TB</td>
-                        <td class="border-right">236</td>
+                        <td class="border-right">233</td>
                       </tr>
                       <tr>
                         <td class="border-right">5TB</td>
-                        <td class="border-right">1086</td>
+                        <td class="border-right">1096</td>
                       </tr>
                       <tr class="light-bkcolor">
                         <td class="border-right">10TB</td>
-                        <td class="border-right">2172</td>
+                        <td class="border-right">2170</td>
                       </tr>
                       <tr>
                         <td class="border-right">50TB</td>
-                        <td class="border-right">8972</td>
+                        <td class="border-right">8906</td>
                       </tr>
                       <tr class="light-bkcolor">
                         <td class="border-right">200TB</td>
-                        <td class="border-right">30198</td>
+                        <td class="border-right">30824</td>
                       </tr>
                       <tr>
                         <td class="border-right">1PB</td>
-                        <td class="border-right">149589</td>
+                        <td class="border-right">150445</td>
+                      </tr>
+                      <tr class="light-bkcolor">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="2">
+                          <p class="pricing-table-subtitle">
+                            <span>计费规则：</span><br>
+                            <span>1. 有效期：可以选择当月立即生效或次月生效，有效期一年到期</span><br>
+                            <span>2. 仅支持中国大陆地区按月结流量计费的抵扣，抵扣完毕后，超出部分按流量（公开价）后计费</span><br>
+                            <span>3. 支持购买多个流量包叠加使用，有效期不叠加，优先抵扣先过期的流量包</span><br>
+                            <span>4. 已购买但从未使用可以联系销售进行退款</span>
+                            </p>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
@@ -1441,55 +1491,48 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="4">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
                           直播转码
-                          <br>
-                          <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：直播流转码时长</span><br>
-                            <span>计费规则：以编码方式和分辨率计费，按一个自然日内不同编码标准和不同分辨率规格的转码时长乘以对应的单价，以分钟为计费单位，不足一分钟计一分钟</span><br>
-                            <span>计费周期：按日计费，每日零点后初前一日账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
-                            </p>
                         </th>
                       </tr>
                       <tr>
                         <th class="th-init border-right">编码方式</th>
                         <th class="th-init border-right">分辨率</th>
-                        <th class="th-init border-right">名称</th>
                         <th class="th-init border-right">价格<span class="grey-unit">（元/分钟）</span></th>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right" rowspan="3">H.264</td>
-                        <td class="border-right">480P（含）及以下</td>
-                        <td class="border-right">流畅</td>
-                        <td class="border-right"></td>
+                        <td class="border-right" rowspan="6">H.264</td>
+                        <td class="border-right">480P（原流畅）</td>
+                        <td class="border-right">0.016</td>
                       </tr>
                       <tr>
-                        <td class="border-right">480P-720P（含）</td>
-                        <td class="border-right">标清，高清</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">720P（原标清/高清）</td>
+                        <td class="border-right">0.0325</td>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">720P-1080P（含）</td>
-                        <td class="border-right">超清/td>
-                        <td class="border-right"></td>
+                        <td class="border-right">1080P（原超清）</td>
+                        <td class="border-right">0.08</td>
                       </tr>
                       <tr>
-                        <td class="border-right" rowspan="3">H.265</td>
-                        <td class="border-right">480P（含）及以下</td>
-                        <td class="border-right">流畅</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">2K</td>
+                        <td class="border-right">0.14</td>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">480P-720P（含）</td>
-                        <td class="border-right">标清，高清</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">4K</td>
+                        <td class="border-right">0.28</td>
                       </tr>
                       <tr>
-                        <td class="border-right">720P-1080P（含）</td>
-                        <td class="border-right">超清/td>
-                        <td class="border-right"></td>
+                        <td class="border-right">4K以上（请联系销售开通）</td>
+                        <td class="border-right">具体请联系销售询价</td>
+                      </tr>
+                      <tr class="light-bkcolor">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
+                          <p class="pricing-table-subtitle">
+                            <span>计费规则：</span><br>
+                            <span>1. 计费规则：以编码方式和分辨率计费，按一个自然日内不同编码标准和不同分辨率规格的转码时长乘以对应的单价，以分钟为计费单位，不足一分钟计一分钟</span><br>
+                            <span>2. 计费周期：按月计费，具体出账时间以系统为准</span><br>
+                            </p>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
@@ -1502,37 +1545,38 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
-                          导播台
-                          <br>
-                          <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：直播流转码时长</span><br>
-                            <span>计费规则：以编码方式和分辨率计费，按一个自然日内不同编码标准和不同分辨率规格的转码时长乘以对应的单价，以分钟为计费单位，不足一分钟计一分钟</span><br>
-                            <span>计费周期：按日计费，每日零点后初前一日账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
-                            </p>
+                        <th width="340" class="thead-title th-init border-bottom" colspan="2">
+                          导播台计费
                         </th>
                       </tr>
                       <tr>
-                        <th class="th-init border-right">输出规格<span class="grey-unit">（ H.264）</span></th>
-                        <th class="th-init border-right">名称</th>
+                        <th class="th-init border-right">导播输出规格（H.264）</th>
                         <th class="th-init border-right">国内价格<span class="grey-unit">（元/分钟）</span></th>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">480P（含）及以下</td>
-                        <td class="border-right">流畅</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">480P</td>
+                        <td class="border-right">0.2</td>
                       </tr>
                       <tr>
-                        <td class="border-right">480P-720P（含）</td>
-                        <td class="border-right">标清，高清</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">720P</td>
+                        <td class="border-right">0.35</td>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">720P-1080P（含）</td>
-                        <td class="border-right">超清/td>
-                        <td class="border-right"></td>
+                        <td class="border-right">1080P</td>
+                        <td class="border-right">0.6</td>
+                      </tr>
+                      <tr>
+                        <td class="border-right">2K及以上（请联系销售开通）</td>
+                        <td class="border-right">具体请联系销售询价</td>
+                      </tr>
+                      <tr class="light-bkcolor">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="2">
+                          <p class="pricing-table-subtitle">
+                            <span>计费规则：</span><br>
+                            <span>1. 计费规则：按照导播流不同规格输出的时长乘以对应的单价</span><br>
+                            <span>2. 计费周期：按月计费，具体出账时间以系统为准</span><br>
+                            </p>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
@@ -1545,87 +1589,38 @@
                   <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
                     <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="2">
                           直播鉴黄
-                          <br>
-                          <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：直播鉴黄截图数量</span><br>
-                            <span>计费规则：一个自然月内鉴黄截图张数乘以对应梯度单价，单位：元/千张</span><br>
-                            <span>计费周期：按月计费，每月初零点后出上月账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
-                            </p>
                         </th>
                       </tr>
                       <tr>
-                        <th class="th-init border-right">截图数量</th>
-                        <th class="th-init border-right">国内价格<span class="grey-unit">（元/千张）</span></th>
+                        <th class="th-init border-right">总调用量P<span class="grey-unit">(单位：万张)</span></th>
+                        <th class="th-init border-right">调用单价<span class="grey-unit">(单位：元/百张)</span></th>
                       </tr>
                       <tr class="light-bkcolor">
-                        <td class="border-right">>0</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">P < = 300</td>
+                        <td class="border-right">0.18</td>
                       </tr>
                       <tr>
-                        <td class="border-right">≥1000</td>
-                        <td class="border-right"></td>
+                        <td class="border-right">300 < P <=1500</td>
+                        <td class="border-right">0.16</td>
                       </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- 直播连麦 -->
-              <div class="hash" id="rtn" name="rtn">
-                <div class="table-responsive pricing-white-bg">
-                  <table width="1060" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
-                    <tbody>
                       <tr class="light-bkcolor">
-                        <th width="340" class="thead-title th-init border-bottom" colspan="3">
-                          直播连麦
-                          <br>
+                        <td class="border-right">1500 < P <= 3000</td>
+                        <td class="border-right">0.15</td>
+                      </tr>
+                      <tr>
+                        <td class="border-right">P > 3000</td>
+                        <td class="border-right">0.13</td>
+                      </tr>
+                      <tr class="light-bkcolor">
+                        <th width="340" class="thead-title th-init border-bottom" colspan="2">
                           <p class="pricing-table-subtitle">
-                            <span>计费说明：</span><br>
-                            <span>计费项：实时互动和服务端合流</span><br>
-                            <span>计费规则：一个自然月内实时互动时长和服务端合流时长乘以对应梯度单价进行计费，单位：元/分钟</span><br>
-                            <span>计费周期：按月计费，每月初零点后出前一日账单并扣费，具体出账时间以系统为准</span><br>
-                            <span>计费方式：后付费</span>
+                            <span>计费规则：</span><br>
+                            <span>1. 计费规则：一个自然月内按照鉴黄调用量乘以对应的单价</span><br>
+                            <span>2. 计费周期：按月计费，具体出账时间以系统为准</span><br>
                             </p>
                         </th>
-                      </tr>
-                      <tr>
-                        <th class="th-init border-right">收费项目</th>
-                        <th class="th-init border-right">计价区间</th>
-                        <th class="th-init border-right">价格<span class="grey-unit">（元/千张）</span></th>
-                      </tr>
-                      <tr class="light-bkcolor">
-                        <td class="border-right" rowspan="3">实时互动</td>
-                        <td class="border-right">标清</td>
-                        <td class="border-right"></td>
-                      </tr>
-                      <tr>
-                        <td class="border-right">高清</td>
-                        <td class="border-right"></td>
-                      </tr>
-                      <tr class="light-bkcolor">
-                        <td class="border-right">超清</td>
-                        <td class="border-right"></td>
-                      </tr>
-                      <tr>
-                        <td class="border-right" rowspan="4">服务端合流</td>
-                        <td class="border-right">纯音频</td>
-                        <td class="border-right"></td>
-                      </tr>
-                      <tr class="light-bkcolor">
-                        <td class="border-right">标清</td>
-                        <td class="border-right"></td>
-                      </tr>
-                      <tr>
-                        <td class="border-right">高清</td>
-                        <td class="border-right"></td>
-                      </tr>
-                      <tr class="light-bkcolor">
-                        <td class="border-right">超清</td>
-                        <td class="border-right"></td>
                       </tr>
                     </tbody>
                   </table>
