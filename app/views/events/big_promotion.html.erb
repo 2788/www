@@ -25,12 +25,15 @@
   </div>
 </div>
 
-<%# 企业上云侧边栏 %>
+<%# 企业上云下线 %>
+<%# https://jira.qiniu.io/browse/BO-9032 %>
+<% if false -%>
 <div class="ecloud-helper">
   <a href="<%= I18n.t("views.events.bigpromotion.ecloud.link") -%>" title="<%= I18n.t("views.events.bigpromotion.ecloud.title") -%>" target="_blank">
     <%= image_tag I18n.t("views.events.bigpromotion.ecloud.icon"), alt: I18n.t("views.events.bigpromotion.ecloud.title"), width: "100%" -%>
   </a>
 </div>
+<% end -%>
 
 <%# 导航 %>
 <div class="features-nav bigpromotion-nav hidden-xs">
