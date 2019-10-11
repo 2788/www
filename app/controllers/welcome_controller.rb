@@ -70,6 +70,10 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def sdk_agreement
+    render "sla"
+  end
+
   def sla_kodo
     render "sla"
   end
