@@ -91,6 +91,7 @@ Rails.application.routes.draw do
     get '/company',                to: 'welcome#company'
     get '/case',                   to: 'welcome#case'
     get '/user-agreement',         to: 'welcome#user_agreement'
+    get '/sdk-agreement',          to: 'welcome#sdk_agreement'
     get '/sla-kodo',               to: 'welcome#sla_kodo'
     get '/sla-kodo-old',           to: 'welcome#sla_kodo_old'
     get '/sla-kodo-new',           to: 'welcome#sla_kodo_new'
