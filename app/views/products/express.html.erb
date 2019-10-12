@@ -1,0 +1,165 @@
+<%# banner %>
+<div class="jumbotron hero express-hero">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-sm-8 col-xs-10 col-left">
+          <h1><%= I18n.t("views.products.express.title") -%></h1>
+          <p><%= I18n.t("views.products.express.desc") -%></p>
+          <div class="actions">
+            <% I18n.t("views.products.express.actions").each do |action| -%>
+              <% if action[:type] == "should-signup" -%>
+              <%= link_to action[:title], signup_url(), class: action[:class], id: action[:id], target: action[:target] -%>
+              <% else -%>
+              <%= link_to action[:title], action[:link], class: action[:class], id: action[:id], target: action[:target] -%>
+              <% end -%>
+            <% end -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# slogan %>
+<div class="express-slogan">
+  <div class="container">
+    <div class="slogan">
+      <span>让数据不再沉默</span>
+    </div>
+  </div>
+</div>
+
+<%# specialty %>
+<div class="express-specialty">
+  <div class="container">
+    <div class="suspension section">
+      <div class="row">
+        <% I18n.t("views.products.express.specialty").each do |event| %>
+          <div class="col-sm-4 col-xs-4 col-clear">
+            <div class="suspension-item">
+            <%= image_tag event[:icon], class: "media-object", alt: event[:title], width: 110 %>
+              <div class="desc">
+                <p><%= event[:title] -%></p>
+                <p><%= event[:desc] -%></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# panoramic tab %>
+<div class="express-panoramic">
+  <div class="container">
+    <div class="panoramic section">
+      <div>
+      <%= image_tag I18n.t("views.products.express.panoramic.image"), width:"90%" -%>
+      </div>
+      <div class="row panoramic-list">
+      <% I18n.t("views.products.express.panoramic.list").each do |col| %>
+        <div class="col-md-6 col-sm-6 col-xs-12 col-own">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag col[:icon], class: "media-object", alt: col[:title], width: 20 -%></a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                <%= col[:title] -%>
+              </h4>
+              <p><%= col[:desc] -%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%# feature tab %>
+<div class="express-feature">
+  <div class="container">
+    <div class="feature section">
+      <div class="row">
+        <% I18n.t("views.products.express.feature").each do |event| %>
+          <div class="col-sm-3 col-xs-6 col-clear feature-item">
+            <%= image_tag event[:icon], class: "media-object", alt: event[:title], width: 110 %>
+              <div class="desc">
+                <p><%= event[:title] -%></p>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# scene tab %>
+<div class="express-scene">
+  <div class="container">
+  <div class="scene section">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
+        <% I18n.t("views.products.express.scene.tabs").each do |tab| -%>
+          <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+        <% end -%>
+      </ul>
+      <div class="tab-content">
+        <% I18n.t("views.products.express.scene.sections").each do |sec| -%>
+          <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-6 col-left">
+              <%= image_tag sec[:image], alt: sec[:title], width: "90%" -%>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="col-right">
+                  <h4><%= sec[:title] -%></h4>
+                  <% sec[:rows].each do |row| -%>
+                    <div class="col-md-2 col-sm-2 col-xs-2 row-title">
+                    <%= row[:title] -%>:
+                    </div>
+                    <div class="col-md-10 col-sm-10 col-xs-10 row-content">
+                    <% row[:content].each do |item| -%>
+                      <p><%= item -%></p>
+                    <% end -%>
+                    </div>
+                  <% end -%>
+                </div>
+              </div>
+            </div>
+          </section>
+        <% end -%>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# client tab %>
+<div class="tab-content-client express-client">
+  <div class="container">
+    <div class="client section">
+      <div id="cases-slider" class="conveyor slick-slider draggable">
+        <% I18n.t("views.products.express.client.list").each do |item| -%>
+          <div><%= image_tag item[:image], alt: item[:title], title: item[:title], class: "case", width: item[:width] -%></div>
+        <% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# product tab %>
+<div class="express-product">
+  <div class="container">
+    <div class="product section">
+      <ul class="row">
+        <% I18n.t("views.products.express.product").each do |item| -%>
+          <li class="col-md-6 col-sm-6 col-xs-6 col-own"><%= link_to item[:title], item[:link], target: item[:target], title: item[:title] -%></li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
