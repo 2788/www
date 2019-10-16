@@ -58,11 +58,11 @@ zh-CN:
             desc: "三种免费套餐任意选"
             link: "/products/kodo/goglobal?entry=index-advert"
             jumphost: ""
-          - title: "CDN&nbsp;闲时流量包<span class='advert-tip'>HOT</span>"
+          - title: "CDN&nbsp;资源包特惠选<span class='advert-tip'>HOT</span>"
             class: "border-l"
             jump_label_class: ""
-            desc: "CDN&nbsp;闲时包&nbsp;低至&nbsp;4.5&nbsp;折"
-            link: "/events/cdn-package?entry=index-advert"
+            desc: "短视频&nbsp;SDK&nbsp;免费送"
+            link: "/events/fusion-package?entry=index-advert"
             jumphost: ""
           - title: "产品动态<span class='advert-tip'>NEW</span>"
             class: "border-l hidden-xs"
@@ -7337,6 +7337,10 @@ zh-CN:
       title: CDN 闲时流量_CDN 资源包 - 七牛云
       keywords: CDN 流量包，CDN 闲时流量包，CDN 资源包，七牛云 CDN
       description: 七牛云针对 0~9 点的闲时流量，推出特惠 CDN 闲时流量包。CDN 深夜不打烊，4.5 折起特惠限时抢。
+    events_fusion_package:
+      title: CDN资源包_CDN套餐包 - 七牛云
+      keywords: CDN资源包，CDN闲时包，CDN套餐包，短视频SDK，七牛云CDN
+      description: 七牛云CDN资源包特惠选，短视频SDK免费送。活动期间购买指定CDN资源包单笔订单达一定额度，或直接购买CDN短视频套餐包，可以获得对应版本短视频SDK免费使用权限。
     events_qvmsumsale:
       title: 云服务器活动_云主机活动 - 七牛云主机
       keywords: 云服务器活动，云主机活动，七牛云，云短信

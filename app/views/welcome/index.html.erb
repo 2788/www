@@ -21,22 +21,25 @@
   </div>
   <% end -%>
 
-  <%# cdn 闲时包新活动 %>
-  <%# 活动延长，先不设置下线时间 %>
-  <%# https://jira.qiniu.io/browse/BO-8873 %>
-  <div class="jumbotron hero hero-cdn-package hero-cdnpackage-index">
+  <%# cdn 短视频资源包活动 %>
+  <%# 活动时间 2019 年 10 月 16 日 - 2019 年 11 月 30 日 %>
+  <%# https://jira.qiniu.io/browse/BO-9213 %>
+  <% if Time.now.to_i < Time.local(2019, 12, 1).to_i -%>
+  <div class="jumbotron hero hero-fusion-package-index">
     <div class="container">
       <div class="middle-container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1>CDN&nbsp;闲时包&nbsp;<span class="text-warn">低至&nbsp;4.5&nbsp;折</span></h1>
-            <p><span class="text-huge text-warn">10G</span>&nbsp;闲时流量&nbsp;<span class="text-huge text-warn">1&nbsp;分</span>抢&nbsp;全场&nbsp;<span class="text-huge text-warn">4.5&nbsp;折</span>起购不停</p>
-            <%= link_to "立即购买", events_cdn_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+            <h1>CDN&nbsp;资源包特惠选</h1>
+            <h3>短视频&nbsp;SDK&nbsp;免费送</h3>
+            <%= image_tag "banner/banner-fusion-package-middle.png", title: "CDN 资源包特惠选 短视频 SDK 免费送", alt: "CDN 资源包特惠选 短视频 SDK 免费送", width: 600 -%>
+            <%= link_to "立即抢购", events_fusion_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <% end -%>
 
   <a title="七牛云 2020 届秋季校园招聘" alt="七牛云 2020 届秋季校园招聘" href="<%= Rails.configuration.career_host + "/school?entry=index-banner" -%>" target="_blank">
     <div class="jumbotron hero hero-career-school-2019-autumn">

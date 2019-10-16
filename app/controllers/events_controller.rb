@@ -47,6 +47,9 @@ class EventsController < ApplicationController
   def cdn_package
   end
 
+  def fusion_package
+  end
+
   def qvmsumsale
   end
 

@@ -307,7 +307,9 @@
             <div class="intro">
               <h2 class="title-left">
                 价格详情
-                <%= link_to raw("CDN 闲时包 低至 <span class='text-danger'>4.5 折</span> >>"), events_cdn_package_path + "?entry=index-prices", class: "price-events-link", title: "CDN 闲时包 低至 4.5 折", target: "_blank" -%>
+                <% if Time.now.to_i < Time.local(2019, 12, 1).to_i -%>
+                <%= link_to "CDN 资源包特惠选 短视频 SDK 免费送", events_fusion_package_path + "?entry=index-prices", class: "price-events-link", title: "CDN 资源包特惠选 短视频 SDK 免费送", target: "_blank" -%>
+                <% end -%>
               </h2>
             </div>
             <div class="hash" id="inland" name="inland">

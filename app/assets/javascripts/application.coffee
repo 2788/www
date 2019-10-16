@@ -55,6 +55,7 @@
 #= require kodo_goglobal
 #= require cdnpackage
 #= require dora_avsmart
+#= require fusion_package
 
 #= require uuid
 #= require sensors_service
