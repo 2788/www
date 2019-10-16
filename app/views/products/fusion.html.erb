@@ -10,7 +10,9 @@
             <%= link_to "产品价格", prices_path + "?source=fusion", class: "btn btn-lg btn-hollow m-b-xs" -%>
             <h5><%= link_to raw("域名型 DV SSL 证书免费申请 &gt;&gt;"), ssl_path, target: "_blank", class: "out_link" -%></h5>
             <h5 class="margin-l-negative">「 CDN 动态加速&nbsp;<%= link_to "立即使用", Rails.configuration.portal_host + "/cdn/domain/create?platform=dynamic&guideDynamic#platform", target: "_blank", class: "out_link", id: "fusion-page-employ" -%> 」</h5>
-            <h5><%= link_to "CDN 闲时流量包 低至 4.5 折", events_cdn_package_path + "?entry=fusion-advert", target: "_blank", class: "out_link" -%></h5>
+            <% if Time.now.to_i < Time.local(2019, 12, 1).to_i -%>
+            <h5><%= link_to "CDN 资源包特惠选 短视频 SDK 免费送", events_fusion_package_path + "?entry=fusion-advert", target: "_blank", class: "out_link" -%></h5>
+            <% end -%>
           </div>
         </div>
         <div class="col-sm-4 hidden-xs">

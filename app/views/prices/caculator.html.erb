@@ -817,7 +817,9 @@
                 <dt class="checkbox"><input type="checkbox" class="caculatorTabs" value="fusion" checked>
                   <label>
                     融合 CDN
-                    <%= link_to raw("CDN 闲时包 低至 <span class='text-danger'>4.5 折</span> >>"), events_cdn_package_path + "?entry=index-prices", class: "price-events-link m-l-1 v-a-base", title: "CDN 闲时包 低至 4.5 折", target: "_blank" -%>
+                    <% if Time.now.to_i < Time.local(2019, 12, 1).to_i -%>
+                    <%= link_to "CDN 资源包特惠选 短视频 SDK 免费送", events_fusion_package_path + "?entry=index-prices", class: "price-events-link m-l-1 v-a-base", title: "CDN 资源包特惠选 短视频 SDK 免费送", target: "_blank" -%>
+                    <% end -%>
                   </label>
                 </dt>
                 <div class="active" id="tab-caculator-fusion">

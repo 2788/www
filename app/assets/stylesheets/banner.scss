@@ -847,6 +847,40 @@
     }
   }
 
+  &.hero-fusion-package-index {
+    background-image: image-url("banner/banner-fusion-package-index.jpg") !important;
+    .container {
+      .middle-container {
+        top: 44%;
+        text-align: center;
+        h1 {
+          margin-bottom: 0.20rem;
+          font-size: 0.68rem;
+          font-weight: 600;
+        }
+        h3 {
+          margin-top: 0;
+          font-size: 0.34rem;
+          font-weight: 600;
+        }
+        img {
+          margin: 0 auto;
+          margin-top: 0.20rem;
+        }
+        .btn-banner {
+          margin-top: 0.20rem;
+          border: none;
+          background-color: #FDD94D;
+          &:hover {
+            -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+
   &.hero-dora-avsmart-index {
     background-image: image-url("banner/banner-dora-avsmart-index.jpg") !important;
     .container {
@@ -1749,6 +1783,23 @@
 
           p {
             font-size: 0.16rem !important;
+          }
+        }
+      }
+    }
+
+    &.hero-fusion-package-index {
+      .container {
+        .middle-container {
+          top: 40%;
+          h1 {
+            font-size: 0.50rem;
+          }
+          h3 {
+            font-size: 0.26rem;
+          }
+          img {
+            width: 400px;
           }
         }
       }
