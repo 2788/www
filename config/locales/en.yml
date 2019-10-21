@@ -2308,8 +2308,8 @@ en:
               title: "Growth Hacking"
               desc: ""
       express:
-        title: "数据魔盒"
-        desc: "数据魔盒助力企业探索数据、创造价值、预见未来。"
+        title: "机器数据分析平台"
+        desc: "Pandora 2.0 全新发布，助力企业探索数据、创造价值、预见未来。"
         actions:
           - title: "立即试用"
             class: "btn btn-lg btn-default m-r m-b-xs express-banner-btn"
@@ -2534,6 +2534,9 @@ en:
             link: "https://developer.qiniu.com/insight/manual/4677/billing-way"
             target: "_blank"
             type: ""
+        version:
+            title: "平台全面升级，点击了解最新特性"
+            link: "/products/express"
         navs:
           - class: "intLink active"
             href: "#tab-content-panoramic"
@@ -6860,7 +6863,7 @@ en:
       keywords: 日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控
       description: 实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计、业务数据分析等场景，帮助互联网、智能制造、金融、新媒体、物联网等行业数字化升级。
     products_express:
-      title: 数据魔盒 - 七牛云
+      title: 机器数据分析平台 - 七牛云
       keywords: 业务分析、物联网载体、安全分析、运维辅助
       description: 助力企业探索数据、创造价值、预见未来。
     products_censor:
