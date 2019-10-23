@@ -6531,6 +6531,8 @@ zh-CN:
             - title: "500GB 存储空间"
               desc: "可选华东、华南、华北地区"
               durations:
+                - value: "kodo-zelda-500GB"
+                  text: "500GB x 6 个月 新用户专享"
                 - value: "kodo-east-500GB"
                   text: "500GB x 12 个月 华东地区"
                 - value: "kodo-south-500GB"
@@ -6538,8 +6540,13 @@ zh-CN:
                 - value: "kodo-north-500GB"
                   text: "500GB x 12 个月 华北地区"
               sections:
-                - id: "kodo-east-500GB"
+                - id: "kodo-zelda-500GB"
                   class: "active"
+                  price: "0.01"
+                  originPrice: "435.12"
+                  link: "/financial/code-celebration#kodo"
+                - id: "kodo-east-500GB"
+                  class: ""
                   price: "373.50"
                   originPrice: "870.24"
                   link: "/financial/code-celebration#kodo"
@@ -6677,7 +6684,7 @@ zh-CN:
                   link: "/financial/code-celebration#fusion"
         sms:
           title: "云通信专场"
-          desc: "新老用户同享！单条价格低至 0.023 元！每名用户最多购买 3 个套餐包 <a href='' target='' class='desc-rule-link' title='云通信专场 - 活动说明' data-toggle='modal' data-target='#zelda-sms-modal'>活动说明&nbsp;></a>"
+          desc: "新用户专享，单条价格低至 0.023 元！每名用户最多购买 3 个套餐包 <a href='' target='' class='desc-rule-link' title='云通信专场 - 活动说明' data-toggle='modal' data-target='#zelda-sms-modal'>活动说明&nbsp;></a>"
           list:
             - title: "75 元短信起跑包"
               desc:
