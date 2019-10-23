@@ -134,7 +134,10 @@ $(document).ready ->
         # qvm1rmb 活动页购买按钮跳转链接
         else if $(e.target).hasClass 'btn-qvm1rmb'
           href += '/events/qvm1rmb'
-        $(this).prop('href', href)
+
+        # 2019 1024 活动暂时屏蔽掉活动页面跳转 portal 时 url 里的 ref 信息
+        if !$(e.target).hasClass('btn-zelda') && !$(e.target).hasClass('banner-img-zelda')
+          $(this).prop('href', href)
 
       dataToggle = $(this).attr('data-toggle')
       dataTarget = $(this).attr('data-target')
