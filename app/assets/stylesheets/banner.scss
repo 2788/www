@@ -881,6 +881,20 @@
     }
   }
 
+  &.hero-zelda-index {
+    background-color: #321974;
+    background-image: none !important;
+    .container {
+      .middle-container {
+        top: 42%;
+        img {
+          margin: 0 auto;
+          margin-top: 0.20rem;
+        }
+      }
+    }
+  }
+
   &.hero-dora-avsmart-index {
     background-image: image-url("banner/banner-dora-avsmart-index.jpg") !important;
     .container {
@@ -1800,6 +1814,18 @@
           }
           img {
             width: 400px;
+          }
+        }
+      }
+    }
+
+    &.hero-zelda-index {
+      .container {
+        .middle-container {
+          top: 40%;
+          img {
+            width: 90%;
+            max-width: 560px;
           }
         }
       }

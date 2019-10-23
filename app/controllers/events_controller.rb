@@ -149,6 +149,45 @@ class EventsController < ApplicationController
     return
   end
 
+  # 2019 年 1024 活动
+  # https://jira.qiniu.io/browse/BO-9137
+  def zelda
+  end
+
+  def is_zelda_end
+    time_conf = Rails.configuration.zelda
+    if time_conf.nil? || time_conf.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    end_year = time_conf[:end_year]
+    end_month = time_conf[:end_month]
+    end_date = time_conf[:end_date]
+    if end_year.nil? || end_year.blank? || end_month.nil? || end_month.blank? || end_date.nil? || end_date.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    current_time = Time.now
+    end_time = Time.local(end_year, end_month, end_date, 0, 0, 0)
+    if current_time < end_time
+      render json: {
+        "is_end": false,
+      }
+      return
+    end
+
+    render json: {
+      "is_end": true,
+    }
+    return
+  end
+
   def enterpriseoncloud
   end
 

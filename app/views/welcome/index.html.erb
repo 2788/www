@@ -1,6 +1,25 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 2019 年 1024 大促活动 banner %>
+  <%# https://jira.qiniu.io/browse/BO-9137 %>
+  <% if Time.now.to_i < Time.local(2019, 11, 11).to_i -%>
+  <div class="jumbotron hero hero-zelda-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <a href="<%= events_20191024_path + "?entry=index-banner" -%>" title="1024 码上狂欢日，不用比价直接买" target="_blank" >
+              <%= image_tag "banner/banner-zelda-index.jpg", title: "1024 码上狂欢日，不用比价直接买", alt: "1024 码上狂欢日，不用比价直接买", width: 800 -%>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
+
   <%# cdn 短视频资源包活动 %>
   <%# 活动时间 2019 年 10 月 16 日 - 2019 年 11 月 30 日 %>
   <%# https://jira.qiniu.io/browse/BO-9213 %>
