@@ -143,6 +143,11 @@ Rails.application.routes.draw do
     get '/events/2019618', to: 'events#big_promotion'
     # 2019 年 618 活动是否结束
     get '/events/2019618/is_end', to: 'events#is_big_promotion_end'
+    # 2019 年 1024 活动
+    # https://jira.qiniu.io/browse/BO-9137
+    get '/events/20191024', to: 'events#zelda'
+    # 2019 年 1024 活动是否结束
+    get '/events/20191024/is_end', to: 'events#is_zelda_end'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息

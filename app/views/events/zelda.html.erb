@@ -1,0 +1,234 @@
+<%# 2019 年 1024 大促活动落地页 %>
+<%# https://jira.qiniu.io/browse/BO-9137 %>
+
+<%# banner 部分 %>
+<div class="jumbotron hero hero-zelda">
+  <div class="container">
+    <div class="middle-container">
+      <%= image_tag I18n.t("views.events.zelda.banner.middleImg"), class: "banner-middle-img", title: "七牛云 1024 码上狂欢日", alt: "七牛云 1024 码上狂欢日", width: 900 -%>
+      <div class="row zelda-banner-row">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-banner">
+          <a href="<%= Rails.configuration.portal_host + "/financial/code-celebration#kodo" -%>" title="新用户专享 3000GB 云存储资源包 1 分钱抢" target="_blank">
+            <%= image_tag I18n.t("views.events.zelda.banner.kodoImg"), title: "新用户专享 3000GB 云存储资源包 1 分钱抢", alt: "新用户专享 3000GB 云存储资源包 1 分钱抢", width: "100%" -%>
+          </a>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-banner">
+          <a href="<%= Rails.configuration.portal_host + "/financial/code-celebration#fusion" -%>" title="新用户专享 100GB CDN 资源包 7.7 元抢" target="_blank">
+            <%= image_tag I18n.t("views.events.zelda.banner.fusionImg"), class: "bottom-img", title: "新用户专享 100GB CDN 资源包 7.7 元抢", alt: "新用户专享 100GB CDN 资源包 7.7 元抢", width: "100%" -%>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 导航 %>
+<div class="features-nav zelda-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.events.zelda.middlebar").each do |linkbar| -%>
+          <% if linkbar[:type] == "icon" -%>
+          <li class="<%= linkbar[:class] -%>">
+            <a href="<%= linkbar[:href] -%>">
+              <%= image_tag linkbar[:icon], title: linkbar[:title], alt: linkbar[:title], width: "100%" -%>
+            </a>
+          </li>
+          <% elsif linkbar[:type] == "link" -%>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], title: linkbar[:title] -%></li>
+          <% end -%>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# 存储专场 %>
+<div class="features features-zelda features-zelda-kodo tab-content-zelda-kodo">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.zelda.kodo.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.zelda.kodo.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.zelda.kodo.list").each do |kodo| -%>
+      <div class="col-md-4 col-sm-4 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= kodo[:title] -%></h4>
+            <p class="desc"><%= kodo[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <select class="form-control zelda-dropdown zelda-kodo-dropdown">
+                  <% kodo[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <p class="content-price">
+                  <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                  <span class="span-red span-bold m-l">￥</span><span class="span-red span-normal span-bold span-elide"><%= section[:originPrice] -%></span>
+                </p>
+                <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: kodo[:title] + " - 立即购买", class: "btn btn-lg btn-zelda disabled", target: "_blank" -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场 %>
+<div class="features features-zelda features-zelda-fusion tab-content-zelda-fusion">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.zelda.fusion.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.zelda.fusion.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.zelda.fusion.list").each do |fusion| -%>
+      <div class="col-md-6 col-sm-6 col-xs-12 col-item col-fusion">
+       <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= fusion[:title] -%></h4>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <span class="dropdown-title">类型</span>
+                <select class="form-control zelda-dropdown zelda-fusion-dropdown">
+                  <% fusion[:types].each do |type| -%>
+                  <option value="<%= type[:value] -%>"><%= type[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <% fusion[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price-fusion">
+                  <span class="<%= fusion[:flagClass] -%>"><%= fusion[:flagContent] -%></span>
+                  <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                </div>
+                <%= link_to "立即购买", Rails.configuration.portal_host + section[:link], title: fusion[:title] + " - 立即购买", class: "btn btn-lg btn-zelda disabled", target: "_blank" -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云通信专场 %>
+<div class="features features-zelda features-zelda-sms tab-content-zelda-sms">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.zelda.sms.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.zelda.sms.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% I18n.t("views.events.zelda.sms.list").each do |sms| -%>
+      <div class="col-md-4 col-sm-6 col-xs-12 col-item col-sms">
+        <div class="thumbnail">
+          <div class="caption">
+            <h4 class="title"><%= sms[:title] -%></h4>
+            <div class="content-container">
+              <div class="content-desc">
+                <% sms[:desc].each do |desc| -%>
+                <p class="desc"><%= desc -%></p>
+                <% end -%>
+              </div>
+              <div class="content-flag">
+                <% sms[:flags].each do |flag| -%>
+                <span class="<%= flag[:class] -%>"><%= flag[:content] -%></span>
+                <% end -%>
+              </div>
+              <p class="content-price"><span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= sms[:price] -%></span><span class="span-red span-unit">/条</span></p>
+              <%= link_to "立即购买", Rails.configuration.portal_host + sms[:link], title: sms[:title] + " - 立即购买", class: "btn btn-lg btn-zelda disabled", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 存储专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper zelda-modal" id="zelda-kodo-modal" tabindex="-1" role="dialog" aria-labelledby="zelda-kodo-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="zelda-kodo-modal-label">存储专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 11 月 11 日</p>
+        <p class="sub-title">新用户专享礼包</p>
+        <p>活动对象：2019 年 10 月 23 日后注册的七牛云用户</p>
+        <p>购买说明：</p>
+        <p>1、产品为限量抢购产品，每位用户仅可购买 1 次</p>
+        <p class="sub-title">通用优惠礼包</p>
+        <p>活动对象：七牛云新老用户均可参加</p>
+        <p>购买说明：</p>
+        <p>1、各资源包为限量产品，每位用户累计至多购买 6 个</p>
+        <p><br /></p>
+        <p>以上两种类型礼包，用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper zelda-modal" id="zelda-fusion-modal" tabindex="-1" role="dialog" aria-labelledby="zelda-fusion-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="zelda-fusion-modal-label">CDN 专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 11 月 11 日</p>
+        <p>活动对象：2019 年 10 月 1 日后注册的七牛云用户</p>
+        <p>活动规则：</p>
+        <p>1、产品为限量抢购产品，每位用户资源包总计不得超过 3 个。用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>2、CDN 资源包使用规则：</p>
+        <p>•&nbsp;在资源包生效期间内，若当月用量超出可用资源包额度，出账时将优先抵扣完资源包额度，超出部分再按照官网标准结算</p>
+        <p>•&nbsp;资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣；若当过期时间相同时，将优先抵扣闲时资源包</p>
+        <p>•&nbsp;由于活动优惠力度较大，因此购买后无特殊情况无法退款，请确认后再购买</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云通信专场 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper zelda-modal" id="zelda-sms-modal" tabindex="-1" role="dialog" aria-labelledby="zelda-sms-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="zelda-sms-modal-label">云通信专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2019 年 11 月 11 日</p>
+        <p>活动对象：七牛云官网注册用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：短信服务包每名用户最多只能购买 3 个套餐包</p>
+        <p>2、套餐配置：短信包内含标识的短信条数，短信类行为中国大陆的系统短信，可以发送通知类和验证码两种内容</p>
+        <p>3、使用说明：用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效。短信包可以叠加使用，使用顺序以购买时间计算，优先使用先到期的包</p>
+        <p>4、有效期：短信套餐包自生效起 1 年内有效，逾期未使用将自动作废</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有 </p>
+      </div>
+    </div>
+  </div>
+</div>

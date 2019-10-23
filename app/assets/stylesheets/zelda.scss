@@ -1,0 +1,770 @@
+.jumbotron.hero.hero-zelda {
+  margin-bottom: 0;
+  background-image: none;
+  background-color: #321974;
+  .container {
+    .middle-container {
+      top: 46%;
+      text-align: center;
+      .zelda-banner-row {
+        width: 690px;
+        position: absolute;
+        left: calc(50% - 335px);
+        bottom: 18px;
+        .bottom-img {
+          margin-top: 0.10rem;
+        }
+        .activity-end-tip {
+          margin-bottom: 0.35rem;
+        }
+      }
+    }
+  }
+}
+
+.events-page-zelda {
+  .zelda-modal {
+    .modal-dialog {
+      .modal-header {
+        .modal-title {
+          font-size: 0.20rem;
+        }
+      }
+      .modal-body {
+        p {
+          font-size: 0.14rem;
+          line-height: 2.00;
+          .link-box {
+            color: #0092FF;
+            &:hover {
+              text-decoration: underline;
+              text-decoration-color: #0092FF;
+            }
+          }
+          &.sub-title {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-nav.zelda-nav {
+  height: 0.60rem;
+  .container {
+    .nav.nav-tabs {
+      border-bottom: none;
+      li {
+        a {
+          padding: 20px 0 10px 0;
+          font-weight: 600;
+          img {
+            position: absolute;
+            left: 0;
+            top: -5px;
+          }
+          &:hover {
+            color: #AE2929;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  &.fixed {
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    background-color: #FFF;
+    transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    z-index: 999;
+  }
+}
+
+.features-zelda {
+  background-color: #FFD861;
+  .container {
+    .intro {
+      .title, .desc {
+        color: #000;
+      }
+      .title {
+        font-weight: 600;
+      }
+      .desc {
+        .desc-rule-link {
+          color: #000;
+          font-weight: 600;
+          text-decoration: underline;
+        }
+      }
+    }
+    .row {
+      .col-item {
+        .thumbnail {
+          border-radius: 0.15rem;
+          -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          .caption {
+            height: 100%;
+            .title, .desc {
+              text-align: center;
+            }
+            .title {
+              color: #FFF;
+            }
+            .desc {
+              color: #FFF;
+              font-size: 0.12rem;
+              line-height: 0.24rem;
+            }
+            .content-container {
+              width: calc(100% + 27px);
+              margin-top: 0.15rem;
+              margin-left: -13px;
+              padding: 0.10rem;
+              border-radius: 0.10rem;
+              background-color: #FFF;
+              .content-specs {
+                padding: 0 0.20rem;
+                .col-specs {
+                  margin-bottom: 0.10rem;
+                }
+                .span-specs, .span-bold {
+                  font-size: 0.12rem;
+                }
+                .span-bold {
+                  font-weight: 600;
+                }
+              }
+              .content-dropdown {
+                margin: 0.10rem 0 0.20rem;
+                .zelda-dropdown {
+                  height: 40px;;
+                  background-color: #FBFBFB;
+                  cursor: pointer;
+                }
+              }
+              .content-flag {
+                margin-top: 0.10rem;
+                text-align: center;
+              }
+              .flag-empty {
+                padding: 0.02rem 0.10rem;
+                color: #CD4545;
+                border: 1px solid #CD4545;
+                border-radius: 0.04rem;
+                font-size: 0.12rem;
+              }
+              .content-section {
+                display: none;
+                &.active {
+                  display: block;
+                }
+              }
+              .content-price {
+                margin-top: 0.30rem;
+                margin-bottom: 0.20rem;
+                text-align: center;
+              }
+              .m-l {
+                margin-left: 0.20rem;
+              }
+              .span-elide {
+                text-decoration: line-through;
+              }
+              .span-bold {
+                font-size: 0.14rem;
+                font-weight: 600;
+              }
+              .span-red {
+                color: #CD4545;
+              }
+              .span-huge {
+                font-size: 0.40rem;
+              }
+              .span-normal {
+                font-size: 0.20rem;
+              }
+              .span-unit {
+                font-size: 0.14rem;
+              }
+            }
+          }
+        }
+      }
+      .btn-zelda {
+        width: 100%;
+        padding: 0.10rem;
+        border: none;
+        border-radius: 0.20rem;
+        color: #FFF;
+        font-size: 0.16rem;
+        background-color: #CD4545;
+        &.disabled {
+          color: #868686;
+          background-color: #D6D6D6;
+        }
+        &:hover {
+          color: #FFF;
+          -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+        }
+      }
+    }
+  }
+}
+
+.features-zelda-kodo {
+  .container {
+    .row {
+      .col-kodo {
+        .thumbnail {
+          height: 3.24rem;
+          background: -webkit-linear-gradient(#FF7616, #F93300);
+          background: -o-linear-gradient(#FF7616, #F93300);
+          background: -moz-linear-gradient(#FF7616, #F93300);
+          background: linear-gradient(#FF7616, #F93300);
+          .caption {
+            .desc {
+              height: 0.30rem;
+            }
+            .content-container {
+              height: calc(100% - 0.74rem);
+              .content-dropdown {
+                .zelda-kodo-dropdown {
+                  width: 80%;
+                  margin: 0 auto;
+                  margin-top: 0.20rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-zelda-fusion {
+  .container {
+    .row {
+      .col-fusion {
+        .thumbnail {
+          height: 1.64rem;
+          margin-bottom: 0.20rem;
+          background: -webkit-linear-gradient(#8D0BFC, #321974);
+          background: -o-linear-gradient(#8D0BFC, #321974);
+          background: -moz-linear-gradient(#8D0BFC, #321974);
+          background: linear-gradient(#8D0BFC, #321974);
+          min-height: 0;
+          .caption {
+            .title {
+              padding: 0 0.20rem;
+              margin: 0.20rem 0 0.30rem;
+              color: #FFF;
+              text-align: left;
+              font-weight: 600;
+            }
+            .content-container {
+              height: calc(100% - 0.58rem);
+              position: relative;
+              .content-dropdown, .content-price-fusion, .btn-zelda {
+                position: absolute;
+              }
+              .content-dropdown {
+                margin: 0;
+                top: calc(50% - 25px);
+                left: 0.20rem;
+                .zelda-fusion-dropdown {
+                  height: 25px;
+                  margin-top: 5px;
+                }
+              }
+              .content-price-fusion {
+                top: calc(50% - 28px);
+                right: 2.40rem;
+                .span-red, .span-huge, .flag-empty {
+                  vertical-align: baseline;
+                }
+                .flag-empty {
+                  position: relative;
+                  margin-right: 0.10rem;
+                  bottom: 0.05rem;
+                }
+              }
+              .btn-zelda {
+                width: 2.00rem;
+                top: calc(50% - 20px);
+                right: 0.20rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-zelda-sms {
+  padding-bottom: 1.40rem;
+  .container {
+    .row {
+      .col-sms {
+        .thumbnail {
+          height: 3.10rem;
+          background: -webkit-linear-gradient(#17B2FF, #203DD7);
+          background: -o-linear-gradient(#17B2FF, #203DD7);
+          background: -moz-linear-gradient(#17B2FF, #203DD7);
+          background: linear-gradient(#17B2FF, #203DD7);
+          .caption {
+            .title {
+              margin-bottom: 0.20rem;
+            }
+            .content-container {
+              .content-desc {
+                margin-top: 0.10rem;
+                margin-bottom: 0.20rem;
+                border-bottom: 1px dashed #D3D3D3;
+                .desc {
+                  color: #000;
+                  font-size: 0.12rem;
+                  line-height: 0.18rem;
+                }
+              }
+              height: calc(100% - 0.38rem);
+              .content-price {
+                margin-top: 0.20rem;
+                margin-bottom: 0.10rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .features-nav.zelda-nav {
+    .container {
+      .nav.nav-tabs {
+        li {
+          a {
+            img {
+              width: calc(100% + 0.30rem);
+              left: -0.30rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda {
+    .container {
+      .row {
+        .col-item {
+          .thumbnail {
+            .caption {
+              .content-container {
+                .content-price {
+                  .span-huge {
+                    font-size: 0.36rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-kodo {
+    .container {
+      .row {
+        .col-kodo {
+          .thumbnail {
+            height: 3.10rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.72rem);
+                .content-price {
+                  .span-huge {
+                    font-size: 0.32rem;
+                  }
+                  .span-normal {
+                    font-size: 0.18rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-fusion {
+    .container {
+      .row {
+        .col-fusion {
+          .thumbnail {
+            .caption {
+              .content-container {
+                .content-price-fusion {
+                  right: 1.50rem;
+                }
+                .btn-zelda {
+                  width: 1.10rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .jumbotron.hero.hero-zelda {
+    .container {
+      .middle-container {
+        .zelda-banner-row {
+          width: 560px;
+          left: calc(50% - 270px);
+          bottom: 14px;
+        }
+      }
+    }
+  }
+
+  .features-nav.zelda-nav {
+    height: 0.50rem;
+    .container {
+      .nav.nav-tabs {
+        li {
+          a {
+            padding: 16px 0 10px 0;
+            font-size: 0.12rem;
+            img {
+              width: calc(100% + 0.50rem);
+              top: -3px;
+              left: -0.40rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda {
+    .container {
+      .row {
+        .col-item {
+          .thumbnail {
+            .caption {
+              .content-container {
+                .content-price {
+                  .span-bold {
+                    font-size: 0.12rem;
+                  }
+                  .span-normal {
+                    font-size: 0.14rem;
+                  }
+                  .span-huge {
+                    font-size: 0.22rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-kodo {
+    .container {
+      .row {
+        .col-kodo {
+          .thumbnail {
+            height: 3.10rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.74rem);
+                .content-price {
+                  .span-huge {
+                    font-size: 0.20rem;
+                  }
+                  .span-normal {
+                    font-size: 0.12rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-fusion {
+    .container {
+      .row {
+        .col-fusion {
+          .thumbnail {
+            .caption {
+              .content-container {
+                .content-dropdown {
+                  .zelda-fusion-dropdown {
+                    width: 60px;
+                  }
+                }
+                .content-price-fusion {
+                  top: calc(50% - 18px);
+                  right: 1.20rem;
+                  .flag-empty {
+                    margin-right: 0;
+                  }
+                  .span-huge {
+                    font-size: 0.26rem;
+                  }
+                }
+                .btn-zelda {
+                  width: 0.90rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .jumbotron.hero.hero-zelda {
+    .container {
+      .middle-container {
+        .banner-middle-img {
+          width: 600px;
+        }
+        .zelda-banner-row {
+          width: 460px;
+          left: calc(50% - 220px);
+          bottom: 12px;
+        }
+      }
+    }
+  }
+
+  .features-nav.zelda-nav {
+    height: 0.68rem;
+    .container {
+      .nav.nav-tabs {
+        li {
+          a {
+            padding: 15px 0 10px 0;
+            font-size: 0.12rem;
+            img {
+              width: calc(100% + 0.50rem);
+              top: -3px;
+              left: -0.40rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-kodo {
+    .container {
+      .row {
+        .col-kodo {
+          .thumbnail {
+            height: 3.50rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.76rem);
+                .content-price {
+                  .span-huge {
+                    font-size: 0.28rem;
+                  }
+                  .span-normal {
+                    font-size: 0.18rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-fusion {
+    .container {
+      .row {
+        .col-fusion {
+          .thumbnail {
+            height: 1.72rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.52rem);
+                .content-dropdown {
+                  .zelda-fusion-dropdown {
+                    width: 70px;
+                  }
+                }
+                .content-price-fusion {
+                  top: calc(50% - 18px);
+                  right: 1.70rem;
+                  .flag-empty {
+                    bottom: 0.08rem;
+                  }
+                  .span-huge {
+                    font-size: 0.36rem;
+                  }
+                }
+                .btn-zelda {
+                  top: calc(50% - 15px);
+                  width: 1.40rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-sms {
+    .container {
+      .row {
+        .col-sms {
+          .thumbnail {
+            height: 3.30rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.36rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron.hero.hero-zelda {
+    .container {
+      .middle-container {
+        top: 50%;
+        .banner-middle-img {
+          width: 100%;
+        }
+        .zelda-banner-row {
+          width: 70%;
+          left: calc(15% + 12px);
+          bottom: 5%;
+          .bottom-img {
+            margin-top: 2%;
+          }
+          .activity-end-tip {
+            margin-bottom: 5%;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-kodo {
+    .container {
+      .row {
+        .col-kodo {
+          .thumbnail {
+            height: 3.56rem;
+            margin-bottom: 0.40rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.76rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-fusion {
+    .container {
+      .row {
+        .col-fusion {
+          .thumbnail {
+            height: 2.40rem;
+            .caption {
+              .title {
+                margin-bottom: 0.40rem;
+              }
+              .content-container {
+                height: calc(100% - 0.62rem);
+                .content-dropdown {
+                  top: calc(50% - 28px);
+                  .zelda-fusion-dropdown {
+                    width: 100px;
+                    height: 30px;;
+                    padding: 3px 12px;
+                  }
+                }
+                .content-price-fusion {
+                  top: 0.20rem;
+                  right: calc(50% - 1.60rem);
+                  .flag-empty {
+                    margin-right: 0;
+                  }
+                }
+                .btn-zelda {
+                  width: calc(100% - 2.00rem);
+                  top: auto;
+                  right: auto;
+                  bottom: 0.20rem;
+                  left: 1.80rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .features-zelda-sms {
+    .container {
+      .row {
+        .col-sms {
+          .thumbnail {
+            height: 3.40rem;
+            margin-bottom: 0.40rem;
+            .caption {
+              .content-container {
+                height: calc(100% - 0.36rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

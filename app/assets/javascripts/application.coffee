@@ -56,6 +56,7 @@
 #= require cdnpackage
 #= require dora_avsmart
 #= require fusion_package
+#= require zelda
 
 #= require uuid
 #= require sensors_service
