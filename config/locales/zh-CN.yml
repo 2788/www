@@ -3355,13 +3355,13 @@ zh-CN:
         demo:
           title: 体验 Demo
           items:
-            - img: sdk/code-ios.jpg
+            - img: sdk/code-ios.png
               desc: 扫码体验 iOS Demo
-            - img: sdk/code-android.jpg
+            - img: sdk/code-android.png
               desc: 扫码体验 Android Demo
           btns:
             - name: Web 端在线体验
-              link: http://s.qnsdk.com/s/guMCz
+              link: https://demo-rtc.qnsdk.com
       plsv:
         plsvs_one:
           - groupid: collections
