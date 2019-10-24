@@ -2999,13 +2999,13 @@ en:
         demo:
           title: Experience demo
           items:
-            - img: sdk/code-ios.jpg
+            - img: sdk/code-ios.png
               desc: Experience demo for iOS
-            - img: sdk/code-android.jpg
+            - img: sdk/code-android.png
               desc: Experience demo for Android
           btns:
             - name: Experience live demo on the website
-              link: http://s.qnsdk.com/s/guMCz
+              link: https://demo-rtc.qnsdk.com
       plsv:
         plsvs_one:
           - groupid: collections
