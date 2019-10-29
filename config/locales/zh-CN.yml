@@ -2402,6 +2402,211 @@ zh-CN:
               icon: "pandora/icon-youxifanzuobi@2x.png"
               title: "游戏反作弊"
               desc: "根据用户行为模式进行数据建模，通过大数据技术，实现对用户质量的识别与量化，判断真实用户，侦测作弊手段，使游戏平台最大可能的避免薅羊毛等事件发生，进而为用户价值挖掘提供数据支撑，提高运营决策效率，优化推广获客成本。"
+      express:
+        title: "机器数据分析平台"
+        desc: "Pandora 2.0 全新发布，助力企业探索数据、创造价值、预见未来。"
+        actions:
+          - title: "立即试用"
+            class: "btn btn-lg btn-default m-r m-b-xs express-banner-btn"
+            id: "express-banner-download"
+            link: "https://portal.qiniu.com/express/download"
+            target: "_blank"
+            type: ""
+          - title: "快速入门"
+            class: "btn btn-lg btn-hollow m-b-xs"
+            id: "express-banner-start"
+            link: "https://developer.qiniu.com/express"
+            target: "_blank"
+            type: ""
+        specialty:
+          - title: 洞察事件
+            desc: 通过数据了解真实系统行为
+            icon: "express/icon-insight.png"
+          - title: 驱动决策
+            desc: 数据分析为企业决策提供可靠支撑
+            icon: "express/icon-decision.png"
+          - title: 加速企业数据化升级
+            desc: 为企业提供可靠解决方案
+            icon: "express/icon-upgrade.png"
+        panoramic:
+          image: "express/analysis_chain.png"
+          list:
+            - title: "业务分析"
+              icon: "express/icon-analysis.png"
+              desc: "关联复杂业务系统，可视化业务流程，有效分析业务难题"
+            - title: "物联网载体"
+              icon: "express/icon-carrier.png"
+              desc: "规范设备数据格式，统一平台监控，洞察系统运行状况"
+            - title: "安全分析"
+              icon: "express/icon-security.png"
+              desc: "识别网络威胁，加速来源威胁排查，保障企业网络安全"
+            - title: "运维辅助"
+              icon: "express/icon-ops.png"
+              desc: "实时监控系统指示，预知故障，提高运维效率"
+        feature:
+          - title: "一键安装，开箱即用"
+            icon: "express/icon-download.png"
+          - title: "零难度采集上传"
+            icon: "express/icon-collect.png"
+          - title: "数据归一化"
+            icon: "express/icon-data.png"
+          - title: "高级计算分析"
+            icon: "express/icon-compute.png"
+        scene:
+          tabs:
+            - name: "银行"
+              class: "active"
+              href: "#tab-scene-1"
+            - name: "运营商"
+              class: ""
+              href: "#tab-scene-2"
+            - name: "制造业"
+              class: ""
+              href: "#tab-scene-3"
+          sections:
+            - id: "tab-scene-1"
+              title: "某银行"
+              class: "tab-pane fade in active"
+              image: "express/bank.jpg"
+              rows:
+                - title: "场景描述"
+                  content: 
+                    - "行内审计相关系统多达 200 多个，没有全局的操作审计系统，无法对操作行为进行汇总审计，需要人工统计分析。"
+                - title: "需求痛点"
+                  content:
+                    - "1.降低操作风险：通过全局审计发现不当操作，明确操作责任。"
+                    - "2.通过全局审计评估事件或者人员的风险。"
+                - title: "解决方案"
+                  content:
+                    - "采集操作日志，通过定义风险操作规则（高级搜索语言）筛选精准风险操作日志并追溯。"
+            - id: "tab-scene-2"
+              title: "某运营商"
+              class: "tab-pane fade in "
+              image: "express/monitor.jpg"
+              rows:
+                - title: "场景描述"
+                  content: 
+                    - "运营商缺乏统一服务器监控运维平台，运维效率低下，影响业务正常运作。"
+                - title: "需求痛点"
+                  content:
+                    - "期望能统一监控机房设备的关键指标。"
+                - title: "解决方案"
+                  content:
+                    - "一键采集机器性能指标，配置指标监控报表，通过大屏实时监控指标数据。"
+            - id: "tab-scene-3"
+              title: "某烟草集团"
+              class: "tab-pane fade in"
+              image: "express/manufacture.jpg"
+              rows:
+                - title: "场景描述"
+                  content: 
+                    - "集团内部有几千台传感器和设备，这些传感器和设备产生的数据格式多种多样，难以统一分析运维。"
+                - title: "需求痛点"
+                  content:
+                    - "将数据上传到日志平台统一管理，并能识别设备故障快速运维。"
+                - title: "解决方案"
+                  content:
+                    - "将数据统一采集到平台，搜索时提取字段规范数据格式，并配置监控报表进行大屏监控展示。"
+        product:
+          - title: "产品概述"
+            link: "https://developer.qiniu.com/express/manual/6009/product_overview"
+            target: "_blank"
+          - title: "Spl参考手册"
+            link: "https://developer.qiniu.com/express/manual/6010/spl_manual"
+            target: "_blank"
+          - title: "搜索手册"
+            link: "https://developer.qiniu.com/express/manual/6038/_search"
+            target: "_blank"
+          - title: "可视化手册"
+            link: "https://developer.qiniu.com/express/manual/6046/charts"
+            target: "_blank"
+        client:
+          title: "客户案例"
+          list:
+            - title: "中国移动"
+              image: "express/cliend-chinamobile.png"
+              width: ""
+            - title: "英语流利说"
+              image: "express/client-fluency.png"
+              width: ""
+            - title: "华泰证券"
+              image: "express/client-huatai.png"
+              width: ""
+            - title: "吉林电视台"
+              image: "express/client-jilintv.png"
+              width: ""      
+            - title: "nucskin"
+              image: "express/client-nucskin.png"
+              width: ""   
+            - title: "人民网"
+              image: "express/client-people.png"
+              width: ""
+            - title: "趣头条"
+              image: "express/client-qu.png"
+              width: ""
+            - title: "中国太平"
+              image: "express/client-taiping.png"
+              width: ""
+            - title: "中国电信"
+              image: "express/client-telecom.png"
+              width: ""
+            - title: "wps"
+              image: "express/client-wps.png"
+              width: ""
+            - title: "上海烟草集团"
+              image: "express/client-yancao.jpg"
+              width: ""
+            - title: "招商银行"
+              image: "express/client-zhaoshang.jpg"
+              width: ""
+            - title: "哔哩哔哩"
+              image: "insight/client-bilibili.png"
+              width: ""
+            - title: "Faceu"
+              image: "insight/client-faceu.png"
+              width: ""
+            - title: "他趣"
+              image: "insight/client-touch.png"
+              width: ""
+            - title: "清博"
+              image: "insight/client-qingbo.png"
+              width: "75px"
+            - title: "浙报传媒"
+              image: "insight/client-zhebaochuanmei.png"
+              width: ""
+            - title: "百田网"
+              image: "insight/client-50.png"
+              width: ""
+            - title: "91y"
+              image: "insight/client-91y.png"
+              width: ""
+            - title: "blued"
+              image: "insight/client-blued.png"
+              width: ""
+            - title: "回声"
+              image: "insight/client-echo.png"
+              width: ""
+            - title: "HISUN"
+              image: "insight/client-hisun.png"
+              width: ""
+            - title: "欢乐逛"
+              image: "insight/client-huanleguang.png"
+              width: ""
+            - title: "华数"
+              image: "insight/client-huashu.png"
+              width: "75px"
+            - title: "VIPKID"
+              image: "insight/client-kid.png"
+              width: ""
+            - title: "汽车之家"
+              image: "insight/client-qichezhijia.png"
+              width: ""
+            - title: "搜狐"
+              image: "insight/client-souhu.png"
+              width: ""
+            - title: "晶盛"
+              image: "insight/client-jingsheng.png"
+              width: ""
       insight:
         title: "智能日志管理平台"
         desc: "智能日志管理平台实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计及业务数据分析等场景，已帮助上千家互联网、智能制造、金融、新媒体及物联网等行业客户数字化升级。"
@@ -2424,6 +2629,9 @@ zh-CN:
             link: "https://developer.qiniu.com/insight/manual/4677/billing-way"
             target: "_blank"
             type: ""
+        version:
+            title: "平台全面升级，点击了解最新特性"
+            link: "/products/express"
         navs:
           - class: "intLink active"
             href: "#tab-content-panoramic"
@@ -6990,6 +7198,10 @@ zh-CN:
           - name: insight
             label: 智能日志管理平台
             desc: 海量异构数据采集，秒级实时日志检索，高效智能业务洞察
+            isNew: false
+          - name: express
+            label: 机器数据分析平台
+            desc: 助力企业探索数据、创造价值、预见未来
             isNew: true
           - name: dora
             label: 智能多媒体服务
@@ -7337,6 +7549,10 @@ zh-CN:
       title: 日志_智能日志管理_智能日志管理平台 - 七牛云
       keywords: 日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控
       description: 实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计、业务数据分析等场景，帮助互联网、智能制造、金融、新媒体、物联网等行业数字化升级。
+    products_express:
+      title: 机器数据分析平台 - 七牛云
+      keywords: 业务分析、物联网载体、安全分析、运维辅助
+      description: 助力企业探索数据、创造价值、预见未来。
     products_censor:
       title: 内容安全_内容审核 - 七牛云
       keywords: 内容审核，视频审核，图片审核，智能鉴黄，鉴暴恐，政治人物识别，内容安全
