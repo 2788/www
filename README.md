@@ -4,10 +4,16 @@ www.qiniu.com, blog.qiniu.com, career.qiniu.com 这三个域名走的都是这�
 
 ## start
 
+本地需要安装 Ruby, Rails 运行环境，安装方法可以参考：[如何快速正确的安装 Ruby, Rails 运行环境](https://ruby-china.org/wiki/install_ruby_guide)
+
+运行下面的命令安装依赖 && 启动本地服务
+
 ```bash
 bundle install # 安装依赖
 rails server # 启动
 ```
+
+本地服务启动后，监听 `localhost:3000`
 
 ## 数据库
 
@@ -23,6 +29,12 @@ MySQL 数据库本地的配置文件为 /config/database.yml
 Mongo 数据库本地的配置文件为 /config/mongoid.yml
 线上 Mongo 数据库配置为 deploy/floy/mars-www/_package/www_mongoid.yml
 ```
+
+`tips`
+
+可以直接将本地数据库配置文件中的地址修改为测试环境地址，可以直接从测试环境的 `MySQL/Mongo` 库中读数据
+
+具体方法是修改 `/config/database.yml` 和 `/config/mongoid.yml` 配置文件中的地址 [测试环境 MySQL 配置](https://gitlab.qiniu.io/qbox/deploy-test/blob/master/floy/mars-www/env_dev/_package/www_database.yml) [测试环境 Mongo 配置](https://gitlab.qiniu.io/qbox/deploy-test/blob/master/floy/mars-www/env_dev/_package/www_mongoid.yml)
 
 ## 配置文件
 
