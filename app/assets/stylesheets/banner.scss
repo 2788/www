@@ -902,6 +902,10 @@
     .container {
       .middle-container {
         top: 42%;
+        a {
+          outline: none;
+          -moz-outline: none;
+        }
         img {
           margin: 0 auto;
         }
