@@ -91,7 +91,6 @@
           }
           &.col-price-right {
             padding-top: 0.07rem;
-            text-align: center;
             line-height: 0.18rem;
             span {
               display: block;
@@ -168,7 +167,7 @@
                 left: -20px;
                 bottom: -12px;
                 margin: 0;
-                margin-bottom: 8px;
+                margin-bottom: 7.8px;
                 text-align: center;
                 line-height: 1.428571429;
               }
@@ -192,9 +191,9 @@
                 }
               }
               .btn-double11-2019 {
-                width: calc(100% + 40px);
+                width: calc(100% + 44px);
                 position: relative;
-                left: -20px;
+                left: -22px;
                 bottom: -15px;
                 color: #FFF;
                 border: none;
@@ -274,11 +273,9 @@
             .title {
               color: #000;
               font-size: 0.20rem;
-              font-weight: 600;
             }
             .sub-title, .desc {
               font-size: 0.12rem;
-              font-weight: 600;
             }
             .sub-title {
               color: rgba(0, 0, 0, 0.65);
@@ -364,7 +361,6 @@
                 &.col-price-right {
                   padding-top: 0.22rem;
                   padding-left: 10px;
-                  text-align: left;
                 }
                 .title {
                   font-size: 0.20rem;
