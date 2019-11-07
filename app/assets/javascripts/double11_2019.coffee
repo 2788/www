@@ -168,3 +168,14 @@ $(document).ready ->
       updateProgressBarByStatus isEnd
       if !isEnd
         double112019GetUserInfo()
+
+  # 解析锚点
+  if $2019double11EventPage.length > 0
+    splitList = window.location.hash.split('?')
+    hash = if splitList[0] then splitList[0] else ''
+    if hash
+      setTimeout(() ->
+        $targetDom = $2019double11EventPage.find('#tab-content-double11-2019-' + hash.replace('#', ''))
+        $targetDom.length > 0 && $targetDom.click()
+        return
+      , 0)
