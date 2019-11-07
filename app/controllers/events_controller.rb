@@ -1,3 +1,6 @@
+require 'net/http'
+require 'json'
+
 class EventsController < ApplicationController
   def index
     # @niushows = Event.where( category: "NiuShow", is_top: true).limit(3)
@@ -54,6 +57,9 @@ class EventsController < ApplicationController
   end
 
   def dora_avsmart
+  end
+
+  def double11_2019
   end
 
   def qvmsumsale_is_start
@@ -186,6 +192,132 @@ class EventsController < ApplicationController
       "is_end": true,
     }
     return
+  end
+
+  def is_double11_2019_end
+    time_conf = Rails.configuration.double11_2019
+    if time_conf.nil? || time_conf.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    end_year = time_conf[:end_year]
+    end_month = time_conf[:end_month]
+    end_date = time_conf[:end_date]
+    if end_year.nil? || end_year.blank? || end_month.nil? || end_month.blank? || end_date.nil? || end_date.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    current_time = Time.now
+    end_time = Time.local(end_year, end_month, end_date, 0, 0, 0)
+    if current_time < end_time
+      render json: {
+        "is_end": false,
+      }
+      return
+    end
+
+    render json: {
+      "is_end": true,
+    }
+    return
+  end
+
+  def double11_2019_dora_voucher
+    product_coupon_type = params[:product_coupon_type]
+    if product_coupon_type.nil? || product_coupon_type.blank?
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    product_coupon_type_number = product_coupon_type.to_i
+    if product_coupon_type_number.nil? || product_coupon_type_number.blank? || product_coupon_type_number == 0
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    uid = uinfo["uid"]
+    gaea_admin_host = Rails.configuration.gaea_admin_host
+    if uid.nil? || uid.blank? || gaea_admin_host.nil? || gaea_admin_host.blank?
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    uid_number = uid.to_i
+    if uid_number.nil? || uid_number.blank?
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    admin_token = get_admin_token()
+    if admin_token.nil?
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    req_body = {
+      "uid": uid_number,
+      "product_coupon_type": product_coupon_type_number,
+    }
+    req_uri = gaea_admin_host + "/api/finance/coupon/batch/for-product/create"
+    res = post_remote_data(req_uri, admin_token, req_body)
+    if res.nil?
+      render json: {
+        "is_success": false,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    if res["code"] == 200
+      render json: {
+        "is_success": true,
+        "is_repeat": false,
+      }
+      return
+    end
+
+    if res["code"] == 403
+      render json: {
+        "is_success": false,
+        "is_repeat": true,
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "is_repeat": false,
+    }
   end
 
   def enterpriseoncloud
@@ -561,10 +693,12 @@ class EventsController < ApplicationController
   def post_remote_data(req_uri, admin_token, req_body)
     access_token = admin_token["access_token"]
     uri = URI.parse(req_uri)
-    req = Net::HTTP::Post.new(uri)
-    req["body"] = req_body.to_json.encode("UTF-8")
-    req["Authorization"] = "Bearer " + access_token
-    req["Content-Type"] = "application/json"
+    header = {
+      "Authorization" => "Bearer " + access_token,
+      "Content-Type" => "application/json"
+    }
+    req = Net::HTTP::Post.new(uri, header)
+    req.body = req_body.to_json.encode("UTF-8")
 
     begin
       http = Net::HTTP.new(uri.hostname, uri.port)

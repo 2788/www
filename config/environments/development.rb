@@ -54,7 +54,8 @@ Rails.application.configure do
   config.www_host = 'http://www-dev.qiniu.io'
   config.blog_host = 'http://blog-dev.qiniu.io'
   config.career_host = 'http://career-dev.qiniu.io'
-  config.portal_host = 'http://portalv4.dev.qiniu.io'
+  # config.portal_host = 'http://portalv4.dev.qiniu.io'
+  config.portal_host = 'http://index-koderover-bo-portal-v4.cs-spock.cloudappl.com'
   config.gaea_admin_host = 'http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com'
   config.qvm_host = 'http://qvm-admin.dev.qiniu.io'
 
@@ -113,6 +114,13 @@ Rails.application.configure do
     end_year: 2019,
     end_month: 11,
     end_date: 11
+  }
+
+  # 2019 年 1111 活动结束时间
+  config.double11_2019 = {
+    end_year: 2019,
+    end_month: 12,
+    end_date: 12
   }
 
   config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'

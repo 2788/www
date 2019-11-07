@@ -120,7 +120,7 @@ Rails.application.routes.draw do
 
     # userinfo
     get '/userinfo', to: 'userinfo#userinfo'
-    
+
     resources 'events', only: [:index] do
       collection do
         get 'tech_online', 'ecug', 'niushow', 'arch', 'ecugcon', 'free', 'qvm1rmb', 'qvm0rmb', 'double11', 'qvm2for3'
@@ -149,6 +149,12 @@ Rails.application.routes.draw do
     get '/events/20191024', to: 'events#zelda'
     # 2019 年 1024 活动是否结束
     get '/events/20191024/is_end', to: 'events#is_zelda_end'
+    # 2019 年 1111 活动
+    get '/events/20191111', to: 'events#double11_2019'
+    # 2019 年 1111 活动是否结束
+    get '/events/20191111/is_end', to: 'events#is_double11_2019_end'
+    # 2019 年 1111 活动 dora 领券
+    post '/events/20191111/dora/voucher', to: 'events#double11_2019_dora_voucher'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息

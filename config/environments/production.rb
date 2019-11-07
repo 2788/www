@@ -141,6 +141,13 @@ Rails.application.configure do
     end_date: 11
   }
 
+  # 2019 年 1111 活动结束时间
+  config.double11_2019 = {
+    end_year: 2019,
+    end_month: 12,
+    end_date: 12
+  }
+
   config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'
   config.video_audit_host = 'http://ai.qiniuapi.com/v3/video/censor'
   config.video_jobs_host = 'http://ai.qiniuapi.com/v3/jobs/video'
