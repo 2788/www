@@ -113,7 +113,7 @@ Rails.application.configure do
   config.zelda = {
     end_year: 2019,
     end_month: 11,
-    end_date: 11
+    end_date: 7
   }
 
   # 2019 年 1111 活动结束时间

@@ -895,6 +895,20 @@
     }
   }
 
+  &.hero-double11-2019-index {
+    background: -webkit-linear-gradient(#FF6418, #FF4C43);
+    background: -moz-linear-gradient(#FF6418, #FF4C43);
+    background: linear-gradient(#FF6418, #FF4C43);
+    .container {
+      .middle-container {
+        top: 42%;
+        img {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
   &.hero-dora-avsmart-index {
     background-image: image-url("banner/banner-dora-avsmart-index.jpg") !important;
     .container {

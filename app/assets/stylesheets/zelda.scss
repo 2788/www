@@ -24,6 +24,7 @@
 
 .events-page-zelda {
   .zelda-modal {
+    background-color: rgba($color: #000, $alpha: 0.4);
     .modal-dialog {
       .modal-header {
         .modal-title {
@@ -43,6 +44,10 @@
           }
           &.sub-title {
             font-weight: 600;
+          }
+          &.title {
+            font-size: 0.16rem;
+            text-align: center;
           }
         }
       }

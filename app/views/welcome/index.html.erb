@@ -1,9 +1,26 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 2019 年 1111 大促活动 banner %>
+  <% if Time.now.to_i < Time.local(2019, 12, 12).to_i -%>
+  <div class="jumbotron hero hero-double11-2019-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <a href="<%= events_20191111_path + "?entry=index-banner" -%>" title="云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券" target="_blank" >
+              <%= image_tag "banner/banner-double11-2019-index.png", title: "云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券", alt: "云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券", width: "100%" -%>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 2019 年 1024 大促活动 banner %>
   <%# https://jira.qiniu.io/browse/BO-9137 %>
-  <% if Time.now.to_i < Time.local(2019, 11, 11).to_i -%>
+  <% if Time.now.to_i < Time.local(2019, 11, 7).to_i -%>
   <div class="jumbotron hero hero-zelda-index">
     <div class="container">
       <div class="middle-container">
