@@ -11,6 +11,8 @@ $(document).ready ->
   $zeldaFusionDropdown = $zeldaPage.find('.features-zelda-fusion .content-dropdown .zelda-fusion-dropdown')
   # buy buttons
   $zeldaBuyBtns = $zeldaPage.find('.features-zelda .container .row .btn-zelda')
+  # modal
+  $zeldaEventEndModal = $zeldaPage.find('#zelda-event-end-modal')
 
   bindDropdownList = () ->
     if $zeldaKodoDropdown.length > 0
@@ -103,3 +105,5 @@ $(document).ready ->
     isZeldaEnd (isEnd) ->
       updateBannerByStatus isEnd
       updateBtnsByStatus isEnd
+      if isEnd && $zeldaEventEndModal.length > 0
+        $zeldaEventEndModal.modal 'show'
