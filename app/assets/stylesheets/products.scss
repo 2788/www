@@ -415,8 +415,8 @@
         color: #28AEDF;
       }
     }
-    &.advert-gift-package {
-      background-image: image-url("icon-advert-gift-package@2x.png");
+    &.advert-double11-2019 {
+      background-image: image-url("icon-advert-double11-2019.png");
       background-size: auto 100%;
       background-position: 0 0;
       background-repeat: no-repeat;
@@ -824,7 +824,7 @@
 @media (max-width: 1199px) {
   .features-advert-index {
     .col-advert {
-      &.advert-gift-package {
+      &.advert-double11-2019 {
         background-size: 40% auto;
       }
     }
@@ -904,7 +904,7 @@
           }
         }
       }
-      &.advert-gift-package {
+      &.advert-double11-2019 {
         background-position-x: 10px;
         background-size: auto 100%;
       }
@@ -915,7 +915,7 @@
 @media (max-width: 425px) {
   .features-advert-index {
     .col-advert {
-      &.advert-gift-package {
+      &.advert-double11-2019 {
         background-size: 40px 40px;
       }
     }
