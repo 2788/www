@@ -471,8 +471,6 @@ $(document).ready ->
         modifyKodoPrivateBannerDownloadBtn res.email, res.name
         # 登录状态下改变产品页 banner 指定按钮的跳转行为
         modifyProductsBannerBtnLink()
-        # 修改广告位新人大礼包跳转链接
-        modifyGiftPackageAdvertBtnLink()
     error: (err) ->
       # error
       # login banner
@@ -524,8 +522,3 @@ $(document).ready ->
       $fusionPageBannerBtn.attr 'href', 'https://portal.qiniu.com/cdn/domain/create'
     if $insightPageBannerBtn.length > 0
       $insightPageBannerBtn.attr 'href', 'https://portal.qiniu.com/apply-pandora'
-
-  modifyGiftPackageAdvertBtnLink = () ->
-    $giftPackageAdvertBtn = $('.features-advert-index .row .gift-package-jump')
-    if $giftPackageAdvertBtn.length > 0
-      $giftPackageAdvertBtn.attr 'href', 'https://portal.qiniu.com/financial/gift-package'
