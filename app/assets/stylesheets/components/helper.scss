@@ -4,7 +4,7 @@
   min-height: 128px;
   overflow: hidden;
   position: fixed;
-  top: 50%;
+  top: 35%;
   right: 8px;
   .helper-image {
     position: relative;
@@ -17,6 +17,11 @@
     }
     .bigpromotion-icon img {
       width: 43px;
+    }
+    .helper-double11-2019-icon img {
+      width: 43px;
+      position: relative;
+      left: 1px;
     }
     .hover-image {
       display: none;

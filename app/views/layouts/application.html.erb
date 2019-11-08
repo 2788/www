@@ -368,6 +368,11 @@
 
     <%# 悬浮按钮 %>
     <div class="helper">
+      <% if Time.now.to_i < Time.local(2019, 12, 12).to_i -%>
+      <div class="helper-image">
+        <%= link_to image_tag("double11_2019/icon-helper.png"), "/events/20191111?entry=index-floatwin", id: "helper-double11-2019-icon", class: "helper-double11-2019-icon", title: "11.11 云采购嘉年华", target: "_blank" -%>
+      </div>
+      <% end -%>
       <div class="helper-image">
         <% if Time.now.to_i < Time.local(2019, 7, 1).to_i -%>
           <%# 2019 年 618 活动上线状态 %>
