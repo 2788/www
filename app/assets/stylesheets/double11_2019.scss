@@ -120,6 +120,7 @@
           background: -webkit-linear-gradient(#E3E3E3, #FFF);
           background: -moz-linear-gradient(#E3E3E3, #FFF);
           background: linear-gradient(#E3E3E3, #FFF);
+          min-height: 0;
           overflow: hidden;
           .caption {
             padding: 10px;
@@ -161,6 +162,7 @@
                 bottom: -10px;
                 color: #FF5D14;
                 font-size: 0.12rem;
+                display: none; // 去掉进度条和限制提示
               }
               .limit-tip {
                 width: calc(100% + 40px);
@@ -182,6 +184,7 @@
                 background-color: #EAEAEA;
                 box-shadow: none;
                 -webkit-box-shadow: none;
+                display: none; // 去掉进度条和限制提示
                 .progress-bar {
                   height: 5px;
                   background-color: #FF6926;

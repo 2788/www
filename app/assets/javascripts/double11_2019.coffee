@@ -165,7 +165,7 @@ $(document).ready ->
   if $2019double11EventPage.length > 0
     is2019Double11End (isEnd) ->
       updateBtnsByStatus isEnd
-      updateProgressBarByStatus isEnd
+      # updateProgressBarByStatus isEnd
       if !isEnd
         double112019GetUserInfo()
 
