@@ -139,6 +139,9 @@
     padding: 0.35rem;
     // margin-left: 0;
     border: 0.01rem solid #e6eaef;
+    .details-title-desc {
+      line-height: 2;
+    }
   }
   dl {
     &.dl-border {
