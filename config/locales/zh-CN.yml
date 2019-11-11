@@ -7504,7 +7504,7 @@ zh-CN:
               link: "/financial/carnival#sms"
         pandora:
           title: "Pandora 2.0 免费版"
-          desc: "机器数据分析平台，助力企业探索数据、创造价值、预见未来"
+          desc: "七牛云智能日志管理平台 Pandora 作为业界领先的实时机器数据分析平台，支持数百种数据源，具有日志统一存储、实时检索、查询和分析、监控与告警、报表与大屏展示等能力。目前已经为上千家客户提供服务，包含互联网、银行、保险、证券、运营商、零售、制造及广电等领域的众多头部客户"
           image: "double11_2019/img-pandora.jpg"
           link: "/express/download"
     download:
