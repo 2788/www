@@ -77,23 +77,6 @@
   </div>
   <% end -%>
 
-  <a title="七牛云 2020 届秋季校园招聘" alt="七牛云 2020 届秋季校园招聘" href="<%= Rails.configuration.career_host + "/school?entry=index-banner" -%>" target="_blank">
-    <div class="jumbotron hero hero-career-school-2019-autumn">
-      <div class="container">
-        <div class="middle-container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-7 col-img-left">
-              <%= image_tag "banner/banner-career-school-2019-autumn-left.png", title: "七牛云 2020 届秋季校园招聘", alt: "七牛云 2020 届秋季校园招聘", width: "100%" -%>
-            </div>
-            <div class="col-xs-5 hidden-xs">
-              <%= image_tag "banner/banner-career-school-2019-autumn-right.png", title: "七牛云 2020 届秋季校园招聘", alt: "七牛云 2020 届秋季校园招聘", width: "100%" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
-
   <%# dora 锐智转码活动 %>
   <%# 活动时间为 2019 年 8 月 15 日 - 2019 年 9 月 15 日 %>
   <% if Time.now.to_i >= Time.local(2019, 8, 15).to_i && Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
