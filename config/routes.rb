@@ -133,6 +133,8 @@ Rails.application.routes.draw do
     get '/events/cdn-package', to: 'events#cdn_package'
     # cdn + 短视频活动页面路由
     get '/events/fusion-package', to: 'events#fusion_package'
+    # dora 转码时长包活动
+    get '/events/dora-package', to: 'events#dora_package'
     # qvm 燃情一夏活动
     get '/events/qvmsumsale', to: 'events#qvmsumsale'
     # dora 促销活动

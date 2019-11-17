@@ -53,6 +53,9 @@ class EventsController < ApplicationController
   def fusion_package
   end
 
+  def dora_package
+  end
+
   def qvmsumsale
   end
 

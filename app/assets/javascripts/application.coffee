@@ -56,6 +56,7 @@
 #= require cdnpackage
 #= require dora_avsmart
 #= require fusion_package
+#= require dora_package
 #= require zelda
 #= require double11_2019
 
