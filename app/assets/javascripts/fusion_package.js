@@ -463,23 +463,6 @@ $(function() {
   }
 })
 
-$(function() {
-  $fusionPackageEventPage = $('.events-page-fusion_package .fusion-package-page');
-  if ($fusionPackageEventPage.length > 0) {
-    now = new Date(),hour = now.getHours()
-    if (hour < 6){document.getElementById('hottime1').innerHTML = 10;}
-    else if (hour < 8){document.getElementById('hottime1').innerHTML = 9;}
-    else if (hour < 10){document.getElementById('hottime1').innerHTML = 8;}
-    else if (hour < 12){document.getElementById('hottime1').innerHTML = 7;}
-    else if (hour < 14){document.getElementById('hottime1').innerHTML = 6;}
-    else if (hour < 16){document.getElementById('hottime1').innerHTML = 5;}
-    else if (hour < 18){document.getElementById('hottime1').innerHTML = 4;}
-    else if (hour < 20){document.getElementById('hottime1').innerHTML = 3;}
-    else if (hour < 22){document.getElementById('hottime1').innerHTML = 2;}
-    else {document.getElementById('hottime1').innerHTML = 1;}
-  }
-})
-
 function fusionPackageMoveClass(obj) {
   $(obj).addClass("active").siblings().removeClass("active");
 }
