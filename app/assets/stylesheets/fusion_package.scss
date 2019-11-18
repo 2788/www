@@ -14,12 +14,12 @@
   .jumbotron.hero.Transcod .row .Resource_banner {background-color:#fec501;margin-top:0;width:50%;max-width:580px;margin:auto;border-radius:0.10rem;-moz-border-radius:0.10rem;display:inline-block;}
   .Resource_bannerl,.Resource_bannerr {padding:0.2rem 0.1rem}
   .Resource_bannerl {width:70%;float:left;font-size:0.22rem;color:#7e3001;border-right:#ff5c02 1px dashed;}
-  .Resource_bannerl .red ,.Resource_bannerr .red{color:#ff0120;font-weight: bold;}
+  .Resource_bannerl .red {color:#ff0120;font-weight: bold;}
   .Resource_bannerl .font {font-size:0.42rem;display: block;float: left;margin-left: 5%;line-height: 0.68rem}
   .Resource_bannerl div {line-height: 0.24rem;}
   .Resource_bannerl .p {font-size:0.16rem;line-height: 0.14rem}
   .Resource_bannerr {width:30%;float:left;color:#7e3001;font-size:0.18rem;}
-  .Resource_bannerr a {background:#FF5c02;color:#FFF !important;width:90%;font-size:0.24rem;margin:auto;padding:0.05rem 0;text-align:center;border-radius:0.10rem;-moz-border-radius:0.10rem;display:block;position:relative;top:50%;transform:translateY(20%);}
+  .Resource_bannerr a {background:#FF5c02;color:#FFF !important;width:90%;font-size:0.24rem;margin:auto;margin-top:0.06rem;padding:0.05rem 0;text-align:center;border-radius:0.10rem;-moz-border-radius:0.10rem;display:block;position:relative;top:50%;transform:translateY(20%);}
   .features .intro .title {background-image:image-url("fusion_package/Resource_title.png");background-position:center;background-repeat:no-repeat;background-size:auto 100%;height:0.6rem;line-height:0.6rem;font-size: 0.24rem;}
   .features .intro .title.Subtitle {background-image:none!important;height:0.5rem;line-height:0.5rem;font-size:0.14rem;}
   .features .intro .title.Subtitle span {height:0.5rem;line-height:0.5rem;font-size:0.24rem;}
@@ -130,7 +130,7 @@
   .jumbotron.hero.Transcod .row .Resource_banner {max-width:350px;}
   .alongwith_intro1 {width:0.9rem;}
   .alongwith_intro21 select {width:0.75rem;}
-  .Resource_bannerr a {font-size:0.18rem;position:relative;top:60%;transform:translateY(60%);}
+  .Resource_bannerr a {margin-top:-0.02rem;font-size:0.18rem;position:relative;top:60%;transform:translateY(60%);}
   .Resource_bannerl .font {font-size:0.32rem;}
   .Resource_bannerl {font-size:0.20rem;}
   .Resource_bannerl .p {font-size:0.16rem;}
