@@ -231,7 +231,7 @@
                   </div>
                 </td>
                 <td class="text-center">
-                  <%= link_to table[:btnText], signin_url('www', '/events/20191111'), title: table[:title] + " - " + table[:btnText], class: "btn btn-lg pili-apply-btn btn-double11-2019 disabled " + table[:btnClass], target: "_blank" -%>
+                  <%= link_to table[:btnText], Rails.configuration.portal_host + "/financial/carnival#sdk", title: table[:title] + " - " + table[:btnText], class: "btn btn-lg btn-double11-2019 disabled " + table[:btnClass], target: "_blank" -%>
                 </td>
               </tr>
               <% end -%>
@@ -519,18 +519,33 @@
         <h3 class="modal-title" id="double11-2019-sdk-modal-label">短视频 SDK - 活动说明</h3>
       </div>
       <div class="modal-body">
+        <p class="sub-title">短视频 SDK 五折抢购活动</p>
         <p>活动时间：即日起至 2019 年 12 月 12 日</p>
-        <p>活动对象：七牛云所有已注册并实名认证的用户</p>
-        <p>详细规则：</p>
-        <p>1、用户通过本活动页面表单申购短视频 SDK，可享受相应优惠，具体优惠信息和限制条件以页面实际显示为准。每个用户限购一单</p>
-        <p>2、购买和开通鉴权时效：成功购买短视频 SDK 的客户，请在 2020 年 12 月 31 日前进行开始使用（即开通鉴权时间）该活动购买的短视频 SDK，过期则认为放弃使用</p>
-        <p>3、关于转售和转赠</p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;不得将从本次活动优惠购买获得的七牛云短视频 SDK 转售或转赠给任何未经七牛云书面授权的第三方。如违反上述规定，七牛云有权立即收回短视频 SDK</p>
-        <p>4、除特殊情况外，用户参加本活动购买的产品，不支持退订。如因特殊原因发生退订的，需保证产品未使用，若已使用，需在退订前以官网价格补齐已使用的产品的差价</p>
+        <p>活动对象：七牛云新老用户皆可参与</p>
+        <p>购买说明：</p>
+        <p>1、该活动设置了限购，短视频 SDK 五折抢购，每个用户限购一单</p>
+        <p>2、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>3、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
+        <p class="sub-title">短视频 SDK 精简版和基础版一折秒杀活动</p>
+        <p>活动时间：即日起到 2019 年 12 月 12 日</p>
+        <p>活动对象：短视频 SDK 新用户（已经是本平台用户，但没有使用过短视频 SDK 的用户也可以参加）</p>
+        <p>购买说明：</p>
+        <p>1、短视频 SDK 精简版和基础版一折秒杀，每个用户限购一单</p>
+        <p>2、由于该活动为商品限量秒杀，所以根据实际情况，活动可能提前结束，请各位用户尽快下单购买</p>
+        <p>3、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>4、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
+        <p class="sub-title">短视频 SDK 授权的购买流程</p>
+        <p>1、登录七牛账号，然后通过本活动页面点击秒杀或抢购按钮，进入到<a href="<%= Rails.configuration.portal_host + "/financial/carnival" -%>" class="link-box" title="双十一活动 - 七牛云" target="_blank">双十一活动会场</a></p>
+        <p>2、进入到双十一活动会场后，在<a href="<%= Rails.configuration.portal_host + "/financial/carnival#sdk" -%>" class="link-box" title="短视频 SDK 专场 - 双十一活动" target="_blank">短视频 SDK 专场</a>找到目标商品，进行下单</p>
+        <p>3、下单成功后，进入到<a href="<%= Rails.configuration.portal_host + "/financial/orders" -%>" class="link-box" title="订单列表页面" target="_blank">订单列表页面</a>，进行支付</p>
+        <p>4、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>5、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
         <p><br /></p>
-        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>在本次活动中通过优惠价格购买获得的短视频 SDK 授权，不得转售或转赠给任何未经本平台书面授权的第三方，否则七牛云有权立即收回授权</p>
+        <p>除特殊情况外，用户参加本活动购买的产品，不支持退订。如因特殊原因发生退订的，需保证产品未使用</p>
+        <p>根据相关部门规定，对于平台恶意刷单行为，本平台将依法提供事实证据，以维护消费者权益</p>
         <p>『双十一云采购嘉年华』与『1024 码上狂欢节』为同一期活动，限购规则以同一期活动内的购买总数为准</p>
-        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>购买本平台商品，默认同意<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a>及相关产品服务协议</p>
         <p>活动最终解释权在法律允许范围内归七牛云所有</p>
       </div>
     </div>
