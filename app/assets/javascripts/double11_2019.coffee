@@ -4,8 +4,6 @@ $(document).ready ->
   # dropdown
   $2019double11KodoDropdown = $2019double11EventPage.find('.features-double11-2019-kodo .content-dropdown .double11-2019-kodo-dropdown')
   $2019double11FusionDropdown = $2019double11EventPage.find('.features-double11-2019-fusion .content-dropdown .double11-2019-fusion-dropdown')
-  # pili
-  $2019double11PiliApplyBtns = $2019double11EventPage.find('.features-double11-2019-pili .pili-exp-table .pili-apply-btn')
   # dora
   $2019double11DoraVoucherBtns = $2019double11EventPage.find('.features-double11-2019-dora .container .btn-double11-2019')
   # progress
@@ -17,8 +15,6 @@ $(document).ready ->
   $2019double11DoraVoucherSuccessModal = $2019double11EventPage.find('#double11-2019-dora-success-modal')
   $2019double11DoraVoucherFailModal = $2019double11EventPage.find('#double11-2019-dora-fail-modal')
   $2019double11DoraVoucherRepeatModal = $2019double11EventPage.find('#double11-2019-dora-repeat-modal')
-
-  double112019PiliApplyURL = 'https://jinshuju.net/f/STSJ0m?x_field_1='
 
   bindDropdownList = () ->
     if $2019double11KodoDropdown.length > 0
@@ -126,7 +122,6 @@ $(document).ready ->
       url: '/userinfo?u=' + uuid + '&t=' + timestamp,
       success: (res) ->
         if res && res.is_signin && res.uid
-          $2019double11PiliApplyBtns.attr 'href', double112019PiliApplyURL + res.uid
           bindDoraVoucherBtns()
 
   getPercentByTime = () ->

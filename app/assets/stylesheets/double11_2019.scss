@@ -293,7 +293,9 @@
             }
             .btn-double11-2019 {
               width: 80%;
+              padding: 0.10rem;
               color: #FFF;
+              font-size: 0.16rem;
               border: none;
               border-radius: 0;
               &.orange {
@@ -636,6 +638,9 @@
             td {
               padding: 0.16rem 0;
               .title {
+                font-size: 0.14rem;
+              }
+              .btn-double11-2019 {
                 font-size: 0.14rem;
               }
               .content-price {
