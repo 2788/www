@@ -438,8 +438,8 @@ zh-CN:
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
               unsignlink: "/signup"
-              signlink: "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download"
-              jumphost: ""
+              signlink: "/sdk/licenses?showDrawer"
+              jumphost: "portal"
             - title: "SSL 证书服务"
               desc: "数据加密传输、高兼容性、提升搜索排名"
               class: "background-ssl"
