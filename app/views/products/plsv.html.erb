@@ -6,10 +6,12 @@
           <h2>短视频解决方案</h2>
           <p>七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。</p>
           <div class="actions <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' -%>">
-            <%= link_to "0 元体验", "", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "", data: { toggle: "modal", target: "#feedback-modal", intention: "短视频解决方案"}, id: "plsv-consult-button-index" -%>
+            <%= link_to "0 元体验", Rails.configuration.portal_host + "/sdk/licenses?showDrawer", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
             <%= link_to "短视频 SDK", "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download", class: "btn btn-lg btn-hollow m-r m-b-xs", target: "_blank" -%>
-            <%= link_to "播放器 SDK", products_player_path, target: "_blank", class: "btn btn-lg btn-hollow m-r m-b-xs" -%>
             <%= link_to "SDK 功能列表", "https://developer.qiniu.com/pili/sdk/3731/short-video", target: "_blank", class: "sdk-link" -%>
+            <% if Time.now.to_i < Time.local(2019, 12, 12).to_i -%>
+            <h5><%= link_to "短视频 SDK 限时 1 折抢购，全部版本低至 5 折", events_20191111_path + "#pili?entry=plsv-advert", target: "_blank", class: "out_link" -%></h5>
+            <% end -%>
           </div>
         </div>
         <div class="col-sm-5 hidden-xs">
