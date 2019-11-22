@@ -64,12 +64,12 @@ zh-CN:
             desc: "短视频&nbsp;SDK&nbsp;免费送"
             link: "/events/fusion-package?entry=index-advert"
             jumphost: ""
-          - title: "产品动态<span class='advert-tip'>NEW</span>"
+          - title: "短视频&nbsp;SDK&nbsp;感恩回馈<span class='advert-tip'>限时</span>"
             class: "border-l hidden-xs"
             jump_label_class: ""
-            desc: "产品最新动态"
-            link: "/archives/category/2?entry=index-advert"
-            jumphost: "blog"
+            desc: "新用户最低一折起"
+            link: "/events/20191111#pili?entry=index-advert"
+            jumphost: ""
         feature1:
           title: "持续挖掘海量数据的无限价值"
           desc: ""
@@ -438,8 +438,8 @@ zh-CN:
               details:
                 - • 80+ 功能免费使用；30 天 0 元体验包
               unsignlink: "/signup"
-              signlink: "https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download"
-              jumphost: ""
+              signlink: "/sdk/licenses?showDrawer"
+              jumphost: "portal"
             - title: "SSL 证书服务"
               desc: "数据加密传输、高兼容性、提升搜索排名"
               class: "background-ssl"
