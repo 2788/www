@@ -146,27 +146,27 @@ class ProductsController < ApplicationController
   end
 
   def censor
-    @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
-    @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
-    @videoSrc_3 = "https://mars-assets.qnssl.com/FgV6wvTgRv8ZgUZBecKojdIlfs58"
-    @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
+    @videoSrc_1 = "https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
+    @videoSrc_2 = "https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
+    @videoSrc_3 = "https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58"
+    @videoSrc_4 = "https://dn-mars-assets.qbox.me/lrBYuiLwg0zFRUP97w59FmmN6H01"
   end
 
   def censor_photo
     @type = "photo"
-    @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
-    @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
-    @videoSrc_3 = "https://mars-assets.qnssl.com/FgV6wvTgRv8ZgUZBecKojdIlfs58"
-    @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
+    @videoSrc_1 = "https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
+    @videoSrc_2 = "https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
+    @videoSrc_3 = "https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58"
+    @videoSrc_4 = "https://dn-mars-assets.qbox.me/lrBYuiLwg0zFRUP97w59FmmN6H01"
     render "censor_key_rank"
   end
 
   def censor_video
     @type = "video"
-    @videoSrc_1 = "https://mars-assets.qnssl.com/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
-    @videoSrc_2 = "https://mars-assets.qnssl.com/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
-    @videoSrc_3 = "https://mars-assets.qnssl.com/FgV6wvTgRv8ZgUZBecKojdIlfs58"
-    @videoSrc_4 = "https://mars-assets.qnssl.com/lrBYuiLwg0zFRUP97w59FmmN6H01"
+    @videoSrc_1 = "https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
+    @videoSrc_2 = "https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
+    @videoSrc_3 = "https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58"
+    @videoSrc_4 = "https://dn-mars-assets.qbox.me/lrBYuiLwg0zFRUP97w59FmmN6H01"
     render "censor_key_rank"
   end
 
@@ -194,7 +194,7 @@ class ProductsController < ApplicationController
     }
 
     if type == 'slide'
-      body[:data][:uri] = 'https://mars-assets.qnssl.com/' + path
+      body[:data][:uri] = 'https://dn-mars-assets.qbox.me/' + path
     elsif type == 'url'
       body[:data][:uri] = path
     end
@@ -267,7 +267,7 @@ class ProductsController < ApplicationController
     }
 
     if type == 'slide'
-      body[:data][:uri] = 'https://mars-assets.qnssl.com/' + path
+      body[:data][:uri] = 'https://dn-mars-assets.qbox.me/' + path
     elsif type == 'url'
       body[:data][:uri] = path
     end

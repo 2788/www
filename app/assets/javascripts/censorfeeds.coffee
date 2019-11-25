@@ -99,7 +99,7 @@ $(document).ready ->
     $(this).addClass 'selected'
     # 替换当前图片
     imgMark = $(this).attr 'id'
-    $mainImage.css 'background-image', 'url(https://mars-assets.qnssl.com/' + imgMark + '.jpg)'
+    $mainImage.css 'background-image', 'url(https://dn-mars-assets.qbox.me/' + imgMark + '.jpg)'
     # 图片审核
     imgAudit imgMark + '.jpg', 'slide', (details) ->
       removeLock()
