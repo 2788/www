@@ -48,10 +48,19 @@
 }
 
 .features-linking-advantage {
+  background-color: #5D80FF;
   .container {
+    .intro {
+      .title {
+        color: #FFF;
+      }
+    }
     .row {
       .col-advantage {
         width: 20%;
+        h4, p {
+          color: #FFF;
+        }
         p {
           text-align: center;
         }
