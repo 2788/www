@@ -428,11 +428,11 @@ $(document).ready ->
     e.preventDefault()
     if isMobile
       # 移动端新建 tab 页打开 pdf 文件
-      window.open 'https://mars-assets.qnssl.com/gartner_atlab_white_book.pdf', '_blank'
+      window.open 'https://dn-mars-assets.qbox.me/gartner_atlab_white_book.pdf', '_blank'
     else
       # 非移动端使用 filesaver 下载
       if saveAs?
-        saveAs 'https://mars-assets.qnssl.com/gartner_atlab_white_book.pdf', '深度学习平台完全实践指南.pdf'
+        saveAs 'https://dn-mars-assets.qbox.me/gartner_atlab_white_book.pdf', '深度学习平台完全实践指南.pdf'
 
 
 # get userinfo
