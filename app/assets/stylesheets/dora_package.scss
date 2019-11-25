@@ -2,18 +2,27 @@
   background: #e9173f;
 
   .features {
-    background-color: transparent
-  }
-
-  .features .intro .title {
-    background-image: image-url("dora_package/resource_title.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 0.6rem;
-    line-height: 0.6rem;
-    font-size: 0.24rem;
-    color: #fff;
+    background-color: transparent;
+    .intro {
+      position: relative;
+      .title {
+        height: 0.6rem;
+        line-height: 0.6rem;
+        font-size: 0.24rem;
+        color: #fff;
+        background-image: image-url("dora_package/resource_title.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+      .h265-hash {
+        position: absolute;
+        top: -.8rem;
+        left: 0;
+        width: 0;
+        height: 0;
+      }
+    }
   }
 
   .dora-package-setmeal {
@@ -97,9 +106,10 @@
             }
 
             .price {
-              margin: .42rem 0 0 -0.05rem;
+              margin: .42rem 0 0 -.24rem;
               color: #F43122;
               font-size: 0.28rem;
+              text-align: center;
 
               &.offset {
                 margin-left: -.1rem;
@@ -110,6 +120,7 @@
               }
 
               font {
+                display: block;
                 color: #7a7a7a;
                 font-size: 0.12rem;
                 text-decoration: line-through;
@@ -171,10 +182,8 @@
         .intro {
           .dora-package-kind, .p1 {
             margin-left: -.12rem;
+            height: .24rem;
           }
-        }
-        font {
-          display: block;
         }
       }
     }
@@ -201,6 +210,7 @@
         .intro {
           .dora-package-kind, .p1 {
             margin-left: 0;
+            line-height: .17rem;
           }
         }
       }
@@ -216,7 +226,8 @@
         width: 48%;
         margin: .1rem 1%;
         .intro > .dora-package-kind {
-          line-height: .16rem;
+          line-height: .17rem;
+          height: .34rem;
         }
       }
     }
