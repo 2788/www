@@ -7837,6 +7837,10 @@ zh-CN:
             label: 实时音视频云
             desc: 基于 WebRTC 的一站式解决方案，零基础搭建音视频平台
             isNew: true
+          - name: linking
+            label: IOT 视频云
+            desc: 以视音频为核心的物联网数据云服务
+            isNew: true
           # - name: vance
           #   label: 点播云
           #   desc: 提供上传、存储、转码分发、播放器等服务的一站式点播服务
