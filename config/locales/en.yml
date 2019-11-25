@@ -4244,16 +4244,16 @@ en:
         middlebar:
           links:
             - title: "产品架构"
-              class: "intLink active"
+              class: "active"
               href: "#features-linking-framework"
             - title: "产品功能"
-              class: "intLink"
+              class: ""
               href: "#features-linking-function"
             - title: "产品优势"
-              class: "intLink"
+              class: ""
               href: "#features-linking-advantage"
             - title: "应用场景"
-              class: "intLink"
+              class: ""
               href: "#features-linking-scene"
         framework:
           title: "产品架构"
