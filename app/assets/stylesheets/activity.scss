@@ -39,17 +39,21 @@
 
 .tabs.tabs-activity {
   .nav.nav-tabs.nav-justified {
-    padding: 0 10%;
+    padding: 0 calc(50% - 570px);
     background-color: #009FDD;
     li {
       a {
         color: #FFF;
       }
-      &.active,
-      &:hover {
+      &.active {
         background-color: #EEF5FF;
         a {
           color: #F43122;
+        }
+      }
+      &:not(.active):hover {
+        a {
+          background-color: #46C6EE;
         }
       }
     }
@@ -61,10 +65,16 @@
     .col-activity {
       margin-bottom: 0.50rem;
       .thumbnail {
-        border: 1px solid #33AAEC;
+        padding: 0;
+        border: 1px solid rgba(51, 170, 236, 0.25);
         background-color: #FFF;
         min-height: 0;
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s linear;
+        transition: all .3s linear;
+        cursor: pointer;
         .caption {
+          padding: 0.22rem;
           .title-container {
             position: relative;
             h4 {
@@ -78,8 +88,8 @@
               }
             }
             .title-icon {
-              width: 0.68rem;
-              height: 0.68rem;
+              width: 0.60rem;
+              height: 0.60rem;
               position: absolute;
               top: -0.06rem;
               right: 0.06rem;
@@ -93,7 +103,19 @@
             color: #FFF;
             border: none;
             background-color: #009FDD;
-            &:hover {
+          }
+        }
+        &:hover {
+          -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          .caption {
+            .title-container {
+              h4 {
+                color: #F43122;
+              }
+            }
+            .activity-btn {
               background-color: #46C6EE;
             }
           }
@@ -105,6 +127,9 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .tabs.tabs-activity {
+    .nav.nav-tabs.nav-justified {
+      padding: 0 calc(50% - 470px);
+    }
     .tab-content {
       .col-activity {
         .thumbnail {
@@ -117,8 +142,8 @@
                 font-size: 0.12rem;
               }
               .title-icon {
-                width: 0.58rem;
-                height: 0.58rem;
+                width: 0.50rem;
+                height: 0.50rem;
                 right: 0;
               }
             }
@@ -154,6 +179,9 @@
   }
 
   .tabs.tabs-activity {
+    .nav.nav-tabs.nav-justified {
+      padding: 0 calc(50% - 360px);
+    }
     .tab-content {
       .col-activity {
         .thumbnail {
@@ -227,10 +255,13 @@
 
   .tabs.tabs-activity {
     .nav.nav-tabs.nav-justified {
-      padding: 0;
+      padding: 0 15px;
       li {
         width: 1%;
         display: table-cell;
+        a {
+          margin-bottom: 0;
+        }
       }
     }
   }
