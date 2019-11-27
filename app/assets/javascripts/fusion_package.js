@@ -22,20 +22,6 @@ $(function() {
 $(function() {
   $fusionPackageEventPage = $('.events-page-fusion_package .fusion-package-page');
   if ($fusionPackageEventPage.length > 0) {
-    startOfDayTime = new Date(new Date().setHours(0, 0, 0, 0));
-    endTime = new Date('2019-12-01');
-    leftTime = (endTime.getTime() - startOfDayTime.getTime()) / (24 * 60 * 60 * 1000);
-    hottime = document.getElementById('hottime');
-    if (leftTime < 0) {
-      leftTime = 0;
-    }
-    hottime.innerHTML = parseInt(leftTime);
-  }
-})
-
-$(function() {
-  $fusionPackageEventPage = $('.events-page-fusion_package .fusion-package-page');
-  if ($fusionPackageEventPage.length > 0) {
     function Dsy() {
       this.Items = {};
     }
