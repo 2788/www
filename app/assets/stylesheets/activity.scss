@@ -1,0 +1,255 @@
+.jumbotron.hero.hero-activity {
+  height: 3.20rem;
+  margin-bottom: 0;
+  background-image: none;
+  background: -webkit-linear-gradient(#1851DA, #3179ED);
+  background: -moz-linear-gradient(#1851DA, #3179ED);
+  background: linear-gradient(#1851DA, #3179ED);
+  .container {
+    height: 2.70rem;
+    .middle-container {
+      height: 2.50rem;
+      .row {
+        height: 100%;
+        .col-banner-title {
+          margin-top: 0.50rem;
+          h1 {
+            font-size: 0.40rem;
+          }
+          p {
+            margin-top: 0.20rem;
+            font-size: 0.18rem;
+            text-shadow: none;
+          }
+        }
+        .right-mask-banner {
+          height: 2.62rem;
+          position: relative;
+          min-height: 0;
+          img {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tabs.tabs-activity {
+  .nav.nav-tabs.nav-justified {
+    padding: 0 10%;
+    background-color: #009FDD;
+    li {
+      a {
+        color: #FFF;
+      }
+      &.active,
+      &:hover {
+        background-color: #EEF5FF;
+        a {
+          color: #F43122;
+        }
+      }
+    }
+  }
+  .tab-content {
+    .features {
+      background-color: #EEF5FF;
+    }
+    .col-activity {
+      margin-bottom: 0.50rem;
+      .thumbnail {
+        border: 1px solid #33AAEC;
+        background-color: #FFF;
+        min-height: 0;
+        .caption {
+          .title-container {
+            position: relative;
+            h4 {
+              color: #0A0E17;
+              text-align: left;
+            }
+            p {
+              color: #000;
+              .text-warn {
+                color: #F43122;
+              }
+            }
+            .title-icon {
+              width: 0.68rem;
+              height: 0.68rem;
+              position: absolute;
+              top: -0.06rem;
+              right: 0.06rem;
+            }
+          }
+          .activity-btn {
+            margin-top: 0.25rem;
+            padding: 0.08rem 0.24rem;
+            border-radius: 0;
+            font-size: 0.14rem;
+            color: #FFF;
+            border: none;
+            background-color: #009FDD;
+            &:hover {
+              background-color: #46C6EE;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .tabs.tabs-activity {
+    .tab-content {
+      .col-activity {
+        .thumbnail {
+          .caption {
+            .title-container {
+              h4 {
+                font-size: 0.18rem;
+              }
+              p {
+                font-size: 0.12rem;
+              }
+              .title-icon {
+                width: 0.58rem;
+                height: 0.58rem;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .jumbotron.hero.hero-activity {
+    .container {
+      .middle-container {
+        .row {
+          .col-banner-title {
+            width: 35%;
+            margin-top: 0.68rem;
+            h1 {
+              font-size: 0.26rem;
+            }
+            p {
+              font-size: 0.14rem;
+              line-height: 0.20rem;
+            }
+          }
+          .col-banner-img {
+            width: 65%;
+          }
+        }
+      }
+    }
+  }
+
+  .tabs.tabs-activity {
+    .tab-content {
+      .col-activity {
+        .thumbnail {
+          .caption {
+            .title-container {
+              h4 {
+                font-size: 0.18rem;
+              }
+              p {
+                font-size: 0.12rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .jumbotron.hero.hero-activity {
+    .container {
+      .middle-container {
+        .row {
+          .col-banner-title {
+            width: 50%;
+            margin-top: 0.30rem;
+            h1 {
+              font-size: 0.40rem;
+            }
+            p {
+              font-size: 0.18rem;
+              line-height: 0.34rem;
+            }
+          }
+          .col-banner-img {
+            width: 50%;
+          }
+          .right-mask-banner {
+            height: 2.40rem;
+          }
+        }
+      }
+    }
+  }
+
+  .tabs.tabs-activity {
+    .tab-content {
+      .col-activity {
+        .thumbnail {
+          .caption {
+            .title-container {
+              .title-icon {
+                width: 0.72rem;
+                height: 0.72rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .jumbotron.hero.hero-activity {
+    .container {
+      height: 3.20rem;
+    }
+  }
+
+  .tabs.tabs-activity {
+    .nav.nav-tabs.nav-justified {
+      padding: 0;
+      li {
+        width: 1%;
+        display: table-cell;
+      }
+    }
+  }
+
+  .tabs.tabs-activity {
+    .tab-content {
+      .col-activity {
+        .thumbnail {
+          .caption {
+            .title-container {
+              .title-icon {
+                width: 0.72rem;
+                height: 0.72rem;
+                top: -0.12rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

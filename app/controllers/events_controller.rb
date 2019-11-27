@@ -62,6 +62,9 @@ class EventsController < ApplicationController
   def double11_2019
   end
 
+  def activity
+  end
+
   def qvmsumsale_is_start
     time_conf = is_qvmsumsale_conf_valid()
     if time_conf.nil?
