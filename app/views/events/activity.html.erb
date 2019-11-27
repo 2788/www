@@ -30,24 +30,24 @@
             <div class="row">
               <% sec[:list].each do |activity| -%>
               <% if Time.now.to_i < Time.parse(activity[:end]).to_i -%>
+
+              <% activity_url = activity[:link] -%>
+              <% if activity[:host] == "www" -%>
+                <% activity_url = Rails.configuration.www_host + activity_url -%>
+              <% elsif activity[:host] == "portal" -%>
+                <% activity_url = Rails.configuration.portal_host + activity_url -%>
+              <% elsif activity[:host] == "blog" -%>
+                <% activity_url = Rails.configuration.blog_host + activity_url -%>
+              <% end -%>
+
               <div class="col-md-4 col-sm-6 col-xs-12 col-activity">
-                <div class="thumbnail">
+                <div class="thumbnail" title="<%= activity[:title] + " - " + activity[:btnText] -%>" onclick='window.open("<%= activity_url -%>", "_blank")'>
                   <div class="caption">
                     <div class="title-container">
                       <h4><%= activity[:title] -%></h4>
                       <p><%= raw(activity[:desc]) -%></p>
                       <%= image_tag activity[:icon], class: "title-icon", title: activity[:title] + " - 七牛云活动", alt: activity[:title] + " - 七牛云活动" -%>
                     </div>
-
-                    <% activity_url = activity[:link] -%>
-                    <% if activity[:host] == "www" -%>
-                      <% activity_url = Rails.configuration.www_host + activity_url -%>
-                    <% elsif activity[:host] == "portal" -%>
-                      <% activity_url = Rails.configuration.portal_host + activity_url -%>
-                    <% elsif activity[:host] == "blog" -%>
-                      <% activity_url = Rails.configuration.blog_host + activity_url -%>
-                    <% end -%>
-
                     <%= link_to activity[:btnText], activity_url, class: "btn btn-lg btn-primary activity-btn", title: activity[:title] + " - " + activity[:btnText], target: "_blank" -%>
                   </div>
                 </div>
