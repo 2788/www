@@ -1,0 +1,63 @@
+<div class="jumbotron hero hero-activity">
+  <div class="container">
+    <div class="middle-container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-banner-title">
+          <h1>七牛云活动</h1>
+          <p>产品优惠活动、免费云服务套餐、新手福利等，助力用户轻松上云</p>
+        </div>
+        <div class="col-md-6 col-sm-6 hidden-xs col-banner-img">
+          <div class="right-mask-banner">
+            <%= image_tag "activity/img-activity-banner.png", title: "产品优惠活动、免费云服务套餐、新手福利等，助力用户轻松上云 - 七牛云活动", alt: "产品优惠活动、免费云服务套餐、新手福利等，助力用户轻松上云 - 七牛云活动", width: "100%" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs tabs-activity">
+  <ul class="nav nav-tabs nav-justified points-bar" role="tablist">
+    <% I18n.t("views.events.activity.tabs").each do |tab| -%>
+      <li class="<%= tab[:class] -%>"><%= link_to tab[:name], tab[:href], data:{ toggle: "tab" } -%></li>
+    <% end -%>
+  </ul>
+  <div class="tab-content">
+    <% I18n.t("views.events.activity.sections").each do |sec| -%>
+      <section class="<%= sec[:class] -%>" id="<%= sec[:id] -%>">
+        <div class="features features-less">
+          <div class="container">
+            <div class="row">
+              <% sec[:list].each do |activity| -%>
+              <% if Time.now.to_i < Time.parse(activity[:end]).to_i -%>
+              <div class="col-md-4 col-sm-6 col-xs-12 col-activity">
+                <div class="thumbnail">
+                  <div class="caption">
+                    <div class="title-container">
+                      <h4><%= activity[:title] -%></h4>
+                      <p><%= raw(activity[:desc]) -%></p>
+                      <%= image_tag activity[:icon], class: "title-icon", title: activity[:title] + " - 七牛云活动", alt: activity[:title] + " - 七牛云活动" -%>
+                    </div>
+
+                    <% activity_url = activity[:link] -%>
+                    <% if activity[:host] == "www" -%>
+                      <% activity_url = Rails.configuration.www_host + activity_url -%>
+                    <% elsif activity[:host] == "portal" -%>
+                      <% activity_url = Rails.configuration.portal_host + activity_url -%>
+                    <% elsif activity[:host] == "blog" -%>
+                      <% activity_url = Rails.configuration.blog_host + activity_url -%>
+                    <% end -%>
+
+                    <%= link_to activity[:btnText], activity_url, class: "btn btn-lg btn-primary activity-btn", title: activity[:title] + " - " + activity[:btnText], target: "_blank" -%>
+                  </div>
+                </div>
+              </div>
+              <% end -%>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </section>
+    <% end -%>
+  </div>
+</div>
