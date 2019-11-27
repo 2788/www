@@ -1,0 +1,235 @@
+.dora-package-page {
+  background: #E9173F;
+
+  .features {
+    background-color: transparent;
+    .intro {
+      position: relative;
+      .title {
+        height: 0.6rem;
+        line-height: 0.6rem;
+        font-size: 0.24rem;
+        color: #FFF;
+        background-image: image-url("dora_package/resource_title.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+      .h265-hash {
+        position: absolute;
+        top: -.8rem;
+        left: 0;
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+
+  .dora-package-setmeal {
+    width: 9.7rem;
+    margin: 0 auto .8rem;
+
+    .nav-dora-package-tabs {
+      background-color: #FFF;
+      border: none;
+
+      li {
+        &.tab-dora-sd720, &.tab-dora-hd1080 {
+          &::before {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            border-right: 2px solid #E9173F;
+            content: '';
+            background: #FFF;
+            opacity: 1;
+            transform: scaleY(1);
+            z-index: 1;
+          }
+        }
+
+        a {
+          padding: 10px 0;
+          color: #FFF;
+          font-size: .18rem;
+          background-color: #FFB124;
+          border-radius: 0;
+        }
+
+        &.active {
+
+          a,
+          a:focus,
+          a:hover {
+            color: #FFF;
+            background-color: #FE6D0E;
+          }
+        }
+      }
+    }
+
+    .tab-content {
+      background: rgba(255, 177, 36, 0.25);
+      margin-top: 0;
+      padding: .2rem 0;
+
+      ul {
+        li {
+          display: block;
+          float: left;
+          width: 21%;
+          margin: 0 2%;
+          background-image: linear-gradient(180deg, #E3E3E3 0%, #FFFFFF 49%);
+
+          .title {
+            margin: .2rem .24rem 0;
+            font-size: .14rem;
+            color: #000;
+          }
+
+          .intro {
+            margin: .16rem 0 .24rem .24rem;
+
+            .dora-package-kind {
+              font-size: .12rem;
+              color: rgba(0, 0, 0, .65);
+              line-height: .12rem;
+            }
+
+            .p1 {
+              margin: .32rem 0 0;
+              font-size: .2rem;
+              font-weight: bold;
+              color: rgba(0, 0, 0, .85);
+            }
+
+            .price {
+              margin: .42rem 0 0 -.24rem;
+              color: #F43122;
+              font-size: 0.28rem;
+              text-align: center;
+
+              &.offset {
+                margin-left: -.1rem;
+              }
+
+              span {
+                font-size: .14rem;
+              }
+
+              font {
+                display: block;
+                color: #7A7A7A;
+                font-size: 0.12rem;
+                text-decoration: line-through;
+              }
+            }
+
+          }
+
+          .dora-package-a {
+            display: block;
+            height: .42rem;
+            background-image: linear-gradient(270deg, #FFB41E 0%, #FE830D 100%);
+            color: #FFF;
+            font-size: 0.16rem;
+            line-height: .42rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  .dora-package-rule {
+    padding: .6rem .7rem;
+    background: #FC932C;
+
+    p {
+      font-size: .14rem;
+      line-height: .24rem;
+      color: #FFF;
+
+      &.gap {
+        margin-top: .2rem;
+      }
+    }
+
+    a {
+      color: #00F0FF;
+    }
+  }
+
+  ul {
+    padding: 0
+  }
+
+  .clear {
+    clear: both
+  }
+
+  @media (max-width: 992px) {
+    .dora-package-setmeal {
+      width: 100%;
+      .tab-content ul li {
+        width: 23%;
+        margin: 0 1%;
+        .title {
+          margin-left: .12rem;
+        }
+        .intro {
+          .dora-package-kind, .p1 {
+            margin-left: -.12rem;
+            height: .24rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .features {
+      padding-top: 1.2rem;
+    }
+    .nav-tabs.nav-justified > li {
+      display: table-cell;
+      width: 1%;
+      a {
+        margin-bottom: 0;
+      }
+    }
+    .dora-package-setmeal {
+      .tab-content ul li {
+        width: 40%;
+        margin: .1rem 5%;
+        .title {
+          margin-left: .24rem;
+        }
+        .intro {
+          .dora-package-kind, .p1 {
+            margin-left: 0;
+            line-height: .17rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    .features {
+      padding-top: 1.2rem;
+    }
+    .dora-package-setmeal {
+      .tab-content ul li {
+        width: 48%;
+        margin: .1rem 1%;
+        .intro > .dora-package-kind {
+          line-height: .17rem;
+          height: .34rem;
+        }
+      }
+    }
+  }
+}

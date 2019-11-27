@@ -7924,6 +7924,10 @@ en:
       title: CDN资源包_CDN套餐包 - 七牛云
       keywords: CDN资源包，CDN闲时包，CDN套餐包，短视频SDK，七牛云CDN
       description: 七牛云CDN资源包特惠选，短视频SDK免费送。活动期间购买指定CDN资源包单笔订单达一定额度，或直接购买CDN短视频套餐包，可以获得对应版本短视频SDK免费使用权限。
+    events_dora_package:
+      title: 转码时长包_视频转码资源包 - 七牛云
+      keywords: 转码优惠包，转码时长包，视频转码资源包，七牛云智能多媒体
+      description: 七牛云针对视频转码推出特惠转码时长包，指定规格6折起限时抢。
     events_qvmsumsale:
       title: 云服务器活动_云主机活动 - 七牛云主机
       keywords: 云服务器活动，云主机活动，七牛云，云短信
