@@ -38,9 +38,8 @@
 
 
   <%# cdn 短视频资源包活动 %>
-  <%# 活动时间 2019 年 10 月 16 日 - 2019 年 11 月 30 日 %>
-  <%# https://jira.qiniu.io/browse/BO-9213 %>
-  <% if Time.now.to_i < Time.local(2019, 12, 1).to_i -%>
+  <%# 活动为长期活动 %>
+  <%# https://jira.qiniu.io/browse/BO-9921 %>
   <div class="jumbotron hero hero-fusion-package-index">
     <div class="container">
       <div class="middle-container">
@@ -55,7 +54,6 @@
       </div>
     </div>
   </div>
-  <% end -%>
 
   <%# 存储海外促销活动 banner 2022 年 8 月 1 日凌晨下线，为期三年 %>
   <% if Time.now.to_i < Time.local(2022, 8, 1).to_i -%>
