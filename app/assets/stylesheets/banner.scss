@@ -881,6 +881,31 @@
     }
   }
 
+  &.hero-dora-package-index {
+    background-image: image-url("banner/banner-dora-package-index.jpg");
+    .container {
+      .middle-container {
+        top: 46%;
+        text-align: center;
+        img {
+          margin: 0 auto;
+          margin-top: 0.20rem;
+        }
+        .btn-banner {
+          margin-top: 0.20rem;
+          border: none;
+          color: #D50004;
+          background-color: #FFF;
+          &:hover {
+            -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+
   &.hero-zelda-index {
     background-color: #321974;
     background-image: none !important;
@@ -1832,6 +1857,22 @@
           }
           img {
             width: 400px;
+          }
+        }
+      }
+    }
+
+    &.hero-dora-package-index {
+      .container {
+        .middle-container {
+          top: 44%;
+          img {
+            &.img-title {
+              width: 500px;
+            }
+            &.img-md {
+              width: 455px;
+            }
           }
         }
       }

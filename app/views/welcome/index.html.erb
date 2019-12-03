@@ -18,25 +18,6 @@
   </div>
   <% end -%>
 
-  <%# 2019 年 1024 大促活动 banner %>
-  <%# https://jira.qiniu.io/browse/BO-9137 %>
-  <% if Time.now.to_i < Time.local(2019, 11, 7).to_i -%>
-  <div class="jumbotron hero hero-zelda-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="<%= events_20191024_path + "?entry=index-banner" -%>" title="1024 码上狂欢日，不用比价直接买" target="_blank" >
-              <%= image_tag "banner/banner-zelda-index.jpg", title: "1024 码上狂欢日，不用比价直接买", alt: "1024 码上狂欢日，不用比价直接买", width: 800 -%>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-
   <%# cdn 短视频资源包活动 %>
   <%# 活动为长期活动 %>
   <%# https://jira.qiniu.io/browse/BO-9921 %>
@@ -75,176 +56,20 @@
   </div>
   <% end -%>
 
-  <%# dora 锐智转码活动 %>
-  <%# 活动时间为 2019 年 8 月 15 日 - 2019 年 9 月 15 日 %>
-  <% if Time.now.to_i >= Time.local(2019, 8, 15).to_i && Time.now.to_i < Time.local(2019, 9, 16).to_i -%>
-  <div class="jumbotron hero hero-dora-avsmart-index">
+  <%# dora 转码包活动 %>
+  <div class="jumbotron hero hero-dora-package-index">
     <div class="container">
       <div class="middle-container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <h1>锐智转码&nbsp;<span class="text-warn">500&nbsp;元</span>优惠券&nbsp;抢先领取</h1>
-            <p>视频瘦身火热上线，成本与体验的合理配置，节省不止一点点</p>
-            <%= link_to "免费申领", events_dora_avsmart_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
+            <%= image_tag "banner/banner-dora-package-title.png", class: "img-title", title: "Dora 转码时长包，年终优惠来袭", alt: "Dora 转码时长包，年终优惠来袭", width: 768 -%>
+            <%= image_tag "banner/banner-dora-package-md.png", class: "img-md", title: "Dora 转码时长包，年终优惠来袭", alt: "Dora 转码时长包，年终优惠来袭", width: 700 -%>
+            <%= link_to "了解详情", events_dora_package_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <% end -%>
-
-  <%# 企业上云活动下线 %>
-  <%# https://jira.qiniu.io/browse/BO-9032 %>
-  <% if false -%>
-  <div class="jumbotron hero hero-enterpriseoncloud-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>“上海市企业服务云”</h1>
-              <h1>中小企业上云扶持项目</h1>
-              <p>上海政府扶持资金到位，活动时间即日起至 2019 年 9 月 30 日，<span class="content-marked">3 折</span>即可购企业云服务套餐</p>
-            </div>
-            <%= link_to "查看详情", "/events/enterpriseoncloud?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# 2018 年最后一波邀请活动 banner %>
-  <%# 时间：2018 年 12 月 24 日 - 2019 年 1 月 1 日 %>
-  <%# https://jira.qiniu.io/browse/BO-6068 %>
-  <% if Time.now.to_i < Time.local(2019, 1, 1).to_i -%>
-  <div class="jumbotron hero hero-invite-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= image_tag "banner/banner-invite-middle.png", class: "invite-image", title: "邀请好友赢好礼 新年上上签", alt: "邀请好友赢好礼 新年上上签" -%>
-            <p class="invite-text"><span>活动时间：12 月 24 日 - 12 月 31 日</span></p>
-            <%= link_to "立即参与", Rails.configuration.portal_host + "/invitation", target: "_blank", id: "banner-invite-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# 618 活动首页 banner 2019 年 7 月 1 日凌晨下线%>
-  <%# https://jira.qiniu.io/browse/BO-7519 %>
-  <% if Time.now.to_i < Time.local(2019, 7, 1).to_i -%>
-  <div class="jumbotron hero hero-bigpromotion-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= image_tag "banner/banner-bigpromotion-middle.png", class: "icon-bigpromotion", title: "七牛云 618 年中盛惠", alt: "七牛云 618 年中盛惠" -%>
-            <%= link_to "立即抢购", "/events/2019618?entry=index-banner", class: "btn btn-lg btn-default btn-banner", target: "_blank", id: "banner-bigpromotion-btn", title: "七牛云 618 年中盛惠 - 立即抢购" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# qvmsumsale 活动时间为 2019 年 6 月 5 日 - 2019 年 8 月 31 日 %>
-  <% if Time.now.to_i >= Time.local(2019, 6, 5).to_i && Time.now.to_i < Time.local(2019, 9, 1).to_i -%>
-  <div class="jumbotron hero hero-qvmsumsale-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>盛暑钜惠&nbsp;<span class='content-marked'>云主机</span>冰点价</h1>
-              <h2>爆款云主机&nbsp;<span class='content-huge content-marked'>0</span>&nbsp;元起</h2>
-              <%= link_to "立即抢购", events_qvmsumsale_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# qvm2for3 活动下线时间为 2019 年 5 月 31 日零点 %>
-  <% if Time.now.to_i < Time.local(2019, 5, 31).to_i -%>
-  <div class="jumbotron hero hero-qvm2for3-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>一年之&nbsp;<span class="text-huge">机</span>&nbsp;在于春&nbsp;云主机&nbsp;<span class="text-huge">买二送一</span></h1>
-              <p>活动时间：2019 年 4 月 19 日 - 2019 年 5 月 30 日</p>
-            </div>
-            <%= link_to "点击查看", "/events/qvm2for3?entry=index-banner", target: "_blank", class: "btn btn-lg btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <% if Time.now.to_i < Time.local(2019, 4, 7).to_i -%>
-  <div class="jumbotron hero hero-cloud-report">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h3>计世资讯 2018 中国视频云市场现状报告发布</h3>
-              <h1>七牛云位列创新者象限</h1>
-            </div>
-            <%= link_to "点击查看", "https://blog.qiniu.com/archives/8871", target: "_blank", class: "btn btn-lg btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <% if Time.now.to_i < Time.local(2019, 5, 31).to_i -%>
-  <div class="jumbotron hero hero-fusion-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>CDN&nbsp;动态加速&nbsp;全新上线</h1>
-              <h3>动态路由实时探测&nbsp;传输协议深度优化</h3>
-              <h3>1500+&nbsp;全球节点&nbsp;30Tbps 带宽储备</h3>
-            </div>
-            <%= link_to "立即使用", Rails.configuration.portal_host + "/cdn/domain/create?platform=dynamic&guideDynamic#platform", target: "_blank", class: "btn btn-lg btn-hollow btn-banner m-r", id: "fusion-banner-employ" -%>
-            <%= link_to "申请开通", "", target: "", class: "btn btn-lg btn-hollow btn-banner", id: "fusion-banner-apply", data: {toggle: "modal", target: "#feedback-modal", intention: "CDN 动态加速全新上线"} -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# sms banner 上线时间 2019 年 5 月 13 日凌晨，下线时间 2019 年 7 月 15 日凌晨 %>
-  <% if Time.now.to_i >= Time.local(2019, 5, 13).to_i && Time.now.to_i < Time.local(2019, 7, 15).to_i -%>
-  <div class="jumbotron hero hero-sms-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>七牛云短信&nbsp;一触即发</h1>
-              <p>三网合一、秒级送达、快速接入、灵活调用</p>
-              <p>超值优惠&nbsp;低至&nbsp;￥<span class="price-span">0.0357</span>/条</p>
-            </div>
-            <%= link_to "查看详情", products_sms_path + "?entry=index-banner", target: "_blank", class: "btn btn-lg btn-default btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
 
   <div class="jumbotron hero hero-qvmpartner-index">
     <div class="container">
@@ -279,32 +104,6 @@
     </div>
   </div>
 
-  <% if false -%>
-  <%# 内容安全 banner 下线 %>
-  <%# https://jira.qiniu.io/browse/BO-7671 %>
-  <div class="jumbotron hero hero-censor-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>明瞳内容安全重磅升级</h1>
-              <p>一键开启 6 重内容审核保障 更享 24 万次免费调用</p>
-            </div>
-            <%= link_to "立即开启", products_censor_path, target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <% if Time.now.to_i < Time.local(2019, 5, 15).to_i -%>
-  <a title="七牛云 2020 届 春季实习生招聘" href="https://career.qiniu.com/school?entry=index-banner" target="_blank">
-    <div class="jumbotron hero hero-career-school"></div>
-  </a>
-  <% end -%>
-
   <div class="jumbotron hero hero-qvm1rmb-index">
     <div class="container">
       <div class="middle-container">
@@ -338,95 +137,13 @@
     </div>
   </div>
 
-  <%# qvm 双十一活动 banner %>
-  <% if is_double11_on() -%>
-  <div class="jumbotron hero hero-double11-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= link_to "查看详情", "/events/double11?entry=index-banner", target: "_blank", id: "banner-double11-btn", class: "btn btn-lg btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# 下线 qmv 1 元上云活动 banner %>
-  <%# https://jira.qiniu.io/browse/BO-6105 %>
-  <% if false -%>
-  <div class="jumbotron hero hero-qvm1rmb-1123-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= image_tag "banner/banner-qvm1rmb-middle.png", class: "qvm1rmb-image", title: "1 元上云，机不可失", alt: "1 元上云，机不可失" -%>
-            <%= link_to "立即开启", "/events/qvm1rmb?entry=index-banner", target: "_blank", id: "banner-qvm1rmb-1123-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# 1024 活动 banner %>
-  <% if is_1024event_on() -%>
-  <div class="jumbotron hero hero-event1024-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= link_to "立即参加", "/events/1024event?entry=index-banner", target: "_blank", id: "banner-1024event-btn", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <%# 屏蔽 云存储直播云 5 折大促 banner %>
-  <% if false -%>
-  <div class="jumbotron hero hero-kodo-pili-event">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <%= link_to "了解详情", "https://blog.qiniu.com/archives/8810", target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
-  <% if false -%>
-  <%# 在线教育解决方案页面下线，下掉 banner %>
-  <%# https://jira.qiniu.io/browse/BO-6826 %>
-  <div class="jumbotron hero hero-edu-index">
-    <div class="container">
-      <div class="middle-container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="banner-desc">
-              <h1>在线教育解决方案</h1>
-              <p><span class="text-warn">150ms</span> 低延迟，<span class="text-warn">99.9%</span> 连通率，<span class="text-warn">9Kbps</span> 互动白板，<span class="text-warn">30 天</span>实现直播课堂</p>
-            </div>
-            <%= link_to "查看详情", products_edu_path, target: "_blank", class: "btn btn-lg btn-hollow btn-banner" -%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <% end -%>
-
 </div>
 <% else %>
-  <div class="jumbotron hero en">
-    <div class="videoWrapper">
-      <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#englishVideo" tabindex="0"></a>
-    </div>
+<div class="jumbotron hero en">
+  <div class="videoWrapper">
+    <a class="btn-icon video-initial-btn" data-toggle="modal" data-target="#englishVideo" tabindex="0"></a>
   </div>
+</div>
 <% end %>
 <!-- englishVideo modal -->
 <div class="modal fade bs-example-modal-lg" id="englishVideo" tabindex="-1" role="dialog" aria-labelledby="englishVideo" aria-hidden="true" style="display: none;">
