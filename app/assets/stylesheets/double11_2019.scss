@@ -479,6 +479,27 @@
   }
 }
 
+.double11-2019-end-mask {
+  position: absolute;
+  z-index: 999;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  .double11-2019-end-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -60px;
+    margin-left: -200px;
+    padding: 38px 0;
+    height: 120px;
+    width: 400px;
+    background-color: white;
+    text-align: center;
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .jumbotron.hero.hero-double11-2019 {
     .container {
@@ -812,5 +833,14 @@
 
   .features-double11-2019-kodo {
     padding-top: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .double11-2019-end-mask {
+    .double11-2019-end-modal {
+      width: 300px;
+      margin-left: -150px;
+    }
   }
 }
