@@ -153,6 +153,12 @@ $(document).ready ->
       percent = getPercentByTime()
       updateProgressByPercent percent
 
+  updateEndMask = (isEnd) ->
+    if isEnd
+      $('#double11-2019-end-mask').show()
+    else
+      $('#double11-2019-end-mask').hide()
+
   # 绑定页面的 dropdown
   if $2019double11EventPage.length > 0
     bindDropdownList()
@@ -160,6 +166,7 @@ $(document).ready ->
   if $2019double11EventPage.length > 0
     is2019Double11End (isEnd) ->
       updateBtnsByStatus isEnd
+      updateEndMask isEnd
       # updateProgressBarByStatus isEnd
       if !isEnd
         double112019GetUserInfo()
