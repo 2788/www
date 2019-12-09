@@ -7616,13 +7616,13 @@ en:
           type: "path"
           isHot: false
           target: ""
-        # - name: ecug
-        #   label: ECUG 大会
-        #   path: ecugcon_events
-        #   url: "https://www.ecug.org/"
-        #   type: "url"
-        #   isHot: false
-        #   target: "_blank"
+        - name: ecug
+          label: ECUG 技术大会
+          path: ecugcon_events
+          url: "https://www.ecug.org/"
+          type: "url"
+          isHot: true
+          target: "_blank"
     - group: 云扶持
       list:
         - name: goglobal
