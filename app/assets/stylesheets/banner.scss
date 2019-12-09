@@ -938,6 +938,50 @@
     }
   }
 
+  &.hero-ecug-2019 {
+    background-image: image-url("banner/banner-ecug-2019.jpg");
+    .container {
+      .middle-container {
+        top: 45%;
+        text-align: center;
+        .content {
+          width: max-content;
+          margin: 0 auto;
+          h1, h3, p {
+            margin: 0.10rem 0;
+            font-weight: 600;
+            text-shadow: none;
+          }
+          h3 {
+            font-size: 0.48rem;
+            color: #2A3059;
+            text-align: left;
+          }
+          h1 {
+            font-size: 0.90rem;
+            color: #00063C;
+          }
+          p {
+            margin: 0.20rem 0;
+            font-size: 0.28rem;
+            color: #2A3059;
+          }
+        }
+        .btn-banner {
+          margin-top: 0.10rem;
+          color: #FFF;
+          border: none;
+          background-color: #4750F6;
+          &:hover {
+            -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+    }
+  }
+
   &.hero-dora-avsmart-index {
     background-image: image-url("banner/banner-dora-avsmart-index.jpg") !important;
     .container {
@@ -1679,6 +1723,27 @@
           margin-top: 0;
           img {
             width: 400px;
+          }
+        }
+      }
+    }
+
+    &.hero-ecug-2019 {
+      .container {
+        .middle-container {
+          top: 45%;
+          .content {
+            width: auto;
+            h3 {
+              text-align: center;
+              font-size: 0.36rem;
+            }
+            h1 {
+              font-size: 0.52rem;
+            }
+            p {
+              font-size: 0.20rem;
+            }
           }
         }
       }
