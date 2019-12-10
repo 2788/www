@@ -1,0 +1,794 @@
+<%# 2019 年双十二大促活动落地页 %>
+<%# https://jira.qiniu.io/browse/BO-10004 %>
+
+<%# banner 部分 %>
+<div class="jumbotron hero hero-double12-2019">
+  <div class="container">
+    <div class="middle-container">
+      <%= image_tag I18n.t("views.events.double12_2019.banner.image"), title: "云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券", alt: "云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券" -%>
+    </div>
+  </div>
+</div>
+
+<%# 导航 %>
+<div class="features-nav double12-2019-nav hidden-xs">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav nav-tabs nav-justified navbar-wrapper-middle">
+        <% I18n.t("views.events.double12_2019.middlebar").each do |linkbar| -%>
+          <li class="<%= linkbar[:class] %>"><%= link_to linkbar[:title], linkbar[:href], title: linkbar[:title] -%></li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# 预留组合包模块 %>
+<%# https://jira.qiniu.io/browse/BO-10101 %>
+<%# <div class="features features-double12-2019 features-double12-2019-combo tab-content-double12-2019-combo">
+  <div class="container"></div>
+</div> %>
+
+<%# 存储专场 %>
+<div class="features features-double12-2019 features-double12-2019-kodo tab-content-double12-2019-kodo">
+  <div class="container">
+    <%# 拉新包 %>
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-red.png", title: I18n.t("views.events.double12_2019.kodo.title"), alt: I18n.t("views.events.double12_2019.kodo.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.kodo.title") -%>
+        <%= image_tag "double12_2019/icon-title-red-blue.png", title: I18n.t("views.events.double12_2019.kodo.title"), alt: I18n.t("views.events.double12_2019.kodo.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.kodo.desc")) -%></p>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 col-table">
+        <div class="table-container">
+          <table class="kodo-top-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <% Rails.configuration.double12_2019_package[:kodo][:table].each do |table| -%>
+              <tr>
+                <td class="padding width-30">
+                  <span class="activity-tip <%= table[:tipClass] -%>"><%= table[:tipText] -%></span>
+                  <p class="title"><%= table[:title] -%></p>
+                </td>
+                <td class="width-10">
+                  <p class="sub-title">时长</p>
+                  <p class="desc"><%= table[:duration] -%></p>
+                </td>
+                <td class="width-15">
+                  <p class="sub-title">地区</p>
+                  <div class="content-dropdown">
+                    <select class="form-control double12-2019-dropdown double12-2019-kodo-top-dropdown">
+                      <% table[:areas].each do |area| -%>
+                      <option value="<%= area[:value] -%>"><%= area[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                </td>
+                <% table[:sections].each do |section| -%>
+                <td class="text-center width-20 content-section <%= section[:class] -%>" id="<%= section[:id] + "-price" -%>">
+                  <div class="content-price">
+                    <div class="row">
+                      <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                        <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                      </div>
+                      <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                        <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                        <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center width-15 content-section <%= section[:class] -%>" id="<%= section[:id] + "-btn" -%>">
+                  <%= link_to section[:btnText], signin_url('www', '/events/20191212'), title: table[:title] + " - " + section[:btnText], class: "btn btn-lg btn-double12-2019 package-buy disabled " + section[:btnClass], target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </td>
+                <% end -%>
+              </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%# 华南专区 %>
+    <div class="intro">
+      <p class="sub-title high-light-1">
+        <%= I18n.t("views.events.double12_2019.kodo.southSubTitle") -%>
+      </p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:kodo][:southList].each do |kodo| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <% if kodo[:isNew] -%>
+          <div class="activity-flag">新人专享</div>
+          <% end -%>
+          <div class="caption">
+            <h4 class="title"><%= kodo[:title] -%></h4>
+            <p class="desc"><%= kodo[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <p class="dropdown-title">时长</p>
+                <select class="form-control double12-2019-dropdown double12-2019-kodo-dropdown">
+                  <% kodo[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <span class="activity-tip">双 12 狂欢</span>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: kodo[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+    <%# 华东、华北 %>
+    <div class="intro">
+      <p class="sub-title">
+        <%= I18n.t("views.events.double12_2019.kodo.subTitle") -%>
+      </p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:kodo][:list].each do |kodo| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <% if kodo[:isNew] -%>
+          <div class="activity-flag">新人专享</div>
+          <% end -%>
+          <div class="caption">
+            <h4 class="title"><%= kodo[:title] -%></h4>
+            <p class="desc"><%= kodo[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-duration">
+                    <p class="dropdown-title">时长</p>
+                    <select class="form-control double12-2019-dropdown double12-2019-kodo-dropdown duration-dropdown">
+                      <% kodo[:durations].each do |duration| -%>
+                      <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-area">
+                    <p class="dropdown-title">地区</p>
+                    <select class="form-control double12-2019-dropdown double12-2019-kodo-dropdown area-dropdown">
+                      <% kodo[:areas].each do |area| -%>
+                      <option value="<%= area[:value] -%>"><%= area[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <span class="activity-tip">双 12 狂欢</span>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: kodo[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场 %>
+<div class="features features-double12-2019 features-double12-2019-fusion tab-content-double12-2019-fusion">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-yellow.png", title: I18n.t("views.events.double12_2019.fusion.title"), alt: I18n.t("views.events.double12_2019.fusion.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.fusion.title") -%>
+        <%= image_tag "double12_2019/icon-title-yellow.png", title: I18n.t("views.events.double12_2019.fusion.title"), alt: I18n.t("views.events.double12_2019.fusion.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.fusion.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:fusion][:list].each do |fusion| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-fusion">
+        <div class="thumbnail cool">
+          <% if fusion[:isNew] -%>
+          <div class="activity-flag">新人专享</div>
+          <% end -%>
+          <div class="caption">
+            <h4 class="title"><%= fusion[:title] -%></h4>
+            <p class="desc"><%= fusion[:desc] -%></p>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <p class="dropdown-title">域名</p>
+                <select class="form-control double12-2019-dropdown double12-2019-fusion-dropdown">
+                  <% fusion[:durations].each do |duration| -%>
+                  <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                  <% end -%>
+                </select>
+              </div>
+              <span class="activity-tip">双 12 狂欢</span>
+              <% fusion[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: fusion[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 直播云专场 %>
+<div class="features features-double12-2019 features-double12-2019-pili tab-content-double12-2019-pili">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-red.png", title: I18n.t("views.events.double12_2019.pili.title"), alt: I18n.t("views.events.double12_2019.pili.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.pili.title") -%>
+        <%= image_tag "double12_2019/icon-title-red-yellow.png", title: I18n.t("views.events.double12_2019.pili.title"), alt: I18n.t("views.events.double12_2019.pili.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.pili.desc")) -%></p>
+    </div>
+    <div class="intro">
+      <p class="sub-title">
+        <%= I18n.t("views.events.double12_2019.pili.pmTitle") -%>
+      </p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:pili][:pmList].each do |pili| -%>
+      <div class="col-md-4 col-sm-6 col-xs-12 col-item col-pili">
+        <div class="thumbnail cool">
+          <div class="caption">
+            <h4 class="title"><%= pili[:title] -%></h4>
+            <p class="desc"><%= pili[:desc] -%></p>
+            <div class="content-container">
+              <span class="activity-tip">双 12 狂欢</span>
+              <section class="content-section active">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= pili[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= pili[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= pili[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: pili[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: pili[:packageID], package_info: pili[:title] } -%>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+      <div class="col-md-12 col-sm-12 col-xs-12 btn-container">
+        <%= link_to "查看更多优惠", Rails.configuration.www_host + "/prices?source=pili&entry=20191212-page", title: "直播云 - 查看更多优惠", class: "btn btn-lg", target: "_blank" -%>
+      </div>
+    </div>
+    <div class="intro">
+      <p class="sub-title">
+        <%= I18n.t("views.events.double12_2019.pili.socialTitle") -%>
+      </p>
+      <p class="sub-title high-light-2 tiny">
+        <%= I18n.t("views.events.double12_2019.pili.socialSubTitle") -%>
+      </p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:pili][:socialList].each do |pili| -%>
+      <div class="col-md-6 col-sm-6 col-xs-12 col-item col-pili">
+        <div class="thumbnail cool">
+          <div class="caption">
+            <h4 class="title"><%= pili[:title] -%></h4>
+            <p class="desc"><%= pili[:desc] -%></p>
+            <div class="content-container">
+              <span class="activity-tip">双 12 狂欢</span>
+              <section class="content-section active">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= pili[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= pili[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= pili[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: pili[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: pili[:packageID], package_info: pili[:title] } -%>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 短视频 SDK 专场 %>
+<div class="features features-double12-2019 features-double12-2019-sdk tab-content-double12-2019-sdk">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-red-yellow.png", title: I18n.t("views.events.double12_2019.sdk.title"), alt: I18n.t("views.events.double12_2019.sdk.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.sdk.title") -%>
+        <%= image_tag "double12_2019/icon-title-red.png", title: I18n.t("views.events.double12_2019.sdk.title"), alt: I18n.t("views.events.double12_2019.sdk.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.sdk.desc")) -%></p>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 col-table">
+        <div class="table-container">
+          <table class="sdk-exp-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <% Rails.configuration.double12_2019_package[:sdk][:table].each do |table| -%>
+              <tr>
+                <td class="padding width-30">
+                  <span class="activity-tip <%= table[:tipClass] -%>"><%= table[:tipText] -%></span>
+                  <p class="title"><%= table[:title] -%></p>
+                </td>
+                <td class="width-10">
+                  <p class="sub-title">类型</p>
+                  <p class="desc"><%= table[:type] -%></p>
+                </td>
+                <td class="width-10">
+                  <p class="sub-title">授权时长</p>
+                  <p class="desc"><%= table[:duration] -%></p>
+                </td>
+                <td class="text-center width-25">
+                  <div class="content-price">
+                    <div class="row">
+                      <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                        <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= table[:price] -%></span>
+                      </div>
+                      <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                        <span class="span-red">节省&nbsp;<%= table[:save] -%>&nbsp;元</span>
+                        <span class="span-red span-elide">原价&nbsp;<%= table[:originPrice] -%>&nbsp;元</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <%= link_to table[:btnText], signin_url('www', '/events/20191212'), title: table[:title] + " - " + table[:btnText], class: "btn btn-lg btn-double12-2019 package-buy disabled " + table[:btnClass], target: "_blank", data: { package_id: table[:packageID], package_info: table[:title] } -%>
+                </td>
+              </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 智能视频处理专场 %>
+<div class="features features-double12-2019 features-double12-2019-dora tab-content-double12-2019-dora">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-yellow.png", title: I18n.t("views.events.double12_2019.dora.title"), alt: I18n.t("views.events.double12_2019.dora.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.dora.title") -%>
+        <%= image_tag "double12_2019/icon-title-yellow.png", title: I18n.t("views.events.double12_2019.dora.title"), alt: I18n.t("views.events.double12_2019.dora.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.dora.desc")) -%></p>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <%= image_tag I18n.t("views.events.double12_2019.dora.image"), title: "智能视频处理转码时长包，年终优惠来袭", alt: "智能视频处理转码时长包，年终优惠来袭", width: 768 -%>
+        <%= link_to "查看更多优惠", Rails.configuration.www_host + "/events/dora-package?entry=20191212-page", title: "智能视频处理 - 查看更多优惠", class: "btn btn-lg", target: "_blank" -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云主机专场 %>
+<div class="features features-double12-2019 features-double12-2019-qvm tab-content-double12-2019-qvm">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-red.png", title: I18n.t("views.events.double12_2019.qvm.title"), alt: I18n.t("views.events.double12_2019.qvm.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.qvm.title") -%>
+        <%= image_tag "double12_2019/icon-title-red-blue.png", title: I18n.t("views.events.double12_2019.qvm.title"), alt: I18n.t("views.events.double12_2019.qvm.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.qvm.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:qvm][:list].each do |qvm| -%>
+      <div class="col-md-3 col-sm-6 col-xs-12 col-item col-qvm">
+        <div class="thumbnail">
+          <% if qvm[:isNew] -%>
+          <div class="activity-flag">新人专享</div>
+          <% elsif qvm[:isEnt] -%>
+          <div class="activity-flag green">企业<br />新人专享</div>
+          <% end -%>
+          <div class="caption">
+            <h4 class="title"><%= qvm[:title] -%></h4>
+            <p class="desc"><%= qvm[:desc] -%></p>
+            <div class="content-container">
+              <table class="qvm-spec-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <% qvm[:spec].each do |spec| -%>
+                    <td><%= spec[:title] -%></td>
+                    <% end -%>
+                  </tr>
+                  <tr>
+                    <% qvm[:spec].each do |spec| -%>
+                    <td><%= spec[:value] -%></td>
+                    <% end -%>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="activity-tip">双 12 狂欢</span>
+              <section class="content-section active">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= qvm[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= qvm[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= qvm[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <%= link_to "立即抢购", Rails.configuration.portal_host + qvm[:link], title: qvm[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 disabled", target: "_blank" -%>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云短信专场 %>
+<div class="features features-double12-2019 features-double12-2019-sms tab-content-double12-2019-sms">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-red.png", title: I18n.t("views.events.double12_2019.sms.title"), alt: I18n.t("views.events.double12_2019.sms.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.sms.title") -%>
+        <%= image_tag "double12_2019/icon-title-red.png", title: I18n.t("views.events.double12_2019.sms.title"), alt: I18n.t("views.events.double12_2019.sms.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.sms.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.double12_2019_package[:sms][:list].each do |sms| -%>
+      <div class="col-md-4 col-sm-6 col-xs-12 col-item col-sms">
+        <div class="thumbnail cool">
+          <div class="caption">
+            <h4 class="title"><%= sms[:title] -%></h4>
+            <p class="desc"><%= sms[:desc] -%></p>
+            <div class="content-container">
+              <span class="activity-tip">双 12 狂欢</span>
+              <section class="content-section active">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= sms[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= sms[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= sms[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: sms[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: sms[:packageID], package_info: sms[:title] } -%>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# Pandora 免费版部分 %>
+<div class="features features-double12-2019 features-double12-2019-pandora tab-content-double12-2019-pandora">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.events.double12_2019.pandora.title") -%></h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.pandora.desc")) -%></p>
+    </div>
+    <div class="row">
+      <a href="<%= Rails.configuration.portal_host + I18n.t("views.events.double12_2019.pandora.link") -%>" title="Pandora 2.0 免费版下载使用" target="_blank">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <%= image_tag I18n.t("views.events.double12_2019.pandora.image"), title: "Pandora 2.0 免费版下载使用", alt: "Pandora 2.0 免费版下载使用", width: 768 -%>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<%# 存储专场部分 - 了解详情模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-kodo-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-kodo-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-kodo-modal-label">存储专场 - 了解详情</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">新用户专享</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
+        <p>购买说明：</p>
+        <p>1、产品为限量抢购产品，每位用户仅可购买 1 次</p>
+        <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>3、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
+        <p class="sub-title">通用优惠</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：七牛云新老用户均可参加</p>
+        <p>购买说明：</p>
+        <p>1、各资源包为限量产品，每位用户累计至多购买 6 个</p>
+        <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-fusion-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-fusion-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-fusion-modal-label">CDN 专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">新用户专享</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
+        <p>购买说明：</p>
+        <p>1、产品为限量抢购产品，每位用户资源包总计不得超过 3 个。用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
+        <p>2、CDN 资源包使用规则：</p>
+        <p>（1）在资源包生效期间内，若当月用量超出可用资源包额度，出账时将优先抵扣完资源包额度，超出部分再按照官网标准结算</p>
+        <p>（2）资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣；若当过期时间相同时，将优先抵扣闲时资源包</p>
+        <p>（3）由于活动优惠力度较大，因此购买后无特殊情况无法退款，请确认后再购买</p>
+        <p>（4）本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
+        <p class="sub-title">通用优惠</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）</p>
+        <p>购买说明：</p>
+        <p>1、资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣，按月发放，可结转</p>
+        <p>2、若当月使用量大于已购买资源包额度，出账时将先抵扣完资源包额度，再按照官网标准价格为剩余用量出具账单</p>
+        <p>3、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效；协议期为一年</p>
+        <p>4、资源包只能使用现金充值余额支付</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 直播云专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-pili-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-pili-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-pili-modal-label">直播云专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
+        <p>计费规则：</p>
+        <p>1、仅支持 2019 年 12 月 1 日后新注册用户购买</p>
+        <p>2、有效期：流量包在您支付购买后的当月生效，有效期为 1 年</p>
+        <p>3、仅支持中国大陆地区按月结流量计费的抵扣，抵扣完毕后，超出部分按流量（公开价）后计费</p>
+        <p>4、支持购买多个流量包叠加使用，有效期不叠加，优先抵扣先过期的流量包</p>
+        <p>5、已购买但从未使用可以联系销售进行退款</p>
+        <p>6、流量资源包仅支持当前计费规则为流量计费的用户购买，如您当前以带宽峰值计费，请联系对应销售或拨打 <a href='tel:400-808-9176' class='link-box' title='400-808-9176 转 1' target=''>400-808-9176 转 1</a> 完成计费方式切换</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+        <p>更多优惠产品请<a href='/prices?source=pili' class='link-box' title='直播云更多优惠产品' target='_blank'>点击查看</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 短视频 SDK 部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-sdk-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-sdk-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-sdk-modal-label">短视频 SDK - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">短视频 SDK 五折抢购活动</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：七牛云新老用户皆可参与</p>
+        <p>购买说明：</p>
+        <p>1、该活动设置了限购，短视频 SDK 五折抢购，每个用户限购一单</p>
+        <p>2、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>3、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
+        <p>4、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，限购规则以同一期活动内的购买总数为准</p>
+        <p class="sub-title">短视频 SDK 精简版和基础版一折秒杀活动</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：短视频 SDK 新用户（已经是本平台用户，但没有使用过短视频 SDK 的用户也可以参加）</p>
+        <p>购买说明：</p>
+        <p>1、短视频 SDK 精简版和基础版一折秒杀，每个用户限购一单</p>
+        <p>2、由于该活动为商品限量秒杀，所以根据实际情况，活动可能提前结束，请各位用户尽快下单购买</p>
+        <p>3、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>4、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
+        <p>5、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
+        <p class="sub-title">短视频 SDK 授权的购买流程</p>
+        <p>1、登录七牛账号，然后通过本活动页面点击秒杀或抢购按钮，进入到<a href="<%= Rails.configuration.portal_host + "/financial/carnival" -%>" class="link-box" title="双十一活动 - 七牛云" target="_blank">双十一活动会场</a></p>
+        <p>2、进入到双十一活动会场后，在<a href="<%= Rails.configuration.portal_host + "/financial/carnival#sdk" -%>" class="link-box" title="短视频 SDK 专场 - 双十一活动" target="_blank">短视频 SDK 专场</a>找到目标商品，进行下单</p>
+        <p>3、下单成功后，进入到<a href="<%= Rails.configuration.portal_host + "/financial/orders" -%>" class="link-box" title="订单列表页面" target="_blank">订单列表页面</a>，进行支付</p>
+        <p>4、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>5、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
+        <p><br /></p>
+        <p>在本次活动中通过优惠价格购买获得的短视频 SDK 授权，不得转售或转赠给任何未经本平台书面授权的第三方，否则七牛云有权立即收回授权</p>
+        <p>除特殊情况外，用户参加本活动购买的产品，不支持退订。如因特殊原因发生退订的，需保证产品未使用</p>
+        <p>根据相关部门规定，对于平台恶意刷单行为，本平台将依法提供事实证据，以维护消费者权益</p>
+        <p>购买本平台商品，默认同意<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a>及相关产品服务协议</p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云主机专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-qvm-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-qvm-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-qvm-modal-label">云主机专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">新用户专享主机</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：每日 10:00 限时抢购</p>
+        <p>2、套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为中国大陆</p>
+        <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p class="sub-title">企业客户专享主机</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：七牛云官网已注册且完成企业实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：每位企业用户可最多抢 2 台主机</p>
+        <p>2、套餐配置：每款默认配置 1 个公网 IP 及相应带宽（2Mbps 或 5Mbps），40G 高效云盘，地域为中国大陆</p>
+        <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p class="sub-title">通用优惠主机</p>
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的新老用户</p>
+        <p>抢购数量：每位用户可最多抢 2 台主机</p>
+        <p>订购限制：本次活动不支持代金券或折扣券；如退订退款，再次购买相同资源不再享受同等折扣</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云短信专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-sms-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-sms-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-sms-modal-label">云短信专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动对象：七牛云官网注册并经过实名验证的客户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：短信服务包每名用户最多只能购买不超过 3 个数量的套餐包</p>
+        <p>2、套餐配置：短信包内含标识的短信条数，短信类型为系统类（验证码、通知），和推广类短信包</p>
+        <p>3、使用说明：用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效。短信包可以叠加使用，使用顺序以购买时间计算，优先使用先到期的包</p>
+        <p>4、有效期：短信套餐包自生效起 1 年内有效，逾期未使用将自动作废</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 生效时间选择模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-effect-time-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-effect-time-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-effect-time-modal-label">请选择生效时间</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title package-info"></p>
+        <p class="effect-time-btns">
+          <%= link_to "当月生效", "", title: "当月生效", class: "btn btn-lg btn-default m-r effect-time", data: { effect_time: 2 } -%>
+          <%= link_to "次月生效", "", title: "次月生效", class: "btn btn-lg btn-primary effect-time", data: { effect_time: 3 } -%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 下单套餐包成功模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-package-buy-success-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-package-buy-success-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-package-buy-success-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title">下单成功，请到 <%= link_to "管理控制台 > 财务中心 > 订单列表", Rails.configuration.portal_host + "/financial/orders", title: "管理控制台 > 财务中心 > 订单列表", class: "link-box", target: "_blank" -%> 确认支付</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 下单套餐包失败模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-package-buy-fail-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-package-buy-fail-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-package-buy-fail-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title error-tip">-</p>
+      </div>
+    </div>
+  </div>
+</div>

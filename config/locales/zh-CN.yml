@@ -7682,6 +7682,67 @@ zh-CN:
           desc: "七牛云智能日志管理平台 Pandora 作为业界领先的实时机器数据分析平台，支持数百种数据源，具有日志统一存储、实时检索、查询和分析、监控与告警、报表与大屏展示等能力。目前已经为上千家客户提供服务，包含互联网、银行、保险、证券、运营商、零售、制造及广电等领域的众多头部客户"
           image: "double11_2019/img-pandora.jpg"
           link: "/express/download"
+      double12_2019:
+        banner:
+          image: "double12_2019/img-banner.png"
+        middlebar:
+          - title: "存储专场"
+            class: ""
+            href: "#tab-content-double12-2019-kodo"
+          - title: "CDN 专场"
+            class: ""
+            href: "#tab-content-double12-2019-fusion"
+          - title: "直播云专场"
+            class: ""
+            href: "#tab-content-double12-2019-pili"
+          - title: "短视频 SDK 专场"
+            class: ""
+            href: "#tab-content-double12-2019-sdk"
+          - title: "智能视频处理"
+            class: ""
+            href: "#tab-content-double12-2019-dora"
+          - title: "云主机专场"
+            class: ""
+            href: "#tab-content-double12-2019-qvm"
+          - title: "云短信专场"
+            class: ""
+            href: "#tab-content-double12-2019-sms"
+          - title: "Pandora 2.0 免费版"
+            class: ""
+            href: "#tab-content-double12-2019-pandora"
+        kodo:
+          title: "存储专场 上云必抢"
+          desc: "<span class='high-light'>2020年 1 月 1 日起，华南区标准存储公开价低至 0.099 元/GB/月</span> <a href='' target='' class='desc-rule-link' title='存储专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-kodo-modal'>了解详情&nbsp;></a>"
+          southSubTitle: "华南专区！比低更低！"
+          subTitle: "年末硬核促销！低价不怕比！"
+        fusion:
+          title: "CDN 专场"
+          desc: "冲！100GB 资源包仅需七块七！<a href='' target='' class='desc-rule-link' title='CDN 专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-fusion-modal'>活动说明&nbsp;></a>"
+        pili:
+          title: "直播云专场"
+          desc: "老用户专属优惠限量预约，详情请垂询尊享专线：<a href='tel:400-808-9176' target='' class='desc-rule-link' title='400-808-9176 转 1'>400-808-9176 转 1</a> <a href='' target='' class='desc-rule-link' title='直播云专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-pili-modal'>活动说明&nbsp;></a>"
+          pmTitle: "产品经理特别推荐！享你所想！"
+          socialTitle: "社交 & 电商直播场景定制资源包 首发优惠中"
+          socialSubTitle: "低延迟直播互动，超大并发访问业务场景"
+        sdk:
+          title: "短视频 SDK 专场"
+          desc: "免费体验！低至 0 元！<a href='' target='' class='desc-rule-link' title='短视频 SDK - 活动说明' data-toggle='modal' data-target='#double12-2019-sdk-modal'>活动说明&nbsp;></a>"
+        dora:
+          title: "智能视频处理"
+          desc: "转码时长包，年终优惠来袭"
+          image: "banner/banner-dora-package-md.png"
+          link: "/express/download"
+        qvm:
+          title: "云主机专场"
+          desc: "火爆机型，限时抢购！<a href='' target='' class='desc-rule-link' title='云主机专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-qvm-modal'>活动说明&nbsp;></a>"
+        sms:
+          title: "云短信专场"
+          desc: "新老用户同享！单条价格低至 0.023 元！<a href='' target='' class='desc-rule-link' title='云短信专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-sms-modal'>活动说明&nbsp;></a>"
+        pandora:
+          title: "Pandora 2.0 免费版"
+          desc: "七牛云智能日志管理平台 Pandora 作为业界领先的实时机器数据分析平台，支持数百种数据源，具有日志统一存储、实时检索、查询和分析、监控与告警、报表与大屏展示等能力。目前已经为上千家客户提供服务，包含互联网、银行、保险、证券、运营商、零售、制造及广电等领域的众多头部客户"
+          image: "double12_2019/img-pandora.jpg"
+          link: "/express/download"
     download:
       snow:
         banner:
@@ -8565,6 +8626,10 @@ zh-CN:
       title: 双11云采购嘉年华，CDN、云存储等资源包低至1折-七牛云
       keywords: 云存储，CDN，云短信，直播云，云主机，七牛云，双11，云采购
       description: 七牛云双11云采购嘉年华，云存储、CDN、云主机、云短信、直播云等热门云产品资源包低至1折，新老用户同享。
+    events_double12_2019:
+      title: 12.12年终盛惠，云产品特惠购-七牛云
+      keywords: 双12，云存储，CDN，云短信，直播云，云主机，七牛云，优惠促销，电商直播
+      description: 七牛云年终盛惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交&电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品年终限时特惠。
     events_activity:
       title: 最新活动_优惠活动 - 七牛云活动
       keywords: 云存储优惠，CDN优惠，免费云服务，七牛云，云主机优惠，云服务器优惠，折扣，促销，优惠券，优惠活动
