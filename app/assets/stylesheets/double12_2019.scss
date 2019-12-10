@@ -362,10 +362,34 @@
 
 // 预留组合包模块
 // https://jira.qiniu.io/browse/BO-10101
-// .features-double12-2019-combo {
-//   .container {
-//   }
-// }
+.features-double12-2019-combo {
+  background-color: #410084;
+  padding: 0.5rem 0 0.5rem;
+  .container {
+    .comb-pack {
+      margin-top: 0.65rem;
+      padding: 10px 30px;
+      background: linear-gradient(#FFDEDE, #FFF);
+      .comb-pack-summary {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        .comb-pack-title,
+        .comb-pack-duration,
+        .comb-pack-price,
+        .comb-pack-buy {
+          line-height: 50px;
+          vertical-align: middle;
+        }
+        .comb-pack-title {
+          color: #000;
+          font-size: 0.2rem;
+        }
+      }
+      .pack {
+        margin-top: 20px;
+      }
+    }
+  }
+}
 
 .features-double12-2019-kodo {
   padding-top: 1.00rem;
