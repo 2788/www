@@ -462,6 +462,69 @@ class EventsController < ApplicationController
     }
   end
 
+  def double12_2019_combo_order
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "is_success": false,
+        "message": "预约失败，请稍后重试"
+      }
+      return
+    end
+
+    uid = uinfo["uid"]
+    gaea_admin_host = Rails.configuration.gaea_admin_host
+    if uid.nil? || uid.blank? || gaea_admin_host.nil? || gaea_admin_host.blank?
+      render json: {
+        "is_success": false,
+        "message": "预约失败，请稍后重试"
+      }
+      return
+    end
+
+    admin_token = get_admin_token()
+    if admin_token.nil?
+      render json: {
+        "is_success": false,
+        "message": "预约失败，请稍后重试"
+      }
+      return
+    end
+
+    req_uri = gaea_admin_host + "/api/marketing/event/reserve/" + uid.to_s
+    res = get_remote_data(req_uri, admin_token)
+    if res.nil?
+      render json: {
+        "is_success": false,
+        "message": "预约失败，请稍后重试"
+      }
+      return
+    end
+
+    if res["code"] == 200
+      render json: {
+        "is_success": true,
+        "message": ""
+      }
+      return
+    end
+
+    p res
+
+    if res["message"].include? "您已经预约过"
+      render json: {
+        "is_success": false,
+        "message": res["message"]
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "message": "预约失败，请稍后重试"
+    }
+  end
+
   def enterpriseoncloud
   end
 

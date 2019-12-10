@@ -5,21 +5,27 @@ $(document).ready ->
   $2019double12KodoTopDropdown = $2019double12EventPage.find('.features-double12-2019-kodo .content-dropdown .double12-2019-kodo-top-dropdown')
   $2019double12KodoDropdown = $2019double12EventPage.find('.features-double12-2019-kodo .content-dropdown .double12-2019-kodo-dropdown')
   $2019double12FusionDropdown = $2019double12EventPage.find('.features-double12-2019-fusion .content-dropdown .double12-2019-fusion-dropdown')
+  # order button
+  $2019double12OrderBtn = $2019double12EventPage.find('.jumbotron.hero.hero-double12-2019 .container .middle-container .btn-double12-2019-order')
   # buy buttons
   $2019double12AllBtns = $2019double12EventPage.find('.features-double12-2019 .container .btn-double12-2019')
   $2019double12BuyBtns = $2019double12EventPage.find('.features-double12-2019 .container .btn-double12-2019.package-buy')
   # modal
+  $2019double12OrderSuccessModal = $2019double12EventPage.find('#double12-2019-order-success-modal')
+  $2019double12OrderFailModal = $2019double12EventPage.find('#double12-2019-order-fail-modal')
   $2019double12PackageBuySuccessModal = $2019double12EventPage.find('#double12-2019-package-buy-success-modal')
   $2019double12PackageBuyFailModal = $2019double12EventPage.find('#double12-2019-package-buy-fail-modal')
   $2019double12EffectTimeModal = $2019double12EventPage.find('#double12-2019-effect-time-modal')
   # fail modal tip
   $2019double12PackageBuyFailTip = $2019double12PackageBuyFailModal.find('.modal-dialog .modal-body .error-tip')
+  $2019double12OrderFailTip = $2019double12OrderFailModal.find('.modal-dialog .modal-body .error-tip')
   # effect time buttons
   $2019double12EffectTimeBtns = $2019double12EffectTimeModal.find('.modal-dialog .modal-body .effect-time-btns .effect-time')
 
   double12SelectedPackageID = 0
   double12SelectedPackageInfo = ''
-  double12DefaultFailMessage = '下单失败，请稍后重试'
+  double12PackageBuyDefaultFailMessage = '下单失败，请稍后重试'
+  double12OrderDefaultFailMessage = '预约失败，请稍后重试'
 
   bindDropdownList = () ->
     if $2019double12KodoTopDropdown.length > 0
@@ -63,13 +69,22 @@ $(document).ready ->
         $container.find('#' + e.target.value).fadeIn 300, () ->
           $(this).addClass 'active'
 
+  showOrderSuccessModal = () ->
+    if $2019double12OrderSuccessModal.length > 0
+      $2019double12OrderSuccessModal.modal 'show'
+
+  showOrderFailModal = (message) ->
+    if $2019double12OrderFailModal.length > 0
+      $2019double12OrderFailTip.html message || double12OrderDefaultFailMessage
+      $2019double12OrderFailModal.modal 'show'
+
   showPackageBuySuccessModal = () ->
     if $2019double12PackageBuySuccessModal.length > 0
       $2019double12PackageBuySuccessModal.modal 'show'
 
   showPackageBuyFailModal = (message) ->
     if $2019double12PackageBuyFailModal.length > 0
-      $2019double12PackageBuyFailTip.html message || double12DefaultFailMessage
+      $2019double12PackageBuyFailTip.html message || double12PackageBuyDefaultFailMessage
       $2019double12PackageBuyFailModal.modal 'show'
 
   showEffectTimeModal = () ->
@@ -84,11 +99,31 @@ $(document).ready ->
       $2019double12EffectTimeModal.find('.package-info').html double12SelectedPackageInfo
       $2019double12EffectTimeModal.modal 'hide'
 
+  handleDouble12OrderRes = (res) ->
+    if res && res.is_success
+      showOrderSuccessModal()
+    else
+      showOrderFailModal res.message
+
   handleDouble12BuyRes = (res) ->
     if res && res.is_success
       showPackageBuySuccessModal()
     else
       showPackageBuyFailModal res.message
+
+  bindDouble12OrderBtn = () ->
+    if $2019double12OrderBtn.length > 0
+      $2019double12OrderBtn.attr 'href', ''
+      $2019double12OrderBtn.attr 'target', ''
+      $2019double12OrderBtn.on 'click', (e) ->
+        e.preventDefault()
+        $.ajax
+          method: 'GET',
+          url: '/events/20191212/combo/order',
+          success: (res) ->
+            handleDouble12OrderRes res
+          error: (err) ->
+            showOrderFailModal()
 
   bindDouble12BuyBtns = () ->
     if $2019double12BuyBtns.length > 0
@@ -153,6 +188,7 @@ $(document).ready ->
       url: '/userinfo?u=' + uuid + '&t=' + timestamp,
       success: (res) ->
         if res && res.is_signin
+          bindDouble12OrderBtn()
           bindDouble12BuyBtns()
           bindDouble12EffectTimeBtns()
         enableDouble12AllBtns()
@@ -160,11 +196,17 @@ $(document).ready ->
         enableDouble12AllBtns()
 
   disableDouble12AllBtns = () ->
+    if $2019double12OrderBtn.length > 0
+      $2019double12OrderBtn.attr 'href', ''
+
     if $2019double12AllBtns.length > 0
       $2019double12AllBtns.html '活动已结束'
       $2019double12AllBtns.attr 'href', ''
 
   enableDouble12AllBtns = () ->
+    if $2019double12OrderBtn.length > 0
+      $2019double12OrderBtn.removeClass 'disabled'
+
     if $2019double12AllBtns.length > 0
       $2019double12AllBtns.removeClass 'disabled'
 

@@ -1,17 +1,24 @@
 .jumbotron.hero.hero-double12-2019 {
-  height: 7.00rem;
+  height: 7.60rem;
   padding-bottom: 0;
   margin-bottom: 0;
   background-image: none;
-  background: -webkit-linear-gradient(#FF4B00, #4F00A1, #410084);
-  background: -moz-linear-gradient(#FF4B00, #4F00A1, #410084);
-  background: linear-gradient(#FF4B00, #4F00A1, #410084);
+  background: -webkit-linear-gradient(#FE0EF8, #4F00A1, #410084);
+  background: -moz-linear-gradient(#FE0EF8, #4F00A1, #410084);
+  background: linear-gradient(#FE0EF8, #4F00A1, #410084);
   .container {
     .middle-container {
-      top: 86%;
+      top: 94%;
       text-align: center;
       img {
         width: 84%;
+      }
+      .btn-double12-2019-order {
+        position: absolute;
+        left: 50%;
+        bottom: 31%;
+        padding: 0.25rem 1.20rem;
+        transform: translate(-50%, 0);
       }
     }
   }
@@ -61,7 +68,7 @@
         }
       }
       .sub-title {
-        margin: 0 auto;
+        margin: 0.10rem 0;
         font-size: 0.24rem;
         text-align: center;
         &.high-light-1 {
@@ -388,6 +395,20 @@
           }
         }
       }
+      .btn-container {
+        text-align: center;
+        .btn {
+          width: 2.00rem;
+          margin: 0 auto;
+          margin-top: 0.20rem;
+          color: #FFF;
+          border-radius: 0.30rem;
+          background-color: #FF6632;
+          &:hover {
+            background-color: #FF9700;
+          }
+        }
+      }
     }
   }
 }
@@ -525,7 +546,10 @@
   .jumbotron.hero.hero-double12-2019 {
     .container {
       .middle-container {
-        top: 78%;
+        top: 82%;
+        .btn-double12-2019-order {
+          padding: 0.22rem 1.00rem;
+        }
       }
     }
   }
@@ -646,7 +670,10 @@
     height: 5.00rem;
     .container {
       .middle-container {
-        top: 64%;
+        top: 66%;
+        .btn-double12-2019-order {
+          padding: 0.16rem 0.80rem;
+        }
       }
     }
   }
@@ -712,10 +739,13 @@
 
 @media (width: 768px) {
   .jumbotron.hero.hero-double12-2019 {
-    height: 7.00rem;
+    height: 7.40rem;
     .container {
       .middle-container {
-        top: 88%;
+        top: 90%;
+        .btn-double12-2019-order {
+          padding: 0.25rem 1.20rem;
+        }
       }
     }
   }
@@ -809,10 +839,16 @@
 
 @media (max-width: 767px) {
   .jumbotron.hero.hero-double12-2019 {
-    height: 6.00rem;
+    height: 6.20rem;
     .container {
       .middle-container {
         top: 68%;
+        img {
+          width: 84%;
+        }
+        .btn-double12-2019-order {
+          padding: 2.2% 10%;
+        }
       }
     }
   }

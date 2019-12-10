@@ -5,7 +5,8 @@
 <div class="jumbotron hero hero-double12-2019">
   <div class="container">
     <div class="middle-container">
-      <%= image_tag I18n.t("views.events.double12_2019.banner.image"), title: "云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券", alt: "云采购嘉年华 全线产品云上狂欢 爆款存储低至 0.01 元 大额无门槛优惠券" -%>
+      <%= image_tag I18n.t("views.events.double12_2019.banner.image"), title: "12.12 年终盛惠 - 七牛云", alt: "12.12 年终盛惠 - 七牛云" -%>
+      <%= link_to "", signin_url('www', '/events/20191212'), title: "12.18 电商场景钜惠包震撼发售，预约名额开放中 - 免费预约", class: "btn-double12-2019-order disabled", target: "_blank" -%>
     </div>
   </div>
 </div>
@@ -39,7 +40,6 @@
         <%= I18n.t("views.events.double12_2019.kodo.title") -%>
         <%= image_tag "double12_2019/icon-title-red-blue.png", title: I18n.t("views.events.double12_2019.kodo.title"), alt: I18n.t("views.events.double12_2019.kodo.title"), class: "icon-title right" -%>
       </h2>
-      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.kodo.desc")) -%></p>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12 col-table">
@@ -96,6 +96,7 @@
       <p class="sub-title high-light-1">
         <%= I18n.t("views.events.double12_2019.kodo.southSubTitle") -%>
       </p>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.kodo.desc")) -%></p>
     </div>
     <div class="row">
       <% Rails.configuration.double12_2019_package[:kodo][:southList].each do |kodo| -%>
@@ -254,6 +255,11 @@
         </div>
       </div>
       <% end -%>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 btn-container">
+        <%= link_to "查看更多资源包", Rails.configuration.portal_host + "/financial/respack/fusion-composite?entry=20191212-page", title: "CDN - 查看更多资源包", class: "btn btn-lg", target: "_blank" -%>
+      </div>
     </div>
   </div>
 </div>
@@ -785,6 +791,36 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title" id="double12-2019-package-buy-fail-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title error-tip">-</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 预约成功模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-order-success-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-order-success-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-order-success-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title">恭喜您，预约成功！</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 预约失败模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-order-fail-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-order-fail-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-order-fail-modal-label">提示</h3>
       </div>
       <div class="modal-body">
         <p class="title error-tip">-</p>

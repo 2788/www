@@ -163,6 +163,8 @@ Rails.application.routes.draw do
     get '/events/20191212/is_end', to: 'events#is_double12_2019_end'
     # 2019 年 1212 活动购买套餐包
     post '/events/20191212/package/buy', to: 'events#double12_2019_package_buy'
+    # 2019 年 1212 活动组合包预约功能
+    get '/events/20191212/combo/order', to: 'events#double12_2019_combo_order'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
