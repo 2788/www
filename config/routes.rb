@@ -158,11 +158,11 @@ Rails.application.routes.draw do
     # 2019 年 1111 活动 dora 领券
     post '/events/20191111/dora/voucher', to: 'events#double11_2019_dora_voucher'
     # 2019 年 1212 活动
-    # get '/events/20191212', to: 'events#double12_2019'
+    get '/events/20191212', to: 'events#double12_2019'
     # 2019 年 1212 活动是否结束
-    # get '/events/20191212/is_end', to: 'events#is_double12_2019_end'
+    get '/events/20191212/is_end', to: 'events#is_double12_2019_end'
     # 2019 年 1212 活动购买套餐包
-    # post '/events/20191212/package/buy', to: 'events#double12_2019_package_buy'
+    post '/events/20191212/package/buy', to: 'events#double12_2019_package_buy'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
     # 获取用户邀请信息
