@@ -468,6 +468,11 @@
   background-color: #3854FB;
   .container {
     .row {
+      .content-price {
+        .span-huge {
+          font-size: 0.26rem;
+        }
+      }
       .col-qvm {
         .thumbnail {
           .caption {
@@ -641,7 +646,7 @@
         }
         .content-price {
           .span-huge {
-            font-size: 0.26rem;
+            font-size: 0.20rem;
           }
         }
       }
