@@ -514,7 +514,7 @@ class EventsController < ApplicationController
     if res["message"].include? "您已经预约过"
       render json: {
         "is_success": false,
-        "message": res["message"]
+        "message": res["message"].strip
       }
       return
     end
