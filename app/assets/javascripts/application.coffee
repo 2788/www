@@ -58,6 +58,7 @@
 #= require fusion_package
 #= require zelda
 #= require double11_2019
+#= require double12_2019
 
 #= require uuid
 #= require sensors_service

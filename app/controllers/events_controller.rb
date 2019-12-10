@@ -65,6 +65,9 @@ class EventsController < ApplicationController
   def double11_2019
   end
 
+  def double12_2019
+  end
+
   def activity
   end
 
@@ -234,6 +237,40 @@ class EventsController < ApplicationController
     return
   end
 
+  def is_double12_2019_end
+    time_conf = Rails.configuration.double12_2019
+    if time_conf.nil? || time_conf.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    end_year = time_conf[:end_year]
+    end_month = time_conf[:end_month]
+    end_date = time_conf[:end_date]
+    if end_year.nil? || end_year.blank? || end_month.nil? || end_month.blank? || end_date.nil? || end_date.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    current_time = Time.now
+    end_time = Time.local(end_year, end_month, end_date, 0, 0, 0)
+    if current_time < end_time
+      render json: {
+        "is_end": false,
+      }
+      return
+    end
+
+    render json: {
+      "is_end": true,
+    }
+    return
+  end
+
   def double11_2019_dora_voucher
     product_coupon_type = params[:product_coupon_type]
     if product_coupon_type.nil? || product_coupon_type.blank?
@@ -323,6 +360,105 @@ class EventsController < ApplicationController
     render json: {
       "is_success": false,
       "is_repeat": false,
+    }
+  end
+
+  def double12_2019_package_buy
+    package_id_str = params[:package_id]
+    effect_type_str = params[:effect_type]
+    if package_id_str.nil? || package_id_str.blank? || effect_type_str.nil? || effect_type_str.blank?
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    package_id_int = package_id_str.to_i
+    effect_type_int = effect_type_str.to_i
+    if package_id_int == 0 || effect_type_int == 0
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    uinfo = session[:uinfo]
+    if uinfo.nil? || uinfo.blank?
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    uid = uinfo["uid"]
+    gaea_admin_host = Rails.configuration.gaea_admin_host
+    if uid.nil? || uid.blank? || gaea_admin_host.nil? || gaea_admin_host.blank?
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    uid_int = uid.to_i
+    if uid_int.nil? || uid_int.blank?
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    admin_token = get_admin_token()
+    if admin_token.nil?
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    req_body = {
+      "package_id": package_id_int,
+      "quantity": 1,
+      "buyer_id": uid_int,
+      "memo": "trade from www double12_2019 event. packageId:#{package_id_int}",
+      "effect_type": effect_type_int
+    }
+    req_uri = gaea_admin_host + "/api/package/buy"
+    res = post_remote_data(req_uri, admin_token, req_body)
+    if res.nil?
+      render json: {
+        "is_success": false,
+        "message": "下单失败，请稍后重试"
+      }
+      return
+    end
+
+    if res["code"] == 200
+      render json: {
+        "is_success": true,
+        "message": ""
+      }
+      return
+    end
+
+    p res
+
+    if res["message"].include? "validation:"
+      render json: {
+        "is_success": false,
+        "message": res["message"].gsub("validation:", "").strip
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "message": "下单失败，请稍后重试"
     }
   end
 
