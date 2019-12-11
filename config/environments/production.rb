@@ -1232,7 +1232,7 @@ Rails.application.configure do
           "price": "18",
           "originPrice": "170.25",
           "save": "152.25",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.t5-lc1m1.small%26buymonth%3D3%26eip%3D1"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-lc1m1.small&buymonth=3&eip=1&discount=ACTIVITY%2320191212%23SHOPPING_DAY_NEW_LIMITED"
         },
         {
           "title": "云主机 突发性能型 T5",
@@ -1256,7 +1256,7 @@ Rails.application.configure do
           "price": "39",
           "originPrice": "418.65",
           "save": "379.65",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.t5-c1m2.large%26buymonth%3D3%26eip%3D1"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m2.large&buymonth=3&eip=1&discount=ACTIVITY%2320191212%23SHOPPING_DAY_NEW_LIMITED"
         },
         {
           "title": "云主机 计算型 C5",
@@ -1280,7 +1280,7 @@ Rails.application.configure do
           "price": "196",
           "originPrice": "654.3",
           "save": "458.3",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.c5.large%26buymonth%3D3%26eip%3D2"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=3&eip=2&discount=ACTIVITY%2320191212%23SHOPPING_DAY_NEW_ENT_LIMITED"
         },
         {
           "title": "云主机 计算型 C5",
@@ -1304,7 +1304,7 @@ Rails.application.configure do
           "price": "409",
           "originPrice": "1362.75",
           "save": "953.75",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.c5.xlarge%26buymonth%3D3%26eip%3D5"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.xlarge&buymonth=3&eip=5&discount=ACTIVITY%2320191212%23SHOPPING_DAY_NEW_ENT_LIMITED"
         },
         {
           "title": "云主机 共享型 XN4",
@@ -1328,7 +1328,7 @@ Rails.application.configure do
           "price": "643.05",
           "originPrice": "908.05",
           "save": "265",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.xn4.small%26buymonth%3D12%26eip%3D1"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.xn4.small&buymonth=12&eip=1&discount=ACTIVITY%2320191212%23SHOPPING_DAY_LIMITED"
         },
         {
           "title": "云主机 共享型 MN4",
@@ -1352,7 +1352,7 @@ Rails.application.configure do
           "price": "1448",
           "originPrice": "2358",
           "save": "910",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.mn4.small%26buymonth%3D12%26eip%3D2"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.mn4.small&buymonth=12&eip=2&discount=ACTIVITY%2320191212%23SHOPPING_DAY_LIMITED"
         },
         {
           "title": "云主机 计算型 C5",
@@ -1376,7 +1376,7 @@ Rails.application.configure do
           "price": "1400",
           "originPrice": "2617",
           "save": "1217",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.c5.large%26buymonth%3D12%26eip%3D2"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=12&eip=2&discount=ACTIVITY%2320191212%23SHOPPING_DAY_LIMITED"
         },
         {
           "title": "云主机 通用型 G5",
@@ -1400,7 +1400,7 @@ Rails.application.configure do
           "price": "2300",
           "originPrice": "3723",
           "save": "1423",
-          "link": "/qvm/vm/instance/create?mode%3DDirectOrder%26instance_type%3Decs.g5.large%26buymonth%3D12%26eip%3D3"
+          "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.g5.large&buymonth=12&eip=3&discount=ACTIVITY%2320191212%23SHOPPING_DAY_LIMITED"
         }
       ]
     },
