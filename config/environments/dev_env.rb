@@ -773,18 +773,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-1dot2TB-12",
               "class": "active",
-              "price": "184",
+              "price": "199",
               "originPrice": "295",
-              "save": "111",
+              "save": "96",
               "packageID": 128,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
             },
             {
               "id": "fusion-https-1dot2TB-12",
               "class": "",
-              "price": "231",
+              "price": "299",
               "originPrice": "344",
-              "save": "113",
+              "save": "45",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
             }
@@ -808,18 +808,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-6TB-12",
               "class": "active",
-              "price": "903",
+              "price": "999",
               "originPrice": "1475",
-              "save": "572",
+              "save": "476",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
             },
             {
               "id": "fusion-https-6TB-12",
               "class": "",
-              "price": "1130",
+              "price": "1199",
               "originPrice": "1720",
-              "save": "590",
+              "save": "521",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
             }
@@ -843,18 +843,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-12TB-12",
               "class": "active",
-              "price": "1720",
+              "price": "1999",
               "originPrice": "2949",
-              "save": "1229",
+              "save": "950",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
             },
             {
               "id": "fusion-https-12TB-12",
               "class": "",
-              "price": "2212",
+              "price": "2299",
               "originPrice": "3441",
-              "save": "1229",
+              "save": "1142",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
             }
@@ -878,18 +878,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-60TB-12",
               "class": "active",
-              "price": "7987",
+              "price": "7999",
               "originPrice": "14746",
-              "save": "6759",
+              "save": "6747",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
             },
             {
               "id": "fusion-https-60TB-12",
               "class": "",
-              "price": "10629",
+              "price": "10999",
               "originPrice": "17203",
-              "save": "6574",
+              "save": "6204",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
             }
@@ -913,18 +913,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-120TB-12",
               "class": "active",
-              "price": "11796",
+              "price": "15999",
               "originPrice": "23347",
-              "save": "11551",
+              "save": "7348",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
             },
             {
               "id": "fusion-https-120TB-12",
               "class": "",
-              "price": "14746",
+              "price": "19999",
               "originPrice": "28262",
-              "save": "13516",
+              "save": "8263",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
             }
@@ -948,18 +948,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-240TB-12",
               "class": "active",
-              "price": "23593",
+              "price": "29999",
               "originPrice": "46694",
-              "save": "23101",
+              "save": "16695",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
             },
             {
               "id": "fusion-https-240TB-12",
               "class": "",
-              "price": "29491",
+              "price": "36999",
               "originPrice": "56525",
-              "save": "27034",
+              "save": "19526",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
             }
@@ -983,18 +983,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-480TB-12",
               "class": "active",
-              "price": "42467",
+              "price": "54999",
               "originPrice": "93389",
-              "save": "50922",
+              "save": "38390",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
             },
             {
               "id": "fusion-https-480TB-12",
               "class": "",
-              "price": "53084",
+              "price": "63999",
               "originPrice": "113050",
-              "save": "59966",
+              "save": "49051",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
             }
@@ -1018,18 +1018,18 @@ Rails.application.configure do
             {
               "id": "fusion-http-1200TB-12",
               "class": "active",
-              "price": "101167",
+              "price": "125999",
               "originPrice": "239075",
-              "save": "137908",
+              "save": "113076",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
             },
             {
               "id": "fusion-https-1200TB-12",
               "class": "",
-              "price": "120796",
+              "price": "150999",
               "originPrice": "289407",
-              "save": "168611",
+              "save": "138408",
               "packageID": 0,
               "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
             }
@@ -1042,19 +1042,19 @@ Rails.application.configure do
         {
           "title": "直播云 1TB 全年包",
           "desc": "约 1000 人同时在线观看标清 (1Mbps) 直播 2 小时",
-          "price": "186.4",
+          "price": "186",
           "originPrice": "233",
-          "save": "46.6",
+          "save": "47",
           "packageID": 0,
           "info": "请您再次确认所选的规格<br />直播云 1TB 全年包"
         },
         {
           "title": "直播云 5TB 全年包",
           "desc": "约 5000 人同时在线观看标清 (2Mbps) 直播 12 小时",
-          "price": "876.8",
+          "price": "876",
           "originPrice": "1096",
-          "save": "219.2",
-          "packageID": 130,
+          "save": "220",
+          "packageID": 157,
           "info": "请您再次确认所选的规格<br />直播云 5TB 全年包"
         },
         {
@@ -1080,18 +1080,18 @@ Rails.application.configure do
         {
           "title": "直播云 50TB 全年包",
           "desc": "1 年有效，含上行及下行流量",
-          "price": "7124.8",
+          "price": "7124",
           "originPrice": "8906",
-          "save": "1781.2",
+          "save": "1782",
           "packageID": 0,
           "info": "请您再次确认所选的规格<br />直播云 50TB 全年包"
         },
         {
           "title": "直播云 200TB 全年包",
           "desc": "1 年有效，含上行及下行流量",
-          "price": "24659.2",
+          "price": "24659",
           "originPrice": "30824",
-          "save": "6164.8",
+          "save": "6165",
           "packageID": 0,
           "info": "请您再次确认所选的规格<br />直播云 200TB 全年包"
         },

@@ -173,6 +173,11 @@ a.underline {
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.14rem;
   line-height: 1.8;
+  .text-warn {
+    color: #FFEB18;
+    font-size: 0.24rem;
+    font-weight: 600;
+  }
   &.margin-l-negative {
     margin-left: -0.08rem;
   }

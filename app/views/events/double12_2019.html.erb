@@ -40,6 +40,7 @@
         <%= I18n.t("views.events.double12_2019.kodo.title") -%>
         <%= image_tag "double12_2019/icon-title-red-blue.png", title: I18n.t("views.events.double12_2019.kodo.title"), alt: I18n.t("views.events.double12_2019.kodo.title"), class: "icon-title right" -%>
       </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.kodo.ruleDesc")) -%></p>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12 col-table">
@@ -550,24 +551,24 @@
   </div>
 </div>
 
-<%# 存储专场部分 - 了解详情模态框 %>
+<%# 存储专场部分 - 活动说明模态框 %>
 <div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-kodo-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-kodo-modal-label" data-keyboard="true" data-backdrop="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="double12-2019-kodo-modal-label">存储专场 - 了解详情</h3>
+        <h3 class="modal-title" id="double12-2019-kodo-modal-label">存储专场 - 活动说明</h3>
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
         <p>购买说明：</p>
         <p>1、产品为限量抢购产品，每位用户仅可购买 1 次</p>
         <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
         <p>3、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">通用优惠</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：七牛云新老用户均可参加</p>
         <p>购买说明：</p>
         <p>1、各资源包为限量产品，每位用户累计至多购买 6 个</p>
@@ -591,7 +592,7 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
         <p>购买说明：</p>
         <p>1、产品为限量抢购产品，每位用户资源包总计不得超过 3 个。用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
@@ -601,7 +602,7 @@
         <p>（3）由于活动优惠力度较大，因此购买后无特殊情况无法退款，请确认后再购买</p>
         <p>（4）本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">通用优惠</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）</p>
         <p>购买说明：</p>
         <p>1、资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣，按月发放，可结转</p>
@@ -626,7 +627,7 @@
         <h3 class="modal-title" id="double12-2019-pili-modal-label">直播云专场 - 活动说明</h3>
       </div>
       <div class="modal-body">
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
         <p>计费规则：</p>
         <p>1、仅支持 2019 年 12 月 1 日后新注册用户购买</p>
@@ -655,7 +656,7 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">短视频 SDK 五折抢购活动</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：七牛云新老用户皆可参与</p>
         <p>购买说明：</p>
         <p>1、该活动设置了限购，短视频 SDK 五折抢购，每个用户限购一单</p>
@@ -663,7 +664,7 @@
         <p>3、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
         <p>4、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">短视频 SDK 精简版和基础版一折秒杀活动</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：短视频 SDK 新用户（已经是本平台用户，但没有使用过短视频 SDK 的用户也可以参加）</p>
         <p>购买说明：</p>
         <p>1、短视频 SDK 精简版和基础版一折秒杀，每个用户限购一单</p>
@@ -698,21 +699,21 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享主机</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
         <p>购买说明：</p>
         <p>1、抢购数量：每日 10:00 限时抢购</p>
         <p>2、套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为中国大陆</p>
         <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
         <p class="sub-title">企业客户专享主机</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：七牛云官网已注册且完成企业实名认证的云主机新用户</p>
         <p>购买说明：</p>
         <p>1、抢购数量：每位企业用户可最多抢 2 台主机</p>
         <p>2、套餐配置：每款默认配置 1 个公网 IP 及相应带宽（2Mbps 或 5Mbps），40G 高效云盘，地域为中国大陆</p>
         <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
         <p class="sub-title">通用优惠主机</p>
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：七牛云官网已注册且完成实名认证的新老用户</p>
         <p>抢购数量：每位用户可最多抢 2 台主机</p>
         <p>订购限制：本次活动不支持代金券或折扣券；如退订退款，再次购买相同资源不再享受同等折扣</p>
@@ -734,7 +735,7 @@
         <h3 class="modal-title" id="double12-2019-sms-modal-label">云短信专场 - 活动说明</h3>
       </div>
       <div class="modal-body">
-        <p>活动时间：即日起至 2020 年 1 月 15 日</p>
+        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
         <p>活动对象：七牛云官网注册并经过实名验证的客户</p>
         <p>购买说明：</p>
         <p>1、抢购数量：短信服务包每名用户最多只能购买不超过 3 个数量的套餐包</p>

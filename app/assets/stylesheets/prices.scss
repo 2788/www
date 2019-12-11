@@ -182,6 +182,12 @@
     dd {
       color: rgb(47, 48, 51);
       line-height: 0.3rem;
+      .font-bold {
+        font-weight: 600;
+      }
+      .text-warn {
+        color: #FF0000;
+      }
     }
 
     .formula {
