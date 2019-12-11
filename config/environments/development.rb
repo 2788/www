@@ -129,6 +129,134 @@ Rails.application.configure do
     end_date: 15
   }
 
+  config.double12_2019_comb_package = [{
+    "type": "comb-pack-1",
+    "title": "新手上路包",
+    "durations": [{
+      "value": 6,
+      "text": "6个月"
+    },{
+      "value": 3,
+      "text": "3个月"
+    },{
+      "value": 1,
+      "text": "1个月"
+    }],
+    "packages": [{
+      "index": "一",
+      "product": "kodo",
+      "title": "国内标准存储空间",
+      "capacity": "2000（GB/月）"
+    },{
+      "index": "二",
+      "product": "fusion",
+      "title": "国内CDN流量",
+      "capacity": "10000（GB/月）"
+    }]
+  },{
+    "type": "comb-pack-2",
+    "title": "打怪升级包",
+    "durations": [{
+      "value": 6,
+      "text": "6个月"
+    },{
+      "value": 3,
+      "text": "3个月"
+    },{
+      "value": 1,
+      "text": "1个月"
+    }],
+    "packages": [{
+      "index": "一",
+      "product": "kodo",
+      "title": "国内标准存储空间",
+      "capacity": "2000（GB/月）"
+    },{
+      "index": "二",
+      "product": "fusion",
+      "title": "国内CDN流量",
+      "capacity": "10000（GB/月）"
+    },{
+      "index": "三",
+      "product": "sms",
+      "title": "系统短信",
+      "capacity": "1000（条/月）"
+    }]
+  },{
+    "type": "comb-pack-3",
+    "title": "所向披靡包",
+    "durations": [{
+      "value": 12,
+      "text": "12个月"
+    },{
+      "value": 6,
+      "text": "6个月"
+    },{
+      "value": 3,
+      "text": "3个月"
+    }],
+    "packages": [{
+      "index": "一",
+      "product": "kodo",
+      "title": "国内标准存储空间",
+      "capacity": "5000（GB/月）"
+    },{
+      "index": "二",
+      "product": "fusion",
+      "title": "国内CDN流量",
+      "capacity": "20000（GB/月）"
+    },{
+      "index": "三",
+      "product": "pili",
+      "title": "国内直播流量",
+      "capacity": "10000（GB/月）"
+    },{
+      "index": "四",
+      "product": "sdk",
+      "title": "基础版SDK",
+      "capacity": "一年 lisence"
+    }]
+  },{
+    "type": "comb-pack-4",
+    "title": "最强王者包",
+    "durations": [{
+      "value": 12,
+      "text": "12个月"
+    },{
+      "value": 6,
+      "text": "6个月"
+    },{
+      "value": 3,
+      "text": "3个月"
+    }],
+    "packages": [{
+      "index": "一",
+      "product": "kodo",
+      "title": "国内标准存储空间",
+      "capacity": "5000（GB/月）"
+    },{
+      "index": "二",
+      "product": "fusion",
+      "title": "国内CDN流量",
+      "capacity": "20000（GB/月）"
+    },{
+      "index": "三",
+      "product": "pili",
+      "title": "国内直播流量",
+      "capacity": "10000（GB/月）"
+    },{
+      "index": "四",
+      "product": "sdk",
+      "title": "基础版SDK",
+      "capacity": "一年 lisence"
+    },{
+      "index": "五",
+      "product": "sms",
+      "title": "系统短信",
+      "capacity": "5000（条/月）"
+    }]
+  }]
+
   # 2019 年 1212 活动页面 package 配置信息
   # 区分测试环境和线上 pakcageID 信息
   config.double12_2019_package = {

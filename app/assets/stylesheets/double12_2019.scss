@@ -363,29 +363,119 @@
 // 预留组合包模块
 // https://jira.qiniu.io/browse/BO-10101
 .features-double12-2019-combo {
-  background-color: #410084;
-  padding: 0.5rem 0 0.5rem;
+  background-color: #7000AA;
+  padding: 0.68rem 0;
   .container {
     .comb-pack {
-      margin-top: 0.65rem;
-      padding: 10px 30px;
-      background: linear-gradient(#FFDEDE, #FFF);
+      margin-top: 0.48rem;
+      padding: 16px 24px;
+      background-color: #FFD86A;
+      border: 1px solid rgba(134, 0, 0, 0.04);
+
+      .activity-tip {
+        font-size: 0.11rem;
+      }
       .comb-pack-summary {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
         .comb-pack-title,
         .comb-pack-duration,
         .comb-pack-price,
         .comb-pack-buy {
-          line-height: 50px;
+          line-height: 0.44rem;
           vertical-align: middle;
         }
         .comb-pack-title {
+          font-size: 0.24rem;
           color: #000;
-          font-size: 0.2rem;
+        }
+        .comb-pack-duration {
+          font-size: 0.14rem;
+          select {
+            display: inline-block;
+            width: 2.2rem;
+            height: 0.34rem;
+            margin-left: 0.12rem;
+          }
+        }
+        .content-price {
+          height: 0.44rem;
+          .price-col {
+            display: inline-block;
+          }
+          .price-left {
+            height: 0.44rem;
+            .span-red,
+            .span-red {
+              font-size: 0.14rem;
+              display: inline-block;
+            }
+            .span-huge {
+              line-height: 0.44rem;
+              font-size: 0.34rem;
+            }
+          }
+          .price-right {
+            padding-left: 8px;
+            .span-red {
+              display: block;
+              font-size: 0.12rem;
+            }
+          }
+        }
+        .comb-pack-buy {
+          .package-buy {
+            width: 100%;
+            padding: 0.1rem;
+            line-height: 0.22rem;
+            font-size: 0.16rem;
+            border-radius: 0;
+            color: #FFF;
+            &.orange {
+              background-image: linear-gradient(270deg, #FF6E3C, #FE4B0D);
+            }
+          }
         }
       }
-      .pack {
-        margin-top: 20px;
+      .comb-pack-arrow-down {
+        margin: 4px 0 10px;
+        height: 0.30rem;
+        background-image: url("double12_2019/icon-comb-pack-arrow-down");
+        background-size: 0.44rem;
+        background-repeat: no-repeat;
+        background-position-x: 0.38rem;
+      }
+      .packs {
+        padding: 8px;
+        border: 1px solid #FFFFFF;
+        background-image: linear-gradient(180deg, #FFE9AC, #FFF6D6);
+
+        .pack {
+          margin-top: 8px;
+          &:first-child { margin-top: 0; }
+          padding: 0.16rem 0.32rem;
+          background-image: linear-gradient(90deg, #FFFAED, #FFFAED 52%, rgba(255, 255, 255, 0));
+
+          .pack-index-text,
+          .pack-info,
+          .attr-select {
+            line-height: 0.34rem;
+            font-size: 0.15rem;
+          }
+          .pack-index-text {
+            color: #000;
+          }
+          .pack-info {
+            color: #410084;
+          }
+          .attr-select {
+            font-size: 0.14rem;
+            select {
+              display: inline-block;
+              width: 2.2rem;
+              height: 0.34rem;
+              margin-left: 0.12rem;
+            }
+          }
+        }
       }
     }
   }
