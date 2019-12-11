@@ -303,7 +303,7 @@
                 </div>
               </section>
             </div>
-            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: pili[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: pili[:packageID], package_info: pili[:title] } -%>
+            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: pili[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: pili[:packageID], package_info: pili[:info] } -%>
           </div>
         </div>
       </div>
@@ -396,7 +396,7 @@
                   </div>
                 </td>
                 <td class="text-center">
-                  <%= link_to table[:btnText], signin_url('www', '/events/20191212'), title: table[:title] + " - " + table[:btnText], class: "btn btn-lg btn-double12-2019 package-buy disabled " + table[:btnClass], target: "_blank", data: { package_id: table[:packageID], package_info: table[:title] } -%>
+                  <%= link_to table[:btnText], signin_url('www', '/events/20191212'), title: table[:title] + " - " + table[:btnText], class: "btn btn-lg btn-double12-2019 package-buy disabled " + table[:btnClass], target: "_blank", data: { package_id: table[:packageID], package_info: table[:info] } -%>
                 </td>
               </tr>
               <% end -%>
@@ -522,7 +522,7 @@
                     </div>
                   </div>
                 </div>
-                <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: sms[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: sms[:packageID], package_info: sms[:title] } -%>
+                <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: sms[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: sms[:packageID], package_info: sms[:info] } -%>
               </section>
             </div>
           </div>

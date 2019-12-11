@@ -523,6 +523,9 @@
         p {
           font-size: 0.14rem;
           line-height: 2.00;
+          .high-light {
+            color: #0092FF;
+          }
           .link-box {
             color: #0092FF;
             &:hover {

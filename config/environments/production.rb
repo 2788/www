@@ -188,8 +188,8 @@ Rails.application.configure do
               "save": "79.91",
               "btnText": "立即抢购",
               "btnClass": "orange",
-              "packageID": 0,
-              "info": "存储空间 100GB X 6 个月 - 华东地区"
+              "packageID": 357,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 100GB X 6 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-south-100GB-6",
@@ -199,8 +199,8 @@ Rails.application.configure do
               "save": "79.91",
               "btnText": "立即抢购",
               "btnClass": "orange",
-              "packageID": 0,
-              "info": "存储空间 100GB X 6 个月 - 华南地区"
+              "packageID": 354,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 100GB X 6 个月 - <span class='high-light'>华南地区</span>"
             },
             {
               "id": "kodo-north-100GB-6",
@@ -210,8 +210,8 @@ Rails.application.configure do
               "save": "79.91",
               "btnText": "立即抢购",
               "btnClass": "orange",
-              "packageID": 0,
-              "info": "存储空间 100GB X 6 个月 - 华北地区"
+              "packageID": 360,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 100GB X 6 个月 - <span class='high-light'>华北地区</span>"
             }
           ]
         }
@@ -238,8 +238,8 @@ Rails.application.configure do
               "price": "195",
               "originPrice": "291.06",
               "save": "96.06",
-              "packageID": 0,
-              "info": "存储空间 500GB X 6 个月 - 华南地区"
+              "packageID": 414,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 500GB X 6 个月 - <span class='high-light'>华南地区</span>"
             },
             {
               "id": "kodo-south-500GB-12",
@@ -247,8 +247,8 @@ Rails.application.configure do
               "price": "354",
               "originPrice": "582.12",
               "save": "228.12",
-              "packageID": 0,
-              "info": "存储空间 500GB X 12 个月 - 华南地区"
+              "packageID": 426,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 500GB X 12 个月 - <span class='high-light'>华南地区</span>"
             }
           ]
         },
@@ -273,8 +273,8 @@ Rails.application.configure do
               "price": "399",
               "originPrice": "602.32",
               "save": "203.32",
-              "packageID": 0,
-              "info": "存储空间 1TB X 6 个月 - 华南地区"
+              "packageID": 417,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 1TB X 6 个月 - <span class='high-light'>华南地区</span>"
             },
             {
               "id": "kodo-south-1TB-12",
@@ -282,8 +282,8 @@ Rails.application.configure do
               "price": "725",
               "originPrice": "1204.63",
               "save": "479.63",
-              "packageID": 0,
-              "info": "存储空间 1TB X 12 个月 - 华南地区"
+              "packageID": 432,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 1TB X 12 个月 - <span class='high-light'>华南地区</span>"
             }
           ]
         },
@@ -308,8 +308,8 @@ Rails.application.configure do
               "price": "1997",
               "originPrice": "3035.34",
               "save": "1038.34",
-              "packageID": 0,
-              "info": "存储空间 5TB X 6 个月 - 华南地区"
+              "packageID": 420,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 5TB X 6 个月 - <span class='high-light'>华南地区</span>"
             },
             {
               "id": "kodo-south-5TB-12",
@@ -317,8 +317,8 @@ Rails.application.configure do
               "price": "3625",
               "originPrice": "6070.68",
               "save": "2445.68",
-              "packageID": 0,
-              "info": "存储空间 5TB X 12 个月 - 华南地区"
+              "packageID": 435,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 5TB X 12 个月 - <span class='high-light'>华南地区</span>"
             }
           ]
         },
@@ -343,8 +343,8 @@ Rails.application.configure do
               "price": "3994",
               "originPrice": "6076.62",
               "save": "2082.62",
-              "packageID": 0,
-              "info": "存储空间 10TB X 12 个月 - 华南地区"
+              "packageID": 423,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 10TB X 12 个月 - <span class='high-light'>华南地区</span>"
             },
             {
               "id": "kodo-south-10TB-12",
@@ -352,8 +352,8 @@ Rails.application.configure do
               "price": "7250",
               "originPrice": "12153.24",
               "save": "4903.24",
-              "packageID": 0,
-              "info": "存储空间 10TB X 12 个月 - 华南地区"
+              "packageID": 438,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 10TB X 12 个月 - <span class='high-light'>华南地区</span>"
             }
           ]
         }
@@ -390,8 +390,8 @@ Rails.application.configure do
               "price": "246",
               "originPrice": "435.12",
               "save": "189.12",
-              "packageID": 0,
-              "info": "存储空间 500GB X 6 个月 - 华东地区"
+              "packageID": 363,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 500GB X 6 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-east-500GB-12",
@@ -399,8 +399,8 @@ Rails.application.configure do
               "price": "444",
               "originPrice": "870.24",
               "save": "426.24",
-              "packageID": 0,
-              "info": "存储空间 500GB X 12 个月 - 华东地区"
+              "packageID": 390,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 500GB X 12 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-north-500GB-6",
@@ -408,8 +408,8 @@ Rails.application.configure do
               "price": "246",
               "originPrice": "435.12",
               "save": "189.12",
-              "packageID": 0,
-              "info": "存储空间 500GB X 6 个月 - 华北地区"
+              "packageID": 366,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 500GB X 6 个月 - <span class='high-light'>华北地区</span>"
             },
             {
               "id": "kodo-north-500GB-12",
@@ -417,8 +417,8 @@ Rails.application.configure do
               "price": "444",
               "originPrice": "870.24",
               "save": "426.24",
-              "packageID": 0,
-              "info": "存储空间 500GB X 12 个月 - 华北地区"
+              "packageID": 393,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 500GB X 12 个月 - <span class='high-light'>华北地区</span>"
             }
           ]
         },
@@ -453,8 +453,8 @@ Rails.application.configure do
               "price": "503",
               "originPrice": "900.43",
               "save": "397.43",
-              "packageID": 0,
-              "info": "存储空间 1TB X 6 个月 - 华东地区"
+              "packageID": 375,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 1TB X 6 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-east-1TB-12",
@@ -462,8 +462,8 @@ Rails.application.configure do
               "price": "909",
               "originPrice": "1800.86",
               "save": "891.86",
-              "packageID": 0,
-              "info": "存储空间 1TB X 12 个月 - 华东地区"
+              "packageID": 399,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 1TB X 12 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-north-1TB-6",
@@ -471,8 +471,8 @@ Rails.application.configure do
               "price": "503",
               "originPrice": "900.43",
               "save": "397.43",
-              "packageID": 0,
-              "info": "存储空间 1TB X 6 个月 - 华北地区"
+              "packageID": 369,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 1TB X 6 个月 - <span class='high-light'>华北地区</span>"
             },
             {
               "id": "kodo-north-1TB-12",
@@ -480,8 +480,8 @@ Rails.application.configure do
               "price": "909",
               "originPrice": "1800.86",
               "save": "891.86",
-              "packageID": 0,
-              "info": "存储空间 1TB X 12 个月 - 华北地区"
+              "packageID": 396,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 1TB X 12 个月 - <span class='high-light'>华北地区</span>"
             }
           ]
         },
@@ -516,8 +516,8 @@ Rails.application.configure do
               "price": "2519",
               "originPrice": "4463.95",
               "save": "1944.95",
-              "packageID": 0,
-              "info": "存储空间 5TB X 6 个月 - 华东地区"
+              "packageID": 378,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 5TB X 6 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-east-5TB-12",
@@ -525,8 +525,8 @@ Rails.application.configure do
               "price": "4546",
               "originPrice": "8927.90",
               "save": "4381.9",
-              "packageID": 0,
-              "info": "存储空间 5TB X 12 个月 - 华东地区"
+              "packageID": 402,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 5TB X 12 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-north-5TB-6",
@@ -534,8 +534,8 @@ Rails.application.configure do
               "price": "2519",
               "originPrice": "4463.95\"",
               "save": "1944.95",
-              "packageID": 0,
-              "info": "存储空间 5TB X 6 个月 - 华北地区"
+              "packageID": 381,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 5TB X 6 个月 - <span class='high-light'>华北地区</span>"
             },
             {
               "id": "kodo-north-5TB-12",
@@ -543,8 +543,8 @@ Rails.application.configure do
               "price": "4546",
               "originPrice": "8927.90",
               "save": "4381.9",
-              "packageID": 0,
-              "info": "存储空间 5TB X 6 个月 - 华北地区"
+              "packageID": 405,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 5TB X 6 个月 - <span class='high-light'>华北地区</span>"
             }
           ]
         },
@@ -579,8 +579,8 @@ Rails.application.configure do
               "price": "5038",
               "originPrice": "8918.35",
               "save": "3880.35",
-              "packageID": 0,
-              "info": "存储空间 10TB X 6 个月 - 华东地区"
+              "packageID": 387,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 10TB X 6 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-east-10TB-12",
@@ -588,8 +588,8 @@ Rails.application.configure do
               "price": "9093",
               "originPrice": "17836.70",
               "save": "8743.7",
-              "packageID": 0,
-              "info": "存储空间 10TB X 12 个月 - 华东地区"
+              "packageID": 411,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 10TB X 12 个月 - <span class='high-light'>华东地区</span>"
             },
             {
               "id": "kodo-north-10TB-6",
@@ -597,8 +597,8 @@ Rails.application.configure do
               "price": "5038",
               "originPrice": "8918.35",
               "save": "3880.35",
-              "packageID": 0,
-              "info": "存储空间 10TB X 6 个月 - 华北地区"
+              "packageID": 384,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 10TB X 6 个月 - <span class='high-light'>华北地区</span>"
             },
             {
               "id": "kodo-north-10TB-12",
@@ -606,8 +606,8 @@ Rails.application.configure do
               "price": "9093",
               "originPrice": "17836.70",
               "save": "8743.7",
-              "packageID": 0,
-              "info": "存储空间 10TB X 12 个月 - 华北地区"
+              "packageID": 408,
+              "info": "请您再次确认所选的区域和规格<br />存储空间 10TB X 12 个月 - <span class='high-light'>华北地区</span>"
             }
           ]
         }
@@ -616,142 +616,142 @@ Rails.application.configure do
     "fusion": {
       "list": [
         {
-          "title": "国内全时段静态加速流量 1200GB（按月结转）",
+          "title": "国内全时段静态加速流量 600GB（按月结转）",
           "desc": "按月发放 100GB/月，可结转",
           "isNew": true,
           "durations": [
             {
-              "value": "fusion-http-100GB-12",
+              "value": "fusion-http-100GB-6",
               "text": "HTTP"
             },
             {
-              "value": "fusion-https-100GB-12",
+              "value": "fusion-https-100GB-6",
               "text": "HTTPS"
             }
           ],
           "sections": [
             {
-              "id": "fusion-http-100GB-12",
+              "id": "fusion-http-100GB-6",
               "class": "active",
               "price": "7.7",
               "originPrice": "24",
               "save": "16.3",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 1200GB，按月发放 100GB/月，可结转"
+              "packageID": 243,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 600GB，按月发放 100GB/月，可结转"
             },
             {
-              "id": "fusion-https-100GB-12",
+              "id": "fusion-https-100GB-6",
               "class": "",
               "price": "8.8",
               "originPrice": "28",
               "save": "19.2",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 1200GB，按月发放 100GB/月，可结转"
+              "packageID": 255,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 600GB，按月发放 100GB/月，可结转"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 12TB（按月结转）",
+          "title": "国内全时段静态加速流量 6TB（按月结转）",
           "desc": "按月发放 1TB/月，可结转",
           "isNew": true,
           "durations": [
             {
-              "value": "fusion-http-1TB-12",
+              "value": "fusion-http-1TB-6",
               "text": "HTTP"
             },
             {
-              "value": "fusion-https-1TB-12",
+              "value": "fusion-https-1TB-6",
               "text": "HTTPS"
             }
           ],
           "sections": [
             {
-              "id": "fusion-http-1TB-12",
+              "id": "fusion-http-1TB-6",
               "class": "active",
               "price": "77",
               "originPrice": "240",
               "save": "163",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
+              "packageID": 246,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 1TB/月，可结转"
             },
             {
-              "id": "fusion-https-1TB-12",
+              "id": "fusion-https-1TB-6",
               "class": "",
               "price": "88",
               "originPrice": "280",
               "save": "192",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
+              "packageID": 258,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 1TB/月，可结转"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 120TB（按月结转）",
+          "title": "国内全时段静态加速流量 60TB（按月结转）",
           "desc": "按月发放 10TB/月，可结转",
           "isNew": true,
           "durations": [
             {
-              "value": "fusion-http-10TB-12",
+              "value": "fusion-http-10TB-6",
               "text": "HTTP"
             },
             {
-              "value": "fusion-https-10TB-12",
+              "value": "fusion-https-10TB-6",
               "text": "HTTPS"
             }
           ],
           "sections": [
             {
-              "id": "fusion-http-10TB-12",
+              "id": "fusion-http-10TB-6",
               "class": "active",
               "price": "777",
               "originPrice": "2400",
               "save": "1623",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
+              "packageID": 249,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 10TB/月，可结转"
             },
             {
-              "id": "fusion-https-10TB-12",
+              "id": "fusion-https-10TB-6",
               "class": "",
               "price": "888",
               "originPrice": "2800",
               "save": "1912",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
+              "packageID": 261,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 10TB/月，可结转"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 600TB（按月结转）",
+          "title": "国内全时段静态加速流量 300TB（按月结转）",
           "desc": "按月发放 50TB/月，可结转",
           "isNew": true,
           "durations": [
             {
-              "value": "fusion-http-50TB-12",
+              "value": "fusion-http-50TB-6",
               "text": "HTTP"
             },
             {
-              "value": "fusion-https-50TB-12",
+              "value": "fusion-https-50TB-6",
               "text": "HTTPS"
             }
           ],
           "sections": [
             {
-              "id": "fusion-http-50TB-12",
+              "id": "fusion-http-50TB-6",
               "class": "active",
               "price": "3777",
               "originPrice": "12000",
               "save": "8223",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 600TB，按月发放 50TB/月，可结转"
+              "packageID": 252,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 300TB，按月发放 50TB/月，可结转"
             },
             {
-              "id": "fusion-https-50TB-12",
+              "id": "fusion-https-50TB-6",
               "class": "",
               "price": "4321",
               "originPrice": "14000",
               "save": "9679",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 600TB，按月发放 50TB/月，可结转"
+              "packageID": 264,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 300TB，按月发放 50TB/月，可结转"
             }
           ]
         },
@@ -776,8 +776,8 @@ Rails.application.configure do
               "price": "184",
               "originPrice": "295",
               "save": "111",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
+              "packageID": 267,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
             },
             {
               "id": "fusion-https-1dot2TB-12",
@@ -785,8 +785,8 @@ Rails.application.configure do
               "price": "231",
               "originPrice": "344",
               "save": "113",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
+              "packageID": 270,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
             }
           ]
         },
@@ -811,8 +811,8 @@ Rails.application.configure do
               "price": "903",
               "originPrice": "1475",
               "save": "572",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
+              "packageID": 273,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
             },
             {
               "id": "fusion-https-6TB-12",
@@ -820,8 +820,8 @@ Rails.application.configure do
               "price": "1130",
               "originPrice": "1720",
               "save": "590",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
+              "packageID": 294,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
             }
           ]
         },
@@ -846,8 +846,8 @@ Rails.application.configure do
               "price": "1720",
               "originPrice": "2949",
               "save": "1229",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
+              "packageID": 276,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
             },
             {
               "id": "fusion-https-12TB-12",
@@ -855,8 +855,8 @@ Rails.application.configure do
               "price": "2212",
               "originPrice": "3441",
               "save": "1229",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
+              "packageID": 297,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
             }
           ]
         },
@@ -881,8 +881,8 @@ Rails.application.configure do
               "price": "7987",
               "originPrice": "14746",
               "save": "6759",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
+              "packageID": 279,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
             },
             {
               "id": "fusion-https-60TB-12",
@@ -890,8 +890,8 @@ Rails.application.configure do
               "price": "10629",
               "originPrice": "17203",
               "save": "6574",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
+              "packageID": 300,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
             }
           ]
         },
@@ -916,8 +916,8 @@ Rails.application.configure do
               "price": "11796",
               "originPrice": "23347",
               "save": "11551",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
+              "packageID": 282,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
             },
             {
               "id": "fusion-https-120TB-12",
@@ -925,8 +925,8 @@ Rails.application.configure do
               "price": "14746",
               "originPrice": "28262",
               "save": "13516",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
+              "packageID": 303,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
             }
           ]
         },
@@ -951,8 +951,8 @@ Rails.application.configure do
               "price": "23593",
               "originPrice": "46694",
               "save": "23101",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
+              "packageID": 285,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
             },
             {
               "id": "fusion-https-240TB-12",
@@ -960,8 +960,8 @@ Rails.application.configure do
               "price": "29491",
               "originPrice": "56525",
               "save": "27034",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
+              "packageID": 306,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
             }
           ]
         },
@@ -986,8 +986,8 @@ Rails.application.configure do
               "price": "42467",
               "originPrice": "93389",
               "save": "50922",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
+              "packageID": 288,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
             },
             {
               "id": "fusion-https-480TB-12",
@@ -995,8 +995,8 @@ Rails.application.configure do
               "price": "53084",
               "originPrice": "113050",
               "save": "59966",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
+              "packageID": 309,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
             }
           ]
         },
@@ -1021,8 +1021,8 @@ Rails.application.configure do
               "price": "101167",
               "originPrice": "239075",
               "save": "137908",
-              "packageID": 0,
-              "info": "国内 HTTP 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
+              "packageID": 291,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
             },
             {
               "id": "fusion-https-1200TB-12",
@@ -1030,8 +1030,8 @@ Rails.application.configure do
               "price": "120796",
               "originPrice": "289407",
               "save": "168611",
-              "packageID": 0,
-              "info": "国内 HTTPS 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
+              "packageID": 312,
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
             }
           ]
         }
@@ -1045,7 +1045,8 @@ Rails.application.configure do
           "price": "186.4",
           "originPrice": "233",
           "save": "46.6",
-          "packageID": 0
+          "packageID": 441,
+          "info": "请您再次确认所选的规格<br />直播云 1TB 全年包"
         },
         {
           "title": "直播云 5TB 全年包",
@@ -1053,7 +1054,8 @@ Rails.application.configure do
           "price": "876.8",
           "originPrice": "1096",
           "save": "219.2",
-          "packageID": 0
+          "packageID": 318,
+          "info": "请您再次确认所选的规格<br />直播云 5TB 全年包"
         },
         {
           "title": "直播云 10TB 全年包",
@@ -1061,7 +1063,8 @@ Rails.application.configure do
           "price": "1736",
           "originPrice": "2170",
           "save": "434",
-          "packageID": 0
+          "packageID": 456,
+          "info": "请您再次确认所选的规格<br />直播云 10TB 全年包"
         }
       ],
       "socialList": [
@@ -1071,7 +1074,8 @@ Rails.application.configure do
           "price": "1736",
           "originPrice": "2170",
           "save": "434",
-          "packageID": 0
+          "packageID": 456,
+          "info": "请您再次确认所选的规格<br />直播云 10TB 全年包"
         },
         {
           "title": "直播云 50TB 全年包",
@@ -1079,7 +1083,8 @@ Rails.application.configure do
           "price": "7124.8",
           "originPrice": "8906",
           "save": "1781.2",
-          "packageID": 0
+          "packageID": 321,
+          "info": "请您再次确认所选的规格<br />直播云 50TB 全年包"
         },
         {
           "title": "直播云 200TB 全年包",
@@ -1087,7 +1092,8 @@ Rails.application.configure do
           "price": "24659.2",
           "originPrice": "30824",
           "save": "6164.8",
-          "packageID": 0
+          "packageID": 444,
+          "info": "请您再次确认所选的规格<br />直播云 200TB 全年包"
         },
         {
           "title": "直播云 1PB 全年包",
@@ -1095,7 +1101,8 @@ Rails.application.configure do
           "price": "120356",
           "originPrice": "150445",
           "save": "30089",
-          "packageID": 0
+          "packageID": 447,
+          "info": "请您再次确认所选的规格<br />直播云 1PB 全年包"
         }
       ]
     },
@@ -1112,7 +1119,8 @@ Rails.application.configure do
           "save": "10000",
           "btnText": "立即抢购",
           "btnClass": "orange",
-          "packageID": 0
+          "packageID": 339,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 一个月专业版"
         },
         {
           "title": "短视频 SDK 全年精简版",
@@ -1125,7 +1133,8 @@ Rails.application.configure do
           "save": "1814.4",
           "btnText": "立即抢购",
           "btnClass": "blue",
-          "packageID": 0
+          "packageID": 333,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年精简版"
         },
         {
           "title": "短视频 SDK 全年基础版",
@@ -1138,7 +1147,8 @@ Rails.application.configure do
           "save": "7322.4",
           "btnText": "立即抢购",
           "btnClass": "blue",
-          "packageID": 0
+          "packageID": 336,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年基础版"
         },
         {
           "title": "短视频 SDK 全年精简版",
@@ -1151,7 +1161,8 @@ Rails.application.configure do
           "save": "1008",
           "btnText": "立即抢购",
           "btnClass": "blue",
-          "packageID": 0
+          "packageID": 342,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年精简版"
         },
         {
           "title": "短视频 SDK 全年基础版",
@@ -1164,7 +1175,8 @@ Rails.application.configure do
           "save": "4068",
           "btnText": "立即抢购",
           "btnClass": "blue",
-          "packageID": 0
+          "packageID": 345,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年基础版"
         },
         {
           "title": "短视频 SDK 全年进阶版",
@@ -1177,7 +1189,8 @@ Rails.application.configure do
           "save": "30000",
           "btnText": "立即抢购",
           "btnClass": "blue",
-          "packageID": 0
+          "packageID": 348,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年进阶版"
         },
         {
           "title": "短视频 SDK 全年专业版",
@@ -1190,7 +1203,8 @@ Rails.application.configure do
           "save": "60000",
           "btnText": "立即抢购",
           "btnClass": "blue",
-          "packageID": 0
+          "packageID": 351,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年专业版"
         }
       ]
     },
@@ -1398,7 +1412,8 @@ Rails.application.configure do
           "price": "75",
           "originPrice": "129",
           "save": "54",
-          "packageID": 0
+          "packageID": 192,
+          "info": "请您再次确认所选的规格<br />云短信 3000 条系统短信起跑包"
         },
         {
           "title": "云短信 10000 条系统短信加速包",
@@ -1406,7 +1421,8 @@ Rails.application.configure do
           "price": "240",
           "originPrice": "430",
           "save": "190",
-          "packageID": 0
+          "packageID": 195,
+          "info": "请您再次确认所选的规格<br />云短信 10000 条系统短信加速包"
         },
         {
           "title": "云短信 100000 条系统短信冲刺包",
@@ -1414,7 +1430,8 @@ Rails.application.configure do
           "price": "2300",
           "originPrice": "4300",
           "save": "2000",
-          "packageID": 0
+          "packageID": 198,
+          "info": "请您再次确认所选的规格<br />云短信 100000 条系统短信冲刺包"
         },
         {
           "title": "云短信 3000 条推广短信起跑包",
@@ -1422,7 +1439,8 @@ Rails.application.configure do
           "price": "102",
           "originPrice": "129",
           "save": "27",
-          "packageID": 0
+          "packageID": 324,
+          "info": "请您再次确认所选的规格<br />云短信 3000 条推广短信起跑包"
         },
         {
           "title": "云短信 10000 条推广短信加速包",
@@ -1430,15 +1448,17 @@ Rails.application.configure do
           "price": "330",
           "originPrice": "430",
           "save": "100",
-          "packageID": 0
+          "packageID": 327,
+          "info": "请您再次确认所选的规格<br />云短信 10000 条推广短信加速包"
         },
         {
-          "title": "云短信 100000 条系统短信冲刺包",
+          "title": "云短信 100000 条推广短信冲刺包",
           "desc": "1 年有效，限推广短信，0.032/条",
           "price": "3200",
           "originPrice": "4300",
           "save": "1100",
-          "packageID": 0
+          "packageID": 330,
+          "info": "请您再次确认所选的规格<br />云短信 100000 条推广短信冲刺包"
         }
       ]
     }

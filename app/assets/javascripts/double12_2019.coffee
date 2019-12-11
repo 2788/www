@@ -117,6 +117,9 @@ $(document).ready ->
       $2019double12OrderBtn.attr 'target', ''
       $2019double12OrderBtn.on 'click', (e) ->
         e.preventDefault()
+        if $(this).hasClass 'disabled'
+          return
+        $2019double12OrderBtn.addClass 'disabled'
         $.ajax
           method: 'GET',
           url: '/events/20191212/combo/order',
@@ -124,6 +127,8 @@ $(document).ready ->
             handleDouble12OrderRes res
           error: (err) ->
             showOrderFailModal()
+          complete: () ->
+            $2019double12OrderBtn.removeClass 'disabled'
 
   bindDouble12BuyBtns = () ->
     if $2019double12BuyBtns.length > 0
