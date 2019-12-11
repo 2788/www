@@ -92,11 +92,12 @@ $(document).ready ->
       $2019double12EffectTimeModal.find('.package-info').html double12SelectedPackageInfo
       $2019double12EffectTimeModal.modal 'show'
 
-  hideEffectTimeModal = () ->
+  hideEffectTimeModal = (cb) ->
     if $2019double12EffectTimeModal.length > 0
       double12SelectedPackageID = 0
       double12SelectedPackageInfo = ''
       $2019double12EffectTimeModal.find('.package-info').html double12SelectedPackageInfo
+      $2019double12EffectTimeModal.one('hidden.bs.modal', cb)
       $2019double12EffectTimeModal.modal 'hide'
 
   handleDouble12OrderRes = (res) ->
@@ -160,11 +161,10 @@ $(document).ready ->
             package_id: double12SelectedPackageID
             effect_type: effectTime
           success: (res) ->
-            handleDouble12BuyRes res
+            hideEffectTimeModal -> handleDouble12BuyRes res
           error: (err) ->
-            showPackageBuyFailModal()
+            hideEffectTimeModal -> showPackageBuyFailModal()
           complete: () ->
-            hideEffectTimeModal()
             $2019double12EffectTimeBtns.removeClass 'disabled'
 
   # 2019 年 1212 活动是否结束
