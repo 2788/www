@@ -7712,8 +7712,8 @@ zh-CN:
             href: "#tab-content-double12-2019-pandora"
         kodo:
           title: "存储专场 上云必抢"
-          ruleDesc: "</a>&nbsp;<a href='' target='' class='desc-rule-link' title='存储专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-kodo-modal'>活动说明&nbsp;></a>"
-          desc: "<span class='high-light'>2020 年 1 月 1 日起，华南区标准存储公开价低至 0.099 元/GB/月</span> <a href='/prices?source=kodo&entry=20191212-page' target='_blank' class='desc-rule-link' title='2020 年 1 月 1 日起，华南区标准存储公开价低至 0.099 元/GB/月 - 了解详情'>了解详情&nbsp;>"
+          ruleDesc: "<a href='' target='' class='desc-rule-link' title='存储专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-kodo-modal'>活动说明&nbsp;></a>"
+          desc: "<span class='high-light'>2020 年 1 月 1 日起，华南区标准存储公开价低至 0.099 元/GB/月</span> <a href='/prices?source=kodo&entry=20191212-page' target='_blank' class='desc-rule-link' title='2020 年 1 月 1 日起，华南区标准存储公开价低至 0.099 元/GB/月 - 了解详情'>了解详情&nbsp;></a>"
           southSubTitle: "华南专区！比低更低！"
           subTitle: "年末硬核促销！低价不怕比！"
         fusion:
