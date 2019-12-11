@@ -1325,9 +1325,9 @@ Rails.application.configure do
               "value": "1 年"
             }
           ],
-          "price": "643.05",
+          "price": "643",
           "originPrice": "908.05",
-          "save": "265",
+          "save": "265.05",
           "link": "/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.xn4.small&buymonth=12&eip=1&discount=ACTIVITY%2320191212%23SHOPPING_DAY_LIMITED"
         },
         {
