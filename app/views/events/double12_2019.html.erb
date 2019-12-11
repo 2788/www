@@ -40,6 +40,7 @@
         <%= I18n.t("views.events.double12_2019.kodo.title") -%>
         <%= image_tag "double12_2019/icon-title-red-blue.png", title: I18n.t("views.events.double12_2019.kodo.title"), alt: I18n.t("views.events.double12_2019.kodo.title"), class: "icon-title right" -%>
       </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.kodo.ruleDesc")) -%></p>
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12 col-table">
@@ -550,13 +551,13 @@
   </div>
 </div>
 
-<%# 存储专场部分 - 了解详情模态框 %>
+<%# 存储专场部分 - 活动说明模态框 %>
 <div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-kodo-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-kodo-modal-label" data-keyboard="true" data-backdrop="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="double12-2019-kodo-modal-label">存储专场 - 了解详情</h3>
+        <h3 class="modal-title" id="double12-2019-kodo-modal-label">存储专场 - 活动说明</h3>
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享</p>
