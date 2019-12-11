@@ -415,8 +415,8 @@
         color: #28AEDF;
       }
     }
-    &.advert-double11-2019 {
-      background-image: image-url("icon-advert-double11-2019.png");
+    &.advert-double11-2019,
+    &.advert-double12-2019 {
       background-size: auto 100%;
       background-position: 0 0;
       background-repeat: no-repeat;
@@ -427,6 +427,12 @@
           }
         }
       }
+    }
+    &.advert-double11-2019 {
+      background-image: image-url("icon-advert-double11-2019.png");
+    }
+    &.advert-double12-2019 {
+      background-image: image-url("icon-advert-double12-2019.png");
     }
   }
   .border-l {
@@ -824,7 +830,8 @@
 @media (max-width: 1199px) {
   .features-advert-index {
     .col-advert {
-      &.advert-double11-2019 {
+      &.advert-double11-2019,
+      &.advert-double12-2019 {
         background-size: 40% auto;
       }
     }
@@ -904,7 +911,8 @@
           }
         }
       }
-      &.advert-double11-2019 {
+      &.advert-double11-2019,
+      &.advert-double12-2019 {
         background-position-x: 10px;
         background-size: auto 100%;
       }
@@ -915,7 +923,8 @@
 @media (max-width: 425px) {
   .features-advert-index {
     .col-advert {
-      &.advert-double11-2019 {
+      &.advert-double11-2019,
+      &.advert-double12-2019 {
         background-size: 40px 40px;
       }
     }

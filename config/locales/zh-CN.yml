@@ -46,11 +46,11 @@ zh-CN:
             desc: "热门活动及产品特惠"
             link: "/events/activity?entry=index-advert"
             jumphost: ""
-          - title: "云采购嘉年华"
-            class: "border-l advert-double11-2019"
+          - title: "年终盛惠"
+            class: "border-l advert-double12-2019"
             jump_label_class: ""
-            desc: "爆款云存储低至 0.01 元"
-            link: "/events/20191111?entry=index-advert"
+            desc: "100GB 云存储 1 分抢"
+            link: "/events/20191212?entry=index-advert"
             jumphost: ""
           - title: "海外云存储优惠专场<span class='advert-tip'>HOT</span>"
             class: "border-l"
@@ -142,7 +142,7 @@ zh-CN:
               desc: "充分发挥大数据和机器学习的优势，以实时的方式监测服务质量，并能以开放的方式进行深度的业务分析。"
         feature3:
           title: "各行各业的成功案例"
-      sdk: 
+      sdk:
         banner:
           title: "音视频 SDK"
           desc: "七牛云音视频 SDK 包含直播推流 SDK、实时音视频 SDK、短视频 SDK 和播放器 SDK。包体轻盈、功能丰富、可快速二次开发，供开发者快递搭建直播、互动直播及短视频等音视频应用。"
@@ -413,7 +413,7 @@ zh-CN:
               id: "free-events-dora"
               morelink: "https://www.qiniu.com/products/dora"
               details:
-                - • 750 小时/月 免费自定义数据处理服务 
+                - • 750 小时/月 免费自定义数据处理服务
                 - • 20 元/月 多媒体处理服务
               unsignlink: "/signup"
               signlink: "/financial/price"
@@ -3444,26 +3444,26 @@ zh-CN:
             desc: 自研边缘加速方案，实现全球信息实时共享
             content:
               - title: 全球节点
-                desc: 
+                desc:
                   - 全球节点 180+
                   - 支持全球 200+ 国家和地区互动
               - title: 实时性
-                desc: 
+                desc:
                   - 延迟 150ms 左右
               - title: 传输协议
-                desc: 
+                desc:
                   - 基于 WebRTC
                   - 接入门槛低，兼容性强，用户体验好
               - title: 加速方案
-                desc: 
+                desc:
                   - 全自研边缘加速方案
                   - 实现信息在全球网络的实时共享交互
               - title: 调度策略
-                desc: 
+                desc:
                   - 智能分配流媒体服务器和加速线路
                   - 快速响应全球实时互动需求
               - title: 质量监控
-                desc: 
+                desc:
                   - 网络品质监控与自动调度系统
                   - 实时优化传输质量
         serve:
