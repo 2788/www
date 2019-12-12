@@ -7330,9 +7330,9 @@ en:
         banner:
           image: "double12_2019/img-banner.png"
         middlebar:
-          # - title: "存储专场"
-          #   class: ""
-          #   href: "#tab-content-double12-2019-kodo"
+          - title: "存储专场"
+            class: ""
+            href: "#tab-content-double12-2019-kodo"
           - title: "CDN 专场"
             class: ""
             href: "#tab-content-double12-2019-fusion"
