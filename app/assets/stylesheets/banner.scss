@@ -920,6 +920,24 @@
     }
   }
 
+  &.hero-double12-2019-index {
+    background: -webkit-linear-gradient(#FE0EF8, #410084);
+    background: -moz-linear-gradient(#FE0EF8, #410084);
+    background: linear-gradient(#FE0EF8, #410084);
+    .container {
+      .middle-container {
+        top: 42%;
+        a {
+          outline: none;
+          -moz-outline: none;
+        }
+        img {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
   &.hero-double11-2019-index {
     background: -webkit-linear-gradient(#FF6418, #FF4C43);
     background: -moz-linear-gradient(#FF6418, #FF4C43);

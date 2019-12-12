@@ -1,8 +1,25 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 2019 年 1212 大促活动 banner %>
+  <% if Time.now.to_i >= Time.local(2019, 12, 11).to_i && Time.now.to_i < Time.local(2020, 1, 16).to_i -%>
+  <div class="jumbotron hero hero-double12-2019-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <a href="<%= events_20191212_path + "?entry=index-banner" -%>" title="七牛云年终盛惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交&电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品年终限时特惠。" target="_blank">
+              <%= image_tag "banner/banner-double12-2019-index.png", title: "七牛云年终盛惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交&电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品年终限时特惠。", alt: "七牛云年终盛惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交&电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品年终限时特惠。", width: "100%" -%>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 2019 年 1111 大促活动 banner %>
-  <% if Time.now.to_i < Time.local(2019, 12, 12).to_i -%>
+  <% if Time.now.to_i < Time.local(2019, 12, 11).to_i -%>
   <div class="jumbotron hero hero-double11-2019-index">
     <div class="container">
       <div class="middle-container">
