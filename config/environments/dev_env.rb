@@ -616,8 +616,8 @@ Rails.application.configure do
     "fusion": {
       "list": [
         {
-          "title": "国内全时段静态加速流量 600GB（按月结转）",
-          "desc": "按月发放 100GB/月，可结转<br />有效期 6 个月",
+          "title": "国内全时段静态加速流量 100GB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -637,7 +637,7 @@ Rails.application.configure do
               "originPrice": "24",
               "save": "16.3",
               "packageID": 107,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 600GB，按月发放 100GB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 100GB，有效期 6 个月"
             },
             {
               "id": "fusion-https-100GB-6",
@@ -646,13 +646,13 @@ Rails.application.configure do
               "originPrice": "28",
               "save": "19.2",
               "packageID": 111,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 600GB，按月发放 100GB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 100GB，有效期 6 个月"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 6TB（按月结转）",
-          "desc": "按月发放 1TB/月，可结转<br />有效期 6 个月",
+          "title": "国内全时段静态加速流量 1TB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -672,7 +672,7 @@ Rails.application.configure do
               "originPrice": "240",
               "save": "163",
               "packageID": 108,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 1TB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1TB，有效期 6 个月"
             },
             {
               "id": "fusion-https-1TB-6",
@@ -681,13 +681,13 @@ Rails.application.configure do
               "originPrice": "280",
               "save": "192",
               "packageID": 112,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 1TB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1TB，有效期 6 个月"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 60TB（按月结转）",
-          "desc": "按月发放 10TB/月，可结转<br />有效期 6 个月",
+          "title": "国内全时段静态加速流量 10TB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -707,7 +707,7 @@ Rails.application.configure do
               "originPrice": "2400",
               "save": "1623",
               "packageID": 109,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 10TB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 10TB，有效期 6 个月"
             },
             {
               "id": "fusion-https-10TB-6",
@@ -716,13 +716,13 @@ Rails.application.configure do
               "originPrice": "2800",
               "save": "1912",
               "packageID": 113,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 10TB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 10TB，有效期 6 个月"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 300TB（按月结转）",
-          "desc": "按月发放 50TB/月，可结转<br />有效期 6 个月",
+          "title": "国内全时段静态加速流量 50TB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -742,7 +742,7 @@ Rails.application.configure do
               "originPrice": "12000",
               "save": "8223",
               "packageID": 110,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 300TB，按月发放 50TB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 50TB，有效期 6 个月"
             },
             {
               "id": "fusion-https-50TB-6",
@@ -751,7 +751,7 @@ Rails.application.configure do
               "originPrice": "14000",
               "save": "9679",
               "packageID": 114,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 300TB，按月发放 50TB/月，可结转，有效期 6 个月"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 50TB，有效期 6 个月"
             }
           ]
         },
