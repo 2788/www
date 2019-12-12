@@ -224,7 +224,7 @@
           <% end -%>
           <div class="caption">
             <h4 class="title"><%= fusion[:title] -%></h4>
-            <p class="desc"><%= fusion[:desc] -%></p>
+            <p class="desc"><%= raw(fusion[:desc]) -%></p>
             <div class="content-container">
               <div class="content-dropdown">
                 <p class="dropdown-title">域名</p>

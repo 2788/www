@@ -590,8 +590,8 @@ Rails.application.configure do
     "fusion": {
       "list": [
         {
-          "title": "国内全时段静态加速流量 600GB（按月结转）",
-          "desc": "按月发放 100GB/月，可结转",
+          "title": "国内全时段静态加速流量 100GB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -611,7 +611,7 @@ Rails.application.configure do
               "originPrice": "24",
               "save": "16.3",
               "packageID": 107,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 600GB，按月发放 100GB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 100GB，有效期 6 个月"
             },
             {
               "id": "fusion-https-100GB-6",
@@ -620,13 +620,13 @@ Rails.application.configure do
               "originPrice": "28",
               "save": "19.2",
               "packageID": 111,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 600GB，按月发放 100GB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 100GB，有效期 6 个月"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 6TB（按月结转）",
-          "desc": "按月发放 1TB/月，可结转",
+          "title": "国内全时段静态加速流量 1TB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -646,7 +646,7 @@ Rails.application.configure do
               "originPrice": "240",
               "save": "163",
               "packageID": 108,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 1TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1TB，有效期 6 个月"
             },
             {
               "id": "fusion-https-1TB-6",
@@ -655,13 +655,13 @@ Rails.application.configure do
               "originPrice": "280",
               "save": "192",
               "packageID": 112,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 1TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1TB，有效期 6 个月"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 60TB（按月结转）",
-          "desc": "按月发放 10TB/月，可结转",
+          "title": "国内全时段静态加速流量 10TB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -681,7 +681,7 @@ Rails.application.configure do
               "originPrice": "2400",
               "save": "1623",
               "packageID": 109,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 10TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 10TB，有效期 6 个月"
             },
             {
               "id": "fusion-https-10TB-6",
@@ -690,13 +690,13 @@ Rails.application.configure do
               "originPrice": "2800",
               "save": "1912",
               "packageID": 113,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 10TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 10TB，有效期 6 个月"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 300TB（按月结转）",
-          "desc": "按月发放 50TB/月，可结转",
+          "title": "国内全时段静态加速流量 50TB",
+          "desc": "有效期 6 个月",
           "isNew": true,
           "durations": [
             {
@@ -716,7 +716,7 @@ Rails.application.configure do
               "originPrice": "12000",
               "save": "8223",
               "packageID": 110,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 300TB，按月发放 50TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 50TB，有效期 6 个月"
             },
             {
               "id": "fusion-https-50TB-6",
@@ -725,13 +725,13 @@ Rails.application.configure do
               "originPrice": "14000",
               "save": "9679",
               "packageID": 114,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 300TB，按月发放 50TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 50TB，有效期 6 个月"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 1.2TB（按月结转）",
-          "desc": "按月发放 102.4GB/月，可结转",
+          "desc": "按月发放 102.4GB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -751,7 +751,7 @@ Rails.application.configure do
               "originPrice": "295",
               "save": "96",
               "packageID": 128,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-1dot2TB-12",
@@ -760,13 +760,13 @@ Rails.application.configure do
               "originPrice": "344",
               "save": "45",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1.2TB，按月发放 102.4GB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 6TB（按月结转）",
-          "desc": "按月发放 512GB/月，可结转",
+          "desc": "按月发放 512GB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -786,7 +786,7 @@ Rails.application.configure do
               "originPrice": "1475",
               "save": "476",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 6TB，按月发放 512GB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-6TB-12",
@@ -795,13 +795,13 @@ Rails.application.configure do
               "originPrice": "1720",
               "save": "521",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 512GB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 6TB，按月发放 512GB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 12TB（按月结转）",
-          "desc": "按月发放 1TB/月，可结转",
+          "desc": "按月发放 1TB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -821,7 +821,7 @@ Rails.application.configure do
               "originPrice": "2949",
               "save": "950",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 12TB，按月发放 1TB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-12TB-12",
@@ -830,13 +830,13 @@ Rails.application.configure do
               "originPrice": "3441",
               "save": "1142",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 12TB，按月发放 1TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 12TB，按月发放 1TB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 60TB（按月结转）",
-          "desc": "按月发放 5TB/月，可结转",
+          "desc": "按月发放 5TB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -856,7 +856,7 @@ Rails.application.configure do
               "originPrice": "14746",
               "save": "6747",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 60TB，按月发放 5TB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-60TB-12",
@@ -865,13 +865,13 @@ Rails.application.configure do
               "originPrice": "17203",
               "save": "6204",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 5TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 60TB，按月发放 5TB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 120TB（按月结转）",
-          "desc": "按月发放 10TB/月，可结转",
+          "desc": "按月发放 10TB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -891,7 +891,7 @@ Rails.application.configure do
               "originPrice": "23347",
               "save": "7348",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 120TB，按月发放 10TB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-120TB-12",
@@ -900,13 +900,13 @@ Rails.application.configure do
               "originPrice": "28262",
               "save": "8263",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 120TB，按月发放 10TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 120TB，按月发放 10TB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 240TB（按月结转）",
-          "desc": "按月发放 20TB/月，可结转",
+          "desc": "按月发放 20TB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -926,7 +926,7 @@ Rails.application.configure do
               "originPrice": "46694",
               "save": "16695",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 240TB，按月发放 20TB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-240TB-12",
@@ -935,13 +935,13 @@ Rails.application.configure do
               "originPrice": "56525",
               "save": "19526",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 240TB，按月发放 20TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 240TB，按月发放 20TB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
           "title": "国内全时段静态加速流量 480TB（按月结转）",
-          "desc": "按月发放 40TB/月，可结转",
+          "desc": "按月发放 40TB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
@@ -961,7 +961,7 @@ Rails.application.configure do
               "originPrice": "93389",
               "save": "38390",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 480TB，按月发放 40TB/月，可结转，有效期 1 年"
             },
             {
               "id": "fusion-https-480TB-12",
@@ -970,42 +970,42 @@ Rails.application.configure do
               "originPrice": "113050",
               "save": "49051",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 480TB，按月发放 40TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 480TB，按月发放 40TB/月，可结转，有效期 1 年"
             }
           ]
         },
         {
-          "title": "国内全时段静态加速流量 1200TB（按月结转）",
-          "desc": "按月发放 100TB/月，可结转",
+          "title": "国内全时段静态加速流量 1.2PB（按月结转）",
+          "desc": "按月发放 102.4TB/月，可结转<br />有效期 1 年",
           "isNew": false,
           "durations": [
             {
-              "value": "fusion-http-1200TB-12",
+              "value": "fusion-http-1dot2PB-12",
               "text": "HTTP"
             },
             {
-              "value": "fusion-https-1200TB-12",
+              "value": "fusion-https-1dot2PB-12",
               "text": "HTTPS"
             }
           ],
           "sections": [
             {
-              "id": "fusion-http-1200TB-12",
+              "id": "fusion-http-1dot2PB-12",
               "class": "active",
               "price": "125999",
               "originPrice": "239075",
               "save": "113076",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTP 全时段静态加速流量 1.2PB，按月发放 102.4TB/月，可结转，有效期 1 年"
             },
             {
-              "id": "fusion-https-1200TB-12",
+              "id": "fusion-https-1dot2PB-12",
               "class": "",
               "price": "150999",
               "originPrice": "289407",
               "save": "138408",
               "packageID": 0,
-              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1200TB，按月发放 100TB/月，可结转"
+              "info": "请您再次确认所选的域名和规格<br />国内 HTTPS 全时段静态加速流量 1.2PB，按月发放 102.4TB/月，可结转，有效期 1 年"
             }
           ]
         }
