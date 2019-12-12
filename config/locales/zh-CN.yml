@@ -7689,7 +7689,7 @@ zh-CN:
           - title: "存储专场"
             class: ""
             href: "#tab-content-double12-2019-kodo"
-          - title: "电商场景资源包"
+          - title: "电商场景专场"
             class: ""
             href: "#tab-content-double12-2019-combo"
           - title: "CDN 专场"
@@ -7721,7 +7721,7 @@ zh-CN:
           subTitle: "年末硬核促销！低价不怕比！"
         combo:
           title: "电商场景资源包"
-          desc: "12.12 - 12.17期间预购套餐包，即获得QVM满减券“满400减200”"
+          desc: "电商场景，一包配齐！12月18日前预约有礼，享云主机200元惊喜满减券！"
         fusion:
           title: "CDN 专场"
           desc: "冲！100GB 资源包仅需七块七！<a href='' target='' class='desc-rule-link' title='CDN 专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-fusion-modal'>活动说明&nbsp;></a>"

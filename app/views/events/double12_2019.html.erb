@@ -214,7 +214,7 @@
 
     <% Rails.configuration.double12_2019_comb_package.each do |combPack| -%>
 
-      <div class="comb-pack">
+      <div class="comb-pack" data-comb-pack-type="<%= combPack[:type] -%>">
         <div class="row">
           <div class="col-md-12">
             <span class="activity-tip">电商专供</span>
@@ -228,7 +228,7 @@
             <span>时长</span>
             <select name="duration" class="form-control double12-2019-dropdown">
               <% combPack[:durations].each do |duration| -%>
-              <option value="<% duration[:value] -%>">
+              <option value="<%= duration[:value] -%>">
                 <%= duration[:text] -%>
               </option>
               <% end -%>
@@ -237,11 +237,11 @@
           <div class="content-price col-lg-4 col-md-4 col-sm-9 col-xs-9">
             <div class="price-col price-left">
               <span class="span-red span-bold">￥</span>
-              <span class="span-red span-huge span-bold">16407.54</span>
+              <span class="span-red span-huge span-bold price">-</span>
             </div>
             <div class="price-col price-right">
-                <span class="span-red">节省 16407.54 元</span>
-                <span class="span-red span-elide">原价 16407.54 元</span>
+                <span class="span-red">节省 <span class="diff-price">-</span> 元</span>
+                <span class="span-red span-elide">原价 <span class="origin-price">-</span> 元</span>
             </div>
           </div>
           <div class="comb-pack-buy col-lg-2 col-md-2 col-sm-3 col-xs-3">
