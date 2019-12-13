@@ -153,7 +153,7 @@ $(document).ready ->
         if $(this).hasClass 'disabled'
           return
         $2019double12EffectTimeBtns.addClass 'disabled'
-        effectTime = parseInt($(this).attr('data-effect-time')) | 3
+        effectTime = parseInt($(this).attr('data-effect-time'))
         $.ajax
           method: 'POST',
           url: '/events/20191212/package/buy',
