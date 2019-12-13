@@ -344,7 +344,7 @@ Rails.application.configure do
               "originPrice": "6076.62",
               "save": "2082.62",
               "packageID": 423,
-              "info": "请您再次确认所选的区域和规格<br />标准存储空间 10TB X 12 个月 - <span class='high-light'>华南地区</span>"
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 10TB X 6 个月 - <span class='high-light'>华南地区</span>"
             },
             {
               "id": "kodo-south-10TB-12",
@@ -544,7 +544,7 @@ Rails.application.configure do
               "originPrice": "8927.90",
               "save": "4381.9",
               "packageID": 405,
-              "info": "请您再次确认所选的区域和规格<br />标准存储空间 5TB X 6 个月 - <span class='high-light'>华北地区</span>"
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 5TB X 12 个月 - <span class='high-light'>华北地区</span>"
             }
           ]
         },
