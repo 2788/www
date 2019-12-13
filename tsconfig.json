@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "strictNullChecks": false,
+    "baseUrl": "./src",
+    "lib": ["dom", "es2015"],
+    "jsx": "react",
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "bower_components"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}
