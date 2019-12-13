@@ -398,6 +398,7 @@ $(document).ready ->
     combPackEl.find('.price').text(price)
     combPackEl.find('.origin-price').text(originPrice)
     combPackEl.find('.diff-price').text(diffPrice)
+    combPackEl.find('.package-buy').attr('data-package-id', packId)
 
   updateCombPackEl = (el) ->
     m = combPackElToModel(el)

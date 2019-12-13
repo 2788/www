@@ -245,7 +245,7 @@
             </div>
           </div>
           <div class="comb-pack-buy col-lg-2 col-md-2 col-sm-3 col-xs-3">
-            <a title="" class="btn btn-lg btn-double12-2019 package-buy orange" target="_blank" href="#">立即抢购</a>
+            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: combPack[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy orange disabled", target: "_blank", data: { package_id: "", package_info: combPack[:title] } -%>
           </div>
         </div>
         <div class="row">
