@@ -247,151 +247,38 @@ $(document).ready ->
       protocal: combPackEl.find('[name="protocal"]').val()
     }
 
-  getPriceAndPackId = (combPackType, duration, zone, protocal) ->
-    priceAndPackIdMap =
-      "comb-pack-1":
-        "duration-1":
-          "price": "1890"
-          "origin-price": "2691.59"
-          "diff-price": "801.59"
-          "ids":
-            "z0http": "1-1-z0http"
-            "z0https": "1-1-z0https"
-            "z1http": "1-1-z1http"
-            "z1https": "1-1-z1https"
-            "z3http": "1-1-z3http"
-            "z3https": "1-1-z3https"
-        "duration-3":
-          "price": "5556.6"
-          "origin-price": "8074.77"
-          "diff-price": "2518.17"
-          "ids":
-            "z0http": "1-3-z0http"
-            "z0https": "1-3-z0https"
-            "z1http": "1-3-z1http"
-            "z1https": "1-3-z1https"
-            "z3http": "1-3-z3http"
-            "z3https": "1-3-z3https"
-        "duration-6":
-          "price": "10886.4"
-          "origin-price": "16149.54"
-          "diff-price": "5263.14"
-          "ids":
-            "z0http": "1-6-z0http"
-            "z0https": "1-6-z0https"
-            "z1http": "1-6-z1http"
-            "z1https": "1-6-z1https"
-            "z3http": "1-6-z3http"
-            "z3https": "1-6-z3https"
-      "comb-pack-2":
-        "duration-1":
-          "price": "1920"
-          "origin-price": "2734.59"
-          "diff-price": "814.59"
-          "ids":
-            "z0http": "2-1-z0http"
-            "z0https": "2-1-z0https"
-            "z1http": "2-1-z1http"
-            "z1https": "2-1-z1https"
-            "z3http": "2-1-z3http"
-            "z3https": "2-1-z3https"
-        "duration-3":
-          "price": "5646.6"
-          "origin-price": "8203.77"
-          "diff-price": "2557.17"
-          "ids":
-            "z0http": "2-3-z0http"
-            "z0https": "2-3-z0https"
-            "z1http": "2-3-z1http"
-            "z1https": "2-3-z1https"
-            "z3http": "2-3-z3http"
-            "z3https": "2-3-z3https"
-        "duration-6":
-          "price": "11066.4"
-          "origin-price": "16407.54"
-          "diff-price": "5341.14"
-          "ids":
-            "z0http": "2-6-z0http"
-            "z0https": "2-6-z0https"
-            "z1http": "2-6-z1http"
-            "z1https": "2-6-z1https"
-            "z3http": "2-6-z3http"
-            "z3https": "2-6-z3https"
-      "comb-pack-3":
-        "duration-3":
-          "price": "19120.2"
-          "origin-price": "32215.77"
-          "diff-price": "13095.57"
-          "ids":
-            "z0http": "3-3-z0http"
-            "z0https": "3-3-z0https"
-            "z1http": "3-3-z1http"
-            "z1https": "3-3-z1https"
-            "z3http": "3-3-z3http"
-            "z3https": "3-3-z3https"
-        "duration-6":
-          "price": "31202.7"
-          "origin-price": "56295.54"
-          "diff-price": "25092.84"
-          "ids":
-            "z0http": "3-6-z0http"
-            "z0https": "3-6-z0https"
-            "z1http": "3-6-z1http"
-            "z1https": "3-6-z1https"
-            "z3http": "3-6-z3http"
-            "z3https": "3-6-z3https"
-        "duration-12":
-          "price": "45295.2"
-          "origin-price": "104455.08"
-          "diff-price": "59159.88"
-          "ids":
-            "z0http": "3-12-z0http"
-            "z0https": "3-12-z0https"
-            "z1http": "3-12-z1http"
-            "z1https": "3-12-z1https"
-            "z3http": "3-12-z3http"
-            "z3https": "3-12-z3https"
-      "comb-pack-4":
-        "duration-3":
-          "price": "19540.2"
-          "origin-price": "32860.77"
-          "diff-price": "13320.57"
-          "ids":
-            "z0http": "4-3-z0http"
-            "z0https": "4-3-z0https"
-            "z1http": "4-3-z1http"
-            "z1https": "4-3-z1https"
-            "z3http": "4-3-z3http"
-            "z3https": "4-3-z3https"
-        "duration-6":
-          "price": "32042.7"
-          "origin-price": "57585.54"
-          "diff-price": "25542.84"
-          "ids":
-            "z0http": "4-6-z0http"
-            "z0https": "4-6-z0https"
-            "z1http": "4-6-z1http"
-            "z1https": "4-6-z1https"
-            "z3http": "4-6-z3http"
-            "z3https": "4-6-z3https"
-        "duration-12":
-          "price": "46975.2"
-          "origin-price": "107035.08"
-          "diff-price": "60059.88"
-          "ids":
-            "z0http": "4-12-z0http"
-            "z0https": "4-12-z0https"
-            "z1http": "4-12-z1http"
-            "z1https": "4-12-z1https"
-            "z3http": "4-12-z3http"
-            "z3https": "4-12-z3https"
+  getCombPackInfo = (combPackEl) ->
+    packs = []
+    for el in combPackEl.find('.pack')
+      $el = $(el)
+      attr = $el.find('.attr-select select option:selected').text().trim()
+      # double12_2019.html.erb 模板里用的是 &nbsp; 连接 包名 和 规格
+      # 这里用 \xa0 (&nbsp; 的 char code) 分割字符
+      infos = $el.find('.pack-info').text().trim().split('\xa0')
+      packs.push {
+        product: $el.data('pack-product')
+        title: infos[0]
+        capacity: infos[1]
+        attr: if attr then attr else '全国通用'
+      }
+    return {
+      title: combPackEl.find('.comb-pack-title').text().trim()
+      duration: combPackEl.find('[name="duration"] option:selected').text().trim()
+      zone: combPackEl.find('[name="zone"] option:selected').text().trim()
+      protocal: combPackEl.find('[name="protocal"] option:selected').text().trim()
+      packs: packs
+    }
 
+  getPriceAndPackId = (combPackType, duration, zone, protocal) ->
+    # window.double12_2019_combPackPriceAndPackIdMap 是从后端渲染到模板里
+    # 具体见 double12_2019.html.erb 文件末尾的 script 标签
+    priceAndPackIdMap = window.double12_2019_combPackPriceAndPackIdMap
     priceAndIds = priceAndPackIdMap[combPackType]['duration-'+duration]
     return {
       price: priceAndIds.price
       originPrice: priceAndIds['origin-price']
       diffPrice: priceAndIds['diff-price']
-      packId: priceAndIds.ids[zone+protocal]
+      packId: priceAndIds.ids[zone+protocal] # zone+protocal 用来查找 package id 的 key，具体见后端配置文件
     }
 
   setCombPackPriceAndId = (combPackEl, price, originPrice, diffPrice, packId) ->
@@ -399,6 +286,26 @@ $(document).ready ->
     combPackEl.find('.origin-price').text(originPrice)
     combPackEl.find('.diff-price').text(diffPrice)
     combPackEl.find('.package-buy').attr('data-package-id', packId)
+    info = getCombPackInfo(combPackEl)
+    packInfo = """
+      <div>
+        <span style="font-size:0.24rem">#{info.title}</span>
+        <span style="font-size:0.16rem">（时长：#{info.duration}）</span>
+      </div>
+      <table style="margin:0.14rem auto 0.4rem;font-size:0.16rem">
+        #{
+        info.packs.map (i) -> """
+          <tr>
+            <td style="padding:0 0.16rem;color:#410084">#{i.title}</td>
+            <td style="padding:0 0.16rem">#{i.capacity}</td>
+            <td style="padding:0 0.16rem">#{i.attr}</td>
+          </tr>
+        """
+        .join('')
+        }
+      </table>
+    """
+    combPackEl.find('.package-buy').attr('data-package-info', packInfo)
 
   updateCombPackEl = (el) ->
     m = combPackElToModel(el)

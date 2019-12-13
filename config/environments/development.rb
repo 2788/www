@@ -257,6 +257,173 @@ Rails.application.configure do
     }]
   }]
 
+  config.double12_2019_comb_pack_info = {
+    "comb-pack-1": {
+      "duration-1": {
+        "price": "1890",
+        "origin-price": "2691.59",
+        "diff-price": "801.59",
+        "ids": {
+          "z0http": "1-1-z0http",
+          "z0https": "1-1-z0https",
+          "z1http": "1-1-z1http",
+          "z1https": "1-1-z1https",
+          "z3http": "1-1-z3http",
+          "z3https": "1-1-z3https"
+        }
+      },
+      "duration-3": {
+        "price": "5556.6",
+        "origin-price": "8074.77",
+        "diff-price": "2518.17",
+        "ids": {
+          "z0http": "1-3-z0http",
+          "z0https": "1-3-z0https",
+          "z1http": "1-3-z1http",
+          "z1https": "1-3-z1https",
+          "z3http": "1-3-z3http",
+          "z3https": "1-3-z3https"
+        }
+      },
+      "duration-6": {
+        "price": "10886.4",
+        "origin-price": "16149.54",
+        "diff-price": "5263.14",
+        "ids": {
+          "z0http": "1-6-z0http",
+          "z0https": "1-6-z0https",
+          "z1http": "1-6-z1http",
+          "z1https": "1-6-z1https",
+          "z3http": "1-6-z3http",
+          "z3https": "1-6-z3https"
+        }
+      }
+    },
+    "comb-pack-2": {
+      "duration-1": {
+        "price": "1920",
+        "origin-price": "2734.59",
+        "diff-price": "814.59",
+        "ids": {
+          "z0http": "2-1-z0http",
+          "z0https": "2-1-z0https",
+          "z1http": "2-1-z1http",
+          "z1https": "2-1-z1https",
+          "z3http": "2-1-z3http",
+          "z3https": "2-1-z3https"
+        }
+      },
+      "duration-3": {
+        "price": "5646.6",
+        "origin-price": "8203.77",
+        "diff-price": "2557.17",
+        "ids": {
+          "z0http": "2-3-z0http",
+          "z0https": "2-3-z0https",
+          "z1http": "2-3-z1http",
+          "z1https": "2-3-z1https",
+          "z3http": "2-3-z3http",
+          "z3https": "2-3-z3https"
+        }
+      },
+      "duration-6": {
+        "price": "11066.4",
+        "origin-price": "16407.54",
+        "diff-price": "5341.14",
+        "ids": {
+          "z0http": "2-6-z0http",
+          "z0https": "2-6-z0https",
+          "z1http": "2-6-z1http",
+          "z1https": "2-6-z1https",
+          "z3http": "2-6-z3http",
+          "z3https": "2-6-z3https"
+        }
+      }
+    },
+    "comb-pack-3": {
+      "duration-3": {
+        "price": "19120.2",
+        "origin-price": "32215.77",
+        "diff-price": "13095.57",
+        "ids": {
+          "z0http": "3-3-z0http",
+          "z0https": "3-3-z0https",
+          "z1http": "3-3-z1http",
+          "z1https": "3-3-z1https",
+          "z3http": "3-3-z3http",
+          "z3https": "3-3-z3https"
+        }
+      },
+      "duration-6": {
+        "price": "31202.7",
+        "origin-price": "56295.54",
+        "diff-price": "25092.84",
+        "ids": {
+          "z0http": "3-6-z0http",
+          "z0https": "3-6-z0https",
+          "z1http": "3-6-z1http",
+          "z1https": "3-6-z1https",
+          "z3http": "3-6-z3http",
+          "z3https": "3-6-z3https"
+        }
+      },
+      "duration-12": {
+        "price": "45295.2",
+        "origin-price": "104455.08",
+        "diff-price": "59159.88",
+        "ids": {
+          "z0http": "3-12-z0http",
+          "z0https": "3-12-z0https",
+          "z1http": "3-12-z1http",
+          "z1https": "3-12-z1https",
+          "z3http": "3-12-z3http",
+          "z3https": "3-12-z3https"
+        }
+      }
+    },
+    "comb-pack-4": {
+      "duration-3": {
+        "price": "19540.2",
+        "origin-price": "32860.77",
+        "diff-price": "13320.57",
+        "ids": {
+          "z0http": "4-3-z0http",
+          "z0https": "4-3-z0https",
+          "z1http": "4-3-z1http",
+          "z1https": "4-3-z1https",
+          "z3http": "4-3-z3http",
+          "z3https": "4-3-z3https"
+        }
+      },
+      "duration-6": {
+        "price": "32042.7",
+        "origin-price": "57585.54",
+        "diff-price": "25542.84",
+        "ids": {
+          "z0http": "4-6-z0http",
+          "z0https": "4-6-z0https",
+          "z1http": "4-6-z1http",
+          "z1https": "4-6-z1https",
+          "z3http": "4-6-z3http",
+          "z3https": "4-6-z3https"
+        }
+      },
+      "duration-12": {
+        "price": "46975.2",
+        "origin-price": "107035.08",
+        "diff-price": "60059.88",
+        "ids": {
+          "z0http": "4-12-z0http",
+          "z0https": "4-12-z0https",
+          "z1http": "4-12-z1http",
+          "z1https": "4-12-z1https",
+          "z3http": "4-12-z3http",
+          "z3https": "4-12-z3https"
+        }
+      }
+    }
+  }
+
   # 2019 年 1212 活动页面 package 配置信息
   # 区分测试环境和线上 pakcageID 信息
   config.double12_2019_package = {

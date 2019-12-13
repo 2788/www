@@ -245,7 +245,7 @@
             </div>
           </div>
           <div class="comb-pack-buy col-lg-2 col-md-2 col-sm-3 col-xs-3">
-            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: combPack[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy orange disabled", target: "_blank", data: { package_id: "", package_info: combPack[:title] } -%>
+            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: "电商专供 - " + combPack[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy orange disabled", target: "_blank", data: { package_id: "", package_info: combPack[:title] } -%>
           </div>
         </div>
         <div class="row">
@@ -255,7 +255,7 @@
         </div>
         <div class="packs">
           <% combPack[:packages].each do |pack| -%>
-          <div class="pack">
+          <div class="pack" data-pack-product="<%= pack[:product] -%>">
             <div class="row">
               <div class="pack-index-text col-md-2">
                 包含项目<%= pack[:index] -%>
@@ -918,3 +918,9 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  window.double12_2019_combPackPriceAndPackIdMap = <%=
+    raw JSON.generate(Rails.configuration.double12_2019_comb_pack_info)
+  -%>
+<% end %>
