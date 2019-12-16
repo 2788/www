@@ -288,22 +288,24 @@ $(document).ready ->
     combPackEl.find('.package-buy').attr('data-package-id', packId)
     info = getCombPackInfo(combPackEl)
     packInfo = """
-      <div>
-        <span style="font-size:0.24rem">#{info.title}</span>
-        <span style="font-size:0.16rem">（时长：#{info.duration}）</span>
+      <div class="modal-comb-pack-comfirm">
+        <div>
+          <span class="info-title">#{info.title}</span>
+          <span class="info-duration">（时长：#{info.duration}）</span>
+        </div>
+        <table>
+          #{
+          info.packs.map (i) -> """
+            <tr>
+              <td class="info-pack-title">#{i.title}</td>
+              <td>#{i.capacity}</td>
+              <td>#{i.attr}</td>
+            </tr>
+          """
+          .join('')
+          }
+        </table>
       </div>
-      <table style="margin:0.14rem auto 0.4rem;font-size:0.16rem">
-        #{
-        info.packs.map (i) -> """
-          <tr>
-            <td style="padding:0 0.16rem;color:#410084">#{i.title}</td>
-            <td style="padding:0 0.16rem">#{i.capacity}</td>
-            <td style="padding:0 0.16rem">#{i.attr}</td>
-          </tr>
-        """
-        .join('')
-        }
-      </table>
     """
     combPackEl.find('.package-buy').attr('data-package-info', packInfo)
 

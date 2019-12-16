@@ -437,7 +437,7 @@
       .comb-pack-arrow-down {
         margin: 4px 0 10px;
         height: 0.30rem;
-        background-image: url("double12_2019/icon-comb-pack-arrow-down");
+        background-image: image-url("double12_2019/icon-comb-pack-arrow-down.png");
         background-size: 0.44rem;
         background-repeat: no-repeat;
         background-position-x: 0.38rem;
@@ -651,6 +651,24 @@
           &.effect-time-btns {
             margin-top: 0.20rem;
             text-align: center;
+          }
+        }
+        .modal-comb-pack-comfirm {
+          .info-title {
+            font-size: 0.24rem;
+          }
+          .info-duration {
+            font-size: 0.16rem;
+          }
+          table {
+            margin: 0.14rem auto 0.4rem;
+            font-size: 0.16rem;
+            td {
+              padding: 0 0.16rem;
+            }
+            .info-pack-title {
+              color: #410084;
+            }
           }
         }
       }
