@@ -176,7 +176,7 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "10000（GB/月）"
     }]
   },{
@@ -200,12 +200,12 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "10000（GB/月）"
     },{
       "index": "三",
       "product": "sms",
-      "title": "系统短信",
+      "title": "系统短信（不可结转）",
       "capacity": "1000（条/月）"
     }]
   },{
@@ -229,18 +229,18 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "20000（GB/月）"
     },{
       "index": "三",
       "product": "pili",
-      "title": "国内直播流量",
+      "title": "国内直播流量（不可结转）",
       "capacity": "10000（GB/月）"
     },{
       "index": "四",
       "product": "sdk",
       "title": "基础版SDK",
-      "capacity": "一年 lisence"
+      "capacity": "一年 license"
     }]
   },{
     "type": "comb-pack-4",
@@ -263,22 +263,22 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "20000（GB/月）"
     },{
       "index": "三",
       "product": "pili",
-      "title": "国内直播流量",
+      "title": "国内直播流量（不可结转）",
       "capacity": "10000（GB/月）"
     },{
       "index": "四",
       "product": "sdk",
       "title": "基础版SDK",
-      "capacity": "一年 lisence"
+      "capacity": "一年 license"
     },{
       "index": "五",
       "product": "sms",
-      "title": "系统短信",
+      "title": "系统短信（不可结转）",
       "capacity": "5000（条/月）"
     }]
   }]
@@ -290,11 +290,11 @@ Rails.application.configure do
         "origin-price": "2691.59",
         "diff-price": "801.59",
         "ids": {
-          "z0http": "1-1-z0http",
+          "z0http": 166,
           "z0https": "1-1-z0https",
           "z1http": "1-1-z1http",
           "z1https": "1-1-z1https",
-          "z3http": "1-1-z3http",
+          "z3http": 167,
           "z3https": "1-1-z3https"
         }
       },
@@ -321,7 +321,7 @@ Rails.application.configure do
           "z1http": "1-6-z1http",
           "z1https": "1-6-z1https",
           "z3http": "1-6-z3http",
-          "z3https": "1-6-z3https"
+          "z3https": 168
         }
       }
     },
@@ -333,7 +333,7 @@ Rails.application.configure do
         "ids": {
           "z0http": "2-1-z0http",
           "z0https": "2-1-z0https",
-          "z1http": "2-1-z1http",
+          "z1http": 169,
           "z1https": "2-1-z1https",
           "z3http": "2-1-z3http",
           "z3https": "2-1-z3https"
@@ -376,7 +376,7 @@ Rails.application.configure do
           "z0https": "3-3-z0https",
           "z1http": "3-3-z1http",
           "z1https": "3-3-z1https",
-          "z3http": "3-3-z3http",
+          "z3http": 170,
           "z3https": "3-3-z3https"
         }
       },
@@ -442,7 +442,7 @@ Rails.application.configure do
           "z0http": "4-12-z0http",
           "z0https": "4-12-z0https",
           "z1http": "4-12-z1http",
-          "z1https": "4-12-z1https",
+          "z1https": 171,
           "z3http": "4-12-z3http",
           "z3https": "4-12-z3https"
         }

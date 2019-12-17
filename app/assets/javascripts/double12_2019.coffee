@@ -289,6 +289,7 @@ $(document).ready ->
     info = getCombPackInfo(combPackEl)
     packInfo = """
       <div class="modal-comb-pack-comfirm">
+        <p>请您再次确认所选的规格</p>
         <div>
           <span class="info-title">#{info.title}</span>
           <span class="info-duration">（时长：#{info.duration}）</span>
