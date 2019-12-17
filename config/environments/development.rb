@@ -387,7 +387,7 @@ Rails.application.configure do
         "origin-price": "32860.77",
         "diff-price": "13320.57",
         "ids": {
-          "z0http": "4-3-z0http",
+          "z0http": 163,
           "z0https": "4-3-z0https",
           "z1http": "4-3-z1http",
           "z1https": "4-3-z1https",
