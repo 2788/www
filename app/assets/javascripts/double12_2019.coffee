@@ -238,3 +238,85 @@ $(document).ready ->
         $targetDom.length > 0 && $targetDom.click()
         return
       , 0)
+
+  combPackElToModel = (combPackEl) ->
+    return {
+      combPackType: combPackEl.data('comb-pack-type')
+      duration: combPackEl.find('[name="duration"]').val()
+      zone: combPackEl.find('[name="zone"]').val()
+      protocal: combPackEl.find('[name="protocal"]').val()
+    }
+
+  getCombPackInfo = (combPackEl) ->
+    packs = []
+    for el in combPackEl.find('.pack')
+      $el = $(el)
+      attr = $el.find('.attr-select select option:selected').text().trim()
+      # double12_2019.html.erb 模板里用的是 &nbsp; 连接 包名 和 规格
+      # 这里用 \xa0 (&nbsp; 的 char code) 分割字符
+      infos = $el.find('.pack-info').text().trim().split('\xa0')
+      packs.push {
+        product: $el.data('pack-product')
+        title: infos[0]
+        capacity: infos[1]
+        attr: if attr then attr else '全国通用'
+      }
+    return {
+      title: combPackEl.find('.comb-pack-title').text().trim()
+      duration: combPackEl.find('[name="duration"] option:selected').text().trim()
+      zone: combPackEl.find('[name="zone"] option:selected').text().trim()
+      protocal: combPackEl.find('[name="protocal"] option:selected').text().trim()
+      packs: packs
+    }
+
+  getPriceAndPackId = (combPackType, duration, zone, protocal) ->
+    # window.double12_2019_combPackPriceAndPackIdMap 是从后端渲染到模板里
+    # 具体见 double12_2019.html.erb 文件末尾的 script 标签
+    priceAndPackIdMap = window.double12_2019_combPackPriceAndPackIdMap
+    priceAndIds = priceAndPackIdMap[combPackType]['duration-'+duration]
+    return {
+      price: priceAndIds.price
+      originPrice: priceAndIds['origin-price']
+      diffPrice: priceAndIds['diff-price']
+      packId: priceAndIds.ids[zone+protocal] # zone+protocal 用来查找 package id 的 key，具体见后端配置文件
+    }
+
+  setCombPackPriceAndId = (combPackEl, price, originPrice, diffPrice, packId) ->
+    combPackEl.find('.price').text(price)
+    combPackEl.find('.origin-price').text(originPrice)
+    combPackEl.find('.diff-price').text(diffPrice)
+    combPackEl.find('.package-buy').attr('data-package-id', packId)
+    info = getCombPackInfo(combPackEl)
+    packInfo = """
+      <div class="modal-comb-pack-comfirm">
+        <div>
+          <span class="info-title">#{info.title}</span>
+          <span class="info-duration">（时长：#{info.duration}）</span>
+        </div>
+        <table>
+          #{
+          info.packs.map (i) -> """
+            <tr>
+              <td class="info-pack-title">#{i.title}</td>
+              <td>#{i.capacity}</td>
+              <td>#{i.attr}</td>
+            </tr>
+          """
+          .join('')
+          }
+        </table>
+      </div>
+    """
+    combPackEl.find('.package-buy').attr('data-package-info', packInfo)
+
+  updateCombPackEl = (el) ->
+    m = combPackElToModel(el)
+    p = getPriceAndPackId(m.combPackType, m.duration, m.zone, m.protocal)
+    setCombPackPriceAndId(el, p.price, p.originPrice, p.diffPrice, p.packId)
+
+  if $2019double12EventPage.length > 0
+    combPacks = $2019double12EventPage.find('.comb-pack')
+    for el in combPacks
+      updateCombPackEl($(el))
+    combPacks.on 'change', ->
+      updateCombPackEl($(@))

@@ -24,12 +24,6 @@
   </div>
 </div>
 
-<%# 预留组合包模块 %>
-<%# https://jira.qiniu.io/browse/BO-10101 %>
-<%# <div class="features features-double12-2019 features-double12-2019-combo tab-content-double12-2019-combo">
-  <div class="container"></div>
-</div> %>
-
 <%# 存储专场 %>
 <div class="features features-double12-2019 features-double12-2019-kodo tab-content-double12-2019-kodo">
   <div class="container">
@@ -201,6 +195,100 @@
       </div>
       <% end -%>
     </div>
+  </div>
+</div>
+
+<%# https://jira.qiniu.io/browse/BO-10101 %>
+<div class="features features-double12-2019 features-double12-2019-combo tab-content-double12-2019-combo">
+  <div class="container">
+
+    <div class="intro">
+      <h2 class="title">
+        <%= image_tag "double12_2019/icon-title-red-yellow.png", title: I18n.t("views.events.double12_2019.combo.title"), alt: I18n.t("views.events.double12_2019.combo.title"), class: "icon-title left" -%>
+        <%= I18n.t("views.events.double12_2019.combo.title") -%>
+        <%= image_tag "double12_2019/icon-title-yellow.png", title: I18n.t("views.events.double12_2019.combo.title"), alt: I18n.t("views.events.double12_2019.combo.title"), class: "icon-title right" -%>
+      </h2>
+      <p class="desc"><%= raw(I18n.t("views.events.double12_2019.combo.desc")) -%></p>
+    </div>
+
+    <% Rails.configuration.double12_2019_comb_package.each do |combPack| -%>
+
+      <div class="comb-pack" data-comb-pack-type="<%= combPack[:type] -%>">
+        <div class="row">
+          <div class="col-md-12">
+            <span class="activity-tip">电商专供</span>
+          </div>
+        </div>
+        <div class="row comb-pack-summary">
+          <div class="comb-pack-title col-lg-2 col-md-2 col-sm-3 col-xs-3">
+            <%= combPack[:title] -%>
+          </div>
+          <div class="comb-pack-duration col-lg-4 col-md-4 col-sm-9 col-xs-9">
+            <span>时长</span>
+            <select name="duration" class="form-control double12-2019-dropdown">
+              <% combPack[:durations].each do |duration| -%>
+              <option value="<%= duration[:value] -%>">
+                <%= duration[:text] -%>
+              </option>
+              <% end -%>
+            </select>
+          </div>
+          <div class="content-price col-lg-4 col-md-4 col-sm-9 col-xs-9">
+            <div class="price-col price-left">
+              <span class="span-red span-bold">￥</span>
+              <span class="span-red span-huge span-bold price">-</span>
+            </div>
+            <div class="price-col price-right">
+                <span class="span-red">节省 <span class="diff-price">-</span> 元</span>
+                <span class="span-red span-elide">原价 <span class="origin-price">-</span> 元</span>
+            </div>
+          </div>
+          <div class="comb-pack-buy col-lg-2 col-md-2 col-sm-3 col-xs-3">
+            <%= link_to "立即抢购", signin_url('www', '/events/20191212'), title: "电商专供 - " + combPack[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy orange disabled", target: "_blank", data: { package_id: "", package_info: combPack[:title] } -%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="comb-pack-arrow-down"></div>
+          </div>
+        </div>
+        <div class="packs">
+          <% combPack[:packages].each do |pack| -%>
+          <div class="pack" data-pack-product="<%= pack[:product] -%>">
+            <div class="row">
+              <div class="pack-index-text col-md-2">
+                包含项目<%= pack[:index] -%>
+              </div>
+              <div class="pack-info col-md-4">
+                <%= pack[:title] -%>&nbsp;<%= pack[:capacity] -%>
+              </div>
+              <div class="attr-select col-md-6">
+                <% case pack[:product]
+                   when 'kodo' -%>
+                <span >地区</span>
+                <select name="zone" class="form-control double12-2019-dropdown">
+                  <option value="z3">华南地区</option>
+                  <option value="z1">华北地区</option>
+                  <option value="z0">华东地区</option>
+                </select>
+                <% when 'fusion' -%>
+                <span>协议</span>
+                <select name="protocal" class="form-control double12-2019-dropdown">
+                  <option value="http">HTTP</option>
+                  <option value="https">HTTPS</option>
+                </select>
+                <% else -%>
+                <span>全国通用</span>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+          <% end -%>
+        </div>
+
+      </div>
+
+    <% end -%>
   </div>
 </div>
 
@@ -829,3 +917,9 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  window.double12_2019_combPackPriceAndPackIdMap = <%=
+    raw JSON.generate(Rails.configuration.double12_2019_comb_pack_info)
+  -%>
+<% end %>
