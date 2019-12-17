@@ -150,7 +150,7 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "10000（GB/月）"
     }]
   },{
@@ -174,12 +174,12 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "10000（GB/月）"
     },{
       "index": "三",
       "product": "sms",
-      "title": "系统短信",
+      "title": "系统短信（不可结转）",
       "capacity": "1000（条/月）"
     }]
   },{
@@ -203,18 +203,18 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "20000（GB/月）"
     },{
       "index": "三",
       "product": "pili",
-      "title": "国内直播流量",
+      "title": "国内直播流量（不可结转）",
       "capacity": "10000（GB/月）"
     },{
       "index": "四",
       "product": "sdk",
       "title": "基础版SDK",
-      "capacity": "一年 lisence"
+      "capacity": "一年 license"
     }]
   },{
     "type": "comb-pack-4",
@@ -237,22 +237,22 @@ Rails.application.configure do
     },{
       "index": "二",
       "product": "fusion",
-      "title": "国内CDN流量",
+      "title": "国内CDN流量（不可结转）",
       "capacity": "20000（GB/月）"
     },{
       "index": "三",
       "product": "pili",
-      "title": "国内直播流量",
+      "title": "国内直播流量（不可结转）",
       "capacity": "10000（GB/月）"
     },{
       "index": "四",
       "product": "sdk",
       "title": "基础版SDK",
-      "capacity": "一年 lisence"
+      "capacity": "一年 license"
     },{
       "index": "五",
       "product": "sms",
-      "title": "系统短信",
+      "title": "系统短信（不可结转）",
       "capacity": "5000（条/月）"
     }]
   }]
