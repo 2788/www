@@ -290,12 +290,12 @@ Rails.application.configure do
         "origin-price": "2691.59",
         "diff-price": "801.59",
         "ids": {
-          "z0http": "1-1-z0http",
-          "z0https": "1-1-z0https",
-          "z1http": "1-1-z1http",
-          "z1https": "1-1-z1https",
-          "z3http": "1-1-z3http",
-          "z3https": "1-1-z3https"
+          "z0http": 462,
+          "z3http": 465,
+          "z1http": 468,
+          "z0https": 471,
+          "z3https": 474,
+          "z1https": 477
         }
       },
       "duration-3": {
@@ -303,12 +303,12 @@ Rails.application.configure do
         "origin-price": "8074.77",
         "diff-price": "2518.17",
         "ids": {
-          "z0http": "1-3-z0http",
-          "z0https": "1-3-z0https",
-          "z1http": "1-3-z1http",
-          "z1https": "1-3-z1https",
-          "z3http": "1-3-z3http",
-          "z3https": "1-3-z3https"
+          "z0http": 480,
+          "z3http": 483,
+          "z1http": 486,
+          "z0https": 489,
+          "z3https": 492,
+          "z1https": 495
         }
       },
       "duration-6": {
@@ -316,12 +316,12 @@ Rails.application.configure do
         "origin-price": "16149.54",
         "diff-price": "5263.14",
         "ids": {
-          "z0http": "1-6-z0http",
-          "z0https": "1-6-z0https",
-          "z1http": "1-6-z1http",
-          "z1https": "1-6-z1https",
-          "z3http": "1-6-z3http",
-          "z3https": "1-6-z3https"
+          "z0http": 498,
+          "z3http": 501,
+          "z1http": 504,
+          "z0https": 507,
+          "z3https": 510,
+          "z1https": 513
         }
       }
     },
@@ -331,12 +331,12 @@ Rails.application.configure do
         "origin-price": "2734.59",
         "diff-price": "814.59",
         "ids": {
-          "z0http": "2-1-z0http",
-          "z0https": "2-1-z0https",
-          "z1http": "2-1-z1http",
-          "z1https": "2-1-z1https",
-          "z3http": "2-1-z3http",
-          "z3https": "2-1-z3https"
+          "z0http": 516,
+          "z3http": 519,
+          "z1http": 522,
+          "z0https": 525,
+          "z3https": 528,
+          "z1https": 531
         }
       },
       "duration-3": {
@@ -344,12 +344,12 @@ Rails.application.configure do
         "origin-price": "8203.77",
         "diff-price": "2557.17",
         "ids": {
-          "z0http": "2-3-z0http",
-          "z0https": "2-3-z0https",
-          "z1http": "2-3-z1http",
-          "z1https": "2-3-z1https",
-          "z3http": "2-3-z3http",
-          "z3https": "2-3-z3https"
+          "z0http": 534,
+          "z3http": 537,
+          "z1http": 540,
+          "z0https": 543,
+          "z3https": 546,
+          "z1https": 549
         }
       },
       "duration-6": {
@@ -357,12 +357,12 @@ Rails.application.configure do
         "origin-price": "16407.54",
         "diff-price": "5341.14",
         "ids": {
-          "z0http": "2-6-z0http",
-          "z0https": "2-6-z0https",
-          "z1http": "2-6-z1http",
-          "z1https": "2-6-z1https",
-          "z3http": "2-6-z3http",
-          "z3https": "2-6-z3https"
+          "z0http": 555,
+          "z3http": 558,
+          "z1http": 561,
+          "z0https": 564,
+          "z3https": 567,
+          "z1https": 570
         }
       }
     },
@@ -372,12 +372,12 @@ Rails.application.configure do
         "origin-price": "32215.77",
         "diff-price": "13095.57",
         "ids": {
-          "z0http": "3-3-z0http",
-          "z0https": "3-3-z0https",
-          "z1http": "3-3-z1http",
-          "z1https": "3-3-z1https",
-          "z3http": "3-3-z3http",
-          "z3https": "3-3-z3https"
+          "z0http": 573,
+          "z3http": 576,
+          "z1http": 579,
+          "z0https": 582,
+          "z3https": 585,
+          "z1https": 591
         }
       },
       "duration-6": {
@@ -385,12 +385,12 @@ Rails.application.configure do
         "origin-price": "56295.54",
         "diff-price": "25092.84",
         "ids": {
-          "z0http": "3-6-z0http",
-          "z0https": "3-6-z0https",
-          "z1http": "3-6-z1http",
-          "z1https": "3-6-z1https",
-          "z3http": "3-6-z3http",
-          "z3https": "3-6-z3https"
+          "z0http": 594,
+          "z3http": 597,
+          "z1http": 600,
+          "z0https": 603,
+          "z3https": 606,
+          "z1https": 609
         }
       },
       "duration-12": {
@@ -398,12 +398,12 @@ Rails.application.configure do
         "origin-price": "104455.08",
         "diff-price": "59159.88",
         "ids": {
-          "z0http": "3-12-z0http",
-          "z0https": "3-12-z0https",
-          "z1http": "3-12-z1http",
-          "z1https": "3-12-z1https",
-          "z3http": "3-12-z3http",
-          "z3https": "3-12-z3https"
+          "z0http": 612,
+          "z3http": 615,
+          "z1http": 618,
+          "z0https": 621,
+          "z3https": 624,
+          "z1https": 627
         }
       }
     },
@@ -413,12 +413,12 @@ Rails.application.configure do
         "origin-price": "32860.77",
         "diff-price": "13320.57",
         "ids": {
-          "z0http": "4-3-z0http",
-          "z0https": "4-3-z0https",
-          "z1http": "4-3-z1http",
-          "z1https": "4-3-z1https",
-          "z3http": "4-3-z3http",
-          "z3https": "4-3-z3https"
+          "z0http": 630,
+          "z3http": 633,
+          "z1http": 636,
+          "z0https": 639,
+          "z3https": 642,
+          "z1https": 645
         }
       },
       "duration-6": {
@@ -426,12 +426,12 @@ Rails.application.configure do
         "origin-price": "57585.54",
         "diff-price": "25542.84",
         "ids": {
-          "z0http": "4-6-z0http",
-          "z0https": "4-6-z0https",
-          "z1http": "4-6-z1http",
-          "z1https": "4-6-z1https",
-          "z3http": "4-6-z3http",
-          "z3https": "4-6-z3https"
+          "z0http": 648,
+          "z3http": 651,
+          "z1http": 654,
+          "z0https": 657,
+          "z3https": 660,
+          "z1https": 663
         }
       },
       "duration-12": {
@@ -439,12 +439,12 @@ Rails.application.configure do
         "origin-price": "107035.08",
         "diff-price": "60059.88",
         "ids": {
-          "z0http": "4-12-z0http",
-          "z0https": "4-12-z0https",
-          "z1http": "4-12-z1http",
-          "z1https": "4-12-z1https",
-          "z3http": "4-12-z3http",
-          "z3https": "4-12-z3https"
+          "z0http": 666,
+          "z3http": 669,
+          "z1http": 672,
+          "z0https": 675,
+          "z3https": 678,
+          "z1https": 681
         }
       }
     }
