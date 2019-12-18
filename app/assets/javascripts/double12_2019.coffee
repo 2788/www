@@ -321,3 +321,9 @@ $(document).ready ->
       updateCombPackEl($(el))
     combPacks.on 'change', ->
       updateCombPackEl($(@))
+
+  if $2019double12EventPage.length > 0
+    $2019double12EventPage.find('.btn-double12-2019-banner-main').on('click', ->
+      $targetDom = $2019double12EventPage.find('#tab-content-double12-2019-combo')
+      $targetDom.length > 0 && $targetDom.click()
+    )
