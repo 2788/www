@@ -321,8 +321,3 @@ $(document).ready ->
       updateCombPackEl($(el))
     combPacks.on 'change', ->
       updateCombPackEl($(@))
-
-  # 线上测试, 根据本地系统时间测试，测完再去掉
-  if $2019double12EventPage.length > 0
-    if new Date() >= new Date('2019/12/20')
-      $2019double12EventPage.find('.features-double12-2019-combo').show()
