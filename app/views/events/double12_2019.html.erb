@@ -199,9 +199,8 @@
 </div>
 
 <%# 只能线上测试, 先隐藏，本地修改系统时间测试，等测完再去掉时间限制 %>
-<% if Time.now.to_i > Time.local(2019, 12, 20).to_i -%>
 <%# https://jira.qiniu.io/browse/BO-10101 %>
-<div class="features features-double12-2019 features-double12-2019-combo tab-content-double12-2019-combo">
+<div class="features features-double12-2019 features-double12-2019-combo tab-content-double12-2019-combo" style="display:none;">
   <div class="container">
 
     <div class="intro">
@@ -293,7 +292,6 @@
     <% end -%>
   </div>
 </div>
-<% end -%>
 
 <%# CDN 专场 %>
 <div class="features features-double12-2019 features-double12-2019-fusion tab-content-double12-2019-fusion">
