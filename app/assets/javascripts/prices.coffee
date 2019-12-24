@@ -3,6 +3,7 @@ $(document).ready ->
   prices =
     'kodo': true
     'lowKodo': true
+    'fileKodo': true
     'fusion': true
 
   prices_area =
@@ -18,6 +19,12 @@ $(document).ready ->
       'north-lowKodo': false
       'singapore-lowKodo': false
       'northAmerica-lowKodo': false
+    fileKodo:
+      'east-fileKodo': true
+      'sourth-fileKodo': false
+      'north-fileKodo': false
+      'singapore-fileKodo': false
+      'northAmerica-fileKodo': false
     fusion:
       'inland': true
       'ENA': false
@@ -35,11 +42,20 @@ $(document).ready ->
   numkodocdnBSDOM = $('#num-kodo-cdnBS')
 
   numlowkodospaceDOM = $('#num-lowKodo-space')
-  numlowkodoAPIDOM = $('#num-lowKodo-API')
+  numlowkodoAPIGETDOM = $('#num-lowKodo-API-GET')
+  numlowkodoAPIPUTDOM = $('#num-lowKodo-API-PUT')
   numlowkodotypeDOM = $('#num-lowKodo-type')
   numlowkodoHTTPDOM = $('#num-lowKodo-HTTP')
   numlowkodoossDOM = $('#num-lowKodo-oss')
   numlowkodocdnBSDOM = $('#num-lowKodo-cdnBS')
+
+  numfileKodospaceDOM = $('#num-fileKodo-space')
+  numfileKodoAPIGETDOM = $('#num-fileKodo-API-GET')
+  numfileKodoAPIPUTDOM = $('#num-fileKodo-API-PUT')
+  numfileKodotypeDOM = $('#num-fileKodo-type')
+  numfileKodoHTTPDOM = $('#num-fileKodo-HTTP')
+  numfileKodoossDOM = $('#num-fileKodo-oss')
+  numfileKodocdnBSDOM = $('#num-fileKodo-cdnBS')
 
   fusionDOM = $('#fusion')
   numfusionHTTPDOM = $('#num-fusion-HTTP')
@@ -173,6 +189,7 @@ $(document).ready ->
   caculateEveryPrice = (pro, key, bol) ->
     sum_kodo = 0
     sum_lowKodo = 0
+    sum_fileKodo = 0
     sum_fusion = 0
     if arguments.length > 0
       prices_area[pro][key] = bol
@@ -184,14 +201,20 @@ $(document).ready ->
     for m of prices_area.lowKodo
       if prices_area.lowKodo[m]
         #if this area is here add
-        sum_lowKodo += setPrice($('#text-space-' + m).text(), lowKodoData[m]) + unifyNum($('#text-API-' + m).text()) * (lowKodoData.APIs * 1000) + unifyNum($('#text-type-' + m).text()) * (lowKodoData.types * 1000) + setPrice($('#text-HTTP-' + m).text(), lowKodoData.HTTPs) + setPrice($('#text-oss-' + m).text(), lowKodoData['oss']) + setPrice($('#text-cdnBS-' + m).text(), lowKodoData['cdnBS'])
+        sum_lowKodo += setPrice($('#text-space-' + m).text(), lowKodoData[m]) + unifyNum($('#text-API-GET-' + m).text()) * (lowKodoData.APIs['GET'] * 1000) + unifyNum($('#text-API-PUT-' + m).text()) * (lowKodoData.APIs['PUT'] * 1000) + unifyNum($('#text-type-' + m).text()) * (lowKodoData.types * 1000) + setPrice($('#text-HTTP-' + m).text(), lowKodoData.HTTPs) + setPrice($('#text-oss-' + m).text(), lowKodoData['oss']) + setPrice($('#text-cdnBS-' + m).text(), lowKodoData['cdnBS'])
+
+    for p of prices_area.fileKodo
+      if prices_area.fileKodo[p]
+        #if this area is here add
+        sum_fileKodo += setPrice($('#text-space-' + p).text(), fileKodoData[p]) + unifyNum($('#text-API-GET-' + p).text()) * (fileKodoData.APIs['GET'] * 1000) + unifyNum($('#text-API-PUT-' + p).text()) * (fileKodoData.APIs['PUT'][p] * 1000) + unifyNum($('#text-type-' + p).text()) * (fileKodoData.types * 1000) + setPrice($('#text-HTTP-' + p).text(), fileKodoData.HTTPs[p]) + setPrice($('#text-oss-' + p).text(), fileKodoData['oss']) + setPrice($('#text-cdnBS-' + p).text(), fileKodoData['cdnBS'])
 
     for f of prices_area.fusion
       if prices_area.fusion[f]
-        sum_fusion += setPrice($('#text-fusion-HTTP-' + f).text(),fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-' + f).text(),fusionData.HTTPSs[f])
+        sum_fusion += setPrice($('#text-fusion-HTTP-' + f).text(), fusionData.HTTPs[f]) + setPrice($('#text-fusion-HTTPS-' + f).text(), fusionData.HTTPSs[f])
 
     $('#kodo-price').text(sum_kodo / 1000)
     $('#lowKodo-price').text(sum_lowKodo / 1000)
+    $('#fileKodo-price').text(sum_fileKodo / 1000)
     $('#fusion-price').text(sum_fusion / 1000)
 
     caculatePrice()

@@ -47,58 +47,42 @@
 
             <div class="row details">
               <dl>
+                <dd>对象存储服务的基础计费项包括：存储空间容量，流量，请求次数。此外还提供跨区域同步、存储类型转换、存储数据处理（如图片处理服务等）等服务，会根据您的使用情况单独计费，不使用不计费。</dd>
+                <dd>存储空间费用基于存储区域按照阶梯累积计费方式，超出阶梯部分按照下一阶梯价格计费，存储空间使用越大，价格越低。</dd>
+                <dd>了解更多计费说明，<%= link_to "请点击这里", "https://developer.qiniu.com/kodo/manual/6379/metering-and-billing", title: "对象存储服务更多计费说明 - 七牛云", class: "more", target: "_blank" -%></dd>
+              </dl>
+
+              <dl>
                 <dt class="icon-title icon-kodo">标准存储</dt>
               </dl>
 
               <dl>
                 <dd>自 <span class="font-bold">2020 年 1 月 1 日</span>起，华南区域标准存储空间费用调整为 <span class="font-bold text-warn">0.099</span> 元/GB/月。</dd>
-                <dd>对象存储服务的基础计费项包括：存储空间容量，流量，请求次数。</dd>
-                <dd>此外还提供跨区域同步、存储类型转换、存储数据处理（如图片处理服务等）等服务，会根据您的使用情况单独计费，不使用不计费。</dd>
+                <dd>开通七牛云对象存储服务的标准用户，每月可享受一定量的标准存储免费存储空间、标准存储免费 CDN 回源流量和标准存储免费请求数目。每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</dd>
               </dl>
 
-              <dl>
-                <dd>存储空间费用基于存储区域按照阶梯累积计费方式，超出阶梯部分按照下一阶梯价格计费，存储空间使用越大，价格越低。</dd>
-                <dd>存储空间费用将按照每月平均存储量来进行计费，每月平均存储量计算公式如下</dd>
-                <dd class="formula">每月平均存储量 ＝ 当月每天存储量峰值之和 ÷ 当月天数</dd>
-              </dl>
-
-              <dl>
-                <dd>开通七牛云对象存储服务的标准用户，每月可享受一定量的标准存储免费存储空间、标准存储免费请求数目。</dd>
-                <dd>每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</dd>
-                <% if Time.now.to_i < Time.local(2019, 6, 6).to_i -%>
-                <dd>标准存储 CDN 回源流出流量自 2019 年 4 月 1 日起新增 10GB 免费额度，免费额度将首次体现在 2019 年 4 月服务账单中。</dd>
-                <% end -%>
-              </dl>
-
-              <div class="row list-inline-prices">
-                <div class="col-xs-6 col-md-3 special-price">
-                  <h5>标准存储免费空间</h5>
+              <div class="row list-inline-prices short">
+                <div class="col-xs-12 col-sm-6 col-md-3 special-price">
+                  <h5>标准存储每月免费空间</h5>
                   <p><span class="big-text">0-10 </span><span class="smal-text"> GB</span></p>
                 </div>
-                <div class="col-xs-6 col-md-3 special-price">
+                <div class="col-xs-12 col-sm-6 col-md-3 special-price">
+                  <h5>标准存储每月免费 CDN 回源流量</h5>
+                  <p><span class="big-text">0-10 </span><span class="smal-text"> GB</span></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 special-price">
+                  <h5>标准存储每月免费写请求 PUT/DELETE</h5>
+                  <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 special-price">
+                  <h5>标准存储每月免费读请求 GET</h5>
+                  <p><span class="big-text">0-100 </span><span class="smal-text"> 万次</span></p>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 special-price border-init">
                   <h5>每月免费上传流量</h5>
                   <p><span class="big-text">无上限</span></p>
                 </div>
-                <div class="col-xs-6 col-md-3 special-price">
-                  <h5>标准存储每月写请求 Put / Delete</h5>
-                  <p><span class="big-text">0-10 </span><span class="smal-text"> 万次</span></p>
-                </div>
-                <div class="col-xs-6 col-md-3 special-price border-init">
-                  <h5>标准存储每月读请求 Get</h5>
-                  <p><span class="big-text">0-100 </span><span class="smal-text"> 万次</span></p>
-                </div>
               </div>
-            </div>
-
-            <div class="row details">
-              <dl>
-                <dt class="icon-title icon-dipin">低频存储</dt>
-              </dl>
-              <% if Time.now.to_i < Time.local(2019, 9, 1).to_i -%>
-              <h5 class="details-title-desc">低频存储对象 Object 最短存储期限为 60 天，早于 60 天删除的 Object，其存储费用按 60 天计算 <a href="https://developer.qiniu.com/kodo/manual/3737/infrequent-storage" class="more" target="_blank">更多说明</a></h5>
-              <% else -%>
-              <h5 class="details-title-desc">低频存储对象 Object 最短存储期限为 30 天，早于 30 天删除的 Object，其存储费用按 30 天计算；最小计量大小为 64KB，小于 64KB 的 Object 按照 64KB 计算存储空间，超过 64KB 的 Object 按照实际大小计算存储空间 <a href="https://developer.qiniu.com/kodo/manual/3737/infrequent-storage" class="more" target="_blank">更多说明</a></h5>
-              <% end -%>
             </div>
           </div>
 
@@ -106,190 +90,666 @@
             <div class="intro">
               <h2 class="title-left">价格详情</h2>
             </div>
-            <div class="table-responsive pricing-white-bg">
-              <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
-                <tbody>
-                  <tr>
-                    <th width="34%">名目</th><th width="33%" colspan="2" class="th-init border-bottom">标准存储</th><th width="33%" colspan="2" class="th-init border-bottom border-left">低频存储</th>
-                  </tr>
-                  <tr>
-                    <th rowspan="5" class="border-right">存储空间（华东）</th>
-                    <td>第 0 GB 至 10 GB</td>
-                    <td>免费</td>
-                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 10 GB 至 1 TB</td>
-                    <td>0.148 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 1 TB 至 200 TB</td>
-                    <td>0.145 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 200 TB 至 5 PB</td>
-                    <td>0.142 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 5 PB 以上</td>
-                    <td class="border-bottom">0.139 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="5" class="border-right">存储空间（华南）</th>
-                    <td>第 0 GB 至 10 GB</td>
-                    <td>免费</td>
-                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 10 GB 至 1 TB</td>
-                    <td>0.134 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 1 TB 至 200 TB</td>
-                    <td>0.131 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 200 TB 至 5 PB</td>
-                    <td>0.128 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 5 PB 以上</td>
-                    <td class="border-bottom">0.125 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="5" class="border-right">存储空间（华北）</th>
-                    <td>第 0 GB 至 10 GB</td>
-                    <td>免费</td>
-                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 10 GB 至 1 TB</td>
-                    <td>0.148 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 1 TB 至 200 TB</td>
-                    <td>0.145 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 200 TB 至 5 PB</td>
-                    <td>0.142 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 5 PB 以上</td>
-                    <td class="border-bottom">0.139 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="5" class="border-right">存储空间（东南亚）</th>
-                    <td>第 0 GB 至 10 GB</td>
-                    <td>免费</td>
-                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 10 GB 至 50 TB</td>
-                    <td>0.165 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 50 TB 至 500 TB</td>
-                    <td>0.162 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 500 TB 至 5 PB</td>
-                    <td>0.159 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 5 PB 以上</td>
-                    <td class="border-bottom">0.156 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="5" class="border-right">存储空间（北美）</th>
-                    <td>第 0 GB 至 10 GB</td>
-                    <td>免费</td>
-                    <td rowspan="5" colspan="2" class="border-bottom border-left">0.06 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 10 GB 至 50 TB</td>
-                    <td>0.165 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 50 TB 至 500 TB</td>
-                    <td>0.162 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td>第 500 TB 至 5 PB</td>
-                    <td>0.159 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 5 PB 以上</td>
-                    <td class="border-bottom">0.156 元/GB/月</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2" class="border-right">PUT / DELETE 请求</th>
-                    <td>第 0 次至 10 万次</td>
-                    <td>免费</td>
-                    <td rowspan="2" colspan="2" class="border-bottom border-left">0.1 元/万次</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 10 万次以上</td>
-                    <td class="border-bottom">0.01 元/万次</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2" class="border-right">GET 请求</th>
-                    <td>第 0 次至 100 万次</td>
-                    <td>免费</td>
-                    <td rowspan="2" colspan="2" class="border-bottom border-left">0.1 元/万次</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">第 100 万次以上</td>
-                    <td class="border-bottom">0.01 元/万次</td>
-                  </tr>
-                  <tr>
-                    <th class="border-right">存储类型转换</th>
-                    <td colspan="2" class="border-bottom">0.1 元/万次</td>
-                    <td colspan="2" class="border-bottom border-left">0.1 元/万次</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2" class="border-right">外网流出流量</th>
-                    <td>0GB - 100 TB</td>
-                    <td>0.29 元/GB</td>
-                    <td class="border-left">0GB - 100 TB</td>
-                    <td>0.29 元/GB</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">100TB - 以上</td>
-                    <td class="border-bottom">0.26 元/GB</td>
-                    <td class="border-bottom border-left">100TB - 以上</td>
-                    <td class="border-bottom">0.26 元/GB</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2" class="border-right">CDN 回源流出流量</th>
-                    <td>0GB - 10GB</td>
-                    <td>免费</td>
-                    <td rowspan="2" colspan="2" class="border-bottom border-left">0.15 元/GB</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">10GB - 以上</td>
-                    <td class="border-bottom">0.15 元/GB</td>
-                  </tr>
-                  <tr>
-                    <th rowspan="2" class="border-right">跨区域同步流量</th>
-                    <td>国内 <-> 国内</td>
-                    <td>0.29 元/GB</td>
-                    <td class="border-left">国内 <-> 国内</td>
-                    <td>0.29 元/GB</td>
-                  </tr>
-                  <tr>
-                    <td class="border-bottom">国内 <-> 海外</td>
-                    <td class="border-bottom">0.58 元/GB</td>
-                    <td class="border-bottom border-left">国内 <-> 海外</td>
-                    <td class="border-bottom">0.58 元/GB</td>
-                  </tr>
-                  <tr>
-                    <th class="th-init border-right">数据取回</th>
-                    <td colspan="2">免费</td>
-                    <td colspan="2" class="border-left">0.06 元/GB</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="tabs" id="nav-kodo-area">
+              <ul class="nav nav-tabs nav-justified nav-kodo-area-tabs" role="tablist">
+                <li class="tab-kodo-area-south active"><a href="#tab-kodo-area-south" data-toggle="tab" key="kodo-south">华南</a></li>
+                <li class="tab-kodo-area-east"><a href="#tab-kodo-area-east" data-toggle="tab" key="kodo-east">华东</a></li>
+                <li class="tab-kodo-area-north"><a href="#tab-kodo-area-north" data-toggle="tab" key="kodo-north">华北</a></li>
+                <li class="tab-kodo-area-northAmerica"><a href="#tab-kodo-area-northAmerica" data-toggle="tab" key="kodo-northAmerica">北美</a></li>
+                <li class="tab-kodo-area-singapore"><a href="#tab-kodo-area-singapore" data-toggle="tab" key="kodo-singapore">东南亚</a></li>
+              </ul>
+            </div>
+            
+            <div class="tab-content">
+              <section class="tab-pane table-responsive pricing-white-bg active" id="tab-kodo-area-south">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr>
+                      <th>类型</th>
+                      <th class="th-init border-bottom border-left">计费项</th>
+                      <th colspan="2" class="th-init border-bottom border-left">标准存储</th>
+                      <th colspan="2" class="th-init border-bottom">低频访问存储</th>
+                      <th colspan="2" class="th-init border-bottom">归档存储&nbsp;<span class="new-tag">new</span></th>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">存储费用</th>
+                      <td rowspan="5" class="border-right border-bottom">存储空间费用</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.06 元/GB/月</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.032 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>10GB-1TB</td>
+                      <td>0.134 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>1TB-200TB</td>
+                      <td>0.131 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>200TB-5PB</td>
+                      <td>0.128 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="border-bottom">5PB 以上</td>
+                      <td class="border-bottom">0.125 元/GB/月</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="6" class="border-right">流量费用</th>
+                      <td rowspan="2" class="border-right border-bottom">外网流出流量</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">CDN 回源流量</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100GB 以上</td>
+                      <td>0.15 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">跨区域同步流量</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th class="border-right">数据处理</th>
+                      <td class="border-right border-bottom">数据取回</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">免费</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.06 元/GB</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.08 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">请求费用</th>
+                      <td rowspan="2" class="border-right border-bottom">PUT/DELETE 请求次数</td>
+                      <td>0-10 万次</td>
+                      <td>免费</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td>10 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">GET 请求次数</td>
+                      <td class="light-bkcolor">0-100 万次</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td class="border-right border-bottom">类型转换次数</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td colspan="8" class="desc-td">
+                        <p>说明：</p>
+                        <p>1、归档存储，将于 2020 年 1 月 1 日上线。</p>
+                        <p>2、低频访问存储，Object 最短存储期限为 30 天，早于 30 天删除、修改、覆盖 Object，需要补足未满 30 天的剩余天数的存储费用，超过 30 天不需要补。</p>
+                        <p>3、归档存储，Object 最短存储期限为 60 天，早于 60 天删除、修改、覆盖 Object，需要补足未满 60 天的剩余天数的存储费用，超过 60 天不需要补。</p>
+                        <p>4、最小计量：低频访问型存储、归档型存储，最小计量为 64KB，小于 64KB 的 Object 按照 64KB 计算存储空间，超过 64KB 大小的 Object 按照实际大小计算存储空间。</p>
+                        <p>5、数据取回：从服务端读取的数据量，在外网传输的数据量会另计入到外网流出流量的计费项中。对于低频访问存储，每次数据访问都会收取此部分费用。对于归档存储类型，进行数据解冻操作，解冻完成后，数据取回费用按照实际解冻的数据量收取。处于解冻状态的数据访问，则不会再收取数据取回费用。</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section class="tab-pane table-responsive pricing-white-bg" id="tab-kodo-area-east">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr>
+                      <th>类型</th>
+                      <th class="th-init border-bottom border-left">计费项</th>
+                      <th colspan="2" class="th-init border-bottom border-left">标准存储</th>
+                      <th colspan="2" class="th-init border-bottom">低频访问存储</th>
+                      <th colspan="2" class="th-init border-bottom">归档存储&nbsp;<span class="new-tag">new</span></th>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">存储费用</th>
+                      <td rowspan="5" class="border-right border-bottom">存储空间费用</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.06 元/GB/月</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.032 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>10GB-1TB</td>
+                      <td>0.148 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>1TB-200TB</td>
+                      <td>0.145 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>200TB-5PB</td>
+                      <td>0.142 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="border-bottom">5PB 以上</td>
+                      <td class="border-bottom">0.139 元/GB/月</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="6" class="border-right">流量费用</th>
+                      <td rowspan="2" class="border-right border-bottom">外网流出流量</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">CDN 回源流量</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100GB 以上</td>
+                      <td>0.15 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">跨区域同步流量</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th class="border-right">数据处理</th>
+                      <td class="border-right border-bottom">数据取回</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">免费</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.06 元/GB</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.08 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">请求费用</th>
+                      <td rowspan="2" class="border-right border-bottom">PUT/DELETE 请求次数</td>
+                      <td>0-10 万次</td>
+                      <td>免费</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td>10 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">GET 请求次数</td>
+                      <td class="light-bkcolor">0-100 万次</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td class="border-right border-bottom">类型转换次数</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td colspan="8" class="desc-td">
+                        <p>说明：</p>
+                        <p>1、归档存储，将于 2020 年 1 月 1 日上线。</p>
+                        <p>2、低频访问存储，Object 最短存储期限为 30 天，早于 30 天删除、修改、覆盖 Object，需要补足未满 30 天的剩余天数的存储费用，超过 30 天不需要补。</p>
+                        <p>3、归档存储，Object 最短存储期限为 60 天，早于 60 天删除、修改、覆盖 Object，需要补足未满 60 天的剩余天数的存储费用，超过 60 天不需要补。</p>
+                        <p>4、最小计量：低频访问型存储、归档型存储，最小计量为 64KB，小于 64KB 的 Object 按照 64KB 计算存储空间，超过 64KB 大小的 Object 按照实际大小计算存储空间。</p>
+                        <p>5、数据取回：从服务端读取的数据量，在外网传输的数据量会另计入到外网流出流量的计费项中。对于低频访问存储，每次数据访问都会收取此部分费用。对于归档存储类型，进行数据解冻操作，解冻完成后，数据取回费用按照实际解冻的数据量收取。处于解冻状态的数据访问，则不会再收取数据取回费用。</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section class="tab-pane table-responsive pricing-white-bg" id="tab-kodo-area-north">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr>
+                      <th>类型</th>
+                      <th class="th-init border-bottom border-left">计费项</th>
+                      <th colspan="2" class="th-init border-bottom border-left">标准存储</th>
+                      <th colspan="2" class="th-init border-bottom">低频访问存储</th>
+                      <th colspan="2" class="th-init border-bottom">归档存储&nbsp;<span class="new-tag">new</span></th>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">存储费用</th>
+                      <td rowspan="5" class="border-right border-bottom">存储空间费用</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.06 元/GB/月</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.032 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>10GB-1TB</td>
+                      <td>0.148 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>1TB-200TB</td>
+                      <td>0.145 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>200TB-5PB</td>
+                      <td>0.142 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="border-bottom">5PB 以上</td>
+                      <td class="border-bottom">0.139 元/GB/月</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="6" class="border-right">流量费用</th>
+                      <td rowspan="2" class="border-right border-bottom">外网流出流量</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">CDN 回源流量</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100GB 以上</td>
+                      <td>0.15 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">跨区域同步流量</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                      <td>国内 <-> 国内</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th class="border-right">数据处理</th>
+                      <td class="border-right border-bottom">数据取回</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">免费</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.06 元/GB</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.08 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">请求费用</th>
+                      <td rowspan="2" class="border-right border-bottom">PUT/DELETE 请求次数</td>
+                      <td>0-10 万次</td>
+                      <td>免费</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td>10 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">GET 请求次数</td>
+                      <td class="light-bkcolor">0-100 万次</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td class="border-right border-bottom">类型转换次数</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td colspan="8" class="desc-td">
+                        <p>说明：</p>
+                        <p>1、归档存储，将于 2020 年 1 月 1 日上线。</p>
+                        <p>2、低频访问存储，Object 最短存储期限为 30 天，早于 30 天删除、修改、覆盖 Object，需要补足未满 30 天的剩余天数的存储费用，超过 30 天不需要补。</p>
+                        <p>3、归档存储，Object 最短存储期限为 60 天，早于 60 天删除、修改、覆盖 Object，需要补足未满 60 天的剩余天数的存储费用，超过 60 天不需要补。</p>
+                        <p>4、最小计量：低频访问型存储、归档型存储，最小计量为 64KB，小于 64KB 的 Object 按照 64KB 计算存储空间，超过 64KB 大小的 Object 按照实际大小计算存储空间。</p>
+                        <p>5、数据取回：从服务端读取的数据量，在外网传输的数据量会另计入到外网流出流量的计费项中。对于低频访问存储，每次数据访问都会收取此部分费用。对于归档存储类型，进行数据解冻操作，解冻完成后，数据取回费用按照实际解冻的数据量收取。处于解冻状态的数据访问，则不会再收取数据取回费用。</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section class="tab-pane table-responsive pricing-white-bg" id="tab-kodo-area-northAmerica">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr>
+                      <th>类型</th>
+                      <th class="th-init border-bottom border-left">计费项</th>
+                      <th colspan="2" class="th-init border-bottom border-left">标准存储</th>
+                      <th colspan="2" class="th-init border-bottom">低频访问存储</th>
+                      <th colspan="2" class="th-init border-bottom">归档存储&nbsp;<span class="new-tag">new</span></th>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">存储费用</th>
+                      <td rowspan="5" class="border-right border-bottom">存储空间费用</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.06 元/GB/月</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.033 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>10GB-50TB</td>
+                      <td>0.165 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>50TB-500TB</td>
+                      <td>0.162 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>500TB-5PB</td>
+                      <td>0.159 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="border-bottom">5PB 以上</td>
+                      <td class="border-bottom">0.156 元/GB/月</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="6" class="border-right">流量费用</th>
+                      <td rowspan="2" class="border-right border-bottom">外网流出流量</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">CDN 回源流量</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100GB 以上</td>
+                      <td>0.15 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">跨区域同步流量</td>
+                      <td>海外 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>海外 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>海外 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th class="border-right">数据处理</th>
+                      <td class="border-right border-bottom">数据取回</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">免费</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.06 元/GB</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.1 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">请求费用</th>
+                      <td rowspan="2" class="border-right border-bottom">PUT/DELETE 请求次数</td>
+                      <td>0-10 万次</td>
+                      <td>免费</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2">0.3 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td>10 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">GET 请求次数</td>
+                      <td class="light-bkcolor">0-100 万次</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td class="border-right border-bottom">类型转换次数</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td colspan="8" class="desc-td">
+                        <p>说明：</p>
+                        <p>1、归档存储，将于 2020 年 1 月 1 日上线。</p>
+                        <p>2、低频访问存储，Object 最短存储期限为 30 天，早于 30 天删除、修改、覆盖 Object，需要补足未满 30 天的剩余天数的存储费用，超过 30 天不需要补。</p>
+                        <p>3、归档存储，Object 最短存储期限为 60 天，早于 60 天删除、修改、覆盖 Object，需要补足未满 60 天的剩余天数的存储费用，超过 60 天不需要补。</p>
+                        <p>4、最小计量：低频访问型存储、归档型存储，最小计量为 64KB，小于 64KB 的 Object 按照 64KB 计算存储空间，超过 64KB 大小的 Object 按照实际大小计算存储空间。</p>
+                        <p>5、数据取回：从服务端读取的数据量，在外网传输的数据量会另计入到外网流出流量的计费项中。对于低频访问存储，每次数据访问都会收取此部分费用。对于归档存储类型，进行数据解冻操作，解冻完成后，数据取回费用按照实际解冻的数据量收取。处于解冻状态的数据访问，则不会再收取数据取回费用。</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+
+              <section class="tab-pane table-responsive pricing-white-bg" id="tab-kodo-area-singapore">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr>
+                      <th>类型</th>
+                      <th class="th-init border-bottom border-left">计费项</th>
+                      <th colspan="2" class="th-init border-bottom border-left">标准存储</th>
+                      <th colspan="2" class="th-init border-bottom">低频访问存储</th>
+                      <th colspan="2" class="th-init border-bottom">归档存储&nbsp;<span class="new-tag">new</span></th>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">存储费用</th>
+                      <td rowspan="5" class="border-right border-bottom">存储空间费用</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.06 元/GB/月</td>
+                      <td rowspan="5" colspan="2" class="light-bkcolor border-bottom">0.033 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>10GB-50TB</td>
+                      <td>0.165 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>50TB-500TB</td>
+                      <td>0.162 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>500TB-5PB</td>
+                      <td>0.159 元/GB/月</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="border-bottom">5PB 以上</td>
+                      <td class="border-bottom">0.156 元/GB/月</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="6" class="border-right">流量费用</th>
+                      <td rowspan="2" class="border-right border-bottom">外网流出流量</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                      <td>0-100TB</td>
+                      <td>0.29 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                      <td>100TB 以上</td>
+                      <td>0.26 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">CDN 回源流量</td>
+                      <td class="light-bkcolor">0-10GB</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.15 元/GB</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100GB 以上</td>
+                      <td>0.15 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">跨区域同步流量</td>
+                      <td>海外 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>海外 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>海外 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                      <td>国内 <-> 海外</td>
+                      <td>0.58 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th class="border-right">数据处理</th>
+                      <td class="border-right border-bottom">数据取回</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">免费</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.06 元/GB</td>
+                      <td colspan="2" class="light-bkcolor border-bottom">0.1 元/GB</td>
+                    </tr>
+                    <tr>
+                      <th rowspan="5" class="border-right">请求费用</th>
+                      <td rowspan="2" class="border-right border-bottom">PUT/DELETE 请求次数</td>
+                      <td>0-10 万次</td>
+                      <td>免费</td>
+                      <td rowspan="2" colspan="2">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2">0.3 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td>10 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td rowspan="2" class="border-right border-bottom">GET 请求次数</td>
+                      <td class="light-bkcolor">0-100 万次</td>
+                      <td class="light-bkcolor">免费</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                      <td rowspan="2" colspan="2" class="light-bkcolor">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td>100 万次以上</td>
+                      <td>0.01 元/万次</td>
+                    </tr>
+                    <tr>
+                      <td class="border-right border-bottom">类型转换次数</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                      <td colspan="2" class="border-bottom">0.1 元/万次</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td colspan="8" class="desc-td">
+                        <p>说明：</p>
+                        <p>1、归档存储，将于 2020 年 1 月 1 日上线。</p>
+                        <p>2、低频访问存储，Object 最短存储期限为 30 天，早于 30 天删除、修改、覆盖 Object，需要补足未满 30 天的剩余天数的存储费用，超过 30 天不需要补。</p>
+                        <p>3、归档存储，Object 最短存储期限为 60 天，早于 60 天删除、修改、覆盖 Object，需要补足未满 60 天的剩余天数的存储费用，超过 60 天不需要补。</p>
+                        <p>4、最小计量：低频访问型存储、归档型存储，最小计量为 64KB，小于 64KB 的 Object 按照 64KB 计算存储空间，超过 64KB 大小的 Object 按照实际大小计算存储空间。</p>
+                        <p>5、数据取回：从服务端读取的数据量，在外网传输的数据量会另计入到外网流出流量的计费项中。对于低频访问存储，每次数据访问都会收取此部分费用。对于归档存储类型，进行数据解冻操作，解冻完成后，数据取回费用按照实际解冻的数据量收取。处于解冻状态的数据访问，则不会再收取数据取回费用。</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
             </div>
           </div>
         </section>

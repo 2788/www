@@ -67,11 +67,61 @@
       'northAmerica-lowKodo': [
         [0, 0 + 0.06]
       ]
-      'APIs': 0.1
+      'APIs':
+        'GET': 0.1
+        'PUT': 0.1
       'types': 0.1
       'HTTPs': [
         [0, 0 + 0.06]
       ]
+      'oss': [
+        [102400, 0.26]
+        [0, 0.29]
+      ]
+      'cdnBS': [
+        [0, 0 + 0.15]
+      ]
+    window.fileKodoData =
+      'east-fileKodo': [
+        [0, 0 + 0.032]
+      ]
+      'sourth-fileKodo': [
+        [0, 0 + 0.032]
+      ]
+      'north-fileKodo': [
+        [0, 0 + 0.032]
+      ]
+      'singapore-fileKodo': [
+        [0, 0 + 0.033]
+      ]
+      'northAmerica-fileKodo': [
+        [0, 0 + 0.033]
+      ]
+      'APIs':
+        'GET': 0.1
+        'PUT':
+          'east-fileKodo': 0.1
+          'sourth-fileKodo': 0.1
+          'north-fileKodo': 0.1
+          'singapore-fileKodo': 0.3
+          'northAmerica-fileKodo': 0.3
+      'types': 0.1
+      'HTTPs':
+        'east-fileKodo': [
+          [0, 0 + 0.08]
+        ]
+        'sourth-fileKodo': [
+          [0, 0 + 0.08]
+        ]
+        'north-fileKodo': [
+          [0, 0 + 0.08]
+        ]
+        'singapore-fileKodo': [
+          [0, 0 + 0.1]
+        ]
+        'northAmerica-fileKodo': [
+          [0, 0 + 0.1]
+        ]
       'oss': [
         [102400, 0.26]
         [0, 0.29]
