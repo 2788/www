@@ -57,7 +57,7 @@
                   <tbody>
                     <tr>
                       <% col[:list].each do |item| -%>
-                      <td><%= item[:key] -%><br /><span class="font-bold"><%= item[:value] -%></span></td>
+                      <td class="<%= item[:class] -%>"><%= item[:key] -%><br /><span class="font-bold"><%= item[:value] -%></span></td>
                       <% end -%>
                     </tr>
                   </tbody>
