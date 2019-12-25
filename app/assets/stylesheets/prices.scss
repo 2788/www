@@ -14,7 +14,8 @@
 }
 
 .nav.nav-tabs.nav-prices-links,
-.nav.nav-tabs.nav-prices-tabs {
+.nav.nav-tabs.nav-prices-tabs,
+.nav.nav-tabs.nav-kodo-area-tabs {
   width: 400px;
   border-bottom: 0;
   background-color: #fff;
@@ -40,7 +41,12 @@
   }
 }
 
-.nav.nav-tabs.nav-prices-products-tabs {
+.nav.nav-tabs.nav-kodo-area-tabs {
+  background-color: transparent;
+}
+
+.nav.nav-tabs.nav-prices-products-tabs,
+.nav.nav-tabs.nav-kodo-area-tabs {
   width: 532px !important;
 }
 
@@ -284,6 +290,16 @@ table.pricing-table tr {
       color: #666;
     }
 
+    .new-tag {
+      position: relative;
+      top: -0.01rem;
+      padding: 0 0.04rem;
+      border-radius: 0.02rem;
+      color: #FFF;
+      background-color: #EF7777;
+      font-size: 0.12rem;
+    }
+
     .th-p {
       padding: 0;
       margin: 0;
@@ -334,6 +350,15 @@ table.pricing-table tr td {
     border-right: 1px solid #e6eaef;
     &.border-bold {
       border-right: 1px solid #000;
+    }
+  }
+
+  &.desc-td {
+    p {
+      margin: 0;
+      font-size: 0.12rem;
+      color: #888;
+      line-height: 2;
     }
   }
 
@@ -388,6 +413,7 @@ table.pricing-table tr td {
   dd {
     padding: 0.05rem 0.15rem;
     width: 100%;
+    font-size: 0.12rem;
     overflow: hidden;
   }
 
@@ -554,6 +580,20 @@ input[type='range'] {
   }
 }
 
+@media (min-width: 992px) {
+  .list-inline-prices {
+    &.short {
+      .special-price {
+        width: 20%;
+        h5 {
+          height: 0.50rem;
+          line-height: 1.8;
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
   .prices-page {
     .features {
@@ -623,7 +663,8 @@ input[type='range'] {
     }
   }
   #nav-product {
-    .nav-prices-tabs {
+    .nav-prices-tabs,
+    .nav-kodo-area-tabs {
       width: 100%;
       // text-align: center;
       background: initial;
@@ -638,6 +679,13 @@ input[type='range'] {
           padding-right: 10px;
           margin-bottom: 0;
         }
+      }
+    }
+  }
+  .list-inline-prices {
+    &.short {
+      .special-price {
+        text-align: center;
       }
     }
   }
@@ -676,7 +724,8 @@ input[type='range'] {
 
 .fusion-checkbox,
 .kodo-checkbox,
-.lowKodo-checkbox {
+.lowKodo-checkbox,
+.fileKodo-checkbox {
   label {
     margin-left: 0.1rem;
     margin-right: 0.1rem;

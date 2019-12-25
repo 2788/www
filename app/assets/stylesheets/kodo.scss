@@ -20,10 +20,98 @@
   }
 }
 
+.features-multi {
+  padding-bottom: 0.10rem;
+  .container {
+    .col-multi {
+      margin-bottom: 0.40rem;
+      .thumbnail {
+        margin: 0 6%;
+        padding: 0.20rem 0.30rem;
+        background-color: #F3F3F4;
+        min-height: 0;
+        .row {
+          align-items: center;
+          display: flex;
+          .col-left {
+            p {
+              margin: 0.05rem 0;
+              color: rgba(0, 0, 0, 0.65);
+              font-size: 0.12rem;
+              .title {
+                color: #000;
+                font-size: 0.20rem;
+              }
+            }
+            .table-container {
+              margin-bottom: 0.10rem;
+              max-width: 100%;
+              overflow-x: auto;
+              table {
+                border: none;
+                background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0.60), #F3F3F4);
+                background: -o-linear-gradient(to right, rgba(255, 255, 255, 0.60), #F3F3F4);
+                background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0.60), #F3F3F4);
+                background: linear-gradient(to right, rgba(255, 255, 255, 0.60), #F3F3F4);
+                tbody tr td {
+                  padding: 0.10rem 0.15rem;
+                  font-size: 0.12rem;
+                  color: rgba(0, 0, 0, 0.65);
+                  line-height: 1.8;
+                  white-space: nowrap;
+                  .font-bold {
+                    font-size: 0.14rem;
+                    font-weight: 600;
+                    color: rgba(0, 0, 0, 0.85);
+                  }
+                }
+              }
+            }
+          }
+          .col-right {
+            flex: 1;
+            text-align: center;
+            p {
+              margin: 0;
+              font-size: 0.12rem;
+              color: #000;
+              .price-symbol {
+                color: #00A0DE;
+              }
+              .price-huge {
+                font-size: 0.28rem;
+                color: #00A0DE;
+              }
+            }
+            .btn {
+              margin-top: 0.10rem;
+              padding: 0.10rem 0.40rem;
+              font-size: 0.14rem;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .features {
     .kodo-feature-col {
       min-height: 2.20rem;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .features-multi {
+    .container {
+      .col-multi {
+        .thumbnail {
+          margin: 0;
+        }
+      }
     }
   }
 }
@@ -39,6 +127,25 @@
   .feature-core {
     .thumbnail {
       min-height: 2.80rem;
+    }
+  }
+  .features-multi {
+    .container {
+      .col-multi {
+        .thumbnail {
+          .row {
+            display: block;
+            .col-left {
+              .table-container {
+                margin: 0.20rem 0;
+              }
+            }
+            .col-right {
+              flex: none;
+            }
+          }
+        }
+      }
     }
   }
 }

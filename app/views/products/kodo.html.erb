@@ -37,6 +37,46 @@
   </div>
 </div>
 
+<% if I18n.t("views.language") == 'zh' -%>
+<div class="features features-multi tab-content-section-0">
+  <div class="container">
+    <div class="intro">
+      <h2 class="title"><%= I18n.t("views.products.kodo.feature0.title") %></h2>
+    </div>
+
+    <div class="row">
+      <% I18n.t("views.products.kodo.feature0.col").each do |col| -%>
+      <div class="col-md-12 col-sm-12 col-xs-12 col-multi">
+        <div class="thumbnail">
+          <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12 col-left">
+              <p><span class="title"><%= col[:title] -%></span>&nbsp;&nbsp;<%= col[:subTitle] -%></p>
+              <p><%= col[:desc] -%></p>
+              <div class="table-container">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr>
+                      <% col[:list].each do |item| -%>
+                      <td><%= item[:key] -%><br /><span class="font-bold"><%= item[:value] -%></span></td>
+                      <% end -%>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 col-right">
+              <p><span class="price-symbol">￥</span>&nbsp;<span class="price-huge"><%= col[:price] -%></span>&nbsp;<%= col[:unit] -%></p>
+              <%= link_to col[:btnText], col[:link], class: "btn btn-primary btn-lg", title: col[:title] + " - 了解详情", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+<% end -%>
+
 <div class="features features-superiority tab-content-section-1">
   <div class="container">
     <div class="intro">
@@ -60,7 +100,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="features features-solution feature-core tab-content-section-2">
   <div class="container">
@@ -87,7 +126,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="features features-kodo features-scene tab-content-section-3">
   <div class="container">
@@ -123,7 +161,6 @@
   </div>
 </div>
 
-
 <div class="features features-less tab-content-section-4">
   <div class="container">
     <div class="row">
@@ -151,7 +188,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="features features-less features-cases tab-content-section-5 <%= I18n.t("views.language") != 'zh' ? 'd-none' : '' %>">
   <div class="container">
