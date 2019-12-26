@@ -362,6 +362,18 @@ table.pricing-table tr td {
     }
   }
 
+  &.padding-r-none {
+    padding-right: 0;
+  }
+
+  &.padding-l-none {
+    padding-left: 0
+  }
+
+  &.padding-l-large {
+    padding-left: 0.40rem;
+  }
+
   div {
     padding-bottom: 0.21rem;
     margin-bottom: 0.22rem;
