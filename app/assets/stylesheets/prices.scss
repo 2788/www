@@ -290,6 +290,14 @@ table.pricing-table tr {
       color: #666;
     }
 
+    .th-p {
+      padding: 0;
+      margin: 0;
+      margin-left: -0.09rem;
+      line-height: 0.12rem;
+    }
+  }
+  th,td {
     .new-tag {
       position: relative;
       top: -0.01rem;
@@ -298,13 +306,6 @@ table.pricing-table tr {
       color: #FFF;
       background-color: #F81919;
       font-size: 0.12rem;
-    }
-
-    .th-p {
-      padding: 0;
-      margin: 0;
-      margin-left: -0.09rem;
-      line-height: 0.12rem;
     }
   }
 }
