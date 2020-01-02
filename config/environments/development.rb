@@ -133,14 +133,14 @@ Rails.application.configure do
     "type": "comb-pack-1",
     "title": "新手上路包",
     "durations": [{
-      "value": 6,
-      "text": "6个月"
+      "value": 1,
+      "text": "1个月"
     },{
       "value": 3,
       "text": "3个月"
     },{
-      "value": 1,
-      "text": "1个月"
+      "value": 6,
+      "text": "6个月"
     }],
     "packages": [{
       "index": "一",
@@ -157,14 +157,14 @@ Rails.application.configure do
     "type": "comb-pack-2",
     "title": "打怪升级包",
     "durations": [{
-      "value": 6,
-      "text": "6个月"
+      "value": 1,
+      "text": "1个月"
     },{
       "value": 3,
       "text": "3个月"
     },{
-      "value": 1,
-      "text": "1个月"
+      "value": 6,
+      "text": "6个月"
     }],
     "packages": [{
       "index": "一",
@@ -186,14 +186,14 @@ Rails.application.configure do
     "type": "comb-pack-3",
     "title": "所向披靡包",
     "durations": [{
-      "value": 12,
-      "text": "12个月"
+      "value": 3,
+      "text": "3个月"
     },{
       "value": 6,
       "text": "6个月"
     },{
-      "value": 3,
-      "text": "3个月"
+      "value": 12,
+      "text": "12个月"
     }],
     "packages": [{
       "index": "一",
@@ -220,14 +220,14 @@ Rails.application.configure do
     "type": "comb-pack-4",
     "title": "最强王者包",
     "durations": [{
-      "value": 12,
-      "text": "12个月"
+      "value": 3,
+      "text": "3个月"
     },{
       "value": 6,
       "text": "6个月"
     },{
-      "value": 3,
-      "text": "3个月"
+      "value": 12,
+      "text": "12个月"
     }],
     "packages": [{
       "index": "一",
