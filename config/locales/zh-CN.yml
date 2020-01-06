@@ -8097,7 +8097,7 @@ zh-CN:
             desc: 简单、高效、开放
           - name: censor
             label: 内容安全
-            desc: 七牛云人工智能实验室提供的机器 + 人工一站式内容审核服务
+            desc: 七牛云人工智能实验室提供的一站式内容审核服务
             isNew: true
           - name: insight
             label: 智能日志管理平台
