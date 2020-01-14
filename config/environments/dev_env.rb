@@ -151,8 +151,8 @@ Rails.application.configure do
   # 2019 年 1212 活动结束时间
   config.double12_2019 = {
     end_year: 2020,
-    end_month: 1,
-    end_date: 15
+    end_month: 2,
+    end_date: 14
   }
 
   config.double12_2019_comb_package = [{
@@ -1420,7 +1420,7 @@ Rails.application.configure do
         {
           "title": "短视频 SDK 全年精简版",
           "tipClass": "blue",
-          "tipText": "双 12 狂欢",
+          "tipText": "新春特惠",
           "type": "精简版",
           "duration": "1 年",
           "price": "1008",
@@ -1434,7 +1434,7 @@ Rails.application.configure do
         {
           "title": "短视频 SDK 全年基础版",
           "tipClass": "blue",
-          "tipText": "双 12 狂欢",
+          "tipText": "新春特惠",
           "type": "基础版",
           "duration": "1 年",
           "price": "4068",
@@ -1448,7 +1448,7 @@ Rails.application.configure do
         {
           "title": "短视频 SDK 全年进阶版",
           "tipClass": "blue",
-          "tipText": "双 12 狂欢",
+          "tipText": "新春特惠",
           "type": "进阶版",
           "duration": "1 年",
           "price": "30000",
@@ -1462,7 +1462,7 @@ Rails.application.configure do
         {
           "title": "短视频 SDK 全年专业版",
           "tipClass": "blue",
-          "tipText": "双 12 狂欢",
+          "tipText": "新春特惠",
           "type": "专业版",
           "duration": "1 年",
           "price": "60000",
