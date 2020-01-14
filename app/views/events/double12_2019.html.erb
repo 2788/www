@@ -1,11 +1,13 @@
 <%# 2019 年双十二大促活动落地页 %>
 <%# https://jira.qiniu.io/browse/BO-10004 %>
+<%# 双十二活动延期，改为新春特惠活动 %>
+<%# https://jira.qiniu.io/browse/BO-10748 %>
 
 <%# banner 部分 %>
 <div class="jumbotron hero hero-double12-2019">
   <div class="container">
     <div class="middle-container">
-      <%= image_tag I18n.t("views.events.double12_2019.banner.image"), title: "12.12 年终盛惠 - 七牛云", alt: "12.12 年终盛惠 - 七牛云" -%>
+      <%= image_tag I18n.t("views.events.double12_2019.banner.image"), title: "新春特惠 - 七牛云", alt: "新春特惠 - 七牛云" -%>
       <%= link_to "", "javascript:void(0)", title: "多种规格，任意选择！电商场景，一包配齐! - 立即抢购", class: "btn-double12-2019-banner-main" -%>
     </div>
   </div>
@@ -112,7 +114,7 @@
                   <% end -%>
                 </select>
               </div>
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <% kodo[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <div class="content-price">
@@ -172,7 +174,7 @@
                   </div>
                 </div>
               </div>
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <% kodo[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <div class="content-price">
@@ -323,7 +325,7 @@
                   <% end -%>
                 </select>
               </div>
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <% fusion[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <div class="content-price">
@@ -378,7 +380,7 @@
             <h4 class="title"><%= pili[:title] -%></h4>
             <p class="desc"><%= pili[:desc] -%></p>
             <div class="content-container">
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <section class="content-section active">
                 <div class="content-price">
                   <div class="row">
@@ -418,7 +420,7 @@
             <h4 class="title"><%= pili[:title] -%></h4>
             <p class="desc"><%= pili[:desc] -%></p>
             <div class="content-container">
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <section class="content-section active">
                 <div class="content-price">
                   <div class="row">
@@ -511,7 +513,7 @@
     </div>
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <%= image_tag I18n.t("views.events.double12_2019.dora.image"), title: "智能视频处理转码时长包，年终优惠来袭", alt: "智能视频处理转码时长包，年终优惠来袭", width: 768 -%>
+        <%= image_tag I18n.t("views.events.double12_2019.dora.image"), title: "智能视频处理转码时长包，新春优惠来袭", alt: "智能视频处理转码时长包，新春优惠来袭", width: 768 -%>
         <%= link_to "查看更多优惠", Rails.configuration.www_host + "/events/dora-package?entry=20191212-page", title: "智能视频处理 - 查看更多优惠", class: "btn btn-lg", target: "_blank" -%>
       </div>
     </div>
@@ -556,7 +558,7 @@
                   </tr>
                 </tbody>
               </table>
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <section class="content-section active">
                 <div class="content-price">
                   <div class="row">
@@ -599,7 +601,7 @@
             <h4 class="title"><%= sms[:title] -%></h4>
             <p class="desc"><%= sms[:desc] -%></p>
             <div class="content-container">
-              <span class="activity-tip">双 12 狂欢</span>
+              <span class="activity-tip">新春特惠</span>
               <section class="content-section active">
                 <div class="content-price">
                   <div class="row">
@@ -650,14 +652,14 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
         <p>购买说明：</p>
         <p>1、产品为限量抢购产品，每位用户仅可购买 1 次</p>
         <p>2、用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
-        <p>3、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
+        <p>3、本活动与『12.12 年终盛惠』、『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">通用优惠</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：七牛云新老用户均可参加</p>
         <p>购买说明：</p>
         <p>1、各资源包为限量产品，每位用户累计至多购买 6 个</p>
@@ -680,7 +682,7 @@
         <h3 class="modal-title" id="double12-2019-comb-pack-modal-label">电商场景资源包 - 活动说明</h3>
       </div>
       <div class="modal-body">
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：仅面向实名认证用户</p>
         <p>购买说明：</p>
         <p>1、资源包购买可选择「当月生效」或「次月生效」，用于抵扣月账单中相应产品的使用量。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效；生效后当月未用完不可结转，资源包内的多个产品（除 SDK 以外）必须在同一时间生效</p>
@@ -706,7 +708,7 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
         <p>购买说明：</p>
         <p>1、产品为限量抢购产品，每位用户资源包总计不得超过 3 个。用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效</p>
@@ -714,9 +716,9 @@
         <p>（1）在资源包生效期间内，若当月用量超出可用资源包额度，出账时将优先抵扣完资源包额度，超出部分再按照官网标准结算</p>
         <p>（2）资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣；若当过期时间相同时，将优先抵扣闲时资源包</p>
         <p>（3）由于活动优惠力度较大，因此购买后无特殊情况无法退款，请确认后再购买</p>
-        <p>（4）本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
+        <p>（4）本活动与『12.12 年终盛惠』、『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">通用优惠</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：新老用户均可参加（带宽计费用户或享有特殊价格折扣客户除外）</p>
         <p>购买说明：</p>
         <p>1、资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣，按月发放，可结转</p>
@@ -741,7 +743,7 @@
         <h3 class="modal-title" id="double12-2019-pili-modal-label">直播云专场 - 活动说明</h3>
       </div>
       <div class="modal-body">
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：2019 年 12 月 1 日后注册的七牛云用户</p>
         <p>计费规则：</p>
         <p>1、仅支持 2019 年 12 月 1 日后新注册用户购买</p>
@@ -770,7 +772,7 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">短视频 SDK 五折抢购活动</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：七牛云新老用户皆可参与</p>
         <p>购买说明：</p>
         <p>1、该活动设置了限购，短视频 SDK 五折抢购，每个用户限购一单</p>
@@ -778,14 +780,14 @@
         <p>3、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
         <p>4、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">短视频 SDK 精简版和基础版一折秒杀活动</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日（秒杀活动已结束）</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日（秒杀活动已结束）</p>
         <p>活动对象：短视频 SDK 新用户（已经是本平台用户，但没有使用过短视频 SDK 的用户也可以参加）</p>
         <p>购买说明：</p>
         <p>1、短视频 SDK 精简版和基础版一折秒杀，每个用户限购一单</p>
         <p>2、<span class="font-bold">由于该活动为商品限量秒杀，所以根据实际情况，活动可能提前结束，请各位用户尽快下单购买</span></p>
         <p>3、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
         <p>4、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
-        <p>5、本活动与『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
+        <p>5、本活动与『12.12 年终盛惠』、『双十一云采购嘉年华』、『1024 码上狂欢节』为同期活动，新人包限购规则以同一期活动内的购买总数为准</p>
         <p class="sub-title">短视频 SDK 授权的购买流程</p>
         <p>1、登录七牛账号，然后通过本活动页面点击秒杀或抢购按钮，进入到<a href="<%= Rails.configuration.portal_host + "/financial/carnival" -%>" class="link-box" title="双十一活动 - 七牛云" target="_blank">双十一活动会场</a></p>
         <p>2、进入到双十一活动会场后，在<a href="<%= Rails.configuration.portal_host + "/financial/carnival#sdk" -%>" class="link-box" title="短视频 SDK 专场 - 双十一活动" target="_blank">短视频 SDK 专场</a>找到目标商品，进行下单</p>
@@ -813,21 +815,21 @@
       </div>
       <div class="modal-body">
         <p class="sub-title">新用户专享主机</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
         <p>购买说明：</p>
         <p>1、抢购数量：每日 10:00 限时抢购</p>
         <p>2、套餐配置：每款默认配置 1 个公网 IP（1 兆带宽），40G 高效云盘，地域为中国大陆</p>
         <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
         <p class="sub-title">企业客户专享主机</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：七牛云官网已注册且完成企业实名认证的云主机新用户</p>
         <p>购买说明：</p>
         <p>1、抢购数量：每位企业用户可最多抢 2 台主机</p>
         <p>2、套餐配置：每款默认配置 1 个公网 IP 及相应带宽（2Mbps 或 5Mbps），40G 高效云盘，地域为中国大陆</p>
         <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
         <p class="sub-title">通用优惠主机</p>
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：七牛云官网已注册且完成实名认证的新老用户</p>
         <p>抢购数量：每位用户可最多抢 2 台主机</p>
         <p>订购限制：本次活动不支持代金券或折扣券；如退订退款，再次购买相同资源不再享受同等折扣</p>
@@ -849,7 +851,7 @@
         <h3 class="modal-title" id="double12-2019-sms-modal-label">云短信专场 - 活动说明</h3>
       </div>
       <div class="modal-body">
-        <p>活动时间：即日起至 2020 年 1 月 14 日</p>
+        <p>活动时间：即日起至 2020 年 2 月 13 日</p>
         <p>活动对象：七牛云官网注册并经过实名验证的客户</p>
         <p>购买说明：</p>
         <p>1、抢购数量：短信服务包每名用户最多只能购买不超过 3 个数量的套餐包</p>

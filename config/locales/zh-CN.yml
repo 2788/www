@@ -46,7 +46,7 @@ zh-CN:
             desc: "热门活动及产品特惠"
             link: "/events/activity?entry=index-advert"
             jumphost: ""
-          - title: "年终盛惠"
+          - title: "新春特惠"
             class: "border-l advert-double12-2019"
             jump_label_class: ""
             desc: "100GB 云存储 1 分抢"
@@ -8709,9 +8709,9 @@ zh-CN:
       keywords: 云存储，CDN，云短信，直播云，云主机，七牛云，双11，云采购
       description: 七牛云双11云采购嘉年华，云存储、CDN、云主机、云短信、直播云等热门云产品资源包低至1折，新老用户同享。
     events_double12_2019:
-      title: 12.12年终盛惠，云产品特惠购-七牛云
-      keywords: 双12，云存储，CDN，云短信，直播云，云主机，七牛云，优惠促销，电商直播
-      description: 七牛云年终盛惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交&电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品年终限时特惠。
+      title: 新春特惠，云产品钜惠来袭-七牛云
+      keywords: 云存储，CDN，云短信，直播云，云主机，七牛云，优惠促销，电商直播，新春特惠
+      description: 七牛云新春特惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品新春限时特惠。
     events_activity:
       title: 最新活动_优惠活动 - 七牛云活动
       keywords: 云存储优惠，CDN优惠，免费云服务，七牛云，云主机优惠，云服务器优惠，折扣，促销，优惠券，优惠活动
