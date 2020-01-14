@@ -309,7 +309,7 @@ en:
               unsignlink: "/signup"
               signlink: "/financial/price"
               jumphost: "portal"
-            - title: "融合 CDN"
+            - title: "CDN"
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
               id: "free-events-fusion"
@@ -1625,13 +1625,13 @@ en:
                     - 波动性大、高可用需求
                 - title: "应用建议"
                   content:
-                    - 可将云服务器与 对象存储 及 融合CDN 搭配，降低存储费用，减少用户访问等待时间、降低带宽费用、提高可用性
+                    - 可将云服务器与 对象存储 及 CDN 搭配，降低存储费用，减少用户访问等待时间、降低带宽费用、提高可用性
                     - 通过使用弹性伸缩，实现在业务增长/下降时自动增减实例，保证满足访问量达到峰值时对资源的要求，同时降低成本
                     - 搭配负载均衡实现高可用架构
               prolinks:
                 - title: "对象存储"
                   link: "https://www.qiniu.com/products/kodo"
-                - title: "融合 CDN"
+                - title: "CDN"
                   link: "https://www.qiniu.com/products/fusion"
                 - title: "负载均衡"
                   link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
@@ -1994,7 +1994,7 @@ en:
               desc:
                 - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
                 - text: "端到端的直播解决方案，提供完整的直播客户端及 SDK，可以直接提供直播播放平台，或集成用户自有的移动应用。"
-                - text: "全网融合 CDN 节点实现了加速稳定的同步直播、同步互动。"
+                - text: "全网 CDN 节点实现了加速稳定的同步直播、同步互动。"
             - id: "tab-content-section-3"
               class: "tab-pane "
               img: "live/img-hudongzhibo-scene3.jpg"
@@ -2075,7 +2075,7 @@ en:
               desc:
                 - text: "全球化的直播专属网络，采用全新网络技术，即开即播、一站式解决方案，使非广电行业用户，可以在任何时间、任何地点，快速、灵活地进行新媒体直播。"
                 - text: "端到端的直播解决方案，提供完整的直播客户端及 SDK，可以直接提供直播播放平台，或集成用户自有的移动应用。"
-                - text: "全网融合 CDN 节点实现了加速稳定的同步直播、同步互动。"
+                - text: "全网 CDN 节点实现了加速稳定的同步直播、同步互动。"
       microservices:
         middlebar:
           - title: "产品优势"
@@ -5527,9 +5527,9 @@ en:
             - "5. 该资源包只能使用现金充值余额支付；"
             - "6. 该活动所有内容解释权归上海七牛信息技术有限公司所有。"
         why:
-          title: "为什么选择七牛云融合 CDN"
+          title: "为什么选择七牛云 CDN"
           list:
-            - "融合 CDN（FUSION）是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛融合 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。<a class='know-more' href='/products/fusion' target='_blank' title='七牛云融合 CDN - 了解详情'>了解详情 >>></a>"
+            - "CDN（FUSION）是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。<a class='know-more' href='/products/fusion' target='_blank' title='七牛云 CDN - 了解详情'>了解详情 >>></a>"
         client:
           list:
             - title: "中兴"
@@ -7445,7 +7445,7 @@ en:
             - "五、短视频 SDK 特点"
             - "六、播放器 SDK"
             - "七、短视频数据处理"
-            - "八、短视频融合 CDN"
+            - "八、短视频 CDN"
             - "九、短视频落存储"
             - "十、客户案例"
         detail:
@@ -7959,7 +7959,7 @@ en:
     products_vance:
       title: 点播云_点播云服务 - 七牛云
       keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
-      description: 七牛点播云汇聚七牛云存储、音视频转码和融合 CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播 PaaS 平台。
+      description: 七牛点播云汇聚七牛云存储、音视频转码和 CDN 等强大、稳定的基础服务，专注于视频领域为客户提供视频上传、存储、转码、播放器、分发加速和统计分析等服务的、专业可靠的一站式视频点播 PaaS 平台。
     products_plsv:
       title: 短视频SDK_短视频解决方案_短视频服务 - 七牛云
       keywords: 短视频 SDK，七牛短视频，短视频服务，短视频解决方案，ios 短视频 sdk，android 短视频 sdk
@@ -8009,11 +8009,11 @@ en:
       keywords:
       description:
     welcome_sla_fusion:
-      title: 融合 CDN SLA - 七牛云
+      title: CDN SLA - 七牛云
       keywords:
       description:
     welcome_sla_fusion_old:
-      title: 历史融合 CDN SLA - 七牛云
+      title: 历史 CDN SLA - 七牛云
       keywords:
       description:
     welcome_sla_pili:
