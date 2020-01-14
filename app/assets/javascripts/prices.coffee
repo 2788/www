@@ -99,7 +99,7 @@ $(document).ready ->
 
   #//////////////////////////////////////////////////////////////////////
   ## 控制标准存储 区域checkbox-->price
-  ## 控制融合CDN checkbox
+  ## 控制CDN checkbox
   $(".spacecheck").bind 'click', (e) ->
     id = $(this).val()
     area = $(this).attr('key')
