@@ -174,6 +174,9 @@ Rails.application.routes.draw do
     # 创建 1024 活动抽奖资格
     post '/event1024_create_award', to: 'events#event1024_create_award'
 
+    # 抗击 2019-nCoV 活动
+    get '/events/fighting-2019-ncov', to: 'events#fighting_ncov'
+
     # img_censor
     post '/img_censor', to: 'products#img_censor'
 
