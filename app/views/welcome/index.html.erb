@@ -1,6 +1,23 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 抗击 2019-nCoV banner %>
+  <div class="jumbotron hero hero-fighting-ncov-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="content">
+              <h3>云上助力，</h3>
+              <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共战疫情！</h3>
+            </div>
+            <%= link_to "查看详情", events_fighting_2019_ncov_path + "?entry=index-banner", class: "btn btn-lg btn-default btn-banner", title: "云上助力，共战疫情！- 查看详情", target: "_blank" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <%# 2019 年 1212 大促活动 banner %>
   <% if Time.now.to_i >= Time.local(2019, 12, 11).to_i && Time.now.to_i < Time.local(2020, 2, 14).to_i -%>
   <div class="jumbotron hero hero-double12-2019-index">

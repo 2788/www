@@ -1,0 +1,87 @@
+.jumbotron.hero.hero-fighting-ncov {
+  background-image: image-url("fighting_ncov/img-banner.jpg");
+}
+
+.features-fighting-ncov {
+  padding: 0.68rem 0;
+  .container {
+    .row {
+      .col-item {
+        margin-bottom: 0;
+        .thumbnail {
+          min-height: 0;
+        }
+      }
+      .col-apply {
+        margin-top: 0.10rem;
+        text-align: center;
+        .btn-apply {
+          padding: 0.08rem 0.40rem;
+          color: #FFF;
+          border-radius: 0.20rem;
+          background-color: #2B53FF;
+          &:hover {
+            -webkit-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+            -moz-box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+            box-shadow: 0 0 0 #EFEFEF, 2px 2px 20px #B9B9B9;
+          }
+        }
+      }
+    }
+  }
+  &.features-1 {
+    .container {
+      .row {
+        .col-info {
+          p {
+            margin: 0.20rem 0;
+            font-size: 0.16rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  &.features-2 {
+    background: -webkit-linear-gradient(135deg, #3D6EFD, #183CF2);
+    background: -o-linear-gradient(135deg, #3D6EFD, #183CF2);
+    background: -moz-linear-gradient(135deg, #3D6EFD, #183CF2);
+    background: linear-gradient(135deg, #3D6EFD, #183CF2);
+    .container {
+      .row {
+        .thumbnail {
+          .caption {
+            h4 {
+              color: #FFF;
+            }
+          }
+          .media-object {
+            border-radius: 0.10rem;
+            max-width: none;
+          }
+          p {
+            margin: 0;
+            color: #FFF;
+            &.margin-t-l {
+              margin-top: 0.10rem;
+            }
+            &.margin-t-m {
+              margin-top: 0.05rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  &.features-3 {
+    .container {
+      .intro {
+        margin-bottom: 0;
+        .title {
+          font-size: 0.20rem;
+          line-height: 1.8;
+        }
+      }
+    }
+  }
+}
