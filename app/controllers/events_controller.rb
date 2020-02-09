@@ -71,6 +71,9 @@ class EventsController < ApplicationController
   def activity
   end
 
+  def fighting_ncov
+  end
+
   def qvmsumsale_is_start
     time_conf = is_qvmsumsale_conf_valid()
     if time_conf.nil?
