@@ -17,8 +17,10 @@ import { basename } from '../../constants/route'
 import Layout from '../Layout'
 // Home
 import Home from '../Home'
-// All
-import All from '../All'
+// All Activity Page
+import AllActivity from '../AllActivity'
+// Activity Page
+import Activity from '../Activity'
 
 @hot
 @observer
@@ -31,7 +33,10 @@ export default class App extends React.Component<any, any> {
             <Layout>
               <Switch>
                 <Route relative path="/" exact><Home /></Route>
-                <Route relative path="/all" exact title="全部活动"><All /></Route>
+                <Route relative path="/all" exact title="全部活动"><AllActivity /></Route>
+                <Route relative path="/:id" title="活动" component={
+                  ({ match }) => <Activity id={match.params.id} />
+                } />
                 <Route relative path="*"><NotFound /></Route>
               </Switch>
             </Layout>
