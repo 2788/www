@@ -16,6 +16,7 @@ $(document).ready ->
   $2019double12PackageBuySuccessModal = $2019double12EventPage.find('#double12-2019-package-buy-success-modal')
   $2019double12PackageBuyFailModal = $2019double12EventPage.find('#double12-2019-package-buy-fail-modal')
   $2019double12EffectTimeModal = $2019double12EventPage.find('#double12-2019-effect-time-modal')
+  $2019double12EndModal = $2019double12EventPage.find('#double12-2019-end-modal')
   # fail modal tip
   $2019double12PackageBuyFailTip = $2019double12PackageBuyFailModal.find('.modal-dialog .modal-body .error-tip')
   $2019double12OrderFailTip = $2019double12OrderFailModal.find('.modal-dialog .modal-body .error-tip')
@@ -215,6 +216,10 @@ $(document).ready ->
     if $2019double12AllBtns.length > 0
       $2019double12AllBtns.removeClass 'disabled'
 
+  showDouble12EndModal = () ->
+    if $2019double12EndModal.length > 0
+      $2019double12EndModal.modal 'show'
+
   # 绑定页面的 dropdown
   if $2019double12EventPage.length > 0
     bindDropdownList()
@@ -224,6 +229,7 @@ $(document).ready ->
       if isEnd
         # 活动已结束
         disableDouble12AllBtns()
+        showDouble12EndModal()
       else
         # 活动未结束
         double122019GetUserInfo()
