@@ -946,6 +946,20 @@
   </div>
 </div>
 
+<%# 活动结束模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-end-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-end-modal-label" data-keyboard="false" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="double12-2019-end-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title">活动已结束</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= javascript_tag do %>
   window.double12_2019_combPackPriceAndPackIdMap = <%=
     raw JSON.generate(Rails.configuration.double12_2019_comb_pack_info)
