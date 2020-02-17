@@ -4,6 +4,16 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 
 根据后端返回的活动配置信息渲染活动页面，运营同学通过配置活动信息就可以对活动页面进行实时的修改
 
+## 结构
+
+- src
+
+`./src` 目录下保存官网活动分站代码，包括页面路由、页面 `Header`、页面 `Footer`、活动页面组件拼接逻辑等
+
+- renderer
+
+`./renderer` 目录下保存官网活动分站 `renderer` 相关代码，包括各个组件的样式、交互及接口调用等
+
 ## 开发
 
 ### 依赖
@@ -37,10 +47,10 @@ npm i fec-builder -g
 # 安装依赖
 yarn
 # 启动本地服务
-fec-builder -p 8082
+fec-builder -p 8080
 # 本地访问地址
-localhost:8082/marketing
-# 会重定向到 localhost:8082/marketing/all
+localhost:8080/marketing
+# 会重定向到 localhost:8080/marketing/all
 ```
 
 #### docker 镜像（适合持续集成环境使用）
