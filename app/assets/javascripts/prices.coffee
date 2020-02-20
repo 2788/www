@@ -79,6 +79,18 @@ $(document).ready ->
       history.pushState("", "", "/prices?source=" + val);
     pre = val
 
+  ## 控制 calculator 页面锚点
+  calcSec = ''
+  if parseQueryString(location.search)['calc-sec']
+    calcSec = parseQueryString(location.search)['calc-sec']
+  $targetCalcSec = $('.pricing-caculator .pricing-details .calc-sec-' + calcSec)
+  if calcSec && $targetCalcSec && $targetCalcSec.length == 1
+    scrollOptions =
+      scrollTop: ($targetCalcSec.offset().top - 100) + 'px'
+    setTimeout(() ->
+      $('html, body').animate(scrollOptions, 500)
+    , 0)
+
   #//////////////////////////////////////////////////
   ## 控制caculator的tab
   $('.caculatorTabs').bind 'click', (e) ->
