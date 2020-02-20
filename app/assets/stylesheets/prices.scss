@@ -133,6 +133,14 @@
   }
 }
 
+.features .price-calc-link {
+  font-size: 0.14rem;
+  color: #00A0DE;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .tab-content-caculating {
   .info .title-left {
     font-size: 0.3rem;
@@ -701,6 +709,9 @@ input[type='range'] {
         text-align: center;
       }
     }
+  }
+  .features .price-calc-link {
+    font-size: 0.20rem;
   }
 }
 
