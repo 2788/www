@@ -1,0 +1,25 @@
+server:
+    mode: "test"
+    port: ":11009" # best 1024 up
+
+auth:
+    mock_token: true
+    secret_key: ""
+    token_expires_in: 86400
+
+redis:
+    db: 0 # defaults 0
+    failover: false
+    password: ""
+    # master_name: "" # should enable when failover = true
+    addrs:
+        - "127.0.0.1:6379"
+
+services:
+    gaea_host: "http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com"
+acc:
+    host: "http://10.200.20.25:9100"
+    username: "root"
+    password: "root"
+    client_id: "xxx"
+    client_secret: "xxx"
