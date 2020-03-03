@@ -85,7 +85,7 @@ class WelcomeController < ApplicationController
   def sla_kodo_new
     # 考虑到 /sla-kodo-new 这个路由已经开放出去了
     # 重定向到 /sla-kodo
-    redirect_to('https://www.qiniu.com/sla-kodo', :status => 301)
+    redirect_to(Rails.configuration.www_host + "/sla-kodo", :status => 301)
   end
 
   def sla_fusion
@@ -98,7 +98,7 @@ class WelcomeController < ApplicationController
 
   def sla_fusion_new
     # 重定向到 /sla-fusion
-    redirect_to('https://www.qiniu.com/sla-fusion', :status => 301)
+    redirect_to(Rails.configuration.www_host + "/sla-fusion", :status => 301)
   end
 
   def sla_pili

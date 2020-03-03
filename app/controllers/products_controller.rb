@@ -84,7 +84,7 @@ class ProductsController < ApplicationController
     # 云快编页面下线
     # 不隐藏路由，访问页面重定向到新媒体解决方案落地页
     # https://jira.qiniu.io/browse/BO-7814
-    redirect_to('https://www.qiniu.com/products/newmedia', :status => 301)
+    redirect_to(Rails.configuration.www_host + "/products/newmedia", :status => 301)
   end
 
   def auditor
@@ -109,7 +109,7 @@ class ProductsController < ApplicationController
     # 在线教育解决方案页面下线
     # 不隐藏路由，访问页面重定向到官网主页
     # https://jira.qiniu.io/browse/BO-6826
-    redirect_to('https://www.qiniu.com/', :status => 301)
+    redirect_to(Rails.configuration.www_host, :status => 301)
   end
 
   def ess
@@ -137,6 +137,10 @@ class ProductsController < ApplicationController
   end
 
   def linking
+    # IoT 视频云页面下线
+    # 不隐藏路由，访问页面重定向到官网主页
+    # https://jira.qiniu.io/browse/BO-11108
+    redirect_to(Rails.configuration.www_host, :status => 301)
   end
 
   def sms
