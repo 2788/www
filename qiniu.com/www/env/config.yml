@@ -23,3 +23,13 @@ acc:
     password: "root"
     client_id: "xxx"
     client_secret: "xxx"
+sso:
+    host: "https://sso-dev.qiniu.io"
+    client_id: "client_id = 1YlkJR3sYw7zpBMSTNCesc9O9ViF9tCO03JDXZOGBpxkQ36QuIag2PAvPXdP35rCF2DMvMkIIXZBD1EBHzPBYZt1wJlK35YdIM9TkVagOaybfocuqSNOV6hK64offScqv"
+    client_secret: "client_secret = lzzexEXo49nFOdWXbhMEyAuTwX88pHCWMupFpWeZZvpZlxPBO1w0STqguVAM62TXzJugH3T59qREm6te1uz2juHu3ycbLhLJJHnnQMLvi1Di0k8538Hi3sm59CdL6bo7h"
+    cookie_secret: ""
+    cookie_prefix: "PORTAL"
+    cookie_secure: false
+    cookie_expire: 604800
+    enable: true
+

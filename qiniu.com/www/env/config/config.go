@@ -12,6 +12,7 @@ type Config struct {
 	Auth     APIAuth        `yaml:"auth"`
 	Redis    RedisConfig    `yaml:"redis"`
 	Acc      AccConfig      `yaml:"acc"`
+	SSO      SSOConfig      `yaml:"sso"`
 	Services ServicesConfig `yaml:"services"`
 }
 
@@ -44,6 +45,18 @@ type AccConfig struct {
 	Password     string `yaml:"password"`
 	ClientID     string `yaml:"client_id"`
 	ClientSecret string `yaml:"client_secret"`
+}
+
+// SSOConfig
+type SSOConfig struct {
+	Host         string `yaml:"host"`
+	ClientId     string `yaml:"client_id"`
+	ClientSecret string `yaml:"client_secret"`
+	CookieSecret string `yaml:"cookie_secret"`
+	CookiePrefix string `yaml:"cookie_prefix"`
+	CookieSecure bool   `yaml:"cookie_secure"`
+	CookieExpire int    `yaml:"cookie_expire"`
+	Enabled      bool   `yaml:"enable"`
 }
 
 // ServicesConfig config for other services
