@@ -43,6 +43,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"sync"
 
 	"qiniu.com/www/utils/oauth/time"
 )
@@ -137,9 +138,6 @@ type ErrorResponse struct {
 //
 // It will automatically refresh the Token if it can,
 // updating the supplied Token in place.
-// 注意:
-// - Transport 不是并发安全的对象，不能在并发环境中直接使用
-// - Transport 使用乐观的 Token 更新策略，即如果 Token 未过期就使用，可能遇到请求发到服务端时 Token 恰好过期的情况
 type Transport struct {
 	*Config
 	*Token
@@ -148,6 +146,7 @@ type Transport struct {
 	// It will default to http.DefaultTransport if nil.
 	// (It should never be an oauth.Transport.)
 	Transport http.RoundTripper
+	mu        sync.Mutex
 }
 
 // Exchange takes user & passwd and gets access Token from the remote server.
@@ -251,6 +250,11 @@ func (t *Transport) Exchange(code string) (tok *Token, code1 int, err error) {
 	return
 }
 
+type ctxHeaderKey struct{}
+
+// CtxHeaderMarker header key in http context
+var CtxHeaderMarker = &ctxHeaderKey{}
+
 // RoundTrip executes a single HTTP transaction using the Transport's
 // Token as authorization headers.
 func (t *Transport) RoundTrip(req *http.Request) (resp *http.Response, err error) {
@@ -263,13 +267,26 @@ func (t *Transport) RoundTrip(req *http.Request) (resp *http.Response, err error
 
 	// Refresh the Token if it has expired.
 	if t.expired() {
-		if _, err := t.refresh(); err != nil {
-			return nil, err
+		t.mu.Lock()
+		if t.expired() {
+			if _, err := t.refresh(); err != nil {
+				t.mu.Unlock()
+				return nil, err
+			}
 		}
+		t.mu.Unlock()
 	}
 
 	// Make the HTTP request.
 	req.Header.Set("Authorization", "Bearer "+t.AccessToken)
+	if req.Context() != nil && req.Context().Value(CtxHeaderMarker) != nil {
+		if m, ok := req.Context().Value(CtxHeaderMarker).(http.Header); ok {
+			for k, v := range m {
+				req.Header.Set(k, strings.Join(v, ","))
+			}
+		}
+	}
+
 	return t.transport().RoundTrip(req)
 }
 
@@ -278,10 +295,7 @@ func (t *Transport) NestedObject() interface{} {
 }
 
 func (t *Token) expired() bool {
-	if t.TokenExpiry == 0 {
-		return false
-	}
-	return t.TokenExpiry <= time.Seconds()
+	return t.TokenExpiry > 0 && t.TokenExpiry-10 <= time.Seconds()
 }
 
 // Client returns an *http.Client that makes OAuth-authenticated requests.

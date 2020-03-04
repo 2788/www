@@ -184,6 +184,19 @@
   version = "1.0.1"
 
 [[projects]]
+  branch = "develop"
+  digest = "1:7583a2843947a50d02ae1913d5ffc083f3137e8ec3cbbc24b08664d946b0682b"
+  name = "github.com/qbox/pay-sdk"
+  packages = [
+    "base/account",
+    "base/header",
+    "base/oauth",
+    "base/time",
+  ]
+  pruneopts = "UT"
+  revision = "1d6268e0e6ea0a7f818f9637dfca8168bb3c26e4"
+
+[[projects]]
   digest = "1:04457f9f6f3ffc5fea48e71d62f2ca256637dee0a04d710288e27e05c8b41976"
   name = "github.com/sirupsen/logrus"
   packages = ["."]
@@ -250,6 +263,7 @@
     "github.com/gin-contrib/sessions/redis",
     "github.com/gin-gonic/gin",
     "github.com/go-redis/redis",
+    "github.com/qbox/pay-sdk/base/account",
     "github.com/sirupsen/logrus",
     "github.com/x-cray/logrus-prefixed-formatter",
     "gopkg.in/yaml.v2",

@@ -4,11 +4,11 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
+	pacc "github.com/qbox/pay-sdk/base/account"
 	"github.com/sirupsen/logrus"
 	"qiniu.com/www/controllers/middlewares"
 	"qiniu.com/www/env/config"
 	"qiniu.com/www/service/account"
-	"qiniu.com/www/service/gaea"
 )
 
 // InitAppEngine Init gin route engine
@@ -24,9 +24,11 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 		[]byte("develop-www"),
 	)
 	if err != nil {
+		l.Errorf("<appengine.InitAppEngine> redis.NewStore() failed, err: %s.", err)
 		return app
 	}
 	store.Options(sessions.Options{MaxAge: 10000000000})
+
 	app.Use(
 		gin.Recovery(),
 		middlewares.GetReqidMiddleware(),
@@ -34,20 +36,33 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 		middlewares.GetLogReqMiddleware(l),
 		sessions.Sessions("www", store),
 	)
-	accAdminService := initAccAdminService(cfg)
-	gaeaService := gaea.NewGaeaAdminService(cfg.Services.GaeaHost, accAdminService.Client(), l)
+
+	ssoService, err := initAccSSOService(cfg)
+	if err != nil {
+		l.Errorf("<appengine.InitAppEngine> initAccSSOService() failed, err: %s.", err)
+		return app
+	}
 	env.Cfg = cfg
-	env.AccAdminService = accAdminService
-	env.GaeaAdminService = gaeaService
+	// TODO gaeaService adminService
+	env.SSOService = ssoService
 	return app
 }
 
-func initAccAdminService(cfg *config.Config) account.AdminService {
-	return account.NewAdminService(
-		cfg.Acc.Host,
-		cfg.Acc.ClientID,
-		cfg.Acc.ClientSecret,
-		cfg.Acc.Username,
-		cfg.Acc.Password,
-	)
+func initAccSSOService(cfg *config.Config) (account.SSOService, error) {
+	accTr, err := pacc.NewTransport(&pacc.AccConfig{
+		Host:         cfg.Acc.Host,
+		UserName:     cfg.Acc.Username,
+		Password:     cfg.Acc.Password,
+		ClientID:     cfg.Acc.ClientID,
+		ClientSecret: cfg.Acc.ClientSecret,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	return account.NewSSOService(
+		cfg.SSO.Host,
+		cfg.SSO.ClientId,
+		cfg.SSO.ClientSecret,
+		accTr), nil
 }

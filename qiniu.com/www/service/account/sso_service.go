@@ -5,6 +5,8 @@ import (
 	"crypto/sha512"
 	"encoding/base64"
 	"encoding/hex"
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -25,6 +27,8 @@ const (
 type (
 	SSOService interface {
 		SSODecodeCookieValue(value string) (raw string, createdAt time.Time, ok bool)
+		BuildLoginURL() url.Values
+		UidBySid(cookieSsid string) (*SSOUserInfo, error)
 	}
 
 	ssoService struct {
@@ -34,6 +38,15 @@ type (
 		// 如果你是使用的共享cookie的方式来做SSO的话，这个值需要配置成跟SSO相同。
 		// 如果你使用的是token的方式，那么这个可以不需要配置
 		cookieSecret string
+	}
+
+	SSOUserInfo struct {
+		Uid uint32 `json:"uid"`
+	}
+
+	SSOError struct {
+		Code    int    `json:"code"`
+		Message string `json:"message"`
 	}
 )
 
@@ -83,4 +96,45 @@ func (s *ssoService) SSODecodeCookieValue(value string) (raw string, createdAt t
 	createdAt = time.Unix(0, vTime)
 	ok = true
 	return
+}
+
+func (s *ssoService) BuildLoginURL() url.Values {
+	query := url.Values{}
+	query.Set("client_id", s.clientID)
+	query.Set("redirect", s.host)
+
+	return query
+}
+
+func (s *ssoService) UidBySid(cookieSsid string) (*SSOUserInfo, error) {
+	query := url.Values{}
+	query.Set("client_id", s.clientID)
+	if cookieSsid != "" {
+		query.Set("ssid", cookieSsid)
+	}
+
+	url := fmt.Sprintf("%s/uinfo/session?%s", s.host, query.Encode())
+	resp, err := s.adminClient.Get(url)
+	if err != nil {
+		return nil, err
+	}
+
+	// 后期，把所有resp的处理统一封个方法
+	ret := &SSOUserInfo{}
+	ssoErr := &SSOError{}
+	if resp.StatusCode == 200 || resp.StatusCode == 204 {
+		err = json.NewDecoder(resp.Body).Decode(ret)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		err := json.NewDecoder(resp.Body).Decode(ssoErr)
+		if err != nil {
+			return nil, err
+		}
+		err = fmt.Errorf("%d: %s", ssoErr.Code, ssoErr.Message)
+		return nil, err
+	}
+
+	return ret, nil
 }

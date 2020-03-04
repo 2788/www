@@ -7,17 +7,15 @@ import (
 )
 
 func InitRouters(app *gin.Engine) {
-
-	userCtrl := user.NewUserController(env.AccAdminService, env.GaeaAdminService)
+	ssoCtrl := user.NewSSOController(env.SSOService)
 
 	v1 := app.Group("/v1")
 	{
-		r := v1.Group("/user")
+		r := v1.Group("/sso")
 
-		r.GET("/signin", userCtrl.SignIn)
+		r.GET("/signin", ssoCtrl.SignIn)
 	}
 	{
 		app.Use(middlewares.TokenAuth([]byte(env.Cfg.Auth.SecretKey), env.Cfg.Auth.MockToken))
-		// TODO  路由细化分类
 	}
 }

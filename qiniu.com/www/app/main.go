@@ -2,14 +2,11 @@ package main
 
 import (
 	"flag"
-
-	"qiniu.com/www/env/config"
-
 	"fmt"
 
 	"github.com/sirupsen/logrus"
 	"qiniu.com/www/env"
-	"qiniu.com/www/utils/logger"
+	"qiniu.com/www/env/config"
 )
 
 func main() {
@@ -27,7 +24,7 @@ func main() {
 		return
 	}
 
-	logger.InitLogger(nil, true, false)
+	// logger.InitLogger(nil, true, false)
 
 	app := env.InitAppEngine(logrus.StandardLogger(), conf)
 

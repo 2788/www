@@ -1,10 +1,12 @@
 package controllers
 
 import (
-	"qiniu.com/www/service/cache"
+	"net/http"
 )
 
 // Base Controller base
 type Base struct {
-	Cache cache.Cache
+	// Cache cache.Cache
+	Req *http.Request
+	Rw  http.ResponseWriter
 }

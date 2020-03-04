@@ -53,10 +53,6 @@ type SSOConfig struct {
 	ClientId     string `yaml:"client_id"`
 	ClientSecret string `yaml:"client_secret"`
 	CookieSecret string `yaml:"cookie_secret"`
-	CookiePrefix string `yaml:"cookie_prefix"`
-	CookieSecure bool   `yaml:"cookie_secure"`
-	CookieExpire int    `yaml:"cookie_expire"`
-	Enabled      bool   `yaml:"enable"`
 }
 
 // ServicesConfig config for other services
