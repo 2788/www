@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 
 	"github.com/sirupsen/logrus"
 	"qiniu.com/www/env"
@@ -24,16 +23,13 @@ func main() {
 		return
 	}
 
-	// logger.InitLogger(nil, true, false)
-
 	app := env.InitAppEngine(logrus.StandardLogger(), conf)
 
 	env.InitRouters(app)
 
-	fmt.Println("run on:", conf.Server.Port)
 	err = app.Run(conf.Server.Port)
 	if err != nil {
-		fmt.Println(err)
+		logrus.Errorf("www-develop service run with err, err:%s.", err)
 		return
 	}
 }
