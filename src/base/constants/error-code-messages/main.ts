@@ -3,7 +3,7 @@
 * @author jiayizhen <jiayizhen@qiniu.com>
 */
 
-export const helpWords = '请创建工单获取帮助'
+// export const helpWords = '请创建工单获取帮助'
 
 export default {
   '5000': '网络连接失败，请稍后重试',

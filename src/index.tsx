@@ -1,21 +1,29 @@
-/*
+/**
  * @file entry file
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author nighca <nighca@live.cn>
  */
 
-import './global/polyfill'
-import 'react-hot-loader/patch'
+import './utils/polyfills'
 
-import * as React from 'react'
+import 'react-hot-loader/patch'
+import { setConfig } from 'react-hot-loader'
+import React from 'react'
 import * as ReactDOM from 'react-dom'
+import { configure } from 'mobx'
+import * as moment from 'moment'
+import 'moment/locale/zh-cn'
 
 import App from './components/App'
-import boot from './global/boot'
 
-import './global/style.less'
+import './utils/styles/boot.less'
 
-// 初始化行为
-boot()
+configure({ enforceActions: 'observed' })
+
+setConfig({
+  showReactDomPatchNotification: false
+})
+
+moment.locale('zh-cn')
 
 // 渲染 APP
 const rootEl = document.getElementById('main-view-wrapper')

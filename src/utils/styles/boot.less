@@ -3,9 +3,8 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-@import "~portal-base/common/utils/style/index.less";
-@import "~react-icecream/style/index.less";
-@import "./variables.less";
+@import "~normalize.css/normalize.css";
+@import "~utils/styles/index.less";
 
 .container {
   padding-right: 15px;
@@ -675,33 +674,34 @@
   }
 }
 
+// TODO: url cdn
 @font-face {
   font-family: 'Alright Sans LP';
-  src: url('./fonts/alrightsanslp-regular-1v7-webfont.eot');
-  src: url('./fonts/alrightsanslp-regular-1v7-webfont.eot?#iefix') format('embedded-opentype'),
-  url('./fonts/alrightsanslp-regular-1v7-webfont.woff2') format('woff2'),
-  url('./fonts/alrightsanslp-regular-1v7-webfont.woff') format('woff'),
-  url('./fonts/alrightsanslp-regular-1v7-webfont.ttf') format('truetype'),
-  url('./fonts/alrightsanslp-regular-1v7-webfont.svg') format('svg');
+  src: url('~static/fonts/alrightsanslp-regular-1v7-webfont.eot');
+  src: url('~static/fonts/alrightsanslp-regular-1v7-webfont.eot?#iefix') format('embedded-opentype'),
+  url('~static/fonts/alrightsanslp-regular-1v7-webfont.woff2') format('woff2'),
+  url('~static/fonts/alrightsanslp-regular-1v7-webfont.woff') format('woff'),
+  url('~static/fonts/alrightsanslp-regular-1v7-webfont.ttf') format('truetype'),
+  url('~static/fonts/alrightsanslp-regular-1v7-webfont.svg') format('svg');
 }
 @font-face {
   font-family: 'Alright Sans LP';
-  src: url('./fonts/alrightsanslp-medium-1v7-webfont.eot');
-  src: url('./fonts/alrightsanslp-medium-1v7-webfont.eot?#iefix') format('embedded-opentype'),
-  url('./fonts/alrightsanslp-medium-1v7-webfont.woff2') format('woff2'),
-  url('./fonts/alrightsanslp-medium-1v7-webfont.woff') format('woff'),
-  url('./fonts/alrightsanslp-medium-1v7-webfont.ttf') format('truetype'),
-  url('./fonts/alrightsanslp-medium-1v7-webfont.svg') format('svg');
+  src: url('~static/fonts/alrightsanslp-medium-1v7-webfont.eot');
+  src: url('~static/fonts/alrightsanslp-medium-1v7-webfont.eot?#iefix') format('embedded-opentype'),
+  url('~static/fonts/alrightsanslp-medium-1v7-webfont.woff2') format('woff2'),
+  url('~static/fonts/alrightsanslp-medium-1v7-webfont.woff') format('woff'),
+  url('~static/fonts/alrightsanslp-medium-1v7-webfont.ttf') format('truetype'),
+  url('~static/fonts/alrightsanslp-medium-1v7-webfont.svg') format('svg');
   font-weight: 500;
 }
 @font-face {
   font-family: 'Alright Sans LP';
-  src: url('./fonts/alrightsanslp-bold-1v7-webfont.eot');
-  src: url('./fonts/alrightsanslp-bold-1v7-webfont.eot?#iefix') format('embedded-opentype'),
-  url('./fonts/alrightsanslp-bold-1v7-webfont.woff2') format('woff2'),
-  url('./fonts/alrightsanslp-bold-1v7-webfont.woff') format('woff'),
-  url('./fonts/alrightsanslp-bold-1v7-webfont.ttf') format('truetype'),
-  url('./fonts/alrightsanslp-bold-1v7-webfont.svg') format('svg');
+  src: url('~static/fonts/alrightsanslp-bold-1v7-webfont.eot');
+  src: url('~static/fonts/alrightsanslp-bold-1v7-webfont.eot?#iefix') format('embedded-opentype'),
+  url('~static/fonts/alrightsanslp-bold-1v7-webfont.woff2') format('woff2'),
+  url('~static/fonts/alrightsanslp-bold-1v7-webfont.woff') format('woff'),
+  url('~static/fonts/alrightsanslp-bold-1v7-webfont.ttf') format('truetype'),
+  url('~static/fonts/alrightsanslp-bold-1v7-webfont.svg') format('svg');
   font-weight: 600;
 }
 
@@ -757,28 +757,4 @@ img {
 }
 .img-circle {
   border-radius: 50%;
-}
-
-// TODO: remove me（icecream should have done this）
-.ant-tabs-nav .ant-tabs-tab {
-  padding: 1em 0;
-  margin-right: 3em;
-}
-
-.ant-tabs-bar {
-  border-bottom-width: 2px;
-}
-
-.ant-tabs-nav-container {
-  margin-bottom: -2px;
-}
-
-.ant-tooltip-content {
-  .ant-tooltip-inner {
-    max-width: 350px;
-  }
-}
-
-.ant-pagination-prev, .ant-pagination-next {
-  vertical-align: middle;
 }

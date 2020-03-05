@@ -6,7 +6,7 @@ const mockDatas = new Map<RegExp, any>()
 class MockRepsonse extends Response {
   body: any
 
-  constructor(data) {
+  constructor(data: any) {
     super()
     this.body = data
   }
@@ -28,7 +28,7 @@ export function addMockData(input: string, data: any) {
   mockDatas.set(pattern, data)
 }
 
-export function fetch(input: RequestInfo, init?: RequestInit): Promise<Response> {
+export function fetch(input: RequestInfo, _init?: RequestInit): Promise<Response> {
   const patterns = Array.from(mockDatas.keys()).reverse()
 
   const hit = patterns.find((pattern) => !!input.toString().match(pattern))

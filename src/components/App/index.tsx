@@ -3,24 +3,24 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import * as React from 'react'
+import React from 'react'
 import { observer } from 'mobx-react'
 import { hot } from 'react-hot-loader/root'
 
-import Provider from 'portal-base/common/components/Provider'
-import { Route, Switch } from 'portal-base/common/components/Router'
-import NotFound from 'portal-base/common/components//NotFound'
+import { Route, Switch } from 'qn-fe-core/router'
+import NotFound from 'base/components/NotFound'
 
-import { basename } from '../../constants/route'
+import { basename } from 'constants/route'
+import Provider from 'components/common/Provider'
 
 // Layout
-import Layout from '../Layout'
+import Layout from 'components/Layout'
 // Home
-import Home from '../Home'
+import Home from 'components/Home'
 // All Activity Page
-import AllActivity from '../AllActivity'
+import AllActivity from 'components/AllActivity'
 // Activity Page
-import Activity from '../Activity'
+import Activity from 'components/Activity'
 
 @hot
 @observer

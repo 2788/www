@@ -23,11 +23,8 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 fec-builder --version
 > 1.15.1
 
-# portal-base
-v2.7.0
-
 # qn-fe-core
-v1.5.1
+v1.10.0
 ```
 
 ### 运行项目
@@ -47,10 +44,10 @@ npm i fec-builder -g
 # 安装依赖
 yarn
 # 启动本地服务
-fec-builder -p 8080
+yarn run dev
 # 本地访问地址
-localhost:8080/marketing
-# 会重定向到 localhost:8080/marketing/all
+http://localhost:8080/marketing
+# 会重定向到 http://localhost:8080/marketing/all
 ```
 
 #### docker 镜像（适合持续集成环境使用）
@@ -82,6 +79,28 @@ npm 包与 docker 镜像的对比，优点：
 
 ```src/static``` 文件夹中保存着项目用到的静态资源
 
-- ```src/static/iconfont``` 文件夹保存项目用到的图标（svg 格式），svg 文件的来源为 iconfont [Ant Design 官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402)，将需要用到的 svg 文件下载到本地后，用 [icomoon](https://icomoon.io/app/#/select) 转换为字体库文件，然后在 ```src/global``` 中引入
+- ```src/static/iconfonts``` 文件夹保存项目用到的图标（svg 格式），svg 文件的来源为 iconfont [Ant Design 官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402)，将需要用到的 svg 文件下载到本地后，用 [icomoon](https://icomoon.io/app/#/select) 转换为字体库文件，然后在 ```src/global``` 中引入
 
 - ```src/static/images``` 文件夹保存项目用到的图片，不要直接引用本地的图片资源，将图片上传到 bucket 中，直接引用图片的外链访问地址即可
+
+- ```src/static/fonts``` 普通字体文件
+
+- ```src/static/icons``` svg icons
+
+### 组件结构
+
+- 参考 `src/components/PageBanner`，比较自由、没什么约束
+
+- 新加组件需要在 `src/components/common/Renderer/index.tsx` 和 `src/apis/component` 注册一下
+
+### deploy 流程 TODO
+
+1. 更新了代码库
+2. 触发发布事件，可以是 merge 或打 tag 自动触发，也可以是人工操作；需要区分线上和线下环境
+3. build 整个项目（包括所有组件和 renderer），产物上传 cdn
+4. 拿到 cdn 地址，上报后端，代码库发布完成
+5. 编辑器（portal.io）只使用最新发布的代码库版本
+6. 因此编辑器每当发布一个活动页的时候，会把当前活动页跟当前最新版的代码库绑定
+7. 但是在下次重新发布之前，这个版本会维持稳定，直到下一次重新编辑（因此更新代码库不会直接影响已发布的活动页）
+8. 因此如果考虑到某些活动页不是一次性的（而是会重新经过编辑器维护、修改的），那么组件、编辑器、配置等在升级要尽量做到兼容，不兼容就新增一个组件
+9. 重新发布一个已有活动页的时候，如果代码库更新了，给用户的 url 是否需要维持不变。。？

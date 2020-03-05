@@ -3,18 +3,12 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import * as React from 'react'
+import { useEffect } from 'react'
 import { observer } from 'mobx-react'
+import { useRouterStore } from 'qn-fe-core/router'
 
-import routerStore from 'portal-base/common/stores/router'
-
-@observer
-export default class Home extends React.Component<any, any> {
-  componentDidMount() {
-    routerStore.replace('/marketing/all')
-  }
-
-  render() {
-    return null
-  }
-}
+export default observer(function Home() {
+  const routerStore = useRouterStore()
+  useEffect(() => routerStore.replace('/marketing/all'), [])
+  return null
+})

@@ -3,12 +3,14 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import * as React from 'react'
+import React from 'react'
 import { observer } from 'mobx-react'
 
 import './style.less'
 
-import { ActivityStore } from '../../stores/activity'
+import { ActivityStore } from 'stores/activity'
+
+import Renderer from 'components/common/Renderer'
 
 export interface IActivityProps {
   id: string
@@ -28,6 +30,7 @@ export default class Activity extends React.Component<IActivityProps, any> {
     return (
       <div className="activity-wrapper">
         <p>活动 ID：{ activityID }</p>
+        <Renderer />
       </div>
     )
   }

@@ -2,11 +2,13 @@
   "name": "www-marketing",
   "version": "0.0.1",
   "description": "Qiniu www marketing substation",
+  "author": "qiniu",
   "scripts": {
     "lint": "tslint \"./src/**/*.ts\"",
     "test": "jest",
-    "validate": "npm run lint && npm run test",
-    "dev": "fec-builder -p 8080"
+    "validate": "yarn run lint && yarn run test",
+    "dev": "fec-builder -p 8080",
+    "build": "fec-builder --verbose -e production build"
   },
   "keywords": [
     "www",
@@ -14,48 +16,61 @@
     "marketing"
   ],
   "dependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/react": "^16.8.14",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-transition-group": "^2.0.16",
+    "autobind-decorator": "^2.4.0",
+    "classnames": "^2.2.6",
+    "detect-browser": "^4.8.0",
+    "formstate-x": "^1.0.9",
     "history": "^3.0.0",
-    "lodash": "~4.11.1",
+    "immer": "~1.8.2",
+    "lodash": "~4.17.15",
     "mobx": "^4.0.0",
     "mobx-react": "^6.0.0",
-    "mobx-react-devtools": "^6.1.1",
     "moment": "^2.24.0",
-    "portal-base": "git+ssh://git@github.com/qbox/portal-base.git#v2.11.3",
-    "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.8.0",
+    "normalize.css": "^8.0.1",
+    "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.10.0",
+    "querystring": "^0.2.0",
     "react": "~16.8.6",
     "react-dom": "~16.8.6",
     "react-ga": "^2.7.0",
     "react-hot-loader": "^4.8.0",
     "react-icecream": "^1.3.1",
     "react-transition-group": "^2.6.1",
+    "sa-sdk-javascript": "1.13.14",
     "uuid": "^2.0.2",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "whatwg-url": "^7.0.0"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.11.0",
+    "@types/classnames": "^2.2.9",
     "@types/history": "3.2.2",
+    "@types/jest": "^24.0.11",
     "@types/lodash": "^4.14.123",
     "@types/node": "^8.0.0",
-    "@types/react": "^16.8.14",
+    "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.4",
+    "@types/react-test-renderer": "~16.8.0",
     "@types/react-transition-group": "^2.0.16",
+    "@types/whatwg-url": "^6.4.0",
     "enzyme": "^3.10.0",
     "jest": "^24.5.0",
+    "moment-timezone": "^0.5.14",
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^16.8.4",
     "ts-jest": "^24.0.0",
     "tslint": "^5.5.0",
-    "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "~3.7.2",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "typescript": "~3.4.5",
     "typescript-babel-jest": "^1.0.5"
   },
   "engines": {
     "node": ">=8.x"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qbox/bo.git"
+  },
+  "license": "ISC",
   "jest": {
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/typescript-babel-jest"

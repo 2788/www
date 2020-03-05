@@ -3,11 +3,11 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import { observable, autorun } from 'mobx'
+import { observable, autorun, runInAction } from 'mobx'
 
 import Store from 'qn-fe-core/store'
 
-import { IActivityProps } from '../components/Activity'
+import { IActivityProps } from 'components/Activity'
 
 export class ActivityStore extends Store {
 
@@ -18,7 +18,9 @@ export class ActivityStore extends Store {
 
     this.addDisposer(autorun(() => {
       const props: IActivityProps = getProps()
-      this.activityID = props.id || ''
+      runInAction(() => {
+        this.activityID = props.id || ''
+      })
     }))
   }
 }

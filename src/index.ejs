@@ -1,16 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <title state-data-title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <%
+      // mock TODO: 后端渲染
+      const pageData = {
+        id: 123,
+        title: 'marketing',
+        keywords: 'keywords',
+        description: 'description'
+        // TODO: others
+      }
+    %>
+    <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 此标签之前不能有其他 script 和 link -->
-    <!-- 禁止移动端页面缩放 -->
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title state-data-title><%= pageData.title %></title>
+    <meta name="keywords" content="<%= pageData.keywords %>">
+    <meta name="description" content="<%= pageData.description %>">    <!-- 禁止移动端页面缩放 -->
     <link rel="shortcut icon" href="https://qiniu.staticfile.org/favicon.ico" type="image/vnd.microsoft.icon">
   </head>
   <body>
+
+    <!--[if lt IE 10]>
+    <div class="old-browser">
+      <a href="http://browsehappy.com/">
+        <img src="static/images/older-browsers.png" alt="您的浏览器版本过低，为了保障您的访问安全，以及获得更友好的用户体验，建议您升级您的浏览器到最新版本。">
+      </a>
+    </div>
+    <![endif]-->
 
     <div id="main-view-wrapper" class="main-view-wrapper">
     </div>
@@ -18,5 +36,12 @@
     <% if (process.env.NODE_ENV === "development") { %>
     <script src="/webpack-dev-server.js"></script>
     <% } %>
+
+    <!-- TODO: 实际上可能不需要这个 -->
+    <!--<script src="<%= pageData.rendererCdnUrlWithVersionBuiltWhileDeploy %>"></script>-->
+
+    <script>
+      window.pageData = (<%= JSON.stringify(pageData) %>)
+    </script>
   </body>
 </html>
