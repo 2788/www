@@ -8,12 +8,10 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"qiniu.com/www/controllers"
 	"qiniu.com/www/service/account"
 )
 
 type SSOLogin struct {
-	controllers.Base
 	SSOService account.SSOService
 }
 
@@ -32,13 +30,13 @@ func (s *SSOLogin) LoginRequired(ctx *gin.Context) {
 	defer func() {
 		if !pass {
 			location := fmt.Sprintf("%s/?%s", query.Get("redirect"), query.Encode())
-			http.Redirect(s.Rw, s.Req, location, http.StatusFound)
+			http.Redirect(ctx.Writer, ctx.Request, location, http.StatusFound)
 		} else {
 			ctx.Next()
 		}
 	}()
 
-	ssid, err := s.Req.Cookie("SSID")
+	ssid, err := ctx.Request.Cookie("SSID")
 	if err != nil || ssid == nil {
 		return
 	}
