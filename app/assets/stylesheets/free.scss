@@ -88,6 +88,11 @@
     &.background-mirror {
       background-image: image-url("free/icon-mirror.png");
     }
+    &.background-sms {
+      background-size: 1.20rem 1.20rem;
+      background-position: calc(100% - 0.20rem) calc(100% - 0.20rem);
+      background-image: image-url("free/icon-sms.png");
+    }
   }
 }
 
