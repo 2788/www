@@ -330,7 +330,7 @@ en:
               signlink: "/qvm/vm/instance/create"
               jumphost: "portal"
             - title: "云短信"
-              desc: "支持快速发送验证码、短信通知和营销推广短信，服务范围覆盖国内、港澳台及全球 200 多个国家和地区，到达率高达 99%。"
+              desc: "支持快速发送验证码短信、通知短信和营销推广短信，服务范围覆盖国内、港澳台及全球 200 多个国家和地区，到达率高达 99%。"
               class: "background-sms"
               id: "free-events-sms"
               morelink: "/products/sms"
