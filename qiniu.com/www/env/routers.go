@@ -2,17 +2,16 @@ package env
 
 import (
 	"github.com/gin-gonic/gin"
-	"qiniu.com/www/controllers/user"
+	"qiniu.com/www/controllers/middlewares"
 )
 
 func InitRouters(app *gin.Engine) {
-	ssoCtrl := user.NewSSOController(env.SSOService)
+	ssoCtrl := middlewares.NewSSOController(env.SSOService)
 
 	v1 := app.Group("/v1")
 	{
-		r := v1.Group("/sso")
-
-		r.GET("/signin", ssoCtrl.SignIn)
+		v1.Use(ssoCtrl.LoginRequired)
+		// TODO
 	}
 
 }

@@ -1,4 +1,4 @@
-package user
+package middlewares
 
 import (
 	"fmt"
@@ -7,22 +7,23 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 	"qiniu.com/www/controllers"
 	"qiniu.com/www/service/account"
 )
 
-type SSOSignin struct {
+type SSOLogin struct {
 	controllers.Base
 	SSOService account.SSOService
 }
 
-func NewSSOController(service account.SSOService) *SSOSignin {
-	return &SSOSignin{
+func NewSSOController(service account.SSOService) *SSOLogin {
+	return &SSOLogin{
 		SSOService: service,
 	}
 }
 
-func (s *SSOSignin) SignIn(ctx *gin.Context) {
+func (s *SSOLogin) LoginRequired(ctx *gin.Context) {
 	var (
 		pass  bool
 		query = s.SSOService.BuildLoginURL()
@@ -33,11 +34,7 @@ func (s *SSOSignin) SignIn(ctx *gin.Context) {
 			location := fmt.Sprintf("%s/?%s", query.Get("redirect"), query.Encode())
 			http.Redirect(s.Rw, s.Req, location, http.StatusFound)
 		} else {
-			redirect := query.Get("redirect")
-			if redirect == "" {
-				redirect = "/"
-			}
-			http.Redirect(s.Rw, s.Req, redirect, http.StatusFound)
+			ctx.Next()
 		}
 	}()
 
@@ -52,6 +49,7 @@ func (s *SSOSignin) SignIn(ctx *gin.Context) {
 
 	cookieSsid, _, ok := s.SSOService.SSODecodeCookieValue(ssid.Value)
 	if !ok || cookieSsid == "" {
+		logrus.Errorf("<SSOLogin.LoginRequired> SSODecodeCookieValue(%s) failed, err:%s.", ssid.Value, err)
 		return
 	}
 
@@ -62,10 +60,10 @@ func (s *SSOSignin) SignIn(ctx *gin.Context) {
 
 	ssoInfo, err := s.SSOService.UidBySid(cookieSsid)
 	if err != nil {
+		logrus.Errorf("<SSOLogin.LoginRequired> SSOService.UidBySid(%s) failed, err:%s.", cookieSsid, err)
 		return
 	}
 	session.Set("SSID", cookieSsid)
 	session.Set("uid", ssoInfo.Uid)
-
-	return
+	pass = true
 }
