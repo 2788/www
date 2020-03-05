@@ -15,10 +15,9 @@ import (
 func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 	gin.SetMode(string(cfg.Server.Mode))
 	app := gin.New()
-	// TODO 后面再细化
 	store, err := redis.NewStore(
-		10,
-		"tcp",
+		cfg.Redis.Size,
+		cfg.Redis.Networt,
 		cfg.Redis.Addrs[0],
 		cfg.Redis.Password,
 		[]byte("develop-www"),
@@ -27,7 +26,7 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 		l.Errorf("<appengine.InitAppEngine> redis.NewStore() failed, err: %s.", err)
 		return app
 	}
-	store.Options(sessions.Options{MaxAge: 10000000000})
+	store.Options(sessions.Options{MaxAge: cfg.Session.MaxAge})
 
 	app.Use(
 		gin.Recovery(),

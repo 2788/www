@@ -9,24 +9,17 @@ import (
 // Config config for app
 type Config struct {
 	Server   ServerConfig   `yaml:"server"`
-	Auth     APIAuth        `yaml:"auth"`
 	Redis    RedisConfig    `yaml:"redis"`
 	Acc      AccConfig      `yaml:"acc"`
 	SSO      SSOConfig      `yaml:"sso"`
 	Services ServicesConfig `yaml:"services"`
+	Session  SessionConfig  `yaml:"session"`
 }
 
 // ServerConfig config for server
 type ServerConfig struct {
 	Port string  `yaml:"port"`
 	Mode RunMode `yaml:"mode"`
-}
-
-// APIAuth config for api auth
-type APIAuth struct {
-	MockToken      bool   `yaml:"mock_token"`
-	SecretKey      string `yaml:"secret_key"`
-	TokenExpiresIn int    `yaml:"token_expires_in"`
 }
 
 // RedisConfig config for redis service
@@ -36,6 +29,12 @@ type RedisConfig struct {
 	Failover   bool     `yaml:"failover"`
 	Password   string   `yaml:"password"`
 	DB         int      `yaml:"db"`
+	Size       int      `yaml:"size"`
+	Networt    string   `yaml:"network"`
+}
+
+type SessionConfig struct {
+	MaxAge int `yaml:"max_age"`
 }
 
 // AccConfig config for acc auth
@@ -78,17 +77,4 @@ func ParseConfig(file string) (*Config, error) {
 	}
 
 	return conf, nil
-}
-
-// Valid checks redis config is valid or not
-func (c *RedisConfig) Valid() bool {
-	if len(c.Addrs) == 0 {
-		return false
-	}
-
-	if c.Failover && c.MasterName == "" {
-		return false
-	}
-
-	return true
 }
