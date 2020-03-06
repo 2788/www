@@ -15,6 +15,9 @@ type SSOLogin struct {
 	SSOService account.SSOService
 }
 
+const SESSION_SSID = "SSID"
+const SESSION_UID = "uid"
+
 func NewSSOController(service account.SSOService) *SSOLogin {
 	return &SSOLogin{
 		SSOService: service,
@@ -30,20 +33,20 @@ func (s *SSOLogin) LoginRequired(ctx *gin.Context) {
 	defer func() {
 		if !pass {
 			location := fmt.Sprintf("%s/?%s", query.Get("redirect"), query.Encode())
-			http.Redirect(ctx.Writer, ctx.Request, location, http.StatusFound)
+			ctx.Redirect(http.StatusFound, location)
 		} else {
 			ctx.Next()
 		}
 	}()
 
-	ssid, err := ctx.Request.Cookie("SSID")
+	ssid, err := ctx.Request.Cookie(SESSION_SSID)
 	if err != nil || ssid == nil {
 		return
 	}
 
 	// 从 session 中获取 ssid
 	session := sessions.Default(ctx)
-	sessionSsid := session.Get("SSID")
+	sessionSsid := session.Get(SESSION_SSID)
 
 	cookieSsid, _, ok := s.SSOService.SSODecodeCookieValue(ssid.Value)
 	if !ok || cookieSsid == "" {
@@ -61,7 +64,7 @@ func (s *SSOLogin) LoginRequired(ctx *gin.Context) {
 		logrus.Errorf("<SSOLogin.LoginRequired> SSOService.UidBySid(%s) failed, err:%s.", cookieSsid, err)
 		return
 	}
-	session.Set("SSID", cookieSsid)
-	session.Set("uid", ssoInfo.Uid)
+	session.Set(SESSION_SSID, cookieSsid)
+	session.Set(SESSION_UID, ssoInfo.Uid)
 	pass = true
 }
