@@ -1,8 +1,8 @@
 package env
 
 import (
-	"qiniu.com/www/env/config"
-	"qiniu.com/www/service/account"
+	"github.com/qbox/www/janus/env/config"
+	"github.com/qbox/www/janus/service/account"
 )
 
 var env GlobalEnv

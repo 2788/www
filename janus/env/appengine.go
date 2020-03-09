@@ -5,10 +5,10 @@ import (
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
 	pacc "github.com/qbox/pay-sdk/base/account"
+	"github.com/qbox/www/janus/controllers/middlewares"
+	"github.com/qbox/www/janus/env/config"
+	"github.com/qbox/www/janus/service/account"
 	"github.com/sirupsen/logrus"
-	"qiniu.com/www/controllers/middlewares"
-	"qiniu.com/www/env/config"
-	"qiniu.com/www/service/account"
 )
 
 // InitAppEngine Init gin route engine

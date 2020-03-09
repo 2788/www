@@ -2,7 +2,7 @@ package env
 
 import (
 	"github.com/gin-gonic/gin"
-	"qiniu.com/www/controllers/middlewares"
+	"github.com/qbox/www/janus/controllers/middlewares"
 )
 
 func InitRouters(app *gin.Engine) {

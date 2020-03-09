@@ -7,8 +7,8 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/qbox/www/janus/service/account"
 	"github.com/sirupsen/logrus"
-	"qiniu.com/www/service/account"
 )
 
 type SSOLogin struct {
