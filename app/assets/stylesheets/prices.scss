@@ -635,6 +635,11 @@ input[type='range'] {
       padding-top: 30px;
     }
   }
+  .tab-content-pricing {
+    .table-tips {
+      top: 0;
+    }
+  }
 }
 
 @media (max-width: 768px) {
