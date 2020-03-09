@@ -36,6 +36,7 @@
           <li class="tab-prices-fusion"><a href="#tab-prices-fusion" data-toggle="tab" key="fusion">CDN</a></li>
           <li class="tab-prices-dora"><a href="#tab-prices-dora" data-toggle="tab" key="dora">智能多媒体服务</a></li>
           <li class="tab-prices-pili"><a href="#tab-prices-pili" data-toggle="tab" key="pili">直播云</a></li>
+          <li class="tab-prices-sms"><a href="#tab-prices-sms" data-toggle="tab" key="sms">云短信</a></li>
         </ul>
       </div>
       <div class="tab-content">
@@ -1996,6 +1997,232 @@
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        <section class="tab-pane" id="tab-prices-sms">
+          <div class="tab-content-caculating">
+            <div class="intro">
+              <h2 class="title-left">计费方式</h2>
+            </div>
+
+            <div class="row details">
+              <dl>
+                <dt class="icon-title icon-sms">云短信</dt>
+              </dl>
+
+              <dl>
+                <dd>云短信服务的计费方式支持预付费（资源包）和后付费（按量付费）两种，国内短信可预付费（资源包），国际 / 港澳台短信只能后付费（按量付费）。自 2019 年 12 月 10 日起，完成实名认证后，还可享受共 300 条的免费测试短信（1 年有效期）。</dd>
+              </dl>
+
+              <dl>
+                <dd>免费短信套餐包 <span class="text-huge">300</span> 条 = 验证码 <span class="text-huge">100</span> 条 + 通知 <span class="text-huge">100</span> 条 + 推广 <span class="text-huge">100</span> 条</dd>
+              </dl>
+
+              <dl>
+                <dd>注意：请您在免费额度使用完后，及时购买预付费资源包或申请开通按量计费模式，以免您的短信服务受到限制。</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="tab-content-pricing">
+            <div class="hash" id="sms-jifeifangshi" name="sms-jifeifangshi">
+              <div class="table-responsive pricing-white-bg">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th class="text-center border-right border-bottom">计费方式</th>
+                      <th class="text-center border-right border-bottom">计费规则</th>
+                      <th class="text-center border-bottom">使用方式</th>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">预付费（资源包）</td>
+                      <td class="text-center border-right">预先购买资源包，根据实际短信发送量扣除额度</td>
+                      <td class="text-center"><%= link_to "点击购买", Rails.configuration.portal_host + "/sms/resource", style: "color: #28AEDF", title: "点击购买", target: "_blank" -%></td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">后付费（按量付费）</td>
+                      <td class="text-center border-right">国际 / 港澳台短信专用，根据实际短信发送量扣除费用</td>
+                      <td class="text-center">拨打 <%= link_to "400-808-9176 转 1", "tel:400-808-9176", title: "400-808-9176 转 1", style: "color: #28AEDF", class:"tel-box" -%> 或者<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", style: "color: #28AEDF", title: "提交工单", target: "_blank" -%>申请开通和了解收费详情</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="table-tips negative-t-dot4rem">注意：国内短信支持预付费（资源包）和后付费（按量付费），国际 / 港澳台短信只支持后付费（按量付费）。</p>
+            </div>
+          </div>
+
+          <div class="tab-content-pricing">
+            <div class="intro">
+              <h2 class="title-left">价格详情</h2>
+            </div>
+            <p class="table-tips">套餐包分为固定套餐包和自定义套餐包，套餐包可用于中国大陆地区的验证码、短信通知和推广短信。</p>
+            <div class="hash" id="sms-gudingtaocanbao" name="sms-gudingtaocanbao">
+              <div class="table-responsive pricing-white-bg">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="160" class="thead-title th-init border-bottom">固定套餐包</th>
+                      <th class="border-bottom"></th>
+                      <th class="border-bottom"></th>
+                    </tr>
+                    <tr>
+                      <th class="text-center border-right border-bottom">套餐（万条）</th>
+                      <th class="text-center border-right border-bottom">套餐售价（元）</th>
+                      <th class="text-center border-bottom">套餐内单条价格（元 ／ 条）</th>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">1</td>
+                      <td class="text-center border-right">430</td>
+                      <td class="text-center">0.043</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">10</td>
+                      <td class="text-center border-right">3800</td>
+                      <td class="text-center">0.038</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">50</td>
+                      <td class="text-center border-right">18000</td>
+                      <td class="text-center">0.036</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">100</td>
+                      <td class="text-center border-right">35000</td>
+                      <td class="text-center">0.035</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="hash" id="sms-zidingyitaocanbao" name="sms-zidingyitaocanbao">
+              <div class="table-responsive pricing-white-bg">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="160" class="thead-title th-init border-bottom">自定义套餐包</th>
+                      <th class="border-bottom"></th>
+                    </tr>
+                    <tr>
+                      <th width="240" class="text-center border-right border-bottom">套餐区间（万条）</th>
+                      <th class="text-center border-right border-bottom">套餐内单条价格（元 ／ 条）</th>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">1 ≤ n < 10</td>
+                      <td class="text-center">0.043</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">10 ≤ n < 50</td>
+                      <td class="text-center">0.040</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">50 ≤ n < 100</td>
+                      <td class="text-center">0.038</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">100 ≤ n < 200</td>
+                      <td class="text-center">0.036</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">200 ≤ n< 300</td>
+                      <td class="text-center">0.035</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">n ≥ 300</td>
+                      <td class="text-center">0.034</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="hash" id="sms-feizhongguodalujiage" name="sms-feizhongguodalujiage">
+              <div class="table-responsive pricing-white-bg">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th colspan="5" class="thead-title th-init border-bottom">国际 / 港澳台短信价格<span class="grey-unit">（只支持后付费（按量付费），拨打 <%= link_to "400-808-9176 转 1", "tel:400-808-9176", title: "400-808-9176 转 1", style: "color: #28AEDF", class:"tel-box" -%> 或者<%= link_to "提交工单", "https://support.qiniu.com/tickets/category", style: "color: #28AEDF", title: "提交工单", target: "_blank" -%>申请开通和了解收费详情）</span></th>
+                    </tr>
+                    <tr>
+                      <th class="text-center border-right border-bottom">国家 / 地区</th>
+                      <th class="text-center border-right border-bottom">英文名</th>
+                      <th class="text-center border-right border-bottom">CC ISO</th>
+                      <th class="text-center border-right border-bottom">国号 / 区号</th>
+                      <th class="text-center border-right border-bottom">单价（元 / 条）</th>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">英国</td>
+                      <td class="text-center border-right">United Kingdom</td>
+                      <td class="text-center border-right">GB</td>
+                      <td class="text-center border-right">44</td>
+                      <td class="text-center">0.294</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">美国</td>
+                      <td class="text-center border-right">United States</td>
+                      <td class="text-center border-right">US</td>
+                      <td class="text-center border-right">1</td>
+                      <td class="text-center">0.062</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">香港</td>
+                      <td class="text-center border-right">Hong Kong</td>
+                      <td class="text-center border-right">HK</td>
+                      <td class="text-center border-right">852</td>
+                      <td class="text-center">0.402</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">澳门</td>
+                      <td class="text-center border-right">Macau</td>
+                      <td class="text-center border-right">MO</td>
+                      <td class="text-center border-right">853</td>
+                      <td class="text-center">0.270</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">台湾</td>
+                      <td class="text-center border-right">Taiwan</td>
+                      <td class="text-center border-right">TW</td>
+                      <td class="text-center border-right">886</td>
+                      <td class="text-center">0.232</td>
+                    </tr>
+                    <tr>
+                      <td class="text-center border-right">越南</td>
+                      <td class="text-center border-right">Viet nam</td>
+                      <td class="text-center border-right">VN</td>
+                      <td class="text-center border-right">84</td>
+                      <td class="text-center">0.437</td>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">泰国</td>
+                      <td class="text-center border-right">Thailand</td>
+                      <td class="text-center border-right">TH</td>
+                      <td class="text-center border-right">66</td>
+                      <td class="text-center">0.164</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="table-tips negative-t-dot4rem">注意：国际 / 港澳台短信价格此处受限于篇幅原因仅展示部分，更多国家短信价格请参考<%= link_to "云短信产品定价", "https://developer.qiniu.com/sms/manual/5796/sms-prices", style: "color: #28AEDF", title: "云短信产品定价", target: "_blank" -%>。</p>
+            </div>
+            <div class="hash" id="sms-yuyinduanxin" name="sms-yuyinduanxin">
+              <div class="table-responsive pricing-white-bg">
+                <table width="1060" cellpadding="0" cellspacing="0" class="pricing-table table border-none">
+                  <tbody>
+                    <tr class="light-bkcolor">
+                      <th width="160" class="thead-title th-init border-bottom">语音短信价格</th>
+                      <th class="border-bottom"></th>
+                    </tr>
+                    <tr>
+                      <th width="240" class="text-center border-right border-bottom">类别</th>
+                      <th class="text-center border-right border-bottom">价格（元 / 条）</th>
+                    </tr>
+                    <tr class="light-bkcolor">
+                      <td class="text-center border-right">语音全类（验证码 / 通知）</td>
+                      <td class="text-center">0.05</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </section>
