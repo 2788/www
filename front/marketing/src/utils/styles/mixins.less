@@ -1,0 +1,52 @@
+@import './variables.less';
+
+.c-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// support webkit only
+// http://caniuse.com/#search=line-clamp
+// 使用时注意第二个参数
+.c-ellipsis-line-clamp(@n: 3, @maxheight: 80px) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @n;
+  -webkit-box-orient: vertical;
+  max-height: @maxheight; // 非 webkit 浏览器
+}
+
+// 清除浮动
+.c-clearfix() {
+  &::after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+  }
+}
+
+// 等宽字体
+.c-monospaced() {
+  font-family: monospace, Courier New, Courier;
+}
+
+.c-word-wrap() {
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.c-word-nowrap() {
+  word-wrap: normal;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+.c-line-ellipsis() {
+  .ellipsis();
+  .line-nowrap();
+}
