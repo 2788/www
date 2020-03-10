@@ -13,7 +13,7 @@ export default function NotFound(): null {
   const routerStore = useRouterStore()
 
   React.useEffect(() => {
-    const href = routerStore.history.createHref(routerStore.location)
+    const href = routerStore.history!.createHref(routerStore.location!)
 
     routerStore.push({
       pathname: '/404',

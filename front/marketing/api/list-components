@@ -1,0 +1,28 @@
+{
+    "code": 200,
+    "data": {
+        "list": [
+            {
+                "key": "demo-id",
+                "text": "Demo 控件",
+                "valid": true,
+                "value": "demo",
+                "data": {
+                    "a": 666
+                }
+            },
+            {
+                "key": "test-1-page-banner-dz5GCZMS",
+                "text": "落地页 banner",
+                "valid": true,
+                "value": "page-banner",
+                "data": {
+                    "src": "/api/images/timg.jpeg",
+                    "title": "点击查看疫情详情",
+                    "alt": "疫情地图",
+                    "link": "https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_3"
+                }
+            }
+        ]
+    }
+}

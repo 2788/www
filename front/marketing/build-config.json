@@ -42,11 +42,18 @@
         "modules": true
       }
     },
+    "m.css": {
+      "transformer": "css",
+      "config": {
+        "modules": true
+      }
+    },
     "svg@less": "file",
-    "svg@m.less": "file"
+    "svg@m.less": "file",
+    "svg@m.css": "file"
   },
   "devProxy": {
-    "/api": "http://www-dev.qiniu.io",
+    "_/api": "http://www-dev.qiniu.io",
     "/signin": {
       "target": "http://www-dev.qiniu.io",
       "pathRewrite": {
@@ -63,7 +70,7 @@
     }
   },
   "engines": {
-    "builder": "1.15.1"
+    "builder": "1.16.1"
   },
   "envVariables": {}
 }

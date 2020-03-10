@@ -2,7 +2,7 @@
 interface Window {
   // TODO
   pageData: {
-    id: string
+    activityCode: string
   }
 }
 

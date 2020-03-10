@@ -71,6 +71,6 @@ export class RendererUtils {
     this.act(() => {
       renderer = this.create(nextElement, options)
     })
-    return renderer
+    return renderer!
   }
 }

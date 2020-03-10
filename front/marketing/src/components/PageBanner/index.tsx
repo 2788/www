@@ -7,10 +7,9 @@ import React from 'react'
 import { observer } from 'mobx-react'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
+import { IBaseProps } from 'components/common/Renderer'
 
-// TODO: css module 有问题
-// import * as style from './style.m.less'
-import './style.less'
+import * as styles from './style.m.less'
 
 export interface IConfig {
   src: string
@@ -19,14 +18,14 @@ export interface IConfig {
   link: string
 }
 
-export interface IProps {
+export interface IProps extends IBaseProps {
   info: IComponentInfo<ComponentName.PageBanner>
 }
 
 export default observer(function PageBanner({ info }: IProps) {
   const { link, title, src, alt } = info.data
   return (
-    <a href={link} title={title} className="page-banner-wrapper">
+    <a href={link} title={title} className={styles.mainWrapper}>
       <img src={src} alt={alt || 'header image'} />
     </a>
   )
