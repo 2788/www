@@ -1,21 +1,24 @@
 package gaea
 
 import (
-	"net/http"
-
+	"github.com/qbox/www/janus/service/account"
 	"github.com/sirupsen/logrus"
 )
 
 type (
-	GaeaAdminService interface{}
+	GaeaAdminService interface {
+		BindCampaignsCouponByBatchID(param BindCouponInput) error
+	}
 	gaeaAdminService struct {
 		host   string
-		client *http.Client
+		client *account.Client
 		logger logrus.FieldLogger
 	}
 )
 
-func NewGaeaAdminService(host string, client *http.Client, logger logrus.FieldLogger) GaeaAdminService {
+var _ GaeaAdminService = &gaeaAdminService{}
+
+func NewGaeaAdminService(host string, client *account.Client, logger logrus.FieldLogger) GaeaAdminService {
 	return &gaeaAdminService{
 		host:   host,
 		client: client,
