@@ -1,0 +1,112 @@
+{
+  "name": "www-marketing",
+  "version": "0.0.1",
+  "description": "Qiniu www marketing substation",
+  "author": "qiniu",
+  "scripts": {
+    "lint": "tslint \"./src/**/*.ts\"",
+    "test": "jest",
+    "validate": "yarn run lint && yarn run test",
+    "dev": "fec-builder -p 8080",
+    "build": "fec-builder --verbose -e production build"
+  },
+  "keywords": [
+    "www",
+    "lego",
+    "marketing"
+  ],
+  "dependencies": {
+    "autobind-decorator": "^2.4.0",
+    "classnames": "^2.2.6",
+    "detect-browser": "^4.8.0",
+    "formstate-x": "^1.0.9",
+    "history": "^3.0.0",
+    "immer": "~1.8.2",
+    "lodash": "~4.17.15",
+    "mobx": "^4.0.0",
+    "mobx-react": "^6.0.0",
+    "moment": "^2.24.0",
+    "normalize.css": "^8.0.1",
+    "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.10.0",
+    "querystring": "^0.2.0",
+    "react": "~16.8.6",
+    "react-dom": "~16.8.6",
+    "react-ga": "^2.7.0",
+    "react-hot-loader": "^4.8.0",
+    "react-icecream": "^1.3.1",
+    "react-transition-group": "^2.6.1",
+    "sa-sdk-javascript": "1.13.14",
+    "uuid": "^2.0.2",
+    "whatwg-fetch": "^3.0.0",
+    "whatwg-url": "^7.0.0"
+  },
+  "devDependencies": {
+    "@hot-loader/react-dom": "^16.11.0",
+    "@types/classnames": "^2.2.9",
+    "@types/history": "3.2.2",
+    "@types/jest": "^24.0.11",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^8.0.0",
+    "@types/react": "^16.8.4",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-test-renderer": "~16.8.0",
+    "@types/react-transition-group": "^2.0.16",
+    "@types/whatwg-url": "^6.4.0",
+    "enzyme": "^3.10.0",
+    "jest": "^24.5.0",
+    "moment-timezone": "^0.5.14",
+    "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^16.8.4",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.5.0",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "typescript": "~3.4.5",
+    "typescript-babel-jest": "^1.0.5"
+  },
+  "engines": {
+    "node": ">=8.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qbox/bo.git"
+  },
+  "license": "ISC",
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/typescript-babel-jest"
+    },
+    "testRegex": ".+\\.spec\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/file-mock.js",
+      "\\.svg\\?sprite": "<rootDir>/__mocks__/svg-sprite-mock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/style-mock.js",
+      "^react\\-dom$": "<rootDir>/__mocks__/react-dom-mock.js",
+      "^react\\-dom\\/lib\\/ReactDOM$": "<rootDir>/__mocks__/react-dom-mock.js",
+      "^react\\-dom\\/lib\\/getVendorPrefixedEventName$": "<rootDir>/__mocks__/react-dom-getVendorPrefixedEventName-mock.js"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
+    "coverageDirectory": "__coverage__",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "cobertura"
+    ],
+    "mapCoverage": true,
+    "testURL": "https://www.qiniu.com",
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    }
+  }
+}

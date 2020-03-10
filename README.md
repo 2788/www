@@ -2,7 +2,7 @@
 
 ## 目录结构
 
-- ./app 官网新后端 [传送门](./app/README.md)
+- ./janus 官网新后端 [传送门](./janus/README.md)
 
 - ./front 官网前端分站
 
