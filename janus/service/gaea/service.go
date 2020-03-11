@@ -16,8 +16,6 @@ type (
 	}
 )
 
-var _ GaeaAdminService = &gaeaAdminService{}
-
 func NewGaeaAdminService(host string, client *account.Client, logger logrus.FieldLogger) GaeaAdminService {
 	return &gaeaAdminService{
 		host:   host,
