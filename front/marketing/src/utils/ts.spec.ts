@@ -95,7 +95,7 @@ describe('test keysOfEnum and valuesOfEnum', () => {
 
   it('test Sample5', () => {
     enum Sample5 {
-      undefined = null,
+      undefined = null as any,
       null = undefined
     }
 

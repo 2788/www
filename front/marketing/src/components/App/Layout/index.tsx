@@ -6,7 +6,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 
-import Header from 'components/Header'
+import Header from './Header'
 
 import './style.less'
 

@@ -4,7 +4,7 @@
  * @author nighca <nighca@live.cn>
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createHistory } from 'history'
 import Disposable, { IDisposable } from 'qn-fe-core/disposable'
 import { injectable, useContainer, Identifier } from 'qn-fe-core/di'
@@ -12,6 +12,7 @@ import StorageStore from 'qn-fe-core/storage-store'
 import { RouterStore } from 'qn-fe-core/router'
 
 import FetchStore from '../../stores/fetch'
+import Toaster from '../../stores/toaster'
 
 export interface IEnv extends IDisposable {
   init: () => void | Promise<void>
@@ -33,6 +34,7 @@ export class Env extends Disposable implements IEnv {
     // 所以 TODO: useInjection 改了以后这里就不用强制声明了
     public storageStore: StorageStore,
     public fetchStore: FetchStore,
+    public toasterStore: Toaster,
     public routerStore: RouterStore
   ) {
     super()
@@ -46,6 +48,7 @@ export class Env extends Disposable implements IEnv {
     this.addDisposer(
       this.storageStore.dispose,
       this.fetchStore.dispose,
+      this.toasterStore.dispose,
       this.routerStore.dispose
     )
   }
@@ -61,7 +64,7 @@ export default function EnvInitializer({ children }: IEnvInitializerProps) {
   const container = useContainer()
   const env = container.get(ENV)
 
-  React.useEffect(() => {
+  useEffect(() => {
     env.init()
     return env.dispose
   }, [env])

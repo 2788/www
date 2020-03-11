@@ -10,10 +10,6 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 
 `./src` 目录下保存官网活动分站代码，包括页面路由、页面 `Header`、页面 `Footer`、活动页面组件拼接逻辑等
 
-- renderer
-
-`./renderer` 目录下保存官网活动分站 `renderer` 相关代码，包括各个组件的样式、交互及接口调用等
-
 ## 开发
 
 ### 依赖
@@ -21,7 +17,7 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 ```shell
 # fec-builder 版本
 fec-builder --version
-> 1.15.1
+> 1.16.1
 
 # qn-fe-core
 v1.10.0
@@ -77,21 +73,26 @@ npm 包与 docker 镜像的对比，优点：
 
 ### 静态资源
 
-```src/static``` 文件夹中保存着项目用到的静态资源
+```src/static``` 文件夹中保存着项目用到的静态资源，其中
 
-- ```src/static/iconfonts``` 文件夹保存项目用到的图标（svg 格式），svg 文件的来源为 iconfont [Ant Design 官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402)，将需要用到的 svg 文件下载到本地后，用 [icomoon](https://icomoon.io/app/#/select) 转换为字体库文件，然后在 ```src/global``` 中引入
+- ```iconfonts``` 文件夹保存项目用到的图标（svg 格式），svg 文件的来源为 iconfont [Ant Design 官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402)，将需要用到的 svg 文件下载到本地后，用 [icomoon](https://icomoon.io/app/#/select) 转换为字体库文件，然后在 ```src/global``` 中引入
 
-- ```src/static/images``` 文件夹保存项目用到的图片，不要直接引用本地的图片资源，将图片上传到 bucket 中，直接引用图片的外链访问地址即可
+- ```images``` 文件夹保存项目用到的图片，不要直接引用本地的图片资源，将图片上传到 bucket 中，直接引用图片的外链访问地址即可
 
-- ```src/static/fonts``` 普通字体文件
+- ```fonts``` 普通字体文件
 
-- ```src/static/icons``` svg icons
+### 楼层组件结构
 
-### 组件结构
+- 参考 `src/components/Activity/components` 里的 `Demo` 和 `PageBanner`，比较自由、没什么约束
 
-- 参考 `src/components/PageBanner`，比较自由、没什么约束
+- 新加组件需要在 `src/components/Activity/index.tsx` 和 `src/apis/component.ts` 里注册一下
 
-- 新加组件需要在 `src/components/common/Renderer/index.tsx` 和 `src/apis/component` 注册一下
+- TODO: 长远来说，这些组件不应该直接属于 `components/Activity`，而应该属于 `components/common`
+
+### 关于 `src/base` 目录
+
+- 这个是 portal-base 的**临时**替代品，具体实现几乎照抄 portal-base & admin-base，预期后面是要去掉的，所以尽量不要动里面的东西
+- 主要是直接使用 portal-base 不太合适，有些东西目前又暂时不在 fe-core 里，就比较尴尬
 
 ### deploy 流程 TODO
 
@@ -102,5 +103,7 @@ npm 包与 docker 镜像的对比，优点：
 5. 编辑器（portal.io）只使用最新发布的代码库版本
 6. 因此编辑器每当发布一个活动页的时候，会把当前活动页跟当前最新版的代码库绑定
 7. 但是在下次重新发布之前，这个版本会维持稳定，直到下一次重新编辑（因此更新代码库不会直接影响已发布的活动页）
-8. 因此如果考虑到某些活动页不是一次性的（而是会重新经过编辑器维护、修改的），那么组件、编辑器、配置等在升级要尽量做到兼容，不兼容就新增一个组件
+8. 因此如果考虑到某些活动页不是一次性的（而是会重新经过编辑器维护、修改的），那么组件、编辑器、配置等在升级的过程中要尽量做到**兼容**，不兼容就新增一个组件
 9. 重新发布一个已有活动页的时候，如果代码库更新了，给用户的 url 是否需要维持不变。。？
+
+### TODO: UT

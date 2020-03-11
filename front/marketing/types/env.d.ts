@@ -2,8 +2,8 @@
 interface Window {
   // TODO
   pageData: {
-    id: string
-  }
+    code: string
+  } | undefined
 }
 
 // process.env

@@ -88,7 +88,7 @@ export function valuesOfEnum<T extends object>(target: T, validationDisabled = f
 //   const dummyReturnValue = dummyReturnValueOf(() => func(null as string, null as number))
 //   type FuncReturnType = typeof dummyReturnValue
 export function dummyReturnValueOf<T>(_: () => T): T {
-  return null
+  return null as any
 }
 
 // ts 3+ support empty tuple
