@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { observer } from 'mobx-react'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
@@ -25,7 +25,7 @@ export interface IProps extends IBaseProps {
   info: IComponentInfo<ComponentName.PageBanner>
 }
 
-export default observer(function PageBanner({ info: { data } }: IProps) {
+export default observer(forwardRef(function PageBanner({ info: { data } }: IProps, ref: Ref<any>) {
   const { link, title, src, alt } = data
 
   const imgView = (
@@ -39,7 +39,7 @@ export default observer(function PageBanner({ info: { data } }: IProps) {
 
   if (!link) {
     return (
-      <div className={styles.normalWrapper}>
+      <div className={styles.normalWrapper} ref={ref}>
         {imgView}
       </div>
     )
@@ -54,8 +54,9 @@ export default observer(function PageBanner({ info: { data } }: IProps) {
       target={target}
       {...rel && { rel }}
       className={styles.linkWrapper}
+      ref={ref}
     >
       {imgView}
     </a>
   )
-})
+}))

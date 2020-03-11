@@ -5,6 +5,8 @@
 
 // 参考文档：https://github.com/qbox/fe-core/tree/master/local-store
 
+// TODO: loading 和 toaster 这样直接裸写有点冗余。。。抽空优化下
+
 import { observable, action } from 'mobx'
 import { inject, injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'

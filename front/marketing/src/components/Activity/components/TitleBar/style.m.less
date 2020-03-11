@@ -1,0 +1,89 @@
+/**
+ * @file styles of component TitleBar
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.main {
+  padding: 1ex 1em;
+  font-size: 16px;
+  color: #FFF;
+  background-color: #000; // FIXME: IE9- 兜底颜色，linear-gradient 失效时生效
+
+  h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 34px;
+    line-height: 2.5;
+  }
+
+  .subTitle {
+    margin: 0 auto;
+    text-align: center; // 还是左对齐？
+    line-height: 2;
+
+    @media only screen and (min-width: @screen-sm) {
+      & {
+        max-width: @screen-sm; // TODO: 这样优化好吗。。？
+      }
+    }
+
+    .subTitleMain {
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+        color: inherit;
+
+        &:link,
+        &:visited,
+        &:hover,
+        &:active {
+          text-decoration: underline;
+          cursor: pointer;
+          color: inherit;
+        }
+      }
+    }
+
+    .instructionEntry {
+      margin-left: 1ex;
+      .c-word-nowrap();
+      text-decoration: underline;
+      cursor: pointer;
+
+      &::after {
+        content: ' >';
+      }
+    }
+  }
+}
+
+.modal {
+  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm) {
+    & {
+      max-width: @modal-sm !important;
+    }
+  }
+
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      max-width: @modal-md !important;
+    }
+  }
+
+  .title {
+    //
+
+    .titleMain {
+      //
+    }
+  }
+
+  .content {
+    //
+  }
+}

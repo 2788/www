@@ -10,6 +10,13 @@
   text-align: center;
   // padding-bottom: 20%;
   overflow: hidden;
+
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      max-height: 500px;
+    }
+  }
+
 }
 
 .linkWrapper {
@@ -25,11 +32,4 @@
   // max-height: 30vw;
   vertical-align: bottom;
   line-height: 1;
-}
-
-@media only screen and (min-width: 768px) {
-  .linkWrapper,
-  .normalWrapper {
-    max-height: 500px;
-  }
 }
