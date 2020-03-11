@@ -18,9 +18,11 @@ func (s *gaeaAdminService) BindCampaignsCouponByBatchID(param BindCouponInput) e
 
 	err := s.client.CallWithJson(s.logger, &resp, api, param)
 	if err != nil {
+		s.logger.Errorf("<gaeaAdminService.BindCampaignsCouponByBatchID> CallWithJson() failed, api:%s, param: %+v, err:%s.", api, param, err)
 		return err
 	} else if !resp.OK() {
 		err = errors.New(resp.Msg)
+		s.logger.Errorf("<gaeaAdminService.BindCampaignsCouponByBatchID> resp not ok, err:%s.", err)
 		return err
 	}
 	return nil
