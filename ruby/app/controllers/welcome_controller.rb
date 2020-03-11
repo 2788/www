@@ -113,6 +113,10 @@ class WelcomeController < ApplicationController
     render "sla"
   end
 
+  def sla_qvm
+    render "sla"
+  end
+
   def privacy_right
     render "sla"
   end

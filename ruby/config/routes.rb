@@ -102,6 +102,7 @@ Rails.application.routes.draw do
     get '/sla-pili',               to: 'welcome#sla_pili'
     get '/sla-dora',               to: 'welcome#sla_dora'
     get '/sla-sms',                to: 'welcome#sla_sms'
+    get '/sla-qvm',                to: 'welcome#sla_qvm'
     get '/privacy-right',          to: 'welcome#privacy_right'
     # get '/goglobal',               to: 'welcome#goglobal'
     # get '/alaccelerator',          to: 'welcome#alaccelerator'
