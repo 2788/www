@@ -14,7 +14,7 @@ import Toaster from 'base/components/Toaster'
 
 import { basename } from 'constants/route'
 import Provider from 'components/common/Provider'
-import NotFound from 'components/common/NotFound'
+import NotFound, { notFoundPagePath, ToNotFound } from 'components/common/NotFound'
 
 // Layout
 import Layout from './Layout'
@@ -37,10 +37,11 @@ export default class App extends React.Component<any, any> {
                 <Switch>
                   <Route relative path="/" exact title="首页"><Redirect relative to="/all" /></Route>
                   <Route relative path="/all" exact title="全部活动"><AllActivity /></Route>
-                  <Route relative path="/not-found" exact><NotFound /></Route>
+                  <Route relative path={notFoundPagePath} exact><NotFound /></Route>
                   <Route relative path="/:code" title="活动" component={
-                    ({ match }) => <Activity code={match!.params.code} />
+                    ({ match }) => (<Activity code={match!.params.code} />)
                   } />
+                  <Route relative path="*"><ToNotFound /></Route>
                 </Switch>
               </Layout>
             </Route>

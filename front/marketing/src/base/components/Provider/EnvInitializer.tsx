@@ -4,7 +4,7 @@
  * @author nighca <nighca@live.cn>
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createHistory } from 'history'
 import Disposable, { IDisposable } from 'qn-fe-core/disposable'
 import { injectable, useContainer, Identifier } from 'qn-fe-core/di'
@@ -64,7 +64,7 @@ export default function EnvInitializer({ children }: IEnvInitializerProps) {
   const container = useContainer()
   const env = container.get(ENV)
 
-  React.useEffect(() => {
+  useEffect(() => {
     env.init()
     return env.dispose
   }, [env])
