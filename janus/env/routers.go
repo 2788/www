@@ -23,6 +23,10 @@ func InitRouters(app *gin.Engine) {
 			trade := v1.Group("/package")
 			trade.POST("/buy", tradeHandler.PackageBuy)
 		}
+		{
+			trade := v1.Group("/order")
+			trade.POST("/order/new", tradeHandler.OrderNew)
+		}
 	}
 
 }
