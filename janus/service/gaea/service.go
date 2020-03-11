@@ -8,6 +8,7 @@ import (
 type (
 	GaeaAdminService interface {
 		BindCampaignsCouponByBatchID(param BindCouponInput) error
+		PackageBuy(param ReqPackageBuy) (orderHashes []string, err error)
 	}
 	gaeaAdminService struct {
 		host   string
