@@ -9,8 +9,8 @@ import Disposable from 'qn-fe-core/disposable'
 import BaseProvider, * as base from 'base/components/Provider'
 
 import FetchStore from 'stores/fetch'
-import Renderer from 'stores/renderer'
 import DemoApis from 'apis/demo'
+import ComponentApis from 'apis/component'
 
 export * from 'base/components/Provider'
 
@@ -21,8 +21,8 @@ export class Env extends Disposable implements base.IEnv {
     // tslint:disable-next-line:no-shadowed-variable
     public base: base.Env,
     public fetchStore: FetchStore,
-    public renderer: Renderer,
-    public demoApis: DemoApis
+    public demoApis: DemoApis,
+    public componentApis: ComponentApis
   ) {
     super()
   }
@@ -31,16 +31,12 @@ export class Env extends Disposable implements base.IEnv {
     this.base.init()
     this.fetchStore.bindRealFetch(window.fetch)
 
-    this.renderer.init(window.pageData)
-    delete window.pageData
-
     // TODO: 考虑要不要挪到-base 的 env init 中？需要考虑具体项目定制 title 的需求
     this.base.routerStore.bindDocument(window.document, '七牛云 - {{routeTitle}}')
 
     this.addDisposer(
       this.base.dispose,
-      this.fetchStore.dispose,
-      this.renderer.dispose
+      this.fetchStore.dispose
     )
   }
 }

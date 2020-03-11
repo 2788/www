@@ -2,8 +2,8 @@
 interface Window {
   // TODO
   pageData: {
-    activityCode: string
-  }
+    code: string
+  } | undefined
 }
 
 // process.env

@@ -13,7 +13,7 @@ export type Loading = boolean
 const collectKey = Symbol('loadings-collect-key')
 
 @injectable()
-export default class Loadings extends Store {
+export default class Loadings<E = {}> extends Store {
 
   static handle(name: string) {
     return replaceMethod((origin) => function (this: any, ...args: any[]) {
@@ -23,11 +23,13 @@ export default class Loadings extends Store {
     })
   }
 
-  static collectFrom(target: any, ...names: string[]): Loadings {
+  static collectFrom(target: any, ...names: string[]): Loadings
+  static collectFrom<E>(target: any, names: Record<keyof E, string>): Loadings<E> // enum with string value
+  static collectFrom(target: any, ...args: any[]): Loadings {
     if (target[collectKey]) {
       throw new Error('Duplicated collectFrom calls.')
     }
-    return target[collectKey] = new Loadings(...names)
+    return target[collectKey] = new Loadings(...args)
   }
 
   @observable state: ObservableMap<string, Loading> = observable.map()
@@ -35,8 +37,17 @@ export default class Loadings extends Store {
     return Array.from(this.state.keys())
   }
 
-  constructor(...names: string[]) {
+  constructor(...names: string[])
+  constructor(names: Record<keyof E, string>) // enum with string value
+  constructor(arg: any, ...extraArgs: string[]) {
     super()
+
+    let names: string[] = []
+    if (typeof arg === 'string') {
+      names = [arg, ...extraArgs]
+    } else if (typeof arg === 'object') {
+      names = Object.values(arg) // TODO: use valuesOfEnum
+    }
 
     names.forEach(
       name => this.add(name)

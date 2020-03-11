@@ -9,7 +9,7 @@ import Spin from 'react-icecream/lib/spin'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
-import { IBaseProps } from 'components/common/Renderer'
+import { IBaseProps } from '../..'
 
 import DemoStore from './store'
 import * as styles from './style.m.less'
@@ -24,7 +24,7 @@ export interface IProps extends IBaseProps {
 
 export default observer(function PageBanner(props: IProps) {
   // 使用局部 store
-  const localStore = useLocalStore(DemoStore, props, {
+  const demoStore = useLocalStore(DemoStore, props, {
     offset: -3
   })
 
@@ -35,8 +35,8 @@ export default observer(function PageBanner(props: IProps) {
 
   return (
     <div className={styles.mainWrapper}>
-      <Spin spinning={localStore.loadings.isLoading(localStore.Loading.FetchSth)}>
-        {props.activityId}: {localStore.abc}
+      <Spin spinning={demoStore.loadings.isLoading(demoStore.Loading.FetchSth)}>
+        {props.code}: {demoStore.abc}
       </Spin>
     </div>
   )

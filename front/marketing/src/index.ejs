@@ -5,7 +5,7 @@
     <%
       // mock TODO: 后端渲染
       const pageData = {
-        activityCode: 123, // the same as url
+        code: 123, // activyty code, the same as url
         title: 'marketing',
         keywords: 'keywords',
         description: 'description'
@@ -14,10 +14,10 @@
     %>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 此标签之前不能有其他 script 和 link -->
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> <!-- 禁止移动端页面缩放 -->
     <title state-data-title><%= pageData.title %></title>
     <meta name="keywords" content="<%= pageData.keywords %>">
-    <meta name="description" content="<%= pageData.description %>">    <!-- 禁止移动端页面缩放 -->
+    <meta name="description" content="<%= pageData.description %>">
     <link rel="shortcut icon" href="https://qiniu.staticfile.org/favicon.ico" type="image/vnd.microsoft.icon">
   </head>
   <body>
@@ -32,6 +32,8 @@
 
     <div id="main-view-wrapper" class="main-view-wrapper">
     </div>
+
+    <!-- TODO: site map -->
 
     <% if (process.env.NODE_ENV === "development") { %>
     <script src="/webpack-dev-server.js"></script>

@@ -31,11 +31,10 @@ export default class DemoStore extends Store {
   ) {
     super()
     ToasterStore.bind(this, toasterStore)
-    this.init()
   }
 
-  loadings = Loadings.collectFrom(this)
   Loading = Loading
+  loadings = Loadings.collectFrom(this, this.Loading)
 
   @observable.ref abc: number | undefined
 

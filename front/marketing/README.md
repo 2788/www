@@ -10,10 +10,6 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 
 `./src` 目录下保存官网活动分站代码，包括页面路由、页面 `Header`、页面 `Footer`、活动页面组件拼接逻辑等
 
-- renderer
-
-`./renderer` 目录下保存官网活动分站 `renderer` 相关代码，包括各个组件的样式、交互及接口调用等
-
 ## 开发
 
 ### 依赖
@@ -77,19 +73,21 @@ npm 包与 docker 镜像的对比，优点：
 
 ### 静态资源
 
-```src/static``` 文件夹中保存着项目用到的静态资源
+```src/static``` 文件夹中保存着项目用到的静态资源，其中
 
-- ```src/static/iconfonts``` 文件夹保存项目用到的图标（svg 格式），svg 文件的来源为 iconfont [Ant Design 官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402)，将需要用到的 svg 文件下载到本地后，用 [icomoon](https://icomoon.io/app/#/select) 转换为字体库文件，然后在 ```src/global``` 中引入
+- ```iconfonts``` 文件夹保存项目用到的图标（svg 格式），svg 文件的来源为 iconfont [Ant Design 官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402)，将需要用到的 svg 文件下载到本地后，用 [icomoon](https://icomoon.io/app/#/select) 转换为字体库文件，然后在 ```src/global``` 中引入
 
-- ```src/static/images``` 文件夹保存项目用到的图片，不要直接引用本地的图片资源，将图片上传到 bucket 中，直接引用图片的外链访问地址即可
+- ```simages``` 文件夹保存项目用到的图片，不要直接引用本地的图片资源，将图片上传到 bucket 中，直接引用图片的外链访问地址即可
 
-- ```src/static/fonts``` 普通字体文件
+- ```fonts``` 普通字体文件
 
-### 组件结构
+### 楼层组件结构
 
-- 参考 `src/components/Demo` 和 `src/components/PageBanner`，比较自由、没什么约束
+- 参考 `src/components/Activity/components` 里的 `Demo` 和 `PageBanner`，比较自由、没什么约束
 
-- 新加组件需要在 `src/components/common/Renderer/index.tsx` 和 `src/apis/component.ts` 注册一下
+- 新加组件需要在 `src/components/Activity/index.tsx` 和 `src/apis/component.ts` 里注册一下
+
+- TODO: 长远来说，这些组件不应该直接属于 `components/Activity`，而应该属于 `components/common`
 
 ### 关于 `src/base` 目录
 

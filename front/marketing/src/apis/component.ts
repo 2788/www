@@ -1,16 +1,14 @@
 /**
- * @file component api service TODO: 对接口
+ * @file component api service
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { observable, action } from 'mobx'
 import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
-import ToasterStore from 'base/stores/toaster'
 import FetchStore from 'stores/fetch'
 
-import { IConfig as IDemoConfig } from 'components/Demo'
-import { IConfig as IPageBannerConfig } from 'components/PageBanner'
+import { IConfig as IDemoConfig } from 'components/Activity/components/Demo'
+import { IConfig as IPageBannerConfig } from 'components/Activity/components/PageBanner'
 
 export enum ComponentName {
   Demo = 'demo',
@@ -32,7 +30,7 @@ export type IComponentInfo<T extends ComponentName = ComponentName> = T extends 
 } : never
 
 export interface IListComponentsOptions {
-  activityCode: string
+  code: string // activity code
 }
 
 export interface IListComponentsResult {
@@ -40,25 +38,15 @@ export interface IListComponentsResult {
 }
 
 @injectable()
-export default class ComponentApiService extends Store {
+export default class ComponentApis extends Store {
   constructor(
-    private fetchStore: FetchStore,
-    toasteStore: ToasterStore
+    private fetchStore: FetchStore
   ) {
     super()
-    ToasterStore.bind(this, toasteStore)
   }
 
-  @observable.ref list: IComponentInfo[] | undefined
-
-  @action private updateList(list: IComponentInfo[]) {
-    this.list = list
-  }
-
-  @ToasterStore.handle(undefined, '控件列表数据加载失败')
+  // TODO: 对接口
   fetchList(options: IListComponentsOptions): Promise<IListComponentsResult> {
-    const req = this.fetchStore.get('/list-components', options)
-    req.then(result => this.updateList(result.list))
-    return req
+    return this.fetchStore.get('/list-components', options)
   }
 }
