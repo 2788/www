@@ -8030,6 +8030,10 @@ en:
       title: 智能多媒体服务 SLA - 七牛云
       keywords:
       description:
+    welcome_sla_qvm:
+      title: 云服务器 QVM SLA - 七牛云
+      keywords:
+      description:
     welcome_sla_sms:
       title: 云短信 SLA - 七牛云
       keywords:
