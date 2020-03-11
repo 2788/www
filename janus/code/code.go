@@ -1,5 +1,7 @@
 package code
 
+import "fmt"
+
 const (
 	/*************** 通用错误（小于1000） ***************/
 
@@ -49,4 +51,29 @@ type Code int
 // Code returns error code
 func (c Code) Code() int {
 	return int(c)
+}
+
+var (
+	codeHumanize = map[Code]string{
+		OK:              "OK",
+		NeedRedirect:    "need redirect",
+		InvalidArgs:     "invalid args",
+		Unauthorized:    "unauthorized",
+		Forbidden:       "forbidden",
+		NotFound:        "not found",
+		Conflict:        "entry exist",
+		TooManyRequests: "too many requests",
+		ResultError:     "response result error",
+		DatabaseError:   "database error",
+		CSRFDetected:    "csrf attack detected",
+
+		InvalidToken: "invalid token",
+	}
+)
+
+func (c Code) Humanize() string {
+	if m, ok := codeHumanize[c]; ok {
+		return m
+	}
+	return fmt.Sprintf("undefined error code %d", c)
 }

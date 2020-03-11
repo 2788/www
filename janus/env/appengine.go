@@ -1,6 +1,8 @@
 package env
 
 import (
+	"net/http"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
@@ -8,6 +10,7 @@ import (
 	"github.com/qbox/www/janus/controllers/middlewares"
 	"github.com/qbox/www/janus/env/config"
 	"github.com/qbox/www/janus/service/account"
+	"github.com/qbox/www/janus/service/gaea"
 	"github.com/sirupsen/logrus"
 )
 
@@ -36,18 +39,6 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 		sessions.Sessions("www", store),
 	)
 
-	ssoService, err := initAccSSOService(cfg)
-	if err != nil {
-		l.Errorf("<appengine.InitAppEngine> initAccSSOService() failed, err: %s.", err)
-		return app
-	}
-	env.Cfg = cfg
-	// TODO gaeaService adminService
-	env.SSOService = ssoService
-	return app
-}
-
-func initAccSSOService(cfg *config.Config) (account.SSOService, error) {
 	accTr, err := pacc.NewTransport(&pacc.AccConfig{
 		Host:         cfg.Acc.Host,
 		UserName:     cfg.Acc.Username,
@@ -56,12 +47,28 @@ func initAccSSOService(cfg *config.Config) (account.SSOService, error) {
 		ClientSecret: cfg.Acc.ClientSecret,
 	})
 	if err != nil {
-		return nil, err
+		l.Errorf("<appengine.InitAppEngine> NewTransport() failed, err:%s.", err)
+		return app
 	}
 
+	ssoService := initAccSSOService(cfg, accTr)
+	gaeaService := initGaeaService(cfg.Services.GaeaHost, accTr, l)
+
+	env.Cfg = cfg
+	env.SSOService = ssoService
+	env.GaeaAdminService = gaeaService
+	return app
+}
+
+func initAccSSOService(cfg *config.Config, accTr http.RoundTripper) account.SSOService {
 	return account.NewSSOService(
 		cfg.SSO.Host,
 		cfg.SSO.ClientId,
 		cfg.SSO.ClientSecret,
-		accTr), nil
+		accTr)
+}
+
+func initGaeaService(host string, adminTr http.RoundTripper, logger logrus.FieldLogger) gaea.GaeaAdminService {
+	client := &account.Client{&http.Client{Transport: adminTr}}
+	return gaea.NewGaeaAdminService(host, client, logger)
 }
