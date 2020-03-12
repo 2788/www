@@ -81,7 +81,7 @@ export default observer(function Activity(props: IProps) {
         )
       case ComponentName.RichText:
         return (
-          <RichText {...commonProps} info={componentInfo} />
+          <RichText {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
         )
       default:
         console.error('找不到控件', componentInfo)

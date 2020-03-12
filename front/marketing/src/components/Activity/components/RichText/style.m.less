@@ -3,7 +3,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
- @import "~utils/styles/index.less";
+@import "~utils/styles/index.less";
 
 .mainWrapper {
   width: 80%;
@@ -68,12 +68,9 @@
     }
   }
 
-  @media only screen and (max-width: 767px) {
-    &.mainWrapper {
+  @media only screen and (max-width: @screen-sm) {
+    & {
       width: 100%;
-    }
-    code {
-      font-size: 0.20rem;
     }
     ul, ol {
       padding-inline-start: 0.58rem;

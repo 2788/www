@@ -3,10 +3,11 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { observer } from 'mobx-react'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
+import { IBaseProps } from '../..'
 
 import * as styles from './style.m.less'
 
@@ -16,11 +17,11 @@ export interface IConfig {
   html: string // 富文本内容
 }
 
-export interface IProps {
+export interface IProps extends IBaseProps {
   info: IComponentInfo<ComponentName.RichText>
 }
 
-export default observer(function RichText({ info: { data } }: IProps) {
+export default observer(forwardRef(function RichText({ info: { data } }: IProps, ref: Ref<any>) {
   const { background_from, background_to, html } = data
 
   const bgColorStyle = {
@@ -28,10 +29,10 @@ export default observer(function RichText({ info: { data } }: IProps) {
   }
 
   return (
-    <div className="features" style={bgColorStyle}>
+    <div className="features" style={bgColorStyle} ref={ref}>
       <div className="container">
         <div className={styles.mainWrapper} dangerouslySetInnerHTML={{__html: html}}></div>
       </div>
     </div>
   )
-})
+}))
