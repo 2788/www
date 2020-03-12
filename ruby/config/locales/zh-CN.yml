@@ -8485,6 +8485,10 @@ zh-CN:
       title: CDN加速_CDN加速服务 - 七牛云
       keywords: 高防CDN，动态CDN，静态CDN，CDN，CDN加速，CDN加速服务, 七牛CDN，CDN服务器，内容分发，云加速，CDN，图片CDN，视频CDN
       description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
+    products_qcdn:
+      title: CDN加速_CDN加速服务 - 七牛云
+      keywords: 高防CDN，动态CDN，静态CDN，CDN，CDN加速，CDN加速服务, 七牛CDN，CDN服务器，内容分发，云加速，CDN，图片CDN，视频CDN
+      description: 七牛CDN是在传统CDN基础上实现的对数据网络加速进一步优化的融合管理服务。融合优质节点，可监控，智能调度，为用户提供连续，稳定快速的内容分发服务。
     products_qavs:
       title: 智能视频云 - 七牛云
       keywords: 智能视频云，智能视频，视频云，视频云服务，视频云存储，视频云平台

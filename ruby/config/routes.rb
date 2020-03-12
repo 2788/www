@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get '/products/express',                       to: 'products#express'
     get '/products/censor',                        to: 'products#censor'
     get '/products/fusion',                        to: 'products#fusion'
+    get '/products/qcdn',                          to: 'products#qcdn'
     get '/products/dora',                          to: 'products#dora'
     get '/products/kirk',                          to: 'products#kirk'
     get '/products/vance',                         to: 'products#vance'

@@ -7938,6 +7938,10 @@ en:
       title: Qiniu Cloud-Integrated CDN（FUSION）
       keywords: CDN, Web Acceleration, Document Downloads, Audio & Video On-demand、International Nodes, Three-dimensional Quality Control, No Blind Areas, Intelligent Dispatch, Network Quality Tuning, Edge Cache Node
       description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
+    products_qcdn:
+      title: Qiniu Cloud-Integrated CDN（FUSION）
+      keywords: CDN, Web Acceleration, Document Downloads, Audio & Video On-demand、International Nodes, Three-dimensional Quality Control, No Blind Areas, Intelligent Dispatch, Network Quality Tuning, Edge Cache Node
+      description: Qiniu Cloud's integrated management service (FUSION), further optimizes the acceleration of data network based on the traditional CDN. Besides application of A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions.
     products_qavs:
       title: 智能视频云 - 七牛云
       keywords: 智能视频云，智能视频，视频云，视频云服务，视频云存储，视频云平台
