@@ -3,24 +3,63 @@
     "data": {
         "list": [
             {
+                "key": "test-1-page-banner-dz5GCZMS",
+                "text": "落地页 banner",
+                "valid": true,
+                "value": "page-banner",
+                "data": {
+                    "src": "http://www.qiniu.com/assets/fighting_ncov/img-banner-0655c98aa86e01894e0ca2fc87ebdf3242d5539f39e869ec28ed465a5bcb9fe3.jpg",
+                    "title": "点击查看疫情详情",
+                    "alt": "疫情地图",
+                    "link": "https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_3"
+                }
+            },
+            {
+                "key":"test-1-title-bar-d62lo86v",
+                "data":{
+                    "title": "<span class=\"aaa\">直播云专场</span>",
+                    "sub_title": "<span class=\"bbb\">老用户专属…我我我我我我我我我我我我我我我我我我我我我我我我我我你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你你我我我我我我我我我我我我我我我我我我我我我我我我…尊享专线：<a href=\"tel\">400-888-8888 转 1</a></span>",
+                    "instruction": "活动说明内容~~~<br>~~",
+                    "title_style": "",
+                    "background_to": "gray",
+                    "background_from": "#092ae3"
+                },
+                "text":"楼层标题",
+                "valid":true,
+                "value":"title-bar"
+            },
+            {
+                "key":"test-1-page-nav-0rqoKd9k",
+                "data":{
+                    "list":[
+                        {
+                            "key":"test-1-page-banner-dz5GCZMS",
+                            "text":"<span style=\"color: yellow\">智能视频系列</span>"
+                        },
+                        {
+                            "key":"test-1-title-bar-d62lo86v",
+                            "text":"Pandora"
+                        },
+                        {
+                            "key":"demo-id",
+                            "text":"4"
+                        }
+                    ],
+                    "background_to":"#FFF",
+                    "background_from":"gray",
+                    "background_hover":"#ff5e03"
+                },
+                "text":"落地页导航",
+                "valid":true,
+                "value":"page-nav"
+            },
+            {
                 "key": "demo-id",
                 "text": "Demo 控件",
                 "valid": true,
                 "value": "demo",
                 "data": {
                     "a": 666
-                }
-            },
-            {
-                "key": "test-1-page-banner-dz5GCZMS",
-                "text": "落地页 banner",
-                "valid": true,
-                "value": "page-banner",
-                "data": {
-                    "src": "/api/images/timg.jpeg",
-                    "title": "点击查看疫情详情",
-                    "alt": "疫情地图",
-                    "link": "https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_3"
                 }
             }
         ]

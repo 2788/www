@@ -1,5 +1,5 @@
 /**
- * @file component api service
+ * @file components' apis
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
@@ -7,17 +7,24 @@ import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
 import FetchStore from 'stores/fetch'
 
+// TODO: 依赖关系反了。。？
 import { IConfig as IDemoConfig } from 'components/Activity/components/Demo'
 import { IConfig as IPageBannerConfig } from 'components/Activity/components/PageBanner'
+import { IConfig as ITitleBarConfig } from 'components/Activity/components/TitleBar'
+import { IConfig as IPageNavConfig } from 'components/Activity/components/PageNav'
 
 export enum ComponentName {
   Demo = 'demo',
-  PageBanner = 'page-banner'
+  PageBanner = 'page-banner',
+  TitleBar = 'title-bar',
+  PageNav = 'page-nav'
 }
 
 export type IComponentConfig<T extends ComponentName = ComponentName> = (
   T extends ComponentName.Demo ? IDemoConfig :
   T extends ComponentName.PageBanner ? IPageBannerConfig :
+  T extends ComponentName.TitleBar ? ITitleBarConfig :
+  T extends ComponentName.PageNav ? IPageNavConfig :
   T
 )
 

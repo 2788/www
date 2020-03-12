@@ -11,14 +11,19 @@ import { ComponentName, IComponentInfo } from 'apis/component'
 
 import ActivityStore from './store'
 
+// TODO: 严格来说它们应该定义在 components/common 里，而不是从属于这个 Activity 组件
+// 但挪过去也有挪过去的问题，所以现在先不折腾
 import Demo from './components/Demo'
 import PageBanner from './components/PageBanner'
+import TitleBar from './components/TitleBar'
+import PageNav from './components/PageNav'
 
 import * as styles from './style.m.less'
 
 export interface IBaseProps {
   code: string // activity code
   info: IComponentInfo<ComponentName>
+  ref?(ele: HTMLElement): void
 }
 
 export interface IProps {
@@ -28,24 +33,53 @@ export interface IProps {
 export default observer(function Activity(props: IProps) {
   const activityStore = useLocalStore(ActivityStore, props)
 
+  const elementMap: { [key: string]: HTMLElement } = {}
+
+  function registerRef(key: string, ele: HTMLElement) {
+    elementMap[key] = ele
+  }
+
+  function scrollTo(key: string) {
+    if (elementMap[key]) {
+      elementMap[key].scrollIntoView()
+    } else {
+      console.error('找不到指定控件', key)
+    }
+  }
+
   function renderComponent(componentInfo: IComponentInfo, _index: number) {
     const commonProps = {
       key: componentInfo.key,
       code: props.code
     }
 
+    // 为了让类型能够正确匹配上，这里必须啰哩啰嗦地人肉展开并匹配上每一项
+    // 倒也有个好处，就是可以定义各自的参数，而不致于耦合在一起
     switch (componentInfo.value) {
       case ComponentName.Demo:
         console.log(componentInfo.data.a)
         return (
-          <Demo {...commonProps} info={componentInfo} />
+          <Demo {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
         )
       case ComponentName.PageBanner:
         return (
-          <PageBanner {...commonProps} info={componentInfo} />
+          <PageBanner {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+        )
+      case ComponentName.TitleBar:
+        return (
+          <TitleBar {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+        )
+      case ComponentName.PageNav:
+        return (
+          <PageNav
+            {...commonProps}
+            info={componentInfo}
+            onScrollTo={scrollTo}
+            ref={ele => registerRef(componentInfo.key, ele)}
+          />
         )
       default:
-        console.error('控件不存在')
+        console.error('找不到控件', componentInfo)
         return null
     }
   }

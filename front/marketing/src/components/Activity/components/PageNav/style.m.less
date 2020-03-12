@@ -1,0 +1,104 @@
+/**
+ * @file styles of component PageNav
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+@comp-page-nav-outer-bg-color: #FFF;
+@comp-page-nav-outer-border-color: gray;
+@comp-page-nav-inner-border-color: #CCC;
+
+.comp-page-nav-box-shadow() {
+  box-shadow: 0 0 1em @comp-page-nav-outer-border-color;
+}
+
+.pc,
+.mobile {
+  position: fixed;
+  z-index: 1024;
+  left: 1ex;
+  bottom: 20%; // TODO: 位置优化
+  color: #000;
+}
+
+.menuWrapper {
+  //
+
+  .menu {
+    padding: 1em 0;
+    line-height: 3;
+    .comp-page-nav-box-shadow();
+    text-align: center;
+    border-radius: 1em;
+    background-color: @comp-page-nav-outer-bg-color; // FIXME: IE9- 兜底颜色，linear-gradient 失效时生效
+
+    .item {
+      // TODO: 非常丑，先注释掉…
+      // border-bottom: 1px solid @comp-page-nav-inner-border-color;
+      // border-top: 1px solid @comp-page-nav-inner-border-color;
+      // margin: -1px 0;
+
+      padding: 0 1em;
+      cursor: pointer;
+    }
+  }
+}
+
+.pc {
+  //
+
+  .hotspot {
+    box-sizing: content-box;
+    padding: .6em .9em;
+    width: 1em;
+    .c-word-wrap();
+    text-align: center;
+    // font-weight: 700;
+    background-color: @comp-page-nav-outer-bg-color;
+    .comp-page-nav-box-shadow();
+    cursor: pointer;
+
+    // TODO: <Icon type="caret-right" /> 在这里不生效…
+    &::after {
+      content: '▸';
+    }
+  }
+
+  // for mobile
+  @media only screen and (max-width: @screen-sm) {
+    & {
+      display: none;
+    }
+  }
+
+  .menuWrapper {
+    //
+  }
+}
+
+.mobile {
+  //
+
+  .buttonWrapper {
+    .button {
+      padding: .5em .7em;
+      // font-weight: 900;
+      background-color: @comp-page-nav-outer-bg-color;
+      .comp-page-nav-box-shadow();
+      border-radius: .8em;
+      cursor: pointer;
+    }
+  }
+
+  // for pc
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      display: none;
+    }
+  }
+
+  .menuWrapper {
+    margin-bottom: .5em;
+  }
+}

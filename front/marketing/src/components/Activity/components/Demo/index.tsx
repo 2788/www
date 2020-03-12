@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { observer } from 'mobx-react'
 import Spin from 'react-icecream/lib/spin'
 import { useLocalStore } from 'qn-fe-core/local-store'
@@ -22,7 +22,7 @@ export interface IProps extends IBaseProps {
   info: IComponentInfo<ComponentName.Demo>
 }
 
-export default observer(function PageBanner(props: IProps) {
+export default observer(forwardRef(function Demo(props: IProps, ref: Ref<any>) {
   // 使用局部 store
   const demoStore = useLocalStore(DemoStore, props, {
     offset: -3
@@ -34,10 +34,10 @@ export default observer(function PageBanner(props: IProps) {
   // const demoApis = useInjection(DemoApis) // component 里注入全局 store 用
 
   return (
-    <div className={styles.mainWrapper}>
+    <div className={styles.mainWrapper} ref={ref}>
       <Spin spinning={demoStore.loadings.isLoading(demoStore.Loading.FetchSth)}>
         {props.code}: {demoStore.abc}
       </Spin>
     </div>
   )
-})
+}))
