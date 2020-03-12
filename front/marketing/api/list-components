@@ -8,10 +8,21 @@
                 "valid": true,
                 "value": "page-banner",
                 "data": {
-                    "src": "http://www.qiniu.com/assets/fighting_ncov/img-banner-0655c98aa86e01894e0ca2fc87ebdf3242d5539f39e869ec28ed465a5bcb9fe3.jpg",
-                    "title": "点击查看疫情详情",
-                    "alt": "疫情地图",
-                    "link": "https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_3"
+                    "src": "//q70cpa6gh.bkt.clouddn.com/1583996380-fighting-ncov.jpg",
+                    "title": "云上助力，共战疫情",
+                    "alt": "云上助力，共战疫情",
+                    "link": "https://www.qiniu.com/events/fighting-2019-ncov"
+                }
+            },
+            {
+                "key": "test-0306-1-rich-text-editor-wVsRpLt4",
+                "text": "富文本编辑器",
+                "valid": true,
+                "value": "rich-text-editor",
+                "data": {
+                    "background_from": "#410084",
+                    "background_to": "#410084",
+                    "html": "<p><p><p><p>富文本编辑器</p></p></p></p>\n<p><p><p><p><strong>这是一段加粗文字</strong></p></p></p></p>\n<p><p><p><p><em>这是一段斜体文字</em></p></p></p></p>\n<p><p><p><p><del>这是一段带删除线的文字</del></p></p></p></p>\n<p><p><p><h1 id=\"-1\">标题 1</h1></p></p></p>\n<p><p><p><h2 id=\"-2\">标题 2</h2></p></p></p>\n<p><p><p><h3 id=\"-3\">标题 3</h3></p></p></p>\n<p><p><p><p><code>代码块，console.log(&#39;Hello World&#39;);</code></p></p></p></p>\n<p><p><p><blockquote></p></p></p>\n<p><p><p><p>这是一段引用</p>\n</blockquote></p></p></p>\n<p><p><p><p>无序列表</p></p></p></p>\n<p><p><p><ul></p></p></p>\n<p><p><p><li>1-1</li></p></p></p>\n<p><p><p><li>1-2</li></p></p></p>\n<p><p><p><li>1-3</li>\n</ul></p></p></p>\n<p><p><p><p>有序列表</p></p></p></p>\n<p><p><p><ol></p></p></p>\n<p><p><p><li>1-1</li></p></p></p>\n<p><p><p><li>1-2</li></p></p></p>\n<p><p><p><li>1-3</li>\n</ol></p></p></p>\n<p><p><p><p><a href=\"https://www.qiniu.com\" title=\"七牛官网\">七牛官网</a></p></p></p></p>\n<p><p><p><p><a href=\"https://www.qiniu.com/events/fighting-2019-ncov\"><img src=\"https://dn-mars-assets.qbox.me/qiniulog/img-slogan-blue-en.png\" alt=\"云上助力，共战疫情\" title=\"云上助力，共战疫情\"></a></p></p></p></p>\n<p><p><p><table></p></p></p>\n<p><p><p><thead></p></p></p>\n<p><p><p><tr></p></p></p>\n<p><p><p><th>标题 1</th></p></p></p>\n<p><p><p><th>标题 2</th></p></p></p>\n<p><p><p><th>标题 3</th>\n</tr>\n</thead></p></p></p>\n<p><p><p><tbody></p></p></p>\n<p><p><p><tr></p></p></p>\n<p><p><p><td>1</td></p></p></p>\n<p><p><p><td>2</td></p></p></p>\n<p><p><p><td>3</td>\n<p><p><p><tr></p></p></p>\n<p><p><p><td>1</td></p></p></p>\n<p><p><p><td>2</td></p></p></p>\n<p><p><p><td>3</td>\n</tr>\n</tbody>\n</table>\n</p>\n</p>\n<img src=\"//q70cpa6gh.bkt.clouddn.com/1583986088-%E8%83%8C%E6%99%AF%E8%89%B20085eb.png\" alt=\"\"></p>\n"
                 }
             },
             {

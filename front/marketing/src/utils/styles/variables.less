@@ -3,14 +3,34 @@
 
 // 记得同步 './vairables.ts'
 
-// == Header
-@header-bg-color: transparent;
+//== base
+@white: #FFF;
+@black: #000;
+@transparent: transparent;
+
+@primary-color: #00A0DE;
+@success-color: #67C23A;
+@warning-color: #F0A818;
+@danger-color: #E55C5C;
+@error-color: @danger-color;
+
+//== screen / tablet
+@screen-sm: 768px;
+@screen-md: 992px;
+@screen-lg: 1200px;
+
+@modal-md: 600px;
+@modal-sm: 346px;
+
+//== Header
+@header-bg-color: @transparent;
 @header-active-bg-color: #303848;
-@header-text-color: #000;
-@header-active-text-color: #FFF;
+@header-text-color: @black;
+@header-active-text-color: @white;
 
-// Small screen / tablet
-@screen-sm:                  768px;
+//== Border
+@border-color: #D3D3D3;
 
-@modal-md:                    600px;
-@modal-sm:                    346px;
+//== Table
+@table-text-color: #333;
+@table-bg-lighter-color: #F5F5F5;

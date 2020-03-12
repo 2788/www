@@ -1,0 +1,79 @@
+/**
+ * @file styles of component RichText
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.mainWrapper {
+  width: 80%;
+  margin: 0 auto;
+  color: @white;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: @white;
+  }
+
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+
+  blockquote {
+    padding-left: 0.10rem;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    border-left: 0.04rem solid @primary-color;
+  }
+
+  code {
+    padding-left: 0.10rem;
+    border-left: 0.04rem solid @success-color;
+    font-size: 0.14rem;
+    white-space: nowrap;
+  }
+
+  ul, ol {
+    margin-block-start: 0.10rem;
+    margin-block-end: 0.10rem;
+    padding-inline-start: 0.40rem;
+    li {
+      line-height: 2.0;
+    }
+  }
+
+  a {
+    color: @primary-color;
+    text-decoration: underline;
+  }
+
+  table {
+    width: 100%;
+    margin: 0.10rem 0;
+    color: @table-text-color;
+    border-spacing: 0;
+    border: 1px solid @border-color;
+    background-color: @white;
+    th, td {
+      padding: 0.10rem;
+      border-bottom: 1px solid @border-color;
+      text-align: center;
+    }
+    tbody {
+      tr:nth-child(odd) {
+        background-color: @table-bg-lighter-color;
+      }
+    }
+  }
+
+  @media only screen and (max-width: @screen-sm) {
+    & {
+      width: 100%;
+    }
+    ul, ol {
+      padding-inline-start: 0.58rem;
+    }
+  }
+}
