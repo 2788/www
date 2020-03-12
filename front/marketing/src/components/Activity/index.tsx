@@ -17,6 +17,7 @@ import Demo from './components/Demo'
 import PageBanner from './components/PageBanner'
 import TitleBar from './components/TitleBar'
 import PageNav from './components/PageNav'
+import RichText from './components/RichText'
 
 import * as styles from './style.m.less'
 
@@ -77,6 +78,10 @@ export default observer(function Activity(props: IProps) {
             onScrollTo={scrollTo}
             ref={ele => registerRef(componentInfo.key, ele)}
           />
+        )
+      case ComponentName.RichText:
+        return (
+          <RichText {...commonProps} info={componentInfo} />
         )
       default:
         console.error('找不到控件', componentInfo)
