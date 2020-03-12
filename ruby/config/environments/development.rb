@@ -129,7 +129,7 @@ Rails.application.configure do
     end_date: 14
   }
 
-  # 2020 年开春采购活动结束时间
+  # 2020 年春季采购活动结束时间
   config.spring_sale = {
     end_year: 2020,
     end_month: 4,

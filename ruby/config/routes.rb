@@ -167,9 +167,9 @@ Rails.application.routes.draw do
     get '/events/20191212/combo/order', to: 'events#double12_2019_combo_order'
     # 购买套餐包
     post '/events/package/buy', to: 'events#package_buy'
-    # 2020 年开春采购活动
+    # 2020 年春季采购活动
     get '/events/20200316', to: 'events#spring_sale'
-    # 2020 年开春采购活动是否结束
+    # 2020 年春季采购活动是否结束
     get '/events/20200316/is_end', to: 'events#is_spring_sale_end'
     # 获取分享链接
     get '/get_share_link', to: 'events#get_share_link'
