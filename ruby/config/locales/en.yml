@@ -72,7 +72,7 @@ en:
               icons:
                 - name: "Integrated CDN"
                   class: "icon icon-dora index-icons"
-                  path: "/en/products/fusion"
+                  path: "/en/products/qcdn"
             - title: "High-performance Computing"
               icon: "icon-controllale@2x.png"
               desc: "We need to process data in high speed for data flow. Qiniu has constructed a computing platform based on containers and a multifunctional and open intelligent media cloud platform based on the container platform. You only need to consider ways to process data instead of data scales or system performances."
@@ -313,7 +313,7 @@ en:
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
               id: "free-events-fusion"
-              morelink: "https://www.qiniu.com/products/fusion"
+              morelink: "https://www.qiniu.com/products/qcdn"
               details:
                 - • HTTP 免费下载流量 10 GB/月
               unsignlink: "/signup"
@@ -1005,8 +1005,8 @@ en:
           title: "Success Cases"
       fusion:
         banner:
-          title: "CDN（FUSION）"
-          desc: "FUSION is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's FUSION guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
+          title: "CDN（QCDN）"
+          desc: "QCDN is an integrated management service to further optimize the acceleration of data network based on the traditional CDN. Besides the application into A&V on demand, acceleration of documents, apps and web as well as various value-added scenarios, Qiniu's QCDN guarantees the consistency of users'service and offers stable and fast internet access with all-around CDN quality monitoring, intelligent and easy dispatch of fast nodes and other functions."
         middlebar:
           - title: "Product Frameworks"
             class: "intLink active"
@@ -1031,13 +1031,13 @@ en:
           col:
             - title: "No Blind Areas"
               icon: "fusion/icon-wumangqu@2x.png"
-              desc: "Fusion is a mature integrated control scheme with multiple CDNs which chooses high-quality nodes from mainstream CDN manufacturers to combine with Qiniu's high-quality nodes and fully covers networks of various operators in different areas to truly have no blind areas."
+              desc: "QCDN is a mature integrated control scheme with multiple CDNs which chooses high-quality nodes from mainstream CDN manufacturers to combine with Qiniu's high-quality nodes and fully covers networks of various operators in different areas to truly have no blind areas."
             - title: "Intelligent Dispatch"
               icon: "fusion/icon-zhinengdiaodu@2x.png"
               desc: "Based on Qiniu's IP database and combined with the network downtime and performance monitoring, the intelligent and integrated dispatch system is developed to support dispatch methods such as DNS, HttpDNS and IP302, which effectively prevents access hijacking and achieves 100% accurate and controllable dispatch in real time."
             - title: "Three-dimensional Quality Control"
               icon: "fusion/icon-litipinkong@2x.png"
-              desc: "With the coverage performance monitoring from authoritative APM manufacturers, Qiniu develops real-time network availability monitoring and real-time access performance monitoring from SDK logs to create a three-dimensional quality control system of Qiniu's FUSION."
+              desc: "With the coverage performance monitoring from authoritative APM manufacturers, Qiniu develops real-time network availability monitoring and real-time access performance monitoring from SDK logs to create a three-dimensional quality control system of Qiniu's QCDN."
             - title: "Reduction of Returning to Source Stations"
               icon: "fusion/icon-jiangdihuiyuan@2x.png"
               desc: "With the establishment of BGP network intermediate sources, problems like low speed or unreachable network return to the source station among operators are removed to protect the bandwidth of source station from being affected by fluctuations in requests of edge nodes and save costs on the return to the source station."
@@ -1074,17 +1074,17 @@ en:
               class: "tab-pane fade in active"
               icon: "fusion/icon-wangyejiasu@2x.png"
               title: "Web Acceleration"
-              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users'experience. Also, with Qiniu's Image Processing Service, FUSION can conduct data processing services such as image thumbnails, watermarks and format transformation."
+              desc: "The distribution of static resources on the internet, such as html, css, js, img, short videos and so on can be optimized and accelerated. The HTTPS on the whole website ensures web access safety. TCP optimization enables big pictures and styles on the website to load in seconds and shortens response time of websites to improve users'experience. Also, with Qiniu's Image Processing Service, QCDN can conduct data processing services such as image thumbnails, watermarks and format transformation."
             - id: "tab-usage-section-2"
               class: "tab-pane fade"
               icon: "fusion/icon-wenjianxiazai@2x.png"
               title: "Document Downloads"
-              desc: "The distribution of lager files, such as apk, mp3, exe, zip and so on can be optimized and accelerated. FUSION enables users to get a faster download speed with thousands of nodes globally and improves the stability of downloading and transferring large files with segmental caching technology. With Qiniu's storage services, FUSION can effectively reduce costs on the return to the source station and on the storage."
+              desc: "The distribution of lager files, such as apk, mp3, exe, zip and so on can be optimized and accelerated. QCDN enables users to get a faster download speed with thousands of nodes globally and improves the stability of downloading and transferring large files with segmental caching technology. With Qiniu's storage services, QCDN can effectively reduce costs on the return to the source station and on the storage."
             - id: "tab-usage-section-3"
               class: "tab-pane fade"
               icon: "fusion/icon-yinshipindianbo@2x.png"
               title: "Audio & Video On-demand"
-              desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated.  FUSION uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, FUSION can conduct data processing services such as A&V transcoding, format transformation and compression."
+              desc: "The services of A&V on-demand, such as mp4, flv, rmvb, wmv, hls and so on can be optimized and accelerated. QCDN uses BGP network intermediate source technology to reduce bandwidth pressure of returning to the source station and save users'costs on the return to the source station. Segmental prefetching technology enables users to enjoy audios and videos more smoothly. And the advanced link protection technology effectively prevents users'files from being stolen. With Qiniu's data processing services, QCDN can conduct data processing services such as A&V transcoding, format transformation and compression."
         feature5:
           title: "Success Cases"
       qvm:
@@ -1642,7 +1642,7 @@ en:
                 - title: "对象存储"
                   link: "https://www.qiniu.com/products/kodo"
                 - title: "CDN"
-                  link: "https://www.qiniu.com/products/fusion"
+                  link: "https://www.qiniu.com/products/qcdn"
                 - title: "负载均衡"
                   link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
                 - title: "弹性公网 IP"
@@ -3507,7 +3507,7 @@ en:
                   class: "icon-link"
                   alt: "内容分发网络"
                   height: 44
-                  link: "https://www.qiniu.com/products/fusion"
+                  link: "https://www.qiniu.com/products/qcdn"
                   target: "_blank"
                 - img: "qavs/icon-liumeitijisuan.png"
                   colclass: "m-b-10px"
@@ -5539,7 +5539,7 @@ en:
         why:
           title: "为什么选择七牛云 CDN"
           list:
-            - "CDN（FUSION）是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。<a class='know-more' href='/products/fusion' target='_blank' title='七牛云 CDN - 了解详情'>了解详情 >>></a>"
+            - "CDN（FUSION）是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。<a class='know-more' href='/products/qcdn' target='_blank' title='七牛云 CDN - 了解详情'>了解详情 >>></a>"
         client:
           list:
             - title: "中兴"
@@ -7632,8 +7632,8 @@ en:
           label: Object Storage（KODO）
           desc:
 
-        - name: fusion
-          label: Integrated CDN（FUSION）
+        - name: qcdn
+          label: Integrated CDN（QCDN）
           desc:
 
         # - name: kirk
