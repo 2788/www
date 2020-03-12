@@ -67,7 +67,7 @@ $(document).ready ->
 
   ## 控制prices页面tab
   if parseQueryString(location.search)['source']
-    source = if ['kodo', 'fusion', 'dora', 'pili', 'sms'].indexOf(parseQueryString(decodeURI(location.search))['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
+    source = if ['kodo', 'qcdn', 'dora', 'pili', 'sms'].indexOf(parseQueryString(decodeURI(location.search))['source']) == -1 then 'kodo' else parseQueryString(location.search)['source'];
   pre = source || 'kodo';
   $('#tab-prices-' + pre).addClass('active')
   $('.tab-prices-' + pre).addClass('active')

@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
   end
 
   def fusion
+    redirect_to(products_qcdn_url, :status => 301)
+  end
+
+  def qcdn
+    render "fusion"
   end
 
   def qvm
