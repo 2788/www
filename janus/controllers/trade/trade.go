@@ -24,7 +24,7 @@ func (s *Trade) PackageBuy(ctx *gin.Context) {
 
 	err := ctx.BindJSON(&param)
 	if err != nil || param.PackageID <= 0 || param.Quantity <= 0 || param.BuyerID == 0 {
-		controllers.RespErr(ctx, code.InvalidArgs, nil)
+		controllers.RespErr(ctx, code.InvalidArgs, err)
 		return
 	}
 
@@ -46,7 +46,7 @@ func (s *Trade) OrderNew(ctx *gin.Context) {
 	var param gaea.ReqOrderNew
 	err := ctx.BindJSON(&param)
 	if err != nil || param.BuyerId == 0 || len(param.Orders) == 0 {
-		controllers.RespErr(ctx, code.InvalidArgs, nil)
+		controllers.RespErr(ctx, code.InvalidArgs, err)
 		return
 	}
 	if param.Memo == "" {
