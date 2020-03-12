@@ -22,7 +22,7 @@ export interface IProps extends IBaseProps {
   info: IComponentInfo<ComponentName.Demo>
 }
 
-export default observer(forwardRef(function PageBanner(props: IProps, ref: Ref<any>) {
+export default observer(forwardRef(function Demo(props: IProps, ref: Ref<any>) {
   // 使用局部 store
   const demoStore = useLocalStore(DemoStore, props, {
     offset: -3
