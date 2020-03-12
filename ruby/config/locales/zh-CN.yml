@@ -103,7 +103,7 @@ zh-CN:
               icons:
                 - name: "CDN"
                   class: "icon icon-dora index-icons"
-                  path: "/products/fusion"
+                  path: "/products/qcdn"
             - title: "高性能计算"
               icon: "icon-controllale@2x.png"
               desc: "为了能让数据流转，我们需要对数据进行高速处理。七牛云构建了基于容器的计算平台，并基于容器平台构建了功能丰富且开放性的智能媒体云平台。您只需考虑怎么处理数据，而无需考虑数据的规模和系统性能。"
@@ -355,7 +355,7 @@ zh-CN:
               desc: "无盲区、智能调度、立体品控、降低回源"
               class: "background-fusion"
               id: "free-events-fusion"
-              morelink: "https://www.qiniu.com/products/fusion"
+              morelink: "https://www.qiniu.com/products/qcdn"
               details:
                 - • HTTP 免费下载流量 10 GB/月
               unsignlink: "/signup"
@@ -1812,7 +1812,7 @@ zh-CN:
                 - title: "对象存储"
                   link: "https://www.qiniu.com/products/kodo"
                 - title: "CDN"
-                  link: "https://www.qiniu.com/products/fusion"
+                  link: "https://www.qiniu.com/products/qcdn"
                 - title: "负载均衡"
                   link: "https://developer.qiniu.com/qvm/manual/4295/slb-introduction"
                 - title: "弹性公网 IP"
@@ -3938,7 +3938,7 @@ zh-CN:
                   class: "icon-link"
                   alt: "内容分发网络"
                   height: 44
-                  link: "https://www.qiniu.com/products/fusion"
+                  link: "https://www.qiniu.com/products/qcdn"
                   target: "_blank"
                 - img: "qavs/icon-liumeitijisuan.png"
                   colclass: "m-b-10px"
@@ -5970,7 +5970,7 @@ zh-CN:
         why:
           title: "为什么选择七牛云 CDN"
           list:
-            - "CDN（FUSION）是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。<a class='know-more' href='/products/fusion' target='_blank' title='七牛云 CDN - 了解详情'>了解详情 >>></a>"
+            - "CDN（FUSION）是在传统 CDN 基础上实现的对数据网络加速进一步优化的融合管理服务。除了服务于音视频点播，文件、应用与 Web 加速，以及各类增值场景外，七牛 CDN 还通过全方位的 CDN 质量监控，以及智能易用的加速节点调度等功能，保障用户服务的连续性，提供稳定快速的网络访问质量。<a class='know-more' href='/products/qcdn' target='_blank' title='七牛云 CDN - 了解详情'>了解详情 >>></a>"
         client:
           list:
             - title: "中兴"
@@ -8070,7 +8070,7 @@ zh-CN:
             desc: 可定制化的数百 EB 级别、高可靠、强安全的存储系统
             catalog: product
             isNew: true
-          - name: fusion
+          - name: qcdn
             label: CDN
             desc: 优质节点、可监控、智能调度的内容分发服务
             catalog: product
