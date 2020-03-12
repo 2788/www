@@ -25,7 +25,7 @@ func InitRouters(app *gin.Engine) {
 		}
 		{
 			trade := v1.Group("/order")
-			trade.POST("/order/new", tradeHandler.OrderNew)
+			trade.POST("/new", tradeHandler.OrderNew)
 		}
 	}
 
