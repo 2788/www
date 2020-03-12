@@ -68,6 +68,9 @@ class EventsController < ApplicationController
   def double12_2019
   end
 
+  def spring_sale
+  end
+
   def activity
   end
 
@@ -274,6 +277,40 @@ class EventsController < ApplicationController
     return
   end
 
+  def is_spring_sale_end
+    time_conf = Rails.configuration.spring_sale
+    if time_conf.nil? || time_conf.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    end_year = time_conf[:end_year]
+    end_month = time_conf[:end_month]
+    end_date = time_conf[:end_date]
+    if end_year.nil? || end_year.blank? || end_month.nil? || end_month.blank? || end_date.nil? || end_date.blank?
+      render json: {
+        "is_end": true,
+      }
+      return
+    end
+
+    current_time = Time.now
+    end_time = Time.local(end_year, end_month, end_date, 0, 0, 0)
+    if current_time < end_time
+      render json: {
+        "is_end": false,
+      }
+      return
+    end
+
+    render json: {
+      "is_end": true,
+    }
+    return
+  end
+
   def double11_2019_dora_voucher
     product_coupon_type = params[:product_coupon_type]
     if product_coupon_type.nil? || product_coupon_type.blank?
@@ -366,7 +403,7 @@ class EventsController < ApplicationController
     }
   end
 
-  def double12_2019_package_buy
+  def package_buy
     package_id_str = params[:package_id]
     effect_type_str = params[:effect_type]
     if package_id_str.nil? || package_id_str.blank? || effect_type_str.nil? || effect_type_str.blank?
@@ -428,7 +465,7 @@ class EventsController < ApplicationController
       "package_id": package_id_int,
       "quantity": 1,
       "buyer_id": uid_int,
-      "memo": "trade from www double12_2019 event. packageId:#{package_id_int}",
+      "memo": "trade from www spring sale event. packageId:#{package_id_int}",
       "effect_type": effect_type_int
     }
     req_uri = gaea_admin_host + "/api/package/buy"

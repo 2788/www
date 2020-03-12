@@ -157,7 +157,7 @@ $(document).ready ->
         effectTime = parseInt($(this).attr('data-effect-time'))
         $.ajax
           method: 'POST',
-          url: '/events/20191212/package/buy',
+          url: '/events/package/buy',
           data:
             package_id: double12SelectedPackageID
             effect_type: effectTime

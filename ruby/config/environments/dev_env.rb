@@ -155,6 +155,13 @@ Rails.application.configure do
     end_date: 14
   }
 
+  # 2020 年开春采购活动结束时间
+  config.spring_sale = {
+    end_year: 2020,
+    end_month: 4,
+    end_date: 15
+  }
+
   config.double12_2019_comb_package = [{
     "type": "comb-pack-1",
     "title": "新手上路包",
@@ -1730,6 +1737,12 @@ Rails.application.configure do
       ]
     }
   }
+
+  # TODO
+  # 2020 年春季采购活动套餐包本地开发配置文件
+  # 如果不用区分本地、测试和线上环境
+  # 可以在 zh-CN.yml 和 en.yml 里面 views -> events 里面添加配置项，可以参考现有的 double12_2019 配置项
+  config.spring_sale_package = {}
 
   config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'
   config.video_audit_host = 'http://ai.qiniuapi.com/v3/video/censor'
