@@ -36,8 +36,8 @@ export default observer(function Activity(props: IProps) {
 
   const elementMap: { [key: string]: HTMLElement } = {}
 
-  function registerRef(key: string, ele: HTMLElement) {
-    elementMap[key] = ele
+  function registerElement(key: string, element: HTMLElement) {
+    elementMap[key] = element
   }
 
   function scrollTo(key: string) {
@@ -60,15 +60,15 @@ export default observer(function Activity(props: IProps) {
       case ComponentName.Demo:
         console.log(componentInfo.data.a)
         return (
-          <Demo {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+          <Demo {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )
       case ComponentName.PageBanner:
         return (
-          <PageBanner {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+          <PageBanner {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )
       case ComponentName.TitleBar:
         return (
-          <TitleBar {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+          <TitleBar {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )
       case ComponentName.PageNav:
         return (
@@ -76,12 +76,12 @@ export default observer(function Activity(props: IProps) {
             {...commonProps}
             info={componentInfo}
             onScrollTo={scrollTo}
-            ref={ele => registerRef(componentInfo.key, ele)}
+            ref={ele => registerElement(componentInfo.key, ele)}
           />
         )
       case ComponentName.RichText:
         return (
-          <RichText {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+          <RichText {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )
       default:
         console.error('找不到控件', componentInfo)
@@ -92,7 +92,12 @@ export default observer(function Activity(props: IProps) {
   return (
     <div className={styles.wrapper}>
       {(activityStore.list || []).map((componentInfo, index) => (
-        <div key={componentInfo.key} className={styles.component}>
+        <div
+          key={componentInfo.key}
+          data-key={componentInfo.key}
+          data-role={componentInfo.value}
+          className={styles.component}
+        >
           {renderComponent(componentInfo, index)}
         </div>
       ))}
