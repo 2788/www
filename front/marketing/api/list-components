@@ -26,6 +26,21 @@
                 }
             },
             {
+                "key":"test-0306-1-coupon-container-qBOCVSDT",
+                "data":{
+                    "group": "all",
+                    "background_to": "#5903B7",
+                    "count_per_row": 1,
+                    "show_more_link": "",
+                    "show_more_text": "",
+                    "background_from": "#5903B7",
+                    "show_more_bg_color": "#FF6632"
+                },
+                "text":"抵用券",
+                "valid":true,
+                "value":"coupon-container"
+            },
+            {
                 "key":"test-1-title-bar-d62lo86v",
                 "data":{
                     "title": "<span class=\"aaa\">直播云专场</span>",

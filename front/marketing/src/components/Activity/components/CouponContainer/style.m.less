@@ -1,0 +1,25 @@
+/**
+ * @file styles of component CouponContainer
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.spinWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.mainWrapper {
+  .singlePerRow {
+    width: 4.40rem;
+    left: calc(50% - 2.20rem);
+  }
+
+  @media only screen and (max-width: @screen-sm - 1) {
+    .singlePerRow {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

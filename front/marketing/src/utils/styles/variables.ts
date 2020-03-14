@@ -11,6 +11,8 @@ export const warningColor = '#F0A818'
 export const dangerColor = '#E55C5C'
 export const errorColor = dangerColor
 
+export const shadowColor = 'rgba(0, 0, 0, 0.15)'
+
 //== screen / tablet
 export const screenSm = '768px'
 export const screenMd = '992px'
@@ -31,3 +33,11 @@ export const borderColor = '#D3D3D3'
 //== Table
 export const tableTextColor = '#333'
 export const tableBgLighterColor = '#F5F5F5'
+
+//== Coupon
+export const couponBorderColor = '#FFB41E'
+export const couponTextColor = '#0A0E17'
+export const couponTextColorLighter = 'rgba(0, 0, 0, 0.65)'
+export const couponMoneyColor = '#F43122'
+export const couponDrawBtnLeftColor = '#FE830D'
+export const couponDrawBtnHoverColor = '#FF590F'
