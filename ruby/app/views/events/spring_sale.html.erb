@@ -1,3 +1,944 @@
 <%# TODO %>
 <%# 2020 春季采购活动页面 html 文件 %>
 <%# 可以参考 double12_2019.html.erb 文件 %>
+
+<%# banner 部分 %>
+<div class="jumbotron hero spring-sale">
+  <div class="container">
+    <div class="middle-container">
+      <%= image_tag I18n.t("views.events.spring_sale.banner.image"), title: "降本增效，助力复工，开春采购季", alt: "降本增效，助力复工，开春采购季" -%>
+    </div>
+  </div>
+</div>
+
+<%# 导航 %>
+<div class="features-nav spring-nav hidden-xs normal">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav spring-nav-tabs navbar-wrapper-middle">
+        <% I18n.t("views.events.spring_sale.middlebar").each do |linkbar| -%>
+          <li class="<%= linkbar[:class] %>">
+            <%= link_to linkbar[:title], linkbar[:href], title: linkbar[:title] -%>
+          </li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="features-nav spring-nav hidden-xs fixed">
+  <div class="container">
+    <div class="tabs">
+      <ul class="nav spring-nav-tabs navbar-wrapper-middle">
+        <% I18n.t("views.events.spring_sale.middlebar").each do |linkbar| -%>
+          <li class="<%= linkbar[:class] %>">
+            <%= link_to linkbar[:title], linkbar[:href], title: linkbar[:title] -%>
+          </li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%# 智能多媒体服务专区 %>
+<div class="features features-spring-sale spring-sale features-spring-sale-dora tab-content-spring-sale-dora">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= image_tag "spring_sale/dora_hot.png", title: I18n.t("views.events.spring_sale.dora.title"), alt: I18n.t("views.events.spring_sale.dora.title"), class: "icon-title" -%>
+          <%= I18n.t("views.events.spring_sale.dora.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.dora.desc")) -%></p>
+    </div>
+    <div class="dora-deepbg-container">
+      <h3 class="sub-title"><%= Rails.configuration.spring_sale_package[:dora][:h264][:title] -%></h3>
+      <div class="dora-nav-container row">
+        <% Rails.configuration.spring_sale_package[:dora][:h264][:tabs].each do |tab| -%>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="dora-nav <%= tab[:class] -%>" id="<%= tab[:id] -%>"><%= tab[:text] -%></div>
+        </div>
+        <% end -%>
+      </div>
+      <div class="row">
+        <% Rails.configuration.spring_sale_package[:dora][:packages264].each do |dora| -%>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+          <div class="thumbnail">
+            <div class="caption-sale">
+              <div class="product-header">
+                <h4 class="title"><%= dora[:title] -%></h4>
+                <div class="tag">新用户福利价</div>
+                <p class="desc"></p>
+              </div>
+              <div class="content-container">
+                <p class="props"><%= dora[:spec] -%></p>
+                <% dora[:sections].each do |section| -%>
+                <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                  <div class="content-price">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                        <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                        <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                        <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="buy-btn">
+                    <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: dora[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                  </div>
+                </section>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end -%>
+      </div>
+    </div>
+    <div class="dora-deepbg-container">
+      <h3 class="sub-title"><%= Rails.configuration.spring_sale_package[:dora][:h265][:title] -%></h3>
+      <div class="dora-nav-container row">
+        <% Rails.configuration.spring_sale_package[:dora][:h265][:tabs].each do |tab| -%>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="dora-nav <%= tab[:class] -%>" id="<%= tab[:id] -%>"><%= tab[:text] -%></div>
+        </div>
+        <% end -%>
+      </div>
+      <div class="row">
+        <% Rails.configuration.spring_sale_package[:dora][:packages265].each do |dora| -%>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+          <div class="thumbnail">
+            <div class="caption-sale">
+              <div class="product-header">
+                <h4 class="title"><%= dora[:title] -%></h4>
+                <div class="tag">新用户福利价</div>
+                <p class="desc"></p>
+              </div>
+              <div class="content-container">
+                <p class="props"><%= dora[:spec] -%></p>
+                <% dora[:sections].each do |section| -%>
+                <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                  <div class="content-price">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                        <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                        <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                        <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="buy-btn">
+                    <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: dora[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                  </div>
+                </section>
+                <% end -%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end -%>
+      </div>
+    </div>
+    <div class="dora-deepbg-container dora-table-container">
+      <table class="dora-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th>类型</th><th>次数/时间</th><th>折扣</th><th>价格</th><th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Rails.configuration.spring_sale_package[:dora][:tables].each do |table| -%>
+          <tr>
+            <td class="type"><%= table[:type] -%></td>
+            <td class="duration"><%= table[:duration] -%></td>
+            <td class="discount"><span class="discount-tag"><%= table[:discount] -%></span></td>
+            <td class="price"><%= table[:price] -%> 元</td>
+            <td class="text-center">
+              <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: table[:type] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: table[:packageID], package_info: table[:info] } -%>
+            </td>
+          </tr>
+          <% end -%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%# 存储专场 %>
+<div class="features features-spring-sale spring-sale features-spring-sale-kodo tab-content-spring-sale-kodo">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= I18n.t("views.events.spring_sale.kodo.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.kodo.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:kodo][:cdnstandard].each do |kodo| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= kodo[:title] -%></h4>
+              <h4 class="size"><%= kodo[:size] -%></h4>
+              <h4 class="unit"><%= kodo[:unit] -%></h4>
+              <div class="tag">开春特惠</div>
+              <p class="desc"><%= kodo[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <div class="content-dropdown">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-duration">
+                    <p class="dropdown-title">时长</p>
+                    <select class="form-control double12-2019-dropdown spring-sale-kodo-dropdown duration-dropdown">
+                      <% kodo[:durations].each do |duration| -%>
+                      <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-area">
+                    <p class="dropdown-title">区域</p>
+                    <select class="form-control double12-2019-dropdown spring-sale-kodo-dropdown area-dropdown">
+                      <% kodo[:areas].each do |area| -%>
+                      <option value="<%= area[:value] -%>"><%= area[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: kodo[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:kodo][:cdnin].each do |kodo| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= kodo[:title] -%></h4>
+              <h4 class="size"><%= kodo[:size] -%></h4>
+              <h4 class="unit"><%= kodo[:unit] -%></h4>
+              <div class="tag">开春特惠</div>
+              <p class="desc"><%= kodo[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <p class="props">时长：<%= kodo[:duration] -%></p>
+              <p class="props">区域：<%= kodo[:zone] -%></p>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: kodo[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:kodo][:cdnout].each do |kodo| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= kodo[:title] -%></h4>
+              <h4 class="size"><%= kodo[:size] -%></h4>
+              <h4 class="unit"><%= kodo[:unit] -%></h4>
+              <div class="tag">开春特惠</div>
+              <p class="desc"><%= kodo[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <p class="props">时长：<%= kodo[:duration] -%></p>
+              <p class="props">区域：<%= kodo[:zone] -%></p>
+              <% kodo[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: kodo[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专区 %>
+<div class="features features-spring-sale spring-sale features-spring-sale-fusion tab-content-spring-sale-fusion">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= I18n.t("views.events.spring_sale.fusion.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.fusion.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:fusion][:products].each do |fusion| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <p class="title"><%= fusion[:title] -%><span class="size"><%= fusion[:size] -%></span></p>
+              <div class="tag">新用户独享价</div>
+              <p class="desc"><%= fusion[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <p class="props">时长: <%= fusion[:duration] -%></p>
+              <p class="props">协议: <%= fusion[:protocol] -%></p>
+              <% fusion[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: fusion[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 直播专区 %>
+<div class="features features-spring-sale spring-sale features-spring-sale-pili tab-content-spring-sale-pili">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= I18n.t("views.events.spring_sale.pili.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.pili.desc")) -%></p>
+      <div class="is_new_icon"><span>新用户专属福利</span></div>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:pili][:products].each do |pili| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= pili[:title] -%></h4>
+              <h4 class="size"><%= pili[:size] -%></h4>
+              <div class="tag">新用户福利价</div>
+              <p class="desc"><%= pili[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <p class="props"><%= pili[:subDesc] -%></p>
+              <% pili[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: pili[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 短视频 SDK 专场 %>
+<div class="features features-spring-sale spring-sale features-spring-sale-sdk tab-content-spring-sale-sdk">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= I18n.t("views.events.spring_sale.sdk.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.sdk.desc")) -%></p>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 col-table">
+        <div class="table-container">
+          <table class="sdk-exp-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+              <% Rails.configuration.spring_sale_package[:sdk][:table].each do |table| -%>
+              <tr>
+                <td class="padding width-30">
+                  <span class="activity-tip <%= table[:tipClass] -%>"><%= table[:tipText] -%></span>
+                  <p class="title"><%= table[:title] -%></p>
+                </td>
+                <td class="padding width-10">
+                  <p class="sub-title">类型</p>
+                  <p class="desc"><%= table[:type] -%></p>
+                </td>
+                <td class="padding width-10">
+                  <p class="sub-title">授权时长</p>
+                  <p class="desc"><%= table[:duration] -%></p>
+                </td>
+                <td class="text-center width-25">
+                  <div class="content-price">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                        <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= table[:price] -%></span>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                        <span class="span-red">节省&nbsp;<%= table[:save] -%>&nbsp;元</span>
+                        <span class="span-red span-elide">原价&nbsp;<%= table[:originPrice] -%>&nbsp;元</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <%= link_to table[:btnText], signin_url('www', '/events/20200316'), title: table[:title] + " - " + table[:btnText], class: "btn btn-lg btn-double12-2019 package-buy disabled " + table[:btnClass], target: "_blank", data: { package_id: table[:packageID], package_info: table[:info] } -%>
+                </td>
+              </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云主机专区  %>
+<div class="features features-spring-sale spring-sale features-spring-sale-qvm tab-content-spring-sale-qvm">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= I18n.t("views.events.spring_sale.qvm.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.qvm.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:qvm][:rebatesQvm].each do |qvm| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= qvm[:title] -%></h4>
+              <h4 class="size"><%= qvm[:size] -%></h4>
+              <div class="tag">新用户福利</div>
+              <p class="desc"><%= qvm[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <p class="props">规格: <%= qvm[:spec] -%></p>
+              <p class="props">带宽: <%= qvm[:wide] -%></p>
+              <% qvm[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", section[:url], title: qvm[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+    <div class="intro">
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.qvm.subDesc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:qvm][:products].each do |qvm| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= qvm[:title] -%></h4>
+              <h4 class="size"><%= qvm[:size] -%></h4>
+              <div class="tag">新春特惠</div>
+            </div>
+            <div class="content-container">
+              <p class="props">规格: <%= qvm[:spec] -%></p>
+              <p class="props">带宽: <%= qvm[:wide] -%></p>
+              <div class="selections">
+                <div class="content-dropdown">
+                  <p class="dropdown-title">时长</p>
+                  <select class="form-control double12-2019-dropdown spring-sale-qvm-dropdown">
+                    <% qvm[:durations].each do |duration| -%>
+                    <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                    <% end -%>
+                  </select>
+                </div>
+              </div>
+              <% qvm[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", section[:url], title: qvm[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+<%# 云短信 专区 %>
+<div class="features features-spring-sale spring-sale features-spring-sale-sms tab-content-spring-sale-sms">
+  <div class="container">
+    <div class="intro">
+      <div class="title-wrapper">
+        <div class="line hidden-xs"></div>
+        <h2 class="title">
+          <%= I18n.t("views.events.spring_sale.sms.title") -%>
+        </h2>
+        <div class="line hidden-xs"></div>
+      </div>
+      <p class="desc"><%= raw(I18n.t("views.events.spring_sale.sms.desc")) -%></p>
+    </div>
+    <div class="row">
+      <% Rails.configuration.spring_sale_package[:sms][:products].each do |sms| -%>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
+        <div class="thumbnail">
+          <div class="caption-sale">
+            <div class="product-header">
+              <h4 class="title"><%= sms[:title] -%></h4>
+              <br />
+              <h4 class="size"><%= sms[:size] -%></h4>
+              <div class="tag">仅限新用户</div>
+              <p class="desc"><%= sms[:desc] -%></p>
+            </div>
+            <div class="content-container">
+              <% sms[:sections].each do |section| -%>
+              <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
+                <div class="content-price">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-left">
+                      <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 col-price col-price-right">
+                      <span class="span-red">节省&nbsp;<%= section[:save] -%>&nbsp;元</span>
+                      <span class="span-red span-elide">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="buy-btn">
+                  <%= link_to "立即抢购", signin_url('www', '/events/20200316'), title: sms[:title] + " - 立即抢购", class: "btn btn-lg btn-double12-2019 package-buy disabled", target: "_blank", data: { package_id: section[:packageID], package_info: section[:info] } -%>
+                </div>
+              </section>
+              <% end -%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end -%>
+    </div>
+  </div>
+</div>
+
+
+<%# 存储专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-kodo-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-kodo-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-kodo-modal-label">存储专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">新用户专享</p>
+        <p>活动时间：即日起至 2020 年 4 月 19 日</p>
+        <p>活动对象：七牛云新老用户均可参加</p>
+        <p>购买说明：</p>
+        <p>用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月1日起的用量；「次月生效」为次月1日生效</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# CDN 专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-fusion-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-fusion-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-fusion-modal-label">CDN 专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">新用户专享福利，价格低至 8.8 元</p>
+        <p>活动时间：即日起至 2020 年 4月 19 日</p>
+        <p>活动对象：七牛云新用户</p>
+        <p>活动规则：</p>
+        <p>1.产品为限量抢购产品，每位用户资源包总计不得超过 6 个。用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月1日起的用量；「次月生效」为次月 1 日生效。</p>
+        <p>2、CDN 资源包使用规则：</p>
+        <p>（1）在资源包生效期间内，若当月用量超出可用资源包额度，出账时将优先抵扣完资源包额度，超出部分再按照官网标准结算</p>
+        <p>（2）资源包可叠加购买，出账时将按照资源包过期先后顺序依次抵扣；若当过期时间相同时，将优先抵扣闲时资源包</p>
+        <p>（3）由于活动优惠力度较大，因此购买后无特殊情况无法退款，请确认后再购买</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 直播云专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-pili-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-pili-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-pili-modal-label">直播云专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2020 年 4 月 19 日</p>
+        <p>活动对象：七牛云新注册用户</p>
+        <p>计费规则：</p>
+        <p>1、仅支持新用户购买</p>
+        <p>2、有效期：流量包在您支付购买后的当月生效，有效期为 1 年</p>
+        <p>3、仅支持中国大陆地区按月结流量计费的抵扣，抵扣完毕后，超出部分按流量（公开价）后计费</p>
+        <p>4、支持购买多个流量包叠加使用，有效期不叠加，优先抵扣先过期的流量包</p>
+        <p>5、已购买但从未使用可以联系销售进行退款</p>
+        <p>6、流量资源包仅支持当前计费规则为流量计费的用户购买，如您当前以带宽峰值计费，请联系对应销售或拨打 <a href='tel:400-808-9176' class='link-box' title='400-808-9176 转 1' target=''>400-808-9176 转 1</a> 完成计费方式切换</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+        <p>更多优惠产品请<a href='/prices?source=pili' class='link-box' title='直播云更多优惠产品' target='_blank'>点击查看</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# dora专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-dora-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-dora-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-dora-modal-label">智能多媒体服务专区 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p>活动时间：即日起至 2020 年 4 月 19 日</p>
+        <p>活动对象：七牛云新注册用户</p>
+        <p>活动说明：</p>
+        <p>1、转码包只可抵扣普通转码，不可抵扣窄带高清转码和倍速转码。</p>
+        <p>2、转码包仅支持中国大陆地区。</p>
+        <p>3、转码包有效期为 6 个月，购买后立即生效。每个时长包的有效期独立计算，多个时长包有效期不会叠加。</p>
+        <p>4、生成账单时优先抵扣转码包，多个包时有效期先结束的优先扣减，当所有包扣减完毕后，自动转为按量计费的方式扣减，价格标准参考<a href='/prices?source=dora' class='link-box' title='计费说明' target='_blank'>计费说明</a>。</p>
+        <p>资源包退款规则：</p>
+        <p>1、资源包购买后未使用的可申请退款，其他情况不支持退款。退款需人工处理，请<a href='https://support.qiniu.com/tickets/category' class='link-box' title='工单咨询' target=''>点击此处</a> 提交工单咨询。</p>
+        <p>2、资源包使用后，或资源包到期后，剩余流量不支持退订和退款。</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 短视频 SDK 部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-sdk-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-sdk-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-sdk-modal-label">短视频 SDK - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">免费体验！低至 0 元！</p>
+        <p>活动时间：即日起至 2020 年 4 月 19 日</p>
+        <p>活动对象：七牛云新老用户皆可参与</p>
+        <p>购买说明：</p>
+        <p>1、该活动设置了限购，短视频 SDK 七五折抢购，每个用户限购一单</p>
+        <p>2、支付成功后，进入到<a href="<%= Rails.configuration.portal_host + "/sdk/licenses" -%>" class="link-box" title="短视频 SDK 授权管理页面" target="_blank">短视频 SDK 授权管理页面</a>，可以看到已经购买的授权</p>
+        <p>3、进入到<a href="<%= Rails.configuration.portal_host + "/sdk/apps" -%>" class="link-box" title="短视频 SDK 应用管理页面" target="_blank">短视频 SDK 应用管理页面</a>，创建应用并绑定授权，即可开始使用</p>
+        <p><br /></p>
+        <p>在本次活动中通过优惠价格购买获得的短视频 SDK 授权，不得转售或转赠给任何未经本平台书面授权的第三方，否则七牛云有权立即收回授权</p>
+        <p>除特殊情况外，用户参加本活动购买的产品，不支持退订。如因特殊原因发生退订的，需保证产品未使用</p>
+        <p>根据相关部门规定，对于平台恶意刷单行为，本平台将依法提供事实证据，以维护消费者权益</p>
+        <p>购买本平台商品，默认同意<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a>及相关产品服务协议</p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云主机专场部分  - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-qvm-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-qvm-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-qvm-modal-label">云主机专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">买 6 个月送 6 个月</p>
+        <p>活动时间：即日起至2020年5月31日</p>
+        <p>活动对象：七牛云官网已注册且完成实名认证的云主机新用户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：限购 1 款</p>
+        <p>2、套餐配置：每款默认配置 1 个公网 IP，40G 高效云盘，地域为中国大陆。</p>
+        <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+<%# 云主机专场部分 新老同享 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-qvm-modal-second" tabindex="-1" role="dialog" aria-labelledby="double12-2019-qvm-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-qvm-modal-label-second">云主机专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">新老客户普惠同享，不限参与次数</p>
+        <p>活动时间：即日起至 2020 年 5 月 31 日</p>
+        <p>活动对象：七牛云新老用户皆可参与</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：新老用户不限购买数量</p>
+        <p>2、套餐配置：每款默认配置 1 个公网 IP，40G 高效云盘，地域为中国大陆。</p>
+        <p>3、续费变更：促销价仅适用于购买活动页面套餐，续订变更套餐价格以当期目录价为准，促销价在该场景下不适用，用户选择升配需要额外支付费用</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 云短信专场部分 - 活动说明模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-sms-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-sms-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-sms-modal-label">云短信专场 - 活动说明</h3>
+      </div>
+      <div class="modal-body">
+        <p class="sub-title">仅限新用户，低至0.031元/条</p>
+        <p>活动时间：即日起至 2020 年 4 月 19 日</p>
+        <p>活动对象：七牛云官网注册并经过实名验证的新短信客户</p>
+        <p>购买说明：</p>
+        <p>1、抢购数量：短信服务包每名用户最多只能购买不超过 3 个数量的套餐包</p>
+        <p>2、套餐配置：短信包内含标识的短信条数，短信类型为系统类（验证码、通知），和推广类短信包</p>
+        <p>3、使用说明：用户可选择「当月生效」或「次月生效」。若选择「当月生效」，可用于抵扣当月 1 日起的用量；「次月生效」为次月 1 日生效。短信包可以叠加使用，使用顺序以购买时间计算，优先使用先到期的包</p>
+        <p>4、有效期：短信套餐包自生效起 1 年内有效，逾期未使用将自动作废</p>
+        <p><br /></p>
+        <p>为保证活动的公平公正，七牛云有权对恶意刷抢（如通过程序等技术手段）活动资源，长期资源闲置，利用资源从事违法违规行为的用户收回云资源</p>
+        <p>所有参加本活动的用户，均视为认可并同意遵守<a href='/user-agreement' class='link-box' title='《七牛云用户协议》' target='_blank'>《七牛云用户协议》</a></p>
+        <p>活动最终解释权在法律允许范围内归七牛云所有</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 生效时间选择模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-effect-time-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-effect-time-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-effect-time-modal-label">请选择生效时间</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title package-info"></p>
+        <p class="effect-time-btns">
+          <%= link_to "当月生效", "", title: "当月生效", class: "btn btn-lg btn-default m-r effect-time", data: { effect_time: 3 } -%>
+          <%= link_to "次月生效", "", title: "次月生效", class: "btn btn-lg btn-primary effect-time", data: { effect_time: 2 } -%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 下单套餐包成功模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-package-buy-success-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-package-buy-success-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-package-buy-success-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title">下单成功，请到 <%= link_to "管理控制台 > 财务中心 > 订单列表", Rails.configuration.portal_host + "/financial/orders", title: "管理控制台 > 财务中心 > 订单列表", class: "link-box", target: "_blank" -%> 确认支付</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 下单套餐包失败模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-package-buy-fail-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-package-buy-fail-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-package-buy-fail-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title error-tip">-</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 预约成功模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-order-success-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-order-success-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-order-success-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title">恭喜您，预约成功！</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 预约失败模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-order-fail-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-order-fail-modal-label" data-keyboard="true" data-backdrop="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="double12-2019-order-fail-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title error-tip">-</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 活动结束模态框 %>
+<div class="modal fade alert-modal-css form-wrapper double12-2019-modal" id="double12-2019-end-modal" tabindex="-1" role="dialog" aria-labelledby="double12-2019-end-modal-label" data-keyboard="false" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="double12-2019-end-modal-label">提示</h3>
+      </div>
+      <div class="modal-body">
+        <p class="title">活动已结束</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  window.double12_2019_combPackPriceAndPackIdMap = <%=
+    raw JSON.generate(Rails.configuration.double12_2019_comb_pack_info)
+  -%>
+<% end %>

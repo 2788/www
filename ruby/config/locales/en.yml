@@ -7404,6 +7404,58 @@ en:
           desc: "七牛云智能日志管理平台 Pandora 作为业界领先的实时机器数据分析平台，支持数百种数据源，具有日志统一存储、实时检索、查询和分析、监控与告警、报表与大屏展示等能力。目前已经为上千家客户提供服务，包含互联网、银行、保险、证券、运营商、零售、制造及广电等领域的众多头部客户"
           image: "double12_2019/img-pandora.jpg"
           link: "/express/download"
+      spring_sale:
+        banner:
+          image: "spring_sale/banner.png"
+        middlebar:
+          - title: "智能多媒体服务专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-dora"
+          - title: "存储专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-kodo"
+          - title: "CDN 专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-fusion"
+          - title: "直播专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-pili"
+          - title: "短视频 SDK 专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-sdk"
+          - title: "云主机专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-qvm"
+          - title: "云短信专区"
+            class: "nav-item"
+            href: "#tab-content-spring-sale-sms"
+        kodo:
+          title: "存储专区"
+          desc: "标准存储公开价低至 65 折 <a href='' target='' class='desc-rule-link' title='存储专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-kodo-modal'>了解详情&nbsp;></a>"
+        fusion:
+          title: "CDN 专区"
+          desc: "新用户专享福利，价格低至 8.8 元！<a href='' target='' class='desc-rule-link' title='CDN 专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-fusion-modal'>活动说明&nbsp;></a>"
+        pili:
+          title: "直播专区"
+          desc: "老用户专属优惠限量预约，详情请垂询尊享专线：400-808-9176转1 <a href='' target='' class='desc-rule-link' title='直播云专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-pili-modal'>了解详情&nbsp;></a>"
+          pmTitle: "产品经理特别推荐！享你所想！"
+          socialTitle: "社交 & 电商直播场景定制资源包 首发优惠中"
+          socialSubTitle: "低延迟直播互动，超大并发访问业务场景"
+        sdk:
+          title: "短视频 SDK 专区"
+          desc: "老用户专属优惠限量预约，详情请垂询尊享专线：400-808-9176 转 1 <a href='' target='' class='desc-rule-link' title='短视频 SDK - 活动说明' data-toggle='modal' data-target='#double12-2019-sdk-modal'>活动说明&nbsp;></a>"
+        dora:
+          title: "智能多媒体服务专区"
+          desc: "新用户惊喜折扣，转码包折上九折，适用于在线教育、远程办公、在线直播等领域 <a href='' target='' class='desc-rule-link' title='新用户惊喜折扣，转码包折上九折，适用于在线教育、远程办公、在线直播等领域 ' data-toggle='modal' data-target='#double12-2019-dora-modal'>了解详情</a>"
+          image: "spring_sale/dora_hot.png"
+          link: "/express/download"
+        qvm:
+          title: "云主机专区"
+          desc: "新年新惊喜，买半年得一年！<a href='' target='' class='desc-rule-link' title='云主机专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-qvm-modal'>活动说明&nbsp;></a>"
+          subDesc: "新老客户普惠同享，不限参与次数！<a href='' target='' class='desc-rule-link' title='云主机专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-qvm-modal-second'>活动说明&nbsp;></a>"
+        sms:
+          title: "云短信专区"
+          desc: "仅限新用户，单条价格低至 0.031 元！<a href='' target='' class='desc-rule-link' title='云短信专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-sms-modal'>活动说明&nbsp;></a>"
     download:
       snow:
         banner:
