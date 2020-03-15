@@ -3,7 +3,7 @@
  * @author jiayzihen <jiayzihen@qiniu.com>
  */
 
-// import { observable, action } from 'mobx'
+import { action } from 'mobx'
 import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
 import { injectProps } from 'qn-fe-core/local-store'
@@ -33,16 +33,17 @@ export default class CardStore extends Store {
   Loading = Loading
   loadings = Loadings.collectFrom(this, this.Loading)
 
+  @action.bound drawCouponBtnClick() {
+    this.drawCoupon()
+  }
+
   @Loadings.handle(Loading.DrawCoupon)
-  @ToasterStore.handle(undefined, '领取抵用券失败')
-  fetchList() {
+  @ToasterStore.handle('领取抵用券成功', '领取抵用券失败')
+  drawCoupon() {
     const options: IDrawCouponOptions = {
       batch_id: parseInt(this.props.batch_id)
     }
     const req = this.couponApis.drawCounpon(options)
-    req.then(res => {
-      console.log(res)
-    })
     return req
   }
 

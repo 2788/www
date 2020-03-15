@@ -16,10 +16,31 @@
     left: calc(50% - 2.20rem);
   }
 
-  @media only screen and (max-width: @screen-sm - 1) {
+  @media only screen and (max-width: @screen-sm) {
     .singlePerRow {
       width: 100%;
       left: 0;
+    }
+  }
+}
+
+.showMoreBtnWrapper {
+  text-align: center;
+
+  .showMoreBtn {
+    height: 0.42rem;
+    padding: 0 0.60rem;
+    border: none;
+    border-radius: 0.40rem;
+    font-size: 0.16rem;
+    color: @white;
+    line-height: 0.42rem;
+
+    &:hover, &:active, &:focus {
+      color: @white;
+      box-shadow: 0 0 0.20rem 0 @shadow-color;
+      -webkit-box-shadow: 0 0 0.20rem 0 @shadow-color;
+      -moz-box-shadow: 0 0 0.20rem 0 @shadow-color;
     }
   }
 }

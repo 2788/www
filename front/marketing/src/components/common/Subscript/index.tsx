@@ -1,5 +1,5 @@
 /**
- * @file component Label
+ * @file component Subscript
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
@@ -13,7 +13,7 @@ export interface IProps {
   color: string
 }
 
-export default observer(function Label(props: IProps) {
+export default observer(function Subscript(props: IProps) {
   const { text, color } = props
 
   const bgColorStyle = {

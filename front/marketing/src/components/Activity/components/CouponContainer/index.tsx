@@ -8,8 +8,8 @@ import { observer } from 'mobx-react'
 import Spin from 'react-icecream/lib/spin'
 import Row from 'react-icecream/lib/row'
 import Col from 'react-icecream/lib/col'
+import Button from 'react-icecream/lib/button'
 import { useLocalStore } from 'qn-fe-core/local-store'
-import classNames from 'classnames/bind'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
 import { ICouponInfo } from 'apis/coupon'
@@ -35,7 +35,10 @@ export interface IProps extends IBaseProps {
 }
 
 export default observer(forwardRef(function CouponContainer(props: IProps, ref: Ref<any>) {
-  const { info: { key, data: { count_per_row, background_from, background_to } } } = props
+  const { info: { key, data: {
+    count_per_row, background_from, background_to,
+    show_more_text, show_more_link, show_more_bg_color
+  } } } = props
 
   // 使用局部 store
   const couponContainerStore = useLocalStore(CouponContainerStore, props)
@@ -47,19 +50,67 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
   const COL_SPAN_TOTAL_COUNT = 24
   const colSpanCount = COL_SPAN_TOTAL_COUNT / count_per_row
 
-  const cx = classNames.bind(styles)
+  function isSinglePerRow() {
+    return count_per_row && colSpanCount === COL_SPAN_TOTAL_COUNT
+  }
 
   function renderCouponCard() {
     const { coupon_list } = couponContainerStore
-    return coupon_list.map((item: ICouponInfo, index: number) => {
-      return (
-        <Card {...item} key={`${key}-coupon-${index}`}></Card>
-      )
-    })
+    if (isSinglePerRow()) {
+      return coupon_list.map((item: ICouponInfo, index: number) => {
+        return (
+          <Row
+            key={`${key}-coupon-row-${index}`}
+            className={styles.mainWrapper}
+            gutter={48}>
+            <Col
+              className={styles.singlePerRow}
+              span={COL_SPAN_TOTAL_COUNT}>
+              <Card {...item}></Card>
+            </Col>
+          </Row>
+        )
+      })
+    }
+
+    return (
+      <Row
+        className={styles.mainWrapper}
+        gutter={48}>
+        {coupon_list.map((item: ICouponInfo, index: number) => {
+          return (
+            <Col
+              key={`${key}-coupon-col-${index}`}
+              span={COL_SPAN_TOTAL_COUNT}
+              md={{ span: COL_SPAN_TOTAL_COUNT / 2 }}
+              lg={{ span: colSpanCount}}>
+              <Card {...item}></Card>
+            </Col>
+          )
+        })}
+      </Row>
+    )
   }
 
-  function isSinglePerRow() {
-    return count_per_row && colSpanCount === COL_SPAN_TOTAL_COUNT
+  function renderShowMoreBtn() {
+    if (!show_more_text) {
+      return null
+    }
+    const bgColorStyle = {
+      backgroundColor: show_more_bg_color
+    }
+    return (
+      <div className={styles.showMoreBtnWrapper}>
+        <Button
+          className={styles.showMoreBtn}
+          style={bgColorStyle}
+          href={show_more_link}
+          size="large"
+          target="_blank">
+          {show_more_text}
+        </Button>
+      </div>
+    )
   }
 
   return (
@@ -69,17 +120,8 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
       spinning={couponContainerStore.loadings.isLoading(couponContainerStore.Loading.FetchList)}>
       <div className="features" style={bgColorStyle} ref={ref}>
         <div className="container">
-          <Row
-            className={styles.mainWrapper}
-            gutter={48}>
-            <Col
-              className={cx({singlePerRow: isSinglePerRow()})}
-              span={COL_SPAN_TOTAL_COUNT}
-              md={{ span: isSinglePerRow() ? COL_SPAN_TOTAL_COUNT : COL_SPAN_TOTAL_COUNT / 2}}
-              lg={{ span: colSpanCount}}>
-              {renderCouponCard()}
-            </Col>
-          </Row>
+          {renderCouponCard()}
+          {renderShowMoreBtn()}
         </div>
       </div>
     </Spin>

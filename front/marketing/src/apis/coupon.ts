@@ -63,7 +63,12 @@ export default class CouponApis extends Store {
     return this.fetchStore.get('/get-coupons', options)
   }
 
+  // TODO: 对接口
   drawCounpon(options: IDrawCouponOptions): Promise<IDrawCouponResult> {
-    return this.fetchStore.postJSON('/draw-coupon', options)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.fetchStore.get('/draw-coupon', options))
+      }, 1000)
+    })
   }
 }
