@@ -15,7 +15,7 @@ import { ComponentName, IComponentInfo } from 'apis/component'
 import { ICouponInfo } from 'apis/coupon'
 import { IBaseProps } from '../..'
 
-import Card from './Card'
+import CouponCard from '../CouponCard'
 
 import CouponContainerStore from './store'
 import * as styles from './style.m.less'
@@ -66,7 +66,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
             <Col
               className={styles.singlePerRow}
               span={COL_SPAN_TOTAL_COUNT}>
-              <Card {...item}></Card>
+              <CouponCard {...item}></CouponCard>
             </Col>
           </Row>
         )
@@ -84,7 +84,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
               span={COL_SPAN_TOTAL_COUNT}
               md={{ span: COL_SPAN_TOTAL_COUNT / 2 }}
               lg={{ span: colSpanCount}}>
-              <Card {...item}></Card>
+              <CouponCard {...item}></CouponCard>
             </Col>
           )
         })}

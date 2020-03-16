@@ -1,5 +1,5 @@
 /**
- * @file Production/Editor Mode of CouponCard
+ * @file Production Mode of CouponCard
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
@@ -16,12 +16,12 @@ import { getDerateRule, getValidDuration } from 'utils/coupon'
 import Label, { IProps as ILabelProps } from 'components/common/Label'
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
 
-import CardStore from './store'
+import CouponCardStore from './store'
 import * as styles from './style.m.less'
 
 export interface IProps extends ICouponInfo {}
 
-export default observer(function Card(props: IProps) {
+export default observer(function CouponCard(props: IProps) {
   const {
     label, label_color, coupon_money, threshold_money,
     rule_text, coupon_scope_desc,
@@ -30,7 +30,7 @@ export default observer(function Card(props: IProps) {
   } = props
 
   // 使用局部 store
-  const cardStore = useLocalStore(CardStore, props)
+  const couponCardStore = useLocalStore(CouponCardStore, props)
 
   function renderSubscript() {
     if (!subscript_name) {
@@ -58,6 +58,21 @@ export default observer(function Card(props: IProps) {
     )
   }
 
+  function renderValidDuration() {
+    const content: string = getValidDuration(
+      time_period_type, effect_days,
+      coupon_effect_time, coupon_dead_time
+    )
+    if (!content) {
+      return null
+    }
+    return (
+      <p className={`${styles.lighter} ${styles.smaller}`}>
+        {content}
+      </p>
+    )
+  }
+
   return (
     <div className={styles.mainWrapper}>
       {renderSubscript()}
@@ -71,15 +86,13 @@ export default observer(function Card(props: IProps) {
       <p className={`${styles.lighter} ${styles.smaller}`}>
         {rule_text || coupon_scope_desc}
       </p>
-      <p className={`${styles.lighter} ${styles.smaller}`}>
-        {getValidDuration(time_period_type, effect_days, coupon_effect_time, coupon_dead_time)}
-      </p>
+      {renderValidDuration()}
       <Button
         size="large"
         className={styles.drawBtn}
-        loading={cardStore.loadings.isLoading(cardStore.Loading.DrawCoupon)}
-        onClick={() => cardStore.drawCouponBtnClick()}>
-        {cardStore.loadings.isLoading(cardStore.Loading.DrawCoupon) ? '领取中...' : '立即领取'}
+        loading={couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon)}
+        onClick={() => couponCardStore.drawCouponBtnClick()}>
+        {couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon) ? '领取中...' : '立即领取'}
       </Button>
     </div>
   )

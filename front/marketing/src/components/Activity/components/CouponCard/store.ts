@@ -20,7 +20,7 @@ enum Loading {
 }
 
 @injectable()
-export default class CardStore extends Store {
+export default class CouponCardStore extends Store {
   constructor(
     toasterStore: ToasterStore,
     private couponApis: CouponApis,

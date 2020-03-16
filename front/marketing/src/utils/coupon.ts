@@ -28,11 +28,10 @@ export function getValidDuration(
     case couponTimePeriodType.ABSOLUTE:
       const TIME_LAYOUT: string = 'YYYY-MM-DD HH:mm:ss'
       return `
-        有效期：
         ${moment(effect_time).utcOffset(8).format(TIME_LAYOUT)} ~
-        ${moment(dead_time).utcOffset(8).format(TIME_LAYOUT)}
+        ${moment(dead_time).utcOffset(8).format(TIME_LAYOUT)} 有效
       `
     default:
-      return '有效期未知'
+      return ''
   }
 }
