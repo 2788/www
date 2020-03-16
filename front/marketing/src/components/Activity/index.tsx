@@ -87,7 +87,7 @@ export default observer(function Activity(props: IProps) {
         )
       case ComponentName.CouponContainer:
         return (
-          <CouponContainer {...commonProps} info={componentInfo} ref={ele => registerRef(componentInfo.key, ele)} />
+          <CouponContainer {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )
       default:
         console.error('找不到控件', componentInfo)
