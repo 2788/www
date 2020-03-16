@@ -7,9 +7,9 @@
 
 .main {
   padding: 1ex 1em;
-  font-size: 16px;
-  color: #FFF;
-  background-color: #000; // FIXME: IE9- 兜底颜色，linear-gradient 失效时生效
+  font-size: .16rem;
+  color: @white;
+  background-color: @black; // FIXME: IE9- 兜底颜色，linear-gradient 失效时生效
 
   h1, h2, h3, h4, h5, h6 {
     color: inherit;
@@ -17,7 +17,7 @@
 
   .title {
     text-align: center;
-    font-size: 34px;
+    font-size: .34rem;
     line-height: 2.5;
   }
 
@@ -63,7 +63,7 @@
 }
 
 .modal {
-  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm) {
+  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm - 1) {
     & {
       max-width: @modal-sm !important;
     }

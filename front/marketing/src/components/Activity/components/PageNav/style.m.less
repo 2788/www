@@ -5,9 +5,9 @@
 
 @import "~utils/styles/index.less";
 
-@comp-page-nav-outer-bg-color: #FFF;
+@comp-page-nav-outer-bg-color: @white;
 @comp-page-nav-outer-border-color: gray;
-@comp-page-nav-inner-border-color: #CCC;
+@comp-page-nav-inner-border-color: @border-color;
 
 .comp-page-nav-box-shadow() {
   box-shadow: 0 0 1em @comp-page-nav-outer-border-color;
@@ -16,10 +16,10 @@
 .pc,
 .mobile {
   position: fixed;
-  z-index: 1024;
+  z-index: 999; // ant design 的 modal mask 是 1000
   left: 1ex;
   bottom: 20%; // TODO: 位置优化
-  color: #000;
+  color: @black;
 }
 
 .menuWrapper {
@@ -66,7 +66,7 @@
   }
 
   // for mobile
-  @media only screen and (max-width: @screen-sm) {
+  @media only screen and (max-width: @screen-sm - 1) {
     & {
       display: none;
     }
