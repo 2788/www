@@ -7,6 +7,9 @@ import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
 import FetchStore from 'stores/fetch'
 
+import { ValueOf } from 'types/ts'
+import { couponTimePeriodType } from 'constants/coupon'
+
 export interface IListCouponsOptions {
   campaign_code: string // activity code
   group: string
@@ -33,7 +36,7 @@ export interface ICouponInfo {
   coupon_effect_time: string
   coupon_dead_time: string
   coupon_scope_desc: string
-  time_period_type: string
+  time_period_type: ValueOf<typeof couponTimePeriodType>
   label: string
   label_color: string
 }

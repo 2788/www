@@ -46,8 +46,4 @@ export default class CouponCardStore extends Store {
     const req = this.couponApis.drawCounpon(options)
     return req
   }
-
-  init() {
-    this.addDisposer(() => null)
-  }
 }

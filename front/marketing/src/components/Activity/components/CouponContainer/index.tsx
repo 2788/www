@@ -47,17 +47,17 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
     background: `linear-gradient(${background_from}, ${background_to})`
   }
 
-  const COL_SPAN_TOTAL_COUNT = 24
-  const colSpanCount = COL_SPAN_TOTAL_COUNT / count_per_row
+  const SPAN_TOTAL_COUNT = 24
+  const spanCount = SPAN_TOTAL_COUNT / count_per_row
 
   function isSinglePerRow() {
-    return count_per_row && colSpanCount === COL_SPAN_TOTAL_COUNT
+    return count_per_row && spanCount === SPAN_TOTAL_COUNT
   }
 
   function renderCouponCard() {
-    const { coupon_list } = couponContainerStore
+    const { couponList } = couponContainerStore
     if (isSinglePerRow()) {
-      return coupon_list.map((item: ICouponInfo, index: number) => {
+      return couponList.map((item: ICouponInfo, index: number) => {
         return (
           <Row
             key={`${key}-coupon-row-${index}`}
@@ -65,7 +65,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
             gutter={48}>
             <Col
               className={styles.singlePerRow}
-              span={COL_SPAN_TOTAL_COUNT}>
+              span={SPAN_TOTAL_COUNT}>
               <CouponCard {...item}></CouponCard>
             </Col>
           </Row>
@@ -77,13 +77,13 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
       <Row
         className={styles.mainWrapper}
         gutter={48}>
-        {coupon_list.map((item: ICouponInfo, index: number) => {
+        {couponList.map((item: ICouponInfo, index: number) => {
           return (
             <Col
               key={`${key}-coupon-col-${index}`}
-              span={COL_SPAN_TOTAL_COUNT}
-              md={{ span: COL_SPAN_TOTAL_COUNT / 2 }}
-              lg={{ span: colSpanCount}}>
+              span={SPAN_TOTAL_COUNT}
+              md={{ span: SPAN_TOTAL_COUNT / 2 }}
+              lg={{ span: spanCount}}>
               <CouponCard {...item}></CouponCard>
             </Col>
           )
@@ -115,7 +115,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
 
   return (
     <Spin
-      size='large'
+      size="large"
       className={styles.spinWrapper}
       spinning={couponContainerStore.loadings.isLoading(couponContainerStore.Loading.FetchList)}>
       <div className="features" style={bgColorStyle} ref={ref}>

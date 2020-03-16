@@ -60,7 +60,6 @@ export default observer(function Activity(props: IProps) {
     // 倒也有个好处，就是可以定义各自的参数，而不致于耦合在一起
     switch (componentInfo.value) {
       case ComponentName.Demo:
-        console.log(componentInfo.data.a)
         return (
           <Demo {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )

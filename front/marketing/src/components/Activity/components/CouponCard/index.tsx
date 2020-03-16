@@ -79,10 +79,10 @@ export default observer(function CouponCard(props: IProps) {
       <div className={styles.moneyWrapper}>
         {renderLabel()}
         <p className={styles.money}>
-          ￥<span className={styles.huge}>{asYuan(coupon_money).toFixed(2)}</span>
+          ￥<span className={styles.huge}>{asYuan(parseInt(coupon_money)).toFixed(2)}</span>
         </p>
       </div>
-      <p className={styles.larger}>{getDerateRule(threshold_money)}</p>
+      <p className={styles.larger}>{getDerateRule(parseInt(threshold_money))}</p>
       <p className={`${styles.lighter} ${styles.smaller}`}>
         {rule_text || coupon_scope_desc}
       </p>

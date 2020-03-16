@@ -24,7 +24,7 @@ export default class CouponContainerStore extends Store {
   constructor(
     toasterStore: ToasterStore,
     private couponApis: CouponApis,
-    @injectProps() private props: IProps,
+    @injectProps() private props: IProps
   ) {
     super()
     ToasterStore.bind(this, toasterStore)
@@ -33,10 +33,10 @@ export default class CouponContainerStore extends Store {
   Loading = Loading
   loadings = Loadings.collectFrom(this, this.Loading)
 
-  @observable.ref coupon_list: ICouponInfo[] = []
+  @observable.ref couponList: ICouponInfo[] = []
 
   @action.bound updateCouponList(list: ICouponInfo[]) {
-    this.coupon_list = list
+    this.couponList = list
   }
 
   @Loadings.handle(Loading.FetchList)
@@ -58,7 +58,6 @@ export default class CouponContainerStore extends Store {
   }
 
   init() {
-    this.addDisposer(() => null)
     this.fetchList()
   }
 }
