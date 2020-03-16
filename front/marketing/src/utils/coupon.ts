@@ -13,7 +13,7 @@ import { couponTimePeriodType } from 'constants/coupon'
 export function getDerateRule(threshold: number): string {
   const numThreshold: number = parseFloat(asYuan(threshold).toFixed(2))
   if (numThreshold > 0) {
-    return (`满 ${numThreshold} 元可用`).trim()
+    return `满 ${numThreshold} 元可用`
   }
   return '无门槛'
 }
@@ -26,7 +26,7 @@ export function getValidDuration(
 ): string {
   switch (type) {
     case couponTimePeriodType.CONST_DURATION:
-      return (`自领取日起，${effectDays} 天有效`).trim()
+      return `自领取日起，${effectDays} 天有效`
     case couponTimePeriodType.ABSOLUTE:
       const TIME_LAYOUT: string = 'YYYY-MM-DD HH:mm:ss'
       return (`
