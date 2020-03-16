@@ -32,6 +32,7 @@ export interface IProps {
 }
 
 export default observer(function Activity(props: IProps) {
+  // TODO: hmr 有问题
   const activityStore = useLocalStore(ActivityStore, props)
 
   const elementMap: { [key: string]: HTMLElement } = {}
