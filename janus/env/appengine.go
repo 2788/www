@@ -57,6 +57,7 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 	env.Cfg = cfg
 	env.SSOService = ssoService
 	env.GaeaAdminService = gaeaService
+	env.AccTr = accTr
 	return app
 }
 
