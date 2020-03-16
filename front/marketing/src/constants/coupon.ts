@@ -5,6 +5,6 @@
 
 export const couponTimePeriodType = {
   UNKNOWN: '0', // 未知
-  CONST_DURATION: '1', // 固定天数
-  ABSOLUTE: '2' // 固定时间段
+  FIXED_DAYS: '1', // 固定天数
+  FIXED_PERIOD: '2' // 固定时间段
 } as const

@@ -25,9 +25,9 @@ export function getValidDuration(
   deadTime: string
 ): string {
   switch (type) {
-    case couponTimePeriodType.CONST_DURATION:
+    case couponTimePeriodType.FIXED_DAYS:
       return `自领取日起，${effectDays} 天有效`
-    case couponTimePeriodType.ABSOLUTE:
+    case couponTimePeriodType.FIXED_PERIOD:
       const TIME_LAYOUT: string = 'YYYY-MM-DD HH:mm:ss'
       return (`
         ${moment(effectTime).utcOffset(8).format(TIME_LAYOUT)} ~
