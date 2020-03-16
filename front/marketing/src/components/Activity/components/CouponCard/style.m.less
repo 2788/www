@@ -1,0 +1,80 @@
+/**
+ * @file styles of component CouponCard
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.mainWrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: 0.30rem;
+  padding: 0.10rem 0.10rem 0;
+  color: @coupon-text-color;
+  border: 0.06rem solid @coupon-border-color;
+  background-color: @white;
+  text-align: center;
+  box-shadow: 0 0 0.20rem 0 @shadow-color;
+  -webkit-box-shadow: 0 0 0.20rem 0 @shadow-color;
+  -moz-box-shadow: 0 0 0.20rem 0 @shadow-color;
+  overflow: hidden;
+
+  p {
+    line-height: 1;
+
+    &.smaller {
+      font-size: 0.12rem;
+      line-height: 1.2;
+    }
+
+    &.larger {
+      font-size: 0.16rem;
+    }
+
+    &.lighter {
+      color: @coupon-text-color-lighter;
+    }
+  }
+
+  .moneyWrapper {
+    width: fit-content;
+    margin: 0 auto;
+    text-align: left;
+
+    .money {
+      margin-top: 0.04rem;
+      font-size: 0.22rem;
+      font-weight: 400;
+      color: @coupon-money-color;
+
+      .huge {
+        font-size: 0.44rem;
+      }
+    }
+  }
+
+  .drawBtn {
+    width: calc(100% + 0.20rem);
+    position: relative;
+    left: -0.10rem;
+    margin-top: 0.10rem;
+    border: none;
+    border-radius: 0;
+    color: @white;
+    background: -webkit-linear-gradient(to right, @coupon-draw-btn-left-color, @coupon-border-color);
+    background: -o-linear-gradient(to right, @coupon-draw-btn-left-color, @coupon-border-color);
+    background: -moz-linear-gradient(to right, @coupon-draw-btn-left-color, @coupon-border-color);
+    background: linear-gradient(to right, @coupon-draw-btn-left-color, @coupon-border-color);
+    background-color: @coupon-border-color;
+    &:hover, &:active, &:focus {
+      color: @white;
+      background-color: @coupon-draw-btn-hover-color;
+    }
+  }
+
+  @media only screen and (max-width: @screen-sm) {
+    & {
+      border-width: 0.10rem;
+    }
+  }
+}
