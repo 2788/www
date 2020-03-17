@@ -202,6 +202,12 @@ $(document).ready ->
       $2019double12EffectTimeModal.find('.package-info').html double12SelectedPackageInfo
       $2019double12EffectTimeModal.one('hidden.bs.modal', cb)
       $2019double12EffectTimeModal.modal 'hide'
+    if $springSaleSdkEffectTimeModal.length > 0
+      double12SelectedPackageID = 0
+      double12SelectedPackageInfo = ''
+      $springSaleSdkEffectTimeModal.find('.package-info').html double12SelectedPackageInfo
+      $springSaleSdkEffectTimeModal.one('hidden.bs.modal', cb)
+      $springSaleSdkEffectTimeModal.modal 'hide'
 
   # 绑定页面的 dropdown
   if $springSaleEventPage.length > 0
