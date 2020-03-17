@@ -1947,7 +1947,7 @@ Rails.application.configure do
               "price": "2334.72",
               "originPrice": "3582.62",
               "save": "1247.9",
-              "packageID": 906,
+              "packageID": 909,
               "info": "请您再次确认所选的区域和规格<br />标准存储空间 2T X 12 个月 - <span class='high-light'>华东地区</span>"
             }
           ]
