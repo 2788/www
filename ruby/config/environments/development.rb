@@ -1712,12 +1712,9 @@ Rails.application.configure do
     }
   }
 
-  # TODO
   # 2020 年春季采购活动套餐包测试环境（cs12）配置文件
   # 如果不用区分本地、测试和线上环境
   # 可以在 zh-CN.yml 和 en.yml 里面 views -> events 里面添加配置项，可以参考现有的 double12_2019 配置项
-  # 如果需要区分环境
-  # 可以参考 config.double12_2019_package 配置项
   config.spring_sale_package = {
     "kodo": {
       "cdnstandard": [
