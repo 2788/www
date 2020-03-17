@@ -12,6 +12,10 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 
 ## 开发
 
+### IDE
+
+如果使用 `vscode` 的话建议安装一个 `css module` 插件如 `clinyong.vscode-css-modules`
+
 ### 依赖
 
 ```shell
