@@ -41,7 +41,11 @@ export default observer(function Activity(props: IProps) {
     elementMap[key] = element
   }
 
+  // 要不要加滚动动画。。？
   function scrollTo(key: string) {
+    // 是不是直接这样简单点。。 就不需要 ref 了
+    // document.querySelector(`[data-key="${key}"]`)!.scrollIntoView()
+
     if (elementMap[key]) {
       elementMap[key].scrollIntoView()
     } else {

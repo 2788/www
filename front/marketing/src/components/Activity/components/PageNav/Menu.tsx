@@ -20,7 +20,7 @@ export default observer(function Menu({ onSelect, ...config }: IProps) {
 
   const { list, background_from, background_to, background_hover } = config
 
-  // TODO: 感觉效果会不好
+  // 感觉渐变效果会不好
   // HACK: pseudo class - hover
   const styleText = `
     .${uniqueClassName} {

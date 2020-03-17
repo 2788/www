@@ -18,7 +18,7 @@
   position: fixed;
   z-index: 999; // ant design 的 modal mask 是 1000
   left: 1ex;
-  bottom: 20%; // TODO: 位置优化
+  bottom: 20%; // 后续最好做一下位置优化
   color: @black;
 }
 
@@ -34,7 +34,7 @@
     background-color: @comp-page-nav-outer-bg-color; // FIXME: IE9- 兜底颜色，linear-gradient 失效时生效
 
     .item {
-      // TODO: 非常丑，先注释掉…
+      // 非常丑，先注释掉…
       // border-bottom: 1px solid @comp-page-nav-inner-border-color;
       // border-top: 1px solid @comp-page-nav-inner-border-color;
       // margin: -1px 0;
@@ -59,9 +59,12 @@
     .comp-page-nav-box-shadow();
     cursor: pointer;
 
-    // TODO: <Icon type="caret-right" /> 在这里不生效…
-    &::after {
-      content: '▸';
+    // 感觉 unicode 和 icecream(antd) icon 长得都有点丑
+    // &::after {
+    //   content: '\25b8'; // ▸
+    // }
+    .iconCaret {
+      font-size: smaller;
     }
   }
 

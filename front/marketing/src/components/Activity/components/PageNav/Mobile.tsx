@@ -16,6 +16,8 @@ export interface IProps extends ICommonProps {
 }
 
 export default observer(function Mobile({ visible, setVisible, color, children }: IProps) {
+  // 要不要 onTap / onClick 的时候也 close 一下？
+
   const buttonView = (
     <div className={styles.buttonWrapper}>
       <span
