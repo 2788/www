@@ -11,6 +11,31 @@
       "path": "/adverts/:id",
       "method": "GET",
       "auth": "admin"
+    },
+    {
+      "path": "/campaigns/info",
+      "method": "GET",
+      "auth": "admin"
+    },
+    {
+      "path": "/campaigns",
+      "method": "GET",
+      "auth": "admin"
+    },
+    {
+      "path": "/campaigns",
+      "method": "POST",
+      "auth": "admin"
+    },
+    {
+      "path": "/campaigns/:id",
+      "method": "PUT",
+      "auth": "admin"
+    },
+    {
+      "path": "/campaigns/:id",
+      "method": "DELETE",
+      "auth": "admin"
     }
   ]
 }]
