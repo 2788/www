@@ -1,0 +1,16 @@
+[{
+  "name": "lego",
+  "target": "http://bo-lego-koderover-staging-bo.cs-spock.cloudappl.com",
+  "matches": [
+    {
+      "path": "/banners/:id",
+      "method": "GET",
+      "auth": "admin"
+    },
+    {
+      "path": "/adverts/:id",
+      "method": "GET",
+      "auth": "admin"
+    }
+  ]
+}]

@@ -11,8 +11,8 @@ import (
 var env GlobalEnv
 
 type GlobalEnv struct {
-	Cfg *config.Config
-	// AccAdminService  account.AdminService
+	Cfg              *config.Config
+	ProxyCfg         []config.ProxyEntry
 	GaeaAdminService gaea.GaeaAdminService
 	SSOService       account.SSOService
 	AccTr            http.RoundTripper
