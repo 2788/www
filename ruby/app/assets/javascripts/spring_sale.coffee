@@ -20,7 +20,6 @@ $(document).ready ->
   double12SelectedPackageID = 0
   double12SelectedPackageInfo = ''
   double12PackageBuyDefaultFailMessage = '下单失败，请稍后重试'
-  double12OrderDefaultFailMessage = '预约失败，请稍后重试'
 
   bindDropdownList = () ->
     if $springSaleKodoDropdown.length > 0
