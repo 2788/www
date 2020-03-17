@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# cd portalv4/dist
+# cd www/dist
 
 # cp -rf * ../
 
