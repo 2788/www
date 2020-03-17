@@ -1738,13 +1738,1697 @@ Rails.application.configure do
     }
   }
 
-  # TODO
   # 2020 年春季采购活动套餐包本地开发配置文件
   # 如果不用区分本地、测试和线上环境
   # 可以在 zh-CN.yml 和 en.yml 里面 views -> events 里面添加配置项，可以参考现有的 double12_2019 配置项
-  # 如果需要区分环境
-  # 可以参考 config.double12_2019_package 配置项
-  config.spring_sale_package = {}
+  config.spring_sale_package = {
+    "kodo": {
+      "cdnstandard": [
+        {
+          "title": "标准存储",
+          "size": "100G",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-100G",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-100G",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-100G",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-100G",
+              "class": "active",
+              "price": "90",
+              "originPrice": "106.92",
+              "save": "16.92",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 100G X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-100G",
+              "class": "",
+              "price": "114",
+              "originPrice": "159.84",
+              "save": "45.84",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 100G X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-100G",
+              "class": "",
+              "price": "114",
+              "originPrice": "159.84",
+              "save": "45.84",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 100G X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "500G",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-500G",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-500G",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-500G",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-500G",
+              "class": "active",
+              "price": "450",
+              "originPrice": "582.12",
+              "save": "132.12",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 500G X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-500G",
+              "class": "",
+              "price": "570",
+              "originPrice": "870.24",
+              "save": "300.24",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 500G X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-500G",
+              "class": "",
+              "price": "570",
+              "originPrice": "870.24",
+              "save": "300.24",
+              "packageID": 115,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 500G X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "1T",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-1T",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-1T",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-1T",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-1T",
+              "class": "active",
+              "price": "921.6",
+              "originPrice": "1204.63",
+              "save": "283.03",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 1T X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-1T",
+              "class": "",
+              "price": "1167.36",
+              "originPrice": "1800.86",
+              "save": "633.5",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 1T X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-1T",
+              "class": "",
+              "price": "1167.36",
+              "originPrice": "1800.86",
+              "save": "633.5",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 1T X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "2T",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-2T",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-2T",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-2T",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-2T",
+              "class": "active",
+              "price": "1843.2",
+              "originPrice": "2421.14",
+              "save": "577.94",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 2T X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-2T",
+              "class": "",
+              "price": "2334.72",
+              "originPrice": "3582.62",
+              "save": "1247.9",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 2T X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-2T",
+              "class": "",
+              "price": "2334.72",
+              "originPrice": "3582.62",
+              "save": "1247.9",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 2T X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "5T",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-5T",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-5T",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-5T",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-5T",
+              "class": "active",
+              "price": "4608",
+              "originPrice": "6070.68",
+              "save": "1462.68",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 5T X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-5T",
+              "class": "",
+              "price": "5836.8",
+              "originPrice": "8927.9",
+              "save": "3091.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 5T X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-5T",
+              "class": "",
+              "price": "5836.8",
+              "originPrice": "8927.9",
+              "save": "3091.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 5T X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "10T",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-10T",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-10T",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-10T",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-10T",
+              "class": "active",
+              "price": "9216",
+              "originPrice": "12153.2",
+              "save": "2937.2",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 10T X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-10T",
+              "class": "",
+              "price": "11673.6",
+              "originPrice": "17836.7",
+              "save": "6163.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 10T X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-10T",
+              "class": "",
+              "price": "11673.6",
+              "originPrice": "17836.7",
+              "save": "6163.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 10T X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "20T",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-20T",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-20T",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-20T",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-20T",
+              "class": "active",
+              "price": "18432",
+              "originPrice": "24318.4",
+              "save": "5886.4",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 20T X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-20T",
+              "class": "",
+              "price": "23347.2",
+              "originPrice": "35654.3",
+              "save": "12307.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 20T X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-20T",
+              "class": "",
+              "price": "23347.2",
+              "originPrice": "35654.3",
+              "save": "12307.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 20T X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        },
+        {
+          "title": "标准存储",
+          "size": "50T",
+          "unit": "/月",
+          "desc": "区域可选华东/华北/华南",
+          "isNew": false,
+          "durations": [
+            "text": "12 个月",
+            "value": "12 个月"
+          ],
+          "areas": [
+            {
+              "value": "kodo-south-50T",
+              "text": "华南"
+            }, {
+              "value": "kodo-north-50T",
+              "text": "华北"
+            }, {
+              "value": "kodo-east-50T",
+              "text": "华东"
+            }
+          ],
+          "sections": [
+            {
+              "id": "kodo-south-50T",
+              "class": "active",
+              "price": "46080",
+              "originPrice": "60813.7",
+              "save": "14733.7",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 50T X 12 个月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "kodo-north-50T",
+              "class": "",
+              "price": "58368",
+              "originPrice": "89107.1",
+              "save": "30739.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 50T X 12 个月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "kodo-east-50T",
+              "class": "",
+              "price": "58368",
+              "originPrice": "89107.1",
+              "save": "30739.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 50T X 12 个月 - <span class='high-light'>华东地区</span>"
+            }
+          ]
+        }
+      ],
+      "cdnin": [
+        {
+          "title": "CDN 回源流量",
+          "size": "500G",
+          "unit": "/年",
+          "duration": "1 年",
+          "zone": "国内任意区域",
+          "desc": "1 年内任意月用完即止",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "75",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 500G X 1 年"
+            }
+          ]
+        },
+        {
+          "title": "CDN 回源流量",
+          "size": "2T",
+          "unit": "/年",
+          "duration": "1 年",
+          "zone": "国内任意区域",
+          "desc": "1 年内任意月用完即止",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "307.2",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 2T X 1 年"
+            }
+          ]
+        },
+        {
+          "title": "CDN 回源流量",
+          "size": "5T",
+          "unit": "/年",
+          "duration": "1 年",
+          "zone": "国内任意区域",
+          "desc": "1 年内任意月用完即止",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "768",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 5T X 1 年"
+            }
+          ]
+        },
+        {
+          "title": "CDN 回源流量",
+          "size": "20T",
+          "unit": "/年",
+          "duration": "1 年",
+          "zone": "国内任意区域",
+          "desc": "1 年内任意月用完即止",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "3072",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 20T X 1 年"
+            }
+          ]
+        }
+      ],
+      "cdnout": [
+        {
+          "title": "外网流出流量",
+          "size": "50G",
+          "unit": "/月",
+          "duration": "12 个月",
+          "zone": "国内任意区域",
+          "desc": "特惠体验，不可结转， 限购一个(体验包)",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "144",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 50G X 12 月"
+            }
+          ]
+        },
+        {
+          "title": "外网流出流量",
+          "size": "100G",
+          "unit": "/月",
+          "duration": "12 个月",
+          "zone": "国内任意区域",
+          "desc": "不可结转",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "348",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 100G X 12 月"
+            }
+          ]
+        },
+        {
+          "title": "外网流出流量",
+          "size": "500G",
+          "unit": "/月",
+          "duration": "12 个月",
+          "zone": "国内任意区域",
+          "desc": "不可结转",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "1740",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 500G X 12 月"
+            }
+          ]
+        },
+        {
+          "title": "外网流出流量",
+          "size": "1T",
+          "unit": "/月",
+          "duration": "12 个月",
+          "zone": "国内任意区域",
+          "desc": "不可结转",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "3563.52",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 1T X 12 月"
+            }
+          ]
+        }
+      ]
+    },
+    "fusion": {
+      "products": [
+        {
+          "title": "复工采购季-国内HTTP流量 ",
+          "size": "100GB",
+          "duration": "12 个月",
+          "protocol": "http",
+          "desc": "一次性发放",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "8.8",
+              "originPrice": "21.6",
+              "save": "12.8",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />复工采购季-国内HTTP流量 100GB X 12 个月 - <span class='high-light'>国内</span>"
+            }
+          ]
+        },
+        {
+          "title": "复工采购季-国内HTTP流量 ",
+          "size": "1TB",
+          "duration": "12 个月",
+          "protocol": "http",
+          "desc": "一次性发放",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "88",
+              "originPrice": "243.36",
+              "save": "155.36",
+              "packageID": 108,
+              "info": "请您再次确认所选的区域和规格<br />复工采购季-国内HTTP流量 1T X 12 个月 - <span class='high-light'>国内</span>"
+            }
+          ]
+        },
+        {
+          "title": "复工采购季-国内HTTPS流量 ",
+          "size": "100GB",
+          "duration": "12 个月",
+          "protocol": "https",
+          "desc": "一次性发放",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "9.9",
+              "originPrice": "25.2",
+              "save": "15.3",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />复工采购季-国内HTTPS流量 100GB X 12 个月 - <span class='high-light'>国内</span>"
+            }
+          ]
+        },
+        {
+          "title": "复工采购季-国内HTTPS流量 ",
+          "size": "1TB",
+          "duration": "12 个月",
+          "protocol": "https",
+          "desc": "一次性发放",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "99",
+              "originPrice": "283.92",
+              "save": "184.92",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />标准存储空间 复工采购季-国内HTTPS流量 1T X 12 个月 - <span class='high-light'>国内</span>"
+            }
+          ]
+        }
+      ]
+    },
+    "pili": {
+      "products": [
+        {
+          "title": "直播流量包",
+          "size": "500GB",
+          "desc": "(1 年有效期)",
+          "subDesc": "约 500 人同时在线观看标清（1Mbps）直播 2 小时",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "88",
+              "originPrice": "92",
+              "save": "4",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />直播流量包 500GB"
+            }
+          ]
+        },
+        {
+          "title": "直播流量包",
+          "size": "1TB",
+          "desc": "(1 年有效期)",
+          "subDesc": "约 1000 人同时在线观看标清（1Mbps）直播 2 小时",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "168",
+              "originPrice": "186",
+              "save": "18",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />直播流量包 1T"
+            }
+          ]
+        },
+        {
+          "title": "直播流量包",
+          "size": "5TB",
+          "desc": "(1 年有效期)",
+          "subDesc": "约 5000 人同时在线观看高清（2Mbps）直播 2 小时",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "688",
+              "originPrice": "876",
+              "save": "188",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />直播流量包 5T"
+            }
+          ]
+        },
+        {
+          "title": "直播流量包",
+          "size": "10TB",
+          "desc": "(1 年有效期)",
+          "subDesc": "约 10000 人同时在线观看高清（2Mbps）直播 2 小时",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "1268",
+              "originPrice": "1736",
+              "save": "468",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />直播流量包 10T"
+            }
+          ]
+        }
+      ]
+    },
+    "dora": {
+      "h264": {
+        "title": "H.264 普通转码包",
+        "tabs": [
+          {
+            "id": "h264-sd480",
+            "class": "active",
+            "text": "SD480"
+          },
+          {
+            "id": "h264-sd720",
+            "class": "",
+            "text": "SD720"
+          },
+          {
+            "id": "h264-hd1080",
+            "class": "",
+            "text": "HD1080"
+          }
+        ]
+      },
+      "h265": {
+        "title": "H.265 普通转码包",
+        "tabs": [
+          {
+            "id": "h265-sd480",
+            "class": "active",
+            "text": "SD480"
+          },
+          {
+            "id": "h265-sd720",
+            "class": "",
+            "text": "SD720"
+          },
+          {
+            "id": "h265-hd1080",
+            "class": "",
+            "text": "HD1080"
+          }
+        ]
+      },
+      "packages264": [
+        {
+          "title": "精简版",
+          "spec": "5 千分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h264-sd480 active",
+              "price": "29.16",
+              "originPrice": "36",
+              "save": "6.84",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 5 千分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-sd720",
+              "price": "76.55",
+              "originPrice": "94.5",
+              "save": "17.95",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 5 千分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-hd1080",
+              "price": "131.22",
+              "originPrice": "162",
+              "save": "30.78",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 5 千分钟/半年"
+            }
+          ]
+        },
+        {
+          "title": "基础版",
+          "spec": "2 万分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h264-sd480 active",
+              "price": "116.64",
+              "originPrice": "144",
+              "save": "27.36",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 2 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-sd720",
+              "price": "306.18",
+              "originPrice": "378",
+              "save": "71.82",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 2 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-hd1080",
+              "price": "524.88",
+              "originPrice": "648",
+              "save": "123.12",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 2 万分钟/半年"
+            }
+          ]
+        },
+        {
+          "title": "进阶版",
+          "spec": "10 万分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h264-sd480 active",
+              "price": "583.2",
+              "originPrice": "720",
+              "save": "136.8",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 10 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-sd720",
+              "price": "1530.9",
+              "originPrice": "1890",
+              "save": "359.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 10 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-hd1080",
+              "price": "2624.4",
+              "originPrice": "3240",
+              "save": "615.6",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 10 万分钟/半年"
+            }
+          ]
+        },
+        {
+          "title": "进阶版",
+          "spec": "30 万分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h264-sd480 active",
+              "price": "1749.6",
+              "originPrice": "2160",
+              "save": "410.4",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 30 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-sd720",
+              "price": "4592.7",
+              "originPrice": "5670",
+              "save": "1077.3",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 30 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h264-hd1080",
+              "price": "7873.2",
+              "originPrice": "9720",
+              "save": "1846.8",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 30 万分钟/半年"
+            }
+          ]
+        }
+      ],
+      "packages265": [
+        {
+          "title": "精简版",
+          "spec": "5 千分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h265-sd480 active",
+              "price": "145.8",
+              "originPrice": "180",
+              "save": "34.2",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 5 千分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-sd720",
+              "price": "382.73",
+              "originPrice": "472.5",
+              "save": "89.77",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 5 千分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-hd1080",
+              "price": "656.1",
+              "originPrice": "810",
+              "save": "153.9",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 5 千分钟/半年"
+            }
+          ]
+        },
+        {
+          "title": "基础版",
+          "spec": "2 万分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h265-sd480 active",
+              "price": "583.2",
+              "originPrice": "720",
+              "save": "136.8",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 2 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-sd720",
+              "price": "1530.9",
+              "originPrice": "1890",
+              "save": "359.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 2 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-hd1080",
+              "price": "2624.4",
+              "originPrice": "3240",
+              "save": "615.6",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 2 万分钟/半年"
+            }
+          ]
+        },
+        {
+          "title": "进阶版",
+          "spec": "10 万分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h265-sd480 active",
+              "price": "2916",
+              "originPrice": "3600",
+              "save": "684",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 10 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-sd720",
+              "price": "7654.5",
+              "originPrice": "9450",
+              "save": "1795.5",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 10 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-1080",
+              "price": "13122",
+              "originPrice": "16200",
+              "save": "3078",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 10 万分钟/半年"
+            }
+          ]
+        },
+        {
+          "title": "进阶版",
+          "spec": "30 万分钟/半年",
+          "sections": [
+            {
+              "id": "",
+              "class": "h265-sd480 active",
+              "price": "8748",
+              "originPrice": "10800",
+              "save": "2052",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 30 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-sd720",
+              "price": "22963.5",
+              "originPrice": "28350",
+              "save": "5386.5",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 30 万分钟/半年"
+            },
+            {
+              "id": "",
+              "class": "h265-hd1080",
+              "price": "39366",
+              "originPrice": "48600",
+              "save": "9234",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 30 万分钟/半年"
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "type": "音视频元信息",
+          "duration": "100 千次/半年",
+          "discount": "新用户 8 折",
+          "price": "8",
+          "packageID": 0,
+          "info": "请您再次确认所选的区域和规格<br />音视频元信息 - avinfo 100 千次/半年"
+        },
+        {
+          "type": "视频截图",
+          "duration": "400 千次/半年",
+          "discount": "新用户 8 折",
+          "price": "32",
+          "packageID": 0,
+          "info": "请您再次确认所选的区域和规格<br />视频截图 - vframe 400 千次/半年"
+        },
+        {
+          "type": "锐智转码 SD720",
+          "duration": "500 分钟/半年",
+          "discount": "新用户 8 折",
+          "price": "32",
+          "packageID": 0,
+          "info": "请您再次确认所选的区域和规格<br />锐智转码 SD720 500 分钟/半年"
+        },
+        {
+          "type": "图片瘦身",
+          "duration": "500 千次/半年",
+          "discount": "新用户 8 折",
+          "price": "40",
+          "packageID": 0,
+          "info": "请您再次确认所选的区域和规格<br />图片瘦身 500 千次/半年"
+        }
+      ]
+    },
+    "sdk": {
+      "table": [
+        {
+          "title": "短视频 SDK 一个月专业版",
+          "tipClass": "red",
+          "tipText": "新用户专享",
+          "type": "专业版",
+          "duration": "1 个月",
+          "price": "0",
+          "originPrice": "10000",
+          "save": "10000",
+          "btnText": "立即抢购",
+          "btnClass": "orange",
+          "packageID": 0,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 一个月专业版"
+        },
+        {
+          "title": "短视频 SDK 全年精简版",
+          "tipClass": "red",
+          "tipText": "新春特惠",
+          "type": "精简版",
+          "duration": "1 年",
+          "price": "1512",
+          "originPrice": "2016",
+          "save": "504",
+          "btnText": "立即抢购",
+          "btnClass": "blue",
+          "packageID": 0,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年精简版"
+        },
+        {
+          "title": "短视频 SDK 全年基础版",
+          "tipClass": "red",
+          "tipText": "新春特惠",
+          "type": "基础版",
+          "duration": "1 年",
+          "price": "6102",
+          "originPrice": "8136",
+          "save": "2034",
+          "btnText": "立即抢购",
+          "btnClass": "orange",
+          "packageID": 141,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年基础版"
+        },
+        {
+          "title": "短视频 SDK 全年进阶版",
+          "tipClass": "red",
+          "tipText": "新春特惠",
+          "type": "进阶版",
+          "duration": "1 年",
+          "price": "45000",
+          "originPrice": "60000",
+          "save": "15000",
+          "btnText": "立即抢购",
+          "btnClass": "blue",
+          "packageID": 0,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年进阶版"
+        },
+        {
+          "title": "短视频 SDK 全年专业版",
+          "tipClass": "red",
+          "tipText": "新春特惠",
+          "type": "专业版",
+          "duration": "1 年",
+          "price": "90000",
+          "originPrice": "120000",
+          "save": "30000",
+          "btnText": "立即抢购",
+          "btnClass": "orange",
+          "packageID": 0,
+          "info": "请您再次确认所选的规格<br />短视频 SDK 全年专业版"
+        }
+      ]
+    },
+    "qvm": {
+      "rebatesQvm": [
+        {
+          "title": "突发性能型 ",
+          "size": "T5",
+          "spec": "1C/1G/40G",
+          "wide": "1Mbps",
+          "desc": "买 6 个月送 6 个月",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "329",
+              "originPrice": "681",
+              "save": "352",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 1C/1G/40G 1Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-lc1m1.small&buymonth=12&eip=1"
+            }
+          ]
+        },
+        {
+          "title": "突发性能型 ",
+          "size": "T5",
+          "spec": "2C/4G/40G",
+          "wide": "1Mbps",
+          "desc": "买 6 个月送 6 个月",
+          "sections": [
+            {
+              "id": "",
+              "class": "active",
+              "price": "837",
+              "originPrice": "1674.6",
+              "save": "837.6",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 2C/4G/40G 1Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m2.large&buymonth=12&eip=1"
+            }
+          ]
+        }
+      ],
+      "products": [
+        {
+          "title": "突发性能型 ",
+          "size": "T5",
+          "spec": "1C/1G/40G",
+          "wide": "1Mbps",
+          "durations": [
+            {
+              "text": "1 个月",
+              "value": "qvm-1c-t5-1m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-1c-t5-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-1c-t5-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-1c-t5-1m",
+              "class": "active",
+              "price": "47.7",
+              "originPrice": "56.7",
+              "save": "9",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 1C/1G/40G 1Mbps X 1 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-lc1m1.small&buymonth=1&eip=1"
+            },
+            {
+              "id": "qvm-1c-t5-12m",
+              "class": "",
+              "price": "492.3",
+              "originPrice": "681",
+              "save": "188.7",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 1C/1G/40G 1Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-lc1m1.small&buymonth=12&eip=1"
+            },
+            {
+              "id": "qvm-1c-t5-36m",
+              "class": "",
+              "price": "1192.26",
+              "originPrice": "2041.2",
+              "save": "848.94",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 1C/1G/40G 1Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-lc1m1.small&buymonth=36&eip=1"
+            }
+          ] 
+        },
+        {
+          "title": "突发性能型 ",
+          "size": "T5",
+          "spec": "2C/2G/40G",
+          "wide": "1Mbps",
+          "durations": [
+            {
+              "text": "1 个月",
+              "value": "qvm-2c-t5-1m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-2c-t5-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-2c-t5-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-2c-t5-1m",
+              "class": "active",
+              "price": "92.274",
+              "originPrice": "109.9",
+              "save": "16.726",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 2C/2G/40G 1Mbps X 1 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m1.large&buymonth=1&eip=1"
+            },
+            {
+              "id": "qvm-2c-t5-12m",
+              "class": "",
+              "price": "924.6419",
+              "originPrice": "1318.2",
+              "save": "393.5581",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 2C/2G/40G 1Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m1.large&buymonth=12&eip=1"
+            },
+            {
+              "id": "qvm-2c-t5-36m",
+              "class": "",
+              "price": "2089.44",
+              "originPrice": "3956.4",
+              "save": "1866.96",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 2C/2G/40G 1Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m1.large&buymonth=36&eip=1"
+            }
+          ] 
+        },
+        {
+          "title": "共享型云服务器 ",
+          "size": "XN4",
+          "spec": "1C/1G/40G",
+          "wide": "1Mbps",
+          "durations": [
+            {
+              "text": "1 个月",
+              "value": "qvm-xn4-1c-1m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-xn4-1c-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-xn4-1c-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-xn4-1c-1m",
+              "class": "active",
+              "price": "63.5",
+              "originPrice": "75.6",
+              "save": "12.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 XN4 1C/1G/40G 1Mbps X 1 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.xn4.small&buymonth=1&eip=1"
+            },
+            {
+              "id": "qvm-xn4-1c-12m",
+              "class": "",
+              "price": "646.2",
+              "originPrice": "743",
+              "save": "96.8",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 XN4 1C/1G/40G 1Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.xn4.small&buymonth=12&eip=1"
+            },
+            {
+              "id": "qvm-xn4-1c-36m",
+              "class": "",
+              "price": "1511.59",
+              "originPrice": "2721.6",
+              "save": "1210.01",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 XN4 1C/1G/40G 1Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.xn4.small&buymonth=36&eip=1"
+            }
+          ] 
+        },
+        {
+          "title": "共享型云服务器 ",
+          "size": "C5",
+          "spec": "1C/1G/40G",
+          "wide": "1Mbps",
+          "durations": [
+            {
+              "text": "1 个月",
+              "value": "qvm-c5-1c-1m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-c5-1c-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-c5-1c-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-c5-1c-1m",
+              "class": "active",
+              "price": "164.8",
+              "originPrice": "196.2",
+              "save": "31.4",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 1C/1G/40G 1Mbps X 1 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=1&eip=1"
+            },
+            {
+              "id": "qvm-c5-1c-12m",
+              "class": "",
+              "price": "1628",
+              "originPrice": "2355",
+              "save": "727",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 1C/1G/40G 1Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=12&eip=1"
+            },
+            {
+              "id": "qvm-c5-1c-36m",
+              "class": "",
+              "price": "3549.25",
+              "originPrice": "7063.2",
+              "save": "3513.95",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 1C/1G/40G 1Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=36&eip=1"
+            }
+          ] 
+        },
+        {
+          "title": "计算网络增强型 ",
+          "size": "SN1NE",
+          "spec": "2C/4G/40G",
+          "wide": "2Mbps",
+          "durations": [
+            {
+              "text": "3 个月",
+              "value": "qvm-sn1ne-2c-3m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-sn1ne-2c-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-sn1ne-2c-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-sn1ne-2c-3m",
+              "class": "active",
+              "price": "590.5",
+              "originPrice": "702.93",
+              "save": "112.43",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />计算网络增强型 SN1NE 2C/4G/40G 2Mbps X 3 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.sn1ne.large&buymonth=3&eip=2"
+            },
+            {
+              "id": "qvm-sn1ne-2c-12m",
+              "class": "",
+              "price": "1956.7",
+              "originPrice": "2811.72",
+              "save": "855.02",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />计算网络增强型 SN1NE 2C/4G/40G 2Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.sn1ne.large&buymonth=12&eip=2"
+            },
+            {
+              "id": "qvm-sn1ne-2c-36m",
+              "class": "",
+              "price": "4413.2",
+              "originPrice": "8345.16",
+              "save": "3931.9",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />计算网络增强型 SN1NE 2C/4G/40G 2Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.sn1ne.large&buymonth=36&eip=2"
+            }
+          ] 
+        },
+        {
+          "title": "共享型云服务器 ",
+          "size": "C5",
+          "spec": "2C/4G/40G",
+          "wide": "2Mbps",
+          "durations": [
+            {
+              "text": "3 个月",
+              "value": "qvm-c5-2c-2mps-3m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-c5-2c-2mps-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-c5-2c-2mps-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-c5-2c-2mps-3m",
+              "class": "active",
+              "price": "549.6",
+              "originPrice": "654.3",
+              "save": "104.7",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 2C/4G/40G 2Mbps X 3 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=3&eip=2"
+            },
+            {
+              "id": "qvm-c5-2c-2mps-12m",
+              "class": "",
+              "price": "1825",
+              "originPrice": "2108",
+              "save": "283",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 2C/4G/40G 2Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=12&eip=2"
+            },
+            {
+              "id": "qvm-c5-2c-2mps-36m",
+              "class": "",
+              "price": "4139.5",
+              "originPrice": "7851.6",
+              "save": "3712.1",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 2C/4G/40G 2Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.large&buymonth=36&eip=2"
+            }
+          ] 
+        },
+        {
+          "title": "共享型云服务器 ",
+          "size": "C5",
+          "spec": "4C/8G/40G",
+          "wide": "5Mbps",
+          "durations": [
+            {
+              "text": "3 个月",
+              "value": "qvm-c5-4c-5mps-3m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-c5-4c-5mps-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-c5-4c-5mps-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-c5-4c-5mps-3m",
+              "class": "active",
+              "price": "1144.7",
+              "originPrice": "1362.75",
+              "save": "218.05",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 4C/8G/40G 5Mbps X 3 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.xlarge&buymonth=3&eip=5"
+            },
+            {
+              "id": "qvm-c5-4c-5mps-12m",
+              "class": "",
+              "price": "3812",
+              "originPrice": "4401",
+              "save": "589",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 4C/8G/40G 5Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.xlarge&buymonth=12&eip=5"
+            },
+            {
+              "id": "qvm-c5-4c-5mps-36m",
+              "class": "",
+              "price": "8888",
+              "originPrice": "16353",
+              "save": "7465",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享型云服务器 C5 4C/8G/40G 5Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.c5.xlarge&buymonth=36&eip=1"
+            }
+          ] 
+        },
+        {
+          "title": "共享计算型 ",
+          "size": "N4",
+          "spec": "4C/8G/40G",
+          "wide": "5Mbps",
+          "durations": [
+            {
+              "text": "3 个月",
+              "value": "qvm-n4-4c-5mps-3m"
+            },
+            {
+              "text": "12 个月",
+              "value": "qvm-n4-4c-5mps-12m"
+            },
+            {
+              "text": "36 个月",
+              "value": "qvm-n4-4c-5mps-36m"
+            }
+          ],
+          "sections": [
+            {
+              "id": "qvm-n4-4c-5mps-3m",
+              "class": "active",
+              "price": "1258",
+              "originPrice": "1497.76",
+              "save": "239.76",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享计算型 N4 4C/8G/40G 5Mbps X 3 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.n4.xlarge&buymonth=3&eip=5"
+            },
+            {
+              "id": "qvm-n4-4c-5mps-12m",
+              "class": "",
+              "price": "4178.45",
+              "originPrice": "5991",
+              "save": "1812.55",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享计算型 N4 4C/8G/40G 5Mbps X 12 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.n4.xlarge&buymonth=12&eip=5"
+            },
+            {
+              "id": "qvm-n4-4c-5mps-36m",
+              "class": "",
+              "price": "9648",
+              "originPrice": "17971.12",
+              "save": "8323.12",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />共享计算型 N4 4C/8G/40G 5Mbps X 36 个月",
+              "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.n4.xlarge&buymonth=36&eip=5"
+            }
+          ] 
+        }
+      ]
+    },
+    "sms": {
+      "products": [
+        {
+          "title": "云短信-系统短信",
+          "size": "3000 条",
+          "desc": "一次发放，一年有效，低至 0.034 元/条",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "96",
+              "originPrice": "129",
+              "save": "33",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />云短信-系统短信 3000 条，一年有效"
+            }
+          ]
+        },
+        {
+          "title": "云短信-系统短信",
+          "size": "10000 条",
+          "desc": "一次发放，一年有效，低至 0.033 元/条",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "330",
+              "originPrice": "430",
+              "save": "100",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />云短信-系统短信 10000 条，一年有效"
+            }
+          ]
+        },
+        {
+          "title": "云短信-系统短信",
+          "size": "100000 条",
+          "desc": "一次发放，一年有效，低至 0.031 元/条",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "3100",
+              "originPrice": "4300",
+              "save": "1200",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />云短信-系统短信 100000 条，一年有效"
+            }
+          ]
+        },
+        {
+          "title": "云短信-营销短信",
+          "size": "3000 条",
+          "desc": "一次发放，一年有效，低至 0.038 元/条",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "114",
+              "originPrice": "129",
+              "save": "15",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />云短信-营销短信 3000 条，一年有效"
+            }
+          ]
+        },
+        {
+          "title": "云短信-营销短信",
+          "size": "10000 条",
+          "desc": "一次发放，一年有效，低至 0.037 元/条",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "370",
+              "originPrice": "430",
+              "save": "60",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />云短信-营销短信 10000 条，一年有效"
+            }
+          ]
+        },
+        {
+          "title": "云短信-营销短信",
+          "size": "100000 条",
+          "desc": "一次发放，一年有效，低至 0.036 元/条",
+          "sections": [
+            {
+              "id": "kodo-south-500GB-6",
+              "class": "active",
+              "price": "3600",
+              "originPrice": "4300",
+              "save": "700",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />云短信-营销短信 100000 条，一年有效"
+            }
+          ]
+        }
+      ]
+    }
+  }
 
   config.img_audit_host = 'http://ai.qiniuapi.com/v3/image/censor'
   config.video_audit_host = 'http://ai.qiniuapi.com/v3/video/censor'
