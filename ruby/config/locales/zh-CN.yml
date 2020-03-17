@@ -7868,7 +7868,7 @@ zh-CN:
           desc: "新用户专享福利，价格低至 8.8 元！<a href='' target='' class='desc-rule-link' title='CDN 专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-fusion-modal'>活动说明&nbsp;></a>"
         pili:
           title: "直播专区"
-          desc: "老用户专属优惠限量预约，详情请垂询尊享专线：400-808-9176转1 <a href='' target='' class='desc-rule-link' title='直播云专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-pili-modal'>了解详情&nbsp;></a>"
+          desc: "老用户专属优惠限量预约，详情请垂询尊享专线：400-808-9176 转 1 <a href='' target='' class='desc-rule-link' title='直播云专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-pili-modal'>了解详情&nbsp;></a>"
           pmTitle: "产品经理特别推荐！享你所想！"
           socialTitle: "社交 & 电商直播场景定制资源包 首发优惠中"
           socialSubTitle: "低延迟直播互动，超大并发访问业务场景"
@@ -8776,7 +8776,7 @@ zh-CN:
       description: 七牛云新春特惠，100GB云存储1分抢，100GB 资源包仅需7.7元，社交电商直播场景定制资源包首发优惠，云主机、直播云、视频云、智能多媒体等热门云产品新春限时特惠。
     events_spring_sale:
       title: 云产品开春采购季，助力复工！-七牛云
-      keywords: 云存储，CDN，短视频SDK，直播云，智能多媒体服务，云主机，云短信，采购季，七牛云
+      keywords: 云存储，CDN，短视频 SDK，直播云，智能多媒体服务，云主机，云短信，采购季，七牛云
       description: 七牛云产品采购火热进行中，降本增效，助力复工！云存储、CDN、直播云、短视频 SDK、云主机等热门云产品限时特惠，惊喜折扣等你来。
     events_activity:
       title: 最新活动_优惠活动 - 七牛云活动
