@@ -159,7 +159,7 @@ Rails.application.configure do
   config.spring_sale = {
     end_year: 2020,
     end_month: 4,
-    end_date: 15
+    end_date: 20
   }
 
   config.double12_2019_comb_package = [{
