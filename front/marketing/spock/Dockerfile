@@ -1,4 +1,4 @@
-FROM reg.qiniu.com/spock-resources/portalv4-nginx
+FROM aslan-spock-register.qiniu.io/spock-resources/portalv4-nginx
 
 ADD /dist /www/dist
 
