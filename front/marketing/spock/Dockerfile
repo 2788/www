@@ -1,11 +1,9 @@
-# TODO: add www marketing docker file
+FROM aslan-spock-register.qiniu.io/spock-resources/marketing-nginx
 
-# FROM reg.qiniu.com/spock-resources/portalv4-nginx
+ADD /dist /www/dist
 
-# ADD /dist /portalv4/dist
+ADD /frontend.sh ./
 
-# ADD /frontend.sh ./
+EXPOSE 80
 
-# EXPOSE 80
-
-# ENTRYPOINT ["./frontend.sh"]
+ENTRYPOINT ["./frontend.sh"]
