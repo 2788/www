@@ -910,6 +910,20 @@
     }
   }
 
+  &.hero-spring-sale-index {
+    background-image: image-url("spring_sale/index-banner.jpg");
+    .btn-banner {
+      margin-top: 3.3rem;
+      border: none;
+      background-color: #FDD94D;
+      &:hover {
+        -webkit-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+
   &.hero-dora-package-index {
     background-image: image-url("banner/banner-dora-package-index.jpg");
     .container {

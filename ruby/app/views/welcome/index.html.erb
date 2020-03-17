@@ -1,6 +1,11 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
+  <%# 春季采购 banner %>
+  <div class="jumbotron hero hero-spring-sale-index">
+    <%= link_to "查看详情", "/events/20200316?entry=index-banner", class: "btn btn-lg btn-default btn-banner", title: "降本增效，助力复工 - 开春采购季", target: "_blank" -%>
+  </div>
+
   <%# 抗击 2019-nCoV banner %>
   <div class="jumbotron hero hero-fighting-ncov-index">
     <div class="container">

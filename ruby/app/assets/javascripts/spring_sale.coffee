@@ -13,7 +13,8 @@ $(document).ready ->
   $2019double12PackageBuySuccessModal = $springSaleEventPage.find('#double12-2019-package-buy-success-modal')
 
   $2019double12EffectTimeModal = $springSaleEventPage.find('#double12-2019-effect-time-modal')
-  $2019double12EffectTimeBtns = $2019double12EffectTimeModal.find('.modal-dialog .modal-body .effect-time-btns .effect-time')
+  $2019double12EffectTimeBtns = $springSaleEventPage.find('.modal-dialog .modal-body .effect-time-btns .effect-time')
+  $springSaleSdkEffectTimeModal = $springSaleEventPage.find('#double12-2019-sdk-confirm-modal')
 
   $2019double12PackageBuyFailTip = $2019double12PackageBuyFailModal.find('.modal-dialog .modal-body .error-tip')
 
@@ -128,6 +129,11 @@ $(document).ready ->
       $2019double12EffectTimeModal.find('.package-info').html double12SelectedPackageInfo
       $2019double12EffectTimeModal.modal 'show'
   
+  showSdkConfirmModal = () ->
+    if $springSaleSdkEffectTimeModal.length > 0
+      $springSaleSdkEffectTimeModal.find('.package-info').html double12SelectedPackageInfo
+      $springSaleSdkEffectTimeModal.modal 'show'
+  
   # 购买失败
   showPackageBuyFailModal = (message) ->
     if $2019double12PackageBuyFailModal.length > 0
@@ -146,7 +152,10 @@ $(document).ready ->
         if packageID
           double12SelectedPackageID = packageID
           double12SelectedPackageInfo = packageInfo
-          showEffectTimeModal()
+          if $(this).parents('.features-spring-sale-sdk').length == 0
+            showEffectTimeModal()
+          else
+            showSdkConfirmModal()
         else
           showPackageBuyFailModal()
   

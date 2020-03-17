@@ -159,7 +159,7 @@ Rails.application.configure do
   config.spring_sale = {
     end_year: 2020,
     end_month: 4,
-    end_date: 15
+    end_date: 20
   }
 
   config.double12_2019_comb_package = [{
@@ -1947,7 +1947,7 @@ Rails.application.configure do
               "price": "2334.72",
               "originPrice": "3582.62",
               "save": "1247.9",
-              "packageID": 906,
+              "packageID": 909,
               "info": "请您再次确认所选的区域和规格<br />标准存储空间 2T X 12 个月 - <span class='high-light'>华东地区</span>"
             }
           ]
@@ -2353,7 +2353,7 @@ Rails.application.configure do
               "price": "9.9",
               "originPrice": "25.2",
               "save": "15.3",
-              "packageID": 256,
+              "packageID": 255,
               "info": "请您再次确认所选的区域和规格<br />复工采购季-国内HTTPS流量 100GB X 12 个月 - <span class='high-light'>国内</span>"
             }
           ]
@@ -2716,7 +2716,7 @@ Rails.application.configure do
             },
             {
               "id": "",
-              "class": "h265-1080",
+              "class": "h265-hd1080",
               "price": "13122",
               "originPrice": "16200",
               "save": "3078",
@@ -2985,9 +2985,9 @@ Rails.application.configure do
             {
               "id": "qvm-2c-t5-1m",
               "class": "active",
-              "price": "92.274",
+              "price": "92.28",
               "originPrice": "109.9",
-              "save": "16.726",
+              "save": "17.62",
               "packageID": 0,
               "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 2C/2G/40G 1Mbps X 1 个月",
               "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m1.large&buymonth=1&eip=1"
@@ -2995,9 +2995,9 @@ Rails.application.configure do
             {
               "id": "qvm-2c-t5-12m",
               "class": "",
-              "price": "924.6419",
+              "price": "924.65",
               "originPrice": "1318.2",
-              "save": "393.5581",
+              "save": "393.55",
               "packageID": 0,
               "info": "请您再次确认所选的区域和规格<br />突发性能型 T5 2C/2G/40G 1Mbps X 12 个月",
               "url": "https://portal.qiniu.com/qvm/vm/instance/create?mode=DirectOrder&instance_type=ecs.t5-c1m1.large&buymonth=12&eip=1"
