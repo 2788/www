@@ -51,7 +51,7 @@
         border-bottom: none;
         display: flex;
         justify-content: space-between;
-        .nav-item{
+        .nav-item {
           padding: 8px 0px;
           text-align: center;
           &:first-child {
@@ -94,7 +94,7 @@
 }
 
 .features-spring-sale {
-  padding: 0.68rem 0;
+  padding: 1rem 0 0 0;
   .container {
     .intro {
       .title, .sub-title, .desc {
@@ -480,7 +480,7 @@
 }
 
 .features-spring-sale-fusion {
-  background: #0077d3;
+  background: #0085eb;
   .caption-sale {
     .size {
       color: #ffff00;
@@ -496,7 +496,7 @@
 }
 
 .features-spring-sale-pili {
-  background: #0085eb;
+  background: #0077d3;
   .is_new_icon {
     text-align: center;
     margin: 20px;
