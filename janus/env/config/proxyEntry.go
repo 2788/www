@@ -3,6 +3,7 @@ package config
 import (
 	"encoding/json"
 	"io/ioutil"
+	"net/http"
 )
 
 type ProxyEntry struct {
@@ -27,15 +28,15 @@ const (
 type ProxyMethod string
 
 const (
-	ProxyMethodGet     ProxyMethod = "GET"
-	ProxyMethodHEAD    ProxyMethod = "HEAD"
-	ProxyMethodPOST    ProxyMethod = "POST"
-	ProxyMethodPUT     ProxyMethod = "PUT"
-	ProxyMethodGDELETE ProxyMethod = "DELETE"
-	ProxyMethodCONNECT ProxyMethod = "CONNECT"
-	ProxyMethodOPTIONS ProxyMethod = "OPTIONS"
-	ProxyMethodGTRACE  ProxyMethod = "TRACE"
-	ProxyMethodPATCH   ProxyMethod = "PATCH"
+	ProxyMethodGet     ProxyMethod = http.MethodGet
+	ProxyMethodHEAD    ProxyMethod = http.MethodHead
+	ProxyMethodPOST    ProxyMethod = http.MethodPost
+	ProxyMethodPUT     ProxyMethod = http.MethodPut
+	ProxyMethodGDELETE ProxyMethod = http.MethodDelete
+	ProxyMethodCONNECT ProxyMethod = http.MethodConnect
+	ProxyMethodOPTIONS ProxyMethod = http.MethodOptions
+	ProxyMethodTRACE   ProxyMethod = http.MethodTrace
+	ProxyMethodPATCH   ProxyMethod = http.MethodPatch
 )
 
 func ParseProxyEntry(file string) ([]ProxyEntry, error) {
