@@ -56,18 +56,21 @@ $(document).ready ->
   navScrollEvent = () ->
     $navContainer = $springSaleEventPage.find('.spring-nav.normal')
     $navFixedContainer = $springSaleEventPage.find('.spring-nav.fixed')
+    handleScrollFunc = () ->
+      navHeight = $("#navbar").get(0).offsetHeight
+      springNavHeight = $navContainer.get(0).offsetHeight
+      top = $springSaleEventPage.find('.jumbotron.hero.spring-sale').get(0).offsetHeight
+      scrollHeight = $(document).scrollTop()
+      if scrollHeight >= (top - navHeight + springNavHeight)
+        $navContainer.find('.container').fadeOut(300)
+        $navFixedContainer.fadeIn(600)
+      else
+        $navContainer.find('.container').fadeIn(300)
+        $navFixedContainer.fadeOut(300)
+    handleScrollFunc()
     if $navContainer.length > 0
       $(document).on 'scroll', (e) ->
-        navHeight = $("#navbar").get(0).offsetHeight
-        springNavHeight = $navContainer.get(0).offsetHeight
-        top = $springSaleEventPage.find('.jumbotron.hero.spring-sale').get(0).offsetHeight
-        scrollHeight = $(document).scrollTop()
-        if scrollHeight >= (top - navHeight + springNavHeight)
-          $navContainer.find('.container').fadeOut(300)
-          $navFixedContainer.fadeIn(600)
-        else
-          $navContainer.find('.container').fadeIn(300)
-          $navFixedContainer.fadeOut(300)
+        handleScrollFunc()
   
   # dora tabs切换
   doraTabEvent = () ->
@@ -222,7 +225,8 @@ $(document).ready ->
 
   # 绑定页面的 dropdown
   if $springSaleEventPage.length > 0
-    hashScroll()
+    window.onload = () ->
+      hashScroll()
     isSpringSaleEnd (isEnd) ->
       if isEnd
         # 活动已结束
