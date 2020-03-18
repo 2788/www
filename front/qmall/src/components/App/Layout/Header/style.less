@@ -1,0 +1,29 @@
+/**
+ * @file styles of component Header
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.header-wrapper {
+  width: 100%;
+  height: 0.68rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: @header-active-text-color;
+  background-color: @header-bg-color;
+  line-height: 0.68rem;
+  text-align: center;
+  z-index: 1000;
+  transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+  -ms-transform: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+  -moz-transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+  -webkit-transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+  -o-transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+  &.active,
+  &:not(.active):hover {
+    color: @header-active-text-color;
+    background-color: @header-active-bg-color;
+  }
+}

@@ -1,0 +1,27 @@
+/**
+ * @file styles of component Subscript
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+// Note: 角标使用绝对定位
+// 外层 container 的 overflow 需要设置为 hidden
+// lego io 编辑端限制角标内容的最大长度为 4，暂时不考虑换行的情况
+
+.mainWrapper {
+  width: 120px;
+  height: 22px;
+  position: absolute;
+  right: -36px;
+  top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: @white;
+  background-color: @danger-color;
+  line-height: 24px;
+  transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}

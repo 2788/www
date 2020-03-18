@@ -1,0 +1,76 @@
+{
+  "extends": "typescript-react",
+  "srcDir": "src",
+  "publicUrl": "https://qiniu.staticfile.org/",
+  "optimization": {
+    "transformDeps": ["tr46", "react-hot-loader", "ansi-regex", "whatwg-url", "webidl-conversions"]
+  },
+  "targets": {
+    "browsers": [
+      "IE >= 10",
+      "Chrome >= 46",
+      "Firefox ESR",
+      "last 2 Safari versions"
+    ]
+  },
+  "entries": {
+    "index": "src/index.tsx"
+  },
+  "pages": {
+    "index": {
+      "template": "src/index.ejs",
+      "entries": "index",
+      "path": "^\\/marketing\\/"
+    }
+  },
+  "transforms": {
+    "less": {
+      "transformer": "less",
+      "config": {
+        "options": {
+          "javascriptEnabled": true
+        },
+        "modules": false
+      }
+    },
+    "m.less": {
+      "transformer": "less",
+      "config": {
+        "options": {
+          "javascriptEnabled": true
+        },
+        "modules": true
+      }
+    },
+    "m.css": {
+      "transformer": "css",
+      "config": {
+        "modules": true
+      }
+    },
+    "svg@less": "file",
+    "svg@m.less": "file",
+    "svg@m.css": "file"
+  },
+  "devProxy": {
+    "_/api": "http://www-dev.qiniu.io",
+    "/signin": {
+      "target": "http://www-dev.qiniu.io",
+      "pathRewrite": {
+        "^/signin": "/signin"
+      }
+    }
+  },
+  "// TODO: deploy": "add www marketing deploy config",
+  "deploy": {
+    "config": {
+      "accessKey": "tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr",
+      "secretKey": "1oUlrJlpJprkl4sLZQYdJLsGoVTCZaZXEbmiZTNh",
+      "bucket": "portal-v4-static"
+    }
+  },
+  "engines": {
+    "builder": "1.16.1"
+  },
+  "envVariables": {}
+}
