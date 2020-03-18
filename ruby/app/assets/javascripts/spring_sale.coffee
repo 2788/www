@@ -203,8 +203,20 @@ $(document).ready ->
       $2019double12EffectTimeModal.one('hidden.bs.modal', cb)
       $2019double12EffectTimeModal.modal 'hide'
 
+  # hash 锚点功能
+  hashScroll = () ->
+    hash = window.location.hash
+    if $(hash).length > 0
+      $(hash).find('a').click()
+    window.onhashchange = () ->
+      hash = window.location.hash
+      if $(hash).length > 0
+        $(hash).find('a').click()
+    
+
   # 绑定页面的 dropdown
   if $springSaleEventPage.length > 0
+    hashScroll()
     isSpringSaleEnd (isEnd) ->
       if isEnd
         # 活动已结束
