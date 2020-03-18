@@ -1,5 +1,5 @@
 /*
- * @file component Header TODO: 这个好像现在没人搞…
+ * @file component Header
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 

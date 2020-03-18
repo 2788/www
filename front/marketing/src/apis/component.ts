@@ -7,7 +7,7 @@ import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
 import FetchStore from 'stores/fetch'
 
-// TODO: 依赖关系反了。。？
+// FIXME: 依赖关系反了。。？
 import { IConfig as IDemoConfig } from 'components/Activity/components/Demo'
 import { IConfig as IPageBannerConfig } from 'components/Activity/components/PageBanner'
 import { IConfig as ITitleBarConfig } from 'components/Activity/components/TitleBar'

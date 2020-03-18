@@ -48,7 +48,7 @@ export default observer(forwardRef(function PageNav({ info: { data }, onScrollTo
   }
 
   function handleSelect(key: string) {
-    setVisible(false) // TODO: 需要吗？
+    setVisible(false) // 需要吗？
     onScrollTo(key)
   }
 
