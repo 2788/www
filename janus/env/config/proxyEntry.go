@@ -1,21 +1,22 @@
 package config
 
 import (
-	"encoding/json"
 	"io/ioutil"
 	"net/http"
+
+	yaml "gopkg.in/yaml.v2"
 )
 
 type ProxyEntry struct {
-	Name    string  `json:"name"`
-	Target  string  `json:"target"` // 当前路由对应的后端地址
-	Matches []Match `json:"matches"`
+	Name    string  `yaml:"name"`
+	Target  string  `yaml:"target"` // 当前路由对应的后端地址
+	Matches []Match `yaml:"matches"`
 }
 
 type Match struct {
-	Path   string          `json:"path"`   // 路由
-	Method ProxyMethod     `json:"method"` // 路由的请求方式
-	Auth   ProxyAuthMethod `json:"auth"`   // 鉴权方式
+	Path   string          `yaml:"path"`   // 路由
+	Method ProxyMethod     `yaml:"method"` // 路由的请求方式
+	Auth   ProxyAuthMethod `yaml:"auth"`   // 鉴权方式
 }
 
 type ProxyAuthMethod string
@@ -46,7 +47,7 @@ func ParseProxyEntry(file string) ([]ProxyEntry, error) {
 	}
 
 	conf := []ProxyEntry{}
-	err = json.Unmarshal([]byte(proxyDate), &conf)
+	err = yaml.Unmarshal([]byte(proxyDate), &conf)
 	if err != nil {
 		return nil, err
 	}

@@ -1,0 +1,24 @@
+- name: "lego"
+  target: "http://bo-lego-koderover-staging-bo.cs-spock.cloudappl.com"
+  matches:
+    - path: "/banners/:id"
+      method: GET
+      auth: admin
+    - path: "/adverts/:id"
+      method: GET
+      auth: admin
+    - path: "/campaigns/info"
+      method: GET
+      auth: admin
+    - path: "/campaigns"
+      method: GET
+      auth: admin
+    - path: "/campaigns"
+      method: POST
+      auth: admin
+    - path: "/campaigns/:id"
+      method: PUT
+      auth: admin
+    - path: "/campaigns/:id"
+      method: DELETE
+      auth: admin
