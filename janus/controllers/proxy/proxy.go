@@ -8,6 +8,8 @@ import (
 
 	"strings"
 
+	"errors"
+
 	"github.com/gin-gonic/gin"
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
@@ -27,18 +29,17 @@ func NewTrandeHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry) *Pr
 }
 
 func (s *Proxy) ProxyAll(ctx *gin.Context) {
-	targetInfo, host := s.getTargetAndHost(ctx)
-	if targetInfo == nil || host == "" {
-		controllers.RespErr(ctx, code.NotFound, nil)
+	targetInfo, host, err := s.getTargetAndHost(ctx)
+	if err != nil {
+		controllers.RespErr(ctx, code.NotFound, err)
 		return
 	}
 
 	targetURL, err := url.Parse(host)
 	if err != nil {
-		controllers.RespErr(ctx, code.NotFound, nil)
+		controllers.RespErr(ctx, code.NotFound, err)
 		return
 	}
-
 	targetQuery := targetURL.RawQuery
 	proxy := httputil.ReverseProxy{
 		Director: func(req *http.Request) {
@@ -66,20 +67,30 @@ func (s *Proxy) ProxyAll(ctx *gin.Context) {
 	proxy.ServeHTTP(ctx.Writer, ctx.Request)
 }
 
-func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string) {
+func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error) {
 	var (
 		path      = ctx.Request.URL.Path
 		matches   = strings.Split(path, "/")
 		name      string
 		host      string
 		matchInfo config.Match
+		err       error
 	)
 
 	// 只有 /api/proxy
 	if len(matches) <= 3 {
-		return nil, ""
+		err = errors.New("Invalid path.")
+		return &matchInfo, host, err
 	}
+
 	name = matches[3]
+
+	// path 只有/api/proxy/
+	if len(name) == 0 {
+		err = errors.New("Invalid path.")
+		return &matchInfo, host, err
+	}
+
 	pathArray := matches[4:]
 
 	for _, proxyEntry := range s.proxyEntrys {
@@ -96,11 +107,13 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string) {
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
 
-				return &matchInfo, host
+				return &matchInfo, host, err
 			}
 		}
 	}
-	return &matchInfo, host
+
+	err = errors.New("Not Find")
+	return &matchInfo, host, err
 }
 
 func isSamePath(targetPathArray, matchInfoPathArray []string) bool {
