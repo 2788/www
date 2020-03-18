@@ -56,7 +56,11 @@ func (s *Proxy) ProxyAll(ctx *gin.Context) {
 				req.URL.RawQuery = targetQuery + "&" + req.URL.RawQuery
 			}
 		},
-		Transport: s.accTr,
+	}
+
+	// 目前仅支持admin
+	if targetInfo.Auth == config.ProxyAuthAdmin {
+		proxy.Transport = s.accTr
 	}
 
 	proxy.ServeHTTP(ctx.Writer, ctx.Request)
