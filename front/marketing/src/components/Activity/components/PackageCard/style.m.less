@@ -9,7 +9,7 @@
   width: 100%;
   position: relative;
   margin-bottom: 0.30rem;
-  padding: 0.20rem 0.30rem;
+  padding: 0.10rem;
   color: @package-text-color;
   background-color: @white;
   box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
@@ -93,15 +93,16 @@
       background: -moz-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
       background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
       background-color: @package-buy-btn-right-color;
-  
+
       &:hover, &:active, &:focus {
         color: @white;
-        background-color: @package-buy-btn-hover-color;
+        background: @package-buy-btn-hover-color;
       }
     }
   }
 
   &.single {
+    padding: 0.20rem 0.30rem;
     .infoWrapper {
       padding-bottom: 0.10rem;
       border-bottom: 1px dashed @package-dashed-border-color;

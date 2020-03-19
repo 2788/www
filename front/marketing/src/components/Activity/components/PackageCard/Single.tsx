@@ -76,7 +76,7 @@ export default observer(function PackageSingleCard(props: IPackageInfo) {
 
     return (
       <div className={styles.propertyWrapper}>
-        <Row type="flex" align="middle">{
+        <Row type="flex" justify="space-around" align="middle">{
           properties.map((item: IPackageProperty, index: number) => {
             return (
               <Col
@@ -128,7 +128,7 @@ export default observer(function PackageSingleCard(props: IPackageInfo) {
     <div className={`${styles.mainWrapper} ${styles.single}`}>
       {renderSubscript()}
       <div className={styles.infoWrapper}>
-        <Row gutter={8} type="flex" align="middle">
+        <Row gutter={8} type="flex" justify="space-around" align="middle">
           <Col span={4}>
             {renderTitleWrapper()}
           </Col>
