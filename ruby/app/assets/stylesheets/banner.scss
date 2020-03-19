@@ -566,6 +566,14 @@
     }
   }
 
+  &.hero-spring-recommend-2020 {
+    background-image: image-url("banner/banner-spring-recommend-2020.jpg");
+    a {
+      outline: none;
+      -moz-outline: none;
+    }
+  }
+
   &.hero-qvmpartner-index {
     background-image: image-url("banner/banner-qvmpartner-index.jpg");
 
