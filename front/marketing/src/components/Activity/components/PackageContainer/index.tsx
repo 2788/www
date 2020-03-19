@@ -1,5 +1,5 @@
 /**
- * @file Production Mode of CouponContainer
+ * @file Production Mode of PackageContainer
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
@@ -12,12 +12,13 @@ import Button from 'react-icecream/lib/button'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
-import { ICouponInfo } from 'apis/coupon'
+import { IPackageInfo } from 'apis/package'
 import { IBaseProps } from '../..'
 
-import CouponCard from '../CouponCard'
+import PackageCard from '../PackageCard'
+import PackageSingleCard from '../PackageCard/Single'
 
-import CouponContainerStore from './store'
+import PackageContainerStore from './store'
 import * as styles from './style.m.less'
 
 export interface IConfig {
@@ -31,17 +32,17 @@ export interface IConfig {
 }
 
 export interface IProps extends IBaseProps {
-  info: IComponentInfo<ComponentName.CouponContainer>
+  info: IComponentInfo<ComponentName.PackageContainer>
 }
 
-export default observer(forwardRef(function CouponContainer(props: IProps, ref: Ref<any>) {
+export default observer(forwardRef(function PackageContainer(props: IProps, ref: Ref<any>) {
   const { info: { key, data: {
     count_per_row, background_from, background_to,
     show_more_text, show_more_link, show_more_bg_color
   } } } = props
 
   // 使用局部 store
-  const couponContainerStore = useLocalStore(CouponContainerStore, props)
+  const packageContainerStore = useLocalStore(PackageContainerStore, props)
 
   const bgColorStyle = {
     background: `linear-gradient(${background_from}, ${background_to})`
@@ -54,19 +55,17 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
     return count_per_row && spanCount === SPAN_TOTAL_COUNT
   }
 
-  function renderCouponCard() {
-    const { couponList } = couponContainerStore
+  function renderPackageCard() {
+    const { packageList } = packageContainerStore
     if (isSinglePerRow()) {
-      return couponList.map((item: ICouponInfo, index: number) => {
+      return packageList.map((item: IPackageInfo, index: number) => {
         return (
           <Row
-            key={`${key}-coupon-row-${index}`}
+            key={`${key}-package-row-${index}`}
             className={styles.mainWrapper}
             gutter={48}>
-            <Col
-              className={styles.singlePerRow}
-              span={SPAN_TOTAL_COUNT}>
-              <CouponCard {...item}></CouponCard>
+            <Col span={SPAN_TOTAL_COUNT}>
+              <PackageSingleCard {...item}></PackageSingleCard>
             </Col>
           </Row>
         )
@@ -77,14 +76,14 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
       <Row
         className={styles.mainWrapper}
         gutter={48}>
-        {couponList.map((item: ICouponInfo, index: number) => {
+        {packageList.map((item: IPackageInfo, index: number) => {
           return (
             <Col
-              key={`${key}-coupon-col-${index}`}
+              key={`${key}-package-col-${index}`}
               span={SPAN_TOTAL_COUNT}
               md={{ span: SPAN_TOTAL_COUNT / 2 }}
               lg={{ span: spanCount }}>
-              <CouponCard {...item}></CouponCard>
+              <PackageCard {...item}></PackageCard>
             </Col>
           )
         })}
@@ -117,10 +116,10 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
     <Spin
       size="large"
       className={styles.spinWrapper}
-      spinning={couponContainerStore.loadings.isLoading(couponContainerStore.Loading.FetchList)}>
+      spinning={packageContainerStore.loadings.isLoading(packageContainerStore.Loading.FetchList)}>
       <div className="features" style={bgColorStyle} ref={ref}>
         <div className="container">
-          {renderCouponCard()}
+          {renderPackageCard()}
           {renderShowMoreBtn()}
         </div>
       </div>

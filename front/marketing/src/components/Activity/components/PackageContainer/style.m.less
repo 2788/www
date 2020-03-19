@@ -1,0 +1,36 @@
+/**
+ * @file styles of component PackageContainer
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.spinWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.mainWrapper {
+  // TODO
+}
+
+.showMoreBtnWrapper {
+  text-align: center;
+
+  .showMoreBtn {
+    height: 0.42rem;
+    padding: 0 0.60rem;
+    border: none;
+    border-radius: 0.40rem;
+    font-size: 0.16rem;
+    color: @white;
+    line-height: 0.42rem;
+
+    &:hover, &:active, &:focus {
+      color: @white;
+      box-shadow: 0 0 0.20rem 0 @shadow-color;
+      -webkit-box-shadow: 0 0 0.20rem 0 @shadow-color;
+      -moz-box-shadow: 0 0 0.20rem 0 @shadow-color;
+    }
+  }
+}

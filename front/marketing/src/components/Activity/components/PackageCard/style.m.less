@@ -1,0 +1,116 @@
+/**
+ * @file styles of component PackageCard
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.mainWrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: 0.30rem;
+  padding: 0.20rem 0.30rem;
+  color: @package-text-color;
+  background-color: @white;
+  box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
+  -webkit-box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
+  -moz-box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
+  overflow: hidden;
+
+  .infoWrapper {
+    width: 100%;
+  }
+
+  .titleWrapper {
+  }
+
+  .propertyWrapper {
+    table {
+      width: 100%;
+      margin: 0.10rem 0;
+      color: @package-text-color-lighter;
+      border-spacing: 0;
+      border: none;
+      font-size: 0.12rem;
+      background-color: @transparent;
+      th, td {
+        line-height: 1.6;
+      }
+      td {
+        color: @package-text-color;
+        font-size: 0.14rem;
+      }
+    }
+  }
+
+  p {
+    line-height: 1;
+
+    &.smaller {
+      margin: 0.06rem 0;
+      font-size: 0.12rem;
+      line-height: 1.2;
+    }
+
+    &.larger {
+      font-size: 0.16rem;
+    }
+
+    &.lighter {
+      color: @package-text-color-lighter;
+    }
+  }
+
+  .moneyWrapper {
+    p {
+      margin: 0.02rem 0;
+      word-break: break-all;
+    }
+
+    .money {
+      font-weight: 400;
+      color: @package-current-money-color;
+
+      .huge {
+        font-size: 0.34rem;
+      }
+
+      .originMoney {
+        text-decoration: line-through;
+        color: @package-origin-money-color;
+      }
+    }
+  }
+
+  .buyBtnWrapper {
+    .buyBtn {
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      color: @white;
+      background: -webkit-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+      background: -o-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+      background: -moz-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+      background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+      background-color: @package-buy-btn-right-color;
+  
+      &:hover, &:active, &:focus {
+        color: @white;
+        background-color: @package-buy-btn-hover-color;
+      }
+    }
+  }
+
+  &.single {
+    .infoWrapper {
+      padding-bottom: 0.10rem;
+      border-bottom: 1px dashed @package-dashed-border-color;
+    }
+  }
+
+  @media only screen and (max-width: @screen-sm) {
+    & {
+      padding: 0.20rem;
+    }
+  }
+}

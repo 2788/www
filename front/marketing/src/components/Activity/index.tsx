@@ -19,6 +19,7 @@ import TitleBar from './components/TitleBar'
 import PageNav from './components/PageNav'
 import RichText from './components/RichText'
 import CouponContainer from './components/CouponContainer'
+import PackageContainer from './components/PackageContainer'
 
 import * as styles from './style.m.less'
 
@@ -90,6 +91,10 @@ export default observer(function Activity(props: IProps) {
       case ComponentName.CouponContainer:
         return (
           <CouponContainer {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
+        )
+      case ComponentName.PackageContainer:
+        return (
+          <PackageContainer {...commonProps} info={componentInfo} ref={ele => registerElement(componentInfo.key, ele)} />
         )
       default:
         console.error('找不到控件', componentInfo)

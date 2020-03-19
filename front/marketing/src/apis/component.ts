@@ -14,6 +14,7 @@ import { IConfig as ITitleBarConfig } from 'components/Activity/components/Title
 import { IConfig as IPageNavConfig } from 'components/Activity/components/PageNav'
 import { IConfig as IRichTextConfig } from 'components/Activity/components/RichText'
 import { IConfig as ICouponContainerConfig } from 'components/Activity/components/CouponContainer'
+import { IConfig as IPackageContainerConfig } from 'components/Activity/components/PackageContainer'
 
 export enum ComponentName {
   Demo = 'demo',
@@ -21,7 +22,8 @@ export enum ComponentName {
   TitleBar = 'title-bar',
   PageNav = 'page-nav',
   RichText = 'rich-text-editor',
-  CouponContainer = 'coupon-container'
+  CouponContainer = 'coupon-container',
+  PackageContainer = 'package-container'
 }
 
 export type IComponentConfig<T extends ComponentName = ComponentName> = (
@@ -31,6 +33,7 @@ export type IComponentConfig<T extends ComponentName = ComponentName> = (
   T extends ComponentName.PageNav ? IPageNavConfig :
   T extends ComponentName.RichText ? IRichTextConfig :
   T extends ComponentName.CouponContainer ? ICouponContainerConfig :
+  T extends ComponentName.PackageContainer ? IPackageContainerConfig :
   T
 )
 
