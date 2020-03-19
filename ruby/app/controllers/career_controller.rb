@@ -12,8 +12,9 @@ class CareerController < ApplicationController
   end
 
   def school
-    @title = "校园招聘"
-    @school_positions = Position.school
+    # @title = "校园招聘"
+    # @school_positions = Position.school
+    redirect_to("https://campus.qiniu.com/", :status => 301)
   end
 
   def position
