@@ -41,6 +41,7 @@ func (s *SSOLogin) LoginRequired(ctx *gin.Context) {
 
 	ssid, err := ctx.Request.Cookie(SESSION_SSID)
 	if err != nil || ssid == nil {
+		logrus.Errorf("<SSOLogin.LoginRequired> ctx.Request.Cookie(%s) failed, err:%s, ssid: %s.", SESSION_SSID, err, ssid)
 		return
 	}
 
@@ -50,7 +51,7 @@ func (s *SSOLogin) LoginRequired(ctx *gin.Context) {
 
 	cookieSsid, _, ok := s.SSOService.SSODecodeCookieValue(ssid.Value)
 	if !ok || cookieSsid == "" {
-		logrus.Errorf("<SSOLogin.LoginRequired> SSODecodeCookieValue(%s) failed, err:%s.", ssid.Value, err)
+		logrus.Errorf("<SSOLogin.LoginRequired> SSODecodeCookieValue(%s) failed, cookieSsid:%s, ok: %t.", ssid.Value, cookieSsid, ok)
 		return
 	}
 
