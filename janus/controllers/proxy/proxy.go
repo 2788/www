@@ -107,7 +107,7 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
 
-				return &matchInfo, host, err
+				return &matchInfo, host, nil
 			}
 		}
 	}
