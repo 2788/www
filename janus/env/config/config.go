@@ -39,11 +39,9 @@ type SessionConfig struct {
 
 // AccConfig config for acc auth
 type AccConfig struct {
-	Host         string `yaml:"host"`
-	Username     string `yaml:"username"`
-	Password     string `yaml:"password"`
-	ClientID     string `yaml:"client_id"`
-	ClientSecret string `yaml:"client_secret"`
+	Host     string `yaml:"host"`
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
 }
 
 // SSOConfig

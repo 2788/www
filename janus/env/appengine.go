@@ -40,11 +40,9 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.Proxy
 	)
 
 	accTr, err := pacc.NewTransport(&pacc.AccConfig{
-		Host:         cfg.Acc.Host,
-		UserName:     cfg.Acc.Username,
-		Password:     cfg.Acc.Password,
-		ClientID:     cfg.Acc.ClientID,
-		ClientSecret: cfg.Acc.ClientSecret,
+		Host:     cfg.Acc.Host,
+		UserName: cfg.Acc.Username,
+		Password: cfg.Acc.Password,
 	})
 	if err != nil {
 		l.Errorf("<appengine.InitAppEngine> NewTransport() failed, err:%s.", err)

@@ -2,11 +2,6 @@ server:
     mode: "test"
     port: ":11009" # best 1024 up
 
-auth:
-    mock_token: true
-    secret_key: ""
-    token_expires_in: 7*24*3600
-
 redis:
     db: 0 # defaults 0
     failover: false
@@ -26,8 +21,6 @@ acc:
     host: "http://10.200.20.25:9100"
     username: "root"
     password: "root"
-    client_id: "xxx"
-    client_secret: "xxx"
 sso:
     host: "https://sso-dev.qiniu.io"
     client_id: "1YlkJR3sYw7zpBMSTNCesc9O9ViF9tCO03JDXZOGBpxkQ36QuIag2PAvPXdP35rCF2DMvMkIIXZBD1EBHzPBYZt1wJlK35YdIM9TkVagOaybfocuqSNOV6hK64offScqv"
