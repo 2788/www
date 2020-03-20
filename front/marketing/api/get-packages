@@ -37,8 +37,8 @@
                   {
                     "item_id": "167",
                     "dimension_value": "华东",
-                    "c_fee": "16800000",
-                    "fee": "16800000",
+                    "c_fee": "16800000000",
+                    "fee": "16800000000",
                     "url": "",
                     "max_purchases": "1",
                     "duration": "1"
@@ -46,8 +46,8 @@
                   {
                     "item_id": "168",
                     "dimension_value": "华南",
-                    "c_fee": "2500000",
-                    "fee": "2500000",
+                    "c_fee": "25000000000",
+                    "fee": "25000000000",
                     "url": "",
                     "max_purchases": "1",
                     "duration": "1"

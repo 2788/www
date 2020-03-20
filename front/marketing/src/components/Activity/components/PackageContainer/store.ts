@@ -52,7 +52,8 @@ export default class PackageContainerStore extends Store {
     }
     const req = this.packageApis.fetchList(options)
     req.then(res => {
-      this.updatePackageList(res.campaign_product_detail || [])
+      const { campaign_product_detail = [] } = res
+      this.updatePackageList(campaign_product_detail)
     })
     return req
   }

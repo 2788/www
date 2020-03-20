@@ -52,7 +52,8 @@ export default class CouponContainerStore extends Store {
     }
     const req = this.couponApis.fetchList(options)
     req.then(res => {
-      this.updateCouponList(res.campaign_coupon_detail || [])
+      const { campaign_coupon_detail = [] } = res
+      this.updateCouponList(campaign_coupon_detail)
     })
     return req
   }

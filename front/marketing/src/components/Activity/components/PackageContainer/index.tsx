@@ -16,7 +16,6 @@ import { IPackageInfo } from 'apis/package'
 import { IBaseProps } from '../..'
 
 import PackageCard from '../PackageCard'
-import PackageSingleCard from '../PackageCard/Single'
 
 import PackageContainerStore from './store'
 import * as styles from './style.m.less'
@@ -52,41 +51,28 @@ export default observer(forwardRef(function PackageContainer(props: IProps, ref:
   const spanCount = SPAN_TOTAL_COUNT / count_per_row
 
   function isSinglePerRow() {
-    return count_per_row && spanCount === SPAN_TOTAL_COUNT
+    return !!(count_per_row && spanCount === SPAN_TOTAL_COUNT)
   }
 
   function renderPackageCard() {
     const { packageList } = packageContainerStore
-    if (isSinglePerRow()) {
-      return packageList.map((item: IPackageInfo, index: number) => {
-        return (
-          <Row
-            key={`${key}-package-row-${index}`}
-            className={styles.mainWrapper}
-            gutter={48}>
-            <Col span={SPAN_TOTAL_COUNT}>
-              <PackageSingleCard {...item}></PackageSingleCard>
-            </Col>
-          </Row>
-        )
-      })
-    }
 
     return (
       <Row
         className={styles.mainWrapper}
-        gutter={48}>
-        {packageList.map((item: IPackageInfo, index: number) => {
-          return (
-            <Col
-              key={`${key}-package-col-${index}`}
-              span={SPAN_TOTAL_COUNT}
-              md={{ span: SPAN_TOTAL_COUNT / 2 }}
-              lg={{ span: spanCount }}>
-              <PackageCard {...item}></PackageCard>
-            </Col>
-          )
-        })}
+        gutter={48}>{
+          packageList.map((item: IPackageInfo, index: number) => {
+            return (
+              <Col
+                key={`${key}-package-col-${index}`}
+                span={SPAN_TOTAL_COUNT}
+                sm={{ span: isSinglePerRow() ? SPAN_TOTAL_COUNT : SPAN_TOTAL_COUNT / 2 }}
+                lg={{ span: spanCount }}>
+                <PackageCard {...item} is_single={isSinglePerRow()}></PackageCard>
+              </Col>
+            )
+          })
+        }
       </Row>
     )
   }

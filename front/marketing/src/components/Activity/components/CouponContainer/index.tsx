@@ -51,7 +51,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
   const spanCount = SPAN_TOTAL_COUNT / count_per_row
 
   function isSinglePerRow() {
-    return count_per_row && spanCount === SPAN_TOTAL_COUNT
+    return !!(count_per_row && spanCount === SPAN_TOTAL_COUNT)
   }
 
   function renderCouponCard() {
@@ -82,7 +82,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
             <Col
               key={`${key}-coupon-col-${index}`}
               span={SPAN_TOTAL_COUNT}
-              md={{ span: SPAN_TOTAL_COUNT / 2 }}
+              sm={{ span: SPAN_TOTAL_COUNT / 2 }}
               lg={{ span: spanCount }}>
               <CouponCard {...item}></CouponCard>
             </Col>

@@ -9,39 +9,13 @@
   width: 100%;
   position: relative;
   margin-bottom: 0.30rem;
-  padding: 0.10rem;
+  padding: 0.20rem 0.30rem 0;
   color: @package-text-color;
   background-color: @white;
   box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
   -webkit-box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
   -moz-box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
   overflow: hidden;
-
-  .infoWrapper {
-    width: 100%;
-  }
-
-  .titleWrapper {
-  }
-
-  .propertyWrapper {
-    table {
-      width: 100%;
-      margin: 0.10rem 0;
-      color: @package-text-color-lighter;
-      border-spacing: 0;
-      border: none;
-      font-size: 0.12rem;
-      background-color: @transparent;
-      th, td {
-        line-height: 1.6;
-      }
-      td {
-        color: @package-text-color;
-        font-size: 0.14rem;
-      }
-    }
-  }
 
   p {
     line-height: 1;
@@ -61,57 +35,163 @@
     }
   }
 
-  .moneyWrapper {
-    p {
-      margin: 0.02rem 0;
-      word-break: break-all;
-    }
+  .propertyWrapper {
+    margin-top: 0.20rem;
 
-    .money {
-      font-weight: 400;
-      color: @package-current-money-color;
+    table {
+      width: 100%;
+      margin: 0.10rem 0;
+      color: @package-text-color-lighter;
+      border-spacing: 0;
+      border: none;
+      font-size: 0.12rem;
+      background-color: @transparent;
 
-      .huge {
-        font-size: 0.34rem;
+      th, td {
+        line-height: 1.6;
       }
 
-      .originMoney {
-        text-decoration: line-through;
-        color: @package-origin-money-color;
+      td {
+        color: @package-text-color;
+        font-size: 0.14rem;
       }
     }
   }
 
-  .buyBtnWrapper {
-    .buyBtn {
-      width: 100%;
-      border: none;
-      border-radius: 0;
-      color: @white;
-      background: -webkit-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
-      background: -o-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
-      background: -moz-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
-      background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
-      background-color: @package-buy-btn-right-color;
+  .moneyAndBtnWrapper {
+    padding: 0.10rem 0 0;
 
-      &:hover, &:active, &:focus {
+    .moneyWrapper {
+      p {
+        margin: 0.02rem 0;
+        word-break: break-all;
+      }
+  
+      .money {
+        font-weight: 400;
+        color: @package-current-money-color;
+  
+        .huge {
+          font-size: 0.32rem;
+        }
+  
+        .originMoney {
+          text-decoration: line-through;
+          color: @package-origin-money-color;
+        }
+      }
+    }
+
+    .buyBtnWrapper {
+      margin-top: 0.30rem;
+
+      .buyBtn {
+        width: calc(100% + 0.60rem);
+        position: relative;
+        left: -0.30rem;
+        border: none;
+        border-radius: 0;
         color: @white;
-        background: @package-buy-btn-hover-color;
+        background: -webkit-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+        background: -o-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+        background: -moz-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+        background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+        background-color: @package-buy-btn-right-color;
+  
+        &:hover, &:active, &:focus {
+          color: @white;
+          background: @package-buy-btn-hover-color;
+        }
+      }
+    }
+  }
+
+  .dimensionWrapper {
+    margin-top: 0.20rem;
+
+    .dimensionDropdownCol {
+      padding-bottom: 0.20rem;
+    }
+
+    .dimensionDropdown {
+      width: 100%;
+      margin-top: 0.10rem;
+      text-align: left;
+
+      > div {
+        border-color: @package-dimension-dropdown-border-color;
+        background-color: @package-dimension-dropdown-bg-color;
       }
     }
   }
 
   &.single {
-    padding: 0.20rem 0.30rem;
     .infoWrapper {
       padding-bottom: 0.10rem;
       border-bottom: 1px dashed @package-dashed-border-color;
     }
+
+    .propertyWrapper {
+      margin-top: 0;
+    }
+
+    .dimensionWrapper {
+      margin-top: 0;
+      padding-top: 0.10rem;
+    }
+
+    .moneyAndBtnWrapper {
+      padding: 0.20rem 0;
+      border-top: 1px dashed @package-dashed-border-color;
+
+      .moneyWrapper {
+        p {
+          text-align: right;
+        }
+      }
+
+      .buyBtnWrapper {
+        margin-top: 0;
+
+        .buyBtn {
+          width: 100%;
+          position: relative;
+          left: 0;
+        }
+      }
+    }
   }
 
-  @media only screen and (max-width: @screen-sm) {
-    & {
-      padding: 0.20rem;
+  @media only screen and (max-width: @screen-sm - 1) {
+    &.single {
+      .infoWrapper {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .dimensionWrapper {
+        padding-top: 0;
+      }
+
+      .moneyAndBtnWrapper {
+        padding: 0.10rem 0 0;
+        border-top: none;
+
+        .moneyWrapper {
+          p {
+            text-align: left;
+          }
+        }
+
+        .buyBtnWrapper {
+          margin-top: 0.30rem;
+
+          .buyBtn {
+            width: calc(100% + 0.60rem);
+            left: -0.30rem;
+          }
+        }
+      }
     }
   }
 }
