@@ -7871,9 +7871,9 @@ zh-CN:
           - title: "云主机专区"
             class: "nav-item"
             href: "#tab-content-spring-sale-qvm"
-          - title: "云短信专区"
-            class: "nav-item"
-            href: "#tab-content-spring-sale-sms"
+          # - title: "云短信专区"
+          #   class: "nav-item"
+          #   href: "#tab-content-spring-sale-sms"
         kodo:
           title: "存储专区"
           desc: "标准存储公开价低至 65 折 <a href='' target='' class='desc-rule-link' title='存储专场 - 活动说明' data-toggle='modal' data-target='#double12-2019-kodo-modal'>了解详情&nbsp;></a>"
