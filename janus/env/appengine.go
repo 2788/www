@@ -15,7 +15,7 @@ import (
 )
 
 // InitAppEngine Init gin route engine
-func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
+func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.ProxyEntry) *gin.Engine {
 	gin.SetMode(string(cfg.Server.Mode))
 	app := gin.New()
 	store, err := redis.NewStore(
@@ -57,6 +57,8 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config) *gin.Engine {
 	env.Cfg = cfg
 	env.SSOService = ssoService
 	env.GaeaAdminService = gaeaService
+	env.AccTr = accTr
+	env.ProxyCfg = proxyCfg
 	return app
 }
 

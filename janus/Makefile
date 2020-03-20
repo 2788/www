@@ -9,4 +9,4 @@ build:
 
 .PHONY: run
 run: build
-	cd app; ./janusd -conf ../env/config.yml
+	cd app; ./janusd -conf ../env/config.yml -proxy ../env/proxy.yml

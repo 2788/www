@@ -11,9 +11,11 @@ import (
 func main() {
 	var (
 		confPath    string
+		proxyPath   string
 		autoMigrate bool
 	)
 	flag.StringVar(&confPath, "conf", "config.yml", "config file path")
+	flag.StringVar(&proxyPath, "proxy", "proxy.json", "proxo config file path")
 	flag.BoolVar(&autoMigrate, "automigrate", false, "enable auto migration of db schema")
 	flag.Parse()
 
@@ -22,8 +24,13 @@ func main() {
 		logrus.WithField("err", err).Fatal("failed to load config")
 		return
 	}
+	proxyConf, err := config.ParseProxyEntry(proxyPath)
+	if err != nil {
+		logrus.WithField("err", err).Fatal("failed to load proxy config")
+		return
+	}
 
-	app := env.InitAppEngine(logrus.StandardLogger(), conf)
+	app := env.InitAppEngine(logrus.StandardLogger(), conf, proxyConf)
 
 	env.InitRouters(app)
 
