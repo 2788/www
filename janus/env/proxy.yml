@@ -22,3 +22,9 @@
     - path: "/campaigns/:id"
       method: DELETE
       auth: admin
+- name: "gaea"
+  target: "http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com"
+  matches:
+    - path: "/api/marketing/event/coupon/bind"
+      method: GET
+      auth: admin
