@@ -154,6 +154,9 @@ class ProductsController < ApplicationController
   def kodo_goglobal
   end
 
+  def special_sdk
+  end
+
   def censor
     @videoSrc_1 = "https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk"
     @videoSrc_2 = "https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ"
