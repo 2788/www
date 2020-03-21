@@ -9,7 +9,7 @@
   width: 100%;
   position: relative;
   margin-bottom: 0.30rem;
-  padding: 0.20rem 0.30rem 0;
+  padding: 0.16rem 0.22rem 0;
   color: @package-text-color;
   background-color: @white;
   box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
@@ -36,7 +36,7 @@
   }
 
   .propertyWrapper {
-    margin-top: 0.20rem;
+    margin-top: 0.10rem;
 
     table {
       width: 100%;
@@ -83,7 +83,7 @@
     }
 
     .buyBtnWrapper {
-      margin-top: 0.30rem;
+      margin-top: 0.24rem;
 
       .buyBtn {
         width: calc(100% + 0.60rem);
@@ -107,10 +107,10 @@
   }
 
   .dimensionWrapper {
-    margin-top: 0.20rem;
+    margin-top: 0.10rem;
 
     .dimensionDropdownCol {
-      padding-bottom: 0.20rem;
+      padding-bottom: 0.14rem;
     }
 
     .dimensionDropdown {
@@ -141,7 +141,7 @@
     }
 
     .moneyAndBtnWrapper {
-      padding: 0.20rem 0;
+      padding: 0.10rem 0;
       border-top: 1px dashed @package-dashed-border-color;
 
       .moneyWrapper {
@@ -184,7 +184,7 @@
         }
 
         .buyBtnWrapper {
-          margin-top: 0.30rem;
+          margin-top: 0.24rem;
 
           .buyBtn {
             width: calc(100% + 0.60rem);
@@ -192,6 +192,48 @@
           }
         }
       }
+    }
+  }
+}
+
+.modal {
+  .contentWrapper {
+    margin: 0.10rem 0;
+    font-size: 14px;
+
+    .title, .content {
+      margin: 0.10rem 0;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .content {
+      ul li {
+        margin: 0.10rem 0;
+      }
+
+      &.textCenter {
+        text-align: center;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm - 1) {
+    & {
+      max-width: @modal-sm !important;
+
+      .btnWrapper {
+        text-align: center;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      max-width: @modal-md !important;
     }
   }
 }

@@ -89,7 +89,7 @@ export default class PackageApis extends Store {
   buyPackage(options: IBuyPackageOptions): Promise<IBuyPackageResult> {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(this.fetchStore.get('/buy-packages', options))
+        resolve(this.fetchStore.get('/buy-package', options))
       }, 1000)
     })
   }

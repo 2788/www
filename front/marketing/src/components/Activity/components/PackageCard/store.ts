@@ -1,6 +1,6 @@
 /**
  * @file local store of component PackageCard
- * @author jiayzihen <jiayzihen@qiniu.com>
+ * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
 import { observable, action } from 'mobx'
@@ -11,24 +11,18 @@ import { injectProps } from 'qn-fe-core/local-store'
 import Loadings from 'base/stores/loadings'
 import ToasterStore from 'base/stores/toaster'
 
-import PackageApis, {
-  IBuyPackageOptions, IPackageItem,
-  IPackageDimension
-} from 'apis/package'
+import { IPackageItem, IPackageDimension } from 'apis/package'
 
 import { splitStrByDot, joinStrListByHyphen } from 'utils/package'
 
 import { IProps, IDimensionDropdownItem } from '.'
 
-enum Loading {
-  BuyPackage = 'buyPackage'
-}
+enum Loading {}
 
 @injectable()
 export default class PackageCardStore extends Store {
   constructor(
     toasterStore: ToasterStore,
-    private packageApis: PackageApis,
     @injectProps() private props: IProps,
   ) {
     super()
@@ -40,6 +34,7 @@ export default class PackageCardStore extends Store {
 
   @observable.ref selectedPackage: IPackageItem | undefined
   @observable.deep dimensionDropdownList: IDimensionDropdownItem[] = []
+  @observable.ref isBuyPackageModalShow: boolean = false
 
   @action.bound updateDimensionDropdownList(list: IPackageDimension[]) {
     if (!list || !list.length) {
@@ -83,16 +78,8 @@ export default class PackageCardStore extends Store {
     this.updateSelectedPackage(this.dimensionDropdownList)
   }
 
-  @Loadings.handle(Loading.BuyPackage)
-  @ToasterStore.handle('领取抵用券成功', '领取抵用券失败')
-  buyPackage() {
-    const options: IBuyPackageOptions = {
-      item_id: 1,
-      quantity: 1,
-      effect_type: 2
-    }
-    const req = this.packageApis.buyPackage(options)
-    return req
+  @action.bound controlBuyPackageModalShow(isShow: boolean) {
+    this.isBuyPackageModalShow = isShow
   }
 
   init() {

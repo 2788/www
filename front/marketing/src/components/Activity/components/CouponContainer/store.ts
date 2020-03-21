@@ -1,6 +1,6 @@
 /**
  * @file local store of component CouponContainer
- * @author jiayzihen <jiayzihen@qiniu.com>
+ * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
 import { observable, action } from 'mobx'

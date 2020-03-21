@@ -15,11 +15,13 @@ import { useLocalStore } from 'qn-fe-core/local-store'
 import { IPackageInfo, IPackageProperty } from 'apis/package'
 
 import { asYuan } from 'utils/money'
+import { packageProductType } from 'constants/package'
 
 import Label, { IProps as ILabelProps } from 'components/common/Label'
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
 
 import { IDimensionDropdownItem } from '.'
+import PackageModal from './Modal'
 
 import PackageCardStore from './store'
 import * as styles from './style.m.less'
@@ -37,7 +39,7 @@ export interface IDimensionDropdownItem {
 export default observer(function PackageCard(props: IProps) {
   const {
     is_single,
-    id, title, subtitle,
+    id, title, subtitle, product_type,
     appear_fee, properties,
     label, label_color,
     subscript_name, subscript_text, subscript_color
@@ -152,13 +154,36 @@ export default observer(function PackageCard(props: IProps) {
   }
 
   function renderBuyBtnWrapper() {
-    const { selectedPackage } = packageCardStore
+    const { selectedPackage, controlBuyPackageModalShow } = packageCardStore
+
+    if (!selectedPackage) {
+      return null
+    }
+
+    if (product_type === packageProductType.LINK) {
+      const { url = '' } = selectedPackage
+
+      return (
+        <div className={styles.buyBtnWrapper}>
+          <Button
+            className={styles.buyBtn}
+            size="large"
+            href={url}
+            target="_blank">
+            立即抢购
+          </Button>
+        </div>
+      )
+    }
+
     return (
       <div className={styles.buyBtnWrapper}>
         <Button
           className={styles.buyBtn}
           size="large"
-          disabled={!selectedPackage}>
+          onClick={() => {
+            controlBuyPackageModalShow(true)
+          }}>
           立即抢购
         </Button>
       </div>
@@ -181,7 +206,7 @@ export default observer(function PackageCard(props: IProps) {
   }
 
   function renderDimensionDropdownWrapper() {
-    const { dimensionDropdownList } = packageCardStore
+    const { dimensionDropdownList, setDimensionDropdownValue } = packageCardStore
     if (!dimensionDropdownList || !dimensionDropdownList.length) {
       return null
     }
@@ -210,7 +235,7 @@ export default observer(function PackageCard(props: IProps) {
                   value={value}
                   disabled={list.length === 1}
                   onChange={(value: any) => {
-                    packageCardStore.setDimensionDropdownValue(value, colIndex)
+                    setDimensionDropdownValue(value, colIndex)
                   }}>{
                     list.map((item: string, optionIndex: number) => {
                       return (
@@ -231,12 +256,33 @@ export default observer(function PackageCard(props: IProps) {
     )
   }
 
+  function renderModal() {
+    const {
+      selectedPackage, dimensionDropdownList,
+      isBuyPackageModalShow, controlBuyPackageModalShow,
+    } = packageCardStore
+
+    if (!selectedPackage) {
+      return null
+    }
+
+    return (
+      <PackageModal
+        {...selectedPackage}
+        package_name={title}
+        dimension_list={dimensionDropdownList}
+        is_show={isBuyPackageModalShow}
+        control_show_func={controlBuyPackageModalShow} />
+    )
+  }
+
   return (
     <div className={`${styles.mainWrapper} ${ is_single ? styles.single : ''}`}>
       {renderSubscript()}
       {renderInfoWrapper()}
       {renderDimensionDropdownWrapper()}
       {renderMoneyAndBtnWrapper()}
+      {renderModal()}
     </div>
   )
 })

@@ -1,6 +1,6 @@
 /**
  * @file local store of component CouponCard
- * @author jiayzihen <jiayzihen@qiniu.com>
+ * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
 import { action } from 'mobx'
