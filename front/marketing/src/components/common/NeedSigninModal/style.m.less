@@ -1,0 +1,26 @@
+/**
+ * @file styles of component NeedSigninModal
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.modal {
+  .content {
+    font-size: 0.16rem;
+    text-align: center;
+    line-height: 1;
+  }
+
+  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm - 1) {
+    & {
+      max-width: @modal-sm !important;
+    }
+  }
+
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      max-width: @modal-md !important;
+    }
+  }
+}

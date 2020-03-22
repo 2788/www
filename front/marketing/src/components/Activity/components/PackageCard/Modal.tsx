@@ -13,6 +13,8 @@ import Row from 'react-icecream/lib/row'
 import Col from 'react-icecream/lib/col'
 import Slider from 'react-icecream/lib/slider'
 
+import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/common/NeedSigninModal'
+
 import { effectType } from 'constants/package'
 
 import { IPackageItem } from 'apis/package'
@@ -37,6 +39,17 @@ export default observer(function PackageModal(props: IProps) {
 
   // 使用局部 store
   const modalStore = useLocalStore(ModalStore, props)
+
+  // TODO: 根据登录状态返回不同的模态框
+  if (false) {
+    const needSigninModalProps: INeedSigninModalProps = {
+      is_show,
+      control_show_func
+    }
+    return (
+      <NeedSigninModal {...needSigninModalProps} />
+    )
+  }
 
   function renderBuyPackageModal() {
     const { quantity, updateQuantityValue, buyPackageBtnClick } = modalStore
@@ -109,7 +122,36 @@ export default observer(function PackageModal(props: IProps) {
     )
   }
 
+  function renderSuccessModal() {
+    const { isSuccessModalShow, controlSuccessModalShow } = modalStore
+    // TODO: 样式
+    return (
+      <Modal
+        title="提示"
+        visible={isSuccessModalShow}
+        onCancel={() => {
+          controlSuccessModalShow(false)
+        }}
+        footer={null}
+        maskClosable={true}
+        className={styles.modal}>
+          <p className={`${styles.content} ${styles.textCenter}`}>
+            商品下单成功，请到&nbsp;
+            <Button.Link
+              href="https://portal.qiniu.com/financial/orders"
+              type="primary"
+              target="_blank">财务中心
+            </Button.Link>
+            &nbsp;确认支付
+          </p>
+      </Modal>
+    )
+  }
+
   return (
-    renderBuyPackageModal()
+    <div>
+      {renderBuyPackageModal()}
+      {renderSuccessModal()}
+    </div>
   )
 })

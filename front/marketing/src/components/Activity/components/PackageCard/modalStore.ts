@@ -37,6 +37,7 @@ export default class ModalStore extends Store {
   loadings = Loadings.collectFrom(this, this.Loading)
 
   @observable.ref quantity: number = 1
+  @observable.ref isSuccessModalShow: boolean = false
 
   @action.bound buyPackageBtnClick(effect: ValueOf<typeof effectType>) {
     const { item_id } = this.props
@@ -49,10 +50,19 @@ export default class ModalStore extends Store {
     this.buyPackage(options)
   }
 
+  @action.bound controlSuccessModalShow(isShow: boolean) {
+    this.isSuccessModalShow = isShow
+  }
+
   @Loadings.handle(Loading.BuyPackage)
-  @ToasterStore.handle('商品下单成功', '商品下单失败')
+  @ToasterStore.handle(undefined, '商品下单失败')
   buyPackage(options: IBuyPackageOptions) {
     const req = this.packageApis.buyPackage(options)
+    req.then(() => {
+      const { control_show_func } = this.props
+      control_show_func(false)
+      this.controlSuccessModalShow(true)
+    })
     return req
   }
 
