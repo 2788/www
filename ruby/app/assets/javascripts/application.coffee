@@ -61,6 +61,7 @@
 #= require double12_2019
 #= require fighting_ncov
 #= require spring_sale
+#= require invite
 
 #= require uuid
 #= require sensors_service
