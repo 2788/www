@@ -212,9 +212,9 @@ export default observer(function PackageCard(props: IProps) {
       return null
     }
 
-    let countPerRow: number = dimensionDropdownList.length === 1 ? 24 : 12
+    let numDropdownSpan: number = dimensionDropdownList.length === 1 ? 24 : 12
     if (is_single) {
-      countPerRow = 8
+      numDropdownSpan = 8
     }
 
     return (
@@ -228,7 +228,7 @@ export default observer(function PackageCard(props: IProps) {
                 key={`package-${id}-dimension-col-${colIndex}`}
                 className={styles.dimensionDropdownCol}
                 span={24}
-                sm={{ span: countPerRow }}>
+                sm={{ span: numDropdownSpan }}>
                 <p className={styles.larger}>{label}</p>
                 <Select
                   className={styles.dimensionDropdown}
