@@ -1,151 +1,182 @@
-<div class="invite-banner">
-  <div class="actions">
-    <p class="desc">活动开始时间：2018 年 9 月 1 日</p>
-    <%= link_to "立即邀请", Rails.configuration.portal_host + "/invitation", target: "_blank", class: "link" -%>
-  </div>
-</div>
-
-<div class="features feature-invitation">
-  <div class="container">
-    <div class="invite-title">
-      <h2>丰厚奖励</h2>
-      <p>邀请好友注册七牛云，邀请人即可获得以下丰厚奖励</p>
-    </div>
-    <div class="content">
-      <%= image_tag "invite/img-jiangli-new.jpg", alt: "奖励", width: "100%" -%>
-    </div>
-  </div>
-</div>
-
-<%# 老活动 %>
-<div class="features feature-invitation feature-invitation-bg invite-table">
-  <div class="container">
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>达成目标</th>
-          <th>邀请人奖励</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            邀请 1 个标准用户
-            <%= image_tag "icon-question-mark.png", alt: "标注", class: "question-mark", width: 18, data: {toggle: "tooltip", placement: "right"}, title: "实名认证用户" -%>
-          </td>
-          <td>
-            <ul>
-              <li>5GB/月 CDN 免费 HTTP 下载流量（最高累计 40GB/月）</li>
-              <li>100 元对象存储抵用券 （不可累计）</li>
-              <li>100 元智能多媒体服务抵用券 （不可累计）</li>
-              <li>500 元充值抵用券（单次充值 5000 送 500，不可累计）</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            每自然月邀请 2 个及以上企业标准用户
-            <%= image_tag "icon-question-mark.png", alt: "标注", class: "question-mark", width: 18, data: {toggle: "tooltip", placement: "right"}, title: "实名认证企业用户" -%>
-          </td>
-          <td>额外获得价值 100 元购物卡</td>
-        </tr>
-        <tr>
-          <td>受邀人首充金额 >=1000 元，并 <5000 元</td>
-          <td>100 元购物卡</td>
-        </tr>
-        <tr>
-          <td>受邀人首充金额 >=5000 元</td>
-          <td>500 元购物卡</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="hint">
-      注：每个邀请人最多可累计获得 1000 元购物卡。
+<div class="invite-page-container">
+  <div class="jumbotron hero">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>邀请好友，礼上加礼</h1>
+            <p>温馨回馈限时复工防疫包</p>
+            <div class="actions">
+              <%= link_to "立即邀请", signin_url('www', '/invite'), class: "btn btn-lg btn-hollow m-r m-b-xs invite-btn", title: "邀请好友，礼上加礼 温馨回馈限时复工防疫包", target: "_blank" -%>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="features feature-invitation">
-  <div class="container invite-flow">
-    <div class="invite-title">
-      <h2>邀请流程</h2>
+  <div class="features yaoqing-page-container1">
+    <div class="intro">
+      <h2 class="title">丰厚奖励</h2>
+      <p class="desc"><a data-toggle="modal" data-target="#invite-rule-modal">（活动规则）</a></p>
     </div>
-    <div class="content">
-      <p class="pr">
-        <span>注册/登录七牛云账户</span>
-      </p>
-      <p class="pr">
-        <span>点击“邀请好友”</span>
-      </p>
-      <p class="pr">
-        <span>分享链接邀请好友</span>
-      </p>
-      <p>
-        <span>邀请成功获得奖励</span>
-      </p>
+    <div class="container">
+      <table border="0" cellspacing="0" cellpadding="0" class="table">
+        <tbody>
+          <tr class="tr-header">
+            <td width="50%">达成目标</td>
+            <td width="50%"><span>邀请人奖励</span></td>
+          </tr>
+          <tr>
+            <td width="50%">邀请 1 个标准用户</td>
+            <td width="50%"><span class="products-yaoqing-page-liwu"><span class="warning">价值 100 元的复工防疫工具包（车载消毒片及洗手液）</span>（不累计）</span><span class="products-yaoqing-page-liwu">5GB/月 CDN 免费 HTTP 下载流量（最高累计 40GB/月）</span><span class="products-yaoqing-page-liwu">700 元产品抵用券包（不累计）</span></td>
+          </tr>
+          <tr>
+            <td width="50%">邀请 1 个企业标准用户</td>
+            <td width="50%"><span class="products-yaoqing-page-liwu">50 元购物卡（最高累计 500 元/月）</span></td>
+          </tr>
+          <tr>
+            <td width="50%">受邀人首充金额 >= 1000 元，并 < 5000 元</td>
+            <td width="50%"><span class="products-yaoqing-page-liwu">100 元购物卡</span></td>
+          </tr>
+          <tr>
+            <td width="50%">受邀人首充金额 >= 5000 元，并 < 10000 元</td>
+            <td width="50%"><span class="products-yaoqing-page-liwu">500 元购物卡</span></td>
+          </tr>
+          <tr>
+            <td width="50%">受邀人首充金额 >= 10000 元</td>
+            <td width="50%"><span class="products-yaoqing-page-liwu">1000 元购物卡</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
 
-<div class="features feature-invitation feature-invitation-bg">
-  <div class="container invite-rule">
-    <div class="invite-title">
-      <h2>活动规则</h2>
+  <div class="features yaoqing-page-container2">
+    <div class="intro">
+      <h2 class="title">邀请流程</h2>
     </div>
-    <div class="content">
-      <p>1 &nbsp; 活动开始时间 2018 年 9 月 1 日。</p>
-      <p>2 &nbsp; 标准用户指完成实名认证的个人用户或企业用户。</p>
-      <p>3 &nbsp; 首充指受邀人第一次充值，充值奖励发放额度以受邀人首次充值为准。首充时间应发生在受邀人注册的 1 个月之内，逾期充值不计在奖励范围内。</p>
-      <p>4 &nbsp; 每个邀请人最多可累计获得 1000 元购物卡。</p>
-      <p>5 &nbsp; 邀请标准用户（个人/企业）所获得的免费 CDN 下载流量，每个邀请人（以邀请人注册邮箱为准）最高可累计 40GB/月，邀请成功后，免费流量次月生效，永久有效。</p>
-      <p>6 &nbsp; 抵用券有效期为 6 个月，有效期的起始时间以抵用券到账时间为准。</p>
-      <p>7 &nbsp; 抵用券的发放：产品抵用券在受邀人实名认证后，自动发放至邀请人账户，每个账户（以注册邮箱为准）仅发放一次，不可累计。</p>
-      <p>8 &nbsp; 邀请成功后，邀请人可在“财务中心>抵用券”查看 200 元产品抵用券，500 元充值抵用券在邀请人单次充值达到 5000 元后自动发放至“财务中心>抵用券”。</p>
-      <p>9 &nbsp; 购物卡奖励，每自然月结算一次，由市场部统一发放给符合购物卡奖励标准的邀请人（首充购物卡奖励首充后次月发放）。</p>
-      <p>10 &nbsp; 邀请者与被邀请者实际是同一用户不可获得奖励（同一用户指包含但不仅限于根据不同七牛云账号在注册、登录、使用中的关联信息，七牛云判断其实际为同一用户。关联信息举例：同一证件、同一手机号、同一支付账号、同一设备、同一地址等）。</p>
-      <p>11 &nbsp; 如用户存在作弊、欺诈或通过其他非正常手段获取利益的行为，七牛云有权收回相关权益。</p>
-      <p>12 &nbsp; 此次活动奖励不可与其他优惠同享。</p>
-      <p>13 &nbsp; 已签约代理商不参与此次活动。</p>
-      <p>14 &nbsp; 如受邀人注销账户，邀请人获得的奖励将被扣除。</p>
-      <p>15 &nbsp; 本次活动解释权归七牛云所有，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", class:"email-box" -%>。</p>
+    <div class="container">
+      <div class="row yaoqing-page-container2-liucheng">
+        <div class="col-md-3 col-sm-6 col-xs-6 yaoqing-page-container2-liuchengblok">
+          <span>01</span>
+          <div class="yaoqing-page-container2-thumbnail">
+            <%= image_tag "invite/yaoqing-page-container2-liucheng1.png", title: "注册 / 登录七牛云账户", alt: "注册 / 登录七牛云账户", width: 113, height: 97 -%>
+          </div>
+          <div class="yaoqing-page-container2-txt">注册 / 登录七牛云账户</div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 yaoqing-page-container2-liuchengblok">
+          <span>02</span>
+          <div class="yaoqing-page-container2-thumbnail">
+            <%= image_tag "invite/yaoqing-page-container2-liucheng2.png", title: "点击“邀请好友”", alt: "点击“邀请好友”", width: 113, height: 97 -%>
+          </div>
+          <div class="yaoqing-page-container2-txt">点击“邀请好友”</div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 yaoqing-page-container2-liuchengblok">
+          <span>03</span>
+          <div class="yaoqing-page-container2-thumbnail">
+            <%= image_tag "invite/yaoqing-page-container2-liucheng3.png", title: "分享链接邀请好友", alt: "分享链接邀请好友", width: 113, height: 97 -%>
+          </div>
+          <div class="yaoqing-page-container2-txt">分享链接邀请好友</div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-6 yaoqing-page-container2-liuchengblok">
+          <span>04</span>
+          <div class="yaoqing-page-container2-thumbnail">
+            <%= image_tag "invite/yaoqing-page-container2-liucheng4.png", title: "邀请成功获得奖励", alt: "邀请成功获得奖励", width: 113, height: 97 -%>
+          </div>
+          <div class="yaoqing-page-container2-txt">邀请成功获得奖励</div>
+        </div>
+      </div>
+
+      <div class="shengcheng">
+        <div class="shengcheng-form">
+          <%= link_to "获取专属推广链接", signin_url('www', '/invite'), class: "btn shengcheng-btn invite-btn", title: "获取专属推广链接", target: "_blank" -%>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="features feature-invitation">
-  <div class="container invite-customer">
-    <div class="invite-title">
-      <h2>与 700,000+ 企业和开发者一起使用七牛</h2>
+  <div class="features yaoqing-page-container3">
+    <div class="intro">
+      <h2 class="title">常见问题</h2>
     </div>
-    <div id="index-cases-slider" class="conveyor slick-slider draggable">
-      <div><div class="customer-changba index-case" title="唱吧"></div></div>
-      <div><div class="customer-changhong index-case" title="长虹"></div></div>
-      <div><div class="customer-dajiang index-case" title="大疆"></div></div>
-      <div><div class="customer-dianping index-case" title="大众点评"></div></div>
-      <div><div class="customer-guanglianda index-case" title="广联达"></div></div>
-      <div><div class="customer-haikangweishi index-case" title="海康威视"></div></div>
-      <div><div class="customer-hubeiguangdian index-case" title="湖北广电"></div></div>
-      <div><div class="customer-hujiang index-case" title="沪江"></div></div>
-      <div><div class="customer-intel index-case" title="intel"></div></div>
-      <div><div class="customer-jiangsuweishi index-case" title="江苏卫视"></div></div>
-      <div><div class="customer-meipai index-case" title="美拍"></div></div>
-      <div><div class="customer-oppo index-case" title="oppo"></div></div>
-      <div><div class="customer-qingtingfm index-case" title="蜻蜓 FM"></div></div>
-      <div><div class="customer-shunfeng index-case" title="顺丰"></div></div>
-      <div><div class="customer-sobey index-case" title="sobey"></div></div>
-      <div><div class="customer-souhu index-case" title="搜狐视频"></div></div>
-      <div><div class="customer-zhihu index-case" title="知乎"></div></div>
-      <div><div class="customer-zhongguopingan index-case" title="中国平安"></div></div>
-      <div><div class="customer-zhongguoyidong index-case" title="中国移动"></div></div>
-      <div><div class="customer-zhongxing index-case" title="中兴"></div></div>
+    <div class="container">
+      <div class="yaoqing-page-container3-wenti">
+        <h4>标准用户是什么？</h4>
+        <p>标准用户指完成实名认证的个人或企业用户。</p>
+      </div>
+      <div class="yaoqing-page-container3-wenti">
+        <h4>购物卡何时发放？怎么发放？</h4>
+        <p>邀请人达成目标后，我们会在次月通过邮件发放至邀请人邮箱。</p>
+      </div>
+      <div class="yaoqing-page-container3-wenti">
+        <h4>免费 CDN 下载流量什么时候生效？</h4>
+        <p>邀请成功后，免费流量次月生效。</p>
+      </div>
+      <div class="yaoqing-page-container3-wenti">
+        <h4>产品抵用券什么时候发放？</h4>
+        <p>产品抵用券在受邀人实名认证后，自动发放至邀请人账户。</p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="invite-footer">
-  <h2 class="font-bold">邀请好友用七牛云</h2>
-  <h2>携手创造更多的商业价值</h2>
-  <div class="actions">
-    <%= link_to "立即邀请", Rails.configuration.portal_host + "/invitation", target:"_blank" -%>
+  <div class="features yaoqing-page-container4">
+    <div class="intro">
+      <h2 class="title">与 1000,000+ 企业和开发者一起使用七牛云</h2>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo1.jpg", title: "唱吧", alt: "唱吧" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo2.jpg", title: "大疆", alt: "大疆" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo3.jpg", title: "长虹", alt: "长虹" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo4.jpg", title: "海康威视", alt: "海康威视" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo5.jpg", title: "大众点评", alt: "大众点评" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo6.jpg", title: "OPPO", alt: "OPPO" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo7.jpg", title: "江苏卫视", alt: "江苏卫视" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo8.jpg", title: "intel", alt: "intel" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo9.jpg", title: "顺丰", alt: "顺丰" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo10.jpg", title: "蜻蜓FM", alt: "蜻蜓FM" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo11.jpg", title: "搜狐视频", alt: "搜狐视频" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo12.jpg", title: "sobey", alt: "sobey" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo13.jpg", title: "中国平安", alt: "中国平安" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo14.jpg", title: "知乎", alt: "知乎" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo15.jpg", title: "ZTE中兴", alt: "ZTE中兴" -%></span></div>
+        <div class="col-md-2 col-sm-4 col-xs-6 yaoqing-page-container4-hezuoblok"><span><%= image_tag "invite/yaoqing-page-container-logo16.jpg", title: "中国移动", alt: "中国移动" -%></span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features yaoqing-page-container5">
+    <h2 class="font-bold">邀请好友用七牛云</h2>
+    <h2>携手创造更多的商业价值</h2>
+    <div class="actions">
+      <%= link_to "立即邀请", signin_url('www', '/invite'), class: "invite-btn", title: "立即邀请", target: "_blank" -%>
+    </div>
+  </div>
+
+  <div class="modal fade invite-rule-modal" id="invite-rule-modal" tabindex="-1" role="dialog" aria-labelledby="invite-rule-modal-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="invite-rule-modal-label">活动规则：</h4>
+        </div>
+        <div class="modal-body">
+          1. 活动时间：2020 年 3 月 23 日 - 2020 年 4 月 22 日。<br>
+          2. 标准用户指完成实名认证的个人用户或企业用户。<br>
+          3. 首充指受邀人第一次充值，首充时间应发生在受邀人注册的 1 个月之内，逾期充值不计在奖励范围内。<br>
+          4. 邀请标准用户所获得的免费 CDN 下载流量，最高可累计 40GB/月，邀请成功后，免费流量次月生效，永久有效。<br>
+          5. 车载消毒片及洗手液礼包次月发放，每人仅限领取一份，不累计。<br>
+          6. 抵用券包：100 元对象存储抵用券，100 元智能多媒体服务抵用券，500 元充值抵用券。有效期为 6 个月，有效期的起始时间以抵用券到账时间为准。<br>
+          7. 抵用券的发放：产品抵用券在受邀人实名认证后，自动发放至邀请人账户，不累计。<br>
+          8. 邀请成功后，邀请人可在“财务中心 > 抵用券”查看产品抵用券。<br>
+          9. 购物卡奖励，次月发放，由市场部统一发放给符合购物卡奖励标准的邀请人，每个邀请人每月最多可累计获得 5000 元购物卡奖励。<br>
+          10. 邀请者与被邀请者实际是同一用户不可获得奖励。<br>
+          11. 如用户存在作弊、欺诈或通过其他非正常手段获取利益的行为，七牛云有权收回相关权益。<br>
+          12. 已签约代理商不参与此次活动。<br>
+          13. 本次活动解释权归七牛云所有，如有任何问题，欢迎邮件联系 <%= link_to "marketing@qiniu.com", "mailto:marketing@qiniu.com", title: "marketing@qiniu.com" -%>。
+        </div>
+      </div>
+    </div>
   </div>
 </div>
