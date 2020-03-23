@@ -6,6 +6,25 @@
     <%= link_to "查看详情", "/events/20200316?entry=index-banner", class: "btn btn-lg btn-default btn-banner", title: "降本增效，助力复工 - 开春采购季", target: "_blank" -%>
   </div>
 
+  <%# 新版邀请好友 banner %>
+  <% if Time.now.to_i < Time.local(2020, 4, 23).to_i -%>
+  <div class="jumbotron hero hero-invite-2020-index">
+    <div class="container">
+      <div class="middle-container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="banner-desc">
+              <h1>邀请好友，礼上加礼</h1>
+              <p>温馨回馈限时复工防疫包</p>
+            </div>
+            <%= link_to "立即邀请", "/invite?entry=index-banner", target: "_blank", class: "btn btn-lg btn-hollow btn-banner m-r" -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end -%>
+
   <%# 抗击 2019-nCoV banner %>
   <div class="jumbotron hero hero-fighting-ncov-index">
     <div class="container">
