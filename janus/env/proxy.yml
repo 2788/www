@@ -26,5 +26,20 @@
   target: "http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com"
   matches:
     - path: "/api/marketing/event/coupon/bind"
-      method: GET
+      method: POST
       auth: admin
+      param:
+          # session_key
+        #- session_key: "example"
+          # 重命名，如果 rename 为空，则使用session_key作为参数名
+        #  rename: "example_name"
+          # 自定义的参数值，如果session中没有存某个值，支持自定义。(仅当 session_key 为空是有效)
+        #  custom_value: ""
+        
+        - rename: "uid"
+          custom_value: 1380536335
+        - rename: "batch_id"
+          custom_value: 592
+      # Content-Type
+      content_type: "application/json"
+

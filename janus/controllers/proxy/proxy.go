@@ -1,6 +1,8 @@
 package proxy
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/http/httputil"
@@ -10,6 +12,9 @@ import (
 
 	"errors"
 
+	"io/ioutil"
+
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
@@ -34,6 +39,11 @@ func (s *Proxy) ProxyAll(ctx *gin.Context) {
 		controllers.RespErr(ctx, code.NotFound, err)
 		return
 	}
+	err = s.addParam(ctx, targetInfo)
+	if err != nil {
+		controllers.RespErr(ctx, code.NotFound, err)
+		return
+	}
 
 	targetURL, err := url.Parse(host)
 	if err != nil {
@@ -50,7 +60,7 @@ func (s *Proxy) ProxyAll(ctx *gin.Context) {
 			req.Header.Set("Host", targetURL.Host)
 			req.Header.Del("Accept-Encoding")
 			req.Method = string(targetInfo.Method)
-
+			req.Body = ctx.Request.Body
 			if targetQuery == "" || req.URL.RawQuery == "" {
 				req.URL.RawQuery = targetQuery + req.URL.RawQuery
 			} else {
@@ -106,6 +116,7 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Path = fmt.Sprintf("/%s", strings.Join(pathArray, "/"))
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
+				matchInfo.Param = match.Param
 
 				return &matchInfo, host, nil
 			}
@@ -135,4 +146,83 @@ func isSamePath(targetPathArray, matchInfoPathArray []string) bool {
 	}
 
 	return true
+}
+
+func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) {
+	contentType := ctx.Request.Header.Get("content-type")
+	// 总体分Get/DELETE，application/json,application/x-www-form-urlencoded,multipart/form-data
+	switch {
+	case matchInfo.Method == http.MethodGet || matchInfo.Method == http.MethodDelete:
+		session := sessions.Default(ctx)
+
+		for _, param := range matchInfo.Param {
+			var paramKey string
+			var paramValue interface{}
+
+			if param.SessionKey != "" {
+				sessionValue := session.Get(param.SessionKey)
+				if sessionValue != nil {
+					err = errors.New("session get value failed.")
+					return err
+				}
+				if param.Rename != "" {
+					paramKey = param.Rename
+				} else {
+					paramKey = param.SessionKey
+				}
+				paramValue = sessionValue
+			} else {
+				paramKey = param.Rename
+				paramValue = param.DefaultValue
+			}
+
+			ctx.Request.Form.Set(paramKey, paramValue.(string))
+		}
+	case strings.Contains(contentType, "application/json"):
+		session := sessions.Default(ctx)
+		paramMap := make(map[string]interface{})
+		body, err := ioutil.ReadAll(ctx.Request.Body)
+		if err != nil {
+			fmt.Println("ioutil.ReadAll err: ", err)
+			break
+		}
+		if len(body) > 0 {
+			err = json.Unmarshal(body, &paramMap)
+			if err != nil {
+				err = errors.New("Umarshal failed")
+				return err
+			}
+		}
+		for _, param := range matchInfo.Param {
+			var paramKey string
+			var paramValue interface{}
+
+			if param.SessionKey != "" {
+				sessionValue := session.Get(param.SessionKey)
+				if sessionValue != nil {
+					err = errors.New("session get value failed.")
+					return err
+				}
+				if param.Rename != "" {
+					paramKey = param.Rename
+				} else {
+					paramKey = param.SessionKey
+				}
+				paramValue = sessionValue
+			} else {
+				paramKey = param.Rename
+				paramValue = param.DefaultValue
+			}
+
+			paramMap[paramKey] = paramValue
+		}
+		jsonString, _ := json.Marshal(paramMap)
+		newBody := []byte(jsonString)
+		ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
+		ctx.Request.Header.Add("Content-Type", "application/json")
+	case strings.Contains(contentType, "application/x-www-form-urlencoded"):
+	case strings.Contains(contentType, "multipart/form-data"):
+	}
+
+	return nil
 }
