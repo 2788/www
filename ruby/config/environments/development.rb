@@ -1712,9 +1712,7 @@ Rails.application.configure do
     }
   }
 
-  # 2020 年春季采购活动套餐包测试环境（cs12）配置文件
-  # 如果不用区分本地、测试和线上环境
-  # 可以在 zh-CN.yml 和 en.yml 里面 views -> events 里面添加配置项，可以参考现有的 double12_2019 配置项
+  # 2020 年春季采购活动套餐包配置信息
   config.spring_sale_package = {
     "kodo": {
       "cdnstandard": [
@@ -2737,7 +2735,7 @@ Rails.application.configure do
         {
           "type": "音视频元信息",
           "duration": "100 千次/半年",
-          "discount": "新用户 8 折",
+          "discount": "8 折",
           "price": "8",
           "packageID": 0,
           "info": "请您再次确认所选的区域和规格<br />音视频元信息 - avinfo 100 千次/半年"
@@ -2745,7 +2743,7 @@ Rails.application.configure do
         {
           "type": "视频截图",
           "duration": "400 千次/半年",
-          "discount": "新用户 8 折",
+          "discount": "8 折",
           "price": "32",
           "packageID": 0,
           "info": "请您再次确认所选的区域和规格<br />视频截图 - vframe 400 千次/半年"
@@ -2753,7 +2751,7 @@ Rails.application.configure do
         {
           "type": "锐智转码 SD720",
           "duration": "500 分钟/半年",
-          "discount": "新用户 8 折",
+          "discount": "8 折",
           "price": "32",
           "packageID": 0,
           "info": "请您再次确认所选的区域和规格<br />锐智转码 SD720 500 分钟/半年"
@@ -2761,7 +2759,7 @@ Rails.application.configure do
         {
           "type": "图片瘦身",
           "duration": "500 千次/半年",
-          "discount": "新用户 8 折",
+          "discount": "8 折",
           "price": "40",
           "packageID": 0,
           "info": "请您再次确认所选的区域和规格<br />图片瘦身 500 千次/半年"
