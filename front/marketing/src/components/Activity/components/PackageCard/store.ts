@@ -34,7 +34,7 @@ export default class PackageCardStore extends Store {
 
   @observable.ref selectedPackage: IPackageItem | undefined
   @observable.deep dimensionDropdownList: IDimensionDropdownItem[] = []
-  @observable.ref isBuyPackageModalShow: boolean = false
+  @observable.ref isModalShow: boolean = false
 
   @action.bound updateDimensionDropdownList(list: IPackageDimension[]) {
     if (!list || !list.length) {
@@ -78,8 +78,8 @@ export default class PackageCardStore extends Store {
     this.updateSelectedPackage(this.dimensionDropdownList)
   }
 
-  @action.bound controlBuyPackageModalShow(isShow: boolean) {
-    this.isBuyPackageModalShow = isShow
+  @action.bound controlModalShow(isShow: boolean) {
+    this.isModalShow = isShow
   }
 
   init() {

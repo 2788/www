@@ -19,6 +19,7 @@ import { packageProductType } from 'constants/package'
 
 import Label, { IProps as ILabelProps } from 'components/common/Label'
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
+import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/common/NeedSigninModal'
 
 import { IDimensionDropdownItem } from '.'
 import PackageModal from './Modal'
@@ -154,7 +155,7 @@ export default observer(function PackageCard(props: IProps) {
   }
 
   function renderBuyBtnWrapper() {
-    const { selectedPackage, controlBuyPackageModalShow } = packageCardStore
+    const { selectedPackage, controlModalShow } = packageCardStore
 
     if (!selectedPackage) {
       return null
@@ -182,7 +183,7 @@ export default observer(function PackageCard(props: IProps) {
           className={styles.buyBtn}
           size="large"
           onClick={() => {
-            controlBuyPackageModalShow(true)
+            controlModalShow(true)
           }}>
           立即抢购
         </Button>
@@ -259,11 +260,22 @@ export default observer(function PackageCard(props: IProps) {
   function renderModal() {
     const {
       selectedPackage, dimensionDropdownList,
-      isBuyPackageModalShow, controlBuyPackageModalShow,
+      isModalShow, controlModalShow,
     } = packageCardStore
 
     if (!selectedPackage) {
       return null
+    }
+
+    // TODO: 根据登录状态返回不同的模态框
+    if (Math.random() < 0.3) {
+      const needSigninModalProps: INeedSigninModalProps = {
+        is_show: isModalShow,
+        control_show_func: controlModalShow
+      }
+      return (
+        <NeedSigninModal {...needSigninModalProps} />
+      )
     }
 
     return (
@@ -271,8 +283,8 @@ export default observer(function PackageCard(props: IProps) {
         {...selectedPackage}
         package_name={title}
         dimension_list={dimensionDropdownList}
-        is_show={isBuyPackageModalShow}
-        control_show_func={controlBuyPackageModalShow} />
+        is_show={isModalShow}
+        control_show_func={controlModalShow} />
     )
   }
 

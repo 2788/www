@@ -13,8 +13,6 @@ import Row from 'react-icecream/lib/row'
 import Col from 'react-icecream/lib/col'
 import Slider from 'react-icecream/lib/slider'
 
-import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/common/NeedSigninModal'
-
 import { effectType } from 'constants/package'
 
 import { IPackageItem } from 'apis/package'
@@ -39,17 +37,6 @@ export default observer(function PackageModal(props: IProps) {
 
   // 使用局部 store
   const modalStore = useLocalStore(ModalStore, props)
-
-  // TODO: 根据登录状态返回不同的模态框
-  if (false) {
-    const needSigninModalProps: INeedSigninModalProps = {
-      is_show,
-      control_show_func
-    }
-    return (
-      <NeedSigninModal {...needSigninModalProps} />
-    )
-  }
 
   function renderBuyPackageModal() {
     const { quantity, updateQuantityValue, buyPackageBtnClick } = modalStore
