@@ -1,0 +1,57 @@
+/**
+ * @file style for toaster
+ * @author nighca <nighca@live.cn>
+ */
+
+.comp-toaster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 2000; // modal 是 1000，toaster 需要比 modal 高
+
+  .toaster-list {
+    text-align: center;
+    font-weight: 500;
+
+    .toaster-message-wrapper {
+      font-size: 14px;
+
+      .toaster-message-icon {
+        margin-right: 8px;
+
+        // antd 给 close 和 close-circle 加了个全局的样式。这里无差别重置成环境变量。
+        cursor: unset;
+        color: inherit;
+        font-size: inherit;
+
+        .toaster-message-icon:hover {
+          color: inherit;
+        }
+      }
+    }
+
+    .toaster-item-enter {
+      opacity: 0.01;
+      margin-top: 50px;
+    }
+
+    .toaster-item-enter.toaster-item-enter-active {
+      opacity: .8;
+      margin-top: 0;
+      transition: all 500ms ease-in;
+    }
+
+    .toaster-item-exit {
+      opacity: .8;
+      margin-top: 0;
+    }
+
+    .toaster-item-exit.toaster-item-exit-active {
+      opacity: 0.01;
+      margin-top: -50px;
+      transition: all 300ms ease-out;
+    }
+  }
+}
