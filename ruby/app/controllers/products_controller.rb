@@ -154,7 +154,7 @@ class ProductsController < ApplicationController
   def kodo_goglobal
   end
 
-  def special_sdk
+  def svesdk
   end
 
   def censor

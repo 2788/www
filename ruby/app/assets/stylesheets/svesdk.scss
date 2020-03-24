@@ -1,5 +1,5 @@
-.jumbotron.hero.hero-special-sdk {
-  background-image: image-url("special_sdk/banner.jpg") !important;
+.jumbotron.hero.hero-svesdk {
+  background-image: image-url("svesdk/banner.jpg") !important;
   .container {
     .middle-container {
       h1 {
@@ -18,10 +18,10 @@
       }
       .link {
         font-size: 0.20rem;
-        color: #00E0FF;
+        color: #FFF;
         text-shadow: none;
         &:hover {
-          color: #FFF;
+          color: #00E0FF;
           text-decoration: underline;
         }
       }
@@ -29,7 +29,7 @@
   }
 }
 
-.feature-special-sdk-advantage {
+.feature-svesdk-advantage {
   padding-bottom: 0.80rem;
   .container {
     .thumbnail {
@@ -65,9 +65,9 @@
   }
 }
 
-.features-special-sdk-func {
+.features-svesdk-func {
   padding-bottom: 1.00rem;
-  background-image: image-url("special_sdk/image-func-bg.jpg");
+  background-image: image-url("svesdk/image-func-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   .container {
@@ -133,7 +133,7 @@
   }
 }
 
-.feature-special-sdk-scene {
+.feature-svesdk-scene {
   .container {
     .thumbnail {
       margin-bottom: 0.30rem;
@@ -156,7 +156,7 @@
   }
 }
 
-.feature-special-sdk-product {
+.feature-svesdk-product {
   background-color: #114ACC;
   .container {
     .intro {
@@ -196,7 +196,7 @@
   }
 }
 
-.feature-special-sdk-flow {
+.feature-svesdk-flow {
   .container {
     .thumbnail {
       min-height: 0;
@@ -217,7 +217,7 @@
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .feature-special-sdk-advantage {
+  .feature-svesdk-advantage {
     .container {
       .thumbnail {
         height: 4.80rem;
@@ -227,7 +227,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .feature-special-sdk-advantage {
+  .feature-svesdk-advantage {
     .container {
       .thumbnail {
         height: 4.50rem;
@@ -236,7 +236,7 @@
     }
   }
 
-  .features-special-sdk-func {
+  .features-svesdk-func {
     .container {
       .tabs {
         .row {
@@ -276,7 +276,7 @@
     }
   }
 
-  .feature-special-sdk-product {
+  .feature-svesdk-product {
     .container {
       .thumbnail {
         .caption {
@@ -296,7 +296,7 @@
 }
 
 @media (width: 768px) {
-  .feature-special-sdk-advantage {
+  .feature-svesdk-advantage {
     .container {
       .thumbnail {
         height: 4.70rem;
@@ -304,7 +304,7 @@
     }
   }
 
-  .features-special-sdk-func {
+  .features-svesdk-func {
     .container {
       .tabs {
         .nav.nav-tabs {
@@ -322,7 +322,7 @@
 }
 
 @media (max-width: 767px) {
-  .feature-special-sdk-advantage {
+  .feature-svesdk-advantage {
     .container {
       .thumbnail {
         height: auto;
@@ -332,7 +332,7 @@
     }
   }
 
-  .features-special-sdk-func {
+  .features-svesdk-func {
     .container {
       .tabs {
         .row {
@@ -368,7 +368,7 @@
     }
   }
 
-  .feature-special-sdk-scene {
+  .feature-svesdk-scene {
     .container {
       .thumbnail {
         .caption {
@@ -380,7 +380,7 @@
     }
   }
 
-  .feature-special-sdk-product {
+  .feature-svesdk-product {
     .container {
       .thumbnail {
         .caption {
@@ -406,7 +406,7 @@
     }
   }
 
-  .feature-special-sdk-flow {
+  .feature-svesdk-flow {
     .container {
       .thumbnail {
         p {

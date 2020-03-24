@@ -62,7 +62,7 @@
 #= require fighting_ncov
 #= require spring_sale
 #= require invite
-#= require special_sdk
+#= require svesdk
 
 #= require uuid
 #= require sensors_service

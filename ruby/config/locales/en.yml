@@ -4448,7 +4448,7 @@ en:
               class: "customer-zhongguoyidong"
             - title: "中兴"
               class: "customer-zhongxing"
-      special_sdk:
+      svesdk:
         banner:
           title: "短视频<span class='text-warn'>特效</span> SDK"
           desc: "<p>短视频特效 SDK，是七牛云 SDK 团队与字节跳动 SDK 团队共同打造的一款短视频内容创作工具。</p><p>其融合了移动端的短视频拍摄、编辑、上传等能力于一体，</p><p>集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。</p>"
@@ -4472,19 +4472,19 @@ en:
           title: "核心优势"
           cols:
             - title: "性能卓群，功能强大"
-              icon: "special_sdk/icon-advantage-xingneng.png"
+              icon: "svesdk/icon-advantage-xingneng.png"
               list:
                 - "100+ 功能点，覆盖手机短视频制作的大部分场景"
                 - "3+ 年时间打磨，在拍摄、转码等方面性能优异"
                 - "包体轻盈、扩展性好"
                 - "基于字节跳动领先的图像处理技术"
             - title: "技术融合，各取所长"
-              icon: "special_sdk/icon-advantage-jishu.png"
+              icon: "svesdk/icon-advantage-jishu.png"
               list:
                 - "基于短视频业务特点，对七牛短视频 SDK 和字节跳动特效 SDK 的接口层进行了技术优化，兼容性强"
                 - "迭代方便，可快速升级"
             - title: "高效接入，抢占先机"
-              icon: "special_sdk/icon-advantage-gaoxiao.png"
+              icon: "svesdk/icon-advantage-gaoxiao.png"
               list:
                 - "显著缩短 iOS & Android 客户端短视频功能的开发周期"
                 - "维护方便，节省人力成本"
@@ -4569,17 +4569,17 @@ en:
           title: "应用场景"
           cols:
             - title: "Vlog 制作"
-              icon: "special_sdk/image-scene-vlog.jpg"
+              icon: "svesdk/image-scene-vlog.jpg"
             - title: "动漫配音秀"
-              icon: "special_sdk/image-scene-dongman.jpg"
+              icon: "svesdk/image-scene-dongman.jpg"
             - title: "短视频新闻"
-              icon: "special_sdk/image-scene-xinwen.jpg"
+              icon: "svesdk/image-scene-xinwen.jpg"
             - title: "互动聊天"
-              icon: "special_sdk/image-scene-liaotian.jpg"
+              icon: "svesdk/image-scene-liaotian.jpg"
             - title: "社区动态"
-              icon: "special_sdk/image-scene-shequ.jpg"
+              icon: "svesdk/image-scene-shequ.jpg"
             - title: "教育短视频"
-              icon: "special_sdk/image-scene-jiaoyu.jpg"
+              icon: "svesdk/image-scene-jiaoyu.jpg"
         product:
           title: "产品相关"
     solutions:
@@ -8198,7 +8198,7 @@ en:
       title: 短信平台_短信验证码 - 七牛云
       keywords: 短信平台，SMS，云短信，短信服务，短信验证码，群发短信
       description: 七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类 短信使用场景，如验证码、通知类短信以及营销短信等。
-    products_special_sdk:
+    products_svesdk:
       title: 短视频特效SDK-七牛云
       keywords: 短视频特效SDK，短视频SDK，七牛云，七牛短视频，短视频特效
       description: 短视频特效SDK是七牛云SDK团队与字节跳动SDK团队共同打造的一款短视频内容创作工具。其融合了移动端的短视频拍摄、编辑、上传等功能于一体，集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。
