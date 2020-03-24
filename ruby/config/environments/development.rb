@@ -2138,16 +2138,48 @@ Rails.application.configure do
           "title": "CDN 回源流量",
           "size": "500G",
           "unit": "/年",
-          "duration": "1 年",
-          "zone": "国内任意区域",
-          "desc": "1 年内任意月用完即止",
+          "durations": [
+            {
+              "text": "1 年",
+              "value": "1"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-in-1y-500G-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-in-1y-500G-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-in-1y-500G-east"
+            }
+          ],
+          "desc": "一次性分配，一年有效",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-in-1y-500G-south",
               "class": "active",
               "price": "75",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 500G X 1 年"
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 500G X 1 年 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-500G-north",
+              "class": "",
+              "price": "75",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 500G X 1 年 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-500G-east",
+              "class": "",
+              "price": "75",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 500G X 1 年 - <span class='high-light'>华东地区</span>"
             }
           ]
         },
@@ -2155,16 +2187,48 @@ Rails.application.configure do
           "title": "CDN 回源流量",
           "size": "2T",
           "unit": "/年",
-          "duration": "1 年",
-          "zone": "国内任意区域",
-          "desc": "1 年内任意月用完即止",
+          "durations": [
+            {
+              "text": "1 年",
+              "value": "1"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-in-1y-2T-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-in-1y-2T-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-in-1y-2T-east"
+            }
+          ],
+          "desc": "一次性分配，一年有效",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-in-1y-2T-south",
               "class": "active",
               "price": "307.2",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 2T X 1 年"
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 2T X 1 年 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-2T-north",
+              "class": "",
+              "price": "307.2",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 2T X 1 年 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-2T-east",
+              "class": "",
+              "price": "307.2",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 2T X 1 年 - <span class='high-light'>华东地区</span>"
             }
           ]
         },
@@ -2172,16 +2236,48 @@ Rails.application.configure do
           "title": "CDN 回源流量",
           "size": "5T",
           "unit": "/年",
-          "duration": "1 年",
-          "zone": "国内任意区域",
-          "desc": "1 年内任意月用完即止",
+          "durations": [
+            {
+              "text": "1 年",
+              "value": "1"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-in-1y-5T-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-in-1y-5T-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-in-1y-5T-east"
+            }
+          ],
+          "desc": "一次性分配，一年有效",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-in-1y-5T-south",
               "class": "active",
               "price": "768",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 5T X 1 年"
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 5T X 1 年 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-5T-north",
+              "class": "",
+              "price": "768",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 5T X 1 年 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-5T-east",
+              "class": "",
+              "price": "768",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 5T X 1 年 - <span class='high-light'>华东地区</span>"
             }
           ]
         },
@@ -2189,16 +2285,48 @@ Rails.application.configure do
           "title": "CDN 回源流量",
           "size": "20T",
           "unit": "/年",
-          "duration": "1 年",
-          "zone": "国内任意区域",
-          "desc": "1 年内任意月用完即止",
+          "durations": [
+            {
+              "text": "1 年",
+              "value": "1"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-in-1y-20T-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-in-1y-20T-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-in-1y-20T-east"
+            }
+          ],
+          "desc": "一次性分配，一年有效",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-in-1y-20T-south",
               "class": "active",
               "price": "3072",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 20T X 1 年"
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 20T X 1 年 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-20T-north",
+              "class": "",
+              "price": "3072",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 20T X 1 年 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-in-1y-20T-east",
+              "class": "",
+              "price": "3072",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />CDN 回源流量 20T X 1 年 - <span class='high-light'>华东地区</span>"
             }
           ]
         }
@@ -2208,16 +2336,54 @@ Rails.application.configure do
           "title": "外网流出流量",
           "size": "50G",
           "unit": "/月",
-          "duration": "12 个月",
-          "zone": "国内任意区域",
-          "desc": "特惠体验，不可结转， 限购一个(体验包)",
+          "durations": [
+            {
+              "text": "12 个月",
+              "value": "12"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-out-12m-50G-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-out-12m-50G-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-out-12m-50G-east"
+            }
+          ],
+          "desc": "按月分配，不可结转",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-out-12m-50G-south",
               "class": "active",
               "price": "144",
+              "originPrice": "174",
+              "statement": "特惠体验，限购一个",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />外网流出流量 50G X 12 月"
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 50G X 12 月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-50G-north",
+              "class": "",
+              "price": "144",
+              "originPrice": "174",
+              "statement": "特惠体验，限购一个",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 50G X 12 月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-50G-east",
+              "class": "",
+              "price": "144",
+              "originPrice": "174",
+              "statement": "特惠体验，限购一个",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 50G X 12 月 - <span class='high-light'>华东地区</span>"
             }
           ]
         },
@@ -2225,16 +2391,48 @@ Rails.application.configure do
           "title": "外网流出流量",
           "size": "100G",
           "unit": "/月",
-          "duration": "12 个月",
-          "zone": "国内任意区域",
-          "desc": "不可结转",
+          "durations": [
+            {
+              "text": "12 个月",
+              "value": "12"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-out-12m-100G-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-out-12m-100G-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-out-12m-100G-east"
+            }
+          ],
+          "desc": "按月分配，不可结转",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-out-12m-100G-south",
               "class": "active",
               "price": "348",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />外网流出流量 100G X 12 月"
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 100G X 12 月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-100G-north",
+              "class": "",
+              "price": "348",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 100G X 12 月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-100G-east",
+              "class": "",
+              "price": "348",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 100G X 12 月 - <span class='high-light'>华东地区</span>"
             }
           ]
         },
@@ -2242,16 +2440,48 @@ Rails.application.configure do
           "title": "外网流出流量",
           "size": "500G",
           "unit": "/月",
-          "duration": "12 个月",
-          "zone": "国内任意区域",
-          "desc": "不可结转",
+          "durations": [
+            {
+              "text": "12 个月",
+              "value": "12"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-out-12m-500G-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-out-12m-500G-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-out-12m-500G-east"
+            }
+          ],
+          "desc": "按月分配，不可结转",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-out-12m-500G-south",
               "class": "active",
               "price": "1740",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />外网流出流量 500G X 12 月"
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 500G X 12 月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-500G-north",
+              "class": "",
+              "price": "1740",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 500G X 12 月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-500G-east",
+              "class": "",
+              "price": "1740",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 500G X 12 月 - <span class='high-light'>华东地区</span>"
             }
           ]
         },
@@ -2259,16 +2489,48 @@ Rails.application.configure do
           "title": "外网流出流量",
           "size": "1T",
           "unit": "/月",
-          "duration": "12 个月",
-          "zone": "国内任意区域",
-          "desc": "不可结转",
+          "durations": [
+            {
+              "text": "12 个月",
+              "value": "12"
+            }
+          ],
+          "zones": [
+            {
+              "text": "华南",
+              "value": "cdn-out-12m-1T-south"
+            },
+            {
+              "text": "华北",
+              "value": "cdn-out-12m-1T-north"
+            },
+            {
+              "text": "华东",
+              "value": "cdn-out-12m-1T-east"
+            }
+          ],
+          "desc": "按月分配，不可结转",
           "sections": [
             {
-              "id": "",
+              "id": "cdn-out-12m-1T-south",
               "class": "active",
               "price": "3563.52",
               "packageID": 0,
-              "info": "请您再次确认所选的区域和规格<br />外网流出流量 1T X 12 月"
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 1T X 12 月 - <span class='high-light'>华南地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-1T-north",
+              "class": "",
+              "price": "3563.52",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 1T X 12 月 - <span class='high-light'>华北地区</span>"
+            },
+            {
+              "id": "cdn-out-12m-1T-east",
+              "class": "",
+              "price": "3563.52",
+              "packageID": 0,
+              "info": "请您再次确认所选的区域和规格<br />外网流出流量 1T X 12 月 - <span class='high-light'>华东地区</span>"
             }
           ]
         }
