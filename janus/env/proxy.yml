@@ -28,7 +28,7 @@
     - path: "/api/marketing/event/coupon/bind"
       method: POST
       auth: admin
-      param:
+      params:
           # session_key
         #- session_key: "example"
           # 重命名，如果 rename 为空，则使用session_key作为参数名

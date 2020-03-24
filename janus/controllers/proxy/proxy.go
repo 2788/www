@@ -116,7 +116,7 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Path = fmt.Sprintf("/%s", strings.Join(pathArray, "/"))
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
-				matchInfo.Param = match.Param
+				matchInfo.Params = match.Params
 				matchInfo.ContentType = match.ContentType
 				return &matchInfo, host, nil
 			}
@@ -154,7 +154,7 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 	case matchInfo.Method == http.MethodGet || matchInfo.Method == http.MethodDelete:
 		session := sessions.Default(ctx)
 
-		for _, param := range matchInfo.Param {
+		for _, param := range matchInfo.Params {
 			paramKey, paramValue, err := s.getParamMessage(session, param)
 			if err != nil {
 				return err
@@ -178,7 +178,7 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 			}
 		}
 
-		for _, param := range matchInfo.Param {
+		for _, param := range matchInfo.Params {
 			paramKey, paramValue, err := s.getParamMessage(session, param)
 			if err != nil {
 				return err
@@ -193,7 +193,7 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 	case matchInfo.ContentType == config.ProxyCententTypeXWwwUrlencoded:
 		session := sessions.Default(ctx)
 
-		for _, param := range matchInfo.Param {
+		for _, param := range matchInfo.Params {
 			paramKey, paramValue, err := s.getParamMessage(session, param)
 			if err != nil {
 				return err
@@ -221,7 +221,7 @@ func (s *Proxy) getParamMessage(session sessions.Session, param config.Param) (p
 		paramValue = sessionValue
 	} else {
 		paramKey = param.Rename
-		paramValue = param.DefaultValue
+		paramValue = param.CustomValue
 	}
 
 	return
