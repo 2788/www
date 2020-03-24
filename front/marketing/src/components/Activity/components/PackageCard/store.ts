@@ -62,7 +62,7 @@ export default class PackageCardStore extends Store {
     }
 
     const dimensionDropdownValueList: string[] = list.map((item: IDimensionDropdownItem, _index: number) => {
-      const { value = '' } = item
+      const { value } = item
       return value
     })
 

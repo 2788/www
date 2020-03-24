@@ -136,7 +136,7 @@ export default observer(function PackageCard(props: IProps) {
       return null
     }
 
-    const { fee = '-', c_fee = '-' } = selectedPackage
+    const { fee, c_fee } = selectedPackage
     const originDom: JSX.Element | null = appear_fee ? (
       <p className={`${styles.money} ${styles.smaller}`}>
         省&nbsp;{asYuan(parseInt(fee) - parseInt(c_fee)).toFixed(2)}&nbsp;元&nbsp;
@@ -162,7 +162,7 @@ export default observer(function PackageCard(props: IProps) {
     }
 
     if (product_type === packageProductType.LINK) {
-      const { url = '' } = selectedPackage
+      const { url } = selectedPackage
 
       return (
         <div className={styles.buyBtnWrapper}>
