@@ -4448,6 +4448,140 @@ en:
               class: "customer-zhongguoyidong"
             - title: "中兴"
               class: "customer-zhongxing"
+      svesdk:
+        banner:
+          title: "短视频<span class='text-warn'>特效</span> SDK"
+          desc: "<p>短视频特效 SDK，是七牛云 SDK 团队与字节跳动 SDK 团队共同打造的一款短视频内容创作工具。</p><p>其融合了移动端的短视频拍摄、编辑、上传等能力于一体，</p><p>集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。</p>"
+        middlebar:
+          - title: "核心优势"
+            class: "active"
+            href: "#tab-content-section-1"
+          - title: "产品功能"
+            class: ""
+            href: "#tab-content-section-2"
+          - title: "应用场景"
+            class: ""
+            href: "#tab-content-section-3"
+          - title: "产品相关"
+            class: ""
+            href: "#tab-content-section-4"
+          - title: "接入流程"
+            class: ""
+            href: "#tab-content-section-5"
+        advantage:
+          title: "核心优势"
+          cols:
+            - title: "性能卓群，功能强大"
+              icon: "svesdk/icon-advantage-xingneng.png"
+              list:
+                - "100+ 功能点，覆盖手机短视频制作的大部分场景"
+                - "3+ 年时间打磨，在拍摄、转码等方面性能优异"
+                - "包体轻盈、扩展性好"
+                - "基于字节跳动领先的图像处理技术"
+            - title: "技术融合，各取所长"
+              icon: "svesdk/icon-advantage-jishu.png"
+              list:
+                - "基于短视频业务特点，对七牛短视频 SDK 和字节跳动特效 SDK 的接口层进行了技术优化，兼容性强"
+                - "迭代方便，可快速升级"
+            - title: "高效接入，抢占先机"
+              icon: "svesdk/icon-advantage-gaoxiao.png"
+              list:
+                - "显著缩短 iOS & Android 客户端短视频功能的开发周期"
+                - "维护方便，节省人力成本"
+                - "助力客户产品快速入市，抢占市场先机"
+                - "大量用户的认可与好评"
+        func:
+          title: "产品功能"
+          leftbar:
+            - title: "拍摄"
+              class: "active"
+              href: "#tab-func-section-1"
+            - title: "编辑"
+              class: ""
+              href: "#tab-func-section-2"
+            - title: "高级美颜"
+              class: ""
+              href: "#tab-func-section-3"
+            - title: "贴纸"
+              class: ""
+              href: "#tab-func-section-4"
+            - title: "滤镜"
+              class: ""
+              href: "#tab-func-section-5"
+          sections:
+            - id: "tab-func-section-1"
+              class: "tab-pane fade in active"
+              title: "拍摄"
+              list:
+                - title: "拍摄设置"
+                  desc: "视频及音频的采集、编码参数设置，拍摄时长、前后摄像头、闪光灯、镜像、对焦等细节功能点。"
+                - title: "拍摄方式"
+                  desc: "正常拍摄、静音拍摄、音频录制、分段拍摄、分屏拍摄等功能。"
+                - title: "实时处理"
+                  desc: "拍摄时可以使用内置实时美颜、实时滤镜。另外也支持贴纸、水印功能。"
+                - title: "背景音乐"
+                  desc: "支持拍摄前预设背景音乐。"
+            - id: "tab-func-section-2"
+              class: "tab-pane fade in"
+              title: "编辑"
+              list:
+                - title: "素材导入"
+                  desc: "从相册导入视频或图片。"
+                - title: "视频裁剪"
+                  desc: "时长裁剪和画面裁剪这两个功能。"
+                - title: "视频旋转"
+                  desc: "对视频的角度进行旋转调整，例如顺时针旋转 90 度。"
+                - title: "视频转场"
+                  desc: "适用于 25 两个视频之间的转场功能，目前支持飞入飞出、淡入淡出、擦除等效果。"
+                - title: "视频合成"
+                  desc: "包括视频拼接、视频拼图。视频拼接是指多个视频按前后排列的方式进行合成，视频拼图是指多个视频像拼图一样同时展现在屏幕上的情景。"
+                - title: "视频画面编辑"
+                  desc: "可以使用给视频添加滤镜、贴纸、水印、涂鸦、字幕这五种功能。"
+                - title: "视频时间编辑"
+                  desc: "目前有包括视频变速、倒放两个功能。"
+                - title: "视频声音混音"
+                  desc: "支持对视频原生的声音进行静音、或者与其他一个或多个音频混音。"
+                - title: "图片影集"
+                  desc: "支持多张图片合成视频。"
+                - title: "素材混拼"
+                  desc: "支持图片 & GIF 图 & 视频混合拼成一段视频，此为七牛短视频 SDK 专业版功能。"
+                - title: "功能扩展接口"
+                  desc: "支持接入第三方的视频音频处理 SDK，主要用于对接特效类功能。"
+            - id: "tab-func-section-3"
+              class: "tab-pane fade in"
+              title: "高级美颜"
+              list:
+                - title: ""
+                  desc: "美白、磨皮、锐化、大眼、瘦脸，强度可调节"
+            - id: "tab-func-section-4"
+              class: "tab-pane fade in"
+              title: "贴纸"
+              list:
+                - title: ""
+                  desc: "可从特效君 APP 中挑选"
+            - id: "tab-func-section-5"
+              class: "tab-pane fade in"
+              title: "滤镜"
+              list:
+                - title: ""
+                  desc: "可从特效君 APP 中挑选"
+        scene:
+          title: "应用场景"
+          cols:
+            - title: "Vlog 制作"
+              icon: "svesdk/image-scene-vlog.jpg"
+            - title: "动漫配音秀"
+              icon: "svesdk/image-scene-dongman.jpg"
+            - title: "短视频新闻"
+              icon: "svesdk/image-scene-xinwen.jpg"
+            - title: "互动聊天"
+              icon: "svesdk/image-scene-liaotian.jpg"
+            - title: "社区动态"
+              icon: "svesdk/image-scene-shequ.jpg"
+            - title: "教育短视频"
+              icon: "svesdk/image-scene-jiaoyu.jpg"
+        product:
+          title: "产品相关"
     solutions:
       kodoe:
         banner:
@@ -8064,6 +8198,10 @@ en:
       title: 短信平台_短信验证码 - 七牛云
       keywords: 短信平台，SMS，云短信，短信服务，短信验证码，群发短信
       description: 七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类 短信使用场景，如验证码、通知类短信以及营销短信等。
+    products_svesdk:
+      title: 短视频特效SDK-七牛云
+      keywords: 短视频特效SDK，短视频SDK，七牛云，七牛短视频，短视频特效
+      description: 短视频特效SDK是七牛云SDK团队与字节跳动SDK团队共同打造的一款短视频内容创作工具。其融合了移动端的短视频拍摄、编辑、上传等功能于一体，集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。
     solutions_kodoe:
       title: 私有云解决方案_私有云搭建方案 - 七牛云
       keywords: 私有云解决方案，私有云搭建方案，企业私有云解决方案，私有云解决方案，私有云存储方案

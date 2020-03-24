@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     get '/products/private-cloud-kodo/company',    to: 'products#kodoprivate_company'
     get '/products/linking',                       to: 'products#linking'
     get '/products/sms',                           to: 'products#sms'
+    get '/products/svesdk',                        to: 'products#svesdk'
 
     # 推广结束，屏蔽 qvmfeeds 和 censorfeeds 的路由
     # https://jira.qiniu.io/browse/BO-5919

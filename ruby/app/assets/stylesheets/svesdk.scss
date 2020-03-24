@@ -1,0 +1,418 @@
+.jumbotron.hero.hero-svesdk {
+  background-image: image-url("svesdk/banner.jpg") !important;
+  .container {
+    .middle-container {
+      h1 {
+        margin-top: 0;
+        font-size: 0.44rem;
+        font-weight: 600;
+      }
+      p {
+        margin: 0.10rem 0;
+      }
+      .text-warn {
+        color: #FFE500;
+      }
+      .actions {
+        margin-top: 0.20rem;
+      }
+      .link {
+        font-size: 0.20rem;
+        color: #FFF;
+        text-shadow: none;
+        &:hover {
+          color: #00E0FF;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.feature-svesdk-advantage {
+  padding-bottom: 0.80rem;
+  .container {
+    .thumbnail {
+      height: 4.50rem;
+      background-color: #FFF;
+      z-index: 1;
+      -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.80);
+      -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.80);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.80);
+      .media-object {
+        margin-top: 0.30rem;
+      }
+      .caption {
+        h4 {
+          margin: 0.20rem 0;
+        }
+        ul {
+          padding-left: 0.30rem;
+          list-style-type: none;
+          .glyphicon {
+            position: absolute;
+            top: 0.06rem;
+            left: -0.24rem;
+            font-size: 0.16rem;
+          }
+          p {
+            position: relative;
+            margin: 0.15rem 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features-svesdk-func {
+  padding-bottom: 1.00rem;
+  background-image: image-url("svesdk/image-func-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  .container {
+    .intro {
+      .title {
+        color: #FFF;
+      }
+    }
+    .tabs {
+      .row {
+        display: flex;
+        .col-tab-nav {
+          height: auto;
+        }
+        .col-tab-content {
+          flex: 1;
+        }
+      }
+      .nav.nav-tabs {
+        height: 100%;
+        border-right: 2px solid #DDD;
+        li {
+          display: inline;
+          a {
+            padding-right: 0.10rem;
+            right: -3px;
+            color: #FFF;
+            transition: all 0.30s;
+            -moz-transition: all 0.30s;
+            -webkit-transition: all 0.30s;
+            -o-transition: all 0.30s;
+          }
+          &.active,
+          &:hover {
+            a {
+              color: #00E6FE;
+            }
+          }
+          &.active {
+            a {
+              font-size: 0.16rem;
+              border-right: 4px solid #00E6FE;
+            }
+          }
+        }
+      }
+      .tab-content {
+        section {
+          h4 {
+            font-size: 0.24rem;
+            color: #00E6FE;
+          }
+          h5, p {
+            color: #FFF;
+          }
+          h5 {
+            margin-top: 0.30rem;
+            font-size: 0.18rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.feature-svesdk-scene {
+  .container {
+    .thumbnail {
+      margin-bottom: 0.30rem;
+      background-color: #FFF;
+      z-index: 1;
+      -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.80);
+      -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.80);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.80);
+      .caption {
+        h4 {
+          margin: 0.20rem 0;
+        }
+      }
+      .media-object {
+        width: calc(100% - 0.20rem);
+        padding-bottom: 0.10rem;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.feature-svesdk-product {
+  background-color: #114ACC;
+  .container {
+    .intro {
+      .title {
+        color: #FFF;
+      }
+    }
+    .thumbnail {
+      margin-bottom: 0.30rem;
+      .caption {
+        h4 {
+          color: #FFF;
+          margin: 0.20rem 0;
+          &.left {
+            text-align: left;
+          }
+        }
+
+        p {
+          margin-bottom: 0.20rem;
+          line-height: 2.0;
+          .link {
+            font-size: 0.16rem;
+            color: #FFF;
+            &:hover {
+              color: #00E6FE;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .media-object {
+        width: 1.80rem;
+        max-width: none;
+      }
+    }
+  }
+}
+
+.feature-svesdk-flow {
+  .container {
+    .thumbnail {
+      min-height: 0;
+      p {
+        margin-top: 0.20rem;
+        color: #000;
+        text-align: center;
+        font-size: 0.20rem;
+        .link {
+          color: #009DE5;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .feature-svesdk-advantage {
+    .container {
+      .thumbnail {
+        height: 4.80rem;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .feature-svesdk-advantage {
+    .container {
+      .thumbnail {
+        height: 4.50rem;
+        margin-top: 0.20rem;
+      }
+    }
+  }
+
+  .features-svesdk-func {
+    .container {
+      .tabs {
+        .row {
+          display: block;
+          .col-tab-content {
+            flex: none;
+          }
+        }
+        .nav.nav-tabs {
+          width: 100%;
+          border-right: none;
+          border-bottom: 2px solid #DDD;
+          li {
+            width: 1%;
+            display: table-cell !important;
+            a {
+              padding-right: 0;
+              right: 0;
+              bottom: -3px;
+              font-size: 0.12rem;
+            }
+            &.active,
+            &:hover {
+              a {
+                border-right: none;
+              }
+            }
+            &.active {
+              a {
+                font-size: 0.13rem;
+                border-bottom: 4px solid #00E6FE;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .feature-svesdk-product {
+    .container {
+      .thumbnail {
+        .caption {
+          h4 {
+            font-size: 0.16rem;
+          }
+
+          p {
+            .link {
+              font-size: 0.14rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (width: 768px) {
+  .feature-svesdk-advantage {
+    .container {
+      .thumbnail {
+        height: 4.70rem;
+      }
+    }
+  }
+
+  .features-svesdk-func {
+    .container {
+      .tabs {
+        .nav.nav-tabs {
+          li {
+            &.active {
+              a {
+                font-size: 0.18rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .feature-svesdk-advantage {
+    .container {
+      .thumbnail {
+        height: auto;
+        padding-bottom: 0.40rem;
+        margin-top: 0.30rem;
+      }
+    }
+  }
+
+  .features-svesdk-func {
+    .container {
+      .tabs {
+        .row {
+          display: block;
+          .col-tab-content {
+            flex: none;
+          }
+        }
+        .nav.nav-tabs {
+          width: 100%;
+          border: none;
+          li {
+            width: auto;
+            display: inline-block !important;
+            a {
+              padding-right: 0;
+              right: 0;
+            }
+            &.active,
+            &:hover {
+              a {
+                border: none;
+              }
+            }
+            &.active {
+              a {
+                font-size: 0.24rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .feature-svesdk-scene {
+    .container {
+      .thumbnail {
+        .caption {
+          h4 {
+            font-size: 0.22rem;
+          }
+        }
+      }
+    }
+  }
+
+  .feature-svesdk-product {
+    .container {
+      .thumbnail {
+        .caption {
+          h4, p {
+            text-align: center;
+          }
+          h4 {
+            font-size: 0.28rem;
+            &.left {
+              text-align: center;
+            }
+          }
+          p {
+            .link {
+              font-size: 0.18rem;
+            }
+          }
+        }
+        .media-object {
+          width: 3.00rem;
+        }
+      }
+    }
+  }
+
+  .feature-svesdk-flow {
+    .container {
+      .thumbnail {
+        p {
+          font-size: 0.26rem;
+        }
+      }
+    }
+  }
+}
