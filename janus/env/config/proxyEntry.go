@@ -14,11 +14,11 @@ type ProxyEntry struct {
 }
 
 type Match struct {
-	Path        string          `yaml:"path"`         // 路由
-	Method      ProxyMethod     `yaml:"method"`       // 路由的请求方式
-	Auth        ProxyAuthMethod `yaml:"auth"`         // 鉴权方式
-	Param       []Param         `yaml:"param"`        //参数
-	ContentType string          `yaml:"content_type"` // content-type
+	Path        string           `yaml:"path"`         // 路由
+	Method      ProxyMethod      `yaml:"method"`       // 路由的请求方式
+	Auth        ProxyAuthMethod  `yaml:"auth"`         // 鉴权方式
+	Param       []Param          `yaml:"param"`        //参数
+	ContentType ProxyContentType `yaml:"content_type"` // content-type
 }
 
 type Param struct {
@@ -47,6 +47,13 @@ const (
 	ProxyMethodOPTIONS ProxyMethod = http.MethodOptions
 	ProxyMethodTRACE   ProxyMethod = http.MethodTrace
 	ProxyMethodPATCH   ProxyMethod = http.MethodPatch
+)
+
+type ProxyContentType string
+
+const (
+	ProxyContentTypeJson           ProxyContentType = "application/json"
+	ProxyCententTypeXWwwUrlencoded ProxyContentType = "application/x-www-form-urlencoded"
 )
 
 func ParseProxyEntry(file string) ([]ProxyEntry, error) {

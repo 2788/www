@@ -117,7 +117,7 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
 				matchInfo.Param = match.Param
-
+				matchInfo.ContentType = match.ContentType
 				return &matchInfo, host, nil
 			}
 		}
@@ -149,8 +149,7 @@ func isSamePath(targetPathArray, matchInfoPathArray []string) bool {
 }
 
 func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) {
-	contentType := ctx.Request.Header.Get("content-type")
-	// 总体分Get/DELETE，application/json,application/x-www-form-urlencoded,multipart/form-data
+	// TODO 这块switch需要抽出来优化一下,暂时先保证功能测通
 	switch {
 	case matchInfo.Method == http.MethodGet || matchInfo.Method == http.MethodDelete:
 		session := sessions.Default(ctx)
@@ -178,7 +177,7 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 
 			ctx.Request.Form.Set(paramKey, paramValue.(string))
 		}
-	case strings.Contains(contentType, "application/json"):
+	case matchInfo.ContentType == config.ProxyContentTypeJson:
 		session := sessions.Default(ctx)
 		paramMap := make(map[string]interface{})
 		body, err := ioutil.ReadAll(ctx.Request.Body)
@@ -220,8 +219,31 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		newBody := []byte(jsonString)
 		ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
 		ctx.Request.Header.Add("Content-Type", "application/json")
-	case strings.Contains(contentType, "application/x-www-form-urlencoded"):
-	case strings.Contains(contentType, "multipart/form-data"):
+	case matchInfo.ContentType == config.ProxyCententTypeXWwwUrlencoded:
+		session := sessions.Default(ctx)
+		for _, param := range matchInfo.Param {
+			var paramKey string
+			var paramValue interface{}
+
+			if param.SessionKey != "" {
+				sessionValue := session.Get(param.SessionKey)
+				if sessionValue != nil {
+					err = errors.New("session get value failed.")
+					return err
+				}
+				if param.Rename != "" {
+					paramKey = param.Rename
+				} else {
+					paramKey = param.SessionKey
+				}
+				paramValue = sessionValue
+			} else {
+				paramKey = param.Rename
+				paramValue = param.DefaultValue
+			}
+
+			ctx.Request.PostForm.Set(paramKey, paramValue.(string))
+		}
 	}
 
 	return nil

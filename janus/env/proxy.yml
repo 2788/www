@@ -40,6 +40,6 @@
           custom_value: 1380536335
         - rename: "batch_id"
           custom_value: 592
-      # Content-Type
+      # Content-Type:支持content-type,application/json,application/x-www-form-urlencoded
       content_type: "application/json"
 
