@@ -188,7 +188,13 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 				paramMap[paramKey] = paramValue
 			}
 		case config.ParamLocationHeader:
-			//TODO
+			for _, param := range matchInfo.Params {
+				paramKey, paramValue, err := s.getParamMessage(session, param)
+				if err != nil {
+					return err
+				}
+				ctx.Request.Header.Set(paramKey, paramValue.(string))
+			}
 		}
 	}
 	if len(paramMap) > 0 {
