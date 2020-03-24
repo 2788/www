@@ -155,24 +155,9 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		session := sessions.Default(ctx)
 
 		for _, param := range matchInfo.Param {
-			var paramKey string
-			var paramValue interface{}
-
-			if param.SessionKey != "" {
-				sessionValue := session.Get(param.SessionKey)
-				if sessionValue != nil {
-					err = errors.New("session get value failed.")
-					return err
-				}
-				if param.Rename != "" {
-					paramKey = param.Rename
-				} else {
-					paramKey = param.SessionKey
-				}
-				paramValue = sessionValue
-			} else {
-				paramKey = param.Rename
-				paramValue = param.DefaultValue
+			paramKey, paramValue, err := s.getParamMessage(session, param)
+			if err != nil {
+				return err
 			}
 
 			ctx.Request.Form.Set(paramKey, paramValue.(string))
@@ -192,25 +177,11 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 				return err
 			}
 		}
-		for _, param := range matchInfo.Param {
-			var paramKey string
-			var paramValue interface{}
 
-			if param.SessionKey != "" {
-				sessionValue := session.Get(param.SessionKey)
-				if sessionValue != nil {
-					err = errors.New("session get value failed.")
-					return err
-				}
-				if param.Rename != "" {
-					paramKey = param.Rename
-				} else {
-					paramKey = param.SessionKey
-				}
-				paramValue = sessionValue
-			} else {
-				paramKey = param.Rename
-				paramValue = param.DefaultValue
+		for _, param := range matchInfo.Param {
+			paramKey, paramValue, err := s.getParamMessage(session, param)
+			if err != nil {
+				return err
 			}
 
 			paramMap[paramKey] = paramValue
@@ -221,25 +192,11 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		ctx.Request.Header.Add("Content-Type", "application/json")
 	case matchInfo.ContentType == config.ProxyCententTypeXWwwUrlencoded:
 		session := sessions.Default(ctx)
-		for _, param := range matchInfo.Param {
-			var paramKey string
-			var paramValue interface{}
 
-			if param.SessionKey != "" {
-				sessionValue := session.Get(param.SessionKey)
-				if sessionValue != nil {
-					err = errors.New("session get value failed.")
-					return err
-				}
-				if param.Rename != "" {
-					paramKey = param.Rename
-				} else {
-					paramKey = param.SessionKey
-				}
-				paramValue = sessionValue
-			} else {
-				paramKey = param.Rename
-				paramValue = param.DefaultValue
+		for _, param := range matchInfo.Param {
+			paramKey, paramValue, err := s.getParamMessage(session, param)
+			if err != nil {
+				return err
 			}
 
 			ctx.Request.PostForm.Set(paramKey, paramValue.(string))
@@ -247,4 +204,25 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 	}
 
 	return nil
+}
+
+func (s *Proxy) getParamMessage(session sessions.Session, param config.Param) (paramKey string, paramValue interface{}, err error) {
+	if param.SessionKey != "" {
+		sessionValue := session.Get(param.SessionKey)
+		if sessionValue != nil {
+			err = errors.New("session get value failed.")
+			return
+		}
+		if param.Rename != "" {
+			paramKey = param.Rename
+		} else {
+			paramKey = param.SessionKey
+		}
+		paramValue = sessionValue
+	} else {
+		paramKey = param.Rename
+		paramValue = param.DefaultValue
+	}
+
+	return
 }
