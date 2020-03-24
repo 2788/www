@@ -13,7 +13,7 @@ import ToasterStore from 'base/stores/toaster'
 
 import { IPackageItem, IPackageDimension } from 'apis/package'
 
-import { splitStrByDot, joinStrListByHyphen } from 'utils/package'
+import { splitStrByComma, joinStrListByHyphen } from 'utils/package'
 
 import { IProps, IDimensionDropdownItem } from '.'
 
@@ -44,7 +44,7 @@ export default class PackageCardStore extends Store {
     const dimensionDropdownList: IDimensionDropdownItem[] = []
     list.forEach((item: IPackageDimension, _index: number) => {
       const { key, value } = item
-      const valueSplitList: string[] = splitStrByDot(value)
+      const valueSplitList: string[] = splitStrByComma(value)
       const dimensionDropdownItem: IDimensionDropdownItem = {
         label: key,
         list: valueSplitList,

@@ -27,11 +27,17 @@ export default observer(function NeedSigninModal(props: IProps) {
       onCancel={() => {
         control_show_func(false)
       }}
+      onOk={() => {
+        control_show_func(false)
+      }}
       footer={null}
       maskClosable={true}
       className={styles.modal}>
         <p className={styles.content}>
-          您还未登录，请先&nbsp;
+          您还未登录
+        </p>
+        <p className={styles.content}>
+          请先&nbsp;
           <Button.Link
             href="https://portal.qiniu.com/signup"
             type="primary"

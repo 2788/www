@@ -48,6 +48,9 @@ export default observer(function PackageModal(props: IProps) {
         onCancel={() => {
           control_show_func(false)
         }}
+        onOk={() => {
+          control_show_func(false)
+        }}
         footer={null}
         maskClosable={true}
         className={styles.modal}>
@@ -71,7 +74,6 @@ export default observer(function PackageModal(props: IProps) {
               <Slider
                 min={1}
                 max={parseInt(max_purchases)}
-                defaultValue={quantity}
                 value={quantity}
                 onChange={(value: any) => {
                   updateQuantityValue(value)
@@ -117,6 +119,9 @@ export default observer(function PackageModal(props: IProps) {
         title="提示"
         visible={isSuccessModalShow}
         onCancel={() => {
+          controlSuccessModalShow(false)
+        }}
+        onOk={() => {
           controlSuccessModalShow(false)
         }}
         footer={null}

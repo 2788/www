@@ -13,8 +13,6 @@
   color: @package-text-color;
   background-color: @white;
   box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
-  -webkit-box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
-  -moz-box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
   overflow: hidden;
 
   p {
@@ -92,9 +90,6 @@
         border: none;
         border-radius: 0;
         color: @white;
-        background: -webkit-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
-        background: -o-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
-        background: -moz-linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
         background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
         background-color: @package-buy-btn-right-color;
   
@@ -206,11 +201,13 @@
   }
 
   .title {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 0.16rem;
+    font-weight: 600;
   }
 
   .content {
+    font-size: 0.14rem;
+
     ul li {
       margin: 0.10rem 0;
     }

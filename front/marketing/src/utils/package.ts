@@ -3,7 +3,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-export function splitStrByDot(origin: string): string[] {
+export function splitStrByComma(origin: string): string[] {
   return origin ? origin.split(/,|，/).filter((item: string, _index: number) => !!item) : []
 }
 
