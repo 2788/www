@@ -21,13 +21,13 @@ import PackageContainerStore from './store'
 import * as styles from './style.m.less'
 
 export interface IConfig {
-  group: string // 抵用券所属产品线
+  group: string // 商品所属产品线
   background_from: string // 背景颜色开始色
   background_to: string // 背景颜色结束色
   show_more_text: string // 容器底部按钮文案，如果 !== "" 则显示按钮
   show_more_link: string // 容器底部按钮跳转链接
   show_more_bg_color: string // 容器底部按钮背景色
-  count_per_row: number // 每行显示多少个抵用券卡片，当前支持范围：1 - 4
+  count_per_row: number // 每行显示多少个商品卡片，当前支持范围：1 - 4
 }
 
 export interface IProps extends IBaseProps {

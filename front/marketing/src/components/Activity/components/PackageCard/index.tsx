@@ -137,17 +137,20 @@ export default observer(function PackageCard(props: IProps) {
     }
 
     const { fee, c_fee } = selectedPackage
-    const originDom: JSX.Element | null = appear_fee ? (
+    const numFee: number = parseInt(fee)
+    const numCFee: number = parseInt(c_fee)
+
+    const originDom: JSX.Element | null = appear_fee && numCFee < numFee ? (
       <p className={`${styles.money} ${styles.smaller}`}>
-        省&nbsp;{asYuan(parseInt(fee) - parseInt(c_fee)).toFixed(2)}&nbsp;元&nbsp;
-        <span className={styles.originMoney}>原价&nbsp;{asYuan(parseInt(fee)).toFixed(2)}&nbsp;元</span>
+        省&nbsp;{asYuan(numFee - numCFee).toFixed(2)}&nbsp;元&nbsp;
+        <span className={styles.originMoney}>原价&nbsp;{asYuan(numFee).toFixed(2)}&nbsp;元</span>
       </p>
     ) : null
 
     return (
       <div className={styles.moneyWrapper}>
         <p className={`${styles.money} ${styles.smaller}`}>
-          ￥<span className={styles.huge}>{asYuan(parseInt(c_fee)).toFixed(2)}</span>
+          ￥<span className={styles.huge}>{asYuan(numCFee).toFixed(2)}</span>
         </p>
         {originDom}
       </div>
