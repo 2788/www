@@ -29,17 +29,21 @@
       method: POST
       auth: admin
       params:
-          # session_key
+        # session_key
         #- session_key: "example"
-          # 重命名，如果 rename 为空，则使用session_key作为参数名
+        # rename: 重命名，如果 rename 为空，则使用session_key作为参数名
         #  rename: "example_name"
-          # 自定义的参数值，如果session中没有存某个值，支持自定义。(仅当 session_key 为空是有效)
+        # custom_value: 自定义的参数值，如果session中没有存某个值，支持自定义。(仅当 session_key 为空是有效)
         #  custom_value: ""
+        # location: 指定参数位置,目前支持: url_param, body, header
+        # location
         
-        - rename: "uid"
+        - location: "body"
+          rename: "uid"
           custom_value: 1380536335
-        - rename: "batch_id"
+        - location: "body"
+          rename: "batch_id"
           custom_value: 592
       # Content-Type:支持content-type,application/json,application/x-www-form-urlencoded
-      content_type: "application/json"
+#      content_type: "application/json"
 

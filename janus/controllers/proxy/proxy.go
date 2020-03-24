@@ -57,10 +57,12 @@ func (s *Proxy) ProxyAll(ctx *gin.Context) {
 			req.URL.Host = targetURL.Host
 			req.URL.Path = targetInfo.Path
 			req.Host = targetURL.Host
+			req.Header = ctx.Request.Header
 			req.Header.Set("Host", targetURL.Host)
 			req.Header.Del("Accept-Encoding")
 			req.Method = string(targetInfo.Method)
 			req.Body = ctx.Request.Body
+			req.Form = ctx.Request.Form
 			if targetQuery == "" || req.URL.RawQuery == "" {
 				req.URL.RawQuery = targetQuery + req.URL.RawQuery
 			} else {
@@ -117,7 +119,6 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
 				matchInfo.Params = match.Params
-				matchInfo.ContentType = match.ContentType
 				return &matchInfo, host, nil
 			}
 		}
@@ -149,58 +150,51 @@ func isSamePath(targetPathArray, matchInfoPathArray []string) bool {
 }
 
 func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) {
-	// TODO 这块switch需要抽出来优化一下,暂时先保证功能测通
-	switch {
-	case matchInfo.Method == http.MethodGet || matchInfo.Method == http.MethodDelete:
-		session := sessions.Default(ctx)
+	session := sessions.Default(ctx)
+	paramMap := make(map[string]interface{})
 
-		for _, param := range matchInfo.Params {
-			paramKey, paramValue, err := s.getParamMessage(session, param)
+	for _, paramInfo := range matchInfo.Params {
+		switch paramInfo.Location {
+		case config.ParamLocationUrlParam:
+			for _, param := range matchInfo.Params {
+				paramKey, paramValue, err := s.getParamMessage(session, param)
+				if err != nil {
+					return err
+				}
+
+				ctx.Request.Form.Set(paramKey, paramValue.(string))
+			}
+		case config.ParamLocationBody:
+			session := sessions.Default(ctx)
+			body, err := ioutil.ReadAll(ctx.Request.Body)
 			if err != nil {
-				return err
+				fmt.Println("ioutil.ReadAll err: ", err)
+				break
+			}
+			if len(body) > 0 {
+				err = json.Unmarshal(body, &paramMap)
+				if err != nil {
+					err = errors.New("Umarshal failed")
+					return err
+				}
 			}
 
-			ctx.Request.Form.Set(paramKey, paramValue.(string))
-		}
-	case matchInfo.ContentType == config.ProxyContentTypeJson:
-		session := sessions.Default(ctx)
-		paramMap := make(map[string]interface{})
-		body, err := ioutil.ReadAll(ctx.Request.Body)
-		if err != nil {
-			fmt.Println("ioutil.ReadAll err: ", err)
-			break
-		}
-		if len(body) > 0 {
-			err = json.Unmarshal(body, &paramMap)
-			if err != nil {
-				err = errors.New("Umarshal failed")
-				return err
-			}
-		}
+			for _, param := range matchInfo.Params {
+				paramKey, paramValue, err := s.getParamMessage(session, param)
+				if err != nil {
+					return err
+				}
 
-		for _, param := range matchInfo.Params {
-			paramKey, paramValue, err := s.getParamMessage(session, param)
-			if err != nil {
-				return err
+				paramMap[paramKey] = paramValue
 			}
-
-			paramMap[paramKey] = paramValue
+		case config.ParamLocationHeader:
+			//TODO
 		}
+	}
+	if len(paramMap) > 0 {
 		jsonString, _ := json.Marshal(paramMap)
 		newBody := []byte(jsonString)
 		ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
-		ctx.Request.Header.Add("Content-Type", "application/json")
-	case matchInfo.ContentType == config.ProxyCententTypeXWwwUrlencoded:
-		session := sessions.Default(ctx)
-
-		for _, param := range matchInfo.Params {
-			paramKey, paramValue, err := s.getParamMessage(session, param)
-			if err != nil {
-				return err
-			}
-
-			ctx.Request.PostForm.Set(paramKey, paramValue.(string))
-		}
 	}
 
 	return nil
