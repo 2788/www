@@ -1,6 +1,6 @@
 /**
  * @file money utils
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 export function asYuan(origin: number): number {

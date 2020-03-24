@@ -16,7 +16,7 @@ const collectKey = Symbol('loadings-collect-key')
 export default class Loadings<E = {}> extends Store {
 
   static handle(name: string) {
-    return replaceMethod((origin) => function (this: any, ...args: any[]) {
+    return replaceMethod((origin) => function _handle(this: any, ...args: any[]) {
       const promise = origin.apply(this, args)
       const loadings = this[collectKey]
       return loadings.promise(name, promise)
@@ -29,7 +29,8 @@ export default class Loadings<E = {}> extends Store {
     if (target[collectKey]) {
       throw new Error('Duplicated collectFrom calls.')
     }
-    return target[collectKey] = new Loadings(...args)
+    target[collectKey] = new Loadings(...args)
+    return target[collectKey]
   }
 
   @observable state: ObservableMap<string, Loading> = observable.map()
@@ -50,7 +51,7 @@ export default class Loadings<E = {}> extends Store {
     }
 
     names.forEach(
-      name => this.add(name)
+      (name) => this.add(name)
     )
   }
 
@@ -91,8 +92,8 @@ export default class Loadings<E = {}> extends Store {
   }
 
   handle(name: string) {
-    const loadings = this // tslint:disable-line
-    return replaceMethod(origin => function(this: any, ...args: any[]) {
+    const loadings = this // eslint-disable-line
+    return replaceMethod((origin) => function _handle(this: any, ...args: any[]) {
       const promise = origin.apply(this, args)
       return loadings.promise(name, promise)
     })

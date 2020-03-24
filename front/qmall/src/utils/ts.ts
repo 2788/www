@@ -3,8 +3,8 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { IEmptyTupleLike, Void, ValueOf } from 'types/ts'
 import { keyBy } from 'lodash'
+import { IEmptyTupleLike, Void, ValueOf } from '../types/ts'
 
 // should use type guard instead:
 //   !! / Boolean(),  ReturnValue is **,  NonNullable / NonVoidable,  Required,  conditional type,  etc
@@ -56,20 +56,20 @@ export function keysOfEnum<T extends object>(target: T, validationDisabled = fal
   const values = valuesOf(target)
 
   if (!validationDisabled) {
-    values.forEach(value => {
+    values.forEach((value) => {
       if (value == null || typeof value === 'number' && !Number.isFinite(value)) {
         console.warn(`Some values of enum may be overwritten incorrectly by special value "${value}".`)
       }
     })
   }
 
-  const fakeKeys = values.filter(value => typeof value !== 'string').map(String)
+  const fakeKeys = values.filter((value) => typeof value !== 'string').map(String)
   // TODO: 性能优化：两层遍历
-  const realKeys = keys.filter(key => !fakeKeys.includes(key.toString()))
+  const realKeys = keys.filter((key) => !fakeKeys.includes(key.toString()))
 
   if (!validationDisabled) {
     // TODO: 性能优化：多次遍历
-    const realValues = realKeys.map(key => target[key])
+    const realValues = realKeys.map((key) => target[key])
     if ([...new Set(realValues)].length !== realValues.length) {
       console.warn('Values of enum are not unique.')
     }
@@ -80,7 +80,7 @@ export function keysOfEnum<T extends object>(target: T, validationDisabled = fal
 
 // ts 的设计导致的 enum 遍历缺陷、请在确保理解 enum 设计的情况下使用
 export function valuesOfEnum<T extends object>(target: T, validationDisabled = false): Array<T[keyof T]> {
-  return keysOfEnum(target, validationDisabled).map(key => target[key])
+  return keysOfEnum(target, validationDisabled).map((key) => target[key])
 }
 
 // ts 2.8+: ReturnType<T>

@@ -4,11 +4,13 @@
  */
 
 import { Exception } from 'qn-fe-core/exception'
-import BaseFetchStore, * as base from 'base/stores/fetch'
-import apiPrefix from 'constants/api-prefix'
+import BaseFetchStore, * as base from '../base/stores/fetch'
+import apiPrefix from '../constants/api-prefix'
 // import { errorCodeMapping as defaultMessageMap } from 'constants/error-code'
 
-export * from 'base/stores/fetch'
+export * from '../base/stores/fetch'
+
+/* eslint-disable import/namespace */
 
 export enum AddonExceptionName {
   InvalidArgs = 'invalid args',

@@ -1,6 +1,6 @@
 /*
  * @file store Header
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 import { observable, action } from 'mobx'

@@ -1,6 +1,6 @@
 // the same as './vairables.less'
 
-//== base
+// == base
 export const white = '#FFF'
 export const black = '#000'
 export const transparent = 'transparent'
@@ -13,7 +13,7 @@ export const errorColor = dangerColor
 
 export const shadowColor = 'rgba(0, 0, 0, 0.50)'
 
-//== screen / tablet
+// == screen / tablet
 export const screenSm = '768px'
 export const screenMd = '992px'
 export const screenLg = '1200px'
@@ -21,20 +21,20 @@ export const screenLg = '1200px'
 export const modalMd = '600px'
 export const modalSm = '346px'
 
-//== Header
+// == Header
 export const headerBgColor = transparent
 export const headerActiveBgColor = '#303848'
 export const headerTextColor = black
 export const headerActiveTextColor = white
 
-//== Border
+// == Border
 export const borderColor = '#D3D3D3'
 
-//== Table
+// == Table
 export const tableTextColor = '#333'
 export const tableBgLighterColor = '#F5F5F5'
 
-//== Coupon
+// == Coupon
 export const couponBorderColor = '#FFB41E'
 export const couponTextColor = '#0A0E17'
 export const couponTextColorLighter = 'rgba(0, 0, 0, 0.65)'

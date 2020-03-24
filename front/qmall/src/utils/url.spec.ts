@@ -60,7 +60,7 @@ const testDataTable = [
 
 describe('isURL test', () => {
   it('test table data', () => {
-    testDataTable.forEach(testData => {
+    testDataTable.forEach((testData) => {
       expect(isURL(testData.url)).toBe(testData.want)
     })
   })

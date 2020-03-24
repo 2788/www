@@ -4,8 +4,8 @@
  */
 
 import * as di from 'qn-fe-core/di'
-import * as base from 'base/utils/test'
-import { defaultProvides } from 'components/common/Provider'
+import * as base from '../../base/utils/test'
+import { defaultProvides } from '../../components/common/Provider'
 
 export class RendererUtils extends base.RendererUtils {
   constructor(

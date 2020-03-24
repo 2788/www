@@ -1,6 +1,6 @@
 /*
  * @file polyfill content
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 import 'whatwg-fetch'

@@ -6,23 +6,20 @@
 import React from 'react'
 import * as di from 'qn-fe-core/di'
 import Disposable from 'qn-fe-core/disposable'
-import BaseProvider, * as base from 'base/components/Provider'
+import BaseProvider, * as base from '../../base/components/Provider'
 
-import FetchStore from 'stores/fetch'
-import DemoApis from 'apis/demo'
-import ComponentApis from 'apis/component'
+import FetchStore from '../../stores/fetch'
 
-export * from 'base/components/Provider'
+/* eslint-disable */
+export * from '../../base/components/Provider'
 
 @di.injectable()
 export class Env extends Disposable implements base.IEnv {
 
   constructor(
-    // tslint:disable-next-line:no-shadowed-variable
+    /* eslint-disable no-shadow */
     public base: base.Env,
-    public fetchStore: FetchStore,
-    public demoApis: DemoApis,
-    public componentApis: ComponentApis
+    public fetchStore: FetchStore
   ) {
     super()
   }

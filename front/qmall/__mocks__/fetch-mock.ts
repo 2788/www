@@ -35,12 +35,11 @@ export function fetch(input: RequestInfo, _init?: RequestInit): Promise<Response
 
   if (hit) {
     return Promise.resolve(new MockRepsonse(mockDatas.get(hit)))
-  } else {
-    return Promise.resolve(new MockRepsonse({
-      code: 404,
-      message: 'Page not found'
-    }))
   }
+  return Promise.resolve(new MockRepsonse({
+    code: 404,
+    message: 'Page not found'
+  }))
 }
 
 export function genData(data: any) {

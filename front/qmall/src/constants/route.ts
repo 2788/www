@@ -1,6 +1,6 @@
 /*
  * @file route-relative constants
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 export const basename = '/qmall'

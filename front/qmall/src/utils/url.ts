@@ -1,4 +1,4 @@
-export * from 'base/utils/url'
+// export * from 'base/utils/url' TODO这里不是很明白，暂时注释
 
 type ValidationResponse = string | null | undefined | false
 export type URLObjectLike = URL | HTMLAnchorElement
@@ -16,7 +16,7 @@ export function isURL(url: string): boolean {
 
 export function validateURL(url: string): ValidationResponse {
   // 奇怪的空白符
-  if (/[\s\0\x08-\x0d\x85\xa0\u1680\u180e\u2000-\u200f\u2028\u2029\u202f\u205f\u2060\u3000\ufeff]/.test(url)) {
+  if (/[\s\0\x08-\x0d\x85\xa0\u1680\u180e\u2000-\u200f\u2028\u2029\u202f\u205f\u2060\u3000\ufeff]/.test(url)) { // eslint-disable-line
     return '包含非法的空白字符'
   }
 
@@ -40,7 +40,7 @@ export function validateURL(url: string): ValidationResponse {
     }
 
     // 不允许连续的 .  :  [  ]
-    if (/[:.\[\]]{2,}/.test(hostname)) {
+    if (/[:.\[\]]{2,}/.test(hostname)) { // eslint-disable-line
       return '格式错误、可能是因为包含连续的 . : [ ] 等字符'
     }
 
@@ -54,7 +54,7 @@ export function validateURL(url: string): ValidationResponse {
       return '格式错误、可能包含特殊字符'
     }
 
-    if (!/^[\[a-zA-Z0-9]+/.test(hostname)) {
+    if (!/^[\[a-zA-Z0-9]+/.test(hostname)) { // eslint-disable-line
       return 'hostname 的首字符不合法'
     }
 
@@ -117,14 +117,15 @@ export function formatPath<
   // 之所以不选择 ...args 是为了预留扩展槽位，如定制自己的 encoder 或 filter 之类的
   orderedParams: Array<Partial<T>>
 ): string {
+  /* eslint-disable no-confusing-arrow */
   return orderedParams
     .map(
-      query => !query
+      (query) => !query
         ? []
         : (
           Object.keys(query)
-            .filter(key => key && query[key] != null)
-            .map(key => encodeURIComponent(key) + '/' + encodeURIComponent(query[key] + ''))
+            .filter((key) => key && query[key] != null)
+            .map((key) => encodeURIComponent(key) + '/' + encodeURIComponent(query[key] + ''))
         )
     )
     .reduce(
@@ -144,7 +145,7 @@ export function urlEqual(url1: string, url2: string): boolean {
     // 规范：https://url.spec.whatwg.org/#concept-basic-url-parser
     // 我们用的 polyfill：https://github.com/jsdom/whatwg-url/blob/master/src/url-state-machine.js
     const [normalized1, normalized2] = [url1, url2].map(
-      url => new URL(url).href
+      (url) => new URL(url).href
     )
     return normalized1 === normalized2
   } catch {

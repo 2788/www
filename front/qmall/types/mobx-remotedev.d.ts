@@ -1,4 +1,4 @@
-declare module "mobx-remotedev" {
+declare module 'mobx-remotedev' {
   interface StoreClass {
     (): void
   }
@@ -7,7 +7,7 @@ declare module "mobx-remotedev" {
     (store: any, config?: any): StoreClass
   }
 
-  const remoteDev: RemoteDev;
+  const remoteDev: RemoteDev
 
   export = remoteDev
 }
