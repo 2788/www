@@ -7460,7 +7460,7 @@ en:
           desc: "老用户专属优惠限量预约，详情请垂询尊享专线：400-808-9176 转 1 <a href='' target='' class='desc-rule-link' title='短视频 SDK - 活动说明' data-toggle='modal' data-target='#double12-2019-sdk-modal'>活动说明&nbsp;></a>"
         dora:
           title: "智能多媒体服务专区"
-          desc: "新用户惊喜折扣，转码包折上九折，适用于在线教育、远程办公、在线直播等领域 <a href='' target='' class='desc-rule-link' title='新用户惊喜折扣，转码包折上九折，适用于在线教育、远程办公、在线直播等领域 ' data-toggle='modal' data-target='#double12-2019-dora-modal'>了解详情</a>"
+          desc: "惊喜折扣，转码包折上九折，适用于在线教育、远程办公、在线直播等领域 <a href='' target='' class='desc-rule-link' title='惊喜折扣，转码包折上九折，适用于在线教育、远程办公、在线直播等领域 ' data-toggle='modal' data-target='#double12-2019-dora-modal'>了解详情</a>"
           image: "spring_sale/dora_hot.png"
           link: "/express/download"
         qvm:
