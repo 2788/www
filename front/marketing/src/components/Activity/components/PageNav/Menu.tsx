@@ -20,6 +20,11 @@ export default observer(function Menu({ onSelect, ...config }: IProps) {
 
   const { list, background_from, background_to, background_hover } = config
 
+  // 防御性编程，其实可以去掉，调用方已处理
+  if (!list || !list.length) {
+    return null
+  }
+
   // 感觉渐变效果会不好
   // HACK: pseudo class - hover
   const styleText = `

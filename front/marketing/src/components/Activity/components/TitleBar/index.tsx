@@ -73,6 +73,7 @@ export default observer(forwardRef(function TitleBar({ info: { data } }: IProps,
       <h3 className={styles.title} dangerouslySetInnerHTML={{ __html: title }}></h3>
       <div className={styles.subTitle}>
         <span className={styles.subTitleMain} dangerouslySetInnerHTML={{ __html: sub_title }}></span>
+        {/* `Button.Link` 和 `Button type="link"` 在这里不好用。。 */}
         {/* TODO: 添加 & 检查埋点统计 */}
         {instruction && (
           <button className={styles.instructionEntry} onClick={openModal}>活动说明</button>

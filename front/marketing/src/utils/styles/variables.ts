@@ -14,12 +14,12 @@ export const errorColor = dangerColor
 export const shadowColor = 'rgba(0, 0, 0, 0.50)'
 
 //== screen / tablet
-export const screenSm = '768px'
-export const screenMd = '992px'
-export const screenLg = '1200px'
+export const screenSm = 768
+export const screenMd = 992
+export const screenLg = 1200
 
-export const modalMd = '600px'
-export const modalSm = '346px'
+export const modalMd = 600
+export const modalSm = 346
 
 //== Header
 export const headerBgColor = transparent
