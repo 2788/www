@@ -12,6 +12,7 @@ export const dangerColor = '#E55C5C'
 export const errorColor = dangerColor
 
 export const shadowColor = 'rgba(0, 0, 0, 0.50)'
+export const shadowColorDarker = 'rgba(0, 0, 0, 0.80)'
 
 //== screen / tablet
 export const screenSm = '768px'
@@ -41,3 +42,15 @@ export const couponTextColorLighter = 'rgba(0, 0, 0, 0.65)'
 export const couponMoneyColor = '#F43122'
 export const couponDrawBtnLeftColor = '#FE830D'
 export const couponDrawBtnHoverColor = '#FF590F'
+
+//== Package
+export const packageDashedBorderColor = 'rgba(0, 0, 0, 0.10)'
+export const packageTextColor = black
+export const packageTextColorLighter = 'rgba(0, 0, 0, 0.65)'
+export const packageCurrentMoneyColor = '#F43122'
+export const packageOriginMoneyColor = '#666'
+export const packageBuyBtnLeftColor = '#FE830D'
+export const packageBuyBtnRightColor = '#FFB41E'
+export const packageBuyBtnHoverColor = '#FF590F'
+export const packageDimensionDropdownBorderColor = '#DDD'
+export const packageDimensionDropdownBgColor = '#FBFBFB'

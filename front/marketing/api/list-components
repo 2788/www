@@ -41,6 +41,21 @@
                 "value":"coupon-container"
             },
             {
+                "key":"test-0306-1-package-container-R6kPseFS",
+                "data":{
+                    "group": "kodo",
+                    "background_to": "#0085EB",
+                    "count_per_row": 1,
+                    "show_more_link": "https://www.qiniu.com",
+                    "show_more_text": "查看更多",
+                    "background_from": "#0051AE",
+                    "show_more_bg_color": "#FF6632"
+                },
+                "text":"商品",
+                "valid":true,
+                "value":"package-container"
+            },
+            {
                 "key":"test-1-title-bar-d62lo86v",
                 "data":{
                     "title": "<span class=\"aaa\">直播云专场</span>",

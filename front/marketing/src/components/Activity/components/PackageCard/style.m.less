@@ -1,0 +1,235 @@
+/**
+ * @file styles of component PackageCard
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.mainWrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: 0.30rem;
+  padding: 0.16rem 0.22rem 0;
+  color: @package-text-color;
+  background-color: @white;
+  box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
+  overflow: hidden;
+
+  p {
+    line-height: 1;
+
+    &.smaller {
+      margin: 0.06rem 0;
+      font-size: 0.12rem;
+      line-height: 1.2;
+    }
+
+    &.larger {
+      font-size: 0.16rem;
+    }
+
+    &.lighter {
+      color: @package-text-color-lighter;
+    }
+  }
+
+  .propertyWrapper {
+    margin-top: 0.10rem;
+
+    table {
+      width: 100%;
+      margin: 0.10rem 0;
+      color: @package-text-color-lighter;
+      border-spacing: 0;
+      border: none;
+      font-size: 0.12rem;
+      background-color: @transparent;
+
+      th, td {
+        line-height: 1.6;
+      }
+
+      td {
+        color: @package-text-color;
+        font-size: 0.14rem;
+      }
+    }
+  }
+
+  .moneyAndBtnWrapper {
+    padding: 0.10rem 0 0;
+
+    .moneyWrapper {
+      p {
+        margin: 0.02rem 0;
+        word-break: break-all;
+      }
+  
+      .money {
+        font-weight: 400;
+        color: @package-current-money-color;
+  
+        .huge {
+          font-size: 0.32rem;
+        }
+  
+        .originMoney {
+          text-decoration: line-through;
+          color: @package-origin-money-color;
+        }
+      }
+    }
+
+    .buyBtnWrapper {
+      margin-top: 0.24rem;
+
+      .buyBtn {
+        width: calc(100% + 0.60rem);
+        position: relative;
+        left: -0.30rem;
+        border: none;
+        border-radius: 0;
+        color: @white;
+        background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
+        background-color: @package-buy-btn-right-color;
+  
+        &:hover, &:active, &:focus {
+          color: @white;
+          background: @package-buy-btn-hover-color;
+        }
+      }
+    }
+  }
+
+  .dimensionWrapper {
+    margin-top: 0.10rem;
+
+    .dimensionDropdownCol {
+      padding-bottom: 0.14rem;
+    }
+
+    .dimensionDropdown {
+      width: 100%;
+      margin-top: 0.10rem;
+      text-align: left;
+
+      > div {
+        border-color: @package-dimension-dropdown-border-color;
+        background-color: @package-dimension-dropdown-bg-color;
+      }
+    }
+  }
+
+  &.single {
+    .infoWrapper {
+      padding-bottom: 0.10rem;
+      border-bottom: 1px dashed @package-dashed-border-color;
+    }
+
+    .propertyWrapper {
+      margin-top: 0;
+    }
+
+    .dimensionWrapper {
+      margin-top: 0;
+      padding-top: 0.10rem;
+    }
+
+    .moneyAndBtnWrapper {
+      padding: 0.10rem 0;
+      border-top: 1px dashed @package-dashed-border-color;
+
+      .moneyWrapper {
+        p {
+          text-align: right;
+        }
+      }
+
+      .buyBtnWrapper {
+        margin-top: 0;
+
+        .buyBtn {
+          width: 100%;
+          position: relative;
+          left: 0;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: @screen-sm - 1) {
+    &.single {
+      .infoWrapper {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .dimensionWrapper {
+        padding-top: 0;
+      }
+
+      .moneyAndBtnWrapper {
+        padding: 0.10rem 0 0;
+        border-top: none;
+
+        .moneyWrapper {
+          p {
+            text-align: left;
+          }
+        }
+
+        .buyBtnWrapper {
+          margin-top: 0.24rem;
+
+          .buyBtn {
+            width: calc(100% + 0.60rem);
+            left: -0.30rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  .contentWrapper {
+    margin: 0.10rem 0;
+  }
+
+  .title, .content {
+    margin: 0.10rem 0;
+  }
+
+  .title {
+    font-size: 0.16rem;
+    font-weight: 600;
+  }
+
+  .content {
+    font-size: 0.14rem;
+
+    ul li {
+      margin: 0.10rem 0;
+    }
+
+    &.textCenter {
+      text-align: center;
+    }
+  }
+
+  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm - 1) {
+    & {
+      max-width: @modal-sm !important;
+
+      .btnWrapper {
+        text-align: center;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      max-width: @modal-md !important;
+    }
+  }
+}

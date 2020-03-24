@@ -1,5 +1,5 @@
 /**
- * @file local store of component CouponContainer
+ * @file local store of component PackageContainer
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
@@ -11,7 +11,7 @@ import { injectProps } from 'qn-fe-core/local-store'
 import Loadings from 'base/stores/loadings'
 import ToasterStore from 'base/stores/toaster'
 
-import CouponApis, { IListCouponsOptions, ICouponInfo } from 'apis/coupon'
+import PackageApis, { IListPackagesOptions, IPackageInfo } from 'apis/package'
 
 import { IProps } from '.'
 
@@ -20,10 +20,10 @@ enum Loading {
 }
 
 @injectable()
-export default class CouponContainerStore extends Store {
+export default class PackageContainerStore extends Store {
   constructor(
     toasterStore: ToasterStore,
-    private couponApis: CouponApis,
+    private packageApis: PackageApis,
     @injectProps() private props: IProps
   ) {
     super()
@@ -33,27 +33,27 @@ export default class CouponContainerStore extends Store {
   Loading = Loading
   loadings = Loadings.collectFrom(this, this.Loading)
 
-  @observable.ref couponList: ICouponInfo[] = []
+  @observable.ref packageList: IPackageInfo[] = []
 
-  @action.bound updateCouponList(list: ICouponInfo[]) {
-    this.couponList = list
+  @action.bound updatePackageList(list: IPackageInfo[]) {
+    this.packageList = list
   }
 
   @Loadings.handle(Loading.FetchList)
-  @ToasterStore.handle(undefined, '获取抵用券信息失败')
+  @ToasterStore.handle(undefined, '获取商品信息失败')
   fetchList() {
     const { code, info: { key, data: { group } } } = this.props
-    const options: IListCouponsOptions = {
+    const options: IListPackagesOptions = {
       campaign_code: code,
       group: group,
       group_key: key,
       page: 1,
       page_size: 100
     }
-    const req = this.couponApis.fetchList(options)
+    const req = this.packageApis.fetchList(options)
     req.then(res => {
-      const { campaign_coupon_detail = [] } = res
-      this.updateCouponList(campaign_coupon_detail)
+      const { campaign_product_detail = [] } = res
+      this.updatePackageList(campaign_product_detail)
     })
     return req
   }
