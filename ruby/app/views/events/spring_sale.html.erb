@@ -238,7 +238,6 @@
       </div>
       <% end -%>
     </div>
-    <% if false -%>
     <div class="row">
       <% Rails.configuration.spring_sale_package[:kodo][:cdnin].each do |kodo| -%>
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 col-item col-kodo">
@@ -252,8 +251,26 @@
               <p class="desc"><%= kodo[:desc] -%></p>
             </div>
             <div class="content-container">
-              <p class="props">时长：<%= kodo[:duration] -%></p>
-              <p class="props">区域：<%= kodo[:zone] -%></p>
+              <div class="content-dropdown">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-duration">
+                    <p class="dropdown-title">时长</p>
+                    <select class="form-control double12-2019-dropdown spring-sale-kodo-dropdown duration-dropdown">
+                      <% kodo[:durations].each do |duration| -%>
+                      <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-area">
+                    <p class="dropdown-title">区域</p>
+                    <select class="form-control double12-2019-dropdown spring-sale-kodo-dropdown area-dropdown">
+                      <% kodo[:zones].each do |zone| -%>
+                      <option value="<%= zone[:value] -%>"><%= zone[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <% kodo[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <div class="content-price">
@@ -287,14 +304,38 @@
               <p class="desc"><%= kodo[:desc] -%></p>
             </div>
             <div class="content-container">
-              <p class="props">时长：<%= kodo[:duration] -%></p>
-              <p class="props">区域：<%= kodo[:zone] -%></p>
+              <div class="content-dropdown">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-duration">
+                    <p class="dropdown-title">时长</p>
+                    <select class="form-control double12-2019-dropdown spring-sale-kodo-dropdown duration-dropdown">
+                      <% kodo[:durations].each do |duration| -%>
+                      <option value="<%= duration[:value] -%>"><%= duration[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-dropdown-area">
+                    <p class="dropdown-title">区域</p>
+                    <select class="form-control double12-2019-dropdown spring-sale-kodo-dropdown area-dropdown">
+                      <% kodo[:zones].each do |zone| -%>
+                      <option value="<%= zone[:value] -%>"><%= zone[:text] -%></option>
+                      <% end -%>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <% kodo[:sections].each do |section| -%>
               <section class="content-section <%= section[:class] -%>" id="<%= section[:id] -%>">
                 <div class="content-price">
                   <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 col-price col-price-left">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-price col-price-left">
                       <span class="span-red span-bold">￥</span><span class="span-red span-huge span-bold"><%= section[:price] -%></span>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7 col-price col-price-right">
+                      <% if section[:originPrice] -%>
+                      <span class="span-red span-bold"><%= section[:statement] -%></span>
+                      <span class="span-red span-elide span-bold">原价&nbsp;<%= section[:originPrice] -%>&nbsp;元</span>
+                      <% end -%>
                     </div>
                   </div>
                 </div>
@@ -309,7 +350,6 @@
       </div>
       <% end -%>
     </div>
-    <% end -%>
   </div>
 </div>
 
