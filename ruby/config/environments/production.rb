@@ -2792,27 +2792,27 @@ Rails.application.configure do
             {
               "id": "",
               "class": "h264-sd480 active",
-              "price": "116.64",
+              "price": "103.68",
               "originPrice": "144",
-              "save": "27.36",
+              "save": "40.32",
               "packageID": 993,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 2 万分钟/半年"
             },
             {
               "id": "",
               "class": "h264-sd720",
-              "price": "306.18",
+              "price": "272.16",
               "originPrice": "378",
-              "save": "71.82",
+              "save": "105.84",
               "packageID": 1005,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 2 万分钟/半年"
             },
             {
               "id": "",
               "class": "h264-hd1080",
-              "price": "524.88",
+              "price": "466.56",
               "originPrice": "648",
-              "save": "123.12",
+              "save": "181.44",
               "packageID": 1017,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 2 万分钟/半年"
             }
@@ -2825,27 +2825,27 @@ Rails.application.configure do
             {
               "id": "",
               "class": "h264-sd480 active",
-              "price": "583.2",
+              "price": "453.6",
               "originPrice": "720",
-              "save": "136.8",
+              "save": "266.4",
               "packageID": 996,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 10 万分钟/半年"
             },
             {
               "id": "",
               "class": "h264-sd720",
-              "price": "1530.9",
+              "price": "1190.7",
               "originPrice": "1890",
-              "save": "359.1",
+              "save": "699.3",
               "packageID": 1008,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 10 万分钟/半年"
             },
             {
               "id": "",
               "class": "h264-hd1080",
-              "price": "2624.4",
+              "price": "2041.2",
               "originPrice": "3240",
-              "save": "615.6",
+              "save": "1198.8",
               "packageID": 1020,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 10 万分钟/半年"
             }
@@ -2858,27 +2858,27 @@ Rails.application.configure do
             {
               "id": "",
               "class": "h264-sd480 active",
-              "price": "1749.6",
+              "price": "1166.4",
               "originPrice": "2160",
-              "save": "410.4",
+              "save": "993.6",
               "packageID": 999,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD480 30 万分钟/半年"
             },
             {
               "id": "",
               "class": "h264-sd720",
-              "price": "4592.7",
+              "price": "3061.8",
               "originPrice": "5670",
-              "save": "1077.3",
+              "save": "2608.2",
               "packageID": 1011,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 SD720 30 万分钟/半年"
             },
             {
               "id": "",
               "class": "h264-hd1080",
-              "price": "7873.2",
+              "price": "5248.8",
               "originPrice": "9720",
-              "save": "1846.8",
+              "save": "4471.2",
               "packageID": 1023,
               "info": "请您再次确认所选的区域和规格<br />H.264普通转码包 HD1080 30 万分钟/半年"
             }
@@ -2926,27 +2926,27 @@ Rails.application.configure do
             {
               "id": "",
               "class": "h265-sd480 active",
-              "price": "583.2",
+              "price": "518.4",
               "originPrice": "720",
-              "save": "136.8",
+              "save": "201.6",
               "packageID": 1029,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 2 万分钟/半年"
             },
             {
               "id": "",
               "class": "h265-sd720",
-              "price": "1530.9",
+              "price": "1360.8",
               "originPrice": "1890",
-              "save": "359.1",
+              "save": "529.2",
               "packageID": 1041,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 2 万分钟/半年"
             },
             {
               "id": "",
               "class": "h265-hd1080",
-              "price": "2624.4",
+              "price": "2332.8",
               "originPrice": "3240",
-              "save": "615.6",
+              "save": "907.2",
               "packageID": 1053,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 2 万分钟/半年"
             }
@@ -2959,27 +2959,27 @@ Rails.application.configure do
             {
               "id": "",
               "class": "h265-sd480 active",
-              "price": "2916",
+              "price": "2268",
               "originPrice": "3600",
-              "save": "684",
+              "save": "1332",
               "packageID": 1032,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 10 万分钟/半年"
             },
             {
               "id": "",
               "class": "h265-sd720",
-              "price": "7654.5",
+              "price": "5953.5",
               "originPrice": "9450",
-              "save": "1795.5",
+              "save": "3496.5",
               "packageID": 1044,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 10 万分钟/半年"
             },
             {
               "id": "",
               "class": "h265-hd1080",
-              "price": "13122",
+              "price": "10206",
               "originPrice": "16200",
-              "save": "3078",
+              "save": "5994",
               "packageID": 1056,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 10 万分钟/半年"
             }
@@ -2992,27 +2992,27 @@ Rails.application.configure do
             {
               "id": "",
               "class": "h265-sd480 active",
-              "price": "8748",
+              "price": "5832",
               "originPrice": "10800",
-              "save": "2052",
+              "save": "4968",
               "packageID": 1035,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD480 30 万分钟/半年"
             },
             {
               "id": "",
               "class": "h265-sd720",
-              "price": "22963.5",
+              "price": "15309",
               "originPrice": "28350",
-              "save": "5386.5",
+              "save": "13041",
               "packageID": 1047,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 SD720 30 万分钟/半年"
             },
             {
               "id": "",
               "class": "h265-hd1080",
-              "price": "39366",
+              "price": "26244",
               "originPrice": "48600",
-              "save": "9234",
+              "save": "22356",
               "packageID": 1059,
               "info": "请您再次确认所选的区域和规格<br />H.265普通转码包 HD1080 30 万分钟/半年"
             }
