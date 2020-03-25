@@ -3,7 +3,6 @@ package env
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/qbox/www/janus/controllers/coupon"
-	"github.com/qbox/www/janus/controllers/middlewares"
 	"github.com/qbox/www/janus/controllers/proxy"
 	"github.com/qbox/www/janus/controllers/trade"
 )
@@ -16,7 +15,7 @@ func InitRouters(app *gin.Engine) {
 
 	v1 := app.Group("/marketing")
 	{
-		v1.Use(ssoCtrl.LoginRequired)
+		// v1.Use(ssoCtrl.LoginRequired)
 		{
 			coupon := v1.Group("/coupon")
 			coupon.POST("/bind", couponHandler.BindCampaignsCouponByBatchID)

@@ -9,7 +9,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var env GlobalEnv
+var Global GlobalEnv
 
 type GlobalEnv struct {
 	Cfg              *config.Config
