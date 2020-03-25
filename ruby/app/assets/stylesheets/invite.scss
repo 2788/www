@@ -23,9 +23,9 @@
   }
   .yaoqing-page-container1 {
     .intro .desc a {
-      text-decoration: underline;
+      color: #515ED6;
       &:hover {
-        color: #00A0DE;
+        text-decoration: underline;
       }
     }
   }
@@ -100,10 +100,11 @@
     text-align: center;
   }
   .yaoqing-page-container2-liuchengblok .yaoqing-page-container2-txt {
-    text-align: center; padding: 0.1rem 0;
+    text-align: center; padding: 0.1rem 0; color: #333; text-decoration: none;
   }
-  .yaoqing-page-container2-liuchengblok:hover .yaoqing-page-container2-txt {
+  .yaoqing-page-container2-liuchengblok:hover .invite-btn .yaoqing-page-container2-txt {
     color: #5663d7;
+    text-decoration: underline;
   }
   .yaoqing-page-container2 .shengcheng {
     background: #dde4ec; padding: 0.2rem; margin-top: 0.2rem;
