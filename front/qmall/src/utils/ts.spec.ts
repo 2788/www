@@ -10,13 +10,13 @@ import { keysOfEnum, valuesOfEnum } from './ts'
 // 考虑并发问题，无法对 global console 下手，暂时也不改造实现，因此这里只简单统计总个数
 let expectedConsoleWarnToCallCount = 0
 let consoleWarnCalledCount = 0
-const mockedConsoleWarn = jest.fn(() => void consoleWarnCalledCount++)
+const mockedConsoleWarn = jest.fn(() => void consoleWarnCalledCount++) // eslint-disable-line
 jest.spyOn(console, 'warn').mockImplementation(mockedConsoleWarn)
 
 describe('test keysOfEnum and valuesOfEnum', () => {
   it('test undefined', () => {
     expect(undefined).toBeUndefined()
-    expect(undefined).toBe(void 0)
+    expect(undefined).toBe(undefined)
     expect(typeof undefined).toBe('undefined')
   })
 

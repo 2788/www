@@ -7,6 +7,6 @@ declare namespace qn {
 
   interface IListData<T> {
     count: number
-    list: Array<T>
+    list: T[]
   }
 }

@@ -1,6 +1,6 @@
 /**
  * @file constants of coupon
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 export const couponTimePeriodType = {

@@ -47,9 +47,7 @@ export class LocalStore extends Store {
       this.remove(0)
     }
     return () => {
-      const index = this.items.findIndex((i) => {
-        return item.id === i.id
-      })
+      const index = this.items.findIndex((i) => item.id === i.id)
       if (index >= 0) {
         this.remove(index)
       }

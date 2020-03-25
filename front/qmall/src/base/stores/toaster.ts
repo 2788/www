@@ -45,7 +45,7 @@ const bindKey = Symbol('toaster-bind-key')
 export default class Toaster extends Store {
 
   static handle(successText?: string, failureText?: string, levels?: { [key: string]: string }) {
-    return replaceMethod(origin => function _handle(this: any, ...args: any[]) {
+    return replaceMethod((origin) => function _handle(this: any, ...args: any[]) {
       const toaster = this[bindKey]
       const promise = origin.apply(this, args)
       levels = toaster.getLevels(levels)
@@ -131,7 +131,7 @@ export default class Toaster extends Store {
     levels = this.getLevels(levels)
 
     if (isCancelled(rejected)) {
-      console.warn('[CANCELLED]')
+      console.warn('[CANCELLED]') // eslint-disable-line
       return
     }
 
@@ -157,14 +157,14 @@ export default class Toaster extends Store {
   ): Promise<T> {
     levels = this.getLevels(levels)
     promise.then(
-      resolved => {
+      (resolved) => {
         if (successText) {
           // TODO: 模版渲染的单测
           successText = mustache.render(successText, { resolved })
           this[levels!.resolve](successText)
         }
       },
-      rejected => this.exception(rejected, failureText, levels)
+      (rejected) => this.exception(rejected, failureText, levels)
     )
     return promise
   }
@@ -172,10 +172,9 @@ export default class Toaster extends Store {
   handle(successText?: string, failureText?: string, levels?: { [key: string]: ToasterType }) {
     levels = this.getLevels(levels)
 
-    // tslint:disable-next-line
-    const me = this
+    const me = this // eslint-disable-line
 
-    return replaceMethod(origin => function(this: any, ...args: any[]) {
+    return replaceMethod((origin) => function _handle(this: any, ...args: any[]) {
       const promise = origin.apply(this, args)
       return me.promise(promise, successText, failureText, levels)
     })

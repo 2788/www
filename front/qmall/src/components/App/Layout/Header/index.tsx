@@ -1,6 +1,6 @@
 /*
  * @file component Header TODO: 这个好像现在没人搞…
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 import React from 'react'
@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 
 import './style.less'
 
-import { HeaderStore } from 'stores/header'
+import { HeaderStore } from '../../../../stores/header'
 
 @observer
 export default class Header extends React.Component<any, any> {
@@ -27,7 +27,7 @@ export default class Header extends React.Component<any, any> {
   render() {
     const { isWindowScroll } = this.store
     return (
-      <div className={ isWindowScroll ? 'header-wrapper active' : 'header-wrapper' }>
+      <div className={isWindowScroll ? 'header-wrapper active' : 'header-wrapper'}>
         Header Wrapper
       </div>
     )

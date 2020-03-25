@@ -5,7 +5,7 @@
 
 import React, { useEffect } from 'react'
 import { useRouterStore } from 'qn-fe-core/router'
-import { basename } from 'constants/route'
+import { basename } from '../../../constants/route'
 
 export default function NotFound() {
   // TODO: 样式

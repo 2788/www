@@ -1,6 +1,6 @@
 /*
  * @file component Layout
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 import React from 'react'

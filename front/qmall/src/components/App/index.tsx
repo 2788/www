@@ -1,20 +1,20 @@
 /*
  * @file component App
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author yanxiaosong <yanxiaosong@qiniu.com>
  */
 
 import React from 'react'
 import { observer } from 'mobx-react'
 import { hot } from 'react-hot-loader/root'
 
-import { Route, Switch, Redirect } from 'qn-fe-core/router'
+import { Route, Switch } from 'qn-fe-core/router'
 import LocaleProvider from 'react-icecream/lib/locale-provider'
 import zhCN from 'react-icecream/lib/locale-provider/zh_CN'
-import Toaster from 'base/components/Toaster'
+import Toaster from '../../base/components/Toaster'
 
-import { basename } from 'constants/route'
-import Provider from 'components/common/Provider'
-import NotFound, { notFoundPagePath, ToNotFound } from 'components/common/NotFound'
+import { basename } from '../../constants/route'
+import Provider from '../common/Provider'
+import NotFound, { notFoundPagePath, ToNotFound } from '../common/NotFound'
 
 // Layout
 import Layout from './Layout'

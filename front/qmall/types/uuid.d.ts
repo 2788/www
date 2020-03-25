@@ -5,6 +5,6 @@ interface UUid {
 
 declare const uuid: UUid
 
-declare module "uuid" {
+declare module 'uuid' {
   export = uuid
 }
