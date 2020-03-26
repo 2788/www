@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def kirk
+    redirect_to(Rails.configuration.www_host, :status => 301)
   end
 
   def snow

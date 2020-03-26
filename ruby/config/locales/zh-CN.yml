@@ -111,9 +111,6 @@ zh-CN:
                 - name: "云主机"
                   class: "icon icon-qvm index-icons"
                   path: "/products/qvm"
-                - name: "容器云"
-                  class: "icon icon-container index-icons"
-                  path: "/products/kirk"
                 - name: "智能多媒体服务"
                   class: "icon icon-media index-icons"
                   path: "/products/dora"
@@ -8284,10 +8281,6 @@ zh-CN:
             desc: 致力于为用户提供快捷高效的通信服务能力
             catalog: product
             isNew: true
-          - name: kirk
-            label: 容器云
-            desc: 面向微服务架构的企业级容器管理平台
-            catalog: product
           - name: snow
             label: 边缘计算平台
             desc: 灵活配置管理大规模边缘计算应用，加速边缘智能落地
@@ -8720,10 +8713,6 @@ zh-CN:
       title: 智能多媒体服务 - 七牛云
       keywords: 图片处理，音视频处理，智能识别，视频分析，视频画质优化，智能审核，版权保护，音视频转码，图片瘦身
       description: 七牛云智能多媒体服务（DORA），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。
-    products_kirk:
-      title: 容器云_容器云平台 - 七牛云
-      keywords: 容器，容器云，容器服务，docker，七牛容器云，七牛容器服务，微服务，devops
-      description: 七牛容器云是七牛云基于自身公有云业务在容器方面的多年实践经验，针对企业私有部署打造的容器云计算平台。
     products_vance:
       title: 点播云_点播云服务 - 七牛云
       keywords: 点播云，视频点播，七牛点播云，云点播，视频上传，视频存储，视频转码
