@@ -14,7 +14,6 @@ import * as styles from './style.m.less'
 export interface IProps extends ICommonProps {}
 
 export default observer(function Pc({ visible, setVisible, children }: IProps) {
-  // FIXME: enter 到 body 上的时候也需要 close，比如鼠标绕出去再回来，或者 window resize 导致的 toggle
 
   const hotspotView = !visible && (
     <div
@@ -30,7 +29,7 @@ export default observer(function Pc({ visible, setVisible, children }: IProps) {
     <div className={styles.pc}>
       {hotspotView}
       <div
-        onMouseLeave={() => setVisible(false)}
+        onMouseLeave={() => setVisible(false)} // 一般情况；边缘情况在容器端处理
         className={styles.menuWrapper}
       >
         {children}

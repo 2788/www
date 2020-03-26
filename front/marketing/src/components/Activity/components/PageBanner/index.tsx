@@ -31,6 +31,7 @@ export default observer(forwardRef(function PageBanner({ info: { data } }: IProp
   const { link, title, src, alt } = data
 
   useEffect(() => {
+    // FIXME: add disposer https://github.com/qbox/www/issues/1400
     objectFitImages(`.${styles.mainWrapper} img.${styles.imgWrapper}`, {
       watchMQ: true
     })

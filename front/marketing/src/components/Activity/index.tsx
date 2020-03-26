@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React from 'react'
+import React, { Ref } from 'react'
 import { observer } from 'mobx-react'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
@@ -26,7 +26,7 @@ import * as styles from './style.m.less'
 export interface IBaseProps {
   code: string // activity code
   info: IComponentInfo<ComponentName>
-  ref?(ele: HTMLElement): void
+  ref?: Ref<HTMLElement>
 }
 
 export interface IProps {
@@ -36,9 +36,9 @@ export interface IProps {
 export default observer(function Activity(props: IProps) {
   const activityStore = useLocalStore(ActivityStore, props)
 
-  const elementMap: { [key: string]: HTMLElement } = {}
+  const elementMap: { [key: string]: HTMLElement | null | undefined } = {}
 
-  function registerElement(key: string, element: HTMLElement) {
+  function registerElement(key: string, element: HTMLElement | null | undefined) {
     elementMap[key] = element
   }
 
@@ -47,8 +47,9 @@ export default observer(function Activity(props: IProps) {
     // 是不是直接这样简单点。。 就不需要 ref 了
     // document.querySelector(`[data-key="${key}"]`)!.scrollIntoView()
 
-    if (elementMap[key]) {
-      elementMap[key].scrollIntoView()
+    const element = elementMap[key]
+    if (element) {
+      element.scrollIntoView()
     } else {
       console.error('找不到指定控件', key)
     }
