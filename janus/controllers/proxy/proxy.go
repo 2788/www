@@ -154,18 +154,14 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 	paramMap := make(map[string]interface{})
 
 	for _, paramInfo := range matchInfo.Params {
+		paramKey, paramValue, err := s.getParamMessage(session, paramInfo)
+		if err != nil {
+			return err
+		}
 		switch paramInfo.Location {
 		case config.ParamLocationUrlParam:
-			for _, param := range matchInfo.Params {
-				paramKey, paramValue, err := s.getParamMessage(session, param)
-				if err != nil {
-					return err
-				}
-
-				ctx.Request.Form.Set(paramKey, paramValue.(string))
-			}
+			ctx.Request.Form.Set(paramKey, paramValue.(string))
 		case config.ParamLocationBody:
-			session := sessions.Default(ctx)
 			body, err := ioutil.ReadAll(ctx.Request.Body)
 			if err != nil {
 				fmt.Println("ioutil.ReadAll err: ", err)
@@ -179,22 +175,9 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 				}
 			}
 
-			for _, param := range matchInfo.Params {
-				paramKey, paramValue, err := s.getParamMessage(session, param)
-				if err != nil {
-					return err
-				}
-
-				paramMap[paramKey] = paramValue
-			}
+			paramMap[paramKey] = paramValue
 		case config.ParamLocationHeader:
-			for _, param := range matchInfo.Params {
-				paramKey, paramValue, err := s.getParamMessage(session, param)
-				if err != nil {
-					return err
-				}
-				ctx.Request.Header.Set(paramKey, paramValue.(string))
-			}
+			ctx.Request.Header.Set(paramKey, paramValue.(string))
 		}
 	}
 	if len(paramMap) > 0 {
