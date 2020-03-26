@@ -80,7 +80,7 @@
                   <% I18n.t("services.left").each do |left| -%>
                     <%= content_tag :li, left[:group], class: "menu-title hidden-xs" -%>
                     <% left[:list].each do |product| -%>
-                      <%= content_tag :li, class: I18n.t("views.language") != 'zh' ? 'd-none' : 'service' do -%>
+                      <%= content_tag :li, class: "service" do -%>
                         <% service_path = "products_#{product[:name]}_path" -%>
                         <% if product[:catalog] == "welcome" -%>
                           <% service_path = "#{product[:name]}_path" -%>
@@ -104,7 +104,7 @@
                   <% I18n.t("services.right").each do |right| -%>
                     <%= content_tag :li, right[:group], class: "menu-title hidden-xs" -%>
                     <% right[:list].each do |product| -%>
-                      <%= content_tag :li, class: I18n.t("views.language") != 'zh' ? 'd-none' : 'service' do -%>
+                      <%= content_tag :li, class: "service" do -%>
                         <%= link_to(send("products_#{product[:name]}_path")) do -%>
                           <h4 class="<%= product[:name] -%>">
                             <%= product[:label] -%>
@@ -125,7 +125,7 @@
                 <% I18n.t("services").each do |service| -%>
                   <%= content_tag :li, service[:group], class: "menu-title hidden-xs" -%>
                   <% service[:list].each do |product| -%>
-                    <%= content_tag :li, class: I18n.t("views.language") != 'zh' ? 'd-none' : 'service' do -%>
+                    <%= content_tag :li, class: "service" do -%>
                       <%= link_to(send("products_#{product[:name]}_path")) do -%>
                         <h4 class="<%= product[:name] -%>">
                           <%= product[:label] -%>
