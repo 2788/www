@@ -19,17 +19,21 @@ import (
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
 	"github.com/qbox/www/janus/env/config"
+	"github.com/qbox/www/janus/utils"
+	"github.com/sirupsen/logrus"
 )
 
 type Proxy struct {
 	accTr       http.RoundTripper
 	proxyEntrys []config.ProxyEntry
+	logger      logrus.FieldLogger
 }
 
-func NewTrandeHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry) *Proxy {
+func NewTrandeHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, logger logrus.FieldLogger) *Proxy {
 	return &Proxy{
 		accTr:       accTr,
 		proxyEntrys: proxyCfg,
+		logger:      logger,
 	}
 }
 
@@ -158,14 +162,23 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		if err != nil {
 			return err
 		}
+		if paramValue == nil {
+			err = errors.New("paramValue is nil")
+			return err
+		}
 		switch paramInfo.Location {
 		case config.ParamLocationUrlParam:
-			ctx.Request.Form.Set(paramKey, paramValue.(string))
+			paramStr, err := utils.FormatParamValue(paramValue)
+			if err != nil {
+				s.logger.Errorf("<Proxy.addParam> utils.FormatParamValue(%+v) failed, err:%s", paramValue, err)
+				return err
+			}
+			ctx.Request.Form.Set(paramKey, paramStr)
 		case config.ParamLocationBody:
 			body, err := ioutil.ReadAll(ctx.Request.Body)
 			if err != nil {
-				fmt.Println("ioutil.ReadAll err: ", err)
-				break
+				s.logger.Errorf("ioutil.ReadAll err: ", err)
+				return err
 			}
 			if len(body) > 0 {
 				err = json.Unmarshal(body, &paramMap)
@@ -177,7 +190,12 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 
 			paramMap[paramKey] = paramValue
 		case config.ParamLocationHeader:
-			ctx.Request.Header.Set(paramKey, paramValue.(string))
+			paramStr, err := utils.FormatParamValue(paramValue)
+			if err != nil {
+				s.logger.Errorf("<Proxy.addParam> utils.FormatParamValue(%+v) failed, err:%s", paramValue, err)
+				return err
+			}
+			ctx.Request.Header.Set(paramKey, paramStr)
 		}
 	}
 	if len(paramMap) > 0 {

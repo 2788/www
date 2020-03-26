@@ -18,7 +18,6 @@ type Match struct {
 	Method ProxyMethod     `yaml:"method"` // 路由的请求方式
 	Auth   ProxyAuthMethod `yaml:"auth"`   // 鉴权方式
 	Params []Param         `yaml:"params"` //参数
-	// ContentType ProxyContentType `yaml:"content_type"` // content-type
 }
 
 type Param struct {
