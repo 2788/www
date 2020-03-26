@@ -43,8 +43,9 @@
         - location: "body"
           rename: "batch_id"
           custom_value: 592
-    - path: "/api/developer/:uid/overview"
-    
+      filters: # 目前仅支持 login_required
+        - "login_required"
+
 - name: "qmall"
   target: "http://bo-qmall-koderover-staging-bo.cs-spock.cloudappl.com"
   matches:

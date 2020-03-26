@@ -8,14 +8,12 @@ import (
 )
 
 func InitRouters(app *gin.Engine) {
-	ssoCtrl := middlewares.NewSSOController(env.SSOService)
-	couponHandler := coupon.NewCouponHandler(env.GaeaAdminService)
-	tradeHandler := trade.NewTradeHandler(env.GaeaAdminService)
-	proxyHandler := proxy.NewProxyHandler(env.AccTr, env.ProxyCfg, env.Logger)
+	couponHandler := coupon.NewCouponHandler(Global.GaeaAdminService)
+	tradeHandler := trade.NewTradeHandler(Global.GaeaAdminService)
+	proxyHandler := proxy.NewProxyHandler(Global.AccTr, Global.ProxyCfg, Global.SSOService, Global.Logger)
 
 	v1 := app.Group("/marketing")
 	{
-		// v1.Use(ssoCtrl.LoginRequired)
 		{
 			coupon := v1.Group("/coupon")
 			coupon.POST("/bind", couponHandler.BindCampaignsCouponByBatchID)
