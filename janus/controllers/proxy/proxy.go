@@ -19,7 +19,6 @@ import (
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
 	"github.com/qbox/www/janus/env/config"
-	"github.com/qbox/www/janus/utils"
 	"github.com/sirupsen/logrus"
 )
 
@@ -156,6 +155,20 @@ func isSamePath(targetPathArray, matchInfoPathArray []string) bool {
 func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) {
 	session := sessions.Default(ctx)
 	paramMap := make(map[string]interface{})
+	var newBody []byte
+
+	body, err := ioutil.ReadAll(ctx.Request.Body)
+	if err != nil {
+		s.logger.Errorf("ioutil.ReadAll err: ", err)
+		return err
+	}
+	if len(body) > 0 {
+		err = json.Unmarshal(body, &paramMap)
+		if err != nil {
+			err = errors.New("Umarshal failed")
+			return err
+		}
+	}
 
 	for _, paramInfo := range matchInfo.Params {
 		paramKey, paramValue, err := s.getParamMessage(session, paramInfo)
@@ -168,41 +181,21 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		}
 		switch paramInfo.Location {
 		case config.ParamLocationUrlParam:
-			paramStr, err := utils.FormatParamValue(paramValue)
-			if err != nil {
-				s.logger.Errorf("<Proxy.addParam> utils.FormatParamValue(%+v) failed, err:%s", paramValue, err)
-				return err
-			}
-			ctx.Request.Form.Set(paramKey, paramStr)
+			ctx.Request.Form.Set(paramKey, fmt.Sprintf("%v", paramValue))
 		case config.ParamLocationBody:
-			body, err := ioutil.ReadAll(ctx.Request.Body)
-			if err != nil {
-				s.logger.Errorf("ioutil.ReadAll err: ", err)
-				return err
-			}
-			if len(body) > 0 {
-				err = json.Unmarshal(body, &paramMap)
-				if err != nil {
-					err = errors.New("Umarshal failed")
-					return err
-				}
-			}
-
 			paramMap[paramKey] = paramValue
 		case config.ParamLocationHeader:
-			paramStr, err := utils.FormatParamValue(paramValue)
-			if err != nil {
-				s.logger.Errorf("<Proxy.addParam> utils.FormatParamValue(%+v) failed, err:%s", paramValue, err)
-				return err
-			}
-			ctx.Request.Header.Set(paramKey, paramStr)
+			ctx.Request.Header.Set(paramKey, fmt.Sprintf("%v", paramValue))
 		}
 	}
+
 	if len(paramMap) > 0 {
-		jsonString, _ := json.Marshal(paramMap)
-		newBody := []byte(jsonString)
-		ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
+		jsonbytes, _ := json.Marshal(paramMap)
+		newBody = []byte(jsonbytes)
+	} else {
+		newBody = body
 	}
+	ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
 
 	return nil
 }
@@ -210,7 +203,7 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 func (s *Proxy) getParamMessage(session sessions.Session, param config.Param) (paramKey string, paramValue interface{}, err error) {
 	if param.SessionKey != "" {
 		sessionValue := session.Get(param.SessionKey)
-		if sessionValue != nil {
+		if sessionValue == nil {
 			err = errors.New("session get value failed.")
 			return
 		}
