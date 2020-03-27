@@ -3,7 +3,9 @@
   "srcDir": "src",
   "publicUrl": "https://qiniu.staticfile.org/",
   "optimization": {
-    "transformDeps": ["tr46", "react-hot-loader", "ansi-regex", "whatwg-url", "webidl-conversions"]
+    "transformDeps": ["tr46", "react-hot-loader", "ansi-regex", "whatwg-url", "webidl-conversions"],
+    "extractCommon": false,
+    "extractVendor": false
   },
   "targets": {
     "browsers": [
@@ -14,12 +16,12 @@
     ]
   },
   "entries": {
-    "index": "src/index.tsx"
+    "www-marketing": "src/index.tsx"
   },
   "pages": {
     "index": {
       "template": "src/index.ejs",
-      "entries": "index",
+      "entries": "www-marketing",
       "path": "^\\/marketing\\/"
     }
   },
