@@ -63,7 +63,7 @@ export default observer(function PackageModal(props: IProps) {
                 dimension_list.map((item: IDimensionDropdownItem, index: number) => {
                   return (
                     <li key={`package-modal-dimension-${index}`}>
-                      {`${item.label} - ${item.value}`}
+                      {item.label}：{item.value}
                     </li>
                   )
                 })
