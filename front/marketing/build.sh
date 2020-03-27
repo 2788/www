@@ -8,7 +8,7 @@
 ## README     构建信息文件
 #<------------------------------------------------------------------------------->
 #!/bin/bash
-set -e
+set -ex
 
 BUILDER_VERSION="1.16.1"
 WORK_DIR_PATH=$WORKSPACE/www/front/marketing
