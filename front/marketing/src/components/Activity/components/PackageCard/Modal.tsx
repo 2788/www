@@ -12,6 +12,7 @@ import Button from 'react-icecream/lib/button'
 import Row from 'react-icecream/lib/row'
 import Col from 'react-icecream/lib/col'
 import Slider from 'react-icecream/lib/slider'
+import Icon from 'react-icecream/lib/icon'
 
 import { effectType } from 'constants/package'
 
@@ -41,9 +42,15 @@ export default observer(function PackageModal(props: IProps) {
   function renderBuyPackageModal() {
     const { quantity, updateQuantityValue, buyPackageBtnClick } = modalStore
 
+    const header: JSX.Element = (
+      <div className={styles.header}>
+        <Icon type="shopping" />&nbsp;&nbsp;商品下单
+      </div>
+    )
+
     return (
       <Modal
-        title="购买商品"
+        title={header}
         visible={is_show}
         onCancel={() => {
           control_show_func(false)
@@ -83,7 +90,7 @@ export default observer(function PackageModal(props: IProps) {
             <Col className={styles.title} span={24} sm={8}>生效时间</Col>
             <Col className={`${styles.content} ${styles.btnWrapper}`} span={24} sm={16}>
               <Button
-                key="effect_current_month"
+                key="effect-current-month"
                 type="primary"
                 size="large"
                 disabled={!item_id}
@@ -94,9 +101,9 @@ export default observer(function PackageModal(props: IProps) {
                 当月生效
               </Button>
               <Button
-                key="effect_next_month"
-                style={{marginLeft: '0.30rem'}}
-                type="primary"
+                key="effect-next-month"
+                style={{marginLeft: '0.20rem'}}
+                type="default"
                 size="large"
                 disabled={!item_id}
                 loading={modalStore.loadings.isLoading(modalStore.Loading.BuyPackage)}
@@ -113,10 +120,27 @@ export default observer(function PackageModal(props: IProps) {
 
   function renderSuccessModal() {
     const { isSuccessModalShow, controlSuccessModalShow } = modalStore
-    // TODO: 样式
+
+    const header: JSX.Element = (
+      <div className={styles.header}>
+        <Icon type="exclamation-circle" />&nbsp;&nbsp;提示
+      </div>
+    )
+
+    const footer: JSX.Element[] = [
+      <Button.Link
+        className={styles.footerBtn}
+        key="check-pay"
+        href="https://portal.qiniu.com/financial/orders"
+        type="primary"
+        target="_blank">
+        去支付
+      </Button.Link>
+    ]
+
     return (
       <Modal
-        title="提示"
+        title={header}
         visible={isSuccessModalShow}
         onCancel={() => {
           controlSuccessModalShow(false)
@@ -124,16 +148,17 @@ export default observer(function PackageModal(props: IProps) {
         onOk={() => {
           controlSuccessModalShow(false)
         }}
-        footer={null}
+        footer={footer}
         maskClosable={true}
         className={styles.modal}>
-          <p className={`${styles.content} ${styles.textCenter}`}>
+          <p className={`${styles.content} ${styles.larger}`}>
             商品下单成功，请到&nbsp;
-            <Button.Link
+            <a
+              className={styles.link}
               href="https://portal.qiniu.com/financial/orders"
               type="primary"
               target="_blank">财务中心
-            </Button.Link>
+            </a>
             &nbsp;确认支付
           </p>
       </Modal>
