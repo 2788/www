@@ -8,6 +8,9 @@ import { observer } from 'mobx-react'
 import Button from 'react-icecream/lib/button'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
+import Modal from 'react-icecream/lib/modal'
+import Icon from 'react-icecream/lib/icon'
+
 import { ICouponInfo } from 'apis/coupon'
 
 import { asYuan } from 'utils/money'
@@ -73,6 +76,53 @@ export default observer(function CouponCard(props: IProps) {
     )
   }
 
+  function renderSuccessModal() {
+    const { isSuccessModalShow, controlSuccessModalShow } = couponCardStore
+
+    const header: JSX.Element = (
+      <div className={styles.header}>
+        <Icon type="exclamation-circle" />&nbsp;&nbsp;提示
+      </div>
+    )
+
+    const footer: JSX.Element[] = [
+      <Button.Link
+        className={styles.footerBtn}
+        key="check-coupon"
+        href="https://portal.qiniu.com/financial/overview"
+        type="primary"
+        target="_blank">
+        去查看
+      </Button.Link>
+    ]
+
+    return (
+      <Modal
+        title={header}
+        visible={isSuccessModalShow}
+        onCancel={() => {
+          controlSuccessModalShow(false)
+        }}
+        onOk={() => {
+          controlSuccessModalShow(false)
+        }}
+        footer={footer}
+        maskClosable={true}
+        className={styles.modal}>
+          <p className={styles.content}>
+            抵用券领取成功，您可以到&nbsp;
+            <a
+              className={styles.link}
+              href="https://portal.qiniu.com/financial/overview"
+              type="primary"
+              target="_blank">财务中心
+            </a>
+            &nbsp;查看
+          </p>
+      </Modal>
+    )
+  }
+
   return (
     <div className={styles.mainWrapper}>
       {renderSubscript()}
@@ -94,6 +144,7 @@ export default observer(function CouponCard(props: IProps) {
         onClick={() => couponCardStore.drawCouponBtnClick()}>
         {couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon) ? '领取中...' : '立即领取'}
       </Button>
+      {renderSuccessModal()}
     </div>
   )
 })
