@@ -18,6 +18,7 @@ import { getDerateRule, getValidDuration } from 'utils/coupon'
 
 import Label, { IProps as ILabelProps } from 'components/common/Label'
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
+import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/common/NeedSigninModal'
 
 import CouponCardStore from './store'
 import * as styles from './style.m.less'
@@ -73,6 +74,19 @@ export default observer(function CouponCard(props: IProps) {
       <p className={`${styles.lighter} ${styles.smaller}`}>
         {content}
       </p>
+    )
+  }
+
+  function renderNeedSigninModal() {
+    const { isNeedSigninModalShow, controlNeedSigninModalShow } = couponCardStore
+
+    const needSigninModalProps: INeedSigninModalProps = {
+      is_show: isNeedSigninModalShow,
+      control_show_func: controlNeedSigninModalShow
+    }
+
+    return (
+      <NeedSigninModal {...needSigninModalProps} />
     )
   }
 
@@ -141,9 +155,17 @@ export default observer(function CouponCard(props: IProps) {
         size="large"
         className={styles.drawBtn}
         loading={couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon)}
-        onClick={() => couponCardStore.drawCouponBtnClick()}>
+        onClick={() => {
+          // TODO: 根据登录状态触发不同的响应
+          if (Math.random() < 0.3) {
+            couponCardStore.controlNeedSigninModalShow(true)
+            return
+          }
+          couponCardStore.drawCouponBtnClick()
+        }}>
         {couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon) ? '领取中...' : '立即领取'}
       </Button>
+      {renderNeedSigninModal()}
       {renderSuccessModal()}
     </div>
   )

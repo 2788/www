@@ -275,6 +275,7 @@ export default observer(function PackageCard(props: IProps) {
         is_show: isModalShow,
         control_show_func: controlModalShow
       }
+
       return (
         <NeedSigninModal {...needSigninModalProps} />
       )

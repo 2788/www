@@ -33,10 +33,15 @@ export default class CouponCardStore extends Store {
   Loading = Loading
   loadings = Loadings.collectFrom(this, this.Loading)
 
+  @observable.ref isNeedSigninModalShow: boolean = false
   @observable.ref isSuccessModalShow: boolean = false
 
   @action.bound drawCouponBtnClick() {
     this.drawCoupon()
+  }
+
+  @action.bound controlNeedSigninModalShow(isShow: boolean) {
+    this.isNeedSigninModalShow = isShow
   }
 
   @action.bound controlSuccessModalShow(isShow: boolean) {
