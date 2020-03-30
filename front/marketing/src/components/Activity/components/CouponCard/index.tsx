@@ -13,6 +13,8 @@ import Icon from 'react-icecream/lib/icon'
 
 import { ICouponInfo } from 'apis/coupon'
 
+import { portalHost } from 'constants/host'
+
 import { asYuan } from 'utils/money'
 import { getDerateRule, getValidDuration } from 'utils/coupon'
 
@@ -23,10 +25,13 @@ import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/com
 import CouponCardStore from './store'
 import * as styles from './style.m.less'
 
-export interface IProps extends ICouponInfo {}
+export interface IProps extends ICouponInfo {
+  code: string // activity code
+}
 
 export default observer(function CouponCard(props: IProps) {
   const {
+    code,
     label, label_color, coupon_money, threshold_money,
     rule_text, coupon_scope_desc,
     time_period_type, effect_days, coupon_effect_time, coupon_dead_time,
@@ -81,6 +86,7 @@ export default observer(function CouponCard(props: IProps) {
     const { isNeedSigninModalShow, controlNeedSigninModalShow } = couponCardStore
 
     const needSigninModalProps: INeedSigninModalProps = {
+      code,
       is_show: isNeedSigninModalShow,
       control_show_func: controlNeedSigninModalShow
     }
@@ -103,7 +109,7 @@ export default observer(function CouponCard(props: IProps) {
       <Button.Link
         className={styles.footerBtn}
         key="check-coupon"
-        href="https://portal.qiniu.com/financial/overview"
+        href={`${portalHost}/financial/coupon`}
         type="primary"
         target="_blank">
         去查看
@@ -127,7 +133,7 @@ export default observer(function CouponCard(props: IProps) {
             抵用券领取成功，您可以到&nbsp;
             <a
               className={styles.link}
-              href="https://portal.qiniu.com/financial/overview"
+              href={`${portalHost}/financial/coupon`}
               type="primary"
               target="_blank">财务中心
             </a>

@@ -106,7 +106,7 @@
       "cobertura"
     ],
     "mapCoverage": true,
-    "testURL": "https://www.qiniu.com",
+    "testURL": "http://www-marketing-koderover-staging-www.cs-spock.cloudappl.com",
     "globals": {
       "ts-jest": {
         "tsConfigFile": "tsconfig.json"

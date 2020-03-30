@@ -10,15 +10,18 @@ import Modal from 'react-icecream/lib/modal'
 import Button from 'react-icecream/lib/button'
 import Icon from 'react-icecream/lib/icon'
 
+import { portalHost, ssoHost } from 'constants/host'
+
 import * as styles from './style.m.less'
 
 export interface IProps {
+  code: string // activity code
   is_show: boolean
   control_show_func: (isShow: boolean) => void
 }
 
 export default observer(function NeedSigninModal(props: IProps) {
-  const { is_show, control_show_func } = props
+  const { code, is_show, control_show_func } = props
 
   const header: JSX.Element = (
     <div className={styles.header}>
@@ -30,7 +33,7 @@ export default observer(function NeedSigninModal(props: IProps) {
     <Button.Link
       className={styles.footerBtn}
       key="signup"
-      href="https://portal.qiniu.com/signup"
+      href={`${portalHost}/signup?promotion=${code}`}
       type="default"
       target="_blank">
       注册
@@ -38,7 +41,7 @@ export default observer(function NeedSigninModal(props: IProps) {
     <Button.Link
       className={styles.footerBtn}
       key="signin"
-      href="https://sso.qiniu.com"
+      href={ssoHost}
       type="primary"
       target="_blank">
       登录

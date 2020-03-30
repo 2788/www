@@ -28,6 +28,7 @@ import PackageCardStore from './store'
 import * as styles from './style.m.less'
 
 export interface IProps extends IPackageInfo {
+  code: string // activity code
   is_single: boolean
 }
 
@@ -39,7 +40,7 @@ export interface IDimensionDropdownItem {
 
 export default observer(function PackageCard(props: IProps) {
   const {
-    is_single,
+    code, is_single,
     id, title, subtitle, product_type,
     appear_fee, properties,
     label, label_color,
@@ -272,6 +273,7 @@ export default observer(function PackageCard(props: IProps) {
     // TODO: 根据登录状态返回不同的模态框
     if (Math.random() < 0.3) {
       const needSigninModalProps: INeedSigninModalProps = {
+        code,
         is_show: isModalShow,
         control_show_func: controlModalShow
       }

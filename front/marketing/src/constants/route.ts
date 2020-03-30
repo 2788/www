@@ -1,5 +1,5 @@
-/*
- * @file route-relative constants
+/**
+ * @file constants of route
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 

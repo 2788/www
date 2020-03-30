@@ -15,6 +15,7 @@ import Slider from 'react-icecream/lib/slider'
 import Icon from 'react-icecream/lib/icon'
 
 import { effectType } from 'constants/package'
+import { portalHost } from 'constants/host'
 
 import { IPackageItem } from 'apis/package'
 import { IDimensionDropdownItem } from '.'
@@ -131,7 +132,7 @@ export default observer(function PackageModal(props: IProps) {
       <Button.Link
         className={styles.footerBtn}
         key="check-pay"
-        href="https://portal.qiniu.com/financial/orders"
+        href={`${portalHost}/financial/orders`}
         type="primary"
         target="_blank">
         去支付
@@ -155,7 +156,7 @@ export default observer(function PackageModal(props: IProps) {
             商品下单成功，请到&nbsp;
             <a
               className={styles.link}
-              href="https://portal.qiniu.com/financial/orders"
+              href={`${portalHost}/financial/orders`}
               type="primary"
               target="_blank">财务中心
             </a>
