@@ -47,13 +47,13 @@ export default class UserStore extends Store {
   }
 
   @Loadings.handle(Loading.GetUserInfo)
-  async fetchList() {
+  async fetchUserInfo() {
     const req = this.userApis.getUserInfo()
     req.then(this.updateUserInfo)
     return req
   }
 
   init() {
-    this.fetchList()
+    this.fetchUserInfo()
   }
 }
