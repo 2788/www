@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strconv"
 
 	"strings"
 
@@ -28,7 +29,7 @@ type Proxy struct {
 	logger      logrus.FieldLogger
 }
 
-func NewTrandeHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, logger logrus.FieldLogger) *Proxy {
+func NewProxyHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, logger logrus.FieldLogger) *Proxy {
 	return &Proxy{
 		accTr:       accTr,
 		proxyEntrys: proxyCfg,
@@ -157,16 +158,18 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 	paramMap := make(map[string]interface{})
 	var newBody []byte
 
-	body, err := ioutil.ReadAll(ctx.Request.Body)
-	if err != nil {
-		s.logger.Errorf("ioutil.ReadAll err: ", err)
-		return err
-	}
-	if len(body) > 0 {
-		err = json.Unmarshal(body, &paramMap)
+	if ctx.Request.Body != nil {
+		body, err := ioutil.ReadAll(ctx.Request.Body)
 		if err != nil {
-			err = errors.New("Umarshal failed")
+			s.logger.Errorf("ioutil.ReadAll err: ", err)
 			return err
+		}
+		if len(body) > 0 {
+			err = json.Unmarshal(body, &paramMap)
+			if err != nil {
+				err = errors.New("Unmarshal failed")
+				return err
+			}
 		}
 	}
 
@@ -175,10 +178,8 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		if err != nil {
 			return err
 		}
-		if paramValue == nil {
-			err = errors.New("paramValue is nil")
-			return err
-		}
+		// TODO paramValue 有没有默认值的需求
+
 		switch paramInfo.Location {
 		case config.ParamLocationUrlParam:
 			ctx.Request.Form.Set(paramKey, fmt.Sprintf("%v", paramValue))
@@ -190,12 +191,11 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 	}
 
 	if len(paramMap) > 0 {
-		jsonbytes, _ := json.Marshal(paramMap)
-		newBody = []byte(jsonbytes)
-	} else {
-		newBody = body
+		newBody, _ = json.Marshal(paramMap)
+		ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
+		ctx.Request.Header.Set("Content-Length", strconv.Itoa(len(newBody)))
+		ctx.Request.ContentLength = int64(len(newBody))
 	}
-	ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(newBody))
 
 	return nil
 }
@@ -215,6 +215,11 @@ func (s *Proxy) getParamMessage(session sessions.Session, param config.Param) (p
 		paramValue = sessionValue
 	} else {
 		paramKey = param.Rename
+		if param.CustomValue == nil {
+			s.logger.Errorf("<Proxy.getParamMessage> paramKey: %s, customValue is nil", paramKey)
+			err = errors.New("customValue is nil")
+			return
+		}
 		paramValue = param.CustomValue
 	}
 
