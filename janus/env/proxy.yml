@@ -22,3 +22,16 @@
     - path: "/campaigns/:id"
       method: DELETE
       auth: admin
+
+- name: "qmall"
+  target: "http://bo-qmall-koderover-staging-bo.cs-spock.cloudappl.com"
+  matches:
+    - path: "/home/banners"
+      method: GET
+      auth: admin
+    - path: "/home/adverts"
+      method: GET
+      auth: admin
+    - path: "/home/floors"
+      method: GET
+      auth: admin
