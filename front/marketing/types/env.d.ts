@@ -9,6 +9,6 @@ interface Window {
 // process.env
 declare namespace NodeJS {
   export interface ProcessEnv {
-    NODE_ENV: 'development' | 'production' | 'test'
+    NODE_ENV: 'development' | 'staging' | 'production' | 'test'
   }
 }

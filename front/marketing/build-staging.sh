@@ -22,7 +22,7 @@ cd $WORK_DIR_PATH && yarn install
 docker pull aslan-spock-register.qiniu.io/fec-builder:$BUILDER_VERSION
 
 docker run \
-  -e "BUILD_ENV=development" \
+  -e "BUILD_ENV=staging" \
   -v $WORK_DIR_PATH:/fec/input \
   --rm aslan-spock-register.qiniu.io/fec-builder:$BUILDER_VERSION
 
