@@ -5,9 +5,11 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
-import Button from 'react-icecream/lib/button'
+
+import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
+import Button from 'react-icecream/lib/button'
 import Modal from 'react-icecream/lib/modal'
 import Icon from 'react-icecream/lib/icon'
 
@@ -22,7 +24,9 @@ import Label, { IProps as ILabelProps } from 'components/common/Label'
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
 import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/common/NeedSigninModal'
 
+import UserStore from 'stores/user'
 import CouponCardStore from './store'
+
 import * as styles from './style.m.less'
 
 export interface IProps extends ICouponInfo {
@@ -38,6 +42,7 @@ export default observer(function CouponCard(props: IProps) {
     subscript_name, subscript_text, subscript_color
   } = props
 
+  const userStore = useInjection(UserStore)
   // 使用局部 store
   const couponCardStore = useLocalStore(CouponCardStore, props)
 
@@ -162,8 +167,7 @@ export default observer(function CouponCard(props: IProps) {
         className={styles.drawBtn}
         loading={couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon)}
         onClick={() => {
-          // TODO: 根据登录状态触发不同的响应
-          if (Math.random() < 0.3) {
+          if (!userStore.isSignIn) {
             couponCardStore.controlNeedSigninModalShow(true)
             return
           }
