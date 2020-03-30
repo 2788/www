@@ -48,7 +48,6 @@ type AccConfig struct {
 type SSOConfig struct {
 	Host         string `yaml:"host"`
 	ClientId     string `yaml:"client_id"`
-	ClientSecret string `yaml:"client_secret"`
 	CookieSecret string `yaml:"cookie_secret"`
 }
 
