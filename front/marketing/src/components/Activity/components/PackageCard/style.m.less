@@ -192,6 +192,15 @@
 }
 
 .modal {
+  .header {
+    margin-top: 0.04rem;
+    font-size: 0.20rem;
+
+    i {
+      color: @primary-color;
+    }
+  }
+
   .contentWrapper {
     margin: 0.10rem 0;
   }
@@ -212,9 +221,24 @@
       margin: 0.10rem 0;
     }
 
+    .link {
+      color: @primary-color;
+      text-decoration: underline;
+    }
+
+    &.larger {
+      font-size: 0.16rem;
+      line-height: 2;
+    }
+
     &.textCenter {
       text-align: center;
     }
+  }
+
+  .footerBtn {
+    padding-left: 0.40rem;
+    padding-right: 0.40rem;
   }
 
   @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm - 1) {

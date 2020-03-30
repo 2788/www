@@ -7,10 +7,14 @@ import React, { useEffect } from 'react'
 import { useRouterStore } from 'qn-fe-core/router'
 import { basename } from 'constants/route'
 
+import * as styles from './style.m.less'
+
 export default function NotFound() {
-  // TODO: 样式
+
   return (
-    <p>活动已结束</p>
+    <div className={styles.mainWrapper}>
+      <div className={styles.img}></div>
+    </div>
   )
 }
 

@@ -35,7 +35,7 @@ export interface IProps extends IBaseProps {
 }
 
 export default observer(forwardRef(function CouponContainer(props: IProps, ref: Ref<any>) {
-  const { info: { key, data: {
+  const { code, info: { key, data: {
     count_per_row, background_from, background_to,
     show_more_text, show_more_link, show_more_bg_color
   } } } = props
@@ -66,7 +66,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
             <Col
               className={styles.singlePerRow}
               span={SPAN_TOTAL_COUNT}>
-              <CouponCard {...item}></CouponCard>
+              <CouponCard {...item} code={code}></CouponCard>
             </Col>
           </Row>
         )
@@ -84,7 +84,7 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
               span={SPAN_TOTAL_COUNT}
               sm={{ span: SPAN_TOTAL_COUNT / 2 }}
               lg={{ span: spanCount }}>
-              <CouponCard {...item}></CouponCard>
+              <CouponCard {...item} code={code}></CouponCard>
             </Col>
           )
         })}

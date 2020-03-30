@@ -10,6 +10,7 @@ import Col from 'react-icecream/lib/col'
 import Button from 'react-icecream/lib/button'
 import Select from 'react-icecream/lib/select'
 
+import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { IPackageInfo, IPackageProperty } from 'apis/package'
@@ -24,10 +25,13 @@ import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/com
 import { IDimensionDropdownItem } from '.'
 import PackageModal from './Modal'
 
+import UserStore from 'stores/user'
 import PackageCardStore from './store'
+
 import * as styles from './style.m.less'
 
 export interface IProps extends IPackageInfo {
+  code: string // activity code
   is_single: boolean
 }
 
@@ -39,13 +43,14 @@ export interface IDimensionDropdownItem {
 
 export default observer(function PackageCard(props: IProps) {
   const {
-    is_single,
+    code, is_single,
     id, title, subtitle, product_type,
     appear_fee, properties,
     label, label_color,
     subscript_name, subscript_text, subscript_color
   } = props
 
+  const userStore = useInjection(UserStore)
   // 使用局部 store
   const packageCardStore = useLocalStore(PackageCardStore, props)
 
@@ -158,7 +163,10 @@ export default observer(function PackageCard(props: IProps) {
   }
 
   function renderBuyBtnWrapper() {
-    const { selectedPackage, controlModalShow } = packageCardStore
+    const {
+      selectedPackage,
+      controlPackageModalShow, controlNeedSigninModalShow
+    } = packageCardStore
 
     if (!selectedPackage) {
       return null
@@ -186,7 +194,11 @@ export default observer(function PackageCard(props: IProps) {
           className={styles.buyBtn}
           size="large"
           onClick={() => {
-            controlModalShow(true)
+            if (!userStore.isSignIn) {
+              controlNeedSigninModalShow(true)
+              return
+            }
+            controlPackageModalShow(true)
           }}>
           立即抢购
         </Button>
@@ -259,25 +271,14 @@ export default observer(function PackageCard(props: IProps) {
     )
   }
 
-  function renderModal() {
+  function renderPackageModal() {
     const {
       selectedPackage, dimensionDropdownList,
-      isModalShow, controlModalShow,
+      isPackageModalShow, controlPackageModalShow,
     } = packageCardStore
 
     if (!selectedPackage) {
       return null
-    }
-
-    // TODO: 根据登录状态返回不同的模态框
-    if (Math.random() < 0.3) {
-      const needSigninModalProps: INeedSigninModalProps = {
-        is_show: isModalShow,
-        control_show_func: controlModalShow
-      }
-      return (
-        <NeedSigninModal {...needSigninModalProps} />
-      )
     }
 
     return (
@@ -285,8 +286,22 @@ export default observer(function PackageCard(props: IProps) {
         {...selectedPackage}
         package_name={title}
         dimension_list={dimensionDropdownList}
-        is_show={isModalShow}
-        control_show_func={controlModalShow} />
+        is_show={isPackageModalShow}
+        control_show_func={controlPackageModalShow} />
+    )
+  }
+
+  function renderNeedSigninModal() {
+    const { isNeedSigninModalShow, controlNeedSigninModalShow } = packageCardStore
+
+    const needSigninModalProps: INeedSigninModalProps = {
+      code,
+      is_show: isNeedSigninModalShow,
+      control_show_func: controlNeedSigninModalShow
+    }
+
+    return (
+      <NeedSigninModal {...needSigninModalProps} />
     )
   }
 
@@ -296,7 +311,8 @@ export default observer(function PackageCard(props: IProps) {
       {renderInfoWrapper()}
       {renderDimensionDropdownWrapper()}
       {renderMoneyAndBtnWrapper()}
-      {renderModal()}
+      {renderPackageModal()}
+      {renderNeedSigninModal()}
     </div>
   )
 })

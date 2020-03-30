@@ -73,3 +73,42 @@
     }
   }
 }
+
+.modal {
+  .header {
+    margin-top: 0.04rem;
+    font-size: 0.20rem;
+
+    i {
+      color: @primary-color;
+    }
+  }
+
+  .content {
+    margin: 0.10rem 0;
+    font-size: 0.16rem;
+    line-height: 2;
+
+    .link {
+      color: @primary-color;
+      text-decoration: underline;
+    }
+  }
+
+  .footerBtn {
+    padding-left: 0.40rem;
+    padding-right: 0.40rem;
+  }
+
+  @media only screen and (min-width: @modal-sm) and (max-width: @screen-sm - 1) {
+    & {
+      max-width: @modal-sm !important;
+    }
+  }
+
+  @media only screen and (min-width: @screen-sm) {
+    & {
+      max-width: @modal-md !important;
+    }
+  }
+}

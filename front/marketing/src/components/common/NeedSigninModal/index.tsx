@@ -8,21 +8,50 @@ import { observer } from 'mobx-react'
 
 import Modal from 'react-icecream/lib/modal'
 import Button from 'react-icecream/lib/button'
+import Icon from 'react-icecream/lib/icon'
+
+import { portalHost, ssoHost } from 'constants/host'
 
 import * as styles from './style.m.less'
 
 export interface IProps {
+  code: string // activity code
   is_show: boolean
   control_show_func: (isShow: boolean) => void
 }
 
 export default observer(function NeedSigninModal(props: IProps) {
-  const { is_show, control_show_func } = props
+  const { code, is_show, control_show_func } = props
+
+  const header: JSX.Element = (
+    <div className={styles.header}>
+      <Icon type="exclamation-circle" />&nbsp;&nbsp;提示
+    </div>
+  )
+
+  const footer: JSX.Element[] = [
+    <Button.Link
+      className={styles.footerBtn}
+      key="signup"
+      href={`${portalHost}/signup?promotion=${code}`}
+      type="default"
+      target="_blank">
+      注册
+    </Button.Link>,
+    <Button.Link
+      className={styles.footerBtn}
+      key="signin"
+      href={ssoHost}
+      type="primary"
+      target="_blank">
+      登录
+    </Button.Link>
+  ]
 
   // TODO: 样式
   return (
     <Modal
-      title="提示"
+      title={header}
       visible={is_show}
       onCancel={() => {
         control_show_func(false)
@@ -30,27 +59,12 @@ export default observer(function NeedSigninModal(props: IProps) {
       onOk={() => {
         control_show_func(false)
       }}
-      footer={null}
+      footer={footer}
       maskClosable={true}
       className={styles.modal}>
-        <p className={styles.content}>
-          您还未登录
-        </p>
-        <p className={styles.content}>
-          请先&nbsp;
-          <Button.Link
-            href="https://portal.qiniu.com/signup"
-            type="primary"
-            target="_blank">注册
-          </Button.Link>
-          &nbsp;或&nbsp;
-          <Button.Link
-            href="https://sso.qiniu.com"
-            type="primary"
-            target="_blank">登录
-          </Button.Link>
-          &nbsp;七牛云账号
-        </p>
+      <p className={styles.content}>
+        您还未登录，请先注册或登录七牛云账号哦！
+      </p>
     </Modal>
   )
 })
