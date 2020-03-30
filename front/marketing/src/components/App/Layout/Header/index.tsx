@@ -1,35 +1,32 @@
-/*
+/**
  * @file component Header
- * @author jiayizhen <jiayizhen@qiniu.com>
+ * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
 import React from 'react'
 import { observer } from 'mobx-react'
+import { useInjection } from 'qn-fe-core/di'
+import { useLocalStore } from 'qn-fe-core/local-store'
 
 import './style.less'
 
-import { HeaderStore } from 'stores/header'
+import HeaderStore from 'stores/header'
+import UserStore from 'stores/user'
 
-@observer
-export default class Header extends React.Component<any, any> {
-
-  store = new HeaderStore()
-
-  componentDidMount() {
-    this.store.bindWindowScroll()
-  }
-
-  componentWillUnmount() {
-    this.store.unbindWindowScroll()
-    this.store.dispose()
-  }
-
-  render() {
-    const { isWindowScroll } = this.store
-    return (
-      <div className={ isWindowScroll ? 'header-wrapper active' : 'header-wrapper' }>
-        Header Wrapper
-      </div>
-    )
-  }
+export interface IProps {
+  //
 }
+
+export default observer(function Header(props: IProps) {
+  const userStore = useInjection(UserStore)
+  const headerStore = useLocalStore(HeaderStore, props)
+
+  const { isWindowScroll } = headerStore
+
+  return (
+    <div className={ isWindowScroll ? 'header-wrapper active' : 'header-wrapper' }>
+      Header Wrapper
+      {userStore.isSignIn && ' - ' + userStore.fullName}
+    </div>
+  )
+})

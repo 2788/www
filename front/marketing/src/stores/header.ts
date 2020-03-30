@@ -6,8 +6,20 @@
 import { observable, action } from 'mobx'
 
 import Store from 'qn-fe-core/store'
+import { injectable } from 'qn-fe-core/di'
+import { injectProps } from 'qn-fe-core/local-store'
 
-export class HeaderStore extends Store {
+// TODO: -> local store
+import { IProps } from 'components/App/Layout/Header'
+
+@injectable()
+export default class HeaderStore extends Store {
+
+  constructor(
+    @injectProps() private props: IProps
+  ) {
+    super()
+  }
 
   @observable isWindowScroll: boolean = false
 
@@ -15,6 +27,7 @@ export class HeaderStore extends Store {
     window.addEventListener('scroll', (e: any) => {
       this.handleWindowScroll(e)
     }, true)
+    this.addDisposer(() => this.unbindWindowScroll())
   }
 
   @action unbindWindowScroll() {
@@ -30,5 +43,10 @@ export class HeaderStore extends Store {
       return
     }
     this.isWindowScroll = true
+  }
+
+  init() {
+    this.bindWindowScroll()
+    console.log(this.props) // TODO
   }
 }

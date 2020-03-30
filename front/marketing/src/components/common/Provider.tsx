@@ -11,6 +11,9 @@ import BaseProvider, * as base from 'base/components/Provider'
 import FetchStore from 'stores/fetch'
 import DemoApis from 'apis/demo'
 import ComponentApis from 'apis/component'
+import UserApis from 'apis/user'
+
+import UserStore from 'stores/user'
 
 export * from 'base/components/Provider'
 
@@ -22,21 +25,27 @@ export class Env extends Disposable implements base.IEnv {
     public base: base.Env,
     public fetchStore: FetchStore,
     public demoApis: DemoApis,
-    public componentApis: ComponentApis
+    public componentApis: ComponentApis,
+    public userApis: UserApis,
+    public userStore: UserStore
   ) {
     super()
   }
 
   init() {
     this.base.init()
-    this.fetchStore.bindRealFetch(window.fetch)
 
     // TODO: 考虑要不要挪到-base 的 env init 中？需要考虑具体项目定制 title 的需求
     this.base.routerStore.bindDocument(window.document, '七牛云 - {{routeTitle}}')
 
+    this.fetchStore.bindRealFetch(window.fetch)
+
+    this.userStore.init()
+
     this.addDisposer(
       this.base.dispose,
-      this.fetchStore.dispose
+      this.fetchStore.dispose,
+      this.userStore.dispose
     )
   }
 }
