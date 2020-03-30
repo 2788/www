@@ -64,7 +64,7 @@ func initAccSSOService(cfg *config.Config, accTr http.RoundTripper) account.SSOS
 	return account.NewSSOService(
 		cfg.SSO.Host,
 		cfg.SSO.ClientId,
-		cfg.SSO.ClientSecret,
+		cfg.SSO.CookieSecret,
 		accTr)
 }
 
