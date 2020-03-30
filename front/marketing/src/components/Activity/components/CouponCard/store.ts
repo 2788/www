@@ -55,9 +55,9 @@ export default class CouponCardStore extends Store {
       batch_id: parseInt(this.props.batch_id)
     }
     const req = this.couponApis.drawCounpon(options)
-    req.then(() => {
+    req.then(action(() => {
       this.controlSuccessModalShow(true)
-    })
+    }))
     return req
   }
 }
