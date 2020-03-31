@@ -36,9 +36,9 @@ export default observer(function Mobile({ visible, setVisible, color, children }
 
   return (
     <div className={styles.mobile}>
-      <div className={styles.menuWrapper}>
+      <nav className={styles.menuWrapper}>
         {children}
-      </div>
+      </nav>
       {buttonView}
     </div>
   )
