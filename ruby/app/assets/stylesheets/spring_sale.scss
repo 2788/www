@@ -332,7 +332,7 @@
           background: -moz-linear-gradient(#DEF3FF, #FFF);
           background: linear-gradient(#DEF3FF, #FFF);
           tbody tr {
-            border-bottom: 5px solid #0085eb;
+            border-bottom: 5px solid #006abc;
             td {
               padding: 0.10rem 0;
               &:first-child {
@@ -610,15 +610,15 @@
 }
 
 .features-spring-sale-sdk {
-  background: #0085eb;
-}
-
-.features-spring-sale-qvm {
   background: #006abc;
 }
 
-.features-spring-sale-sms {
+.features-spring-sale-qvm {
   background: #0085eb;
+}
+
+.features-spring-sale-sms {
+  background: #006abc;
   .container {
     .statement {
       text-align: center;
