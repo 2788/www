@@ -35,7 +35,7 @@ export interface IProps extends IBaseProps {
 }
 
 export default observer(forwardRef(function PackageContainer(props: IProps, ref: Ref<any>) {
-  const { info: { key, data: {
+  const { code, info: { key, data: {
     count_per_row, background_from, background_to,
     show_more_text, show_more_link, show_more_bg_color
   } } } = props
@@ -68,7 +68,7 @@ export default observer(forwardRef(function PackageContainer(props: IProps, ref:
                 span={SPAN_TOTAL_COUNT}
                 sm={{ span: isSinglePerRow() ? SPAN_TOTAL_COUNT : SPAN_TOTAL_COUNT / 2 }}
                 lg={{ span: spanCount }}>
-                <PackageCard {...item} is_single={isSinglePerRow()}></PackageCard>
+                <PackageCard {...item} is_single={isSinglePerRow()} code={code}></PackageCard>
               </Col>
             )
           })

@@ -58,11 +58,11 @@ export default class ModalStore extends Store {
   @ToasterStore.handle(undefined, '商品下单失败')
   buyPackage(options: IBuyPackageOptions) {
     const req = this.packageApis.buyPackage(options)
-    req.then(() => {
+    req.then(action(() => {
       const { control_show_func } = this.props
       control_show_func(false)
       this.controlSuccessModalShow(true)
-    })
+    }))
     return req
   }
 

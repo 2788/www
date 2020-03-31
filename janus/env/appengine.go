@@ -57,6 +57,7 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.Proxy
 	env.GaeaAdminService = gaeaService
 	env.AccTr = accTr
 	env.ProxyCfg = proxyCfg
+	env.Logger = l
 	return app
 }
 

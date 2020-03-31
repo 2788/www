@@ -12,7 +12,7 @@ func InitRouters(app *gin.Engine) {
 	ssoCtrl := middlewares.NewSSOController(env.SSOService)
 	couponHandler := coupon.NewCouponHandler(env.GaeaAdminService)
 	tradeHandler := trade.NewTradeHandler(env.GaeaAdminService)
-	proxyHandler := proxy.NewTrandeHandler(env.AccTr, env.ProxyCfg)
+	proxyHandler := proxy.NewProxyHandler(env.AccTr, env.ProxyCfg, env.Logger)
 
 	v1 := app.Group("/marketing")
 	{

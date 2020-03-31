@@ -5,30 +5,44 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
-import Button from 'react-icecream/lib/button'
+
+import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
+import Button from 'react-icecream/lib/button'
+import Modal from 'react-icecream/lib/modal'
+import Icon from 'react-icecream/lib/icon'
+
 import { ICouponInfo } from 'apis/coupon'
+
+import { portalHost } from 'constants/host'
 
 import { asYuan } from 'utils/money'
 import { getDerateRule, getValidDuration } from 'utils/coupon'
 
 import Label, { IProps as ILabelProps } from 'components/common/Label'
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
+import NeedSigninModal, { IProps as INeedSigninModalProps } from 'components/common/NeedSigninModal'
 
+import UserStore from 'stores/user'
 import CouponCardStore from './store'
+
 import * as styles from './style.m.less'
 
-export interface IProps extends ICouponInfo {}
+export interface IProps extends ICouponInfo {
+  code: string // activity code
+}
 
 export default observer(function CouponCard(props: IProps) {
   const {
+    code,
     label, label_color, coupon_money, threshold_money,
     rule_text, coupon_scope_desc,
     time_period_type, effect_days, coupon_effect_time, coupon_dead_time,
     subscript_name, subscript_text, subscript_color
   } = props
 
+  const userStore = useInjection(UserStore)
   // 使用局部 store
   const couponCardStore = useLocalStore(CouponCardStore, props)
 
@@ -73,6 +87,67 @@ export default observer(function CouponCard(props: IProps) {
     )
   }
 
+  function renderNeedSigninModal() {
+    const { isNeedSigninModalShow, controlNeedSigninModalShow } = couponCardStore
+
+    const needSigninModalProps: INeedSigninModalProps = {
+      code,
+      is_show: isNeedSigninModalShow,
+      control_show_func: controlNeedSigninModalShow
+    }
+
+    return (
+      <NeedSigninModal {...needSigninModalProps} />
+    )
+  }
+
+  function renderSuccessModal() {
+    const { isSuccessModalShow, controlSuccessModalShow } = couponCardStore
+
+    const header: JSX.Element = (
+      <div className={styles.header}>
+        <Icon type="exclamation-circle" />&nbsp;&nbsp;提示
+      </div>
+    )
+
+    const footer: JSX.Element[] = [
+      <Button.Link
+        className={styles.footerBtn}
+        key="check-coupon"
+        href={`${portalHost}/financial/coupon`}
+        type="primary"
+        target="_blank">
+        去查看
+      </Button.Link>
+    ]
+
+    return (
+      <Modal
+        title={header}
+        visible={isSuccessModalShow}
+        onCancel={() => {
+          controlSuccessModalShow(false)
+        }}
+        onOk={() => {
+          controlSuccessModalShow(false)
+        }}
+        footer={footer}
+        maskClosable={true}
+        className={styles.modal}>
+          <p className={styles.content}>
+            抵用券领取成功，您可以到&nbsp;
+            <a
+              className={styles.link}
+              href={`${portalHost}/financial/coupon`}
+              type="primary"
+              target="_blank">财务中心
+            </a>
+            &nbsp;查看
+          </p>
+      </Modal>
+    )
+  }
+
   return (
     <div className={styles.mainWrapper}>
       {renderSubscript()}
@@ -91,9 +166,17 @@ export default observer(function CouponCard(props: IProps) {
         size="large"
         className={styles.drawBtn}
         loading={couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon)}
-        onClick={() => couponCardStore.drawCouponBtnClick()}>
+        onClick={() => {
+          if (!userStore.isSignIn) {
+            couponCardStore.controlNeedSigninModalShow(true)
+            return
+          }
+          couponCardStore.drawCouponBtnClick()
+        }}>
         {couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon) ? '领取中...' : '立即领取'}
       </Button>
+      {renderNeedSigninModal()}
+      {renderSuccessModal()}
     </div>
   )
 })

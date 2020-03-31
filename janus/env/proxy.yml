@@ -1,9 +1,9 @@
-- name: "lego"
-  target: "http://bo-lego-koderover-staging-bo.cs-spock.cloudappl.com"
+- name: "lego" # 必填
+  target: "http://bo-lego-koderover-staging-bo.cs-spock.cloudappl.com" # 必填
   matches:
-    - path: "/banners/:id"
-      method: GET
-      auth: admin
+    - path: "/banners/:id"  # 必填
+      method: GET           # 必填
+      auth: admin           # 目前仅支持admin鉴权
     - path: "/adverts/:id"
       method: GET
       auth: admin
@@ -13,6 +13,10 @@
     - path: "/campaigns"
       method: GET
       auth: admin
+#      params:
+#        - location: "url_param"
+#          rename: "page"
+#          custom_value: 1
     - path: "/campaigns"
       method: POST
       auth: admin
@@ -22,7 +26,25 @@
     - path: "/campaigns/:id"
       method: DELETE
       auth: admin
-
+- name: "gaea"
+  target: "http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com"
+  matches:
+    - path: "/api/marketing/event/coupon/bind"
+      method: POST
+      auth: admin
+      params:
+        # session_key:  #选填 session_key: "example"
+        # rename:  选填，重命名，如果 rename 为空，则使用session_key作为参数名
+        # custom_value: 选填，自定义的参数值，如果session中没有存某个值，支持自定义。(仅当 session_key 为空是有效)
+        # location: 必填，指定参数位置,目前支持: url_param, body, header
+        - location: "body"
+          rename: "uid"
+          custom_value: 1380536335
+        - location: "body"
+          rename: "batch_id"
+          custom_value: 592
+    - path: "/api/developer/:uid/overview"
+    
 - name: "qmall"
   target: "http://bo-qmall-koderover-staging-bo.cs-spock.cloudappl.com"
   matches:
