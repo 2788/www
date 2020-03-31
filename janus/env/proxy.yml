@@ -13,6 +13,10 @@
     - path: "/campaigns"
       method: GET
       auth: admin
+#      params:
+#        - location: "url_param"
+#          rename: "page"
+#          custom_value: 1
     - path: "/campaigns"
       method: POST
       auth: admin
@@ -39,3 +43,6 @@
         - location: "body"
           rename: "batch_id"
           custom_value: 592
+    - path: "/api/developer/:uid/overview"
+      method: GET
+      auth: admin

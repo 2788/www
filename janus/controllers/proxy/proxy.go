@@ -182,7 +182,9 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 
 		switch paramInfo.Location {
 		case config.ParamLocationUrlParam:
-			ctx.Request.Form.Set(paramKey, fmt.Sprintf("%v", paramValue))
+			value := ctx.Request.URL.Query()
+			value.Set(paramKey, fmt.Sprintf("%v", paramValue))
+			ctx.Request.URL.RawQuery = value.Encode()
 		case config.ParamLocationBody:
 			paramMap[paramKey] = paramValue
 		case config.ParamLocationHeader:
