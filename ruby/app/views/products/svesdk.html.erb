@@ -7,7 +7,7 @@
           <h1><%= raw(I18n.t("views.products.svesdk.banner.title")) -%></h1>
           <p><%= raw(I18n.t("views.products.svesdk.banner.desc")) -%></p>
           <div class="actions">
-            <%= link_to "立即咨询", "https://jinshuju.net/f/gmoDJI", title: "短视频特效 SDK - 立即咨询", target: "_blank", class: "btn btn-lg btn-default m-r m-b-xs" -%>
+            <%= link_to "立即咨询", "", title: "短视频特效 SDK - 立即咨询", target: "", class: "btn btn-lg btn-default m-r m-b-xs", data: {toggle: "modal", target: "#feedback-modal", intention: "短视频特效 SDK - 立即咨询"} -%>
           </div>
           <p><%= link_to raw("&#9658;&nbsp;Demo&nbsp;下载"), "", title: "短视频特效 SDK - Demo 下载", class: "link demo-download" -%></p>
         </div>
@@ -156,7 +156,7 @@
       <div class="col-md-3 col-sm-3 col-xs-6">
         <div class="thumbnail">
           <%= image_tag "svesdk/icon-flow-zixun.png", class: "media-object", alt: "售前咨询", title: "售前咨询", width: 100 -%>
-          <p>1. <%= link_to "售前咨询 >>", "https://jinshuju.net/f/gmoDJI", title: "短视频特效 SDK - 售前咨询", target: "_blank", class: "link" -%></p>
+          <p>1. <%= link_to "售前咨询 >>", "", title: "短视频特效 SDK - 售前咨询", target: "", class: "link", data: {toggle: "modal", target: "#feedback-modal", intention: "短视频特效 SDK - 售前咨询"} -%></p>
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-6">
