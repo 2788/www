@@ -43,7 +43,7 @@ func NewProxyHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, ssoS
 func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 	targetInfo, host, err := s.getTargetAndHost(ctx)
 	if err != nil {
-		controllers.RespErr(ctx, code.NotFound, err)
+		controllers.RespErr(ctx, http.StatusNotFound, code.NotFound, err)
 		return
 	}
 
@@ -60,13 +60,13 @@ func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 
 	err = s.addParam(ctx, targetInfo)
 	if err != nil {
-		controllers.RespErr(ctx, code.NotFound, err)
+		controllers.RespErr(ctx, http.StatusNotFound, code.NotFound, err)
 		return
 	}
 
 	targetURL, err := url.Parse(host)
 	if err != nil {
-		controllers.RespErr(ctx, code.NotFound, err)
+		controllers.RespErr(ctx, http.StatusNotFound, code.NotFound, err)
 		return
 	}
 	targetQuery := targetURL.RawQuery

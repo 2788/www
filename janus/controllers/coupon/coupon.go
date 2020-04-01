@@ -1,6 +1,8 @@
 package coupon
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
@@ -22,12 +24,12 @@ func (s *Coupon) BindCampaignsCouponByBatchID(ctx *gin.Context) {
 
 	err := ctx.BindJSON(&param)
 	if err != nil || param.UID == 0 || param.BatchID == 0 {
-		controllers.RespErr(ctx, code.InvalidArgs, nil)
+		controllers.RespErr(ctx, http.StatusBadRequest, code.InvalidArgs, nil)
 		return
 	}
 	err = s.gaeaService.BindCampaignsCouponByBatchID(param)
 	if err != nil {
-		controllers.RespErr(ctx, code.ResultError, err, "bind coupon failed")
+		controllers.RespErr(ctx, http.StatusInternalServerError, code.ResultError, err, "bind coupon failed")
 		return
 	}
 	controllers.RespOk(ctx, code.OK.Humanize())
