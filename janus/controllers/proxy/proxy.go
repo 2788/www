@@ -40,7 +40,7 @@ func NewProxyHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, ssoS
 	}
 }
 
-func (s *Proxy) ProxyAll(ctx *gin.Context) {
+func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 	targetInfo, host, err := s.getTargetAndHost(ctx)
 	if err != nil {
 		controllers.RespErr(ctx, code.NotFound, err)

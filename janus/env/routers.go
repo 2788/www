@@ -30,7 +30,7 @@ func InitRouters(app *gin.Engine) {
 
 	proxy := app.Group("/api/proxy")
 	{
-		proxy.Any("/*proxy", proxyHandler.ProxyAll)
+		proxy.Any("/*proxy", proxyHandler.HandleProxyRequest)
 	}
 
 }
