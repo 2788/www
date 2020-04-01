@@ -105,6 +105,7 @@ func ParseProxyEntry(file string) ([]ProxyEntry, error) {
 					return nil, ProxyMatchesParamLacationIsNil
 				}
 			}
+			// TODO filter 是否有效
 		}
 	}
 
