@@ -20,7 +20,7 @@ import ActivityEnd, { activityEndPagePath } from 'components/common/ActivityEnd'
 // Layout
 import Layout from './Layout'
 // All Activity Page
-import AllActivity from 'components/AllActivity'
+// import AllActivity from 'components/AllActivity'
 // Activity Page
 import Activity from 'components/Activity'
 
@@ -37,7 +37,9 @@ export default class App extends React.Component<any, any> {
               <Layout>
                 <Switch>
                   <Route relative path="/" exact title="首页"><Redirect relative to="/all" /></Route>
-                  <Route relative path="/all" exact title="全部活动"><AllActivity /></Route>
+                  {/* TODO 活动聚合页暂时还没做，先跳转 404 页面 */}
+                  {/* <Route relative path="/all" exact title="全部活动"><AllActivity /></Route> */}
+                  <Route relative path="/all" exact title="全部活动"><ToNotFound /></Route>
                   <Route relative path={notFoundPagePath} title="404" exact><NotFound /></Route>
                   <Route relative path={activityEndPagePath} title="活动已结束" exact><ActivityEnd /></Route>
                   <Route relative path="/:code" component={

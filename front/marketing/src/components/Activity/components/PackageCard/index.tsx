@@ -97,7 +97,7 @@ export default observer(function PackageCard(props: IProps) {
 
     return (
       <div className={styles.propertyWrapper}>
-        <Row type="flex" justify="space-around" align="middle">{
+        <Row type="flex" align="middle">{
           properties.map((item: IPackageProperty, index: number) => {
             return (
               <Col
@@ -123,11 +123,11 @@ export default observer(function PackageCard(props: IProps) {
   function renderInfoWrapper() {
     return (
       <div className={styles.infoWrapper}>
-        <Row gutter={8} type="flex" justify="space-around" align="middle">
-          <Col span={24} sm={{ span: is_single ? 12 : 24 }}>
+        <Row gutter={8} type="flex" align="middle">
+          <Col span={24} sm={{ span: is_single ? 8 : 24 }}>
             {renderTitleWrapper()}
           </Col>
-          <Col span={24} sm={{ span: (!properties || !properties.length || !is_single) ? 24 : 12 }}>
+          <Col span={24} sm={{ span: (!properties || !properties.length || !is_single) ? 24 : 16 }}>
             {renderPropertyWrapper()}
           </Col>
         </Row>
@@ -209,7 +209,7 @@ export default observer(function PackageCard(props: IProps) {
   function renderMoneyAndBtnWrapper() {
     return (
       <div className={styles.moneyAndBtnWrapper}>
-        <Row gutter={24} type="flex" justify="space-around" align="middle">
+        <Row gutter={24} type="flex" align="middle">
           <Col span={24} sm={{ span: is_single ? 18 : 24 }}>
             {renderMoneyWrapper()}
           </Col>
@@ -284,6 +284,8 @@ export default observer(function PackageCard(props: IProps) {
     return (
       <PackageModal
         {...selectedPackage}
+        code={code}
+        product_type={product_type}
         package_name={title}
         dimension_list={dimensionDropdownList}
         is_show={isPackageModalShow}

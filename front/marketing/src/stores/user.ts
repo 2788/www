@@ -29,18 +29,20 @@ export default class UserStore extends Store {
   loadings = Loadings.collectFrom(this, this.Loading)
 
   @observable.ref uid: number | undefined
-  @observable.ref email: string | undefined
-  @observable.ref fullName: string | undefined
-  @observable.ref signUpTime: number | undefined
+  @observable.ref customerEmail: string | undefined
+  @observable.ref customerName: string | undefined
+  @observable.ref signUpTime: string | undefined
   @observable.ref mobile: string | undefined
   @observable.ref isSignIn: boolean | undefined
 
   @action.bound
-  private updateUserInfo({ full_name, signup_time, is_signin, ...otherUserInfo }: IUserInfo) {
+  private updateUserInfo(userinfo: IUserInfo) {
+    const { uid, customer_name, customer_email, signup_time, ...otherUserInfo } = userinfo
     const target: Partial<UserStore> = {
-      fullName: full_name,
+      customerName: customer_name,
+      customerEmail: customer_email,
       signUpTime: signup_time,
-      isSignIn: is_signin,
+      isSignIn: !!(userinfo && uid),
       ...otherUserInfo
     }
     Object.assign(this, target)

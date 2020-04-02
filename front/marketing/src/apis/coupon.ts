@@ -9,6 +9,7 @@ import FetchStore from 'stores/fetch'
 
 import { ValueOf } from 'types/ts'
 import { couponTimePeriodType } from 'constants/coupon'
+import { proxyLego, proxyGaea } from 'constants/proxy'
 
 export interface IListCouponsOptions {
   campaign_code: string // activity code
@@ -49,9 +50,7 @@ export interface IDrawCouponOptions {
   batch_id: number
 }
 
-export interface IDrawCouponResult {
-  hash_code: string
-}
+export interface IDrawCouponResult {}
 
 @injectable()
 export default class CouponApis extends Store {
@@ -61,17 +60,11 @@ export default class CouponApis extends Store {
     super()
   }
 
-  // TODO: 对接口
   fetchList(options: IListCouponsOptions): Promise<IListCouponsResult> {
-    return this.fetchStore.get('/get-coupons', options)
+    return this.fetchStore.get(`${proxyLego}/marketing/coupons`, options)
   }
 
-  // TODO: 对接口
   drawCounpon(options: IDrawCouponOptions): Promise<IDrawCouponResult> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(this.fetchStore.get('/draw-coupon', options))
-      }, 1000)
-    })
+    return this.fetchStore.postJSON(`${proxyGaea}/api/marketing/event/coupon/bind`, options)
   }
 }

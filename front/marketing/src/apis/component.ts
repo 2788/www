@@ -7,6 +7,8 @@ import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
 import FetchStore from 'stores/fetch'
 
+import { proxyLego } from 'constants/proxy'
+
 // FIXME: 依赖关系反了。。？
 import { IConfig as IDemoConfig } from 'components/Activity/components/Demo'
 import { IConfig as IPageBannerConfig } from 'components/Activity/components/PageBanner'
@@ -49,10 +51,6 @@ export interface IListComponentsOptions {
   code: string // activity code
 }
 
-export interface IListComponentsResult {
-  list: IComponentInfo[]
-}
-
 @injectable()
 export default class ComponentApis extends Store {
   constructor(
@@ -61,8 +59,7 @@ export default class ComponentApis extends Store {
     super()
   }
 
-  // TODO: 对接口
-  fetchList(options: IListComponentsOptions): Promise<IListComponentsResult> {
-    return this.fetchStore.get('/list-components', options)
+  fetchList(options: IListComponentsOptions): Promise<string> {
+    return this.fetchStore.get(`${proxyLego}/campaigns/pages/config/by/campaign`, options)
   }
 }

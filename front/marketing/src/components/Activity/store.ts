@@ -10,7 +10,7 @@ import { injectProps } from 'qn-fe-core/local-store'
 import Loadings from 'base/stores/loadings'
 import ToasterStore from 'base/stores/toaster'
 
-import ComponentApis, { IComponentInfo } from 'apis/component'
+import ComponentApis, { IListComponentsOptions, IComponentInfo } from 'apis/component'
 
 import { IProps } from '.'
 
@@ -21,7 +21,7 @@ enum Loading {
 @injectable()
 export default class ActivityStore extends Store {
   constructor(
-    toasteStore: ToasterStore,
+    private toasteStore: ToasterStore,
     private componentApis: ComponentApis,
     @injectProps() private props: IProps
   ) {
@@ -36,14 +36,32 @@ export default class ActivityStore extends Store {
 
   @action.bound
   private updateList(list: IComponentInfo[]) {
+    if (!list || !list.length) {
+      return
+    }
+
     this.list = list
+  }
+
+  @action.bound parseStrToJson(str: string) {
+    try {
+      const list: IComponentInfo[] = JSON.parse(str)
+      this.updateList(list)
+    } catch (error) {
+      this.toasteStore.error('控件列表数据解析失败')
+    }
   }
 
   @Loadings.handle(Loading.FetchList)
   @ToasterStore.handle(undefined, '控件列表数据加载失败')
   async fetchList() {
-    const req = this.componentApis.fetchList({ code: this.props.code })
-    req.then(result => this.updateList(result.list))
+    const options: IListComponentsOptions = {
+      code: this.props.code
+    }
+    const req = this.componentApis.fetchList(options)
+    req.then(action((res: string) => {
+      this.parseStrToJson(res)
+    }))
     return req
   }
 

@@ -26,7 +26,7 @@ export default observer(function Header(props: IProps) {
   return (
     <div className={ isWindowScroll ? 'header-wrapper active' : 'header-wrapper' }>
       Header Wrapper
-      {userStore.isSignIn && ' - ' + userStore.fullName}
+      {userStore.isSignIn && ' - ' + userStore.customerName}
     </div>
   )
 })

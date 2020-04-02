@@ -22,6 +22,7 @@ export interface IProps {
 
 export default observer(function NeedSigninModal(props: IProps) {
   const { code, is_show, control_show_func } = props
+  const { location: { origin, pathname } } = window
 
   const header: JSX.Element = (
     <div className={styles.header}>
@@ -34,16 +35,14 @@ export default observer(function NeedSigninModal(props: IProps) {
       className={styles.footerBtn}
       key="signup"
       href={`${portalHost}/signup?promotion=${code}`}
-      type="default"
-      target="_blank">
+      type="default">
       注册
     </Button.Link>,
     <Button.Link
       className={styles.footerBtn}
       key="signin"
-      href={ssoHost}
-      type="primary"
-      target="_blank">
+      href={`${ssoHost}?redirect_url=${encodeURIComponent(origin + pathname)}`}
+      type="primary">
       登录
     </Button.Link>
   ]

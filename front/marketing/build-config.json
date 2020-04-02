@@ -55,15 +55,8 @@
     "svg@m.css": "file"
   },
   "devProxy": {
-    "_/api": "http://www-dev.qiniu.io",
-    "/signin": {
-      "target": "http://www-dev.qiniu.io",
-      "pathRewrite": {
-        "^/signin": "/signin"
-      }
-    }
+    "/api": "http://www-janus-koderover-staging-www.cs-spock.cloudappl.com"
   },
-  "// TODO: deploy": "add www marketing deploy config",
   "deploy": {
     "config": {
       "accessKey": "tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr",
