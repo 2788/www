@@ -20,6 +20,7 @@ import (
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
 	"github.com/qbox/www/janus/env/config"
+	"github.com/qbox/www/janus/service/account"
 	"github.com/sirupsen/logrus"
 )
 
@@ -27,22 +28,36 @@ type Proxy struct {
 	accTr       http.RoundTripper
 	proxyEntrys []config.ProxyEntry
 	logger      logrus.FieldLogger
+	ssoService  account.SSOService
 }
 
-func NewProxyHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, logger logrus.FieldLogger) *Proxy {
+func NewProxyHandler(accTr http.RoundTripper, proxyCfg []config.ProxyEntry, ssoService account.SSOService, logger logrus.FieldLogger) *Proxy {
 	return &Proxy{
 		accTr:       accTr,
 		proxyEntrys: proxyCfg,
 		logger:      logger,
+		ssoService:  ssoService,
 	}
 }
 
-func (s *Proxy) ProxyAll(ctx *gin.Context) {
+func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 	targetInfo, host, err := s.getTargetAndHost(ctx)
 	if err != nil {
 		controllers.RespErr(ctx, code.NotFound, err)
 		return
 	}
+
+	filters := s.GetFilters(targetInfo.Filters)
+	bool, err := s.DoFilters(ctx, filters)
+	if err != nil {
+		controllers.RespErr(ctx, code.Unauthorized, err)
+		return
+	}
+	if !bool {
+		controllers.RespErr(ctx, code.Unauthorized, nil)
+		return
+	}
+
 	err = s.addParam(ctx, targetInfo)
 	if err != nil {
 		controllers.RespErr(ctx, code.NotFound, err)
@@ -123,6 +138,7 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Method = match.Method
 				matchInfo.Auth = match.Auth
 				matchInfo.Params = match.Params
+				matchInfo.Filters = match.Filters
 				return &matchInfo, host, nil
 			}
 		}

@@ -15,10 +15,11 @@ type ProxyEntry struct {
 }
 
 type Match struct {
-	Path   string          `yaml:"path"`   // 路由
-	Method ProxyMethod     `yaml:"method"` // 路由的请求方式
-	Auth   ProxyAuthMethod `yaml:"auth"`   // 鉴权方式
-	Params []Param         `yaml:"params"` // 参数
+	Path    string          `yaml:"path"`    // 路由
+	Method  ProxyMethod     `yaml:"method"`  // 路由的请求方式
+	Auth    ProxyAuthMethod `yaml:"auth"`    // 鉴权方式
+	Params  []Param         `yaml:"params"`  // 参数
+	Filters []FilterName    `yaml:"filters"` // 过滤条件
 }
 
 type Param struct {
@@ -66,6 +67,12 @@ var (
 	ProxyMatchesParamLacationIsNil = errors.New("proxyConfig matches param location is nil.")
 )
 
+type FilterName string
+
+const (
+	LoginRequired FilterName = "login_required"
+)
+
 func ParseProxyEntry(file string) ([]ProxyEntry, error) {
 	proxyDate, err := ioutil.ReadFile(file)
 	if err != nil {
@@ -98,6 +105,7 @@ func ParseProxyEntry(file string) ([]ProxyEntry, error) {
 					return nil, ProxyMatchesParamLacationIsNil
 				}
 			}
+			// TODO filter 是否有效
 		}
 	}
 

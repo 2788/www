@@ -52,12 +52,12 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.Proxy
 	ssoService := initAccSSOService(cfg, accTr)
 	gaeaService := initGaeaService(cfg.Services.GaeaHost, accTr, l)
 
-	env.Cfg = cfg
-	env.SSOService = ssoService
-	env.GaeaAdminService = gaeaService
-	env.AccTr = accTr
-	env.ProxyCfg = proxyCfg
-	env.Logger = l
+	Global.Cfg = cfg
+	Global.SSOService = ssoService
+	Global.GaeaAdminService = gaeaService
+	Global.AccTr = accTr
+	Global.ProxyCfg = proxyCfg
+	Global.Logger = l
 	return app
 }
 
