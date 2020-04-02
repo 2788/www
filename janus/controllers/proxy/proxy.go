@@ -50,11 +50,11 @@ func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 	filters := s.GetFilters(targetInfo.Filters)
 	bool, err := s.DoFilters(ctx, filters)
 	if err != nil {
-		controllers.RespErr(ctx, code.Unauthorized, err)
+		controllers.RespErr(ctx, http.StatusUnauthorized, code.Unauthorized, err)
 		return
 	}
 	if !bool {
-		controllers.RespErr(ctx, code.Unauthorized, nil)
+		controllers.RespErr(ctx, http.StatusUnauthorized, code.Unauthorized, nil)
 		return
 	}
 
