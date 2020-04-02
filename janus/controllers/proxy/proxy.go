@@ -89,6 +89,9 @@ func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 			}
 		},
 	}
+	if targetInfo.ServiceProtocol == config.GRPCProtocol {
+		proxy.ModifyResponse = ModifyResponse
+	}
 
 	// 目前仅支持admin
 	if targetInfo.Auth == config.ProxyAuthAdmin {
@@ -139,6 +142,7 @@ func (s *Proxy) getTargetAndHost(ctx *gin.Context) (*config.Match, string, error
 				matchInfo.Auth = match.Auth
 				matchInfo.Params = match.Params
 				matchInfo.Filters = match.Filters
+				matchInfo.ServiceProtocol = match.ServiceProtocol
 				return &matchInfo, host, nil
 			}
 		}
