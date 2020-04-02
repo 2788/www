@@ -8,12 +8,11 @@ import (
 
 // Config config for app
 type Config struct {
-	Server   ServerConfig   `yaml:"server"`
-	Redis    RedisConfig    `yaml:"redis"`
-	Acc      AccConfig      `yaml:"acc"`
-	SSO      SSOConfig      `yaml:"sso"`
-	Services ServicesConfig `yaml:"services"`
-	Session  SessionConfig  `yaml:"session"`
+	Server  ServerConfig  `yaml:"server"`
+	Redis   RedisConfig   `yaml:"redis"`
+	Acc     AccConfig     `yaml:"acc"`
+	SSO     SSOConfig     `yaml:"sso"`
+	Session SessionConfig `yaml:"session"`
 }
 
 // ServerConfig config for server
@@ -49,11 +48,6 @@ type SSOConfig struct {
 	Host         string `yaml:"host"`
 	ClientId     string `yaml:"client_id"`
 	CookieSecret string `yaml:"cookie_secret"`
-}
-
-// ServicesConfig config for other services
-type ServicesConfig struct {
-	GaeaHost string `yaml:"gaea_host"`
 }
 
 // ParseConfig parses config file
