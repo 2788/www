@@ -59,7 +59,16 @@ export default class ComponentApis extends Store {
     super()
   }
 
-  fetchList(options: IListComponentsOptions): Promise<string> {
-    return this.fetchStore.get(`${proxyLego}/campaigns/pages/config/by/campaign`, options)
+  fetchList(options: IListComponentsOptions): Promise<IComponentInfo[]> {
+    return this.fetchStore.get(`${proxyLego}/campaigns/pages/config/by/campaign`, options).then((res: string) => {
+      try {
+        const list: IComponentInfo[] = JSON.parse(res)
+        return list
+      } catch (error) {
+        throw new Error('控件列表数据解析失败')
+      }
+    }, (_err) => {
+      throw new Error('控件列表数据加载失败')
+    })
   }
 }

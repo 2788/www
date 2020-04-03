@@ -53,15 +53,13 @@ export default class ActivityStore extends Store {
   }
 
   @Loadings.handle(Loading.FetchList)
-  @ToasterStore.handle(undefined, '控件列表数据加载失败')
+  @ToasterStore.handle(undefined, undefined)
   async fetchList() {
     const options: IListComponentsOptions = {
       code: this.props.code
     }
     const req = this.componentApis.fetchList(options)
-    req.then(action((res: string) => {
-      this.parseStrToJson(res)
-    }))
+    req.then(action((res: IComponentInfo[]) => this.updateList(res)))
     return req
   }
 
