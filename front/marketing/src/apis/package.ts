@@ -9,6 +9,7 @@ import FetchStore from 'stores/fetch'
 
 import { ValueOf } from 'types/ts'
 import { packageProductType, effectType } from 'constants/package'
+import { proxyLego, proxyGaea } from 'constants/proxy'
 
 export interface IListPackagesOptions {
   campaign_code: string // activity code
@@ -58,18 +59,36 @@ export interface IPackageInfo {
   label_color: string
 }
 
-export interface IBuyPackageOptions {
-  item_id: number
-  quantity: number
-  effect_type: ValueOf<typeof effectType>
-}
-
 export interface IListPackagesResult {
   campaign_product_detail: IPackageInfo[]
 }
 
+export interface IBuyPackageOptions {
+  package_id: number
+  quantity: number
+  effect_type: ValueOf<typeof effectType>
+  memo?: string
+}
+
 export interface IBuyPackageResult {
-  hash_code: string
+  order_hash: string
+  order_hashes: string[]
+}
+
+export interface IOrderItem {
+  product_id: number
+  duration: number
+  quantity: number
+  property: string
+}
+
+export interface IBuyOrderOptions {
+  orders: IOrderItem[]
+  memo?: string
+}
+
+export interface IBuyOrderResult {
+  order_hash: string
 }
 
 @injectable()
@@ -80,17 +99,15 @@ export default class PackageApis extends Store {
     super()
   }
 
-  // TODO: 对接口
   fetchList(options: IListPackagesOptions): Promise<IListPackagesResult> {
-    return this.fetchStore.get('/get-packages', options)
+    return this.fetchStore.get(`${proxyLego}/marketing/products`, options)
   }
 
-  // TODO: 对接口
   buyPackage(options: IBuyPackageOptions): Promise<IBuyPackageResult> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(this.fetchStore.get('/buy-package', options))
-      }, 1000)
-    })
+    return this.fetchStore.postJSON(`${proxyGaea}/api/package/buy`, options)
+  }
+
+  buyOrder(options: IBuyOrderOptions): Promise<IBuyOrderResult> {
+    return this.fetchStore.postJSON(`${proxyGaea}/api/order/new`, options)
   }
 }

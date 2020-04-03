@@ -7,14 +7,15 @@ import { injectable } from 'qn-fe-core/di'
 import Store from 'qn-fe-core/store'
 import FetchStore from 'stores/fetch'
 
+import { proxyGaea } from 'constants/proxy'
+
 export interface IFetchUserInfoOptions {}
 export interface IUserInfo {
   uid: number
-  email: string
-  full_name: string
-  signup_time: number
+  customer_name: string
+  customer_email: string
+  signup_time: string
   mobile: string
-  is_signin: boolean
 }
 
 @injectable()
@@ -25,8 +26,7 @@ export default class UserApis extends Store {
     super()
   }
 
-  // TODO: 对接口
   getUserInfo(options?: IFetchUserInfoOptions): Promise<IUserInfo> {
-    return this.fetchStore.get('/userinfo', { ...options })
+    return this.fetchStore.get(`${proxyGaea}/api/developer-view/overview`, { ...options })
   }
 }

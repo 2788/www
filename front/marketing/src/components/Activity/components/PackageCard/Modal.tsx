@@ -24,6 +24,8 @@ import ModalStore from './modalStore'
 import * as styles from './style.m.less'
 
 export interface IProps extends IPackageItem {
+  code: string // activity code
+  product_type: string
   package_name: string
   dimension_list: IDimensionDropdownItem[]
   is_show: boolean
@@ -120,7 +122,7 @@ export default observer(function PackageModal(props: IProps) {
   }
 
   function renderSuccessModal() {
-    const { isSuccessModalShow, controlSuccessModalShow } = modalStore
+    const { orderHash, isSuccessModalShow, controlSuccessModalShow } = modalStore
 
     const header: JSX.Element = (
       <div className={styles.header}>
@@ -132,7 +134,7 @@ export default observer(function PackageModal(props: IProps) {
       <Button.Link
         className={styles.footerBtn}
         key="check-pay"
-        href={`${portalHost}/financial/orders`}
+        href={`${portalHost}/financial/verify-order/${orderHash}`}
         type="primary"
         target="_blank">
         去支付
@@ -156,7 +158,7 @@ export default observer(function PackageModal(props: IProps) {
             商品下单成功，请到&nbsp;
             <a
               className={styles.link}
-              href={`${portalHost}/financial/orders`}
+              href={`${portalHost}/financial/verify-order/${orderHash}`}
               type="primary"
               target="_blank">财务中心
             </a>

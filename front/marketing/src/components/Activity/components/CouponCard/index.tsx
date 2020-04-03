@@ -10,12 +10,8 @@ import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import Button from 'react-icecream/lib/button'
-import Modal from 'react-icecream/lib/modal'
-import Icon from 'react-icecream/lib/icon'
 
 import { ICouponInfo } from 'apis/coupon'
-
-import { portalHost } from 'constants/host'
 
 import { asYuan } from 'utils/money'
 import { getDerateRule, getValidDuration } from 'utils/coupon'
@@ -101,53 +97,6 @@ export default observer(function CouponCard(props: IProps) {
     )
   }
 
-  function renderSuccessModal() {
-    const { isSuccessModalShow, controlSuccessModalShow } = couponCardStore
-
-    const header: JSX.Element = (
-      <div className={styles.header}>
-        <Icon type="exclamation-circle" />&nbsp;&nbsp;提示
-      </div>
-    )
-
-    const footer: JSX.Element[] = [
-      <Button.Link
-        className={styles.footerBtn}
-        key="check-coupon"
-        href={`${portalHost}/financial/coupon`}
-        type="primary"
-        target="_blank">
-        去查看
-      </Button.Link>
-    ]
-
-    return (
-      <Modal
-        title={header}
-        visible={isSuccessModalShow}
-        onCancel={() => {
-          controlSuccessModalShow(false)
-        }}
-        onOk={() => {
-          controlSuccessModalShow(false)
-        }}
-        footer={footer}
-        maskClosable={true}
-        className={styles.modal}>
-          <p className={styles.content}>
-            抵用券领取成功，您可以到&nbsp;
-            <a
-              className={styles.link}
-              href={`${portalHost}/financial/coupon`}
-              type="primary"
-              target="_blank">财务中心
-            </a>
-            &nbsp;查看
-          </p>
-      </Modal>
-    )
-  }
-
   return (
     <div className={styles.mainWrapper}>
       {renderSubscript()}
@@ -176,7 +125,6 @@ export default observer(function CouponCard(props: IProps) {
         {couponCardStore.loadings.isLoading(couponCardStore.Loading.DrawCoupon) ? '领取中...' : '立即领取'}
       </Button>
       {renderNeedSigninModal()}
-      {renderSuccessModal()}
     </div>
   )
 })

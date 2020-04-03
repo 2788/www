@@ -2,22 +2,12 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <%
-      // mock TODO: 后端渲染
-      const pageData = {
-        code: 123, // activyty code, the same as url
-        title: 'marketing',
-        keywords: 'keywords',
-        description: 'description'
-        // TODO: others
-      }
-    %>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 此标签之前不能有其他 script 和 link -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> <!-- 禁止移动端页面缩放 -->
-    <title state-data-title><%= pageData.title %></title>
-    <meta name="keywords" content="<%= pageData.keywords %>">
-    <meta name="description" content="<%= pageData.description %>">
+    <title state-data-title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
     <link rel="shortcut icon" href="https://qiniu.staticfile.org/favicon.ico" type="image/vnd.microsoft.icon">
   </head>
   <body>
@@ -38,12 +28,5 @@
     <% if (process.env.NODE_ENV === "development") { %>
     <script src="/webpack-dev-server.js"></script>
     <% } %>
-
-    <!-- TODO: 实际上可能不需要这个 -->
-    <!--<script src="<%= pageData.rendererCdnUrlWithVersionBuiltWhileDeploy %>"></script>-->
-
-    <script>
-      window.pageData = (<%= JSON.stringify(pageData) %>)
-    </script>
   </body>
 </html>

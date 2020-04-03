@@ -1,1 +1,1 @@
-export default '/api' // TODO: 联调
+export default '/api'

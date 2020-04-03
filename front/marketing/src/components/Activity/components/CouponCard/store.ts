@@ -34,7 +34,6 @@ export default class CouponCardStore extends Store {
   loadings = Loadings.collectFrom(this, this.Loading)
 
   @observable.ref isNeedSigninModalShow: boolean = false
-  @observable.ref isSuccessModalShow: boolean = false
 
   @action.bound drawCouponBtnClick() {
     this.drawCoupon()
@@ -44,20 +43,13 @@ export default class CouponCardStore extends Store {
     this.isNeedSigninModalShow = isShow
   }
 
-  @action.bound controlSuccessModalShow(isShow: boolean) {
-    this.isSuccessModalShow = isShow
-  }
-
   @Loadings.handle(Loading.DrawCoupon)
-  @ToasterStore.handle(undefined, '领取抵用券失败')
+  @ToasterStore.handle('抵用券领取成功', '领取抵用券失败')
   drawCoupon() {
     const options: IDrawCouponOptions = {
       batch_id: parseInt(this.props.batch_id)
     }
     const req = this.couponApis.drawCounpon(options)
-    req.then(action(() => {
-      this.controlSuccessModalShow(true)
-    }))
     return req
   }
 }
