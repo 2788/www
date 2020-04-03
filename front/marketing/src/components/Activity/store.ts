@@ -21,7 +21,7 @@ enum Loading {
 @injectable()
 export default class ActivityStore extends Store {
   constructor(
-    private toasteStore: ToasterStore,
+    toasteStore: ToasterStore,
     private componentApis: ComponentApis,
     @injectProps() private props: IProps
   ) {
@@ -43,24 +43,14 @@ export default class ActivityStore extends Store {
     this.list = list
   }
 
-  @action.bound parseStrToJson(str: string) {
-    try {
-      const list: IComponentInfo[] = JSON.parse(str)
-      this.updateList(list)
-    } catch (error) {
-      this.toasteStore.error('控件列表数据解析失败')
-    }
-  }
-
   @Loadings.handle(Loading.FetchList)
-  @ToasterStore.handle(undefined, undefined)
+  @ToasterStore.handle()
   async fetchList() {
     const options: IListComponentsOptions = {
       code: this.props.code
     }
     const req = this.componentApis.fetchList(options)
-    req.then(action((res: IComponentInfo[]) => this.updateList(res)))
-    return req
+    return req.then(this.updateList)
   }
 
   init() {
