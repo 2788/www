@@ -9,6 +9,7 @@ import (
 
 	"github.com/qbox/www/janus/code"
 	"github.com/qbox/www/janus/controllers"
+	gcode "google.golang.org/grpc/codes"
 )
 
 func ModifyResponse(response *http.Response) error {
@@ -30,7 +31,7 @@ func ModifyResponse(response *http.Response) error {
 	} else {
 		gErrInfo := struct {
 			Error   string        `json:"error"`
-			Code    code.GCode    `json:"code"`
+			Code    gcode.Code    `json:"code"`
 			Message string        `json:"message"`
 			Details []interface{} `json:"details"`
 		}{}
@@ -39,7 +40,7 @@ func ModifyResponse(response *http.Response) error {
 		if err != nil {
 			return err
 		}
-		res.Code = gErrInfo.Code.CodeTransform()
+		res.Code = code.CodeTransform(gErrInfo.Code)
 		res.Message = gErrInfo.Message
 	}
 	newBody, err := json.Marshal(res)

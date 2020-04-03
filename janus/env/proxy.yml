@@ -27,6 +27,10 @@
     - path: "/campaigns/:id"
       method: DELETE
       auth: admin
+    - path: "/campaigns/pages/config/by/campaign"
+      method: GET
+      auth: admin
+      service_protocol: "grpc"
 - name: "gaea"
   target: "http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com"
   matches:
