@@ -10,7 +10,6 @@ import (
 	"github.com/qbox/www/janus/controllers/middlewares"
 	"github.com/qbox/www/janus/env/config"
 	"github.com/qbox/www/janus/service/account"
-	"github.com/qbox/www/janus/service/gaea"
 	"github.com/sirupsen/logrus"
 )
 
@@ -50,11 +49,9 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.Proxy
 	}
 
 	ssoService := initAccSSOService(cfg, accTr)
-	gaeaService := initGaeaService(cfg.Services.GaeaHost, accTr, l)
 
 	Global.Cfg = cfg
 	Global.SSOService = ssoService
-	Global.GaeaAdminService = gaeaService
 	Global.AccTr = accTr
 	Global.ProxyCfg = proxyCfg
 	Global.Logger = l
@@ -67,9 +64,4 @@ func initAccSSOService(cfg *config.Config, accTr http.RoundTripper) account.SSOS
 		cfg.SSO.ClientId,
 		cfg.SSO.CookieSecret,
 		accTr)
-}
-
-func initGaeaService(host string, adminTr http.RoundTripper, logger logrus.FieldLogger) gaea.GaeaAdminService {
-	client := &account.Client{&http.Client{Transport: adminTr}}
-	return gaea.NewGaeaAdminService(host, client, logger)
 }

@@ -22,5 +22,6 @@ require (
 	github.com/x-cray/logrus-prefixed-formatter v0.5.2
 	golang.org/x/crypto v0.0.0-20200221231518-2aa609cf4a9d // indirect
 	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
+	google.golang.org/grpc v1.28.0
 	gopkg.in/yaml.v2 v2.2.8
 )

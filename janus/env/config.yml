@@ -15,8 +15,6 @@ redis:
 session:
     max_age: 604800
 
-services:
-    gaea_host: "http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com"
 acc:
     host: "http://10.200.20.25:9100"
     username: "root"
