@@ -33,7 +33,7 @@ export interface ISubMenuBaseProps {
 function Logo() {
   return (
     <a href="https://www.qiniu.com" className={styles.logo}>
-      <img src={LogoUrl.White} alt="logo" />
+      <img alt="Qiniu logo" src={LogoUrl.White} />
     </a>
   )
 }

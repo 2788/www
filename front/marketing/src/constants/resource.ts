@@ -1,8 +1,18 @@
 // cdn 公共静态资源
+// TODO: 如何管理？以及跟官网冗余了咋办
 
 export enum Logo {
   White = 'https://qiniu.com/assets/logo-white-18da5fcb02f4aa87dacbf4451a7356b6179baebc96ae77cf24f607c98d12d100.png',
   Blue = 'https://www.qiniu.com/assets/logo-zh-dbef5f389fb045c60f710d4d4e6225e9015c1684b1a1f7b81e000b952581dcd4.png'
+}
+
+export enum WeChat {
+  OfficialAccountQrCode = 'https://www.qiniu.com/assets/weixin-qrcode-e4ddfa8a1a16b96c60e4b671b676dfd168ab4f91b5a700a755dde294347fc0f0.png'
+}
+
+export enum CommonIcon {
+  Github = 'https://www.qiniu.com/assets/github-b94aa0429288ad9c1ef67cada7c25bf6f391f45274ecbe910719eb0aed351581.png',
+  Weibo = 'https://www.qiniu.com/assets/weibo-98426eec2b21e0f23317ab7ad707aa57e8d558694c6b80a728f00d0d8e3f7401.png'
 }
 
 export const tagIcons = {
