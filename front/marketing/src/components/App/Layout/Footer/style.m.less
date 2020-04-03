@@ -1,0 +1,128 @@
+/**
+ * @file styles of component Footer
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: @header-active-bg-color;
+
+  .main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+
+    * {
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .menu {
+      flex: 1;
+      width: 1.50rem;
+      .c-word-nowrap();
+
+      * {
+        color: @header-text-color;
+      }
+
+      .subMenu {
+        * {
+          color: #adaeb3;
+        }
+
+        :global {
+          .ant-collapse-header {
+            margin: 1em 0 -1em 2px;
+            padding: 1em;
+            color: @header-text-color;
+            // pointer-events: none; // TODO
+
+            .anticon {
+              display: none;
+            }
+          }
+        }
+
+        .menuItem {
+          display: block;
+          line-height: 2;
+
+          a {
+            color: inherit;
+
+            &:hover {
+              color: @header-active-text-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .entry {
+    margin: 3em;
+    width: 2.00rem;
+    text-align: center;
+
+    .logo {
+      display: block;
+      margin: 1em;
+
+      img {
+        width: 1.40rem;
+      }
+    }
+
+    .qrCode {
+      img {
+        width: 1.20rem;
+        border: 1ex solid @white;
+      }
+    }
+
+    .qrCodeTitle {
+      margin: .3em 0;
+      font-size: 0.14rem;
+      color: @header-text-color;
+    }
+
+    .sns {
+      margin-top: 0.40rem;
+
+      .github,
+      .weibo {
+        margin: 0 1em;
+
+        img {
+          width: 0.20rem;
+        }
+      }
+    }
+  }
+
+  .info {
+    border-top: 1px solid #4C5461;
+    color: #6F6F74;
+    font-size: 0.12rem;
+
+    .links {
+      .c-word-nowrap();
+
+      .link {
+        &::before {
+          display: inline-block;
+          margin: 0 1em;
+          content: '|';
+        }
+      }
+    }
+  }
+}
