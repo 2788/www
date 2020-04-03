@@ -65,7 +65,7 @@ const User = observer(function _User({ setActiveState }: ISubMenuBaseProps) {
         onOpenChange={handleOpenChange}
         className={styles.user}
       >
-        <Menu.SubMenu key="list" title={userStore.email} className={styles.subMenu}>
+        <Menu.SubMenu key="list" title={userStore.customerEmail} className={styles.subMenu}>
           <Menu.Item key="sign-out" className={styles.subMenuItem}>
             <a href={`${ssoHost}/signout`}>退出当前帐号</a>
           </Menu.Item>
@@ -78,10 +78,10 @@ const User = observer(function _User({ setActiveState }: ISubMenuBaseProps) {
     <span>
       <Button type="ghost" className={styles.signInBtn}>
         {/* TODO: 参数。。？ */}
-        <a href={`https://sso.qiniu.com/?redirect_url=${encodeURIComponent('https://www.qiniu.com')}`}>登录</a>
+        <a href={`${ssoHost}/?redirect_url=${encodeURIComponent(window.location.href)}`}>登录</a>
       </Button>
       <Button type="primary" className={styles.signUpBtn}>
-        <a href="https://portal.qiniu.com/signup">注册有礼</a>
+        <a href={`${portalHost}/signup}`}>注册有礼</a>
       </Button>
     </span>
   )
