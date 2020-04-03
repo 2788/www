@@ -105,3 +105,9 @@ export default observer(function Header(props: IProps) {
     </header>
   )
 })
+
+// TODO: HACK 应该用 react 的方式去实现…
+export function getHeaderHeight() {
+  const headerElement = document.getElementsByClassName(styles.headerWrapper)[0] as HTMLElement
+  return headerElement.offsetHeight || headerElement.getBoundingClientRect().height
+}

@@ -7,15 +7,17 @@ import { observable, action, computed } from 'mobx'
 
 import Store from 'qn-fe-core/store'
 import { injectable } from 'qn-fe-core/di'
-import { injectProps } from 'qn-fe-core/local-store'
+// import { injectProps } from 'qn-fe-core/local-store'
 
-import { IProps } from '.'
+import { reactionGlobalScrollY } from 'utils/dom'
+
+// import { IProps } from '.'
 
 @injectable()
 export default class HeaderStore extends Store {
 
   constructor(
-    @injectProps() private props: IProps
+    // @injectProps() private props: IProps
   ) {
     super()
   }
@@ -31,24 +33,11 @@ export default class HeaderStore extends Store {
     this.isSubMenuActive = isActive
   }
 
-  @action bindWindowScroll() {
-    window.addEventListener('scroll', this.handleWindowScroll)
-    this.addDisposer(() => window.removeEventListener('scroll', this.handleWindowScroll))
-  }
-
-  @action.bound handleWindowScroll(e: any) {
-    const scrollTop: number = (
-      e.target.scrollTop
-      || window.pageYOffset
-      || document.documentElement.scrollTop
-      || document.body.scrollTop
-      || 0
-    )
-    this.isWindowScrolled = scrollTop > 0
+  @action.bound handleWindowScroll(offset: number) {
+    this.isWindowScrolled = offset > 0
   }
 
   init() {
-    this.bindWindowScroll()
-    if (false) { console.log(this.props) } // TODO
+    this.addDisposer(reactionGlobalScrollY(this.handleWindowScroll))
   }
 }

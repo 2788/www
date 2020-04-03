@@ -42,6 +42,8 @@ export interface ICommonProps {
   children: ReactNode
 }
 
+// TODO: hooks 逻辑优化
+
 function useVisible(initVisible: boolean, enabled: boolean) {
   const [visible, setVisible] = useState(initVisible)
 

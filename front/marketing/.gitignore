@@ -11,3 +11,5 @@ __coverage__
 # 见 ./build-prepare.sh
 id_rsa_for_builder
 .tmp
+
+/api
