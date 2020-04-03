@@ -28,12 +28,12 @@ export default observer(function Pc({ visible, setVisible, children }: IProps) {
   return (
     <div className={styles.pc}>
       {hotspotView}
-      <div
+      <nav
         onMouseLeave={() => setVisible(false)} // 一般情况；边缘情况在容器端处理
         className={styles.menuWrapper}
       >
         {children}
-      </div>
+      </nav>
     </div>
   )
 })

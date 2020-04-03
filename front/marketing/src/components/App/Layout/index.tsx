@@ -7,6 +7,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 
 import Header from './Header'
+import Footer from './Footer'
 
 import './style.less'
 
@@ -20,6 +21,7 @@ export default class Layout extends React.Component<any, any> {
           <div className="content-wrapper">
             {this.props.children}
           </div>
+          <Footer />
         </div>
       </div>
     )

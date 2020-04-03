@@ -1,0 +1,281 @@
+/**
+ * @file styles of component Header
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+@base-height: 0.68rem;
+@base-small-font-size: 0.12rem;
+@base-normal-font-size: 0.16rem;
+
+.disable-transition() {
+  transition: none !important;
+}
+
+.menu-link() {
+  a {
+    color: @header-text-color;
+
+    &:link,
+    &:visited {
+      color: @header-text-color;
+    }
+
+    &:hover {
+      color: @header-active-text-color;
+    }
+
+    &:active {
+      color: @header-text-color;
+    }
+  }
+}
+
+.headerWrapper {
+  width: 100%;
+  height: @base-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: @header-active-text-color;
+  background-color: @header-bg-color;
+  line-height: @base-height;
+  font-size: @base-small-font-size;
+  text-align: center;
+  z-index: 1000;
+  transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
+  .c-word-nowrap();
+
+  &.active,
+  &:not(.active):hover {
+    color: @header-active-text-color;
+    background-color: @header-active-bg-color;
+  }
+
+  .logo {
+    img {
+      width: 1.00rem;
+      vertical-align: top;
+      margin-top: .18rem;
+    }
+  }
+
+  .menu() {
+    & {
+      .disable-transition();
+    }
+
+    &,
+    :global(.ant-menu-submenu) {
+      display: inline-block;
+      vertical-align: top;
+      color: @header-text-color;
+      border: transparent;
+      background-color: transparent;
+    }
+
+    .menuItem,
+    .subMenuItem,
+    :global(.ant-menu-item),
+    :global(.ant-menu-submenu-title) {
+      height: @base-height;
+      line-height: @base-height;
+      margin: 0;
+      .disable-transition();
+
+      .menu-link();
+
+      &:global(.ant-menu-item-active) {
+        color: @header-active-text-color;
+      }
+
+      &:global(.ant-menu-item-selected) {
+        background: transparent;
+      }
+    }
+  }
+
+  .menu-active() {
+    background-color: @header-bg-color;
+  }
+
+  .console,
+  .user,
+  .nav {
+    .menu();
+  }
+
+  &.active {
+    .console,
+    .user,
+    .nav {
+      .menu-active();
+    }
+  }
+
+  .console,
+  .user,
+  .nav {
+    font-size: @base-small-font-size;
+
+    a {
+      font-size: @base-small-font-size;
+    }
+  }
+
+  .nav {
+    font-size: @base-normal-font-size;
+  }
+
+  .single {
+    display: inline-block;
+    padding: 0 1em;
+    font-size: @base-normal-font-size;
+    color: @header-text-color;
+  }
+
+  .signInBtn,
+  .signUpBtn {
+    margin-left: 1em;
+    color: @header-text-color;
+  }
+
+  .signInBtn {
+    background: transparent;
+  }
+
+  .signUpBtn {
+    //
+  }
+}
+
+.subMenu:global(.ant-menu-submenu) {
+  background-color: @header-active-bg-color;
+
+  // HACK: use custom hover style
+  &::before {
+    pointer-events: none;
+  }
+
+  :global(.ant-menu),
+  :global(.ant-menu-sub) {
+    background-color: @header-active-bg-color;
+    margin-top: -7px;
+    .disable-transition();
+  }
+
+  :global(.ant-menu-item-group-list) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.ant-menu-submenu-hidden),
+  :global(.ant-menu-hidden) {
+    display: none;
+  }
+
+  .subMenuItem {
+    flex: 1;
+    margin: 0 !important;
+    height: auto;
+    background-color: @header-active-bg-color;
+    color: @header-active-text-color;
+    transition: background .6s ease;
+
+    .menu-link();
+    a.item {
+      display: inline-block; // TODO: 优化 like grid ..?
+      width: 100%;
+      max-width: 4.00rem; // TODO: 优化
+      padding: 1.1em 1.5em;
+      transition: color .6s ease;
+
+      &:hover {
+        color: @header-text-color;
+      }
+    }
+
+    &:hover {
+      background-color: #4c5461;
+
+      h4 {
+        color: @header-active-text-color;
+      }
+    }
+
+    h4 {
+      font-weight: normal;
+      color: @header-text-color;
+      transition: color .6s ease;
+    }
+
+    .icon {
+      display: inline-block;
+      width: .20rem;
+      height: .20rem;
+      margin-right: 5px;
+    }
+
+    .tag {
+      width: .28rem;
+      height: .12rem;
+    }
+
+    .title {
+      display: inline-block;
+      vertical-align: -1px;
+      margin: 0 1ex;
+    }
+
+    p.desc {
+      color: #8C8C8C;
+      font-size: @base-small-font-size;
+    }
+  }
+
+  :global(.ant-menu-item-group-title) {
+    padding: 0 1.5em;
+    line-height: 1.8;
+    background-color: rgba(229, 229, 229, .06);
+  }
+}
+
+.splitMenu {
+  :global {
+    .ant-menu-sub {
+      display: flex;
+      flex-direction: row;
+
+      .ant-menu-item-group {
+        flex: 1;
+      }
+    }
+  }
+
+  &.production {
+    .rightGroup .subMenuItem a.item {
+      padding: 0.3em 1.5em;
+    }
+  }
+
+  &.solution {
+    .profession {
+      p.desc {
+        min-height: 2.5em; // TODO: 优化
+      }
+    }
+
+    .subMenuItem a.item {
+      padding: 0.6em 1.5em;
+
+      p.desc {
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+.navWrapper {
+  display: inline-block;
+}

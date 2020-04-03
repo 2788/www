@@ -25,8 +25,8 @@ export const modalSm = 346
 //== Header
 export const headerBgColor = transparent
 export const headerActiveBgColor = '#303848'
-export const headerTextColor = black
-export const headerActiveTextColor = white
+export const headerTextColor = white
+export const headerActiveTextColor = '#00A0DE'
 
 //== Border
 export const borderColor = '#D3D3D3'

@@ -45,7 +45,7 @@ export const getViewportSize = (() => {
         right: 0;
         width: 100%;
         height: 100%;
-        pointer-event: none;
+        pointer-events: none;
         background: transparent;
         /* z-index: -1; */
         /* opacity: 0.01; */
@@ -61,7 +61,7 @@ export const getViewportSize = (() => {
     }
 
     // 不删除，随时用 TODO: 测试一下性能
-    // document.documentElement.removeChild(testEle)
+    // testEle.parentNode.removeChild(testEle)
     // testEle = null
 
     return dimension
