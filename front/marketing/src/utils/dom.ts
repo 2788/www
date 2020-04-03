@@ -61,7 +61,7 @@ export const getViewportSize = (() => {
     }
 
     // 不删除，随时用 TODO: 测试一下性能
-    // document.documentElement.removeChild(testEle)
+    // testEle.parentNode.removeChild(testEle)
     // testEle = null
 
     return dimension

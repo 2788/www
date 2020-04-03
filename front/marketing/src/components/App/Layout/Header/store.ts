@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 import Store from 'qn-fe-core/store'
 import { injectable } from 'qn-fe-core/di'
@@ -20,28 +20,31 @@ export default class HeaderStore extends Store {
     super()
   }
 
-  @observable isWindowScroll: boolean = false
+  @observable isWindowScrolled = false
+  @observable isSubMenuActive = false
+
+  @computed get isHeaderActive() {
+    return this.isWindowScrolled || this.isSubMenuActive
+  }
+
+  @action.bound setSubMenuActiveState(isActive: boolean) {
+    this.isSubMenuActive = isActive
+  }
 
   @action bindWindowScroll() {
-    window.addEventListener('scroll', (e: any) => {
-      this.handleWindowScroll(e)
-    }, true)
-    this.addDisposer(() => this.unbindWindowScroll())
+    window.addEventListener('scroll', this.handleWindowScroll)
+    this.addDisposer(() => window.removeEventListener('scroll', this.handleWindowScroll))
   }
 
-  @action unbindWindowScroll() {
-    window.removeEventListener('scroll', (e: any) => {
-      this.handleWindowScroll(e)
-    })
-  }
-
-  @action handleWindowScroll(e: any) {
-    const scrollTop: number = e.target.scrollTop || 0
-    if (!scrollTop) {
-      this.isWindowScroll = false
-      return
-    }
-    this.isWindowScroll = true
+  @action.bound handleWindowScroll(e: any) {
+    const scrollTop: number = (
+      e.target.scrollTop
+      || window.pageYOffset
+      || document.documentElement.scrollTop
+      || document.body.scrollTop
+      || 0
+    )
+    this.isWindowScrolled = scrollTop > 0
   }
 
   init() {
