@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="<%= if Time.now.to_i < Time.local(2020, 4, 5).to_i then 'filter: grayscale(100%);' end -%>">
   <head>
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
