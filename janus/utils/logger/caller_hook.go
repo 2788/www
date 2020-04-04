@@ -31,7 +31,7 @@ func getPrefixSize() (basePath string, prefixSize int) {
 
 	if ok {
 		size := len(file)
-		suffix := len("github.com/qbox/www/janus/utils/logger/caller_hook.go")
+		suffix := len("qiniu.com/qbox/www/janus/utils/logger/caller_hook.go")
 		basePath = file[:size-suffix]
 		prefixSize = len(basePath)
 	}

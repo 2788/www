@@ -2,7 +2,7 @@ package proxy
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/qbox/www/janus/env/config"
+	"qiniu.com/qbox/www/janus/env/config"
 )
 
 type (

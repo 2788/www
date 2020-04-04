@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 
-	"github.com/qbox/www/janus/env"
-	"github.com/qbox/www/janus/env/config"
+	"qiniu.com/qbox/www/janus/env"
+	"qiniu.com/qbox/www/janus/env/config"
 	"github.com/sirupsen/logrus"
 )
 

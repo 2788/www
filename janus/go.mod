@@ -1,4 +1,4 @@
-module github.com/qbox/www/janus
+module qiniu.com/qbox/www/janus
 
 go 1.14
 

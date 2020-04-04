@@ -2,7 +2,7 @@ package env
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/qbox/www/janus/controllers/proxy"
+	"qiniu.com/qbox/www/janus/controllers/proxy"
 )
 
 func InitRouters(app *gin.Engine) {

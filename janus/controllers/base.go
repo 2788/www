@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/qbox/www/janus/code"
-	"github.com/qbox/www/janus/controllers/middlewares"
+	"qiniu.com/qbox/www/janus/code"
+	"qiniu.com/qbox/www/janus/controllers/middlewares"
 )
 
 type Response struct {

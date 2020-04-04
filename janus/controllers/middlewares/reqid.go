@@ -2,7 +2,7 @@ package middlewares
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/qbox/www/janus/utils"
+	"qiniu.com/qbox/www/janus/utils"
 )
 
 const (
