@@ -7,8 +7,8 @@ import (
 
 	"encoding/json"
 
-	"github.com/qbox/www/janus/code"
-	"github.com/qbox/www/janus/controllers"
+	"qiniu.com/qbox/www/janus/code"
+	"qiniu.com/qbox/www/janus/controllers"
 	gcode "google.golang.org/grpc/codes"
 )
 

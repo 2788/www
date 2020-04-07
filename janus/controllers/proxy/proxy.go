@@ -17,10 +17,10 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/qbox/www/janus/code"
-	"github.com/qbox/www/janus/controllers"
-	"github.com/qbox/www/janus/env/config"
-	"github.com/qbox/www/janus/service/account"
+	"qiniu.com/qbox/www/janus/code"
+	"qiniu.com/qbox/www/janus/controllers"
+	"qiniu.com/qbox/www/janus/env/config"
+	"qiniu.com/qbox/www/janus/service/account"
 	"github.com/sirupsen/logrus"
 )
 
