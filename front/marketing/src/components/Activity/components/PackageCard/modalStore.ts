@@ -42,13 +42,12 @@ export default class ModalStore extends Store {
   Loading = Loading
   loadings = Loadings.collectFrom(this, this.Loading)
 
-  @observable.ref effectType: ValueOf<typeof effectType> = effectType.UNKNOWN
+  @observable.ref effect: ValueOf<typeof effectType> = effectType.CURRENT_MONTH
   @observable.ref quantity: number = 1
   @observable.ref orderHash: string = ''
   @observable.ref isSuccessModalShow: boolean = false
 
-  @action.bound buyPackageBtnClick(type: ValueOf<typeof effectType>) {
-    this.updateEffectType(type)
+  @action.bound buyPackageBtnClick() {
     this.buyPackage()
   }
 
@@ -56,8 +55,12 @@ export default class ModalStore extends Store {
     this.isSuccessModalShow = isShow
   }
 
-  @action.bound updateEffectType(type: ValueOf<typeof effectType>) {
-    this.effectType = type
+  @action.bound updateEffectType(effect: ValueOf<typeof effectType>) {
+    if (!effect) {
+      return
+    }
+
+    this.effect = effect
   }
 
   @action getBuyPackageReqPromise() {
@@ -72,7 +75,7 @@ export default class ModalStore extends Store {
             duration: parseInt(duration),
             quantity: this.quantity,
             property: JSON.stringify({
-              effect_time: getEffetTimeStrByType(this.effectType)
+              effect_time: getEffetTimeStrByType(this.effect)
             })
           }],
           memo: `trade from marketing ${code}`
@@ -82,7 +85,7 @@ export default class ModalStore extends Store {
         options = {
           package_id: parseInt(item_id),
           quantity: this.quantity,
-          effect_type: this.effectType,
+          effect_type: this.effect,
           memo: `trade from marketing ${code}`
         }
         return this.packageApis.buyPackage(options)

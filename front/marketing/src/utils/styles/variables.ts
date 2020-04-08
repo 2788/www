@@ -22,11 +22,21 @@ export const screenLg = 1200
 export const modalMd = 600
 export const modalSm = 346
 
-//== Header
+//== Header && Footer
 export const headerBgColor = transparent
 export const headerActiveBgColor = '#303848'
 export const headerTextColor = white
 export const headerActiveTextColor = '#00A0DE'
+export const headerSubMenuDescColor = '#8C8C8C'
+export const headerSubMenuHoverColor = '#4C5461'
+export const headerMenuGroupTitleBgColor = 'rgba(229, 229, 229, 0.06)'
+
+export const footerActiveBgColor = '#303848'
+export const footerTextColor = white
+export const footerActiveTextColor = ' #00A0DE'
+export const footerSubMenuTextColor = '#ADAEB3'
+export const footerInfoTextColor = '#6F6F74'
+export const footerInfoBorderColor = '#4C5461'
 
 //== Border
 export const borderColor = '#D3D3D3'

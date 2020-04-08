@@ -47,7 +47,6 @@ export default observer(function NeedSigninModal(props: IProps) {
     </Button.Link>
   ]
 
-  // TODO: 样式
   return (
     <Modal
       title={header}
