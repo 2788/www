@@ -2,6 +2,7 @@ package proxy
 
 import (
 	"bytes"
+	"errors"
 	"io/ioutil"
 	"net/http"
 
@@ -38,10 +39,8 @@ func ModifyResponse(serviceProtocol config.ServiceProtocol) func(*http.Response)
 			return err
 
 		}
-		err = response.Body.Close()
-		if err != nil {
-			return err
-		}
+
+		defer response.Body.Close()
 
 		response.StatusCode = code.OK.Code()
 		response.Body = ioutil.NopCloser(bytes.NewReader(newBody))
@@ -66,6 +65,9 @@ func modifyGRPCResponse(response *http.Response, res *controllers.Response) erro
 		if err != nil {
 			return err
 		}
+	}
+	if len(body) == 0 {
+		return errors.New("response.Body is nil")
 	}
 	if response.StatusCode == 200 {
 		res.Code = code.OK
@@ -98,6 +100,9 @@ func modifyTeapotsResponse(response *http.Response, res *controllers.Response) e
 		if err != nil {
 			return err
 		}
+	}
+	if len(body) == 0 {
+		return errors.New("response.Body is nil")
 	}
 	err = json.Unmarshal(body, res)
 	if err != nil {
