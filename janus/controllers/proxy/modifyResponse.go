@@ -18,32 +18,21 @@ import (
 func ModifyResponse(serviceProtocol config.ServiceProtocol) func(*http.Response) error {
 	return func(response *http.Response) error {
 		var (
-			body []byte
-			err  error
-			res  controllers.Response
+			err error
+			res controllers.Response
 		)
-		if response.Body != nil {
-			body, err = ioutil.ReadAll(response.Body)
-			if err != nil {
-				return err
-			}
+
+		// 目前仅支持 grpc 与 teapots
+		switch serviceProtocol {
+		case config.GRPCProtocol:
+			err = modifyGRPCResponse(response, &res)
+		default:
+			err = modifyTeapotsResponse(response, &res)
+		}
+		if err != nil {
+			return err
 		}
 
-		if response.StatusCode == 200 {
-			res.Code = code.OK
-			res.Data = json.RawMessage(string(body))
-		} else {
-			// 目前仅支持 grpc 与 teapots
-			switch serviceProtocol {
-			case config.GRPCProtocol:
-				err = modifyGRPCResponse(body, &res)
-			default:
-				err = modifyTeaPotsResponse(body, &res)
-			}
-			if err != nil {
-				return err
-			}
-		}
 		newBody, err := json.Marshal(res)
 		if err != nil {
 			return err
@@ -60,43 +49,71 @@ func ModifyResponse(serviceProtocol config.ServiceProtocol) func(*http.Response)
 	}
 }
 
-func modifyGRPCResponse(body []byte, res *controllers.Response) error {
+func modifyGRPCResponse(response *http.Response, res *controllers.Response) error {
+	var (
+		body     []byte
+		err      error
+		gErrInfo = struct {
+			Error   string        `json:"error"`
+			Code    gcode.Code    `json:"code"`
+			Message string        `json:"message"`
+			Details []interface{} `json:"details"`
+		}{}
+	)
 
-	gErrInfo := struct {
-		Error   string        `json:"error"`
-		Code    gcode.Code    `json:"code"`
-		Message string        `json:"message"`
-		Details []interface{} `json:"details"`
-	}{}
-
-	err := json.Unmarshal(body, &gErrInfo)
-	if err != nil {
-		return err
+	if response.Body != nil {
+		body, err = ioutil.ReadAll(response.Body)
+		if err != nil {
+			return err
+		}
 	}
+	if response.StatusCode == 200 {
+		res.Code = code.OK
+		res.Data = json.RawMessage(string(body))
+	} else {
+		err = json.Unmarshal(body, &gErrInfo)
+		if err != nil {
+			return err
+		}
 
-	// 有 order-rule 限制
-	if strings.Contains(gErrInfo.Message, "validation") {
-		res.Code = code.OrderRuleValidate
-		res.Message = gErrInfo.Message
-		return nil
+		// 有 order-rule 限制
+		if strings.Contains(gErrInfo.Message, "validation:") {
+			res.Code = code.OrderRuleValidate
+			fn := func(c rune) bool {
+				return strings.ContainsRune("validation:", c)
+			}
+			res.Message = strings.TrimLeftFunc(res.Message, fn)
+		} else {
+			res.Code = code.CodeTransform(gErrInfo.Code)
+			res.Message = gErrInfo.Message
+		}
 	}
-
-	res.Code = code.CodeTransform(gErrInfo.Code)
-	res.Message = gErrInfo.Message
 
 	return nil
 
 }
 
-func modifyTeaPotsResponse(body []byte, res *controllers.Response) error {
-	err := json.Unmarshal(body, res)
+func modifyTeapotsResponse(response *http.Response, res *controllers.Response) error {
+	var body []byte
+	var err error
+
+	if response.Body != nil {
+		body, err = ioutil.ReadAll(response.Body)
+		if err != nil {
+			return err
+		}
+	}
+	err = json.Unmarshal(body, res)
 	if err != nil {
 		return err
 	}
 	// 有 order-rule 限制
-	if strings.Contains(res.Message, "validation") {
+	if strings.Contains(res.Message, "validation:") {
 		res.Code = code.OrderRuleValidate
-		return nil
+		fn := func(c rune) bool {
+			return strings.ContainsRune("validation:", c)
+		}
+		res.Message = strings.TrimLeftFunc(res.Message, fn)
 	}
 
 	return nil
