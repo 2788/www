@@ -27,13 +27,6 @@ docker run \
 
 mkdir -p $PKG_PATH
 
-# for mock data
-# TODO 接口联调完成后，需要移除这部分
-# start
-MARKETING_API_PATH=$WORK_DIR_PATH/api
-cp -r $MARKETING_API_PATH $MARKETING_DIST_PATH
-# end
-
 # run build-version.sh
 # start
 sh build-version.sh $MARKETING_DIST_PATH/static

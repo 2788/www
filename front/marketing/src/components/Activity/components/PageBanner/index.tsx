@@ -40,7 +40,7 @@ export default observer(forwardRef(function PageBanner({ info: { data } }: IProp
   const imgView = (
     <img
       src={src}
-      alt={alt || 'header image'}
+      alt={alt || 'page banner image'}
       {...title && { title }}
       className={styles.imgWrapper}
     />

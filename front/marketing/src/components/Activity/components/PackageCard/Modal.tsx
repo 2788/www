@@ -13,6 +13,7 @@ import Row from 'react-icecream/lib/row'
 import Col from 'react-icecream/lib/col'
 import Slider from 'react-icecream/lib/slider'
 import Icon from 'react-icecream/lib/icon'
+import Radio from 'react-icecream/lib/radio'
 
 import { effectType } from 'constants/package'
 import { portalHost } from 'constants/host'
@@ -43,13 +44,27 @@ export default observer(function PackageModal(props: IProps) {
   const modalStore = useLocalStore(ModalStore, props)
 
   function renderBuyPackageModal() {
-    const { quantity, updateQuantityValue, buyPackageBtnClick } = modalStore
+    const { quantity, updateQuantityValue, effect, updateEffectType, buyPackageBtnClick } = modalStore
 
     const header: JSX.Element = (
       <div className={styles.header}>
         <Icon type="shopping" />&nbsp;&nbsp;商品下单
       </div>
     )
+
+    const footer: JSX.Element[] = [
+      <Button
+        key="buy-package-btn"
+        type="primary"
+        size="large"
+        disabled={!item_id}
+        loading={modalStore.loadings.isLoading(modalStore.Loading.BuyPackage)}
+        onClick={() => {
+          buyPackageBtnClick()
+        }}>
+        {modalStore.loadings.isLoading(modalStore.Loading.BuyPackage) ? '下单中...' : '确认下单'}
+      </Button>
+    ]
 
     return (
       <Modal
@@ -61,7 +76,7 @@ export default observer(function PackageModal(props: IProps) {
         onOk={() => {
           control_show_func(false)
         }}
-        footer={null}
+        footer={footer}
         maskClosable={true}
         className={styles.modal}>
           <Row className={styles.contentWrapper} gutter={24} type="flex" align="middle">
@@ -91,30 +106,15 @@ export default observer(function PackageModal(props: IProps) {
             </Col>
             <Col className={`${styles.content} ${styles.textCenter}`} span={8} sm={4}>{quantity}&nbsp;个</Col>
             <Col className={styles.title} span={24} sm={8}>生效时间</Col>
-            <Col className={`${styles.content} ${styles.btnWrapper}`} span={24} sm={16}>
-              <Button
-                key="effect-current-month"
-                type="primary"
-                size="large"
-                disabled={!item_id}
-                loading={modalStore.loadings.isLoading(modalStore.Loading.BuyPackage)}
-                onClick={() => {
-                  buyPackageBtnClick(effectType.CURRENT_MONTH)
+            <Col className={`${styles.content} ${styles.radioGroupWrapper}`} span={24} sm={16}>
+              <Radio.Group
+                value={effect}
+                onChange={({ target: { value } }) => {
+                  updateEffectType(value)
                 }}>
-                当月生效
-              </Button>
-              <Button
-                key="effect-next-month"
-                style={{marginLeft: '0.20rem'}}
-                type="default"
-                size="large"
-                disabled={!item_id}
-                loading={modalStore.loadings.isLoading(modalStore.Loading.BuyPackage)}
-                onClick={() => {
-                  buyPackageBtnClick(effectType.NEXT_MONTH)
-                }}>
-                次月生效
-              </Button>
+                <Radio value={effectType.CURRENT_MONTH}>当月生效</Radio>
+                <Radio value={effectType.NEXT_MONTH}>次月生效</Radio>
+              </Radio.Group>
             </Col>
           </Row>
       </Modal>

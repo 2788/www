@@ -8,7 +8,7 @@
 .footer {
   display: flex;
   flex-direction: column;
-  background-color: @header-active-bg-color;
+  background-color: @footer-active-bg-color;
 
   .main {
     display: flex;
@@ -30,19 +30,19 @@
       .c-word-nowrap();
 
       * {
-        color: @header-text-color;
+        color: @footer-text-color;
       }
 
       .subMenu {
         * {
-          color: #adaeb3;
+          color: @footer-sub-menu-text-color;
         }
 
         :global {
           .ant-collapse-header {
             margin: 1em 0 -1em 2px;
             padding: 1em;
-            color: @header-text-color;
+            color: @footer-text-color;
             // pointer-events: none; // TODO
 
             .anticon {
@@ -59,7 +59,7 @@
             color: inherit;
 
             &:hover {
-              color: @header-active-text-color;
+              color: @footer-active-text-color;
             }
           }
         }
@@ -91,7 +91,7 @@
     .qrCodeTitle {
       margin: .3em 0;
       font-size: 0.14rem;
-      color: @header-text-color;
+      color: @footer-text-color;
     }
 
     .sns {
@@ -109,8 +109,8 @@
   }
 
   .info {
-    border-top: 1px solid #4C5461;
-    color: #6F6F74;
+    border-top: 1px solid @footer-info-border-color;
+    color: @footer-info-text-color;
     font-size: 0.12rem;
 
     .links {

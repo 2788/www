@@ -9,20 +9,14 @@ import { observer } from 'mobx-react'
 import Header from './Header'
 import Footer from './Footer'
 
-import './style.less'
-
 @observer
 export default class Layout extends React.Component<any, any> {
   render() {
     return (
-      <div className="comp-layout">
-        <div className="main-wrapper">
-          <Header />
-          <div className="content-wrapper">
-            {this.props.children}
-          </div>
-          <Footer />
-        </div>
+      <div>
+        <Header />
+        {this.props.children}
+        <Footer />
       </div>
     )
   }

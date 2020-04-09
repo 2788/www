@@ -20,6 +20,15 @@ export default class DemoApis extends Store {
     super()
   }
 
+  // demo mock 数据原本放在 api/get-demo 文件中
+  // 接口联调完成后移除了所有的 mock 数据
+  // 原本 get-demo mock 数据的格式为
+  // {
+  //   "code": 200,
+  //   "data": {
+  //     "b": 333
+  //   }
+  // }
   getDemo(options?: IFetchDemoOptions): Promise<IFetchDemoResult> {
     return this.fetchStore.get('/get-demo', { ...options })
   }
