@@ -6,11 +6,15 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
+	"github.com/go-openapi/strfmt"
 	pacc "github.com/qbox/pay-sdk/base/account"
+	"github.com/qbox/pay-sdk/http/lego/lego"
+	legoService "github.com/qbox/pay-sdk/http/lego/lego/lego_service"
+	"github.com/sirupsen/logrus"
 	"qiniu.com/qbox/www/janus/controllers/middlewares"
 	"qiniu.com/qbox/www/janus/env/config"
 	"qiniu.com/qbox/www/janus/service/account"
-	"github.com/sirupsen/logrus"
+	"qiniu.com/qbox/www/janus/utils/transport"
 )
 
 // InitAppEngine Init gin route engine
@@ -52,6 +56,7 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.Proxy
 
 	Global.Cfg = cfg
 	Global.SSOService = ssoService
+	Global.LegoService = initLegoService(cfg.Services.LegoHost)
 	Global.AccTr = accTr
 	Global.ProxyCfg = proxyCfg
 	Global.Logger = l
@@ -64,4 +69,13 @@ func initAccSSOService(cfg *config.Config, accTr http.RoundTripper) account.SSOS
 		cfg.SSO.ClientId,
 		cfg.SSO.CookieSecret,
 		accTr)
+}
+
+func initLegoService(host string) legoService.ClientService {
+	transport := transport.NewClientTransport(host, http.DefaultClient)
+	if transport == nil {
+		return lego.Default.LegoService
+	}
+
+	return lego.New(transport, strfmt.Default).LegoService
 }
