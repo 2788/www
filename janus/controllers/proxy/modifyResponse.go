@@ -37,13 +37,13 @@ func ModifyResponse(serviceProtocol config.ServiceProtocol) func(*http.Response)
 		newBody, err := json.Marshal(res)
 		if err != nil {
 			return err
-
 		}
 
 		defer response.Body.Close()
 
 		response.StatusCode = code.OK.Code()
 		response.Body = ioutil.NopCloser(bytes.NewReader(newBody))
+		response.Header.Del("Content-Length")
 		return nil
 	}
 }
