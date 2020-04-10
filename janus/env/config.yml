@@ -23,3 +23,7 @@ sso:
     host: "http://sso-dev.qiniu.io"
     client_id: "0ur4QrAWvy0flZS9D8cbAOa9zYd4xW8OklU0WB4rRGx8nSlUf1EG8XLZ3FZRRRXa2XS7ZUd1QfHl8EcQQVysMu7WyNRBKSqqRGqOM8fa2GMVRhiS5mziG5BDZPOpUI29"
     cookie_secret: "YT9hu3ILHgcoSYTg42FBInYtojLxQhkv1Mnc0CuIKLtRu58FQxYHbRRt1jea414a"
+services:
+    lego_host: "http://bo-lego-koderover-staging-bo.cs-spock.cloudappl.com"
+host:
+    marketing_front: "http://www-dev.qiniu.io"

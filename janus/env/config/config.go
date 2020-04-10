@@ -8,11 +8,13 @@ import (
 
 // Config config for app
 type Config struct {
-	Server  ServerConfig  `yaml:"server"`
-	Redis   RedisConfig   `yaml:"redis"`
-	Acc     AccConfig     `yaml:"acc"`
-	SSO     SSOConfig     `yaml:"sso"`
-	Session SessionConfig `yaml:"session"`
+	Server   ServerConfig   `yaml:"server"`
+	Redis    RedisConfig    `yaml:"redis"`
+	Acc      AccConfig      `yaml:"acc"`
+	SSO      SSOConfig      `yaml:"sso"`
+	Session  SessionConfig  `yaml:"session"`
+	Services ServicesConfig `yaml:"services"`
+	Host     Host           `yaml:"host"`
 }
 
 // ServerConfig config for server
@@ -43,11 +45,21 @@ type AccConfig struct {
 	Password string `yaml:"password"`
 }
 
-// SSOConfig
+// SSOConfig sso configuration
 type SSOConfig struct {
 	Host         string `yaml:"host"`
 	ClientId     string `yaml:"client_id"`
 	CookieSecret string `yaml:"cookie_secret"`
+}
+
+// ServicesConfig config for other services
+type ServicesConfig struct {
+	LegoHost string `yaml:"lego_host"`
+}
+
+// Host config for host
+type Host struct {
+	MarketingFront string `yaml:"marketing_front"`
 }
 
 // ParseConfig parses config file

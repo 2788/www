@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title state-data-title>{{ .campaign.Title }}</title>
+    <meta name="keywords" content="{{ .campaign.Keywords }}">
+    <meta name="description" content="{{ .campaign.Description }}">
+    <link rel="shortcut icon" href="https://qiniu.staticfile.org/favicon.ico" type="image/vnd.microsoft.icon">
+    <link href="{{ .campaign.CSSURL }}" rel="stylesheet">
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+    <div class="old-browser">
+      <a href="http://browsehappy.com/">
+        <img src="static/images/older-browsers.png" alt="您的浏览器版本过低，为了保障您的访问安全，以及获得更友好的用户体验，建议您升级您的浏览器到最新版本。">
+      </a>
+    </div>
+    <![endif]-->
+    <div id="main-view-wrapper" class="main-view-wrapper"></div>
+    <script type="text/javascript" src="{{ .campaign.PolyfillURL }}"></script>
+    <script type="text/javascript" src="{{ .campaign.RendererURL }}"></script>
+  </body>
+</html>
