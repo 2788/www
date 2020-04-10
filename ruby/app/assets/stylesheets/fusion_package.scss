@@ -1,4 +1,24 @@
 .fusion-package-page {
+  .fusion-package-end-mask {
+    position: absolute;
+    z-index: 999;
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    .fusion-package-end-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      margin-top: -60px;
+      margin-left: -200px;
+      padding: 40px 0;
+      height: 100px;
+      width: 400px;
+      background-color: white;
+      text-align: center;
+    }
+  }
   ul {padding:0}
   .clear {clear:both;}
   .Transcoding .features-less,.Transcoding .features,.Transcoding .features-cases {background-color:transparent !important;}
