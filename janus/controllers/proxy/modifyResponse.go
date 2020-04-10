@@ -80,13 +80,11 @@ func modifyGRPCResponse(response *http.Response, res *controllers.Response) erro
 			return err
 		}
 
-		// 有 order-rule 限制
-		if strings.Contains(gErrInfo.Message, "validation:") {
-			transformOrderRuleResponse(res)
-		} else {
+		if isValidationError := transformOrderRuleResponse(res); !isValidationError {
 			res.Code = code.CodeTransform(gErrInfo.Code)
 			res.Message = gErrInfo.Message
 		}
+
 	}
 
 	return nil
@@ -110,19 +108,22 @@ func modifyTeapotResponse(response *http.Response, res *controllers.Response) er
 	if err != nil {
 		return err
 	}
-	// 有 order-rule 限制
-	if strings.Contains(res.Message, "validation:") {
-		transformOrderRuleResponse(res)
-	}
+
+	transformOrderRuleResponse(res)
 
 	return nil
 }
 
 // 针对 order-rule 特殊修改 response
-func transformOrderRuleResponse(res *controllers.Response) {
-	res.Code = code.OrderRuleValidate
-	fn := func(c rune) bool {
-		return strings.ContainsRune("validation:", c)
+func transformOrderRuleResponse(res *controllers.Response) (isValidationError bool) {
+	if strings.Contains(res.Message, "validation:") {
+		res.Code = code.OrderRuleValidate
+		fn := func(c rune) bool {
+			return strings.ContainsRune("validation:", c)
+		}
+		res.Message = strings.TrimLeftFunc(res.Message, fn)
+
+		return true
 	}
-	res.Message = strings.TrimLeftFunc(res.Message, fn)
+	return false
 }
