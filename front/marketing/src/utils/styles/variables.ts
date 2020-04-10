@@ -69,3 +69,16 @@ export const packageDimensionDropdownBgColor = '#FBFBFB'
 //== 404 && ActivityEnd
 export const errorPage404BgColor = '#E6E6E6'
 export const errorPageActivityEndBgColor = '#E6E6E6'
+
+//== all activity page
+export const bannerBgFromColor = '#3377F9'
+export const bannerBgToColor = '#164AE5'
+export const tabsBgColor = '#F1F7FF'
+export const tabsShadowColor = 'rgba(35, 94, 238, 0.20)'
+export const tabsActiveTextColor = '#2662F0'
+export const tabsActiveShadowColor = 'rgba(38, 100, 240, 0.20)'
+export const cardBorderColor = 'rgba(38, 98, 240, 0.15)'
+export const cardShadowColor = 'rgba(48, 76, 145, 0.10)'
+export const cardHoverShadowColor = 'rgba(48, 76, 145, 0.30)'
+export const cardSubTitleTextColor = 'rgba(0, 0, 0, 0.86)'
+export const cardJumpBtnColor = '#009FDD'

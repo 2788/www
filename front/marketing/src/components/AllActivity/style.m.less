@@ -1,0 +1,162 @@
+/**
+ * @file styles of All Activity
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/styles/index.less";
+
+.spinWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.mainWrapper {
+  .bannerWrapper {
+    height: 4.00rem;
+    background: linear-gradient(90deg, @banner-bg-from-color 10%, @banner-bg-to-color 90%);
+  }
+
+  .bannerFeatures {
+    height: 100%;
+    padding: 0;
+    background-color: @transparent;
+  }
+
+  .bannerContainer {
+    height: 100%;
+    position: relative;
+    background-size: auto 3.40rem;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-image: url("../../static/images/all-activity-banner.png");
+  }
+
+  .bannerTitle {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    h1, p {
+      color: @white;
+    }
+
+    h1 {
+      font-size: 0.40rem;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 0.20rem;
+      font-weight: 200;
+      line-height: 0.40rem;
+    }
+  }
+
+  .tabsWrapper {
+    margin-top: -0.30rem;
+  }
+
+  .tabsFeatures {
+    padding: 0;
+    background-color: @transparent;
+  }
+
+  .tabs {
+    box-shadow: 0 0.10rem 0.40rem 0.10rem @tabs-shadow-color;
+
+    :global {
+      .ant-tabs-bar {
+        margin: 0;
+
+        .ant-tabs-nav {
+          width: 100%;
+
+          .ant-tabs-tab {
+            width: 25%;
+            height: 0.60rem;
+            margin: 0;
+            padding: 0.22rem 0.16rem;
+            font-size: 0.16rem;
+            color: @black;
+            text-align: center;
+            line-height: 1;
+            background-color: @tabs-bg-color;
+
+            &.ant-tabs-tab-active,
+            &:hover {
+              color: @tabs-active-text-color;
+            }
+
+            &.ant-tabs-tab-active {
+              background-color: @white;
+              box-shadow: 0 0.10rem 0.40rem 0.10rem @tabs-active-shadow-color;
+            }
+          }
+
+          .ant-tabs-ink-bar {
+            background-color: @transparent;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .cardsFeatures {
+    padding: 1.00rem 0 0.70rem;
+    background-color: @transparent;
+  }
+
+  .empty, .cardWrapper {
+    margin-bottom: 0.30rem;
+  }
+
+  .card {
+    position: relative;
+    border: 1px solid @card-border-color;
+    box-shadow: 0 0.10rem 0.20rem 0 @card-shadow-color;
+    transition: box-shadow 0.3s linear;
+    overflow: hidden;
+
+    &:hover {
+      box-shadow: 0 0.12rem 0.24rem 0 @card-hover-shadow-color;
+    }
+  }
+
+  .cardTitle {
+    padding: 0.20rem 0.24rem;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: @banner-bg-from-color; // 兜底色
+
+    h1 {
+      font-size: 0.20rem;
+      font-weight: normal;
+      color: @white;
+      line-height: 2.0;
+    }
+  }
+
+  .cardContent {
+    padding: 0.20rem 0.24rem;
+
+    p {
+      margin: 0;
+      color: @card-sub-title-text-color;
+    }
+  }
+
+  .jumpBtn {
+    padding: 0 0.24rem;
+    margin-top: 0.20rem;
+    color: @card-jump-btn-color;
+    border-color: @card-jump-btn-color;
+
+    &:hover {
+      color: @white;
+      background-color: @card-jump-btn-color;
+    }
+  }
+}
