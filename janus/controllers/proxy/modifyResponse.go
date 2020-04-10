@@ -27,8 +27,10 @@ func ModifyResponse(serviceProtocol config.ServiceProtocol) func(*http.Response)
 		switch serviceProtocol {
 		case config.GRPCProtocol:
 			err = modifyGRPCResponse(response, &res)
+		case config.TeapotProtocol:
+			err = modifyTeapotResponse(response, &res)
 		default:
-			err = modifyTeapotsResponse(response, &res)
+			return nil
 		}
 		if err != nil {
 			return err
@@ -91,7 +93,7 @@ func modifyGRPCResponse(response *http.Response, res *controllers.Response) erro
 
 }
 
-func modifyTeapotsResponse(response *http.Response, res *controllers.Response) error {
+func modifyTeapotResponse(response *http.Response, res *controllers.Response) error {
 	var body []byte
 	var err error
 
