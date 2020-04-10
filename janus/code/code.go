@@ -43,6 +43,8 @@ const (
 	// idempotence
 	// 服务端错误，并且使用了excode, 无法回滚
 	WrongCodeConsumed Code = 5107
+
+	OrderRuleValidate Code = 9001
 )
 
 // Code type for error code

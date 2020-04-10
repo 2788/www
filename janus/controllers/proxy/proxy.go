@@ -17,11 +17,12 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 	"qiniu.com/qbox/www/janus/code"
 	"qiniu.com/qbox/www/janus/controllers"
+	"qiniu.com/qbox/www/janus/controllers/middlewares"
 	"qiniu.com/qbox/www/janus/env/config"
 	"qiniu.com/qbox/www/janus/service/account"
-	"github.com/sirupsen/logrus"
 )
 
 type Proxy struct {
@@ -79,6 +80,7 @@ func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 			req.Header = ctx.Request.Header
 			req.Header.Set("Host", targetURL.Host)
 			req.Header.Del("Accept-Encoding")
+			req.Header.Set("X-Reqid", middlewares.GetReqid(ctx))
 			req.Method = string(targetInfo.Method)
 			req.Body = ctx.Request.Body
 			req.Form = ctx.Request.Form
@@ -88,9 +90,7 @@ func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 				req.URL.RawQuery = targetQuery + "&" + req.URL.RawQuery
 			}
 		},
-	}
-	if targetInfo.ServiceProtocol == config.GRPCProtocol {
-		proxy.ModifyResponse = ModifyResponse
+		ModifyResponse: ModifyResponse(targetInfo.ServiceProtocol),
 	}
 
 	// 目前仅支持admin
@@ -198,7 +198,6 @@ func (s *Proxy) addParam(ctx *gin.Context, matchInfo *config.Match) (err error) 
 		if err != nil {
 			return err
 		}
-		// TODO paramValue 有没有默认值的需求
 
 		switch paramInfo.Location {
 		case config.ParamLocationUrlParam:

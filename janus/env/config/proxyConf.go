@@ -52,5 +52,6 @@ const (
 type ServiceProtocol string
 
 const (
-	GRPCProtocol ServiceProtocol = "grpc"
+	GRPCProtocol   ServiceProtocol = "grpc"
+	TeapotProtocol ServiceProtocol = "teapot"
 )
