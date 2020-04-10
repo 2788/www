@@ -20,6 +20,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"qiniu.com/qbox/www/janus/code"
 	"qiniu.com/qbox/www/janus/controllers"
+	"qiniu.com/qbox/www/janus/controllers/middlewares"
 	"qiniu.com/qbox/www/janus/env/config"
 	"qiniu.com/qbox/www/janus/service/account"
 )
@@ -79,6 +80,7 @@ func (s *Proxy) HandleProxyRequest(ctx *gin.Context) {
 			req.Header = ctx.Request.Header
 			req.Header.Set("Host", targetURL.Host)
 			req.Header.Del("Accept-Encoding")
+			req.Header.Set("X-Reqid", middlewares.GetReqid(ctx))
 			req.Method = string(targetInfo.Method)
 			req.Body = ctx.Request.Body
 			req.Form = ctx.Request.Form
