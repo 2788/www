@@ -32,16 +32,17 @@ func ModifyResponse(serviceProtocol config.ServiceProtocol) func(*http.Response)
 		default:
 			return nil
 		}
+
+		defer response.Body.Close()
+
 		if err != nil {
-			return err
+			res = respErr(code.Code(response.StatusCode), err)
 		}
 
 		newBody, err := json.Marshal(res)
 		if err != nil {
 			return err
 		}
-
-		defer response.Body.Close()
 
 		response.StatusCode = code.OK.Code()
 		response.Body = ioutil.NopCloser(bytes.NewReader(newBody))
@@ -126,4 +127,11 @@ func transformOrderRuleResponse(res *controllers.Response) (isValidationError bo
 		return true
 	}
 	return false
+}
+
+func respErr(httpCode code.Code, err error) controllers.Response {
+	return controllers.Response{
+		Code:    httpCode,
+		Message: err.Error(),
+	}
 }
