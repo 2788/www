@@ -11,6 +11,7 @@ import Col from 'react-icecream/lib/col'
 import Tabs from 'react-icecream/lib/tabs'
 import Empty from 'react-icecream/lib/empty'
 import Button from 'react-icecream/lib/button'
+import Carousel from 'react-icecream/lib/carousel'
 
 import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
 
@@ -18,7 +19,7 @@ import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { campaignTypeMap } from 'constants/campaign-type'
 
-import { IActivityNavInfo, ISubscriptInfo } from 'apis/all-activity'
+import { IActivityNavInfo, ISubscriptInfo, IListActivityBannerInfo } from 'apis/all-activity'
 
 import AllActivityStore from './store'
 
@@ -29,20 +30,59 @@ export default observer(forwardRef(function AllActivity() {
   const allActivityStore = useLocalStore(AllActivityStore)
 
   function renderBannerWrapper() {
-    return (
-      <div className={styles.bannerWrapper}>
-        <div className={`features ${styles.bannerFeatures}`}>
-          <div className={`container ${styles.bannerContainer}`}>
-            <Row
-              className={styles.bannerTitle}
-              gutter={48}>
-              <Col span={24}>
-                <h1>七牛云活动</h1>
-                <p>产品优惠活动、免费云服务套餐、新手福利等，助力用户轻松上云</p>
-              </Col>
-            </Row>
+    const { activityBannerList } = allActivityStore
+
+    if (!activityBannerList || !activityBannerList.length) {
+      return (
+        <div className={styles.bannerWrapper}>
+          <div className={`features ${styles.bannerFeatures}`}>
+            <div className={`container ${styles.bannerContainer} ${styles.defaultBanner}`}>
+              <Row
+                className={styles.bannerTitle}
+                gutter={48}>
+                <Col span={24}>
+                  <h1>七牛云活动</h1>
+                  <p>产品优惠活动、免费云服务套餐、新手福利等，助力用户轻松上云</p>
+                </Col>
+              </Row>
+            </div>
           </div>
         </div>
+      )
+    }
+
+    return (
+      <div className={styles.bannerWrapper}>
+        <Carousel autoplay={false}>
+          {activityBannerList.map((data: IListActivityBannerInfo, index: number) => {
+            const { title, image_src, link } = data
+            const bgImageStyle = {
+              backgroundImage: `url('${image_src}')`
+            }
+            const bannerContainer: JSX.Element = (
+              <div
+                key={`activity-banner-${index}`}
+                className={styles.bannerContainer}
+                style={bgImageStyle}
+                {...title && { title }}>
+              </div>
+            )
+
+            if (!link) {
+              return bannerContainer
+            }
+
+            return (
+              <a
+                key={`activity-banner-${index}`}
+                href={link}
+                target="_blank"
+                {...title && { title }}>
+                {bannerContainer}
+              </a>
+            )
+          })}
+        </Carousel>
       </div>
     )
   }
@@ -64,22 +104,22 @@ export default observer(forwardRef(function AllActivity() {
               <Tabs.TabPane
                 tab="全部活动"
                 key={campaignTypeMap.UNKNOWN}
-                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchList)}>
+                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchNavList)}>
               </Tabs.TabPane>
               <Tabs.TabPane
                 tab="特惠促销"
                 key={campaignTypeMap.PROMOTION}
-                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchList)}>
+                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchNavList)}>
               </Tabs.TabPane>
               <Tabs.TabPane
                 tab="新手福利"
                 key={campaignTypeMap.BEGINNER}
-                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchList)}>
+                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchNavList)}>
               </Tabs.TabPane>
               <Tabs.TabPane
                 tab="其他"
                 key={campaignTypeMap.OTHER}
-                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchList)}>
+                disabled={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchNavList)}>
               </Tabs.TabPane>
             </Tabs>
           </div>
@@ -122,7 +162,7 @@ export default observer(forwardRef(function AllActivity() {
 
           return (
             <Col
-              key={`activity-nav-colo-${index}`}
+              key={`activity-nav-col-${index}`}
               className={styles.cardWrapper}
               span={24}
               sm={{ span: 12 }}
@@ -154,7 +194,7 @@ export default observer(forwardRef(function AllActivity() {
       <Spin
         size="large"
         className={styles.spinWrapper}
-        spinning={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchList)}>
+        spinning={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchNavList)}>
         <div className={`features ${styles.cardsFeatures}`}>
           <div className="container">
             {renderCardsOrEmpty()}

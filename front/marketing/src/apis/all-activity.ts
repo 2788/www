@@ -10,7 +10,8 @@ import FetchStore from 'stores/fetch'
 import { ValueOf } from 'types/ts'
 
 import { proxyLego } from 'constants/proxy'
-import { campaignTypeMap } from 'constants/campaign-type'
+import { campaignTypeStrMap } from 'constants/campaign-type'
+import { bannerLocationStrMap } from 'constants/banner'
 
 export interface IListActivityNavOptions {
   campaign_type: string
@@ -20,7 +21,7 @@ export interface IListActivityNavOptions {
 
 export interface INavItemInfo {
   id: string
-  campaign_type: ValueOf<typeof campaignTypeMap>
+  campaign_type: ValueOf<typeof campaignTypeStrMap>
   title: string
   subtitle: string
   seq: string
@@ -47,6 +48,27 @@ export interface IListActivityNavResult {
   count: string
 }
 
+export interface IListActivityBannerOptions {
+  location: string
+  page: number
+  page_size: number
+}
+
+export interface IListActivityBannerInfo {
+  id: string
+  location: ValueOf<typeof bannerLocationStrMap>
+  title: string
+  image_src: string
+  link: string
+  effect_at: string
+  dead_at: string
+}
+
+export interface IListActivityBannerResult {
+  banners: IListActivityBannerInfo[]
+  count: string
+}
+
 @injectable()
 export default class AllActivityApis extends Store {
   constructor(
@@ -55,7 +77,11 @@ export default class AllActivityApis extends Store {
     super()
   }
 
-  fetchList(options: IListActivityNavOptions): Promise<IListActivityNavResult> {
+  fetchNavList(options: IListActivityNavOptions): Promise<IListActivityNavResult> {
     return this.fetchStore.get(`${proxyLego}/campaigns/navs`, options)
+  }
+
+  fetchBannerList(options: IListActivityBannerOptions): Promise<IListActivityBannerResult> {
+    return this.fetchStore.get(`${proxyLego}/banners`, options)
   }
 }

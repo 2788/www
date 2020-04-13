@@ -12,23 +12,40 @@
 
 .mainWrapper {
   .bannerWrapper {
-    height: 4.00rem;
+    height: 5.00rem;
     background: linear-gradient(90deg, @banner-bg-from-color 10%, @banner-bg-to-color 90%);
   }
 
   .bannerFeatures {
-    height: 100%;
     padding: 0;
     background-color: @transparent;
   }
 
+  :global {
+    .ant-carousel {
+      .slick-dots {
+        height: 0.08rem;
+        bottom: 0.60rem;
+
+        li button {
+          height: 0.08rem;
+        }
+      }
+    }
+  }
+
   .bannerContainer {
-    height: 100%;
+    height: 5.00rem;
     position: relative;
-    background-size: auto 3.40rem;
-    background-position: right bottom;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../../static/images/all-activity-banner.png");
+
+    &.defaultBanner {
+      background-size: auto 4.00rem;
+      background-position: right bottom;
+      background-image: url("../../static/images/all-activity-banner.png");
+    }
   }
 
   .bannerTitle {
@@ -157,6 +174,20 @@
     &:hover {
       color: @white;
       background-color: @card-jump-btn-color;
+    }
+  }
+
+  @media only screen and (max-width: @screen-sm) {
+    .bannerWrapper {
+      height: 60vw;
+    }
+
+    .bannerContainer {
+      height: 60vw;
+
+      &.defaultBanner {
+        background-image: none;
+      }
     }
   }
 }
