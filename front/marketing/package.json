@@ -1,7 +1,7 @@
 {
   "name": "www-marketing",
   "version": "0.0.1",
-  "description": "Qiniu www marketing substation",
+  "description": "Qiniu marketing station",
   "author": "qiniu",
   "scripts": {
     "lint": "tslint \"./src/**/*.ts\"",
@@ -11,9 +11,11 @@
     "build": "fec-builder --verbose -e production build"
   },
   "keywords": [
+    "Qiniu",
     "www",
     "lego",
-    "marketing"
+    "marketing",
+    "activity"
   ],
   "dependencies": {
     "autobind-decorator": "^2.4.0",

@@ -3,4 +3,4 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-export const basename = '/marketing'
+export const basename = '/activity'
