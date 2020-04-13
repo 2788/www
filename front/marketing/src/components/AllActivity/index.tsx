@@ -117,7 +117,7 @@ export default observer(forwardRef(function AllActivity() {
           }, subscript } = data
 
           const titleBgImageStyle = {
-            backgroundImage: background_image
+            backgroundImage: `url('${background_image}')`
           }
 
           return (

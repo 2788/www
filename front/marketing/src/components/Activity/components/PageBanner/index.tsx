@@ -3,13 +3,11 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useEffect, forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { observer } from 'mobx-react'
 
 import { ComponentName, IComponentInfo } from 'apis/component'
 import { IBaseProps } from '../..'
-
-import objectFitImages from 'object-fit-images'
 
 import * as styles from './style.m.less'
 
@@ -28,28 +26,19 @@ export interface IProps extends IBaseProps {
 }
 
 export default observer(forwardRef(function PageBanner({ info: { data } }: IProps, ref: Ref<any>) {
-  const { link, title, src, alt } = data
+  const { link, title, src } = data
 
-  useEffect(() => {
-    // FIXME: add disposer https://github.com/qbox/www/issues/1400
-    objectFitImages(`.${styles.mainWrapper} img.${styles.imgWrapper}`, {
-      watchMQ: true
-    })
-  })
-
-  const imgView = (
-    <img
-      src={src}
-      alt={alt || 'page banner image'}
-      {...title && { title }}
-      className={styles.imgWrapper}
-    />
-  )
+  const bgImageStyle = {
+    backgroundImage: `url('${src}')`
+  }
 
   if (!link) {
     return (
-      <div className={styles.mainWrapper} ref={ref}>
-        {imgView}
+      <div
+        className={styles.mainWrapper}
+        style={bgImageStyle}
+        ref={ref}
+        {...title && { title }}>
       </div>
     )
   }
@@ -58,15 +47,15 @@ export default observer(forwardRef(function PageBanner({ info: { data } }: IProp
   const rel = data.rel && target === '_blank' && 'noopener' // TODO: noreferrer external nofollow ?
 
   return (
-    <div className={styles.mainWrapper} ref={ref}>
-      <a
-        href={link}
-        target={target}
-        {...rel && { rel }}
-        className={styles.linkWrapper}
-      >
-        {imgView}
-      </a>
-    </div>
+    <a
+      className={styles.linkWrapper}
+      href={link}
+      target={target}
+      ref={ref}
+      {...rel && { rel }}
+      {...title && { title }}
+    >
+      <div className={styles.mainWrapper} style={bgImageStyle}></div>
+    </a>
   )
 }))
