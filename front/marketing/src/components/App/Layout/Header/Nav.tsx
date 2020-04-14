@@ -362,7 +362,7 @@ function Support({ setActiveState }: ISubMenuBaseProps) {
   )
 }
 
-function AbouMe({ setActiveState }: ISubMenuBaseProps) {
+function AboutMe({ setActiveState }: ISubMenuBaseProps) {
   function handleOpenChange(keys: string[]) {
     setActiveState(!!(keys && keys.length))
   }
@@ -425,7 +425,7 @@ export default observer(function Nav(props: IProps) {
       <ActivityAndCooperation {...subMenuBaseProps} />
       <Support {...subMenuBaseProps} />
       <News />
-      <AbouMe {...subMenuBaseProps} />
+      <AboutMe {...subMenuBaseProps} />
     </nav>
   )
 })

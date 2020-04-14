@@ -7,8 +7,11 @@ import React, { Ref } from 'react'
 import { observer } from 'mobx-react'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
+import { getHeaderHeight } from 'components/App/Layout/Header'
+import { getGlobalScrollY, globalScrollToY } from 'utils/dom'
 import { ComponentName, IComponentInfo } from 'apis/component'
 
+import { IPreviewInitData } from './Preview'
 import ActivityStore from './store'
 
 // TODO: 严格来说它们应该定义在 components/common 里，而不是从属于这个 Activity 组件
@@ -31,6 +34,7 @@ export interface IBaseProps {
 
 export interface IProps {
   code: string
+  previewData?: IPreviewInitData // FIXME: 拆分 preview 后去掉
 }
 
 export default observer(function Activity(props: IProps) {
@@ -42,14 +46,16 @@ export default observer(function Activity(props: IProps) {
     elementMap[key] = element
   }
 
-  // 要不要加滚动动画。。？
   function scrollTo(key: string) {
     // 是不是直接这样简单点。。 就不需要 ref 了
     // document.querySelector(`[data-key="${key}"]`)!.scrollIntoView()
 
     const element = elementMap[key]
     if (element) {
+      // TODO: HACK scrollIntoView 不支持 top …
+      // TOOD: 要不要加滚动动画。。？ scrollIntoView & scrollTo: + { behavior: 'smooth' } 但有兼容问题
       element.scrollIntoView()
+      globalScrollToY(Math.max(0, getGlobalScrollY() - getHeaderHeight()))
     } else {
       console.error('找不到指定控件', key)
     }

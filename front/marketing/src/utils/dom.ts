@@ -3,6 +3,9 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
+// TODO: use hooks style api interface instead
+// import { useState, useEffect } from 'React'
+
 import { throttle } from 'lodash'
 
 export const defaultDelay = 50
@@ -77,4 +80,34 @@ export function reactionViewportSize(onResize: (size: IDimension) => void) {
 
   window.addEventListener('resize', handleResize)
   return () => window.removeEventListener('resize', handleResize)
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
+export function getGlobalScrollY(): number {
+  const supportPageOffset = window.pageXOffset !== undefined
+  const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat')
+  return supportPageOffset
+    ? window.pageYOffset // === window.scrollY
+    : isCSS1Compat
+      ? document.documentElement.scrollTop
+      : document.body.scrollTop
+}
+
+// TODO:
+//   1、support `X`
+//   2、support `smooth`
+//   3、compatible with `getGlobalScrollY`
+export function globalScrollToY(offset: number) {
+  return window.scrollTo(0, offset)
+}
+
+export function reactionGlobalScrollY(onScroll: (offset: number) => void) {
+  const handleScroll = throttle(() => {
+    if (onScroll) {
+      onScroll(getGlobalScrollY())
+    }
+  }, defaultDelay)
+
+  window.addEventListener('scroll', handleScroll)
+  return () => window.removeEventListener('scroll', handleScroll)
 }

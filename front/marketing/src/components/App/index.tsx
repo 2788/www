@@ -23,6 +23,7 @@ import Layout from './Layout'
 // import AllActivity from 'components/AllActivity'
 // Activity Page
 import Activity from 'components/Activity'
+import ActivityPreview from 'components/Activity/Preview'
 
 @hot
 @observer
@@ -42,6 +43,7 @@ export default class App extends React.Component<any, any> {
                   <Route relative path="/all" exact title="全部活动"><ToNotFound /></Route>
                   <Route relative path={notFoundPagePath} title="404" exact><NotFound /></Route>
                   <Route relative path={activityEndPagePath} title="活动已结束" exact><ActivityEnd /></Route>
+                  <Route relative path="/preview"><ActivityPreview /></Route>
                   <Route relative path="/:code" component={
                     ({ match }) => (<Activity code={match!.params.code} />)
                   } />

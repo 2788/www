@@ -87,7 +87,7 @@ npm 包与 docker 镜像的对比，优点：
 
 ### 楼层组件结构
 
-- 参考 `src/components/Activity/components` 里的 `Demo` 和 `PageBanner`，比较自由、没什么约束
+- 参考 `src/components/Activity/components` 里的 `Demo`，比较自由、没什么约束
 
 - 新加组件需要在 `src/components/Activity/index.tsx` 和 `src/apis/component.ts` 里注册一下
 
