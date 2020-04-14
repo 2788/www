@@ -78,10 +78,10 @@ export default class AllActivityApis extends Store {
   }
 
   fetchNavList(options: IListActivityNavOptions): Promise<IListActivityNavResult> {
-    return this.fetchStore.get(`${proxyLego}/campaigns/navs`, options)
+    return this.fetchStore.get(`${proxyLego}/campaigns/navs-online`, options)
   }
 
   fetchBannerList(options: IListActivityBannerOptions): Promise<IListActivityBannerResult> {
-    return this.fetchStore.get(`${proxyLego}/banners`, options)
+    return this.fetchStore.get(`${proxyLego}/banners-online`, options)
   }
 }
