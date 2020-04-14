@@ -33,7 +33,7 @@ export default class PackageCardStore extends Store {
   loadings = Loadings.collectFrom(this, this.Loading)
 
   @observable.ref selectedPackage: IPackageItem | undefined
-  @observable.deep dimensionDropdownList: IDimensionDropdownItem[] = []
+  @observable.shallow dimensionDropdownList: IDimensionDropdownItem[] = []
   @observable.ref isPackageModalShow: boolean = false
   @observable.ref isNeedSigninModalShow: boolean = false
 

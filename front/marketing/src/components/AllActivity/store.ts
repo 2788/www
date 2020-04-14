@@ -43,8 +43,8 @@ export default class AllActivityStore extends Store {
   loadings = Loadings.collectFrom(this, this.Loading)
 
   @observable.ref campaignType: ValueOf<typeof campaignTypeMap> | string = campaignTypeMap.UNKNOWN
-  @observable.deep activityNavList: IActivityNavInfo[] = []
-  @observable.deep activityBannerList: IListActivityBannerInfo[] = []
+  @observable.shallow activityNavList: IActivityNavInfo[] = []
+  @observable.shallow activityBannerList: IListActivityBannerInfo[] = []
 
   @action.bound updateCampaignType(type: string) {
     if (!type) {

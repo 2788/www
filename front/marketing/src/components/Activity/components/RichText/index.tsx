@@ -29,8 +29,8 @@ export default observer(forwardRef(function RichText({ info: { data } }: IProps,
   }
 
   return (
-    <div className="features" style={bgColorStyle} ref={ref}>
-      <div className="container">
+    <div className={styles.features} style={bgColorStyle} ref={ref}>
+      <div className={styles.container}>
         <div className={styles.mainWrapper} dangerouslySetInnerHTML={{__html: html}}></div>
       </div>
     </div>

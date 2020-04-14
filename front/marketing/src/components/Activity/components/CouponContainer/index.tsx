@@ -118,8 +118,8 @@ export default observer(forwardRef(function CouponContainer(props: IProps, ref: 
       size="large"
       className={styles.spinWrapper}
       spinning={couponContainerStore.loadings.isLoading(couponContainerStore.Loading.FetchList)}>
-      <div className="features" style={bgColorStyle} ref={ref}>
-        <div className="container">
+      <div className={styles.features} style={bgColorStyle} ref={ref}>
+        <div className={styles.container}>
           {renderCouponCard()}
           {renderShowMoreBtn()}
         </div>

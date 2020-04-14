@@ -17,6 +17,8 @@
   }
 
   .bannerFeatures {
+    .c-features();
+
     padding: 0;
     background-color: @transparent;
   }
@@ -42,6 +44,8 @@
     background-repeat: no-repeat;
 
     &.defaultBanner {
+      .c-container();
+
       background-size: auto 4.00rem;
       background-position: right bottom;
       background-image: url("../../static/images/all-activity-banner.png");
@@ -75,8 +79,14 @@
   }
 
   .tabsFeatures {
+    .c-features();
+
     padding: 0;
     background-color: @transparent;
+  }
+
+  .tabsContainer {
+    .c-container()
   }
 
   .tabs {
@@ -121,8 +131,14 @@
   }
 
   .cardsFeatures {
+    .c-features();
+
     padding: 1.00rem 0 0.70rem;
     background-color: @transparent;
+  }
+
+  .cardsContainer {
+    .c-container();
   }
 
   .empty, .cardWrapper {
@@ -179,15 +195,22 @@
 
   @media only screen and (max-width: @screen-sm) {
     .bannerWrapper {
-      height: 60vw;
+      height: auto;
     }
 
     .bannerContainer {
-      height: 60vw;
+      height: auto;
+      padding-top: 30%;
+      padding-bottom: 30%;
 
       &.defaultBanner {
         background-image: none;
       }
+    }
+
+    .tabsContainer {
+      width: 100%;
+      padding: 0;
     }
   }
 }

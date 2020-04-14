@@ -13,9 +13,9 @@ import Empty from 'react-icecream/lib/empty'
 import Button from 'react-icecream/lib/button'
 import Carousel from 'react-icecream/lib/carousel'
 
-import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
-
 import { useLocalStore } from 'qn-fe-core/local-store'
+
+import Subscript, { IProps as ISubscriptProps } from 'components/common/Subscript'
 
 import { campaignTypeMap } from 'constants/campaign-type'
 
@@ -38,8 +38,8 @@ export default observer(forwardRef(function AllActivity() {
 
     if (!activityBannerList || !activityBannerList.length) {
       return (
-        <div className={`features ${styles.bannerFeatures}`}>
-          <div className={`container ${styles.bannerContainer} ${styles.defaultBanner}`}>
+        <div className={styles.bannerFeatures}>
+          <div className={`${styles.bannerContainer} ${styles.defaultBanner}`}>
             <Row
               className={styles.bannerTitle}
               gutter={48}>
@@ -70,7 +70,7 @@ export default observer(forwardRef(function AllActivity() {
           )
 
           if (!link) {
-            return bannerContainer
+            return <div>{bannerContainer}</div>
           }
 
           return (
@@ -189,8 +189,8 @@ export default observer(forwardRef(function AllActivity() {
         {renderBanner()}
       </div>
       <div className={styles.tabsWrapper}>
-        <div className={`features ${styles.tabsFeatures}`}>
-          <div className="container">
+        <div className={styles.tabsFeatures}>
+          <div className={styles.tabsContainer}>
             {renderTabs()}
           </div>
         </div>
@@ -199,8 +199,8 @@ export default observer(forwardRef(function AllActivity() {
         size="large"
         className={styles.spinWrapper}
         spinning={allActivityStore.loadings.isLoading(allActivityStore.Loading.FetchNavList)}>
-        <div className={`features ${styles.cardsFeatures}`}>
-          <div className="container">
+        <div className={styles.cardsFeatures}>
+          <div className={styles.cardsContainer}>
             {renderCardsOrEmpty()}
           </div>
         </div>
