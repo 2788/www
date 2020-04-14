@@ -54,6 +54,11 @@ export default class ActivityStore extends Store {
   }
 
   init() {
-    this.fetchList()
+    // FIXME: 拆分 preview 后去掉
+    if (this.props.previewData) {
+      this.updateList(this.props.previewData.campaignList)
+    } else {
+      this.fetchList()
+    }
   }
 }

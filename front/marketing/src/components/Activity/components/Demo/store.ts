@@ -57,6 +57,6 @@ export default class DemoStore extends Store {
 
   init() {
     this.addDisposer(() => null)
-    this.fetchSth()
+    // this.fetchSth()
   }
 }

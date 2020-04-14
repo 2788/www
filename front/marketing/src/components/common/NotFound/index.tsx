@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect } from 'react'
-import { useRouterStore } from 'qn-fe-core/router'
+import { useRouterStore, RouterStore } from 'qn-fe-core/router'
 import { basename } from 'constants/route'
 
 import * as styles from './style.m.less'
@@ -20,17 +20,21 @@ export default function NotFound() {
 
 export const notFoundPagePath = '/not-found'
 
+export function toNotFound(routerStore: RouterStore) {
+  const href = routerStore.history!.createHref(routerStore.location!)
+
+  routerStore.push({
+    pathname: `${basename}${notFoundPagePath}`,
+    search: `?from=${encodeURIComponent(href)}`
+  })
+}
+
 export function ToNotFound(): null {
   const routerStore = useRouterStore()
 
   useEffect(() => {
-    const href = routerStore.history!.createHref(routerStore.location!)
-
-    routerStore.push({
-      pathname: `${basename}${notFoundPagePath}`,
-      search: `?from=${encodeURIComponent(href)}`
-    })
-  })
+    toNotFound(routerStore)
+  }, [routerStore])
 
   return null
 }

@@ -27,7 +27,29 @@
 
     <!-- hooks: site map -->
     <!-- hooks: external js -->
-    <!-- TODO: hooks: inject page data -->
+
+    <%
+      // TODO: 对接口
+      const mockPreviewInitData = JSON.stringify({
+        code: 123, // activyty code, the same as url
+        campaignList: [
+          {
+            "key": "demo-id",
+            "text": "Demo 控件",
+            "valid": true,
+            "value": "demo",
+            "data": {
+                "a": 666
+            }
+          }
+        ]
+      }, null, 4)
+    %>
+    <script>
+      window.previewInitData = (function () {
+        return <%= mockPreviewInitData %>
+      })()
+    </script>
 
     <% if (process.env.NODE_ENV === "development") { %>
     <script src="/webpack-dev-server.js"></script>

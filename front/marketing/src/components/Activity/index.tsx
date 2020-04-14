@@ -11,6 +11,7 @@ import { getHeaderHeight } from 'components/App/Layout/Header'
 import { getGlobalScrollY, globalScrollToY } from 'utils/dom'
 import { ComponentName, IComponentInfo } from 'apis/component'
 
+import { IPreviewInitData } from './Preview'
 import ActivityStore from './store'
 
 // TODO: 严格来说它们应该定义在 components/common 里，而不是从属于这个 Activity 组件
@@ -33,6 +34,7 @@ export interface IBaseProps {
 
 export interface IProps {
   code: string
+  previewData?: IPreviewInitData // FIXME: 拆分 preview 后去掉
 }
 
 export default observer(function Activity(props: IProps) {
