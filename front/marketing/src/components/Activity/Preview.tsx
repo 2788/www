@@ -52,8 +52,3 @@ export default observer(function Preview(_props: IProps) {
     <Activity code={previewInitData.code} previewData={previewInitData} />
   )
 })
-
-
-
-
-
