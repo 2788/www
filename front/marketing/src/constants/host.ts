@@ -15,6 +15,13 @@ enum ssoHosts {
   Production = 'https://sso.qiniu.com' // 线上环境
 }
 
+enum wwwHosts {
+  Development = 'http://www-dev.qiniu.io', // 测试环境
+  Production = 'https://www.qiniu.com' // 线上环境
+}
+
 export const portalHost = isDev ? portalHosts.Development : portalHosts.Production
 
 export const ssoHost = isDev ? ssoHosts.Development : ssoHosts.Production
+
+export const wwwHost = isDev ? wwwHosts.Development : wwwHosts.Production

@@ -8,33 +8,24 @@
 .mainWrapper {
   width: 100%;
   height: 5.00rem;
-  display: block;
   text-align: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: @primary-color; // 兜底色
   overflow: hidden;
+}
 
-  .linkWrapper {
-    width: 100%;
-    height: 100%;
-    outline: none;
-    -moz-outline: none;
-  }
-
-  .imgWrapper {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    font-family: 'object-fit: cover; object-position: center;';
-  }
+.linkWrapper {
+  width: 100%;
+  display: block;
+  outline: none;
 }
 
 @media only screen and (max-width: @screen-sm) {
   .mainWrapper {
     height: auto;
-    .imgWrapper {
-      object-fit: contain;
-      object-position: top;
-      font-family: 'object-fit: contain; object-position: top;';
-    }
+    padding-top: 30%;
+    padding-bottom: 30%;
   }
 }

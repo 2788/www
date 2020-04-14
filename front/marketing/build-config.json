@@ -22,7 +22,7 @@
     "index": {
       "template": "src/index.ejs",
       "entries": "www-marketing",
-      "path": "^\\/marketing\\/"
+      "path": "^\\/activity\\/"
     }
   },
   "transforms": {

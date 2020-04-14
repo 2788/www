@@ -1,6 +1,14 @@
-# Qiniu 官网市场活动分站
+# Qiniu 官网市场活动站点
 
-Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
+Qiniu 官网活动页面
+
+```shell
+# 线上访问域名
+https://marketing.qiniu.com/activity
+
+# 测试环境访问域名
+http://marketing.dev.qiniu.io/activity
+```
 
 根据后端返回的活动配置信息渲染活动页面，运营同学通过配置活动信息就可以对活动页面进行实时的修改
 
@@ -8,7 +16,7 @@ Qiniu 官网活动页面，以官网（WWW）分站的形式进行部署
 
 - src
 
-`./src` 目录下保存官网活动分站代码，包括页面路由、页面 `Header`、页面 `Footer`、活动页面组件拼接逻辑等
+`./src` 目录下保存官网活动站点代码，包括页面路由、页面 `Header`、页面 `Footer`、活动页面组件拼接逻辑等
 
 ## 开发
 
@@ -46,8 +54,8 @@ yarn
 # 启动本地服务
 yarn run dev
 # 本地访问地址
-http://localhost:8080/marketing
-# 会重定向到 http://localhost:8080/marketing/all
+http://localhost:8080/activity
+# 会重定向到 http://localhost:8080/activity/all
 ```
 
 #### docker 镜像（适合持续集成环境使用）

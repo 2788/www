@@ -1,7 +1,7 @@
 {
   "name": "www-marketing",
   "version": "0.0.1",
-  "description": "Qiniu www marketing substation",
+  "description": "Qiniu marketing station",
   "author": "qiniu",
   "scripts": {
     "lint": "tslint \"./src/**/*.ts\"",
@@ -11,9 +11,11 @@
     "build": "fec-builder --verbose -e production build"
   },
   "keywords": [
+    "Qiniu",
     "www",
     "lego",
-    "marketing"
+    "marketing",
+    "activity"
   ],
   "dependencies": {
     "autobind-decorator": "^2.4.0",
@@ -28,7 +30,6 @@
     "moment": "^2.24.0",
     "mustache": "^2.3.0",
     "normalize.css": "^8.0.1",
-    "object-fit-images": "^3.2.4",
     "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.10.0",
     "querystring": "^0.2.0",
     "react": "~16.8.6",
@@ -50,7 +51,6 @@
     "@types/lodash": "^4.14.123",
     "@types/mustache": "^4.0.1",
     "@types/node": "^8.0.0",
-    "@types/object-fit-images": "^3.2.0",
     "@types/react": "^16.8.4",
     "@types/react-dom": "^16.8.4",
     "@types/react-test-renderer": "~16.8.0",
