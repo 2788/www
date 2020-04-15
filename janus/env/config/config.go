@@ -32,6 +32,7 @@ type RedisConfig struct {
 	DB         int      `yaml:"db"`
 	Size       int      `yaml:"size"`
 	Networt    string   `yaml:"network"`
+	KeyPairs   string   `yaml:"key_pairs"`
 }
 
 type SessionConfig struct {
