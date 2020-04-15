@@ -24,6 +24,9 @@ export interface IPreviewInitData {
 
 // 是否应该定义在全局。。？
 function usePreviewInitData(): IPreviewInitData | undefined {
+  // TODO: spa 语境下的 window.previewInitData 应该设计成首屏一次性数据（同活动页），考虑：
+  //    1、从别的路由过来  2、转到别的路由去  3、刷新页面  4、收藏页面重新打开
+  // TODO：数据来源可以通过 post form 任意构造，考虑安全问题
   const previewInitData = window.previewInitData
 
   const routerStore = useRouterStore()

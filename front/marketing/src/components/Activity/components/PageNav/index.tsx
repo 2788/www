@@ -43,6 +43,7 @@ export interface ICommonProps {
 }
 
 // TODO: hooks 逻辑优化
+// TODO: function handle*** 用 useCallback 优化一下，其他同
 
 function useVisible(initVisible: boolean, enabled: boolean) {
   const [visible, setVisible] = useState(initVisible)

@@ -11,12 +11,16 @@ import classNames from 'classnames'
 
 import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
+import { useTest } from 'qn-fe-core/router'
 import Menu from 'react-icecream/lib/menu'
 import Button from 'react-icecream/lib/button'
 
+import { basename } from 'constants/route'
 import { ssoHost, portalHost } from 'constants/host'
 import { Logo as LogoUrl } from 'constants/resource'
 import UserStore from 'stores/user'
+import { notFoundPagePath } from 'components/common/NotFound'
+import { activityEndPagePath } from 'components/common/ActivityEnd'
 
 import Nav from './Nav'
 import HeaderStore from './store'
@@ -89,15 +93,18 @@ const User = observer(function _User({ setActiveState }: ISubMenuBaseProps) {
 
 export default observer(function Header(props: IProps) {
   const headerStore = useLocalStore(HeaderStore, props)
+  const notFoundPageMatchResult = !!useTest(`${basename}${notFoundPagePath}`)
+  const activityEndPageMatchResult = !!useTest(`${basename}${activityEndPagePath}`)
 
   const { isHeaderActive, setSubMenuActiveState } = headerStore
+  const shouldHeaderActive = isHeaderActive || notFoundPageMatchResult || activityEndPageMatchResult
 
   const subMenuBaseProps = {
     setActiveState: setSubMenuActiveState
   }
 
   return (
-    <header className={classNames(styles.headerWrapper, isHeaderActive && styles.active)}>
+    <header className={classNames(styles.headerWrapper, shouldHeaderActive && styles.active)}>
       <Logo />
       <Nav {...subMenuBaseProps} />
       <Console />
