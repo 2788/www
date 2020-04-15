@@ -6,6 +6,7 @@ RUN ln -s /usr/bin/python2.7 /usr/bin/python
 RUN mkdir -p /janus/run/auditlog/janus
 
 ADD ./entrypoint.sh ./janusd /janus/
+ADD templates /janus/templates
 
 EXPOSE 11009
 
