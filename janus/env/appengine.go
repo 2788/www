@@ -26,7 +26,7 @@ func InitAppEngine(l *logrus.Logger, cfg *config.Config, proxyCfg []config.Proxy
 		cfg.Redis.Networt,
 		cfg.Redis.Addrs[0],
 		cfg.Redis.Password,
-		[]byte("develop-www"),
+		[]byte(cfg.Redis.KeyPairs),
 	)
 	if err != nil {
 		l.Errorf("<appengine.InitAppEngine> redis.NewStore() failed, err: %s.", err)

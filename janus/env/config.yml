@@ -11,6 +11,7 @@ redis:
         - "127.0.0.1:6379"
     size: 10
     network: "tcp"
+    key_pairs: "7831d83e0704c79b180e8cf768e61775"
 
 session:
     max_age: 604800
