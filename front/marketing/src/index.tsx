@@ -44,7 +44,8 @@ sensors.init({
   heatmap_url: 'https://static.sensorsdata.cn/sdk/1.15.1/heatmap.min.js',
   server_url: 'https://sensors.qiniu.com/sa?project=default',
   name: 'sensors',
-  heatmap: {}
+  heatmap: {},
+  show_log: false
 })
 
 sensors.quick('autoTrack')
