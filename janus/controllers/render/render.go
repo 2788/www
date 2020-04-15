@@ -11,8 +11,8 @@ import (
 )
 
 const (
-	notFoundPage        = "marketing/not-found"
-	campaignExpiredPage = "marketing/activity-end"
+	notFoundPage        = "activity/not-found"
+	campaignExpiredPage = "activity/activity-end"
 )
 
 // Render handler for lego render
