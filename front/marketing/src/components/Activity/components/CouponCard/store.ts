@@ -44,7 +44,7 @@ export default class CouponCardStore extends Store {
   }
 
   @Loadings.handle(Loading.DrawCoupon)
-  @ToasterStore.handle('抵用券领取成功', '领取抵用券失败')
+  @ToasterStore.handle('抵用券领取成功')
   drawCoupon() {
     const options: IDrawCouponOptions = {
       batch_id: parseInt(this.props.batch_id)
