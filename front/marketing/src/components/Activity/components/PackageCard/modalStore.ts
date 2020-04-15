@@ -119,7 +119,7 @@ export default class ModalStore extends Store {
   }
 
   @Loadings.handle(Loading.BuyPackage)
-  @ToasterStore.handle(undefined, '商品下单失败')
+  @ToasterStore.handle()
   buyPackage() {
     const req = this.getBuyPackageReqPromise()
 
