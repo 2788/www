@@ -10,6 +10,7 @@ import Loadings from 'base/stores/loadings'
 import ToasterStore from 'base/stores/toaster'
 
 import UserApis, { IUserInfo } from 'apis/user'
+import SensorsApis from 'apis/sensors'
 
 enum Loading {
   GetUserInfo = 'getUserInfo'
@@ -19,7 +20,8 @@ enum Loading {
 export default class UserStore extends Store {
   constructor(
     toasteStore: ToasterStore,
-    private userApis: UserApis
+    private userApis: UserApis,
+    private sensorsApis: SensorsApis
   ) {
     super()
     ToasterStore.bind(this, toasteStore)
@@ -38,14 +40,19 @@ export default class UserStore extends Store {
   @action.bound
   private updateUserInfo(userinfo: IUserInfo) {
     const { uid, customer_name, customer_email, signup_time, ...otherUserInfo } = userinfo
+    const isSignIn: boolean = !!(userinfo && uid)
     const target: Partial<UserStore> = {
       customerName: customer_name,
       customerEmail: customer_email,
       signUpTime: signup_time,
-      isSignIn: !!(userinfo && uid),
+      isSignIn,
       ...otherUserInfo
     }
     Object.assign(this, target)
+
+    if (isSignIn) {
+      this.sensorsApis.login(uid)
+    }
   }
 
   @Loadings.handle(Loading.GetUserInfo)
