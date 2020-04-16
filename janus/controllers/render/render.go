@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	legoService "github.com/qbox/pay-sdk/http/lego/lego/lego_service"
+	"github.com/qbox/pay-sdk/http/lego/models"
 	"qiniu.com/qbox/www/janus/controllers/middlewares"
 )
 
@@ -71,5 +72,57 @@ func (c *Render) RenderPage(ctx *gin.Context) {
 
 	ctx.HTML(http.StatusOK, "templates/render.html", gin.H{
 		"campaign": pageListRes.GetPayload().Pages[0],
+	})
+}
+
+// RenderPreviewPageByData renders a preview page by post data
+func (c *Render) RenderPreviewPageByData(ctx *gin.Context) {
+	log := middlewares.GetLogger(ctx)
+	var data *models.LegoTemplatePagePreviewData
+	err := ctx.BindJSON((&data))
+	if err != nil {
+		log.Errorf("ctx.BindJSON with error: %s", err)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	if data.CampaignCode == "" || data.Page == nil || data.Page.Content == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	ctx.HTML(http.StatusOK, "templates/preview.html", gin.H{
+		"data": data,
+	})
+}
+
+// RenderPreviewPageByShareCode renders a preview page by share code
+func (c *Render) RenderPreviewPageByShareCode(ctx *gin.Context) {
+	log := middlewares.GetLogger(ctx)
+	code := ctx.Param("code")
+	secret := ctx.Param("secret-code")
+
+	if code != "preview" || secret == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	result, err := c.legoService.GetTemplatePagePreviewData(legoService.NewGetTemplatePagePreviewDataParams().WithCode(&code))
+	if err != nil {
+		log.Errorf("c.legoService.GetTemplatePagePreviewData(%s) with error: %s", code, err)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	if result.GetPayload() == nil ||
+		result.GetPayload().CampaignCode == "" ||
+		result.GetPayload().Page == nil ||
+		result.GetPayload().Page.Content == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	ctx.HTML(http.StatusOK, "templates/preview.html", gin.H{
+		"data": result.Payload,
 	})
 }

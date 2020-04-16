@@ -9,7 +9,7 @@ require (
 	github.com/go-openapi/strfmt v0.19.0
 	github.com/gorilla/sessions v1.2.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
-	github.com/qbox/pay-sdk v0.0.0-20200403085156-b07cbd3deb3a
+	github.com/qbox/pay-sdk v0.0.0-20200415100254-173b2bfff55a
 	github.com/sirupsen/logrus v1.4.2
 	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
 	google.golang.org/grpc v1.28.0
