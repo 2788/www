@@ -12,7 +12,8 @@ export enum WeChat {
 
 export enum CommonIcon {
   Github = 'https://www.qiniu.com/assets/github-b94aa0429288ad9c1ef67cada7c25bf6f391f45274ecbe910719eb0aed351581.png',
-  Weibo = 'https://www.qiniu.com/assets/weibo-98426eec2b21e0f23317ab7ad707aa57e8d558694c6b80a728f00d0d8e3f7401.png'
+  Weibo = 'https://www.qiniu.com/assets/weibo-98426eec2b21e0f23317ab7ad707aa57e8d558694c6b80a728f00d0d8e3f7401.png',
+  Aq = 'https://www.qiniu.com/assets/aq-icon-a20583c81805fe64f7fa210851ce29754af9d25fd6aa5a3225a9557529602513.png'
 }
 
 export const tagIcons = {
@@ -54,3 +55,11 @@ export const menuIcons = {
   ecug: 'https://www.qiniu.com/assets/icon-ecug-8aaa21f9b2c39c657ba3d668822460b274575f2d27024aab903236caa06ab95c.png',
   goglobal: 'https://www.qiniu.com/assets/icon-chuhai-522e232a6b646f57f6d63c1f673edc2508603bfa8f0f215cb6ceeaadea9f6e12.png',
 } as const
+
+export enum FooterExtraIcon {
+  Shjbzx = 'https://www.qiniu.com/assets/report-b7406d637a365b014fd5c8d9cfd2cb369518980b99b1c409d70bca0701707f12.png',
+  Cncf = 'https://www.qiniu.com/assets/cncf-517e204c9fd15d97b6486038356946c4064c30c3ef31f8d89d18f30d51e632a8.png',
+  Iso = 'https://www.qiniu.com/assets/iso27001-ad552b09f8c40848363a0fbb04c4389f5b889eecaa785b4f39385d6d48ca8ec9.png',
+  Cmni3 = 'https://www.qiniu.com/assets/cmmi3-d091462a152f283f71e0b3ceea8e8060eef9f0d4fb9c088dae9eb48333726ae3.png',
+  Kexinyun = 'https://www.qiniu.com/assets/kexinyun-d31fdfad0d7acd408117e458b342d45edd7b86d2fe81a6973dbdf059bcc44175.png'
+}

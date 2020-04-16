@@ -34,7 +34,7 @@
 
 .headerWrapper {
   width: 100%;
-  height: @base-height;
+  // height: @base-height;
   position: fixed;
   top: 0;
   left: 0;
@@ -45,7 +45,16 @@
   text-align: center;
   z-index: 1000;
   transition: opacity .6s ease, background .6s ease, box-shadow .6s ease;
-  .c-word-nowrap();
+
+  @media only screen and (max-width: @screen-sm - 1) {
+    .c-word-wrap();
+  }
+
+  @media only screen and (min-width: @screen-sm) {
+    display: flex;
+    justify-content: space-around;
+    .c-word-nowrap();
+  }
 
   &.active,
   &:not(.active):hover {
@@ -54,6 +63,11 @@
   }
 
   .logo {
+    // FIXME: 这里很奇怪，后面查一下……
+    @media only screen and (min-width: @screen-sm) {
+      margin-left: .20rem;
+    }
+
     img {
       width: 1.00rem;
       vertical-align: top;
@@ -226,6 +240,10 @@
       display: inline-block;
       vertical-align: -1px;
       margin: 0 1ex;
+
+      @media only screen and (max-width: @screen-sm - 1) {
+        font-size: @base-normal-font-size;
+      }
     }
 
     p.desc {
@@ -238,6 +256,10 @@
     padding: 0 1.5em;
     line-height: 1.8;
     background-color: @header-menu-group-title-bg-color;
+
+    @media only screen and (max-width: @screen-sm - 1) {
+      font-size: @base-normal-font-size;
+    }
   }
 }
 
@@ -277,5 +299,10 @@
 }
 
 .navWrapper {
-  display: inline-block;
+  display: inline;
+
+  @media only screen and (min-width: @screen-sm) {
+    flex: 1;
+    .c-line-ellipsis(); // TODO: 临时处理方法，有点傻逼，后面优化
+  }
 }
