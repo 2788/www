@@ -4147,9 +4147,10 @@ rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
 
-sa-sdk-javascript@1.13.14:
-  version "1.13.14"
-  resolved "https://registry.yarnpkg.com/sa-sdk-javascript/-/sa-sdk-javascript-1.13.14.tgz#9ec44739d54d87d70e4c8fd1791e9f54e6ab09da"
+sa-sdk-javascript@^1.15.1:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/sa-sdk-javascript/-/sa-sdk-javascript-1.15.1.tgz#9799202be03469009eca5de1c1a310c149f9cccd"
+  integrity sha512-KMARYpDYROVurTP+tD3Fuh5WcAdqmDwqn6o0w+rZbC9im1UcF2aymxAiTn2gPNlvYxVU4FD1EVFIC2ajwaHWgA==
 
 safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.2.0:
   version "5.2.0"

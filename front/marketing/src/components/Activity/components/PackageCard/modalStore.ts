@@ -19,6 +19,7 @@ import PackageApis, {
   IBuyPackageOptions, IBuyOrderOptions,
   IBuyPackageResult, IBuyOrderResult
 } from 'apis/package'
+import SensorsApis from 'apis/sensors'
 
 import { getEffetTimeStrByType } from 'utils/package'
 
@@ -33,6 +34,7 @@ export default class ModalStore extends Store {
   constructor(
     toasterStore: ToasterStore,
     private packageApis: PackageApis,
+    private sensorsApis: SensorsApis,
     @injectProps() private props: IProps
   ) {
     super()
@@ -63,11 +65,11 @@ export default class ModalStore extends Store {
     this.effect = effect
   }
 
-  @action getBuyPackageReqPromise() {
+  @action getBuyPackageReqOptions() {
     const { code, product_type, item_id, duration } = this.props
-    let options: IBuyPackageOptions | IBuyOrderOptions | null = null
+    let options: IBuyPackageOptions | IBuyOrderOptions | any = null
 
-    switch(product_type) {
+    switch (product_type) {
       case packageProductType.BASIC_PRODUCT:
         options = {
           orders: [{
@@ -80,7 +82,7 @@ export default class ModalStore extends Store {
           }],
           memo: `trade from marketing ${code}`
         }
-        return this.packageApis.buyOrder(options)
+        break
       case packageProductType.PACKAGE:
         options = {
           package_id: parseInt(item_id),
@@ -88,6 +90,21 @@ export default class ModalStore extends Store {
           effect_type: this.effect,
           memo: `trade from marketing ${code}`
         }
+        break
+      default:
+        console.error('无效的商品下单参数')
+    }
+
+    return options
+  }
+
+  @action getBuyPackageReqPromise(options: IBuyPackageOptions | IBuyOrderOptions | any) {
+    const { product_type } = this.props
+
+    switch (product_type) {
+      case packageProductType.BASIC_PRODUCT:
+        return this.packageApis.buyOrder(options)
+      case packageProductType.PACKAGE:
         return this.packageApis.buyPackage(options)
       default:
         console.error('无效的商品下单请求')
@@ -121,7 +138,9 @@ export default class ModalStore extends Store {
   @Loadings.handle(Loading.BuyPackage)
   @ToasterStore.handle()
   buyPackage() {
-    const req = this.getBuyPackageReqPromise()
+    const { product_type } = this.props
+    const options = this.getBuyPackageReqOptions()
+    const req = this.getBuyPackageReqPromise(options)
 
     if (!req) {
       return
@@ -132,7 +151,23 @@ export default class ModalStore extends Store {
       control_show_func(false)
       this.updateOrderHash(this.getOrderHashFromRes(res))
       this.controlSuccessModalShow(true)
-    }))
+
+      this.sensorsApis.track('BuyOrderOrPackage', {
+        status: 'success',
+        product_type,
+        ...options
+      })
+    }), (err) => {
+      const { detail: { code, message } } = err
+
+      this.sensorsApis.track('BuyOrderOrPackage', {
+        status: 'fail',
+        product_type,
+        err_code: code,
+        err_message: message,
+        ...options
+      })
+    })
     return req
   }
 

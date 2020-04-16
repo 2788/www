@@ -12,6 +12,7 @@ import Loadings from 'base/stores/loadings'
 import ToasterStore from 'base/stores/toaster'
 
 import CouponApis, { IDrawCouponOptions } from 'apis/coupon'
+import SensorsApis from 'apis/sensors'
 
 import { IProps } from '.'
 
@@ -24,6 +25,7 @@ export default class CouponCardStore extends Store {
   constructor(
     toasterStore: ToasterStore,
     private couponApis: CouponApis,
+    private sensorsApis: SensorsApis,
     @injectProps() private props: IProps,
   ) {
     super()
@@ -50,6 +52,22 @@ export default class CouponCardStore extends Store {
       batch_id: parseInt(this.props.batch_id)
     }
     const req = this.couponApis.drawCounpon(options)
+
+    req.then(() => {
+      this.sensorsApis.track('BindCoupon', {
+        status: 'success',
+        ...options
+      })
+    }, (err) => {
+      const { detail: { code, message } } = err
+
+      this.sensorsApis.track('BindCoupon', {
+        status: 'fail',
+        err_code: code,
+        err_message: message,
+        ...options
+      })
+    })
     return req
   }
 }
