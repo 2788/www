@@ -13,8 +13,6 @@ import { configure } from 'mobx'
 import * as moment from 'moment'
 import 'moment/locale/zh-cn'
 
-import sensors from 'sa-sdk-javascript'
-
 import App from './components/App'
 
 import './utils/styles/boot.less'
@@ -38,17 +36,6 @@ setConfig({
 })
 
 moment.locale('zh-cn')
-
-// 神策埋点 init
-sensors.init({
-  heatmap_url: 'https://static.sensorsdata.cn/sdk/1.15.1/heatmap.min.js',
-  server_url: 'https://sensors.qiniu.com/sa?project=default',
-  name: 'sensors',
-  heatmap: {},
-  show_log: false
-})
-
-sensors.quick('autoTrack')
 
 // 渲染 APP
 const rootEl = document.getElementById('main-view-wrapper')

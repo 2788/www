@@ -64,7 +64,7 @@ export function bindSensors(routerStore: RouterStore, project = 'default', isDev
   // 初始化神策埋点
   // 本地研发环境支持埋点自测，测试环境用于产品验证，生产环境用于用户数据统计，可根据域名进行筛选
   sensors.init({
-    heatmap_url: 'https://static.sensorsdata.cn/sdk/1.13.14/heatmap.min.js',
+    heatmap_url: 'https://static.sensorsdata.cn/sdk/1.15.1/heatmap.min.js',
     // 本地研发环境展示埋点日志便于调试，测试和生产环境埋点日志隐藏
     show_log: isDev,
     name: 'sensors',
