@@ -1,6 +1,7 @@
 package render
 
 import (
+	"encoding/json"
 	"net/http"
 	"strings"
 	"time"
@@ -84,21 +85,28 @@ func (c *Render) RenderPage(ctx *gin.Context) {
 // RenderPreviewPageByData renders a preview page by post data
 func (c *Render) RenderPreviewPageByData(ctx *gin.Context) {
 	log := middlewares.GetLogger(ctx)
-	var data *models.LegoTemplatePagePreviewData
-	err := ctx.BindJSON((&data))
-	if err != nil {
-		log.Errorf("ctx.BindJSON with error: %s", err)
+
+	input := ctx.PostForm("data")
+	if input == "" {
 		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
 		return
 	}
 
-	if data.CampaignCode == "" || data.Page == nil || data.Page.Content == "" {
+	var previewData models.LegoTemplatePagePreviewData
+	err := json.Unmarshal([]byte(input), &previewData)
+	if err != nil {
+		log.Errorf("json.Unmarshal with error: %s", err)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	if previewData.CampaignCode == "" || previewData.Page == nil || previewData.Page.Content == "" {
 		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
 		return
 	}
 
 	ctx.HTML(http.StatusOK, "templates/preview.html", gin.H{
-		"data": data,
+		"data": previewData,
 	})
 }
 
