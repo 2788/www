@@ -65,11 +65,6 @@ export const packageBuyBtnHoverColor = '#FF590F'
 export const packageDimensionDropdownBorderColor = '#DDD'
 export const packageDimensionDropdownBgColor = '#FBFBFB'
 
-//== error page
-//== 404 && ActivityEnd
-export const errorPage404BgColor = '#E6E6E6'
-export const errorPageActivityEndBgColor = '#E6E6E6'
-
 //== all activity page
 export const bannerBgFromColor = '#3377F9'
 export const bannerBgToColor = '#164AE5'

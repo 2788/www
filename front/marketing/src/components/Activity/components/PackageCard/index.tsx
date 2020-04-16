@@ -103,7 +103,7 @@ export default observer(function PackageCard(props: IProps) {
               <Col
                 key={`package-${id}-property-col-${index}`}
                 span={12}
-                sm={6}>
+                sm={{ span: is_single ? 6 : 12 }}>
                 <table>
                   <thead>
                     <tr><th>{item.key}</th></tr>
