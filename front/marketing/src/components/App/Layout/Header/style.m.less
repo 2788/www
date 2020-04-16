@@ -35,7 +35,6 @@
 .headerWrapper {
   width: 100%;
   // height: @base-height;
-  position: fixed;
   top: 0;
   left: 0;
   color: @header-active-text-color;
@@ -51,6 +50,7 @@
   }
 
   @media only screen and (min-width: @screen-sm) {
+    position: fixed;
     display: flex;
     justify-content: space-around;
     .c-word-nowrap();
