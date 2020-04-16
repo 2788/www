@@ -4,6 +4,7 @@
  */
 
 // TODO: i18n & mobile & media query
+// TODO: pc 端窄屏右侧 “更多” 收起功能
 
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
