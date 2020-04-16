@@ -69,7 +69,7 @@ export default class ModalStore extends Store {
     const { code, product_type, item_id, duration } = this.props
     let options: IBuyPackageOptions | IBuyOrderOptions | any = null
 
-    switch(product_type) {
+    switch (product_type) {
       case packageProductType.BASIC_PRODUCT:
         options = {
           orders: [{
@@ -82,6 +82,7 @@ export default class ModalStore extends Store {
           }],
           memo: `trade from marketing ${code}`
         }
+        break
       case packageProductType.PACKAGE:
         options = {
           package_id: parseInt(item_id),
@@ -89,6 +90,7 @@ export default class ModalStore extends Store {
           effect_type: this.effect,
           memo: `trade from marketing ${code}`
         }
+        break
       default:
         console.error('无效的商品下单参数')
     }
@@ -99,7 +101,7 @@ export default class ModalStore extends Store {
   @action getBuyPackageReqPromise(options: IBuyPackageOptions | IBuyOrderOptions | any) {
     const { product_type } = this.props
 
-    switch(product_type) {
+    switch (product_type) {
       case packageProductType.BASIC_PRODUCT:
         return this.packageApis.buyOrder(options)
       case packageProductType.PACKAGE:

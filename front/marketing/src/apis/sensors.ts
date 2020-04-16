@@ -9,12 +9,8 @@ import sensors from 'sa-sdk-javascript'
 
 @injectable()
 export default class SensorsApis extends Store {
-  constructor() {
-    super()
-  }
-
-  login(uid: number) {
-    sensors.login(uid + '')
+  login(uid: string) {
+    sensors.login(uid)
   }
 
   track(eventName: string, options: any) {
