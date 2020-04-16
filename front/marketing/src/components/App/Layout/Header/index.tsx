@@ -6,7 +6,7 @@
 // TODO: i18n & mobile & media query
 // TODO: pc 端窄屏右侧 “更多” 收起功能
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import classNames from 'classnames'
 
@@ -19,6 +19,8 @@ import Button from 'react-icecream/lib/button'
 import { basename } from 'constants/route'
 import { ssoHost, portalHost } from 'constants/host'
 import { Logo as LogoUrl } from 'constants/resource'
+import { screenSm } from 'utils/styles/variables'
+import { getViewportSize, reactionViewportSize } from 'utils/dom'
 import UserStore from 'stores/user'
 import { notFoundPagePath } from 'components/common/NotFound'
 import { activityEndPagePath } from 'components/common/ActivityEnd'
@@ -94,11 +96,20 @@ const User = observer(function _User({ setActiveState }: ISubMenuBaseProps) {
 
 export default observer(function Header(props: IProps) {
   const headerStore = useLocalStore(HeaderStore, props)
+  const { isHeaderActive, setSubMenuActiveState } = headerStore
+
   const notFoundPageMatchResult = !!useTest(`${basename}${notFoundPagePath}`)
   const activityEndPageMatchResult = !!useTest(`${basename}${activityEndPagePath}`)
 
-  const { isHeaderActive, setSubMenuActiveState } = headerStore
-  const shouldHeaderActive = isHeaderActive || notFoundPageMatchResult || activityEndPageMatchResult
+  const [width, setWidth] = useState(getViewportSize().width)
+  useEffect(() => reactionViewportSize(dimension => setWidth(dimension.width)), [])
+
+  const shouldHeaderActive = (
+    isHeaderActive
+    || notFoundPageMatchResult
+    || activityEndPageMatchResult
+    || width < screenSm
+  )
 
   const subMenuBaseProps = {
     setActiveState: setSubMenuActiveState
