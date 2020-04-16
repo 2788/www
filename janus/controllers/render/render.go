@@ -50,6 +50,12 @@ func (c *Render) RenderPage(ctx *gin.Context) {
 		return
 	}
 
+	if campaignRes.Payload.Status != models.LegoCampaignStatusCAMPAIGNSTATUSONLINE {
+		log.Warnf("request campaign of %s with status %s", code, campaignRes.Payload.Status)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
 	// 活动过期跳过期页面
 	now := time.Now()
 	if (!time.Time(campaignRes.Payload.EffectAt).IsZero() && time.Time(campaignRes.Payload.EffectAt).After(now)) ||
