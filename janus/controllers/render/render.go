@@ -113,9 +113,9 @@ func (c *Render) RenderPreviewPageByShareCode(ctx *gin.Context) {
 		return
 	}
 
-	result, err := c.legoService.GetTemplatePagePreviewData(legoService.NewGetTemplatePagePreviewDataParams().WithCode(&code))
+	result, err := c.legoService.GetTemplatePagePreviewData(legoService.NewGetTemplatePagePreviewDataParams().WithCode(&secret))
 	if err != nil {
-		log.Errorf("c.legoService.GetTemplatePagePreviewData(%s) with error: %s", code, err)
+		log.Errorf("c.legoService.GetTemplatePagePreviewData(%s) with error: %s", secret, err)
 		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
 		return
 	}
