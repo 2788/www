@@ -16,7 +16,14 @@ func InitRouters(app *gin.Engine) {
 
 	setHTMLTemplate(app)
 
-	app.GET("/activity/:code", render.RenderPage)
+	activity := app.Group("/activity")
+	{
+		activity.GET("/:code", render.RenderPage)
+		// for /preview/:code
+		activity.GET("/:code/:secret-code", render.RenderPreviewPageByShareCode)
+		activity.POST("/preview", render.RenderPreviewPageByData)
+	}
+
 	proxy := app.Group("/api/proxy")
 	{
 		proxy.Any("/*proxy", proxyHandler.HandleProxyRequest)

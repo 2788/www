@@ -1,18 +1,20 @@
 package render
 
 import (
+	"encoding/json"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	legoService "github.com/qbox/pay-sdk/http/lego/lego/lego_service"
+	"github.com/qbox/pay-sdk/http/lego/models"
 	"qiniu.com/qbox/www/janus/controllers/middlewares"
 )
 
 const (
-	notFoundPage        = "marketing/not-found"
-	campaignExpiredPage = "marketing/activity-end"
+	notFoundPage        = "activity/not-found"
+	campaignExpiredPage = "activity/activity-end"
 )
 
 // Render handler for lego render
@@ -49,6 +51,12 @@ func (c *Render) RenderPage(ctx *gin.Context) {
 		return
 	}
 
+	if campaignRes.Payload.Status != models.LegoCampaignStatusCAMPAIGNSTATUSONLINE {
+		log.Warnf("request campaign of %s with status %s", code, campaignRes.Payload.Status)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
 	// 活动过期跳过期页面
 	now := time.Now()
 	if (!time.Time(campaignRes.Payload.EffectAt).IsZero() && time.Time(campaignRes.Payload.EffectAt).After(now)) ||
@@ -71,5 +79,64 @@ func (c *Render) RenderPage(ctx *gin.Context) {
 
 	ctx.HTML(http.StatusOK, "templates/render.html", gin.H{
 		"campaign": pageListRes.GetPayload().Pages[0],
+	})
+}
+
+// RenderPreviewPageByData renders a preview page by post data
+func (c *Render) RenderPreviewPageByData(ctx *gin.Context) {
+	log := middlewares.GetLogger(ctx)
+
+	input := ctx.PostForm("data")
+	if input == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	var previewData models.LegoTemplatePagePreviewData
+	err := json.Unmarshal([]byte(input), &previewData)
+	if err != nil {
+		log.Errorf("json.Unmarshal with error: %s", err)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	if previewData.CampaignCode == "" || previewData.Page == nil || previewData.Page.Content == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	ctx.HTML(http.StatusOK, "templates/preview.html", gin.H{
+		"data": previewData,
+	})
+}
+
+// RenderPreviewPageByShareCode renders a preview page by share code
+func (c *Render) RenderPreviewPageByShareCode(ctx *gin.Context) {
+	log := middlewares.GetLogger(ctx)
+	code := ctx.Param("code")
+	secret := ctx.Param("secret-code")
+
+	if code != "preview" || secret == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	result, err := c.legoService.GetTemplatePagePreviewData(legoService.NewGetTemplatePagePreviewDataParams().WithCode(&secret))
+	if err != nil {
+		log.Errorf("c.legoService.GetTemplatePagePreviewData(%s) with error: %s", secret, err)
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	if result.GetPayload() == nil ||
+		result.GetPayload().CampaignCode == "" ||
+		result.GetPayload().Page == nil ||
+		result.GetPayload().Page.Content == "" {
+		ctx.Redirect(http.StatusFound, c.marketingHost+notFoundPage)
+		return
+	}
+
+	ctx.HTML(http.StatusOK, "templates/preview.html", gin.H{
+		"data": result.Payload,
 	})
 }
