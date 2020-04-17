@@ -107,7 +107,7 @@ function Consultation() {
       className={styles.menu}
     >
       <Collapse.Panel header="售前咨询" key="list" className={styles.subMenu}>
-        400-808-9176 转 1
+        <a href="tel:400-808-9176">400-808-9176</a> 转 1
       </Collapse.Panel>
     </Collapse>
   )

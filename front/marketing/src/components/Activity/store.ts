@@ -1,5 +1,5 @@
 /**
- * @file componnet renderer
+ * @file renderer store
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 

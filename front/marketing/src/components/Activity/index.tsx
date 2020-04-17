@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { getHeaderHeight } from 'components/App/Layout/Header'
-import { getGlobalScrollY, globalScrollToY } from 'utils/dom'
+import { getGlobalScrollY, globalScrollToY, useIsPc } from 'utils/dom'
 import { ComponentName, IComponentInfo } from 'apis/component'
 
 import { IPreviewInitData } from './Preview'
@@ -39,6 +39,7 @@ export interface IProps {
 
 export default observer(function Activity(props: IProps) {
   const activityStore = useLocalStore(ActivityStore, props)
+  const isPc = useIsPc()
 
   const elementMap: { [key: string]: HTMLElement | null | undefined } = {}
 
@@ -55,7 +56,9 @@ export default observer(function Activity(props: IProps) {
       // TODO: HACK scrollIntoView 不支持 top …
       // TOOD: 要不要加滚动动画。。？ scrollIntoView & scrollTo: + { behavior: 'smooth' } 但有兼容问题
       element.scrollIntoView()
-      globalScrollToY(Math.max(0, getGlobalScrollY() - getHeaderHeight()))
+      if (isPc) {
+        globalScrollToY(Math.max(0, getGlobalScrollY() - getHeaderHeight()))
+      }
     } else {
       console.error('找不到指定控件', key)
     }
