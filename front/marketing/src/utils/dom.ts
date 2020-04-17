@@ -4,9 +4,10 @@
  */
 
 // TODO: use hooks style api interface instead
-// import { useState, useEffect } from 'React'
-
+import { useState, useEffect } from 'react'
 import { throttle } from 'lodash'
+
+import { screenSm } from 'utils/styles/variables'
 
 export const defaultDelay = 50
 
@@ -80,6 +81,17 @@ export function reactionViewportSize(onResize: (size: IDimension) => void) {
 
   window.addEventListener('resize', handleResize)
   return () => window.removeEventListener('resize', handleResize)
+}
+
+export function useViewportSize() {
+  const [size, setSize] = useState(getViewportSize())
+  useEffect(() => reactionViewportSize(setSize), [])
+  return size
+}
+
+export function useIsPc() { // vs mobile
+  const { width } = useViewportSize()
+  return width >= screenSm
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY

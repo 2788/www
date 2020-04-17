@@ -7,8 +7,7 @@ import React, { useState, useEffect, forwardRef, RefCallback, ReactNode } from '
 import { observer } from 'mobx-react'
 import { isFunction } from 'lodash'
 
-import { reactionMouseLeave, getViewportSize, reactionViewportSize } from 'utils/dom'
-import { screenSm } from 'utils/styles/variables'
+import { reactionMouseLeave, useIsPc } from 'utils/dom'
 import { ComponentName, IComponentInfo } from 'apis/component'
 import { IBaseProps } from '../..'
 
@@ -59,20 +58,6 @@ function useVisible(initVisible: boolean, enabled: boolean) {
   return [visible && enabled, setVisible] as const
 }
 
-function useHoverMode() {
-  function shouldBeHoverMode(width: number) {
-    return width >= screenSm
-  }
-
-  const [isHoverMode, setIsHoverMode] = useState(shouldBeHoverMode(getViewportSize().width))
-
-  useEffect(() => reactionViewportSize(({ width }) => {
-    setIsHoverMode(shouldBeHoverMode(width))
-  }), [])
-
-  return [isHoverMode] as const
-}
-
 export default observer(forwardRef<HTMLElement, IProps>(function PageNav(
   { info: { data }, onScrollTo },
   onElementChange
@@ -83,7 +68,7 @@ export default observer(forwardRef<HTMLElement, IProps>(function PageNav(
   // 没用 useRef 是为了让 useEffect 能观察到
   const [mainElement, setMainElement] = useState<HTMLElement | null | undefined>()
 
-  const [isHoverMode] = useHoverMode()
+  const isHoverMode = useIsPc()
 
   const [visible, setVisible] = useVisible(false, hasData)
 

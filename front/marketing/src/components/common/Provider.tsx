@@ -9,7 +9,7 @@ import * as di from 'qn-fe-core/di'
 import Disposable from 'qn-fe-core/disposable'
 import BaseProvider, * as base from 'base/components/Provider'
 
-import { isDev } from 'constants/env'
+import { shouldEnableSensors, shouldEnableSensorsDebugMode } from 'constants/sensors'
 import { bindGA, bindSensors } from 'utils/router'
 
 import FetchStore from 'stores/fetch'
@@ -42,14 +42,13 @@ export class Env extends Disposable implements base.IEnv {
     // TODO: 考虑要不要挪到-base 的 env init 中？需要考虑具体项目定制 title 的需求
     this.base.routerStore.bindDocument(window.document, '七牛云 - {{routeTitle}}')
 
-    const shouldEnableSensorsInDebugMode = document.cookie.includes('debug_sensors') // HACK: 安全小后门
-    if (!isDev || shouldEnableSensorsInDebugMode) {
-      if (shouldEnableSensorsInDebugMode) {
+    if (shouldEnableSensors) {
+      if (shouldEnableSensorsDebugMode) {
         (window as any).sensors = sensors
       }
 
       this.addDisposer(
-        bindSensors(this.base.routerStore, 'default', isDev || shouldEnableSensorsInDebugMode)
+        bindSensors(this.base.routerStore, 'default', shouldEnableSensorsDebugMode)
       )
     }
 

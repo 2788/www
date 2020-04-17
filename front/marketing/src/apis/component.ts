@@ -64,6 +64,7 @@ export default class ComponentApis extends Store {
       try {
         const list: IComponentInfo[] = JSON.parse(res)
         return list
+        // return (res as any).list
       } catch (error) {
         throw new Error('控件列表数据解析失败')
       }
