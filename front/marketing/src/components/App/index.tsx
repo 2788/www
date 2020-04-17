@@ -34,10 +34,15 @@ export default class App extends React.Component<any, any> {
         <LocaleProvider locale={zhCN}>
           <div className="comp-app">
             <Toaster />
+            <Route path="/">
+              <Switch>
+                <Route relative path="/" exact title="活动首页"><Redirect relative to={`${basename}/all`} /></Route>
+              </Switch>
+            </Route>
             <Route path={basename}>
               <Layout>
                 <Switch>
-                  <Route relative path="/" exact title="首页"><Redirect relative to="/all" /></Route>
+                  <Route relative path="/" exact title="活动首页"><Redirect relative to="/all" /></Route>
                   <Route relative path="/all" exact title="全部活动"><AllActivity /></Route>
                   <Route relative path={notFoundPagePath} title="404" exact><NotFound /></Route>
                   <Route relative path={activityEndPagePath} title="活动已结束" exact><ActivityEnd /></Route>

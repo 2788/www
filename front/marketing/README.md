@@ -54,8 +54,8 @@ yarn
 # 启动本地服务
 yarn run dev
 # 本地访问地址
-http://localhost:8080/activity
-# 会重定向到 http://localhost:8080/activity/all
+http://localhost:8080 || http://localhost:8080/activity
+# 均会重定向到 http://localhost:8080/activity/all
 ```
 
 #### docker 镜像（适合持续集成环境使用）
