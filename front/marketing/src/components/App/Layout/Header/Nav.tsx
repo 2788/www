@@ -301,7 +301,7 @@ function ActivityAndCooperation({ setActiveState }: ISubMenuBaseProps) {
         <Menu.ItemGroup title="热门活动" key="activity">
           <MenuItem
             title="云主机合伙人计划"
-            link="https://www.qiniu.com/products/qvm/partner?entry=events-dropdown"
+            link="https://www.qiniu.com/products/qvm/partner"
             icon="partner"
             tag="hot"
           />

@@ -81,7 +81,7 @@ const User = observer(function _User({ setActiveState }: ISubMenuBaseProps) {
   }
 
   return (
-    <span>
+    <span className={styles.userWrapper}>
       <Button type="ghost" className={styles.signInBtn}>
         {/* TODO: 参数。。？ */}
         <a href={`${ssoHost}/?redirect_url=${encodeURIComponent(window.location.href)}`}>登录</a>

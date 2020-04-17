@@ -170,7 +170,7 @@ export default observer(forwardRef(function AllActivity() {
                   <p dangerouslySetInnerHTML={{ __html: subtitle }}></p>
                   <Button
                     className={styles.jumpBtn}
-                    href={`${url}?entry=gather-page`}
+                    href={url || ''}
                     target="_blank">
                     {button_text}
                   </Button>
