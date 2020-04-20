@@ -57,6 +57,7 @@ Rails.application.configure do
   config.portal_host = 'http://portalv4.dev.qiniu.io'
   config.gaea_admin_host = 'http://bo-gaea-admin-koderover-staging-bo.cs-spock.cloudappl.com'
   config.qvm_host = 'http://qvm-admin.dev.qiniu.io'
+  config.marketing_host = 'http://marketing.dev.qiniu.io'
 
   # 2018 年 1024 活动热度计算配置
   # https://jira.qiniu.io/browse/BO-5294

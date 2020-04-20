@@ -13,6 +13,32 @@ class WelcomeController < ApplicationController
     # else
     #   @top_archives = Archive.where(status: 'published').top_archives
     # end
+    @banner_arr = []
+    @advert_arr = []
+    # 中文站首页动态获取 banner && 广告位
+    if I18n.t("views.language") == "zh"
+      marketing_host = Rails.configuration.marketing_host
+      if marketing_host == ""
+        return nil
+      end
+
+      req_banner_uri = marketing_host + "/api/proxy/lego/banners-online?location=1&page=1&page_size=100"
+      req_banner_res = get_remote_data(req_banner_uri)
+      if req_banner_res.nil? == false &&
+         req_banner_res["data"].nil? == false &&
+         req_banner_res["data"]["banners"].nil? == false
+        @banner_arr = req_banner_res["data"]["banners"]
+      end
+
+      req_advert_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=100"
+      req_advert_res = get_remote_data(req_advert_uri)
+      if req_advert_res.nil? == false &&
+        req_advert_res["data"].nil? == false &&
+        req_advert_res["data"]["adverts"].nil? == false
+       # 广告位只取前五个显示
+       @advert_arr = req_advert_res["data"]["adverts"].slice(0, 5)
+      end
+    end
   end
 
   def contact
@@ -134,6 +160,31 @@ class WelcomeController < ApplicationController
   end
 
   def partner
+  end
+
+  # remote get 请求
+  def get_remote_data(req_uri)
+    uri = URI.parse(req_uri)
+    req = Net::HTTP::Get.new(uri)
+    req["Content-Type"] = "application/json"
+
+    begin
+      http = Net::HTTP.new(uri.hostname, uri.port)
+      if uri.port == 443
+        http.use_ssl = true
+      end
+      res = http.request(req)
+    rescue
+      return nil
+    end
+
+    case res
+      when Net::HTTPSuccess
+        JSON.parse res.body
+      else
+        puts res.message
+        return nil
+    end
   end
 
   def robots
