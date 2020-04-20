@@ -46,7 +46,7 @@ zh-CN:
             desc: "热门活动及产品特惠"
             link: "/events/activity?entry=index-advert"
             jumphost: ""
-          - title: "开春采购季<span class='advert-tip'>NEW</span>"
+          - title: "开春采购季"
             class: "border-l"
             jump_label_class: ""
             desc: "降本增效 助力复工"
