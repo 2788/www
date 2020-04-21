@@ -11,8 +11,8 @@ export const warningColor = '#F0A818'
 export const dangerColor = '#E55C5C'
 export const errorColor = dangerColor
 
-export const shadowColor = 'rgba(0, 0, 0, 0.50)'
-export const shadowColorDarker = 'rgba(0, 0, 0, 0.80)'
+export const shadowColor = 'rgba(0, 0, 0, 0.20)'
+export const shadowColorDarker = 'rgba(0, 0, 0, 0.40)'
 
 //== screen / tablet
 export const screenSm = 768
