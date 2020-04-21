@@ -1,13 +1,6 @@
 <% if I18n.t("views.language") == 'zh' %>
 <div class="banners-slider">
 
-  <%# 动态渲染 banner %>
-  <% if @banner_arr.length > 0 -%>
-    <% @banner_arr.each do |banner| -%>
-    <%= index_dynamic_banner(banner) -%>
-    <% end -%>
-  <% end -%>
-
   <%# 新版邀请好友 banner %>
   <% if Time.now.to_i < Time.local(2020, 4, 23).to_i -%>
   <div class="jumbotron hero hero-invite-2020-index">
@@ -216,14 +209,11 @@
 
 <%# 官网首页广告位（中文页面显示） %>
 <%# https://jira.qiniu.io/browse/BO-5547 %>
-<% if I18n.t("views.language") == "zh" && @advert_arr.length > 0 -%>
+<% if I18n.t("views.language") == "zh" -%>
 <div class="features features-advert-index">
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
       <tr>
-        <% @advert_arr.each do |advert| -%>
-        <%= index_dynamic_advert(advert) -%>
-        <% end -%>
       </tr>
     </tbody>
   </table>

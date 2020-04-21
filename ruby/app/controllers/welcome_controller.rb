@@ -13,33 +13,66 @@ class WelcomeController < ApplicationController
     # else
     #   @top_archives = Archive.where(status: 'published').top_archives
     # end
-    @banner_arr = []
-    @advert_arr = []
-    # 中文站首页动态获取 banner && 广告位
-    if I18n.t("views.language") == "zh"
-      marketing_host = Rails.configuration.marketing_host
-      if marketing_host == ""
-        return nil
-      end
+  end
 
-      # banner 只显示 10 个
-      req_banner_uri = marketing_host + "/api/proxy/lego/banners-online?location=1&page=1&page_size=10"
-      req_banner_res = get_remote_data(req_banner_uri)
-      if req_banner_res.nil? == false &&
-         req_banner_res["data"].nil? == false &&
-         req_banner_res["data"]["banners"].nil? == false
-        @banner_arr = req_banner_res["data"]["banners"]
-      end
-
-      # 广告位只显示 5 个
-      req_advert_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=5"
-      req_advert_res = get_remote_data(req_advert_uri)
-      if req_advert_res.nil? == false &&
-         req_advert_res["data"].nil? == false &&
-         req_advert_res["data"]["adverts"].nil? == false
-        @advert_arr = req_advert_res["data"]["adverts"]
-      end
+  def get_dynamic_banner
+    marketing_host = Rails.configuration.marketing_host
+    if marketing_host.blank? || marketing_host.nil?
+      render json: {
+        "is_success": false,
+        "data": []
+      }
+      return
     end
+
+    # banner 只显示 10 个
+    req_uri = marketing_host + "/api/proxy/lego/banners-online?location=1&page=1&page_size=10"
+    res = get_remote_data(req_uri)
+    if res.nil? == false &&
+       res["data"].nil? == false &&
+       res["data"]["banners"].nil? == false
+      render json: {
+        "is_success": true,
+        "data": res["data"]["banners"] || []
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "data": []
+    }
+    return
+  end
+
+  def get_dynamic_advert
+    marketing_host = Rails.configuration.marketing_host
+    if marketing_host.blank? || marketing_host.nil?
+      render json: {
+        "is_success": false,
+        "data": []
+      }
+      return
+    end
+
+    # 广告位只显示 5 个
+    req_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=5"
+    res = get_remote_data(req_uri)
+    if res.nil? == false &&
+       res["data"].nil? == false &&
+       res["data"]["adverts"].nil? == false
+      render json: {
+        "is_success": true,
+        "data": res["data"]["adverts"] || []
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "data": []
+    }
+    return
   end
 
   def contact
