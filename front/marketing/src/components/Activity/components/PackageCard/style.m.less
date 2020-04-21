@@ -12,7 +12,7 @@
   padding: 0.16rem 0.22rem 0;
   color: @package-text-color;
   background-color: @white;
-  box-shadow: 0 0 0.20rem 0 @shadow-color-darker;
+  box-shadow: 0 0 0.20rem 0 @shadow-color;
   overflow: hidden;
 
   p {
@@ -92,10 +92,14 @@
         color: @white;
         background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
         background-color: @package-buy-btn-right-color;
-  
-        &:hover, &:active, &:focus {
+
+        &:hover {
           color: @white;
           background: @package-buy-btn-hover-color;
+        }
+
+        &:active, &:focus {
+          color: @white;
         }
       }
     }
