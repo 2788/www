@@ -35,9 +35,9 @@ class WelcomeController < ApplicationController
       req_advert_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=5"
       req_advert_res = get_remote_data(req_advert_uri)
       if req_advert_res.nil? == false &&
-        req_advert_res["data"].nil? == false &&
-        req_advert_res["data"]["adverts"].nil? == false
-       @advert_arr = req_advert_res["data"]["adverts"]
+         req_advert_res["data"].nil? == false &&
+         req_advert_res["data"]["adverts"].nil? == false
+        @advert_arr = req_advert_res["data"]["adverts"]
       end
     end
   end
