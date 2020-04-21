@@ -40,7 +40,7 @@ $(document).ready ->
           """
 
         return $indexAdvertContainer.find('table tbody tr').append("""
-          <td title=#{ advert.subtitle || "" }>
+          <td title=#{ $("<span>#{advert.subtitle}</span>").text().replace(/\s/g, '&nbsp;') || "" }>
             #{ advertStr }
           </td>
         """)
