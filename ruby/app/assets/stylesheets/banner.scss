@@ -1,4 +1,15 @@
 // index page
+.dynamic-banner-link {
+  outline: none;
+  -moz-outline: none;
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    -moz-outline: none;
+  }
+}
+
 .jumbotron.hero {
   height: 5rem;
   margin-bottom: 0.30rem;

@@ -374,25 +374,43 @@
 
 .features-advert-index {
   margin-top: -30px;
-  padding-top: 0 !important;
-  .col-advert {
-    width: 20%;
-    padding: 0.10rem 0;
-    background-color: #F8F8F8;
-    -webkit-transition: all .15s linear;
-    -moz-transition: all .15s linear;
-    transition: all .15s linear;
-    .media {
-      .media-body {
+  padding-top: 0;
+
+  table {
+    table-layout: fixed;
+
+    td {
+      position: relative;
+      padding: 0.30rem 0.10rem;
+      border-left: 1px solid #DADEE4;
+      background-color: #F8F8F8;
+      text-align: center;
+      vertical-align: middle;
+      -webkit-transition: all .15s linear;
+      -moz-transition: all .15s linear;
+      transition: all .15s linear;
+
+      .dynamic-advert-link {
+        outline: none;
+        -moz-outline: none;
+
+        &:focus {
+          text-decoration: none;
+          outline: none;
+          -moz-outline: none;
+        }
+      }
+
+      .advert-body {
         width: 100%;
-        text-align: center;
-        vertical-align: middle;
-        display: inline-block;
-        .media-heading {
-          margin: 0.22rem 0 0.05rem 0;
+
+        .advert-heading {
+          margin: 0;
           color: #000;
           font-size: 0.18rem;
           font-weight: 600;
+          line-height: 1.4;
+
           .advert-tip {
             position: absolute;
             top: 6px;
@@ -401,42 +419,28 @@
             color: #FFF;
             border-radius: 0.02rem;
             font-size: 0.12rem;
-            background-color: #FF5928;
+            line-height: 1;
           }
         }
+
         p {
-          margin-bottom: 0.14rem;
+          margin: 0.14rem 0 0;
+          line-height: 1;
         }
       }
-    }
-    &:hover {
-      background-color: #FFF;
-      .media .media-body .media-heading {
-        color: #28AEDF;
-      }
-    }
-    &.advert-double11-2019,
-    &.advert-double12-2019 {
-      background-size: auto 100%;
-      background-position: 0 0;
-      background-repeat: no-repeat;
-      .media {
-        .media-body {
-          .media-heading {
-            color: #FE3E3F;
-          }
+
+      &:hover {
+        background-color: #FFF;
+
+        .advert-body .advert-heading {
+          color: #28AEDF;
         }
       }
+
+      &:first-child {
+        border-left: none;
+      }
     }
-    &.advert-double11-2019 {
-      background-image: image-url("icon-advert-double11-2019.png");
-    }
-    &.advert-double12-2019 {
-      background-image: image-url("icon-advert-double12-2019.png");
-    }
-  }
-  .border-l {
-    border-left: 1px solid #DADEE4;
   }
 }
 
@@ -828,17 +832,6 @@
     }
 }
 
-@media (max-width: 1199px) {
-  .features-advert-index {
-    .col-advert {
-      &.advert-double11-2019,
-      &.advert-double12-2019 {
-        background-size: 40% auto;
-      }
-    }
-  }
-}
-
 @media (min-width: 992px) and (max-width: 1199px) {
     .features {
         .row {
@@ -861,36 +854,11 @@
     }
 }
 
-@media (max-width: 991px) {
-  .features-advert-index {
-    .col-advert {
-      .media {
-        .media-body {
-          .media-heading {
-            margin: 0.26rem 0 0.05rem 0;
-            font-size: 0.16rem;
-          }
-          p {
-            font-size: 0.12rem;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media (max-width: 768px) {
   .features-advert-index {
-    .col-advert {
-      .media {
-        .media-body {
-          .media-heading {
-            margin: 0.34rem 0 0.05rem 0;
-          }
-          p {
-            margin-bottom: 0.26rem;
-          }
-        }
+    table {
+      td {
+        padding: 0.46rem 0.10rem;
       }
     }
   }
@@ -898,35 +866,11 @@
 
 @media (max-width: 767px) {
   .features-advert-index {
-    .col-advert {
-      width: 33.33%;
-      padding-bottom: 0.34rem;
-      .media {
-        .media-body {
-          .media-heading {
-            .advert-tip {
-              top: 6px;
-              right: 6px;
-              left: auto;
-            }
-          }
-        }
-      }
-      &.advert-double11-2019,
-      &.advert-double12-2019 {
-        background-position-x: 10px;
-        background-size: auto 100%;
-      }
-    }
-  }
-}
-
-@media (max-width: 425px) {
-  .features-advert-index {
-    .col-advert {
-      &.advert-double11-2019,
-      &.advert-double12-2019 {
-        background-size: 40px 40px;
+    table {
+      td:first-child,
+      td:last-child {
+        display: none;
+        opacity: 0;
       }
     }
   }

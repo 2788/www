@@ -130,6 +130,11 @@ Rails.application.routes.draw do
       end
     end
 
+    # 获取动态 banner
+    get '/banner/dynamic', to: 'welcome#get_dynamic_banner'
+    # 获取动态广告位
+    get '/advert/dynamic', to: 'welcome#get_dynamic_advert'
+
     # 1024 活动页定位到 events#event1024
     get '/events/1024event', to: 'events#event1024'
     # 限时 cdn 流量包活动页面路由

@@ -64,6 +64,9 @@
 #= require invite
 #= require svesdk
 
+#= require dynamic_banner
+#= require dynamic_advert
+
 #= require uuid
 #= require sensors_service
 
@@ -297,15 +300,6 @@ $(document).ready ->
         slidesToScroll: 2
     }]
   # banner slider
-  $('.banners-slider').slick
-    dots: true
-    autoplay: true
-    # autoplaySpeed: 2000
-    # 增长官网首页 banner 停留时间
-    autoplaySpeed: 4000
-    arrows: false
-    slidesToShow: 1
-    slidesToScroll: 1
   $('#square-cases-slider').slick
     dots: false
     autoplay: false
@@ -360,7 +354,6 @@ $(document).ready ->
         slidesToShow: 1
         slidesToScroll: 1
     }]
-  $('.banners-slider .slick-dots').addClass('banners-arrow')
 
 listenScroll = (json) ->
   defaultVar =

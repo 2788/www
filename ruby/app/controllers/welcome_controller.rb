@@ -15,6 +15,66 @@ class WelcomeController < ApplicationController
     # end
   end
 
+  def get_dynamic_banner
+    marketing_host = Rails.configuration.marketing_host
+    if marketing_host.blank? || marketing_host.nil?
+      render json: {
+        "is_success": false,
+        "data": []
+      }
+      return
+    end
+
+    # banner 只显示 10 个
+    req_uri = marketing_host + "/api/proxy/lego/banners-online?location=1&page=1&page_size=10"
+    res = get_remote_data(req_uri)
+    if res.nil? == false &&
+       res["data"].nil? == false &&
+       res["data"]["banners"].nil? == false
+      render json: {
+        "is_success": true,
+        "data": res["data"]["banners"] || []
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "data": []
+    }
+    return
+  end
+
+  def get_dynamic_advert
+    marketing_host = Rails.configuration.marketing_host
+    if marketing_host.blank? || marketing_host.nil?
+      render json: {
+        "is_success": false,
+        "data": []
+      }
+      return
+    end
+
+    # 广告位只显示 5 个
+    req_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=5"
+    res = get_remote_data(req_uri)
+    if res.nil? == false &&
+       res["data"].nil? == false &&
+       res["data"]["adverts"].nil? == false
+      render json: {
+        "is_success": true,
+        "data": res["data"]["adverts"] || []
+      }
+      return
+    end
+
+    render json: {
+      "is_success": false,
+      "data": []
+    }
+    return
+  end
+
   def contact
   end
 
@@ -134,6 +194,31 @@ class WelcomeController < ApplicationController
   end
 
   def partner
+  end
+
+  # remote get 请求
+  def get_remote_data(req_uri)
+    uri = URI.parse(req_uri)
+    req = Net::HTTP::Get.new(uri)
+    req["Content-Type"] = "application/json"
+
+    begin
+      http = Net::HTTP.new(uri.hostname, uri.port)
+      if uri.port == 443
+        http.use_ssl = true
+      end
+      res = http.request(req)
+    rescue
+      return nil
+    end
+
+    case res
+      when Net::HTTPSuccess
+        JSON.parse res.body
+      else
+        puts res.message
+        return nil
+    end
   end
 
   def robots

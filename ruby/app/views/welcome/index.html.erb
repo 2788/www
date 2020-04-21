@@ -211,28 +211,12 @@
 <%# https://jira.qiniu.io/browse/BO-5547 %>
 <% if I18n.t("views.language") == "zh" -%>
 <div class="features features-advert-index">
-  <div class="row">
-    <% I18n.t("views.welcome.index.adverts").each do |advert| -%>
-
-      <% advert_url = advert[:link] -%>
-      <% if advert[:jumphost] == "portal" -%>
-        <% advert_url = Rails.configuration.portal_host + advert_url -%>
-      <% elsif advert[:jumphost] == "blog" -%>
-        <% advert_url = Rails.configuration.blog_host + advert_url -%>
-      <% end -%>
-
-      <a class="<%= advert[:jump_label_class] -%>" href="<%= advert_url -%>" target="_blank" title="<%= raw(advert[:desc]) -%>">
-        <div class="col-xs-2 col-advert <%= advert[:class] -%>">
-          <div class="media">
-            <div class="media-body">
-              <h4 class="media-heading"><%= raw(advert[:title]) -%></h4>
-              <p class="hidden-xs"><%= raw(advert[:desc]) -%></p>
-            </div>
-          </div>
-        </div>
-      </a>
-    <% end -%>
-  </div>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <% end -%>
 

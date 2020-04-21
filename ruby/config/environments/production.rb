@@ -83,6 +83,7 @@ Rails.application.configure do
   config.portal_host = 'https://portal.qiniu.com'
   config.gaea_admin_host = 'http://gaea-admin.qiniu.io'
   config.qvm_host = 'http://qvm-admin.qiniu.io'
+  config.marketing_host = 'https://marketing.qiniu.com'
 
   # 2018 年 1024 活动热度计算配置
   # https://jira.qiniu.io/browse/BO-5294
