@@ -21,7 +21,11 @@ module WelcomeHelper
       return raw(banner_str)
     end
 
-    return raw("<a class='dynamic-banner-link' href=#{ jump_link || "" } title=#{ banner["title"] || "" } target='_blank'>#{ banner_str }</a>")
+    return raw(
+      "<a class='dynamic-banner-link' href=#{ jump_link || "" } title=#{ banner["title"] || "" } target='_blank'>
+        #{ banner_str }
+      </a>"
+    )
   end
 
   def index_dynamic_advert(advert)
@@ -31,15 +35,34 @@ module WelcomeHelper
 
     subscript_str = ""
     if advert["subscript_name"].nil? == false && advert["subscript_name"].blank? == false
-      subscript_str = "<span class='advert-tip' style='background-color: #{ advert["subscript_color"] || "#FF5928" }'>#{ advert["subscript_text"] || "NEW" }</span>"
+      subscript_str = (
+        "<span class='advert-tip' style='background-color: #{ advert["subscript_color"] || "#FF5928" }'>
+          #{ advert["subscript_text"] || "NEW" }
+        </span>"
+      )
     end
 
     jump_link = advert["url"]
-    advert_str = "<div class='advert-body'><h4 class='advert-heading'>#{ advert["title"] || "" }#{ subscript_str }</h4><p class='hidden-xs'>#{ advert["subtitle"] || "" }</p></div>"
+    advert_str = (
+      "<div class='advert-body'>
+        <h4 class='advert-heading'>
+          #{ advert["title"] || "" }#{ subscript_str }
+        </h4>
+        <p class='hidden-xs'>
+          #{ advert["subtitle"] || "" }
+        </p>
+      </div>"
+    )
     if jump_link.nil? || jump_link.blank?
       return raw("<td title=#{ advert["subtitle"] || "" }>#{ advert_str }</td>")
     end
 
-    return raw("<td title=#{ advert["subtitle"] || "" }><a class='dynamic-advert-link' href=#{ jump_link || "" } target='_blank'>#{ advert_str }</a></td>")
+    return raw(
+      "<td title=#{ advert["subtitle"] || "" }>
+        <a class='dynamic-advert-link' href=#{ jump_link || "" } target='_blank'>
+          #{ advert_str }
+        </a>
+      </td>"
+    )
   end
 end
