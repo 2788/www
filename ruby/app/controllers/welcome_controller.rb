@@ -22,7 +22,8 @@ class WelcomeController < ApplicationController
         return nil
       end
 
-      req_banner_uri = marketing_host + "/api/proxy/lego/banners-online?location=1&page=1&page_size=100"
+      # banner 只显示 10 个
+      req_banner_uri = marketing_host + "/api/proxy/lego/banners-online?location=1&page=1&page_size=10"
       req_banner_res = get_remote_data(req_banner_uri)
       if req_banner_res.nil? == false &&
          req_banner_res["data"].nil? == false &&
@@ -30,13 +31,13 @@ class WelcomeController < ApplicationController
         @banner_arr = req_banner_res["data"]["banners"]
       end
 
-      req_advert_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=100"
+      # 广告位只显示 5 个
+      req_advert_uri = marketing_host + "/api/proxy/lego/adverts-online?page=1&page_size=5"
       req_advert_res = get_remote_data(req_advert_uri)
       if req_advert_res.nil? == false &&
         req_advert_res["data"].nil? == false &&
         req_advert_res["data"]["adverts"].nil? == false
-       # 广告位只取前五个显示
-       @advert_arr = req_advert_res["data"]["adverts"].slice(0, 5)
+       @advert_arr = req_advert_res["data"]["adverts"]
       end
     end
   end
