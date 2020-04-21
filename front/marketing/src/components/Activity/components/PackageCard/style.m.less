@@ -92,10 +92,14 @@
         color: @white;
         background: linear-gradient(to right, @package-buy-btn-left-color, @package-buy-btn-right-color);
         background-color: @package-buy-btn-right-color;
-  
-        &:hover, &:active, &:focus {
+
+        &:hover {
           color: @white;
           background: @package-buy-btn-hover-color;
+        }
+
+        &:active, &:focus {
+          color: @white;
         }
       }
     }
