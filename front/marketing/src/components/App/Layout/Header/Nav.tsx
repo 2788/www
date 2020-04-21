@@ -5,6 +5,8 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
+import classNames from 'classnames'
+
 import Menu from 'react-icecream/lib/menu'
 
 import { tagIcons, menuIcons } from 'constants/resource'
@@ -17,6 +19,7 @@ export interface IProps extends ISubMenuBaseProps {
 }
 
 interface IMenuItemProps {
+  iconClass?: string
   title: string
   desc?: string
   link: string
@@ -24,7 +27,7 @@ interface IMenuItemProps {
   tag?: keyof typeof tagIcons
 }
 
-function MenuItem({ title, desc, icon, tag, link }: IMenuItemProps) {
+function MenuItem({ iconClass, title, desc, icon, tag, link }: IMenuItemProps) {
   // HACK: use custom hover style
   const innerProps: any = {
     onItemHover: () => null,
@@ -35,7 +38,7 @@ function MenuItem({ title, desc, icon, tag, link }: IMenuItemProps) {
     <Menu.Item className={styles.subMenuItem} key={title} {...innerProps}>
       <a href={link} className={styles.item}>
         <h4>
-          {icon && (<img src={menuIcons[icon]} className={styles.icon} alt={`icon-${icon}`} />)}
+          {icon && (<img src={menuIcons[icon]} className={classNames(styles.icon, iconClass)} alt={`icon-${icon}`} />)}
           <span className={styles.title}>{title}</span>
           {tag && (<img src={tagIcons[tag]} className={styles.tag} alt={`icon-${tag}`} />)}
         </h4>
@@ -131,6 +134,7 @@ function Product({ setActiveState }: ISubMenuBaseProps) {
               tag="new"
             />
             <MenuItem
+              iconClass={styles.narrow}
               title="智能日志管理平台"
               desc="海量异构数据采集，秒级实时日志检索，高效智能业务洞察"
               link="https://www.qiniu.com/products/insight"
@@ -138,6 +142,7 @@ function Product({ setActiveState }: ISubMenuBaseProps) {
               tag="new"
             />
             <MenuItem
+              iconClass={styles.narrow}
               title="机器数据分析平台"
               desc="助力企业探索数据、创造价值、预见未来"
               link="https://www.qiniu.com/products/express"
