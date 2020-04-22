@@ -47,6 +47,6 @@ $(document).ready ->
       success: (res) ->
         if res && res.is_success && res.data && res.data.length > 0
           prependBanner res.data
-          initBannerSlider()
+        initBannerSlider()
       error: () ->
         initBannerSlider()
