@@ -8,4 +8,6 @@
 
   - ./front/marketing 市场活动官网前端分站 [传送门](./front/marketing/README.md)
 
+  - ./front/2020 官网新版 2020 [传送门](./front/2020/README.md)
+
 - ./ruby 目前线上 `run` 的官网代码 [传送门](./ruby/README.md)
