@@ -141,9 +141,16 @@ export default observer(function PackageCard(props: IProps) {
       return null
     }
 
-    const { fee, c_fee } = selectedPackage
-    const numFee: number = parseInt(fee)
-    const numCFee: number = parseInt(c_fee)
+    const { fee, c_fee, duration } = selectedPackage
+    let numFee: number = parseInt(fee)
+    let numCFee: number = parseInt(c_fee)
+    const numDuration: number = parseInt(duration)
+
+    // 基础商品展示现价/原价 = 基础商品原价/现价 * 时长
+    if (product_type === packageProductType.BASIC_PRODUCT) {
+      numFee = numFee * numDuration
+      numCFee = numCFee * numDuration
+    }
 
     const originDom: JSX.Element | null = appear_fee && numCFee < numFee ? (
       <p className={`${styles.money} ${styles.smaller}`}>
