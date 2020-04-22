@@ -1,15 +1,18 @@
-import Link from 'next/link'
+/**
+ * @file 首页内容
+ */
+
+import React from 'react'
 import Layout from '../components/Layout'
+import style from './style.less'
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
-
-export default IndexPage
+export default function IndexPage() {
+  return (
+    <Layout>
+      <section className={style.banner}></section>
+      <section className={style.slogan}>
+        连接数据，重塑价值
+      </section>
+    </Layout>
+  )
+}
