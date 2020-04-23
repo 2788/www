@@ -2,10 +2,10 @@
 
 ### 工具选型
 
-* Typescript
-* React
-* Next.js
-* Less
+* [Typescript](https://www.typescriptlang.org/)
+* [React](https://reactjs.org/)
+* [Next.js](https://nextjs.org/)
+* [Less](http://lesscss.org/) with [CSS Module](https://github.com/css-modules/css-modules)
 
 ### 开发
 
@@ -29,4 +29,8 @@ yarn dev
 yarn build
 ```
 
-将 `./out` 中内容发布 CDN 即可
+### 发布
+
+```shell
+node deploy.js $AK $SK $BUCKET
+```
