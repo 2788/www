@@ -1,0 +1,72 @@
+@blue: #00AAE7; // TODO: 更换为统一的变量
+@margin: 16px;
+
+.wrapper {
+  position: fixed;
+  bottom: 72px;
+  right: 72px;
+}
+
+@buttonSize: 64px;
+
+.button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: @buttonSize;
+  height: @buttonSize;
+  border-radius: @buttonSize / 2;
+  line-height: @buttonSize;
+  text-align: center;
+
+  color: #FFF;
+  background-color: @blue;
+  cursor: pointer;
+}
+
+.modal() {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 374px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+@freeTrialPadding: 20px;
+@freeTrialContentHeight: 20px;
+@freeTrialHeight: @freeTrialPadding * 2 + @freeTrialContentHeight;
+
+.freeTrialModalWrapper {
+  .modal();
+
+  bottom: @buttonSize + @margin;
+}
+
+.freeTrialLink {
+  display: block;
+  padding: 20px;
+  line-height: 20px;
+  font-size: 16px;
+  color: @blue;
+  text-decoration: none;
+}
+
+.freeTrialIcon {
+  float: right;
+  display: block;
+
+  @size: 20px;
+  width: @size;
+  height: @size;
+  border-radius: @size / 2;
+  background-color: @blue;
+}
+
+.formModalWrapper {
+  .modal();
+  height: 400px;
+  bottom: @buttonSize + @margin + @freeTrialHeight + @margin;
+}

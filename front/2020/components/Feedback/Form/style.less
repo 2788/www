@@ -1,0 +1,144 @@
+@blue: #00AAE7; // TODO: 更换为统一的变量
+@paddingX: 20px;
+@paddingY: 14px;
+@avatarSize: 44px;
+@headerHeight: @avatarSize + @paddingY*2;
+@footerHeight: 44px;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: @headerHeight;
+  padding-bottom: @footerHeight;
+}
+
+.header {
+  @paddingLeft: @avatarSize + 12px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 @paddingX;
+  height: @avatarSize;
+  padding: @paddingY 0 @paddingY @paddingLeft;
+  border-bottom: 1px solid #eee;
+}
+
+.avatar {
+  position: absolute;
+  left: 0;
+  top: @paddingY;
+  width: @avatarSize;
+  height: @avatarSize;
+  border-radius: @avatarSize / 2;
+  background-color: @blue;
+}
+
+.title {
+  margin-top: 2px;
+  font-size: 14px;
+  color: #333;
+}
+
+.description {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #999;
+}
+
+.extra {
+  float: right;
+}
+
+.extraLink {
+  margin-left: .5em;
+  color: #333;
+  text-decoration: none;
+}
+
+.body {
+  height: 100%;
+  overflow-y: auto;
+  margin: 0 @paddingX;
+}
+
+.messageList {}
+
+.qiniuMessageLine {
+  margin: @paddingY 0;
+  text-align: left;
+
+  .messageBubble {
+    color: #666;
+    background-color: #fafafa;
+  }
+}
+
+.userMessageLine {
+  margin-bottom: @paddingY;
+  text-align: right;
+
+  .messageBubble {
+    color: #fff;
+    background-color: @blue;
+  }
+}
+
+.messageBubble {
+  display: inline-block;
+  max-width: 80%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 -1px 10px 0 rgba(51, 51, 51, 0.05);
+}
+
+.input {
+  @inputPaddingY: 12px;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: @inputPaddingY @paddingX;
+  line-height: @footerHeight - @inputPaddingY*2;
+  border: none;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.sendButton {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 @paddingX;
+  height: @footerHeight;
+  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.sendIcon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 22px;
+  line-height: @footerHeight;
+  background-color: #999;
+}

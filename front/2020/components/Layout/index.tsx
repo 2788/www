@@ -8,6 +8,7 @@ import Head from 'next/head'
 
 import Header from '../Header'
 import Footer from '../Footer'
+import { Entry as FeedbackEntry } from '../Feedback'
 import style from './style.less'
 
 type Props = {
@@ -31,6 +32,7 @@ export default function Layout({ children, title = defaultTitle }: Props) {
         {children}
       </div>
       <Footer />
+      <FeedbackEntry />
     </div>
   )
 }
