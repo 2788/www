@@ -1,5 +1,4 @@
 module.exports = {
-  extends: [
-    '@qiniu'
-  ]
+  extends: [ '@qiniu' ],
+  ignorePatterns: [ '**/*.js' ]
 }

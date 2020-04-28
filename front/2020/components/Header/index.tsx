@@ -5,6 +5,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Logo from './logo.svg'
 
 import style from './style.less'
 
@@ -12,6 +13,7 @@ export default function Header() {
   return (
     <header className={style.wrapper}>
       <nav className={style.content}>
+        <Logo />
         <ProductLinks />
       </nav>
     </header>
