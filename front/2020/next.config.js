@@ -19,14 +19,31 @@ module.exports = withPlugins(
     ]
   ],
   {
-    webpack(config) {
-      config.module.rules.push({
-        test: /\.svg$/,
-        issuer: {
-          test: /\.(js|ts)x?$/
+    webpack(config, options) {
+      config.module.rules.push(
+        {
+          test: /\.svg$/i,
+          issuer: {
+            test: /\.(js|ts)x?$/
+          },
+          use: [ '@svgr/webpack' ]
         },
-        use: [ '@svgr/webpack' ]
-      })
+        {
+          test: /\.(svg|png|jpe?g|gif)$/i,
+          issuer: {
+            test: /\.(css|less)$/
+          },
+          use: [{
+            loader: 'file-loader',
+            options: {
+              publicPath: `/_next/static/media/`,
+              outputPath: `${options.isServer ? "../" : ""}static/media/`,
+              name: "[name].[hash].[ext]",
+              esModule: false
+            }
+          }]
+        }
+      )
 
       return config
     }

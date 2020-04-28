@@ -1,0 +1,53 @@
+@import '../../../utils/color.less';
+
+.withColor(@color, @bgColor, @borderColor) {
+  color: @color;
+  background-color: @bgColor;
+  border-color: @borderColor;
+  box-shadow: 0 4px 8px 0 rgba(1, 137, 186, .5);
+}
+
+.withSize(@size) {
+  width: @size / 3 * 10;
+  height: @size;
+  line-height: @size;
+}
+
+.button {
+  box-sizing: border-box;
+  font-size: 14px;
+  background: none;
+  box-shadow: 0 4px 8px 0 rgba(1, 137, 186, .5);
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  .withSize(36px);
+  .withColor(@blue-6, #fff, #fff);
+
+  &.withBorder {
+    .withColor(@blue-6, #fff, @blue-6);
+  }
+
+  &.typePrimary {
+    .withColor(#fff, @blue-6, @blue-6);
+
+    &.withBorder {
+      .withColor(#fff, @blue-6, #fff);
+    }
+  }
+
+  &.sizeSmall {
+    .withSize(32px);
+  }
+}
+
+a.button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
