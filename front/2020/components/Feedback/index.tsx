@@ -4,7 +4,11 @@
  */
 
 import Entry from './Entry'
+import Modal, { ModalProvider, useModal } from './Modal'
 
 export {
-  Entry
+  Entry,
+  Modal,
+  ModalProvider,
+  useModal
 }

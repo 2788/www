@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
+import Button from '../Button'
 import Form from '../Form'
 import style from './style.less'
 import { isMobile } from '../../../utils'
@@ -29,7 +30,10 @@ export default function FeedbackEntry() {
   return (
     <div ref={wrapperRef} className={style.wrapper}>
       {modalContent}
-      <div className={style.button} onClick={toggleModal}>TODO</div>
+      <Button
+        className={style.button}
+        onClick={toggleModal}
+      >TODO</Button>
     </div>
   )
 }

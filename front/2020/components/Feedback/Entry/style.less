@@ -1,4 +1,7 @@
-@blue: #00AAE7; // TODO: 更换为统一的变量
+@import '../../../utils/style.less';
+@import '../../../utils/color.less';
+
+@blue: @blue-6;
 @margin: 16px;
 
 .wrapper {
@@ -7,32 +10,22 @@
   right: 72px;
 }
 
+// 同 ./Button/style.less
 @buttonSize: 64px;
 
 .button {
   position: absolute;
   right: 0;
   bottom: 0;
-
-  width: @buttonSize;
-  height: @buttonSize;
-  border-radius: @buttonSize / 2;
-  line-height: @buttonSize;
-  text-align: center;
-
-  color: #FFF;
-  background-color: @blue;
-  cursor: pointer;
 }
 
 .modal() {
+  .modalWrapper();
+
   position: absolute;
   right: 0;
   display: block;
   width: 374px;
-  border-radius: 12px;
-  background-color: #fff;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
 }
 
 @freeTrialPadding: 20px;

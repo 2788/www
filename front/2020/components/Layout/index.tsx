@@ -8,7 +8,7 @@ import Head from 'next/head'
 
 import Header from '../Header'
 import Footer from '../Footer'
-import { Entry as FeedbackEntry } from '../Feedback'
+import * as feedback from '../Feedback'
 import style from './style.less'
 
 type Props = {
@@ -27,12 +27,15 @@ export default function Layout({ children, title = defaultTitle }: Props) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Header />
-      <div className={style.main}>
-        {children}
-      </div>
-      <Footer />
-      <FeedbackEntry />
+      <feedback.ModalProvider>
+        <Header />
+        <div className={style.main}>
+          {children}
+        </div>
+        <Footer />
+        <feedback.Entry />
+        <feedback.Modal />
+      </feedback.ModalProvider>
     </div>
   )
 }

@@ -17,9 +17,7 @@ function getReplyFor(_: string): Promise<string> {
 
 function useAutoChat() {
   const [messages, setMessages] = useState<Message[]>([
-    { from: MessageFrom.Qiniu, content: '功能点列举 需要详细说明的功能点可以在这里添加链接到独立的产品功能页' },
-    { from: MessageFrom.User, content: '了解下对象存储' },
-    { from: MessageFrom.Qiniu, content: '对象存储' }
+    { from: MessageFrom.Qiniu, content: '请详细描述您的需求' }
   ])
 
   function addMessage(from: MessageFrom, content: string) {

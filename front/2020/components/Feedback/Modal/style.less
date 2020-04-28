@@ -1,0 +1,39 @@
+@import '../../../utils/style.less';
+@import '../../../utils/color.less';
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal {
+  .modalWrapper();
+
+  z-index: 1000;
+  width: 40%;
+  min-width: 400px;
+  max-width: 800px;
+  height: 40%;
+  min-height: 400px;
+  max-height: 600px;
+  margin-bottom: 54px;
+}
+
+.closeBtn {
+  z-index: 1000;
+}
