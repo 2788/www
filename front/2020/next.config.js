@@ -42,6 +42,21 @@ module.exports = withPlugins(
               esModule: false
             }
           }]
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
+          issuer: {
+            test: /\.(js|ts)x?$/
+          },
+          use: [{
+            loader: 'file-loader',
+            options: {
+              publicPath: `/_next/static/media/`,
+              outputPath: `${options.isServer ? "../" : ""}static/media/`,
+              name: "[name].[hash].[ext]",
+              esModule: false
+            }
+          }]
         }
       )
 
