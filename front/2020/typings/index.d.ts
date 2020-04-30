@@ -3,13 +3,25 @@ declare module '*.svg' {
   export default exports
 }
 
-declare module '*.png'
+declare module '*.png' {
+  const exports: string
+  export default exports
+}
 
-declare module '*.jpg'
+declare module '*.jpg' {
+  const exports: string
+  export default exports
+}
 
-declare module '*.jpeg'
+declare module '*.jpeg' {
+  const exports: string
+  export default exports
+}
 
-declare module '*.gif'
+declare module '*.gif' {
+  const exports: string
+  export default exports
+}
 
 declare module '*.less' {
   const cssModuleExport: {
