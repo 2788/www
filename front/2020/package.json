@@ -1,8 +1,10 @@
 {
+  "private": true,
   "name": "www",
   "version": "1.0.0",
   "license": "UNLICENSED",
   "scripts": {
+    "type-check": "tsc --noEmit",
     "dev": "next",
     "build": "next build && next export",
     "start": "next start",
@@ -12,16 +14,19 @@
     "@svgr/webpack": "^5.4.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-less": "^1.0.1",
+    "classnames": "^2.2.6",
     "file-loader": "^6.0.0",
     "isomorphic-unfetch": "3.0.0",
     "less": "^3.11.1",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
+    "rc-dropdown": "^3.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "@qiniu/eslint-config": "0.0.4",
+    "@types/classnames": "^2.2.10",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="切图" transform="translate(-550.000000, -197.000000)" stroke-width="2">
+            <g id="编组-28" transform="translate(550.000000, 197.000000)">
+                <g id="实时音视频备份-2" transform="translate(8.000000, 8.000000)">
+                    <rect id="矩形备份-21" stroke="#000000" x="0" y="6" width="28" height="20"></rect>
+                    <polyline id="路径-12备份-3" stroke="#00AAE6" stroke-linejoin="bevel" points="6 12 8.85586352 20 11.4549399 16.2574017 13.6461368 18.6935103 16.65697 12.8548507 19.4772712 19.1484179 22 13.3294824"></polyline>
+                    <line x1="5" y1="1" x2="10" y2="6" id="直线-8备份-7" stroke="#000000" stroke-linejoin="round" transform="translate(7.000000, 3.000000) scale(-1, 1) translate(-7.000000, -3.000000) "></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

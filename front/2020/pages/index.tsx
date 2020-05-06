@@ -18,7 +18,7 @@ export default function IndexPage() {
         title="开始试用七牛云 SMS"
         description="完成实名认证，即可轻松使用七牛云 SMS"
       >
-        <Button href="/products/kodo">立即创建</Button>
+        <Button href="/products/kodo/">立即创建</Button>
       </UsageGuide>
     </Layout>
   )

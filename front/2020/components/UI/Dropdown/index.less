@@ -1,0 +1,31 @@
+@import '../../../utils/color.less';
+@import '../../../utils/style.less';
+
+.menu {
+  min-width: 180px;
+  max-width: 220px;
+  padding: 12px 0;
+  background: @grey-1;
+
+  .item {
+    .ellipsis();
+    padding: 8px 20px;
+    cursor: pointer;
+    color: @grey-7;
+    font-size: 14px;
+    transition: background 0.25s;
+
+    &:hover {
+      color: @blue-6;
+      background: @blue-1;
+    }
+  }
+
+  .group {
+    .groupTitle {
+      padding: 5px 20px;
+      color: @grey-5;
+      background: #FAFAFA;
+    }
+  }
+}

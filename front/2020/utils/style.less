@@ -1,4 +1,8 @@
-@centered-content-width: 800px;
+@import './color.less';
+
+@centered-content-width: 1180px;
+@modal-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
+@main-bg-color: @grey-1;
 
 //== screen
 @screen-sm: 768px;
@@ -15,6 +19,12 @@
 // 浮层的包裹元素，统一的圆角 & 阴影 & 底色
 .modalWrapper() {
   border-radius: 12px;
-  background-color: #fff;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
+  background-color: @grey-1;
+  box-shadow: @modal-box-shadow;
+}
+
+.ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

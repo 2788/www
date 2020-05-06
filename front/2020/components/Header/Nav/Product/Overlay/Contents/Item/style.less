@@ -1,0 +1,54 @@
+@import '../../../../../../../utils/color.less';
+
+li {
+  display: inline-block;
+  width: 356px;
+  height: 116px;
+
+  &:hover {
+    background: @blue-1;
+
+    .desc {
+      .title {
+        color: @blue-6;
+      }
+    }
+  }
+
+  .icon {
+    float: left;
+    width: 80px;
+    height: 116px;
+    line-height: 116px;
+    text-align: center;
+  }
+
+  .desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 26px 16px 26px 0;
+
+    .title {
+      color: @grey-7;
+      font-size: 14px;
+    }
+
+    .subtitle {
+      color: @grey-6;
+      font-size: 12px;
+    }
+  }
+
+  &.disabled {
+    .desc {
+      .title {
+        color: @grey-5;
+      }
+      .subtitle {
+        color: @grey-5;
+      }
+    }
+  }
+}
