@@ -12,7 +12,7 @@ export default function Search() {
   const [searchResult, setSearchResult] = useState([])
 
   function handleSearch() {
-    // TODO 实现搜索逻辑 throttle
+    // TODO 实现搜索逻辑 debounce
     console.log(searchResult, setSearchResult)
   }
 
