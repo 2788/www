@@ -1,0 +1,84 @@
+/**
+ * @file 产品页活动与公告组件 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import '../../../utils/style.less';
+@import '../../../utils/color.less';
+
+.mainWrapper {
+  margin-top: -44px;
+  padding-bottom: 20px;
+  overflow: hidden;
+}
+
+.noticeWrapper {
+  .centered();
+  padding: 18px 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+
+  // TODO
+  // 这边只是做了简单的移动端样式兼容
+  // 如果移动端下组件的渲染方式和 pc 端不同
+  // 需要在 js 逻辑里面实现兼容
+  // 参考 https://github.com/qbox/www/blob/4dc93a010ac8f42714cad9cd99ef0640bd2f52fc/front/2020/utils/index.ts#L1-L4
+  @media only screen and (max-width: @screen-sm - 1) {
+    & {
+      padding: 18px 0;
+    }
+  }
+
+  @media only screen and (max-width: @screen-lg - 1) {
+    & {
+      width: auto;
+      border-radius: 0;
+    }
+  }
+}
+
+.noticeGroup {
+  margin: 0 16px;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.titleIcon {
+  margin-right: 10px;
+}
+
+.noticeItem {
+  .textEllipsis();
+  margin: 10px 0;
+  line-height: 1;
+}
+
+.notice {
+  color: #333;
+
+  &:hover {
+    color: @blue-6;
+    text-decoration: underline;
+  }
+
+  &:before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: @blue-6;
+    opacity: 0.4;
+    display: inline-block;
+  }
+}

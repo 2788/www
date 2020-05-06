@@ -1,19 +1,19 @@
 /**
- * @file 页面顶部 banner index.tsx
+ * @file 产品页顶部 banner index.tsx
  * @description 包含简介、使用引导、icon 等
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import styles from './style.less'
 
 export interface IPageBannerProps {
-  title: React.ReactNode
-  desc?: React.ReactNode
+  title: ReactNode
+  desc?: ReactNode
   bgColor?: string
-  btns?: React.ReactNode[]
-  icon?: React.ReactNode
+  btns?: ReactNode[]
+  icon?: ReactNode
 }
 
 const defaultProps: IPageBannerProps = {
@@ -34,11 +34,11 @@ export default function PageBanner(props: IPageBannerProps) {
 
     return (
       <div className={styles.btnsWrapper}>{
-        btns.map((btn: React.ReactNode, index: number) => {
+        btns.map((btn: ReactNode, index: number) => {
           return (
             <div
               className={styles.btn}
-              key={`page-banner-btn-${index}`}>
+              key={index}>
               {btn}
             </div>
           )
