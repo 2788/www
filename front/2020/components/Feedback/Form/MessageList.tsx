@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, ReactNode } from 'react'
 import style from './style.less'
 
 export enum MessageFrom {
@@ -7,7 +7,7 @@ export enum MessageFrom {
 }
 
 export type Message = {
-  content: string
+  content: ReactNode
   from: MessageFrom
 }
 

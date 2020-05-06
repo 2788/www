@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   margin: 0 @paddingX;
-  height: @avatarSize;
+  height: @avatarSize + (@paddingY * 2);
   padding: @paddingY 0 @paddingY @paddingLeft;
   border-bottom: 1px solid #eee;
 }
@@ -92,7 +92,9 @@
   max-width: 80%;
   box-sizing: border-box;
   padding: 8px 12px;
+  text-align: left;
   border-radius: 4px;
+  word-break: break-all;
 }
 
 .footer {
