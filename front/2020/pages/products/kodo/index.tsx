@@ -3,13 +3,14 @@
  */
 
 import React, { ReactNode } from 'react'
-import Layout from '../../../components/Layout'
+import Layout from '../../../components/Product/Layout'
 import PageBanner from '../../../components/Product/PageBanner'
 import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
 } from '../../../components/Product/PageNotice'
-
+import Navigator, { Button as NavButton, Block } from '../../../components/Product/Navigator'
+import { useModal as useFeedbackModal } from '../../../components/Feedback'
 import UIButton from '../../../components/UI/Button'
 
 // svg 方式引入
@@ -18,26 +19,27 @@ import UIButton from '../../../components/UI/Button'
 // 非 svg 方式引入
 import bannerIconURL from './images/bannerIcon.png'
 
-export default function KodoPage() {
+// 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
+// context（由 `<Layout>` 提供），使用 `useFeedbackModal`
+function PageContent() {
+  const { showModal } = useFeedbackModal()
+
+  function handleConsult() {
+    showModal()
+  }
 
   const bannerBtns: ReactNode[] = [(
-    <UIButton
-      href="/products/kodo">
+    <UIButton key="try" href="/products/fusion">
       免费试用
     </UIButton>
   ), (
-    <UIButton
-      type="hollow"
-      onClick={() => {
-        // TODO 呼出全局反馈表单
-        console.error('call feedback modal')
-      }}>
+    <UIButton key="consult" type="hollow" onClick={handleConsult}>
       售前咨询
     </UIButton>
   )]
 
   return (
-    <Layout>
+    <>
       <PageBanner
         title="对象存储 Kodo"
         desc="七牛云海量存储系统（KODO）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
@@ -51,7 +53,7 @@ export default function KodoPage() {
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">
           <PageNoticeItem title="域名型 DV SSL 证书免费申请" href="/products/ssl">
-            域名型 DV SSL 证书免费申请 >>
+            域名型 DV SSL 证书免费申请 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem title="CDN 动态加速 立即使用" href="/products/qcdn">
             「 CDN 动态加速 立即使用 」
@@ -62,7 +64,7 @@ export default function KodoPage() {
         </PageNoticeGroup>
         <PageNoticeGroup title="福利活动" type="welfares">
           <PageNoticeItem title="域名型 DV SSL 证书免费申请" href="/products/ssl">
-            域名型 DV SSL 证书免费申请 >>
+            域名型 DV SSL 证书免费申请 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem title="CDN 动态加速 立即使用" href="/products/qcdn">
             「 CDN 动态加速 立即使用 」
@@ -72,7 +74,36 @@ export default function KodoPage() {
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
+      <Navigator priceLink="/TODO">
+        <NavButton type="primary" href="/products/kodo">免费试用</NavButton>
+        <NavButton withBorder onClick={handleConsult}>售前咨询</NavButton>
+      </Navigator>
       This is Product Kodo Page.
+      <FakeBlock name="spec" title="产品规格" />
+      <FakeBlock name="feature" title="功能与优势" />
+      <FakeBlock name="usage" title="使用场景" />
+      <FakeBlock name="case" title="客户案例" />
+      <FakeBlock name="steps" title="接入流程" />
+      <FakeBlock name="docs" title="相关文档" />
+    </>
+  )
+}
+
+export default function KodoPage() {
+  return (
+    <Layout>
+      <PageContent />
     </Layout>
+  )
+}
+
+// 可导航区块，如产品规格、功能优势、使用场景等
+function FakeBlock({ name, title }: { name: string, title: string }) {
+  return (
+    <Block name={name} title={title}>
+      <div style={{ height: '400px', marginBottom: '12px', background: '#f0f0f0' }}>
+        {title}（TODO）
+      </div>
+    </Block>
   )
 }

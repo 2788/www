@@ -18,15 +18,18 @@
     "file-loader": "^6.0.0",
     "isomorphic-unfetch": "3.0.0",
     "less": "^3.11.1",
+    "lodash": "^4.17.15",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
     "rc-dropdown": "^3.0.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "stickybits": "^3.7.7"
   },
   "devDependencies": {
     "@qiniu/eslint-config": "0.0.4",
     "@types/classnames": "^2.2.10",
+    "@types/lodash": "^4.14.150",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",

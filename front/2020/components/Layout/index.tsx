@@ -9,9 +9,8 @@ import Head from 'next/head'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
-import style from './style.less'
 
-type Props = {
+export type Props = {
   title?: string
   children: ReactNode
 }
@@ -21,7 +20,7 @@ const defaultTitle = '七牛云 - 国内领先的企业级云服务商'
 
 export default function Layout({ children, title = defaultTitle }: Props) {
   return (
-    <div className={style.wrapper}>
+    <>
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -29,13 +28,11 @@ export default function Layout({ children, title = defaultTitle }: Props) {
       </Head>
       <feedback.ModalProvider>
         <Header />
-        <div className={style.main}>
-          {children}
-        </div>
+        {children}
         <Footer />
         <feedback.Entry />
         <feedback.Modal />
       </feedback.ModalProvider>
-    </div>
+    </>
   )
 }
