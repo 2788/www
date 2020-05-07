@@ -1,8 +1,10 @@
 @import "../../utils/color.less";
 
+@notification-height: 40px;
+
 .headerNotification {
-  height: 40px;
-  line-height: 40px;
+  height: @notification-height;
+  line-height: @notification-height;
   font-size: 12px;
   text-align: center;
   background-color: #f9f9f9;
@@ -14,6 +16,7 @@
     text-overflow: ellipsis;
     vertical-align: top;
     white-space: nowrap;
+    line-height: @notification-height;
   }
   
   .closeIcon {
@@ -22,5 +25,6 @@
     cursor: pointer;
     text-decoration: underline;
     vertical-align: top;
+    line-height: @notification-height;
   }
 }

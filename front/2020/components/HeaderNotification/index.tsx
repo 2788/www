@@ -14,8 +14,10 @@ const defaultProps: HeaderNotificationProps = {
   closeable: true
 }
 
+HeaderNotification.defaultProps = defaultProps
+
 export default function HeaderNotification(props: HeaderNotificationProps) {
-  const { closeText, closeable, content } = { ...defaultProps, ...props }
+  const { closeText, closeable, content } = props
   const [hidden, setHidden] = React.useState(false)
   if (hidden) {
     return null
