@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="24px" viewBox="0 0 34 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="96.142967%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#00AAE7" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#00AAE7" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="切图" transform="translate(-444.000000, -510.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M445,527.009017 L462,527.009017 L462,533.009017 C462,533.409017 462.2,533.709017 462.6,533.909017 C462.7,534.009017 462.9,534.009017 463,534.009017 C463.2,534.009017 463.4,533.909017 463.6,533.809017 L477.6,522.809017 C477.8,522.609017 478,522.309017 478,522.009017 C478,521.709017 477.9,521.409017 477.6,521.209017 L463.6,510.209017 C463.3,510.009017 462.9,509.909017 462.5,510.109017 C462.2,510.309017 462,510.609017 462,511.009017 L462,517.009017 L445,517.009017 C444.4,517.009017 444,517.409017 444,518.009017 L444,526.009017 C444,526.609017 444.4,527.009017 445,527.009017 Z" id="路径"></path>
+        </g>
+    </g>
+</svg>
