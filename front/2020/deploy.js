@@ -51,40 +51,46 @@ function uploadFile(localFile, bucket, key, mac) {
           reject(ret.error)
           return
         }
-        resolve(ret)
+        resolve()
       })
     }
   )
 }
 
+const indexFilePattern = /(^|\/)index\.html$/
+
 async function deploy(config) {
   const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
   const outputFiles = await getAllFiles(config.outputPath)
 
-  try {
-    await Promise.all(
-      outputFiles.map(name => {
-        const filePath = path.resolve(config.outputPath, name)
+  return Promise.all(outputFiles.map(fileName => {
+    const filePath = path.resolve(config.outputPath, fileName)
 
-        return uploadFile(
-          filePath,
-          config.bucket,
-          name,
-          mac
-        ).then(
-          (res) => console.log(`[UPLOAD] ${filePath} -> ${name}`)
-        )
-      })
-    )
-  } catch (e) {
-    console.error(`[ERROR] Deploy failed: ${e}`)
-  }
+    // 对于文件 `xxx/index.html`，额外以 `xxx` & `xxx/` 作为 key 上传
+    // 以保证通过 URL `/xxx` 或 `/xxx/` 都能访问到该内容
+    // 注意虽然 Kodo 支持设置“默认首页”，但是如果 bucket 同时开启了镜像回源的话
+    // 对于 `/xxx/` 会优先去镜像回源，而不是使用 `/xxx/index.html`
+    const keys = [fileName]
+    if (indexFilePattern.test(fileName)) {
+      keys.push(fileName.replace(indexFilePattern, ''))
+      keys.push(fileName.replace(indexFilePattern, '/'))
+    }
+
+    return Promise.all(keys.map(
+      key => uploadFile(filePath, config.bucket, key, mac).then(
+        () => console.log(`[UPLOADED] ${key} (${fileName})`)
+      )
+    ))
+  }))
 }
 
-deploy({
-  outputPath: path.resolve(__dirname, 'out'),
-  // node deploy.js $AK $SK $BUCKET
-  accessKey: process.argv[2],
-  secretKey: process.argv[3],
-  bucket: process.argv[4]
+// next export 产物所在目录
+const outputPath = path.resolve(__dirname, 'out')
+
+// 执行命令：node deploy.js $AK $SK $BUCKET
+const [accessKey, secretKey, bucket] = process.argv.slice(2)
+
+deploy({ outputPath, accessKey, secretKey, bucket }).catch(e => {
+  console.error(`[ERROR] Deploy failed: ${e}`)
+  process.exit(1)
 })
