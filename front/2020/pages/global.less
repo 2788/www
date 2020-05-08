@@ -1,9 +1,9 @@
-@import '../utils/style.less';
+@import '~utils/less/index.less';
 
 * {
   margin: 0;
   padding: 0;
-  line-height: 1.5em;
+  line-height: 1.5715;
   box-sizing: border-box;
 }
 
@@ -14,7 +14,8 @@ html, body {
 body {
   overflow-y: auto;
   font-size: 14px;
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, PingFang SC, Hiragino Sans GB, Microsoft YaHei,
+  // https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+  font-family: -apple-system, PingFang SC, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB, Microsoft YaHei,
     Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 
   // 移动端默认内容不可见，client 端 mount 后会给 body 添加 class `mounted`（逻辑见隔壁 `_app.tsx`）

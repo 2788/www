@@ -10,10 +10,11 @@ export type Props = {
   name: string
   title: string
   children: ReactNode
+  className?: string
 }
 
 /** 可导航块 */
-export default function Block({ name, title, children }: Props) {
+export default function Block({ name, title, children, className = '' }: Props) {
   const contextValue = useContext(context)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -39,7 +40,7 @@ export default function Block({ name, title, children }: Props) {
 
   return (
     // 这里不添加 id，是为了避免 hash 变化时浏览器自动定位的行为
-    <div ref={wrapperRef} data-block-name={name}>
+    <div ref={wrapperRef} data-block-name={name} className={className}>
       {children}
     </div>
   )

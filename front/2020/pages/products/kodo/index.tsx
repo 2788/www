@@ -3,17 +3,17 @@
  */
 
 import React, { ReactNode } from 'react'
-import Layout from '../../../components/Product/Layout'
-import PageBanner from '../../../components/Product/PageBanner'
+import Layout from 'components/Product/Layout'
+import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
-} from '../../../components/Product/PageNotice'
-import Navigator, { Button as NavButton, Block } from '../../../components/Product/Navigator'
-import { useModal as useFeedbackModal } from '../../../components/Feedback'
-import UsageGuide, { Button as UsageGuideButton } from '../../../components/Product/UsageGuide'
-
-import UIButton from '../../../components/UI/Button'
+} from 'components/Product/PageNotice'
+import Navigator, { Button as NavButton } from 'components/Product/Navigator'
+import { useModal as useFeedbackModal } from 'components/Feedback'
+import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import UIButton from 'components/UI/Button'
+import StorageType from 'components/pages/kodo/StorageType'
 
 // svg 方式引入
 // import BannerIcon from './images/bannerIcon.svg'
@@ -80,13 +80,7 @@ function PageContent() {
         <NavButton type="primary" href="/products/kodo">免费试用</NavButton>
         <NavButton withBorder onClick={handleConsult}>售前咨询</NavButton>
       </Navigator>
-      This is Product Kodo Page.
-      <FakeBlock name="spec" title="产品规格" />
-      <FakeBlock name="feature" title="功能与优势" />
-      <FakeBlock name="usage" title="使用场景" />
-      <FakeBlock name="case" title="客户案例" />
-      <FakeBlock name="steps" title="接入流程" />
-      <FakeBlock name="docs" title="相关文档" />
+      <StorageType />
       <UsageGuide
         title="开始试用七牛云 SMS"
         description="完成实名认证，即可轻松使用七牛云 SMS"
@@ -108,12 +102,12 @@ export default function KodoPage() {
 }
 
 // 可导航区块，如产品规格、功能优势、使用场景等
-function FakeBlock({ name, title }: { name: string, title: string }) {
-  return (
-    <Block name={name} title={title}>
-      <div style={{ height: '400px', marginBottom: '12px', background: '#f0f0f0' }}>
-        {title}（TODO）
-      </div>
-    </Block>
-  )
-}
+// function FakeBlock({ name, title }: { name: string, title: string }) {
+//   return (
+//     <Block name={name} title={title}>
+//       <div style={{ height: '400px', marginBottom: '12px', background: '#f0f0f0' }}>
+//         {title}（TODO）
+//       </div>
+//     </Block>
+//   )
+// }

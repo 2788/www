@@ -1,0 +1,80 @@
+@import '~utils/less/index.less';
+
+.block {
+  text-align: center;
+}
+.card {
+  display: inline-flex;
+  display: -ms-inline-flexbox;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  width: 376px;
+  height: 525px;
+  box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+  border: 1px solid @grey-3;
+  border-top: none;
+
+  .header {
+    padding: 24px;
+    text-align: left;
+    background: #fafafa;
+    border-top: 2px solid @blue-6;
+    border-bottom: 1px solid @grey-3;
+
+    .title {
+      margin-bottom: 24px;
+      color: @grey-7;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .desc {
+      margin-bottom: 10px;
+      color: @grey-6;
+      font-size: 14px;
+    }
+
+    .scene {
+      color: @grey-6;
+      font-size: 14px;
+    }
+  }
+
+  .body {
+    flex: 1;
+    padding: 20px 24px;
+
+    .row {
+      margin-bottom: 12px;
+      text-align: left;
+      color: @grey-7;
+    }
+
+    .icon {
+      margin-right: 9px;
+    }
+  }
+
+  .footer {
+    padding: 32px 24px;
+
+    .price {
+      color: @orange-6;
+      font-size: 14px;
+
+      .number {
+        margin-right: 4px;
+        font-size: 24px;
+      }
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+}
+
+.card + .card {
+  margin-left: 24px;
+}
