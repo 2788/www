@@ -40,7 +40,7 @@ export function useSticky() {
   useEffect(() => {
     if (!isBrowser() || !element) return
     const sb = stickybits(element)
-    return () => sb.cleanup()
+    return () => { try { sb.cleanup() } catch (e) { /* do nothing */ } }
   }, [element])
 
   const [scrollTop] = useScrollTop()

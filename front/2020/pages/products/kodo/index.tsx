@@ -11,6 +11,8 @@ import PageNotice, {
 } from '../../../components/Product/PageNotice'
 import Navigator, { Button as NavButton, Block } from '../../../components/Product/Navigator'
 import { useModal as useFeedbackModal } from '../../../components/Feedback'
+import UsageGuide, { Button as UsageGuideButton } from '../../../components/Product/UsageGuide'
+
 import UIButton from '../../../components/UI/Button'
 
 // svg 方式引入
@@ -85,6 +87,14 @@ function PageContent() {
       <FakeBlock name="case" title="客户案例" />
       <FakeBlock name="steps" title="接入流程" />
       <FakeBlock name="docs" title="相关文档" />
+      <UsageGuide
+        title="开始试用七牛云 SMS"
+        description="完成实名认证，即可轻松使用七牛云 SMS"
+      >
+        <UsageGuideButton href="/products/kodo/">
+          立即创建
+        </UsageGuideButton>
+      </UsageGuide>
     </>
   )
 }

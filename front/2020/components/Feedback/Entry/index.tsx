@@ -5,17 +5,18 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
+import { useMobile } from '../../../hooks/ua'
 import Button from '../Button'
 import Form from '../Form'
 import style from './style.less'
-import { isMobile } from '../../../utils'
 
 export default function FeedbackEntry() {
+  const isMobile = useMobile()
   const [modalVisible, setModalVisible] = useState(false)
   const toggleModal = () => setModalVisible(visible => !visible)
   const wrapperRef = useClickOutside(() => setModalVisible(false))
 
-  if (isMobile()) {
+  if (isMobile) {
     // TODO: 移动端应该是全屏的
     return null
   }

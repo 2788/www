@@ -10,14 +10,16 @@ import React from 'react'
 import Link from 'next/link'
 import classnames from 'classnames'
 import Dropdown from '../../UI/Dropdown'
-import { isMobile } from '../../../utils'
+import { useMobile } from '../../../hooks/ua'
 import Overlay from './Overlay'
 import ArrowDown from './arrow-down.svg'
 
 import style from './style.less'
 
 export default function Userinfo() {
-  if (isMobile()) {
+  const isMobile = useMobile()
+
+  if (isMobile) {
     return (
       <span className={style.wrapper}>
         <Link href=""><a className={style.signin}>登录</a></Link>

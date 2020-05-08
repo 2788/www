@@ -26,11 +26,9 @@
   // 如果移动端下组件的渲染方式和 pc 端不同
   // 需要在 js 逻辑里面实现兼容
   // 参考 https://github.com/qbox/www/blob/4dc93a010ac8f42714cad9cd99ef0640bd2f52fc/front/2020/utils/index.ts#L1-L4
-  @media only screen and (max-width: @screen-sm - 1) {
-    & {
-      padding: 18px 0;
-    }
-  }
+  .mobile({
+    padding: 18px 0;
+  });
 
   @media only screen and (max-width: @screen-lg - 1) {
     & {

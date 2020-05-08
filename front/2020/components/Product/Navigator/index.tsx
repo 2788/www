@@ -8,12 +8,12 @@ import Link from 'next/link'
 import Tabs, { Tab } from '../../UI/Tabs'
 import UIButton, { Props as UIButtonProps } from '../../UI/Button'
 import { useSticky } from '../../../hooks/scroll'
-import { isMobile } from '../../../utils'
 import Navigatable, { Props as _NavigatableProps } from './Navigatable'
 import Block, { Props as _BlockProps } from './Block'
 import { context, navigatorHeight } from './utils'
 import Arrow from './arrow.svg'
 import style from './style.less'
+import { useMobile } from '../../../hooks/ua'
 
 // 写成这样是因为 https://github.com/microsoft/TypeScript/issues/28481
 export type NavigatableProps = _NavigatableProps
@@ -32,9 +32,10 @@ const tabPriceLink = 'price-link'
 export default function Navigator({ priceLink, children }: Props) {
   const [wrapperRef, isWrapperFixed] = useSticky()
   const contextValue = useContext(context)
+  const isMobile = useMobile()
 
   // 移动端不需要导航栏 TODO: 价格链接咋办？
-  if (isMobile()) {
+  if (isMobile) {
     return null
   }
 

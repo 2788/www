@@ -19,24 +19,55 @@
 .textContent {
   flex: 1 1 200px;
   color: #fff;
-}
 
-.title {
-  font-size: 28px;
-  font-weight: 500;
-}
-
-.description {
-  margin-top: 6px;
-  font-size: 16px;
+  .title {
+    font-size: 28px;
+    font-weight: 500;
+  }
+  
+  .description {
+    margin-top: 6px;
+    font-size: 16px;
+  }
 }
 
 .opContent {
   flex: 0 0 auto;
+  margin: 0 0 0 14px;
+
+  .button {
+    width: 140px;
+    box-shadow: 0 4px 8px 0 rgba(1, 137, 186, .5);
+
+    &:not(:first-child) {
+      margin-left: 1em;
+    }
+  }
 }
 
-.button {
-  margin-left: 1em;
-  width: 140px;
-  box-shadow: 0 4px 8px 0 rgba(1, 137, 186, .5);
+// 移动端样式
+.wrapper {
+  .mobile({
+    background-image: url(./background-mobile.svg);
+    background-size: cover;
+
+    .content {
+      display: block;
+      padding: 28px 16px 32px;
+      height: auto;
+      text-align: center;
+    }
+    .textContent {
+      .title {
+        font-size: 20px;
+      }
+      .description {
+        margin-top: 4px;
+        font-size: 14px;
+      }
+    }
+    .opContent {
+      margin: 24px 0 0;
+    }
+  });
 }
