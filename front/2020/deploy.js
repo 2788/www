@@ -1,5 +1,5 @@
 /**
- * @file 部署脚本
+ * @file 部署脚本（注意：本脚本不支持在 windows 环境执行）
  * @description 将构建结果发布到指定账号下的指定 bucket
  */
 
@@ -57,8 +57,6 @@ function uploadFile(localFile, bucket, key, mac) {
   )
 }
 
-const indexFilePattern = /(^|\/)index\.html$/
-
 async function deploy(config) {
   const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
   const outputFiles = await getAllFiles(config.outputPath)
@@ -66,14 +64,18 @@ async function deploy(config) {
   return Promise.all(outputFiles.map(fileName => {
     const filePath = path.resolve(config.outputPath, fileName)
 
-    // 对于文件 `xxx/index.html`，额外以 `xxx` & `xxx/` 作为 key 上传
-    // 以保证通过 URL `/xxx` 或 `/xxx/` 都能访问到该内容
+    // 对于文件 `foo/index.html` 或 `foo.html`，分别以 `foo`、`foo/` & `foo/index.html` 作为 key 上传
+    // 以保证通过 URL `/foo` 或 `/foo/` 都能访问到该内容
     // 注意虽然 Kodo 支持设置“默认首页”，但是如果 bucket 同时开启了镜像回源的话
-    // 对于 `/xxx/` 会优先去镜像回源，而不是使用 `/xxx/index.html`
-    const keys = [fileName]
-    if (indexFilePattern.test(fileName)) {
-      keys.push(fileName.replace(indexFilePattern, ''))
-      keys.push(fileName.replace(indexFilePattern, '/'))
+    // 对于 `/foo/` 会优先去镜像回源，而不是使用 `/foo/index.html`
+    const keys = []
+    if (path.extname(fileName) === '.html') {
+      const dirname = fileName.indexOf('/') >= 0 ? path.dirname(fileName) : ''
+      const basename = path.basename(fileName, '.html')
+      const routePath = basename === 'index' ? dirname : path.join(dirname, basename)
+      keys.push(routePath, routePath + '/', routePath + '/index.html')
+    } else {
+      keys.push(fileName)
     }
 
     return Promise.all(keys.map(

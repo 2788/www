@@ -8,7 +8,6 @@ module.exports = withPlugins(
     [
       withLess,
       {
-        exportTrailingSlash: true,
         cssModules: true,
         cssLoaderOptions: {
           importLoaders: 1,
