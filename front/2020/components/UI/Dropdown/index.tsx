@@ -6,8 +6,9 @@ import style from './index.less'
 import 'rc-dropdown/assets/index.css'
 
 export default RcDropdown
+export * from 'rc-dropdown/lib/Dropdown'
 
-export const DropdownMenu = ({ children, className }: PropsWithChildren<{ className: string }>) => (
+export const DropdownMenu = ({ children, className = '' }: PropsWithChildren<{ className?: string }>) => (
   <ul className={className + ' ' + style.menu}>{children}</ul>
 )
 

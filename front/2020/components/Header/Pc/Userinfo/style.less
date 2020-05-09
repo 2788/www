@@ -1,0 +1,47 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  margin-left: 52px;
+  margin-right: 16px;
+}
+
+.haveSignin {
+  padding-right: 20px;
+
+  span {
+    display: inline-block;
+    width: 80px;
+    vertical-align: middle;
+    .ellipsis();
+  }
+}
+
+.signin {
+  margin-right: 16px;
+
+  &:hover {
+    color: @blue-6;
+  }
+}
+
+.signup {
+  color: @blue-6;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.dropdown {
+  min-width: 180px;
+  max-width: 220px;
+}
+
+.arrow {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}

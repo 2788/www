@@ -1,0 +1,45 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  padding: 16px;
+}
+
+.search {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 36px;
+  padding: 0 8px;
+  // 色板没有
+  background: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.input {
+  width: calc(100% - 28px);
+  height: 100%;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 12px;
+  outline: none;
+  border: none;
+  background: none;
+  border-radius: 4px;
+}
+
+.title {
+  margin: 12px 0;
+  font-size: 12px;
+  color: @grey-4;
+}
+
+.list {
+  font-size: 12px;
+  color: @grey-7;
+
+  li + li {
+    margin-top: 8px;
+  }
+}

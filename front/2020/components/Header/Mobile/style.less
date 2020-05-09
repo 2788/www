@@ -1,0 +1,24 @@
+@import "~utils/less/index.less";
+
+@header-height: 52px;
+// 以后可能比内容宽度高
+@header-content-width: @centered-content-width;
+
+.header {
+  display: flex;
+  align-items: center;
+  height: @header-height;
+  padding-left: 16px;
+  padding-right: 8px;
+  line-height: @header-height;
+  background-color: @main-bg-color;
+  box-shadow: 0px 1px 0px 0px rgba(238, 238, 238, 1);
+
+  .spacer {
+    flex: 1;
+  }
+  .logo {
+    height: @header-height;
+    line-height: @header-height;
+  }
+}

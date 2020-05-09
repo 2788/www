@@ -25,46 +25,52 @@ module.exports = withPlugins(
           issuer: {
             test: /\.(js|ts)x?$/
           },
-          use: [{
-            loader: '@svgr/webpack',
-            options: {
-              svgoConfig: {
-                plugins: {
-                  removeViewBox: false
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgoConfig: {
+                  plugins: {
+                    removeViewBox: false
+                  }
                 }
               }
             }
-          }]
+          ]
         },
         {
           test: /\.(svg|png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(css|less)$/
           },
-          use: [{
-            loader: 'file-loader',
-            options: {
-              publicPath: `/_next/static/media/`,
-              outputPath: `${options.isServer ? "../" : ""}static/media/`,
-              name: "[name].[hash].[ext]",
-              esModule: false
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                publicPath: `/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false
+              }
             }
-          }]
+          ]
         },
         {
           test: /\.(png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },
-          use: [{
-            loader: 'file-loader',
-            options: {
-              publicPath: `/_next/static/media/`,
-              outputPath: `${options.isServer ? "../" : ""}static/media/`,
-              name: "[name].[hash].[ext]",
-              esModule: false
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                publicPath: `/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false
+              }
             }
-          }]
+          ]
         }
       )
 
