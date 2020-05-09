@@ -6,6 +6,8 @@
 
 import React, { ReactNode } from 'react'
 
+import { useMobile } from '../../../hooks/ua'
+
 import styles from './style.less'
 
 export interface IPageBannerProps {
@@ -26,6 +28,7 @@ const defaultProps: IPageBannerProps = {
 
 export default function PageBanner(props: IPageBannerProps) {
   const { title, desc, bgColor, btns, icon } = { ...defaultProps, ...props }
+  const isMobile = useMobile()
 
   function renderBtnWrapper() {
     if (!btns || !btns.length) {
@@ -48,7 +51,7 @@ export default function PageBanner(props: IPageBannerProps) {
   }
 
   function renderIconWrapper() {
-    if (!icon) {
+    if (!icon || isMobile) {
       return null
     }
 

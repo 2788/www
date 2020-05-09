@@ -3,51 +3,68 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
+// 该组件的移动端兼容用样式就能搞定
+// 就不在 js 逻辑里面实现兼容了
+
 @import '~utils/less/index.less';
 
 .mainWrapper {
   margin-top: -44px;
   padding-bottom: 20px;
-  overflow: hidden;
+  overflow-x: auto;
+
+  .mobile({
+    margin-top: 0;
+    padding-bottom: 0;
+    background-color: #FAFAFA;
+  });
 }
 
 .noticeWrapper {
   .centered();
   padding: 18px 16px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: @grey-1;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
   display: flex;
   justify-content: center;
 
-  // TODO
-  // 这边只是做了简单的移动端样式兼容
-  // 如果移动端下组件的渲染方式和 pc 端不同
-  // 需要在 js 逻辑里面实现兼容
-  // 参考 https://github.com/qbox/www/blob/4dc93a010ac8f42714cad9cd99ef0640bd2f52fc/front/2020/utils/index.ts#L1-L4
-  .mobile({
-    padding: 18px 0;
+  .pcLessLg({
+    width: auto;
+    border-radius: 0;
   });
 
-  @media only screen and (max-width: @screen-lg - 1) {
-    & {
-      width: auto;
-      border-radius: 0;
-    }
-  }
+  .mobile({
+    padding: 0;
+    background-color: #FAFAFA;
+    box-shadow: none;
+    display: block;
+  });
 }
 
 .noticeGroup {
   margin: 0 16px;
-  flex: 1 1 auto;
+  flex: 1 1;
   overflow: hidden;
+
+  .mobile({
+    margin: 0 0 12px;
+    padding: 12px 20px;
+    background-color: @grey-1;
+  });
 }
 
 .title {
-  margin-bottom: 20px;
-  color: #666;
+  margin-bottom: 16px;
+  color: @grey-6;
   display: flex;
   align-items: center;
+
+  .mobile({
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 18px;
+  });
 }
 
 .titleIcon {
@@ -55,13 +72,18 @@
 }
 
 .noticeItem {
-  .textEllipsis();
-  margin: 10px 0;
-  line-height: 1;
+  margin: 10px 0 0;
+
+  .mobile({
+    font-size: 12px;
+    line-height: 18px;
+  });
 }
 
 .notice {
-  color: #333;
+  position: relative;
+  padding-left: 26px;
+  color: @grey-7;
 
   &:hover {
     color: @blue-6;
@@ -72,10 +94,15 @@
     content: "";
     width: 8px;
     height: 8px;
-    margin-right: 10px;
+    position: absolute;
+    top: 6px;
+    left: 4px;
     border-radius: 50%;
     background-color: @blue-6;
     opacity: 0.4;
-    display: inline-block;
+
+    .mobile({
+      top: 5px;
+    });
   }
 }

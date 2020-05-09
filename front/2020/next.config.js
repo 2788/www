@@ -25,7 +25,16 @@ module.exports = withPlugins(
           issuer: {
             test: /\.(js|ts)x?$/
           },
-          use: [ '@svgr/webpack' ]
+          use: [{
+            loader: '@svgr/webpack',
+            options: {
+              svgoConfig: {
+                plugins: {
+                  removeViewBox: false
+                }
+              }
+            }
+          }]
         },
         {
           test: /\.(svg|png|jpe?g|gif)$/i,

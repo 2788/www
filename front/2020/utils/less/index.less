@@ -16,6 +16,18 @@
   }
 }
 
+.pcLessMd(@rules) {
+  @media only screen and (max-width: @screen-md - 1) {
+    @rules();
+  }
+}
+
+.pcLessLg(@rules) {
+  @media only screen and (max-width: @screen-lg - 1) {
+    @rules();
+  }
+}
+
 .centered() {
   width: @centered-content-width;
   position: relative;

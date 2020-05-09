@@ -1,0 +1,220 @@
+/**
+ * @file 产品页功能与优势组件 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+ @import '~utils/less/index.less';
+
+.mainWrapper {
+  padding-bottom: 50px;
+  overflow-x: auto;
+
+  &.grey {
+    background-color: #FAFAFA;
+  }
+}
+
+.pc {
+  .centered();
+  padding: 72px 0 0;
+
+  .title {
+    padding-bottom: 36px;
+    color: @grey-7;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .groupWrapper {
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .itemWrapper {
+    padding: 0 22px;
+    flex: 1 1;
+  }
+
+  .item {
+    &.itemTopDown {
+      .itemContent {
+        margin: 0 auto;
+        display: table;
+      }
+
+      .itemTitle {
+        margin-top: 16px;
+        text-align: center;
+      }
+    }
+
+    &.itemLeftRight {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .itemIcon {
+        flex: 0 1;
+      }
+
+      .itemContent {
+        text-align: left;
+        flex: 1 1;
+      }
+    }
+  }
+
+  .itemIcon {
+    text-align: center;
+
+    svg, img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .itemContent {
+    &.contentCenter {
+      text-align: center;
+    }
+
+    &.contentLeft {
+      text-align: left;
+    }
+  }
+
+  .itemTitle {
+    color: @grey-7;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  .desc {
+    position: relative;
+    margin: 12px 0;
+    color: @grey-6;
+    line-height: 22px;
+
+    &.preIconCheck {
+      padding-left: 24px;
+
+      &:before {
+        content: "";
+        width: 4px;
+        height: 10px;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        border-color: @blue-6;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &.preIconDot {
+      padding-left: 20px;
+
+      &:before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 6px;
+        left: 0px;
+        border-radius: 50%;
+        background-color: @blue-6;
+      }
+    }
+  }
+
+  .link {
+    margin: 12px 0;
+    line-height: 20px;
+
+    a {
+      color: @blue-6;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.mobile {
+  padding: 16px 0 0;
+
+  .title {
+    padding-bottom: 16px;
+    color: @grey-7;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  .itemWrapper {
+    padding: 0 16px;
+  }
+
+  .linkItem {
+    outline: none;
+
+    .itemContent {
+      padding-right: 32px;
+    }
+
+    .arrowIcon {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+  .item {
+    position: relative;
+    padding: 20px 0;
+    border-bottom: 1px solid @grey-3;
+    display: flex;
+    justify-content: center;
+  }
+
+  .itemIcon {
+    margin-top: -10px;
+    flex: 0 1;
+
+    svg, img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .itemContent {
+    position: relative;
+    padding-left: 10px;
+    text-align: left;
+    flex: 1 1;
+  }
+
+  .itemTitle {
+    color: @grey-7;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .desc {
+    margin: 4px 0;
+    color: @grey-6;
+    font-size:12px;
+    line-height: 18px;
+  }
+}
