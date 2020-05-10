@@ -8,28 +8,15 @@ import React from 'react'
 import classnames from 'classnames'
 
 import {
-  IFeatureProps, IFeatureItemProps, IFeatureLinkProps,
+  IFeatureItemProps, IFeatureLinkProps,
   PosType, AlignType
 } from '.'
 
 import styles from './style.less'
 
-export interface IPcFeatureProps extends IFeatureProps {}
-
 export interface IPcFeatureItemProps extends IFeatureItemProps {}
 
 export interface IPcFeatureLinkProps extends IFeatureLinkProps{}
-
-export default function PcFeature(props: IPcFeatureProps) {
-  const { title, children } = props
-
-  return (
-    <div className={styles.pc}>
-      <h1 className={styles.title}>{title}</h1>
-      {children}
-    </div>
-  )
-}
 
 export function PcFeatureItem(props: IPcFeatureItemProps) {
   const { icon, title, children, pos, align } = props

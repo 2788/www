@@ -7,9 +7,10 @@
 import React, { ReactNode, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import { Block } from '../../../components/Product/Navigator'
-import PcFeature, { PcFeatureItem, PcFeatureLink } from './Pc'
-import MobileFeature, { MobileFeatureItem, MobileFeatureLink } from './Mobile'
+import Section from '../../../components/Product/Section'
+
+import { PcFeatureItem, PcFeatureLink } from './Pc'
+import { MobileFeatureItem, MobileFeatureLink } from './Mobile'
 
 import { useMobile } from '../../../hooks/ua'
 
@@ -65,30 +66,23 @@ export default function Feature(props: IFeatureProps) {
   function renderMain() {
     if (isMobile) {
       return (
-        <MobileFeature {...otherProps}>
+        <div className={styles.mobile}>
           {children}
-        </MobileFeature>
+        </div>
       )
     }
 
     return (
-      <PcFeature {...otherProps}>
+      <div className={styles.pc}>
         {children}
-      </PcFeature>
+      </div>
     )
   }
 
-  const className = [
-    props.className,
-    styles.mainWrapper
-  ].filter(Boolean).join(' ')
-
   return (
-    <Block {...otherProps}>
-      <div className={classnames(className, (grey && !isMobile) && styles.grey)}>
-        {renderMain()}
-      </div>
-    </Block>
+    <Section {...otherProps} grey={grey && !isMobile}>
+      {renderMain()}
+    </Section>
   )
 }
 

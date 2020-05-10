@@ -8,29 +8,16 @@ import React, { useState, useCallback, useContext, useEffect } from 'react'
 import { context, LinkInfo } from './utils'
 
 import {
-  IFeatureProps, IFeatureItemProps, IFeatureLinkProps
+  IFeatureItemProps, IFeatureLinkProps
 } from '.'
 
 import ArrowIcon from './arrow.svg'
 
 import styles from './style.less'
 
-export interface IMobileFeatureProps extends IFeatureProps {}
-
 export interface IMobileFeatureItemProps extends IFeatureItemProps {}
 
 export interface IMobileFeatureLinkProps extends IFeatureLinkProps {}
-
-export default function MobileFeature(props: IMobileFeatureProps) {
-  const { title, children } = props
-
-  return (
-    <div className={styles.mobile}>
-      <h1 className={styles.title}>{title}</h1>
-      {children}
-    </div>
-  )
-}
 
 export function MobileFeatureItem(props: IMobileFeatureItemProps) {
   const { icon, title, children } = props

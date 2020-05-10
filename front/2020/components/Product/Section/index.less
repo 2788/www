@@ -1,5 +1,13 @@
 @import '~utils/less/index.less';
 
+.blockWraper {
+  overflow-x: auto;
+
+  .mobile({
+    overflow-x: hidden;
+  });
+}
+
 .wrapper {
   .centered();
   padding: 72px 0;

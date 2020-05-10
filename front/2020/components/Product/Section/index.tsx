@@ -24,7 +24,7 @@ export default function Section(props: SectionProps) {
   const { name, title, children, grey = false } = props
 
   return (
-    <Block name={name} title={title} className={classnames(grey && style.grey)}>
+    <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>
       <div className={style.wrapper}>
         <div className={style.title}>{title}</div>
         {children}
