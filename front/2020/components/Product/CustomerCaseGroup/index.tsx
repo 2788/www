@@ -27,9 +27,18 @@ export function CustomerCase({ pic }: PropsWithChildren<ICustomerCaseProps>) {
   )
 }
 
-export default function CustomerCaseGroup({ children }: PropsWithChildren<{}>) {
+export type Props = PropsWithChildren<{
+  name?: string
+  title?: string
+}>
+
+export default function CustomerCaseGroup({
+  name = 'customer-cases',
+  title = '客户案例',
+  children
+}: Props) {
   return (
-    <Section title="客户案例" name="customer-cases">
+    <Section title={title} name={name}>
       <ul className={styles.customerCaseGroup}>
         {children}
       </ul>

@@ -7,7 +7,7 @@
 import React, { ReactNode, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import Section from '../../../components/Product/Section'
+import Section from '../Section'
 
 import { PcFeatureItem, PcFeatureLink } from './Pc'
 import { MobileFeatureItem, MobileFeatureLink } from './Mobile'

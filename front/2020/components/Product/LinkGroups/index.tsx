@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import Link from 'next/link'
+import Section from '../Section'
 
 import styles from './style.less'
 
@@ -30,13 +31,24 @@ export function LinkGroup({ title, children }: PropsWithChildren<LinkGroupProps>
   )
 }
 
-export default function LinkGroups({ children }: PropsWithChildren<{}>) {
+export type Props = PropsWithChildren<{
+  name?: string
+  title?: string
+}>
+
+export default function LinkGroups({
+  name = 'docs',
+  title = '使用文档',
+  children
+}: Props) {
   if (React.Children.count(children) > 4) {
     throw new Error('Link Groups\'s children no more then 4')
   }
   return (
-    <ul className={styles.linkGroups}>
-      {children}
-    </ul>
+    <Section name={name} title={title}>
+      <ul className={styles.linkGroups}>
+        {children}
+      </ul>
+    </Section>
   )
 }
