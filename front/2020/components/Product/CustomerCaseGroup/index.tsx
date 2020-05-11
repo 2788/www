@@ -5,6 +5,8 @@
 
 import React, { PropsWithChildren, ReactNode } from 'react'
 
+import Section from 'components/Product/Section'
+
 import styles from './style.less'
 
 export interface ICustomerCaseProps {
@@ -27,8 +29,10 @@ export function CustomerCase({ pic }: PropsWithChildren<ICustomerCaseProps>) {
 
 export default function CustomerCaseGroup({ children }: PropsWithChildren<{}>) {
   return (
-    <ul className={styles.customerCaseGroup}>
-      {children}
-    </ul>
+    <Section title="客户案例" name="customer-cases">
+      <ul className={styles.customerCaseGroup}>
+        {children}
+      </ul>
+    </Section>
   )
 }

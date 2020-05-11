@@ -14,12 +14,18 @@ import { useModal as useFeedbackModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import UIButton from 'components/UI/Button'
 import StorageType from 'components/pages/kodo/StorageType'
+import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
   Desc as FeatureDesc,
   Link as FeatureLink
 } from '../../../components/Product/Feature'
+
+import ChangBa from './images/changba.png'
+import PingAn from './images/pingan.png'
+import ShunFeng from './images/shunfeng.png'
+import YiDong from './images/yidong.png'
 
 import BannerIcon from './images/bannerIcon.svg'
 import AdvantIconFile from './images/advantIconFile.svg'
@@ -85,6 +91,15 @@ function PageContent() {
       </Navigator>
 
       <StorageType />
+
+      <CustomerCaseGroup>
+        <CustomerCase pic={ChangBa} />
+        <CustomerCase pic={PingAn} />
+        <CustomerCase pic={YiDong} />
+        <CustomerCase pic={ShunFeng} />
+        <CustomerCase pic={PingAn} />
+        <CustomerCase pic={YiDong} />
+      </CustomerCaseGroup>
 
       <Feature name="advantage" title="产品优势" grey>
         <FeatureGroup>

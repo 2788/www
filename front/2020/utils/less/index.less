@@ -61,3 +61,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+// support webkit only
+// http://caniuse.com/#search=line-clamp
+// 使用时注意第二个参数
+.ellipsis-line-clamp(@n: 3, @maxheight: 80px) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @n;
+  -webkit-box-orient: vertical;
+  max-height: @maxheight; // 非 webkit 浏览器
+}
