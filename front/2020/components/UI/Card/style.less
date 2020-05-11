@@ -1,0 +1,65 @@
+@import '~utils/less/index.less';
+
+.row {
+  display: flex;
+  margin: 0 -12px;
+
+  .mobile({
+    margin: -6px 0;
+    flex-direction: column;
+  });
+}
+
+.card {
+  flex: 1 1 0;
+  margin: 0 12px;
+
+  text-align: left;
+  border:1px solid rgba(238,238,238,1);
+  box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
+
+  .mobile({
+    margin: 6px 0;
+  });
+}
+
+.imgWrapper {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.content {
+  width: 100%;
+  padding: 20px;
+
+  .mobile({
+    padding: 16px;
+  });
+
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 30px;
+
+    .mobile({
+      font-size: 14px;
+      line-height: 20px;
+    });
+  }
+  
+  .desc {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 24px;
+
+    .mobile({
+      margin-top: 12px;
+      font-size: 12px;
+      line-height: 17px;
+    });
+  }
+}
