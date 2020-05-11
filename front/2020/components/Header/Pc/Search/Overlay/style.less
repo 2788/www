@@ -2,7 +2,6 @@
 
 .overlay {
   width: 260px;
-  height: 252px;
   padding: 12px 0;
   background: @grey-1;
   box-shadow: @modal-box-shadow;
@@ -10,76 +9,46 @@
 
 .contentArea {
   width: 100%;
-  height: 192px;
-}
-
-.footer {
-  a {
-    .ellipsis();
-    position: relative;
-    display: block;
-    height: 36px;
-    padding: 0 36px 0 20px;
-    color: @grey-7;
-    line-height: 36px;
-
-    &:before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      width: 80%;
-      height: 1px;
-      background: @grey-3;
-      transform: translateX(-50%);
-    }
-
-    &:hover {
-      background: @blue-1;
-    }
-
-    .key {
-      color: @blue-6;
-    }
-
-    .arrow {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-    }
-  }
-}
-
-.empty {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-
-  p {
-    margin-top: 16px;
-    color: @grey-5;
-  }
 }
 
 .resultList {
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
   background: @grey-1;
 
-  li {
+  .resultLink {
     .ellipsis();
+    display: block;
     padding: 8px 20px;
-    cursor: pointer;
     color: @grey-7;
-    font-size: 14px;
+    font-size: 12px;
     transition: background 0.25s;
 
     &:hover {
       color: @blue-6;
       background: @blue-1;
     }
+  }
+}
+
+.loading {
+  padding: 12px 20px;
+}
+
+.empty {
+  height: 204px;
+  svg {
+    width: 44px;
+    height: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+.footer {
+  box-sizing: content-box;
+  height: 36px;
+  padding: 0 20px;
+
+  &:hover {
+    background: @blue-1;
   }
 }

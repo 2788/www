@@ -10,7 +10,7 @@ import Nav from './Nav'
 export default function HeaderForMobile() {
   return (
     <div className={style.header}>
-      <Link href=""><a className={style.logo}><Logo /></a></Link>
+      <Link href="/"><a className={style.logo}><Logo /></a></Link>
       <div className={style.spacer} />
       <Search />
       <Userinfo />

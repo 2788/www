@@ -18,7 +18,7 @@ export default function HeaderForPc() {
   return (
     <header className={style.header}>
       <div className={style.content}>
-        <Link href=""><a className={style.logo}><Logo /></a></Link>
+        <Link href="/"><a className={style.logo}><Logo /></a></Link>
         <Nav />
         <SearchInput />
         <Userinfo />

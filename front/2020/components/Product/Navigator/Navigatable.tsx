@@ -4,8 +4,9 @@
  */
 
 import React, { ReactNode, useState, useCallback, useMemo, useEffect } from 'react'
-import { useHash } from '../../../hooks/url'
-import { useScrollTop } from '../../../hooks/scroll'
+import { useHash } from 'hooks/url'
+import { useScrollTop } from 'hooks/scroll'
+import { useOnChange } from 'hooks'
 import { BlockInfo, isBlockInView, navigatorHeight, context } from './utils'
 
 /** 可导航区块信息集合 */
@@ -31,21 +32,11 @@ export default function Navigatable({ children }: Props) {
     (blockA, blockB) => blockA.offsetTop - blockB.offsetTop
   ), [blockMap])
 
-  const [hash, updateHash] = useHash()
-  const firstBlock = blocks.length > 0 ? blocks[0].name : null
-  const defaultActive = hash != null ? hash : firstBlock
-
-  const [active, setActive] = useState(defaultActive)
+  const [active, setActive] = useHash()
   const [scrollTop, scrollTo] = useScrollTop()
 
-  // tab 切换 -> 同步到 URL hash
-  useEffect(
-    () => updateHash(active),
-    [updateHash, active]
-  )
-
   // 页面滚动时根据滚动位置同步更新当前 active 信息
-  useEffect(() => {
+  useOnChange(() => {
     for (let i = blocks.length - 1; i >= 0; i--) {
       const block = blocks[i]
       if (isBlockInView(block, scrollTop)) {
@@ -53,12 +44,14 @@ export default function Navigatable({ children }: Props) {
         return
       }
     }
-  }, [blocks, scrollTop])
+    setActive(null)
+  }, [scrollTop])
 
   const activeBlock = active && blockMap[active]
 
-  // 当前 active block 发生变更时，控制页面滚动到对应的位置
+  // 控制页面滚动到 active block 对应的位置
   useEffect(() => {
+    // TODO: 初次控制滚动的事情会不会挪到页面 onload 之后做更好？可能可以有更好的首屏表现
     if (activeBlock && !isBlockInView(activeBlock, scrollTop)) {
       scrollTo(activeBlock.offsetTop - navigatorHeight)
     }

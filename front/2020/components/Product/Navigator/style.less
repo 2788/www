@@ -2,10 +2,21 @@
 
 .wrapper {
   top: 0;
+  z-index: @product-navigator-z-index;
   background-color: #fff;
 
-  &.fixed .extra {
-    opacity: 1;
+  // 固定在顶部的时候，把下边框转移到 wrapper 上
+  &.fixed {
+    box-shadow: 0 1px 0 0 rgba(238, 238, 238, 1);
+    transition: .5s;
+    .content {
+      transition: .5s;
+      box-shadow: none;
+    }
+    .extra {
+      transition: .5s;
+      opacity: 1;
+    }
   }
 }
 
@@ -32,7 +43,6 @@
   flex: 0 0 auto;
   margin: 0 12px;
   opacity: 0;
-  transition: .2s;
 }
 
 .button:not(:first-child) {

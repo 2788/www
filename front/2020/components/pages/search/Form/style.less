@@ -1,0 +1,161 @@
+@import '~utils/less/index.less';
+
+@blue: @blue-6;
+@white: @grey-1;
+
+.wrapper {
+  color: @white;
+  background-color: @blue;
+
+  .mobile({
+    background-color: #fafafa;
+    box-shadow: 0 1px 0 0 @grey-3;
+  });
+}
+
+.main {
+  .centered();
+  padding: 69px 0 66px;
+
+  .mobile({
+    padding: 16px;
+  });
+}
+
+.inputWrapper {
+  width: 776px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  background-color: @blue;
+  border: 1px solid @white;
+  border-radius: 4px;
+  align-items: center;
+
+  .mobile({
+    width: auto;
+    border-color: @blue;
+    background-color: #fafafa;
+  });
+
+  .icon {
+    margin-left: 8px;
+    width: 24px;
+    height: 24px;
+
+    .mobile({
+      display: none;
+    });
+  }
+
+  .sep {
+    margin-left: 1px;
+    width: 1px;
+    height: 12px;
+    background-color: @white;
+
+    .mobile({
+      display: none;
+    });
+  }
+
+  .input, .submitBtn {
+    font-size: 14px;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .input {
+    flex: 1 1 auto;
+    padding: 8px 4px;
+    border: none;
+    color: inherit;
+    background-color: transparent;
+
+    &::placeholder {
+      color: @white;
+    }
+
+    .mobile({
+      padding: 7px 8px;
+      color: @grey-7;
+      &::placeholder {
+        color: @grey-4;
+      }
+    });
+  }
+
+  .submitBtn {
+    flex: 0 0 auto;
+    padding: 8px 24px;
+    cursor: pointer;
+    color: @blue;
+    background: @white;
+    border: none;
+    border-radius: 0 2px 2px 0;
+
+    .mobile({
+      padding: 7px 24px;
+      color: @white;
+      background-color: @blue;
+    });
+  }
+
+}
+
+.suggestionOverlay {
+  width: 100%;
+}
+
+.suggestionWrapper {
+  // 覆盖 `DropdownMenu` 内部样式
+  min-width: unset !important;
+  max-width: unset !important;
+  padding: 12px 0;
+
+  color: @grey-7;
+  background-color: @grey-1;
+  box-shadow: @modal-box-shadow;
+
+  .loading, .suggestionItem {
+    .ellipsis();
+    padding: 9px 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+.hot {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: .8;
+
+  .mobile({
+    margin-top: 8px;
+    color: @grey-6;
+  });
+
+  .label {
+    margin-right: 8px;
+    opacity: .5;
+
+    .mobile({
+      color: @grey-6;
+    });
+  }
+
+  .sep {
+    margin: 0 8px;
+    width: 1px;
+    height: 9px;
+    background-color: @white;
+
+    .mobile({
+      background-color: @grey-3;
+    });
+  }
+}

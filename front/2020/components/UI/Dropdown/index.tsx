@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, HTMLAttributes } from 'react'
 import RcDropdown from 'rc-dropdown/lib/Dropdown'
 
 import style from './index.less'
@@ -12,7 +12,14 @@ export const DropdownMenu = ({ children, className = '' }: PropsWithChildren<{ c
   <ul className={className + ' ' + style.menu}>{children}</ul>
 )
 
-export const DropdownMenuItem = ({ children }: PropsWithChildren<{}>) => <li className={style.item}>{children}</li>
+export type DropdownMenuItemProps = HTMLAttributes<HTMLLIElement>
+
+export function DropdownMenuItem({ className, ...others }: DropdownMenuItemProps) {
+  className = [style.item, className].filter(Boolean).join(' ')
+  return (
+    <li className={className} {...others} />
+  )
+}
 
 export function DropdownMenuGroup({ children, title }: PropsWithChildren<{ title: string }>) {
   return (

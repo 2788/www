@@ -1,0 +1,96 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  padding: 36px 0 72px;
+
+  .mobile({
+    padding: 0 0 24px;
+  });
+}
+
+.empty {
+  height: 476px;
+}
+
+.resultItem {
+
+  .mobile({
+    padding: 20px 0;
+    margin: 0 16px;
+  });
+
+  &:not(:first-child) {
+    margin-top: 36px;
+
+    .mobile({
+      margin-top: 0;
+      border-top: 1px solid @grey-3;
+  });
+  }
+
+  .itemTitle {
+    font-size: 20px;
+    line-height: 1.4em;
+    color: @grey-7;
+
+    &:hover {
+      color: @blue-6;
+    }
+
+    .mobile({
+      font-size: 16px;
+      line-height: 22px;
+    });
+  }
+
+  .itemContent {
+    margin-top: 16px;
+    line-height: 20px;
+
+    em {
+      color: @blue-6;
+      font-style: normal;
+    }
+
+    .mobile({
+      margin-top: 12px;
+      font-size: 12px;
+    });
+  }
+
+  .itemLinkLine {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.4em;
+    color: @grey-5;
+
+    a:hover {
+      text-decoration: underline;
+      color: @grey-7;
+    }
+
+    .mobile({
+      margin-top: 8px;
+    });
+  }
+}
+
+.paginationLine {
+  margin-top: 54px;
+  text-align: center;
+
+  .mobile({
+    margin: 0 16px;
+    padding: 24px 0 0;
+    border-top: 1px solid @grey-3;
+  });
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.loadMore {
+  border-color: @grey-4 !important;
+  color: @grey-7 !important;
+}

@@ -7,6 +7,12 @@
 
   font-size: 16px;
   color: @grey-7;
+
+  .mobile({
+    margin: 0;
+    justify-content: space-around;
+    font-size: 12px;
+  });
 }
 
 .item {
@@ -22,8 +28,16 @@
   cursor: pointer;
   transition: .2s;
 
+  .mobile({
+    padding: 0 4px;
+  });
+
   &:not(:first-child) {
     margin-left: 24px;
+
+    .mobile({
+      margin-left: 0;
+    });
   }
 
   // TODO: 把下边的横条放到 tabs 那层去实现，以便实现动画
