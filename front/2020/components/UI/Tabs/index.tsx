@@ -93,7 +93,7 @@ export function Tab({ value, children }: TabProps) {
     throw new Error('Component Tab should be used in Tabs.')
   }
   const active = contextValue.value === value
-  const onClick = () => contextValue.onChange(value)
+  const onClick = () => !active && contextValue.onChange(value)
   const className = [style.item, active && style.active].filter(Boolean).join(' ')
 
   return (

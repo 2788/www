@@ -45,10 +45,13 @@ export default function Navigator({ priceLink, children }: Props) {
 
   const { blocks, active, setActive } = contextValue
 
-  function handleTabsChange(activeTab: string) {
+  // 如果当前没有 active block，将第一个 tab 高亮
+  const activeTab = active != null ? active : blocks[0].name
+
+  function handleTabsChange(newActiveTab: string) {
     // “价格”不对应可导航区块，会直接做页面跳转，这里无须处理
-    if (activeTab !== tabPriceLink) {
-      setActive(activeTab)
+    if (newActiveTab !== tabPriceLink) {
+      setActive(newActiveTab)
     }
   }
 
@@ -72,7 +75,7 @@ export default function Navigator({ priceLink, children }: Props) {
   return (
     <div ref={wrapperRef} className={wrapperClassName} style={{ height: navigatorHeight + 'px' }}>
       <div className={style.content}>
-        <Tabs className={style.tabs} value={active} onChange={handleTabsChange}>
+        <Tabs className={style.tabs} value={activeTab} onChange={handleTabsChange}>
           {blockTabsView}
           {priceLinkView}
         </Tabs>
