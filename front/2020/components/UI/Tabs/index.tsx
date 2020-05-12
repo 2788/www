@@ -2,8 +2,9 @@
  * @file 可切换的 tab 列表
  */
 
-import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState, useEffect } from 'react'
+import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState } from 'react'
 import classnames from 'classnames'
+import { useOnChange } from 'hooks'
 import style from './style.less'
 
 type ContextValue = {
@@ -33,7 +34,7 @@ export default function Tabs({ children, className, defaultValue, value = null, 
 
   // 同步 value 到内部状态
   // 会渲染好几次，有空优化这个组件
-  useEffect(() => setActive(value), [value])
+  useOnChange(() => setActive(value), [value])
 
   React.Children.forEach(children, child => {
     if (!React.isValidElement(child)) {
@@ -92,6 +93,7 @@ export function Tab({ value, children }: TabProps) {
   if (!contextValue) {
     throw new Error('Component Tab should be used in Tabs.')
   }
+
   const active = contextValue.value === value
   const onClick = () => !active && contextValue.onChange(value)
   const className = [style.item, active && style.active].filter(Boolean).join(' ')
@@ -106,12 +108,13 @@ export function Tab({ value, children }: TabProps) {
 type TabPaneProps = {
   tab: string
   value: string
+  className?: string
   children: ReactNode
 }
 
 export function TabPane(props: TabPaneProps) {
-  const { value, children } = props
+  const { className, value, children } = props
   const tabsContext = useContext(tabContext)
 
-  return <div style={{ display: tabsContext?.value === value ? 'block' : 'none' }}>{children}</div>
+  return <div className={classnames(className)} style={{ display: tabsContext?.value === value ? 'block' : 'none' }}>{children}</div>
 }

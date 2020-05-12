@@ -7,7 +7,7 @@
  * Copyright (c) 2020 Qiniu
  */
 
-import React, { ReactNode } from 'react'
+import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
 import { Block, BlockProps } from 'components/Product/Navigator'
 
@@ -18,14 +18,15 @@ export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
   header?: ReactNode
   children: ReactNode
   grey?: boolean
+  style?: CSSProperties
 }
 
 export default function Section(props: SectionProps) {
-  const { name, title, header, children, grey = false } = props
+  const { name, title, header, children, grey = false, ...rest } = props
 
   return (
     <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>
-      <div className={style.wrapper}>
+      <div className={style.wrapper} {...rest}>
         <div className={style.title}>{header != null ? header : title}</div>
         {children}
       </div>

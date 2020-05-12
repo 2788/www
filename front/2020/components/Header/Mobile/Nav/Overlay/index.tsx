@@ -1,22 +1,10 @@
 import React from 'react'
-import Menu, { SubMenu, MenuItem } from 'rc-menu'
+import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 import Link from 'next/link'
-import CollapsedIcon from './collapsed.svg'
-import ExpandedIcon from './expanded.svg'
-
-import 'rc-menu/assets/index.css'
-
-import style from './style.less'
 
 export default function Overlay() {
-  function expandIcon(props: any) {
-    if (props.isOpen) {
-      return <ExpandedIcon className={style.icon} />
-    }
-    return <CollapsedIcon className={style.icon} />
-  }
   return (
-    <Menu mode="inline" expandIcon={expandIcon}>
+    <Menu mode="inline">
       <SubMenu mode="inline" title="产品">
         <SubMenu title="存储与数据湖">
           <MenuItem><Link href="/products/kodo"><a>对象存储</a></Link></MenuItem>

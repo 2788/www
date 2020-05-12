@@ -27,7 +27,7 @@ const defaultProps: IPageBannerProps = {
 }
 
 export default function PageBanner(props: IPageBannerProps) {
-  const { title, desc, bgColor, btns, icon } = { ...defaultProps, ...props }
+  const { title, desc, bgColor = '#34A1EC', btns, icon } = { ...defaultProps, ...props }
   const isMobile = useMobile()
 
   function renderBtnWrapper() {
@@ -36,16 +36,12 @@ export default function PageBanner(props: IPageBannerProps) {
     }
 
     return (
-      <div className={styles.btnsWrapper}>{
-        btns.map((btn: ReactNode, index: number) => {
-          return (
-            <div
-              className={styles.btn}
-              key={index}>
-              {btn}
-            </div>
-          )
-        })}
+      <div className={styles.btnsWrapper}>
+        {btns.map((btn: ReactNode, index: number) => (
+          <div className={styles.btn} key={index}>
+            {btn}
+          </div>
+        ))}
       </div>
     )
   }
@@ -55,11 +51,7 @@ export default function PageBanner(props: IPageBannerProps) {
       return null
     }
 
-    return (
-      <div className={styles.iconWrapper}>
-        {icon}
-      </div>
-    )
+    return <div className={styles.iconWrapper}>{icon}</div>
   }
 
   const bgColorStyle = {

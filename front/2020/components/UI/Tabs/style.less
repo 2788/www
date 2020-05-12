@@ -22,7 +22,7 @@
   display: inline-block;
   height: 72px;
   line-height: 72px;
-  padding: 0 12px;
+  padding: 0 24px;
   min-width: 2em; // 最少两个字宽度
   max-width: 8em; // 最多八个字宽度
   height: 100%;
@@ -35,14 +35,6 @@
     height: 48px;
     line-height: 48px;
   });
-
-  &:not(:first-child) {
-    margin-left: 24px;
-
-    .mobile({
-      margin-left: 0;
-    });
-  }
 
   // TODO: 把下边的横条放到 tabs 那层去实现，以便实现动画
   &:after {

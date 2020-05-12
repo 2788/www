@@ -6,10 +6,16 @@
   line-height: 1.5715;
   box-sizing: border-box;
 }
+.mobile({
+  html, body {
+    height: 100%;
+  }
 
-html, body {
-  height: 100%;
-}
+  html {
+    // 移动端防止 overlay/mask 弹出后背景滑动
+    overflow: hidden;
+  }
+});
 
 body {
   color: @grey-7;
@@ -53,7 +59,8 @@ li {
   list-style: none;
 }
 
-input, button {
+input,
+button {
   border: none;
   background: none;
   &:focus {

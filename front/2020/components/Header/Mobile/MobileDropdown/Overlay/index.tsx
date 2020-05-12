@@ -12,12 +12,14 @@ type Props = {
 
 export default function Overlay({ children, onClose }: Props) {
   return (
-    <div className={style.overlay}>
-      <div className={style.header}>
-        <Link href="/"><a className={style.logo}><Logo /></a></Link>
-        <Close onClick={onClose} />
+    <div className={style.mask} onClick={onClose}>
+      <div className={style.overlay} onClick={e => e.stopPropagation()}>
+        <div className={style.header}>
+          <Link href="/"><a className={style.logo}><Logo /></a></Link>
+          <Close onClick={onClose} />
+        </div>
+        {children}
       </div>
-      {children}
     </div>
   )
 }

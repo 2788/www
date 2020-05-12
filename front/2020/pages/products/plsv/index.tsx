@@ -18,6 +18,8 @@ import PageNotice, {
 import Navigator, { Button as NavButton } from 'components/Product/Navigator'
 
 import Feature from 'components/pages/plsv/Feature'
+import PriceList from 'components/pages/plsv/PriceList'
+import Demo from 'components/pages/plsv/Demo'
 
 import BannerIcon from './images/banner.svg'
 
@@ -34,10 +36,8 @@ export default function Page() {
   return (
     <Layout>
       <PageBanner
-        title="对象存储 Kodo"
-        desc="七牛云海量存储系统（KODO）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
-        平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
-        bgColor="#34A1EC"
+        title="短视频 SDK"
+        desc="短视频SDK，由七牛音视频团队潜心研发。100+功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
         btns={bannerBtns}
         icon={<BannerIcon />} />
 
@@ -55,6 +55,8 @@ export default function Page() {
       </Navigator>
 
       <Feature />
+      <PriceList />
+      <Demo />
     </Layout>
   )
 }

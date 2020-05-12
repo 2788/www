@@ -1,0 +1,15 @@
+@import '~utils/less/index.less';
+
+.figure {
+  display: inline-block;
+}
+
+.figure + .figure {
+  margin-left: 368px;
+
+  .mobile({
+    // TODO 移动端适配
+    margin-left: 0;
+    margin-top: 24px;
+  });
+}
