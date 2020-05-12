@@ -7,7 +7,7 @@
 import React, { ReactNode, HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
-import Section from '../Section'
+import Section, { SectionProps } from '../Section'
 
 import { PcFeatureItem, PcFeatureLink } from './Pc'
 import { MobileFeatureItem, MobileFeatureLink } from './Mobile'
@@ -26,12 +26,7 @@ export type AlignType = 'center' | 'left' | undefined
 // 推荐在上下布局 && 文案左对齐的情况下使用
 export type PreIconType = 'check' | 'dot' | undefined
 
-export interface IFeatureProps extends HTMLAttributes<HTMLElement> {
-  name: string
-  title: string
-  children: ReactNode
-  grey?: boolean
-}
+export type IFeatureProps = HTMLAttributes<HTMLElement> & Partial<SectionProps>
 
 export interface IFeatureGroupProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
@@ -55,8 +50,13 @@ export interface IFeatureLinkProps extends HTMLAttributes<HTMLElement> {
   href: string
 }
 
-export default function Feature(props: IFeatureProps) {
-  const { children, grey, ...otherProps } = props
+export default function Feature({
+  name = 'feature',
+  title = '功能与优势',
+  children,
+  grey,
+  ...otherProps
+}: IFeatureProps) {
   const isMobile = useMobile()
 
   if (!children) {
@@ -80,7 +80,7 @@ export default function Feature(props: IFeatureProps) {
   }
 
   return (
-    <Section {...otherProps} grey={grey && !isMobile}>
+    <Section {...otherProps} grey={grey && !isMobile} name={name} title={title}>
       {renderMain()}
     </Section>
   )

@@ -14,7 +14,8 @@
       box-shadow: none;
     }
     .extra {
-      transition: .5s;
+      visibility: visible;
+      transform: translateY(0);
       opacity: 1;
     }
   }
@@ -42,7 +43,11 @@
 .extra {
   flex: 0 0 auto;
   margin: 0 12px;
-  opacity: 0;
+
+  transition: transform 1s, opacity 1.5s;
+  visibility: hidden;
+  transform: translateY(20%);
+  opacity: 0.2;
 }
 
 .button:not(:first-child) {

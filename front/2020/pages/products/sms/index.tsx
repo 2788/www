@@ -67,7 +67,7 @@ function PageContent() {
 
       <Feature name="usage" title="应用场景">TODO</Feature>
 
-      <CustomerCaseGroup>
+      <CustomerCaseGroup header="他们都在用七牛">
         <CustomerCase pic={LogoTODO} />
         <CustomerCase pic={LogoTODO} />
         <CustomerCase pic={LogoTODO} />

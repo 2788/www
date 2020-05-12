@@ -4,11 +4,9 @@
  */
 
 import React, { ReactNode, useContext, useRef, useEffect } from 'react'
-import { context } from './utils'
+import { context, BlockInfo } from './utils'
 
-export type Props = {
-  name: string
-  title: string
+export type Props = Pick<BlockInfo, 'name' | 'title'> & {
   children: ReactNode
   className?: string
 }

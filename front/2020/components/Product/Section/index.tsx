@@ -9,24 +9,24 @@
 
 import React, { ReactNode } from 'react'
 import classnames from 'classnames'
-import { Block } from 'components/Product/Navigator'
+import { Block, BlockProps } from 'components/Product/Navigator'
 
 import style from './index.less'
 
-export type SectionProps = {
-  name: string
-  title: string
+export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
+  /** 区块的头部内容，默认使用 `title` 的值 */
+  header?: ReactNode
   children: ReactNode
   grey?: boolean
 }
 
 export default function Section(props: SectionProps) {
-  const { name, title, children, grey = false } = props
+  const { name, title, header, children, grey = false } = props
 
   return (
     <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>
       <div className={style.wrapper}>
-        <div className={style.title}>{title}</div>
+        <div className={style.title}>{header != null ? header : title}</div>
         {children}
       </div>
     </Block>
