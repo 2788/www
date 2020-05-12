@@ -54,8 +54,8 @@ export default function PageNotice(props: IPageNoticeProps) {
 export function Group(props: INoticeGroupProps) {
   const { title, type, children } = props
 
-  function renderTitleIconByType(type: GroupType) {
-    switch (type) {
+  function renderTitleIconByType(groupTitle: GroupType) {
+    switch (groupTitle) {
       case 'news':
         return <NewsIcon className={styles.titleIcon} />
       case 'welfares':
@@ -89,12 +89,15 @@ export function Item(props: INoticeItemProps) {
     styles.noticeItem
   ].filter(Boolean).join(' ')
 
+  const anchorTitle = title == null && typeof children === 'string' ? children : title
+
   return (
     <p className={className}>
       <a
         className={styles.notice}
-        {...title && { title }}
-        href={href}>
+        {...anchorTitle && { title: anchorTitle }}
+        href={href}
+      >
         {children}
       </a>
     </p>

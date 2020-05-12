@@ -63,7 +63,7 @@ export default function PageBanner(props: IPageBannerProps) {
       <div className={styles.contentWrapper}>
         <div className={styles.content}>
           <h1 className={styles.title}>{title}</h1>
-          <p className={styles.desc}>{desc}</p>
+          <div className={styles.desc}>{desc}</div>
           {renderBtnWrapper()}
         </div>
         {renderIconWrapper()}

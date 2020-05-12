@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="17px" viewBox="0 0 16 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>machine-learning</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="基础服务-云主机✅" transform="translate(-397.000000, -1075.000000)" stroke="#999999">
+            <g id="产品规格" transform="translate(0.000000, 642.000000)">
+                <g id="编组-19" transform="translate(372.000000, 256.000000)">
+                    <g id="01">
+                        <g id="编组-18" transform="translate(25.000000, 175.000000)">
+                            <g id="编组-15">
+                                <g id="machine-learning" transform="translate(0.000000, 3.000000)">
+                                    <circle id="椭圆形" cx="8" cy="8" r="1.5"></circle>
+                                    <line x1="9.06" y1="3.056" x2="12.94" y2="6.939" id="路径"></line>
+                                    <line x1="3.06" y1="6.939" x2="6.94" y2="3.056" id="路径"></line>
+                                    <line x1="6.94" y1="12.94" x2="3.06" y2="9.06" id="路径"></line>
+                                    <line x1="12.94" y1="9.06" x2="9.06" y2="12.94" id="路径"></line>
+                                    <circle id="椭圆形" cx="8" cy="1.995" r="1.5"></circle>
+                                    <circle id="椭圆形" cx="2" cy="8" r="1.5"></circle>
+                                    <circle id="椭圆形" cx="8" cy="14" r="1.5"></circle>
+                                    <circle id="椭圆形" cx="14" cy="8" r="1.5"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

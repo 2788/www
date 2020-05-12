@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="11px" viewBox="0 0 16 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>cloud-25</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="基础服务-云主机✅" transform="translate(-397.000000, -1113.000000)" stroke="#999999">
+            <g id="产品规格" transform="translate(0.000000, 642.000000)">
+                <g id="编组-19" transform="translate(372.000000, 256.000000)">
+                    <g id="01">
+                        <g id="编组-18" transform="translate(25.000000, 175.000000)">
+                            <g id="编组-16" transform="translate(0.000000, 34.000000)">
+                                <g id="cloud-25" transform="translate(0.000000, 6.000000)">
+                                    <path d="M13,5.5 C12.827,5.5 12.658,5.518 12.495,5.551 C12.495,5.533 12.5,5.517 12.5,5.5 C12.5,2.739 10.261,0.5 7.5,0.5 C4.739,0.5 2.5,2.739 2.5,5.5 C2.5,5.517 2.505,5.533 2.505,5.55 C1.362,5.78 0.5,6.789 0.5,8 C0.5,9.381 1.619,10.5 3,10.5 L13,10.5 C14.381,10.5 15.5,9.381 15.5,8 C15.5,6.619 14.381,5.5 13,5.5 Z" id="路径"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

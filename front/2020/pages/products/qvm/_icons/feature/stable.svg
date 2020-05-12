@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="60px" viewBox="0 0 62 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>machine-learning</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="基础服务-云主机✅" transform="translate(-929.000000, -1585.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1407.000000)">
+                <g id="01" transform="translate(772.000000, 148.000000)">
+                    <g id="machine-learning" transform="translate(158.000000, 31.000000)">
+                        <line x1="30" y1="26" x2="30" y2="10" id="路径" stroke="#00AAE7"></line>
+                        <line x1="9.054" y1="20.081" x2="25.946" y2="7.919" id="路径" stroke="#00AAE7"></line>
+                        <line x1="12.563" y1="48.211" x2="6.437" y2="27.789" id="路径" stroke="#00AAE7"></line>
+                        <line x1="41" y1="53" x2="19" y2="53" id="路径" stroke="#00AAE7"></line>
+                        <line x1="34.054" y1="7.919" x2="51" y2="20.12" id="路径" stroke="#00AAE7"></line>
+                        <line x1="34.762" y1="29.476" x2="50.237" y2="24.524" id="路径" stroke="#00AAE7"></line>
+                        <line x1="9.763" y1="24.524" x2="25.238" y2="29.476" id="路径" stroke="#00AAE7"></line>
+                        <line x1="16.938" y1="48.96" x2="27.06" y2="35.042" id="路径" stroke="#00AAE7"></line>
+                        <line x1="43.061" y1="48.959" x2="32.94" y2="35.042" id="路径" stroke="#00AAE7"></line>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="30" cy="31" r="5"></circle>
+                        <line x1="53.563" y1="27.789" x2="47.437" y2="48.211" id="路径" stroke="#00AAE7"></line>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="30" cy="5" r="5"></circle>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="55" cy="23" r="5"></circle>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="46" cy="53" r="5"></circle>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="14" cy="53" r="5"></circle>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="5" cy="23" r="5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

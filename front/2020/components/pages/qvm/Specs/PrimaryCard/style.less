@@ -1,0 +1,74 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  border-top: 2px solid @blue-6;
+}
+
+.lineWithIcon() {
+  display: flex;
+  align-items: center;
+  line-height: 22px;
+  .icon {
+    margin-right: 8px;
+  }
+}
+
+
+.header {
+  padding: 24px;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid @grey-3;
+
+  .title {
+    line-height: 28px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .features {
+    margin-top: 24px;
+    
+    .feature {
+      .lineWithIcon();
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.body {
+  padding: 20px 24px 0;
+  height: 150px;
+
+  .params {
+    .param {
+      .lineWithIcon();
+      &:not(:first-child) {
+        margin-top: 12px;
+      }
+    }
+  }
+}
+
+.footer {
+  box-sizing: content-box;
+  padding: 12px 24px 32px;
+  text-align: center;
+
+  .price {
+    line-height: 33px;
+    font-size: 24px;
+    color: @orange-6;
+
+    .unit {
+      margin-left: 8px;
+      font-size: 14px;
+    }
+  }
+
+  .buyBtn {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
