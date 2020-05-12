@@ -1,0 +1,56 @@
+/**
+ * @file 产品页产品优惠 style.less
+ * @author zhuhao <zhuhao@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+@commodity-preferences-height: 144px;
+@commodity-preferences-padding: 40px 30px;
+@commodity-preferences-gap: 24px;
+ 
+.purchaseInfo {
+  .centered();
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+   
+  .itemContainer {
+    flex: none;
+    width: 50%;
+    padding: @commodity-preferences-gap/2 @commodity-preferences-gap/2;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      height: @commodity-preferences-height;
+      padding: @commodity-preferences-padding;
+      box-shadow:0px 4px 8px 0px rgba(51,51,51,0.08);
+      border:1px solid rgba(238,238,238,1);
+      .content {
+        flex: 1;
+        text-align: start;
+        margin-right: 10px;
+        .title {
+          font-size: 20px;
+          color: @grey-7;
+          max-width: 350px;
+          .ellipsis();
+        }
+        .desc {
+          font-size: 14px;
+          color: @grey-6;
+          max-width: 350px;
+          .ellipsis();
+        }
+      }
+      .action {
+        flex: none;
+        line-height: 64px;
+      }
+    }
+    
+  }
+ 
+}

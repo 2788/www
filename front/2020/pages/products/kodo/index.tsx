@@ -15,6 +15,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import UIButton from 'components/UI/Button'
 import StorageType from 'components/pages/kodo/StorageType'
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
+import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
 import Feature, {
   Group as FeatureGroup,
   Item as FeatureItem,
@@ -100,6 +101,21 @@ function PageContent() {
         <CustomerCase pic={PingAn} />
         <CustomerCase pic={YiDong} />
       </CustomerCaseGroup>
+
+      <PurchaseInfo>
+        <PurchaseInfoItem title="CDN 产品价格" desc="CDN 产品价格CDN 产品价格">
+          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
+        </PurchaseInfoItem>
+        <PurchaseInfoItem title="CDN 资源包" desc="CDN 资源包CDN 资源包CDN 资源包">
+          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
+        </PurchaseInfoItem>
+        <PurchaseInfoItem title="CDN 资源包1" desc="CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1">
+          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
+        </PurchaseInfoItem>
+        <PurchaseInfoItem title="CDN 资源包2" desc="CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1">
+          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
+        </PurchaseInfoItem>
+      </PurchaseInfo>
 
       <Feature name="advantage" title="产品优势" grey>
         <FeatureGroup>
