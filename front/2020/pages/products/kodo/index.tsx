@@ -3,6 +3,7 @@
  */
 
 import React, { ReactNode } from 'react'
+
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
@@ -23,7 +24,8 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc,
   Link as FeatureLink
-} from '../../../components/Product/Feature'
+} from 'components/Product/Feature'
+import KodoScene from 'components/pages/kodo/Scene'
 
 import ChangBa from './images/changba.png'
 import PingAn from './images/pingan.png'
@@ -259,6 +261,8 @@ function PageContent() {
           </FeatureItem>
         </FeatureGroup>
       </Feature>
+
+      <KodoScene />
 
       <UsageGuide
         title="开始试用七牛云 SMS"

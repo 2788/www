@@ -55,13 +55,6 @@
   text-overflow: ellipsis;
 }
 
-// 文本内容超出 container 时显示省略号
-.textEllipsis() {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 // support webkit only
 // http://caniuse.com/#search=line-clamp
 // 使用时注意第二个参数
@@ -80,4 +73,21 @@
   background-position: @position;
   background-origin: @origin;
   background-image: @image;
+}
+
+.fadeIn(@time: .2s, @ease: linear, @delay: 0s) {
+  animation-name: fadeIn;
+  animation-duration: @time;
+  animation-timing-function: @ease;
+  animation-delay: @delay
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

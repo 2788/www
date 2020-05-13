@@ -16,7 +16,7 @@ import styles from './style.less'
 
 export interface IPcFeatureItemProps extends IFeatureItemProps {}
 
-export interface IPcFeatureLinkProps extends IFeatureLinkProps{}
+export interface IPcFeatureLinkProps extends IFeatureLinkProps {}
 
 export function PcFeatureItem(props: IPcFeatureItemProps) {
   const { icon, title, children, pos, align } = props

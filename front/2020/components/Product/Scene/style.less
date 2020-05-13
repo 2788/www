@@ -1,0 +1,85 @@
+/**
+ * @file 使用场景组件 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.pc {
+  .tabs {
+    height: 72px;
+    justify-content: center;
+  }
+
+  .panel {
+    padding-top: 36px;
+    display: none;
+    justify-content: center;
+    transition: .2s;
+
+    &.verticalCenter {
+      align-items: center;
+    }
+
+    &.active {
+      display: flex;
+      .fadeIn()
+    }
+  }
+
+  .block {
+    text-align: left;
+
+    &.shadow {
+      background-color: @grey-1;
+      border: 1px solid @grey-3;
+      box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+    }
+
+    &.fixed {
+      flex: 0 0 0;
+    }
+
+    &.zoom {
+      flex: 1 1 0;
+    }
+
+    &:not(:first-child) {
+      margin-left: 60px;
+    }
+  }
+}
+
+.mobile {
+  .panel {
+    background-color: #FAFAFA;
+  }
+
+  .clientGroup {
+    justify-content: center;
+  }
+
+  :global {
+    .rc-menu-submenu {
+      &:first-child {
+        border: none;
+      }
+    }
+
+    .rc-menu-submenu-title {
+      padding-left: 16px !important;
+      text-align: left;
+    }
+  }
+}
+
+.clientGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.clientItem {
+  line-height: 1;
+  flex: 0 1;
+}
