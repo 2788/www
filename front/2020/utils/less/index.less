@@ -73,3 +73,11 @@
   -webkit-box-orient: vertical;
   max-height: @maxheight; // 非 webkit 浏览器
 }
+
+.background-image(@image, @position: center, @origin: border-box, @size: contain) {
+  background-size: @size;
+  background-repeat: no-repeat;
+  background-position: @position;
+  background-origin: @origin;
+  background-image: @image;
+}

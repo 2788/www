@@ -1,13 +1,17 @@
 @import '~utils/less/index.less';
 
+@group-space: 24px;
+@group-padding: 28px 32px;
+
 .linkGroups {
   display: flex;
   align-items: stretch;
+  margin: 0 -@group-space/2;
 
   .group {
     flex: 1;
-    margin: 10px 12px;
-    padding: 28px 32px;
+    margin: 10px @group-space/2;
+    padding: @group-padding;
     text-align: left;
     color: @grey-7;
     box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);

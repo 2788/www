@@ -5,27 +5,31 @@
 
 @import '~utils/less/index.less';
 
-@commodity-preferences-height: 144px;
-@commodity-preferences-padding: 40px 30px;
-@commodity-preferences-gap: 24px;
+@purchase-info-height: 144px;
+@purchase-info-padding: 40px 30px;
+@purchase-info-gap: 24px;
+
+@purchase-info-height-for-mobile: 74px;
+@purchase-info-padding-for-mobile: 15px;
+@purchase-info-gap-for-mobile: 16px;
  
 .purchaseInfo {
-  .centered();
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   flex-wrap: wrap;
+  margin: 0 -@purchase-info-gap/2;
    
   .itemContainer {
     flex: none;
     width: 50%;
-    padding: @commodity-preferences-gap/2 @commodity-preferences-gap/2;
+    padding: @purchase-info-gap/2;
     .item {
       display: flex;
       justify-content: space-between;
-      height: @commodity-preferences-height;
-      padding: @commodity-preferences-padding;
+      height: @purchase-info-height;
+      padding: @purchase-info-padding;
       box-shadow:0px 4px 8px 0px rgba(51,51,51,0.08);
       border:1px solid rgba(238,238,238,1);
       .content {
@@ -51,6 +55,37 @@
       }
     }
     
+  }
+
+  &.mobile {
+    margin: 0 -@purchase-info-gap-for-mobile/2;
+
+    .itemContainer {
+      width: 100%;
+      padding: @purchase-info-gap-for-mobile/2;
+      .item {
+        height: @purchase-info-height-for-mobile;
+        padding: @purchase-info-padding-for-mobile;
+        .content {
+          max-width: 65%;
+          .title {
+            font-size: 16px;
+          }
+          .desc {
+            font-size: 12px;
+          }
+        }
+        .action {
+          line-height: 44px;
+          .btn {
+            width: 70px;
+            font-size: 14px;
+            text-align: left;
+            .background-image(url(./images/next.svg), right, border-box, 16px 16px)
+          }
+        }
+      }
+    }
   }
  
 }

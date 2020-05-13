@@ -1,20 +1,18 @@
 import React, { PropsWithChildren } from 'react'
-import Link from 'next/link'
-import Section, { SectionProps } from '../Section'
 
-import styles from './style.less'
+import { useMobile } from 'hooks/ua'
+import Section, { SectionProps } from '../Section'
+import * as Pc from './Pc'
+import * as Mobile from './Mobile'
 
 export interface LinkItemProps {
   href: string
 }
 
-export function LinkItem({ href, children }: PropsWithChildren<LinkItemProps>) {
+export function LinkItem(props: PropsWithChildren<LinkItemProps>) {
+  const isMobile = useMobile()
   return (
-    <li className={styles.item}>
-      <Link href={href}>
-        <a target="_blank" rel="noopener">{children}</a>
-      </Link>
-    </li>
+    isMobile ? <Mobile.LinkItem {...props} /> : <Pc.LinkItem {...props} />
   )
 }
 
@@ -22,31 +20,31 @@ export interface LinkGroupProps {
   title: string
 }
 
-export function LinkGroup({ title, children }: PropsWithChildren<LinkGroupProps>) {
+export function LinkGroup(props: PropsWithChildren<LinkGroupProps>) {
+  const isMobile = useMobile()
   return (
-    <li className={styles.group}>
-      <h3 className={styles.title}>{title}</h3>
-      <ul className={styles.links}>{children}</ul>
-    </li>
+    isMobile ? <Mobile.LinkGroup {...props} /> : <Pc.LinkGroup {...props} />
   )
 }
 
-export type Props = Partial<SectionProps>
+LinkGroups.defaultProps = {
+  name: 'docs',
+  title: '使用文档'
+}
 
-export default function LinkGroups({
-  name = 'docs',
-  title = '使用文档',
-  children,
-  ...otherProps
-}: Props) {
+export default function LinkGroups({ children, ...sectionProps }: PropsWithChildren<SectionProps>) {
   if (React.Children.count(children) > 4) {
     throw new Error('Link Groups\'s children no more then 4')
   }
+  const isMobile = useMobile()
   return (
-    <Section name={name} title={title} {...otherProps}>
-      <ul className={styles.linkGroups}>
-        {children}
-      </ul>
+    <Section {...sectionProps}>
+      {
+        isMobile
+        ? <Mobile.LinkGroups>{children}</Mobile.LinkGroups>
+        : <Pc.LinkGroups>{children}</Pc.LinkGroups>
+      }
     </Section>
   )
 }
+

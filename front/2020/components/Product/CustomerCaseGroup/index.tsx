@@ -6,6 +6,8 @@
 import React, { PropsWithChildren, ReactNode } from 'react'
 
 import Section, { SectionProps } from 'components/Product/Section'
+import classNames from 'classnames'
+import { useMobile } from 'hooks/ua'
 
 import styles from './style.less'
 
@@ -27,17 +29,19 @@ export function CustomerCase({ pic }: PropsWithChildren<ICustomerCaseProps>) {
   )
 }
 
-export type Props = Partial<SectionProps>
+CustomerCaseGroup.defaultProps = {
+  name: 'customer-cases',
+  title: '客户案例'
+}
 
 export default function CustomerCaseGroup({
-  name = 'customer-cases',
-  title = '客户案例',
   children,
-  ...otherProps
-}: Props) {
+  ...sectionProps
+}: PropsWithChildren<SectionProps>) {
+  const isMobile = useMobile()
   return (
-    <Section title={title} name={name} {...otherProps}>
-      <ul className={styles.customerCaseGroup}>
+    <Section {...sectionProps}>
+      <ul className={classNames(styles.customerCaseGroup, { [styles.mobile]: isMobile })}>
         {children}
       </ul>
     </Section>

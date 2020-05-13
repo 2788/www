@@ -7,6 +7,8 @@ import React, { PropsWithChildren } from 'react'
 
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
+import classNames from 'classnames'
+import { useMobile } from 'hooks/ua'
 
 import styles from './style.less'
 
@@ -14,8 +16,16 @@ export interface IPurchaseInfoAction {
   url: string
 }
 
-export function PurchaseInfoAction({ children, url }: PropsWithChildren<IPurchaseInfoAction>) {
+export function PurchaseInfoActionForPc({ children, url }: PropsWithChildren<IPurchaseInfoAction>) {
   return <Button type="primary" href={url}>{children}</Button>
+}
+
+export function PurchaseInfoActionForMobile({ children, url }: PropsWithChildren<IPurchaseInfoAction>) {
+  return <Button className={styles.btn} href={url}>{children}</Button>
+}
+
+export function PurchaseInfoAction(props: PropsWithChildren<IPurchaseInfoAction>) {
+  return useMobile() ? <PurchaseInfoActionForMobile {...props} /> : <PurchaseInfoActionForPc {...props} />
 }
 
 export interface IPurchaseInfoItemProps {
@@ -48,9 +58,10 @@ PurchaseInfo.defaultProps = {
 }
 
 export default function PurchaseInfo({ children, name, title }: PropsWithChildren<IPurchaseInfoProps>) {
+  const isMobile = useMobile()
   return (
     <Section name={name} title={title}>
-      <ul className={styles.purchaseInfo}>
+      <ul className={classNames(styles.purchaseInfo, { [styles.mobile]: isMobile })}>
         {children}
       </ul>
     </Section>

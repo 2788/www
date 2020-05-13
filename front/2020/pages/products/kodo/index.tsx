@@ -14,6 +14,8 @@ import { useModal as useFeedbackModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import UIButton from 'components/UI/Button'
 import StorageType from 'components/pages/kodo/StorageType'
+import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
+// import AccessProcess, { Step } from 'components/Product/AccessProcess'
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
 import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
 import Feature, {
@@ -92,6 +94,44 @@ function PageContent() {
       </Navigator>
 
       <StorageType />
+
+      <LinkGroups>
+        <LinkGroup title="文档链接1">
+          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="文档链接2">
+          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="文档链接3">
+          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="文档链接4">
+          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
+        </LinkGroup>
+      </LinkGroups>
+
+      {/* <AccessProcess>
+        <Step icon={ChangBa}>第一步</Step>
+        <Step icon={PingAn}>第二步</Step>
+        <Step icon={YiDong}>第三步</Step>
+        <Step icon={ChangBa}>第四步</Step>
+      </AccessProcess> */}
 
       <CustomerCaseGroup>
         <CustomerCase pic={ChangBa} />
