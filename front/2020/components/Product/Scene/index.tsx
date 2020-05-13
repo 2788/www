@@ -6,7 +6,7 @@
 
 import React, { ReactNode, HTMLAttributes } from 'react'
 
-import Section from '../../../components/Product/Section'
+import Section, { SectionProps } from '../../../components/Product/Section'
 
 import PcScene, { PcPanel, PcBlock } from './Pc'
 import MobileScene, { MobilePanel, MobileBlock } from './Mobile'
@@ -21,12 +21,7 @@ import styles from './style.less'
 // 默认为 zoom
 export type BlockType = 'zoom' | 'fixed' | undefined
 
-export interface ISceneProps extends HTMLAttributes<HTMLElement> {
-  name: string
-  title: string
-  children: ReactNode
-  grey?: boolean
-}
+export type ISceneProps = HTMLAttributes<HTMLElement> & Partial<SectionProps>
 
 export interface IPanelProps extends HTMLAttributes<HTMLElement> {
   name: string
@@ -50,7 +45,10 @@ export interface IClientItemProps extends HTMLAttributes<HTMLElement> {
 }
 
 export default function Scene(props: ISceneProps) {
-  const { children, grey, ...otherProps } = props
+  const {
+    name = 'scene', title = '使用场景',
+    children, grey, ...otherProps
+  } = props
   const isMobile = useMobile()
 
   if (!children) {
@@ -75,8 +73,10 @@ export default function Scene(props: ISceneProps) {
 
   return (
     <Section
-      style={isMobile ? { padding: '16px 0' } : {}}
+      name={name}
+      title={title}
       grey={grey && !isMobile}
+      style={isMobile ? { padding: '16px 0' } : {}}
       {...otherProps}
     >
       {renderMain()}

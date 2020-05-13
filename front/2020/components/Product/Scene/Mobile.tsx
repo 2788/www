@@ -37,19 +37,19 @@ export default function MobileScene(props: IMobileSceneProps) {
   })), [])
 
   const panels = useMemo(() => Object.values(panelMap), [panelMap])
-  const [active, setActive] = useState()
+  const [active, setActive] = useState<string>('')
 
   useEffect(
     () => {
-      const defaultActive = panels.length > 0 ? panels[0].name : null
+      const defaultActive = panels.length > 0 ? panels[0].name : ''
       setActive(defaultActive)
     },
-    [setActive, panels]
+    [panels]
   )
 
   function handlePanelsChange(activeKey: string) {
     if (active === activeKey) {
-      setActive(null)
+      setActive('')
       return
     }
 
