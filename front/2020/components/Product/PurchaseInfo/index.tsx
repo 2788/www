@@ -25,7 +25,8 @@ export function PurchaseInfoActionForMobile({ children, url }: PropsWithChildren
 }
 
 export function PurchaseInfoAction(props: PropsWithChildren<IPurchaseInfoAction>) {
-  return useMobile() ? <PurchaseInfoActionForMobile {...props} /> : <PurchaseInfoActionForPc {...props} />
+  const isMobile = useMobile()
+  return isMobile ? <PurchaseInfoActionForMobile {...props} /> : <PurchaseInfoActionForPc {...props} />
 }
 
 export interface IPurchaseInfoItemProps {

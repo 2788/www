@@ -16,7 +16,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import UIButton from 'components/UI/Button'
 import StorageType from 'components/pages/kodo/StorageType'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
-// import AccessProcess, { Step } from 'components/Product/AccessProcess'
+import AccessProcess, { Step } from 'components/Product/AccessProcess'
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
 import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
 import Feature, {
@@ -128,12 +128,14 @@ function PageContent() {
         </LinkGroup>
       </LinkGroups>
 
-      {/* <AccessProcess>
-        <Step icon={ChangBa}>第一步</Step>
-        <Step icon={PingAn}>第二步</Step>
-        <Step icon={YiDong}>第三步</Step>
-        <Step icon={ChangBa}>第四步</Step>
-      </AccessProcess> */}
+      <AccessProcess
+        subHeader={<a>bbbbb</a>}
+      >
+        <Step icon={ChangBa} url="https://baidu.com">aa</Step>
+        <Step icon={ChangBa}>bb</Step>
+        <Step icon={ChangBa} url="https://baidu.com">ccccccfosdhfoadfhdsaohdishafkjdshfkjdsahfkjalsdhflssdhflsafdhl</Step>
+        <Step icon={ChangBa} url="https://baidu.com">dd</Step>
+      </AccessProcess>
 
       <CustomerCaseGroup>
         <CustomerCase pic={ChangBa} />

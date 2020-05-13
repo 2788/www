@@ -1,0 +1,68 @@
+@import '~utils/less/index.less';
+
+@step-icon-width: 120px;
+@step-icon-height: @step-icon-width;
+@step-name-width: 230px;
+@step-name-line-height: 28px;
+@space-bewteen-icon-name: 26px;
+
+.accessProcess {
+  margin-bottom: @space-bewteen-icon-name + @step-name-line-height * 2;
+
+  .subHeader {
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  .process {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    .step {
+      flex: none;
+      text-align: center;
+      display: inline-block;
+      width: @step-name-width;
+      position: relative;
+
+      .mask {
+        position: absolute;
+        z-index: 99;
+        left: 0;
+        top: 0;
+        width: @step-name-width;
+        height: @space-bewteen-icon-name + @step-name-line-height * 2 + @step-icon-height;
+      }
+      
+      .stepIcon {
+        height: @step-icon-height;
+        width: @step-icon-width;
+        border-radius: 50%;
+        box-shadow:0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+      }
+
+      .stepName {
+        margin-top: @space-bewteen-icon-name;
+        font-size: 20px;
+        line-height: @step-name-line-height;
+        position: absolute;
+        width: @step-name-width;
+        height: @step-name-line-height * 2;
+        bottom: -(@space-bewteen-icon-name + @step-name-line-height * 2);
+        left: 0;
+        .ellipsis-line-clamp(2, @step-name-line-height * 2)
+      }
+    }
+  }
+
+  .connect {
+    flex: none;
+    width: 34px;
+    height: 24px;
+    .background-image(url(./images/arrow.svg));
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}

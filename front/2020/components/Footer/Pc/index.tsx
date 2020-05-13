@@ -6,6 +6,8 @@
 import React, { PropsWithChildren } from 'react'
 import Link from 'next/link'
 
+import { getCurrentYear } from 'utils'
+
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
 import Wechat from './images/wechat.svg'
@@ -112,11 +114,11 @@ function Contact() {
   return (
     <section className={style.contact}>
       <div className={style.pic}>
-        © {new Date().getFullYear()} 七牛云
+        © {getCurrentYear()} 七牛云
       </div>
       <div className={style.contact}>
         <span className={style.title}>产品及服务咨询</span>
-        <span className={style.phone}>400 808 9176</span>
+        <span className={style.phone}>400-808-9176</span>
         <div className={style.icon}>
           <Wechat />
           <Tooltip>

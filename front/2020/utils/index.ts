@@ -22,3 +22,7 @@ export function urlFor(url: string, params: UrlParams = {}) {
 export function timeout(delay = 1000) {
   return new Promise(resolve => setTimeout(resolve, delay))
 }
+
+export function getCurrentYear() {
+  return new Date().getFullYear()
+}
