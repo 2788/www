@@ -89,7 +89,7 @@ export type HotKeywordsResult = string[]
 export async function getHotKeywords(): Promise<HotKeywordsResult> {
   if (typeof window !== 'undefined') {
     await timeout(300)
-    return ['对象存储', '直播', '音视频', '播放器 SDK']
+    return ['对象存储', '直播', '音视频']
   }
   const result: HotResult = await get(`${apiHost}/hot`, { site })
   return result.items

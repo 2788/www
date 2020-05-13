@@ -22,7 +22,8 @@ export default function Overlay() {
           <MenuItem><Link href="/products/censor"><a>内容安全</a></Link></MenuItem>
           <MenuItem><Link href="/products/rtn"><a>实时音视频</a></Link></MenuItem>
           <MenuItem><Link href="/products/svesdk"><a>短视频SDK</a></Link></MenuItem>
-          <MenuItem><Link href="/products/plesdk"><a>推流SDK</a></Link></MenuItem>
+          {/* TODO 更换地址 */}
+          <MenuItem><Link href="/products/tlsdk"><a>推流SDK</a></Link></MenuItem>
           <MenuItem><Link href="TODO"><a>人脸核验</a></Link></MenuItem>
         </SubMenu>
         <SubMenu title="机器数据智能">

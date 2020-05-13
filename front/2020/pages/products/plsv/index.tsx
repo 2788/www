@@ -15,7 +15,7 @@ import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
-import Navigator, { Button as NavButton } from 'components/Product/Navigator'
+import Navigator from 'components/Product/Navigator'
 
 import Feature from 'components/pages/plsv/Feature'
 import PriceList from 'components/pages/plsv/PriceList'
@@ -28,7 +28,7 @@ const bannerBtns: ReactNode[] = [
     免费体验
   </UIButton>,
   <UIButton key="guide" href="/TODO" type="hollow">
-    售前咨询
+    接入指南
   </UIButton>
 ]
 
@@ -43,20 +43,19 @@ export default function Page() {
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem title="域名型 DV SSL 证书免费申请" href="/products/ssl">
-            新用户可享 24 万次免费额度，更有超值套餐包可供选择
+          <PageNoticeItem href="/products/plesdk">
+            短视频特效SDK
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator>
-        <NavButton type="primary" href="/products/kodo">免费试用</NavButton>
-        <NavButton withBorder>售前咨询</NavButton>
-      </Navigator>
+      <Navigator priceLink="TODO" />
 
       <Feature />
+      {/* 应用场景 */}
       <PriceList />
       <Demo />
+      {/* 相关文档 */}
     </Layout>
   )
 }

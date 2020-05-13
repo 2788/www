@@ -2,7 +2,7 @@
 
 .row {
   display: flex;
-  margin: 0 -12px;
+  margin: -12px;
 
   .mobile({
     margin: -6px 0;
@@ -10,9 +10,13 @@
   });
 }
 
+.row + .row {
+  margin-top: 12px;
+}
+
 .card {
   flex: 1 1 0px;
-  margin: 0 12px;
+  margin: 12px;
 
   text-align: left;
   border:1px solid rgba(238,238,238,1);
