@@ -40,11 +40,11 @@ export default function PcScene(props: IPcSceneProps) {
   })), [])
 
   const panels = useMemo(() => Object.values(panelMap), [panelMap])
-  const [active, setActive] = useState<string>('')
+  const [active, setActive] = useState<string | null>(null)
 
   useEffect(
     () => {
-      const defaultActive = panels.length > 0 ? panels[0].name : ''
+      const defaultActive = panels.length > 0 ? panels[0].name : null
       setActive(defaultActive)
     },
     [panels]

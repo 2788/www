@@ -37,11 +37,11 @@ export default function MobileScene(props: IMobileSceneProps) {
   })), [])
 
   const panels = useMemo(() => Object.values(panelMap), [panelMap])
-  const [active, setActive] = useState<string>('')
+  const [active, setActive] = useState<string | null>(null)
 
   useEffect(
     () => {
-      const defaultActive = panels.length > 0 ? panels[0].name : ''
+      const defaultActive = panels.length > 0 ? panels[0].name : null
       setActive(defaultActive)
     },
     [panels]
@@ -49,7 +49,7 @@ export default function MobileScene(props: IMobileSceneProps) {
 
   function handlePanelsChange(activeKey: string) {
     if (active === activeKey) {
-      setActive('')
+      setActive(null)
       return
     }
 
@@ -70,7 +70,7 @@ export default function MobileScene(props: IMobileSceneProps) {
   return (
     <context.Provider value={{ panels, active, setActive, register }}>
       <div className={className}>
-        <Menu className={className} mode="inline" level={-1} openKeys={[active]}>
+        <Menu className={className} mode="inline" level={-1} openKeys={active ? [active] : []}>
           {scenePanelsView}
         </Menu>
         {children}

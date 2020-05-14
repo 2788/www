@@ -20,8 +20,8 @@ export type PanelRegisterFn = (info: PanelInfo) => void
 
 export type ContextValue = {
   panels: PanelInfo[]
-  active: string
-  setActive: (panelName: string) => void
+  active: string | null
+  setActive: (panelKey: string) => void
   register: PanelRegisterFn
 }
 
