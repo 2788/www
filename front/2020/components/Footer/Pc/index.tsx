@@ -20,11 +20,13 @@ interface ILinkItemProps {
 }
 
 function LinkItem({ url, children }: PropsWithChildren<ILinkItemProps>) {
+  const isOuterLink = url && url.indexOf('http') >= 0
+  const content = isOuterLink
+    ? <a href={url} target="_blank" rel="noopener">{children}</a>
+    : <Link href={url}><a>{children}</a></Link>
   return (
     <li className={style.link}>
-      <Link href={url}>
-        <a>{children}</a>
-      </Link>
+      {content}
     </li>
   )
 }
@@ -125,18 +127,12 @@ function Contact() {
             <img className={style.qrcode} src={Qrcode} />
           </Tooltip>
         </div>
-        <div className={style.icon}>
+        <a className={style.icon} href="https://github.com/qiniu" target="_blank" rel="noopener">
           <Github />
-          <Tooltip>
-            <img className={style.qrcode} src={Qrcode} />
-          </Tooltip>
-        </div>
-        <div className={style.icon}>
+        </a>
+        <a className={style.icon} href="http://weibo.com/qiniutek" target="_blank" rel="noopener">
           <Weibo />
-          <Tooltip>
-            <img className={style.qrcode} src={Qrcode} />
-          </Tooltip>
-        </div>
+        </a>
       </div>
     </section>
   )
@@ -146,7 +142,7 @@ function Icp() {
   return (
     <section className={style.icp}>
       <div className={style.info}>
-        <i className={style.report} />违法和不良信息举报中心 &gt;&gt; <br />
+        <a href="https://www.12377.cn/" target="_blank" rel="noopener"><i className={style.report} />违法和不良信息举报中心 &gt;&gt;</a> <br />
         24小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com <br />
         沪公网安备 31011502000961 号 沪ICP备 11037377 号-5
       </div>

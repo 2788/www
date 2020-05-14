@@ -78,8 +78,8 @@ export default function FooterForMobile() {
         </Menu>
       </div>
       <div className={style.icons}>
-        <Github className={style.icon} />
-        <Weibo className={style.icon} />
+        <a href="https://github.com/qiniu" target="_blank" rel="noopener"><Github className={style.icon} /></a>
+        <a href="http://weibo.com/qiniutek" target="_blank" rel="noopener"><Weibo className={style.icon} /></a>
       </div>
       <div className={style.qrCode}>
         <img className={style.image} src={Qrcode} />

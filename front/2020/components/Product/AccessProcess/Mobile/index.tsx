@@ -1,5 +1,5 @@
 /**
- * @file 产品页面的“接入流程”组件 PC 端
+ * @file 产品页面的“接入流程”组件 Mobile 端
  * @description 接入流程用本组件
  */
 
@@ -22,7 +22,7 @@ export function Step({ icon, url, tag, children }: PropsWithChildren<StepProps &
       {
         typeof icon === 'string'
           ? <img className={styles.stepIcon} src={icon} />
-          : icon
+          : <div className={styles.stepIconContainer}>{React.cloneElement(icon as any, { width: '60px', height: '60px' })}</div>
       }
       {
         url && <a href={url} target="_blank" rel="noopener" className={styles.mask} />

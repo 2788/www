@@ -1,3 +1,8 @@
+/**
+ * @file 产品页文档链接 Component
+ * @author zhuhao <zhuhao@qiniu.com>
+ */
+
 import React, { PropsWithChildren } from 'react'
 
 import { useMobile } from 'hooks/ua'
