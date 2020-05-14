@@ -2,7 +2,7 @@
  * @file 产品“云主机”
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
@@ -12,9 +12,13 @@ import PageNotice, {
 import Navigator, { Button as NavButton } from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import Section from 'components/Product/Section'
+import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UIButton from 'components/UI/Button'
 import Specs from 'components/pages/qvm/Specs'
 import MoreProducts from 'components/pages/qvm/MoreProducts'
+import Scenes from 'components/pages/qvm/Scenes'
+import Cases from 'components/pages/qvm/Cases'
+import { useMobile } from 'hooks/ua'
 import IconBanner from './banner.svg'
 import IconFeatureEasy from './_icons/feature/easy.svg'
 import IconFeatureFlexibility from './_icons/feature/flexibility.svg'
@@ -27,6 +31,8 @@ import style from './style.less'
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
+
+  const isMobile = useMobile()
 
   const descView = (
     <>
@@ -41,11 +47,10 @@ function PageContent() {
     </>
   )
 
-  const bannerBtns: ReactNode[] = [(
-    <UIButton key="use" href="https://portal.qiniu.com/qvm/vm/instance/create">立即购买</UIButton>
-  ), (
+  const bannerBtns = [
+    <UIButton key="use" href="https://portal.qiniu.com/qvm/vm/instance/create">立即购买</UIButton>,
     <UIButton key="demo" type="hollow" href="https://portal.qiniu.com/qvm">控制台</UIButton>
-  )]
+  ]
 
   return (
     <>
@@ -53,7 +58,7 @@ function PageContent() {
         title="云主机服务 QVM"
         desc={descView}
         bgColor="#34A1EC"
-        btns={bannerBtns}
+        btns={!isMobile ? bannerBtns : undefined}
         icon={<IconBanner />}
       />
 
@@ -77,13 +82,15 @@ function PageContent() {
       </PageNotice>
 
       <Navigator priceLink="/TODO">
-        <NavButton type="primary" href="https://portal.qiniu.com/express">立即使用</NavButton>
-        <NavButton withBorder href="/TODO">查看 Demo</NavButton>
+        <NavButton type="primary" href="https://portal.qiniu.com/qvm/vm/instance/create">立即购买</NavButton>
+        <NavButton withBorder href="https://portal.qiniu.com/qvm">控制台</NavButton>
       </Navigator>
 
-      <Section name="specs" title="产品规格" header="热销产品规格">
-        <Specs />
-      </Section>
+      {!isMobile && ( // 移动端无需展示，因为移动端无法购买（Portal 未适配移动端）
+        <Section name="specs" title="产品规格" header="热销产品规格">
+          <Specs />
+        </Section>
+      )}
 
       <Feature>
         <feature.Group>
@@ -123,9 +130,29 @@ function PageContent() {
         <MoreProducts />
       </Section>
 
-      <Feature name="usage" title="使用场景">TODO</Feature>
-      <Feature name="cases" title="客户案例">TODO</Feature>
-      <Feature name="docs" title="相关文档">TODO</Feature>
+      <Scenes />
+      <Cases />
+
+      <LinkGroups name="docs" title="产品文档">
+        <LinkGroup title="产品文档">
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4289/qvm-overview">产品简介</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4238/qvm-billing-contrast">计费说明</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4294/record-introduction">备案相关</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4305/qvm-netsec-overview">网络与安全性概述</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4208/qvm-instance-family">实例规格族</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4233/qvm-disk">磁盘管理</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="常见问题">
+          <LinkItem href="https://developer.qiniu.com/qvm/kb/5099/connection-on-redis">为什么云主机连不上 Redis?</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/kb/5146/how-to-install-grub-for-linux-server">如何为 Linux 服务器安装 GRUB?</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/kb/5144/the-common-problems-in-load-balancing">负载均衡常见问题</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/kb/5147/the-backend-server-common-problems">后端服务器常见问题</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="上云实践">
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4288/server-migration-qiniu">使用迁移工具迁移服务器至 QVM</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvm/manual/4269/qvm-kodo">云主机与对象存储内网相互连接使用</LinkItem>
+        </LinkGroup>
+      </LinkGroups>
     </>
   )
 }

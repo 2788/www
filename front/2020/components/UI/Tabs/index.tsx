@@ -14,6 +14,8 @@ type ContextValue = {
 
 const tabContext = createContext<ContextValue | null>(null)
 
+type Size = 'default' | 'small'
+
 export type Props = {
   /** Tabs 的内容，一般是多个 `<Tab>` */
   children: ReactNode
@@ -25,9 +27,11 @@ export type Props = {
   onChange?: (value: string) => void
   /** class 名 */
   className?: string
+  /** 尺寸 */
+  size?: Size
 }
 
-export default function Tabs({ children, className, defaultValue, value = null, onChange }: Props) {
+export default function Tabs({ children, className, defaultValue, value = null, onChange, size = 'default' }: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
   const tabList: ReactElement[] = []
   const tabPanes: ReactElement[] = []
@@ -61,9 +65,15 @@ export default function Tabs({ children, className, defaultValue, value = null, 
     setActive(_value)
   }, [onChange])
 
+  const wrapperClass = classnames(
+    style.wrapper,
+    className,
+    size === 'small' && style.small
+  )
+
   return (
     <tabContext.Provider value={{ onChange: handleChange, value: active }}>
-      <div className={className}>
+      <div className={wrapperClass}>
         <ul className={style.header}>
           {tabList}
         </ul>

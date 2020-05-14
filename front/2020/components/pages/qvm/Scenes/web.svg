@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="686px" height="282px" viewBox="0 0 686 282" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>编组 2</title>
-    <desc>Created with Sketch.</desc>
     <defs>
         <path d="M305,0 L452,0 C453.104569,-2.02906125e-16 454,0.8954305 454,2 L454,280 C454,281.104569 453.104569,282 452,282 L305,282 C303.895431,282 303,281.104569 303,280 L303,2 C303,0.8954305 303.895431,2.02906125e-16 305,0 Z" id="path-1"></path>
         <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="151" height="282" fill="white">

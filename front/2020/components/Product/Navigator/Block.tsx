@@ -27,8 +27,7 @@ export default function Block({ name, title, children, className = '' }: Props) 
     register({
       name,
       title,
-      offsetTop: wrapper.offsetTop,
-      offsetHeight: wrapper.offsetHeight
+      wrapper
     })
   }, [register, name, title])
 

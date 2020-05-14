@@ -1,0 +1,126 @@
+@import '~utils/less/index.less';
+
+.imgBlock {
+  display: flex;
+  align-items: center;
+
+  .mobile({
+    padding: 16px;
+  });
+
+  svg {
+    max-width: 100%;
+    max-height: 100%;
+
+    .mobile({
+      height: auto;
+    });
+  }
+}
+
+.detailBlock {
+  flex-basis: 376px !important;
+  padding: 20px;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.list {
+  margin-top: 8px;
+  .item {
+    position: relative;
+    padding-left: 1em;
+    font-size: 14px;
+    line-height: 22px;
+    color: @grey-6;
+
+    &:not(:first-child) {
+      margin-top: 4px;
+    }
+
+    &::before {
+      content: "\2022"; // dot
+      position: absolute;
+      left: 0;
+      display: block;
+      color: @blue-6;
+      opacity: .4;
+
+      .mobile({
+        content: "";
+      });
+    }
+  }
+}
+
+.list + .title {
+  margin-top: 20px;
+}
+
+.instanceCard {
+  width: 100%;
+  border: 1px solid @grey-3;
+  background-color: #FAFAFA;
+
+  .body {
+    padding: 16px;
+  }
+
+  .instanceName {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .instanceDesc {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 17px;
+    color: @grey-5;
+  }
+
+  .instanceTable {
+    margin: 10px 0 0;
+
+    th, td {
+      text-align: left;
+    }
+
+    th {
+      font-size: 12px;
+      font-weight: 400;
+      color: @grey-6;
+      height: 24px;
+    }
+
+    td {
+      height: 30px;
+    }
+
+    .colBandwidth {
+      width: 4em;
+    }
+    .colIp {
+      width: 3em;
+    }
+  }
+
+  .footer {
+    padding: 12px 20px;
+    text-align: right;
+    border-top: 1px solid @grey-3;
+  }
+}
+
+.subList {
+  margin-top: 4px;
+  .subItem {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}

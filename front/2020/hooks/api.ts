@@ -61,7 +61,8 @@ export function useApi<F extends ApiMethod>(
 }
 
 export type UseApiWithParamsOptions<F extends ApiMethod> = UseApiOptions & {
-  params: Parameters<F>
+  /** 请求参数，为 null / undefined 则不请求 */
+  params?: Parameters<F> | null
 }
 
 /**
@@ -76,8 +77,8 @@ export function useApiWithParams<F extends ApiMethod>(
   const { call: callWithParams, ...others } = useApi(apiMethod, options)
 
   const call = useCallback(
-    () => callWithParams(...params),
-    [callWithParams].concat(params) // eslint-disable-line react-hooks/exhaustive-deps
+    () => { if (params) callWithParams(...params) },
+    [callWithParams].concat(params || []) // eslint-disable-line react-hooks/exhaustive-deps
   )
 
   // 参数变更 -> call 变更 -> 重新执行 call

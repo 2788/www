@@ -3,11 +3,12 @@
  * @description 接口文档 https://cf.qiniu.io/pages/viewpage.action?pageId=43394609
  */
 
+import { apiHost } from 'constants/api'
 import { timeout } from 'utils'
 import { get } from 'utils/fetch'
 
-const apiHost = 'https://web-api.qiniu.com' // TODO: 添加到配置
 const site = 'www.qiniu.com' // TODO: 添加到配置
+const apiPrefix = `${apiHost}/search`
 
 export enum Tag {
   Product = 'product',
@@ -64,7 +65,7 @@ export async function search({ keyword, tag, from, limit }: SearchParams): Promi
       }))
     }
   }
-  return get(`${apiHost}/search`, { site, term: keyword, tag, from, limit })
+  return get(`${apiPrefix}/search`, { site, term: keyword, tag, from, limit })
 }
 
 export type CountByTagsParams = {
@@ -91,7 +92,7 @@ export async function getHotKeywords(): Promise<HotKeywordsResult> {
     await timeout(300)
     return ['对象存储', '直播', '音视频']
   }
-  const result: HotResult = await get(`${apiHost}/hot`, { site })
+  const result: HotResult = await get(`${apiPrefix}/hot`, { site })
   return result.items
 }
 

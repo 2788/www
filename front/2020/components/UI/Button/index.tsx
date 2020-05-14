@@ -18,6 +18,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
   withBorder?: boolean
   /** 链接地址，如传该字段，按钮会被渲染为 <a> 标签 */
   href?: string
+  target?: string
   htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type']
 }
 

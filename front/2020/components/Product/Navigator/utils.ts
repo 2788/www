@@ -11,10 +11,8 @@ export type BlockInfo = {
   name: string
   /** 内容标题，即对应 tab 项中的文本内容 */
   title: string
-  /** 垂直方向上顶部距离容器顶部的距离（px） */
-  offsetTop: number
-  /** 垂直方向上高度（px） */
-  offsetHeight: number
+  /** 区块容器对应的 HTML 节点 */
+  wrapper: HTMLElement
 }
 
 /** 注册可导航区块的函数 */
@@ -33,7 +31,7 @@ export const context = createContext<ContextValue | null>(null)
 export const navigatorHeight = 72 // px
 
 /** 判断 block 是否可见 */
-export function isBlockInView({ offsetTop, offsetHeight }: BlockInfo, scrollTop: number) {
+export function isBlockInView({ wrapper: { offsetTop, offsetHeight } }: BlockInfo, scrollTop: number) {
   const viewStart = scrollTop + navigatorHeight
   return viewStart >= offsetTop && viewStart < offsetTop + offsetHeight
 }

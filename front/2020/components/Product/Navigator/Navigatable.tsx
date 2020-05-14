@@ -29,7 +29,7 @@ export default function Navigatable({ children }: Props) {
 
   const blocks = useMemo(() => Object.values(blockMap).sort(
     // 依据 block 在界面上垂直方向的位置排序
-    (blockA, blockB) => blockA.offsetTop - blockB.offsetTop
+    (blockA, blockB) => blockA.wrapper.offsetTop - blockB.wrapper.offsetTop
   ), [blockMap])
 
   const [active, setActive] = useHash()
@@ -53,7 +53,7 @@ export default function Navigatable({ children }: Props) {
   useEffect(() => {
     // TODO: 初次控制滚动的事情会不会挪到页面 onload 之后做更好？可能可以有更好的首屏表现
     if (activeBlock && !isBlockInView(activeBlock, scrollTop)) {
-      scrollTo(activeBlock.offsetTop - navigatorHeight)
+      scrollTo(activeBlock.wrapper.offsetTop - navigatorHeight)
     }
   }, [activeBlock]) // eslint-disable-line react-hooks/exhaustive-deps
 

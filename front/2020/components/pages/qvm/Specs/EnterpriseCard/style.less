@@ -1,0 +1,135 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  margin: 36px 0;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 4px 8px 0px rgba(51,51,51,0.08);
+  border: 1px solid @grey-3;
+}
+
+.body {
+  flex: 1 1 100px;
+  padding: 28px 32px;
+
+  .name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+
+  .desc {
+    display: inline-block;
+    margin-left: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    color: @grey-5;
+  }
+
+  .sceneBlock {
+    margin-top: 16px;
+  }
+}
+
+.scenes {
+  margin-top: 11px;
+  .scene {
+    margin: 8px 0;
+    padding-left: 24px;
+    font-size: 12px;
+    line-height: 17px;
+    color: @grey-6;
+    background-image: url(../hook.svg);
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: 16px 16px;
+  }
+}
+
+.details {
+  margin-top: 24px;
+  display: flex;
+
+  .detail {
+    margin-right: 50px;
+    flex: 1 1 5em;
+  }
+
+  .detailName {
+    line-height: 20px;
+    color: @grey-5;
+  }
+
+  .detailValue {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 17px;
+    color: @grey-6;
+  }
+}
+
+.priceBlock {
+  flex: 0 0 376px;
+  padding: 28px 32px;
+  background-color: #FAFAFA;
+  border-left: 1px solid @grey-3;
+
+  .priceInfo {
+    margin-top: 28px;
+    height: 28px;
+    line-height: 28px;
+
+    .price {
+      font-size: 20px;
+      color: @orange-6;
+    }
+
+    .discount {
+      margin-left: 20px;
+      color: @green-6;
+    }
+
+    &.loading {
+      color: @grey-5;
+      font-size: 12px;
+    }
+  }
+
+  .buyBtn {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .moreOptions {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 17px;
+    color: @blue-6;
+  }
+}
+
+.formItem {
+  display: flex;
+  align-items: center;
+
+  & + .formItem {
+    margin-top: 20px;
+  }
+
+  .text {
+    margin-right: 6px;
+    flex: 0 0 5em;
+  }
+  .ctrl {
+    flex: 1 1 240px;
+  }
+}
+
+select.ctrl {
+  height: 32px;
+  line-height: 32px;
+  border: 1px solid @grey-3;
+  background-color: @grey-1;
+}

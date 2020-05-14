@@ -17,7 +17,7 @@ export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
   return fetched.json()
 }
 
-export function get(url: string, params: UrlParams) {
+export function get(url: string, params?: UrlParams) {
   return fetchJSON(urlFor(url, params))
 }
 

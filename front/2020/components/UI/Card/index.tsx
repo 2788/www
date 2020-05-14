@@ -18,6 +18,12 @@ export function Card({ className, ...others }: HTMLAttributes<HTMLElement>) {
   return <li className={wrapperClassName} {...others} />
 }
 
+// 隐形卡片，占位用
+export function InvisibleCard({ className, ...others }: HTMLAttributes<HTMLElement>) {
+  const wrapperClassName = [style.card, style.invisible, className].filter(Boolean).join(' ')
+  return <li className={wrapperClassName} {...others} />
+}
+
 export type ImgProps = HTMLAttributes<HTMLElement> & {
   src: string
 }

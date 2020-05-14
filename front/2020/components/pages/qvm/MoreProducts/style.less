@@ -1,0 +1,53 @@
+@import '~utils/less/index.less';
+
+.product {
+  position: relative;
+  padding: 24px 24px 24px 100px;
+
+  @iconWrapperSize: 56px;
+
+  .icon {
+    position: absolute;
+    top: 24px + (@iconWrapperSize / 2);
+    left: 24px + (@iconWrapperSize / 2);
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 1.4em;
+    font-weight: 400;
+
+    .mobile({
+      font-size: 16px;
+    });
+  }
+
+  .desc {
+    min-height: 110px;
+    margin-top: 8px;
+
+    .mobile({
+      font-size: 12px;
+      min-height: unset;
+    });
+  }
+
+  .tags {
+    margin-top: 7px;
+
+    .tag {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 0 8px;
+      font-size: 12px;
+      line-height: 22px;
+      color: @blue-6;
+      background-color: rgba(0,170,231,.1);
+
+      &:not(:first-child) {
+        margin-left: 8px;
+      }
+    }
+  }
+}
