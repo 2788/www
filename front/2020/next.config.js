@@ -39,7 +39,7 @@ module.exports = withPlugins(
           ]
         },
         {
-          test: /\.(svg|png|jpe?g|gif)$/i,
+          test: /\.(svg|eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(css|less)$/
           },
