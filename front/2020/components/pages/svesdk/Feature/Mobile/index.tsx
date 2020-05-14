@@ -8,7 +8,10 @@ export default function Mobile() {
     <div className={style.wrapper}>
       <Menu mode="inline" level={-1}>
         <SubMenu mode="inline" title="拍摄">
-          <MenuItem>TODO</MenuItem>
+          <MenuItem><Card title="拍摄设置" desc="视频及音频的采集、编码参数设置，拍摄时长、前后摄像头、闪光灯、镜像、对焦等细节功能点。" /></MenuItem>
+          <MenuItem><Card title="拍摄方式" desc="正常拍摄、静音拍摄、音频录制、分段拍摄、分屏拍摄等功能。" /></MenuItem>
+          <MenuItem><Card title="实时处理" desc="拍摄时可以使用内置实时美颜、实时滤镜。另外也支持贴纸、水印功能。" /></MenuItem>
+          <MenuItem><Card title="背景音乐" desc="支持拍摄前预设背景音乐。" /></MenuItem>
         </SubMenu>
         <SubMenu mode="inline" title="编辑">
           <MenuItem><Card title="素材导入" desc="从相册导入视频或图片。" /></MenuItem>
@@ -24,13 +27,13 @@ export default function Mobile() {
           <MenuItem><Card title="功能扩展接口" desc="支持接入第三方的视频音频处理 SDK，主要用于对接特效类功能。" /></MenuItem>
         </SubMenu>
         <SubMenu mode="inline" title="高级美颜">
-          <MenuItem>TODO</MenuItem>
+          <MenuItem><Card title="高级美颜" desc="美白、磨皮、锐化、大眼、瘦脸，强度可调节" /></MenuItem>
         </SubMenu>
         <SubMenu mode="inline" title="贴纸">
-          <MenuItem>TODO</MenuItem>
+          <MenuItem><Card title="贴纸" desc="可从特效君 APP 中挑选" /></MenuItem>
         </SubMenu>
         <SubMenu mode="inline" title="滤镜">
-          <MenuItem>TODO</MenuItem>
+          <MenuItem><Card title="滤镜" desc="可从特效君 APP 中挑选" /></MenuItem>
         </SubMenu>
       </Menu>
     </div>

@@ -13,16 +13,18 @@ import PageBanner from 'components/Product/PageBanner'
 import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import { useModal } from 'components/Feedback'
+import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
 import Advantage from 'components/pages/plesdk/Advantage'
 import ProductFeature from 'components/pages/plesdk/Feature'
 import Demo from 'components/pages/plesdk/Demo'
+import Scene from 'components/pages/plesdk/Scene'
 
 import BannerIcon from './images/banner.svg'
 
 export function Content() {
   const { showModal } = useModal()
-
+  // TODO 咨询逻辑
   const bannerBtns: ReactNode[] = [
     <UIButton key="consult" onClick={() => showModal()}>
       立即咨询
@@ -41,14 +43,18 @@ export function Content() {
         btns={bannerBtns}
         icon={<BannerIcon />} />
 
-      <Navigator priceLink="TODO" />
+      <Navigator />
 
       <Advantage />
       <ProductFeature />
-      {/* 应用场景 */}
+      <Scene />
       <Demo />
       {/* 相关文档 */}
-      {/* 接入流程 */}
+      <UsageGuide title="注册即可体验全方位直播特效 SDK">
+        <UsageGuideButton onClick={showModal}>
+          立即咨询
+        </UsageGuideButton>
+      </UsageGuide>
     </>
   )
 }

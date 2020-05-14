@@ -63,7 +63,7 @@ export default function Tabs({ children, className, defaultValue, value = null, 
 
   return (
     <tabContext.Provider value={{ onChange: handleChange, value: active }}>
-      <div className={classnames(style.wrapper, className)}>
+      <div className={className}>
         <ul className={style.header}>
           {tabList}
         </ul>

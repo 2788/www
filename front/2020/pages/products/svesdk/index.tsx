@@ -13,10 +13,12 @@ import PageBanner from 'components/Product/PageBanner'
 import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import { useModal } from 'components/Feedback'
+import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
 import Advantage from 'components/pages/svesdk/Advantage'
 import ProductFeature from 'components/pages/svesdk/Feature'
 import Demo from 'components/pages/svesdk/Demo'
+import Scene from 'components/pages/svesdk/Scene'
 
 import BannerIcon from './images/banner.svg'
 
@@ -24,7 +26,7 @@ export function Content() {
   const { showModal } = useModal()
 
   const bannerBtns: ReactNode[] = [
-    <UIButton key="consult" onClick={() => showModal()}>
+    <UIButton key="consult" onClick={showModal}>
       立即咨询
     </UIButton>,
     <UIButton key="download" onClick={() => { window.location.hash = 'demo' }} type="hollow">
@@ -44,9 +46,15 @@ export function Content() {
 
       <Advantage />
       <ProductFeature />
-      {/* 应用场景 */}
+      <Scene />
       <Demo />
       {/* 相关文档 */}
+      {/* 接入流程 */}
+      <UsageGuide title="注册即可体验全方位短视频特效 SDK">
+        <UsageGuideButton onClick={showModal}>
+          立即咨询
+        </UsageGuideButton>
+      </UsageGuide>
     </>
   )
 }

@@ -4,11 +4,10 @@ import { Card, Row } from 'components/UI/Card'
 
 import style from './style.less'
 
-// TODO 移动端适配
 export default function Pc() {
   return (
     <Tabs defaultValue="1">
-      <TabPane tab="拍摄" value="1" className={style.pane}>
+      <TabPane tab="拍摄" value="1">
         <Row>
           <MyCard title="拍摄设置" desc="视频及音频的采集、编码参数设置，拍摄时长、前后摄像头、闪光灯、镜像、对焦等细节功能点" />
           <MyCard title="拍摄方式" desc="正常拍摄、静音拍摄、音频录制、分段拍摄、分屏拍摄等功能" />
@@ -19,10 +18,10 @@ export default function Pc() {
         </Row>
       </TabPane>
       <TabPane tab="编辑" value="2">
-        456
+        TODO
       </TabPane>
       <TabPane tab="功能扩展接口" value="3">
-        123
+        TODO
       </TabPane>
     </Tabs>
   )

@@ -2,7 +2,7 @@
  * @author: corol
  * @github: github.com/huangbinjie
  * @created: Mon May 11 2020
- * @file: 推流 sdk TODO 确认 url
+ * @file: 推流 sdk
  *
  * Copyright (c) 2020 Qiniu
  */
@@ -13,9 +13,11 @@ import PageBanner from 'components/Product/PageBanner'
 import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
+import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
-import ProductFeature from 'components/pages/tlsdk/Feature'
-import Demo from 'components/pages/tlsdk/Demo'
+import ProductFeature from 'components/pages/plms/Feature'
+import Demo from 'components/pages/plms/Demo'
+import Scene from 'components/pages/plms/Scene'
 
 import BannerIcon from './images/banner.svg'
 
@@ -25,7 +27,7 @@ export function Content() {
     <UIButton key="try" href="TODO">
       免费体验
     </UIButton>,
-    <UIButton key="guide" href="TODO" type="hollow">
+    <UIButton key="guide" href="https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience" type="hollow">
       接入指南
     </UIButton>
   ]
@@ -40,18 +42,23 @@ export function Content() {
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="welfares">
-          <PageNoticeItem href="/products/svesdk">
+          <PageNoticeItem href="/products/plesdk">
             直播特效SDK落地页
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="TODO" />
+      <Navigator />
 
       <ProductFeature />
-      {/* 应用场景 */}
+      <Scene />
       <Demo />
       {/* 相关文档 */}
+      <UsageGuide title="注册即可体验全方位实时音视频">
+        <UsageGuideButton href="TODO">
+          免费体验
+        </UsageGuideButton>
+      </UsageGuide>
     </>
   )
 }

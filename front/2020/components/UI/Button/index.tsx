@@ -62,7 +62,7 @@ export default function Button({
 
   // 简单判断下是否是外部链接
   if (href.indexOf('http') > -1) {
-    return <a href={href} {...otherProps} className={className} />
+    return <a href={href} target="_blank" rel="noopener" {...otherProps} className={className} />
   }
 
   // else <a>

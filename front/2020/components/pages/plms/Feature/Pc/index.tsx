@@ -7,7 +7,7 @@ import style from './style.less'
 export default function Pc() {
   return (
     <Tabs defaultValue="1">
-      <TabPane tab="推流" value="1" className={style.pane}>
+      <TabPane tab="推流" value="1">
         <Row>
           <MyCard title="推流协议" desc="支持主流推流协议rtmp，也支持弱网推流协议QUIC" />
           <MyCard title="推流模式" desc="支持横竖屏切换、静音推流、纯音频推流等模式。" />
@@ -23,7 +23,7 @@ export default function Pc() {
       <TabPane tab="视频" value="2">
         TODO
       </TabPane>
-      <TabPane tab="饮品" value="3">
+      <TabPane tab="音频" value="3">
         TODO
       </TabPane>
     </Tabs>

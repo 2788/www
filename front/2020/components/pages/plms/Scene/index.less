@@ -1,17 +1,22 @@
 @import '~utils/less/index.less';
 
-.cardWrapper {
+.card {
   max-width: (@centered-content-width - 24 * 3) / 4;
+
+  img {
+    display: block;
+    width: 100%;
+  }
 }
 
-.card {
-  height: 220px;
-  padding: 24px;
+.content {
+  width: 100%;
+  padding: 24px 20px;
 
   .title {
     margin-bottom: 12px;
-    font-size: 20px;
-    color: @grey-7;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   .desc {
