@@ -1,3 +1,5 @@
+// 导入 css 而不是 less，防止颜色命名冲突
+@import '~react-icecream/dist/icecream.css';
 @import '~utils/less/index.less';
 
 * {
@@ -6,6 +8,7 @@
   line-height: 1.5715;
   box-sizing: border-box;
 }
+
 .mobile({
   html, body {
     height: 100%;
@@ -70,4 +73,15 @@ button {
 
 figcaption {
   margin-top: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7,
+p {
+  color: inherit;
 }
