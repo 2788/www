@@ -1,5 +1,5 @@
 /**
- * @file 产品“对象存储”
+ * @file 解决方案”智能视频云“
  */
 
 import React, { ReactNode } from 'react'
@@ -18,7 +18,7 @@ import QavsFeature from 'components/pages/qavs/Feature'
 import QavsArch from 'components/pages/qavs/Arch'
 import QavsScene from 'components/pages/qavs/Scene'
 
-import BannerIcon from './images/bannerIcon.svg'
+import BannerIcon from './images/banner-icon.svg'
 
 function PageContent() {
   const { showModal } = useFeedbackModal()
@@ -32,7 +32,7 @@ function PageContent() {
       立即咨询
     </UIButton>
   ), (
-    <UIButton key="download" type="hollow" href="/products/qavs">
+    <UIButton key="download" type="hollow" href="/solutions/qavs">
       下载白皮书
     </UIButton>
   )]
@@ -49,7 +49,7 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem title="音视频 SDK 下载" href="/products/qavs">
+          <PageNoticeItem title="音视频 SDK 下载" href="/solutions/qavs">
             音视频 SDK 下载
           </PageNoticeItem>
         </PageNoticeGroup>
@@ -57,7 +57,7 @@ function PageContent() {
 
       <Navigator>
         <NavButton type="primary" onClick={handleConsult}>立即咨询</NavButton>
-        <NavButton withBorder href="/products/qavs">下载白皮书</NavButton>
+        <NavButton withBorder href="/solutions/qavs">下载白皮书</NavButton>
       </Navigator>
 
       <QavsArch />
@@ -68,14 +68,14 @@ function PageContent() {
 
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
-          <LinkItem href="/products/qavs">直播云技术白皮书</LinkItem>
-          <LinkItem href="/products/qavs">直播架构快速搭建</LinkItem>
-          <LinkItem href="/products/qavs">七牛短视频白皮书</LinkItem>
-          <LinkItem href="/products/qavs">实时音视频白皮书</LinkItem>
+          <LinkItem href="/solutions/qavs">直播云技术白皮书</LinkItem>
+          <LinkItem href="/solutions/qavs">直播架构快速搭建</LinkItem>
+          <LinkItem href="/solutions/qavs">七牛短视频白皮书</LinkItem>
+          <LinkItem href="/solutions/qavs">实时音视频白皮书</LinkItem>
         </LinkGroup>
         <LinkGroup title="其他">
-          <LinkItem href="/products/qavs">短视频 demo 体验</LinkItem>
-          <LinkItem href="/products/qavs">实时音视频 demo 体验</LinkItem>
+          <LinkItem href="/solutions/qavs">短视频 demo 体验</LinkItem>
+          <LinkItem href="/solutions/qavs">实时音视频 demo 体验</LinkItem>
         </LinkGroup>
       </LinkGroups>
     </>

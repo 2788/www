@@ -12,8 +12,8 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 
-import AdvantIconFile from './advantIconFile.svg'
-import AdvantIconChart from './advantIconChart.svg'
+import AdvantIconFile from './advant-icon-file.svg'
+import AdvantIconChart from './advant-icon-chart.svg'
 
 import styles from './style.less'
 

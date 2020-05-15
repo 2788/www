@@ -14,14 +14,14 @@ import Scene, {
   ClientItem as SceneClientItem
 } from '../../../../components/Product/Scene'
 
-import SceneIconFile from './sceneIconFile.svg'
+import SceneIconFile from './scene-icon-file.svg'
 
 // 适用场景用户案例 logo
 // 用于测试，后面可以移除
-import clientIconChangBaURL from './clientIconChangBa.png'
-import clientIconChinaMobileURL from './clientIconChinaMobile.png'
-import clientIconPingAnURL from './clientIconPingAn.png'
-import clientIconSFURL from './clientIconSF.png'
+import clientIconChangBaURL from './client-icon-changba.png'
+import clientIconChinaMobileURL from './client-icon-chinamobile.png'
+import clientIconPingAnURL from './client-icon-pingan.png'
+import clientIconSFURL from './client-icon-sf.png'
 
 import styles from './style.less'
 

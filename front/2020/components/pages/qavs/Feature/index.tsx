@@ -14,11 +14,11 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 
-import FeatureIconOne from './featureIconOne.svg'
-import FeatureIconTwo from './featureIconTwo.svg'
-import FeatureIconThree from './featureIconThree.svg'
-import FeatureIconFour from './featureIconFour.svg'
-import FeatureIconFive from './featureIconFive.svg'
+import FeatureIconOne from './feature-icon-one.svg'
+import FeatureIconTwo from './feature-icon-two.svg'
+import FeatureIconThree from './feature-icon-three.svg'
+import FeatureIconFour from './feature-icon-four.svg'
+import FeatureIconFive from './feature-icon-five.svg'
 
 import styles from './style.less'
 

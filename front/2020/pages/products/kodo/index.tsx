@@ -28,7 +28,7 @@ import PingAn from './images/pingan.png'
 import ShunFeng from './images/shunfeng.png'
 import YiDong from './images/yidong.png'
 
-import BannerIcon from './images/bannerIcon.svg'
+import BannerIcon from './images/banner-icon.svg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`

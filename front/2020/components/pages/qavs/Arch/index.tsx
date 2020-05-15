@@ -8,7 +8,7 @@ import React from 'react'
 
 import Section from 'components/Product/Section'
 
-import ArchImg from './archImg.svg'
+import ArchImg from './arch-img.svg'
 
 import styles from './style.less'
 

@@ -11,11 +11,11 @@ import { useMobile } from 'hooks/ua'
 import Section from 'components/Product/Section'
 import * as Cards from 'components/UI/Card'
 
-import SceneImgOneURL from './sceneImgOne.png'
-import SceneImgTwoURL from './sceneImgTwo.png'
-import SceneImgThreeURL from './sceneImgThree.png'
-import SceneImgFourURL from './sceneImgFour.png'
-import SceneImgFiveURL from './sceneImgFive.png'
+import SceneImgOneURL from './scene-img-one.png'
+import SceneImgTwoURL from './scene-img-two.png'
+import SceneImgThreeURL from './scene-img-three.png'
+import SceneImgFourURL from './scene-img-four.png'
+import SceneImgFiveURL from './scene-img-five.png'
 
 import styles from './style.less'
 

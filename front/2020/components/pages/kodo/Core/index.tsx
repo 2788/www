@@ -13,8 +13,8 @@ import Feature, {
   Link as FeatureLink
 } from 'components/Product/Feature'
 
-import CoreIconFile from './coreIconFile.svg'
-import CoreIconChart from './coreIconChart.svg'
+import CoreIconFile from './core-icon-file.svg'
+import CoreIconChart from './core-icon-chart.svg'
 
 import styles from './style.less'
 
