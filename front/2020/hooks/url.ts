@@ -116,5 +116,5 @@ export function useQueryValue<T extends string>(key: string, defaultValue: T) {
     setQuery({ ...query, [key]: newValue! })
   }, [query, setQuery, key, defaultValue])
 
-  return [value, setValue] as const
+  return [value as T, setValue] as const
 }
