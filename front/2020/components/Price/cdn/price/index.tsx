@@ -37,9 +37,9 @@ export default function Price() {
 
 function Tip() {
   const message = (
-    <span>
+    <a href="https://marketing.qiniu.com/activity/20200423?entry=portal-cdnoverview" target="_blank" rel="noopener">
       CDN 日间流量包限时 <span className={style.discount}>5折</span> 优惠
-    </span>
+    </a>
   )
 
   return <Alert type="info" message={message} closable />
