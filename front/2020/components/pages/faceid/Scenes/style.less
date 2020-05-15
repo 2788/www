@@ -1,0 +1,25 @@
+@import '~utils/less/index.less';
+
+.imgBlock {}
+
+.detailBlock {
+  flex: 1 1 400px !important;
+  padding: 36px;
+
+  .title {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4em;
+
+    .mobile({
+      font-size: 16px;
+    });
+  }
+
+  .desc {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 16px;
+    color: @grey-6;
+  }
+}

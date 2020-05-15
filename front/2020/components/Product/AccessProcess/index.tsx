@@ -30,17 +30,21 @@ AccessProcess.defaultProps = {
   title: '接入流程'
 }
 
+export function RawAccessProcess(props: PropsWithChildren<AccessProcessProps>) {
+  const isMobile = useMobile()
+  return (
+    isMobile
+    ? <Mobile.AccessProcess {...props} />
+    : <Pc.AccessProcess {...props} />
+  )
+}
+
 export default function AccessProcess({
   children, subHeader, ...sectionProps
 }: PropsWithChildren<AccessProcessProps & SectionProps>) {
-  const isMobile = useMobile()
   return (
     <Section {...sectionProps}>
-      {
-        isMobile
-        ? <Mobile.AccessProcess subHeader={subHeader}>{children}</Mobile.AccessProcess>
-        : <Pc.AccessProcess subHeader={subHeader}>{children}</Pc.AccessProcess>
-      }
+      <RawAccessProcess subHeader={subHeader}>{children}</RawAccessProcess>
     </Section>
   )
 }
