@@ -1,9 +1,8 @@
 import React, { PropsWithChildren, HTMLAttributes } from 'react'
 import RcDropdown from 'rc-dropdown/lib/Dropdown'
 
-import style from './index.less'
-
 import 'rc-dropdown/assets/index.css'
+import style from './index.less'
 
 export default RcDropdown
 export * from 'rc-dropdown/lib/Dropdown'

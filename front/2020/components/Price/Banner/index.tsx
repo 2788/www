@@ -1,5 +1,7 @@
-import React, { createContext, ReactNode, useState } from 'react'
+import React, { createContext, ReactNode, useState, useLayoutEffect } from 'react'
+import classnames from 'classnames'
 import Button from 'components/UI/Button'
+import { useQueryValue } from 'hooks/url'
 
 import style from './index.less'
 
@@ -21,6 +23,27 @@ export type PriceBannerProps = {
 export default function PriceBanner(props: PriceBannerProps) {
   const { children } = props
   const [active, setActive] = useState<Active>('price')
+  const [query, setQuery] = useQueryValue('tab', 'price')
+
+  useLayoutEffect(() => {
+    if (query === 'price') {
+      setActive('price')
+    }
+
+    if (query === 'calc') {
+      setActive('calc')
+    }
+  }, [query])
+
+  function handleTabClick(target: Active) {
+    if (target === 'price') {
+      setQuery('price')
+    }
+
+    if (target === 'calc') {
+      setQuery('calc')
+    }
+  }
 
   return (
     <>
@@ -31,12 +54,12 @@ export default function PriceBanner(props: PriceBannerProps) {
             <Button className={style.btn}>查看其他产品价格</Button>
           </div>
           <div className={style.navigator}>
-            <Button className={style.priceBtn} onClick={() => setActive('price')}>价格文档</Button>
-            <Button type="hollow" className={style.calcBtn} onClick={() => setActive('calc')}>价格计算器</Button>
+            <Button className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</Button>
+            <Button className={classnames(style.tabBtn, active !== 'calc' && style.activeTab)} onClick={() => handleTabClick('calc')}>价格计算器</Button>
           </div>
         </div>
       </div>
-      <BannerContext.Provider value={{ active, setActive }}>{children}</BannerContext.Provider>
+      <BannerContext.Provider value={{ active, setActive: handleTabClick }}>{children}</BannerContext.Provider>
     </>
   )
 }

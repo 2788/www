@@ -2,8 +2,9 @@ import React from 'react'
 import classnames from 'classnames'
 import RcMenu from 'rc-menu'
 import { MenuProps as RcMenuProps } from 'rc-menu/es/Menu'
-import 'rc-menu/assets/index.css'
 import ArrowDownIcon from './arrow-down.svg'
+
+import 'rc-menu/assets/index.css'
 import style from './index.less'
 
 export * from 'rc-menu'

@@ -7,8 +7,6 @@ import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
 import Qrcode from './images/qrcode.png'
 
-import 'rc-menu/assets/index.css'
-
 import style from './style.less'
 
 function MenuItem({ children }: PropsWithChildren<{}>) {
