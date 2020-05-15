@@ -4,12 +4,9 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import { SubMenu } from 'rc-menu'
 import Link from 'next/link'
-import Menu from 'components/UI/Menu'
+import Menu, { SubMenu } from 'components/UI/Menu'
 import { LinkItemProps, LinkGroupProps } from '..'
-
-import 'rc-menu/assets/index.css'
 
 import styles from './style.less'
 
