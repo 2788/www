@@ -16,7 +16,7 @@
     // 移动端防止 overlay/mask 弹出后背景滑动
     overflow: hidden;
   }
-});;
+});
 
 body {
   color: @grey-7;
@@ -83,4 +83,22 @@ h6,
 h7,
 p {
   color: inherit;
+}
+
+
+/* icecream 相关*/
+:global {
+  .ant-table-bordered .ant-table-tbody > tr > td {
+    border: 1px solid #e8e8e8;
+  }
+
+  .ant-table-bordered .ant-table-thead > tr > th {
+    border: 1px solid #e8e8e8;
+  }
+
+  .ant-table-tbody {
+    tr:nth-child(2n) {
+      background: #FAFAFA;
+    }
+  }
 }
