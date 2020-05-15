@@ -1,7 +1,8 @@
-import React, { createContext, ReactNode, useState, useLayoutEffect } from 'react'
+import React, { createContext, ReactNode, useState } from 'react'
 import classnames from 'classnames'
 import Button from 'components/UI/Button'
 import { useQueryValue } from 'hooks/url'
+import useIsomorphicLayoutEffect from 'hooks/use-isomorphic-layout-effect'
 
 import style from './index.less'
 
@@ -25,7 +26,7 @@ export default function PriceBanner(props: PriceBannerProps) {
   const [active, setActive] = useState<Active>('price')
   const [query, setQuery] = useQueryValue('tab', 'price')
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (query === 'price') {
       setActive('price')
     }
