@@ -6,6 +6,7 @@ import React from 'react'
 
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
+import VcsFeature from 'components/pages/vcs/Feature'
 import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import VcsIndustry from 'components/pages/vcs/Industry'
@@ -39,6 +40,8 @@ function PageContent() {
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={<BannerIcon />} />
+
+      <VcsFeature />
 
       <Navigator>{btns.nav}</Navigator>
 
