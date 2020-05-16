@@ -1,6 +1,6 @@
 /**
  * @file 智能视频云应用场景 index.tsx
- * @description 智能视频云应用场景
+ * @description 包含智能视频云应用场景
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 

@@ -1,6 +1,6 @@
 /**
  * @file 监控视频边缘存储应用场景 index.tsx
- * @description 监控视频边缘存储应用场景
+ * @description 包含监控视频边缘存储应用场景
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
