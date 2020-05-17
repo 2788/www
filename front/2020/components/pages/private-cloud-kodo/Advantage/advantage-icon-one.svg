@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="62px" viewBox="0 0 54 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>database</title>
+    <g id="解决方案" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="场景解决方案-私有云行业解决方案✅" transform="translate(-534.000000, -1581.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1404.000000)">
+                <g id="01" transform="translate(372.000000, 148.000000)">
+                    <g id="编组-14" transform="translate(129.000000, 0.000000)">
+                        <g id="database" transform="translate(34.000000, 30.000000)">
+                            <path d="M0,8 L0,52 C0,56.6 12.1,60 26,60 C39.9,60 52,56.6 52,52 L52,8" id="路径" stroke="#333333"></path>
+                            <path d="M52,8 C52,12.6 39.9,16 26,16 C12.1,16 0,12.6 0,8 C0,3.4 12.1,0 26,0 C39.9,0 52,3.4 52,8 Z" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                            <path d="M52,30 C52,34.6 39.9,38 26,38 C12.1,38 0,34.6 0,30" id="路径" stroke="#333333" stroke-linecap="square"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

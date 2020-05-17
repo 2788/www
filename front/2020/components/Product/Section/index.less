@@ -22,13 +22,31 @@
   background: #FAFAFA;
 }
 
-.title {
+.intro {
   margin-bottom: 37px;
+
+  .mobile({
+    margin-bottom: 16px;
+  })
+}
+
+.title {
   color: @grey-7;
   font-size: 28px;
 
   .mobile({
-    margin-bottom: 16px;
     font-size: 20px;
   });
+}
+
+.subtitile {
+  margin-top: 16px;
+  color: @grey-6;
+  line-height: 22px;
+
+  .mobile({
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 18px;
+  })
 }

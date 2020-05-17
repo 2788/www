@@ -1,0 +1,35 @@
+/**
+ * @file 私有云存储技术规格 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.table {
+  width: 976px;
+  margin: 0 auto;
+  border: 1px solid @grey-3;
+  background-color: @grey-1;
+
+  tbody tr td {
+    padding: 14px 24px;
+    border: 1px solid @grey-3;
+    color: @grey-7;
+    line-height: 20px;
+    text-align: left;
+
+    &.title {
+      color: @grey-5;
+    }
+
+    .mobile({
+      padding: 6px 10px;
+      font-size: 12px;
+      line-height: 18px;
+    })
+  }
+
+  .mobile({
+    width: 100%;
+  })
+}

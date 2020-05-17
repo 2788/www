@@ -1,0 +1,53 @@
+/**
+ * @file 私有云存储应用场景 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.sceneContainer {
+  height: 360px;
+  padding: 20px;
+
+  .mobile({
+    height: auto;
+    padding: 20px 16px;
+  })
+}
+
+.sceneImg {
+  width: 665px;
+  line-height: 1;
+
+  .mobile({
+    width: 80%;
+    height: auto;
+    margin-top: 20px;
+  })
+}
+
+.sceneTitle {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: @grey-7;
+  line-height: 22px;
+
+  &.client {
+    padding-top: 20px;
+  }
+}
+
+.sceneContent {
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: @grey-6;
+  line-height: 22px;
+
+  .mobile({
+    margin-bottom: 12px;
+    font-size: 12px;
+    text-align: left;
+    line-height: 18px;
+  })
+}

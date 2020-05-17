@@ -1,0 +1,72 @@
+/**
+ * @file 短视频功能大全 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.group {
+  display: flex;
+  justify-content: center;
+}
+
+.item {
+  padding: 40px 0;
+  text-align: center;
+  flex: 1 1;
+
+  .mobile({
+    padding: 20px 0;
+  })
+}
+
+.icon {
+  height: 50px;
+  line-height: 50px;
+
+  .mobile({
+    height: 24px;
+    line-height: 24px;
+  })
+}
+
+.desc {
+  margin-top: 8px;
+  color: @grey-6;
+  line-height: 20px;
+
+  .mobile({
+    font-size: 12px;
+    line-height: 16px;
+  })
+}
+
+.link {
+  margin-top: 50px;
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .mobile({
+    margin-top: 0;
+    font-size: 14px;
+  })
+}
+
+.arrow {
+  height: 22px;
+  position: relative;
+  top: -2px;
+  margin-left: 10px;
+  line-height: 22px;
+
+  .mobile({
+    height: 16px;
+    margin-left: 0;
+    line-height: 16px;
+  })
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="58px" height="58px" viewBox="0 0 58 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>computer-monitor</title>
+    <g id="解决方案" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="场景解决方案-私有云行业解决方案✅" transform="translate(-531.000000, -1931.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1404.000000)">
+                <g id="01" transform="translate(372.000000, 496.000000)">
+                    <g id="编组-14" transform="translate(128.000000, 0.000000)">
+                        <g id="computer-monitor" transform="translate(32.000000, 32.000000)">
+                            <rect id="矩形" stroke="#333333" x="20" y="0" width="36" height="56"></rect>
+                            <line x1="28" y1="10" x2="48" y2="10" id="路径" stroke="#333333"></line>
+                            <line x1="28" y1="20" x2="48" y2="20" id="路径" stroke="#333333"></line>
+                            <circle id="椭圆形" stroke="#333333" cx="38" cy="43" r="4"></circle>
+                            <line x1="6" y1="50" x2="15" y2="50" id="路径" stroke="#00AAE7"></line>
+                            <polyline id="路径" stroke="#00AAE7" points="15 42 0 42 0 6 15 6"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
