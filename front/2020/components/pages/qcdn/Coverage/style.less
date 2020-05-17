@@ -1,0 +1,43 @@
+@point-space: 24px;
+@point-width: 276px;
+@point-height: 156px;
+
+.coverage {
+
+  .container {
+    display: flex;
+    justify-content: center;
+  
+    .point {
+      text-align: center;
+      box-shadow:0px 4px 8px 0px rgba(51,51,51,0.08);
+      border:1px solid rgba(238,238,238,1);
+      display: block;
+      padding: 24px;
+      width: @point-width;
+      height: @point-height;
+      margin: @point-space/2;
+  
+      .icon {
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+      }
+  
+      .text {
+        display: block;
+        font-size: 20px;
+        font-weight: 600px;
+
+        .highlight {
+          color: #00AAE7;
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+
+  .map {
+    margin-top: 35px;
+  }
+}

@@ -1,5 +1,5 @@
 /**
- * @file 产品“对象存储”
+ * @file 产品“CDN OEM”
  */
 
 import React, { ReactNode } from 'react'
@@ -57,8 +57,8 @@ function PageContent() {
         icon={<BannerIcon />} />
 
       <Navigator>
-        <NavButton type="primary" href="/products/kodo">免费试用</NavButton>
-        <NavButton withBorder onClick={handleConsult}>售前咨询</NavButton>
+        <NavButton type="primary" href="/products/fusion">咨询详情</NavButton>
+        <NavButton withBorder onClick={handleConsult}>体验 Demo</NavButton>
       </Navigator>
 
       <Feature header="七牛 CDN OEM 平台服务能力" name="capabilities" title="平台服务能力">
@@ -109,7 +109,7 @@ function PageContent() {
   )
 }
 
-export default function KodoPage() {
+export default function CdnOemPage() {
   return (
     <Layout>
       <PageContent />

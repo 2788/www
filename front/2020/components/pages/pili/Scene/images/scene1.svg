@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="452px" height="378px" viewBox="0 0 752 378" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>编组</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="基础服务-直播✅" transform="translate(-372.000000, -2514.000000)">
+            <g id="产品介绍-2" transform="translate(0.000000, 2247.000000)">
+                <g id="编组-6" transform="translate(372.000000, 72.000000)">
+                    <g id="编组-5" transform="translate(0.000000, 180.000000)">
+                        <g id="编组-23">
+                            <g id="编组" transform="translate(0.000000, 15.000000)">
+                                <path id="路径-15备份-5" d="M450.5,191 L459.5,195.5 L450.5,200 L450.5,196 L434,196 L434,195 L450.5,195 L450.5,191 Z" fill="#21B4E9" fill-rule="nonzero"></path>
+                                <path d="M161,0 L441,0 C442.104569,-2.02906125e-16 443,0.8954305 443,2 L443,376 C443,377.104569 442.104569,378 441,378 L161,378 C159.895431,378 159,377.104569 159,376 L159,2 C159,0.8954305 159.895431,2.02906125e-16 161,0 Z" id="矩形备份-30" fill="#E6F4F9"></path>
+                                <path id="路径-15备份-4" d="M150.5,191 L159.5,195.5 L150.5,200 L150.5,196 L117,196 L117,195 L150.5,195 L150.5,191 Z" fill="#21B4E9" fill-rule="nonzero"></path>
+                                <path id="路径-15备份-4" d="M245.5,255 L254.5,259.5 L245.5,264 L245.5,260 L238.617789,260 L238.617789,259 L245.5,259 L245.5,255 Z" fill="#21B4E9" fill-rule="nonzero"></path>
+                                <line x1="225" y1="195.5" x2="237.5" y2="195.5" id="直线-3" stroke="#21B4E9" stroke-linecap="square"></line>
+                                <path id="路径-3备份" d="M396.032351,276.998885 L397.032348,277.001115 L396.986,297.501 L400.986603,297.510061 L396.466535,306.499999 L391.986625,297.489982 L395.986,297.498 L396.032351,276.998885 Z" fill="#20B4E9" fill-rule="nonzero"></path>
+                                <path id="路径-3备份" d="M296.032351,276.998885 L297.032348,277.001115 L296.986,297.501 L300.986603,297.510061 L296.466535,306.499999 L291.986625,297.489982 L295.986,297.498 L296.032351,276.998885 Z" fill="#20B4E9" fill-rule="nonzero"></path>
+                                <path d="M262,71 L427,71 C428.104569,71 429,71.8954305 429,73 L429,206 C429,207.104569 428.104569,208 427,208 L262,208 C260.895431,208 260,207.104569 260,206 L260,73 C260,71.8954305 260.895431,71 262,71 Z" id="矩形备份-8" fill="#FFFFFF" opacity="0.85"></path>
+                                <path d="M339,95.5 L273,95.5 C272.585786,95.5 272.210786,95.6678932 271.93934,95.9393398 C271.667893,96.2107864 271.5,96.5857864 271.5,97 L271.5,128 C271.5,128.414214 271.667893,128.789214 271.93934,129.06066 C272.210786,129.332107 272.585786,129.5 273,129.5 L339,129.5 C339.414214,129.5 339.789214,129.332107 340.06066,129.06066 C340.332107,128.789214 340.5,128.414214 340.5,128 L340.5,97 C340.5,96.5857864 340.332107,96.2107864 340.06066,95.9393398 C339.789214,95.6678932 339.414214,95.5 339,95.5 Z" id="矩形备份-20" stroke="#21B4E9" fill="#E6F4F9"></path>
+                                <path d="M416,95.5 L350,95.5 C349.585786,95.5 349.210786,95.6678932 348.93934,95.9393398 C348.667893,96.2107864 348.5,96.5857864 348.5,97 L348.5,128 C348.5,128.414214 348.667893,128.789214 348.93934,129.06066 C349.210786,129.332107 349.585786,129.5 350,129.5 L416,129.5 C416.414214,129.5 416.789214,129.332107 417.06066,129.06066 C417.332107,128.789214 417.5,128.414214 417.5,128 L417.5,97 C417.5,96.5857864 417.332107,96.2107864 417.06066,95.9393398 C416.789214,95.6678932 416.414214,95.5 416,95.5 Z" id="矩形备份-25" stroke="#21B4E9" fill="#E6F4F9"></path>
+                                <text id="转码" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
+                                    <tspan x="292" y="112">转码</tspan>
+                                </text>
+                                <text id="转封装" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
+                                    <tspan x="362" y="112">转封装</tspan>
+                                </text>
+                                <path d="M339,149.5 L273,149.5 C272.585786,149.5 272.210786,149.667893 271.93934,149.93934 C271.667893,150.210786 271.5,150.585786 271.5,151 L271.5,182 C271.5,182.414214 271.667893,182.789214 271.93934,183.06066 C272.210786,183.332107 272.585786,183.5 273,183.5 L339,183.5 C339.414214,183.5 339.789214,183.332107 340.06066,183.06066 C340.332107,182.789214 340.5,182.414214 340.5,182 L340.5,151 C340.5,150.585786 340.332107,150.210786 340.06066,149.93934 C339.789214,149.667893 339.414214,149.5 339,149.5 Z" id="矩形备份-20" stroke="#21B4E9" fill="#E6F4F9"></path>
+                                <path d="M416,149.5 L350,149.5 C349.585786,149.5 349.210786,149.667893 348.93934,149.93934 C348.667893,150.210786 348.5,150.585786 348.5,151 L348.5,182 C348.5,182.414214 348.667893,182.789214 348.93934,183.06066 C349.210786,183.332107 349.585786,183.5 350,183.5 L416,183.5 C416.414214,183.5 416.789214,183.332107 417.06066,183.06066 C417.332107,182.789214 417.5,182.414214 417.5,182 L417.5,151 C417.5,150.585786 417.332107,150.210786 417.06066,149.93934 C416.789214,149.667893 416.414214,149.5 416,149.5 Z" id="矩形备份-25" stroke="#21B4E9" fill="#E6F4F9"></path>
+                                <text id="切流" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
+                                    <tspan x="292" y="166">切流</tspan>
+                                </text>
+                                <text id="混流" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
+                                    <tspan x="369" y="166">混流</tspan>
+                                </text>
+                                <path d="M462,0 L593,0 C594.104569,-2.02906125e-16 595,0.8954305 595,2 L595,376 C595,377.104569 594.104569,378 593,378 L462,378 C460.895431,378 460,377.104569 460,376 L460,2 C460,0.8954305 460.895431,2.02906125e-16 462,0 Z" id="矩形备份-32" fill="#E6F4F9"></path>
+                                <g id="更多" transform="translate(497.000000, 204.000000)" fill-rule="nonzero">
+                                    <rect id="矩形" fill="#000000" opacity="0" x="0" y="0" width="16" height="16"></rect>
+                                    <path d="M0,8 C0,9.00414753 0.814022408,9.81816994 1.81816994,9.81816994 C2.82231747,9.81816994 3.63633987,9.00414753 3.63633987,8 C3.63633987,6.99585247 2.82231747,6.18183006 1.81816994,6.18183006 C0.814022408,6.18183006 0,6.99585247 0,8 Z M6.18183006,8 C6.18183006,8.64956956 6.52837128,9.2497966 7.09091502,9.57458139 C7.65345876,9.89936617 8.34654124,9.89936617 8.90908498,9.57458139 C9.47162872,9.2497966 9.81816994,8.64956956 9.81816994,8 C9.81816994,6.99585247 9.00414753,6.18183006 8,6.18183006 C6.99585247,6.18183006 6.18183006,6.99585247 6.18183006,8 L6.18183006,8 Z M12.3636601,8 C12.3636601,9.00414753 13.1776825,9.81816994 14.1818301,9.81816994 C15.1859776,9.81816994 16,9.00414753 16,8 C16,6.99585247 15.1859776,6.18183006 14.1818301,6.18183006 C13.1776825,6.18183006 12.3636601,6.99585247 12.3636601,8 Z" id="形状" fill="#21B4E9"></path>
+                                </g>
+                                <rect id="矩形备份-31" stroke="#00AAE7" x="472" y="71" width="111" height="171" rx="2"></rect>
+                                <rect id="矩形备份-61" stroke="#00AAE7" x="472" y="305" width="111" height="40" rx="2"></rect>
+                                <text id="超级源" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="496" y="111">超级源</tspan>
+                                </text>
+                                <text id="录制/截图服务" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="300" y="263">录制/截图服务</tspan>
+                                </text>
+                                <text id="存储" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="282" y="330">存储</tspan>
+                                </text>
+                                <text id="鉴黄" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="382" y="330">鉴黄</tspan>
+                                </text>
+                                <text id="负载均衡系统" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="486" y="330">负载均衡系统</tspan>
+                                </text>
+                                <text id="中间源" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="495" y="140">中间源</tspan>
+                                </text>
+                                <text id="边缘节点" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="496" y="169">边缘节点</tspan>
+                                </text>
+                                <path id="路径-13备份-2" d="M251.5,108.5 L260.5,113 L251.5,117.5 L251.5,113.5 L239.5,113.5 L239.5,167.5 L251.5,167.5 L251.5,163.5 L260.5,168 L251.5,172.5 L251.5,168.5 L238.5,168.5 L238.5,112.5 L251.5,112.5 L251.5,108.5 Z" fill="#21B4E9" fill-rule="nonzero"></path>
+                                <line x1="239" y1="161" x2="239" y2="259" id="直线" stroke="#21B4E9" stroke-linecap="square"></line>
+                                <rect id="矩形备份-31" stroke="#00AAE7" x="171" y="71" width="53" height="274" rx="2"></rect>
+                                <rect id="矩形备份-31" stroke="#00AAE7" x="260" y="242" width="169" height="35" rx="2"></rect>
+                                <rect id="矩形备份-33" stroke="#00AAE7" x="260" y="307" width="66" height="38" rx="2"></rect>
+                                <rect id="矩形备份-56" stroke="#00AAE7" x="363" y="307" width="66" height="38" rx="2"></rect>
+                                <rect id="矩形备份-36" fill="#00AAE7" opacity="0.854399182" x="159" y="0" width="284" height="40"></rect>
+                                <rect id="矩形备份-38" fill="#00AAE7" opacity="0.854399182" x="460" y="0" width="135" height="40"></rect>
+                                <text id="流媒体服务" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
+                                    <tspan x="261" y="19">流媒体服务</tspan>
+                                </text>
+                                <text id="七牛云直播云服务" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
+                                    <tspan x="463" y="19">七牛云直播云服务</tspan>
+                                </text>
+                                <text id="七牛直播业务服务器" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="22" fill="#00AAE7">
+                                    <tspan x="183" y="166">七牛</tspan>
+                                    <tspan x="183" y="188">直播</tspan>
+                                    <tspan x="183" y="210">业务</tspan>
+                                    <tspan x="183" y="232">服务</tspan>
+                                    <tspan x="183" y="254">器</tspan>
+                                </text>
+                                <path d="M2,0 L115,0 C116.104569,-2.02906125e-16 117,0.8954305 117,2 L117,376 C117,377.104569 116.104569,378 115,378 L2,378 C0.8954305,378 1.13822108e-13,377.104569 1.13686838e-13,376 L1.13686838e-13,2 C1.13551567e-13,0.8954305 0.8954305,2.02906125e-16 2,0 Z" id="矩形备份-37" fill="#E2F2F3"></path>
+                                <text id="推流(RTMP)" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" line-spacing="16" fill="#00AAE7">
+                                    <tspan x="117" y="173">推流</tspan>
+                                    <tspan x="117" y="189">(RTMP)</tspan>
+                                </text>
+                                <path d="M637,2 L750,2 C751.104569,2 752,2.8954305 752,4 L752,376 C752,377.104569 751.104569,378 750,378 L637,378 C635.895431,378 635,377.104569 635,376 L635,4 C635,2.8954305 635.895431,2 637,2 Z" id="矩形备份-40" fill="#E2F2F3"></path>
+                                <path id="路径-15备份-5" d="M624.5,191 L633.5,195.5 L624.5,200 L624.5,196 L595,196 L595,195 L624.5,195 L624.5,191 Z" fill="#21B4E9" fill-rule="nonzero"></path>
+                                <text id="RTMP-HLS-HDL" font-family="PingFangSC-Regular, PingFang SC" font-size="12" font-weight="normal" line-spacing="16" fill="#00AAE7">
+                                    <tspan x="600" y="156">RTMP</tspan>
+                                    <tspan x="600" y="172">HLS</tspan>
+                                    <tspan x="600" y="188">HDL</tspan>
+                                </text>
+                                <rect id="矩形备份-34" stroke="#42C0C3" x="12" y="77" width="93" height="114" rx="2"></rect>
+                                <rect id="矩形备份-35" stroke="#42C0C3" x="647" y="71" width="93" height="171" rx="2"></rect>
+                                <rect id="矩形备份-58" stroke="#42C0C3" x="12" y="231" width="93" height="114" rx="2"></rect>
+                                <rect id="矩形备份-60" stroke="#42C0C3" x="647" y="305" width="93" height="40" rx="2"></rect>
+                                <rect id="矩形备份-39" fill="#28B8BB" opacity="0.854399182" x="0" y="0" width="117" height="40"></rect>
+                                <rect id="矩形备份-49" fill="#28B8BB" opacity="0.854399182" x="635" y="2" width="117" height="40"></rect>
+                                <text id="主播（推流）" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
+                                    <tspan x="11" y="19">主播（推流）</tspan>
+                                </text>
+                                <text id="观众（播放）" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
+                                    <tspan x="648" y="21">观众（播放）</tspan>
+                                </text>
+                                <text id="推流SDK-(andriod、ios、p" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
+                                    <tspan x="29.008" y="97">推流SDK</tspan>
+                                    <tspan x="28" y="127" line-spacing="16">(andriod、</tspan>
+                                    <tspan x="28" y="143" line-spacing="16">ios、pc)</tspan>
+                                </text>
+                                <text id="播放器SDK-(andriod、ios、" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
+                                    <tspan x="658" y="102">播放器SDK</tspan>
+                                    <tspan x="658" y="132" line-spacing="20">(andriod、</tspan>
+                                    <tspan x="658" y="152" line-spacing="20">ios、pc)</tspan>
+                                </text>
+                                <text id="推流工具-(OBS…)" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
+                                    <tspan x="28" y="264">推流工具</tspan>
+                                    <tspan x="28" y="294">(OBS…)</tspan>
+                                </text>
+                                <text id="HTML5" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
+                                    <tspan x="671" y="325">HTML5</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

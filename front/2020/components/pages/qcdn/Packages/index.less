@@ -1,0 +1,135 @@
+@import '~utils/less/index.less';
+
+@card-width: 274px;
+
+.block {
+  text-align: center;
+}
+.card {
+  display: inline-flex;
+  display: -ms-inline-flexbox;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  width: @card-width;
+  box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+  border: 1px solid @grey-3;
+  border-top: none;
+
+  .mobile({
+    width: 100%;
+  });
+
+  .header {
+    padding: 24px 24px 0;
+    text-align: left;
+    background: #fafafa;
+    border-top: 2px solid @blue-6;
+    border-bottom: 1px solid @grey-3;
+
+    .mobile({
+      padding: 20px 16px;
+    });
+
+    .title {
+      margin-bottom: 8px;
+      color: @grey-7;
+      font-size: 20px;
+      font-weight: 500;
+
+      .mobile({
+        margin-bottom: 12px;
+        font-size: 16px;
+      });
+    }
+
+    .desc {
+      margin-bottom: 10px;
+      color: @grey-5;
+      font-size: 14px;
+      min-height: 44px;
+
+      .mobile({
+        margin-bottom: 8px;
+        font-size: 12px;
+      });
+    }
+
+  }
+
+  .body {
+    flex: 1;
+    padding: 20px 24px;
+
+    .mobile({
+      padding: 16px 16px 0 16px;
+    });
+
+    .category {
+      font-size: 14px;
+      color: @grey-7;
+
+      .capacity {
+        font-size: 14px;
+        color: @orange-6;
+        margin-left: 5px;
+      }
+
+    }
+
+    .categoryDesc {
+      font-size: 14px;
+      color: @grey-6;
+      margin-bottom: 20px;
+    }
+
+    .row {
+      margin-bottom: 12px;
+      text-align: left;
+      color: @grey-7;
+
+      .mobile({
+        font-size: 12px;
+      });
+    }
+
+    .icon {
+      margin-right: 9px;
+    }
+  }
+
+  .footer {
+    padding: 32px 24px;
+
+    .mobile({
+      padding: 0 16px 16px;
+    });
+
+    .price {
+      color: @orange-6;
+      font-size: 14px;
+
+      .number {
+        margin-right: 4px;
+        font-size: 24px;
+      }
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 20px;
+
+      .mobile({
+        margin-top: 12px;
+      });
+    }
+  }
+}
+
+.card + .card {
+  margin-left: 24px;
+
+  .mobile({
+    margin-top: 16px;
+    margin-left: 0;
+  });
+}
