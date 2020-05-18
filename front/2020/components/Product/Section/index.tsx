@@ -15,22 +15,25 @@ import style from './index.less'
 
 export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
   /** 区块的头部内容，默认使用 `title` 的值 */
+  /** TODO: title 用于展示导航栏信息，header 用于展示模块标题，subtitle 用于展示模块副标题 */
+  /** 从语义上来讲 header 应该包含模块的标题 + 副标题 */
+  /** 因此这边再叫 header 就不太合理了，后面需要改掉（titleForView?） */
   header?: ReactNode
-  subtitile?: ReactNode
+  subtitle?: ReactNode
   children: ReactNode
   grey?: boolean
   style?: CSSProperties
 }
 
 export default function Section(props: SectionProps) {
-  const { name, title, subtitile = null, header, children, grey = false, ...rest } = props
+  const { name, title, subtitle = null, header, children, grey = false, ...rest } = props
 
   return (
     <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>
       <div className={style.wrapper} {...rest}>
         <div className={style.intro}>
           <div className={style.title}>{header != null ? header : title}</div>
-          {subtitile ? <div className={style.subtitile}>{subtitile}</div> : null}
+          {subtitle ? <div className={style.subtitle}>{subtitle}</div> : null}
         </div>
         {children}
       </div>

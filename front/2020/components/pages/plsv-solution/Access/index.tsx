@@ -43,7 +43,6 @@ export default function PlsvAccess() {
       <div className={styles.linkWrapper}>
         <UIButton
           className={styles.link}
-          key="consult"
           onClick={handleConsult}
         >
           立即咨询<ArrowIcon className={styles.arrow} />

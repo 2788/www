@@ -16,7 +16,7 @@ export default function PlsvSolution() {
       name="solution"
       title="解决方案"
       header="端到端的解决方案"
-      subtitile="一站式短视频服务，让你专注核心业务创新"
+      subtitle="一站式短视频服务，让你专注核心业务创新"
       grey
     >
       <div className={styles.wrapper}>TODO</div>

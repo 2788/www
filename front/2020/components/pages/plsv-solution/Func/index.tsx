@@ -17,7 +17,7 @@ import styles from './style.less'
 
 export default function PlsvFunc() {
   return (
-    <Section name="func" title="功能大全" subtitile="美颜、特效、表情、贴纸，让用户更加愉快地“玩耍”">
+    <Section name="func" title="功能大全" subtitle="美颜、特效、表情、贴纸，让用户更加愉快地“玩耍”">
       <Tabs defaultValue="1">
         <TabPane tab="采集处理" value="1">
           <div className={styles.group}>

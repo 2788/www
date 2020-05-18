@@ -21,7 +21,7 @@ import styles from './style.less'
 
 export default function PlsvAdvantage() {
   return (
-    <Feature name="advantage" title="方案优势" subtitile="化繁为简，轻松上线应用程序">
+    <Feature name="advantage" title="方案优势" subtitle="化繁为简，轻松上线应用程序">
       <FeatureGroup>
         <FeatureItem
           icon={<AdvantageIconOne className={styles.icon} />}

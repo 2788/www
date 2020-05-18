@@ -24,7 +24,7 @@ export default function PlsvClientLogo() {
     <CustomerCaseGroup
       name="client"
       title="客户案例"
-      subtitile="群雄逐鹿短视频，他们都在用七牛"
+      subtitle="群雄逐鹿短视频，他们都在用七牛"
     >
       <CustomerCase
         pic={(<img src={ClientIconJumeiURL} className={styles.icon} title="聚美优品" alt="聚美优品" />)}
