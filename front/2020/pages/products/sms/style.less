@@ -1,0 +1,42 @@
+@import '~utils/less/index.less';
+
+.scenePanel {
+  align-items: center;
+}
+
+.sceneImg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.sceneDetail {
+  flex-basis: 376px !important;
+  margin-left: 0 !important;
+  padding: 20px;
+  min-height: 312px;
+
+  .mobile({
+    min-height: unset;
+    font-size: 12px;
+  });
+}
+
+.sceneTitle {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+
+  .mobile({
+    display: none;
+  });
+}
+
+.sceneDesc {
+  margin-top: 12px;
+  line-height: 22px;
+  color: @grey-6;
+
+  .mobile({
+    margin-top: 0;
+  });
+}

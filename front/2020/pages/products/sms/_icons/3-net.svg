@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="54px" viewBox="0 0 62 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>shape-triangle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="基础服务-云短信✅" transform="translate(-1329.000000, -724.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 543.000000)">
+                <g id="01" transform="translate(1172.000000, 148.000000)">
+                    <g id="shape-triangle" transform="translate(158.000000, 34.000000)">
+                        <line x1="48" y1="46" x2="12" y2="46" id="路径" stroke="#00AAE7"></line>
+                        <line x1="33.6" y1="12" x2="50.4" y2="40" id="路径" stroke="#00AAE7"></line>
+                        <line x1="9.6" y1="40" x2="26.4" y2="12" id="路径" stroke="#00AAE7"></line>
+                        <rect id="矩形" stroke="#333333" stroke-linecap="square" x="48" y="40" width="12" height="12"></rect>
+                        <rect id="矩形" stroke="#333333" stroke-linecap="square" x="24" y="0" width="12" height="12"></rect>
+                        <rect id="矩形" stroke="#333333" stroke-linecap="square" x="0" y="40" width="12" height="12"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

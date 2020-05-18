@@ -16,7 +16,7 @@ import imgQingtingfm from './qingtingfm.png'
 
 export default function QvmCases() {
   return (
-    <CustomerCaseGroup>
+    <CustomerCaseGroup header="他们都在用七牛">
       <CustomerCase pic={imgChangba} />
       <CustomerCase pic={imgYidong} />
       <CustomerCase pic={imgPingan} />
