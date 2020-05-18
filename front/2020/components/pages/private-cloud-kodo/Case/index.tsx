@@ -8,14 +8,25 @@ import React from 'react'
 
 import Section from 'components/Product/Section'
 
-import styles from './style.less'
+import Pc from './Pc'
+import Mobile from './Mobile'
 
-// TODO
+import { useMobile } from 'hooks/ua'
 
 export default function PrivateCloudKodoCase() {
+  const isMobile = useMobile()
+
+  function renderMain() {
+    if (isMobile) {
+      return <Mobile />
+    }
+
+    return <Pc />
+  }
+
   return (
     <Section name="case" title="客户案例">
-      <div className={styles.wrapper}>TODO</div>
+      {renderMain()}
     </Section>
   )
 }

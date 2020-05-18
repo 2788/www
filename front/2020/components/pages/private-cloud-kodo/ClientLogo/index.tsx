@@ -41,10 +41,10 @@ export default function PrivateCloudKodoClientLogo() {
         pic={(<img src={ClientIconCnpcURL} className={styles.icon} title="中国石油" alt="中国石油" />)}
       />
       <CustomerCase
-        pic={(<img src={ClientIconYingshiURL} className={styles.icon} title="萤石" alt="萤石" />)}
+        pic={(<img src={ClientIconYingshiURL} className={styles.icon} title="海康萤石" alt="海康萤石" />)}
       />
       <CustomerCase
-        pic={(<img src={ClientIconEricssonURL} className={styles.icon} title="ERICSSON" alt="ERICSSON" />)}
+        pic={(<img src={ClientIconEricssonURL} className={styles.icon} title="爱立信" alt="爱立信" />)}
       />
     </CustomerCaseGroup>
   )

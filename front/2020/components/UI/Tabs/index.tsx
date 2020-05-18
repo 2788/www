@@ -29,9 +29,11 @@ export type Props = {
   className?: string
   /** 尺寸 */
   size?: Size
+  /** 是否不显示 shadow */
+  noShadow?: boolean
 }
 
-export default function Tabs({ children, className, defaultValue, value = null, onChange, size = 'default' }: Props) {
+export default function Tabs({ children, className, defaultValue, value = null, onChange, size = 'default', noShadow = false }: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
   const tabList: ReactElement[] = []
   const tabPanes: ReactElement[] = []
@@ -74,7 +76,7 @@ export default function Tabs({ children, className, defaultValue, value = null, 
   return (
     <tabContext.Provider value={{ onChange: handleChange, value: active }}>
       <div className={wrapperClass}>
-        <ul className={style.header}>
+        <ul className={classnames(style.header, noShadow && style.noShadow)}>
           {tabList}
         </ul>
         {content}
@@ -116,7 +118,7 @@ export function Tab({ value, children }: TabProps) {
 }
 
 type TabPaneProps = {
-  tab: string
+  tab: ReactNode
   value: string
   className?: string
   children: ReactNode

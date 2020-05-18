@@ -5,6 +5,151 @@
 
 @import '~utils/less/index.less';
 
-.wrapper {
-  // TODO
+
+.tabIcon {
+  width: 140px;
+  height: 60px;
+  margin-bottom: 12px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &.renMinWang {
+    background-image: url(./case-icon-renminwang-d.png);
+
+    &.active,
+    &:hover {
+      background-image: url(./case-icon-renminwang-h.png);
+    }
+  }
+
+  &.jiangSuTV {
+    background-image: url(./case-icon-jiangsutv-d.png);
+
+    &.active,
+    &:hover {
+      background-image: url(./case-icon-jiangsutv-h.png);
+    }
+  }
+
+  &.chinaMobile {
+    background-image: url(./case-icon-chinamobile-d.png);
+
+    &.active,
+    &:hover {
+      background-image: url(./case-icon-chinamobile-h.png);
+    }
+  }
+
+  &.yingShi {
+    background-image: url(./case-icon-yingshi-d.png);
+
+    &.active,
+    &:hover {
+      background-image: url(./case-icon-yingshi-h.png);
+    }
+  }
+
+  &.pingAn {
+    background-image: url(./case-icon-pingan-d.png);
+
+    &.active,
+    &:hover {
+      background-image: url(./case-icon-pingan-h.png);
+    }
+  }
+
+  &.fengHuang {
+    background-image: url(./case-icon-fenghuang-d.png);
+
+    &.active,
+    &:hover {
+      background-image: url(./case-icon-fenghuang-h.png);
+    }
+  }
+}
+
+.panel {
+  padding: 28px 36px 40px;
+  background-color: @grey-1;
+  box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+  border: 1px solid @grey-3;
+
+  .mobile({
+    padding: 20px;
+    background-color: #FAFAFA;
+    box-shadow: none;
+    border: none;
+    text-align: left;
+  });
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: @grey-7;
+  line-height: 22px;
+}
+
+.group {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+
+  .mobile({
+    margin-top: 0;
+    flex-direction: column;
+  });
+}
+
+.item {
+  flex: 1 1;
+
+  p {
+    margin-top: 8px;
+    color: @grey-6;
+    line-height: 22px;
+  }
+
+  &:not(:first-child) {
+    margin-left: 60px;
+  }
+
+  .mobile({
+    margin-bottom: 12px;
+
+    p {
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    &:not(:first-child) {
+      margin-left: 0;
+    }
+  });
+}
+
+.itemTitle {
+  font-weight: 600;
+  color: @grey-7;
+  line-height: 22px;
+
+  .mobile({
+    font-size: 14px;
+  });
+}
+
+.mobile {
+  :global {
+    .rc-menu-submenu {
+      &:first-child {
+        border: none;
+      }
+    }
+
+    .rc-menu-submenu-title {
+      padding-left: 16px !important;
+      text-align: left;
+    }
+  }
 }
