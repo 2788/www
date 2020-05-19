@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 
 import Tabs, { TabPane } from 'components/UI/Tabs'
@@ -31,7 +31,7 @@ export default function Pc() {
     <Tabs
       value={active}
       onChange={handleTabsChange}
-      noShadow
+      shadow={false}
     >
       <TabPane
         tab={tabIconMap.renMinWang}

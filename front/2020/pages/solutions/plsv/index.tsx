@@ -2,11 +2,12 @@
  * @file 解决方案”短视频“
  */
 
-import React from 'react'
+import React, { ReactNode } from 'react'
 
+import UIButton from 'components/UI/Button'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import Navigator from 'components/Product/Navigator'
+import Navigator, { Button as NavButton } from 'components/Product/Navigator'
 import PlsvAdvantage from 'components/pages/plsv-solution/Advantage'
 import PlsvFeature from 'components/pages/plsv-solution/Feature'
 import PlsvFunc from 'components/pages/plsv-solution/Func'
@@ -16,16 +17,22 @@ import PlsvAccess from 'components/pages/plsv-solution/Access'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
-import { useBtns } from 'hooks/product-btn'
-
 import BannerIcon from './images/banner-icon.svg'
 
 function PageContent() {
-  const btns = useBtns(
-    { href: 'https://portal.qiniu.com/sdk/licenses?showDrawer', children: '0 元体验' },
-    { href: 'https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download', children: '短视频 SDK' },
-    { href: 'https://developer.qiniu.com/pili/sdk/3731/short-video', children: 'SDK 功能列表' }
-  )
+  const bannerBtns:  ReactNode[] = [(
+    <UIButton key="exp" href="https://portal.qiniu.com/sdk/licenses?showDrawer">
+      0 元体验
+    </UIButton>
+  ), (
+    <UIButton key="sdk" href="https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download">
+      短视频 SDK
+    </UIButton>
+  ), (
+    <UIButton key="func" type="hollow" href="https://developer.qiniu.com/pili/sdk/3731/short-video">
+      SDK 功能列表
+    </UIButton>
+  )]
 
   return (
     <>
@@ -34,10 +41,20 @@ function PageContent() {
         desc="七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，
         集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
         bgColor="#34A1EC"
-        btns={btns.banner}
+        btns={bannerBtns}
         icon={<BannerIcon />} />
 
-      <Navigator>{btns.nav}</Navigator>
+      <Navigator>
+        <NavButton type="primary" href="https://portal.qiniu.com/sdk/licenses?showDrawer">
+          0 元体验
+        </NavButton>
+        <NavButton type="primary" href="https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download">
+          短视频 SDK
+        </NavButton>
+        <NavButton withBorder href="https://developer.qiniu.com/pili/sdk/3731/short-video">
+          SDK 功能列表
+        </NavButton>
+      </Navigator>
 
       <PlsvAdvantage />
 

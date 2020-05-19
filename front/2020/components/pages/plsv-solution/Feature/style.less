@@ -5,6 +5,151 @@
 
 @import '~utils/less/index.less';
 
-.wrapper {
-  // TODO
+.pc {
+  display: flex;
+  justify-content: center;
+
+  .img {
+    position: relative;
+    padding: 288px 180px;
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-image: url(./feature-img-phone.png);
+    flex: 0 0;
+  }
+
+  .video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 94px 0 0;
+    display: none;
+    opacity: 0;
+
+    &.active {
+      display: block;
+      opacity: 1;
+    }
+  }
+
+  .content {
+    padding: 16px 0 0 56px;
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item {
+    padding: 50px 50px 80px;
+    border: 1px solid @grey-3;
+    background-color: @grey-1;
+    box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+    display: none;
+    opacity: 0;
+
+    &.active {
+      display: flex;
+      opacity: 1;
+    }
+  }
+
+  .order {
+    font-size: 36px;
+    color: @grey-7;
+    line-height: 50px;
+  }
+
+  .info {
+    padding-left: 32px;
+    text-align: left;
+  }
+
+  .title {
+    font-size: 32px;
+    color: @grey-7;
+    line-height: 50px;
+  }
+
+  .desc {
+    padding-top: 24px;
+    color: @grey-7;
+    line-height: 20px;
+  }
+
+  .tabs {
+    padding: 74px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tabItem {
+    width: 128px;
+    padding: 50px 0;
+    border-radius: 4px;
+    color: @blue-6;
+    border: 1px solid @grey-3;
+    background-color: @grey-1;
+    text-align: center;
+    box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+    opacity: 0.8;
+    filter: grayscale(100%);
+    cursor: pointer;
+
+    &.active {
+      border: none;
+      box-shadow: 0 0 0 4px @blue-6;
+      opacity: 1;
+      filter: none;
+    }
+
+    &:hover {
+      opacity: 1;
+      filter: none;
+    }
+  }
+
+  .tabIcon {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .tabTitle {
+    padding-top: 20px;
+  }
+}
+
+.mobile {
+  .subMenu {
+    padding: 30px 40px;
+    text-align: center;
+    background-color: #FAFAFA;
+  }
+
+  .icon {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .desc {
+    margin-top: 20px;
+    color: @grey-6;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  :global {
+    .rc-menu-submenu {
+      &:first-child {
+        border: none;
+      }
+    }
+
+    .rc-menu-submenu-title {
+      padding-left: 16px !important;
+      text-align: left;
+    }
+  }
 }

@@ -13,59 +13,37 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 0.8;
+  filter: grayscale(100%);
 
   &.renMinWang {
-    background-image: url(./case-icon-renminwang-d.png);
-
-    &.active,
-    &:hover {
-      background-image: url(./case-icon-renminwang-h.png);
-    }
+    background-image: url(./case-icon-renminwang.png);
   }
 
   &.jiangSuTV {
-    background-image: url(./case-icon-jiangsutv-d.png);
-
-    &.active,
-    &:hover {
-      background-image: url(./case-icon-jiangsutv-h.png);
-    }
+    background-image: url(./case-icon-jiangsutv.png);
   }
 
   &.chinaMobile {
-    background-image: url(./case-icon-chinamobile-d.png);
-
-    &.active,
-    &:hover {
-      background-image: url(./case-icon-chinamobile-h.png);
-    }
+    background-image: url(./case-icon-chinamobile.png);
   }
 
   &.yingShi {
-    background-image: url(./case-icon-yingshi-d.png);
-
-    &.active,
-    &:hover {
-      background-image: url(./case-icon-yingshi-h.png);
-    }
+    background-image: url(./case-icon-yingshi.png);
   }
 
   &.pingAn {
-    background-image: url(./case-icon-pingan-d.png);
-
-    &.active,
-    &:hover {
-      background-image: url(./case-icon-pingan-h.png);
-    }
+    background-image: url(./case-icon-pingan.png);
   }
 
   &.fengHuang {
-    background-image: url(./case-icon-fenghuang-d.png);
+    background-image: url(./case-icon-fenghuang.png);
+  }
 
-    &.active,
-    &:hover {
-      background-image: url(./case-icon-fenghuang-h.png);
-    }
+  &.active,
+  &:hover {
+    opacity: 1;
+    filter: none;
   }
 }
 
