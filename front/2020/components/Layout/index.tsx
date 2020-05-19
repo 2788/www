@@ -17,8 +17,14 @@ export type Props = {
 
 // TODO: 这个是不是需要调整，@市场部同学
 const defaultTitle = '七牛云 - 国内领先的企业级云服务商'
+const titleSuffix = ' - 七牛云'
 
-export default function Layout({ children, title = defaultTitle }: Props) {
+export default function Layout({ children, title }: Props) {
+  title = (
+    title == null
+    ? defaultTitle
+    : title + titleSuffix
+  )
   return (
     <>
       <Head>

@@ -9,7 +9,8 @@
 
 import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
-import { Block, BlockProps } from 'components/Product/Navigator'
+import { useMobile } from 'hooks/ua'
+import { Block, BlockProps, useIndex } from 'components/Product/Navigator'
 
 import style from './index.less'
 
@@ -26,7 +27,17 @@ export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
 }
 
 export default function Section(props: SectionProps) {
-  const { name, title, subtitle = null, header, children, grey = false, ...rest } = props
+  const { name, title, subtitle = null, header, children, grey: propGrey, ...rest } = props
+
+  const isPc = !useMobile()
+  const blockIndex = useIndex(name)
+  const defaultGrey = (
+    isPc && blockIndex >= 0
+    ? (blockIndex % 2 === 1) // PC 端默认下标基数为灰，偶数为白（下标从 0 开始）
+    : false
+  )
+
+  const grey = propGrey != null ? propGrey : defaultGrey
 
   return (
     <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>

@@ -15,7 +15,7 @@ export function Step({ icon, url, children }: PropsWithChildren<StepProps>) {
       {
         typeof icon === 'string'
           ? <img className={styles.stepIcon} src={icon} />
-          : icon
+          : <div className={styles.stepIconWrapper}>{icon}</div>
       }
       <div className={styles.stepName}>{children}</div>
       {

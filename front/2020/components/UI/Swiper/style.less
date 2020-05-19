@@ -1,0 +1,27 @@
+@import '~utils/less/index.less';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .paginationItem {
+    display: block;
+    width: 20px;
+    height: 4px;
+    background-color: #DBDBDB;
+    cursor: pointer;
+
+    &.active {
+      background-color: @grey-5;
+    }
+
+    + .paginationItem {
+      margin-left: 4px;
+    }
+  }
+}
+
+.arrowPrev, .arrowNext {
+  cursor: pointer;
+}

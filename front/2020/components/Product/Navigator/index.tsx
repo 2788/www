@@ -4,6 +4,7 @@
  */
 
 import React, { ReactNode, useContext } from 'react'
+import { findIndex } from 'lodash'
 import Link from 'components/Link'
 import Tabs, { Tab } from '../../UI/Tabs'
 import UIButton, { Props as UIButtonProps } from '../../UI/Button'
@@ -95,3 +96,14 @@ export function Button(props: ButtonProps) {
   return <UIButton {...props} className={className} />
 }
 
+export function useIndex(name: string) {
+  const contextValue = useContext(context)
+  if (!contextValue) {
+    throw new Error('`useIndex` should be used in descendants of `Navigatable`')
+  }
+
+  return findIndex(
+    contextValue.blocks,
+    block => block.name === name
+  )
+}

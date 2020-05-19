@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>love-card</title>
+    <g id="活动与合作" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="邀请好友" transform="translate(-779.000000, -1384.000000)" stroke-width="2">
+            <g id="客户按钮" transform="translate(0.000000, 1207.000000)">
+                <g id="编组-20" transform="translate(442.000000, 148.000000)">
+                    <g id="编组-6" transform="translate(308.000000, 0.000000)">
+                        <g id="love-card" transform="translate(30.000000, 30.000000)">
+                            <path d="M33.6923065,12 C32.1538429,12 30.7692299,12.7692308 30,14 C29.2307682,12.7692308 27.8461533,12 26.3076916,12 C23.8461533,12 22,14 22,16.4615383 C22,20.7692299 30,27.3846149 30,27.3846149 C30,27.3846149 38,20.7692298 38,16.4615383 C38,14 36.1538467,12 33.6923065,12 Z" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                            <polyline id="路径" stroke="#333333" points="10 20 0 25.7999992 0 60 60 60 60 25.7999992 50 20"></polyline>
+                            <polyline id="路径" stroke="#333333" points="10 31.4000015 10 0 50 0 50 31.2000008"></polyline>
+                            <line x1="0" y1="25.7999992" x2="60" y2="60" id="路径" stroke="#333333"></line>
+                            <line x1="60" y1="25.7999992" x2="29.2000008" y2="42.4000015" id="路径" stroke="#333333"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

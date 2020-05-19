@@ -30,3 +30,16 @@ declare module '*.less' {
 
   export = cssModuleExport
 }
+
+declare module 'react-swipeable-views' {
+  export type Props = React.PropsWithChildren<{
+    index?: number
+    onIndexChange?(index: number): void
+    children?: React.ReactNode
+  }>
+
+  // eslint-disable-next-line react/prefer-stateless-function
+  class SwipeableViews extends React.Component<Props> {}
+
+  export default SwipeableViews
+}

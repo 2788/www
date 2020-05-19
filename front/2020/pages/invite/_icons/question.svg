@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>c-question</title>
+    <g id="活动与合作" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="邀请好友" transform="translate(-399.000000, -1881.000000)">
+            <g id="客户按钮" transform="translate(0.000000, 1703.000000)">
+                <g id="编组-16" transform="translate(372.000000, 72.000000)">
+                    <g id="编组-36" transform="translate(0.000000, 76.000000)">
+                        <g id="c-question" transform="translate(28.000000, 31.000000)">
+                            <circle id="椭圆形" stroke="#333333" stroke-width="2" stroke-linecap="square" cx="11" cy="11" r="11"></circle>
+                            <circle id="椭圆形" fill="#00AAE7" fill-rule="nonzero" cx="11" cy="17" r="1"></circle>
+                            <path d="M8.853,5.56 C10.833,4.685 13.395,4.789 14.27,6.205 C15.145,7.621 14.541,9.268 13.041,10.539 C11.541,11.81 11,12.5 11,13.5" id="路径" stroke="#00AAE7" stroke-width="2" stroke-linecap="square"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

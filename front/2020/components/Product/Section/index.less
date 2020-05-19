@@ -2,10 +2,22 @@
 
 .blockWraper {
   overflow-x: auto;
+  background-color: @grey-1;
+
+
+  &.grey {
+    background: #FAFAFA;
+  }
 
   .mobile({
     overflow-x: hidden;
   });
+
+  + .blockWraper {
+    .mobile({
+      margin-top: 16px;
+    });
+  }
 }
 
 .wrapper {
@@ -16,10 +28,6 @@
   .mobile({
     padding: 16px;
   });
-}
-
-.grey {
-  background: #FAFAFA;
 }
 
 .intro {

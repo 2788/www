@@ -1,0 +1,212 @@
+@import '~utils/less/index.less';
+
+.blueLink() {
+  color: @blue-6;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.banner {
+  background-color: #34A1EC;
+
+  .bannerContent {
+    .centered();
+
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: @grey-1;
+
+    .mobile({
+      padding: 40px 16px;
+      height: auto;
+    });
+
+    .title {
+      font-size: 50px;
+      text-shadow: 0 8px 16px rgba(30,121,183,0.5);
+
+      .mobile({
+        font-size: 24px;
+        line-height: 34px;
+      });
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      line-height: 33px;
+      font-size: 24px;
+      font-weight: 400;
+
+      .mobile({
+        margin-top: 8px;
+        font-size: 14px;
+        line-height: 22px;
+      });
+    }
+
+    .btnLine {
+      margin-top: 29px;
+
+      .mobile({
+        margin-top: 20px;
+      });
+    }
+  }
+}
+
+.rewardLink {
+  display: block;
+  font-size: 16px;
+  margin-top: 12px;
+
+  .mobile({
+    font-size: 14px;
+  });
+
+  a {
+    .blueLink();
+  }
+}
+
+.rewardTable {
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
+
+  th {
+    height: 64px;
+    font-size: 20px;
+    font-weight: normal;
+    color: @grey-1;
+    background-color: @blue-6;
+
+    .mobile({
+      font-size: 16px;
+    });
+  }
+
+  td {
+    padding: 15px 24px;
+    border: 1px solid @grey-3;
+    vertical-align: top;
+    text-align: left;
+
+    .mobile({
+      font-size: 12px;
+    });
+  }
+
+  .rewardItem {
+    margin-left: 12px;
+    padding-left: 2px;
+    position: relative;
+    list-style-image: url(./_icons/gift.svg);
+  }
+}
+
+.processLink {
+  margin-top: 64px - 28px; // 28px 是 access process 多出来的空白
+  font-size: 20px;
+  height: 28px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .mobile({
+    margin-top: 44px - 28px; // 28px 是 access process 多出来的空白
+    font-size: 16px;
+    line-height: 20px;
+  });
+
+  a {
+    .blueLink();
+  }
+
+  .processLinkIcon {
+    margin-left: 1em;
+
+    .mobile({
+      width: 16px;
+      height: 16px;
+    });
+  }
+}
+
+.faqItem {
+  position: relative;
+  padding: 28px 28px 28px 62px;
+
+  .mobile({
+    padding: 16px 16px 16px 50px;
+  });
+
+  .faqIcon {
+    position: absolute;
+    left: 28px;
+    top: 30px;
+
+    .mobile({
+      width: 20px;
+      height: 20px;
+      left: 16px;
+      top: 18px;
+    });
+  }
+
+  .faqTitle {
+    font-size: 20px;
+    line-height: 1.4em;
+    font-weight: normal;
+
+    .mobile({
+      font-size: 16px;
+    });
+  }
+
+  .faqContent {
+    margin-top: 20px;
+    color: @grey-6;
+
+    .mobile({
+      margin-top: 10px;
+    });
+  }
+}
+
+.casesSwiperWrapper {
+  position: relative;
+
+  @arrowSize: 68px;
+  @arrowMargin: 56px;
+
+  .casesArrowPrev, .casesArrowNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .mobile({
+      display: none;
+    });
+  }
+
+  .casesArrowPrev {
+    left: -(@arrowSize + @arrowMargin);
+  }
+
+  .casesArrowNext {
+    right: -(@arrowSize + @arrowMargin);
+  }
+
+}
+
+.casesPagination {
+  margin-top: 24px;
+
+  .mobile({
+    margin-top: 12px;
+  });
+}

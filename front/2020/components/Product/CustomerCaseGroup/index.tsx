@@ -29,6 +29,15 @@ export function CustomerCase({ pic }: PropsWithChildren<ICustomerCaseProps>) {
   )
 }
 
+export function RawCustomerCaseGroup({ children }: PropsWithChildren<{}>) {
+  const isMobile = useMobile()
+  return (
+    <ul className={classNames(styles.customerCaseGroup, { [styles.mobile]: isMobile })}>
+      {children}
+    </ul>
+  )
+}
+
 CustomerCaseGroup.defaultProps = {
   name: 'customer-cases',
   title: '客户案例'
@@ -38,12 +47,9 @@ export default function CustomerCaseGroup({
   children,
   ...sectionProps
 }: PropsWithChildren<SectionProps>) {
-  const isMobile = useMobile()
   return (
     <Section {...sectionProps}>
-      <ul className={classNames(styles.customerCaseGroup, { [styles.mobile]: isMobile })}>
-        {children}
-      </ul>
+      <RawCustomerCaseGroup>{children}</RawCustomerCaseGroup>
     </Section>
   )
 }
