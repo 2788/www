@@ -17,11 +17,12 @@ export type BannerContext = {
 export const BannerContext = createContext<BannerContext>({} as BannerContext)
 
 export type PriceBannerProps = {
+  product: string
   children: ReactNode
 }
 
 export default function PriceBanner(props: PriceBannerProps) {
-  const { children } = props
+  const { children, product } = props
   const [query, setQuery] = useQueryValue<Active>('tab', 'price')
   const [active, setActive] = useState<Active>(query)
 
@@ -50,7 +51,7 @@ export default function PriceBanner(props: PriceBannerProps) {
       <div className={style.bannerWrapper}>
         <div className={style.content}>
           <div className={style.actions}>
-            <div className={style.title}>价格 | CDN</div>
+            <div className={style.title}>{product}</div>
             <Button className={style.btn}>查看其他产品价格</Button>
           </div>
           <div className={style.navigator}>
