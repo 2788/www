@@ -3,14 +3,15 @@
  */
 
 import React, { useState } from 'react'
+import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 import { RawAccessProcess as AccessProcess, Step as AccessStep } from 'components/Product/AccessProcess'
 import Section from 'components/Product/Section'
 import IconStepTODO from './step-todo.svg'
 import style from './style.less'
 
 enum ProcessType {
-  IdAuth, // 活体人脸身份验证
-  FaceCompare // 活体人脸比对
+  IdAuth = 'id-auth', // 活体人脸身份验证
+  FaceCompare = 'face-compare' // 活体人脸比对
 }
 
 const typeTextMap = {
@@ -58,32 +59,18 @@ export default function FaceIdUsage() {
     </div>
   )
 
-  const tabsView = (
-    <div className={style.tabs}>
-      <Tab type={ProcessType.IdAuth} activeType={activeType} setActiveType={setActiveType} />
-      <Tab type={ProcessType.FaceCompare} activeType={activeType} setActiveType={setActiveType} />
-    </div>
+  const radiosView = (
+    <RadioGroup className={style.radios} value={activeType} onChange={t => setActiveType(t as ProcessType)}>
+      <Radio className={style.radio} value={ProcessType.IdAuth}>{typeTextMap[ProcessType.IdAuth]}</Radio>
+      <Radio className={style.radio} value={ProcessType.FaceCompare}>{typeTextMap[ProcessType.FaceCompare]}</Radio>
+    </RadioGroup>
   )
 
   return (
     <Section name="usage" title="使用流程" header="产品使用流程">
-      {tabsView}
+      {radiosView}
       {processIdAuthView}
       {processFaceCompareView}
     </Section>
-  )
-}
-
-type TabProps = {
-  type: ProcessType
-  activeType: ProcessType
-  setActiveType: (type: ProcessType) => void
-}
-
-function Tab({ type, activeType, setActiveType }: TabProps) {
-  const className = [style.tab, type === activeType && style.active].filter(Boolean).join(' ')
-  const text = typeTextMap[type]
-  return (
-    <div className={className} onClick={() => setActiveType(type)}>{text}</div>
   )
 }

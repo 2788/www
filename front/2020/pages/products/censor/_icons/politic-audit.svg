@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>white-house</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="智能视频-内容审核✅" transform="translate(-1058.000000, -1196.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1019.000000)">
+                <g id="01" transform="translate(951.000000, 148.000000)">
+                    <g id="white-house" transform="translate(108.000000, 30.000000)">
+                        <polyline id="路径" stroke="#00AAE7" stroke-linecap="square" points="10 60 0 60 0 46 8 46"></polyline>
+                        <polyline id="路径" stroke="#00AAE7" stroke-linecap="square" points="50 60 60 60 60 46 52 46"></polyline>
+                        <line x1="30" y1="12" x2="30" y2="0" id="路径" stroke="#00AAE7" stroke-linecap="square"></line>
+                        <rect id="矩形" stroke="#00AAE7" stroke-linecap="square" x="30" y="2" width="8" height="4"></rect>
+                        <polyline id="路径" stroke="#00AAE7" stroke-linecap="square" points="34 60 34 50 26 50 26 60"></polyline>
+                        <line x1="8" y1="28" x2="52" y2="28" id="路径" stroke="#333333"></line>
+                        <line x1="8" y1="36" x2="52" y2="36" id="路径" stroke="#333333"></line>
+                        <line x1="17" y1="60" x2="17" y2="36" id="路径" stroke="#333333"></line>
+                        <line x1="43" y1="60" x2="43" y2="36" id="路径" stroke="#333333"></line>
+                        <polygon id="路径" stroke="#333333" stroke-linecap="square" points="52 28 52 60 8 60 8 28 30 12"></polygon>
+                        <line x1="26" y1="43" x2="34" y2="43" id="路径" stroke="#333333" stroke-linecap="square"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

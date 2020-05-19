@@ -1,0 +1,99 @@
+@import '~utils/less/index.less';
+
+.tabs {
+  margin-bottom: 36px;
+}
+
+.playground {
+  display: flex;
+  .left {
+    flex: 1 1 700px
+  }
+  .right {
+    margin-left: 24px;
+    flex: 0 0 376px;
+    overflow-x: hidden;
+  }
+}
+
+.activeBlock {
+  display: flex;
+  .imgBlock, .videoBlock {
+    flex: 1 1 auto;
+    height: 338px;
+    position: relative;
+    text-align: center;
+    img, video {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .resultBlock {
+    flex: 0 0 175px;
+    padding: 20px 24px;
+  }
+  .resultItem {
+    & + .resultItem {
+      margin-top: 20px;
+    }
+    &.nopass {
+      .scene, .suggestion {
+        color: @red-6;
+      }
+    }
+    .scene {
+      font-size: 12px;
+      color: @grey-6;
+    }
+    .suggestion {
+      margin-top: 8px;
+    }
+  }
+}
+
+.inputLine {
+  margin-top: 20px;
+  display: flex;
+
+  .input {
+    flex: 1 1 auto;
+    padding: 7px 8px;
+    border: 1px solid @grey-3;
+  }
+
+  .submitBtn {
+    margin-left: 8px;
+    flex: 0 0 92px;
+  }
+}
+
+.apiResult {
+  .radios {
+    margin-bottom: 20px;
+  }
+}
+
+.resultMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+
+  &.maskLoading {
+    visibility: hidden;
+  }
+  &.maskBlock {
+    background-image: url(./block.png);
+  }
+  &.maskReview {
+    background-image: url(./review.png);
+  }
+  &.maskPass {
+    background-image: url(./pass.png);
+  }
+}

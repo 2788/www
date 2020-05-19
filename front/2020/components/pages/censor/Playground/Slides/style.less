@@ -1,0 +1,41 @@
+@import '~utils/less/index.less';
+
+.slides {
+  .activeBlock {
+    width: 100%;
+  }
+  .thumbnails {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.slide {
+  flex: 1 1 auto;
+  position: relative;
+  height: 56.25%;
+
+  & + .slide {
+    margin-left: 24px;
+  }
+
+  &::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(250, 250, 250, .8);
+  }
+
+  &.active::after {
+    display: none;
+  }
+
+  img, video {
+    width: 100%;
+  }
+}
