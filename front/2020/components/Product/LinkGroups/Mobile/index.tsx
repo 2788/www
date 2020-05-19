@@ -4,19 +4,19 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import { LinkItemProps, LinkGroupProps } from '..'
 
 import styles from './style.less'
 
 export function LinkItem({ children, href }: PropsWithChildren<LinkItemProps>) {
-  const isOuterLink = href && href.indexOf('http') >= 0
-  const content = <div className={styles.linkItem}>{children}</div>
+  // TODO: 默认用 children 作为 title？
+  const anchorTitle = typeof children === 'string' ? children : undefined
   return (
-    isOuterLink
-      ? <a href={href}>{content}</a>
-      : <Link href={href}><a>{content}</a></Link>
+    <Link title={anchorTitle} href={href}>
+      <div className={styles.linkItem}>{children}</div>
+    </Link>
   )
 }
 

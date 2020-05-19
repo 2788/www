@@ -4,7 +4,7 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
 
@@ -20,13 +20,9 @@ interface ILinkItemProps {
 }
 
 function LinkItem({ url, children }: PropsWithChildren<ILinkItemProps>) {
-  const isOuterLink = url && url.indexOf('http') >= 0
-  const content = isOuterLink
-    ? <a href={url} target="_blank" rel="noopener">{children}</a>
-    : <Link href={url}><a>{children}</a></Link>
   return (
     <li className={style.link}>
-      {content}
+      <Link href={url}>{children}</Link>
     </li>
   )
 }

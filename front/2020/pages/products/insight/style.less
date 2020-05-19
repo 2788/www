@@ -1,0 +1,60 @@
+@import '~utils/less/index.less';
+
+.imgAbilities {
+  max-width: 100%;
+  height: auto;
+}
+
+.advantageLink {
+  display: block;
+  margin-top: 12px;
+  color: @blue-6;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .mobile({
+    margin-top: 4px;
+  });
+}
+
+.scenePanel {
+  .sceneImgBlock {
+    text-align: center;
+  }
+  .sceneImg {
+    max-width: 100%;
+    height: auto;
+
+    .mobile({
+      padding: 16px;
+    });
+  }
+
+  .sceneDetail {
+    flex-basis: 376px !important;
+    padding: 20px;
+
+    .mobile({
+      padding: 16px;
+    });
+
+    .sceneTitle {
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 600;
+      margin-bottom: 12px;
+
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+
+    .sceneDesc {
+      font-size: 14px;
+      line-height: 22px;
+      color: @grey-6;
+    }
+  }
+}

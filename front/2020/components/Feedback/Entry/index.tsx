@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 import { useMobile } from '../../../hooks/ua'
 import Button from '../Button'
 import Form from '../Form'
@@ -50,11 +50,9 @@ function FormModal() {
 function FreeTrialModal() {
   return (
     <div className={style.freeTrialModalWrapper}>
-      <Link href="/events/free?entry=index-floatwin">
-        <a className={style.freeTrialLink}>
-          云产品免费体验
-          <i className={style.freeTrialIcon}></i>
-        </a>
+      <Link className={style.freeTrialLink} href="/events/free?entry=index-floatwin">
+        云产品免费体验
+        <i className={style.freeTrialIcon}></i>
       </Link>
     </div>
   )

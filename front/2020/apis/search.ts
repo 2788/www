@@ -3,11 +3,11 @@
  * @description 接口文档 https://cf.qiniu.io/pages/viewpage.action?pageId=43394609
  */
 
+import { siteNameForSearch as site } from 'constants/env'
 import { apiHost } from 'constants/api'
 import { timeout } from 'utils'
 import { get } from 'utils/fetch'
 
-const site = 'www.qiniu.com' // TODO: 添加到配置
 const apiPrefix = `${apiHost}/search`
 
 export enum Tag {

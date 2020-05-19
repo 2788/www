@@ -34,7 +34,8 @@ export function useHash() {
 
     if (!newHash) {
       // 注意这里如果直接通过 `location.hash = ''` 来设置，页面会自动滚到顶部（浏览器行为）
-      // 通过 `history.replaceState` 来避免这个问题，也可以干掉 URL 最后的那个 `#`
+      // 如果通过 `location.replace('')` 来设置，页面会刷新，所以这里通过
+      // `history.replaceState` 来避免这个问题，也可以干掉 URL 最后的那个 `#`
       history.replaceState(
         history.state,
         document.title,
@@ -46,7 +47,7 @@ export function useHash() {
     }
 
     // 如果不以 `#` 开头，就补一个 `#`（好像不补也没关系？）
-    location.hash = (newHash[0] !== '#' ? '#' : '') + newHash
+    location.replace((newHash[0] !== '#' ? '#' : '') + newHash)
   }, [])
 
   return [hash, updateHash] as const

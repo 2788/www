@@ -4,20 +4,19 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 
 import { LinkItemProps, LinkGroupProps } from '..'
 
 import styles from './style.less'
 
 export function LinkItem({ href, children }: PropsWithChildren<LinkItemProps>) {
-  const isOuterLink = href && href.indexOf('http') >= 0
-  const content = isOuterLink
-    ? <a href={href} target="_blank" rel="noopener">{children}</a>
-    : <Link href={href}><a>{children}</a></Link>
+  const anchorTitle = typeof children === 'string' ? children : undefined
   return (
     <li className={styles.item}>
-      {content}
+      <Link title={anchorTitle} href={href}>
+        {children}
+      </Link>
     </li>
   )
 }

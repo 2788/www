@@ -6,7 +6,7 @@
 // TODO: 交互状态，如 hover、active 等，跟 @设计师同学 确认下
 
 import React, { HTMLAttributes, ButtonHTMLAttributes } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 import style from './style.less'
 
 export type Props = HTMLAttributes<HTMLElement> & {
@@ -61,15 +61,8 @@ export default function Button({
     )
   }
 
-  // 简单判断下是否是外部链接
-  if (href.indexOf('http') > -1) {
-    return <a href={href} target="_blank" rel="noopener" {...otherProps} className={className} />
-  }
-
   // else <a>
   return (
-    <Link href={href}>
-      <a {...otherProps} className={className} />
-    </Link>
+    <Link href={href} {...otherProps} className={className} />
   )
 }

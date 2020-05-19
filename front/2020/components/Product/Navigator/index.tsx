@@ -4,7 +4,7 @@
  */
 
 import React, { ReactNode, useContext } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 import Tabs, { Tab } from '../../UI/Tabs'
 import UIButton, { Props as UIButtonProps } from '../../UI/Button'
 import { useSticky } from '../../../hooks/scroll'
@@ -62,7 +62,7 @@ export default function Navigator({ priceLink, children }: Props) {
   const priceLinkView = priceLink && (
     <Tab value={tabPriceLink}>
       <Link href={priceLink}>
-        <a>查看价格<Arrow className={style.priceArrow} /></a>
+        查看价格<Arrow className={style.priceArrow} />
       </Link>
     </Tab>
   )
