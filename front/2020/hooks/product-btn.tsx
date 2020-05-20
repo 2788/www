@@ -29,20 +29,34 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
 
   const bannerBtnViews = [
     firstBtnProps && <Button key={0} {...firstBtnProps} />,
-    ...otherBtnsProps.map(
-      (otherBtn, i) => (
+    ...otherBtnsProps.map((otherBtn, i) => {
+      if (i < otherBtnsProps.length - 1) {
+        return (
+          <Button key={i + 1} {...otherBtn} />
+        )
+      }
+
+      // 最后一个 btn type 为 hollow
+      return (
         <Button key={i + 1} type="hollow" {...otherBtn} />
       )
-    )
+    })
   ].filter(Boolean)
 
   const navBtnsView = [
     firstBtnProps && <NavButton key={0} type="primary" {...firstBtnProps} />,
-    ...otherBtnsProps.map(
-      (otherBtn, i) => (
+    ...otherBtnsProps.map((otherBtn, i) => {
+      if (i < otherBtnsProps.length - 1) {
+        return (
+          <NavButton key={i + 1} type="primary" {...otherBtn} />
+        )
+      }
+
+      // 最后一个 btn withBorder
+      return (
         <NavButton key={i + 1} withBorder {...otherBtn} />
       )
-    )
+    })
   ].filter(Boolean)
 
   return {

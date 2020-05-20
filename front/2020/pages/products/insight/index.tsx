@@ -68,7 +68,7 @@ function PageContent() {
         </PageNoticeGroup>
         <PageNoticeGroup title="福利活动" type="welfares">
           <PageNoticeItem href="https://developer.qiniu.com/insight/manual/4676/free-allowances">
-            免费额度：新增日志数据 1 GB/月，存量日志数据 1 GB/月，日志仓库 1 个/月，API 调用次数 100 万次/月， 了解详情
+            免费额度：新增日志数据 1 GB/月，存量日志数据 1 GB/月，日志仓库 1 个/月，API 调用次数 100 万次/月，了解详情
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
