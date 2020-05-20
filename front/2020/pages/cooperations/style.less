@@ -1,0 +1,56 @@
+@import '~utils/less/index.less';
+
+.banner {
+  background-color: #34A1EC;
+
+  .bannerContent {
+    .centered();
+
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: @grey-1;
+    background-image: url(./banner.png);
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    .mobile({
+      padding: 40px 16px;
+      height: auto;
+    });
+  }
+
+  .title {
+    font-size: 44px;
+    line-height: 1.4em;
+
+    .mobile({
+      font-size: 24px;
+    });
+  }
+
+  .desc {
+    margin-top: 28px;
+    width: 500px;
+    font-size: 16px;
+    line-height: 1.5em;
+
+    .mobile({
+      width: auto;
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 22px;
+    });
+  }
+}
+
+// TODO: 调整 AccessProcess 实现以支持变高的内容
+.stepDesc {
+  margin-top: 8px;
+  width: 220px;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: @grey-5;
+}

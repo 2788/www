@@ -1,0 +1,23 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  .centered();
+  width: 572px;
+
+  :global(.ant-input) {
+    height: 36px;
+    line-height: 36px;
+  }
+
+  :global(.ant-form-explain) {
+    text-align: left;
+  }
+
+  .submitLine {
+    margin-top: 40px;
+
+    .mobile({
+      margin-top: 24px;
+    });
+  }
+}
