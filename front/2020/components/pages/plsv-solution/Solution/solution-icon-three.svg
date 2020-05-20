@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>player</title>
+    <g id="解决方案" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="场景解决方案-短视频解决方案✅" transform="translate(-801.000000, -2965.000000)" stroke-width="2">
+            <g id="应用场景备份" transform="translate(0.000000, 2554.000000)">
+                <g id="矩形-2" transform="translate(772.000000, 184.000000)">
+                    <g id="01" transform="translate(0.000000, 194.000000)">
+                        <g id="编组-41" transform="translate(20.000000, 24.000000)">
+                            <g id="player" transform="translate(10.000000, 10.000000)">
+                                <polygon id="路径" stroke="#00AAE7" points="11 6 19 11 11 16"></polygon>
+                                <line x1="21" y1="22" x2="24" y2="22" id="路径" stroke="#00AAE7"></line>
+                                <line x1="4" y1="22" x2="17" y2="22" id="路径" stroke="#00AAE7"></line>
+                                <line x1="17" y1="20" x2="17" y2="24" id="路径" stroke="#00AAE7"></line>
+                                <rect id="矩形" stroke="#333333" x="0" y="0" width="28" height="28"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

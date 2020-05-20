@@ -28,7 +28,6 @@ export default function PlsvFeature() {
     <Section
       name="feature"
       title="特色功能"
-      grey={isMobile ? false : true}
       style={isMobile ? {} : { paddingBottom: 0 }}
     >
       {renderMain()}

@@ -8,18 +8,31 @@ import React from 'react'
 
 import Section from 'components/Product/Section'
 
-import styles from './style.less'
+import Pc from './Pc'
+import Mobile from './Mobile'
+
+import { useMobile } from 'hooks/ua'
 
 export default function PlsvSolution() {
+  const isMobile = useMobile()
+
+  function renderMain() {
+    if (isMobile) {
+      return <Mobile />
+    }
+
+    return <Pc />
+  }
+
   return (
     <Section
       name="solution"
       title="解决方案"
       header="端到端的解决方案"
       subtitle="一站式短视频服务，让你专注核心业务创新"
-      grey
+      style={isMobile ? {} : { paddingBottom: 0 }}
     >
-      <div className={styles.wrapper}>TODO</div>
+      {renderMain()}
     </Section>
   )
 }
