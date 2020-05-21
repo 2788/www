@@ -60,7 +60,9 @@ export default function PriceBanner(props: PriceBannerProps) {
           </div>
         </div>
       </div>
-      <BannerContext.Provider value={{ active, setActive: handleTabClick }}>{children}</BannerContext.Provider>
+      <BannerContext.Provider value={{ active, setActive: handleTabClick }}>
+        {children}
+      </BannerContext.Provider>
     </>
   )
 }
