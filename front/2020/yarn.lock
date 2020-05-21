@@ -6271,10 +6271,10 @@ react-event-listener@^0.6.0:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-react-icecream@^1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-1.7.3.tgz#73a99131febc0cf79feff8bf3a960a83d752e318"
-  integrity sha512-3WZ4Q6SjuODbiJB3l2WsRHsOiIJW1Mke6kVNcenUiExLPi9xiZ4ocnM/dvCnxA8JIJy/Bet8JitjaSTcDJDiGA==
+react-icecream@^1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-1.7.4.tgz#786d35bbf7f299999400ceb0df428ce6281a9b6a"
+  integrity sha512-4iUof2JPNse+79T5UtvFl/rAW5hj8ZKNnCNT8c5S2A5SMiK7vaY7arcN46F3JCNDwxXOGl4CWBTVqcwHhMiNLw==
   dependencies:
     antd "~3.19.8"
     classnames "^2.2.5"
