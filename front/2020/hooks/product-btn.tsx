@@ -4,15 +4,17 @@
  */
 
 import React, { ReactNode } from 'react'
-import Button from 'components/UI/Button'
+import Button, { } from 'components/UI/Button'
 import { Button as NavButton } from 'components/Product/Navigator'
 import { useMobile } from './ua'
 
 export type BtnOptions = {
+  type?: 'default' | 'primary' | 'hollow',
   children: ReactNode,
   href: string,
   pcOnly?: boolean // 是否仅 PC，默认 false
 } | {
+  type?: 'default' | 'primary' | 'hollow',
   children: ReactNode,
   onClick: () => void,
   pcOnly?: boolean // 是否仅 PC，默认 false

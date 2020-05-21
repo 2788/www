@@ -1,7 +1,11 @@
 @import '~utils/less/index.less';
 
 @advantages-space: 24px;
-@advantages-height: 180px;
+@advantages-height: 140px;
+
+@mobile-advantages-space: 12px;
+@mobile-advantages-height: 88px;
+
 
 .advantages {
   display: flex;
@@ -9,36 +13,51 @@
   flex-direction: row;
   margin: 0 -@advantages-space/2;
 
+  .mobile({
+    margin: 0 -@mobile-advantages-space/2;
+  });
+
   .itemContainer {
     flex: none;
     width: 33.33%;
     padding: @advantages-space/2;
 
+    .mobile({
+      width: 100%;
+      padding: @mobile-advantages-space/2;
+    });
+
     .item {
-      padding: 36px;
+      padding: 28px 36px;
       height: @advantages-height;
       text-align: left;
       box-shadow:0px 4px 8px 0px rgba(51,51,51,0.08);
       border:1px solid rgba(238,238,238,1);
 
+      .mobile({
+        padding: 16px;
+        height: auto;
+      });
+
       .title {
-        font-size: 24px;
+        font-size: 20px;
         color: @grey-7;
         display: inline-block;
-        &:after {
-          content: '';
-          display: block;
-          border: 5px solid rgba(0,170,231,0.2);
-          border-left: none;
-          border-right: none;
-          margin-top: -15px;
-        }
+        color: #00AAE7;
+
+        .mobile({
+          font-size: 16px;
+        });
       }
   
       .desc {
-        margin-top: 16px;
+        margin-top: 12px;
         font-size: 16px;
         color: @grey-6;
+
+        .mobile({
+          font-size: 14px;
+        });
       }
     }
     

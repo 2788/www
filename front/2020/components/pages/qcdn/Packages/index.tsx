@@ -12,7 +12,7 @@ import style from './index.less'
 
 export default function Packages() {
   return (
-    <Section name="packages" title="热销套餐">
+    <Section name="packages" title="热销套餐" grey>
       <Card
         title="新客专享"
         desc="限未使用过 CDN 的客户购买"

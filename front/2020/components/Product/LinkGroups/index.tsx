@@ -43,7 +43,7 @@ export default function LinkGroups({ children, ...sectionProps }: PropsWithChild
   }
   const isMobile = useMobile()
   return (
-    <Section {...sectionProps}>
+    <Section {...sectionProps} style={isMobile ? { padding: '16px 0' } : {}}>
       {
         isMobile
         ? <Mobile.LinkGroups>{children}</Mobile.LinkGroups>

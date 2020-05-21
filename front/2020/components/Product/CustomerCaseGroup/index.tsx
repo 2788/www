@@ -13,15 +13,16 @@ import styles from './style.less'
 
 export interface ICustomerCaseProps {
   pic: ReactNode
+  alt?: string
 }
 
-export function CustomerCase({ pic }: PropsWithChildren<ICustomerCaseProps>) {
+export function CustomerCase({ pic, ...otherProps }: PropsWithChildren<ICustomerCaseProps>) {
   return (
     <li className={styles.caseContainer}>
       <div className={styles.case}>
         {
           typeof pic === 'string'
-            ? <img className={styles.pic} src={pic} />
+            ? <img className={styles.pic} src={pic} {...otherProps} />
             : pic
         }
       </div>

@@ -1,0 +1,89 @@
+/**
+ * @file dora 适用场景 style.less
+ * @author zhuhao <zhuhao@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.sceneContainer {
+  padding: 20px;
+
+  .mobile({
+    padding: 20px 16px;
+  })
+}
+
+.sceneIcon {
+  height: 212px;
+  line-height: 1;
+
+  .mobile({
+    height: 106px;
+    margin-top: 20px;
+  })
+}
+
+.sceneTitle {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: @grey-7;
+  line-height: 22px;
+
+  &.client {
+    padding-top: 20px;
+  }
+}
+
+.sceneContent, .sceneList {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: @grey-6;
+  line-height: 22px;
+
+  .mobile({
+    font-size: 12px;
+    text-align: left;
+    line-height: 18px;
+  })
+}
+
+.sceneList {
+  .item {
+    position: relative;
+    padding-left: 15px;
+    &:before {
+      content: '';
+      border-radius: 50%;
+      border: 3px solid #00AAE7;
+      width: 0;
+      height: 0;
+      font-size: 0;
+      vertical-align: middle;
+      margin-right: 8px;
+      position: absolute;
+      left: 2px;
+      top: 9px;
+    }
+
+    .title {
+      color: @grey-7;
+      margin-right: 15px;
+    }
+
+    .content {
+      display: inline;
+      // max-width: 700px;
+      // vertical-align: top;
+    }
+  }
+}
+
+.clientLogo {
+  width: 160px;
+  line-height: 1;
+
+  .mobile({
+    width: 80px;
+  })
+}

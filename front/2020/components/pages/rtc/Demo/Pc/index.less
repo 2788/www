@@ -1,0 +1,33 @@
+@import '~utils/less/index.less';
+
+.figure {
+  display: inline-block;
+
+  img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+.figure + .figure {
+  margin-left: 368px;
+
+  .mobile({
+    // TODO 移动端适配
+    margin-left: 0;
+    margin-top: 24px;
+  });;
+}
+
+.webDemo {
+  text-align: center;
+  margin-top: 40px;
+
+  .link {
+    color: #00AAE7;
+    font-size: 20px;
+    display: inline-block;
+    padding-right: 30px;
+    .background-image(url(./images/next.svg), right, border-box, 25px);
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>money-time</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="基础服务-CDN✅" transform="translate(-529.000000, -2314.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1844.000000)">
+                <g id="01" transform="translate(372.000000, 441.000000)">
+                    <g id="money-time" transform="translate(158.000000, 30.000000)">
+                        <path d="M36,38 L36,46 C36,49.314 41.373,52 48,52 C54.627,52 60,49.314 60,46 L60,38" id="路径" stroke="#00AAE7"></path>
+                        <path d="M36,46 L36,54 C36,57.314 41.373,60 48,60 C54.627,60 60,57.314 60,54 L60,46" id="路径" stroke="#00AAE7"></path>
+                        <ellipse id="椭圆形" stroke="#00AAE7" stroke-linecap="square" cx="48" cy="38" rx="12" ry="6"></ellipse>
+                        <polyline id="路径" stroke="#333333" stroke-linecap="square" points="26 12 26 26 11 26"></polyline>
+                        <path d="M30.001,51.694 C28.696,51.896 27.36,52 26,52 C11.641,52 0,40.359 0,26 C0,11.641 11.641,0 26,0 C40.359,0 52,11.641 52,26" id="路径" stroke="#333333" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

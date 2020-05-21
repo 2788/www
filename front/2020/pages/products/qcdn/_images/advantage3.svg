@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>dashboard-level</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="基础服务-CDN✅" transform="translate(-1330.000000, -2021.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1844.000000)">
+                <g id="01" transform="translate(1172.000000, 147.000000)">
+                    <g id="dashboard-level" transform="translate(159.000000, 31.000000)">
+                        <line x1="26.086" y1="31.755" x2="19" y2="19" id="路径" stroke="#00AAE7"></line>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="29" cy="29" r="29"></circle>
+                        <path d="M35,37 L49.493,37 C53.0744443,27.8283299 50.1257259,17.3938131 42.2736525,11.4531719 C34.4215791,5.51253058 23.5784209,5.51253058 15.7263475,11.4531719 C7.87427407,17.3938131 4.92555566,27.8283299 8.507,37 L23,37" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                        <circle id="椭圆形" stroke="#00AAE7" stroke-linecap="square" cx="29" cy="37" r="6"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

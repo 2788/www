@@ -1,5 +1,5 @@
 /**
- * @file pili应用场景 index.tsx
+ * @file cdn 应用场景 index.tsx
  * @author zhuhao <zhuhao@qiniu.com>
  */
 

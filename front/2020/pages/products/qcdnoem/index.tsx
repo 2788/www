@@ -2,13 +2,13 @@
  * @file 产品“CDN OEM”
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import Navigator, { Button as NavButton } from 'components/Product/Navigator'
+import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import UIButton from 'components/UI/Button'
+import { useBtns } from 'hooks/product-btn'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
 import Advantages from 'components/pages/qcdnoem/Advantages'
 import Feature, {
@@ -17,16 +17,16 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 
-import AccessStep1 from './images/accessstep1.svg'
-import AccessStep2 from './images/accessstep2.svg'
-import AccessStep3 from './images/accessstep3.svg'
-import AccessStep4 from './images/accessstep4.svg'
+import AccessStep1 from './_images/accessstep1.svg'
+import AccessStep2 from './_images/accessstep2.svg'
+import AccessStep3 from './_images/accessstep3.svg'
+import AccessStep4 from './_images/accessstep4.svg'
 
-import BannerIcon from './images/bannerIcon.svg'
-import SiteCustomize from './images/sitecustomize.svg'
-import FullSceneCoverage from './images/fullscenecoverage.svg'
-import HighQualityLine from './images/highqualityline.svg'
-import TechSupport from './images/techsupport.svg'
+import BannerIcon from './_images/bannerIcon.svg'
+import SiteCustomize from './_images/sitecustomize.svg'
+import FullSceneCoverage from './_images/fullscenecoverage.svg'
+import HighQualityLine from './_images/highqualityline.svg'
+import TechSupport from './_images/techsupport.svg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -37,15 +37,10 @@ function PageContent() {
     showModal()
   }
 
-  const bannerBtns: ReactNode[] = [(
-    <UIButton key="try" href="/products/fusion">
-      咨询详情
-    </UIButton>
-  ), (
-    <UIButton key="consult" type="hollow" onClick={handleConsult}>
-      体验 Demo
-    </UIButton>
-  )]
+  const btns = useBtns(
+    { href: '/products/oem', children: '咨询详情' },
+    { onClick: handleConsult, children: '体验 Demo' }
+  )
 
   return (
     <>
@@ -53,12 +48,11 @@ function PageContent() {
         title="CDN OEM"
         desc="成为七牛 CDN OEM合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的CDN服务能力，我们期待与您合作共赢。"
         bgColor="#34A1EC"
-        btns={bannerBtns}
+        btns={btns.banner}
         icon={<BannerIcon />} />
 
       <Navigator>
-        <NavButton type="primary" href="/products/fusion">咨询详情</NavButton>
-        <NavButton withBorder onClick={handleConsult}>体验 Demo</NavButton>
+        {btns.nav}
       </Navigator>
 
       <Feature header="七牛 CDN OEM 平台服务能力" name="capabilities" title="平台服务能力">
