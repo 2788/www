@@ -154,7 +154,6 @@ export type ResourceAvailableReponse = {
 
 /** 指定地区（region），获取该地区可用的 instance type 列表 */
 export async function getInstanceTypesByRegion(regionId: string) {
-  console.info('!!!!', regionId)
   const response: ResourceAvailableReponse = await post(
     `${apiPrefix}/v1/open/resource_available`,
     {
@@ -202,7 +201,7 @@ export async function getRegionsByFamily(family: string) {
   // 区域下的 instance type 与指定 family 下的 instance type 有交集的
   // 就认为该区域有该 family 的机型，即，认为该区域符合要求
   return avaliableRegions.filter(
-    (region, i) => {
+    (_, i) => {
       const typesOfRegion = typesByRegion[i]
       const typesOfRegionAndFamily = intersection(typesOfRegion, typesOfFamily)
       return typesOfRegionAndFamily.length > 0
