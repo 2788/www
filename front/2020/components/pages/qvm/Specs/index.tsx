@@ -87,14 +87,13 @@ function EnterpriseCards() {
 
   const tabPanesView = familyGroups.map(
     ({ key, data }) => {
+      // TODO: 优化下，第一次不渲染，一旦渲染过之后，再切换走就是隐藏
       const active = activeGroupKey === key
-      const displayStyle = { display: active ? 'block' : 'none' }
+      if (!active) return null
       const cardsView = data.map(
         familyInfo => <EnterpriseCard key={familyInfo.family} {...familyInfo} />
       )
-      return (
-        <div key={key} style={displayStyle}>{cardsView}</div>
-      )
+      return <div key={key}>{cardsView}</div>
     }
   )
 

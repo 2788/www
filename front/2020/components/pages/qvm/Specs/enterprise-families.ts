@@ -555,4 +555,9 @@ export default [
   { key: 'i', name: '本地 SSD 型', data: i },
   { key: 'hf', name: '高主频型', data: hf },
   { key: 'f', name: 'FPGA 型', data: f }
-]
+].map(
+  item => ({
+    ...item,
+    data: item.data.slice(0, 2) // 每个类型只需要展示最上边两个 family
+  })
+)

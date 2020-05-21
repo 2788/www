@@ -6,7 +6,11 @@ import React, { useState, useMemo } from 'react'
 import { urlForQvmBuy } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
 import { useOnChange } from 'hooks'
-import { getInstanceTypesByFamily, getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions } from 'apis/qvm'
+import {
+  getInstanceTypesByFamily, getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions,
+  getInstanceTypesByRegionWithCache as getInstanceTypesByRegion,
+  getRegionsByFamilyWithCache as getRegionsByFamily
+} from 'apis/qvm'
 import { availableDurations, humanizeDuration, avaliableRegions } from 'constants/qvm'
 import Button from 'components/UI/Button'
 
@@ -72,23 +76,53 @@ type PriceFormProps = {
 
 function PriceForm({ family }: PriceFormProps) {
 
-  const [regionId, setRegionId] = useState(avaliableRegions[0].id)
-
-  const regionOptions = avaliableRegions.map(
-    ({ id, name }) => (
-      <option key={id} value={id}>{name}</option>
-    )
-  )
-
-  const [instanceType, setInstanceType] = useState<string | undefined>(undefined)
-
-  const { $: instanceTypes } = useApiWithParams(
-    getInstanceTypesByFamily,
+  const { $: regions, loading: regionsLoading } = useApiWithParams(
+    getRegionsByFamily,
     { params: [family] }
   )
 
+  const [regionId, setRegionId] = useState(avaliableRegions[0].id)
+
+  // regions 数据加载好后默认使用第一项
+  useOnChange(() => {
+    if (
+      regions && regions.length > 0
+      && !regions.some(region => region.id === regionId)
+    ) {
+      setRegionId(regions[0].id)
+    }
+  }, [regions])
+
+  // TODO: 顺序
+  const regionOptions = [
+    regionsLoading && (
+      <option key="" value="">加载中...</option>
+    ),
+    ...(regions || []).map(
+      ({ id, name }) => (
+        <option key={id} value={id}>{name}</option>
+      )
+    )
+  ]
+
+  const [instanceType, setInstanceType] = useState<string | undefined>(undefined)
+
+  const { $: instanceTypesOfFamily } = useApiWithParams(
+    getInstanceTypesByFamily,
+    { params: [family] }
+  )
+  const { $: instanceTypesOfRegion } = useApiWithParams(
+    getInstanceTypesByRegion,
+    { params: [regionId] }
+  )
+
+  const instanceTypes = (instanceTypesOfFamily || []).filter(
+    type => instanceTypesOfRegion && instanceTypesOfRegion.indexOf(type.type) >= 0
+  )
+
+  // TODO: 顺序
   const instanceTypeOptions = [
-    <option key="" value={undefined}>请选择类型</option>,
+    <option key="" value="">请选择类型</option>,
     ...(instanceTypes || []).map(
       ({ type, cpu, memory }) => (
         <option key={type} value={type}>{cpu} 核 {memory} G</option>
@@ -98,7 +132,10 @@ function PriceForm({ family }: PriceFormProps) {
 
   // instanceTypes 数据加载好后默认使用第一项
   useOnChange(() => {
-    if (instanceTypes) {
+    if (
+      instanceTypes && instanceTypes.length > 0
+      && !instanceTypes.some(item => item.type === instanceType)
+    ) {
       setInstanceType(instanceTypes[0].type)
     }
   }, [instanceTypes])
@@ -181,8 +218,8 @@ function PriceInfo({ loading, info }: PriceInfoProps) {
   }
   return (
     <div className={style.priceInfo}>
-      <strong className={style.price}>￥{info.price}</strong>
-      {info.discount > 0 && <span className={style.discount}>优惠￥{info.discount}</span>}
+      <strong className={style.price}>￥{info.price.toFixed(2)}</strong>
+      {info.discount > 0 && <span className={style.discount}>优惠￥{info.discount.toFixed(2)}</span>}
     </div>
   )
 }

@@ -5,7 +5,7 @@
 
 // TODO: 交互状态，如 hover、active 等，跟 @设计师同学 确认下
 
-import React, { HTMLAttributes, ButtonHTMLAttributes } from 'react'
+import React, { HTMLAttributes, ButtonHTMLAttributes, MouseEvent } from 'react'
 import Link from 'components/Link'
 import style from './style.less'
 
@@ -20,6 +20,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
   href?: string
   target?: string
   htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type']
+  disabled?: boolean
 }
 
 const typeStyleMap = {
@@ -33,20 +34,27 @@ const sizeStyleMap = {
   small: style.sizeSmall
 }
 
+function disabledClickHandler(e: MouseEvent) {
+  e.preventDefault()
+}
+
 export default function Button({
   type, size, withBorder, className,
-  htmlType, href, ...otherProps
+  htmlType, href, disabled, onClick, ...otherProps
 }: Props) {
 
   type = type == null ? 'default' : type
   size = size == null ? 'default' : size
+
+  onClick = disabled ? disabledClickHandler : onClick
 
   className = [
     className,
     style.button,
     typeStyleMap[type],
     sizeStyleMap[size],
-    withBorder && style.withBorder
+    withBorder && style.withBorder,
+    disabled && style.disabled
   ].filter(Boolean).join(' ')
 
   // <button>
@@ -57,12 +65,19 @@ export default function Button({
         className={className}
         // eslint-disable-next-line react/button-has-type
         type={htmlType}
+        disabled={disabled}
+        onClick={onClick}
       />
     )
   }
 
   // else <a>
   return (
-    <Link href={href} {...otherProps} className={className} />
+    <Link
+      href={href}
+      {...otherProps}
+      className={className}
+      onClick={onClick}
+    />
   )
 }

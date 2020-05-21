@@ -1,10 +1,10 @@
 /**
- * @file 配置的环境变量
- * @description 目前先在这里写死，TODO: 允许外部配置，在构建期指定
+ * @file 配置的环境变量，具体值见 .env & .env.<enviroment> 文件
+ * @description 相关文档 https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables
  */
 
 /** API Host */
-export const apiHost = 'https://web-api.qiniu.com'
+export const apiHost = process.env.NEXT_PUBLIC_API_HOST
 
 /** 搜索时指定的站点名（site name） */
-export const siteNameForSearch = 'www.qiniu.com'
+export const siteNameForSearch = process.env.NEXT_PUBLIC_SITE_NAME_FOR_SEARCH

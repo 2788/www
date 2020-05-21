@@ -8,21 +8,39 @@ import { urlFor, UrlParams } from '.'
 export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
   const fetched = await fetch(info, {
     credentials: 'include',
+    mode: 'cors',
     ...init,
     headers: {
       'Content-Type': 'application/json',
       ...init && init.headers
     }
   })
-  return fetched.json()
+
+  if (!fetched.ok) {
+    throw new Error(`Fetch failed with status ${fetched.status}.`)
+  }
+
+  const body = await fetched.text()
+
+  // 兼容 body 为空的情况
+  if (!body.trim()) {
+    return null
+  }
+
+  try {
+    return JSON.parse(body)
+  } catch (e) {
+    throw new Error('Fetch failed with invalid response.')
+  }
 }
 
-export function get(url: string, params?: UrlParams) {
-  return fetchJSON(urlFor(url, params))
+export function get(url: string, params?: UrlParams, init?: RequestInit) {
+  return fetchJSON(urlFor(url, params), init)
 }
 
-export function post(url: string, params: object) {
+export function post(url: string, params: object, init?: RequestInit) {
   return fetchJSON(url, {
+    ...init,
     method: 'POST',
     body: JSON.stringify(params)
   })

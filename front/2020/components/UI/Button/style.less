@@ -4,6 +4,13 @@
   color: @color;
   background-color: @bgColor;
   border-color: @borderColor;
+
+  &.disabled, &:disabled {
+    // TODO: 颜色再对一下
+    color: desaturate(@color, 20%);
+    background-color: desaturate(@bgColor, 20%);
+    border-color: desaturate(@borderColor, 20%);
+  }
 }
 
 .withSize(@size) {
@@ -22,6 +29,10 @@
 
   &:focus {
     outline: none;
+  }
+
+  &.disabled, &:disabled {
+    cursor: not-allowed;
   }
 
   .withSize(36px);

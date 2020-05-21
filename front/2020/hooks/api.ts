@@ -32,10 +32,17 @@ export function useApi<F extends ApiMethod>(
   // eslint-disable-next-line no-underscore-dangle
   let _call: CallFor<F> = (...args: any[]) => {
     setLoading(true)
-    apiMethod(...args).then(res => {
-      setResult(res)
-      setError(null)
-    }, setError).then(() => {
+    apiMethod(...args).then(
+      res => {
+        setResult(res)
+        setError(null)
+      },
+      e => {
+        // eslint-disable-next-line no-console
+        console.warn('[API_ERROR]', e)
+        setError(e)
+      }
+    ).then(() => {
       setLoading(false)
     })
   }
