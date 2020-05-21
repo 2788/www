@@ -8,7 +8,9 @@
     "dev": "next",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./"
+    "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
+    "travis:script": "npm run lint",
+    "travis:before-script": "yarn"
   },
   "dependencies": {
     "@svgr/webpack": "^5.4.0",

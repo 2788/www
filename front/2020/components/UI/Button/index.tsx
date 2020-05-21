@@ -52,10 +52,10 @@ export default function Button({
   // <button>
   if (href == null) {
     return (
-      // eslint-disable-next-line react/button-has-type
       <button
         {...otherProps}
         className={className}
+        // eslint-disable-next-line react/button-has-type
         type={htmlType}
       />
     )

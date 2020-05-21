@@ -45,7 +45,7 @@ export default function SslRecommend() {
   }
 
   return (
-    <Section title="推荐证书" name="recommend" header="帮您推荐证书" subtitile={getSubTitle(step, currentInfo)}>
+    <Section title="推荐证书" name="recommend" header="帮您推荐证书" subtitle={getSubTitle(step, currentInfo)}>
       <div className={styles.recommend}>
         {chooseDom}
         {cert && <RecommendCert cert={cert} />}

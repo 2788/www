@@ -1,0 +1,22 @@
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - '12'
+      cache:
+        directories:
+          - "front/2020/node_modules"
+      branches:
+        only:
+          - master
+          - 2020
+      before_install:
+        - export REPOROOT=$TRAVIS_BUILD_DIR
+        - export WWW_2020_PATH=front/2020
+      before_script:
+        - source ./travis.sh
+        - beforeScript $WWW_2020_PATH
+      script:
+        - doScript $WWW_2020_PATH
+      after_script:
+        - afterScript $WWW_2020_PATH
