@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="54px" viewBox="0 0 62 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>server-rack</title>
+    <g id="活动与合作" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="公司介绍" transform="translate(-929.000000, -1959.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 1778.000000)">
+                <g id="01" transform="translate(772.000000, 148.000000)">
+                    <g id="server-rack" transform="translate(158.000000, 34.000000)">
+                        <rect id="矩形" stroke="#333333" x="0" y="0" width="60" height="20"></rect>
+                        <line x1="14" y1="10" x2="8" y2="10" id="路径" stroke="#00AAE7"></line>
+                        <circle id="椭圆形" stroke="#00AAE7" cx="50" cy="10" r="3"></circle>
+                        <rect id="矩形" stroke="#333333" x="0" y="32" width="60" height="20"></rect>
+                        <line x1="14" y1="42" x2="8" y2="42" id="路径" stroke="#00AAE7"></line>
+                        <line x1="28" y1="10" x2="22" y2="10" id="路径" stroke="#00AAE7"></line>
+                        <line x1="28" y1="42" x2="22" y2="42" id="路径" stroke="#00AAE7"></line>
+                        <circle id="椭圆形" stroke="#00AAE7" cx="50" cy="42" r="3"></circle>
+                        <line x1="8" y1="20" x2="8" y2="27" id="路径" stroke="#333333"></line>
+                        <line x1="52" y1="20" x2="52" y2="27" id="路径" stroke="#333333"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

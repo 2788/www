@@ -1,0 +1,85 @@
+@import '~utils/less/index.less';
+
+.overview {
+  width: 100%;
+
+  .item {
+    width: 33.33%;
+    text-align: center;
+    display: inline-block;
+
+    .title {
+      font-size: 44px;
+      color: @grey-7;
+    }
+
+    .desc {
+      font-size: 16px;
+      color: @grey-6;
+    }
+  }
+}
+
+.nav {
+  text-align: center;
+}
+
+.about {
+  .passage {
+    display: block;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 16px;
+    color: @grey-5;
+  }
+  .gallery {
+    position: relative;
+    height: 684px;
+    .main {
+      position: absolute;
+      width: 776px;
+      height: 448px;
+      .background-image(url(./_images/pic01.png))
+    }
+    .right1 {
+      position: absolute;
+      left: 800px;
+      top: 0;
+      width: 376px;
+      height: 212px;
+      .background-image(url(./_images/pic02.png))
+    }
+    .right2 {
+      position: absolute;
+      left: 800px;
+      top: 236px;
+      width: 376px;
+      height: 212px;
+      .background-image(url(./_images/pic03.png))
+    }
+    .bottom1 {
+      position: absolute;
+      left: 0;
+      top: 472px;
+      width: 376px;
+      height: 212px;
+      .background-image(url(./_images/pic04.png))
+    }
+    .bottom2 {
+      position: absolute;
+      left: 400px;
+      top: 472px;
+      width: 376px;
+      height: 212px;
+      .background-image(url(./_images/pic05.png))
+    }
+    .bottom3 {
+      position: absolute;
+      left: 800px;
+      top: 472px;
+      width: 376px;
+      height: 212px;
+      .background-image(url(./_images/pic06.png))
+    }
+  }
+}
