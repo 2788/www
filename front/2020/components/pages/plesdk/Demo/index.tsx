@@ -8,7 +8,7 @@ export default function Demo() {
   const isMobile = useMobile()
 
   return (
-    <Section title="体验 Demo" name="demo" grey>
+    <Section title="体验 Demo" name="demo">
       {isMobile ? <ForMobile /> : <ForPc />}
     </Section>
   )

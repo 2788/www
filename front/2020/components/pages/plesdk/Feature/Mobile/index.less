@@ -4,12 +4,13 @@
   text-align: left;
 
   :global {
-    .rc-menu-submenu,
+    .rc-menu-submenu:first-child,
     .rc-menu-item {
       border: none;
     }
 
     .rc-menu-item {
+      padding: 0;
       background: #fafafa;
     }
 
@@ -18,11 +19,22 @@
       // 加上 important 覆盖他的逻辑
       padding-left: 16px !important;
     }
+
+    // 展开的 menu 的下一个不显示边框
+    .rc-menu-submenu-open + .rc-menu-submenu {
+      border: none;
+    }
   }
 }
 
 .card {
-  padding-left: 16px;
+  padding: 8px 0;
+  margin: 0 16px;
+  border-bottom: 1px solid @grey-3;
+
+  &.noBorder {
+    border: none;
+  }
 }
 
 .title {

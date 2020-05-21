@@ -14,6 +14,7 @@ import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import { useModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import Advantage from 'components/pages/plesdk/Advantage'
 import ProductFeature from 'components/pages/plesdk/Feature'
@@ -49,7 +50,12 @@ export function Content() {
       <ProductFeature />
       <Scene />
       <Demo />
-      {/* 相关文档 */}
+      <LinkGroups title="相关文档">
+        <LinkGroup title="Github 地址">
+          <LinkItem href="https://github.com/pili-engineering/PLDroidMediaStreaming-ByteDance">Android Github 地址</LinkItem>
+          <LinkItem href="https://github.com/pili-engineering/PLMediaStreamingKit-ByteDance">iOS Github 地址</LinkItem>
+        </LinkGroup>
+      </LinkGroups>
       <UsageGuide title="注册即可体验全方位直播特效 SDK">
         <UsageGuideButton onClick={showModal}>
           立即咨询

@@ -17,6 +17,7 @@ import PageNotice, {
 } from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import Feature from 'components/pages/plsv/Feature'
 import PriceList from 'components/pages/plsv/PriceList'
@@ -57,7 +58,18 @@ export default function Page() {
       <Scene />
       <PriceList />
       <Demo />
-      {/* 相关文档 */}
+      <LinkGroups title="相关文档">
+        <LinkGroup title="常用文档">
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3955/short-video-quick-guide">接入指南</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3731/short-video">功能列表</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download">SDK 下载</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3733/short-video-ios-sdk">iOS 开发文档</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3734/android-short-video-sdk">Android 开发文档</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="其他材料">
+          <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
+        </LinkGroup>
+      </LinkGroups>
       <UsageGuide title="注册即可体验全方位实时音视频">
         <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com">
           免费体验

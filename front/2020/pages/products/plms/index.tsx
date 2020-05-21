@@ -14,6 +14,7 @@ import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import ProductFeature from 'components/pages/plms/Feature'
 import Demo from 'components/pages/plms/Demo'
@@ -53,7 +54,16 @@ export function Content() {
       <ProductFeature />
       <Scene />
       <Demo />
-      {/* 相关文档 */}
+      <LinkGroups title="相关文档">
+        <LinkGroup title="使用文档">
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience">SDK 下载</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3778/PLMediaStreamingKit-overview">IOS 开发文档</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3715/PLDroidMediaStreaming-overview">Android 开发文档</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="其他材料">
+          <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
+        </LinkGroup>
+      </LinkGroups>
       <UsageGuide title="注册即可体验全方位实时音视频">
         <UsageGuideButton href="TODO">
           免费体验
