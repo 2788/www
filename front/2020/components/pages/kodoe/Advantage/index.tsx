@@ -22,7 +22,7 @@ import AdvantageIconFive from './advantage-icon-five.svg'
 
 import styles from './style.less'
 
-export default function PrivateCloudKodoAdvantage() {
+export default function KodoeAdvantage() {
   const isMobile = useMobile()
 
   return (

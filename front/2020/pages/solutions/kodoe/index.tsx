@@ -8,12 +8,12 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import PrivateCloudKodoArch from 'components/pages/private-cloud-kodo/Arch'
-import PrivateCloudKodoAdvantage from 'components/pages/private-cloud-kodo/Advantage'
-import PrivateCloudKodoSpec from 'components/pages/private-cloud-kodo/Spec'
-import PrivateCloudKodoScene from 'components/pages/private-cloud-kodo/Scene'
-import PrivateCloudKodoCase from 'components/pages/private-cloud-kodo/Case'
-import PrivateCloudKodoClientLogo from 'components/pages/private-cloud-kodo/ClientLogo'
+import KodoeArch from 'components/pages/kodoe/Arch'
+import KodoeAdvantage from 'components/pages/kodoe/Advantage'
+import KodoeSpec from 'components/pages/kodoe/Spec'
+import KodoeScene from 'components/pages/kodoe/Scene'
+import KodoeCase from 'components/pages/kodoe/Case'
+import KodoeClientLogo from 'components/pages/kodoe/ClientLogo'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
@@ -51,27 +51,26 @@ function PageContent() {
 
       <Navigator>{btns.nav}</Navigator>
 
-      <PrivateCloudKodoArch />
+      <KodoeArch />
 
-      <PrivateCloudKodoAdvantage />
+      <KodoeAdvantage />
 
-      <PrivateCloudKodoSpec />
+      <KodoeSpec />
 
-      <PrivateCloudKodoScene />
+      <KodoeScene />
 
-      <PrivateCloudKodoCase />
+      <KodoeCase />
 
-      <PrivateCloudKodoClientLogo />
+      <KodoeClientLogo />
 
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
-          <LinkItem href="/solutions/private-cloud-kodo">私有云存储</LinkItem>
-          <LinkItem href="/solutions/private-cloud-kodo">Android 端 Demo 体验</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodoe">私有云存储</LinkItem>
         </LinkGroup>
         <LinkGroup title="相关产品">
-          <LinkItem href="/solutions/private-cloud-kodo">对象存储</LinkItem>
-          <LinkItem href="/solutions/private-cloud-kodo">智能多媒体服务</LinkItem>
-          <LinkItem href="/solutions/private-cloud-kodo">数据分析平台</LinkItem>
+          <LinkItem href="/products/kodo">对象存储</LinkItem>
+          <LinkItem href="/products/dora">智能多媒体服务</LinkItem>
+          <LinkItem href="/products/express">数据分析平台</LinkItem>
         </LinkGroup>
       </LinkGroups>
 
@@ -86,7 +85,7 @@ function PageContent() {
   )
 }
 
-export default function PrivateCloudKodoPage() {
+export default function KodoePage() {
   return (
     <Layout>
       <PageContent />

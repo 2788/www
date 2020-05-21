@@ -19,7 +19,7 @@ import ClientIconCnpcURL from './client-icon-cnpc.png'
 import ClientIconYingshiURL from './client-icon-yingshi.png'
 import ClientIconEricssonURL from './client-icon-ericsson.png'
 
-export default function PrivateCloudKodoClientLogo() {
+export default function KodoeClientLogo() {
   return (
     <CustomerCaseGroup name="client" title="他们都在用七牛" grey>
       <CustomerCase

@@ -18,7 +18,7 @@ import SceneImgFour from './scene-img-four.svg'
 
 import styles from './style.less'
 
-export default function PrivateCloudKodoScene() {
+export default function KodoeScene() {
   return (
     <Scene name="scene" title="典型应用场景" header="应用场景" grey>
       <ScenePanel name="scene-tab-1" title="海量通用文件存储" verticalCenter>

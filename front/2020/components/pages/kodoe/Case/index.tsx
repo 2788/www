@@ -13,7 +13,7 @@ import Mobile from './Mobile'
 
 import { useMobile } from 'hooks/ua'
 
-export default function PrivateCloudKodoCase() {
+export default function KodoeCase() {
   const isMobile = useMobile()
 
   function renderMain() {

@@ -30,7 +30,7 @@ function PageContent() {
 
   const btns = useBtns(
     { onClick: handleConsult, children: '立即咨询' },
-    { href: '/solutions/qavs', children: '下载白皮书' }
+    { href: 'https://dn-mars-assets.qbox.me/lsm7Yon7_XwirC_mGIQvRe1Fmkx3', children: '下载白皮书' }
   )
 
   return (
@@ -45,7 +45,7 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem title="音视频 SDK 下载" href="/solutions/qavs">
+          <PageNoticeItem title="音视频 SDK 下载" href="https://developer.qiniu.com/rtn/sdk/4330/download-the-sdk">
             音视频 SDK 下载
           </PageNoticeItem>
         </PageNoticeGroup>
@@ -61,14 +61,26 @@ function PageContent() {
 
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
-          <LinkItem href="/solutions/qavs">直播云技术白皮书</LinkItem>
-          <LinkItem href="/solutions/qavs">直播架构快速搭建</LinkItem>
-          <LinkItem href="/solutions/qavs">七牛短视频白皮书</LinkItem>
-          <LinkItem href="/solutions/qavs">实时音视频白皮书</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/manual/1209/live-the-core-function">
+            直播云技术白皮书
+          </LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/manual/1217/live-architecture-fleetly">
+            直播架构快速搭建
+          </LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3919/a-short-video-the-white-paper">
+            七牛短视频白皮书
+          </LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtn/manual/4373/cloud-real-time-audio-and-video-interaction">
+            实时音视频白皮书
+          </LinkItem>
         </LinkGroup>
         <LinkGroup title="其他">
-          <LinkItem href="/solutions/qavs">短视频 demo 体验</LinkItem>
-          <LinkItem href="/solutions/qavs">实时音视频 demo 体验</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download">
+            短视频 demo 体验
+          </LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtn/manual/4374/the-demo-experience">
+            实时音视频 demo 体验
+          </LinkItem>
         </LinkGroup>
       </LinkGroups>
     </>

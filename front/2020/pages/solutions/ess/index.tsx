@@ -27,8 +27,7 @@ function PageContent() {
   }
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' },
-    { href: '/solutions/ess', children: '了解更多' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
 
   return (

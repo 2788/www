@@ -12,7 +12,7 @@ import ArchImg from './arch-img.svg'
 
 import styles from './style.less'
 
-export default function PrivateCloudKodoArch() {
+export default function KodoeArch() {
   return (
     <Section name="arch" title="方案架构">
       <ArchImg className={styles.img} />

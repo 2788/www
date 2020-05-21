@@ -22,7 +22,7 @@ import BannerIcon from './images/banner-icon.svg'
 
 function PageContent() {
   const btns = useBtns(
-    { children: '0 元体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer' },
+    { children: '0 元体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer', pcOnly: true },
     { children: '短视频 SDK', href: 'https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download' },
     { children: 'SDK 功能列表', href: 'https://developer.qiniu.com/pili/sdk/3731/short-video' }
   )

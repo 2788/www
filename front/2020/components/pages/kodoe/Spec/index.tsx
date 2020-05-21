@@ -10,7 +10,7 @@ import Section from 'components/Product/Section'
 
 import styles from './style.less'
 
-export default function PrivateCloudKodoSpec() {
+export default function KodoeSpec() {
   return (
     <Section name="spec" title="技术规格">
       <table
