@@ -8,10 +8,10 @@ import React from 'react'
 
 import Section from 'components/Product/Section'
 
+import { useMobile } from 'hooks/ua'
+
 import Pc from './Pc'
 import Mobile from './Mobile'
-
-import { useMobile } from 'hooks/ua'
 
 export default function KodoeCase() {
   const isMobile = useMobile()

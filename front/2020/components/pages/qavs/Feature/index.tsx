@@ -70,15 +70,19 @@ export default function QavsFeature() {
           <FeatureDesc>彻底杜绝非法拷贝，秒级封禁盗链流量</FeatureDesc>
         </FeatureItem>
 
-        {isMobile ? null : (
-          <FeatureItem
-            pos="left-right"
-            icon={null}
-            title=""
-          >
-            <FeatureDesc>{null}</FeatureDesc>
-          </FeatureItem>
-        )}
+        {
+          isMobile
+          ? null
+          : (
+            <FeatureItem
+              pos="left-right"
+              icon={null}
+              title=""
+            >
+              <FeatureDesc>{null}</FeatureDesc>
+            </FeatureItem>
+          )
+        }
       </FeatureGroup>
     </Feature>
   )

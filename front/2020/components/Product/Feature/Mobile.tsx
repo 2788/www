@@ -34,10 +34,12 @@ export function MobileFeatureItem(props: IMobileFeatureItemProps) {
     if (!href) {
       return (
         <div
-          className={styles.item}>
+          className={styles.item}
+        >
           <div className={styles.itemIcon}>{icon}</div>
           <div
-            className={styles.itemContent}>
+            className={styles.itemContent}
+          >
             <h3 className={styles.itemTitle}>{title}</h3>
             {children}
           </div>
@@ -48,10 +50,12 @@ export function MobileFeatureItem(props: IMobileFeatureItemProps) {
     return (
       <a className={styles.linkItem} href={href}>
         <div
-          className={styles.item}>
+          className={styles.item}
+        >
           <div className={styles.itemIcon}>{icon}</div>
           <div
-            className={styles.itemContent}>
+            className={styles.itemContent}
+          >
             <h3 className={styles.itemTitle}>{title}</h3>
             {children}
           </div>

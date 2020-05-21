@@ -76,14 +76,18 @@ export default function KodoeAdvantage() {
           <FeatureDesc preIcon="check">管理平台支持智能监控管理，显著降低 TCO</FeatureDesc>
         </FeatureItem>
 
-        {isMobile ? null : (
-          <FeatureItem
-            icon={null}
-            title=""
-          >
-            <FeatureDesc>{null}</FeatureDesc>
-          </FeatureItem>
-        )}
+        {
+          isMobile
+          ? null
+          : (
+            <FeatureItem
+              icon={null}
+              title=""
+            >
+              <FeatureDesc>{null}</FeatureDesc>
+            </FeatureItem>
+          )
+        }
       </FeatureGroup>
     </Feature>
   )

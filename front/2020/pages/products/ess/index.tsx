@@ -3,6 +3,8 @@
  * @description 目标路由 /solutions/ess
  */
 
+import React from 'react'
+
 import Redirect from 'components/Redirect'
 
 export default function EssPage() {

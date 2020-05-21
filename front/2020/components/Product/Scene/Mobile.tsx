@@ -57,9 +57,16 @@ export default function MobileScene(props: IMobileSceneProps) {
   }
 
   const scenePanelsView = panels.map(({ name, title, node }) => (
-    <SubMenu key={name} title={title} mode="inline" onTitleClick={({ key }: any) => {
-      handlePanelsChange(key)
-    }}>{node}</SubMenu>
+    <SubMenu
+      key={name}
+      title={title}
+      mode="inline"
+      onTitleClick={({ key }: any) => {
+        handlePanelsChange(key)
+      }}
+    >
+      {node}
+    </SubMenu>
   ))
 
   const className = [
@@ -88,7 +95,7 @@ export function MobilePanel(props: IMobilePanelProps) {
       props.className,
       styles.panel
     ].filter(Boolean).join(' ')
-  
+
     return (
       <div className={className}>
         {children}
@@ -108,7 +115,7 @@ export function MobilePanel(props: IMobilePanelProps) {
       title,
       node: renderMain()
     })
-  }, [register, name, title])
+  }, [register, name, title]) // eslint-disable-line
 
   if (!contextValue) {
     throw new Error('Component `MobilePanel` should be used in `MobileScene`')

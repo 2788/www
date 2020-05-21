@@ -114,8 +114,8 @@ export function PcPanel(props: IPcPanelProps) {
 export function PcBlock(props: IPcBlockProps) {
   const { children, shadow, blockType } = props
 
-  function getClassByBlockType(blockType: BlockType) {
-    switch (blockType) {
+  function getClassByBlockType(type: BlockType) {
+    switch (type) {
       case 'zoom':
         return styles.zoom
       case 'fixed':

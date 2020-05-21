@@ -3,6 +3,8 @@
  * @description 目标路由 /solutions/kodoe
  */
 
+import React from 'react'
+
 import Redirect from 'components/Redirect'
 
 export default function PrivateCloudKodoPage() {

@@ -6,12 +6,12 @@
 
 import React, { ReactNode, HTMLAttributes } from 'react'
 
-import Section, { SectionProps } from '../../../components/Product/Section'
+import Section, { SectionProps } from 'components/Product/Section'
+
+import { useMobile } from 'hooks/ua'
 
 import PcScene, { PcPanel, PcBlock } from './Pc'
 import MobileScene, { MobilePanel, MobileBlock } from './Mobile'
-
-import { useMobile } from '../../../hooks/ua'
 
 import styles from './style.less'
 

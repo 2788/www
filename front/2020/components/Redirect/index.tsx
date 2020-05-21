@@ -27,7 +27,7 @@ export default function Redirect(props: Props) {
       query,
       hash
     })
-  }, [router, hash])
+  }, [target, router, hash])
 
   return null
 }
