@@ -1,0 +1,47 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  // max-height: 867px;
+  // box-sizing: content-box;
+}
+
+.content {
+  position: relative;
+  width: 776px;
+  height: 100%;
+  padding: 24px 24px 0 24px;
+  background: @main-bg-color;
+}
+
+.footer {
+  bottom: 0;
+  z-index: 100;
+  width: 776px;
+  height: 116px;
+  margin-left: -24px;
+  padding: 24px;
+  background: @grey-1;
+  box-shadow:0px -2px 8px 0px rgba(0,0,0,0.08);
+
+  .left {
+    display: inline-block;
+    margin-right: 12px;
+    vertical-align: top;
+  }
+
+  .right {
+    display: inline-block;
+  }
+
+  .price {
+    margin-bottom: 10px;
+    color: @orange-6;
+    line-height: 22px;
+  }
+
+  .num {
+    font-size: 24px;
+  }
+}
