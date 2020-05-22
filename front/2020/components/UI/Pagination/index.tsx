@@ -13,6 +13,8 @@ export type Props = {
   current: number
   /** 页码变更回调函数 */
   onChange(page: number): void
+  /** 一页的数量 */
+  pageSize?: number
   /** 总数 */
   total: number
   /** class 名 */

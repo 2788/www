@@ -24,6 +24,7 @@ export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
   children: ReactNode
   grey?: boolean
   style?: CSSProperties
+  className?: string
 }
 
 export default function Section(props: SectionProps) {
@@ -39,9 +40,11 @@ export default function Section(props: SectionProps) {
 
   const grey = propGrey != null ? propGrey : defaultGrey
 
+  const wrapperClassName = [style.wrapper, props.className].filter(Boolean).join(' ')
+
   return (
     <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>
-      <div className={style.wrapper} {...rest}>
+      <div {...rest} className={wrapperClassName}>
         <div className={style.intro}>
           <div className={style.title}>{header != null ? header : title}</div>
           {subtitle ? <div className={style.subtitle}>{subtitle}</div> : null}

@@ -5,7 +5,7 @@
 import React, { PropsWithChildren, useState } from 'react'
 import Layout from 'components/Layout'
 import { Card, Row } from 'components/UI/Card'
-import Swiper, { Pagination, ArrowPrev, ArrowNext } from 'components/UI/Swiper'
+import Swiper from 'components/UI/Swiper'
 // 这个页面用这些 `Product/xxx` 的组件不太合适，先用着，后边考虑把这些组件从 Product 中拎出来
 import Navigator, { Navigatable } from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
@@ -166,36 +166,29 @@ function Cases() {
     onIndexChange: setIndex
   }
   return (
-    <>
-      <div className={style.casesSwiperWrapper}>
-        <ArrowPrev className={style.casesArrowPrev} {...pageInfo} />
-        <ArrowNext className={style.casesArrowNext} {...pageInfo} />
-        <Swiper {...pageInfo}>
-          <CustomerCaseGroup>
-            <CustomerCase pic={LogoYidong} />
-            {/* TODO: 等切图换正确的 logo */}
-            <CustomerCase pic={LogoYidong} />
-            <CustomerCase pic={LogoYidong} />
-            <CustomerCase pic={LogoYidong} />
-            <CustomerCase pic={LogoYidong} />
-            <CustomerCase pic={LogoYidong} />
-            <CustomerCase pic={LogoYidong} />
-            <CustomerCase pic={LogoYidong} />
-          </CustomerCaseGroup>
-          <CustomerCaseGroup>
-            <CustomerCase pic={LogoCmb} />
-            {/* TODO: 等切图换正确的 logo */}
-            <CustomerCase pic={LogoCmb} />
-            <CustomerCase pic={LogoCmb} />
-            <CustomerCase pic={LogoCmb} />
-            <CustomerCase pic={LogoCmb} />
-            <CustomerCase pic={LogoCmb} />
-            <CustomerCase pic={LogoCmb} />
-            <CustomerCase pic={LogoCmb} />
-          </CustomerCaseGroup>
-        </Swiper>
-      </div>
-      <Pagination className={style.casesPagination} {...pageInfo} />
-    </>
+    <Swiper withArrow withPagination {...pageInfo}>
+      <CustomerCaseGroup>
+        <CustomerCase pic={LogoYidong} />
+        {/* TODO: 等切图换正确的 logo */}
+        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={LogoYidong} />
+      </CustomerCaseGroup>
+      <CustomerCaseGroup>
+        <CustomerCase pic={LogoCmb} />
+        {/* TODO: 等切图换正确的 logo */}
+        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={LogoCmb} />
+      </CustomerCaseGroup>
+    </Swiper>
   )
 }

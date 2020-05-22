@@ -176,37 +176,3 @@
     });
   }
 }
-
-.casesSwiperWrapper {
-  position: relative;
-
-  @arrowSize: 68px;
-  @arrowMargin: 56px;
-
-  .casesArrowPrev, .casesArrowNext {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    .mobile({
-      display: none;
-    });
-  }
-
-  .casesArrowPrev {
-    left: -(@arrowSize + @arrowMargin);
-  }
-
-  .casesArrowNext {
-    right: -(@arrowSize + @arrowMargin);
-  }
-
-}
-
-.casesPagination {
-  margin-top: 24px;
-
-  .mobile({
-    margin-top: 12px;
-  });
-}

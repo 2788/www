@@ -1,0 +1,78 @@
+@import "~utils/less/index.less";
+
+// card 是有阴影的，但是 Swiper 会在容器上设置 overflow: hidden
+// 这里把内容撑开额外的距离，以展示阴影；在最外层的容器上再把这个距离收回来（通过负 margin）
+// 因此这里的 @paddingForShadow 比阴影的扩散范围大即可
+@paddingForShadow: 10px;
+
+.wrapper {
+  position: relative;
+  margin: -@paddingForShadow;
+
+  .mobile({
+    padding-bottom: 24px;
+  });
+}
+
+.rowWrapper {
+  padding: @paddingForShadow;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  .logo {
+    width: 100%;
+    height: auto;
+    flex: 0 0 auto;
+  }
+
+  .content {
+    flex: 1 1 auto;
+    padding: 24px 24px 90px 24px;
+    position: relative;
+  }
+
+  .name {
+    font-size: 20px;
+    line-height: 1.4em;
+    font-weight: normal;
+  }
+
+  .word {
+    margin-top: 12px;
+    color: @grey-6;
+    min-height: 132px;
+  }
+
+  .teller {
+    @avatarSize: 40px;
+
+    position: absolute;
+    bottom: 28px;
+    padding-left: @avatarSize + 16px;
+
+    .avatar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: @avatarSize;
+      height: @avatarSize;
+      border-radius: @avatarSize / 2;
+    }
+
+    .name {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1.4em;
+    }
+
+    .title {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.4em;
+      color: @grey-6;
+    }
+  }
+}

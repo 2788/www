@@ -1,9 +1,40 @@
 @import '~utils/less/index.less';
 
+.wrapper {
+  position: relative;
+}
+
+@arrowSize: 68px;
+@arrowMargin: 56px;
+
+.arrowPrev, .arrowNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+  .mobile({
+    display: none;
+  });
+}
+
+.arrowPrev {
+  left: -(@arrowSize + @arrowMargin);
+}
+
+.arrowNext {
+  right: -(@arrowSize + @arrowMargin);
+}
+
 .pagination {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 24px;
+
+  .mobile({
+    margin-top: 12px;
+  });
 
   .paginationItem {
     display: block;
@@ -20,8 +51,4 @@
       margin-left: 4px;
     }
   }
-}
-
-.arrowPrev, .arrowNext {
-  cursor: pointer;
 }

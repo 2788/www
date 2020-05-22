@@ -3,8 +3,9 @@
  * @description 以及配套的翻页、箭头组件
  */
 
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useState, Children } from 'react'
 import SwipeableViews from 'react-swipeable-views'
+import { useOnChange } from 'hooks'
 
 import IconArrowPrev from './arrow-prev.svg'
 import IconArrowNext from './arrow-next.svg'
@@ -15,16 +16,39 @@ export type IndexInfo = {
   onIndexChange(index: number): void
 }
 
-export type Props = PropsWithChildren<Partial<IndexInfo>>
+export type Props = PropsWithChildren<Partial<IndexInfo>> & {
+  withArrow?: boolean
+  withPagination?: boolean
+}
 
-export default function Swiper({ index, onIndexChange, children }: Props) {
+export default function Swiper(props: Props) {
+  const [index, setIndex] = useState(props.index != null ? props.index : 0)
+  const indexInfo = { index, onIndexChange: setIndex }
+  const num = Children.count(props.children)
+
+  useOnChange(() => {
+    if (props.index != null && index !== props.index) {
+      setIndex(props.index)
+    }
+  }, [props.index])
+
+  useOnChange(() => {
+    if (props.index !== index && props.onIndexChange) {
+      props.onIndexChange(index)
+    }
+  }, [index])
+
   return (
-    <SwipeableViews
-      index={index}
-      onIndexChange={onIndexChange}
-    >
-      {children}
-    </SwipeableViews>
+    <div className={style.wrapper}>
+      {props.withArrow && <ArrowPrev num={num} {...indexInfo} />}
+      {props.withArrow && <ArrowNext num={num} {...indexInfo} />}
+      <SwipeableViews {...indexInfo}>
+        {props.children}
+      </SwipeableViews>
+      {props.withPagination && (
+        <Pagination className={style.pagination} num={num} {...indexInfo} />
+      )}
+    </div>
   )
 }
 
