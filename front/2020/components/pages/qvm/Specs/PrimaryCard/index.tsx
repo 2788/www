@@ -3,14 +3,12 @@
  */
 
 import React from 'react'
-import { Card } from 'components/UI/Card'
-import Button from 'components/UI/Button'
+import Card, { Title, List, Item, HookItem, Button } from 'components/OperationCard'
 import { urlForQvmBuy } from 'utils/route'
 
 import IconInstance from './instance.svg'
 import IconBandwidth from './bandwidth.svg'
 import IconStorage from './storage.svg'
-import IconOK from '../hook.svg'
 import style from './style.less'
 
 export type Props = {
@@ -35,10 +33,7 @@ export default function PrimaryCard({
 
   const featuresView = features.map(
     (feature, i) => (
-      <li key={i} className={style.feature}>
-        <IconOK className={style.icon} />
-        {feature}
-      </li>
+      <HookItem key={i} className={style.feature}>{feature}</HookItem>
     )
   )
 
@@ -50,34 +45,32 @@ export default function PrimaryCard({
     buymonth: 12
   })
 
+  const headerView = (
+    <>
+      <Title>{name}</Title>
+      <List className={style.features}>{featuresView}</List>
+    </>
+  )
+
+  const footerView = (
+    <>
+      <p className={style.price}>
+        {priceText}
+        <span className={style.unit}>元/月</span>
+      </p>
+      <Button className={style.buyBtn} target="_blank" href={buyUrl}>立即购买</Button>
+    </>
+  )
+
   return (
-    <Card className={style.wrapper}>
-      <header className={style.header}>
-        <h4 className={style.title}>{name}</h4>
-        <ul className={style.features}>
-          {featuresView}
-        </ul>
-      </header>
+    <Card header={headerView} footer={footerView}>
       <div className={style.body}>
-        <ul className={style.params}>
-          <li className={style.param}>
-            <IconInstance className={style.icon} />实例：{instance}
-          </li>
-          <li className={style.param}>
-            <IconStorage className={style.icon} />高效云盘：{storage} GB
-          </li>
-          <li className={style.param}>
-            <IconBandwidth className={style.icon} />带宽：{bandwidth} M
-          </li>
-        </ul>
+        <List>
+          <Item icon={<IconInstance />}>实例：{instance}</Item>
+          <Item icon={<IconStorage />}>高效云盘：{storage} GB</Item>
+          <Item icon={<IconBandwidth />}>带宽：{bandwidth} M</Item>
+        </List>
       </div>
-      <footer className={style.footer}>
-        <p className={style.price}>
-          {priceText}
-          <span className={style.unit}>元/月</span>
-        </p>
-        <Button className={style.buyBtn} withBorder target="_blank" href={buyUrl}>立即购买</Button>
-      </footer>
     </Card>
   )
 }

@@ -1,0 +1,52 @@
+@import '~utils/less/index.less';
+
+.card {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .cardContent {
+    position: relative;
+    height: 386px;
+    padding: 48px 48px 112px;
+    text-align: center;
+    color: @grey-1;
+    background-color: rgba(0, 0, 0, 50%);
+  }
+
+  .cardTitle {
+    font-size: 44px;
+  }
+
+  .cardDesc {
+    margin-top: 32px;
+    text-align: left;
+    font-size: 24px;
+  }
+
+  .cardOpLine {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+    width: 100%;
+  }
+
+  .cardBtn {
+    width: 180px;
+  }
+}
+
+.placeholder {
+  position: relative;
+  background-color: @grey-3;
+  text-align: center;
+
+  .placeholderWord {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    font-size: 24px;
+    color: @grey-5;
+  }
+}
