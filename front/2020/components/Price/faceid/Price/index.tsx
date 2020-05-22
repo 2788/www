@@ -36,6 +36,16 @@ const data1 = [
     key: 3,
     type: '动作活体检测',
     price: '0.12 元/次'
+  },
+  {
+    key: 4,
+    type: '公安核验',
+    price: '1 元/次'
+  },
+  {
+    key: 5,
+    type: '身份证识别 OCR',
+    price: '0.03 元/次'
   }
 ]
 
@@ -94,7 +104,7 @@ export default function Price() {
       <PricePaneSection title="价格详情" className={style.mode}>
         <Tabs defaultValue="1">
           <TabPane value="1" tab="人脸核验">
-            <Table columns={columns1} dataSource={data1} />
+            <Table bordered pagination={false} columns={columns1} dataSource={data1} />
           </TabPane>
           <TabPane value="2" tab="人脸识别技术">
             <Table bordered columns={columns2} dataSource={data2} pagination={false} />
