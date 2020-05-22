@@ -10,9 +10,9 @@ import { BannerContext } from '..'
 
 export type CalcPaneProps = {
   children: ReactNode
-  total: string
-  buyLink: string
-  onAdd(): void
+  total?: string
+  buyLink?: string
+  onAdd?(): void
 }
 
 export default function CalcPane({ children, total, buyLink, onAdd }: CalcPaneProps) {
@@ -20,13 +20,15 @@ export default function CalcPane({ children, total, buyLink, onAdd }: CalcPanePr
 
   useEffect(() => registerPane('calc'), [registerPane])
 
+  const empty = !total && !buyLink && !onAdd
+
   return (
     <Pane name="calc" className={style.wrapper}>
       <div className={style.content}>
         {children}
-        <Footer onAdd={onAdd} buyLink={buyLink} total={total} />
+        {!empty && <Footer onAdd={onAdd} buyLink={buyLink} total={total} />}
       </div>
-      <ShoppingCart />
+      {!empty && <ShoppingCart />}
     </Pane>
   )
 }
