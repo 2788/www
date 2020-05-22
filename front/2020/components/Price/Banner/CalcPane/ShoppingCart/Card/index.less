@@ -9,9 +9,20 @@
 }
 
 .title {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 12px;
   font-size: 14px;
   font-weight: 500;
+
+  .delete {
+    cursor: pointer;
+    color: @grey-5;
+
+    &:hover {
+      color: @grey-6;
+    }
+  }
 }
 
 .groupTitle {

@@ -56,6 +56,21 @@ export default [
         price: 0.18,
         min: 1 * 1024 * 1024,
         max: Number.POSITIVE_INFINITY
+      },
+      {
+        name: 'acc',
+        desc: '第 0 次至 5 万次',
+        min: 0,
+        max: 5,
+        price: 0
+      },
+      {
+        name: 'acc',
+        desc: '第 5 万次及以上',
+        min: 5,
+        max: Number.POSITIVE_INFINITY,
+        price: 0.19,
+        threshold: 5
       }
     ]
   },
@@ -125,6 +140,21 @@ export default [
         price: 0.68,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
+      },
+      {
+        name: 'acc',
+        desc: '第 0 次至 5 万次',
+        min: 0,
+        max: 5,
+        price: 0
+      },
+      {
+        name: 'acc',
+        desc: '第 5 万次及以上',
+        min: 5,
+        max: Number.POSITIVE_INFINITY,
+        price: 0.19,
+        threshold: 5
       }
     ]
   },
@@ -199,6 +229,21 @@ export default [
         price: 0.31,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
+      },
+      {
+        name: 'acc',
+        desc: '第 0 次至 5 万次',
+        min: 0,
+        max: 5,
+        price: 0
+      },
+      {
+        name: 'acc',
+        desc: '第 5 万次及以上',
+        min: 5,
+        max: Number.POSITIVE_INFINITY,
+        price: 0.19,
+        threshold: 5
       }
     ]
   },
@@ -273,6 +318,21 @@ export default [
         price: 0.45,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
+      },
+      {
+        name: 'acc',
+        desc: '第 0 次至 5 万次',
+        min: 0,
+        max: 5,
+        price: 0
+      },
+      {
+        name: 'acc',
+        desc: '第 5 万次及以上',
+        min: 5,
+        max: Number.POSITIVE_INFINITY,
+        price: 0.19,
+        threshold: 5
       }
     ]
   },
@@ -347,6 +407,21 @@ export default [
         price: 0.68,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
+      },
+      {
+        name: 'acc',
+        desc: '第 0 次至 5 万次',
+        min: 0,
+        max: 5,
+        price: 0
+      },
+      {
+        name: 'acc',
+        desc: '第 5 万次及以上',
+        min: 5,
+        max: Number.POSITIVE_INFINITY,
+        price: 0.19,
+        threshold: 5
       }
     ]
   },
@@ -421,22 +496,16 @@ export default [
         price: 0.85,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
-      }
-    ]
-  },
-  {
-    region: 'all',
-    desc: '动态加速请求数',
-    items: [
+      },
       {
-        name: '动态加速请求数',
+        name: 'acc',
         desc: '第 0 次至 5 万次',
         min: 0,
         max: 5,
         price: 0
       },
       {
-        name: '动态加速请求数',
+        name: 'acc',
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,

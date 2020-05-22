@@ -12,7 +12,6 @@ import { STORAGE_KEY, Product } from 'components/Price/Banner/CalcPane/ShoppingC
 import Calculator, { CalcInput, Unit } from '../../Calculator'
 import style from './index.less'
 import rules from './rules'
-import DynamicAcc from './DynamicAcc'
 import Duration from './Duration'
 
 // icecream 没暴露出来
@@ -38,6 +37,8 @@ export default function CdnCalc() {
 
   function handleRegionChange(checkdValues: CheckboxValueType[]) {
     setRegions(checkdValues as string[])
+    const currentInputs = calculator.getInputs().filter(input => checkdValues.find(value => value === input.region))
+    calculator.setInput(currentInputs)
   }
 
   function handleRegionItemChange(input: CalcInput) {
@@ -45,7 +46,7 @@ export default function CdnCalc() {
   }
 
   function handleAdd() {
-    setGoods([...(goods || []), transform('CDN', calculator.evaluate(), calculator.getInputs())])
+    setGoods([...(goods || []), transform('CDN', calculator.evaluate(), calculator.getInputs(), calculator.getDuration())])
   }
 
   const regionSections = regions.map(region => (
@@ -68,7 +69,6 @@ export default function CdnCalc() {
         </div>
       </section>
       {regionSections}
-      <DynamicAcc onChange={calculator.setInput} />
       <Duration onChange={calculator.setDuration} />
     </CalcPane>
   )
@@ -95,8 +95,9 @@ function Region({ region, desc, onChange }: RegionProps) {
     region,
     desc,
     items: [
-      { name: 'http', count: 0, unit: 'GB' },
-      { name: 'https', count: 0, unit: 'GB' }
+      { name: 'http', desc: 'HTTP 下载流量/月', count: 0, unit: 'GB' },
+      { name: 'https', desc: 'HTTPS 下载流量/月', count: 0, unit: 'GB' },
+      { name: 'acc', desc: '动态加速请求次数', count: 0, unit: '万次' }
     ]
   })
 
@@ -110,14 +111,19 @@ function Region({ region, desc, onChange }: RegionProps) {
     onChange(inputRef.current)
   }
 
-  function handleUnitChange(unit: Unit) {
-    inputRef.current.items[0].unit = unit
-    inputRef.current.items[1].unit = unit
+  // 动态加速次数
+  function handleAccCountChange(value: number) {
+    inputRef.current.items[2].count = value
     onChange(inputRef.current)
   }
 
-  const selectAfter = (
-    <Select defaultValue="GB" style={{ width: 62 }} onChange={value => handleUnitChange(value as Unit)}>
+  function handleCapacityUnitChange(unit: Unit, index: number) {
+    inputRef.current.items[index].unit = unit
+    onChange(inputRef.current)
+  }
+
+  const selectAfter = (index: number) => (
+    <Select defaultValue="GB" style={{ width: 62 }} onChange={value => handleCapacityUnitChange(value as Unit, index)}>
       <Select.Option key="1" value="GB">GB</Select.Option>
       <Select.Option key="2" value="TB">TB</Select.Option>
       <Select.Option key="3" value="PB">PB</Select.Option>
@@ -129,11 +135,15 @@ function Region({ region, desc, onChange }: RegionProps) {
       <div className={style.areaTitle}>{desc}</div>
       <div className={style.areaItem}>
         <p>HTTP 下载流量/月</p>
-        <InputNumber onChange={handleHttpChange} addonAfter={selectAfter} />
+        <InputNumber onChange={handleHttpChange} addonAfter={selectAfter(0)} />
       </div>
       <div className={style.areaItem}>
         <p>HTTPS 下载流量/月</p>
-        <InputNumber onChange={handleHttpsChange} addonAfter={selectAfter} />
+        <InputNumber onChange={handleHttpsChange} addonAfter={selectAfter(1)} />
+      </div>
+      <div className={style.areaItem}>
+        <p>动态加速请求次数</p>
+        <InputNumber onChange={handleAccCountChange} addonAfter="万次" />
       </div>
     </div>
   )
