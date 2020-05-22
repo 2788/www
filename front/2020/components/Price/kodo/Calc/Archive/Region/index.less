@@ -1,27 +1,5 @@
 @import '~utils/less/index.less';
 
-.discount {
-  color: @red-6;
-}
-
-.region {
-  display: flex;
-  margin-top: 22px;
-  border-bottom: 1px solid @grey-3;
-
-  > :first-child {
-    flex-shrink: 0;
-    width: 76px;
-    white-space: nowrap;
-  }
-
-  :global {
-    .ant-checkbox-group-item {
-      margin-bottom: 12px;
-    }
-  }
-}
-
 .area {
   padding: 24px 0;
   border-bottom: 1px solid @grey-3;
@@ -44,4 +22,8 @@
   + .areaItem {
     margin-left: 16px;
   }
+}
+
+.areaRow + .areaRow {
+  margin-top: 20px;
 }
