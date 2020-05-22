@@ -11,9 +11,9 @@ import { get } from 'utils/fetch'
 const apiPrefix = `${apiHost}/search`
 
 export enum Tag {
-  Product = 'product',
-  Solution = 'solution',
-  Other = 'other'
+  Product = 'products',
+  Solution = 'solutions',
+  Other = 'others'
 }
 
 export enum SearchIn {
@@ -21,10 +21,18 @@ export enum SearchIn {
 }
 
 export type SearchParams = {
+  /** 搜索关键词，必传 */
   keyword: string
+  /** 标签，取值同配置中配的值，如 product / solution / other，不传即为所有 */
   tag?: Tag | null
+  /**
+   * 关键词的搜索范围，不传则表示同时在标题 & 正文中搜索；可选值：
+   * - title：表示仅搜索标题包含关键词的内容
+   */
   in?: SearchIn
+  /** 搜索结果的起始位置，不传默认为 0 */
   from?: number
+  /** 搜索结果项的数量，不传默认为 10 */
   limit?: number
 }
 
@@ -41,16 +49,16 @@ export type SearchResult = {
 }
 
 /** 搜索 */
-export async function search({ keyword, tag, from, limit }: SearchParams): Promise<SearchResult> {
+export async function search({ keyword, ...otherParams }: SearchParams): Promise<SearchResult> {
   // mock API
-  if (typeof window !== 'undefined') {
+  if (typeof window === 'undefined') {
     await timeout(300)
     if (keyword.indexOf('空') >= 0) {
       return { total: 0, items: [] }
     }
     return {
       total: 24,
-      items: new Array(limit).fill({
+      items: new Array(otherParams.limit).fill({
         title: '七牛云 - 校园招聘',
         url: 'https://www.qiniu.com/hire-campus.html',
         tag: Tag.Product,
@@ -61,11 +69,11 @@ export async function search({ keyword, tag, from, limit }: SearchParams): Promi
         ]
       }).map((item, i) => ({
         ...item,
-        title: `${keyword}的${tag || '全部'}结果（${(from || 0) + i}）`
+        title: `${keyword}的${otherParams.tag || '全部'}结果（${(otherParams.from || 0) + i}）`
       }))
     }
   }
-  return get(`${apiPrefix}/search`, { site, term: keyword, tag, from, limit })
+  return get(`${apiPrefix}/search`, { site, term: keyword, ...otherParams })
 }
 
 export type CountByTagsParams = {
@@ -88,7 +96,7 @@ export type HotKeywordsResult = string[]
 
 /** 获取热门搜索词列表 */
 export async function getHotKeywords(): Promise<HotKeywordsResult> {
-  if (typeof window !== 'undefined') {
+  if (typeof window === 'undefined') {
     await timeout(300)
     return ['对象存储', '直播', '音视频']
   }
@@ -98,7 +106,12 @@ export async function getHotKeywords(): Promise<HotKeywordsResult> {
 
 /** 获取联想词 */
 export async function getSuggestions(keyword: string) {
-  // TODO: 好像需要专门的接口来做才行，因为这么着搜到的不一定每个标题都带关键词，不太符合“联想”的场景
   const searched = await search({ keyword, in: SearchIn.Title, limit: 5 })
-  return searched.items.map(item => item.title)
+  return searched.items.map(item => stripTag(item.title))
+}
+
+// 移除文本内容中的 HTML 标签
+// `foo<p>bar</p>` -> `foobar`
+function stripTag(htmlText: string) {
+  return htmlText.replace(/<(.|\n)*?>/g, '')
 }

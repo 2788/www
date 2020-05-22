@@ -40,6 +40,7 @@ export function useApi<F extends ApiMethod>(
       e => {
         // eslint-disable-next-line no-console
         console.warn('[API_ERROR]', e)
+        setResult(null)
         setError(e)
       }
     ).then(() => {

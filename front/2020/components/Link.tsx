@@ -27,7 +27,7 @@ function checkInSite(href?: string) {
   const hasHostOnly = /\/\//.test(href) // href="//bar.com/..."
 
   if (hasProtocolAndHost || hasHostOnly) {
-    // 后续可以考虑结合当前 host，进一步把 `https://www.qiniu.com/foo` 或
+    // TODO: 后续可以考虑结合当前 host，进一步把 `https://www.qiniu.com/foo` 或
     // `//www.qiniu.com/foo` 转化为 /foo，并当成站内链接处理
     return { inSite: false } as const
   }

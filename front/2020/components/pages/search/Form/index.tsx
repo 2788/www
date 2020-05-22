@@ -3,7 +3,7 @@
  */
 
 import React, { ReactNode, useEffect, useState, FormEvent, useRef, ChangeEvent } from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 import { urlForSearch } from 'utils/route'
 import { useApi } from 'hooks/api'
 import { getHotKeywords } from 'apis/search'
@@ -101,7 +101,7 @@ function Hot() {
   const hotKeywodsView = withSep((hotKeywords || []).map(
     hotKeyword => (
       <Link key={'keyword-' + hotKeyword} href={urlForSearch(hotKeyword)}>
-        <a>{hotKeyword}</a>
+        {hotKeyword}
       </Link>
     )
   ))

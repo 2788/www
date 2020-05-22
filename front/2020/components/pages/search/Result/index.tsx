@@ -2,9 +2,13 @@
  * @file 搜索页的结果部分
  */
 
+/* eslint-disable react/no-danger */
+
 import React from 'react'
+import Spin from 'react-icecream/lib/spin'
 import { SearchResultItem, SearchResult as SearchResultData } from 'apis/search'
 import Pagination from 'components/UI/Pagination'
+import Link from 'components/Link'
 import ResultEmpty from 'components/ResultEmpty'
 import { useMobile } from 'hooks/ua'
 import style from './style.less'
@@ -22,14 +26,16 @@ export type Props = {
   loading: boolean // TODO: 处理 loading
 }
 
-export default function SearchResult({ result, page, onPageChange }: Props) {
+export default function SearchResult({ result, page, onPageChange, loading }: Props) {
   if (!result || result.items.length <= 0) {
     return <ResultEmpty className={style.empty} tip="暂无搜索结果" />
   }
 
   return (
     <div className={style.wrapper}>
-      <ResultList items={result.items} />
+      <Spin spinning={loading}>
+        <ResultList items={result.items} />
+      </Spin>
       <div className={style.paginationLine}>
         <Pagination
           className={style.pagination}
@@ -59,20 +65,25 @@ export function ResultList({ items }: ResultListProps) {
 
 export function ResultItem({ title, matched, url }: SearchResultItem) {
 
+  const isMobile = useMobile()
   const content = matched[0] // TODO: 不应该只用第一个
-  const contentView = (
-    // eslint-disable-next-line react/no-danger
-    <p className={style.itemContent} dangerouslySetInnerHTML={{ __html: content }}></p>
+
+  const titleView = (
+    isMobile
+    ? <h5 className={style.itemTitle} dangerouslySetInnerHTML={{ __html: title }}></h5>
+    : <h5 className={style.itemTitle}><Link href={url} dangerouslySetInnerHTML={{ __html: title }} /></h5>
   )
 
-  const isMobile = useMobile()
+  const contentView = (
+    <p className={style.itemContent} dangerouslySetInnerHTML={{ __html: content }}></p>
+  )
 
   // 在移动端整个块都可点击跳转
   if (isMobile) {
     return (
       <li className={style.resultItem}>
         <a href={url}>
-          <h5 className={style.itemTitle}>{title}</h5>
+          {titleView}
           {contentView}
           <p className={style.itemLinkLine}>来源：{url}</p>
         </a>
@@ -82,9 +93,7 @@ export function ResultItem({ title, matched, url }: SearchResultItem) {
 
   return (
     <li className={style.resultItem}>
-      <h5 className={style.itemTitle}>
-        <a href={url}>{title}</a>
-      </h5>
+      {titleView}
       {contentView}
       <p className={style.itemLinkLine}>
         来源：<a href={url}>{url}</a>

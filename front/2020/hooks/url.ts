@@ -3,7 +3,7 @@
  */
 
 import { useState, useCallback, useEffect } from 'react'
-import { ParsedUrlQuery, parse } from 'querystring'
+import { ParsedQuery, parse } from 'query-string'
 import { useRouter } from 'next/router'
 import { isBrowser } from '../utils'
 
@@ -76,13 +76,13 @@ function hasOwnProp(target: any, key: string) {
 function useQuery() {
   const router = useRouter()
   const querystring = router.asPath.split('?')[1] || ''
-  const [query, setQuery] = useState<ParsedUrlQuery>({})
+  const [query, setQuery] = useState<ParsedQuery>({})
 
   useEffect(() => {
     setQuery(parse(querystring))
   }, [querystring])
 
-  const setQueryByRouter = useCallback((newQuery: ParsedUrlQuery) => {
+  const setQueryByRouter = useCallback((newQuery: ParsedQuery) => {
     router.replace({
       pathname: router.pathname,
       query: newQuery
@@ -101,7 +101,7 @@ export function useQueryValue<T extends string>(key: string, defaultValue: T) {
   const value = queryValue != null ? queryValue : defaultValue
 
   const setValue = useCallback((newValue?: string) => {
-    function noSense(v: string | string[] | undefined) {
+    function noSense(v: string | string[] | undefined | null) {
       // 值跟 `defaultValue` 相等的话，也当成没有值来处理
       return v == null || v === defaultValue
     }

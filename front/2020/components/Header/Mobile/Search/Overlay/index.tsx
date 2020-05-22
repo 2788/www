@@ -1,12 +1,13 @@
 import React, { FormEvent, useState } from 'react'
 import classnames from 'classnames'
-import Link from 'next/link'
+import Link from 'components/Link'
 import { useRouter } from 'next/router'
 import ResultEmpty from 'components/ResultEmpty'
 import DeveloperSiteSearch from 'components/Header/DeveloperSiteSearch'
 import { useApiWithParams } from 'hooks/api'
 import { getHotKeywords, getSuggestions } from 'apis/search'
 import { urlForSearch } from 'utils/route'
+import { withLoading } from 'utils/loading'
 
 import SearchIcon from './search.svg'
 import style from './style.less'
@@ -62,24 +63,22 @@ function Suggestion({ keyword }: { keyword: string }) {
     { params: [keyword], delay: 500 }
   )
 
-  // TODO: 样式
-  if (loading) return <p>loading...</p>
-
   if (!items || items.length <= 0) {
-    return <ResultEmpty className={style.empty} tip="未找到相关产品" />
+    return withLoading(loading)(
+      <ResultEmpty className={style.empty} tip="未找到相关产品" />
+    )
   }
 
   const itemsView = (items || []).map(
     (item, i) => (
       <li key={i}>
-        <Link href={urlForSearch(item)}>
-          <a>{item}</a>
-        </Link>
+        {/* eslint-disable-next-line react/no-danger */}
+        <Link href={urlForSearch(item)} title={item} dangerouslySetInnerHTML={{ __html: item }} />
       </li>
     )
   )
 
-  return (
+  return withLoading(loading)(
     <ul className={style.list}>
       {itemsView}
     </ul>

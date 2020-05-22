@@ -118,11 +118,20 @@
   background-color: @grey-1;
   box-shadow: @modal-box-shadow;
 
+  .empty {
+    height: 180px;
+  }
+
   .loading, .suggestionItem {
     .ellipsis();
     padding: 9px 20px;
     font-size: 12px;
     line-height: 18px;
+  }
+
+  .suggestionItem em {
+    color: @blue-6;
+    font-style: normal;
   }
 }
 
