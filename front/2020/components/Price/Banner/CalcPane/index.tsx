@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactNode } from 'react'
+import React, { useEffect, useRef, ReactNode, useContext } from 'react'
 import Button from 'components/UI/Button'
 import { useSticky } from 'hooks/scroll'
 
@@ -6,6 +6,7 @@ import { Pane } from '../Pane'
 import ShoppingCart from './ShoppingCart'
 
 import style from './index.less'
+import { BannerContext } from '..'
 
 export type CalcPaneProps = {
   children: ReactNode
@@ -15,6 +16,10 @@ export type CalcPaneProps = {
 }
 
 export default function CalcPane({ children, total, buyLink, onAdd }: CalcPaneProps) {
+  const { registerPane } = useContext(BannerContext)
+
+  useEffect(() => registerPane('calc'), [registerPane])
+
   return (
     <Pane name="calc" className={style.wrapper}>
       <div className={style.content}>

@@ -19,7 +19,7 @@ export default function Price() {
         <div className={style.content}>
           <Video />
         </div>
-        <div className={style.title} style={{ marginTop: '48px' }}>其他</div>
+        <div className={style.title} style={{ marginTop: '48px' }}>以图搜图</div>
         <div className={style.content}>
           <Other />
         </div>
