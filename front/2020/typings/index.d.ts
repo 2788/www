@@ -1,3 +1,8 @@
+declare module '*.file.svg' {
+  const exports: string
+  export default exports
+}
+
 declare module '*.svg' {
   const exports: React.FC<React.SVGAttributes<SVGElement>>
   export default exports
@@ -39,7 +44,7 @@ declare module 'react-swipeable-views' {
   }>
 
   // eslint-disable-next-line react/prefer-stateless-function
-  class SwipeableViews extends React.Component<Props> {}
+  class SwipeableViews extends React.Component<Props> { }
 
   export default SwipeableViews
 }

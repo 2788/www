@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="32px" viewBox="0 0 30 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>security-officer</title>
+    <g id="活动与合作" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="联系我们" transform="translate(-1299.000000, -659.000000)">
+            <g id="矩形-2" transform="translate(0.000000, 471.000000)">
+                <g id="01备份-2" transform="translate(1272.000000, 162.000000)">
+                    <g id="编组-5" transform="translate(24.000000, 24.000000)">
+                        <g id="security-officer" transform="translate(4.000000, 3.000000)">
+                            <line x1="14" y1="25" x2="14" y2="30" id="路径" stroke="#00AAE7" stroke-width="2" stroke-linecap="square"></line>
+                            <path d="M24,3.5 C24,1.567 19.523,0 14,0 C8.477,0 4,1.567 4,3.5 C4,4.524 5.264,5.442 7.266,6.082 C8.093,7.765 10.791,9 14,9 C17.209,9 19.907,7.765 20.734,6.082 C22.736,5.442 24,4.524 24,3.5 Z" id="路径" stroke="#333333" stroke-width="2" stroke-linecap="square"></path>
+                            <path d="M10.819,18.083 L2.085,22.863 C0.799667449,23.5638965 0,24.9109865 0,26.375 L0,30 L28,30 L28,26.375 C28,24.9109865 27.2003326,23.5638965 25.915,22.863 L17.181,18.083" id="路径" stroke="#333333" stroke-width="2"></path>
+                            <path d="M22,5.594 L22,8 C22,14 18.418,19 14,19 C9.582,19 6,14 6,8 L6,5.594" id="路径" stroke="#333333" stroke-width="2"></path>
+                            <circle id="椭圆形" fill="#00AAE7" fill-rule="nonzero" cx="14" cy="4.5" r="1.5"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -10,12 +10,14 @@ import style from './style.less'
 
 export type Props = HTMLAttributes<HTMLElement> & {
   background: string
+  backgroundSize?: string
 }
 
-export default function Banner({ background, children, className, ...others }: Props) {
+export default function Banner({ background, backgroundSize, children, className, ...others }: Props) {
 
   const contentStyle: CSSProperties = {
-    backgroundImage: `url(${background})`
+    backgroundImage: `url(${background})`,
+    backgroundSize
   }
 
   return (

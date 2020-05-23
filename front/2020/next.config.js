@@ -56,7 +56,7 @@ module.exports = withPlugins(
           ]
         },
         {
-          test: /\.(png|jpe?g|gif)$/i,
+          test: /\.(file\.svg|png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },
