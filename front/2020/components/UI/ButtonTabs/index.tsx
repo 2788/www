@@ -3,8 +3,8 @@
  */
 
 import React, { PropsWithChildren, createContext, useContext } from 'react'
-import style from './style.less'
 import Button from '../Button'
+import style from './style.less'
 
 type Value = string
 

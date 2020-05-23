@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="切图" transform="translate(-646.000000, -197.000000)" stroke-width="2">
-            <g id="编组-29" transform="translate(646.000000, 197.000000)">
-                <g id="推流SDK备份-2" transform="translate(8.000000, 8.000000)">
-                    <circle id="形状结合备份-5" stroke="#000000" transform="translate(14.000000, 14.000000) rotate(-90.000000) translate(-14.000000, -14.000000) " cx="14" cy="14" r="14"></circle>
-                    <polyline id="路径-13备份" stroke="#00AAE6" stroke-linejoin="bevel" points="6 13.4451973 9.06581242 13.4451973 9.83226552 15.9653795 11.3651717 8 14.4309841 20 15.9638904 9.13739719 18.2632497 13.4451973 22 13.6354398"></polyline>
-                </g>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>推流SDK32*32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-388.000000, -792.000000)" stroke-width="2">
+            <g id="短视频SDK备份-9" transform="translate(390.000000, 798.000000)" stroke="#333333">
+                <rect id="矩形备份-15" x="0" y="0" width="22" height="20"></rect>
+                <polygon id="矩形备份-16" points="22 5.33333333 28 3 28 17 22 14.6666667"></polygon>
             </g>
+            <polygon id="三角形备份-10" stroke="#00AAE6" transform="translate(402.000000, 808.000000) rotate(-270.000000) translate(-402.000000, -808.000000) " points="402 804 406 812 398 812"></polygon>
         </g>
     </g>
 </svg>

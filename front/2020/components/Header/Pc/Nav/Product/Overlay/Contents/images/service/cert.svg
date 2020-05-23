@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="切图" transform="translate(-310.000000, -197.000000)">
-            <g id="编组-21" transform="translate(310.000000, 197.000000)">
-                <g id="SSL证书备份-2" transform="translate(10.000000, 10.000000)">
-                    <path d="M0,0 L24,0 L24,16.5454545 C24,22.8716253 18.627417,28 12,28 C5.372583,28 0,22.8716253 0,16.5454545 L0,16.5454545 L0,0 Z" id="形状结合备份-8" stroke="#000000" stroke-width="2"></path>
-                    <polygon id="星形备份-2" fill="#00AAE7" points="12 16 8.47328849 17.854102 9.14683045 13.927051 6.2936609 11.145898 10.2366442 10.572949 12 7 13.7633558 10.572949 17.7063391 11.145898 14.8531695 13.927051 15.5267115 17.854102"></polygon>
-                </g>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>SSL证书32*32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-388.000000, -344.000000)">
+            <g id="SSL证书备份" transform="translate(392.000000, 346.000000)">
+                <path d="M0,0 L24,0 L24,16.5454545 C24,22.8716253 18.627417,28 12,28 C5.372583,28 0,22.8716253 0,16.5454545 L0,16.5454545 L0,0 Z" id="形状结合备份-8" stroke="#333333" stroke-width="2"></path>
+                <polygon id="星形备份-2" fill="#00AAE6" points="12.0184353 17.2578004 7.90393853 19.4209194 8.68973748 14.8393599 5.36103968 11.5946814 9.96118691 10.9262409 12.0184353 6.7578004 14.0756837 10.9262409 18.6758309 11.5946814 15.3471331 14.8393599 16.1329321 19.4209194"></polygon>
             </g>
         </g>
     </g>

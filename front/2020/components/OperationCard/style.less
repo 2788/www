@@ -1,0 +1,84 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid @blue-6;
+}
+
+.header {
+  flex: 1 0 auto;
+  padding: 24px;
+  background-color: #FAFAFA;
+  border-bottom: 1px solid @grey-3;
+
+  .mobile({
+    padding: 20px 16px;
+  });
+}
+
+.title {
+  font-size: 20px;
+  line-height: 1.4em;
+  font-weight: 600;
+}
+
+.title + .desc {
+  margin-top: 12px;
+}
+
+.desc {
+  color: @grey-6;
+}
+
+.title + .list {
+  margin-top: 24px;
+}
+
+.body {
+  flex: 0 0 auto;
+  padding: 20px 24px 0;
+
+  .mobile({
+    padding: 16px 16px 0;
+    height: auto;
+  });
+}
+
+.footer {
+  flex: 0 0 auto;
+  padding: 12px 24px 32px;
+  text-align: center;
+
+  .mobile({
+    padding: 12px 16px 16px;
+  });
+}
+
+.list {
+  .item {
+    position: relative;
+    padding-left: 24px;
+    line-height: 22px;
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 22px;
+    }
+
+    .mobile({
+      font-size: 12px;
+      line-height: 17px;
+    });
+
+    + .item {
+      margin-top: 12px;
+    }
+  }
+}
+
+.button {
+  width: 100%;
+}

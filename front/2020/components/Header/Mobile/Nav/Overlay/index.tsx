@@ -23,22 +23,22 @@ export default function Overlay() {
           <MenuItem><Link href="/products/rtn"><a>实时音视频</a></Link></MenuItem>
           <MenuItem><Link href="/products/plsv"><a>短视频 SDK</a></Link></MenuItem>
           <MenuItem><Link href="/products/plms"><a>推流 SDK</a></Link></MenuItem>
-          <MenuItem><Link href="TODO"><a>人脸核验</a></Link></MenuItem>
+          <MenuItem><Link href="/products/faceid"><a>人脸核验</a></Link></MenuItem>
         </SubMenu>
         <SubMenu title="机器数据智能">
-          <MenuItem><Link href="/products/insight"><a>Pandora智能日志管理平台</a></Link></MenuItem>
-          <MenuItem><Link href="/products/express"><a>Pandora机器数据分析平台</a></Link></MenuItem>
+          <MenuItem><Link href="/products/insight"><a>智能日志管理平台</a></Link></MenuItem>
+          <MenuItem><Link href="/products/express"><a>Pandora 机器数据分析平台</a></Link></MenuItem>
         </SubMenu>
       </SubMenu>
       <SubMenu title="方案">
         <SubMenu title="行业解决方案">
-          <MenuItem><Link href="/products/ess"><a>监控视频边缘存储解决方案</a></Link></MenuItem>
+          <MenuItem><Link href="/solutions/ess"><a>监控视频边缘存储解决方案</a></Link></MenuItem>
         </SubMenu>
         <SubMenu title="场景解决方案">
-          <MenuItem><Link href="/products/vcs"><a>视频冷存储解决方案</a></Link></MenuItem>
-          <MenuItem><Link href="TODO"><a>私有云行业解决方案</a></Link></MenuItem>
-          <MenuItem><Link href="/products/plsv"><a>短视频解决方案</a></Link></MenuItem>
-          <MenuItem><Link href="/products/qavs"><a>智能视频云解决方案</a></Link></MenuItem>
+          <MenuItem><Link href="/solutions/vcs"><a>视频冷存储解决方案</a></Link></MenuItem>
+          <MenuItem><Link href="/solutions/kodoe"><a>私有云行业解决方案</a></Link></MenuItem>
+          <MenuItem><Link href="/solutions/plsv"><a>短视频解决方案</a></Link></MenuItem>
+          <MenuItem><Link href="/solutions/qavs"><a>智能视频云解决方案</a></Link></MenuItem>
         </SubMenu>
       </SubMenu>
       <MenuItem><Link href="TODO"><a>客户</a></Link></MenuItem>

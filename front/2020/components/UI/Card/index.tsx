@@ -10,19 +10,22 @@ import style from './style.less'
 
 export function Row({ className, ...others }: HTMLAttributes<HTMLElement>) {
   const wrapperClassName = [style.row, className].filter(Boolean).join(' ')
-  return <ul className={wrapperClassName} {...others} />
+  return <div className={wrapperClassName} {...others} />
 }
 
 export function Card({ className, ...others }: HTMLAttributes<HTMLElement>) {
   const wrapperClassName = [style.card, className].filter(Boolean).join(' ')
-  return <li className={wrapperClassName} {...others} />
+  return <section className={wrapperClassName} {...others} />
 }
 
-// 隐形卡片，占位用
-export function InvisibleCard({ className, ...others }: HTMLAttributes<HTMLElement>) {
-  const wrapperClassName = [style.card, style.invisible, className].filter(Boolean).join(' ')
-  return <li className={wrapperClassName} {...others} />
+/** 仅布局用的卡片，没有边框、阴影等样式 */
+export function LayoutCard({ className, ...others }: HTMLAttributes<HTMLElement>) {
+  const wrapperClassName = [style.card, style.layout, className].filter(Boolean).join(' ')
+  return <section className={wrapperClassName} {...others} />
 }
+
+/** 隐形卡片，占位用 */
+export const InvisibleCard = LayoutCard
 
 export type ImgProps = HTMLAttributes<HTMLElement> & {
   src: string
