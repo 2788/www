@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactNode, useContext } from 'react'
+import React, { useEffect, ReactNode, useContext } from 'react'
 import Button from 'components/UI/Button'
 import { useSticky } from 'hooks/scroll'
 

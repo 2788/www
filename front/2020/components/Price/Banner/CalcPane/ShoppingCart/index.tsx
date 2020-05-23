@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import { useLocalStorage } from 'hooks/storage'
 import { useSticky } from 'hooks/scroll'
 import Button from 'components/UI/Button'
