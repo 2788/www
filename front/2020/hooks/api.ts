@@ -14,6 +14,17 @@ export type UseApiOptions = {
   delay?: number
 }
 
+// 标识当前组件是否存活（未被销毁）的信息
+function useAlive() {
+  const aliveRef = useRef(true)
+
+  useEffect(() => () => {
+    aliveRef.current = false
+  }, [])
+
+  return aliveRef.current
+}
+
 export function useApi<F extends ApiMethod>(
   /** API 实现函数，预期参数为 API 调用参数，返回值为包裹 API 请求结果的 Promise */
   apiMethod: F,
@@ -28,38 +39,28 @@ export function useApi<F extends ApiMethod>(
   const [result, setResult] = useState<ResultFor<F> | null>(null)
   const [error, setError] = useState<any>(null)
   const [loading, setLoading] = useState(false)
-  const mountedRef = useRef(false)
-  const mounted = mountedRef.current
 
-  useEffect(() => {
-    mountedRef.current = true
-    return () => {
-      mountedRef.current = false
-    }
-  }, [])
+  const alive = useAlive()
 
   // eslint-disable-next-line no-underscore-dangle
   let _call: CallFor<F> = (...args: any[]) => {
     setLoading(true)
     apiMethod(...args).then(
       res => {
-        if (mounted) {
-          setResult(res)
-          setError(null)
-        }
+        if (!alive) return
+        setResult(res)
+        setError(null)
       },
       e => {
-        if (mounted) {
-          // eslint-disable-next-line no-console
-          console.warn('[API_ERROR]', e)
-          setResult(null)
-          setError(e)
-        }
+        if (!alive) return
+        // eslint-disable-next-line no-console
+        console.warn('[API_ERROR]', e)
+        setResult(null)
+        setError(e)
       }
     ).then(() => {
-      if (mounted) {
-        setLoading(false)
-      }
+      if (!alive) return
+      setLoading(false)
     })
   }
 
