@@ -2,7 +2,7 @@
  * @file 接口调用相关辅助 hooks
  */
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { debounce } from 'lodash'
 
 export type ApiMethod = (...args: any) => Promise<any>
@@ -28,23 +28,38 @@ export function useApi<F extends ApiMethod>(
   const [result, setResult] = useState<ResultFor<F> | null>(null)
   const [error, setError] = useState<any>(null)
   const [loading, setLoading] = useState(false)
+  const mountedRef = useRef(false)
+  const mounted = mountedRef.current
+
+  useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
 
   // eslint-disable-next-line no-underscore-dangle
   let _call: CallFor<F> = (...args: any[]) => {
     setLoading(true)
     apiMethod(...args).then(
       res => {
-        setResult(res)
-        setError(null)
+        if (mounted) {
+          setResult(res)
+          setError(null)
+        }
       },
       e => {
-        // eslint-disable-next-line no-console
-        console.warn('[API_ERROR]', e)
-        setResult(null)
-        setError(e)
+        if (mounted) {
+          // eslint-disable-next-line no-console
+          console.warn('[API_ERROR]', e)
+          setResult(null)
+          setError(e)
+        }
       }
     ).then(() => {
-      setLoading(false)
+      if (mounted) {
+        setLoading(false)
+      }
     })
   }
 
