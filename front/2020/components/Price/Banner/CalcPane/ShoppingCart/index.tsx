@@ -64,13 +64,10 @@ function Empty() {
 }
 
 function Footer({ total }: { total: string }) {
-  const footerRef = useRef(null)
   const [setElm] = useSticky()
 
-  useEffect(() => setElm(footerRef.current!), [setElm])
-
   return (
-    <div ref={footerRef} className={style.footer}>
+    <div ref={setElm} className={style.footer}>
       <p className={style.price}><span className={style.num}>{total}</span> 元</p>
       <Button withBorder className={style.export}>导出预算清单</Button>
     </div>

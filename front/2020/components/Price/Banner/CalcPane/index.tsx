@@ -45,13 +45,10 @@ export default function CalcPane({ children, disabled, total, buyLink, onAdd }: 
 }
 
 function Footer({ total, buyLink, onAdd, disabled }: Pick<CalcPaneProps, 'total' | 'buyLink' | 'onAdd' | 'disabled'>) {
-  const footerRef = useRef(null)
   const [setElm] = useSticky()
 
-  useEffect(() => setElm(footerRef.current!), [setElm])
-
   return (
-    <div ref={footerRef} className={style.footer}>
+    <div ref={setElm} className={style.footer}>
       <div className={style.left}>总费用：</div>
       <div className={style.right}>
         <p className={style.price}><span className={style.num}>{total}</span> 元</p>

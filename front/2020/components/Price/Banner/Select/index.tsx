@@ -62,11 +62,6 @@ function Overlay() {
             <Link href="/prices/censor">内容审核</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
-        <DropdownMenuGroup title="机器数据智能">
-          <DropdownMenuItem>
-            <Link href="/price/express">机器数据分析平台</Link>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
       </DropdownMenu>
     </>
   )
