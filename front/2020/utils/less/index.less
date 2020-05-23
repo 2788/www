@@ -92,3 +92,39 @@
     opacity: 1;
   }
 }
+
+// 很多内容（如产品使用场景）里会用来组织列表的，前面带蓝色圆点的 item
+// 使用时给 li 添加该 mixin 即可
+.dot-item() {
+  position: relative;
+  padding-left: 1em;
+  font-size: 14px;
+  line-height: 22px;
+  color: @grey-6;
+
+  &:not(:first-child) {
+    margin-top: 4px;
+  }
+
+  &::before {
+    content: "\2022"; // dot
+    position: absolute;
+    left: 0;
+    display: block;
+    color: @blue-6;
+    opacity: .4;
+
+    .mobile({
+      content: "";
+    });
+  }
+}
+
+// 本身就是蓝色的链接，hover 时出下划线（不同于大部分链接本身黑色，hover 变蓝）
+.blueLink() {
+  color: @blue-6;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

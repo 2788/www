@@ -4,7 +4,8 @@
   position: relative;
 }
 
-@arrowSize: 68px;
+@arrowSize: 52px;
+@arrowShadowSize: 8px;
 @arrowMargin: 56px;
 
 .arrowPrev, .arrowNext {
@@ -19,11 +20,11 @@
 }
 
 .arrowPrev {
-  left: -(@arrowSize + @arrowMargin);
+  left: -(@arrowSize + @arrowShadowSize + @arrowMargin);
 }
 
 .arrowNext {
-  right: -(@arrowSize + @arrowMargin);
+  right: -(@arrowSize + @arrowShadowSize + @arrowMargin);
 }
 
 .pagination {

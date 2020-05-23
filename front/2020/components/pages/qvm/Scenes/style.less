@@ -33,28 +33,7 @@
 .list {
   margin-top: 8px;
   .item {
-    position: relative;
-    padding-left: 1em;
-    font-size: 14px;
-    line-height: 22px;
-    color: @grey-6;
-
-    &:not(:first-child) {
-      margin-top: 4px;
-    }
-
-    &::before {
-      content: "\2022"; // dot
-      position: absolute;
-      left: 0;
-      display: block;
-      color: @blue-6;
-      opacity: .4;
-
-      .mobile({
-        content: "";
-      });
-    }
+    .dot-item();
   }
 }
 
