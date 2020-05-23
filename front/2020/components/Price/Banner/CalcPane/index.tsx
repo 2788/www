@@ -22,13 +22,22 @@ export default function CalcPane({ children, total, buyLink, onAdd }: CalcPanePr
 
   const empty = !total && !buyLink && !onAdd
 
+  // 给 iframe 嵌套进来的页面用
+  if (empty) {
+    return (
+      <Pane name="calc" className={style.wrapper}>
+        {children}
+      </Pane>
+    )
+  }
+
   return (
     <Pane name="calc" className={style.wrapper}>
       <div className={style.content}>
         {children}
-        {!empty && <Footer onAdd={onAdd} buyLink={buyLink} total={total} />}
+        <Footer onAdd={onAdd} buyLink={buyLink} total={total} />
       </div>
-      {!empty && <ShoppingCart />}
+      <ShoppingCart />
     </Pane>
   )
 }
