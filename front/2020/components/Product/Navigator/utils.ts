@@ -5,6 +5,11 @@
 
 import { createContext } from 'react'
 
+export type NavigatorInfo = {
+  /** 导航条对应的 HTML 节点 */
+  wrapper: HTMLElement
+}
+
 /** 可导航区块信息 */
 export type BlockInfo = {
   /** 内容的 key，当前区块在可导航区域中的唯一标示，也会用来作为 URL hash 的值 */
@@ -19,19 +24,25 @@ export type BlockInfo = {
 export type BlockRegisterFn = (info: BlockInfo) => void
 
 export type ContextValue = {
+  navigator: NavigatorInfo | null
+  registerNavigator(info: NavigatorInfo): void
   blocks: BlockInfo[]
+  registerBlock: BlockRegisterFn
   active: string | null
   setActive: (blockName: string) => void
-  register: BlockRegisterFn
 }
 
 export const context = createContext<ContextValue | null>(null)
 
 /** 导航栏高度 */
-export const navigatorHeight = 72 // px
+// export const navigatorHeight = 72 // px
 
 /** 判断 block 是否可见 */
-export function isBlockInView({ wrapper: { offsetTop, offsetHeight } }: BlockInfo, scrollTop: number) {
-  const viewStart = scrollTop + navigatorHeight
-  return viewStart >= offsetTop && viewStart < offsetTop + offsetHeight
+export function isBlockInView(
+  { wrapper: block }: BlockInfo,
+  scrollTop: number, // 当前页面的滚动高度
+  offsetTop: number // 偏移量，比如吸顶 Navigator 的高度
+) {
+  const viewStart = scrollTop + offsetTop
+  return viewStart >= block.offsetTop && viewStart < block.offsetTop + block.offsetHeight
 }

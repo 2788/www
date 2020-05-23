@@ -42,7 +42,7 @@ export default function Swiper(props: Props) {
     <div className={style.wrapper}>
       {props.withArrow && <ArrowPrev num={num} {...indexInfo} />}
       {props.withArrow && <ArrowNext num={num} {...indexInfo} />}
-      <SwipeableViews {...indexInfo}>
+      <SwipeableViews index={index} onChangeIndex={setIndex}>
         {props.children}
       </SwipeableViews>
       {props.withPagination && (

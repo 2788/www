@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>人脸核验32*32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-386.000000, -1072.000000)">
+            <circle id="椭圆形备份-9" stroke="#00AAE6" stroke-width="2.4" cx="402" cy="1084" r="4"></circle>
+            <path d="M395,1096 C395,1092.13401 398.134007,1089 402,1089 L402,1089 C405.865993,1089 409,1092.13401 409,1096" id="形状备份" stroke="#00AAE6" stroke-width="2.4"></path>
+            <polyline id="路径-14备份-10" stroke="#333333" stroke-width="2" points="399 1075 389 1075 389 1085"></polyline>
+            <polyline id="路径-14备份-11" stroke="#333333" stroke-width="2" transform="translate(410.000000, 1080.000000) scale(-1, 1) translate(-410.000000, -1080.000000) " points="415 1075 405 1075 405 1085"></polyline>
+            <polyline id="路径-14备份-12" stroke="#333333" stroke-width="2" transform="translate(394.000000, 1096.000000) scale(1, -1) translate(-394.000000, -1096.000000) " points="399 1091 389 1091 389 1101"></polyline>
+            <polyline id="路径-14备份-13" stroke="#333333" stroke-width="2" transform="translate(410.000000, 1096.000000) scale(-1, -1) translate(-410.000000, -1096.000000) " points="415 1091 405 1091 405 1101"></polyline>
+        </g>
+    </g>
+</svg>

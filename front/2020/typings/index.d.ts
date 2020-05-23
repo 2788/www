@@ -1,5 +1,5 @@
 declare module '*.svg' {
-  const exports: React.FC<React.HTMLAttributes<HTMLElement>>
+  const exports: React.FC<React.SVGAttributes<SVGElement>>
   export default exports
 }
 
@@ -34,7 +34,7 @@ declare module '*.less' {
 declare module 'react-swipeable-views' {
   export type Props = React.PropsWithChildren<{
     index?: number
-    onIndexChange?(index: number): void
+    onChangeIndex?(index: number): void
     children?: React.ReactNode
   }>
 

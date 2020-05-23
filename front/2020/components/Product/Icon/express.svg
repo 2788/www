@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>数据分析32*32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-386.000000, -1013.000000)" stroke-width="2">
+            <g id="云短信备份-7" transform="translate(388.000000, 1017.000000)" stroke="#333333">
+                <rect id="矩形备份-22" x="0" y="0" width="28" height="20"></rect>
+            </g>
+            <path d="M396,1026 L396,1032" id="直线-9备份-2" stroke="#00AAE6" stroke-linecap="square"></path>
+            <path d="M402,1022 L402,1032" id="直线-4备份-2" stroke="#00AAE6" stroke-linecap="square"></path>
+            <path d="M408,1024 L408,1032" id="直线-5备份-2" stroke="#00AAE6" stroke-linecap="square"></path>
+            <path d="M400,1038 L398,1042" id="直线-16备份" stroke="#333333" stroke-linecap="square"></path>
+            <path d="M406,1038 L404,1042" id="直线-16备份-2" stroke="#333333" stroke-linecap="square" transform="translate(405.000000, 1040.000000) scale(-1, 1) translate(-405.000000, -1040.000000) "></path>
+        </g>
+    </g>
+</svg>

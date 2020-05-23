@@ -3,7 +3,7 @@
  * @description 反映产品页当前所有的内容模块，点击在页内跳转
  */
 
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode, useContext, useCallback } from 'react'
 import { findIndex } from 'lodash'
 import Link from 'components/Link'
 import Tabs, { Tab } from '../../UI/Tabs'
@@ -11,7 +11,7 @@ import UIButton, { Props as UIButtonProps } from '../../UI/Button'
 import { useSticky } from '../../../hooks/scroll'
 import Navigatable, { Props as _NavigatableProps } from './Navigatable'
 import Block, { Props as _BlockProps } from './Block'
-import { context, navigatorHeight } from './utils'
+import { context } from './utils'
 import Arrow from './arrow.svg'
 import style from './style.less'
 import { useMobile } from '../../../hooks/ua'
@@ -31,9 +31,16 @@ const tabPriceLink = 'price-link'
 
 /** 导航栏 */
 export default function Navigator({ priceLink, children }: Props) {
-  const [wrapperRef, isWrapperFixed] = useSticky()
+  const [setWrapper, isWrapperFixed] = useSticky()
   const contextValue = useContext(context)
   const isMobile = useMobile()
+
+  const wrapperRef = useCallback((wrapper: HTMLElement | null) => {
+    if (contextValue && wrapper && contextValue.navigator?.wrapper !== wrapper) {
+      contextValue.registerNavigator({ wrapper })
+    }
+    setWrapper(wrapper)
+  }, [contextValue, setWrapper])
 
   // 移动端不需要导航栏 TODO: 价格链接咋办？
   if (isMobile) {
@@ -47,7 +54,7 @@ export default function Navigator({ priceLink, children }: Props) {
   const { blocks, active, setActive } = contextValue
 
   // 如果当前没有 active block，将第一个 tab 高亮
-  const activeTab = active != null ? active : blocks[0].name
+  const activeTab = active != null ? active : blocks[0]?.name
 
   function handleTabsChange(newActiveTab: string) {
     // “价格”不对应可导航区块，会直接做页面跳转，这里无须处理
@@ -74,7 +81,7 @@ export default function Navigator({ priceLink, children }: Props) {
   ].filter(Boolean).join(' ')
 
   return (
-    <div ref={wrapperRef} className={wrapperClassName} style={{ height: navigatorHeight + 'px' }}>
+    <div ref={wrapperRef} className={wrapperClassName}>
       <div className={style.content}>
         <Tabs className={style.tabs} value={activeTab} onChange={handleTabsChange}>
           {blockTabsView}

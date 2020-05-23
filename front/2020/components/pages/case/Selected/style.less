@@ -1,0 +1,73 @@
+@import "~utils/less/index.less";
+
+.case {
+  @margin: 36px;
+  @logoWidth: 320px;
+  @logoHeight: 186px;
+  @footerHeight: 36px;
+  @textMargin: 8px;
+
+  position: relative;
+  margin-top: @margin;
+  padding: 0 0 @margin (@logoWidth + @margin);
+  min-height: @logoHeight + @margin;
+
+  .mobile({
+    padding: 0 16px 8px;
+    margin-top: 16px;
+    text-align: center;
+    border: 1px solid rgba(238, 238, 238, 1);
+    box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+  });
+
+  &:not(:last-child) {
+    border-bottom: 1px solid @grey-3;
+  }
+
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: @logoWidth;
+    border: 1px solid rgba(238, 238, 238, 1);
+    box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+
+    .mobile({
+      position: static;
+      width: 100%;
+      border: none;
+      box-shadow: none;
+    });
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 1.4em;
+
+    .mobile({
+      margin-top: @textMargin;
+    });
+  }
+
+  .desc {
+    margin-top: @textMargin;
+    margin-bottom: @footerHeight + @textMargin;
+    color: @grey-6;
+
+    .mobile({
+      margin-bottom: @textMargin;
+      font-size: 12px;
+    });
+  }
+
+  .footer {
+    position: absolute;
+    left: @logoWidth + @margin;
+    bottom: @margin;
+
+    .mobile({
+      position: static;
+      font-size: 12px;
+    });
+  }
+}

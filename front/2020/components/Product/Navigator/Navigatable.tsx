@@ -9,7 +9,7 @@ import React, { ReactNode, useState, useCallback, useMemo, useEffect } from 'rea
 import { useHash } from 'hooks/url'
 import { useScrollTop } from 'hooks/scroll'
 import { useOnChange } from 'hooks'
-import { BlockInfo, isBlockInView, navigatorHeight, context } from './utils'
+import { BlockInfo, isBlockInView, context, NavigatorInfo } from './utils'
 
 /** 可导航区块信息集合 */
 export type BlockInfoMap = {
@@ -22,9 +22,10 @@ export type Props = {
 
 /** 可导航区域，预期包裹在导航栏（`Navigator`）外部，包含多个可导航块（`Block`） */
 export default function Navigatable({ children }: Props) {
+  const [navigatorInfo, registerNavigator] = useState<NavigatorInfo | null>(null)
   const [blockMap, setBlockMap] = useState<BlockInfoMap>({})
 
-  const register = useCallback((info: BlockInfo) => setBlockMap(current => ({
+  const registerBlock = useCallback((info: BlockInfo) => setBlockMap(current => ({
     ...current,
     [info.name]: info
   })), [])
@@ -39,9 +40,10 @@ export default function Navigatable({ children }: Props) {
 
   // 页面滚动时根据滚动位置同步更新当前 active 信息
   useOnChange(() => {
+    const navigatorHeight = navigatorInfo?.wrapper.offsetHeight || 0
     for (let i = blocks.length - 1; i >= 0; i--) {
       const block = blocks[i]
-      if (isBlockInView(block, scrollTop)) {
+      if (isBlockInView(block, scrollTop, navigatorHeight)) {
         setActive(block.name)
         return
       }
@@ -53,14 +55,24 @@ export default function Navigatable({ children }: Props) {
 
   // 控制页面滚动到 active block 对应的位置
   useEffect(() => {
+    const navigatorHeight = navigatorInfo?.wrapper.offsetHeight || 0
     // TODO: 初次控制滚动的事情会不会挪到页面 onload 之后做更好？可能可以有更好的首屏表现
-    if (activeBlock && !isBlockInView(activeBlock, scrollTop)) {
+    if (activeBlock && !isBlockInView(activeBlock, scrollTop, navigatorHeight)) {
       scrollTo(activeBlock.wrapper.offsetTop - navigatorHeight)
     }
   }, [activeBlock]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  const contextValue = useMemo(() => ({
+    navigator: navigatorInfo,
+    registerNavigator,
+    blocks,
+    registerBlock,
+    active,
+    setActive
+  }), [navigatorInfo, blocks, registerBlock, active, setActive])
+
   return (
-    <context.Provider value={{ blocks, active, setActive, register }}>
+    <context.Provider value={contextValue}>
       {children}
     </context.Provider>
   )

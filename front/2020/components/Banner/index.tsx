@@ -12,14 +12,14 @@ export type Props = HTMLAttributes<HTMLElement> & {
   background: string
 }
 
-export default function FreePage({ background, children }: Props) {
+export default function Banner({ background, children, className, ...others }: Props) {
 
   const contentStyle: CSSProperties = {
     backgroundImage: `url(${background})`
   }
 
   return (
-    <div className={style.banner}>
+    <div className={cls(style.banner, className)} {...others}>
       <div className={style.bannerContent} style={contentStyle}>
         {children}
       </div>

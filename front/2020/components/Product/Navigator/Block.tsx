@@ -17,7 +17,7 @@ export default function Block({ name, title, children, className = '' }: Props) 
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   // 将当前 block 信息向上注册
-  const register = contextValue?.register
+  const register = contextValue?.registerBlock
   useEffect(() => {
     if (!register) {
       return
