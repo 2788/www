@@ -59,8 +59,12 @@ export default function CdnCalc() {
     </section>
   ))
 
+  // 如果没有输入，或者有输入但是全都是 0
+  const disabled = calculator.getInputs().length === 0
+    || calculator.getInputs().filter(input => input.items.find(item => item.count > 0)).length === 0
+
   return (
-    <CalcPane onAdd={handleAdd} buyLink="https://portal.qiniu.com/financial/respack/fusion-composite" total={total}>
+    <CalcPane disabled={disabled} onAdd={handleAdd} buyLink="https://portal.qiniu.com/financial/respack/fusion-composite" total={total}>
       <Tip />
       <section className={style.region}>
         <div>加速区域</div>

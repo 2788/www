@@ -10,12 +10,14 @@ import { BannerContext } from '..'
 
 export type CalcPaneProps = {
   children: ReactNode
+  // 是否禁用加入购物车按钮
+  disabled?: boolean
   total?: string
   buyLink?: string
   onAdd?(): void
 }
 
-export default function CalcPane({ children, total, buyLink, onAdd }: CalcPaneProps) {
+export default function CalcPane({ children, disabled, total, buyLink, onAdd }: CalcPaneProps) {
   const { registerPane } = useContext(BannerContext)
 
   useEffect(() => registerPane('calc'), [registerPane])
@@ -35,14 +37,14 @@ export default function CalcPane({ children, total, buyLink, onAdd }: CalcPanePr
     <Pane name="calc" className={style.wrapper}>
       <div className={style.content}>
         {children}
-        <Footer onAdd={onAdd} buyLink={buyLink} total={total} />
+        <Footer disabled={disabled} onAdd={onAdd} buyLink={buyLink} total={total} />
       </div>
       <ShoppingCart />
     </Pane>
   )
 }
 
-function Footer({ total, buyLink, onAdd }: Pick<CalcPaneProps, 'total' | 'buyLink' | 'onAdd'>) {
+function Footer({ total, buyLink, onAdd, disabled }: Pick<CalcPaneProps, 'total' | 'buyLink' | 'onAdd' | 'disabled'>) {
   const footerRef = useRef(null)
   const [setElm] = useSticky()
 
@@ -54,8 +56,7 @@ function Footer({ total, buyLink, onAdd }: Pick<CalcPaneProps, 'total' | 'buyLin
       <div className={style.right}>
         <p className={style.price}><span className={style.num}>{total}</span> 元</p>
         <Button type="primary" href={buyLink}>立即购买</Button>
-        {/* TODO disabled */}
-        <Button onClick={onAdd} withBorder style={{ marginLeft: '12px' }}>加入预算清单</Button>
+        <Button disabled={disabled} onClick={onAdd} withBorder style={{ marginLeft: '12px' }}>加入预算清单</Button>
       </div>
     </div>
   )

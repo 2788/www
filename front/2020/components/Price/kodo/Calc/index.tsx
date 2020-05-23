@@ -51,8 +51,12 @@ export default function KodoCalc() {
     }
   }
 
+  // 如果没有输入，或者有输入但是全都是 0
+  const disabled = calculator?.getInputs().length === 0
+    || calculator?.getInputs().filter(input => input.items.find(item => item.count > 0)).length === 0
+
   return (
-    <CalcPane onAdd={handleAdd} buyLink="https://marketing.qiniu.com/activity/kodopackage" total={total}>
+    <CalcPane disabled={disabled} onAdd={handleAdd} buyLink="https://marketing.qiniu.com/activity/kodopackage" total={total}>
       <Tabs defaultValue="1" className={style.tabs} onChange={value => { activeTabRef.current = value }}>
         <TabPane value="1" tab="标准存储"><Standard active={activeTabRef.current === '1'} setCalculator={setCalculator} /></TabPane>
         <TabPane value="2" tab="低频存储"><LowFrequency active={activeTabRef.current === '2'} setCalculator={setCalculator} /></TabPane>
