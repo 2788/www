@@ -15,6 +15,7 @@ import { RawAccessProcess as AccessProcess, Step } from 'components/Product/Acce
 import Section from 'components/Product/Section'
 import Scene, * as scene from 'components/Product/Scene'
 import { RawCustomerCaseGroup as RawCaseGroup, CustomerCase as Case } from 'components/Product/CustomerCaseGroup'
+import * as logos from 'components/pages/express/logos'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import IconBanner from './banner.svg'
@@ -38,7 +39,6 @@ import IconStep1 from './_images/step-1.svg'
 import IconStep2 from './_images/step-2.svg'
 import IconStep3 from './_images/step-3.svg'
 import IconArrow from './_images/arrow.svg'
-import * as logos from './_images/logos'
 import style from './style.less'
 
 // 使用链接
