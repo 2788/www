@@ -7,3 +7,22 @@
   color: @grey-7;
   white-space: nowrap;
 }
+
+.dropdown:not(:global(.rc-dropdown-hidden)) {
+  display: flex;
+}
+
+.calc {
+  margin-left: 8px;
+  vertical-align: -1px;
+}
+
+.arrow {
+  margin-left: 4px;
+  vertical-align: 2px;
+  transition: transform 0.2s;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}

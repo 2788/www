@@ -1,5 +1,5 @@
 /**
- * @file 产品“人脸核验”
+ * @file 产品“内容审核”
  */
 
 import React from 'react'
