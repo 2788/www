@@ -96,7 +96,7 @@ function LinkGroups() {
         <LinkItem url="/contact">联系我们</LinkItem>
         <LinkItem url="TODO">最新动态</LinkItem>
         <LinkItem url="https://career.qiniu.com/social">加入我们</LinkItem>
-        <LinkItem url="TODO">技术博客</LinkItem>
+        <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
       </LinkGroup>
     </section>
   )

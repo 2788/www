@@ -1,8 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react'
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import classnames from 'classnames'
 import { useRouter } from 'next/router'
 import Dropdown from 'components/UI/Dropdown'
 import { urlForSearch } from 'utils/route'
+import { useApiWithParams } from 'hooks/api'
+import { getHotKeywords } from 'apis/search'
 
 import SearchIcon from './search.svg'
 import style from './style.less'
@@ -13,6 +15,15 @@ export default function Search() {
   const [focus, setFocus] = useState(false)
   const [keyword, setKeyword] = useState('')
   const [overlayVisible, setOverlayVisible] = useState(false)
+  const [placeholder, setPlaceholder] = useState('')
+
+  const { $: hotWords } = useApiWithParams(getHotKeywords, { params: [] })
+
+  const hotWord = hotWords && hotWords[0] || '请输入要搜索的关键词'
+
+  useEffect(() => {
+    setPlaceholder(hotWord)
+  }, [hotWord])
 
   function handleKeywordChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
@@ -21,6 +32,9 @@ export default function Search() {
   }
 
   function handleKeywordBlur() {
+    if (keyword === '') {
+      setPlaceholder(hotWord)
+    }
     setFocus(false)
     // 延迟一点收起，保证浮层可以被点击到
     setTimeout(() => setOverlayVisible(false), 100)
@@ -31,6 +45,14 @@ export default function Search() {
     if (keyword) {
       setOverlayVisible(false)
       router.push(urlForSearch(keyword))
+    }
+  }
+
+  function handleKeywordFocus() {
+    setPlaceholder('请输入要搜索的关键词')
+    setFocus(true)
+    if (keyword) {
+      setOverlayVisible(true)
     }
   }
 
@@ -52,10 +74,9 @@ export default function Search() {
         <input
           name="keyword"
           className={style.input}
-          // TODO placeholder 应该是动态的？
-          placeholder="云存储"
+          placeholder={placeholder}
           onChange={handleKeywordChange}
-          onFocus={() => setFocus(true)}
+          onFocus={handleKeywordFocus}
           onBlur={handleKeywordBlur}
         />
         <button className={style.submitBtn} type="submit">

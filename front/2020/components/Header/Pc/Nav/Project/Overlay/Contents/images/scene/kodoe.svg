@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>私有云解决方案32*32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-384.000000, -1352.000000)">
+            <path d="M392,1378 C388.686292,1378 386,1375.31371 386,1372 C386,1368.7616 388.565575,1366.12243 391.775062,1366.00414 L392,1366 L392.003807,1365.75082 C392.135457,1361.44784 395.665086,1358 400,1358 C404.334914,1358 407.864543,1361.44784 407.996193,1365.75082 L408,1366 C411.313708,1366 414,1368.68629 414,1372 C414,1375.31371 411.313708,1378 408,1378 L392,1378 L392,1378 Z" id="形状结合" stroke="#333333" stroke-width="2"></path>
+            <circle id="椭圆形" fill="#00AAE6" cx="400" cy="1367" r="3"></circle>
+            <path d="M400,1368 L400,1374" id="直线-19" stroke="#00AAE6" stroke-width="2"></path>
+        </g>
+    </g>
+</svg>
