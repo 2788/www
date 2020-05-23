@@ -1,7 +1,9 @@
 @import '~utils/less/index.less';
 
 .wrapper {
-  padding-bottom: 72px;
+  + .wrapper {
+    margin-top: 72px;
+  }
 
   h2 {
     color: @grey-7;

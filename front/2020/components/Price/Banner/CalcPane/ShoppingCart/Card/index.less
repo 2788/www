@@ -1,0 +1,48 @@
+@import '~utils/less/index.less';
+
+.card {
+  padding: 20px 0;
+
+  + .card {
+    border-top: 1px solid @grey-3;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 500;
+
+  .delete {
+    cursor: pointer;
+    color: @grey-5;
+
+    &:hover {
+      color: @grey-6;
+    }
+  }
+}
+
+.groupTitle {
+  margin-bottom: 8px;
+}
+
+.item {
+  margin-bottom: 8px;
+  color: @grey-5;
+
+  .unit {
+    float: right;
+  }
+}
+
+.footer {
+  margin-top: 12px;
+  color: @orange-6;
+
+  .price {
+    font-size: 20px;
+  }
+}

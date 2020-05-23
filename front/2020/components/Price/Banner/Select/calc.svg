@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="11px" viewBox="0 0 10 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>形状</title>
+    <desc>Created with Sketch.</desc>
+    <g id="价格" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="计算器-CDN02" transform="translate(-629.000000, -248.000000)" fill="#00AAE7" fill-rule="nonzero">
+            <g id="矩形-5" transform="translate(549.000000, 198.000000)">
+                <path d="M89.2857143,50 L80.7142857,50 C80.2857143,50 80,50.275 80,50.6875 L80,60.3125 C80,60.725 80.2857143,61 80.7142857,61 L89.2857143,61 C89.7142857,61 90,60.725 90,60.3125 L90,50.6875 C90,50.275 89.7142857,50 89.2857143,50 Z M83,60 L81,60 L81,58 L83,58 L83,60 Z M83,57 L81,57 L81,55 L83,55 L83,57 Z M86,60 L84,60 L84,58 L86,58 L86,60 Z M86,57 L84,57 L84,55 L86,55 L86,57 Z M89,60 L87,60 L87,55 L89,55 L89,60 Z M89,54 L81,54 L81,51 L89,51 L89,54 Z" id="形状"></path>
+            </g>
+        </g>
+    </g>
+</svg>
