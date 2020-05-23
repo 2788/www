@@ -4,6 +4,7 @@ import Button from 'components/UI/Button'
 import { useQueryValue } from 'hooks/url'
 
 import style from './index.less'
+import Select from './Select'
 
 export * from './Pane'
 
@@ -60,7 +61,7 @@ export default function PriceBanner(props: PriceBannerProps) {
         <div className={style.content}>
           <div className={style.actions}>
             <div className={style.title}>{product}</div>
-            <Button className={style.btn}>查看其他产品价格</Button>
+            <Select />
           </div>
           <div className={style.navigator}>
             {panes.indexOf('price') > -1 && <Button className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</Button>}
