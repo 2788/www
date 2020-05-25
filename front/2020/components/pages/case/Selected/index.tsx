@@ -71,7 +71,7 @@ export default function Selected() {
           title="平安好医生"
           url="/TODO"
           logo={logoPinganhaoyisheng}
-          products={[]} // TODO
+          products={[Product.Plsv]}
         >
           平安好医生是中国一站式医疗健康生态平台，致力于让每个家庭拥有一个家庭医生；让每人拥有一份电子健康档案；让每人拥有一个健康管理计划。目前，平安好医生已经形成家庭医生服务、消费型医疗、健康商城、健康管理及健康互动四大业务板块。
         </Case>

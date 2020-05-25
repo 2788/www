@@ -3,6 +3,7 @@
  */
 
 import React, { PropsWithChildren, useState } from 'react'
+import * as cases from 'constants/cases'
 import Layout from 'components/Layout'
 import { Card, Row } from 'components/UI/Card'
 import Swiper from 'components/UI/Swiper'
@@ -20,8 +21,6 @@ import IconStep3 from './_icons/step-3.svg'
 import IconStep4 from './_icons/step-4.svg'
 import IconArrow from './_icons/circle-arrow.svg'
 import IconQuestionMark from './_icons/question.svg'
-import LogoYidong from './_logos/yidong.png' // TODO: logo 同客户案例聚合页
-import LogoCmb from './_logos/cmb.png'
 
 import style from './style.less'
 
@@ -168,26 +167,24 @@ function Cases() {
   return (
     <Swiper withArrow withPagination {...pageInfo}>
       <CustomerCaseGroup>
-        <CustomerCase pic={LogoYidong} />
-        {/* TODO: 等切图换正确的 logo */}
-        <CustomerCase pic={LogoYidong} />
-        <CustomerCase pic={LogoYidong} />
-        <CustomerCase pic={LogoYidong} />
-        <CustomerCase pic={LogoYidong} />
-        <CustomerCase pic={LogoYidong} />
-        <CustomerCase pic={LogoYidong} />
-        <CustomerCase pic={LogoYidong} />
+        <CustomerCase pic={cases.sap.logo} alt={cases.sap.name} />
+        <CustomerCase pic={cases.lx.logo} alt={cases.lx.name} />
+        <CustomerCase pic={cases.oppo.logo} alt={cases.oppo.name} />
+        <CustomerCase pic={cases.hw.logo} alt={cases.hw.name} />
+        <CustomerCase pic={cases.bbg.logo} alt={cases.bbg.name} />
+        <CustomerCase pic={cases.zgdx.logo} alt={cases.zgdx.name} />
+        <CustomerCase pic={cases.zyd.logo} alt={cases.zyd.name} />
+        <CustomerCase pic={cases.mb.logo} alt={cases.mb.name} />
       </CustomerCaseGroup>
       <CustomerCaseGroup>
-        <CustomerCase pic={LogoCmb} />
-        {/* TODO: 等切图换正确的 logo */}
-        <CustomerCase pic={LogoCmb} />
-        <CustomerCase pic={LogoCmb} />
-        <CustomerCase pic={LogoCmb} />
-        <CustomerCase pic={LogoCmb} />
-        <CustomerCase pic={LogoCmb} />
-        <CustomerCase pic={LogoCmb} />
-        <CustomerCase pic={LogoCmb} />
+        <CustomerCase pic={cases.zs.logo} alt={cases.zs.name} />
+        <CustomerCase pic={cases.sfsy.logo} alt={cases.sfsy.name} />
+        <CustomerCase pic={cases.zgtp.logo} alt={cases.zgtp.name} />
+        <CustomerCase pic={cases.zgpa.logo} alt={cases.zgpa.name} />
+        <CustomerCase pic={cases.zh.logo} alt={cases.zh.name} />
+        <CustomerCase pic={cases.xhs.logo} alt={cases.xhs.name} />
+        <CustomerCase pic={cases.bilibili.logo} alt={cases.bilibili.name} />
+        <CustomerCase pic={cases.dj.logo} alt={cases.dj.name} />
       </CustomerCaseGroup>
     </Swiper>
   )

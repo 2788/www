@@ -48,3 +48,15 @@ declare module 'react-swipeable-views' {
 
   export default SwipeableViews
 }
+
+declare module 'moveto' {
+  export type Options = {
+    duration?: number
+    container?: HTMLElement
+  }
+  export class MoveTo extends IMoveTo {
+    constructor(options?: Options)
+    move(target: HTMLElement | number): void
+  }
+  export default MoveTo
+}

@@ -16,6 +16,7 @@ import IconQvm from './qvm.svg'
 import IconSms from './sms.svg'
 import IconDora from './dora.svg'
 import IconCensor from './censor.svg'
+import IconFaceID from './faceid.svg'
 import IconRtn from './rtn.svg'
 import IconPlsv from './plsv.svg'
 import IconPlms from './plms.svg'
@@ -37,6 +38,7 @@ export const iconMap = {
   [Product.Sms]: IconSms,
   [Product.Dora]: IconDora,
   [Product.Censor]: IconCensor,
+  [Product.FaceID]: IconFaceID,
   [Product.Rtn]: IconRtn,
   [Product.Plsv]: IconPlsv,
   [Product.Plms]: IconPlms,

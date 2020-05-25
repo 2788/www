@@ -5,7 +5,7 @@
 
 import { timeout } from 'utils'
 import { post } from 'utils/fetch'
-import { Suggestion, Scene, SceneResultDetail, apiPrefix, failedMsg } from './common'
+import { Suggestion, Scene, SceneResultDetail, apiPrefix, failedMsg, getFullUrl } from './common'
 
 export { defaultParams } from './common'
 
@@ -37,6 +37,7 @@ export type ImageCensorOptions = {
 }
 
 export async function imageCensor(options: ImageCensorOptions): Promise<ImageCensorRes> {
+  options.data.uri = getFullUrl(options.data.uri)
   // mock API, TODO: 换成真的接口
   if (typeof window !== 'undefined') {
     await timeout(300)

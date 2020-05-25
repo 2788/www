@@ -3,6 +3,7 @@
  * @description 主要存放各种关键页面的路由信息
  */
 
+import { Product } from 'constants/products'
 import { urlFor } from '.'
 
 export function urlForSearch(keyword?: string) {
@@ -25,4 +26,8 @@ export function urlForQvmBuy(options?: QvmBuyOptions) {
     'https://portal.qiniu.com/qvm/vm/instance/create',
     options
   )
+}
+
+export function urlForPrice(product: Product) {
+  return `/prices/${product}`
 }

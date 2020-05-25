@@ -2,12 +2,13 @@
  * @file 产品“云短信”
  */
 
-import React, { ReactNode } from 'react'
-import { useMobile } from 'hooks/ua'
-import UIButton from 'components/UI/Button'
+import React from 'react'
+import { useBtns } from 'hooks/product-btn'
+import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import Navigator, { Button as NavButton } from 'components/Product/Navigator'
+import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
@@ -35,23 +36,11 @@ import style from './style.less'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
-  const isMobile = useMobile()
-
   const { showModal } = useFeedbackModal()
 
-  function handleConsult() {
-    showModal()
-  }
-
-  const bannerBtns: ReactNode[] = (
-    !isMobile
-    ? [
-      <UIButton key="try" href="https://portal.qiniu.com/sms">免费试用</UIButton>,
-      <UIButton key="consult" type="hollow" onClick={handleConsult}>售前咨询</UIButton>
-    ]
-    : [
-      <UIButton key="consult" onClick={handleConsult}>售前咨询</UIButton>
-    ]
+  const btns = useBtns(
+    { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true },
+    { children: '售前咨询', onClick: showModal }
   )
 
   return (
@@ -60,16 +49,15 @@ function PageContent() {
         title="云短信 SMS"
         desc="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类 短信使用场景，如验证码、通知类短信以及营销短信等。"
         bgColor="#34A1EC"
-        btns={bannerBtns}
+        btns={btns.banner}
         icon={<IconBanner />}
       />
 
-      <Navigator priceLink="/TODO">
-        <NavButton type="primary" href="https://portal.qiniu.com/sms">免费试用</NavButton>
-        <NavButton withBorder onClick={handleConsult}>售前咨询</NavButton>
+      <Navigator priceLink={urlForPrice(Product.Sms)}>
+        {btns.nav}
       </Navigator>
 
-      <Feature name="advantages" title="产品优势" grey>
+      <Feature name="advantages" title="产品优势">
         <feature.Group>
           <feature.Item title="智能调度" icon={<IconSchedule />}>七牛短信服务平台融合多家专属运营商，多通道智能调度，轻松应对业务高峰。</feature.Item>
           <feature.Item title="快速稳定" icon={<IconQuick />}>专属通道，3-5 秒到达，国内短信具备 99% 超高到达率（空号或不在服务区除外），保障终端用户体验。</feature.Item>

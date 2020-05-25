@@ -3,17 +3,16 @@
  */
 
 import React from 'react'
+import { useBtns } from 'hooks/product-btn'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
-import Navigator, { Button as NavButton } from 'components/Product/Navigator'
+import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
+import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import Section from 'components/Product/Section'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
-import UIButton from 'components/UI/Button'
 import Specs from 'components/pages/qvm/Specs'
 import MoreProducts from 'components/pages/qvm/MoreProducts'
 import Scenes from 'components/pages/qvm/Scenes'
@@ -47,10 +46,10 @@ function PageContent() {
     </>
   )
 
-  const bannerBtns = [
-    <UIButton key="use" href="https://portal.qiniu.com/qvm/vm/instance/create">立即购买</UIButton>,
-    <UIButton key="demo" type="hollow" href="https://portal.qiniu.com/qvm">控制台</UIButton>
-  ]
+  const btns = useBtns(
+    { children: '立即购买', href: 'https://portal.qiniu.com/qvm/vm/instance/create', pcOnly: true },
+    { children: '控制台', href: 'https://portal.qiniu.com/qvm', pcOnly: true }
+  )
 
   return (
     <>
@@ -58,7 +57,7 @@ function PageContent() {
         title="云主机服务 QVM"
         desc={descView}
         bgColor="#34A1EC"
-        btns={!isMobile ? bannerBtns : undefined}
+        btns={btns.banner}
         icon={<IconBanner />}
       />
 
@@ -81,9 +80,8 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/TODO">
-        <NavButton type="primary" href="https://portal.qiniu.com/qvm/vm/instance/create">立即购买</NavButton>
-        <NavButton withBorder href="https://portal.qiniu.com/qvm">控制台</NavButton>
+      <Navigator priceLink={urlForPrice(Product.Qvm)}>
+        {btns.nav}
       </Navigator>
 
       {!isMobile && ( // 移动端无需展示，因为移动端无法购买（Portal 未适配移动端）

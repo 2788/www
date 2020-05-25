@@ -2,29 +2,64 @@
  * @file 滚动相关 hooks
  */
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import stickybits from 'stickybits'
+import { MoveTo } from 'moveto'
 import { debounce } from 'lodash'
 import { isBrowser } from '../utils'
 
-const scrollDebounceWait = 100 // ms
+const defaultDebounceWait = 100 // ms
+const defaultScrollDuration = 400 // 默认滚动动画时间 ms
 
 /** 使用当前滚动高度（通过监听滚动事件 with debounce） */
-export function useScrollTop() {
+export function useScrollTop(debounceWait = defaultDebounceWait) {
   const [scrollTop, setScrollTop] = useState(0)
 
-  const scrollTo = useCallback((top: number) => {
-    getScrollContainer().scrollTo({ top })
+  const syncScrollTop = useCallback(() => {
+    setScrollTop(getScrollContainer().scrollTop)
   }, [])
+
+  // 第三方库 moveto 在 module init 的时候就会尝试读 window，故它延后加载，这里存放其导出
+  const MoveToRef = useRef<typeof MoveTo | undefined>()
+  // 记录当前是否正在进行滚动动画，这段时间不去响应滚动事件，用于优化滚动的性能
+  const scrollingRef = useRef(false)
+
+  useEffect(() => {
+    import('moveto').then(res => {
+      MoveToRef.current = res.default
+    })
+  }, [])
+
+  const scrollTo = useCallback((top: number, duration = defaultScrollDuration) => {
+    const container = getScrollContainer()
+    if (duration <= 0 || !MoveToRef.current) {
+      container.scrollTo({ top })
+      return
+    }
+    const MoveToConstr = MoveToRef.current
+    const moveTo = new MoveToConstr({ duration, container })
+
+    scrollingRef.current = true
+    setTimeout(() => {
+      scrollingRef.current = false
+      syncScrollTop()
+    }, duration)
+
+    moveTo.move(top - container.scrollTop)
+  }, [syncScrollTop])
 
   useEffect(() => {
     if (!isBrowser()) return
-    const handleScroll = debounce(() => {
-      setScrollTop(getScrollContainer().scrollTop)
-    }, scrollDebounceWait)
+    let handleScroll = () => {
+      if (scrollingRef.current) return
+      syncScrollTop()
+    }
+    if (debounceWait > 0) {
+      handleScroll = debounce(handleScroll, debounceWait)
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [debounceWait, syncScrollTop])
 
   return [scrollTop, scrollTo] as const
 }
@@ -43,7 +78,7 @@ export function useSticky() {
     return () => { try { sb.cleanup() } catch (e) { /* do nothing */ } }
   }, [element])
 
-  const [scrollTop] = useScrollTop()
+  const [scrollTop] = useScrollTop(0)
   const [isFixed, setIsFixed] = useState(false)
 
   useEffect(() => {

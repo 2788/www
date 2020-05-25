@@ -1,3 +1,8 @@
+/**
+ * @file 几乎是七牛所有需要展示的客户信息
+ * @description 包括名字、logo 等
+ */
+
 import ininImg from './交通旅游/客户-in.png'
 import qyImg from './交通旅游/客户-穷游.png'
 import xdjImg from './交通旅游/客户-咸蛋家.png'
@@ -93,102 +98,102 @@ import fpjkImg from './金融保险/客户-凡普金科.png'
 import axzqImg from './金融保险/客户-安信证券.png'
 import zgpaImg from './金融保险/客户-中国平安.png'
 
-const inin = { logo: ininImg, name: 'in' }
-const qy = { logo: qyImg, name: '穷游' }
-const xdj = { logo: xdjImg, name: '咸蛋家' }
-const mb = { logo: mbImg, name: '摩拜单车' }
-const sfsy = { logo: sfsyImg, name: '顺丰速运' }
-const yxesc = { logo: yxescImg, name: '优信二手车' }
+export const inin = { logo: ininImg, name: 'in' }
+export const qy = { logo: qyImg, name: '穷游' }
+export const xdj = { logo: xdjImg, name: '咸蛋家' }
+export const mb = { logo: mbImg, name: '摩拜单车' }
+export const sfsy = { logo: sfsyImg, name: '顺丰速运' }
+export const yxesc = { logo: yxescImg, name: '优信二手车' }
 
-const gd = { logo: gdImg, name: '咕咚' }
-const rx = { logo: rxImg, name: '如新' }
-const pahys = { logo: pahysImg, name: '平安好医生' }
+export const gd = { logo: gdImg, name: '咕咚' }
+export const rx = { logo: rxImg, name: '如新' }
+export const pahys = { logo: pahysImg, name: '平安好医生' }
 
-const vipkid = { logo: vipkidImg, name: 'VIPkid' }
-const hj = { logo: hjImg, name: '沪江' }
-const bl = { logo: blImg, name: '贝聊' }
-const yxt = { logo: yxtImg, name: '云学堂' }
-const xdf = { logo: xdfImg, name: '新东方' }
-const lls = { logo: llsImg, name: '流利说' }
-const szy = { logo: szyImg, name: '神州鹰' }
-const ycsx = { logo: ycsxImg, name: '洋葱数学' }
-const yyxx = { logo: yyxxImg, name: '英语学习' }
-const ykxxzx = { logo: ykxxzxImg, name: '粤科学习在线' }
+export const vipkid = { logo: vipkidImg, name: 'VIPkid' }
+export const hj = { logo: hjImg, name: '沪江' }
+export const bl = { logo: blImg, name: '贝聊' }
+export const yxt = { logo: yxtImg, name: '云学堂' }
+export const xdf = { logo: xdfImg, name: '新东方' }
+export const lls = { logo: llsImg, name: '流利说' }
+export const szy = { logo: szyImg, name: '神州鹰' }
+export const ycsx = { logo: ycsxImg, name: '洋葱数学' }
+export const yyxx = { logo: yyxxImg, name: '英语学习' }
+export const ykxxzx = { logo: ykxxzxImg, name: '粤科学习在线' }
 
-const sap = { logo: sapImg, name: 'SAP' }
-const Sobey = { logo: SobeyImg, name: 'Sobey' }
-const zx = { logo: zxImg, name: '中兴' }
-const hw = { logo: hwImg, name: '华为' }
-const lx = { logo: lxImg, name: '联想' }
-const bbg = { logo: bbgImg, name: '步步高' }
-const shyc = { logo: shycImg, name: '上海烟草' }
-const shdq = { logo: shdqImg, name: '上海电气' }
-const zgdx = { logo: zgdxImg, name: '中国电信' }
-const zgsy = { logo: zgsyImg, name: '中国石油' }
+export const sap = { logo: sapImg, name: 'SAP' }
+export const Sobey = { logo: SobeyImg, name: 'Sobey' }
+export const zx = { logo: zxImg, name: '中兴' }
+export const hw = { logo: hwImg, name: '华为' }
+export const lx = { logo: lxImg, name: '联想' }
+export const bbg = { logo: bbgImg, name: '步步高' }
+export const shyc = { logo: shycImg, name: '上海烟草' }
+export const shdq = { logo: shdqImg, name: '上海电气' }
+export const zgdx = { logo: zgdxImg, name: '中国电信' }
+export const zgsy = { logo: zgsyImg, name: '中国石油' }
 
-const qb = { logo: qbImg, name: '清博' }
-const dx = { logo: dxImg, name: '电信' }
-const mgtv = { logo: mgtvImg, name: '芒果TV' }
-const zyd = { logo: zydImg, name: '中移动' }
-const rmw = { logo: rmwImg, name: '人民网' }
-// const shdq = { logo: shdqImg, name: '上海电气' }
-const hscm = { logo: hscmImg, name: '华数传媒' }
-const jsws = { logo: jswsImg, name: '江苏卫视' }
-const zbcm = { logo: zbcmImg, name: '浙报传媒' }
-const jldst = { logo: jldstImg, name: '吉林电视台' }
+export const qb = { logo: qbImg, name: '清博' }
+export const dx = { logo: dxImg, name: '电信' }
+export const mgtv = { logo: mgtvImg, name: '芒果TV' }
+export const zyd = { logo: zydImg, name: '中移动' }
+export const rmw = { logo: rmwImg, name: '人民网' }
+// export const shdq = { logo: shdqImg, name: '上海电气' }
+export const hscm = { logo: hscmImg, name: '华数传媒' }
+export const jsws = { logo: jswsImg, name: '江苏卫视' }
+export const zbcm = { logo: zbcmImg, name: '浙报传媒' }
+export const jldst = { logo: jldstImg, name: '吉林电视台' }
 
-const pptv = { logo: pptvImg, name: 'PPTV' }
-const bilibili = { logo: bilibiliImg, name: 'bilibili' }
-const cb = { logo: cbImg, name: '唱吧' }
-const kk = { logo: kkImg, name: '快看' }
-const ba = { logo: baImg, name: '百奥' }
-const qtfm = { logo: qtfmImg, name: '蜻蜓FM' }
-const kgpng = { logo: kgpngImg, name: '酷狗png' }
-const dqd = { logo: dqdImg, name: '懂球帝' }
-const qtt = { logo: qttImg, name: '趣头条' }
-const rrsp = { logo: rrspImg, name: '人人视频' }
-const shsp = { logo: shspImg, name: '搜狐视频' }
-const xdwlpng = { logo: xdwlpngImg, name: '心动网络png' }
+export const pptv = { logo: pptvImg, name: 'PPTV' }
+export const bilibili = { logo: bilibiliImg, name: 'bilibili' }
+export const cb = { logo: cbImg, name: '唱吧' }
+export const kk = { logo: kkImg, name: '快看' }
+export const ba = { logo: baImg, name: '百奥' }
+export const qtfm = { logo: qtfmImg, name: '蜻蜓FM' }
+export const kgpng = { logo: kgpngImg, name: '酷狗png' }
+export const dqd = { logo: dqdImg, name: '懂球帝' }
+export const qtt = { logo: qttImg, name: '趣头条' }
+export const rrsp = { logo: rrspImg, name: '人人视频' }
+export const shsp = { logo: shspImg, name: '搜狐视频' }
+export const xdwlpng = { logo: xdwlpngImg, name: '心动网络png' }
 
-const faceu = { logo: faceuImg, name: 'Faceu' }
-const wps = { logo: wpsImg, name: 'WPS' }
-const haitun = { logo: haitunImg, name: '海豚' }
-const td = { logo: tdImg, name: '糖豆' }
-const mp = { logo: mpImg, name: '美拍' }
-const jm = { logo: jmImg, name: '聚美' }
-const zr = { logo: zrImg, name: '自如' }
-const xea = { logo: xeaImg, name: '小恩爱' }
-const fdd = { logo: fddImg, name: '房多多' }
-const mkl = { logo: mklImg, name: '马卡龙' }
-const mllh = { logo: mllhImg, name: '美丽联合' }
-const hyxj = { logo: hyxjImg, name: '黄油相机' }
+export const faceu = { logo: faceuImg, name: 'Faceu' }
+export const wps = { logo: wpsImg, name: 'WPS' }
+export const haitun = { logo: haitunImg, name: '海豚' }
+export const td = { logo: tdImg, name: '糖豆' }
+export const mp = { logo: mpImg, name: '美拍' }
+export const jm = { logo: jmImg, name: '聚美' }
+export const zr = { logo: zrImg, name: '自如' }
+export const xea = { logo: xeaImg, name: '小恩爱' }
+export const fdd = { logo: fddImg, name: '房多多' }
+export const mkl = { logo: mklImg, name: '马卡龙' }
+export const mllh = { logo: mllhImg, name: '美丽联合' }
+export const hyxj = { logo: hyxjImg, name: '黄油相机' }
 
-const oppo = { logo: oppoImg, name: 'oppo' }
-const cy = { logo: cyImg, name: '传音' }
-const dj = { logo: djImg, name: '大疆' }
-const js = { logo: jsImg, name: '晶盛' }
-const ys = { logo: ysImg, name: '萤石' }
-const wl = { logo: wlImg, name: '蔚来' }
-const alx = { logo: alxImg, name: '爱立信' }
+export const oppo = { logo: oppoImg, name: 'oppo' }
+export const cy = { logo: cyImg, name: '传音' }
+export const dj = { logo: djImg, name: '大疆' }
+export const js = { logo: jsImg, name: '晶盛' }
+export const ys = { logo: ysImg, name: '萤石' }
+export const wl = { logo: wlImg, name: '蔚来' }
+export const alx = { logo: alxImg, name: '爱立信' }
 
-const blue = { logo: blueImg, name: 'blue' }
-const tq = { logo: tqImg, name: '他趣' }
-const tt = { logo: ttImg, name: '探探' }
-const zh = { logo: zhImg, name: '知乎' }
-const hp = { logo: hpImg, name: '虎扑' }
-const mm = { logo: mmImg, name: '陌陌' }
-const xhs = { logo: xhsImg, name: '小红书' }
-const qczj = { logo: qczjImg, name: '汽车之家' }
+export const blue = { logo: blueImg, name: 'blue' }
+export const tq = { logo: tqImg, name: '他趣' }
+export const tt = { logo: ttImg, name: '探探' }
+export const zh = { logo: zhImg, name: '知乎' }
+export const hp = { logo: hpImg, name: '虎扑' }
+export const mm = { logo: mmImg, name: '陌陌' }
+export const xhs = { logo: xhsImg, name: '小红书' }
+export const qczj = { logo: qczjImg, name: '汽车之家' }
 
-const huatai = { logo: huataiImg, name: '华泰' }
-const zs = { logo: zsImg, name: '招商' }
-const zxyh = { logo: zxyhImg, name: '中信银行' }
-const zgtp = { logo: zgtpImg, name: '中国太平' }
-const fpjk = { logo: fpjkImg, name: '凡普金科' }
-const axzq = { logo: axzqImg, name: '安信证券' }
-const zgpa = { logo: zgpaImg, name: '中国平安' }
+export const huatai = { logo: huataiImg, name: '华泰' }
+export const zs = { logo: zsImg, name: '招商银行' }
+export const zxyh = { logo: zxyhImg, name: '中信银行' }
+export const zgtp = { logo: zgtpImg, name: '中国太平' }
+export const fpjk = { logo: fpjkImg, name: '凡普金科' }
+export const axzq = { logo: axzqImg, name: '安信证券' }
+export const zgpa = { logo: zgpaImg, name: '中国平安' }
 
-export default [
+export const industries = [
   {
     name: '大型企业',
     cases: [sap, Sobey, zx, hw, lx, bbg, shyc, shdq, zgdx, zgsy]

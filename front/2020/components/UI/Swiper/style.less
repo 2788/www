@@ -1,11 +1,41 @@
 @import '~utils/less/index.less';
 
+// 内容往往是有阴影的，但是 Carousel 会在容器上设置 overflow: hidden
+// 这里把内容撑开额外的距离，以展示阴影；在最外层的容器上再把这个距离收回来（通过负 margin）
+// 因此这里的 @paddingForShadow 比正常阴影的扩散范围大即可
+@paddingForShadow: 8px;
+
 .wrapper {
   position: relative;
+  margin: -@paddingForShadow;
+
+  :global(.ant-carousel .slick-dots) {
+    button {
+      width: 20px;
+      height: 4px;
+      background-color: #DBDBDB;
+    }
+    :global(.slick-active) button {
+      width: 20px;
+      background-color: @grey-5;
+    }
+    li + li  {
+      margin-left: 4px;
+    }
+  }
+
+  :global(.slick-dots-bottom) {
+    position: static;
+    margin-top: 24px;
+  }
+}
+
+.pageWrapper {
+  padding: @paddingForShadow;
 }
 
 @arrowSize: 52px;
-@arrowShadowSize: 8px;
+@arrowShadow: 8px;
 @arrowMargin: 56px;
 
 .arrowPrev, .arrowNext {
@@ -20,36 +50,9 @@
 }
 
 .arrowPrev {
-  left: -(@arrowSize + @arrowShadowSize + @arrowMargin);
+  left: -(@arrowSize + @arrowShadow + @arrowMargin);
 }
 
 .arrowNext {
-  right: -(@arrowSize + @arrowShadowSize + @arrowMargin);
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 24px;
-
-  .mobile({
-    margin-top: 12px;
-  });
-
-  .paginationItem {
-    display: block;
-    width: 20px;
-    height: 4px;
-    background-color: #DBDBDB;
-    cursor: pointer;
-
-    &.active {
-      background-color: @grey-5;
-    }
-
-    + .paginationItem {
-      margin-left: 4px;
-    }
-  }
+  right: -(@arrowSize + @arrowShadow + @arrowMargin);
 }

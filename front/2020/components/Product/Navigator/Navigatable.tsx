@@ -36,7 +36,7 @@ export default function Navigatable({ children }: Props) {
   ), [blockMap])
 
   const [active, setActive] = useHash()
-  const [scrollTop, scrollTo] = useScrollTop()
+  const [scrollTop, scrollTo] = useScrollTop(0)
 
   // 页面滚动时根据滚动位置同步更新当前 active 信息
   useOnChange(() => {

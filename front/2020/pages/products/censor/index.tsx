@@ -38,7 +38,7 @@ function PageContent() {
   const isPc = !useMobile()
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/censor', children: '立即使用' }
+    { href: 'https://portal.qiniu.com/censor', children: '立即使用', pcOnly: true }
   )
 
   return (

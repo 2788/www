@@ -9,16 +9,14 @@ import Button from 'components/UI/Button'
 import { imageCensor, defaultParams } from 'apis/censor/image'
 import Slides, { Slide } from './Slides'
 import { ResultPanel, ApiResult, ResultMask } from '.'
+import img1 from './images/playground-1.png'
+import img2 from './images/playground-2.png'
+import img3 from './images/playground-3.png'
+import img4 from './images/playground-4.png'
 
 import style from './style.less'
 
-const images = [
-  // TODO: 图片地址换下
-  'https://www.qiniu.com/assets/censor/image-xinggan-91b2d170414acee47526bbda4f36d885c3d8fac0b037dfdd64ad62ae1f136751.jpg',
-  'https://www.qiniu.com/assets/censor/image-baokong-1-67aa2a533fdc9f24a583c75c10eef88df1e7d6edfb6fdbea6d2d37104423f7e9.jpg',
-  'https://www.qiniu.com/assets/censor/image-baokong-2-9c578f7dc68155d3a2526d7e9114942682f7e25ccf10fc7d69a37961c003046d.jpg',
-  'https://www.qiniu.com/assets/censor/image-zhengzhi-3af9a70b9d70e450ae276d23c1aaf37712ee28dd8d0031e586ce5eefff7c9140.jpg'
-]
+const images = [img1, img2, img3, img4]
 
 export default function ImagePlayground() {
   const [activeIndex, setActive] = useState(0)

@@ -3,6 +3,8 @@
  */
 
 import React from 'react'
+import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -42,7 +44,7 @@ function PageContent() {
         icon={<IconBanner />}
       />
 
-      <Navigator priceLink="/TODO">{btns.nav}</Navigator>
+      <Navigator priceLink={urlForPrice(Product.FaceID)}>{btns.nav}</Navigator>
 
       <Feature name="features" title="核心功能" header={featureHeaderView}>
         <feature.Group>

@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 
 import React, { PropsWithChildren } from 'react'
-import { Row as RawRow, Card as RawCard, InvisibleCard } from 'components/UI/Card'
+import { Row, Card as RawCard, InvisibleCard } from 'components/UI/Card'
 import Swiper from 'components/UI/Swiper'
 import { useMobile } from 'hooks/ua'
 import logoCamera360 from './images/camera360.png'
@@ -111,14 +111,6 @@ export default function Words() {
           <InvisibleCard />
         </Row>
       </Swiper>
-    </div>
-  )
-}
-
-function Row({ children }: PropsWithChildren<{}>) {
-  return (
-    <div className={style.rowWrapper}>
-      <RawRow>{children}</RawRow>
     </div>
   )
 }

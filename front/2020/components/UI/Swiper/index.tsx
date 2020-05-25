@@ -3,106 +3,80 @@
  * @description 以及配套的翻页、箭头组件
  */
 
-import React, { PropsWithChildren, useState, Children } from 'react'
-import SwipeableViews from 'react-swipeable-views'
-import { useOnChange } from 'hooks'
+import React, { PropsWithChildren, Children, useRef, useEffect, useCallback } from 'react'
+import Carousel from 'react-icecream/lib/carousel'
 
 import IconArrowPrev from './arrow-prev.svg'
 import IconArrowNext from './arrow-next.svg'
 import style from './style.less'
 
-export type IndexInfo = {
-  index: number
-  onIndexChange(index: number): void
-}
-
-export type Props = PropsWithChildren<Partial<IndexInfo>> & {
+export type Props = PropsWithChildren<{
+  index?: number
+  onIndexChange?(index: number): void
   withArrow?: boolean
   withPagination?: boolean
-}
+}>
 
-export default function Swiper(props: Props) {
-  const [index, setIndex] = useState(props.index != null ? props.index : 0)
-  const indexInfo = { index, onIndexChange: setIndex }
-  const num = Children.count(props.children)
+export default function Swiper({ index, onIndexChange, withArrow, withPagination, children }: Props) {
+  const carouselRef = useRef<Carousel>(null)
+  const wrappedChildren = Children.map(children, child => (
+    <div className={style.pageWrapper}>{child}</div>
+  ))
 
-  useOnChange(() => {
-    if (props.index != null && index !== props.index) {
-      setIndex(props.index)
-    }
-  }, [props.index])
-
-  useOnChange(() => {
-    if (props.index !== index && props.onIndexChange) {
-      props.onIndexChange(index)
+  // index 变化对应地控制轮播组件
+  useEffect(() => {
+    if (index != null && carouselRef.current) {
+      carouselRef.current.goTo(index)
     }
   }, [index])
 
+  const handleChange = useCallback((currentIndex: number) => {
+    if (index !== currentIndex && onIndexChange) {
+      onIndexChange(currentIndex)
+    }
+  }, [index, onIndexChange])
+
+  const handlePrevClick = useCallback(() => {
+    if (carouselRef.current) {
+      carouselRef.current.prev()
+    }
+  }, [])
+
+  const handleNextClick = useCallback(() => {
+    if (carouselRef.current) {
+      carouselRef.current.next()
+    }
+  }, [])
+
   return (
     <div className={style.wrapper}>
-      {props.withArrow && <ArrowPrev num={num} {...indexInfo} />}
-      {props.withArrow && <ArrowNext num={num} {...indexInfo} />}
-      <SwipeableViews index={index} onChangeIndex={setIndex}>
-        {props.children}
-      </SwipeableViews>
-      {props.withPagination && (
-        <Pagination className={style.pagination} num={num} {...indexInfo} />
-      )}
+      {withArrow && <ArrowPrev onClick={handlePrevClick} />}
+      {withArrow && <ArrowNext onClick={handleNextClick} />}
+      <Carousel ref={carouselRef} afterChange={handleChange} dots={withPagination}>
+        {wrappedChildren}
+      </Carousel>
     </div>
   )
 }
 
-export type PaginationProps = IndexInfo & {
-  num: number
+export type ArrowProps = {
+  onClick(): void
   className?: string
 }
 
-export function Pagination({ index, onIndexChange, num, className }: PaginationProps) {
-
-  const itemsView = Array.from({ length: num }).map((_, i) => {
-    const itemClassName = join(style.paginationItem, i === index && style.active)
-    return (
-      <li
-        key={i}
-        className={itemClassName}
-        onClick={() => onIndexChange(i)}
-      ></li>
-    )
-  })
-
-  const wrapperClassName = join(style.pagination, className)
-
-  return (
-    <ol className={wrapperClassName}>
-      {itemsView}
-    </ol>
-  )
-}
-
-export type ArrowProps = IndexInfo & {
-  num: number
-  className?: string
-}
-
-export function ArrowPrev({ index, onIndexChange, num, className }: ArrowProps) {
+export function ArrowPrev({ onClick, className }: ArrowProps) {
   const wrapperClassName = join(style.arrowPrev, className)
-  function handleClick() {
-    onIndexChange((index - 1 + num) % num)
-  }
   return (
-    <div className={wrapperClassName} onClick={handleClick}>
+    <div className={wrapperClassName} onClick={onClick}>
       <IconArrowPrev className={style.icon} />
     </div>
   )
 }
 
-export function ArrowNext({ index, onIndexChange, num, className }: ArrowProps) {
+export function ArrowNext({ onClick, className }: ArrowProps) {
   const wrapperClassName = join(style.arrowNext, className)
-  function handleClick() {
-    onIndexChange((index + 1) % num)
-  }
   return (
-    <div className={wrapperClassName} onClick={handleClick}>
+    <div className={wrapperClassName} onClick={onClick}>
       <IconArrowNext className={style.icon} />
     </div>
   )

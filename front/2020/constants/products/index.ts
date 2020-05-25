@@ -26,6 +26,8 @@ export enum Product {
   Dora = 'dora',
   /** 内容安全 */
   Censor = 'censor',
+  /** 人脸核验 */
+  FaceID = 'faceid',
   /** 实时音视频 */
   Rtn = 'rtn',
   /** 短视频 SDK */
@@ -51,6 +53,7 @@ export const nameMap = {
   [Product.Sms]: '云短信',
   [Product.Dora]: '智能多媒体服务',
   [Product.Censor]: '内容安全',
+  [Product.FaceID]: '人脸核验',
   [Product.Rtn]: '实时音视频',
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '推流 SDK',
@@ -69,6 +72,7 @@ export const urlMap = {
   [Product.Sms]: '/products/sms',
   [Product.Dora]: '/products/dora',
   [Product.Censor]: '/products/censor',
+  [Product.FaceID]: '/products/faceid',
   [Product.Rtn]: '/products/rtn',
   [Product.Plsv]: '/products/plsv',
   [Product.Plms]: '/products/plms',

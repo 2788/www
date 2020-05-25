@@ -3,11 +3,11 @@
  */
 
 import React, { useState } from 'react'
+import { industries } from 'constants/cases'
 import { useMobile } from 'hooks/ua'
 import Tabs, { Tab } from 'components/UI/Tabs'
 import Menu, { SubMenu } from 'components/UI/Menu'
 
-import casesByIndustryType from './cases'
 import CasesWithPagination from '../CasesWithPagination'
 import style from './style.less'
 
@@ -19,12 +19,12 @@ export default function ByIndustry() {
     return <ByIndustryMobile industryType={industryType} setIndustryType={setIndustryType} />
   }
 
-  const tabsView = casesByIndustryType.map(
+  const tabsView = industries.map(
     (type, index) => (
       <Tab key={type.name} value={index + ''}>{type.name}</Tab>
     )
   )
-  const visibleCases = casesByIndustryType[parseInt(industryType, 10)].cases
+  const visibleCases = industries[parseInt(industryType, 10)].cases
   return (
     <>
       <Tabs className={style.tabs} value={industryType} onChange={setIndustryType}>
@@ -39,7 +39,7 @@ function ByIndustryMobile({ industryType, setIndustryType }: {
   industryType: string
   setIndustryType(type: string): void
 }) {
-  const subMenusView = casesByIndustryType.map(
+  const subMenusView = industries.map(
     (type, index) => (
       <SubMenu
         key={index + ''}
@@ -49,7 +49,7 @@ function ByIndustryMobile({ industryType, setIndustryType }: {
           setIndustryType(key)
         }}
       >
-        <CasesWithPagination className={style.casesInMenu} cases={casesByIndustryType[index].cases} />
+        <CasesWithPagination className={style.casesInMenu} cases={industries[index].cases} />
       </SubMenu>
     )
   )

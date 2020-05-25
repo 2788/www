@@ -34,3 +34,13 @@ export type SceneResultDetail = {
 }
 
 export const failedMsg = '任务失败，请稍后重试'
+
+// 图片/视频地址可能是以 `/` 开头的路径，这里转为为完整 URL 以方便接口处理
+export function getFullUrl(url: string) {
+  const { protocol, host } = window.location
+  return (
+    url[0] === '/'
+    ? `${protocol}://${host}${url}`
+    : url
+  )
+}
