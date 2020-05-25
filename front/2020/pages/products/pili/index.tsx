@@ -39,7 +39,7 @@ function PageContent() {
   }
 
   const btns = useBtns(
-    { href: 'href="https://portal.qiniu.com/apply-pili"', children: '立即使用' },
+    { href: 'https://portal.qiniu.com/apply-pili', children: '立即使用' },
     { onClick: handleConsult, children: '立即咨询' }
   )
 

@@ -138,6 +138,9 @@ function PageContent() {
         <CustomerCase pic={ShunFeng} />
         <CustomerCase pic={PingAn} />
         <CustomerCase pic={YiDong} />
+        <CustomerCase pic={ChangBa} />
+        <CustomerCase pic={PingAn} />
+        <CustomerCase pic={YiDong} />
       </CustomerCaseGroup>
 
       <PurchaseInfo>

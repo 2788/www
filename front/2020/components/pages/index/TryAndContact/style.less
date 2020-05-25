@@ -1,0 +1,37 @@
+@import '~utils/less/index.less';
+
+@panel-width: 50%;
+@mobile-panel-width: 100%;
+
+.tryAndContant {
+  display: flex;
+  flex-direction: row;
+
+  .mobile({
+    flex-direction: column;
+  });
+
+  .panel {
+    width: @panel-width;
+    padding-right: 150px;
+    text-align: left;
+  
+    .mobile({
+      margin-top: 10px;
+      width: @mobile-panel-width;
+      padding-right: 0;
+    });
+  
+    .title {
+      color: @grey-7;
+      font-size: 28px;
+  
+    }
+    .desc {
+      color: @grey-6;
+      font-size: 20px;
+      margin-top: 16px;
+      margin-bottom: 48px;
+    }
+  }
+}

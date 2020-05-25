@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>活动icon_01</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="切图" transform="translate(-104.000000, -112.000000)">
+            <g id="编组-23" transform="translate(104.000000, 112.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="矩形" fill-opacity="0" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <g id="gift-exchange" mask="url(#mask-2)" stroke-width="2">
+                    <g transform="translate(2.000000, 2.000000)">
+                        <line x1="20" y1="16" x2="20" y2="30" id="路径" stroke="#00AAE7"></line>
+                        <line x1="28" y1="16" x2="28" y2="32" id="路径" stroke="#00AAE7"></line>
+                        <path d="M12,4 C12,1.8 13.8000002,0 16,0 C22,0 24,8 24,8 C24,8 18.2000008,8 16,8 C13.7999992,8 12,6.1999998 12,4 Z" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                        <path d="M36,4 C36,1.8 34.2000008,0 32,0 C26,0 24,8 24,8 C24,8 29.7999992,8 32,8 C34.2000008,8 36,6.1999998 36,4 Z" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                        <polyline id="路径" stroke="#333333" points="40 16 40 32 34 32"></polyline>
+                        <line x1="8" y1="26" x2="8" y2="16" id="路径" stroke="#333333"></line>
+                        <rect id="矩形" stroke="#333333" stroke-linecap="square" x="4" y="8" width="40" height="8"></rect>
+                        <path d="M26.2000008,32 L36,32 C40.7999992,32 42,36 42,36 L20.7999992,43.5999985 C19.1999989,44 17.3999996,44 15.7999992,43.3999977 L0,36.8125 L0,26 L8,26 C11.1999998,26 14.2000008,27.3999996 16,30 L22,30 C25,30 28,33 28,36 L14,36" id="路径" stroke="#333333"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

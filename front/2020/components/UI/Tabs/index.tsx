@@ -127,6 +127,5 @@ type TabPaneProps = {
 export function TabPane(props: TabPaneProps) {
   const { className, value, children } = props
   const tabsContext = useContext(tabContext)
-
   return <div className={classnames(className)} style={{ display: tabsContext?.value === value ? 'block' : 'none' }}>{children}</div>
 }

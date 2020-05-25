@@ -1,0 +1,136 @@
+@import '~utils/less/index.less';
+
+@page-height: 400px;
+
+@card-width: 376px;
+@card-height: 96px;
+
+@footer-height: 236px;
+
+@case-width: 210px;
+@case-height: 80px;
+@case-space: 12px;
+
+.solutions {
+
+}
+
+.pane {
+  .paneContent {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 110px;
+  
+    .title {
+      font-size: 32px;
+  
+      .en {
+        margin-left: 16px;
+      }
+    }
+  
+    .desc {
+      margin-top: 28px;
+      font-size: 16px;
+      max-width: 690px;
+      height: 190px;
+    }
+
+    .pageNo {
+      font-size: 54px;
+      font-family: number-regular;
+  
+      .total {
+        font-size: 36px;
+        color: rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+  .right {
+    display: inline-block;
+    
+  }
+  
+  .footer {
+    background: white;
+    border-radius: 8px;
+    padding: 32px 32px 20px;
+    box-shadow:0px 0px 20px 0px rgba(0,0,0,0.08);
+    border-radius:8px;
+    margin: 0 -@case-space/2;
+
+    .mobile({
+      padding: 16px;
+    });
+
+    .case {
+      display: inline-block;
+      border:1px solid rgba(238,238,238,1);
+      margin: 0 @case-space/2 @case-space;
+
+      > svg {
+        width: @case-width;
+        height: @case-height;
+
+        .mobile({
+          width: 100%;
+          height: @case-height;
+        })
+      }
+   
+      .mobile({
+        width: calc(50% -  @case-space);
+      });
+    }
+  }
+}
+
+.card {
+  width: @card-width;
+  height: @card-height;
+  background: white;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 0 0 20px;
+  box-shadow:0px 0px 20px 0px rgba(0,0,0,0.08);
+
+  .mobile({
+    width: 100%;
+    height: auto;
+  });
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 15px;
+    .mobile({
+      width: 20%;
+    });
+  }
+
+  .content {
+    display: inline-block;
+    vertical-align: middle;
+    width: 280px;
+    padding: 0;
+    .mobile({
+      width: 80%;
+      height: auto;
+    });
+    .title {
+      font-size: 14px;
+      color: @grey-8;
+      line-height: 20px;
+    }
+  
+    .desc {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 20px;
+      color: @grey-6;
+    }
+  }
+  
+}

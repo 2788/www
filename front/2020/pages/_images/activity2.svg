@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>活动icon_02</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="切图" transform="translate(-172.000000, -112.000000)">
+            <g id="编组-53" transform="translate(172.000000, 112.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="矩形" fill-opacity="0" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <g id="server-rack" mask="url(#mask-2)" stroke-linecap="square" stroke-width="2">
+                    <g transform="translate(2.000000, 4.000000)">
+                        <rect id="矩形" stroke="#333333" x="0" y="0" width="44" height="16"></rect>
+                        <rect id="矩形" stroke="#333333" x="0" y="24" width="44" height="16"></rect>
+                        <line x1="10" y1="8" x2="6" y2="8" id="路径" stroke="#00AAE7"></line>
+                        <line x1="10" y1="32" x2="6" y2="32" id="路径" stroke="#00AAE7"></line>
+                        <line x1="20" y1="8" x2="16" y2="8" id="路径" stroke="#00AAE7"></line>
+                        <line x1="20" y1="32" x2="16" y2="32" id="路径" stroke="#00AAE7"></line>
+                        <circle id="椭圆形" stroke="#00AAE7" cx="36" cy="8" r="2"></circle>
+                        <circle id="椭圆形" stroke="#00AAE7" cx="36" cy="32" r="2"></circle>
+                        <line x1="6" y1="16" x2="6" y2="20" id="路径" stroke="#333333"></line>
+                        <line x1="38" y1="16" x2="38" y2="20" id="路径" stroke="#333333"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

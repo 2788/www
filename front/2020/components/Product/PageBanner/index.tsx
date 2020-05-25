@@ -18,7 +18,7 @@ export interface IPageBannerProps {
   icon?: ReactNode
 }
 
-const defaultProps: IPageBannerProps = {
+export const defaultProps: IPageBannerProps = {
   title: '七牛云',
   desc: '连接数据，重塑价值',
   bgColor: '',

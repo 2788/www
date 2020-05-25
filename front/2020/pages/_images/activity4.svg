@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>活动icon_04</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="48" height="48"></rect>
+    </defs>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="切图" transform="translate(-308.000000, -112.000000)">
+            <g id="编组-55" transform="translate(308.000000, 112.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="矩形" fill-opacity="0" fill="#FFFFFF" xlink:href="#path-1"></use>
+                <g id="dashboard-29" mask="url(#mask-2)" stroke-width="2">
+                    <g transform="translate(2.000000, 2.000000)">
+                        <line x1="19.2" y1="19.2" x2="11" y2="11" id="路径" stroke="#00AAE7" stroke-linecap="square"></line>
+                        <circle id="椭圆形" stroke="#00AAE7" stroke-linecap="square" cx="22" cy="22" r="4"></circle>
+                        <path d="M16.8,9 C21.1135777,7.27805578 26.0002036,7.80631602 29.8461311,10.4103295 C33.6920586,13.0143429 35.9970834,17.3554294 36,22" id="路径" stroke="#00AAE7"></path>
+                        <path d="M7.99999457,22 C7.99842898,20.2187327 8.33787128,18.4536327 8.99999457,16.8" id="路径" stroke="#00AAE7"></path>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="22" cy="22" r="22"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
