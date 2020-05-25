@@ -1,0 +1,180 @@
+
+{
+  "starter": [
+    {
+      "family_name": "突发性能实例 T6",
+      "family_desc": ["网站应用程序 | 普通数据处理", "20% 基准CPU计算性能"],
+      "ecs_spec": "实例：2 核 2G",
+      "disk_spec": "高效云盘：40 GB",
+      "ip_spec": "带宽：1 M",
+      "price": 65.75,
+      "buy_link": "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t6-c1m1.large&eip=1&buymonth=12"
+    },
+    {
+      "family_name": "突发性能实例 T5",
+      "family_desc": ["低负载应用 | 微服务", "20% 基准CPU计算性能"],
+      "ecs_spec": "实例：2 核 2G",
+      "disk_spec": "高效云盘：40 GB",
+      "ip_spec": "带宽：1 M",
+      "price": 65.75,
+      "buy_link": "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t6-c1m1.large&eip=1&buymonth=12"
+    },
+    {
+      "family_name": "共享基本型 XN4",
+      "family_desc": [
+        "Web 应用前端机 | 轻负载应用、微服务",
+        "开发测试压测服务应用"
+      ],
+      "ecs_spec": "实例：2 核 2G",
+      "disk_spec": "高效云盘：40 GB",
+      "ip_spec": "带宽：1 M",
+      "price": 65.75,
+      "buy_link": "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t6-c1m1.large&eip=1&buymonth=12"
+    },
+    {
+      "family_name": "共享通用型 MN4",
+      "family_desc": [
+        "网站和 Web 应用程序 | 轻量级数据库、缓存",
+        "综合应用及轻量级企业服务"
+      ],
+      "ecs_spec": "实例：2 核 2G",
+      "disk_spec": "高效云盘：40 GB",
+      "ip_spec": "带宽：1 M",
+      "price": 65.75,
+      "buy_link": "https://portal.qiniu.com/qvm/vm/instance/create?instance_type=ecs.t6-c1m1.large&eip=1&buymonth=12"
+    }
+  ],
+  "enterprise": [
+    {
+      "title": "通用型",
+      "items": [
+        {
+          "family_name": "通用型 g6",
+          "family_spec": "最新一代通用型产品，性能全面提升",
+          "scenario_desc": [
+            "高网络包收发场景，如视频弹幕、电信业务转发等",
+            "各种类型和规模的企业级应用",
+            "网站和应用服务器、游戏服务器等",
+            "计算集群、依赖内存的数据处理"
+          ],
+          "extra_infos": [
+            {
+              "title": "CPU内存比",
+              "info": "1:4"
+            },
+            {
+              "title": "最大网络带宽能力",
+              "info": "20 Gbit/s"
+            },
+            {
+              "title": "CPU类型",
+              "info": "Intel Skylake Xeon Platinum 8163 2.5GHz"
+            },
+            {
+              "title": "最大网络收发包能力",
+              "info": "400万PPS"
+            }
+          ],
+          "regions": [
+            {
+              "region_id": "cn-hangzhou",
+              "local_name": "华东一区（杭州）"
+            },
+            {
+              "region_id": "cn-shanghai",
+              "local_name": "华东二区（上海）"
+            }
+          ],
+          "specs": [
+            {
+              "spec_class": "ecs.n1.small",
+              "spec_name": "2 核 2G"
+            },
+            {
+              "spec_class": "ecs.n1.large",
+              "spec_name": "4 核 4G"
+            }
+          ],
+          "buy_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60]
+        },
+        {
+          "family_name": "通用型 g5",
+          "family_spec": "性能均衡，适用于企业通用类业务场景",
+          "scenario_desc": [
+            "高网络包收发场景，如视频弹幕、电信业务转发等",
+            "各种类型和规模的企业级应用",
+            "网站和应用服务器、游戏服务器等",
+            "计算集群、依赖内存的数据处理"
+          ],
+          "extra_infos": [
+            {
+              "title": "CPU内存比",
+              "info": "1:4"
+            },
+            {
+              "title": "最大网络带宽能力",
+              "info": "20 Gbit/s"
+            },
+            {
+              "title": "CPU类型",
+              "info": "Intel Skylake Xeon Platinum 8163 2.5GHz"
+            },
+            {
+              "title": "最大网络收发包能力",
+              "info": "400万PPS"
+            }
+          ],
+          "regions": [
+            {
+              "region_id": "cn-hangzhou",
+              "local_name": "华东一区（杭州）"
+            },
+            {
+              "region_id": "cn-shanghai",
+              "local_name": "华东二区（上海）"
+            }
+          ],
+          "specs": [
+            {
+              "spec_class": "ecs.n1.small",
+              "spec_name": "2 核 2G"
+            },
+            {
+              "spec_class": "ecs.n1.large",
+              "spec_name": "4 核 4G"
+            }
+          ],
+          "buy_months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, 60]
+        }
+      ]
+    },
+    {
+      "title": "计算型",
+      "items": []
+    },
+    {
+      "title": "内存型",
+      "items": []
+    },
+    {
+      "title": "大数据型",
+      "items": []
+    },
+    {
+      "title": "GPU 型",
+      "items": []
+    },
+    {
+      "title": "本地 SSD 型",
+      "items": []
+    },
+    {
+      "title": "高主频型",
+      "items": []
+    },
+    {
+      "title": "FPGA 型",
+      "items": []
+    }
+  ]
+}

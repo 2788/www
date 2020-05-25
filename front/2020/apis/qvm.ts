@@ -8,8 +8,77 @@ import { isYear, avaliableRegions } from 'constants/qvm'
 import { timeout } from 'utils'
 import { get, post } from 'utils/fetch'
 import mockInstanceTypes from './instance-types.json'
+import mockSpecs from './specs.json'
 
 const apiPrefix = `${apiHost}/qvm`
+
+export type SpecStarterConfigItem = {
+  family_name: string
+  family_desc: string[]
+  ecs_spec: string
+  disk_spec: string
+  ip_spec: string
+  price: number
+  buy_link: string
+}
+
+export type SpecEnterpriseConfigGroup = {
+  title: string
+  items: SpecEnterpriseConfigItem[]
+}
+
+export type SpecEnterpriseConfigItem = {
+  family_name: string
+  family_desc: string
+
+  scenario_desc: string[] // 适用场景
+  extra_infos: Array<{
+    // CPU内存比等
+    title: string
+    info: string
+  }> // 固定数量 4
+
+  regions: SpecRegion[]
+  specs: SpecECSSpec[]
+  buy_months: number[] // 可选购买时长，单位：月
+  buy_link: string
+}
+
+export type SpecRegion = {
+  region_id: string
+  local_name: string
+}
+
+export type SpecECSSpec = {
+  spec_class: string // e.g. ecs.n1.small
+  spec_name: string // 2 核 2G
+}
+
+export type SpecRes = {
+  starter: SpecStarterConfigItem[] // 入门版配置中直接返回价格
+  enterprise: SpecEnterpriseConfigGroup[] // 企业版配置不包括价格，价格需要通过询价接口查询
+}
+
+export async function getSpecs(): Promise<SpecRes> {
+  // mock API, TODO: QVM 该接口上线后换成真的接口
+  if (typeof window !== 'undefined') {
+    await timeout(300)
+    return mockSpecs
+  }
+  return get(`${apiPrefix}/v1/open/www/specs`)
+}
+
+export const getSpecsWithCahe = memoize(getSpecs)
+
+export async function getStarterSpecs() {
+  const specs = await getSpecsWithCahe()
+  return specs.starter
+}
+
+export async function getEnterpriseSpecs() {
+  const specs = await getSpecsWithCahe()
+  return specs.enterprise
+}
 
 export type InstanceType = {
   type: string

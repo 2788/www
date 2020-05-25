@@ -5,43 +5,40 @@
 import React, { useState, useMemo } from 'react'
 import { urlForQvmBuy } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
-import { useOnChange } from 'hooks'
-import {
-  getInstanceTypesByFamily, getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions,
-  getInstanceTypesByRegionWithCache as getInstanceTypesByRegion,
-  getRegionsByFamilyWithCache as getRegionsByFamily
-} from 'apis/qvm'
-import { availableDurations, humanizeDuration, avaliableRegions } from 'constants/qvm'
+import { getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions } from 'apis/qvm'
+import { humanizeDuration } from 'constants/qvm'
 import Button from 'components/UI/Button'
 
 import style from './style.less'
 
-type Detail = {
-  name: string
-  value: string
-}
-
 export type Props = {
-  family: string // 实例族
   name: string
   desc: string
-  scenes: string[]
-  details: Detail[]
+  scenes: string[] // 适用场景
+  details: Array<{
+    // CPU内存比等
+    title: string
+    info: string
+  }>
+
+  regions: Array<{ id: string, name: string }>
+  instanceTypes: Array<{ type: string, desc: string }>
+  durations: number[] // 可选购买时长，单位：月
 }
 
-export default function EnterpriseCard({ family, name, desc, scenes, details }: Props) {
+export default function EnterpriseCard(props: Props) {
 
-  const scenesView = scenes.map(
+  const scenesView = props.scenes.map(
     (scene, i) => (
       <li key={i} className={style.scene}>{scene}</li>
     )
   )
 
-  const detailsView = details.map(
+  const detailsView = props.details.map(
     detail => (
-      <div key={detail.name} className={style.detail}>
-        <p className={style.detailName}>{detail.name}</p>
-        <p className={style.detailValue}>{detail.value}</p>
+      <div key={detail.title} className={style.detail}>
+        <p className={style.detailName}>{detail.title}</p>
+        <p className={style.detailValue}>{detail.info}</p>
       </div>
     )
   )
@@ -50,8 +47,8 @@ export default function EnterpriseCard({ family, name, desc, scenes, details }: 
     <div className={style.wrapper}>
       <div className={style.body}>
         <h4 className={style.name}>
-          {name}
-          <p className={style.desc}>{desc}</p>
+          {props.name}
+          <p className={style.desc}>{props.desc}</p>
         </h4>
         <div className={style.sceneBlock}>
           适用场景：
@@ -64,85 +61,33 @@ export default function EnterpriseCard({ family, name, desc, scenes, details }: 
         </div>
       </div>
       <div className={style.priceBlock}>
-        <PriceForm family={family} />
+        <PriceForm {...props} />
       </div>
     </div>
   )
 }
 
-type PriceFormProps = {
-  family: string
-}
+function PriceForm({ regions, instanceTypes, durations }: Props) {
 
-function PriceForm({ family }: PriceFormProps) {
+  const [regionId, setRegionId] = useState(regions[0].id)
 
-  const { $: regions, loading: regionsLoading } = useApiWithParams(
-    getRegionsByFamily,
-    { params: [family] }
-  )
-
-  const [regionId, setRegionId] = useState(avaliableRegions[0].id)
-
-  // regions 数据加载好后默认使用第一项
-  useOnChange(() => {
-    if (
-      regions && regions.length > 0
-      && !regions.some(region => region.id === regionId)
-    ) {
-      setRegionId(regions[0].id)
-    }
-  }, [regions])
-
-  // TODO: 顺序
-  const regionOptions = [
-    regionsLoading && (
-      <option key="" value="">加载中...</option>
-    ),
-    ...(regions || []).map(
-      ({ id, name }) => (
-        <option key={id} value={id}>{name}</option>
-      )
+  const regionOptions = (regions || []).map(
+    ({ id, name }) => (
+      <option key={id} value={id}>{name}</option>
     )
-  ]
-
-  const [instanceType, setInstanceType] = useState<string | undefined>(undefined)
-
-  const { $: instanceTypesOfFamily } = useApiWithParams(
-    getInstanceTypesByFamily,
-    { params: [family] }
-  )
-  const { $: instanceTypesOfRegion } = useApiWithParams(
-    getInstanceTypesByRegion,
-    { params: [regionId] }
   )
 
-  const instanceTypes = (instanceTypesOfFamily || []).filter(
-    type => instanceTypesOfRegion && instanceTypesOfRegion.indexOf(type.type) >= 0
-  )
+  const [instanceType, setInstanceType] = useState(instanceTypes[0].type)
 
-  // TODO: 顺序
-  const instanceTypeOptions = [
-    <option key="" value="">请选择类型</option>,
-    ...(instanceTypes || []).map(
-      ({ type, cpu, memory }) => (
-        <option key={type} value={type}>{cpu} 核 {memory} G</option>
-      )
+  const instanceTypeOptions = (instanceTypes || []).map(
+    ({ type, desc }) => (
+      <option key={type} value={type}>{desc}</option>
     )
-  ]
+  )
 
-  // instanceTypes 数据加载好后默认使用第一项
-  useOnChange(() => {
-    if (
-      instanceTypes && instanceTypes.length > 0
-      && !instanceTypes.some(item => item.type === instanceType)
-    ) {
-      setInstanceType(instanceTypes[0].type)
-    }
-  }, [instanceTypes])
+  const [duration, setDuration] = useState(durations[0])
 
-  const [duration, setDuration] = useState(12)
-
-  const durationOptions = availableDurations.map(
+  const durationOptions = durations.map(
     d => (
       <option key={d} value={d}>{humanizeDuration(d)}</option>
     )
@@ -161,7 +106,7 @@ function PriceForm({ family }: PriceFormProps) {
     [regionId, instanceType, duration]
   )
 
-  const { $: priceWithDiscount, loading } = useApiWithParams(
+  const { $: priceWithDiscount, loading, error } = useApiWithParams(
     getPrice,
     { params: [priceOptions] }
   )
@@ -195,7 +140,7 @@ function PriceForm({ family }: PriceFormProps) {
           onChange={e => setDuration(parseInt(e.target.value, 10))}
         >{durationOptions}</select>
       </label>
-      <PriceInfo loading={loading} info={priceWithDiscount} />
+      <PriceInfo loading={loading} info={priceWithDiscount} error={error} />
       <Button className={style.buyBtn} type="primary" htmlType="submit">立即选配</Button>
       <a target="_blank" rel="noopener" href={buyUrlWithNoParams} className={style.moreOptions}>
         查看更多配置选项
@@ -207,11 +152,15 @@ function PriceForm({ family }: PriceFormProps) {
 type PriceInfoProps = {
   loading: boolean
   info: PriceWithDiscount | null
+  error: any
 }
 
-function PriceInfo({ loading, info }: PriceInfoProps) {
+function PriceInfo({ loading, info, error }: PriceInfoProps) {
   if (loading) {
     return <div className={style.priceInfo + ' ' + style.loading}>正在计算价格...</div>
+  }
+  if (error != null) {
+    return <div className={style.priceInfo}>暂无库存</div>
   }
   if (!info) {
     return <div className={style.priceInfo}></div>
