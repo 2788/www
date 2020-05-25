@@ -7,10 +7,10 @@
  * Copyright (c) 2020 Qiniu
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
+import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
@@ -24,21 +24,17 @@ import BannerIcon from './images/banner.svg'
 
 export function Content() {
 
-  const bannerBtns: ReactNode[] = [
-    <UIButton key="try" href="TODO">
-      免费体验
-    </UIButton>,
-    <UIButton key="guide" href="https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience" type="hollow">
-      接入指南
-    </UIButton>
-  ]
+  const btns = useBtns(
+    { children: '免费体验', href: '/TODO' },
+    { children: '接入指南', href: 'https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience' }
+  )
 
   return (
     <>
       <PageBanner
         title="直播推流 SDK"
         desc="直播推流SDK，由七牛音视频团队多年精心打磨，包体轻盈、接入简单，协助您快速搭建直播推流核心功能，同时可无缝对接美颜、滤镜、人脸贴纸等高级特效。"
-        btns={bannerBtns}
+        btns={btns.banner}
         icon={<BannerIcon />} />
 
       <PageNotice>
@@ -49,7 +45,7 @@ export function Content() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator />
+      <Navigator>{btns.nav}</Navigator>
 
       <ProductFeature />
       <Scene />

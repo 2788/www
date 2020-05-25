@@ -41,7 +41,7 @@ export function ButtonTab({ value, children }: ButtonTabProps) {
   }
 
   const active = contextValue.value === value
-  const type = active ? 'primary' : 'default'
+  const type = active ? 'primary' : 'hollow'
   return (
     <Button
       className={style.buttonTab}

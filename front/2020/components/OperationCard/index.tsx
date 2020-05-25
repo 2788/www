@@ -50,5 +50,5 @@ export function Desc({ className, ...others }: HTMLAttributes<HTMLElement>) {
 }
 
 export function Button({ className, ...others }: RawButtonProps) {
-  return <RawButton withBorder className={cls(style.button, className)} {...others} />
+  return <RawButton type="hollow" withBorder className={cls(style.button, className)} {...others} />
 }

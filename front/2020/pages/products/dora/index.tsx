@@ -32,7 +32,7 @@ import BannerIcon from './_images/banner-icon.svg'
 function PageContent() {
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/create?source_page=dora', children: '立即使用' },
+    { href: 'https://portal.qiniu.com/create?source_page=dora', children: '立即使用', pcOnly: true },
     { href: '/prices?source=dora&source_page=dora', children: '产品价格' },
     { href: 'https://developer.qiniu.com/dora?source_page=dora', children: '帮助文档' }
   )

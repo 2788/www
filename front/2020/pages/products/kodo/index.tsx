@@ -2,18 +2,19 @@
  * @file 产品“对象存储”
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
 
 import Layout from 'components/Product/Layout'
+import { useBtns } from 'hooks/product-btn'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
-import Navigator, { Button as NavButton } from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
-import UIButton from 'components/UI/Button'
 import StorageType from 'components/pages/kodo/StorageType'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
@@ -33,21 +34,10 @@ import BannerIcon from './images/banner-icon.svg'
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
-  const { showModal } = useFeedbackModal()
 
-  function handleConsult() {
-    showModal()
-  }
-
-  const bannerBtns: ReactNode[] = [(
-    <UIButton key="try" href="/products/fusion">
-      免费试用
-    </UIButton>
-  ), (
-    <UIButton key="consult" type="hollow" onClick={handleConsult}>
-      售前咨询
-    </UIButton>
-  )]
+  const btns = useBtns(
+    { children: '立即使用', href: 'https://portal.qiniu.com/kodo', pcOnly: true }
+  )
 
   return (
     <>
@@ -56,7 +46,7 @@ function PageContent() {
         desc="七牛云海量存储系统（KODO）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
         平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
         bgColor="#34A1EC"
-        btns={bannerBtns}
+        btns={btns.banner}
         icon={<BannerIcon />} />
 
       <PageNotice>
@@ -84,9 +74,8 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/TODO">
-        <NavButton type="primary" href="/products/kodo">免费试用</NavButton>
-        <NavButton withBorder onClick={handleConsult}>售前咨询</NavButton>
+      <Navigator priceLink={urlForPrice(Product.Kodo)}>
+        {btns.nav}
       </Navigator>
 
       <StorageType />

@@ -33,8 +33,9 @@ import BannerIcon from './_images/bannerIcon.svg'
 function PageContent() {
 
   const btns = useBtns(
+    // TODO: 这边的按钮点击行为
     { href: '/products/rtc', children: '免费使用' },
-    { type: 'default', href: '/products/rtc', children: '立即咨询' },
+    { href: '/products/rtc', children: '立即咨询' },
     { href: '/products/rtc', children: '在线体验' }
   )
 

@@ -4,17 +4,17 @@
  */
 
 import React, { ReactNode } from 'react'
-import Button, { } from 'components/UI/Button'
+import Button, { Props } from 'components/UI/Button'
 import { Button as NavButton } from 'components/Product/Navigator'
 import { useMobile } from './ua'
 
 export type BtnOptions = {
-  type?: 'default' | 'primary' | 'hollow',
+  type?: Props['type'],
   children: ReactNode,
   href: string,
   pcOnly?: boolean // 是否仅 PC，默认 false
 } | {
-  type?: 'default' | 'primary' | 'hollow',
+  type?: Props['type'],
   children: ReactNode,
   onClick: () => void,
   pcOnly?: boolean // 是否仅 PC，默认 false
@@ -38,9 +38,9 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
         )
       }
 
-      // 最后一个 btn type 为 hollow
+      // 最后一个 btn type: primary-hollow
       return (
-        <Button key={i + 1} type="hollow" {...otherBtn} />
+        <Button key={i + 1} type="primary-hollow" withBorder {...otherBtn} />
       )
     })
   ].filter(Boolean)
@@ -54,9 +54,9 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
         )
       }
 
-      // 最后一个 btn withBorder
+      // 最后一个 btn type: hollow & withBorder
       return (
-        <NavButton key={i + 1} withBorder {...otherBtn} />
+        <NavButton key={i + 1} type="hollow" withBorder {...otherBtn} />
       )
     })
   ].filter(Boolean)

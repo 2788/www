@@ -14,7 +14,6 @@
 .slide {
   flex: 1 1 auto;
   position: relative;
-  height: 56.25%;
 
   & + .slide {
     margin-left: 24px;
@@ -32,10 +31,13 @@
   }
 
   &.active::after {
-    display: none;
+    background-color: transparent;
+    border: 2px solid @blue-6;
+    box-shadow: inset 0 0 0 2px @grey-1;
   }
 
   img, video {
+    display: block;
     width: 100%;
   }
 }

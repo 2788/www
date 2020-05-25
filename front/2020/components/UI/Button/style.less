@@ -1,15 +1,24 @@
 @import '~utils/less/index.less';
 
-.withColor(@color, @bgColor, @borderColor) {
+.withColor(
+  @color, @bgColor, @borderColor,
+  @hoverColor, @hoverBgColor, @hoverBorderColor,
+  @disabledColor, @disabledBgColor, @disabledBorderColor
+) {
   color: @color;
   background-color: @bgColor;
   border-color: @borderColor;
 
+  &:hover {
+    color: @hoverColor;
+    background-color: @hoverBgColor;
+    border-color: @hoverBorderColor;
+  }
+
   &.disabled, &:disabled {
-    // TODO: 颜色再对一下
-    color: desaturate(@color, 20%);
-    background-color: desaturate(@bgColor, 20%);
-    border-color: desaturate(@borderColor, 20%);
+    color: @disabledColor;
+    background-color: @disabledBgColor;
+    border-color: @disabledBorderColor;
   }
 }
 
@@ -26,6 +35,7 @@
   border-radius: 2px;
   border: 1px solid transparent;
   cursor: pointer;
+  transition: .2s;
 
   &:focus {
     outline: none;
@@ -36,25 +46,65 @@
   }
 
   .withSize(36px);
-  .withColor(@blue-6, #fff, #fff);
+  .withColor(
+    @blue-6, @grey-1, @grey-1,
+    @blue-6, #F2F2F2, #F2F2F2,
+    @grey-4, #F2F2F2, #F2F2F2
+  );
 
   &.withBorder {
-    .withColor(@blue-6, #fff, @blue-6);
+    .withColor(
+      @blue-6, @grey-1, @blue-6,
+      @blue-6, #F2F2F2, @blue-5,
+      @grey-4, #F2F2F2, @grey-4
+    );
   }
 
   &.typePrimary {
-    .withColor(#fff, @blue-6, @blue-6);
+    .withColor(
+      @grey-1, @blue-6, @blue-6,
+      @grey-1, @blue-5, @blue-5,
+      @grey-4, #F2F2F2, @grey-4
+    );
 
     &.withBorder {
-      .withColor(#fff, @blue-6, #fff);
+      .withColor(
+        @grey-1, @blue-6, @grey-1,
+        @grey-1, @blue-5, @grey-1,
+        @grey-4, #F2F2F2, @grey-4
+      );
     }
   }
 
   &.typeHollow {
-    .withColor(#fff, transparent, #fff);
+    .withColor(
+      @blue-6, transparent, transparent,
+      @grey-1, @blue-6, @blue-6,
+      @grey-4, #F2F2F2, @grey-4
+    );
 
     &.withBorder {
-      .withColor(#fff, transparent, #fff);
+      .withColor(
+        @blue-6, transparent, @blue-6,
+        @grey-1, @blue-6, @blue-6,
+        @grey-4, #F2F2F2, @grey-4
+      );
+    }
+  }
+
+  &.typePrimaryHollow {
+    .withColor(
+      @grey-1, transparent, transparent,
+      @blue-6, @grey-1, @grey-1,
+      @grey-4, #F2F2F2, #F2F2F2
+    );
+
+    &.withBorder {
+      .withColor(
+        @grey-1, transparent, @grey-1,
+        @blue-6, @grey-1, @grey-1,
+        @grey-4, #F2F2F2, #F2F2F2
+      );
     }
   }
 

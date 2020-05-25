@@ -7,6 +7,7 @@ import * as cases from 'constants/cases'
 import Layout from 'components/Layout'
 import { Card, Row } from 'components/UI/Card'
 import Swiper from 'components/UI/Swiper'
+import Banner, * as banner from 'components/Banner'
 // 这个页面用这些 `Product/xxx` 的组件不太合适，先用着，后边考虑把这些组件从 Product 中拎出来
 import Navigator, { Navigatable } from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
@@ -21,6 +22,8 @@ import IconStep3 from './_icons/step-3.svg'
 import IconStep4 from './_icons/step-4.svg'
 import IconArrow from './_icons/circle-arrow.svg'
 import IconQuestionMark from './_icons/question.svg'
+import imgBanner from './banner.file.svg'
+import IconTitle from './_icons/title.svg'
 
 import style from './style.less'
 
@@ -42,13 +45,21 @@ export default function InvitePage() {
   return (
     <Layout title="邀请有礼活动">
       <Navigatable>
-        <section className={style.banner}>
+        {/* <section className={style.banner}>
           <div className={style.bannerContent}>
             <h1 className={style.title}>邀请好友礼上加礼</h1>
             <p className={style.subtitle}>温馨回馈限时复工防疫包</p>
-            <div className={style.btnLine}>{btns.banner}</div>
           </div>
-        </section>
+        </section> */}
+        <Banner className={style.banner} background={imgBanner}>
+          <banner.Title className={style.title}>
+            <IconTitle />
+          </banner.Title>
+          <banner.Desc>
+            <p className={style.subtitle}>温馨回馈限时复工防疫包</p>
+            <div className={style.btnLine}>{btns.banner}</div>
+          </banner.Desc>
+        </Banner>
 
         <Navigator>{btns.nav}</Navigator>
 

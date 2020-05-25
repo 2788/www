@@ -7,10 +7,10 @@
  * Copyright (c) 2020 Qiniu
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
+import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import UIButton from 'components/UI/Button'
 import Navigator from 'components/Product/Navigator'
 import { useModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
@@ -31,24 +31,20 @@ import Step4 from './images/step4.svg'
 export function Content() {
   const { showModal } = useModal()
 
-  const bannerBtns: ReactNode[] = [
-    <UIButton key="consult" onClick={showModal}>
-      立即咨询
-    </UIButton>,
-    <UIButton key="download" onClick={() => { window.location.hash = 'demo' }} type="hollow">
-      Demo 下载
-    </UIButton>
-  ]
+  const btns = useBtns(
+    { children: '立即咨询', onClick: showModal },
+    { children: 'Demo 下载', href: '#demo' } // TODO: debug 这里为啥点击了不会滚动
+  )
 
   return (
     <>
       <PageBanner
         title="短视频特效 SDK"
         desc="短视频特效 SDK，是七牛云 SDK 团队与字节跳动 SDK 团队共同打造的一款短视频内容创作工具。其融合了移动端的短视频拍摄、编辑、上传等能力于一体，集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。"
-        btns={bannerBtns}
+        btns={btns.banner}
         icon={<BannerIcon />} />
 
-      <Navigator />
+      <Navigator>{btns.nav}</Navigator>
 
       <Advantage />
       <ProductFeature />

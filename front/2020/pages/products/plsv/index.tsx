@@ -7,10 +7,10 @@
  * Copyright (c) 2020 Qiniu
  */
 
-import React, { ReactNode } from 'react'
+import React from 'react'
+import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import UIButton from 'components/UI/Button'
 import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
@@ -26,22 +26,19 @@ import Scene from 'components/pages/plsv/Scene'
 
 import BannerIcon from './images/banner.svg'
 
-const bannerBtns: ReactNode[] = [
-  <UIButton key="try" href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com">
-    免费体验
-  </UIButton>,
-  <UIButton key="guide" href="https://developer.qiniu.com/pili/sdk/3955/short-video-quick-guide" type="hollow">
-    接入指南
-  </UIButton>
-]
-
 export default function Page() {
+
+  const btns = useBtns(
+    { children: '免费体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com', pcOnly: true },
+    { children: '接入指南', href: 'https://developer.qiniu.com/pili/sdk/3955/short-video-quick-guide' }
+  )
+
   return (
     <Layout>
       <PageBanner
         title="短视频 SDK"
         desc="短视频 SDK，由七牛音视频团队潜心研发。100+功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
-        btns={bannerBtns}
+        btns={btns.banner}
         icon={<BannerIcon />} />
 
       <PageNotice>
@@ -52,7 +49,7 @@ export default function Page() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator />
+      <Navigator>{btns.nav}</Navigator>
 
       <Feature />
       <Scene />
