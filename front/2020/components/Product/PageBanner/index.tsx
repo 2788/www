@@ -5,8 +5,9 @@
  */
 
 import React, { ReactNode } from 'react'
+import classnames from 'classnames'
 
-import { useMobile } from '../../../hooks/ua'
+import { useMobile } from 'hooks/ua'
 
 import styles from './style.less'
 
@@ -29,15 +30,16 @@ export const defaultProps: IPageBannerProps = {
 export default function PageBanner(props: IPageBannerProps) {
   const { title, desc, bgColor = '#34A1EC', btns, icon } = { ...defaultProps, ...props }
   const isMobile = useMobile()
+  const isBtnsValid = btns && btns.length
 
   function renderBtnWrapper() {
-    if (!btns || !btns.length) {
+    if (!isBtnsValid) {
       return null
     }
 
     return (
       <div className={styles.btnsWrapper}>
-        {btns.map((btn: ReactNode, index: number) => (
+        {btns && btns.map((btn: ReactNode, index: number) => (
           <div className={styles.btn} key={index}>
             {btn}
           </div>
@@ -60,8 +62,8 @@ export default function PageBanner(props: IPageBannerProps) {
 
   return (
     <div className={styles.mainWrapper} style={bgColorStyle}>
-      <div className={styles.contentWrapper}>
-        <div className={styles.content}>
+      <div className={classnames(styles.contentWrapper, !isBtnsValid && styles.verticalCenter)}>
+        <div className={classnames(styles.content, !isBtnsValid && styles.marginTopNone)}>
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.desc}>{desc}</div>
           {renderBtnWrapper()}

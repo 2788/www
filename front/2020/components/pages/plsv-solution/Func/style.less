@@ -11,7 +11,6 @@
 
   .mobile({
     padding: 12px 0;
-    background-color: #FAFAFA;
   });
 }
 
@@ -26,8 +25,8 @@
 }
 
 .icon {
-  height: 50px;
-  line-height: 50px;
+  height: 44px;
+  line-height: 44px;
 
   .mobile({
     height: 24px;
@@ -36,7 +35,7 @@
 }
 
 .desc {
-  margin-top: 8px;
+  margin-top: 12px;
   color: @grey-6;
   line-height: 20px;
 
@@ -80,6 +79,11 @@
 .mobile {
   :global {
     .rc-menu-submenu {
+      & > .rc-menu {
+        padding: 12px 0;
+        background-color: #FAFAFA;
+      }
+
       &:first-child {
         border: none;
       }

@@ -25,17 +25,30 @@
   height: @banner-height;
   color: @grey-1;
   display: flex;
-  align-items: center;
   justify-content: center;
+
+  &.verticalCenter {
+    align-items: center;
+  }
 
   .mobile({
     width: 90%;
     padding: 12px 0 24px;
+    align-items: center;
   });
 }
 
 .content {
+  margin-top: 50px;
   flex: 1 1;
+
+  &.marginTopNone {
+    margin-top: 0;
+  }
+
+  .mobile({
+    margin-top: 0;
+  });
 }
 
 .title {
@@ -60,7 +73,11 @@
 }
 
 .btnsWrapper {
-  margin-top: 20px;
+  margin-top: 80px;
+
+  .mobile({
+    margin-top: 20px;
+  });
 }
 
 .btn {

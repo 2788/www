@@ -225,55 +225,6 @@ export default function Mobile() {
           </div>
         </div>
       </SubMenu>
-      <SubMenu
-        key="5"
-        title="远程医疗"
-        mode="inline"
-        onTitleClick={({ key }: any) => {
-          handleSubMenusChange(key)
-        }}
-      >
-        <div className={styles.group}>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-        </div>
-        <div className={styles.group}>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-        </div>
-        <div className={styles.group}>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-        </div>
-        <div className={styles.group}>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-        </div>
-        <div className={styles.group}>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-          <div className={styles.item}>
-            <p className={styles.desc}>TODO</p>
-          </div>
-        </div>
-      </SubMenu>
     </Menu>
   )
 }

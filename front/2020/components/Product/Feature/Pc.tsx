@@ -44,13 +44,9 @@ export function PcFeatureItem(props: IPcFeatureItemProps) {
   }
 
   return (
-    <div
-      className={classnames(styles.item, getClassByPosType(pos))}
-    >
+    <div className={classnames(styles.item, getClassByPosType(pos))}>
       <div className={styles.itemIcon}>{icon}</div>
-      <div
-        className={classnames(styles.itemContent, getClassByAlignType(align))}
-      >
+      <div className={classnames(styles.itemContent, getClassByAlignType(align))}>
         <h3 className={styles.itemTitle}>{title}</h3>
         {children}
       </div>

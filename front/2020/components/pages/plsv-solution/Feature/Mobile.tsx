@@ -84,7 +84,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconAR className={styles.icon} />
-          <div className={styles.desc}>逼真的3D物体绘制、背景替换，轻松实现场景虚拟化效果。</div>
+          <div className={styles.desc}>逼真的 3D 物体绘制、背景替换，轻松实现场景虚拟化效果。</div>
         </div>
       </SubMenu>
       <SubMenu
