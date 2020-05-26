@@ -14,7 +14,8 @@ type ContextValue = {
 
 const tabContext = createContext<ContextValue | null>(null)
 
-type Size = 'default' | 'small'
+export type Size = 'default' | 'small'
+export type Theme = 'default' | 'white' // theme: white 适用于有底色的环境
 
 export type Props = {
   /** Tabs 的内容，一般是多个 `<Tab>` */
@@ -31,9 +32,20 @@ export type Props = {
   size?: Size
   /** 是否显示 shadow 默认为 true */
   shadow?: boolean
+  /** 颜色 */
+  theme?: Theme
 }
 
-export default function Tabs({ children, className, defaultValue, value = null, onChange, size = 'default', shadow = true }: Props) {
+const themeClassMap = {
+  default: style.themeDefault,
+  white: style.themeWhite
+}
+
+export default function Tabs({
+  children, className, defaultValue,
+  value = null, onChange, size = 'default',
+  shadow = true, theme = 'default'
+}: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
   const tabList: ReactElement[] = []
   const tabPanes: ReactElement[] = []
@@ -70,7 +82,8 @@ export default function Tabs({ children, className, defaultValue, value = null, 
   const wrapperClass = classnames(
     style.wrapper,
     className,
-    size === 'small' && style.small
+    size === 'small' && style.small,
+    themeClassMap[theme]
   )
 
   return (

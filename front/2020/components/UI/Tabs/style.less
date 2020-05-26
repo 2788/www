@@ -53,6 +53,10 @@
     line-height: 48px;
   });
 
+  &.active, &:hover {
+    color: @blue-6;
+  }
+
   // TODO: 把下边的横条放到 tabs 那层去实现，以便实现动画
   &:after {
     content: " ";
@@ -66,16 +70,28 @@
     transition: .2s;
   }
 
-  &.active {
-    color: @blue-6;
+  &.active:after {
+    background-color: @blue-6;
+  }
+}
 
-    &:after {
-      background-color: @blue-6;
+.themeWhite {
+  .header {
+    color: @grey-1;
+
+    &.shadow {
+      box-shadow: 0 1px 0 0 #86CBE4;
     }
   }
 
-  &:hover {
-    color: @blue-6; // TODO: 跟 @昌胜 确认下这里 hover 的时候是不是需要下边缘的色条
+  .item {
+    &.active, &:hover {
+      color: @grey-1;
+      font-weight: 600;
+    }
+    &.active:after {
+      background-color: @grey-1;
+    }
   }
 }
 
@@ -87,4 +103,3 @@
     margin-top: 16px;
   });
 }
-
