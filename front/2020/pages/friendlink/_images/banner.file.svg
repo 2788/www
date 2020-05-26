@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="190px" viewBox="0 0 240 190" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>privacy-policy</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.1" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="1.95840372%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="活动与合作" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="友链" transform="translate(-1155.000000, -205.000000)" fill-rule="nonzero">
+            <g id="banner" transform="translate(0.000000, 121.000000)">
+                <g id="编组-35">
+                    <g id="privacy-policy" transform="translate(1155.000000, 84.000000)">
+                        <circle id="椭圆形" fill="url(#linearGradient-1)" cx="40.6451613" cy="25.1612903" r="25.1612903"></circle>
+                        <circle id="椭圆形" fill="url(#linearGradient-1)" cx="199.354839" cy="25.1612903" r="25.1612903"></circle>
+                        <path d="M114.743226,121.114839 C101.218993,113.783372 89.616584,103.36269 80.88,90.7006452 C70.2425806,76.556129 59.2451613,61.9354839 34.8387097,61.9354839 C15.6066651,61.9568173 0.0213334024,77.542149 0,96.7741935 L0,185.806452 C0,187.944328 1.73309129,189.677419 3.87096774,189.677419 L65.8064516,189.677419 C67.9443281,189.677419 69.6774194,187.944328 69.6774194,185.806452 L69.6774194,113.129032 C80.3720531,123.082695 92.429918,131.462331 105.487742,138.015484 C106.963282,138.85613 108.62481,139.316409 110.322581,139.354839 C114.785036,139.365136 118.672559,136.314501 119.723653,131.977588 C120.774747,127.640676 118.715245,123.14872 114.743226,121.114839 L114.743226,121.114839 Z" id="路径" fill="url(#linearGradient-2)"></path>
+                        <path d="M205.16129,61.9354839 C180.774194,61.9354839 169.757419,76.556129 159.12,90.7006452 C151.092818,102.183382 140.757676,111.864585 128.775484,119.125161 C132.371982,125.329311 132.56596,132.936751 129.290323,139.316129 C129.421935,139.316129 129.549677,139.354839 129.677419,139.354839 C131.37519,139.316409 133.036718,138.85613 134.512258,138.015484 C147.570082,131.462331 159.627947,123.082695 170.322581,113.129032 L170.322581,185.806452 C170.322581,187.944328 172.055672,189.677419 174.193548,189.677419 L236.129032,189.677419 C238.266909,189.677419 240,187.944328 240,185.806452 L240,96.7741935 C239.978667,77.542149 224.393335,61.9568173 205.16129,61.9354839 Z" id="路径" fill="url(#linearGradient-3)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

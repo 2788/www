@@ -1,0 +1,22 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  .centered();
+  padding: 72px 0 60px;
+  
+  .mobile({
+    padding: 16px;
+  });
+}
+
+.title {
+  color: @grey-7;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+
+  .mobile({
+    font-size: 20px;
+    margin-bottom: 10px;
+  });
+}
