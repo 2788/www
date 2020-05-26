@@ -47,7 +47,8 @@ function PageContent() {
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={<BannerIcon />}
+      />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -74,9 +75,7 @@ function PageContent() {
         </LinkGroup>
       </LinkGroups>
 
-      <UsageGuide
-        title="联系我们，了解更多详情"
-      >
+      <UsageGuide title="联系我们，了解更多详情">
         <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>

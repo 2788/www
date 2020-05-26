@@ -27,7 +27,7 @@ function PageContent() {
   }
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: handleConsult, children: '咨询详情' }
   )
 
   return (
@@ -38,7 +38,8 @@ function PageContent() {
         自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={<BannerIcon />}
+      />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -52,9 +53,7 @@ function PageContent() {
 
       <EssScene />
 
-      <UsageGuide
-        title="欢迎联系我们了解更多行业成功案例经验"
-      >
+      <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
         <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>

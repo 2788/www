@@ -50,8 +50,8 @@
                     <text id="业务数据收集" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#28B8BB">
                         <tspan x="414" y="598">业务数据收集</tspan>
                     </text>
-                    <text id="监控平台" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#28B8BB">
-                        <tspan x="808" y="430">监控平台</tspan>
+                    <text id="监控平台" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#28B8BB">
+                        <tspan x="808" y="435">监控平台</tspan>
                     </text>
                     <rect id="矩形" fill-opacity="0.64682583" fill="#B6EBEC" opacity="0.651692708" x="631" y="263" width="427" height="43"></rect>
                     <line x1="631.5" y1="305.5" x2="1059.5" y2="305.5" id="直线-2" stroke="#28B8BB" stroke-linecap="square" stroke-dasharray="5"></line>
@@ -63,8 +63,8 @@
                     <text id="磁盘缓存" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#28B8BB">
                         <tspan x="918" y="347">磁盘缓存</tspan>
                     </text>
-                    <text id="缓存系统" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#28B8BB">
-                        <tspan x="808" y="286">缓存系统</tspan>
+                    <text id="缓存系统" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#28B8BB">
+                        <tspan x="808" y="291">缓存系统</tspan>
                     </text>
                     <rect id="矩形" stroke="#20B4E9" fill="#FFFFFF" x="22.5" y="262.5" width="583" height="119"></rect>
                     <rect id="矩形" stroke="#20B4E9" fill="#FFFFFF" x="22.5" y="72.5" width="583" height="165"></rect>
@@ -103,43 +103,43 @@
                     <path d="M99,136.5 L48,136.5 C47.5857864,136.5 47.2107864,136.667893 46.9393398,136.93934 C46.6678932,137.210786 46.5,137.585786 46.5,138 L46.5,166 C46.5,166.414214 46.6678932,166.789214 46.9393398,167.06066 C47.2107864,167.332107 47.5857864,167.5 48,167.5 L99,167.5 C99.4142136,167.5 99.7892136,167.332107 100.06066,167.06066 C100.332107,166.789214 100.5,166.414214 100.5,166 L100.5,138 C100.5,137.585786 100.332107,137.210786 100.06066,136.93934 C99.7892136,136.667893 99.4142136,136.5 99,136.5 Z" id="矩形备份-3" stroke="#1AB9EB" fill-opacity="0.0717875874" fill="#24B5E9"></path>
                     <path d="M383,136.5 L332,136.5 C331.585786,136.5 331.210786,136.667893 330.93934,136.93934 C330.667893,137.210786 330.5,137.585786 330.5,138 L330.5,166 C330.5,166.414214 330.667893,166.789214 330.93934,167.06066 C331.210786,167.332107 331.585786,167.5 332,167.5 L383,167.5 C383.414214,167.5 383.789214,167.332107 384.06066,167.06066 C384.332107,166.789214 384.5,166.414214 384.5,166 L384.5,138 C384.5,137.585786 384.332107,137.210786 384.06066,136.93934 C383.789214,136.667893 383.414214,136.5 383,136.5 Z" id="矩形备份-4" stroke="#1AB9EB" fill-opacity="0.0717875874" fill="#24B5E9"></path>
                     <text id="对象" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#24B5E9">
-                        <tspan x="59" y="156">对象</tspan>
+                        <tspan x="59" y="157">对象</tspan>
                     </text>
                     <text id="文件" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#24B5E9">
-                        <tspan x="343" y="156">文件</tspan>
+                        <tspan x="343" y="157">文件</tspan>
                     </text>
-                    <text id="Qiniu-API" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="128" y="158">Qiniu API</tspan>
+                    <text id="Qiniu-API" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="128" y="157">Qiniu API</tspan>
                     </text>
-                    <text id="负载均衡" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="286" y="204">负载均衡</tspan>
+                    <text id="负载均衡" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="286" y="203">负载均衡</tspan>
                     </text>
-                    <text id="分区扩展" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="144" y="348">分区扩展</tspan>
+                    <text id="分区扩展" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="144" y="347">分区扩展</tspan>
                     </text>
-                    <text id="三副本" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="102" y="523">三副本</tspan>
+                    <text id="三副本" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="102" y="522">三副本</tspan>
                     </text>
-                    <text id="智能迁移" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="299" y="523">智能迁移</tspan>
+                    <text id="智能迁移" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="299" y="522">智能迁移</tspan>
                     </text>
-                    <text id="纠删码" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="484" y="523">纠删码</tspan>
+                    <text id="纠删码" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="484" y="522">纠删码</tspan>
                     </text>
-                    <text id="复制集自愈" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="421" y="348">复制集自愈</tspan>
+                    <text id="复制集自愈" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="421" y="347">复制集自愈</tspan>
                     </text>
-                    <text id="NFS" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="419" y="158">NFS</tspan>
+                    <text id="NFS" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="419" y="157">NFS</tspan>
                     </text>
-                    <text id="S3-API" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="226" y="158">S3 API</tspan>
+                    <text id="S3-API" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="226" y="157">S3 API</tspan>
                     </text>
-                    <text id="SMB" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="470" y="158">SMB</tspan>
+                    <text id="SMB" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="470" y="157">SMB</tspan>
                     </text>
-                    <text id="FTP" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="18" fill="#00AAE7">
-                        <tspan x="524" y="158">FTP</tspan>
+                    <text id="FTP" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#00AAE7">
+                        <tspan x="524" y="157">FTP</tspan>
                     </text>
                     <path d="M830,136.5 L656,136.5 C655.585786,136.5 655.210786,136.667893 654.93934,136.93934 C654.667893,137.210786 654.5,137.585786 654.5,138 L654.5,166 C654.5,166.414214 654.667893,166.789214 654.93934,167.06066 C655.210786,167.332107 655.585786,167.5 656,167.5 L830,167.5 C830.414214,167.5 830.789214,167.332107 831.06066,167.06066 C831.332107,166.789214 831.5,166.414214 831.5,166 L831.5,138 C831.5,137.585786 831.332107,137.210786 831.06066,136.93934 C830.789214,136.667893 830.414214,136.5 830,136.5 Z" id="矩形备份-19" stroke="#69CCCE" opacity="0.85"></path>
                     <path d="M1033,136.5 L859,136.5 C858.585786,136.5 858.210786,136.667893 857.93934,136.93934 C857.667893,137.210786 857.5,137.585786 857.5,138 L857.5,166 C857.5,166.414214 857.667893,166.789214 857.93934,167.06066 C858.210786,167.332107 858.585786,167.5 859,167.5 L1033,167.5 C1033.41421,167.5 1033.78921,167.332107 1034.06066,167.06066 C1034.33211,166.789214 1034.5,166.414214 1034.5,166 L1034.5,138 C1034.5,137.585786 1034.33211,137.210786 1034.06066,136.93934 C1033.78921,136.667893 1033.41421,136.5 1033,136.5 Z" id="矩形备份-20" stroke="#69CCCE" opacity="0.85"></path>
@@ -158,8 +158,8 @@
                         <tspan x="918" y="203">配置分发</tspan>
                     </text>
                     <rect id="矩形" fill="#00AAE7" opacity="0.854399182" x="0" y="0" width="1081" height="50"></rect>
-                    <text id="私有云存储架构图" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#FFFFFF">
-                        <tspan x="468" y="26">私有云存储架构图</tspan>
+                    <text id="私有云存储架构图" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#FFFFFF">
+                        <tspan x="468" y="31">私有云存储架构图</tspan>
                     </text>
                     <polygon id="矩形" fill="#BCECFF" opacity="0.651692708" points="23 407 605 407 605 451 23 451"></polygon>
                     <line x1="22.4991453" y1="451.5" x2="605.500855" y2="451.5" id="直线" stroke="#20B4E9" stroke-linecap="square"></line>
@@ -167,17 +167,17 @@
                     <line x1="22.4991453" y1="306.5" x2="605.500855" y2="306.5" id="直线" stroke="#20B4E9" stroke-linecap="square"></line>
                     <polygon id="矩形" fill="#BCECFF" opacity="0.651692708" points="23 73 605 73 605 117 23 117"></polygon>
                     <line x1="22.4991453" y1="116.5" x2="605.500855" y2="116.5" id="直线" stroke="#20B4E9" stroke-linecap="square"></line>
-                    <text id="元数据" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#20B4E9">
-                        <tspan x="287" y="286">元数据</tspan>
+                    <text id="元数据" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#20B4E9">
+                        <tspan x="287" y="291">元数据</tspan>
                     </text>
-                    <text id="存储引擎" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#20B4E9">
-                        <tspan x="278" y="430">存储引擎</tspan>
+                    <text id="存储引擎" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#20B4E9">
+                        <tspan x="278" y="435">存储引擎</tspan>
                     </text>
-                    <text id="访问调度" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#20B4E9">
-                        <tspan x="278" y="96">访问调度</tspan>
+                    <text id="访问调度" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#20B4E9">
+                        <tspan x="278" y="101">访问调度</tspan>
                     </text>
-                    <text id="配置和服务发现" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#28B8BB">
-                        <tspan x="781" y="96">配置和服务发现</tspan>
+                    <text id="配置和服务发现" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#28B8BB">
+                        <tspan x="781" y="101">配置和服务发现</tspan>
                     </text>
                     <g id="yunqianyi" transform="translate(310.000000, 468.000000)" fill-rule="nonzero">
                         <path d="M9.50020576,25 C14.7465942,25 19,20.7465021 19,15.5 C19,10.8061728 15.5922549,6.91687243 11.1178662,6.14773663 C10.8602586,6.10329218 10.5997704,6.06790123 10.3359901,6.04238683 C10.0598644,6.018107 9.78209266,6 9.49979424,6 C4.25340582,6 0,10.2530864 0,15.5 C0.000411513721,20.7465021 4.25381733,25 9.50020576,25 L9.50020576,25 Z" id="路径" fill="#20B4E9"></path>

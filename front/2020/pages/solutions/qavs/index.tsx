@@ -41,7 +41,8 @@ function PageContent() {
         并集成海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={<BannerIcon />}
+      />
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">

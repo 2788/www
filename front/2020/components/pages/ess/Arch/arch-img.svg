@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1081px" height="634px" viewBox="0 0 1081 634" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
     <title>编组</title>
-    <desc>Created with Sketch.</desc>
     <g id="解决方案" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="行业解决方案-监控视频边缘存储解决方案✅" transform="translate(-420.000000, -690.000000)">
             <g id="产品介绍-2" transform="translate(0.000000, 542.000000)">
@@ -149,8 +147,8 @@
                         <tspan x="557" y="148">中心同步</tspan>
                     </text>
                     <rect id="矩形" fill="#00AAE7" opacity="0.854399182" x="0" y="0" width="1081" height="50"></rect>
-                    <text id="监控视频边缘存储解决方案" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" line-spacing="36" fill="#FFFFFF">
-                        <tspan x="432" y="26">监控视频边缘存储解决方案</tspan>
+                    <text id="监控视频边缘存储解决方案" font-family="PingFangSC-Medium, PingFang SC" font-size="18" font-weight="400" fill="#FFFFFF">
+                        <tspan x="433" y="32">监控视频边缘存储解决方案</tspan>
                     </text>
                     <path d="M30,78 L72,78 C73.1045695,78 74,78.8954305 74,80 L74,226 C74,227.104569 73.1045695,228 72,228 L30,228 C28.8954305,228 28,227.104569 28,226 L28,80 C28,78.8954305 28.8954305,78 30,78 Z" id="矩形" fill-opacity="0.654392483" fill="#00AAE7"></path>
                     <path d="M30,266 L72,266 C73.1045695,266 74,266.895431 74,268 L74,414 C74,415.104569 73.1045695,416 72,416 L30,416 C28.8954305,416 28,415.104569 28,414 L28,268 C28,266.895431 28.8954305,266 30,266 Z" id="矩形备份-2" fill-opacity="0.654392483" fill="#00AAE7"></path>

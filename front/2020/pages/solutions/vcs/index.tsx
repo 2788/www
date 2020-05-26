@@ -39,7 +39,8 @@ function PageContent() {
         低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={<BannerIcon />}
+      />
 
       <VcsFeature />
 
@@ -53,9 +54,7 @@ function PageContent() {
 
       <VcsCase />
 
-      <UsageGuide
-        title="欢迎联系我们了解更多行业成功案例经验"
-      >
+      <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
         <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>

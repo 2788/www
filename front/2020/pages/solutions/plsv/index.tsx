@@ -35,7 +35,8 @@ function PageContent() {
         集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={<BannerIcon />}
+      />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -68,12 +69,8 @@ function PageContent() {
         </LinkGroup>
       </LinkGroups>
 
-      <UsageGuide
-        title="注册即可免费试用短视频"
-      >
-        <UsageGuideButton
-          href="https://portal.qiniu.com/sdk/licenses?showDrawer"
-        >
+      <UsageGuide title="注册即可免费试用短视频">
+        <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer">
           立即开通
         </UsageGuideButton>
       </UsageGuide>
