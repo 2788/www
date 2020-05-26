@@ -39,12 +39,6 @@ export default function InputNumber({ defaultValue = '', onChange, showBtns, ...
     }
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const current = (event.target as HTMLInputElement).value
-
-    onChange(+current)
-  }
-
   function handleMinus() {
     const num = +value
     if (num > 1) {
@@ -57,6 +51,13 @@ export default function InputNumber({ defaultValue = '', onChange, showBtns, ...
     const num = +value
     setValue(String(num + 1))
     onChange(num + 1)
+  }
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const current = (event.target as HTMLInputElement).value
+    if (current !== value && /^(0|[1-9][0-9]*)$/.test(current)) {
+      onChange(+current)
+    }
   }
 
   return (

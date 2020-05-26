@@ -5,7 +5,6 @@ import ios from './images/iOS.jpg'
 import android from './images/Android.jpg'
 import style from './index.less'
 
-// TODO 移动端
 export default function Pc() {
   return (
     <>

@@ -9,6 +9,7 @@
 
 import React from 'react'
 import Table, { ColumnProps } from 'react-icecream/lib/table'
+import Hot from 'components/Hot'
 import Footer from '../Footer'
 
 const columns: Array<ColumnProps<any>> = [
@@ -122,7 +123,7 @@ const columns: Array<ColumnProps<any>> = [
     }
   },
   {
-    title: '归档存储',
+    title: <>归档存储 <Hot text="new" /></>,
     dataIndex: 'archive',
     render(archive, _, idx) {
       const result = { children: archive, props: { rowSpan: 1 } }
@@ -173,7 +174,7 @@ const data = [
     name: '存储费用',
     detail: '存储空间费用',
     measure: '10 GB 以上',
-    standard: '0.099 元/GB/月',
+    standard: <>0.099 元/GB/月 <Hot text="new" /></>,
     low: '0.06 元/GB/月',
     archive: '0.032 元/GB/月'
   },

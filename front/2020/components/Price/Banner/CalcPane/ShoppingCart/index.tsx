@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import classnames from 'classnames'
 import { CSVLink } from 'react-csv'
 import { useLocalStorage } from 'hooks/storage'
 import { useSticky } from 'hooks/scroll'
@@ -31,8 +32,7 @@ export default function ShoppingCart() {
     setProducts(newProducts)
   }
 
-  // TODO reverse key 有问题
-  const cards = products?.map((product, index) => (
+  const cards = products?.slice().reverse().map((product, index) => (
     <Card key={index} title={product.name} price={product.price} index={index} onDelete={handleDelete}>
       {product.categories.map(category => (
         <CardGroup key={category.name + index} title={category.name}>
@@ -67,9 +67,20 @@ function Footer({ total, products }: { total: string, products: Product[] | null
   const [setElm] = useSticky()
 
   const download = useMemo(
-    () => (
-      <CSVLink className={style.export} filename="shopping-list.csv" data={toCSV(products || [])}>导出预算清单</CSVLink>
-    ),
+    () => {
+      const disabled = products === null || products.length === 0
+
+      return (
+        <CSVLink
+          className={classnames(style.export, disabled && style.disabled)}
+          filename="shopping-list.csv"
+          data={toCSV(products || [])}
+          onClick={() => !disabled}
+        >
+          导出预算清单
+        </CSVLink>
+      )
+    },
     [products]
   )
 

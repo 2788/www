@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import classnames from 'classnames'
-import Hot from '../../../../Hot'
+import Hot from 'components/Hot'
 
 import style from './style.less'
 

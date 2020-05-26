@@ -60,7 +60,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink={urlForPrice(Product.Kodo)} />
+      <Navigator priceLink={urlForPrice(Product.Kodo)}>{btns.nav}</Navigator>
 
       <StorageType />
 

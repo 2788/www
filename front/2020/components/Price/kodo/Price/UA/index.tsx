@@ -9,6 +9,7 @@
 
 import React from 'react'
 import Table, { ColumnProps } from 'react-icecream/lib/table'
+import Hot from 'components/Hot'
 import Footer from '../Footer'
 
 const columns: Array<ColumnProps<any>> = [
@@ -132,7 +133,7 @@ const columns: Array<ColumnProps<any>> = [
     }
   },
   {
-    title: '归档存储',
+    title: <>归档存储 <Hot text="new" /></>,
     dataIndex: 'archive',
     render(archive, _, idx) {
       const result = { children: archive, props: { rowSpan: 1 } }

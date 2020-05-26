@@ -3,10 +3,10 @@
  */
 
 import React, { ReactNode } from 'react'
-import Spin from 'react-icecream/lib/spin'
+import Loading from 'components/UI/Loading'
 
 export function withLoading(loading: boolean) {
   return function withSpin(content: ReactNode) {
-    return <Spin spinning={loading}>{content}</Spin>
+    return <Loading loading={loading}>{content}</Loading>
   }
 }

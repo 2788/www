@@ -41,7 +41,7 @@ export default function Overlay() {
           <MenuItem><Link href="/solutions/qavs"><a>智能视频云解决方案</a></Link></MenuItem>
         </SubMenu>
       </SubMenu>
-      <MenuItem><Link href="TODO"><a>客户</a></Link></MenuItem>
+      <MenuItem><Link href="/case"><a>客户</a></Link></MenuItem>
       <SubMenu title="活动与合作">
         <MenuItem><Link href="/products/qvm/partner"><a>云主机合伙人计划</a></Link></MenuItem>
         <MenuItem><Link href="/products/kodo/goglobal"><a>出海企业扶持</a></Link></MenuItem>
@@ -54,17 +54,12 @@ export default function Overlay() {
         <MenuItem><a href="https://support.qiniu.com/tickets">工单系统</a></MenuItem>
         <MenuItem><a href="https://status.qiniu.com">服务健康状态</a></MenuItem>
       </SubMenu>
-      <SubMenu title="开发者">
-        <MenuItem><a href="https://developer.qiniu.com">开发者中心</a></MenuItem>
-        <MenuItem><a href="https://blog.qiniu.com/archives/category/5">技术博客</a></MenuItem>
-        <MenuItem><a href="https://www.ecug.org/">ECUG 技术大会</a></MenuItem>
-        <MenuItem><Link href="TODO"><a>工具/插件/SDK合作</a></Link></MenuItem>
-      </SubMenu>
+      <MenuItem><a href="https://blog.qiniu.com/">七牛资讯</a></MenuItem>
       <SubMenu title="关于我们">
         <MenuItem><Link href="/company"><a>公司介绍</a></Link></MenuItem>
-        <MenuItem><Link href="TODO"><a>客户案例</a></Link></MenuItem>
+        <MenuItem><Link href="/case"><a>客户案例</a></Link></MenuItem>
         <MenuItem><Link href="/contact"><a>联系我们</a></Link></MenuItem>
-        <MenuItem><Link href="TODO"><a>最新动态</a></Link></MenuItem>
+        <MenuItem><a href="https://blog.qiniu.com/archives/category/1">最新动态</a></MenuItem>
         <MenuItem><a href="https://career.qiniu.com/social">招聘</a></MenuItem>
       </SubMenu>
     </Menu>
