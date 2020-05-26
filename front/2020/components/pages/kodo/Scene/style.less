@@ -5,12 +5,22 @@
 
 @import "~utils/less/index.less";
 
+.more {
+  color: @blue-6;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .sceneContainer {
+  height: 172px;
   padding: 20px;
 
   .mobile({
+    height: auto;
     padding: 20px 16px;
-  })
+  });
 }
 
 .sceneIcon {
@@ -20,7 +30,7 @@
   .mobile({
     height: 106px;
     margin-top: 20px;
-  })
+  });
 }
 
 .sceneTitle {
@@ -45,7 +55,7 @@
     font-size: 12px;
     text-align: left;
     line-height: 18px;
-  })
+  });
 }
 
 .clientLogo {
@@ -54,5 +64,5 @@
 
   .mobile({
     width: 80px;
-  })
+  });
 }

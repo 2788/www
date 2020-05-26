@@ -17,26 +17,18 @@ import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import StorageType from 'components/pages/kodo/StorageType'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
-import AccessProcess, { Step } from 'components/Product/AccessProcess'
-import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
-import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
 import KodoAdvantage from 'components/pages/kodo/Advantage'
 import KodoCore from 'components/pages/kodo/Core'
 import KodoScene from 'components/pages/kodo/Scene'
-
-import ChangBa from './images/changba.png'
-import PingAn from './images/pingan.png'
-import ShunFeng from './images/shunfeng.png'
-import YiDong from './images/yidong.png'
+import KodoCase from 'components/pages/kodo/Case'
 
 import BannerIcon from './images/banner-icon.svg'
+import style from './index.less'
 
-// 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
-// context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
   const btns = useBtns(
-    { children: '立即使用', href: 'https://portal.qiniu.com/kodo', pcOnly: true }
+    { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true }
   )
 
   return (
@@ -51,101 +43,26 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem title="域名型 DV SSL 证书免费申请" href="/products/ssl">
-            域名型 DV SSL 证书免费申请 &gt;&gt;
+          <PageNoticeItem href="/solutions/kodoe">
+            私有云存储，构建本地高扩展性数据存储平台 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem title="CDN 动态加速 立即使用" href="/products/qcdn">
-            「 CDN 动态加速 立即使用 」
+          <PageNoticeItem href="/prices/kodo">
+            标准存储，低至 <span className={style.price}>0.099</span> 元/GB/月起。 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem title="体验边缘存储服务" href="/products/kodo">
-            体验边缘存储服务
+          <PageNoticeItem href="http://qiniu-exp.mikecrm.com/yGntQCJ">
+            体验边缘存储服务 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem title="域名型 DV SSL 证书免费申请" href="/products/ssl">
-            域名型 DV SSL 证书免费申请 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem title="CDN 动态加速 立即使用" href="/products/qcdn">
-            「 CDN 动态加速 立即使用 」
-          </PageNoticeItem>
-          <PageNoticeItem title="体验边缘存储服务" href="/products/kodo">
-            体验边缘存储服务
+          <PageNoticeItem href="https://marketing.qiniu.com/activity/kodopackage?ref=www.qiniu.com/products/kodo">
+            资源包折扣套餐，上新特惠，立即购买。 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink={urlForPrice(Product.Kodo)}>
-        {btns.nav}
-      </Navigator>
+      <Navigator priceLink={urlForPrice(Product.Kodo)} />
 
       <StorageType />
-
-      <LinkGroups>
-        <LinkGroup title="文档链接1">
-          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
-        </LinkGroup>
-        <LinkGroup title="文档链接2">
-          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
-        </LinkGroup>
-        <LinkGroup title="文档链接3">
-          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
-        </LinkGroup>
-        <LinkGroup title="文档链接4">
-          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
-        </LinkGroup>
-      </LinkGroups>
-
-      <AccessProcess
-        subHeader={<a>bbbbb</a>}
-      >
-        <Step icon={ChangBa} url="https://baidu.com">aa</Step>
-        <Step icon={ChangBa}>bb</Step>
-        <Step icon={ChangBa} url="https://baidu.com">ccccccfosdhfoadfhdsaohdishafkjdshfkjdsahfkjalsdhflssdhflsafdhl</Step>
-        <Step icon={ChangBa} url="https://baidu.com">dd</Step>
-      </AccessProcess>
-
-      <CustomerCaseGroup>
-        <CustomerCase pic={ChangBa} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
-        <CustomerCase pic={ShunFeng} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
-        <CustomerCase pic={ChangBa} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
-      </CustomerCaseGroup>
-
-      <PurchaseInfo>
-        <PurchaseInfoItem title="CDN 产品价格" desc="CDN 产品价格CDN 产品价格">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-        <PurchaseInfoItem title="CDN 资源包" desc="CDN 资源包CDN 资源包CDN 资源包">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-        <PurchaseInfoItem title="CDN 资源包1" desc="CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-        <PurchaseInfoItem title="CDN 资源包2" desc="CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-      </PurchaseInfo>
 
       <KodoAdvantage />
 
@@ -153,11 +70,31 @@ function PageContent() {
 
       <KodoScene />
 
+      <KodoCase />
+
+      <LinkGroups>
+        <LinkGroup title="常用文档">
+          <LinkItem href="https://developer.qiniu.com/kodo">使用文档</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodo/api/1731/api-overview">API 文档</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodo/sdk/1240/objc">SDK 文档</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="FAQ（常见问题）">
+          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
+          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
+        </LinkGroup>
+        <LinkGroup title="相关材料">
+          <LinkItem href="/sla-kodo">用户协议</LinkItem>
+        </LinkGroup>
+      </LinkGroups>
+
       <UsageGuide
-        title="开始试用七牛云 SMS"
-        description="完成实名认证，即可轻松使用七牛云 SMS"
+        title="准备好了吗？"
+        description="简单几步，即可创建您自己的对象存储产品"
       >
-        <UsageGuideButton href="/products/kodo/">
+        <UsageGuideButton href="https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com">
           立即创建
         </UsageGuideButton>
       </UsageGuide>
@@ -172,14 +109,3 @@ export default function KodoPage() {
     </Layout>
   )
 }
-
-// 可导航区块，如产品规格、功能优势、使用场景等
-// function FakeBlock({ name, title }: { name: string, title: string }) {
-//   return (
-//     <Block name={name} title={title}>
-//       <div style={{ height: '400px', marginBottom: '12px', background: '#f0f0f0' }}>
-//         {title}（TODO）
-//       </div>
-//     </Block>
-//   )
-// }

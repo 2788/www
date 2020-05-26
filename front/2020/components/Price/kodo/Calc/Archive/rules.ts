@@ -221,7 +221,7 @@ const east: CalcRule = {
 }
 
 // 华北
-const north = east
+const north = { ...east, region: 'north', desc: '华北' }
 
 // 北美
 const us: CalcRule = {
@@ -339,6 +339,6 @@ const us: CalcRule = {
 }
 
 // 东南亚
-const southAsia = us
+const southAsia = { ...us, region: 'south_aisa', desc: '东南亚' }
 
 export default [east, south, north, us, southAsia]

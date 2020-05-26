@@ -27,11 +27,18 @@ export function createDeveloperCooperation(options: CreateDeveloperOptions): Pro
   })
 }
 
-export type GetUserInfoResult = {
-  // TODO
+export type Userinfo = {
+  email: string
+  is_signin: true
+  name: string
+  uid: number
+}
+
+export type Guestinfo = {
+  is_signin: false
 }
 
 /** 获取用户信息 */
-export function getUserInfo(): Promise<GetUserInfoResult> {
+export function getUserInfo(): Promise<Userinfo | Guestinfo> {
   return get(`${apiPrefix}/userinfo`)
 }

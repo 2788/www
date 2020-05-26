@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="62px" viewBox="0 0 54 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>跨区域同步</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="存储与数据湖-对象存储✅" transform="translate(-933.000000, -2350.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 2172.000000)">
+                <g id="01" transform="translate(772.000000, 148.000000)">
+                    <g id="pin-sync" transform="translate(162.000000, 31.000000)">
+                        <path d="M26.617,54 C23.916,57.084 22,59 22,59 C22,59 0,37 0,22.1 C0,8.113 11.369,0 22,0 C32.631,0 44,8.113 44,22.1 C43.9798477,23.7553298 43.7517267,25.401564 43.321,27" id="路径" stroke="#333333" stroke-linecap="square"></path>
+                        <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="22" cy="22" r="8"></circle>
+                        <path d="M32.2,41.9999998 C33.1505372,37.3433375 37.2473138,33.99903 42,33.9999998 C45.9342939,34.005902 49.4813621,36.3706141 51,39.9999998" id="路径" stroke="#00AAE7"></path>
+                        <path d="M51.8,46 C50.8494628,50.6566625 46.7526862,54.00097 42,54 C38.0657061,53.994098 34.5186379,51.6293859 33,48" id="路径" stroke="#00AAE7"></path>
+                        <polyline id="路径" stroke="#00AAE7" stroke-linecap="square" points="51 33 51 40 44 40"></polyline>
+                        <polyline id="路径" stroke="#00AAE7" stroke-linecap="square" points="33 55 33 48 40 48"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

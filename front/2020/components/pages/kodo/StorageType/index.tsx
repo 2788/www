@@ -10,6 +10,8 @@
 import React from 'react'
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 
 import CheckedIcon from './checked.svg'
 import style from './index.less'
@@ -22,7 +24,7 @@ export default function StorageType() {
         desc="高可靠、高可用和高性能的对象存储服务"
         scene="设计应用、内容分享、热点对象"
         price="0.099"
-        detailLink="/prices?entry=kodo-page"
+        detailLink={urlForPrice(Product.Kodo)}
         sellPoints={['设计可靠性：99.999999999%(九个9)', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计算：无']}
       />
       <Card
@@ -30,7 +32,7 @@ export default function StorageType() {
         desc="高可靠、高可用和较低成本的实时访问存储服务"
         scene="网盘应用、政企数据备份、监控数据"
         price="0.06"
-        detailLink="/prices?entry=kodo-page"
+        detailLink="/prices/kodo"
         sellPoints={['设计可靠性：99.999999999%(九个9)', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计算：64 KB']}
       />
       <Card
@@ -38,7 +40,7 @@ export default function StorageType() {
         desc="极低成本的高可靠归档数据存储服务"
         scene="档案数据、医疗影像、科学资料"
         price="0.032"
-        detailLink="/prices?entry=kodo-page"
+        detailLink="/prices/kodo"
         sellPoints={['设计可靠性：99.999999999%(九个9)', '设计可用性：99.99%(数据解冻后)', '数据访问：先解冻再访问', '最短存储时间：无', 'Object 最小计算：无']}
       />
     </Section>

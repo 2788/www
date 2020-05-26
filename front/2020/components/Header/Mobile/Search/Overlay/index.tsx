@@ -92,7 +92,7 @@ function Hot() {
     item => (
       <li key={item}>
         <Link href={urlForSearch(item)}>
-          <a>{item}</a>
+          {item}
         </Link>
       </li>
     )

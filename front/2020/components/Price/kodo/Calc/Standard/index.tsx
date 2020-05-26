@@ -10,17 +10,15 @@ import Duration from '../Duration'
 // icecream 没暴露出来
 export declare type CheckboxValueType = string | number | boolean
 
-export type Props = { active: boolean, setCalculator: (calc: Calculator) => void }
+export type Props = { setCalculator: (calc: Calculator) => void }
 
-export default function Standard({ setCalculator, active = false }: Props) {
+export default function Standard({ setCalculator }: Props) {
   const [regions, setRegions] = useState(['east'])
   const calculator = useRef(Calculator.fromRules(rules)).current
 
   useEffect(() => {
-    if (active) {
-      setCalculator(calculator)
-    }
-  }, [setCalculator, calculator, active])
+    setCalculator(calculator)
+  }, [setCalculator, calculator])
 
   function handleRegionChange(checkdValues: CheckboxValueType[]) {
     setRegions(checkdValues as string[])

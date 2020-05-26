@@ -7,7 +7,7 @@ export default function Support() {
 
   return (
     <Dropdown
-      align={{ offset: [0, 0] }}
+      align={{ offset: [0, -1] }}
       getPopupContainer={() => ref.current || window.document.body}
       overlay={() => <Overlay />}
     >

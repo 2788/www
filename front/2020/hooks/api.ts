@@ -22,7 +22,7 @@ function useAlive() {
     aliveRef.current = false
   }, [])
 
-  return aliveRef.current
+  return aliveRef
 }
 
 export function useApi<F extends ApiMethod>(
@@ -47,19 +47,19 @@ export function useApi<F extends ApiMethod>(
     setLoading(true)
     apiMethod(...args).then(
       res => {
-        if (!alive) return
+        if (!alive.current) return
         setResult(res)
         setError(null)
       },
       e => {
-        if (!alive) return
+        if (!alive.current) return
         // eslint-disable-next-line no-console
         console.warn('[API_ERROR]', e)
         setResult(null)
         setError(e)
       }
     ).then(() => {
-      if (!alive) return
+      if (!alive.current) return
       setLoading(false)
     })
   }
@@ -101,7 +101,9 @@ export function useApiWithParams<F extends ApiMethod>(
   const { call: callWithParams, ...others } = useApi(apiMethod, options)
 
   const call = useCallback(
-    () => { if (params) callWithParams(...params) },
+    () => {
+      if (params) callWithParams(...params)
+    },
     [callWithParams].concat(params || []) // eslint-disable-line react-hooks/exhaustive-deps
   )
 

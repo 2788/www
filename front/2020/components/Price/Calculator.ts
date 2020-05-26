@@ -141,7 +141,7 @@ export default class Calculator {
         }
 
         if (!matchedRuleItem) {
-          throw Error('没有找到对应的计费规则，请检查规则表')
+          throw Error(`没有找到对应的计费项，请检查${matchedRule.desc}的计费项配置`)
         }
 
         const threshold = matchedRuleItem.threshold || 0

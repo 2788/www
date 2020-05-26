@@ -121,11 +121,22 @@ type TabPaneProps = {
   tab: ReactNode
   value: string
   className?: string
+  // 非激活自动销毁, 默认隐藏
+  autoDestroy?: boolean
   children: ReactNode
 }
 
 export function TabPane(props: TabPaneProps) {
-  const { className, value, children } = props
+  const { autoDestroy = false, className, value, children } = props
   const tabsContext = useContext(tabContext)
+
+  if (autoDestroy) {
+    if (tabsContext?.value === value) {
+      return <div className={classnames(className)}>{children}</div>
+    }
+
+    return null
+  }
+
   return <div className={classnames(className)} style={{ display: tabsContext?.value === value ? 'block' : 'none' }}>{children}</div>
 }

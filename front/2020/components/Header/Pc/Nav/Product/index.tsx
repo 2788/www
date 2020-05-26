@@ -7,7 +7,7 @@ export default function Product() {
 
   return (
     <Dropdown
-      align={{ offset: [-134, 0] }}
+      align={{ offset: [-134, -1] }}
       getPopupContainer={() => ref.current || window.document.body}
       overlay={() => <Overlay />}
     >

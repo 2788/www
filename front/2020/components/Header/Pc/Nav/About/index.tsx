@@ -6,7 +6,7 @@ export default function About() {
   const ref = useRef(null)
   return (
     <Dropdown
-      align={{ offset: [0, 0] }}
+      align={{ offset: [0, -1] }}
       getPopupContainer={() => ref.current || window.document.body}
       overlay={() => <Overlay />}
     >

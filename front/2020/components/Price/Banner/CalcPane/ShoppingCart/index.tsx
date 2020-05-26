@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import { CSVLink } from 'react-csv'
 import { useLocalStorage } from 'hooks/storage'
 import { useSticky } from 'hooks/scroll'
-import Button from 'components/UI/Button'
 import Card, { CardGroup, CardItem } from './Card'
 import EmptyIcon from './empty.svg'
 
@@ -48,7 +48,7 @@ export default function ShoppingCart() {
       <div className={style.body}>
         {products && products.length > 0 ? cards : <Empty />}
       </div>
-      <Footer total={total.toFixed(2)} />
+      <Footer products={products} total={total.toFixed(2)} />
     </div>
   )
 }
@@ -63,13 +63,34 @@ function Empty() {
   )
 }
 
-function Footer({ total }: { total: string }) {
+function Footer({ total, products }: { total: string, products: Product[] | null }) {
   const [setElm] = useSticky()
+
+  const download = useMemo(
+    () => (
+      <CSVLink className={style.export} filename="shopping-list.csv" data={toCSV(products || [])}>导出预算清单</CSVLink>
+    ),
+    [products]
+  )
 
   return (
     <div ref={setElm} className={style.footer}>
       <p className={style.price}><span className={style.num}>{total}</span> 元</p>
-      <Button withBorder className={style.export}>导出预算清单</Button>
+      {download}
     </div>
   )
+}
+
+function toCSV(products: Product[]) {
+  return products.map(product => ({
+    名称: product.name,
+    价格: product.price + '元',
+    配置: product.categories.map(humanizeProductCategories)
+  }))
+}
+
+// eg: 区域:华东;存储空间/月:101GB;使用时间:1个月
+function humanizeProductCategories(category: ProductCategory) {
+  const items = category.items.reduce((acc, item) => acc + `${item.text}:${item.unit};`, '')
+  return `区域:${category.name};${items}`
 }

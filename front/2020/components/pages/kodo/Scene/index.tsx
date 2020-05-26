@@ -5,23 +5,14 @@
  */
 
 import React from 'react'
-import classnames from 'classnames'
+import Link from 'components/Link'
 
 import Scene, {
   Panel as ScenePanel,
-  Block as SceneBlock,
-  ClientGroup as SceneClientGroup,
-  ClientItem as SceneClientItem
+  Block as SceneBlock
 } from 'components/Product/Scene'
 
 import SceneIconFile from './scene-icon-file.svg'
-
-// 适用场景用户案例 logo
-// 用于测试，后面可以移除
-import clientIconChangBaURL from './client-icon-changba.png'
-import clientIconChinaMobileURL from './client-icon-chinamobile.png'
-import clientIconPingAnURL from './client-icon-pingan.png'
-import clientIconSFURL from './client-icon-sf.png'
 
 import styles from './style.less'
 
@@ -40,22 +31,7 @@ export default function KodoScene() {
               基于公有云存储的经验积累，私有云存储解决方案具备高可靠、强安全、易扩展等特性。
               同时还能提供成熟的系统管理和运维，让企业以更低廉的产品及维护成本，满足在容量、性能及稳定性上的需求。
             </p>
-            {/* 客户案例 logo 墙，用于测试，后面可以移除 */}
-            <p className={classnames(styles.sceneTitle, styles.client)}>客户案例</p>
-            <SceneClientGroup>
-              <SceneClientItem>
-                <img src={clientIconChangBaURL} className={styles.clientLogo} title="唱吧" alt="唱吧" />
-              </SceneClientItem>
-              <SceneClientItem>
-                <img src={clientIconChinaMobileURL} className={styles.clientLogo} title="中国移动" alt="中国移动" />
-              </SceneClientItem>
-              <SceneClientItem>
-                <img src={clientIconPingAnURL} className={styles.clientLogo} title="中国平安" alt="中国平安" />
-              </SceneClientItem>
-              <SceneClientItem>
-                <img src={clientIconSFURL} className={styles.clientLogo} title="顺丰速运" alt="顺丰速运" />
-              </SceneClientItem>
-            </SceneClientGroup>
+            <Link className={styles.more} href="/solutions/kodoe">了解更多 &gt;&gt;</Link>
           </div>
         </SceneBlock>
       </ScenePanel>
