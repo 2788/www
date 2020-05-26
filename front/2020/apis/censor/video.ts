@@ -31,7 +31,7 @@ export type Result = {
 export type VideoJobStatus = 'WAITING' | 'DOING' | 'RESCHEDULED' | 'FAILED' | 'FINISHED'
 
 export type CreateVideoJobRes = {
-  job_id: string
+  job: string
 }
 
 export type CreateVideoJobOptions = {
@@ -40,11 +40,11 @@ export type CreateVideoJobOptions = {
 }
 
 async function createVideoJob(options: CreateVideoJobOptions): Promise<CreateVideoJobRes> {
-  if (typeof window !== 'undefined') {
+  if (typeof window === 'undefined') {
     await timeout(300)
-    return { job_id: '5ebe37de3d07ee0007d4db61' }
+    return { job: '5ebe37de3d07ee0007d4db61' }
   }
-  return post(`${apiPrefix}/video/censor`, options)
+  return post(`${apiPrefix}/v3/video/censor`, options)
 }
 
 export type VideoJobResult = {
@@ -70,7 +70,7 @@ export type GetVideoJobRes = {
 
 async function getVideoJob(jobId: string): Promise<GetVideoJobRes> {
   // mock API, TODO: 换成真的接口
-  if (typeof window !== 'undefined') {
+  if (typeof window === 'undefined') {
     await timeout(300)
     const finished = Math.random() > 0.5
     /* eslint-disable */
@@ -81,15 +81,15 @@ async function getVideoJob(jobId: string): Promise<GetVideoJobRes> {
     )
     /* eslint-enable */
   }
-  return get(`${apiPrefix}/jobs/video/${jobId}`)
+  return get(`${apiPrefix}/v3/jobs/video/${jobId}`)
 }
 
 // 设定最大次数的轮询
 const pollInterval = 1000
-const maxRetry = 20
+const maxRetry = 30
 
 export async function videoCensor(options: CreateVideoJobOptions) {
-  const jobId = (await createVideoJob(options)).job_id
+  const jobId = (await createVideoJob(options)).job
 
   let shouldRetry = maxRetry
 

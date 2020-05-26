@@ -43,7 +43,7 @@ export default function ImagePlayground() {
   const results = useMemo(() => {
     if (!apiResult) return null
     return (['pulp', 'terror', 'politician', 'ads'] as const).map(
-      scene => ({ scene, suggestion: apiResult.scenes[scene].suggestion })
+      scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
   }, [apiResult])
 

@@ -4,6 +4,7 @@
  */
 
 import { Product } from 'constants/products'
+import { ssoHost, ssoClientID } from 'constants/env'
 import { urlFor } from '.'
 
 export function urlForSearch(keyword?: string) {
@@ -30,4 +31,17 @@ export function urlForQvmBuy(options?: QvmBuyOptions) {
 
 export function urlForPrice(product: Product) {
   return `/prices/${product}`
+}
+
+export function urlForSignin(redirectUrl: string) {
+  return urlFor(ssoHost, {
+    client_id: ssoClientID,
+    redirect_url: redirectUrl
+  })
+}
+
+export function urlForSignout(redirectUrl: string) {
+  return urlFor(`${ssoHost}/signout`, {
+    ref: redirectUrl
+  })
 }

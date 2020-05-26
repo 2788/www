@@ -10,6 +10,8 @@ import React from 'react'
 import classnames from 'classnames'
 import Dropdown from 'components/UI/Dropdown'
 import { useApiWithParams } from 'hooks/api'
+import { useUrl } from 'hooks/url'
+import { urlForSignin } from 'utils/route'
 import { getUserInfo } from 'apis/legacy'
 import Overlay from './Overlay'
 import ArrowDown from './arrow-down.svg'
@@ -17,6 +19,7 @@ import ArrowDown from './arrow-down.svg'
 import style from './style.less'
 
 export default function Userinfo() {
+  const currentUrl = useUrl()
   const { $: user } = useApiWithParams(getUserInfo, { params: [] })
 
   if (user?.is_signin) {
@@ -28,10 +31,9 @@ export default function Userinfo() {
     )
   }
 
-  // TODO client id
   return (
     <span className={style.wrapper}>
-      <a href="https://sso.qiniu.com/?client_id=BG0o9WIbVw0QTMMF4nnnimetSKUlf5xy67pcymZMKW1otjBQePCr6DrGhYifj1gH&redirect_url=https://www.qiniu.com" className={style.signin}>登录</a>
+      <a href={urlForSignin(currentUrl)} className={style.signin}>登录</a>
       <a href="https://portal.qiniu.com/signup?ref=www.qiniu.com" className={style.signup}>免费注册</a>
     </span>
   )

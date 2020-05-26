@@ -119,3 +119,18 @@ export function useQueryValue<T extends string>(key: string, defaultValue: T) {
 
   return [value as T, setValue] as const
 }
+
+/**
+ * 获取当前 URL
+ * 注意在服务端渲染的时候没有 window.lcoation 信息，也不知道 protocol / host
+ */
+export function useUrl() {
+  const asPath = useRouter().asPath
+  const [url, setUrl] = useState('')
+  useEffect(() => {
+    const { protocol, host } = window.location
+    const currentUrl = `${protocol}//${host}${asPath}`
+    setUrl(currentUrl)
+  }, [asPath])
+  return url
+}

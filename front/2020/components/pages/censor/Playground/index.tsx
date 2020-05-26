@@ -23,7 +23,7 @@ export default function CensorPlayground() {
       <TabPane value={Type.Image} tab="图片审核">
         <ImagePlayground />
       </TabPane>
-      <TabPane value={Type.Video} tab="视频审核">
+      <TabPane value={Type.Video} tab="视频审核" autoDestroy>
         <VideoPlayground />
       </TabPane>
     </Tabs>
@@ -56,7 +56,9 @@ type ResultPanelProps = {
 // 图片/视频右侧的结果块
 export function ResultPanel({ results, loading }: ResultPanelProps) {
   const resultsView = (results || []).map(({ scene, suggestion }) => {
-    const className = [style.resultItem, suggestion !== 'pass' && style.nopass].filter(Boolean).join(' ')
+    if (suggestion == null) return null
+    const isNegative = suggestion === 'block' || suggestion === 'review'
+    const className = [style.resultItem, isNegative && style.nopass].filter(Boolean).join(' ')
     return (
       <div key={scene} className={className}>
         <p className={style.scene}>{sceneTextMap[scene]}识别</p>
@@ -106,8 +108,8 @@ export function ApiResult({ request, response }: ApiResultProps) {
   const requestView = type === ApiInfoType.Request && request && (
     <JSONViewer src={request} />
   )
-  const responseView = type === ApiInfoType.Response && response && (
-    <JSONViewer src={response} />
+  const responseView = type === ApiInfoType.Response && (
+    <JSONViewer src={response || {}} />
   )
 
   return (

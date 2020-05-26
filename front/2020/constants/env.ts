@@ -4,7 +4,13 @@
  */
 
 /** API Host */
-export const apiHost = process.env.NEXT_PUBLIC_API_HOST
+export const apiHost = process.env.NEXT_PUBLIC_API_HOST!
+
+/** SSO Host */
+export const ssoHost = process.env.NEXT_PUBLIC_SSO_HOST!
+
+/** SSO 登录的 client ID */
+export const ssoClientID = process.env.NEXT_PUBLIC_SSO_CLIENT_ID!
 
 /** 搜索时指定的站点名（site name） */
-export const siteNameForSearch = process.env.NEXT_PUBLIC_SITE_NAME_FOR_SEARCH
+export const siteNameForSearch = process.env.NEXT_PUBLIC_SITE_NAME_FOR_SEARCH!
