@@ -3,38 +3,53 @@
  * @description
  */
 
+import cls from 'classnames'
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'components/Link'
 import { useMobile } from '../../../hooks/ua'
 import Button from '../Button'
 import Form from '../Form'
 import style from './style.less'
+import { useModal as useGlobalModal } from '../Modal'
 
 export default function FeedbackEntry() {
   const isMobile = useMobile()
   const [modalVisible, setModalVisible] = useState(false)
-  const toggleModal = () => setModalVisible(visible => !visible)
-  const wrapperRef = useClickOutside(() => setModalVisible(false))
+  const { toggleModal: toggleGlobalModal } = useGlobalModal()
 
-  if (isMobile) {
-    // TODO: 移动端应该是全屏的
-    return null
-  }
+  const toggleModal = useCallback(() => {
+    // 移动端直接用全局的 modal
+    if (isMobile) {
+      toggleGlobalModal()
+      return
+    }
+    setModalVisible(visible => !visible)
+  }, [isMobile, toggleGlobalModal])
+
+  const hideModal = useCallback(() => {
+    setModalVisible(false)
+  }, [])
+
+  const wrapperRef = useClickOutside(hideModal)
 
   const modalContent = modalVisible && (
-    <>
-      <FormModal />
-      <FreeTrialModal />
-    </>
+    <FormModal />
+  )
+
+  const btnClassName = cls(
+    style.btn,
+    modalVisible ? style.btnClose : style.btnSmile
   )
 
   return (
     <div ref={wrapperRef} className={style.wrapper}>
       {modalContent}
-      <Button
-        className={style.button}
-        onClick={toggleModal}
-      >TODO</Button>
+      <div className={style.entryWrapper}>
+        <Button className={btnClassName} onClick={toggleModal} />
+        <Link className={style.freeTrialLink} title="免费体验云服务套餐" href="/events/free?entry=index-floatwin">
+          免费体验
+        </Link>
+      </div>
     </div>
   )
 }
@@ -43,17 +58,6 @@ function FormModal() {
   return (
     <div className={style.formModalWrapper}>
       <Form />
-    </div>
-  )
-}
-
-function FreeTrialModal() {
-  return (
-    <div className={style.freeTrialModalWrapper}>
-      <Link className={style.freeTrialLink} href="/events/free?entry=index-floatwin">
-        云产品免费体验
-        <i className={style.freeTrialIcon}></i>
-      </Link>
     </div>
   )
 }

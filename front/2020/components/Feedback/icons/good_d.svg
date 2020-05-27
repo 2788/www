@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>路径</title>
+    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页-咨询02" transform="translate(-980.000000, -196.000000)" fill="#BFBFBF" fill-rule="nonzero">
+            <g id="01">
+                <g id="编组-12" transform="translate(560.000000, 93.000000)">
+                    <g id="编组-57">
+                        <g id="编组-6" transform="translate(412.000000, 93.000000)">
+                            <g id="编组-5" transform="translate(8.000000, 8.000000)">
+                                <g id="like" transform="translate(0.000000, 2.000000)">
+                                    <path d="M12.25,5.25 L7,5.25 L7,1.75 C7,0.7 6.3,0 5.25,0 L2.625,6.125 L0.875,6.125 C0.35,6.125 0,6.475 0,7 L0,13.125 C0,13.65 0.35,14 0.875,14 L10.5,14 C11.725,14 12.8625,13.125 13.0375,11.9 L13.9125,7.35 C14.175,6.3 13.3875,5.25 12.25,5.25 Z" id="路径"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

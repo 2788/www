@@ -1,6 +1,7 @@
 import React, { createContext, useState, ReactNode, useContext } from 'react'
 import Button from '../Button'
 import Form from '../Form'
+import IconClose from '../icons/close.svg'
 import style from './style.less'
 
 type ContextValue = {
@@ -25,7 +26,7 @@ export function useModal() {
 }
 
 export default function FeedbackModal() {
-  const { visible, hideModal, toggleModal } = useModal()
+  const { visible, hideModal } = useModal()
 
   if (!visible) {
     return null
@@ -38,12 +39,11 @@ export default function FeedbackModal() {
         onClick={hideModal}
       ></div>
       <div className={style.modal}>
-        <Form />
+        <Button title="关闭" className={style.closeBtn} onClick={hideModal}>
+          <IconClose className={style.closeIcon} />
+        </Button>
+        <Form wide />
       </div>
-      <Button
-        className={style.closeBtn}
-        onClick={toggleModal}
-      >TODO</Button>
     </div>
   )
 }

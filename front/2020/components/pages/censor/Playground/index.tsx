@@ -66,7 +66,11 @@ export function ResultPanel({ results, loading }: ResultPanelProps) {
       </div>
     )
   })
-  const contentView = loading ? '检测中' : resultsView
+  const contentView = (
+    loading
+    ? <p className={style.loadingText}>检测中...</p>
+    : resultsView
+  )
   return (
     <div className={style.resultBlock}>
       {contentView}

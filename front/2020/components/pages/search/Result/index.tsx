@@ -5,7 +5,7 @@
 /* eslint-disable react/no-danger */
 
 import React from 'react'
-import Spin from 'react-icecream/lib/spin'
+import Loading from 'components/UI/Loading'
 import { SearchResultItem, SearchResult as SearchResultData } from 'apis/search'
 import Pagination from 'components/UI/Pagination'
 import Link from 'components/Link'
@@ -33,9 +33,9 @@ export default function SearchResult({ result, page, onPageChange, loading }: Pr
 
   return (
     <div className={style.wrapper}>
-      <Spin spinning={loading}>
+      <Loading loading={loading}>
         <ResultList items={result.items} />
-      </Spin>
+      </Loading>
       <div className={style.paginationLine}>
         <Pagination
           className={style.pagination}
@@ -66,7 +66,7 @@ export function ResultList({ items }: ResultListProps) {
 export function ResultItem({ title, matched, url }: SearchResultItem) {
 
   const isMobile = useMobile()
-  const content = matched[0] // TODO: 不应该只用第一个
+  const content = matched[0] + '...'
 
   const titleView = (
     isMobile

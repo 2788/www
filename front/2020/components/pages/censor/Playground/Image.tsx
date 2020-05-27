@@ -3,6 +3,7 @@
  */
 
 import React, { useState, useMemo, FormEvent } from 'react'
+import Loading from 'components/UI/Loading'
 import { useApiWithParams } from 'hooks/api'
 import { useOnChange } from 'hooks'
 import Button from 'components/UI/Button'
@@ -57,13 +58,15 @@ export default function ImagePlayground() {
           value={activeIndex}
           onChange={setActive}
           renderActive={() => (
-            <div className={style.activeBlock}>
-              <div className={style.imgBlock}>
-                <img src={imgUrl} />
-                <ResultMask suggestion={apiResult?.suggestion} loading={loading} />
+            <Loading loading={loading}>
+              <div className={style.activeBlock}>
+                <div className={style.imgBlock}>
+                  <img src={imgUrl} />
+                  <ResultMask suggestion={apiResult?.suggestion} loading={loading} />
+                </div>
+                <ResultPanel results={results} loading={loading} />
               </div>
-              <ResultPanel results={results} loading={loading} />
-            </div>
+            </Loading>
           )}
         >
           <Slide value={0}><img src={images[0]} /></Slide>

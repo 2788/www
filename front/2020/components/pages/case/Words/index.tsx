@@ -11,13 +11,15 @@ import { useMobile } from 'hooks/ua'
 import logoCamera360 from './images/camera360.png'
 import logoZhongxing from './images/中兴.png'
 import logoHujiang from './images/沪江.png'
-import logoHaikangweishi from './images/海康威视.png'
+import logoYingshi from './images/海康威视萤石.png'
 import logoMeituxiuxiu from './images/美图秀秀.png'
+import logoLianmeng from './images/脸萌.png'
 import avatarTianbo from './images/田波.png'
 import avatarXuhua from './images/徐华.png'
 import avatarRuanyongli from './images/阮永丽.png'
 import avatarLiuhongwei from './images/刘宏伟.png'
 import avatarLixingbo from './images/李兴波.png'
+import avatarLinjinlie from './images/林金烈.png'
 import style from './style.less'
 
 const lixingbo = {
@@ -50,8 +52,14 @@ const ruanyongli = {
   title: '美图秀秀 CTO'
 }
 
+const linjinlie = {
+  name: '林金烈',
+  avatar: avatarLinjinlie,
+  title: '后台技术负责人'
+}
+
 const cardHaikangweishi = (
-  <Card name="海康威视" logo={logoHaikangweishi} teller={lixingbo}>
+  <Card name="海康威视萤石" logo={logoYingshi} teller={lixingbo}>
     在和七牛合作的这几年中，深刻的感受到七牛的的确确是一家做“云服务”的公司。作为技术产品服务供应商，在技术和服务品质上有一贯的追求是七牛的核心竞争力，同时在七牛的各个方面都同时体现着另种竞争力——对服务的理解。这就是除技术和产品等硬性表现外，赢的合作伙伴信任更为重要的基础。
   </Card>
 )
@@ -80,6 +88,12 @@ const cardMeituxiuxiu = (
   </Card>
 )
 
+const cardLianmeng = (
+  <Card name="脸萌" logo={logoLianmeng} teller={linjinlie}>
+    和七牛合作多年，深刻感受到七牛在竞争激烈的云服务市场，是有用心做适合自身定位的差异化竞争力的：除了产品品质过硬，标准化，易用性高之外，七牛的售前售后团队也是在一个较高的标准树立了行业标杆。产品的稳定性，扩展性很高，让合作伙伴可以放心托付。
+  </Card>
+)
+
 export default function Words() {
   const isMobile = useMobile()
 
@@ -89,6 +103,7 @@ export default function Words() {
         <Swiper withArrow withPagination>
           <Row>{cardHaikangweishi}</Row>
           <Row>{cardZhongxing}</Row>
+          <Row>{cardLianmeng}</Row>
           <Row>{cardCamera360}</Row>
           <Row>{cardHujiang}</Row>
           <Row>{cardMeituxiuxiu}</Row>
@@ -103,9 +118,10 @@ export default function Words() {
         <Row>
           {cardHaikangweishi}
           {cardZhongxing}
-          {cardCamera360}
+          {cardLianmeng}
         </Row>
         <Row>
+          {cardCamera360}
           {cardHujiang}
           {cardMeituxiuxiu}
           <InvisibleCard />

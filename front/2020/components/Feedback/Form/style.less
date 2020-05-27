@@ -1,9 +1,11 @@
-@blue: #00AAE7; // TODO: 更换为统一的变量
+@import '~utils/less/index.less';
+
+@blue: @blue-6;
 @paddingX: 20px;
 @paddingY: 14px;
 @avatarSize: 44px;
 @headerHeight: @avatarSize + @paddingY*2;
-@footerHeight: 44px;
+@footerHeight: 52px;
 
 .wrapper {
   position: relative;
@@ -35,28 +37,20 @@
   height: @avatarSize;
   border-radius: @avatarSize / 2;
   background-color: @blue;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../icons/qiniu.svg);
 }
 
 .title {
   margin-top: 2px;
   font-size: 14px;
-  color: #333;
 }
 
 .description {
   margin-top: 3px;
   font-size: 12px;
-  color: #999;
-}
-
-.extra {
-  float: right;
-}
-
-.extraLink {
-  margin-left: .5em;
-  color: #333;
-  text-decoration: none;
+  color: @grey-5;
 }
 
 .body {
@@ -64,8 +58,6 @@
   overflow-y: auto;
   margin: 0 @paddingX;
 }
-
-.messageList {}
 
 .qiniuMessageLine {
   margin: @paddingY 0;
@@ -89,12 +81,29 @@
 
 .messageBubble {
   display: inline-block;
-  max-width: 80%;
+  max-width: 86.23%;
   box-sizing: border-box;
-  padding: 8px 12px;
+  padding: 7px 12px;
   text-align: left;
   border-radius: 4px;
   word-break: break-all;
+
+  line-height: 22px;
+
+  a {
+    .blueLink();
+  }
+
+  > *:not(:first-child) {
+    margin-top: 12px;
+  }
+}
+
+.wide .messageBubble {
+  max-width: 50%;
+  .mobile({
+    max-width: 86.23%;
+  });
 }
 
 .footer {
@@ -106,7 +115,7 @@
 }
 
 .input {
-  @inputPaddingY: 12px;
+  @inputPaddingY: 10px;
 
   width: 100%;
   box-sizing: border-box;
@@ -122,18 +131,9 @@
 
 .sendButton {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  padding: 0 @paddingX;
-  height: @footerHeight;
-  text-align: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
+  right: @paddingX;
+  bottom: 10px;
+  width: 60px !important;
 }
 
 .sendIcon {

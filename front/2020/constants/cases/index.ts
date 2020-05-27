@@ -33,15 +33,13 @@ import lxImg from './大型企业/客户-联想.png'
 import bbgImg from './大型企业/客户-步步高.png'
 import shycImg from './大型企业/客户-上海烟草.png'
 import shdqImg from './大型企业/客户-上海电气.png'
-import zgdxImg from './大型企业/客户-中国电信.png'
 import zgsyImg from './大型企业/客户-中国石油.png'
 
 import qbImg from './广电传媒/客户-清博.png'
-import dxImg from './广电传媒/客户-电信.png'
+import zgdxImg from './广电传媒/客户-中国电信.png'
 import mgtvImg from './广电传媒/客户-芒果TV.png'
 import zydImg from './广电传媒/客户-中移动.png'
 import rmwImg from './广电传媒/客户-人民网.png'
-// import shdqImg from './广电传媒/客户-上海电气.png'
 import hscmImg from './广电传媒/客户-华数传媒.png'
 import jswsImg from './广电传媒/客户-江苏卫视.png'
 import zbcmImg from './广电传媒/客户-浙报传媒.png'
@@ -128,11 +126,10 @@ export const lx = { logo: lxImg, name: '联想' }
 export const bbg = { logo: bbgImg, name: '步步高' }
 export const shyc = { logo: shycImg, name: '上海烟草' }
 export const shdq = { logo: shdqImg, name: '上海电气' }
-export const zgdx = { logo: zgdxImg, name: '中国电信' }
 export const zgsy = { logo: zgsyImg, name: '中国石油' }
 
 export const qb = { logo: qbImg, name: '清博' }
-export const dx = { logo: dxImg, name: '电信' }
+export const zgdx = { logo: zgdxImg, name: '中国电信' }
 export const mgtv = { logo: mgtvImg, name: '芒果TV' }
 export const zyd = { logo: zydImg, name: '中移动' }
 export const rmw = { logo: rmwImg, name: '人民网' }
@@ -200,7 +197,7 @@ export const industries = [
   },
   {
     name: '广电传媒',
-    cases: [qb, dx, mgtv, zyd, rmw, shdq, hscm, jsws, zbcm, jldst]
+    cases: [qb, zgdx, mgtv, zyd, rmw, shdq, hscm, jsws, zbcm, jldst]
   },
   {
     name: '交通旅游',

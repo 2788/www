@@ -1,22 +1,60 @@
 @import '~utils/less/index.less';
 
 @blue: @blue-6;
-@margin: 16px;
 
 .wrapper {
   position: fixed;
-  bottom: 72px;
-  right: 72px;
+  bottom: 50px;
+  right: 86px;
   z-index: @feedback-form-z-index;
+
+  .mobile({
+    bottom: 44px;
+    right: 16px;
+  });
 }
 
 // 同 ./Button/style.less
 @buttonSize: 64px;
+@entryHeight: 140px;
 
-.button {
+.entryWrapper {
+
   position: absolute;
   right: 0;
   bottom: 0;
+  width: @buttonSize;
+  height: @entryHeight;
+  background-color: @grey-1;
+  border: 1px solid @grey-3;
+  box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
+  border-radius: @buttonSize / 2;
+  text-align: center;
+
+  .btn {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &.btnClose {
+      background-image: url(../icons/close.svg);
+    }
+    &.btnSmile {
+      background-image: url(../icons/smile.svg);
+    }
+  }
+
+  .freeTrialLink {
+    display: block;
+    margin-top: @buttonSize;
+    padding: 8px;
+    font-size: 16px;
+    line-height: 22px;
+    color: @blue;
+    text-decoration: none;
+  }
 }
 
 .modal() {
@@ -28,38 +66,8 @@
   width: 374px;
 }
 
-@freeTrialPadding: 20px;
-@freeTrialContentHeight: 20px;
-@freeTrialHeight: @freeTrialPadding * 2 + @freeTrialContentHeight;
-
-.freeTrialModalWrapper {
-  .modal();
-
-  bottom: @buttonSize + @margin;
-}
-
-.freeTrialLink {
-  display: block;
-  padding: 20px;
-  line-height: 20px;
-  font-size: 16px;
-  color: @blue;
-  text-decoration: none;
-}
-
-.freeTrialIcon {
-  float: right;
-  display: block;
-
-  @size: 20px;
-  width: @size;
-  height: @size;
-  border-radius: @size / 2;
-  background-color: @blue;
-}
-
 .formModalWrapper {
   .modal();
-  height: 400px;
-  bottom: @buttonSize + @margin + @freeTrialHeight + @margin;
+  height: 500px;
+  bottom: @entryHeight + 12px;
 }

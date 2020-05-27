@@ -1,0 +1,32 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  padding-top: 5px;
+  padding-bottom: 9px;
+
+  :global(.ant-form-item) {
+    margin-bottom: 4px;
+  }
+
+  :global(.ant-form-item-label) {
+    max-width: 70px !important;
+  }
+
+  // TODO: 这个好像应该由 icecream 来做（disabled Select 字颜色不对）
+  :global(.ant-select-disabled .ant-select-selection-selected-value) {
+    color: #BFBFBF;
+  }
+}
+
+.errorLine {
+  margin-top: 16px;
+  margin-bottom: -8px;
+  text-align: center;
+  font-size: 12px;
+  color: @red-6;
+}
+
+.submitLine {
+  margin-top: 16px;
+  text-align: center;
+}

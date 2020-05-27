@@ -3,6 +3,7 @@
  */
 
 import React, { useState, useMemo, FormEvent } from 'react'
+import Loading from 'components/UI/Loading'
 import { useOnChange } from 'hooks'
 import { useApiWithParams } from 'hooks/api'
 import { videoCensor, defaultParams } from 'apis/censor/video'
@@ -58,13 +59,15 @@ export default function VideoPlayground() {
           value={activeIndex}
           onChange={setActive}
           renderActive={() => (
-            <div className={style.activeBlock}>
-              <div className={style.videoBlock}>
-                <video autoPlay loop src={videoUrl} />
-                <ResultMask suggestion={apiResult?.suggestion} loading={loading} />
+            <Loading loading={loading}>
+              <div className={style.activeBlock}>
+                <div className={style.videoBlock}>
+                  <video autoPlay loop src={videoUrl} />
+                  <ResultMask suggestion={apiResult?.suggestion} loading={loading} />
+                </div>
+                <ResultPanel results={results} loading={loading} />
               </div>
-              <ResultPanel results={results} loading={loading} />
-            </div>
+            </Loading>
           )}
         >
           <Slide value={0}><video src={videos[0]} /></Slide>

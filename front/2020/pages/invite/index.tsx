@@ -45,12 +45,6 @@ export default function InvitePage() {
   return (
     <Layout title="邀请有礼活动">
       <Navigatable>
-        {/* <section className={style.banner}>
-          <div className={style.bannerContent}>
-            <h1 className={style.title}>邀请好友礼上加礼</h1>
-            <p className={style.subtitle}>温馨回馈限时复工防疫包</p>
-          </div>
-        </section> */}
         <Banner className={style.banner} background={imgBanner}>
           <banner.Title className={style.title}>
             <IconTitle />

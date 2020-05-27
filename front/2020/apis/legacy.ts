@@ -4,6 +4,7 @@
 
 import { get, post } from 'utils/fetch'
 import { apiHost } from 'constants/env'
+import { timeout } from 'utils'
 
 const apiPrefix = `${apiHost}/www-legacy`
 
@@ -41,4 +42,27 @@ export type Guestinfo = {
 /** 获取用户信息 */
 export function getUserInfo(): Promise<Userinfo | Guestinfo> {
   return get(`${apiPrefix}/userinfo`)
+}
+
+export type CreateFeedbackOptions = {
+  content: string // 咨询内容
+  company: string // 公司名称
+  name: string // 称呼
+  phone: string // 电话
+  email: string // 邮箱
+  province: string // 地区
+}
+
+export async function createFeedback(options: CreateFeedbackOptions): Promise<void> {
+  const referer = window.location.href
+  if (typeof window === 'undefined') {
+    await timeout(300)
+    return
+  }
+  return post(`${apiPrefix}/feedbacks`, {
+    feedback: {
+      referer,
+      ...options
+    }
+  })
 }

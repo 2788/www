@@ -20,13 +20,13 @@ export default function SearchRecommend({ className }: Props) {
           <Link href="/products/pandora">Pandora 数据分析平台</Link>
         </li>
         <li className={style.item}>
-          <Link href="/TODO">归档存储</Link>
+          <Link href="/solutions/qavs#arch">智能视频云解决方案</Link>
         </li>
         <li className={style.item}>
-          <Link href="/TODO">大数据存储解决方案</Link>
+          <Link href="/products/faceid">人脸核验</Link>
         </li>
         <li className={style.item}>
-          <Link href="/TODO">视频冷存储解决方案</Link>
+          <Link href="/products/plsv">短视频 SDK</Link>
         </li>
       </ul>
     </div>

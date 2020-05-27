@@ -7,6 +7,7 @@ export enum MessageFrom {
 }
 
 export type Message = {
+  id: string
   content: ReactNode
   from: MessageFrom
 }
@@ -26,7 +27,7 @@ export default function MessageList({ messages }: Props) {
   }, [messages.length])
 
   return (
-    <ul ref={listRef} className={style.messageList}>
+    <ul ref={listRef}>
       {messages.map(
         (message, i) => <MessageItem key={i} message={message} />
       )}

@@ -83,8 +83,12 @@ export type CountByTagsParams = {
 
 export function countByTags({ keyword, tags }: CountByTagsParams): Promise<number[]> {
   return Promise.all(tags.map(async tag => {
-    const searched = await search({ keyword, tag, from: 0, limit: 0 })
-    return searched.total
+    try {
+      const searched = await search({ keyword, tag, from: 0, limit: 0 })
+      return searched.total
+    } catch {
+      return 0
+    }
   }))
 }
 

@@ -3,19 +3,28 @@
  * @description 含对话框、聊天窗口等
  */
 
-import React, { useState, FormEvent, useRef, useEffect, useCallback } from 'react'
+import cls from 'classnames'
+import React, { useState, FormEvent, useRef, useEffect, useCallback, ReactNode } from 'react'
+import Button from 'components/UI/Button'
 import MessageList, { Message, MessageFrom } from './MessageList'
-import { IRobot, InputType, OutputType, withEase, Input } from './robot'
-import FormRobot, { FormItem } from './robot/form'
+import { IRobot, InputType, OutputType, withEase, Input, context } from './robot'
+import ConsultRobot from './robot/consult'
 import style from './style.less'
 
-export default function FeedbackForm() {
-  const robot = useRef(createRobot())
+export type Props = {
+  wide?: boolean // 是否宽版（在页面中间的浮层展示）
+}
+
+export default function FeedbackForm({ wide }: Props) {
+  const robot = useRef(withEase(300)(new ConsultRobot()))
   const [messages, submitUserMessage] = useRobot(robot.current)
+  const wrapperClassName = cls(style.wrapper, wide && style.wide)
   return (
-    <div className={style.wrapper}>
+    <div className={wrapperClassName}>
       <Header />
-      <Body messages={messages} />
+      <context.Provider value={{ sendMessage: submitUserMessage }}>
+        <Body messages={messages} />
+      </context.Provider>
       <Footer onSubmit={submitUserMessage} />
     </div>
   )
@@ -25,14 +34,8 @@ function Header() {
   return (
     <div className={style.header}>
       <i className={style.avatar}></i>
-      <h4 className={style.title}>牛小七</h4>
-      <p className={style.description}>
-        智能客服
-        <span className={style.extra}>
-          售后问题，请
-          <a className={style.extraLink} href="TODO" target="_blank">提交工单</a>
-        </span>
-      </p>
+      <h4 className={style.title}>七牛君</h4>
+      <p className={style.description}>机器智能客服为您服务</p>
     </div>
   )
 }
@@ -71,42 +74,71 @@ function Footer({ onSubmit }: FooterProps) {
       <input
         type="text"
         className={style.input}
-        placeholder="在此输入"
+        placeholder="请输入你要反馈的问题"
         value={input}
         onChange={e => setInput(e.target.value)}
       />
-      <button type="submit" className={style.sendButton}>
-        <i className={style.sendIcon}></i>
-      </button>
+      <Button
+        disabled={!input.trim()}
+        className={style.sendButton}
+        htmlType="submit"
+        type="primary"
+        size="small"
+      >发送</Button>
     </form>
   )
 }
+
+// TODO: 改为 Loading
+const loadingMessage = '...'
 
 /** 使用给定 Robot 与用户交互 */
 function useRobot(robot: IRobot) {
   const [messages, setMessages] = useState<Message[]>([])
 
-  function pushMessage(from: MessageFrom, content: string) {
+  function pushMessage(from: MessageFrom, content: ReactNode) {
+    const id = uuid()
     setMessages(current => [
       ...current,
-      { from, content }
+      { id, from, content }
     ])
+    return id
   }
 
-  function popMessage() {
-    setMessages(current => current.slice(0, -1))
+  function removeMessage(id: string) {
+    setMessages(current => current.filter(
+      message => message.id !== id
+    ))
   }
 
-  const callRobot = useCallback(async (input: Input) => {
-    pushMessage(MessageFrom.Qiniu, '...')
-    const output = await robot.process(input)
-    popMessage()
-    if (output) {
-      if (output.type === OutputType.Message) {
-        pushMessage(MessageFrom.Qiniu, output.content)
+  const callRobot = useCallback((input: Input) => {
+    const processed = robot.process(input)
+    const items = Array.isArray(processed) ? processed : [processed]
+
+    const loading = pushMessage(MessageFrom.Qiniu, loadingMessage)
+    Promise.all(items).then(() => removeMessage(loading))
+
+    items.forEach(async item => {
+      const output = await item
+      if (!output) return
+
+      switch (output.type) {
+        case OutputType.Message:
+          pushMessage(MessageFrom.Qiniu, output.content)
+          break
+        case OutputType.Form: {
+          const Form = output.comp
+          const handleOutputFormSubmit = (value: unknown) => {
+            callRobot({ type: InputType.FormSubmit, value })
+          }
+          pushMessage(MessageFrom.Qiniu, (
+            <Form onSubmit={handleOutputFormSubmit} />
+          ))
+          break
+        }
+        default:
       }
-      // TODO: other type
-    }
+    })
   }, [robot])
 
   async function addUserMessage(content: string) {
@@ -121,30 +153,6 @@ function useRobot(robot: IRobot) {
   return [messages, addUserMessage] as const
 }
 
-function createRobot() {
-  const formItems: FormItem[] = [
-    { name: '您的咨询内容', message: '请描述您的需求，我们会尽快联系您' },
-    { name: '您的称呼' },
-    { name: '您的手机号', validator: validatePhone },
-    { name: '您的邮箱', validator: validateEmail }
-  ]
-  async function handleSubmit() {
-    await timeout(1000)
-    throw new Error('xxx')
-  }
-  return withEase(300)(new FormRobot(formItems, handleSubmit))
-}
-
-function validatePhone(value: string) {
-  // copy from portal-base
-  return /^(13\d|14[57]|15[012356789]|166|17[235678]|18\d|19[89])\d{8}$/.test(value) ? null : '电话格式不正确'
-}
-
-function validateEmail(value: string) {
-  // copy from portal-base
-  return /^([A-Za-z0-9_\-.\u4e00-\u9fa5])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,8})$/.test(value) ? null : '邮箱格式不正确'
-}
-
-function timeout(delay: number) {
-  return new Promise(resolve => setTimeout(resolve, delay))
+function uuid(): string {
+  return Math.random() + ''
 }
