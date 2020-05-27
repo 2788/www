@@ -5,7 +5,7 @@
 import React, { useState, useMemo } from 'react'
 import { urlForQvmBuy } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
-import { getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions } from 'apis/qvm'
+import { getMetaInfo, getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions, MetaInfo } from 'apis/qvm'
 import { humanizeDuration } from 'constants/qvm'
 import Button from 'components/UI/Button'
 
@@ -20,10 +20,7 @@ export type Props = {
     title: string
     info: string
   }>
-
-  regions: Array<{ id: string, name: string }>
-  instanceTypes: Array<{ type: string, desc: string }>
-  durations: number[] // 可选购买时长，单位：月
+  instanceTypesByRegions: { [regionId: string]: string[] }
 }
 
 export default function EnterpriseCard(props: Props) {
@@ -41,6 +38,12 @@ export default function EnterpriseCard(props: Props) {
         <p className={style.detailValue}>{detail.info}</p>
       </div>
     )
+  )
+
+  const { $: metaInfo } = useApiWithParams(getMetaInfo, { params: [] })
+
+  const formView = metaInfo && (
+    <PriceForm {...props} metaInfo={metaInfo} />
   )
 
   return (
@@ -61,37 +64,32 @@ export default function EnterpriseCard(props: Props) {
         </div>
       </div>
       <div className={style.priceBlock}>
-        <PriceForm {...props} />
+        {formView}
       </div>
     </div>
   )
 }
 
-function PriceForm({ regions, instanceTypes, durations }: Props) {
+function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: MetaInfo }) {
 
-  const [regionId, setRegionId] = useState(regions[0].id)
+  const { regionMap, instanceTypeMap, durations } = metaInfo
 
-  const regionOptions = (regions || []).map(
-    ({ id, name }) => (
-      <option key={id} value={id}>{name}</option>
-    )
-  )
+  const regionIds = Object.keys(instanceTypesByRegions)
+  const [regionId, setRegionId] = useState(regionIds[0])
+  const regionOptions = regionIds.map(id => (
+    <option key={id} value={id}>{regionMap[id]}</option>
+  ))
 
-  const [instanceType, setInstanceType] = useState(instanceTypes[0].type)
-
-  const instanceTypeOptions = (instanceTypes || []).map(
-    ({ type, desc }) => (
-      <option key={type} value={type}>{desc}</option>
-    )
-  )
+  const instanceTypes = instanceTypesByRegions[regionId] || []
+  const [instanceType, setInstanceType] = useState(instanceTypes[0])
+  const instanceTypeOptions = instanceTypes.map(type => (
+    <option key={type} value={type}>{instanceTypeMap[type]}</option>
+  ))
 
   const [duration, setDuration] = useState(durations[0])
-
-  const durationOptions = durations.map(
-    d => (
-      <option key={d} value={d}>{humanizeDuration(d)}</option>
-    )
-  )
+  const durationOptions = durations.map(d => (
+    <option key={d} value={d}>{humanizeDuration(d)}</option>
+  ))
 
   const buyUrl = urlForQvmBuy({
     region_id: regionId,

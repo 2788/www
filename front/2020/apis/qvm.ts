@@ -2,13 +2,11 @@
  * @file QVM 相关接口
  */
 
-import { memoize, intersection } from 'lodash'
+import { memoize } from 'lodash'
 import { apiHost } from 'constants/api'
-import { isYear, avaliableRegions } from 'constants/qvm'
+import { isYear } from 'constants/qvm'
 import { timeout } from 'utils'
 import { get, post } from 'utils/fetch'
-import mockInstanceTypes from './instance-types.json'
-import mockSpecs from './specs.json'
 
 const apiPrefix = `${apiHost}/qvm`
 
@@ -38,10 +36,9 @@ export type SpecEnterpriseConfigItem = {
     info: string
   }> // 固定数量 4
 
-  regions: SpecRegion[]
-  specs: SpecECSSpec[]
-  buy_months: number[] // 可选购买时长，单位：月
-  buy_link: string
+  ecs_classes: {
+    [regioin_id: string]: string[] // 地域 -> 可售卖主机规格列表
+  }
 }
 
 export type SpecRegion = {
@@ -50,22 +47,23 @@ export type SpecRegion = {
 }
 
 export type SpecECSSpec = {
-  spec_class: string // e.g. ecs.n1.small
-  spec_name: string // 2 核 2G
+  value: string // e.g. ecs.n1.small
+  name: string // 2 核 2G
 }
 
 export type SpecRes = {
   starter: SpecStarterConfigItem[] // 入门版配置中直接返回价格
   enterprise: SpecEnterpriseConfigGroup[] // 企业版配置不包括价格，价格需要通过询价接口查询
+  components: {
+    regions: SpecRegion[]
+    buy_months: number[]
+    ecs_classes: SpecECSSpec[] // 主机规格代码 -> 规格名称
+  }
 }
 
 export async function getSpecs(): Promise<SpecRes> {
-  // mock API, TODO: QVM 该接口上线后换成真的接口
-  if (typeof window !== 'undefined') {
-    await timeout(300)
-    return mockSpecs
-  }
-  return get(`${apiPrefix}/v1/open/www/specs`)
+  const body = await get(`${apiPrefix}/v1/open/www/specs`)
+  return body.data
 }
 
 export const getSpecsWithCahe = memoize(getSpecs)
@@ -80,32 +78,30 @@ export async function getEnterpriseSpecs() {
   return specs.enterprise
 }
 
-export type InstanceType = {
-  type: string
-  family: string
-  family_name: string
-  cpu: number
-  memory: number
+// QVM 一些业务元信息
+export type MetaInfo = {
+  regionMap: { [id: string]: string }
+  instanceTypeMap: { [value: string]: string }
+  durations: number[]
 }
 
-export async function getInstanceTypes(): Promise<InstanceType[]> {
-  // mock API, TODO: 换成真的接口
-  if (typeof window === 'undefined') {
-    await timeout(300)
-    return mockInstanceTypes
-  }
-  const res = await get(`${apiPrefix}/v1/open/instance_types`)
-  return res.data
-}
-
-export const getInstanceTypesWithCache = memoize(getInstanceTypes)
-
-export async function getInstanceTypesByFamily(family: string) {
-  const allInstanceTypes = await getInstanceTypesWithCache()
-  return allInstanceTypes.filter(
-    instanceType => instanceType.family === family
+export const getMetaInfo = memoize(async () => {
+  const { regions, buy_months, ecs_classes } = (await getSpecsWithCahe()).components
+  const regionMap = regions.reduce(
+    (map, item) => ({ ...map, [item.region_id]: item.local_name }),
+    {} as { [id: string]: string }
   )
-}
+  const instanceTypeMap = ecs_classes.reduce(
+    (map, item) => ({ ...map, [item.value]: item.name }),
+    {} as { [value: string]: string }
+  )
+  const metaInfo: MetaInfo = {
+    regionMap,
+    instanceTypeMap,
+    durations: buy_months
+  }
+  return metaInfo
+})
 
 export type GetPriceOptions = {
   regionId: string
@@ -197,85 +193,3 @@ function getPeriodInfo(duration: number, byYear = false) {
     : infoByMonth
   )
 }
-
-export type SupportedResourceInfo = {
-  value: string // instance type
-}
-
-export type AvailableResourceInfo = {
-  type: string // "InstanceType"
-  supported_resources: {
-    supported_resource: SupportedResourceInfo[]
-  }
-}
-
-export type AvailableZoneInfo = {
-  available_resources: {
-    available_resources?: AvailableResourceInfo[]
-  }
-}
-
-export type ResourceAvailableReponse = {
-  data: {
-    available_zone: AvailableZoneInfo[]
-  }
-}
-
-/** 指定地区（region），获取该地区可用的 instance type 列表 */
-export async function getInstanceTypesByRegion(regionId: string) {
-  const response: ResourceAvailableReponse = await post(
-    `${apiPrefix}/v1/open/resource_available`,
-    {
-      region_id: regionId,
-      instance_charge_type: 'PrePaid',
-      network_category: 'Vpc',
-      destination_resource: 'InstanceType'
-    },
-    {
-      headers: {
-        'X-Qiniu-Regionid': regionId
-      }
-    }
-  )
-  const instanceTypes = response.data.available_zone.reduce(
-    (types, zoneInfo) => [...types, ...getInstanceTypesOfZoneInfo(zoneInfo)],
-    [] as string[]
-  )
-  return instanceTypes
-}
-
-/** 指定地区（region），获取该地区可用的 instance type 列表（带缓存） */
-export const getInstanceTypesByRegionWithCache = memoize(getInstanceTypesByRegion)
-
-function getInstanceTypesOfResourceInfo(resourceInfo: AvailableResourceInfo) {
-  return resourceInfo.supported_resources.supported_resource.map(
-    resource => resource.value
-  )
-}
-
-function getInstanceTypesOfZoneInfo(zoneInfo: AvailableZoneInfo) {
-  return (zoneInfo.available_resources.available_resources || []).reduce(
-    (instanceTypes, resourceInfo) => [...instanceTypes, ...getInstanceTypesOfResourceInfo(resourceInfo)],
-    [] as string[]
-  )
-}
-
-export async function getRegionsByFamily(family: string) {
-  const typesOfFamily = (await getInstanceTypesByFamily(family)).map(
-    ({ type }) => type
-  )
-  const typesByRegion = await Promise.all(avaliableRegions.map(
-    region => getInstanceTypesByRegionWithCache(region.id)
-  ))
-  // 区域下的 instance type 与指定 family 下的 instance type 有交集的
-  // 就认为该区域有该 family 的机型，即，认为该区域符合要求
-  return avaliableRegions.filter(
-    (_, i) => {
-      const typesOfRegion = typesByRegion[i]
-      const typesOfRegionAndFamily = intersection(typesOfRegion, typesOfFamily)
-      return typesOfRegionAndFamily.length > 0
-    }
-  )
-}
-
-export const getRegionsByFamilyWithCache = memoize(getRegionsByFamily)

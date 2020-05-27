@@ -9,7 +9,6 @@ import Tabs, { TabPane } from 'components/UI/Tabs'
 import { Row } from 'components/UI/Card'
 import ButtonTabs, { ButtonTab } from 'components/UI/ButtonTabs'
 import PrimaryCard from './PrimaryCard'
-// import familyGroups from './enterprise-families'
 import EnterpriseCard from './EnterpriseCard'
 
 enum Type {
@@ -70,13 +69,7 @@ function EnterpriseCards() {
           desc={familyInfo.family_desc}
           scenes={familyInfo.scenario_desc}
           details={familyInfo.extra_infos}
-          regions={familyInfo.regions.map(
-            ({ region_id, local_name }) => ({ id: region_id, name: local_name })
-          )}
-          instanceTypes={familyInfo.specs.map(
-            ({ spec_class, spec_name }) => ({ type: spec_class, desc: spec_name })
-          )}
-          durations={familyInfo.buy_months}
+          instanceTypesByRegions={familyInfo.ecs_classes}
         />
       ))
       return <div key={i}>{cardsView}</div>
