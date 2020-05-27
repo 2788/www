@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 
 import Button from 'components/UI/Button'
-import Section from 'components/Product/Section'
+import Section from 'components/pages/index/Section'
 
 import styles from './style.less'
 
@@ -22,7 +22,7 @@ export function Panel({ title, desc, children }: PropsWithChildren<PanelProps>) 
 
 export default function TryAndContact() {
   return (
-    <Section className={styles.tryAndContant} title="" name="">
+    <Section className={styles.tryAndContant} title="">
       <Panel
         title="免费体验，知晓更多产品信息"
         desc="根据我们的操作提示，只需要点击几次鼠标，即可创建产品。"
@@ -33,7 +33,7 @@ export default function TryAndContact() {
         title="联系我们"
         desc="我们为您提供个性化的售前购买咨询服务，以及全面的技术售后服务。"
       >
-        <Button type="primary">点击咨询</Button>
+        <Button withBorder>点击咨询</Button>
       </Panel>
     </Section>
   )

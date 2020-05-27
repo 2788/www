@@ -14,6 +14,15 @@
       position: absolute;
       left: 50%;
     }
+
+    .mobile({
+      position: static;
+      margin-top: 12px;
+      &:before {
+        border: none;
+      }
+    });
+
     .year {
       font-size: 16px;
       height: 24px;
@@ -46,7 +55,7 @@
       &.left {
         position: absolute;
         left: 50%;
-        transform: translateX(-110%);
+        transform: translateX(-115%);
         &:before {
           content: '';
           .background-image(url(./images/arrow-left.svg));
@@ -61,7 +70,7 @@
       &.right {
         position: absolute;
         left: 50%;
-        transform: translateX(10%);
+        transform: translateX(15%);
         &:before {
           content: '';
           .background-image(url(./images/arrow-right.svg));
@@ -72,6 +81,11 @@
           height: 10px;
         }
       }
+
+      .mobile({
+        width: 100%;
+        margin-top: 12px;
+      })
     }
   }
 }

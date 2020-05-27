@@ -6,32 +6,48 @@
 .tryAndContant {
   display: flex;
   flex-direction: row;
+  background: #fafafa;
+  padding: 0;
+  margin: 72px auto;
 
   .mobile({
     flex-direction: column;
+    margin: 0;
   });
 
   .panel {
     width: @panel-width;
     padding-right: 150px;
     text-align: left;
+    background: white;
   
     .mobile({
-      margin-top: 10px;
       width: @mobile-panel-width;
-      padding-right: 0;
+      padding: 20px;
+      text-align: center;
+      &:not(:first-of-type) {
+        margin-top: 12px;
+      }
     });
   
     .title {
       color: @grey-7;
       font-size: 28px;
-  
+
+      .mobile({
+        font-size: 20px;
+      });
     }
     .desc {
       color: @grey-6;
       font-size: 20px;
       margin-top: 16px;
       margin-bottom: 48px;
+      .mobile({
+        margin-top: 8px;
+        margin-bottom: 16px;
+        font-size: 14px;
+      });
     }
   }
 }

@@ -1,12 +1,32 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
+import QRCode from 'qrcode.react'
 import Carousel from 'react-icecream/lib/carousel'
 
+import { useMobile } from 'hooks/ua'
 import { Card as UICard, Img, Content, Title, Desc } from 'components/UI/Card'
-import Section from 'components/Product/Section'
+import Section from 'components/pages/index/Section'
+import Link from 'components/Link'
 
 import { news } from './news'
 
 import styles from './style.less'
+
+import WeiboIcon from './images/sina_weibo.svg'
+import WechatIcon from './images/wechat.svg'
+
+interface SocialProps {
+  wxUrl: string
+}
+
+function Social({ wxUrl }: SocialProps) {
+  return (
+    <div className={styles.social}>
+      <WechatIcon className={styles.wechat} />
+      <div className={styles.tooltip}><QRCode size={100} value={wxUrl} /></div>
+      <WeiboIcon className={styles.weibo} />
+    </div>
+  )
+}
 
 export interface StoryProps {
   imgUrl: string
@@ -14,23 +34,23 @@ export interface StoryProps {
   desc: string
   date: string
   link: string
-  source?: ReactNode
+  wxUrl: string
 }
 
-function Story({ imgUrl, title, desc, date, link, source }: StoryProps) {
+function Story({ imgUrl, title, desc, date, link, wxUrl }: StoryProps) {
   return (
     <UICard className={styles.story}>
-      <a href={link}>
+      <Link href={link}>
         <Img className={styles.img} src={imgUrl} />
         <Content className={styles.content}>
           <Title className={styles.title}>{title}</Title>
           <Desc className={styles.desc}>{desc}</Desc>
           <div className={styles.footer}>
             <span className={styles.date}>{date}</span>
-            {source}
+            <Social wxUrl={wxUrl} />
           </div>
         </Content>
-      </a>
+      </Link>
     </UICard>
   )
 }
@@ -53,8 +73,10 @@ function Page({ list }: PageProps) {
 
 export default function News() {
   const pages = getPagesFromNews(news)
+  const isMobile = useMobile()
   return (
-    <Section className={styles.news} grey title="七牛资讯" name="news" subtitle="七牛热点资讯、前瞻技术，从 IT 到 DT的时代，让我们连接数据，重塑价值!">
+    <Section className={styles.news} grey title="七牛资讯" subtitle="七牛热点资讯、前瞻技术，从 IT 到 DT的时代，让我们连接数据，重塑价值!">
+      {isMobile && <div className={styles.splitLine} />}
       <Carousel>
         {
           pages.map((page, idx) => (
@@ -68,8 +90,9 @@ export default function News() {
 
 function getPagesFromNews(newsList: StoryProps[]) {
   const pages = []
-  while (newsList && newsList.length > 0) {
-    pages.push(newsList.splice(0, 4))
+  const pageSize = 4
+  for (let i = 0; i < newsList.length; i += pageSize) {
+    pages.push(newsList.slice(i, i + pageSize))
   }
   return pages
 }

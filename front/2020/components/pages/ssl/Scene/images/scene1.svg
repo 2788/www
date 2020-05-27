@@ -1,100 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="465px" height="345px" viewBox="0 0 665 345" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>编组 17</title>
-    <desc>Created with Sketch.</desc>
+<svg width="211px" height="212px" viewBox="0 0 211 212" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 4</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#77DCFD" stop-opacity="0.244208916" offset="0%"></stop>
+            <stop stop-color="#427AF9" stop-opacity="0.295399913" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="98.8202069%" id="linearGradient-2">
+            <stop stop-color="#72D0FF" offset="0%"></stop>
+            <stop stop-color="#38B0FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="4.11166301%" y1="49.5412751%" x2="97.2086592%" y2="50.3066816%" id="linearGradient-3">
+            <stop stop-color="#72D0FF" offset="0%"></stop>
+            <stop stop-color="#4EC2F7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0.422475726%" x2="50%" y2="98.8993046%" id="linearGradient-4">
+            <stop stop-color="#72D0FF" offset="0%"></stop>
+            <stop stop-color="#388AFF" offset="99.9472128%"></stop>
+        </linearGradient>
+    </defs>
     <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="基础服务-CDN02✅" transform="translate(-440.000000, -290.000000)">
-            <g id="产品介绍-2">
-                <g id="编组" transform="translate(372.000000, 256.000000)">
-                    <g id="编组-17" transform="translate(68.000000, 34.000000)">
-                        <path id="路径-15备份-6" d="M163,170 L172,174.5 L163,179 L163,175 L125,175 L125,174 L163,174 L163,170 Z" fill="#28B8BB" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-11" d="M471.234769,22.0288883 L480.249997,26.4983022 L471.265329,31.0288364 L471.251,27.029 L332.501698,27.4999971 L332.498302,26.5000029 L471.248,26.029 L471.234769,22.0288883 Z" fill="#28B8BB" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-8" d="M331.289976,301.425288 L340.249981,306.004405 L331.210684,310.424938 L331.245,306.425 L282.995595,305.999981 L283.004405,305.000019 L331.254,305.425 L331.289976,301.425288 Z" fill="#23B4E8" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-10" d="M473.57617,300.108978 L482.499931,304.758332 L473.426191,309.107728 L473.493,305.107 L451.991668,304.749931 L452.008332,303.750069 L473.509,304.108 L473.57617,300.108978 Z" fill="#23B4E8" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-7" d="M475.264972,212.471833 L484.249997,217.001658 L475.235121,221.471783 L475.248,217.471 L332.998342,216.999997 L333.001658,216.000003 L475.251,216.471 L475.264972,212.471833 Z" fill="#23B4E8" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-6" d="M244,51 L244,71.5 L248,71.5 L243.5,80.5 L239,71.5 L243,71.5 L243,51 L244,51 Z" fill="#28B8BB" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-6" d="M253,247 L253,271.5 L257,271.5 L252.5,280.5 L248,271.5 L252,271.5 L252,247 L253,247 Z" fill="#23B4E8" fill-rule="nonzero"></path>
-                        <path id="路径-15备份-9" d="M264,51 L264,71.5 L268,71.5 L263.5,80.5 L259,71.5 L263,71.5 L263,51 L264,51 Z" fill="#21B4E9" fill-rule="nonzero"></path>
-                        <g id="zhongduanjianshe" transform="translate(236.000000, 287.000000)" fill="#24B5E9" fill-rule="nonzero">
-                            <path d="M37.8294265,28.6173722 L29.8033254,28.6173722 L28.7911668,27.3061955 C28.7976428,26.9530589 28.6405996,26.6127156 28.3559418,26.362978 C28.0712839,26.1132404 27.6833513,25.9754623 27.2808364,25.9811439 L23.5247792,25.9811439 C23.1250372,25.9755417 22.7395715,26.1114314 22.4553912,26.3581393 C22.171211,26.6048473 22.0122713,26.9415772 22.0144488,27.2923206 L21.0022903,28.6173722 L18.9779732,28.6173722 L18.9779732,30.573731 L37.9085014,30.573731 C38.5255864,30.5586002 39.0130179,30.1092723 38.9997348,29.5678018 C39.0007134,29.3019357 38.8747166,29.0478642 38.6523278,28.8672579 C38.4299389,28.6866517 38.1314911,28.5960237 37.8294265,28.6173722 L37.8294265,28.6173722 Z M13.6878631,14.0000887 L2.72017616,14.0000887 C2.0009308,13.9946287 1.30896716,14.2414151 0.798141645,14.685667 C0.287316125,15.1299189 0,15.7348115 0,16.3658483 L0,32.6410889 C0.00207748571,33.2709224 0.29034919,33.8740272 0.800944307,34.3167766 C1.31153942,34.7595259 2.00229936,35.0053632 2.72017616,34.9999112 L13.6878631,34.9999112 C14.4057399,35.0053632 15.0964999,34.7595259 15.607095,34.3167766 C16.1176901,33.8740272 16.4059618,33.2709224 16.4080393,32.6410889 L16.4080393,16.3658483 C16.3993292,15.0543741 15.1827367,13.9963345 13.6878631,14.0000887 Z M6.39715846,15.8247278 C6.43027828,15.7784427 6.48553103,15.7478271 6.54740076,15.7414785 L9.86063855,15.7414785 C9.95285959,15.7585398 10.016836,15.8323926 10.0108808,15.9149146 C10.0108808,15.9773515 9.93971344,16.0189762 9.86063855,16.046726 L6.54740076,16.046726 C6.48756211,16.0543328 6.42835649,16.0297284 6.39715846,15.984289 C6.37024758,15.9645171 6.35470062,15.9353035 6.35470062,15.9045084 C6.35470062,15.8737133 6.37024758,15.8444997 6.39715846,15.8247278 L6.39715846,15.8247278 Z M8.20006592,33.6470181 C7.79497562,33.6431965 7.46969947,33.3526683 7.47259572,32.9972607 C7.47549198,32.6418531 7.80546971,32.355435 8.21058088,32.356691 C8.61569206,32.3579554 8.9433464,32.6464193 8.94336984,33.0018359 C8.93909052,33.3565935 8.61233582,33.6432638 8.20797338,33.6470181 L8.20006592,33.6470181 Z M13.6878631,31.4131616 L2.6964537,31.4131616 L2.6964537,17.5868383 L13.6641407,17.5868383 L13.6878631,31.4131616 Z" id="形状"></path>
-                            <path d="M38.6211723,0 L12.3788277,0 C11.2235765,-0.00549188156 10.1132171,0.406052406 9.29202408,1.14415013 C8.4708311,1.88224785 8.00607491,2.88643563 8,3.93579618 L8,8.85199544 L16.3289589,8.85199544 C17.1058618,8.84829828 17.8524515,9.12556788 18.4039624,9.62261336 C18.9554733,10.1196588 19.2665683,10.7956203 19.2685914,11.5013192 L19.2685914,21 L38.6211723,21 C39.7764236,21.0054919 40.886783,20.5939476 41.7079759,19.8558499 C42.5291689,19.1177521 42.9939251,18.1135643 43,17.0642038 L43,3.93579618 C42.9939251,2.88643563 42.5291689,1.88224785 41.7079759,1.14415013 C40.8867829,0.406052406 39.7764235,-0.00549188156 38.6211723,0 Z" id="路径"></path>
-                        </g>
-                        <path d="M503.984785,10 C499.016211,10.0074666 494.994408,13.5924907 495,18.0090071 C495.005603,22.4255234 499.036484,26.0024834 504.005063,26 C508.973643,25.997514 513,22.4165249 513,18 C512.987427,13.5810831 508.956083,10.0037118 503.984785,10 Z" id="路径" fill="#43C0C3" fill-rule="nonzero"></path>
-                        <path d="M504.000012,27 C496.276325,27 490.01175,33.6505242 490,41.8625235 C489.998136,42.1635063 490.109271,42.4528508 490.30878,42.6663884 C490.50829,42.8799259 490.779685,43 491.062776,43 L516.937248,43 C517.219107,43 517.489422,42.8809527 517.688727,42.6690472 C517.888032,42.4571417 518,42.1697362 518,41.8700565 C517.99218,33.6551146 511.726461,27 504.000012,27 Z" id="路径" fill="#43C0C3" fill-rule="nonzero"></path>
-                        <path d="M2,37 L133,37 C134.104569,37 135,37.8954305 135,39 L135,292 C135,293.104569 134.104569,294 133,294 L2,294 C0.8954305,294 1.3527075e-16,293.104569 0,292 L0,39 C-1.3527075e-16,37.8954305 0.8954305,37 2,37 Z" id="矩形备份-37" fill="#E2F2F3"></path>
-                        <path d="M485,115 L663,115 C664.104569,115 665,115.895431 665,117 L665,323 C665,324.104569 664.104569,325 663,325 L485,325 C483.895431,325 483,324.104569 483,323 L483,117 C483,115.895431 483.895431,115 485,115 Z" id="矩形备份-41" fill="#E6F4F9"></path>
-                        <path d="M174,81 L330,81 C331.104569,81 332,81.8954305 332,83 L332,249 C332,250.104569 331.104569,251 330,251 L174,251 C172.895431,251 172,250.104569 172,249 L172,83 C172,81.8954305 172.895431,81 174,81 Z" id="矩形备份-38" fill="#E6F4F9"></path>
-                        <path id="路径-15备份-6" d="M253,178 L253,189.5 L257,189.5 L252.5,198.5 L248,189.5 L252,189.5 L252,178 L253,178 Z" fill="#23B4E8" fill-rule="nonzero"></path>
-                        <rect id="矩形备份-34" stroke="#42C0C3" x="17" y="97" width="100" height="36" rx="2"></rect>
-                        <rect id="矩形备份-46" stroke="#00AAE7" x="500" y="175" width="148" height="36" rx="2"></rect>
-                        <rect id="矩形备份-35" stroke="#00AAE7" x="189" y="141" width="126" height="36" rx="2"></rect>
-                        <rect id="矩形备份-57" stroke="#42C0C3" x="17" y="145" width="100" height="36" rx="2"></rect>
-                        <rect id="矩形备份-61" stroke="#00AAE7" x="500" y="223" width="148" height="36" rx="2"></rect>
-                        <rect id="矩形备份-60" stroke="#00AAE7" x="189" y="198" width="126" height="36" rx="2"></rect>
-                        <rect id="矩形备份-58" stroke="#42C0C3" x="17" y="193" width="100" height="36" rx="2"></rect>
-                        <rect id="矩形备份-62" stroke="#00AAE7" x="500" y="271" width="148" height="36" rx="2"></rect>
-                        <rect id="矩形备份-59" stroke="#42C0C3" x="17" y="241" width="100" height="36" rx="2"></rect>
-                        <rect id="矩形备份-39" fill="#28B8BB" opacity="0.854399182" x="0" y="37" width="135" height="40"></rect>
-                        <rect id="矩形备份-49" fill="#28B8BB" opacity="0.854399182" x="172" y="0" width="161" height="51"></rect>
-                        <rect id="矩形备份-47" fill="#00AAE7" opacity="0.854399182" x="483" y="115" width="182" height="40"></rect>
-                        <rect id="矩形备份-50" fill="#00AAE7" opacity="0.854399182" x="340" y="285" width="112" height="40"></rect>
-                        <rect id="矩形备份-40" fill="#00AAE7" opacity="0.854399182" x="172" y="81" width="160" height="40"></rect>
-                        <text id="控制中心" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
-                            <tspan x="35" y="56">控制中心</tspan>
-                        </text>
-                        <text id="调度系统" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
-                            <tspan x="542" y="134">调度系统</tspan>
-                        </text>
-                        <text id="源站加速" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400" line-spacing="36" fill="#FFFFFF">
-                            <tspan x="220" y="100">源站加速</tspan>
-                        </text>
-                        <text id="配置管理" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
-                            <tspan x="39" y="115">配置管理</tspan>
-                        </text>
-                        <text id="DNS、HTTP-DNS" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="522" y="193">DNS、HTTP DNS</tspan>
-                        </text>
-                        <text id="中间源CDN" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="216" y="159">中间源CDN</tspan>
-                        </text>
-                        <text id="智能调度" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="375" y="203">智能调度</tspan>
-                        </text>
-                        <text id="开发者" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
-                            <tspan x="484" y="57">开发者</tspan>
-                        </text>
-                        <text id="终端用户" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="230" y="338">终端用户</tspan>
-                        </text>
-                        <text id="源站" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#FFFFFF">
-                            <tspan x="236" y="15">源站</tspan>
-                        </text>
-                        <text id="Html、图片、js" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#FFFFFF">
-                            <tspan x="204" y="37">Html、图片、js</tspan>
-                        </text>
-                        <text id="Local-DNS" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#FFFFFF">
-                            <tspan x="362" y="305">Local DNS</tspan>
-                        </text>
-                        <text id="监控管理" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
-                            <tspan x="39" y="163">监控管理</tspan>
-                        </text>
-                        <text id="自动宕机切换" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="532" y="241">自动宕机切换</tspan>
-                        </text>
-                        <text id="边缘节点CDN" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="209" y="216">边缘节点CDN</tspan>
-                        </text>
-                        <text id="数据统计" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
-                            <tspan x="37" y="211">数据统计</tspan>
-                        </text>
-                        <text id="全网质量调优" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#00AAE7">
-                            <tspan x="532" y="289">全网质量调优</tspan>
-                        </text>
-                        <text id="日志下载" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" line-spacing="30" fill="#28B8BB">
-                            <tspan x="39" y="259">日志下载</tspan>
-                        </text>
-                    </g>
+        <g id="基础服务-证书02✅" transform="translate(-371.000000, -3396.000000)">
+            <g id="编组-8" transform="translate(371.000000, 3396.000000)">
+                <g id="编组-4">
+                    <rect id="矩形" fill="url(#linearGradient-1)" opacity="0.6" x="32" y="25" width="162" height="108" rx="6"></rect>
+                    <rect id="矩形" fill="url(#linearGradient-2)" x="0" y="0" width="86" height="77.0000647" rx="4"></rect>
+                    <rect id="矩形" fill="#479CFF" opacity="0.3492141" x="44" y="93.9508443" width="66.0502513" height="5" rx="1"></rect>
+                    <rect id="矩形备份-2" fill="url(#linearGradient-3)" opacity="0.469470796" x="44" y="107.950856" width="52.201005" height="5" rx="1"></rect>
+                    <rect id="矩形" fill="url(#linearGradient-4)" x="121" y="94" width="90" height="118" rx="4"></rect>
+                    <text id="HTTPS" font-family="Times-Roman, Times" font-size="10" font-weight="normal" letter-spacing="0.6" fill="#FFFFFF">
+                        <tspan x="26.2192383" y="42">HTTPS</tspan>
+                    </text>
+                    <path d="M55.2437638,134.616418 L55.2437638,175.09883 L121.294015,175.09883" id="路径-4" stroke-opacity="0.851316652" stroke="#52A6FF" stroke-dasharray="2"></path>
                 </g>
             </g>
         </g>

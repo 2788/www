@@ -49,7 +49,6 @@ function LinkGroups() {
       </LinkGroup>
       <LinkGroup title="基础服务">
         <LinkItem url="/products/qcdn">CDN</LinkItem>
-        <LinkItem url="TODO">CDN OEM</LinkItem>
         <LinkItem url="/products/pili">直播</LinkItem>
         <LinkItem url="/ssl">证书</LinkItem>
         <LinkItem url="/products/qvm">云主机</LinkItem>
@@ -68,7 +67,7 @@ function LinkGroups() {
         <LinkItem url="/products/pandora">机器数据分析平台</LinkItem>
       </LinkGroup>
       <LinkGroup title="解决方案">
-        <LinkItem url="/products/ess">监控视频边缘存储解决发难</LinkItem>
+        <LinkItem url="/products/ess">监控视频边缘存储解决方案</LinkItem>
         <LinkItem url="/products/vcs">视频冷存储解决方案</LinkItem>
         <LinkItem url="TODO">私有云行业解决方案</LinkItem>
         <LinkItem url="/products/plsv">短视频解决方案</LinkItem>

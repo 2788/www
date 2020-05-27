@@ -1,0 +1,62 @@
+@import '~utils/less/index.less';
+
+.core {
+  padding-bottom: 0;
+  .coreIcon {
+    .mobile({
+      padding: 0 !important;
+      width: 60px;
+      height: 60px;
+    });
+  }
+  .mobile({
+    margin-top: 15px;
+  });
+}
+
+.headerBanner {
+
+  .headerBannerTitle {
+    font-size: 56px;
+    line-height: 78px;
+    font-weight: bold;
+
+    .mobile({
+      font-size: 24px;
+      line-height: 33px;
+      font-weight: bold;
+    });
+  }
+
+  .headerBannerDesc {
+    font-size: 24px;
+    line-height: 33px;
+
+    .mobile({
+      font-size: 12px;
+      line-height: 17px;
+    });
+  }
+
+  :global {
+    .slick-dots.slick-dots-bottom {
+      bottom: 50px;
+      button, .slick-active button {
+        width: 28px;
+        height: 4px;
+      }
+    }
+  }
+
+  .mobile({
+    :global {
+      .slick-dots.slick-dots-bottom {
+        bottom: 8px;
+        button, .slick-active button {
+          width: 20px;
+          height: 2px;
+        }
+      }
+    }
+  });
+}

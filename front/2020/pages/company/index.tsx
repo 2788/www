@@ -16,12 +16,12 @@ import Feature, {
 } from 'components/Product/Feature'
 import Timeline from 'components/company/Timeline'
 
+import styles from './style.less'
+
 import BannerIcon from './_images/banner-icon.svg'
 import Culture1Img from './_images/culture1.svg'
 import Culture2Img from './_images/culture2.svg'
 import Culture3Img from './_images/culture3.svg'
-
-import styles from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -78,7 +78,7 @@ function PageContent() {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Culture1Img />}
+            icon={<Culture1Img className={styles.coreIcon} />}
             title="做一个简单的人"
           >
             <FeatureDesc>以认定方向为坚持目标，以奋斗者为发展根本，坚持劳有所得，多劳多得，赢得员工的信赖。</FeatureDesc>
@@ -86,7 +86,7 @@ function PageContent() {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Culture2Img />}
+            icon={<Culture2Img className={styles.coreIcon} />}
             title="做一款简单的产品"
           >
             <FeatureDesc>以客户为中心，以结果为导向，坚持化繁为简，追求极致，赢得客户的信赖。</FeatureDesc>
@@ -94,7 +94,7 @@ function PageContent() {
           <FeatureItem
             pos="top-down"
             align="left"
-            icon={<Culture3Img />}
+            icon={<Culture3Img className={styles.coreIcon} />}
             title="做一家简单的公司"
           >
             <FeatureDesc>以社会责任为己任，以公司信用为重要资产，坚持言出必行，诚实守信，赢得社会的信赖。</FeatureDesc>

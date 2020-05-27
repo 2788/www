@@ -1,14 +1,17 @@
-import React, { Children, ReactNode, PropsWithChildren } from 'react'
+import React, { ReactNode } from 'react'
 import classnames from 'classnames'
 
 import { useMobile } from 'hooks/ua'
 import { IPageBannerProps, defaultProps } from 'components/Product/PageBanner'
-import styles from 'components/Product/PageBanner/style.less'
+import styles from './style.less'
 
-type IndexPageBannerContentProps = IPageBannerProps
+interface IndexPageBannerProps extends IPageBannerProps {
+  bgImg: string
+  className?: string
+}
 
-export function IndexPageBannerContent(props: IndexPageBannerContentProps) {
-  const { title, desc, bgColor = '#34A1EC', btns, icon } = { ...defaultProps, ...props }
+export default function IndexPageBanner(props: IndexPageBannerProps) {
+  const { title, desc, bgColor = '#34A1EC', btns, icon, bgImg, className } = { ...defaultProps, ...props }
   const isMobile = useMobile()
 
   function renderBtnWrapper() {
@@ -17,7 +20,7 @@ export function IndexPageBannerContent(props: IndexPageBannerContentProps) {
     }
 
     return (
-      <div className={styles.btnsWrapper}>
+      <div className={classnames(styles.btnsWrapper, className)}>
         {btns.map((btn: ReactNode, index: number) => (
           <div className={styles.btn} key={index}>
             {btn}
@@ -35,32 +38,23 @@ export function IndexPageBannerContent(props: IndexPageBannerContentProps) {
     return <div className={styles.iconWrapper}>{icon}</div>
   }
 
-  const bgColorStyle = {
-    backgroundColor: bgColor
+  const bgStyle = {
+    backgroundColor: bgColor,
+    backgroundImage: bgImg ? `url(${bgImg})` : '',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
   }
 
   return (
-    <div className={styles.contentWrapper} style={bgColorStyle}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
-        <div className={styles.desc}>{desc}</div>
-        {renderBtnWrapper()}
+    <div className={classnames(styles.mainWrapper, styles.index, className)} style={bgStyle}>
+      <div className={classnames(styles.contentWrapper)}>
+        <div className={styles.content}>
+          <h1 className={styles.title}>{title}</h1>
+          <div className={styles.desc}>{desc}</div>
+          {renderBtnWrapper()}
+        </div>
+        {renderIconWrapper()}
       </div>
-      {renderIconWrapper()}
-    </div>
-  )
-}
-
-export type IndexPageBannerProps = PropsWithChildren<Pick<IPageBannerProps, 'bgColor'>>
-
-export function IndexPageBanner({ children, bgColor }: IndexPageBannerProps) {
-  const bgColorStyle = {
-    backgroundColor: bgColor
-  }
-  Children.count(children)
-  return (
-    <div className={classnames(styles.mainWrapper, styles.index)} style={bgColorStyle}>
-      {children}
     </div>
   )
 }

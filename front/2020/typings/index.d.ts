@@ -60,3 +60,5 @@ declare module 'moveto' {
   }
   export default MoveTo
 }
+
+declare module 'qrcode.react';

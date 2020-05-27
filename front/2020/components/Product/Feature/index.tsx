@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React, { ReactNode, HTMLAttributes } from 'react'
+import React, { ReactNode, HTMLAttributes, PropsWithChildren } from 'react'
 import classnames from 'classnames'
 
 import Section, { SectionProps } from '../Section'
@@ -50,13 +50,7 @@ export interface IFeatureLinkProps extends HTMLAttributes<HTMLElement> {
   href: string
 }
 
-export default function Feature({
-  name = 'feature',
-  title = '功能与优势',
-  children,
-  grey,
-  ...otherProps
-}: IFeatureProps) {
+export function RawFeature({ children }: PropsWithChildren<{}>) {
   const isMobile = useMobile()
 
   if (!children) {
@@ -79,9 +73,20 @@ export default function Feature({
     )
   }
 
+  return renderMain()
+}
+
+export default function Feature({
+  name = 'feature',
+  title = '功能与优势',
+  children,
+  grey,
+  ...otherProps
+}: IFeatureProps) {
+  const isMobile = useMobile()
   return (
     <Section {...otherProps} grey={grey && !isMobile} name={name} title={title}>
-      {renderMain()}
+      <RawFeature>{children}</RawFeature>
     </Section>
   )
 }

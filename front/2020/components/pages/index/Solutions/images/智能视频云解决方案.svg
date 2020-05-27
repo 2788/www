@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>智能视频云解决方案32*32</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon" transform="translate(-384.000000, -1465.000000)" stroke-width="2">
+            <polygon id="三角形备份-7" stroke="#00AAE6" transform="translate(401.000000, 1483.000000) rotate(-270.000000) translate(-401.000000, -1483.000000) " points="401 1479 405 1487 397 1487"></polygon>
+            <path d="M392,1491 C388.686292,1491 386,1488.31371 386,1485 C386,1481.7616 388.565575,1479.12243 391.775062,1479.00414 L392,1479 L392.003807,1478.75082 C392.135457,1474.44784 395.665086,1471 400,1471 C404.334914,1471 407.864543,1474.44784 407.996193,1478.75082 L408,1479 C411.313708,1479 414,1481.68629 414,1485 C414,1488.31371 411.313708,1491 408,1491 L392,1491 L392,1491 Z" id="形状结合" stroke="#333333"></path>
+        </g>
+    </g>
+</svg>
