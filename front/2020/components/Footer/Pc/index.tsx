@@ -65,7 +65,7 @@ function LinkGroups() {
       </LinkGroup>
       <LinkGroup title="机器数据智能">
         <LinkItem url="/products/insight">智能日志管理平台</LinkItem>
-        <LinkItem url="/products/express">机器数据分析平台</LinkItem>
+        <LinkItem url="/products/pandora">机器数据分析平台</LinkItem>
       </LinkGroup>
       <LinkGroup title="解决方案">
         <LinkItem url="/products/ess">监控视频边缘存储解决发难</LinkItem>

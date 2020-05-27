@@ -39,7 +39,7 @@ export default function FooterForMobile() {
           </SubMenu>
           <SubMenu title="机器数据智能">
             <MenuItem><Link href="/products/insight"><a>Pandora智能日志管理平台</a></Link></MenuItem>
-            <MenuItem><Link href="/products/express"><a>Pandora机器数据分析平台</a></Link></MenuItem>
+            <MenuItem><Link href="/products/pandora"><a>Pandora机器数据分析平台</a></Link></MenuItem>
           </SubMenu>
           <SubMenu title="解决方案">
             <MenuItem><Link href="/products/ess"><a>监控视频边缘存储解决方案</a></Link></MenuItem>

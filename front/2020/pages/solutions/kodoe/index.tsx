@@ -71,7 +71,7 @@ function PageContent() {
         <LinkGroup title="相关产品">
           <LinkItem href="/products/kodo">对象存储</LinkItem>
           <LinkItem href="/products/dora">智能多媒体服务</LinkItem>
-          <LinkItem href="/products/express">数据分析平台</LinkItem>
+          <LinkItem href="/products/pandora">数据分析平台</LinkItem>
         </LinkGroup>
       </LinkGroups>
 

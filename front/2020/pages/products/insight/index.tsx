@@ -62,7 +62,7 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem href="/products/express">
+          <PageNoticeItem href="/products/pandora">
             平台全面升级，点击了解最新特性
           </PageNoticeItem>
         </PageNoticeGroup>

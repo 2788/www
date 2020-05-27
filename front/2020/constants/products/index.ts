@@ -77,5 +77,5 @@ export const urlMap = {
   [Product.Plsv]: '/products/plsv',
   [Product.Plms]: '/products/plms',
   [Product.Insight]: '/products/insight',
-  [Product.Express]: '/products/express'
+  [Product.Express]: '/products/pandora'
 }

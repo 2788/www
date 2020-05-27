@@ -27,7 +27,7 @@ export default function Overlay() {
         </SubMenu>
         <SubMenu title="机器数据智能">
           <MenuItem><Link href="/products/insight"><a>智能日志管理平台</a></Link></MenuItem>
-          <MenuItem><Link href="/products/express"><a>Pandora 机器数据分析平台</a></Link></MenuItem>
+          <MenuItem><Link href="/products/pandora"><a>Pandora 机器数据分析平台</a></Link></MenuItem>
         </SubMenu>
       </SubMenu>
       <SubMenu title="方案">

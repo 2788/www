@@ -101,7 +101,7 @@ export default function Pc() {
                 相关文档：
                 <a
                   className={styles.link}
-                  href="/products/express"
+                  href="/products/pandora"
                   title="大数据"
                 >
                   大数据
