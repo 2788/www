@@ -38,16 +38,19 @@ export default function IndexPageBanner(props: IndexPageBannerProps) {
     return <div className={styles.iconWrapper}>{icon}</div>
   }
 
+  const bgColorStyle = {
+    backgroundColor: bgColor
+  }
+
   const bgStyle = {
-    backgroundColor: bgColor,
     backgroundImage: bgImg ? `url(${bgImg})` : '',
     backgroundPosition: 'center',
     backgroundSize: 'cover'
   }
 
   return (
-    <div className={classnames(styles.mainWrapper, styles.index, className)} style={bgStyle}>
-      <div className={classnames(styles.contentWrapper)}>
+    <div className={classnames(styles.mainWrapper, styles.index, className)} style={bgColorStyle}>
+      <div className={classnames(styles.contentWrapper)} style={bgStyle}>
         <div className={styles.content}>
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.desc}>{desc}</div>

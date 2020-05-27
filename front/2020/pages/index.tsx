@@ -46,35 +46,51 @@ function useBannerImg() {
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
-  const btns = [
-    <Button key="1" href="/invite" type="default">立即使用</Button>
-  ]
-
   const headerBannerImgs = useBannerImg()
 
   return (
     <>
       <Carousel className={styles.headerBanner}>
         <PageBanner
-          title={<h2 className={styles.headerBannerTitle}>云上助力 共抗疫情</h2>}
-          desc={<span className={styles.headerBannerDesc}>降本增效 助力复工</span>}
-          bgColor="#34A1EC"
-          bgImg={headerBannerImgs[0]}
-          btns={btns}
-        />
-        <PageBanner
-          title={<h2 className={styles.headerBannerTitle}>海外云存储 优惠专场</h2>}
+          title={<span className={styles.headerBannerTitle}>海外云存储 优惠专场</span>}
           desc={<span className={styles.headerBannerDesc}>免费套餐 任你选 出海快人一步</span>}
-          bgColor="#334665"
+          bgColor="#0A1639"
           bgImg={headerBannerImgs[1]}
-          btns={btns}
+          btns={[
+            <Button
+              key="1"
+              className={styles.btnKodoOverseaPrimary}
+              href="/products/kodo/goglobal?entry=index-banner"
+              type="default"
+            >
+              查看详情
+            </Button>
+          ]}
         />
         <PageBanner
-          title={<h2 className={styles.headerBannerTitle}>私有云存储</h2>}
+          title={<span className={styles.headerBannerTitle}>私有云存储</span>}
           desc={<span className={styles.headerBannerDesc}>企业数字资产的管理专家</span>}
           bgColor="#20176B"
           bgImg={headerBannerImgs[2]}
-          btns={btns}
+          btns={[
+            <Button
+              key="1"
+              className={styles.btnKodoePrimary}
+              href="/products/private-cloud-kodo?entry=index-banner"
+              type="default"
+            >
+              查看详情
+            </Button>,
+            <Button
+              key="2"
+              className={styles.btnKodoeHollow}
+              href="https://developer.qiniu.com/kodoe/manual/5867/a-free-trial"
+              type="primary-hollow"
+              withBorder
+            >
+              下载试用
+            </Button>
+          ]}
         />
       </Carousel>
 

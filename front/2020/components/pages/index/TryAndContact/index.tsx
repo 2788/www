@@ -33,7 +33,7 @@ export default function TryAndContact() {
         title="联系我们"
         desc="我们为您提供个性化的售前购买咨询服务，以及全面的技术售后服务。"
       >
-        <Button withBorder>点击咨询</Button>
+        <Button type="hollow" withBorder>点击咨询</Button>
       </Panel>
     </Section>
   )

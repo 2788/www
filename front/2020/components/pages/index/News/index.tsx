@@ -23,7 +23,9 @@ function Social({ wxUrl }: SocialProps) {
     <div className={styles.social}>
       <WechatIcon className={styles.wechat} />
       <div className={styles.tooltip}><QRCode size={100} value={wxUrl} /></div>
-      <WeiboIcon className={styles.weibo} />
+      <Link href="https://weibo.com/qiniutek">
+        <WeiboIcon className={styles.weibo} />
+      </Link>
     </div>
   )
 }
