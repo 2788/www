@@ -2,9 +2,11 @@ import React from 'react'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 import Link from 'next/link'
 
+import style from './index.less'
+
 export default function Overlay() {
   return (
-    <Menu mode="inline">
+    <Menu mode="inline" className={style.menu}>
       <SubMenu mode="inline" title="产品">
         <SubMenu title="存储与数据湖">
           <MenuItem><Link href="/products/kodo"><a>对象存储</a></Link></MenuItem>

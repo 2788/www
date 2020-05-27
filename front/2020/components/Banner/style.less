@@ -2,7 +2,11 @@
 
 .banner {
   height: 350px;
-  background-color: #34A1EC;
+  background-color: #34a1ec;
+
+  .mobile({
+    height: 140px;
+  });
 
   .bannerContent {
     .centered();
@@ -12,14 +16,14 @@
     flex-direction: column;
     justify-content: center;
     color: @grey-1;
-    background-position: right;
-    background-size: contain;
+    background-position: right 164px center;
+    background-size: 200px;
     background-repeat: no-repeat;
 
     .mobile({
       padding: 40px 16px;
-      height: auto;
-      background-image: none !important;
+      background-size: 84px;
+      background-position: right 30px center;
     });
   }
 
@@ -40,8 +44,9 @@
 
     .mobile({
       width: auto;
+      max-width: 220px;
       margin-top: 8px;
-      font-size: 14px;
+      font-size: 12px;
       line-height: 22px;
     });
   }

@@ -65,7 +65,7 @@ function Suggestion({ keyword }: { keyword: string }) {
 
   if (!items || items.length <= 0) {
     return withLoading(loading)(
-      <ResultEmpty className={style.empty} tip="未找到相关产品" />
+      <ResultEmpty className={style.empty} tip="未找到相关产品" style={{ visibility: loading ? 'hidden' : 'visible' }} />
     )
   }
 

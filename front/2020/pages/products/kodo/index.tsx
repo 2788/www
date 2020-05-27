@@ -78,13 +78,8 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/kodo/api/1731/api-overview">API 文档</LinkItem>
           <LinkItem href="https://developer.qiniu.com/kodo/sdk/1240/objc">SDK 文档</LinkItem>
         </LinkGroup>
-        <LinkGroup title="FAQ（常见问题）">
-          <LinkItem href="https://www.qiniu.com">官网1</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网2</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网3</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网4</LinkItem>
-          <LinkItem href="https://www.qiniu.com">官网5</LinkItem>
-        </LinkGroup>
+        {/* TODO 上线后补充 */}
+        <LinkGroup title="FAQ（常见问题）" />
         <LinkGroup title="相关材料">
           <LinkItem href="/sla-kodo">用户协议</LinkItem>
         </LinkGroup>

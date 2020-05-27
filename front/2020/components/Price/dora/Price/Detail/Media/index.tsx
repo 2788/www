@@ -104,7 +104,7 @@ const data = [
     key: 1,
     type: renderTemplate(`
       视频转码（H.264 及其他）<br />
-      <a class="${style.link}">H.264 转码时长包特惠选购 >></a>
+      <a href="https://www.qiniu.com/events/dora-package" target="_blank" ref="noopener" class="${style.link}">H.264 转码时长包特惠选购 >></a>
     `),
     out: '视频转码 SD240（ 320x240）',
     low_frame_price: '0.0057 元/分钟',
@@ -147,7 +147,10 @@ const data = [
   },
   {
     key: 7,
-    type: '视频转码（H.265）',
+    type: renderTemplate(`
+      视频转码（H.265）<br />
+      <a href="https://www.qiniu.com/events/dora-package#dora-package-h265" target="_blank" ref="noopener" class="${style.link}">H.265 转码时长包特惠选购 >></a>
+    `),
     out: '视频转码 SD240（ 320x240）',
     low_frame_price: '0.0285 元/分钟',
     high_frame_price: '0.057 元/分钟'

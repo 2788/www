@@ -9,7 +9,7 @@ import style from './index.less'
 
 export default function PriceDetail() {
   return (
-    <Tabs defaultValue="1">
+    <Tabs defaultValue="1" size="middle">
       <TabPane value="1" tab="音视频处理"><Media /></TabPane>
       <TabPane value="2" tab="图片处理"><Picture /></TabPane>
       <TabPane value="3" tab="文件处理"><File /></TabPane>

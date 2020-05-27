@@ -6,18 +6,22 @@
 
 import cls from 'classnames'
 import React, { CSSProperties, HTMLAttributes } from 'react'
+import { useMobile } from 'hooks/ua'
 import style from './style.less'
 
 export type Props = HTMLAttributes<HTMLElement> & {
   background: string
-  backgroundSize?: string
+  pcBackgroundSize?: string
+  mobileBackgroundSize?: string
 }
 
-export default function Banner({ background, backgroundSize, children, className, ...others }: Props) {
+export default function Banner(props: Props) {
+  const { background, pcBackgroundSize = '200px', mobileBackgroundSize = '84px', children, className, ...others } = props
+  const isMobile = useMobile()
 
   const contentStyle: CSSProperties = {
     backgroundImage: `url(${background})`,
-    backgroundSize
+    backgroundSize: isMobile ? mobileBackgroundSize : pcBackgroundSize
   }
 
   return (

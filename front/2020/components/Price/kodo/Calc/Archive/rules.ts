@@ -87,18 +87,18 @@ const south: CalcRule = {
           price: 0.1,
           min: 100,
           max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '类型转换次数',
+          price: 0.1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
         }
       ]
     },
     {
       name: '数据取回',
       price: 0.08,
-      min: 0,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '类型转换次数',
-      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -111,109 +111,124 @@ const east: CalcRule = {
   desc: '华东',
   items: [
     {
-      name: '存储空间费用',
-      desc: '0-10 GB',
-      price: 0.032,
-      min: 0,
-      max: 10
+      type: 'group',
+      name: '存储费用',
+      items: [
+        {
+          name: '存储空间费用',
+          desc: '0-10 GB',
+          price: 0.032,
+          min: 0,
+          max: 10
+        },
+        {
+          name: '存储空间费用',
+          desc: '10 GB - 1 TB',
+          price: 0.032,
+          min: 10,
+          max: 1 * 1024
+        },
+        {
+          name: '存储空间费用',
+          desc: '1 TB - 200 TB',
+          price: 0.032,
+          min: 1 * 1024,
+          max: 200 * 1024
+        },
+        {
+          name: '存储空间费用',
+          desc: '200 TB - 5 PB',
+          price: 0.06,
+          min: 200 * 1024,
+          max: 5 * 1024 * 1024
+        },
+        {
+          name: '存储空间费用',
+          desc: '5 PB 以上',
+          price: 0.06,
+          min: 5 * 1024 * 1024,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
     },
     {
-      name: '存储空间费用',
-      desc: '10 GB - 1 TB',
-      price: 0.032,
-      min: 10,
-      max: 1 * 1024
+      type: 'group',
+      name: '流量费用',
+      items: [
+        {
+          name: '外网流出流量',
+          desc: '0-100TB',
+          price: 0.29,
+          min: 0,
+          max: 100 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '100TB 以上',
+          price: 0.26,
+          min: 100 * 1024,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'CDN',
+          desc: '0-10 GB',
+          price: 0.15,
+          min: 0,
+          max: 10
+        },
+        {
+          name: 'CDN',
+          desc: '10 GB 以上',
+          price: 0.15,
+          min: 10,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
     },
     {
-      name: '存储空间费用',
-      desc: '1 TB - 200 TB',
-      price: 0.032,
-      min: 1 * 1024,
-      max: 200 * 1024
-    },
-    {
-      name: '存储空间费用',
-      desc: '200 TB - 5 PB',
-      price: 0.06,
-      min: 200 * 1024,
-      max: 5 * 1024 * 1024
-    },
-    {
-      name: '存储空间费用',
-      desc: '5 PB 以上',
-      price: 0.06,
-      min: 5 * 1024 * 1024,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '外网流出流量',
-      desc: '0-100TB',
-      price: 0.29,
-      min: 0,
-      max: 100 * 1024
-    },
-    {
-      name: '外网流出流量',
-      desc: '100TB 以上',
-      price: 0.26,
-      min: 100 * 1024,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: 'CDN',
-      desc: '0-10 GB',
-      price: 0.15,
-      min: 0,
-      max: 10
-    },
-    {
-      name: 'CDN',
-      desc: '10 GB 以上',
-      price: 0.15,
-      min: 10,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: 'PUT/DELETE',
-      desc: '0-10 万次',
-      price: 0.1,
-      min: 0,
-      max: 10,
-      unitAdaptor: countUnitAdaptor
-    },
-    {
-      name: 'PUT/DELETE',
-      desc: '10 万次以上',
-      price: 0.1,
-      min: 10,
-      max: Number.POSITIVE_INFINITY,
-      unitAdaptor: countUnitAdaptor
-    },
-    {
-      name: 'GET',
-      desc: '0-100 万次',
-      price: 0.1,
-      min: 0,
-      max: 100,
-      unitAdaptor: countUnitAdaptor
-    },
-    {
-      name: 'GET',
-      desc: '100 万次以上',
-      price: 0.1,
-      min: 100,
-      max: Number.POSITIVE_INFINITY,
-      unitAdaptor: countUnitAdaptor
+      type: 'group',
+      name: '请求费用',
+      unitAdaptor: countUnitAdaptor,
+      items: [
+        {
+          name: 'PUT/DELETE',
+          desc: '0-10 万次',
+          price: 0.1,
+          min: 0,
+          max: 10
+        },
+        {
+          name: 'PUT/DELETE',
+          desc: '10 万次以上',
+          price: 0.1,
+          min: 10,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'GET',
+          desc: '0-100 万次',
+          price: 0.1,
+          min: 0,
+          max: 100
+        },
+        {
+          name: 'GET',
+          desc: '100 万次以上',
+          price: 0.1,
+          min: 100,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '类型转换次数',
+          price: 0.1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
     },
     {
       name: '数据取回',
       price: 0.06,
-      min: 0,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '类型转换次数',
-      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -292,46 +307,49 @@ const us: CalcRule = {
       max: Number.POSITIVE_INFINITY
     },
     {
-      name: 'PUT/DELETE',
-      desc: '0-10 万次',
-      price: 0.3,
-      min: 0,
-      max: 10,
-      unitAdaptor: countUnitAdaptor
-    },
-    {
-      name: 'PUT/DELETE',
-      desc: '10 万次以上',
-      price: 0.3,
-      min: 10,
-      max: Number.POSITIVE_INFINITY,
-      unitAdaptor: countUnitAdaptor
-    },
-    {
-      name: 'GET',
-      desc: '0-100 万次',
-      price: 0.1,
-      min: 0,
-      max: 100,
-      unitAdaptor: countUnitAdaptor
-    },
-    {
-      name: 'GET',
-      desc: '100 万次以上',
-      price: 0.1,
-      min: 100,
-      max: Number.POSITIVE_INFINITY,
-      unitAdaptor: countUnitAdaptor
+      type: 'group',
+      name: '请求费用',
+      unitAdaptor: countUnitAdaptor,
+      items: [
+        {
+          name: 'PUT/DELETE',
+          desc: '0-10 万次',
+          price: 0.3,
+          min: 0,
+          max: 10
+        },
+        {
+          name: 'PUT/DELETE',
+          desc: '10 万次以上',
+          price: 0.3,
+          min: 10,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'GET',
+          desc: '0-100 万次',
+          price: 0.1,
+          min: 0,
+          max: 100
+        },
+        {
+          name: 'GET',
+          desc: '100 万次以上',
+          price: 0.1,
+          min: 100,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '类型转换次数',
+          price: 0.1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
     },
     {
       name: '数据取回',
       price: 0.01,
-      min: 0,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '类型转换次数',
-      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }

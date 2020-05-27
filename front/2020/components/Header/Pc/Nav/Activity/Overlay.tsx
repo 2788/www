@@ -13,7 +13,7 @@ export default function Overlay() {
         <DropdownMenuItem><Link href="/products/kodo/goglobal"><a>出海企业扶持</a></Link></DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuGroup title="市场活动">
-        <DropdownMenuItem><Link href=""><a>邀请好友 <Hot /></a></Link></DropdownMenuItem>
+        <DropdownMenuItem><Link href="/invite"><a>邀请好友 <Hot /></a></Link></DropdownMenuItem>
       </DropdownMenuGroup>
     </DropdownMenu>
   )

@@ -5,7 +5,7 @@ import ResultEmpty from 'components/ResultEmpty'
 import DeveloperSiteSearch from 'components/Header/DeveloperSiteSearch'
 import { getSuggestions } from 'apis/search'
 import { urlForSearch } from 'utils/route'
-import { withLoading } from 'utils/loading'
+import Loading from 'components/UI/Loading'
 
 import style from './style.less'
 
@@ -33,8 +33,10 @@ function Suggestion({ keyword }: Props) {
   )
 
   if (!items || items.length <= 0) {
-    return withLoading(loading)(
-      <ResultEmpty className={style.empty} tip="未找到相关产品" />
+    return (
+      <Loading loading={loading}>
+        <ResultEmpty className={style.empty} tip="未找到相关产品" style={{ visibility: loading ? 'hidden' : 'visible' }} />
+      </Loading>
     )
   }
 
@@ -51,9 +53,11 @@ function Suggestion({ keyword }: Props) {
     )
   )
 
-  return withLoading(loading)(
-    <ul className={style.resultList}>
-      {itemsView}
-    </ul>
+  return (
+    <Loading loading={loading}>
+      <ul className={style.resultList}>
+        {itemsView}
+      </ul>
+    </Loading>
   )
 }

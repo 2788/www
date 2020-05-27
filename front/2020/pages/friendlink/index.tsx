@@ -105,9 +105,9 @@ function FriendLinkGroup({
 function PageContent() {
   return (
     <>
-      <Banner background={BannerIcon} backgroundSize="200px">
+      <Banner background={BannerIcon}>
         <Title>平等互利 共创双赢</Title>
-        <Desc>七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。通过审核的工具、插件、SDK将会在七牛云开发者中心社区资源上线。并且，您可以免费享受一定额度的云服务一整年。</Desc>
+        <Desc>欢迎与七牛云交换友情链接，交换条件：PR &gt;= 5<br />联系邮箱：marketing@qiniu.com</Desc>
       </Banner>
       <PartnerGroup title="合作伙伴">
         <PartnerItem pic={PartnerImg3wcoffice} alt="3W Coffice" />

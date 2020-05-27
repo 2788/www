@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180px" height="180px" viewBox="0 0 180 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 16</title>
+    <defs>
+        <linearGradient x1="73.1837385%" y1="2.8877444%" x2="13.7259239%" y2="82.9544669%" id="linearGradient-1">
+            <stop stop-color="#E5F6FC" offset="0%"></stop>
+            <stop stop-color="#C7D1F8" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#6BC9FF" offset="0%"></stop>
+            <stop stop-color="#3B8EFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="存储与数据湖-对象存储02✅" transform="translate(-424.000000, -3542.000000)">
+            <g id="编组-16" transform="translate(424.000000, 3542.000000)">
+                <circle id="椭圆形" fill="url(#linearGradient-1)" cx="90" cy="90" r="90"></circle>
+                <rect id="矩形备份-3" fill="#52AAFF" x="29" y="41" width="29" height="11"></rect>
+                <rect id="矩形备份-4" fill="#52AAFF" x="29" y="88" width="29" height="11"></rect>
+                <rect id="矩形备份-5" fill="#52AAFF" x="29" y="132" width="29" height="11"></rect>
+                <rect id="矩形备份-6" fill="#52AAFF" x="29" y="153" width="29" height="11"></rect>
+                <circle id="椭圆形备份-5" fill="#FFFFFF" cx="34.5" cy="46.5" r="2.5"></circle>
+                <circle id="椭圆形备份-6" fill="#FFFFFF" cx="34.5" cy="93.5" r="2.5"></circle>
+                <circle id="椭圆形备份-7" fill="#FFFFFF" cx="34.5" cy="137.5" r="2.5"></circle>
+                <circle id="椭圆形备份-8" fill="#FFFFFF" cx="34.5" cy="158.5" r="2.5"></circle>
+                <g id="编组-13" transform="translate(76.000000, 91.000000) rotate(-270.000000) translate(-76.000000, -91.000000) translate(8.000000, 74.000000)" stroke-linecap="round">
+                    <polyline id="路径-14" stroke="#75B5FF" stroke-linejoin="round" points="59.5 0.5 59.5 12.7599107 0.5 12.7599107 0.5 32.5"></polyline>
+                    <polyline id="路径-14备份" stroke="#75B5FF" stroke-linejoin="round" transform="translate(108.000000, 17.000000) scale(-1, 1) translate(-108.000000, -17.000000) " points="135.5 0.5 135.5 14.4910252 80.5 14.4910252 80.5 33.5"></polyline>
+                    <polyline id="路径-15" stroke="#8ED5FF" stroke-linejoin="round" points="65.5 0.5 65.5 17.9443846 24.5 17.9443846 24.5 33.5"></polyline>
+                    <polyline id="路径-15备份" stroke="#8ED5FF" stroke-linejoin="round" transform="translate(96.000000, 17.000000) scale(-1, 1) translate(-96.000000, -17.000000) " points="115.5 0.5 115.5 17.9443846 76.5 17.9443846 76.5 33.5"></polyline>
+                    <line x1="71" y1="0.5" x2="71" y2="33.5" id="路径-16" stroke="#55C0FF"></line>
+                </g>
+                <g id="zhuji-3" transform="translate(93.000000, 42.000000)" fill-rule="nonzero">
+                    <path d="M4.35377163,-4.26325641e-14 L60.5137716,-4.26325641e-14 C63.3937717,-4.26325641e-14 64.8337716,1.44000001 64.8337716,4.32000004 L64.8337716,90.72 C64.8337716,93.6 63.3937716,95.04 60.5137716,95.04 L4.35377163,95.04 C1.47377161,95.04 0.0337715916,93.6 0.0337715916,90.72 L0.0337715916,4.32000004 C0.0337715916,1.44000001 1.47377161,-4.26325641e-14 4.35377163,-4.26325641e-14 Z" id="路径" fill="url(#linearGradient-2)"></path>
+                    <path d="M8.67377158,8.63999999 L56.1937716,8.63999999 L56.1937716,21.6 L8.67377158,21.6 L8.67377158,8.63999999 Z M8.67377158,25.92 L56.1937716,25.92 L56.1937716,38.88 L8.67377158,38.88 L8.67377158,25.92 Z" id="形状" fill="#E1EBFF"></path>
+                    <path d="M25.9537716,58.32 C25.9537716,61.8988052 28.8549664,64.8 32.4337716,64.8 C36.0125768,64.8 38.9137716,61.8988052 38.9137716,58.32 C38.9137716,54.7411948 36.0125768,51.8399999 32.4337716,51.8399999 C28.8549664,51.8399999 25.9537716,54.7411948 25.9537716,58.32 Z" id="路径" fill="#FFFFFF"></path>
+                    <path d="M28.3297715,72.36 C28.3295453,73.9035382 29.1528832,75.3299231 30.4895888,76.1017575 C31.8262943,76.8735919 33.4732488,76.8735919 34.8099544,76.1017575 C36.1466599,75.3299231 36.9699978,73.9035382 36.9697716,72.36 C36.9699978,70.8164619 36.1466599,69.390077 34.8099544,68.6182426 C33.4732488,67.8464082 31.8262943,67.8464082 30.4895888,68.6182426 C29.1528832,69.390077 28.3295453,70.8164619 28.3297715,72.36 Z" id="路径" fill="#C9DBFF"></path>
+                </g>
+                <rect id="矩形" fill="#52AAFF" x="30" y="17" width="29" height="11"></rect>
+                <circle id="椭圆形" fill="#FFFFFF" cx="35.5" cy="22.5" r="2.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from 'components/Price/Layout'
 import Banner from 'components/Price/Banner'
-import PricePane from 'components/Price/audit/Price'
+import PricePane from 'components/Price/censor/Price'
 
 function Page() {
   return (

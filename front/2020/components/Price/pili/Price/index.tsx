@@ -12,14 +12,14 @@ import style from './index.less'
 export default function Price() {
   return (
     <PricePane>
-      <PricePaneSection title="计费方式">
+      <PricePaneSection title="计费方式" padding>
         <p className={style.text}>
           直播云服务的基础计费项为带宽计费。若选择流量计费，支持购买直播流量资源包进行流量抵扣。（开通流量计费请联系销售 400-808-9176 转 1）。
           此外还提供直播转码、直播鉴黄以及导播台等服务，会根据具体使用情况单独进行计费。
         </p>
       </PricePaneSection>
       <PricePaneSection title="价格详情">
-        <Tabs defaultValue="1">
+        <Tabs defaultValue="1" size="middle">
           <TabPane value="1" tab="直播日峰值带宽计费">
             <p>按峰值带宽计费是以当日直播观看区域所在节点直播加速服务分别产生的带宽最高值（单位 Mbps）为结算标准。</p>
             <p style={{ marginBottom: '24px' }}>如需使用 95 峰值带宽计费，请联系销售或 <a className={style.link} href="https://support.qiniu.com/tickets/new">提交工单</a> 申请。</p>

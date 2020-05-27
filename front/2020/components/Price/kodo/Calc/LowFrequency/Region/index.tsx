@@ -67,18 +67,18 @@ export default function Region({ region, desc, onChange }: RegionProps) {
           <InputNumber onChange={handleValueChange(1)} addonAfter={selectAfter(1)} />
         </div>
         <div className={style.areaItem}>
-          <p>GET 读请求数/月</p>
-          <InputNumber onChange={handleValueChange(3)} addonAfter="万次" />
+          <p>CDN 回源流出流量/月</p>
+          <InputNumber onChange={handleValueChange(2)} addonAfter={selectAfter(2)} />
         </div>
       </div>
       <div className={style.areaRow}>
         <div className={style.areaItem}>
-          <p>PUT/DELETE 写请求数/月</p>
-          <InputNumber onChange={handleValueChange(4)} addonAfter="万次" />
+          <p>GET 读请求数/月</p>
+          <InputNumber onChange={handleValueChange(3)} addonAfter="万次" />
         </div>
         <div className={style.areaItem}>
-          <p>CDN 回源流出流量/月</p>
-          <InputNumber onChange={handleValueChange(2)} addonAfter={selectAfter(2)} />
+          <p>PUT/DELETE 写请求数/月</p>
+          <InputNumber onChange={handleValueChange(4)} addonAfter="万次" />
         </div>
         <div className={style.areaItem}>
           <p>数据取回/月</p>

@@ -78,7 +78,7 @@ function Card(props: CardProps) {
           <span className={style.number}>{price}</span>
           <span>/GB/月</span>
         </p>
-        <Button className={style.button} href={detailLink} withBorder>
+        <Button type="hollow" className={style.button} href={detailLink} withBorder>
           了解详情
         </Button>
       </div>

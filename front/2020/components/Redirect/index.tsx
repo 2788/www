@@ -5,6 +5,7 @@
  */
 
 import { useEffect } from 'react'
+import { parse } from 'query-string'
 
 import { useRouter } from 'next/router'
 import { useHash } from 'hooks/url'
@@ -22,9 +23,12 @@ export default function Redirect(props: Props) {
   /** 默认带上 query && hash */
   useEffect(() => {
     const { query, replace } = router
+    const pathname = target.split('?')[0]
+    const targetQuery = parse(target.split('?')[1] || '')
+
     replace({
-      pathname: target,
-      query,
+      pathname,
+      query: { ...query, ...targetQuery },
       hash
     })
   }, [target, router, hash])

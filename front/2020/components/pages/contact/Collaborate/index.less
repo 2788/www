@@ -5,10 +5,20 @@
   height: 316px;
   padding: 24px;
   background: @grey-1;
+
+  .mobile({
+    width: 100%;
+  });
 }
 
 .cardIcon {
   margin-bottom: 16px;
+
+  .mobile({
+    float: left;
+    margin-right: 15px;
+    margin-top: 5px;
+  });
 }
 
 .cardTitle {
@@ -17,11 +27,16 @@
   h3 {
     margin-bottom: 4px;
     font-size: 20px;
+    font-weight: 400;
   }
 
   p {
     color: @grey-6;
   }
+
+  .mobile({
+    margin-bottom: 20px;
+  });
 }
 
 .cardItem {
@@ -30,9 +45,22 @@
   p {
     margin-bottom: 8px;
     color: @grey-5;
+
+    .mobile({
+      margin-bottom: 4px;
+    });
   }
 
   .link {
     color: @blue-6;
   }
+
+  .mobile({
+    display: inline-block;
+    margin-bottom: 0;
+
+    + .cardItem {
+      float: right;
+    }
+  });
 }

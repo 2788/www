@@ -12,7 +12,13 @@ import Scene, {
   Block as SceneBlock
 } from 'components/Product/Scene'
 
-import SceneIconFile from './scene-icon-file.svg'
+import Scene1 from './images/01.svg'
+import Scene2 from './images/02.svg'
+import Scene3 from './images/03.svg'
+import Scene4 from './images/04.svg'
+import Scene5 from './images/05.svg'
+import Scene6 from './images/06.svg'
+import Scene7 from './images/07.svg'
 
 import styles from './style.less'
 
@@ -21,7 +27,7 @@ export default function KodoScene() {
     <Scene name="scene" title="适用场景" grey>
       <ScenePanel name="scene-tab-1" title="私有云存储" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene1 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -38,7 +44,7 @@ export default function KodoScene() {
 
       <ScenePanel name="scene-tab-2" title="多媒体数据处理" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene2 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -53,7 +59,7 @@ export default function KodoScene() {
 
       <ScenePanel name="scene-tab-3" title="内容加速分发" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene3 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -68,7 +74,7 @@ export default function KodoScene() {
 
       <ScenePanel name="scene-tab-4" title="海量数据高并发" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene4 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -83,7 +89,7 @@ export default function KodoScene() {
 
       <ScenePanel name="scene-tab-5" title="备份和归档" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene5 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -99,7 +105,7 @@ export default function KodoScene() {
 
       <ScenePanel name="scene-tab-6" title="静态资源托管" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene6 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -115,7 +121,7 @@ export default function KodoScene() {
 
       <ScenePanel name="scene-tab-7" title="边缘存储" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneIconFile className={styles.sceneIcon} />
+          <Scene7 className={styles.sceneIcon} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>

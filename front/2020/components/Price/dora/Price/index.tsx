@@ -7,7 +7,7 @@ import style from './index.less'
 export default function Price() {
   return (
     <PricePane>
-      <PricePaneSection title="计费方式" className={style.mode}>
+      <PricePaneSection title="计费方式" className={style.mode} padding>
         <p className={style.text}>
           智能多媒体服务是一款后付费产品，每月 3～5 日生成上个月的账单并进行结算。
           音视频转码按分钟收费。部分图片处理按图片原文件的大小计算数据的处理量进行计量，按量付费，每月提供一定量免费处理量。

@@ -12,7 +12,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="价格详情" className={style.desc}>
-        <Tabs defaultValue="1">
+        <Tabs defaultValue="1" size="middle">
           <TabPane value="1" tab="TrustAsia 证书"><TrustAsia /></TabPane>
           <TabPane value="2" tab="Geotrust 证书"><Geotrust /></TabPane>
           <TabPane value="3" tab="DigiCert 证书"><DigiCert /></TabPane>

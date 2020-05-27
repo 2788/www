@@ -26,35 +26,18 @@ export default function Region({ region, desc, onChange }: RegionProps) {
     items: [
       { name: '存储空间费用', desc: '存储空间/月', count: 0, unit: 'GB' },
       { name: '外网流出流量', desc: '外网流出流量/月', count: 0, unit: 'GB' },
+      { name: 'CDN', desc: 'CDN 回源流出流量/月', count: 0, unit: 'GB' },
       { name: 'GET', desc: 'GET 读请求数/月', count: 0, unit: '万次' },
       { name: 'PUT/DELETE', desc: 'PUT/DELETE 写请求数/月', count: 0, unit: '万次' },
-      { name: 'CDN', desc: 'CDN 回源流出流量/月', count: 0, unit: 'GB' }
+      { name: '类型转换次数', desc: '存储类型转换/月', count: 0, unit: '万次' }
     ]
   })
 
-  function handleStorageChange(value: number) {
-    inputRef.current.items[0].count = value
-    onChange(inputRef.current)
-  }
-
-  function handleDataChange(value: number) {
-    inputRef.current.items[1].count = value
-    onChange(inputRef.current)
-  }
-
-  function handleGetChange(value: number) {
-    inputRef.current.items[2].count = value
-    onChange(inputRef.current)
-  }
-
-  function handlePutChange(value: number) {
-    inputRef.current.items[3].count = value
-    onChange(inputRef.current)
-  }
-
-  function handleCDNChange(value: number) {
-    inputRef.current.items[4].count = value
-    onChange(inputRef.current)
+  function handleValueChange(index: number) {
+    return (value: number) => {
+      inputRef.current.items[index].count = value
+      onChange(inputRef.current)
+    }
   }
 
   function handleCapacityUnitChange(unit: Unit, index: number) {
@@ -76,25 +59,29 @@ export default function Region({ region, desc, onChange }: RegionProps) {
       <div className={style.areaRow}>
         <div className={style.areaItem}>
           <p>存储空间/月</p>
-          <InputNumber onChange={handleStorageChange} addonAfter={selectAfter(0)} />
+          <InputNumber onChange={handleValueChange(0)} addonAfter={selectAfter(0)} />
         </div>
         <div className={style.areaItem}>
           <p>外网流出流量/月</p>
-          <InputNumber onChange={handleDataChange} addonAfter={selectAfter(1)} />
+          <InputNumber onChange={handleValueChange(1)} addonAfter={selectAfter(1)} />
         </div>
         <div className={style.areaItem}>
-          <p>GET 读请求数/月</p>
-          <InputNumber onChange={handleGetChange} addonAfter="万次" />
+          <p>CDN 回源流出流量/月</p>
+          <InputNumber onChange={handleValueChange(2)} addonAfter={selectAfter(4)} />
         </div>
       </div>
       <div className={style.areaRow}>
         <div className={style.areaItem}>
-          <p>PUT/DELETE 写请求数/月</p>
-          <InputNumber onChange={handlePutChange} addonAfter="万次" />
+          <p>GET 读请求数/月</p>
+          <InputNumber onChange={handleValueChange(3)} addonAfter="万次" />
         </div>
         <div className={style.areaItem}>
-          <p>CDN 回源流出流量/月</p>
-          <InputNumber onChange={handleCDNChange} addonAfter={selectAfter(4)} />
+          <p>PUT/DELETE 写请求数/月</p>
+          <InputNumber onChange={handleValueChange(4)} addonAfter="万次" />
+        </div>
+        <div className={style.areaItem}>
+          <p>类型转换次数/月</p>
+          <InputNumber onChange={handleValueChange(5)} addonAfter="万次" />
         </div>
       </div>
     </section>

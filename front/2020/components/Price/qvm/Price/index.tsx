@@ -31,10 +31,10 @@ const data = [
 export default function Price() {
   return (
     <PricePane>
-      <PricePaneSection title="计费模式">
+      <PricePaneSection title="计费模式" padding>
         <Table columns={columns} dataSource={data} pagination={false} />
       </PricePaneSection>
-      <PricePaneSection title="计费项总览">
+      <PricePaneSection title="计费项总览" padding>
         <Overall />
       </PricePaneSection>
     </PricePane>

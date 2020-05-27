@@ -102,7 +102,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="价格详情" className={style.mode}>
-        <Tabs defaultValue="1">
+        <Tabs defaultValue="1" size="middle">
           <TabPane value="1" tab="人脸核验">
             <Table bordered pagination={false} columns={columns1} dataSource={data1} />
           </TabPane>

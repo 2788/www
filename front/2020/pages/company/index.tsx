@@ -5,7 +5,7 @@
 import React from 'react'
 
 import Layout from 'components/Product/Layout'
-import PageBanner from 'components/Product/PageBanner'
+import Banner, { Title, Desc } from 'components/Banner'
 import PageNotice from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
 import Section from 'components/Product/Section'
@@ -18,7 +18,7 @@ import Timeline from 'components/company/Timeline'
 
 import styles from './style.less'
 
-import BannerIcon from './_images/banner-icon.svg'
+import banner from './_images/banner-icon.file.svg'
 import Culture1Img from './_images/culture1.svg'
 import Culture2Img from './_images/culture2.svg'
 import Culture3Img from './_images/culture3.svg'
@@ -29,12 +29,10 @@ function PageContent() {
 
   return (
     <>
-      <PageBanner
-        title="连接数据 重塑价值"
-        desc="用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量"
-        bgColor="#34A1EC"
-        icon={<BannerIcon />}
-      />
+      <Banner background={banner}>
+        <Title>连接数据 重塑价值</Title>
+        <Desc>用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量</Desc>
+      </Banner>
 
       <PageNotice>
         <div className={styles.overview}>

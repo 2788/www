@@ -18,6 +18,7 @@
 });
 
 body {
+  min-width: @centered-content-width;
   line-height: 1.5715;
   color: @grey-7;
   overflow-y: auto;
@@ -30,6 +31,7 @@ body {
   // 此时控制内容可见，以避免因首屏针对 PC 端逻辑生成内容，在移动端会有闪屏的问题
   .mobile({
     opacity: 0;
+    min-width: unset;
     &:global(.mounted) {
       opacity: 1;
     }

@@ -53,7 +53,7 @@ function Footer({ total, buyLink, onAdd, disabled }: Pick<CalcPaneProps, 'total'
       <div className={style.right}>
         <p className={style.price}><span className={style.num}>{total}</span> 元</p>
         <Button type="primary" href={buyLink}>立即购买</Button>
-        <Button disabled={disabled} onClick={onAdd} withBorder style={{ marginLeft: '12px' }}>加入预算清单</Button>
+        <Button type="hollow" disabled={disabled} onClick={onAdd} withBorder style={{ marginLeft: '12px' }}>加入预算清单</Button>
       </div>
     </div>
   )

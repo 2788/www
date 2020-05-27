@@ -2,7 +2,7 @@
  * @file 可切换的 tab 列表
  */
 
-import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState } from 'react'
+import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties } from 'react'
 import classnames from 'classnames'
 import { useOnChange } from 'hooks'
 import style from './style.less'
@@ -14,7 +14,8 @@ type ContextValue = {
 
 const tabContext = createContext<ContextValue | null>(null)
 
-export type Size = 'default' | 'small'
+// 72 40 56
+export type Size = 'default' | 'small' | 'middle'
 export type Theme = 'default' | 'white' // theme: white 适用于有底色的环境
 
 export type Props = {
@@ -39,6 +40,12 @@ export type Props = {
 const themeClassMap = {
   default: style.themeDefault,
   white: style.themeWhite
+}
+
+const sizeMap = {
+  default: null,
+  middle: style.middle,
+  small: style.small
 }
 
 export default function Tabs({
@@ -82,7 +89,7 @@ export default function Tabs({
   const wrapperClass = classnames(
     style.wrapper,
     className,
-    size === 'small' && style.small,
+    sizeMap[size],
     themeClassMap[theme]
   )
 
@@ -137,19 +144,20 @@ type TabPaneProps = {
   // 非激活自动销毁, 默认隐藏
   autoDestroy?: boolean
   children: ReactNode
+  style?: CSSProperties
 }
 
 export function TabPane(props: TabPaneProps) {
-  const { autoDestroy = false, className, value, children } = props
+  const { autoDestroy = false, className, value, children, style: _style } = props
   const tabsContext = useContext(tabContext)
 
   if (autoDestroy) {
     if (tabsContext?.value === value) {
-      return <div className={classnames(className)}>{children}</div>
+      return <div className={classnames(className)} style={_style}>{children}</div>
     }
 
     return null
   }
 
-  return <div className={classnames(className)} style={{ display: tabsContext?.value === value ? 'block' : 'none' }}>{children}</div>
+  return <div className={classnames(className)} style={{ ..._style, display: tabsContext?.value === value ? 'block' : 'none' }}>{children}</div>
 }

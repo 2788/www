@@ -89,18 +89,18 @@ const south: CalcRule = {
           price: 0.1,
           min: 100,
           max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '类型转换次数',
+          price: 0.1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
         }
       ]
     },
     {
       name: '数据取回',
       price: 0.06,
-      min: 0,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '类型转换次数',
-      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -219,18 +219,18 @@ const east: CalcRule = {
           price: 0.1,
           min: 100,
           max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '类型转换次数',
+          price: 0.1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
         }
       ]
     },
     {
       name: '数据取回',
       price: 0.06,
-      min: 0,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '类型转换次数',
-      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -352,18 +352,18 @@ const us: CalcRule = {
           price: 0.1,
           min: 100,
           max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '类型转换次数',
+          price: 0.1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
         }
       ]
     },
     {
       name: '数据取回',
       price: 0.06,
-      min: 0,
-      max: Number.POSITIVE_INFINITY
-    },
-    {
-      name: '类型转换次数',
-      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }

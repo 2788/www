@@ -11,7 +11,7 @@ import style from './index.less'
 
 export default function Collaborate() {
   return (
-    <Section name="collaborate" title="服务与合作" grey>
+    <Section name="collaborate" title="服务与合作">
       <Row>
         <Card className={style.card}>
           <CardIcon><MessageIcon /></CardIcon>

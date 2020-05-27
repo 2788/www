@@ -1,6 +1,7 @@
 @import '~utils/less/index.less';
 
 .bannerWrapper {
+  min-width: @centered-content-width;
   height: 163px;
   overflow: hidden;
   background-color: #34a1ec;
@@ -29,13 +30,17 @@
   margin-top: 45px;
 
   .tabBtn {
+    display: inline-block;
     width: 136px;
     height: 40px;
     line-height: 40px;
     font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    color: @blue-6;
     background: #fafafa;
-    border-bottom-left-radius: unset;
-    border-bottom-right-radius: unset;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
   }
 
   .tabBtn + .tabBtn {

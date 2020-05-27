@@ -1,6 +1,5 @@
 import React, { createContext, ReactNode, useState, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
-import Button from 'components/UI/Button'
 import { useQueryValue } from 'hooks/url'
 
 import style from './index.less'
@@ -64,8 +63,8 @@ export default function PriceBanner(props: PriceBannerProps) {
             <Select />
           </div>
           <div className={style.navigator}>
-            {panes.indexOf('price') > -1 && <Button className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</Button>}
-            {panes.indexOf('calc') > -1 && <Button className={classnames(style.tabBtn, active !== 'calc' && style.activeTab)} onClick={() => handleTabClick('calc')}>价格计算器</Button>}
+            {panes.indexOf('price') > -1 && <div className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</div>}
+            {panes.indexOf('calc') > -1 && <div className={classnames(style.tabBtn, active !== 'calc' && style.activeTab)} onClick={() => handleTabClick('calc')}>价格计算器</div>}
           </div>
         </div>
       </div>

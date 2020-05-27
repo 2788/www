@@ -5,11 +5,11 @@
 /* eslint-disable react/no-danger */
 
 import React from 'react'
-import Loading from 'components/UI/Loading'
 import { SearchResultItem, SearchResult as SearchResultData } from 'apis/search'
 import Pagination from 'components/UI/Pagination'
 import Link from 'components/Link'
 import ResultEmpty from 'components/ResultEmpty'
+import Loading from 'components/UI/Loading'
 import { useMobile } from 'hooks/ua'
 import style from './style.less'
 
@@ -70,8 +70,8 @@ export function ResultItem({ title, matched, url }: SearchResultItem) {
 
   const titleView = (
     isMobile
-    ? <h5 className={style.itemTitle} dangerouslySetInnerHTML={{ __html: title }}></h5>
-    : <h5 className={style.itemTitle}><Link href={url} dangerouslySetInnerHTML={{ __html: title }} /></h5>
+      ? <h5 className={style.itemTitle} dangerouslySetInnerHTML={{ __html: title }}></h5>
+      : <h5 className={style.itemTitle}><Link href={url} dangerouslySetInnerHTML={{ __html: title }} /></h5>
   )
 
   const contentView = (

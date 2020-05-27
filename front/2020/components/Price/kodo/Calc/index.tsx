@@ -22,11 +22,19 @@ export default function KodoCalc() {
   const [goods, setGoods] = useLocalStorage<Product[]>(STORAGE_KEY)
   const activeTabRef = useRef('1')
   const [calculator, setCalculator] = useState<Calculator | null>(null)
+  const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
     if (calculator) {
       setTotal(calculator.evaluate())
-      return calculator.listen(setTotal)
+      return calculator.listen(_total => {
+        setTotal(_total)
+        // 如果没有输入，或者有输入但是全都是 0
+        const shouldDisabled = calculator.getInputs().length === 0
+          || calculator.getInputs().filter(input => input.items.find(item => item.count > 0)).length === 0
+
+        setDisabled(shouldDisabled)
+      })
     }
   }, [setTotal, calculator])
 
@@ -46,13 +54,9 @@ export default function KodoCalc() {
     }
   }
 
-  // 如果没有输入，或者有输入但是全都是 0
-  const disabled = calculator?.getInputs().length === 0
-    || calculator?.getInputs().filter(input => input.items.find(item => item.count > 0)).length === 0
-
   return (
     <CalcPane disabled={disabled} onAdd={handleAdd} buyLink="https://marketing.qiniu.com/activity/kodopackage" total={total}>
-      <Tabs defaultValue="1" className={style.tabs} onChange={value => { activeTabRef.current = value }}>
+      <Tabs defaultValue="1" size="middle" className={style.tabs} onChange={value => { activeTabRef.current = value }}>
         <TabPane value="1" tab={tabMap[1]} autoDestroy><Standard setCalculator={setCalculator} /></TabPane>
         <TabPane value="2" tab={tabMap[2]} autoDestroy><LowFrequency setCalculator={setCalculator} /></TabPane>
         <TabPane value="3" tab={tabMap[3]} autoDestroy><Archive setCalculator={setCalculator} /></TabPane>
