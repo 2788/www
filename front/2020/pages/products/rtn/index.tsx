@@ -62,7 +62,7 @@ function PageContent() {
             icon={<ServerSideMergeIcon />}
             title="服务端合流"
           >
-            <FeatureDesc>解决主流混流方案的上下行带宽瓶颈问题和编解码问题，降低计算资源和网络带宽成本。</FeatureDesc>
+            <FeatureDesc>解决主流混流方案的上下行带宽瓶颈问题和编解码问题，降低计算资源和网络带宽成本</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -70,7 +70,7 @@ function PageContent() {
             icon={<SideWayIcon />}
             title="旁路直播"
           >
-            <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看。</FeatureDesc>
+            <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -78,7 +78,7 @@ function PageContent() {
             icon={<RealtimeRecordIcon />}
             title="实时录制"
           >
-            <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看。</FeatureDesc>
+            <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
 
@@ -89,7 +89,7 @@ function PageContent() {
             icon={<PersonalManagementIcon />}
             title="个性化管理"
           >
-            <FeatureDesc>支持动态邀人、踢人、禁音等多种管理权限，使聊天互动更加有序。</FeatureDesc>
+            <FeatureDesc>支持动态邀人、踢人、禁音等多种管理权限，使聊天互动更加有序</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -97,7 +97,7 @@ function PageContent() {
             icon={<RichMediaIcon />}
             title="智能富媒体处理"
           >
-            <FeatureDesc>提供水印、音视频转码、切片和拼接等基础的数据处理服务及自定义数据处理服务，满足各类音视频互动场景。</FeatureDesc>
+            <FeatureDesc>提供水印、音视频转码、切片和拼接等基础的数据处理服务及自定义数据处理服务，满足各类音视频互动场景</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -105,7 +105,7 @@ function PageContent() {
             icon={<YellowIdIcon />}
             title="鉴黄鉴暴恐"
           >
-            <FeatureDesc>云端实现黄暴恐图自动鉴别，有效规避涉黄、涉暴恐、涉政风险，让平台更安全稳定地运营。</FeatureDesc>
+            <FeatureDesc>云端实现黄暴恐图自动鉴别，有效规避涉黄、涉暴恐、涉政风险，让平台更安全稳定地运营</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

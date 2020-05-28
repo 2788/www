@@ -39,7 +39,6 @@ function PageContent() {
 
   const btns = useBtns(
     // TODO: 这边内容跟行为好像不太匹配？
-    { href: '/products/oem', children: '咨询详情' },
     { onClick: handleConsult, children: '体验 Demo' }
   )
 
@@ -47,7 +46,7 @@ function PageContent() {
     <>
       <PageBanner
         title="CDN OEM"
-        desc="成为七牛 CDN OEM合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的CDN服务能力，我们期待与您合作共赢。"
+        desc="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={<BannerIcon />} />
@@ -63,14 +62,14 @@ function PageContent() {
             icon={<SiteCustomize />}
             title="全站定制"
           >
-            <FeatureDesc>拥有自己的品牌，定制全站Logo，定制访问域名和线路 cnme。</FeatureDesc>
+            <FeatureDesc>拥有自己的品牌，定制全站 Logo，定制访问域名和线路 CNAME。</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="left-right"
             icon={<HighQualityLine />}
             title="优质线路资源"
           >
-            <FeatureDesc>依托七牛底层CDN融合技术，精选主流厂商1600+优质节点，全面覆盖20+运营商，全网无盲区。</FeatureDesc>
+            <FeatureDesc>依托七牛底层 CDN 融合技术，精选主流厂商 1600+ 优质节点，全面覆盖 20+ 运营商，全网无盲区。</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
 

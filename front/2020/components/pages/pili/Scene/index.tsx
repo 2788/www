@@ -39,7 +39,7 @@ export default function PiliScene() {
           <div className={styles.sceneContainer}>
             <p className={styles.sceneTitle}>场景描述</p>
             <p className={styles.sceneContent}>互联网的蓬勃发展以及线下电商转型的诉求越发突出，电子商务不再受限于某一个公司，真正成为一个领域。伴随着内容电商的火热发展，
-              越来越多在内容以及产品上深入沉淀的企业对底层服务的需求越来越高。七牛云为各位电商客户提供了端到端的应用解决方案并提供了业务24*7的支持保障服务，为客户服务保驾护航。</p>
+              越来越多在内容以及产品上深入沉淀的企业对底层服务的需求越来越高。七牛云为各位电商客户提供了端到端的应用解决方案并提供了业务 24*7 的支持保障服务，为客户服务保驾护航。</p>
             <p className={classnames(styles.sceneTitle, styles.client)}>客户案例</p>
             <SceneClientGroup>
               <SceneClientItem>

@@ -34,10 +34,14 @@ import EasyDeploymentToCDN from './_images/easy-deployment-to-cdn.svg'
 import HighCompatibility from './_images/high-compatibility.svg'
 import OneStepManagement from './_images/one-step-management.svg'
 
-import ChangBa from './_images/customer-changba.png'
-import PingAn from './_images/customer-pingan.png'
-import ShunFeng from './_images/customer-shunfeng.png'
-import YiDong from './_images/customer-yidong.png'
+import AnXing from './_images/customer-anxing.png'
+import HuangYou from './_images/customer-huangyou.png'
+import KuaiKan from './_images/customer-kuaikan.png'
+import MangGuo from './_images/customer-mangguo.png'
+import MoMo from './_images/customer-momo.png'
+import QiCheZhiJia from './_images/customer-qichezhijia.png'
+import TanTan from './_images/customer-tantan.png'
+import ZhongXin from './_images/customer-zhongxin.png'
 
 import BannerIcon from './_images/bannerIcon.svg'
 
@@ -152,13 +156,14 @@ function PageContent() {
       <SslScene />
 
       <CustomerCaseGroup>
-        <CustomerCase pic={ChangBa} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
-        <CustomerCase pic={ShunFeng} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
-        <CustomerCase pic={ShunFeng} />
+        <CustomerCase pic={ZhongXin} />
+        <CustomerCase pic={MoMo} />
+        <CustomerCase pic={AnXing} />
+        <CustomerCase pic={HuangYou} />
+        <CustomerCase pic={MangGuo} />
+        <CustomerCase pic={QiCheZhiJia} />
+        <CustomerCase pic={TanTan} />
+        <CustomerCase pic={KuaiKan} />
       </CustomerCaseGroup>
 
       <LinkGroups title="相关文档">

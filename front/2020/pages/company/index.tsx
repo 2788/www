@@ -79,7 +79,7 @@ function PageContent() {
             icon={<Culture1Img className={styles.coreIcon} />}
             title="做一个简单的人"
           >
-            <FeatureDesc>以认定方向为坚持目标，以奋斗者为发展根本，坚持劳有所得，多劳多得，赢得员工的信赖。</FeatureDesc>
+            <FeatureDesc>以认定方向为坚持目标，以奋斗者为发展根本，坚持劳有所得，多劳多得，赢得员工的信赖</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -87,7 +87,7 @@ function PageContent() {
             icon={<Culture2Img className={styles.coreIcon} />}
             title="做一款简单的产品"
           >
-            <FeatureDesc>以客户为中心，以结果为导向，坚持化繁为简，追求极致，赢得客户的信赖。</FeatureDesc>
+            <FeatureDesc>以客户为中心，以结果为导向，坚持化繁为简，追求极致，赢得客户的信赖</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -95,7 +95,7 @@ function PageContent() {
             icon={<Culture3Img className={styles.coreIcon} />}
             title="做一家简单的公司"
           >
-            <FeatureDesc>以社会责任为己任，以公司信用为重要资产，坚持言出必行，诚实守信，赢得社会的信赖。</FeatureDesc>
+            <FeatureDesc>以社会责任为己任，以公司信用为重要资产，坚持言出必行，诚实守信，赢得社会的信赖</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

@@ -27,11 +27,11 @@ export default function TryAndContact() {
         title="免费体验，知晓更多产品信息"
         desc="根据我们的操作提示，只需要点击几次鼠标，即可创建产品。"
       >
-        <Button type="primary">马上体验</Button>
+        <Button href="/events/free?entry=index" type="primary">马上体验</Button>
       </Panel>
       <Panel
         title="联系我们"
-        desc="我们为您提供个性化的售前购买咨询服务，以及全面的技术售后服务。"
+        desc="提供产品售前和售后的资讯服务，以及市场合作。"
       >
         <Button type="hollow" withBorder>点击咨询</Button>
       </Panel>

@@ -171,11 +171,11 @@
                     <text id="安卓备份" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#28B8BB">
                         <tspan x="34" y="185">安卓</tspan>
                     </text>
-                    <text id="IOS" font-family="PingFangSC-Regular, PingFang SC" font-size="16" font-weight="normal" fill="#28B8BB">
-                        <tspan x="963" y="433">IOS</tspan>
+                    <text id="iOS" font-family="PingFangSC-Regular, PingFang SC" font-size="16" font-weight="normal" fill="#28B8BB">
+                        <tspan x="963" y="433">iOS</tspan>
                     </text>
-                    <text id="IOS" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#28B8BB">
-                        <tspan x="97" y="185">IOS</tspan>
+                    <text id="iOS" font-family="PingFangSC-Regular, PingFang SC" font-size="14" font-weight="normal" fill="#28B8BB">
+                        <tspan x="97" y="185">iOS</tspan>
                     </text>
                     <text id="H5" font-family="PingFangSC-Regular, PingFang SC" font-size="16" font-weight="normal" fill="#28B8BB">
                         <tspan x="1033" y="433">H5</tspan>

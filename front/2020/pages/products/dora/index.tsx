@@ -20,10 +20,14 @@ import DoraCore from 'components/pages/dora/Core'
 import DoraScene from 'components/pages/dora/Scene'
 import DoraFunctions from 'components/pages/dora/Fuctions'
 
-import ChangBa from './_images/changba.png'
-import PingAn from './_images/pingan.png'
-import ShunFeng from './_images/shunfeng.png'
-import YiDong from './_images/yidong.png'
+import Customer1Icon from './_images/客户-聚美.png'
+import Customer2Icon from './_images/客户-大疆.png'
+import Customer3Icon from './_images/客户-blue.png'
+import Customer4Icon from './_images/客户-流利说.png'
+import Customer5Icon from './_images/客户-唱吧.png'
+import Customer6Icon from './_images/客户-虎扑.png'
+import Customer7Icon from './_images/客户-房多多.png'
+import Customer8Icon from './_images/客户-小红书.png'
 
 import BannerIcon from './_images/banner-icon.svg'
 
@@ -49,7 +53,7 @@ function PageContent() {
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">
           <PageNoticeItem title="免费额度" href="/prices?source=dora&source_page=dora">
-            免费额度：20 元/月多媒体处理， 20TB/月图片处理，750 小时/月自定义数据处理服务。 了解详情 &gt;&gt;
+            免费额度：20 元/月多媒体处理， 20 TB/月图片处理，750 小时/月自定义数据处理服务。 了解详情 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem title="转码时长包" href="/events/dora-package?entry=dora-advert">
             转码时长包，优惠来袭。 立即选购 &gt;&gt;
@@ -68,26 +72,22 @@ function PageContent() {
       <DoraScene />
 
       <CustomerCaseGroup grey>
-        <CustomerCase pic={ChangBa} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
-        <CustomerCase pic={ShunFeng} />
-        <CustomerCase pic={PingAn} />
-        <CustomerCase pic={YiDong} />
+        <CustomerCase pic={Customer1Icon} />
+        <CustomerCase pic={Customer2Icon} />
+        <CustomerCase pic={Customer3Icon} />
+        <CustomerCase pic={Customer4Icon} />
+        <CustomerCase pic={Customer5Icon} />
+        <CustomerCase pic={Customer6Icon} />
+        <CustomerCase pic={Customer7Icon} />
+        <CustomerCase pic={Customer8Icon} />
       </CustomerCaseGroup>
 
       <PurchaseInfo>
-        <PurchaseInfoItem title="CDN 产品价格" desc="CDN 产品价格CDN 产品价格">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
+        <PurchaseInfoItem title="智能多媒体服务" desc="了解更多产品价格信息">
+          <PurchaseInfoAction url="/prices/dora">查看价格</PurchaseInfoAction>
         </PurchaseInfoItem>
-        <PurchaseInfoItem title="CDN 资源包" desc="CDN 资源包CDN 资源包CDN 资源包">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-        <PurchaseInfoItem title="CDN 资源包1" desc="CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-        <PurchaseInfoItem title="CDN 资源包2" desc="CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1CDN 资源包1">
-          <PurchaseInfoAction url="https://www.qiniu.com">查看价格</PurchaseInfoAction>
+        <PurchaseInfoItem title="价格页" desc="特惠套餐包">
+          <PurchaseInfoAction url="https://www.qiniu.com/events/dora-package">查看价格</PurchaseInfoAction>
         </PurchaseInfoItem>
       </PurchaseInfo>
 
@@ -96,7 +96,7 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/dora?source_page=dora&ref=www.qiniu.com">如何使用智能多媒体服务</LinkItem>
         </LinkGroup>
         <LinkGroup title="SDK 及文档">
-          <LinkItem href="https://developer.qiniu.com/dora/tools/1222/qdoractl?source_page=dora">快速实现 API 调用及 SDK集成开发</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/dora/tools/1222/qdoractl?source_page=dora">快速实现 API 调用及 SDK 集成开发</LinkItem>
         </LinkGroup>
         <LinkGroup title="常见问题">
           <LinkItem href="https://developer.qiniu.com/faq?space=dora&source_page=dora">智能多媒体服务使用过程中常遇到的问题</LinkItem>

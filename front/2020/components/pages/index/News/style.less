@@ -113,6 +113,9 @@
       color: @grey-7;
       line-height: 24px;
       .ellipsis-line-clamp(2, 48px);
+      &:hover {
+        color: @blue-6;
+      }
       .mobile({
         font-size: 14px;
         line-height: 22px;
@@ -161,11 +164,15 @@
 
           & + .tooltip {
             position: absolute;
-            bottom: 25px;
+            bottom: 27px;
             left: -27px;
             display: none;
-            width: 90px;
+            width: 100px;
             height: 110px;
+            padding: 10px 5px;
+            .background-image(url(./images/qrcodebg.svg), center, border-box, stretch);
+            
+            
 
             .mobile({
               display: none;

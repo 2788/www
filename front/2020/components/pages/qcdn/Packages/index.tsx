@@ -17,7 +17,7 @@ export default function Packages() {
         title="新客专享"
         desc="限未使用过 CDN 的客户购买"
         category="国内静态加速流量"
-        capacity="500GB"
+        capacity="500 GB"
         categoryDesc="每月发放 20 GB，连续发放 5 个月"
         price="7.7"
         detailLink="/prices?entry=kodo-page"
@@ -25,10 +25,9 @@ export default function Packages() {
       />
       <Card
         title="入门型"
-        desc="适合日下行流量小于 1500 MB 的小
-        型网站"
+        desc="适合日下行流量小于 1500 MB 的小型网站"
         category="国内静态加速流量"
-        capacity="500GB"
+        capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="98"
         detailLink="/prices?entry=kodo-page"
@@ -36,10 +35,9 @@ export default function Packages() {
       />
       <Card
         title="进阶型"
-        desc="适合日下行流量小于 3GB 的中型
-        网站"
+        desc="适合日下行流量小于 3 GB 的中型网站"
         category="国内静态加速流量"
-        capacity="1TB"
+        capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
         price="193"
         detailLink="/prices?entry=kodo-page"
@@ -47,9 +45,9 @@ export default function Packages() {
       />
       <Card
         title="专业型"
-        desc="适合日下行流量小于 15GB 的大型网站"
+        desc="适合日下行流量小于 15 GB 的大型网站"
         category="国内静态加速流量"
-        capacity="5TB"
+        capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
         price="942"
         detailLink="/prices?entry=kodo-page"
@@ -103,7 +101,7 @@ function Card(props: CardProps) {
       <div className={style.footer}>
         <p className={style.price}>
           <span className={style.number}>{price}</span>
-          <span>/{unit}</span>
+          <span>{unit}</span>
         </p>
         <Button className={style.button} href={detailLink} withBorder>
           了解详情

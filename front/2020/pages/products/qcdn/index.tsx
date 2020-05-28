@@ -88,7 +88,7 @@ function PageContent() {
             icon={<Advantage1Icon />}
             title="无盲区覆盖"
           >
-            <FeatureDesc>精选主流厂商高质量节点，全面覆盖各地区、各运营商的网络，实现全地域无盲区的覆盖。</FeatureDesc>
+            <FeatureDesc>精选主流厂商高质量节点，全面覆盖各地区、各运营商的网络，实现全地域无盲区的覆盖</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -96,7 +96,7 @@ function PageContent() {
             icon={<Advantage2Icon />}
             title="零故障品控"
           >
-            <FeatureDesc>基于第三方 APM 的全网覆盖和七牛自研的监控数据，打造七牛 CDN 零故障质量保障体系。</FeatureDesc>
+            <FeatureDesc>基于第三方 APM 的全网覆盖和七牛自研的监控数据，打造七牛 CDN 零故障质量保障体系</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -104,7 +104,7 @@ function PageContent() {
             icon={<Advantage3Icon />}
             title="精准智能调度"
           >
-            <FeatureDesc>支持 DNS、HttpDNS、Http302 调度模式，有效提高访问响应速度，防止劫持，实现全网实时精准调度调度。</FeatureDesc>
+            <FeatureDesc>支持 DNS、HTTPDNS、HTTP302 调度模式，有效提高访问响应速度，防止劫持，实现全网实时精准调度调度</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
 
@@ -115,7 +115,7 @@ function PageContent() {
             icon={<Advantage4Icon />}
             title="降低回源成本"
           >
-            <FeatureDesc>自建中间源，消除跨运营商回源慢甚至不可达等问题，保护源站不受边缘节点请求波动影响，节省回源成本。</FeatureDesc>
+            <FeatureDesc>自建中间源，消除跨运营商回源慢甚至不可达等问题，保护源站不受边缘节点请求波动影响，节省回源成本</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -123,7 +123,7 @@ function PageContent() {
             icon={<Advantage5Icon />}
             title="灵活分时计费"
           >
-            <FeatureDesc>日间、闲时、忙时可分开计费，根据使用场景精细化运营，为用户最大化降低 成本费用。</FeatureDesc>
+            <FeatureDesc>日间、闲时、忙时可分开计费，根据使用场景精细化运营，为用户最大化降低 成本费用</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -131,7 +131,7 @@ function PageContent() {
             icon={<Advantage6Icon />}
             title="私有协议优化"
           >
-            <FeatureDesc>精选主流厂商高质量节点，全面覆盖各地区、各运营商的网络，实现全地域无盲区的覆盖。</FeatureDesc>
+            <FeatureDesc>精选主流厂商高质量节点，全面覆盖各地区、各运营商的网络，实现全地域无盲区的覆盖</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

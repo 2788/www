@@ -137,7 +137,7 @@ export function Pane({ title, desc, active, pageNo, cards, footer }: PaneProps) 
         {pageNo}
       </div>
       <div className={styles.right}>
-        <QueueAnim ease="easeInOutCubic">
+        <QueueAnim delay={200}>
           {active ? cards : null}
         </QueueAnim>
       </div>

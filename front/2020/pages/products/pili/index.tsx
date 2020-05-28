@@ -72,7 +72,7 @@ function PageContent() {
             icon={<PackageLossIcon />}
             title="丢包"
           >
-            <FeatureDesc>路由传输动态选择，支持QUIC等推流协议，优化弱网环境推流服务品质</FeatureDesc>
+            <FeatureDesc>路由传输动态选择，支持 QUIC 等推流协议，优化弱网环境推流服务品质</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -80,7 +80,7 @@ function PageContent() {
             icon={<WeakNetAdapterIcon />}
             title="弱网少卡顿"
           >
-            <FeatureDesc>采用七牛优化后的 QUIC 传输协议，帮助用户减少复杂网络下的卡顿率，提高流畅度。</FeatureDesc>
+            <FeatureDesc>采用七牛优化后的 QUIC 传输协议，帮助用户减少复杂网络下的卡顿率，提高流畅度</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
 
@@ -91,7 +91,7 @@ function PageContent() {
             icon={<NetworkShrinkIcon />}
             title="网络按需收缩"
           >
-            <FeatureDesc>采用全新网络技术，实时计算全链路状态，按需智能伸缩较好路径节点。</FeatureDesc>
+            <FeatureDesc>采用全新网络技术，实时计算全链路状态，按需智能伸缩较好路径节点</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -99,7 +99,7 @@ function PageContent() {
             icon={<SmartLineIcon />}
             title="智能选线"
           >
-            <FeatureDesc>采用软件定义网络的方式，动态制定线路组合，更新实时数据，决策调度优质线路。</FeatureDesc>
+            <FeatureDesc>采用软件定义网络的方式，动态制定线路组合，更新实时数据，决策调度优质线路</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -107,7 +107,7 @@ function PageContent() {
             icon={<FaultToleranceIcon />}
             title="故障容错"
           >
-            <FeatureDesc>全网对称部署服务节点，任一节点失效均可立即摘除，及时容错保障服务的高可用。</FeatureDesc>
+            <FeatureDesc>全网对称部署服务节点，任一节点失效均可立即摘除，及时容错保障服务的高可用</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

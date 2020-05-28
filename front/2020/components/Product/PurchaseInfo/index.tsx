@@ -31,7 +31,7 @@ export function PurchaseInfoAction(props: PropsWithChildren<IPurchaseInfoAction>
 
 export interface IPurchaseInfoItemProps {
   title: string
-  desc: string
+  desc?: string
 }
 
 export function PurchaseInfoItem({ title, desc, children }: PropsWithChildren<IPurchaseInfoItemProps>) {
@@ -40,7 +40,7 @@ export function PurchaseInfoItem({ title, desc, children }: PropsWithChildren<IP
       <div className={styles.item}>
         <div className={styles.content}>
           <h4 className={styles.title}>{title}</h4>
-          <p className={styles.desc}>{desc}</p>
+          {desc && <p className={styles.desc}>{desc}</p>}
         </div>
         <span className={styles.action}>{children}</span>
       </div>

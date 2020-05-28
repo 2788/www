@@ -32,6 +32,9 @@
       background: #00aae7;
       padding: 0 12px;
       isolation: isolate;
+      .mobile({
+        margin-bottom: 4px;
+      })
     }
 
     .event {
@@ -50,6 +53,10 @@
         margin-top: 8px;
         font-size: 14px;
         color: @grey-7;
+
+        .mobile({
+          margin-top: 2px;
+        });
       }
 
       &.left {
@@ -84,7 +91,8 @@
 
       .mobile({
         width: 100%;
-        margin-top: 12px;
+        padding: 12px;
+        margin-top: 8px;
       })
     }
   }
