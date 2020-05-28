@@ -37,6 +37,20 @@ yarn dev
 yarn build
 ```
 
+### 环境
+
+`.env` / `.env.staging` / `.env.prod` 等文件用于在不同环境下提供环境变量；
+
+* `.env` 用于本地开发
+* `.env.staging` 用于测试环境，对应 `www-2020.qiniu.io`
+* `.env.prod` 用于线上环境，对应 `www-2020.qiniu.com`
+
+Next.js 相关文档：https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables
+
+本地开发时 Next.js 会自动使用 `.env` 文件；
+
+在 spock 构建时，对应于测试环境与线上环境的 Spock 任务分别会将 `.env.staging` 或 `.env.prod` 重命名为 `.env.local`（Next.js 会优先使用之），从而实现不同环境对应不同配置
+
 ### 发布
 
 ```shell
