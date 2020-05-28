@@ -63,9 +63,6 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem href="/TODO">
-            兼容 Mysql 的云关系数据库 PolarDB 火热上线
-          </PageNoticeItem>
           <PageNoticeItem href="https://developer.qiniu.com/qvm/manual/6681/enterprise-network">
             助力用户快速实现混合云云产品【云企业网】上线
           </PageNoticeItem>

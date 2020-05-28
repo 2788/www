@@ -3,8 +3,6 @@
  * @description 各种按钮
  */
 
-// TODO: 交互状态，如 hover、active 等，跟 @设计师同学 确认下
-
 import React, { HTMLAttributes, ButtonHTMLAttributes, MouseEvent } from 'react'
 import Link from 'components/Link'
 import style from './style.less'

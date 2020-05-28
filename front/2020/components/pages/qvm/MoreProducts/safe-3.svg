@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="44px" viewBox="0 0 46 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>firewall</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="基础服务-云主机03✅" transform="translate(-401.000000, -2594.000000)" stroke-width="2">
+            <g id="产品与服务备份-3" transform="translate(0.000000, 2022.000000)">
+                <g id="编组-28备份-2" transform="translate(372.000000, 542.000000)">
+                    <g id="编组-47" transform="translate(24.000000, 24.000000)">
+                        <g id="firewall" transform="translate(6.000000, 8.000000)">
+                            <line x1="30" y1="1" x2="30" y2="14" id="路径" stroke="#333333"></line>
+                            <polyline id="路径" stroke="#333333" points="20 1 44 1 44 41 0 41 0 32"></polyline>
+                            <line x1="44" y1="14" x2="27" y2="14" id="路径" stroke="#333333"></line>
+                            <line x1="44" y1="28" x2="26" y2="28" id="路径" stroke="#333333"></line>
+                            <line x1="30" y1="28" x2="30" y2="41" id="路径" stroke="#333333"></line>
+                            <line x1="14" y1="36" x2="14" y2="41" id="路径" stroke="#333333"></line>
+                            <path d="M0,19 C0,12.925 11,0 11,0 C11,0 22,12.925 22,19 C22,25.0751322 17.0751322,30 11,30 C4.92486782,30 0,25.0751322 0,19 Z" id="路径" stroke="#00AAE7"></path>
+                            <path d="M11,23.0000001 C8.82249179,23.0004576 7.04463887,21.2590507 7,19.082 C7.189,17.764 8.786,14.85 11,11.575 C13.212,14.848 14.81,17.763 15,19.082 C14.9553611,21.2590507 13.1775082,23.0004576 11,23.0000001 Z" id="路径" stroke="#00AAE7"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

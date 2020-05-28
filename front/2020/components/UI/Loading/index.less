@@ -10,22 +10,28 @@
   height: 100%;
   // 参考 antd 的 spin
   max-height: 400px;
+  visibility: hidden;
+  opacity: 0;
 
   .dots {
     position: absolute;
+    width: 100%;
+    text-align: center;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(0, -50%);
   }
 
   .dot {
     display: inline-block;
     width: 6px;
     height: 6px;
-    margin-left: 5px;
     border-radius: 50%;
     background-color: @blue-6;
     animation: loading 1.2s infinite ease-in-out both;
+
+    + .dot {
+      margin-left: 5px;
+    }
 
     &:nth-child(2) {
       animation-delay: 0.15s;
@@ -38,15 +44,26 @@
 }
 
 .loading {
-  opacity: 0.3;
+  .animation, .contentWrapper {
+    transition: visibility 0s, opacity .3s;
+  }
+
+  .animation {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .contentWrapper {
+    opacity: 0;
+  }
 }
 
 @keyframes loading {
   50% {
-    transform: translate(0, 100%);
+    transform: translate(0, 0);
   }
 
   75% {
-    transform: translate(0, 0);
+    transform: translate(0, -100%);
   }
 }

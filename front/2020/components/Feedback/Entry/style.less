@@ -38,14 +38,42 @@
     left: -1px;
     background-position: center;
     background-repeat: no-repeat;
+    transition: .3s;
+
+    .iconClose, .iconSmile {
+      position: absolute;
+      transition: opacity .1s, transform .3s;
+    }
+
+    .iconSmile {
+      width: 56%;
+      height: 56%;
+      left: 22%;
+      top: 22%;
+    }
+
+    .iconClose {
+      width: 28%;
+      height: 28%;
+      left: 36%;
+      top: 36%;
+      transform: rotate(-60deg);
+      transform-origin: center;
+    }
 
     &.btnClose {
-      background-size: 30%;
-      background-image: url(../icons/close.svg);
+      .iconSmile {
+        opacity: 0;
+        transform: scale(.8);
+      }
+      .iconClose {
+        transform: rotate(0);
+      }
     }
     &.btnSmile {
-      background-size: 47%;
-      background-image: url(../icons/smile.svg);
+      .iconClose {
+        opacity: 0;
+      }
     }
   }
 
@@ -77,17 +105,26 @@
   });
 }
 
-.modal() {
+.formModalWrapper {
   .modalWrapper();
 
   position: absolute;
   right: 0;
   display: block;
-  width: 374px;
-}
 
-.formModalWrapper {
-  .modal();
-  height: 500px;
   bottom: @entryHeight + 12px;
+  overflow: hidden;
+  width: 374px;
+  height: 500px;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, transform .3s, opacity .2s;
+  transform-origin: bottom;
+
+  &.hidden {
+    transform: scaleY(0);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s .5s, transform .3s, opacity .5s;
+  }
 }

@@ -3,8 +3,6 @@
  * @description 包括 id、展示名、页面地址等
  */
 
-// TODO: 考虑要不要把大类信息（存储与数据湖、基础服务等）也拿进来定义
-
 export enum Product {
   /** 对象存储 Kodo */
   Kodo = 'kodo',
@@ -65,7 +63,7 @@ export const urlMap = {
   [Product.Kodo]: '/products/kodo',
   [Product.Archive]: '/products/kodo', // TODO
   [Product.Hdfs]: null, // 暂未上线
-  [Product.Cdn]: '/products/cdn',
+  [Product.Cdn]: '/products/qcdn',
   [Product.Ssl]: '/products/ssl',
   [Product.Pili]: '/products/pili',
   [Product.Qvm]: '/products/qvm',

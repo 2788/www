@@ -8,13 +8,12 @@ import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 
 import style from './index.less'
 
-function ProductItems({ products }: { products: readonly Product[] }) {
-  const itemsView = products.map(product => (
+function getProductItems(products: readonly Product[]) {
+  return products.map(product => (
     <MenuItem key={product}>
       <Link href={urlMap[product] || '#'}>{nameMap[product]}</Link>
     </MenuItem>
   ))
-  return <>{itemsView}</>
 }
 
 export default function Overlay() {
@@ -22,16 +21,16 @@ export default function Overlay() {
     <Menu mode="inline" className={style.menu}>
       <SubMenu mode="inline" title="产品">
         <SubMenu title="存储与数据湖">
-          <ProductItems products={categoryStorage} />
+          {getProductItems(categoryStorage)}
         </SubMenu>
         <SubMenu title="基础服务">
-          <ProductItems products={categoryService} />
+          {getProductItems(categoryService)}
         </SubMenu>
         <SubMenu title="智能视频">
-          <ProductItems products={categoryVideo} />
+          {getProductItems(categoryVideo)}
         </SubMenu>
         <SubMenu title="机器数据智能">
-          <ProductItems products={categoryIntelligence} />
+          {getProductItems(categoryIntelligence)}
         </SubMenu>
       </SubMenu>
       <SubMenu title="方案">

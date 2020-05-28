@@ -35,7 +35,7 @@ function Suggestion({ keyword }: Props) {
   if (!items || items.length <= 0) {
     return (
       <Loading loading={loading}>
-        <ResultEmpty className={style.empty} tip="未找到相关产品" style={{ visibility: loading ? 'hidden' : 'visible' }} />
+        <ResultEmpty className={style.empty} tip="未找到相关产品" />
       </Loading>
     )
   }

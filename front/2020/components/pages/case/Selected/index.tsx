@@ -91,7 +91,7 @@ export default function Selected() {
           title="晶盛机电"
           url="/TODO"
           logo={logoJinsheng}
-          products={[Product.Insight]} // TODO: 确认下 Insight 还是 Express
+          products={[Product.Express]}
         >
           浙江晶盛机电股份有限公司创建于 2006 年 12 月，是一家以「发展绿色智能高科技制造产业」为使命的高端半导体装备和 LED 衬底材料制造的高新技术企业。拥有工业 4.0 方向的省级重点研究院、省级晶体装备研究院等研究平台、博士后工作站，是国内光伏产业链的装备龙头企业。
         </Case>

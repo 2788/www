@@ -5,7 +5,6 @@
 import { memoize } from 'lodash'
 import { apiHost } from 'constants/api'
 import { isYear } from 'constants/qvm'
-import { timeout } from 'utils'
 import { get, post } from 'utils/fetch'
 
 const apiPrefix = `${apiHost}/qvm`
@@ -123,12 +122,6 @@ export type GetPriceRes = {
 export async function getPriceInfo(
   { regionId, instanceType, duration, byYear }: GetPriceOptions
 ): Promise<GetPriceRes> {
-  // mock API, TODO: 换成真的接口
-  if (typeof window === 'undefined') {
-    await timeout(300)
-    return { data: { infos: [{ atomic_items: [{ price: 2245.5 }] }] } }
-  }
-
   const periodInfo = getPeriodInfo(duration, byYear)
   const infoItem = {
     resource_type: 'instance',

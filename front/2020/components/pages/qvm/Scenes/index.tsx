@@ -82,7 +82,7 @@ export default function QvmScenes() {
           <List>
             <Item>高网络包收发场景，如视频弹幕、电信业务转发等</Item>
             <Item>高性能数据库、内存数据库</Item>
-            <Item>Hadoop，Spark 群集以及其他企业大内存需求应用</Item>
+            <Item>Hadoop，Spark 集群以及其他企业大内存需求应用</Item>
           </List>
           {isPc && (
             <>

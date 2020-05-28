@@ -23,7 +23,7 @@ export type Props = {
   /** 页码变更回调 */
   onPageChange(page: number): void
   /** 是否正在加载 */
-  loading: boolean // TODO: 处理 loading
+  loading: boolean
 }
 
 export default function SearchResult({ result, page, onPageChange, loading }: Props) {

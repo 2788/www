@@ -36,7 +36,7 @@ export default function Suggestion({ keyword, onSelect }: Props) {
 
   const content = withLoading(loading)(
     !items || items.length <= 0
-      ? <ResultEmpty className={style.empty} tip="暂无结果" style={{ visibility: loading ? 'hidden' : 'visible' }} />
+      ? <ResultEmpty className={style.empty} tip="暂无结果" />
       : itemsView
   )
 

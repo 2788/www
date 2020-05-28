@@ -30,10 +30,10 @@ import imgFeature4 from './_images/feature-4.png'
 import imgFeature5 from './_images/feature-5.png'
 
 /* eslint-disable import/no-duplicates */
-import imgScene1 from './_images/scene-1.png'
-import imgScene2 from './_images/scene-1.png' // TODO: 确认下这里图片都用同一个吗
-import imgScene3 from './_images/scene-1.png'
-import imgScene4 from './_images/scene-1.png'
+import imgScene1 from './_images/scene-1.file.svg'
+import imgScene2 from './_images/scene-2.file.svg'
+import imgScene3 from './_images/scene-3.file.svg'
+import imgScene4 from './_images/scene-4.file.svg'
 import imgDemo1 from './_images/demo-1.png'
 import imgDemo2 from './_images/demo-1.png' // TODO: 图片
 import imgDemo3 from './_images/demo-1.png'
@@ -51,7 +51,7 @@ export default function ExpressPage() {
 
   const btns = useBtns(
     { href: portalUrl, children: '立即使用', pcOnly: true },
-    { href: '/TODO', children: '查看 Demo' }
+    { href: '/products/pandora/demos', children: '查看 Demo' }
   )
 
   return (
@@ -133,15 +133,15 @@ export default function ExpressPage() {
       </Scene>
 
       <Section name="demos" title="Demo 体验">
-        <Demo name="运维监控" img={imgDemo1} url="/TODO">
+        <Demo name="运维监控" img={imgDemo1} url="/products/pandora/demos">
           实时采集并监控资源、系统、应用层日志及指标数据，快速定位系统故障，将被动监控转化为主动监控，实现开发运维一体化，提高自动化运维管理效率。
         </Demo>
-        <Demo name="安全分析" img={imgDemo2} url="/TODO" reverse>
+        <Demo name="安全分析" img={imgDemo2} url="/products/pandora/demos" reverse>
           安全风险全面可观测，提供业务、架构、网络等维度风险管理能力，协助企业通过安全数据分析快速应对威胁，加快调查并满足合规性要求。
           <br /><br />
           通过用于安全性，合规性和配置的统一工具为您的 SecOps 团队提供支持。快速识别网络、系统、操作层安全威胁和风险，加速安全信息和事件调查管理，满足合规性要求。
         </Demo>
-        <Demo name="BI 分析" img={imgDemo3} url="/TODO">
+        <Demo name="BI 分析" img={imgDemo3} url="/products/pandora/demos">
           关联复杂业务系统，实现业务全面化实时监控，结合机器学习能力主动发现业务风险，并分析和预测客户行为，通过数据驱动业务决策实现商业智能。
         </Demo>
       </Section>

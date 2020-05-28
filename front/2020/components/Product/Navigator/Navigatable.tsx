@@ -59,7 +59,6 @@ export default function Navigatable({ children }: Props) {
   // 控制页面滚动到 active block 对应的位置
   const syncScrollTop = useCallback(() => {
     const navigatorHeight = navigatorInfo?.wrapper.offsetHeight || 0
-    // TODO: 初次控制滚动的事情会不会挪到页面 onload 之后做更好？可能可以有更好的首屏表现
     if (activeBlock && !isBlockInView(activeBlock, scrollTop, navigatorHeight)) {
       scrollTo(activeBlock.wrapper.offsetTop - navigatorHeight)
     }

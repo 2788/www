@@ -9,8 +9,10 @@ import Link from 'components/Link'
 import { useMobile } from '../../../hooks/ua'
 import Button from '../Button'
 import Form from '../Form'
-import style from './style.less'
 import { useModal as useGlobalModal } from '../Modal'
+import IconClose from '../icons/close.svg'
+import IconSmile from '../icons/smile.svg'
+import style from './style.less'
 
 export default function FeedbackEntry() {
   const isMobile = useMobile()
@@ -32,10 +34,6 @@ export default function FeedbackEntry() {
 
   const wrapperRef = useClickOutside(hideModal)
 
-  const modalContent = modalVisible && (
-    <FormModal />
-  )
-
   const btnClassName = cls(
     style.btn,
     modalVisible ? style.btnClose : style.btnSmile
@@ -43,9 +41,12 @@ export default function FeedbackEntry() {
 
   return (
     <div ref={wrapperRef} className={style.wrapper}>
-      {modalContent}
+      <FormModal visible={modalVisible} />
       <div className={style.entryWrapper}>
-        <Button className={btnClassName} onClick={toggleModal} />
+        <Button className={btnClassName} onClick={toggleModal}>
+          <IconClose className={style.iconClose} />
+          <IconSmile className={style.iconSmile} />
+        </Button>
         <Link className={style.freeTrialLink} title="免费体验云服务套餐" href="/events/free?entry=index-floatwin">
           免费体验
         </Link>
@@ -54,9 +55,9 @@ export default function FeedbackEntry() {
   )
 }
 
-function FormModal() {
+function FormModal({ visible }: { visible: boolean }) {
   return (
-    <div className={style.formModalWrapper}>
+    <div className={cls(style.formModalWrapper, !visible && style.hidden)}>
       <Form />
     </div>
   )

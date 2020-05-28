@@ -16,6 +16,15 @@ import IconNatGateway from './nat-gateway.svg'
 import IconSharedBandwidth from './shared-bandwidth.svg'
 import IconVpnGateway from './vpn-gateway.svg'
 import IconVpn from './vpn.svg'
+import IconAutoScaling from './auto-scaling.svg'
+import IconDB1 from './db-1.svg'
+import IconDB2 from './db-2.svg'
+import IconDB3 from './db-3.svg'
+import IconDB4 from './db-4.svg'
+import IconNas from './nas.svg'
+import IconSafe1 from './safe-1.svg'
+import IconSafe2 from './safe-2.svg'
+import IconSafe3 from './safe-3.svg'
 
 import style from './style.less'
 
@@ -83,8 +92,7 @@ export default function MoreProducts() {
       <TabPane value="2" tab="弹性伸缩">
         <Row>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconAutoScaling className={style.icon} />
             <Title>弹性伸缩</Title>
             <Desc>使用弹性伸缩（Auto Scaling）用户可以根据业务需求和策略设置伸缩规则，在业务需求增长时自动为您增加云主机实例以保证计算能力，在业务需求下降时自动减少云主机实例以节约成本。弹性伸缩不仅适合业务量不断波动的应用程序，同时也适合业务量稳定的应用程序。</Desc>
             <Footer tags="弹性扩张,弹性收缩,自动愈合" />
@@ -94,15 +102,13 @@ export default function MoreProducts() {
       <TabPane value="3" tab="云数据库">
         <Row>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconDB1 className={style.icon} />
             <Title>关系型数据库 RDS</Title>
             <Desc>关系型数据库（Relational Database Service，简称RDS）是一种稳定可靠、可弹性伸缩的在线数据库服务。基于七牛云分布式文件系统和 SSD 盘高性能存储，RDS 支持 MySQL、SQL Server、PostgreSQL 等 PaaS 服务，并且提供了容灾、备份、恢复、监控、迁移等方面的全套解决方案，彻底解决数据库运维的烦恼。</Desc>
             <Footer tags="安全可靠,支持多种主流数据库,即开即用,管理便捷" />
           </Product>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconDB2 className={style.icon} />
             <Title>云数据库 Redis</Title>
             <Desc>云数据库 Redis 版是兼容开源 Redis 协议标准、提供内存加硬盘的混合存储方式的数据库服务，基于高可靠双机热备架构及可平滑扩展的集群架构，满足高读写性能场景及弹性变配的业务需求。</Desc>
             <Footer tags="类型丰富,高稳定架构" />
@@ -110,15 +116,13 @@ export default function MoreProducts() {
         </Row>
         <Row>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconDB3 className={style.icon} />
             <Title>MongoDB</Title>
             <Desc>云数据库 MongoDB 版是高可靠存储引擎，提供三节点副本集高可用架构，实现容灾切换、故障迁移完全透明化；提供强大的数据库管理功能，实现数据库的在线扩容、备份回滚、性能优化等。</Desc>
             <Footer tags="部署灵活,完全兼容 MongoDB 协议" />
           </Product>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconDB4 className={style.icon} />
             <Title>PolarDB</Title>
             <Desc>下一代关系型分布式云原生数据库，目前兼容 MySQL 引擎。存储容量最高可达 100 TB，单库最多可扩展到 16 个节点，适用于企业多样化的数据库应用场景。</Desc>
             <Footer tags="简单易用,降低成本,极致性能" />
@@ -128,8 +132,7 @@ export default function MoreProducts() {
       <TabPane value="4" tab="网络文件存储">
         <Row>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconNas className={style.icon} />
             <Title>网络文件存储</Title>
             <Desc>七牛云主机 QVM 网络文件存储（Network Attached Storage，简称 NAS）是一个可共享访问，弹性扩展，高可靠，高性能的分布式文件系统。它基于 POSIX 文件接口，天然适配原生操作系统，提供共享访问，同时保证数据一致性和锁互斥。您无需对现有应用做任何修改，即可使用具备无限容量及性能扩展、单一命名空间、多共享、高可靠和高可用等特性的分布式文件系统。</Desc>
             <Footer tags="高可靠,高性能,强安全,易用" />
@@ -139,8 +142,7 @@ export default function MoreProducts() {
       <TabPane value="5" tab="安全产品">
         <Row>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconSafe1 className={style.icon} />
             <Title>BGP 高防 IP</Title>
             <Desc>
               BGP 高防 IP 是针对游戏、金融以及网站等业务遭受大流量 DDoS 攻击导致用户服务不可用的情况而推出的付费防护服务。用户通过配置高防 IP，将攻击流量引流到高防 IP 进行清洗，确保源站业务的稳定可用。
@@ -150,8 +152,7 @@ export default function MoreProducts() {
             <Footer tags="多重防护,自定义清洗,防护策略灵活,多地域" />
           </Product>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconSafe2 className={style.icon} />
             <Title>新 BGP 高防</Title>
             <Desc>新 BGP 高防 IP 服务采用中国大陆地域独有的 T 级八线 BGP 带宽资源，可解决超大流量 DDoS 攻击，天然具有灾备能力、线路更稳定、访问速度更快。</Desc>
             <Footer tags="八线线路,安全可靠,支持四层和七层" />
@@ -159,8 +160,7 @@ export default function MoreProducts() {
         </Row>
         <Row>
           <Product>
-            {/* TODO: icon */}
-            <IconLb className={style.icon} />
+            <IconSafe3 className={style.icon} />
             <Title>网站应用防火墙</Title>
             <Desc>网站应用防火墙（Web Application Firewall）是一款基于 AI 的一站式 Web 业务运营风险防护方案。可以有效防御 SQL 注入、XSS 跨站脚本、木马上传、非授权访问等 OWASP 攻击。此外还可以有效过滤 CC 攻击、提供 0day 漏洞补丁、防止网页篡改等。</Desc>
             <Footer tags="安全,网站应用防护,可靠" />

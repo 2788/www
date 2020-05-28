@@ -1,3 +1,4 @@
+import cls from 'classnames'
 import React, { createContext, useState, ReactNode, useContext } from 'react'
 import Button from '../Button'
 import Form from '../Form'
@@ -28,12 +29,8 @@ export function useModal() {
 export default function FeedbackModal() {
   const { visible, hideModal } = useModal()
 
-  if (!visible) {
-    return null
-  }
-
   return (
-    <div className={style.wrapper}>
+    <div className={cls(style.wrapper, !visible && style.hidden)}>
       <div
         className={style.mask}
         onClick={hideModal}

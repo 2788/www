@@ -69,18 +69,6 @@ export type GetVideoJobRes = {
 }
 
 async function getVideoJob(jobId: string): Promise<GetVideoJobRes> {
-  // mock API, TODO: 换成真的接口
-  if (typeof window === 'undefined') {
-    await timeout(300)
-    const finished = Math.random() > 0.5
-    /* eslint-disable */
-    return (
-      finished
-      ? {"id":"5ebe37de3d07ee0007d4db61","request":{"data":{"uri":"https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk"},"params":{"sync":false,"scenes":["pulp","terror","politician","ads"]}},"status":"FINISHED","result":{"code":200,"message":"OK","result":{"suggestion":"review","scenes":{"ads":{"cuts":[{"details":[{"label":"normal","score":0.999,"suggestion":"pass"}],"offset":0,"suggestion":"pass"},{"details":[{"label":"normal","score":0.999,"suggestion":"pass"}],"offset":5005,"suggestion":"pass"},{"details":[{"label":"normal","score":0.999,"suggestion":"pass"}],"offset":10010,"suggestion":"pass"}],"suggestion":"pass"},"politician":{"cuts":[{"offset":0,"suggestion":"pass"},{"offset":5005,"suggestion":"pass"},{"offset":10010,"suggestion":"pass"}],"suggestion":"pass"},"pulp":{"cuts":[{"details":[{"label":"normal","score":0.95569,"suggestion":"pass"}],"offset":0,"suggestion":"pass"},{"details":[{"label":"normal","score":0.90453,"suggestion":"pass"}],"offset":5005,"suggestion":"pass"},{"details":[{"label":"sexy","score":0.49797666,"suggestion":"review"}],"offset":10010,"suggestion":"review"}],"suggestion":"review"},"terror":{"cuts":[{"details":[{"label":"normal","score":0.94821,"suggestion":"pass"}],"offset":0,"suggestion":"pass"},{"details":[{"label":"normal","score":0.99809,"suggestion":"pass"}],"offset":5005,"suggestion":"pass"},{"details":[{"label":"normal","score":0.96745,"suggestion":"pass"}],"offset":10010,"suggestion":"pass"}],"suggestion":"pass"}}}},"created_at":"2020-05-15T14:34:06.361+08:00","updated_at":"2020-05-15T14:34:12.054+08:00","rescheduled_at":"2020-05-15T14:34:06.361+08:00"}
-      : {"id":"5ebe37de3d07ee0007d4db61","request":{"data":{"uri":"https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk"},"params":{"sync":false,"scenes":["pulp","terror","politician","ads"]}},"status":"DOING","created_at":"2020-05-15T14:34:06.361+08:00","updated_at":"2020-05-15T14:34:08.54+08:00","rescheduled_at":"2020-05-15T14:34:06.361+08:00"}
-    )
-    /* eslint-enable */
-  }
   return get(`${apiPrefix}/v3/jobs/video/${jobId}`)
 }
 

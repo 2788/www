@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="38px" viewBox="0 0 46 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>device-connection</title>
+    <desc>Created with Sketch.</desc>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="基础服务-云主机03✅" transform="translate(-401.000000, -323.000000)" stroke-width="2">
+            <g id="产品与服务">
+                <g id="编组-28" transform="translate(372.000000, 290.000000)">
+                    <g id="编组-41" transform="translate(24.000000, 24.000000)">
+                        <g id="device-connection" transform="translate(6.000000, 10.000000)">
+                            <path d="M12,34 C12,28.4771525 7.5228475,24 2,24" id="路径" stroke="#00AAE7"></path>
+                            <path d="M20,34 C20,24.0588745 11.9411255,16 2,16" id="路径" stroke="#00AAE7"></path>
+                            <path d="M4,10 L4,4 C4,1.790861 5.790861,0 8,0 L40,0 C42.209139,0 44,1.790861 44,4 L44,28 C44,30.209139 42.209139,32 40,32 L26,32" id="路径" stroke="#333333"></path>
+                            <circle id="椭圆形" stroke="#00AAE7" cx="2" cy="34" r="2"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -6,6 +6,7 @@
 import cls from 'classnames'
 import React, { useState, FormEvent, useRef, useEffect, useCallback, ReactNode } from 'react'
 import Button from 'components/UI/Button'
+import Loading from 'components/UI/Loading'
 import MessageList, { Message, MessageFrom } from './MessageList'
 import { IRobot, InputType, OutputType, withEase, Input, context } from './robot'
 import ConsultRobot from './robot/consult'
@@ -90,7 +91,9 @@ function Footer({ onSubmit }: FooterProps) {
 }
 
 // TODO: 改为 Loading
-const loadingMessage = '...'
+const loadingMessage = (
+  <Loading style={{ width: '30px', transform: 'scale(0.8)' }}>&nbsp;</Loading>
+)
 
 /** 使用给定 Robot 与用户交互 */
 function useRobot(robot: IRobot) {

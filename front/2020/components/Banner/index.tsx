@@ -2,8 +2,6 @@
  * @file 普通页面的 Banner
  */
 
-// TODO: 能用这个 banner 的尽量用这个 banner
-
 import cls from 'classnames'
 import React, { CSSProperties, HTMLAttributes } from 'react'
 import { useMobile } from 'hooks/ua'

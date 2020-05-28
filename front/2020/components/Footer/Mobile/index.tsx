@@ -14,13 +14,12 @@ function MenuItem({ children }: PropsWithChildren<{}>) {
   return <div className="menu-item">{children}</div>
 }
 
-function ProductItems({ products }: { products: readonly Product[] }) {
-  const itemsView = products.map(product => (
+function getProductItems(products: readonly Product[]) {
+  return products.map(product => (
     <MenuItem key={product}>
       <Link href={urlMap[product] || '#'}>{nameMap[product]}</Link>
     </MenuItem>
   ))
-  return <>{itemsView}</>
 }
 
 export default function FooterForMobile() {
@@ -29,16 +28,16 @@ export default function FooterForMobile() {
       <div className={style.nav}>
         <Menu mode="inline" inlineIndent={15}>
           <SubMenu title="存储与数据湖">
-            <ProductItems products={categoryStorage} />
+            {getProductItems(categoryStorage)}
           </SubMenu>
           <SubMenu title="基础服务">
-            <ProductItems products={categoryService} />
+            {getProductItems(categoryService)}
           </SubMenu>
           <SubMenu title="智能视频">
-            <ProductItems products={categoryVideo} />
+            {getProductItems(categoryVideo)}
           </SubMenu>
           <SubMenu title="机器数据智能">
-            <ProductItems products={categoryIntelligence} />
+            {getProductItems(categoryIntelligence)}
           </SubMenu>
           <SubMenu title="解决方案">
             <MenuItem><Link href="/solutions/ess">监控视频边缘存储解决方案</Link></MenuItem>

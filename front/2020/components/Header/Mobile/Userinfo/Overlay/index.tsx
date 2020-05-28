@@ -1,10 +1,13 @@
 import React from 'react'
 import Button from 'components/UI/Button'
 import { Userinfo, Guestinfo } from 'apis/legacy'
+import { useUrl } from 'hooks/url'
+import { urlForSignin } from 'utils/route'
 
 import style from './style.less'
 
 export default function Overlay({ user }: { user: Userinfo | Guestinfo | null }) {
+  const currentUrl = useUrl()
   if (user?.is_signin) {
     return (
       <div className={style.wrapper}>
@@ -21,17 +24,12 @@ export default function Overlay({ user }: { user: Userinfo | Guestinfo | null })
     )
   }
 
-  // TODO client id
   return (
     <div className={style.wrapper}>
       <Button href="https://portal.qiniu.com/signup?ref=www.qiniu.com" type="primary" className={style.primaryBtn}>
         免费注册
       </Button>
-      <Button
-        href="https://sso.qiniu.com/?client_id=BG0o9WIbVw0QTMMF4nnnimetSKUlf5xy67pcymZMKW1otjBQePCr6DrGhYifj1gH&redirect_url=https://www.qiniu.com"
-        withBorder
-        className={style.whiteBtn}
-      >
+      <Button href={urlForSignin(currentUrl)} withBorder className={style.whiteBtn}>
         登录
       </Button>
     </div>

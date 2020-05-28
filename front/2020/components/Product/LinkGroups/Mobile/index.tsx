@@ -11,7 +11,6 @@ import { LinkItemProps, LinkGroupProps } from '..'
 import styles from './style.less'
 
 export function LinkItem({ children, href }: PropsWithChildren<LinkItemProps>) {
-  // TODO: 默认用 children 作为 title？
   const anchorTitle = typeof children === 'string' ? children : undefined
   return (
     <Link title={anchorTitle} href={href}>

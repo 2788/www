@@ -5,6 +5,7 @@
 import React from 'react'
 import { SearchResult } from 'apis/search'
 import Button from 'components/UI/Button'
+import Loading from 'components/UI/Loading'
 import ResultEmpty from 'components/ResultEmpty'
 import { ResultList } from '.'
 import style from './style.less'
@@ -15,10 +16,10 @@ export type Props = {
   /** 加载更多回调 */
   onLoadMore(): void
   /** 是否正在加载 */
-  loading: boolean // TODO: 处理 loading
+  loading: boolean
 }
 
-export default function SearchResultMobile({ result, onLoadMore }: Props) {
+export default function SearchResultMobile({ result, onLoadMore, loading }: Props) {
   if (!result || result.items.length <= 0) {
     return <ResultEmpty className={style.empty} tip="暂无搜索结果" />
   }
@@ -33,8 +34,10 @@ export default function SearchResultMobile({ result, onLoadMore }: Props) {
 
   return (
     <div className={style.wrapper}>
-      <ResultList items={result.items} />
-      {loadMoreView}
+      <Loading loading={loading}>
+        <ResultList items={result.items} />
+        {loadMoreView}
+      </Loading>
     </div>
   )
 }

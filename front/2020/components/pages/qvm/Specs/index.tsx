@@ -16,7 +16,6 @@ enum Type {
   Enterprise = 'enterprise' // 企业版
 }
 
-// TODO: 这些实例信息需要再跟 PM 对一遍
 export default function QvmSpecs() {
   const { $: startSpecs } = useApiWithParams(getStarterSpecs, { params: [] })
 
@@ -59,7 +58,6 @@ function EnterpriseCards() {
 
   const tabPanesView = (familyGroups || []).map(
     ({ items }, i) => {
-      // TODO: 优化下，第一次不渲染，一旦渲染过之后，再切换走就是隐藏
       const active = activeGroupKey === (i + '')
       if (!active) return null
       const cardsView = items.map((familyInfo, j) => (

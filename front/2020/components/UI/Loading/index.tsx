@@ -1,10 +1,17 @@
-import React, { PropsWithChildren } from 'react'
+import React, { HTMLAttributes } from 'react'
 import classnames from 'classnames'
 
 import style from './index.less'
 
-export default function Loading({ loading, children }: PropsWithChildren<{ loading: boolean }>) {
-  const animation = (
+export type Props = HTMLAttributes<HTMLElement> & {
+  loading?: boolean
+}
+
+export default function Loading({ loading, children, className, ...others }: Props) {
+
+  loading = loading === undefined ? true : loading
+
+  const animationView = (
     <div className={style.animation}>
       <div className={style.dots}>
         <div className={style.dot}></div>
@@ -13,10 +20,13 @@ export default function Loading({ loading, children }: PropsWithChildren<{ loadi
       </div>
     </div>
   )
+
+  const wrapperClassName = classnames(style.wrapper, loading && style.loading, className)
+
   return (
-    <div className={style.wrapper}>
-      {loading && animation}
-      <div className={classnames(loading && style.loading)}>{children}</div>
+    <div className={wrapperClassName} {...others}>
+      {animationView}
+      <div className={style.contentWrapper}>{children}</div>
     </div>
   )
 }
