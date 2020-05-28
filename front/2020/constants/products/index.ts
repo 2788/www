@@ -79,3 +79,35 @@ export const urlMap = {
   [Product.Insight]: '/products/insight',
   [Product.Express]: '/products/pandora'
 }
+
+/** 存储与数据湖 */
+export const categoryStorage = [
+  Product.Kodo,
+  Product.Archive
+  // HDFS 还没 ready，这里先不放
+] as const
+
+/** 基础服务 */
+export const categoryService = [
+  Product.Cdn,
+  Product.Ssl,
+  Product.Pili,
+  Product.Qvm,
+  Product.Sms
+] as const
+
+/** 智能视频 */
+export const categoryVideo = [
+  Product.Dora,
+  Product.Censor,
+  Product.FaceID,
+  Product.Rtn,
+  Product.Plsv,
+  Product.Plms
+] as const
+
+/** 机器数据智能 */
+export const categoryIntelligence = [
+  Product.Insight,
+  Product.Express
+] as const

@@ -10,7 +10,6 @@
 
 .content {
   .centered();
-
 }
 
 .linkGroups {
@@ -58,7 +57,7 @@
     display: inline;
     
     .title {
-      color: @grey-1;
+      color: @grey-5;
       font-size: 13px;
       vertical-align: middle;
     }
@@ -73,6 +72,7 @@
     .icon {
       width: 30px;
       height: 30px;
+      line-height: 30px;
       margin-left: 25px;
       display: inline-block;
       vertical-align: middle;
@@ -122,10 +122,11 @@
     }
   }
 
-  .pic {
-    width: 580px;
-    height: 105px;
-    margin-top: 20px;
-    .background-image(url(./images/icp.png));
+  .certIconsWrapper {
+    margin-top: 35px;
+
+    .certIcon {
+      height: 75px;
+    }
   }
 }

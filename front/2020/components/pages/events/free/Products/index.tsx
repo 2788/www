@@ -3,6 +3,7 @@
  */
 
 import React, { PropsWithChildren } from 'react'
+import { Product, nameMap, urlMap } from 'constants/products'
 import { Row } from 'components/UI/Card'
 import Card, { Title, Desc, List, HookItem, Button } from 'components/OperationCard'
 import Link from 'components/Link'
@@ -15,10 +16,10 @@ export default function FreeProducts() {
     <div className="wrapper">
       <Row>
         <ProductCard
-          title="对象存储"
+          title={nameMap[Product.Kodo]}
           desc="广泛应用于海量数据管理的场景"
           getUrl={signupUrl}
-          moreUrl="/products/kodo"
+          moreUrl={urlMap[Product.Kodo]}
         >
           <List>
             <HookItem>标准存储免费空间 10 GB</HookItem>
@@ -27,20 +28,20 @@ export default function FreeProducts() {
           </List>
         </ProductCard>
         <ProductCard
-          title="CDN"
+          title={nameMap[Product.Cdn]}
           desc="无盲区、智能调度、立体品控、降低回源"
           getUrl={signupUrl}
-          moreUrl="/products/qcdn"
+          moreUrl={urlMap[Product.Cdn]}
         >
           <List>
             <HookItem>HTTP 免费下载流量 10 GB/月</HookItem>
           </List>
         </ProductCard>
         <ProductCard
-          title="云主机"
+          title={nameMap[Product.Qvm]}
           desc="提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
           getUrl={signupUrl}
-          moreUrl="/products/qvm"
+          moreUrl={urlMap[Product.Qvm]}
         >
           <List>
             <HookItem>高达 4 C 8 G 的专业云服务器 0 元起</HookItem>
@@ -49,10 +50,10 @@ export default function FreeProducts() {
       </Row>
       <Row>
         <ProductCard
-          title="云短信"
+          title={nameMap[Product.Sms]}
           desc="支持快速发送验证码短信、通知短信和营销推广短信，服务范围覆盖国内（含港澳台地区）及全球 200 多个国家和地区，到达率高达 99%。"
           getUrl={signupUrl}
-          moreUrl="/products/sms"
+          moreUrl={urlMap[Product.Sms]}
         >
           <List>
             <HookItem>开通赠送 300 条免费短信套餐</HookItem>
@@ -71,10 +72,10 @@ export default function FreeProducts() {
           </List>
         </ProductCard>
         <ProductCard
-          title="内容安全"
+          title={nameMap[Product.Censor]}
           desc="精准识别色情、暴恐、敏感人物等内容"
           getUrl={signupUrl}
-          moreUrl="/products/censor"
+          moreUrl={urlMap[Product.Censor]}
         >
           <List>
             <HookItem>免费鉴黄额度 6 万张</HookItem>
@@ -85,10 +86,10 @@ export default function FreeProducts() {
       </Row>
       <Row>
         <ProductCard
-          title="智能日志管理平台"
+          title={nameMap[Product.Insight]}
           desc="适用于运维监控、安全审计及业务数据分析等场景"
           getUrl={signupUrl}
-          moreUrl="/products/insight"
+          moreUrl={urlMap[Product.Insight]}
         >
           <List>
             <HookItem>新增日志数据 1 GB/月</HookItem>
@@ -97,10 +98,10 @@ export default function FreeProducts() {
           </List>
         </ProductCard>
         <ProductCard
-          title="智能多媒体服务"
+          title={nameMap[Product.Dora]}
           desc="针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
           getUrl={signupUrl}
-          moreUrl="/products/dora"
+          moreUrl={urlMap[Product.Dora]}
         >
           <List>
             <HookItem>750 小时/月 免费自定义数据处理服务</HookItem>
@@ -108,10 +109,10 @@ export default function FreeProducts() {
           </List>
         </ProductCard>
         <ProductCard
-          title="SSL 证书服务"
+          title={nameMap[Product.Ssl]}
           desc="数据加密传输、高兼容性、提升搜索排名"
           getUrl={signupUrl}
-          moreUrl="/products/ssl"
+          moreUrl={urlMap[Product.Ssl]}
         >
           <List>
             <HookItem>域名型 DV SSL 证书免费申请</HookItem>

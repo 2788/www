@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
-import Link from 'next/link'
+import Link from 'components/Link'
+import { Product, nameMap, urlMap, categoryStorage, categoryService, categoryVideo, categoryIntelligence } from 'constants/products'
 import Button from 'components/UI/Button'
 
 import Github from './images/github.svg'
@@ -13,45 +14,43 @@ function MenuItem({ children }: PropsWithChildren<{}>) {
   return <div className="menu-item">{children}</div>
 }
 
+function ProductItems({ products }: { products: readonly Product[] }) {
+  const itemsView = products.map(product => (
+    <MenuItem key={product}>
+      <Link href={urlMap[product] || '#'}>{nameMap[product]}</Link>
+    </MenuItem>
+  ))
+  return <>{itemsView}</>
+}
+
 export default function FooterForMobile() {
   return (
     <div className={style.footer}>
       <div className={style.nav}>
         <Menu mode="inline" inlineIndent={15}>
           <SubMenu title="存储与数据湖">
-            <MenuItem><Link href="/products/kodo"><a>对象存储</a></Link></MenuItem>
-            <MenuItem><Link href="/products/kodo"><a>归档存储</a></Link></MenuItem>
+            <ProductItems products={categoryStorage} />
           </SubMenu>
           <SubMenu title="基础服务">
-            <MenuItem><Link href="/products/qcdn"><a>CDN</a></Link></MenuItem>
-            <MenuItem><Link href="/ssl"><a>证书</a></Link></MenuItem>
-            <MenuItem><Link href="/products/pili"><a>直播</a></Link></MenuItem>
-            <MenuItem><Link href="/products/qvm"><a>云主机</a></Link></MenuItem>
-            <MenuItem><Link href="/products/sms"><a>云短信</a></Link></MenuItem>
+            <ProductItems products={categoryService} />
           </SubMenu>
           <SubMenu title="智能视频">
-            <MenuItem><Link href="/products/dora"><a>智能多媒体服务</a></Link></MenuItem>
-            <MenuItem><Link href="/products/censor"><a>内容安全</a></Link></MenuItem>
-            <MenuItem><Link href="/products/rtn"><a>实时音视频</a></Link></MenuItem>
-            <MenuItem><Link href="/products/plsv"><a>短视频 SDK</a></Link></MenuItem>
-            <MenuItem><Link href="/products/plms"><a>推流 SDK</a></Link></MenuItem>
-            <MenuItem><Link href="TODO"><a>人脸核验</a></Link></MenuItem>
+            <ProductItems products={categoryVideo} />
           </SubMenu>
           <SubMenu title="机器数据智能">
-            <MenuItem><Link href="/products/insight"><a>Pandora智能日志管理平台</a></Link></MenuItem>
-            <MenuItem><Link href="/products/pandora"><a>Pandora机器数据分析平台</a></Link></MenuItem>
+            <ProductItems products={categoryIntelligence} />
           </SubMenu>
           <SubMenu title="解决方案">
-            <MenuItem><Link href="/products/ess"><a>监控视频边缘存储解决方案</a></Link></MenuItem>
-            <MenuItem><Link href="/products/vcs"><a>视频冷存储解决方案</a></Link></MenuItem>
-            <MenuItem><Link href="TODO"><a>私有云行业解决方案</a></Link></MenuItem>
-            <MenuItem><Link href="/products/plsv"><a>短视频解决方案</a></Link></MenuItem>
-            <MenuItem><Link href="/products/qavs"><a>智能视频云解决方案</a></Link></MenuItem>
+            <MenuItem><Link href="/solutions/ess">监控视频边缘存储解决方案</Link></MenuItem>
+            <MenuItem><Link href="/solutions/vcs">视频冷存储解决方案</Link></MenuItem>
+            <MenuItem><Link href="/solutions/kodoe">私有云行业解决方案</Link></MenuItem>
+            <MenuItem><Link href="/solutions/plsv">短视频解决方案</Link></MenuItem>
+            <MenuItem><Link href="/solutions/qavs">智能视频云解决方案</Link></MenuItem>
           </SubMenu>
           <SubMenu title="活动与合作">
-            <MenuItem><Link href="/products/qvm/partner"><a>云主机合伙人计划</a></Link></MenuItem>
-            <MenuItem><Link href="/products/kodo/goglobal"><a>出海企业扶持</a></Link></MenuItem>
-            <MenuItem><Link href="/invite"><a>邀请好友</a></Link></MenuItem>
+            <MenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></MenuItem>
+            <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>
+            <MenuItem><Link href="/invite">邀请好友</Link></MenuItem>
           </SubMenu>
           <SubMenu title="服务与支持">
             <MenuItem><a href="https://developer.qiniu.com/">开发文档</a></MenuItem>
@@ -64,13 +63,13 @@ export default function FooterForMobile() {
             <MenuItem><a href="https://developer.qiniu.com">开发者中心</a></MenuItem>
             <MenuItem><a href="https://blog.qiniu.com/archives/category/5">技术博客</a></MenuItem>
             <MenuItem><a href="https://www.ecug.org/">ECUG 技术大会</a></MenuItem>
-            <MenuItem><Link href="TODO"><a>工具/插件/SDK合作</a></Link></MenuItem>
+            <MenuItem><Link href="/cooperations">工具/插件/SDK 合作</Link></MenuItem>
           </SubMenu>
           <SubMenu title="关于我们">
-            <MenuItem><Link href="/company"><a>公司介绍</a></Link></MenuItem>
-            <MenuItem><Link href="TODO"><a>客户案例</a></Link></MenuItem>
-            <MenuItem><Link href="/contact"><a>联系我们</a></Link></MenuItem>
-            <MenuItem><Link href="TODO"><a>最新动态</a></Link></MenuItem>
+            <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
+            <MenuItem><Link href="/case">客户案例</Link></MenuItem>
+            <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
+            <MenuItem><Link href="https://blog.qiniu.com/archives/category/1">最新动态</Link></MenuItem>
             <MenuItem><a href="https://career.qiniu.com/social">招聘</a></MenuItem>
           </SubMenu>
         </Menu>
@@ -88,7 +87,7 @@ export default function FooterForMobile() {
       </div>
       <div className={style.icp}>
         沪公网安备 31011502000961 号 <br />
-        沪ICP备 11037377 号-5
+        沪 ICP 备 11037377 号-5
       </div>
     </div>
   )

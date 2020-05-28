@@ -7,11 +7,19 @@ import React, { PropsWithChildren } from 'react'
 import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
+import { Product, nameMap, urlMap, categoryStorage, categoryService, categoryVideo, categoryIntelligence } from 'constants/products'
 
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
 import Wechat from './images/wechat.svg'
 import Qrcode from './images/qrcode.png'
+import imgCertCloudNative from './images/cert/cloud-native.png'
+import imgCertCmmi3 from './images/cert/cmmi3.png'
+import imgCertDjcp from './images/cert/djcp.png'
+import imgCertIso9001 from './images/cert/iso9001.png'
+import imgCertIso20000 from './images/cert/iso20000.png'
+import imgCertIso27001 from './images/cert/iso27001.png'
+import imgCertKexin from './images/cert/kexin.png'
 
 import style from './style.less'
 
@@ -40,60 +48,56 @@ function LinkGroup({ title, children }: PropsWithChildren<ILinkGroupProps>) {
   )
 }
 
+function ProductItems({ products }: { products: readonly Product[] }) {
+  const itemsView = products.map(product => (
+    <LinkItem key={product} url={urlMap[product] || '#'}>{nameMap[product]}</LinkItem>
+  ))
+  return <>{itemsView}</>
+}
+
 function LinkGroups() {
   return (
     <section className={style.linkGroups}>
       <LinkGroup title="存储与数据湖">
-        <LinkItem url="/products/kodo">对象存储</LinkItem>
-        <LinkItem url="/products/kodo">归档存储</LinkItem>
+        <ProductItems products={categoryStorage} />
       </LinkGroup>
       <LinkGroup title="基础服务">
-        <LinkItem url="/products/qcdn">CDN</LinkItem>
-        <LinkItem url="/products/pili">直播</LinkItem>
-        <LinkItem url="/ssl">证书</LinkItem>
-        <LinkItem url="/products/qvm">云主机</LinkItem>
-        <LinkItem url="/products/sms">云短信</LinkItem>
+        <ProductItems products={categoryService} />
       </LinkGroup>
       <LinkGroup title="智能视频">
-        <LinkItem url="/products/dora">智能多媒体服务</LinkItem>
-        <LinkItem url="/products/censor">内容安全</LinkItem>
-        <LinkItem url="/products/rtn">实时音视频</LinkItem>
-        <LinkItem url="/products/svesdk">短视频</LinkItem>
-        <LinkItem url="/products/plesdk">推流</LinkItem>
-        <LinkItem url="TODO">播放器</LinkItem>
+        <ProductItems products={categoryVideo} />
       </LinkGroup>
       <LinkGroup title="机器数据智能">
-        <LinkItem url="/products/insight">智能日志管理平台</LinkItem>
-        <LinkItem url="/products/pandora">机器数据分析平台</LinkItem>
+        <ProductItems products={categoryIntelligence} />
       </LinkGroup>
       <LinkGroup title="解决方案">
-        <LinkItem url="/products/ess">监控视频边缘存储解决方案</LinkItem>
-        <LinkItem url="/products/vcs">视频冷存储解决方案</LinkItem>
-        <LinkItem url="TODO">私有云行业解决方案</LinkItem>
-        <LinkItem url="/products/plsv">短视频解决方案</LinkItem>
-        <LinkItem url="/products/qavs">智能视频云解决方案</LinkItem>
+        <LinkItem url="/solutions/ess">监控视频边缘存储解决方案</LinkItem>
+        <LinkItem url="/solutions/vcs">视频冷存储解决方案</LinkItem>
+        <LinkItem url="/solutions/kodoe">私有云行业解决方案</LinkItem>
+        <LinkItem url="/solutions/plsv">短视频解决方案</LinkItem>
+        <LinkItem url="/solutions/qavs">智能视频云解决方案</LinkItem>
       </LinkGroup>
       <LinkGroup title="服务与支持">
         <LinkItem url="https://developer.qiniu.com/">开发文档</LinkItem>
         <LinkItem url="https://support.qiniu.com">技术支持</LinkItem>
         <LinkItem url="https://segmentfault.com/qiniu?ref=portal.qiniu.com">问答社区</LinkItem>
         <LinkItem url="https://support.qiniu.com/tickets">工单系统</LinkItem>
-        <LinkItem url="TODO">用户协议</LinkItem>
-        <LinkItem url="TODO">隐私权政策</LinkItem>
+        <LinkItem url="/user-agreement">用户协议</LinkItem>
+        <LinkItem url="/privacy-right">隐私权政策</LinkItem>
         <LinkItem url="https://status.qiniu.com">服务状态</LinkItem>
       </LinkGroup>
       <LinkGroup title="开发者">
         <LinkItem url="https://developer.qiniu.com">开发者中心</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
         <LinkItem url="https://www.ecug.org/">ECUG 技术大会</LinkItem>
-        <LinkItem url="TODO">架构师实践日</LinkItem>
-        <LinkItem url="TODO">工具插件 SDK 合作</LinkItem>
+        <LinkItem url="/events/arch">架构师实践日</LinkItem>
+        <LinkItem url="/cooperations">工具插件 SDK 合作</LinkItem>
       </LinkGroup>
       <LinkGroup title="关于我们">
         <LinkItem url="/company">公司介绍</LinkItem>
-        <LinkItem url="TODO">客户案例</LinkItem>
+        <LinkItem url="/case">客户案例</LinkItem>
         <LinkItem url="/contact">联系我们</LinkItem>
-        <LinkItem url="TODO">最新动态</LinkItem>
+        <LinkItem url="https://blog.qiniu.com/archives/category/1">最新动态</LinkItem>
         <LinkItem url="https://career.qiniu.com/social">加入我们</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
       </LinkGroup>
@@ -141,7 +145,15 @@ function Icp() {
         24 小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com <br />
         沪公网安备 31011502000961 号 沪 ICP 备 11037377 号-5
       </div>
-      <div className={style.pic}></div>
+      <div className={style.certIconsWrapper}>
+        <a target="_blank" rel="noopener" href="http://www.djbh.net/webdev/web/HomeWebAction.do?p=init"><img className={style.certIcon} src={imgCertDjcp} /></a>
+        <a target="_blank" rel="noopener" href="https://www.cncf.io/"><img className={style.certIcon} src={imgCertCloudNative} /></a>
+        <img className={style.certIcon} src={imgCertIso20000} />
+        <img className={style.certIcon} src={imgCertIso9001} />
+        <img className={style.certIcon} src={imgCertIso27001} />
+        <img className={style.certIcon} src={imgCertCmmi3} />
+        <a target="_blank" rel="noopener" href="https://www.kexinyun.org.cn/"><img className={style.certIcon} src={imgCertKexin} /></a>
+      </div>
     </section>
   )
 }
