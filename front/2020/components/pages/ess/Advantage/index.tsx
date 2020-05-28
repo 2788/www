@@ -27,14 +27,14 @@ export default function EssAdvantage() {
           title="传输高速可靠"
           align="left"
         >
-          <FeatureDesc>多维调度策略选取传输链路，保障传输高速可靠，可充分利用链路带宽。</FeatureDesc>
+          <FeatureDesc>多维调度策略选取传输链路，保障传输高速可靠，可充分利用链路带宽</FeatureDesc>
         </FeatureItem>
         <FeatureItem
           icon={<AdvantageIconTwo className={styles.icon} />}
           title="数据多重保护"
           align="left"
         >
-          <FeatureDesc>对数据传输及存储采用网银级加密保护，边缘可自定义处理敏感数据，及时脱敏。</FeatureDesc>
+          <FeatureDesc>对数据传输及存储采用网银级加密保护，边缘可自定义处理敏感数据，及时脱敏</FeatureDesc>
         </FeatureItem>
 
         <FeatureItem
@@ -42,7 +42,7 @@ export default function EssAdvantage() {
           title="全面兼容扩展"
           align="left"
         >
-          <FeatureDesc>兼容七牛云对象存储已有功能特性及接口，支持与边缘计算相结合，拓展边缘智能。</FeatureDesc>
+          <FeatureDesc>兼容七牛云对象存储已有功能特性及接口，支持与边缘计算相结合，拓展边缘智能</FeatureDesc>
         </FeatureItem>
       </FeatureGroup>
     </Feature>

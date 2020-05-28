@@ -33,7 +33,7 @@ export default function QavsFeature() {
           icon={<FeatureIconOne className={styles.icon} />}
           title="稳定的网络传输与分发"
         >
-          <FeatureDesc>直播延迟不高于 1s，互动延迟不高于 150ms</FeatureDesc>
+          <FeatureDesc>直播延迟不高于 1 s，互动延迟不高于 150 ms</FeatureDesc>
         </FeatureItem>
         <FeatureItem
           pos="left-right"

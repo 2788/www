@@ -24,17 +24,17 @@ export default function VcsFeature() {
 
         <div className={styles.item}>
           <FeatureIconTwo className={styles.icon} />
-          <p className={styles.desc}>时延 ≤50ms</p>
+          <p className={styles.desc}>时延 ≤ 50 ms</p>
         </div>
 
         <div className={styles.item}>
           <FeatureIconThree className={styles.icon} />
-          <p className={styles.desc}>突发流量承载 100Gbps+</p>
+          <p className={styles.desc}>突发流量承载 100 Gbps +</p>
         </div>
 
         <div className={styles.item}>
           <FeatureIconFour className={styles.icon} />
-          <p className={styles.desc}>写入性能 50Gbps+</p>
+          <p className={styles.desc}>写入性能 50 Gbps +</p>
         </div>
       </div>
     </div>

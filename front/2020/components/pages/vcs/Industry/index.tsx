@@ -27,14 +27,14 @@ export default function VcsIndustry() {
           title=""
           align="left"
         >
-          <FeatureDesc>归档与合规需求和数据资产化趋势使得存储规模和成本增加，自建存储的研发、管理成本上升。</FeatureDesc>
+          <FeatureDesc>归档与合规需求和数据资产化趋势使得存储规模和成本增加，自建存储的研发、管理成本上升</FeatureDesc>
         </FeatureItem>
         <FeatureItem
           icon={<IndustryIconTwo className={styles.icon} />}
           title=""
           align="left"
         >
-          <FeatureDesc>在线视频的访问热度会随着时间变化，而常规方案缺乏有效生命周期管理方案，无法智能处理冷热数据。</FeatureDesc>
+          <FeatureDesc>在线视频的访问热度会随着时间变化，而常规方案缺乏有效生命周期管理方案，无法智能处理冷热数据</FeatureDesc>
         </FeatureItem>
 
         <FeatureItem
@@ -42,7 +42,7 @@ export default function VcsIndustry() {
           title=""
           align="left"
         >
-          <FeatureDesc>常规冷备存储方案访问性能不足，无法应对突发访问流量，并且在成本控制下灾备能力不足。</FeatureDesc>
+          <FeatureDesc>常规冷备存储方案访问性能不足，无法应对突发访问流量，并且在成本控制下灾备能力不足</FeatureDesc>
         </FeatureItem>
       </FeatureGroup>
     </Feature>

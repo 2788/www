@@ -45,7 +45,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconFilter className={styles.icon} />
-          <div className={styles.desc}>提供专业级实时滤镜特效；接口灵活，可接入第三方效果或定制开发。</div>
+          <div className={styles.desc}>提供专业级实时滤镜特效，接口灵活，可接入第三方效果或定制开发</div>
         </div>
       </SubMenu>
       <SubMenu
@@ -58,7 +58,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconFace className={styles.icon} />
-          <div className={styles.desc}>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果。</div>
+          <div className={styles.desc}>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果</div>
         </div>
       </SubMenu>
       <SubMenu
@@ -71,7 +71,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconTiktok className={styles.icon} />
-          <div className={styles.desc}>无需复杂开发，即可实现灵魂出窍、幻觉、抖动等魔性抖音效果。</div>
+          <div className={styles.desc}>无需复杂开发，即可实现灵魂出窍、幻觉、抖动等魔性抖音效果</div>
         </div>
       </SubMenu>
       <SubMenu
@@ -84,7 +84,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconAR className={styles.icon} />
-          <div className={styles.desc}>逼真的 3D 物体绘制、背景替换，轻松实现场景虚拟化效果。</div>
+          <div className={styles.desc}>逼真的 3D 物体绘制、背景替换，轻松实现场景虚拟化效果</div>
         </div>
       </SubMenu>
       <SubMenu
@@ -97,7 +97,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconTime className={styles.icon} />
-          <div className={styles.desc}>提供时光倒流、延时拍摄、倍速播放等功能。</div>
+          <div className={styles.desc}>提供时光倒流、延时拍摄、倍速播放等功能</div>
         </div>
       </SubMenu>
     </Menu>

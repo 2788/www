@@ -47,7 +47,7 @@ export default function Mobile() {
           <SolutionIconOne className={styles.icon} />
           <div className={styles.content}>
             <div className={styles.desc}>
-              短视频 SDK 小至 1.5M，1 天快速对接。同时包含丰富的基础功能，可灵活使用剪辑、拼接、添加滤镜等功能。
+              短视频 SDK 小至 1.5 M，1 天快速对接。同时包含丰富的基础功能，可灵活使用剪辑、拼接、添加滤镜等功能。
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function Mobile() {
           <SolutionIconFour className={styles.icon} />
           <div className={styles.content}>
             <div className={styles.desc}>
-              提供免费的播放器 SDK，秒开 200ms，包体小至 400K，千万日活验证，给用户畅享流畅无卡顿的视频体验。
+              提供免费的播放器 SDK，秒开 200 ms，包体小至 400 K，千万日活验证，给用户畅享流畅无卡顿的视频体验。
             </div>
             <div className={styles.desc}>
               相关文档：
