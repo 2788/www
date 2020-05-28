@@ -21,7 +21,9 @@ import styles from './style.less'
 // 默认为 zoom
 export type BlockType = 'zoom' | 'fixed' | undefined
 
-export type ISceneProps = HTMLAttributes<HTMLElement> & Partial<SectionProps>
+export type ISceneProps = HTMLAttributes<HTMLElement> & Partial<SectionProps> & {
+  defaultActive?: string
+}
 
 export interface IPanelProps extends HTMLAttributes<HTMLElement> {
   name: string

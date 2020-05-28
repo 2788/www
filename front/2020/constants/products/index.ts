@@ -48,17 +48,17 @@ export const nameMap = {
   [Product.Hdfs]: 'HDFS',
   [Product.Cdn]: 'CDN',
   [Product.Ssl]: 'SSL 证书',
-  [Product.Pili]: '直播',
-  [Product.Qvm]: '云主机',
-  [Product.Sms]: '云短信',
+  [Product.Pili]: '视频直播',
+  [Product.Qvm]: '云主机服务 QVM',
+  [Product.Sms]: '云短信 SMS',
   [Product.Dora]: '智能多媒体服务',
-  [Product.Censor]: '内容安全',
+  [Product.Censor]: '内容审核',
   [Product.FaceID]: '人脸核验',
   [Product.Rtn]: '实时音视频',
   [Product.Plsv]: '短视频 SDK',
-  [Product.Plms]: '推流 SDK',
+  [Product.Plms]: '直播推流 SDK',
   [Product.Insight]: '智能日志管理平台',
-  [Product.Express]: '机器数据分析平台'
+  [Product.Express]: '数据分析平台'
 }
 
 export const urlMap = {

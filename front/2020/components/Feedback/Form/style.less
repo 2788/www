@@ -2,9 +2,13 @@
 
 @blue: @blue-6;
 @paddingX: 20px;
+@paddingXMobile: 16px;
 @paddingY: 14px;
+@paddingYMobile: 8px;
 @avatarSize: 44px;
+@avatarSizeMobile: 36px;
 @headerHeight: @avatarSize + @paddingY*2;
+@headerHeightMobile: @avatarSizeMobile + @paddingYMobile*2;
 @footerHeight: 52px;
 
 .wrapper {
@@ -18,6 +22,7 @@
 
 .header {
   @paddingLeft: @avatarSize + 12px;
+  @paddingLeftMobile: @avatarSizeMobile + 12px;
 
   position: absolute;
   top: 0;
@@ -27,6 +32,12 @@
   height: @avatarSize + (@paddingY * 2);
   padding: @paddingY 0 @paddingY @paddingLeft;
   border-bottom: 1px solid #eee;
+
+  .mobile({
+    margin: 0 @paddingXMobile;
+    height: @avatarSizeMobile + (@paddingYMobile * 2);
+    padding: @paddingYMobile 0 @paddingYMobile @paddingLeftMobile;
+  });
 }
 
 .avatar {
@@ -40,17 +51,34 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: url(../icons/qiniu.svg);
+
+  .mobile({
+    top: @paddingYMobile;
+    width: @avatarSizeMobile;
+    height: @avatarSizeMobile;
+    border-radius: @avatarSizeMobile / 2;
+  })
 }
 
 .title {
   margin-top: 2px;
   font-size: 14px;
+
+  .mobile({
+    margin-top: 0;
+    line-height: 20px;
+  });
 }
 
 .description {
   margin-top: 3px;
   font-size: 12px;
   color: @grey-5;
+
+  .mobile({
+    margin-top: 0;
+    line-height: 17px;
+  });
 }
 
 .body {

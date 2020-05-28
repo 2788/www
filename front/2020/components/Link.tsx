@@ -8,6 +8,11 @@ import NextLink from 'next/link'
 export type Props = AnchorHTMLAttributes<HTMLAnchorElement>
 
 export default function Link({ href, ...others }: Props) {
+  // 对于 hash 直接走 a 标签，next/link 会干掉 hrefe: hash 点击触发的 hashchange 事件
+  if (href && href[0] === '#') {
+    return <a href={href} {...others} />
+  }
+
   const checked = checkInSite(href)
   if (checked.inSite) {
     return (

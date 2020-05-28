@@ -29,9 +29,10 @@ export default function Layout({ children, title }: Props) {
   // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provideer 覆盖手动值
   const ua = useUa()
   const isMobile = useIsMobile()
+  const loaded = useLoaded()
 
   return (
-    <UaContext.Provider value={{ isMobile, ...ua }}>
+    <UaContext.Provider value={{ isMobile, loaded, ...ua }}>
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -70,4 +71,21 @@ function getIsMobile() {
     // 同 utils/style.less `.mobile()` 实现
     && window.matchMedia('(max-width: 767px)').matches
   )
+}
+
+function useLoaded() {
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    if (window.document.readyState === 'complete') {
+      setLoaded(true)
+      return
+    }
+
+    const markLoaded = () => setLoaded(true)
+    window.addEventListener('load', markLoaded)
+    return () => window.removeEventListener('load', markLoaded)
+  }, [])
+
+  return loaded
 }

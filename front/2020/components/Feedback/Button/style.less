@@ -1,6 +1,7 @@
 @import '~utils/less/index.less';
 
 @size: 64px;
+@mobileSize: 44px;
 
 .wrapper {
   width: @size;
@@ -11,4 +12,15 @@
   background-color: @blue-6;
   color: #fff;
   cursor: pointer;
+
+  &:hover {
+    background-color: @blue-5;
+  }
+
+  .mobile({
+    width: @mobileSize;
+    height: @mobileSize;
+    line-height: @mobileSize;
+    border-radius: @mobileSize / 2;
+  });
 }

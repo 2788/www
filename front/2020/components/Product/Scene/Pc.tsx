@@ -7,6 +7,7 @@
 import React, {
   useContext, useState, useCallback, useMemo, useEffect
 } from 'react'
+import { useOnChange } from 'hooks'
 
 import Tabs, { Tab } from '../../UI/Tabs'
 
@@ -40,15 +41,13 @@ export default function PcScene(props: IPcSceneProps) {
   })), [])
 
   const panels = useMemo(() => Object.values(panelMap), [panelMap])
-  const [active, setActive] = useState<string | null>(null)
+  const [active, setActive] = useState<string | null>(props.defaultActive || null)
 
-  useEffect(
-    () => {
-      const defaultActive = panels.length > 0 ? panels[0].name : null
-      setActive(defaultActive)
-    },
-    [panels]
-  )
+  useOnChange(() => {
+    if (panels.length > 0 && active == null) {
+      setActive(panels[0].name)
+    }
+  }, [panels])
 
   function handlePanelsChange(activeKey: string) {
     setActive(activeKey)

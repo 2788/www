@@ -21,6 +21,7 @@ export function LinkItem({ children, href }: PropsWithChildren<LinkItemProps>) {
 }
 
 export function LinkGroup(props: PropsWithChildren<LinkGroupProps>) {
+  // TODO: 这个会导致 PC 切移动的转换过程报错（可以手机旋转来复现）
   return React.createElement(SubMenu, { ...props, className: styles.linkGroup })
 }
 

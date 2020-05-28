@@ -2,6 +2,8 @@
  * @file 产品“机器数据分析平台”
  */
 
+/* eslint-disable max-len */
+
 import React, { PropsWithChildren } from 'react'
 import * as card from 'components/UI/Card'
 import Button from 'components/UI/Button'
@@ -18,6 +20,7 @@ import { RawCustomerCaseGroup as RawCaseGroup, CustomerCase as Case } from 'comp
 import * as logos from 'components/pages/express/logos'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
+import { bbg } from 'constants/cases'
 import IconBanner from './banner.svg'
 import ImgIntro from './_images/intro.svg'
 import imgFeature1 from './_images/feature-1.png'
@@ -155,15 +158,23 @@ export default function ExpressPage() {
             Pandora 很好的帮助我们完善了实时业务运营分析，可以随时根据需求调整分析维度获取结果助力业务决策，另外 Pandora 也大大改进了产品开发测试流程。
           </Word>
           <Word title="上海电气" logo={logos.shdq}>
-            Pandora 数据分析平台界面简单易懂对用户友好，它的快速检索、灵活的聚合分析和建模能力帮助我们在安全分析领域获得了 // TODO
+            Pandora 数据分析平台界面简单易懂，对用户非常友好，它的快速检索、灵活的聚合分析和建模能力帮助我们在安全分析领域获得了深入洞察，快速发现并管理安全事件。
           </Word>
         </card.Row>
         <card.Row>
           <Word title="中国太平" logo={logos.taiping}>
-            我们使用 Pandora 对全栈的日志数据进行统一管理，这使得我们大大提升了 IT 运维效率，并能够实时通过日志洞察系统运行状态和 // TODO
+            我们使用 Pandora 对全栈的日志数据进行统一管理，这使得我们大大提升了 IT 运维效率，并能够通过日志实时洞察系统运行状态并快速定位故障。
           </Word>
           <Word title="中信银行" logo={logos.zhongxin}>
             面对繁多的内部系统和各部门不同权限操作带来的风险，借助 Pandora 日志分析实现了灵活的 IT 操作风险计量与检核平台，使得我们能够界面化建立多系统多维度的内部审计安全规则，实时感知内部风险。
+          </Word>
+        </card.Row>
+        <card.Row>
+          <Word title="步步高" logo={bbg.logo}>
+            将日志数据的管理和分析交给 Pandora，使我们更加专注在自身产品和业务，Pandora 很好的支撑起我们业务的快速增长、实现业务实时监控，帮助步步高小天才节约了 30% 成本。
+          </Word>
+          <Word title="银基富力" logo="TODO">
+            Pandora 助力我们打造专业的信息科技风险监管报送系统，面对海量抽象的机器数据，Pandora 提供了专业化的数据采集、实时分析、可视化能力，实时获取监管数据，有效识别、计量、监测和控制信息科技风险，大大提升监管效率。
           </Word>
         </card.Row>
       </Section>

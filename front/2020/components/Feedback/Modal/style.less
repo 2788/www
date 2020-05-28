@@ -49,8 +49,18 @@
     }
 
     &:hover .closeIcon path {
-      fill: @blue-6;
+      fill: @grey-5;
     }
+
+    .mobile({
+      width: 52px;
+      height: 52px;
+
+      .closeIcon {
+        width: 15px;
+        height: 15px;
+      }
+    });
   }
 }
 

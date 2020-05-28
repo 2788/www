@@ -1,6 +1,11 @@
 @import '~utils/less/index.less';
 
 @blue: @blue-6;
+// 同 ./Button/style.less
+@buttonSize: 64px;
+@mobileButtonSize: 44px;
+@entryHeight: 140px;
+@mobileEntryHeight: 102px;
 
 .wrapper {
   position: fixed;
@@ -13,10 +18,6 @@
     right: 16px;
   });
 }
-
-// 同 ./Button/style.less
-@buttonSize: 64px;
-@entryHeight: 140px;
 
 .entryWrapper {
 
@@ -37,6 +38,7 @@
     left: -1px;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 47%;
 
     &.btnClose {
       background-image: url(../icons/close.svg);
@@ -54,7 +56,24 @@
     line-height: 22px;
     color: @blue;
     text-decoration: none;
+
+    &:hover {
+      color: @blue-5;
+    }
   }
+
+  .mobile({
+    width: @mobileButtonSize;
+    height: @mobileEntryHeight;
+    border-radius: @mobileButtonSize / 2;
+
+    .freeTrialLink {
+      margin-top: @mobileButtonSize;
+      padding: 8px 9px 15px;
+      font-size: 12px;
+      line-height: 17px;
+    }
+  });
 }
 
 .modal() {

@@ -5,10 +5,11 @@
 
 // TODO: Navigatable & Block 逻辑可以从 Navigator 模块中抽出去，作为更基础的组件
 
-import React, { ReactNode, useState, useCallback, useMemo, useEffect } from 'react'
+import React, { ReactNode, useState, useCallback, useMemo } from 'react'
 import { useHash } from 'hooks/url'
 import { useScrollTop } from 'hooks/scroll'
 import { useOnChange } from 'hooks'
+import { useLoaded } from 'hooks/ua'
 import { BlockInfo, isBlockInView, context, NavigatorInfo } from './utils'
 
 /** 可导航区块信息集合 */
@@ -22,6 +23,7 @@ export type Props = {
 
 /** 可导航区域，预期包裹在导航栏（`Navigator`）外部，包含多个可导航块（`Block`） */
 export default function Navigatable({ children }: Props) {
+  const loaded = useLoaded()
   const [navigatorInfo, registerNavigator] = useState<NavigatorInfo | null>(null)
   const [blockMap, setBlockMap] = useState<BlockInfoMap>({})
 
@@ -40,6 +42,7 @@ export default function Navigatable({ children }: Props) {
 
   // 页面滚动时根据滚动位置同步更新当前 active 信息
   useOnChange(() => {
+    if (!loaded) return
     const navigatorHeight = navigatorInfo?.wrapper.offsetHeight || 0
     for (let i = blocks.length - 1; i >= 0; i--) {
       const block = blocks[i]
@@ -54,13 +57,19 @@ export default function Navigatable({ children }: Props) {
   const activeBlock = active && blockMap[active]
 
   // 控制页面滚动到 active block 对应的位置
-  useEffect(() => {
+  const syncScrollTop = useCallback(() => {
     const navigatorHeight = navigatorInfo?.wrapper.offsetHeight || 0
     // TODO: 初次控制滚动的事情会不会挪到页面 onload 之后做更好？可能可以有更好的首屏表现
     if (activeBlock && !isBlockInView(activeBlock, scrollTop, navigatorHeight)) {
       scrollTo(activeBlock.wrapper.offsetTop - navigatorHeight)
     }
-  }, [activeBlock]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [activeBlock, navigatorInfo, scrollTo, scrollTop])
+
+  // activeBlock 发生变更或页面 loaded 后尝试同步位置
+  useOnChange(() => {
+    if (!loaded) return
+    syncScrollTop()
+  }, [activeBlock, loaded])
 
   const contextValue = useMemo(() => ({
     navigator: navigatorInfo,
