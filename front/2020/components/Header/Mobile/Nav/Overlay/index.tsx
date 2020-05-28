@@ -50,6 +50,7 @@ export default function Overlay() {
         <MenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></MenuItem>
         <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>
         <MenuItem><Link href="/invite">邀请好友</Link></MenuItem>
+        <MenuItem><Link href="/cooperations">工具插件 SDK 合作</Link></MenuItem>
       </SubMenu>
       <SubMenu title="服务与支持">
         <MenuItem><a href="https://developer.qiniu.com/">开发文档</a></MenuItem>

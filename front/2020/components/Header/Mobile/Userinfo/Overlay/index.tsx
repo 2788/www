@@ -10,6 +10,7 @@ export default function Overlay({ user }: { user: Userinfo | Guestinfo | null })
       <div className={style.wrapper}>
         <div className={style.email}>{user.email}</div>
         <Button
+          type="hollow"
           href="https://sso.qiniu.com/signout"
           withBorder
           className={style.whiteBtn}

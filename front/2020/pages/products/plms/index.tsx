@@ -34,14 +34,14 @@ export function Content() {
     <>
       <PageBanner
         title="直播推流 SDK"
-        desc="直播推流SDK，由七牛音视频团队多年精心打磨，包体轻盈、接入简单，协助您快速搭建直播推流核心功能，同时可无缝对接美颜、滤镜、人脸贴纸等高级特效。"
+        desc="直播推流 SDK，由七牛音视频团队多年精心打磨，包体轻盈、接入简单，协助您快速搭建直播推流核心功能，同时可无缝对接美颜、滤镜、人脸贴纸等高级特效。"
         btns={btns.banner}
         icon={<BannerIcon />} />
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="welfares">
           <PageNoticeItem href="/products/plesdk">
-            直播特效SDK落地页
+            直播特效 SDK 落地页
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>

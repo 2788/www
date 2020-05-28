@@ -25,7 +25,7 @@ export default function Userinfo() {
   if (user?.is_signin) {
     return (
       <span className={classnames(style.wrapper, style.haveSignin)}>
-        <Dropdown align={{ offset: [-30, 0] }} overlay={() => <Overlay />}><span>{user.email}</span></Dropdown>
+        <Dropdown align={{ offset: [-30, -1] }} overlay={() => <Overlay />}><span>{user.email}</span></Dropdown>
         <ArrowDown className={style.arrow} />
       </span>
     )

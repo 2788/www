@@ -7,8 +7,8 @@ const subtitleMap = {
   [Product.Dora]: '提供云端图片、音视频基础处理、丰富的人工智能服务',
   [Product.Censor]: '七牛云人工智能实验室提供的一站式内容审核服务',
   [Product.Rtn]: '基于 WebRTC 的一站式解决方案，零基础搭建音视频平台',
-  [Product.Plsv]: '自然场景下对整图和文字进行检测、定位和识别',
-  [Product.Plms]: '基于 WebRTC 的一站式解决方案，零基础搭建音视频平台',
+  [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
+  [Product.Plms]: '支持手机端 RTMP&QUIC 推流，简单易上手，马上开播',
   [Product.FaceID]: '利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证'
 }
 

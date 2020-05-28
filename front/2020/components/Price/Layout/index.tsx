@@ -4,7 +4,9 @@
 
 import React from 'react'
 import { UaContext } from 'hooks/ua'
-import BaseLayout, { Props as BaseLayoutProps } from '../Layout'
+import BaseLayout, { Props as BaseLayoutProps } from '../../Layout'
+
+import style from './index.less'
 
 export type Props = BaseLayoutProps
 
@@ -13,7 +15,7 @@ export default function Layout({ children, ...otherProps }: Props) {
   return (
     <UaContext.Provider value={{ isMobile: false }}>
       <BaseLayout {...otherProps}>
-        {children}
+        <div className={style.font}>{children}</div>
       </BaseLayout>
     </UaContext.Provider>
   )

@@ -35,7 +35,7 @@ function PageContent() {
     <>
       <PageBanner
         title="对象存储 Kodo"
-        desc="七牛云海量存储系统（KODO）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
+        desc="七牛云海量存储系统（Kodo）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
         平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -47,7 +47,7 @@ function PageContent() {
             私有云存储，构建本地高扩展性数据存储平台 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem href="/prices/kodo">
-            标准存储，低至 <span className={style.price}>0.099</span> 元/GB/月起。 &gt;&gt;
+            标准存储，低至 <span className={style.price}>0.099</span> 元/GB/月起 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem href="http://qiniu-exp.mikecrm.com/yGntQCJ">
             体验边缘存储服务 &gt;&gt;
@@ -55,7 +55,7 @@ function PageContent() {
         </PageNoticeGroup>
         <PageNoticeGroup title="福利活动" type="welfares">
           <PageNoticeItem href="https://marketing.qiniu.com/activity/kodopackage?ref=www.qiniu.com/products/kodo">
-            资源包折扣套餐，上新特惠，立即购买。 &gt;&gt;
+            资源包折扣套餐，上新特惠，立即购买 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>

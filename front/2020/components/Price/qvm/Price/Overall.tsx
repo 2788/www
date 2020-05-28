@@ -190,21 +190,21 @@ const data = [
     type: '弹性公网 IP',
     mode: '包年包月（预付费）',
     category: '按固定带宽计费',
-    desc: '<strong>带宽费：</strong>根据 EIP 带宽大小计费<br /><strong>保有费：</strong>0.019~0.06 元/个/小时<br /><br />说明：保有费是指 IP 资源闲置，无绑定实例。'
+    desc: '<strong>带宽费：</strong>根据 EIP 带宽大小计费<br /><strong>保有费：</strong>0.019 ～ 0.06 元/个/小时<br /><br />说明：保有费是指 IP 资源闲置，无绑定实例。'
   },
   {
     key: 5,
     type: '弹性公网 IP',
     mode: '按量付费（后付费)',
     category: '按固定带宽计费',
-    desc: '<strong>带宽/流量费：</strong>根据 EIP 带宽/流量计费<br /><strong>保有费：</strong>0.019~0.06元/个/小时'
+    desc: '<strong>带宽/流量费：</strong>根据 EIP 带宽/流量计费<br /><strong>保有费：</strong>0.019 ～ 0.06 元/个/小时'
   },
   {
     key: 6,
     type: '弹性公网 IP',
     mode: '按量付费（后付费)',
     category: '按使用流量计费',
-    desc: '带宽/流量费：根据 EIP 带宽/流量计费<br />保有费：0.019~0.06元/个/小时'
+    desc: '带宽/流量费：根据 EIP 带宽/流量计费<br />保有费：0.019 ～ 0.06 元/个/小时'
   },
   {
     key: 7,
@@ -217,22 +217,22 @@ const data = [
     key: 8,
     type: 'VPN 网关',
     mode: '包年包月（预付费）',
-    category: '只开启 IPsec-VPN 功能',
-    desc: '<strong>VPN网关费用</strong> =（ IPsec-VPN 实例费+带宽费）x购买时长'
+    category: '只开启 IPsec - VPN 功能',
+    desc: '<strong>VPN 网关费用</strong> =（ IPsec - VPN 实例费 + 带宽费）x 购买时长'
   },
   {
     key: 9,
     type: 'VPN 网关',
     mode: '包年包月（预付费）',
-    category: '只开启 SSL-VPN功能',
-    desc: '<strong>VPN网关费用</strong> =（SSL-VPN实例费+带宽费+SSL规格费）x购买时长'
+    category: '只开启 SSL - VPN 功能',
+    desc: '<strong>VPN 网关费用</strong> =（SSL - VPN实例费 + 带宽费 + SSL 规格费）x 购买时长'
   },
   {
     key: 10,
     type: 'VPN 网关',
     mode: '包年包月（预付费）',
-    category: '同时开启 IPsec-VPN 和SSL-VPN功能',
-    desc: '<strong>VPN网关费用</strong> =（ IPsec-VPN 实例费+ SSL-VPN 实例费 + 带宽费+ SSL 规格费）x购买时长'
+    category: '同时开启 IPsec - VPN 和 SSL - VPN 功能',
+    desc: '<strong>VPN 网关费用</strong> =（ IPsec - VPN 实例费 + SSL - VPN 实例费 + 带宽费 + SSL 规格费）x 购买时长'
   },
   {
     key: 11,
@@ -267,14 +267,14 @@ const data = [
     type: 'RDS 云数据库',
     mode: '包年包月（预付费）<br />按量付费（后付费）',
     category: '实例',
-    desc: 'RDS实例规格的费用。计费方式为包年包月或按量付费。'
+    desc: 'RDS 实例规格的费用。计费方式为包年包月或按量付费。'
   },
   {
     key: 16,
     type: 'RDS 云数据库',
     mode: '包年包月（预付费）<br />按量付费（后付费）',
     category: '存储空间',
-    desc: 'RDS实例存储空间的费用。计费方式为包年包月或按量付费，与实例的计费方式一致。'
+    desc: 'RDS 实例存储空间的费用。计费方式为包年包月或按量付费，与实例的计费方式一致。'
   },
   {
     key: 17,
@@ -314,9 +314,9 @@ const data = [
       <strong>集群版本费用</strong> = mongos 规格费用 + shard（规格和磁盘空间费用） + configserve（规格和磁盘空间费用）<br />
       <br />
       <i>说明：</i><br />
-      <i>1. shard和configserver组件磁盘空间按量付费价格0.0047元/G</i><br />
-      <i>2. shard组件磁盘空间为10-2000G,步长10G递增。</i><br />
-      <i>3. configserver组件配置为20G，不可修改。</i>
+      <i>1. shard 和 configserver 组件磁盘空间按量付费价格 0.0047 元/G</i><br />
+      <i>2. shard 组件磁盘空间为 10 - 2000 G,步长 10 G 递增。</i><br />
+      <i>3. configserver 组件配置为 20 G，不可修改。</i>
     `
   },
   {
@@ -345,7 +345,7 @@ const data = [
     type: 'BGP 高防 IP',
     mode: '按量付费（后付费）',
     category: '转发流量费用<br></br><i>说明：清洗后转发回源站的业务流量所用的带宽。</i>',
-    desc: '按转发流量收费 0.80 元/GB ，带宽限制 100Mb 说明带宽以内。'
+    desc: '按转发流量收费 0.80 元/GB ，带宽限制 100 Mb 说明带宽以内。'
   },
   {
     key: 26,
@@ -385,14 +385,14 @@ const data = [
     type: '新 BGP 高防 IP',
     mode: '包年包月（预付费）',
     category: '业务带宽<br /><br /><i>说明：实例支持处理的无攻击情况下最大业务流量。</i>',
-    desc: '默认 100Mb 说明，增加每 Mb 说明：95 元/月'
+    desc: '默认 1  说明，增加每 Mb 说明：95 元/月'
   },
   {
     key: 31,
     type: '新 BGP 高防 IP',
     mode: '包年包月（预付费）',
     category: '业务 QPS<br /><br /><i>说明：实例支持处理的无攻击情况下最大HTTP/HTT说明业务的并发请求速率。</i>',
-    desc: '默认 3,000 QPS，增加每 100QPS ：950 元/月'
+    desc: '默认 3,000 QPS，增加每 100 QPS ：950 元/月'
   },
   {
     key: 32,

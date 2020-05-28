@@ -32,49 +32,49 @@ const columns: Array<ColumnProps<any>> = [
 const data = [
   {
     key: 1,
-    type: '企业型(OV)证书',
+    type: '企业型（OV）证书',
     years: 1,
     price: '2850'
   },
   {
     key: 2,
-    type: '企业型(OV)证书',
+    type: '企业型（OV）证书',
     years: 2,
     price: 4845
   },
   {
     key: 3,
-    type: '企业型(OV)多域名证书（默认包含5个标准域名额度）',
+    type: '企业型（OV）多域名证书（默认包含 5 个标准域名额度）',
     years: 1,
     price: 5450
   },
   {
     key: 4,
-    type: '企业型(OV)多域名证书（默认包含5个标准域名额度）',
+    type: '企业型（OV）多域名证书（默认包含 5 个标准域名额度）',
     years: 2,
     price: 9265
   },
   {
     key: 5,
-    type: '企业型(OV)多域名证书额外域名',
+    type: '企业型（OV）多域名证书额外域名',
     years: 1,
     price: 650
   },
   {
     key: 6,
-    type: '企业型(OV)多域名证书额外域名',
+    type: '企业型（OV）多域名证书额外域名',
     years: 2,
     price: 1105
   },
   {
     key: 7,
-    type: '企业型(OV)通配符证书',
+    type: '企业型（OV）通配符证书',
     years: 1,
     price: 6850
   },
   {
     key: 8,
-    type: '企业型(OV)通配符证书',
+    type: '企业型（OV）通配符证书',
     years: 2,
     price: 11645
   },
@@ -92,13 +92,13 @@ const data = [
   },
   {
     key: 11,
-    type: '企业增强型(EV)多域名证书（默认包含5个单域名',
+    type: '企业增强型(EV)多域名证书（默认包含 5 个单域名）',
     years: 1,
     price: 9650
   },
   {
     key: 12,
-    type: '企业增强型(EV)多域名证书（默认包含5个单域名',
+    type: '企业增强型(EV)多域名证书（默认包含5个单域名）',
     years: 2,
     price: 19300
   },

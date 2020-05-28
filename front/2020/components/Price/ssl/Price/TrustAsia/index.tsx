@@ -32,61 +32,61 @@ const columns: Array<ColumnProps<any>> = [
 const data = [
   {
     key: 1,
-    type: '域名型（DV）SSL证书',
+    type: '域名型（DV）SSL 证书',
     years: 1,
     price: '七牛云用户免费'
   },
   {
     key: 2,
-    type: '域名型（DV）通配符SSL证书',
+    type: '域名型（DV）通配符 SSL 证书',
     years: 1,
     price: 1999
   },
   {
     key: 3,
-    type: '企业型(OV)证书',
+    type: '企业型（OV）证书',
     years: 1,
     price: 4500
   },
   {
     key: 4,
-    type: '企业型(OV)证书',
+    type: '企业型（OV）证书',
     years: 2,
     price: 7650
   },
   {
     key: 5,
-    type: '企业型(OV)多域名证书（默认包含2个标准域名额度）',
+    type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
     years: 1,
     price: 6500
   },
   {
     key: 6,
-    type: '企业型(OV)多域名证书（默认包含2个标准域名额度）',
+    type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
     years: 2,
     price: 11050
   },
   {
     key: 7,
-    type: '企业型(OV)多域名证书额外域名',
+    type: '企业型（OV）多域名证书额外域名',
     years: 1,
     price: 2000
   },
   {
     key: 8,
-    type: '企业型(OV)多域名证书额外域名',
+    type: '企业型（OV）多域名证书额外域名',
     years: 2,
     price: 3400
   },
   {
     key: 9,
-    type: '企业型(OV)通配符证书',
+    type: '企业型（OV）通配符证书',
     years: 1,
     price: 2000
   },
   {
     key: 10,
-    type: '企业型(OV)通配符证书',
+    type: '企业型（OV）通配符证书',
     years: 2,
     price: 3400
   }

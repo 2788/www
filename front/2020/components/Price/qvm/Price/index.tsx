@@ -7,6 +7,7 @@ import Overall from './Overall'
 const columns: Array<ColumnProps<any>> = [
   {
     title: '计费方式',
+    width: 170,
     dataIndex: 'type'
   },
   {
@@ -32,7 +33,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="计费模式" padding>
-        <Table columns={columns} dataSource={data} pagination={false} />
+        <Table bordered columns={columns} dataSource={data} pagination={false} />
       </PricePaneSection>
       <PricePaneSection title="计费项总览" padding>
         <Overall />

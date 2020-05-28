@@ -88,7 +88,7 @@ const data = [
   {
     key: 5,
     name: 'imageView2（图片基本处理）',
-    price: renderTemplate('每月 0-20TB：免费<br /><br />20TB 以上：0.025 元/GB')
+    price: renderTemplate('每月 0 - 20 TB：免费<br /><br />20 TB 以上：0.025 元/GB')
   },
   {
     key: 6,

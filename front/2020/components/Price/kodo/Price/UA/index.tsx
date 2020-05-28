@@ -192,7 +192,7 @@ const data = [
     key: 0,
     name: '存储费用',
     detail: '存储空间费用',
-    measure: '0 -10 GB',
+    measure: '0 - 10 GB',
     standard: '免费',
     low: '0.06 元/GB/月',
     archive: '0.033 元/GB/月'
@@ -237,7 +237,7 @@ const data = [
     key: 5,
     name: '流量费用',
     detail: '外网流出流量',
-    measure: '0-100TB',
+    measure: '0 - 100 TB',
     standard: '0.29 元/GB',
     low: '0.29 元/GB',
     archive: '0.29 元/GB'
@@ -246,7 +246,7 @@ const data = [
     key: 6,
     name: '流量费用',
     detail: '外网流出流量',
-    measure: '100TB 以上',
+    measure: '100 TB 以上',
     standard: '0.26 元/GB',
     low: '0.26 元/GB',
     archive: '0.26 元/GB'
@@ -255,7 +255,7 @@ const data = [
     key: 7,
     name: '流量费用',
     detail: 'CDN 回源流量',
-    measure: '0-10 GB',
+    measure: '0 - 10 GB',
     standard: '免费',
     low: '0.15 元/GB',
     archive: '0.15 元/GB'
@@ -300,7 +300,7 @@ const data = [
     key: 12,
     name: '请求费用',
     detail: 'PUT/DELETE 请求次数',
-    measure: '0-10 万次',
+    measure: '0 - 10 万次',
     standard: '免费',
     low: '0.1 元/万次',
     archive: '0.3 元/万次'
@@ -318,7 +318,7 @@ const data = [
     key: 14,
     name: '请求费用',
     detail: 'GET 请求次数',
-    measure: '0-100 万次',
+    measure: '0 - 100 万次',
     standard: '免费',
     low: '0.1 元/万次',
     archive: '0.1 元/万次'

@@ -25,7 +25,7 @@ export default function StorageType() {
         scene="设计应用、内容分享、热点对象"
         price="0.099"
         detailLink={urlForPrice(Product.Kodo)}
-        sellPoints={['设计可靠性：99.999999999%(九个9)', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计算：无']}
+        sellPoints={['设计可靠性：99.999999999%（九个 9）', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计算：无']}
       />
       <Card
         title="低频访问存储"
@@ -33,7 +33,7 @@ export default function StorageType() {
         scene="网盘应用、政企数据备份、监控数据"
         price="0.06"
         detailLink="/prices/kodo"
-        sellPoints={['设计可靠性：99.999999999%(九个9)', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计算：64 KB']}
+        sellPoints={['设计可靠性：99.999999999%（九个 9）', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计算：64 KB']}
       />
       <Card
         title="归档存储"
@@ -41,7 +41,7 @@ export default function StorageType() {
         scene="档案数据、医疗影像、科学资料"
         price="0.032"
         detailLink="/prices/kodo"
-        sellPoints={['设计可靠性：99.999999999%(九个9)', '设计可用性：99.99%(数据解冻后)', '数据访问：先解冻再访问', '最短存储时间：无', 'Object 最小计算：无']}
+        sellPoints={['设计可靠性：99.999999999%（九个 9）', '设计可用性：99.99%（数据解冻后）', '数据访问：先解冻再访问', '最短存储时间：无', 'Object 最小计算：无']}
       />
     </Section>
   )

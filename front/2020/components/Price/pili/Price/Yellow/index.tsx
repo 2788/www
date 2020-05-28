@@ -11,11 +11,11 @@ import Table, { ColumnProps } from 'react-icecream/lib/table'
 
 const columns: Array<ColumnProps<any>> = [
   {
-    title: '总调用量 P(单位：万张)',
+    title: '总调用量 P（单位：万张）',
     dataIndex: 'total'
   },
   {
-    title: '调用单价(单位：元/百张)',
+    title: '调用单价（单位：元/百张）',
     dataIndex: 'price'
   }
 ]

@@ -13,21 +13,21 @@ export default function Pc() {
           <MyCard title="拍摄方式" desc="正常拍摄、静音拍摄、音频录制、分段拍摄、分屏拍摄等功能" />
         </Row>
         <Row>
-          <MyCard title="实时处理" desc="拍摄时可以使用内置实时美颜、实时滤镜。另外也支持贴纸、水印功能。" />
-          <MyCard title="背景音乐" desc="支持拍摄前预设背景音乐。" />
+          <MyCard title="实时处理" desc="拍摄时可以使用内置实时美颜、实时滤镜。另外也支持贴纸、水印功能" />
+          <MyCard title="背景音乐" desc="支持拍摄前预设背景音乐" />
         </Row>
       </TabPane>
       <TabPane tab="编辑" value="2">
         <Row>
-          <MyCard title="素材导入" desc="从相册导入视频或图片。" />
+          <MyCard title="素材导入" desc="从相册导入视频或图片" />
           <MyCard title="视频裁剪" desc="时长裁剪和画面裁剪这两个功能" />
         </Row>
         <Row>
           <MyCard title="视频旋转" desc="对视频的角度进行旋转调整，例如顺时针旋转 90 度" />
-          <MyCard title="视频转场" desc="两个视频之间的转场功能，目前支持飞入飞出、淡入淡出、擦除等效果。" />
+          <MyCard title="视频转场" desc="两个视频之间的转场功能，目前支持飞入飞出、淡入淡出、擦除等效果" />
         </Row>
         <Row>
-          <MyCard title="视频合成" desc="包括视频拼接、视频拼图。视频拼接是指多个视频按前后排列的方式进行合成，视频拼图是指多个视频像拼图一样同时展现在屏幕上的情景。" />
+          <MyCard title="视频合成" desc="包括视频拼接、视频拼图。视频拼接是指多个视频按前后排列的方式进行合成，视频拼图是指多个视频像拼图一样同时展现在屏幕上的情景" />
           <MyCard title="视频画面编辑" desc="可以使用给视频添加滤镜、贴纸、水印、涂鸦、字幕这五种功能" />
         </Row>
         <Row>
@@ -41,7 +41,7 @@ export default function Pc() {
       </TabPane>
       <TabPane tab="功能扩展接口" value="3">
         <Row>
-          <MyCard title="功能扩展接口" desc="支持接入第三方的音视频处理 SDK，主要用于对接美颜、滤镜、贴纸等特效类功能，以及变声、混响等音频处理功能。" />
+          <MyCard title="功能扩展接口" desc="支持接入第三方的音视频处理 SDK，主要用于对接美颜、滤镜、贴纸等特效类功能，以及变声、混响等音频处理功能" />
         </Row>
       </TabPane>
     </Tabs>

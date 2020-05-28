@@ -32,25 +32,25 @@ const columns: Array<ColumnProps<any>> = [
 const data = [
   {
     key: 1,
-    type: '企业型(OV)证书',
+    type: '企业型（OV）证书',
     years: 1,
     price: 4850
   },
   {
     key: 2,
-    type: '企业型(OV)证书',
+    type: '企业型（OV）证书',
     years: 2,
     price: 8245
   },
   {
     key: 3,
-    type: '企业型专业版(OV Pro)证书',
+    type: '企业型专业版（OV Pro）证书',
     years: 1,
     price: 7650
   },
   {
     key: 4,
-    type: '企业型专业版(OV Pro)证书',
+    type: '企业型专业版（OV Pro）证书',
     years: 2,
     price: 13005
   },
@@ -68,37 +68,37 @@ const data = [
   },
   {
     key: 7,
-    type: '企业增强型专业版(EV Pro)证书',
+    type: '企业增强型专业版(EV Pro）证书',
     years: 1,
     price: 12650
   },
   {
     key: 8,
-    type: '企业增强型专业版(EV Pro)证书',
+    type: '企业增强型专业版(EV Pro）证书',
     years: 2,
     price: 21505
   },
   {
     key: 9,
-    type: '企业型(OV)通配符证书',
+    type: '企业型（OV）通配符证书',
     years: 1,
     price: 38000
   },
   {
     key: 10,
-    type: '企业型(OV)通配符证书',
+    type: '企业型（OV）通配符证书',
     years: 2,
     price: 64600
   },
   {
     key: 11,
-    type: '企业型专业版(OV Pro)通配符证书',
+    type: '企业型专业版（OV Pro）通配符证书',
     years: 1,
     price: 68000
   },
   {
     key: 12,
-    type: '企业型专业版(OV Pro)通配符证书',
+    type: '企业型专业版（OV Pro）通配符证书',
     years: 2,
     price: 115600
   }

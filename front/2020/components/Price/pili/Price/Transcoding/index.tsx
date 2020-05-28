@@ -19,7 +19,7 @@ const columns: Array<ColumnProps<any>> = [
     dataIndex: 'ratio'
   },
   {
-    title: '价格(元/分钟)',
+    title: '价格（元/分钟）',
     dataIndex: 'price'
   }
 ]

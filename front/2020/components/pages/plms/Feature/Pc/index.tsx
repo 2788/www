@@ -9,12 +9,12 @@ export default function Pc() {
     <Tabs defaultValue="1">
       <TabPane tab="推流" value="1">
         <Row>
-          <MyCard title="推流协议" desc="支持主流推流协议rtmp，也支持弱网推流协议QUIC" />
-          <MyCard title="推流模式" desc="支持横竖屏切换、静音推流、纯音频推流等模式。" />
+          <MyCard title="推流协议" desc="支持主流推流协议 RTMP，也支持弱网推流协议 QUIC" />
+          <MyCard title="推流模式" desc="支持横竖屏切换、静音推流、纯音频推流等模式" />
         </Row>
         <Row>
           <MyCard title="推流优化" desc="根据网络状况会进行动态丢帧，支持断线重连，保证直播体验" />
-          <MyCard title="支持软、硬编码" desc="软编：采用CPU进行编码，功耗较高，兼容性较好,同等码率的情况下画面质量较硬编更好。硬编：采用GPU进行编码，功耗较低，兼容性较差，某些机型上可能引起crash，同等码率情况下画质较差" />
+          <MyCard title="支持软、硬编码" desc="软编：采用 CPU 进行编码，功耗较高，兼容性较好,同等码率的情况下画面质量较硬编更好。硬编：采用 GPU 进行编码，功耗较低，兼容性较差，某些机型上可能引起 Crash，同等码率情况下画质较差" />
         </Row>
         <Row>
           <MyCard title="自定义 SEI 消息" desc="主要用于直播答题等场景，用于主播端自定义消息附随推流" />
@@ -22,7 +22,7 @@ export default function Pc() {
       </TabPane>
       <TabPane tab="视频" value="2">
         <Row>
-          <MyCard title="码率设置" desc="多种码率、分辨率可以选用，在推流过程中也可以切换，可以根据主播上行网络的好坏自动调整视频码率。" />
+          <MyCard title="码率设置" desc="多种码率、分辨率可以选用，在推流过程中也可以切换，可以根据主播上行网络的好坏自动调整视频码率" />
           <MyCard title="镜头设置" desc="支持前后摄像头切换、开关闪光灯、设置画面镜像、手动/自动对焦，焦距调节等" />
         </Row>
         <Row>
@@ -35,7 +35,7 @@ export default function Pc() {
           <MyCard title="背景音乐" desc="主播在推流时可以有背景音乐混音" />
         </Row>
         <Row>
-          <MyCard title="耳机返听" desc="当主播带上耳机唱歌时，从耳机中可以实时听到自己的声音，该功能可以帮助主播在唱歌等场景下实时监听自己的声音。 一般该功能会跟背景音乐的混音功能一起使用。也蓝牙耳机的返听。" />
+          <MyCard title="耳机返听" desc="当主播带上耳机唱歌时，从耳机中可以实时听到自己的声音，该功能可以帮助主播在唱歌等场景下实时监听自己的声音。 一般该功能会跟背景音乐的混音功能一起使用。也蓝牙耳机的返听" />
         </Row>
       </TabPane>
     </Tabs>

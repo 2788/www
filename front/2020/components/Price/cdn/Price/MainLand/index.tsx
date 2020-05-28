@@ -50,7 +50,7 @@ const data = [
   {
     key: '4',
     name: 'HTTP 下载流量/动态加速 HTTP 流量',
-    bandwidth: '第 1PB 以上',
+    bandwidth: '第 1 PB 以上',
     price: '0.14 元/GB'
   },
   {

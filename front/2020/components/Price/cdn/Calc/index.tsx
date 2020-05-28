@@ -81,7 +81,7 @@ export default function CdnCalc() {
 function Tip() {
   const message = (
     <a href="https://marketing.qiniu.com/activity/20200423?entry=portal-cdnoverview" target="_blank" rel="noopener">
-      CDN 日间流量包限时 <span className={style.discount}>5折</span> 优惠
+      CDN 日间流量包限时 <span className={style.discount}>5 折</span> 优惠
     </a>
   )
 
