@@ -63,17 +63,32 @@ function PageContent() {
 
       <Feature name="specs" title="产品规格">
         <feature.Group>
-          <feature.Item pos="left-right" title="图片审核" icon={<IconImgAudit />}>高效精准识别图片中的违规内容，支持的审核类型包括：图片鉴黄、图片鉴暴恐、图片敏感人物识别、图片广告识别。</feature.Item>
-          <feature.Item pos="left-right" title="视频审核" icon={<IconVideoAudit />}>高效精准识别视频中的违规内容，包括涉黄、涉暴、涉恐、涉政检测等，准确率高达 99.95%，可替代 80% 以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。</feature.Item>
+          <feature.Item pos="left-right" title="图片审核" icon={<IconImgAudit />}>
+            <feature.Desc>高效精准识别图片中的违规内容，支持的审核类型包括：图片鉴黄、图片鉴暴恐、图片敏感人物识别、图片广告识别</feature.Desc>
+          </feature.Item>
+          <feature.Item pos="left-right" title="视频审核" icon={<IconVideoAudit />}>
+            <feature.Desc>
+              高效精准识别视频中的违规内容，包括涉黄、涉暴、涉恐、涉政检测等，准确率高达 99.95%，
+              可替代 80% 以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率
+            </feature.Desc>
+          </feature.Item>
         </feature.Group>
       </Feature>
 
       <Feature name="advantages" title="产品优势">
         <feature.Group>
-          <feature.Item title="色情内容审核" icon={<IconSexAudit />}>精准识别图片、视频、直播中的涉黄内容，准确率高达 98%。</feature.Item>
-          <feature.Item title="暴恐内容审核" icon={<IconViolenceAudit />}>支持识别血腥、爆炸、枪支等 10 余种贴合真实场景的暴恐类型。</feature.Item>
-          <feature.Item title="政治敏感审核" icon={<IconPoliticAudit />}>覆盖 2500+ 政治、敏感人物。第一时间更新，从容应对突发事件。</feature.Item>
-          <feature.Item title="恶意广告审核" icon={<IconAdAudit />}>实时过滤图片、视频中的二维码、QQ 号等恶意广告信息。</feature.Item>
+          <feature.Item title="色情内容审核" icon={<IconSexAudit />}>
+            <feature.Desc>精准识别图片、视频、直播中的涉黄内容，准确率高达 98%</feature.Desc>
+          </feature.Item>
+          <feature.Item title="暴恐内容审核" icon={<IconViolenceAudit />}>
+            <feature.Desc>支持识别血腥、爆炸、枪支等 10 余种贴合真实场景的暴恐类型</feature.Desc>
+          </feature.Item>
+          <feature.Item title="政治敏感审核" icon={<IconPoliticAudit />}>
+            <feature.Desc>覆盖 2500+ 政治、敏感人物。第一时间更新，从容应对突发事件</feature.Desc>
+          </feature.Item>
+          <feature.Item title="恶意广告审核" icon={<IconAdAudit />}>
+            <feature.Desc>实时过滤图片、视频中的二维码、QQ 号等恶意广告信息</feature.Desc>
+          </feature.Item>
         </feature.Group>
       </Feature>
 

@@ -70,7 +70,7 @@ export default function InvitePage() {
                 <td>邀请一个标准用户</td>
                 <td>
                   <ul>
-                    <li className={style.rewardItem}>5GB/月 CDN 免费 HTTP 下载流量（最高累计 40GB/月）</li>
+                    <li className={style.rewardItem}>5 GB/月 CDN 免费 HTTP 下载流量（最高累计 40 GB/月）</li>
                     <li className={style.rewardItem}>100 元对象存储抵用券 （不可累计）</li>
                     <li className={style.rewardItem}>100 元智能多媒体服务抵用券 （不可累计）</li>
                     <li className={style.rewardItem}>500 元充值抵用券（单次充值 5000 送 500，不可累计）</li>

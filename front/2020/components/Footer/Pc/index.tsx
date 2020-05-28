@@ -85,9 +85,9 @@ function LinkGroups() {
       <LinkGroup title="开发者">
         <LinkItem url="https://developer.qiniu.com">开发者中心</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
-        <LinkItem url="https://www.ecug.org/">ECUG技术大会</LinkItem>
+        <LinkItem url="https://www.ecug.org/">ECUG 技术大会</LinkItem>
         <LinkItem url="TODO">架构师实践日</LinkItem>
-        <LinkItem url="TODO">工具插件SDK合作</LinkItem>
+        <LinkItem url="TODO">工具插件 SDK 合作</LinkItem>
       </LinkGroup>
       <LinkGroup title="关于我们">
         <LinkItem url="/company">公司介绍</LinkItem>
@@ -138,8 +138,8 @@ function Icp() {
     <section className={style.icp}>
       <div className={style.info}>
         <a href="https://www.12377.cn/" target="_blank" rel="noopener"><i className={style.report} />违法和不良信息举报中心 &gt;&gt;</a> <br />
-        24小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com <br />
-        沪公网安备 31011502000961 号 沪ICP备 11037377 号-5
+        24 小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com <br />
+        沪公网安备 31011502000961 号 沪 ICP 备 11037377 号-5
       </div>
       <div className={style.pic}></div>
     </section>

@@ -38,7 +38,7 @@ function PageContent() {
       <p>七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。</p>
       <br />
       <p>
-        免费使用最高 4 核 8G 主机，
+        免费使用最高 4 核 8 G 主机，
         <a className={style.bannerLink} target="_blank" href="/events/qvm0rmb">
           立即参与&gt;&gt;
         </a>
@@ -93,24 +93,24 @@ function PageContent() {
       <Feature>
         <feature.Group>
           <feature.Item title="弹性" icon={<IconFeatureFlexibility />}>
-            <feature.Desc>千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择。</feature.Desc>
+            <feature.Desc>千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择</feature.Desc>
           </feature.Item>
           <feature.Item title="稳定" icon={<IconFeatureStable />}>
-            <feature.Desc>高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便。</feature.Desc>
+            <feature.Desc>高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便</feature.Desc>
           </feature.Item>
           <feature.Item title="安全" icon={<IconFeatureSafe />}>
-            <feature.Desc>专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行。</feature.Desc>
+            <feature.Desc>专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行</feature.Desc>
           </feature.Item>
         </feature.Group>
         <feature.Group>
           <feature.Item title="易用" icon={<IconFeatureEasy />}>
-            <feature.Desc>上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展。</feature.Desc>
+            <feature.Desc>上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展</feature.Desc>
           </feature.Item>
           <feature.Item title="可拓展" icon={<IconFeatureScalable />}>
-            <feature.Desc>无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案。</feature.Desc>
+            <feature.Desc>无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
           </feature.Item>
           <feature.Item title="高性能" icon={<IconFeatureHighPerf />}>
-            <feature.Desc>单实例最高可选 88vCPU，内存704GB，700万PPS 网络收发包，35Gbps 带宽。</feature.Desc>
+            <feature.Desc>单实例最高可选 88 vCPU，内存 704 GB，700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
           </feature.Item>
         </feature.Group>
       </Feature>

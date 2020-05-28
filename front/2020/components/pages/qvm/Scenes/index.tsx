@@ -25,7 +25,7 @@ export default function QvmScenes() {
         <Detail>
           <Title>场景特点</Title>
           <List>
-            <Item>对CPU、内存、硬盘空间无特殊要求</Item>
+            <Item>对 CPU、内存、硬盘空间无特殊要求</Item>
             <Item>对成本比较敏感</Item>
             <Item>对安全性、可靠性要求高</Item>
             <Item>对网络带宽有一定要求</Item>
@@ -37,7 +37,7 @@ export default function QvmScenes() {
                 <TabPane value="1" tab="个人测试开发环境">
                   <InstanceCard
                     type="t5-lc1m2.small"
-                    name="突发性能型 1C/2G"
+                    name="突发性能型 1 C/2 G"
                     desc="适合测试开发等非线上生产环境"
                     bandwidth={1}
                     ipNum={1}
@@ -47,7 +47,7 @@ export default function QvmScenes() {
                 <TabPane value="2" tab="中小型官网/应用">
                   <InstanceCard
                     type="n4.large"
-                    name="共享计算型 2C/4G"
+                    name="共享计算型 2 C/4 G"
                     desc="适合 PV 10 万， DAU 1000左右的业务系统"
                     bandwidth={3}
                     ipNum={1}
@@ -57,7 +57,7 @@ export default function QvmScenes() {
                 <TabPane value="3" tab="大型官网/应用">
                   <InstanceCard
                     type="c6.xlarge"
-                    name="计算型 4C/8G"
+                    name="计算型 4 C/8 G"
                     desc="适合 PV 20 万， DAU 3000 的业务系统 "
                     bandwidth={5}
                     ipNum={1}
@@ -89,7 +89,7 @@ export default function QvmScenes() {
               <Title>推荐配置</Title>
               <InstanceCard
                 type="r6.2xlarge"
-                name="内存型 8C/64G"
+                name="内存型 8 C/64 G"
                 bandwidth={5}
                 ipNum={1}
                 storage="ESSD 100 G"
@@ -116,7 +116,7 @@ export default function QvmScenes() {
               <Title>推荐配置</Title>
               <InstanceCard
                 type="sn1ne.xlarge"
-                name="计算网络增强型 4C/8G"
+                name="计算网络增强型 4 C/8 G"
                 bandwidth={3}
                 ipNum={1}
                 storage="高效云盘 40 G"
@@ -133,7 +133,7 @@ export default function QvmScenes() {
             <Item>对图像视频质量要求高</Item>
             <Item>大内存，大量数据处理，I/O 并发能力</Item>
             <Item>快速的数据处理交换</Item>
-            <Item>大量的GPU计算能力</Item>
+            <Item>大量的 GPU 计算能力</Item>
           </List>
           <Title>适用场景</Title>
           <List>
@@ -142,16 +142,16 @@ export default function QvmScenes() {
           </List>
           <Title>实例特点</Title>
           <List>
-            <Item>I/O优化实例</Item>
-            <Item>采用NVIDIA V100（32 GB NVLink）GPU计算卡</Item>
+            <Item>I/O 优化实例</Item>
+            <Item>采用NVIDIA V100（32 GB NVLink）GPU 计算卡</Item>
             <Item>
-              GPU加速器：V100（SXM2封装）
+              GPU 加速器：V100（SXM2 封装）
               <SubList>
-                <SubItem>创新的Volta架构</SubItem>
-                <SubItem>单GPU显存16 GB HBM2（GPU显存带宽900 GB/s）</SubItem>
-                <SubItem>单GPU 5120个CUDA Cores</SubItem>
-                <SubItem>单GPU 640个Tensor Cores</SubItem>
-                <SubItem>支持6个NVLink链路，每个25 GB/s，总共300 GB/s</SubItem>
+                <SubItem>创新的 Volta 架构</SubItem>
+                <SubItem>单 GPU 显存 16 GB HBM2（GPU 显存带宽 900 GB/s）</SubItem>
+                <SubItem>单 GPU 5120 个 CUDA Cores</SubItem>
+                <SubItem>单 GPU 640 个 Tensor Cores</SubItem>
+                <SubItem>支持 6 个 NVLink 链路，每个 25 GB/s，总共 300 GB/s</SubItem>
               </SubList>
             </Item>
           </List>
@@ -160,10 +160,10 @@ export default function QvmScenes() {
               <Title>推荐配置</Title>
               <InstanceCard
                 type="gn6v-c8g1.8xlarge"
-                name="GPU机型 32C/128G"
+                name="GPU机型 32 C/128 G"
                 bandwidth={5}
                 ipNum={1}
-                storage="ESSD 200G"
+                storage="ESSD 200 G"
               />
             </>
           )}
@@ -180,7 +180,7 @@ export default function QvmScenes() {
           <Title>适用场景</Title>
           <List>
             <Item>高网络包收发场景，例如视频弹幕、电信业务转发等</Item>
-            <Item>Web前端服务器</Item>
+            <Item>Web 前端服务器</Item>
             <Item>大型多人在线游戏（MMO）前端</Item>
             <Item>数据分析、批量计算、视频编码</Item>
             <Item>高性能科学和工程应用</Item>
@@ -188,8 +188,8 @@ export default function QvmScenes() {
           <Title>规格族特点</Title>
           <List>
             <Item>依托神龙架构，将大量虚拟化功能卸载到专用硬件，降低虚拟化开销，提供稳定可预期的超高性能</Item>
-            <Item>支持ESSD云盘、SSD云盘和高效云盘</Item>
-            <Item>超高网络PPS收发包能力</Item>
+            <Item>支持 ESSD 云盘、SSD 云盘和高效云盘</Item>
+            <Item>超高网络 PPS 收发包能力</Item>
             <Item>支持开启或关闭超线程配置</Item>
             <Item>实例网络性能与计算规格对应</Item>
           </List>
@@ -198,10 +198,10 @@ export default function QvmScenes() {
               <Title>推荐配置</Title>
               <InstanceCard
                 type="hfc6.16xlarge"
-                name="高主频计算型 64C/128G"
+                name="高主频计算型 64 C/128 G"
                 bandwidth={1}
                 ipNum={1}
-                storage="ESSD 100G"
+                storage="ESSD 100 G"
               />
             </>
           )}

@@ -58,7 +58,7 @@ export default function ExpressPage() {
     <Layout>
       <PageBanner
         title="Pandora 数据分析平台"
-        desc="Pandora 2.0 全新发布，助力企业探索数据、创造价值、预见未来。"
+        desc="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={<IconBanner />}
@@ -70,12 +70,6 @@ export default function ExpressPage() {
         name="intro"
         title="产品介绍"
         header="探索数据 挖掘价值"
-        subtitle={
-          <p className={style.introDesc}>
-            Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，
-            帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。
-          </p>
-        }
       >
         <ImgIntro className={style.introImg} />
       </Section>
@@ -131,7 +125,7 @@ export default function ExpressPage() {
           <scene.Block className={style.sceneDesc} shadow>
             <h5 className={style.sceneDescTitle}>场景描述</h5>
             <ul className={style.sceneDescList}>
-              <li className={style.sceneDescItem}>归一化各类物联网设备数据，统一监控管理IoT硬件设备及系统运行状态</li>
+              <li className={style.sceneDescItem}>归一化各类物联网设备数据，统一监控管理 IoT 硬件设备及系统运行状态</li>
               <li className={style.sceneDescItem}>进行预测性维护，构建可扩展的安全物联分析平台</li>
             </ul>
           </scene.Block>

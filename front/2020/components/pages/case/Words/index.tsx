@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 
 import React, { PropsWithChildren } from 'react'
-import { Row, Card as RawCard, InvisibleCard } from 'components/UI/Card'
+import { Row, Card as RawCard } from 'components/UI/Card'
 import Swiper from 'components/UI/Swiper'
 import { useMobile } from 'hooks/ua'
 import logoCamera360 from './images/camera360.png'
@@ -60,7 +60,7 @@ const linjinlie = {
 
 const cardHaikangweishi = (
   <Card name="海康威视萤石" logo={logoYingshi} teller={lixingbo}>
-    在和七牛合作的这几年中，深刻的感受到七牛的的确确是一家做“云服务”的公司。作为技术产品服务供应商，在技术和服务品质上有一贯的追求是七牛的核心竞争力，同时在七牛的各个方面都同时体现着另种竞争力——对服务的理解。这就是除技术和产品等硬性表现外，赢的合作伙伴信任更为重要的基础。
+    在和七牛合作的这几年中，深刻的感受到七牛的的确确是一家做“云服务”的公司。作为技术产品服务供应商，在技术和服务品质上有一贯的追求是七牛的核心竞争力，同时在七牛的各个方面都同时体现着另种竞争力——对服务的理解。这就是除技术和产品等硬性表现外，赢得合作伙伴信任更为重要的基础。
   </Card>
 )
 
@@ -72,7 +72,7 @@ const cardZhongxing = (
 
 const cardCamera360 = (
   <Card name="Camera360" logo={logoCamera360} teller={liuhongwei}>
-    七牛在图像存储方面做了很多贴心服务，不仅解决了大规模存储问题， 也解决了移动互联网对照片浏览和计算的特殊需求。合作过程中，我们也从七牛研发团队里吸取到了前沿的研发流程。
+    七牛在图像存储方面做了很多贴心服务，不仅解决了大规模存储问题，也解决了移动互联网对照片浏览和计算的特殊需求。合作过程中，我们也从七牛研发团队里吸取到了前沿的研发流程。
   </Card>
 )
 
@@ -124,7 +124,6 @@ export default function Words() {
           {cardCamera360}
           {cardHujiang}
           {cardMeituxiuxiu}
-          <InvisibleCard />
         </Row>
       </Swiper>
     </div>

@@ -43,7 +43,7 @@ export default function FreeProducts() {
           moreUrl="/products/qvm"
         >
           <List>
-            <HookItem>高达 4C 8G 的专业云服务器 0 元起</HookItem>
+            <HookItem>高达 4 C 8 G 的专业云服务器 0 元起</HookItem>
           </List>
         </ProductCard>
       </Row>

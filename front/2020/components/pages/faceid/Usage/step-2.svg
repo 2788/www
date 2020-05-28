@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>focus</title>
+    <g id="产品" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="智能视频-人脸核验" transform="translate(-779.000000, -1953.000000)" stroke-width="2">
+            <g id="接入流程" transform="translate(0.000000, 1668.000000)">
+                <g id="编组-26" transform="translate(472.000000, 256.000000)">
+                    <g id="编组-16" transform="translate(253.000000, 0.000000)">
+                        <g id="编组-6" transform="translate(25.000000, 0.000000)">
+                            <g id="focus" transform="translate(30.000000, 30.000000)">
+                                <path d="M48,49 L12,49 L12,44.517 C12,40.967 14.328,37.848 17.733,36.84 C20.92,35.896 25.208,35 30,35 C34.713,35 39.027,35.911 42.25,36.864 C45.661,37.872 48,40.989 48,44.546 L48,49 Z" id="路径" stroke="#333333"></path>
+                                <path d="M20,17 C20,11.477 24.477,7 30,7 C35.523,7 40,11.477 40,17 C40,22.523 35.523,29 30,29 C24.477,29 20,22.523 20,17 Z" id="路径" stroke="#333333"></path>
+                                <polyline id="路径" stroke="#00AAE7" points="0 12 0 0 12 0"></polyline>
+                                <polyline id="路径" stroke="#00AAE7" points="48 0 60 0 60 12"></polyline>
+                                <polyline id="路径" stroke="#00AAE7" points="0 48 0 60 12 60"></polyline>
+                                <polyline id="路径" stroke="#00AAE7" points="48 60 60 60 60 48"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

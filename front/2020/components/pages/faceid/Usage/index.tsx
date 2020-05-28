@@ -6,7 +6,11 @@ import React, { useState } from 'react'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 import { RawAccessProcess as AccessProcess, Step as AccessStep } from 'components/Product/AccessProcess'
 import Section from 'components/Product/Section'
-import IconStepTODO from './step-todo.svg'
+import IconStep1 from './step-1.svg'
+import IconStep2 from './step-2.svg'
+import IconStep3 from './step-3.svg'
+import IconStep4 from './step-4.svg'
+import IconStep5 from './step-5.svg'
 import style from './style.less'
 
 enum ProcessType {
@@ -26,19 +30,19 @@ export default function FaceIdUsage() {
   const processIdAuthView = (
     <div style={{ display: activeType === ProcessType.IdAuth ? 'block' : 'none' }}>
       <AccessProcess>
-        <AccessStep icon={<IconStepTODO />}>
+        <AccessStep icon={<IconStep1 />}>
           扫描身份证
           <p className={style.op}>OCR</p>
         </AccessStep>
-        <AccessStep icon={<IconStepTODO />}>
+        <AccessStep icon={<IconStep2 />}>
           活体检测自拍视频
           <p className={style.op}>活体识别</p>
         </AccessStep>
-        <AccessStep icon={<IconStepTODO />}>
+        <AccessStep icon={<IconStep3 />}>
           公安权威核验
           <p className={style.op}>身份验证/人脸对比</p>
         </AccessStep>
-        <AccessStep icon={<IconStepTODO />}>认证成功</AccessStep>
+        <AccessStep icon={<IconStep4 />}>认证成功</AccessStep>
       </AccessProcess>
     </div>
   )
@@ -46,15 +50,15 @@ export default function FaceIdUsage() {
   const processFaceCompareView = (
     <div style={{ display: activeType === ProcessType.FaceCompare ? 'block' : 'none' }}>
       <AccessProcess>
-        <AccessStep icon={<IconStepTODO />}>
+        <AccessStep icon={<IconStep1 />}>
           活体检测自拍视频
           <p className={style.op}>活体识别</p>
         </AccessStep>
-        <AccessStep icon={<IconStepTODO />}>
+        <AccessStep icon={<IconStep5 />}>
           客户预留照片
           <p className={style.op}>人脸对比</p>
         </AccessStep>
-        <AccessStep icon={<IconStepTODO />}>认证成功</AccessStep>
+        <AccessStep icon={<IconStep4 />}>认证成功</AccessStep>
       </AccessProcess>
     </div>
   )

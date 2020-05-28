@@ -59,14 +59,26 @@ function PageContent() {
 
       <Feature name="advantages" title="产品优势">
         <feature.Group>
-          <feature.Item title="智能调度" icon={<IconSchedule />}>七牛短信服务平台融合多家专属运营商，多通道智能调度，轻松应对业务高峰。</feature.Item>
-          <feature.Item title="快速稳定" icon={<IconQuick />}>专属通道，3-5 秒到达，国内短信具备 99% 超高到达率（空号或不在服务区除外），保障终端用户体验。</feature.Item>
-          <feature.Item title="三网合一" icon={<Icon3Net />}>移动、联通、电信网全覆盖，充分满足跨网发送的需求。</feature.Item>
+          <feature.Item title="智能调度" icon={<IconSchedule />}>
+            <feature.Desc>七牛短信服务平台融合多家专属运营商，<br />多通道智能调度，轻松应对业务高峰</feature.Desc>
+          </feature.Item>
+          <feature.Item title="快速稳定" icon={<IconQuick />}>
+            <feature.Desc>专属通道，3-5 秒到达，国内短信具备 99% 超高到达率（空号或不在服务区除外），保障终端用户体验</feature.Desc>
+          </feature.Item>
+          <feature.Item title="三网合一" icon={<Icon3Net />}>
+            <feature.Desc>移动、联通、电信网全覆盖，<br />充分满足跨网发送的需求</feature.Desc>
+          </feature.Item>
         </feature.Group>
         <feature.Group>
-          <feature.Item title="智能分流" icon={<IconShunt />}>海量数据多通道智能分流，到达率可靠。</feature.Item>
-          <feature.Item title="满足个性化" icon={<IconCustomize />}>支持自定义签名，支持为不同的客户提供独享通道、专用通道、大客户通道。</feature.Item>
-          <feature.Item title="便捷接入" icon={<IconEasy />}>提供详尽、完善的短信接入文档，简单易懂，快速上线。</feature.Item>
+          <feature.Item title="智能分流" icon={<IconShunt />}>
+            <feature.Desc>海量数据多通道智能分流，到达率可靠</feature.Desc>
+          </feature.Item>
+          <feature.Item title="满足个性化" icon={<IconCustomize />}>
+            <feature.Desc>支持自定义签名，支持为不同的客户提供独享通道、专用通道、大客户通道</feature.Desc>
+          </feature.Item>
+          <feature.Item title="便捷接入" icon={<IconEasy />}>
+            <feature.Desc>提供详尽、完善的短信接入文档，<br />简单易懂，快速上线</feature.Desc>
+          </feature.Item>
         </feature.Group>
       </Feature>
 
