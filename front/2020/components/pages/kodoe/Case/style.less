@@ -5,16 +5,22 @@
 
 @import '~utils/less/index.less';
 
+.tabIconHighlight {
+  filter: none;
+}
+
+.tabIconDark {
+  filter: grayscale(100%);
+}
 
 .tabIcon {
+  .tabIconDark();
   width: 140px;
   height: 60px;
   margin-bottom: 12px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.8;
-  filter: grayscale(100%);
 
   &.renMinWang {
     background-image: url(./case-icon-renminwang.png);
@@ -42,8 +48,7 @@
 
   &.active,
   &:hover {
-    opacity: 1;
-    filter: none;
+    .tabIconHighlight();
   }
 }
 
