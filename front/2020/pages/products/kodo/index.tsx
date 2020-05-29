@@ -22,7 +22,7 @@ import KodoCore from 'components/pages/kodo/Core'
 import KodoScene from 'components/pages/kodo/Scene'
 import KodoCase from 'components/pages/kodo/Case'
 
-import BannerIcon from './images/banner-icon.svg'
+import imgBanner from './images/banner.png'
 import style from './index.less'
 
 function PageContent() {
@@ -39,7 +39,7 @@ function PageContent() {
         平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">

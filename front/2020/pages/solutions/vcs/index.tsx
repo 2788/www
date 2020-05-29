@@ -17,7 +17,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 
 import { useBtns } from 'hooks/product-btn'
 
-import BannerIcon from './images/banner-icon.svg'
+import imgBanner from './images/banner.png'
 
 function PageContent() {
   const { showModal } = useFeedbackModal()
@@ -39,7 +39,7 @@ function PageContent() {
         低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />}
+        icon={imgBanner}
       />
 
       <VcsFeature />

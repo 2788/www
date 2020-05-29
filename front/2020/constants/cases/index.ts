@@ -133,7 +133,6 @@ export const zgdx = { logo: zgdxImg, name: '中国电信' }
 export const mgtv = { logo: mgtvImg, name: '芒果TV' }
 export const zyd = { logo: zydImg, name: '中移动' }
 export const rmw = { logo: rmwImg, name: '人民网' }
-// export const shdq = { logo: shdqImg, name: '上海电气' }
 export const hscm = { logo: hscmImg, name: '华数传媒' }
 export const jsws = { logo: jswsImg, name: '江苏卫视' }
 export const zbcm = { logo: zbcmImg, name: '浙报传媒' }
@@ -197,7 +196,7 @@ export const industries = [
   },
   {
     name: '广电传媒',
-    cases: [qb, zgdx, mgtv, zyd, rmw, shdq, hscm, jsws, zbcm, jldst]
+    cases: [qb, zgdx, mgtv, zyd, rmw, hscm, jsws, zbcm, jldst]
   },
   {
     name: '交通旅游',

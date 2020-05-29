@@ -14,7 +14,7 @@ import Scenes from 'components/pages/faceid/Scenes'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 import { useBtns } from 'hooks/product-btn'
-import IconBanner from './banner.svg'
+import imgBanner from './banner.png'
 import IconAdvan1 from './_icons/advan-1.svg'
 import IconAdvan2 from './_icons/advan-2.svg'
 import IconAdvan3 from './_icons/advan-3.svg'
@@ -47,7 +47,7 @@ function PageContent() {
         desc="利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证，广泛应用于数字金融、在线教育、线上政务和直播等各类实名制场景中。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<IconBanner />}
+        icon={imgBanner}
       />
 
       <Navigator priceLink={urlForPrice(Product.FaceID)}>{btns.nav}</Navigator>

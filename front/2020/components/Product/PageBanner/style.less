@@ -92,9 +92,14 @@
 }
 
 .iconWrapper {
-  flex: 0 1;
+  @iconSize: 500px;
+
+  flex: 0 1 @iconSize;
+  background-size: @iconSize auto;
+  background-position: right;
+  background-repeat: no-repeat;
 
   svg, img {
-    width: 500px;
+    width: @iconSize;
   }
 }

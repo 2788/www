@@ -9,15 +9,16 @@
   // 固定在顶部的时候，把下边框转移到 wrapper 上
   &.fixed {
     box-shadow: 0 1px 0 0 rgba(238, 238, 238, 1);
-    transition: .5s;
+    transition: .3s;
     .content {
-      transition: .5s;
+      transition: .3s;
       box-shadow: none;
     }
     .extra {
       visibility: visible;
       transform: translateY(0);
       opacity: 1;
+      transition: visibility 0s, transform .3s, opacity .3s;
     }
   }
 }
@@ -45,10 +46,10 @@
   flex: 0 0 auto;
   margin: 0 12px;
 
-  transition: transform 1s, opacity 1.5s;
   visibility: hidden;
-  transform: translateY(20%);
+  transform: translateY(15%);
   opacity: 0;
+  transition: visibility 0s .5s, transform .3s, opacity .5s;
 }
 
 .button:not(:first-child) {

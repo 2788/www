@@ -21,7 +21,7 @@ import * as logos from 'components/pages/express/logos'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import { bbg } from 'constants/cases'
-import IconBanner from './banner.svg'
+import imgBanner from './banner.png'
 import ImgIntro from './_images/intro.svg'
 import imgFeature1 from './_images/feature-1.png'
 import imgFeature2 from './_images/feature-2.png'
@@ -35,8 +35,8 @@ import imgScene2 from './_images/scene-2.file.svg'
 import imgScene3 from './_images/scene-3.file.svg'
 import imgScene4 from './_images/scene-4.file.svg'
 import imgDemo1 from './_images/demo-1.png'
-import imgDemo2 from './_images/demo-1.png' // TODO: 图片
-import imgDemo3 from './_images/demo-1.png'
+import imgDemo2 from './_images/demo-2.png'
+import imgDemo3 from './_images/demo-3.png'
 
 import IconStep1 from './_images/step-1.svg'
 import IconStep2 from './_images/step-2.svg'
@@ -61,7 +61,7 @@ export default function ExpressPage() {
         desc="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<IconBanner />}
+        icon={imgBanner}
       />
 
       <Navigator>{btns.nav}</Navigator>
@@ -215,8 +215,7 @@ export default function ExpressPage() {
             安装包并安装
           </Step>
           <Step icon={<IconStep2 />}>
-            注册 Pandora<br />
-            2.0 账号
+            注册 Pandora 2.0
           </Step>
           <Step icon={<IconStep3 />}>
             按指引采集数据<br />

@@ -16,7 +16,7 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Section from 'components/Product/Section'
 import Playground from 'components/pages/censor/Playground'
 import { useBtns } from 'hooks/product-btn'
-import IconBanner from './banner.svg'
+import imgBanner from './banner.png'
 import IconAdAudit from './_icons/ad-audit.svg'
 import IconImgAudit from './_icons/img-audit.svg'
 import IconPoliticAudit from './_icons/politic-audit.svg'
@@ -48,7 +48,7 @@ function PageContent() {
         desc="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容"
         bgColor="#34A1EC"
         btns={isPc ? btns.banner : undefined}
-        icon={<IconBanner />}
+        icon={imgBanner}
       />
 
       <PageNotice>
@@ -112,7 +112,7 @@ function PageContent() {
         <PurchaseInfoItem title="智能审核" desc="按次阶梯价格">
           <PurchaseInfoAction url="https://developer.qiniu.com/censor/manual/4833/censor-price">查看详情</PurchaseInfoAction>
         </PurchaseInfoItem>
-        <PurchaseInfoItem title="智能审核" desc="特惠套餐包">
+        <PurchaseInfoItem title="资源包" desc="特惠套餐包">
           <PurchaseInfoAction url="https://developer.qiniu.com/censor/manual/4835/censor-plus-manual">查看价格</PurchaseInfoAction>
         </PurchaseInfoItem>
       </PurchaseInfo>

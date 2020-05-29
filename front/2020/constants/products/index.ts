@@ -46,7 +46,7 @@ export const nameMap = {
   [Product.Hdfs]: 'HDFS',
   [Product.Cdn]: 'CDN',
   [Product.Ssl]: 'SSL 证书',
-  [Product.Pili]: '视频直播',
+  [Product.Pili]: '视频直播 Pili',
   [Product.Qvm]: '云主机服务 QVM',
   [Product.Sms]: '云短信 SMS',
   [Product.Dora]: '智能多媒体服务',
@@ -99,6 +99,7 @@ export const categoryVideo = [
   Product.Dora,
   Product.Censor,
   Product.FaceID,
+  Product.Pili,
   Product.Rtn,
   Product.Plsv,
   Product.Plms
@@ -106,6 +107,6 @@ export const categoryVideo = [
 
 /** 机器数据智能 */
 export const categoryIntelligence = [
-  Product.Insight,
-  Product.Express
+  Product.Express,
+  Product.Insight
 ] as const

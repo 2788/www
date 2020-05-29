@@ -33,7 +33,7 @@ import QiCheZhiJia from './_images/customer-qichezhijia.png'
 import TanTan from './_images/customer-tantan.png'
 import ZhongXin from './_images/customer-zhongxin.png'
 
-import BannerIcon from './_images/bannerIcon.svg'
+import imgBanner from './_images/banner.png'
 import Advantage1Icon from './_images/advantage1.svg'
 import Advantage2Icon from './_images/advantage2.svg'
 import Advantage3Icon from './_images/advantage3.svg'
@@ -57,7 +57,7 @@ function PageContent() {
         desc="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">

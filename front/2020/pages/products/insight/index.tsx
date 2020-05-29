@@ -15,7 +15,7 @@ import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCase
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
-import IconBanner from './banner.svg'
+import imgBanner from './banner.png'
 import ImgAbilities from './_imgs/abilities.svg'
 import IconAdvanAssist from './_imgs/advan-assist.svg'
 import IconAdvanCrossPlatform from './_imgs/advan-cross-platform.svg'
@@ -57,7 +57,7 @@ function PageContent() {
         desc="智能日志管理平台实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计及业务数据分析等场景，已帮助上千家互联网、智能制造、金融、新媒体及物联网等行业客户数字化升级。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<IconBanner />}
+        icon={imgBanner}
       />
 
       <PageNotice>

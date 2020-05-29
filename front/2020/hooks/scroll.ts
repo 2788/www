@@ -11,6 +11,10 @@ import { isBrowser } from '../utils'
 const defaultDebounceWait = 100 // ms
 const defaultScrollDuration = 400 // 默认滚动动画时间 ms
 
+// 记录当前是否正在进行滚动动画，这段时间不去响应滚动事件，用于优化滚动的性能
+// 先放在这实现，以保证全局（如不同组件对于 scroll 相关 hooks 的调用）共享状态；后续考虑怎么优化
+let animating = false
+
 /** 使用当前滚动高度（通过监听滚动事件 with debounce） */
 export function useScrollTop(debounceWait = defaultDebounceWait) {
   const [scrollTop, setScrollTop] = useState(0)
@@ -21,8 +25,6 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
 
   // 第三方库 moveto 在 module init 的时候就会尝试读 window，故它延后加载，这里存放其导出
   const MoveToRef = useRef<typeof MoveTo | undefined>()
-  // 记录当前是否正在进行滚动动画，这段时间不去响应滚动事件，用于优化滚动的性能
-  const scrollingRef = useRef(false)
 
   useEffect(() => {
     import('moveto').then(res => {
@@ -39,9 +41,9 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
     const MoveToConstr = MoveToRef.current
     const moveTo = new MoveToConstr({ duration, container })
 
-    scrollingRef.current = true
+    animating = true
     setTimeout(() => {
-      scrollingRef.current = false
+      animating = false
       syncScrollTop()
     }, duration)
 
@@ -51,7 +53,7 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
   useEffect(() => {
     if (!isBrowser()) return
     let handleScroll = () => {
-      if (scrollingRef.current) return
+      if (animating) return
       syncScrollTop()
     }
     if (debounceWait > 0) {
@@ -82,7 +84,7 @@ export function useSticky() {
   const [isFixed, setIsFixed] = useState(false)
 
   useEffect(() => {
-    if (element) {
+    if (element && !animating) {
       // 平时 scrollTop 应该小于 offsetTop，fix 住后，这俩值相等
       setIsFixed(scrollTop >= element.offsetTop)
     }

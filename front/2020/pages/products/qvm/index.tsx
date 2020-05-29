@@ -2,6 +2,8 @@
  * @file 产品“云主机”
  */
 
+/* eslint-disable max-len */
+
 import React from 'react'
 import { useBtns } from 'hooks/product-btn'
 import { urlForPrice } from 'utils/route'
@@ -18,7 +20,7 @@ import MoreProducts from 'components/pages/qvm/MoreProducts'
 import Scenes from 'components/pages/qvm/Scenes'
 import Cases from 'components/pages/qvm/Cases'
 import { useMobile } from 'hooks/ua'
-import IconBanner from './banner.svg'
+import imgBanner from './banner.png'
 import IconFeatureEasy from './_icons/feature/easy.svg'
 import IconFeatureFlexibility from './_icons/feature/flexibility.svg'
 import IconFeatureHighPerf from './_icons/feature/high-perf.svg'
@@ -58,7 +60,7 @@ function PageContent() {
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<IconBanner />}
+        icon={imgBanner}
       />
 
       <PageNotice>
@@ -90,24 +92,24 @@ function PageContent() {
       <Feature>
         <feature.Group>
           <feature.Item title="弹性" icon={<IconFeatureFlexibility />}>
-            <feature.Desc>千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择</feature.Desc>
+            <feature.Desc className={style.featureDesc}>千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择</feature.Desc>
           </feature.Item>
           <feature.Item title="稳定" icon={<IconFeatureStable />}>
-            <feature.Desc>高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便</feature.Desc>
+            <feature.Desc className={style.featureDesc}>高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便</feature.Desc>
           </feature.Item>
           <feature.Item title="安全" icon={<IconFeatureSafe />}>
-            <feature.Desc>专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行</feature.Desc>
+            <feature.Desc className={style.featureDesc}>专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行</feature.Desc>
           </feature.Item>
         </feature.Group>
         <feature.Group>
           <feature.Item title="易用" icon={<IconFeatureEasy />}>
-            <feature.Desc>上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展</feature.Desc>
+            <feature.Desc className={style.featureDesc}>上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展</feature.Desc>
           </feature.Item>
           <feature.Item title="可拓展" icon={<IconFeatureScalable />}>
-            <feature.Desc>无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
+            <feature.Desc className={style.featureDesc}>无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
           </feature.Item>
           <feature.Item title="高性能" icon={<IconFeatureHighPerf />}>
-            <feature.Desc>单实例最高可选 88 vCPU，内存 704 GB，700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
+            <feature.Desc className={style.featureDesc}>单实例最高可选 88 vCPU，内存 704 GB，700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
           </feature.Item>
         </feature.Group>
       </Feature>

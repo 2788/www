@@ -19,7 +19,7 @@ import QavsScene from 'components/pages/qavs/Scene'
 
 import { useBtns } from 'hooks/product-btn'
 
-import BannerIcon from './images/banner-icon.svg'
+import imgBanner from './images/banner.png'
 
 function PageContent() {
   const { showModal } = useFeedbackModal()
@@ -41,7 +41,7 @@ function PageContent() {
         并集成海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />}
+        icon={imgBanner}
       />
 
       <PageNotice>

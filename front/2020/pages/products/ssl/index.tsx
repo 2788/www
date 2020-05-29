@@ -42,7 +42,7 @@ import QiCheZhiJia from './_images/customer-qichezhijia.png'
 import TanTan from './_images/customer-tantan.png'
 import ZhongXin from './_images/customer-zhongxin.png'
 
-import BannerIcon from './_images/bannerIcon.svg'
+import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -60,7 +60,7 @@ function PageContent() {
         desc="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">

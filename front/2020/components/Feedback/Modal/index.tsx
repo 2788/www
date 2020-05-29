@@ -6,7 +6,8 @@ import IconClose from '../icons/close.svg'
 import style from './style.less'
 
 type ContextValue = {
-  visible: boolean
+  /** 是否可见，`null` 表示不存在（初始状态，不渲染） */
+  visible: boolean | null
   setVisible(visible: boolean): void
 }
 
@@ -29,6 +30,10 @@ export function useModal() {
 export default function FeedbackModal() {
   const { visible, hideModal } = useModal()
 
+  if (visible == null) {
+    return null
+  }
+
   return (
     <div className={cls(style.wrapper, !visible && style.hidden)}>
       <div
@@ -46,7 +51,7 @@ export default function FeedbackModal() {
 }
 
 export function ModalProvider({ children }: { children: ReactNode }) {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState<boolean | null>(null)
   return (
     <context.Provider value={{ visible, setVisible }}>
       {children}

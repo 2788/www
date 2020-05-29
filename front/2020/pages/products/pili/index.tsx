@@ -26,7 +26,7 @@ import PackageLossIcon from './_images/advantages-packageloss.svg'
 import SmartLineIcon from './_images/advantages-smartline.svg'
 import WeakNetAdapterIcon from './_images/advantages-weaknetadapter.svg'
 
-import BannerIcon from './_images/bannerIcon.svg'
+import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -49,7 +49,7 @@ function PageContent() {
         desc="七牛直播云服务 (Pili) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <Navigator priceLink="/TODO">
         {btns.nav}

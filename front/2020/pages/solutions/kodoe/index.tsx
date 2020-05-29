@@ -19,7 +19,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 
 import { useBtns } from 'hooks/product-btn'
 
-import BannerIcon from './images/banner-icon.svg'
+import imgBanner from './images/banner.png'
 
 function PageContent() {
   const { showModal } = useFeedbackModal()
@@ -47,7 +47,7 @@ function PageContent() {
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />}
+        icon={imgBanner}
       />
 
       <Navigator>{btns.nav}</Navigator>

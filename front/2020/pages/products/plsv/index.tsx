@@ -24,7 +24,7 @@ import PriceList from 'components/pages/plsv/PriceList'
 import Demo from 'components/pages/plsv/Demo'
 import Scene from 'components/pages/plsv/Scene'
 
-import BannerIcon from './images/banner.svg'
+import imgBanner from './images/banner.png'
 
 export default function Page() {
 
@@ -39,7 +39,7 @@ export default function Page() {
         title="短视频 SDK"
         desc="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">

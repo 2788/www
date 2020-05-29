@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React, { ReactNode } from 'react'
+import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
 
 import { useMobile } from 'hooks/ua'
@@ -51,6 +51,13 @@ export default function PageBanner(props: IPageBannerProps) {
   function renderIconWrapper() {
     if (!icon || isMobile) {
       return null
+    }
+
+    if (typeof icon === 'string') {
+      const styl: CSSProperties = {
+        backgroundImage: `url(${icon})`
+      }
+      return <div className={styles.iconWrapper} style={styl} />
     }
 
     return <div className={styles.iconWrapper}>{icon}</div>

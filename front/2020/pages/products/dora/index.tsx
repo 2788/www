@@ -29,7 +29,7 @@ import Customer6Icon from './_images/客户-虎扑.png'
 import Customer7Icon from './_images/客户-房多多.png'
 import Customer8Icon from './_images/客户-小红书.png'
 
-import BannerIcon from './_images/banner-icon.svg'
+import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -48,7 +48,7 @@ function PageContent() {
         desc="智能多媒体服务（DORA），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">

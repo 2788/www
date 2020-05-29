@@ -17,7 +17,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 
 import { useBtns } from 'hooks/product-btn'
 
-import BannerIcon from './images/banner-icon.svg'
+import imgBanner from './images/banner.png'
 
 function PageContent() {
   const { showModal } = useFeedbackModal()
@@ -38,7 +38,7 @@ function PageContent() {
         自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />}
+        icon={imgBanner}
       />
 
       <Navigator>{btns.nav}</Navigator>
