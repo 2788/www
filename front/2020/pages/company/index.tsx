@@ -7,7 +7,7 @@ import React from 'react'
 import Layout from 'components/Product/Layout'
 import Banner, { Title, Desc } from 'components/Banner'
 import PageNotice from 'components/Product/PageNotice'
-import Navigator from 'components/Product/Navigator'
+import Navigator from 'components/Navigator'
 import Section from 'components/Product/Section'
 import Feature, {
   Group as FeatureGroup,
@@ -51,7 +51,7 @@ function PageContent() {
         </div>
       </PageNotice>
 
-      <div className={styles.nav}><Navigator /></div>
+      <Navigator />
 
       <Section title="关于七牛" name="about" header="七牛是一家怎样的公司？">
         <section className={styles.about}>
