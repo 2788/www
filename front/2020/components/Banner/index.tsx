@@ -4,6 +4,7 @@
 
 import cls from 'classnames'
 import React, { CSSProperties, HTMLAttributes } from 'react'
+import { assign } from 'lodash'
 import { useMobile } from 'hooks/ua'
 import style from './style.less'
 
@@ -12,23 +13,44 @@ export type Props = HTMLAttributes<HTMLElement> & {
   pcBackgroundSize?: string
   mobileBackgroundSize?: string
   backgroundPosition?: string
+  backgroundAnchor?: 'root' | 'content'
 }
 
 export default function Banner(props: Props) {
-  const { background, pcBackgroundSize = '200px', mobileBackgroundSize = '84px', children, className, ...others } = props
+  const {
+    background,
+    pcBackgroundSize = '200px',
+    mobileBackgroundSize = '84px',
+    backgroundPosition,
+    backgroundAnchor = 'content',
+    children,
+    className,
+    ...others
+  } = props
   const isMobile = useMobile()
 
-  const contentStyle: CSSProperties = {
-    backgroundImage: isMobile ? 'none' : `url(${background})`,
+  const backgroundStyle: CSSProperties = {
+    backgroundImage: `url(${background})`,
     backgroundSize: isMobile ? mobileBackgroundSize : pcBackgroundSize,
-    backgroundPosition: props.backgroundPosition
+    backgroundPosition
   }
 
+  const rootProps = assign(
+    {
+      className: cls(style.banner, className),
+      ...others
+    },
+    backgroundAnchor === 'root' && { style: backgroundStyle }
+  )
+
+  const contentProps = assign(
+    { className: style.bannerContent },
+    backgroundAnchor === 'content' && { style: backgroundStyle }
+  )
+
   return (
-    <div className={cls(style.banner, className)} {...others}>
-      <div className={style.bannerContent} style={contentStyle}>
-        {children}
-      </div>
+    <div {...rootProps}>
+      <div {...contentProps}>{children}</div>
     </div>
   )
 }

@@ -1,0 +1,43 @@
+.card {
+  border: none;
+  background: #fff;
+  box-shadow: none;
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .content {
+    white-space: pre-line;
+  }
+}
+
+.card.pcDemoCard {
+  display: flex;
+  margin: 24px 0;
+  min-height: 144px;
+  .image {
+    width: 270px;
+    height: auto;
+  }
+  .content {
+    width: 0px;
+    flex: 1px;
+  }
+  .button {
+    margin: 0 16px;
+    align-self: center;
+  }
+}
+
+.card.mobileDemoCard {
+  margin-left: 16px;
+  margin-right: 16px;
+  .button{
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+}
