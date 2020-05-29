@@ -93,7 +93,9 @@ function uploadFile(localFile, bucket, key, mac) {
   )
 }
 
-// TODO: 这边需要优化上传策略，需要先上传 static 内容，再上传页面
+// TODO: 这边需要优化上传策略
+// 1. 需要先上传 static 内容，再上传页面，否则在上传过程中访问可能不正常
+// 2. 对 static 内容，上传前可以先检查是否存在，存在就不用上传了
 async function deploy(config) {
   const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
   const outputFiles = await getAllFiles(config.outputPath)
