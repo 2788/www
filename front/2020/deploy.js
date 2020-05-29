@@ -7,6 +7,42 @@ const path = require('path')
 const walk = require('walk')
 const qiniu = require('qiniu')
 
+// https://gist.github.com/nighca/6562d098ac01814b6e1c1718b16d4abc
+function batch(process, limit = -1) {
+  return function batchProcess(tasks = []) {
+    let results = [], finished = 0, processing = 0
+    let rejected = false
+
+    function tryProcess(resolve, reject) {
+      if (rejected) return
+      if (finished >= tasks.length) {
+        resolve(results)
+        return
+      }
+
+      const offset = finished + processing
+      const todo = limit > 0 ? limit - processing : tasks.length
+      tasks.slice(offset, offset + todo).forEach((task, i) => {
+        processing++
+        process(task).then(
+          result => {
+            results[offset + i] = result
+            processing--
+            finished++
+            tryProcess(resolve, reject)
+          },
+          err => {
+            reject(err)
+            rejected = true
+          }
+        )
+      })
+    }
+
+    return new Promise(tryProcess)
+  }
+}
+
 function getAllFiles(baseDir) {
   return new Promise((resolve, reject) => {
     const walker = walk.walk(baseDir)
@@ -57,11 +93,12 @@ function uploadFile(localFile, bucket, key, mac) {
   )
 }
 
+// TODO: 这边需要优化上传策略，需要先上传 static 内容，再上传页面
 async function deploy(config) {
   const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
   const outputFiles = await getAllFiles(config.outputPath)
 
-  return Promise.all(outputFiles.map((fileName, i) => {
+  function deployFile(fileName) {
     const filePath = path.resolve(config.outputPath, fileName)
 
     // 对于文件 `foo/index.html` 或 `foo.html`，分别以 `foo`、`foo/` & `foo/index.html` 作为 key 上传
@@ -78,13 +115,16 @@ async function deploy(config) {
       keys.push(fileName)
     }
 
-    // 每个 fileName 往后延 1000ms 以避免 working sockets is full 的问题
-    return new Promise(resolve => setTimeout(resolve, 1000 * i)).then(() => Promise.all(keys.map(
+    return Promise.all(keys.map(
       key => uploadFile(filePath, config.bucket, key, mac).then(
         () => console.log(`[UPLOADED] ${key} (${fileName})`)
       )
-    )))
-  }))
+    ))
+  }
+
+  // 同时最多 50 个一起处理（注意最多可能有 50*3=150 个上传请求）
+  const deployFiles = batch(deployFile, 50)
+  return deployFiles(outputFiles)
 }
 
 // next export 产物所在目录
