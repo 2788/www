@@ -59,7 +59,7 @@ function Card(props: CardProps) {
         {sellPointItems}
       </div>
       <div className={style.footer}>
-        <Button className={style.button} href={detailLink} withBorder>
+        <Button className={style.button} href={detailLink} type="hollow" withBorder>
           购买
         </Button>
       </div>
