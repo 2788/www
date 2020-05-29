@@ -8,11 +8,11 @@ import Tabs, { TabPane } from 'components/UI/Tabs'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
 import { urlForQvmBuy } from 'utils/route'
-import ImgWeb from './web.svg'
-import ImgMemdb from './memdb.svg'
-import ImgGame from './game.svg'
-import ImgGraphRender from './graph-render.svg'
-import ImgHighPerf from './high-perf.svg'
+import imgWeb from './web.png'
+import imgMemdb from './memdb.png'
+import imgGame from './game.png'
+import imgGraphRender from './graph-render.png'
+import imgHighPerf from './high-perf.png'
 import style from './style.less'
 
 export default function QvmScenes() {
@@ -21,7 +21,7 @@ export default function QvmScenes() {
   return (
     <Scene name="scenes" title="使用场景">
       <Panel name="1" title="简单官网 / WEB 应用">
-        <Block className={style.imgBlock}><ImgWeb /></Block>
+        <Block className={style.imgBlock}><img src={imgWeb} /></Block>
         <Detail>
           <Title>场景特点</Title>
           <List>
@@ -70,7 +70,7 @@ export default function QvmScenes() {
         </Detail>
       </Panel>
       <Panel name="2" title="内存数据库">
-        <Block className={style.imgBlock}><ImgMemdb /></Block>
+        <Block className={style.imgBlock}><img src={imgMemdb} /></Block>
         <Detail>
           <Title>场景特点</Title>
           <List>
@@ -99,7 +99,7 @@ export default function QvmScenes() {
         </Detail>
       </Panel>
       <Panel name="3" title="游戏类业务">
-        <Block className={style.imgBlock}><ImgGame /></Block>
+        <Block className={style.imgBlock}><img src={imgGame} /></Block>
         <Detail>
           <Title>实例特点</Title>
           <List>
@@ -126,7 +126,7 @@ export default function QvmScenes() {
         </Detail>
       </Panel>
       <Panel name="4" title="图形渲染">
-        <Block className={style.imgBlock}><ImgGraphRender /></Block>
+        <Block className={style.imgBlock}><img src={imgGraphRender} /></Block>
         <Detail>
           <Title>场景特点</Title>
           <List>
@@ -170,7 +170,7 @@ export default function QvmScenes() {
         </Detail>
       </Panel>
       <Panel name="5" title="高性能计算">
-        <Block className={style.imgBlock}><ImgHighPerf /></Block>
+        <Block className={style.imgBlock}><img src={imgHighPerf} /></Block>
         <Detail>
           <Title>场景特点</Title>
           <List>

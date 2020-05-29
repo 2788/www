@@ -17,7 +17,7 @@ export default function FreePage() {
   return (
     <Layout>
       <Navigatable>
-        <Banner background={imgBanner}>
+        <Banner background={imgBanner} pcBackgroundSize="auto 100%" backgroundPosition="right">
           <h1 className={style.bannerTitle}>
             <strong>免费</strong>云服务套餐
           </h1>

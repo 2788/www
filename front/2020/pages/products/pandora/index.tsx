@@ -167,7 +167,7 @@ export default function ExpressPage() {
           <Word title="步步高" logo={bbg.logo}>
             将日志数据的管理和分析交给 Pandora，使我们更加专注在自身产品和业务，Pandora 很好的支撑起我们业务的快速增长、实现业务实时监控，帮助步步高小天才节约了 30% 成本。
           </Word>
-          <Word title="银基富力" logo="TODO">
+          <Word title="银基富力" logo={logos.yjfl}>
             Pandora 助力我们打造专业的信息科技风险监管报送系统，面对海量抽象的机器数据，Pandora 提供了专业化的数据采集、实时分析、可视化能力，实时获取监管数据，有效识别、计量、监测和控制信息科技风险，大大提升监管效率。
           </Word>
         </card.Row>

@@ -22,9 +22,9 @@ import CustomerTaquIcon from './images/customer-taqu.png'
 import CustomerTebaobaoIcon from './images/customer-tebaobao.png'
 import CustomerWeipaiIcon from './images/customer-weipai.png'
 
-import Scene1Img from './images/scene1.svg'
-import Scene2Img from './images/scene2.svg'
-import Scene3Img from './images/scene3.svg'
+import scene1Img from './images/scene1.png'
+import scene2Img from './images/scene2.png'
+import scene3Img from './images/scene3.png'
 
 import styles from './style.less'
 
@@ -32,8 +32,8 @@ export default function PiliScene() {
   return (
     <Scene name="scene" title="应用场景">
       <ScenePanel name="scene-tab-1" title="电商业务" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene1Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={scene1Img} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -57,8 +57,8 @@ export default function PiliScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-2" title="娱乐互动业务" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene2Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={scene2Img} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -82,8 +82,8 @@ export default function PiliScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-3" title="在线教育" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene3Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={scene3Img} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>

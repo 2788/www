@@ -11,6 +11,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
   background: string
   pcBackgroundSize?: string
   mobileBackgroundSize?: string
+  backgroundPosition?: string
 }
 
 export default function Banner(props: Props) {
@@ -18,8 +19,9 @@ export default function Banner(props: Props) {
   const isMobile = useMobile()
 
   const contentStyle: CSSProperties = {
-    backgroundImage: `url(${background})`,
-    backgroundSize: isMobile ? mobileBackgroundSize : pcBackgroundSize
+    backgroundImage: isMobile ? 'none' : `url(${background})`,
+    backgroundSize: isMobile ? mobileBackgroundSize : pcBackgroundSize,
+    backgroundPosition: props.backgroundPosition
   }
 
   return (

@@ -8,14 +8,14 @@ import React from 'react'
 
 import Section from 'components/Product/Section'
 
-import ArchImg from './arch-img.svg'
+import archImg from './arch-img.png'
 
 import styles from './style.less'
 
 export default function EssArch() {
   return (
     <Section name="arch" title="方案架构">
-      <ArchImg className={styles.img} />
+      <img src={archImg} alt="方案架构" className={styles.img} />
     </Section>
   )
 }

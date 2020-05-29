@@ -16,17 +16,17 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 import imgBanner from './banner.png'
-import ImgAbilities from './_imgs/abilities.svg'
+import imgAbilities from './_imgs/abilities.png'
 import IconAdvanAssist from './_imgs/advan-assist.svg'
 import IconAdvanCrossPlatform from './_imgs/advan-cross-platform.svg'
 import IconAdvanFlexibility from './_imgs/advan-flexibility.svg'
 import IconAdvanMs from './_imgs/advan-ms.svg'
 import IconAdvanRealtime from './_imgs/advan-realtime.svg'
 import IconAdvanUe from './_imgs/advan-ue.svg'
-import ImgSceneDc from './_imgs/scene-dc.svg'
-import ImgSceneIot from './_imgs/scene-iot.svg'
-import ImgSceneLog from './_imgs/scene-log.svg'
-import ImgSceneQuality from './_imgs/scene-quality.svg'
+import imgSceneDc from './_imgs/scene-dc.png'
+import imgSceneIot from './_imgs/scene-iot.png'
+import imgSceneLog from './_imgs/scene-log.png'
+import imgSceneQuality from './_imgs/scene-quality.png'
 import LogoBilibili from './_logos/bilibili.png'
 import LogoCmb from './_logos/cmb.png'
 import LogoDianxin from './_logos/dianxin.png'
@@ -78,7 +78,7 @@ function PageContent() {
       </Navigator>
 
       <Section name="abilities" title="能力全景图">
-        <ImgAbilities className={style.imgAbilities} />
+        <img src={imgAbilities} className={style.imgAbilities} />
       </Section>
 
       <Feature name="advantages" title="产品优势">
@@ -127,7 +127,7 @@ function PageContent() {
       <Scene title="应用场景" header="典型应用场景">
         <ScenePanel name="dc" title="数据中心监控" className={style.scenePanel} verticalCenter>
           <SceneBlock className={style.sceneImgBlock}>
-            <ImgSceneDc className={style.sceneImg} />
+            <img src={imgSceneDc} className={style.sceneImg} />
           </SceneBlock>
           <SceneBlock blockType="fixed" shadow className={style.sceneDetail}>
             <h5 className={style.sceneTitle}>场景描述</h5>
@@ -147,7 +147,7 @@ function PageContent() {
         </ScenePanel>
         <ScenePanel name="quality" title="应用质量管理" className={style.scenePanel} verticalCenter>
           <SceneBlock className={style.sceneImgBlock}>
-            <ImgSceneQuality className={style.sceneImg} />
+            <img src={imgSceneQuality} className={style.sceneImg} />
           </SceneBlock>
           <SceneBlock blockType="fixed" shadow className={style.sceneDetail}>
             <h5 className={style.sceneTitle}>场景描述</h5>
@@ -167,7 +167,7 @@ function PageContent() {
         </ScenePanel>
         <ScenePanel name="log" title="统一日志管理" className={style.scenePanel} verticalCenter>
           <SceneBlock className={style.sceneImgBlock}>
-            <ImgSceneLog className={style.sceneImg} />
+            <img src={imgSceneLog} className={style.sceneImg} />
           </SceneBlock>
           <SceneBlock blockType="fixed" shadow className={style.sceneDetail}>
             <h5 className={style.sceneTitle}>场景描述</h5>
@@ -187,7 +187,7 @@ function PageContent() {
         </ScenePanel>
         <ScenePanel name="iot" title="物联网数据监控" className={style.scenePanel} verticalCenter>
           <SceneBlock className={style.sceneImgBlock}>
-            <ImgSceneIot className={style.sceneImg} />
+            <img src={imgSceneIot} className={style.sceneImg} />
           </SceneBlock>
           <SceneBlock blockType="fixed" shadow className={style.sceneDetail}>
             <h5 className={style.sceneTitle}>场景描述</h5>

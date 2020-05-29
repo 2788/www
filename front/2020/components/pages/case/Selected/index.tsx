@@ -27,7 +27,7 @@ export default function Selected() {
       <TabPane value="1" tab="互联网">
         <Case
           title="英语流利说"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8835"
           logo={logoLiulishuo}
           products={[Product.Kodo, Product.Cdn]}
         >
@@ -35,7 +35,7 @@ export default function Selected() {
         </Case>
         <Case
           title="快看漫画"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8891"
           logo={logoKuaikan}
           products={[Product.Plsv]}
         >
@@ -43,7 +43,7 @@ export default function Selected() {
         </Case>
         <Case
           title="银基富力"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8894"
           logo={logoYinjifuli}
           products={[Product.Express]}
         >
@@ -51,7 +51,7 @@ export default function Selected() {
         </Case>
         <Case
           title="石墨文档"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8895"
           logo={logoShimowendang}
           products={[Product.Kodo, Product.Cdn, Product.Dora]}
         >
@@ -59,7 +59,7 @@ export default function Selected() {
         </Case>
         <Case
           title="淡蓝"
-          url="/TODO"
+          url="https://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&mid=2652194136&idx=1&sn=74115a38ca1caa2694f4f43aad475c22&chksm=bd0173cd8a76fadbb07b1b5722a9b920fcdca254aa3e08d627e50ad44eaf5444efdb62361fe0#rd"
           logo={logoDanlan}
           products={[Product.Cdn, Product.Dora]}
         >
@@ -69,7 +69,7 @@ export default function Selected() {
       <TabPane value="2" tab="医疗">
         <Case
           title="平安好医生"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8760"
           logo={logoPinganhaoyisheng}
           products={[Product.Plsv]}
         >
@@ -79,7 +79,7 @@ export default function Selected() {
       <TabPane value="3" tab="传媒">
         <Case
           title="中国网"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8864"
           logo={logoZhongguowang}
           products={[Product.Kodo, Product.Cdn, Product.Pili]}
         >
@@ -89,7 +89,7 @@ export default function Selected() {
       <TabPane value="4" tab="智能硬件">
         <Case
           title="晶盛机电"
-          url="/TODO"
+          url="https://blog.qiniu.io/archives/8814"
           logo={logoJinsheng}
           products={[Product.Express]}
         >

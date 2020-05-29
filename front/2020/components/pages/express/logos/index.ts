@@ -24,6 +24,7 @@ import sohutv from './客户-搜狐视频.png'
 import qczj from './客户-汽车之家.png'
 import zbcm from './客户-浙报传媒.png'
 import jltv from './客户-吉林电视台.png'
+import yjfl from './客户-银基富力.png'
 
 export {
   faceu,
@@ -47,5 +48,6 @@ export {
   sohutv,
   qczj,
   zbcm,
-  jltv
+  jltv,
+  yjfl
 }

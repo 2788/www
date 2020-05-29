@@ -11,10 +11,10 @@ import Scene, {
   Block as SceneBlock
 } from 'components/Product/Scene'
 
-import SceneImgOne from './scene-img-one.svg'
-import SceneImgTwo from './scene-img-two.svg'
-import SceneImgThree from './scene-img-three.svg'
-import SceneImgFour from './scene-img-four.svg'
+import sceneImgOne from './scene1.png'
+import sceneImgTwo from './scene2.png'
+import sceneImgThree from './scene3.png'
+import sceneImgFour from './scene4.png'
 
 import styles from './style.less'
 
@@ -23,7 +23,7 @@ export default function KodoeScene() {
     <Scene name="scene" title="典型应用场景" header="应用场景" grey>
       <ScenePanel name="scene-tab-1" title="海量通用文件存储" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneImgOne className={styles.sceneImg} />
+          <img src={sceneImgOne} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -44,7 +44,7 @@ export default function KodoeScene() {
 
       <ScenePanel name="scene-tab-2" title="数据分析与挖掘" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneImgTwo className={styles.sceneImg} />
+          <img src={sceneImgTwo} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -60,7 +60,7 @@ export default function KodoeScene() {
 
       <ScenePanel name="scene-tab-3" title="数据备份" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneImgThree className={styles.sceneImg} />
+          <img src={sceneImgThree} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -78,7 +78,7 @@ export default function KodoeScene() {
 
       <ScenePanel name="scene-tab-4" title="多媒体数据处理" verticalCenter>
         <SceneBlock blockType="fixed">
-          <SceneImgFour className={styles.sceneImg} />
+          <img src={sceneImgFour} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>

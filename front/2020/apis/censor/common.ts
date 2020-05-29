@@ -1,13 +1,13 @@
 import { apiHost } from 'constants/api'
+import { censorScenes } from 'constants/env'
 
 export const apiPrefix = `${apiHost}/ai`
 
 // 接口文档说视频没有 ads，但是实际返回也有 ads...
 export type Scene = 'ads' | 'pulp' | 'terror' | 'politician'
 
-// 默认带的审查参数
-// censor 测试环境没有广告服务，这里先注释 TODO: 线上需要打开
-export const scenes: Scene[] = ['pulp', 'terror', 'politician'/* , 'ads' */]
+// 默认带的审查参数，注意 censor 测试环境没有广告服务，这里通过环境变量控制
+export const scenes = censorScenes.split(',') as Scene[]
 export const defaultParams = { scenes }
 
 export type Suggestion = 'block' | 'review' | 'pass'

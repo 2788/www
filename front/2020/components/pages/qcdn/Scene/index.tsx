@@ -12,11 +12,11 @@ import Scene, {
 } from 'components/Product/Scene'
 
 // 适用场景用户案例 logo
-import Scene1Img from './images/scene1.svg'
-import Scene2Img from './images/scene2.svg'
-import Scene3Img from './images/scene3.svg'
-import Scene4Img from './images/scene4.svg'
-import Scene5Img from './images/scene5.svg'
+import imgScene1 from './images/scene1.png'
+import imgScene2 from './images/scene2.png'
+import imgScene3 from './images/scene3.png'
+import imgScene4 from './images/scene4.png'
+import imgScene5 from './images/scene5.png'
 
 import styles from './style.less'
 
@@ -24,8 +24,8 @@ export default function CdnScene() {
   return (
     <Scene name="scene" title="应用场景">
       <ScenePanel name="scene-tab-1" title="网站加速" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene1Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={imgScene1} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -41,8 +41,8 @@ export default function CdnScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-2" title="超大文件下载" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene2Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={imgScene2} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -59,8 +59,8 @@ export default function CdnScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-3" title="音视频点播" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene3Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={imgScene3} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -78,8 +78,8 @@ export default function CdnScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-4" title="动态加速" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene4Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={imgScene4} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
@@ -94,8 +94,8 @@ export default function CdnScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-5" title="全球加速" verticalCenter>
-        <SceneBlock blockType="fixed">
-          <Scene5Img className={styles.sceneIcon} />
+        <SceneBlock blockType="fixed" className={styles.sceneImgBlock}>
+          <img src={imgScene5} className={styles.sceneImg} />
         </SceneBlock>
         <SceneBlock shadow>
           <div className={styles.sceneContainer}>
