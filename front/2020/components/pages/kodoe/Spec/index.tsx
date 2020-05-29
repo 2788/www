@@ -21,7 +21,7 @@ export default function KodoeSpec() {
         <tbody>
           <tr>
             <td className={styles.title}>型号</td>
-            <td>KODO Enterprise</td>
+            <td>Kodo Enterprise</td>
           </tr>
           <tr>
             <td className={styles.title}>系统架构</td>

@@ -31,7 +31,7 @@ export default function SslScene() {
         </SceneBlock>
         <SceneBlock>
           <div className={styles.sceneContainer}>
-            <p className={styles.sceneContent}>启用企业网站全站 HTTPS 安全加密，激活绿色安全标识(DV/OV)或地址栏企业名称标识(EV)，为潜在客户带来更可信、更放心的访问体验，
+            <p className={styles.sceneContent}>启用企业网站全站 HTTPS 安全加密，激活绿色安全标识（DV/OV）或地址栏企业名称标识（EV），为潜在客户带来更可信、更放心的访问体验，
               极大增强企业诚信力和用户信赖感，有效提升成单率。</p>
             <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
             <RecommendCert {...certForCompanySite} />
@@ -74,7 +74,7 @@ export default function SslScene() {
         <SceneBlock>
           <div className={styles.sceneContainer}>
             <p className={styles.sceneContent}>支付环节是用户最敏感也最容易受到安全威胁的部分，极易成为不法用户信息劫持和伪装欺诈的重要目标。
-              因此，实现网站支付环节的 https 信息传输加密，已经成为各大网站的标配。</p>
+              因此，实现网站支付环节的 HTTPS 信息传输加密，已经成为各大网站的标配。</p>
             <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
             <RecommendCert {...certForPay} />
           </div>
