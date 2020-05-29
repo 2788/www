@@ -48,7 +48,7 @@ export default function SslRecommend() {
     <Section title="推荐证书" name="recommend" header="帮您推荐证书" subtitle={getSubTitle(step, currentInfo)}>
       <div className={styles.recommend}>
         {chooseDom}
-        {cert && <RecommendCert cert={cert} />}
+        {cert && <RecommendCert {...cert} />}
         {
           step > 0 && <div className={styles.goback} onClick={goBack}>返回</div>
         }

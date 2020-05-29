@@ -7,7 +7,6 @@ import React from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useBtns } from 'hooks/product-btn'
 import RtcScene from 'components/pages/rtc/Scene'
 import RtcDemo from 'components/pages/rtc/Demo'
@@ -131,14 +130,6 @@ function PageContent() {
           <LinkItem href="https://doc.qnsdk.com/rtn/docs/demo">Demo 体验及源码下载</LinkItem>
         </LinkGroup>
       </LinkGroups>
-
-      <UsageGuide
-        title="注册即可体验全方位实时音视频"
-      >
-        <UsageGuideButton href="/products/rtc/">
-          立即创建
-        </UsageGuideButton>
-      </UsageGuide>
     </>
   )
 }

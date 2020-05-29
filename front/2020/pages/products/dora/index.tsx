@@ -18,7 +18,7 @@ import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCase
 import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
 import DoraCore from 'components/pages/dora/Core'
 import DoraScene from 'components/pages/dora/Scene'
-import DoraFunctions from 'components/pages/dora/Fuctions'
+import DoraFunctions from 'components/pages/dora/Functions'
 
 import Customer1Icon from './_images/客户-聚美.png'
 import Customer2Icon from './_images/客户-大疆.png'

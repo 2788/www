@@ -11,7 +11,6 @@ import PageNotice, {
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
-import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useBtns } from 'hooks/product-btn'
 import Coverage from 'components/pages/qcdn/Coverage'
 import Packages from 'components/pages/qcdn/Packages'
@@ -175,15 +174,6 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/fusion/kb/3725/how-to-apply-for-and-use-free-certificate">HTTPS 相关问题</LinkItem>
         </LinkGroup>
       </LinkGroups>
-
-      <UsageGuide
-        title="准备好了吗？"
-        description="简单几步，即可创建您自己的直播产品"
-      >
-        <UsageGuideButton href="/products/qcdn/">
-          立即创建
-        </UsageGuideButton>
-      </UsageGuide>
     </>
   )
 }

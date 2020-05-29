@@ -17,7 +17,7 @@ export function getCertFromChoose(info: ChooseInfo) {
   const matchedCerts = certList.filter(cert => {
     const chooseItem = cert.chooseInfo
     return (
-      info.siteType === chooseItem.siteType
+      chooseItem && info.siteType === chooseItem.siteType
       && (info.categoryType === undefined || info.categoryType === chooseItem.categoryType)
       && (info.displayType === undefined || info.displayType === chooseItem.displayType)
       && (info.domainType === undefined || info.domainType === chooseItem.domainType)
@@ -29,9 +29,7 @@ export function getCertFromChoose(info: ChooseInfo) {
   return null
 }
 
-interface RecommendCertProps {
-  cert: CertInfo
-}
+export type RecommendCertProps = CertInfo
 
 const brandImgUrlMap = {
   [CertBrand.DigiCert]: DigiCertImg,
@@ -44,19 +42,25 @@ const demoImgUrlMap = {
   [DisplayType.Hidden]: <DemoWithoutBrandImg className={styles.demo} />
 }
 
-export function RecommendCert({ cert }: RecommendCertProps) {
+export function RecommendCert(cert: RecommendCertProps) {
   const isMobile = useMobile()
   const chooseInfo = cert && cert.chooseInfo
-  return cert && chooseInfo && (
+  return cert && (
     <div className={styles.cert}>
       <span className={styles.info}>
         <span className={styles.name}>
           <img className={styles.brand} src={brandImgUrlMap[cert.brand]} />
           {cert.brand}&nbsp;
           {certTypeTextMap[cert.type]}&nbsp;
-          {chooseInfo.domainType != null && domainTypeNameMap[chooseInfo.domainType]}
+          {chooseInfo && chooseInfo.domainType != null && domainTypeNameMap[chooseInfo.domainType]}
         </span>
-        <span className={styles.demo}>{chooseInfo.displayType != null && demoImgUrlMap[chooseInfo.displayType]}</span>
+        {
+          chooseInfo && (
+            <span className={styles.demo}>
+              {chooseInfo.displayType != null && demoImgUrlMap[chooseInfo.displayType]}
+            </span>
+          )
+        }
       </span>
       <span>
         <span className={styles.price}>{cert.price}</span>

@@ -11,7 +11,6 @@ import PageNotice, {
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
-import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useBtns } from 'hooks/product-btn'
 import Packages from 'components/pages/ssl/Packages'
 import SslScene from 'components/pages/ssl/Scene'
@@ -81,33 +80,33 @@ function PageContent() {
             pos="top-down"
             align="left"
             icon={<EncryptionTransmission />}
-            title="顶级品牌合作"
+            title="数据加密传输"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>HTTPS 是加密传输网络协议，可防止数据在传输过程中不被窃取、改变，确保数据的完整性</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
             align="left"
             icon={<PreventTrafficHijack />}
-            title="轻松部署至 CDN"
+            title="防止流量劫持"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>全站 HTTPS 是根治运营商、中间人流量劫持的解决方案，防止网页中被插入的广告，保护用户隐私安全</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
             align="left"
             icon={<EnhanceBrandInfluence />}
-            title="高兼容性"
+            title="提升品牌影响力"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>浏览器标注网站为安全站点，可以放心的进行操作和交易，EV 高级证书会在浏览器显示企业名称</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
             align="left"
             icon={<ImproveSearchRanking />}
-            title="一站式管理"
+            title="数据加密传输"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>HTTPS 是加密传输网络协议，可防止数据在传输过程中不被窃取、改变，确保数据的完整性</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>
@@ -122,33 +121,33 @@ function PageContent() {
             pos="top-down"
             align="left"
             icon={<TopBrandCooperation />}
-            title="数据加密传输"
+            title="顶级品牌合作"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>七牛云携手 TrustAsia 与国际顶级数字证书提供商 Digicert、GeoTrust 合作</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
             align="left"
             icon={<EasyDeploymentToCDN />}
-            title="防止流量劫持"
+            title="轻松部署至 CDN"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>支持 CDN 中 HTTP 一键升级 HTTPS，更换证书等功能直接调用用户证书，帮助用户更快速的完成操作</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
             align="left"
             icon={<HighCompatibility />}
-            title="提升品牌影响力"
+            title="高兼容性"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>兼容性强，收费证书支持目前所有主流的浏览器和移动设备</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
             align="left"
             icon={<OneStepManagement />}
-            title="提升搜索排名"
+            title="一站式管理"
           >
-            <FeatureDesc>防止数据在传送过程中被窃取、篡改，确保数据的完整性；防止运营商的流量劫持、网页植入广告现象；同时有效抵挡攻击，大大提升安全性。</FeatureDesc>
+            <FeatureDesc>支持申购的证书和用户上传的证书在七牛云平台上集中统一管理</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>
@@ -187,15 +186,6 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/ssl/kb/3655/what-are-common-certificate-application-status">常见的证书申请状态有哪些</LinkItem>
         </LinkGroup>
       </LinkGroups>
-
-      <UsageGuide
-        title="准备好了吗？"
-        description="简单几步，即可创建您自己的证书"
-      >
-        <UsageGuideButton href="/products/ssl/">
-          立即创建
-        </UsageGuideButton>
-      </UsageGuide>
     </>
   )
 }

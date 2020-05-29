@@ -10,6 +10,8 @@ import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
 } from 'components/Product/Scene'
+import { RecommendCert } from '../Recommend/cert'
+import { certForCompanySite, certForCompanyApp, certForApi, certForPay, certForGov } from '../Recommend/type'
 
 // 适用场景用户案例 logo
 import Scene1Img from './images/scene1.svg'
@@ -23,90 +25,73 @@ import styles from './style.less'
 export default function SslScene() {
   // todo： 修改推荐证书
   return (
-    <Scene name="scene" title="应用场景">
-      <ScenePanel name="scene-tab-1" title="网站加速" verticalCenter>
+    <Scene name="scene" title="行业场景">
+      <ScenePanel name="scene-tab-1" title="企业网站" verticalCenter>
         <SceneBlock blockType="fixed">
           <Scene1Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock>
           <div className={styles.sceneContainer}>
-            <p className={styles.sceneTitle}>场景描述</p>
-            <p className={styles.sceneContent}>网页静态资源优化加速分发，例如：html、css、js、img、短视频等。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
-            <ul className={styles.sceneList}>
-              <li className={styles.item}>全站 HTTPS 保证网站访问安全； TCP 压缩优化使网页大图，样式等完成秒级加载，缩短网页响应时间提高用户体验。</li>
-              <li className={styles.item}>配合七牛云-图片处理服务一起使用，还可以针对图片进行缩略、打水印，转格式等数据处理服务。</li>
-            </ul>
+            <p className={styles.sceneContent}>启用企业网站全站 HTTPS 安全加密，激活绿色安全标识(DV/OV)或地址栏企业名称标识(EV)，为潜在客户带来更可信、更放心的访问体验，
+              极大增强企业诚信力和用户信赖感，有效提升成单率。</p>
+            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+            <RecommendCert {...certForCompanySite} />
           </div>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-2" title="超大文件下载" verticalCenter>
+      <ScenePanel name="scene-tab-2" title="企业应用" verticalCenter>
         <SceneBlock blockType="fixed">
           <Scene2Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock>
           <div className={styles.sceneContainer}>
-            <p className={styles.sceneTitle}>场景描述</p>
-            <p className={styles.sceneContent}>大文件下载优化加速分发，例如：apk、mp3、exe、zip 等。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
-            <ul className={styles.sceneList}>
-              <li className={styles.item}>七牛 CDN 在全球数千个节点，让用户在下载过程中获得更快的下载速度。</li>
-              <li className={styles.item}>并利用分段缓存技术提高了大文件下载传输的稳定性。</li>
-              <li className={styles.item}>配合七牛云-存储服务一起使用，可有效降低回源和存储成本。</li>
-            </ul>
+            <p className={styles.sceneContent}>越来越多的企业将 OA、CRM、ERP 等企业应用系统部署于云端，享受云计算的高效和便捷性。
+              而升级为 HTTPS 安全加密，可进一步提升系统安全性，确保敏感信息不被劫持。</p>
+            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+            <RecommendCert {...certForCompanyApp} />
           </div>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-3" title="音视频点播" verticalCenter>
+      <ScenePanel name="scene-tab-3" title="政务信息" verticalCenter>
         <SceneBlock blockType="fixed">
           <Scene3Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock>
           <div className={styles.sceneContainer}>
-            <p className={styles.sceneTitle}>场景描述</p>
-            <p className={styles.sceneContent}>音视频点播优化加速服务，例如：mp4、flv、rmvb、wmv、HLS 等。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
-            <ul className={styles.sceneList}>
-              <li className={styles.item}>七牛 CDN 利用 BGP 网络中间源技术降低回源带宽压力节省了用户回源成本。</li>
-              <li className={styles.item}>分段预取技术使用户在浏览音视频时更加的流畅。</li>
-              <li className={styles.item}>高级防盗链技术有效防止用户文件被盗用。</li>
-              <li className={styles.item}>配合七牛云-数据处理服务，还可以进行音视频转码、转格式、压缩等数据处理服务。</li>
-            </ul>
+            <p className={styles.sceneContent}>公信力是政务平台要打造的最重要特性。而越来越多的钓鱼欺诈网站和信息劫持手段，对政务平台的信息安全带来严重威胁。
+              启用权威认证的 SSL 证书能最大化保障信息安全和网站公信力。</p>
+            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+            <RecommendCert {...certForGov} />
           </div>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-4" title="动态加速" verticalCenter>
+      <ScenePanel name="scene-tab-4" title="支付体系" verticalCenter>
         <SceneBlock blockType="fixed">
           <Scene4Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock>
           <div className={styles.sceneContainer}>
-            <p className={styles.sceneTitle}>场景描述</p>
-            <p className={styles.sceneContent}>动态加速针对动态资源进行加速分发，在电商、社交、社区论坛、金融支付和游戏娱乐等方面可以显著提升用户的访问性能。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
-            <ul className={styles.sceneList}>
-              <li className={styles.item}>借助特有的动态路由探测技术和私有传输协议优化，可以保证客户源站的内容通过安全稳定的最优链路分发到用户端</li>
-            </ul>
+            <p className={styles.sceneContent}>支付环节是用户最敏感也最容易受到安全威胁的部分，极易成为不法用户信息劫持和伪装欺诈的重要目标。
+              因此，实现网站支付环节的 https 信息传输加密，已经成为各大网站的标配。</p>
+            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+            <RecommendCert {...certForPay} />
           </div>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-5" title="全球加速" verticalCenter>
+      <ScenePanel name="scene-tab-5" title="API 接口" verticalCenter>
         <SceneBlock blockType="fixed">
           <Scene5Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock>
           <div className={styles.sceneContainer}>
-            <p className={styles.sceneTitle}>场景描述</p>
-            <p className={styles.sceneContent}>全球加速，源站在国内的场景</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
-            <ul className={styles.sceneList}>
-              <li className={styles.item}>跨国回源链路质量</li>
-              <li className={styles.item}>海外低命中资源访问时，降低响应时间，提升下载速度</li>
-            </ul>
+            <p className={styles.sceneContent}>API 接口是第三方网站进行信息交互的重要形式，因为大多涉及敏感信息或重要操作指令的传输，因此其安全性至关重要。
+              使用 SSL 证书进行信息传输的高强度加密，可有效杜绝信息劫持。</p>
+            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+            <RecommendCert {...certForApi} />
           </div>
         </SceneBlock>
       </ScenePanel>

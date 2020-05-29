@@ -8,7 +8,6 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useBtns } from 'hooks/product-btn'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import Feature, {
@@ -47,7 +46,7 @@ function PageContent() {
     <>
       <PageBanner
         title="视频直播"
-        desc="七牛直播云服务 (PILI) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
+        desc="七牛直播云服务 (Pili) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={<BannerIcon />} />
@@ -135,15 +134,6 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/pili/kb/3876/a-live-cover-is-permanent">直播封面落是否永久保存</LinkItem>
         </LinkGroup>
       </LinkGroups>
-
-      <UsageGuide
-        title="准备好了吗？"
-        description="简单几步，即可创建您自己的直播产品"
-      >
-        <UsageGuideButton href="/products/pili/">
-          立即创建
-        </UsageGuideButton>
-      </UsageGuide>
     </>
   )
 }

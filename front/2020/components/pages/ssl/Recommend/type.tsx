@@ -88,7 +88,8 @@ export interface CertInfo {
   type: CertType
   price: number
   unit: string
-  chooseInfo: ChooseInfo
+  link?: string
+  chooseInfo?: ChooseInfo
 }
 
 export enum CertBrand {
@@ -400,3 +401,38 @@ export const certList: CertInfo[] = [
     }
   }
 ]
+
+export const certForCompanySite = {
+  brand: CertBrand.DigiCert,
+  type: CertType.Ov,
+  price: 9700,
+  unit: '元/年'
+}
+
+export const certForCompanyApp = {
+  brand: CertBrand.Geotrust,
+  type: CertType.Ov,
+  price: 2850,
+  unit: '元/年'
+}
+
+export const certForGov = {
+  brand: CertBrand.DigiCert,
+  type: CertType.EvPro,
+  price: 12650,
+  unit: '元/年'
+}
+
+export const certForPay = {
+  brand: CertBrand.DigiCert,
+  type: CertType.Ev,
+  price: 7950,
+  unit: '元/年'
+}
+
+export const certForApi = {
+  brand: CertBrand.TrustAsia,
+  type: CertType.DvWildcard,
+  price: 1999,
+  unit: '元/年'
+}

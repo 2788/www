@@ -4,12 +4,14 @@
  */
 
 import React from 'react'
+import classnames from 'classnames'
 
 import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
 } from 'components/Product/Scene'
 import Link from 'components/Link'
+import { useModal as useFeedbackModal } from 'components/Feedback'
 
 import styles from './style.less'
 
@@ -20,7 +22,31 @@ interface SceneCardProps {
   link?: string
 }
 
+const feedbackHash = '#feedback-modal'
+
 function SceneCard({ title, content, linkText, link }: SceneCardProps) {
+  const { showModal } = useFeedbackModal()
+
+  function handleConsult() {
+    showModal()
+  }
+
+  const isFeedbackCard = link === feedbackHash
+
+  if (isFeedbackCard || !link) {
+    const feedbackAction = isFeedbackCard ? () => handleConsult() : undefined
+    const cardProps = {
+      onClick: feedbackAction
+    }
+    return (
+      <div {...cardProps} className={classnames(styles.sceneCard, isFeedbackCard && styles.feedback)}>
+        <h5 className={styles.title}>{title}</h5>
+        {linkText && <span className={styles.link}>{linkText} &gt;&gt;</span>}
+        <p className={styles.content}>{content}</p>
+      </div>
+    )
+  }
+
   return (
     <Link className={styles.sceneCard} href={link}>
       <h5 className={styles.title}>{title}</h5>
@@ -31,7 +57,6 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
 }
 
 export default function DoraFuctions() {
-  // todo 更新文案
   return (
     <Scene name="functions" title="产品功能" grey>
       <ScenePanel name="scene-tab-1" title="图片处理" verticalCenter>
@@ -70,8 +95,7 @@ export default function DoraFuctions() {
           <SceneCard
             title="转码模板"
             linkText="立即申请"
-            // todo feedback
-            link=""
+            link="#feedback-modal"
             content="提供控制台图形化操作，通过设置任务模板，可对海量音视频文件进行流程化处理，一站式完成转码、截图、水印、鉴黄等基本操作，满足您的多样化转码需求。"
           />
           <SceneCard
@@ -110,7 +134,6 @@ export default function DoraFuctions() {
           <SceneCard
             title="OCR 文字识别"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。"
           />
@@ -123,14 +146,12 @@ export default function DoraFuctions() {
           <SceneCard
             title="场景物体识别"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。"
           />
           <SceneCard
             title="物体分割"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。"
           />
@@ -146,35 +167,30 @@ export default function DoraFuctions() {
           <SceneCard
             title="视频摘要"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="对视频内容进行深度学习和理解，提取一组截图，自动生成视频摘要。"
           />
           <SceneCard
             title="视频精彩集锦"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="通过对视频内容的全面分析，对视频进行关键点识别，智能生成视频精彩集锦。"
           />
           <SceneCard
             title="智能封面"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="抽取精彩画面，智能推荐更吸引用户的视频封面。"
           />
           <SceneCard
             title="智能标签"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="对视频进行场景分类、任务识别、语音识别、文字识别等多维度分析，形成层次化的分类标签，可用于视频搜索和视频推荐等应用场景。"
           />
           <SceneCard
             title="智能识别"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="利用人脸识别、语音识别、 OCR 文本识别以及图像识别等技术，对直播、点播、UGC 视频进行全媒体内容识别，支持涉黄、涉暴、涉恐、涉政检测等功能。"
           />
