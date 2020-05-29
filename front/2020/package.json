@@ -6,7 +6,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "dev": "next",
-    "build": "rm -rf out && next build && next export",
+    "build": "rm -rf .next out && next build && next export",
     "start": "next start",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
     "travis:script": "npm run lint",
