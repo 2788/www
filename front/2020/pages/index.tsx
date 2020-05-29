@@ -52,8 +52,9 @@ function PageContent() {
     <>
       <Carousel className={styles.headerBanner}>
         <PageBanner
-          title={<span className={styles.headerBannerTitle}>海外云存储 优惠专场</span>}
-          desc={<span className={styles.headerBannerDesc}>免费套餐 任你选 出海快人一步</span>}
+          className={styles.bannerKodoOversea}
+          title={<>海外云存储 <strong>优惠专场</strong></>}
+          desc={<><strong>免费套餐</strong> 任你选 出海快人一步</>}
           bgColor="#0A1639"
           bgImg={headerBannerImgs[1]}
           btns={[
@@ -68,8 +69,8 @@ function PageContent() {
           ]}
         />
         <PageBanner
-          title={<span className={styles.headerBannerTitle}>私有云存储</span>}
-          desc={<span className={styles.headerBannerDesc}>企业数字资产的管理专家</span>}
+          title="私有云存储"
+          desc="企业数字资产的管理专家"
           bgColor="#20176B"
           bgImg={headerBannerImgs[2]}
           btns={[
@@ -151,7 +152,7 @@ function PageContent() {
 
 export default function IndexPage() {
   return (
-    <Layout title="七牛云">
+    <Layout>
       <PageContent />
     </Layout>
   )
