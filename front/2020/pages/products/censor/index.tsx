@@ -136,7 +136,7 @@ function PageContent() {
 
 export default function ExpressPage() {
   return (
-    <Layout>
+    <Layout title="内容审核">
       <PageContent />
     </Layout>
   )

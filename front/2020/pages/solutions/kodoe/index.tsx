@@ -86,7 +86,7 @@ function PageContent() {
 
 export default function KodoePage() {
   return (
-    <Layout>
+    <Layout title="私有云存储解决方案 Kodo Enterprise">
       <PageContent />
     </Layout>
   )

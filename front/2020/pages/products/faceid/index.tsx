@@ -106,7 +106,7 @@ function PageContent() {
 
 export default function ExpressPage() {
   return (
-    <Layout>
+    <Layout title="人脸核验">
       <PageContent />
     </Layout>
   )

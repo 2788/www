@@ -152,7 +152,7 @@ function PageContent() {
 
 export default function ExpressPage() {
   return (
-    <Layout>
+    <Layout title="云短信 SMS">
       <PageContent />
     </Layout>
   )

@@ -116,7 +116,7 @@ function PageContent() {
 
 export default function DoraPage() {
   return (
-    <Layout>
+    <Layout title="智能多媒体服务">
       <PageContent />
     </Layout>
   )

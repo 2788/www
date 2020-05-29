@@ -140,7 +140,7 @@ function PageContent() {
 
 export default function PiliPage() {
   return (
-    <Layout>
+    <Layout title="视频直播">
       <PageContent />
     </Layout>
   )

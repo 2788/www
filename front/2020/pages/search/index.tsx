@@ -127,7 +127,7 @@ export default function SearchPage() {
   )
 
   return (
-    <Layout>
+    <Layout title="搜索">
       <Form keyword={keyword} onSubmit={handleKeywordSubmit} />
       <div className={style.main}>
         <div className={style.left}>

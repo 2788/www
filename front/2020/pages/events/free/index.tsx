@@ -15,7 +15,7 @@ import style from './style.less'
 
 export default function FreePage() {
   return (
-    <Layout>
+    <Layout title="免费云服务套餐">
       <Navigatable>
         <Banner background={imgBanner} pcBackgroundSize="auto 100%" backgroundPosition="right">
           <h1 className={style.bannerTitle}>

@@ -61,7 +61,7 @@ export function Content() {
           <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可体验全方位实时音视频">
+      <UsageGuide title="注册即可体验全方位直播推流 SDK">
         <UsageGuideButton href="TODO">
           免费体验
         </UsageGuideButton>
@@ -72,7 +72,7 @@ export function Content() {
 
 export default function Page() {
   return (
-    <Layout>
+    <Layout title="直播推流 SDK">
       <Content />
     </Layout>
   )

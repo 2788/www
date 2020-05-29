@@ -108,7 +108,7 @@ function PageContent() {
 
 export default function IntroductionPage() {
   return (
-    <Layout>
+    <Layout title="连接数据 重塑价值">
       <PageContent />
     </Layout>
   )

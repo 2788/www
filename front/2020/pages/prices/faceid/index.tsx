@@ -15,7 +15,7 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout>
+    <Layout title="价格 | 人脸核验">
       <Page />
     </Layout>
   )

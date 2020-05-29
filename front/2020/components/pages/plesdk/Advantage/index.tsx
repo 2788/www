@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Card, Row } from 'components/UI/Card'
+import { LayoutCard, Row } from 'components/UI/Card'
 import Section from 'components/Product/Section'
 
 import CpuIcon from './images/cpu.svg'
@@ -48,10 +48,10 @@ function MyCard({ icon, title, desc }: MyCardProps) {
   ))
 
   return (
-    <Card className={style.card}>
+    <LayoutCard className={style.card}>
       <div className={style.icon}>{icon}</div>
       <div className={style.title}>{title}</div>
       {descItems}
-    </Card>
+    </LayoutCard>
   )
 }

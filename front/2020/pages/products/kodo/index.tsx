@@ -99,7 +99,7 @@ function PageContent() {
 
 export default function KodoPage() {
   return (
-    <Layout>
+    <Layout title="对象存储 Kodo">
       <PageContent />
     </Layout>
   )

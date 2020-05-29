@@ -65,7 +65,7 @@ function PageContent() {
 
 export default function VcsPage() {
   return (
-    <Layout>
+    <Layout title="视频冷存储解决方案">
       <PageContent />
     </Layout>
   )

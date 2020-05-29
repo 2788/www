@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import Link from 'components/Link'
 import classnames from 'classnames'
 import Hot from 'components/Hot'
 
@@ -22,13 +22,11 @@ export default function ContentItem(props: ContentItemProps) {
   return (
     <li className={classnames(style.wrapper, disabled && style.disabled)}>
       <Link href={href}>
-        <a>
-          <div className={style.icon}>{icon}</div>
-          <div className={style.desc}>
-            <div className={style.title}>{title} {hotIcon}</div>
-            <div className={style.subtitle}>{subtitle}</div>
-          </div>
-        </a>
+        <div className={style.icon}>{icon}</div>
+        <div className={style.desc}>
+          <div className={style.title}>{title} {hotIcon}</div>
+          <div className={style.subtitle}>{subtitle}</div>
+        </div>
       </Link>
     </li>
   )

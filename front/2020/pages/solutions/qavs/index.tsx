@@ -90,7 +90,7 @@ function PageContent() {
 
 export default function QavsPage() {
   return (
-    <Layout>
+    <Layout title="智能视频云">
       <PageContent />
     </Layout>
   )

@@ -15,7 +15,7 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout>
+    <Layout title="价格 | 内容审核">
       <Page />
     </Layout>
   )

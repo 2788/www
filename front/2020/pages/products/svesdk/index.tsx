@@ -74,7 +74,7 @@ export function Content() {
 
 export default function Page() {
   return (
-    <Layout>
+    <Layout title="短视频特效 SDK">
       <Content />
     </Layout>
   )

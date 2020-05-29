@@ -250,7 +250,7 @@ function PageContent() {
 
 export default function InsightPage() {
   return (
-    <Layout>
+    <Layout title="智能日志管理平台">
       <PageContent />
     </Layout>
   )

@@ -61,7 +61,7 @@ export const nameMap = {
 
 export const urlMap = {
   [Product.Kodo]: '/products/kodo',
-  [Product.Archive]: '/products/kodo', // TODO
+  [Product.Archive]: '/products/kodo#storage_type',
   [Product.Hdfs]: null, // 暂未上线
   [Product.Cdn]: '/products/qcdn',
   [Product.Ssl]: '/products/ssl',

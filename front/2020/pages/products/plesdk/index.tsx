@@ -65,7 +65,7 @@ export function Content() {
 
 export default function Page() {
   return (
-    <Layout>
+    <Layout title="直播特效 SDK">
       <Content />
     </Layout>
   )

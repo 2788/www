@@ -4,13 +4,25 @@
 
 import React, { AnchorHTMLAttributes } from 'react'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 
 export type Props = AnchorHTMLAttributes<HTMLAnchorElement>
 
 export default function Link({ href, ...others }: Props) {
+  const { pathname } = useRouter()
   // 对于 hash 直接走 a 标签，next/link 会干掉 hrefe: hash 点击触发的 hashchange 事件
-  if (href && href[0] === '#') {
-    return <a href={href} {...others} />
+  if (href && href.indexOf('#') > -1) {
+    // 当前页跳转 处于 /kodo 想跳转到 /kodo#target，生成 #target
+    if (href.indexOf(pathname + '#') === 0) {
+      return <a href={'#' + href.split('#')[1]} {...others} />
+    }
+
+    // 不同页跳转 处于 /plsv 想跳转到 /kodo#target，不处理。交给 next/link 单页跳转
+
+    // # 开头
+    if (href[0] === '#') {
+      return <a href={href} {...others} />
+    }
   }
 
   const checked = checkInSite(href)

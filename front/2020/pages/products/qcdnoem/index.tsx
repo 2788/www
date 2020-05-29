@@ -105,7 +105,7 @@ function PageContent() {
 
 export default function CdnOemPage() {
   return (
-    <Layout>
+    <Layout title="CDN OEM">
       <PageContent />
     </Layout>
   )

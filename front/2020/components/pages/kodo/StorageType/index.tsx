@@ -18,7 +18,7 @@ import style from './index.less'
 
 export default function StorageType() {
   return (
-    <Section name="storage" title="存储类型">
+    <Section name="storage_type" title="存储类型">
       <Card
         title="标准存储"
         desc="高可靠、高可用和高性能的对象存储服务"

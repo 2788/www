@@ -15,7 +15,7 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout>
+    <Layout title="价格 | 智能多媒体服务">
       <Page />
     </Layout>
   )

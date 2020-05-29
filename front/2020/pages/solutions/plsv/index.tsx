@@ -80,7 +80,7 @@ function PageContent() {
 
 export default function PlsvPage() {
   return (
-    <Layout>
+    <Layout title="短视频解决方案">
       <PageContent />
     </Layout>
   )

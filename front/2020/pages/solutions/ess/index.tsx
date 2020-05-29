@@ -64,7 +64,7 @@ function PageContent() {
 
 export default function EssPage() {
   return (
-    <Layout>
+    <Layout title="监控视频边缘存储解决方案">
       <PageContent />
     </Layout>
   )

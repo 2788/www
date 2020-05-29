@@ -151,7 +151,7 @@ function PageContent() {
 
 export default function IndexPage() {
   return (
-    <Layout>
+    <Layout title="七牛云">
       <PageContent />
     </Layout>
   )

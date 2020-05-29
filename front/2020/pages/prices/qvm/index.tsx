@@ -17,7 +17,7 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout>
+    <Layout title="价格 | 云主机">
       <Page />
     </Layout>
   )

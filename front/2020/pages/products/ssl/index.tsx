@@ -191,7 +191,7 @@ function PageContent() {
 
 export default function SslPage() {
   return (
-    <Layout>
+    <Layout title="SSL 证书">
       <PageContent />
     </Layout>
   )

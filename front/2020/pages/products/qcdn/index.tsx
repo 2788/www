@@ -180,7 +180,7 @@ function PageContent() {
 
 export default function CdnPage() {
   return (
-    <Layout>
+    <Layout title="CDN">
       <PageContent />
     </Layout>
   )

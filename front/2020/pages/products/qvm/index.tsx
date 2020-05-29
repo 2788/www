@@ -156,7 +156,7 @@ function PageContent() {
 
 export default function QvmPage() {
   return (
-    <Layout>
+    <Layout title="云主机服务 QVM">
       <PageContent />
     </Layout>
   )

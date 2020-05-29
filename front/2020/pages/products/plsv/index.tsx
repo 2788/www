@@ -34,7 +34,7 @@ export default function Page() {
   )
 
   return (
-    <Layout>
+    <Layout title="短视频 SDK">
       <PageBanner
         title="短视频 SDK"
         desc="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
@@ -67,7 +67,7 @@ export default function Page() {
           <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可体验全方位实时音视频">
+      <UsageGuide title="注册即可体验全方位短视频 SDK">
         <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com">
           免费体验
         </UsageGuideButton>

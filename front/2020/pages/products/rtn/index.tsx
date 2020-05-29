@@ -142,7 +142,7 @@ function PageContent() {
 
 export default function RtcPage() {
   return (
-    <Layout>
+    <Layout title="实时音视频">
       <PageContent />
     </Layout>
   )
