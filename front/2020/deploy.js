@@ -78,8 +78,8 @@ async function deploy(config) {
       keys.push(fileName)
     }
 
-    // 每个 fileName 往后延 500ms 以避免 working sockets is full 的问题
-    return new Promise(resolve => setTimeout(resolve, 500 * i)).then(() => Promise.all(keys.map(
+    // 每个 fileName 往后延 1000ms 以避免 working sockets is full 的问题
+    return new Promise(resolve => setTimeout(resolve, 1000 * i)).then(() => Promise.all(keys.map(
       key => uploadFile(filePath, config.bucket, key, mac).then(
         () => console.log(`[UPLOADED] ${key} (${fileName})`)
       )
