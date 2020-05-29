@@ -21,7 +21,7 @@ import ClientIconEricssonURL from './client-icon-ericsson.png'
 
 export default function KodoeClientLogo() {
   return (
-    <CustomerCaseGroup name="client" title="他们都在用七牛" grey>
+    <CustomerCaseGroup name="client" title="他们在用" header="他们都在用七牛">
       <CustomerCase
         pic={(<img src={ClientIconFinupURL} className={styles.icon} title="凡普金科" alt="凡普金科" />)}
       />

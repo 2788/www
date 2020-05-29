@@ -12,7 +12,7 @@ import style from './index.less'
 
 export default function Products() {
   return (
-    <Section name="products" title="热销产品规格">
+    <Section name="products" title="产品规格" header="热销产品规格">
       <Card
         title="DV 个人免费证书"
         detailLink="/prices?entry=kodo-page"

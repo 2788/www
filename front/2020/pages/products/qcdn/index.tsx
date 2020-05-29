@@ -79,7 +79,7 @@ function PageContent() {
 
       <Coverage />
 
-      <Feature grey name="core" title="核心功能及服务">
+      <Feature grey name="core" title="核心功能" header="核心功能及服务">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
