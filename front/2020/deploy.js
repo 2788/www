@@ -61,7 +61,7 @@ async function deploy(config) {
   const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
   const outputFiles = await getAllFiles(config.outputPath)
 
-  return Promise.all(outputFiles.map(fileName => {
+  return Promise.all(outputFiles.map((fileName, i) => {
     const filePath = path.resolve(config.outputPath, fileName)
 
     // 对于文件 `foo/index.html` 或 `foo.html`，分别以 `foo`、`foo/` & `foo/index.html` 作为 key 上传
@@ -78,11 +78,12 @@ async function deploy(config) {
       keys.push(fileName)
     }
 
-    return Promise.all(keys.map(
+    // 每个 fileName 往后延 500ms 以避免 working sockets is full 的问题
+    return new Promise(resolve => setTimeout(resolve, 500 * i)).then(() => Promise.all(keys.map(
       key => uploadFile(filePath, config.bucket, key, mac).then(
         () => console.log(`[UPLOADED] ${key} (${fileName})`)
       )
-    ))
+    )))
   }))
 }
 
