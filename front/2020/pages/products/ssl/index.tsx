@@ -73,7 +73,7 @@ function PageContent() {
         {btns.nav}
       </Navigator>
 
-      <Feature name="features" title="产品功能" header="使用SSL 证书，提升网站安全性和品牌形象">
+      <Feature name="features" title="产品功能" header="使用 SSL 证书，提升网站安全性和品牌形象">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
