@@ -16,7 +16,7 @@ import style from './style.less'
 
 export default function FeedbackEntry() {
   const isMobile = useMobile()
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState<boolean | null>(null)
   const { toggleModal: toggleGlobalModal } = useGlobalModal()
 
   const toggleModal = useCallback(() => {
@@ -39,9 +39,13 @@ export default function FeedbackEntry() {
     modalVisible ? style.btnClose : style.btnSmile
   )
 
+  const formModalView = modalVisible != null && (
+    <FormModal visible={modalVisible} />
+  )
+
   return (
     <div ref={wrapperRef} className={style.wrapper}>
-      <FormModal visible={modalVisible} />
+      {formModalView}
       <div className={style.entryWrapper}>
         <Button className={btnClassName} onClick={toggleModal}>
           <IconClose className={style.iconClose} />
