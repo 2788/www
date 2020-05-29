@@ -28,6 +28,8 @@ import YellowIdIcon from './_images/feature-yellow-identification.svg'
 
 import imgBanner from './_images/banner.png'
 
+import style from './index.less'
+
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
@@ -63,9 +65,10 @@ function PageContent() {
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
-            align="center"
+            align="left"
             icon={<ServerSideMergeIcon />}
             title="服务端合流"
+            className={style.feature}
           >
             <FeatureDesc>解决主流混流方案的上下行带宽瓶颈问题和编解码问题，降低计算资源和网络带宽成本</FeatureDesc>
           </FeatureItem>
@@ -74,6 +77,7 @@ function PageContent() {
             align="left"
             icon={<SideWayIcon />}
             title="旁路直播"
+            className={style.feature}
           >
             <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看</FeatureDesc>
           </FeatureItem>
@@ -82,6 +86,7 @@ function PageContent() {
             align="left"
             icon={<RealtimeRecordIcon />}
             title="实时录制"
+            className={style.feature}
           >
             <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看</FeatureDesc>
           </FeatureItem>
@@ -93,6 +98,7 @@ function PageContent() {
             align="left"
             icon={<PersonalManagementIcon />}
             title="个性化管理"
+            className={style.feature}
           >
             <FeatureDesc>支持动态邀人、踢人、禁音等多种管理权限，使聊天互动更加有序</FeatureDesc>
           </FeatureItem>
@@ -101,6 +107,7 @@ function PageContent() {
             align="left"
             icon={<RichMediaIcon />}
             title="智能富媒体处理"
+            className={style.feature}
           >
             <FeatureDesc>提供水印、音视频转码、切片和拼接等基础的数据处理服务及自定义数据处理服务，满足各类音视频互动场景</FeatureDesc>
           </FeatureItem>
@@ -109,6 +116,7 @@ function PageContent() {
             align="left"
             icon={<YellowIdIcon />}
             title="鉴黄鉴暴恐"
+            className={style.feature}
           >
             <FeatureDesc>云端实现黄暴恐图自动鉴别，有效规避涉黄、涉暴恐、涉政风险，让平台更安全稳定地运营</FeatureDesc>
           </FeatureItem>

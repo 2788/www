@@ -11,17 +11,18 @@
   .bannerContent {
     .centered();
 
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    height: 100%;
+    padding-top: 83px;
     color: @grey-1;
     background-position: right 164px center;
     background-size: 200px;
     background-repeat: no-repeat;
 
     .mobile({
-      padding: 40px 16px;
+      justify-content: center;
+      padding: 0 16px;
       background-size: 84px;
       background-position: right 30px center;
     });

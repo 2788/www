@@ -71,7 +71,7 @@ function PageContent() {
         </section>
       </Section>
 
-      <Feature grey name="advantages" title="功能与优势">
+      <Feature grey name="culture" title="七牛文化">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"

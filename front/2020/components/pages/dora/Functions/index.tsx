@@ -48,11 +48,11 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
   }
 
   return (
-    <Link className={styles.sceneCard} href={link}>
+    <div className={styles.sceneCard} >
       <h5 className={styles.title}>{title}</h5>
-      {linkText && <span className={styles.link}>{linkText} &gt;&gt;</span>}
+      {linkText && <Link className={styles.link} href={link}>{linkText} &gt;&gt;</Link>}
       <p className={styles.content}>{content}</p>
-    </Link>
+    </div>
   )
 }
 
