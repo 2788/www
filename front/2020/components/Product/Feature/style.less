@@ -82,15 +82,12 @@
 
       &:before {
         content: "";
-        width: 4px;
-        height: 10px;
+        .background-image(url(./check.svg));
+        width: 16px;
+        height: 16px;
         position: absolute;
         top: 4px;
-        left: 4px;
-        border-color: @blue-6;
-        border-style: solid;
-        border-width: 0 2px 2px 0;
-        transform: rotate(45deg);
+        left: 0;
       }
     }
 
@@ -103,9 +100,10 @@
         height: 10px;
         position: absolute;
         top: 6px;
-        left: 0px;
+        left: 0;
         border-radius: 50%;
         background-color: @blue-6;
+        opacity: 0.4;
       }
     }
   }

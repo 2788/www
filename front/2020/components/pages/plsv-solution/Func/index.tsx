@@ -34,7 +34,6 @@ export default function PlsvFunc() {
       {renderMain()}
       <UIButton
         className={styles.link}
-        key="more"
         href="https://developer.qiniu.com/pili/sdk/3731/short-video"
       >
         查看更多<ArrowIcon className={styles.arrow} />

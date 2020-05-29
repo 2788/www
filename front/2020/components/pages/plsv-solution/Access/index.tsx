@@ -8,7 +8,6 @@ import React from 'react'
 
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
-import UIButton from 'components/UI/Button'
 
 import AccessIconOne from './access-icon-one.svg'
 import AccessIconTwo from './access-icon-two.svg'
@@ -41,12 +40,9 @@ export default function PlsvAccess() {
         </Step>
       </AccessProcess>
       <div className={styles.linkWrapper}>
-        <UIButton
-          className={styles.link}
-          onClick={handleConsult}
-        >
+        <a className={styles.link} onClick={handleConsult}>
           立即咨询<ArrowIcon className={styles.arrow} />
-        </UIButton>
+        </a>
       </div>
     </>
   )
