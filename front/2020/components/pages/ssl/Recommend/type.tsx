@@ -107,6 +107,16 @@ enum CertType {
   DvWildcard = 'dv_wildcard'
 }
 
+export const certTypeTipMap = {
+  [CertType.Ov]: '对域名所有权和企业身份信息进行验证，浏览器上有 HTTPS 提示并有绿锁标记',
+  [CertType.OvPro]: '对域名所有权和企业身份信息进行验证，浏览器上有 HTTPS 提示并有绿锁标记',
+  [CertType.Ev]: '对域名所有权和企业身份信息进行验证，同时会审查第三方数据库如 114 查号台等，浏览器上有 HTTPS 提示并显示完整的单位名称',
+  [CertType.EvPro]: '对域名所有权和企业身份信息进行验证，同时会审查第三方数据库如 114 查号台等，浏览器上有 HTTPS 提示并显示完整的单位名称',
+  [CertType.DvWildcard]: '仅对域名所有权进行验证，浏览器上有 HTTPS 提示并有绿锁标记',
+  [CertType.DvFree]: '仅对域名所有权进行验证，浏览器上有 HTTPS 提示并有绿锁标记',
+  [CertType.Dv]: '仅对域名所有权进行验证，浏览器上有 HTTPS 提示并有绿锁标记'
+}
+
 export const certTypeTextMap = {
   [CertType.Ov]: 'OV',
   [CertType.OvPro]: 'OV Pro',

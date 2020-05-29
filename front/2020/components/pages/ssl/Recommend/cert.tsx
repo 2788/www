@@ -2,7 +2,7 @@ import React from 'react'
 
 import UIButton from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
-import { CertInfo, ChooseInfo, certList, certTypeTextMap, domainTypeNameMap, CertBrand, DisplayType } from './type'
+import { CertInfo, ChooseInfo, certList, certTypeTextMap, domainTypeNameMap, CertBrand, DisplayType, certTypeTipMap } from './type'
 
 import GeoTrustImg from './images/GeoTrust.png'
 import TrustAsianImg from './images/TrustAsian.png'
@@ -46,29 +46,32 @@ export function RecommendCert(cert: RecommendCertProps) {
   const isMobile = useMobile()
   const chooseInfo = cert && cert.chooseInfo
   return cert && (
-    <div className={styles.cert}>
-      <span className={styles.info}>
-        <span className={styles.name}>
-          <img className={styles.brand} src={brandImgUrlMap[cert.brand]} />
-          {cert.brand}&nbsp;
-          {certTypeTextMap[cert.type]}&nbsp;
-          {chooseInfo && chooseInfo.domainType != null && domainTypeNameMap[chooseInfo.domainType]}
+    <>
+      <div className={styles.cert}>
+        <span className={styles.info}>
+          <span className={styles.name}>
+            <img className={styles.brand} src={brandImgUrlMap[cert.brand]} />
+            {cert.brand}&nbsp;
+            {certTypeTextMap[cert.type]}&nbsp;
+            {chooseInfo && chooseInfo.domainType != null && domainTypeNameMap[chooseInfo.domainType]}
+          </span>
+          {
+            chooseInfo && (
+              <span className={styles.demo}>
+                {chooseInfo.displayType != null && demoImgUrlMap[chooseInfo.displayType]}
+              </span>
+            )
+          }
         </span>
-        {
-          chooseInfo && (
-            <span className={styles.demo}>
-              {chooseInfo.displayType != null && demoImgUrlMap[chooseInfo.displayType]}
-            </span>
-          )
-        }
-      </span>
-      <span>
-        <span className={styles.price}>{cert.price}</span>
-        <span className={styles.unit}>{cert.unit}</span>
-        {
-          !isMobile && <UIButton href="https://portal.qiniu.com/certificate/apply" type="primary">立即购买</UIButton>
-        }
-      </span>
-    </div>
+        <span>
+          <span className={styles.price}>{cert.price}</span>
+          <span className={styles.unit}>{cert.unit}</span>
+          {
+            !isMobile && <UIButton href="https://portal.qiniu.com/certificate/apply" type="primary">立即购买</UIButton>
+          }
+        </span>
+      </div>
+      { chooseInfo && <div className={styles.tip}>{certTypeTipMap[cert.type]}</div> }
+    </>
   )
 }
