@@ -45,7 +45,7 @@ function PageContent() {
     <>
       <PageBanner
         title="智能多媒体服务"
-        desc="智能多媒体服务（DORA），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
+        desc="智能多媒体服务（Dora），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={imgBanner} />
@@ -61,7 +61,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/TODO">
+      <Navigator priceLink="/prices/dora">
         {btns.nav}
       </Navigator>
 

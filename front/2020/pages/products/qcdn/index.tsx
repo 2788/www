@@ -73,7 +73,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/TODO">
+      <Navigator priceLink="/prices/qcdn">
         {btns.nav}
       </Navigator>
 

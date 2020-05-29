@@ -1,8 +1,8 @@
 @import '~utils/less/index.less';
 
-@card-height: 112px;
+@card-height: 100px;
 @card-width: 276px;
-@card-padding: 30px 20px;
+@card-padding: 26px 20px;
 @card-space: 24px;
 
 @mobile-card-height: 64px;
@@ -40,7 +40,13 @@
       border-radius:4px;
       border:1px solid rgba(238,238,238,1);
       cursor: pointer;
-  
+      transition-property: transform;
+      transition-duration: .3s;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
       .mobile({
         margin: 0;
         padding: @mobile-card-padding;
@@ -92,6 +98,10 @@
           color: @grey-7;
           max-width: 200px;
           line-height: 20px;
+
+          &:hover {
+            color: @blue-6;
+          }
         }
       
         .desc {

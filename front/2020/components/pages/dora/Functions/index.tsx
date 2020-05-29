@@ -202,21 +202,18 @@ export default function DoraFuctions() {
           <SceneCard
             title="高帧率重制服务"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="对于 30 帧/秒以内的普通帧率高清节目，生成 60 帧/秒的高帧率版本，消除在播放中的顿挫感。"
           />
           <SceneCard
             title="超高清重制服务"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="使用超分辨率、HDR、噪音抑制等技术，将标清的影片重置为高清版本和将 1080p 影片重制为 4K 版本，提供极致清晰的视频观感。"
           />
           <SceneCard
             title="受损片源修复"
             linkText="立即申请"
-            // todo
             link="#feedback-modal"
             content="针对被过度压缩的网络视频，去除画面中的毛刺和马赛克，生成更高清晰度的修复重制版。"
           />

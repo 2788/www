@@ -66,7 +66,7 @@ export function RecommendCert(cert: RecommendCertProps) {
         <span className={styles.price}>{cert.price}</span>
         <span className={styles.unit}>{cert.unit}</span>
         {
-          !isMobile && <UIButton type="primary">立即购买</UIButton>
+          !isMobile && <UIButton href="https://portal.qiniu.com/certificate/apply" type="primary">立即购买</UIButton>
         }
       </span>
     </div>

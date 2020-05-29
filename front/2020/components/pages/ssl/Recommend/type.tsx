@@ -83,7 +83,6 @@ export const defaultChooseInfo = {
 
 export interface CertInfo {
   icon?: ReactNode
-  // name: string
   brand: CertBrand
   type: CertType
   price: number
@@ -118,6 +117,7 @@ export const certTypeTextMap = {
   [CertType.Dv]: 'DV'
 }
 
+// todo 从接口获取
 export const certList: CertInfo[] = [
   // 个人网站
   {

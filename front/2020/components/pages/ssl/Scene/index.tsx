@@ -23,7 +23,6 @@ import Scene5Img from './images/scene5.svg'
 import styles from './style.less'
 
 export default function SslScene() {
-  // todo： 修改推荐证书
   return (
     <Scene name="scene" title="行业场景">
       <ScenePanel name="scene-tab-1" title="企业网站" verticalCenter>

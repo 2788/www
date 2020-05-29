@@ -47,10 +47,9 @@ import imgBanner from './_images/banner.png'
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
-
   const btns = useBtns(
-    // TODO: 按钮点击行为
-    { href: '/products/ssl', children: '立即使用' }
+    { href: 'https://portal.qiniu.com/ssl', children: '立即使用', pcOnly: true },
+    { href: '/prices/ssl', children: '价格' }
   )
 
   return (
@@ -70,7 +69,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/TODO">
+      <Navigator priceLink="/prices/ssl">
         {btns.nav}
       </Navigator>
 

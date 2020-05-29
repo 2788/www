@@ -50,7 +50,7 @@ export default function DoraCore() {
         >
           <FeatureDesc>
             <DescItem>成熟完善 SDK 和 API ，调用方式简单，缩短产品开发运维时间</DescItem>
-            <DescItem>专业服务团队 7X24 小时服务</DescItem>
+            <DescItem>专业服务团队 7 * 24 小时服务</DescItem>
           </FeatureDesc>
         </FeatureItem>
         <FeatureItem

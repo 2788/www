@@ -17,6 +17,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
+import { useModal as useFeedbackModal } from 'components/Feedback'
 
 import ServerSideMergeIcon from './_images/feature-serverside-merge.svg'
 import RealtimeRecordIcon from './_images/feature-realtime-record.svg'
@@ -31,11 +32,16 @@ import imgBanner from './_images/banner.png'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
+  const { showModal } = useFeedbackModal()
+
+  function handleConsult() {
+    showModal()
+  }
+
   const btns = useBtns(
-    // TODO: 这边的按钮点击行为
-    { href: '/products/rtc', children: '免费使用' },
-    { href: '/products/rtc', children: '立即咨询' },
-    { href: '/products/rtc', children: '在线体验' }
+    { href: 'https://portal.qiniu.com/rtn/rtc/report/duration', children: '免费使用', pcOnly: true },
+    { onClick: handleConsult, children: '立即咨询' },
+    { href: 'https://demo-rtc.qnsdk.com/', children: '在线体验' }
   )
 
   return (
@@ -47,7 +53,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <Navigator priceLink="/TODO">
+      <Navigator priceLink="/prices/rtn">
         {btns.nav}
       </Navigator>
 

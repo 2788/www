@@ -30,7 +30,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={hangzhou} />
           <Title className={style.title}>杭州分部</Title>
-          <Desc className={style.desc}>浙江省杭州市下城区上塘路 15 号武林时代商务中心 21 楼 04 - 06 室</Desc>
+          <Desc className={style.desc}>浙江省杭州市下城区上塘路 15 号武林时代商务中心 21 楼</Desc>
         </LayoutCard>
       </Row>
       <Row>
@@ -47,7 +47,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={chengdu} />
           <Title className={style.title}>成都分部</Title>
-          <Desc className={style.desc}>四川省成都市高新区天府大道 666 号希顿国际 C 座 2504 室</Desc>
+          <Desc className={style.desc}>四川省成都市高新区希顿国际 C 座 2504 室</Desc>
         </LayoutCard>
       </Row>
       <Row>
@@ -59,7 +59,7 @@ export default function Distribution() {
         <LayoutCard className={style.card}>
           <Img className={style.image} src={xiamen} />
           <Title className={style.title}>厦门分部</Title>
-          <Desc className={style.desc}>福建省厦门市思明区软件园二期望海路 12 号楼 3 单元 211 室</Desc>
+          <Desc className={style.desc}>福建省厦门市思明区软件园二期望海路 12 号 3 单元 211 室</Desc>
         </LayoutCard>
       </Row>
     </Section>

@@ -77,15 +77,15 @@ interface CardProps {
 
 export function Card({ icon, title, href, children }: PropsWithChildren<CardProps>) {
   return (
-    <Link href={href}>
-      <UICard className={styles.card}>
+    <UICard className={styles.card}>
+      <Link href={href} >
         {icon}
         <UIContent className={styles.content}>
           <UITitle className={styles.title}>{title}</UITitle>
           <UIDesc className={styles.desc}>{children}</UIDesc>
         </UIContent>
-      </UICard>
-    </Link>
+      </Link>
+    </UICard>
   )
 }
 
@@ -137,19 +137,15 @@ export function Pane({ title, desc, active, pageNo, cards, footer }: PaneProps) 
         {pageNo}
       </div>
       <div className={styles.right}>
-        <QueueAnim delay={200}>
+        <QueueAnim type={['bottom', 'top']}>
           {active ? cards : null}
         </QueueAnim>
       </div>
-      {
-        footer && footer.length > 0 && (
-          <div className={styles.footer}>
-            <QueueAnim type={['bottom', 'top']} >
-              {active ? footer : null}
-            </QueueAnim>
-          </div>
-        )
-      }
+      <div className={styles.footer}>
+        <QueueAnim type={['bottom', 'top']} >
+          {active ? footer : null}
+        </QueueAnim>
+      </div>
     </div>
   )
 }

@@ -19,13 +19,11 @@ import Scene4Icon from './images/应用场景-在线教育.png'
 import styles from './style.less'
 
 export default function DoraScene() {
-  // todo 更新文案
   return (
     <Scene name="scene" title="应用场景">
       <ScenePanel name="scene-tab-1" title="社交电商" verticalCenter>
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene1Icon} />
-          {/* <SceneIconFile className={styles.sceneIcon} /> */}
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer}>
           <p className={styles.sceneTitle}>社交电商</p>

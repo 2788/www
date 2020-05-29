@@ -21,7 +21,7 @@ export default function Collaborate() {
         </Card>
         <Card className={style.card}>
           <CardIcon><PhoneIcon /></CardIcon>
-          <CardTitle title="售后服务" subtitle="提供 7*24 小时技术支持服务" />
+          <CardTitle title="售后服务" subtitle="提供 7 * 24 小时技术支持服务" />
           <CardItem title="工单系统" link="https://support.qiniu.com/tickets/category?ref=www.qiniu.com">访问工单系统</CardItem>
           <CardItem title="联系电话" link="tel:400-808-9176">400-808-9176 转 2</CardItem>
         </Card>
