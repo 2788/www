@@ -69,6 +69,15 @@
         width: 100%;
         height: auto;
       });
+
+      &.disabled > .content {
+        .title {
+          color: @grey-5;
+        }
+        .desc {
+          color: @grey-5;
+        }
+      }
   
       .icon {
         display: inline-block;
@@ -133,7 +142,6 @@
       text-align: left;
       padding: 10px 16px;
       background: #FAFAFA;
-      // border-bottom: 1px solid @grey-5;
       &:after {
         content: '';
         display: block;

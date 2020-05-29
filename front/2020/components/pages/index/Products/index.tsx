@@ -1,5 +1,6 @@
 import React, { ReactNode, PropsWithChildren, useState } from 'react'
 import QueueAnim from 'rc-queue-anim'
+import classnames from 'classnames'
 
 import { useMobile } from 'hooks/ua'
 import Section from 'components/pages/index/Section'
@@ -21,9 +22,21 @@ interface CardProps {
   icon: ReactNode
   title: string
   href?: string
+  disabled?: boolean
 }
 
-function Card({ icon, title, href, children }: PropsWithChildren<CardProps>) {
+function Card({ icon, title, href, disabled, children }: PropsWithChildren<CardProps>) {
+  if (!href) {
+    return (
+      <UICard className={classnames(styles.card, disabled && styles.disabled)}>
+        {icon}
+        <Content className={styles.content}>
+          <Title className={styles.title}>{title}</Title>
+          <Desc className={styles.desc}>{children}</Desc>
+        </Content>
+      </UICard>
+    )
+  }
   return (
     <Link href={href}>
       <UICard className={styles.card}>
@@ -242,10 +255,11 @@ export function ProductsForPc() {
               可定制化的数百 EB 级别、高可靠、强安全的存储系统
             </Card>
             <Card
-              key="4"
+              key="3"
               icon={<ProductIcon className={styles.icon} product={Product.Hdfs} />}
               title={nameMap[Product.Hdfs]}
               href={urlMap[Product.Hdfs] || undefined}
+              disabled
             >
               正在建设，敬请期待
             </Card>
@@ -340,7 +354,7 @@ export function ProductsForPc() {
               基于 WebRTC 的一站式解决方案，零基础搭建音视频平台
             </Card>
             <Card
-              key="5"
+              key="6"
               icon={<ProductIcon className={styles.icon} product={Product.FaceID} />}
               title={nameMap[Product.FaceID]}
               href={urlMap[Product.FaceID]}
