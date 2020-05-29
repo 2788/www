@@ -45,7 +45,7 @@ export default function InvitePage() {
   return (
     <Layout title="邀请有礼活动">
       <Navigatable>
-        <Banner className={style.banner} background={imgBanner}>
+        <Banner className={style.banner} background={imgBanner} pcBackgroundSize="auto 100%">
           <banner.Title className={style.title}>
             <IconTitle />
           </banner.Title>
