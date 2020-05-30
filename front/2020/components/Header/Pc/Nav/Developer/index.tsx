@@ -1,17 +1,9 @@
-import React, { useRef } from 'react'
-import Dropdown from 'components/UI/Dropdown'
+import React from 'react'
 import Overlay from './Overlay'
+import { ItemWithOverlay } from '..'
 
 export default function Developer() {
-  const ref = useRef(null)
-
   return (
-    <Dropdown
-      align={{ offset: [0, -1] }}
-      getPopupContainer={() => ref.current || window.document.body}
-      overlay={() => <Overlay />}
-    >
-      <a ref={ref}>开发者</a>
-    </Dropdown>
+    <ItemWithOverlay overlay={<Overlay />}>开发者</ItemWithOverlay>
   )
 }

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { PropsWithChildren, ReactElement, useRef } from 'react'
 import classnames from 'classnames'
 import { useRouter } from 'next/router'
+import Dropdown from 'components/UI/Dropdown'
 import Link from 'components/Link'
 
 import Product from './Product'
@@ -11,17 +12,50 @@ import Project from './Project'
 import Activity from './Activity'
 
 export default function Nav() {
-  const { pathname } = useRouter()
-
   return (
     <nav className={style.nav}>
       <Product />
       <Project />
-      <Link href="/case" className={classnames(pathname === '/case' && 'active')}>客户</Link>
+      <ItemWithLink href="/case">客户</ItemWithLink>
       <Support />
       <Activity />
-      <Link href="https://blog.qiniu.com/">七牛资讯</Link>
+      <ItemWithLink href="https://blog.qiniu.com/">七牛资讯</ItemWithLink>
       <About />
     </nav>
+  )
+}
+
+type ItemWithOverlayProps = PropsWithChildren<{
+  overlay: ReactElement
+  overlayOffsetX?: number
+}>
+
+export function ItemWithOverlay({ overlay, overlayOffsetX, children }: ItemWithOverlayProps) {
+  const offsetX = overlayOffsetX != null ? overlayOffsetX : 0
+  const ref = useRef(null)
+  return (
+    <div ref={ref} className={style.item}>
+      <Dropdown
+        align={{ offset: [offsetX, -1] }}
+        getPopupContainer={() => ref.current || window.document.body}
+        overlay={overlay}
+      >
+        <a className={style.itemText}>{children}</a>
+      </Dropdown>
+    </div>
+  )
+}
+
+type ItemLinkProps = PropsWithChildren<{
+  href: string
+}>
+
+export function ItemWithLink({ href, children }: ItemLinkProps) {
+  const { pathname } = useRouter()
+  const linkClassName = classnames(style.itemText, href === pathname && style.active)
+  return (
+    <div className={style.item}>
+      <Link href={href} className={linkClassName}>{children}</Link>
+    </div>
   )
 }

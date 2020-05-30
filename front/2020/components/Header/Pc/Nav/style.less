@@ -1,17 +1,24 @@
 @import '~utils/less/index.less';
 @import '../style.less';
 
-nav {
+.nav {
   display: inline-block;
+  display: flex;
+  flex: 1 1 auto;
 
-  > a {
+  .item {
+    flex: 1 1 auto;
+  }
+
+  .itemText {
     position: relative;
-    display: inline-block;
+    display: block;
     padding: 0 18px;
     height: @header-height;
     color: @grey-7;
     line-height: @header-height;
     user-select: none;
+    white-space: nowrap; // safari 上 28px 放不下两个 14px 的字= =
 
     &:after {
       content: '';

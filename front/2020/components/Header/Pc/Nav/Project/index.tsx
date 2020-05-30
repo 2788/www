@@ -7,19 +7,12 @@
  * Copyright (c) 2020 Qiniu
  */
 
-import React, { useRef } from 'react'
-import Dropdown from 'components/UI/Dropdown'
+import React from 'react'
 import Overlay from './Overlay'
+import { ItemWithOverlay } from '..'
 
 export default function Project() {
-  const ref = useRef(null)
   return (
-    <Dropdown
-      align={{ offset: [-134, -1] }}
-      getPopupContainer={() => ref.current || window.document.body}
-      overlay={() => <Overlay />}
-    >
-      <a ref={ref}>方案</a>
-    </Dropdown>
+    <ItemWithOverlay overlay={<Overlay />} overlayOffsetX={-134}>方案</ItemWithOverlay>
   )
 }
