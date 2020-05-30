@@ -174,7 +174,7 @@ function ProductsForMobile() {
             title={nameMap[Product.Censor]}
             href={urlMap[Product.Censor]}
           >
-            七牛云人工智能实验室提供的一站式内容审核服务
+            提供图片、视频等内容的审核服务，精准识别过滤色情、暴恐、敏感人物等违规内容
           </MenuItem>
           <MenuItem
             title={nameMap[Product.Rtn]}
@@ -236,7 +236,8 @@ export function ProductsForPc() {
     <>
       <Tabs defaultValue="1" onChange={onTabChange}>
         <TabPane value="1" tab={<span className={styles.tab}><TabStorageIcon />存储与数据湖</span>} className={styles.pane}>
-          <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div>
+          {/* 目前缺少合适的文案，先藏起来 */}
+          {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
           <Anim active={activeKey === '1'}>
             <Card
               key="1"
@@ -266,7 +267,7 @@ export function ProductsForPc() {
           </Anim>
         </TabPane>
         <TabPane value="2" tab={<span className={styles.tab}><TabServiceIcon />基础服务</span>} className={styles.pane}>
-          <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div>
+          {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
           <Anim active={activeKey === '2'}>
             <Card
               key="1"
@@ -311,7 +312,7 @@ export function ProductsForPc() {
           </Anim>
         </TabPane>
         <TabPane value="3" tab={<span className={styles.tab}><TabVideoIcon />智能视频</span>} className={styles.pane}>
-          <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div>
+          {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
           <Anim active={activeKey === '3'}>
             <Card
               key="1"
@@ -327,7 +328,7 @@ export function ProductsForPc() {
               title={nameMap[Product.Censor]}
               href={urlMap[Product.Censor]}
             >
-              七牛云人工智能实验室提供的一站式内容审核服务
+              提供图片、视频等内容的审核服务，精准识别过滤色情、暴恐、敏感人物等违规内容
             </Card>
             <Card
               key="3"
@@ -364,7 +365,7 @@ export function ProductsForPc() {
           </Anim>
         </TabPane>
         <TabPane value="4" tab={<span className={styles.tab}><TabIntelligenceIcon />机器数据智能</span>} className={styles.pane}>
-          <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div>
+          {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
           <Anim active={activeKey === '4'}>
             <Card
               key="1"
