@@ -3,8 +3,10 @@
  * @description 接口文档 https://cf.qiniu.io/pages/viewpage.action?pageId=43394609
  */
 
+import { endsWith } from 'lodash'
 import { siteNameForSearch as site } from 'constants/env'
 import { apiHost } from 'constants/api'
+import { titleSuffix } from 'constants/page'
 import { timeout } from 'utils'
 import { get } from 'utils/fetch'
 
@@ -111,7 +113,13 @@ export async function getHotKeywords(): Promise<HotKeywordsResult> {
 /** 获取联想词 */
 export async function getSuggestions(keyword: string) {
   const searched = await search({ keyword, in: SearchIn.Title, limit: 5 })
-  return searched.items.map(item => stripTag(item.title))
+  return searched.items.map(item => {
+    let suggestion = stripTag(item.title)
+    if (endsWith(suggestion, titleSuffix)) {
+      suggestion = suggestion.slice(0, -titleSuffix.length)
+    }
+    return suggestion
+  })
 }
 
 // 移除文本内容中的 HTML 标签

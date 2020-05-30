@@ -5,6 +5,7 @@
 
 import React, { ReactNode, useState, useEffect } from 'react'
 import Head from 'next/head'
+import { defaultTitle, titleSuffix } from 'constants/page'
 import { UaContext, useUa } from 'hooks/ua'
 
 import Header from '../Header'
@@ -15,9 +16,6 @@ export type Props = {
   title?: string
   children: ReactNode
 }
-
-const defaultTitle = '七牛云 - 国内领先的企业级云服务商'
-const titleSuffix = ' - 七牛云'
 
 export default function Layout({ children, title }: Props) {
   title = (
