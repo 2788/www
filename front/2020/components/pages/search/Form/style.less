@@ -1,4 +1,5 @@
 @import '~utils/less/index.less';
+@import '~components/UI/Button/style.less';
 
 @blue: @blue-6;
 @white: @grey-1;
@@ -48,17 +49,6 @@
     });
   }
 
-  .sep {
-    margin-left: 1px;
-    width: 1px;
-    height: 12px;
-    background-color: @white;
-
-    .mobile({
-      display: none;
-    });
-  }
-
   .input, .submitBtn {
     font-size: 14px;
     &:focus {
@@ -87,12 +77,15 @@
   }
 
   .submitBtn {
+    .withColor(
+      @blue-6, @grey-1, @grey-1,
+      @blue-6, #F2F2F2, #F2F2F2,
+      @grey-4, #F2F2F2, #F2F2F2
+    );
+
     flex: 0 0 auto;
     padding: 8px 24px;
     cursor: pointer;
-    color: @blue;
-    background: @white;
-    border: none;
     border-radius: 0 2px 2px 0;
 
     .mobile({

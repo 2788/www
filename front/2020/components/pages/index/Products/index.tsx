@@ -56,10 +56,7 @@ interface AnimProps {
 
 function Anim({ active, children }: PropsWithChildren<AnimProps>) {
   return (
-    <QueueAnim
-      delay={200}
-      ease="easeInOutCubic"
-    >
+    <QueueAnim ease="easeInOutCubic">
       {
         active
         ? children

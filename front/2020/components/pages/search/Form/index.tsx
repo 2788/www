@@ -48,6 +48,10 @@ export default function SearchForm({ keyword, onSubmit }: Props) {
     setTimeout(() => setSuggestionVisible(false), 100)
   }
 
+  function handleKeywordFocus() {
+    setSuggestionVisible(!!keywordInput)
+  }
+
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setSuggestionVisible(false)
@@ -71,7 +75,6 @@ export default function SearchForm({ keyword, onSubmit }: Props) {
             autoComplete="off"
           >
             <IconSearch className={style.icon} />
-            <div className={style.sep}></div>
             <input
               type="text"
               name="keyword"
@@ -79,6 +82,7 @@ export default function SearchForm({ keyword, onSubmit }: Props) {
               placeholder="请输入要搜索的关键词"
               value={keywordInput}
               onChange={handleKeywordChange}
+              onFocus={handleKeywordFocus}
               onBlur={handleKeywordBlur}
             />
             <button type="submit" className={style.submitBtn}>搜索</button>

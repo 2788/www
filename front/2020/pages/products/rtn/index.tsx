@@ -61,7 +61,7 @@ function PageContent() {
 
       <AcceleratedNetwork />
 
-      <Feature name="feature" title="特色功能" grey>
+      <Feature name="feature" title="特色功能">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"

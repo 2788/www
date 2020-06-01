@@ -22,7 +22,7 @@ import AccessStep2 from './_images/accessstep2.svg'
 import AccessStep3 from './_images/accessstep3.svg'
 import AccessStep4 from './_images/accessstep4.svg'
 
-import BannerIcon from './_images/bannerIcon.svg'
+import imgBanner from './_images/banner.png'
 import SiteCustomize from './_images/sitecustomize.svg'
 import FullSceneCoverage from './_images/fullscenecoverage.svg'
 import HighQualityLine from './_images/highqualityline.svg'
@@ -49,7 +49,7 @@ function PageContent() {
         desc="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
         bgColor="#34A1EC"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={imgBanner} />
 
       <Navigator>
         {btns.nav}

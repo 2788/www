@@ -73,6 +73,9 @@
       &.disabled > .content {
         .title {
           color: @grey-5;
+          &:hover {
+            color: @grey-5;
+          }
         }
         .desc {
           color: @grey-5;
@@ -102,6 +105,11 @@
           display: block;
           font-size: 16px;
           color: black;
+          transition: color 0.25s;
+
+          &:hover {
+            color: @blue-6;
+          }
         }
       
         .desc {

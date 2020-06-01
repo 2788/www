@@ -20,7 +20,7 @@ export default function Packages() {
         capacity="500 GB"
         categoryDesc="每月发放 20 GB，连续发放 5 个月"
         price="7.7"
-        detailLink="/prices/qcdn?entry=kodo-page"
+        detailLink="/prices/cdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -30,7 +30,7 @@ export default function Packages() {
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="98"
-        detailLink="/prices/qcdn?entry=kodo-page"
+        detailLink="/prices/cdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -40,7 +40,7 @@ export default function Packages() {
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
         price="193"
-        detailLink="/prices/qcdn?entry=kodo-page"
+        detailLink="/prices/cdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -50,7 +50,7 @@ export default function Packages() {
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
         price="942"
-        detailLink="/prices/qcdn?entry=kodo-page"
+        detailLink="/prices/cdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
     </Section>

@@ -22,19 +22,24 @@ const createTicketLinkView = (
   <a target="_blank" rel="noopener" href="https://support.qiniu.com/tickets/new">提交工单</a>
 )
 
+const consultLinkView = (
+  <MessageLink message={startConsultingMessage}>{startConsultingMessage}</MessageLink>
+)
+
 const initialMessage = makeMessage(
   <>
     <p>欢迎来到七牛，非常高兴为您服务！</p>
     <p style={{ marginTop: '8px' }}>售后问题：{createTicketLinkView}</p>
-    <p style={{ marginTop: '4px' }}>咨询内容：<MessageLink message={startConsultingMessage}>{startConsultingMessage}</MessageLink></p>
+    <p style={{ marginTop: '4px' }}>咨询内容：{consultLinkView}</p>
     <p style={{ marginTop: '4px' }}>电话咨询：<a href="tel:400-808-9176">400-808-9176 转 1</a></p>
   </>
 )
 
 const notFoundMessage = makeMessage(
   <>
-    根据您当前输入的内容，没有找到合适的业务相关的答案，如需更多帮助：
-    {createTicketLinkView}
+    根据您当前输入的内容，没有找到合适的业务相关的答案，
+    如需咨询：{consultLinkView}&nbsp;
+    如需更多帮助：{createTicketLinkView}
   </>
 )
 
@@ -62,12 +67,22 @@ export default class ConsultRobot implements IRobot {
     ]
   }
 
+  private processMessageOnAskingContact(message: MessageContent): Processed {
+    if (message === startConsultingMessage) {
+      this.state = State.Consulting
+      return makeMessage('请输入你要咨询的内容')
+    }
+    return notFoundMessage
+  }
+
   private processMessage(message: MessageContent): Processed {
     switch (this.state) {
       case State.Initial:
         return this.processMessageOnInitial(message)
       case State.Consulting:
         return this.processMessageOnConsulting(message)
+      case State.AskingContact:
+        return this.processMessageOnAskingContact(message)
       default:
         return notFoundMessage
     }
