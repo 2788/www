@@ -9,7 +9,6 @@
             <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
             <feColorMatrix values="0 0 0 0 0.2   0 0 0 0 0.2   0 0 0 0 0.2  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
-        <rect id="path-3" x="0" y="0" width="16" height="16"></rect>
     </defs>
     <g id="活动与合作" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="邀请好友" transform="translate(-248.000000, -2489.000000)">
@@ -21,10 +20,6 @@
                             <circle stroke="#EEEEEE" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" cx="26" cy="26" r="25.5"></circle>
                         </g>
                         <g id="下一步" transform="translate(18.000000, 18.000000)">
-                            <mask id="mask-4" fill="white">
-                                <use xlink:href="#path-3"></use>
-                            </mask>
-                            <use id="矩形" fill="#FFFFFF" xlink:href="#path-3"></use>
                             <path d="M13,12 L5,12 L5,10 L11,10 L11,4 L13,4 L13,12 Z" id="形状结合" fill="#333333" mask="url(#mask-4)" transform="translate(9.000000, 8.000000) scale(-1, 1) rotate(-45.000000) translate(-9.000000, -8.000000) "></path>
                         </g>
                     </g>

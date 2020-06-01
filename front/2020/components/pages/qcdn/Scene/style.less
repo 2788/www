@@ -7,8 +7,11 @@
 
 .sceneContainer {
   padding: 20px;
-  flex: none;
-  margin-left: 0 !important;
+
+  .notMobile({
+    min-height: 420px;
+    margin-left: 0 !important;
+  });
 
   .mobile({
     padding: 20px 16px;
@@ -16,10 +19,8 @@
 }
 
 .sceneImgBlock {
-  padding: 65px;
   .notMobile({
-    flex-basis: 465px !important;
-    text-align: center !important;
+    padding: 0 65px;
   });
 }
 
@@ -28,9 +29,8 @@
   line-height: 1;
 
   .mobile({
-    height: 106px;
-    margin-top: 20px;
     width: 100%;
+    height: auto;
   })
 }
 

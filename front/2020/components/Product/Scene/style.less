@@ -59,6 +59,13 @@
     justify-content: center;
   }
 
+  .block {
+    padding: 20px 16px;
+    &:not(:first-child) {
+      padding-top: 0;
+    }
+  }
+
   :global {
     .rc-menu-submenu {
       &:first-child {
@@ -82,4 +89,8 @@
 .clientItem {
   line-height: 1;
   flex: 0 1;
+
+  + .clientItem {
+    margin-left: 15px;
+  }
 }

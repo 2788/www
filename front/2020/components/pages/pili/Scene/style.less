@@ -6,29 +6,24 @@
 @import "~utils/less/index.less";
 
 .sceneContainer {
-  padding: 20px;
-  width: 376px;
-  flex: none !important;
+  padding: 19px;
+  .notMobile({
+    margin-left: 48px !important;
+    min-height: 412px;
+  });
 
   .mobile({
     padding: 20px 16px;
   })
 }
 
-.sceneImgBlock {
-  .notMobile({
-    flex-basis: 452px !important;
-    text-align: center !important;
-  });
-}
-
 .sceneImg {
-  width: 800px;
+  width: 752px;
   line-height: 1;
 
   .mobile({
-    height: 106px;
     width: 100%;
+    height: auto;
     margin-top: 20px;
   })
 }
@@ -63,7 +58,7 @@
 }
 
 .clientLogo {
-  width: 160px;
+  width: 102px;
   line-height: 1;
 
   .mobile({
