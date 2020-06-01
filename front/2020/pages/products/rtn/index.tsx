@@ -55,7 +55,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <Navigator priceLink="/prices/rtn">
+      <Navigator>
         {btns.nav}
       </Navigator>
 
