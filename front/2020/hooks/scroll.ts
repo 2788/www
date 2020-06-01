@@ -45,7 +45,7 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
     setTimeout(() => {
       animating = false
       syncScrollTop()
-    }, duration)
+    }, duration + 50) // 加一点点延迟，确保动画已经完成
 
     moveTo.move(top - container.scrollTop)
   }, [syncScrollTop])
