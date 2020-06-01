@@ -70,7 +70,7 @@ export default function Navigator({ priceLink, children }: Props) {
 
   const priceLinkView = priceLink && (
     <Tab value={tabPriceLink}>
-      <Link href={priceLink}>
+      <Link className={style.priceLink} href={priceLink}>
         查看价格<Arrow className={style.priceArrow} />
       </Link>
     </Tab>

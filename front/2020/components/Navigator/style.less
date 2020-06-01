@@ -38,10 +38,18 @@
   }
 }
 
-.priceArrow {
-  margin-left: 2px;
-  path {
-    fill: @grey-4;
+.priceLink {
+  display: block;
+  position: relative;
+
+  .priceArrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    right: -18px;
+    path {
+      fill: @grey-4;
+    }
   }
 }
 
