@@ -47,7 +47,7 @@ function PageContent() {
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/signup', children: '立即使用', pcOnly: true },
-    { href: '/prices?source=fusion', children: '产品价格' }
+    { href: '/prices/cdn', children: '产品价格' }
   )
 
   return (
