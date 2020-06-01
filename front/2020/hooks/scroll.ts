@@ -56,14 +56,16 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
   const scrollTo = useCallback((top: number, duration = defaultScrollDuration) => {
     const container = getScrollContainer()
     if (duration <= 0 || !MoveToRef.current) {
-      container.scrollTo({ top })
+      window.scroll({ top })
       return
     }
     const MoveToConstr = MoveToRef.current
     const moveTo = new MoveToConstr({ duration, container })
 
     animatingHolder.start(duration)
-    moveTo.move(top - container.scrollTop)
+    // https://github.com/hsnaydd/moveTo/blob/164a7b47186282f48a4088b14d0c6fd8eb5cffef/src/moveTo.js#L157
+    // Element.scroll 方法在 ie10 显示空字符串，改成从 window 调用
+    moveTo.move(top - container.scrollTop, { container: window })
   }, [])
 
   // 页面滚动时同步 scrollTop
