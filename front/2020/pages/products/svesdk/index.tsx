@@ -22,7 +22,7 @@ import ProductFeature from 'components/pages/svesdk/Feature'
 import Demo from 'components/pages/svesdk/Demo'
 import Scene from 'components/pages/svesdk/Scene'
 
-import BannerIcon from './images/banner.svg'
+import banner from './images/banner.png'
 import Step1 from './images/step1.svg'
 import Step2 from './images/step2.svg'
 import Step3 from './images/step3.svg'
@@ -42,7 +42,7 @@ export function Content() {
         title="短视频特效 SDK"
         desc="短视频特效 SDK，是七牛云 SDK 团队与字节跳动 SDK 团队共同打造的一款短视频内容创作工具。其融合了移动端的短视频拍摄、编辑、上传等能力于一体，集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={banner} />
 
       <Navigator>{btns.nav}</Navigator>
 

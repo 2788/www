@@ -21,7 +21,7 @@ import ProductFeature from 'components/pages/plesdk/Feature'
 import Demo from 'components/pages/plesdk/Demo'
 import Scene from 'components/pages/plesdk/Scene'
 
-import BannerIcon from './images/banner.svg'
+import banner from './images/banner.png'
 
 export function Content() {
   const { showModal } = useModal()
@@ -38,7 +38,7 @@ export function Content() {
         desc="直播特效 SDK，由七牛云 SDK 团队和字节跳动特效 SDK 团队联合打造。
         提供直播推流等基础功能的同时，也可快速集成上线美颜滤镜、大眼瘦脸、美妆美形等特效功能。更有上千款贴纸和滤镜资源可供挑选，火山、轻颜也在用。"
         btns={btns.banner}
-        icon={<BannerIcon />} />
+        icon={banner} />
 
       <Navigator>
         {btns.nav}
