@@ -52,6 +52,9 @@ export default class ConsultRobot implements IRobot {
 
   private processMessageOnConsulting(message: MessageContent): Processed {
     if (typeof message !== 'string') return
+    if (message.length > 255) {
+      return makeMessage('抱歉，最多可输入 255 字，请重新输入')
+    }
     this.state = State.AskingContact
     return [
       makeMessage('收到！您要咨询的内容，我们后台已经录入'),
