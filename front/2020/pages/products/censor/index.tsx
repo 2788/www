@@ -45,7 +45,7 @@ function PageContent() {
     <>
       <PageBanner
         title="内容审核"
-        desc="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容"
+        desc="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容。"
         bgColor="#34A1EC"
         btns={isPc ? btns.banner : undefined}
         icon={imgBanner}
