@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import CalcPane from 'components/Price/Banner/CalcPane'
-import Alert from 'react-icecream/lib/alert'
 import Checkbox from 'react-icecream/lib/checkbox'
 import Select from 'react-icecream/lib/select'
 
@@ -65,7 +64,6 @@ export default function CdnCalc() {
 
   return (
     <CalcPane disabled={disabled} onAdd={handleAdd} buyLink="https://portal.qiniu.com/financial/respack/fusion-composite" total={total}>
-      <Tip />
       <section className={style.region}>
         <div>加速区域</div>
         <div>
@@ -78,15 +76,15 @@ export default function CdnCalc() {
   )
 }
 
-function Tip() {
-  const message = (
-    <a href="https://marketing.qiniu.com/activity/20200423?entry=portal-cdnoverview" target="_blank" rel="noopener">
-      CDN 日间流量包限时 <span className={style.discount}>5 折</span> 优惠
-    </a>
-  )
+// function Tip() {
+//   const message = (
+//     <a href="https://marketing.qiniu.com/activity/20200423?entry=portal-cdnoverview" target="_blank" rel="noopener">
+//       CDN 日间流量包限时 <span className={style.discount}>5 折</span> 优惠
+//     </a>
+//   )
 
-  return <Alert type="info" message={message} closable />
-}
+//   return <Alert type="info" message={message} closable />
+// }
 
 type RegionProps = {
   desc: string

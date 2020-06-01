@@ -5,8 +5,15 @@
 
 @import "~utils/less/index.less";
 
+@block-height: 280px;
+
+.blockRight {
+  margin-left: 0 !important;
+}
+
 .sceneContainer {
-  padding: 20px;
+  height: @block-height;
+  padding: 0 24px;
 
   .mobile({
      padding: 20px 16px;
@@ -15,6 +22,7 @@
   figure {
     display: inline-block;
     text-align: center;
+    color: @grey-5;
 
     & + figure {
       margin-left: 20px;
@@ -28,7 +36,8 @@
 }
 
 .sceneIcon {
-  height: 212px;
+  width: 476px;
+  height: @block-height;
   line-height: 1;
 
   .mobile({
@@ -46,12 +55,13 @@
 }
 
 .sceneContent {
-  margin-bottom: 32px;
+  margin-bottom: 47px;
   font-size: 14px;
   color: @grey-6;
   line-height: 22px;
 
   .mobile({
+     margin-bottom: 32px;
      font-size: 12px;
      line-height: 18px;
    });

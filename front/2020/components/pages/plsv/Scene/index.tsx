@@ -43,7 +43,7 @@ export default function PlsvScene() {
         <SceneBlock blockType="fixed">
           <img src={scene1Img} className={style.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
             <p className={style.sceneTitle}>场景特点</p>
             <p className={style.sceneContent}>聊天小视频、动漫配音秀、游戏精彩集锦等</p>
@@ -67,7 +67,7 @@ export default function PlsvScene() {
         <SceneBlock blockType="fixed">
           <img src={scene2Img} className={style.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
             <p className={style.sceneTitle}>场景特点</p>
             <p className={style.sceneContent}>商品短视频、买家秀、商品点评等</p>
@@ -91,7 +91,7 @@ export default function PlsvScene() {
         <SceneBlock blockType="fixed">
           <img src={scene3Img} className={style.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
             <p className={style.sceneTitle}>场景特点</p>
             <p className={style.sceneContent}>短视频微课、学员作业展示</p>
@@ -115,7 +115,7 @@ export default function PlsvScene() {
         <SceneBlock blockType="fixed">
           <img src={scene4Img} className={style.sceneIcon} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
             <p className={style.sceneTitle}>场景特点</p>
             <p className={style.sceneContent}>制作、短视频资讯、视频看房、照片影集制作等</p>

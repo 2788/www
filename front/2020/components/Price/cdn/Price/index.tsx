@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import PricePane, { PricePaneSection } from 'components/Price/Banner/PricePane'
-import { Alert } from 'react-icecream'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import { BannerContext } from 'components/Price/Banner'
 
@@ -20,7 +19,7 @@ export default function Price() {
         下载流量以及 5 万次动态加速请求数免费额度。
         <a className={style.link} onClick={() => setActive('calc')}>价格计算器 &gt;&gt;&gt;</a>
       </PricePaneSection>
-      <PricePaneSection title="价格详情" tip={<Tip />} className={style.desc}>
+      <PricePaneSection title="价格详情" className={style.desc}>
         <Tabs defaultValue="1" size="middle">
           <TabPane value="1" tab="中国大陆"><MainLand /></TabPane>
           <TabPane value="2" tab="其他地区">
@@ -35,12 +34,12 @@ export default function Price() {
   )
 }
 
-function Tip() {
-  const message = (
-    <a href="https://marketing.qiniu.com/activity/20200423?entry=portal-cdnoverview" target="_blank" rel="noopener">
-      CDN 日间流量包限时 <span className={style.discount}>5 折</span> 优惠
-    </a>
-  )
+// function Tip() {
+//   const message = (
+//     <a href="https://marketing.qiniu.com/activity/20200423?entry=portal-cdnoverview" target="_blank" rel="noopener">
+//       CDN 日间流量包限时 <span className={style.discount}>5 折</span> 优惠
+//     </a>
+//   )
 
-  return <Alert type="info" message={message} closable />
-}
+//   return <Alert type="info" message={message} closable />
+// }

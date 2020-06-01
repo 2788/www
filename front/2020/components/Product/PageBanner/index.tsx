@@ -22,13 +22,13 @@ export interface IPageBannerProps {
 export const defaultProps: IPageBannerProps = {
   title: '七牛云',
   desc: '连接数据，重塑价值',
-  bgColor: '',
+  bgColor: '#34A1EC',
   btns: [],
   icon: null
 }
 
 export default function PageBanner(props: IPageBannerProps) {
-  const { title, desc, bgColor = '#34A1EC', btns, icon } = { ...defaultProps, ...props }
+  const { title, desc, bgColor, btns, icon } = { ...defaultProps, ...props }
   const isMobile = useMobile()
   const isBtnsValid = btns && btns.length
 
