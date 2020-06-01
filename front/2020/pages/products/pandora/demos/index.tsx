@@ -41,7 +41,7 @@ export default function ExpressDemoPage() {
             </BreadcrumbItem>
             <BreadcrumbItem>Demo 体验</BreadcrumbItem>
           </Breadcrumb>
-          <Tabs defaultValue="1">
+          <Tabs defaultValue="1" contentClassName={style.tabContent}>
             <TabPane tab="运维监控" value="1">
               {maintenanceDemos.map((item, index) => (
                 <DemoCard key={index} {...item} />
@@ -60,7 +60,8 @@ export default function ExpressDemoPage() {
           </Tabs>
           <div className={style.footer}>
             <Link>
-              <span>更多详情见应用市场</span> <ArrowIcon />
+              <span>更多详情见应用市场</span>
+              <ArrowIcon />
             </Link>
           </div>
         </div>

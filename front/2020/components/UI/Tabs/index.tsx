@@ -29,6 +29,8 @@ export type Props = {
   onChange?: (value: string) => void
   /** class 名 */
   className?: string
+  /** content class 名 */
+  contentClassName?: string
   /** 尺寸 */
   size?: Size
   /** 是否显示 shadow 默认为 true */
@@ -49,7 +51,7 @@ const sizeMap = {
 }
 
 export default function Tabs({
-  children, className, defaultValue,
+  children, className, contentClassName, defaultValue,
   value = null, onChange, size = 'default',
   shadow = true, theme = 'default'
 }: Props) {
@@ -76,7 +78,7 @@ export default function Tabs({
     }
   })
 
-  const content = tabPanes.length > 0 && <div className={style.content}>{tabPanes}</div>
+  const content = tabPanes.length > 0 && <div className={classnames(style.content, contentClassName)}>{tabPanes}</div>
 
   const handleChange = useCallback((_value: string) => {
     if (onChange) {
