@@ -107,6 +107,5 @@ export const categoryVideo = [
 
 /** 机器数据智能 */
 export const categoryIntelligence = [
-  Product.Express,
-  Product.Insight
+  Product.Express
 ] as const

@@ -206,12 +206,7 @@ function ProductsForMobile() {
       }
       >
         <PaneForMobile>
-          <MenuItem
-            title={nameMap[Product.Insight]}
-            href={urlMap[Product.Insight]}
-          >
-            海量异构数据采集，秒级实时日志检索，高效智能业务洞察
-          </MenuItem>
+          {/* TODO: 这边内容改为从 constants/products 中 category 定义来 */}
           <MenuItem
             title={nameMap[Product.Express]}
             href={urlMap[Product.Express]}
@@ -364,16 +359,9 @@ export function ProductsForPc() {
         <TabPane value="4" tab={<span className={styles.tab}><TabIntelligenceIcon />机器数据智能</span>} className={styles.pane}>
           {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
           <Anim active={activeKey === '4'}>
+            {/* TODO: 这边内容改为从 constants/products 中 category 定义来 */}
             <Card
               key="1"
-              icon={<ProductIcon className={styles.icon} product={Product.Insight} />}
-              title={nameMap[Product.Insight]}
-              href={urlMap[Product.Insight]}
-            >
-              海量异构数据采集，秒级实时日志检索，高效智能业务洞察
-            </Card>
-            <Card
-              key="2"
               icon={<ProductIcon className={styles.icon} product={Product.Express} />}
               title={nameMap[Product.Express]}
               href={urlMap[Product.Express]}
