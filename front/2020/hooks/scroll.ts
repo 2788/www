@@ -6,14 +6,35 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import stickybits from 'stickybits'
 import { MoveTo } from 'moveto'
 import { debounce } from 'lodash'
-import { isBrowser } from '../utils'
+import { isBrowser } from 'utils'
+import Emitter from 'utils/emtter'
 
 const defaultDebounceWait = 100 // ms
 const defaultScrollDuration = 400 // 默认滚动动画时间 ms
 
 // 记录当前是否正在进行滚动动画，这段时间不去响应滚动事件，用于优化滚动的性能
 // 先放在这实现，以保证全局（如不同组件对于 scroll 相关 hooks 的调用）共享状态；后续考虑怎么优化
-let animating = false
+class AnimatingHolder extends Emitter {
+  public value = false
+
+  private set(value: boolean) {
+    this.value = value
+    this.fire()
+  }
+
+  public start(duration: number) {
+    this.set(true)
+    setTimeout(() => {
+      this.set(false)
+    }, duration + 50) // 加一点点延迟，确保动画已经完成
+  }
+
+  public onChange(fn: () => void) {
+    return this.on(fn)
+  }
+}
+
+const animatingHolder = new AnimatingHolder()
 
 /** 使用当前滚动高度（通过监听滚动事件 with debounce） */
 export function useScrollTop(debounceWait = defaultDebounceWait) {
@@ -41,19 +62,15 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
     const MoveToConstr = MoveToRef.current
     const moveTo = new MoveToConstr({ duration, container })
 
-    animating = true
-    setTimeout(() => {
-      animating = false
-      syncScrollTop()
-    }, duration + 50) // 加一点点延迟，确保动画已经完成
-
+    animatingHolder.start(duration)
     moveTo.move(top - container.scrollTop)
-  }, [syncScrollTop])
+  }, [])
 
+  // 页面滚动时同步 scrollTop
   useEffect(() => {
     if (!isBrowser()) return
     let handleScroll = () => {
-      if (animating) return
+      if (animatingHolder.value) return
       syncScrollTop()
     }
     if (debounceWait > 0) {
@@ -62,6 +79,11 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [debounceWait, syncScrollTop])
+
+  // 滚动动画结束时同步 scrollTop
+  useEffect(() => animatingHolder.onChange(() => {
+    if (!animatingHolder.value) syncScrollTop()
+  }), [syncScrollTop])
 
   return [scrollTop, scrollTo] as const
 }
@@ -84,7 +106,7 @@ export function useSticky() {
   const [isFixed, setIsFixed] = useState(false)
 
   useEffect(() => {
-    if (element && !animating) {
+    if (element) {
       // 平时 scrollTop 应该小于 offsetTop，fix 住后，这俩值相等
       setIsFixed(scrollTop >= element.offsetTop)
     }
