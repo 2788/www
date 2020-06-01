@@ -210,7 +210,7 @@ function ProductsForMobile() {
             title={nameMap[Product.Insight]}
             href={urlMap[Product.Insight]}
           >
-            自然场景下对整图和文字进行检测、定位和识别
+            海量异构数据采集，秒级实时日志检索，高效智能业务洞察
           </MenuItem>
           <MenuItem
             title={nameMap[Product.Express]}
@@ -370,7 +370,7 @@ export function ProductsForPc() {
               title={nameMap[Product.Insight]}
               href={urlMap[Product.Insight]}
             >
-              自然场景下对整图和文字进行检测、定位和识别
+              海量异构数据采集，秒级实时日志检索，高效智能业务洞察
             </Card>
             <Card
               key="2"
