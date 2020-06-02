@@ -1,6 +1,9 @@
 import React from 'react'
 import { Product, categoryStorage, urlMap, nameMap } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
+import { useModal } from 'components/Feedback'
+import { useDropdown } from 'components/UI/Dropdown'
+
 import Item from './Item'
 
 const hotMap = {
@@ -14,6 +17,15 @@ const subtitleMap = {
 }
 
 export default function Storage() {
+  const { showModal } = useModal()
+  const { close } = useDropdown()
+
+  function handleHDFSClick() {
+    // eslint-disable-next-line no-unused-expressions
+    close?.()
+    showModal()
+  }
+
   return (
     <>
       {categoryStorage.map(product => (
@@ -27,11 +39,11 @@ export default function Storage() {
         />
       ))}
       <Item
+        onClick={handleHDFSClick}
         href="#"
-        disabled
         icon={<ProductIcon product={Product.Hdfs} />}
         title="HDFS"
-        subtitle="正在建设，敬请期待"
+        subtitle="即将上线，欢迎垂询"
       />
     </>
   )

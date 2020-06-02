@@ -23,9 +23,7 @@ body {
   color: @grey-7;
   overflow-y: auto;
   font-size: 14px;
-  // https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
-  font-family: -apple-system, PingFang SC, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB, Microsoft YaHei,
-    Helvetica Neue, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  font-family: @font-family;
 
   // 移动端默认内容不可见，client 端 mount 后会给 body 添加 class `mounted`（逻辑见隔壁 `_app.tsx`）
   // 此时控制内容可见，以避免因首屏针对 PC 端逻辑生成内容，在移动端会有闪屏的问题
@@ -90,7 +88,6 @@ h7,
 p {
   color: inherit;
 }
-
 
 /* icecream 相关*/
 :global {

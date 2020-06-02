@@ -13,15 +13,16 @@ export type ContentItemProps = {
   icon: React.ReactNode
   title: string
   subtitle: string
+  onClick?(): void
 }
 
 export default function ContentItem(props: ContentItemProps) {
-  const { disabled, href, hot, icon, title, subtitle } = props
+  const { disabled, href, hot, icon, title, subtitle, onClick } = props
   const hotIcon = hot && (typeof hot === 'boolean' ? <Hot /> : <Hot text={hot} />)
 
   return (
     <li className={classnames(style.wrapper, disabled && style.disabled)}>
-      <Link href={href}>
+      <Link href={href} onClick={onClick}>
         <div className={style.icon}>{icon}</div>
         <div className={style.desc}>
           <div className={style.title}>{title} {hotIcon}</div>

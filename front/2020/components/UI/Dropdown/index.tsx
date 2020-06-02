@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, HTMLAttributes, useState, useCallback, cloneElement } from 'react'
+import React, { PropsWithChildren, HTMLAttributes, useState, useCallback, cloneElement, createContext, useContext } from 'react'
 import RcDropdown, { DropdownProps } from 'rc-dropdown/lib/Dropdown'
 import useDelay from 'hooks/use-delay'
 import { useOnChange } from 'hooks'
@@ -7,6 +7,17 @@ import 'rc-dropdown/assets/index.css'
 import style from './index.less'
 
 export * from 'rc-dropdown/lib/Dropdown'
+
+export type DropdownContext = {
+  open?(): void
+  close?(): void
+}
+
+const DropdownContext = createContext<DropdownContext>({})
+
+export function useDropdown() {
+  return useContext(DropdownContext)
+}
 
 // 给 Dropdown 增加类似 debounce 效果，防止滑过等误开其他 Dropdown
 export default function Dropdown(props: DropdownProps & { delay?: number }) {
@@ -62,7 +73,13 @@ export default function Dropdown(props: DropdownProps & { delay?: number }) {
     })
     : props.children
 
-  return <RcDropdown onVisibleChange={onVisibleChange} visible={visible} {...rest}>{children}</RcDropdown>
+  return (
+    <DropdownContext.Provider value={{ open: () => setVisible(true), close: () => setVisible(false) }}>
+      <RcDropdown onVisibleChange={onVisibleChange} visible={visible} {...rest}>
+        {children}
+      </RcDropdown>
+    </DropdownContext.Provider>
+  )
 }
 
 export const DropdownMenu = ({ children, className = '' }: PropsWithChildren<{ className?: string }>) => (
