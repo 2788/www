@@ -25,16 +25,16 @@ export default function PlsvAccess() {
 
   return (
     <>
-      <AccessProcess name="access" title="快速接入" header="接入流程" grey>
-        <Step icon={<AccessIconOne className={styles.icon} />}>
+      <AccessProcess name="access" title="快速接入" header="接入流程">
+        <Step icon={<AccessIconOne />}>
           <p className={styles.title}>定制方案</p>
           <p className={styles.desc}>1V1 专业咨询，提供定制化解决方案</p>
         </Step>
-        <Step icon={<AccessIconTwo className={styles.icon} />}>
+        <Step icon={<AccessIconTwo />}>
           <p className={styles.title}>测试对接</p>
           <p className={styles.desc}>免费测试，全程监控，快速响应迭代</p>
         </Step>
-        <Step icon={<AccessIconThree className={styles.icon} />}>
+        <Step icon={<AccessIconThree />}>
           <p className={styles.title}>正式上线</p>
           <p className={styles.desc}>1V1 售后服务，确保业务稳定运行</p>
         </Step>

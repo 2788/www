@@ -22,7 +22,14 @@ export function Step({ icon, url, tag, onClick, children }: PropsWithChildren<St
       {
         typeof icon === 'string'
           ? <img className={styles.stepIcon} src={icon} />
-          : <div className={styles.stepIconContainer}>{React.cloneElement(icon as any, { width: '60px', height: '60px' })}</div>
+          : <div className={styles.stepIconContainer}>
+            {
+              React.cloneElement(
+                icon as any,
+                { transform: 'scale(0.5)' }
+              )
+            }
+          </div>
       }
       {
         url && <a href={url} onClick={onClick} target="_blank" rel="noopener" className={styles.mask} />
