@@ -30,9 +30,9 @@ function PageContent() {
 
   return (
     <>
-      <Banner background={banner}>
-        <Title>连接数据 重塑价值</Title>
-        <Desc>我们的使命是：用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量<br /><br />
+      <Banner background={banner} pcBackgroundSize="300px" backgroundPosition="right 100px center">
+        <Title className={styles.bannerTitle}>连接数据 重塑价值</Title>
+        <Desc className={styles.bannerDesc}>我们的使命是：用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量<br /><br />
           我们的愿景是：成为 5G 时代的异构数据湖与数据分析平台的第一品牌</Desc>
       </Banner>
 
@@ -81,7 +81,7 @@ function PageContent() {
             icon={<Culture3Img className={styles.coreIcon} />}
             title="价值观与文化"
           >
-            <FeatureDesc>简单，可信赖，客户第一<br />极客精神、开放协作、拥抱变化<br />坚韧、诚信、激情</FeatureDesc>
+            <FeatureDesc className={styles.cultureDesc}>简单，可信赖，客户第一<br />极客精神、开放协作、拥抱变化<br />坚韧、诚信、激情</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -89,7 +89,7 @@ function PageContent() {
             icon={<Culture1Img className={styles.coreIcon} />}
             title="使命"
           >
-            <FeatureDesc>用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量</FeatureDesc>
+            <FeatureDesc className={styles.cultureDesc}>用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
@@ -97,7 +97,7 @@ function PageContent() {
             icon={<Culture2Img className={styles.coreIcon} />}
             title="愿景"
           >
-            <FeatureDesc>成为 5G 时代的异构数据湖与数据分析平台的第一品牌</FeatureDesc>
+            <FeatureDesc className={styles.cultureDesc}>成为 5G 时代的异构数据湖与数据分析平台的第一品牌</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>
