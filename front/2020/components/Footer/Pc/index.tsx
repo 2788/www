@@ -7,7 +7,7 @@ import React, { PropsWithChildren } from 'react'
 import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
-import { Product, nameMap, urlMap, categoryStorage, categoryService, categoryVideo, categoryIntelligence } from 'constants/products'
+import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
 
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
@@ -56,20 +56,14 @@ function ProductItems({ products }: { products: readonly Product[] }) {
 }
 
 function LinkGroups() {
+  const productLinkGroupsView = categories.map(category => (
+    <LinkGroup key={category} title={categoryNameMap[category]}>
+      <ProductItems products={categoryProductsMap[category]} />
+    </LinkGroup>
+  ))
   return (
     <section className={style.linkGroups}>
-      <LinkGroup title="存储与数据湖">
-        <ProductItems products={categoryStorage} />
-      </LinkGroup>
-      <LinkGroup title="基础服务">
-        <ProductItems products={categoryService} />
-      </LinkGroup>
-      <LinkGroup title="智能视频">
-        <ProductItems products={categoryVideo} />
-      </LinkGroup>
-      <LinkGroup title="机器数据智能">
-        <ProductItems products={categoryIntelligence} />
-      </LinkGroup>
+      {productLinkGroupsView}
       <LinkGroup title="解决方案">
         <LinkItem url="/solutions/qavs">智能视频云解决方案</LinkItem>
         <LinkItem url="/solutions/plsv">短视频解决方案</LinkItem>

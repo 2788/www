@@ -4,6 +4,8 @@
  */
 
 import React from 'react'
+import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
 
@@ -11,6 +13,7 @@ import CheckedIcon from './checked.svg'
 import style from './index.less'
 
 export default function Packages() {
+  const priceUrl = urlForPrice(Product.Cdn)
   return (
     <Section name="packages" title="热销套餐" grey>
       <Card
@@ -20,7 +23,7 @@ export default function Packages() {
         capacity="500 GB"
         categoryDesc="每月发放 20 GB，连续发放 5 个月"
         price="7.7"
-        detailLink="/prices/cdn"
+        detailLink={priceUrl}
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -30,7 +33,7 @@ export default function Packages() {
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="98"
-        detailLink="/prices/cdn"
+        detailLink={priceUrl}
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -40,7 +43,7 @@ export default function Packages() {
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
         price="193"
-        detailLink="/prices/cdn"
+        detailLink={priceUrl}
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -50,7 +53,7 @@ export default function Packages() {
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
         price="942"
-        detailLink="/prices/cdn"
+        detailLink={priceUrl}
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
     </Section>

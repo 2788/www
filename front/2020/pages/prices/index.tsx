@@ -10,13 +10,15 @@
 import React from 'react'
 import { useQueryValue } from 'hooks/url'
 import Redirect from 'components/Redirect'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 
 const sourceMap = {
-  kodo: '/prices/kodo',
-  qcdn: '/prices/cdn',
-  dora: '/prices/dora',
-  pili: '/prices/pili',
-  sms: '/prices/sms'
+  kodo: urlForPrice(Product.Kodo),
+  qcdn: urlForPrice(Product.Cdn),
+  dora: urlForPrice(Product.Dora),
+  pili: urlForPrice(Product.Pili),
+  sms: urlForPrice(Product.Sms)
 }
 
 export default function Prices() {

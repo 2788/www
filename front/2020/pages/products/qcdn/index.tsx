@@ -4,6 +4,8 @@
 
 import React from 'react'
 
+import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
@@ -45,9 +47,11 @@ import Advantage6Icon from './_images/advantage6.svg'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
+  const priceUrl = urlForPrice(Product.Cdn)
+
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/signup', children: '立即使用', pcOnly: true },
-    { href: '/prices/cdn', children: '产品价格' }
+    { href: priceUrl, children: '产品价格' }
   )
 
   return (
@@ -73,7 +77,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/prices/cdn">
+      <Navigator priceLink={priceUrl}>
         {btns.nav}
       </Navigator>
 

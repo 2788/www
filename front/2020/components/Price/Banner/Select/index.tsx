@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
+import { categoryNameMap, Category, Product, nameMap } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Dropdown, { DropdownMenu, DropdownMenuGroup, DropdownMenuItem } from 'components/UI/Dropdown'
 import Button from 'components/UI/Button'
 import Link from 'components/Link'
@@ -21,46 +23,36 @@ export default function Select() {
 }
 
 function Overlay() {
+  function menuItemForProduct(product: Product, hasCalculator = false) {
+    return (
+      <DropdownMenuItem>
+        <Link href={urlForPrice(product)}>
+          {nameMap[product]}
+          {hasCalculator && <CalcIcon className={style.calc} />}
+        </Link>
+      </DropdownMenuItem>
+    )
+  }
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuGroup title="存储与数据湖">
-          <DropdownMenuItem>
-            <Link href="/prices/kodo">对象存储<CalcIcon className={style.calc} /></Link>
-          </DropdownMenuItem>
+        <DropdownMenuGroup title={categoryNameMap[Category.Storage]}>
+          {menuItemForProduct(Product.Kodo, true)}
         </DropdownMenuGroup>
-        <DropdownMenuGroup title="基础服务">
-          <DropdownMenuItem>
-            <Link href="/prices/cdn">CDN<CalcIcon className={style.calc} /></Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/prices/pili">直播</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/prices/ssl">SSL 证书</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/prices/qvm">云主机<CalcIcon className={style.calc} /></Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/prices/sms">云短信</Link>
-          </DropdownMenuItem>
+        <DropdownMenuGroup title={categoryNameMap[Category.Service]}>
+          {menuItemForProduct(Product.Cdn, true)}
+          {menuItemForProduct(Product.Pili)}
+          {menuItemForProduct(Product.Ssl)}
+          {menuItemForProduct(Product.Qvm, true)}
+          {menuItemForProduct(Product.Sms)}
         </DropdownMenuGroup>
       </DropdownMenu>
       <DropdownMenu>
-        <DropdownMenuGroup title="智能视频">
-          <DropdownMenuItem>
-            <Link href="/prices/dora">智能多媒体服务</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/products/plsv#price">短视频 SDK</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/prices/faceid">人脸核验</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/prices/censor">内容审核</Link>
-          </DropdownMenuItem>
+        <DropdownMenuGroup title={categoryNameMap[Category.Video]}>
+          {menuItemForProduct(Product.Dora)}
+          {menuItemForProduct(Product.Plsv)}
+          {menuItemForProduct(Product.FaceID)}
+          {menuItemForProduct(Product.Censor)}
         </DropdownMenuGroup>
       </DropdownMenu>
     </>

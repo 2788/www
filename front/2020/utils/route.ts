@@ -29,8 +29,13 @@ export function urlForQvmBuy(options?: QvmBuyOptions) {
   )
 }
 
-export function urlForPrice(product: Product) {
-  return `/prices/${product}`
+export function urlForPrice(product: Product, calculator = false) {
+  // TODO: 后续把这个信息也挪到 constants/products 里维护
+  if (product === Product.Plsv) {
+    return '/products/plsv#price'
+  }
+  const params = calculator ? { tab: 'calc' } : undefined
+  return urlFor(`/prices/${product}`, params)
 }
 
 export function urlForSignin(redirectUrl: string) {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Category } from 'constants/products'
 import Storage from './Storage'
 import Service from './Service'
 import Video from './Video'
@@ -6,16 +7,14 @@ import Intelligence from './Intelligence'
 
 import style from './index.less'
 
-export type ContentType = 'storage' | 'service' | 'video' | 'intelligence'
-
-const contentMap: { [key in ContentType]: React.FC } = {
-  storage: Storage,
-  service: Service,
-  video: Video,
-  intelligence: Intelligence
+const contentMap = {
+  [Category.Storage]: Storage,
+  [Category.Service]: Service,
+  [Category.Video]: Video,
+  [Category.Intelligence]: Intelligence
 }
 
-export default function Content({ content }: { content: ContentType }) {
+export default function Content({ content }: { content: Category }) {
   return (
     <ul className={style.content}>
       {React.createElement(contentMap[content])}

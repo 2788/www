@@ -9,7 +9,9 @@
 
 import React from 'react'
 import Redirect from 'components/Redirect'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 
 export default function Calculator() {
-  return <Redirect target="/prices/kodo?tab=calc" />
+  return <Redirect target={urlForPrice(Product.Kodo, true)} />
 }

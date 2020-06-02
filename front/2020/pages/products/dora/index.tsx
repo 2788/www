@@ -4,6 +4,8 @@
 
 import React from 'react'
 
+import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
@@ -35,9 +37,11 @@ import imgBanner from './_images/banner.png'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
+  const priceUrl = urlForPrice(Product.Dora)
+
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/create?source_page=dora', children: '立即使用', pcOnly: true },
-    { href: '/prices?source=dora&source_page=dora', children: '产品价格' },
+    { href: priceUrl, children: '产品价格' },
     { href: 'https://developer.qiniu.com/dora?source_page=dora', children: '帮助文档' }
   )
 
@@ -61,7 +65,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/prices/dora">
+      <Navigator priceLink={priceUrl}>
         {btns.nav}
       </Navigator>
 
@@ -84,7 +88,7 @@ function PageContent() {
 
       <PurchaseInfo>
         <PurchaseInfoItem title="智能多媒体服务" desc="了解更多产品价格信息">
-          <PurchaseInfoAction url="/prices/dora">查看价格</PurchaseInfoAction>
+          <PurchaseInfoAction url={priceUrl}>查看价格</PurchaseInfoAction>
         </PurchaseInfoItem>
         <PurchaseInfoItem title="价格页" desc="特惠套餐包">
           <PurchaseInfoAction url="https://www.qiniu.com/events/dora-package">查看价格</PurchaseInfoAction>

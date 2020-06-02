@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
-import { Product, nameMap, urlMap, categoryStorage, categoryService, categoryVideo, categoryIntelligence } from 'constants/products'
+import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
 import Button from 'components/UI/Button'
 
 import Github from './images/github.svg'
@@ -23,22 +23,16 @@ function getProductItems(products: readonly Product[]) {
 }
 
 export default function FooterForMobile() {
+  const productSubMenusView = categories.map(category => (
+    <SubMenu key={category} title={categoryNameMap[category]}>
+      {getProductItems(categoryProductsMap[category])}
+    </SubMenu>
+  ))
   return (
     <div className={style.footer}>
       <div className={style.nav}>
         <Menu mode="inline" inlineIndent={15}>
-          <SubMenu title="存储与数据湖">
-            {getProductItems(categoryStorage)}
-          </SubMenu>
-          <SubMenu title="基础服务">
-            {getProductItems(categoryService)}
-          </SubMenu>
-          <SubMenu title="智能视频">
-            {getProductItems(categoryVideo)}
-          </SubMenu>
-          <SubMenu title="机器数据智能">
-            {getProductItems(categoryIntelligence)}
-          </SubMenu>
+          {productSubMenusView}
           <SubMenu title="解决方案">
             <MenuItem><Link href="/solutions/qavs">智能视频云解决方案</Link></MenuItem>
             <MenuItem><Link href="/solutions/plsv">短视频解决方案</Link></MenuItem>

@@ -27,6 +27,8 @@ import style from './index.less'
 
 function PageContent() {
 
+  const priceUrl = urlForPrice(Product.Kodo)
+
   const btns = useBtns(
     { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true }
   )
@@ -46,7 +48,7 @@ function PageContent() {
           <PageNoticeItem href="/solutions/kodoe">
             私有云存储，构建本地高扩展性数据存储平台 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem href="/prices/kodo">
+          <PageNoticeItem href={priceUrl}>
             标准存储，低至 <span className={style.price}>0.099</span> 元/GB/月起 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem href="http://qiniu-exp.mikecrm.com/yGntQCJ">
@@ -60,7 +62,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink={urlForPrice(Product.Kodo)}>{btns.nav}</Navigator>
+      <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
       <StorageType />
 

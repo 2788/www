@@ -48,7 +48,7 @@ export default function Activities() {
       <Card
         icon={<Activity3Icon className={styles.icon} />}
         title="归档存储，重磅上线"
-        href="/products/kodo?entry=index-advert"
+        href="/products/kodo?entry=index-advert#storage_type"
       >
         安全持久 成本更低
       </Card>

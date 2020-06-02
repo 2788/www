@@ -11,7 +11,7 @@ export enum Product {
   /** HDFS */
   Hdfs = 'hdfs',
   /** CDN */
-  Cdn = 'cdn',
+  Cdn = 'qcdn',
   /** SSL 证书 */
   Ssl = 'ssl',
   /** 直播 */
@@ -57,12 +57,12 @@ export const nameMap = {
   [Product.Plms]: '直播推流 SDK',
   [Product.Insight]: '智能日志管理平台',
   [Product.Express]: '数据分析平台'
-}
+} as const
 
 export const urlMap = {
   [Product.Kodo]: '/products/kodo',
   [Product.Archive]: '/products/kodo#storage_type',
-  [Product.Hdfs]: null, // 暂未上线
+  [Product.Hdfs]: undefined, // 暂未上线
   [Product.Cdn]: '/products/qcdn',
   [Product.Ssl]: '/products/ssl',
   [Product.Pili]: '/products/pili',
@@ -76,6 +76,35 @@ export const urlMap = {
   [Product.Plms]: '/products/plms',
   [Product.Insight]: '/products/insight',
   [Product.Express]: '/products/pandora'
+} as const
+
+export const descMap = {
+  [Product.Kodo]: '高可用、易扩展、低成本、一站式、支持边缘存储',
+  [Product.Archive]: '可定制化的数百 EB 级别、高可靠、强安全的存储系统',
+  [Product.Hdfs]: '', // 暂未上线
+
+  [Product.Cdn]: '优质节点、可监控、智能调度的内容分发服务',
+  [Product.Ssl]: '提供 SSL 证书申请、管理等一站式服务',
+  [Product.Pili]: '提供全球化实时流服务和端到端直播场景解决方案',
+  [Product.Qvm]: '提供云主机、负载均衡、云数据库、高防等服务',
+  [Product.Sms]: '致力于为用户提供快捷高效的通信服务能力',
+
+  [Product.Dora]: '提供云端图片、音视频基础处理、丰富的人工智能服务',
+  [Product.Censor]: '提供图片、视频等内容的审核服务，精准识别过滤色情、暴恐、敏感人物等违规内容',
+  [Product.Rtn]: '基于 WebRTC 的一站式解决方案，零基础搭建音视频平台',
+  [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
+  [Product.Plms]: '支持手机端 RTMP & QUIC 推流，简单易上手，马上开播',
+  [Product.FaceID]: '利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证',
+
+  [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
+  [Product.Express]: '助力企业探索数据、创造价值、预见未来'
+} as const
+
+export enum Category {
+  Storage = 'storage',
+  Service = 'service',
+  Video = 'video',
+  Intelligence = 'intelligence'
 }
 
 /** 存储与数据湖 */
@@ -108,4 +137,32 @@ export const categoryVideo = [
 /** 机器数据智能 */
 export const categoryIntelligence = [
   Product.Express
+] as const
+
+export const categoryProductsMap = {
+  [Category.Storage]: categoryStorage,
+  [Category.Service]: categoryService,
+  [Category.Video]: categoryVideo,
+  [Category.Intelligence]: categoryIntelligence
+} as const
+
+export const categoryNameMap = {
+  [Category.Storage]: '存储与数据湖',
+  [Category.Service]: '基础服务',
+  [Category.Video]: '智能视频',
+  [Category.Intelligence]: '机器数据智能'
+} as const
+
+export const categoryEnNameMap = {
+  [Category.Storage]: 'Storage and Data Lake',
+  [Category.Service]: 'Cloud Essentials',
+  [Category.Video]: 'Intelligent Video Service',
+  [Category.Intelligence]: 'Machine Data Intelligence'
+} as const
+
+export const categories = [
+  Category.Storage,
+  Category.Service,
+  Category.Video,
+  Category.Intelligence
 ] as const

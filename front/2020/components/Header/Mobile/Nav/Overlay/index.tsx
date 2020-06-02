@@ -1,9 +1,6 @@
 import React from 'react'
 import Link from 'components/Link'
-import {
-  Product, urlMap, nameMap,
-  categoryStorage, categoryService, categoryVideo, categoryIntelligence
-} from 'constants/products'
+import { Product, urlMap, nameMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 
 import style from './index.less'
@@ -17,21 +14,15 @@ function getProductItems(products: readonly Product[]) {
 }
 
 export default function Overlay() {
+  const productSubMenus = categories.map(category => (
+    <SubMenu key={category} title={categoryNameMap[category]}>
+      {getProductItems(categoryProductsMap[category])}
+    </SubMenu>
+  ))
   return (
     <Menu mode="inline" className={style.menu}>
       <SubMenu mode="inline" title="产品">
-        <SubMenu title="存储与数据湖">
-          {getProductItems(categoryStorage)}
-        </SubMenu>
-        <SubMenu title="基础服务">
-          {getProductItems(categoryService)}
-        </SubMenu>
-        <SubMenu title="智能视频">
-          {getProductItems(categoryVideo)}
-        </SubMenu>
-        <SubMenu title="机器数据智能">
-          {getProductItems(categoryIntelligence)}
-        </SubMenu>
+        {productSubMenus}
       </SubMenu>
       <SubMenu title="方案">
         <SubMenu title="行业解决方案">

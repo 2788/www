@@ -4,6 +4,8 @@
 
 import React from 'react'
 
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -33,13 +35,9 @@ import imgBanner from './_images/banner.png'
 function PageContent() {
   const { showModal } = useFeedbackModal()
 
-  function handleConsult() {
-    showModal()
-  }
-
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/apply-pili', children: '立即使用', pcOnly: true },
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showModal, children: '立即咨询' }
   )
 
   return (
@@ -51,7 +49,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <Navigator priceLink="/prices/pili">
+      <Navigator priceLink={urlForPrice(Product.Pili)}>
         {btns.nav}
       </Navigator>
 
