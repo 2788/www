@@ -106,8 +106,8 @@ function PageContent() {
               <Button
                 key="1"
                 className={styles.btnQueryPrimary}
-                href="/products/insight?entry=index-banner"
-                type="hollow"
+                href="/products/pandora?entry=index-banner"
+                type="default"
               >
                 免费体验
               </Button>
