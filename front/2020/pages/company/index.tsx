@@ -31,7 +31,8 @@ function PageContent() {
     <>
       <Banner background={banner}>
         <Title>连接数据 重塑价值</Title>
-        <Desc>用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量</Desc>
+        <Desc>我们的使命是：用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量<br /><br />
+          我们的愿景是：成为 5G 时代的异构数据湖与数据分析平台的第一品牌</Desc>
       </Banner>
 
       <PageNotice>
@@ -55,10 +56,10 @@ function PageContent() {
 
       <Section title="关于七牛" name="about" header="七牛是一家怎样的公司？">
         <section className={styles.about}>
-          <p className={styles.passage}>七牛云创立于 2011 年，是国内知名的云计算及数据服务提供商，持续在海量文件存储、CDN 内容分发、视频点播、
-            互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。</p>
-          <p className={styles.passage}>从最初的提升客户的 IT 效能，缩短从想法到产品之间的距离，到今天更进一步致力于提升客户的 DT 效能，七牛云基于领先的云存储能力建立了统一的异构数据湖，
-            打造了完备的视频云服务闭环，并创建了简洁开放的机器数据处理平台。</p>
+          <p className={styles.passage}>七牛云创立于 2011 年，总部位于上海，在北京、深圳、广州、成都、杭州、厦门、武汉等地设有分公司和研发中心。作为国内知名的云计算及数据服务提供商，
+            七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。</p>
+          <p className={styles.passage}>经过八年的技术沉淀和打磨，七牛云紧跟音视频行业发展趋势，提供了一套音视频领域端到端的一站式服务。数据的采集、上传、存储、处理、分析都可以在七牛云平台完成。
+            目前，已经有超过 100 万企业客户和开发者长期使用七牛云的音视频服务，其中包括 OPPO、B 站、爱奇艺、平安银行、招商银行等知名企业，间接覆盖了 90% 的中国网民。</p>
           <p className={styles.passage}>七牛云始终追求为用户提供全方位的一站式云 + 数据的服务和多场景解决方案，客户数已经超过百万。</p>
           <div className={styles.gallery}>
             <div className={styles.main} />
@@ -75,27 +76,27 @@ function PageContent() {
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
-            align="left"
-            icon={<Culture1Img className={styles.coreIcon} />}
-            title="做一个简单的人"
-          >
-            <FeatureDesc>以认定方向为坚持目标，以奋斗者为发展根本，坚持劳有所得，多劳多得，赢得员工的信赖</FeatureDesc>
-          </FeatureItem>
-          <FeatureItem
-            pos="top-down"
-            align="left"
-            icon={<Culture2Img className={styles.coreIcon} />}
-            title="做一款简单的产品"
-          >
-            <FeatureDesc>以客户为中心，以结果为导向，坚持化繁为简，追求极致，赢得客户的信赖</FeatureDesc>
-          </FeatureItem>
-          <FeatureItem
-            pos="top-down"
-            align="left"
+            align="center"
             icon={<Culture3Img className={styles.coreIcon} />}
-            title="做一家简单的公司"
+            title="价值观与文化"
           >
-            <FeatureDesc>以社会责任为己任，以公司信用为重要资产，坚持言出必行，诚实守信，赢得社会的信赖</FeatureDesc>
+            <FeatureDesc>简单，可信赖，客户第一<br />极客精神、开放协作、拥抱变化<br />坚韧、诚信、激情</FeatureDesc>
+          </FeatureItem>
+          <FeatureItem
+            pos="top-down"
+            align="center"
+            icon={<Culture1Img className={styles.coreIcon} />}
+            title="使命"
+          >
+            <FeatureDesc>用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量</FeatureDesc>
+          </FeatureItem>
+          <FeatureItem
+            pos="top-down"
+            align="center"
+            icon={<Culture2Img className={styles.coreIcon} />}
+            title="愿景"
+          >
+            <FeatureDesc>成为 5G 时代的异构数据湖与数据分析平台的第一品牌</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

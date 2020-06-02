@@ -38,8 +38,7 @@ function PageContent() {
   }
 
   const btns = useBtns(
-    // TODO: 这边内容跟行为好像不太匹配？
-    { onClick: handleConsult, children: '体验 Demo' }
+    { onClick: handleConsult, children: '咨询详情' }
   )
 
   return (
