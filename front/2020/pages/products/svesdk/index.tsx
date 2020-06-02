@@ -33,7 +33,7 @@ export function Content() {
 
   const btns = useBtns(
     { children: '立即咨询', onClick: showModal },
-    { children: 'Demo 下载', href: '#demo' } // TODO: debug 这里为啥点击了不会滚动
+    { children: 'Demo 下载', href: '#demo' }
   )
 
   return (

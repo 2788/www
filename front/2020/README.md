@@ -29,7 +29,7 @@ yarn dev
 
 测试/开发环境 Janus 环境配置地址：https://spock.qiniu.io/containers/product/www/janus
 
-线上 Janus 环境配置：TODO
+线上 Janus 环境配置：咨询 @tangxuelei
 
 ### 构建
 

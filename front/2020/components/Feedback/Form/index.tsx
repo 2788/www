@@ -90,7 +90,6 @@ function Footer({ onSubmit }: FooterProps) {
   )
 }
 
-// TODO: 改为 Loading
 const loadingMessage = (
   <Loading style={{ width: '30px', transform: 'scale(0.8)' }}>&nbsp;</Loading>
 )

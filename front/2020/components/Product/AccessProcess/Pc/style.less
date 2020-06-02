@@ -7,8 +7,6 @@
 @space-bewteen-icon-name: 26px;
 
 .accessProcess {
-  padding-bottom: @space-bewteen-icon-name + @step-name-line-height * 2;
-
   .subHeader {
     display: block;
     margin-bottom: 50px;
@@ -18,24 +16,11 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     .step {
-      flex: none;
       text-align: center;
-      display: inline-block;
-      width: @step-name-width;
-      position: relative;
 
-      .mask {
-        position: absolute;
-        z-index: 99;
-        left: 0;
-        top: 0;
-        width: @step-name-width;
-        height: @space-bewteen-icon-name + @step-name-line-height * 2 + @step-icon-height;
-      }
-      
       .stepIcon, .stepIconWrapper {
         height: @step-icon-height;
         width: @step-icon-width;
@@ -53,12 +38,7 @@
         margin-top: @space-bewteen-icon-name;
         font-size: 20px;
         line-height: @step-name-line-height;
-        position: absolute;
         width: @step-name-width;
-        height: @step-name-line-height * 2;
-        bottom: -(@space-bewteen-icon-name + @step-name-line-height * 2);
-        left: 0;
-        .ellipsis-line-clamp(2, @step-name-line-height * 2)
       }
     }
   }
@@ -66,7 +46,7 @@
   .connect {
     flex: none;
     width: 34px;
-    height: 24px;
+    height: @step-icon-height;
     .background-image(url(./images/arrow.svg));
     margin-left: 5px;
     margin-right: 5px;

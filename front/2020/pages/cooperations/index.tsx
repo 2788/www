@@ -40,7 +40,6 @@ export default function CooperationsPage() {
           </Step>
           <Step icon={<IconStep3 />}>
             上线
-            {/* TODO: 样式问题，内容被截断 */}
             <p className={style.stepDesc}>如果您提交的资源通过审核后，我们会将其上线到社区资源。</p>
           </Step>
         </AccessProcess>

@@ -4,6 +4,8 @@
 
 import React from 'react'
 import { useMobile } from 'hooks/ua'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -59,7 +61,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink="/TODO">{btns.nav}</Navigator>
+      <Navigator priceLink={urlForPrice(Product.Censor)}>{btns.nav}</Navigator>
 
       <Feature name="specs" title="产品规格">
         <feature.Group>

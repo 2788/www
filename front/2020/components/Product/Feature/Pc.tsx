@@ -57,7 +57,6 @@ export function PcFeatureItem(props: IPcFeatureItemProps) {
 export function PcFeatureLink(props: IPcFeatureLinkProps) {
   const { href, children } = props
 
-  // TODO
   // 用 <object> 包住 <a> 标签是用于阻断 <a> 标签嵌套检测
   // https://blog.csdn.net/qq_34973481/article/details/88948994
   // 这个方法比较邪性，也不知道后续会产生什么负面影响

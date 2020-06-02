@@ -10,17 +10,23 @@ import { StepProps, AccessProcessProps } from '..'
 import styles from './style.less'
 
 export function Step({ icon, url, onClick, children }: PropsWithChildren<StepProps>) {
+  const iconView = (
+    typeof icon === 'string'
+    ? <img className={styles.stepIcon} src={icon} />
+    : <div className={styles.stepIconWrapper}>{icon}</div>
+  )
+  let content = (
+    <>
+      {iconView}
+      <div onClick={onClick} className={styles.stepName}>{children}</div>
+    </>
+  )
+  if (url != null) {
+    content = <a href={url} target="_blank" rel="noopener">{content}</a>
+  }
   return (
     <li className={styles.step}>
-      {
-        typeof icon === 'string'
-          ? <img className={styles.stepIcon} src={icon} />
-          : <div className={styles.stepIconWrapper}>{icon}</div>
-      }
-      <div onClick={onClick} className={styles.stepName}>{children}</div>
-      {
-        url && <a href={url} target="_blank" rel="noopener" className={styles.mask} />
-      }
+      {content}
     </li>
   )
 }

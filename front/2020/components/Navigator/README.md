@@ -44,7 +44,7 @@ function Main() {
     <Navigatable>
 
       {/* 导航栏 */}
-      <Navigator priceLink="/TODO">
+      <Navigator priceLink="/prices/foo">
         <NavButton type="primary" href="/products/kodo">免费试用</NavButton>
         <NavButton withBorder onClick={handleConsult}>售前咨询</NavButton>
       </Navigator>
