@@ -4,6 +4,7 @@
 
 import React, { useState } from 'react'
 import { Scene, Suggestion } from 'apis/censor/common'
+import { withLoading } from 'utils/loading'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 
@@ -103,16 +104,17 @@ enum ApiInfoType {
 type ApiResultProps = {
   request: object | null
   response: object | null
+  loading: boolean
 }
 
-export function ApiResult({ request, response }: ApiResultProps) {
+export function ApiResult({ request, response, loading }: ApiResultProps) {
 
   const [type, setType] = useState(ApiInfoType.Request)
 
   const requestView = type === ApiInfoType.Request && request && (
     <JSONViewer src={request} />
   )
-  const responseView = type === ApiInfoType.Response && (
+  const responseView = type === ApiInfoType.Response && withLoading(loading)(
     <JSONViewer src={response || {}} />
   )
 

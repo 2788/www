@@ -87,7 +87,11 @@ export default function VideoPlayground() {
         </form>
       </div>
       <div className={style.right}>
-        <ApiResult request={requestForDisplay} response={responseForDisplay} />
+        <ApiResult
+          request={requestForDisplay}
+          response={responseForDisplay}
+          loading={loading}
+        />
       </div>
     </div>
   )

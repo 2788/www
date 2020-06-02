@@ -43,6 +43,8 @@ function PageContent() {
     { href: 'https://portal.qiniu.com/censor', children: '立即使用', pcOnly: true }
   )
 
+  const priceUrl = urlForPrice(Product.Censor)
+
   return (
     <>
       <PageBanner
@@ -61,7 +63,7 @@ function PageContent() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink={urlForPrice(Product.Censor)}>{btns.nav}</Navigator>
+      <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
       <Feature name="specs" title="产品规格">
         <feature.Group>
@@ -112,7 +114,7 @@ function PageContent() {
 
       <PurchaseInfo title="产品优惠">
         <PurchaseInfoItem title="智能审核" desc="按次阶梯价格">
-          <PurchaseInfoAction url="https://developer.qiniu.com/censor/manual/4833/censor-price">查看详情</PurchaseInfoAction>
+          <PurchaseInfoAction url={priceUrl}>查看详情</PurchaseInfoAction>
         </PurchaseInfoItem>
         <PurchaseInfoItem title="资源包" desc="特惠套餐包">
           <PurchaseInfoAction url="https://developer.qiniu.com/censor/manual/4835/censor-plus-manual">查看价格</PurchaseInfoAction>
