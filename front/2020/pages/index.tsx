@@ -24,20 +24,22 @@ import TryAndContact from 'components/pages/index/TryAndContact'
 
 import styles from './style.less'
 
-import BannerIcon from './_images/headerBanner.png'
 import Banner1Icon from './_images/headerBanner1.png'
 import Banner2Icon from './_images/headerBanner2.png'
-import MobileBannerIcon from './_images/mobileHeaderBanner.png'
+import Banner3Icon from './_images/headerBanner3.png'
+import Banner4Icon from './_images/headerBanner4.png'
 import MobileBanner1Icon from './_images/mobileHeaderBanner1.png'
 import MobileBanner2Icon from './_images/mobileHeaderBanner2.png'
+import MobileBanner3Icon from './_images/mobileHeaderBanner3.png'
+import MobileBanner4Icon from './_images/mobileHeaderBanner4.png'
 import Core1Icon from './_images/core1.svg'
 import Core2Icon from './_images/core2.svg'
 import Core3Icon from './_images/core3.svg'
 import Core4Icon from './_images/core4.svg'
 
 function useBannerImg() {
-  const webImgList = [BannerIcon, Banner1Icon, Banner2Icon]
-  const mobileImgList = [MobileBannerIcon, MobileBanner1Icon, MobileBanner2Icon]
+  const webImgList = [Banner1Icon, Banner2Icon, Banner3Icon, Banner4Icon]
+  const mobileImgList = [MobileBanner1Icon, MobileBanner2Icon, MobileBanner3Icon, MobileBanner4Icon]
   const isMobile = useMobile()
   return isMobile ? mobileImgList : webImgList
 }
@@ -50,13 +52,13 @@ function PageContent() {
 
   return (
     <>
-      <Carousel className={styles.headerBanner}>
+      <Carousel className={styles.headerBanner} autoplay>
         <PageBanner
           className={styles.bannerKodoOversea}
           title={<>海外云存储 <strong>优惠专场</strong></>}
           desc={<><strong>免费套餐</strong> 任你选 出海快人一步</>}
           bgColor="#0A1639"
-          bgImg={headerBannerImgs[1]}
+          bgImg={headerBannerImgs[0]}
           btns={[
             <Button
               key="1"
@@ -72,7 +74,7 @@ function PageContent() {
           title="私有云存储"
           desc="企业数字资产的管理专家"
           bgColor="#20176B"
-          bgImg={headerBannerImgs[2]}
+          bgImg={headerBannerImgs[1]}
           btns={[
             <Button
               key="1"
@@ -90,6 +92,42 @@ function PageContent() {
               withBorder
             >
               下载试用
+            </Button>
+          ]}
+        />
+        <PageBanner
+          className={styles.bannerQuery}
+          title={<>数据分析平台 <span className={styles.upgrade}>重磅升级</span></>}
+          desc={<>新功能 <strong>业务链路关联查询</strong> 为您还原业务路径、全面分析业务</>}
+          bgColor="#2C6DD2"
+          bgImg={headerBannerImgs[2]}
+          btns={[
+            <>
+              <Button
+                key="1"
+                className={styles.btnQueryPrimary}
+                href="/products/insight?entry=index-banner"
+                type="hollow"
+              >
+                免费体验
+              </Button>
+              <p className={styles.tip}>更多新功能持续放出中</p>
+            </>
+          ]}
+        />
+        <PageBanner
+          title="转码时长包 年中优惠来袭"
+          desc="为您还原业务路径、全面分析业务"
+          bgColor="#ED5620"
+          bgImg={headerBannerImgs[3]}
+          btns={[
+            <Button
+              key="1"
+              className={styles.btnTransCodePrimary}
+              href="/events/dora-package?entry=index-banner"
+              type="default"
+            >
+              查看详情
             </Button>
           ]}
         />

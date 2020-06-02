@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from 'react'
 
-import { useModal } from 'components/Feedback'
 import Button from 'components/UI/Button'
 import Section from 'components/pages/index/Section'
 
@@ -22,7 +21,6 @@ export function Panel({ title, desc, children }: PropsWithChildren<PanelProps>) 
 }
 
 export default function TryAndContact() {
-  const { showModal } = useModal()
   return (
     <Section className={styles.tryAndContant} title="">
       <Panel
@@ -33,9 +31,9 @@ export default function TryAndContact() {
       </Panel>
       <Panel
         title="联系我们"
-        desc="提供产品售前和售后的资讯服务，以及市场合作。"
+        desc="提供产品售前和售后的咨询服务，以及市场合作。"
       >
-        <Button type="hollow" withBorder onClick={showModal}>点击咨询</Button>
+        <Button type="hollow" withBorder href="/contact">点击咨询</Button>
       </Panel>
     </Section>
   )

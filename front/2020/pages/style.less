@@ -21,6 +21,44 @@
     font-weight: inherit;
   }
 
+  .bannerQuery {
+    strong {
+      color: #F3D18F;
+      font-weight: inherit;
+    }
+    .upgrade {
+      font-size: 18px;
+      margin-left: 8px;
+      line-height: 32px;
+      padding: 0 5px;
+      display: inline-block;
+      vertical-align: 10px;
+      background: #FA8C16;
+
+      .mobile({
+        display: none;
+      });
+    }
+    .tip {
+      margin-top: 10px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      .mobile({
+        margin-top: 5px;
+        font-size: 10px;
+        position: absolute;
+      });
+    }
+
+    .btnQueryPrimary {
+      color: white;
+      background: #33DAA8;
+      &:hover {
+        border: none;
+      }
+    }
+  }
+
   .btnKodoOverseaPrimary {
     color: #0A1639;
   }
@@ -33,6 +71,10 @@
     &:hover {
       color: #20176B !important;
     }
+  }
+
+  .btnTransCodePrimary {
+    color: #ED5620;
   }
 
   :global {

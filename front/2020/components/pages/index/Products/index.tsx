@@ -2,6 +2,7 @@ import React, { ReactNode, PropsWithChildren, useState } from 'react'
 import QueueAnim from 'rc-queue-anim'
 import classnames from 'classnames'
 
+import { useModal } from 'components/Feedback'
 import { useMobile } from 'hooks/ua'
 import Section from 'components/pages/index/Section'
 import Tabs, { TabPane } from 'components/UI/Tabs'
@@ -26,9 +27,15 @@ interface CardProps {
 }
 
 function Card({ icon, title, href, disabled, children }: PropsWithChildren<CardProps>) {
+  const { showModal } = useModal()
+
+  function handleConsult() {
+    showModal()
+  }
+
   if (!href) {
     return (
-      <UICard className={classnames(styles.card, disabled && styles.disabled)}>
+      <UICard onClick={handleConsult} className={classnames(styles.card, disabled && styles.disabled)}>
         {icon}
         <Content className={styles.content}>
           <Title className={styles.title}>{title}</Title>
@@ -111,7 +118,7 @@ function ProductsForMobile() {
             title={nameMap[Product.Hdfs]}
             href={urlMap[Product.Hdfs] || undefined}
           >
-            正在建设，敬请期待
+            即将上线，欢迎垂询
           </MenuItem>
         </PaneForMobile>
       </SubMenu>
@@ -252,9 +259,8 @@ export function ProductsForPc() {
               icon={<ProductIcon className={styles.icon} product={Product.Hdfs} />}
               title={nameMap[Product.Hdfs]}
               href={urlMap[Product.Hdfs] || undefined}
-              disabled
             >
-              正在建设，敬请期待
+              即将上线，欢迎垂询
             </Card>
           </Anim>
         </TabPane>
