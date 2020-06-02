@@ -16,6 +16,7 @@ import { useModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
+import Link from 'components/Link'
 
 import Advantage from 'components/pages/svesdk/Advantage'
 import ProductFeature from 'components/pages/svesdk/Feature'
@@ -58,12 +59,12 @@ export function Content() {
         </LinkGroup>
       </LinkGroups>
       <AccessProcess header="接入流程">
-        <Step icon={<Step1 />} onClick={showModal}>售前咨询</Step>
+        <Step icon={<Step1 />} onClick={showModal}><Link blue onClick={showModal}>售前咨询 &gt;&gt;</Link></Step>
         <Step icon={<Step2 />}>申请试用</Step>
         <Step icon={<Step3 />}>接入测试</Step>
         <Step icon={<Step4 />}>正式购买</Step>
       </AccessProcess>
-      <UsageGuide title="注册即可体验全方位短视频特效 SDK">
+      <UsageGuide title="全方位体验短视频特效 SDK">
         <UsageGuideButton onClick={showModal}>
           立即咨询
         </UsageGuideButton>
