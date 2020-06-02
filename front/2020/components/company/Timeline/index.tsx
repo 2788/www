@@ -45,7 +45,7 @@ function Event({ title, content, position, top }: EventProps) {
 
 export default function Timeline() {
   return (
-    <Section title="七牛点点滴滴" name="timeline" header="七牛云点点滴滴">
+    <Section title="企业发展历史" name="timeline">
       <div className={styles.timeline}>
         <TimeNode year={2011} height={160}>
           <Event title="2011 年 08 月" content="七牛云成立" position="left" top={40} />

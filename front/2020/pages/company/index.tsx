@@ -15,6 +15,7 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 import Timeline from 'components/company/Timeline'
+import Honor from 'components/company/Honor'
 
 import styles from './style.less'
 
@@ -72,7 +73,7 @@ function PageContent() {
         </section>
       </Section>
 
-      <Feature grey name="culture" title="七牛文化">
+      <Feature grey name="culture" title="七牛云文化">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
@@ -102,6 +103,8 @@ function PageContent() {
       </Feature>
 
       <Timeline />
+
+      <Honor />
 
     </>
   )
