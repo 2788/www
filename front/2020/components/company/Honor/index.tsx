@@ -4,9 +4,8 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import classnames from 'classnames'
 
-import { LayoutCard, Title, Desc } from 'components/UI/Card'
+import { Row, LayoutCard, Content, Title, Desc } from 'components/UI/Card'
 import Section from 'components/Product/Section'
 
 import styles from './style.less'
@@ -19,11 +18,13 @@ export interface CardProps {
 
 function Card({ title, issuer, time }: CardProps) {
   return (
-    <LayoutCard className={classnames(styles.card)}>
-      <Title className={styles.title}>{title}</Title>
-      <Desc className={styles.issuer}>{issuer}</Desc>
-      <div className={styles.time}>{time}</div>
-    </LayoutCard>
+    <div className={styles.card}>
+      <Content>
+        <Title className={styles.title}>{title}</Title>
+        <Desc className={styles.issuer}>{issuer}</Desc>
+        <p className={styles.time}>{time}</p>
+      </Content>
+    </div>
   )
 }
 
@@ -33,17 +34,17 @@ export interface YearlyProps {
 
 function YearlyHonor({ year, children }: PropsWithChildren<YearlyProps>) {
   return (
-    <div className={styles.yearly}>
+    <LayoutCard>
       <h3 className={styles.year}>{year}</h3>
       {children}
-    </div>
+    </LayoutCard>
   )
 }
 
 export default function Honor() {
   return (
     <Section title="公司荣誉" name="honor">
-      <div className={styles.honor}>
+      <Row>
         <YearlyHonor year="2020">
           <Card
             title="荣获 “2019 云计算领域最具领导力企业”"
@@ -107,7 +108,7 @@ export default function Honor() {
             time="2017 年 06 月"
           />
         </YearlyHonor>
-      </div>
+      </Row>
     </Section>
   )
 }
