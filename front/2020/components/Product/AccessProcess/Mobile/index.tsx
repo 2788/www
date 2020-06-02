@@ -13,7 +13,7 @@ interface StepTagProps {
   tag?: number
 }
 
-export function Step({ icon, url, tag, children }: PropsWithChildren<StepProps & StepTagProps>) {
+export function Step({ icon, url, tag, onClick, children }: PropsWithChildren<StepProps & StepTagProps>) {
   return (
     <div className={styles.step}>
       {
@@ -25,9 +25,9 @@ export function Step({ icon, url, tag, children }: PropsWithChildren<StepProps &
           : <div className={styles.stepIconContainer}>{React.cloneElement(icon as any, { width: '60px', height: '60px' })}</div>
       }
       {
-        url && <a href={url} target="_blank" rel="noopener" className={styles.mask} />
+        url && <a href={url} onClick={onClick} target="_blank" rel="noopener" className={styles.mask} />
       }
-      <div className={styles.stepName}>{children}</div>
+      <div onClick={onClick} className={styles.stepName}>{children}</div>
     </div>
   )
 }
@@ -37,7 +37,7 @@ export function AccessProcess({
 }: PropsWithChildren<AccessProcessProps>) {
   return (
     <div className={styles.accessProcess}>
-      { subHeader && <div className={styles.subHeader}>{subHeader}</div> }
+      {subHeader && <div className={styles.subHeader}>{subHeader}</div>}
       <ul className={styles.process}>
         {Children.map(children, (child, idx) => child && cloneElement(child as any, { tag: idx + 1 }))}
       </ul>

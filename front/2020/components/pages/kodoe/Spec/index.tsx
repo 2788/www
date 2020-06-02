@@ -49,7 +49,7 @@ export default function KodoeSpec() {
           </tr>
           <tr>
             <td className={styles.title}>兼容平台</td>
-            <td>标准 X86 服务器</td>
+            <td>标准 X86，ARM 平台服务器</td>
           </tr>
           <tr>
             <td className={styles.title}>兼容磁盘</td>

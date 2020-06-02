@@ -17,14 +17,15 @@ import PlusIcon from './plus.svg'
 import style from './index.less'
 
 type InputNumberProps = Omit<InputProps, 'defaultValue' | 'value' | 'onInput' | 'onChange'> & {
+  min?: number
   defaultValue?: string
   // 空字符串会吐出 0
-  onChange(value: number): void
+  onChange(value?: number): void
   // 是否显示加减按钮
   showBtns?: boolean
 }
 // 暂不处理 value
-export default function InputNumber({ defaultValue = '', onChange, showBtns, ...rest }: InputNumberProps) {
+export default function InputNumber({ defaultValue = '', min = 1, onChange, showBtns, ...rest }: InputNumberProps) {
   const [value, setValue] = useState(defaultValue)
 
   function handleInput(event: React.FormEvent<HTMLInputElement>) {
@@ -34,14 +35,15 @@ export default function InputNumber({ defaultValue = '', onChange, showBtns, ...
       setValue('')
     }
 
-    if (/^(0|[1-9][0-9]*)$/.test(current)) {
+    // 只能输入空或者大于最小值的值
+    if (/^(0|[1-9][0-9]*)$/.test(current) && +current >= min) {
       setValue(current)
     }
   }
 
   function handleMinus() {
     const num = +value
-    if (num > 1) {
+    if (num > min) {
       setValue(String(num - 1))
       onChange(num - 1)
     }
@@ -55,14 +57,18 @@ export default function InputNumber({ defaultValue = '', onChange, showBtns, ...
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const current = (event.target as HTMLInputElement).value
-    if (current === '' || current !== value && /^(0|[1-9][0-9]*)$/.test(current)) {
+    if (current === '') {
+      onChange(min)
+    }
+
+    if (current !== value && /^(0|[1-9][0-9]*)$/.test(current) && +current >= min) {
       onChange(+current)
     }
   }
 
   return (
     <>
-      {showBtns && <Button onClick={handleMinus} disabled={+value === 1} position="left"><MinusIcon /></Button>}
+      {showBtns && <Button onClick={handleMinus} disabled={+value <= min} position="left"><MinusIcon /></Button>}
       <Input value={value} onInput={handleInput} onChange={handleChange} {...rest} />
       {showBtns && <Button onClick={handlePlus} position="right"><PlusIcon /></Button>}
     </>

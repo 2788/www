@@ -58,7 +58,7 @@ export function Content() {
         </LinkGroup>
       </LinkGroups>
       <AccessProcess header="接入流程">
-        <Step icon={<Step1 />} url="https://www.qiniu.com/products/svesdk">售前咨询</Step>
+        <Step icon={<Step1 />} onClick={showModal}>售前咨询</Step>
         <Step icon={<Step2 />}>申请试用</Step>
         <Step icon={<Step3 />}>接入测试</Step>
         <Step icon={<Step4 />}>正式购买</Step>

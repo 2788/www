@@ -14,6 +14,7 @@ import * as Pc from './Pc'
 export interface StepProps {
   icon: ReactNode
   url?: string
+  onClick?(): void
 }
 
 export function Step(props: PropsWithChildren<StepProps>) {

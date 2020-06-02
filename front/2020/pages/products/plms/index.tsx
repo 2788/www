@@ -15,6 +15,7 @@ import Navigator from 'components/Product/Navigator'
 import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
+import { useModal } from 'components/Feedback'
 
 import ProductFeature from 'components/pages/plms/Feature'
 import Demo from 'components/pages/plms/Demo'
@@ -23,10 +24,10 @@ import Scene from 'components/pages/plms/Scene'
 import imgBanner from './images/banner.png'
 
 export function Content() {
+  const { showModal } = useModal()
 
   const btns = useBtns(
-    // TODO 接入表单
-    { children: '免费体验', href: '/TODO' },
+    { children: '立即咨询', onClick: showModal },
     { children: '接入指南', href: 'https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience' }
   )
 
@@ -62,8 +63,8 @@ export function Content() {
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="注册即可体验全方位直播推流 SDK">
-        <UsageGuideButton href="TODO">
-          免费体验
+        <UsageGuideButton onClick={showModal}>
+          立即咨询
         </UsageGuideButton>
       </UsageGuide>
     </>

@@ -9,7 +9,7 @@ import { StepProps, AccessProcessProps } from '..'
 
 import styles from './style.less'
 
-export function Step({ icon, url, children }: PropsWithChildren<StepProps>) {
+export function Step({ icon, url, onClick, children }: PropsWithChildren<StepProps>) {
   return (
     <li className={styles.step}>
       {
@@ -17,7 +17,7 @@ export function Step({ icon, url, children }: PropsWithChildren<StepProps>) {
           ? <img className={styles.stepIcon} src={icon} />
           : <div className={styles.stepIconWrapper}>{icon}</div>
       }
-      <div className={styles.stepName}>{children}</div>
+      <div onClick={onClick} className={styles.stepName}>{children}</div>
       {
         url && <a href={url} target="_blank" rel="noopener" className={styles.mask} />
       }
@@ -41,7 +41,7 @@ export function AccessProcess({
   })
   return (
     <div className={styles.accessProcess}>
-      { subHeader && <div className={styles.subHeader}>{subHeader}</div> }
+      {subHeader && <div className={styles.subHeader}>{subHeader}</div>}
       <ul className={styles.process}>{stepNodes}</ul>
     </div>
   )
