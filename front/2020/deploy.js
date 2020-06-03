@@ -100,6 +100,9 @@ async function deploy(config) {
   const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
   const outputFiles = await getAllFiles(config.outputPath)
 
+  // 标识是否找到 notFoundPage，如果指定了 notFoundPage 但上传过程中没找到，是要报 warning 的
+  let notFoundPageExisting = false
+
   function deployFile(fileName) {
     const filePath = path.resolve(config.outputPath, fileName)
 
@@ -117,6 +120,13 @@ async function deploy(config) {
       keys.push(fileName)
     }
 
+    // 对于 404 页面，特别地以 error-404 为名上传
+    // 相关文档 https://developer.qiniu.com/kodo/manual/1659/download-setting
+    if (fileName === config.notFoundPage) {
+      notFoundPageExisting = true
+      keys.push('errno-404')
+    }
+
     return Promise.all(keys.map(
       key => uploadFile(filePath, config.bucket, key, mac).then(
         () => console.log(`[UPLOADED] ${key} (${fileName})`)
@@ -126,16 +136,23 @@ async function deploy(config) {
 
   // 同时最多 50 个一起处理（注意最多可能有 50*3=150 个上传请求）
   const deployFiles = batch(deployFile, 50)
-  return deployFiles(outputFiles)
+  await deployFiles(outputFiles)
+
+  if (config.notFoundPage && !notFoundPageExisting) {
+    console.warn('[NOT FOUND] notFoundPage specified, while no such file found.')
+  }
 }
 
 // next export 产物所在目录
 const outputPath = path.resolve(__dirname, 'out')
 
+// 404 对应的 HTML 页面路径（相对于 outputPath）
+const notFoundPage = '404.html'
+
 // 执行命令：node deploy.js $AK $SK $BUCKET
 const [accessKey, secretKey, bucket] = process.argv.slice(2)
 
-deploy({ outputPath, accessKey, secretKey, bucket }).catch(e => {
+deploy({ outputPath, notFoundPage, accessKey, secretKey, bucket }).catch(e => {
   console.error(`[ERROR] Deploy failed: ${e}`)
   process.exit(1)
 })
