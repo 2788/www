@@ -71,10 +71,10 @@ export default function RtcScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer}>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>支持远程多方视频会诊，突破医疗资源的地域限制，以及系统平台限制，提高医患时间地域灵活性，降低诊断成本。</p>
+          <p className={styles.sceneContent}>灵活支持互动小班、万人大班，Native 和 Web 互通，满足多场景下的教育需求。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>适用场景</p>
           <ul className={styles.sceneList}>
-            <li className={styles.item}>远程协同、 远程会诊、 手术教学</li>
+            <li className={styles.item}>互动小班、 大型公开课、 K12 在线辅导、 职业技能培训</li>
           </ul>
         </SceneBlock>
       </ScenePanel>
@@ -85,10 +85,10 @@ export default function RtcScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer}>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>支持远程多方视频会诊，突破医疗资源的地域限制，以及系统平台限制，提高医患时间地域灵活性，降低诊断成本。</p>
+          <p className={styles.sceneContent}>支持向技术支持人员发起视频通话请求，技术支持人员通过视频指导用户操作，快速定位、解决问题，提升服务品质和产品美誉度。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>适用场景</p>
           <ul className={styles.sceneList}>
-            <li className={styles.item}>远程协同、 远程会诊、 手术教学</li>
+            <li className={styles.item}>银行证券开户、 电商在线客服、 保险取证</li>
           </ul>
         </SceneBlock>
       </ScenePanel>

@@ -42,7 +42,7 @@ export default function CustomerRemarks() {
           icon={BiliIcon}
           customer="bilibili"
           remark="通过深入分析客户的业务场景，在客户业务架构不做任何改变的情况下，优化资源流量命中率提升达 30%；优化首播八分位数据 300ms。
-整合 QCDN + 存储 + DORA 的全套解决方案，为客户降低回源成本，减少源站压力" />
+整合 QCDN + 存储 + Dora 的全套解决方案，为客户降低回源成本，减少源站压力。" />
         <CustomerRemark
           icon={OppoIcon}
           customer="OPPO"

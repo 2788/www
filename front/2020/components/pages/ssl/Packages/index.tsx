@@ -4,9 +4,6 @@
  */
 
 import React from 'react'
-import { Product } from 'constants/products'
-import { urlForPrice } from 'utils/route'
-import { urlFor } from 'utils'
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
 
@@ -14,29 +11,27 @@ import CheckedIcon from './checked.svg'
 import style from './index.less'
 
 export default function Products() {
-  const priceUrl = urlFor(urlForPrice(Product.Ssl), {
-    entry: 'kodo-page'
-  })
+  const sslUrl = 'https://portal.qiniu.com/certificate/apply'
   return (
     <Section name="products" title="产品规格" header="热销产品规格">
       <Card
         title="DV 个人免费证书"
-        detailLink={priceUrl}
+        detailLink={sslUrl}
         sellPoints={['适合行业：个人网站', '域名支持：单个', '加密等级：较弱', '签发时间：小时级']}
       />
       <Card
         title="DV 泛域名证书"
-        detailLink={priceUrl}
+        detailLink={sslUrl}
         sellPoints={['适合行业：个人网站', '域名支持：多个', '加密等级：较弱', '签发时间：小时级']}
       />
       <Card
         title="OV 企业证书"
-        detailLink={priceUrl}
+        detailLink={sslUrl}
         sellPoints={['适合行业：企业网站', '域名支持：单个', '加密等级：较强', '签发时间：3 ～ 5 个工作日']}
       />
       <Card
         title="EV 企业增强证书"
-        detailLink={priceUrl}
+        detailLink={sslUrl}
         sellPoints={['适合行业：企业网站', '域名支持：单个', '加密等级：非常强', '签发时间：3 ～ 5 个工作日']}
       />
     </Section>

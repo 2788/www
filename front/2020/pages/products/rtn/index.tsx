@@ -88,7 +88,7 @@ function PageContent() {
             title="实时录制"
             className={style.feature}
           >
-            <FeatureDesc>支持全球加速分发音视频，上行数据可转码成 RTMP、HTTP、HLS 协议，方便用户通过 Web 或流媒体播放器观看</FeatureDesc>
+            <FeatureDesc>支持音视频录制、存储、转码、分发和点播，可录制观众观看到的流，用于点播回放</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
 

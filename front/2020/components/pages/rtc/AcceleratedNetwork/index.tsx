@@ -27,11 +27,12 @@ function Advantage({ title, children }: PropsWithChildren<AdvantageProps>) {
 export function Advantages() {
   return (
     <div className={styles.advantages}>
-      <Advantage title="方便易用">零门槛接入，一键获取七牛 CDN 产品</Advantage>
-      <Advantage title="全站定制">打造您自己的品牌和服务口碑</Advantage>
-      <Advantage title="提升收入">利用财务激励和特惠提供业务机会</Advantage>
-      <Advantage title="高效服务">获取七牛专业的产品技术支持，后续无忧技术保障</Advantage>
-      <Advantage title="技术支持">七牛 CDN 服务数十万客户，具有良好的技术服务基础</Advantage>
+      <Advantage title="全球节点">全球节点 180+<br />支持全球 200+ 国家和地区互动</Advantage>
+      <Advantage title="实时性">延迟 150ms 左右</Advantage>
+      <Advantage title="传输协议">基于 WebRTC<br />接入门槛低，兼容性强，用户体验好</Advantage>
+      <Advantage title="加速方案">全自研边缘加速方案<br />实现信息在全球网络的实时共享交互</Advantage>
+      <Advantage title="调度策略">智能分配流媒体服务器和加速线路<br />快速响应全球实时互动需求</Advantage>
+      <Advantage title="质量监控">网络品质监控与自动调度系统<br />实时优化传输质量</Advantage>
     </div>
   )
 }

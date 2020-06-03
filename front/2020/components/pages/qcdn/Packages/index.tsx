@@ -4,27 +4,31 @@
  */
 
 import React from 'react'
-import { Product } from 'constants/products'
-import { urlForPrice } from 'utils/route'
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
+import { urlFor } from 'utils'
 
 import CheckedIcon from './checked.svg'
 import style from './index.less'
 
 export default function Packages() {
-  const priceUrl = urlForPrice(Product.Cdn)
   return (
     <Section name="packages" title="热销套餐" grey>
       <Card
         title="新客专享"
-        desc="限未使用过 CDN 的客户购买"
+        desc="限 2020 年 4 月 1 日后注册并未使用过 CDN 的客户购买"
         category="国内静态加速流量"
-        capacity="500 GB"
-        categoryDesc="每月发放 20 GB，连续发放 5 个月"
-        price="7.7"
-        detailLink={priceUrl}
-        sellPoints={['适用时段：全时段可用', '类型：HTTP']}
+        capacity="200 GB"
+        categoryDesc="每月发放 50 GB，连续发放 4 个月"
+        price="1.00"
+        detailLink={
+          urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
+            type: '国内HTTP日间时段静态加速流量',
+            settlement: 'minimum',
+            capacity: '200GB'
+          })
+        }
+        sellPoints={['适用时段：日间时段可用', '类型：HTTP']}
       />
       <Card
         title="入门型"
@@ -32,8 +36,14 @@ export default function Packages() {
         category="国内静态加速流量"
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
-        price="98"
-        detailLink={priceUrl}
+        price="88.20"
+        detailLink={
+          urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
+            type: '国内HTTP全时段静态加速流量',
+            settlement: 'lifetime',
+            capacity: '500GB'
+          })
+        }
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -42,8 +52,14 @@ export default function Packages() {
         category="国内静态加速流量"
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
-        price="193"
-        detailLink={priceUrl}
+        price="173.70"
+        detailLink={
+          urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
+            type: '国内HTTP全时段静态加速流量',
+            settlement: 'lifetime',
+            capacity: '1TB'
+          })
+        }
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -52,8 +68,14 @@ export default function Packages() {
         category="国内静态加速流量"
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
-        price="942"
-        detailLink={priceUrl}
+        price="847.80"
+        detailLink={
+          urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
+            type: '国内HTTP全时段静态加速流量',
+            settlement: 'lifetime',
+            capacity: '5TB'
+          })
+        }
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
     </Section>
@@ -107,7 +129,7 @@ function Card(props: CardProps) {
           <span>{unit}</span>
         </p>
         <Button className={style.button} href={detailLink} type="hollow" withBorder>
-          了解详情
+          立即购买
         </Button>
       </div>
     </div>

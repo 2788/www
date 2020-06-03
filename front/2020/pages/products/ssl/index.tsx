@@ -106,9 +106,9 @@ function PageContent() {
             pos="top-down"
             align="left"
             icon={<ImproveSearchRanking />}
-            title="数据加密传输"
+            title="提升搜索排名"
           >
-            <FeatureDesc>HTTPS 是加密传输网络协议，可防止数据在传输过程中不被窃取、改变，确保数据的完整性</FeatureDesc>
+            <FeatureDesc>在搜索引擎 SEO 中，比起同等 HTTP 网站，采用 HTTPS 加密的网站在搜索结果中的排名将会更高</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

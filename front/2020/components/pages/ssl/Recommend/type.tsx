@@ -5,11 +5,6 @@ export enum SiteType {
   Enterprise
 }
 
-// const siteTypeTextMap = {
-//   [SiteType.Personal]: '个人网站',
-//   [SiteType.Enterprise]: '企业网站'
-// }
-
 export enum DomainType {
   Normal,
   Wildcard,
@@ -267,7 +262,7 @@ export const certList: CertInfo[] = [
   // it企业网站
   {
     brand: CertBrand.DigiCert,
-    type: CertType.Dv,
+    type: CertType.Ov,
     price: 4850,
     unit: '元/年',
     chooseInfo: {
@@ -352,7 +347,7 @@ export const certList: CertInfo[] = [
   },
   {
     brand: CertBrand.Geotrust,
-    type: CertType.Ov,
+    type: CertType.Ev,
     price: 4850,
     unit: '元/年',
     chooseInfo: {
@@ -415,7 +410,7 @@ export const certList: CertInfo[] = [
 export const certForCompanySite = {
   brand: CertBrand.DigiCert,
   type: CertType.Ov,
-  price: 9700,
+  price: 4850,
   unit: '元/年'
 }
 
