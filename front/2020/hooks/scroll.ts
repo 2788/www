@@ -36,12 +36,12 @@ class AnimatingHolder extends Emitter {
 
 const animatingHolder = new AnimatingHolder()
 
-/** 使用当前滚动高度（通过监听滚动事件 with debounce） */
+/** 使用当前页面滚动高度（通过监听滚动事件 with debounce） */
 export function useScrollTop(debounceWait = defaultDebounceWait) {
   const [scrollTop, setScrollTop] = useState(0)
 
   const syncScrollTop = useCallback(() => {
-    setScrollTop(getScrollContainer().scrollTop)
+    setScrollTop(getGlobalScrollTop())
   }, [])
 
   // 第三方库 moveto 在 module init 的时候就会尝试读 window，故它延后加载，这里存放其导出
@@ -54,18 +54,17 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
   }, [])
 
   const scrollTo = useCallback((top: number, duration = defaultScrollDuration) => {
-    const container = getScrollContainer()
     if (duration <= 0 || !MoveToRef.current) {
       window.scroll({ top })
       return
     }
     const MoveToConstr = MoveToRef.current
-    const moveTo = new MoveToConstr({ duration, container })
+    const moveTo = new MoveToConstr({ duration })
 
     animatingHolder.start(duration)
     // https://github.com/hsnaydd/moveTo/blob/164a7b47186282f48a4088b14d0c6fd8eb5cffef/src/moveTo.js#L157
     // Element.scroll 方法在 ie10 显示空字符串，改成从 window 调用
-    moveTo.move(top - container.scrollTop, { container: window })
+    moveTo.move(top - getGlobalScrollTop(), { container: window })
   }, [])
 
   // 页面滚动时同步 scrollTop
@@ -120,7 +119,9 @@ export function useSticky() {
   ] as const
 }
 
-/** 获取滚动容器，目前只支持直接在 body 中的滚动 */
-function getScrollContainer() {
-  return window.document.documentElement
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
+function getGlobalScrollTop() {
+  if (window.pageXOffset !== undefined) return window.pageYOffset
+  if (document.compatMode === 'CSS1Compat') return document.documentElement.scrollTop
+  return document.body.scrollTop
 }
