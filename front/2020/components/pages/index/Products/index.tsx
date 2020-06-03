@@ -219,7 +219,7 @@ export function ProductsForPc() {
       <Tabs value={activeKey} onChange={onTabChange}>
         {tabPanesView}
       </Tabs>
-      <Link href="/invite" className={styles.explore}>开始免费体验</Link>
+      <Link href="/events/free" className={styles.explore}>开始免费体验</Link>
     </>
   )
 }
@@ -227,7 +227,7 @@ export function ProductsForPc() {
 export default function Products() {
   const isMobile = useMobile()
   return (
-    <Section grey className={styles.products} title="云产品" style={{ padding: isMobile ? '0' : 'auto' }}>
+    <Section className={styles.products} title="云产品" style={{ padding: isMobile ? '0' : 'auto' }}>
       {
         isMobile ? <ProductsForMobile /> : <ProductsForPc />
       }

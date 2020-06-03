@@ -77,7 +77,7 @@ export default function News() {
   const pages = getPagesFromNews(news)
   const isMobile = useMobile()
   return (
-    <Section className={styles.news} grey title="七牛资讯" subtitle="七牛热点资讯、前瞻技术，从 IT 到 DT 的时代，让我们连接数据，重塑价值!">
+    <Section className={styles.news} title="七牛资讯" subtitle="七牛热点资讯、前瞻技术，从 IT 到 DT 的时代，让我们连接数据，重塑价值!">
       {isMobile && <div className={styles.splitLine} />}
       <Carousel>
         {

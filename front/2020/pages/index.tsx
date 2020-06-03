@@ -135,7 +135,16 @@ function PageContent() {
 
       <Activities />
 
-      <Feature className={styles.core} title="连接数据 重塑价值" subtitle="用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量">
+      <Product />
+
+      <Solutions />
+
+      <Feature
+        className={styles.core}
+        grey
+        title="连接数据 重塑价值"
+        subtitle="成为 5G 时代的异构数据湖与数据分析平台的第一品牌"
+      >
         <FeatureGroup>
           <FeatureItem
             pos="left-right"
@@ -175,10 +184,6 @@ function PageContent() {
           </FeatureItem>
         </FeatureGroup>
       </Feature>
-
-      <Product />
-
-      <Solutions />
 
       <News />
 

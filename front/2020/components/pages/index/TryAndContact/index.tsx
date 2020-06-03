@@ -22,7 +22,7 @@ export function Panel({ title, desc, children }: PropsWithChildren<PanelProps>) 
 
 export default function TryAndContact() {
   return (
-    <Section className={styles.tryAndContant} title="">
+    <Section className={styles.tryAndContant} grey title="">
       <Panel
         title="免费体验，知晓更多产品信息"
         desc="根据我们的操作提示，只需要点击几次鼠标，即可创建产品。"

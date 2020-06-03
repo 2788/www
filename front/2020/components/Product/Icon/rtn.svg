@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
-    <title>实时音视频32*32</title>
-    <desc>Created with Sketch.</desc>
+    <title>短视频SDK备份 22</title>
     <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon" transform="translate(-388.000000, -680.000000)" stroke-width="2">
-            <g id="短视频SDK备份-10" transform="translate(390.000000, 686.000000)" stroke="#333333">
-                <rect id="矩形备份-15" x="0" y="0" width="22" height="20"></rect>
-                <polygon id="矩形备份-16" points="22 5.33333333 28 3 28 17 22 14.6666667"></polygon>
+        <g id="icon" transform="translate(-387.000000, -682.000000)" stroke-width="2">
+            <g id="编组-3" transform="translate(387.000000, 682.000000)">
+                <g id="编组" transform="translate(2.000000, 4.000000)">
+                    <g id="短视频SDK备份-23" stroke="#333333">
+                        <rect id="矩形备份-15" x="0" y="0" width="28" height="20"></rect>
+                    </g>
+                    <line x1="6" y1="24" x2="22" y2="24" id="直线-3备份-5" stroke="#333333" stroke-linecap="square"></line>
+                    <polygon id="三角形备份-27" stroke="#00AAE6" transform="translate(15.000000, 10.000000) rotate(-270.000000) translate(-15.000000, -10.000000) " points="15 6 19 14 11 14"></polygon>
+                </g>
             </g>
-            <circle id="椭圆形备份-3" stroke="#00AAE6" cx="401" cy="693" r="3"></circle>
-            <path d="M395,702.730782 C395,699.417074 397.686292,696.730782 401,696.730782 L401,696.730782 C404.313708,696.730782 407,699.417074 407,702.730782 L407,702.730782 L407,702.730782" id="路径备份-4" stroke="#00AAE6"></path>
         </g>
     </g>
 </svg>
