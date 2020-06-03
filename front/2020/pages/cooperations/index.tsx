@@ -17,7 +17,11 @@ import style from './style.less'
 
 export default function CooperationsPage() {
   return (
-    <Layout title="工具、插件、SDK 合作">
+    <Layout
+      title="工具、插件、SDK 合作"
+      keywords="工具, 插件, SDK, 开发者, 合作"
+      description="七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。通过审核的工具、插件、SDK 将会在七牛云开发者中心社区资源上线。并且，您可以免费享受一定额度的云服务一整年。"
+    >
       <Navigatable>
         <div className={style.banner}>
           <div className={style.bannerContent}>

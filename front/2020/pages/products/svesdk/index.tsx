@@ -75,7 +75,11 @@ export function Content() {
 
 export default function Page() {
   return (
-    <Layout title="短视频特效 SDK">
+    <Layout
+      title="短视频特效 SDK"
+      keywords="短视频特效SDK, 短视频SDK, 七牛云, 七牛短视频, 短视频特效"
+      description="短视频特效 SDK，是七牛云 SDK 团队与字节跳动 SDK 团队共同打造的一款短视频内容创作工具。其融合了移动端的短视频拍摄、编辑、上传等能力于一体，集成了丰富的滤镜和贴纸资源，在火山、轻颜等产品中也有使用。"
+    >
       <Content />
     </Layout>
   )

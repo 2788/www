@@ -65,7 +65,11 @@ export function Content() {
 
 export default function Page() {
   return (
-    <Layout title="直播特效 SDK">
+    <Layout
+      title="直播特效 SDK"
+      keywords="直播sdk, 直播特效 sdk, 特效 sdk, 特效, 美颜"
+      description="直播特效 SDK，由七牛云 SDK 团队和字节跳动特效 SDK 团队联合打造。提供直播推流等基础功能的同时，也可快速集成上线美颜滤镜、大眼瘦脸、美妆美形等特效功能。更有上千款贴纸和滤镜资源可供挑选，火山、轻颜也在用。"
+    >
       <Content />
     </Layout>
   )

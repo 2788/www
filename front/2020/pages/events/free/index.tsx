@@ -15,7 +15,11 @@ import style from './style.less'
 
 export default function FreePage() {
   return (
-    <Layout title="免费云服务套餐">
+    <Layout
+      title="免费云服务套餐"
+      keywords="免费, 免费云服务, 对象存储, CDN 加速, 内容安全, 日志管理, 短视频 SDK, SSL 证书, 云主机, 云短信, 智能多媒体服务"
+      description="七牛云为客户提供对象存储、CDN 加速、内容安全、智能日志管理、短视频 SDK、播放器 SDK、SSL 证书、智能多媒体服务等产品和服务免费套餐，助力企业和开发者零门槛上云。"
+    >
       <Navigatable>
         <Banner background={imgBanner} pcBackgroundSize="auto 100%" backgroundPosition="right">
           <h1 className={style.bannerTitle}>

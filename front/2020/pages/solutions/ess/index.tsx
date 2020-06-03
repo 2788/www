@@ -64,7 +64,11 @@ function PageContent() {
 
 export default function EssPage() {
   return (
-    <Layout title="监控视频边缘存储解决方案">
+    <Layout
+      title="监控视频边缘存储解决方案"
+      keywords="边缘存储, 边缘计算, 七牛云, 视频监控, 物联网"
+      description="面向视频监控行业，在七牛云边缘节点和用户侧部署边缘存储服务，加速视频数据边缘上传，自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。"
+    >
       <PageContent />
     </Layout>
   )

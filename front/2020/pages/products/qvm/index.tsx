@@ -156,7 +156,11 @@ function PageContent() {
 
 export default function QvmPage() {
   return (
-    <Layout title="云主机服务 QVM">
+    <Layout
+      title="云主机服务 QVM"
+      keywords="七牛云, 云服务器, 云主机, 云数据库, 高防"
+      description="七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
+    >
       <PageContent />
     </Layout>
   )

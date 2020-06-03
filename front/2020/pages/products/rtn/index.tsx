@@ -150,7 +150,11 @@ function PageContent() {
 
 export default function RtcPage() {
   return (
-    <Layout title="实时音视频">
+    <Layout
+      title="实时音视频"
+      keywords="连麦, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
+      description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
+    >
       <PageContent />
     </Layout>
   )

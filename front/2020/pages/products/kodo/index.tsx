@@ -101,7 +101,11 @@ function PageContent() {
 
 export default function KodoPage() {
   return (
-    <Layout title="对象存储 Kodo">
+    <Layout
+      title="对象存储 Kodo"
+      keywords="云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案, 视频托管, 图片托管, 低频存储, 镜像存储, 私有部署, 静态资源托管, 备份归档, 数据迁移, 数据灾备, 弹性扩容"
+      description="七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。"
+    >
       <PageContent />
     </Layout>
   )

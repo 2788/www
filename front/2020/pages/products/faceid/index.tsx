@@ -106,9 +106,13 @@ function PageContent() {
   )
 }
 
-export default function ExpressPage() {
+export default function FaceIdPage() {
   return (
-    <Layout title="人脸核验">
+    <Layout
+      title="人脸核验"
+      keywords="人脸核验, 身份验证, 人脸比对, 实名制"
+      description="利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证，广泛应用于数字金融、在线教育、线上政务和直播等各类实名制场景中。"
+    >
       <PageContent />
     </Layout>
   )

@@ -7,7 +7,7 @@ import React from 'react'
 
 import Redirect from 'components/Redirect'
 
-export default function FusionPage() {
+export default function SslPage() {
   const target = '/products/ssl'
 
   return (

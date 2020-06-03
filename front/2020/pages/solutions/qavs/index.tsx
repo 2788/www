@@ -90,7 +90,11 @@ function PageContent() {
 
 export default function QavsPage() {
   return (
-    <Layout title="智能视频云">
+    <Layout
+      title="智能视频云"
+      keywords="智能视频云, 智能视频, 视频云, 视频云服务, 视频云存储, 视频云平台"
+      description="七牛智能视频云为企业提供智能、高效、一站式的视频解决方案，帮助企业节省 70% 系统自建成本，并集成海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能为一体。"
+    >
       <PageContent />
     </Layout>
   )

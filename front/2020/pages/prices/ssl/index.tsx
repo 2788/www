@@ -15,7 +15,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | SSL 证书">
+    <Layout
+      title="价格 | SSL 证书"
+      keywords="ssl证书价格, ssl证书费用, ssl证书多少钱"
+      description=""
+    >
       <Page />
     </Layout>
   )

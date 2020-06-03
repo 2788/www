@@ -250,7 +250,11 @@ function PageContent() {
 
 export default function InsightPage() {
   return (
-    <Layout title="智能日志管理平台">
+    <Layout
+      title="智能日志管理平台"
+      keywords="日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控"
+      description="智能日志管理平台实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计及业务数据分析等场景，已帮助上千家互联网、智能制造、金融、新媒体及物联网等行业客户数字化升级。"
+    >
       <PageContent />
     </Layout>
   )

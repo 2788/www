@@ -17,7 +17,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | CDN">
+    <Layout
+      title="价格 | CDN"
+      keywords="cdn价格, cdn费用, cdn多少钱, cdn价格计算"
+      description=""
+    >
       <Page />
     </Layout>
   )

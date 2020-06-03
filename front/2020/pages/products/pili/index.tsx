@@ -138,7 +138,11 @@ function PageContent() {
 
 export default function PiliPage() {
   return (
-    <Layout title="视频直播 Pili">
+    <Layout
+      title="视频直播 Pili"
+      keywords="直播云, 云直播, 直播 SDK, 视频直播云服务, 直播云服务, 直播 API, 推流 SDK, 播放 SDK, 七牛直播, 七牛直播云, quic 推流"
+      description="七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
+    >
       <PageContent />
     </Layout>
   )

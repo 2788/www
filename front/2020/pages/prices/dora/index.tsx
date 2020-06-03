@@ -15,7 +15,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | 智能多媒体服务">
+    <Layout
+      title="价格 | 智能多媒体服务"
+      keywords="dora价格, dora费用, dora多少钱, 智能多媒体服务价格, 智能多媒体服务费用, 智能多媒体服务多少钱"
+      description=""
+    >
       <Page />
     </Layout>
   )

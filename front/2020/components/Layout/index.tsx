@@ -13,20 +13,30 @@ import Footer from '../Footer'
 import * as feedback from '../Feedback'
 
 export type Props = {
-  title?: string
+  /** 页面 title */
+  title: string
+  /** 页面 keywords（SEO 用） */
+  keywords: string
+  /** 页面 description（SEO 用） */
+  description: string
   children: ReactNode
 }
 
-export default function Layout({ children, title }: Props) {
-  title = (
-    title == null
-      ? defaultTitle
-      : title + titleSuffix
-  )
+export default function Layout({ title, keywords, description, children }: Props) {
+  title = !title ? defaultTitle : (title + titleSuffix)
+
   // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provideer 覆盖手动值
   const ua = useUa()
   const isMobile = useIsMobile()
   const loaded = useLoaded()
+
+  const keywordsMeta = keywords && (
+    <meta name="keywords" content={keywords} />
+  )
+
+  const descriptionMeta = description && (
+    <meta name="description" content={description} />
+  )
 
   return (
     <UaContext.Provider value={{ isMobile, loaded, ...ua }}>
@@ -34,6 +44,8 @@ export default function Layout({ children, title }: Props) {
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0,width=device-width" />
+        {keywordsMeta}
+        {descriptionMeta}
       </Head>
       <feedback.ModalProvider>
         <Header />

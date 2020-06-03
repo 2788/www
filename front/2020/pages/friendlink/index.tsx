@@ -180,7 +180,7 @@ function PageContent() {
 
 export default function FriendLinkPage() {
   return (
-    <Layout title="平等互利 共创双赢">
+    <Layout title="平等互利 共创双赢" keywords="友情链接, 友链" description="欢迎与七牛云交换友情链接">
       <PageContent />
     </Layout>
   )

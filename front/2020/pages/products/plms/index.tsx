@@ -73,7 +73,11 @@ export function Content() {
 
 export default function Page() {
   return (
-    <Layout title="直播推流 SDK">
+    <Layout
+      title="直播推流 SDK"
+      keywords="直播推流 SDK, 直播 SDK, 第三方直播 SDK, ios 直播 SDK, android 直播 SDK, 第三方直播推流 SDK, ios 直播推流 SDK, android 直播推流 SDK"
+      description="直播推流 SDK，由七牛音视频团队多年精心打磨，包体轻盈、接入简单，协助您快速搭建直播推流核心功能，同时可无缝对接美颜、滤镜、人脸贴纸等高级特效。"
+    >
       <Content />
     </Layout>
   )

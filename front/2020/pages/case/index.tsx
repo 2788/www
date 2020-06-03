@@ -14,7 +14,11 @@ import style from './style.less'
 
 export default function CasePage() {
   return (
-    <Layout title="客户案例">
+    <Layout
+      title="客户案例"
+      keywords="七牛客户, 七牛客户案例"
+      description="100 多万企业用户和开发者，间接服务超过 90% 网民"
+    >
       <Navigatable>
         <section className={style.banner}>
           <div className={style.bannerContent}></div>

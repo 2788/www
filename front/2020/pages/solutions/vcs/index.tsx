@@ -65,7 +65,11 @@ function PageContent() {
 
 export default function VcsPage() {
   return (
-    <Layout title="视频冷存储解决方案">
+    <Layout
+      title="视频冷存储解决方案"
+      keywords="视频冷存储, 冷备, 冷存储, 归档存储, 点播存储, 高清视频原片, 媒体资源库"
+      description="七牛云视频冷存储解决方案是专为综合视频平台打造的 EB 级数据存储解决方案，低成本高可用，有效帮助客户承载突发流量，控制访问延时，优化写入性能。"
+    >
       <PageContent />
     </Layout>
   )

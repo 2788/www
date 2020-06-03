@@ -43,7 +43,11 @@ export default function InvitePage() {
   )
 
   return (
-    <Layout title="邀请有礼活动">
+    <Layout
+      title="邀请有礼活动"
+      keywords="七牛云, 邀请活动, 七牛优惠券, 七牛免费CDN"
+      description="邀请好友注册七牛云，即可获得CDN免费下载流量，购物卡、产品代金券、七牛云活动VIP门票、优先产品内测资格等福利。"
+    >
       <Navigatable>
         <Banner className={style.banner} background={imgBanner} pcBackgroundSize="auto 100%" backgroundPosition="right">
           <banner.Title className={style.title}>

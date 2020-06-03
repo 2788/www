@@ -15,7 +15,7 @@ export default function NotFoundPage() {
   const router = useRouter()
 
   return (
-    <Layout>
+    <Layout title="页面未找到" keywords="" description="">
       <div className={style.wrapper}>
         <img className={style.img} src={img404} alt="404" />
         <h4 className={style.title}>出错啦</h4>

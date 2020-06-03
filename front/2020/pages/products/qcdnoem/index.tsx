@@ -104,7 +104,11 @@ function PageContent() {
 
 export default function CdnOemPage() {
   return (
-    <Layout title="CDN OEM">
+    <Layout
+      title="CDN OEM"
+      keywords="cdn, oem, cdnoem"
+      description="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
+    >
       <PageContent />
     </Layout>
   )

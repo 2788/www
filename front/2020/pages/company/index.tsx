@@ -112,7 +112,11 @@ function PageContent() {
 
 export default function IntroductionPage() {
   return (
-    <Layout title="公司介绍">
+    <Layout
+      title="公司介绍"
+      keywords="七牛，七牛介绍"
+      description="七牛云创立于 2011 年，总部位于上海，在北京、深圳、广州、成都、杭州、厦门、武汉等地设有分公司和研发中心。作为国内知名的云计算及数据服务提供商，七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
+    >
       <PageContent />
     </Layout>
   )

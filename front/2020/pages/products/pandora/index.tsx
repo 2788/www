@@ -55,7 +55,11 @@ export default function ExpressPage() {
   )
 
   return (
-    <Layout title="Pandora 数据分析平台">
+    <Layout
+      title="Pandora 数据分析平台"
+      keywords="数据分析, 业务分析, 物联网载体, 安全分析, 运维辅助, IT 运维, 安全分析, 业务分析"
+      description="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。"
+    >
       <PageBanner
         title="Pandora 数据分析平台"
         desc="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。"

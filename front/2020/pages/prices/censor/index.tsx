@@ -15,7 +15,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | 内容审核">
+    <Layout
+      title="价格 | 内容审核"
+      keywords="内容审核价格, 内容审核费用, 内容审核多少钱"
+      description=""
+    >
       <Page />
     </Layout>
   )

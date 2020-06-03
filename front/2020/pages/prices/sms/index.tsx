@@ -15,7 +15,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | 云短信">
+    <Layout
+      title="价格 | 云短信"
+      keywords="云短信服务价格, 云短信服务费用, 云短信服务多少钱"
+      description=""
+    >
       <Page />
     </Layout>
   )

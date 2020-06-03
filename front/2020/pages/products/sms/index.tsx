@@ -150,9 +150,13 @@ function PageContent() {
   )
 }
 
-export default function ExpressPage() {
+export default function SmsPage() {
   return (
-    <Layout title="云短信 SMS">
+    <Layout
+      title="云短信 SMS"
+      keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
+      description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
+    >
       <PageContent />
     </Layout>
   )

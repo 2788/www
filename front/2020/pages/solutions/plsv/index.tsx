@@ -80,7 +80,11 @@ function PageContent() {
 
 export default function PlsvPage() {
   return (
-    <Layout title="短视频解决方案">
+    <Layout
+      title="短视频解决方案"
+      keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
+      description="七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
+    >
       <PageContent />
     </Layout>
   )

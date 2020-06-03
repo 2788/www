@@ -15,7 +15,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | 人脸核验">
+    <Layout
+      title="价格 | 人脸核验"
+      keywords="人脸核验价格, 人脸核验费用, 人脸核验多少钱"
+      description=""
+    >
       <Page />
     </Layout>
   )

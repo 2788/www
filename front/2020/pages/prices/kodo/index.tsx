@@ -17,7 +17,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="价格 | 对象存储">
+    <Layout
+      title="价格 | 对象存储"
+      keywords="云存储价格, kodo价格, 对象存储价格, 存储费用, 存储多少钱, kodo价格计算, 存储价格计算"
+      description=""
+    >
       <Page />
     </Layout>
   )

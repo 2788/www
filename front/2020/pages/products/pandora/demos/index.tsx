@@ -23,7 +23,11 @@ const BreadcrumbItem = Breadcrumb.Item
 
 export default function ExpressDemoPage() {
   return (
-    <Layout title="Pandora Demo 体验">
+    <Layout
+      title="Pandora Demo 体验"
+      keywords="Pandora, demo, demo 体验, 数据分析平台"
+      description="Pandora 机器数据分析平台 Demo 在线体验"
+    >
       <div className={style.demoPage}>
         <Banner
           className={style.banner}
