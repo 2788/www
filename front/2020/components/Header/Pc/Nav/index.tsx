@@ -26,16 +26,18 @@ export default function Nav() {
 }
 
 type ItemWithOverlayProps = PropsWithChildren<{
+  visible?: boolean
   overlay: ReactElement
   overlayOffsetX?: number
 }>
 
-export function ItemWithOverlay({ overlay, overlayOffsetX, children }: ItemWithOverlayProps) {
+export function ItemWithOverlay({ visible, overlay, overlayOffsetX, children }: ItemWithOverlayProps) {
   const offsetX = overlayOffsetX != null ? overlayOffsetX : 0
   const ref = useRef(null)
   return (
     <div ref={ref} className={style.item}>
       <Dropdown
+        visible={visible}
         align={{ offset: [offsetX, -1] }}
         getPopupContainer={() => ref.current || window.document.body}
         overlay={overlay}
@@ -52,7 +54,7 @@ type ItemLinkProps = PropsWithChildren<{
 
 export function ItemWithLink({ href, children }: ItemLinkProps) {
   const { pathname } = useRouter()
-  const linkClassName = classnames(style.itemText, href === pathname && style.active)
+  const linkClassName = classnames(style.itemText, href === pathname && 'active')
   return (
     <div className={style.item}>
       <Link href={href} className={linkClassName}>{children}</Link>

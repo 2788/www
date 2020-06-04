@@ -2,7 +2,7 @@
  * @file 滚动相关 hooks
  */
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, RefObject } from 'react'
 import stickybits from 'stickybits'
 import { MoveTo } from 'moveto'
 import { debounce } from 'lodash'
@@ -87,6 +87,38 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
   }), [syncScrollTop])
 
   return [scrollTop, scrollTo] as const
+}
+
+// 兼容的 Element.scroll. Element.scroll 在 ie 上不支持.
+export function useSmoothElementScrollTo(container: RefObject<HTMLElement>) {
+  const scrollTo = useCallback((scrollTop: number) => {
+    if (container.current) {
+      container.current.scrollTop = scrollTop
+      return
+    }
+
+    throw Error('Its looks like you havent set an element by ref.')
+  }, [container])
+
+  useEffect(() => {
+    const current = container.current
+    const previousBehavior = current?.style.scrollBehavior
+
+    if (current) {
+      current.style.scrollBehavior = 'smooth'
+    }
+    return () => {
+      if (current) {
+        if (previousBehavior) {
+          current.style.scrollBehavior = previousBehavior
+        } else {
+          delete current.style.scrollBehavior
+        }
+      }
+    }
+  }, [container])
+
+  return scrollTo
 }
 
 /**

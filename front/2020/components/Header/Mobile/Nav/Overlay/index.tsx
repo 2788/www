@@ -30,7 +30,7 @@ export default function Overlay() {
         </SubMenu>
         <SubMenu title="场景解决方案">
           <MenuItem><Link href="/solutions/vcs">视频冷存储解决方案</Link></MenuItem>
-          <MenuItem><Link href="/solutions/kodoe">私有云行业解决方案</Link></MenuItem>
+          <MenuItem><Link href="/solutions/kodoe">私有云存储解决方案</Link></MenuItem>
           <MenuItem><Link href="/solutions/plsv">短视频解决方案</Link></MenuItem>
           <MenuItem><Link href="/solutions/qavs">智能视频云解决方案</Link></MenuItem>
         </SubMenu>

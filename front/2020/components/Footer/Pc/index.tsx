@@ -67,7 +67,7 @@ function LinkGroups() {
       <LinkGroup title="解决方案">
         <LinkItem url="/solutions/qavs">智能视频云解决方案</LinkItem>
         <LinkItem url="/solutions/plsv">短视频解决方案</LinkItem>
-        <LinkItem url="/solutions/kodoe">私有云行业解决方案</LinkItem>
+        <LinkItem url="/solutions/kodoe">私有云存储解决方案</LinkItem>
         <LinkItem url="/solutions/vcs">视频冷存储解决方案</LinkItem>
         <LinkItem url="/solutions/ess">监控视频边缘存储解决方案</LinkItem>
       </LinkGroup>

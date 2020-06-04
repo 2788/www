@@ -1,9 +1,10 @@
 import React from 'react'
-import { categoryVideo, urlMap, nameMap, descMap } from 'constants/products'
+import { categoryVideo, urlMap, nameMap, descMap, categoryNameMap, Category } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import Item from './Item'
+import Section from './Section'
 
-export default function Video() {
+export default function Video({ registerScrollTop }: { registerScrollTop(value: number): void }) {
   const itemsView = categoryVideo.map(product => (
     <Item
       key={product}
@@ -13,5 +14,6 @@ export default function Video() {
       subtitle={descMap[product]}
     />
   ))
-  return <>{itemsView}</>
+
+  return <Section registerScrollTop={registerScrollTop} title={categoryNameMap[Category.Video]}>{itemsView}</Section>
 }

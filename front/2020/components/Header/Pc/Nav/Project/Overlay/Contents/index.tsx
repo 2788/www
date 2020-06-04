@@ -1,19 +1,38 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { useSmoothElementScrollTo } from 'hooks/scroll'
+import { Category } from 'constants/solutions'
+
 import Industry from './Industry'
 import Scene from './Scene'
 import style from './index.less'
+import Empty from './Empty'
 
-export type ContentType = 'industry' | 'scene'
+type ScrollTopMap = { [key in Category]: number }
 
-const contentMap: { [key in ContentType]: React.FC } = {
-  industry: Industry,
-  scene: Scene
-}
+export default function Content({ content = Category.Scene }: { content: Category }) {
+  const containerRef = useRef<HTMLUListElement>(null)
+  const scrollTopMapRef = useRef<ScrollTopMap>({
+    [Category.Industry]: 0,
+    [Category.Scene]: 0
+  })
 
-export default function Content({ content }: { content: ContentType }) {
+  const setScrollTop = useSmoothElementScrollTo(containerRef)
+
+  useEffect(() => {
+    setScrollTop(scrollTopMapRef.current[content])
+  }, [content, setScrollTop])
+
+  function handleRegisterScrollTop(category: Category) {
+    return (value: number) => {
+      scrollTopMapRef.current[category] = value
+    }
+  }
+
   return (
-    <ul className={style.content}>
-      {React.createElement(contentMap[content])}
+    <ul ref={containerRef} className={style.content}>
+      <Scene registerScrollTop={handleRegisterScrollTop(Category.Scene)} />
+      <Industry registerScrollTop={handleRegisterScrollTop(Category.Industry)} />
+      <Empty />
     </ul>
   )
 }

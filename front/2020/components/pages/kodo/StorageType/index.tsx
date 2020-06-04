@@ -42,7 +42,7 @@ export default function StorageType() {
         scene="档案数据、医疗影像、科学资料"
         price="0.032"
         detailLink={priceUrl}
-        sellPoints={['设计可靠性：99.999999999%（11 个 9）', '设计可用性：99.99%（数据解冻后）', '数据访问：先解冻再访问', '最短存储时间：无', 'Object 最小计量：无']}
+        sellPoints={['设计可靠性：99.999999999%（11 个 9）', '设计可用性：99.99%（数据解冻后）', '数据访问：先解冻再访问', '最短存储时间：60 天', 'Object 最小计量：64 KB']}
       />
     </Section>
   )

@@ -1,9 +1,10 @@
 import React from 'react'
-import { categoryService, urlMap, nameMap, descMap } from 'constants/products'
+import { categoryService, urlMap, nameMap, descMap, categoryNameMap, Category } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import Item from './Item'
+import Section from './Section'
 
-export default function Service() {
+export default function Service({ registerScrollTop }: { registerScrollTop(value: number): void }) {
   const itemsView = categoryService.map(product => (
     <Item
       key={product}
@@ -13,5 +14,6 @@ export default function Service() {
       subtitle={descMap[product]}
     />
   ))
-  return <>{itemsView}</>
+
+  return <Section registerScrollTop={registerScrollTop} title={categoryNameMap[Category.Service]}>{itemsView}</Section>
 }

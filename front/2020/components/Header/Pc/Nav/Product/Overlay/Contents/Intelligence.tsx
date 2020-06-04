@@ -1,9 +1,10 @@
 import React from 'react'
-import { categoryIntelligence, urlMap, nameMap, descMap } from 'constants/products'
+import { categoryIntelligence, urlMap, nameMap, descMap, categoryNameMap, Category } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import Item from './Item'
+import Section from './Section'
 
-export default function Intelligence() {
+export default function Intelligence({ registerScrollTop }: { registerScrollTop(value: number): void }) {
   const itemsView = categoryIntelligence.map(product => (
     <Item
       key={product}
@@ -13,5 +14,9 @@ export default function Intelligence() {
       subtitle={descMap[product]}
     />
   ))
-  return <>{itemsView}</>
+  return (
+    <Section registerScrollTop={registerScrollTop} title={categoryNameMap[Category.Intelligence]}>
+      {itemsView}
+    </Section>
+  )
 }

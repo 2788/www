@@ -54,7 +54,7 @@ const data = [
   {
     key: 6,
     name: '200 TB',
-    price: '33792 元／百张'
+    price: '33792 元／年'
   }
 ]
 

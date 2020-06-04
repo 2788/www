@@ -1,17 +1,18 @@
 import React from 'react'
-import { Product, categoryStorage, urlMap, nameMap, descMap } from 'constants/products'
+import { Product, categoryStorage, urlMap, nameMap, descMap, categoryNameMap, Category } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
 
 import Item from './Item'
+import Section from './Section'
 
 const hotMap = {
   [Product.Kodo]: true,
   [Product.Archive]: false
 }
 
-export default function Storage() {
+export default function Storage({ registerScrollTop }: { registerScrollTop(value: number): void }) {
   const { showModal } = useModal()
   const { close } = useDropdown()
 
@@ -22,7 +23,7 @@ export default function Storage() {
   }
 
   return (
-    <>
+    <Section registerScrollTop={registerScrollTop} title={categoryNameMap[Category.Storage]}>
       {categoryStorage.map(product => (
         <Item
           key={product}
@@ -40,6 +41,6 @@ export default function Storage() {
         title={nameMap[Product.Hdfs]}
         subtitle="即将上线，欢迎垂询"
       />
-    </>
+    </Section>
   )
 }
