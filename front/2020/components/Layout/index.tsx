@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { defaultTitle, titleSuffix } from 'constants/page'
 import { UaContext, useUa } from 'hooks/ua'
 
+import ErrorBoundary from './ErrorBoundary'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
@@ -49,7 +50,9 @@ export default function Layout({ title, keywords, description, children }: Props
       </Head>
       <feedback.ModalProvider>
         <Header />
-        {children}
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
         <Footer />
         <feedback.Entry />
         <feedback.Modal />

@@ -63,10 +63,14 @@ export function ResultList({ items }: ResultListProps) {
   )
 }
 
-export function ResultItem({ title, matched, url }: SearchResultItem) {
+export function ResultItem({ title, matched, description, url }: SearchResultItem) {
 
   const isMobile = useMobile()
-  const content = matched[0] + '...'
+  const content = (
+    matched && matched.length > 0
+    ? (matched[0] + '...')
+    : description
+  )
 
   const titleView = (
     isMobile

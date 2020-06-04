@@ -40,7 +40,9 @@ export type SearchParams = {
 
 export type SearchResultItem = {
   title: string     // 标题
-  matched: string[] // 匹配了关键词的内容（含高亮标签）
+  matched?: string[] // 匹配了关键词的内容（含高亮标签）
+  description: string
+  keywords: string
   url: string       // 结果对应的页面 URL
   tag: Tag          // 该页面的标签
 }
