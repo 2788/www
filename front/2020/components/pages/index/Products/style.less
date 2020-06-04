@@ -59,23 +59,16 @@
       border-radius:4px;
       border:1px solid rgba(238,238,238,1);
       cursor: pointer;
+      transition: transform .3s;
+
+      &:hover {
+        transform: translateY(-5px) !important;
+      }
   
       .mobile({
         width: 100%;
         height: auto;
       });
-
-      &.disabled > .content {
-        .title {
-          color: @grey-5;
-          &:hover {
-            color: @grey-5;
-          }
-        }
-        .desc {
-          color: @grey-5;
-        }
-      }
   
       .icon {
         display: inline-block;

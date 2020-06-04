@@ -116,6 +116,16 @@
       button, .slick-active button {
         width: 28px;
         height: 4px;
+        position: relative;
+        // 增大页面切换按钮选中范围
+        &:before {
+          content: '';
+          position: relative;
+          top: -30px;
+          height: 30px;
+          width: 28px;
+          display: block;
+        }
       }
     }
   }

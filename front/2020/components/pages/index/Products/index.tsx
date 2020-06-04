@@ -1,6 +1,5 @@
 import React, { ReactNode, PropsWithChildren, useState, MouseEvent } from 'react'
 import QueueAnim from 'rc-queue-anim'
-import classnames from 'classnames'
 
 import { useModal } from 'components/Feedback'
 import { useMobile } from 'hooks/ua'
@@ -34,10 +33,10 @@ interface CardProps {
   disabled?: boolean
 }
 
-function Card({ icon, title, href, onClick, disabled, children }: PropsWithChildren<CardProps>) {
+function Card({ icon, title, href, onClick, children }: PropsWithChildren<CardProps>) {
   if (href == null) {
     return (
-      <UICard onClick={onClick} className={classnames(styles.card, disabled && styles.disabled)}>
+      <UICard onClick={onClick} className={styles.card}>
         {icon}
         <Content className={styles.content}>
           <Title className={styles.title}>{title}</Title>

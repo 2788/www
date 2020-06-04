@@ -24,9 +24,28 @@
   }
 
   :global {
-    .slick-dots {
+    .ant-carousel .slick-slider {
+      .slick-list {
+        padding-bottom: 50px;
+        margin-bottom: -50px;
+      }
+    }
+    .slick-dots.slick-dots-bottom {
+      margin-bottom: 0px;
       li button {
         background: #d8d8d8;
+        width: 28px;
+        height: 4px;
+        position: relative;
+        // 增大页面切换按钮选中范围
+        &:before {
+          content: '';
+          position: relative;
+          top: -30px;
+          height: 30px;
+          width: 28px;
+          display: block;
+        }
       }
       li.slick-active button {
         background: @grey-5;
@@ -39,6 +58,7 @@
       .ant-carousel .slick-slider {
         .slick-list {
           padding-bottom: 10px;
+          margin-bottom: 15px;
         }
         .slick-dots.slick-dots-bottom {
           bottom: 0;
