@@ -54,7 +54,7 @@ export default function InvitePage() {
             <IconTitle />
           </banner.Title>
           <banner.Desc>
-            <p className={style.subtitle}>温馨回馈限时复工防疫包</p>
+            <p className={style.subtitle}>邀请好友一起使用七牛云，邀请越多，奖励越多</p>
             <div className={style.btnLine}>{btns.banner}</div>
           </banner.Desc>
         </Banner>
