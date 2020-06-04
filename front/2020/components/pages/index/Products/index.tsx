@@ -226,7 +226,7 @@ export function ProductsForPc() {
 export default function Products() {
   const isMobile = useMobile()
   return (
-    <Section className={styles.products} title="云产品" style={{ padding: isMobile ? '0' : 'auto' }}>
+    <Section grey className={styles.products} title="云产品" style={{ padding: isMobile ? '0' : 'auto' }}>
       {
         isMobile ? <ProductsForMobile /> : <ProductsForPc />
       }

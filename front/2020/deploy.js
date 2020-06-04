@@ -66,44 +66,45 @@ function getAllFiles(baseDir) {
   })
 }
 
-function uploadFile(localFile, bucket, key, mac) {
-  return new Promise(
-    (resolve, reject) => {
-      const options = {
-        scope: bucket + ':' + key
-      }
-      const putPolicy = new qiniu.rs.PutPolicy(options)
-      const uploadToken = putPolicy.uploadToken(mac)
-      const putExtra = new qiniu.form_up.PutExtra()
-      const config = new qiniu.conf.Config()
-      const formUploader = new qiniu.form_up.FormUploader(config)
+async function uploadFile(localFile, bucket, key, mac) {
+  const options = {
+    scope: bucket + ':' + key
+  }
+  const putPolicy = new qiniu.rs.PutPolicy(options)
+  const uploadToken = putPolicy.uploadToken(mac)
+  const putExtra = new qiniu.form_up.PutExtra()
+  const config = new qiniu.conf.Config()
+  const formUploader = new qiniu.form_up.FormUploader(config)
 
-      formUploader.putFile(uploadToken, key, localFile, putExtra, (err, ret) => {
-        if(err) {
-          reject(err)
-          return
-        }
-        if (ret.error) {
-          reject(ret.error)
-          return
-        }
-        resolve()
-      })
+  const putFile = () => new Promise((resolve, reject) => {
+    formUploader.putFile(uploadToken, key, localFile, putExtra, (err, ret) => {
+      if(err || ret.error) {
+        reject(err || ret.error)
+        return
+      }
+      resolve()
+    })
+  })
+
+  // 最多重试 3 次
+  let retryTime = 3
+  let error = null
+  while (retryTime-- > 0) {
+    try {
+      await putFile()
+      return
+    } catch (e) {
+      error = e
     }
-  )
+  }
+  if (error != null) {
+    throw error
+  }
 }
 
-// TODO: 这边需要优化上传策略
-// 1. 需要先上传 static 内容，再上传页面，否则在上传过程中访问可能不正常
-// 2. 对 static 内容，上传前可以先检查是否存在，存在就不用上传了
-async function deploy(config) {
-  const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
-  const outputFiles = await getAllFiles(config.outputPath)
-
-  // 标识是否找到 notFoundPage，如果指定了 notFoundPage 但上传过程中没找到，是要报 warning 的
-  let notFoundPageExisting = false
-
+function makeDeployer(config) {
   function deployFile(fileName) {
+    const mac = new qiniu.auth.digest.Mac(config.accessKey, config.secretKey)
     const filePath = path.resolve(config.outputPath, fileName)
 
     // 对于文件 `foo/index.html` 或 `foo.html`，分别以 `foo`、`foo/` & `foo/index.html` 作为 key 上传
@@ -123,7 +124,6 @@ async function deploy(config) {
     // 对于 404 页面，特别地以 error-404 为名上传
     // 相关文档 https://developer.qiniu.com/kodo/manual/1659/download-setting
     if (fileName === config.notFoundPage) {
-      notFoundPageExisting = true
       keys.push('errno-404')
     }
 
@@ -135,12 +135,30 @@ async function deploy(config) {
   }
 
   // 同时最多 50 个一起处理（注意最多可能有 50*3=150 个上传请求）
-  const deployFiles = batch(deployFile, 50)
-  await deployFiles(outputFiles)
+  return batch(deployFile, 50)
+}
 
-  if (config.notFoundPage && !notFoundPageExisting) {
+async function deploy(config) {
+  const outputFiles = await getAllFiles(config.outputPath)
+
+  // 区分页面内容跟静态资源，先上传 static 内容，再上传页面
+  // 否则在发布过程中页面在对应的静态资源上次完成前更新，会导致访问到的页面不能正确工作
+  const pageFiles = []
+  const assetFiles = []
+  outputFiles.forEach(fileName => (
+    (path.extname(fileName) === '.html' ? pageFiles : assetFiles).push(fileName)
+  ))
+
+  // 如果指定了 notFoundPage，但构建结果中不存在对应的文件，提醒之
+  if (outputFiles.indexOf(config.notFoundPage) < 0) {
     console.warn('[NOT FOUND] notFoundPage specified, while no such file found.')
   }
+
+  const deployFiles = makeDeployer(config)
+  await deployFiles(assetFiles)
+  await deployFiles(pageFiles)
+
+  console.log(`[SUCCESS] Deploy succeeded: ${pageFiles.length} pages, ${assetFiles.length} asset files.`)
 }
 
 // next export 产物所在目录

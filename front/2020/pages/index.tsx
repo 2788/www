@@ -154,13 +154,8 @@ function PageContent() {
 
       <Activities />
 
-      <Product />
-
-      <Solutions />
-
       <Feature
         className={styles.core}
-        grey
         title="连接数据 重塑价值"
         subtitle="成为 5G 时代的异构数据湖与数据分析平台的第一品牌"
       >
@@ -203,6 +198,10 @@ function PageContent() {
           </FeatureItem>
         </FeatureGroup>
       </Feature>
+
+      <Product />
+
+      <Solutions />
 
       <News />
 
