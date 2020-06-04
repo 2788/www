@@ -2,6 +2,8 @@ const withPlugins = require('next-compose-plugins')
 const withCss = require('@zeit/next-css')
 const withLess = require('@zeit/next-less')
 
+const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
+
 module.exports = withPlugins(
   [
     [ withCss ],
@@ -58,7 +60,7 @@ module.exports = withPlugins(
             {
               loader: 'file-loader',
               options: {
-                publicPath: `/_next/static/media/`,
+                publicPath: `${assetHost}/_next/static/media/`,
                 outputPath: `${options.isServer ? '../' : ''}static/media/`,
                 name: '[name].[hash].[ext]',
                 esModule: false
@@ -75,7 +77,7 @@ module.exports = withPlugins(
             {
               loader: 'file-loader',
               options: {
-                publicPath: `/_next/static/media/`,
+                publicPath: `${assetHost}/_next/static/media/`,
                 outputPath: `${options.isServer ? '../' : ''}static/media/`,
                 name: '[name].[hash].[ext]',
                 esModule: false
@@ -86,6 +88,12 @@ module.exports = withPlugins(
       )
 
       return config
-    }
+    },
+    // 目前 Kodo 的 bucket & Fusion 的域名均不支持按条件配置资源响应头中的缓存控制信息
+    // 在线上环境我们分两个域名来 serve 站点内容（指向同一个 bucket）
+    // 页面走 www(-2020).qiniu.com，静态资源走 www-static.qnssl.com
+    // 前者在 CDN 配置客户端不缓存，后者配置客户端强缓存（1 年）
+    // 另，Kodo bucket 支持按条件配置资源响应头中的缓存控制信息，已提需求 @guojia
+    assetPrefix: assetHost
   }
 )
