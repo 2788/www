@@ -18,7 +18,9 @@ export default function Overlay({ children, onClose }: Props) {
           <Link href="/"><a className={style.logo}><Logo /></a></Link>
           <Close onClick={onClose} />
         </div>
-        {children}
+        <div className={style.content}>
+          {children}
+        </div>
       </div>
     </div>
   )

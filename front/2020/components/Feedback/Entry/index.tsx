@@ -39,7 +39,7 @@ export default function FeedbackEntry() {
     modalVisible ? style.btnClose : style.btnSmile
   )
 
-  const formModalView = modalVisible != null && (
+  const formModalView = modalVisible != null && !isMobile && (
     <FormModal visible={modalVisible} />
   )
 
@@ -52,7 +52,7 @@ export default function FeedbackEntry() {
           <IconSmile className={style.iconSmile} />
         </Button>
         <Link className={style.freeTrialLink} title="免费体验云服务套餐" href="/events/free?entry=index-floatwin">
-          免费体验
+          免费<br />体验
         </Link>
       </div>
     </div>

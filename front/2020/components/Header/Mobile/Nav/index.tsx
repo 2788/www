@@ -7,7 +7,7 @@ import MobileDropdown from '../MobileDropdown'
 
 export default function Nav() {
   return (
-    <MobileDropdown overlay={() => <Overlay />}>
+    <MobileDropdown overlayClassName={style.overlay} overlay={() => <Overlay />}>
       <div className={style.wrapper}>
         <MenuIcon />
       </div>

@@ -9,16 +9,24 @@
 
 .overlay {
   width: 100vw;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: @main-bg-color;
 }
 
 .header {
+  flex: 0 0 @header-height;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: @header-height;
   padding: 0 16px;
   line-height: @header-height;
+}
+
+.content {
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 .logo {
