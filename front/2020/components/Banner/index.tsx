@@ -10,8 +10,7 @@ import style from './style.less'
 
 export type Props = HTMLAttributes<HTMLElement> & {
   background: string
-  pcBackgroundSize?: string
-  mobileBackgroundSize?: string
+  backgroundSize?: string
   backgroundPosition?: string
   backgroundAnchor?: 'root' | 'content'
 }
@@ -19,8 +18,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
 export default function Banner(props: Props) {
   const {
     background,
-    pcBackgroundSize = '200px',
-    mobileBackgroundSize = '84px',
+    backgroundSize = '200px',
     backgroundPosition,
     backgroundAnchor = 'content',
     children,
@@ -30,8 +28,8 @@ export default function Banner(props: Props) {
   const isMobile = useMobile()
 
   const backgroundStyle: CSSProperties = {
-    backgroundImage: `url(${background})`,
-    backgroundSize: isMobile ? mobileBackgroundSize : pcBackgroundSize,
+    backgroundImage: isMobile ? 'none' : `url(${background})`,
+    backgroundSize,
     backgroundPosition
   }
 

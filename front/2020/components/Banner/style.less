@@ -5,7 +5,7 @@
   background-color: #34a1ec;
 
   .mobile({
-    height: 140px;
+    height: auto;
   });
 
   .bannerContent {
@@ -21,8 +21,9 @@
     background-repeat: no-repeat;
 
     .mobile({
+      min-height: 140px;
       justify-content: center;
-      padding: 0 16px;
+      padding: 16px;
       background-size: 84px;
       background-position: right 30px center;
     });

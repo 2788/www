@@ -49,7 +49,7 @@ export default function InvitePage() {
       description="邀请好友注册七牛云，即可获得CDN免费下载流量，购物卡、产品代金券、七牛云活动VIP门票、优先产品内测资格等福利。"
     >
       <Navigatable>
-        <Banner className={style.banner} background={imgBanner} pcBackgroundSize="auto 100%" backgroundPosition="right">
+        <Banner className={style.banner} background={imgBanner} backgroundSize="auto 100%" backgroundPosition="right">
           <banner.Title className={style.title}>
             <IconTitle />
           </banner.Title>

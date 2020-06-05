@@ -32,8 +32,7 @@ export default function ExpressDemoPage() {
         <Banner
           className={style.banner}
           background={bannerImg}
-          pcBackgroundSize="cover"
-          mobileBackgroundSize="cover"
+          backgroundSize="cover"
           backgroundAnchor="root"
         >
           <Title className={style.title}>Demo 体验</Title>

@@ -13,7 +13,7 @@ export default function Contact() {
       keywords="联系, 联系七牛"
       description=""
     >
-      <Banner background={banner} mobileBackgroundSize="64px">
+      <Banner background={banner}>
         <Title>联系我们</Title>
         <Desc>客户第一，您的满意是我们追求的目标</Desc>
       </Banner>

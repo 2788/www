@@ -21,7 +21,7 @@ export default function FreePage() {
       description="七牛云为客户提供对象存储、CDN 加速、内容安全、智能日志管理、短视频 SDK、播放器 SDK、SSL 证书、智能多媒体服务等产品和服务免费套餐，助力企业和开发者零门槛上云。"
     >
       <Navigatable>
-        <Banner background={imgBanner} pcBackgroundSize="auto 100%" backgroundPosition="right">
+        <Banner background={imgBanner} backgroundSize="auto 100%" backgroundPosition="right">
           <h1 className={style.bannerTitle}>
             <strong>免费</strong>云服务套餐
           </h1>

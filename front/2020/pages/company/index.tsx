@@ -30,7 +30,7 @@ function PageContent() {
 
   return (
     <>
-      <Banner background={banner} pcBackgroundSize="300px" backgroundPosition="right 100px center">
+      <Banner background={banner} backgroundSize="300px" backgroundPosition="right 100px center">
         <Title className={styles.bannerTitle}>连接数据 重塑价值</Title>
         <Desc className={styles.bannerDesc}>我们的使命是：用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量<br /><br />
           我们的愿景是：成为 5G 时代的异构数据湖与数据分析平台的第一品牌</Desc>
