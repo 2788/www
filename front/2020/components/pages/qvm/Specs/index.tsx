@@ -3,8 +3,7 @@
  */
 
 import React, { useState } from 'react'
-import { getStarterSpecs, getEnterpriseSpecs } from 'apis/qvm'
-import { useApiWithParams } from 'hooks/api'
+import { MetaInfo, SpecEnterpriseConfigGroup, SpecStarterConfigItem } from 'apis/qvm'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import { Row } from 'components/UI/Card'
 import ButtonTabs, { ButtonTab } from 'components/UI/ButtonTabs'
@@ -16,10 +15,14 @@ enum Type {
   Enterprise = 'enterprise' // 企业版
 }
 
-export default function QvmSpecs() {
-  const { $: startSpecs } = useApiWithParams(getStarterSpecs, { params: [] })
+type Props = {
+  starterConfig: SpecStarterConfigItem[]
+  enterpriseConfig: SpecEnterpriseConfigGroup[]
+  metaInfo: MetaInfo
+}
 
-  const promaryCardsview = (startSpecs || []).map(
+export default function QvmSpecs({ starterConfig, enterpriseConfig, metaInfo }: Props) {
+  const promaryCardsview = (starterConfig || []).map(
     (family, i) => (
       <PrimaryCard
         key={i}
@@ -42,21 +45,25 @@ export default function QvmSpecs() {
         </Row>
       </TabPane>
       <TabPane value={Type.Enterprise} tab="企业版">
-        <EnterpriseCards />
+        <EnterpriseCards enterpriseConfig={enterpriseConfig} metaInfo={metaInfo} />
       </TabPane>
     </Tabs>
   )
 }
 
-function EnterpriseCards() {
-  const { $: familyGroups } = useApiWithParams(getEnterpriseSpecs, { params: [] })
+type EnterpriseCardsProps = {
+  enterpriseConfig: SpecEnterpriseConfigGroup[]
+  metaInfo: MetaInfo
+}
+
+function EnterpriseCards({ enterpriseConfig, metaInfo }: EnterpriseCardsProps) {
   const [activeGroupKey, setActiveGroupKey] = useState('0')
 
-  const tabsView = (familyGroups || []).map(
+  const tabsView = (enterpriseConfig || []).map(
     ({ title }, i) => <ButtonTab key={i} value={i + ''}>{title}</ButtonTab>
   )
 
-  const tabPanesView = (familyGroups || []).map(
+  const tabPanesView = (enterpriseConfig || []).map(
     ({ items }, i) => {
       const active = activeGroupKey === (i + '')
       if (!active) return null
@@ -68,6 +75,7 @@ function EnterpriseCards() {
           scenes={familyInfo.scenario_desc}
           details={familyInfo.extra_infos}
           instanceTypesByRegions={familyInfo.ecs_classes}
+          metaInfo={metaInfo}
         />
       ))
       return <div key={i}>{cardsView}</div>

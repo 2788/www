@@ -5,6 +5,7 @@
 /* eslint-disable max-len */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 import { useBtns } from 'hooks/product-btn'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
@@ -20,6 +21,8 @@ import MoreProducts from 'components/pages/qvm/MoreProducts'
 import Scenes from 'components/pages/qvm/Scenes'
 import Cases from 'components/pages/qvm/Cases'
 import { useMobile } from 'hooks/ua'
+import { getStarterSpecs, getMetaInfo, getEnterpriseSpecs } from 'apis/qvm'
+
 import imgBanner from './banner.png'
 import IconFeatureEasy from './_icons/feature/easy.svg'
 import IconFeatureFlexibility from './_icons/feature/flexibility.svg'
@@ -31,7 +34,7 @@ import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent() {
+function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const isMobile = useMobile()
 
@@ -85,7 +88,7 @@ function PageContent() {
 
       {!isMobile && ( // 移动端无需展示，因为移动端无法购买（Portal 未适配移动端）
         <Section name="specs" title="产品规格" header="热销产品规格">
-          <Specs />
+          <Specs starterConfig={props.starter} enterpriseConfig={props.enterprise} metaInfo={props.metaInfo} />
         </Section>
       )}
 
@@ -154,14 +157,24 @@ function PageContent() {
   )
 }
 
-export default function QvmPage() {
+export default function QvmPage(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="云主机服务 QVM"
       keywords="七牛云, 云服务器, 云主机, 云数据库, 高防"
       description="七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
     >
-      <PageContent />
+      <PageContent {...props} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      starter: await getStarterSpecs(),
+      enterprise: await getEnterpriseSpecs(),
+      metaInfo: await getMetaInfo()
+    }
+  }
 }

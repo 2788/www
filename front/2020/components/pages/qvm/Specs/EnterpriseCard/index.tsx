@@ -5,7 +5,7 @@
 import React, { useState, useMemo } from 'react'
 import { urlForQvmBuy } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
-import { getMetaInfo, getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions, MetaInfo } from 'apis/qvm'
+import { getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions, MetaInfo } from 'apis/qvm'
 import { humanizeDuration } from 'constants/qvm'
 import Button from 'components/UI/Button'
 
@@ -21,6 +21,7 @@ export type Props = {
     info: string
   }>
   instanceTypesByRegions: { [regionId: string]: string[] }
+  metaInfo: MetaInfo
 }
 
 export default function EnterpriseCard(props: Props) {
@@ -40,10 +41,8 @@ export default function EnterpriseCard(props: Props) {
     )
   )
 
-  const { $: metaInfo } = useApiWithParams(getMetaInfo, { params: [] })
-
-  const formView = metaInfo && (
-    <PriceForm {...props} metaInfo={metaInfo} />
+  const formView = props.metaInfo && (
+    <PriceForm {...props} metaInfo={props.metaInfo} />
   )
 
   return (
