@@ -4,17 +4,14 @@
  */
 
 import React from 'react'
-import Section from 'components/Product/Section'
-import { useMobile } from 'hooks/ua'
-import ForPc from './Pc'
-import ForMobile from './Mobile'
+import Demo from 'components/Product/Demo'
 
-export default function Demo() {
-  const isMobile = useMobile()
-
+export default function RTCDemo() {
   return (
-    <Section title="体验 Demo" name="demo" grey>
-      {isMobile ? <ForMobile /> : <ForPc />}
-    </Section>
+    <Demo
+      iosUrl="http://fir.qnsdk.com/517z?utm_source=fir&utm_medium=qr"
+      androidUrl="http://fir.qnsdk.com/b5ce"
+      webUrl="https://demo-rtc.qnsdk.com/"
+    />
   )
 }

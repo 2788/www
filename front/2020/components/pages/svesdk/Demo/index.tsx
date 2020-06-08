@@ -1,15 +1,11 @@
 import React from 'react'
-import Section from 'components/Product/Section'
-import { useMobile } from 'hooks/ua'
-import ForPc from './Pc'
-import ForMobile from './Mobile'
+import Demo from 'components/Product/Demo'
 
-export default function Demo() {
-  const isMobile = useMobile()
-
+export default function SveSDKDemo() {
   return (
-    <Section title="体验 Demo" name="demo">
-      {isMobile ? <ForMobile /> : <ForPc />}
-    </Section>
+    <Demo
+      iosUrl="http://fir.qnsdk.com/pfqh"
+      androidUrl="http://fir.qnsdk.com/2z4e"
+    />
   )
 }
