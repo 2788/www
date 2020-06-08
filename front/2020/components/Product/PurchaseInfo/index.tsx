@@ -5,6 +5,7 @@
 
 import React, { PropsWithChildren } from 'react'
 
+import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
 import classNames from 'classnames'
@@ -21,7 +22,7 @@ export function PurchaseInfoActionForPc({ children, url }: PropsWithChildren<IPu
 }
 
 export function PurchaseInfoActionForMobile({ children, url }: PropsWithChildren<IPurchaseInfoAction>) {
-  return <Button className={styles.btn} href={url}>{children}</Button>
+  return <Link className={styles.link} href={url}>{children}</Link>
 }
 
 export function PurchaseInfoAction(props: PropsWithChildren<IPurchaseInfoAction>) {

@@ -3,11 +3,11 @@
  */
 
 import { memoize } from 'lodash'
-import { apiHost } from 'constants/api'
+import { apiPrefix as basePrefix } from 'constants/api'
 import { isYear } from 'constants/qvm'
 import { get, post } from 'utils/fetch'
 
-const apiPrefix = `${apiHost}/qvm`
+const apiPrefix = `${basePrefix}/qvm`
 
 export type SpecStarterConfigItem = {
   family_name: string

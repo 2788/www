@@ -63,6 +63,12 @@
   
       .stepIconContainer {
         background-color: @grey-1;
+
+        svg {
+          width: @step-icon-height / 2;
+          height: @step-icon-width / 2;
+          margin-top: (@step-icon-height / 4) - 1px; // 1px 是描边
+        }
       }
 
       .stepName {

@@ -3,7 +3,8 @@
  * @description 只针对请求体 & 响应体都是 JSON 的情况
  */
 
-import { urlFor, UrlParams } from '.'
+import { host } from 'constants/env'
+import { urlFor, UrlParams, isBrowser } from '.'
 
 export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
   const fetched = await fetch(info, {
@@ -11,6 +12,8 @@ export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
     mode: 'cors',
     ...init,
     headers: {
+      // 为服务端渲染时发出的请求添加 Referer 信息，以免被 API proxy 拒掉
+      ...(isBrowser() ? null : { Referer: host }),
       'Content-Type': 'application/json',
       ...init && init.headers
     }

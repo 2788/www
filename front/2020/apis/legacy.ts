@@ -3,10 +3,10 @@
  */
 
 import { get, post } from 'utils/fetch'
-import { apiHost } from 'constants/env'
+import { apiPrefix as basePrefix } from 'constants/api'
 import { timeout } from 'utils'
 
-const apiPrefix = `${apiHost}/www-legacy`
+const apiPrefix = `${basePrefix}/www-legacy`
 
 export type CreateDeveloperOptions = {
   resource_name: string

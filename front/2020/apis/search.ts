@@ -5,12 +5,12 @@
 
 import { endsWith } from 'lodash'
 import { siteNameForSearch as site } from 'constants/env'
-import { apiHost } from 'constants/api'
+import { apiPrefix as basePrefix } from 'constants/api'
 import { titleSuffix } from 'constants/page'
 import { timeout } from 'utils'
 import { get } from 'utils/fetch'
 
-const apiPrefix = `${apiHost}/search`
+const apiPrefix = `${basePrefix}/search`
 
 export enum Tag {
   Product = 'products',

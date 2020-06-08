@@ -2,6 +2,12 @@
 
 .imgBlock {
   text-align: center !important;
+
+  .mobile({
+    svg {
+      max-height: 106px;
+    }
+  });
 }
 
 .detailBlock {
@@ -20,8 +26,12 @@
 
   .desc {
     font-size: 14px;
-    line-height: 20px;
+    line-height: 1.4;
     margin-top: 16px;
     color: @grey-6;
+
+    .mobile({
+      font-size: 12px;
+    });
   }
 }

@@ -3,6 +3,9 @@
  * @description 相关文档 https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables
  */
 
+/** 站点 Host */
+export const host = must('host', process.env.NEXT_PUBLIC_HOST)
+
 /** API Host */
 export const apiHost = must('apiHost', process.env.NEXT_PUBLIC_API_HOST)
 
@@ -19,7 +22,7 @@ export const siteNameForSearch = must('siteNameForSearch', process.env.NEXT_PUBL
 export const censorScenes = must('censorScenes', process.env.NEXT_PUBLIC_CENSOR_SCENES)
 
 function must(name: string, variable?: string): string {
-  if (!variable) {
+  if (variable == null) {
     throw new Error(`Invalid value for environment variable ${name}, you need to configure it in env file`)
   }
   return variable

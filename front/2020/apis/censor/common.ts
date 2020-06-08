@@ -1,7 +1,7 @@
-import { apiHost } from 'constants/api'
+import { apiPrefix as basePrefix } from 'constants/api'
 import { censorScenes } from 'constants/env'
 
-export const apiPrefix = `${apiHost}/ai`
+export const apiPrefix = `${basePrefix}/ai`
 
 // 接口文档说视频没有 ads，但是实际返回也有 ads...
 export type Scene = 'ads' | 'pulp' | 'terror' | 'politician'
