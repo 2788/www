@@ -10,7 +10,7 @@
 import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
 import { useMobile } from 'hooks/ua'
-import { Block, BlockProps, useIndex } from 'components/Product/Navigator'
+import { Block, BlockProps, useIndex, useBlocks } from 'components/Product/Navigator'
 
 import style from './index.less'
 
@@ -31,19 +31,20 @@ export default function Section(props: SectionProps) {
   const { name, title, subtitle = null, header, children, grey: propGrey, ...rest } = props
 
   const isPc = !useMobile()
+  const blocks = useBlocks()
   const blockIndex = useIndex(name)
   const defaultGrey = (
     isPc && blockIndex >= 0
     ? (blockIndex % 2 === 1) // PC 端默认下标基数为灰，偶数为白（下标从 0 开始）
     : false
   )
-
   const grey = propGrey != null ? propGrey : defaultGrey
-
-  const wrapperClassName = [style.wrapper, props.className].filter(Boolean).join(' ')
+  const isLast = blockIndex === blocks.length - 1
+  const blockClassName = classnames(style.blockWraper, grey && style.grey)
+  const wrapperClassName = classnames(style.wrapper, props.className, isLast && style.last)
 
   return (
-    <Block name={name} title={title} className={classnames(style.blockWraper, grey && style.grey)}>
+    <Block name={name} title={title} className={blockClassName}>
       <div {...rest} className={wrapperClassName}>
         <div className={style.intro}>
           <div className={style.title}>{header != null ? header : title}</div>

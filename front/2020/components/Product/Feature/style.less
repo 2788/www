@@ -155,6 +155,12 @@
     align-items: center;
   }
 
+  // 最后一个 group 下的最后一个 item（即整个 Feature 模块中的最后一个 item）
+  .groupWrapper:last-child .itemWrapper:last-child .item {
+    border-bottom-color: transparent; // 去掉下边框
+    padding-bottom: 4px; // 去掉 16px（即跟 section 16px 的下边距合并）
+  }
+
   .itemIcon {
     flex: 0 1;
     width: 60px;

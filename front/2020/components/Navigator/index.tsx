@@ -112,14 +112,15 @@ export function Button(props: ButtonProps) {
   return <UIButton {...props} className={className} />
 }
 
-export function useIndex(name: string) {
+export function useBlocks() {
   const contextValue = useContext(context)
   if (!contextValue) {
     throw new Error('`useIndex` should be used in descendants of `Navigatable`')
   }
+  return contextValue.blocks
+}
 
-  return findIndex(
-    contextValue.blocks,
-    block => block.name === name
-  )
+export function useIndex(name: string) {
+  const blocks = useBlocks()
+  return findIndex(blocks, block => block.name === name)
 }
