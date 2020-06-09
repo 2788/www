@@ -41,8 +41,8 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
     return (
       <div {...cardProps} className={classnames(styles.sceneCard, isFeedbackCard && styles.feedback)}>
         <h5 className={styles.title}>{title}</h5>
-        {linkText && <span className={styles.link}>{linkText} &gt;&gt;</span>}
         <p className={styles.content}>{content}</p>
+        {linkText && <span className={styles.link}>{linkText} &gt;&gt;</span>}
       </div>
     )
   }
@@ -50,8 +50,8 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
   return (
     <div className={styles.sceneCard} >
       <h5 className={styles.title}>{title}</h5>
-      {linkText && <Link className={styles.link} href={link}>{linkText} &gt;&gt;</Link>}
       <p className={styles.content}>{content}</p>
+      <Link className={styles.link} href={link}>{linkText} &gt;&gt;</Link>
     </div>
   )
 }

@@ -13,10 +13,10 @@ import Link from 'components/Link'
 
 import styles from './style.less'
 
-import TabStorageIcon from './images/tabs/storage.svg'
-import TabServiceIcon from './images/tabs/service.svg'
-import TabVideoIcon from './images/tabs/video.svg'
-import TabIntelligenceIcon from './images/tabs/intelligence.svg'
+import TabStorageIcon from './images/tabs/product1.svg'
+import TabServiceIcon from './images/tabs/product2.svg'
+import TabVideoIcon from './images/tabs/product3.svg'
+import TabIntelligenceIcon from './images/tabs/product4.svg'
 
 const categoryIconMap = {
   [Category.Storage]: TabStorageIcon,
@@ -84,12 +84,12 @@ function MenuItem({ title, href, onClick, children }: PropsWithChildren<{
     onClick()
   })
   return (
-    <Link href={href} onClick={handleClick}>
-      <div className={styles.menuItem}>
+    <div className={styles.menuItem}>
+      <Link href={href} onClick={handleClick}>
         <h4 className={styles.title}>{title}</h4>
         <p className={styles.desc}>{children}</p>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
 

@@ -29,13 +29,11 @@ export default function SslScene() {
         <SceneBlock blockType="fixed">
           <Scene1Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock>
-          <div className={styles.sceneContainer}>
-            <p className={styles.sceneContent}>启用企业网站全站 HTTPS 安全加密，激活绿色安全标识（DV/OV）或地址栏企业名称标识（EV），为潜在客户带来更可信、更放心的访问体验，
-              极大增强企业诚信力和用户信赖感，有效提升成单率。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
-            <RecommendCert {...certForCompanySite} />
-          </div>
+        <SceneBlock className={styles.sceneContainer}>
+          <p className={styles.sceneContent}>启用企业网站全站 HTTPS 安全加密，激活绿色安全标识（DV/OV）或地址栏企业名称标识（EV），为潜在客户带来更可信、更放心的访问体验，
+            极大增强企业诚信力和用户信赖感，有效提升成单率。</p>
+          <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+          <RecommendCert {...certForCompanySite} />
         </SceneBlock>
       </ScenePanel>
 
@@ -43,13 +41,11 @@ export default function SslScene() {
         <SceneBlock blockType="fixed">
           <Scene2Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock>
-          <div className={styles.sceneContainer}>
-            <p className={styles.sceneContent}>越来越多的企业将 OA、CRM、ERP 等企业应用系统部署于云端，享受云计算的高效和便捷性。
-              而升级为 HTTPS 安全加密，可进一步提升系统安全性，确保敏感信息不被劫持。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
-            <RecommendCert {...certForCompanyApp} />
-          </div>
+        <SceneBlock className={styles.sceneContainer}>
+          <p className={styles.sceneContent}>越来越多的企业将 OA、CRM、ERP 等企业应用系统部署于云端，享受云计算的高效和便捷性。
+            而升级为 HTTPS 安全加密，可进一步提升系统安全性，确保敏感信息不被劫持。</p>
+          <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+          <RecommendCert {...certForCompanyApp} />
         </SceneBlock>
       </ScenePanel>
 
@@ -57,13 +53,11 @@ export default function SslScene() {
         <SceneBlock blockType="fixed">
           <Scene3Img className={styles.sceneIcon} />
         </SceneBlock>
-        <SceneBlock>
-          <div className={styles.sceneContainer}>
-            <p className={styles.sceneContent}>公信力是政务平台要打造的最重要特性。而越来越多的钓鱼欺诈网站和信息劫持手段，对政务平台的信息安全带来严重威胁。
-              启用权威认证的 SSL 证书能最大化保障信息安全和网站公信力。</p>
-            <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
-            <RecommendCert {...certForGov} />
-          </div>
+        <SceneBlock className={styles.sceneContainer}>
+          <p className={styles.sceneContent}>公信力是政务平台要打造的最重要特性。而越来越多的钓鱼欺诈网站和信息劫持手段，对政务平台的信息安全带来严重威胁。
+            启用权威认证的 SSL 证书能最大化保障信息安全和网站公信力。</p>
+          <p className={classnames(styles.sceneTitle, styles.client)}>推荐版本</p>
+          <RecommendCert {...certForGov} />
         </SceneBlock>
       </ScenePanel>
 

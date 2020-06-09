@@ -3,7 +3,7 @@
  * @author zhuhao <zhuhao@qiniu.com>
  */
 
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, Children } from 'react'
 import Link from 'components/Link'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import { LinkItemProps, LinkGroupProps } from '..'
@@ -19,15 +19,24 @@ export function LinkItem({ children, href }: PropsWithChildren<LinkItemProps>) {
   )
 }
 
-export function LinkGroup(props: PropsWithChildren<LinkGroupProps>) {
-  // TODO: 这个会导致 PC 切移动的转换过程报错（可以手机旋转来复现）
-  return React.createElement(SubMenu, { ...props, className: styles.linkGroup })
+export function LinkGroup({ children }: PropsWithChildren<LinkGroupProps>) {
+  return <>{children}</>
 }
 
 export function LinkGroups({ children }: PropsWithChildren<{}>) {
   return (
     <Menu mode="inline" inlineIndent={16}>
-      {children}
+      {Children.map(children, group => {
+        if (!React.isValidElement(group)) {
+          return null
+        }
+        const { title } = group.props
+        return (
+          <SubMenu className={styles.linkGroup} title={title}>
+            {group}
+          </SubMenu>
+        )
+      })}
     </Menu>
   )
 }

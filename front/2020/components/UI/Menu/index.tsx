@@ -40,8 +40,8 @@ export default function Menu({ inlineIndent = 16, openKeys, ...rest }: MenuProps
     const newLocalOpenKeys: string[] = []
     if (currentOpenKeys.length > 0) {
       newLocalOpenKeys.push(currentOpenKeys.pop())
-      setLocalOpenKeys(newLocalOpenKeys)
     }
+    setLocalOpenKeys(newLocalOpenKeys)
   }
 
   return (

@@ -86,11 +86,17 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .clientItem {
   line-height: 1;
   flex: 0 1;
+  .mobile({
+    flex: 1;
+    max-width: 33.3%;
+  });
+  
 
   + .clientItem {
     margin-left: 15px;

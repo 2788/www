@@ -13,7 +13,9 @@
   margin: 0 -12px -24px;
 
   .mobile({
-    padding: 20px 16px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0;
   });
 
   .sceneCard {
@@ -35,6 +37,13 @@
       width: 100%;
       height: auto;
       margin: 12px 0;
+      box-shadow: none;
+      margin: 0;
+      border: none;
+      border-bottom: 1px solid @grey-3;
+      padding-left: 0;
+      padding-right: 0;
+      background-color: #fafafa;
     });
 
     .title {
@@ -51,6 +60,10 @@
       &:hover {
         text-decoration: underline;
       }
+
+      .mobile({
+        position: static;
+      });
     }
 
     .content {

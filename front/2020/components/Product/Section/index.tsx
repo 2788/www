@@ -38,7 +38,7 @@ export default function Section(props: SectionProps) {
     ? (blockIndex % 2 === 1) // PC 端默认下标基数为灰，偶数为白（下标从 0 开始）
     : false
   )
-  const grey = propGrey != null ? propGrey : defaultGrey
+  const grey = propGrey != null && isPc ? propGrey : defaultGrey
   const isLast = blockIndex === blocks.length - 1
   const blockClassName = classnames(style.blockWraper, grey && style.grey)
   const wrapperClassName = classnames(style.wrapper, props.className, isLast && style.last)

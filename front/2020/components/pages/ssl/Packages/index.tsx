@@ -49,7 +49,7 @@ function Card(props: CardProps) {
   const sellPointItems = sellPoints.map((sellPoint, index) => (
     <p key={index} className={style.row}>
       <CheckedIcon className={style.icon} />
-      {sellPoint}
+      <span className={style.text}>{sellPoint}</span>
     </p>
   ))
 
