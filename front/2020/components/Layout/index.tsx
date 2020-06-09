@@ -42,9 +42,9 @@ export default function Layout({ title, keywords, description, children }: Props
   return (
     <UaContext.Provider value={{ isMobile, loaded, ...ua }}>
       <Head>
-        <title>{title}</title>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0,width=device-width" />
+        <title>{title}</title>
+        <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
         <link rel="shortcut icon" href="//qiniu.staticfile.org/favicon.ico" type="image/x-icon" />
         {keywordsMeta}
         {descriptionMeta}
