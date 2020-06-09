@@ -30,7 +30,8 @@ function PageContent() {
   const priceUrl = urlForPrice(Product.Kodo)
 
   const btns = useBtns(
-    { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true }
+    { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true },
+    { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
   return (

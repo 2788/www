@@ -38,6 +38,8 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const isMobile = useMobile()
 
+  const priceUrl = urlForPrice(Product.Qvm)
+
   const descView = (
     <>
       <p>七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。</p>
@@ -53,7 +55,8 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/vm/instance/create', pcOnly: true },
-    { children: '控制台', href: 'https://portal.qiniu.com/qvm', pcOnly: true }
+    { children: '控制台', href: 'https://portal.qiniu.com/qvm', pcOnly: true },
+    { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
   return (
@@ -82,7 +85,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator priceLink={urlForPrice(Product.Qvm)}>
+      <Navigator priceLink={priceUrl}>
         {btns.nav}
       </Navigator>
 

@@ -18,21 +18,31 @@ export default function DemoCard({ title, content, link }: IDemoCardProps) {
   const isMobile = useMobile()
   rootCls.push(isMobile ? style.mobileDemoCard : style.pcDemoCard)
 
+  const btnProps = {
+    type: 'hollow',
+    className: style.button,
+    size: 'small'
+  } as const
+
+  const btnForPC = (
+    <Button {...btnProps} withBorder href={link}>
+      立即体验
+    </Button>
+  )
+
+  const btnForMobile = (
+    <Button {...btnProps} disabled>
+      在 PC 端体验完整 Demo
+    </Button>
+  )
+
   return (
     <Card className={rootCls.join(' ')}>
       <Img src={titleBg} className={style.image}>
         {title}
       </Img>
       <Content className={style.content}>{content}</Content>
-      <Button
-        type="hollow"
-        className={style.button}
-        size="small"
-        withBorder
-        href={link}
-      >
-        立即体验
-      </Button>
+      {isMobile ? btnForMobile : btnForPC}
     </Card>
   )
 }

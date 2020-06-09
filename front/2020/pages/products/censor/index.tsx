@@ -38,12 +38,12 @@ import LogoTangdou from './_logos/tangdou.png'
 function PageContent() {
 
   const isPc = !useMobile()
+  const priceUrl = urlForPrice(Product.Censor)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/censor', children: '立即使用', pcOnly: true }
+    { href: 'https://portal.qiniu.com/censor', children: '立即使用', pcOnly: true },
+    { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
-
-  const priceUrl = urlForPrice(Product.Censor)
 
   return (
     <>

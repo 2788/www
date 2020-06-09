@@ -3,10 +3,12 @@
 .demoPage {
   background: #FAFAFA;
   .banner {
-    height: 200px;
-    .title {
-      font-size: 30px;
-    }
+    .notMobile({
+      height: 200px;
+      .title {
+        font-size: 30px;
+      }
+    });
   }
   .mainContainer {
     .centered();

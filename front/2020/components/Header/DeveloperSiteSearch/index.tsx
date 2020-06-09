@@ -8,7 +8,6 @@ import { urlFor } from 'utils'
 import ArrowRightIcon from './arrow-right.svg'
 import style from './style.less'
 
-// TODO: 放到配置里？
 const developerSiteUrl = 'https://developer.qiniu.com'
 
 export type Props = {

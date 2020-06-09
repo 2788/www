@@ -35,8 +35,11 @@ import imgBanner from './_images/banner.png'
 function PageContent() {
   const { showModal } = useFeedbackModal()
 
+  const priceUrl = urlForPrice(Product.Pili)
+
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/apply-pili', children: '立即使用', pcOnly: true },
+    { href: priceUrl, children: '产品价格', mobileOnly: true },
     { onClick: showModal, children: '立即咨询' }
   )
 
@@ -49,7 +52,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <Navigator priceLink={urlForPrice(Product.Pili)}>
+      <Navigator priceLink={priceUrl}>
         {btns.nav}
       </Navigator>
 

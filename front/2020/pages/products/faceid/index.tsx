@@ -30,9 +30,12 @@ import style from './style.less'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
+  const priceUrl = urlForPrice(Product.FaceID)
+
   const btns = useBtns(
     { href: 'https://developer.qiniu.com/dora/api/6699/facecompare', children: '使用文档' },
-    { href: 'https://jinshuju.net/f/fgideP', children: '申请开通' }
+    { href: 'https://jinshuju.net/f/fgideP', children: '申请开通' },
+    { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
   const featureHeaderView = (
@@ -52,7 +55,7 @@ function PageContent() {
         icon={imgBanner}
       />
 
-      <Navigator priceLink={urlForPrice(Product.FaceID)}>{btns.nav}</Navigator>
+      <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
       <Feature name="features" title="核心功能" header={featureHeaderView}>
         <feature.Group>

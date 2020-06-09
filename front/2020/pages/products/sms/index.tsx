@@ -40,9 +40,12 @@ function PageContent() {
 
   const { showModal } = useFeedbackModal()
 
+  const priceUrl = urlForPrice(Product.Sms)
+
   const btns = useBtns(
     { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true },
-    { children: '售前咨询', onClick: showModal }
+    { children: '售前咨询', onClick: showModal },
+    { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
   return (
@@ -55,7 +58,7 @@ function PageContent() {
         icon={imgBanner}
       />
 
-      <Navigator priceLink={urlForPrice(Product.Sms)}>
+      <Navigator priceLink={priceUrl}>
         {btns.nav}
       </Navigator>
 

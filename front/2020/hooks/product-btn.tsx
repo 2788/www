@@ -13,18 +13,23 @@ export type BtnOptions = {
   children: ReactNode,
   href: string,
   pcOnly?: boolean // 是否仅 PC，默认 false
+  mobileOnly?: boolean // 是否仅移动端，默认 false
 } | {
   type?: Props['type'],
   children: ReactNode,
   onClick: () => void,
   pcOnly?: boolean // 是否仅 PC，默认 false
+  mobileOnly?: boolean // 是否仅移动端，默认 false
 }
 
 export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
   const isMobile = useMobile()
+  const isPc = !isMobile
 
   const [firstBtnProps, ...otherBtnsProps] = [firstBtn, ...otherBtns].filter(
     ({ pcOnly }) => !(pcOnly && isMobile) // 移动端不展示 pcOnly 的项
+  ).filter(
+    ({ mobileOnly }) => !(mobileOnly && isPc) // PC 端不展示 mobileOnly 的项
   ).map(
     ({ pcOnly, ...options }) => options // pcOnly 信息用完了扔掉
   )

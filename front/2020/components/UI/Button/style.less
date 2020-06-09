@@ -22,10 +22,10 @@
   }
 }
 
-.withSize(@size) {
-  width: @size / 3 * 10;
-  height: @size;
-  line-height: @size;
+.withSize(@height, @width) {
+  width: @width;
+  height: @height;
+  line-height: @height;
 }
 
 .button {
@@ -45,7 +45,11 @@
     cursor: not-allowed;
   }
 
-  .withSize(36px);
+  .withSize(36px, 120px);
+  .mobile({
+    .withSize(32px, 96px);
+  });
+
   .withColor(
     @blue-6, @grey-1, @grey-1,
     @blue-6, #F2F2F2, #F2F2F2,
@@ -64,7 +68,7 @@
     .withColor(
       @grey-1, @blue-6, @blue-6,
       @grey-1, @blue-5, @blue-5,
-      @grey-4, #F2F2F2, @grey-4
+      @grey-4, #F2F2F2, #F2F2F2
     );
 
     &.withBorder {
@@ -80,7 +84,7 @@
     .withColor(
       @blue-6, transparent, transparent,
       @grey-1, @blue-6, @blue-6,
-      @grey-4, #F2F2F2, @grey-4
+      @grey-4, #F2F2F2, #F2F2F2
     );
 
     &.withBorder {
@@ -109,7 +113,8 @@
   }
 
   &.sizeSmall {
-    .withSize(32px);
+    .withSize(32px, 96px);
+    // TODO: 移动端要不要再小一号？
   }
 }
 
