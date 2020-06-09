@@ -1,15 +1,11 @@
 import React from 'react'
-import Section from 'components/Product/Section'
-import { useMobile } from 'hooks/ua'
-import ForPc from './Pc'
-import ForMobile from './Mobile'
+import Demo from 'components/Product/Demo'
 
-export default function Demo() {
-  const isMobile = useMobile()
-
+export default function PlmsSDKDemo() {
   return (
-    <Section title="体验 Demo" name="demo">
-      {isMobile ? <ForMobile /> : <ForPc />}
-    </Section>
+    <Demo
+      iosUrl="https://apps.apple.com/cn/app/%E4%B8%83%E7%89%9B%E7%9B%B4%E6%92%AD/id1362526971"
+      androidUrl="https://sdk-release.qnsdk.com/streaming-2.4.1.apk"
+    />
   )
 }

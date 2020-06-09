@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React, { ReactNode, HTMLAttributes } from 'react'
+import React, { ReactNode, HTMLAttributes, CSSProperties } from 'react'
 
 import Section, { SectionProps } from 'components/Product/Section'
 
@@ -73,12 +73,18 @@ export default function Scene(props: ISceneProps) {
     )
   }
 
+  const mobileStyle: CSSProperties = {
+    paddingLeft: '0',
+    paddingRight: '0',
+    paddingBottom: '0'
+  }
+
   return (
     <Section
       name={name}
       title={title}
       grey={grey && !isMobile}
-      style={isMobile ? { padding: '16px 0' } : {}}
+      style={isMobile ? mobileStyle : {}}
       {...otherProps}
     >
       {renderMain()}

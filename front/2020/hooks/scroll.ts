@@ -90,18 +90,17 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
 }
 
 // 兼容的 Element.scroll. Element.scroll 在 ie 上不支持.
-export function useSmoothElementScrollTo(container: RefObject<HTMLElement>) {
+export function useSmoothElementScrollTo({ current }: RefObject<HTMLElement | undefined>) {
   const scrollTo = useCallback((scrollTop: number) => {
-    if (container.current) {
-      container.current.scrollTop = scrollTop
+    if (current) {
+      current.scrollTop = scrollTop
       return
     }
 
     throw Error('Its looks like you havent set an element by ref.')
-  }, [container])
+  }, [current])
 
   useEffect(() => {
-    const current = container.current
     const previousBehavior = current?.style.scrollBehavior
 
     if (current) {
@@ -116,7 +115,7 @@ export function useSmoothElementScrollTo(container: RefObject<HTMLElement>) {
         }
       }
     }
-  }, [container])
+  }, [current])
 
   return scrollTo
 }

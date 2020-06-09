@@ -21,7 +21,7 @@ export default function ContentItem(props: ContentItemProps) {
   const hotIcon = hot && (typeof hot === 'boolean' ? <Hot /> : <Hot text={hot} />)
 
   return (
-    <li className={classnames(style.wrapper, disabled && style.disabled)}>
+    <li className={classnames(style.li, disabled && style.disabled)}>
       <Link href={href} onClick={onClick}>
         <div className={style.icon}>{icon}</div>
         <div className={style.desc}>

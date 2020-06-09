@@ -1,6 +1,6 @@
 @import '~utils/less/index.less';
 
-.wrapper {
+.li {
   display: inline-block;
   width: 356px;
   height: 116px;
@@ -18,7 +18,7 @@
 
   .icon {
     float: left;
-    width: 80px;
+    width: 76px;
     height: 116px;
     line-height: 116px;
     text-align: center;
@@ -52,6 +52,14 @@
       .subtitle {
         color: @grey-5;
       }
+    }
+
+    &:hover {
+      background: none;
+    }
+
+    & > a {
+      cursor: default;
     }
   }
 }

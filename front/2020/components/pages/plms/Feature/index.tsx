@@ -9,7 +9,7 @@ export default function Feature() {
   const isMobile = useMobile()
 
   return (
-    <Section title="产品功能" name="features" style={isMobile ? { padding: '16px 0' } : {}}>
+    <Section title="产品功能" name="features" style={isMobile ? { padding: '16px 0 0' } : {}}>
       {isMobile ? <ForMobile /> : <ForPc />}
     </Section>
   )

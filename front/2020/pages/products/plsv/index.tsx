@@ -71,7 +71,7 @@ export default function Page() {
           <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可体验全方位短视频 SDK">
+      <UsageGuide title="注册即可全方位体验短视频 SDK">
         <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com">
           免费体验
         </UsageGuideButton>

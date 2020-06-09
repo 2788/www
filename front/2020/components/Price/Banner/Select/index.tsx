@@ -7,7 +7,7 @@ import Button from 'components/UI/Button'
 import Link from 'components/Link'
 
 import CalcIcon from './calc.svg'
-import ArrowUpIcon from './arrow-up.svg'
+import ArrowDownIcon from './arrow-down.svg'
 import style from './index.less'
 
 export default function Select() {
@@ -16,7 +16,7 @@ export default function Select() {
   return (
     <Dropdown trigger="click" overlay={Overlay} onVisibleChange={setOpen} overlayClassName={style.dropdown}>
       <Button className={style.btn}>
-        查看其它产品价格<ArrowUpIcon className={classnames(style.arrow, open && style.open)} />
+        查看其它产品价格<ArrowDownIcon className={classnames(style.arrow, open && style.open)} />
       </Button>
     </Dropdown>
   )

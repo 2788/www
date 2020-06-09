@@ -1,43 +1,99 @@
-import React, { useState } from 'react'
-import classnames from 'classnames'
-import { Category, categories, categoryNameMap, categoryEnNameMap } from 'constants/products'
-import useDelay from 'hooks/use-delay'
+import React from 'react'
+import { categoryNameMap, Category, nameMap, categories, categoryEnNameMap, categoryStorage, urlMap, Product, descMap, categoryService, categoryVideo, categoryIntelligence } from 'constants/products'
+import ProductIcon from 'components/Product/Icon'
+import { useModal } from 'components/Feedback'
+import { useDropdown } from 'components/UI/Dropdown'
 
-import Contents from './Contents'
-import style from './index.less'
+import ScrollableOverlay from '../../ScrollableOverlay'
+import Menu from '../../ScrollableOverlay/Menu'
+import MenuItem from '../../ScrollableOverlay/Menu/Item'
+import Content from '../../ScrollableOverlay/Content'
+import ContentItem from '../../ScrollableOverlay/Content/Item'
+import ContentSection from '../../ScrollableOverlay/Content/Section'
+
+const hotMap = {
+  [Product.Kodo]: true,
+  [Product.Archive]: false
+}
 
 export default function Overlay() {
-  const [content, setContent] = useState<Category>(Category.Storage)
-  const delayObj = useDelay(50)
-
-  function handleMouseEnter(_content: Category) {
-    return () => {
-      delayObj.start(() => setContent(_content))
-    }
-  }
-
-  function handleMouseLeave() {
-    delayObj.stop()
-  }
-
-  const itemsView = categories.map(category => (
-    <li
-      key={category}
-      className={classnames(content === category && 'active')}
-      onMouseEnter={handleMouseEnter(category)}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className={style.title}>{categoryNameMap[category]}</div>
-      <div className={style.subtitle}>{categoryEnNameMap[category]}</div>
-    </li>
+  const { showModal } = useModal()
+  const { close } = useDropdown()
+  const menuItems = categories.map(category => (
+    <MenuItem key={category} title={categoryNameMap[category]} subtitle={categoryEnNameMap[category]} />
   ))
 
+  function handleHDFSClick() {
+    // eslint-disable-next-line no-unused-expressions
+    close?.()
+    showModal()
+  }
+
   return (
-    <div className={style.overlay}>
-      <ul className={style.menus}>
-        {itemsView}
-      </ul>
-      <Contents content={content} />
-    </div>
+    <ScrollableOverlay>
+      <Menu defaultActive={categoryNameMap[Category.Storage]}>
+        {menuItems}
+      </Menu>
+      <Content>
+        <ContentSection title={categoryNameMap[Category.Storage]}>
+          {categoryStorage.map(product => (
+            <ContentItem
+              key={product}
+              href={urlMap[product]}
+              icon={<ProductIcon product={product} />}
+              hot={hotMap[product]}
+              title={nameMap[product]}
+              subtitle={descMap[product]}
+            />
+          ))}
+          <ContentItem
+            onClick={handleHDFSClick}
+            href="#"
+            icon={<ProductIcon product={Product.Hdfs} />}
+            title={nameMap[Product.Hdfs]}
+            subtitle="即将上线，欢迎垂询"
+          />
+        </ContentSection>
+        <ContentSection title={categoryNameMap[Category.Service]}>
+          {
+            categoryService.map(product => (
+              <ContentItem
+                key={product}
+                href={urlMap[product]}
+                icon={<ProductIcon product={product} />}
+                title={nameMap[product]}
+                subtitle={descMap[product]}
+              />
+            ))
+          }
+        </ContentSection>
+        <ContentSection title={categoryNameMap[Category.Video]}>
+          {
+            categoryVideo.map(product => (
+              <ContentItem
+                key={product}
+                href={urlMap[product]}
+                icon={<ProductIcon product={product} />}
+                title={nameMap[product]}
+                subtitle={descMap[product]}
+              />
+            ))
+          }
+        </ContentSection>
+        <ContentSection title={categoryNameMap[Category.Intelligence]}>
+          {
+            categoryIntelligence.map(product => (
+              <ContentItem
+                key={product}
+                href={urlMap[product]}
+                icon={<ProductIcon product={product} />}
+                title={nameMap[product]}
+                subtitle={descMap[product]}
+              />
+            ))
+          }
+        </ContentSection>
+      </Content>
+    </ScrollableOverlay>
   )
 }

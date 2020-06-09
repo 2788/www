@@ -7,6 +7,12 @@
 
 @block-height: 280px;
 
+.blockLeft {
+  .mobile({
+    padding: 20px 12px !important;
+  });
+}
+
 .blockRight {
   margin-left: 0 !important;
 }
@@ -16,7 +22,7 @@
   padding: 0 24px;
 
   .mobile({
-     padding: 20px 16px;
+     padding: 0;
    });
 
   figure {
@@ -41,13 +47,13 @@
   line-height: 1;
 
   .mobile({
-     width: calc(100% -  32px);
-     margin: 16px;
+     width: 100%;
+     height: auto;
    });
 }
 
 .sceneTitle {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   font-size: 16px;
   font-weight: 600;
   color: @grey-7;

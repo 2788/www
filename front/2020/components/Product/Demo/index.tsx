@@ -4,7 +4,7 @@
  * @author zhuhao <zhuhao@qiniu.com>
  */
 
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import Section from 'components/Product/Section'
 import { useMobile } from 'hooks/ua'
 import ForPc from './Pc'
@@ -18,9 +18,13 @@ export type Props = {
 
 export default function Demo(props: Props) {
   const isMobile = useMobile()
-
+  const mobileStyle: CSSProperties = {
+    paddingLeft: '0',
+    paddingRight: '0',
+    paddingBottom: '0'
+  }
   return (
-    <Section title="体验 Demo" name="demo">
+    <Section title="体验 Demo" name="demo" style={isMobile ? mobileStyle : {}}>
       {isMobile ? <ForMobile {...props} /> : <ForPc {...props} />}
     </Section>
   )
