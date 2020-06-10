@@ -32,8 +32,7 @@ import IconFeatureScalable from './_icons/feature/scalable.svg'
 import IconFeatureStable from './_icons/feature/stable.svg'
 import style from './style.less'
 
-// 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
-// context（由 `<Layout>` 提供），使用 `useFeedbackModal`
+// 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
 function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const isMobile = useMobile()

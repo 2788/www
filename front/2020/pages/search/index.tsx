@@ -66,7 +66,8 @@ function useMobileLogic(
   }
 }
 
-export default function SearchPage() {
+// 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
+function PageContent() {
   // URL 参数 keyword -> 关键词
   const [keyword, setKeyword] = useQueryValue('keyword', '')
   // URL 参数 tag -> 类别
@@ -127,7 +128,7 @@ export default function SearchPage() {
   )
 
   return (
-    <Layout title="搜索" keywords="" description="">
+    <>
       <Form keyword={keyword} onSubmit={handleKeywordSubmit} />
       <div className={style.main}>
         <div className={style.left}>
@@ -140,6 +141,14 @@ export default function SearchPage() {
         </div>
         <Recommend className={style.right} />
       </div>
+    </>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Layout title="搜索" keywords="" description="">
+      <PageContent />
     </Layout>
   )
 }
