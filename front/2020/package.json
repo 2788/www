@@ -11,7 +11,7 @@
     "build": "npm run clean && next build && next export && npm run build:sitemap",
     "start": "next start",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
-    "travis:script": "npm run lint",
+    "travis:script": "npm run lint && npm run build",
     "travis:before-script": "yarn"
   },
   "dependencies": {
