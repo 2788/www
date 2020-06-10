@@ -20,11 +20,11 @@ export default function Overlay() {
     </SubMenu>
   ))
   return (
-    <Menu mode="inline" className={style.menu}>
-      <SubMenu mode="inline" title="产品">
+    <Menu mode="inline" className={style.menu} rootMenus={['sub1', 'sub2', 'sub3', 'sub4', 'sub5']}>
+      <SubMenu key="sub1" mode="inline" title="产品">
         {productSubMenus}
       </SubMenu>
-      <SubMenu title="方案">
+      <SubMenu key="sub2" title="方案">
         <SubMenu title="行业解决方案">
           <MenuItem><Link href="/solutions/ess">监控视频边缘存储解决方案</Link></MenuItem>
         </SubMenu>
@@ -35,14 +35,14 @@ export default function Overlay() {
           <MenuItem><Link href="/solutions/qavs">智能视频云解决方案</Link></MenuItem>
         </SubMenu>
       </SubMenu>
-      <MenuItem><Link href="/case">客户</Link></MenuItem>
-      <SubMenu title="活动与合作">
+      <MenuItem><Link href="https://qmall.qiniu.com/">商城</Link></MenuItem>
+      <SubMenu key="sub3" title="活动与合作">
         <MenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></MenuItem>
         <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>
         <MenuItem><Link href="/invite">邀请好友</Link></MenuItem>
         <MenuItem><Link href="/cooperations">工具插件 SDK 合作</Link></MenuItem>
       </SubMenu>
-      <SubMenu title="服务与支持">
+      <SubMenu key="sub4" title="服务与支持">
         <MenuItem><a href="https://developer.qiniu.com/">开发文档</a></MenuItem>
         <MenuItem><a href="https://support.qiniu.com">技术支持</a></MenuItem>
         <MenuItem><a href="https://segmentfault.com/qiniu?ref=portal.qiniu.com">问答社区</a></MenuItem>
@@ -50,7 +50,7 @@ export default function Overlay() {
         <MenuItem><a href="https://status.qiniu.com">服务健康状态</a></MenuItem>
       </SubMenu>
       <MenuItem><a href="https://blog.qiniu.com/">七牛资讯</a></MenuItem>
-      <SubMenu title="关于我们">
+      <SubMenu key="sub5" title="关于我们">
         <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
         <MenuItem><Link href="/case">客户案例</Link></MenuItem>
         <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
