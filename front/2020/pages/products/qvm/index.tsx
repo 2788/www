@@ -38,6 +38,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const isMobile = useMobile()
 
   const priceUrl = urlForPrice(Product.Qvm)
+  const priceCalculatorUrl = urlForPrice(Product.Qvm, true)
 
   const descView = (
     <>
@@ -54,7 +55,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/vm/instance/create', pcOnly: true },
-    { children: '控制台', href: 'https://portal.qiniu.com/qvm', pcOnly: true },
+    { children: '价格计算器', href: priceCalculatorUrl, pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
