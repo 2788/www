@@ -22,6 +22,7 @@ import IconPlsv from './plsv.svg'
 import IconPlms from './plms.svg'
 import IconInsight from './insight.svg'
 import IconExpress from './express.svg'
+import IconQvs from './qvs.svg'
 
 export type Props = SVGAttributes<SVGElement> & {
   product: Product
@@ -43,7 +44,8 @@ export const iconMap = {
   [Product.Plsv]: IconPlsv,
   [Product.Plms]: IconPlms,
   [Product.Insight]: IconInsight,
-  [Product.Express]: IconExpress
+  [Product.Express]: IconExpress,
+  [Product.Qvs]: IconQvs
 }
 
 export default function ProductIcon({ product, ...others }: Props) {

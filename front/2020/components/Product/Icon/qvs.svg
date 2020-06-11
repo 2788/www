@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>智能视频云解决方案32*32</title>
+    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="公共组件01" transform="translate(-740.000000, -1229.000000)">
+            <g id="编组-6" transform="translate(173.000000, 90.000000)">
+                <g id="弹出框备份-2" transform="translate(0.000000, 798.000000)">
+                    <g id="编组-9" transform="translate(183.000000, 0.000000)">
+                        <g id="编组-14备份-3" transform="translate(356.000000, 306.000000)">
+                            <g id="01" transform="translate(22.000000, 19.000000)">
+                                <g id="编组-29" transform="translate(0.000000, 10.000000)">
+                                    <g id="编组-32备份" transform="translate(6.000000, 6.000000)">
+                                        <g id="webcam-38" transform="translate(5.000000, 2.000000)">
+                                            <path d="M4.24303999,20.0011967 L1.14490257,26.186859 C0.703310585,27.0688154 1.33472718,28.1637818 2.17994622,27.9794924 L10.999797,26.0588137 L19.8196477,27.9794924 C20.6648668,28.1637818 21.2972824,27.0688154 20.8546914,26.186859 L17.7555549,20" id="路径" stroke="#00AAE7" stroke-width="2"></path>
+                                            <circle id="椭圆形" stroke="#333333" stroke-width="2" stroke-linecap="square" cx="11" cy="11" r="11"></circle>
+                                            <circle id="椭圆形" stroke="#00AAE7" stroke-width="2" stroke-linecap="square" cx="11" cy="11" r="4"></circle>
+                                            <circle id="椭圆形" fill="#00AAE7" fill-rule="nonzero" cx="11" cy="11" r="1"></circle>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

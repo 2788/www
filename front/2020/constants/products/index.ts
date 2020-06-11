@@ -35,7 +35,9 @@ export enum Product {
   /** 智能日志管理平台 */
   Insight = 'insight',
   /** 机器数据分析平台 */
-  Express = 'express'
+  Express = 'express',
+  /** 视频监控 */
+  Qvs = 'qvs'
 }
 
 // TODO: 这个再核对一遍
@@ -56,7 +58,8 @@ export const nameMap = {
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '直播推流 SDK',
   [Product.Insight]: '智能日志管理平台',
-  [Product.Express]: '数据分析平台'
+  [Product.Express]: '数据分析平台',
+  [Product.Qvs]: '视频监控 QVS'
 } as const
 
 export const urlMap = {
@@ -75,7 +78,8 @@ export const urlMap = {
   [Product.Plsv]: '/products/plsv',
   [Product.Plms]: '/products/plms',
   [Product.Insight]: '/products/insight',
-  [Product.Express]: '/products/pandora'
+  [Product.Express]: '/products/pandora',
+  [Product.Qvs]: '/products/qvs'
 } as const
 
 export const descMap = {
@@ -95,6 +99,7 @@ export const descMap = {
   [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
   [Product.Plms]: '支持手机端 RTMP & QUIC 推流，简单易上手，马上开播',
   [Product.FaceID]: '利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证',
+  [Product.Qvs]: '面向视频监控设备提供视频流接入、存储、分发服务',
 
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
   [Product.Express]: '助力企业探索数据、创造价值、预见未来'
@@ -131,7 +136,8 @@ export const categoryVideo = [
   Product.Pili,
   Product.Rtn,
   Product.Plsv,
-  Product.Plms
+  Product.Plms,
+  Product.Qvs
 ] as const
 
 /** 机器数据智能 */

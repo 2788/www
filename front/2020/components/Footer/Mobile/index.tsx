@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
 import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import { urlMap as solutionUrlMap, nameMap as solutionNameMap, Solution } from 'constants/solutions'
 import Button from 'components/UI/Button'
 
 import Github from './images/github.svg'
@@ -34,11 +35,11 @@ export default function FooterForMobile() {
         <Menu mode="inline" inlineIndent={15}>
           {productSubMenusView}
           <SubMenu title="解决方案">
-            <MenuItem><Link href="/solutions/qavs">智能视频云解决方案</Link></MenuItem>
-            <MenuItem><Link href="/solutions/plsv">短视频解决方案</Link></MenuItem>
-            <MenuItem><Link href="/solutions/kodoe">私有云存储解决方案</Link></MenuItem>
-            <MenuItem><Link href="/solutions/vcs">视频冷存储解决方案</Link></MenuItem>
-            <MenuItem><Link href="/solutions/ess">监控视频边缘存储解决方案</Link></MenuItem>
+            <MenuItem><Link href={solutionUrlMap[Solution.Qavs]}>{solutionNameMap[Solution.Qavs]}</Link></MenuItem>
+            <MenuItem><Link href={solutionUrlMap[Solution.Plsv]}>{solutionNameMap[Solution.Plsv]}</Link></MenuItem>
+            <MenuItem><Link href={solutionUrlMap[Solution.Kodoe]}>{solutionNameMap[Solution.Kodoe]}</Link></MenuItem>
+            <MenuItem><Link href={solutionUrlMap[Solution.Vcs]}>{solutionNameMap[Solution.Vcs]}</Link></MenuItem>
+            <MenuItem><Link href={solutionUrlMap[Solution.Ess]}>{solutionNameMap[Solution.Ess]}</Link></MenuItem>
           </SubMenu>
           <SubMenu title="活动与合作">
             <MenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></MenuItem>
