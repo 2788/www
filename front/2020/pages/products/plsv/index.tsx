@@ -26,7 +26,7 @@ import Scene from 'components/pages/plsv/Scene'
 
 import imgBanner from './images/banner.png'
 
-export default function Page() {
+function PageContent() {
 
   const btns = useBtns(
     { children: '免费体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com', pcOnly: true },
@@ -34,11 +34,7 @@ export default function Page() {
   )
 
   return (
-    <Layout
-      title="短视频 SDK"
-      keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
-      description="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
-    >
+    <>
       <PageBanner
         title="短视频 SDK"
         desc="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
@@ -46,9 +42,9 @@ export default function Page() {
         icon={imgBanner} />
 
       <PageNotice>
-        <PageNoticeGroup title="福利活动" type="welfares">
+        <PageNoticeGroup title="产品推荐" type="welfares">
           <PageNoticeItem href="/products/svesdk">
-            短视频特效 SDK
+            短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省的打造专业级短视频制作工具
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
@@ -76,6 +72,18 @@ export default function Page() {
           免费体验
         </UsageGuideButton>
       </UsageGuide>
+    </>
+  )
+}
+
+export default function PlsvPage() {
+  return (
+    <Layout
+      title="短视频 SDK"
+      keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
+      description="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
+    >
+      <PageContent />
     </Layout>
   )
 }

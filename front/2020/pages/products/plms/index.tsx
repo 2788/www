@@ -40,9 +40,9 @@ export function Content() {
         icon={imgBanner} />
 
       <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="welfares">
+        <PageNoticeGroup title="产品推荐" type="welfares">
           <PageNoticeItem href="/products/plesdk">
-            直播特效 SDK 落地页
+            直播特效 SDK，助你快速搞定美颜滤镜，塑造最美直播
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>

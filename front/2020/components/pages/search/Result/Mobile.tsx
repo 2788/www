@@ -28,7 +28,9 @@ export default function SearchResultMobile({ result, onLoadMore, loading }: Prop
 
   const loadMoreView = hasMore && (
     <div className={style.paginationLine}>
-      <Button className={style.loadMore} withBorder onClick={onLoadMore}>加载更多</Button>
+      <Button className={style.loadMore} withBorder onClick={onLoadMore}>
+        {loading ? '加载中...' : '加载更多'}
+      </Button>
     </div>
   )
 
@@ -36,8 +38,8 @@ export default function SearchResultMobile({ result, onLoadMore, loading }: Prop
     <div className={style.wrapper}>
       <Loading loading={loading}>
         <ResultList items={result.items} />
-        {loadMoreView}
       </Loading>
+      {loadMoreView}
     </div>
   )
 }

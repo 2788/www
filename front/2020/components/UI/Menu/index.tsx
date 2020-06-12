@@ -12,9 +12,10 @@ export * from 'rc-menu'
 interface MenuProps extends RcMenuProps {
   // 此属性 SubMenu 传进去不生效，只能从根结点传
   inlineIndent?: number
+  rootMenus?: string[]
 }
 
-export default function Menu({ inlineIndent = 16, openKeys, ...rest }: MenuProps) {
+export default function Menu({ inlineIndent = 16, openKeys, rootMenus, ...rest }: MenuProps) {
   const [localOpenKeys, setLocalOpenKeys] = useState<string[]>([])
 
   function expandIcon(props: any) {
@@ -36,19 +37,27 @@ export default function Menu({ inlineIndent = 16, openKeys, ...rest }: MenuProps
     )
   }
 
-  function handleOpenChange(currentOpenKeys: any) {
-    const newLocalOpenKeys: string[] = []
-    if (currentOpenKeys.length > 0) {
-      newLocalOpenKeys.push(currentOpenKeys.pop())
+  // 只允许同时打开一个根 submenu
+  function handleOpenChange(currentOpenKeys: string[]) {
+    const latestOpenKey = currentOpenKeys.find(key => localOpenKeys.indexOf(key) === -1)
+
+    if (rootMenus) {
+      // 如果当前打开的正是根结点，则打开它
+      if (latestOpenKey && rootMenus.indexOf(latestOpenKey) > -1) {
+        setLocalOpenKeys([latestOpenKey])
+      } else {
+        setLocalOpenKeys(currentOpenKeys)
+      }
+    } else {
+      setLocalOpenKeys(latestOpenKey ? [latestOpenKey] : [])
     }
-    setLocalOpenKeys(newLocalOpenKeys)
   }
 
   return (
     <RcMenu
       {...{ inlineIndent }}
       expandIcon={expandIcon}
-      onOpenChange={handleOpenChange}
+      onOpenChange={handleOpenChange as any}
       openKeys={localOpenKeys}
       {...rest}
     />

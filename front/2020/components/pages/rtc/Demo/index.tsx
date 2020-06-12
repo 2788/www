@@ -9,9 +9,9 @@ import Demo from 'components/Product/Demo'
 export default function RTCDemo() {
   return (
     <Demo
-      iosUrl="http://fir.qnsdk.com/517z?utm_source=fir&utm_medium=qr"
+      iosUrl="http://fir.qnsdk.com/517z"
       androidUrl="http://fir.qnsdk.com/b5ce"
-      webUrl="https://demo-rtc.qnsdk.com/"
+      webUrl="https://demo-rtc.qnsdk.com"
     />
   )
 }

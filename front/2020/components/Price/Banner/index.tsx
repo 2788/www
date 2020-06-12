@@ -1,6 +1,7 @@
 import React, { createContext, ReactNode, useState, useEffect, useCallback } from 'react'
 import classnames from 'classnames'
 import { useQueryValue } from 'hooks/url'
+import { useMobile } from 'hooks/ua'
 
 import style from './index.less'
 import Select from './Select'
@@ -29,6 +30,7 @@ export default function PriceBanner(props: PriceBannerProps) {
   const [query, setQuery] = useQueryValue<Active>('tab', 'price')
   const [active, setActive] = useState<Active>(query)
   const [panes, setPanes] = useState<Pane[]>([])
+  const isMobile = useMobile()
 
   const registerPane = useCallback((pane: Pane) => {
     setPanes(previous => [...previous, pane])
@@ -62,10 +64,14 @@ export default function PriceBanner(props: PriceBannerProps) {
             <div className={style.title}>{product}</div>
             <Select />
           </div>
-          <div className={style.navigator}>
-            {panes.indexOf('price') > -1 && <div className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</div>}
-            {panes.indexOf('calc') > -1 && <div className={classnames(style.tabBtn, active !== 'calc' && style.activeTab)} onClick={() => handleTabClick('calc')}>价格计算器</div>}
-          </div>
+          {
+            isMobile && (
+              <div className={style.navigator}>
+                {panes.indexOf('price') > -1 && <div className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</div>}
+                {panes.indexOf('calc') > -1 && <div className={classnames(style.tabBtn, active !== 'calc' && style.activeTab)} onClick={() => handleTabClick('calc')}>价格计算器</div>}
+              </div>
+            )
+          }
         </div>
       </div>
       <BannerContext.Provider value={{ active, setActive: handleTabClick, panes, registerPane }}>

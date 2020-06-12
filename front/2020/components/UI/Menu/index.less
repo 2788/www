@@ -4,12 +4,17 @@
   .rc-menu {
     padding: 0;
     font-size: 16px;
+    color: inherit;
     border: none;
     box-shadow: none;
   }
 
   .rc-menu-submenu {
     border-top: 1px solid @grey-3;
+
+    &:first-child {
+      border-top: 1px solid transparent;
+    }
   }
 
   .rc-menu-item {

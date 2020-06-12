@@ -17,10 +17,18 @@ export function useUa() {
 
 /** 获取是否移动端信息 */
 export function useMobile() {
-  return useUa().isMobile || false
+  const isMobile = useUa().isMobile
+  if (isMobile == null) {
+    throw new Error('Invalid isMobile value, useMobile should be used under UaContext.Provider')
+  }
+  return isMobile
 }
 
 /** 获取页面是否加载完成 */
 export function useLoaded() {
-  return useUa().loaded || false
+  const loaded = useUa().loaded
+  if (loaded == null) {
+    throw new Error('Invalid loaded value, useLoaded should be used under UaContext.Provider')
+  }
+  return loaded
 }

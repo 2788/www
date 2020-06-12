@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { useMobile } from 'hooks/ua'
 import Section from 'components/Product/Section'
 
@@ -7,9 +7,13 @@ import ForMobile from './Mobile'
 
 export default function Feature() {
   const isMobile = useMobile()
-
+  const mobileStyle: CSSProperties = {
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 0
+  }
   return (
-    <Section title="产品功能" name="features" style={isMobile ? { padding: '16px 0' } : {}}>
+    <Section title="产品功能" name="features" style={isMobile ? mobileStyle : {}}>
       {isMobile ? <ForMobile /> : <ForPc />}
     </Section>
   )

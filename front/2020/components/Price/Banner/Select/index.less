@@ -9,8 +9,13 @@
 
   &:hover {
     color: @blue-6 !important;
-    background: @grey-1;
+    background: @grey-1 !important;
   }
+
+  .mobile({
+    position: absolute;
+    right: 16px;
+  });
 }
 
 .dropdown:not(:global(.rc-dropdown-hidden)) {

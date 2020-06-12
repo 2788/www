@@ -104,10 +104,10 @@ export default function Price() {
       <PricePaneSection title="价格详情" className={style.mode}>
         <Tabs defaultValue="1" size="middle">
           <TabPane value="1" tab="人脸核验">
-            <Table bordered pagination={false} columns={columns1} dataSource={data1} />
+            <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns1} dataSource={data1} />
           </TabPane>
           <TabPane value="2" tab="人脸识别技术">
-            <Table bordered columns={columns2} dataSource={data2} pagination={false} />
+            <Table bordered scroll={{ x: 'max-content' }} columns={columns2} dataSource={data2} pagination={false} />
           </TabPane>
         </Tabs>
       </PricePaneSection>

@@ -13,7 +13,7 @@ export default function Overlay() {
     <ScrollableOverlay>
       <Menu defaultActive="场景解决方案">
         <MenuItem title="场景解决方案" subtitle="Solutions by Scenario" />
-        <MenuItem title="行业解决方案" subtitle="Solutions by Scenario" />
+        <MenuItem title="行业解决方案" subtitle="Solutions by Industry" />
       </Menu>
       <Content>
         <ContentSection title={categoryNameMap[Category.Scene]}>

@@ -1,10 +1,13 @@
 @import '~utils/less/index.less';
 
 .bannerWrapper {
-  min-width: @centered-content-width;
   height: 163px;
   overflow: hidden;
   background-color: #34a1ec;
+
+  .mobile({
+    height: 110px;
+  });
 }
 
 .content {
@@ -13,6 +16,10 @@
   background-image: url(./bg.png);
   background-repeat: no-repeat;
   background-position: right;
+
+  .mobile({
+    background: none;
+  });
 }
 
 .actions {
@@ -23,11 +30,15 @@
     color: @grey-1;
     font-size: 24px;
     vertical-align: middle;
+
+    .mobile({
+      margin-left: 16px;
+    });
   }
 }
 
 .navigator {
-  margin-top: 46px;
+  margin-top: 47px;
 
   .tabBtn {
     display: inline-block;

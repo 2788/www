@@ -116,13 +116,15 @@ function isTabPane(elm: ReactElement): elm is ReactElement<TabPaneProps> {
 }
 
 export type TabProps = {
+  /** children 是 string 默认用 children */
+  title?: string
   /** 当前 tab 项对应的值 */
   value: string
   /** Tab 内容 */
   children: ReactNode
 }
 
-export function Tab({ value, children }: TabProps) {
+export function Tab({ value, title, children }: TabProps) {
   const contextValue = useContext(tabContext)
   if (!contextValue) {
     throw new Error('Component Tab should be used in Tabs.')
@@ -131,9 +133,11 @@ export function Tab({ value, children }: TabProps) {
   const active = contextValue.value === value
   const onClick = () => !active && contextValue.onChange(value)
   const className = [style.item, active && style.active].filter(Boolean).join(' ')
+  // eslint-disable-next-line no-underscore-dangle
+  const _title = title || (typeof children === 'string' ? children : undefined)
 
   return (
-    <li className={className} onClick={onClick}>
+    <li className={className} onClick={onClick} title={_title}>
       {children}
     </li>
   )
