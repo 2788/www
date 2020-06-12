@@ -54,9 +54,12 @@
   min-width: 2em; // 最少两个字宽度
   max-width: 12em; // 最多 12 个字宽度, TODO: 改为超出则 ...
   height: 100%;
+  vertical-align: middle;
   cursor: pointer;
   box-sizing: content-box;
   transition: .2s;
+
+  .ellipsis();
 
   .mobile({
     padding: 0 4px;

@@ -36,5 +36,5 @@ const data1 = [
 ]
 
 export default function Other() {
-  return <Table bordered pagination={false} columns={columns} dataSource={data1} />
+  return <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data1} />
 }

@@ -97,5 +97,5 @@ const data = [
 ]
 
 export default function Custom() {
-  return <Table bordered columns={columns} dataSource={data} pagination={false} />
+  return <Table bordered scroll={{ x: 'max-content' }} columns={columns} dataSource={data} pagination={false} />
 }

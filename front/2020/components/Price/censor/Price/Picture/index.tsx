@@ -44,10 +44,10 @@ const data = [
 export default function Picture() {
   return (
     <Tabs defaultValue="1" size="middle">
-      <TabPane tab="图片鉴黄" value="1"><Table bordered pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片鉴暴恐" value="2"><Table bordered pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片政治人物识别" value="3"><Table bordered pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片广告识别" value="4"><Table bordered pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab="图片鉴黄" value="1"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab="图片鉴暴恐" value="2"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab="图片政治人物识别" value="3"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab="图片广告识别" value="4"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
     </Tabs>
   )
 }

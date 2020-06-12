@@ -289,5 +289,5 @@ const data = [
 ]
 
 export default function SouthAsia() {
-  return <Table bordered pagination={false} columns={columns} dataSource={data} footer={() => <Footer />} />
+  return <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} footer={() => <Footer />} />
 }

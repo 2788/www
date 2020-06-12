@@ -74,5 +74,5 @@ const data = [
 ]
 
 export default function TabPane1() {
-  return <Table bordered pagination={false} columns={columns} dataSource={data} />
+  return <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} />
 }

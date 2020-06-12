@@ -38,7 +38,7 @@ export default function Price() {
         <p className={style.alert}>* 请您在免费额度使用完后，及时购买短信资源包，以免您的短信服务受到限制。</p>
       </PricePaneSection>
       <PricePaneSection title="价格详情" padding>
-        <Table bordered columns={columns} dataSource={data} pagination={false} />
+        <Table bordered scroll={{ x: 'max-content' }} columns={columns} dataSource={data} pagination={false} />
       </PricePaneSection>
     </PricePane>
   )

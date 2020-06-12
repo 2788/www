@@ -3,6 +3,7 @@ import PricePane, { PricePaneSection } from 'components/Price/Banner/PricePane'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import { BannerContext } from 'components/Price/Banner'
 import Button from 'components/UI/Button'
+import { useMobile } from 'hooks/ua'
 
 import South from './South'
 import East from './East'
@@ -13,6 +14,7 @@ import SouthAsia from './SouthAsia'
 
 export default function Price() {
   const { setActive } = useContext(BannerContext)
+  const isMobile = useMobile()
 
   return (
     <PricePane>
@@ -34,7 +36,7 @@ export default function Price() {
         <Card title="标准存储每月免费 CDN 回源流量" num="0 - 10" unit="GB" />
         <Card title="标准存储每月免费写请求 PUT/DELETE" num="0 - 10" unit="万次" />
         <Card title="标准存储每月免费读请求 GET" num="0 - 100" unit="万次" />
-        <Card title="每月免费上传流量" num="无上限" unit="" style={{ width: '136px' }} />
+        <Card title="每月免费上传流量" num="无上限" unit="" style={{ width: isMobile ? '100%' : '136px' }} />
       </PricePaneSection>
       <PricePaneSection title="价格详情" className={style.desc}>
         <Tabs defaultValue="1" size="middle">

@@ -33,7 +33,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="计费模式" padding>
-        <Table bordered columns={columns} dataSource={data} pagination={false} />
+        <Table bordered scroll={{ x: 'max-content' }} columns={columns} dataSource={data} pagination={false} />
       </PricePaneSection>
       <PricePaneSection title="计费项总览" padding>
         <Overall />

@@ -48,10 +48,10 @@ export default function Video() {
     <Tabs defaultValue="1" size="middle">
       <TabPane tab="视频鉴黄" value="1">
         <p className={style.alert}>视频鉴黄是对视频截帧后，对截帧进行图片鉴黄，所以视频鉴黄价格实际使用的是截帧图片鉴黄的价格，与图片鉴黄共用范围。</p>
-        <Table bordered pagination={false} columns={columns} dataSource={data} />
+        <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} />
       </TabPane>
-      <TabPane tab="视频鉴暴恐" value="2"><Table bordered pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="视频政治人物识别" value="3"><Table bordered pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab="视频鉴暴恐" value="2"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab="视频政治人物识别" value="3"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
     </Tabs>
   )
 }

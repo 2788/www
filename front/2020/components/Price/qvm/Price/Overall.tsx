@@ -43,6 +43,15 @@ const columns: Array<ColumnProps<any>> = [
         result.props.rowSpan = 0
       }
 
+      // MongoDB 云数据库
+      if (idx === 20) {
+        result.props.rowSpan = 2
+      }
+
+      if (idx === 21) {
+        result.props.rowSpan = 0
+      }
+
       // BGP 高防 IP
       if (idx === 22) {
         result.props.rowSpan = 4
@@ -103,6 +112,15 @@ const columns: Array<ColumnProps<any>> = [
       }
 
       if (idx > 17 && idx <= 19) {
+        result.props.rowSpan = 0
+      }
+
+      // MongoDB 云数据库
+      if (idx === 20) {
+        result.props.rowSpan = 2
+      }
+
+      if (idx === 21) {
         result.props.rowSpan = 0
       }
 
@@ -287,8 +305,8 @@ const data = [
     key: 18,
     type: 'RDS 云数据库',
     mode: '按量付费（后付费）',
-    category: '备份空间（可选）',
-    desc: '备份文件占用空间的费用。<br /><br /><strong>备份空间的免费额度</strong> = 50% 实例购买的存储空间。<br /><br /><i>说明：超出免费备份空间的部分需按量付费。</i>'
+    category: '备份空间（可选）<br /><br/><strong>说明：超出免费备份空间的部分需按量付费。</strong>',
+    desc: '备份文件占用空间的费用。<br /><br /><strong>备份空间的免费额度</strong> = 50% 实例购买的存储空间。<br />'
   },
   {
     key: 19,
@@ -315,7 +333,7 @@ const data = [
       <br />
       <i>说明：</i><br />
       <i>1. shard 和 configserver 组件磁盘空间按量付费价格 0.0047 元/G</i><br />
-      <i>2. shard 组件磁盘空间为 10 - 2000 G,步长 10 G 递增。</i><br />
+      <i>2. shard 组件磁盘空间为 10 - 2000 G，步长 10 G 递增。</i><br />
       <i>3. configserver 组件配置为 20 G，不可修改。</i>
     `
   },
@@ -365,7 +383,7 @@ const data = [
     key: 28,
     type: '新 BGP 高防 IP',
     mode: '包年包月（预付费）',
-    category: '防护域名数<br /><br /><i>说明：实例支持添加的 HTTP/HTTPS 说明域名数量。</i>',
+    category: '防护域名数<br /><br /><i>说明：实例支持添加的 HTTP/HTTPS 域名数量。</i>',
     desc: `
       默认 50 个，增加数量计费参考如下：<br />
       <br />
@@ -391,7 +409,7 @@ const data = [
     key: 31,
     type: '新 BGP 高防 IP',
     mode: '包年包月（预付费）',
-    category: '业务 QPS<br /><br /><i>说明：实例支持处理的无攻击情况下最大HTTP/HTT说明业务的并发请求速率。</i>',
+    category: '业务 QPS<br /><br /><i>说明：实例支持处理的无攻击情况下最大 HTTP/HTTPS 业务的并发请求速率。</i>',
     desc: '默认 3,000 QPS，增加每 100 QPS ：950 元/月'
   },
   {
@@ -408,5 +426,5 @@ const data = [
 ]
 
 export default function OverallSection() {
-  return <Table bordered pagination={false} columns={columns} dataSource={data} />
+  return <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} />
 }

@@ -39,7 +39,7 @@ import style from './style.less'
 export default function PlsvScene() {
   return (
     <Scene name="scene" title="应用场景" defaultActive="scene-tab-1">
-      <ScenePanel name="scene-tab-1" title="在线教育" verticalCenter>
+      <ScenePanel name="scene-tab-1" title="社交娱乐" verticalCenter>
         <SceneBlock blockType="fixed">
           <img src={scene1Img} className={style.sceneIcon} />
         </SceneBlock>
