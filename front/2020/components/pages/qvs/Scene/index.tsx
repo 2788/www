@@ -14,128 +14,85 @@ import Scene, {
   Block as SceneBlock
 } from 'components/Product/Scene'
 
-// 适用场景用户案例 logo
-import case1_1 from './images/case1-1.png'
-import case1_2 from './images/case1-2.png'
-import case1_3 from './images/case1-3.png'
-import case2_1 from './images/case2-1.png'
-import case2_2 from './images/case2-2.png'
-import case2_3 from './images/case2-3.png'
-import case3_1 from './images/case3-1.png'
-import case3_2 from './images/case3-2.png'
-import case3_3 from './images/case3-3.png'
-import case4_1 from './images/case4-1.png'
-import case4_2 from './images/case4-2.png'
-import case4_3 from './images/case4-3.png'
-import case4_4 from './images/case4-4.png'
-
-import scene1Img from './images/scene1.png'
-import scene2Img from './images/scene2.png'
-import scene3Img from './images/scene3.png'
-import scene4Img from './images/scene4.png'
+import scene1 from './images/01.png'
+import scene2 from './images/02.png'
+import scene3 from './images/03.png'
+import scene4 from './images/04.png'
+import scene5 from './images/05.png'
+import scene6 from './images/06.png'
 
 import style from './style.less'
 
 export default function PlsvScene() {
   return (
     <Scene name="scene" title="应用场景" defaultActive="scene-tab-1">
-      <ScenePanel name="scene-tab-1" title="在线教育" verticalCenter>
+      <ScenePanel name="scene-tab-1" title="新零售" verticalCenter>
         <SceneBlock blockType="fixed">
-          <img src={scene1Img} className={style.sceneIcon} />
+          <img src={scene1} className={style.sceneIcon} />
         </SceneBlock>
         <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
-            <p className={style.sceneTitle}>场景特点</p>
-            <p className={style.sceneContent}>聊天小视频、动漫配音秀、游戏精彩集锦等</p>
-            <p className={style.sceneTitle}>客户案例</p>
-            <figure>
-              <img src={case1_1} />
-              <figcaption>快看漫画</figcaption>
-            </figure>
-            <figure>
-              <img src={case1_2} />
-              <figcaption>腾讯动漫</figcaption>
-            </figure>
-            <figure>
-              <img src={case1_3} />
-              <figcaption>秀蛋</figcaption>
-            </figure>
+            <p className={style.sceneTitle}>场景描述</p>
+            <p className={style.sceneContent}>设备统一接入云平台，快速建立可视化的视频流管理平台。</p>
+            <p className={style.sceneContent}>根据业务需要，按需实时观看、按需存储、按需回放历史数据。</p>
           </div>
         </SceneBlock>
       </ScenePanel>
-      <ScenePanel name="scene-tab-2" title="电商购物" verticalCenter>
+      <ScenePanel name="scene-tab-2" title="安保连锁" verticalCenter>
         <SceneBlock blockType="fixed">
-          <img src={scene2Img} className={style.sceneIcon} />
+          <img src={scene2} className={style.sceneIcon} />
         </SceneBlock>
         <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
-            <p className={style.sceneTitle}>场景特点</p>
-            <p className={style.sceneContent}>商品短视频、买家秀、商品点评等</p>
-            <p className={style.sceneTitle}>客户案例</p>
-            <figure>
-              <img src={case2_1} />
-              <figcaption>微拍堂</figcaption>
-            </figure>
-            <figure>
-              <img src={case2_2} />
-              <figcaption>聚美优品</figcaption>
-            </figure>
-            <figure>
-              <img src={case2_3} />
-              <figcaption>新氧</figcaption>
-            </figure>
+            <p className={style.sceneTitle}>场景描述</p>
+            <p className={style.sceneContent}>实现视频资源整合共享，破除信息孤岛实现互联互通。</p>
+            <p className={style.sceneContent}>云端数据统一汇聚，全国业务一张网。</p>
           </div>
         </SceneBlock>
       </ScenePanel>
-      <ScenePanel name="scene-tab-3" title="在线教育" verticalCenter>
+      <ScenePanel name="scene-tab-3" title="智能家电" verticalCenter>
         <SceneBlock blockType="fixed">
-          <img src={scene3Img} className={style.sceneIcon} />
+          <img src={scene3} className={style.sceneIcon} />
         </SceneBlock>
         <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
-            <p className={style.sceneTitle}>场景特点</p>
-            <p className={style.sceneContent}>短视频微课、学员作业展示</p>
-            <p className={style.sceneTitle}>客户案例</p>
-            <figure>
-              <img src={case3_1} />
-              <figcaption>一起学</figcaption>
-            </figure>
-            <figure>
-              <img src={case3_2} />
-              <figcaption>中舞网</figcaption>
-            </figure>
-            <figure>
-              <img src={case3_3} />
-              <figcaption>外贸米课圈</figcaption>
-            </figure>
+            <p className={style.sceneTitle}>场景描述</p>
+            <p className={style.sceneContent}>具备视频能力的家电产品接入视频云服务，打造家电产品视频生态圈。</p>
+            <p className={style.sceneContent}>提升家电产品的使用体验，引爆产品销量。</p>
           </div>
         </SceneBlock>
       </ScenePanel>
-      <ScenePanel name="scene-tab-4" title="更多场景" verticalCenter>
+      <ScenePanel name="scene-tab-4" title="智慧工地" verticalCenter>
         <SceneBlock blockType="fixed">
-          <img src={scene4Img} className={style.sceneIcon} />
+          <img src={scene4} className={style.sceneIcon} />
         </SceneBlock>
         <SceneBlock className={style.blockRight}>
           <div className={style.sceneContainer}>
-            <p className={style.sceneTitle}>场景特点</p>
-            <p className={style.sceneContent}>制作、短视频资讯、视频看房、照片影集制作等</p>
-            <p className={style.sceneTitle}>客户案例</p>
-            <figure>
-              <img src={case4_1} />
-              <figcaption>咕咚</figcaption>
-            </figure>
-            <figure>
-              <img src={case4_2} />
-              <figcaption>自如</figcaption>
-            </figure>
-            <figure>
-              <img src={case4_3} />
-              <figcaption>浙江新闻</figcaption>
-            </figure>
-            <figure>
-              <img src={case4_4} />
-              <figcaption>蛋壳公寓</figcaption>
-            </figure>
+            <p className={style.sceneTitle}>场景描述</p>
+            <p className={style.sceneContent}>远程管理工地，提前预警。</p>
+            <p className={style.sceneContent}>保障工人安全，提升监管层次。</p>
+          </div>
+        </SceneBlock>
+      </ScenePanel>
+      <ScenePanel name="scene-tab-5" title="明厨亮灶" verticalCenter>
+        <SceneBlock blockType="fixed">
+          <img src={scene5} className={style.sceneIcon} />
+        </SceneBlock>
+        <SceneBlock className={style.blockRight}>
+          <div className={style.sceneContainer}>
+            <p className={style.sceneTitle}>场景描述</p>
+            <p className={style.sceneContent}>数据统一汇聚便利政府监管，提升商家形象，为消费者饮食安全护航。</p>
+          </div>
+        </SceneBlock>
+      </ScenePanel>
+      <ScenePanel name="scene-tab-6" title="智慧社区" verticalCenter>
+        <SceneBlock blockType="fixed">
+          <img src={scene6} className={style.sceneIcon} />
+        </SceneBlock>
+        <SceneBlock className={style.blockRight}>
+          <div className={style.sceneContainer}>
+            <p className={style.sceneTitle}>场景描述</p>
+            <p className={style.sceneContent}>物业管理更便捷，业主安全感提升，访客行为可追踪。</p>
           </div>
         </SceneBlock>
       </ScenePanel>

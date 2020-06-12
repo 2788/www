@@ -22,8 +22,9 @@
   padding: 0 24px;
 
   .mobile({
-     padding: 0;
-   });
+    height: auto;
+    padding: 0;
+  });
 
   figure {
     display: inline-block;
@@ -61,14 +62,29 @@
 }
 
 .sceneContent {
-  margin-bottom: 47px;
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 18px;
   font-size: 14px;
   color: @grey-6;
-  line-height: 22px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: @blue-6;
+    border-radius: 100%;
+    margin-right: 12px;
+  }
 
   .mobile({
-     margin-bottom: 32px;
      font-size: 12px;
-     line-height: 18px;
    });
 }

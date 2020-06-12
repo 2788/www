@@ -15,8 +15,10 @@ import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
-import Feature from 'components/pages/qvs/Feature'
+import Advantage from 'components/pages/qvs/Advantage'
+import Core from 'components/pages/qvs/Core'
 import Scene from 'components/pages/qvs/Scene'
+import Process from 'components/pages/qvs/Process'
 
 import imgBanner from './images/banner.png'
 
@@ -41,25 +43,24 @@ export default function Page() {
 
       <Navigator>{btns.nav}</Navigator>
 
-      <Feature />
+      <Advantage />
+      <Core />
       <Scene />
-      <PriceList />
-      <Demo />
+      <Process />
       <LinkGroups title="相关文档">
-        <LinkGroup title="常用文档">
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3955/short-video-quick-guide">接入指南</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3731/short-video">功能列表</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download">SDK 下载</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3733/short-video-ios-sdk">iOS 开发文档</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3734/android-short-video-sdk">Android 开发文档</LinkItem>
+        <LinkGroup title="使用文档">
+          <LinkItem href="https://developer.qiniu.com/qvs/manual/6753/qvs-product-overview">产品简介</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvs/manual/6763/qvs-quick-start">快速入门</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/qvs/api/6706/summary-of-the-api">API 文档</LinkItem>
         </LinkGroup>
-        <LinkGroup title="其他材料">
-          <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
+        <LinkGroup title="SDK">
+          <LinkItem href="https://github.com/qiniu/java-sdk/tree/master/src/main/java/com/qiniu/qvs">服务端 Java-SDK</LinkItem>
+          <LinkItem href="https://github.com/qiniu/api.v7/tree/master/qvs">服务端 Go-SDK</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可全方位体验短视频 SDK">
-        <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com">
-          免费体验
+      <UsageGuide title="注册即可免费试用视频监控服务">
+        <UsageGuideButton href="https://jinshuju.net/f/y9P9t9">
+          申请开通
         </UsageGuideButton>
       </UsageGuide>
     </Layout>
