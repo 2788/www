@@ -22,10 +22,10 @@ export default function KodoeScene() {
   return (
     <Scene name="scene" title="应用场景" header="应用场景" grey>
       <ScenePanel name="scene-tab-1" title="海量通用文件存储" verticalCenter>
-        <SceneBlock blockType="fixed">
+        <SceneBlock className={styles.block} blockType="fixed">
           <img src={sceneImgOne} className={styles.sceneImg} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={styles.block} shadow>
           <div className={styles.sceneContainer}>
             <p className={styles.sceneTitle}>场景特点</p>
             <p className={styles.sceneContent}>
@@ -43,10 +43,10 @@ export default function KodoeScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-2" title="数据分析与挖掘" verticalCenter>
-        <SceneBlock blockType="fixed">
+        <SceneBlock className={styles.block} blockType="fixed">
           <img src={sceneImgTwo} className={styles.sceneImg} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={styles.block} shadow>
           <div className={styles.sceneContainer}>
             <p className={styles.sceneTitle}>场景特点</p>
             <p className={styles.sceneContent}>
@@ -59,10 +59,10 @@ export default function KodoeScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-3" title="数据备份" verticalCenter>
-        <SceneBlock blockType="fixed">
+        <SceneBlock className={styles.block} blockType="fixed">
           <img src={sceneImgThree} className={styles.sceneImg} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={styles.block} shadow>
           <div className={styles.sceneContainer}>
             <p className={styles.sceneTitle}>场景特点</p>
             <p className={styles.sceneContent}>
@@ -77,10 +77,10 @@ export default function KodoeScene() {
       </ScenePanel>
 
       <ScenePanel name="scene-tab-4" title="多媒体数据处理" verticalCenter>
-        <SceneBlock blockType="fixed">
+        <SceneBlock className={styles.block} blockType="fixed">
           <img src={sceneImgFour} className={styles.sceneImg} />
         </SceneBlock>
-        <SceneBlock shadow>
+        <SceneBlock className={styles.block} shadow>
           <div className={styles.sceneContainer}>
             <p className={styles.sceneTitle}>场景特点</p>
             <p className={styles.sceneContent}>

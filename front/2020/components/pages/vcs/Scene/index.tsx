@@ -19,19 +19,19 @@ export default function VcsScene() {
   return (
     <Section name="scene" title="应用场景" header="典型应用场景">
       <Cards.Row>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgOneURL} />
           <Cards.Content>
             <Cards.Title className={styles.title}>高清视频原片 - 归档存储</Cards.Title>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgTwoURL} />
           <Cards.Content>
             <Cards.Title className={styles.title}>媒体资源库 - 数据冷备</Cards.Title>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgThreeURL} />
           <Cards.Content>
             <Cards.Title className={styles.title}>直播录制资源 - 实时点播</Cards.Title>

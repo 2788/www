@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import Section from 'components/Product/Section'
 import UIButton from 'components/UI/Button'
@@ -20,6 +20,10 @@ import styles from './style.less'
 
 export default function PlsvFunc() {
   const isMobile = useMobile()
+  const mobileStyle: CSSProperties = {
+    paddingLeft: 0,
+    paddingRight: 0
+  }
 
   function renderMain() {
     if (isMobile) {
@@ -30,7 +34,12 @@ export default function PlsvFunc() {
   }
 
   return (
-    <Section name="func" title="功能大全" subtitle="美颜、特效、表情、贴纸，让用户更加愉快地“玩耍”">
+    <Section
+      name="func"
+      title="功能大全"
+      subtitle="美颜、特效、表情、贴纸，让用户更加愉快地“玩耍”"
+      style={isMobile ? mobileStyle : {}}
+    >
       {renderMain()}
       <UIButton
         className={styles.link}

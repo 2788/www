@@ -19,7 +19,7 @@ export default function EssScene() {
   return (
     <Section name="scene" title="典型应用场景">
       <Cards.Row>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgOneURL} />
           <Cards.Content>
             <Cards.Title>公共交通监控</Cards.Title>
@@ -29,7 +29,7 @@ export default function EssScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgTwoURL} />
           <Cards.Content>
             <Cards.Title>楼宇小区监控</Cards.Title>
@@ -38,7 +38,7 @@ export default function EssScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgThreeURL} />
           <Cards.Content>
             <Cards.Title>工厂园区监控</Cards.Title>

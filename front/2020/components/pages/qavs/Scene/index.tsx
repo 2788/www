@@ -27,7 +27,7 @@ export default function QavsScene() {
   return (
     <Section name="scene" title="应用场景" header="典型应用场景">
       <Cards.Row>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgOneURL} />
           <Cards.Content>
             <Cards.Title>安防监控</Cards.Title>
@@ -36,7 +36,7 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgTwoURL} />
           <Cards.Content>
             <Cards.Title>在线教育</Cards.Title>
@@ -45,7 +45,7 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgThreeURL} />
           <Cards.Content>
             <Cards.Title>广电新媒体</Cards.Title>
@@ -56,7 +56,7 @@ export default function QavsScene() {
         </Cards.Card>
       </Cards.Row>
       <Cards.Row>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgFourURL} />
           <Cards.Content>
             <Cards.Title>智慧法院</Cards.Title>
@@ -65,7 +65,7 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-        <Cards.Card>
+        <Cards.Card className={styles.card}>
           <Cards.Img className={styles.img} src={SceneImgFiveURL} />
           <Cards.Content>
             <Cards.Title>远程医疗</Cards.Title>

@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import Section from 'components/Product/Section'
 
@@ -15,6 +15,11 @@ import Mobile from './Mobile'
 
 export default function KodoeCase() {
   const isMobile = useMobile()
+  const mobileStyle: CSSProperties = {
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingBottom: 0
+  }
 
   function renderMain() {
     if (isMobile) {
@@ -25,7 +30,11 @@ export default function KodoeCase() {
   }
 
   return (
-    <Section name="case" title="客户案例">
+    <Section
+      name="case"
+      title="客户案例"
+      style={isMobile ? mobileStyle : {}}
+    >
       {renderMain()}
     </Section>
   )

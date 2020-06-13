@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import Section from 'components/Product/Section'
 
@@ -15,6 +15,14 @@ import Mobile from './Mobile'
 
 export default function PlsvSolution() {
   const isMobile = useMobile()
+  const pcStyle: CSSProperties = {
+    paddingBottom: 0
+  }
+  const mobileStyle: CSSProperties = {
+    paddingLeft: 0,
+    paddingRight: 0,
+    ...pcStyle
+  }
 
   function renderMain() {
     if (isMobile) {
@@ -30,7 +38,7 @@ export default function PlsvSolution() {
       title="解决方案"
       header="端到端的解决方案"
       subtitle="一站式短视频服务，让你专注核心业务创新"
-      style={isMobile ? {} : { paddingBottom: 0 }}
+      style={isMobile ? mobileStyle : pcStyle}
     >
       {renderMain()}
     </Section>

@@ -4,7 +4,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import Section from 'components/Product/Section'
 
@@ -15,6 +15,14 @@ import Mobile from './Mobile'
 
 export default function PlsvFeature() {
   const isMobile = useMobile()
+  const pcStyle: CSSProperties = {
+    paddingBottom: 0
+  }
+  const mobileStyle: CSSProperties = {
+    paddingLeft: 0,
+    paddingRight: 0,
+    ...pcStyle
+  }
 
   function renderMain() {
     if (isMobile) {
@@ -28,7 +36,7 @@ export default function PlsvFeature() {
     <Section
       name="feature"
       title="特色功能"
-      style={isMobile ? {} : { paddingBottom: 0 }}
+      style={isMobile ? mobileStyle : pcStyle}
     >
       {renderMain()}
     </Section>
