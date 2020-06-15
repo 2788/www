@@ -53,7 +53,7 @@ export function Page() {
           <LinkItem href="https://github.com/qiniu/api.v7/tree/master/qvs">服务端 Go-SDK</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可免费试用视频监控服务">
+      <UsageGuide title="开通即可免费试用视频监控服务">
         <UsageGuideButton href="https://jinshuju.net/f/y9P9t9">
           申请开通
         </UsageGuideButton>
@@ -66,7 +66,7 @@ export default function Main() {
   return (
     <Layout
       title="视频监控 QVS"
-      keywords="视频监控 QVS qvs"
+      keywords="视频监控, QVS, qvs"
       description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
     >
       <Page />

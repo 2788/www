@@ -22,7 +22,7 @@ export default function Overlay() {
               key={solution}
               href={urlMap[solution]}
               icon={createElement(iconMap[solution])}
-              title={nameMap[Solution.Qavs]}
+              title={nameMap[solution]}
               subtitle={descMap[solution]}
             />
           ))}
