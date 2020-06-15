@@ -1,0 +1,90 @@
+/**
+ * @file 存储适用场景 style.less
+ * @author jiayizhen <jiayizhen@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+@block-height: 280px;
+
+.blockLeft {
+  .mobile({
+    padding: 20px 12px !important;
+  });
+}
+
+.blockRight {
+  margin-left: 0 !important;
+}
+
+.sceneContainer {
+  height: @block-height;
+  padding: 0 24px;
+
+  .mobile({
+    height: auto;
+    padding: 0;
+  });
+
+  figure {
+    display: inline-block;
+    text-align: center;
+    color: @grey-5;
+
+    & + figure {
+      margin-left: 20px;
+    }
+
+    img {
+      width: 72px;
+      height: 72px;
+    }
+  }
+}
+
+.sceneIcon {
+  width: 476px;
+  height: @block-height;
+  line-height: 1;
+
+  .mobile({
+     width: 100%;
+     height: auto;
+   });
+}
+
+.sceneTitle {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: @grey-7;
+  line-height: 22px;
+}
+
+.sceneContent {
+  position: relative;
+  margin-bottom: 12px;
+  padding-left: 18px;
+  font-size: 14px;
+  color: @grey-6;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: @blue-6;
+    border-radius: 100%;
+    margin-right: 12px;
+  }
+
+  .mobile({
+     font-size: 12px;
+   });
+}

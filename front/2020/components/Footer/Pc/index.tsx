@@ -8,6 +8,7 @@ import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
 import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import { urlMap as solutionUrlMap, nameMap as solutionNameMap, Solution } from 'constants/solutions'
 
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
@@ -65,11 +66,11 @@ function LinkGroups() {
     <section className={style.linkGroups}>
       {productLinkGroupsView}
       <LinkGroup title="解决方案">
-        <LinkItem url="/solutions/qavs">智能视频云解决方案</LinkItem>
-        <LinkItem url="/solutions/plsv">短视频解决方案</LinkItem>
-        <LinkItem url="/solutions/kodoe">私有云存储解决方案</LinkItem>
-        <LinkItem url="/solutions/vcs">视频冷存储解决方案</LinkItem>
-        <LinkItem url="/solutions/ess">监控视频边缘存储解决方案</LinkItem>
+        <LinkItem url={solutionUrlMap[Solution.Qavs]}>{solutionNameMap[Solution.Qavs]}</LinkItem>
+        <LinkItem url={solutionUrlMap[Solution.Plsv]}>{solutionNameMap[Solution.Plsv]}</LinkItem>
+        <LinkItem url={solutionUrlMap[Solution.Kodoe]}>{solutionNameMap[Solution.Kodoe]}</LinkItem>
+        <LinkItem url={solutionUrlMap[Solution.Vcs]}>{solutionNameMap[Solution.Vcs]}</LinkItem>
+        <LinkItem url={solutionUrlMap[Solution.Ess]}>{solutionNameMap[Solution.Ess]}</LinkItem>
       </LinkGroup>
       <LinkGroup title="服务与支持">
         <LinkItem url="https://developer.qiniu.com/">开发文档</LinkItem>
