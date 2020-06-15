@@ -5,8 +5,9 @@
 
 import React, { ReactNode, useState, useEffect } from 'react'
 import Head from 'next/head'
+import { UAParser } from 'ua-parser-js'
 import { defaultTitle, titleSuffix } from 'constants/page'
-import { UaContext, useUa } from 'hooks/ua'
+import { UaContext, useUa, Ua } from 'hooks/ua'
 
 import ErrorBoundary from './ErrorBoundary'
 import Header from '../Header'
@@ -26,10 +27,11 @@ export type Props = {
 export default function Layout({ title, keywords, description, children }: Props) {
   title = !title ? defaultTitle : (title + titleSuffix)
 
-  // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provideer 覆盖手动值
+  // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provider 覆盖手动值
   const ua = useUa()
   const isMobile = useIsMobile()
   const loaded = useLoaded()
+  const uaParser = useUaParser()
 
   const keywordsMeta = keywords && (
     <meta name="keywords" content={keywords} />
@@ -39,8 +41,16 @@ export default function Layout({ title, keywords, description, children }: Props
     <meta name="description" content={description} />
   )
 
+  const uaValue: Ua = {
+    isMobile,
+    loaded,
+    browser: uaParser.getBrowser(),
+    os: uaParser.getOS(),
+    ...ua
+  }
+
   return (
-    <UaContext.Provider value={{ isMobile, loaded, ...ua }}>
+    <UaContext.Provider value={uaValue}>
       <Head>
         <meta charSet="utf-8" />
         <title>{title}</title>
@@ -101,4 +111,15 @@ function useLoaded() {
   }, [])
 
   return loaded
+}
+
+// 默认 UA 值，用于静态渲染 & 首屏初始化逻辑
+const defaultUaText = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+
+function useUaParser() {
+  const [parser, setParser] = useState<UAParser>(new UAParser(defaultUaText))
+  useEffect(() => {
+    setParser(new UAParser())
+  }, [])
+  return parser
 }

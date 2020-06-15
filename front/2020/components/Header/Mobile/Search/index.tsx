@@ -7,7 +7,7 @@ import MobileDropdown from '../MobileDropdown'
 
 export default function Search() {
   return (
-    <MobileDropdown overlay={Overlay}>
+    <MobileDropdown overlayClassName={style.overlay} overlay={Overlay}>
       <div className={style.wrapper}>
         <SearchIcon />
       </div>

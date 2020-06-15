@@ -1,5 +1,11 @@
 @import '../style.less';
 
+.overlay {
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important; // 移动端 safari 下水平位置会偏移
+}
+
 .wrapper {
   height: @header-height;
   padding: 0 8px;

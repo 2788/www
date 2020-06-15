@@ -8,6 +8,9 @@ import { MoveTo } from 'moveto'
 import { debounce } from 'lodash'
 import { isBrowser } from 'utils'
 import Emitter from 'utils/emtter'
+import { useBrowser, useOs } from 'hooks/ua'
+
+import style from './style.less'
 
 const defaultDebounceWait = 100 // ms
 const defaultScrollDuration = 400 // 默认滚动动画时间 ms
@@ -155,4 +158,35 @@ function getGlobalScrollTop() {
   if (window.pageXOffset !== undefined) return window.pageYOffset
   if (document.compatMode === 'CSS1Compat') return document.documentElement.scrollTop
   return document.body.scrollTop
+}
+
+/** 禁用全局的滚动行为，用于全屏模态框的展示 */
+export function useGlobalModal(visible: boolean) {
+
+  const os = useOs()
+  const browser = useBrowser()
+
+  function stopScroll() {
+    document.body.classList.add(style.noScroll)
+
+    // PC 端 Safari & iOS 所有浏览器，需要给 document element 也加上 noSroll
+    // 另，safari 下还会偶发地把视口定位到奇怪的位置，不过问题不大，这里就不处理了
+    if (os.name === 'iOS' || browser.name === 'Safari') {
+      document.documentElement.classList.add(style.noScroll)
+    }
+  }
+
+  function resumeScroll() {
+    document.body.classList.remove(style.noScroll)
+    document.documentElement.classList.remove(style.noScroll)
+  }
+
+  useEffect(() => {
+    if (visible) {
+      stopScroll()
+    } else {
+      resumeScroll()
+    }
+    return resumeScroll
+  }, [visible]) // eslint-disable-line react-hooks/exhaustive-deps
 }

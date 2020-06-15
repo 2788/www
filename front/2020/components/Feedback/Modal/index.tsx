@@ -1,5 +1,6 @@
 import cls from 'classnames'
 import React, { createContext, useState, ReactNode, useContext } from 'react'
+import { useGlobalModal } from 'hooks/scroll'
 import Button from '../Button'
 import Form from '../Form'
 import IconClose from '../icons/close.svg'
@@ -29,6 +30,8 @@ export function useModal() {
 
 export default function FeedbackModal() {
   const { visible, hideModal } = useModal()
+
+  useGlobalModal(!!visible)
 
   if (visible == null) {
     return null

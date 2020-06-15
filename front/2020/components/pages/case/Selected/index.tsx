@@ -27,7 +27,7 @@ export default function Selected() {
       <TabPane value="1" tab="互联网">
         <Case
           title="英语流利说"
-          url="https://blog.qiniu.io/archives/8835"
+          url="https://blog.qiniu.com/archives/8835"
           logo={logoLiulishuo}
           products={[Product.Kodo, Product.Cdn]}
         >
@@ -35,7 +35,7 @@ export default function Selected() {
         </Case>
         <Case
           title="快看漫画"
-          url="https://blog.qiniu.io/archives/8891"
+          url="https://blog.qiniu.com/archives/8891"
           logo={logoKuaikan}
           products={[Product.Plsv]}
         >
@@ -43,7 +43,7 @@ export default function Selected() {
         </Case>
         <Case
           title="银基富力"
-          url="https://blog.qiniu.io/archives/8894"
+          url="https://blog.qiniu.com/archives/8894"
           logo={logoYinjifuli}
           products={[Product.Express]}
         >
@@ -51,7 +51,7 @@ export default function Selected() {
         </Case>
         <Case
           title="石墨文档"
-          url="https://blog.qiniu.io/archives/8895"
+          url="https://blog.qiniu.com/archives/8895"
           logo={logoShimowendang}
           products={[Product.Kodo, Product.Cdn, Product.Dora]}
         >
@@ -69,7 +69,7 @@ export default function Selected() {
       <TabPane value="2" tab="医疗">
         <Case
           title="平安好医生"
-          url="https://blog.qiniu.io/archives/8760"
+          url="https://blog.qiniu.com/archives/8760"
           logo={logoPinganhaoyisheng}
           products={[Product.Plsv]}
         >
@@ -79,7 +79,7 @@ export default function Selected() {
       <TabPane value="3" tab="传媒">
         <Case
           title="中国网"
-          url="https://blog.qiniu.io/archives/8864"
+          url="https://blog.qiniu.com/archives/8864"
           logo={logoZhongguowang}
           products={[Product.Kodo, Product.Cdn, Product.Pili]}
         >
@@ -89,7 +89,7 @@ export default function Selected() {
       <TabPane value="4" tab="智能硬件">
         <Case
           title="晶盛机电"
-          url="https://blog.qiniu.io/archives/8814"
+          url="https://blog.qiniu.com/archives/8814"
           logo={logoJinsheng}
           products={[Product.Express]}
         >

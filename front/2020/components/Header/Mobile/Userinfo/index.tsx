@@ -12,7 +12,7 @@ export default function Userinfo() {
   const { $: user } = useApiWithParams(getUserInfo, { params: [] })
 
   return (
-    <MobileDropdown overlay={() => <Overlay user={user} />}>
+    <MobileDropdown overlayClassName={style.overlay} overlay={() => <Overlay user={user} />}>
       <div className={style.wrapper}>
         <PersonIcon />
       </div>

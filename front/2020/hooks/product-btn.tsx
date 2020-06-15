@@ -31,7 +31,7 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
   ).filter(
     ({ mobileOnly }) => !(mobileOnly && isPc) // PC 端不展示 mobileOnly 的项
   ).map(
-    ({ pcOnly, ...options }) => options // pcOnly 信息用完了扔掉
+    ({ pcOnly, mobileOnly, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
   )
 
   const bannerBtnViews = [
