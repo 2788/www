@@ -1,5 +1,5 @@
 import React, { createElement } from 'react'
-import { categoryNameMap, Category, nameMap, Solution, category, urlMap, iconMap, descMap } from 'constants/solutions'
+import { categoryNameMap, Category, nameMap, category, urlMap, iconMap, descMap } from 'constants/solutions'
 
 import ScrollableOverlay from '../../ScrollableOverlay'
 import Menu from '../../ScrollableOverlay/Menu'
