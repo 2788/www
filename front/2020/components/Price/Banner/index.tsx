@@ -65,7 +65,7 @@ export default function PriceBanner(props: PriceBannerProps) {
             <Select />
           </div>
           {
-            isMobile && (
+            !isMobile && (
               <div className={style.navigator}>
                 {panes.indexOf('price') > -1 && <div className={classnames(style.tabBtn, active !== 'price' && style.activeTab)} onClick={() => handleTabClick('price')}>价格文档</div>}
                 {panes.indexOf('calc') > -1 && <div className={classnames(style.tabBtn, active !== 'calc' && style.activeTab)} onClick={() => handleTabClick('calc')}>价格计算器</div>}
