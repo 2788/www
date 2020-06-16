@@ -31,14 +31,10 @@ import TechSupport from './_images/techsupport.svg'
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
-  const { showModal } = useFeedbackModal()
-
-  function handleConsult() {
-    showModal()
-  }
+  const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '咨询详情' }
+    { onClick: startConsulting, children: '咨询详情' }
   )
 
   return (

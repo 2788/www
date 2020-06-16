@@ -38,13 +38,13 @@ import style from './style.less'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
-  const { showModal } = useFeedbackModal()
+  const { startConsulting } = useFeedbackModal()
 
   const priceUrl = urlForPrice(Product.Sms)
 
   const btns = useBtns(
     { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true },
-    { children: '售前咨询', onClick: showModal },
+    { children: '售前咨询', onClick: startConsulting },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 

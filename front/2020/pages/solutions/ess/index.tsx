@@ -20,14 +20,10 @@ import { useBtns } from 'hooks/product-btn'
 import imgBanner from './images/banner.png'
 
 function PageContent() {
-  const { showModal } = useFeedbackModal()
-
-  function handleConsult() {
-    showModal()
-  }
+  const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '咨询详情' }
+    { onClick: startConsulting, children: '咨询详情' }
   )
 
   return (
@@ -54,7 +50,7 @@ function PageContent() {
       <EssScene />
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={startConsulting}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

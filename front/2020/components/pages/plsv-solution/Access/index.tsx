@@ -17,11 +17,7 @@ import ArrowIcon from './arrow.svg'
 import styles from './style.less'
 
 export default function PlsvAccess() {
-  const { showModal } = useFeedbackModal()
-
-  function handleConsult() {
-    showModal()
-  }
+  const { startConsulting } = useFeedbackModal()
 
   return (
     <>
@@ -40,7 +36,7 @@ export default function PlsvAccess() {
         </Step>
       </AccessProcess>
       <div className={styles.linkWrapper}>
-        <a className={styles.link} onClick={handleConsult}>
+        <a className={styles.link} onClick={startConsulting}>
           立即咨询<ArrowIcon className={styles.arrow} />
         </a>
       </div>

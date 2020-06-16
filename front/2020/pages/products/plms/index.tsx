@@ -24,10 +24,10 @@ import Scene from 'components/pages/plms/Scene'
 import imgBanner from './images/banner.png'
 
 export function Content() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: showModal },
+    { children: '立即咨询', onClick: startConsulting },
     { children: '接入指南', href: 'https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience' }
   )
 
@@ -63,7 +63,7 @@ export function Content() {
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="注册即可体验全方位直播推流 SDK">
-        <UsageGuideButton onClick={showModal}>
+        <UsageGuideButton onClick={startConsulting}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

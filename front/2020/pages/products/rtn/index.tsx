@@ -34,15 +34,11 @@ import style from './index.less'
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
 
-  const { showModal } = useFeedbackModal()
-
-  function handleConsult() {
-    showModal()
-  }
+  const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/rtn/rtc/report/duration', children: '免费使用', pcOnly: true },
-    { onClick: handleConsult, children: '立即咨询' },
+    { onClick: startConsulting, children: '立即咨询' },
     { href: 'https://demo-rtc.qnsdk.com/', children: '在线体验' }
   )
 

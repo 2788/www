@@ -45,7 +45,6 @@ export default function FeedbackEntry() {
 
   return (
     <div ref={wrapperRef} className={style.wrapper}>
-      {formModalView}
       <div className={style.entryWrapper}>
         <Button className={btnClassName} onClick={toggleModal}>
           <IconClose className={style.iconClose} />
@@ -55,6 +54,7 @@ export default function FeedbackEntry() {
           免费<br />体验
         </Link>
       </div>
+      {formModalView}
     </div>
   )
 }
@@ -62,7 +62,7 @@ export default function FeedbackEntry() {
 function FormModal({ visible }: { visible: boolean }) {
   return (
     <div className={cls(style.formModalWrapper, !visible && style.hidden)}>
-      <Form />
+      <Form active />
     </div>
   )
 }

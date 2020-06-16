@@ -135,12 +135,12 @@ function subMenuForMobileCategory(category: Category, extra?: ReactNode) {
 }
 
 function ProductsForMobile() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
   const subMenusView = categories.map(category => {
     // 对于存储与数据湖额外加上 HDFS
     if (category === Category.Storage) {
       return subMenuForMobileCategory(category, (
-        <MenuItem title={nameMap[Product.Hdfs]} onClick={showModal}>
+        <MenuItem title={nameMap[Product.Hdfs]} onClick={startConsulting}>
           即将上线，欢迎垂询
         </MenuItem>
       ))
@@ -191,7 +191,7 @@ function tabPaneForPcCategory(category: Category, active: Category, extra?: Reac
 }
 
 export function ProductsForPc() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
   const [activeKey, setActiveKey] = useState(Category.Storage)
   const onTabChange = (key: string) => {
     setActiveKey(key as Category)
@@ -205,7 +205,7 @@ export function ProductsForPc() {
           key={hdfs}
           icon={<ProductIcon className={styles.icon} product={hdfs} />}
           title={nameMap[hdfs]}
-          onClick={showModal}
+          onClick={startConsulting}
         >
           即将上线，欢迎垂询
         </Card>

@@ -24,10 +24,10 @@ import Scene from 'components/pages/plesdk/Scene'
 import banner from './images/banner.png'
 
 export function Content() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: showModal },
+    { children: '立即咨询', onClick: startConsulting },
     { children: 'Demo 下载', href: '#demo' }
   )
 
@@ -55,7 +55,7 @@ export function Content() {
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="注册即可体验全方位直播特效 SDK">
-        <UsageGuideButton onClick={showModal}>
+        <UsageGuideButton onClick={startConsulting}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

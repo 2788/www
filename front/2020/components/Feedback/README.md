@@ -6,13 +6,14 @@
 import { useModal } from 'components/Feedback'
 
 function Foo() {
-  const { showModal } = useModal()
+  const { showModal, startConsulting } = useModal()
 
-  // 在需要的地方调用 `showModal()` 即可，如：
+  // 在需要的地方调用 `showModal()` / `startConsulting` 即可，如：
   return (
-    <button onClick={showModal}>
-      咨询我们
-    </button>
+    <>
+      <button onClick={showModal}>反馈</button>
+      <button onClick={startConsulting}>咨询</button>
+    </>
   )
 }
 ```

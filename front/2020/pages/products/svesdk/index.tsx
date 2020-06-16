@@ -30,10 +30,10 @@ import Step3 from './images/step3.svg'
 import Step4 from './images/step4.svg'
 
 export function Content() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: showModal },
+    { children: '立即咨询', onClick: startConsulting },
     { children: 'Demo 下载', href: '#demo' }
   )
 
@@ -59,13 +59,15 @@ export function Content() {
         </LinkGroup>
       </LinkGroups>
       <AccessProcess header="接入流程">
-        <Step icon={<Step1 />} onClick={showModal}><Link blue onClick={showModal}>售前咨询 &gt;&gt;</Link></Step>
+        <Step icon={<Step1 />} onClick={startConsulting}>
+          <Link blue onClick={startConsulting}>售前咨询 &gt;&gt;</Link>
+        </Step>
         <Step icon={<Step2 />}>申请试用</Step>
         <Step icon={<Step3 />}>接入测试</Step>
         <Step icon={<Step4 />}>正式购买</Step>
       </AccessProcess>
       <UsageGuide title="全方位体验短视频特效 SDK">
-        <UsageGuideButton onClick={showModal}>
+        <UsageGuideButton onClick={startConsulting}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

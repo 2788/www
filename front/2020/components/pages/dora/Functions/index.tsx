@@ -25,21 +25,16 @@ interface SceneCardProps {
 const feedbackHash = '#feedback-modal'
 
 function SceneCard({ title, content, linkText, link }: SceneCardProps) {
-  const { showModal } = useFeedbackModal()
-
-  function handleConsult() {
-    showModal()
-  }
+  const { startConsulting } = useFeedbackModal()
 
   const isFeedbackCard = link === feedbackHash
 
   if (isFeedbackCard || !link) {
-    const feedbackAction = isFeedbackCard ? () => handleConsult() : undefined
-    const cardProps = {
-      onClick: feedbackAction
-    }
     return (
-      <div {...cardProps} className={classnames(styles.sceneCard, isFeedbackCard && styles.feedback)}>
+      <div
+        className={classnames(styles.sceneCard, isFeedbackCard && styles.feedback)}
+        onClick={isFeedbackCard ? startConsulting : undefined}
+      >
         <h5 className={styles.title}>{title}</h5>
         <p className={styles.content}>{content}</p>
         {linkText && <span className={styles.link}>{linkText} &gt;&gt;</span>}

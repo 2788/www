@@ -17,7 +17,7 @@ const hotMap = {
 }
 
 export default function Overlay() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
   const { close } = useDropdown()
   const menuItems = categories.map(category => (
     <MenuItem key={category} title={categoryNameMap[category]} subtitle={categoryEnNameMap[category]} />
@@ -26,7 +26,7 @@ export default function Overlay() {
   function handleHDFSClick() {
     // eslint-disable-next-line no-unused-expressions
     close?.()
-    showModal()
+    startConsulting()
   }
 
   return (

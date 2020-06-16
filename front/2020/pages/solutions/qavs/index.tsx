@@ -22,14 +22,10 @@ import { useBtns } from 'hooks/product-btn'
 import imgBanner from './images/banner.png'
 
 function PageContent() {
-  const { showModal } = useFeedbackModal()
-
-  function handleConsult() {
-    showModal()
-  }
+  const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' },
+    { onClick: startConsulting, children: '立即咨询' },
     { href: 'https://dn-mars-assets.qbox.me/lsm7Yon7_XwirC_mGIQvRe1Fmkx3', children: '下载白皮书' }
   )
 

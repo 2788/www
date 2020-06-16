@@ -9,8 +9,13 @@
 
 .wrapper {
   position: fixed;
+  top: 50px;
   bottom: 50px;
   right: 86px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+
   z-index: @feedback-form-z-index;
 
   .mobile({
@@ -20,10 +25,8 @@
 }
 
 .entryWrapper {
-
-  position: absolute;
-  right: 0;
-  bottom: 0;
+  flex: 0 0 auto;
+  position: relative;
   width: @buttonSize;
   height: @entryHeight;
   background-color: @grey-1;
@@ -110,14 +113,12 @@
 .formModalWrapper {
   .modalWrapper();
 
-  position: absolute;
-  right: 0;
+  flex: 0 1 500px;
   display: block;
+  margin-bottom: 12px;
 
-  bottom: @entryHeight + 12px;
   overflow: hidden;
   width: 374px;
-  height: 500px;
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, transform .3s, opacity .2s;

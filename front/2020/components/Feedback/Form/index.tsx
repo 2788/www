@@ -4,21 +4,34 @@
  */
 
 import cls from 'classnames'
-import React, { useState, FormEvent, useRef, useEffect, useCallback, ReactNode } from 'react'
+import React, { useState, FormEvent, useEffect, useCallback, ReactNode } from 'react'
+import { useOnChange } from 'hooks'
 import Button from 'components/UI/Button'
 import Loading from 'components/UI/Loading'
 import MessageList, { Message, MessageFrom } from './MessageList'
 import { IRobot, InputType, OutputType, withEase, Input, context } from './robot'
-import ConsultRobot from './robot/consult'
+import ConsultRobot, { startConsultingMessage } from './robot/consult'
 import style from './style.less'
 
+export { startConsultingMessage }
+
 export type Props = {
-  wide?: boolean // 是否宽版（在页面中间的浮层展示）
+  /** 是否宽版（在页面中间的浮层展示） */
+  wide?: boolean
+  /** 是否激活，每次激活都重新初始化对应的机器人逻辑 */
+  active?: boolean
+  /** 初始用户消息内容 */
+  startWith?: string
 }
 
-export default function FeedbackForm({ wide }: Props) {
-  const robot = useRef(withEase(300)(new ConsultRobot()))
-  const [messages, submitUserMessage] = useRobot(robot.current)
+export default function FeedbackForm({ wide, active, startWith }: Props) {
+  const [robot, setRobot] = useState(makeConsultRobot())
+  const [messages, submitUserMessage] = useRobot(robot, startWith)
+
+  useOnChange(() => {
+    if (active) setRobot(makeConsultRobot())
+  }, [active])
+
   const wrapperClassName = cls(style.wrapper, wide && style.wide)
   return (
     <div className={wrapperClassName}>
@@ -29,6 +42,10 @@ export default function FeedbackForm({ wide }: Props) {
       <Footer onSubmit={submitUserMessage} />
     </div>
   )
+}
+
+function makeConsultRobot() {
+  return withEase(300)(new ConsultRobot())
 }
 
 function Header() {
@@ -95,7 +112,7 @@ const loadingMessage = (
 )
 
 /** 使用给定 Robot 与用户交互 */
-function useRobot(robot: IRobot) {
+function useRobot(robot: IRobot, startWith?: string) {
   const [messages, setMessages] = useState<Message[]>([])
 
   function pushMessage(from: MessageFrom, content: ReactNode) {
@@ -113,7 +130,7 @@ function useRobot(robot: IRobot) {
     ))
   }
 
-  const callRobot = useCallback((input: Input) => {
+  const callRobot = useCallback(async (input: Input) => {
     const processed = robot.process(input)
     const items = Array.isArray(processed) ? processed : [processed]
 
@@ -141,16 +158,22 @@ function useRobot(robot: IRobot) {
         default:
       }
     })
+
+    await Promise.all(items)
   }, [robot])
 
-  async function addUserMessage(content: string) {
+  const addUserMessage = useCallback((content: string) => {
     pushMessage(MessageFrom.User, content)
-    callRobot({ type: InputType.Message, content })
-  }
+    return callRobot({ type: InputType.Message, content })
+  }, [callRobot])
 
   useEffect(() => {
-    callRobot({ type: InputType.Initial })
-  }, [callRobot])
+    callRobot({ type: InputType.Initial }).then(() => {
+      if (startWith != null) {
+        addUserMessage(startWith)
+      }
+    })
+  }, [startWith, callRobot, addUserMessage])
 
   return [messages, addUserMessage] as const
 }

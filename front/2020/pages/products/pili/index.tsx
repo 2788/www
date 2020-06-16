@@ -33,14 +33,14 @@ import imgBanner from './_images/banner.png'
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
-  const { showModal } = useFeedbackModal()
+  const { startConsulting } = useFeedbackModal()
 
   const priceUrl = urlForPrice(Product.Pili)
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/apply-pili', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true },
-    { onClick: showModal, children: '立即咨询' }
+    { onClick: startConsulting, children: '立即咨询' }
   )
 
   return (

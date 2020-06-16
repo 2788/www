@@ -16,7 +16,7 @@ enum State {
   AskingContact
 }
 
-const startConsultingMessage = '开始咨询'
+export const startConsultingMessage = '开始咨询'
 
 const createTicketLinkView = (
   <a target="_blank" rel="noopener" href="https://support.qiniu.com/tickets/new">提交工单</a>
@@ -97,6 +97,7 @@ export default class ConsultRobot implements IRobot {
     switch (input.type) {
       // 初始化
       case InputType.Initial:
+        this.state = State.Initial
         return initialMessage
       case InputType.Message:
         return this.processMessage(input.content)
