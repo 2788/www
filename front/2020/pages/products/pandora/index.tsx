@@ -8,7 +8,6 @@ import React, { PropsWithChildren } from 'react'
 import * as card from 'components/UI/Card'
 import Button from 'components/UI/Button'
 import Swiper from 'components/UI/Swiper'
-import Link from 'components/Link'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -17,6 +16,7 @@ import { RawAccessProcess as AccessProcess, Step } from 'components/Product/Acce
 import Section from 'components/Product/Section'
 import Scene, * as scene from 'components/Product/Scene'
 import { RawCustomerCaseGroup as RawCaseGroup, CustomerCase as Case } from 'components/Product/CustomerCaseGroup'
+import GuideLink from 'components/Product/GuideLink'
 import * as logos from 'components/pages/express/logos'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
@@ -29,7 +29,6 @@ import imgFeature3 from './_images/feature-3.png'
 import imgFeature4 from './_images/feature-4.png'
 import imgFeature5 from './_images/feature-5.png'
 
-/* eslint-disable import/no-duplicates */
 import imgScene1 from './_images/scene-1.file.svg'
 import imgScene2 from './_images/scene-2.file.svg'
 import imgScene3 from './_images/scene-3.file.svg'
@@ -41,7 +40,6 @@ import imgDemo3 from './_images/demo-3.png'
 import IconStep1 from './_images/step-1.svg'
 import IconStep2 from './_images/step-2.svg'
 import IconStep3 from './_images/step-3.svg'
-import IconArrow from './_images/arrow.svg'
 import style from './style.less'
 
 // 使用链接
@@ -222,12 +220,9 @@ function PageContent() {
             开始数据探索分析
           </Step>
         </AccessProcess>
-        <p className={style.tryLink}>
-          <Link href={portalUrl}>
-            <span>开始免费体验</span>
-            <IconArrow />
-          </Link>
-        </p>
+        <GuideLink className={style.tryLink} href={portalUrl}>
+          开始免费体验
+        </GuideLink>
       </Section>
 
       {/* TODO: 这部分 Pandora PM 还没给到，先拿这几个放着 */}

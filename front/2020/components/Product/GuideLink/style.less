@@ -1,0 +1,30 @@
+@import "~utils/less/index.less";
+
+.wrapper {
+  height: 28px;
+  font-size: 20px;
+
+  .mobile({
+    margin-top: 16px;
+    font-size: 16px;
+  });
+
+  * {
+    line-height: 28px;
+    vertical-align: middle;
+  }
+
+  a {
+    .blueLink();
+  }
+
+  svg {
+    display: inline-block;
+    margin-left: 1em;
+
+    .mobile({
+      width: 16px;
+      height: 16px;
+    });
+  }
+}
