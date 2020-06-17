@@ -60,6 +60,9 @@ function PageContent() {
           <PageNoticeItem href="https://marketing.qiniu.com/activity/kodopackage?ref=www.qiniu.com/products/kodo">
             资源包折扣套餐，上新特惠，立即购买 &gt;&gt;
           </PageNoticeItem>
+          <PageNoticeItem href="/products/kodo/goglobal?entry=products-kodo">
+            免费套餐任你选，出海快人一步，海外云存储优惠专场 &gt;&gt;
+          </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
 
