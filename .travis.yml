@@ -5,7 +5,9 @@ matrix:
         - '12'
       cache:
         directories:
+          - "$HOME/.cache/yarn"
           - "front/2020/node_modules"
+          - ".next/cache"
       branches:
         only:
           - master
