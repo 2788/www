@@ -7,6 +7,7 @@ import classnames from 'classnames'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
+import sourceUrls from './source-url'
 import style from './index.less'
 
 export type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -33,8 +34,13 @@ export default function Link({ href, className, blue, ...others }: Props) {
 
   const checked = checkInSite(href)
   if (checked.inSite) {
+    // NextLink 只适用于指向站内的 page，每个 page 会生成对应的 pagename.js 并 prefetch
+    // 目标页面是被镜像回源到老官网的话，没有对应的 js，prefetch 会报错
+    const shouldNotPrefetch = sourceUrls.some(url => url.test(checked.path))
+    // https://github.com/vercel/next.js/blob/master/errors/prefetch-true-deprecated.md
+    const prefetchProps = shouldNotPrefetch ? { prefetch: false } : {}
     return (
-      <NextLink href={checked.path}>
+      <NextLink {...prefetchProps} href={checked.path}>
         <a className={classname} {...others} />
       </NextLink>
     )
