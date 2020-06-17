@@ -6,41 +6,16 @@
 @import '~utils/less/index.less';
 
 .wrapper {
-  margin-top: -44px;
-  padding-bottom: 20px;
-
   .mobile({
-    margin-top: 0;
-    padding-bottom: 0;
     background-color: #FAFAFA;
-  });
-}
-
-.main {
-  .centered();
-  padding: 30px 0;
-  border-radius: 8px;
-  background-color: @grey-1;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.08);
-  display: flex;
-  justify-content: center;
-
-  .pcLessLg({
-    width: auto;
-    border-radius: 0;
-  });
-
-  .mobile({
-    padding: 0 0 1px;
-    background-color: #FAFAFA;
-    box-shadow: none;
-    flex-wrap: wrap;
+    margin-bottom: 0;
   });
 }
 
 .item {
   text-align: center;
   flex: 1 1;
+  padding: 30px 0;
 
   .mobile({
     margin: 0 0 12px;

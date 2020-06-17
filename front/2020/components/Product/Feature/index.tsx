@@ -9,7 +9,7 @@ import classnames from 'classnames'
 
 import Section, { SectionProps } from '../Section'
 
-import { PcFeatureItem, PcFeatureLink } from './Pc'
+import { PcFeatureItem, PcFeatureLink, PcPlaceholder } from './Pc'
 import { MobileFeatureItem, MobileFeatureLink } from './Mobile'
 
 import { useMobile } from '../../../hooks/ua'
@@ -106,6 +106,17 @@ export function Group(props: IFeatureGroupProps) {
   return (
     <div className={className}>
       {children}
+    </div>
+  )
+}
+
+/** 用于占位 */
+export function Placeholder() {
+  const isMobile = useMobile()
+  if (isMobile) return null
+  return (
+    <div className={styles.itemWrapper}>
+      <PcPlaceholder />
     </div>
   )
 }

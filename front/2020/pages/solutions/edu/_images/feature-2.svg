@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>style</title>
+    <g id="解决方案" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="教育解决方案" transform="translate(-932.000000, -1481.000000)" stroke-width="2">
+            <g id="产品介绍-2备份-2" transform="translate(0.000000, 1301.000000)">
+                <g id="01" transform="translate(772.000000, 148.000000)">
+                    <g id="style" transform="translate(161.000000, 33.000000)">
+                        <path d="M21.829,25.073 L47.172,1.173 C48.1825257,0.162474243 49.6553991,-0.232181002 51.0358029,0.137697079 C52.4162067,0.507575159 53.4944248,1.58579328 53.8643029,2.96619711 C54.234181,4.34660094 53.8395258,5.81947429 52.829,6.83 L28.929,32.19" id="路径" stroke="#00AAE7"></path>
+                        <path d="M14.9,27.42 C18.1475378,24.321124 23.2750686,24.3817195 26.4484666,27.5564761 C29.6218646,30.7312326 29.6802656,35.8587888 26.58,39.105 C23.353,42.332 11,43 11,43 C11,43 11.668,30.647 14.9,27.42 Z" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                        <polyline id="路径" stroke="#333333" stroke-linecap="square" points="36 0 0 0 0 54 54 54 54 18"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -18,6 +18,12 @@ export interface IPcFeatureItemProps extends IFeatureItemProps {}
 
 export interface IPcFeatureLinkProps extends IFeatureLinkProps {}
 
+export function PcPlaceholder() {
+  return (
+    <div className={styles.item}></div>
+  )
+}
+
 export function PcFeatureItem(props: IPcFeatureItemProps) {
   const { icon, title, children, pos, align } = props
 

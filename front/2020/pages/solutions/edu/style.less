@@ -1,0 +1,110 @@
+@import '~utils/less/index.less';
+
+.bannerFooter {
+  .notMobile({
+    padding: 0 44px;
+    justify-content: space-between !important;
+  });
+  .mobile({
+    padding: 0 16px;
+  });
+}
+
+.bannerFooterItem {
+  padding: 32px 0;
+
+  .notMobile({
+    width: 288px;
+    text-align: center;
+  });
+
+  .mobile({
+    position: relative;
+    width: 100%;
+    min-height: 60px;
+    padding: 16px 0 16px 66px;
+    text-align: left;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid @grey-3;
+    }
+  });
+
+  .icon {
+    height: 56px;
+
+    .mobile({
+      width: 50px;
+      height: 60px;
+      padding: 0 10px;
+      position: absolute;
+      left: 0;
+      top: 8px;
+    });
+  }
+
+  .title {
+    font-size: 14px;
+    margin-top: 12px;
+    font-weight: normal;
+
+    .mobile({
+      margin-top: 0;
+    });
+  }
+
+  .content {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 20px;
+    color: @grey-6;
+  }
+}
+
+.sceneImg {
+  .notMobile({
+    width: 476px;
+  });
+  .mobile({
+    width: 100%;
+  })
+}
+
+.sceneContentBlock {
+  .notMobile({
+    margin-left: 24px !important;
+  });
+}
+
+.sceneTitle {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.sceneContentItem {
+  .dot-item();
+  + .sceneContentItem {
+    margin-top: 12px;
+
+    .mobile({
+      margin-top: 8px;
+    });
+  }
+}
+
+.imgArch {
+  .notMobile({
+    width: 823px;
+  });
+  .mobile({
+    width: 100%;
+  });
+}
+
+.featureDesc {
+  .notMobile({
+    width: 288px;
+    text-align: left;
+  });
+}

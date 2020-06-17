@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="61px" height="52px" viewBox="0 0 61 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>shuffle-98</title>
+    <g id="解决方案" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="教育解决方案" transform="translate(-531.000000, -1759.000000)" stroke-width="2">
+            <g id="产品介绍-2备份-2" transform="translate(0.000000, 1301.000000)">
+                <g id="01备份" transform="translate(372.000000, 424.000000)">
+                    <g id="shuffle-98" transform="translate(159.000000, 36.000000)">
+                        <path d="M0,38 L8.481,38 C11.984,38 15.312,36.469 17.592,33.809 L34.408,14.19 C36.688,11.53 40.016,9.999 43.519,9.999 L59,9.999" id="路径" stroke="#333333"></path>
+                        <path d="M30,28.667 L34.408,33.81 C36.688,36.47 40.016,38.001 43.519,38.001 L59,38.001" id="路径" stroke="#00AAE7"></path>
+                        <path d="M0,10 L8.481,10 C11.984,10 15.312,11.531 17.592,14.191 L21.99,19.322" id="路径" stroke="#00AAE7"></path>
+                        <polyline id="路径" stroke="#333333" stroke-linecap="square" points="49 20 59 10 49 0"></polyline>
+                        <polyline id="路径" stroke="#00AAE7" stroke-linecap="square" points="49 28 59 38 49 48"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
