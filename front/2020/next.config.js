@@ -1,6 +1,7 @@
 const withPlugins = require('next-compose-plugins')
 const withCss = require('@zeit/next-css')
 const withLess = require('@zeit/next-less')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
 
@@ -127,6 +128,9 @@ module.exports = withPlugins(
           ]
         }
       )
+
+      config.optimization.minimizer = []
+      config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
 
       return config
     },
