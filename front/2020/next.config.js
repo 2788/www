@@ -52,7 +52,7 @@ module.exports = withPlugins(
           ]
         },
         {
-          test: /\.(svg|eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
+          test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(css|less)$/
           },
@@ -68,8 +68,49 @@ module.exports = withPlugins(
             }
           ]
         },
+        // svg 单独优化：https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
         {
-          test: /\.(file\.svg|png|jpe?g|gif)$/i,
+          test: /\.svg$/i,
+          issuer: {
+            test: /\.(css|less)$/
+          },
+          use: [
+            {
+              loader: 'svg-url-loader',
+              options: {
+                // 处理小于 1kb 的
+                limit: 1 * 1024,
+                publicPath: `${assetHost}/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false,
+                noquotes: true
+              }
+            }
+          ]
+        },
+        {
+          test: /\.file\.svg$/i,
+          issuer: {
+            test: /\.(js|ts)x?$/
+          },
+          use: [
+            {
+              loader: 'svg-url-loader',
+              options: {
+                // 处理小于 1kb 的
+                limit: 1 * 1024,
+                publicPath: `${assetHost}/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false,
+                noquotes: true
+              }
+            }
+          ]
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },

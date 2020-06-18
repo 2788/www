@@ -43,6 +43,7 @@
     "react-icecream": "^1.7.4",
     "react-json-view": "^1.19.1",
     "stickybits": "^3.7.7",
+    "svg-url-loader": "^6.0.0",
     "ua-parser-js": "^0.7.21"
   },
   "devDependencies": {
