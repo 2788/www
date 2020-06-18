@@ -1,6 +1,7 @@
-import React, { ReactNode, PropsWithChildren, useState } from 'react'
+import React, { ReactNode, PropsWithChildren, useState, createElement } from 'react'
 import QueueAnim from 'rc-queue-anim'
 
+import { Solution, iconMap, nameMap, urlMap, descMap } from 'constants/solutions'
 import { useMobile } from 'hooks/ua'
 import Section from 'components/pages/index/Section'
 import Tabs, { TabPane } from 'components/UI/Tabs'
@@ -62,12 +63,6 @@ import Iot3Icon from './images/iot/客户-华为.png'
 import Iot4Icon from './images/iot/客户-平安好医生.png'
 import Iot5Icon from './images/iot/客户-如新.png'
 import Iot6Icon from './images/iot/客户-咕咚.png'
-// 解决方案图标
-import Solution1Icon from './images/智能视频云解决方案.svg'
-import Solution2Icon from './images/监控视频解决方案.svg'
-import Solution3Icon from './images/短视频解决方案.svg'
-import Solution4Icon from './images/私有云解决方案.svg'
-import Solution5Icon from './images/视频冷存储解决方案.svg'
 
 interface CardProps {
   icon: ReactNode
@@ -160,38 +155,19 @@ function PaneForMobile({ desc, cards, footer }: PaneProps) {
   )
 }
 
+const financialSolutionCards = getSolutionCards([Solution.Qavs, Solution.Kodoe, Solution.Ess])
+const mediaSolutionCards = getSolutionCards([Solution.Qavs, Solution.Kodoe, Solution.Vcs])
+const manufactureSolutionCards = getSolutionCards([Solution.Qavs, Solution.Kodoe, Solution.Ess])
+const internetSolutionCards = getSolutionCards([Solution.Qavs, Solution.Plsv, Solution.Vcs])
+const iotSolutionCards = getSolutionCards([Solution.Qavs, Solution.Kodoe, Solution.Ess])
+
 function SolutionsForMobile() {
   return (
     <Menu mode="inline">
       <SubMenu title="金融">
         <PaneForMobile
           desc="为银行、保险等业务提供量身定制的服务，合规安全、高性能、高可用。帮助金融客户重塑传统 IT 平台架构、科技创新、流程再造，洞察数据价值。"
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution2Icon className={styles.icon} />}
-              title="监控视频边缘存储解决方案页"
-              href="/solutions/ess"
-            >
-              满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
-            </Card>
-          ]}
+          cards={financialSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Finance1Icon} />,
             <UIImg key="2" className={styles.case} src={Finance2Icon} />,
@@ -207,32 +183,7 @@ function SolutionsForMobile() {
       <SubMenu title="广电">
         <PaneForMobile
           desc="凭借七牛在云服务领域的技术积累和服务运营经验，结合存储、分发、处理、内容识别、大数据分析等能力，为广电行业媒体融合转型新趋势提供支撑。"
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution5Icon className={styles.icon} />}
-              title="视频冷存储解决方案页"
-              href="/solutions/vcs"
-            >
-              专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案
-            </Card>
-          ]}
+          cards={mediaSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={RFT1Icon} />,
             <UIImg key="2" className={styles.case} src={RFT2Icon} />,
@@ -250,32 +201,7 @@ function SolutionsForMobile() {
       <SubMenu title="制造">
         <PaneForMobile
           desc="依托七牛在云、AI、大数据等领域的多年经验沉淀和技术优势，帮助制造行业客户转型升级，创新商业模式，数据驱动降本升效，提升客户核心竞争力。"
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution2Icon className={styles.icon} />}
-              title="监控视频边缘存储解决方案页"
-              href="/solutions/ess"
-            >
-              满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
-            </Card>
-          ]}
+          cards={manufactureSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Manufacture1Icon} />,
             <UIImg key="2" className={styles.case} src={Manufacture2Icon} />,
@@ -290,32 +216,7 @@ function SolutionsForMobile() {
       <SubMenu title="互联网">
         <PaneForMobile
           desc="作为国内领先的企业级云服务商，持续为互联网公司提供一站式方案，缩短从想法到产品的距离，从容面对业务爆发增长，持续挖掘海量数据的无限价值。"
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution3Icon className={styles.icon} />}
-              title="短视频存储解决方案页"
-              href="/solutions/plsv"
-            >
-              集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution5Icon className={styles.icon} />}
-              title="视频冷存储解决方案页"
-              href="/solutions/vcs"
-            >
-              专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案
-            </Card>
-          ]}
+          cards={internetSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Internet1Icon} />,
             <UIImg key="2" className={styles.case} src={Internet2Icon} />,
@@ -333,32 +234,7 @@ function SolutionsForMobile() {
       <SubMenu title="物联网">
         <PaneForMobile
           desc="依托七牛在云、AI、大数据等领域的多年经验沉淀和技术优势，专门针对物联网行业优化，帮助客户迅速迭代扩展业务并为终端用户的极致体验保驾护航。"
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution2Icon className={styles.icon} />}
-              title="监控视频边缘存储解决方案页"
-              href="/solutions/ess"
-            >
-              满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
-            </Card>
-          ]}
+          cards={iotSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Iot1Icon} />,
             <UIImg key="2" className={styles.case} src={Iot2Icon} />,
@@ -383,32 +259,7 @@ function SolutionsForPc() {
           title={<Title text="金融" en="Financial" />}
           desc="为银行、保险等业务提供量身定制的服务，合规安全、高性能、高可用。帮助金融客户重塑传统 IT 平台架构、科技创新、流程再造，洞察数据价值。"
           pageNo={<PageNo idx={1} total={5} />}
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution2Icon className={styles.icon} />}
-              title="监控视频边缘存储解决方案页"
-              href="/solutions/ess"
-            >
-              满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
-            </Card>
-          ]}
+          cards={financialSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Finance1Icon} />,
             <UIImg key="2" className={styles.case} src={Finance2Icon} />,
@@ -427,32 +278,7 @@ function SolutionsForPc() {
           title={<Title text="广电" en="Media" />}
           desc="凭借七牛在云服务领域的技术积累和服务运营经验，结合存储、分发、处理、内容识别、大数据分析等能力，为广电行业媒体融合转型新趋势提供支撑。"
           pageNo={<PageNo idx={2} total={5} />}
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution5Icon className={styles.icon} />}
-              title="视频冷存储解决方案页"
-              href="/solutions/vcs"
-            >
-              专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案
-            </Card>
-          ]}
+          cards={mediaSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={RFT1Icon} />,
             <UIImg key="2" className={styles.case} src={RFT2Icon} />,
@@ -473,32 +299,7 @@ function SolutionsForPc() {
           title={<Title text="制造" en="Manufacture" />}
           desc="依托七牛在云、AI、大数据等领域的多年经验沉淀和技术优势，帮助制造行业客户转型升级，创新商业模式，数据驱动降本升效，提升客户核心竞争力。"
           pageNo={<PageNo idx={3} total={5} />}
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution2Icon className={styles.icon} />}
-              title="监控视频边缘存储解决方案页"
-              href="/solutions/ess"
-            >
-              满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
-            </Card>
-          ]}
+          cards={manufactureSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Manufacture1Icon} />,
             <UIImg key="2" className={styles.case} src={Manufacture2Icon} />,
@@ -516,32 +317,7 @@ function SolutionsForPc() {
           title={<Title text="互联网" en="Internet" />}
           desc="作为国内领先的企业级云服务商，持续为互联网公司提供一站式方案，缩短从想法到产品的距离，从容面对业务爆发增长，持续挖掘海量数据的无限价值。"
           pageNo={<PageNo idx={4} total={5} />}
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution3Icon className={styles.icon} />}
-              title="短视频存储解决方案页"
-              href="/solutions/plsv"
-            >
-              集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution5Icon className={styles.icon} />}
-              title="视频冷存储解决方案页"
-              href="/solutions/vcs"
-            >
-              专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案
-            </Card>
-          ]}
+          cards={internetSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Internet1Icon} />,
             <UIImg key="2" className={styles.case} src={Internet2Icon} />,
@@ -562,32 +338,7 @@ function SolutionsForPc() {
           title={<Title text="物联网" en="Internet of Things" />}
           desc="依托七牛在云、AI、大数据等领域的多年经验沉淀和技术优势，专门针对物联网行业优化，帮助客户迅速迭代扩展业务并为终端用户的极致体验保驾护航。"
           pageNo={<PageNo idx={5} total={5} />}
-          cards={[
-            <Card
-              key="1"
-              icon={<Solution1Icon className={styles.icon} />}
-              title="智能视频云解决方案页"
-              href="/solutions/qavs"
-            >
-              集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案
-            </Card>,
-            <Card
-              key="2"
-              icon={<Solution4Icon className={styles.icon} />}
-              title="私有云存储解决方案页"
-              href="/solutions/kodoe"
-            >
-              为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型
-            </Card>,
-            <Card
-              key="3"
-              icon={<Solution2Icon className={styles.icon} />}
-              title="监控视频边缘存储解决方案页"
-              href="/solutions/ess"
-            >
-              满足监控视频及图片就近存储、加速传输、倍速播放等关键需求
-            </Card>
-          ]}
+          cards={iotSolutionCards}
           footer={[
             <UIImg key="1" className={styles.case} src={Iot1Icon} />,
             <UIImg key="2" className={styles.case} src={Iot2Icon} />,
@@ -616,4 +367,17 @@ export default function Solutions() {
       }
     </Section>
   )
+}
+
+function getSolutionCards(solutions: Solution[]) {
+  return solutions.map(solution => (
+    <Card
+      key={solution}
+      icon={createElement(iconMap[solution], { className: styles.icon })}
+      title={nameMap[solution]}
+      href={urlMap[solution]}
+    >
+      {descMap[solution]}
+    </Card>
+  ))
 }

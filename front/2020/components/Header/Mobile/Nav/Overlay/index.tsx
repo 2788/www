@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'components/Link'
 import { Product, urlMap, nameMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import * as sol from 'constants/solutions'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 
 import style from './index.less'
@@ -13,27 +14,34 @@ function getProductItems(products: readonly Product[]) {
   ))
 }
 
+function getSolutionItems(solutions: readonly sol.Solution[]) {
+  return solutions.map(solution => (
+    <MenuItem key={solution}>
+      <Link href={sol.urlMap[solution] || '#'}>{sol.nameMap[solution]}</Link>
+    </MenuItem>
+  ))
+}
+
 export default function Overlay() {
   const productSubMenus = categories.map(category => (
     <SubMenu key={category} title={categoryNameMap[category]}>
       {getProductItems(categoryProductsMap[category])}
     </SubMenu>
   ))
+
+  const solutionSubMenus = sol.allCategories.map(category => (
+    <SubMenu key={category} title={sol.categoryNameMap[category]}>
+      {getSolutionItems(sol.categorySolutionsMap[category])}
+    </SubMenu>
+  ))
+
   return (
     <Menu mode="inline" className={style.menu} rootMenus={['sub1', 'sub2', 'sub3', 'sub4', 'sub5']}>
       <SubMenu key="sub1" mode="inline" title="产品">
         {productSubMenus}
       </SubMenu>
       <SubMenu key="sub2" title="方案">
-        <SubMenu title="行业解决方案">
-          <MenuItem><Link href="/solutions/ess">监控视频边缘存储解决方案</Link></MenuItem>
-        </SubMenu>
-        <SubMenu title="场景解决方案">
-          <MenuItem><Link href="/solutions/vcs">视频冷存储解决方案</Link></MenuItem>
-          <MenuItem><Link href="/solutions/kodoe">私有云存储解决方案</Link></MenuItem>
-          <MenuItem><Link href="/solutions/plsv">短视频解决方案</Link></MenuItem>
-          <MenuItem><Link href="/solutions/qavs">智能视频云解决方案</Link></MenuItem>
-        </SubMenu>
+        {solutionSubMenus}
       </SubMenu>
       <MenuItem><Link href="https://qmall.qiniu.com/">商城</Link></MenuItem>
       <SubMenu key="sub3" title="活动与合作">

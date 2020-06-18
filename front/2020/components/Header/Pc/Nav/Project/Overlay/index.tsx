@@ -1,5 +1,5 @@
 import React, { createElement } from 'react'
-import { categoryNameMap, Category, nameMap, category, urlMap, iconMap, descMap } from 'constants/solutions'
+import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, iconMap, descMap, allCategories, categoryEnNameMap } from 'constants/solutions'
 
 import ScrollableOverlay from '../../ScrollableOverlay'
 import Menu from '../../ScrollableOverlay/Menu'
@@ -11,13 +11,14 @@ import ContentSection from '../../ScrollableOverlay/Content/Section'
 export default function Overlay() {
   return (
     <ScrollableOverlay>
-      <Menu defaultActive="场景解决方案">
-        <MenuItem title="场景解决方案" subtitle="Solutions by Scenario" />
-        <MenuItem title="行业解决方案" subtitle="Solutions by Industry" />
+      <Menu defaultActive={categoryNameMap[Category.Scene]}>
+        {allCategories.map(category => (
+          <MenuItem key={category} title={categoryNameMap[category]} subtitle={categoryEnNameMap[category]} />
+        ))}
       </Menu>
       <Content>
         <ContentSection title={categoryNameMap[Category.Scene]}>
-          {category[Category.Scene].map(solution => (
+          {categorySolutionsMap[Category.Scene].map(solution => (
             <ContentItem
               key={solution}
               href={urlMap[solution]}
@@ -28,7 +29,7 @@ export default function Overlay() {
           ))}
         </ContentSection>
         <ContentSection title={categoryNameMap[Category.Industry]}>
-          {category[Category.Industry].map(solution => (
+          {categorySolutionsMap[Category.Industry].map(solution => (
             <ContentItem
               key={solution}
               href={urlMap[solution]}
