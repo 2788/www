@@ -33,7 +33,7 @@ export interface IFeatureGroupProps extends HTMLAttributes<HTMLElement> {
 }
 
 export interface IFeatureItemProps extends HTMLAttributes<HTMLElement> {
-  title: string
+  title?: string
   icon: ReactNode
   children: ReactNode
   pos?: PosType

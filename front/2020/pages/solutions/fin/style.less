@@ -1,0 +1,68 @@
+@import '~utils/less/index.less';
+
+.valueGroup {
+  .notMobile({
+    padding-top: 0 !important;
+  });
+}
+
+.valueDesc {
+  .notMobile({
+    text-align: left;
+    line-height: 24px !important;
+  });
+}
+
+.imgArch {
+  .notMobile({
+    width: 1080px;
+  });
+  .mobile({
+    width: 100%;
+  });
+}
+
+.featureGroup {
+  .notMobile({
+    justify-content: space-between !important;
+  });
+}
+
+.featureItem {
+  .notMobile({
+    padding: 0 36px !important;
+    flex: 0 0 276px !important;
+  });
+}
+
+.featureDesc {
+  .notMobile({
+    text-align: left;
+  });
+}
+
+.screenshotWrapper {
+  .notMobile({
+    width: 1100px;
+    margin: 0 auto;
+  });
+}
+
+.screenshotItem {
+  text-align: center;
+  .img {
+    width: 100%;
+    height: auto;
+  }
+  .name {
+    margin-top: 28px;
+    font-size: 20px;
+    line-height: 1.4;
+
+    .mobile({
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-size: 14px;
+    });
+  }
+}
