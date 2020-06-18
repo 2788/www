@@ -21,7 +21,6 @@
     "autoprefixer": "^9.8.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
-    "file-loader": "^6.0.0",
     "formstate-x": "^1.0.10",
     "isomorphic-unfetch": "3.0.0",
     "less": "^3.11.1",
@@ -43,7 +42,6 @@
     "react-icecream": "^1.7.4",
     "react-json-view": "^1.19.1",
     "stickybits": "^3.7.7",
-    "svg-url-loader": "^6.0.0",
     "ua-parser-js": "^0.7.21"
   },
   "devDependencies": {
@@ -64,7 +62,9 @@
     "nextjs-sitemap-generator": "^1.0.0",
     "qiniu": "^7.3.1",
     "typescript": "3.7.3",
-    "walk": "^2.3.14"
+    "walk": "^2.3.14",
+    "file-loader": "^6.0.0",
+    "svg-url-loader": "^6.0.0"
   },
   "engines": {
     "node": ">= 10.0.0"
