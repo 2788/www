@@ -35,6 +35,24 @@ module.exports = withPlugins(
 
       config.module.rules.push(
         {
+          test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
+          issuer: {
+            test: /\.(css|less)$/
+          },
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                publicPath: `${assetHost}/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false
+              }
+            }
+          ]
+        },
+        // ts 和 js 中的 svg 组件化
+        {
           test: /\.svg$/i,
           issuer: {
             test: /\.(js|ts)x?$/
@@ -52,8 +70,9 @@ module.exports = withPlugins(
             }
           ]
         },
+        // css 和 less 中的 svg 先 copy 再优化
         {
-          test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
+          test: /\.svg$/i,
           issuer: {
             test: /\.(css|less)$/
           },
@@ -66,30 +85,13 @@ module.exports = withPlugins(
                 name: '[name].[hash].[ext]',
                 esModule: false
               }
-            }
-          ]
-        },
-        // svg 单独优化：https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
-        {
-          test: /\.svg$/i,
-          issuer: {
-            test: /\.(css|less)$/
-          },
-          use: [
+            },
             {
-              loader: 'svg-url-loader',
-              options: {
-                // 处理小于 1kb 的
-                limit: 1 * 1024,
-                publicPath: `${assetHost}/_next/static/media/`,
-                outputPath: `${options.isServer ? '../' : ''}static/media/`,
-                name: '[name].[hash].[ext]',
-                esModule: false,
-                noquotes: true
-              }
+              loader: 'svgo-loader'
             }
           ]
         },
+        // js 和 ts 里面不需要组件化 svg 的场景同 css 和 less 中的处理方式
         {
           test: /\.file\.svg$/i,
           issuer: {
@@ -97,16 +99,16 @@ module.exports = withPlugins(
           },
           use: [
             {
-              loader: 'svg-url-loader',
+              loader: 'file-loader',
               options: {
-                // 处理小于 1kb 的
-                limit: 1 * 1024,
                 publicPath: `${assetHost}/_next/static/media/`,
                 outputPath: `${options.isServer ? '../' : ''}static/media/`,
                 name: '[name].[hash].[ext]',
-                esModule: false,
-                noquotes: true
+                esModule: false
               }
+            },
+            {
+              loader: 'svgo-loader'
             }
           ]
         },
