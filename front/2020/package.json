@@ -54,6 +54,7 @@
     "@types/react-dom": "^16.9.4",
     "@types/ua-parser-js": "^0.7.33",
     "@typescript-eslint/eslint-plugin": "^2.11.0",
+    "@zeit/next-source-maps": "^0.0.3",
     "eslint": "^6.5.1",
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
