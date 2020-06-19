@@ -1,6 +1,8 @@
 const withPlugins = require('next-compose-plugins')
 const withCss = require('@zeit/next-css')
 const withLess = require('@zeit/next-less')
+const withSourceMaps = require('@zeit/next-source-maps')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
 
@@ -17,7 +19,8 @@ module.exports = withPlugins(
           esModule: true
         }
       }
-    ]
+    ],
+    [ withSourceMaps ]
   ],
   {
     webpack(config, options) {
@@ -33,6 +36,24 @@ module.exports = withPlugins(
       }
 
       config.module.rules.push(
+        {
+          test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
+          issuer: {
+            test: /\.(css|less)$/
+          },
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                publicPath: `${assetHost}/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false
+              }
+            }
+          ]
+        },
+        // ts 和 js 中的 svg 组件化
         {
           test: /\.svg$/i,
           issuer: {
@@ -51,8 +72,9 @@ module.exports = withPlugins(
             }
           ]
         },
+        // css 和 less 中的 svg 先 copy 再优化
         {
-          test: /\.(svg|eot|ttf|woff|woff2|png|jpe?g|gif)$/i,
+          test: /\.svg$/i,
           issuer: {
             test: /\.(css|less)$/
           },
@@ -65,11 +87,35 @@ module.exports = withPlugins(
                 name: '[name].[hash].[ext]',
                 esModule: false
               }
+            },
+            {
+              loader: 'svgo-loader'
+            }
+          ]
+        },
+        // js 和 ts 里面不需要组件化 svg 的场景同 css 和 less 中的处理方式
+        {
+          test: /\.file\.svg$/i,
+          issuer: {
+            test: /\.(js|ts)x?$/
+          },
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                publicPath: `${assetHost}/_next/static/media/`,
+                outputPath: `${options.isServer ? '../' : ''}static/media/`,
+                name: '[name].[hash].[ext]',
+                esModule: false
+              }
+            },
+            {
+              loader: 'svgo-loader'
             }
           ]
         },
         {
-          test: /\.(file\.svg|png|jpe?g|gif)$/i,
+          test: /\.(png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },
@@ -86,6 +132,9 @@ module.exports = withPlugins(
           ]
         }
       )
+
+      config.optimization.minimizer = []
+      config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
 
       return config
     },
