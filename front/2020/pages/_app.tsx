@@ -8,6 +8,9 @@ type Props = {
   pageProps: any
 }
 
+// TODO: Web 性能指标数据上报
+// 详情见 https://nextjs.org/docs/advanced-features/measuring-performance
+
 export default function MyApp({ Component, pageProps }: Props) {
   // 用来标识客户端渲染完成，如隔壁 `global.less` 会依赖之
   useEffect(() => {

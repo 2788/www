@@ -45,6 +45,7 @@
     "ua-parser-js": "^0.7.21"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.4.4",
     "@qiniu/eslint-config": "0.0.4",
     "@types/classnames": "^2.2.10",
     "@types/lodash": "^4.14.150",
@@ -65,6 +66,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "qiniu": "^7.3.1",
     "svgo-loader": "^2.2.1",
+    "terser-webpack-plugin": "^1.4.3",
     "typescript": "3.7.3",
     "walk": "^2.3.14"
   },
