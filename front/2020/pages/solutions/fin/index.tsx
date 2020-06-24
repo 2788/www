@@ -48,7 +48,7 @@ function PageContent() {
   return (
     <>
       <PageBanner
-        title="金融行业解决方案"
+        title="金融行业银行合规解决方案"
         desc="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和文件的开展各项金融业务。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -139,8 +139,8 @@ function PageContent() {
 export default function FinPage() {
   return (
     <Layout
-      title="金融行业解决方案"
-      keywords="金融, 行业, 行业解决方案"
+      title="金融行业银行合规解决方案"
+      keywords="金融, 银行, 合规, 行业解决方案"
       description="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和文件的开展各项金融业务。"
     >
       <PageContent />
