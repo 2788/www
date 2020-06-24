@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode, MouseEvent } from 'react'
 import Link from 'components/Link'
 import classnames from 'classnames'
 import Hot from 'components/Hot'
@@ -10,14 +10,15 @@ export type ContentItemProps = {
   href: string
   // 可能是"热门"之外的内容
   hot?: boolean | string
-  icon: React.ReactNode
+  icon: ReactNode
   title: string
   subtitle: string
-  onClick?(): void
+  onClick?(e: MouseEvent): void
+  extra?: ReactNode
 }
 
 export default function ContentItem(props: ContentItemProps) {
-  const { disabled, href, hot, icon, title, subtitle, onClick } = props
+  const { disabled, href, hot, icon, title, subtitle, onClick, extra } = props
   const hotIcon = hot && (typeof hot === 'boolean' ? <Hot /> : <Hot text={hot} />)
 
   return (
@@ -27,6 +28,7 @@ export default function ContentItem(props: ContentItemProps) {
         <div className={style.desc}>
           <div className={style.title}>{title} {hotIcon}</div>
           <div className={style.subtitle}>{subtitle}</div>
+          {extra}
         </div>
       </Link>
     </li>

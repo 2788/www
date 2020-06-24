@@ -8,7 +8,7 @@ import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
 import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
-import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allSolutions } from 'constants/solutions'
+import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
@@ -62,8 +62,8 @@ function LinkGroups() {
       <ProductItems products={categoryProductsMap[category]} />
     </LinkGroup>
   ))
-  const solutionLinksView = allSolutions.map(solution => (
-    <LinkItem key={solution} url={solutionUrlMap[solution]}>{solutionNameMap[solution]}</LinkItem>
+  const solutionLinksView = allAvailableSolutions.map(solution => (
+    <LinkItem key={solution} url={solutionUrlMap[solution]!}>{solutionNameMap[solution]}</LinkItem>
   ))
   return (
     <section className={style.linkGroups}>

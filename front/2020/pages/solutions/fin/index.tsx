@@ -57,7 +57,11 @@ function PageContent() {
 
       <Navigator>{btns.nav}</Navigator>
 
-      <Feature name="values" title="客户价值">
+      <Feature
+        name="values"
+        title="客户价值"
+        subtitle="建立信息安全体系，提高信息科技风险管理水平，强化监管的全面性和时效性，满足行业合规要求"
+      >
         <feature.Group className={style.valueGroup}>
           <feature.Item icon={<IconValue1 />}>
             <feature.Desc className={style.valueDesc}>通过多种灵活的策略采集资金交易、账户系统、金融理财等多系统的实时数据</feature.Desc>
@@ -112,7 +116,7 @@ function PageContent() {
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
-          <RelatedItem icon={<IconKodoe />} href={solutionUrlMap[Solution.Kodoe]}>
+          <RelatedItem icon={<IconKodoe />} href={solutionUrlMap[Solution.Kodoe]!}>
             存储与数据湖
           </RelatedItem>
           <RelatedProduct product={Product.Express} />

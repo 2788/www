@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>数据分析备份 8</title>
+    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="导航-下拉菜单" transform="translate(-381.000000, -2534.000000)" stroke-width="2">
+            <g id="编组-6备份-2" transform="translate(172.000000, 1622.000000)">
+                <g id="弹出框">
+                    <g id="编组-9" transform="translate(183.000000, 20.000000)">
+                        <g transform="translate(0.000000, 400.000000)" id="编组-14备份-3">
+                            <g transform="translate(0.000000, 456.000000)">
+                                <g id="01" transform="translate(20.000000, 20.000000)">
+                                    <g id="编组-45" transform="translate(0.000000, 10.000000)">
+                                        <g id="wifi-router" transform="translate(8.000000, 7.000000)">
+                                            <g id="编组-50" transform="translate(6.000000, 11.000000)" stroke="#00AAE7" stroke-linecap="square">
+                                                <path d="M6.84444444,9.24444444 C7.02222222,9.06666667 7.37777778,8.88888889 7.73333333,8.88888889 C8.08888889,8.88888889 8.35555556,9.06666667 8.62222222,9.24444444 L7.73333333,10.1333333 L6.84444444,9.24444444 Z" id="路径" fill="#00AAE7"></path>
+                                                <path d="M12,6.22222222 C10.9333333,5.15555556 9.42222222,4.44444444 7.73333333,4.44444444 C6.04444444,4.44444444 4.53333333,5.15555556 3.46666667,6.22222222" id="路径"></path>
+                                                <path d="M15.4666667,3.2 C13.5111111,1.24444444 10.7555556,1.61056353e-13 7.73333333,1.61056353e-13 C4.71111111,1.61056353e-13 1.95555556,1.24444444 6.47383381e-13,3.2" id="路径"></path>
+                                            </g>
+                                            <line x1="4" y1="6" x2="14.7331263" y2="0.633436854" id="路径" stroke="#333333"></line>
+                                            <rect id="矩形" stroke="#333333" stroke-linecap="square" x="0" y="6" width="28" height="20"></rect>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

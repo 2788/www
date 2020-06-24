@@ -375,7 +375,7 @@ function getSolutionCards(solutions: Solution[]) {
       key={solution}
       icon={createElement(iconMap[solution], { className: styles.icon })}
       title={nameMap[solution]}
-      href={urlMap[solution]}
+      href={urlMap[solution] || '#'}
     >
       {descMap[solution]}
     </Card>

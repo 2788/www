@@ -156,24 +156,25 @@ function PageContent() {
       <Feature
         className={styles.core}
         title="连接数据 重塑价值"
-        subtitle="成为 5G 时代的异构数据湖与数据分析平台的第一品牌"
+        // 先注释，这里好像说要换句话？@yiling @jifeng
+        // subtitle="成为 5G 时代的异构数据湖与数据分析平台的第一品牌"
       >
         <FeatureGroup>
           <FeatureItem
             pos="left-right"
             align="left"
             icon={<Core1Icon className={styles.coreIcon} />}
-            title="海量存储"
+            title="异构数据湖"
           >
-            <FeatureDesc>所有数据都有有效期，面对不断膨胀的数据领域，数据如何管理？七牛云完全自主知识产权的对象存储，已经过较严酷的考验，为 EB 规模的数据存储做好充分准备。</FeatureDesc>
+            <FeatureDesc>完全自主知识产权，可实现任意来源、任意规模、任意类型数据的全量获取、全量存储、多模式处理与全生命周期管理，助您在 DT 时代持续挖掘海量数据的无限价值。</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="left-right"
             align="left"
             icon={<Core2Icon className={styles.coreIcon} />}
-            title="数据洞察"
+            title="数据传输"
           >
-            <FeatureDesc>让数据从负担变成资产的关键步骤是数据的价值挖掘。七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产。</FeatureDesc>
+            <FeatureDesc>独家的 CDN 加速和质量监控体系，可实现全网一体化调度和优化，助您在性能和成本之间得到良好平衡。面向不同音视频数据特别优化的传输网络让数据实现真正闭环。</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
         <FeatureGroup>
@@ -181,19 +182,22 @@ function PageContent() {
             pos="left-right"
             align="left"
             icon={<Core3Icon className={styles.coreIcon} />}
-            title="加速传输"
+            title="多媒体数据处理"
           >
-            <FeatureDesc>七牛独家的 CDN 加速和监控体系，实现全网一体化调度和优化，让您能够在性能和成本之间得到一个良好的平衡。</FeatureDesc>
+            <FeatureDesc>
+              独创的 AI 产品体系，以统一 API 提供服务，零运维、高可用、高性能，不仅提供图片处理、音视频转码等基础功能，基于海量数据深度学习的内容审核和 AI 分析，助您更好理解数据。
+            </FeatureDesc>
           </FeatureItem>
 
           <FeatureItem
             pos="left-right"
             align="left"
             icon={<Core4Icon className={styles.coreIcon} />}
-            title="高性能计算"
+            title="机器数据处理"
           >
-            <FeatureDesc>为了能让数据流转，我们需要对数据进行高速处理。七牛云构建了基于容器的计算平台，并基于容器平台构建了功能丰富且开放性的智能媒体云平台。
-              您只需考虑怎么处理数据，而无需考虑数据的规模和系统性能。</FeatureDesc>
+            <FeatureDesc>
+              数据科技赋能是产业升级的核心，然而大量数据却未被妥善收集和分析应用，Pandora 专注于格式多样、实时生产的海量机器数据，让您不仅读懂机器，更能了解顾客的想法，成为行业的领先者。
+            </FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>

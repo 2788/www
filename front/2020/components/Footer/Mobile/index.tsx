@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
 import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
-import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allSolutions } from 'constants/solutions'
+import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 import Button from 'components/UI/Button'
 
 import Github from './images/github.svg'
@@ -29,9 +29,9 @@ export default function FooterForMobile() {
       {getProductItems(categoryProductsMap[category])}
     </SubMenu>
   ))
-  const solutionMenuItemsView = allSolutions.map(solution => (
+  const solutionMenuItemsView = allAvailableSolutions.map(solution => (
     <MenuItem key={solution}>
-      <Link href={solutionUrlMap[solution]}>{solutionNameMap[solution]}</Link>
+      <Link href={solutionUrlMap[solution]!}>{solutionNameMap[solution]}</Link>
     </MenuItem>
   ))
   return (
