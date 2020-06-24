@@ -50,8 +50,10 @@ function LinkGroup({ title, children }: PropsWithChildren<ILinkGroupProps>) {
 }
 
 function ProductItems({ products }: { products: readonly Product[] }) {
-  const itemsView = products.map(product => (
-    <LinkItem key={product} url={urlMap[product] || '#'}>{nameMap[product]}</LinkItem>
+  const itemsView = products.filter(
+    product => urlMap[product] != null
+  ).map(product => (
+    <LinkItem key={product} url={urlMap[product]!}>{nameMap[product]}</LinkItem>
   ))
   return <>{itemsView}</>
 }

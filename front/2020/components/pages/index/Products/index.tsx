@@ -13,13 +13,11 @@ import Link from 'components/Link'
 
 import styles from './style.less'
 
-import TabStorageIcon from './images/tabs/product1.svg'
 import TabServiceIcon from './images/tabs/product2.svg'
 import TabVideoIcon from './images/tabs/product3.svg'
 import TabIntelligenceIcon from './images/tabs/product4.svg'
 
 const categoryIconMap = {
-  [Category.Storage]: TabStorageIcon,
   [Category.Service]: TabServiceIcon,
   [Category.Video]: TabVideoIcon,
   [Category.Intelligence]: TabIntelligenceIcon
@@ -28,7 +26,7 @@ const categoryIconMap = {
 interface CardProps {
   icon: ReactNode
   title: string
-  href?: string
+  href: string | null
   onClick?: () => void
   disabled?: boolean
 }
@@ -101,19 +99,21 @@ function PaneForMobile({ children }: PropsWithChildren<{}>) {
   )
 }
 
-function menuItemForMobileProduct(product: Product) {
+function menuItemForMobileProduct(product: Product, startConsulting: () => void) {
+  const url = urlMap[product]
   return (
     <MenuItem
       key={product}
       title={nameMap[product]}
-      href={urlMap[product] || undefined}
+      href={url != null ? url : undefined}
+      onClick={startConsulting}
     >
-      {descMap[product]}
+      {url != null ? descMap[product] : '即将上线，欢迎垂询'}
     </MenuItem>
   )
 }
 
-function subMenuForMobileCategory(category: Category, extra?: ReactNode) {
+function subMenuForMobileCategory(category: Category, startConsulting: () => void) {
   const Icon = categoryIconMap[category]
   const title = (
     <span className={styles.tab}>
@@ -122,13 +122,12 @@ function subMenuForMobileCategory(category: Category, extra?: ReactNode) {
   )
   const products: readonly Product[] = categoryProductsMap[category]
   const menuItemsView = products.map(
-    product => menuItemForMobileProduct(product)
+    product => menuItemForMobileProduct(product, startConsulting)
   )
   return (
     <SubMenu key={category} title={title}>
       <PaneForMobile>
         {menuItemsView}
-        {extra}
       </PaneForMobile>
     </SubMenu>
   )
@@ -136,17 +135,9 @@ function subMenuForMobileCategory(category: Category, extra?: ReactNode) {
 
 function ProductsForMobile() {
   const { startConsulting } = useModal()
-  const subMenusView = categories.map(category => {
-    // 对于存储与数据湖额外加上 HDFS
-    if (category === Category.Storage) {
-      return subMenuForMobileCategory(category, (
-        <MenuItem title={nameMap[Product.Hdfs]} onClick={startConsulting}>
-          即将上线，欢迎垂询
-        </MenuItem>
-      ))
-    }
-    return subMenuForMobileCategory(category)
-  })
+  const subMenusView = categories.map(category => (
+    subMenuForMobileCategory(category, startConsulting)
+  ))
   return (
     <Menu mode="inline">
       {subMenusView}
@@ -154,20 +145,23 @@ function ProductsForMobile() {
   )
 }
 
-function cardForPcProduct(product: Product) {
+function CardForPcProduct({ product }: { product: Product }) {
+  const { startConsulting } = useModal()
+  const url = urlMap[product]
   return (
     <Card
       key={product}
       icon={<ProductIcon className={styles.icon} product={product} />}
       title={nameMap[product]}
-      href={urlMap[product]}
+      href={url}
+      onClick={url != null ? undefined : startConsulting}
     >
-      {descMap[product]}
+      {url != null ? descMap[product] : '即将上线，欢迎垂询'}
     </Card>
   )
 }
 
-function tabPaneForPcCategory(category: Category, active: Category, extra?: ReactNode) {
+function tabPaneForPcCategory(category: Category, active: Category) {
   const Icon = categoryIconMap[category]
   const tabView = (
     <span className={styles.tab}>
@@ -176,7 +170,7 @@ function tabPaneForPcCategory(category: Category, active: Category, extra?: Reac
   )
   const products: readonly Product[] = categoryProductsMap[category]
   const cardsView = products.map(
-    product => cardForPcProduct(product)
+    product => <CardForPcProduct key={product} product={product} />
   )
   return (
     <TabPane key={category} value={category} tab={tabView} className={styles.pane}>
@@ -184,35 +178,19 @@ function tabPaneForPcCategory(category: Category, active: Category, extra?: Reac
       {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
       <Anim active={active === category}>
         {cardsView}
-        {extra}
       </Anim>
     </TabPane>
   )
 }
 
 export function ProductsForPc() {
-  const { startConsulting } = useModal()
-  const [activeKey, setActiveKey] = useState(Category.Storage)
+  const [activeKey, setActiveKey] = useState(Category.Intelligence)
   const onTabChange = (key: string) => {
     setActiveKey(key as Category)
   }
-  const tabPanesView = categories.map(category => {
-    // 对于存储与数据湖额外加上 HDFS
-    if (category === Category.Storage) {
-      const hdfs = Product.Hdfs
-      return tabPaneForPcCategory(category, activeKey, (
-        <Card
-          key={hdfs}
-          icon={<ProductIcon className={styles.icon} product={hdfs} />}
-          title={nameMap[hdfs]}
-          onClick={startConsulting}
-        >
-          即将上线，欢迎垂询
-        </Card>
-      ))
-    }
-    return tabPaneForPcCategory(category, activeKey)
-  })
+  const tabPanesView = categories.map(category => (
+    tabPaneForPcCategory(category, activeKey)
+  ))
   return (
     <>
       <Tabs value={activeKey} onChange={onTabChange}>

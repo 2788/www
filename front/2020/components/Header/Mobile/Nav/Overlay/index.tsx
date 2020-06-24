@@ -7,17 +7,21 @@ import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 import style from './index.less'
 
 function getProductItems(products: readonly Product[]) {
-  return products.map(product => (
+  return products.filter(
+    product => urlMap[product] != null
+  ).map(product => (
     <MenuItem key={product}>
-      <Link href={urlMap[product] || '#'}>{nameMap[product]}</Link>
+      <Link href={urlMap[product]!}>{nameMap[product]}</Link>
     </MenuItem>
   ))
 }
 
 function getSolutionItems(solutions: readonly sol.Solution[]) {
-  return solutions.map(solution => (
+  return solutions.filter(
+    solution => sol.urlMap[solution] != null
+  ).map(solution => (
     <MenuItem key={solution}>
-      <Link href={sol.urlMap[solution] || '#'}>{sol.nameMap[solution]}</Link>
+      <Link href={sol.urlMap[solution]!}>{sol.nameMap[solution]}</Link>
     </MenuItem>
   ))
 }

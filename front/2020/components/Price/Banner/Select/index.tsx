@@ -36,23 +36,21 @@ function Overlay() {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuGroup title={categoryNameMap[Category.Storage]}>
-          {menuItemForProduct(Product.Kodo, true)}
-        </DropdownMenuGroup>
-        <DropdownMenuGroup title={categoryNameMap[Category.Service]}>
-          {menuItemForProduct(Product.Cdn, true)}
-          {menuItemForProduct(Product.Pili)}
-          {menuItemForProduct(Product.Ssl)}
-          {menuItemForProduct(Product.Qvm, true)}
-          {menuItemForProduct(Product.Sms)}
-        </DropdownMenuGroup>
-      </DropdownMenu>
-      <DropdownMenu>
         <DropdownMenuGroup title={categoryNameMap[Category.Video]}>
           {menuItemForProduct(Product.Dora)}
           {menuItemForProduct(Product.Plsv)}
           {menuItemForProduct(Product.FaceID)}
           {menuItemForProduct(Product.Censor)}
+        </DropdownMenuGroup>
+      </DropdownMenu>
+      <DropdownMenu>
+        <DropdownMenuGroup title={categoryNameMap[Category.Service]}>
+          {menuItemForProduct(Product.Kodo, true)}
+          {menuItemForProduct(Product.Cdn, true)}
+          {menuItemForProduct(Product.Pili)}
+          {menuItemForProduct(Product.Ssl)}
+          {menuItemForProduct(Product.Qvm, true)}
+          {menuItemForProduct(Product.Sms)}
         </DropdownMenuGroup>
       </DropdownMenu>
     </>

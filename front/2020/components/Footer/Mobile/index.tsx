@@ -16,9 +16,11 @@ function MenuItem({ children }: PropsWithChildren<{}>) {
 }
 
 function getProductItems(products: readonly Product[]) {
-  return products.map(product => (
+  return products.filter(
+    product => urlMap[product] != null
+  ).map(product => (
     <MenuItem key={product}>
-      <Link href={urlMap[product] || '#'}>{nameMap[product]}</Link>
+      <Link href={urlMap[product]!}>{nameMap[product]}</Link>
     </MenuItem>
   ))
 }

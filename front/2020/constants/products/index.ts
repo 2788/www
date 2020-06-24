@@ -65,7 +65,7 @@ export const nameMap = {
 export const urlMap = {
   [Product.Kodo]: '/products/kodo',
   [Product.Archive]: '/products/kodo#storage_type',
-  [Product.Hdfs]: undefined, // 暂未上线
+  [Product.Hdfs]: null, // 暂未上线
   [Product.Cdn]: '/products/qcdn',
   [Product.Ssl]: '/products/ssl',
   [Product.Pili]: '/products/pili',
@@ -106,21 +106,15 @@ export const descMap = {
 } as const
 
 export enum Category {
-  Storage = 'storage',
   Service = 'service',
   Video = 'video',
   Intelligence = 'intelligence'
 }
 
-/** 存储与数据湖 */
-export const categoryStorage = [
-  Product.Kodo,
-  Product.Archive
-  // HDFS 还没 ready，这里先不放
-] as const
-
 /** 基础服务 */
 export const categoryService = [
+  Product.Kodo,
+  Product.Archive,
   Product.Cdn,
   Product.Ssl,
   Product.Pili,
@@ -142,33 +136,32 @@ export const categoryVideo = [
 
 /** 机器数据智能 */
 export const categoryIntelligence = [
-  Product.Express
+  Product.Express,
+  Product.Kodo,
+  Product.Archive,
+  Product.Hdfs
 ] as const
 
-export const categoryProductsMap = {
-  [Category.Storage]: categoryStorage,
+export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
   [Category.Service]: categoryService,
   [Category.Video]: categoryVideo,
   [Category.Intelligence]: categoryIntelligence
-} as const
+}
 
 export const categoryNameMap = {
-  [Category.Storage]: '存储与数据湖',
   [Category.Service]: '基础服务',
-  [Category.Video]: '智能视频',
+  [Category.Video]: '智能视频服务',
   [Category.Intelligence]: '机器数据智能'
 } as const
 
 export const categoryEnNameMap = {
-  [Category.Storage]: 'Storage and Data Lake',
   [Category.Service]: 'Cloud Essentials',
   [Category.Video]: 'Intelligent Video Service',
   [Category.Intelligence]: 'Machine Data Intelligence'
 } as const
 
 export const categories = [
-  Category.Storage,
-  Category.Service,
+  Category.Intelligence,
   Category.Video,
-  Category.Intelligence
+  Category.Service
 ] as const
