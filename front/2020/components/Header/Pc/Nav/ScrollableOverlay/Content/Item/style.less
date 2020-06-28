@@ -1,5 +1,7 @@
 @import '~utils/less/index.less';
 
+@li-height: 116px;
+
 .li {
   display: inline-block;
   width: 50%;
@@ -18,8 +20,8 @@
   .icon {
     float: left;
     width: 76px;
-    height: 116px;
-    line-height: 116px;
+    height: @li-height;
+    line-height: @li-height;
     text-align: center;
   }
 
@@ -27,6 +29,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: @li-height;
     padding: 26px 16px 26px 0;
 
     .title {
