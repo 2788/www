@@ -5477,6 +5477,11 @@ next-compose-plugins@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
 
+next-global-less@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/next-global-less/-/next-global-less-0.0.1.tgz#c34a0955d88fa4f44e8e4804205b2179717de9d6"
+  integrity sha512-5EZM1qEP4WOnApaJlopFheGMxYKGhAYQGCFyn2mJKMnVywzLI0aWKJfmT5SjB2ZD3A1XtNZ0+uBUx3GnmHlKTA==
+
 next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
