@@ -39,7 +39,7 @@ const data1 = [
   },
   {
     key: 4,
-    type: '公安核验',
+    type: '权威人脸比对',
     price: '1 元/次'
   },
   {
