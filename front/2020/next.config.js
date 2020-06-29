@@ -6,12 +6,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const withGlobalLess = require('next-global-less')
+const path = require('path')
 
 const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
 
 module.exports = withPlugins(
   [
-    [ withGlobalLess, { globalPath: './pages/global.less' } ],
+    [ withGlobalLess, { globalPath: path.join(__dirname, './pages/global.less') } ],
     [ withCss ],
     [
       withLess,
