@@ -9,7 +9,7 @@ export type CalcRule = {
 
 // 某类计费项可能属于某个抽象的概念(type, group), 这类可以避免每项都设置单位适配器，可以用 CalcRuleGroup 包一下
 export type CalcRuleGroup = {
-  type: 'group',
+  type: 'group'
   name: string
   // 分组的目的可能只是分类，所以这也是可选的
   unitAdaptor?: UnitAdaptor
@@ -18,15 +18,13 @@ export type CalcRuleGroup = {
 
 // 计费项
 export type CalcRuleItem = {
-  type?: 'item',
+  type?: 'item'
   // name 不是唯一，同一个数组存在多个相同的计费项，但是价格不同
   name: string
   // 备注用，没其他用途
   desc?: string
   // 单价
   price: number
-  // 阈值，超出的部分才计价
-  threshold?: number
   min: number
   max: number
   // 单位适配器，方便写规则做成可选的，不填默认使用 Calculator 的适配器
@@ -52,10 +50,17 @@ function isCalcGroup(item: CalcRuleItem | CalcRuleGroup): item is CalcRuleGroup 
   return item.type === 'group'
 }
 
-function matchRuleItem(ruleItem: CalcRuleItem, inputItem: InputItem, unitAdaptor: UnitAdaptor) {
-  const gbCount = unitAdaptor.toBase(inputItem.count, inputItem.unit)
+function matchRuleItem(
+  ruleItem: CalcRuleItem,
+  itemName: string,
+  itemCount: number,
+  itemUnit: Unit,
+  unitAdaptor: UnitAdaptor
+) {
+  const unitCount = unitAdaptor.toBase(itemCount, itemUnit)
+  const isMatchedArea = (unitCount >= ruleItem.min && unitCount <= ruleItem.max)
   // 不同的计费项的计费规则可能是一样的，需要判断计费项是不是一样
-  if (inputItem.name === ruleItem.name && gbCount >= ruleItem.min && gbCount < ruleItem.max) {
+  if (itemName === ruleItem.name && isMatchedArea) {
     return true
   }
 
@@ -117,40 +122,65 @@ export default class Calculator {
         throw Error('没有找到对应的计费规则，请检查规则表')
       }
 
+      // 计算该区域下收费项总和
       const totalForRegion = input.items.reduce((_totalForRegion, inputItem) => {
-        let matchedRuleItem: CalcRuleItem | undefined
+        const itemName = inputItem.name
+        const itemUnit = inputItem.unit
+        // 算完最优先匹配区间价格后剩下的数量单位
+        let restCount = inputItem.count
+        // 单位适配器以匹配的 item 的 adaptor 为主，其次 this.unitAdaptor
+        let unitAdaptor = this.unitAdaptor
+        // 各区间价格总和
+        let sum = 0
 
-        for (const item of matchedRule.items) {
-          // group 里面没找到继续下一个 group 或者 item
-          if (isCalcGroup(item)) {
-            const matchedRuleItemInGroup = item.items.find(ruleItem => (
-              // 如果 item 不指定 adaptor 则使用 group 的
-              matchRuleItem(ruleItem, inputItem, ruleItem.unitAdaptor || item.unitAdaptor || this.unitAdaptor)
-            ))
-            if (matchedRuleItemInGroup) {
-              matchedRuleItem = matchedRuleItemInGroup
-              break
-            }
-          } else {
-            // eslint-disable-next-line no-lonely-if
-            if (matchRuleItem(item, inputItem, item.unitAdaptor || this.unitAdaptor)) {
-              matchedRuleItem = item
-              break
+        // 按区间计价，计算该区间继续算后续区间的价格
+        while (restCount > 0) {
+          let matchedRuleItem: CalcRuleItem | undefined
+
+          for (const item of matchedRule.items) {
+            // group 里面没找到继续下一个 group 或者 item
+            if (isCalcGroup(item)) {
+              // eslint-disable-next-line no-loop-func
+              const matchedRuleItemInGroup = item.items.find(groupItem => (
+                // 如果 item 不指定 adaptor 则使用 group 的
+                matchRuleItem(
+                  groupItem,
+                  itemName,
+                  restCount,
+                  itemUnit,
+                  groupItem.unitAdaptor || item.unitAdaptor || this.unitAdaptor
+                )
+              ))
+              if (matchedRuleItemInGroup) {
+                matchedRuleItem = matchedRuleItemInGroup
+                unitAdaptor = matchedRuleItemInGroup.unitAdaptor || item.unitAdaptor || this.unitAdaptor
+                break
+              }
+            } else {
+              // eslint-disable-next-line
+              if (matchRuleItem(item, itemName, restCount, itemUnit, item.unitAdaptor || this.unitAdaptor)) {
+                matchedRuleItem = item
+                unitAdaptor = matchedRuleItem.unitAdaptor || this.unitAdaptor
+                break
+              }
             }
           }
+
+          if (!matchedRuleItem) {
+            throw Error(`没有找到对应的计费项，请检查${matchedRule.desc}的计费项配置`)
+          }
+
+          // 符合该区间内的数量单位
+          const count = unitAdaptor.toBase(restCount, itemUnit) - matchedRuleItem.min
+
+          // 规则默认全都用基本单位表示(gb)，这里的 min 需要转换成当前输入的单位的值
+          restCount = unitAdaptor.frombase(matchedRuleItem.min, itemUnit)
+
+          // 加上当前区间价格
+          sum += matchedRuleItem.price * count
         }
 
-        if (!matchedRuleItem) {
-          throw Error(`没有找到对应的计费项，请检查${matchedRule.desc}的计费项配置`)
-        }
-
-        const threshold = matchedRuleItem.threshold || 0
-        const count = Math.max(
-          (matchedRuleItem.unitAdaptor || this.unitAdaptor).toBase(inputItem.count, inputItem.unit) - threshold,
-          0
-        )
-
-        return _totalForRegion + (matchedRuleItem?.price || 0) * count
+        return _totalForRegion + sum
       }, 0)
 
       return _total + totalForRegion
@@ -188,6 +218,8 @@ export type Unit = CapacityUnit | CountUnit
 export abstract class UnitAdaptor {
   // 转换成基础单位
   abstract toBase(num: number, unit: Unit): number
+
+  abstract frombase(num: number, unit: Unit): number
 }
 
 export type CapacityUnit = 'GB' | 'TB' | 'PB'
@@ -204,12 +236,32 @@ export class CapacityUnitAdaptor extends UnitAdaptor {
 
     return num
   }
+
+  public frombase(num: number, unit: CapacityUnit) {
+    if (unit === 'PB') {
+      return num / 1024 / 1024
+    }
+
+    if (unit === 'TB') {
+      return num / 1024
+    }
+
+    return num
+  }
 }
 
 export type CountUnit = '万次'
 // 计数单位适配器
-export class CountUnitAdaptor {
+export class CountUnitAdaptor extends UnitAdaptor {
   public toBase(num: number, unit: CountUnit) {
+    if (unit === '万次') {
+      return num
+    }
+
+    return num
+  }
+
+  public frombase(num: number, unit: CountUnit) {
     if (unit === '万次') {
       return num
     }

@@ -16,7 +16,6 @@ export default [
         name: 'http',
         desc: '第 10 GB 至 100 TB',
         price: 0.24,
-        threshold: 10,
         min: 10,
         max: 100 * 1024
       },
@@ -24,7 +23,6 @@ export default [
         name: 'http',
         desc: '第 100 TB 至 1 PB',
         price: 0.19,
-        threshold: 10,
         min: 100 * 1024,
         max: 1 * 1024 * 1024
       },
@@ -32,7 +30,6 @@ export default [
         name: 'http',
         desc: '第 1PB 以上',
         price: 0.14,
-        threshold: 10,
         min: 1 * 1024 * 1024,
         max: Number.POSITIVE_INFINITY
       },
@@ -69,8 +66,7 @@ export default [
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,
-        price: 0.19,
-        threshold: 5
+        price: 0.19
       }
     ]
   },
@@ -153,8 +149,7 @@ export default [
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,
-        price: 0.19,
-        threshold: 5
+        price: 0.19
       }
     ]
   },
@@ -166,7 +161,6 @@ export default [
         name: 'http',
         desc: '第 0 GB 至 10 GB',
         price: 0,
-        threshold: 10,
         min: 0,
         max: 10
       },
@@ -174,7 +168,6 @@ export default [
         name: 'http',
         desc: '第 10 GB 至 10 TB',
         price: 0.34,
-        threshold: 10,
         min: 10,
         max: 10 * 1024
       },
@@ -182,7 +175,6 @@ export default [
         name: 'http',
         desc: '第 10 TB 至 50 TB',
         price: 0.30,
-        threshold: 10,
         min: 10 * 1024,
         max: 50 * 1024
       },
@@ -190,7 +182,6 @@ export default [
         name: 'http',
         desc: '第 50 TB 至 100 TB',
         price: 0.26,
-        threshold: 10,
         min: 50 * 1024,
         max: 100 * 1024
       },
@@ -198,7 +189,6 @@ export default [
         name: 'http',
         desc: '第 100 TB 以上',
         price: 0.26, // 请联系我们 400-808-9176 转 1
-        threshold: 10,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
       },
@@ -242,8 +232,7 @@ export default [
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,
-        price: 0.19,
-        threshold: 5
+        price: 0.19
       }
     ]
   },
@@ -255,7 +244,6 @@ export default [
         name: 'http',
         desc: '第 0 GB 至 10 GB',
         price: 0,
-        threshold: 10,
         min: 0,
         max: 10
       },
@@ -263,7 +251,6 @@ export default [
         name: 'http',
         desc: '第 10 GB 至 10 TB',
         price: 0.50,
-        threshold: 10,
         min: 10,
         max: 10 * 1024
       },
@@ -271,7 +258,6 @@ export default [
         name: 'http',
         desc: '第 10 TB 至 50 TB',
         price: 0.44,
-        threshold: 10,
         min: 10 * 1024,
         max: 50 * 1024
       },
@@ -279,7 +265,6 @@ export default [
         name: 'http',
         desc: '第 50 TB 至 100 TB',
         price: 0.38,
-        threshold: 10,
         min: 50 * 1024,
         max: 100 * 1024
       },
@@ -287,7 +272,6 @@ export default [
         name: 'http',
         desc: '第 100 TB 以上',
         price: 0.38, // 请联系我们 400-808-9176 转 1
-        threshold: 10,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
       },
@@ -331,8 +315,7 @@ export default [
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,
-        price: 0.19,
-        threshold: 5
+        price: 0.19
       }
     ]
   },
@@ -344,7 +327,6 @@ export default [
         name: 'http',
         desc: '第 0 GB 至 10 GB',
         price: 0,
-        threshold: 10,
         min: 0,
         max: 10
       },
@@ -352,7 +334,6 @@ export default [
         name: 'http',
         desc: '第 10 GB 至 10 TB',
         price: 0.76,
-        threshold: 10,
         min: 10,
         max: 10 * 1024
       },
@@ -360,7 +341,6 @@ export default [
         name: 'http',
         desc: '第 10 TB 至 50 TB',
         price: 0.66,
-        threshold: 10,
         min: 10 * 1024,
         max: 50 * 1024
       },
@@ -368,7 +348,6 @@ export default [
         name: 'http',
         desc: '第 50 TB 至 100 TB',
         price: 0.57,
-        threshold: 10,
         min: 50 * 1024,
         max: 100 * 1024
       },
@@ -376,7 +355,6 @@ export default [
         name: 'http',
         desc: '第 100 TB 以上',
         price: 0.57, // 请联系我们 400-808-9176 转 1
-        threshold: 10,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
       },
@@ -420,8 +398,7 @@ export default [
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,
-        price: 0.19,
-        threshold: 5
+        price: 0.19
       }
     ]
   },
@@ -433,7 +410,6 @@ export default [
         name: 'http',
         desc: '第 0 GB 至 10 GB',
         price: 0,
-        threshold: 10,
         min: 0,
         max: 10
       },
@@ -441,7 +417,6 @@ export default [
         name: 'http',
         desc: '第 10 GB 至 10 TB',
         price: 0.94,
-        threshold: 10,
         min: 10,
         max: 10 * 1024
       },
@@ -449,7 +424,6 @@ export default [
         name: 'http',
         desc: '第 10 TB 至 50 TB',
         price: 0.82,
-        threshold: 10,
         min: 10 * 1024,
         max: 50 * 1024
       },
@@ -457,7 +431,6 @@ export default [
         name: 'http',
         desc: '第 50 TB 至 100 TB',
         price: 0.71,
-        threshold: 10,
         min: 50 * 1024,
         max: 100 * 1024
       },
@@ -465,7 +438,6 @@ export default [
         name: 'http',
         desc: '第 100 TB 以上',
         price: 0.71, // 请联系我们 400-808-9176 转 1
-        threshold: 10,
         min: 100 * 1024,
         max: Number.POSITIVE_INFINITY
       },
@@ -509,8 +481,7 @@ export default [
         desc: '第 5 万次及以上',
         min: 5,
         max: Number.POSITIVE_INFINITY,
-        price: 0.19,
-        threshold: 5
+        price: 0.19
       }
     ]
   }

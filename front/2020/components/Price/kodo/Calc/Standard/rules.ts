@@ -18,7 +18,6 @@ const south: CalcRule = {
       name: '存储空间费用',
       desc: '10 GB 以上',
       price: 0.099,
-      threshold: 10,
       min: 10,
       max: Number.POSITIVE_INFINITY
     },
@@ -51,7 +50,6 @@ const south: CalcRule = {
           name: 'CDN',
           desc: '10 GB 以上',
           price: 0.15,
-          threshold: 10,
           min: 10,
           max: Number.POSITIVE_INFINITY
         }
@@ -73,7 +71,6 @@ const south: CalcRule = {
           name: 'PUT/DELETE',
           desc: '10 万次以上',
           price: 0.01,
-          threshold: 10,
           min: 10,
           max: Number.POSITIVE_INFINITY
         },
@@ -88,7 +85,6 @@ const south: CalcRule = {
           name: 'GET',
           desc: '100 万次以上',
           price: 0.01,
-          threshold: 100,
           min: 100,
           max: Number.POSITIVE_INFINITY
         },
@@ -123,7 +119,6 @@ const east: CalcRule = {
           name: '存储空间费用',
           desc: '10 GB - 1 TB',
           price: 0.148,
-          threshold: 10,
           min: 10,
           max: 1 * 1024
         },
@@ -131,7 +126,6 @@ const east: CalcRule = {
           name: '存储空间费用',
           desc: '1 TB - 200 TB',
           price: 0.145,
-          threshold: 10,
           min: 1 * 1024,
           max: 200 * 1024
         },
@@ -139,7 +133,6 @@ const east: CalcRule = {
           name: '存储空间费用',
           desc: '200 TB - 5 PB',
           price: 0.142,
-          threshold: 10,
           min: 200 * 1024,
           max: 5 * 1024 * 1024
         },
@@ -147,7 +140,6 @@ const east: CalcRule = {
           name: '存储空间费用',
           desc: '5 PB 以上',
           price: 0.139,
-          threshold: 10,
           min: 5 * 1024 * 1024,
           max: Number.POSITIVE_INFINITY
         }
@@ -183,7 +175,6 @@ const east: CalcRule = {
           name: 'CDN',
           desc: '10 GB 以上',
           price: 0.15,
-          threshold: 10,
           min: 10,
           max: Number.POSITIVE_INFINITY
         }
@@ -205,7 +196,6 @@ const east: CalcRule = {
           name: 'PUT/DELETE',
           desc: '10 万次以上',
           price: 0.01,
-          threshold: 10,
           min: 10,
           max: Number.POSITIVE_INFINITY
         },
@@ -220,7 +210,6 @@ const east: CalcRule = {
           name: 'GET',
           desc: '100 万次以上',
           price: 0.01,
-          threshold: 100,
           min: 100,
           max: Number.POSITIVE_INFINITY
         },
@@ -258,7 +247,6 @@ const us: CalcRule = {
           name: '存储空间费用',
           desc: '10 GB - 50 TB',
           price: 0.165,
-          threshold: 10,
           min: 10,
           max: 50 * 1024
         },
@@ -266,7 +254,6 @@ const us: CalcRule = {
           name: '存储空间费用',
           desc: '50 TB - 500 TB',
           price: 0.162,
-          threshold: 10,
           min: 50 * 1024,
           max: 500 * 1024
         },
@@ -274,7 +261,6 @@ const us: CalcRule = {
           name: '存储空间费用',
           desc: '500 TB - 5 PB',
           price: 0.159,
-          threshold: 10,
           min: 500 * 1024,
           max: 5 * 1024 * 1024
         },
@@ -282,7 +268,6 @@ const us: CalcRule = {
           name: '存储空间费用',
           desc: '5 PB 以上',
           price: 0.156,
-          threshold: 10,
           min: 5 * 1024 * 1024,
           max: Number.POSITIVE_INFINITY
         }
@@ -317,7 +302,6 @@ const us: CalcRule = {
           name: 'CDN',
           desc: '10 GB 以上',
           price: 0.15,
-          threshold: 10,
           min: 10,
           max: Number.POSITIVE_INFINITY
         }
@@ -339,7 +323,6 @@ const us: CalcRule = {
           name: 'PUT/DELETE',
           desc: '10 万次以上',
           price: 0.01,
-          threshold: 10,
           min: 10,
           max: Number.POSITIVE_INFINITY
         },
@@ -354,7 +337,6 @@ const us: CalcRule = {
           name: 'GET',
           desc: '100 万次以上',
           price: 0.01,
-          threshold: 100,
           min: 100,
           max: Number.POSITIVE_INFINITY
         },
