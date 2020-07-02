@@ -5,11 +5,14 @@ const withSourceMaps = require('@zeit/next-source-maps')
 const withBundleAnalyzer = require('@next/bundle-analyzer')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const withGlobalLess = require('next-global-less')
+const path = require('path')
 
 const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
 
 module.exports = withPlugins(
   [
+    [ withGlobalLess, { globalPath: path.join(__dirname, './pages/global.less') } ],
     [ withCss ],
     [
       withLess,
@@ -138,12 +141,14 @@ module.exports = withPlugins(
       )
 
       config.optimization.minimizer = []
-      config.optimization.minimizer.push(new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: true,
-        terserOptions: {}
-      }))
+      config.optimization.minimizer.push(
+        new TerserPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true,
+          terserOptions: {}
+        })
+      )
       config.optimization.minimizer.push(new OptimizeCSSAssetsPlugin({}))
 
       return config

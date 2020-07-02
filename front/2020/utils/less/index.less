@@ -92,20 +92,12 @@
 }
 
 .fadeIn(@time: .2s, @ease: linear, @delay: 0s) {
-  animation-name: fadeIn;
+  :global {
+    animation-name: fadeIn;
+  }
   animation-duration: @time;
   animation-timing-function: @ease;
   animation-delay: @delay;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
 
 // 很多内容（如产品使用场景）里会用来组织列表的，前面带蓝色圆点的 item
@@ -152,14 +144,4 @@
       transform: @mobile-transform !important;
     }
   })
-}
-
-@font-face {
-  font-family: 'number-regular';
-  src: url('./51-Number-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'din-condensed';
-  src: url('./DIN-Condensed-Bold-2.ttf');
 }
