@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <polyline stroke="#00AAE7" stroke-linecap="square" points="10 60 0 60 0 46 8 46"/>
+    <polyline stroke="#00AAE7" stroke-linecap="square" points="50 60 60 60 60 46 52 46"/>
+    <line x1="30" x2="30" y1="12" stroke="#00AAE7" stroke-linecap="square"/>
+    <rect width="8" height="4" x="30" y="2" stroke="#00AAE7" stroke-linecap="square"/>
+    <polyline stroke="#00AAE7" stroke-linecap="square" points="34 60 34 50 26 50 26 60"/>
+    <line x1="8" x2="52" y1="28" y2="28" stroke="#333"/>
+    <line x1="8" x2="52" y1="36" y2="36" stroke="#333"/>
+    <line x1="17" x2="17" y1="60" y2="36" stroke="#333"/>
+    <line x1="43" x2="43" y1="60" y2="36" stroke="#333"/>
+    <polygon stroke="#333" stroke-linecap="square" points="52 28 52 60 8 60 8 28 30 12"/>
+    <line x1="26" x2="34" y1="43" y2="43" stroke="#333" stroke-linecap="square"/>
+  </g>
+</svg>

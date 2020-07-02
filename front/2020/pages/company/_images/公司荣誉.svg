@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+  <defs>
+    <linearGradient id="公司荣誉-a" x1="79.135%" x2="20.092%" y1="89.524%" y2="14.229%">
+      <stop offset="0%" stop-color="#00AAE7" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#00AAE7"/>
+    </linearGradient>
+  </defs>
+  <circle cx="5" cy="5" r="5" fill="url(#公司荣誉-a)" fill-rule="evenodd" opacity=".6"/>
+</svg>

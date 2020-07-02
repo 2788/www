@@ -1,43 +1,58 @@
 @import '~utils/less/index.less';
 
-.year {
-  font-size: 24px;
-  line-height: 29px;
-  font-family: number-regular;
+.item {
+  padding: 22px 20px 22px 38px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: @grey-1;
+  box-shadow: 0px 2px 4px 0px rgba(51,51,51,0.08);
+  border: 1px solid @grey-3;
+  text-align: left;
 
   .mobile({
-    padding: 10px 0;
-    text-align: center;
-  });
-}
-
-.card {
-  margin-top: 24px;
-  border:1px solid rgba(238,238,238,1);
-  box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
-  background-color: @grey-1;
-
-  .mobile({
-    margin-top: 12px;
+    display: block;
   });
 
-  .title {
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 20px;
+    top: 30px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: linear-gradient(322deg, rgba(0,170,231,0) 0%, rgba(0,170,231,1) 100%);
+    opacity: .6;
+  }
+
+  + .item {
+    margin-top: 20px;
+
+    .mobile({
+      margin-top: 16px;
+    });
+  }
+
+  .content {
+    flex: 1 1 0;
+    font-size: 18px;
+    color: @blue-6;
     line-height: 24px;
-    font-weight: 400;
 
-    .notMobile({
-      min-height: 24px * 2;
+    .mobile({
+      margin-bottom: 8px;
+      font-size: 16px;
     });
   }
 
   .issuer {
-    color: @grey-6;
-    margin-top: 12px;
-  }
+    flex: 0 0 auto;
+    margin-left: 1em;
+    font-size: 16px;
 
-  .time {
-    color: @grey-5;
-    font-size: 12px;
-    margin-top: 8px;
+    .mobile({
+      font-size: 12px;
+    });
   }
 }

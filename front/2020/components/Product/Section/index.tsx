@@ -7,12 +7,25 @@
  * Copyright (c) 2020 Qiniu
  */
 
-import React, { ReactNode, CSSProperties } from 'react'
+import React, { ReactNode, CSSProperties, createContext, useContext, PropsWithChildren } from 'react'
 import classnames from 'classnames'
 import { useMobile } from 'hooks/ua'
 import { Block, BlockProps, useIndex, useBlocks } from 'components/Product/Navigator'
 
 import style from './index.less'
+
+export type ContextValue = {
+  /** 是否从灰色开始（默认下标奇数为灰，偶数为白，下标从 0 开始，即，从白色开始） */
+  startWithGrey: boolean
+}
+
+const context = createContext<ContextValue>({
+  startWithGrey: false
+})
+
+export function Provider({ children, ...value }: PropsWithChildren<ContextValue>) {
+  return <context.Provider value={value}>{children}</context.Provider>
+}
 
 export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
   /** 区块的头部内容，默认使用 `title` 的值 */
@@ -36,11 +49,11 @@ export default function Section(props: SectionProps) {
   const isPc = !isMobile
   const blocks = useBlocks()
   const blockIndex = useIndex(name)
-  const defaultGrey = (
-    isPc && blockIndex >= 0
-    ? (blockIndex % 2 === 1) // PC 端默认下标基数为灰，偶数为白（下标从 0 开始）
-    : false
-  )
+  const startWithGrey = useContext(context).startWithGrey
+  const isEven = blockIndex >= 0 && blockIndex % 2 === 0
+  const isOdd = blockIndex >= 0 && blockIndex % 2 === 1
+  const greyByIndex = startWithGrey ? isEven : isOdd
+  const defaultGrey = isPc ? greyByIndex : false
   const grey = propGrey != null && isPc ? propGrey : defaultGrey
   const isLast = blockIndex === blocks.length - 1
   const blockClassName = classnames(style.blockWraper, grey && style.grey)

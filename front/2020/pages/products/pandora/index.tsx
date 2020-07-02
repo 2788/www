@@ -28,6 +28,7 @@ import imgFeature2 from './_images/feature-2.png'
 import imgFeature3 from './_images/feature-3.png'
 import imgFeature4 from './_images/feature-4.png'
 import imgFeature5 from './_images/feature-5.png'
+import imgFeature6 from './_images/feature-6.png'
 
 import imgScene1 from './_images/scene-1.file.svg'
 import imgScene2 from './_images/scene-2.file.svg'
@@ -263,7 +264,6 @@ function ExpressFeatures() {
       </card.Row>
       <card.Row>
         <card.Card>
-          {/* TODO: 配图 */}
           <card.Img className={style.featureImg} src={imgFeature4} />
           <card.Content className={style.featureContent}>
             <card.Title>机器学习能力</card.Title>
@@ -271,7 +271,6 @@ function ExpressFeatures() {
           </card.Content>
         </card.Card>
         <card.Card>
-          {/* TODO: 配图 */}
           <card.Img className={style.featureImg} src={imgFeature5} />
           <card.Content className={style.featureContent}>
             <card.Title>全面可视化呈现</card.Title>
@@ -279,8 +278,7 @@ function ExpressFeatures() {
           </card.Content>
         </card.Card>
         <card.Card>
-          {/* TODO: 配图 */}
-          <card.Img className={style.featureImg} src={imgFeature5} />
+          <card.Img className={style.featureImg} src={imgFeature6} />
           <card.Content className={style.featureContent}>
             <card.Title>应用生态开放</card.Title>
             <card.Desc>应用商店支持海量应用，针对典型场景提供开箱即用的解决方案，不仅内置官方应用沉淀领域知识，而且具备极强的开放性，支持外部合作伙伴自主开发，扩展个性化应用共建的生态圈。</card.Desc>
