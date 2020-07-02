@@ -56,7 +56,7 @@ function PageContent() {
     <>
       <PageBanner
         title="Pandora 数据分析平台"
-        desc="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。"
+        desc="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={imgBanner}
@@ -72,60 +72,45 @@ function PageContent() {
         <ImgIntro className={style.introImg} />
       </Section>
 
-      <Section name="features" title="产品优势" header="功能与优势">
+      <Section name="features" title="核心能力">
         <ExpressFeatures />
       </Section>
 
-      <Scene name="scenes" title="使用场景" header="典型应用场景">
-        <scene.Panel name="1" title="安全分析">
-          <scene.Block className={style.sceneImgWrapper} blockType="fixed">
-            <img className={style.sceneImg} src={imgScene1} alt="安全分析" />
-          </scene.Block>
-          <scene.Block className={style.sceneDesc} shadow>
-            <h5 className={style.sceneDescTitle}>场景描述</h5>
-            <ul className={style.sceneDescList}>
-              <li className={style.sceneDescItem}>海量数据实时处理能力，快速识别网络、系统、操作层安全威胁</li>
-              <li className={style.sceneDescItem}>智能化风险分析，灵活调整分析模式和方法，满足合规性要求</li>
-              <li className={style.sceneDescItem}>可视化界面操作，快速实现安全信息和事件调查管理</li>
-            </ul>
-          </scene.Block>
-        </scene.Panel>
-        <scene.Panel name="2" title="业务运营分析">
-          <scene.Block className={style.sceneImgWrapper} blockType="fixed">
-            <img className={style.sceneImg} src={imgScene2} alt="业务运营分析" />
-          </scene.Block>
-          <scene.Block className={style.sceneDesc} shadow>
-            <h5 className={style.sceneDescTitle}>场景描述</h5>
-            <ul className={style.sceneDescList}>
-              <li className={style.sceneDescItem}>帮助业务方迅速搭建完备的业务运营分析平台，实现业务全面化实时监控</li>
-              <li className={style.sceneDescItem}>结合机器学习能力主动发现业务风险，并分析和预测客户行为</li>
-              <li className={style.sceneDescItem}>提升用户体验，通过数据驱动业务决策实现商业智能</li>
-            </ul>
-          </scene.Block>
-        </scene.Panel>
-        <scene.Panel name="3" title="智能运维监控">
+      <Scene name="scenes" title="典型场景">
+        <scene.Panel name="op" title="智能运维监控">
           <scene.Block className={style.sceneImgWrapper} blockType="fixed">
             <img className={style.sceneImg} src={imgScene3} alt="智能运维监控" />
           </scene.Block>
           <scene.Block className={style.sceneDesc} shadow>
-            <h5 className={style.sceneDescTitle}>场景描述</h5>
-            <ul className={style.sceneDescList}>
-              <li className={style.sceneDescItem}>实时采集并监控资源、系统、应用层日志及指标数据</li>
-              <li className={style.sceneDescItem}>快速定位系统故障，将被动监控转化为主动监控</li>
-              <li className={style.sceneDescItem}>实现开发运维一体化，提高自动化运维管理效率</li>
-            </ul>
+            <h5 className={style.sceneDescTitle}>价值</h5>
+            <p className={style.sceneDescContent}>构建统一运维监控管理平台，实时采集并监控分析资源、系统、应用层日志及指标数据，洞察 IT 基础架构和业务服务运行状况；基于机器学习的智能化运维管理，快速定位系统故障，增强故障分析及处置能力，推动事后处置向事前预警转变，实现被动监控运维向主动智能运维管理转型，提高自动化运维管理效率。</p>
           </scene.Block>
         </scene.Panel>
-        <scene.Panel name="4" title="物联网数据智能">
+        <scene.Panel name="business" title="业务运营分析">
+          <scene.Block className={style.sceneImgWrapper} blockType="fixed">
+            <img className={style.sceneImg} src={imgScene2} alt="业务运营分析" />
+          </scene.Block>
+          <scene.Block className={style.sceneDesc} shadow>
+            <h5 className={style.sceneDescTitle}>价值</h5>
+            <p className={style.sceneDescContent}>针对不同业务场景构建数据分析模型，实现全面化业务实时监控，结合机器学习算法分析和预测业务运营情况、用户行为，主动发现业务风险，从而提升用户体验，通过数据驱动业务决策实现商业智能。</p>
+          </scene.Block>
+        </scene.Panel>
+        <scene.Panel name="security" title="安全事态分析">
+          <scene.Block className={style.sceneImgWrapper} blockType="fixed">
+            <img className={style.sceneImg} src={imgScene1} alt="安全分析" />
+          </scene.Block>
+          <scene.Block className={style.sceneDesc} shadow>
+            <h5 className={style.sceneDescTitle}>价值</h5>
+            <p className={style.sceneDescContent}>灵活调整分析模式和方法，快速构建基于安全大数据的实时分析系统，覆盖多个典型安全场景的智能化风险识别、分析及响应处置，快速识别网络、系统及应用层安全威胁并快速定位问题根因，实现主动运维管理；进一步从全局视角构建安全可视化大盘，提升安全态势感知能力，支撑行动决策。</p>
+          </scene.Block>
+        </scene.Panel>
+        <scene.Panel name="iot" title="智能网联数据分析">
           <scene.Block className={style.sceneImgWrapper} blockType="fixed">
             <img className={style.sceneImg} src={imgScene4} alt="物联网数据智能" />
           </scene.Block>
           <scene.Block className={style.sceneDesc} shadow>
-            <h5 className={style.sceneDescTitle}>场景描述</h5>
-            <ul className={style.sceneDescList}>
-              <li className={style.sceneDescItem}>归一化各类物联网设备数据，统一监控管理 IoT 硬件设备及系统运行状态</li>
-              <li className={style.sceneDescItem}>进行预测性维护，构建可扩展的安全物联分析平台</li>
-            </ul>
+            <h5 className={style.sceneDescTitle}>价值</h5>
+            <p className={style.sceneDescContent}>归一化各类智能网联云管边端数据，统一监控管理网联设备及系统运行状态，结合机器学习算法实现近实时智能网联设备异常行为分析及预测分析，构建可扩展的智能网联产品数据分析与检测能力。</p>
           </scene.Block>
         </scene.Panel>
       </Scene>
@@ -242,8 +227,8 @@ export default function PandoraPage() {
   return (
     <Layout
       title="Pandora 数据分析平台"
-      keywords="数据分析, 业务分析, 物联网载体, 安全分析, 运维辅助, IT 运维, 安全分析, 业务分析"
-      description="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于 IT 运维、安全分析、业务分析、物联网等场景，帮助金融、制造、物联网、运营商、互联网等行业客户探索数据、挖掘价值、预见未来。"
+      keywords="数据分析, 数据管理, 智能运维管理, 业务运营分析, 安全事态分析, 智能网联数据, 金融, 汽车, 运营商, 智能制造, 互联网"
+      description="Pandora 数据分析平台能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
     >
       <PageContent />
     </Layout>
@@ -257,41 +242,50 @@ function ExpressFeatures() {
         <card.Card>
           <card.Img className={style.featureImg} src={imgFeature1} />
           <card.Content className={style.featureContent}>
-            <card.Title>零难度采集</card.Title>
-            <card.Desc>可视化配置，实时采集，支持数百种数据源，Schema On Read 能力极大降低数据接入成本。</card.Desc>
+            <card.Title>零难度实时数据采集</card.Title>
+            <card.Desc>提供可视化交互配置，支持数百种数据源实时采集，支持 Schema On Read 模式解析字段，有效提高数据写入速度，降低数据接入成本。</card.Desc>
           </card.Content>
         </card.Card>
         <card.Card>
           <card.Img className={style.featureImg} src={imgFeature2} />
           <card.Content className={style.featureContent}>
-            <card.Title>数据归一化</card.Title>
-            <card.Desc>多数据源的异构数据归一化处理，获取关联业务的整体视图，为企业决策提供可靠支撑。</card.Desc>
+            <card.Title>智能数据处理</card.Title>
+            <card.Desc>预配置数据模型可实现不同来源类型的数据字段归一化，呈现关联数据域的统一视图。Schema On Read 模式极大满足灵活的业务分析需求、便于开展探索性数据分析。</card.Desc>
           </card.Content>
         </card.Card>
         <card.Card>
           <card.Img className={style.featureImg} src={imgFeature3} />
           <card.Content className={style.featureContent}>
-            <card.Title>高级计算分析</card.Title>
-            <card.Desc>支持 SPL 高级搜索分析语法，提供上百种命令来实时监测、探索、预测、可视化数据。</card.Desc>
+            <card.Title>高效灵活分析</card.Title>
+            <card.Desc>针对典型场景及业务内置百余种分析命令快速创建模型自定义搜索，提供开箱即用的分析模板和检测规则，开放 API 支持自主开发扩展，高效灵活挖掘数据价值满足不同用户场景需求。</card.Desc>
           </card.Content>
         </card.Card>
       </card.Row>
       <card.Row>
         <card.Card>
+          {/* TODO: 配图 */}
           <card.Img className={style.featureImg} src={imgFeature4} />
           <card.Content className={style.featureContent}>
-            <card.Title>应用生态丰富</card.Title>
-            <card.Desc>内置应用商店支持海量应用，针对典型场景提供开箱即用的解决方案，开放生态支持自主开发扩展。</card.Desc>
+            <card.Title>机器学习能力</card.Title>
+            <card.Desc>提供回归与分类、异常检测、时序预测、事件聚类等丰富的机器学习算法，提升异常诊断及业务预判能力，维护系统稳定性，降低系统威胁，为企业决策提供可靠支撑。</card.Desc>
           </card.Content>
         </card.Card>
         <card.Card>
+          {/* TODO: 配图 */}
           <card.Img className={style.featureImg} src={imgFeature5} />
           <card.Content className={style.featureContent}>
-            <card.Title>数据安全</card.Title>
-            <card.Desc>细粒度多维度授权机制，精确控制用户对平台知识的操作权限，保障数据及操作的安全。</card.Desc>
+            <card.Title>全面可视化呈现</card.Title>
+            <card.Desc>内置丰富图表类型并支持自定义可视化 app 扩展能力，通过拖拽方式简单高效定制仪表盘，实时监控关键指标，及时发现业务异常，使纷繁复杂的数据可视、可感、可知。</card.Desc>
           </card.Content>
         </card.Card>
-        <card.InvisibleCard />
+        <card.Card>
+          {/* TODO: 配图 */}
+          <card.Img className={style.featureImg} src={imgFeature5} />
+          <card.Content className={style.featureContent}>
+            <card.Title>应用生态开放</card.Title>
+            <card.Desc>应用商店支持海量应用，针对典型场景提供开箱即用的解决方案，不仅内置官方应用沉淀领域知识，而且具备极强的开放性，支持外部合作伙伴自主开发，扩展个性化应用共建的生态圈。</card.Desc>
+          </card.Content>
+        </card.Card>
       </card.Row>
     </>
   )

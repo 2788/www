@@ -1,17 +1,8 @@
+/* eslint-disable global-require */
+
 import { FC, SVGAttributes } from 'react'
 
-/* eslint-disable global-require */
-export enum Solution {
-  /** 智能视频云 */
-  Qavs = 'qavs',
-  /** 短视频 */
-  Plsv = 'plsv',
-  /** 私有云 */
-  Kodoe = 'kodoe',
-  /** 视频冷存储 */
-  Vcs = 'vcs',
-  /** 监控视频 */
-  Ess = 'ess',
+export enum Industry {
   /** 金融行业 */
   Fin = 'fin',
   /** 教育行业 */
@@ -28,16 +19,70 @@ export enum Solution {
   Isp = 'isp'
 }
 
-export type MapTo<T> = { [s in Solution]: T }
+/** 场景解决方案 */
+export enum SceneSolution {
+  /** 智能视频云 */
+  Qavs = 'qavs',
+  /** 短视频 */
+  Plsv = 'plsv',
+  /** 私有云存储 */
+  Kodoe = 'kodoe',
+  /** 视频冷存储 */
+  Vcs = 'vcs',
+  /** 监控视频边缘存储 */
+  Ess = 'ess'
+}
 
-export const allSolutions = [
-  Solution.Qavs, Solution.Plsv, Solution.Kodoe, Solution.Vcs, Solution.Ess,
-  Solution.Fin, Solution.Edu, Solution.Automobile, Solution.ECommerce,
-  Solution.IntelligentManufacturing, Solution.Social, Solution.Isp
-]
+/** 行业解决方案 */
+export enum IndustrySolution {
+  /** 金融行业 */
+  Fin = Industry.Fin,
+  /** 教育行业 */
+  Edu = Industry.Edu,
+  /** 汽车行业 */
+  Automobile = Industry.Automobile,
+  /** 电商行业 */
+  ECommerce = Industry.ECommerce,
+  /** 智能制造行业 */
+  IntelligentManufacturing = Industry.IntelligentManufacturing,
+  /** 社交行业 */
+  Social = Industry.Social,
+  /** 运营商行业 */
+  Isp = Industry.Isp
+}
+
+export const industryNameMap = {
+  [Industry.Edu]: '教育',
+  [Industry.Fin]: '金融',
+  [Industry.Automobile]: '汽车',
+  [Industry.ECommerce]: '电商',
+  [Industry.IntelligentManufacturing]: '智能制造',
+  [Industry.Social]: '社交',
+  [Industry.Isp]: '运营商'
+}
+
+export const industryEnNameMap = {
+  [Industry.Edu]: 'Education',
+  [Industry.Fin]: 'Financial',
+  [Industry.Automobile]: 'Automobile',
+  [Industry.ECommerce]: 'Retail',
+  [Industry.IntelligentManufacturing]: 'Manufacture',
+  [Industry.Social]: 'Social',
+  [Industry.Isp]: 'Operators'
+}
+
+export type Solution = SceneSolution | IndustrySolution
+
+export const Solution = {
+  ...SceneSolution,
+  ...IndustrySolution
+}
+
+export type MapTo<T> = { [s in Solution]: T }
 
 export enum Category {
   Scene = 'scene',
+  // eslint-disable-next-line no-shadow
   Industry = 'industry',
 }
 
@@ -62,13 +107,13 @@ export const nameMap: MapTo<string> = {
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
-  [Solution.Edu]: '教育',
-  [Solution.Fin]: '金融',
-  [Solution.Automobile]: '汽车',
-  [Solution.ECommerce]: '电商',
-  [Solution.IntelligentManufacturing]: '智能制造',
-  [Solution.Social]: '社交',
-  [Solution.Isp]: '运营商'
+  [Solution.Edu]: industryNameMap[Industry.Edu],
+  [Solution.Fin]: industryNameMap[Industry.Fin],
+  [Solution.Automobile]: industryNameMap[Industry.Automobile],
+  [Solution.ECommerce]: industryNameMap[Industry.ECommerce],
+  [Solution.IntelligentManufacturing]: industryNameMap[Industry.IntelligentManufacturing],
+  [Solution.Social]: industryNameMap[Industry.Social],
+  [Solution.Isp]: industryNameMap[Industry.Isp]
 }
 
 export const urlMap: MapTo<string | null> = {
@@ -95,9 +140,9 @@ export const descMap: MapTo<string> = {
   [Solution.Edu]: '以出色的技术能力实现教学全场景覆盖，打造满足不同群体的在线学习解决方案',
   [Solution.Fin]: '帮助金融客户满足监管合规要求，科技创新、流程再造，洞察数据价值',
   [Solution.Automobile]: '助力汽车行业的数字化升级和转型，创新商业模式，数据驱动降本升效',
-  [Solution.ECommerce]: 'TODO',
+  [Solution.ECommerce]: '以视频促进转化，用所见带动所得。一站式智能视频云平台，实现场景联动，赋能业务升维',
   [Solution.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造',
-  [Solution.Social]: 'TODO',
+  [Solution.Social]: '以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法',
   [Solution.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务'
 }
 
@@ -124,7 +169,14 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
   [Solution.Isp]: require('./images/industry/isp.svg').default
 }
 
-/** 所有**可用**的解决方案（有落地页） */
-export const allAvailableSolutions = allSolutions.filter(
-  solution => urlMap[solution] != null
+export const allSolutions = allCategories.reduce(
+  (solutions, category) => [...solutions, ...categorySolutionsMap[category]],
+  [] as Solution[]
 )
+
+export function isAvailable(solution: Solution) {
+  return urlMap[solution] != null
+}
+
+/** 所有**可用**的解决方案（有落地页） */
+export const allAvailableSolutions = allSolutions.filter(isAvailable)

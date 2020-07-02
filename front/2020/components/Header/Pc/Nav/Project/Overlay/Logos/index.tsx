@@ -48,7 +48,7 @@ export default function Logos({ solution }: Props) {
 
   const logosView = logos.map((logo, i) => (
     <li key={i} className={style.logoItem}>
-      <img className={style.logoImg} src={logo} alt={solution} />
+      <img className={style.logoImg} src={logo} alt={solution as string} />
     </li>
   ))
 

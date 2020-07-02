@@ -40,20 +40,20 @@ function SolutionItem({ solution }: { solution: Solution }) {
   const { startConsulting } = useModal()
 
   const url = urlMap[solution]
+  const online = url != null // 方案内容已上线
 
   function handleClick(e: MouseEvent) {
     e.preventDefault()
     startConsulting()
   }
 
-  // TODO: 对于没有落地页，点击咨询的项，怎么来表达“点击咨询”这件事情
   return (
     <ContentItem
       href={url != null ? url : '#'}
-      onClick={url != null ? undefined : handleClick}
+      onClick={online ? undefined : handleClick}
       icon={createElement(iconMap[solution])}
       title={nameMap[solution]}
-      subtitle={descMap[solution]}
+      subtitle={online ? descMap[solution] : '即将上线，敬请垂询'}
       extra={<Logos solution={solution} />}
     />
   )
