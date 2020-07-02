@@ -15,7 +15,9 @@ export default function Advantage() {
     <Feature name="features" title="产品优势">
       <Group>
         <Item title="接入简单" icon={<Icon1 />}>
-          <Desc className={style.featureItemDesc}>设备接入成本低，无需集成 SDK，适配 RTMP 视频协议对接，现有设备零改造，快速完成视频监控设备上云</Desc>
+          <Desc className={style.featureItemDesc}>
+            设备接入成本低，无需集成 SDK，适配 RTMP 或 GB/T28181 国标协议对接，现有设备零改造，快速完成视频监控设备上云
+          </Desc>
         </Item>
         <Item title="功能丰富" icon={<Icon2 />}>
           <Desc className={style.featureItemDesc}>集视频流接入、实时视频、云端存储与回放等功能，满足不同场景下的视频监控的上云需求</Desc>

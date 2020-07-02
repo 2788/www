@@ -11,7 +11,7 @@ export default function Core() {
     <Feature name="cores" title="核心功能">
       <Group>
         <Item pos="left-right" title="视频接入管理" icon={<Icon1 />}>
-          <Desc>支持 RTMP 协议的摄像头、NVR、智能硬件设备、视频监控平台的接入与管理</Desc>
+          <Desc>支持 RTMP 或 GB/T28181 国标协议的摄像头、NVR、智能硬件设备、视频监控平台的接入与管理</Desc>
         </Item>
         <Item pos="left-right" title="视频实时播放" icon={<Icon2 />}>
           <Desc>视频流接入 QVS 后，可以实现三种标准播放协议 RTMP、HLS、HTTP-FLV 实时分发</Desc>

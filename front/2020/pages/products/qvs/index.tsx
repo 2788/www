@@ -23,8 +23,10 @@ import Process from 'components/pages/qvs/Process'
 import imgBanner from './images/banner.png'
 
 export function Page() {
+  const portalUrl = 'https://portal.qiniu.com/qvs'
+
   const btns = useBtns(
-    { children: '申请开通', href: 'https://jinshuju.net/f/y9P9t9' },
+    { children: '立即使用', href: portalUrl },
     { children: '文档 & API', href: 'https://developer.qiniu.com/qvs/manual/6753/qvs-product-overview' }
   )
 
@@ -54,8 +56,8 @@ export function Page() {
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="开通即可免费试用视频监控服务">
-        <UsageGuideButton href="https://jinshuju.net/f/y9P9t9">
-          申请开通
+        <UsageGuideButton href={portalUrl}>
+          立即使用
         </UsageGuideButton>
       </UsageGuide>
     </>

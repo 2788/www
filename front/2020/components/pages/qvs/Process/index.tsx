@@ -17,8 +17,8 @@ export default function Process() {
         <Step icon={<Step3 />}>获取推流地址配置<br />到设备端</Step>
         <Step icon={<Step4 />}>功能体验</Step>
       </AccessProcess>
-      <GuideLink style={{ marginTop: '64px' }} href="https://jinshuju.net/f/y9P9t9">
-        申请开通
+      <GuideLink style={{ marginTop: '64px' }} href="https://portal.qiniu.com/qvs">
+        立即使用
       </GuideLink>
     </Section>
   )
