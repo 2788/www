@@ -14,6 +14,8 @@ import logoYinji from './images/logos/yinji.png'
 import logoLiulishuo from './images/logos/liulishuo.png'
 import logoYsgq from './images/logos/ysgq.png'
 import logoCkjr from './images/logos/ckjr.png'
+import logoHujiang from './images/logos/hujiang.png'
+import logoVipkid from './images/logos/vipkid.png'
 
 import logoJili from './images/logos/jili.png'
 import logoShangqi from './images/logos/shangqi.png'
@@ -21,6 +23,8 @@ import logoShangqi from './images/logos/shangqi.png'
 import logoXiaogongshu from './images/logos/xiaohongshu.png'
 import logoTebaobao from './images/logos/tebaobao.png'
 import logoMogujie from './images/logos/mogujie.png'
+import logoJumei from './images/logos/jumei.png'
+import logoWeipaitang from './images/logos/weipaitang.png'
 
 import logoOppo from './images/logos/oppo.png'
 import logoVivo from './images/logos/vivo.png'
@@ -31,6 +35,8 @@ import logoBubugao from './images/logos/bubugao.png'
 import logoBilibili from './images/logos/bilibili.png'
 import logoMomo from './images/logos/momo.png'
 import logoBlued from './images/logos/blued.png'
+import logoFaceu from './images/logos/faceu.png'
+import logoTaqu from './images/logos/taqu.png'
 
 import logoYidong from './images/logos/yidong.png'
 import logoDianxin from './images/logos/dianxin.png'
@@ -76,8 +82,10 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
   ],
   [Industry.Edu]: [
     { name: '英语流利说', logo: logoLiulishuo },
+    { name: '沪江', logo: logoHujiang },
+    { name: 'VIP Kid', logo: logoVipkid },
     { name: '云上钢琴', logo: logoYsgq },
-    { name: '', logo: logoCkjr }
+    { name: '创客匠人', logo: logoCkjr }
   ],
   [Industry.Automobile]: [
     { name: '吉利汽车', logo: logoJili },
@@ -86,7 +94,9 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
   [Industry.ECommerce]: [
     { name: '小红书', logo: logoXiaogongshu },
     { name: '特抱抱', logo: logoTebaobao },
-    { name: '蘑菇街', logo: logoMogujie }
+    { name: '蘑菇街', logo: logoMogujie },
+    { name: '聚美优品', logo: logoJumei },
+    { name: '微拍堂', logo: logoWeipaitang }
   ],
   [Industry.IntelligentManufacturing]: [
     { name: 'OPPO', logo: logoOppo },
@@ -98,14 +108,16 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
   [Industry.Social]: [
     { name: 'Bilibili', logo: logoBilibili },
     { name: '陌陌', logo: logoMomo },
-    { name: '淡蓝', logo: logoBlued }
+    { name: '淡蓝', logo: logoBlued },
+    { name: '脸萌', logo: logoFaceu },
+    { name: '他趣', logo: logoTaqu }
   ],
   [Industry.Isp]: [
     { name: '中国移动', logo: logoYidong },
-    { name: '中国电信', logo: logoDianxin },
     { name: '中国联通', logo: logoLiantong },
-    { name: '中兴', logo: logoZhongxing },
-    { name: '华为', logo: logoHuawei }
+    { name: '中国电信', logo: logoDianxin },
+    { name: '华为', logo: logoHuawei },
+    { name: '中兴', logo: logoZhongxing }
   ]
 }
 
