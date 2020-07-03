@@ -17,7 +17,8 @@ import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
 
 import Activities from 'components/pages/index/Activities'
-import Product from 'components/pages/index/Products'
+import ProductsForMobile from 'components/pages/index/Products'
+import CloudProduct from 'components/pages/index/CloudProduct'
 import Solutions from 'components/pages/index/Solutions'
 import News from 'components/pages/index/News'
 import TryAndContact from 'components/pages/index/TryAndContact'
@@ -50,6 +51,7 @@ function useBannerImg() {
 function PageContent() {
 
   const headerBannerImgs = useBannerImg()
+  const isMobile = useMobile()
 
   return (
     <>
@@ -156,8 +158,9 @@ function PageContent() {
       <Feature
         className={styles.core}
         title="连接数据 重塑价值"
-        // 先注释，这里好像说要换句话？@yiling @jifeng
-        // subtitle="成为 5G 时代的异构数据湖与数据分析平台的第一品牌"
+        grey
+      // 先注释，这里好像说要换句话？@yiling @jifeng
+      // subtitle="成为 5G 时代的异构数据湖与数据分析平台的第一品牌"
       >
         <FeatureGroup>
           <FeatureItem
@@ -202,7 +205,7 @@ function PageContent() {
         </FeatureGroup>
       </Feature>
 
-      <Product />
+      {isMobile ? <ProductsForMobile /> : <CloudProduct />}
 
       <Solutions />
 

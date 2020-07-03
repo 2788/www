@@ -1,0 +1,30 @@
+@import '~utils/less/index.less';
+
+.subtitle {
+  :global(button.active) {
+    color: @grey-1 !important;
+    background: @blue-6 !important;
+  }
+  button {
+    width: 140px;
+  }
+  button + button {
+    margin-left: 16px;
+  }
+}
+
+.container {
+  position: relative;
+  width: 1128px;
+  height: 725px;
+  margin: 0 auto;
+}
+
+.link {
+  &:hover {
+    rect {
+      fill: #C3EFFE;
+      transition: fill .25s;
+    }
+  }
+}

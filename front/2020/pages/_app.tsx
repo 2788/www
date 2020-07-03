@@ -1,6 +1,6 @@
 import React, { ComponentClass, useEffect } from 'react'
 
-import 'react-icecream/dist/icecream.css'
+import 'react-icecream/dist/icecream.min.css'
 import './global.less'
 
 type Props = {
