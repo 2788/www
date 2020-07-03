@@ -3,7 +3,7 @@
  * @description 这些行业基本都有一个一一对应的解决方案
  */
 
-import { Industry, Solution, IndustrySolution, isAvailable } from 'constants/solutions'
+import { Industry, Solution, getIndustrySolution, isAvailable } from 'constants/solutions'
 
 import logoPingan from './images/logos/pingan.png'
 import logoCmb from './images/logos/cmb.png'
@@ -120,7 +120,7 @@ export const allIndustries = [
 ]
 
 export function solutionsOf(industry: Industry): Solution[] {
-  const industrySolution = industry as unknown as IndustrySolution
+  const industrySolution = getIndustrySolution(industry)
   const sceneSolutions = industrySceneSolutionsMap[industry]
   return [industrySolution, ...sceneSolutions].filter(isAvailable)
 }

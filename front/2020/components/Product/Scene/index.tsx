@@ -79,13 +79,17 @@ export default function Scene(props: ISceneProps) {
     paddingBottom: '0'
   }
 
+  // TODO: `otherPropsForSection` 上边还有 HTMLAttributes 的内容
+  // 也是不预期传给 Section 的，最好也干掉
+  const { defaultActive, ...otherPropsForSection } = otherProps
+
   return (
     <Section
       name={name}
       title={title}
       grey={grey && !isMobile}
       style={isMobile ? mobileStyle : {}}
-      {...otherProps}
+      {...otherPropsForSection}
     >
       {renderMain()}
     </Section>

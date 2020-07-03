@@ -1,4 +1,5 @@
 import React from 'react'
+import { useMobile } from 'hooks/ua'
 import Section from 'components/Product/Section'
 import { RawAccessProcess as AccessProcess, Step } from 'components/Product/AccessProcess'
 import GuideLink from 'components/Product/GuideLink'
@@ -9,6 +10,8 @@ import Step3 from './images/03.svg'
 import Step4 from './images/04.svg'
 
 export default function Process() {
+  const isMobile = useMobile()
+
   return (
     <Section name="access" title="接入流程">
       <AccessProcess>
@@ -17,9 +20,11 @@ export default function Process() {
         <Step icon={<Step3 />}>获取推流地址配置<br />到设备端</Step>
         <Step icon={<Step4 />}>功能体验</Step>
       </AccessProcess>
-      <GuideLink style={{ marginTop: '64px' }} href="https://portal.qiniu.com/qvs">
-        立即使用
-      </GuideLink>
+      {!isMobile && (
+        <GuideLink style={{ marginTop: '64px' }} href="https://portal.qiniu.com/qvs">
+          立即使用
+        </GuideLink>
+      )}
     </Section>
   )
 }

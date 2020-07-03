@@ -8,6 +8,7 @@
  */
 
 import React from 'react'
+import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
@@ -26,9 +27,11 @@ export function Page() {
   const portalUrl = 'https://portal.qiniu.com/qvs'
 
   const btns = useBtns(
-    { children: '立即使用', href: portalUrl },
+    { children: '立即使用', href: portalUrl, pcOnly: true },
     { children: '文档 & API', href: 'https://developer.qiniu.com/qvs/manual/6753/qvs-product-overview' }
   )
+
+  const isMobile = useMobile()
 
   return (
     <>
@@ -55,11 +58,14 @@ export function Page() {
           <LinkItem href="https://github.com/qiniu/api.v7/tree/master/qvs">服务端 Go-SDK</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="开通即可免费试用视频监控服务">
-        <UsageGuideButton href={portalUrl}>
-          立即使用
-        </UsageGuideButton>
-      </UsageGuide>
+
+      {!isMobile && (
+        <UsageGuide title="开通即可免费试用视频监控服务">
+          <UsageGuideButton href={portalUrl}>
+            立即使用
+          </UsageGuideButton>
+        </UsageGuide>
+      )}
     </>
   )
 }

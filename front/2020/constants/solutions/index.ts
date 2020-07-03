@@ -36,19 +36,35 @@ export enum SceneSolution {
 /** 行业解决方案 */
 export enum IndustrySolution {
   /** 金融行业 */
-  Fin = Industry.Fin,
+  Fin = 'fin',
   /** 教育行业 */
-  Edu = Industry.Edu,
+  Edu = 'edu',
   /** 汽车行业 */
-  Automobile = Industry.Automobile,
+  Automobile = 'auto',
   /** 电商行业 */
-  ECommerce = Industry.ECommerce,
+  ECommerce = 'ec',
   /** 智能制造行业 */
-  IntelligentManufacturing = Industry.IntelligentManufacturing,
+  IntelligentManufacturing = 'im',
   /** 社交行业 */
-  Social = Industry.Social,
+  Social = 'social',
   /** 运营商行业 */
-  Isp = Industry.Isp
+  Isp = 'isp'
+}
+
+/** 行业与其对应的行业解决方案的映射表 */
+export const industrySolutionMap = {
+  [Industry.Fin]: IndustrySolution.Fin,
+  [Industry.Edu]: IndustrySolution.Edu,
+  [Industry.Automobile]: IndustrySolution.Automobile,
+  [Industry.ECommerce]: IndustrySolution.ECommerce,
+  [Industry.IntelligentManufacturing]: IndustrySolution.IntelligentManufacturing,
+  [Industry.Social]: IndustrySolution.Social,
+  [Industry.Isp]: IndustrySolution.Isp
+}
+
+/** 获取行业对应的行业解决方案 */
+export function getIndustrySolution(industry: Industry) {
+  return industrySolutionMap[industry]
 }
 
 export const industryNameMap = {
