@@ -32,8 +32,8 @@ export default function Honor() {
         <Item issuer="2019 混合云世界论坛组委会">2019 最佳混合云存储解决方案奖</Item>
         <Item issuer="中国科学院《互联网周刊》">2018 年度智能视频云领导力品牌</Item>
         <Item issuer="赛迪研究院">2018 中国云计算领军企业</Item>
-        <Item issuer="36 Kr">2018 新经济之王—企业服务之王</Item>
-        <Item issuer="中国信息通信研究院">2017 - 2018 年度可信云技术创新奖—存储类</Item>
+        <Item issuer="36 Kr">2018 新经济之王 - 企业服务之王</Item>
+        <Item issuer="中国信息通信研究院">2017 - 2018 年度可信云技术创新奖 - 存储类</Item>
         <Item issuer="财经网">2017 年度最具创新力企业</Item>
         <Item issuer="中国企业家">2017 年度最具成长性新兴企业</Item>
       </ul>

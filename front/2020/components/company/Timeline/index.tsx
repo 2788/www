@@ -49,10 +49,10 @@ export default function Timeline() {
       <div className={styles.timeline}>
         <TimeNode year={2020} height={124}>
           <Event title="2020 年 06 月" content="完成 F 轮 10 亿人民币融资，国调基金、交银国际、宏兆基金等知名机构共同投资" position="left" top={34} />
-          <Event title="2020 年 04 月" content="七牛云完成从 IT 到 DT 的全新战略升级，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代" position="right" top={74} />
+          <Event title="2020 年 04 月" content="完成从 IT 到 DT 的全新战略升级，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代" position="right" top={74} />
         </TimeNode>
         <TimeNode year={2019} height={124}>
-          <Event title="2019 年 12 月" content="七牛云服务的企业用户已达百万级，覆盖国内 90% 网民" position="left" top={44} />
+          <Event title="2019 年 12 月" content="服务企业用户达百万级，覆盖国内 90% 网民" position="left" top={44} />
         </TimeNode>
         <TimeNode year={2017} height={124}>
           <Event title="2017 年 08 月" content="宣布完成新一轮 10 亿元融资，阿里集团、云锋基金领投" position="left" top={54} />
