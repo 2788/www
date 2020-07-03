@@ -1,17 +1,15 @@
 import React, { useContext } from 'react'
-import Link from 'components/Link'
 import { Context } from '..'
 import Positioned from '../Positioned'
-import style from '../index.less'
 import Line from '../Line'
 
 export default function SDK() {
-  const { isVideo, isMachine } = useContext(Context)
-  if (isMachine) return null
+  const { isVideo } = useContext(Context)
+  if (!isVideo) return null
   return (
     <>
-      <Positioned top={458} left={isVideo ? 146 : 162}><Line width={27} /></Positioned>
-      <Positioned top={415} left={isVideo ? 184 : 242}>
+      <Positioned top={458} left={146}><Line width={27} /></Positioned>
+      <Positioned top={415} left={184}>
         <svg width="144" height="285" viewBox="0 0 144 285">
           <defs>
             <mask id="全部产品-sdk-b" width="144" height="176" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
@@ -25,37 +23,12 @@ export default function SDK() {
             </filter>
           </defs>
           <g fill="none">
-            <rect width="144" height="176" x="0" y="109" stroke="#00AAE7" strokeDasharray="4 8" strokeWidth="2" mask="url(#全部产品-sdk-b)" style={{ display: isVideo ? 'none' : 'block' }}></rect>
-            <g transform={`translate(12 ${isVideo ? 109 : 121})`}>
+            <g transform="translate(12 109)">
               <rect width="120" height="32" fill="#E0F7FF"></rect>
               <text fill="#34A1EC">
                 <tspan x="46" y="21">SDK</tspan>
               </text>
             </g>
-            <Link className={style.link} href="/products/pili">
-              <g transform="translate(12 161)" style={{ display: isVideo ? 'none' : 'block' }}>
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="20" y="21">视频直播 Pili</tspan>
-                </text>
-              </g>
-            </Link>
-            <Link className={style.link} href="/products/rtn">
-              <g transform="translate(12 201)" style={{ display: isVideo ? 'none' : 'block' }}>
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="9" y="21">实时音视频 RTC</tspan>
-                </text>
-              </g>
-            </Link>
-            <Link className={style.link} href="/products/qvs">
-              <g transform="translate(12 241)" style={{ display: isVideo ? 'none' : 'block' }}>
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="15" y="21">视频监控 QVS</tspan>
-                </text>
-              </g>
-            </Link>
             <polygon fill="#C2E7FF" points="12 60.857 72 96.498 132 60.857 72 28"></polygon>
             <g transform="translate(30 32)">
               <polygon fill="#006EBB" points="0 23 42 23 42 55 0 29.2"></polygon>

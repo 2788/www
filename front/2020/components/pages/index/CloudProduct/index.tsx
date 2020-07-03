@@ -20,9 +20,9 @@ export default function CloudProduct() {
   const [productType, setProductType] = useState<ProductType>('all')
   const subtitle = (
     <div className={style.subtitle}>
+      <Button className={productType === 'machine' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('machine')}>机器数据智能</Button>
       <Button className={productType === 'all' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('all')}>全部</Button>
       <Button className={productType === 'video' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('video')}>智能视频服务</Button>
-      <Button className={productType === 'machine' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('machine')}>机器数据智能</Button>
     </div>
   )
   return (

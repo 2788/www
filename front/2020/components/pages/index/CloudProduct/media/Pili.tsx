@@ -6,15 +6,13 @@ import style from '../index.less'
 import Line from '../Line'
 
 export default function Pili() {
-  const { isVideo } = useContext(Context)
-  if (!isVideo) {
-    return null
-  }
+  const { isVideo, isMachine } = useContext(Context)
+  if (isMachine) return null
   return (
     <>
-      <Positioned top={458} left={isVideo ? 327 : 398}><Line width={27} /></Positioned>
-      <Positioned left={378} top={415} zIndex={1}>
-        <svg width="144" height="245" viewBox="0 0 144 245">
+      <Positioned top={458} left={isVideo ? 327 : 160}><Line width={27} /></Positioned>
+      <Positioned left={isVideo ? 378 : 230} top={415} zIndex={1}>
+        <svg width="144" height="285" viewBox="0 0 144 285">
           <defs>
             <mask id="智能视频服务-视频直播svg-b" width="144" height="136" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
               <rect width="144" height="136" x="0" y="109"></rect>
@@ -27,8 +25,15 @@ export default function Pili() {
             </filter>
           </defs>
           <g fill="none">
+            <rect width="144" height={isVideo ? 136 : 176} x="0" y="109" stroke="#00AAE7" strokeDasharray="4 8" strokeWidth="2" mask="url(#全部产品-sdk-b)"></rect>
+            <g transform="translate(12 121)" style={{ display: isVideo ? 'none' : 'block' }}>
+              <rect width="120" height="32" fill="#E0F7FF"></rect>
+              <text fill="#34A1EC">
+                <tspan x="46" y="21">SDK</tspan>
+              </text>
+            </g>
             <Link className={style.link} href="/products/pili">
-              <g transform="translate(12 121)">
+              <g transform={`translate(12 ${121 + (isVideo ? 0 : 40)})`}>
                 <rect width="120" height="32" fill="#E0F7FF"></rect>
                 <text fill="#34A1EC">
                   <tspan x="20" y="21">视频直播 Pili</tspan>
@@ -36,7 +41,7 @@ export default function Pili() {
               </g>
             </Link>
             <Link className={style.link} href="/products/rtn">
-              <g transform="translate(12 161)">
+              <g transform={`translate(12 ${161 + (isVideo ? 0 : 40)})`}>
                 <rect width="120" height="32" fill="#E0F7FF"></rect>
                 <text fill="#34A1EC">
                   <tspan x="9" y="21">实时音视频 RTC</tspan>
@@ -44,14 +49,13 @@ export default function Pili() {
               </g>
             </Link>
             <Link className={style.link} href="/products/qvs">
-              <g transform="translate(12 201)">
+              <g transform={`translate(12 ${201 + (isVideo ? 0 : 40)})`}>
                 <rect width="120" height="32" fill="#E0F7FF"></rect>
                 <text fill="#34A1EC">
                   <tspan x="15" y="21">视频监控 QVS</tspan>
                 </text>
               </g>
             </Link>
-            <rect width="144" height="136" x="0" y="109" stroke="#00AAE7" strokeDasharray="4 8" strokeWidth="2" mask="url(#智能视频服务-视频直播svg-b)"></rect>
             <polygon fill="#C2E7FF" points="0 32.857 60 68.498 120 32.857 60 0" transform="translate(12 28)"></polygon>
             <g transform="translate(30 32)">
               <polygon fill="#006EBB" points="0 23 42 23 42 55 0 29.2"></polygon>

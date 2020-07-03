@@ -1,6 +1,8 @@
 @import '~utils/less/index.less';
 
 .subtitle {
+  margin-top: 36px;
+
   :global(button.active) {
     color: @grey-1 !important;
     background: @blue-6 !important;
@@ -17,7 +19,9 @@
   position: relative;
   width: 1128px;
   height: 725px;
-  margin: 0 auto;
+  margin: 52px auto -100px; // 下边距 -100px 是因为下边 scale(.9) 会导致下边留较多空白
+  transform: scale(.9); // 图有点大，先临时做整体缩放，回头昌胜再做细节调整
+  transform-origin: top;
 }
 
 .link {

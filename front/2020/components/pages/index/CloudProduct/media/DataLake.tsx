@@ -11,7 +11,7 @@ export default function DataLake() {
   const left = isVideo ? 575 : isMachine ? 470 : 483
   return (
     <>
-      {!isMachine && <Positioned top={458} left={isVideo ? 523 : 398}><Line width={27} /></Positioned>}
+      {!isMachine && <Positioned top={458} left={isVideo ? 523 : 394}><Line width={27} /></Positioned>}
       <Positioned top={isMachine ? 537 : 360} left={left} zIndex={1}>
         <svg width="160" height="197" viewBox="0 0 160 197">
           <defs>
