@@ -205,7 +205,6 @@ function Line1ToSelf() {
   return (
     <Positioned left={161} top={25}>
       <svg width="574px" height="108px" viewBox="0 0 574 108">
-        <title>直线 2</title>
         <g id="首页" stroke="none" strokeWidth="1" fill="none">
           <g id="首页-云产品" transform="translate(-556.000000, -247.000000)" fill="#AEE1F3">
             <g id="云产品">

@@ -42,7 +42,8 @@
     "react-icecream": "^1.7.4",
     "react-json-view": "^1.19.1",
     "stickybits": "^3.7.7",
-    "ua-parser-js": "^0.7.21"
+    "ua-parser-js": "^0.7.21",
+    "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.4.4",
