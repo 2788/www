@@ -106,7 +106,7 @@ function menuItemForMobileProduct(product: Product, startConsulting: () => void)
       key={product}
       title={nameMap[product]}
       href={url != null ? url : undefined}
-      onClick={startConsulting}
+      onClick={url != null ? undefined : startConsulting}
     >
       {url != null ? descMap[product] : '即将上线，欢迎垂询'}
     </MenuItem>
