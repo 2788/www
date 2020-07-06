@@ -5,8 +5,8 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/qiniu/x/xlog.v7"
-	"qiniupkg.com/x/reqid.v7"
+	"github.com/qiniu/x/reqid"
+	"github.com/qiniu/x/xlog"
 
 	"qiniu.com/www/search/config"
 	"qiniu.com/www/search/service"

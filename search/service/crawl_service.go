@@ -11,9 +11,9 @@ import (
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/go-redis/redis"
+	"github.com/go-redis/redis/v7"
 	"github.com/gocolly/colly/v2"
-	"github.com/qiniu/x/xlog.v7"
+	"github.com/qiniu/x/xlog"
 
 	"qiniu.com/www/search/config"
 	"qiniu.com/www/search/utils"
