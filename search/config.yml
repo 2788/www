@@ -1,0 +1,29 @@
+server:
+  port: 9206
+  mode: dev
+
+es_hosts: http://localhost:9200
+redis_host: 10.200.20.22:6379
+
+crawl:
+  max_depth: 100
+  routine_num: 20
+  request_timeout: 30
+
+sites:
+  - name: www.qiniu.com
+    host: http://www-2020.qiniu.io
+    hot_words: [案例, SDK, RTC, 数据分析]
+    interval: 360
+    black_list:
+      - /en
+      - /caculator
+    tags:
+      products: /products
+      solutions: /solutions
+    weight:
+      title: 6
+      content: 2
+      keywords: 1
+      description: 1
+
