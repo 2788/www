@@ -6,7 +6,8 @@
 import cls from 'classnames'
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'components/Link'
-import { useMobile } from '../../../hooks/ua'
+import { useMobile } from 'hooks/ua'
+import { track } from 'utils/sensors'
 import Button from '../Button'
 import Form from '../Form'
 import { useModal as useGlobalModal } from '../Modal'
@@ -31,6 +32,14 @@ export default function FeedbackEntry() {
   const hideModal = useCallback(() => {
     setModalVisible(false)
   }, [])
+
+  useEffect(() => {
+    track('ClickFeedback', {
+      // 这里先跟老官网值保持一致
+      // TODO: 这里的值需要重新设计（考虑现在咨询分成调起窗口 & 开始咨询两个过程）
+      feedback_intention: '服务咨询'
+    })
+  }, [modalVisible])
 
   const wrapperRef = useClickOutside(hideModal)
 

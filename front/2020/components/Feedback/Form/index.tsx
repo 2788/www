@@ -4,12 +4,12 @@
  */
 
 import cls from 'classnames'
-import React, { useState, FormEvent, useEffect, useCallback, ReactNode } from 'react'
+import React, { useState, FormEvent, useEffect, useCallback, ReactNode, useRef } from 'react'
 import { useOnChange } from 'hooks'
 import Button from 'components/UI/Button'
 import Loading from 'components/UI/Loading'
 import MessageList, { Message, MessageFrom } from './MessageList'
-import { IRobot, InputType, OutputType, withEase, Input, context } from './robot'
+import { IRobot, InputType, OutputType, withEase, Input, context, Disposer } from './robot'
 import ConsultRobot, { startConsultingMessage } from './robot/consult'
 import style from './style.less'
 
@@ -18,7 +18,7 @@ export { startConsultingMessage }
 export type Props = {
   /** 是否宽版（在页面中间的浮层展示） */
   wide?: boolean
-  /** 是否激活，每次激活都重新初始化对应的机器人逻辑 */
+  /** 是否激活，非激活转为激活意味着新的对话开始，反之意味着当前对话结束 */
   active?: boolean
   /** 初始用户消息内容 */
   startWith?: string
@@ -27,16 +27,33 @@ export type Props = {
 export default function FeedbackForm({ wide, active, startWith }: Props) {
   const [robot, setRobot] = useState(makeConsultRobot())
   const [messages, submitUserMessage] = useRobot(robot, startWith)
+  const disposersRef = useRef<Disposer[]>([])
 
   useOnChange(() => {
-    if (active) setRobot(makeConsultRobot())
+    if (active) {
+      // 新的对话开始时重新初始化对应的机器人逻辑
+      setRobot(makeConsultRobot())
+    } else {
+      // 对话结束时执行对应回调
+      disposersRef.current.forEach(disposer => disposer())
+      disposersRef.current = []
+    }
   }, [active])
+
+  const addDisposer = useCallback((disposer: Disposer) => {
+    disposersRef.current = [...disposersRef.current, disposer]
+    return () => {
+      disposersRef.current = disposersRef.current.filter(
+        item => item !== disposer
+      )
+    }
+  }, [])
 
   const wrapperClassName = cls(style.wrapper, wide && style.wide)
   return (
     <div className={wrapperClassName}>
       <Header />
-      <context.Provider value={{ sendMessage: submitUserMessage }}>
+      <context.Provider value={{ sendMessage: submitUserMessage, addDisposer }}>
         <Body messages={messages} />
       </context.Provider>
       <Footer onSubmit={submitUserMessage} />

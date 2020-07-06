@@ -2,7 +2,7 @@
  * @file 用于构建消息内容的辅助工具
  */
 
-import React, { createContext, PropsWithChildren, useContext, useCallback, MouseEvent } from 'react'
+import React, { createContext, PropsWithChildren, useContext, useCallback, MouseEvent, useEffect } from 'react'
 import { MessageContent, Input, IRobot } from '.'
 
 /**
@@ -25,8 +25,11 @@ function timeout(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay))
 }
 
+export type Disposer = () => void
+
 export type ContextValue = {
   sendMessage(cnt: MessageContent): void
+  addDisposer(disposer: Disposer): () => void
 }
 
 export const context = createContext<ContextValue | null>(null)
@@ -46,5 +49,18 @@ export function MessageLink({ message, children }: MessageLinkProps) {
   }, [ctxValue, message])
   return (
     <a onClick={handleClick}>{children}</a>
+  )
+}
+
+/** 添加对话结束时的回调函数 */
+export function useDisposer(disposer: Disposer) {
+  const ctxValue = useContext(context)
+  if (!ctxValue) {
+    throw new Error('hook useDisposer should be used inside robot Provider.')
+  }
+  const addDisposer = ctxValue.addDisposer
+  useEffect(
+    () => addDisposer(disposer),
+    [addDisposer, disposer]
   )
 }

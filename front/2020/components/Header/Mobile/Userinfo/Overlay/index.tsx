@@ -1,14 +1,14 @@
 import React from 'react'
 import Button from 'components/UI/Button'
-import { Userinfo, Guestinfo } from 'apis/legacy'
+import { UserInfo } from 'apis/legacy'
 import { useUrl } from 'hooks/url'
 import { urlForSignin } from 'utils/route'
 
 import style from './style.less'
 
-export default function Overlay({ user }: { user: Userinfo | Guestinfo | null }) {
+export default function Overlay({ user }: { user: UserInfo | null }) {
   const currentUrl = useUrl()
-  if (user?.is_signin) {
+  if (user?.signedIn) {
     return (
       <div className={style.wrapper}>
         <div className={style.email}>{user.email}</div>
