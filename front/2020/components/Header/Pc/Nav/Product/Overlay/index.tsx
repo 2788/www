@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react'
-import { categoryNameMap, Category, nameMap, categories, categoryEnNameMap, urlMap, Product, descMap, categoryProductsMap } from 'constants/products'
+import { categoryNameMap, nameMap, categories, categoryEnNameMap, urlMap, Product, descMap, categoryProductsMap } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
@@ -38,7 +38,7 @@ export default function Overlay() {
 
   return (
     <ScrollableOverlay>
-      <Menu defaultActive={categoryNameMap[Category.Intelligence]}>
+      <Menu defaultActive={categoryNameMap[categories[0]]}>
         {menuItems}
       </Menu>
       <Content>

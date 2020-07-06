@@ -161,7 +161,7 @@ export const categoryEnNameMap = {
 } as const
 
 export const categories = [
-  Category.Intelligence,
+  Category.Service,
   Category.Video,
-  Category.Service
+  Category.Intelligence
 ] as const
