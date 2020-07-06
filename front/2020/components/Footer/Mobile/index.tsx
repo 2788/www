@@ -64,7 +64,7 @@ export default function FooterForMobile() {
           </SubMenu>
           <SubMenu title="关于我们">
             <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
-            <MenuItem><Link href="/case">客户案例</Link></MenuItem>
+            {/* <MenuItem><Link href="/case">客户案例</Link></MenuItem> */}
             <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
             <MenuItem><Link href="https://blog.qiniu.com/archives/category/1">最新动态</Link></MenuItem>
             <MenuItem><a href="https://career.qiniu.com/social">招聘</a></MenuItem>

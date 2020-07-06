@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
 import Section from 'components/Product/Section'
 import { Navigatable } from 'components/Product/Navigator'
@@ -13,6 +14,14 @@ import Words from 'components/pages/case/Words'
 import style from './style.less'
 
 export default function CasePage() {
+  // 这边先干掉客户案例页面内容，等内容 OK 了，再重新打开
+  // eslint-disable-next-line no-constant-condition
+  if (true) {
+    return (
+      <Redirect target="/" />
+    )
+  }
+
   return (
     <Layout
       title="客户案例"

@@ -4,6 +4,7 @@
 
 import React from 'react'
 
+import { Product, urlMap, nameMap } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -65,9 +66,9 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/kodoe">私有云存储</LinkItem>
         </LinkGroup>
         <LinkGroup title="相关产品">
-          <LinkItem href="/products/kodo">对象存储</LinkItem>
-          <LinkItem href="/products/dora">智能多媒体服务</LinkItem>
-          <LinkItem href="/products/pandora">数据分析平台</LinkItem>
+          {[Product.Kodo, Product.Dora, Product.Express].map(product => (
+            <LinkItem key={product} href={urlMap[product]!}>{nameMap[product]}</LinkItem>
+          ))}
         </LinkGroup>
       </LinkGroups>
 

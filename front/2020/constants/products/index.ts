@@ -58,7 +58,7 @@ export const nameMap = {
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '直播推流 SDK',
   [Product.Insight]: '智能日志管理平台',
-  [Product.Express]: '数据分析平台',
+  [Product.Express]: '机器数据分析平台 Pandora',
   [Product.Qvs]: '视频监控 QVS'
 } as const
 

@@ -64,7 +64,7 @@ export default function Overlay() {
       <MenuItem><a href="https://blog.qiniu.com/">七牛资讯</a></MenuItem>
       <SubMenu key="sub5" title="关于我们">
         <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
-        <MenuItem><Link href="/case">客户案例</Link></MenuItem>
+        {/* <MenuItem><Link href="/case">客户案例</Link></MenuItem> */}
         <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
         <MenuItem><a href="https://blog.qiniu.com/archives/category/1">最新动态</a></MenuItem>
         <MenuItem><a href="https://career.qiniu.com/social">招聘</a></MenuItem>

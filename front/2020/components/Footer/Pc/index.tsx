@@ -91,7 +91,7 @@ function LinkGroups() {
       </LinkGroup>
       <LinkGroup title="关于我们">
         <LinkItem url="/company">公司介绍</LinkItem>
-        <LinkItem url="/case">客户案例</LinkItem>
+        {/* <LinkItem url="/case">客户案例</LinkItem> */}
         <LinkItem url="/contact">联系我们</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/1">最新动态</LinkItem>
         <LinkItem url="https://career.qiniu.com/social">加入我们</LinkItem>

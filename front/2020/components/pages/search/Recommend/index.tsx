@@ -17,7 +17,7 @@ export default function SearchRecommend({ className }: Props) {
       <h4 className={style.title}>产品推荐</h4>
       <ul className={style.list}>
         <li className={style.item}>
-          <Link href="/products/pandora">Pandora 数据分析平台</Link>
+          <Link href="/products/pandora">机器数据分析平台 Pandora</Link>
         </li>
         <li className={style.item}>
           <Link href="/solutions/qavs#arch">智能视频云解决方案</Link>
