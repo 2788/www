@@ -1,14 +1,16 @@
-import React, { useRef, useEffect, useState, FormEvent } from 'react'
+import React, { useRef, useState, FormEvent, useCallback, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, FieldState } from 'formstate-x'
 import IcecreamForm from 'react-icecream/lib/form'
 import Input from 'react-icecream/lib/input'
 import Select, { SelectValue } from 'react-icecream/lib/select'
-import { createFeedback, getUserInfo } from 'apis/legacy'
-import { useApiWithParams } from 'hooks/api'
+import { createFeedback } from 'apis/legacy'
+import { track as sensorsTrack } from 'utils/sensors'
+import { useUserInfo } from 'components/UserInfo'
 import Button from 'components/UI/Button'
 import { bindFormItem, bindTextInput, bindSelect, textNotEmpty, textOfPattern } from 'utils/form'
 
+import { useDisposer } from '../../utils'
 import style from './style.less'
 
 export type FormValue = {
@@ -24,7 +26,8 @@ enum Status {
   Initial,
   Submitting,
   Failed,
-  Succeeded
+  Succeeded,
+  Terminated
 }
 
 const formItemLayout = {
@@ -88,11 +91,10 @@ const longEmptyContent = (
 export default observer(function Form({ consultContent, onSubmit }: Props) {
   const state = useRef(createState()).current
   const wrapperRef = useRef<HTMLDivElement>(null)
-
-  const { $: userInfo } = useApiWithParams(getUserInfo, { params: [] })
+  const userInfo = useUserInfo()
 
   useEffect(() => {
-    if (userInfo?.is_signin) {
+    if (userInfo?.signedIn) {
       state.$.name.set(userInfo.name)
       state.$.email.set(userInfo.email)
     }
@@ -105,6 +107,8 @@ export default observer(function Form({ consultContent, onSubmit }: Props) {
     e.preventDefault()
     const result = await state.validate()
     if (result.hasError) return
+
+    sensorsTrack('Feedback', getSensorsOptions(consultContent, state))
 
     setStatus(Status.Submitting)
     const value = {
@@ -120,6 +124,19 @@ export default observer(function Form({ consultContent, onSubmit }: Props) {
     }
   }
 
+  // 会话结束时，将表单状态设置为 Terminated
+  useDisposer(useCallback(() => {
+    if (status === Status.Succeeded || status === Status.Terminated) return
+    setStatus(Status.Terminated)
+  }, [status]))
+
+  // 退出会话时，发送 QuitFeedback 事件
+  useDisposer(useCallback(() => {
+    if (status === Status.Succeeded || status === Status.Terminated) return
+    if (!state.value.company && !state.value.phone && !state.value.province) return
+    sensorsTrack('QuitFeedback', getSensorsOptions(consultContent, state))
+  }, [status, state, consultContent]))
+
   const errorView = status === Status.Failed && (
     <p className={style.errorLine}>提交失败，请稍后重试</p>
   )
@@ -133,7 +150,7 @@ export default observer(function Form({ consultContent, onSubmit }: Props) {
     )
   ]
 
-  const disabled = status === Status.Succeeded
+  const disabled = status === Status.Succeeded || status === Status.Terminated
 
   return (
     <div ref={wrapperRef} className={style.wrapper}>
@@ -198,6 +215,18 @@ function SubmitButton({ status }: { status: Status }) {
     return <Button {...buttonProps} disabled>提交成功</Button>
   }
   return (
-    <Button {...buttonProps}>提交</Button>
+    <Button {...buttonProps} disabled={status === Status.Terminated}>提交</Button>
   )
+}
+
+// 神策统计需要收集的数据
+function getSensorsOptions(consultContent: string, state: ReturnType<typeof createState>) {
+  return {
+    feedback_content: consultContent,
+    feedback_company: state.value.company,
+    feedback_name: state.value.name,
+    feedback_phone: state.value.phone,
+    feedback_email: state.value.email,
+    feedback_province: state.value.province
+  }
 }

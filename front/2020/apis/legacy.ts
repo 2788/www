@@ -28,20 +28,19 @@ export function createDeveloperCooperation(options: CreateDeveloperOptions): Pro
   })
 }
 
-export type Userinfo = {
+export type UserInfo = {
   email: string
-  is_signin: true
+  signedIn: true
   name: string
   uid: number
-}
-
-export type Guestinfo = {
-  is_signin: false
+} | {
+  signedIn: false
 }
 
 /** 获取用户信息 */
-export function getUserInfo(): Promise<Userinfo | Guestinfo> {
-  return get(`${apiPrefix}/userinfo`)
+export async function getUserInfo(): Promise<UserInfo> {
+  const { is_signin: signedIn, ...others } = await get(`${apiPrefix}/userinfo`)
+  return { signedIn, ...others }
 }
 
 export type CreateFeedbackOptions = {

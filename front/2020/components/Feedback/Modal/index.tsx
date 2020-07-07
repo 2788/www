@@ -1,6 +1,7 @@
 import cls from 'classnames'
 import React, { createContext, useState, ReactNode, useContext } from 'react'
 import { useGlobalModal } from 'hooks/scroll'
+import { track } from 'utils/sensors'
 import Button from '../Button'
 import Form, { startConsultingMessage } from '../Form'
 import IconClose from '../icons/close.svg'
@@ -32,6 +33,12 @@ export function useModal() {
   const startConsulting = () => {
     showModal()
     setUserMessage(startConsultingMessage)
+    track('ClickFeedback', {
+      // 这边按照设计预期不同地方调起的咨询发送不同的 intention 值
+      // 不过老官网几乎没有配置（只有个别位置添加了 intention 值）
+      // 所以这里先无脑不传吧，后边考虑清楚再说
+      feedback_intention: ''
+    })
   }
 
   return { visible, showModal, hideModal, toggleModal, userMessage, startConsulting }

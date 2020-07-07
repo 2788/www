@@ -6,13 +6,13 @@
  *
  * Copyright (c) 2020 Qiniu
  */
+
 import React from 'react'
 import classnames from 'classnames'
 import Dropdown from 'components/UI/Dropdown'
-import { useApiWithParams } from 'hooks/api'
+import { useUserInfo } from 'components/UserInfo'
 import { useUrl } from 'hooks/url'
 import { urlForSignin } from 'utils/route'
-import { getUserInfo } from 'apis/legacy'
 import Overlay from './Overlay'
 import ArrowDown from './arrow-down.svg'
 
@@ -20,9 +20,9 @@ import style from './style.less'
 
 export default function Userinfo() {
   const currentUrl = useUrl()
-  const { $: user } = useApiWithParams(getUserInfo, { params: [] })
+  const user = useUserInfo()
 
-  if (user?.is_signin) {
+  if (user?.signedIn) {
     return (
       <span className={classnames(style.wrapper, style.haveSignin)}>
         <Dropdown align={{ offset: [-30, -1] }} overlay={() => <Overlay />}><span>{user.email}</span></Dropdown>

@@ -13,6 +13,7 @@ import ErrorBoundary from './ErrorBoundary'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
+import { Provider as UserInfoProvider } from '../UserInfo'
 
 export type Props = {
   /** 页面 title */
@@ -51,23 +52,25 @@ export default function Layout({ title, keywords, description, children }: Props
 
   return (
     <UaContext.Provider value={uaValue}>
-      <Head>
-        <meta charSet="utf-8" />
-        <title>{title}</title>
-        <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
-        <link rel="shortcut icon" href="//qiniu.staticfile.org/favicon.ico" type="image/x-icon" />
-        {keywordsMeta}
-        {descriptionMeta}
-      </Head>
-      <feedback.ModalProvider>
-        <Header />
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
-        <Footer />
-        <feedback.Entry />
-        <feedback.Modal />
-      </feedback.ModalProvider>
+      <UserInfoProvider>
+        <Head>
+          <meta charSet="utf-8" />
+          <title>{title}</title>
+          <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
+          <link rel="shortcut icon" href="//qiniu.staticfile.org/favicon.ico" type="image/x-icon" />
+          {keywordsMeta}
+          {descriptionMeta}
+        </Head>
+        <feedback.ModalProvider>
+          <Header />
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
+          <Footer />
+          <feedback.Entry />
+          <feedback.Modal />
+        </feedback.ModalProvider>
+      </UserInfoProvider>
     </UaContext.Provider>
   )
 }

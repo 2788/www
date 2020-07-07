@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { getUserInfo } from 'apis/legacy'
-import { useApiWithParams } from 'hooks/api'
+import { useUserInfo } from 'components/UserInfo'
 
 import PersonIcon from './person.svg'
 import Overlay from './Overlay'
@@ -9,7 +8,7 @@ import style from './style.less'
 import MobileDropdown from '../MobileDropdown'
 
 export default function Userinfo() {
-  const { $: user } = useApiWithParams(getUserInfo, { params: [] })
+  const user = useUserInfo()
 
   return (
     <MobileDropdown overlayClassName={style.overlay} overlay={() => <Overlay user={user} />}>
