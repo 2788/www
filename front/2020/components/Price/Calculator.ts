@@ -186,7 +186,7 @@ export default class Calculator {
       return _total + totalForRegion
     }, 0)
 
-    return (total * this.duration).toFixed(2)
+    return (total * this.duration).toFixed(3)
   }
 
   public setDuration = (duration: number) => {

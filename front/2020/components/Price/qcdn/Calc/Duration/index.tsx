@@ -11,6 +11,7 @@ export default function Duration({ onChange }: { onChange(duration: number): voi
         <div className={style.areaItem}>
           <InputNumber
             showBtns
+            min={1}
             defaultValue="1"
             style={{ width: '44px', textAlign: 'center' }}
             onChange={onChange}

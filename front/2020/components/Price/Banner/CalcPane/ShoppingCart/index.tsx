@@ -24,7 +24,7 @@ export type Product = {
 export default function ShoppingCart() {
   const [products, setProducts] = useLocalStorage<Product[]>(STORAGE_KEY)
   const reversedProducts = products?.slice().reverse()
-  const total = products?.reduce((_total, product) => +product.price + _total, 0) || 0.00
+  const total = products?.reduce((_total, product) => +product.price + _total, 0) || 0.000
 
   function handleDelete(index: number) {
     const newProducts = reversedProducts || []
@@ -49,7 +49,7 @@ export default function ShoppingCart() {
       <div className={style.body}>
         {products && products.length > 0 ? cards : <Empty />}
       </div>
-      <Footer products={products} total={total.toFixed(2)} />
+      <Footer products={products} total={total.toFixed(3)} />
     </div>
   )
 }

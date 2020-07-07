@@ -25,7 +25,7 @@ type InputNumberProps = Omit<InputProps, 'defaultValue' | 'value' | 'onInput' | 
   showBtns?: boolean
 }
 // 暂不处理 value
-export default function InputNumber({ defaultValue = '', min = 1, onChange, showBtns, ...rest }: InputNumberProps) {
+export default function InputNumber({ defaultValue = '', min = 0, onChange, showBtns, ...rest }: InputNumberProps) {
   const [value, setValue] = useState(defaultValue)
 
   function handleInput(event: React.FormEvent<HTMLInputElement>) {
