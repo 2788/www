@@ -22,7 +22,7 @@ const sensorsScriptContent = `
     y.parentNode.insertBefore(x, y);
   }
 })({
-  sdk_url: 'https://static.sensorsdata.cn/sdk/1.13.14/sensorsdata.min.js',
+  sdk_url: 'https://static.sensorsdata.cn/sdk/1.15.12/sensorsdata.min.js',
   heatmap_url: 'https://static.sensorsdata.cn/sdk/1.13.14/heatmap.min.js',
   name: 'sensors',
   server_url: 'https://sensors.qiniu.com/sa?project=default',
