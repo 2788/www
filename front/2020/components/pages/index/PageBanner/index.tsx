@@ -2,16 +2,21 @@ import React, { ReactNode } from 'react'
 import classnames from 'classnames'
 
 import { useMobile } from 'hooks/ua'
-import { IPageBannerProps, defaultProps } from 'components/Product/PageBanner'
 import styles from './style.less'
 
-interface IndexPageBannerProps extends IPageBannerProps {
+interface IndexPageBannerProps {
+  title?: ReactNode
+  desc?: ReactNode
+  bgColor?: string
+  btns?: ReactNode[]
+  icon?: ReactNode
   bgImg: string
   className?: string
+  href?: string
 }
 
 export default function IndexPageBanner(props: IndexPageBannerProps) {
-  const { title, desc, bgColor = '#34A1EC', btns, icon, bgImg, className } = { ...defaultProps, ...props }
+  const { title, desc, bgColor = '#34A1EC', btns, icon, bgImg, className, href } = props
   const isMobile = useMobile()
 
   function renderBtnWrapper() {
@@ -48,16 +53,20 @@ export default function IndexPageBanner(props: IndexPageBannerProps) {
     backgroundSize: 'cover'
   }
 
-  return (
-    <div className={classnames(styles.mainWrapper, styles.index, className)} style={bgColorStyle}>
-      <div className={classnames(styles.contentWrapper)} style={bgStyle}>
-        <div className={styles.content}>
-          <h1 className={styles.title}>{title}</h1>
-          <div className={styles.desc}>{desc}</div>
-          {renderBtnWrapper()}
-        </div>
-        {renderIconWrapper()}
+  const wrapperTag = href != null ? 'a' : 'div'
+
+  return React.createElement(wrapperTag, {
+    className: classnames(styles.mainWrapper, styles.index, className),
+    style: bgColorStyle,
+    href
+  }, (
+    <div className={classnames(styles.contentWrapper)} style={bgStyle}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>{title}</h1>
+        <div className={styles.desc}>{desc}</div>
+        {renderBtnWrapper()}
       </div>
+      {renderIconWrapper()}
     </div>
-  )
+  ))
 }

@@ -5,6 +5,7 @@
 @mobile-banner-height: 160px;
 
 .mainWrapper {
+  display: block;
   background-color: @blue-6;
   overflow-x: auto;
 
@@ -27,6 +28,7 @@
   .mobile({
     width: 100%;
     height: auto;
+    min-height: @mobile-banner-height;
     padding: 26px 24px;
     align-items: center;
   });

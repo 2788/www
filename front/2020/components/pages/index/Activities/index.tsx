@@ -41,16 +41,23 @@ export default function Activities() {
         icon={<Activity1Icon className={styles.icon} />}
         title="最新活动"
         href="https://marketing.qiniu.com/activity/all?entry=index-advert"
-        banner="热门"
       >
         热门活动及产品特惠
       </Card>
       <Card
-        icon={<Activity3Icon className={styles.icon} />}
-        title="归档存储，重磅上线"
-        href="/products/kodo?entry=index-advert#storage_type"
+        icon={<Activity2Icon className={styles.icon} />}
+        title="618 云上嗨购节"
+        href="https://marketing.qiniu.com/activity/618activity?entry=index-advert"
+        banner="热门"
       >
-        安全持久 成本更低
+        视频云大升级 服务更优惠
+      </Card>
+      <Card
+        icon={<Activity3Icon className={styles.icon} />}
+        title="人脸核验，特惠来袭"
+        href="https://marketing.qiniu.com/activity/activity-faceid?entry=index-advert"
+      >
+        爆款服务，限时抢购
       </Card>
       <Card
         icon={<Activity4Icon className={styles.icon} />}
@@ -58,13 +65,6 @@ export default function Activities() {
         href="/events/dora-package?entry=index-advert"
       >
         超低价，优惠来袭
-      </Card>
-      <Card
-        icon={<Activity2Icon className={styles.icon} />}
-        title="对象存储专场特惠"
-        href="https://marketing.qiniu.com/activity/kodopackage?entry=index-advert&ref=www.qiniu.com"
-      >
-        自由搭配，常享优惠
       </Card>
     </div>
   )

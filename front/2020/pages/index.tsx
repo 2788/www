@@ -40,6 +40,29 @@ import Core2Icon from './_images/core2.svg'
 import Core3Icon from './_images/core3.svg'
 import Core4Icon from './_images/core4.svg'
 
+import bannerFaceidPc from './_images/banner-faceid-pc.png'
+import bannerFaceidMobile from './_images/banner-faceid-mobile.png'
+import bannerKodoPc from './_images/banner-kodo-pc.png'
+import bannerKodoMobile from './_images/banner-kodo-mobile.png'
+
+// TODO: 这个内容后边改为从接口来，对接 BO 的数据
+const simpleBanners = [
+  {
+    title: '人脸核验 特惠来袭',
+    bgColor: '#051B3F',
+    imgPc: bannerFaceidPc,
+    imgMobile: bannerFaceidMobile,
+    href: 'https://marketing.qiniu.com/activity/activity-faceid?entry=index-banner'
+  },
+  {
+    title: '对象存储 Kodo 专场特惠',
+    bgColor: '#0A1048',
+    imgPc: bannerKodoPc,
+    imgMobile: bannerKodoMobile,
+    href: 'https://marketing.qiniu.com/activity/kodopackage?entry=index-banner'
+  }
+]
+
 function useBannerImg() {
   const webImgList = [Banner1Icon, Banner2Icon, Banner3Icon, Banner4Icon, Banner5Icon]
   const mobileImgList = [MobileBanner1Icon, MobileBanner2Icon, MobileBanner3Icon, MobileBanner4Icon, MobileBanner5Icon]
@@ -53,9 +76,23 @@ function PageContent() {
   const headerBannerImgs = useBannerImg()
   const isMobile = useMobile()
 
+  // 简单内容的 banner，后边会走运营后台进行配置
+  // 这部分 banner 放到代码中写死的 banner 项的前面（同老官网行为）
+  const simpleBannersView = simpleBanners.map(
+    ({ imgPc, imgMobile, bgColor, href }, i) => (
+      <PageBanner
+        key={i}
+        bgImg={isMobile ? imgMobile : imgPc}
+        bgColor={bgColor}
+        href={href}
+      />
+    )
+  )
+
   return (
     <>
       <Carousel className={styles.headerBanner} autoplay>
+        {simpleBannersView}
         <PageBanner
           className={styles.bannerKodoOversea}
           title={<>海外云存储 <strong>优惠专场</strong></>}
