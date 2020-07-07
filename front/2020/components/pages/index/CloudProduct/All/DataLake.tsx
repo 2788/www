@@ -1,18 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Link from 'components/Link'
 import Positioned from '../Positioned'
-import { Context } from '..'
+import { Node } from '..'
 import style from '../index.less'
 import Line from '../Line'
 
 export default function DataLake() {
-  const { isVideo, isMachine } = useContext(Context)
-  // eslint-disable-next-line no-nested-ternary
-  const left = isVideo ? 575 : isMachine ? 470 : 483
   return (
     <>
-      {!isMachine && <Positioned top={458} left={isVideo ? 523 : 394}><Line width={27} /></Positioned>}
-      <Positioned top={isMachine ? 537 : 360} left={left} zIndex={1}>
+      <Positioned top={458} left={394}><Line width={27} /></Positioned>
+      <Positioned identity={Node.Kodo} top={360} left={483} zIndex={1}>
         <svg width="160" height="197" viewBox="0 0 160 197">
           <defs>
             <filter id="异构数据湖-b" width="103%" height="105.1%" x="-1.5%" y="-2.5%" filterUnits="objectBoundingBox">
@@ -24,7 +21,7 @@ export default function DataLake() {
           </defs>
           <g fill="none">
             <Link className={style.link} href="/products/kodo">
-              <g transform="translate(20 165)" style={{ opacity: isMachine ? 0 : 1 }}>
+              <g transform="translate(20 165)">
                 <rect width="120" height="32" fill="#E0F7FF"></rect>
                 <text fill="#34A1EC">
                   <tspan x="25" y="21">异构数据湖</tspan>
@@ -55,35 +52,6 @@ export default function DataLake() {
           </g>
         </svg>
       </Positioned>
-      {isMachine && <Large />}
     </>
-  )
-}
-
-function Large() {
-  return (
-    <Positioned top={555 - 30} left={188}>
-      <svg width="724" height="176" viewBox="0 0 724 176">
-        <defs>
-          <filter id="异构数据湖-b" width="103%" height="105.1%" x="-1.5%" y="-2.5%" filterUnits="objectBoundingBox">
-            <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation=".5"></feGaussianBlur>
-            <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
-            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"></feComposite>
-            <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0   0 0 0 0 0.431372549   0 0 0 0 0.733333333  0 0 0 1 0"></feColorMatrix>
-          </filter>
-        </defs>
-        <g fill="none">
-          <path fill="#F2FCFF" d="M0,0 L724,0 L724,176 L0,176 L0,0 Z"></path>
-          <Link className={style.link} href="/products/kodo">
-            <g transform="translate(454 72)">
-              <rect width="120" height="32" fill="#E0F7FF"></rect>
-              <text fill="#34A1EC">
-                <tspan x="25" y="21">异构数据湖</tspan>
-              </text>
-            </g>
-          </Link>
-        </g>
-      </svg>
-    </Positioned>
   )
 }

@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Positioned from '../Positioned'
 import Line from '../Line'
-import { Context } from '..'
+import { Node } from '..'
 
 export default function DataCollect() {
-  const { isMachine } = useContext(Context)
-  if (!isMachine) return null
   return (
     <>
-      <Positioned top={159} left={188}>
+      <Positioned identity={Node.DataCollect} top={159} left={188}>
         <svg width="120" height="157" viewBox="0 0 120 157">
           <defs>
             <filter id="数据采集logkit-b" width="111%" height="116.7%" x="-5.5%" y="-8.4%" filterUnits="objectBoundingBox">

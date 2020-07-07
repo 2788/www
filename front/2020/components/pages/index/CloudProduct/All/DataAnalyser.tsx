@@ -1,17 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Positioned from '../Positioned'
-import { Context } from '..'
+import { Node } from '..'
 import Line from '../Line'
 
-export default function Analyser() {
-  const { isVideo, isMachine } = useContext(Context)
-  if (isVideo) {
-    return null
-  }
+export default function DataAnalyser() {
   return (
     <>
       <Line3ToSelf />
-      <Positioned top={isMachine ? 159 : 75} left={1008}>
+      <Positioned identity={Node.DataAnalyser} top={75} left={1008}>
         <svg width="120" height="140" viewBox="0 0 120 140">
           <defs>
             <filter id="数据分析师-b" width="111.7%" height="119.3%" x="-5.8%" y="-9.6%" filterUnits="objectBoundingBox">
@@ -68,10 +64,6 @@ export default function Analyser() {
 }
 
 function Line3ToSelf() {
-  const { productType } = useContext(Context)
-  if (productType !== 'all') {
-    return null
-  }
   return (
     <Positioned left={828} top={125}>
       <Line width={146} />

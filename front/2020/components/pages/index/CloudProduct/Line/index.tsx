@@ -22,10 +22,10 @@ export default function Line({ width = 0, rotateDeg = 0, leftArrow = false, righ
     msTransform: `rotate(${rotateDeg}deg)`
   }
   return (
-    <svg width={svgWidth} height="14" viewBox={viewBox} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" style={style}>
-      {leftArrow && <polygon fill="#AEE1F3" id="箭头" points={leftArrowPoints}></polygon>}
-      <rect fill="#AEE1F3" id="矩形" x={leftArrow ? 14 : 0} y="6" width={width} height="2"></rect>
-      {rightArrow && <polygon fill="#AEE1F3" id="箭头" points={rightArrowPoints}></polygon>}
+    <svg width={svgWidth} height="14" viewBox={viewBox} style={style}>
+      {leftArrow && <polygon fill="#AEE1F3" points={leftArrowPoints}></polygon>}
+      <rect fill="#AEE1F3" x={leftArrow ? 14 : 0} y="6" width={width} height="2"></rect>
+      {rightArrow && <polygon fill="#AEE1F3" points={rightArrowPoints}></polygon>}
     </svg>
   )
 }

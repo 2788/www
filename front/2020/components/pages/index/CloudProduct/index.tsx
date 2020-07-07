@@ -1,65 +1,87 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useCallback, useRef } from 'react'
 import Button from 'components/UI/Button'
+import { Category, categoryNameMap } from 'constants/products'
 
 import Section from '../Section'
 
-import Machine from './machine'
-import Media from './media'
-
 import style from './index.less'
-import Line2To7 from './Line2To7'
-import Line3To8 from './Line3To8'
-import Line from './Line'
-import Positioned from './Positioned'
+import All from './All'
+import Machine from './Machine'
+import Video from './Video'
 
-export type ProductType = 'all' | 'machine' | 'video'
-export type Context = { productType: ProductType, isVideo: boolean, isMachine: boolean }
-export const Context = createContext<Context>({ productType: 'all', isVideo: false, isMachine: false })
+export type ProductType = 'all' | Category.Intelligence | Category.Video
+export enum Node {
+  // 机器数据
+  MachineData = 'machine_data',
+  // 多媒体数据处理平台
+  MultiMediaDataProcess = 'multi_media_daa_process',
+  // 多媒体数据处理平台细节
+  MultiMediaDataProcessDetail = 'multi_media_daa_process_detail',
+  // 机器数据分析平台
+  MachineDataAnalysisPlat = 'machine_data_analysis_platform',
+  // 机器数据分析平台细节
+  MachineDataAnalysisPlatDetail = 'machine_data_analysis_platform_detail',
+  // 数据分析师
+  DataAnalyser = 'data_analyser',
+  // 数据采集
+  DataCollect = 'data_collect',
+  // 多媒体数据
+  MultiMediaData = 'multi_media_data',
+  Sdk = 'sdk',
+  // 视频直播 pili
+  Pili = 'pili',
+  // 异构数据湖
+  Kodo = 'kodo',
+  Cdn = 'cdn',
+  // 终端用户
+  TerminalUser = 'terminal_user'
+}
+export type Offset = { top: number, left: number }
+export type Context = {
+  getPrevOffset: (identity: string) => Offset | undefined
+  registerOffset: (identity: string, offset: Offset) => void
+}
+export const Context = createContext<Context>({
+  getPrevOffset: () => undefined,
+  registerOffset: () => undefined
+})
 
 export default function CloudProduct() {
   const [productType, setProductType] = useState<ProductType>('all')
+  const prevOffsetMapRef = useRef<{ [key: string]: Offset }>({})
+  const currentOffsetMapRef = useRef<{ [key: string]: Offset }>({})
+  const getPrevOffset = useCallback((identity: string) => prevOffsetMapRef.current[identity], [])
+  const registerOffset = useCallback((identity: string, offset: Offset) => {
+    currentOffsetMapRef.current[identity] = offset
+  }, [])
+  function handleButtonClick(type: ProductType) {
+    return () => {
+      setProductType(type)
+      prevOffsetMapRef.current = currentOffsetMapRef.current
+      currentOffsetMapRef.current = {}
+    }
+  }
   const subtitle = (
     <div className={style.subtitle}>
-      <Button className={productType === 'machine' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('machine')}>机器数据智能</Button>
-      <Button className={productType === 'all' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('all')}>全部</Button>
-      <Button className={productType === 'video' && 'active' || ''} type="hollow" withBorder onClick={() => setProductType('video')}>智能视频服务</Button>
+      <Button className={productType === Category.Intelligence && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Intelligence)}>
+        {categoryNameMap[Category.Intelligence]}
+      </Button>
+      <Button className={productType === 'all' && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick('all')}>全部</Button>
+      <Button className={productType === Category.Video && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Video)}>
+        {categoryNameMap[Category.Video]}
+      </Button>
     </div>
   )
+
   return (
     <Section title="产品与服务" subtitle={subtitle}>
-      <Context.Provider value={{ productType, isVideo: productType === 'video', isMachine: productType === 'machine' }}>
+      <Context.Provider value={{ getPrevOffset, registerOffset }}>
         <div className={style.container}>
-          <Machine />
-          <Media />
-          <Line2To7 />
-          <Line3To8 />
-          <VideoLine />
-          <MachineLine />
+          {productType === 'all' && <All />}
+          {productType === Category.Intelligence && <Machine />}
+          {productType === Category.Video && <Video />}
         </div>
       </Context.Provider>
     </Section>
   )
-}
-
-function VideoLine() {
-  const { isVideo } = useContext(Context)
-  if (isVideo) {
-    return (
-      <>
-        <Positioned top={345} left={415}><Line width={40} rotateDeg={90} leftArrow /></Positioned>
-        <Positioned top={324} left={635}><Line width={12} rotateDeg={90} leftArrow /></Positioned>
-      </>
-    )
-  }
-  return null
-}
-
-function MachineLine() {
-  const { isMachine } = useContext(Context)
-  if (isMachine) {
-    return (
-      <Positioned top={479} left={530}><Line width={12} rotateDeg={90} leftArrow /></Positioned>
-    )
-  }
-  return null
 }

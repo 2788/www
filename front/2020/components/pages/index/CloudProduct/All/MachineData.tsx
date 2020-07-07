@@ -1,14 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Positioned from '../Positioned'
-import { Context } from '..'
+import { Node } from '..'
 
 export default function MachineData() {
-  const { isVideo, isMachine } = useContext(Context)
-  if (isVideo) {
-    return null
-  }
   return (
-    <Positioned top={isMachine ? 159 : 75} left={0}>
+    <Positioned identity={Node.MachineData} top={75} left={0}>
       <svg width="120" height="261" viewBox="0 0 120 261">
         <defs>
           <linearGradient id="机器数据智能-a" x1="96.36%" x2="8.878%" y1="56.179%" y2="56.179%">
@@ -42,24 +38,6 @@ export default function MachineData() {
             <rect width="120" height="32" fill="#DEE9FF" rx="16"></rect>
             <text fill="#2B65D6">
               <tspan x="32" y="21">机器数据</tspan>
-            </text>
-          </g>
-          <g transform="translate(0 149)" style={{ display: isMachine ? 'block' : 'none' }}>
-            <rect width="120" height="32" fill="#DEE9FF" rx="16"></rect>
-            <text fill="#2B65D6">
-              <tspan x="32" y="21">业务数据</tspan>
-            </text>
-          </g>
-          <g transform="translate(0 189)" style={{ display: isMachine ? 'block' : 'none' }}>
-            <rect width="120" height="32" fill="#DEE9FF" rx="16"></rect>
-            <text fill="#2B65D6">
-              <tspan x="33.575" y="21">IoT 数据</tspan>
-            </text>
-          </g>
-          <g transform="translate(0 229)" style={{ display: isMachine ? 'block' : 'none' }}>
-            <rect width="120" height="32" fill="#DEE9FF" rx="16"></rect>
-            <text fill="#2B65D6">
-              <tspan x="32" y="21">安全数据</tspan>
             </text>
           </g>
         </g>

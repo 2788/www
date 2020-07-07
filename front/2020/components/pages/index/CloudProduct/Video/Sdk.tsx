@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
-import { Context } from '..'
+import React from 'react'
+import { Node } from '..'
 import Positioned from '../Positioned'
 import Line from '../Line'
 
-export default function SDK() {
-  const { isVideo } = useContext(Context)
-  if (!isVideo) return null
+export default function Sdk() {
   return (
     <>
       <Positioned top={458} left={146}><Line width={27} /></Positioned>
-      <Positioned top={415} left={184}>
+      <Positioned identity={Node.Sdk} top={415} left={184}>
         <svg width="144" height="285" viewBox="0 0 144 285">
           <defs>
             <mask id="全部产品-sdk-b" width="144" height="176" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">

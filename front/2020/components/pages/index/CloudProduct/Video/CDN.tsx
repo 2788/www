@@ -1,17 +1,15 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Link from 'components/Link'
 import Positioned from '../Positioned'
-import { Context } from '..'
 import style from '../index.less'
 import Line from '../Line'
+import { Node } from '..'
 
 export default function CDN() {
-  const { isMachine, isVideo } = useContext(Context)
-  if (isMachine) return null
   return (
     <>
-      <Positioned top={458} left={isVideo ? 759 : 689}><Line width={27} /></Positioned>
-      <Positioned top={415} left={isVideo ? 818 : 768}>
+      <Positioned top={458} left={759}><Line width={27} /></Positioned>
+      <Positioned identity={Node.Cdn} top={415} left={818}>
         <svg width="120" height="140" viewBox="0 0 120 140">
           <g fill="none">
             <Link className={style.link} href="/products/qcdn">

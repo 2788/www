@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Positioned from '../Positioned'
-import { Context } from '..'
+import { Node } from '..'
 
-export default function MediaData() {
-  const { isMachine } = useContext(Context)
-  if (isMachine) return null
+export default function MultiMediaData() {
   return (
-    <Positioned top={415} left={0}>
+    <Positioned identity={Node.MultiMediaData} top={415} left={0}>
       <svg width="120" height="141" viewBox="0 0 120 141">
         <defs>
           <linearGradient id="多媒体数据-a" x1="96.36%" x2="8.878%" y1="56.179%" y2="56.179%">

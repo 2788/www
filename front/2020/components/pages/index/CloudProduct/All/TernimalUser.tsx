@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Positioned from '../Positioned'
-import { Context } from '..'
+import { Node } from '..'
 import Line from '../Line'
 
 export default function TerminalUser() {
-  const { isMachine, isVideo } = useContext(Context)
-  if (isMachine) return null
   return (
     <>
-      <Positioned top={458} left={isVideo ? 954 : 938}><Line width={27} /></Positioned>
-      <Positioned top={415} left={1008}>
+      <Positioned top={458} left={938}><Line width={27} /></Positioned>
+      <Positioned identity={Node.TerminalUser} top={415} left={1008}>
         <svg width="120" height="140" viewBox="0 0 120 140">
           <defs>
             <filter id="终端用户-b" width="111.7%" height="119.3%" x="-5.8%" y="-9.6%" filterUnits="objectBoundingBox">
