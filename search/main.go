@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/qiniu/x/log.v7"
+	"github.com/qiniu/x/log"
 
 	"qiniu.com/www/search/config"
 	"qiniu.com/www/search/controllers"
