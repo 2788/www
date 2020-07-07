@@ -34,11 +34,13 @@ export default function FeedbackEntry() {
   }, [])
 
   useEffect(() => {
-    track('ClickFeedback', {
-      // 这里先跟老官网值保持一致
-      // TODO: 这里的值需要重新设计（考虑现在咨询分成调起窗口 & 开始咨询两个过程）
-      feedback_intention: '服务咨询'
-    })
+    if (modalVisible) {
+      track('ClickFeedback', {
+        // 这里先跟老官网值保持一致
+        // TODO: 这里的值需要重新设计（考虑现在咨询分成调起窗口 & 开始咨询两个过程）
+        feedback_intention: '服务咨询'
+      })
+    }
   }, [modalVisible])
 
   const wrapperRef = useClickOutside(hideModal)
