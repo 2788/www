@@ -42,7 +42,7 @@ yarn build
 `.env` / `.env.staging` / `.env.prod` 等文件用于在不同环境下提供环境变量；
 
 * `.env` 用于本地开发
-* `.env.staging` 用于测试环境，对应 `www-2020.qiniu.io`
+* `.env.staging` 用于测试环境，对应 `www-2020.dev.qiniu.io`
 * `.env.prod` 用于线上环境，对应 `www-2020.qiniu.com`
 
 Next.js 相关文档：https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables

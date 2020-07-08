@@ -40,7 +40,7 @@ export const failedMsg = '任务失败，请稍后重试'
 export function getFullUrl(url: string) {
   const { protocol, host } = window.location
   // 本地开发的时候，图片是本地地址，没法发给 censor 处理，这里替换为测试环境对应的地址
-  const realHost = /^localhost/.test(host) ? 'www-2020.qiniu.io' : host
+  const realHost = /^localhost/.test(host) ? 'www-2020.dev.qiniu.io' : host
   return (
     url[0] === '/'
     ? `${protocol}//${realHost}${url}`
