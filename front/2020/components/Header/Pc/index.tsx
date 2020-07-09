@@ -21,6 +21,7 @@ export default function HeaderForPc() {
         <Link href="/"><a className={style.logo}><Logo /></a></Link>
         <Nav />
         <SearchInput />
+        <div className={style.space}></div>
         <Userinfo />
         <Button type="primary" size="small" href="https://portal.qiniu.com" style={{ width: '94px' }}>管理控制台</Button>
       </div>

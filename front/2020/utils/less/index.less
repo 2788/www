@@ -1,6 +1,7 @@
 @import './color.less';
 
 @centered-content-width: 1176px;
+@centered-content-width-lg: 1440px;
 @modal-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
 @main-bg-color: @grey-1;
 
@@ -15,7 +16,7 @@
 // 注意跟 utils/index.ts 中 isMobile 的实现保持一致
 @screen-sm: 768px;
 @screen-md: 992px;
-@screen-lg: 1200px;
+@screen-lg: 1600px;
 
 .mobile(@rules) {
   @media only screen and (max-width: @screen-sm - 1) {
@@ -41,6 +42,12 @@
   }
 }
 
+.pcLg(@rules){
+  @media only screen and (min-width: @screen-lg) {
+    @rules();
+  }
+}
+
 .centered() {
   width: @centered-content-width;
   position: relative;
@@ -49,6 +56,14 @@
 
   .mobile({
     width: 100%;
+  });
+}
+
+.centeredWithLg() {
+  .centered();
+
+  .pcLg({
+    width: @centered-content-width-lg;
   });
 }
 

@@ -10,9 +10,7 @@
   border-bottom: 1px solid @grey-3;
 
   .content {
-    width: @header-content-width;
-    margin-left: auto;
-    margin-right: auto;
+    .centeredWithLg();
     height: @header-height;
     line-height: @header-height;
     display: flex;
@@ -22,5 +20,9 @@
   .logo {
     display: inline-block;
     margin-right: 26px;
+  }
+
+  .space {
+    flex: 3 3 0;
   }
 }
