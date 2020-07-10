@@ -84,10 +84,14 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/kodo/api/1731/api-overview">API 文档</LinkItem>
           <LinkItem href="https://developer.qiniu.com/kodo/sdk/1240/objc">SDK 文档</LinkItem>
         </LinkGroup>
-        {/* TODO 上线后补充 */}
-        <LinkGroup title="FAQ（常见问题）" />
+        <LinkGroup title="FAQ（常见问题）">
+          <LinkItem href="https://developer.qiniu.com/kodo/manual/3956/kodo-category">不同存储类型的区别？</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodo/kb/1344/how-to-heat-transfer-to-the-qiniu-online-data">如何将线上的数据热迁移到七牛云存储</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodo/kb/1336/upload-download-instructions">如何上传和下载文件？</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodo/kb/3882/upload-problem-faq">上传慢、上传失败等上传常见问题的处理方法？</LinkItem>
+        </LinkGroup>
         <LinkGroup title="相关材料">
-          <LinkItem href="/sla-kodo">用户协议</LinkItem>
+          <LinkItem href="/sla-kodo">服务等级协议</LinkItem>
         </LinkGroup>
       </LinkGroups>
 
