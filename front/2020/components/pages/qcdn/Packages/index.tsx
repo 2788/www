@@ -36,7 +36,7 @@ export default function Packages() {
         category="国内静态加速流量"
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
-        price="88.20"
+        price="98.00"
         detailLink={
           urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
             type: '国内HTTP全时段静态加速流量',
@@ -52,7 +52,7 @@ export default function Packages() {
         category="国内静态加速流量"
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
-        price="173.70"
+        price="193.00"
         detailLink={
           urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
             type: '国内HTTP全时段静态加速流量',
@@ -68,7 +68,7 @@ export default function Packages() {
         category="国内静态加速流量"
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
-        price="847.80"
+        price="942.00"
         detailLink={
           urlFor('https://portal.qiniu.com/financial/respack/fusion-composite', {
             type: '国内HTTP全时段静态加速流量',

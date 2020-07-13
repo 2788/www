@@ -47,7 +47,7 @@ export default function Overlay() {
       <SubMenu key="sub2" title="方案">
         {solutionSubMenus}
       </SubMenu>
-      <MenuItem><Link href="https://qmall.qiniu.com/">商城</Link></MenuItem>
+      <MenuItem><Link href="https://qmall.qiniu.com/">云商城</Link></MenuItem>
       <SubMenu key="sub3" title="活动与合作">
         <MenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></MenuItem>
         <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>

@@ -94,19 +94,39 @@ function PageContent() {
       <Carousel className={styles.headerBanner} autoplay>
         {simpleBannersView}
         <PageBanner
-          className={styles.bannerKodoOversea}
-          title={<>海外云存储 <strong>优惠专场</strong></>}
-          desc={<><strong>免费套餐</strong> 任你选 出海快人一步</>}
-          bgColor="#0A1639"
-          bgImg={headerBannerImgs[0]}
+          className={styles.bannerQuery}
+          title={<>数据分析平台 <span className={styles.upgrade}>重磅升级</span></>}
+          desc={<>新功能 <strong>业务链路关联查询</strong> 为您还原业务路径、全面分析业务</>}
+          bgColor="#2C6DD2"
+          bgImg={headerBannerImgs[2]}
+          btns={[
+            <>
+              <Button
+                key="1"
+                className={styles.btnQueryPrimary}
+                href="/products/pandora?entry=index-banner"
+                type="default"
+              >
+                免费体验
+              </Button>
+              <p className={styles.tip}>更多新功能持续放出中</p>
+            </>
+          ]}
+        />
+        <PageBanner
+          className={styles.bannerUpClouds}
+          title={<>企业 <strong className={styles.cost}>0</strong> 成本上云</>}
+          desc={<>最高可达 <strong>4 核 8 G</strong></>}
+          bgColor="#5708C6"
+          bgImg={headerBannerImgs[4]}
           btns={[
             <Button
               key="1"
-              className={styles.btnKodoOverseaPrimary}
-              href="/products/kodo/goglobal?entry=index-banner"
+              className={styles.btnReceivePrimary}
+              href="https://www.qiniu.com/events/qvm0rmb?entry=index-banner"
               type="default"
             >
-              查看详情
+              立即领取
             </Button>
           ]}
         />
@@ -132,59 +152,6 @@ function PageContent() {
               withBorder
             >
               下载试用
-            </Button>
-          ]}
-        />
-        <PageBanner
-          className={styles.bannerQuery}
-          title={<>数据分析平台 <span className={styles.upgrade}>重磅升级</span></>}
-          desc={<>新功能 <strong>业务链路关联查询</strong> 为您还原业务路径、全面分析业务</>}
-          bgColor="#2C6DD2"
-          bgImg={headerBannerImgs[2]}
-          btns={[
-            <>
-              <Button
-                key="1"
-                className={styles.btnQueryPrimary}
-                href="/products/pandora?entry=index-banner"
-                type="default"
-              >
-                免费体验
-              </Button>
-              <p className={styles.tip}>更多新功能持续放出中</p>
-            </>
-          ]}
-        />
-        <PageBanner
-          title="转码时长包 年中优惠来袭"
-          desc="为您还原业务路径、全面分析业务"
-          bgColor="#ED5620"
-          bgImg={headerBannerImgs[3]}
-          btns={[
-            <Button
-              key="1"
-              className={styles.btnTransCodePrimary}
-              href="/events/dora-package?entry=index-banner"
-              type="default"
-            >
-              查看详情
-            </Button>
-          ]}
-        />
-        <PageBanner
-          className={styles.bannerUpClouds}
-          title={<>企业 <strong className={styles.cost}>0</strong> 成本上云</>}
-          desc={<>最高可达 <strong>4 核 8 G</strong></>}
-          bgColor="#5708C6"
-          bgImg={headerBannerImgs[4]}
-          btns={[
-            <Button
-              key="1"
-              className={styles.btnReceivePrimary}
-              href="https://marketing.qiniu.com/activity/618activity?entry=index-banner&ref=www.qiniu.com"
-              type="default"
-            >
-              立即领取
             </Button>
           ]}
         />

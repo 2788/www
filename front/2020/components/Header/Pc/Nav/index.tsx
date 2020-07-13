@@ -16,7 +16,7 @@ export default function Nav() {
     <nav className={style.nav}>
       <Product />
       <Project />
-      <ItemWithLink href="https://qmall.qiniu.com/">商城</ItemWithLink>
+      <ItemWithLink href="https://qmall.qiniu.com/">云商城</ItemWithLink>
       <Support />
       <Activity />
       <ItemWithLink href="https://blog.qiniu.com/">七牛资讯</ItemWithLink>

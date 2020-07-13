@@ -25,7 +25,7 @@ function Card({ icon, title, banner, href, children }: PropsWithChildren<CardPro
       <UICard className={styles.card}>
         {icon}
         {banner ? <span className={styles.banner}>{banner}</span> : null}
-        <Content className={styles.content}>
+        <Content className={styles.cardContent}>
           <Title className={styles.title}>{title}</Title>
           <Desc className={styles.desc}>{children}</Desc>
         </Content>
@@ -47,25 +47,25 @@ export default function Activities() {
         </Card>
         <Card
           icon={<Activity2Icon className={styles.icon} />}
-          title="618 云上嗨购节"
-          href="https://marketing.qiniu.com/activity/618activity?entry=index-advert"
+          title="中小企业上云扶持"
+          href="https://www.qiniu.com/events/enterpriseoncloud?entry=index-advert"
           banner="热门"
         >
-          视频云大升级 服务更优惠
+          企业建站资源包限时 3 折
         </Card>
         <Card
           icon={<Activity3Icon className={styles.icon} />}
+          title="SSL 证书年中采购季"
+          href="https://marketing.qiniu.com/activity/activity-ssl?entry=index-advert"
+        >
+          全场 5 折起
+        </Card>
+        <Card
+          icon={<Activity4Icon className={styles.icon} />}
           title="人脸核验，特惠来袭"
           href="https://marketing.qiniu.com/activity/activity-faceid?entry=index-advert"
         >
           爆款服务，限时抢购
-        </Card>
-        <Card
-          icon={<Activity4Icon className={styles.icon} />}
-          title="转码包，新春特惠"
-          href="/events/dora-package?entry=index-advert"
-        >
-          超低价，优惠来袭
         </Card>
       </div>
     </div>
