@@ -148,7 +148,6 @@ const east: CalcRule = {
     {
       type: 'group',
       name: '流量费用',
-      unitAdaptor: countUnitAdaptor,
       items: [
         {
           name: '外网流出流量',
