@@ -1,9 +1,9 @@
-import { Product, ProductCategory } from './Banner/CalcPane/ShoppingCart'
+import { Product, ProductRegion } from './Banner/CalcPane/ShoppingCart'
 import { CalcInput } from './Calculator'
 
 // 把 CalcInput 转换成购物车需要的产品信息
 export default function transform(name: string, price: string, source: CalcInput[], duration?: number): Product {
-  const categories: ProductCategory[] = source
+  const regions: ProductRegion[] = source
     // 过滤 item 全部为 0 的地区
     .filter(_source => _source.items.find(item => item.count > 0))
     .map(_source => ({
@@ -18,6 +18,6 @@ export default function transform(name: string, price: string, source: CalcInput
   return {
     name,
     price,
-    categories
+    regions
   }
 }
