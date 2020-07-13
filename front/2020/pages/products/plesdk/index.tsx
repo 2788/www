@@ -54,7 +54,7 @@ export function Content() {
           <LinkItem href="https://github.com/pili-engineering/PLMediaStreamingKit-ByteDance">iOS Github 地址</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可体验全方位直播特效 SDK">
+      <UsageGuide title="全方位体验直播特效 SDK">
         <UsageGuideButton onClick={startConsulting}>
           立即咨询
         </UsageGuideButton>

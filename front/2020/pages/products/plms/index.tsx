@@ -62,7 +62,7 @@ export function Content() {
           <LinkItem href="https://www.qiniu.com/sdk-agreement">用户协议</LinkItem>
         </LinkGroup>
       </LinkGroups>
-      <UsageGuide title="注册即可体验全方位直播推流 SDK">
+      <UsageGuide title="全方位体验直播推流 SDK">
         <UsageGuideButton onClick={startConsulting}>
           立即咨询
         </UsageGuideButton>
