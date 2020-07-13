@@ -26,3 +26,15 @@ export function track(eventName: string, options: { [key: string]: any }) {
     ...options
   })
 }
+
+/** 上报 PV */
+export function pv(title: string, path: string) {
+  if (!isBrowser()) return
+  const sensors = window.sensors
+  if (!sensors || typeof sensors.quick !== 'function') return
+
+  sensors.quick('autoTrackSinglePage', {
+    $url_path: path,
+    $title: title
+  })
+}

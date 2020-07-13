@@ -2,13 +2,13 @@
  * @file 视频审核
  */
 
-import React, { useState, useMemo, FormEvent } from 'react'
+import React, { useState, useMemo } from 'react'
 import Loading from 'components/UI/Loading'
 import { useOnChange } from 'hooks'
 import { useApiWithParams } from 'hooks/api'
 import { videoCensor, defaultParams } from 'apis/censor/video'
-import Button from 'components/UI/Button'
 import Slides, { Slide } from './Slides'
+import UrlForm from './UrlForm'
 import { ResultPanel, ApiResult, ResultMask } from '.'
 
 import style from './style.less'
@@ -22,13 +22,7 @@ const videos = [
 
 export default function VideoPlayground() {
   const [activeIndex, setActive] = useState(0)
-  const [input, setInput] = useState('')
   const [videoUrl, setVideoUrl] = useState(videos[activeIndex])
-
-  function handleInputSubmit(e: FormEvent) {
-    e.preventDefault()
-    setVideoUrl(input)
-  }
 
   useOnChange(() => setVideoUrl(videos[activeIndex]), [activeIndex])
 
@@ -37,7 +31,7 @@ export default function VideoPlayground() {
     params: defaultParams
   }), [videoUrl])
 
-  const { $: apiResult, loading } = useApiWithParams(
+  const { $: apiResult, error: apiError, loading } = useApiWithParams(
     videoCensor,
     { params: [apiRequestBody] }
   )
@@ -48,9 +42,6 @@ export default function VideoPlayground() {
       scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
   }, [apiResult])
-
-  const requestForDisplay = makeRequestForDisplay(apiRequestBody)
-  const responseForDisplay = apiResult
 
   return (
     <div className={style.playground}>
@@ -75,21 +66,13 @@ export default function VideoPlayground() {
           <Slide value={2}><video src={videos[2]} /></Slide>
           <Slide value={3}><video src={videos[3]} /></Slide>
         </Slides>
-        <form className={style.inputLine} onSubmit={handleInputSubmit}>
-          <input
-            type="text"
-            className={style.input}
-            placeholder="请输入网络视频URL"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-          />
-          <Button type="primary" className={style.submitBtn}>检测</Button>
-        </form>
+        <UrlForm placeholder="请输入网络视频 URL" onSubmit={setVideoUrl} />
       </div>
       <div className={style.right}>
         <ApiResult
-          request={requestForDisplay}
-          response={responseForDisplay}
+          request={makeRequestForDisplay(apiRequestBody)}
+          response={apiResult}
+          error={apiError}
           loading={loading}
         />
       </div>

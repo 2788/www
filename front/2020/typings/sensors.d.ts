@@ -8,5 +8,6 @@ interface Window {
   sensors: {
     login(uid: string): void
     track(eventName: string, options: { [key: string]: any }): void
+    quick(name: string, options: { [key: string]: any }): void
   }
 }

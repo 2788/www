@@ -104,18 +104,26 @@ enum ApiInfoType {
 type ApiResultProps = {
   request: object | null
   response: object | null
+  error: any
   loading: boolean
 }
 
-export function ApiResult({ request, response, loading }: ApiResultProps) {
+export function ApiResult({ request, response, error, loading }: ApiResultProps) {
 
   const [type, setType] = useState(ApiInfoType.Request)
 
   const requestView = type === ApiInfoType.Request && request && (
     <JSONViewer src={request} />
   )
+
+  const reponseForDisplay = (
+    error != null
+    ? { error: error + '' } // 简单地展示下错误信息
+    : (response || {})
+  )
+
   const responseView = type === ApiInfoType.Response && withLoading(loading)(
-    <JSONViewer src={response || {}} />
+    <JSONViewer src={reponseForDisplay} />
   )
 
   return (

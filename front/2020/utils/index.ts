@@ -26,3 +26,8 @@ export function timeout(delay = 1000) {
 export function getCurrentYear() {
   return new Date().getFullYear()
 }
+
+/** 判断给定字符串内容是否 URL */
+export function isUrl(input: string) {
+  return /^https?:\/\/.+/.test(input)
+}

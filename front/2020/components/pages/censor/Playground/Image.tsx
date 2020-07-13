@@ -2,13 +2,13 @@
  * @file 内容审核“在此体验丰富功能”图片审核
  */
 
-import React, { useState, useMemo, FormEvent } from 'react'
+import React, { useState, useMemo } from 'react'
 import Loading from 'components/UI/Loading'
 import { useApiWithParams } from 'hooks/api'
 import { useOnChange } from 'hooks'
-import Button from 'components/UI/Button'
 import { imageCensor, defaultParams } from 'apis/censor/image'
 import Slides, { Slide } from './Slides'
+import UrlForm from './UrlForm'
 import { ResultPanel, ApiResult, ResultMask } from '.'
 import img1 from './images/playground-1.png'
 import img2 from './images/playground-2.png'
@@ -21,13 +21,7 @@ const images = [img1, img2, img3, img4]
 
 export default function ImagePlayground() {
   const [activeIndex, setActive] = useState(0)
-  const [input, setInput] = useState('')
   const [imgUrl, setImgUrl] = useState(images[activeIndex])
-
-  function handleInputSubmit(e: FormEvent) {
-    e.preventDefault()
-    setImgUrl(input)
-  }
 
   useOnChange(() => setImgUrl(images[activeIndex]), [activeIndex])
 
@@ -36,7 +30,7 @@ export default function ImagePlayground() {
     params: defaultParams
   }), [imgUrl])
 
-  const { $: apiResult, loading } = useApiWithParams(
+  const { $: apiResult, error: apiError, loading } = useApiWithParams(
     imageCensor,
     { params: [apiRequestBody] }
   )
@@ -47,9 +41,6 @@ export default function ImagePlayground() {
       scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
   }, [apiResult])
-
-  const requestForDisplay = makeRequestForDisplay(apiRequestBody)
-  const responseForDisplay = apiResult
 
   return (
     <div className={style.playground}>
@@ -74,21 +65,13 @@ export default function ImagePlayground() {
           <Slide value={2}><img src={images[2]} /></Slide>
           <Slide value={3}><img src={images[3]} /></Slide>
         </Slides>
-        <form className={style.inputLine} onSubmit={handleInputSubmit}>
-          <input
-            type="text"
-            className={style.input}
-            placeholder="请输入网络图片URL"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-          />
-          <Button type="primary" className={style.submitBtn}>检测</Button>
-        </form>
+        <UrlForm placeholder="请输入网络图片 URL" onSubmit={setImgUrl} />
       </div>
       <div className={style.right}>
         <ApiResult
-          request={requestForDisplay}
-          response={responseForDisplay}
+          request={makeRequestForDisplay(apiRequestBody)}
+          response={apiResult}
+          error={apiError}
           loading={loading}
         />
       </div>

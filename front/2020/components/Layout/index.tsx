@@ -5,9 +5,11 @@
 
 import React, { ReactNode, useState, useEffect } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { UAParser } from 'ua-parser-js'
 import { defaultTitle, titleSuffix } from 'constants/page'
 import { UaContext, useUa, Ua } from 'hooks/ua'
+import { pv } from 'utils/sensors'
 
 import ErrorBoundary from './ErrorBoundary'
 import Header from '../Header'
@@ -27,6 +29,8 @@ export type Props = {
 
 export default function Layout({ title, keywords, description, children }: Props) {
   title = !title ? defaultTitle : (title + titleSuffix)
+
+  usePv(title)
 
   // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provider 覆盖手动值
   const ua = useUa()
@@ -125,4 +129,12 @@ function useUaParser() {
     setParser(new UAParser())
   }, [])
   return parser
+}
+
+function usePv(title: string) {
+  const router = useRouter()
+  const path = router.pathname
+  useEffect(() => {
+    pv(title, path)
+  }, [title, path])
 }

@@ -29,7 +29,6 @@ const sensorsScriptContent = `
   heatmap: {},
   show_log: false
 });
-sensors.quick('autoTrack');
 `
 
 class MyDocument extends Document {
