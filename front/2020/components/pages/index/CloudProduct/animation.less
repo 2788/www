@@ -1,0 +1,56 @@
+.area {
+  .levitate {
+    animation-name: levitateReverse;
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
+
+  .levitate1 {
+    .levitate();
+  }
+
+  .levitate2 {
+    .levitate();
+  }
+
+  .levitate3 {
+    .levitate();
+  }
+
+  &:hover {
+    .levitate1 {
+      animation-name: levitate;
+      animation-delay: 0s;
+    }
+
+    .levitate2 {
+      animation-name: levitate;
+      animation-delay: 0.1s;
+    }
+
+    .levitate3 {
+      animation-name: levitate;
+      animation-delay: 0.2s;
+    }
+  }
+}
+
+@keyframes levitate {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes levitateReverse {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

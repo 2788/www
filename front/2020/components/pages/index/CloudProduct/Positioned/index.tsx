@@ -11,17 +11,21 @@ import React, { ReactNode, useRef, useEffect, useContext } from 'react'
 import useIsomorphicLayoutEffect from 'hooks/use-isomorphic-layout-effect'
 import { Context } from '..'
 
+import animation from '../animation.less'
+
 export type Props = {
   identity?: string
   top: number
   left: number
   zIndex?: number
   animated?: boolean
+  // 是否是组件动画的区域
+  animationArea?: boolean
   children: ReactNode
 }
 
 export default function Positioned(props: Props) {
-  const { children, animated = true, identity, top, left, zIndex } = props
+  const { children, animated = true, animationArea = true, identity, top, left, zIndex } = props
   const ref = useRef<HTMLDivElement>(null)
   const { getPrevOffset, registerOffset } = useContext(Context)
 
@@ -62,7 +66,7 @@ export default function Positioned(props: Props) {
   }, [registerOffset, identity, top, left])
 
   return (
-    <div ref={ref} style={{ position: 'absolute', top, left, zIndex }}>
+    <div ref={ref} className={animationArea && animation.area || ''} style={{ position: 'absolute', top, left, zIndex }}>
       {children}
     </div>
   )
