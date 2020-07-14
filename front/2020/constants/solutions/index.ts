@@ -163,7 +163,7 @@ export const descMap: MapTo<string> = {
 }
 
 export const categorySolutionsMap = {
-  [Category.Scene]: [Solution.Qavs, Solution.Plsv, Solution.Kodoe, Solution.Vcs, Solution.Ess],
+  [Category.Scene]: [Solution.Qavs, Solution.Plsv, Solution.Kodoe, Solution.Ess],
   [Category.Industry]: [
     Solution.Fin, Solution.Edu, Solution.Automobile, Solution.ECommerce,
     Solution.IntelligentManufacturing, Solution.Social, Solution.Isp

@@ -7,6 +7,7 @@ import React from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
+import Section from 'components/Product/Section'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import EssArch from 'components/pages/ess/Arch'
 import EssIndustry from 'components/pages/ess/Industry'
@@ -14,7 +15,9 @@ import EssUnique from 'components/pages/ess/Unique'
 import EssAdvantage from 'components/pages/ess/Advantage'
 import EssScene from 'components/pages/ess/Scene'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
+import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
@@ -48,6 +51,15 @@ function PageContent() {
       <EssAdvantage />
 
       <EssScene />
+
+      <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
+        <Related>
+          <RelatedProduct product={Product.Kodo} />
+          <RelatedProduct product={Product.Qvs} />
+          <RelatedProduct product={Product.Dora} />
+          <RelatedProduct product={Product.Cdn} />
+        </Related>
+      </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
         <UsageGuideButton onClick={startConsulting}>

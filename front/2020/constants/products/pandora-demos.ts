@@ -22,7 +22,7 @@ export const maintenanceDemos: IDemoCardProps[] = [
   {
     title: 'K8s 日志分析',
     link:
-      'https://pandora-express.qiniu.com/apps/application/kubenetesDashboard/Nodes',
+      'https://pandora-express.qiniu.com/apps/application/kubenetes/Nodes',
     content: `采集 Kubernetes 集群日志，面向基础架构和业务应用的不同场景下全景监控及下钻分析。
 1、支持跨 Kubernetes 堆栈的全面可观测。
 2、使用 Kubernetes 模型实时监控应用端到端的服务质量快速定位故障。

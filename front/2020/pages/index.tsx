@@ -45,6 +45,8 @@ import bannerFaceidPc from './_images/banner-faceid-pc.png'
 import bannerFaceidMobile from './_images/banner-faceid-mobile.png'
 import bannerKodoPc from './_images/banner-kodo-pc.png'
 import bannerKodoMobile from './_images/banner-kodo-mobile.png'
+import bannerSslPc from './_images/banner-ssl-pc.png'
+import bannerSslMobile from './_images/banner-ssl-mobile.png'
 
 // TODO: 这个内容后边改为从接口来，对接 BO 的数据
 const simpleBanners = [
@@ -55,6 +57,14 @@ const simpleBanners = [
     imgPc: bannerFaceidPc,
     imgMobile: bannerFaceidMobile,
     href: 'https://marketing.qiniu.com/activity/activity-faceid?entry=index-banner'
+  },
+  {
+    key: 'ssl',
+    title: 'SSL 证书年中采购季',
+    bgColor: '#48256a',
+    imgPc: bannerSslPc,
+    imgMobile: bannerSslMobile,
+    href: 'https://marketing.qiniu.com/activity/activity-ssl?entry=index-banner'
   },
   {
     key: 'kodoPackage',

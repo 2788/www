@@ -15,36 +15,29 @@
 }
 
 .contentWrapper {
-  .centeredWithLg();
+  width: 100%;
+
+  .pcLg({
+    margin: 0 auto;
+    width: @centered-content-width-lg;
+  });
 
   height: @banner-height;
   color: @grey-1;
-  display: flex;
-  justify-content: center;
-
-  &.verticalCenter {
-    align-items: center;
-  }
 
   .mobile({
-    width: 100%;
     height: auto;
     min-height: @mobile-banner-height;
     padding: 26px 24px;
-    align-items: center;
   });
 }
 
 .content {
-  margin-top: 76px;
-  flex: 1 1;
+  .centered();
 
-  &.marginTopNone {
-    margin-top: 0;
-  }
-
+  padding-top: 76px;
   .mobile({
-    margin-top: 0;
+    padding-top: 0;
   });
 }
 
@@ -69,7 +62,7 @@
     margin-top: 5px;
     font-size: 12px;
     line-height: 18px;
-    height: auto;
+    min-height: 36px;
     width: auto;
   });
 }
@@ -78,7 +71,7 @@
   margin-top: 86px;
 
   .mobile({
-    margin-top: 20px;
+    margin-top: 2px;
   });
 }
 

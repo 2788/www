@@ -1,7 +1,6 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
 
-import { useMobile } from 'hooks/ua'
 import styles from './style.less'
 
 interface IndexPageBannerProps {
@@ -9,15 +8,13 @@ interface IndexPageBannerProps {
   desc?: ReactNode
   bgColor?: string
   btns?: ReactNode[]
-  icon?: ReactNode
   bgImg: string
   className?: string
   href?: string
 }
 
 export default function IndexPageBanner(props: IndexPageBannerProps) {
-  const { title, desc, bgColor = '#34A1EC', btns, icon, bgImg, className, href } = props
-  const isMobile = useMobile()
+  const { title, desc, bgColor = '#34A1EC', btns, bgImg, className, href } = props
 
   function renderBtnWrapper() {
     if (!btns || !btns.length) {
@@ -35,21 +32,14 @@ export default function IndexPageBanner(props: IndexPageBannerProps) {
     )
   }
 
-  function renderIconWrapper() {
-    if (!icon || isMobile) {
-      return null
-    }
-
-    return <div className={styles.iconWrapper}>{icon}</div>
-  }
-
   const bgColorStyle = {
     backgroundColor: bgColor
   }
 
-  const bgStyle = {
+  const bgStyle: CSSProperties = {
     backgroundImage: bgImg ? `url(${bgImg})` : '',
     backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
   }
 
@@ -66,7 +56,6 @@ export default function IndexPageBanner(props: IndexPageBannerProps) {
         <div className={styles.desc}>{desc}</div>
         {renderBtnWrapper()}
       </div>
-      {renderIconWrapper()}
     </div>
   ))
 }
