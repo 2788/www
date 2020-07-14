@@ -20,6 +20,7 @@ export const maintenanceDemos: IDemoCardProps[] = [
   },
   {
     title: 'K8S 日志分析',
+    link: 'https://pandora-express.qiniu.com/apps/application/kubenetesDashboard/Nodes',
     content: `采集 Kubernetes 集群日志，面向基础架构和业务应用的不同场景下全景监控及下钻分析。
 1、支持跨 Kubernetes 堆栈的全面可观测。
 2、使用 Kubernetes 模型实时监控应用端到端的服务质量快速定位故障。
@@ -118,6 +119,7 @@ export const securityDemos: IDemoCardProps[] = [
 export const BIDemos: IDemoCardProps[] = [
   {
     title: '大屏应用',
+    link: 'https://pandora-express.qiniu.com/apps/application/monitorViz/screen',
     content: `自定义数据可视化大屏应用，帮助数据分析师更专注业务，轻松搭建专业水准的可视化大屏，满足运维监控、业务运营等全面展示需求。 
 1、提供丰富的模板，支持接入自定义组件。
 2、支持接入多种数据源包括各种数据库、本地 CSV 等。

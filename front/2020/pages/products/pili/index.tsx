@@ -62,7 +62,7 @@ function PageContent() {
             pos="top-down"
             align="left"
             icon={<DelayIcon />}
-            title="延迟"
+            title="毫秒级延迟"
           >
             <FeatureDesc>自适应直播场景优选调度线路，毫秒级延迟满足更好的直播体验</FeatureDesc>
           </FeatureItem>
@@ -70,7 +70,7 @@ function PageContent() {
             pos="top-down"
             align="left"
             icon={<PackageLossIcon />}
-            title="丢包"
+            title="弱网抗丢包"
           >
             <FeatureDesc>路由传输动态选择，支持 QUIC 等推流协议，优化弱网环境推流服务品质</FeatureDesc>
           </FeatureItem>
