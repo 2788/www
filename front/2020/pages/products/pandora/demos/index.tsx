@@ -62,7 +62,7 @@ export default function ExpressDemoPage() {
             </TabPane>
           </Tabs>
           <div className={style.footer}>
-            <Link>
+            <Link href="https://pandora-express.qiniu.com/apps">
               <span>更多详情见应用市场</span>
               <ArrowIcon />
             </Link>

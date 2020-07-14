@@ -18,6 +18,9 @@ export default function DemoCard({ title, content, link }: IDemoCardProps) {
   const isMobile = useMobile()
   rootCls.push(isMobile ? style.mobileDemoCard : style.pcDemoCard)
 
+  // 没有目标跳转地址的就先隐藏之
+  if (!link) return null
+
   const btnProps = {
     type: 'hollow',
     className: style.button,

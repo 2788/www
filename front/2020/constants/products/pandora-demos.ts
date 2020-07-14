@@ -8,11 +8,13 @@ export const maintenanceDemos: IDemoCardProps[] = [
   },
   {
     title: '服务器监控',
+    link: 'https://pandora-express.qiniu.com/apps/application/metrics/metrics-overview',
     content:
       '提供开箱即用的一站式服务器监控解决方案，包括服务器资源使用情况概览、报警事件概览、报警规则管理、机器/机器组管理模块，实时监控机器/机器集群的硬件资源、性能等，分析判断服务器的异常问题、性能瓶颈及安全隐患，并完成告警配置管理，提升企业 IT 运维效率。'
   },
   {
     title: '全链路追踪',
+    link: 'https://pandora-express.qiniu.com/apps/application/traceViz/chart',
     content:
       '全链路追踪监控应用性能，兼容 zipkin、pinpoint、skywalking 和 jaeger 等开源 Tracing 方案。采集埋点日志数据，实时分析得出同一次请求上各服务间的调用链关系，定位性能消耗原因、辅助性能优化、进行异常定位等。'
   },
@@ -42,22 +44,26 @@ export const maintenanceDemos: IDemoCardProps[] = [
   },
   {
     title: 'Linux',
+    link: 'https://pandora-express.qiniu.com/apps/application/linux/overview',
     content: `集中监控 linux 操作系统环境
 1、使用机器学习感知并防范对环境的已知和未知威胁，发现安全事件简化安全性和合规审计工作。
 2、统一采集 Linux 环境服务器、应用程序、安全、进程等日志和指标数据并作关联分析，实时设置访问、安全事件告警规则，快速定位故障，洞察操作系统性能，提高系统可靠性。`
   },
   {
     title: 'Nginx',
+    link: 'https://pandora-express.qiniu.com/apps/application/Nginx/overview',
     content:
       '分析 NGINX 服务使用情况、性能和用户访问链路，跟踪用户行为、快速定位故障及了解关键瓶颈以优化用户体验。'
   },
   {
     title: 'Apache',
+    link: 'https://pandora-express.qiniu.com/apps/application/Apache/overview',
     content:
       '采集并实时分析 Apache 的 access 和 error 日志，进行可视化展现，通过内置解析和分析模型深入详细分析。洞察用户访问行为，快速发现所有不同类型的访客以及定位问题请求，提高服务器性能。查看访问者使用资产，以便优化网络，改善用户体验。'
   },
   {
     title: 'Mysql',
+    link: 'https://pandora-express.qiniu.com/apps/application/mysql/overview',
     content: `汇总并监视您的关键 MySQL 基础结构日志
 1、轻松汇总所有 MySQL 日志，以获得全面的可见性。
 2、使用预建的仪表板，搜索和警报，可轻松进行实时监控。
@@ -74,6 +80,7 @@ export const securityDemos: IDemoCardProps[] = [
   },
   {
     title: '车联网安全分析',
+    link: 'https://pandora-express.qiniu.com/apps/application/car_security_events/screen',
     content:
       '统一采集车辆、app 端、云端及通信数据，实时展现网联车运行状态，针对网联车面临的各类安全风险，使用分析模型从协议层、事务层、环境层和行为层分析识别各类已知及未知威胁，比如车辆与云端服务中心的通信数据是否存在恶意代码，根据车辆状态数据分析是否存在异常指令，是否存在身份盗窃等。'
   },
@@ -89,12 +96,14 @@ export const securityDemos: IDemoCardProps[] = [
   },
   {
     title: 'PCI 合规 Windows',
+    link: 'https://pandora-express.qiniu.com/apps/application/pci_for_windows/pci_compliance_for_windows_system_service',
     content: `Windows PCI 合规性 App，可以满足不断发展的 PCI 要求，减轻监管合规负担。
 1、通过日志快速检索及自定义数据可视化轻松满足 PCI 审核要求。
 2、实时监控所有基础架构，发现安全漏洞。通过自定义规则或内置机器学习算法驱动主动分析，检测关键事件。`
   },
   {
     title: 'PCI 合规 Linux',
+    link: 'https://pandora-express.qiniu.com/apps/application/pci_for_linux/pci_compliance_for_linux_system_monitoring',
     content: `Linux PCI 合规性 App，可以满足不断发展的 PCI 要求，减轻监管合规负担。
 1、通过日志快速检索及自定义数据可视化轻松满足 PCI 审核要求。
 2、实时监控所有基础架构，发现安全漏洞。通过自定义规则或内置机器学习算法驱动主动分析，检测关键事件。`
@@ -116,6 +125,7 @@ export const BIDemos: IDemoCardProps[] = [
   },
   {
     title: '交易追踪\n &\n 业务链路分析',
+    link: 'https://pandora-express.qiniu.com/apps/application/traceViz/chart',
     content:
       '通过唯一字段关联业务日志，实现端到端业务全链路监控及可视化，实时统计分析交易链路关键指标，快速调查业务流程中的任何问题，发现瓶颈和影响。'
   },
