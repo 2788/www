@@ -3,8 +3,10 @@
  */
 
 import React from 'react'
+import { chunk } from 'lodash'
 
 import Layout from 'components/Product/Layout'
+import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
 import PageNotice, {
   Group as PageNoticeGroup,
@@ -12,11 +14,12 @@ import PageNotice, {
 } from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import QavsFeature from 'components/pages/qavs/Feature'
 import QavsArch from 'components/pages/qavs/Arch'
 import QavsScene from 'components/pages/qavs/Scene'
+import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
+import { categoryVideo } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
@@ -56,30 +59,16 @@ function PageContent() {
 
       <QavsScene />
 
-      <LinkGroups title="相关文档">
-        <LinkGroup title="常用文档">
-          <LinkItem href="https://developer.qiniu.com/pili/manual/1209/live-the-core-function">
-            直播云技术白皮书
-          </LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/manual/1217/live-architecture-fleetly">
-            直播架构快速搭建
-          </LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3919/a-short-video-the-white-paper">
-            七牛短视频白皮书
-          </LinkItem>
-          <LinkItem href="https://developer.qiniu.com/rtn/manual/4373/cloud-real-time-audio-and-video-interaction">
-            实时音视频白皮书
-          </LinkItem>
-        </LinkGroup>
-        <LinkGroup title="其他">
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download">
-            短视频 demo 体验
-          </LinkItem>
-          <LinkItem href="https://developer.qiniu.com/rtn/manual/4374/the-demo-experience">
-            实时音视频 demo 体验
-          </LinkItem>
-        </LinkGroup>
-      </LinkGroups>
+      <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
+        {chunk(categoryVideo, 4).map((group, i) => (
+          <Related key={i}>
+            {group.map(product => (
+              <RelatedProduct key={product} product={product} />
+            ))}
+          </Related>
+        ))}
+      </Section>
+
     </>
   )
 }
