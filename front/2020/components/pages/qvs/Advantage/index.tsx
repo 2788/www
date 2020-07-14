@@ -35,7 +35,7 @@ export default function Advantage() {
           </Desc>
         </Item>
         <Item title="多场景支持" icon={<Icon5 />}>
-          <Desc className={style.featureItemDesc}>灵活的流处理转换机制，观看存储按需转换，覆盖多应用场景</Desc>
+          <Desc className={style.featureItemDesc}>灵活的流处理机制，录制、截图模板的配置规则，可覆盖众多应用场景</Desc>
         </Item>
         <Item title="视频处理" icon={<Icon6 />}>
           <Desc className={style.featureItemDesc}>用户可结合智能多媒体服务，实现视频截帧后的图片处理、录制文件的转码处理</Desc>
