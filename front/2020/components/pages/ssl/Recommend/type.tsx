@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { urlFor, UrlParams } from 'utils'
 
 export enum SiteType {
   Personal,
@@ -102,6 +103,26 @@ enum CertType {
   DvWildcard = 'dv_wildcard'
 }
 
+export enum CertShortName {
+  TrustAsiaDVG5 = 'TrustAsiaDVG5',
+  TrustAsiaDVSANsG5 = 'TrustAsiaDVSANsG5',
+  TrustAsiaDVWildcardG5 = 'TrustAsiaDVWildcardG5',
+  TrueBizIDEV = 'TrueBizIDEV',
+  TrueBizIDWildcard = 'TrueBizIDWildcard',
+  TrueBizID = 'TrueBizID',
+  SecureSiteProEV = 'SecureSiteProEV',
+  SecureSiteEV = 'SecureSiteEV',
+  SecureSitePro = 'SecureSitePro',
+  SecureSite = 'SecureSite',
+  SecureSiteWildCard = 'SecureSiteWildCard',
+  SecureSiteWildCardPro = 'SecureSiteWildCardPro',
+  TrustAsiaOVWildcardD3 = 'TrustAsiaOVWildcardD3',
+  TrustAsiaOVD3 = 'TrustAsiaOVD3',
+  TrustAsiaOVSANsD3 = 'TrustAsiaOVSANsD3',
+  TrustAsiaEVD3 = 'TrustAsiaEVD3',
+  TrustAsiaEVSANsD3 = 'TrustAsiaEVSANsD3'
+}
+
 export const certTypeTipMap = {
   [CertType.Ov]: '对域名所有权和企业身份信息进行验证，浏览器上有 HTTPS 提示并有绿锁标记',
   [CertType.OvPro]: '对域名所有权和企业身份信息进行验证，浏览器上有 HTTPS 提示并有绿锁标记',
@@ -130,6 +151,11 @@ export const certList: CertInfo[] = [
     type: CertType.Dv,
     price: 0,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrustAsiaDVG5,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Personal,
       domainType: DomainType.Normal,
@@ -140,8 +166,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.TrustAsia,
     type: CertType.DvWildcard,
-    price: 1999,
+    price: 1699,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrustAsiaDVWildcardG5,
+      wildcardLimit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Personal,
       domainType: DomainType.Wildcard,
@@ -153,8 +184,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.EvPro,
-    price: 12650,
+    price: 9487.5,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteProEV,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -165,8 +201,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.EvPro,
-    price: 25300,
+    price: 18975,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteProEV,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -177,8 +218,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.OvPro,
-    price: 68000,
+    price: 51000,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteWildCardPro,
+      wildcardLimit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Wildcard,
@@ -190,8 +236,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.OvPro,
-    price: 7650,
+    price: 5355,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSitePro,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -202,8 +253,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.Ev,
-    price: 7950,
+    price: 5565,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteEV,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -214,8 +270,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.OvPro,
-    price: 15300,
+    price: 10710,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSitePro,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -226,8 +287,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.Ev,
-    price: 15900,
+    price: 11130,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteEV,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -238,8 +304,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.OvPro,
-    price: 68000,
+    price: 51000,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteWildCardPro,
+      wildcardLimit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Wildcard,
@@ -250,8 +321,14 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.OvPro,
-    price: 83300,
+    price: 58310,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSitePro,
+      wildcardLimit: 1,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.MultipleWildcard,
@@ -263,8 +340,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.Ov,
-    price: 4850,
+    price: 3637.5,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSite,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -275,8 +357,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.TrustAsia,
     type: CertType.Ev,
-    price: 8075,
+    price: 6650,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrustAsiaEVD3,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -287,8 +374,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.Ov,
-    price: 9700,
+    price: 7275,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSite,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -299,8 +391,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.TrustAsia,
     type: CertType.Ev,
-    price: 11050,
+    price: 9100,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrustAsiaEVSANsD3,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -311,8 +408,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.Ov,
-    price: 38000,
+    price: 28500,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteWildCard,
+      wildcardLimit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Wildcard,
@@ -323,8 +425,14 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.DigiCert,
     type: CertType.Ov,
-    price: 47700,
+    price: 35775,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.SecureSiteWildCard,
+      wildcardLimit: 1,
+      limit: 2,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.MultipleWildcard,
@@ -336,8 +444,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.Geotrust,
     type: CertType.Ov,
-    price: 2850,
+    price: 1995,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrueBizID,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -348,8 +461,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.Geotrust,
     type: CertType.Ev,
-    price: 4850,
+    price: 3637.5,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrueBizIDEV,
+      limit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Normal,
@@ -360,8 +478,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.Geotrust,
     type: CertType.Ov,
-    price: 5450,
+    price: 3815,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrueBizID,
+      limit: 5,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -372,8 +495,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.Geotrust,
     type: CertType.Ev,
-    price: 9650,
+    price: 7237.5,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrueBizIDEV,
+      limit: 5,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Multiple,
@@ -384,8 +512,13 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.Geotrust,
     type: CertType.Ov,
-    price: 6850,
+    price: 4795,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrueBizIDWildcard,
+      wildcardLimit: 1,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.Wildcard,
@@ -396,8 +529,14 @@ export const certList: CertInfo[] = [
   {
     brand: CertBrand.Geotrust,
     type: CertType.Ov,
-    price: 12300,
+    price: 8610,
     unit: '元/年',
+    link: formatCertLink({
+      shortName: CertShortName.TrueBizID,
+      wildcardLimit: 1,
+      limit: 5,
+      years: 1
+    }),
     chooseInfo: {
       siteType: SiteType.Enterprise,
       domainType: DomainType.MultipleWildcard,
@@ -407,37 +546,74 @@ export const certList: CertInfo[] = [
   }
 ]
 
+interface CertLinkParam {
+  shortName: CertShortName
+  limit?: number
+  wildcardLimit?: number
+  years?: number
+}
+
+export function formatCertLink(params: CertLinkParam) {
+  const certLinkUrl = 'https://portal.qiniu.com/certificate/apply'
+  return urlFor(certLinkUrl, params as unknown as UrlParams)
+}
+
 export const certForCompanySite = {
   brand: CertBrand.DigiCert,
   type: CertType.Ov,
-  price: 4850,
+  link: formatCertLink({
+    shortName: CertShortName.SecureSite,
+    limit: 1,
+    years: 1
+  }),
+  price: 3637.5,
   unit: '元/年'
 }
 
 export const certForCompanyApp = {
   brand: CertBrand.Geotrust,
   type: CertType.Ov,
-  price: 2850,
+  link: formatCertLink({
+    shortName: CertShortName.TrueBizID,
+    limit: 1,
+    years: 1
+  }),
+  price: 1995,
   unit: '元/年'
 }
 
 export const certForGov = {
   brand: CertBrand.DigiCert,
   type: CertType.EvPro,
-  price: 12650,
+  link: formatCertLink({
+    shortName: CertShortName.SecureSiteProEV,
+    limit: 1,
+    years: 1
+  }),
+  price: 9487.5,
   unit: '元/年'
 }
 
 export const certForPay = {
   brand: CertBrand.DigiCert,
   type: CertType.Ev,
-  price: 7950,
+  link: formatCertLink({
+    shortName: CertShortName.SecureSiteEV,
+    limit: 1,
+    years: 1
+  }),
+  price: 5565,
   unit: '元/年'
 }
 
 export const certForApi = {
   brand: CertBrand.TrustAsia,
   type: CertType.DvWildcard,
-  price: 1999,
+  link: formatCertLink({
+    shortName: CertShortName.TrustAsiaDVWildcardG5,
+    wildcardLimit: 1,
+    years: 1
+  }),
+  price: 1699,
   unit: '元/年'
 }
