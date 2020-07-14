@@ -17,8 +17,8 @@ export default function Price() {
       </PricePaneSection>
       <PricePaneSection title="价格详情" className={style.desc}>
         <Tabs defaultValue="1" size="middle">
-          <TabPane value="1" tab="中国大陆"><MainLand /></TabPane>
-          <TabPane value="2" tab="其他地区">
+          <TabPane value="1" tab="中国大陆流量"><MainLand /></TabPane>
+          <TabPane value="2" tab="其他地区流量">
             <Other />
           </TabPane>
           <TabPane value="3" tab="动态加速请求数">
