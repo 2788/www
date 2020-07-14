@@ -4,7 +4,7 @@ import Collaborate from 'components/pages/contact/Collaborate'
 import Layout from 'components/Product/Layout'
 import Distribution from 'components/pages/contact/Distribution'
 
-import banner from './_images/banner.file.svg'
+import imgBanner from './_images/banner.png'
 
 export default function Contact() {
   return (
@@ -13,7 +13,7 @@ export default function Contact() {
       keywords="联系, 联系七牛"
       description=""
     >
-      <Banner background={banner}>
+      <Banner background={imgBanner} backgroundSize="contain" backgroundPosition="right bottom">
         <Title>联系我们</Title>
         <Desc>客户第一，您的满意是我们追求的目标</Desc>
       </Banner>

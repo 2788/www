@@ -21,7 +21,7 @@ import Honor from 'components/company/Honor'
 
 import styles from './style.less'
 
-import banner from './_images/banner-icon.file.svg'
+import imgBanner from './_images/banner.png'
 import IconMissionMan from './_images/icon-mission-man.svg'
 import IconMissionBuilding from './_images/icon-mission-building.svg'
 import IconCultureMan from './_images/icon-culture-man.svg'
@@ -34,7 +34,7 @@ function PageContent() {
 
   return (
     <div className={styles.pageContent}>
-      <Banner background={banner} backgroundSize="300px" backgroundPosition="right 100px top 62px">
+      <Banner background={imgBanner} backgroundSize="contain" backgroundPosition="right bottom">
         <Title className={styles.bannerTitle}>连接数据 重塑价值</Title>
       </Banner>
 
