@@ -208,21 +208,21 @@ const data = [
     type: '弹性公网 IP',
     mode: '包年包月（预付费）',
     category: '按固定带宽计费',
-    desc: '<strong>带宽费：</strong>根据 EIP 带宽大小计费<br /><strong>保有费：</strong>0.019 ～ 0.06 元/个/小时<br /><br />说明：保有费是指 IP 资源闲置，无绑定实例。'
+    desc: '<strong>带宽费：</strong>根据 EIP 带宽大小计费<br /><strong>配置费：</strong>0.02 ～ 0.06 元/个/小时'
   },
   {
     key: 5,
     type: '弹性公网 IP',
     mode: '按量付费（后付费)',
     category: '按固定带宽计费',
-    desc: '<strong>带宽/流量费：</strong>根据 EIP 带宽/流量计费<br /><strong>保有费：</strong>0.019 ～ 0.06 元/个/小时'
+    desc: '<strong>带宽/流量费：</strong>根据 EIP 带宽/流量计费<br /><strong>配置费：</strong>0.02 ～ 0.06 元/个/小时'
   },
   {
     key: 6,
     type: '弹性公网 IP',
     mode: '按量付费（后付费)',
     category: '按使用流量计费',
-    desc: '带宽/流量费：根据 EIP 带宽/流量计费<br />保有费：0.019 ～ 0.06 元/个/小时'
+    desc: ''
   },
   {
     key: 7,
@@ -403,7 +403,7 @@ const data = [
     type: '新 BGP 高防 IP',
     mode: '包年包月（预付费）',
     category: '业务带宽<br /><br /><i>说明：实例支持处理的无攻击情况下最大业务流量。</i>',
-    desc: '默认 1  说明，增加每 Mb 说明：95 元/月'
+    desc: '默认 100 Mb，增加每 1 Mb ：95 元/月'
   },
   {
     key: 31,
