@@ -38,7 +38,7 @@ export default function QvmSpecs({ starterConfig, enterpriseConfig, metaInfo }: 
   )
 
   return (
-    <Tabs defaultValue={Type.Primary}>
+    <Tabs defaultValue={Type.Enterprise}>
       <TabPane value={Type.Primary} tab="入门版">
         <Row>
           {promaryCardsview}
