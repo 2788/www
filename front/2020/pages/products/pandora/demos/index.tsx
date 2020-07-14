@@ -2,8 +2,8 @@
  * @file 产品“机器数据分析平台” demo 聚合页
  */
 
-import React from 'react'
-import Layout from 'components/Product/Layout'
+import React, { useEffect } from 'react'
+import Layout from 'components/Layout'
 import Banner, { Title } from 'components/Banner'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import Link from 'components/Link'
@@ -14,6 +14,7 @@ import {
   securityDemos,
   BIDemos
 } from 'constants/products/pandora-demos'
+import { useHash } from 'hooks/url'
 import bannerImg from './_images/banner.png'
 import ArrowIcon from './_images/arrow.svg'
 
@@ -22,6 +23,11 @@ import style from './style.less'
 const BreadcrumbItem = Breadcrumb.Item
 
 export default function ExpressDemoPage() {
+  const [active, setActive] = useHash()
+  useEffect(() => {
+    window.scroll({ top: 0 })
+  }, [])
+
   return (
     <Layout
       title="Pandora Demo 体验"
@@ -44,18 +50,22 @@ export default function ExpressDemoPage() {
             </BreadcrumbItem>
             <BreadcrumbItem>Demo 体验</BreadcrumbItem>
           </Breadcrumb>
-          <Tabs defaultValue="1" contentClassName={style.tabContent}>
-            <TabPane tab="运维监控" value="1">
+          <Tabs
+            value={active || 'maintenance'}
+            onChange={setActive}
+            contentClassName={style.tabContent}
+          >
+            <TabPane tab="运维监控" value="maintenance">
               {maintenanceDemos.map((item, index) => (
                 <DemoCard key={index} {...item} />
               ))}
             </TabPane>
-            <TabPane tab="安全分析" value="2">
+            <TabPane tab="安全分析" value="security">
               {securityDemos.map((item, index) => (
                 <DemoCard key={index} {...item} />
               ))}
             </TabPane>
-            <TabPane tab="BI 分析" value="3">
+            <TabPane tab="BI 分析" value="BI">
               {BIDemos.map((item, index) => (
                 <DemoCard key={index} {...item} />
               ))}

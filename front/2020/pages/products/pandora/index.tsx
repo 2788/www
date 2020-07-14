@@ -117,15 +117,15 @@ function PageContent() {
       </Scene>
 
       <Section name="demos" title="Demo 体验">
-        <Demo name="运维监控" img={imgDemo1} url="/products/pandora/demos">
+        <Demo name="运维监控" img={imgDemo1} url="/products/pandora/demos#maintenance">
           实时采集并监控资源、系统、应用层日志及指标数据，快速定位系统故障，将被动监控转化为主动监控，实现开发运维一体化，提高自动化运维管理效率。
         </Demo>
-        <Demo name="安全分析" img={imgDemo2} url="/products/pandora/demos" reverse>
+        <Demo name="安全分析" img={imgDemo2} url="/products/pandora/demos#security" reverse>
           安全风险全面可观测，提供业务、架构、网络等维度风险管理能力，协助企业通过安全数据分析快速应对威胁，加快调查并满足合规性要求。
           <br /><br />
           通过用于安全性，合规性和配置的统一工具为您的 SecOps 团队提供支持。快速识别网络、系统、操作层安全威胁和风险，加速安全信息和事件调查管理，满足合规性要求。
         </Demo>
-        <Demo name="BI 分析" img={imgDemo3} url="/products/pandora/demos">
+        <Demo name="BI 分析" img={imgDemo3} url="/products/pandora/demos#BI">
           关联复杂业务系统，实现业务全面化实时监控，结合机器学习能力主动发现业务风险，并分析和预测客户行为，通过数据驱动业务决策实现商业智能。
         </Demo>
       </Section>
