@@ -74,7 +74,7 @@ export default function Pc() {
             <div className={styles.content}>
               <div className={styles.title}>极致播放体验</div>
               <div className={styles.desc}>
-                提供免费的播放器 SDK，秒开 200 ms，包体小至 400 K，千万日活验证，给用户畅享流畅无卡顿的视频体验。
+                提供免费的播放器 SDK，秒开 200 ms，包体小至 400 K，千万日活验证，给用户流畅无卡顿的视频体验。
               </div>
               <div className={styles.desc}>
                 相关文档：

@@ -69,7 +69,7 @@ export default function Pc() {
           <div className={styles.order}>02</div>
           <div className={styles.info}>
             <div className={styles.title}>人脸识别</div>
-            <div className={styles.desc}>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果</div>
+            <div className={styles.desc}>基于准确的人脸识别提供实时美颜、动态贴纸、大眼瘦脸等功能，实现萌拍效果</div>
           </div>
         </div>
         <div className={classnames(styles.item, active === 'tiktok' && styles.active)}>

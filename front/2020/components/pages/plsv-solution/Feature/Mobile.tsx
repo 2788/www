@@ -58,7 +58,7 @@ export default function Mobile() {
       >
         <div className={styles.subMenu}>
           <FeatureIconFace className={styles.icon} />
-          <div className={styles.desc}>基于准确的人脸识别进行实时美颜、人脸动态贴纸、大眼瘦脸，实现萌拍效果</div>
+          <div className={styles.desc}>基于准确的人脸识别提供实时美颜、动态贴纸、大眼瘦脸等功能，实现萌拍效果</div>
         </div>
       </SubMenu>
       <SubMenu

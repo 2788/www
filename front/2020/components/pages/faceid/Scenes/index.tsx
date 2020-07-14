@@ -25,7 +25,7 @@ export default function Scenes() {
         <Block className={style.imgBlock}><Img2 /></Block>
         <Block className={style.detailBlock} shadow>
           <h5 className={style.title}>在线教育</h5>
-          <p className={style.desc}>在线教育对老师、学生在注册、登录、播前、播中、考试等环节中需要进行身份核实，可以通过人脸核验服务确保教学双方真实可信。</p>
+          <p className={style.desc}>在线教育需要对老师、学生在注册、登录、播前、播中、考试等环节中进行身份核实，可以通过人脸核验服务确保教学双方真实可信。</p>
         </Block>
       </Panel>
       <Panel name="3" title="直播">

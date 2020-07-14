@@ -41,7 +41,7 @@ export default function QavsScene() {
           <Cards.Content>
             <Cards.Title>在线教育</Cards.Title>
             <Cards.Desc>
-              利用互联网音视频技术，在线教育解决了优质教育资源传递的时空限制。七牛智能视频云助力用户打造集直播课堂、实时互动、点播回放、智能视频标签、智能视频推荐等功能为一体的在线教育平台。
+              利用互联网音视频技术，在线教育突破了优质教育资源传递的时空限制。七牛智能视频云助力用户打造集直播课堂、实时互动、点播回放、智能视频标签、智能视频推荐等功能为一体的在线教育平台。
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
@@ -61,7 +61,7 @@ export default function QavsScene() {
           <Cards.Content>
             <Cards.Title>智慧法院</Cards.Title>
             <Cards.Desc>
-              依托七牛智能视频云，司法机构可以充分运用互联网、大数据、云计算、人工智能等先进信息技术实现海量视频存储、公开开庭案件实时直播、视频及文书内容检索分析等场景。
+              依托七牛智能视频云，司法机构可以充分运用互联网、大数据、云计算、人工智能等先进信息技术，满足海量视频存储、公开开庭案件实时直播、视频及文书内容检索分析等需求。
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>

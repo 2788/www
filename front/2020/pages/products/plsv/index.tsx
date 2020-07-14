@@ -44,7 +44,7 @@ function PageContent() {
       <PageNotice>
         <PageNoticeGroup title="产品推荐" type="welfares">
           <PageNoticeItem href="/products/svesdk">
-            短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省的打造专业级短视频制作工具
+            短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省地打造专业级短视频制作工具
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>

@@ -83,7 +83,7 @@ export default function PiliScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer} shadow>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>利用互联网音视频技术，在线教育解决了优质教育资源传递的时空限制。
+          <p className={styles.sceneContent}>利用互联网音视频技术，在线教育突破了优质教育资源传递的时空限制。
             七牛智能视频云助力用户打造集直播课堂、实时互动、点播回放、智能视频标签、智能视频推荐等功能为一体的在线教育平台，同时也为开发者开放了专业稳定的推流推流、转码、分发、播放等服务。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>客户案例</p>
           <SceneClientGroup>

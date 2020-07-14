@@ -1,5 +1,6 @@
 import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
+import Link from 'components/Link'
 
 import styles from './style.less'
 
@@ -43,7 +44,7 @@ export default function IndexPageBanner(props: IndexPageBannerProps) {
     backgroundSize: 'cover'
   }
 
-  const wrapperTag = href != null ? 'a' : 'div'
+  const wrapperTag = href != null ? Link : 'div'
 
   return React.createElement(wrapperTag, {
     className: classnames(styles.mainWrapper, styles.index, className),

@@ -37,7 +37,7 @@ export default function PlsvAdvantage() {
           title="包体轻盈，性能优异"
           align="left"
         >
-          <FeatureDesc>可插拔式设计，包体小至 1.5 M 功耗低，内存占用小，速度/效率一流</FeatureDesc>
+          <FeatureDesc>可插拔式设计，包体小至 1.5 M，功耗低，内存占用小，速度/效率一流</FeatureDesc>
         </FeatureItem>
 
         <FeatureItem

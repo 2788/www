@@ -32,7 +32,7 @@ export default function CdnScene() {
           <p className={styles.sceneContent}>网页静态资源优化加速分发，例如：HTML、CSS、JS、img、短视频等。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
-            <li className={styles.item}>全站 HTTPS 保证网站访问安全； TCP 压缩优化使网页大图，样式等完成秒级加载，缩短网页响应时间提高用户体验。</li>
+            <li className={styles.item}>全站 HTTPS 保证网站访问安全；TCP 压缩优化使网页大图、样式等完成秒级加载，缩短网页响应时间提高用户体验。</li>
             <li className={styles.item}>配合七牛云-图片处理服务一起使用，还可以针对图片进行缩略、打水印，转格式等数据处理服务。</li>
           </ul>
         </SceneBlock>

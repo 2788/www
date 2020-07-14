@@ -32,7 +32,7 @@ export default function DoraScene() {
           <ul className={styles.sceneList}>
             <li className={styles.item}>
               <span className={styles.title}>图片/视频水印</span>
-              <p className={styles.content}>全站 HTTPS 保证网站访问安全； TCP 压缩优化使网页大图，样式等完成秒级加载，缩短网页响应时间提高用户体验。</p>
+              <p className={styles.content}>全站 HTTPS 保证网站访问安全；TCP 压缩优化使网页大图、样式等完成秒级加载，缩短网页响应时间提高用户体验。</p>
             </li>
             <li className={styles.item}>
               <span className={styles.title}>音视频转码</span>

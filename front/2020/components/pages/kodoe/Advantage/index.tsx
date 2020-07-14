@@ -63,7 +63,7 @@ export default function KodoeAdvantage() {
           title="集成多媒体计算"
           align="left"
         >
-          <FeatureDesc preIcon="check">集成 AI、图片、音视频处理等服务</FeatureDesc>
+          <FeatureDesc preIcon="check">集成 AI、图片处理、音视频处理等服务</FeatureDesc>
           <FeatureDesc preIcon="check">支持自定义数据处理应用、兼容接口协议即可集成</FeatureDesc>
         </FeatureItem>
         <FeatureItem

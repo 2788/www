@@ -47,9 +47,19 @@ import bannerKodoPc from './_images/banner-kodo-pc.png'
 import bannerKodoMobile from './_images/banner-kodo-mobile.png'
 import bannerSslPc from './_images/banner-ssl-pc.png'
 import bannerSslMobile from './_images/banner-ssl-mobile.png'
+import bannerEnterpriseoncloudPc from './_images/banner-enterpriseoncloud-pc.png'
+import bannerEnterpriseoncloudMobile from './_images/banner-enterpriseoncloud-mobile.png'
 
 // TODO: 这个内容后边改为从接口来，对接 BO 的数据
 const simpleBanners = [
+  {
+    key: 'enterpriseoncloud',
+    title: '中小企业上云扶持',
+    bgColor: '#161C46',
+    imgPc: bannerEnterpriseoncloudPc,
+    imgMobile: bannerEnterpriseoncloudMobile,
+    href: 'https://www.qiniu.com/events/enterpriseoncloud?entry=index-banner'
+  },
   {
     key: 'faceid',
     title: '人脸核验 特惠来袭',

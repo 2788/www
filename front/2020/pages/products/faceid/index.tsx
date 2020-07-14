@@ -60,7 +60,7 @@ function PageContent() {
       <Feature name="features" title="核心功能" header={featureHeaderView}>
         <feature.Group>
           <feature.Item title="活体检测" icon={<IconFeat1 />}>
-            <feature.Desc className={style.featureItemDesc}>验证设备前操作任务真实的活人，而非打印照片/3D 面具等伪造的攻击，支持光线活体、数字活体、动作活体等多种模式</feature.Desc>
+            <feature.Desc className={style.featureItemDesc}>验证设备前操作人为真实的活人，而非打印照片/3D 面具等伪造的攻击，支持光线活体、数字活体、动作活体等多种模式</feature.Desc>
           </feature.Item>
           <feature.Item title="人脸比对" icon={<IconFeat2 />}>
             <feature.Desc className={style.featureItemDesc}>将用户人脸照片和预留照片或权威证件库进行比对，判断是否为同一人</feature.Desc>
