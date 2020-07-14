@@ -21,11 +21,14 @@ import KodoAdvantage from 'components/pages/kodo/Advantage'
 import KodoCore from 'components/pages/kodo/Core'
 import KodoScene from 'components/pages/kodo/Scene'
 import KodoCase from 'components/pages/kodo/Case'
+import { useKodoPackage } from 'hooks/timer'
 
 import imgBanner from './images/banner.png'
 import style from './index.less'
 
 function PageContent() {
+
+  const showKodoPackage = useKodoPackage()
 
   const priceUrl = urlForPrice(Product.Kodo)
 
@@ -57,9 +60,9 @@ function PageContent() {
           </PageNoticeItem>
         </PageNoticeGroup>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="https://marketing.qiniu.com/activity/kodopackage?ref=www.qiniu.com/products/kodo">
+          {showKodoPackage && <PageNoticeItem href="https://marketing.qiniu.com/activity/kodopackage?ref=www.qiniu.com/products/kodo">
             资源包折扣套餐，上新特惠，立即购买 &gt;&gt;
-          </PageNoticeItem>
+          </PageNoticeItem>}
           <PageNoticeItem href="/products/kodo/goglobal?entry=products-kodo">
             免费套餐任你选，出海快人一步，海外云存储优惠专场 &gt;&gt;
           </PageNoticeItem>

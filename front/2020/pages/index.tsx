@@ -15,6 +15,7 @@ import Feature, {
 } from 'components/pages/index/Feature'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
+import { useKodoPackage } from 'hooks/timer'
 
 import Activities from 'components/pages/index/Activities'
 import ProductsForMobile from 'components/pages/index/Products'
@@ -48,6 +49,7 @@ import bannerKodoMobile from './_images/banner-kodo-mobile.png'
 // TODO: 这个内容后边改为从接口来，对接 BO 的数据
 const simpleBanners = [
   {
+    key: 'faceid',
     title: '人脸核验 特惠来袭',
     bgColor: '#051B3F',
     imgPc: bannerFaceidPc,
@@ -55,6 +57,7 @@ const simpleBanners = [
     href: 'https://marketing.qiniu.com/activity/activity-faceid?entry=index-banner'
   },
   {
+    key: 'kodoPackage',
     title: '对象存储 Kodo 专场特惠',
     bgColor: '#0A1048',
     imgPc: bannerKodoPc,
@@ -76,9 +79,13 @@ function PageContent() {
   const headerBannerImgs = useBannerImg()
   const isMobile = useMobile()
 
+  const showKodoPackage = useKodoPackage()
+
   // 简单内容的 banner，后边会走运营后台进行配置
   // 这部分 banner 放到代码中写死的 banner 项的前面（同老官网行为）
-  const simpleBannersView = simpleBanners.map(
+  const simpleBannersView = simpleBanners.filter(
+    item => item.key !== 'kodoPackage' || showKodoPackage
+  ).map(
     ({ imgPc, imgMobile, bgColor, href }, i) => (
       <PageBanner
         key={i}

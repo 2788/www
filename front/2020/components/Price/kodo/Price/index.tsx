@@ -4,6 +4,7 @@ import Tabs, { TabPane } from 'components/UI/Tabs'
 import { BannerContext } from 'components/Price/Banner'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
+import { useKodoPackage } from 'hooks/timer'
 
 import South from './South'
 import East from './East'
@@ -15,6 +16,11 @@ import SouthAsia from './SouthAsia'
 export default function Price() {
   const { setActive } = useContext(BannerContext)
   const isMobile = useMobile()
+  const packageLink = (
+    useKodoPackage()
+    ? 'https://marketing.qiniu.com/activity/kodopackage?entry=index-price'
+    : 'https://qmall.qiniu.com/template/NA#spec_combo=Nzk'
+  )
 
   return (
     <PricePane>
@@ -27,7 +33,7 @@ export default function Price() {
         </p>
         <p className={style.desc}>对象存储服务支持两种计费方式，即按量计费的后付费方式和购买资源包的预付费方式，购买资源包可享更多优惠。</p>
         <p className={style.desc}>了解更多计费说明，<a className={style.link} onClick={() => setActive('calc')}>请点击这里</a></p>
-        <Button type="hollow" href="https://marketing.qiniu.com/activity/kodopackage?entry=index-price" withBorder style={{ marginTop: '12px' }}>购买资源包</Button>
+        <Button type="hollow" href={packageLink} withBorder style={{ marginTop: '12px' }}>购买资源包</Button>
         <h4 className={style.textTitle}>标准存储</h4>
         <p className={style.desc} style={{ marginBottom: '16px' }}>
           开通七牛云对象存储服务的标准用户，每月可享受一定量的标准存储免费存储空间、标准存储免费 CDN 回源流量和标准存储免费请求数目。每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。
