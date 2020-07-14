@@ -12,6 +12,7 @@ export function urlForSearch(keyword?: string) {
 }
 
 export type QvmBuyOptions = {
+  ui_mode?: 'submit' // 指定 UI mode？细节咨询 @颜景豪
   mode?: 'DirectOrder' // 指定 DirectOrder 时，直接进入订单提交模式，一般用于活动订单
   region_id?: string // 地域，参考 https://qvm.qiniu.io/v1/open/region
   image_id?: string // 镜像

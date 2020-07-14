@@ -247,6 +247,7 @@ type InstanceCardProps = {
 function InstanceCard({ type, name, desc, bandwidth, ipNum, storage }: InstanceCardProps) {
 
   const buyUrl = urlForQvmBuy({
+    ui_mode: 'submit',
     instance_type: type,
     eip: bandwidth,
     buymonth: 12

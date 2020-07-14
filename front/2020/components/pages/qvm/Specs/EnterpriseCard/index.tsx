@@ -8,6 +8,7 @@ import { useApiWithParams } from 'hooks/api'
 import { getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions, MetaInfo } from 'apis/qvm'
 import { humanizeDuration, regionIdSorter } from 'constants/qvm'
 import Button from 'components/UI/Button'
+import Link from 'components/Link'
 
 import style from './style.less'
 
@@ -91,6 +92,7 @@ function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: Met
   ))
 
   const buyUrl = urlForQvmBuy({
+    ui_mode: 'submit',
     region_id: regionId,
     instance_type: instanceType,
     buymonth: duration
@@ -109,7 +111,7 @@ function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: Met
   )
 
   return (
-    <form className={style.priceForm} action={buyUrl} method="GET" target="_blank">
+    <form className={style.priceForm}>
       <label className={style.formItem}>
         <span className={style.text}>地域</span>
         <select
@@ -138,10 +140,11 @@ function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: Met
         >{durationOptions}</select>
       </label>
       <PriceInfo loading={loading} info={priceWithDiscount} error={error} />
-      <Button className={style.buyBtn} type="primary" htmlType="submit">立即选配</Button>
-      <a target="_blank" rel="noopener" href={buyUrlWithNoParams} className={style.moreOptions}>
+      {/* 这边不走 form 的 submit 是因为参数不好控制，参考 https://stackoverflow.com/questions/1116019/submitting-a-get-form-with-query-string-params-and-hidden-params-disappear */}
+      <Button className={style.buyBtn} type="primary" href={buyUrl}>立即选配</Button>
+      <Link href={buyUrlWithNoParams} className={style.moreOptions}>
         查看更多配置选项
-      </a>
+      </Link>
     </form>
   )
 }
