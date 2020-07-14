@@ -55,7 +55,7 @@ export default function ExpressDemoPage() {
                 <DemoCard key={index} {...item} />
               ))}
             </TabPane>
-            <TabPane tab="BI分析" value="3">
+            <TabPane tab="BI 分析" value="3">
               {BIDemos.map((item, index) => (
                 <DemoCard key={index} {...item} />
               ))}
