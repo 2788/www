@@ -20,7 +20,7 @@ export default function KodoCalc() {
   const [total, setTotal] = useState('0.00')
   const addProduct = useShoppingCart()
   const activeTabRef = useRef('1')
-  const [calculator, setCalculator] = useState<Calculator | null>()
+  const [calculator, setCalculator] = useState<Calculator>()
   const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
