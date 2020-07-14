@@ -4,9 +4,8 @@ import Checkbox from 'react-icecream/lib/checkbox'
 import Select from 'react-icecream/lib/select'
 
 import InputNumber from 'components/UI/InputNumber'
-import { useLocalStorage } from 'hooks/storage'
 import transform from 'components/Price/transform'
-import { STORAGE_KEY, Product } from 'components/Price/Banner/CalcPane/ShoppingCart'
+import { useShoppingCart } from 'components/Price/Banner/CalcPane/ShoppingCart'
 
 import Calculator, { CalcInput, Unit } from '../../Calculator'
 import style from './index.less'
@@ -30,7 +29,7 @@ export default function CdnCalc() {
   const calculator = useRef(Calculator.fromRules(rules)).current
   const [total, setTotal] = useState('0.00')
 
-  const [goods, setGoods] = useLocalStorage<Product[]>(STORAGE_KEY)
+  const addProduct = useShoppingCart()
 
   useEffect(() => calculator.listen(setTotal), [calculator])
 
@@ -45,7 +44,7 @@ export default function CdnCalc() {
   }
 
   function handleAdd() {
-    setGoods([...(goods || []), transform('CDN', calculator.evaluate(), calculator.getInputs(), calculator.getDuration())])
+    addProduct(transform('CDN', calculator.evaluate(), calculator.getInputs(), calculator.getDuration()))
   }
 
   const regionSections = regions.map(region => (

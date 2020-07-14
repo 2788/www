@@ -2,8 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import CalcPane from 'components/Price/Banner/CalcPane'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import Calculator from 'components/Price/Calculator'
-import { useLocalStorage } from 'hooks/storage'
-import { Product, STORAGE_KEY } from 'components/Price/Banner/CalcPane/ShoppingCart'
+import { useShoppingCart } from 'components/Price/Banner/CalcPane/ShoppingCart'
 import transform from 'components/Price/transform'
 
 import Standard from './Standard'
@@ -19,9 +18,9 @@ const tabMap: { [key in string]: string } = {
 
 export default function KodoCalc() {
   const [total, setTotal] = useState('0.00')
-  const [goods, setGoods] = useLocalStorage<Product[]>(STORAGE_KEY)
+  const addProduct = useShoppingCart()
   const activeTabRef = useRef('1')
-  const [calculator, setCalculator] = useState<Calculator | null>(null)
+  const [calculator, setCalculator] = useState<Calculator>()
   const [disabled, setDisabled] = useState(true)
 
   useEffect(() => {
@@ -40,17 +39,12 @@ export default function KodoCalc() {
 
   function handleAdd() {
     if (calculator) {
-      setGoods(
-        [
-          ...(goods || []),
-          transform(
-            tabMap[activeTabRef.current],
-            calculator.evaluate(),
-            calculator.getInputs(),
-            calculator.getDuration()
-          )
-        ]
-      )
+      addProduct(transform(
+        tabMap[activeTabRef.current],
+        calculator.evaluate(),
+        calculator.getInputs(),
+        calculator.getDuration()
+      ))
     }
   }
 

@@ -37,7 +37,7 @@ function PageContent() {
   const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/rtn/rtc/report/duration', children: '免费使用', pcOnly: true },
+    { href: 'https://portal.qiniu.com/rtn/rtc/report/duration', children: '开始使用', pcOnly: true },
     { onClick: startConsulting, children: '立即咨询' },
     { href: 'https://demo-rtc.qnsdk.com/', children: '在线体验' }
   )
