@@ -20,6 +20,19 @@ export function humanizeDuration(duration: number) {
   )
 }
 
+/** 地区优先级列表，控制地区选项的排序 */
+export const regionPriorityMap: { [id: string]: number } = {
+  'cn-zhangjiakou': 2, // 优先华北 3
+  'cn-qingdao': 1 // 其次华北 1
+}
+
+/** 依据优先级对 region id 列表进行排序，优先级高的在前面 */
+export function regionIdSorter(idA: string, idB: string) {
+  const priorityA = regionPriorityMap[idA] || 0
+  const priorityB = regionPriorityMap[idB] || 0
+  return priorityB - priorityA
+}
+
 export const avaliableRegions = [
   { id: 'cn-qingdao', name: '华北 1' },
   { id: 'cn-beijing', name: '华北 2' },

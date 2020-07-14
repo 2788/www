@@ -6,7 +6,7 @@ import React, { useState, useMemo } from 'react'
 import { urlForQvmBuy } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
 import { getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions, MetaInfo } from 'apis/qvm'
-import { humanizeDuration } from 'constants/qvm'
+import { humanizeDuration, regionIdSorter } from 'constants/qvm'
 import Button from 'components/UI/Button'
 
 import style from './style.less'
@@ -73,7 +73,7 @@ function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: Met
 
   const { regionMap, instanceTypeMap, durations } = metaInfo
 
-  const regionIds = Object.keys(instanceTypesByRegions)
+  const regionIds = Object.keys(instanceTypesByRegions).sort(regionIdSorter)
   const [regionId, setRegionId] = useState(regionIds[0])
   const regionOptions = regionIds.map(id => (
     <option key={id} value={id}>{regionMap[id]}</option>
