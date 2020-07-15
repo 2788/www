@@ -35,6 +35,7 @@ function PageContent() {
   const btns = useBtns(
     { href: 'https://developer.qiniu.com/dora/api/6699/facecompare', children: '使用文档' },
     { href: 'https://jinshuju.net/f/fgideP', children: '申请开通' },
+    { href: 'https://marketing.qiniu.com/activity/activity-faceid?entry=product-faceid&ref=www.qiniu.com', children: '优惠套餐', pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 

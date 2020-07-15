@@ -169,6 +169,7 @@ function PriceInfo({ loading, info, error }: PriceInfoProps) {
     <div className={style.priceInfo}>
       <strong className={style.price}>￥{info.price.toFixed(2)}</strong>
       {info.discount > 0 && <span className={style.discount}>优惠￥{info.discount.toFixed(2)}</span>}
+      <p className={style.tip}>不含主机磁盘和弹性 IP 价格</p>
     </div>
   )
 }
