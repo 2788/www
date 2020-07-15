@@ -5,9 +5,9 @@
 
 import { StoryProps } from '.'
 
-import imgStory1 from './images/stories/1.jpg'
-import imgStory2 from './images/stories/2.jpg'
-import imgStory3 from './images/stories/3.jpg'
+import imgStory1 from './images/stories/1.png'
+import imgStory2 from './images/stories/2.png'
+import imgStory3 from './images/stories/3.png'
 import imgStory4 from './images/stories/4.png'
 
 export const weiboLink = ''
