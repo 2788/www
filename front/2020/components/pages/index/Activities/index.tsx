@@ -34,39 +34,60 @@ function Card({ icon, title, banner, href, children }: PropsWithChildren<CardPro
   )
 }
 
+// 目前用固定的 icon，以后看是不是这个也从接口来
+const icons = [
+  Activity1Icon,
+  Activity2Icon,
+  Activity3Icon,
+  Activity4Icon
+]
+
+// 这部分内容后续从接口来
+const activities = [
+  {
+    title: '最新活动',
+    desc: '热门活动及产品特惠',
+    href: 'https://marketing.qiniu.com/activity/all?entry=index-advert'
+  },
+  {
+    title: '717 七牛品牌日',
+    desc: 'CDN × 视频云，组合嗨购',
+    href: 'https://marketing.qiniu.com/activity/717Brand-Festival?entry=index-advert',
+    badge: '热门'
+  },
+  {
+    title: '中小企业上云扶持',
+    desc: '企业建站资源包限时 3 折',
+    href: 'https://www.qiniu.com/events/enterpriseoncloud?entry=index-advert'
+  },
+  {
+    title: 'SSL 证书年中采购季',
+    desc: '全场 5 折起',
+    href: 'https://marketing.qiniu.com/activity/activity-ssl?entry=index-advert'
+  }
+]
+
 export default function Activities() {
+
+  const cardsView = activities.slice(0, 4).map(({ title, desc, href, badge }, i) => {
+    const Icon = icons[i]
+    return (
+      <Card
+        key={i}
+        icon={<Icon className={styles.icon} />}
+        title={title}
+        href={href}
+        banner={badge}
+      >
+        {desc}
+      </Card>
+    )
+  })
+
   return (
     <div className={styles.activities}>
       <div className={styles.content}>
-        <Card
-          icon={<Activity1Icon className={styles.icon} />}
-          title="最新活动"
-          href="https://marketing.qiniu.com/activity/all?entry=index-advert"
-        >
-          热门活动及产品特惠
-        </Card>
-        <Card
-          icon={<Activity2Icon className={styles.icon} />}
-          title="中小企业上云扶持"
-          href="https://www.qiniu.com/events/enterpriseoncloud?entry=index-advert"
-          banner="热门"
-        >
-          企业建站资源包限时 3 折
-        </Card>
-        <Card
-          icon={<Activity3Icon className={styles.icon} />}
-          title="SSL 证书年中采购季"
-          href="https://marketing.qiniu.com/activity/activity-ssl?entry=index-advert"
-        >
-          全场 5 折起
-        </Card>
-        <Card
-          icon={<Activity4Icon className={styles.icon} />}
-          title="人脸核验，特惠来袭"
-          href="https://marketing.qiniu.com/activity/activity-faceid?entry=index-advert"
-        >
-          爆款服务，限时抢购
-        </Card>
+        {cardsView}
       </div>
     </div>
   )

@@ -49,13 +49,23 @@ import bannerSslPc from './_images/banner-ssl-pc.png'
 import bannerSslMobile from './_images/banner-ssl-mobile.png'
 import bannerEnterpriseoncloudPc from './_images/banner-enterpriseoncloud-pc.png'
 import bannerEnterpriseoncloudMobile from './_images/banner-enterpriseoncloud-mobile.png'
+import banner717Pc from './_images/banner-717-pc.png'
+import banner717Mobile from './_images/banner-717-mobile.png'
 
 // TODO: 这个内容后边改为从接口来，对接 BO 的数据
 const simpleBanners = [
   {
+    key: '717',
+    title: '717 超级品牌日',
+    bgColor: '#EBEEFF',
+    imgPc: banner717Pc,
+    imgMobile: banner717Mobile,
+    href: 'https://marketing.qiniu.com/activity/717Brand-Festival?entry=index-banner&ref=www.qiniu.com'
+  },
+  {
     key: 'enterpriseoncloud',
     title: '中小企业上云扶持',
-    bgColor: '#161C46',
+    bgColor: '#12193d',
     imgPc: bannerEnterpriseoncloudPc,
     imgMobile: bannerEnterpriseoncloudMobile,
     href: 'https://www.qiniu.com/events/enterpriseoncloud?entry=index-banner'
