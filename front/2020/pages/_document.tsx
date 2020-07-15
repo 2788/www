@@ -1,3 +1,5 @@
+// eslint-disable react/no-danger
+
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
@@ -31,13 +33,52 @@ const sensorsScriptContent = `
 });
 `
 
+const gaScriptContent = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+gtag('js', new Date());
+gtag('config', 'UA-78944316-1');
+`
+
+const baiduhmScriptContent = `
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?204fcf6777f8efa834fe7c45a2336bf1";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+`
+
+const baiduzhanzhangScriptContent = `
+(function() {
+  var hostname = window.location.hostname;
+  var domain = hostname.split('.').slice(-2).join('.');
+  if (domain && domain !== 'localhost' && domain.indexOf('qiniu.io') < 0) {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  }
+})();
+`
+
 class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
-          {/* eslint-disable-next-line react/no-danger */}
           <script dangerouslySetInnerHTML={{ __html: sensorsScriptContent }} />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78944316-1"></script>
+          <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
+          <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
+          <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
         </Head>
         <body>
           <Main />
