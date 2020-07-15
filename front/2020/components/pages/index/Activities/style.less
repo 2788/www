@@ -15,14 +15,17 @@
 
 .content {
   .centered();
+  display: flex;
   margin-top: -24px;
 
   .mobile({
+    display: block;
     margin-top: 0;
     padding: 0;
   });
 
   .container {
+    flex: 1 1 0;
     margin: 0 0 0 @card-space;
 
     &:first-of-type {
@@ -34,7 +37,7 @@
     });
 
     .card {
-      display: inline-block;
+      display: flex;
       background: white;
       width: @card-width;
       height: @card-height;
@@ -58,7 +61,7 @@
       });
   
       .icon {
-        display: inline-block;
+        flex: 0 0 45px;
         width: 45px;
         height: 45px;
         font-size: 0;
@@ -88,7 +91,7 @@
       }
   
       .cardContent {
-        display: inline-block;
+        flex: 1 1 0;
         vertical-align: middle;
         width: auto;
         padding: 0 0 0 15px;
