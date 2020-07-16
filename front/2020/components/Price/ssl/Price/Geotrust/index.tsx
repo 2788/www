@@ -24,7 +24,7 @@ const columns: Array<ColumnProps<any>> = [
     dataIndex: 'years'
   },
   {
-    title: '七牛云售价',
+    title: '七牛云售价（元）',
     dataIndex: 'price'
   }
 ]
@@ -34,85 +34,85 @@ const data = [
     key: 1,
     type: '企业型（OV）证书',
     years: 1,
-    price: '2850'
+    price: 1995
   },
   {
     key: 2,
     type: '企业型（OV）证书',
     years: 2,
-    price: 4845
+    price: 3420
   },
   {
     key: 3,
     type: '企业型（OV）多域名证书（默认包含 5 个标准域名额度）',
     years: 1,
-    price: 5450
+    price: 3815
   },
   {
     key: 4,
     type: '企业型（OV）多域名证书（默认包含 5 个标准域名额度）',
     years: 2,
-    price: 9265
+    price: 6540
   },
   {
     key: 5,
     type: '企业型（OV）多域名证书额外域名',
     years: 1,
-    price: 650
+    price: 455
   },
   {
     key: 6,
     type: '企业型（OV）多域名证书额外域名',
     years: 2,
-    price: 1105
+    price: 780
   },
   {
     key: 7,
     type: '企业型（OV）通配符证书',
     years: 1,
-    price: 6850
+    price: 4795
   },
   {
     key: 8,
     type: '企业型（OV）通配符证书',
     years: 2,
-    price: 11645
+    price: 6850
   },
   {
     key: 9,
     type: '企业增强型(EV)证书',
     years: 1,
-    price: 4850
+    price: 3637.5
   },
   {
     key: 10,
     type: '企业增强型(EV)证书',
     years: 2,
-    price: 8245
+    price: 5820
   },
   {
     key: 11,
     type: '企业增强型(EV)多域名证书（默认包含 5 个单域名）',
     years: 1,
-    price: 9650
+    price: 7237.5
   },
   {
     key: 12,
     type: '企业增强型(EV)多域名证书（默认包含5个单域名）',
     years: 2,
-    price: 19300
+    price: 11580
   },
   {
     key: 13,
     type: '企业增强型(EV)多域名证书额外域名',
     years: 1,
-    price: 1450
+    price: 900
   },
   {
     key: 14,
     type: '企业增强型(EV)多域名证书额外域名',
     years: 2,
-    price: 2465
+    price: 1440
   }
 ]
 
