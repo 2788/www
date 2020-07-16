@@ -52,9 +52,15 @@ export default function Logos({ solution }: Props) {
     </li>
   ))
 
+  // 凑满三个 item 占满一行
+  const placeholdersView = Array.from({ length: 3 - logos.length }).map((_, i) => (
+    <li key={'placeholder-' + i} className={style.placeholderItem}></li>
+  ))
+
   return (
     <ul className={style.logoList}>
       {logosView}
+      {placeholdersView}
     </ul>
   )
 }

@@ -58,7 +58,6 @@ export default function Layout({ title, keywords, description, children }: Props
     <UaContext.Provider value={uaValue}>
       <UserInfoProvider>
         <Head>
-          <meta charSet="utf-8" />
           <title>{title}</title>
           <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
           <link rel="shortcut icon" href="//qiniu.staticfile.org/favicon.ico" type="image/x-icon" />

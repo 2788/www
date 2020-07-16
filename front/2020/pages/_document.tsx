@@ -74,6 +74,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta charSet="utf-8" />
           <script dangerouslySetInnerHTML={{ __html: sensorsScriptContent }} />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78944316-1"></script>
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
