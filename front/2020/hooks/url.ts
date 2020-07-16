@@ -71,9 +71,9 @@ function hasOwnProp(target: any, key: string) {
  * 有时候走进来明明路径（`router.asPath`）上有正确的 search 内容，
  * 但 `router.query` 还是个空 `{}`，只好自己搞一个。
  * 另外把初始值设置为空 `{}`，以保持客户端初始渲染跟服务端渲染逻辑的一致
- * 实现得比较粗糙，就不导出了
+ * 实现得比较粗糙，请谨慎使用！
  */
-function useQuery() {
+export function useQuery() {
   const router = useRouter()
   const querystring = router.asPath.split('?')[1] || ''
   const [query, setQuery] = useState<ParsedQuery>({})

@@ -11,7 +11,7 @@ import MobileResult from 'components/pages/search/Result/Mobile'
 import Tabs, { tagOption2Tag, tagOptionAll, tagOptions, TagOption, isTagOption } from 'components/pages/search/Tabs'
 import Recommend from 'components/pages/search/Recommend'
 import { useApiWithParams } from 'hooks/api'
-import { useQueryValue } from 'hooks/url'
+import { useQueryValue, useQuery } from 'hooks/url'
 import { useMobile } from 'hooks/ua'
 import { useOnChange } from 'hooks'
 import { search as _search, countByTags, SearchResult, SearchResultItem, SearchParams } from 'apis/search'
@@ -69,9 +69,10 @@ function useMobileLogic(
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
 function PageContent() {
   // URL 参数 keyword -> 关键词
-  const [keyword, setKeyword] = useQueryValue('keyword', '')
+  const [keyword] = useQueryValue('keyword', '')
   // URL 参数 tag -> 类别
   const [_tagOption, setTagOption] = useQueryValue('tag', tagOptionAll)
+  const [, setQuery] = useQuery()
   const tagOption = isTagOption(_tagOption) ? _tagOption : tagOptionAll
 
   const [page, setPage] = useState(0)
@@ -94,9 +95,14 @@ function PageContent() {
   )
 
   function handleKeywordSubmit(newKeyword: string) {
-    setKeyword(newKeyword)
+    // 这边不通过 setKeyword / setTagOptionz 做是因为更新路由操作是异步的
+    // 后续的 set 会把前面的 set 结果给冲掉，这里合并为一次 setQuery，临时解决这个问题
+    // TODO: 优化之
+    setQuery({
+      keyword: newKeyword,
+      tag: tagOptionAll
+    })
     // 强制什么都干一遍，防止 keyword/tag/page 这些值没改变导致没有反应
-    setTagOption(tagOptionAll)
     setPage(0)
     doSearch()
     doCount()
