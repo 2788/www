@@ -46,6 +46,11 @@ const data1 = [
     key: 5,
     type: '身份证识别 OCR',
     price: '0.03 元/次'
+  },
+  {
+    key: 6,
+    type: '身份证二要素',
+    price: '0.6 元/次'
   }
 ]
 
