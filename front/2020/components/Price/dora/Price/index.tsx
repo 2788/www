@@ -15,7 +15,7 @@ export default function Price() {
         </p>
         <p className={style.text} style={{ margin: '16px 0' }}>开通七牛云智能多媒体服务的标准用户，每月可享受一定量的免费额度。每月计费时，会先抵扣免费额度，超出部分按价格详情付费结算。</p>
         <Card title="每月多媒体处理服务" num="20" unit="元" />
-        <Card title="标准存储每月免费 CDN 回源流量" num="20" unit="TB" />
+        <Card title="每月部分图片处理服务" num="20" unit="TB" />
         <Card title="每月 C1M1 自定义数据处理服务" num="750" unit="小时" />
       </PricePaneSection>
       <PricePaneSection title="价格详情">
