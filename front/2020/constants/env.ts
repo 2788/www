@@ -21,6 +21,9 @@ export const siteNameForSearch = must('siteNameForSearch', process.env.NEXT_PUBL
 /** 内容审核接口调用时的审核类型，在测试环境没有广告模块，带广告参数调用接口会报错，这里进行配置 */
 export const censorScenes = must('censorScenes', process.env.NEXT_PUBLIC_CENSOR_SCENES)
 
+/** 活动站 Host */
+export const marketingHost = must('marketingHost', process.env.NEXT_PUBLIC_MARKETING_HOST)
+
 function must(name: string, variable?: string): string {
   if (variable == null) {
     throw new Error(`Invalid value for environment variable ${name}, you need to configure it in env file`)
