@@ -59,7 +59,13 @@ const columns2: Array<ColumnProps<any>> = [
     title: '类型',
     dataIndex: 'type',
     render(type, _, idx) {
+      // 人脸检测
       if (idx === 0) {
+        return { children: type, props: { rowSpan: 4 } }
+      }
+
+      // 人脸对比
+      if (idx === 4) {
         return { children: type, props: { rowSpan: 4 } }
       }
 
@@ -79,24 +85,48 @@ const columns2: Array<ColumnProps<any>> = [
 const data2 = [
   {
     key: 0,
+    type: '人脸检测',
+    usage: '第 0 张 至 500 万张',
+    price: '0.05 元/百张'
+  },
+  {
+    key: 1,
+    type: '人脸检测',
+    usage: '第 500 万张 至 1500 万张',
+    price: '0.04 元/百张'
+  },
+  {
+    key: 2,
+    type: '人脸检测',
+    usage: '第 1500 万张 至 3000 万张',
+    price: '0.035 元/百张'
+  },
+  {
+    key: 3,
+    type: '人脸检测',
+    usage: '3000 万张以上',
+    price: '0.03 元/百张'
+  },
+  {
+    key: 4,
     type: '1:N 人脸比对',
     usage: '第 0 张 至 500 万张',
     price: '0.19 元/百张'
   },
   {
-    key: 1,
+    key: 5,
     type: '1:N 人脸比对',
     usage: '第 500 万张 至 1500 万张',
     price: '0.18 元/百张'
   },
   {
-    key: 2,
+    key: 6,
     type: '1:N 人脸比对',
     usage: '第 1500 万张 至 3000 万张',
     price: '0.15 元/百张'
   },
   {
-    key: 3,
+    key: 7,
     type: '1:N 人脸比对',
     usage: '3000 万张以上',
     price: '0.12 元/百张'
