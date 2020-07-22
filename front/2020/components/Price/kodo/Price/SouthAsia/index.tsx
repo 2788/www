@@ -237,7 +237,7 @@ const data = [
     key: 5,
     name: '流量费用',
     detail: '外网流出流量',
-    measure: '0 - 100TB',
+    measure: '0 - 100 TB',
     standard: '0.29 元/GB',
     low: '0.29 元/GB',
     archive: '0.29 元/GB'
