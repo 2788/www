@@ -42,6 +42,7 @@ import IconAdvan6 from './_images/advan-6.svg'
 import imgArchitecture from './_images/architecture.png'
 import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.png'
+import imgCase3 from './_images/case-3.png'
 import style from './style.less'
 
 function PageContent() {
@@ -198,6 +199,9 @@ function PageContent() {
           </Case>
           <Case logo={imgCase2} title="云上钢琴">
             云上钢琴用智能硬件设备与教学软件相结合，通过闭环教学管理模式 、「浸润式」的教学方法，使钢琴教育融入到生活中。
+          </Case>
+          <Case logo={imgCase3} title="创客匠人">
+            2016 年开始跟七牛合作，从音频到视频、直播、RTC，七牛在技术产品上的更新迭代一直处于行业领先位置，创客匠人选择七牛云成为战略合作伙伴，提升了产品研发的灵活性跟稳定性，确保了产品的服务体验跟性能。
           </Case>
         </Cases>
       </Section>

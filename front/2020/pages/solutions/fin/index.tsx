@@ -32,7 +32,8 @@ import IconAdvan2 from './_images/advan-2.svg'
 import IconAdvan3 from './_images/advan-3.svg'
 import IconAdvan4 from './_images/advan-4.svg'
 import imgArchitecture from './_images/architecture.png'
-import imgCaseIngeek from './_images/case-ingeek.png'
+import imgCase1 from './_images/case-1.png'
+import imgCase2 from './_images/case-2.jpg'
 import IconOcr from './_images/ocr.svg'
 import style from './style.less'
 
@@ -108,8 +109,11 @@ function PageContent() {
 
       <Section name="cases" title="客户案例">
         <Cases>
-          <Case logo={imgCaseIngeek} title="银基富力">
+          <Case logo={imgCase1} title="银基富力">
             Pandora 助力我们打造专业的信息科技风险监管报送系统，面对海量抽象的机器数据，Pandora 提供了专业化的数据采集、实时分析、可视化能力，实时获取监管数据，有效识别、计量、监测和控制信息科技风险，大大提升监管效率。
+          </Case>
+          <Case logo={imgCase2} title="开泰银行">
+            接入七牛云之后， 开泰银行的网络设备日志、服务器日志、安全设备的审计日志都可以统一收集到 Pandora 2.0 平台，数据采集时无需对多种不同数据源进行梳理和解析，可以直接原始数据进行统一存储归档，入库后再根据不同的需求对数据进行高效灵活的处理和分析，为客户带来了极其简便的数据接入体验。统一归档存储超过一年，轻松满足等保 2.0 合规要求。
           </Case>
         </Cases>
       </Section>
