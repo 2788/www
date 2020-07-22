@@ -21,6 +21,7 @@ const columns: Array<ColumnProps<any>> = [
   {
     title: '名目',
     dataIndex: 'name',
+    width: 290,
     render(name, __, idx) {
       if (idx === 0) {
         return { children: name, props: { rowSpan: 5 } }

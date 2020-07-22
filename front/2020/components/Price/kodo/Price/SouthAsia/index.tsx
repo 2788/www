@@ -16,6 +16,7 @@ const columns: Array<ColumnProps<any>> = [
   {
     title: '类型',
     dataIndex: 'name',
+    width: 100,
     render(name, _, idx) {
       const result = { children: name, props: { rowSpan: 0 } }
 
@@ -45,6 +46,7 @@ const columns: Array<ColumnProps<any>> = [
   {
     title: '计费项',
     dataIndex: 'detail',
+    width: 250,
     render(name, _, idx) {
       const result = { children: name, props: { rowSpan: 0 } }
 
@@ -82,11 +84,13 @@ const columns: Array<ColumnProps<any>> = [
   },
   {
     title: '计量',
-    dataIndex: 'measure'
+    dataIndex: 'measure',
+    width: 160
   },
   {
     title: '标准存储',
-    dataIndex: 'standard'
+    dataIndex: 'standard',
+    width: 250
   },
   {
     title: '低频访问存储',
@@ -237,7 +241,7 @@ const data = [
     key: 5,
     name: '流量费用',
     detail: '外网流出流量',
-    measure: '0 - 100TB',
+    measure: '0 - 100 TB',
     standard: '0.29 元/GB',
     low: '0.29 元/GB',
     archive: '0.29 元/GB'

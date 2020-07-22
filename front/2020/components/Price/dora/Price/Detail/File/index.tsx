@@ -14,7 +14,8 @@ import Table, { ColumnProps } from 'react-icecream/lib/table'
 const columns: Array<ColumnProps<any>> = [
   {
     title: '名目',
-    dataIndex: 'name'
+    dataIndex: 'name',
+    width: '50%'
   },
   {
     title: '价格',
