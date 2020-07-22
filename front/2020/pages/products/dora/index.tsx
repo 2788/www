@@ -59,7 +59,7 @@ function PageContent() {
           <PageNoticeItem title="免费额度" href="/prices?source=dora&source_page=dora">
             免费额度：20 元/月多媒体处理， 20 TB/月图片处理，750 小时/月自定义数据处理服务。 了解详情 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem title="转码时长包" href="/events/dora-package?entry=dora-advert">
+          <PageNoticeItem title="转码时长包" href="https://qmall.qiniu.com/template/MQ?spec_combo=MQ&ref=dora">
             转码时长包，优惠来袭。 立即选购 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
