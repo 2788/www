@@ -19,7 +19,7 @@ export default function Price() {
   const packageLink = (
     useKodoPackage()
     ? 'https://marketing.qiniu.com/activity/kodopackage?entry=index-price'
-    : 'https://qmall.qiniu.com/template/NA#spec_combo=Nzk'
+    : 'https://qmall.qiniu.com/template/NA?spec_combo=Nzk&ref=kodo-price'
   )
 
   return (
