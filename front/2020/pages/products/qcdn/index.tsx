@@ -134,7 +134,7 @@ function PageContent() {
             icon={<Advantage6Icon />}
             title="私有协议优化"
           >
-            <FeatureDesc>精选主流厂商高质量节点，全面覆盖各地区、各运营商的网络，实现全地域无盲区的覆盖</FeatureDesc>
+            <FeatureDesc>使用私有传输协议作为 CDN 内部数据交换的基础，确保客户资源在 CDN 内部安全、快速的传输到各个节点，实现客户内容高效、可靠的进行分发</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
       </Feature>
