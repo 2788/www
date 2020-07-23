@@ -5,7 +5,7 @@
 import React from 'react'
 
 import { urlForPrice } from 'utils/route'
-import { Product } from 'constants/products'
+import { Product, urlMap } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -19,6 +19,10 @@ import Feature, {
 } from 'components/Product/Feature'
 import Arch from 'components/pages/pili/Arch'
 import PiliScene from 'components/pages/pili/Scene'
+import PageNotice, {
+  Group as PageNoticeGroup,
+  Item as PageNoticeItem
+} from 'components/Product/PageNotice'
 
 // 功能与优势 图片
 import DelayIcon from './_images/advantages-delay.svg'
@@ -51,6 +55,14 @@ function PageContent() {
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={imgBanner} />
+
+      <PageNotice>
+        <PageNoticeGroup title="新闻动态" type="news">
+          <PageNoticeItem href={urlMap[Product.Rtn]}>
+            零基础搭建音视频平台，开通 QRTC 获取每月 15000 分钟免费时长 &gt;&gt;
+          </PageNoticeItem>
+        </PageNoticeGroup>
+      </PageNotice>
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
