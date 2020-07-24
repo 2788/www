@@ -1,0 +1,33 @@
+@import '~utils/less/index.less';
+
+@card-gap: 24px;
+@card-width: (@centered-content-width - @card-gap * 2) / 3;
+@card-height: 212 / 376 * @card-width;
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  + .wrapper {
+    margin-top: @card-gap;
+    margin-bottom: 40px;
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: @card-width;
+  height: @card-height;
+  font-size: 32px;
+  color: white;
+}
+
+.link {
+  font-size: 20px;
+
+  svg {
+    vertical-align: sub;
+  }
+}

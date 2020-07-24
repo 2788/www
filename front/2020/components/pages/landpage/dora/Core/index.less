@@ -1,0 +1,33 @@
+@import '~utils/less/index.less';
+
+@card-gap: 24px;
+@card-width: (@centered-content-width - @card-gap * 2) / 3;
+@card-height: 396 / 376 * @card-width;
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardWrapper {
+  width: @card-width;
+  height: @card-height;
+  padding: 56px 44px 40px 44px;
+  background: @grey-1;
+  box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+  border: 1px solid rgba(238, 238, 238, 1);
+}
+
+.cardTitle {
+  margin: 48px auto 12px auto;
+  font-size: 20px;
+}
+
+.cardDesc {
+  margin-bottom: 32px;
+  color: @grey-6;
+}
+
+.cardBtn {
+  width: 100%;
+}
