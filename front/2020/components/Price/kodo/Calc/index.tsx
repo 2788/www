@@ -49,7 +49,7 @@ export default function KodoCalc() {
   }
 
   return (
-    <CalcPane disabled={disabled} onAdd={handleAdd} buyLink="https://marketing.qiniu.com/activity/kodopackage" total={total}>
+    <CalcPane disabled={disabled} onAdd={handleAdd} buyLink="https://qmall.qiniu.com/template/NA?spec_combo=Nzk&ref=kodo-price" total={total}>
       <Tabs defaultValue="1" size="middle" className={style.tabs} onChange={value => { activeTabRef.current = value }}>
         <TabPane value="1" tab={tabMap[1]} autoDestroy><Standard setCalculator={setCalculator} /></TabPane>
         <TabPane value="2" tab={tabMap[2]} autoDestroy><LowFrequency setCalculator={setCalculator} /></TabPane>
