@@ -9,7 +9,6 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import KodoeArch from 'components/pages/kodoe/Arch'
 import KodoeAdvantage from 'components/pages/kodoe/Advantage'
 import KodoeSpec from 'components/pages/kodoe/Spec'
 import KodoeScene from 'components/pages/kodoe/Scene'
@@ -48,8 +47,6 @@ function PageContent() {
       />
 
       <Navigator>{btns.nav}</Navigator>
-
-      <KodoeArch />
 
       <KodoeAdvantage />
 
