@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 
 import Carousel from 'react-icecream/lib/carousel'
 
@@ -15,7 +16,6 @@ import Feature, {
 } from 'components/pages/index/Feature'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
-import { useKodoPackage } from 'hooks/timer'
 
 import Activities from 'components/pages/index/Activities'
 import ProductsForMobile from 'components/pages/index/Products'
@@ -23,6 +23,7 @@ import CloudProduct from 'components/pages/index/CloudProduct'
 import Solutions from 'components/pages/index/Solutions'
 import News from 'components/pages/index/News'
 import TryAndContact from 'components/pages/index/TryAndContact'
+import { getBanners, Banner } from 'apis/lego'
 
 import styles from './style.less'
 
@@ -41,61 +42,6 @@ import Core2Icon from './_images/core2.svg'
 import Core3Icon from './_images/core3.svg'
 import Core4Icon from './_images/core4.svg'
 
-import bannerFaceidPc from './_images/banner-faceid-pc.png'
-import bannerFaceidMobile from './_images/banner-faceid-mobile.png'
-import bannerKodoPc from './_images/banner-kodo-pc.png'
-import bannerKodoMobile from './_images/banner-kodo-mobile.png'
-import bannerSslPc from './_images/banner-ssl-pc.png'
-import bannerSslMobile from './_images/banner-ssl-mobile.png'
-import bannerEnterpriseoncloudPc from './_images/banner-enterpriseoncloud-pc.png'
-import bannerEnterpriseoncloudMobile from './_images/banner-enterpriseoncloud-mobile.png'
-import banner717Pc from './_images/banner-717-pc.png'
-import banner717Mobile from './_images/banner-717-mobile.png'
-
-// TODO: 这个内容后边改为从接口来，对接 BO 的数据
-const simpleBanners = [
-  {
-    key: '717',
-    title: '717 超级品牌日',
-    bgColor: '#EBEEFF',
-    imgPc: banner717Pc,
-    imgMobile: banner717Mobile,
-    href: 'https://marketing.qiniu.com/activity/717Brand-Festival?entry=index-banner&ref=www.qiniu.com'
-  },
-  {
-    key: 'enterpriseoncloud',
-    title: '中小企业上云扶持',
-    bgColor: '#12193d',
-    imgPc: bannerEnterpriseoncloudPc,
-    imgMobile: bannerEnterpriseoncloudMobile,
-    href: 'https://www.qiniu.com/events/enterpriseoncloud?entry=index-banner'
-  },
-  {
-    key: 'faceid',
-    title: '人脸核验 特惠来袭',
-    bgColor: '#051B3F',
-    imgPc: bannerFaceidPc,
-    imgMobile: bannerFaceidMobile,
-    href: 'https://marketing.qiniu.com/activity/activity-faceid?entry=index-banner'
-  },
-  {
-    key: 'ssl',
-    title: 'SSL 证书年中采购季',
-    bgColor: '#48256a',
-    imgPc: bannerSslPc,
-    imgMobile: bannerSslMobile,
-    href: 'https://marketing.qiniu.com/activity/activity-ssl?entry=index-banner'
-  },
-  {
-    key: 'kodoPackage',
-    title: '对象存储 Kodo 专场特惠',
-    bgColor: '#0A1048',
-    imgPc: bannerKodoPc,
-    imgMobile: bannerKodoMobile,
-    href: 'https://marketing.qiniu.com/activity/kodopackage?entry=index-banner'
-  }
-]
-
 function useBannerImg() {
   const webImgList = [Banner1Icon, Banner2Icon, Banner3Icon, Banner4Icon, Banner5Icon]
   const mobileImgList = [MobileBanner1Icon, MobileBanner2Icon, MobileBanner3Icon, MobileBanner4Icon, MobileBanner5Icon]
@@ -104,24 +50,22 @@ function useBannerImg() {
 }
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent() {
+function PageContent({ banners }: { banners: Banner[] }) {
 
   const headerBannerImgs = useBannerImg()
   const isMobile = useMobile()
 
-  const showKodoPackage = useKodoPackage()
-
-  // 简单内容的 banner，后边会走运营后台进行配置
+  const now = Date.now()
   // 这部分 banner 放到代码中写死的 banner 项的前面（同老官网行为）
-  const simpleBannersView = simpleBanners.filter(
-    item => item.key !== 'kodoPackage' || showKodoPackage
+  const bannersView = banners.filter(
+    banner => new Date(banner.effect_at).valueOf() < now && new Date(banner.dead_at).valueOf() >= now
   ).map(
-    ({ imgPc, imgMobile, bgColor, href }, i) => (
+    ({ mobile_image_src, image_src, color, link, id }) => (
       <PageBanner
-        key={i}
-        bgImg={isMobile ? imgMobile : imgPc}
-        bgColor={bgColor}
-        href={href}
+        key={id}
+        bgImg={isMobile ? mobile_image_src : image_src}
+        bgColor={color}
+        href={link}
       />
     )
   )
@@ -129,7 +73,7 @@ function PageContent() {
   return (
     <>
       <Carousel className={styles.headerBanner} autoplay>
-        {simpleBannersView}
+        {bannersView}
         <PageBanner
           className={styles.bannerQuery}
           title={<>数据分析平台 <span className={styles.upgrade}>重磅升级</span></>}
@@ -258,14 +202,22 @@ function PageContent() {
   )
 }
 
-export default function IndexPage() {
+export default function IndexPage({ banners }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title=""
       keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
       description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
     >
-      <PageContent />
+      <PageContent banners={banners} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      banners: await getBanners()
+    }
+  }
 }
