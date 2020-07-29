@@ -16,6 +16,7 @@ import Feature, {
 } from 'components/pages/index/Feature'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
+import { useNow } from 'hooks/timer'
 
 import Activities from 'components/pages/index/Activities'
 import ProductsForMobile from 'components/pages/index/Products'
@@ -55,10 +56,10 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
   const headerBannerImgs = useBannerImg()
   const isMobile = useMobile()
 
-  const now = Date.now()
+  const now = useNow()
   // 这部分 banner 放到代码中写死的 banner 项的前面（同老官网行为）
   const bannersView = banners.filter(
-    banner => new Date(banner.effect_at).valueOf() < now && new Date(banner.dead_at).valueOf() >= now
+    banner => new Date(banner.effect_at).valueOf() <= now && new Date(banner.dead_at).valueOf() > now
   ).map(
     ({ mobile_image_src, image_src, color, link, id }) => (
       <PageBanner

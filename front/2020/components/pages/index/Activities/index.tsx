@@ -5,6 +5,7 @@ import {
 } from 'components/UI/Card'
 import Link from 'components/Link'
 import { Activity } from 'apis/lego'
+import { useNow } from 'hooks/timer'
 
 import Activity1Icon from './images/activity1.svg'
 import Activity2Icon from './images/activity2.svg'
@@ -45,22 +46,24 @@ const icons = [
 ]
 
 export default function Activities({ activities }: { activities: Activity[] }) {
-
-  const cardsView = activities.slice(0, 4).map(({ title, subtitle, url, subscript_text, subscript_color }, i) => {
-    const Icon = icons[i]
-    return (
-      <Card
-        key={i}
-        icon={<Icon className={styles.icon} />}
-        title={title}
-        href={url}
-        banner={subscript_text}
-        bannerBg={subscript_color}
-      >
-        {subtitle}
-      </Card>
-    )
-  })
+  const now = useNow()
+  const cardsView = activities.slice(0, 4)
+    .filter(activity => new Date(activity.effect_at).valueOf() <= now && new Date(activity.dead_at).valueOf() > now)
+    .map(({ title, subtitle, url, subscript_text, subscript_color }, i) => {
+      const Icon = icons[i]
+      return (
+        <Card
+          key={i}
+          icon={<Icon className={styles.icon} />}
+          title={title}
+          href={url}
+          banner={subscript_text}
+          bannerBg={subscript_color}
+        >
+          {subtitle}
+        </Card>
+      )
+    })
 
   return (
     <div className={styles.activities}>
