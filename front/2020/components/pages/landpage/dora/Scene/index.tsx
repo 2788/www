@@ -1,6 +1,5 @@
 import React from 'react'
 import Section from 'components/Product/Section'
-import Link from 'components/Link'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 
 import scene1 from './images/scene1.png'
@@ -27,7 +26,7 @@ export default function Scene() {
         <Card bgImg={scene5} title="在线政务" />
         <Card bgImg={scene6} title="网约车" />
       </div>
-      <Link className={style.link} onClick={startConsulting} blue>立即咨询 <Arrow /></Link>
+      <span className={style.link} onClick={startConsulting}>立即咨询 <Arrow /></span>
     </Section>
   )
 }
