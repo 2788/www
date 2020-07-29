@@ -23,7 +23,7 @@ import CloudProduct from 'components/pages/index/CloudProduct'
 import Solutions from 'components/pages/index/Solutions'
 import News from 'components/pages/index/News'
 import TryAndContact from 'components/pages/index/TryAndContact'
-import { getBanners, Banner } from 'apis/lego'
+import { getBanners, Banner, getActivities, Activity } from 'apis/lego'
 
 import styles from './style.less'
 
@@ -50,7 +50,7 @@ function useBannerImg() {
 }
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent({ banners }: { banners: Banner[] }) {
+function PageContent({ banners, activities }: { banners: Banner[], activities: Activity[] }) {
 
   const headerBannerImgs = useBannerImg()
   const isMobile = useMobile()
@@ -138,7 +138,7 @@ function PageContent({ banners }: { banners: Banner[] }) {
         />
       </Carousel>
 
-      <Activities />
+      <Activities activities={activities} />
 
       <Feature
         className={styles.core}
@@ -202,14 +202,14 @@ function PageContent({ banners }: { banners: Banner[] }) {
   )
 }
 
-export default function IndexPage({ banners }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function IndexPage({ banners, activities }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title=""
       keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
       description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
     >
-      <PageContent banners={banners} />
+      <PageContent banners={banners} activities={activities} />
     </Layout>
   )
 }
@@ -217,7 +217,8 @@ export default function IndexPage({ banners }: InferGetStaticPropsType<typeof ge
 export async function getStaticProps() {
   return {
     props: {
-      banners: await getBanners()
+      banners: await getBanners({ page_size: 10 }),
+      activities: await getActivities({ page_size: 4 })
     }
   }
 }

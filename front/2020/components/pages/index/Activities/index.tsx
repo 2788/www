@@ -4,6 +4,7 @@ import {
   Card as UICard, Title, Desc, Content
 } from 'components/UI/Card'
 import Link from 'components/Link'
+import { Activity } from 'apis/lego'
 
 import Activity1Icon from './images/activity1.svg'
 import Activity2Icon from './images/activity2.svg'
@@ -16,15 +17,16 @@ interface CardProps {
   icon: ReactNode
   title: string
   banner?: string
+  bannerBg?: string
   href?: string
 }
 
-function Card({ icon, title, banner, href, children }: PropsWithChildren<CardProps>) {
+function Card({ icon, title, banner, bannerBg = '#FA8C16', href, children }: PropsWithChildren<CardProps>) {
   return (
     <Link className={styles.container} href={href}>
       <UICard className={styles.card}>
         {icon}
-        {banner ? <span className={styles.banner}>{banner}</span> : null}
+        {banner ? <span className={styles.banner} style={{ background: bannerBg }}>{banner}</span> : null}
         <Content className={styles.cardContent}>
           <Title className={styles.title}>{title}</Title>
           <Desc className={styles.desc}>{children}</Desc>
@@ -42,44 +44,20 @@ const icons = [
   Activity4Icon
 ]
 
-// 这部分内容后续从接口来
-const activities = [
-  {
-    title: '最新活动',
-    desc: '热门活动及产品特惠',
-    href: 'https://marketing.qiniu.com/activity/all?entry=index-advert'
-  },
-  {
-    title: '717 七牛品牌日',
-    desc: 'CDN × 视频云，组合嗨购',
-    href: 'https://marketing.qiniu.com/activity/717Brand-Festival?entry=index-advert',
-    badge: '热门'
-  },
-  {
-    title: '中小企业上云扶持',
-    desc: '企业建站资源包限时 3 折',
-    href: 'https://www.qiniu.com/events/enterpriseoncloud?entry=index-advert'
-  },
-  {
-    title: 'SSL 证书年中采购季',
-    desc: '全场 5 折起',
-    href: 'https://marketing.qiniu.com/activity/activity-ssl?entry=index-advert'
-  }
-]
+export default function Activities({ activities }: { activities: Activity[] }) {
 
-export default function Activities() {
-
-  const cardsView = activities.slice(0, 4).map(({ title, desc, href, badge }, i) => {
+  const cardsView = activities.slice(0, 4).map(({ title, subtitle, url, subscript_text, subscript_color }, i) => {
     const Icon = icons[i]
     return (
       <Card
         key={i}
         icon={<Icon className={styles.icon} />}
         title={title}
-        href={href}
-        banner={badge}
+        href={url}
+        banner={subscript_text}
+        bannerBg={subscript_color}
       >
-        {desc}
+        {subtitle}
       </Card>
     )
   })
