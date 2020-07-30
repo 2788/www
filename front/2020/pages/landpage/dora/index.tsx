@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createElement } from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import { useBtns } from 'hooks/product-btn'
@@ -10,8 +10,9 @@ import PageNotice, {
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import Section from 'components/Product/Section'
-import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
+import Related, { ProductItem as RelatedProduct, Item as RelatedItem } from 'components/Solution/Related'
 import { Product } from 'constants/products'
+import { Solution, urlMap as solutionUrlMap, iconMap as solutionIconMap } from 'constants/solutions'
 
 import Arch from 'components/pages/landpage/dora/Architecture'
 import CoreProduct from 'components/pages/landpage/dora/Core'
@@ -56,9 +57,9 @@ function Main() {
       <Case />
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
-          <RelatedProduct product={Product.Express} />
-          <RelatedProduct product={Product.Kodo} />
-          <RelatedProduct product={Product.Plsv} />
+          <RelatedProduct name="机器数据智能" product={Product.Express} />
+          <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
+          <RelatedProduct name="智能视频服务" product={Product.Plsv} />
         </Related>
       </Section>
 

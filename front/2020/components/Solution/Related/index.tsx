@@ -39,15 +39,18 @@ export function Item({ icon, href, children }: ItemProps) {
 
 export type ProductItemProps = {
   product: Product
+  // 自定义名称
+  name?: string
 }
 
-export function ProductItem({ product }: ProductItemProps) {
+export function ProductItem({ product, name }: ProductItemProps) {
   const iconView = <ProductIcon product={product} />
   const href = urlMap[product] || '#'
-  const name = nameMap[product]
+  // eslint-disable-next-line no-underscore-dangle
+  const _name = name || nameMap[product]
   return (
     <Item icon={iconView} href={href}>
-      {name}
+      {_name}
     </Item>
   )
 }
