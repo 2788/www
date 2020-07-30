@@ -77,7 +77,7 @@ export default function Page() {
   return (
     <Layout
       title="多媒体数据处理平台"
-      keywords="七牛云, 多媒体数据处理平台"
+      keywords="七牛云, 多媒体数据处理平台, 智能多媒体服务, 内容审核, 人脸核验"
       description="邀请好友注册七牛云，即可获得CDN免费下载流量，购物卡、产品代金券、七牛云活动VIP门票、优先产品内测资格等福利。"
     >
       <Main />
