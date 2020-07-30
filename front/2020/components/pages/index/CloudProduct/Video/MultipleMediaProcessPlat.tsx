@@ -60,7 +60,7 @@ export default function MultipleMediaProcessPlat() {
               <g transform="translate(528 125)">
                 <rect width="120" height="32" fill="#E0F7FF"></rect>
                 <text fill="#00AAE7">
-                  <tspan x="35" y="21">开放 API</tspan>
+                  <tspan x="35" y="21">Open API</tspan>
                 </text>
               </g>
               <OpenApiIcon />
