@@ -9,6 +9,9 @@ import PageNotice, {
 } from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import Section from 'components/Product/Section'
+import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
+import { Product } from 'constants/products'
 
 import Arch from 'components/pages/landpage/dora/Architecture'
 import CoreProduct from 'components/pages/landpage/dora/Core'
@@ -51,6 +54,13 @@ function Main() {
       <CoreProduct />
       <TypicalScene />
       <Case />
+      <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
+        <Related>
+          <RelatedProduct product={Product.Express} />
+          <RelatedProduct product={Product.Kodo} />
+          <RelatedProduct product={Product.Plsv} />
+        </Related>
+      </Section>
 
       <UsageGuide
         title="欢迎联系我们了解更多行业成功案例经验"
