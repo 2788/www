@@ -13,7 +13,7 @@ import xiaohongshu from './images/xiaohongshu.png'
 
 export default function Case() {
   return (
-    <Section title="客户案例" name="case">
+    <Section title="客户案例" name="case" withTailPadding>
       <RawCustomerCaseGroup>
         <CustomerCase pic={jumei} />
         <CustomerCase pic={dj} />
