@@ -1,4 +1,4 @@
-import React, { createElement } from 'react'
+import React from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import { useBtns } from 'hooks/product-btn'
@@ -10,9 +10,8 @@ import PageNotice, {
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import Section from 'components/Product/Section'
-import Related, { ProductItem as RelatedProduct, Item as RelatedItem } from 'components/Solution/Related'
+import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product } from 'constants/products'
-import { Solution, urlMap as solutionUrlMap, iconMap as solutionIconMap } from 'constants/solutions'
 
 import Arch from 'components/pages/landpage/dora/Architecture'
 import CoreProduct from 'components/pages/landpage/dora/Core'
