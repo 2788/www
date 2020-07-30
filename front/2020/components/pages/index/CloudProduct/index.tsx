@@ -68,7 +68,7 @@ export default function CloudProduct() {
       </Button>
       <Button className={productType === 'all' && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick('all')}>整体</Button>
       <Button className={productType === Category.Video && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Video)}>
-        {categoryNameMap[Category.Video]}
+        视觉数据智能
       </Button>
     </div>
   )

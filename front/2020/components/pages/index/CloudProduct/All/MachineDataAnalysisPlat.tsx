@@ -18,7 +18,7 @@ export default function MachineDataAnalysisPlat() {
             <g transform="translate(0 119)">
               <rect width="144" height="32" fill="#E0F7FF"></rect>
               <text fill="#00AAE7">
-                <tspan x="17" y="21">机器数据分析平台</tspan>
+                <tspan x="17" y="21">机器数据智能</tspan>
               </text>
             </g>
           </Link>
