@@ -18,6 +18,11 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 import { useModal as useFeedbackModal } from 'components/Feedback'
+import PageNotice, {
+  Group as PageNoticeGroup,
+  Item as PageNoticeItem
+} from 'components/Product/PageNotice'
+import { Product, urlMap } from 'constants/products'
 
 import ServerSideMergeIcon from './_images/feature-serverside-merge.svg'
 import RealtimeRecordIcon from './_images/feature-realtime-record.svg'
@@ -50,6 +55,14 @@ function PageContent() {
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={imgBanner} />
+
+      <PageNotice>
+        <PageNoticeGroup title="新闻动态" type="news">
+          <PageNoticeItem href={urlMap[Product.Pili]}>
+            毫秒级延迟直播体验，直播流量包特惠 8 折起 &gt;&gt;
+          </PageNoticeItem>
+        </PageNoticeGroup>
+      </PageNotice>
 
       <Navigator>
         {btns.nav}

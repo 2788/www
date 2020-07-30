@@ -21,7 +21,8 @@ const columns: Array<ColumnProps<any>> = [
   },
   {
     title: '年限',
-    dataIndex: 'years'
+    dataIndex: 'years',
+    width: 100
   },
   {
     title: '七牛云售价（元）',

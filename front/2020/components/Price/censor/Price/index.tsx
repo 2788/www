@@ -20,7 +20,7 @@ export default function Price() {
           <Video />
         </div>
         <div className={style.title} style={{ marginTop: '48px' }}>以图搜图</div>
-        <div className={style.content} style={{ padding: '24px 32px' }}>
+        <div className={style.content} style={{ padding: '24px' }}>
           <Other />
         </div>
       </PricePaneSection>

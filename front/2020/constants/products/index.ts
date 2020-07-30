@@ -84,7 +84,7 @@ export const urlMap = {
 
 export const descMap = {
   [Product.Kodo]: '高可用、易扩展、低成本、一站式、支持边缘存储',
-  [Product.Archive]: '可定制化的数百 EB 级别、高可靠、强安全的存储系统',
+  [Product.Archive]: '极低成本、高可靠性的归档数据存储服务',
   [Product.Hdfs]: '', // 暂未上线
 
   [Product.Cdn]: '优质节点、可监控、智能调度的内容分发服务',

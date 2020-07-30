@@ -26,7 +26,7 @@ export default function KodoeAdvantage() {
   const isMobile = useMobile()
 
   return (
-    <Feature name="advantage" title="方案优势" header="私有云存储优势" grey>
+    <Feature name="advantage" title="方案优势" header="私有云存储优势">
       <FeatureGroup>
         <FeatureItem
           icon={<AdvantageIconOne className={styles.icon} />}

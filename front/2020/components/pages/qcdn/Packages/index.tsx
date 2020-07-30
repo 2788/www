@@ -20,7 +20,7 @@ export default function Packages() {
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="75.00"
-        detailLink="https://qmall.qiniu.com/template/MTY#spec_combo=NjA3"
+        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NjA3&ref=qcdn"
         sellPoints={['适用时段：9:00 - 18:00', '类型：HTTP']}
       />
       <Card
@@ -30,7 +30,7 @@ export default function Packages() {
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="98.00"
-        detailLink="https://qmall.qiniu.com/template/MTY#spec_combo=NTgz"
+        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NTgz&ref=qcdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -40,7 +40,7 @@ export default function Packages() {
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
         price="193.00"
-        detailLink="https://qmall.qiniu.com/template/MTY#spec_combo=NTg2"
+        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NTg2&ref=qcdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
       <Card
@@ -50,7 +50,7 @@ export default function Packages() {
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
         price="942.00"
-        detailLink="https://qmall.qiniu.com/template/MTY#spec_combo=NTg5"
+        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NTg5&ref=qcdn"
         sellPoints={['适用时段：全时段可用', '类型：HTTP']}
       />
     </Section>

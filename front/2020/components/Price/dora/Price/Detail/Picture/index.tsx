@@ -16,6 +16,7 @@ const columns: Array<ColumnProps<any>> = [
   {
     title: '名目',
     dataIndex: 'name',
+    width: '50%',
     render(name, _, idx) {
       const result = { children: name, props: { rowSpan: 1 } }
       // 图片盲水印处理
