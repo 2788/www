@@ -97,10 +97,12 @@ export default function MultipleMediaProcessPlat() {
         <svg width="300" height="110">
           <MultipleMediaProcessPlatIcon />
           <g transform="translate(150 40)">
-            <rect width="148" height="32" fill="#E0F7FF"></rect>
-            <text fill="#00AAE7">
-              <tspan x="11" y="21">多媒体数据处理平台</tspan>
-            </text>
+            <Link className={style.link} href="/landpage/dora">
+              <rect width="148" height="32" fill="#E0F7FF"></rect>
+              <text fill="#00AAE7">
+                <tspan x="11" y="21">多媒体数据处理平台</tspan>
+              </text>
+            </Link>
           </g>
         </svg>
       </Positioned>
