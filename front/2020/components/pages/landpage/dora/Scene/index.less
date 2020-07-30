@@ -12,6 +12,10 @@
     margin-top: @card-gap;
     margin-bottom: 40px;
   }
+
+  .mobile({
+    flex-direction: column;
+  });
 }
 
 .card {
@@ -22,6 +26,14 @@
   height: @card-height;
   font-size: 32px;
   color: white;
+
+  .mobile({
+    width: 100%;
+
+    + .card {
+      margin-top: @card-gap;
+    }
+  });
 }
 
 .link {

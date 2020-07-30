@@ -35,6 +35,7 @@ type Props = {
   title: string
   bgImg: string
 }
+
 function Card({ title, bgImg }: Props) {
   return <div className={style.card} style={{ background: `url(${bgImg})` }}>{title}</div>
 }
