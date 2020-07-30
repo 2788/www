@@ -165,10 +165,10 @@ export default function Architecture() {
                   </g>
                 </g>
                 <g transform="translate(124 120)">
-                  <g transform="translate(0 46)">
-                    <rect width="116" height="20" fill="#E0F7FF"></rect>
+                  <g transform="translate(-17 46)">
+                    <rect width="153" height="20" fill="#E0F7FF"></rect>
                     <text fill="#00AAE7" fontSize="12">
-                      <tspan x="4" y="15">多媒体数据处理平台</tspan>
+                      <tspan x="4" y="15">云原生音视频数据分析平台</tspan>
                     </text>
                   </g>
                   <g transform="translate(33.96)">
@@ -347,10 +347,10 @@ export default function Architecture() {
                   </g>
                 </g>
                 <g transform="translate(344 209)">
-                  <g transform="translate(0 109)">
-                    <rect width="148" height="32" fill="#E0F7FF"></rect>
+                  <g transform="translate(-20 109)">
+                    <rect width="188" height="32" fill="#E0F7FF"></rect>
                     <text fill="#00AAE7">
-                      <tspan x="11" y="21">多媒体数据处理平台</tspan>
+                      <tspan x="11" y="21">云原生音视频数据分析平台</tspan>
                     </text>
                   </g>
                   <g transform="translate(14)">
