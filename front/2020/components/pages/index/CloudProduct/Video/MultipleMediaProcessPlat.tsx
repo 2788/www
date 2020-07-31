@@ -99,7 +99,7 @@ export default function MultipleMediaProcessPlat() {
           <g transform="translate(150 40)">
             <rect width="148" height="32" fill="#E0F7FF"></rect>
             <text fill="#00AAE7">
-              <tspan x="11" y="21">多媒体数据处理平台</tspan>
+              <tspan x="11" y="21">音视频数据分析平台</tspan>
             </text>
           </g>
         </svg>

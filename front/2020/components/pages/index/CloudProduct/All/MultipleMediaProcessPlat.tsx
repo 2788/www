@@ -12,7 +12,7 @@ export default function MultipleMediaProcessPlat() {
           <g transform="translate(0 119)">
             <rect width="144" height="32" fill="#E0F7FF"></rect>
             <text fill="#00AAE7">
-              <tspan x="9" y="21">视觉数据智能</tspan>
+              <tspan x="9" y="21">音视频数据分析平台</tspan>
             </text>
           </g>
         </svg>

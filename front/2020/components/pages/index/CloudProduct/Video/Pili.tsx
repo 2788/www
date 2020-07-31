@@ -31,14 +31,12 @@ export default function Pili() {
                 </text>
               </g>
             </Link>
-            <Link className={style.link} href="/products/qvs">
-              <g transform="translate(12 201)">
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="15" y="21">视频监控 QVS</tspan>
-                </text>
-              </g>
-            </Link>
+            <g transform="translate(12 201)">
+              <rect width="120" height="32" fill="#E0F7FF"></rect>
+              <text fill="#34A1EC">
+                <tspan x="46" y="21">SDK</tspan>
+              </text>
+            </g>
           </g>
         </svg>
       </Positioned>

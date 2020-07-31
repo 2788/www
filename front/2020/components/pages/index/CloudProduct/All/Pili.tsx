@@ -15,7 +15,7 @@ export default function Pili() {
             <g transform="translate(12 109)">
               <rect width="120" height="32" fill="#E0F7FF"></rect>
               <text fill="#34A1EC">
-                <tspan x="46" y="21">互动直播</tspan>
+                <tspan x="32" y="21">互动直播</tspan>
               </text>
             </g>
           </g>
