@@ -1,7 +1,7 @@
 import React from 'react'
 import Section from 'components/Product/Section'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import { LayoutCard } from 'components/UI/Card'
+import { LayoutCard, Row } from 'components/UI/Card'
 
 import scene1 from './images/scene1.png'
 import scene2 from './images/scene2.png'
@@ -17,16 +17,16 @@ export default function Scene() {
   const { startConsulting } = useFeedbackModal()
   return (
     <Section title="典型应用场景" name="scene">
-      <div className={style.wrapper}>
-        <Card bgImg={scene1} title="金融" />
-        <Card bgImg={scene2} title="社交电商" />
-        <Card bgImg={scene3} title="教育" />
-      </div>
-      <div className={style.wrapper}>
-        <Card bgImg={scene4} title="泛娱乐" />
-        <Card bgImg={scene5} title="在线政务" />
-        <Card bgImg={scene6} title="网约车" />
-      </div>
+      <Row>
+        <MyCard bgImg={scene1} title="金融" />
+        <MyCard bgImg={scene2} title="社交电商" />
+        <MyCard bgImg={scene3} title="教育" />
+      </Row>
+      <Row style={{ marginBottom: '24px' }}>
+        <MyCard bgImg={scene4} title="泛娱乐" />
+        <MyCard bgImg={scene5} title="在线政务" />
+        <MyCard bgImg={scene6} title="网约车" />
+      </Row>
       <span className={style.link} onClick={startConsulting}>立即咨询 <Arrow /></span>
     </Section>
   )
@@ -37,6 +37,6 @@ type Props = {
   bgImg: string
 }
 
-function Card({ title, bgImg }: Props) {
+function MyCard({ title, bgImg }: Props) {
   return <LayoutCard className={style.card} style={{ background: `url(${bgImg})` }}>{title}</LayoutCard>
 }
