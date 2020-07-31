@@ -1,6 +1,7 @@
 import React from 'react'
 import Section from 'components/Product/Section'
 import { useModal as useFeedbackModal } from 'components/Feedback'
+import { LayoutCard } from 'components/UI/Card'
 
 import scene1 from './images/scene1.png'
 import scene2 from './images/scene2.png'
@@ -37,5 +38,5 @@ type Props = {
 }
 
 function Card({ title, bgImg }: Props) {
-  return <div className={style.card} style={{ background: `url(${bgImg})` }}>{title}</div>
+  return <LayoutCard className={style.card} style={{ background: `url(${bgImg})` }}>{title}</LayoutCard>
 }
