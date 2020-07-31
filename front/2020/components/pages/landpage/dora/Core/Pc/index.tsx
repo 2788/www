@@ -2,6 +2,7 @@ import React from 'react'
 import Section from 'components/Product/Section'
 import Button from 'components/UI/Button'
 import { Product, urlMap } from 'constants/products'
+import { LayoutCard } from 'components/UI/Card'
 
 import DoraIcon from '../images/dora.svg'
 import CensorIcon from '../images/censor.svg'
@@ -31,11 +32,11 @@ type CardProps = {
 function Card(props: CardProps) {
   const { title, icon, desc, link } = props
   return (
-    <div className={style.cardWrapper}>
+    <LayoutCard className={style.cardWrapper}>
       {icon}
       <div className={style.cardTitle}>{title}</div>
       <div className={style.cardDesc}>{desc}</div>
       <Button href={link} className={style.cardBtn} type="hollow" withBorder>了解更多</Button>
-    </div>
+    </LayoutCard>
   )
 }
