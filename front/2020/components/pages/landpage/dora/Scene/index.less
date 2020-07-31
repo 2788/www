@@ -1,21 +1,5 @@
 @import '~utils/less/index.less';
 
-@card-gap: 24px;
-
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-
-  + .wrapper {
-    margin-top: @card-gap;
-    margin-bottom: 40px;
-  }
-
-  .mobile({
-    flex-direction: column;
-  });
-}
-
 .card {
   display: flex;
   align-items: center;
