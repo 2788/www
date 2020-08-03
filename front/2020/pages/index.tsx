@@ -237,7 +237,7 @@ function PageContent() {
             pos="left-right"
             align="left"
             icon={<Core4Icon className={styles.coreIcon} />}
-            title="机器数据处理"
+            title="机器数据智能"
           >
             <FeatureDesc>
               数据科技赋能是产业升级的核心，然而大量数据却未被妥善收集和分析应用，Pandora 专注于格式多样、实时生产的海量机器数据，让您不仅读懂机器，更能了解顾客的想法，成为行业的领先者。
