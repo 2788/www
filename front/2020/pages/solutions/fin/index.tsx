@@ -123,7 +123,7 @@ function PageContent() {
           <RelatedItem icon={<IconKodoe />} href={solutionUrlMap[Solution.Kodoe]!}>
             存储与数据湖
           </RelatedItem>
-          <RelatedProduct product={Product.Express} />
+          <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct product={Product.FaceID} />
           <RelatedItem icon={<IconOcr />} href={productUrlMap[Product.FaceID] + '#features'}>
             OCR 识别
