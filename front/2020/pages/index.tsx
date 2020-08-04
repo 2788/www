@@ -226,7 +226,7 @@ function PageContent() {
             pos="left-right"
             align="left"
             icon={<Core3Icon className={styles.coreIcon} />}
-            title="视觉数据智能"
+            title="视觉数据处理"
           >
             <FeatureDesc>
               独创的 AI 产品体系，以统一 API 提供服务，零运维、高可用、高性能，不仅提供图片处理、音视频转码等基础功能，基于海量数据深度学习的内容审核和 AI 分析，助您更好理解数据。
@@ -237,7 +237,7 @@ function PageContent() {
             pos="left-right"
             align="left"
             icon={<Core4Icon className={styles.coreIcon} />}
-            title="机器数据智能"
+            title="机器数据处理"
           >
             <FeatureDesc>
               数据科技赋能是产业升级的核心，然而大量数据却未被妥善收集和分析应用，Pandora 专注于格式多样、实时生产的海量机器数据，让您不仅读懂机器，更能了解顾客的想法，成为行业的领先者。
