@@ -35,12 +35,12 @@ export default function Price() {
         <p className={style.desc}>了解更多计费说明，<a className={style.link} onClick={() => setActive('calc')}>请点击这里</a></p>
         <Button type="hollow" href={packageLink} withBorder style={{ marginTop: '12px' }}>购买资源包</Button>
         <h4 className={style.textTitle}>标准存储</h4>
-        <p className={style.desc}>开通七牛云对象存储服务的标准用户，每月可享受一定量的标准存储免费存储空间、标准存储免费 CDN 回源流量和标准存储免费请求数目。</p>
+        <p className={style.desc}>开通七牛云对象存储服务的实名认证用户，每月可享受一定量的标准存储免费存储空间、标准存储免费 CDN 回源流量和标准存储免费请求数目。</p>
         <p className={style.desc} style={{ marginBottom: '16px' }}>每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</p>
-        <Card title="标准存储每月免费空间" num="0 - 10" unit="GB" />
-        <Card title="标准存储每月免费 CDN 回源流量" num="0 - 10" unit="GB" />
-        <Card title="标准存储每月免费写请求 PUT/DELETE" num="0 - 10" unit="万次" />
-        <Card title="标准存储每月免费读请求 GET" num="0 - 100" unit="万次" />
+        <Card title="标准存储每月免费空间" num="10" unit="GB" />
+        <Card title="标准存储每月免费 CDN 回源流量" num="10" unit="GB" />
+        <Card title="标准存储每月免费写请求 PUT/DELETE" num="10" unit="万次" />
+        <Card title="标准存储每月免费读请求 GET" num="100" unit="万次" />
         <Card title="每月免费上传流量" num="无上限" unit="" style={{ width: isMobile ? '100%' : '136px' }} />
       </PricePaneSection>
       <PricePaneSection title="价格详情" className={style.desc}>
