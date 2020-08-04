@@ -156,7 +156,7 @@ export const categoryNameMap = {
 
 export const categoryEnNameMap = {
   [Category.Service]: 'Cloud Essentials',
-  [Category.Vision]: 'CV data intelligence',
+  [Category.Vision]: 'CV Data Intelligence',
   [Category.Intelligence]: 'Machine Data Intelligence'
 } as const
 
