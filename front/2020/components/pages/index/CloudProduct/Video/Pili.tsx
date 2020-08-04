@@ -2,14 +2,12 @@ import React from 'react'
 import Link from 'components/Link'
 import Positioned from '../Positioned'
 import style from '../index.less'
-import Line from '../Line'
 import { Node } from '..'
 import SDKIcon from '../icons/media/SDK'
 
 export default function Pili() {
   return (
     <>
-      <Positioned top={458} left={327}><Line width={27} /></Positioned>
       <Positioned identity={Node.Pili} top={405} left={378} zIndex={1}>
         <svg width="144" height="285" viewBox="0 0 144 285">
           <SDKIcon />
