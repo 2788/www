@@ -1,7 +1,5 @@
 import React from 'react'
-import Link from 'components/Link'
 import Positioned from '../Positioned'
-import style from '../index.less'
 import Line from '../Line'
 import { Node } from '..'
 import SDKIcon from '../icons/media/SDK'
@@ -11,40 +9,15 @@ export default function Pili() {
     <>
       <Positioned top={458} left={160}><Line width={27} /></Positioned>
       <Positioned identity={Node.Pili} left={230} top={405} zIndex={1}>
-        <svg width="144" height="295" viewBox="0 0 144 295">
+        <svg width="144" height="165" viewBox="0 0 144 165">
           <SDKIcon />
           <g fill="none" transform="translate(0, 10)">
-            <rect width="144" height="176" x="0" y="109" stroke="#00AAE7" strokeDasharray="4 8" strokeWidth="2" mask="url(#全部产品-sdk-b)"></rect>
-            <g transform="translate(12 121)">
+            <g transform="translate(12 109)">
               <rect width="120" height="32" fill="#E0F7FF"></rect>
               <text fill="#34A1EC">
-                <tspan x="46" y="21">SDK</tspan>
+                <tspan x="32" y="21">互动直播</tspan>
               </text>
             </g>
-            <Link className={style.link} href="/products/pili">
-              <g transform="translate(12 161)">
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="20" y="21">视频直播 Pili</tspan>
-                </text>
-              </g>
-            </Link>
-            <Link className={style.link} href="/products/rtn">
-              <g transform="translate(12 201)">
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="9" y="21">实时音视频 RTC</tspan>
-                </text>
-              </g>
-            </Link>
-            <Link className={style.link} href="/products/qvs">
-              <g transform="translate(12 241)">
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="15" y="21">视频监控 QVS</tspan>
-                </text>
-              </g>
-            </Link>
           </g>
         </svg>
       </Positioned>

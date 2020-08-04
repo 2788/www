@@ -15,7 +15,7 @@ export default function DataLakeIcon() {
       </defs>
       <g fill="none" transform="translate(0, 10)">
         <polygon fill="#C2E7FF" points="0 103.81 80 151.331 160 103.81 80 60"></polygon>
-        <g className={animation.levitate1}>
+        <g className={animation.levitate3}>
           <g transform="translate(24 52)">
             <polygon fill="#006EBB" points="0 30.667 56 30.667 56 84.667 0 50.267"></polygon>
             <polygon fill="#34A1EC" points="56 30.667 112 30.667 112 84.667 56 50.267" transform="matrix(-1 0 0 1 168 0)"></polygon>
@@ -31,7 +31,7 @@ export default function DataLakeIcon() {
             <polygon fill="#A7DBFF" points="60.667 67.333 60.667 74.14 73.034 66 73.034 59.962"></polygon>
           </g>
         </g>
-        <g className={animation.levitate3}>
+        <g className={animation.levitate1}>
           <g transform="translate(24)">
             <polygon fill="#006EBB" points="0 30.667 56 30.667 56 84.667 0 50.267"></polygon>
             <polygon fill="#34A1EC" points="56 30.667 112 30.667 112 84.667 56 50.267" transform="matrix(-1 0 0 1 168 0)"></polygon>

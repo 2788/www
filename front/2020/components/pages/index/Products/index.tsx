@@ -19,7 +19,7 @@ import TabIntelligenceIcon from './images/tabs/product4.svg'
 
 const categoryIconMap = {
   [Category.Service]: TabServiceIcon,
-  [Category.Video]: TabVideoIcon,
+  [Category.Vision]: TabVideoIcon,
   [Category.Intelligence]: TabIntelligenceIcon
 }
 

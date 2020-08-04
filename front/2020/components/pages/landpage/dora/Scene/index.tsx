@@ -38,5 +38,5 @@ type Props = {
 }
 
 function MyCard({ title, bgImg }: Props) {
-  return <LayoutCard className={style.card} style={{ background: `url(${bgImg})` }}>{title}</LayoutCard>
+  return <LayoutCard className={style.card} style={{ background: `url(${bgImg})`, backgroundSize: 'contain' }}>{title}</LayoutCard>
 }

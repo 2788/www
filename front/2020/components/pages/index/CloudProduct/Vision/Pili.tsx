@@ -2,14 +2,12 @@ import React from 'react'
 import Link from 'components/Link'
 import Positioned from '../Positioned'
 import style from '../index.less'
-import Line from '../Line'
 import { Node } from '..'
 import SDKIcon from '../icons/media/SDK'
 
 export default function Pili() {
   return (
     <>
-      <Positioned top={458} left={327}><Line width={27} /></Positioned>
       <Positioned identity={Node.Pili} top={405} left={378} zIndex={1}>
         <svg width="144" height="285" viewBox="0 0 144 285">
           <SDKIcon />
@@ -31,14 +29,12 @@ export default function Pili() {
                 </text>
               </g>
             </Link>
-            <Link className={style.link} href="/products/qvs">
-              <g transform="translate(12 201)">
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="15" y="21">视频监控 QVS</tspan>
-                </text>
-              </g>
-            </Link>
+            <g transform="translate(12 201)">
+              <rect width="120" height="32" fill="#E0F7FF"></rect>
+              <text fill="#34A1EC">
+                <tspan x="46" y="21">SDK</tspan>
+              </text>
+            </g>
           </g>
         </svg>
       </Positioned>
