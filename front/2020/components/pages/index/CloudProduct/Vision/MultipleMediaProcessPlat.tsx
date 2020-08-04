@@ -100,7 +100,7 @@ export default function MultipleMediaProcessPlat() {
             <Link className={style.link} href="/landpage/dora">
               <rect width="148" height="32" fill="#E0F7FF"></rect>
               <text fill="#00AAE7">
-                <tspan x="11" y="21">音视频数据分析平台</tspan>
+                <tspan x="17" y="21">视觉数据分析平台</tspan>
               </text>
             </Link>
           </g>

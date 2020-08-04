@@ -13,9 +13,9 @@ export type ProductType = 'all' | Category.Intelligence | Category.Vision
 export enum Node {
   // 机器数据
   MachineData = 'machine_data',
-  // 音视频数据分析平台
+  // 视觉数据分析平台
   MultiMediaDataProcess = 'multi_media_daa_process',
-  // 音视频数据分析平台细节
+  // 视觉数据分析平台细节
   MultiMediaDataProcessDetail = 'multi_media_daa_process_detail',
   // 机器数据分析平台
   MachineDataAnalysisPlat = 'machine_data_analysis_platform',
