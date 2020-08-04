@@ -46,7 +46,7 @@ function Overlay() {
         </DropdownMenuGroup>
       </DropdownMenu>
       <DropdownMenu>
-        <DropdownMenuGroup title={categoryNameMap[Category.Video]}>
+        <DropdownMenuGroup title={categoryNameMap[Category.Vision]}>
           {menuItemForProduct(Product.Dora)}
           {menuItemForProduct(Product.Plsv)}
           {menuItemForProduct(Product.FaceID)}

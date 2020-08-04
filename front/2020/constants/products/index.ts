@@ -107,7 +107,7 @@ export const descMap = {
 
 export enum Category {
   Service = 'service',
-  Video = 'video',
+  Vision = 'vision',
   Intelligence = 'intelligence'
 }
 
@@ -144,24 +144,24 @@ export const categoryIntelligence = [
 
 export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
   [Category.Service]: categoryService,
-  [Category.Video]: categoryVideo,
+  [Category.Vision]: categoryVideo,
   [Category.Intelligence]: categoryIntelligence
 }
 
 export const categoryNameMap = {
   [Category.Service]: '基础服务',
-  [Category.Video]: '智能视频服务',
+  [Category.Vision]: '视觉数据智能',
   [Category.Intelligence]: '机器数据智能'
 } as const
 
 export const categoryEnNameMap = {
   [Category.Service]: 'Cloud Essentials',
-  [Category.Video]: 'Intelligent Video Service',
+  [Category.Vision]: 'CV data intelligence',
   [Category.Intelligence]: 'Machine Data Intelligence'
 } as const
 
 export const categories = [
   Category.Service,
-  Category.Video,
+  Category.Vision,
   Category.Intelligence
 ] as const

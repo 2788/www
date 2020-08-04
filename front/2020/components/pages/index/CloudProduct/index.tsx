@@ -7,9 +7,9 @@ import Section from '../Section'
 import style from './index.less'
 import All from './All'
 import Machine from './Machine'
-import Video from './Video'
+import Video from './Vision'
 
-export type ProductType = 'all' | Category.Intelligence | Category.Video
+export type ProductType = 'all' | Category.Intelligence | Category.Vision
 export enum Node {
   // 机器数据
   MachineData = 'machine_data',
@@ -67,8 +67,8 @@ export default function CloudProduct() {
         {categoryNameMap[Category.Intelligence]}
       </Button>
       <Button className={productType === 'all' && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick('all')}>整体</Button>
-      <Button className={productType === Category.Video && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Video)}>
-        视觉数据智能
+      <Button className={productType === Category.Vision && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Vision)}>
+        {categoryNameMap[Category.Vision]}
       </Button>
     </div>
   )
@@ -79,7 +79,7 @@ export default function CloudProduct() {
         <div className={style.container}>
           {productType === 'all' && <All />}
           {productType === Category.Intelligence && <Machine />}
-          {productType === Category.Video && <Video />}
+          {productType === Category.Vision && <Video />}
         </div>
       </Context.Provider>
     </Section>

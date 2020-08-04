@@ -2,7 +2,7 @@
  * @author: corol
  * @github: github.com/huangbinjie
  * @created: Tue Jul 07 2020
- * @file: 智能视频服务
+ * @file: 视觉数据智能
  *
  * Copyright (c) 2020 Qiniu
  */
@@ -18,7 +18,7 @@ import TerminalUser from './TernimalUser'
 import Positioned from '../Positioned'
 import Line from '../Line'
 
-export default function Video() {
+export default function Vision() {
   return (
     <>
       <MultipleMediaProcessPlat />
