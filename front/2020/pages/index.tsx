@@ -76,26 +76,6 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
       <Carousel className={styles.headerBanner} autoplay>
         {bannersView}
         <PageBanner
-          className={styles.bannerQuery}
-          title={<>数据分析平台 <span className={styles.upgrade}>重磅升级</span></>}
-          desc={<>新功能 <strong>业务链路关联查询</strong> 为您还原业务路径、全面分析业务</>}
-          bgColor="#2C6DD2"
-          bgImg={headerBannerImgs[2]}
-          btns={[
-            <>
-              <Button
-                key="1"
-                className={styles.btnQueryPrimary}
-                href="/products/pandora?entry=index-banner"
-                type="default"
-              >
-                免费体验
-              </Button>
-              <p className={styles.tip}>更多新功能持续放出中</p>
-            </>
-          ]}
-        />
-        <PageBanner
           className={styles.bannerUpClouds}
           title={<>企业 <strong className={styles.cost}>0</strong> 成本上云</>}
           desc={<>最高可达 <strong>4 核 8 G</strong></>}
@@ -109,31 +89,6 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
               type="default"
             >
               立即领取
-            </Button>
-          ]}
-        />
-        <PageBanner
-          title="私有云存储"
-          desc="企业数字资产的管理专家"
-          bgColor="#20176B"
-          bgImg={headerBannerImgs[1]}
-          btns={[
-            <Button
-              key="1"
-              className={styles.btnKodoePrimary}
-              href="/products/private-cloud-kodo?entry=index-banner"
-              type="default"
-            >
-              查看详情
-            </Button>,
-            <Button
-              key="2"
-              className={styles.btnKodoeHollow}
-              href="https://developer.qiniu.com/kodoe/manual/5867/a-free-trial"
-              type="primary-hollow"
-              withBorder
-            >
-              下载试用
             </Button>
           ]}
         />
