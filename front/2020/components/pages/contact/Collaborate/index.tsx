@@ -27,7 +27,7 @@ export default function Collaborate() {
         </Card>
         <Card className={style.card}>
           <CardIcon><PaperIcon /></CardIcon>
-          <CardTitle title="市场合作" subtitle="提供企业和客户合作往来服务" />
+          <CardTitle title="品牌、媒体合作服务" subtitle="提供企业和客户合作往来服务" />
           <CardItem title="电子邮箱" link="mailto:marketing@qiniu.com">marketing@qiniu.com</CardItem>
           <CardItem title="联系电话" link="tel:400-808-9176">400-808-9176 转 3</CardItem>
         </Card>
