@@ -112,10 +112,10 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
             <feature.Desc className={style.featureDesc}>丰富的操作系统，通过镜像可一键简单部署，同一镜像可在多台实例中快速复制环境，轻松扩展</feature.Desc>
           </feature.Item>
           <feature.Item title="可拓展" icon={<IconFeatureScalable />}>
-            <feature.Desc className={style.featureDesc}>与七牛云各种丰富的云产品无缝衔接，可持续为业务发展提供完整的计算、 存储、安全等解决方案</feature.Desc>
+            <feature.Desc className={style.featureDesc}>与七牛云各种丰富的云产品无缝衔接，可持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
           </feature.Item>
           <feature.Item title="高性能" icon={<IconFeatureHighPerf />}>
-            <feature.Desc className={style.featureDesc}>单实例最高可选 88vCPU，内存 704 GB，单实例性能最高可达到 700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
+            <feature.Desc className={style.featureDesc}>单实例最高可选 88 vCPU，内存 704 GB，单实例性能最高可达到 700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
           </feature.Item>
         </feature.Group>
       </Feature>
