@@ -98,24 +98,24 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
       <Feature>
         <feature.Group>
           <feature.Item title="弹性" icon={<IconFeatureFlexibility />}>
-            <feature.Desc className={style.featureDesc}>千台七牛云服务器一分钟创建，完美响应业务需求；随时调整配置，多种计费模式灵活选择</feature.Desc>
+            <feature.Desc className={style.featureDesc}>支持分钟级别创建 1000 台实例，多种弹性付费选择更贴合业务现状，支持弹性扩容，实例、带宽和云盘随时升配</feature.Desc>
           </feature.Item>
           <feature.Item title="稳定" icon={<IconFeatureStable />}>
-            <feature.Desc className={style.featureDesc}>高达 99.95% 的服务可用性和 99.9999999% 的数据可靠性，自动宕机迁移，自动快照备份，数据恢复更方便</feature.Desc>
+            <feature.Desc className={style.featureDesc}>单实例可用性达 99.975%，多可用区多实例可用性达 99.995%，云盘可靠性达 99.9999999%，可实现自动宕机迁移</feature.Desc>
           </feature.Item>
           <feature.Item title="安全" icon={<IconFeatureSafe />}>
-            <feature.Desc className={style.featureDesc}>专有网络隔离攻击；安全组、高防等安全服务保证您的服务安全运行</feature.Desc>
+            <feature.Desc className={style.featureDesc}>通过多方国际安全认证，免费提供 DDoS 基础防护、专用网络服务，可结合七牛云其它安全产品进一步保障数据和服务</feature.Desc>
           </feature.Item>
         </feature.Group>
         <feature.Group>
           <feature.Item title="易用" icon={<IconFeatureEasy />}>
-            <feature.Desc className={style.featureDesc}>上千台七牛云服务器多重实时管理，一键部署，快速复制环境，轻松扩展</feature.Desc>
+            <feature.Desc className={style.featureDesc}>丰富的操作系统，通过镜像可一键简单部署，同一镜像可在多台实例中快速复制环境，轻松扩展</feature.Desc>
           </feature.Item>
           <feature.Item title="可拓展" icon={<IconFeatureScalable />}>
-            <feature.Desc className={style.featureDesc}>无缝衔接七牛云丰富产品，持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
+            <feature.Desc className={style.featureDesc}>与七牛云各种丰富的云产品无缝衔接，可持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
           </feature.Item>
           <feature.Item title="高性能" icon={<IconFeatureHighPerf />}>
-            <feature.Desc className={style.featureDesc}>单实例最高可选 88 vCPU，内存 704 GB，700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
+            <feature.Desc className={style.featureDesc}>单实例最高可选 88 vCPU，内存 704 GB，单实例性能最高可达到 700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
           </feature.Item>
         </feature.Group>
       </Feature>
