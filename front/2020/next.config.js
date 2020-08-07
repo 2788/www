@@ -30,6 +30,9 @@ module.exports = withPlugins(
     [ withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }) ]
   ],
   {
+    env: {
+      NEXT_PUBLIC_BUILT_AT: Date.now() + ''
+    },
     webpack(config, options) {
       const originalEntry = config.entry
       config.entry = async () => {

@@ -24,6 +24,9 @@ export const censorScenes = must('censorScenes', process.env.NEXT_PUBLIC_CENSOR_
 /** 活动站 Host */
 export const marketingHost = must('marketingHost', process.env.NEXT_PUBLIC_MARKETING_HOST)
 
+/** 构建时间（时间戳），注意该值不来自 .env.* 文件，而是在 next.config.js 中配置（从而动态获得当前时间） */
+export const builtAt = parseInt(must('builtAt', process.env.NEXT_PUBLIC_BUILT_AT), 10)
+
 function must(name: string, variable?: string): string {
   if (variable == null) {
     throw new Error(`Invalid value for environment variable ${name}, you need to configure it in env file`)

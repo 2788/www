@@ -3,11 +3,11 @@
  */
 
 import { useState } from 'react'
+import { builtAt } from 'constants/env'
 import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect'
 
 export function useNow() {
-  // TODO: 初始值考虑从服务器（构建）时间得到
-  const [now, setNow] = useState(1594694600676)
+  const [now, setNow] = useState(builtAt)
   // TODO: 考虑定时更新 now
   useIsomorphicLayoutEffect(() => {
     setNow(Date.now())
