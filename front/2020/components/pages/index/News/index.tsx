@@ -3,6 +3,7 @@ import QRCode from 'qrcode.react'
 import Carousel from 'react-icecream/lib/carousel'
 
 import { useMobile } from 'hooks/ua'
+import { process as processImg, scaleBy, withFormat } from 'utils/img'
 import { Card as UICard, Img, Content, Title, Desc } from 'components/UI/Card'
 import Section from 'components/pages/index/Section'
 import Link from 'components/Link'
@@ -40,6 +41,9 @@ export interface StoryProps {
 }
 
 function Story({ imgUrl, title, desc, date, link, wxUrl }: StoryProps) {
+
+  imgUrl = processImg(imgUrl, scaleBy({ width: 500 }), withFormat('jpg'))
+
   return (
     <UICard className={styles.story}>
       <Link href={link}>
