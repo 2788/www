@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import { categoryNameMap, Category, Product, nameMap } from 'constants/products'
-import { urlForPrice } from 'utils/route'
+import { categoryNameMap, Category, Product, nameMap, categoryProductsMap } from 'constants/products'
+import { urlForPrice, hasPrice } from 'utils/route'
 import Dropdown, { DropdownMenu, DropdownMenuGroup, DropdownMenuItem } from 'components/UI/Dropdown'
 import Button from 'components/UI/Button'
 import Link from 'components/Link'
@@ -23,36 +23,38 @@ export default function Select() {
 }
 
 function Overlay() {
-  function menuItemForProduct(product: Product, hasCalculator = false) {
+  function menuItemForProduct(product: Product) {
+    if (!hasPrice(product)) return null
     return (
       <DropdownMenuItem>
         <Link href={urlForPrice(product)}>
           {nameMap[product]}
-          {hasCalculator && <CalcIcon className={style.calc} />}
+          {hasCalculator(product) && <CalcIcon className={style.calc} />}
         </Link>
       </DropdownMenuItem>
     )
   }
+  const serviceProducts = categoryProductsMap[Category.Service]
+  const visionProducts = categoryProductsMap[Category.Vision].filter(
+    product => !serviceProducts.includes(product) // 去除跟基础服务重复的项
+  )
   return (
     <>
       <DropdownMenu>
         <DropdownMenuGroup title={categoryNameMap[Category.Service]}>
-          {menuItemForProduct(Product.Kodo, true)}
-          {menuItemForProduct(Product.Cdn, true)}
-          {menuItemForProduct(Product.Pili)}
-          {menuItemForProduct(Product.Ssl)}
-          {menuItemForProduct(Product.Qvm, true)}
-          {menuItemForProduct(Product.Sms)}
+          {serviceProducts.map(menuItemForProduct)}
         </DropdownMenuGroup>
       </DropdownMenu>
       <DropdownMenu>
         <DropdownMenuGroup title={categoryNameMap[Category.Vision]}>
-          {menuItemForProduct(Product.Dora)}
-          {menuItemForProduct(Product.Plsv)}
-          {menuItemForProduct(Product.FaceID)}
-          {menuItemForProduct(Product.Censor)}
+          {visionProducts.map(menuItemForProduct)}
         </DropdownMenuGroup>
       </DropdownMenu>
     </>
   )
+}
+
+function hasCalculator(product: Product) {
+  // 目前就这仨有计算器
+  return [Product.Kodo, Product.Cdn, Product.Qvm].includes(product)
 }

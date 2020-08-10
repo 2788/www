@@ -82,6 +82,26 @@ export const urlMap = {
   [Product.Qvs]: '/products/qvs'
 } as const
 
+export const priceUrlMap = {
+  [Product.Kodo]: '/prices/kodo',
+  [Product.Archive]: null,
+  [Product.Hdfs]: null,
+  [Product.Cdn]: '/prices/qcdn',
+  [Product.Ssl]: '/prices/ssl',
+  [Product.Pili]: '/prices/pili',
+  [Product.Qvm]: '/prices/qvm',
+  [Product.Sms]: '/prices/sms',
+  [Product.Dora]: '/prices/dora',
+  [Product.Censor]: '/prices/censor',
+  [Product.FaceID]: '/prices/faceid',
+  [Product.Rtn]: '/prices/rtc',
+  [Product.Plsv]: '/products/plsv#price',
+  [Product.Plms]: null,
+  [Product.Insight]: null,
+  [Product.Express]: null,
+  [Product.Qvs]: null
+} as const
+
 export const descMap = {
   [Product.Kodo]: '高可用、易扩展、低成本、一站式、支持边缘存储',
   [Product.Archive]: '极低成本、高可靠性的归档数据存储服务',

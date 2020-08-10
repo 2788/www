@@ -57,9 +57,15 @@ function PageContent() {
         icon={imgBanner} />
 
       <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
+        <PageNoticeGroup title="福利活动" type="welfares">
+          <PageNoticeItem href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">
+            热卖实时音视频连麦资源包，限时 4 折来袭 &gt;&gt;
+          </PageNoticeItem>
+          <PageNoticeItem href="https://qmall.qiniu.com/template/NDM?ref=RTC2020801">
+            新客专属限量秒杀，7.7 元抢购 20,000 分钟实时音视频连麦套餐包 &gt;&gt;
+          </PageNoticeItem>
           <PageNoticeItem href={urlMap[Product.Rtn]}>
-            零基础搭建音视频平台，开通 QRTC 获取每月 15000 分钟免费时长 &gt;&gt;
+            零基础搭建音视频平台，开通 QRTC 获取每月 20,000 分钟免费时长 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>

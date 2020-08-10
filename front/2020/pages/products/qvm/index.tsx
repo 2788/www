@@ -46,7 +46,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
       <br />
       <p>
         免费使用最高 4 核 8 G 主机，
-        <a className={style.bannerLink} target="_blank" href="/events/qvm0rmb">
+        <a target="_blank" href="/events/qvm0rmb">
           立即参与&gt;&gt;
         </a>
       </p>

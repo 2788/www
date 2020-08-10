@@ -3,7 +3,7 @@
  * @description 主要存放各种关键页面的路由信息
  */
 
-import { Product } from 'constants/products'
+import { Product, priceUrlMap } from 'constants/products'
 import { ssoHost, ssoClientID } from 'constants/env'
 import { urlFor } from '.'
 
@@ -30,13 +30,15 @@ export function urlForQvmBuy(options?: QvmBuyOptions) {
   )
 }
 
+/** 给定是否有对应的价格页 */
+export function hasPrice(product: Product) {
+  return priceUrlMap[product] != null
+}
+
 export function urlForPrice(product: Product, calculator = false) {
-  // TODO: 后续把这个信息也挪到 constants/products 里维护
-  if (product === Product.Plsv) {
-    return '/products/plsv#price'
-  }
   const params = calculator ? { tab: 'calc' } : undefined
-  return urlFor(`/prices/${product}`, params)
+  const url = priceUrlMap[product]
+  return url != null ? urlFor(url, params) : '#'
 }
 
 export function urlForSignin(redirectUrl: string) {

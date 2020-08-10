@@ -1,0 +1,95 @@
+@import '~utils/less/index.less';
+
+.withMargin(@margin: 12px) {
+  &:not(:first-child) {
+    margin-top: @margin;
+  }
+  &:not(:last-child) {
+    margin-bottom: @margin;
+  }
+}
+
+.textWrapper {
+  font-size: 14px;
+
+  p {
+    .withMargin();
+  }
+
+  a {
+    color: @blue-6;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h4, h5 {
+    .withMargin(16px);
+  }
+
+  em {
+    font-style: normal;
+    color: @blue-6;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  li, li p {
+    .withMargin(6px);
+  }
+
+  ul, ol {
+    .withMargin();
+    padding-left: 1.5em;
+    color: @grey-6;
+  }
+
+  ul > li {
+    list-style-type: circle;
+  }
+
+  ol > li {
+    list-style-type: decimal;
+  }
+}
+
+.alert {
+  color: @red-6;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+
+  table {
+    min-width: 100%;
+    width: max-content;
+    border: 1px solid #e8e8e8;
+  }
+
+  tr {
+    &:hover td {
+      background-color: #f2fcff;
+    }
+  }
+
+  tr:nth-child(2n) {
+    background: #fafafa;
+  }
+
+  th, td {
+    padding: 16px;
+    border: 1px solid #e8e8e8;
+    transition: all .3s, height 0s;
+  }
+
+  th {
+    color: #595959;
+    font-weight: 500;
+    text-align: left;
+    background: #fafafa;
+  }
+}

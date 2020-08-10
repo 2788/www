@@ -23,6 +23,7 @@ import PageNotice, {
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
 import { Product, urlMap } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 
 import ServerSideMergeIcon from './_images/feature-serverside-merge.svg'
 import RealtimeRecordIcon from './_images/feature-realtime-record.svg'
@@ -41,6 +42,8 @@ function PageContent() {
 
   const { startConsulting } = useFeedbackModal()
 
+  const priceUrl = urlForPrice(Product.Rtn)
+
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/rtn/rtc/report/duration', children: '开始使用', pcOnly: true },
     { onClick: startConsulting, children: '立即咨询' },
@@ -51,20 +54,26 @@ function PageContent() {
     <>
       <PageBanner
         title="实时音视频"
-        desc="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
+        desc="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={imgBanner} />
 
       <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
+        <PageNoticeGroup title="福利活动" type="welfares">
+          <PageNoticeItem href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">
+            热卖实时音视频连麦资源包，限时 4 折来袭 &gt;&gt;
+          </PageNoticeItem>
+          <PageNoticeItem href="https://qmall.qiniu.com/template/NDM?ref=RTC2020801">
+            新客专属限量秒杀，7.7 元抢购 20,000 分钟实时音视频连麦套餐包 &gt;&gt;
+          </PageNoticeItem>
           <PageNoticeItem href={urlMap[Product.Pili]}>
             毫秒级延迟直播体验，直播流量包特惠 8 折起 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator>
+      <Navigator priceLink={priceUrl}>
         {btns.nav}
       </Navigator>
 
@@ -162,7 +171,7 @@ export default function RtcPage() {
     <Layout
       title="实时音视频"
       keywords="连麦, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
-      description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和 自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
+      description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质、可定制化的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、直播连麦、旁路直播等多种业务场景。"
     >
       <PageContent />
     </Layout>
