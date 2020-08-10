@@ -5,6 +5,7 @@
 import React, { CSSProperties } from 'react'
 import { Row, LayoutCard } from 'components/UI/Card'
 import Button from 'components/UI/Button'
+import { process, scaleBy } from 'utils/img'
 
 import ImgGoglobal from './goglobal.png'
 import Qvm0buy from './qvm0buy.png'
@@ -17,14 +18,14 @@ export default function FreeActivities() {
         title="出海企业扶持"
         desc="整合出海相关产品和服务资源，共同助力创业者占领全球市场"
         url="/products/kodo/goglobal"
-        background={ImgGoglobal}
+        background={process(ImgGoglobal, scaleBy({ width: 576 }))}
         btnText="立即申请"
       />
       <Card
         title="云主机 0 元购"
         desc="计算产品免费试用，祝您轻松上云 / 迁移"
         url="/events/qvm0rmb"
-        background={Qvm0buy}
+        background={process(Qvm0buy, scaleBy({ width: 576 }))}
         btnText="立即参与"
       />
     </Row>
