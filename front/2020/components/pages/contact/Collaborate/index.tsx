@@ -16,7 +16,7 @@ export default function Collaborate() {
         <Card className={style.card}>
           <CardIcon><MessageIcon /></CardIcon>
           <CardTitle title="售前服务" subtitle="提供云服务产品咨询服务" />
-          <CardItem title="电子邮箱" link="mailto:sales@qiniu.com">sales@qiniu.com</CardItem>
+          <CardItem title="电子邮箱" link="mailto:bd@qiniu.com">bd@qiniu.com</CardItem>
           <CardItem title="联系电话" link="tel:400-808-9176">400-808-9176 转 1</CardItem>
         </Card>
         <Card className={style.card}>

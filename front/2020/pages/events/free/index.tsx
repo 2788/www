@@ -32,7 +32,7 @@ export default function FreePage() {
           <FreeProducts />
         </Section>
 
-        <Section name="activities" title="活动推荐">
+        <Section name="activities" title="活动推荐" withTailPadding>
           <FreeActivities />
         </Section>
       </Navigatable>
