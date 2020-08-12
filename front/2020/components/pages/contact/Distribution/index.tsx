@@ -15,7 +15,7 @@ import style from './index.less'
 
 export default function Distribution() {
   return (
-    <Section name="distri" title="公司分布">
+    <Section name="distri" title="公司分布" withTailPadding>
       <Row>
         <LayoutCard>
           <Img className={style.image} src={shanghai} />

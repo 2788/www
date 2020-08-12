@@ -1,12 +1,14 @@
 import React from 'react'
 import Button from 'components/UI/Button'
 import Block from 'components/Navigator/Block'
+import Link from 'components/Link'
 
 import audio from './images/audio.png'
 import picture from './images/picture.png'
 import text from './images/text.png'
 import comment from './images/comment.png'
 import person from './images/person.gif'
+import Arrow from './images/arrow.svg'
 
 import style from './index.less'
 
@@ -61,6 +63,9 @@ export default function Func() {
         subtitle="帮您有效的把图片中人物与背景单独分离开"
         scenes={['图片人像合成', '图片背景和人物特效', '绿幕抠图']}
       />
+      <div className={style.more}>
+        <Link href="https://portal.qiniu.com/create#openApi" blue>点击了解更多好玩的功能 <Arrow style={{ verticalAlign: 'sub' }} /></Link>
+      </div>
     </div>
   )
 }

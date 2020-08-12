@@ -48,6 +48,12 @@ function Overlay() {
       <DropdownMenu>
         <DropdownMenuGroup title={categoryNameMap[Category.Vision]}>
           {visionProducts.map(menuItemForProduct)}
+          {/* TODO 去掉 */}
+          <DropdownMenuItem>
+            <Link href={urlForPrice(Product.OpenApi)}>
+              {nameMap[Product.OpenApi]}
+            </Link>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenu>
     </>
