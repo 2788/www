@@ -37,7 +37,9 @@ export enum Product {
   /** 机器数据分析平台 */
   Express = 'express',
   /** 视频监控 */
-  Qvs = 'qvs'
+  Qvs = 'qvs',
+  /** Open Api */
+  OpenApi = 'openapi'
 }
 
 // TODO: 这个再核对一遍
@@ -59,7 +61,8 @@ export const nameMap = {
   [Product.Plms]: '直播推流 SDK',
   [Product.Insight]: '智能日志管理平台',
   [Product.Express]: '机器数据分析平台 Pandora',
-  [Product.Qvs]: '视频监控 QVS'
+  [Product.Qvs]: '视频监控 QVS',
+  [Product.OpenApi]: 'Open Api'
 } as const
 
 export const urlMap = {
@@ -79,7 +82,8 @@ export const urlMap = {
   [Product.Plms]: '/products/plms',
   [Product.Insight]: '/products/insight',
   [Product.Express]: '/products/pandora',
-  [Product.Qvs]: '/products/qvs'
+  [Product.Qvs]: '/products/qvs',
+  [Product.OpenApi]: '/products/openapi'
 } as const
 
 export const priceUrlMap = {
@@ -99,7 +103,8 @@ export const priceUrlMap = {
   [Product.Plms]: null,
   [Product.Insight]: null,
   [Product.Express]: null,
-  [Product.Qvs]: null
+  [Product.Qvs]: null,
+  [Product.OpenApi]: '/prices/openapi'
 } as const
 
 export const descMap = {
@@ -122,7 +127,8 @@ export const descMap = {
   [Product.Qvs]: '面向视频监控设备提供视频流接入、存储、分发服务',
 
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
-  [Product.Express]: '助力企业探索数据、创造价值、预见未来'
+  [Product.Express]: '助力企业探索数据、创造价值、预见未来',
+  [Product.OpenApi]: null
 } as const
 
 export enum Category {
