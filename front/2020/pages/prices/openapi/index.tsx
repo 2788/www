@@ -6,7 +6,7 @@ import PricePane from 'components/Price/openapi/Price'
 function Page() {
   return (
     <>
-      <Banner product="价格 | Open Api">
+      <Banner product="价格 | Open API">
         <PricePane />
       </Banner>
     </>
@@ -16,8 +16,8 @@ function Page() {
 export default function Main() {
   return (
     <Layout
-      title="价格 | Open Api"
-      keywords="Open Api, openapi, open api, 价格"
+      title="价格 | Open API"
+      keywords="Open API, openapi, open api, 价格, 开放平台"
       description=""
     >
       <Page />
