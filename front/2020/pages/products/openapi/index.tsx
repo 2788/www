@@ -40,7 +40,7 @@ export default function Main() {
   return (
     <Layout
       title="Open API"
-      keywords="Open API, openapi, open api, 开放平台"
+      keywords="Open API, openapi, open api, 开放平台, 第三方, 图片, 音视频, 数据处理"
       description="Open API 是一个开放平台，提供各种图片、音视频、以及其他数据处理的第三方服务接口，提供高质量的数据处理服务。"
     >
       <Page />
