@@ -4,6 +4,10 @@
   display: flex;
   flex-direction: column;
   padding: 60px 0 72px 0;
+
+  .mobile({
+    padding: 0 0 33px 0;
+  })
 }
 
 .block {
@@ -12,6 +16,11 @@
   + .block {
     margin-top: 73px;
   }
+
+  .mobile({
+    padding: 16px;
+    margin-top: 0 !important;
+  });
 }
 
 .image {
@@ -25,6 +34,7 @@
 
   .mobile({
     width: 100%;
+    height: auto;
   });
 }
 
@@ -38,11 +48,23 @@
   &:last-child {
     margin-left: 36px;
   }
+
+  .mobile({
+    width: 100%;
+    height: auto;
+    margin-left: 0 !important;
+  });
 }
 
 .title {
   margin-bottom: 9px;
   font-size: 24px;
+
+  .mobile({
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-size: 16px;
+  });
 }
 
 .subtitle {
@@ -78,10 +100,25 @@
   position: absolute;
   bottom: 0;
   left: 0;
+
+  .mobile({
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin-top: 12px;
+
+    > * {
+      flex: 1
+    }
+  });
 }
 
 .more {
   margin-top: 72px;
   font-size: 20px;
   text-align: center;
+
+  .mobile({
+    margin-top: 33px;
+  });
 }

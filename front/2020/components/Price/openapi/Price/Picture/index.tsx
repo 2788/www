@@ -2,6 +2,7 @@ import React from 'react'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import Table from 'react-icecream/lib/table'
 import { ColumnProps } from 'react-icecream/esm/table'
+import { useMobile } from 'hooks/ua'
 
 export default function Picture() {
   const columns: Array<ColumnProps<any>> = [
@@ -62,13 +63,15 @@ export default function Picture() {
     }
   ]
 
+  const isMobile = useMobile()
+  const prefix = isMobile ? '' : '图片'
   return (
     <Tabs defaultValue="1" size="middle">
-      <TabPane tab="图片鉴黄" value="1"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片鉴暴恐" value="2"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片广告过滤" value="3"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片广告过滤增强版" value="4"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
-      <TabPane tab="图片广告审核" value="5"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns1} dataSource={data1} /></TabPane>
+      <TabPane tab={prefix + '鉴黄'} value="1"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab={prefix + '鉴暴恐'} value="2"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab={prefix + '广告过滤'} value="3"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab={prefix + '广告过滤增强版'} value="4"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} /></TabPane>
+      <TabPane tab={prefix + '广告审核'} value="5"><Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns1} dataSource={data1} /></TabPane>
     </Tabs>
   )
 }

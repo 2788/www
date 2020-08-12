@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { ReactFragment } from 'react'
 import Button from 'components/UI/Button'
 import Block from 'components/Navigator/Block'
 import Link from 'components/Link'
+import { useMobile } from 'hooks/ua'
 
 import audio from './images/audio.png'
 import picture from './images/picture.png'
@@ -11,6 +12,7 @@ import person from './images/person.gif'
 import Arrow from './images/arrow.svg'
 
 import style from './index.less'
+import { process, scaleBy } from 'utils/img'
 
 export default function Func() {
   return (
@@ -83,7 +85,8 @@ export type RowProps = {
 }
 
 function Row({ preferLeft, imgUrl, usingUrl, docUrl, title, name, subtitle, scenes }: RowProps) {
-  const img = <img className={style.image} src={imgUrl} alt={title} />
+  const isMobile = useMobile()
+  const img = <img className={style.image} src={process(imgUrl, scaleBy({ width: 480 }))} alt={title} />
   const sceneItems = scenes.map((scene, idx) => <li key={idx} className={style.sceneItem}>{scene}</li>)
   const content = (
     <div className={style.content}>
@@ -99,12 +102,28 @@ function Row({ preferLeft, imgUrl, usingUrl, docUrl, title, name, subtitle, scen
       </div>
     </div>
   )
+
+  let children: ReactFragment
+
+  if (isMobile || preferLeft) {
+    children = (
+      <>
+        {img}
+        {content}
+      </>
+    )
+  } else {
+    children = (
+      <>
+        {content}
+        {img}
+      </>
+    )
+  }
+
   return (
     <Block className={style.block} title={title} name={name}>
-      <section>
-        {preferLeft ? img : content}
-        {preferLeft ? content : img}
-      </section>
+      {children}
     </Block>
   )
 }
