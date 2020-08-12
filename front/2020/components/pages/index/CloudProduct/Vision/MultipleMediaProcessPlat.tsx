@@ -59,7 +59,7 @@ export default function MultipleMediaProcessPlat() {
               <MultipleMediaServiceIcon />
             </g>
             <g className={animation.area}>
-              <Link href={urlMap[Product.OpenApi]}>
+              <Link className={style.link} href={urlMap[Product.OpenApi]}>
                 <g transform="translate(528 125)">
                   <rect width="120" height="32" fill="#E0F7FF"></rect>
                   <text fill="#00AAE7">
