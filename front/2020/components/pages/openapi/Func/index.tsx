@@ -3,6 +3,7 @@ import Button from 'components/UI/Button'
 import Block from 'components/Navigator/Block'
 import Link from 'components/Link'
 import { useMobile } from 'hooks/ua'
+import { process, scaleBy } from 'utils/img'
 
 import audio from './images/audio.png'
 import picture from './images/picture.png'
@@ -12,7 +13,6 @@ import person from './images/person.gif'
 import Arrow from './images/arrow.svg'
 
 import style from './index.less'
-import { process, scaleBy } from 'utils/img'
 
 export default function Func() {
   return (
