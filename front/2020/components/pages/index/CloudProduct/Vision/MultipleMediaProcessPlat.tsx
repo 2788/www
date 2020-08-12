@@ -1,5 +1,7 @@
 import React from 'react'
 import Link from 'components/Link'
+import { urlMap, Product } from 'constants/products'
+
 import Positioned from '../Positioned'
 import { Node } from '..'
 import style from '../index.less'
@@ -10,7 +12,6 @@ import animation from '../animation.less'
 import ContentCensorIcon from '../icons/machine/ContentCensor'
 import AIIcon from '../icons/machine/AI'
 import OpenApiIcon from '../icons/machine/OpenApi'
-import { urlMap, Product } from 'constants/products'
 
 export default function MultipleMediaProcessPlat() {
   return (

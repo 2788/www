@@ -128,7 +128,8 @@ export const descMap = {
 
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
   [Product.Express]: '助力企业探索数据、创造价值、预见未来',
-  [Product.OpenApi]: null
+  // TODO
+  [Product.OpenApi]: ''
 } as const
 
 export enum Category {
