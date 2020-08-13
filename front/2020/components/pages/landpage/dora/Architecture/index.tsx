@@ -88,12 +88,14 @@ export default function Architecture() {
                   </g>
                 </g>
                 <g transform="translate(299 2)">
-                  <g transform="translate(0 45)">
-                    <rect width="66" height="20" y="1" fill="#E0F7FF"></rect>
-                    <text fill="#00AAE7">
-                      <tspan x="2" y="15.617">Open API</tspan>
-                    </text>
-                  </g>
+                  <Link href={urlMap[Product.OpenAPI]}>
+                    <g transform="translate(0 45)">
+                      <rect width="66" height="20" y="1" fill="#E0F7FF"></rect>
+                      <text fill="#00AAE7">
+                        <tspan x="2" y="15.617">Open API</tspan>
+                      </text>
+                    </g>
+                  </Link>
                   <g transform="translate(8)">
                     <polygon fill="#C2E7FF" points="0 13.982 25.5 29.148 51 13.982 25.5 0" transform="translate(0 11.915)"></polygon>
                     <g transform="translate(7.65 13.617)">
@@ -274,12 +276,14 @@ export default function Architecture() {
                   </g>
                 </g>
                 <g transform="translate(732 4)">
-                  <g transform="translate(0 109)">
-                    <rect width="120" height="32" fill="#E0F7FF"></rect>
-                    <text fill="#00AAE7">
-                      <tspan x="30" y="21">Open API</tspan>
-                    </text>
-                  </g>
+                  <Link href={urlMap[Product.OpenAPI]} className={style.link}>
+                    <g transform="translate(0 109)">
+                      <rect width="120" height="32" fill="#E0F7FF"></rect>
+                      <text fill="#00AAE7">
+                        <tspan x="30" y="21">Open API</tspan>
+                      </text>
+                    </g>
+                  </Link>
                   <polygon fill="#C2E7FF" points="0 32.857 60 68.498 120 32.857 60 0" transform="translate(0 28)"></polygon>
                   <g transform="translate(18 32)">
                     <polygon fill="#006EBB" points="0 23 42 23 42 55 0 29.2"></polygon>
