@@ -7,6 +7,8 @@ import Func from 'components/pages/openapi/Func'
 import Doc from 'components/pages/openapi/Doc'
 
 import { useBtns } from 'hooks/product-btn'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 
 import banner from './banner.png'
 
@@ -14,7 +16,7 @@ function Page() {
   const btns = useBtns(
     { children: '立即使用', href: 'https://portal.qiniu.com/create?ref=www.qiniu.com#openApi', pcOnly: true },
     { href: 'https://developer.qiniu.com/dora/api/3688/the-third-party-data-processing', children: '帮助文档' },
-    { href: '/prices/openapi', children: '产品价格' }
+    { href: urlForPrice(Product.OpenAPI), children: '产品价格' }
   )
 
   return (

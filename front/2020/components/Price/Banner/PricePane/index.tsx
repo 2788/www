@@ -3,6 +3,7 @@ import { Pane } from '../Pane'
 import { BannerContext } from '..'
 
 export * from './PricePaneSection'
+export * from './PricePaneSubSection'
 
 export default function PricePane({ children }: PropsWithChildren<{}>) {
   const { registerPane } = useContext(BannerContext)

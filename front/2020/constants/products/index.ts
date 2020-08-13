@@ -38,8 +38,8 @@ export enum Product {
   Express = 'express',
   /** 视频监控 */
   Qvs = 'qvs',
-  /** Open Api */
-  OpenApi = 'openapi'
+  /** Open API */
+  OpenAPI = 'openapi'
 }
 
 // TODO: 这个再核对一遍
@@ -62,7 +62,7 @@ export const nameMap = {
   [Product.Insight]: '智能日志管理平台',
   [Product.Express]: '机器数据分析平台 Pandora',
   [Product.Qvs]: '视频监控 QVS',
-  [Product.OpenApi]: 'Open Api'
+  [Product.OpenAPI]: 'Open API'
 } as const
 
 export const urlMap = {
@@ -83,7 +83,7 @@ export const urlMap = {
   [Product.Insight]: '/products/insight',
   [Product.Express]: '/products/pandora',
   [Product.Qvs]: '/products/qvs',
-  [Product.OpenApi]: '/products/openapi'
+  [Product.OpenAPI]: '/products/openapi'
 } as const
 
 export const priceUrlMap = {
@@ -104,7 +104,7 @@ export const priceUrlMap = {
   [Product.Insight]: null,
   [Product.Express]: null,
   [Product.Qvs]: null,
-  [Product.OpenApi]: '/prices/openapi'
+  [Product.OpenAPI]: '/prices/openapi'
 } as const
 
 export const descMap = {
@@ -129,7 +129,7 @@ export const descMap = {
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
   [Product.Express]: '助力企业探索数据、创造价值、预见未来',
   // TODO 需要加入到顶部导航再补充
-  [Product.OpenApi]: ''
+  [Product.OpenAPI]: ''
 } as const
 
 export enum Category {

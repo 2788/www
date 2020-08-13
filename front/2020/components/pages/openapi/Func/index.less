@@ -7,7 +7,7 @@
 
   .mobile({
     padding: 0 0 33px 0;
-  })
+  });
 }
 
 .block {
@@ -21,8 +21,8 @@
 
   .mobile({
     padding: 16px;
-    margin-top: 0 !important;
-  });
+    margin-top: 0;
+  }) !important;
 }
 
 .image {
@@ -54,8 +54,8 @@
   .mobile({
     width: 100%;
     height: auto;
-    margin-left: 0 !important;
-  });
+    margin-left: 0;
+  }) !important;
 }
 
 .title {
@@ -84,14 +84,7 @@
   position: relative;
   padding-left: 1em;
 
-  &::before {
-    content: "\2022";
-    position: absolute;
-    left: 0;
-    display: block;
-    color: #00aae7;
-    opacity: .4;
-  }
+  .dot-item();
 
   + .sceneItem {
     margin-top: 8px;

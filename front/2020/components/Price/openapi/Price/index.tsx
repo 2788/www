@@ -1,9 +1,8 @@
 import React from 'react'
-import PricePane, { PricePaneSection } from 'components/Price/Banner/PricePane'
+import PricePane, { PricePaneSection, PricePaneSubSection } from 'components/Price/Banner/PricePane'
 
 import Audio from './Audio'
 
-import style from './index.less'
 import Picture from './Picture'
 import Text from './Text'
 import PictureProcess from './PictureProcess'
@@ -12,27 +11,22 @@ import App from './App'
 export default function Price() {
   return (
     <PricePane>
-      <PricePaneSection title="价格详情" className={style.section}>
-        <div className={style.title}>音视频审核</div>
-        <div className={style.content} style={{ padding: '24px' }}>
+      <PricePaneSection title="价格详情">
+        <PricePaneSubSection title="音视频审核" padding>
           <Audio />
-        </div>
-        <div className={style.title} style={{ marginTop: '48px' }}>图片审核</div>
-        <div className={style.content}>
+        </PricePaneSubSection>
+        <PricePaneSubSection title="图片审核">
           <Picture />
-        </div>
-        <div className={style.title} style={{ marginTop: '48px' }}>文本审核</div>
-        <div className={style.content}>
+        </PricePaneSubSection>
+        <PricePaneSubSection title="文本审核">
           <Text />
-        </div>
-        <div className={style.title} style={{ marginTop: '48px' }}>图片处理</div>
-        <div className={style.content}>
+        </PricePaneSubSection>
+        <PricePaneSubSection title="图片处理">
           <PictureProcess />
-        </div>
-        <div className={style.title} style={{ marginTop: '48px' }}>APP 安装包分析</div>
-        <div className={style.content} style={{ padding: '24px' }}>
+        </PricePaneSubSection>
+        <PricePaneSubSection title="APP 安装包分析" padding>
           <App />
-        </div>
+        </PricePaneSubSection>
       </PricePaneSection>
     </PricePane>
   )

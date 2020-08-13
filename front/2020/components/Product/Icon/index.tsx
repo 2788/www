@@ -47,7 +47,7 @@ export const iconMap = {
   [Product.Insight]: IconInsight,
   [Product.Express]: IconExpress,
   [Product.Qvs]: IconQvs,
-  [Product.OpenApi]: IconOpenApi
+  [Product.OpenAPI]: IconOpenApi
 }
 
 export default function ProductIcon({ product, ...others }: Props) {

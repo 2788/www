@@ -22,6 +22,7 @@ const data = [
     price: '0.012 元 / 分钟'
   }
 ]
+
 export default function Audio() {
   return <Table bordered pagination={false} columns={columns} dataSource={data} />
 }

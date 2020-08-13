@@ -43,11 +43,11 @@ export default function ForMobile() {
         <FeatureItem
           pos="left-right"
           align="left"
-          icon={<ProductIcon product={Product.OpenApi} />}
+          icon={<ProductIcon product={Product.OpenAPI} />}
           title="Open API"
         >
           <FeatureDesc>提供各种图片、音视频、以及其他数据处理的第三方服务接口，提供高质量的数据处理服务</FeatureDesc>
-          <FeatureLink href={urlMap[Product.OpenApi]}>了解更多 &gt;&gt;</FeatureLink>
+          <FeatureLink href={urlMap[Product.OpenAPI]}>了解更多 &gt;&gt;</FeatureLink>
         </FeatureItem>
       </FeatureGroup>
     </Feature>
