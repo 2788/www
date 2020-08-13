@@ -18,18 +18,22 @@ export default function PictureProcess() {
   // 风格迁移
   const data1 = [
     {
+      key: 1,
       request_num: '≤ 5 万',
       price: '0.09'
     },
     {
+      key: 2,
       request_num: '≤ 30 万',
       price: '0.085'
     },
     {
+      key: 3,
       request_num: '≤ 100 万',
       price: '0.08'
     },
     {
+      key: 4,
       request_num: '100 万条以上',
       price: '0.075'
     }
@@ -38,18 +42,22 @@ export default function PictureProcess() {
   // 人像分割
   const data2 = [
     {
+      key: 1,
       request_num: '≤ 5 万',
       price: '0.051'
     },
     {
+      key: 2,
       request_num: '≤ 30 万',
       price: '0.046'
     },
     {
+      key: 3,
       request_num: '≤ 100 万',
       price: '0.042'
     },
     {
+      key: 4,
       request_num: '100 万条以上',
       price: '0.037'
     }

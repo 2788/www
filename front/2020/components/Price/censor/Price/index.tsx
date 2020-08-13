@@ -15,7 +15,7 @@ export default function Price() {
         <PricePaneSubSection title="视频">
           <Video />
         </PricePaneSubSection>
-        <PricePaneSubSection title="以图搜图" padding>
+        <PricePaneSubSection title="以图搜图">
           <Other />
         </PricePaneSubSection>
       </PricePaneSection>

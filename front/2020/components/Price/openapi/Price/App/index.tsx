@@ -23,14 +23,17 @@ const columns: Array<ColumnProps<any>> = [
 
 const data = [
   {
+    key: 1,
     range: '0 - 3 万',
     price: '0.2'
   },
   {
+    key: 2,
     range: '3 万 - 10 万',
     price: '0.15'
   },
   {
+    key: 3,
     range: '> 10 万',
     price: '0.1'
   }

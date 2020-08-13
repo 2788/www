@@ -58,6 +58,7 @@ export default function Picture() {
   // 图片广告审核
   const data1 = [
     {
+      key: 1,
       type: '图片广告审核',
       price: '1 元 / 千次'
     }

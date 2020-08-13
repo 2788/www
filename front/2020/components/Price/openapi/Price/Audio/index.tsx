@@ -14,10 +14,12 @@ const columns: Array<ColumnProps<any>> = [
 
 const data = [
   {
+    key: 1,
     type: '视频鉴黄',
     price: '0.01 元 / 10 张视频截图'
   },
   {
+    key: 2,
     type: '音频审核',
     price: '0.012 元 / 分钟'
   }
