@@ -1,9 +1,12 @@
 @import '~utils/less/index.less';
 
-.section > div {
-  // 这里的 section 情况特殊
-  padding: 0 0 72px 0 !important;
-  background: #FAFAFA !important;
+.wrapper {
+  padding: 0 0 72px 0;
+  background: #fafafa;
+
+  &:last-child {
+    padding-bottom: 0 !important;
+  }
 }
 
 .title {
@@ -11,7 +14,7 @@
   font-size: 20px;
 
   .mobile({
-    margin: 0 16px;
+    margin: 0 16px 12px 16px;
   });
 }
 
