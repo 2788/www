@@ -36,5 +36,5 @@ const data = [
   }
 ]
 export default function App() {
-  return <Table bordered pagination={false} columns={columns} dataSource={data} />
+  return <Table bordered pagination={false} columns={columns} dataSource={data} style={{ padding: 24 }} />
 }

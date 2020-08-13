@@ -12,7 +12,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="价格详情">
-        <PricePaneSubSection title="音视频审核" padding>
+        <PricePaneSubSection title="音视频审核">
           <Audio />
         </PricePaneSubSection>
         <PricePaneSubSection title="图片审核">
@@ -24,7 +24,7 @@ export default function Price() {
         <PricePaneSubSection title="图片处理">
           <PictureProcess />
         </PricePaneSubSection>
-        <PricePaneSubSection title="APP 安装包分析" padding>
+        <PricePaneSubSection title="APP 安装包分析">
           <App />
         </PricePaneSubSection>
       </PricePaneSection>
