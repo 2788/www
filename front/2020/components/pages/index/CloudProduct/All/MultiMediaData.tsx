@@ -5,7 +5,7 @@ import MultiMediaDataIcon from '../icons/media/MultiMediaData'
 
 export default function MultiMediaData() {
   return (
-    <Positioned identity={Node.MultiMediaData} top={415} left={0}>
+    <Positioned identity={Node.MultiMediaData} top={318} left={0}>
       <svg width="120" height="141" viewBox="0 0 120 141">
         <MultiMediaDataIcon />
       </svg>

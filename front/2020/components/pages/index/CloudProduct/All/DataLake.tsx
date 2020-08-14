@@ -9,8 +9,8 @@ import DataLakeIcon from '../icons/media/DataLake'
 export default function DataLake() {
   return (
     <>
-      <Positioned top={458} left={394}><Line width={27} /></Positioned>
-      <Positioned identity={Node.Kodo} top={350} left={483} zIndex={1}>
+      <Positioned top={370} left={394}><Line width={27} /></Positioned>
+      <Positioned identity={Node.Kodo} top={253} left={483} zIndex={1}>
         <svg width="160" height="207" viewBox="0 0 160 207">
           <DataLakeIcon />
           <Link className={style.link} href="/products/kodo">
