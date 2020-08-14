@@ -53,10 +53,10 @@ export default function Coverage() {
     <Section header="国内外优质节点覆盖，用户随处可用" title="节点覆盖" name="coverage">
       <div className={styles.coverage}>
         <ul className={styles.container}>
-          <Point icon={<NodeIcon1 />}>全球 <span className={styles.highlight}>1800</span> 节点</Point>
+          <Point icon={<NodeIcon1 />}>全球 <span className={styles.highlight}>2000</span> 节点</Point>
           <Point icon={<NodeIcon2 />}><span className={styles.highlight}>20+</span> 运营商覆盖</Point>
           <Point icon={<NodeIcon3 />}>访问提速 <span className={styles.highlight}>80%</span></Point>
-          <Point icon={<NodeIcon4 />}><span className={styles.highlight}>80 万</span> 客户选择</Point>
+          <Point icon={<NodeIcon4 />}><span className={styles.highlight}>100 万</span> 客户选择</Point>
         </ul>
         <div className={classnames(styles.map, coverageType === CoverageType.China ? styles.china : styles.world)}>
           <img className={styles.mapImage} src={coverageImageMap[coverageType]} />
