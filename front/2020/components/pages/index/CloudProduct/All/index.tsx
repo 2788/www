@@ -16,6 +16,8 @@ import MultiMediaData from './MultiMediaData'
 import Pili from './Pili'
 import DataLake from './DataLake'
 import Cdn from './Cdn'
+import Qvm from './Qvm'
+import CloudNative from './CloudNative.svg'
 import TerminalUser from './TernimalUser'
 import Positioned from '../Positioned'
 
@@ -31,24 +33,18 @@ export default function All() {
       <DataLake />
       <Cdn />
       <TerminalUser />
+      <Positioned left={0} top={548}><CloudNative /></Positioned>
+      <Positioned left={0} top={592}><Qvm /></Positioned>
       {/* 数据处理平台到异构数据湖 */}
       <Positioned left={387} top={223}>
-        <svg width="47px" height="224px" viewBox="0 0 47 224">
-          <g id="首页" stroke="none" strokeWidth="1" fill="none">
-            <g id="首页-云产品" transform="translate(-786.000000, -444.000000)" fill="#AEE1F3">
-              <g id="云产品">
-                <g id="编组-75" transform="translate(395.000000, 248.000000)">
-                  <path id="路径-17" d="M398,196.191347 L405,210.191347 L399,210.191 L399,412.05 L423.991,412.05 L423.991842,406.05097 L437.991842,413.05097 L423.991842,420.05097 L423.991,414.05 L397,414.05097 L397,210.191 L391,210.191347 L398,196.191347 Z"></path>
-                </g>
-              </g>
-            </g>
-          </g>
+        <svg width="47" height="144" viewBox="0 0 47 144">
+          <path fill="#AEE1F3" d="M398,196 L405,210 L399,210 L399,331.86 L423.991,331.86 L423.991842,325.86 L437.991842,332.86 L423.991842,339.86 L423.991,333.86 L397,333.86 L397,210 L391,210 L398,196 Z" transform="translate(-391 -196)" />
         </svg>
       </Positioned>
       {/* 数据分析平台到异构数据湖 */}
       <Positioned left={688} top={223}>
-        <svg width="47" height="224" viewBox="0 0 47 224">
-          <path fill="#B2E5F7" d="M726.056439,199.667038 L733.056439,213.667038 L727.056,213.667 L727.056439,416.667038 L700.056,416.667 L700.056439,422.667038 L686.056439,415.667038 L700.056439,408.667038 L700.056,414.667 L725.056,414.667 L725.056,213.667 L719.056439,213.667038 L726.056439,199.667038 Z" transform="translate(-686 -199)" />
+        <svg width="47" height="143" viewBox="0 0 47 143">
+          <path fill="#B2E5F7" d="M726,196 L733,210 L727,210 L727,333 L700,333 L700,339 L686,332 L700,325 L700,331 L725,331 L725,210 L719,210 L726,196 Z" transform="translate(-686 -196)" />
         </svg>
       </Positioned>
     </>

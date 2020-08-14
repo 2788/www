@@ -10,8 +10,8 @@ import CDNIcon from '../icons/media/CDN'
 export default function Cdn() {
   return (
     <>
-      <Positioned top={458} left={689}><Line width={27} /></Positioned>
-      <Positioned identity={Node.Cdn} top={415} left={768}>
+      <Positioned top={370} left={689}><Line width={27} /></Positioned>
+      <Positioned identity={Node.Cdn} top={318} left={768}>
         <svg width="120" height="140" viewBox="0 0 120 140">
           <CDNIcon />
           <g fill="none">
