@@ -23,7 +23,7 @@ export default function Main() {
         <banner.Title>七牛生态合作伙伴</banner.Title>
         <banner.Desc className={style.desc}>
           <Button href="https://jinshuju.net/f/ueonw5">加入合作伙伴</Button>
-          <Button type="primary-hollow" style={{ marginLeft: '15px' }} withBorder>登录管理后台</Button>
+          <Button href="https://portal.qiniu.com/invitation" type="primary-hollow" style={{ marginLeft: '15px' }} withBorder>登录管理后台</Button>
         </banner.Desc>
       </Banner>
       <SectionProvider startWithGrey>
