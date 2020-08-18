@@ -5,6 +5,7 @@ import Button from 'components/UI/Button'
 import { RawAccessProcess, Step } from 'components/Product/AccessProcess'
 import Section, { Provider as SectionProvider } from 'components/Product/Section'
 import Link from 'components/Link'
+import { useMobile } from 'hooks/ua'
 
 import Arch from 'components/pages/partner/Arch'
 import Benefit from 'components/pages/partner/Benefit'
@@ -16,14 +17,15 @@ import Step3 from './_images/step3.svg'
 import Step4 from './_images/step4.svg'
 import style from './index.less'
 
-export default function Main() {
+function Page() {
+  const isMobile = useMobile()
   return (
-    <Layout title="七牛合作伙伴与生态" keywords="合作伙伴, 生态" description="">
+    <>
       <Banner background={bannerImg} backgroundSize="contain" backgroundPosition="right">
         <banner.Title>七牛生态合作伙伴</banner.Title>
         <banner.Desc className={style.desc}>
           <Button href="https://jinshuju.net/f/ueonw5">加入合作伙伴</Button>
-          <Button href="https://portal.qiniu.com/invitation" type="primary-hollow" style={{ marginLeft: '15px' }} withBorder>登录管理后台</Button>
+          {!isMobile && <Button href="https://portal.qiniu.com/invitation" type="primary-hollow" style={{ marginLeft: '15px' }} withBorder>登录管理后台</Button>}
         </banner.Desc>
       </Banner>
       <SectionProvider startWithGrey>
@@ -41,6 +43,14 @@ export default function Main() {
 
         <Benefit />
       </SectionProvider>
+    </>
+  )
+}
+
+export default function Main() {
+  return (
+    <Layout title="七牛合作伙伴与生态" keywords="合作伙伴, 生态" description="">
+      <Page />
     </Layout>
   )
 }
