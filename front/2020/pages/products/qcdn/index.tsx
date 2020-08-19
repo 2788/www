@@ -50,7 +50,7 @@ function PageContent() {
   const priceUrl = urlForPrice(Product.Cdn)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/signup', children: '立即使用', pcOnly: true },
+    { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格' }
   )
 

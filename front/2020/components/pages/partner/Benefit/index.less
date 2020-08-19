@@ -1,0 +1,36 @@
+@import '~utils/less/index.less';
+
+.tableWrapper {
+  min-width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  min-width: 100%;
+  width: max-content;
+  border: 1px solid #e8e8e8;
+
+  tr {
+    &:hover td {
+      background-color: #f2fcff;
+    }
+  }
+
+  th,
+  td {
+    padding: 14px;
+    border: 1px solid #e8e8e8;
+    transition: all .3s, height 0s;
+  }
+
+  th:first-child,
+  td:first-child {
+    width: 322px;
+    text-align: left;
+  }
+
+  th {
+    font-weight: 500;
+    background: #FAFAFA;
+  }
+}
