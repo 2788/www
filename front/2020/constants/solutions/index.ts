@@ -142,7 +142,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Fin]: '/solutions/fin',
   [Solution.Automobile]: null,
   [Solution.ECommerce]: null,
-  [Solution.IntelligentManufacturing]: null,
+  [Solution.IntelligentManufacturing]: '/solutions/manufacture',
   [Solution.Social]: null,
   [Solution.Isp]: null
 }

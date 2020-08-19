@@ -1,5 +1,5 @@
 import React, { createElement, MouseEvent } from 'react'
-import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, iconMap, descMap, allCategories, categoryEnNameMap, Solution } from 'constants/solutions'
+import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, iconMap, descMap, allCategories, categoryEnNameMap, Solution, IndustrySolution } from 'constants/solutions'
 import { useModal } from 'components/Feedback'
 
 import ScrollableOverlay from '../../ScrollableOverlay'
@@ -26,7 +26,7 @@ export default function Overlay() {
           ))}
         </ContentSection>
         <ContentSection title={categoryNameMap[Category.Industry]}>
-          {categorySolutionsMap[Category.Industry].map(solution => (
+          {categorySolutionsMap[Category.Industry].sort(sortByOnline).map(solution => (
             <SolutionItem key={solution} solution={solution} />
           ))}
         </ContentSection>
@@ -57,4 +57,17 @@ function SolutionItem({ solution }: { solution: Solution }) {
       extra={<Logos solution={solution} />}
     />
   )
+}
+
+// 已上线的(url)的放前面
+function sortByOnline(a: IndustrySolution, b: IndustrySolution) {
+  if (urlMap[a] === null) {
+    return 1
+  }
+
+  if (urlMap[b] === null) {
+    return -1
+  }
+
+  return 0
 }
