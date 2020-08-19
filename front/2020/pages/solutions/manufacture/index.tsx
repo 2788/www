@@ -5,8 +5,12 @@
 import React from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
+import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
 import { useModal } from 'components/Feedback'
+
+import Value from 'components/pages/solutions/manufacture/Value'
+import TypicalScene from 'components/pages/solutions/manufacture/Scene'
 
 import banner from './banner.png'
 
@@ -24,6 +28,13 @@ function Page() {
         btns={btns.banner}
         icon={banner}
       />
+
+      <Navigator>{btns.nav}</Navigator>
+
+      <Value />
+
+      <TypicalScene />
+
     </>
   )
 }
