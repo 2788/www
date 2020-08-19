@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Row, Img, Content, Title, Desc } from 'components/UI/Card'
+import Link from 'components/Link'
 import Section from 'components/Product/Section'
 
 import scene1 from './images/scene1.jpg'
@@ -59,6 +60,7 @@ export default function TypicalScene() {
           </Content>
         </Card>
       </Row>
+      <Link className={style.link} blue withArrow>立即咨询</Link>
     </Section>
   )
 }
