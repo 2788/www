@@ -45,6 +45,7 @@ export default function FooterForMobile() {
             {solutionMenuItemsView}
           </SubMenu>
           <SubMenu title="活动与合作">
+            <MenuItem><Link href="/partner">合作伙伴与生态</Link></MenuItem>
             <MenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></MenuItem>
             <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>
             <MenuItem><Link href="/invite">邀请好友</Link></MenuItem>

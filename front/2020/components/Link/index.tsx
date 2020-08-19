@@ -11,26 +11,29 @@ import { checkInSite } from 'utils/route'
 
 import sourceUrls from './source-url'
 import style from './index.less'
+import Arrow from './arrow.svg'
 
 export type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
   blue?: boolean
+  withArrow?: boolean
 }
 
-export default function Link({ href, className, blue, ...others }: Props) {
+export default function Link({ href, className, blue, withArrow, children, ...others }: Props) {
   const { pathname } = useRouter()
   const classname = classnames(className, blue && style.blue)
+  const innerChildren = <>{children} {withArrow && <Arrow />}</>
   // 对于 hash 直接走 a 标签，next/link 会干掉 hrefe: hash 点击触发的 hashchange 事件
   if (href && href.indexOf('#') > -1) {
     // 当前页跳转 处于 /kodo 想跳转到 /kodo#target，生成 #target
     if (href.indexOf(pathname + '#') === 0) {
-      return <a className={classname} href={'#' + href.split('#')[1]} {...others} />
+      return <a className={classname} href={'#' + href.split('#')[1]} {...others}>{innerChildren}</a>
     }
 
     // 不同页跳转 处于 /plsv 想跳转到 /kodo#target，不处理。交给 next/link 单页跳转
 
     // # 开头
     if (href[0] === '#') {
-      return <a className={classname} href={href} {...others} />
+      return <a className={classname} href={href} {...others}>{innerChildren}</a>
     }
   }
 
@@ -43,10 +46,10 @@ export default function Link({ href, className, blue, ...others }: Props) {
     const prefetchProps = shouldNotPrefetch ? { prefetch: false } : {}
     return (
       <NextLink {...prefetchProps} href={checked.path}>
-        <a className={classname} {...others} />
+        <a className={classname} {...others}>{innerChildren}</a>
       </NextLink>
     )
   }
   // 站外链接默认新页面打开
-  return <a className={classname} target="_blank" rel="noopener" href={href} {...others} />
+  return <a className={classname} target="_blank" rel="noopener" href={href} {...others}>{innerChildren}</a>
 }

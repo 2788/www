@@ -8,6 +8,9 @@ import style from '../style.less'
 export default function Overlay() {
   return (
     <DropdownMenu className={style.dropdown}>
+      <DropdownMenuGroup title="合作伙伴">
+        <DropdownMenuItem><Link href="/partner">合作伙伴与生态</Link></DropdownMenuItem>
+      </DropdownMenuGroup>
       <DropdownMenuGroup title="运营活动">
         <DropdownMenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></DropdownMenuItem>
         <DropdownMenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></DropdownMenuItem>
