@@ -13,6 +13,7 @@ import Related, { ProductItem as RelatedProduct, Item as RelatedItem } from 'com
 import { Product } from 'constants/products'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { urlMap, Landpage } from 'constants/landpage'
+import ProductIcon from 'components/Product/Icon'
 
 import Value from 'components/pages/solutions/manufacture/Value'
 import TypicalScene from 'components/pages/solutions/manufacture/Scene'
@@ -47,7 +48,7 @@ function Page() {
         <Related>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
-          <RelatedItem icon={Product.Dora} href={urlMap[Landpage.Dora]}>视觉数据智能</RelatedItem>
+          <RelatedItem icon={<ProductIcon product={Product.Dora} />} href={urlMap[Landpage.Dora]}>视觉数据智能</RelatedItem>
         </Related>
       </Section>
 
