@@ -13,7 +13,7 @@ import style from './index.less'
 
 export default function Case() {
   return (
-    <Section title="客户案例" name="case">
+    <Section title="典型客户案例" name="case">
       <ForPc />
     </Section>
   )
