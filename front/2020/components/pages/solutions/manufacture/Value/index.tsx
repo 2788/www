@@ -10,11 +10,11 @@ import style from './index.less'
 
 export default function Value() {
   return (
-    <Section title="客户价值" name="value">
+    <Section title="客户价值" name="value" subtitle="实现数据的全生命周期智能管理，探索数据、挖掘价值、遇见未来">
       <div className={style.wrapper}>
-        <Circle />
-        <Arrow style={{ margin: '0 36px 0 40px' }} />
-        <ul>
+        <Circle className={style.circle} />
+        <Arrow className={style.arrow} />
+        <ul className={style.itemWrapper}>
           <Item badge="管理" content="全局掌控各系统运行运营状态，心中有数" />
           <Item badge="性能" content="明晰各种资源的用量与使用率，灵活调配" />
           <Item badge="安全" content="统一防范来自内外的安全风险，坚不可摧" />

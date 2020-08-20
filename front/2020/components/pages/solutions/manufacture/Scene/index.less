@@ -1,7 +1,13 @@
+@import '~utils/less/index.less';
+
 .link {
   display: inline-block;
   margin-top: 36px;
   font-size: 20px;
+
+  .mobile({
+    margin-top: 16px;
+  });
 
   > svg {
     vertical-align: -4px;
