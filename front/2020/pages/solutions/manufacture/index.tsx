@@ -9,9 +9,10 @@ import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
 import { useModal } from 'components/Feedback'
 import Section from 'components/Product/Section'
-import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
+import Related, { ProductItem as RelatedProduct, Item as RelatedItem } from 'components/Solution/Related'
 import { Product } from 'constants/products'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
+import { urlMap, Landpage } from 'constants/landpage'
 
 import Value from 'components/pages/solutions/manufacture/Value'
 import TypicalScene from 'components/pages/solutions/manufacture/Scene'
@@ -46,8 +47,7 @@ function Page() {
         <Related>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
-          {/* TODO 改成 SDK 落地页 */}
-          <RelatedProduct name="视觉数据智能" product={Product.Plsv} />
+          <RelatedItem icon={Product.Dora} href={urlMap[Landpage.Dora]}>视觉数据智能</RelatedItem>
         </Related>
       </Section>
 
