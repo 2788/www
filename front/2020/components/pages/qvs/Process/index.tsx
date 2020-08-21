@@ -17,7 +17,7 @@ export default function Process() {
       <AccessProcess>
         <Step icon={<Step1 />}>注册登录</Step>
         <Step icon={<Step2 />}>创建空间</Step>
-        <Step icon={<Step3 />}>获取推流地址配置<br />到设备端</Step>
+        <Step icon={<Step3 />}>设备接入</Step>
         <Step icon={<Step4 />}>功能体验</Step>
       </AccessProcess>
       {!isMobile && (
