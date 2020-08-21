@@ -26,7 +26,7 @@ export default function Overlay() {
           ))}
         </ContentSection>
         <ContentSection title={categoryNameMap[Category.Industry]}>
-          {categorySolutionsMap[Category.Industry].sort(sortByOnline).map(solution => (
+          {categorySolutionsMap[Category.Industry].slice().sort(sortByOnline).map(solution => (
             <SolutionItem key={solution} solution={solution} />
           ))}
         </ContentSection>

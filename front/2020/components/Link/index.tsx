@@ -14,10 +14,9 @@ import style from './index.less'
 
 export type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
   blue?: boolean
-  withArrow?: boolean
 }
 
-export default function Link({ href, className, blue, withArrow, children, ...others }: Props) {
+export default function Link({ href, className, blue, children, ...others }: Props) {
   const { pathname } = useRouter()
   const classname = classnames(className, blue && style.blue)
   // 对于 hash 直接走 a 标签，next/link 会干掉 hrefe: hash 点击触发的 hashchange 事件

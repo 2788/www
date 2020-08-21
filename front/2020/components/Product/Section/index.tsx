@@ -14,6 +14,8 @@ import { Block, BlockProps, useIndex, useBlocks } from 'components/Product/Navig
 
 import style from './index.less'
 
+export { default as SectionArrowLink } from './ArrowLink'
+
 export type ContextValue = {
   /** 是否从灰色开始（默认下标奇数为灰，偶数为白，下标从 0 开始，即，从白色开始） */
   startWithGrey: boolean
