@@ -79,3 +79,11 @@ export default function Section(props: SectionProps) {
     </Block>
   )
 }
+
+export function useIsGrey(name: string) {
+  const blockIndex = useIndex(name)
+  const startWithGrey = useContext(context).startWithGrey
+  const isMobile = useMobile()
+
+  return !!((+startWithGrey + blockIndex) % 2) && !isMobile
+}
