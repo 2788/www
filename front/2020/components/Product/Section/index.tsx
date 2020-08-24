@@ -14,6 +14,8 @@ import { Block, BlockProps, useIndex, useBlocks } from 'components/Product/Navig
 
 import style from './index.less'
 
+export { default as SectionArrowLink } from './ArrowLink'
+
 export type ContextValue = {
   /** 是否从灰色开始（默认下标奇数为灰，偶数为白，下标从 0 开始，即，从白色开始） */
   startWithGrey: boolean
@@ -25,6 +27,12 @@ const context = createContext<ContextValue>({
 
 export function Provider({ children, ...value }: PropsWithChildren<ContextValue>) {
   return <context.Provider value={value}>{children}</context.Provider>
+}
+
+export const sectionContext = createContext<{ isGrey?: boolean }>({})
+
+export function useIsGrey() {
+  return !!useContext(sectionContext).isGrey
 }
 
 export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
@@ -72,7 +80,9 @@ export default function Section(props: SectionProps) {
           <div className={style.title}>{header != null ? header : title}</div>
           {subtitle ? <div className={style.subtitle}>{subtitle}</div> : null}
         </div>
-        {children}
+        <sectionContext.Provider value={{ isGrey: grey }}>
+          {children}
+        </sectionContext.Provider>
       </div>
     </Block>
   )

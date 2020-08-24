@@ -10,23 +10,25 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 
 import Tabs, { TabPane } from 'components/UI/Tabs'
+import { useIsGrey } from 'components/Product/Section'
 
 import styles from './style.less'
 
 export default function Pc() {
   const [active, setActive] = useState<string>('1')
+  const isGrey = useIsGrey()
 
   function handleTabsChange(activeKey: string) {
     setActive(activeKey)
   }
 
   const tabIconMap = {
-    renMinWang: <div className={classnames(styles.tabIcon, styles.renMinWang, active === '1' && styles.active)}></div>,
-    jiangSuTV: <div className={classnames(styles.tabIcon, styles.jiangSuTV, active === '2' && styles.active)}></div>,
-    chinaMobile: <div className={classnames(styles.tabIcon, styles.chinaMobile, active === '3' && styles.active)}></div>,
-    yingShi: <div className={classnames(styles.tabIcon, styles.yingShi, active === '4' && styles.active)}></div>,
-    pingAn: <div className={classnames(styles.tabIcon, styles.pingAn, active === '5' && styles.active)}></div>,
-    fengHuang: <div className={classnames(styles.tabIcon, styles.fengHuang, active === '6' && styles.active)}></div>
+    renMinWang: <div className={classnames(styles.tabIcon, styles.renMinWang, isGrey && styles.grey, active === '1' && styles.active)}></div>,
+    jiangSuTV: <div className={classnames(styles.tabIcon, styles.jiangSuTV, isGrey && styles.grey, active === '2' && styles.active)}></div>,
+    chinaMobile: <div className={classnames(styles.tabIcon, styles.chinaMobile, isGrey && styles.grey, active === '3' && styles.active)}></div>,
+    yingShi: <div className={classnames(styles.tabIcon, styles.yingShi, isGrey && styles.grey, active === '4' && styles.active)}></div>,
+    pingAn: <div className={classnames(styles.tabIcon, styles.pingAn, isGrey && styles.grey, active === '5' && styles.active)}></div>,
+    fengHuang: <div className={classnames(styles.tabIcon, styles.fengHuang, isGrey && styles.grey, active === '6' && styles.active)}></div>
   }
 
   return (

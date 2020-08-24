@@ -51,11 +51,15 @@
 
 .imgWrapper {
   width: 100%;
-  height: 120px;
+  height: 162px;
   position: relative;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  .mobile({
+    height: 120px;
+  });
 }
 
 .content {
@@ -81,6 +85,7 @@
     margin-top: 8px;
     font-size: 14px;
     line-height: 24px;
+    color: @grey-6;
 
     .mobile({
       margin-top: 12px;

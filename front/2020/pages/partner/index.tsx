@@ -3,15 +3,13 @@ import Layout from 'components/Product/Layout'
 import Banner, * as banner from 'components/Banner'
 import Button from 'components/UI/Button'
 import { RawAccessProcess, Step } from 'components/Product/AccessProcess'
-import Section, { Provider as SectionProvider } from 'components/Product/Section'
-import Link from 'components/Link'
+import Section, { Provider as SectionProvider, SectionArrowLink } from 'components/Product/Section'
 import { useMobile } from 'hooks/ua'
 
 import Arch from 'components/pages/partner/Arch'
 import Benefit from 'components/pages/partner/Benefit'
 
 import bannerImg from './_images/banner.png'
-import Arrow from './_images/arrow.svg'
 import Step1 from './_images/step1.svg'
 import Step2 from './_images/step2.svg'
 import Step3 from './_images/step3.svg'
@@ -37,7 +35,7 @@ function Page() {
             <Step icon={<Step3 />}>3. 完成伙伴资质认证</Step>
             <Step icon={<Step4 />}>4. 成为七牛云合作伙伴</Step>
           </RawAccessProcess>
-          <Link href="https://jinshuju.net/f/ueonw5" className={style.joinLink} blue withArrow>立即加入 <Arrow /></Link>
+          <SectionArrowLink href="https://jinshuju.net/f/ueonw5">立即加入</SectionArrowLink>
         </Section>
 
         <Arch />

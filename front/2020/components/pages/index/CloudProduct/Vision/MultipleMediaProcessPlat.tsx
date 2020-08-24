@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'components/Link'
 import { urlMap, Product } from 'constants/products'
-
+import { urlMap as landpageUrlMap, Landpage } from 'constants/landpage'
 import Positioned from '../Positioned'
 import { Node } from '..'
 import style from '../index.less'
@@ -101,7 +101,7 @@ export default function MultipleMediaProcessPlat() {
         <svg width="300" height="110">
           <MultipleMediaProcessPlatIcon />
           <g transform="translate(150 40)">
-            <Link className={style.link} href="/landpage/dora">
+            <Link className={style.link} href={landpageUrlMap[Landpage.Dora]}>
               <rect width="148" height="32" fill="#E0F7FF"></rect>
               <text fill="#00AAE7">
                 <tspan x="17" y="21">视觉数据分析平台</tspan>
