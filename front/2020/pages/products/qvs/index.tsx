@@ -60,7 +60,7 @@ export function Page() {
       </LinkGroups>
 
       {!isMobile && (
-        <UsageGuide title="准备好了吗？简单几步完成监控视频上云">
+        <UsageGuide title="准备好了吗？" description="简单几步完成监控视频上云">
           <UsageGuideButton href={portalUrl}>
             立即使用
           </UsageGuideButton>
