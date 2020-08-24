@@ -29,6 +29,12 @@ export function Provider({ children, ...value }: PropsWithChildren<ContextValue>
   return <context.Provider value={value}>{children}</context.Provider>
 }
 
+export const sectionContext = createContext<{ isGrey?: boolean }>({})
+
+export function useIsGrey() {
+  return !!useContext(sectionContext).isGrey
+}
+
 export type SectionProps = Pick<BlockProps, 'name' | 'title'> & {
   /** 区块的头部内容，默认使用 `title` 的值 */
   /** TODO: title 用于展示导航栏信息，header 用于展示模块标题，subtitle 用于展示模块副标题 */
@@ -74,16 +80,10 @@ export default function Section(props: SectionProps) {
           <div className={style.title}>{header != null ? header : title}</div>
           {subtitle ? <div className={style.subtitle}>{subtitle}</div> : null}
         </div>
-        {children}
+        <sectionContext.Provider value={{ isGrey: grey }}>
+          {children}
+        </sectionContext.Provider>
       </div>
     </Block>
   )
-}
-
-export function useIsGrey(name: string) {
-  const blockIndex = useIndex(name)
-  const startWithGrey = useContext(context).startWithGrey
-  const isMobile = useMobile()
-
-  return !!((+startWithGrey + blockIndex) % 2) && !isMobile
 }

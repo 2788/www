@@ -26,7 +26,7 @@ export default function KodoeCase() {
       return <Mobile />
     }
 
-    return <Pc sectionName="case" />
+    return <Pc />
   }
 
   return (

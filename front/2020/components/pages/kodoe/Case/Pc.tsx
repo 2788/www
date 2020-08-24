@@ -14,9 +14,9 @@ import { useIsGrey } from 'components/Product/Section'
 
 import styles from './style.less'
 
-export default function Pc({ sectionName }: { sectionName: string }) {
+export default function Pc() {
   const [active, setActive] = useState<string>('1')
-  const isGrey = useIsGrey(sectionName)
+  const isGrey = useIsGrey()
 
   function handleTabsChange(activeKey: string) {
     setActive(activeKey)
