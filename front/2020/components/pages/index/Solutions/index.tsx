@@ -177,7 +177,7 @@ export default function Solutions() {
 }
 
 function getSolutionCards(solutions: Solution[]) {
-  return solutions.map(solution => (
+  return solutions.slice(0, 3).map(solution => (
     <Card
       key={solution}
       icon={createElement(iconMap[solution], { className: styles.icon })}
