@@ -16,14 +16,15 @@
 
 .solutions {
   padding-top: 60px;
-  background-color: #34A1EC !important;
 
-  .background-image(url(./images/bg.jpg), top center, border-box, auto 712px) !important;
+  background-image: url(./images/whole_bg.jpg), url(./images/bg.png) !important;
+  background-position: top center !important;
+  background-repeat:  no-repeat !important;
+  background-size: auto 712px, 100% 712px !important;
 
   .mobile({
     padding-top: 20px;
-    background-color: transparent !important;
-    background-image: none !important;
+    background: none !important;
   });
 
   .sectionTitle {
