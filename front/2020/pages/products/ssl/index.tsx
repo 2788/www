@@ -66,7 +66,10 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem title="两年期SSL证书下架通知！" href="https://developer.qiniu.com/ssl/manual/7080/ssl-certificate-the-longest-validity-since-september-1-2020-changes-for-a-year">
+          <PageNoticeItem title="全场 5 折起！SSL 证书年中采购季" href="https://marketing.qiniu.com/activity/activity-ssl?ref=ssl-mainpage">
+            全场 5 折起！SSL 证书年中采购季 &gt;&gt;
+          </PageNoticeItem>
+          <PageNoticeItem title="两年期 SSL 证书下架通知！" href="https://developer.qiniu.com/ssl/manual/7080/ssl-certificate-the-longest-validity-since-september-1-2020-changes-for-a-year">
             两年期 SSL 证书下架通知！ &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
