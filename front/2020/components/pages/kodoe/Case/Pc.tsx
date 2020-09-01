@@ -28,7 +28,8 @@ export default function Pc() {
     chinaMobile: <div className={classnames(styles.tabIcon, styles.chinaMobile, isGrey && styles.grey, active === '3' && styles.active)}></div>,
     yingShi: <div className={classnames(styles.tabIcon, styles.yingShi, isGrey && styles.grey, active === '4' && styles.active)}></div>,
     pingAn: <div className={classnames(styles.tabIcon, styles.pingAn, isGrey && styles.grey, active === '5' && styles.active)}></div>,
-    fengHuang: <div className={classnames(styles.tabIcon, styles.fengHuang, isGrey && styles.grey, active === '6' && styles.active)}></div>
+    fengHuang: <div className={classnames(styles.tabIcon, styles.fengHuang, isGrey && styles.grey, active === '6' && styles.active)}></div>,
+    lianYing: <div className={classnames(styles.tabIcon, styles.lianYing, isGrey && styles.grey, active === '7' && styles.active)}></div>
   }
 
   return (
@@ -206,6 +207,34 @@ export default function Pc() {
               <p>2、实时监控不合规信息，及时预警；</p>
               <p>3、加强风控，符合监管要求；</p>
               <p>4、提升业务效率，降低运营成本。</p>
+            </div>
+          </div>
+        </div>
+      </TabPane>
+      <TabPane
+        tab={tabIconMap.lianYing}
+        value="7"
+      >
+        <div className={styles.panel}>
+          <div className={styles.title}>联影医疗</div>
+          <div className={styles.group}>
+            <div className={styles.item}>
+              <div className={styles.itemTitle}>客户痛点</div>
+              <p>1、影像数据共享问题：传统存储方案无法满足跨区域、跨医院的数据安全、共享难题；</p>
+              <p>2、影像存储开放问题：传统方案系统很难满足灵活的跨机房、跨业务系统的开放难题；</p>
+              <p>3、弹性扩展问题：传统存储方案很难依据存储使用情况，及时按需弹性扩展。</p>
+            </div>
+            <div className={styles.item}>
+              <div className={styles.itemTitle}>解决方案</div>
+              <p>1、七牛提供私有分布式对象存储系统与影联医疗分子，磁共振，X 射线，外科影像 PACS 系统对接，集中存储 DICOM 影像数据。对影像数据进行生命周期管理。</p>
+              <p>2、加密和桶策略实现数据的安全存储和访问控制。</p>
+              <p>3、汇同相关医疗设备厂商，打造医疗行业“医疗设备+数据中心设备相结合”的医疗影像云解决方案。</p>
+            </div>
+            <div className={styles.item}>
+              <div className={styles.itemTitle}>实现价值</div>
+              <p>1、各医院资源汇集云端，统一存储和管理，医院无需单独建设与维护机房，大大提高了医疗机构影像数据的存储效率，有效控制未来信息建设的扩容成本。</p>
+              <p>2、医院影像共享，结果互认，提高了医疗效率，实现在省市、县、乡之间远程协同分级诊断。</p>
+              <p>3、随时随地在电脑或者手机上从云端调阅和管理影像资料云端调阅和管理影像资料。</p>
             </div>
           </div>
         </div>
