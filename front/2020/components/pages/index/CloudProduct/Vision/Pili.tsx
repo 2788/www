@@ -1,4 +1,5 @@
 import React from 'react'
+import { urlMap as lanUrlMap, Landpage } from 'constants/landpage'
 import Link from 'components/Link'
 import Positioned from '../Positioned'
 import style from '../index.less'
@@ -29,12 +30,14 @@ export default function Pili() {
                 </text>
               </g>
             </Link>
-            <g transform="translate(12 201)">
-              <rect width="120" height="32" fill="#E0F7FF"></rect>
-              <text fill="#34A1EC">
-                <tspan x="46" y="21">SDK</tspan>
-              </text>
-            </g>
+            <Link href={lanUrlMap[Landpage.Sdk]} className={style.link}>
+              <g transform="translate(12 201)">
+                <rect width="120" height="32" fill="#E0F7FF"></rect>
+                <text fill="#34A1EC">
+                  <tspan x="46" y="21">SDK</tspan>
+                </text>
+              </g>
+            </Link>
           </g>
         </svg>
       </Positioned>

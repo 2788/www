@@ -1,5 +1,6 @@
 export enum Landpage {
   Dora = 'dora',
+  /** 视频云 SDK */
   Sdk = 'sdk'
 }
 

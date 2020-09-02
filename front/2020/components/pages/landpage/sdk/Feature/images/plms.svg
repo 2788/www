@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="570" height="478" viewBox="0 0 570 478">
+  <defs>
+    <linearGradient id="插画03-a" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2F7FF"/>
+      <stop offset="46.804%" stop-color="#F2F7FF"/>
+      <stop offset="80.638%" stop-color="#F2F7FF"/>
+      <stop offset="100%" stop-color="#F2F7FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-b" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#00AAE7"/>
+      <stop offset="82.26%" stop-color="#00AAE7" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#00AAE7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-c" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-d" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-e" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-f" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2F7FF"/>
+      <stop offset="82.132%" stop-color="#F2F7FF"/>
+      <stop offset="100%" stop-color="#F2F7FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-g" x1="50%" x2="50%" y1="0%" y2="88.67%">
+      <stop offset="0%" stop-color="#00AAE7"/>
+      <stop offset="100%" stop-color="#00AAE7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画03-h" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#76C7FF"/>
+      <stop offset="100%" stop-color="#00AAE7"/>
+    </linearGradient>
+    <polygon id="插画03-i" points="46.667 0 87.081 23.333 87.081 70 46.667 93.333 6.252 70 6.252 23.333"/>
+    <linearGradient id="插画03-k" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#00D5F5"/>
+      <stop offset="100%" stop-color="#00AAE7"/>
+    </linearGradient>
+    <polygon id="插画03-j" points="60 0 111.962 30 111.962 90 60 120 8.038 90 8.038 30"/>
+    <polygon id="插画03-m" points="31.111 0 58.054 15.556 58.054 46.667 31.111 62.222 4.168 46.667 4.168 15.556"/>
+    <polygon id="插画03-n" points="40 0 74.641 20 74.641 60 40 80 5.359 60 5.359 20"/>
+    <polygon id="插画03-p" points="31.111 0 58.054 15.556 58.054 46.667 31.111 62.222 4.168 46.667 4.168 15.556"/>
+    <polygon id="插画03-q" points="40 0 74.641 20 74.641 60 40 80 5.359 60 5.359 20"/>
+    <linearGradient id="插画03-s" x1="100%" x2="0%" y1="5.496%" y2="5.496%">
+      <stop offset="0%" stop-color="#D6E7FF"/>
+      <stop offset="100%" stop-color="#ADCAFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g opacity=".3" transform="translate(76 80)">
+      <rect width="388" height="296" x="2" y="2" fill="url(#插画03-a)" stroke="url(#插画03-b)" stroke-width="4" rx="12"/>
+      <g transform="translate(24 49)">
+        <rect width="143" height="10" fill="#98D8F9" rx="5"/>
+        <rect width="109" height="10" x="151" fill="#98D8F9" rx="5"/>
+        <rect width="100" height="10" y="18" fill="#98D8F9" opacity=".5" rx="5"/>
+        <rect width="152" height="10" x="108" y="18" fill="#98D8F9" opacity=".5" rx="5"/>
+        <rect width="40" height="6" y="36" fill="#98D8F9" opacity=".5" rx="3"/>
+        <rect width="146" height="6" y="50" fill="#DEF0FE" rx="3"/>
+        <rect width="116" height="6" y="64" fill="#DEF0FE" rx="3"/>
+        <rect width="40" height="6" x="50" y="36" fill="#98D8F9" opacity=".5" rx="3"/>
+        <rect width="21" height="6" x="98" y="36" fill="#98D8F9" opacity=".5" rx="3"/>
+      </g>
+      <g transform="translate(4 4)">
+        <path fill="#DAE9FB" d="M8,0 L376,0 C380.418278,-8.11624501e-16 384,3.581722 384,8 L384,28 L384,28 L0,28 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 Z"/>
+        <path fill="#00AAE7" d="M16,10 C18.209139,10 20,11.790861 20,14 C20,16.209139 18.209139,18 16,18 C13.790861,18 12,16.209139 12,14 C12,11.790861 13.790861,10 16,10 Z M32,10 C34.209139,10 36,11.790861 36,14 C36,16.209139 34.209139,18 32,18 C29.790861,18 28,16.209139 28,14 C28,11.790861 29.790861,10 32,10 Z M48,10 C50.209139,10 52,11.790861 52,14 C52,16.209139 50.209139,18 48,18 C45.790861,18 44,16.209139 44,14 C44,11.790861 45.790861,10 48,10 Z"/>
+      </g>
+    </g>
+    <g transform="translate(109 310)">
+      <rect width="6" height="8" x="3" y="26" fill="url(#插画03-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="40" fill="url(#插画03-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="54" fill="url(#插画03-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="68" fill="url(#插画03-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="82" fill="url(#插画03-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="96" fill="url(#插画03-c)" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(285 27)">
+      <rect width="6" height="13" x="3" y="26" fill="url(#插画03-d)" rx="3"/>
+      <rect width="6" height="13" x="3" y="43" fill="url(#插画03-d)" rx="3"/>
+      <rect width="6" height="13" x="3" y="60" fill="url(#插画03-d)" opacity=".7" rx="3"/>
+      <rect width="6" height="13" x="3" y="77" fill="url(#插画03-d)" opacity=".3" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(40 113)">
+      <rect width="6" height="100" x="3" y="26" fill="url(#插画03-e)" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(419 170)">
+      <rect width="114" height="216" x="2" y="2" fill="url(#插画03-f)" stroke="url(#插画03-g)" stroke-width="4" rx="12"/>
+      <g transform="translate(14 69)">
+        <path fill="url(#插画03-h)" d="M2.91688373,51.9516971 L40.3905554,30.1647132 C41.6296405,29.4443161 43.1594647,29.4419434 44.4007783,30.1584937 L88.3830899,55.5473516 C89.339716,56.0995655 89.6675569,57.3227221 89.1153429,58.2793482 C88.9452824,58.573952 88.702891,58.8203124 88.4110878,58.9951349 L50.5254762,81.692818 C49.2552205,82.453842 47.6684645,82.4508531 46.4010849,81.6850489 L2.8877975,55.392486 C1.94241089,54.8212435 1.63910712,53.5917728 2.21034957,52.6463862 C2.38386377,52.3592261 2.62683139,52.1203319 2.91688373,51.9516971 Z" opacity=".2"/>
+        <path fill="url(#插画03-h)" d="M2.91688373,36.9516971 L40.3905554,15.1647132 C41.6296405,14.4443161 43.1594647,14.4419434 44.4007783,15.1584937 L88.3830899,40.5473516 C89.339716,41.0995655 89.6675569,42.3227221 89.1153429,43.2793482 C88.9452824,43.573952 88.702891,43.8203124 88.4110878,43.9951349 L50.5254762,66.692818 C49.2552205,67.453842 47.6684645,67.4508531 46.4010849,66.6850489 L2.8877975,40.392486 C1.94241089,39.8212435 1.63910712,38.5917728 2.21034957,37.6463862 C2.38386377,37.3592261 2.62683139,37.1203319 2.91688373,36.9516971 Z" opacity=".4"/>
+        <path fill="url(#插画03-h)" d="M2.91688373,22.9516971 L40.3905554,1.16471323 C41.6296405,0.444316062 43.1594647,0.441943424 44.4007783,1.15849368 L88.3830899,26.5473516 C89.339716,27.0995655 89.6675569,28.3227221 89.1153429,29.2793482 C88.9452824,29.573952 88.702891,29.8203124 88.4110878,29.9951349 L50.5254762,52.692818 C49.2552205,53.453842 47.6684645,53.4508531 46.4010849,52.6850489 L2.8877975,26.392486 C1.94241089,25.8212435 1.63910712,24.5917728 2.21034957,23.6463862 C2.38386377,23.3592261 2.62683139,23.1203319 2.91688373,22.9516971 Z"/>
+        <path fill="#FFF" d="M33.5346324,23.8245947 L49.6217213,33.847736 C50.0904671,34.1397904 50.7072176,33.9965537 50.999272,33.5278079 C51.033618,33.4726829 51.0625117,33.4143429 51.0855439,33.3536145 L55.5840183,21.492613 C55.7798684,20.9762206 55.5200175,20.3988339 55.003625,20.2029838 C54.8622898,20.1493802 54.7106416,20.1285149 54.5600816,20.1419568 L33.9745184,21.979817 C33.4244216,22.0289291 33.0182933,22.5146839 33.0674055,23.0647807 C33.0953096,23.3773303 33.2683041,23.6586575 33.5346324,23.8245947 Z"/>
+      </g>
+      <path fill="#00AAE7" d="M95,4.49997121 L95,5.49997121 C95,10.7466763 90.7467051,14.9999712 85.5,14.9999712 L33.5,14.9999712 C28.2532949,14.9999712 24,10.7466763 24,5.49997121 L24,4.49997121 C24,4.33221436 24.0043482,4.1654731 24.0129381,3.99985397 L94.9870619,3.99985397 C94.9956518,4.1654731 95,4.33221436 95,4.49997121 Z"/>
+    </g>
+    <g transform="translate(203 149)">
+      <use fill="#00AAE7" opacity=".3" transform="translate(13.333 13.333)" xlink:href="#插画03-i"/>
+      <mask id="插画03-l" fill="#fff">
+        <use xlink:href="#插画03-j"/>
+      </mask>
+      <use stroke="url(#插画03-k)" stroke-width="3" xlink:href="#插画03-j"/>
+      <polygon stroke="url(#插画03-k)" stroke-width="3" points="8 30 59.962 60 59.962 120 8 150 -43.962 120 -43.962 60" mask="url(#插画03-l)"/>
+      <polygon stroke="url(#插画03-k)" stroke-width="3" points="112 30 163.962 60 163.962 120 112 150 60.038 120 60.038 60" mask="url(#插画03-l)"/>
+    </g>
+    <g transform="translate(308 229)">
+      <use fill="#00AAE7" opacity=".2" transform="translate(8.889 8.889)" xlink:href="#插画03-m"/>
+      <mask id="插画03-o" fill="#fff">
+        <use xlink:href="#插画03-n"/>
+      </mask>
+      <use stroke="url(#插画03-k)" stroke-width="3" xlink:href="#插画03-n"/>
+      <polygon stroke="url(#插画03-k)" stroke-width="3" points="5.333 20 39.974 40 39.974 80 5.333 100 -29.308 80 -29.308 40" mask="url(#插画03-o)"/>
+      <polygon stroke="url(#插画03-k)" stroke-width="3" points="74.667 20 109.308 40 109.308 80 74.667 100 40.026 80 40.026 40" mask="url(#插画03-o)"/>
+    </g>
+    <g transform="translate(130 220)">
+      <use fill="#00AAE7" opacity=".2" transform="translate(8.889 8.889)" xlink:href="#插画03-p"/>
+      <mask id="插画03-r" fill="#fff">
+        <use xlink:href="#插画03-q"/>
+      </mask>
+      <use stroke="url(#插画03-k)" stroke-width="3" xlink:href="#插画03-q"/>
+      <polygon stroke="url(#插画03-k)" stroke-width="3" points="5.333 20 39.974 40 39.974 80 5.333 100 -29.308 80 -29.308 40" mask="url(#插画03-r)"/>
+      <polygon stroke="url(#插画03-k)" stroke-width="3" points="74.667 20 109.308 40 109.308 80 74.667 100 40.026 80 40.026 40" mask="url(#插画03-r)"/>
+    </g>
+    <g stroke-width="6" transform="translate(248.333 375)">
+      <path stroke="url(#插画03-s)" stroke-linecap="round" stroke-linejoin="round" d="M0.161137151,54 L27.2795754,54 C40.258267,54 50.7795754,43.4786916 50.7795754,30.5 C50.7795754,17.5213084 61.3008838,7 74.2795754,7 L126.161137,7 L126.161137,7"/>
+      <circle cx="146.667" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF"/>
+    </g>
+  </g>
+</svg>

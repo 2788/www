@@ -10,8 +10,10 @@ import PageNotice, {
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import Section from 'components/Product/Section'
-import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
+import ProductIcon from 'components/Product/Icon'
+import Related, { Item as RelatedItem, ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product } from 'constants/products'
+import { urlMap as lanUrlMap, Landpage } from 'constants/landpage'
 
 import Arch from 'components/pages/landpage/dora/Architecture'
 import CoreProduct from 'components/pages/landpage/dora/Core'
@@ -58,7 +60,9 @@ function Main() {
         <Related>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
-          {/* TODO 改成 SDK 落地页 */}
+          <RelatedItem icon={<ProductIcon product={Product.Plsv} />} href={lanUrlMap[Landpage.Sdk]} >
+            视频云 SDK
+          </RelatedItem>
           <RelatedProduct name="视觉数据智能" product={Product.Plsv} />
         </Related>
       </Section>

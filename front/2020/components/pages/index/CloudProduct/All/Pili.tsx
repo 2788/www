@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'components/Link'
 import { urlMap, Product } from 'constants/products'
+import { urlMap as lanUrlMap, Landpage } from 'constants/landpage'
 
 import Positioned from '../Positioned'
 import Line from '../Line'
@@ -25,12 +26,14 @@ export default function Pili() {
           <g fill="none" fillRule="evenodd" transform="translate(0 10)">
             <g transform="translate(0 109)">
               <rect width="272" height="96" x="0" y="0" stroke="#00AAE7" strokeDasharray="4 8" strokeWidth="2" mask="url(#all-pili)"></rect>
-              <g transform="translate(12 12)">
-                <rect width="120" height="32" fill="#E0F7FF"></rect>
-                <text fill="#34A1EC">
-                  <tspan x="46" y="21">SDK</tspan>
-                </text>
-              </g>
+              <Link href={lanUrlMap[Landpage.Sdk]} className={style.link}>
+                <g transform="translate(12 12)">
+                  <rect width="120" height="32" fill="#E0F7FF"></rect>
+                  <text fill="#34A1EC">
+                    <tspan x="46" y="21">SDK</tspan>
+                  </text>
+                </g>
+              </Link>
               <Link href={urlMap[Product.Pili]} className={style.link}>
                 <g transform="translate(140 12)">
                   <rect width="120" height="32" fill="#E0F7FF"></rect>

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="570" height="478" viewBox="0 0 570 478">
+  <defs>
+    <linearGradient id="插画01-a" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-b" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-c" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-d" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#D3E2FF"/>
+      <stop offset="100%" stop-color="#E9F2FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-e" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#F3F7FE" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-f" x1="23.678%" x2="74.258%" y1="43.258%" y2="57.656%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#D3E2FF"/>
+    </linearGradient>
+    <linearGradient id="插画01-g" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#D3E2FF"/>
+      <stop offset="100%" stop-color="#E9F2FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-h" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#F3F7FE" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-i" x1="23.678%" x2="74.258%" y1="43.258%" y2="57.656%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#D3E2FF"/>
+    </linearGradient>
+    <linearGradient id="插画01-j" x1="50%" x2="50%" y1="2.375%" y2="100%">
+      <stop offset="0%" stop-color="#ADCAFF"/>
+      <stop offset="100%" stop-color="#D4E3FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-k" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#D3E2FF"/>
+      <stop offset="100%" stop-color="#E9F2FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-l" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#F3F7FE" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-m" x1="23.678%" x2="74.258%" y1="43.258%" y2="57.656%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#D3E2FF"/>
+    </linearGradient>
+    <linearGradient id="插画01-n" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#77C8FF"/>
+      <stop offset="100%" stop-color="#34A1EC"/>
+    </linearGradient>
+    <linearGradient id="插画01-o" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#78C8FF"/>
+      <stop offset="100%" stop-color="#34A1EC"/>
+    </linearGradient>
+    <linearGradient id="插画01-p" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#D3E2FF"/>
+      <stop offset="100%" stop-color="#E9F2FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插画01-q" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#E9F2FF"/>
+      <stop offset="100%" stop-color="#F3F7FE" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(21 106)">
+      <rect width="6" height="100" x="3" y="26" fill="url(#插画01-a)" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(169 267)">
+      <rect width="6" height="100" x="3" y="26" fill="url(#插画01-a)" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(171 7)">
+      <rect width="6" height="13" x="3" y="26" fill="url(#插画01-b)" rx="3"/>
+      <rect width="6" height="13" x="3" y="43" fill="url(#插画01-b)" rx="3"/>
+      <rect width="6" height="13" x="3" y="60" fill="url(#插画01-b)" opacity=".7" rx="3"/>
+      <rect width="6" height="13" x="3" y="77" fill="url(#插画01-b)" opacity=".3" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(538 176)">
+      <rect width="6" height="8" x="3" y="26" fill="url(#插画01-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="40" fill="url(#插画01-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="54" fill="url(#插画01-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="68" fill="url(#插画01-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="82" fill="url(#插画01-c)" rx="3"/>
+      <rect width="6" height="8" x="3" y="96" fill="url(#插画01-c)" rx="3"/>
+      <circle cx="6" cy="6" r="9" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="6"/>
+    </g>
+    <g transform="translate(59 48)">
+      <rect width="52" height="244" y="28" fill="url(#插画01-d)"/>
+      <rect width="52" height="244" x="52" y="28" fill="url(#插画01-e)"/>
+      <polygon fill="url(#插画01-f)" points="0 28.224 51.834 58 104 28.224 52.237 0"/>
+    </g>
+    <g transform="translate(73 232)">
+      <rect width="40" height="187.692" y="21.538" fill="url(#插画01-g)"/>
+      <rect width="40" height="187.692" x="40" y="21.538" fill="url(#插画01-h)"/>
+      <polygon fill="url(#插画01-i)" points="0 21.711 39.873 44.615 80 21.711 40.182 0"/>
+    </g>
+    <g transform="translate(412 143)">
+      <rect width="52" height="244" y="28" fill="url(#插画01-d)"/>
+      <rect width="52" height="244" x="52" y="28" fill="url(#插画01-e)"/>
+      <polygon fill="url(#插画01-f)" points="0 28.224 51.834 58 104 28.224 52.237 0"/>
+    </g>
+    <g transform="translate(398 60)">
+      <rect width="4" height="100" x="2" y="16" fill="url(#插画01-j)" rx="2"/>
+      <circle cx="4" cy="4" r="6" fill="#6BC1FC" stroke="#E3F4FF" stroke-width="4"/>
+    </g>
+    <g transform="translate(215 81)">
+      <g transform="translate(3 141)">
+        <rect width="67" height="188" y="36.077" fill="url(#插画01-k)"/>
+        <rect width="67" height="188" x="67" y="36.077" fill="url(#插画01-l)"/>
+        <polygon fill="url(#插画01-m)" points="0 36.366 66.787 74.731 134 36.366 67.305 0"/>
+      </g>
+      <g fill-rule="nonzero">
+        <path fill="url(#插画01-n)" d="M129.661538,47.7701824 L46.9538462,1.24710545 C41.2464337,-1.95619046 36.6210835,1.22373783 36.6153846,8.35479776 L36.6153846,90.2009516 C36.6210835,97.3384228 41.2464337,105.72187 46.9538462,108.939413 L129.661538,155.46249 C135.368951,158.665786 139.994301,155.485858 140,148.354798 L140,66.5086439 C139.994301,59.3711728 135.368951,50.9877254 129.661538,47.7701824 Z" opacity=".2"/>
+        <path fill="url(#插画01-n)" d="M112.430769,56.385567 L29.7230769,9.86249006 C24.0156645,6.65919416 19.3903143,9.83912245 19.3846154,16.9701824 L19.3846154,98.8163362 C19.3903143,105.953807 24.0156645,114.337255 29.7230769,117.554798 L112.430769,164.077875 C118.138182,167.281171 122.763532,164.101242 122.769231,156.970182 L122.769231,75.1240285 C122.763532,67.9865574 118.138182,59.6031101 112.430769,56.385567 Z" opacity=".5"/>
+        <path fill="url(#插画01-o)" d="M93.0461538,65.0009516 L10.3384615,18.4778747 C4.63104911,15.2745788 0.00569886839,18.4545071 0,25.585567 L0,107.431721 C0.00569886839,114.569192 4.63104911,122.952639 10.3384615,126.170182 L93.0461538,172.693259 C98.7535663,175.896555 103.378917,172.716627 103.384615,165.585567 L103.384615,83.7394131 C103.378917,76.601942 98.7535663,68.2184947 93.0461538,65.0009516 Z"/>
+        <path fill="#FFF" d="M74.3723077,114.477227 L39.9107692,116.631073 C39.2468051,116.672572 38.4099392,116.223808 37.7251129,115.45903 C37.0402866,114.694251 36.6153846,113.733936 36.6153846,112.950952 L36.6153846,69.8740285 C36.6153846,69.0910558 37.0402866,68.6087559 37.7251129,68.6143577 C38.4099392,68.6200578 39.2468051,69.1127683 39.9107692,69.9012269 L74.3723077,110.824304 C75.0060057,111.57349 75.391545,112.482867 75.391545,113.228394 C75.391545,113.973921 75.0060057,114.449567 74.3723077,114.485842 L74.3723077,114.477227 Z"/>
+      </g>
+    </g>
+    <g transform="translate(337 286)">
+      <rect width="40" height="153" y="21.538" fill="url(#插画01-p)"/>
+      <rect width="40" height="153" x="40" y="21.538" fill="url(#插画01-q)"/>
+      <polygon fill="url(#插画01-i)" points="0 21.711 39.873 44.615 80 21.711 40.182 0"/>
+    </g>
+    <g transform="translate(131 387)">
+      <polygon fill="#D3E1FF" points="0 24.73 0 30.996 35 8.963 35 3"/>
+      <polygon fill="#E7EFFF" points="32 22.73 32 28.996 69 5.963 69 0" opacity=".7"/>
+      <polygon fill="#D3E1FF" points="15 47.73 15 53.996 36 41.963 36 36" opacity=".8"/>
+      <polygon fill="#D3E1FF" points="47 41.73 47 47.996 60 39.963 60 34" opacity=".8"/>
+    </g>
+    <g transform="translate(426 70)">
+      <polygon fill="#D3E1FF" points="0 24.73 0 30.996 35 8.963 35 3" opacity=".4"/>
+      <polygon fill="#D3E2FF" points="32 22.73 32 28.996 69 5.963 69 0"/>
+      <polygon fill="#D3E1FF" points="15 47.73 15 53.996 36 41.963 36 36" opacity=".8"/>
+      <polygon fill="#D3E1FF" points="47 41.73 47 47.996 60 39.963 60 34" opacity=".3"/>
+    </g>
+  </g>
+</svg>
