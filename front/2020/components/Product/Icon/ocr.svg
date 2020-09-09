@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g fill="none" fill-rule="evenodd" stroke-width="2">
+    <polyline stroke="#333" points="9 4 3 4 3 10"/>
+    <polyline stroke="#333" points="29 4 23 4 23 10" transform="matrix(-1 0 0 1 52 0)"/>
+    <polyline stroke="#333" points="9 22 3 22 3 28" transform="matrix(1 0 0 -1 0 50)"/>
+    <polyline stroke="#333" points="29 22 23 22 23 28" transform="rotate(180 26 25)"/>
+    <rect width="16" height="14" x="8" y="9" stroke="#00AAE7"/>
+    <line x1="12" x2="16" y1="14" y2="14" stroke="#00AAE7" stroke-linecap="square"/>
+  </g>
+</svg>
