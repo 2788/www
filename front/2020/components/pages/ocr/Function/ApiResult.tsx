@@ -2,11 +2,12 @@
  * @file 内容审核“在此体验丰富功能”
  */
 
-import React, { useState } from 'react'
+import React, { useState, ReactNode } from 'react'
 import { withLoading } from 'utils/loading'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 
-import JSONViewer from './JSONViewer'
+import JSONViewer from 'components/pages/censor/Playground/JSONViewer'
+import { OcrDemo } from 'apis/ocr/common'
 import style from './index.less'
 
 enum ApiInfoType {
@@ -16,7 +17,7 @@ enum ApiInfoType {
 }
 
 type ApiResultProps = {
-  result: null | string
+  result: null | ReactNode
   request: object | null
   response: object | null
   error: any
@@ -29,8 +30,7 @@ export default function ApiResult({ result, request, response, error, loading }:
 
   let resultView
   if (type === ApiInfoType.Result && result) {
-    // eslint-disable-next-line react/no-danger
-    resultView = <p className={style.demoResContent} dangerouslySetInnerHTML={{ __html: result }}></p>
+    resultView = <p className={style.demoResContent} > {result}</p >
   }
 
   const requestView = type === ApiInfoType.Request && request && (
@@ -58,5 +58,244 @@ export default function ApiResult({ result, request, response, error, loading }:
       {requestView}
       {responseView}
     </div>
+  )
+}
+
+export function getResultByName(name: OcrDemo, respose: any) {
+  switch (name) {
+    case OcrDemo.IdCard:
+      return getResultByIdCard(respose)
+    case OcrDemo.CarBd:
+      return getResultByCarBd(respose)
+    case OcrDemo.Bs:
+      return getResultByBs(respose)
+    case OcrDemo.NewCar:
+      return getResultByNewCar(respose)
+    case OcrDemo.Cz:
+      return getResultByCz(respose)
+    default:
+      return getResultByIdCard(respose)
+  }
+}
+
+function getResultByIdCard(respose: any) {
+  if (respose.errorcode) {
+    return respose.errormsg
+  }
+  const res = respose.ocr_result
+  if (res.side === 'F') {
+    return (
+      <>
+        姓名：{res.name}<br />
+        性别：{res.gender}<br />
+        民族：{res.nation}<br />
+        出生：{res.birthdate.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1年$2月$3日')}<br />
+        住址：{res.address}<br />
+        身份证号码：{res.idno}
+      </>
+    )
+  }
+  return (
+    <>
+      有效期：{res.validthru.replace(/^(\d{4})(\d{2})(\d{2})-(\d{4})(\d{2})(\d{2})$/, '$1年$2月$3日至$4年$5月$6日')}<br />
+      签发机关：{res.issuedby}
+    </>
+  )
+}
+
+function getResultByCarBd(respose: any) {
+  if (respose.errorcode) {
+    let content = ''
+    switch (respose.errorcode) {
+      case 1:
+        content = '检测图中文本区域失败'
+        break
+      case 2:
+        content = '输入的图片是无效图片(比如不是一张图片)'
+        break
+      case 3:
+        content = '遇到了其他错误，无法正确返回结果'
+        break
+      case 4:
+        content = '系统正忙，无法正确返回结果'
+        break
+      default:
+        content = '未知错误'
+        break
+    }
+    return (
+      <>{content}</>
+    )
+  }
+  const items = respose.items
+  return (
+    <>
+      {
+        Object.keys(items).map((item: string) => {
+          const type = typeof items[item]
+          // null时置为空
+          let val = ''
+          if (items[item]) {
+            if (type === 'object') {
+              Object.keys(items[item]).forEach((key: string) => {
+                val += '、' + items[item][key]
+              })
+              val = val.replace('、', '')
+            } else {
+              val = items[item]
+            }
+          }
+          return <>{item}：{val} <br /></>
+        })
+      }
+    </>
+  )
+
+}
+const bsObj = {
+  credit_code: '统一社会信用代码',
+  name: '名称',
+  type: '类型',
+  address: '经营场所/住所',
+  legal_representative: '法定代表人',
+  found_date: '注册日期',
+  operation_term: '营业期限',
+  registered_capital: '注册资本',
+  business_scope: '范围'
+}
+
+function getResultByBs(respose: any) {
+  if (respose.errorcode) {
+    let content = ''
+    switch (respose.errorcode) {
+      case 10001:
+        content = '请求解析失败'
+        break
+      case 10002:
+        content = '鉴权失败'
+        break
+      case 10003:
+        content = '图像解码错误'
+        break
+      case 10004:
+        content = '请求超时'
+        break
+      case 10005:
+        content = 'OCR 内部错误'
+        break
+      case 10006:
+        content = '未知错误'
+        break
+      default:
+        content = '未知错误'
+        break
+    }
+    return (
+      <>{content}</>
+    )
+  }
+  const items = respose.items
+  return (
+    <>
+      {
+        Object.keys(bsObj).map((prop: string) => {
+          if (items[prop]) {
+            const val = items[prop].value ? items[prop].value : ''
+            return <>{(bsObj as any)[prop]}：{val}<br /></>
+          }
+          return null
+        })
+      }
+    </>
+  )
+}
+
+function getResultByNewCar(respose: any) {
+
+  if (respose.errorcode) {
+    let content = ''
+    switch (respose.errorcode) {
+      case 10002:
+        content = '对输入的图片解码错误'
+        break
+      case 10003:
+        content = '遇到了其他错误，无法正确返回结果'
+        break
+      case 10004:
+        content = '服务器正忙'
+        break
+      case 10005:
+        content = '参数错误'
+        break
+      default:
+        content = '未知错误'
+        break
+    }
+    return (
+      <>{content}</>
+    )
+  }
+
+  const items = respose.items
+  return (
+    <>
+      {
+        Object.keys(items).map((item: string) => <>{items[item].chinese_key}：{items[item].words}<br /></>)
+      }
+    </>
+  )
+}
+function getResultByCz(respose: any) {
+  if (respose.errorcode) {
+    let content = ''
+    switch (respose.errorcode) {
+      case 1:
+        content = '检测图中文本区域失败'
+        break
+      case 2:
+        content = '输入的图片是无效图片（比如不是一张图片）'
+        break
+      case 3:
+        content = '遇到了其他错误，无法正确返回结果'
+        break
+      case 4:
+        content = '系统正忙，无法正确返回结果'
+        break
+      default:
+        content = '未知错误'
+        break
+    }
+    return (
+      <>{content}</>
+    )
+  }
+  const items = respose.items
+  return (
+    <>
+      {
+        Object.keys(items).map((item: string) => {
+          const type = typeof items[item]
+          // null时置为空
+          let val = ''
+          if (items[item]) {
+            if (type === 'object') {
+              Object.keys(items[item]).forEach((key: string) => {
+                if (typeof items[item][key] === 'object') {
+                  Object.keys(items[item][key]).forEach((k: string) => {
+                    val += k + '（' + items[item][key][k] + '）'
+                  })
+                } else {
+                  val += '、' + items[item][key]
+                }
+              })
+              val = val.replace('、', '')
+            } else {
+              val = items[item]
+            }
+          }
+          return <>{item}：{val} <br /></>
+        })
+      }
+    </>
   )
 }

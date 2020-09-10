@@ -125,7 +125,7 @@ module.exports = withPlugins(
           ]
         },
         {
-          test: /\.(png|jpe?g|gif)$/i,
+          test: /(?<!\.base64)\.(png|jpe?g|gif)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },
@@ -137,6 +137,21 @@ module.exports = withPlugins(
                 outputPath: `${options.isServer ? '../' : ''}static/media/`,
                 name: '[name].[hash].[ext]',
                 esModule: false
+              }
+            }
+          ]
+        },
+        //ocr身份证、发票等默认图片转base64
+        {
+          test: /\.base64\.jpg$/i,
+          issuer: {
+            test: /\.(js|ts)x?$/
+          },
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit:1000000
               }
             }
           ]

@@ -11,7 +11,7 @@ import style from './index.less'
 
 export default function Advantage() {
   return (
-    <Section title="核心优势" name="advantage" header="产品优势" className={style.section}>
+    <Section title="产品优势" name="advantage" className={style.section}>
       <Row className={style.row}>
         <MyCard
           src={archive}

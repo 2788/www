@@ -32,7 +32,7 @@ function Page() {
   )
 
   const isMobile = useMobile()
-  const funcContent = isMobile ? <></> : <Function />
+  const funcContent = !isMobile && <Function />
   return (
     <>
       <PageBanner
@@ -54,9 +54,9 @@ function Page() {
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
-          <RelatedProduct name="智能多媒体" product={Product.Dora} />
-          <RelatedProduct name="人脸核验" product={Product.FaceID} />
-          <RelatedProduct name="内容审核" product={Product.Censor} />
+          <RelatedProduct product={Product.Dora} />
+          <RelatedProduct product={Product.FaceID} />
+          <RelatedProduct product={Product.Censor} />
         </Related>
       </Section>
     </>

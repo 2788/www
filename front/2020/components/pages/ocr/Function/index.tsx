@@ -5,11 +5,17 @@ import Scene, {
   Block as SceneBlock
 } from 'components/Product/Scene'
 import { ImageOptions, getApiByName } from 'apis/ocr/function'
-import { OcrDemo, getRequestMesgByName, getResultByName } from 'apis/ocr/common'
-import { Upload, Button } from 'react-icecream'
-import ApiResult from './ApiResult'
+import { OcrDemo, getRequestMesgByName } from 'apis/ocr/common'
+import { Upload } from 'react-icecream'
+import Button from 'components/UI/Button'
+import ApiResult, { getResultByName } from './ApiResult'
 
 import style from './index.less'
+import idCard from './images/idCard.base64.jpg'
+import carBd from './images/carBd.base64.jpg'
+import bs from './images/bs.base64.jpg'
+import cz from './images/cz.base64.jpg'
+import newCar from './images/newCar.base64.jpg'
 
 export default function Function() {
   const panelArr = [
@@ -33,17 +39,24 @@ type PanelProps = {
 }
 function MyPanel({ name, title }: PanelProps) {
   const [imgData, setImgData] = useState<Blob | undefined>(undefined)
-  const [imgUrl, setImgUrl] = useState<any>()
-  const [reqBody, setReqBody] = useState<ImageOptions>({ image: '' })
+  const [imgUrl, setImgUrl] = useState(getImgByName(name))
+  const [imgWH, setImgWH] = useState('')
+  const [reqBody, setReqBody] = useState<ImageOptions>({ image: getImgByName(name) })
 
   useEffect(() => {
     if (imgData) {
+      setImgWH('')
       const reader = new FileReader()
-      reader.addEventListener('load', () => setImgUrl(reader.result))
+      const setImg = function() {
+        if (typeof reader.result === 'string') {
+          setImgUrl(reader.result)
+        }
+      }
+      reader.addEventListener('load', setImg)
       reader.readAsDataURL(imgData)
+      return () => reader.removeEventListener('load', setImg)
     }
   }, [imgData])
-
   useEffect(() => {
     if (imgUrl) {
       setReqBody({ image: removeImageBase64Prefix(imgUrl) })
@@ -59,14 +72,25 @@ function MyPanel({ name, title }: PanelProps) {
     return getResultByName(name, apiResult)
   }, [apiResult, name])
 
+  function imgLoad(target: HTMLImageElement) {
+    const width = target.width
+    const height = target.height
+    if (width > height) {
+      setImgWH('width')
+    } else {
+      setImgWH('height')
+    }
+  }
   return (
     <ScenePanel name={name} title={title} verticalCenter>
       <SceneBlock blockType="fixed" className={style.blockLeft}>
         <div className={style.imgBlock}>
-          <img src={imgUrl} />
+          <div className={style.imgInner}>
+            <img src={imgUrl} className={`${imgWH === 'width' ? style.width : null} ${imgWH === 'height' ? style.height : null}`} onLoad={e => imgLoad(e.currentTarget)} />
+          </div>
         </div>
-        <Upload name="file" accept="image/*" showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)}>
-          <Button className={style.button} >上传图片</Button>
+        <Upload name="file" accept=".png, .jpg, .jpeg" showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)}>
+          <Button type="hollow" className={style.button} withBorder >上传图片</Button>
         </Upload>
       </SceneBlock>
       <SceneBlock shadow className={style.blockRight}>
@@ -89,10 +113,26 @@ function removeImageBase64Prefix(url: string) {
 function makeRequestForDisplay(name: OcrDemo, body: any) {
   const req = getRequestMesgByName(name)
   return {
-    Method: req.Method,
-    Host: req.Host,
+    Method: 'POST ' + req.method + ' HTTP/1.1',
+    Host: req.host,
     'Content-Type': 'application/json',
     Authorization: 'Qiniu <AccessKey>:<Sign>',
     body
+  }
+}
+function getImgByName(name: OcrDemo) {
+  switch (name) {
+    case OcrDemo.IdCard:
+      return idCard
+    case OcrDemo.CarBd:
+      return carBd
+    case OcrDemo.Bs:
+      return bs
+    case OcrDemo.NewCar:
+      return newCar
+    case OcrDemo.Cz:
+      return cz
+    default:
+      return idCard
   }
 }

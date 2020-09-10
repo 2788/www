@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="536" height="450" viewBox="0 0 536 450">
+  <g fill="#E5E5E5" fill-rule="evenodd">
+    <path d="M24,0 L24,4 L4,4 L4,24 L0,24 L0,0 L24,0 Z"/>
+    <path d="M536,0 L536,4 L516,4 L516,24 L512,24 L512,0 L536,0 Z" transform="matrix(-1 0 0 1 1048 0)"/>
+    <path d="M24,426 L24,430 L4,430 L4,450 L0,450 L0,426 L24,426 Z" transform="matrix(1 0 0 -1 0 876)"/>
+    <path d="M536,426 L536,430 L516,430 L516,450 L512,450 L512,426 L536,426 Z" transform="rotate(180 524 438)"/>
+  </g>
+</svg>
