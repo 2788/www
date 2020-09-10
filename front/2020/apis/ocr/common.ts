@@ -6,7 +6,7 @@ export enum OcrDemo {
   Cz = 'cz'
 }
 
-export const methodMap = {
+export const pathMap = {
   [OcrDemo.IdCard]: '/ocr/idcard',
   [OcrDemo.CarBd]: '/ocr/car_bd',
   [OcrDemo.Bs]: '/ocr/bs',
@@ -24,7 +24,7 @@ export const hostMap = {
 
 export function getRequestMesgByName(name: OcrDemo) {
   return {
-    method: methodMap[name],
+    path: pathMap[name],
     host: hostMap[name]
   }
 }

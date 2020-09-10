@@ -6,8 +6,9 @@ import Scene, {
 } from 'components/Product/Scene'
 import { ImageOptions, getApiByName } from 'apis/ocr/function'
 import { OcrDemo, getRequestMesgByName } from 'apis/ocr/common'
-import { Upload } from 'react-icecream'
+import { Upload, Modal } from 'react-icecream'
 import Button from 'components/UI/Button'
+import { RcFile } from 'react-icecream/esm/upload'
 import ApiResult, { getResultByName } from './ApiResult'
 
 import style from './index.less'
@@ -16,6 +17,10 @@ import carBd from './images/carBd.base64.jpg'
 import bs from './images/bs.base64.jpg'
 import cz from './images/cz.base64.jpg'
 import newCar from './images/newCar.base64.jpg'
+
+// 图片筛选
+const imgFilter = '.png, .jpg, .jpeg'
+const imgRegex = /^data:(image\/)?(png|jpg|jpeg)?;base64,/
 
 export default function Function() {
   const panelArr = [
@@ -40,12 +45,10 @@ type PanelProps = {
 function MyPanel({ name, title }: PanelProps) {
   const [imgData, setImgData] = useState<Blob | undefined>(undefined)
   const [imgUrl, setImgUrl] = useState(getImgByName(name))
-  const [imgWH, setImgWH] = useState('')
   const [reqBody, setReqBody] = useState<ImageOptions>({ image: getImgByName(name) })
 
   useEffect(() => {
     if (imgData) {
-      setImgWH('')
       const reader = new FileReader()
       const setImg = function() {
         if (typeof reader.result === 'string') {
@@ -72,24 +75,30 @@ function MyPanel({ name, title }: PanelProps) {
     return getResultByName(name, apiResult)
   }, [apiResult, name])
 
-  function imgLoad(target: HTMLImageElement) {
-    const width = target.width
-    const height = target.height
-    if (width > height) {
-      setImgWH('width')
-    } else {
-      setImgWH('height')
+  function beforeUpload(file: RcFile) {
+    const isLt5M = file.size / 1024 / 1024 < 5
+    if (!isLt5M) {
+      Modal.info({
+        content: (
+          <>
+            上传的图片大小不能超过5M
+          </>
+        ),
+        okText: '知道了'
+      })
     }
+    return isLt5M
   }
+
   return (
     <ScenePanel name={name} title={title} verticalCenter>
       <SceneBlock blockType="fixed" className={style.blockLeft}>
         <div className={style.imgBlock}>
           <div className={style.imgInner}>
-            <img src={imgUrl} className={`${imgWH === 'width' ? style.width : null} ${imgWH === 'height' ? style.height : null}`} onLoad={e => imgLoad(e.currentTarget)} />
+            <div className={style.img} style={{ backgroundImage: `url(${imgUrl})` }}></div>
           </div>
         </div>
-        <Upload name="file" accept=".png, .jpg, .jpeg" showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)}>
+        <Upload name="file" accept={imgFilter} beforeUpload={e => beforeUpload(e)} showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)}>
           <Button type="hollow" className={style.button} withBorder >上传图片</Button>
         </Upload>
       </SceneBlock>
@@ -107,13 +116,13 @@ function MyPanel({ name, title }: PanelProps) {
 }
 
 function removeImageBase64Prefix(url: string) {
-  return url.replace(/^data:(image\/)?(png|jpg|jpeg)?;base64,/, '')
+  return url.replace(imgRegex, '')
 }
 
 function makeRequestForDisplay(name: OcrDemo, body: any) {
   const req = getRequestMesgByName(name)
   return {
-    Method: 'POST ' + req.method + ' HTTP/1.1',
+    Method: 'POST ' + req.path + ' HTTP/1.1',
     Host: req.host,
     'Content-Type': 'application/json',
     Authorization: 'Qiniu <AccessKey>:<Sign>',

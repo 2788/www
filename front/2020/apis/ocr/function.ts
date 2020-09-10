@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-09-10 10:52:43
+ * @LastEditTime: 2020-09-10 19:04:17
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /2020/apis/ocr/function.ts
+ */
 /**
  * @file 票证自动识别ocr相关 API
  * @description 接口文档
@@ -10,7 +18,7 @@
 
 import { post } from 'utils/fetch'
 import { apiPrefix as basePrefix } from 'constants/api'
-import { OcrDemo, methodMap } from './common'
+import { OcrDemo, pathMap } from './common'
 
 const idcardPrefix = `${basePrefix}/ocr_idcard`
 const carbdPrefix = `${basePrefix}/ocr_carbd`
@@ -32,7 +40,7 @@ type IdCardResponse = {
 }
 
 export async function getMesgByIdCard(options: ImageOptions): Promise<IdCardResponse> {
-  const response: IdCardResponse = await post(`${idcardPrefix}${methodMap[OcrDemo.IdCard]}`, options)
+  const response: IdCardResponse = await post(`${idcardPrefix}${pathMap[OcrDemo.IdCard]}`, options)
   return response
 }
 
@@ -43,7 +51,7 @@ type CarBdResponse = {
 }
 
 export async function getMesgByCarBd(options: ImageOptions): Promise<CarBdResponse> {
-  const response: CarBdResponse = await post(`${carbdPrefix}${methodMap[OcrDemo.CarBd]}`, options)
+  const response: CarBdResponse = await post(`${carbdPrefix}${pathMap[OcrDemo.CarBd]}`, options)
   return response
 }
 
@@ -54,7 +62,7 @@ type BsResponse = {
 }
 
 export async function getMesgByBs(options: ImageOptions): Promise<BsResponse> {
-  const response: BsResponse = await post(`${bsPrefix}${methodMap[OcrDemo.Bs]}`, options)
+  const response: BsResponse = await post(`${bsPrefix}${pathMap[OcrDemo.Bs]}`, options)
   return response
 }
 
@@ -65,7 +73,7 @@ type NewCarResponse = {
 }
 
 export async function getMesgByNewCar(options: ImageOptions): Promise<NewCarResponse> {
-  const response: NewCarResponse = await post(`${newcarPrefix}${methodMap[OcrDemo.NewCar]}`, options)
+  const response: NewCarResponse = await post(`${newcarPrefix}${pathMap[OcrDemo.NewCar]}`, options)
   return response
 }
 
@@ -76,7 +84,7 @@ type CzResponse = {
 }
 
 export async function getMesgByCz(options: ImageOptions): Promise<CzResponse> {
-  const response: CzResponse = await post(`${czPrefix}${methodMap[OcrDemo.Cz]}`, options)
+  const response: CzResponse = await post(`${czPrefix}${pathMap[OcrDemo.Cz]}`, options)
   return response
 }
 

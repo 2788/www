@@ -30,7 +30,7 @@ export default function ApiResult({ result, request, response, error, loading }:
 
   let resultView
   if (type === ApiInfoType.Result && result) {
-    resultView = <p className={style.demoResContent} > {result}</p >
+    resultView = <p className={style.demoResContent}>{result}</p>
   }
 
   const requestView = type === ApiInfoType.Request && request && (
@@ -61,28 +61,28 @@ export default function ApiResult({ result, request, response, error, loading }:
   )
 }
 
-export function getResultByName(name: OcrDemo, respose: any) {
+export function getResultByName(name: OcrDemo, response: any) {
   switch (name) {
     case OcrDemo.IdCard:
-      return getResultByIdCard(respose)
+      return ResultByIdCard(response)
     case OcrDemo.CarBd:
-      return getResultByCarBd(respose)
+      return ResultByCarBd(response)
     case OcrDemo.Bs:
-      return getResultByBs(respose)
+      return ResultByBs(response)
     case OcrDemo.NewCar:
-      return getResultByNewCar(respose)
+      return ResultByNewCar(response)
     case OcrDemo.Cz:
-      return getResultByCz(respose)
+      return ResultByCz(response)
     default:
-      return getResultByIdCard(respose)
+      return ResultByIdCard(response)
   }
 }
 
-function getResultByIdCard(respose: any) {
-  if (respose.errorcode) {
-    return respose.errormsg
+function ResultByIdCard({ response }: { response: any }) {
+  if (response.errorcode) {
+    return response.errormsg
   }
-  const res = respose.ocr_result
+  const res = response.ocr_result
   if (res.side === 'F') {
     return (
       <>
@@ -103,15 +103,15 @@ function getResultByIdCard(respose: any) {
   )
 }
 
-function getResultByCarBd(respose: any) {
-  if (respose.errorcode) {
+function ResultByCarBd({ response }: { response: any }) {
+  if (response.errorcode) {
     let content = ''
-    switch (respose.errorcode) {
+    switch (response.errorcode) {
       case 1:
         content = '检测图中文本区域失败'
         break
       case 2:
-        content = '输入的图片是无效图片(比如不是一张图片)'
+        content = '输入的图片是无效图片（比如不是一张图片）'
         break
       case 3:
         content = '遇到了其他错误，无法正确返回结果'
@@ -127,7 +127,7 @@ function getResultByCarBd(respose: any) {
       <>{content}</>
     )
   }
-  const items = respose.items
+  const items = response.items
   return (
     <>
       {
@@ -164,10 +164,10 @@ const bsObj = {
   business_scope: '范围'
 }
 
-function getResultByBs(respose: any) {
-  if (respose.errorcode) {
+function ResultByBs({ response }: { response: any }) {
+  if (response.errorcode) {
     let content = ''
-    switch (respose.errorcode) {
+    switch (response.errorcode) {
       case 10001:
         content = '请求解析失败'
         break
@@ -194,7 +194,7 @@ function getResultByBs(respose: any) {
       <>{content}</>
     )
   }
-  const items = respose.items
+  const items = response.items
   return (
     <>
       {
@@ -210,11 +210,10 @@ function getResultByBs(respose: any) {
   )
 }
 
-function getResultByNewCar(respose: any) {
-
-  if (respose.errorcode) {
+function ResultByNewCar({ response }: { response: any }) {
+  if (response.errorcode) {
     let content = ''
-    switch (respose.errorcode) {
+    switch (response.errorcode) {
       case 10002:
         content = '对输入的图片解码错误'
         break
@@ -236,7 +235,7 @@ function getResultByNewCar(respose: any) {
     )
   }
 
-  const items = respose.items
+  const items = response.items
   return (
     <>
       {
@@ -245,10 +244,10 @@ function getResultByNewCar(respose: any) {
     </>
   )
 }
-function getResultByCz(respose: any) {
-  if (respose.errorcode) {
+function ResultByCz({ response }: { response: any }) {
+  if (response.errorcode) {
     let content = ''
-    switch (respose.errorcode) {
+    switch (response.errorcode) {
       case 1:
         content = '检测图中文本区域失败'
         break
@@ -269,7 +268,7 @@ function getResultByCz(respose: any) {
       <>{content}</>
     )
   }
-  const items = respose.items
+  const items = response.items
   return (
     <>
       {
