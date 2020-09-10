@@ -31,7 +31,7 @@ export default function Function() {
     { name: OcrDemo.Cz, title: '车辆登记证' }
   ]
   return (
-    <Scene name="demo" title="功能体验" header="在此体验丰富功能" >
+    <Scene name="demo" title="Demo 体验">
       {panelArr.map(panel => (
         <MyPanel {...panel} key={panel.name} />
       ))}

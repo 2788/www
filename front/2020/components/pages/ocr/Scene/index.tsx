@@ -12,7 +12,7 @@ import style from './index.less'
 
 export default function OcrScene() {
   return (
-    <Scene name="scene" title="应用场景" grey >
+    <Scene name="scene" title="适用场景" grey >
       <ScenePanel name="scene-tab-1" title="用户身份验证" className={style.scenePanel} verticalCenter>
         <SceneBlock blockType="fixed" className={style.blockLeft}>
           <img src={user} className={style.sceneImg} />

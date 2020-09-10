@@ -26,7 +26,7 @@ type ApiResultProps = {
 
 export default function ApiResult({ result, request, response, error, loading }: ApiResultProps) {
 
-  const [type, setType] = useState(ApiInfoType.Request)
+  const [type, setType] = useState(ApiInfoType.Result)
 
   let resultView
   if (type === ApiInfoType.Result && result) {
@@ -108,16 +108,16 @@ function ResultByCarBd({ response }: { response: any }) {
     let content = ''
     switch (response.errorcode) {
       case 1:
-        content = '检测图中文本区域失败'
+        content = '检测失败'
         break
       case 2:
-        content = '输入的图片是无效图片（比如不是一张图片）'
+        content = '无效图片'
         break
       case 3:
-        content = '遇到了其他错误，无法正确返回结果'
+        content = '未知错误'
         break
       case 4:
-        content = '系统正忙，无法正确返回结果'
+        content = '系统正忙'
         break
       default:
         content = '未知错误'
@@ -215,13 +215,13 @@ function ResultByNewCar({ response }: { response: any }) {
     let content = ''
     switch (response.errorcode) {
       case 10002:
-        content = '对输入的图片解码错误'
+        content = '图片解码错误'
         break
       case 10003:
-        content = '遇到了其他错误，无法正确返回结果'
+        content = '未知错误'
         break
       case 10004:
-        content = '服务器正忙'
+        content = '系统正忙'
         break
       case 10005:
         content = '参数错误'
@@ -249,16 +249,16 @@ function ResultByCz({ response }: { response: any }) {
     let content = ''
     switch (response.errorcode) {
       case 1:
-        content = '检测图中文本区域失败'
+        content = '检测失败'
         break
       case 2:
-        content = '输入的图片是无效图片（比如不是一张图片）'
+        content = '无效图片'
         break
       case 3:
-        content = '遇到了其他错误，无法正确返回结果'
+        content = '未知错误'
         break
       case 4:
-        content = '系统正忙，无法正确返回结果'
+        content = '系统正忙'
         break
       default:
         content = '未知错误'

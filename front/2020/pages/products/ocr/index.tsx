@@ -52,7 +52,7 @@ function Page() {
 
       <Scene />
 
-      <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
+      <Section name="related" title="相关产品" withTailPadding>
         <Related>
           <RelatedProduct product={Product.Dora} />
           <RelatedProduct product={Product.FaceID} />
