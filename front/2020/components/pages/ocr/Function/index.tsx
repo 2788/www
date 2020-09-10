@@ -81,7 +81,7 @@ function MyPanel({ name, title }: PanelProps) {
       Modal.info({
         content: (
           <>
-            上传的图片大小不能超过5M
+            上传的图片大小不能超过 5M
           </>
         ),
         okText: '知道了'

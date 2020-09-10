@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2020-09-10 10:52:43
- * @LastEditTime: 2020-09-10 19:04:17
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /2020/apis/ocr/function.ts
- */
 /**
  * @file 票证自动识别ocr相关 API
  * @description 接口文档

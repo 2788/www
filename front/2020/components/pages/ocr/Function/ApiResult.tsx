@@ -64,17 +64,17 @@ export default function ApiResult({ result, request, response, error, loading }:
 export function getResultByName(name: OcrDemo, response: any) {
   switch (name) {
     case OcrDemo.IdCard:
-      return ResultByIdCard(response)
+      return <ResultByIdCard response={response} />
     case OcrDemo.CarBd:
-      return ResultByCarBd(response)
+      return <ResultByCarBd response={response} />
     case OcrDemo.Bs:
-      return ResultByBs(response)
+      return <ResultByBs response={response} />
     case OcrDemo.NewCar:
-      return ResultByNewCar(response)
+      return <ResultByNewCar response={response} />
     case OcrDemo.Cz:
-      return ResultByCz(response)
+      return <ResultByCz response={response} />
     default:
-      return ResultByIdCard(response)
+      return <ResultByIdCard response={response} />
   }
 }
 
