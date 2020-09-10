@@ -99,7 +99,7 @@ function MyPanel({ name, title }: PanelProps) {
           </div>
         </div>
         <Upload name="file" accept={imgFilter} beforeUpload={e => beforeUpload(e)} showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)}>
-          <Button type="hollow" className={style.button} withBorder >上传图片</Button>
+          <Button type="hollow" className={style.button} withBorder>上传图片</Button>
         </Upload>
       </SceneBlock>
       <SceneBlock shadow className={style.blockRight}>
