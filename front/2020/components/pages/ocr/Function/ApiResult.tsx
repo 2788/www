@@ -30,7 +30,7 @@ export default function ApiResult({ result, request, response, error, loading }:
 
   let resultView
   if (type === ApiInfoType.Result && result) {
-    resultView = <p className={style.demoResContent}>{result}</p>
+    resultView = withLoading(loading)(<p className={style.demoResContent}>{result}</p>)
   }
 
   const requestView = type === ApiInfoType.Request && request && (

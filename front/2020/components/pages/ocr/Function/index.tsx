@@ -1,14 +1,16 @@
-import React, { useState, useEffect, useMemo } from 'react'
-import { useApiWithParams } from 'hooks/api'
+import React, { useState, useMemo } from 'react'
+import { Upload, Modal } from 'react-icecream'
+import { RcFile } from 'react-icecream/esm/upload'
+
 import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
 } from 'components/Product/Scene'
 import { ImageOptions, getApiByName } from 'apis/ocr/function'
 import { OcrDemo, getRequestMesgByName } from 'apis/ocr/common'
-import { Upload, Modal } from 'react-icecream'
 import Button from 'components/UI/Button'
-import { RcFile } from 'react-icecream/esm/upload'
+import { useOnChange } from 'hooks'
+import { useApiWithParams } from 'hooks/api'
 import ApiResult, { getResultByName } from './ApiResult'
 
 import style from './index.less'
@@ -38,16 +40,18 @@ export default function Function() {
     </Scene>
   )
 }
+
 type PanelProps = {
   name: OcrDemo
   title: string
 }
+
 function MyPanel({ name, title }: PanelProps) {
   const [imgData, setImgData] = useState<Blob | undefined>(undefined)
   const [imgUrl, setImgUrl] = useState(getImgByName(name))
-  const [reqBody, setReqBody] = useState<ImageOptions>({ image: getImgByName(name) })
+  const [reqBody, setReqBody] = useState<ImageOptions>({ image: removeImageBase64Prefix(imgUrl) })
 
-  useEffect(() => {
+  useOnChange(() => {
     if (imgData) {
       const reader = new FileReader()
       const setImg = function() {
@@ -60,11 +64,13 @@ function MyPanel({ name, title }: PanelProps) {
       return () => reader.removeEventListener('load', setImg)
     }
   }, [imgData])
-  useEffect(() => {
+
+  useOnChange(() => {
     if (imgUrl) {
       setReqBody({ image: removeImageBase64Prefix(imgUrl) })
     }
   }, [imgUrl])
+
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
     getApiByName(name),
     { params: [reqBody] }
