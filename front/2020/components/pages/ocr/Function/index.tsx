@@ -11,6 +11,7 @@ import { OcrDemo, getRequestMesgByName } from 'apis/ocr/common'
 import Button from 'components/UI/Button'
 import { useOnChange } from 'hooks'
 import { useApiWithParams } from 'hooks/api'
+import ErrorBoundary from './ErrorBoundary'
 import ApiResult, { getResultByName } from './ApiResult'
 
 import style from './index.less'
@@ -79,7 +80,7 @@ function MyPanel({ name, title }: PanelProps) {
   // 防止不必要的更新调用到getResultByName方法，所以这边使用useMemo来进行性能优化
   const results = useMemo(() => {
     if (!apiResult) return null
-    return getResultByName(name, apiResult)
+    return <ErrorBoundary>{getResultByName(name, apiResult)}</ErrorBoundary>
   }, [apiResult, name])
 
   function beforeUpload(file: RcFile) {
