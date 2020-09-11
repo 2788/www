@@ -5,6 +5,7 @@ import Media from './Media'
 import Picture from './Picture'
 import File from './File'
 import Custom from './Custom'
+import Ocr from './Ocr'
 import style from './index.less'
 
 export default function PriceDetail() {
@@ -17,6 +18,7 @@ export default function PriceDetail() {
         <p className={style.alert}>选择 C1M1 的标准用户和高级用户，每月有 750 小时的免费额度</p>
         <Custom />
       </TabPane>
+      <TabPane value="5" tab="票证自动识别"><Ocr /></TabPane>
     </Tabs>
   )
 }
