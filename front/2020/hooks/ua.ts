@@ -9,6 +9,7 @@ export type Ua = {
   loaded?: boolean
   browser?: { name?: string, version?: string }
   os?: { name?: string, version?: string }
+  inMiniprogram?: boolean
 }
 
 export const UaContext = createContext<Ua>({})

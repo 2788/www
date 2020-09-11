@@ -81,6 +81,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <script dangerouslySetInnerHTML={{ __html: sensorsScriptContent }} />
           <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78944316-1"></script>
+          <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />

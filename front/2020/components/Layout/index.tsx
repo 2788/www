@@ -11,7 +11,7 @@ import { defaultTitle, titleSuffix } from 'constants/page'
 import { UaContext, useUa, Ua } from 'hooks/ua'
 import { pv } from 'utils/sensors'
 
-import ErrorBoundary from './ErrorBoundary'
+import ErrorBoundary from '../ErrorBoundary'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
