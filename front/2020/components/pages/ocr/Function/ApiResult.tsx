@@ -2,7 +2,7 @@
  * @file 内容审核“在此体验丰富功能”
  */
 
-import React, { useState, ReactNode } from 'react'
+import React, { useState, ReactNode, Fragment } from 'react'
 import { withLoading } from 'utils/loading'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 
@@ -54,9 +54,11 @@ export default function ApiResult({ result, request, response, error, loading }:
         <Radio value={ApiInfoType.Request}>Request</Radio>
         <Radio value={ApiInfoType.Response}>Response</Radio>
       </RadioGroup>
-      {resultView}
-      {requestView}
-      {responseView}
+      <div className={style.apiContent}>
+        {resultView}
+        {requestView}
+        {responseView}
+      </div>
     </div>
   )
 }
@@ -145,7 +147,7 @@ function ResultByCarBd({ response }: { response: any }) {
               val = items[item]
             }
           }
-          return <>{item}：{val} <br /></>
+          return <Fragment key={item}>{item}：{val} <br /></Fragment>
         })
       }
     </>
@@ -201,7 +203,7 @@ function ResultByBs({ response }: { response: any }) {
         Object.keys(bsObj).map((prop: string) => {
           if (items[prop]) {
             const val = items[prop].value ? items[prop].value : ''
-            return <>{(bsObj as any)[prop]}：{val}<br /></>
+            return <Fragment key={prop}>{(bsObj as any)[prop]}：{val}<br /></Fragment>
           }
           return null
         })
@@ -239,7 +241,9 @@ function ResultByNewCar({ response }: { response: any }) {
   return (
     <>
       {
-        Object.keys(items).map((item: string) => <>{items[item].chinese_key}：{items[item].words}<br /></>)
+        Object.keys(items).map(
+          (item: string) => <Fragment key={item}>{items[item].chinese_key}：{items[item].words}<br /></Fragment>
+        )
       }
     </>
   )
@@ -292,7 +296,7 @@ function ResultByCz({ response }: { response: any }) {
               val = items[item]
             }
           }
-          return <>{item}：{val} <br /></>
+          return <Fragment key={item}>{item}：{val} <br /></Fragment>
         })
       }
     </>

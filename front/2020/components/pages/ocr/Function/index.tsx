@@ -82,14 +82,10 @@ function MyPanel({ name, title }: PanelProps) {
   }, [apiResult, name])
 
   function beforeUpload(file: RcFile) {
-    const isLt5M = file.size / 1024 / 1024 < 5
+    const isLt5M = file.size <= 5 * 1024 * 1024
     if (!isLt5M) {
       Modal.info({
-        content: (
-          <>
-            上传的图片大小不能超过 5M
-          </>
-        ),
+        content: '上传的图片大小不能超过 5M',
         okText: '知道了'
       })
     }
