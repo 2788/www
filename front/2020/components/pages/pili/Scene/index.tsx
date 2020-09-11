@@ -17,7 +17,7 @@ import Scene, {
 import Customer17Icon from './images/customer-17.png'
 import CustomerBilibiliIcon from './images/customer-bilibili.png'
 import CustomerBlueIcon from './images/customer-blue.png'
-import CustomerPinganIcon from './images/customer-pingan.png'
+import CustomerChuangjiangIcon from './images/customer-chuangjiang.png'
 import CustomerTaquIcon from './images/customer-taqu.png'
 import CustomerTebaobaoIcon from './images/customer-tebaobao.png'
 import CustomerWeipaiIcon from './images/customer-weipai.png'
@@ -88,7 +88,7 @@ export default function PiliScene() {
           <p className={classnames(styles.sceneTitle, styles.client)}>客户案例</p>
           <SceneClientGroup>
             <SceneClientItem>
-              <img src={CustomerPinganIcon} className={styles.clientLogo} title="中国平安" alt="中国平安" />
+              <img src={CustomerChuangjiangIcon} className={styles.clientLogo} title="创匠科技" alt="创匠科技" />
             </SceneClientItem>
           </SceneClientGroup>
         </SceneBlock>
