@@ -5,7 +5,6 @@
 
 import { Industry, Solution, getIndustrySolution, isAvailable } from 'constants/solutions'
 
-import logoPingan from './images/logos/pingan.png'
 import logoCmb from './images/logos/cmb.png'
 import logoTaiping from './images/logos/taiping.png'
 import logoZhongxin from './images/logos/zhongxin.png'
@@ -74,7 +73,6 @@ type Case = {
 
 export const industryCasesMap: { [k in Industry]: Case[] } = {
   [Industry.Fin]: [
-    { name: '中国平安', logo: logoPingan },
     { name: '招商银行', logo: logoCmb },
     { name: '中国太平', logo: logoTaiping },
     { name: '中信银行', logo: logoZhongxin },
