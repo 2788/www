@@ -14,6 +14,7 @@ export type Props = {
   androidUrl: string
   iosUrl: string
   webUrl?: string
+  mpImgUrl?: string
 }
 
 export default function Demo(props: Props) {
@@ -24,7 +25,7 @@ export default function Demo(props: Props) {
     paddingBottom: '0'
   }
   return (
-    <Section title="体验 Demo" name="demo" style={isMobile ? mobileStyle : {}}>
+    <Section title="Demo 体验" name="demo" style={isMobile ? mobileStyle : {}}>
       {isMobile ? <ForMobile {...props} /> : <ForPc {...props} />}
     </Section>
   )

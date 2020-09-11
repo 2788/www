@@ -22,7 +22,7 @@ import styles from './style.less'
 
 export default function RtcScene() {
   return (
-    <Scene name="scene" title="应用场景">
+    <Scene name="scene" title="适用场景">
       <ScenePanel name="scene-tab-1" title="社交" verticalCenter>
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene1Img} />

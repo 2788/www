@@ -39,7 +39,7 @@ export function Advantages() {
 
 export default function AcceleratedNetwork() {
   return (
-    <Section header="自研 RTC 加速网络" title="加速网络" subtitle="自研边缘加速方案，实现全球信息实时共享" name="accelerated-network">
+    <Section title="核心优势" subtitle="自研边缘加速方案，实现全球信息实时共享" name="accelerated-network">
       <Advantages />
     </Section>
   )
