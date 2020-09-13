@@ -11,7 +11,7 @@ import { defaultTitle, titleSuffix } from 'constants/page'
 import { UaContext, useUa, Ua } from 'hooks/ua'
 import { pv } from 'utils/sensors'
 
-import ErrorBoundary from '../ErrorBoundary'
+import ErrorBoundary from './ErrorBoundary'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
@@ -37,6 +37,18 @@ export default function Layout({ title, keywords, description, children }: Props
   const isMobile = useIsMobile()
   const loaded = useLoaded()
   const uaParser = useUaParser()
+  // 是否是小程序环境
+  const [isMpEnv, setIsMpEnv] = useState(false)
+
+  useEffect(() => {
+    if (uaParser.getBrowser().name === 'WeChat') {
+      wx.miniProgram.getEnv(res => {
+        if (res.miniprogram) {
+          setIsMpEnv(true)
+        }
+      })
+    }
+  }, [uaParser])
 
   const keywordsMeta = keywords && (
     <meta name="keywords" content={keywords} />
@@ -48,6 +60,7 @@ export default function Layout({ title, keywords, description, children }: Props
 
   const uaValue: Ua = {
     isMobile,
+    isMpEnv,
     loaded,
     browser: uaParser.getBrowser(),
     os: uaParser.getOS(),
@@ -61,16 +74,17 @@ export default function Layout({ title, keywords, description, children }: Props
           <title>{title}</title>
           <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
           <link rel="shortcut icon" href="//qiniu.staticfile.org/favicon.ico" type="image/x-icon" />
+          <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
           {keywordsMeta}
           {descriptionMeta}
         </Head>
         <feedback.ModalProvider>
-          <Header />
+          {!isMpEnv && <Header />}
           <ErrorBoundary>
             {children}
           </ErrorBoundary>
-          <Footer />
-          <feedback.Entry />
+          {!isMpEnv && <Footer />}
+          {!isMpEnv && <feedback.Entry />}
           <feedback.Modal />
         </feedback.ModalProvider>
       </UserInfoProvider>

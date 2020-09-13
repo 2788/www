@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import { useRouter } from 'next/router'
 import Layout from 'components/Product/Layout'
 import { useBtns } from 'hooks/product-btn'
 import { urlForPrice } from 'utils/route'
@@ -22,6 +22,8 @@ import KodoCore from 'components/pages/kodo/Core'
 import KodoScene from 'components/pages/kodo/Scene'
 import KodoCase from 'components/pages/kodo/Case'
 import { useKodoPackage } from 'hooks/timer'
+import { useMp } from 'hooks/ua'
+import { MpPage } from 'constants/mp'
 
 import imgBanner from './images/banner.png'
 import style from './index.less'
@@ -31,9 +33,14 @@ function PageContent() {
   const showKodoPackage = useKodoPackage()
 
   const priceUrl = urlForPrice(Product.Kodo)
+  const isMp = useMp()
+
+  const useBtn = isMp
+    ? { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalKodo }) }
+    : { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true }
 
   const btns = useBtns(
-    { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true },
+    useBtn,
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
