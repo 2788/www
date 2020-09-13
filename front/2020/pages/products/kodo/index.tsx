@@ -3,7 +3,6 @@
  */
 
 import React from 'react'
-import { useRouter } from 'next/router'
 import Layout from 'components/Product/Layout'
 import { useBtns } from 'hooks/product-btn'
 import { urlForPrice } from 'utils/route'
