@@ -144,8 +144,6 @@ function PageContent() {
         <LinkGroup title="SDK 及工具">
           <LinkItem href="https://developer.qiniu.com/pili/sdk/3715/PLDroidMediaStreaming-overview">Android 推流端 SDK</LinkItem>
           <LinkItem href="https://developer.qiniu.com/pili/sdk/3778/PLMediaStreamingKit-overview">iOS 推流端 SDK</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk">Android 播放端 SDK</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk">iOS 播放端 SDK</LinkItem>
           <LinkItem href="https://developer.qiniu.com/pili/sdk/1220/server-sdk">服务端 SDK</LinkItem>
         </LinkGroup>
         <LinkGroup title="常见问题">

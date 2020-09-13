@@ -1,28 +1,26 @@
 @import '~utils/less/index.less';
 
 .figure {
-  display: inline-block;
+  text-align: center;
+  background-color: transparent !important;
 
-  .qrCode {
+  .qrCode, .mpCode {
     width: 220px;
     height: 220px;
+  }
+
+  .qrCode {
     padding: 10px;
   }
-}
 
-.figure + .figure {
-  margin-left: 368px;
-
-  .mobile({
-    // TODO 移动端适配
-    margin-left: 0;
-    margin-top: 24px;
-  });;
+  .desc {
+    margin-top: 16px;
+  }
 }
 
 .webDemo {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 44px;
 
   .link {
     color: #00AAE7;

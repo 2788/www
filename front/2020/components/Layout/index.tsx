@@ -16,6 +16,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
 import { Provider as UserInfoProvider } from '../UserInfo'
+import RegisterEntry from '../RegisterEntry'
 
 export type Props = {
   /** 页面 title */
@@ -85,6 +86,7 @@ export default function Layout({ title, keywords, description, children }: Props
           </ErrorBoundary>
           {!isMpEnv && <Footer />}
           {!isMpEnv && <feedback.Entry />}
+          <RegisterEntry />
           <feedback.Modal />
         </feedback.ModalProvider>
       </UserInfoProvider>

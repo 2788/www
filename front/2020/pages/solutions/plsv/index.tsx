@@ -60,8 +60,6 @@ function PageContent() {
         <LinkGroup title="SDK 及工具">
           <LinkItem href="https://developer.qiniu.com/pili/sdk/3734/android-short-video-sdk">Android 采集端 SDK</LinkItem>
           <LinkItem href="https://developer.qiniu.com/pili/sdk/3733/short-video-ios-sdk">iOS 采集端 SDK</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/1210/the-android-client-sdk">Android 播放端 SDK</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/pili/sdk/1211/ios-playback-end-the-sdk">iOS 播放端 SDK</LinkItem>
           <LinkItem href="https://developer.qiniu.com/pili/sdk/4164/windows-player-sdk">Windows 播放端 SDK</LinkItem>
         </LinkGroup>
         <LinkGroup title="其他">

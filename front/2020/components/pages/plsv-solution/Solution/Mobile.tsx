@@ -11,7 +11,6 @@ import Menu, { SubMenu } from 'components/UI/Menu'
 import SolutionIconOne from './solution-icon-one.svg'
 import SolutionIconTwo from './solution-icon-two.svg'
 import SolutionIconThree from './solution-icon-three.svg'
-import SolutionIconFour from './solution-icon-four.svg'
 import SolutionIconFive from './solution-icon-five.svg'
 
 import styles from './style.less'
@@ -101,33 +100,6 @@ export default function Mobile() {
                 title="智能多媒体服务"
               >
                 智能多媒体服务
-              </a>
-            </div>
-          </div>
-        </div>
-      </SubMenu>
-      <SubMenu
-        key="4"
-        title="极致播放体验"
-        mode="inline"
-        onTitleClick={({ key }: any) => {
-          handleSubMenusChange(key)
-        }}
-      >
-        <div className={styles.panel}>
-          <SolutionIconFour className={styles.icon} />
-          <div className={styles.content}>
-            <div className={styles.desc}>
-              提供免费的播放器 SDK，秒开 200 ms，包体小至 400 K，千万日活验证，给用户流畅无卡顿的视频体验。
-            </div>
-            <div className={styles.desc}>
-              相关文档：
-              <a
-                className={styles.link}
-                href="/products/player"
-                title="播放器 SDK"
-              >
-                播放器 SDK
               </a>
             </div>
           </div>
