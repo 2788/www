@@ -33,27 +33,15 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
     .filter(
       ({ pcOnly, mobileOnly, mpOnly }) => {
         if (mpOnly) {
-          if (isMp) {
-            return true
-          }
-
-          return false
+          return isMp
         }
 
         if (mobileOnly) {
-          if (isMobile) {
-            return true
-          }
-
-          return false
+          return isMobile
         }
 
         if (pcOnly) {
-          if (isPc) {
-            return true
-          }
-
-          return false
+          return isPc
         }
 
         return true

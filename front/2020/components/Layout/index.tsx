@@ -10,6 +10,7 @@ import { UAParser } from 'ua-parser-js'
 import { defaultTitle, titleSuffix } from 'constants/page'
 import { UaContext, useUa, Ua } from 'hooks/ua'
 import { pv } from 'utils/sensors'
+import { OverlayProvider, OverlaySlot } from 'components/Overlay'
 
 import ErrorBoundary from './ErrorBoundary'
 import Header from '../Header'
@@ -68,16 +69,19 @@ export default function Layout({ title, keywords, description, children }: Props
           {keywordsMeta}
           {descriptionMeta}
         </Head>
-        <feedback.ModalProvider>
-          {!isMp && <Header />}
-          <ErrorBoundary>
-            {children}
-          </ErrorBoundary>
-          {!isMp && <Footer />}
-          <RegisterEntry />
-          {!isMp && <feedback.Entry />}
-          <feedback.Modal />
-        </feedback.ModalProvider>
+        <OverlayProvider>
+          <feedback.ModalProvider>
+            {!isMp && <Header />}
+            <ErrorBoundary>
+              {children}
+            </ErrorBoundary>
+            {!isMp && <Footer />}
+            <RegisterEntry />
+            {!isMp && <feedback.Entry />}
+            <feedback.Modal />
+          </feedback.ModalProvider>
+          <OverlaySlot />
+        </OverlayProvider>
       </UserInfoProvider>
     </UaContext.Provider>
   )
