@@ -38,10 +38,12 @@ import MobileBanner2Icon from './_images/mobileHeaderBanner2.png'
 import MobileBanner3Icon from './_images/mobileHeaderBanner3.png'
 import MobileBanner4Icon from './_images/mobileHeaderBanner4.png'
 import MobileBanner5Icon from './_images/mobileHeaderBanner5.png'
-import Core1Icon from './_images/core1.svg'
-import Core2Icon from './_images/core2.svg'
-import Core3Icon from './_images/core3.svg'
-import Core4Icon from './_images/core4.svg'
+import YigouCoreIcon from './_images/core1.svg'
+import ChuanshuCoreIcon from './_images/core2.svg'
+import ShijueCoreIcon from './_images/core3.svg'
+import JiqiIcon from './_images/core4.svg'
+import ZhiboCoreIcon from './_images/core5.svg'
+import YunCoreIcon from './_images/core6.svg'
 
 function useBannerImg() {
   const webImgList = [Banner1Icon, Banner2Icon, Banner3Icon, Banner4Icon, Banner5Icon]
@@ -107,7 +109,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<Core1Icon className={styles.coreIcon} />}
+            icon={<YigouCoreIcon className={styles.coreIcon} />}
             title="异构数据湖"
           >
             <FeatureDesc>完全自主知识产权，可实现任意来源、任意规模、任意类型数据的全量获取、全量存储、多模式处理与全生命周期管理，助您在 DT 时代持续挖掘海量数据的无限价值。</FeatureDesc>
@@ -115,32 +117,53 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<Core2Icon className={styles.coreIcon} />}
-            title="数据传输"
-          >
-            <FeatureDesc>独家的 CDN 加速和质量监控体系，可实现全网一体化调度和优化，助您在性能和成本之间得到良好平衡。面向不同音视频数据特别优化的传输网络让数据实现真正闭环。</FeatureDesc>
-          </FeatureItem>
-        </FeatureGroup>
-        <FeatureGroup>
-          <FeatureItem
-            pos="left-right"
-            align="left"
-            icon={<Core3Icon className={styles.coreIcon} />}
+            icon={<ShijueCoreIcon className={styles.coreIcon} />}
             title="视觉数据处理"
           >
             <FeatureDesc>
               独创的 AI 产品体系，以统一 API 提供服务，零运维、高可用、高性能，不仅提供图片处理、音视频转码等基础功能，基于海量数据深度学习的内容审核和 AI 分析，助您更好理解数据。
             </FeatureDesc>
           </FeatureItem>
-
+        </FeatureGroup>
+        <FeatureGroup>
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<Core4Icon className={styles.coreIcon} />}
+            icon={<JiqiIcon className={styles.coreIcon} />}
             title="机器数据处理"
           >
             <FeatureDesc>
               数据科技赋能是产业升级的核心，然而大量数据却未被妥善收集和分析应用，Pandora 专注于格式多样、实时生产的海量机器数据，让您不仅读懂机器，更能了解顾客的想法，成为行业的领先者。
+            </FeatureDesc>
+          </FeatureItem>
+          <FeatureItem
+            pos="left-right"
+            align="left"
+            icon={<ZhiboCoreIcon className={styles.coreIcon} />}
+            title="互动直播"
+          >
+            <FeatureDesc>
+              全新一站式“多路音视频互动”解决方案，实现连麦、直播、美颜滤镜与IM完美融合，通过七牛自主研发的 QRTC SDK 打造跨平台一对多、多对多的超清互动直播场景。
+            </FeatureDesc>
+          </FeatureItem>
+        </FeatureGroup>
+        <FeatureGroup>
+          <FeatureItem
+            pos="left-right"
+            align="left"
+            icon={<ChuanshuCoreIcon className={styles.coreIcon} />}
+            title="数据传输"
+          >
+            <FeatureDesc>独家的 CDN 加速和质量监控体系，可实现全网一体化调度和优化，助您在性能和成本之间得到良好平衡。面向不同音视频数据特别优化的传输网络让数据实现真正闭环。</FeatureDesc>
+          </FeatureItem>
+          <FeatureItem
+            pos="left-right"
+            align="left"
+            icon={<YunCoreIcon className={styles.coreIcon} />}
+            title="云主机服务"
+          >
+            <FeatureDesc>
+              云主机秒级创建，海量计算资源瞬间获得，完美相应业务需求，随时调整配置，多种计费模式灵活选择，无缝衔接丰富产品，持续为业务发展提供完整的计算、储存、安全等解决方案。
             </FeatureDesc>
           </FeatureItem>
         </FeatureGroup>

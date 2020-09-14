@@ -216,3 +216,25 @@
   width: 100%;
   border-bottom: 1px solid @grey-3;
 }
+
+.newsLink {
+  display: inline-block;
+  margin-top: 44px;
+  font-size: 20px;
+  .mobile({
+    position: relative;
+    top: -25px;
+    margin-top: 0px;
+    font-size: 14px;
+  });
+
+  .linkIcon {
+    margin-top: -2px;
+    margin-left: 16px;
+    .mobile({
+      width: 20px;
+      height: 20px;
+      margin-left: 8px;
+    });
+  }
+}
