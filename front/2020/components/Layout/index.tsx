@@ -89,6 +89,23 @@ function useIsMp() {
   const [isMp, setIsMp] = useState(false)
 
   useEffect(() => {
+    // __wxjs_environment 同步有可能为空，则应该在 WeixinJSBridgeReady 中判断，或者使用 getEnv
+    // eslint-disable-next-line no-underscore-dangle
+    if ((window as any).__wxjs_environment === 'miniprogram') {
+      setIsMp(true)
+      return
+    }
+
+    const mainVersion = uaParser.getBrowser().version?.split('.')[0] || ''
+
+    // 从微信 [7.0.0] 开始，可以通过判断 [userAgent] 中包含 [miniProgram] 字样来判断小程序 web-view 环境。
+    if (+mainVersion >= 7) {
+      if (uaParser.getUA().indexOf('miniProgram') > -1) {
+        setIsMp(true)
+        return
+      }
+    }
+
     if (uaParser.getBrowser().name === 'WeChat') {
       wx.miniProgram.getEnv(res => {
         if (res.miniprogram) {
