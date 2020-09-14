@@ -36,20 +36,9 @@ export default function Layout({ title, keywords, description, children }: Props
   // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provider 覆盖手动值
   const ua = useUa()
   const isMobile = useIsMobile()
+  const isMp = useIsMp()
   const loaded = useLoaded()
   const uaParser = useUaParser()
-  // 是否是小程序环境
-  const [isMpEnv, setIsMpEnv] = useState(false)
-
-  useEffect(() => {
-    if (uaParser.getBrowser().name === 'WeChat') {
-      wx.miniProgram.getEnv(res => {
-        if (res.miniprogram) {
-          setIsMpEnv(true)
-        }
-      })
-    }
-  }, [uaParser])
 
   const keywordsMeta = keywords && (
     <meta name="keywords" content={keywords} />
@@ -61,7 +50,7 @@ export default function Layout({ title, keywords, description, children }: Props
 
   const uaValue: Ua = {
     isMobile,
-    isMpEnv,
+    isMp,
     loaded,
     browser: uaParser.getBrowser(),
     os: uaParser.getOS(),
@@ -80,18 +69,36 @@ export default function Layout({ title, keywords, description, children }: Props
           {descriptionMeta}
         </Head>
         <feedback.ModalProvider>
-          {!isMpEnv && <Header />}
+          {!isMp && <Header />}
           <ErrorBoundary>
             {children}
           </ErrorBoundary>
-          {!isMpEnv && <Footer />}
-          {!isMpEnv && <feedback.Entry />}
+          {!isMp && <Footer />}
           <RegisterEntry />
+          {!isMp && <feedback.Entry />}
           <feedback.Modal />
         </feedback.ModalProvider>
       </UserInfoProvider>
     </UaContext.Provider>
   )
+}
+
+function useIsMp() {
+  // 是否是小程序环境
+  const uaParser = useUaParser()
+  const [isMp, setIsMp] = useState(false)
+
+  useEffect(() => {
+    if (uaParser.getBrowser().name === 'WeChat') {
+      wx.miniProgram.getEnv(res => {
+        if (res.miniprogram) {
+          setIsMp(true)
+        }
+      })
+    }
+  }, [uaParser])
+
+  return isMp
 }
 
 function useIsMobile() {

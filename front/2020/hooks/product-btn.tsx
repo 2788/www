@@ -12,14 +12,14 @@ export type BtnOptions = {
   type?: Props['type'],
   children: ReactNode,
   href: string,
-  showIn?: Array<'pc' | 'mobile' | 'mp'>
+  mpOnly?: boolean // 是否仅小程序，默认 false
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
 } | {
   type?: Props['type'],
   children: ReactNode,
   onClick: () => void,
-  showIn?: Array<'pc' | 'mobile' | 'mp'>
+  mpOnly?: boolean // 是否仅小程序，默认 false
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
 }
@@ -31,20 +31,16 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
 
   const [firstBtnProps, ...otherBtnsProps] = [firstBtn, ...otherBtns]
     .filter(
-      ({ showIn }) => {
-        if (!showIn) {
-          return true
-        }
-
+      ({ pcOnly, mobileOnly, mpOnly }) => {
         if (isMp) {
-          return showIn.indexOf('mp') > -1
+          return mpOnly
         }
 
         if (isMobile) {
-          return showIn.indexOf('mobile') > -1
+          return mobileOnly
         }
 
-        return true
+        return pcOnly
       }
     )
     .filter(
@@ -52,7 +48,7 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
     ).filter(
       ({ mobileOnly }) => !(mobileOnly && isPc) // PC 端不展示 mobileOnly 的项
     ).map(
-      ({ pcOnly, mobileOnly, showIn, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
+      ({ pcOnly, mobileOnly, mpOnly, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
     )
 
   const bannerBtnViews = [

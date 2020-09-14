@@ -26,7 +26,6 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 import { MpPage } from 'constants/mp'
-import { useMp } from 'hooks/ua'
 
 import AnXing from './_images/customer-anxing.png'
 import HuangYou from './_images/customer-huangyou.png'
@@ -50,15 +49,11 @@ import Advantage6Icon from './_images/advantage6.svg'
 function PageContent() {
 
   const priceUrl = urlForPrice(Product.Cdn)
-  const isMp = useMp()
-
-  const useBtn = isMp
-    ? { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalQCDN }) }
-    : { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true }
 
   const btns = useBtns(
-    useBtn,
-    { href: priceUrl, children: '产品价格', mobileOnly: true }
+    { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalQCDN }), mpOnly: true },
+    { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
+    { href: priceUrl, children: '产品价格' }
   )
 
   return (
