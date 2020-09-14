@@ -102,7 +102,8 @@ function MyPanel({ name, title }: PanelProps) {
             <div className={style.img} style={{ backgroundImage: `url(${imgUrl})` }}></div>
           </div>
         </div>
-        <Upload name="file" accept={imgFilter} beforeUpload={e => beforeUpload(e)} showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)}>
+        {/** 使用customRequest来覆盖默认的上传行为，防止upload每次上传时出现刷新页面的行为 */}
+        <Upload name="file" accept={imgFilter} beforeUpload={e => beforeUpload(e)} showUploadList={false} className={style.upload} onChange={info => setImgData(info.file.originFileObj)} customRequest={() => false}>
           <Button type="hollow" className={style.button} withBorder>上传图片</Button>
         </Upload>
       </SceneBlock>
