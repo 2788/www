@@ -7,6 +7,7 @@ import { process as processImg, scaleBy, withFormat } from 'utils/img'
 import { Card as UICard, Img, Content, Title, Desc } from 'components/UI/Card'
 import Section from 'components/pages/index/Section'
 import Link from 'components/Link'
+import ArrowLink from 'components/Product/Section/ArrowLink'
 
 import { news } from './news'
 
@@ -14,7 +15,6 @@ import styles from './style.less'
 
 import WeiboIcon from './images/sina_weibo.svg'
 import WechatIcon from './images/wechat.svg'
-import MoreIcon from './images/more.svg'
 
 interface SocialProps {
   wxUrl: string
@@ -91,10 +91,9 @@ export default function News() {
           ))
         }
       </Carousel>
-      <Link className={styles.newsLink} blue href="https://blog.qiniu.com/archives/all">
+      <ArrowLink href="https://blog.qiniu.com/archives/all">
         更多资讯
-        <MoreIcon className={styles.linkIcon} />
-      </Link>
+      </ArrowLink>
     </Section>
   )
 }
