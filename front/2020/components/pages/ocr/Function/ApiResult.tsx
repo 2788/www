@@ -88,19 +88,19 @@ function ResultByIdCard({ response }: { response: any }) {
   if (res.side === 'F') {
     return (
       <>
-        姓名：{res.name && res.name}<br />
-        性别：{res.gender && res.gender}<br />
-        民族：{res.nation && res.nation}<br />
+        姓名：{res.name}<br />
+        性别：{res.gender}<br />
+        民族：{res.nation}<br />
         出生：{res.birthdate && res.birthdate.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1年$2月$3日')}<br />
-        住址：{res.address && res.address}<br />
-        身份证号码：{res.idno && res.idno}
+        住址：{res.address}<br />
+        身份证号码：{res.idno}
       </>
     )
   }
   return (
     <>
       有效期：{res.validthru && res.validthru.replace(/^(\d{4})(\d{2})(\d{2})-(\d{4})(\d{2})(\d{2})$/, '$1年$2月$3日至$4年$5月$6日')}<br />
-      签发机关：{res.issuedby && res.issuedby}
+      签发机关：{res.issuedby}
     </>
   )
 }
