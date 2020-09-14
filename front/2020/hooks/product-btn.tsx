@@ -32,22 +32,34 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
   const [firstBtnProps, ...otherBtnsProps] = [firstBtn, ...otherBtns]
     .filter(
       ({ pcOnly, mobileOnly, mpOnly }) => {
-        if (isMp) {
-          return mpOnly
+        if (mpOnly) {
+          if (isMp) {
+            return true
+          }
+
+          return false
         }
 
-        if (isMobile) {
-          return mobileOnly
+        if (mobileOnly) {
+          if (isMobile) {
+            return true
+          }
+
+          return false
         }
 
-        return pcOnly
+        if (pcOnly) {
+          if (isPc) {
+            return true
+          }
+
+          return false
+        }
+
+        return true
       }
     )
-    .filter(
-      ({ pcOnly }) => !(pcOnly && isMobile) // 移动端不展示 pcOnly 的项
-    ).filter(
-      ({ mobileOnly }) => !(mobileOnly && isPc) // PC 端不展示 mobileOnly 的项
-    ).map(
+    .map(
       ({ pcOnly, mobileOnly, mpOnly, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
     )
 
