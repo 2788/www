@@ -40,7 +40,7 @@ export function OverlaySlot() {
             return null
           }
 
-          if (context.entry === null) {
+          if (context.entry == null) {
             return null
           }
 
