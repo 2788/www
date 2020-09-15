@@ -6,6 +6,7 @@ import { createContext, useContext } from 'react'
 
 export type Ua = {
   isMobile?: boolean
+  isMp?: boolean
   loaded?: boolean
   browser?: { name?: string, version?: string }
   os?: { name?: string, version?: string }
@@ -15,6 +16,10 @@ export const UaContext = createContext<Ua>({})
 
 export function useUa() {
   return useContext(UaContext)
+}
+
+export function useMp() {
+  return useUa().isMp || false
 }
 
 /** 获取是否移动端信息 */

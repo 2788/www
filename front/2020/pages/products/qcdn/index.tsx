@@ -25,6 +25,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
+import { MpPage } from 'constants/mp'
 
 import AnXing from './_images/customer-anxing.png'
 import HuangYou from './_images/customer-huangyou.png'
@@ -50,6 +51,7 @@ function PageContent() {
   const priceUrl = urlForPrice(Product.Cdn)
 
   const btns = useBtns(
+    { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalQCDN }), mpOnly: true },
     { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格' }
   )

@@ -4,6 +4,8 @@
  */
 
 import React, { ReactNode } from 'react'
+import { useMp } from 'hooks/ua'
+
 import UIButton, { Props as UIButtonProps } from '../../UI/Button'
 import style from './style.less'
 
@@ -14,6 +16,10 @@ export type Props = {
 }
 
 export default function UsageGuide({ title, description, children }: Props) {
+  if (useMp()) {
+    return null
+  }
+
   return (
     <div className={style.wrapper}>
       <div className={style.content}>
@@ -36,5 +42,6 @@ export function Button(props: ButtonProps) {
     props.className,
     style.button
   ].filter(Boolean).join(' ')
+
   return <UIButton {...props} className={className} />
 }

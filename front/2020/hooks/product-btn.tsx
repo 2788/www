@@ -6,18 +6,20 @@
 import React, { ReactNode } from 'react'
 import Button, { Props } from 'components/UI/Button'
 import { Button as NavButton } from 'components/Product/Navigator'
-import { useMobile } from './ua'
+import { useMobile, useMp } from './ua'
 
 export type BtnOptions = {
   type?: Props['type'],
   children: ReactNode,
   href: string,
+  mpOnly?: boolean // 是否仅小程序，默认 false
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
 } | {
   type?: Props['type'],
   children: ReactNode,
   onClick: () => void,
+  mpOnly?: boolean // 是否仅小程序，默认 false
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
 }
@@ -25,14 +27,29 @@ export type BtnOptions = {
 export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
   const isMobile = useMobile()
   const isPc = !isMobile
+  const isMp = useMp()
 
-  const [firstBtnProps, ...otherBtnsProps] = [firstBtn, ...otherBtns].filter(
-    ({ pcOnly }) => !(pcOnly && isMobile) // 移动端不展示 pcOnly 的项
-  ).filter(
-    ({ mobileOnly }) => !(mobileOnly && isPc) // PC 端不展示 mobileOnly 的项
-  ).map(
-    ({ pcOnly, mobileOnly, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
-  )
+  const [firstBtnProps, ...otherBtnsProps] = [firstBtn, ...otherBtns]
+    .filter(
+      ({ pcOnly, mobileOnly, mpOnly }) => {
+        if (mpOnly) {
+          return isMp
+        }
+
+        if (mobileOnly) {
+          return isMobile
+        }
+
+        if (pcOnly) {
+          return isPc
+        }
+
+        return true
+      }
+    )
+    .map(
+      ({ pcOnly, mobileOnly, mpOnly, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
+    )
 
   const bannerBtnViews = [
     firstBtnProps && <Button key={0} {...firstBtnProps} />,
