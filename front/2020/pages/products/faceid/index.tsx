@@ -34,7 +34,7 @@ function PageContent() {
 
   const btns = useBtns(
     { href: 'https://developer.qiniu.com/dora/api/6699/facecompare', children: '使用文档' },
-    { href: 'https://jinshuju.net/f/fgideP', children: '申请开通' },
+    { href: 'https://portal.qiniu.com/faceid', children: '立即使用' },
     { href: 'https://marketing.qiniu.com/activity/activity-faceid?entry=product-faceid&ref=www.qiniu.com', children: '优惠套餐', pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
@@ -104,7 +104,7 @@ function PageContent() {
       </LinkGroups>
 
       <UsageGuide title="注册即可免费试用人脸核验服务">
-        <UGButton href="https://jinshuju.net/f/fgideP">申请开通</UGButton>
+        <UGButton href="https://portal.qiniu.com/faceid">立即使用</UGButton>
       </UsageGuide>
     </>
   )
