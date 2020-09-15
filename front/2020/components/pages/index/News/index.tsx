@@ -7,6 +7,7 @@ import { process as processImg, scaleBy, withFormat } from 'utils/img'
 import { Card as UICard, Img, Content, Title, Desc } from 'components/UI/Card'
 import Section from 'components/pages/index/Section'
 import Link from 'components/Link'
+import ArrowLink from 'components/Product/Section/ArrowLink'
 
 import { news } from './news'
 
@@ -90,6 +91,9 @@ export default function News() {
           ))
         }
       </Carousel>
+      <ArrowLink href="https://blog.qiniu.com/archives/all">
+        更多资讯
+      </ArrowLink>
     </Section>
   )
 }

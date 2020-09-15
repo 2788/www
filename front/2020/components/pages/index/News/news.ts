@@ -8,7 +8,7 @@ import { StoryProps } from '.'
 import imgStory1 from './images/stories/1.png'
 import imgStory2 from './images/stories/2.jpg'
 import imgStory3 from './images/stories/3.png'
-import imgStory4 from './images/stories/4.png'
+import imgStory4 from './images/stories/4.jpg'
 
 export const weiboLink = ''
 
@@ -23,11 +23,11 @@ export const news: StoryProps[] = [
   },
   {
     imgUrl: imgStory2,
-    title: '七牛云完成华为 TaiShan 服务器兼容性认证，加速“机器数据分析”国产化替代',
-    desc: '近日，七牛云机器数据分析平台 Pandora 以高效安全稳定的运行结果和优秀的兼容性，正式通过华为 TaiShan 服务器兼容性认证。',
-    date: '2020-07-14',
-    link: 'https://blog.qiniu.com/archives/8901?ref=www.qiniu.com',
-    wxUrl: 'https://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&mid=2652197799&idx=1&sn=2a3c51a73e9d28cdcce96fdac1b71502&chksm=bd0165328a76ec248049ac3e15e0b4bd7d4973b45e8dd4c47e86247d2b01e560d0a34b9e142c&token=1786778896&lang=zh_CN#rd'
+    title: '七牛云视频监控：贝鲁特爆炸警示录，安全生产容不得「意外火花」',
+    desc: '「黎巴嫩贝鲁特重大爆炸事件，再次给我们敲响了警钟。」8 月 5 日，国务院安委会办公室、应急管理部召开全国安全生产专题视频会议，深刻吸取黎巴嫩贝鲁特重大爆炸事件教训。',
+    date: '2020-09-02',
+    link: 'https://blog.qiniu.com/archives/8923?ref=www.qiniu.com',
+    wxUrl: 'https://mp.weixin.qq.com/s/0OUhXCdbed-eVdZ4E0lJcA'
   },
   {
     imgUrl: imgStory3,
@@ -39,10 +39,10 @@ export const news: StoryProps[] = [
   },
   {
     imgUrl: imgStory4,
-    title: '七牛云联手开泰银行，加速等保 2.0 合规落地',
-    desc: '随着中国银行业不断的发展，新的监管审计需求还会不断增多，对于银行而言监管审计等挑战也会不断升级，七牛云将会进一步深耕数据分析，解决银行机构的数据分析难题。',
-    date: '2020-07-13',
-    link: 'https://blog.qiniu.com/archives/8902?ref=www.qiniu.com',
-    wxUrl: 'https://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&mid=2652197743&idx=1&sn=d0c21e0747347b4550bd7fdcb6abba56&chksm=bd0165fa8a76ecec3af3ae67c4ff2ca5fafb5ac333f2a5c826f35af893789c82537adf08474e&token=911446648&lang=zh_CN#rd'
+    title: '星芽 X 七牛云：全民直播时代，一个 ID 解决所有技术问题',
+    desc: '随着移动互联网的高速发展，直播几乎渗透到我们生活的每个角落。疫情期间，直播更是成为人们与外界沟通的重要桥梁。',
+    date: '2020-08-28',
+    link: 'https://blog.qiniu.com/archives/8921?ref=www.qiniu.com',
+    wxUrl: 'https://mp.weixin.qq.com/s/y5aNorHPRJIPwQT-r--n3A'
   }
 ]
