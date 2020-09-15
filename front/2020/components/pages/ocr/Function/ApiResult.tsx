@@ -183,7 +183,7 @@ function ResultByBs({ response }: { response: any }) {
         content = '请求超时'
         break
       case 10005:
-        content = 'OCR 内部错误'
+        content = '出错了，请尝试其他图片'
         break
       case 10006:
         content = '未知错误'
@@ -226,7 +226,7 @@ function ResultByNewCar({ response }: { response: any }) {
         content = '系统正忙'
         break
       case 10005:
-        content = '参数错误'
+        content = '出错了，请尝试其他图片'
         break
       default:
         content = '未知错误'

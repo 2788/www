@@ -32,7 +32,7 @@ type IdCardResponse = {
 }
 
 export async function getMesgByIdCard(options: ImageOptions): Promise<IdCardResponse> {
-  const response: IdCardResponse = await post(`${idcardPrefix}${pathMap[OcrDemo.IdCard]}`, options)
+  const response: IdCardResponse = await post(`${idcardPrefix}${pathMap[OcrDemo.IdCard]}`, options).catch(resCatch)
   return response
 }
 
@@ -43,7 +43,7 @@ type CarBdResponse = {
 }
 
 export async function getMesgByCarBd(options: ImageOptions): Promise<CarBdResponse> {
-  const response: CarBdResponse = await post(`${carbdPrefix}${pathMap[OcrDemo.CarBd]}`, options)
+  const response: CarBdResponse = await post(`${carbdPrefix}${pathMap[OcrDemo.CarBd]}`, options).catch(resCatch)
   return response
 }
 
@@ -54,7 +54,7 @@ type BsResponse = {
 }
 
 export async function getMesgByBs(options: ImageOptions): Promise<BsResponse> {
-  const response: BsResponse = await post(`${bsPrefix}${pathMap[OcrDemo.Bs]}`, options)
+  const response: BsResponse = await post(`${bsPrefix}${pathMap[OcrDemo.Bs]}`, options).catch(resCatch)
   return response
 }
 
@@ -65,7 +65,7 @@ type NewCarResponse = {
 }
 
 export async function getMesgByNewCar(options: ImageOptions): Promise<NewCarResponse> {
-  const response: NewCarResponse = await post(`${newcarPrefix}${pathMap[OcrDemo.NewCar]}`, options)
+  const response: NewCarResponse = await post(`${newcarPrefix}${pathMap[OcrDemo.NewCar]}`, options).catch(resCatch)
   return response
 }
 
@@ -76,8 +76,15 @@ type CzResponse = {
 }
 
 export async function getMesgByCz(options: ImageOptions): Promise<CzResponse> {
-  const response: CzResponse = await post(`${czPrefix}${pathMap[OcrDemo.Cz]}`, options)
+  const response: CzResponse = await post(`${czPrefix}${pathMap[OcrDemo.Cz]}`, options).catch(resCatch)
   return response
+}
+
+function resCatch(e: any) {
+  if (e.response) {
+    return e.response.data
+  }
+  throw e
 }
 
 export function getApiByName(name: OcrDemo) {
