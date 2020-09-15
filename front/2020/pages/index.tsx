@@ -143,7 +143,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
             title="互动直播"
           >
             <FeatureDesc>
-              全新一站式“多路音视频互动”解决方案，实现连麦、直播、美颜滤镜与IM完美融合，通过七牛自主研发的 QRTC SDK 打造跨平台一对多、多对多的超清互动直播场景。
+              全新一站式“多路音视频互动”解决方案，实现连麦、直播、美颜滤镜与 IM 完美融合，通过七牛自主研发的 QRTC SDK 打造跨平台一对多、多对多的超清互动直播场景。
             </FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
