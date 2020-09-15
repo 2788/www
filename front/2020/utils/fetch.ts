@@ -19,22 +19,32 @@ export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
     }
   })
 
-  if (!fetched.ok) {
-    throw new Error(`Fetch failed with status ${fetched.status}.`)
-  }
-
   const body = await fetched.text()
 
+  if (!fetched.ok) {
+    const e = new Error(`Fetch failed with status ${fetched.status}.`)
+    let data: any = null
+    try {
+      data = parseBody(body)
+    } catch { /** do nothing */ }
+    const response = { data };
+    (e as any).response = response
+    throw e
+  }
+
+  try {
+    return parseBody(body)
+  } catch (e) {
+    throw new Error('Fetch failed with invalid response.')
+  }
+}
+
+function parseBody(body: string) {
   // 兼容 body 为空的情况
   if (!body.trim()) {
     return null
   }
-
-  try {
-    return JSON.parse(body)
-  } catch (e) {
-    throw new Error('Fetch failed with invalid response.')
-  }
+  return JSON.parse(body)
 }
 
 export function get(url: string, params?: UrlParams, init?: RequestInit) {

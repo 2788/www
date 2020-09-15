@@ -39,7 +39,9 @@ export enum Product {
   /** 视频监控 */
   Qvs = 'qvs',
   /** Open API */
-  OpenAPI = 'openapi'
+  OpenAPI = 'openapi',
+  /** 票证自动识别（OCR） */
+  Ocr = 'ocr'
 }
 
 // TODO: 这个再核对一遍
@@ -62,7 +64,8 @@ export const nameMap = {
   [Product.Insight]: '智能日志管理平台',
   [Product.Express]: '机器数据分析平台 Pandora',
   [Product.Qvs]: '视频监控 QVS',
-  [Product.OpenAPI]: 'Open API'
+  [Product.OpenAPI]: 'Open API',
+  [Product.Ocr]: '票证自动识别 OCR'
 } as const
 
 export const urlMap = {
@@ -83,7 +86,8 @@ export const urlMap = {
   [Product.Insight]: '/products/insight',
   [Product.Express]: '/products/pandora',
   [Product.Qvs]: '/products/qvs',
-  [Product.OpenAPI]: '/products/openapi'
+  [Product.OpenAPI]: '/products/openapi',
+  [Product.Ocr]: '/products/ocr'
 } as const
 
 export const priceUrlMap = {
@@ -104,7 +108,8 @@ export const priceUrlMap = {
   [Product.Insight]: null,
   [Product.Express]: null,
   [Product.Qvs]: null,
-  [Product.OpenAPI]: '/prices/openapi'
+  [Product.OpenAPI]: '/prices/openapi',
+  [Product.Ocr]: null
 } as const
 
 export const descMap = {
@@ -129,7 +134,8 @@ export const descMap = {
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
   [Product.Express]: '助力企业探索数据、创造价值、预见未来',
   // TODO 需要加入到顶部导航再补充
-  [Product.OpenAPI]: ''
+  [Product.OpenAPI]: '',
+  [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题'
 } as const
 
 export enum Category {
@@ -154,6 +160,7 @@ export const categoryVideo = [
   Product.Dora,
   Product.Censor,
   Product.FaceID,
+  Product.Ocr,
   Product.Pili,
   Product.Rtn,
   Product.Plsv,
