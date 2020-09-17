@@ -158,8 +158,7 @@ export const categoryService = [
   Product.Ssl,
   Product.Pili,
   Product.Qvm,
-  Product.Sms,
-  Product.Storage
+  Product.Sms
 ] as const
 
 /** 智能视频 */
