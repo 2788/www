@@ -19,6 +19,20 @@ export function useDropdown() {
   return useContext(DropdownContext)
 }
 
+export type GetContainer = () => HTMLElement
+
+export const DropdownContainerContext = createContext<GetContainer | undefined>(undefined)
+
+export function DropdownContainerProvider(
+  { getContainer, children }: PropsWithChildren<{ getContainer: GetContainer }>
+) {
+  return (
+    <DropdownContainerContext.Provider value={getContainer}>
+      {children}
+    </DropdownContainerContext.Provider>
+  )
+}
+
 // 给 Dropdown 增加类似 debounce 效果，防止滑过等误开其他 Dropdown
 export default function Dropdown(props: DropdownProps & { delay?: number }) {
   const { visible: _visible, onVisibleChange: _onVisibleChange, delay = 50, ...rest } = props
@@ -73,9 +87,11 @@ export default function Dropdown(props: DropdownProps & { delay?: number }) {
     })
     : props.children
 
+  const getContainer = useContext(DropdownContainerContext)
+
   return (
     <DropdownContext.Provider value={{ open: () => setVisible(true), close: () => setVisible(false) }}>
-      <RcDropdown onVisibleChange={onVisibleChange} visible={visible} {...rest}>
+      <RcDropdown onVisibleChange={onVisibleChange} visible={visible} getPopupContainer={getContainer} {...rest}>
         {children}
       </RcDropdown>
     </DropdownContext.Provider>

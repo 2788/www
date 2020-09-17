@@ -7,10 +7,12 @@ import classnames from 'classnames'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
+import { isBrowser } from 'utils'
 import { checkInSite } from 'utils/route'
+import { host } from 'constants/env'
 
-import sourceUrls from './source-url'
 import style from './index.less'
+import sourceUrls from './source-url'
 
 export type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
   blue?: boolean
@@ -35,18 +37,25 @@ export default function Link({ href, className, blue, children, ...others }: Pro
   }
 
   const checked = checkInSite(href)
-  if (checked.inSite) {
-    // NextLink 只适用于指向站内的 page，每个 page 会生成对应的 pagename.js 并 prefetch
-    // 目标页面是被镜像回源到老官网的话，没有对应的 js，prefetch 会报错
-    const shouldNotPrefetch = sourceUrls.some(url => url.test(checked.path))
-    // https://github.com/vercel/next.js/blob/master/errors/prefetch-true-deprecated.md
-    const prefetchProps = shouldNotPrefetch ? { prefetch: false } : {}
-    return (
-      <NextLink {...prefetchProps} href={checked.path}>
-        <a className={classname} {...others}>{children}</a>
-      </NextLink>
-    )
+  if (!checked.inSite) {
+    // 站外链接默认新页面打开
+    return <a className={classname} target="_blank" rel="noopener" href={href} {...others}>{children}</a>
   }
-  // 站外链接默认新页面打开
-  return <a className={classname} target="_blank" rel="noopener" href={href} {...others}>{children}</a>
+
+  // 当前内容嵌入其他站点时走此逻辑
+  if (isBrowser() && href != null && new URL(host).host !== window.location.host) {
+    href = new URL(href, host).href
+    return <a className={classname} href={href} {...others}>{children}</a>
+  }
+
+  // NextLink 只适用于指向站内的 page，每个 page 会生成对应的 pagename.js 并 prefetch
+  // 目标页面是被镜像回源到老官网的话，没有对应的 js，prefetch 会报错
+  const shouldNotPrefetch = sourceUrls.some(url => url.test(checked.path))
+  // https://github.com/vercel/next.js/blob/master/errors/prefetch-true-deprecated.md
+  const prefetchProps = shouldNotPrefetch ? { prefetch: false } : {}
+  return (
+    <NextLink {...prefetchProps} href={checked.path}>
+      <a className={classname} {...others}>{children}</a>
+    </NextLink>
+  )
 }

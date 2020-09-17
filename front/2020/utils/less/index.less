@@ -164,3 +164,30 @@
     }
   })
 }
+
+// 运行环境，预期所有的组件内容都会由一个 context 包裹
+// 在普通页面中，body 即该 context；对于嵌入到其他站点的内容，单独构造一个 context
+.context() {
+  line-height: 1.5715;
+  color: @grey-7;
+  font-size: 14px;
+  font-family: @font-family;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.25s;
+
+    &:hover {
+      // 这边跟设计师确认，页面上链接基本有两种：
+      // 1. 黑字，hover 变蓝（无下划线）
+      // 2. 白色或蓝色字，hover 加下划线
+      // 其中 1 是主要的，因此这里全局设置下
+      color: @blue-6;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+}

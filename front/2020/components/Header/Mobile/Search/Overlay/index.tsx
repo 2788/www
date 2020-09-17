@@ -30,7 +30,7 @@ export default function Overlay() {
         onSubmit={handleKeywordSubmit}
         autoComplete="off"
       >
-        <SearchIcon />
+        <SearchIcon className={style.icon} />
         <input
           className={style.input}
           placeholder="请输入要搜索的关键字"

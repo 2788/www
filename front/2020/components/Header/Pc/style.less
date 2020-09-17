@@ -18,11 +18,19 @@
   }
 
   .logo {
-    display: inline-block;
+    display: flex;
     margin-right: 26px;
   }
 
   .space {
     flex: 3 3 0;
+  }
+
+  input, button {
+    border: none;
+    background: none;
+    &:focus {
+      outline: none;
+    }
   }
 }

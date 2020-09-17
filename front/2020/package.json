@@ -8,7 +8,8 @@
     "dev": "next",
     "clean": "rm -rf .next out",
     "build:sitemap": "node sitemap.js",
-    "build": "npm run clean && next build && next export && npm run build:sitemap",
+    "build:externals": "node externals.js",
+    "build": "npm run clean && next build && next export && npm run build:sitemap && npm run build:externals",
     "start": "next start",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
     "test": "jest --coverage",
@@ -65,6 +66,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^6.0.0",
+    "fs-extra": "^9.0.1",
     "jest": "^26.2.2",
     "next-global-less": "^0.0.3",
     "nextjs-sitemap-generator": "^1.0.0",
@@ -75,7 +77,8 @@
     "ts-jest": "^26.1.4",
     "typescript": "3.7.3",
     "url-loader": "^4.1.0",
-    "walk": "^2.3.14"
+    "walk": "^2.3.14",
+    "webpack-manifest-plugin": "^2.2.0"
   },
   "engines": {
     "node": ">= 10.0.0"
