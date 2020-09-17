@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <line x1="27" x2="33" y1="27" y2="33" stroke="#00AAE7"/>
+    <polygon stroke="#00AAE7" stroke-linecap="square" points="44 16 27 27 16 44 33 33"/>
+    <circle cx="30" cy="30" r="30" stroke="#333" stroke-linecap="square"/>
+  </g>
+</svg>

@@ -1,21 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>价值icon_03</title>
-    <desc>Created with Sketch.</desc>
-    <g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="切图" transform="translate(-648.000000, -76.000000)" stroke-width="2">
-            <g id="编组-2" transform="translate(384.000000, 76.000000)">
-                <g id="编组-46" transform="translate(264.000000, 0.000000)">
-                    <g id="virtual-reality" transform="translate(30.000000, 30.000000)">
-                        <polyline id="路径" stroke="#333333" points="16 21 30 27 44 21"></polyline>
-                        <line x1="30" y1="27" x2="30" y2="45" id="路径" stroke="#333333"></line>
-                        <polygon id="路径" stroke="#333333" points="44 21 30 15 16 21 16 39 30 45 44 39"></polygon>
-                        <path d="M0,30 C0,13.4314575 13.4314575,0 30,0 L34,0 L28,6" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
-                        <path d="M60,30 C60,46.5685425 46.5685425,60 30,60 L26,60 L32,54" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <polyline stroke="#333" points="16 21 30 27 44 21"/>
+    <line x1="30" x2="30" y1="27" y2="45" stroke="#333"/>
+    <polygon stroke="#333" points="44 21 30 15 16 21 16 39 30 45 44 39"/>
+    <path stroke="#00AAE7" stroke-linecap="square" d="M0 30C0 13.4314575 13.4314575 0 30 0L34 0 28 6M60 30C60 46.5685425 46.5685425 60 30 60L26 60 32 54"/>
+  </g>
 </svg>
