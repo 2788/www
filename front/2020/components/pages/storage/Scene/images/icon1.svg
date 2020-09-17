@@ -7,13 +7,13 @@
         <g transform="translate(18 20)">
           <rect width="148" height="40" fill="#20B4E9"/>
           <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-            <tspan x="46" y="25">自定义EC</tspan>
+            <tspan x="46" y="25">自定义 EC</tspan>
           </text>
         </g>
         <g transform="translate(182 20)">
           <rect width="148" height="40" fill="#20B4E9"/>
           <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-            <tspan x="49" y="25">EB级扩展</tspan>
+            <tspan x="49" y="25">EB 级扩展</tspan>
           </text>
         </g>
         <g transform="translate(346 20)">

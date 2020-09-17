@@ -19,7 +19,7 @@
         <g transform="translate(346 12)">
           <rect width="148" height="40" fill="#20B4E9"/>
           <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-            <tspan x="46.546" y="25">K8S存储</tspan>
+            <tspan x="46.546" y="25">K8S 存储</tspan>
           </text>
         </g>
         <g transform="translate(18 64)">
@@ -41,7 +41,7 @@
         <g transform="translate(510 12)">
           <rect width="148" height="40" fill="#20B4E9"/>
           <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-            <tspan x="49.248" y="25">管控API</tspan>
+            <tspan x="49.248" y="25">管控 API</tspan>
           </text>
         </g>
       </g>

@@ -41,7 +41,7 @@
         <g transform="translate(510 12)">
           <rect width="148" height="40" fill="#20B4E9"/>
           <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-            <tspan x="49.248" y="25">管控API</tspan>
+            <tspan x="49.248" y="25">管控 API</tspan>
           </text>
         </g>
       </g>
@@ -106,12 +106,12 @@
     <g transform="translate(137 54)">
       <rect width="134" height="40" fill="#43C0C3"/>
       <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-        <tspan x="25" y="25">移动终端App</tspan>
+        <tspan x="25" y="25">移动终端 App</tspan>
       </text>
       <g transform="translate(150)">
         <rect width="134" height="40" fill="#43C0C3"/>
         <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-          <tspan x="32" y="25">Web浏览器</tspan>
+          <tspan x="32" y="25">Web 浏览器</tspan>
         </text>
       </g>
       <g transform="translate(300)">

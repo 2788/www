@@ -41,7 +41,7 @@
         <g transform="translate(510 12)">
           <rect width="148" height="40" fill="#20B4E9"/>
           <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
-            <tspan x="49.248" y="25">开放API</tspan>
+            <tspan x="49.248" y="25">开放 API</tspan>
           </text>
         </g>
       </g>
