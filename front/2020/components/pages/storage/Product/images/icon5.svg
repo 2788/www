@@ -1,12 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
-  <g fill="none" fill-rule="evenodd" transform="translate(-128)">
-    <rect width="376" height="276"/>
-    <circle cx="188" cy="60" r="60"/>
-    <g stroke-linecap="square" stroke-width="2" transform="translate(164 31)">
-      <rect width="6" height="22" x="21" y="18" stroke="#00AAE7"/>
-      <rect width="6" height="8" x="8" y="32" stroke="#00AAE7"/>
-      <rect width="6" height="13" x="34" y="27" stroke="#00AAE7"/>
-      <rect width="48" height="58" stroke="#333"/>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 50 60">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
+    <rect width="6" height="22" x="21" y="18" stroke="#00AAE7"/>
+    <rect width="6" height="8" x="8" y="32" stroke="#00AAE7"/>
+    <rect width="6" height="13" x="34" y="27" stroke="#00AAE7"/>
+    <rect width="48" height="58" stroke="#333"/>
   </g>
 </svg>

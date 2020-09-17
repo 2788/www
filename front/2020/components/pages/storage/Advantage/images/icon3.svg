@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
-  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2">
-    <circle cx="46" cy="46" r="8" stroke="#00AAE7"/>
-    <rect width="16" height="16" x="66" y="38" stroke="#00AAE7"/>
-    <polygon stroke="#00AAE7" points="82 80 66 80 74 68"/>
-    <line x1="46" x2="46" y1="66" y2="82" stroke="#00AAE7"/>
-    <line x1="38" x2="54" y1="74" y2="74" stroke="#00AAE7"/>
-    <rect width="60" height="60" x="30" y="30" stroke="#333"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
+    <circle cx="16" cy="16" r="8" stroke="#00AAE7"/>
+    <rect width="16" height="16" x="36" y="8" stroke="#00AAE7"/>
+    <polygon stroke="#00AAE7" points="52 50 36 50 44 38"/>
+    <line x1="16" x2="16" y1="36" y2="52" stroke="#00AAE7"/>
+    <line x1="8" x2="24" y1="44" y2="44" stroke="#00AAE7"/>
+    <rect width="60" height="60" stroke="#333"/>
   </g>
 </svg>

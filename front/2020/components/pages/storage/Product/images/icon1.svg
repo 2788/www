@@ -1,20 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
-  <g fill="none" fill-rule="evenodd" stroke-width="2">
-    <line x1="60" x2="60" y1="57" y2="41" stroke="#00AAE7"/>
-    <line x1="39.054" x2="55.946" y1="51.081" y2="38.919" stroke="#00AAE7"/>
-    <line x1="42.563" x2="36.437" y1="79.211" y2="58.789" stroke="#00AAE7"/>
-    <line x1="71" x2="49" y1="84" y2="84" stroke="#00AAE7"/>
-    <line x1="64.054" x2="81" y1="38.919" y2="51.12" stroke="#00AAE7"/>
-    <line x1="64.762" x2="80.237" y1="60.476" y2="55.524" stroke="#00AAE7"/>
-    <line x1="39.763" x2="55.238" y1="55.524" y2="60.476" stroke="#00AAE7"/>
-    <line x1="46.938" x2="57.06" y1="79.96" y2="66.042" stroke="#00AAE7"/>
-    <line x1="73.061" x2="62.94" y1="79.959" y2="66.042" stroke="#00AAE7"/>
-    <circle cx="60" cy="62" r="5" stroke="#333" stroke-linecap="square"/>
-    <line x1="83.563" x2="77.437" y1="58.789" y2="79.211" stroke="#00AAE7"/>
-    <circle cx="60" cy="36" r="5" stroke="#333" stroke-linecap="square"/>
-    <circle cx="85" cy="54" r="5" stroke="#333" stroke-linecap="square"/>
-    <circle cx="76" cy="84" r="5" stroke="#333" stroke-linecap="square"/>
-    <circle cx="44" cy="84" r="5" stroke="#333" stroke-linecap="square"/>
-    <circle cx="35" cy="54" r="5" stroke="#333" stroke-linecap="square"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="60" viewBox="0 0 62 60">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <line x1="30" x2="30" y1="26" y2="10" stroke="#00AAE7"/>
+    <line x1="9.054" x2="25.946" y1="20.081" y2="7.919" stroke="#00AAE7"/>
+    <line x1="12.563" x2="6.437" y1="48.211" y2="27.789" stroke="#00AAE7"/>
+    <line x1="41" x2="19" y1="53" y2="53" stroke="#00AAE7"/>
+    <line x1="34.054" x2="51" y1="7.919" y2="20.12" stroke="#00AAE7"/>
+    <line x1="34.762" x2="50.237" y1="29.476" y2="24.524" stroke="#00AAE7"/>
+    <line x1="9.763" x2="25.238" y1="24.524" y2="29.476" stroke="#00AAE7"/>
+    <line x1="16.938" x2="27.06" y1="48.96" y2="35.042" stroke="#00AAE7"/>
+    <line x1="43.061" x2="32.94" y1="48.959" y2="35.042" stroke="#00AAE7"/>
+    <circle cx="30" cy="31" r="5" stroke="#333" stroke-linecap="square"/>
+    <line x1="53.563" x2="47.437" y1="27.789" y2="48.211" stroke="#00AAE7"/>
+    <circle cx="30" cy="5" r="5" stroke="#333" stroke-linecap="square"/>
+    <circle cx="55" cy="23" r="5" stroke="#333" stroke-linecap="square"/>
+    <circle cx="46" cy="53" r="5" stroke="#333" stroke-linecap="square"/>
+    <circle cx="14" cy="53" r="5" stroke="#333" stroke-linecap="square"/>
+    <circle cx="5" cy="23" r="5" stroke="#333" stroke-linecap="square"/>
   </g>
 </svg>

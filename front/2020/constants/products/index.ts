@@ -41,7 +41,9 @@ export enum Product {
   /** Open API */
   OpenAPI = 'openapi',
   /** 票证自动识别（OCR） */
-  Ocr = 'ocr'
+  Ocr = 'ocr',
+  /** 存储一体机 */
+  Storage = 'storage'
 }
 
 // TODO: 这个再核对一遍
@@ -65,7 +67,8 @@ export const nameMap = {
   [Product.Express]: '机器数据分析平台 Pandora',
   [Product.Qvs]: '视频监控 QVS',
   [Product.OpenAPI]: 'Open API',
-  [Product.Ocr]: '票证自动识别 OCR'
+  [Product.Ocr]: '票证自动识别 OCR',
+  [Product.Storage]: '云存储一体机'
 } as const
 
 export const urlMap = {
@@ -87,7 +90,8 @@ export const urlMap = {
   [Product.Express]: '/products/pandora',
   [Product.Qvs]: '/products/qvs',
   [Product.OpenAPI]: '/products/openapi',
-  [Product.Ocr]: '/products/ocr'
+  [Product.Ocr]: '/products/ocr',
+  [Product.Storage]: '/products/storage'
 } as const
 
 export const priceUrlMap = {
@@ -109,7 +113,8 @@ export const priceUrlMap = {
   [Product.Express]: null,
   [Product.Qvs]: null,
   [Product.OpenAPI]: '/prices/openapi',
-  [Product.Ocr]: null
+  [Product.Ocr]: null,
+  [Product.Storage]: null
 } as const
 
 export const descMap = {
@@ -135,7 +140,8 @@ export const descMap = {
   [Product.Express]: '助力企业探索数据、创造价值、预见未来',
   // TODO 需要加入到顶部导航再补充
   [Product.OpenAPI]: '',
-  [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题'
+  [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
+  [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品'
 } as const
 
 export enum Category {
@@ -152,7 +158,8 @@ export const categoryService = [
   Product.Ssl,
   Product.Pili,
   Product.Qvm,
-  Product.Sms
+  Product.Sms,
+  Product.Storage
 ] as const
 
 /** 智能视频 */

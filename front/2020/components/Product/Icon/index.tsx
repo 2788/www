@@ -25,6 +25,7 @@ import IconExpress from './express.svg'
 import IconQvs from './qvs.svg'
 import IconOpenApi from './openapi.svg'
 import IconOcr from './ocr.svg'
+import IconStorage from './storage.svg'
 
 export type Props = SVGAttributes<SVGElement> & {
   product: Product
@@ -49,7 +50,8 @@ export const iconMap = {
   [Product.Express]: IconExpress,
   [Product.Qvs]: IconQvs,
   [Product.OpenAPI]: IconOpenApi,
-  [Product.Ocr]: IconOcr
+  [Product.Ocr]: IconOcr,
+  [Product.Storage]: IconStorage
 }
 
 export default function ProductIcon({ product, ...others }: Props) {

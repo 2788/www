@@ -109,7 +109,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<YigouCoreIcon className={styles.coreIcon} />}
+            icon={<YigouCoreIcon />}
             title="异构数据湖"
           >
             <FeatureDesc>完全自主知识产权，可实现任意来源、任意规模、任意类型数据的全量获取、全量存储、多模式处理与全生命周期管理，助您在 DT 时代持续挖掘海量数据的无限价值。</FeatureDesc>
@@ -117,7 +117,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<ShijueCoreIcon className={styles.coreIcon} />}
+            icon={<ShijueCoreIcon />}
             title="视觉数据处理"
           >
             <FeatureDesc>
@@ -129,7 +129,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<JiqiIcon className={styles.coreIcon} />}
+            icon={<JiqiIcon />}
             title="机器数据处理"
           >
             <FeatureDesc>
@@ -139,7 +139,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<ZhiboCoreIcon className={styles.coreIcon} />}
+            icon={<ZhiboCoreIcon />}
             title="互动直播"
           >
             <FeatureDesc>
@@ -151,7 +151,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<ChuanshuCoreIcon className={styles.coreIcon} />}
+            icon={<ChuanshuCoreIcon />}
             title="数据传输"
           >
             <FeatureDesc>独家的 CDN 加速和质量监控体系，可实现全网一体化调度和优化，助您在性能和成本之间得到良好平衡。面向不同音视频数据特别优化的传输网络让数据实现真正闭环。</FeatureDesc>
@@ -159,7 +159,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
           <FeatureItem
             pos="left-right"
             align="left"
-            icon={<YunCoreIcon className={styles.coreIcon} />}
+            icon={<YunCoreIcon />}
             title="云主机服务"
           >
             <FeatureDesc>
