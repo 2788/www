@@ -19,7 +19,7 @@
 
     .mobile({
       height: auto;
-      padding: 16px 0;
+      padding-top: 16px;
     });
   }
 
@@ -57,8 +57,8 @@
     :global {
       .ant-carousel .slick-slider {
         .slick-list {
-          padding-bottom: 10px;
-          margin-bottom: 15px;
+          padding-bottom: 0;
+          margin-bottom: 0;
         }
         .slick-dots.slick-dots-bottom {
           bottom: 0;
@@ -102,6 +102,10 @@
     margin: 0 0 16px !important;
     width: @mobile-story-width;
     height: @mobile-story-height;
+
+    &:last-child {
+      margin-bottom: 0px !important;
+    }
   });
 
   .img {
