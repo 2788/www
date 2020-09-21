@@ -4,8 +4,6 @@
 // 同 ./Button/style.less
 @buttonSize: 64px;
 @mobileButtonSize: 44px;
-@entryHeight: 140px;
-@mobileEntryHeight: 102px;
 
 .wrapper {
   position: fixed;
@@ -29,7 +27,6 @@
   flex: 0 0 auto;
   position: relative;
   width: @buttonSize;
-  height: @entryHeight;
   background-color: @grey-1;
   border: 1px solid @grey-3;
   box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
@@ -37,9 +34,8 @@
   text-align: center;
 
   .btn {
-    position: absolute;
-    top: -1px;
-    left: -1px;
+    position: relative;
+    margin: -1px;
     border: 2px solid @grey-1;
     background-position: center;
     background-repeat: no-repeat;
@@ -84,7 +80,8 @@
 
   .freeTrialLink {
     display: block;
-    margin-top: @buttonSize;
+    margin-top: 2px;
+    margin-bottom: 14px;
     padding: 8px;
     font-size: 16px;
     line-height: 22px;
@@ -99,12 +96,10 @@
 
   .mobile({
     width: @mobileButtonSize;
-    height: @mobileEntryHeight;
     border-radius: @mobileButtonSize / 2;
 
     .freeTrialLink {
-      margin-top: @mobileButtonSize;
-      padding: 8px 9px 15px;
+      padding: 8px 9px 0;
       font-size: 12px;
       line-height: 17px;
     }
@@ -115,7 +110,8 @@
   .modalWrapper();
 
   flex: 0 1 500px;
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 12px;
 
   overflow: hidden;

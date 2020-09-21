@@ -16,26 +16,24 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding-top: @headerHeight;
-  padding-bottom: @footerHeight;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
   @paddingLeft: @avatarSize + 12px;
   @paddingLeftMobile: @avatarSizeMobile + 12px;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   margin: 0 @paddingX;
-  height: @avatarSize + (@paddingY * 2);
+  flex: 0 0 @headerHeight;
+  position: relative;
   padding: @paddingY 0 @paddingY @paddingLeft;
   border-bottom: 1px solid #eee;
 
   .mobile({
     margin: 0 @paddingXMobile;
-    height: @avatarSizeMobile + (@paddingYMobile * 2);
+    flex: 0 0 @headerHeightMobile;
     padding: @paddingYMobile 0 @paddingYMobile @paddingLeftMobile;
   });
 }
@@ -82,62 +80,60 @@
 }
 
 .body {
-  height: 100%;
+  flex: 1 1 0;
   overflow-y: auto;
   margin: 0 @paddingX;
-}
 
-.qiniuMessageLine {
-  margin: @paddingY 0;
-  text-align: left;
+  .qiniuMessageLine {
+    margin: @paddingY 0;
+    text-align: left;
+
+    .messageBubble {
+      color: #666;
+      background-color: #fafafa;
+    }
+  }
+
+  .userMessageLine {
+    margin: @paddingY 0;
+    text-align: right;
+
+    .messageBubble {
+      color: #fff;
+      background-color: @blue;
+    }
+  }
 
   .messageBubble {
-    color: #666;
-    background-color: #fafafa;
-  }
-}
-
-.userMessageLine {
-  margin: @paddingY 0;
-  text-align: right;
-
-  .messageBubble {
-    color: #fff;
-    background-color: @blue;
-  }
-}
-
-.messageBubble {
-  display: inline-block;
-  max-width: 86.23%;
-  box-sizing: border-box;
-  padding: 7px 12px;
-  text-align: left;
-  border-radius: 4px;
-  word-break: break-all;
-
-  line-height: 22px;
-
-  a {
-    .blueLink();
-  }
-
-  > *:not(:first-child) {
-    margin-top: 12px;
-  }
-}
-
-.wide .messageBubble {
-  max-width: 50%;
-  .mobile({
+    display: inline-block;
     max-width: 86.23%;
-  });
+    box-sizing: border-box;
+    padding: 7px 12px;
+    text-align: left;
+    border-radius: 4px;
+    word-break: break-all;
+
+    line-height: 22px;
+
+    a {
+      .blueLink();
+    }
+
+    > *:not(:first-child) {
+      margin-top: 12px;
+    }
+  }
+
+  .wide .messageBubble {
+    max-width: 50%;
+    .mobile({
+      max-width: 86.23%;
+    });
+  }
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  flex: 0 0 @footerHeight;
   width: 100%;
   box-shadow: 0 -1px 10px 0 rgba(51, 51, 51, 0.05);
 }
