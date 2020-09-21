@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="56" viewBox="0 0 62 56">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
+    <path stroke="#333" d="M56,44 L4,44 C1.790861,44 0,42.209139 0,40 L0,4 C0,1.790861 1.790861,0 4,0 L56,0 C58.209139,0 60,1.790861 60,4 L60,40 C60,42.209139 58.209139,44 56,44 Z"/>
+    <line x2="60" y1="33" y2="33" stroke="#333"/>
+    <line x1="36" x2="36" y1="49" y2="54" stroke="#00AAE7"/>
+    <line x1="24" x2="24" y1="54" y2="49" stroke="#00AAE7"/>
+    <line x1="16" x2="44" y1="54" y2="54" stroke="#00AAE7"/>
+    <line x1="28" x2="32" y1="7" y2="7" stroke="#00AAE7"/>
+  </g>
+</svg>

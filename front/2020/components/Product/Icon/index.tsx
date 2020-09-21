@@ -26,6 +26,7 @@ import IconQvs from './qvs.svg'
 import IconOpenApi from './openapi.svg'
 import IconOcr from './ocr.svg'
 import IconStorage from './storage.svg'
+import IconPcdn from './pcdn.svg'
 
 export type Props = SVGAttributes<SVGElement> & {
   product: Product
@@ -51,7 +52,8 @@ export const iconMap = {
   [Product.Qvs]: IconQvs,
   [Product.OpenAPI]: IconOpenApi,
   [Product.Ocr]: IconOcr,
-  [Product.Storage]: IconStorage
+  [Product.Storage]: IconStorage,
+  [Product.Pcdn]: IconPcdn
 }
 
 export default function ProductIcon({ product, ...others }: Props) {

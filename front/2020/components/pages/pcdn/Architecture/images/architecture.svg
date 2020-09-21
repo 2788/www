@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="952" height="492" viewBox="0 0 952 492">
+  <defs>
+    <rect id="架构图-a" width="702" height="118" x="0" y="0"/>
+    <mask id="架构图-b" width="702" height="118" x="0" y="0" fill="#fff" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox">
+      <use xlink:href="#架构图-a"/>
+    </mask>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(0 89)">
+      <polygon fill="#E2F2F3" points="0 0 132 0 132 238 0 238"/>
+      <path fill="#28B8BB" fill-rule="nonzero" d="M173,112.5 L187,119.5 L173,126.5 L173,120.5 L156,120.5 L156,118.5 L173,118.5 L173,112.5 Z"/>
+      <rect width="100" height="36" x="16" y="42" fill="#42C0C3" rx="2"/>
+      <rect width="100" height="36" x="16" y="90" fill="#42C0C3" rx="2"/>
+      <rect width="100" height="36" x="16" y="138" fill="#42C0C3" rx="2"/>
+      <rect width="100" height="36" x="16" y="186" fill="#42C0C3" rx="2"/>
+      <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400">
+        <tspan x="34" y="28">控制中心</tspan>
+      </text>
+      <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+        <tspan x="38" y="65">配置管理</tspan>
+      </text>
+      <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+        <tspan x="38" y="113">监控系统</tspan>
+      </text>
+      <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+        <tspan x="36" y="161">监控告警</tspan>
+      </text>
+      <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+        <tspan x="38" y="209">日志下载</tspan>
+      </text>
+    </g>
+    <g transform="translate(570 91)">
+      <polygon fill="#E2F2F3" points="0 0 132 0 132 238 0 238"/>
+      <g transform="translate(16 62)">
+        <rect width="100" height="36" fill="#42C0C3" rx="2"/>
+        <rect width="100" height="36" y="48" fill="#42C0C3" rx="2"/>
+        <rect width="100" height="36" y="96" fill="#42C0C3" rx="2"/>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="36" y="23">DNS</tspan>
+        </text>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="15" y="71">HTTP DNS</tspan>
+        </text>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="22" y="119">基础数据</tspan>
+        </text>
+      </g>
+      <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400">
+        <tspan x="34" y="28">调度系统</tspan>
+      </text>
+    </g>
+    <g transform="translate(208 89)">
+      <polygon fill="#E6F4F9" points="0 0 286 0 286 238 0 238"/>
+      <path fill="#00AAE7" fill-rule="nonzero" d="M144.5,245 L144.5,262 L150.5,262 L143.5,276 L136.5,262 L142.5,262 L142.5,245 L144.5,245 Z"/>
+      <path fill="#28B8BB" fill-rule="nonzero" d="M323,114.5 L323,120.5 L340,120.5 L340,122.5 L323,122.5 L323,128.5 L309,121.5 L323,114.5 Z"/>
+      <g transform="translate(16 43)">
+        <rect width="254" height="36" fill="#00AAE7" rx="2"/>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="89" y="23">CDN 中间源</tspan>
+        </text>
+      </g>
+      <g transform="translate(16 91)">
+        <rect width="54" height="131" fill="#00AAE7" rx="2"/>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="13" y="61">边缘</tspan> <tspan x="13" y="81">节点</tspan>
+        </text>
+        <rect width="54" height="131" x="67" fill="#00AAE7" rx="2"/>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="80" y="61">边缘</tspan> <tspan x="80" y="81">节点</tspan>
+        </text>
+        <rect width="54" height="131" x="133" fill="#00AAE7" rx="2"/>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="146" y="61">边缘</tspan> <tspan x="146" y="81">节点</tspan>
+        </text>
+        <rect width="54" height="131" x="200" fill="#00AAE7" rx="2"/>
+        <text fill="#FFF" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="213" y="61">边缘</tspan> <tspan x="213" y="81">节点</tspan>
+        </text>
+      </g>
+      <text fill="#00AAE7" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400">
+        <tspan x="91" y="28">CDN 加速网络</tspan>
+      </text>
+    </g>
+    <rect width="702" height="40" fill="#E2F2F3" opacity=".854"/>
+    <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400">
+      <tspan x="319" y="26">客户源站</tspan>
+    </text>
+    <g fill-rule="nonzero" transform="translate(332 51)">
+      <path fill="#43C0C3" d="M1.5,-1 L1.5,16 L7.5,16 L0.5,30 L-6.5,16 L-0.5,16 L-0.5,-1 L1.5,-1 Z"/>
+      <path fill="#00AAE7" d="M37.5,0 L44.5,14 L38.5,14 L38.5,31 L36.5,31 L36.5,14 L30.5,14 L37.5,0 Z"/>
+    </g>
+    <g transform="translate(0 373)">
+      <use stroke="#00AAE7" stroke-dasharray="4 4" stroke-width="4" mask="url(#架构图-b)" opacity=".854" xlink:href="#架构图-a"/>
+      <g transform="translate(20 16)">
+        <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+        <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+          <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+        </text>
+        <g transform="translate(85)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+        <g transform="translate(170)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+        <g transform="translate(255)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+        <g transform="translate(340)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+        <g transform="translate(425)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+        <g transform="translate(510)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+        <g transform="translate(595)">
+          <rect width="64" height="86" fill="#E6F4F9" rx="2"/>
+          <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="14">
+            <tspan x="18" y="38">下沉</tspan> <tspan x="18" y="58">节点</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(727 382)">
+      <path fill="#00AAE7" fill-rule="nonzero" d="M76,24.5 L90,31.5 L76,38.5 L76,32.5 L-1,32.5 L-1,30.5 L76,30.5 L76,24.5 Z"/>
+      <path fill="#28B8BB" fill-rule="nonzero" d="M14,41.5 L14,47.5 L91,47.5 L91,49.5 L14,49.5 L14,55.5 L0,48.5 L14,41.5 Z"/>
+      <text fill="#00AAE7" font-family="PingFangSC-Regular, PingFang SC" font-size="12">
+        <tspan x="21" y="13">内容下发</tspan>
+      </text>
+      <text fill="#28B8BB" font-family="PingFangSC-Regular, PingFang SC" font-size="12">
+        <tspan x="3" y="75">SDK 或 Cname</tspan> <tspan x="3" y="92">接入</tspan>
+      </text>
+    </g>
+    <g transform="translate(835)">
+      <path fill="#E2F2F3" d="M0,0 L117,0 L117,492 L0,492 L0,0 Z" opacity=".85"/>
+      <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="16" font-weight="400">
+        <tspan x="27" y="49">使用终端</tspan>
+      </text>
+      <g transform="translate(40 105)">
+        <g transform="translate(5 213)">
+          <path fill="#28B8BB" fill-rule="nonzero" d="M22.7272727,0 L5.27272727,0 C3.46524991,0 2,1.790861 2,4 L2,37.3333333 C2,39.5424723 3.46524991,41.3333333 5.27272727,41.3333333 L22.7272727,41.3333333 C24.5347501,41.3333333 26,39.5424723 26,37.3333333 L26,4 C26,1.790861 24.5347501,0 22.7272727,0 Z M14,38.6666667 C12.8954305,38.6666667 12,37.7712362 12,36.6666667 C12,35.5620972 12.8954305,34.6666667 14,34.6666667 C15.1045695,34.6666667 16,35.5620972 16,36.6666667 C16,37.7712362 15.1045695,38.6666667 14,38.6666667 L14,38.6666667 Z M24,31.3333333 C24,31.7015232 23.7761424,32 23.5,32 L4.5,32 C4.22385763,32 4,31.7015232 4,31.3333333 L4,4.66666667 C4,4.29847683 4.22385763,4 4.5,4 L23.5,4 C23.7761424,4 24,4.29847683 24,4.66666667 L24,31.3333333 Z"/>
+          <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="14" font-weight="400">
+            <tspan x="0" y="65">手机</tspan>
+          </text>
+        </g>
+        <g transform="translate(0 107)">
+          <path fill="#28B8BB" fill-rule="nonzero" d="M3.608,0 L32.472,0 C34.4564,0 36.08,1.57288542 36.08,3.49475729 L36.08,18.48 L0,18.48 L0,3.49475729 C0.00466145929,1.56812263 1.61661134,0.0067663161 3.608,0 Z"/>
+          <path fill="#28B8BB" fill-opacity=".397" fill-rule="nonzero" d="M31.7854271,25.96 L19.1224,25.96 L19.1011765,31.3028571 L22.2847059,31.3028571 C22.8471294,31.3028571 23.3458824,31.6683002 23.3458824,32.3714286 C23.3352706,32.4569143 23.3352706,33.44 22.2847059,33.44 L13.7952941,33.44 C13.1692,33.44 12.7468435,32.9869424 12.7341176,32.3714286 C12.7468435,31.7356286 13.3177647,31.3028571 13.7952941,31.3028571 L16.9788235,31.3028571 L16.9788235,25.96 L4.37204706,25.96 C2.02684706,25.96 0,24.251371 0,22.3354141 L0,18.48 L36.08,18.48 L36.08,22.3354141 C36.08,24.2513292 34.1358915,25.8189569 31.7854271,25.96 L31.7854271,25.96 Z"/>
+          <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="14" font-weight="400">
+            <tspan x="4" y="54">电脑</tspan>
+          </text>
+        </g>
+        <g transform="translate(4)">
+          <path fill="#28B8BB" fill-rule="nonzero" d="M0,32.6438095 L0,3.43619046 C0,1.54628571 1.584,0 3.51999999,0 L24.64,0 C26.576,0 28.16,1.54628571 28.16,3.43619046 L28.16,32.6438095 C28.16,34.5337143 26.576,36.08 24.64,36.08 L3.51999999,36.08 C1.584,36.08 0,34.5337143 0,32.6438095 Z"/>
+          <text fill="#42C0C3" font-family="PingFangSC-Medium, PingFang SC" font-size="14" font-weight="400">
+            <tspan x="0" y="61">平板</tspan>
+          </text>
+          <path fill="#E5F2F3" fill-rule="nonzero" d="M24.64 2.64L3.51999999 2.64C2.99199999 2.64 2.64 2.98133332 2.64 3.49333332L2.64 29.9466667C2.64 30.4586667 2.99199999 30.8 3.51999999 30.8L24.64 30.8C25.168 30.8 25.52 30.4586667 25.52 29.9466667L25.52 3.49333332C25.52 2.98133332 25.168 2.64 24.64 2.64zM13.2 33.88C13.2 34.6090159 13.7909841 35.2 14.52 35.2 15.2490159 35.2 15.84 34.6090159 15.84 33.88 15.84 33.1509841 15.2490159 32.56 14.52 32.56 13.7909841 32.56 13.2 33.1509841 13.2 33.88z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
