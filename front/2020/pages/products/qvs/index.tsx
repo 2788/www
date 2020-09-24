@@ -8,6 +8,8 @@
  */
 
 import React from 'react'
+import { urlForPrice } from 'utils/route'
+import { Product } from 'constants/products'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
@@ -29,6 +31,7 @@ import imgBanner from './images/banner.png'
 
 export function Page() {
   const portalUrl = 'https://portal.qiniu.com/qvs'
+  const priceUrl = urlForPrice(Product.Qvs)
 
   const btns = useBtns(
     { children: '立即使用', href: portalUrl, pcOnly: true },
@@ -56,7 +59,7 @@ export function Page() {
         </PageNoticeGroup>
       </PageNotice>
 
-      <Navigator>{btns.nav}</Navigator>
+      <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
       <Advantage />
       <Core />

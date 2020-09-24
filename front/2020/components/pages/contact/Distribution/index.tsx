@@ -59,7 +59,7 @@ export default function Distribution() {
         <LayoutCard className={style.card}>
           <Img className={style.image} src={xiamen} />
           <Title className={style.title}>厦门分部</Title>
-          <Desc className={style.desc}>福建省厦门市思明区软件园二期望海路 12 号 3 单元 211 室</Desc>
+          <Desc className={style.desc}>福建省厦门市思明区软件园二期望海路 27 号 1 楼 101-4 室</Desc>
         </LayoutCard>
       </Row>
     </Section>

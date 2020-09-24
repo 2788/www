@@ -1,0 +1,52 @@
+@import '~utils/less/index.less';
+
+.clickDiv {
+  display: inline-block;
+}
+
+.modalContent {
+  width: 800px;
+  border-radius: 8px;
+  background-color: @grey-1;
+
+  .mobile({
+    width: 300px;
+    height: 500px;
+    overflow-y: auto;
+  });
+
+  .modalHeader {
+    padding: 24px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: @grey-7;
+
+    .closeIcon {
+      float: right;
+      width: 20px;
+      height: 20px;
+      margin-top: 4px;
+      background: url(./image/close.svg);
+      cursor: pointer;
+
+      &:hover {
+        background: url(./image/close-hover.svg);
+      }
+    }
+  }
+
+  .modalBody {
+    padding: 0 24px 24px;
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: @grey-6;
+    }
+
+    a {
+      .blueLink();
+    }
+  }
+}

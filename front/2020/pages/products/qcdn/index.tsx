@@ -53,7 +53,7 @@ function PageContent() {
   const btns = useBtns(
     { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalQCDN }), mpOnly: true },
     { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
-    { href: priceUrl, children: '产品价格' }
+    { href: 'https://qmall.qiniu.com/template/MTY', children: '立即购买' }
   )
 
   return (
@@ -85,7 +85,9 @@ function PageContent() {
 
       <Coverage />
 
-      <Feature grey name="core" title="核心功能" header="核心功能及服务">
+      <Packages />
+
+      <Feature name="core" title="核心功能" header="核心功能及服务">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
@@ -142,8 +144,6 @@ function PageContent() {
       </Feature>
 
       <CdnScene />
-
-      <Packages />
 
       <CustomerRemarks />
 

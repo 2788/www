@@ -115,7 +115,7 @@ export const priceUrlMap = {
   [Product.Plms]: null,
   [Product.Insight]: null,
   [Product.Express]: null,
-  [Product.Qvs]: null,
+  [Product.Qvs]: '/prices/qvs',
   [Product.OpenAPI]: '/prices/openapi',
   [Product.Ocr]: null,
   [Product.Storage]: null,
