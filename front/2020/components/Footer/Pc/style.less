@@ -87,6 +87,9 @@
         opacity: 0;
         transition: visibility 0s .3s, opacity .3s;
         .qrcode {
+          // 活动站 & 老官网全局设置了 img { max-width: 100% } 这里设置下避免被影响
+          // 详情见 https://jira.qiniu.io/browse/RMBWEB-1251
+          max-width: none;
           width: 200px;
           height: 200px;
         }
