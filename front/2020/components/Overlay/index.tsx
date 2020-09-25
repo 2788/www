@@ -1,5 +1,5 @@
 import React, { createContext, PropsWithChildren, ReactNode, useCallback, useContext, useState } from 'react'
-
+import { useGlobalModal } from 'hooks/scroll'
 import style from './index.less'
 
 export type OverlayContext = {
@@ -32,27 +32,20 @@ export function OverlayProvider({ children }: PropsWithChildren<{}>) {
 }
 
 export function OverlaySlot() {
+  const context = useContext(OverlayContext)
+  useGlobalModal(!!(context && context.entry))
+  if (context == null) {
+    return null
+  }
+
+  if (context.entry === null) {
+    return null
+  }
   return (
-    <OverlayContext.Consumer>
-      {
-        context => {
-          if (context === null) {
-            return null
-          }
-
-          if (context.entry == null) {
-            return null
-          }
-
-          return (
-            <div className={style.wrapper}>
-              <div className={style.mask} onClick={() => context.remove()}></div>
-              <div className={style.modal}>{context.entry}</div>
-            </div>
-          )
-        }
-      }
-    </OverlayContext.Consumer>
+    <div className={style.wrapper}>
+      <div className={style.mask} onClick={() => context.remove()}></div>
+      <div className={style.modal}>{context.entry}</div>
+    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Table, { ColumnProps } from 'react-icecream/lib/table'
+import { TextWrapper } from 'components/Price/UI'
 
 const columns: Array<ColumnProps<any>> = [
   {
@@ -27,14 +28,16 @@ const title = (
   </div>
 )
 const footer = (
-  <div>
-    计费规则：<br />
-    1. 以每月接入国标设备的并发台数峰值计费。<br />
-    2. 仅对国标设备计费，RTMP 接入无设备管理费。<br />
-    3. 设备成功注册且处于在线保活状态会被计费，与设备流是否在线无关。<br />
-    4. 通过 NVR 接入的摄像头会按摄像头数目收设备管理费。<br />
-    5. 计费周期：按月出账，具体出账时间以系统为准。<br />
-  </div>
+  <TextWrapper>
+    <p>计费规则：</p>
+    <ol style={{ color: '#999999' }}>
+      <li>以每月接入国标设备的并发台数峰值计费。</li>
+      <li>仅对国标设备计费，RTMP 接入无设备管理费。</li>
+      <li>设备成功注册且处于在线保活状态会被计费，与设备流是否在线无关。</li>
+      <li>通过 NVR 接入的摄像头会按摄像头数目收设备管理费。</li>
+      <li>计费周期：按月出账，具体出账时间以系统为准。</li>
+    </ol>
+  </TextWrapper>
 )
 
 export default function Device() {

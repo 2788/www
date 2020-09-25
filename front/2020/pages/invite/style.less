@@ -154,3 +154,30 @@
     });
   }
 }
+
+.withMargin(@margin: 12px) {
+  &:not(:first-child) {
+    margin-top: @margin;
+  }
+  &:not(:last-child) {
+    margin-bottom: @margin;
+  }
+}
+
+.modal {
+  ol {
+    .withMargin();
+    padding-left: 1.5em;
+    color: @grey-6;
+    li{
+      .withMargin(6px);
+      list-style-type: decimal;
+      font-size: 14px;
+      font-weight: 400;
+      color: @grey-6;
+      a {
+        .blueLink();
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import Table, { ColumnProps } from 'react-icecream/lib/table'
+import { TextWrapper } from 'components/Price/UI'
 
 const columns: Array<ColumnProps<any>> = [
   {
@@ -39,12 +40,14 @@ const title = (
   </div>
 )
 const footer = (
-  <div>
-    计费规则：<br />
-    1. 付费方式：后付费<br />
-    2. 计费规则：按中国大陆流量价格计费，上行接入流量和下行播放流量分别计费<br />
-    3. 计费周期：按月出账，具体出账时间以系统为准<br />
-  </div>
+  <TextWrapper>
+    <p>计费规则：</p>
+    <ol style={{ color: '#999999' }}>
+      <li>付费方式：后付费</li>
+      <li>计费规则：按中国大陆流量价格计费，上行接入流量和下行播放流量分别计费</li>
+      <li>计费周期：按月出账，具体出账时间以系统为准</li>
+    </ol>
+  </TextWrapper>
 )
 
 export default function Flow() {

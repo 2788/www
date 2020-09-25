@@ -1,6 +1,6 @@
 import React from 'react'
 import Table, { ColumnProps } from 'react-icecream/lib/table'
-import { Alert } from 'components/Price/UI'
+import { TextWrapper, Alert } from 'components/Price/UI'
 
 const columns: Array<ColumnProps<any>> = [
   {
@@ -40,14 +40,16 @@ const title = (
   </div>
 )
 const footer = (
-  <div>
-    计费规则：<br />
-    1. 付费方式：后付费<br />
-    2. 计费规则：中国大陆日带宽峰值按照指定单价计费<br />
-    3. 计费周期：按月出账，具体出账时间以系统为准<br />
+  <TextWrapper>
+    <p>计费规则：</p>
+    <ol style={{ color: '#999999' }}>
+      <li>付费方式：后付费</li>
+      <li>计费规则：中国大陆日带宽峰值按照指定单价计费</li>
+      <li>计费周期：按月出账，具体出账时间以系统为准</li>
+    </ol>
     <Alert>说明：</Alert>
     <Alert>按日宽峰值带宽计费是以您视频监控上下行分别产生的带宽最高值（单位 Mbps）为结算标准，上下行日峰值带宽分别计费</Alert>
-  </div>
+  </TextWrapper>
 )
 
 export default function Bandwidth() {

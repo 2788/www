@@ -1,9 +1,5 @@
 @import '~utils/less/index.less';
 
-.clickDiv {
-  display: inline-block;
-}
-
 .modalContent {
   width: 800px;
   border-radius: 8px;
@@ -22,31 +18,24 @@
     text-align: center;
     color: @grey-7;
 
-    .closeIcon {
+    .closeBtn {
       float: right;
-      width: 20px;
-      height: 20px;
-      margin-top: 4px;
-      background: url(./image/close.svg);
+      margin-top: -2px;
+      background-color: transparent;
       cursor: pointer;
-
-      &:hover {
-        background: url(./image/close-hover.svg);
+  
+      .closeIcon path {
+        fill: @grey-4;
+        transition: .2s;
+      }
+  
+      &:hover .closeIcon path {
+        fill: @grey-5;
       }
     }
   }
 
   .modalBody {
     padding: 0 24px 24px;
-
-    p {
-      font-size: 14px;
-      font-weight: 400;
-      color: @grey-6;
-    }
-
-    a {
-      .blueLink();
-    }
   }
 }
