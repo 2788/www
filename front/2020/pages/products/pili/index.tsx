@@ -51,7 +51,7 @@ function PageContent() {
     <>
       <PageBanner
         title="视频直播"
-        desc="七牛直播云服务 (Pili) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式直播云服务。"
+        desc="七牛视频直播 (Pili) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式视频直播服务。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={imgBanner} />
@@ -159,8 +159,8 @@ export default function PiliPage() {
   return (
     <Layout
       title="视频直播 Pili"
-      keywords="直播云, 云直播, 直播 SDK, 视频直播云服务, 直播云服务, 直播 API, 推流 SDK, 播放 SDK, 七牛直播, 七牛直播云, quic 推流"
-      description="七牛直播云服务是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
+      keywords="直播云, 云直播, 直播 SDK, 视频直播云服务, 视频直播服务, 直播 API, 推流 SDK, 播放 SDK, 视频直播, 七牛视频直播, quic 推流"
+      description="七牛视频直播是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
     >
       <PageContent />
     </Layout>
