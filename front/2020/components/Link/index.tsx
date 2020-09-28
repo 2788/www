@@ -43,7 +43,7 @@ export default function Link({ href, className, blue, children, ...others }: Pro
   }
 
   // 当前内容嵌入其他站点时走此逻辑
-  if (isBrowser() && href != null && new URL(host).host !== window.location.host) {
+  if (isBrowser() && href != null && new URL(host, window.location.href).host !== window.location.host) {
     href = new URL(href, host).href
     return <a className={classname} href={href} {...others}>{children}</a>
   }

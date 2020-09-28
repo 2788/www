@@ -1,18 +1,26 @@
 /**
- * @file 移动端全局的注册入口
- * @description 固定在页面底部
+ * @file 全局的注册入口
+ * @description 移动端 & PC 端表现不同
  */
 
 import React from 'react'
-import Link from 'components/Link'
-import styles from './style.less'
+import { useUserInfo } from 'components/UserInfo'
+import { useMobile } from 'hooks/ua'
+import MobileEntry from './Mobile'
+import PcEntry from './Pc'
 
 export default function RegisterEntry() {
+  const userInfo = useUserInfo()
+  const isMobile = useMobile()
+
+  // 正在请求用户信息，或已登录，则不展示注册入口
+  if (!userInfo || userInfo.signedIn) {
+    return null
+  }
+
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.fixed}>
-        <Link className={styles.link} href="https://portal.qiniu.com/signup">注册</Link>
-      </div>
-    </div>
+    isMobile
+    ? <MobileEntry />
+    : <PcEntry />
   )
 }

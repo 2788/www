@@ -70,7 +70,7 @@ function ContentWrapper({ children }: PropsWithChildren<{}>) {
         </ErrorBoundary>
         {!isMp && <Footer />}
         <RegisterEntry />
-        {!isMp && <feedback.EntryWithTrial />}
+        {!isMp && <feedback.Entry />}
         <feedback.Modal />
       </feedback.ModalProvider>
       <OverlaySlot />

@@ -4,8 +4,7 @@
  */
 
 import cls from 'classnames'
-import React, { useState, useEffect, useRef, useCallback, ReactNode } from 'react'
-import Link from 'components/Link'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useMobile } from 'hooks/ua'
 import { track } from 'utils/sensors'
 import Button from '../Button'
@@ -15,12 +14,8 @@ import IconClose from '../icons/close.svg'
 import IconSmile from '../icons/smile.svg'
 import style from './style.less'
 
-export type Props = {
-  extra?: ReactNode
-}
-
 /** 用户反馈入口 */
-export default function FeedbackEntry({ extra }: Props) {
+export default function FeedbackEntry() {
   const isMobile = useMobile()
   const [modalVisible, setModalVisible] = useState<boolean | null>(null)
   const { toggleModal: toggleGlobalModal } = useGlobalModal()
@@ -61,26 +56,16 @@ export default function FeedbackEntry({ extra }: Props) {
 
   return (
     <div ref={wrapperRef} className={style.wrapper}>
-      <div className={style.entryWrapper}>
-        <Button className={btnClassName} onClick={toggleModal}>
+      <div className={style.entryWrapper} onClick={toggleModal}>
+        <Button className={btnClassName}>
           <IconClose className={style.iconClose} />
           <IconSmile className={style.iconSmile} />
         </Button>
-        {extra}
+        <span className={style.entryText}>在线<br />咨询</span>
       </div>
       {formModalView}
     </div>
   )
-}
-
-/** 带免费体验链接的反馈入口 */
-export function FeedbackEntryWithTrial() {
-  const trailLinkView = (
-    <Link className={style.freeTrialLink} title="免费体验云服务套餐" href="/events/free?entry=index-floatwin">
-      免费<br />体验
-    </Link>
-  )
-  return <FeedbackEntry extra={trailLinkView} />
 }
 
 function FormModal({ visible }: { visible: boolean }) {

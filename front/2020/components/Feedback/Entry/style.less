@@ -9,7 +9,7 @@
   position: fixed;
   top: 50px;
   bottom: 50px;
-  right: 86px;
+  right: 36px;
   width: 0;
   display: flex;
   flex-direction: column-reverse;
@@ -27,11 +27,14 @@
   flex: 0 0 auto;
   position: relative;
   width: @buttonSize;
+  z-index: @feedback-form-z-index + 1;
+
   background-color: @grey-1;
   border: 1px solid @grey-3;
   box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
   border-radius: @buttonSize / 2;
   text-align: center;
+  cursor: pointer;
 
   .btn {
     position: relative;
@@ -78,11 +81,11 @@
     }
   }
 
-  .freeTrialLink {
+  .entryText {
     display: block;
-    margin-top: 2px;
-    margin-bottom: 14px;
-    padding: 8px;
+    margin-top: 1px;
+    margin-bottom: 8px;
+    padding: 7px;
     font-size: 16px;
     line-height: 22px;
     color: @blue;
@@ -98,8 +101,8 @@
     width: @mobileButtonSize;
     border-radius: @mobileButtonSize / 2;
 
-    .freeTrialLink {
-      padding: 8px 9px 0;
+    .entryText {
+      padding: 4px 9px 0;
       font-size: 12px;
       line-height: 17px;
     }
