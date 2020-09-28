@@ -1,59 +1,42 @@
 import React from 'react'
-import { Row, LayoutCard, Desc, Title } from 'components/UI/Card'
-import Section from 'components/Product/Section'
+import Feature, {
+  Group as FeatureGroup,
+  Item as FeatureItem,
+  Desc as FeatureDesc
+} from 'components/Product/Feature'
 
-import archive from './images/archive.png'
-import connection from './images/connection.png'
-import image from './images/image.png'
-import scale from './images/scale.png'
+import Icon1 from './images/icon1.svg'
+import Icon2 from './images/icon2.svg'
+import Icon3 from './images/icon3.svg'
+import Icon4 from './images/icon4.svg'
 
-import style from './index.less'
+const advantages = [
+  [
+    { icon: <Icon1 />, title: '准确率高', desc: '利用海量的图片样本训练模型，具有业内领先的准确率' },
+    { icon: <Icon2 />, title: '服务稳定', desc: '提供弹性服务，扩展性好，算法持续迭代优化' }
+  ],
+  [
+    { icon: <Icon3 />, title: '识别速度快', desc: '单张图片毫秒级返回' },
+    { icon: <Icon4 />, title: '接入方便', desc: '服务使用简单快捷，兼容性强，并提供全流程技术支持' }
+  ]
+]
 
 export default function Advantage() {
   return (
-    <Section title="核心优势" name="advantage" className={style.section}>
-      <Row className={style.row}>
-        <MyCard
-          src={archive}
-          title="准确率高"
-          desc="利用海量的图片样本训练模型，具有业内领先的准确率"
-        />
-        <MyCard
-          src={scale}
-          title="服务稳定"
-          desc="提供弹性服务，扩展性好，算法持续迭代优化"
-        />
-      </Row>
-      <Row className={style.row}>
-        <MyCard
-          src={image}
-          title="识别速度快"
-          desc="单张图片毫秒级返回"
-        />
-        <MyCard
-          src={connection}
-          title="接入方便"
-          desc="服务使用简单快捷，兼容性强，并提供全流程技术支持"
-        />
-      </Row>
-    </Section>
-  )
-}
-
-type MyCardProps = {
-  src: string
-  title: string
-  desc: string
-}
-
-function MyCard({ src, title, desc }: MyCardProps) {
-  return (
-    <LayoutCard className={style.card}>
-      <img className={style.image} src={src} />
-      <div className={style.content}>
-        <Title className={style.title}>{title}</Title>
-        <Desc className={style.desc}>{desc}</Desc>
-      </div>
-    </LayoutCard>
+    <Feature title="核心优势" name="advantage">
+      {
+        advantages.map((advantage, index) => (
+          <FeatureGroup key={index}>
+            {
+              advantage.map((item, i) => (
+                <FeatureItem pos="left-right" icon={item.icon} title={item.title} key={`${index}-${i}`}>
+                  <FeatureDesc>{item.desc}</FeatureDesc>
+                </FeatureItem>
+              ))
+            }
+          </FeatureGroup>
+        ))
+      }
+    </Feature>
   )
 }
