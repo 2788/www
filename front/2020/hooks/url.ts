@@ -5,7 +5,8 @@
 import { useState, useCallback, useEffect } from 'react'
 import { ParsedQuery, parse } from 'query-string'
 import { useRouter } from 'next/router'
-import { isBrowser } from '../utils'
+import { isBrowser, isExternal } from 'utils'
+import { host } from 'constants/env'
 
 export type HashValue = string | null
 
@@ -126,11 +127,23 @@ export function useQueryValue<T extends string>(key: string, defaultValue: T) {
  */
 export function useUrl() {
   const asPath = useRouter().asPath
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState(host + asPath)
+
+  // 路由发生变化时（站内跳转），更新 url
   useEffect(() => {
-    const { protocol, host } = window.location
-    const currentUrl = `${protocol}//${host}${asPath}`
-    setUrl(currentUrl)
+    setUrl(window.location.href)
   }, [asPath])
+
+  // 如果是在外站（external），考虑该站点可能发生站内跳转，这里定时同步 url
+  // TODO: 通过更靠谱的方式来实现
+  useEffect(() => {
+    if (!isExternal()) return
+
+    const timer = setInterval(() => {
+      setUrl(window.location.href)
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
   return url
 }

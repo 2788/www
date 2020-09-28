@@ -7,7 +7,7 @@ import classnames from 'classnames'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
-import { isBrowser } from 'utils'
+import { isExternal } from 'utils'
 import { checkInSite } from 'utils/route'
 import { host } from 'constants/env'
 
@@ -43,7 +43,7 @@ export default function Link({ href, className, blue, children, ...others }: Pro
   }
 
   // 当前内容嵌入其他站点时走此逻辑
-  if (isBrowser() && href != null && new URL(host, window.location.href).host !== window.location.host) {
+  if (isExternal() && href != null) {
     href = new URL(href, host).href
     return <a className={classname} href={href} {...others}>{children}</a>
   }

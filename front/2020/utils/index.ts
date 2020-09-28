@@ -1,4 +1,5 @@
 import { stringify } from 'query-string'
+import { host } from 'constants/env'
 
 /** 判断当前是否在浏览器中执行，与之对应的是在 Node.js 环境执行（生成静态页面时） */
 export function isBrowser() {
@@ -30,4 +31,9 @@ export function getCurrentYear() {
 /** 判断给定字符串内容是否 URL */
 export function isUrl(input: string) {
   return /^https?:\/\/.+/.test(input)
+}
+
+/** 判断当前代码是否嵌入在外部站点运行（以 external 的方式） */
+export function isExternal() {
+  return isBrowser() && new URL(host, window.location.href).host !== window.location.host
 }
