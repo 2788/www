@@ -45,7 +45,9 @@ export enum Product {
   /** 存储一体机 */
   Storage = 'storage',
   /** PCDN */
-  Pcdn = 'pcdn'
+  Pcdn = 'pcdn',
+  /** 直播特效 SDK */
+  Plesdk = 'plesdk',
 }
 
 // TODO: 这个再核对一遍
@@ -71,7 +73,8 @@ export const nameMap = {
   [Product.OpenAPI]: 'Open API',
   [Product.Ocr]: '票证自动识别 OCR',
   [Product.Storage]: '云存储一体机',
-  [Product.Pcdn]: 'PCDN'
+  [Product.Pcdn]: 'PCDN',
+  [Product.Plesdk]: '直播特效 SDK'
 } as const
 
 export const urlMap = {
@@ -95,7 +98,8 @@ export const urlMap = {
   [Product.OpenAPI]: '/products/openapi',
   [Product.Ocr]: '/products/ocr',
   [Product.Storage]: '/products/storage',
-  [Product.Pcdn]: '/products/pcdn'
+  [Product.Pcdn]: '/products/pcdn',
+  [Product.Plesdk]: '/products/plesdk'
 } as const
 
 export const priceUrlMap = {
@@ -119,7 +123,8 @@ export const priceUrlMap = {
   [Product.OpenAPI]: '/prices/openapi',
   [Product.Ocr]: null,
   [Product.Storage]: null,
-  [Product.Pcdn]: null
+  [Product.Pcdn]: null,
+  [Product.Plesdk]: null
 } as const
 
 export const descMap = {
@@ -147,7 +152,8 @@ export const descMap = {
   [Product.OpenAPI]: '',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
   [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
-  [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果'
+  [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
+  [Product.Plesdk]: ''
 } as const
 
 export enum Category {

@@ -23,6 +23,8 @@ export enum Industry {
 export enum SceneSolution {
   /** 智能视频云 */
   Qavs = 'qavs',
+  /** 互动直播 */
+  Rtclive = 'rtclive',
   /** 短视频 */
   Plsv = 'plsv',
   /** 私有云存储 */
@@ -119,6 +121,7 @@ export const categoryEnNameMap = {
 
 export const nameMap: MapTo<string> = {
   [Solution.Qavs]: '智能视频云',
+  [Solution.Rtclive]: '互动直播',
   [Solution.Plsv]: '短视频',
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
@@ -134,6 +137,7 @@ export const nameMap: MapTo<string> = {
 
 export const urlMap: MapTo<string | null> = {
   [Solution.Qavs]: '/solutions/qavs',
+  [Solution.Rtclive]: '/solutions/rtclive',
   [Solution.Plsv]: '/solutions/plsv',
   [Solution.Kodoe]: '/solutions/kodoe',
   [Solution.Vcs]: '/solutions/vcs',
@@ -149,6 +153,7 @@ export const urlMap: MapTo<string | null> = {
 
 export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',
+  [Solution.Rtclive]: '一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线',
   [Solution.Plsv]: '集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案',
   [Solution.Kodoe]: '为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型',
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
@@ -163,7 +168,7 @@ export const descMap: MapTo<string> = {
 }
 
 export const categorySolutionsMap = {
-  [Category.Scene]: [Solution.Qavs, Solution.Plsv, Solution.Kodoe, Solution.Ess],
+  [Category.Scene]: [Solution.Qavs, Solution.Rtclive, Solution.Plsv, Solution.Kodoe, Solution.Ess],
   [Category.Industry]: [
     Solution.Fin, Solution.Edu, Solution.Automobile, Solution.ECommerce,
     Solution.IntelligentManufacturing, Solution.Social, Solution.Isp
@@ -172,6 +177,7 @@ export const categorySolutionsMap = {
 
 export const iconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
   [Solution.Qavs]: require('./images/scene/qavs.svg').default,
+  [Solution.Rtclive]: require('./images/scene/rtclive.svg').default,
   [Solution.Plsv]: require('./images/scene/plsv.svg').default,
   [Solution.Kodoe]: require('./images/scene/kodoe.svg').default,
   [Solution.Vcs]: require('./images/scene/vcs.svg').default,
