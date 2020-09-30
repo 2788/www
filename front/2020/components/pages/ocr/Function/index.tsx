@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import { Upload, Modal } from 'react-icecream'
 import { RcFile } from 'react-icecream/esm/upload'
 
@@ -6,11 +6,13 @@ import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
 } from 'components/Product/Scene'
-import { ImageOptions, getApiByName } from 'apis/ocr/function'
+import { ImageOptions, getApiByName, IdCardResponse, CarBdResponse, BsResponse, NewCarResponse, CzResponse } from 'apis/ocr/function'
 import { OcrDemo, getRequestMesgByName } from 'apis/ocr/common'
 import Button from 'components/UI/Button'
 import { useOnChange } from 'hooks'
 import { useApiWithParams } from 'hooks/api'
+import { useUserInfo } from 'components/UserInfo'
+import defaultResponse from './defaultResp'
 import ErrorBoundary from './ErrorBoundary'
 import ApiResult, { getResultByName } from './ApiResult'
 
@@ -51,6 +53,7 @@ function MyPanel({ name, title }: PanelProps) {
   const [imgData, setImgData] = useState<Blob | undefined>(undefined)
   const [imgUrl, setImgUrl] = useState(getImgByName(name))
   const [reqBody, setReqBody] = useState<ImageOptions>({ image: removeImageBase64Prefix(imgUrl) })
+  const userInfo = useUserInfo()
 
   useOnChange(() => {
     if (imgData) {
@@ -72,8 +75,16 @@ function MyPanel({ name, title }: PanelProps) {
     }
   }, [imgUrl])
 
+  const wrappedOcr = useCallback(
+    (options: ImageOptions): Promise<IdCardResponse | CarBdResponse | BsResponse | NewCarResponse | CzResponse> => {
+      if (imgUrl === getImgByName(name)) return new Promise(resolve => resolve(defaultResponse(name)))
+      return getApiByName(name)(options)
+    },
+    [imgUrl, name]
+  )
+
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
-    getApiByName(name),
+    wrappedOcr,
     { params: [reqBody] }
   )
 
@@ -83,15 +94,40 @@ function MyPanel({ name, title }: PanelProps) {
     return <ErrorBoundary>{getResultByName(name, apiResult)}</ErrorBoundary>
   }, [apiResult, name])
 
-  function beforeUpload(file: RcFile) {
-    const isLt5M = file.size <= 5 * 1024 * 1024
-    if (!isLt5M) {
-      Modal.info({
-        content: '上传的图片大小不能超过 5M',
-        okText: '知道了'
-      })
-    }
-    return isLt5M
+  function beforeUpload(file: RcFile): Promise<void> {
+    return new Promise(resolve => {
+      // 用户登陆时，提示需要收费
+      if (userInfo && userInfo.signedIn) {
+        Modal.confirm({
+          title: '提示',
+          content: (
+            <>
+              <p>体验票证识别产品将产生费用</p>
+              <p>
+                具体参考：
+                <a target="_blank" rel="noopener" href="https://developer.qiniu.com/dora/api/7038/pricingofOCR">
+                  「计费方式」
+                </a>
+              </p>
+            </>),
+          okText: '确定',
+          cancelText: '取消',
+          onOk: () => resolve(),
+          className: style.modal
+        })
+      } else { // 未登陆则直接调用接口
+        resolve()
+      }
+    }).then(() => {
+      const isLt5M = file.size <= 5 * 1024 * 1024
+      if (!isLt5M) {
+        Modal.info({
+          content: '上传的图片大小不能超过 5M',
+          okText: '知道了'
+        })
+        throw new Error('图片大于或等于 5M')
+      }
+    })
   }
 
   return (

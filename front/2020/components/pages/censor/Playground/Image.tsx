@@ -6,7 +6,10 @@ import React, { useState, useMemo } from 'react'
 import Loading from 'components/UI/Loading'
 import { useApiWithParams } from 'hooks/api'
 import { useOnChange } from 'hooks'
-import { imageCensor, defaultParams } from 'apis/censor/image'
+import { useUserInfo } from 'components/UserInfo'
+import { imageCensor, defaultParams, ImageCensorOptions, ImageCensorRes } from 'apis/censor/image'
+import { defaultResponse } from './default-resp/image'
+import showModal from './Modal'
 import Slides, { Slide } from './Slides'
 import UrlForm from './UrlForm'
 import { ResultPanel, ApiResult, ResultMask } from '.'
@@ -19,9 +22,18 @@ import style from './style.less'
 
 const images = [img1, img2, img3, img4]
 
+function wrappedImageCensor(options: ImageCensorOptions): Promise<ImageCensorRes> {
+  const uri = options.data.uri
+  if (defaultResponse[uri]) {
+    return new Promise(resolve => setTimeout(() => resolve(defaultResponse[uri]), 300))
+  }
+  return imageCensor(options)
+}
+
 export default function ImagePlayground() {
   const [activeIndex, setActive] = useState(0)
   const [imgUrl, setImgUrl] = useState(images[activeIndex])
+  const userInfo = useUserInfo()
 
   useOnChange(() => setImgUrl(images[activeIndex]), [activeIndex])
 
@@ -31,7 +43,7 @@ export default function ImagePlayground() {
   }), [imgUrl])
 
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
-    imageCensor,
+    wrappedImageCensor,
     { params: [apiRequestBody] }
   )
 
@@ -41,6 +53,15 @@ export default function ImagePlayground() {
       scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
   }, [apiResult])
+
+  function handleSubmit(url: string) {
+    // 用户登陆时，提示需要收费
+    if (userInfo && userInfo.signedIn) {
+      showModal().then(() => setImgUrl(url))
+    } else { // 未登陆则直接调用接口
+      setImgUrl(url)
+    }
+  }
 
   return (
     <div className={style.playground}>
@@ -65,7 +86,7 @@ export default function ImagePlayground() {
           <Slide value={2}><img src={images[2]} /></Slide>
           <Slide value={3}><img src={images[3]} /></Slide>
         </Slides>
-        <UrlForm placeholder="请输入网络图片 URL" onSubmit={setImgUrl} />
+        <UrlForm placeholder="请输入网络图片 URL" onSubmit={handleSubmit} />
       </div>
       <div className={style.right}>
         <ApiResult

@@ -22,11 +22,11 @@ export type ImageOptions = {
   image: string
 }
 
-type IdCardResponse = {
+export type IdCardResponse = {
   session_id?: string
   errorcode?: number
   errormsg?: string
-  warnmsg?: string[]
+  warnmsg?: number[]
   ocr_result: object
   image_result: object
 }
@@ -36,7 +36,7 @@ export async function getMesgByIdCard(options: ImageOptions): Promise<IdCardResp
   return response
 }
 
-type CarBdResponse = {
+export type CarBdResponse = {
   uuid?: string
   errorcode?: number
   items: object
@@ -47,7 +47,7 @@ export async function getMesgByCarBd(options: ImageOptions): Promise<CarBdRespon
   return response
 }
 
-type BsResponse = {
+export type BsResponse = {
   uuid?: string
   errorcode?: number
   items: object
@@ -58,7 +58,7 @@ export async function getMesgByBs(options: ImageOptions): Promise<BsResponse> {
   return response
 }
 
-type NewCarResponse = {
+export type NewCarResponse = {
   uuid?: string
   errorcode?: number
   items: object
@@ -69,7 +69,7 @@ export async function getMesgByNewCar(options: ImageOptions): Promise<NewCarResp
   return response
 }
 
-type CzResponse = {
+export type CzResponse = {
   uuid?: string
   errorcode?: number
   items: object

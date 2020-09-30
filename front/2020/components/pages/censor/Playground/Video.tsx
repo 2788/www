@@ -6,23 +6,28 @@ import React, { useState, useMemo } from 'react'
 import Loading from 'components/UI/Loading'
 import { useOnChange } from 'hooks'
 import { useApiWithParams } from 'hooks/api'
-import { videoCensor, defaultParams } from 'apis/censor/video'
+import { useUserInfo } from 'components/UserInfo'
+import { videoCensor, defaultParams, CreateVideoJobOptions, VideoJobResult } from 'apis/censor/video'
+import { defaultResponse, videos } from './default-resp/video'
+import showModal from './Modal'
 import Slides, { Slide } from './Slides'
 import UrlForm from './UrlForm'
 import { ResultPanel, ApiResult, ResultMask } from '.'
 
 import style from './style.less'
 
-const videos = [
-  'https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk',
-  'https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ',
-  'https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58',
-  'https://dn-mars-assets.qbox.me/lrBYuiLwg0zFRUP97w59FmmN6H01'
-]
+function wrappedVideoCensor(options: CreateVideoJobOptions): Promise<VideoJobResult> {
+  const uri = options.data.uri
+  if (defaultResponse[uri]) {
+    return new Promise(resolve => setTimeout(() => resolve(defaultResponse[uri]), 300))
+  }
+  return videoCensor(options)
+}
 
 export default function VideoPlayground() {
   const [activeIndex, setActive] = useState(0)
   const [videoUrl, setVideoUrl] = useState(videos[activeIndex])
+  const userInfo = useUserInfo()
 
   useOnChange(() => setVideoUrl(videos[activeIndex]), [activeIndex])
 
@@ -32,7 +37,7 @@ export default function VideoPlayground() {
   }), [videoUrl])
 
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
-    videoCensor,
+    wrappedVideoCensor,
     { params: [apiRequestBody] }
   )
 
@@ -42,6 +47,15 @@ export default function VideoPlayground() {
       scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
   }, [apiResult])
+
+  function handleSubmit(url: string) {
+    // 用户登陆时，提示需要收费
+    if (userInfo && userInfo.signedIn) {
+      showModal().then(() => setVideoUrl(url))
+    } else { // 未登陆则直接调用接口
+      setVideoUrl(url)
+    }
+  }
 
   return (
     <div className={style.playground}>
@@ -66,7 +80,7 @@ export default function VideoPlayground() {
           <Slide value={2}><video src={videos[2]} /></Slide>
           <Slide value={3}><video src={videos[3]} /></Slide>
         </Slides>
-        <UrlForm placeholder="请输入网络视频 URL" onSubmit={setVideoUrl} />
+        <UrlForm placeholder="请输入网络视频 URL" onSubmit={handleSubmit} />
       </div>
       <div className={style.right}>
         <ApiResult
