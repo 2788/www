@@ -14,10 +14,6 @@ import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
@@ -47,17 +43,6 @@ export function Page() {
         desc="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
         btns={btns.banner}
         icon={imgBanner} />
-
-      <PageNotice>
-        <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem title="新客专属福利，100 元无门槛 QVS 账单抵用券" href="https://marketing.qiniu.com/activity/QVS20200903-activity">
-            新客专属福利，100 元无门槛 QVS 账单抵用券
-          </PageNoticeItem>
-          <PageNoticeItem title="视频监控特惠来袭上下行流量包，低至 6 折" href="https://qmall.qiniu.com/template/NDY">
-            视频监控特惠来袭上下行流量包，低至 6 折
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 

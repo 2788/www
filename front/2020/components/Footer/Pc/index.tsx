@@ -20,6 +20,7 @@ import imgCertDjcp from './images/cert/djcp.png'
 import imgCertIso9001 from './images/cert/iso9001.png'
 import imgCertIso20000 from './images/cert/iso20000.png'
 import imgCertIso27001 from './images/cert/iso27001.png'
+import imgCertIso27701 from './images/cert/iso27701.png'
 import imgCertKexin from './images/cert/kexin.png'
 
 import style from './style.less'
@@ -147,6 +148,7 @@ function Icp() {
         <img className={style.certIcon} src={imgCertIso20000} />
         <img className={style.certIcon} src={imgCertIso9001} />
         <img className={style.certIcon} src={imgCertIso27001} />
+        <img className={style.certIcon} src={imgCertIso27701} />
         <img className={style.certIcon} src={imgCertCmmi3} />
         <a target="_blank" rel="noopener" href="https://www.kexinyun.org.cn/"><img className={style.certIcon} src={imgCertKexin} /></a>
       </div>
