@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { defaultTitle, titleSuffix } from 'constants/page'
 import { pv } from 'utils/sensors'
 import { useMp } from 'hooks/ua'
+import { useSource } from 'hooks/sensors'
 import { OverlayProvider, OverlaySlot } from 'components/Overlay'
 
 import ErrorBoundary from './ErrorBoundary'
@@ -60,22 +61,35 @@ export default function Layout({ title, keywords, description, children }: Props
 }
 
 function ContentWrapper({ children }: PropsWithChildren<{}>) {
-  const isMp = useMp()
+  const keepSimple = useSimple()
+
   return (
     <OverlayProvider>
       <feedback.ModalProvider>
-        {!isMp && <Header />}
+        {!keepSimple && <Header />}
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
-        {!isMp && <Footer />}
+        {!keepSimple && <Footer />}
         <RegisterEntry />
-        {!isMp && <feedback.Entry />}
+        {!keepSimple && <feedback.Entry />}
         <feedback.Modal />
       </feedback.ModalProvider>
       <OverlaySlot />
     </OverlayProvider>
   )
+}
+
+// 是否保持简单布局(去掉头尾等等)
+// 1、默认全部布局 2、小程序简单布局 3、渠道的小程序全部布局
+function useSimple() {
+  const isMp = useMp()
+  const source = useSource()
+  if (isMp) {
+    if (source) return false
+    return true
+  }
+  return false
 }
 
 function usePv(title: string) {
