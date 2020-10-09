@@ -10,7 +10,7 @@ import styles from './style.less'
 
 export default function Arch() {
   return (
-    <Section grey name="architecture" title="产品架构">
+    <Section name="architecture" title="产品架构">
       <Architecture className={styles.icon} />
     </Section>
   )

@@ -17,6 +17,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
+import Function from 'components/pages/pili/Function'
 import Arch from 'components/pages/pili/Arch'
 import PiliScene from 'components/pages/pili/Scene'
 import PageNotice, {
@@ -74,7 +75,9 @@ function PageContent() {
         {btns.nav}
       </Navigator>
 
-      <Feature name="advantages" title="功能与优势">
+      <Function />
+
+      <Feature name="advantages" title="核心优势">
         <FeatureGroup>
           <FeatureItem
             pos="top-down"
@@ -134,7 +137,7 @@ function PageContent() {
 
       <PiliScene />
 
-      <LinkGroups grey title="相关文档">
+      <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
           <LinkItem href="https://developer.qiniu.com/pili/manual/3694/pili-product-introduction">产品简介</LinkItem>
           <LinkItem href="https://developer.qiniu.com/pili/manual/1217/live-architecture-fleetly">直播架构快速搭建</LinkItem>
