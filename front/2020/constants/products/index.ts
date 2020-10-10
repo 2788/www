@@ -164,13 +164,13 @@ export enum Category {
 
 /** 基础服务 */
 export const categoryService = [
+  Product.Qvm,
   Product.Kodo,
   Product.Archive,
   Product.Cdn,
   Product.Pcdn,
   Product.Ssl,
   Product.Pili,
-  Product.Qvm,
   Product.Sms,
   Product.Storage
 ] as const

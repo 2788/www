@@ -48,11 +48,16 @@ export default function Overlay() {
   )
 }
 
+// 需要加热门的产品目录
+const hotProducts = [
+  Product.Qvm
+]
 function ProductContentItem({ product, onConsult }: {
   product: Product
   onConsult(): void
 }) {
   const url = urlMap[product]
+  const isHot = hotProducts.includes(product)
 
   function handleClick(e: MouseEvent) {
     if (url != null) return
@@ -68,6 +73,7 @@ function ProductContentItem({ product, onConsult }: {
       title={nameMap[product]}
       subtitle={url != null ? descMap[product] : '即将上线，欢迎垂询'}
       onClick={handleClick}
+      hot={isHot}
     />
   )
 }
