@@ -2,24 +2,43 @@ import React, { PropsWithChildren } from 'react'
 import PricePane, { PricePaneSection } from 'components/Price/Banner/PricePane'
 import Link from 'components/Link'
 import Tabs, { TabPane } from 'components/UI/Tabs'
+import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import { TextWrapper, Alert, TableWrapper } from '../../UI'
 import style from './index.less'
 
 export default function Price() {
+  const piliUrl = urlForPrice(Product.Pili)
+  const kodoUrl = urlForPrice(Product.Kodo)
   return (
     <PricePane>
       <PricePaneSection title="计费方式" padding>
         <TextWrapper>
-          <p>在整个实时音视频解决方案的过程中，可能产生的费用会有以下四部分：</p>
+          <p>实时音视频互动直播解决方案，可能产生的费用会有以下九部分：</p>
           <ol>
-            <li>实时音视频连麦费用：1 对 1 或多对多的音视频互动费用，可以理解为“话费”，只要使用实时音视频互动产品的客户都会产生这项费用。</li>
-            <li>实时音视频合流费用：实时音视频合流包含服务端拉流+合流转码，两项费用二合一一起收取，在账单中被称为“合流”。即按照服务端拉流的集合分辨率和时长，收服务端拉流和合流转码的费用。</li>
-            <li>旁路推流费用：合流完成后，将 RTMP 协议的音视频流推流到指定流媒体地址，这个属于上行推流费用。使用七牛自研旁路推流服务，<strong>则不收取上行推流费用</strong>。</li>
-            <li>其他部分：此外还提供对象存储、直播、鉴黄暴恐等服务，会根据您使用情况单独计费，不使用不计费。</li>
+            <li>
+              实时音视频连麦费用：使用实时音视频进行语音或视频连麦时，产生的费用。上行推流不收费、下行拉流则按照集合分辨率（连麦者所拉几路流的分辨率之和）划分档位计费。
+              若拉流皆为音频则计为音频档，不拉流则不收费。具体价格见下方表格。
+            </li>
+            <li>
+              实时音视频转推费用：七牛实时音视频云支持单路转推和合流转推两种模式，单路转推主要应用在单个主播直播的场景，合流转推主要应用在需要将多人画面拼合的场景中。
+              以主播连麦 PK 的场景为例，由于主播有时是在单人直播，有时是在与其他主播连麦 PK，所以可以在单路转推和合流转推这两种模式上进行平滑切换，从而提高观众的观看体验，并且降低直播费用。具体价格见下方表格。
+            </li>
+            <li>
+              直播上行（旁路直播）费用：实时音视频通过单路转推或合流转推后，使用 rtmp 协议将音视频流推向直播云的动作称为旁路直播。
+              对于实时音视频的每一个连麦房间，使用七牛云默认的旁路直播域名，可免除一路旁路直播（即一路直播上行）的费用，但若一个连麦房间，同时向直播云上行推多路流，则会涉及到一部分直播上行费用。
+              具体价格可参考七牛<Link href={piliUrl}>直播云价格页面</Link>。
+            </li>
+            <li>直播下行（CDN 分发）费用：详情可参考七牛<Link href={piliUrl}>直播云价格页面</Link>。</li>
+            <li>直播实时转码费用：详情可参考七牛<Link href={piliUrl}>直播云价格页面</Link>。</li>
+            <li>直播审核费用：详情可参考七牛<Link href={piliUrl}>直播云价格页面</Link>。</li>
+            <li>直播内容录制（落存储）费用：详情可参考七牛<Link href={kodoUrl}>存储产品价格页面</Link>。</li>
+            <li>视频特效 SDK 费用：该项是指七牛提供的美颜、滤镜、美妆、贴纸等视频特效功能的费用。详情可咨询您的七牛商务对接人，或向您的视频特效方案供应商获取。</li>
+            <li>IM 即时通讯产品费用：该项是指直播间使用的 IM 聊天等功能的费用。详情可咨询您的七牛商务对接人，或向您的 IM 方案供应商获取。</li>
           </ol>
           <p>
-            实时音视频现支持两种付费方式，即按量计费的<em>后付费</em>方式和
-            <Link href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">购买资源包</Link>
+            实时音视频现支持两种付费方式，即按量计费的<em>后付费</em>方式，以及
+            <Link href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801&spec_combo=MTY3Mg">购买资源包</Link>
             的预付费方式，购买资源包可享更多优惠。
           </p>
           <p>
@@ -120,7 +139,7 @@ function PriceDetail() {
               </tr>
               <tr>
                 <td rowSpan={2}>高清</td>
-                <td rowSpan={2}>360P（640*360）≤ r ≤720P(1280*720)</td>
+                <td rowSpan={2}>360P（640*360）&lt; r ≤720P(1280*720)</td>
                 <td>0 - 5 千分钟</td>
                 <td>免费</td>
               </tr>
@@ -139,7 +158,32 @@ function PriceDetail() {
                 <td>105.00</td>
               </tr>
               <tr>
-                <td rowSpan={4}>实时音视频合流</td>
+                <td rowSpan={4}>实时音视频单路转推</td>
+                <td>纯音频</td>
+                <td>标准语音规格</td>
+                <td></td>
+                <td>5.00</td>
+              </tr>
+              <tr>
+                <td>标清</td>
+                <td>r ≤ 360P（640*360）</td>
+                <td></td>
+                <td>14.00</td>
+              </tr>
+              <tr>
+                <td>高清</td>
+                <td>360P（640*360）&lt; r ≤720P(1280*720)</td>
+                <td></td>
+                <td>28.00</td>
+              </tr>
+              <tr>
+                <td>超清</td>
+                <td>r &gt; 720P(1280*720)</td>
+                <td></td>
+                <td>105.00</td>
+              </tr>
+              <tr>
+                <td rowSpan={4}>实时音视频合流转推</td>
                 <td>纯音频</td>
                 <td>标准语音规格</td>
                 <td></td>
@@ -153,7 +197,7 @@ function PriceDetail() {
               </tr>
               <tr>
                 <td>高清</td>
-                <td>360P（640*360）≤ r ≤720P(1280*720)</td>
+                <td>360P（640*360）&lt; r ≤720P(1280*720)</td>
                 <td></td>
                 <td>100.00</td>
               </tr>
