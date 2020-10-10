@@ -8,7 +8,7 @@ const columns: Array<ColumnProps<any>> = [
     dataIndex: 'usage'
   },
   {
-    title: '机器智能审核价格',
+    title: '价格',
     dataIndex: 'price'
   }
 ]
@@ -31,7 +31,7 @@ const data = [
   },
   {
     key: 3,
-    usage: '3000 万至 1 亿张',
+    usage: '3000 万张 至 1 亿张',
     price: '0.055 元／百张'
   },
   {
