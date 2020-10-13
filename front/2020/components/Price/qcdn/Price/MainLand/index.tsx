@@ -6,7 +6,7 @@ const columns: Array<ColumnProps<any>> = [
   {
     title: '名目',
     dataIndex: 'name',
-    width: 290,
+    width: 310,
     render(name, __, idx) {
       if (idx === 0) {
         return { children: name, props: { rowSpan: 4 } }
@@ -32,43 +32,43 @@ const columns: Array<ColumnProps<any>> = [
 const data = [
   {
     key: '1',
-    name: 'HTTP 下载流量/动态加速 HTTP 流量',
+    name: '静态 HTTP 下载流量/动态加速 HTTP 流量',
     bandwidth: '第 0 GB 至 10 GB',
-    price: '免费（仅限 HTTP 下载流量）'
+    price: '免费（仅限静态 HTTP 下载流量）'
   },
   {
     key: '2',
-    name: 'HTTP 下载流量/动态加速 HTTP 流量',
+    name: '静态 HTTP 下载流量/动态加速 HTTP 流量',
     bandwidth: '第 10 GB 至 100 TB',
     price: '0.24 元/GB'
   },
   {
     key: '3',
-    name: 'HTTP 下载流量/动态加速 HTTP 流量',
+    name: '静态 HTTP 下载流量/动态加速 HTTP 流量',
     bandwidth: '第 100 TB 至 1 PB',
     price: '0.19 元/GB'
   },
   {
     key: '4',
-    name: 'HTTP 下载流量/动态加速 HTTP 流量',
+    name: '静态 HTTP 下载流量/动态加速 HTTP 流量',
     bandwidth: '第 1 PB 以上',
     price: '0.14 元/GB'
   },
   {
     key: '5',
-    name: 'HTTPS 下载流量/动态加速 HTTPS 流量',
+    name: '静态 HTTPS 下载流量/动态加速 HTTPS 流量',
     bandwidth: '第 0 GB 至 100 TB',
     price: '0.28 元/GB'
   },
   {
     key: '6',
-    name: 'HTTPS 下载流量/动态加速 HTTPS 流量',
+    name: '静态 HTTPS 下载流量/动态加速 HTTPS 流量',
     bandwidth: '第 100 TB 至 1 PB',
     price: '0.23 元/GB'
   },
   {
     key: '7',
-    name: 'HTTPS 下载流量/动态加速 HTTPS 流量',
+    name: '静态 HTTPS 下载流量/动态加速 HTTPS 流量',
     bandwidth: '第 1 PB 以上',
     price: '0.18 元/GB'
   }
