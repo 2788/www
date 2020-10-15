@@ -28,6 +28,7 @@ import IconOcr from './ocr.svg'
 import IconStorage from './storage.svg'
 import IconPcdn from './pcdn.svg'
 import IconPlesdk from './plesdk.svg'
+import IconCloudSql from './cloud-sql.svg'
 
 export type Props = SVGAttributes<SVGElement> & {
   product: Product
@@ -55,7 +56,8 @@ export const iconMap = {
   [Product.Ocr]: IconOcr,
   [Product.Storage]: IconStorage,
   [Product.Pcdn]: IconPcdn,
-  [Product.Plesdk]: IconPlesdk
+  [Product.Plesdk]: IconPlesdk,
+  [Product.CloudSql]: IconCloudSql
 }
 
 export default function ProductIcon({ product, ...others }: Props) {

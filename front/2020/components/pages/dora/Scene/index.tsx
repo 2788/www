@@ -21,7 +21,7 @@ import styles from './style.less'
 export default function DoraScene() {
   return (
     <Scene name="scene" title="应用场景">
-      <ScenePanel name="scene-tab-1" title="社交电商" verticalCenter>
+      <ScenePanel name="scene-tab-1" title="社交电商">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene1Icon} />
         </SceneBlock>
@@ -50,7 +50,7 @@ export default function DoraScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-2" title="在线视频" verticalCenter>
+      <ScenePanel name="scene-tab-2" title="在线视频">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene2Icon} />
         </SceneBlock>
@@ -79,7 +79,7 @@ export default function DoraScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-3" title="泛娱乐" verticalCenter>
+      <ScenePanel name="scene-tab-3" title="泛娱乐">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene3Icon} />
         </SceneBlock>
@@ -108,7 +108,7 @@ export default function DoraScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-4" title="在线教育" verticalCenter>
+      <ScenePanel name="scene-tab-4" title="在线教育">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene4Icon} />
         </SceneBlock>

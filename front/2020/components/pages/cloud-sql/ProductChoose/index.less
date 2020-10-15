@@ -1,0 +1,38 @@
+@import '~utils/less/index.less';
+
+.card {
+  header {
+    .notMobile({
+      flex: 0 0 154px;
+    });
+  }
+
+  &>div {
+    flex: 1 0 auto;
+  }
+
+}
+
+.nowPrice {
+  font-size: 24px;
+  color: @orange-6;
+
+  .unit {
+    font-size: 14px;
+  }
+}
+
+.prePrice {
+  font-size: 14px;
+  color: @grey-5;
+  text-decoration: line-through;
+}
+
+.button {
+  margin-top: 24px;
+  width: 100%;
+
+  .mobile({
+    margin-top: 12px;
+  });
+}

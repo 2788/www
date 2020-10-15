@@ -23,7 +23,7 @@ import styles from './style.less'
 export default function RtcScene() {
   return (
     <Scene name="scene" title="适用场景">
-      <ScenePanel name="scene-tab-1" title="社交" verticalCenter>
+      <ScenePanel name="scene-tab-1" title="社交">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene1Img} />
         </SceneBlock>
@@ -37,7 +37,7 @@ export default function RtcScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-2" title="互动会议" verticalCenter>
+      <ScenePanel name="scene-tab-2" title="互动会议">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene2Img} />
         </SceneBlock>
@@ -51,7 +51,7 @@ export default function RtcScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-3" title="远程医疗" verticalCenter>
+      <ScenePanel name="scene-tab-3" title="远程医疗">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene3Img} />
         </SceneBlock>
@@ -65,7 +65,7 @@ export default function RtcScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-4" title="在线教育" verticalCenter>
+      <ScenePanel name="scene-tab-4" title="在线教育">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene4Img} />
         </SceneBlock>
@@ -79,7 +79,7 @@ export default function RtcScene() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-5" title="在线客服" verticalCenter>
+      <ScenePanel name="scene-tab-5" title="在线客服">
         <SceneBlock blockType="fixed">
           <img className={styles.sceneIcon} src={Scene5Img} />
         </SceneBlock>

@@ -33,7 +33,7 @@ export default function EcScene() {
     <Scene name="scene" title="适用场景">
       {
         scenes.map((scene, index) => (
-          <ScenePanel name={`scene-tab-${index}`} title={scene.title} verticalCenter key={index} className={style.scenePanel}>
+          <ScenePanel name={`scene-tab-${index}`} title={scene.title} key={index} className={style.scenePanel}>
             <SceneBlock blockType="fixed">
               <img src={scene.url} className={style.sceneIcon} />
             </SceneBlock>

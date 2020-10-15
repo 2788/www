@@ -18,6 +18,8 @@ export enum Product {
   Pili = 'pili',
   /** 云主机 */
   Qvm = 'qvm',
+  /** 云数据库 */
+  CloudSql = 'cloudSql',
   /** 云短信 */
   Sms = 'sms',
   /** 智能多媒体服务 */
@@ -60,6 +62,7 @@ export const nameMap = {
   [Product.Ssl]: 'SSL 证书',
   [Product.Pili]: '视频直播 Pili',
   [Product.Qvm]: '云主机服务 QVM',
+  [Product.CloudSql]: '云数据库',
   [Product.Sms]: '云短信 SMS',
   [Product.Dora]: '智能多媒体服务',
   [Product.Censor]: '内容审核',
@@ -85,6 +88,7 @@ export const urlMap = {
   [Product.Ssl]: '/products/ssl',
   [Product.Pili]: '/products/pili',
   [Product.Qvm]: '/products/qvm',
+  [Product.CloudSql]: '/products/cloud-sql',
   [Product.Sms]: '/products/sms',
   [Product.Dora]: '/products/dora',
   [Product.Censor]: '/products/censor',
@@ -110,6 +114,7 @@ export const priceUrlMap = {
   [Product.Ssl]: '/prices/ssl',
   [Product.Pili]: '/prices/pili',
   [Product.Qvm]: '/prices/qvm',
+  [Product.CloudSql]: null,
   [Product.Sms]: '/prices/sms',
   [Product.Dora]: '/prices/dora',
   [Product.Censor]: '/prices/censor',
@@ -136,6 +141,7 @@ export const descMap = {
   [Product.Ssl]: '提供 SSL 证书申请、管理等一站式服务',
   [Product.Pili]: '提供全球化实时流服务和端到端直播场景解决方案',
   [Product.Qvm]: '提供云主机、负载均衡、云数据库、高防等服务',
+  [Product.CloudSql]: '高性能、高可靠、可灵活伸缩的数据库托管服务',
   [Product.Sms]: '致力于为用户提供快捷高效的通信服务能力',
 
   [Product.Dora]: '提供云端图片、音视频基础处理、丰富的人工智能服务',
@@ -166,6 +172,7 @@ export enum Category {
 export const categoryService = [
   Product.Qvm,
   Product.Kodo,
+  Product.CloudSql,
   Product.Archive,
   Product.Cdn,
   Product.Pcdn,
