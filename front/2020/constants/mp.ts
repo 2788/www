@@ -4,8 +4,12 @@
 
 // 小程序页面配置
 export enum MpPage {
+  // 登录页
+  Signin = '/pages/signin/index',
   // 控制台
   Portal = '/pages/portal/index',
   PortalKodo = '/pages/portal/pages/kodo/index',
-  PortalQCDN = '/pages/portal/pages/qcdn/index'
+  PortalQCDN = '/pages/portal/pages/qcdn/index',
+  // 服务与咨询
+  ServiceAndConsult = '/TODO'
 }

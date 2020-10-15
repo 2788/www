@@ -7,6 +7,12 @@ import { Product, nameMap, urlMap } from 'constants/products'
 import { Row } from 'components/UI/Card'
 import Card, { Title, Desc, List, HookItem, Button } from 'components/OperationCard'
 import Link from 'components/Link'
+import { useMp } from 'hooks/ua'
+import { useOverlay } from 'components/Overlay'
+import MpModal from 'components/mp/Modal'
+import { MpPage } from 'constants/mp'
+import { useUserInfo } from 'components/UserInfo'
+
 import style from './style.less'
 
 const signupUrl = 'https://portal.qiniu.com/signup'
@@ -131,7 +137,9 @@ type ProductCardProps = PropsWithChildren<{
 }>
 
 function ProductCard({ title, desc, getUrl, moreUrl, children }: ProductCardProps) {
-
+  const userInfo = useUserInfo()
+  const isMp = useMp()
+  const { add } = useOverlay()
   const headerView = (
     <>
       <Title>{title}</Title>
@@ -139,9 +147,27 @@ function ProductCard({ title, desc, getUrl, moreUrl, children }: ProductCardProp
     </>
   )
 
+  function handleMpButtonClick() {
+    // 用户已登录
+    if (userInfo && userInfo.signedIn) {
+      const mpModalTitle = userInfo.is_certified
+        ? <>领取成功，请在电脑端<br />登录七牛云管理控制台管理产品</>
+        : <>请在电脑端登录七牛管理控制台<br />完成实名认证，即可领取免费产品</>
+
+      add(<MpModal title={mpModalTitle} />)
+    } else {
+      // 未登录跳转到小程序登录页
+      wx.miniProgram.navigateTo({ url: MpPage.Signin })
+    }
+  }
+
   const footerView = (
     <>
-      <Button href={getUrl}>免费领取</Button>
+      {
+        isMp
+          ? <Button onClick={handleMpButtonClick}>免费领取</Button>
+          : <Button href={getUrl}>免费领取</Button>
+      }
       <p className={style.moreLink}>
         <Link href={moreUrl}>了解更多 &gt;&gt;</Link>
       </p>

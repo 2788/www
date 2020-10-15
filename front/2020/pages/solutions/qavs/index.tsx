@@ -19,7 +19,7 @@ import QavsArch from 'components/pages/qavs/Arch'
 import QavsScene from 'components/pages/qavs/Scene'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { categoryVideo } from 'constants/products'
+import { categoryVision } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
@@ -60,7 +60,7 @@ function PageContent() {
       <QavsScene />
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
-        {chunk(categoryVideo, 4).map((group, i) => (
+        {chunk(categoryVision, 4).map((group, i) => (
           <Related key={i}>
             {group.map(product => (
               <RelatedProduct key={product} product={product} />

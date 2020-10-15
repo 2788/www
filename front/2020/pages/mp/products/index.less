@@ -1,0 +1,41 @@
+@import '~utils/less/index.less';
+
+.tabs {
+  // tabs 自带 17，需要 24
+  margin-top: 7px;
+}
+
+.tabsContent {
+  margin-top: 16px;
+  padding: 0 !important;
+}
+
+.card {
+  display: flex;
+  min-height: 113px;
+  margin: 12px 0;
+  padding: 16px;
+  background: @grey-1;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(192, 204, 208, 0.3);
+}
+
+.cardIcon {
+  margin-right: 12px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cardDesc {
+  margin-top: 12px;
+  font-size: 15px;
+  color: @grey-6;
+}

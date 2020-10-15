@@ -1,11 +1,26 @@
 @import "~utils/less/index.less";
 
 .banner {
-  margin-bottom: 24px;
+  position: relative;
+  color: @grey-1;
   overflow: hidden;
   border-radius: 8px;
 
   > img {
     width: 100%;
   }
+}
+
+.title {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 17px;
+}
+
+.subtitle {
+  position: absolute;
+  top: 50px;
+  left: 16px;
+  font-size: 13px;
 }

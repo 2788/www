@@ -51,7 +51,7 @@ function PageContent() {
   const priceUrl = urlForPrice(Product.Cdn)
 
   const btns = useBtns(
-    { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalQCDN }), mpOnly: true },
+    { children: '立即使用', onClick: () => wx.miniProgram.navigateTo({ url: MpPage.PortalQCDN }), mpOnly: true },
     { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
     { href: 'https://qmall.qiniu.com/template/MTY', children: '立即购买' }
   )

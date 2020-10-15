@@ -30,11 +30,10 @@ export function createDeveloperCooperation(options: CreateDeveloperOptions): Pro
 
 export type UserInfo = {
   email: string
-  signedIn: true
+  signedIn: boolean
   name: string
   uid: number
-} | {
-  signedIn: false
+  is_certified: boolean
 }
 
 /** 获取用户信息 */

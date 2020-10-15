@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { CSSProperties, ReactNode } from 'react'
 
-import style from './index.less'
+import styles from './index.less'
 
 export type BannerProps = {
   banner: string
+  title?: ReactNode
+  subtitle?: ReactNode
+  style?: CSSProperties
+  onClick?: () => void
 }
 
-export default function Banner({ banner }: BannerProps) {
+export default function Banner({ banner, title, subtitle, style, onClick }: BannerProps) {
   return (
-    <div className={style.banner}>
+    <div className={styles.banner} style={style} onClick={onClick}>
       <img src={banner} alt="banner" />
+      <div className={styles.title}>{title}</div>
+      <div className={styles.subtitle}>{subtitle}</div>
     </div>
   )
 }

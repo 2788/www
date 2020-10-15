@@ -46,7 +46,7 @@ export function FreePage() {
 function MpPage() {
   return (
     <div style={{ padding: '16px' }}>
-      <MpBanner banner={mpBannner} />
+      <MpBanner banner={mpBannner} style={{ marginBottom: '24px' }} />
       <FreeProducts />
     </div>
   )

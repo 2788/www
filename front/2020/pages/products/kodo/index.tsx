@@ -34,7 +34,7 @@ function PageContent() {
 
   const btns = useBtns(
     { children: '立即使用', href: 'https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true&ref=www.qiniu.com', pcOnly: true },
-    { children: '立即使用', onClick: () => wx.miniProgram.reLaunch({ url: MpPage.PortalKodo }), mpOnly: true },
+    { children: '立即使用', onClick: () => wx.miniProgram.navigateTo({ url: MpPage.PortalKodo }), mpOnly: true },
     { href: priceUrl, children: '产品价格' }
   )
 

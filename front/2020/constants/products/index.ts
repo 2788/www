@@ -182,8 +182,8 @@ export const categoryService = [
   Product.Storage
 ] as const
 
-/** 智能视频 */
-export const categoryVideo = [
+/** 视觉数据智能 */
+export const categoryVision = [
   Product.Dora,
   Product.Censor,
   Product.FaceID,
@@ -205,7 +205,7 @@ export const categoryIntelligence = [
 
 export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
   [Category.Service]: categoryService,
-  [Category.Vision]: categoryVideo,
+  [Category.Vision]: categoryVision,
   [Category.Intelligence]: categoryIntelligence
 }
 
