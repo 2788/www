@@ -25,11 +25,7 @@ export function Provider({ children }: PropsWithChildren<{}>) {
         // 无需处理
       }
     } else {
-      getUserInfo().then(response => {
-        if (response.signedIn) {
-          setUserinfo(response)
-        }
-      })
+      getUserInfo().then(setUserinfo)
     }
   }, [userinfoOfQuery])
 
