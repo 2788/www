@@ -17,27 +17,22 @@ const data = [
   {
     key: 0,
     usage: '第 0 张 至 300 万张',
-    price: '0.085 元／百张'
+    price: '0.18 元／百张'
   },
   {
     key: 1,
     usage: '第 300 万张 至 1500 万张',
-    price: '0.075 元／百张'
+    price: '0.16 元／百张'
   },
   {
     key: 2,
     usage: '第 1500 万张 至 3000 万张',
-    price: '0.065 元／百张'
+    price: '0.15 元／百张'
   },
   {
     key: 3,
-    usage: '3000 万张 至 1 亿张',
-    price: '0.055 元／百张'
-  },
-  {
-    key: 4,
-    usage: '1 亿张以上',
-    price: '0.05 元／百张'
+    usage: '3000 万张以上',
+    price: '0.13 元／百张'
   }
 ]
 
@@ -61,7 +56,7 @@ const audioData = [
     key: 0,
     name: '直播音频反垃圾',
     ladder: '无阶梯',
-    price: '0.016 元/分钟'
+    price: '0.02 元/分钟'
   }
 ]
 
