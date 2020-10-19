@@ -20,7 +20,7 @@ export default function RegisterEntry() {
 
   return (
     isMobile
-    ? <MobileEntry />
-    : <PcEntry />
+      ? <MobileEntry />
+      : <PcEntry />
   )
 }

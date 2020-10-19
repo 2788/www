@@ -25,7 +25,15 @@ export function Provider({ children }: PropsWithChildren<{}>) {
         // 无需处理
       }
     } else {
-      getUserInfo().then(setUserinfo)
+      let cancelled = false
+      getUserInfo().then(_userInfo => {
+        if (!cancelled) {
+          setUserinfo(_userInfo)
+        }
+      })
+      return () => {
+        cancelled = true
+      }
     }
   }, [userinfoOfQuery])
 
