@@ -8833,10 +8833,10 @@ react-dom@^16.12.0:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-icecream@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-1.7.4.tgz#786d35bbf7f299999400ceb0df428ce6281a9b6a"
-  integrity sha512-4iUof2JPNse+79T5UtvFl/rAW5hj8ZKNnCNT8c5S2A5SMiK7vaY7arcN46F3JCNDwxXOGl4CWBTVqcwHhMiNLw==
+react-icecream@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-1.7.5.tgz#4c0455a7e21760e08d21063e26a27cd22b986370"
+  integrity sha512-jeQXImiT5zJrK1j4a3+uxX3muAGcjJMb9uOYKIhxL6kI3js2AGSP+aaHCpYbulUqMI5HNUZa641K3SB3t/alJA==
   dependencies:
     antd "~3.19.8"
     classnames "^2.2.5"
