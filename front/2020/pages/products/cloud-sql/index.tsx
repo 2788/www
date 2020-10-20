@@ -20,7 +20,7 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import SqlProduct from 'components/pages/cloud-sql/Product'
 import Scene from 'components/pages/cloud-sql/Scene'
 import ProductChoose from 'components/pages/cloud-sql/ProductChoose'
-import Case from 'components/pages/cloud-sql/Case'
+import Cases from 'components/pages/cloud-sql/Cases'
 
 import banner from './banner.png'
 
@@ -64,7 +64,7 @@ function Page() {
 
       <ProductChoose />
 
-      <Case />
+      <Cases />
 
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">

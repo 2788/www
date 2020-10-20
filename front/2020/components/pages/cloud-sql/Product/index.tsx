@@ -17,6 +17,8 @@ export interface CardProps {
 
 export type ProductProps = {
   data: Array<Array<CardProps | null>>
+  title?: string
+  header?: string
 }
 
 const products: Array<Array<CardProps | null>> = [
@@ -58,5 +60,9 @@ const products: Array<Array<CardProps | null>> = [
   ]
 ]
 export default function SqlProduct() {
-  return useMobile() ? <ForMobile data={products} /> : <ForPc data={products} />
+  return <CustomProduct data={products} title="产品简介" header="丰富的云数据库产品" />
+}
+
+export function CustomProduct(props: ProductProps) {
+  return useMobile() ? <ForMobile {...props} /> : <ForPc {...props} />
 }

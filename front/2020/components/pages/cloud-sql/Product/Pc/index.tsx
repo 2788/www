@@ -6,9 +6,9 @@ import { Card, Row, InvisibleCard } from 'components/UI/Card'
 import { CardProps, ProductProps } from '../index'
 import style from './index.less'
 
-export default function ForPc({ data }: ProductProps) {
+export default function ForPc({ title = '产品简介', header = title, data }: ProductProps) {
   return (
-    <Feature title="产品简介" header="丰富的云数据库产品" name="product">
+    <Feature title={title} header={header} name="product">
       {
         data.map((product, index) => (
           <Row key={index}>
@@ -16,10 +16,10 @@ export default function ForPc({ data }: ProductProps) {
               product.map((item, i) => {
                 // 占位，空白卡片
                 if (!item) {
-                  return <InvisibleCard className={style.cardWrapper} key={`${index}-${i}`} />
+                  return <InvisibleCard className={style.cardWrapper} key={i} />
                 }
                 return (
-                  <MyCard {...item} key={`${index}-${i}`} />
+                  <MyCard {...item} key={i} />
                 )
               })
             }

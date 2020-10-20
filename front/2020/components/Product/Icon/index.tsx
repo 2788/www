@@ -14,6 +14,7 @@ import IconSsl from './ssl.svg'
 import IconPili from './pili.svg'
 import IconQvm from './qvm.svg'
 import IconSms from './sms.svg'
+import IconDdos from './ddos.svg'
 import IconDora from './dora.svg'
 import IconCensor from './censor.svg'
 import IconFaceID from './faceid.svg'
@@ -42,6 +43,7 @@ export const iconMap = {
   [Product.Ssl]: IconSsl,
   [Product.Pili]: IconPili,
   [Product.Qvm]: IconQvm,
+  [Product.Ddos]: IconDdos,
   [Product.Sms]: IconSms,
   [Product.Dora]: IconDora,
   [Product.Censor]: IconCensor,
