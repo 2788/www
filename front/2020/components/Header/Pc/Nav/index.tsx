@@ -29,9 +29,10 @@ type ItemWithOverlayProps = PropsWithChildren<{
   visible?: boolean
   overlay: ReactElement
   overlayOffsetX?: number
+  alignLeft?: boolean // 下拉框是否显示在导航栏对应的左侧（是则是对应方案和产品，否则默认直接显示在下面）
 }>
 
-export function ItemWithOverlay({ visible, overlay, overlayOffsetX, children }: ItemWithOverlayProps) {
+export function ItemWithOverlay({ visible, overlay, overlayOffsetX, children, alignLeft }: ItemWithOverlayProps) {
   const offsetX = overlayOffsetX != null ? overlayOffsetX : 0
   const ref = useRef(null)
   return (
@@ -41,6 +42,7 @@ export function ItemWithOverlay({ visible, overlay, overlayOffsetX, children }: 
         align={{ offset: [offsetX, -1] }}
         getPopupContainer={() => ref.current || window.document.body}
         overlay={overlay}
+        overlayClassName={alignLeft ? style.overlay : undefined}
       >
         <a className={style.itemText}>{children}</a>
       </Dropdown>

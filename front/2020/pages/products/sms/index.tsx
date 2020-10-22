@@ -16,7 +16,7 @@ import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProc
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import Cases from 'components/pages/qvm/Cases' // 短信使用跟 QVM 一样的客户案例内容
+import QvmCommonCases from 'components/pages/qvm/Cases' // 短信使用跟 QVM 一样的客户案例内容
 import imgBanner from './banner.png'
 import IconSchedule from './_icons/schedule.svg'
 import IconQuick from './_icons/quick.svg'
@@ -117,7 +117,7 @@ function PageContent() {
         </ScenePanel>
       </Scene>
 
-      <Cases />
+      <QvmCommonCases title="客户案例" header="他们都在用七牛" />
 
       <AccessProcess>
         <AccessStep icon={<IconStep1 />} url="https://developer.qiniu.com/af/manual/4057/the-identity-authentication">

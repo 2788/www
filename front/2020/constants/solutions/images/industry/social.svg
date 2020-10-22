@@ -1,29 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>数据分析备份 8</title>
-    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="导航-下拉菜单" transform="translate(-737.000000, -2382.000000)" stroke-width="2">
-            <g id="编组-6备份-2" transform="translate(172.000000, 1622.000000)">
-                <g id="弹出框">
-                    <g id="编组-9" transform="translate(183.000000, 20.000000)">
-                        <g transform="translate(0.000000, 400.000000)" id="编组-14备份-5">
-                            <g transform="translate(356.000000, 304.000000)">
-                                <g id="01" transform="translate(20.000000, 20.000000)">
-                                    <g id="编组-45" transform="translate(0.000000, 10.000000)">
-                                        <g id="node" transform="translate(10.000000, 10.000000)">
-                                            <polyline id="路径" stroke="#00AAE7" points="12 8 12 14 7 18"></polyline>
-                                            <line x1="12" y1="14" x2="17" y2="18" id="路径" stroke="#00AAE7"></line>
-                                            <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="12" cy="4" r="4"></circle>
-                                            <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="4" cy="20" r="4"></circle>
-                                            <circle id="椭圆形" stroke="#333333" stroke-linecap="square" cx="20" cy="20" r="4"></circle>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(2 2)">
+    <polyline stroke="#00AAE7" points="10 6.667 10 11.667 5.833 15"/>
+    <line x1="10" x2="14.167" y1="11.667" y2="15" stroke="#00AAE7"/>
+    <circle cx="10" cy="3.333" r="3.333" stroke="#333" stroke-linecap="square"/>
+    <circle cx="3.333" cy="16.667" r="3.333" stroke="#333" stroke-linecap="square"/>
+    <circle cx="16.667" cy="16.667" r="3.333" stroke="#333" stroke-linecap="square"/>
+  </g>
 </svg>

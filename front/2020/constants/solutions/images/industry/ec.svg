@@ -1,26 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>数据分析备份 8</title>
-    <g id="公共组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
-        <g id="导航-下拉菜单" transform="translate(-737.000000, -2230.000000)" stroke-width="2">
-            <g id="编组-6备份-2" transform="translate(172.000000, 1622.000000)">
-                <g id="弹出框">
-                    <g id="编组-9" transform="translate(183.000000, 20.000000)">
-                        <g transform="translate(0.000000, 400.000000)" id="编组-14备份-6">
-                            <g transform="translate(356.000000, 152.000000)">
-                                <g id="01" transform="translate(20.000000, 20.000000)">
-                                    <g id="编组-45" transform="translate(0.000000, 10.000000)">
-                                        <g id="bag-20" transform="translate(11.000000, 8.000000)">
-                                            <polygon id="路径" stroke="#333333" points="22 28 0 28 0 6 22 6"></polygon>
-                                            <path d="M6,11 L6,5 C6,2.239 8.239,0 11,0 L11,0 C13.761,0 16,2.239 16,5 L16,11" id="路径" stroke="#00AAE7"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(3 1)">
+    <polygon stroke="#333" points="18 22 0 22 0 6 18 6"/>
+    <path stroke="#00AAE7" d="M4,9 L4,5 C4,2.239 6.239,0 9,0 C11.761,0 14,2.239 14,5 L14,9"/>
+  </g>
 </svg>

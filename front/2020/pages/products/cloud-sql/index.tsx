@@ -20,7 +20,7 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import SqlProduct from 'components/pages/cloud-sql/Product'
 import Scene from 'components/pages/cloud-sql/Scene'
 import ProductChoose from 'components/pages/cloud-sql/ProductChoose'
-import Cases from 'components/pages/cloud-sql/Cases'
+import QvmCommonCases from 'components/pages/qvm/Cases'
 
 import banner from './banner.png'
 
@@ -64,7 +64,7 @@ function Page() {
 
       <ProductChoose />
 
-      <Cases />
+      <QvmCommonCases title="客户案例" />
 
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">

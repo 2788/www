@@ -15,7 +15,7 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 
 import DdosProduct from 'components/pages/ddos/Product'
 import Advantage from 'components/pages/ddos/Advantage'
-import Cases from 'components/pages/cloud-sql/Cases'
+import QvmCommonCases from 'components/pages/qvm/Cases'
 
 import banner from './banner.png'
 
@@ -41,7 +41,7 @@ function Page() {
 
       <Advantage />
 
-      <Cases />
+      <QvmCommonCases title="客户案例" />
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>

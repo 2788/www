@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g fill="none" fill-rule="evenodd" stroke-width="2">
+    <circle cx="12" cy="9" r="3" stroke="#00AAE6"/>
+    <path stroke="#00AAE6" d="M6,18 C6,15.2385763 8.6862915,13 12,13 L12,13 C15.3137085,13 18,15.2385763 18,18"/>
+    <polyline stroke="#333" points="8 2 2 2 2 8"/>
+    <polyline stroke="#333" points="22 2 16 2 16 8" transform="matrix(-1 0 0 1 38 0)"/>
+    <polyline stroke="#333" points="8 16 2 16 2 22" transform="matrix(1 0 0 -1 0 38)"/>
+    <polyline stroke="#333" points="22 16 16 16 16 22" transform="rotate(180 19 19)"/>
+  </g>
+</svg>

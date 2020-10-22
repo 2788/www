@@ -1,10 +1,10 @@
 @import '~utils/less/index.less';
 
-@li-height: 116px;
+@li-height: 96px;
 
 .li {
   display: inline-block;
-  width: 50%;
+  width: 33.33%;
   vertical-align: top;
 
   &:hover {
@@ -19,14 +19,13 @@
 
   .icon {
     float: left;
-    width: 76px;
+    width: 56px;
     height: @li-height;
-    line-height: @li-height;
     text-align: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    svg {
+      margin-top: 26px;
+    }
   }
 
   .desc {
@@ -34,7 +33,7 @@
     flex-direction: column;
     justify-content: center;
     min-height: @li-height;
-    padding: 26px 16px 26px 0;
+    padding: 16px 16px 16px 0;
 
     .title {
       margin-bottom: 4px;

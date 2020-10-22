@@ -13,6 +13,6 @@ import { ItemWithOverlay } from '..'
 
 export default function Project() {
   return (
-    <ItemWithOverlay overlay={<Overlay />} overlayOffsetX={-134}>方案</ItemWithOverlay>
+    <ItemWithOverlay overlay={<Overlay />} alignLeft>方案</ItemWithOverlay>
   )
 }

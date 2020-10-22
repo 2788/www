@@ -19,7 +19,7 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Specs from 'components/pages/qvm/Specs'
 import MoreProducts from 'components/pages/qvm/MoreProducts'
 import Scenes from 'components/pages/qvm/Scenes'
-import Cases from 'components/pages/qvm/Cases'
+import QvmCommonCases from 'components/pages/qvm/Cases'
 import { useMobile } from 'hooks/ua'
 import { getStarterSpecs, getMetaInfo, getEnterpriseSpecs } from 'apis/qvm'
 
@@ -134,7 +134,8 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
       </Section>
 
       <Scenes />
-      <Cases />
+
+      <QvmCommonCases title="客户案例" header="他们都在用七牛" />
 
       <LinkGroups name="docs" title="产品文档">
         <LinkGroup title="产品文档">
