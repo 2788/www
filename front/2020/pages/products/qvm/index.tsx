@@ -101,7 +101,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
             <feature.Desc className={style.featureDesc}>支持分钟级别创建 1000 台实例，多种弹性付费选择更贴合业务现状，支持弹性扩容，实例、带宽和云盘随时升配</feature.Desc>
           </feature.Item>
           <feature.Item title="稳定" icon={<IconFeatureStable />}>
-            <feature.Desc className={style.featureDesc}>单实例可用性达 99.975%，多可用区多实例可用性达 99.995%，云盘可靠性达 99.9999999%，可实现自动宕机迁移</feature.Desc>
+            <feature.Desc className={style.featureDesc}>单实例可用性达 99.95%，多可用区多实例可用性达 99.99%，云盘可靠性达 99.9999999%，可实现自动宕机迁移</feature.Desc>
           </feature.Item>
           <feature.Item title="安全" icon={<IconFeatureSafe />}>
             <feature.Desc className={style.featureDesc}>通过多方国际安全认证，免费提供 DDoS 基础防护、专用网络服务，可结合七牛云其它安全产品进一步保障数据和服务</feature.Desc>

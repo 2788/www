@@ -67,6 +67,9 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="新闻动态" type="news">
+          <PageNoticeItem title="【新客特惠礼】个人企业新用户超值购，1 T 资源包只要 1 分钱" href="https://marketing.qiniu.com/activity/activity-Discount">
+            【新客特惠礼】个人企业新用户超值购，1 T 资源包只要 1 分钱 &gt;&gt;
+          </PageNoticeItem>
           <PageNoticeItem title="域名型 DV SSL 证书免费申请" href="/products/ssl">
             域名型 DV SSL 证书免费申请 &gt;&gt;
           </PageNoticeItem>
