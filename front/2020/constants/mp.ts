@@ -13,5 +13,5 @@ export enum MpPage {
   PortalKodo = '/pages/portal/pages/kodo/index',
   PortalQCDN = '/pages/portal/pages/qcdn/index',
   // 服务与咨询
-  ServiceAndConsult = '/TODO'
+  ServiceAndConsult = '/pages/mine/pages/consult/index'
 }
