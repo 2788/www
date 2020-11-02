@@ -11,6 +11,7 @@ import Loading from 'components/UI/Loading'
 import MessageList, { Message, MessageFrom } from './MessageList'
 import { IRobot, InputType, OutputType, withEase, Input, context, Disposer } from './robot'
 import ConsultRobot, { startConsultingMessage } from './robot/consult'
+import qiniu from '../icons/qiniu.png'
 import style from './style.less'
 
 export { startConsultingMessage }
@@ -68,8 +69,8 @@ function makeConsultRobot() {
 function Header() {
   return (
     <div className={style.header}>
-      <i className={style.avatar}></i>
-      <h4 className={style.title}>七牛君</h4>
+      <img className={style.avatar} src={qiniu} />
+      <h4 className={style.title}>牛小七</h4>
       <p className={style.description}>机器智能客服为您服务</p>
     </div>
   )

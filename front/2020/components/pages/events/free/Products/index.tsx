@@ -3,7 +3,7 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import { Product, nameMap, urlMap } from 'constants/products'
+import { Product, nameMap, urlMap, descMap } from 'constants/products'
 import { Row } from 'components/UI/Card'
 import Card, { Title, Desc, List, HookItem, Button } from 'components/OperationCard'
 import Link from 'components/Link'
@@ -20,6 +20,38 @@ const signupUrl = 'https://portal.qiniu.com/signup'
 export default function FreeProducts() {
   return (
     <div className="wrapper">
+      <Row>
+        <ProductCard
+          title={nameMap[Product.Rtn]}
+          desc={descMap[Product.Rtn]}
+          getUrl="https://portal.qiniu.com/rtn/rtc/report/duration"
+          moreUrl={urlMap[Product.Rtn]}
+        >
+          <List>
+            <HookItem>每月免费连麦语音、标清、超清、高清各 5000 分钟</HookItem>
+          </List>
+        </ProductCard>
+        <ProductCard
+          title={nameMap[Product.Plsv]}
+          desc="免费使用一个月专业版短视频 SDK license"
+          getUrl="https://portal.qiniu.com/sdk/licenses?showDrawer"
+          moreUrl={urlMap[Product.Plsv]}
+        >
+          <List>
+            <HookItem>集合视频拍摄、上传、编辑等全套功能，快速打造手机 Vlog 制作神器</HookItem>
+          </List>
+        </ProductCard>
+        <ProductCard
+          title={nameMap[Product.FaceID]}
+          desc={descMap[Product.FaceID]}
+          getUrl="https://qmall.qiniu.com/template/Mjg"
+          moreUrl={urlMap[Product.FaceID]}
+        >
+          <List>
+            <HookItem>免费领取人脸检测、动作活体、防翻拍活体、公安核验各 100 次</HookItem>
+          </List>
+        </ProductCard>
+      </Row>
       <Row>
         <ProductCard
           title={nameMap[Product.Kodo]}
