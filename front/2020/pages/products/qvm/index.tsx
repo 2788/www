@@ -76,9 +76,6 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
           </PageNoticeItem>
         </PageNoticeGroup>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="/products/qvm/partner">
-            云主机合伙人
-          </PageNoticeItem>
           <PageNoticeItem href="/events/qvm0rmb">
             企业 0 元云主机活动
           </PageNoticeItem>

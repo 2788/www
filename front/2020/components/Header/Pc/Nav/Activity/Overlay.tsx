@@ -12,7 +12,6 @@ export default function Overlay() {
         <DropdownMenuItem><Link href="/partner">合作伙伴与生态</Link></DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuGroup title="运营活动">
-        <DropdownMenuItem><Link href="/products/qvm/partner">云主机合伙人计划</Link></DropdownMenuItem>
         <DropdownMenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuGroup title="市场活动">
