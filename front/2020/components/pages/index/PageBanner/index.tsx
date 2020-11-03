@@ -51,7 +51,7 @@ export default function IndexPageBanner(props: IndexPageBannerProps) {
     style: bgColorStyle,
     href
   }, (
-    <div className={classnames(styles.contentWrapper)} style={bgStyle}>
+    <div className={styles.contentWrapper} style={bgStyle}>
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
         <div className={styles.desc}>{desc}</div>

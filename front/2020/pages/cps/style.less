@@ -1,0 +1,30 @@
+@import '~utils/less/index.less';
+
+.banner {
+  display: flex;
+  justify-content: center;
+  height: 456px;
+
+  .mobile({
+    height: 197px;
+  });
+
+  .btn {
+    position: absolute;
+    left: 50%;
+    bottom: 30%;
+    transform: translateX(-50%);
+    padding: 10px 38px;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    font-weight: 500;
+    border-radius: 2px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.08); 
+
+    .mobile({
+      bottom: 20%;
+      padding: 6px 22px;
+    });
+  }
+}

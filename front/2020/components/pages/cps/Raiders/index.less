@@ -1,0 +1,41 @@
+@import '~utils/less/index.less';
+
+@card-height: 384px;
+
+.card {
+  height: @card-height;
+  color: @grey-7;
+
+  .mobile({
+    height: auto;
+  });
+
+  svg{
+    .mobile({
+      width: 32px;
+    });
+  }
+
+  .title {
+    margin-top: 28px;
+    font-size: 20px;
+    font-weight: 600;
+    .mobile({
+      margin-top: 24px;
+      font-size: 16px;
+    });
+  }
+
+  .desc {
+    margin-top: 16px;
+    font-size: 16px;
+    .mobile({
+      margin-top: 8px;
+      font-size: 12px;
+    });
+  }
+
+  &>div {
+    flex: 1 0 auto;
+  }
+}

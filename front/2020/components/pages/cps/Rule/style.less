@@ -1,0 +1,35 @@
+@import '~utils/less/index.less';
+
+.content {
+  ol {
+    text-align: left;
+    font-weight: 400;
+
+    li {
+      h4 {
+        font-size: 16px;
+
+        color: @grey-7;
+      }
+
+      p {
+        margin-top: 8px;
+        font-size: 12px;
+        color: @grey-6;
+      }
+
+      img {
+        margin-top: 12px;
+        width: 208px;
+      }
+
+      .btn {
+        margin-top: 16px;
+      }
+
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+  }
+}

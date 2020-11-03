@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42" height="46" viewBox="0 0 42 46">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <ellipse cx="11" cy="5" stroke="#333" stroke-linecap="square" rx="11" ry="5"/>
+    <path stroke="#333" d="M22,5 L22,12 C22,14.761 17.075,17 11,17 C4.925,17 0,14.761 0,12 L0,5"/>
+    <path stroke="#333" d="M18,22.857 C16.098,23.571 13.659,24 11,24 C4.925,24 0,21.761 0,19 L0,12"/>
+    <path stroke="#333" d="M17.999,29.857 C16.098,30.571 13.659,31 11,31 C4.925,31 0,28.761 0,26 L0,19"/>
+    <path stroke="#333" d="M18,36.857 C16.098,37.571 13.659,38 11,38 C4.925,38 0,35.761 0,33 L0,26"/>
+    <ellipse cx="29" cy="18" stroke="#00AAE7" stroke-linecap="square" rx="11" ry="5"/>
+    <path stroke="#00AAE7" d="M40,18 L40,25 C40,27.761 35.075,30 29,30 C22.925,30 18,27.761 18,25 L18,18"/>
+    <path stroke="#00AAE7" d="M40,25 L40,32 C40,34.761 35.075,37 29,37 C22.925,37 18,34.761 18,32 L18,25"/>
+    <path stroke="#00AAE7" d="M40,32 L40,39 C40,41.761 35.075,44 29,44 C22.925,44 18,41.761 18,39 L18,32"/>
+  </g>
+</svg>

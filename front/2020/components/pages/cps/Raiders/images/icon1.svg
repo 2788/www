@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="24" cy="24" r="24"/>
+    <g stroke-width="2" transform="translate(3 3)">
+      <polyline stroke="#00AAE7" points="20.8 35.9 38.3 42.2 41 34.7 32.6 31.6"/>
+      <polyline stroke="#00AAE7" points="15.5 25.4 3.4 21 .7 28.5 9.1 31.6"/>
+      <polyline stroke="#00AAE7" points="26.8 25.2 38.3 21 41 28.5 3.4 42.2 .7 34.7 21.9 27"/>
+      <path stroke="#333" stroke-linecap="square" d="M11,17.1 C11,11 21,0 21,0 C21,0 31,11 31,17.1 C31,23.4 25.9,27 21,27 C16.1,27 11,23.4 11,17.1 Z"/>
+      <path stroke="#333" stroke-linecap="square" d="M17.7,17.7 C17.7,15.7 21,12 21,12 C21,12 24.3,15.7 24.3,17.7 C24.3,19.8 22.6,21 21,21 C19.4,21 17.7,19.8 17.7,17.7 Z"/>
+    </g>
+  </g>
+</svg>

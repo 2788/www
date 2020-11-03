@@ -13,6 +13,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
   backgroundSize?: string
   backgroundPosition?: string
   backgroundAnchor?: 'root' | 'content'
+  showMobileBgImg?: boolean // 移动端是否显示背景图
 }
 
 export default function Banner(props: Props) {
@@ -21,6 +22,7 @@ export default function Banner(props: Props) {
     backgroundSize = '200px',
     backgroundPosition,
     backgroundAnchor = 'content',
+    showMobileBgImg,
     children,
     className,
     ...others
@@ -28,7 +30,7 @@ export default function Banner(props: Props) {
   const isMobile = useMobile()
 
   const backgroundStyle: CSSProperties = {
-    backgroundImage: isMobile ? 'none' : `url(${background})`,
+    backgroundImage: (isMobile && !showMobileBgImg) ? 'none' : `url(${background})`,
     backgroundSize,
     backgroundPosition
   }
