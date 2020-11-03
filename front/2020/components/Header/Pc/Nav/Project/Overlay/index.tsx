@@ -1,6 +1,7 @@
 import React, { createElement, MouseEvent } from 'react'
 import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, iconMap, descMap, allCategories, categoryEnNameMap, Solution, IndustrySolution } from 'constants/solutions'
 import { useModal } from 'components/Feedback'
+import { useDropdown } from 'components/UI/Dropdown'
 
 import ScrollableOverlay from '../../ScrollableOverlay'
 import Menu from '../../ScrollableOverlay/Menu'
@@ -38,12 +39,14 @@ export default function Overlay() {
 function SolutionItem({ solution }: { solution: Solution }) {
 
   const { startConsulting } = useModal()
+  const { close } = useDropdown()
 
   const url = urlMap[solution]
   const online = url != null // 方案内容已上线
 
   function handleClick(e: MouseEvent) {
     e.preventDefault()
+    if (close) close()
     startConsulting()
   }
 

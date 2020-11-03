@@ -52,7 +52,6 @@ type PanelProps = {
 function MyPanel({ name, title }: PanelProps) {
   const [imgData, setImgData] = useState<Blob | undefined>(undefined)
   const [imgUrl, setImgUrl] = useState(getImgByName(name))
-  const [reqBody, setReqBody] = useState<ImageOptions>({ image: removeImageBase64Prefix(imgUrl) })
   const userInfo = useUserInfo()
 
   useOnChange(() => {
@@ -69,12 +68,12 @@ function MyPanel({ name, title }: PanelProps) {
     }
   }, [imgData])
 
-  useOnChange(() => {
-    if (imgUrl) {
-      setReqBody({ image: removeImageBase64Prefix(imgUrl) })
-    }
-  }, [imgUrl])
+  // 防止不必要的更新影响到image数据，不直接使用set是为了避免接口多次执行
+  const reqBody = useMemo(() => ({
+    image: removeImageBase64Prefix(imgUrl)
+  }), [imgUrl])
 
+  // 当imgUrl改变时，函数引用也会改变，这时候会触发useApiWithParams变更机制，发送一次请求
   const wrappedOcr = useCallback(
     (options: ImageOptions): Promise<IdCardResponse | CarBdResponse | BsResponse | NewCarResponse | CzResponse> => {
       if (imgUrl === getImgByName(name)) return new Promise(resolve => resolve(defaultResponse(name)))
@@ -82,7 +81,6 @@ function MyPanel({ name, title }: PanelProps) {
     },
     [imgUrl, name]
   )
-
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
     wrappedOcr,
     { params: [reqBody] }
