@@ -26,7 +26,6 @@ import IconExpress from './images/express.svg'
 import IconQvs from './images/qvs.svg'
 import IconOpenApi from './images/openapi.svg'
 import IconOcr from './images/ocr.svg'
-import IconStorage from './images/storage.svg'
 import IconPcdn from './images/pcdn.svg'
 import IconPlesdk from './images/plesdk.svg'
 import IconCloudSql from './images/cloud-sql.svg'
@@ -56,7 +55,6 @@ export const iconMap = {
   [Product.Qvs]: IconQvs,
   [Product.OpenAPI]: IconOpenApi,
   [Product.Ocr]: IconOcr,
-  [Product.Storage]: IconStorage,
   [Product.Pcdn]: IconPcdn,
   [Product.Plesdk]: IconPlesdk,
   [Product.CloudSql]: IconCloudSql

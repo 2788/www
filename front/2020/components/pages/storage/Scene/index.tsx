@@ -4,133 +4,88 @@ import Scene, {
   Block as SceneBlock
 } from 'components/Product/Scene'
 
-import Icon1 from './images/icon1.svg'
-import Icon2 from './images/icon2.svg'
-import Icon3 from './images/icon3.svg'
-import Icon4 from './images/icon4.svg'
-import Icon5 from './images/icon5.svg'
-import Icon6 from './images/icon6.svg'
+import image1 from './images/image1.png'
+import image2 from './images/image2.png'
+import image3 from './images/image3.png'
+import image4 from './images/image4.png'
+import image5 from './images/image5.png'
 
 import style from './index.less'
 
 const scenes = [
   {
-    icon: <Icon1 />,
-    title: '大数据应用',
-    client: [
-      { title: '存储利用率问题', content: '集群计算能力富裕而存储能力不足问题，以及出盘率不高问题' },
-      { title: '存储集群稳定性问题', content: '数 PB 容量、数亿文件后集群可靠性不足，需要极强 HDFS 优化能力' },
-      { title: '扩展问题', content: '很多时候集群的存储与计算需求与实际不均衡，扩展不易' }
-    ],
+    url: image1,
+    title: '智能安防',
+    desc: '安防行业的视频清晰度的不断提升，各种海量终端的接入，多样的智能化识别功能的发展，要求存储系统具有更高的扩展性，可靠性，稳定性和成本管理能力。',
     value: [
-      { title: 'EB 级统一命名空间', content: 'EB 级容量与千亿级别元数据管理能力，满足大数据应用存储系统的无限扩展要求' },
-      { title: '计算存储分离部署', content: '满足持续的存储激增现状，一体机存储方式弹性扩展' },
-      { title: '资源利用率高', content: '接近五副本的安全性( EC 28:4 )，提供高达 87.5% 得盘率' }
+      'EB 级别统一命名空间支撑海量的吞吐能力和高并发，满足海量的摄像头等终端接入',
+      '通过生命周期管理，定期释放过期数据和转移至低成本存储，充分利用硬件资源能力'
     ]
   },
   {
-    icon: <Icon2 />,
-    title: '安防监控应用',
-    client: [
-      { title: '存储能力不足', content: '万级别高清摄像头的 90 天存储需求，容量需求与性能需求巨大' },
-      { title: '生命周期管理不便', content: '监控内容过期自动删除能力与效率不足' },
-      { title: '监控价值挖掘不足', content: '监控内容价值不能充分挖掘' }
-    ],
+    url: image2,
+    title: '智能媒体平台',
+    desc: '智能媒体平台可以提高媒体行业从生产到分发的各个环节的内容生产效率和质量。方便短视频、长视频、娱乐/赛事/游戏直播、在线教育、广电、平面媒体等场景企业进行业务融合与创新，搭建即时化、交互化的应用系统，应对快速变化的市场挑战。',
     value: [
-      { title: 'EB 级统一命名空间', content: '支撑容量与性能需求，满足监控视频的集中统一管理要求' },
-      { title: '生命周期管理', content: '智能清理旧监控数据，循环并充分利用硬件资源能力' },
-      { title: '额外视频智能分析支撑', content: '结合七牛视频智能分析软件，挖掘更多监控数据价值' }
+      '丰富的图片，音视频数据处理功能，提升业务开发效率',
+      '支持多终端，Web 网站访问能力',
+      '海量扩展能力支撑媒体资源统一存储和管理，支撑媒体收录，处理，识别，直播，分发系统'
     ]
   },
   {
-    icon: <Icon3 />,
-    title: '媒资资产存储',
-    client: [
-      { title: '管理与生产媒资繁琐', content: '需要整合多产品建设多平台，处理过程繁琐，内容管理复杂' },
-      { title: '安全可靠难保障', content: '互联网服务面临网络安全、数据安全、可用性安全等风险，建设专业的安全体系周期长投入大' },
-      { title: '容量需求挑战', content: '很难准确预估用户存储用量，集群存储容量与服务能力规划困难' }
-    ],
+    url: image3,
+    title: '智慧医疗',
+    desc: '区域医疗云，影像云等医疗信息化方案，构建影像数据，医疗档案等的安全共享，提升分级诊疗，远程问诊信息化程度。增强医疗机构，医疗设备，病人，医生的交互，提升医疗效率。',
     value: [
-      { title: '快速生产', content: '存储集成媒体后期加工处理能力，简化媒资生产流程' },
-      { title: '共享内容资源', content: '跨平台共享内容资源，快速提高了分发效率，提升资产利用率' },
-      { title: '资源利用率高', content: '接近五副本的安全性( EC 28:4 )，提供高达 87.5% 得盘率' }
+      'PACS 系统，检测系统等直接上传数据到七牛存储构建的医疗影像云',
+      '丰富的多平台 SDK 构建多终端，多医院诊断数据共享',
+      '构建远程医疗，多级诊断的基础数据平台'
     ]
   },
   {
-    icon: <Icon4 />,
-    title: '智慧医疗应用',
-    client: [
-      { title: '影像共享困难', content: '多个医疗机构间，很难完成跨区域、跨医院的数据安全共享' },
-      { title: '影像应用开放困难', content: '各个医疗机构的影像应用无法跨机房、跨业务互相开放' },
-      { title: '存储扩展困难', content: '传统存储方案很难依据存储使用情况及时按需弹性扩展' }
-    ],
+    url: image4,
+    title: '金融科技',
+    desc: '金融行业的录音录像，金融影像，电子合同，保单，反欺诈，风险分析系统的分析，核心数据的备份等领域需求高可靠的非结构化数据存储，以适应业务的快速变化和构建网上金融的业务形态。',
     value: [
-      { title: '统一管理', content: '各医院资源汇集云端，统一存储和管理，医院无需单独建设与维护机房' },
-      { title: '影像共享结果互认', content: '提高了医疗效率，实现远程协同与分级诊断' },
-      { title: '按需使用资源', content: '随时随地在电脑或者手机上从云端调阅和管理影像资料' }
+      '多移动终端，业务系统共享数据平台',
+      '双活，多机房方案支撑金融级别高可靠',
+      '兼容多种备份软件实现核心数据高可靠'
     ]
   },
   {
-    icon: <Icon5 />,
-    title: '用户文件存储',
-    client: [
-      { title: '用户管控复杂', content: '建设面向大规模用户的多租户管控与服务能力，需要大量研发投入' },
-      { title: '安全可靠难保障', content: '互联网服务面临网络安全、数据安全、可用性安全等风险，建设专业的安全体系周期长投入大' },
-      { title: '容量需求挑战', content: '很难准确预估用户存储用量，集群存储容量与服务能力规划困难' }
-    ],
+    url: image5,
+    title: '智能制造',
+    desc: '制造业的生产环节中例如物联网终端数据，日志，产线质量监控，勘探，遥感等数据，统一存储和分析处理，与生产各环节结合，提升企业运作效率。',
     value: [
-      { title: '业务快速上线能力', content: '完善的 SDK 与研发资 源，帮助客户快速构建业务软件体系' },
-      { title: '完善的存储服务保障', content: '安全可靠的 Kodo Enterprise 产品，提供完善的多租户服务支撑' },
-      { title: '资源利用率高', content: '七牛智能 EC 技术，支持弹性扩容，提供高出盘率' }
-    ]
-  },
-  {
-    icon: <Icon6 />,
-    title: '企业内容存储',
-    client: [
-      { title: '业务应用情况复杂', content: '软件复杂，存储使用方式不一，需要兼容丰富的存储协议' },
-      { title: '新型业务与大数据需要更大的存储容量', content: '为应对市场竞争，企业需要保存更多数据，挖掘更多数据价值，保证企业竞争力' },
-      { title: '权限控制要求高', content: '存储内容繁杂，即包含内部公开资料，更包含高安全性要求的企业秘密' }
-    ],
-    value: [
-      { title: '开放平台', content: '兼容更多的存储协议，支撑更多的存储应用，尤其是大数据应用' },
-      { title: '完善的访问控制能力', content: '满足大型企业的权限访问控制要求' },
-      { title: '资源利用率高', content: '资源利用率高：EC 的 28:4 模型，提供高达 87.5% 得盘率，提高资源利用率' }
+      '打通生产各环节的数据共享，进行统一可靠的数据管理',
+      '构建大数据分析数据平台提升生产效率'
     ]
   }
 ]
 
-export default function OcrScene() {
+export default function StorageScene() {
   return (
     <Scene name="scene" title="适用场景">
       {
         scenes.map((scene, index) => (
-          <ScenePanel name={`scene-tab-${index}`} title={scene.title} className={style.scenePanel} verticalCenter key={index}>
-            <SceneBlock blockType="fixed" className={style.blockLeft}>
-              {scene.icon}
+          <ScenePanel name={`scene-tab-${index}`} title={scene.title} className={style.scenePanel} key={index}>
+            <SceneBlock blockType="fixed">
+              <img src={scene.url} className={style.sceneIcon} />
             </SceneBlock>
-            <SceneBlock shadow className={style.blockRight}>
+            <SceneBlock className={style.blockRight}>
               <div className={style.sceneContainer}>
-                <h3 className={style.sceneTitle}>客户痛点</h3>
+                <h3 className={style.sceneTitle}>场景介绍</h3>
                 <ul className={style.list}>
-                  {
-                    scene.client.map((item, i) => (
-                      <li className={style.item} key={i}>
-                        <h4>{item.title}</h4>
-                        <p>{item.content}</p>
-                      </li>
-                    ))
-                  }
+                  <li className={style.item}>
+                    <p>{scene.desc}</p>
+                  </li>
                 </ul>
-              </div>
-              <div className={style.sceneContainer}>
-                <h3 className={style.sceneTitle}>实现价值</h3>
+                <h3 className={style.sceneTitle}>场景价值</h3>
                 <ul className={style.list}>
                   {
                     scene.value.map((item, i) => (
                       <li className={style.item} key={i}>
-                        <h4>{item.title}</h4>
-                        <p>{item.content}</p>
+                        <p>{item}</p>
                       </li>
                     ))
                   }

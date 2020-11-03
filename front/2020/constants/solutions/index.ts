@@ -32,7 +32,9 @@ export enum SceneSolution {
   /** 视频冷存储 */
   Vcs = 'vcs',
   /** 监控视频边缘存储 */
-  Ess = 'ess'
+  Ess = 'ess',
+  /** 云存储一体机 */
+  Storage = 'storage'
 }
 
 /** 行业解决方案 */
@@ -126,6 +128,7 @@ export const nameMap: MapTo<string> = {
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
+  [Solution.Storage]: '云存储一体机',
   [Solution.Edu]: industryNameMap[Industry.Edu],
   [Solution.Fin]: industryNameMap[Industry.Fin],
   [Solution.Automobile]: industryNameMap[Industry.Automobile],
@@ -142,6 +145,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Kodoe]: '/solutions/kodoe',
   [Solution.Vcs]: '/solutions/vcs',
   [Solution.Ess]: '/solutions/ess',
+  [Solution.Storage]: '/solutions/storage',
   [Solution.Edu]: '/solutions/edu',
   [Solution.Fin]: '/solutions/fin',
   [Solution.Automobile]: null,
@@ -158,6 +162,7 @@ export const descMap: MapTo<string> = {
   [Solution.Kodoe]: '为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型',
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
   [Solution.Ess]: '满足监控视频及图片就近存储、加速传输、倍速播放等关键需求',
+  [Solution.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
   [Solution.Edu]: '以出色的技术能力实现教学全场景覆盖，打造满足不同群体的在线学习解决方案',
   [Solution.Fin]: '帮助金融客户满足监管合规要求，科技创新、流程再造，洞察数据价值',
   [Solution.Automobile]: '助力汽车行业的数字化升级和转型，创新商业模式，数据驱动降本升效',
@@ -168,7 +173,7 @@ export const descMap: MapTo<string> = {
 }
 
 export const categorySolutionsMap = {
-  [Category.Scene]: [Solution.Qavs, Solution.Rtclive, Solution.Plsv, Solution.Kodoe, Solution.Ess],
+  [Category.Scene]: [Solution.Qavs, Solution.Rtclive, Solution.Plsv, Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
     Solution.Fin, Solution.Edu, Solution.Automobile, Solution.ECommerce,
     Solution.IntelligentManufacturing, Solution.Social, Solution.Isp
@@ -182,6 +187,7 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
   [Solution.Kodoe]: require('./images/scene/kodoe.svg').default,
   [Solution.Vcs]: require('./images/scene/vcs.svg').default,
   [Solution.Ess]: require('./images/scene/ess.svg').default,
+  [Solution.Storage]: require('./images/scene/storage.svg').default,
   [Solution.Edu]: require('./images/industry/edu.svg').default,
   [Solution.Fin]: require('./images/industry/fin.svg').default,
   [Solution.Automobile]: require('./images/industry/auto.svg').default,

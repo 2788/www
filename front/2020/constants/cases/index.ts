@@ -13,6 +13,7 @@ import yxescImg from './交通旅游/客户-优信二手车.png'
 import gdImg from './医疗健康/客户-咕咚.png'
 import rxImg from './医疗健康/客户-如新.png'
 import pahysImg from './医疗健康/客户-平安好医生.png'
+import lianyingImg from './医疗健康/客户-联影.png'
 
 import vipkidImg from './在线教育/客户-VIPkid.png'
 import hjImg from './在线教育/客户-沪江.png'
@@ -78,6 +79,7 @@ import jsImg from './智能硬件/客户-晶盛.png'
 import ysImg from './智能硬件/客户-萤石.png'
 import wlImg from './智能硬件/客户-蔚来.png'
 import alxImg from './智能硬件/客户-爱立信.png'
+import baoxinImg from './智能硬件/客户-宝信软件.png'
 
 import blueImg from './社交网络/客户-blue.png'
 import tqImg from './社交网络/客户-他趣.png'
@@ -106,6 +108,7 @@ export const yxesc = { logo: yxescImg, name: '优信二手车' }
 export const gd = { logo: gdImg, name: '咕咚' }
 export const rx = { logo: rxImg, name: '如新' }
 export const pahys = { logo: pahysImg, name: '平安好医生' }
+export const lianying = { logo: lianyingImg, name: '联影医疗' }
 
 export const vipkid = { logo: vipkidImg, name: 'VIPkid' }
 export const hj = { logo: hjImg, name: '沪江' }
@@ -171,6 +174,7 @@ export const js = { logo: jsImg, name: '晶盛' }
 export const ys = { logo: ysImg, name: '萤石' }
 export const wl = { logo: wlImg, name: '蔚来' }
 export const alx = { logo: alxImg, name: '爱立信' }
+export const baoxin = { logo: baoxinImg, name: '宝信软件' }
 
 export const blue = { logo: blueImg, name: 'blue' }
 export const tq = { logo: tqImg, name: '他趣' }
@@ -220,7 +224,7 @@ export const industries = [
   },
   {
     name: '医疗健康',
-    cases: [gd, rx, pahys]
+    cases: [gd, rx, pahys, lianying]
   },
   {
     name: '在线教育',
@@ -228,6 +232,6 @@ export const industries = [
   },
   {
     name: '智能硬件',
-    cases: [oppo, cy, dj, js, ys, wl, alx]
+    cases: [oppo, cy, dj, js, ys, wl, alx, baoxin]
   }
 ]

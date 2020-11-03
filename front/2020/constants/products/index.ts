@@ -46,8 +46,6 @@ export enum Product {
   OpenAPI = 'openapi',
   /** 票证自动识别（OCR） */
   Ocr = 'ocr',
-  /** 存储一体机 */
-  Storage = 'storage',
   /** PCDN */
   Pcdn = 'pcdn',
   /** 直播特效 SDK */
@@ -78,7 +76,6 @@ export const nameMap = {
   [Product.Qvs]: '视频监控 QVS',
   [Product.OpenAPI]: 'Open API',
   [Product.Ocr]: '票证自动识别 OCR',
-  [Product.Storage]: '云存储一体机',
   [Product.Pcdn]: 'PCDN',
   [Product.Plesdk]: '直播特效 SDK'
 } as const
@@ -105,7 +102,6 @@ export const urlMap = {
   [Product.Qvs]: '/products/qvs',
   [Product.OpenAPI]: '/products/openapi',
   [Product.Ocr]: '/products/ocr',
-  [Product.Storage]: '/products/storage',
   [Product.Pcdn]: '/products/pcdn',
   [Product.Plesdk]: '/products/plesdk'
 } as const
@@ -132,7 +128,6 @@ export const priceUrlMap = {
   [Product.Qvs]: '/prices/qvs',
   [Product.OpenAPI]: '/prices/openapi',
   [Product.Ocr]: null,
-  [Product.Storage]: null,
   [Product.Pcdn]: null,
   [Product.Plesdk]: null
 } as const
@@ -163,7 +158,6 @@ export const descMap = {
   // TODO 需要加入到顶部导航再补充
   [Product.OpenAPI]: '',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
-  [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
   [Product.Plesdk]: ''
 } as const
@@ -185,8 +179,7 @@ export const categoryService = [
   Product.Ssl,
   Product.Pili,
   Product.Ddos,
-  Product.Sms,
-  Product.Storage
+  Product.Sms
 ] as const
 
 /** 视觉数据智能 */

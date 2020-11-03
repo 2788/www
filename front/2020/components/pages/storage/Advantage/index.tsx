@@ -11,36 +11,58 @@ import Icon3 from './images/icon3.svg'
 import Icon4 from './images/icon4.svg'
 import Icon5 from './images/icon5.svg'
 import Icon6 from './images/icon6.svg'
-import Icon7 from './images/icon7.svg'
 
 const advantages = [
   [
-    { icon: <Icon1 />, title: '快速交付', desc: '一体化设计，极简配置，支撑一键部署与升级，快速交付可用的云存储平台' },
-    { icon: <Icon2 />, title: '云原生支持', desc: '为客户提供云原生支持的存储服务，支持弹性扩展，满足客户快速构建 IT 平台的需要' }
+    {
+      icon: <Icon1 />,
+      title: '公有云式体验',
+      desc: ['核心架构源自公有云存储，经过长年海量客户验证', '自服务式按需弹性使用数据存储和处理服务', '集成公有云级别的运维管理能力']
+    },
+    {
+      icon: <Icon2 />,
+      title: '开箱即用极简运维',
+      desc: ['预集成存储系统，管理平台，数据访问平台，智能数据处理平台', '一键扩容，软硬一体的管理和监控。数据自愈，免人工介入']
+    },
+    {
+      icon: <Icon3 />,
+      title: '一体化数据中台',
+      desc: ['Qiniu 对象协议，S3，NFS，SMB 多协议支持，无缝对接 Hadoop 生态，一份数据多业务共享', '构建统一平台实现数据生命周期管理，数据分层管理']
+    }
   ],
   [
-    { icon: <Icon3 />, title: '开放平台', desc: '多服务标准协议支持，满足对象存储（S3，qiniu API）、文件存储（POSIX、NFS、CIFS 等）、大数据存储（HDFS 兼容）应用，提供丰富的管控 API、存储 SDK 与相关工具，适应灵活的应用场景' },
-    { icon: <Icon4 />, title: '超大规模', desc: '集群容量达 EB 级，文件千亿级，满足超大规模存储应用场景' }
-  ],
-  [
-    { icon: <Icon5 />, title: '资源利用率高', desc: '接近五副本的安全性，满足高达 87.5% 得盘率，用高效 EC 技术充分挖掘硬件价值' },
-    { icon: <Icon6 />, title: '容灾备份', desc: '提供本地双活、三活集群方案，以及异地容灾方案，满足业务持续性保证' }
-  ],
-  [
-    { icon: <Icon7 />, title: '智能处理', desc: '可选包含 Dora Platform 多媒体处理与机器视觉智能开放平台' }
+    {
+      icon: <Icon4 />,
+      title: '智能多媒体服务',
+      desc: ['丰富的图片处理，视频转码，水印，截图，瘦身等多媒体处理功能，支持自定义数据处理', '简化数据处理开发，提升数据使用效率']
+    },
+    {
+      icon: <Icon5 />,
+      title: '按需弹性海量拓展',
+      desc: ['单节点 500 TB 容量，EB 级别扩展能力', '模块化扩展，性能线性提升']
+    },
+    {
+      icon: <Icon6 />,
+      title: '低成本与高可靠统一',
+      desc: ['高达 90% 的存储空间利用率', '支持节点/机架/数据中心多等级可靠性保护', '支持双活/多机房/跨区域数据保护']
+    }
   ]
 ]
 
 export default function Advantage() {
   return (
-    <Feature title="核心优势" name="advantage">
+    <Feature title="方案优势" name="advantage">
       {
         advantages.map((advantage, index) => (
           <FeatureGroup key={index}>
             {
               advantage.map((item, i) => (
-                <FeatureItem pos="left-right" icon={item.icon} title={item.title} key={i}>
-                  <FeatureDesc>{item.desc}</FeatureDesc>
+                <FeatureItem pos="top-down" align="left" icon={item.icon} title={item.title} key={i}>
+                  {
+                    item.desc.map((text, j) => (
+                      <FeatureDesc preIcon="check" key={j}>{text}</FeatureDesc>
+                    ))
+                  }
                 </FeatureItem>
               ))
             }
