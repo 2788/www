@@ -14,7 +14,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/pages/index/Feature'
-import Button from 'components/UI/Button'
+
 import { useMobile } from 'hooks/ua'
 import { useNow } from 'hooks/timer'
 
@@ -28,16 +28,6 @@ import { getBanners, Banner, getActivities, Activity } from 'apis/lego'
 
 import styles from './style.less'
 
-import Banner1Icon from './_images/headerBanner1.png'
-import Banner2Icon from './_images/headerBanner2.png'
-import Banner3Icon from './_images/headerBanner3.png'
-import Banner4Icon from './_images/headerBanner4.png'
-import Banner5Icon from './_images/headerBanner5.png'
-import MobileBanner1Icon from './_images/mobileHeaderBanner1.png'
-import MobileBanner2Icon from './_images/mobileHeaderBanner2.png'
-import MobileBanner3Icon from './_images/mobileHeaderBanner3.png'
-import MobileBanner4Icon from './_images/mobileHeaderBanner4.png'
-import MobileBanner5Icon from './_images/mobileHeaderBanner5.png'
 import YigouCoreIcon from './_images/core1.svg'
 import ChuanshuCoreIcon from './_images/core2.svg'
 import ShijueCoreIcon from './_images/core3.svg'
@@ -45,21 +35,12 @@ import JiqiIcon from './_images/core4.svg'
 import ZhiboCoreIcon from './_images/core5.svg'
 import YunCoreIcon from './_images/core6.svg'
 
-function useBannerImg() {
-  const webImgList = [Banner1Icon, Banner2Icon, Banner3Icon, Banner4Icon, Banner5Icon]
-  const mobileImgList = [MobileBanner1Icon, MobileBanner2Icon, MobileBanner3Icon, MobileBanner4Icon, MobileBanner5Icon]
-  const isMobile = useMobile()
-  return isMobile ? mobileImgList : webImgList
-}
-
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
 function PageContent({ banners, activities }: { banners: Banner[], activities: Activity[] }) {
 
-  const headerBannerImgs = useBannerImg()
   const isMobile = useMobile()
 
   const now = useNow()
-  // 这部分 banner 放到代码中写死的 banner 项的前面（同老官网行为）
   const bannersView = banners.filter(
     banner => new Date(banner.effect_at).valueOf() <= now && new Date(banner.dead_at).valueOf() > now
   ).map(
@@ -77,23 +58,6 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
     <>
       <Carousel className={styles.headerBanner} autoplay>
         {bannersView}
-        <PageBanner
-          className={styles.bannerUpClouds}
-          title={<>企业 <strong className={styles.cost}>0</strong> 成本上云</>}
-          desc={<>最高可达 <strong>4 核 8 G</strong></>}
-          bgColor="#5708C6"
-          bgImg={headerBannerImgs[4]}
-          btns={[
-            <Button
-              key="1"
-              className={styles.btnReceivePrimary}
-              href="https://www.qiniu.com/events/qvm0rmb?entry=index-banner"
-              type="default"
-            >
-              立即领取
-            </Button>
-          ]}
-        />
       </Carousel>
 
       <Activities activities={activities} />
