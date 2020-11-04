@@ -5,9 +5,9 @@
 
 import { StoryProps } from '.'
 
-import imgStory1 from './images/stories/1.png'
+import imgStory1 from './images/stories/1.jpg'
 import imgStory2 from './images/stories/2.jpg'
-import imgStory3 from './images/stories/3.png'
+import imgStory3 from './images/stories/3.jpg'
 import imgStory4 from './images/stories/4.jpg'
 
 export const weiboLink = ''
@@ -15,34 +15,34 @@ export const weiboLink = ''
 export const news: StoryProps[] = [
   {
     imgUrl: imgStory1,
-    title: '七牛云正式加入 CNCF，积极推动云原生全球发展',
-    desc: '七牛云正式加入云原生计算基金会 Cloud Native Computing Foundation (CNCF)，成为 CNCF 共建云社区的全球重要合作伙伴。',
-    date: '2020-07-14',
-    link: 'https://blog.qiniu.com/archives/8910?ref=www.qiniu.com',
-    wxUrl: 'https://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&mid=2652197963&idx=1&sn=d2ec2dfc5946945a4efd0da80f66beba&chksm=bd0162de8a76ebc8dddff7a3ff466e684f623ac46920336e1c2ea3d0a7f28b79199d40df2782&token=1786778896&lang=zh_CN#rd'
+    title: '双十一，开始划重点了！',
+    desc: '套路千万条，真诚第一条！今年七牛云双十一狂欢节的重点，拿好不谢！',
+    date: '2020-11-02',
+    link: 'https://blog.qiniu.com/archives/8936?ref=www.qiniu.com',
+    wxUrl: 'https://mp.weixin.qq.com/s/QB7YHCj5V_ktSooHKPxgbA'
   },
   {
     imgUrl: imgStory2,
-    title: '七牛云视频监控：贝鲁特爆炸警示录，安全生产容不得「意外火花」',
-    desc: '「黎巴嫩贝鲁特重大爆炸事件，再次给我们敲响了警钟。」8 月 5 日，国务院安委会办公室、应急管理部召开全国安全生产专题视频会议，深刻吸取黎巴嫩贝鲁特重大爆炸事件教训。',
-    date: '2020-09-02',
-    link: 'https://blog.qiniu.com/archives/8923?ref=www.qiniu.com',
-    wxUrl: 'https://mp.weixin.qq.com/s/0OUhXCdbed-eVdZ4E0lJcA'
+    title: '「四步接入」开启秀场直播，揭秘七牛云互动直播解决方案',
+    desc: '七牛云互动直播解决方案全揭秘，特邀主播张永为大家讲解了秀场直播背后的架构及应用到的技术。美女主播诗敏与好友连麦，展示了美颜、瘦脸、贴纸等功能',
+    date: '2020-10-26',
+    link: 'https://blog.qiniu.com/archives/8934?ref=www.qiniu.com',
+    wxUrl: 'https://mp.weixin.qq.com/s/xPR1GymqXQaOHS7OHv0J2w'
   },
   {
     imgUrl: imgStory3,
-    title: '七牛云完成 F 轮 10 亿人民币融资，持续打造云上数据价值',
-    desc: '6 月 16 日，行业领先的第三方独立云计算及数据服务提供商七牛云宣布完成新一轮 10 亿人民币 F 轮融资，本轮融资由中国国有企业结构调整基金、交银国际、宏兆基金共同投资｡',
-    date: '2020-06-16',
-    link: 'https://blog.qiniu.com/archives/8899?ref=www.qiniu.com',
-    wxUrl: 'https://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&mid=2652197607&idx=1&sn=b66078376784f95e40f29240960ae228&chksm=bd0164728a76ed64cb8c7526475d3bc41e63f67bb781d2d7d5473c0f0578c5367844ae13c3dd&token=911446648&lang=zh_CN#rd'
+    title: '上汽集团 X 七牛云：App 化数据分析平台助推智能网联车发展',
+    desc: '近几年，全球智能网联汽车产业化步伐明显加快。根据 IDC 发布的《全球智能网联汽车预测报告》，2019 年全球智能网联汽车出货量达到 5110 万辆，与 2018 年相比增长 45.4% 。',
+    date: '2020-10-16',
+    link: 'https://blog.qiniu.com/archives/8932?ref=www.qiniu.com',
+    wxUrl: 'https://mp.weixin.qq.com/s/wa-QOWll1N6Nmag3WsGlsw'
   },
   {
     imgUrl: imgStory4,
-    title: '星芽 X 七牛云：全民直播时代，一个 ID 解决所有技术问题',
-    desc: '随着移动互联网的高速发展，直播几乎渗透到我们生活的每个角落。疫情期间，直播更是成为人们与外界沟通的重要桥梁。',
-    date: '2020-08-28',
-    link: 'https://blog.qiniu.com/archives/8921?ref=www.qiniu.com',
-    wxUrl: 'https://mp.weixin.qq.com/s/y5aNorHPRJIPwQT-r--n3A'
+    title: '【战略合作】清华同衡城士科技 X 七牛云：以数据驱动园区数字化转型',
+    desc: '2020 年 10 月 13 日，上海七牛信息技术有限公司（以下简称“七牛云”）与北京清华同衡城士科技（以下简称“城士科技”）签订战略合作框架协议，将结合云计算、IoT、数据智能等方面展开深入的合作。',
+    date: '2020-10-14',
+    link: 'https://blog.qiniu.com/archives/8931?ref=www.qiniu.com',
+    wxUrl: 'https://mp.weixin.qq.com/s/Fu5Nd9h76FQFH9Xo-jDDyw'
   }
 ]
