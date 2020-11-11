@@ -15,8 +15,6 @@ import { useUserInfo } from 'components/UserInfo'
 
 import style from './style.less'
 
-const signupUrl = 'https://portal.qiniu.com/signup'
-
 export default function FreeProducts() {
   return (
     <div className="wrapper">
@@ -24,7 +22,8 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Rtn]}
           desc={descMap[Product.Rtn]}
-          getUrl="https://portal.qiniu.com/rtn/rtc/report/duration"
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/rtn/rtc/create"
           moreUrl={urlMap[Product.Rtn]}
         >
           <List>
@@ -56,7 +55,8 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Kodo]}
           desc="广泛应用于海量数据管理的场景"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/kodo/bucket?shouldCreateBucket=true"
           moreUrl={urlMap[Product.Kodo]}
         >
           <List>
@@ -68,21 +68,22 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Cdn]}
           desc="无盲区、智能调度、立体品控、降低回源"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/cdn/domain/create"
           moreUrl={urlMap[Product.Cdn]}
         >
           <List>
-            <HookItem>HTTP 免费下载流量 10 GB/月</HookItem>
+            <HookItem>每月免费赠送 10 GB HTTP 流量</HookItem>
           </List>
         </ProductCard>
         <ProductCard
           title={nameMap[Product.Qvm]}
           desc="提供云服务器、数据库、负载均衡、高防 IP 和安全等服务，用户可以轻松灵活地在云主机上构建稳定、高效的应用程序"
-          getUrl={signupUrl}
+          getUrl="https://marketing.qiniu.com/activity/qvm0rmbv2"
           moreUrl={urlMap[Product.Qvm]}
         >
           <List>
-            <HookItem>高达 4 C 8 G 的专业云服务器 0 元起</HookItem>
+            <HookItem>高达 4 C 4 G 的专业云服务器 0 元起</HookItem>
           </List>
         </ProductCard>
       </Row>
@@ -90,7 +91,8 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Sms]}
           desc="支持快速发送验证码短信、通知短信和营销推广短信，服务范围覆盖国内（含港澳台地区）及全球 200 多个国家和地区，到达率高达 99%。"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/sms"
           moreUrl={urlMap[Product.Sms]}
         >
           <List>
@@ -100,7 +102,8 @@ export default function FreeProducts() {
         <ProductCard
           title="云镜像"
           desc="提供启动云主机实例所需的所有信息，包括特定操作系统和用户自定义镜像系统"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/qvm/vm/image"
           moreUrl="https://developer.qiniu.com/qvm/manual/4292/qvm-mirror-overview"
         >
           <List>
@@ -112,7 +115,8 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Censor]}
           desc="精准识别色情、暴恐、敏感人物等内容"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/v2/censor/main/overview"
           moreUrl={urlMap[Product.Censor]}
         >
           <List>
@@ -126,7 +130,8 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Insight]}
           desc="适用于运维监控、安全审计及业务数据分析等场景"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/insight/logdb/overview"
           moreUrl={urlMap[Product.Insight]}
         >
           <List>
@@ -138,7 +143,8 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Dora]}
           desc="针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务"
-          getUrl={signupUrl}
+          btnTitle="立即使用"
+          getUrl="https://portal.qiniu.com/dora/media-gate/overview"
           moreUrl={urlMap[Product.Dora]}
         >
           <List>
@@ -149,7 +155,7 @@ export default function FreeProducts() {
         <ProductCard
           title={nameMap[Product.Ssl]}
           desc="数据加密传输、高兼容性、提升搜索排名"
-          getUrl={signupUrl}
+          getUrl="https://portal.qiniu.com/certificate/apply?years=1&limit=1&shortName=TrustAsiaDVG5"
           moreUrl={urlMap[Product.Ssl]}
         >
           <List>
@@ -164,11 +170,12 @@ export default function FreeProducts() {
 type ProductCardProps = PropsWithChildren<{
   title: string
   desc: string
+  btnTitle?: string // 按钮文案，默认为免费领取
   getUrl: string // 免费领取链接
   moreUrl: string // 了解更多链接
 }>
 
-function ProductCard({ title, desc, getUrl, moreUrl, children }: ProductCardProps) {
+function ProductCard({ title, desc, btnTitle = '免费领取', getUrl, moreUrl, children }: ProductCardProps) {
   const userInfo = useUserInfo()
   const isMp = useMp()
   const { add } = useOverlay()
@@ -198,7 +205,7 @@ function ProductCard({ title, desc, getUrl, moreUrl, children }: ProductCardProp
       {
         isMp
           ? <Button onClick={handleMpButtonClick}>免费领取</Button>
-          : <Button href={getUrl}>免费领取</Button>
+          : <Button href={getUrl}>{btnTitle}</Button>
       }
       <p className={style.moreLink}>
         <Link href={moreUrl}>了解更多 &gt;&gt;</Link>
