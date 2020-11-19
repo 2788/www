@@ -114,15 +114,13 @@ export default function FreeProducts() {
         </ProductCard>
         <ProductCard
           title={nameMap[Product.Censor]}
-          desc="精准识别色情、暴恐、敏感人物等内容"
+          desc="精准识别触发审核机制的相关内容"
           btnTitle="立即使用"
           getUrl="https://portal.qiniu.com/v2/censor/main/overview"
-          moreUrl={urlMap[Product.Censor]}
+        // moreUrl={urlMap[Product.Censor]}
         >
           <List>
-            <HookItem>免费鉴黄额度 6 万张</HookItem>
-            <HookItem>免费鉴暴恐额度 6 万张</HookItem>
-            <HookItem>免费政治敏感人物识别额度 6 万张</HookItem>
+            <HookItem>免费赠送内容审核（三鉴）各 6 万张，有效规避内容不合规风险</HookItem>
           </List>
         </ProductCard>
       </Row>
@@ -172,7 +170,7 @@ type ProductCardProps = PropsWithChildren<{
   desc: string
   btnTitle?: string // 按钮文案，默认为免费领取
   getUrl: string // 免费领取链接
-  moreUrl: string // 了解更多链接
+  moreUrl?: string // 了解更多链接
 }>
 
 function ProductCard({ title, desc, btnTitle = '免费领取', getUrl, moreUrl, children }: ProductCardProps) {
@@ -207,7 +205,7 @@ function ProductCard({ title, desc, btnTitle = '免费领取', getUrl, moreUrl, 
           ? <Button onClick={handleMpButtonClick}>免费领取</Button>
           : <Button href={getUrl}>{btnTitle}</Button>
       }
-      <p className={style.moreLink}>
+      <p className={style.moreLink} style={moreUrl !== undefined ? undefined : { visibility: 'hidden' }}>
         <Link href={moreUrl}>了解更多 &gt;&gt;</Link>
       </p>
     </>
