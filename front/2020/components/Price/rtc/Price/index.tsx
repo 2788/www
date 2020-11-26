@@ -139,7 +139,7 @@ function PriceDetail() {
               </tr>
               <tr>
                 <td rowSpan={2}>高清</td>
-                <td rowSpan={2}>360P（640*360）&lt; r ≤720P(1280*720)</td>
+                <td rowSpan={2}>360P（640*360）&lt; r ≤ 720P(1280*720)</td>
                 <td>0 - 5 千分钟</td>
                 <td>免费</td>
               </tr>
@@ -162,25 +162,25 @@ function PriceDetail() {
                 <td>纯音频</td>
                 <td>标准语音规格</td>
                 <td></td>
-                <td>5.00</td>
+                <td>3.00</td>
               </tr>
               <tr>
                 <td>标清</td>
                 <td>r ≤ 360P（640*360）</td>
                 <td></td>
-                <td>14.00</td>
+                <td>3.00</td>
               </tr>
               <tr>
                 <td>高清</td>
-                <td>360P（640*360）&lt; r ≤720P(1280*720)</td>
+                <td>360P（640*360）&lt; r ≤ 720P(1280*720)</td>
                 <td></td>
-                <td>28.00</td>
+                <td>3.00</td>
               </tr>
               <tr>
                 <td>超清</td>
                 <td>r &gt; 720P(1280*720)</td>
                 <td></td>
-                <td>105.00</td>
+                <td>3.00</td>
               </tr>
               <tr>
                 <td rowSpan={4}>实时音视频合流转推</td>
@@ -197,7 +197,7 @@ function PriceDetail() {
               </tr>
               <tr>
                 <td>高清</td>
-                <td>360P（640*360）&lt; r ≤720P(1280*720)</td>
+                <td>360P（640*360）&lt; r ≤ 720P(1280*720)</td>
                 <td></td>
                 <td>100.00</td>
               </tr>

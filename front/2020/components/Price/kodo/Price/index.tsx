@@ -4,7 +4,6 @@ import Tabs, { TabPane } from 'components/UI/Tabs'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
-import { useKodoPackage } from 'hooks/timer'
 
 import South from './South'
 import East from './East'
@@ -15,11 +14,7 @@ import SouthAsia from './SouthAsia'
 
 export default function Price() {
   const isMobile = useMobile()
-  const packageLink = (
-    useKodoPackage()
-    ? 'https://marketing.qiniu.com/activity/kodopackage?entry=index-price'
-    : 'https://qmall.qiniu.com/template/NA?spec_combo=Nzk&ref=kodo-price'
-  )
+  const packageLink = 'https://qmall.qiniu.com/template/NA?spec_combo=Nzk&ref=kodo-price'
 
   return (
     <PricePane>

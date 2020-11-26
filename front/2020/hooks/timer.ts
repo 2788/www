@@ -14,11 +14,3 @@ export function useNow() {
   }, [])
   return now
 }
-
-// https://jira.qiniu.io/browse/BO-13091
-const kodoPackageDeadline = +new Date('2020-07-19T00:00:00+08:00')
-
-export function useKodoPackage() {
-  const now = useNow()
-  return now < kodoPackageDeadline
-}

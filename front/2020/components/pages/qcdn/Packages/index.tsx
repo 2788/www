@@ -16,42 +16,42 @@ export default function Packages() {
       <Card
         title="日间包特惠"
         desc="适合业务主要在日间的门户网站和教育类客户"
-        category="国内静态加速流量"
+        category="国内加速流量"
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="75.00"
-        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NjA3&ref=qcdn"
-        sellPoints={['适用时段：9:00 - 18:00', '类型：HTTP']}
+        detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk3OA"
+        sellPoints={['适用时段：9:00 - 18:00']}
       />
       <Card
         title="入门型"
         desc="适合日下行流量小于 1500 MB 的小型网站"
-        category="国内静态加速流量"
+        category="国内加速流量"
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
         price="98.00"
-        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NTgz&ref=qcdn"
-        sellPoints={['适用时段：全时段可用', '类型：HTTP']}
+        detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk1MQ"
+        sellPoints={['适用时段：全时段可用']}
       />
       <Card
         title="进阶型"
         desc="适合日下行流量小于 3 GB 的中型网站"
-        category="国内静态加速流量"
+        category="国内加速流量"
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
         price="193.00"
-        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NTg2&ref=qcdn"
-        sellPoints={['适用时段：全时段可用', '类型：HTTP']}
+        detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk1NA"
+        sellPoints={['适用时段：全时段可用']}
       />
       <Card
         title="专业型"
         desc="适合日下行流量小于 15 GB 的大型网站"
-        category="国内静态加速流量"
+        category="国内加速流量"
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
         price="942.00"
-        detailLink="https://qmall.qiniu.com/template/MTY?spec_combo=NTg5&ref=qcdn"
-        sellPoints={['适用时段：全时段可用', '类型：HTTP']}
+        detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk1Nw"
+        sellPoints={['适用时段：全时段可用']}
       />
     </Section>
   )

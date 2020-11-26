@@ -15,9 +15,9 @@ export default function FreeActivities() {
   return (
     <Row>
       <Card
-        title="出海企业扶持"
-        desc="整合出海相关产品和服务资源，共同助力创业者占领全球市场"
-        url="/products/kodo/goglobal"
+        title="新推官火热招募中"
+        desc="推广简单易上手，权益返现新升级"
+        url="/cps"
         background={ImgGoglobal}
         btnText="立即申请"
       />

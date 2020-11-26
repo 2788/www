@@ -11,7 +11,7 @@ import DynamicAcc from './DynamicAcc'
 import style from './index.less'
 
 export default function Price() {
-  const packageLink = 'https://qmall.qiniu.com/template/MTY'
+  const packageLink = 'https://qmall.qiniu.com/template/NTI'
   return (
     <PricePane>
       <PricePaneSection title="计费方式" padding>

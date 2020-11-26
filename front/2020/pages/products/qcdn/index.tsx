@@ -53,7 +53,7 @@ function PageContent() {
   const btns = useBtns(
     { children: '立即使用', onClick: () => wx.miniProgram.navigateTo({ url: MpPage.PortalQCDN }), mpOnly: true },
     { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
-    { href: 'https://qmall.qiniu.com/template/MTY', children: '立即购买' }
+    { href: 'https://qmall.qiniu.com/template/NTI', children: '立即购买' }
   )
 
   return (

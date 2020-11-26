@@ -44,12 +44,12 @@ const columns: Array<ColumnProps<any>> = [
         result.props.rowSpan = 6
       }
 
-      // 锐智转码（H.264）
-      if (idx === 25) {
+      // 锐智转码（H.264）、锐智转码（H.265）
+      if (idx === 25 || idx === 29) {
         result.props.rowSpan = 4
       }
 
-      if (idx > 28) {
+      if (idx > 32) {
         result.props.rowSpan = 1
       }
 
@@ -104,7 +104,7 @@ const data = [
     key: 1,
     type: renderTemplate(`
       视频转码（H.264 及其他）<br />
-      <a href="https://www.qiniu.com/events/dora-package" target="_blank" ref="noopener" class="${style.link}">H.264 转码时长包特惠选购 >></a>
+      <a href="https://qmall.qiniu.com/template/NjQ?spec_combo=MjQwNw" target="_blank" ref="noopener" class="${style.link}">H.264 转码时长包特惠选购 >></a>
     `),
     out: '视频转码 SD240（ 320x240）',
     low_frame_price: '0.0057 元/分钟',
@@ -149,7 +149,7 @@ const data = [
     key: 7,
     type: renderTemplate(`
       视频转码（H.265）<br />
-      <a href="https://www.qiniu.com/events/dora-package#dora-package-h265" target="_blank" ref="noopener" class="${style.link}">H.265 转码时长包特惠选购 >></a>
+      <a href="https://qmall.qiniu.com/template/NjQ?spec_combo=MjQ1NQ" target="_blank" ref="noopener" class="${style.link}">H.265 转码时长包特惠选购 >></a>
     `),
     out: '视频转码 SD240（ 320x240）',
     low_frame_price: '0.0285 元/分钟',
@@ -304,27 +304,55 @@ const data = [
   },
   {
     key: 29,
+    type: '锐智转码（H.265）',
+    out: '视频转码 SD（1280x720）及以下',
+    low_frame_price: '0.4 元/分钟（不分帧率）',
+    high_frame_price: ''
+  },
+  {
+    key: 30,
+    type: '',
+    out: '视频转码 HD（1920x1080）',
+    low_frame_price: '0.8 元/分钟（不分帧率）',
+    high_frame_price: ''
+  },
+  {
+    key: 31,
+    type: '锐智转码（H.265）',
+    out: '视频转码 2K（2560x1440）',
+    low_frame_price: '1.6 元/分钟（不分帧率）',
+    high_frame_price: ''
+  },
+  {
+    key: 32,
+    type: '',
+    out: '视频转码 4K（3840x2160）',
+    low_frame_price: '3.2 元/分钟（不分帧率）',
+    high_frame_price: ''
+  },
+  {
+    key: 33,
     type: '音视频转封装',
     out: '',
     low_frame_price: '0.003 元/分钟（不分帧率）',
     high_frame_price: ''
   },
   {
-    key: 30,
+    key: 34,
     type: '实时音视频转封装',
     out: '',
     low_frame_price: '0.009 元/分钟（不分帧率）',
     high_frame_price: ''
   },
   {
-    key: 31,
+    key: 35,
     type: 'avinfo（音视频元信息）',
     out: '',
     low_frame_price: '0.1 元/千次（不分帧率）',
     high_frame_price: ''
   },
   {
-    key: 32,
+    key: 36,
     type: 'vframe, vsample（视频截图）',
     out: '',
     low_frame_price: '0.1 元/千次（不分帧率）',
