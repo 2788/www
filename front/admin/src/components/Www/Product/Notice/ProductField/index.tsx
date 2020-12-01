@@ -4,15 +4,15 @@ import Select from 'react-icecream/lib/select'
 import { FieldState } from 'formstate-x'
 import { useInjection } from 'qn-fe-core/di'
 import { bindSelect } from 'admin-base/common/utils/form'
-import DetailStore from '../store'
+import NoticeStore from '../store'
 
 interface IProps {
   state: FieldState<string>
 }
 
 export default observer(function ProductField(props: IProps) {
-  const detailStore = useInjection(DetailStore)
-  const pageList = detailStore.pageList
+  const noticeStore = useInjection(NoticeStore)
+  const pageList = noticeStore.pageList
   return (
     <Select
       placeholder="请选择关联产品页"

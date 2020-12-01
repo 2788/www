@@ -16,10 +16,10 @@ import moment, { Moment } from 'moment'
 import { textNotBlank, textHttp } from 'utils/validator'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 
-import { IDetail } from 'apis/product/detail'
+import { INotice } from 'apis/product/notice'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
-import DetailStore from '../store'
+import NoticeStore from '../store'
 import ProductField from '../ProductField'
 import { typeMap } from '..'
 
@@ -33,7 +33,7 @@ type State = FormState<{
 }>
 
 type FormDataType = {
-  detail: IDetail
+  notice: INotice
   id: string
 }
 
@@ -42,12 +42,12 @@ export type ExtraProps = EditorProps & Partial<FormDataType>
 export type Props = IModalProps & EditorProps & FormDataType
 
 export const defaultFormData: FormDataType = {
-  detail: {
+  notice: {
     product: '',
     summary: '',
     link: '',
     type: 'news',
-    effectTime: moment().add(1, 'days').unix(),
+    effectTime: moment().unix(),
     invalidTime: moment().add(1, 'month').unix(),
     createTime: 0,
     editTime: 0
@@ -60,7 +60,7 @@ class EditorModalStore extends Store {
 
   constructor(
     @injectProps() private props: Props,
-    private detailStore: DetailStore,
+    private noticeStore: NoticeStore,
     public toasterStore: ToasterStore
   ) {
     super()
@@ -81,26 +81,26 @@ class EditorModalStore extends Store {
   }
 
   @Loadings.handle('submit')
-  async doAdd(param: IDetail) {
-    await this.detailStore.add(param).then
-    this.toasterStore.success('创建产品详情成功！')
+  async doAdd(param: INotice) {
+    await this.noticeStore.add(param).then
+    this.toasterStore.success('创建产品公告成功！')
   }
 
   @Loadings.handle('submit')
-  async doEdit(param: IDetail, id: string) {
-    await this.detailStore.update(param, id)
-    this.toasterStore.success('更新产品详情成功！')
+  async doEdit(param: INotice, id: string) {
+    await this.noticeStore.update(param, id)
+    this.toasterStore.success('更新产品公告成功！')
   }
 
   doSubmit() {
-    const param: IDetail = {
+    const param: INotice = {
       product: this.formValue.product,
       summary: this.formValue.summary,
       link: this.formValue.link,
       type: this.formValue.type,
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
-      createTime: this.props.detail.createTime,
+      createTime: this.props.notice.createTime,
       editTime: moment().unix()
     }
     if (this.props.status === EditorStatus.Creating) {
@@ -123,14 +123,14 @@ class EditorModalStore extends Store {
 
   @action
   initFormState() {
-    const detail = this.props.detail
+    const notice = this.props.notice
     this.form = new FormState({
-      product: new FieldState(detail.product).validators(value => !value && '请选择一个产品页'),
-      summary: new FieldState(detail.summary).validators(textNotBlank),
-      link: new FieldState(detail.link).validators(textNotBlank, textHttp),
-      type: new FieldState(detail.type).validators(value => !value && '请选择一个类型'),
-      effectTime: new FieldState(moment.unix(detail.effectTime)),
-      invalidTime: new FieldState(moment.unix(detail.invalidTime))
+      product: new FieldState(notice.product).validators(value => !value && '请选择一个产品页'),
+      summary: new FieldState(notice.summary).validators(textNotBlank),
+      link: new FieldState(notice.link).validators(textNotBlank, textHttp),
+      type: new FieldState(notice.type).validators(value => !value && '请选择一个类型'),
+      effectTime: new FieldState(moment.unix(notice.effectTime)),
+      invalidTime: new FieldState(moment.unix(notice.invalidTime))
     })
     this.addDisposer(this.form.dispose)
   }
@@ -138,9 +138,9 @@ class EditorModalStore extends Store {
   init() {
     this.addDisposer(
       reaction(
-        () => this.props.detail,
-        detail => {
-          if (detail) {
+        () => this.props.notice,
+        notice => {
+          if (notice) {
             this.initFormState()
           }
         },
@@ -162,7 +162,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   return (
     <Modal
       visible={visible}
-      title={titleMap[props.status] + '产品详情'}
+      title={titleMap[props.status] + '产品公告'}
       onCancel={onCancel}
       onOk={store.handleSubmit}
       confirmLoading={store.confirmLoading}
@@ -178,7 +178,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           label="摘要"
           {...bindFormItem(store.form.$.summary)}
         >
-          <Input.TextArea placeholder="请输入摘要" maxLength={30} {...bindInputWithCurrentTarget(store.form.$.summary)} />
+          <Input.TextArea placeholder="请输入摘要" maxLength={80} {...bindInputWithCurrentTarget(store.form.$.summary)} />
         </FormItem>
         <FormItem
           label="跳转链接"
@@ -198,7 +198,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           <DatePicker.RangePicker
             {...bindRangePicker(store.form.$.effectTime, store.form.$.invalidTime)}
             style={{ width: '100%' }}
-            disabledDate={current => !!current && current < moment().endOf('day')}
+            disabledDate={current => !!current && current < moment().startOf('day')}
             allowClear={false}
           />
         </FormItem>

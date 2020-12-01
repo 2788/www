@@ -3,11 +3,11 @@ import { observer } from 'mobx-react'
 import Tabs from 'react-icecream/lib/tabs'
 
 import Page from './Page'
-import Detail from './Detail'
+import Notice from './Notice'
 
 const tabs = [
   { title: '页面管理', content: <Page /> },
-  { title: '产品详情', content: <Detail /> }
+  { title: '产品公告', content: <Notice /> }
 ]
 export default observer(function Homepage() {
 

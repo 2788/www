@@ -2,25 +2,25 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { Table, Tooltip, Icon, Modal } from 'react-icecream'
 import { useInjection } from 'qn-fe-core/di'
-import { IDetail, IDetailWithId } from 'apis/product/detail'
+import { INotice, INoticeWithId } from 'apis/product/notice'
 import { IPage } from 'apis/product/page'
 import { timeFormatter } from 'utils/time'
 
 import { renderState } from 'components/common/State'
-import DetailStore from '../store'
+import NoticeStore from '../store'
 import * as style from './style.m.less'
 import { typeMap } from '..'
 
 export interface IProps {
-  list: IDetail[]
+  list: INotice[]
   pageList: IPage[]
   isLoading: boolean
   onDelete: () => void
   onEdit(id: string): void
 }
 
-export default observer(function DetailList(props: IProps) {
-  const detailStore = useInjection(DetailStore)
+export default observer(function NoticeList(props: IProps) {
+  const noticeStore = useInjection(NoticeStore)
   const { list, pageList, isLoading, onDelete, onEdit } = props
 
   const handleDelete = (id: string) => {
@@ -28,7 +28,7 @@ export default observer(function DetailList(props: IProps) {
       title: '确定删除？',
       okType: 'danger',
       onOk: () => {
-        detailStore.del(id).then(() => onDelete())
+        noticeStore.del(id).then(() => onDelete())
       }
     })
   }
@@ -36,13 +36,13 @@ export default observer(function DetailList(props: IProps) {
     onEdit(id)
   }
 
-  const renderProduct = (_: string, record: IDetail) => {
+  const renderProduct = (_: string, record: INotice) => {
     const page = pageList.find(item => item.id === record.product)
     return page ? page.name : record.product
   }
-  const renderType = (_: string, record: IDetail) => typeMap[record.type]
-  const renderTime = (_: string, record: IDetail) => timeFormatter('YYYY-MM-DD')(record.effectTime) + ' 至 ' + timeFormatter('YYYY-MM-DD')(record.invalidTime)
-  const renderOperation = (_: string, record: IDetailWithId) => (
+  const renderType = (_: string, record: INotice) => typeMap[record.type]
+  const renderTime = (_: string, record: INotice) => timeFormatter('YYYY-MM-DD')(record.effectTime) + ' 至 ' + timeFormatter('YYYY-MM-DD')(record.invalidTime)
+  const renderOperation = (_: string, record: INoticeWithId) => (
     <>
       <Tooltip title="编辑">
         <a

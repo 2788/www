@@ -4,16 +4,16 @@ import ToasterStore from 'admin-base/common/stores/toaster'
 import { injectable } from 'qn-fe-core/di'
 import { action, computed, observable } from 'mobx'
 import Loadings from 'admin-base/common/stores/loadings'
-import DetailApis, { IDetail, IDetailWithId } from 'apis/product/detail'
+import NoticeApis, { INotice, INoticeWithId } from 'apis/product/notice'
 import PageApis, { IPage } from 'apis/product/page'
 import { State } from 'constants/state'
 import { genFilteredList } from 'components/common/State'
 
 @injectable()
-export default class DetailStore extends Store {
+export default class NoticeStore extends Store {
 
   constructor(
-    private detailApis: DetailApis,
+    private noticeApis: NoticeApis,
     private pageApis: PageApis,
     toasterStore: ToasterStore
   ) {
@@ -21,7 +21,7 @@ export default class DetailStore extends Store {
     ToasterStore.bind(this, toasterStore)
   }
 
-  @observable.ref list: IDetailWithId[] = []
+  @observable.ref list: INoticeWithId[] = []
   @observable.ref pageList: IPage[] = []
   @observable.ref states: State[] = []
   loadings = Loadings.collectFrom(this)
@@ -32,12 +32,12 @@ export default class DetailStore extends Store {
   }
 
   @computed
-  get filteredList(): IDetailWithId[] {
+  get filteredList(): INoticeWithId[] {
     return genFilteredList(this.states, this.list)
   }
 
   @action.bound
-  updateList(list: IDetailWithId[]) {
+  updateList(list: INoticeWithId[]) {
     this.list = list
   }
 
@@ -54,7 +54,7 @@ export default class DetailStore extends Store {
   @autobind
   @Loadings.handle('fetchList')
   fetchList() {
-    return this.detailApis.list().then((res: IDetailWithId[]) => this.updateList(res))
+    return this.noticeApis.list().then((res: INoticeWithId[]) => this.updateList(res))
   }
 
   // 获取产品页列表
@@ -79,16 +79,16 @@ export default class DetailStore extends Store {
     await Promise.all([this.fetchPageList(), this.fetchList()])
   }
 
-  add(data: IDetail) {
-    return this.detailApis.add(data)
+  add(data: INotice) {
+    return this.noticeApis.add(data)
   }
 
-  update(data: IDetail, id: string) {
-    return this.detailApis.update(data, id)
+  update(data: INotice, id: string) {
+    return this.noticeApis.update(data, id)
   }
 
-  @ToasterStore.handle('删除产品详情成功！')
+  @ToasterStore.handle('删除产品公告成功！')
   del(id: string) {
-    return this.detailApis.delete(id)
+    return this.noticeApis.delete(id)
   }
 }

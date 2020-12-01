@@ -48,7 +48,7 @@ export const defaultFormData: FormDataType = {
     name: '',
     pcImg: '',
     mobileImg: '',
-    effectTime: moment().add(1, 'days').unix(),
+    effectTime: moment().unix(),
     invalidTime: moment().add(1, 'month').unix(),
     createTime: 0,
     editTime: 0,
@@ -244,7 +244,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           <DatePicker.RangePicker
             {...bindRangePicker(store.form.$.effectTime, store.form.$.invalidTime)}
             style={{ width: '100%' }}
-            disabledDate={current => !!current && current < moment().endOf('day')}
+            disabledDate={current => !!current && current < moment().startOf('day')}
             allowClear={false}
           />
         </FormItem>

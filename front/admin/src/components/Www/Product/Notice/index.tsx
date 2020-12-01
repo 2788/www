@@ -12,8 +12,8 @@ import { Container, Spacer } from 'libs/layout-element'
 import { StateCheckboxGroup } from 'components/common/State'
 import { EditorStatus } from 'constants/editor'
 
-import DetailStore from './store'
-import DetailList from './List'
+import NoticeStore from './store'
+import NoticeList from './List'
 import EditorModal, { ExtraProps } from './Editor'
 
 export const typeMap = {
@@ -22,10 +22,10 @@ export const typeMap = {
 }
 
 @injectable()
-class DetailManageStore extends Store {
+class NoticeManageStore extends Store {
 
   constructor(
-    public detailStore: DetailStore,
+    public noticeStore: NoticeStore,
     toasterStore: ToasterStore
   ) {
     super()
@@ -36,13 +36,13 @@ class DetailManageStore extends Store {
   @autobind
   @ToasterStore.handle()
   refresh() {
-    return this.detailStore.refresh()
+    return this.noticeStore.refresh()
   }
 
   @autobind
   @ToasterStore.handle()
   initList() {
-    return this.detailStore.init()
+    return this.noticeStore.init()
   }
 
   @autobind
@@ -53,8 +53,8 @@ class DetailManageStore extends Store {
   @autobind
   edit(id: string) {
     // eslint-disable-next-line no-underscore-dangle
-    const detail = this.detailStore.filteredList.find(item => item._id === id)
-    this.editorModal.open({ detail, id, status: EditorStatus.Editing }).then(this.refresh)
+    const notice = this.noticeStore.filteredList.find(item => item._id === id)
+    this.editorModal.open({ notice, id, status: EditorStatus.Editing }).then(this.refresh)
   }
 
   init() {
@@ -65,20 +65,20 @@ class DetailManageStore extends Store {
   }
 }
 
-const DetailManage = observer(function DetailManage() {
-  const store = useLocalStore(DetailManageStore)
-  const detailStore = store.detailStore
+const NoticeManage = observer(function NoticeManage() {
+  const store = useLocalStore(NoticeManageStore)
+  const noticeStore = store.noticeStore
   return (
     <>
       <Container width="100%" margin="0 0 22px" shrinkWrap>
-        <StateCheckboxGroup onChange={detailStore.updateStates} />
+        <StateCheckboxGroup onChange={noticeStore.updateStates} />
         <Spacer />
-        <Button icon="plus" onClick={store.add}>创建产品详情</Button>
+        <Button icon="plus" onClick={store.add}>创建产品公告</Button>
       </Container>
-      <DetailList
-        list={detailStore.filteredList}
-        pageList={detailStore.pageList}
-        isLoading={detailStore.isLoading}
+      <NoticeList
+        list={noticeStore.filteredList}
+        pageList={noticeStore.pageList}
+        isLoading={noticeStore.isLoading}
         onDelete={store.refresh}
         onEdit={store.edit}
       />
@@ -87,10 +87,10 @@ const DetailManage = observer(function DetailManage() {
   )
 })
 
-export default function Detail() {
+export default function Notice() {
   return (
-    <Provider provides={[{ identifier: DetailStore, constr: DetailStore }]} >
-      <DetailManage />
+    <Provider provides={[{ identifier: NoticeStore, constr: NoticeStore }]} >
+      <NoticeManage />
     </Provider>
   )
 }
