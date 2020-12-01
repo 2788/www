@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render well. 1`] = `
+<div
+  style={
+    Object {
+      "alignSelf": "auto",
+      "backgroundColor": undefined,
+      "display": "flex",
+      "flex": 1,
+      "height": undefined,
+      "justifyContent": "flex-start",
+      "margin": undefined,
+      "maxHeight": undefined,
+      "maxWidth": undefined,
+      "overflow": "auto",
+      "padding": undefined,
+      "width": undefined,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "alignSelf": "baseline",
+        "backgroundColor": "#fff",
+        "display": "inline-flex",
+        "flex": "none",
+        "height": undefined,
+        "justifyContent": "flex-start",
+        "margin": "24px",
+        "maxHeight": undefined,
+        "maxWidth": "calc(100% - 48px)",
+        "overflow": "hidden",
+        "padding": "24px",
+        "width": "calc(100% - 48px)",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flex": 1,
+          "flexDirection": "column",
+          "overflow": "auto",
+        }
+      }
+    />
+  </div>
+</div>
+`;

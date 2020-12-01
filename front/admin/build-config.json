@@ -1,0 +1,39 @@
+{
+  "extends": "typescript-react",
+  "srcDir": "src",
+  "publicUrl": "https://static-file.qiniu.io/",
+  "entries": {
+    "index": "src/index.tsx"
+  },
+  "pages": {
+    "index": {
+      "template": "src/index.ejs",
+      "entries": "index",
+      "path": "^\\/"
+    }
+  },
+  "transforms": {
+    "m.less": {
+      "transformer": "less",
+      "config": {
+        "modules": true,
+        "options": {
+          "javascriptEnabled": true
+        }
+      }
+    }
+  },
+  "devProxy": {
+    "/api": "http://admin-backend-www-env-staging.qa.qiniu.io"
+  },
+  "deploy": {
+    "config": {
+      "accessKey": "tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr",
+      "secretKey": "1oUlrJlpJprkl4sLZQYdJLsGoVTCZaZXEbmiZTNh",
+      "bucket": "admin-v2-static"
+    }
+  },
+  "engines": {
+    "builder": "^1.17.0"
+  }
+}

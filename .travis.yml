@@ -15,10 +15,14 @@ matrix:
       before_install:
         - export REPOROOT=$TRAVIS_BUILD_DIR
         - export WWW_2020_PATH=front/2020
+        - export WWW_ADMIN_PATH=front/admin
       before_script:
         - source ./travis.sh
         - beforeScript $WWW_2020_PATH
+        - beforeScript $WWW_ADMIN_PATH
       script:
         - doScript $WWW_2020_PATH
+        - doScript $WWW_ADMIN_PATH
       after_script:
         - afterScript $WWW_2020_PATH
+        - afterScript $WWW_ADMIN_PATH

@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+# Work around file for eslint config
+!.eslintrc.js
+
+# less type
+src/**/*.m.less.d.ts
+
+# 测试覆盖率结果
+__coverage__

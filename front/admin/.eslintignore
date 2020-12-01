@@ -1,0 +1,6 @@
+
+# less type
+src/**/*.m.less.d.ts
+
+# tlm config
+tlm.config.js
