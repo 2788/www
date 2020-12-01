@@ -70,7 +70,7 @@ class EditorModalStore extends Store {
 
   @Loadings.handle('submit')
   async doAdd(param: IPage) {
-    await this.pageStore.add(param).then
+    await this.pageStore.add(param)
     this.toasterStore.success('新增产品页成功！')
   }
 

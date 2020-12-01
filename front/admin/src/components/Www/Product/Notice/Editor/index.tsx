@@ -82,7 +82,7 @@ class EditorModalStore extends Store {
 
   @Loadings.handle('submit')
   async doAdd(param: INotice) {
-    await this.noticeStore.add(param).then
+    await this.noticeStore.add(param)
     this.toasterStore.success('创建产品公告成功！')
   }
 
