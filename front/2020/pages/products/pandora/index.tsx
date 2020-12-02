@@ -5,12 +5,18 @@
 /* eslint-disable max-len */
 
 import React, { PropsWithChildren } from 'react'
+import { InferGetStaticPropsType } from 'next'
+import { Product } from 'constants/products'
 import * as card from 'components/UI/Card'
 import Button from 'components/UI/Button'
 import Swiper from 'components/UI/Swiper'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import { RawAccessProcess as AccessProcess, Step } from 'components/Product/AccessProcess'
 import Section from 'components/Product/Section'
@@ -46,7 +52,7 @@ import style from './style.less'
 // 使用链接
 const portalUrl = 'https://portal.qiniu.com/express'
 
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const btns = useBtns(
     { href: portalUrl, children: '立即使用', pcOnly: true },
@@ -62,6 +68,8 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner}
       />
+
+      <ProducNotice notices={notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -224,16 +232,24 @@ function PageContent() {
   )
 }
 
-export default function PandoraPage() {
+export default function PandoraPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="机器数据分析平台 Pandora"
       keywords="数据分析, 数据管理, 智能运维管理, 业务运营分析, 安全事态分析, 智能网联数据, 金融, 汽车, 运营商, 智能制造, 互联网"
       description="机器数据分析平台 Pandora 能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Express)
+    }
+  }
 }
 
 function ExpressFeatures() {

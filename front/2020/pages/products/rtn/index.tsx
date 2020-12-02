@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
@@ -18,11 +19,11 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 import { useModal as useFeedbackModal } from 'components/Feedback'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
-import { Product, urlMap } from 'constants/products'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
+import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 
 import ServerSideMergeIcon from './_images/feature-serverside-merge.svg'
@@ -38,7 +39,7 @@ import style from './index.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -59,24 +60,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem href="/solutions/rtclive">
-            泛娱乐互动直播解决方案全新上线，了解一下 &gt;&gt;
-          </PageNoticeItem>
-        </PageNoticeGroup>
-        <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">
-            热卖实时音视频连麦资源包，限时 4 折来袭 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem href="https://qmall.qiniu.com/template/NDM?ref=RTC2020801">
-            新客专属限量秒杀，7.7 元抢购 20,000 分钟实时音视频连麦套餐包 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem href={urlMap[Product.Pili]}>
-            毫秒级延迟直播体验，直播流量包特惠 8 折起 &gt;&gt;
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -172,14 +156,22 @@ function PageContent() {
   )
 }
 
-export default function RtcPage() {
+export default function RtcPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="实时音视频"
       keywords="互动直播, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
       description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Rtn)
+    }
+  }
 }

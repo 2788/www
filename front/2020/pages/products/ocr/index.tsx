@@ -3,11 +3,15 @@
  * @file 票证自动识别 OCR
  */
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
 
 import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/ocr/Advantage'
@@ -22,7 +26,7 @@ import { Product } from 'constants/products'
 
 import banner from './banner.png'
 
-function Page() {
+function Page({ notices }: { notices: INotice[] }) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -41,6 +45,8 @@ function Page() {
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={banner} />
+
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -63,14 +69,22 @@ function Page() {
   )
 }
 
-export default function OcrPage() {
+export default function OcrPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="票证自动识别 OCR"
       keywords="票证自动识别, OCR, open api, 身份证识别, 车险保单识别, 营业执照识别, 新车发票识别, 车辆登记识别"
       description="票证自动识别 OCR 基于行业前沿的深度学习技术，提供身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
     >
-      <Page />
+      <Page notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Ocr)
+    }
+  }
 }

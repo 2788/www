@@ -8,13 +8,15 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
+import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
@@ -26,7 +28,7 @@ import Scene from 'components/pages/plsv/Scene'
 
 import imgBanner from './images/banner.png'
 
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const btns = useBtns(
     { children: '免费体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com', pcOnly: true },
@@ -41,13 +43,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <PageNotice>
-        <PageNoticeGroup title="产品推荐" type="welfares">
-          <PageNoticeItem href="/products/svesdk">
-            短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省地打造专业级短视频制作工具
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -76,14 +72,22 @@ function PageContent() {
   )
 }
 
-export default function PlsvPage() {
+export default function PlsvPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="短视频 SDK"
       keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
       description="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Plsv)
+    }
+  }
 }

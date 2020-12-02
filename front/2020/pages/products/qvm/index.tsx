@@ -11,7 +11,10 @@ import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
+
+import { getNotices } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import Section from 'components/Product/Section'
@@ -69,18 +72,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
         icon={imgBanner}
       />
 
-      <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem href="https://developer.qiniu.com/qvm/manual/6681/enterprise-network">
-            助力用户快速实现混合云云产品【云企业网】上线
-          </PageNoticeItem>
-        </PageNoticeGroup>
-        <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="/events/qvm0rmb">
-            企业 0 元云主机活动
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={props.notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -175,7 +167,8 @@ export async function getStaticProps() {
     props: {
       starter: await getStarterSpecs(),
       enterprise: await getEnterpriseSpecs(),
-      metaInfo: await getMetaInfo()
+      metaInfo: await getMetaInfo(),
+      notices: await getNotices(Product.Qvm)
     }
   }
 }

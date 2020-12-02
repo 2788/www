@@ -3,15 +3,16 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
 import Packages from 'components/pages/ssl/Packages'
@@ -48,7 +49,7 @@ import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
   const priceUrl = urlForPrice(Product.Ssl)
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/ssl', children: '立即使用', pcOnly: true },
@@ -64,16 +65,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem title="2 年续期证书上线啦！超低折扣，无托管费用，畅享两年不间断证书服务！" href="https://portal.qiniu.com/certificate/apply">
-            2 年续期证书上线啦！超低折扣，无托管费用，畅享两年不间断证书服务！ &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem title="两年期 SSL 证书下架通知！" href="https://developer.qiniu.com/ssl/manual/7080/ssl-certificate-the-longest-validity-since-september-1-2020-changes-for-a-year">
-            两年期 SSL 证书下架通知！ &gt;&gt;
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -195,14 +187,22 @@ function PageContent() {
   )
 }
 
-export default function SslPage() {
+export default function SslPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="SSL 证书"
       keywords="ssl, ssl 证书, ssl 证书申请, ssl 企业证书, ssl 数字证书, 免费 ssl 证书, 企业 ssl 证书, ssl 证书购买, ssl 证书服务, ssl 证书价格, ev ssl 证书, dv ssl 证书, ov ssl 证书, https 证书"
       description="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Ssl)
+    }
+  }
 }

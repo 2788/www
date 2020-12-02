@@ -8,6 +8,8 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
+
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import { useMobile } from 'hooks/ua'
@@ -18,6 +20,9 @@ import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import Advantage from 'components/pages/qvs/Advantage'
 import Core from 'components/pages/qvs/Core'
 import Scene from 'components/pages/qvs/Scene'
@@ -25,7 +30,7 @@ import Process from 'components/pages/qvs/Process'
 
 import imgBanner from './images/banner.png'
 
-export function Page() {
+export function Page({ notices }: { notices: INotice[] }) {
   const portalUrl = 'https://portal.qiniu.com/qvs'
   const priceUrl = urlForPrice(Product.Qvs)
 
@@ -43,6 +48,8 @@ export function Page() {
         desc="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
         btns={btns.banner}
         icon={imgBanner} />
+
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -73,14 +80,22 @@ export function Page() {
   )
 }
 
-export default function Main() {
+export default function Main({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="视频监控 QVS"
       keywords="视频监控, QVS, qvs"
       description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
     >
-      <Page />
+      <Page notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Qvs)
+    }
+  }
 }

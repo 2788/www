@@ -5,6 +5,7 @@
 /* eslint-disable max-len */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 import { useBtns } from 'hooks/product-btn'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
@@ -12,6 +13,10 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
@@ -36,7 +41,7 @@ import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -57,6 +62,8 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner}
       />
+
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -153,14 +160,22 @@ function PageContent() {
   )
 }
 
-export default function SmsPage() {
+export default function SmsPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="云短信 SMS"
       keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
       description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Sms)
+    }
+  }
 }

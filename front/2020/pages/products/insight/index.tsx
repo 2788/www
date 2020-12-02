@@ -3,12 +3,17 @@
  */
 
 import React, { ReactNode } from 'react'
+import { InferGetStaticPropsType } from 'next'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
+import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
-import PageNotice, { Group as PageNoticeGroup, Item as PageNoticeItem } from 'components/Product/PageNotice'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
@@ -41,7 +46,7 @@ import style from './style.less'
 const applyUrl = 'https://portal.qiniu.com/apply-pandora'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const isPc = !useMobile()
 
@@ -59,18 +64,7 @@ function PageContent() {
         icon={imgBanner}
       />
 
-      <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem href="/products/pandora">
-            平台全面升级，点击了解最新特性
-          </PageNoticeItem>
-        </PageNoticeGroup>
-        <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="https://developer.qiniu.com/insight/manual/4676/free-allowances">
-            免费额度：新增日志数据 1 GB/月，存量日志数据 1 GB/月，日志仓库 1 个/月，API 调用次数 100 万次/月，了解详情
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink="https://developer.qiniu.com/insight/manual/4677/billing-way?ref=www.qiniu.com">
         {btns.nav}
@@ -247,16 +241,24 @@ function PageContent() {
   )
 }
 
-export default function InsightPage() {
+export default function InsightPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="智能日志管理平台"
       keywords="日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控"
       description="智能日志管理平台实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计及业务数据分析等场景，已帮助上千家互联网、智能制造、金融、新媒体及物联网等行业客户数字化升级。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Insight)
+    }
+  }
 }
 
 // 产品优势中“了解更多”链接

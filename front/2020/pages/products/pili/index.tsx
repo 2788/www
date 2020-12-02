@@ -3,9 +3,10 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
-import { Product, urlMap } from 'constants/products'
+import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -17,13 +18,13 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
+
 import Function from 'components/pages/pili/Function'
 import Arch from 'components/pages/pili/Arch'
 import PiliScene from 'components/pages/pili/Scene'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
 
 // 功能与优势 图片
 import DelayIcon from './_images/advantages-delay.svg'
@@ -37,7 +38,7 @@ import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
   const { startConsulting } = useFeedbackModal()
 
   const priceUrl = urlForPrice(Product.Pili)
@@ -57,19 +58,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <PageNotice>
-        <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">
-            热卖实时音视频连麦资源包，限时 4 折来袭 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem href="https://qmall.qiniu.com/template/NDM?ref=RTC2020801">
-            新客专属限量秒杀，7.7 元抢购 20,000 分钟实时音视频连麦套餐包 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem href={urlMap[Product.Rtn]}>
-            零基础搭建音视频平台，开通 QRTC 获取每月 20,000 分钟免费时长 &gt;&gt;
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -158,14 +147,22 @@ function PageContent() {
   )
 }
 
-export default function PiliPage() {
+export default function PiliPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="视频直播 Pili"
       keywords="直播云, 云直播, 直播 SDK, 视频直播云服务, 视频直播服务, 直播 API, 推流 SDK, 播放 SDK, 视频直播, 七牛视频直播, quic 推流"
       description="七牛视频直播是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Pili)
+    }
+  }
 }

@@ -5,6 +5,7 @@
 /* eslint-disable max-len */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
@@ -15,6 +16,10 @@ import Usage from 'components/pages/faceid/Usage'
 import Scenes from 'components/pages/faceid/Scenes'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import { useBtns } from 'hooks/product-btn'
 import imgBanner from './banner.png'
 import IconAdvan1 from './_icons/advan-1.svg'
@@ -28,7 +33,7 @@ import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const priceUrl = urlForPrice(Product.FaceID)
 
@@ -55,6 +60,8 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner}
       />
+
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -110,14 +117,22 @@ function PageContent() {
   )
 }
 
-export default function FaceIdPage() {
+export default function FaceIdPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="人脸核验"
       keywords="人脸核验, 身份验证, 人脸比对, 实名制"
       description="利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证，广泛应用于数字金融、在线教育、线上政务和直播等各类实名制场景中。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.FaceID)
+    }
+  }
 }

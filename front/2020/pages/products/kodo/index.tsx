@@ -3,15 +3,16 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import { useBtns } from 'hooks/product-btn'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import PageBanner from 'components/Product/PageBanner'
-import PageNotice, {
-  Group as PageNoticeGroup,
-  Item as PageNoticeItem
-} from 'components/Product/PageNotice'
+
+import { getNotices, INotice } from 'apis/notice'
+import ProducNotice from 'components/Product/common/ProducNotice'
+
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import StorageType from 'components/pages/kodo/StorageType'
@@ -23,9 +24,9 @@ import KodoCase from 'components/pages/kodo/Case'
 import { MpPage } from 'constants/mp'
 
 import imgBanner from './images/banner.png'
-import style from './index.less'
+// import style from './index.less'
 
-function PageContent() {
+function PageContent({ notices }: { notices: INotice[] }) {
 
   const priceUrl = urlForPrice(Product.Kodo)
 
@@ -45,19 +46,7 @@ function PageContent() {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <PageNotice>
-        <PageNoticeGroup title="新闻动态" type="news">
-          <PageNoticeItem href="/solutions/kodoe">
-            私有云存储，构建本地高扩展性数据存储平台 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem href={priceUrl}>
-            标准存储，低至 <span className={style.price}>0.099</span> 元/GB/月起 &gt;&gt;
-          </PageNoticeItem>
-          <PageNoticeItem href="http://qiniu-exp.mikecrm.com/yGntQCJ">
-            体验边缘存储服务 &gt;&gt;
-          </PageNoticeItem>
-        </PageNoticeGroup>
-      </PageNotice>
+      <ProducNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -100,14 +89,22 @@ function PageContent() {
   )
 }
 
-export default function KodoPage() {
+export default function KodoPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="对象存储 Kodo"
       keywords="云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案, 视频托管, 图片托管, 低频存储, 镜像存储, 私有部署, 静态资源托管, 备份归档, 数据迁移, 数据灾备, 弹性扩容"
       description="七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。"
     >
-      <PageContent />
+      <PageContent notices={notices} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Kodo)
+    }
+  }
 }
