@@ -1,7 +1,7 @@
 import React from 'react'
 import Feature from 'components/Product/Feature'
 import Button from 'components/UI/Button'
-import { Card, Row, InvisibleCard } from 'components/UI/Card'
+import { Card, Row } from 'components/UI/Card'
 
 import { CardProps, ProductProps } from '../index'
 import style from './index.less'
@@ -13,15 +13,7 @@ export default function ForPc({ title = '产品简介', header = title, data }: 
         data.map((product, index) => (
           <Row key={index}>
             {
-              product.map((item, i) => {
-                // 占位，空白卡片
-                if (!item) {
-                  return <InvisibleCard className={style.cardWrapper} key={i} />
-                }
-                return (
-                  <MyCard {...item} key={i} />
-                )
-              })
+              product.map((item, i) => <MyCard {...item} key={i} />)
             }
           </Row>
         ))

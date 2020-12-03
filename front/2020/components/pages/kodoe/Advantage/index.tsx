@@ -51,7 +51,7 @@ export default function KodoeAdvantage() {
           title="成熟可靠的存储"
           align="left"
         >
-          <FeatureDesc preIcon="check">11 个 9 的数据可靠性，自动检查和修复数据</FeatureDesc>
+          <FeatureDesc preIcon="check">数据高可靠，自动检查和修复数据</FeatureDesc>
           <FeatureDesc preIcon="check">具备双活及跨地域灾备多中心的服务能力</FeatureDesc>
           <FeatureDesc preIcon="check">公有云多年验证的架构和方案</FeatureDesc>
         </FeatureItem>

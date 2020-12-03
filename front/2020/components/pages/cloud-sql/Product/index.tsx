@@ -7,6 +7,7 @@ import Icon2 from './images/icon2.svg'
 import Icon3 from './images/icon3.svg'
 import Icon4 from './images/icon4.svg'
 import Icon5 from './images/icon5.svg'
+import Icon6 from './images/icon6.svg'
 
 export interface CardProps {
   icon: ReactNode
@@ -16,12 +17,12 @@ export interface CardProps {
 }
 
 export type ProductProps = {
-  data: Array<Array<CardProps | null>>
+  data: CardProps[][]
   title?: string
   header?: string
 }
 
-const products: Array<Array<CardProps | null>> = [
+const products: CardProps[][] = [
   [
     {
       icon: <Icon1 />,
@@ -55,8 +56,12 @@ const products: Array<Array<CardProps | null>> = [
       desc: '云数据库 MongoDB 版是高可靠存储引擎，提供三节点副本集高可用架构，实现容灾切换、故障迁移完全透明化；提供强大的数据库管理功能，实现数据库的在线扩容、备份回滚、性能优化等。',
       href: 'https://developer.qiniu.com/qvm/manual/5476/what-is-mongodb-cloud-database'
     },
-    // 增加null是为了便于占位
-    null
+    {
+      icon: <Icon6 />,
+      title: '云数据库 PostgreSQL 版',
+      desc: 'RDS PostgreSQL 的优点主要集中在对 SQL 规范的完整实现以及丰富多样的数据类型支持，包括 JSON 数据、IP 数据和几何数据等，完美支持事务、子查询、多版本控制（MVCC）、数据完整性检查等特性。',
+      href: 'https://developer.qiniu.com/qvm/manual/7180/cloud-postgresql-database-Product-Introduction'
+    }
   ]
 ]
 export default function SqlProduct() {
