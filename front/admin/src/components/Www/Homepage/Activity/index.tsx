@@ -8,7 +8,8 @@ import { useLocalStore } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
-import { Container, Spacer } from 'libs/layout-element'
+import { Spacer } from 'libs/layout-element'
+import Container from 'components/common/Container'
 import { StateCheckboxGroup } from 'components/common/State'
 
 import { EditorStatus } from 'constants/editor'
@@ -16,6 +17,8 @@ import ActivityStore from './store'
 import ActivityList from './List'
 import EditorModal, { ExtraProps } from './Editor'
 
+// 顺序个数
+export const maxNum = 4
 @injectable()
 class ActivityManageStore extends Store {
 
@@ -62,7 +65,7 @@ const ActivityManage = observer(function ActivityManage() {
   const activityStore = store.activityStore
   return (
     <>
-      <Container width="100%" margin="0 0 22px" shrinkWrap>
+      <Container>
         <StateCheckboxGroup onChange={activityStore.updateStates} />
         <Spacer />
         <Button icon="plus" onClick={store.add}>创建活动</Button>

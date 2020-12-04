@@ -2,41 +2,9 @@
 
 exports[`should render well. 1`] = `
 <div
-  style={
-    Object {
-      "alignSelf": "auto",
-      "backgroundColor": undefined,
-      "display": "flex",
-      "flex": 1,
-      "height": undefined,
-      "justifyContent": "flex-start",
-      "margin": undefined,
-      "maxHeight": undefined,
-      "maxWidth": undefined,
-      "overflow": "auto",
-      "padding": undefined,
-      "width": undefined,
-    }
-  }
+  className=""
 >
-  <div
-    style={
-      Object {
-        "alignSelf": "baseline",
-        "backgroundColor": "#fff",
-        "display": "inline-flex",
-        "flex": "none",
-        "height": undefined,
-        "justifyContent": "flex-start",
-        "margin": "24px",
-        "maxHeight": undefined,
-        "maxWidth": "calc(100% - 48px)",
-        "overflow": "hidden",
-        "padding": "24px",
-        "width": "calc(100% - 48px)",
-      }
-    }
-  >
+  <div>
     <div
       style={
         Object {

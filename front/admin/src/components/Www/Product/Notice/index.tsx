@@ -8,7 +8,8 @@ import { useLocalStore } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
-import { Container, Spacer } from 'libs/layout-element'
+import { Spacer } from 'libs/layout-element'
+import Container from 'components/common/Container'
 import { StateCheckboxGroup } from 'components/common/State'
 import { EditorStatus } from 'constants/editor'
 
@@ -70,7 +71,7 @@ const NoticeManage = observer(function NoticeManage() {
   const noticeStore = store.noticeStore
   return (
     <>
-      <Container width="100%" margin="0 0 22px" shrinkWrap>
+      <Container>
         <StateCheckboxGroup onChange={noticeStore.updateStates} />
         <Spacer />
         <Button icon="plus" onClick={store.add}>创建产品公告</Button>

@@ -1,11 +1,13 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react'
-import { Table, Tooltip, Icon, Modal } from 'react-icecream'
+import { Tooltip, Icon, Modal } from 'react-icecream'
+import Table, { PaginationConfig } from 'react-icecream/lib/table'
 import { useInjection } from 'qn-fe-core/di'
 
 import { IPage } from 'apis/product/page'
 import PageStore from '../store'
 
+const pageSize = 5
 export interface IProps {
   list: IPage[]
   isLoading: boolean
@@ -16,6 +18,7 @@ export interface IProps {
 export default observer(function PageList(props: IProps) {
   const pageStore = useInjection(PageStore)
   const { list, isLoading, onDelete, onEdit } = props
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   const handleDelete = (id: string) => {
     Modal.confirm({
@@ -47,14 +50,20 @@ export default observer(function PageList(props: IProps) {
     </>
   )
 
+  const pagination: PaginationConfig = {
+    pageSize,
+    current: currentPage,
+    onChange: setCurrentPage
+  }
+
   return (
     <Table
       dataSource={list.slice()}
       rowKey="id"
       loading={isLoading}
       bodyStyle={{ backgroundColor: '#fff' }}
-      pagination={false}
-      scroll={{ x: 'max-content', y: 320 }}
+      pagination={pagination}
+      scroll={{ x: 'max-content' }}
     >
       <Table.Column title="页面 ID" width={120} dataIndex="id" />
       <Table.Column title="页面名称" width={200} dataIndex="name" />

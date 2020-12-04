@@ -33,11 +33,11 @@ export default class NewsApis {
   constructor(private fetchStore: FetchStore) { }
 
   add(options: INews): Promise<void> {
-    return this.fetchStore.postJSON(apiMongo + '/www-homepage-news', { ...options, ...{ link: blogUrl + options.articleId } })
+    return this.fetchStore.postJSON(apiMongo + '/www-homepage-news', { ...options, link: blogUrl + options.articleId })
   }
 
   update(options: INews, id: string): Promise<void> {
-    return this.fetchStore.putJSON(apiMongo + '/www-homepage-news/' + id, { options, ...{ link: blogUrl + options.articleId } })
+    return this.fetchStore.putJSON(apiMongo + '/www-homepage-news/' + id, { ...options, link: blogUrl + options.articleId })
   }
 
   delete(id: string): Promise<void> {

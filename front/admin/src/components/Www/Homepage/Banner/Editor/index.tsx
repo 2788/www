@@ -11,9 +11,10 @@ import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
+import { textNotBlank } from 'admin-base/common/utils/validator'
 import { bindRangePicker } from 'utils/bind'
 import moment, { Moment } from 'moment'
-import { textNotBlank, textHttp, textColor } from 'utils/validator'
+import { textHttp, textColor } from 'utils/validator'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IBanner } from 'apis/homepage/banner'
 import UploadImg, * as uploadImg from 'components/common/UploadImg'
@@ -22,6 +23,7 @@ import FormItem from 'components/common/FormItem'
 import { checkOverlap } from 'utils/check'
 import BannerStore from '../store'
 import OrderField from '../../OrderField'
+import { maxNum } from '..'
 import * as style from './style.m.less'
 
 type State = FormState<{
@@ -128,9 +130,15 @@ class EditorModalStore extends Store {
 
   @autobind
   doValidateName(name: string) {
-    const filteredList = this.bannerStore.list
-      .filter((item: IBanner) => item.name === name && item.name !== this.props.banner.name)
-    return filteredList.length === 0 ? null : 'banner 名称重复'
+    if (name === this.props.banner.name) {
+      return null
+    }
+    const hasRecord = this.bannerStore.list
+      .some(item => item.name === name)
+    if (hasRecord) {
+      return 'banner 名称重复'
+    }
+    return null
   }
 
   // 校验同一 order 下，生效时间段是否有重叠的
@@ -188,8 +196,8 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
     return null
   }
 
-  const pcExtra = <p className={style.desc}>推荐尺寸：2880 x 800 px</p>
-  const mobileExtra = <p className={style.desc}>推荐尺寸：1125 x 480 px</p>
+  const pcExtra = <p className={style.desc}>推荐尺寸：2880 * 800 px</p>
+  const mobileExtra = <p className={style.desc}>推荐尺寸：1125 * 480 px</p>
   const colorExtra = <p className={style.desc}>格式：#******，例如：#333333</p>
 
   return (
@@ -238,7 +246,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           label="展示顺序"
           {...bindFormItem(store.form.$.order)}
         >
-          <OrderField state={store.form.$.order} />
+          <OrderField state={store.form.$.order} maxNum={maxNum} />
         </FormItem>
         <FormItem label="生效起止时间">
           <DatePicker.RangePicker

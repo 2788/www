@@ -1,13 +1,15 @@
 import React from 'react'
 
-import { Container, Column } from 'libs/layout-element'
+import { Column } from 'libs/layout-element'
+import Container from 'components/common/Container'
+import * as style from './style.m.less'
 
 export default function Main({ children }: React.PropsWithChildren<{}>) {
   return (
-    <Container overflow="auto">
-      <Container width="calc(100% - 48px)" margin="24px" padding="24px" color="#fff" shrinkWrap>
+    <Container className={style.container}>
+      <div className={style.inner}>
         <Column overflow="auto">{children}</Column>
-      </Container>
+      </div>
     </Container>
   )
 }

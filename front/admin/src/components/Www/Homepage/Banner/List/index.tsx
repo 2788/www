@@ -1,6 +1,7 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react'
-import { Table, Tooltip, Icon, Modal } from 'react-icecream'
+import { Tooltip, Icon, Modal } from 'react-icecream'
+import Table, { PaginationConfig } from 'react-icecream/lib/table'
 import { useInjection } from 'qn-fe-core/di'
 import { IBanner } from 'apis/homepage/banner'
 import { timeFormatter } from 'utils/time'
@@ -8,8 +9,10 @@ import { timeFormatter } from 'utils/time'
 import { renderState } from 'components/common/State'
 import ImgPreview from 'components/common/ImgPreview'
 import BannerStore from '../store'
+import { maxNum } from '..'
 import * as style from './style.m.less'
 
+const pageSize = 5
 export interface IProps {
   list: IBanner[]
   isLoading: boolean
@@ -20,6 +23,7 @@ export interface IProps {
 export default observer(function BannerList(props: IProps) {
   const bannerStore = useInjection(BannerStore)
   const { list, isLoading, onDelete, onEdit } = props
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   const handleDelete = (name: string) => {
     Modal.confirm({
@@ -64,23 +68,35 @@ export default observer(function BannerList(props: IProps) {
     </>
   )
 
+  // 筛选
+  const orderFilters = Array.from({ length: maxNum }, (_, i) => ({ text: '顺序：' + (i + 1), value: i + 1 }))
+  const filterOrder = (value: number, record: IBanner) => record.order === value
+  // 排序
+  const sortCreateTime = (a: IBanner, b: IBanner) => a.createTime - b.createTime
+  const sortEditTime = (a: IBanner, b: IBanner) => a.editTime - b.editTime
+  const pagination: PaginationConfig = {
+    pageSize,
+    current: currentPage,
+    onChange: setCurrentPage
+  }
+
   return (
     <Table
       dataSource={list.slice()}
       rowKey="name"
       loading={isLoading}
       bodyStyle={{ backgroundColor: '#fff' }}
-      pagination={false}
-      scroll={{ x: 'max-content', y: 320 }}
+      pagination={pagination}
+      scroll={{ x: 'max-content' }}
     >
       <Table.Column title="名称" width={120} dataIndex="name" className={style.content} />
       <Table.Column title="状态" width={100} render={renderState} />
       <Table.Column title="PC 端缩略图" width={150} dataIndex="pcImg" render={renderImg('pcImg')} />
       <Table.Column title="移动端缩略图" width={150} dataIndex="mobileImg" render={renderImg('mobileImg')} />
-      <Table.Column title="其他信息" width={200} render={renderOther} className={style.content} />
+      <Table.Column title="其他信息" width={200} dataIndex="other" render={renderOther} filters={orderFilters} onFilter={filterOrder} className={style.content} />
       <Table.Column title="生效时间段" width={240} render={renderTime} />
-      <Table.Column title="创建时间" width={120} dataIndex="createTime" render={timeFormatter('YYYY-MM-DD')} />
-      <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} />
+      <Table.Column title="创建时间" width={120} dataIndex="createTime" render={timeFormatter('YYYY-MM-DD')} sorter={sortCreateTime} />
+      <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} sorter={sortEditTime} />
       <Table.Column title="操作" width={80} render={renderOperation} />
     </Table>
   )

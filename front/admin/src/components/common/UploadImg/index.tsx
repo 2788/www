@@ -9,11 +9,11 @@ import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
 import ToasterStore from 'admin-base/common/stores/toaster'
+import { textNotBlank } from 'admin-base/common/utils/validator'
 import moment from 'moment'
 import UploadApis from 'apis/upload'
-import { textNotBlank } from 'utils/validator'
-import * as style from './style.m.less'
 import ImgPreview from '../ImgPreview'
+import * as style from './style.m.less'
 
 interface IProps {
   state: State

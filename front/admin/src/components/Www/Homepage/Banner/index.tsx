@@ -8,7 +8,8 @@ import { useLocalStore } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
-import { Container, Spacer } from 'libs/layout-element'
+import { Spacer } from 'libs/layout-element'
+import Container from 'components/common/Container'
 import { StateCheckboxGroup } from 'components/common/State'
 
 import { EditorStatus } from 'constants/editor'
@@ -16,6 +17,8 @@ import BannerStore from './store'
 import BannerList from './List'
 import EditorModal, { ExtraProps } from './Editor'
 
+// 顺序个数
+export const maxNum = 4
 @injectable()
 class BannerManageStore extends Store {
 
@@ -59,7 +62,7 @@ const BannerManage = observer(function BannerManage() {
   const bannerStore = store.bannerStore
   return (
     <>
-      <Container width="100%" margin="0 0 22px" shrinkWrap>
+      <Container>
         <StateCheckboxGroup onChange={bannerStore.updateStates} />
         <Spacer />
         <Button icon="plus" onClick={store.add}>创建 banner</Button>

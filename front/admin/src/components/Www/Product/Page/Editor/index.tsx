@@ -11,7 +11,8 @@ import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank, textProductLink } from 'utils/validator'
+import { textNotBlank } from 'admin-base/common/utils/validator'
+import { textProductLink } from 'utils/validator'
 import { EditorProps, EditorStatus } from 'constants/editor'
 
 import Modal from 'components/common/Modal'
@@ -102,9 +103,15 @@ class EditorModalStore extends Store {
 
   @autobind
   doValidateId(id: string) {
-    const filteredList = this.pageStore.list
-      .filter((item: IPage) => item.id === id && item.id !== this.props.page.id)
-    return filteredList.length === 0 ? null : '产品页 ID 重复'
+    if (id === this.props.page.id) {
+      return null
+    }
+    const hasRecord = this.pageStore.list
+      .some(item => item.id === id)
+    if (hasRecord) {
+      return '产品页 ID 重复'
+    }
+    return null
   }
 
   @action

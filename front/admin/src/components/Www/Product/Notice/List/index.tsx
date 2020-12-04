@@ -1,6 +1,7 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { observer } from 'mobx-react'
-import { Table, Tooltip, Icon, Modal } from 'react-icecream'
+import { Tooltip, Icon, Modal } from 'react-icecream'
+import Table, { PaginationConfig } from 'react-icecream/lib/table'
 import { useInjection } from 'qn-fe-core/di'
 import { INotice, INoticeWithId } from 'apis/product/notice'
 import { IPage } from 'apis/product/page'
@@ -8,9 +9,10 @@ import { timeFormatter } from 'utils/time'
 
 import { renderState } from 'components/common/State'
 import NoticeStore from '../store'
-import * as style from './style.m.less'
 import { typeMap } from '..'
+import * as style from './style.m.less'
 
+const pageSize = 5
 export interface IProps {
   list: INotice[]
   pageList: IPage[]
@@ -22,6 +24,7 @@ export interface IProps {
 export default observer(function NoticeList(props: IProps) {
   const noticeStore = useInjection(NoticeStore)
   const { list, pageList, isLoading, onDelete, onEdit } = props
+  const [currentPage, setCurrentPage] = useState<number>(1)
 
   const handleDelete = (id: string) => {
     Modal.confirm({
@@ -64,22 +67,36 @@ export default observer(function NoticeList(props: IProps) {
     </>
   )
 
+  // 筛选
+  const productFilters = pageList.map(item => ({ text: item.name, value: item.id }))
+  const typeFilters = Object.keys(typeMap).map(key => ({ text: typeMap[key], value: key }))
+  const filterProduct = (value: string, record: INotice) => record.product === value
+  const filterType = (value: string, record: INotice) => record.type === value
+  // 排序
+  const sortEditTime = (a: INotice, b: INotice) => a.editTime - b.editTime
+  const pagination: PaginationConfig = {
+    pageSize,
+    current: currentPage,
+    onChange: setCurrentPage
+  }
+
   return (
     <Table
       dataSource={list.slice()}
       rowKey="_id"
       loading={isLoading}
       bodyStyle={{ backgroundColor: '#fff' }}
-      pagination={false}
-      scroll={{ x: 'max-content', y: 320 }}
+      pagination={pagination}
+      scroll={{ x: 'max-content' }}
+      className={style.table}
     >
-      <Table.Column title="所在产品页" width={120} className={style.content} render={renderProduct} />
+      <Table.Column title="所在产品页" width={120} className={style.content} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
       <Table.Column title="摘要" width={120} className={style.content} dataIndex="summary" />
       <Table.Column title="跳转链接" width={200} className={style.content} dataIndex="link" />
-      <Table.Column title="类型" width={100} render={renderType} />
+      <Table.Column title="类型" width={100} dataIndex="type" render={renderType} filters={typeFilters} onFilter={filterType} />
       <Table.Column title="状态" width={100} render={renderState} />
       <Table.Column title="生效时间段" width={240} render={renderTime} />
-      <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} />
+      <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} sorter={sortEditTime} />
       <Table.Column title="操作" width={80} render={renderOperation} />
     </Table>
   )

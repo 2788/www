@@ -8,7 +8,8 @@ import Store from 'qn-fe-core/store'
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
 import Provider from 'qn-fe-core/di/Provider'
-import { Container, Spacer } from 'libs/layout-element'
+import { Spacer } from 'libs/layout-element'
+import Container from 'components/common/Container'
 import { EditorStatus } from 'constants/editor'
 
 import PageStore from './store'
@@ -58,7 +59,7 @@ const PageManage = observer(function PageManage() {
   const pageStore = store.pageStore
   return (
     <>
-      <Container width="100%" margin="0 0 22px" shrinkWrap>
+      <Container>
         <Spacer />
         <Button icon="plus" onClick={store.add}>新增产品页</Button>
       </Container>

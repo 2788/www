@@ -11,10 +11,7 @@ interface IProps {
 
 export default observer(function OrderField(props: IProps) {
   const max = props.maxNum || 4
-  const arr: number[] = []
-  for (let i = 1; i <= max; i++) {
-    arr.push(i)
-  }
+  const arr = Array.from({ length: max }, (_, i) => i + 1)
 
   return (
     <Select

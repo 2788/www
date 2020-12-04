@@ -15,7 +15,7 @@ import UserList from 'admin-base/user/components/Manage'
 import PermissionList from 'admin-base/user/components/PermissionManage'
 import RoleList from 'admin-base/user/components/RoleManage'
 
-import Permission from 'admin-base/user/components/Permission'
+import { StatefulPermission } from 'admin-base/user/components/Permission'
 import PermissionCode from 'constants/permission'
 
 import Homepage from 'components/Www/Homepage'
@@ -43,7 +43,7 @@ export default class App extends React.Component<any, any> {
                 <Route relative exact path="/"><Redirect relative to={`${wwwRoute}${homepageRoute}`} /></Route>
                 <Route relative title={accountTitle} path={accountRoute}>
                   <UserProvider>
-                    <Permission code={PermissionCode.ACCOUNT}>
+                    <StatefulPermission code={PermissionCode.ACCOUNT}>
                       <Switch>
                         <Route relative exact title={userTitle} path={userRoute}>
                           <UserList className={style.account} />
@@ -56,20 +56,20 @@ export default class App extends React.Component<any, any> {
                         </Route>
                         <Route relative path="*"><NotFound /></Route>
                       </Switch>
-                    </Permission>
+                    </StatefulPermission>
                   </UserProvider>
                 </Route>
                 <Route relative title={wwwTitle} path={wwwRoute}>
                   <Switch>
                     <Route relative title={homepageTitle} path={homepageRoute}>
-                      <Permission code={PermissionCode.HOMEPAGE}>
+                      <StatefulPermission code={PermissionCode.HOMEPAGE}>
                         <Homepage />
-                      </Permission>
+                      </StatefulPermission>
                     </Route>
                     <Route relative title={productTitle} path={productRoute}>
-                      <Permission code={PermissionCode.PRODUCT}>
+                      <StatefulPermission code={PermissionCode.PRODUCT}>
                         <Product />
-                      </Permission>
+                      </StatefulPermission>
                     </Route>
                     <Route relative path="*"><NotFound /></Route>
                   </Switch>

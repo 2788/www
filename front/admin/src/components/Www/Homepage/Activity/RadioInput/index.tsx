@@ -5,8 +5,8 @@ import { FieldState, FormState } from 'formstate-x'
 import * as style from './style.m.less'
 
 export const labelMap = {
-  hot: '热门',
-  new: 'new',
+  hot: 'HOT',
+  new: 'NEW',
   other: '自定义'
 }
 

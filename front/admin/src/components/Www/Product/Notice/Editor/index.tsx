@@ -11,9 +11,10 @@ import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup } from 'admin-base/common/utils/form'
+import { textNotBlank } from 'admin-base/common/utils/validator'
 import { bindRangePicker } from 'utils/bind'
 import moment, { Moment } from 'moment'
-import { textNotBlank, textHttp } from 'utils/validator'
+import { textNoticeLink } from 'utils/validator'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 
 import { INotice } from 'apis/product/notice'
@@ -127,7 +128,7 @@ class EditorModalStore extends Store {
     this.form = new FormState({
       product: new FieldState(notice.product).validators(value => !value && '请选择一个产品页'),
       summary: new FieldState(notice.summary).validators(textNotBlank),
-      link: new FieldState(notice.link).validators(textNotBlank, textHttp),
+      link: new FieldState(notice.link).validators(textNotBlank, textNoticeLink),
       type: new FieldState(notice.type).validators(value => !value && '请选择一个类型'),
       effectTime: new FieldState(moment.unix(notice.effectTime)),
       invalidTime: new FieldState(moment.unix(notice.invalidTime))

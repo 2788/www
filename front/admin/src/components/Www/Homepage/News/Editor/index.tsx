@@ -11,7 +11,7 @@ import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank, textPositiveInterger } from 'utils/validator'
+import { textNotBlank, textPositiveInterger } from 'admin-base/common/utils/validator'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import moment from 'moment'
 import { INews, IArchive } from 'apis/homepage/news'
@@ -130,10 +130,15 @@ class EditorModalStore extends Store {
     await this.props.onSubmit()
   }
 
-  // 校验文章 ID 是否是合法的（查询后的）
+  // 校验文章 ID 是否是合法的
   @autobind
   async doValidateId(articleId: string) {
-    if (this.props.news.articleId === articleId) {
+    if (articleId === this.props.news.articleId) {
+      return null
+    }
+    const hasRecord = this.newsStore.list
+      .some(item => item.articleId === articleId)
+    if (hasRecord) {
       return '文章 ID 重复'
     }
     try {
@@ -149,8 +154,8 @@ class EditorModalStore extends Store {
   doValidateOrder(order: number) {
     // 同一 order 的数据 list，且去除 id 相同的（即当前所编辑数据）
     // eslint-disable-next-line no-underscore-dangle
-    const orderList = this.newsStore.list.filter(item => item.order === order && item._id !== this.props.id)
-    return orderList.length !== 0 ? '该顺序已存在资讯' : null
+    const hasRecord = this.newsStore.list.some(item => item.order === order && item._id !== this.props.id)
+    return hasRecord ? '该顺序已存在资讯' : null
   }
 
   @action

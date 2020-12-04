@@ -13,7 +13,8 @@ import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
 import { bindRangePicker } from 'utils/bind'
 import moment, { Moment } from 'moment'
-import { textNotBlank, textHttp } from 'utils/validator'
+import { textNotBlank } from 'admin-base/common/utils/validator'
+import { textHttp } from 'utils/validator'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IActivity } from 'apis/homepage/activity'
 import UploadImg, * as uploadImg from 'components/common/UploadImg'
@@ -23,6 +24,7 @@ import { checkOverlap } from 'utils/check'
 import ActivityStore from '../store'
 import OrderField from '../../OrderField'
 import RadioInput, * as radioInput from '../RadioInput'
+import * as style from './style.m.less'
 
 type State = FormState<{
   title: FieldState<string>
@@ -183,6 +185,8 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
     return null
   }
 
+  const iconExtra = <p className={style.desc}>推荐尺寸：48 * 48 px</p>
+
   return (
     <Modal
       visible={visible}
@@ -206,6 +210,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         </FormItem>
         <FormItem
           label="icon"
+          extra={iconExtra}
           {...bindFormItem(store.form.$.icon)}
         >
           <UploadImg state={store.form.$.icon} maxSize={500} />
