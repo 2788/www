@@ -17,7 +17,7 @@ import Scenes from 'components/pages/faceid/Scenes'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 
-import { getNotices, INotice } from 'apis/notice'
+import { getNotices, INotice } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 import { useBtns } from 'hooks/product-btn'

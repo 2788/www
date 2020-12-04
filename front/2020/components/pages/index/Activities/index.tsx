@@ -4,13 +4,7 @@ import {
   Card as UICard, Title, Desc, Content
 } from 'components/UI/Card'
 import Link from 'components/Link'
-import { Activity } from 'apis/lego'
-import { useNow } from 'hooks/timer'
-
-import Activity1Icon from './images/activity1.svg'
-import Activity2Icon from './images/activity2.svg'
-import Activity3Icon from './images/activity3.svg'
-import Activity4Icon from './images/activity4.svg'
+import { Activity } from 'apis/admin/homepage'
 
 import styles from './style.less'
 
@@ -37,33 +31,25 @@ function Card({ icon, title, banner, bannerBg = '#FA8C16', href, children }: Pro
   )
 }
 
-// 目前用固定的 icon，以后看是不是这个也从接口来
-const icons = [
-  Activity1Icon,
-  Activity2Icon,
-  Activity3Icon,
-  Activity4Icon
-]
+// lable值集合，不在此集合内则直接取值
+const labelMap = {
+  hot: 'HOT',
+  new: 'NEW'
+} as { [k: string]: string }
 
 export default function Activities({ activities }: { activities: Activity[] }) {
-  const now = useNow()
-  const cardsView = activities.slice(0, 4)
-    .filter(activity => new Date(activity.effect_at).valueOf() <= now && new Date(activity.dead_at).valueOf() > now)
-    .map(({ title, subtitle, url, subscript_text, subscript_color }, i) => {
-      const Icon = icons[i]
-      return (
-        <Card
-          key={i}
-          icon={<Icon className={styles.icon} />}
-          title={title}
-          href={url}
-          banner={subscript_text}
-          bannerBg={subscript_color}
-        >
-          {subtitle}
-        </Card>
-      )
-    })
+  const cardsView = activities
+    .map(({ title, subTitle, icon, label, link }, i) => (
+      <Card
+        key={i}
+        icon={<div className={styles.icon} style={{ backgroundImage: `url(${icon})` }}></div>}
+        title={title}
+        href={link}
+        banner={labelMap[label] || label}
+      >
+        {subTitle}
+      </Card>
+    ))
 
   return (
     <div className={styles.activities}>

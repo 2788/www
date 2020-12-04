@@ -20,7 +20,7 @@ import Feature, {
 } from 'components/Product/Feature'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 
-import { getNotices, INotice } from 'apis/notice'
+import { getNotices, INotice } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 import { Product } from 'constants/products'

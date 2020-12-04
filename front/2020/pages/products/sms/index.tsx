@@ -14,7 +14,7 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 
-import { getNotices, INotice } from 'apis/notice'
+import { getNotices, INotice } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'

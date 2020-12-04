@@ -1,6 +1,5 @@
 import React from 'react'
 import QRCode from 'qrcode.react'
-import Carousel from 'react-icecream/lib/carousel'
 
 import { useMobile } from 'hooks/ua'
 import { process as processImg, scaleBy, withFormat } from 'utils/img'
@@ -9,7 +8,7 @@ import Section from 'components/pages/index/Section'
 import Link from 'components/Link'
 import ArrowLink from 'components/Product/Section/ArrowLink'
 
-import { news } from './news'
+import { NewsType } from 'apis/admin/homepage'
 
 import styles from './style.less'
 
@@ -32,18 +31,9 @@ function Social({ wxUrl }: SocialProps) {
   )
 }
 
-export interface StoryProps {
-  imgUrl: string
-  title: string
-  desc: string
-  date: string
-  link: string
-  wxUrl: string
-}
+function Story({ banner, title, summary, createTime, link }: NewsType) {
 
-function Story({ imgUrl, title, desc, date, link, wxUrl }: StoryProps) {
-
-  imgUrl = processImg(imgUrl, scaleBy({ width: 500 }), withFormat('jpg'))
+  const imgUrl = processImg(banner, scaleBy({ width: 500 }), withFormat('jpg'))
 
   return (
     <UICard className={styles.story}>
@@ -51,10 +41,10 @@ function Story({ imgUrl, title, desc, date, link, wxUrl }: StoryProps) {
         <Img className={styles.img} src={imgUrl} />
         <Content className={styles.content}>
           <Title className={styles.title}>{title}</Title>
-          <Desc className={styles.desc}>{desc}</Desc>
+          <Desc className={styles.desc}>{summary}</Desc>
           <div className={styles.footer}>
-            <span className={styles.date}>{date}</span>
-            <Social wxUrl={wxUrl} />
+            <span className={styles.date}>{createTime}</span>
+            <Social wxUrl={link} />
           </div>
         </Content>
       </Link>
@@ -62,47 +52,21 @@ function Story({ imgUrl, title, desc, date, link, wxUrl }: StoryProps) {
   )
 }
 
-interface PageProps {
-  list: StoryProps[]
-}
-
-function Page({ list }: PageProps) {
-  return (
-    <div className={styles.page}>
-      {
-        list.map((item, idx) => (
-          <Story key={idx} {...item} />
-        ))
-      }
-    </div>
-  )
-}
-
-export default function News() {
-  const pages = getPagesFromNews(news)
+export default function News({ news }: { news: NewsType[] }) {
   const isMobile = useMobile()
   return (
     <Section grey className={styles.news} title="七牛资讯" subtitle="七牛热点资讯、前瞻技术，从 IT 到 DT 的时代，让我们连接数据，重塑价值!">
       {isMobile && <div className={styles.splitLine} />}
-      <Carousel>
+      <div className={styles.page}>
         {
-          pages.map((page, idx) => (
-            <Page key={idx} list={page} />
+          news.map((item, i) => (
+            <Story {...item} key={i} />
           ))
         }
-      </Carousel>
+      </div>
       <ArrowLink href="https://blog.qiniu.com/archives/all">
         更多资讯
       </ArrowLink>
     </Section>
   )
-}
-
-function getPagesFromNews(newsList: StoryProps[]) {
-  const pages = []
-  const pageSize = 4
-  for (let i = 0; i < newsList.length; i += pageSize) {
-    pages.push(newsList.slice(i, i + pageSize))
-  }
-  return pages
 }

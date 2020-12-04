@@ -3,7 +3,7 @@ import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
-import { INotice } from 'apis/notice'
+import { INotice } from 'apis/admin/notice'
 
 export default function ProducNotice({ notices }: { notices: INotice[] }) {
   if (!notices || !notices.length) {

@@ -12,7 +12,7 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNotices } from 'apis/notice'
+import { getNotices } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 import Navigator from 'components/Product/Navigator'

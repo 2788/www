@@ -19,7 +19,7 @@ import DoraCore from 'components/pages/dora/Core'
 import DoraScene from 'components/pages/dora/Scene'
 import DoraFunctions from 'components/pages/dora/Functions'
 
-import { getNotices, INotice } from 'apis/notice'
+import { getNotices, INotice } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 import Customer1Icon from './_images/客户-聚美.png'

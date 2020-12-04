@@ -16,7 +16,6 @@ import Feature, {
 } from 'components/pages/index/Feature'
 
 import { useMobile } from 'hooks/ua'
-import { useNow } from 'hooks/timer'
 
 import Activities from 'components/pages/index/Activities'
 import ProductsForMobile from 'components/pages/index/Products'
@@ -24,7 +23,7 @@ import CloudProduct from 'components/pages/index/CloudProduct'
 import Solutions from 'components/pages/index/Solutions'
 import News from 'components/pages/index/News'
 import TryAndContact from 'components/pages/index/TryAndContact'
-import { getBanners, Banner, getActivities, Activity } from 'apis/lego'
+import { getBanners, Banner, getActivities, Activity, getNews, NewsType } from 'apis/admin/homepage'
 
 import styles from './style.less'
 
@@ -36,28 +35,23 @@ import ZhiboCoreIcon from './_images/core5.svg'
 import YunCoreIcon from './_images/core6.svg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent({ banners, activities }: { banners: Banner[], activities: Activity[] }) {
+function PageContent({ banners, activities, news }: { banners: Banner[], activities: Activity[], news: NewsType[] }) {
 
   const isMobile = useMobile()
-
-  const now = useNow()
-  const bannersView = banners.filter(
-    banner => new Date(banner.effect_at).valueOf() <= now && new Date(banner.dead_at).valueOf() > now
-  ).map(
-    ({ mobile_image_src, image_src, color, link, id }) => (
-      <PageBanner
-        key={id}
-        bgImg={isMobile ? mobile_image_src : image_src}
-        bgColor={color}
-        href={link}
-      />
-    )
-  )
 
   return (
     <>
       <Carousel className={styles.headerBanner} autoplay>
-        {bannersView}
+        {
+          banners.map(({ name, pcImg, mobileImg, backgroundColor, link }: Banner) => (
+            <PageBanner
+              key={name}
+              bgImg={isMobile ? mobileImg : pcImg}
+              bgColor={backgroundColor}
+              href={link}
+            />
+          ))
+        }
       </Carousel>
 
       <Activities activities={activities} />
@@ -137,7 +131,7 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
 
       <Solutions />
 
-      <News />
+      <News news={news} />
 
       <TryAndContact />
 
@@ -145,14 +139,14 @@ function PageContent({ banners, activities }: { banners: Banner[], activities: A
   )
 }
 
-export default function IndexPage({ banners, activities }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function IndexPage({ banners, activities, news }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title=""
       keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
       description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
     >
-      <PageContent banners={banners} activities={activities} />
+      <PageContent banners={banners} activities={activities} news={news} />
     </Layout>
   )
 }
@@ -160,8 +154,9 @@ export default function IndexPage({ banners, activities }: InferGetStaticPropsTy
 export async function getStaticProps() {
   return {
     props: {
-      banners: await getBanners({ page_size: 10 }),
-      activities: await getActivities({ page_size: 4 })
+      banners: await getBanners(),
+      activities: await getActivities(),
+      news: await getNews()
     }
   }
 }

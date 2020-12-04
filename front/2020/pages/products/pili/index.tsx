@@ -23,7 +23,7 @@ import Function from 'components/pages/pili/Function'
 import Arch from 'components/pages/pili/Arch'
 import PiliScene from 'components/pages/pili/Scene'
 
-import { getNotices, INotice } from 'apis/notice'
+import { getNotices, INotice } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 // 功能与优势 图片

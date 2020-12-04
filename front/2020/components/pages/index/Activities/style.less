@@ -39,7 +39,7 @@
     .card {
       display: flex;
       background: white;
-      width: @card-width;
+      min-width: @card-width;
       height: @card-height;
       padding: @card-padding;
       position: relative;
@@ -62,16 +62,18 @@
   
       .icon {
         flex: 0 0 45px;
+        margin-right: 10px;
         width: 45px;
         height: 45px;
-        font-size: 0;
-        margin-right: 10px;
-        vertical-align: middle;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
   
         .mobile({
-          width: 45px;
-          height: 45px;
-          padding: 0 10px;
+          flex-basis: 25px;
+          margin: 10px 20px 10px 10px;
+          width: 25px;
+          height: 25px;
         });
       }
   

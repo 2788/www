@@ -18,7 +18,7 @@ import { useModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
-import { getNotices, INotice } from 'apis/notice'
+import { getNotices, INotice } from 'apis/admin/notice'
 import ProducNotice from 'components/Product/common/ProducNotice'
 
 import Advantage from 'components/pages/plesdk/Advantage'
