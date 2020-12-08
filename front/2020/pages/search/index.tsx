@@ -10,6 +10,7 @@ import Result, { pageSize } from 'components/pages/search/Result'
 import MobileResult from 'components/pages/search/Result/Mobile'
 import Tabs, { tagOption2Tag, tagOptionAll, tagOptions, TagOption, isTagOption } from 'components/pages/search/Tabs'
 import Recommend from 'components/pages/search/Recommend'
+import { track } from 'utils/sensors'
 import { useApiWithParams } from 'hooks/api'
 import { useQueryValue, useQuery } from 'hooks/url'
 import { useMobile } from 'hooks/ua'
@@ -29,6 +30,9 @@ async function count(keyword: string) {
 async function search(params: SearchParams) {
   // 不指定关键词就别发请求了，直接置空
   if (!params.keyword) return null
+  track('Search', {
+    keyword: params.keyword
+  })
   return _search(params)
 }
 

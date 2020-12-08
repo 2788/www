@@ -37,7 +37,7 @@ export default function Search() {
     }
     setFocus(false)
     // 延迟一点收起，保证浮层可以被点击到
-    setTimeout(() => setOverlayVisible(false), 100)
+    setTimeout(() => setOverlayVisible(false), 300)
   }
 
   function handleKeywordSubmit(e: FormEvent<HTMLFormElement>) {
