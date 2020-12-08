@@ -9,7 +9,7 @@ import { timeFormatter } from 'utils/time'
 import { renderState } from 'components/common/State'
 import ImgPreview from 'components/common/ImgPreview'
 import ActivityStore from '../store'
-import { labelMap } from '../RadioInput'
+import { labelMap } from '../LabelInput'
 import { maxNum } from '..'
 import * as style from './style.m.less'
 

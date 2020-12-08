@@ -23,7 +23,7 @@ import FormItem from 'components/common/FormItem'
 import { checkOverlap } from 'utils/check'
 import ActivityStore from '../store'
 import OrderField from '../../OrderField'
-import RadioInput, * as radioInput from '../RadioInput'
+import LabelInput, * as labelInput from '../LabelInput'
 import * as style from './style.m.less'
 
 type State = FormState<{
@@ -33,7 +33,7 @@ type State = FormState<{
   invalidTime: FieldState<Moment>
   icon: uploadImg.State
   link: FieldState<string>
-  label: radioInput.State
+  label: labelInput.State
   order: FieldState<number>
 }>
 
@@ -108,7 +108,7 @@ class EditorModalStore extends Store {
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
       createTime: this.props.activity.createTime,
       editTime: moment().unix(),
-      label: radioInput.getValue(this.form.$.label),
+      label: labelInput.getValue(this.form.$.label),
       link: this.formValue.link,
       order: this.formValue.order
     }
@@ -152,7 +152,7 @@ class EditorModalStore extends Store {
       subTitle: new FieldState(activity.subTitle).validators(textNotBlank),
       effectTime,
       invalidTime,
-      label: radioInput.createState(activity.label),
+      label: labelInput.createState(activity.label),
       icon: uploadImg.createState(activity.icon),
       link: new FieldState(activity.link).validators(textNotBlank, textHttp),
       order: new FieldState(activity.order)
@@ -225,7 +225,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           label="标签"
           {...bindFormItem(store.form.$.label)}
         >
-          <RadioInput state={store.form.$.label} />
+          <LabelInput state={store.form.$.label} />
         </FormItem>
         <FormItem
           label="展示顺序"

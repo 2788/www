@@ -25,7 +25,7 @@ export function createState(value: string): State {
     if (!val.label) {
       return '请选择一个标签'
     }
-    if (!val.customLabel) {
+    if (!val.customLabel && val.label === 'other') {
       return '选择自定义时，不能输入为空！'
     }
     return null
@@ -44,7 +44,7 @@ interface IProps {
   state: State
 }
 
-export default function RadioInput({ state }: IProps) {
+export default function LabelInput({ state }: IProps) {
   return (
     <Radio.Group {...bindRadioGroup(state.$.label)}>
       <Radio value="hot">
