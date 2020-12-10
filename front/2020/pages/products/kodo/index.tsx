@@ -20,7 +20,6 @@ import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import KodoAdvantage from 'components/pages/kodo/Advantage'
 import KodoCore from 'components/pages/kodo/Core'
 import KodoScene from 'components/pages/kodo/Scene'
-import KodoCase from 'components/pages/kodo/Case'
 import { MpPage } from 'constants/mp'
 
 import imgBanner from './images/banner.png'
@@ -57,8 +56,6 @@ function PageContent({ notices }: { notices: INotice[] }) {
       <KodoCore />
 
       <KodoScene />
-
-      <KodoCase />
 
       <LinkGroups>
         <LinkGroup title="常用文档">
