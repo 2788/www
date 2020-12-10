@@ -1,0 +1,50 @@
+{
+  "roles": [
+    {
+      "name": "平台管理员",
+      "desc": "后台超级管理员"
+    },
+    {
+      "name": "内容管理员",
+      "desc": "除账号角色外，其余内容均可管理"
+    },
+    {
+      "name": "市场运营",
+      "desc": "允许管理官网首页的banner、活动、资讯等信息"
+    }
+  ],
+  "version": "1",
+  "user_role": [],
+  "permissions": [
+    {
+      "code": "ACCOUNT",
+      "content": "{\"group\": \"account\", \"apis\": [{\"method\": \"*\", \"path\": \"/api/acc/**\"}, {\"method\": \"*\", \"path\": \"/api/auth/**\"}]}",
+      "desc": "帐户中心查看、编辑的相关权限",
+      "name": "帐户中心权限",
+      "role_list": [
+        "平台管理员"
+      ]
+    },
+    {
+      "code": "HOMEPAGE",
+      "content": "{\"group\": \"homepage\", \"apis\": [{\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-homepage-banner\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-homepage-banner/*\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-homepage-activity\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-homepage-activity/*\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-homepage-news\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-homepage-news/*\"}, {\"method\": \"*\", \"path\": \"/api/proxy/blog/**\"}, {\"method\": \"GET\", \"path\": \"/api/tools/upload-token\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-market-activity\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-market-activity/*\"}, {\"method\": \"GET\", \"path\": \"/api/proxy/mongo/www-activity-registration\"}, {\"method\": \"GET\", \"path\": \"/api/proxy/mongo/www-activity-registration/*\"}]}",
+      "desc": "官网首页查看、编辑的相关权限",
+      "name": "官网首页权限",
+      "role_list": [
+        "平台管理员",
+        "内容管理员",
+        "市场运营"
+      ]
+    },
+    {
+      "code": "PRODUCT",
+      "content": "{\"group\": \"product\", \"apis\": [{\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-product-page\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-product-page/*\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-product-notice\"}, {\"method\": \"*\", \"path\": \"/api/proxy/mongo/www-product-notice/*\"}]}",
+      "desc": "官网产品查看、编辑的相关权限",
+      "name": "官网产品权限",
+      "role_list": [
+        "平台管理员",
+        "内容管理员"
+      ]
+    }
+  ]
+}
