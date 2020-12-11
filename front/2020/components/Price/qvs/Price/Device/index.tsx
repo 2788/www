@@ -30,7 +30,7 @@ const title = (
 const footer = (
   <TextWrapper>
     <p>计费规则：</p>
-    <ol style={{ color: '#999999' }}>
+    <ol>
       <li>以每月接入国标设备的并发台数峰值计费。</li>
       <li>仅对国标设备计费，RTMP 接入无设备管理费。</li>
       <li>设备成功注册且处于在线保活状态会被计费，与设备流是否在线无关。</li>

@@ -13,7 +13,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="计费方式" padding>
-        <TextWrapper>
+        <TextWrapper target="mode" >
           <p>实时音视频互动直播解决方案，可能产生的费用会有以下九部分：</p>
           <ol>
             <li>

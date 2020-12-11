@@ -42,7 +42,7 @@ const title = (
 const footer = (
   <TextWrapper>
     <p>计费规则：</p>
-    <ol style={{ color: '#999999' }}>
+    <ol>
       <li>付费方式：后付费</li>
       <li>计费规则：按中国大陆流量价格计费，上行接入流量和下行播放流量分别计费</li>
       <li>计费周期：按月出账，具体出账时间以系统为准</li>

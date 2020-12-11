@@ -6,6 +6,7 @@ import Pack from './Pack'
 import Transcoding from './Transcoding'
 import Yellow from './Yellow'
 import Instructor from './Instructor'
+import Pub from './Pub'
 
 import style from './index.less'
 
@@ -46,6 +47,7 @@ export default function Price() {
           <TabPane value="4" tab="极速直播转码"><Transcoding /></TabPane>
           <TabPane value="5" tab="智能直播鉴黄"><Yellow /></TabPane>
           <TabPane value="6" tab="导播台计费"><Instructor /></TabPane>
+          <TabPane value="7" tab="Pub 转推"><Pub /></TabPane>
         </Tabs>
       </PricePaneSection>
     </PricePane>
