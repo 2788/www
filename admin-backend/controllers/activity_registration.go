@@ -92,11 +92,14 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
+	var listResPart struct {
+		Count int `json:"count"`
+	}
 	// 查看手机号是否已经存在
 	getRegisActivByPhonePath := fmt.Sprintf("%s/%s?query={\"phoneNumber\":\"%s\",\"marketActivityId\":\"%s\"}", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.PhoneNumber, params.MarketActivityId)
-	err = cli.GetCall(logger, &res, getRegisActivByPhonePath)
+	err = cli.GetCall(logger, &listResPart, getRegisActivByPhonePath)
 	if err == nil {
-		if res != nil {
+		if listResPart.Count > 0 {
 			logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
 			m.Send(c, codes.PhoneNumInvalid, "phone number already exists")
 			return
@@ -108,11 +111,10 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 查看同一活动同一 uid 报名人数是否达到上限
-	var numRes []interface{}
 	getSameUidNumPath := fmt.Sprintf("%s/%s?query={\"uid\":%d,\"marketActivityId\":\"%s\"}", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.Uid, params.MarketActivityId)
-	err = cli.GetCall(logger, &numRes, getSameUidNumPath)
+	err = cli.GetCall(logger, &listResPart, getSameUidNumPath)
 	if err == nil {
-		if numRes != nil && len(numRes) >= SameUidLimitNum {
+		if listResPart.Count >= SameUidLimitNum {
 			logger.Errorf("uid(%d) reach the limit number", params.Uid)
 			m.Send(c, codes.SameUidRegistrationNumLimit, nil)
 			return
