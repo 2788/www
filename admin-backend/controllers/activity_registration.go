@@ -17,6 +17,8 @@ import (
 	"qiniu.com/www/admin-backend/models"
 )
 
+const SameUidLimitNum = 100
+
 var (
 	EmailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
 	MobilePhonePattern = regexp.MustCompile(`^(13[0-9]|14[579]|15[012356789]|166|17[235678]|18[0-9]|19[01589])[0-9]{8}$`)
@@ -31,6 +33,7 @@ func NewActivity(config *config.Config) *Activity {
 }
 
 type activRegInput struct {
+	Uid              uint32 `json:"uid"`
 	UserName         string `json:"userName"`
 	PhoneNumber      string `json:"phoneNumber"`
 	Email            string `json:"email"`
@@ -98,8 +101,24 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 			m.Send(c, codes.PhoneNumInvalid, "phone number already exists")
 			return
 		}
-	} else if errInfo, ok := err.(*rpc.ErrorInfo); !ok || errInfo.Code != 404 {
+	} else {
 		logger.Errorf("%s find phone_number(%s) error :%v", m.conf.ActivityRegistrationResourceName, params.PhoneNumber, err)
+		m.Send(c, codes.ResultError, nil)
+		return
+	}
+
+	// 查看同一活动同一 uid 报名人数是否达到上限
+	var numRes []interface{}
+	getSameUidNumPath := fmt.Sprintf("%s/%s?query={\"uid\":%d,\"marketActivityId\":\"%s\"}", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.Uid, params.MarketActivityId)
+	err = cli.GetCall(logger, &numRes, getSameUidNumPath)
+	if err == nil {
+		if numRes != nil && len(numRes) >= SameUidLimitNum {
+			logger.Errorf("uid(%d) reach the limit number", params.Uid)
+			m.Send(c, codes.SameUidRegistrationNumLimit, nil)
+			return
+		}
+	} else {
+		logger.Errorf("%s find same uid(%d) num error :%v", m.conf.ActivityRegistrationResourceName, params.Uid, err)
 		m.Send(c, codes.ResultError, nil)
 		return
 	}
@@ -107,7 +126,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	// 提交用户活动报名请求
 	regisActivPath := fmt.Sprintf("%s/%s", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName)
 	activRegisParams := &models.ActivityRegistration{
-		Id:               bson.NewObjectId(),
+		Uid:              params.Uid,
 		UserName:         params.UserName,
 		PhoneNumber:      params.PhoneNumber,
 		Email:            params.Email,

@@ -5,7 +5,7 @@ import (
 )
 
 type ActivityRegistration struct {
-	Id               bson.ObjectId `json:"_id,omitempty"`
+	Uid              uint32        `json:"uid"`
 	UserName         string        `json:"userName"`
 	PhoneNumber      string        `json:"phoneNumber"`
 	Email            string        `json:"email"`
