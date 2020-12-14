@@ -6,10 +6,10 @@ RUN sed -i s:archive.ubuntu.com:mirrors.aliyun.com:g /etc/apt/sources.list
 
 RUN apt-get clean && apt-get update && apt-get install -y ca-certificates
 
-WORKDIR /www-admin-backend
+WORKDIR /admin-backend
 
-COPY www-admin-api /www-admin-backend/
+COPY www-admin-api /admin-backend/
 
-COPY www-admin-backend.sh /www-admin-backend/
+COPY admin-backend.sh /admin-backend/
 
-ENTRYPOINT ["/www-admin-backend/www-admin-backend.sh"]
+ENTRYPOINT ["/admin-backend/admin-backend.sh"]

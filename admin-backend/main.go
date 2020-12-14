@@ -12,13 +12,13 @@ import (
 )
 
 func main() {
-	conf, err := config.InitConf("config.yml")
+	conf, err := config.InitConf("config/config.yml")
 	Must(err)
 
 	r, err := app.InitEngine(conf.Mode, &conf.Config)
 	Must(err)
 
-	err = r.InitDBAndData("init_data.json")
+	err = r.InitDBAndData("config/init_data.json")
 	Must(err)
 
 	err = r.InitRouters()
