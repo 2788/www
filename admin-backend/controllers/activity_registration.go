@@ -96,7 +96,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		Count int `json:"count"`
 	}
 	// 查看手机号是否已经存在
-	getRegisActivByPhonePath := fmt.Sprintf("%s/%s?query={\"phoneNumber\":\"%s\",\"marketActivityId\":\"%s\"}", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.PhoneNumber, params.MarketActivityId)
+	getRegisActivByPhonePath := fmt.Sprintf("%s/%s?query={\"phoneNumber\":\"%s\",\"marketActivityId\":\"%s\"}&limit=1", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.PhoneNumber, params.MarketActivityId)
 	err = cli.GetCall(logger, &listResPart, getRegisActivByPhonePath)
 	if err == nil {
 		if listResPart.Count > 0 {
@@ -111,7 +111,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 查看同一活动同一 uid 报名人数是否达到上限
-	getSameUidNumPath := fmt.Sprintf("%s/%s?query={\"uid\":%d,\"marketActivityId\":\"%s\"}", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.Uid, params.MarketActivityId)
+	getSameUidNumPath := fmt.Sprintf("%s/%s?query={\"uid\":%d,\"marketActivityId\":\"%s\"}&limit=1", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.Uid, params.MarketActivityId)
 	err = cli.GetCall(logger, &listResPart, getSameUidNumPath)
 	if err == nil {
 		if listResPart.Count >= SameUidLimitNum {
