@@ -25,3 +25,7 @@ export const homepageTitle = '首页'
 export const productRoute = '/product'
 
 export const productTitle = '产品'
+
+export const consultRoute = '/consult'
+
+export const consultTitle = '在线咨询'

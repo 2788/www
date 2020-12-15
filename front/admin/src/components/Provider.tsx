@@ -20,7 +20,7 @@ export class Env extends Disposable implements base.IEnv {
 
   init() {
     this.base.init()
-    this.base.userInfoStore.fetch(true)
+    this.base.userInfoStore.fetch()
     this.base.routerStore.bindDocument(window.document, '官网 Admin - {{routeTitle}}')
     this.fetchStore.bindRealFetch(window.fetch)
 

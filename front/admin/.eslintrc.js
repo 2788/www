@@ -9,5 +9,8 @@ module.exports = {
         moduleDirectory: ['node_modules', 'src/']
       }
     }
+  },
+  rules: {
+    'no-underscore-dangle': 'off'
   }
 }

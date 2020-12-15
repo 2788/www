@@ -20,8 +20,9 @@ import PermissionCode from 'constants/permission'
 
 import Homepage from 'components/Www/Homepage'
 import Product from 'components/Www/Product'
+import Consult from 'components/Www/Consult'
 
-import { homepageRoute, accountTitle, accountRoute, userTitle, userRoute, roleTitle, roleRoute, permissionTitle, permissionRoute, wwwTitle, wwwRoute, homepageTitle, productTitle, productRoute } from 'constants/route'
+import { homepageRoute, accountTitle, accountRoute, userTitle, userRoute, roleTitle, roleRoute, permissionTitle, permissionRoute, wwwTitle, wwwRoute, homepageTitle, productTitle, productRoute, consultTitle, consultRoute } from 'constants/route'
 import Provider from '../Provider'
 import Layout from '../Layout'
 
@@ -69,6 +70,11 @@ export default class App extends React.Component<any, any> {
                     <Route relative title={productTitle} path={productRoute}>
                       <Permission code={PermissionCode.PRODUCT}>
                         <Product />
+                      </Permission>
+                    </Route>
+                    <Route relative title={consultTitle} path={consultRoute}>
+                      <Permission code={PermissionCode.PRODUCT}>
+                        <Consult />
                       </Permission>
                     </Route>
                     <Route relative path="*"><NotFound /></Route>

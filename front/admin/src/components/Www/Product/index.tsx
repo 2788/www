@@ -1,25 +1,21 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import Tabs from 'react-icecream/lib/tabs'
+import TabBar from 'admin-base/common/components/TabBar'
 
 import Page from './Page'
 import Notice from './Notice'
 
 const tabs = [
-  { title: '页面管理', content: <Page /> },
-  { title: '产品公告', content: <Notice /> }
+  { tab: '页面管理', path: '/page', content: <Page /> },
+  { tab: '产品公告', path: '/notice', content: <Notice /> }
 ]
-export default observer(function Homepage() {
 
+export default observer(function Product() {
   return (
-    <Tabs>
-      {
-        tabs.map((item, index) => (
-          <Tabs.TabPane key={index.toString()} tab={item.title} >
-            {item.content}
-          </Tabs.TabPane>
-        ))
-      }
-    </Tabs>
+    <TabBar
+      relative
+      defaultPath="/page"
+      items={tabs}
+    />
   )
 })

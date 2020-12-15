@@ -5,10 +5,10 @@ import registerPermission from 'admin-base/common/enhancers/permission'
 import signinRequired from 'admin-base/user/permissions/signin-required'
 import { Column } from 'libs/layout-element'
 import Container from 'components/common/Container'
-import Main from 'components/Main'
 
 import SubSidebar from './SubSidebar'
 import Navbar from './NavBar'
+// import Main from './Main'
 import * as style from './style.m.less'
 
 @registerPermission(signinRequired)
@@ -23,9 +23,9 @@ export default class Layout extends React.Component<any, {}> {
           </Container>
           <Column>
             <Navbar />
-            <Main>
+            <div className={style.main}>
               {this.props.children}
-            </Main>
+            </div>
           </Column>
         </Container>
       </BaseLayout>

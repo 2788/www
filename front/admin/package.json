@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "clear": "jest --clearCache",
     "snapshot": "jest -u",
     "validate": "npm run lint && npm run test",
@@ -12,10 +12,10 @@
     "travis:after-success": "npx codecov -t $CODECOV_TOKEN -F www-admin"
   },
   "dependencies": {
-    "admin-base": "git+ssh://git@github.com/qbox/admin-base.git#v3.6.0",
+    "admin-base": "git+ssh://git@github.com/qbox/admin-base.git#v3.7.1",
     "classnames": "^2.2.6",
-    "detect-browser": "^4.8.0",
     "core-js": "^3.6.5",
+    "detect-browser": "^4.8.0",
     "formstate-x": "^1.2.0",
     "history": "^3.0.0",
     "lodash": "^4.17.15",
@@ -24,13 +24,13 @@
     "moment": "^2.15.1",
     "mustache": "^3.1.0",
     "qiniu-js": "^3.1.2",
-    "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.12.0",
+    "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.12.3",
     "react": "~16.8.6",
     "react-dom": "~16.8.6",
     "react-hot-loader": "^4.12.21",
     "react-icecream": "^1.7.4",
-    "tslib": "^1.0.0",
-    "ts-enum-util": "^4.0.1"
+    "ts-enum-util": "^4.0.1",
+    "tslib": "^1.0.0"
   },
   "devDependencies": {
     "@qiniu/eslint-config": "0.0.4",
