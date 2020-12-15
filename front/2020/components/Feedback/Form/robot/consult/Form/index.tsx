@@ -1,14 +1,21 @@
+/**
+ * @file 咨询信息表单
+ */
+
 import React, { useRef, useState, FormEvent, useCallback, useEffect } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, FieldState } from 'formstate-x'
 import IcecreamForm from 'react-icecream/lib/form'
 import Input from 'react-icecream/lib/input'
 import Select, { SelectValue } from 'react-icecream/lib/select'
+
 import { createFeedback } from 'apis/legacy'
 import { track as sensorsTrack } from 'utils/sensors'
+import { useMobile } from 'hooks/ua'
+import { useFormState } from 'hooks/form'
 import { useUserInfo } from 'components/UserInfo'
 import Button from 'components/UI/Button'
-import { bindFormItem, bindTextInput, bindSelect, textNotEmpty, textOfPattern } from 'utils/form'
+import { bindFormItem, bindTextInput, bindSelect, textNotEmpty, textOfPattern, bindTextArea } from 'utils/form'
 
 import { useDisposer } from '../../utils'
 import style from './style.less'
@@ -77,8 +84,9 @@ const provinces = [
 ]
 
 export type Props = {
-  consultContent: string
-  onSubmit(value: FormValue): void
+  consult: string
+  onSubmit: () => void
+  onCancel: () => void
 }
 
 // Antd Form 自己不能把内容撑开，即，把容器撑到它能到的最大宽度
@@ -88,8 +96,9 @@ const longEmptyContent = (
   <p style={{ margin: '0', height: '0', visibility: 'hidden' }}>{longEmptyText}</p>
 )
 
-export default observer(function Form({ consultContent, onSubmit }: Props) {
-  const state = useRef(createState()).current
+export default observer(function Form({ consult: consultContent, onSubmit, onCancel }: Props) {
+  const isMobile = useMobile()
+  const state = useFormState(() => createState(consultContent))
   const wrapperRef = useRef<HTMLDivElement>(null)
   const userInfo = useUserInfo()
 
@@ -111,14 +120,10 @@ export default observer(function Form({ consultContent, onSubmit }: Props) {
     sensorsTrack('Feedback', getSensorsOptions(consultContent, state))
 
     setStatus(Status.Submitting)
-    const value = {
-      content: consultContent,
-      ...state.value
-    }
     try {
-      await createFeedback(value)
+      await createFeedback(result.value)
       setStatus(Status.Succeeded)
-      onSubmit(value)
+      onSubmit()
     } catch {
       setStatus(Status.Failed)
     }
@@ -152,14 +157,25 @@ export default observer(function Form({ consultContent, onSubmit }: Props) {
 
   const disabled = status === Status.Succeeded || status === Status.Terminated
 
+  const cancelBtnView = (
+    isMobile
+    ? null
+    : (
+      <Button
+        className={style.button}
+        type="default-grey"
+        onClick={onCancel}
+        withBorder
+        size="small"
+        htmlType="button"
+      >取消</Button>
+    )
+  )
+
   return (
     <div ref={wrapperRef} className={style.wrapper}>
       {longEmptyContent}
       <IcecreamForm onSubmit={handleSubmit} {...formItemLayout}>
-        <p style={{ marginBottom: '8px' }}>为了能更便捷的联系你，请留下您的联系方式</p>
-        <IcecreamForm.Item label="公司名称" {...bindFormItem(fields.company)}>
-          <Input name="company" disabled={disabled} {...bindTextInput(fields.company)} />
-        </IcecreamForm.Item>
         <IcecreamForm.Item label="称呼" required {...bindFormItem(fields.name)}>
           <Input name="name" disabled={disabled} {...bindTextInput(fields.name)} />
         </IcecreamForm.Item>
@@ -177,9 +193,16 @@ export default observer(function Form({ consultContent, onSubmit }: Props) {
             placeholder="请选择"
           >{proviceOptionsView}</Select>
         </IcecreamForm.Item>
+        <IcecreamForm.Item label="公司" {...bindFormItem(fields.company)}>
+          <Input name="company" disabled={disabled} {...bindTextInput(fields.company)} />
+        </IcecreamForm.Item>
+        <IcecreamForm.Item label="咨询内容" required {...bindFormItem(fields.content)}>
+          <Input.TextArea className={style.contentInput} name="content" disabled={disabled} {...bindTextArea(fields.content)} />
+        </IcecreamForm.Item>
         {errorView}
         <div className={style.submitLine}>
           <SubmitButton status={status} />
+          {cancelBtnView}
         </div>
       </IcecreamForm>
     </div>
@@ -191,17 +214,19 @@ const validatePhone = textOfPattern(/^\d{11}$/, '请填写正确的手机号')
 const validateEmail = textOfPattern(/^.+@.+$/, '请填写正确的 E-mail 地址')
 const validateProvince = (v: string) => (v ? null : '请选择')
 
-function createState() {
+function createState(content: string) {
   return new FormState({
     company: new FieldState(''),
     name: new FieldState('').validators(validateNotEmpty),
     phone: new FieldState('').validators(validateNotEmpty, validatePhone),
     email: new FieldState('').validators(validateNotEmpty, validateEmail),
-    province: new FieldState<string>('').validators(validateProvince)
+    province: new FieldState('').validators(validateProvince),
+    content: new FieldState(content).validators(validateNotEmpty)
   })
 }
 
 const buttonProps = {
+  className: style.button,
   type: 'primary',
   size: 'small',
   htmlType: 'submit'

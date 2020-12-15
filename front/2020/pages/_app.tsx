@@ -1,5 +1,7 @@
 import React, { ComponentClass, useEffect } from 'react'
 
+import 'mobx-react/batchingForReactDom'
+
 import 'react-icecream/dist/icecream.min.css'
 import './global.less'
 

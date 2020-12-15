@@ -1,0 +1,86 @@
+@import '~utils/less/index.less';
+
+@z-index: @feedback-z-index + 100;
+
+.modalWrapper {
+  z-index: @z-index !important;
+}
+
+.modal {
+  z-index: @z-index + 1 !important;
+
+  width: 560px !important;
+  height: auto !important;
+  border-radius: 0 !important;
+
+  .mobile({
+    width: 100% !important;
+    height: 100% !important;
+  });
+
+  .header, .mobileHeader {
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0,0,0,0.09);
+  }
+
+  .header {
+    padding: 16px 80px 16px 24px;
+  }
+
+  .mobileHeader {
+    line-height: 24px;
+    padding: 10px 12px;
+    text-align: center;
+
+    .closeBtn {
+      left: 0;
+      right: initial;
+      width: 44px;
+      height: 44px;
+
+      .iconArrow {
+        width: 20px;
+        height: 20px;
+        fill: @grey-7;
+      }
+    }
+  }
+
+  .closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      width: 10px;
+      height: 10px;
+      fill: @grey-4;
+      transition: .2s;
+    }
+
+    &:hover svg {
+      fill: @grey-5;
+    }
+  }
+
+  .body {
+    padding: 11px 62px;
+
+    .mobile({
+      padding: 20px 12px;
+    });
+  }
+}
+
+.invoker {
+  color: @blue-6;
+  cursor: pointer;
+}

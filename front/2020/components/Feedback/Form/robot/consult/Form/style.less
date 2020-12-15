@@ -9,13 +9,36 @@
   }
 
   :global(.ant-form-item-label) {
-    max-width: 70px !important;
+    position: relative;
+    padding-right: 46px;
+    line-height: 34px;
+
+    .mobile({
+      padding-right: 28px;
+      text-align: right;
+    });
+
+    label:after {
+      display: none;
+    }
+  }
+
+  :global(.ant-form-item-required:before) {
+    position: absolute;
+    right: -14px;
+    top: 0;
+    margin-right: 0;
+    line-height: 22px;
   }
 
   // TODO: 这个好像应该由 icecream 来做（disabled Select 字颜色不对）
   :global(.ant-select-disabled .ant-select-selection-selected-value) {
     color: #BFBFBF;
   }
+}
+
+.contentInput {
+  margin-top: 4px;
 }
 
 .errorLine {
@@ -28,5 +51,18 @@
 
 .submitLine {
   margin-top: 16px;
-  text-align: center;
+  text-align: right;
+
+  .mobile({
+    margin-top: 12px;
+  });
+
+  .button {
+    padding: 0 15px;
+    width: auto;
+  }
+
+  .button:not(:last-child) {
+    margin-right: 12px;
+  }
 }

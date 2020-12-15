@@ -3,7 +3,7 @@
  * @description 与用户进行交互
  */
 
-import { ReactNode, ComponentType } from 'react'
+import { ReactNode } from 'react'
 
 export * from './utils'
 
@@ -16,8 +16,8 @@ export enum InputType {
   Initial,
   /** 用户通过消息框输入文本消息 */
   Message,
-  /** 用户通过界面上的表单组件提交 */
-  FormSubmit
+  /** 用户表单提交完成 */
+  FormSubmitted
 }
 
 /** 逻辑初始化对应的输入 */
@@ -31,10 +31,9 @@ export type MessageInput = {
   content: MessageContent
 }
 
-/** 用户通过界面上的选择组件提交对应的输入 */
-export type FormSubmitInput<V = any> = {
-  type: InputType.FormSubmit
-  value: V
+/** 用户表单提交完成对应的输入 */
+export type FormSubmitInput = {
+  type: InputType.FormSubmitted
 }
 
 /** 机器人的输入 */
@@ -44,8 +43,8 @@ export type Input = InitialInput | MessageInput | FormSubmitInput
 export enum OutputType {
   /** 文本消息 */
   Message,
-  /** 让用户填写表单 */
-  Form,
+  /** 让用户选择一个选项 */
+  Select,
 }
 
 /** 文本消息类型的输出 */
@@ -62,33 +61,37 @@ export function makeMessage(content: MessageContent): MessageOutput {
   }
 }
 
-export type FormComponent<V> = ComponentType<{
-  onSubmit(v: V): void
-}>
-
-/** 让用户进行选择的输出 */
-export type FormOutput<V = any> = {
-  type: OutputType.Form
-  comp: FormComponent<V>
+/** 让用户选择一个选项的输出 */
+export type SelectOutput = {
+  type: OutputType.Select
+  options: string[]
+  before?: string
+  after: string
 }
 
-/** 构造表单类型的输出 */
-export function makeForm<V>(comp: FormComponent<V>): FormOutput {
+/** 构造让用户选择一个选项的输出 */
+export function makeSelect(params: {
+  options: string[]
+  after: string
+  before?: string
+}): SelectOutput {
   return {
-    type: OutputType.Form,
-    comp
+    type: OutputType.Select,
+    ...params
   }
 }
 
 /** 机器人的输出 */
-export type Output = MessageOutput | FormOutput
+export type Output = MessageOutput | SelectOutput
 
 export type MaybeOutput = Output | undefined | null
 
 export type MaybeAsyncOutput = MaybeOutput | Promise<MaybeOutput>
 
+export type SyncProcessed = MaybeAsyncOutput | MaybeAsyncOutput[]
+
 /** 机器人每次 process 逻辑返回的内容 */
-export type Processed = MaybeAsyncOutput | MaybeAsyncOutput[]
+export type Processed = SyncProcessed | Promise<SyncProcessed>
 
 /** 机器人 */
 export interface IRobot {

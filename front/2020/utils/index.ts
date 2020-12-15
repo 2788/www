@@ -37,3 +37,8 @@ export function isUrl(input: string) {
 export function isExternal() {
   return isBrowser() && new URL(host, window.location.href).host !== window.location.host
 }
+
+/** 产生唯一 ID */
+export function uuid(): string {
+  return (Math.random() + '').slice(2)
+}

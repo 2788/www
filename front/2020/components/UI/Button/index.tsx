@@ -8,8 +8,8 @@ import Link from 'components/Link'
 import style from './style.less'
 
 export type Props = HTMLAttributes<HTMLElement> & {
-  /** 按钮类型：白底蓝字 / 蓝底白字 / 透明底蓝字 / 透明底白字 */
-  type?: 'default' | 'primary' | 'hollow' | 'primary-hollow'
+  /** 按钮类型：白底蓝字 / 蓝底白字 / 透明底蓝字 / 透明底白字 / 白底黑字 */
+  type?: 'default' | 'primary' | 'hollow' | 'primary-hollow' | 'default-grey'
   /** 按钮尺寸 */
   size?: 'default' | 'small'
   /** 是否有边框 */
@@ -25,7 +25,8 @@ const typeStyleMap = {
   default: null,
   primary: style.typePrimary,
   hollow: style.typeHollow,
-  'primary-hollow': style.typePrimaryHollow
+  'primary-hollow': style.typePrimaryHollow,
+  'default-grey': style.typeDefaultGrey
 }
 
 const sizeStyleMap = {

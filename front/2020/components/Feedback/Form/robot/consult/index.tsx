@@ -3,108 +3,152 @@
  */
 
 import React from 'react'
-import { IRobot, Input as InputData, Processed, InputType, makeMessage, MessageContent, makeForm } from '..'
-import { MessageLink } from '../utils'
-import Form, { FormValue } from './Form'
+import { timeout, uuid } from 'utils'
+import { track } from 'utils/sensors'
+import { listEntitiesWithProperties as listEntities, EntityWithProperties as Entity } from 'apis/admin/consult'
+import { matchNameAndKeywords } from 'utils/match'
+import { IRobot, Input as InputData, Processed, InputType, makeMessage, MessageContent, makeSelect } from '..'
+import ProductIntro from './ProductIntro'
+import FormInvoker from './FormInvoker'
+import Text from './Text'
 
 enum State {
   /** 初始状态 */
-  Initial,
-  /** 开始咨询后，等待用户输入咨询的内容 */
-  Consulting,
-  /** 记录了咨询内容，等待用户提交联系方式表单 */
-  AskingContact
+  Initial = 'initial',
+  /** 已有实体信息，需要获取属性信息 */
+  WithEntity = 'with-entity',
+  /** 用户填写咨询表单中 */
+  FormSubmiting = 'form-submiting',
 }
 
-export const startConsultingMessage = '开始咨询'
+/** 可选实体列表 */
+const entityOptions = ['对象存储', 'CDN', '云主机', '短视频', '直播云']
 
-const createTicketLinkView = (
-  <a target="_blank" rel="noopener" href="https://support.qiniu.com/tickets/new">提交工单</a>
-)
+/** 供用户选择实体的消息 */
+const entitySelectMessage = makeSelect({
+  options: entityOptions,
+  after: '都不是？请直接输入产品名称。'
+})
 
-const consultLinkView = (
-  <MessageLink message={startConsultingMessage}>{startConsultingMessage}</MessageLink>
-)
+/** 供用户选择属性的消息 */
+function makePropertySelectMessage(entity: Entity) {
+  return makeSelect({
+    before: '你是想咨询该产品的什么问题？',
+    options: entity.properties.map(property => property.name),
+    after: '都不是？请输入你的问题。'
+  })
+}
 
-const initialMessage = makeMessage(
-  <>
-    <p>欢迎来到七牛，非常高兴为您服务！</p>
-    <p style={{ marginTop: '8px' }}>售后问题：{createTicketLinkView}</p>
-    <p style={{ marginTop: '4px' }}>咨询内容：{consultLinkView}</p>
-    <p style={{ marginTop: '4px' }}>电话咨询：<a href="tel:400-808-9176">400-808-9176 转 1</a></p>
-  </>
-)
+let cache: Promise<Entity[]> | undefined
 
-const notFoundMessage = makeMessage(
-  <>
-    根据您当前输入的内容，没有找到合适的业务相关的答案，
-    如需咨询：{consultLinkView}&nbsp;
-    如需更多帮助：{createTicketLinkView}
-  </>
-)
+async function fetchEntitiesWithCache() {
+  if (cache != null) return cache
+  cache = listEntities()
+  return cache
+}
 
 export default class ConsultRobot implements IRobot {
 
+  private id = `consult-${uuid()}`
   private state = State.Initial
+  private entity: Entity | undefined
 
-  private processMessageOnInitial(message: MessageContent): Processed {
-    if (message === startConsultingMessage) {
-      this.state = State.Consulting
-      return makeMessage('请输入你要咨询的内容')
-    }
-    return notFoundMessage
+  /** 神策统计对话事件，一次事件对应一次 input & output */
+  private trackConsult(input: string, output: string) {
+    track('ConsultIO', {
+      ConsultInput: input,
+      ConsultOutput: output,
+      ConsultChatId: this.id,
+      ConsultState: this.state
+    })
   }
 
-  private processMessageOnConsulting(message: MessageContent): Processed {
-    if (typeof message !== 'string') return
-    if (message.length > 255) {
-      return makeMessage('抱歉，最多可输入 255 字，请重新输入')
-    }
-    this.state = State.AskingContact
+  /** 结束一轮对话 */
+  private finish() {
+    this.state = State.Initial
+    this.entity = undefined
     return [
-      makeMessage('收到！您要咨询的内容，我们后台已经录入'),
-      makeForm<FormValue>(({ onSubmit }) => <Form consultContent={message} onSubmit={onSubmit} />)
+      timeout(3000).then(() => makeMessage('请问还想咨询哪款产品？')),
+      entitySelectMessage
     ]
   }
 
-  private processMessageOnAskingContact(message: MessageContent): Processed {
-    if (message === startConsultingMessage) {
-      this.state = State.Consulting
-      return makeMessage('请输入你要咨询的内容')
+  /** 遇到理解不了的输入 */
+  private notFound(message: string, consult = message) {
+    this.trackConsult(message, 'not found')
+    return [
+      makeMessage(
+        <>
+          抱歉，牛小七回答不出你的问题T T，你可以提交&nbsp;
+          <FormInvoker consult={consult}>问题反馈</FormInvoker>&nbsp;
+          ，我们会尽快安排客服人员联系你
+        </>
+      ),
+      ...this.finish()
+    ]
+  }
+
+  private async processMessageOnInitial(message: MessageContent) {
+    if (typeof message !== 'string') return
+    const entities = await fetchEntitiesWithCache()
+    const matchedEntity = matchNameAndKeywords(message, entities)
+    if (matchedEntity == null) return this.notFound(message)
+
+    this.trackConsult(message, matchedEntity.name)
+
+    this.state = State.WithEntity
+    this.entity = matchedEntity
+    return [
+      makeMessage(<ProductIntro name={matchedEntity.name} desc={getDesc(matchedEntity)} />),
+      makePropertySelectMessage(matchedEntity)
+    ]
+  }
+
+  private processMessageOnWithEntity(message: MessageContent): Processed {
+    if (typeof message !== 'string') return
+    const entity = this.entity!
+    const matchedProperty = matchNameAndKeywords(message, entity.properties)
+    if (matchedProperty == null) {
+      const consult = entity.name + message
+      return this.notFound(message, consult)
     }
-    return notFoundMessage
+
+    this.trackConsult(message, matchedProperty.name)
+
+    return [
+      makeMessage(<Text content={matchedProperty.answer} />),
+      ...this.finish()
+    ]
   }
 
   private processMessage(message: MessageContent): Processed {
     switch (this.state) {
       case State.Initial:
         return this.processMessageOnInitial(message)
-      case State.Consulting:
-        return this.processMessageOnConsulting(message)
-      case State.AskingContact:
-        return this.processMessageOnAskingContact(message)
+      case State.WithEntity:
+        return this.processMessageOnWithEntity(message)
       default:
-        return notFoundMessage
     }
-  }
-
-  private handleFormSubmit(): Processed {
-    this.state = State.Initial
-    return makeMessage('提交成功，我们会尽快与您联系')
   }
 
   process(input: InputData): Processed {
     switch (input.type) {
-      // 初始化
       case InputType.Initial:
-        this.state = State.Initial
-        return initialMessage
+        fetchEntitiesWithCache() // 提前拉取以缓存结果
+        return [
+          makeMessage('Hi，我是牛小七，很高兴为你服务！请问想咨询哪款产品？'),
+          entitySelectMessage
+        ]
       case InputType.Message:
         return this.processMessage(input.content)
-      case InputType.FormSubmit:
-        return this.handleFormSubmit()
+      case InputType.FormSubmitted:
+        return makeMessage('表单提交成功，我们会尽快联系你')
       default:
-        return notFoundMessage
     }
   }
+}
+
+function getDesc(entity: Entity) {
+  const propertyDesc = entity.properties.find(property => property.isDesc)
+  return propertyDesc != null ? propertyDesc.answer : '暂无简介'
 }

@@ -22,15 +22,15 @@ export default function MessageList({ messages }: Props) {
 
   useEffect(() => {
     if (listRef.current && listRef.current.lastElementChild) {
-      listRef.current.lastElementChild.scrollIntoView()
+      listRef.current.lastElementChild.scrollIntoView({ behavior: 'smooth' })
     }
   }, [messages.length])
 
   return (
     <ul ref={listRef}>
-      {messages.map(
-        (message, i) => <MessageItem key={i} message={message} />
-      )}
+      {messages.map(message => (
+        <MessageItem key={message.id} message={message} />
+      ))}
     </ul>
   )
 }

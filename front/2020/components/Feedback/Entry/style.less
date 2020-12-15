@@ -5,129 +5,110 @@
 @buttonSize: 64px;
 @mobileButtonSize: 44px;
 
-.wrapper {
+.wrapper, .mobileWrapper {
   position: fixed;
-  top: 50px;
+  display: flex;
+  z-index: @feedback-z-index;
+}
+
+.wrapper {
   bottom: 50px;
   right: 36px;
+  height: 0;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.mobileWrapper {
+  bottom: 76px;
+  right: 16px;
   width: 0;
-  display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
-
-  z-index: @feedback-form-z-index;
-
-  .mobile({
-    bottom: 76px;
-    right: 16px;
-  });
 }
 
-.entryWrapper {
-  flex: 0 0 auto;
-  position: relative;
-  width: @buttonSize;
-  z-index: @feedback-form-z-index + 1;
+.mobileEntryWrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  background-color: @grey-1;
+  border-radius: 24px;
+  background: @grey-1;
+  border: 1px solid @grey-3;
+  box-shadow: 0px 4px 8px 0px rgba(51,51,51,0.08);
+}
+
+.contactPanelWrapper {
+  flex: 0 0 274px;
+  margin-right: 12px;
+  padding: 8px 0;
+
   border: 1px solid @grey-3;
   box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
-  border-radius: @buttonSize / 2;
-  text-align: center;
-  cursor: pointer;
-
-  .btn {
-    position: relative;
-    margin: -1px;
-    border: 2px solid @grey-1;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: .3s;
-
-    .iconClose, .iconSmile {
-      position: absolute;
-      transition: opacity .1s, transform .3s;
-    }
-
-    .iconSmile {
-      width: 56%;
-      height: 56%;
-      left: 22%;
-      top: 22%;
-    }
-
-    .iconClose {
-      width: 28%;
-      height: 28%;
-      left: 36%;
-      top: 36%;
-      transform: rotate(-60deg);
-      transform-origin: center;
-    }
-
-    &.btnClose {
-      .iconSmile {
-        opacity: 0;
-        transform: scale(.8);
-      }
-      .iconClose {
-        transform: rotate(0);
-      }
-    }
-    &.btnSmile {
-      .iconClose {
-        opacity: 0;
-      }
-    }
-  }
-
-  .entryText {
-    display: block;
-    margin-top: 1px;
-    margin-bottom: 8px;
-    padding: 7px;
-    font-size: 16px;
-    line-height: 22px;
-    color: @blue;
-    text-decoration: none;
-    white-space: nowrap; // 避免 safari 上内容换行
-
-    &:hover {
-      color: @blue-5;
-    }
-  }
+  background-color: @grey-1;
 
   .mobile({
-    width: @mobileButtonSize;
-    border-radius: @mobileButtonSize / 2;
-
-    .entryText {
-      padding: 4px 9px 0;
-      font-size: 12px;
-      line-height: 17px;
-    }
+    flex: 0 0 auto;
+    width: 274px;
+    margin-right: 0;
+    margin-bottom: 12px;
   });
-}
-
-.formModalWrapper {
-  .modalWrapper();
-
-  flex: 0 1 500px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 12px;
 
   overflow: hidden;
-  width: 374px;
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, transform .3s, opacity .2s;
-  transform-origin: bottom;
+  transition: visibility 0s, opacity .2s;
 
   &.hidden {
-    transform: translateY(10%);
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s .5s, transform .3s, opacity .5s;
+    transition: visibility 0s .2s, opacity .2s;
+  }
+
+  .contactItem {
+    position: relative;
+    display: block;
+    padding: 8px 8px 8px 50px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0,170,231,0.05);
+    }
+
+    .iconWrapper {
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 50px;
+      display: flex;
+      justify-content: center;
+
+      svg {
+        max-width: 20px;
+        max-height: 20px;
+      }
+    }
+
+    .title {
+      font-size: 14px;
+      font-weight: 500;
+      color: @grey-7;
+    }
+
+    .content {
+      margin-top: 4px;
+      font-size: 12px;
+      color: @grey-6;
+
+      p {
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .number {
+    color: @blue-6;
   }
 }
