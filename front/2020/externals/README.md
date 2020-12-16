@@ -2,6 +2,8 @@
 
 ### 外部站点嵌入使用
 
+#### 组件渲染
+
 外部站点的使用姿势可以参考 `test/external/index.html` 内容，引入代码如下：
 
 ```html
@@ -18,6 +20,22 @@ window.__qiniu_www_externals__.load(
   targetElement // 目标 HTML 元素，组件将被渲染到该元素中
 )
 ```
+
+#### 其他操作
+
+除了被渲染到指定位置外，组件也可以定义其他接口与外部进行交互；这部分内容会被挂载在
+
+```ts
+window.__qiniu_www_externals__.components[componentName]
+```
+
+上；如通过调用
+
+```ts
+window.__qiniu_www_externals__.components['feedback-entry'].showModal()
+```
+
+可以调起用户反馈浮层
 
 ### externals 内容的生成
 
