@@ -15,6 +15,15 @@ type ServerConfig struct {
 	MongoApiPrefix                   string `yaml:"mongo_api_prefix"`
 	MarketActivityResourceName       string `yaml:"market_activity_resource_name"`
 	ActivityRegistrationResourceName string `yaml:"activity_registration_resource_name"`
+	MarketActivityCollection         string `yaml:"market_activity_collection"`
+	ActivityRegistrationCollection   string `yaml:"activity_registration_collection"`
+	SMSTemplate                      string `yaml:"sms_template"`
+	SMSBatchLimit                    int    `yaml:"sms_batch_limit"`
+	MorseHost                        string `yaml:"morse_host"`
+	MorseClientId                    string `yaml:"morse_client_id"`
+	SendMessageTaskInterval          int    `yaml:"send_message_task_interval"`
+	RedisHost                        string `yaml:"redis_host"`
+	WWWMongoHost                     string `yaml:"www_mongo_host"`
 }
 
 type Config struct {

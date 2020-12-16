@@ -18,9 +18,10 @@ const (
 
 	ArgsEmpty                   code = 400001 // 必填参数为空
 	EmailInvalid                code = 400002 // 邮箱不合法
-	PhoneNumInvalid             code = 400003 // 电话号码不合法
+	DuplicatePhoneNum           code = 400003 // 电话号码重复
 	MarketActivityIdInvalid     code = 400004 // 市场活动 id 不合法
 	SameUidRegistrationNumLimit code = 400005 // 同一个 uid 报名人数达到上限
+	PhoneNumInvalid             code = 400006 // 电话号码不合法
 )
 
 var codeHumanize = map[code]string{
@@ -30,9 +31,10 @@ var codeHumanize = map[code]string{
 
 	ArgsEmpty:                   "args empty",
 	EmailInvalid:                "email is invalid",
-	PhoneNumInvalid:             "phone number is invalid",
+	DuplicatePhoneNum:           "duplicate phone number",
 	MarketActivityIdInvalid:     "market activity id is invalid",
 	SameUidRegistrationNumLimit: "reach the limit number of same uid",
+	PhoneNumInvalid:             "phone number is invalid",
 }
 
 type code int

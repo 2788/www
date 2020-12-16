@@ -101,7 +101,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	if err == nil {
 		if listResPart.Count > 0 {
 			logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
-			m.Send(c, codes.PhoneNumInvalid, "phone number already exists")
+			m.Send(c, codes.DuplicatePhoneNum, "phone number already exists")
 			return
 		}
 	} else {

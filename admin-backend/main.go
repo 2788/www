@@ -8,7 +8,9 @@ import (
 	mongoApi "qiniu.com/rmb-web/admin-backend/pkg/mongo-api"
 
 	"qiniu.com/www/admin-backend/config"
+	"qiniu.com/www/admin-backend/models"
 	"qiniu.com/www/admin-backend/routes"
+	"qiniu.com/www/admin-backend/service"
 )
 
 func main() {
@@ -31,6 +33,12 @@ func main() {
 	}
 
 	routes.InitCustomRoutes(r.Engine, conf)
+
+	// 定时发送短信通知
+	wwwSess, err := models.InitDB(conf.WWWMongoHost)
+	Must(err)
+	fixedTimeService := service.NewFixedTimeService(wwwSess, conf)
+	go fixedTimeService.Task()
 
 	app.RunHTTPServer(conf.Port, conf.WriteTimeout, r)
 }

@@ -4,11 +4,14 @@ go 1.13
 
 require (
 	github.com/gin-gonic/gin v1.6.3
+	github.com/go-redis/redis/v7 v7.4.0
 	github.com/qiniu/rpc.v1 v0.0.0
 	github.com/qiniu/rpc.v1/lb.v2.1 v0.0.0
 	github.com/qiniu/xlog.v1 v0.0.0
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	gopkg.in/yaml.v2 v2.3.0
+	qbox.us/api/message v0.0.0
+	qbox.us/api/message/code v0.0.0 // indirect
 	qiniu.com/rmb-web/admin-backend v0.0.6
 	qiniu.com/rmb-web/puck/v3 v3.2.0
 )
@@ -54,6 +57,10 @@ replace qbox.us/api/account.v2 v0.0.0 => ../../base/biz/src/qbox.us/api/account.
 replace qbox.us/api/one/access v0.0.0 => ../../base/biz/src/qbox.us/api/one/access
 
 replace qbox.us/mockacc v0.0.0 => ../../base/biz/src/qbox.us/mockacc
+
+replace qbox.us/api/message v0.0.0 => ../../base/biz/src/qbox.us/api/message
+
+replace qbox.us/api/message/code v0.0.0 => ../../base/biz/src/qbox.us/api/message/code
 
 replace qbox.us/servend/account v0.0.0 => ../../base/biz/src/qbox.us/servend/account
 
