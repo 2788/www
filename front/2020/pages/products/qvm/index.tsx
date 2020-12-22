@@ -104,7 +104,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
             <feature.Desc className={style.featureDesc}>与七牛云各种丰富的云产品无缝衔接，可持续为业务发展提供完整的计算、存储、安全等解决方案</feature.Desc>
           </feature.Item>
           <feature.Item title="高性能" icon={<IconFeatureHighPerf />}>
-            <feature.Desc className={style.featureDesc}>单实例最高可选 88 vCPU，内存 704 GB，单实例性能最高可达到 700 万 PPS 网络收发包，35 Gbps 带宽</feature.Desc>
+            <feature.Desc className={style.featureDesc}>单实例最高可选 208 vCPU，内存 4096 GB，单实例性能最高可达到 1000 万 PPS 网络收发包，40 Gbps 带宽</feature.Desc>
           </feature.Item>
         </feature.Group>
       </Feature>
