@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"regexp"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"github.com/qiniu/rpc.v1"
 	"github.com/qiniu/xlog.v1"
 	"gopkg.in/mgo.v2/bson"
+	mongoClient "qiniu.com/rmb-web/admin-backend/mongo-api/client"
 	"qiniu.com/rmb-web/puck/v3/utils/auth"
 
 	"qiniu.com/www/admin-backend/codes"
@@ -76,11 +78,10 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	transport := auth.NewQiniuAuthTransport(m.conf.Admin.AccessKey, m.conf.Admin.SecretKey, http.DefaultTransport)
-	cli := NewClient(fmt.Sprintf("http://127.0.0.1:%d", m.conf.Port), transport)
-
+	host := []string{fmt.Sprintf("http://127.0.0.1:%d", m.conf.Port)}
+	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, m.conf.MongoApiPrefix, transport)
 	// 查看当前活动是否存在
-	getMarketActivByIdPath := fmt.Sprintf("%s/%s/%s", m.conf.MongoApiPrefix, m.conf.MarketActivityResourceName, params.MarketActivityId)
-	err = cli.GetCall(logger, nil, getMarketActivByIdPath)
+	err = mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, nil)
 	if err != nil {
 		if errInfo, ok := err.(*rpc.ErrorInfo); ok && errInfo.Code == 404 {
 			logger.Errorf("market_activity_id(%s) not found", params.MarketActivityId)
@@ -92,14 +93,14 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
-	var listResPart struct {
-		Count int `json:"count"`
-	}
 	// 查看手机号是否已经存在
-	getRegisActivByPhonePath := fmt.Sprintf("%s/%s?query={\"phoneNumber\":\"%s\",\"marketActivityId\":\"%s\"}&limit=1", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.PhoneNumber, params.MarketActivityId)
-	err = cli.GetCall(logger, &listResPart, getRegisActivByPhonePath)
+	query := url.Values{
+		"query": []string{fmt.Sprintf("{\"phoneNumber\":\"%s\",\"marketActivityId\":\"%s\"}", params.PhoneNumber, params.MarketActivityId)},
+		"limit": []string{"1"},
+	}
+	listRes, err := mongoService.List(logger, m.conf.ActivityRegistrationResourceName, query)
 	if err == nil {
-		if listResPart.Count > 0 {
+		if listRes.Count > 0 {
 			logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
 			m.Send(c, codes.DuplicatePhoneNum, "phone number already exists")
 			return
@@ -111,10 +112,13 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 查看同一活动同一 uid 报名人数是否达到上限
-	getSameUidNumPath := fmt.Sprintf("%s/%s?query={\"uid\":%d,\"marketActivityId\":\"%s\"}&limit=1", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName, params.Uid, params.MarketActivityId)
-	err = cli.GetCall(logger, &listResPart, getSameUidNumPath)
+	query = url.Values{
+		"query": []string{fmt.Sprintf("{\"uid\":%d,\"marketActivityId\":\"%s\"}", params.Uid, params.MarketActivityId)},
+		"limit": []string{"1"},
+	}
+	listRes, err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, query)
 	if err == nil {
-		if listResPart.Count >= SameUidLimitNum {
+		if listRes.Count >= SameUidLimitNum {
 			logger.Errorf("uid(%d) reach the limit number", params.Uid)
 			m.Send(c, codes.SameUidRegistrationNumLimit, nil)
 			return
@@ -126,25 +130,21 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 提交用户活动报名请求
-	regisActivPath := fmt.Sprintf("%s/%s", m.conf.MongoApiPrefix, m.conf.ActivityRegistrationResourceName)
 	activRegisParams := &models.ActivityRegistration{
 		Uid:              params.Uid,
 		UserName:         params.UserName,
 		PhoneNumber:      params.PhoneNumber,
 		Email:            params.Email,
 		Company:          params.Company,
-		MarketActivityId: bson.ObjectIdHex(params.MarketActivityId),
+		MarketActivityId: params.MarketActivityId,
 		CreatedAt:        time.Now().Unix(),
 		UpdatedAt:        time.Now().Unix(),
 	}
-	err = cli.CallWithJson(logger, &res, regisActivPath, activRegisParams)
-	// 返回 201 是创建成功
+	err = mongoService.Create(logger, m.conf.ActivityRegistrationResourceName, activRegisParams, &res)
 	if err != nil {
-		if errInfo, ok := err.(*rpc.ErrorInfo); !ok || errInfo.Code != 201 {
-			logger.Errorf("%s body(%v) error :%v", m.conf.ActivityRegistrationResourceName, activRegisParams, err)
-			m.Send(c, codes.ResultError, nil)
-			return
-		}
+		logger.Errorf("%s body(%v) error :%v", m.conf.ActivityRegistrationResourceName, activRegisParams, err)
+		m.Send(c, codes.ResultError, nil)
+		return
 	}
 
 	m.Send(c, codes.OK, res)

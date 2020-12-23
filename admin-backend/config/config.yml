@@ -5,15 +5,13 @@ server:
   mongo_api_prefix: /api/mongo
   market_activity_resource_name: www-market-activity # 要和下面 mongo_api 配置保持一致
   activity_registration_resource_name: www-activity-registration # 要和下面 mongo_api 配置保持一致
-  market_activity_collection: market_activity # 要和下面 mongo_api 配置保持一致
-  activity_registration_collection: activity_registration # 要和下面 mongo_api 配置保持一致
   sms_template: 亲爱的 {{.UserName}}，您报名的 {{.Title}} 将于 {{.StartTime}} 开始。更多活动详情可访问 {{.DetailUrl}} 查看。 # 发送短信模版
   sms_batch_limit: 100 # 每次最多同时发送多少条短信，不能超过 morse batch 的限制
   morse_host: http://bo-staging-morse.qa.qiniu.io
   morse_client_id: 5963399a43c8ce5967000001
-  send_message_task_interval: 720 # 单位为分钟
+  send_message_task_interval: 180 # 单位为分钟
   redis_host: 127.0.0.1:6379
-  www_mongo_host: 127.0.0.1:27017/www
+  redis_db: 7
 
 target: privatized
 token_expire_days: 7

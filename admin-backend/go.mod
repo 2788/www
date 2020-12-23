@@ -9,14 +9,17 @@ require (
 	github.com/qiniu/rpc.v1/lb.v2.1 v0.0.0
 	github.com/qiniu/xlog.v1 v0.0.0
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
-	gopkg.in/yaml.v2 v2.3.0
+	gopkg.in/yaml.v2 v2.4.0
 	qbox.us/api/message v0.0.0
 	qbox.us/api/message/code v0.0.0 // indirect
 	qiniu.com/rmb-web/admin-backend v0.0.6
+	qiniu.com/rmb-web/admin-backend/mongo-api/client v0.0.0
 	qiniu.com/rmb-web/puck/v3 v3.2.0
 )
 
 replace qiniu.com/rmb-web/admin-backend v0.0.6 => ../../rmb-web/admin-backend
+
+replace qiniu.com/rmb-web/admin-backend/mongo-api/client v0.0.0 => ../../rmb-web/admin-backend/pkg/mongo-api/client
 
 replace qiniu.com/rmb-web/puck/v3 v3.2.0 => github.com/qbox/rmb-web/puck/v3 v3.2.0
 
