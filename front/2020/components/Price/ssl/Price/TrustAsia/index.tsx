@@ -53,7 +53,7 @@ const data = [
     key: 4,
     type: '企业型（OV）证书',
     years: 2,
-    price: 5400
+    price: 5265
   },
   {
     key: 5,
@@ -65,7 +65,7 @@ const data = [
     key: 6,
     type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
     years: 2,
-    price: 7800
+    price: 7605
   },
   {
     key: 7,
@@ -89,7 +89,7 @@ const data = [
     key: 10,
     type: '企业型（OV）通配符证书',
     years: 2,
-    price: 16200
+    price: 15795
   }
 ]
 
