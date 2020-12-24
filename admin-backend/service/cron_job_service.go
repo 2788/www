@@ -2,12 +2,10 @@ package service
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
 	"gopkg.in/mgo.v2/bson"
 	"html/template"
 	"net/http"
-	"net/url"
 	"sync"
 	"time"
 
@@ -71,15 +69,8 @@ func (f *CronJobService) Run() {
 		ch := make(chan bool, MaxGoroutine)
 		wg := &sync.WaitGroup{}
 		for _, activ := range activs {
-			var activity models.PartOfMarketActivity
-			activity, err = interToPartOfMarketActiv(activ)
-			if err != nil {
-				logger.Errorf("interToPartOfMarketActiv error :%v", err)
-				continue
-			}
-
 			// 添加分布式锁保证同一时间只有一个协程在处理当前活动
-			key := fmt.Sprintf("%s%s", RedisKeyPrefix, activity.Id.Hex())
+			key := fmt.Sprintf("%s%s", RedisKeyPrefix, activ.Id.Hex())
 			value := time.Now().UnixNano()
 			err = f.tryLock(key, value)
 			if err != nil {
@@ -90,7 +81,7 @@ func (f *CronJobService) Run() {
 			activEnd := make(chan bool)
 			// 定时给锁加过期时间或者释放锁
 			go f.addLockExpireTimeOrUnlock(logger.SpawnWithCtx(), activEnd, key, value)
-			go f.send(logger.SpawnWithCtx(), wg, ch, activEnd, activity)
+			go f.send(logger.SpawnWithCtx(), wg, ch, activEnd, activ)
 		}
 		wg.Wait()
 		<-ticker.C
@@ -128,25 +119,18 @@ func (f *CronJobService) send(logger *xlog.Logger, wg *sync.WaitGroup, ch, activ
 	}
 
 	for {
-		usersInter, err := f.getNeedSendMsgUsers(logger, activity.Id.Hex(), f.conf.SMSBatchLimit)
+		users, err := f.getNeedSendMsgUsers(logger, activity.Id.Hex(), f.conf.SMSBatchLimit)
 		if err != nil {
-			logger.Errorf("getNeedSendMsgUsers(%s) error :%v", activity.Id.Hex(), err)
+			logger.Errorf("getNeedSendMsgUsers activityId(%s) error :%v", activity.Id.Hex(), err)
 			return
 		}
 
-		if usersInter == nil {
+		if len(users) == 0 {
 			break
 		}
 
-		users := make([]models.ActivityRegistration, len(usersInter))
 		var ids []bson.ObjectId
-		for index, userInter := range usersInter {
-			user, err := interToActivRegist(userInter)
-			if err != nil {
-				logger.Errorf("%v interToActivRegist error :%v", usersInter, err)
-				return
-			}
-			users[index] = user
+		for _, user := range users {
 			ids = append(ids, user.Id)
 		}
 
@@ -204,47 +188,47 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 }
 
 func (f *CronJobService) setSMSResult(logger *xlog.Logger, ids []bson.ObjectId, jobId string) (err error) {
-	queryMap := map[string]map[string]interface{}{
+	bsonQuery := map[string]map[string]interface{}{
 		"_id": {"$in": ids},
 	}
-	queryBson, err := bson.Marshal(queryMap)
-	if err != nil {
-		logger.Errorf("setSMSResult bson Marshal queryMap(%v) error :%v", queryMap, err)
-		return
-	}
-	query := url.Values{"bsonQuery": []string{string(queryBson)}}
 	updates := map[string]interface{}{"hasBeenSent": true, "smsJobId": jobId}
 
-	err = f.mongoApiService.BatchUpdate(logger, f.conf.ActivityRegistrationResourceName, query, updates, nil)
+	err = f.mongoApiService.BatchUpdate(logger, f.conf.ActivityRegistrationResourceName, nil, bsonQuery, updates, nil)
 	if err != nil {
 		logger.Errorf("mongoApiService BatchUpdate ids(%v) error :%v", ids, err)
 	}
 	return
 }
 
-func (f *CronJobService) getNeedSendMsgActivs(logger *xlog.Logger) (activs []interface{}, err error) {
+func (f *CronJobService) getNeedSendMsgActivs(logger *xlog.Logger) (activs []models.PartOfMarketActivity, err error) {
 	now := time.Now().Unix()
-	query := url.Values{
-		"query": []string{fmt.Sprintf("{\"state\":1,\"enableReminder\":true,\"noticeStatus\":{\"$ne\":2},\"startTime\":{\"$gt\":%d}}", now)},
-	}
-	res, err := f.mongoApiService.List(logger, f.conf.MarketActivityResourceName, query)
-	if err != nil {
-		return
+	query := map[string]interface{}{
+		"state":          1,
+		"enableReminder": true,
+		"noticeStatus":   map[string]interface{}{"$ne": 2},
+		"startTime":      map[string]interface{}{"$gt": now},
 	}
 
-	return res.Data, nil
+	var listRes struct {
+		Data []models.PartOfMarketActivity `json:"data"`
+	}
+
+	err = f.mongoApiService.List(logger, f.conf.MarketActivityResourceName, 0, 0, "", query, nil, &listRes)
+	return listRes.Data, err
 }
 
-func (f *CronJobService) getNeedSendMsgUsers(logger *xlog.Logger, activityId string, limit int) (users []interface{}, err error) {
-	query := url.Values{
-		"query": []string{fmt.Sprintf("{\"hasBeenSent\":{\"$eq\":false},\"marketActivityId\":\"%s\"}", activityId)},
-		"limit": []string{fmt.Sprint(limit)},
+func (f *CronJobService) getNeedSendMsgUsers(logger *xlog.Logger, activityId string, limit int) (users []models.ActivityRegistration, err error) {
+	query := map[string]interface{}{
+		"hasBeenSent":      map[string]interface{}{"$eq": false},
+		"marketActivityId": activityId,
 	}
-	res, err := f.mongoApiService.List(logger, f.conf.ActivityRegistrationResourceName, query)
-	if err != nil {
-		return
+
+	var listRes struct {
+		Data []models.ActivityRegistration `json:"data"`
 	}
-	return res.Data, nil
+
+	err = f.mongoApiService.List(logger, f.conf.ActivityRegistrationResourceName, limit, 0, "", query, nil, &listRes)
+	return listRes.Data, err
 }
 
 func (f *CronJobService) tryLock(key string, value int64) error {
@@ -324,22 +308,4 @@ func (tr *morseTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 		req.Header.Set(MorseClientIdKey, tr.clientID)
 	}
 	return tr.transport.RoundTrip(req)
-}
-
-func interToActivRegist(v interface{}) (activRegis models.ActivityRegistration, err error) {
-	vBytes, err := json.Marshal(v)
-	if err != nil {
-		return
-	}
-	err = json.Unmarshal(vBytes, &activRegis)
-	return
-}
-
-func interToPartOfMarketActiv(v interface{}) (activRegis models.PartOfMarketActivity, err error) {
-	vBytes, err := json.Marshal(v)
-	if err != nil {
-		return
-	}
-	err = json.Unmarshal(vBytes, &activRegis)
-	return
 }

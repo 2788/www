@@ -4,8 +4,8 @@ import (
 	"gopkg.in/yaml.v2"
 	"os"
 
+	mongoApi "qiniu.com/rmb-web/admin-backend/mongo-api"
 	"qiniu.com/rmb-web/admin-backend/pkg/app"
-	mongoApi "qiniu.com/rmb-web/admin-backend/pkg/mongo-api"
 )
 
 type ServerConfig struct {

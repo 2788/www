@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
+	mongoApi "qiniu.com/rmb-web/admin-backend/mongo-api"
 	"qiniu.com/rmb-web/admin-backend/pkg/app"
-	mongoApi "qiniu.com/rmb-web/admin-backend/pkg/mongo-api"
 
 	"qiniu.com/www/admin-backend/config"
 	"qiniu.com/www/admin-backend/routes"

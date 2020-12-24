@@ -3,7 +3,6 @@ package controllers
 import (
 	"fmt"
 	"net/http"
-	"net/url"
 	"regexp"
 	"time"
 
@@ -80,6 +79,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	transport := auth.NewQiniuAuthTransport(m.conf.Admin.AccessKey, m.conf.Admin.SecretKey, http.DefaultTransport)
 	host := []string{fmt.Sprintf("http://127.0.0.1:%d", m.conf.Port)}
 	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, m.conf.MongoApiPrefix, transport)
+
 	// 查看当前活动是否存在
 	err = mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, nil)
 	if err != nil {
@@ -93,12 +93,16 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
-	// 查看手机号是否已经存在
-	query := url.Values{
-		"query": []string{fmt.Sprintf("{\"phoneNumber\":\"%s\",\"marketActivityId\":\"%s\"}", params.PhoneNumber, params.MarketActivityId)},
-		"limit": []string{"1"},
+	var listRes struct {
+		Count int `json:"count"`
 	}
-	listRes, err := mongoService.List(logger, m.conf.ActivityRegistrationResourceName, query)
+
+	// 查看手机号是否已经存在
+	phoneQuery := map[string]interface{}{
+		"phoneNumber":      params.PhoneNumber,
+		"marketActivityId": params.MarketActivityId,
+	}
+	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, 1, 0, "", phoneQuery, nil, &listRes)
 	if err == nil {
 		if listRes.Count > 0 {
 			logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
@@ -112,11 +116,11 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 查看同一活动同一 uid 报名人数是否达到上限
-	query = url.Values{
-		"query": []string{fmt.Sprintf("{\"uid\":%d,\"marketActivityId\":\"%s\"}", params.Uid, params.MarketActivityId)},
-		"limit": []string{"1"},
+	uidQuery := map[string]interface{}{
+		"uid":              params.Uid,
+		"marketActivityId": params.MarketActivityId,
 	}
-	listRes, err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, query)
+	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, 1, 0, "", uidQuery, nil, &listRes)
 	if err == nil {
 		if listRes.Count >= SameUidLimitNum {
 			logger.Errorf("uid(%d) reach the limit number", params.Uid)
