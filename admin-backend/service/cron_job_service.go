@@ -72,9 +72,13 @@ func (f *CronJobService) Run() {
 			// 添加分布式锁保证同一时间只有一个协程在处理当前活动
 			key := fmt.Sprintf("%s%s", RedisKeyPrefix, activ.Id.Hex())
 			value := time.Now().UnixNano()
-			err = f.tryLock(key, value)
+			ok, err := f.tryLock(key, value)
 			if err != nil {
 				logger.Errorf("tryLock key(%s) error :%v", key, err)
+				continue
+			}
+			if !ok {
+				logger.Warnf("tryLock key(%s) failed", key)
 				continue
 			}
 
@@ -167,7 +171,7 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 			UserName:  user.UserName,
 			Title:     activity.Title,
 			StartTime: time.Unix(activity.StartTime, 0).Format("2006-01-02 15:04:05"),
-			DetailUrl: fmt.Sprintf("%s/%s", activity.DetailUrlPrefix, activity.Id.Hex()),
+			DetailUrl: fmt.Sprintf("%s%s", activity.DetailUrlPrefix, activity.Id.Hex()),
 		}
 		content, err := f.render(data)
 		if err != nil {
@@ -188,12 +192,16 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 }
 
 func (f *CronJobService) setSMSResult(logger *xlog.Logger, ids []bson.ObjectId, jobId string) (err error) {
-	bsonQuery := map[string]map[string]interface{}{
-		"_id": {"$in": ids},
+	bsonQuery := map[string]interface{}{
+		"_id": map[string]interface{}{"$in": ids},
 	}
 	updates := map[string]interface{}{"hasBeenSent": true, "smsJobId": jobId}
 
-	err = f.mongoApiService.BatchUpdate(logger, f.conf.ActivityRegistrationResourceName, nil, bsonQuery, updates, nil)
+	param := mongoClient.BatchUpdateParam{
+		BsonQuery:  bsonQuery,
+		UpdateBody: updates,
+	}
+	err = f.mongoApiService.BatchUpdate(logger, f.conf.ActivityRegistrationResourceName, param, nil)
 	if err != nil {
 		logger.Errorf("mongoApiService BatchUpdate ids(%v) error :%v", ids, err)
 	}
@@ -208,38 +216,40 @@ func (f *CronJobService) getNeedSendMsgActivs(logger *xlog.Logger) (activs []mod
 		"noticeStatus":   map[string]interface{}{"$ne": 2},
 		"startTime":      map[string]interface{}{"$gt": now},
 	}
+	listQuery := mongoClient.ListQuery{
+		Query: query,
+	}
 
 	var listRes struct {
 		Data []models.PartOfMarketActivity `json:"data"`
 	}
 
-	err = f.mongoApiService.List(logger, f.conf.MarketActivityResourceName, 0, 0, "", query, nil, &listRes)
+	err = f.mongoApiService.List(logger, f.conf.MarketActivityResourceName, listQuery, &listRes)
+
 	return listRes.Data, err
 }
 
 func (f *CronJobService) getNeedSendMsgUsers(logger *xlog.Logger, activityId string, limit int) (users []models.ActivityRegistration, err error) {
 	query := map[string]interface{}{
-		"hasBeenSent":      map[string]interface{}{"$eq": false},
+		"hasBeenSent":      false,
 		"marketActivityId": activityId,
+	}
+	listQuery := mongoClient.ListQuery{
+		Limit: fmt.Sprint(limit),
+		Query: query,
 	}
 
 	var listRes struct {
 		Data []models.ActivityRegistration `json:"data"`
 	}
 
-	err = f.mongoApiService.List(logger, f.conf.ActivityRegistrationResourceName, limit, 0, "", query, nil, &listRes)
+	err = f.mongoApiService.List(logger, f.conf.ActivityRegistrationResourceName, listQuery, &listRes)
 	return listRes.Data, err
 }
 
-func (f *CronJobService) tryLock(key string, value int64) error {
-	ok, err := f.redis.SetNX(key, value, time.Minute*RedisKeyExpireTime).Result()
-	if err != nil {
-		return err
-	}
-	if !ok {
-		return fmt.Errorf("redis SetNX not ok")
-	}
-	return nil
+func (f *CronJobService) tryLock(key string, value int64) (ok bool, err error) {
+	ok, err = f.redis.SetNX(key, value, time.Minute*RedisKeyExpireTime).Result()
+	return
 }
 
 var unlockScript = `

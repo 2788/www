@@ -80,8 +80,9 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	host := []string{fmt.Sprintf("http://127.0.0.1:%d", m.conf.Port)}
 	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, m.conf.MongoApiPrefix, transport)
 
+	var getRes models.PartOfMarketActivity
 	// 查看当前活动是否存在
-	err = mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, nil)
+	err = mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, &getRes)
 	if err != nil {
 		if errInfo, ok := err.(*rpc.ErrorInfo); ok && errInfo.Code == 404 {
 			logger.Errorf("market_activity_id(%s) not found", params.MarketActivityId)
@@ -97,12 +98,23 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		Count int `json:"count"`
 	}
 
+	// 活动报名截止不能报名
+	if getRes.ApplyEndTime < time.Now().Unix() {
+		logger.Errorf("registration deadline error")
+		m.Send(c, codes.Forbidden, nil)
+		return
+	}
+
 	// 查看手机号是否已经存在
 	phoneQuery := map[string]interface{}{
 		"phoneNumber":      params.PhoneNumber,
 		"marketActivityId": params.MarketActivityId,
 	}
-	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, 1, 0, "", phoneQuery, nil, &listRes)
+	listQuery := mongoClient.ListQuery{
+		Limit: "1",
+		Query: phoneQuery,
+	}
+	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, listQuery, &listRes)
 	if err == nil {
 		if listRes.Count > 0 {
 			logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
@@ -120,7 +132,11 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		"uid":              params.Uid,
 		"marketActivityId": params.MarketActivityId,
 	}
-	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, 1, 0, "", uidQuery, nil, &listRes)
+	listQuery = mongoClient.ListQuery{
+		Limit: "1",
+		Query: uidQuery,
+	}
+	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, listQuery, &listRes)
 	if err == nil {
 		if listRes.Count >= SameUidLimitNum {
 			logger.Errorf("uid(%d) reach the limit number", params.Uid)

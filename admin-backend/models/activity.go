@@ -27,4 +27,5 @@ type PartOfMarketActivity struct {
 	StartTime       int64         `json:"startTime"`       // 活动开始时间
 	DetailUrlPrefix string        `json:"detailUrlPrefix"` // 详情页面 url 前缀
 	NoticeStatus    int           `json:"noticeStatus"`    // 0 未通知，1 开始通知，2 通知结束
+	ApplyEndTime    int64         `json:"applyEndTime"`    // 报名截止时间
 }

@@ -9,6 +9,7 @@ const (
 	OK code = 200
 
 	InvalidArgs code = 400 // 请求参数错误，或者数据未通过验证
+	Forbidden   code = 403 // 不允许使用此接口
 	ResultError code = 500 // 请求结果发生错误
 )
 
@@ -27,6 +28,7 @@ const (
 var codeHumanize = map[code]string{
 	OK:          "ok",
 	InvalidArgs: "invalid args",
+	Forbidden:   "forbidden",
 	ResultError: "response result error",
 
 	ArgsEmpty:                   "args empty",
