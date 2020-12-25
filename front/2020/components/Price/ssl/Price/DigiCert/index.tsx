@@ -41,7 +41,7 @@ const data = [
     key: 2,
     type: '企业型（OV）证书',
     years: 2,
-    price: 5820
+    price: 5674.5
   },
   {
     key: 3,
@@ -53,7 +53,7 @@ const data = [
     key: 4,
     type: '企业型专业版（OV Pro）证书',
     years: 2,
-    price: 7650
+    price: 8950.5
   },
   {
     key: 5,
@@ -65,7 +65,7 @@ const data = [
     key: 6,
     type: '企业增强型(EV)证书',
     years: 2,
-    price: 7950
+    price: 9301.5
   },
   {
     key: 7,
@@ -77,7 +77,7 @@ const data = [
     key: 8,
     type: '企业增强型专业版(EV Pro）证书',
     years: 2,
-    price: 15180
+    price: 14800.5
   },
   {
     key: 9,
@@ -89,7 +89,7 @@ const data = [
     key: 10,
     type: '企业型（OV）通配符证书',
     years: 2,
-    price: 45600
+    price: 44460
   },
   {
     key: 11,
@@ -101,7 +101,7 @@ const data = [
     key: 12,
     type: '企业型专业版（OV Pro）通配符证书',
     years: 2,
-    price: 81600
+    price: 79560
   }
 ]
 

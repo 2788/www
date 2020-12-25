@@ -41,19 +41,19 @@ const data = [
     key: 2,
     type: '企业型（OV）证书',
     years: 2,
-    price: 3420
+    price: 3334.5
   },
   {
     key: 3,
-    type: '企业型（OV）多域名证书（默认包含 5 个标准域名额度）',
+    type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
     years: 1,
-    price: 3815
+    price: 2450
   },
   {
     key: 4,
-    type: '企业型（OV）多域名证书（默认包含 5 个标准域名额度）',
+    type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
     years: 2,
-    price: 6540
+    price: 4095
   },
   {
     key: 5,
@@ -65,7 +65,7 @@ const data = [
     key: 6,
     type: '企业型（OV）多域名证书额外域名',
     years: 2,
-    price: 780
+    price: 760.5
   },
   {
     key: 7,
@@ -77,7 +77,7 @@ const data = [
     key: 8,
     type: '企业型（OV）通配符证书',
     years: 2,
-    price: 6850
+    price: 8014.5
   },
   {
     key: 9,
@@ -89,31 +89,31 @@ const data = [
     key: 10,
     type: '企业增强型(EV)证书',
     years: 2,
-    price: 5820
+    price: 5674.50
   },
   {
     key: 11,
-    type: '企业增强型(EV)多域名证书（默认包含 5 个单域名）',
+    type: '企业增强型(EV)多域名证书（默认包含 2 个单域名）',
     years: 1,
-    price: 7237.5
+    price: 4725
   },
   {
     key: 12,
-    type: '企业增强型(EV)多域名证书（默认包含5个单域名）',
+    type: '企业增强型(EV)多域名证书（默认包含 2 个单域名）',
     years: 2,
-    price: 11580
+    price: 7371
   },
   {
     key: 13,
     type: '企业增强型(EV)多域名证书额外域名',
     years: 1,
-    price: 900
+    price: 1087.5
   },
   {
     key: 14,
     type: '企业增强型(EV)多域名证书额外域名',
     years: 2,
-    price: 1440
+    price: 1696.5
   }
 ]
 
