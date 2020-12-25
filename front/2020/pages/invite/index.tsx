@@ -4,6 +4,7 @@
 
 import React, { PropsWithChildren, useState } from 'react'
 import * as cases from 'constants/cases'
+import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
 import { Card, Row } from 'components/UI/Card'
 import Swiper from 'components/UI/Swiper'
@@ -180,6 +181,9 @@ function PageContent() {
 }
 
 export default function InvitePage() {
+  return (
+    <Redirect target="/cps" />
+  )
   return (
     <Layout
       title="邀请有礼活动"
