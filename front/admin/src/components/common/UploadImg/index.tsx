@@ -1,15 +1,14 @@
-import * as React from 'react'
+import React, { PropsWithChildren } from 'react'
 import autobind from 'autobind-decorator'
 import { observer } from 'mobx-react'
 import * as qiniu from 'qiniu-js'
 import { FieldState } from 'formstate-x'
 import { Upload, Button, Modal } from 'react-icecream'
-import { RcFile } from 'react-icecream/esm/upload'
+import { RcFile } from 'react-icecream/lib/upload'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
 import ToasterStore from 'admin-base/common/stores/toaster'
-import { textNotBlank } from 'admin-base/common/utils/validator'
 import moment from 'moment'
 import UploadApis from 'apis/upload'
 import ImgPreview from '../ImgPreview'
@@ -18,6 +17,7 @@ import * as style from './style.m.less'
 interface IProps {
   state: State
   maxSize: number // 支持的图片大小，单位为 kb
+  onUploaded?: (url: string) => void // 上传成功之后执行的方法
 }
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg, .gif'
@@ -30,7 +30,7 @@ const bucket = 'admin-v2-static'
 export type State = FieldState<string>
 
 export function createState(value: string): State {
-  return new FieldState(value).validators(textNotBlank)
+  return new FieldState(value)
 }
 
 export function getValue(state: State): string {
@@ -83,14 +83,23 @@ class UploadStore extends Store {
       .then(token => this.doUpload(file, token), () => Promise.reject('token 获取失败！'))
       .then(val => {
         this.props.state.onChange(val)
+        return val
       })
+    req.then(val => this.props.onUploaded && this.props.onUploaded(val))
     return req
   }
 }
 
-export default observer(function UploadImg(props: IProps) {
+export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
   const store = useLocalStore(UploadStore, props)
-  const { state, maxSize } = props
+  const { state, maxSize, children } = props
+
+  const childrenView = children || (
+    <>
+      <Button type="link">上传</Button>
+      {state.value ? <ImgPreview url={state.value} className={style.icon} /> : null}
+    </>
+  )
 
   const handleChange = (file: File | undefined) => {
     if (file) {
@@ -110,17 +119,15 @@ export default observer(function UploadImg(props: IProps) {
   }
 
   return (
-    <div className={style.container}>
-      <Upload name="file"
-        accept={imgFilter}
-        beforeUpload={beforeUpload}
-        onChange={info => handleChange(info.file.originFileObj)}
-        showUploadList={false}
-        customRequest={() => false}
-      >
-        <Button type="link">上传</Button>
-      </Upload>
-      {state.value ? <ImgPreview url={state.value} className={style.icon} /> : null}
-    </div>
+    <Upload name="file"
+      accept={imgFilter}
+      beforeUpload={beforeUpload}
+      onChange={info => handleChange(info.file.originFileObj)}
+      showUploadList={false}
+      customRequest={() => false}
+      className={style.upload}
+    >
+      {childrenView}
+    </Upload>
   )
 })

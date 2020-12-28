@@ -81,18 +81,17 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  @Loadings.handle('submit')
   async doAdd(param: INotice) {
     await this.noticeStore.add(param)
     this.toasterStore.success('创建产品公告成功！')
   }
 
-  @Loadings.handle('submit')
   async doEdit(param: INotice, id: string) {
     await this.noticeStore.update(param, id)
     this.toasterStore.success('更新产品公告成功！')
   }
 
+  @Loadings.handle('submit')
   doSubmit() {
     const param: INotice = {
       product: this.formValue.product,
@@ -102,10 +101,9 @@ class EditorModalStore extends Store {
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
       createTime: this.props.notice.createTime,
-      editTime: moment().unix()
+      editTime: this.props.notice.editTime
     }
     if (this.props.status === EditorStatus.Creating) {
-      param.createTime = moment().unix()
       return this.doAdd(param)
     }
     return this.doEdit(param, this.props.id)
@@ -123,8 +121,7 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState() {
-    const notice = this.props.notice
+  initFormState(notice) {
     this.form = new FormState({
       product: new FieldState(notice.product).validators(value => !value && '请选择一个产品页'),
       summary: new FieldState(notice.summary).validators(textNotBlank),
@@ -142,7 +139,7 @@ class EditorModalStore extends Store {
         () => this.props.notice,
         notice => {
           if (notice) {
-            this.initFormState()
+            this.initFormState(notice)
           }
         },
         { fireImmediately: true }

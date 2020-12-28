@@ -1,0 +1,6 @@
+{
+  "extends": "./build-config.json",
+  "envVariables": {
+    "activityDetailUrlPrefix": "https://www-2020.qiniu.com/activity/detail?id="
+  }
+}

@@ -81,25 +81,23 @@ class EditorModalStore extends Store {
   }
 
   @autobind
-
   getArchive(id: string) {
     return this.newsStore.getArchive(id).then((res: IArchive) => {
       this.updateArchive(res)
     })
   }
 
-  @Loadings.handle('submit')
   async doAdd(param: INews) {
     await this.newsStore.add(param).catch(() => Promise.reject(''))
     this.toasterStore.success('创建资讯成功！')
   }
 
-  @Loadings.handle('submit')
   async doEdit(param: INews, id: string) {
     await this.newsStore.update(param, id)
     this.toasterStore.success('更新资讯成功！')
   }
 
+  @Loadings.handle('submit')
   doSubmit() {
     const articleId = this.formValue.articleId
 
@@ -110,7 +108,7 @@ class EditorModalStore extends Store {
       summary: this.archive.summary,
       banner: this.archive.cover,
       link: '',
-      editTime: moment().unix(),
+      editTime: this.props.news.editTime,
       createTime: moment(this.archive.created_at).format('YYYY-MM-DD')
     }
     if (this.props.status === EditorStatus.Creating) {
@@ -159,8 +157,7 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState() {
-    const news = this.props.news
+  initFormState(news) {
     this.form = new FormState({
       articleId: new FieldState(news.articleId)
         .validators(textNotBlank, textPositiveInterger, this.doValidateId),
@@ -187,7 +184,7 @@ class EditorModalStore extends Store {
         () => this.props.news,
         news => {
           if (news) {
-            this.initFormState()
+            this.initFormState(news)
             if (this.props.status === EditorStatus.Editing) {
               this.initArchivesNews()
             }

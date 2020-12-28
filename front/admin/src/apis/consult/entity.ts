@@ -60,8 +60,8 @@ export default class EntityApis {
   }
 
   async list(): Promise<Entity[]> {
-    const data = await this.fetchStore.get(`${apiMongo}/${resourceName}`, { sort: '-createTime' })
-    return (data || []) as Property[]
+    const res = await this.fetchStore.get(`${apiMongo}/${resourceName}`, { sort: '-createTime' })
+    return (res.data || []) as Entity[]
   }
 
   /** 列出所有实体，并带上实体对应的属性信息 */

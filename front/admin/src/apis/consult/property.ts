@@ -57,10 +57,10 @@ export default class PropertyApis {
   }
 
   async list(query?: Record<string, unknown>) {
-    const data = await this.fetchStore.get(`${apiMongo}/${resourceName}`, {
+    const res = await this.fetchStore.get(`${apiMongo}/${resourceName}`, {
       query: JSON.stringify(query),
       sort: '-createTime'
     })
-    return (data || []) as Property[]
+    return (res.data || []) as Property[]
   }
 }

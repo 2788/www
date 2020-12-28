@@ -69,13 +69,11 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  @Loadings.handle('submit')
   async doAdd(param: IPage) {
     await this.pageStore.add(param)
     this.toasterStore.success('新增产品页成功！')
   }
 
-  @Loadings.handle('submit')
   async doEdit(param: IPage) {
     await this.pageStore.update(param)
     this.toasterStore.success('更新产品页成功！')
@@ -115,8 +113,7 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState() {
-    const page = this.props.page
+  initFormState(page) {
     this.form = new FormState({
       id: new FieldState(page.id).validators(textNotBlank, this.doValidateId),
       name: new FieldState(page.name).validators(textNotBlank),
@@ -131,7 +128,7 @@ class EditorModalStore extends Store {
         () => this.props.page,
         page => {
           if (page) {
-            this.initFormState()
+            this.initFormState(page)
           }
         },
         { fireImmediately: true }

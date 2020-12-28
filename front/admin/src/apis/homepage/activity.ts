@@ -1,4 +1,5 @@
 import { injectable } from 'qn-fe-core/di'
+import moment from 'moment'
 import FetchStore from 'stores/fetch'
 import { apiMongo } from 'constants/api-prefix'
 
@@ -24,10 +25,12 @@ export default class ActivityApis {
   constructor(private fetchStore: FetchStore) { }
 
   add(options: IActivity): Promise<void> {
+    options = { ...options, ...{ createTime: moment().unix(), editTime: moment().unix() } }
     return this.fetchStore.postJSON(apiMongo + '/www-homepage-activity', options)
   }
 
   update(options: IActivity, id: string): Promise<void> {
+    options = { ...options, editTime: moment().unix() }
     return this.fetchStore.putJSON(apiMongo + '/www-homepage-activity/' + id, options)
   }
 
@@ -36,6 +39,6 @@ export default class ActivityApis {
   }
 
   list(): Promise<IActivityWithId[]> {
-    return this.fetchStore.get(apiMongo + '/www-homepage-activity', { sort: '-editTime' }).then(data => data || [])
+    return this.fetchStore.get(apiMongo + '/www-homepage-activity', { sort: '-editTime' }).then(res => res.data || [])
   }
 }

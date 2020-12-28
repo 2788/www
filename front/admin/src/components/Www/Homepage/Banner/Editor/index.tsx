@@ -85,18 +85,17 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  @Loadings.handle('submit')
   async doAdd(param: IBanner) {
     await this.bannerStore.add(param)
     this.toasterStore.success('创建 banner 成功！')
   }
 
-  @Loadings.handle('submit')
   async doEdit(param: IBanner) {
     await this.bannerStore.update(param)
     this.toasterStore.success('更新 banner 成功！')
   }
 
+  @Loadings.handle('submit')
   doSubmit() {
     const param: IBanner = {
       name: this.formValue.name,
@@ -104,14 +103,13 @@ class EditorModalStore extends Store {
       mobileImg: uploadImg.getValue(this.form.$.mobileImg),
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
-      editTime: moment().unix(),
+      editTime: this.props.banner.editTime,
       createTime: this.props.banner.createTime,
       backgroundColor: this.formValue.backgroundColor,
       link: this.formValue.link,
       order: this.formValue.order
     }
     if (this.props.status === EditorStatus.Creating) {
-      param.createTime = moment().unix()
       return this.doAdd(param)
     }
     return this.doEdit(param)
@@ -154,14 +152,13 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState() {
-    const banner = this.props.banner
+  initFormState(banner) {
     const effectTime = new FieldState(moment.unix(banner.effectTime))
     const invalidTime = new FieldState(moment.unix(banner.invalidTime))
     this.form = new FormState({
       name: new FieldState(banner.name).validators(textNotBlank, this.doValidateName),
-      pcImg: uploadImg.createState(banner.pcImg),
-      mobileImg: uploadImg.createState(banner.mobileImg),
+      pcImg: uploadImg.createState(banner.pcImg).validators(textNotBlank),
+      mobileImg: uploadImg.createState(banner.mobileImg).validators(textNotBlank),
       effectTime,
       invalidTime,
       backgroundColor: new FieldState(banner.backgroundColor).validators(textNotBlank, textColor),
@@ -178,7 +175,7 @@ class EditorModalStore extends Store {
         () => this.props.banner,
         banner => {
           if (banner) {
-            this.initFormState()
+            this.initFormState(banner)
           }
         },
         { fireImmediately: true }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import { Input, Radio } from 'react-icecream'
 import { bindTextInput, bindRadioGroup } from 'admin-base/common/utils/form'
 import { FieldState, FormState } from 'formstate-x'
@@ -16,17 +17,24 @@ export type State = FormState<{
 }>
 
 export function createState(value: string): State {
-  const labelVal = value === 'hot' || value === 'new' ? value : 'other'
-  const customLabel = new FieldState(value)
+  let label
+  let customLabel
+  if (value === 'hot' || value === 'new') {
+    label = new FieldState(value)
+    customLabel = new FieldState('')
+  } else {
+    label = new FieldState('other')
+    customLabel = new FieldState(value)
+  }
   return new FormState({
-    label: new FieldState(labelVal),
+    label,
     customLabel
   }).validators(val => {
     if (!val.label) {
       return '请选择一个标签'
     }
     if (!val.customLabel && val.label === 'other') {
-      return '选择自定义时，不能输入为空！'
+      return '选择自定义时，输入不能为空'
     }
     return null
   })
@@ -44,7 +52,7 @@ interface IProps {
   state: State
 }
 
-export default function LabelInput({ state }: IProps) {
+export default observer(function LabelInput({ state }: IProps) {
   return (
     <Radio.Group {...bindRadioGroup(state.$.label)}>
       <Radio value="hot">
@@ -61,4 +69,4 @@ export default function LabelInput({ state }: IProps) {
       </Radio>
     </Radio.Group>
   )
-}
+})

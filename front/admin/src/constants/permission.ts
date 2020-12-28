@@ -8,7 +8,10 @@ export enum permissionCodes {
   HOMEPAGE = 'HOMEPAGE',
 
   // 官网产品查看、编辑权限
-  PRODUCT = 'PRODUCT'
+  PRODUCT = 'PRODUCT',
+
+  // 官网活动查看、编辑权限
+  ACTIVITY = 'ACTIVITY'
 }
 
 export default permissionCodes

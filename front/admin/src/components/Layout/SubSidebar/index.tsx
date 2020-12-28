@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar, { LinkItemWithDot as LinkItem, Group } from 'admin-base/common/components/Sidebar'
-import { accountTitle, userRoute, userTitle, roleTitle, roleRoute, permissionTitle, permissionRoute, wwwTitle, homepageTitle, homepageRoute, productTitle, productRoute, accountRoute, wwwRoute, consultRoute, consultTitle } from 'constants/route'
+import { accountTitle, userRoute, userTitle, roleTitle, roleRoute, permissionTitle, permissionRoute, wwwTitle, homepageTitle, homepageRoute, productTitle, productRoute, accountRoute, wwwRoute, consultRoute, consultTitle, activityRoute, activityTitle } from 'constants/route'
 
 export default function SubSidebar() {
   return (
@@ -14,6 +14,7 @@ export default function SubSidebar() {
         <LinkItem relative to={homepageRoute}>{homepageTitle}</LinkItem>
         <LinkItem relative to={productRoute}>{productTitle}</LinkItem>
         <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
+        <LinkItem relative to={activityRoute}>{activityTitle}</LinkItem>
       </Group>
     </Sidebar>
   )

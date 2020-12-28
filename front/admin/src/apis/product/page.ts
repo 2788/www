@@ -26,6 +26,6 @@ export default class PageApis {
   }
 
   list(): Promise<IPage[]> {
-    return this.fetchStore.get(apiMongo + '/www-product-page').then(data => data || [])
+    return this.fetchStore.get(apiMongo + '/www-product-page').then(res => res.data || [])
   }
 }

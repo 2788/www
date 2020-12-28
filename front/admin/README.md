@@ -12,9 +12,15 @@ yarn
 
 ```shell
 npm i fec-builder -g
-fec-builder -p 8080
+yarn run start
 open http://localhost:8080/
 ```
+
+#### 配置说明
+
++ build-config-dev.json:     //开发环境
++ build-config-staging.json:    //测试环境
++ build-config-prod.json:    //生产环境
 
 ### 参考资料
 

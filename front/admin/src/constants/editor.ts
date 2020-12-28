@@ -5,12 +5,14 @@ export const DefaultFormItemLayout = {
 
 export enum EditorStatus {
   Creating,
-  Editing
+  Editing,
+  Reading
 }
 
 export const titleMap = {
   [EditorStatus.Creating]: '创建',
-  [EditorStatus.Editing]: '编辑'
+  [EditorStatus.Editing]: '编辑',
+  [EditorStatus.Reading]: '查看'
 }
 
 export type EditorProps = {

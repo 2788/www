@@ -8,4 +8,3 @@ export enum HttpMethod {
   PUT = 'PUT',
   DELETE = 'DELETE'
 }
-

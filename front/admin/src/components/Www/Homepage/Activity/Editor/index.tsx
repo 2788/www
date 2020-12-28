@@ -87,18 +87,17 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  @Loadings.handle('submit')
   async doAdd(param: IActivity) {
     await this.activityStore.add(param)
     this.toasterStore.success('创建活动成功！')
   }
 
-  @Loadings.handle('submit')
   async doEdit(param: IActivity, id: string) {
     await this.activityStore.update(param, id)
     this.toasterStore.success('更新活动成功！')
   }
 
+  @Loadings.handle('submit')
   doSubmit() {
     const param: IActivity = {
       title: this.formValue.title,
@@ -107,13 +106,12 @@ class EditorModalStore extends Store {
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
       createTime: this.props.activity.createTime,
-      editTime: moment().unix(),
+      editTime: this.props.activity.editTime,
       label: labelInput.getValue(this.form.$.label),
       link: this.formValue.link,
       order: this.formValue.order
     }
     if (this.props.status === EditorStatus.Creating) {
-      param.createTime = moment().unix()
       return this.doAdd(param)
     }
     return this.doEdit(param, this.props.id)
@@ -142,8 +140,7 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState() {
-    const activity = this.props.activity
+  initFormState(activity) {
     const effectTime = new FieldState(moment.unix(activity.effectTime))
     const invalidTime = new FieldState(moment.unix(activity.invalidTime))
 
@@ -153,7 +150,7 @@ class EditorModalStore extends Store {
       effectTime,
       invalidTime,
       label: labelInput.createState(activity.label),
-      icon: uploadImg.createState(activity.icon),
+      icon: uploadImg.createState(activity.icon).validators(textNotBlank),
       link: new FieldState(activity.link).validators(textNotBlank, textHttp),
       order: new FieldState(activity.order)
         .validators((order: number) => this.doValidateOrder(order, effectTime.value, invalidTime.value))
@@ -167,7 +164,7 @@ class EditorModalStore extends Store {
         () => this.props.activity,
         activity => {
           if (activity) {
-            this.initFormState()
+            this.initFormState(activity)
           }
         },
         { fireImmediately: true }
