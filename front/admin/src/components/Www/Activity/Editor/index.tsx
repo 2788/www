@@ -255,7 +255,6 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
             style={{ width: '100%' }}
             format={dateFormat}
             showTime={{ format: timeFormat }}
-            disabledDate={current => !!current && current < moment().startOf('day')}
             allowClear={false}
             disabled={isReading}
           />
@@ -268,7 +267,6 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
             {...bindInput(store.form.$.applyEndTime)}
             format={dateFormat}
             showTime={{ format: timeFormat }}
-            disabledDate={current => !!current && current < moment().startOf('day')}
             allowClear={false}
             disabled={isReading}
           />
