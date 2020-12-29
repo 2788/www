@@ -1,5 +1,5 @@
 import { get } from 'utils/fetch'
-import { apiPrefix, getFilteredList, sortByOrder } from '.'
+import { apiPrefix, getFilteredList, sortByOrder, handleResponseData } from '.'
 
 export type Banner = {
   name: string
@@ -17,7 +17,7 @@ export type Banner = {
 // 获取首页 banners
 export function getBanners(): Promise<Banner[]> {
   return get(apiPrefix + '/www-homepage-banner')
-    .then(data => (data && data.length ? sortByOrder(getFilteredList(data)) : []))
+    .then(res => sortByOrder(getFilteredList(handleResponseData(res))))
 }
 
 export type Activity = {
@@ -36,7 +36,7 @@ export type Activity = {
 // 获取首页广告位
 export function getActivities(): Promise<Activity[]> {
   return get(apiPrefix + '/www-homepage-activity')
-    .then(data => (data && data.length ? sortByOrder(getFilteredList(data)) : []))
+    .then(res => sortByOrder(getFilteredList(handleResponseData(res))))
 }
 
 export type NewsType = {
@@ -53,5 +53,5 @@ export type NewsType = {
 // 获取首页七牛资讯
 export function getNews(): Promise<NewsType[]> {
   return get(apiPrefix + '/www-homepage-news')
-    .then(data => (data && data.length ? sortByOrder(data) : []))
+    .then(res => sortByOrder((handleResponseData(res))))
 }

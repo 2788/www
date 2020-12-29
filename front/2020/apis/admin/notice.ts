@@ -4,7 +4,7 @@
 
 import { get } from 'utils/fetch'
 import { Product } from 'constants/products'
-import { apiPrefix, getFilteredList } from '.'
+import { apiPrefix, getFilteredList, handleResponseData } from '.'
 
 export interface INotice {
   product: string
@@ -20,5 +20,6 @@ export interface INotice {
 // 获取产品公告信息
 export function getNotices(product: Product): Promise<INotice[]> {
   const options = { query: JSON.stringify({ product }) }
-  return get(apiPrefix + '/www-product-notice', options).then(data => (data && data.length ? getFilteredList(data) : []))
+  return get(apiPrefix + '/www-product-notice', options)
+    .then(res => getFilteredList(handleResponseData(res)))
 }

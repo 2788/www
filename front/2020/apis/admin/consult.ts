@@ -4,7 +4,7 @@
  */
 
 import { get } from 'utils/fetch'
-import { apiPrefix } from '.'
+import { apiPrefix, handleResponseData } from '.'
 
 export interface Property {
   /** 唯一标识（mongo ObjectID），由 mongo-api 自动生成 */
@@ -37,12 +37,12 @@ export interface EntityWithProperties extends Entity {
 
 async function listProperties(): Promise<Property[]> {
   const res = await get(`${apiPrefix}/www-consult-property`, { limit: 1000 })
-  return res || []
+  return handleResponseData(res)
 }
 
 async function listEntities(): Promise<Entity[]> {
   const res = await get(`${apiPrefix}/www-consult-entity`, { limit: 1000 })
-  return res || []
+  return handleResponseData(res)
 }
 
 export async function listEntitiesWithProperties(): Promise<EntityWithProperties[]> {

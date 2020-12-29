@@ -11,6 +11,17 @@ type SortProps = {
   order: number
 }
 
+// 处理响应数据，兼容老版本和新版本
+export function handleResponseData(res: any) {
+  if (res) { // 老版本不为空数据或者新版本
+    if (typeof res.count === 'number') { // 新版本
+      return res.data || []
+    }
+    return res
+  }
+  return []
+}
+
 // 过滤数据，获取上架中的数据
 export function getFilteredList<T extends FilterProps>(list: T[]) {
   const nowTime = Math.floor(new Date().getTime() / 1000) // 取秒数
