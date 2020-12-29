@@ -1,0 +1,128 @@
+server:
+  port: 4080
+  mode: dev
+  write_timeout: 20
+  mongo_api_prefix: /api/mongo
+  market_activity_resource_name: www-market-activity # 要和下面 mongo_api 配置保持一致
+  activity_registration_resource_name: www-activity-registration # 要和下面 mongo_api 配置保持一致
+  sms_template: 亲爱的 {{.UserName}}，您报名的 {{.Title}} 将于 {{.StartTime}} 开始。更多活动详情可访问 {{.DetailUrl}} 查看。 # 发送短信模版
+  sms_batch_limit: 100 # 每次最多同时发送多少条短信，不能超过 morse batch 的限制
+  morse_host: http://bo-staging-morse.qa.qiniu.io
+  morse_client_id: 5963399a43c8ce5967000001
+  send_message_task_interval: 180 # 单位为分钟
+  redis_host: 127.0.0.1:6379
+  redis_db: 7
+
+target: privatized
+token_expire_days: 7
+login_type: acc
+secret: YT9hu3ILHgcoSYTg42FBInYtojLxQhkv1Mnc0CuIKLtRu58FQxYHbRRt1jea414a
+
+sso:
+  host: http://bo-staging-sso-internal.qa.qiniu.io
+  client_id: kodo-admin
+  secret: BCR0nzlmnvwWIjIxc8Ij0MfOTfc5Udh6
+
+ldap:
+  host: ldap.dev.qiniu.io:389
+  network: tcp
+  tls: false
+
+upload_file:
+  access_key: tkabCgtBh5OiAbZ32-BC3KbLpWO274oY4nL6e5hr
+  secret_key: 1oUlrJlpJprkl4sLZQYdJLsGoVTCZaZXEbmiZTNh
+
+admin:
+  access_key: 4_odedBxmrAHiu4Y0Qp0HPG0NANCf6VAsAjWL_k9
+  secret_key: SrRuUVfDX6drVRvpyN8mv8Vcm9XnMZzlbDfvVfMe
+  user: root
+  password: root
+
+services:
+  account_hosts: http://10.200.20.25:9100 # acc 服务
+  one_hosts: http://10.200.20.25:23200
+
+mongo:
+  acc_url: mongodb://127.0.0.1:27017/www_acc
+  auth_url: mongodb://127.0.0.1:27017/www_auth
+
+
+mongo_api:
+  batch_limit: 200
+  resources:
+    - name: www-homepage-banner
+      db: 127.0.0.1:27017/www
+      collection: homepage_banner
+      primary_key: name
+    - name: www-homepage-activity
+      db: 127.0.0.1:27017/www
+      collection: homepage_activity
+      primary_key: _id
+    - name: www-homepage-news
+      db: 127.0.0.1:27017/www
+      collection: homepage_news
+      primary_key: _id
+    - name: www-product-notice
+      db: 127.0.0.1:27017/www
+      collection: product_notice
+      primary_key: _id
+    - name: www-product-page
+      db: 127.0.0.1:27017/www
+      collection: product_page
+      primary_key: id
+    - name: www-activity-registration
+      db: 127.0.0.1:27017/www
+      collection: activity_registration
+      primary_key: _id
+      indexes:
+        - keys: marketActivityId
+    - name: www-market-activity
+      db: 127.0.0.1:27017/www
+      collection: market_activity
+      primary_key: _id
+      indexes:
+        - keys: startTime
+
+qconf:
+  mc_hosts:
+    - 10.200.20.23:11211
+  master_hosts:
+    - http://10.200.20.25:8510
+  access_key: 4_odedBxmrAHiu4Y0Qp0HPG0NANCf6VAsAjWL_k9
+  secret_key: SrRuUVfDX6drVRvpyN8mv8Vcm9XnMZzlbDfvVfMe
+  lc_expires_ms: 3000 # 3秒钟
+  lc_duration_ms: 1000 # 1秒钟
+  lc_chan_bufsize: 16000
+  mc_rw_timeout_ms: 100
+
+puck:
+  api_prefix: /api/proxy
+  service:
+    one_hosts: http://10.200.20.25:23200
+  admin:
+    access_key: 4_odedBxmrAHiu4Y0Qp0HPG0NANCf6VAsAjWL_k9
+    secret_key: SrRuUVfDX6drVRvpyN8mv8Vcm9XnMZzlbDfvVfMe
+
+  # 路由配置
+  proxies:
+    middleware:
+      - login
+      - permission
+      - auth(bearer)
+    matches:
+      /blog:
+        targets:
+          - https://ts-dev.qiniu.io
+        matches:
+          /*:
+            retain: true
+      /mongo:
+        targets:
+          - http://127.0.0.1:4080/api/mongo
+        middleware:
+          - login
+          - permission
+          - auth(qbox:admin-account)
+        matches:
+          /*:
+            retain: true
