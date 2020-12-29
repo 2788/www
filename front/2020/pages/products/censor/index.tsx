@@ -114,7 +114,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
           <PurchaseInfoAction url={priceUrl}>查看详情</PurchaseInfoAction>
         </PurchaseInfoItem>
         <PurchaseInfoItem title="资源包" desc="特惠套餐包">
-          <PurchaseInfoAction url="https://developer.qiniu.com/censor/manual/4835/censor-plus-manual">查看价格</PurchaseInfoAction>
+          <PurchaseInfoAction url="https://qmall.qiniu.com/template/NTg">立即购买</PurchaseInfoAction>
         </PurchaseInfoItem>
       </PurchaseInfo>
 
