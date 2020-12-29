@@ -292,7 +292,7 @@ type SMSData struct {
 }
 
 func (f *CronJobService) render(data SMSData) (content string, err error) {
-	t, err := template.New("default").Parse(f.conf.SMSTemplate)
+	t, err := template.New("default").Delims("[[", "]]").Parse(f.conf.SMSTemplate)
 	if err != nil {
 		return
 	}
