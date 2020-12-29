@@ -126,13 +126,3 @@ puck:
         matches:
           /*:
             retain: true
-      /www:
-        targets:
-          - http://127.0.0.1:4080/api/www
-        middleware:
-          - login
-          - permission
-          - auth(qbox:admin-account)
-        matches:
-          /*:
-            retain: true

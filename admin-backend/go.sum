@@ -136,6 +136,10 @@ github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d/go.mod h1:c3At6R
 github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084/go.mod h1:TjEm7ze935MbeOT/UhFTIMYKhuLP4wbCsTZCD3I8kEA=
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
 github.com/qbox/rmb-web/admin-backend v0.0.6/go.mod h1:LCviRmTy/k7CVZG/qa9Ie92eGjbrTwuQLhPTyuEOOqk=
+github.com/qbox/rmb-web/admin-backend v0.0.9 h1:Zyz6bfP2eH1dhwUyNNdM/l/VvhHu4WpUAeJGyS5O/co=
+github.com/qbox/rmb-web/admin-backend v0.0.9/go.mod h1:St7Ymest7ZiqXoSoWm+6CovkBcmTL5h85VEMyqsBOIo=
+github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.1 h1:pxOwT0q2bu26OZbyO4a5XNYG/GInS1nJBeWzU4IfGQs=
+github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.1/go.mod h1:D4nU5zRGOinx3Y4VmypHjCGd5Pd/RwOQUQhq33hL8m0=
 github.com/qbox/rmb-web/puck/v3 v3.1.0/go.mod h1:ZjUWc8hAST0VVEF+x7eF7bagmDQMGpm8laowKIKGU3I=
 github.com/qbox/rmb-web/puck/v3 v3.2.0 h1:UqidM9cdXQ2yUoQmRIIdYkEa2nGjB4yacr9/jiDiO1M=
 github.com/qbox/rmb-web/puck/v3 v3.2.0/go.mod h1:a8Zug2lPn3Q5c86ZL4rhHETcn8W4JFtersvyPSBcqdI=
