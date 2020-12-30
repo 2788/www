@@ -2,7 +2,6 @@ import { ImageCensorRes } from 'apis/censor/image'
 import img1 from '../images/playground-1.png'
 import img2 from '../images/playground-2.png'
 import img3 from '../images/playground-3.png'
-import img4 from '../images/playground-4.png'
 
 export const defaultResponse: { [k in string]: ImageCensorRes } = {}
 
@@ -135,66 +134,6 @@ defaultResponse[img3] = {
               score: 0.9980993
             }
           ]
-        }
-      ]
-    }
-  }
-} as ImageCensorRes
-
-defaultResponse[img4] = {
-  suggestion: 'review',
-  scenes: {
-    ads: {
-      suggestion: 'pass'
-    },
-    politician: {
-      suggestion: 'review',
-      details: [
-        {
-          suggestion: 'review',
-          label: '唐纳德·特朗普',
-          group: 'foreign_statesman',
-          score: 0.71569,
-          sample: {
-            uri: 'http://peps.ai.qiniuapi.com/img-68b0882c59b6427cb70da2d2bd0ee0a9.jpg',
-            pts: [
-              [123, 159],
-              [362, 159],
-              [362, 462],
-              [123, 462]
-            ]
-          },
-          detections: [
-            {
-              pts: [
-                [447, 22],
-                [714, 22],
-                [714, 351],
-                [447, 351]
-              ],
-              score: 0.71569
-            }
-          ]
-        }
-      ]
-    },
-    pulp: {
-      suggestion: 'pass',
-      details: [
-        {
-          suggestion: 'pass',
-          label: 'normal',
-          score: 0.9697
-        }
-      ]
-    },
-    terror: {
-      suggestion: 'pass',
-      details: [
-        {
-          suggestion: 'pass',
-          label: 'normal',
-          score: 0.99922
         }
       ]
     }

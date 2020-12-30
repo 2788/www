@@ -16,11 +16,10 @@ import { ResultPanel, ApiResult, ResultMask } from '.'
 import img1 from './images/playground-1.png'
 import img2 from './images/playground-2.png'
 import img3 from './images/playground-3.png'
-import img4 from './images/playground-4.png'
 
 import style from './style.less'
 
-const images = [img1, img2, img3, img4]
+const images = [img1, img2, img3]
 
 function wrappedImageCensor(options: ImageCensorOptions): Promise<ImageCensorRes> {
   const uri = options.data.uri
@@ -84,7 +83,6 @@ export default function ImagePlayground() {
           <Slide value={0}><img src={images[0]} /></Slide>
           <Slide value={1}><img src={images[1]} /></Slide>
           <Slide value={2}><img src={images[2]} /></Slide>
-          <Slide value={3}><img src={images[3]} /></Slide>
         </Slides>
         <UrlForm placeholder="请输入网络图片 URL" onSubmit={handleSubmit} />
       </div>

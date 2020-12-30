@@ -78,7 +78,6 @@ export default function VideoPlayground() {
           <Slide value={0}><video src={videos[0]} /></Slide>
           <Slide value={1}><video src={videos[1]} /></Slide>
           <Slide value={2}><video src={videos[2]} /></Slide>
-          <Slide value={3}><video src={videos[3]} /></Slide>
         </Slides>
         <UrlForm placeholder="请输入网络视频 URL" onSubmit={handleSubmit} />
       </div>

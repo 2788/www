@@ -3,8 +3,7 @@ import { VideoJobResult } from 'apis/censor/video'
 export const videos = [
   'https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk',
   'https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ',
-  'https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58',
-  'https://dn-mars-assets.qbox.me/lrBYuiLwg0zFRUP97w59FmmN6H01'
+  'https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58'
 ]
 export const defaultResponse: { [k in string]: VideoJobResult } = {}
 
@@ -247,111 +246,6 @@ defaultResponse[videos[2]] = {
         }
       ],
       suggestion: 'block'
-    }
-  }
-} as VideoJobResult
-
-defaultResponse[videos[3]] = {
-  suggestion: 'review',
-  scenes: {
-    ads: {
-      cuts: [{
-        details: [{ label: 'summary_normal', score: 1, suggestion: 'pass' }],
-        offset: 0,
-        suggestion: 'pass'
-      },
-      {
-        offset: 5005,
-        suggestion: 'pass'
-      },
-      {
-        offset: 10010,
-        suggestion: 'pass'
-      },
-      {
-        offset: 15015,
-        suggestion: 'pass'
-      }
-      ],
-      suggestion: 'pass'
-    },
-    politician: {
-      cuts: [
-        { offset: 0, suggestion: 'pass' },
-        {
-          details: [
-            {
-              detections: [
-                { pts: [[412, 35], [859, 35], [859, 620], [412, 620]], score: 0.75153 }
-              ],
-              group: 'foreign_statesman',
-              label: '唐纳德·特朗普',
-              sample: {
-                pts: [[123, 159], [362, 159], [362, 462], [123, 462]],
-                uri: 'http://peps.ai.qiniuapi.com/img-68b0882c59b6427cb70da2d2bd0ee0a9.jpg'
-              },
-              score: 0.75153,
-              suggestion: 'review'
-            }
-          ],
-          offset: 5005,
-          suggestion: 'review'
-        },
-        { offset: 10010, suggestion: 'pass' },
-        { offset: 15015, suggestion: 'pass' }
-      ],
-      suggestion: 'review'
-    },
-    pulp: {
-      cuts: [
-        {
-          details: [{ label: 'normal', score: 0.98574, suggestion: 'pass' }],
-          offset: 0,
-          suggestion: 'pass'
-        },
-        {
-          details: [{ label: 'normal', score: 0.98197, suggestion: 'pass' }],
-          offset: 5005,
-          suggestion: 'pass'
-        },
-        {
-          details: [{ label: 'normal', score: 0.97654, suggestion: 'pass' }],
-          offset: 10010,
-          suggestion: 'pass'
-        },
-        {
-          details: [{ label: 'normal', score: 0.9932, suggestion: 'pass' }],
-          offset: 15015,
-          suggestion: 'pass'
-        }
-      ],
-      suggestion: 'pass'
-    },
-    terror:
-    {
-      cuts: [
-        {
-          details: [{ label: 'normal', score: 0.412955, suggestion: 'pass' }],
-          offset: 0,
-          suggestion: 'pass'
-        },
-        {
-          details: [{ label: 'normal', score: 0.99762, suggestion: 'pass' }],
-          offset: 5005,
-          suggestion: 'pass'
-        },
-        {
-          details: [{ label: 'normal', score: 0.99994, suggestion: 'pass' }],
-          offset: 10010,
-          suggestion: 'pass'
-        },
-        {
-          details: [{ label: 'normal', score: 0.72673, suggestion: 'pass' }],
-          offset: 15015,
-          suggestion: 'pass'
-        }
-      ],
-      suggestion: 'pass'
     }
   }
 } as VideoJobResult
