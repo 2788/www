@@ -1,0 +1,125 @@
+@import "~utils/less/index.less";
+
+@icon-width: 576px;
+@icon-height: 325px;
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 60px 0px;
+  background: @grey-2;
+
+  .mobile({
+    padding: 0;
+  });
+}
+
+.container {
+  display: flex;
+  width: @centered-content-width;
+  height: auto;
+
+  .mobile({
+    display: block;
+    width: 100%;
+  });
+}
+
+.icon {
+  width: @icon-width;
+  height: @icon-height;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  .mobile({
+    width: 100%;
+    height: auto;
+    padding: 28.125% 0; // 保证比例为 16:9
+  });
+}
+
+
+.content {
+  
+  .notMobile({
+    position: relative;
+    flex: 1;
+    padding-left: 24px;
+  });
+
+  .mobile({
+    padding: 16px;
+  });
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    color: @grey-7;
+
+    .mobile({
+      font-size: 14px;
+    });
+  }
+
+  .desc {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: @grey-6;
+
+    .mobile({
+      font-size: 12px;
+    });
+  }
+
+  .card {
+    margin-top: 12px;
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    color: @grey-7;
+    border: 1px solid #e5e5e5;
+    background: @grey-1;
+
+    .notMobile({
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+    });
+
+    .row{
+      display: flex;
+
+      &:not(:first-child) {
+        margin-top: 8px;
+      }
+
+      label {
+        width: 110px;
+        color: @grey-5;
+  
+        .mobile({
+          width: 96px;
+        });
+      }
+
+      p {
+        flex: 1;
+      }
+    }
+    
+    .btn {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+
+      .mobile({
+        position: static;
+        margin-top: 16px;
+      });
+    }
+  }
+}

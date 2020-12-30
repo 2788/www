@@ -1,0 +1,24 @@
+@import "~utils/less/index.less";
+
+
+.title{
+  font-size: 20px;
+}
+
+.container {
+  min-height: 373px;
+  padding: 32px;
+  font-size: 14px;
+  overflow: auto;
+  text-align: center;
+  background: @grey-1;
+  
+  .mobile({
+    padding: 0;
+    background: inherit;
+
+    img{
+      max-width: 100%;
+    }
+  });
+}

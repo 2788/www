@@ -8,7 +8,7 @@
  * 车辆登记OCR   https://developer.qiniu.com/dora/api/7031/vehicle-registration-ocr
  */
 
-import { post } from 'utils/fetch'
+import { post, ApiException } from 'utils/fetch'
 import { apiPrefix as basePrefix } from 'constants/api'
 import { OcrDemo, pathMap } from './common'
 
@@ -81,10 +81,10 @@ export async function getMesgByCz(options: ImageOptions): Promise<CzResponse> {
 }
 
 function resCatch(e: any) {
-  if (e.response) {
-    return e.response.data
+  if (!(e instanceof ApiException)) {
+    throw e
   }
-  throw e
+  return e.data
 }
 
 export function getApiByName(name: OcrDemo) {

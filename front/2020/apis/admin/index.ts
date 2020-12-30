@@ -2,6 +2,9 @@ import { apiPrefix as basePrefix } from 'constants/api'
 
 export const apiPrefix = `${basePrefix}/www-admin/api/mongo`
 
+// 单独为官网实现的关于 admin 的接口前缀
+export const wwwApiPrefix = `${basePrefix}/www-admin/api/www`
+
 type FilterProps = {
   effectTime: number
   invalidTime: number
@@ -11,15 +14,9 @@ type SortProps = {
   order: number
 }
 
-// 处理响应数据，兼容老版本和新版本
+// admin 通用响应数据处理
 export function handleResponseData(res: any) {
-  if (res) { // 老版本不为空数据或者新版本
-    if (typeof res.count === 'number') { // 新版本
-      return res.data || []
-    }
-    return res
-  }
-  return []
+  return res.data || []
 }
 
 // 过滤数据，获取上架中的数据

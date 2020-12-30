@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'components/Link'
 import { Product, urlMap, nameMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import { Activity, urlMap as activityUrlMap } from 'constants/activity'
 import * as sol from 'constants/solutions'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 
@@ -48,7 +49,7 @@ export default function Overlay() {
         {solutionSubMenus}
       </SubMenu>
       <MenuItem><Link href="https://qmall.qiniu.com/">云商城</Link></MenuItem>
-      <SubMenu key="sub3" title="活动与合作">
+      <SubMenu key="sub3" title="合作伙伴">
         <MenuItem><Link href="/partner">合作伙伴与生态</Link></MenuItem>
         <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>
         <MenuItem><Link href="/invite">邀请好友</Link></MenuItem>
@@ -61,8 +62,11 @@ export default function Overlay() {
         <MenuItem><a href="https://support.qiniu.com/tickets">工单系统</a></MenuItem>
         <MenuItem><a href="https://status.qiniu.com">服务健康状态</a></MenuItem>
       </SubMenu>
-      <MenuItem><a href="https://blog.qiniu.com/">七牛资讯</a></MenuItem>
-      <SubMenu key="sub5" title="关于我们">
+      <SubMenu key="sub5" title="活动与资讯">
+        <MenuItem><a href="https://blog.qiniu.com/">七牛资讯</a></MenuItem>
+        <MenuItem><Link href={activityUrlMap[Activity.Main]}>活动</Link></MenuItem>
+      </SubMenu>
+      <SubMenu key="sub6" title="关于我们">
         <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
         {/* <MenuItem><Link href="/case">客户案例</Link></MenuItem> */}
         <MenuItem><Link href="/contact">联系我们</Link></MenuItem>

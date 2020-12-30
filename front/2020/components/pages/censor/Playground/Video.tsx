@@ -49,10 +49,10 @@ export default function VideoPlayground() {
   }, [apiResult])
 
   function handleSubmit(url: string) {
-    // 用户登陆时，提示需要收费
+    // 用户登录时，提示需要收费
     if (userInfo && userInfo.signedIn) {
       showModal().then(() => setVideoUrl(url))
-    } else { // 未登陆则直接调用接口
+    } else { // 未登录则直接调用接口
       setVideoUrl(url)
     }
   }

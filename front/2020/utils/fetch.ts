@@ -6,6 +6,17 @@
 import { host } from 'constants/env'
 import { urlFor, UrlParams, isBrowser } from '.'
 
+export class ApiException<T> extends Error {
+  response: { data: T }
+  constructor(
+    public data: T,
+    public message: string
+  ) {
+    super(message)
+    this.response = { data }
+  }
+}
+
 export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
   const fetched = await fetch(info, {
     credentials: 'include',
@@ -22,14 +33,11 @@ export async function fetchJSON(info: RequestInfo, init?: RequestInit) {
   const body = await fetched.text()
 
   if (!fetched.ok) {
-    const e = new Error(`Fetch failed with status ${fetched.status}.`)
     let data: any = null
     try {
       data = parseBody(body)
     } catch { /** do nothing */ }
-    const response = { data };
-    (e as any).response = response
-    throw e
+    throw new ApiException(data, `Fetch failed with status ${fetched.status}.`)
   }
 
   try {

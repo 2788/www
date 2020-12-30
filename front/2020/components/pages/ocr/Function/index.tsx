@@ -94,7 +94,7 @@ function MyPanel({ name, title }: PanelProps) {
 
   function beforeUpload(file: RcFile): Promise<void> {
     return new Promise(resolve => {
-      // 用户登陆时，提示需要收费
+      // 用户登录时，提示需要收费
       if (userInfo && userInfo.signedIn) {
         Modal.confirm({
           title: '提示',
@@ -113,7 +113,7 @@ function MyPanel({ name, title }: PanelProps) {
           onOk: () => resolve(),
           className: style.modal
         })
-      } else { // 未登陆则直接调用接口
+      } else { // 未登录则直接调用接口
         resolve()
       }
     }).then(() => {

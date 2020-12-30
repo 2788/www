@@ -35,6 +35,11 @@ svg {
   vertical-align: middle;
 }
 
+// 防止 modal 的 iocn样式被 svg 的影响
+:global(.ant-modal-confirm-title .anticon svg) {
+  vertical-align: unset;
+}
+
 svg tspan::selection { background: none; }
 
 a {

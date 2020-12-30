@@ -9,7 +9,8 @@ import style from './style.less'
 import About from './About'
 import Support from './Support'
 import Project from './Project'
-import Activity from './Activity'
+import Partner from './Partner'
+import News from './News'
 
 export default function Nav() {
   return (
@@ -18,8 +19,8 @@ export default function Nav() {
       <Project />
       <ItemWithLink href="https://qmall.qiniu.com/">云商城</ItemWithLink>
       <Support />
-      <Activity />
-      <ItemWithLink href="https://blog.qiniu.com/">七牛资讯</ItemWithLink>
+      <Partner />
+      <News />
       <About />
     </nav>
   )

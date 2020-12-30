@@ -106,7 +106,7 @@ function ResultByIdCard({ response }: { response: any }) {
 }
 
 function ResultByCarBd({ response }: { response: any }) {
-  if (response.errorcode) {
+  if (hasErrorcode(response)) {
     let content = ''
     switch (response.errorcode) {
       case 1:
@@ -167,7 +167,7 @@ const bsObj = {
 }
 
 function ResultByBs({ response }: { response: any }) {
-  if (response.errorcode) {
+  if (hasErrorcode(response)) {
     let content = ''
     switch (response.errorcode) {
       case 10001:
@@ -213,7 +213,7 @@ function ResultByBs({ response }: { response: any }) {
 }
 
 function ResultByNewCar({ response }: { response: any }) {
-  if (response.errorcode) {
+  if (hasErrorcode(response)) {
     let content = ''
     switch (response.errorcode) {
       case 10002:
@@ -249,7 +249,7 @@ function ResultByNewCar({ response }: { response: any }) {
   )
 }
 function ResultByCz({ response }: { response: any }) {
-  if (response.errorcode) {
+  if (hasErrorcode(response)) {
     let content = ''
     switch (response.errorcode) {
       case 1:
@@ -301,4 +301,8 @@ function ResultByCz({ response }: { response: any }) {
       }
     </>
   )
+}
+
+function hasErrorcode(data: any): data is { errorcode: number } {
+  return Boolean(data.errorcode) && typeof data.errorcode === 'number'
 }
