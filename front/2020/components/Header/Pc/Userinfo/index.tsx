@@ -26,7 +26,7 @@ export default function Userinfo() {
     return (
       <Dropdown align={{ points: ['bc', 'tc'], offset: [0, 0] }} overlay={() => <Overlay />}>
         <span className={classnames(style.wrapper, style.haveSignin)}>
-          {user.email}
+          {user.name || user.email}
           <ArrowDown className={style.arrow} />
         </span>
       </Dropdown>

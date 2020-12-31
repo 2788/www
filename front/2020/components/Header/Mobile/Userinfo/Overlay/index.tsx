@@ -11,7 +11,7 @@ export default function Overlay({ user }: { user: UserInfo | null }) {
   if (user?.signedIn) {
     return (
       <div className={style.wrapper}>
-        <div className={style.email}>{user.email}</div>
+        <div className={style.email}>{user.name || user.email}</div>
         <Button
           type="hollow"
           target="_self"
