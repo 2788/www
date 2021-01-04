@@ -26,7 +26,7 @@ export interface IArchive {
   cover: string
 }
 
-const blogUrl = 'https://blog.qiniu.io/archives/'
+const blogUrl = 'https://blog.qiniu.com/archives/'
 
 @injectable()
 export default class NewsApis {
