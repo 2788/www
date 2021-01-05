@@ -82,10 +82,12 @@ export default function FooterForMobile() {
       <div className={style.buy}>
         <Button type="primary" className={style.buyBtn} href="tel:4008089176">购买咨询：400-808-9176</Button>
       </div>
-      <a className={style.icp} href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">
-        沪公网安备 31011502000961 号 <br />
-        沪 ICP 备 11037377 号-5
-      </a>
+      <div className={style.icp}>
+        沪公网安备31011502000961号<br />
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">
+          沪ICP备11037377号-5
+        </a>
+      </div>
     </div>
   )
 }

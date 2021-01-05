@@ -140,7 +140,7 @@ function Icp() {
       <div className={style.info}>
         <a href="https://www.12377.cn/" target="_blank" rel="noopener"><i className={style.report} />违法和不良信息举报中心 &gt;&gt;</a> <br />
         24 小时违法和不良信息举报热线：021-20703838，举报邮箱：jubao@qiniu.com <br />
-        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">沪公网安备 31011502000961 号 沪 ICP 备 11037377 号-5</a>
+        沪公网安备31011502000961号 <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">沪ICP备11037377号-5</a>
       </div>
       <div className={style.certIconsWrapper}>
         <a target="_blank" rel="noopener" href="http://www.djbh.net/webdev/web/HomeWebAction.do?p=init"><img className={style.certIcon} src={imgCertDjcp} /></a>
