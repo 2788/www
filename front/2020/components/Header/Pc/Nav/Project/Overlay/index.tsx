@@ -1,5 +1,5 @@
 import React, { createElement, MouseEvent } from 'react'
-import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, iconMap, descMap, allCategories, categoryEnNameMap, Solution, IndustrySolution } from 'constants/solutions'
+import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, smallIconMap, descMap, allCategories, categoryEnNameMap, Solution, IndustrySolution } from 'constants/solutions'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
 
@@ -54,7 +54,7 @@ function SolutionItem({ solution }: { solution: Solution }) {
     <ContentItem
       href={url != null ? url : '#'}
       onClick={online ? undefined : handleClick}
-      icon={createElement(iconMap[solution])}
+      icon={createElement(smallIconMap[solution])}
       title={nameMap[solution]}
       subtitle={online ? descMap[solution] : '即将上线，敬请垂询'}
       extra={<Logos solution={solution} />}

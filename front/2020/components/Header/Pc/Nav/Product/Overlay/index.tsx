@@ -69,7 +69,7 @@ function ProductContentItem({ product, onConsult }: {
     <ContentItem
       key={product}
       href={url != null ? url : '#'}
-      icon={<ProductIcon product={product} />}
+      icon={<ProductIcon product={product} small />}
       title={nameMap[product]}
       subtitle={url != null ? descMap[product] : '即将上线，欢迎垂询'}
       onClick={handleClick}

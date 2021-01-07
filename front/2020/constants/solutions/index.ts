@@ -180,21 +180,40 @@ export const categorySolutionsMap = {
   ]
 }
 
+// 32px的icon，默认除导航栏均为该类型
 export const iconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
-  [Solution.Qavs]: require('./images/scene/qavs.svg').default,
-  [Solution.Rtclive]: require('./images/scene/rtclive.svg').default,
-  [Solution.Plsv]: require('./images/scene/plsv.svg').default,
-  [Solution.Kodoe]: require('./images/scene/kodoe.svg').default,
-  [Solution.Vcs]: require('./images/scene/vcs.svg').default,
-  [Solution.Ess]: require('./images/scene/ess.svg').default,
-  [Solution.Storage]: require('./images/scene/storage.svg').default,
-  [Solution.Edu]: require('./images/industry/edu.svg').default,
-  [Solution.Fin]: require('./images/industry/fin.svg').default,
-  [Solution.Automobile]: require('./images/industry/auto.svg').default,
-  [Solution.ECommerce]: require('./images/industry/ec.svg').default,
-  [Solution.IntelligentManufacturing]: require('./images/industry/im.svg').default,
-  [Solution.Social]: require('./images/industry/social.svg').default,
-  [Solution.Isp]: require('./images/industry/isp.svg').default
+  [Solution.Qavs]: require('./images/default/scene/qavs.svg').default,
+  [Solution.Rtclive]: require('./images/default/scene/rtclive.svg').default,
+  [Solution.Plsv]: require('./images/default/scene/plsv.svg').default,
+  [Solution.Kodoe]: require('./images/default/scene/kodoe.svg').default,
+  [Solution.Vcs]: require('./images/default/scene/vcs.svg').default,
+  [Solution.Ess]: require('./images/default/scene/ess.svg').default,
+  [Solution.Storage]: require('./images/default/scene/storage.svg').default,
+  [Solution.Edu]: require('./images/default/industry/edu.svg').default,
+  [Solution.Fin]: require('./images/default/industry/fin.svg').default,
+  [Solution.Automobile]: require('./images/default/industry/auto.svg').default,
+  [Solution.ECommerce]: require('./images/default/industry/ec.svg').default,
+  [Solution.IntelligentManufacturing]: require('./images/default/industry/im.svg').default,
+  [Solution.Social]: require('./images/default/industry/social.svg').default,
+  [Solution.Isp]: require('./images/default/industry/isp.svg').default
+}
+
+// 24px的icon，导航栏使用
+export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
+  [Solution.Qavs]: require('./images/small/scene/qavs.svg').default,
+  [Solution.Rtclive]: require('./images/small/scene/rtclive.svg').default,
+  [Solution.Plsv]: require('./images/small/scene/plsv.svg').default,
+  [Solution.Kodoe]: require('./images/small/scene/kodoe.svg').default,
+  [Solution.Vcs]: require('./images/small/scene/vcs.svg').default,
+  [Solution.Ess]: require('./images/small/scene/ess.svg').default,
+  [Solution.Storage]: require('./images/small/scene/storage.svg').default,
+  [Solution.Edu]: require('./images/small/industry/edu.svg').default,
+  [Solution.Fin]: require('./images/small/industry/fin.svg').default,
+  [Solution.Automobile]: require('./images/small/industry/auto.svg').default,
+  [Solution.ECommerce]: require('./images/small/industry/ec.svg').default,
+  [Solution.IntelligentManufacturing]: require('./images/small/industry/im.svg').default,
+  [Solution.Social]: require('./images/small/industry/social.svg').default,
+  [Solution.Isp]: require('./images/small/industry/isp.svg').default
 }
 
 export const allSolutions = allCategories.reduce(
