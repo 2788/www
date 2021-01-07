@@ -65,7 +65,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageBanner
-        title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
+        title="云主机服务 QVM"
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}

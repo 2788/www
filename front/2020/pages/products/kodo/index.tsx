@@ -38,7 +38,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="对象存储 Kodo_云存储_海量安全高可靠云存储_oss"
+        title="对象存储 Kodo"
         desc="七牛云海量存储系统（Kodo）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
         平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
         bgColor="#34A1EC"

@@ -59,7 +59,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="SSL 证书_证书服务_SSL 数字证书_HTTPS 加密_服务器证书_CA 认证"
+        title="SSL 证书"
         desc="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
         bgColor="#34A1EC"
         btns={btns.banner}

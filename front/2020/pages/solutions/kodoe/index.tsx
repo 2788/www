@@ -39,7 +39,7 @@ function PageContent() {
   return (
     <>
       <PageBanner
-        title="私有云存储解决方案 Kodo Enterprise_私有云部署_机器资源管理_私有云存储_平台服务器"
+        title="私有云存储解决方案 Kodo Enterprise"
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}

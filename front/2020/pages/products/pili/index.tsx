@@ -52,7 +52,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="视频直播_直播推流_直播 SDK_直播云服务_视频直播 Pili"
+        title="视频直播"
         desc="七牛视频直播 (Pili) 是基于强大的全球化实时流网络、完善的客户端服务和云端服务，打造的端到端直播解决方案，提供低延迟、稳定流畅、高可用的一站式视频直播服务。"
         bgColor="#34A1EC"
         btns={btns.banner}
