@@ -41,7 +41,7 @@ function PageContent() {
   return (
     <>
       <PageBanner
-        title="教育行业解决方案"
+        title="教育场景解决方案_云教育场景_在线教育场景解决方案"
         desc="以出色的技术能力全场景覆盖，实现直播教学、课程回看、师生身份核验等功能，打造满足不同群体的在线学习解决方案。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -148,8 +148,8 @@ function PageContent() {
 export default function EduPage() {
   return (
     <Layout
-      title="教育行业解决方案"
-      keywords="教育, 行业, 行业解决方案"
+      title="教育场景解决方案_云教育场景_在线教育场景解决方案"
+      keywords="教育, 行业, 行业解决方案, 七牛云教育场景, 七牛云, 七牛云教育解决方案, 教育上云, 在线教育解决方案, 在线教育场景方案"
       description="七牛云以出色的技术能力全场景覆盖，实现直播教学、课程回看、师生身份核验等功能，打造满足不同群体的在线学习解决方案。"
     >
       <PageContent />

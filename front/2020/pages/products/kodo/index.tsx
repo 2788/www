@@ -38,7 +38,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="对象存储 Kodo"
+        title="对象存储 Kodo_云存储_海量安全高可靠云存储_oss"
         desc="七牛云海量存储系统（Kodo）是自主研发的非结构化数据存储管理平台，支持中心和边缘存储。
         平台经过多年大规模用户验证已跻身先进技术行列，并广泛应用于海量数据管理的各类场景。"
         bgColor="#34A1EC"
@@ -89,8 +89,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
 export default function KodoPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="对象存储 Kodo"
-      keywords="云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案, 视频托管, 图片托管, 低频存储, 镜像存储, 私有部署, 静态资源托管, 备份归档, 数据迁移, 数据灾备, 弹性扩容, oss, Oss, OSS"
+      title="对象存储 Kodo_云存储_海量安全高可靠云存储_oss"
+      keywords="云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案, 视频托管, 图片托管, 低频存储, 镜像存储, 私有部署, 静态资源托管, 备份归档, 数据迁移, 数据灾备, 弹性扩容"
       description="七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。"
     >
       <PageContent notices={notices} />

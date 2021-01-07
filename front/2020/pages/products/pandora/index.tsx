@@ -62,7 +62,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="机器数据分析平台 Pandora"
+        title="机器数据分析平台 Pandora_机器数据分析_数据分析平台 Pandora"
         desc="机器数据分析平台 Pandora 能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -235,7 +235,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
 export default function PandoraPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="机器数据分析平台 Pandora"
+      title="机器数据分析平台 Pandora_机器数据分析_数据分析平台 Pandora"
       keywords="数据分析, 数据管理, 智能运维管理, 业务运营分析, 安全事态分析, 智能网联数据, 金融, 汽车, 运营商, 智能制造, 互联网"
       description="机器数据分析平台 Pandora 能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
     >

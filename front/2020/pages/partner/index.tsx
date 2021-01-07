@@ -48,7 +48,11 @@ function Page() {
 
 export default function Main() {
   return (
-    <Layout title="七牛合作伙伴与生态" keywords="合作伙伴, 生态" description="">
+    <Layout
+      title="七牛合作伙伴与生态"
+      keywords="合作伙伴, 生态, 七牛云, 合作伙伴与生态, 七牛合作伙伴生态, 七牛代理合作伙伴, 行业开拓"
+      description="七牛合作伙伴与生态，加入七牛合作伙伴生态，完善的培训与支持体系，专家技术支持，品牌背书，并有各种各样的内部分享会等，欢迎加入七牛合作伙伴与生态"
+    >
       <Page />
     </Layout>
   )

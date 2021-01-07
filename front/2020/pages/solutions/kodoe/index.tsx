@@ -39,7 +39,7 @@ function PageContent() {
   return (
     <>
       <PageBanner
-        title="私有云存储解决方案 Kodo Enterprise"
+        title="私有云存储解决方案 Kodo Enterprise_私有云部署_机器资源管理_私有云存储_平台服务器"
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -81,7 +81,7 @@ function PageContent() {
 export default function KodoePage() {
   return (
     <Layout
-      title="私有云存储解决方案 Kodo Enterprise"
+      title="私有云存储解决方案 Kodo Enterprise_私有云部署_机器资源管理_私有云存储_平台服务器"
       keywords="私有云解决方案, 私有云搭建方案, 企业私有云解决方案, 私有云解决方案, 私有云存储方案"
       description="七牛私有云存储 (Kodo Enterprise) 是基于七牛公有云对象存储服务的架构设计和运营经验完全自主研发的存储系统。能够为客户搭建数百 EB 级别的高可靠、强安全、低成本、可扩展的业务系统，满足多样的非结构化数据存储需求。"
     >

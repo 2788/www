@@ -56,7 +56,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="云短信 SMS"
+        title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
         desc="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -163,7 +163,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
 export default function SmsPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="云短信 SMS"
+      title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
       keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
       description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
     >

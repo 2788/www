@@ -60,7 +60,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="CDN"
+        title="CDN_内容分发网络_CDN 网站加速_CDN 服务器_国内 CDN 加速"
         desc="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -176,7 +176,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
 export default function CdnPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="CDN"
+      title="CDN_内容分发网络_CDN 网站加速_CDN 服务器_国内 CDN 加速"
       keywords="高防CDN, 动态CDN, 静态CDN, CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器, 内容分发, 云加速, CDN, 图片CDN, 视频CDN"
       description="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
     >

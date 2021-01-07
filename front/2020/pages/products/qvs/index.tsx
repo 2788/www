@@ -44,7 +44,7 @@ export function Page({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="视频监控 QVS"
+        title="视频监控 QVS_音视频监控存储_智能多媒体"
         desc="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
         btns={btns.banner}
         icon={imgBanner} />
@@ -83,7 +83,7 @@ export function Page({ notices }: { notices: INotice[] }) {
 export default function Main({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="视频监控 QVS"
+      title="视频监控 QVS_音视频监控存储_智能多媒体"
       keywords="视频监控, QVS, qvs"
       description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
     >

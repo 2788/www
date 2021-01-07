@@ -65,7 +65,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <PageBanner
-        title="云主机服务 QVM"
+        title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -153,7 +153,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 export default function QvmPage(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="云主机服务 QVM"
+      title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
       keywords="七牛云, 云服务器, 云主机, 云数据库, 高防"
       description="七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
     >

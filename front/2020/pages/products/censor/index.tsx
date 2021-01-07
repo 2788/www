@@ -51,7 +51,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   return (
     <>
       <PageBanner
-        title="内容审核"
+        title="内容审核_内容安全_多媒体内容审核服务"
         desc="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容。"
         bgColor="#34A1EC"
         btns={isPc ? btns.banner : undefined}
@@ -138,7 +138,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
 export default function ExpressPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="内容审核"
+      title="内容审核_内容安全_多媒体内容审核服务"
       keywords="内容审核, 视频审核, 图片审核, 智能鉴黄, 鉴暴恐, 政治人物识别, 内容安全"
       description="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容。"
     >
