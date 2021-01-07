@@ -17,7 +17,7 @@ import * as style from './style.m.less'
 interface IProps {
   state: State
   maxSize: number // 支持的图片大小，单位为 kb
-  onUploaded?: (url: string) => void // 上传成功之后执行的方法
+  onUploaded?: (url: string, file: File) => void // 上传成功之后执行的方法
 }
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg, .gif'
@@ -85,7 +85,7 @@ class UploadStore extends Store {
         this.props.state.onChange(val)
         return val
       })
-    req.then(val => this.props.onUploaded && this.props.onUploaded(val))
+    req.then(val => this.props.onUploaded && this.props.onUploaded(val, file))
     return req
   }
 }

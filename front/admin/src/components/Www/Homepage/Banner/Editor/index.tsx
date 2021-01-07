@@ -14,9 +14,10 @@ import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
 import { textNotBlank } from 'admin-base/common/utils/validator'
 import { bindRangePicker } from 'utils/bind'
 import moment, { Moment } from 'moment'
-import { textHttp, textColor } from 'utils/validator'
+import { textHttp } from 'utils/validator'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IBanner } from 'apis/homepage/banner'
+import ImgColor, * as imgColor from 'components/common/ImgColor'
 import UploadImg, * as uploadImg from 'components/common/UploadImg'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
@@ -28,11 +29,10 @@ import * as style from './style.m.less'
 
 type State = FormState<{
   name: FieldState<string>
-  pcImg: uploadImg.State
+  imgColor: imgColor.State
   mobileImg: uploadImg.State
   effectTime: FieldState<Moment>
   invalidTime: FieldState<Moment>
-  backgroundColor: FieldState<string>
   link: FieldState<string>
   order: FieldState<number>
 }>
@@ -97,15 +97,16 @@ class EditorModalStore extends Store {
 
   @Loadings.handle('submit')
   doSubmit() {
+    const imgColorVal = imgColor.getValue(this.form.$.imgColor)
     const param: IBanner = {
       name: this.formValue.name,
-      pcImg: uploadImg.getValue(this.form.$.pcImg),
+      pcImg: imgColorVal.img,
+      backgroundColor: imgColorVal.color,
       mobileImg: uploadImg.getValue(this.form.$.mobileImg),
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
       editTime: this.props.banner.editTime,
       createTime: this.props.banner.createTime,
-      backgroundColor: this.formValue.backgroundColor,
       link: this.formValue.link,
       order: this.formValue.order
     }
@@ -157,11 +158,10 @@ class EditorModalStore extends Store {
     const invalidTime = new FieldState(moment.unix(banner.invalidTime))
     this.form = new FormState({
       name: new FieldState(banner.name).validators(textNotBlank, this.doValidateName),
-      pcImg: uploadImg.createState(banner.pcImg).validators(textNotBlank),
+      imgColor: imgColor.createState({ img: banner.pcImg, color: banner.backgroundColor }),
       mobileImg: uploadImg.createState(banner.mobileImg).validators(textNotBlank),
       effectTime,
       invalidTime,
-      backgroundColor: new FieldState(banner.backgroundColor).validators(textNotBlank, textColor),
       link: new FieldState(banner.link).validators(textNotBlank, textHttp),
       order: new FieldState(banner.order)
         .validators((order: number) => this.doValidateOrder(order, effectTime.value, invalidTime.value))
@@ -195,7 +195,6 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
 
   const pcExtra = <p className={style.desc}>推荐尺寸：2880 * 800 px</p>
   const mobileExtra = <p className={style.desc}>推荐尺寸：1125 * 480 px</p>
-  const colorExtra = <p className={style.desc}>格式：#******，例如：#333333</p>
 
   return (
     <Modal
@@ -212,26 +211,13 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         >
           <Input disabled={props.status === EditorStatus.Editing} placeholder="请输入 banner 名称" maxLength={20} {...bindTextInput(store.form.$.name)} />
         </FormItem>
-        <FormItem
-          label="PC 端图片"
-          {...bindFormItem(store.form.$.pcImg)}
-          extra={pcExtra}
-        >
-          <UploadImg state={store.form.$.pcImg} maxSize={500} />
-        </FormItem>
+        <ImgColor state={store.form.$.imgColor} labels={['PC 端图片', '背景色']} extra={[pcExtra]} />
         <FormItem
           label="移动端图片"
           {...bindFormItem(store.form.$.mobileImg)}
           extra={mobileExtra}
         >
           <UploadImg state={store.form.$.mobileImg} maxSize={500} />
-        </FormItem>
-        <FormItem
-          label="背景色"
-          {...bindFormItem(store.form.$.backgroundColor)}
-          extra={colorExtra}
-        >
-          <Input placeholder="请输入背景色" {...bindTextInput(store.form.$.backgroundColor)} />
         </FormItem>
         <FormItem
           label="跳转链接"

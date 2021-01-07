@@ -28,6 +28,7 @@
     "qiniu-js": "^3.1.2",
     "qn-fe-core": "git+ssh://git@github.com/qbox/fe-core.git#v1.12.3",
     "react": "~16.8.6",
+    "react-color": "^2.19.3",
     "react-dom": "~16.8.6",
     "react-hot-loader": "^4.12.21",
     "react-icecream": "^1.7.4",

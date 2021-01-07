@@ -18,7 +18,7 @@ import BannerList from './List'
 import EditorModal, { ExtraProps } from './Editor'
 
 // 顺序个数
-export const maxNum = 4
+export const maxNum = 6
 @injectable()
 class BannerManageStore extends Store {
 

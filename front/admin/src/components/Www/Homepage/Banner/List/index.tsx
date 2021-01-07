@@ -42,7 +42,7 @@ export default observer(function BannerList(props: IProps) {
 
   const renderOther = (_: string, record: IBanner) => (
     <>
-      <h5>背景色：{record.backgroundColor}</h5>
+      <h5>背景色：<div className={style.color} style={{ backgroundColor: `${record.backgroundColor}` }} /></h5>
       <h5>跳转：{record.link}</h5>
       <h5>顺序：{record.order}</h5>
     </>
