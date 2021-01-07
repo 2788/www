@@ -13,7 +13,7 @@ import { useSource } from 'hooks/sensors'
 import { OverlayProvider, OverlaySlot } from 'components/Overlay'
 
 import ErrorBoundary from './ErrorBoundary'
-import UaProvder from './UaProvider'
+import UaProvider from './UaProvider'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
@@ -44,7 +44,7 @@ export default function Layout({ title, keywords, description, children }: Props
   )
 
   return (
-    <UaProvder>
+    <UaProvider>
       <UserInfoProvider>
         <Head>
           <title>{title}</title>
@@ -56,7 +56,7 @@ export default function Layout({ title, keywords, description, children }: Props
         </Head>
         <ContentWrapper>{children}</ContentWrapper>
       </UserInfoProvider>
-    </UaProvder>
+    </UaProvider>
   )
 }
 

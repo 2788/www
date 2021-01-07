@@ -4,3 +4,7 @@ out
 .DS_Store
 .env.local
 coverage
+
+# IDE Configuration
+.vscode
+.idea
