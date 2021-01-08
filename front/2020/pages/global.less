@@ -128,4 +128,9 @@ p {
   .ant-table-footer {
     color: @grey-5;
   }
+
+  .ant-tooltip {
+    // 原 1060 会被我们的浮层挡住
+    z-index: @ui-modal-z-index + 100;
+  }
 }
