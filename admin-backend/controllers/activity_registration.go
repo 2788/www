@@ -49,7 +49,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	var params activRegInput
 	err := c.BindJSON(&params)
 	if err != nil {
-		logger.Errorf("BindJSON error: ", err)
+		logger.Errorf("BindJSON error: %v", err)
 		m.Send(c, codes.InvalidArgs, "bind json error")
 		return
 	}
@@ -89,7 +89,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 			m.Send(c, codes.MarketActivityIdInvalid, "market_activity_id not found")
 			return
 		}
-		logger.Errorf("%s get market_activity_id error :%v", m.conf.MarketActivityResourceName, err)
+		logger.Errorf("%s get market_activity_id error: %v", m.conf.MarketActivityResourceName, err)
 		m.Send(c, codes.ResultError, nil)
 		return
 	}
@@ -162,7 +162,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 	err = mongoService.Create(logger, m.conf.ActivityRegistrationResourceName, activRegisParams, &res)
 	if err != nil {
-		logger.Errorf("%s body(%v) error :%v", m.conf.ActivityRegistrationResourceName, activRegisParams, err)
+		logger.Errorf("%s body(%v) error: %v", m.conf.ActivityRegistrationResourceName, activRegisParams, err)
 		m.Send(c, codes.ResultError, nil)
 		return
 	}

@@ -126,3 +126,10 @@ puck:
         matches:
           /*:
             retain: true
+
+tbp:
+  secret_id: AKIDSq2MWpPxvs5Qgj6Ak7NWQ4SaCh1bwPUb
+  secret_key: 1oVqumSN2RaVAa3McfU5VszhDbkdJl14
+  host: tbp.tencentcloudapi.com
+  bot_id: cf7ec322-5deb-4c24-a86f-d76b0c802447
+  bot_env: release

@@ -7,11 +7,18 @@ import (
 	"qiniu.com/www/admin-backend/controllers"
 )
 
-func InitCustomRoutes(r *gin.Engine, conf *config.Config) {
+func InitCustomRoutes(r *gin.Engine, conf *config.Config) error {
 	activCtl := controllers.NewActivity(conf)
-
-	mongo := r.Group("/api/www")
-	{
-		mongo.POST("/activity-registration", activCtl.ActivityRegistration)
+	consultCtl, err := controllers.NewConsult(conf)
+	if err != nil {
+		return err
 	}
+
+	g := r.Group("/api/www")
+	{
+		g.POST("/activity-registration", activCtl.ActivityRegistration)
+		g.POST("/consult/text-process", consultCtl.TextProcess)
+	}
+
+	return nil
 }

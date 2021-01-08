@@ -31,7 +31,8 @@ func main() {
 		Must(err)
 	}
 
-	routes.InitCustomRoutes(r.Engine, conf)
+	err = routes.InitCustomRoutes(r.Engine, conf)
+	Must(err)
 
 	// 定时发送短信通知
 	cronJobService := service.NewCronJobService(conf)

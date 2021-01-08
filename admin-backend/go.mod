@@ -8,6 +8,7 @@ require (
 	github.com/qiniu/rpc.v1 v0.0.0
 	github.com/qiniu/rpc.v1/lb.v2.1 v0.0.0
 	github.com/qiniu/xlog.v1 v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go v1.0.80
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	gopkg.in/yaml.v2 v2.4.0
 	qbox.us/api/message v0.0.0
