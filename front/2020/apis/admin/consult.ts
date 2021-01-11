@@ -3,8 +3,8 @@
  * @description 主要是用于匹配的关键词信息
  */
 
-import { get } from 'utils/fetch'
-import { apiPrefix, handleResponseData } from '.'
+import { get, post } from 'utils/fetch'
+import { mongoApiPrefix, wwwApiPrefix, handleResponseData } from '.'
 
 export interface Property {
   /** 唯一标识（mongo ObjectID），由 mongo-api 自动生成 */
@@ -36,12 +36,12 @@ export interface EntityWithProperties extends Entity {
 }
 
 async function listProperties(): Promise<Property[]> {
-  const res = await get(`${apiPrefix}/www-consult-property`, { limit: 1000 })
+  const res = await get(`${mongoApiPrefix}/www-consult-property`, { limit: 1000 })
   return handleResponseData(res)
 }
 
 async function listEntities(): Promise<Entity[]> {
-  const res = await get(`${apiPrefix}/www-consult-entity`, { limit: 1000 })
+  const res = await get(`${mongoApiPrefix}/www-consult-entity`, { limit: 1000 })
   return handleResponseData(res)
 }
 
@@ -56,4 +56,38 @@ export async function listEntitiesWithProperties(): Promise<EntityWithProperties
     // eslint-disable-next-line no-underscore-dangle
     properties: properties.filter(item => item.entityId === entity._id)
   }))
+}
+
+export interface TextProcessInput {
+  /** 终端标识，每个终端(或线程)对应一个，区分并发多用户 */
+  terminalId: string
+  content: string
+}
+
+export interface TextProcessResponseItem {
+  content: string
+}
+
+export enum TextProcessOutputType {
+  /** 中间逻辑出错 */
+  Error = '0',
+  /** 任务型机器人 */
+  Task = '1',
+  /** 问答型机器人 */
+  Answer = '2',
+  /** 闲聊型机器人 */
+  Chat = '3',
+  /** 未匹配上，返回预设兜底话术 */
+  Fallback = '5',
+  /** 未匹配上，返回相似问题列表 */
+  Related = '6',
+}
+
+export interface TextProcessOutput {
+  type: TextProcessOutputType
+  responses: TextProcessResponseItem[]
+}
+
+export async function textProcess(input: TextProcessInput): Promise<TextProcessOutput> {
+  return post(`${wwwApiPrefix}/consult/text-process`, input)
 }

@@ -1,12 +1,19 @@
 @import '~utils/less/index.less';
 
-.messageSelect {
+.messageSelect, .longMessageSelect {
   .before {
     margin-bottom: 8px !important;
   }
+  .after {
+    margin-top: 8px !important;
+  }
+}
+
+.messageSelect {
   .options {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: -8px;
   }
   .option {
     flex: 0 0 auto;
@@ -28,3 +35,11 @@
   }
 }
 
+.longMessageSelect {
+  .options {
+    padding-left: 1em;
+  }
+  .option {
+    list-style-type: decimal;
+  }
+}

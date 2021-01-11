@@ -1,13 +1,13 @@
 /**
- * @file 咨询功能对应的机器人
+ * @file 咨询之售前服务机器人
  */
 
 import React from 'react'
-import { timeout, uuid } from 'utils'
-import { track } from 'utils/sensors'
+import { timeout } from 'utils'
 import { listEntitiesWithProperties as listEntities, EntityWithProperties as Entity } from 'apis/admin/consult'
 import { matchNameAndKeywords } from 'utils/match'
 import { IRobot, Input as InputData, Processed, InputType, makeMessage, MessageContent, makeSelect } from '..'
+import Trackable from './trackable'
 import ProductIntro from './ProductIntro'
 import FormInvoker from './FormInvoker'
 import Text from './Text'
@@ -47,21 +47,14 @@ async function fetchEntitiesWithCache() {
   return cache
 }
 
-export default class ConsultRobot implements IRobot {
+export default class PreSalesRobot extends Trackable implements IRobot {
 
-  private id = `consult-${uuid()}`
-  private state = State.Initial
-  private entity: Entity | undefined
-
-  /** 神策统计对话事件，一次事件对应一次 input & output */
-  private trackConsult(input: string, output: string) {
-    track('ConsultIO', {
-      ConsultInput: input,
-      ConsultOutput: output,
-      ConsultChatId: this.id,
-      ConsultState: this.state
-    })
+  constructor(protected id: string) {
+    super()
   }
+
+  protected state = State.Initial
+  private entity: Entity | undefined
 
   /** 结束一轮对话 */
   private finish() {
@@ -75,7 +68,7 @@ export default class ConsultRobot implements IRobot {
 
   /** 遇到理解不了的输入 */
   private notFound(message: string, consult = message) {
-    this.trackConsult(message, 'not found')
+    this.trackConsultNotFound(message)
     return [
       makeMessage(
         <>
@@ -136,7 +129,7 @@ export default class ConsultRobot implements IRobot {
       case InputType.Initial:
         fetchEntitiesWithCache() // 提前拉取以缓存结果
         return [
-          makeMessage('Hi，我是牛小七，很高兴为你服务！请问想咨询哪款产品？'),
+          makeMessage('请问想咨询哪款产品？'),
           entitySelectMessage
         ]
       case InputType.Message:

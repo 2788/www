@@ -1,6 +1,6 @@
 import { apiPrefix as basePrefix } from 'constants/api'
 
-export const apiPrefix = `${basePrefix}/www-admin/api/mongo`
+export const mongoApiPrefix = `${basePrefix}/www-admin/api/mongo`
 
 // 单独为官网实现的关于 admin 的接口前缀
 export const wwwApiPrefix = `${basePrefix}/www-admin/api/www`

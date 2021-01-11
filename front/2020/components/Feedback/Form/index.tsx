@@ -11,7 +11,7 @@ import { uuid } from 'utils'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import MessageList, { Message, MessageFrom } from './MessageList'
-import { IRobot, InputType, OutputType, withEase, Input, context, Disposer, MessageSelect } from './robot'
+import { IRobot, InputType, OutputType, withEase, Input, context, Disposer, MessageSelect, LongMessageSelect } from './robot'
 import ConsultRobot from './robot/consult'
 import qiniu from '../icons/qiniu.png'
 import humanServiceQrCode from './human-service-qr-code.png'
@@ -237,11 +237,12 @@ function useRobot(robot: IRobot, startWith?: string) {
           pushMessage(MessageFrom.Qiniu, output.content)
           break
         case OutputType.Select: {
-          const { type, ...others } = output
-          const messageId = pushMessage(
-            MessageFrom.Qiniu,
-            <MessageSelect {...others} />
-          )
+          const { type, mode, ...others } = output
+          const messageId = pushMessage(MessageFrom.Qiniu, (
+            mode === 'long'
+            ? <LongMessageSelect {...others} />
+            : <MessageSelect {...others} />
+          ))
           lastSelectMessageId.current = messageId
           break
         }

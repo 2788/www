@@ -61,22 +61,32 @@ export function makeMessage(content: MessageContent): MessageOutput {
   }
 }
 
+/** 模式：长选项 / 短选项 */
+export type SelectMode = 'long' | 'short'
+
 /** 让用户选择一个选项的输出 */
 export type SelectOutput = {
   type: OutputType.Select
+  /** 选项列表 */
   options: string[]
+  /** 选项前置内容 */
   before?: string
-  after: string
+  /** 选项后置内容 */
+  after?: string
+  /** 模式：长选项 / 短选项 */
+  mode: SelectMode
 }
 
 /** 构造让用户选择一个选项的输出 */
 export function makeSelect(params: {
   options: string[]
-  after: string
+  after?: string
   before?: string
+  mode?: SelectMode
 }): SelectOutput {
   return {
     type: OutputType.Select,
+    mode: 'short',
     ...params
   }
 }

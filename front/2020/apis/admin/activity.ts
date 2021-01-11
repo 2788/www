@@ -4,7 +4,7 @@
 
 import { get, post } from 'utils/fetch'
 import { ProgressState, locationMap } from 'constants/activity'
-import { apiPrefix, wwwApiPrefix, handleResponseData } from '.'
+import { mongoApiPrefix, wwwApiPrefix, handleResponseData } from '.'
 
 export interface IActivity {
   id: string
@@ -40,7 +40,7 @@ interface IActivityRes {
 
 // 根据 id 获取开发者活动
 export function getActivityById(id: string): Promise<IActivity> {
-  return get(apiPrefix + '/www-market-activity/' + id)
+  return get(mongoApiPrefix + '/www-market-activity/' + id)
     .then(data => genDisplayList([data])[0])
 }
 
@@ -57,7 +57,7 @@ interface IListOptions {
 // 获取开发者活动列表
 export function getActivities({ page, pageSize }: IListOptions): Promise<IListRes> {
   const options = { query: JSON.stringify({ state: 1 }), limit: pageSize, offset: (page - 1) * pageSize, sort: '-editTime' }
-  return get(apiPrefix + '/www-market-activity', options)
+  return get(mongoApiPrefix + '/www-market-activity', options)
     .then(res => ({ count: res.count || 0, data: genDisplayList(handleResponseData(res)) }))
 }
 

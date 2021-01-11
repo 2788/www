@@ -77,7 +77,7 @@ export function useDisposer(disposer: Disposer) {
 export type MessageSelectProps = {
   before?: string
   options: string[]
-  after: string
+  after?: string
 }
 
 /** 简单的选择组件，让用户在多个选项中选择一个 */
@@ -95,7 +95,24 @@ export function MessageSelect({ before, options, after }: MessageSelectProps) {
           >{option}</li>
         ))}
       </ul>
-      <p className={style.after}>{after}</p>
+      {after && <p className={style.after}>{after}</p>}
+    </div>
+  )
+}
+
+/** 长选择组件，用法同 MessageSelect，适用于较长的选项 */
+export function LongMessageSelect({ before, options, after }: MessageSelectProps) {
+  return (
+    <div className={style.longMessageSelect}>
+      {before && <p className={style.before}>{before}</p>}
+      <ol className={style.options}>
+        {options.map(option => (
+          <li className={style.option} key={option}>
+            <MessageLink message={option}>{option}</MessageLink>
+          </li>
+        ))}
+      </ol>
+      {after && <p className={style.after}>{after}</p>}
     </div>
   )
 }
