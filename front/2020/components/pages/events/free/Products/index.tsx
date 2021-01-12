@@ -33,6 +33,13 @@ const data = [
     items: ['集合视频拍摄、上传、编辑等全套功能，快速打造手机 Vlog 制作神器']
   },
   {
+    title: nameMap[Product.FaceID],
+    desc: descMap[Product.FaceID],
+    getUrl: 'https://qmall.qiniu.com/template/Mjg',
+    moreUrl: urlMap[Product.FaceID],
+    items: ['免费领取人脸检测、动作活体、防翻拍活体、公安核验各 100 次']
+  },
+  {
     title: nameMap[Product.Kodo],
     desc: '广泛应用于海量数据管理的场景',
     btnTitle: '立即使用',
