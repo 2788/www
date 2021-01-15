@@ -15,6 +15,7 @@ export type BtnOptions = {
   mpOnly?: boolean // 是否仅小程序，默认 false
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
+  target?: string // 同 <a> 标签 target 属性，默认新窗口打开
 } | {
   type?: Props['type'],
   children: ReactNode,

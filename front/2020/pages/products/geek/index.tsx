@@ -7,6 +7,8 @@ import React from 'react'
 import qs from 'query-string'
 import { InferGetStaticPropsType } from 'next'
 import { getNotices, INotice } from 'apis/admin/notice'
+import { urlForSignin } from 'utils/route'
+import { host } from 'constants/env'
 import { Product, urlMap } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 import { useUserInfo } from 'components/UserInfo'
@@ -45,29 +47,19 @@ function stringifyUrl(url: string, options: object): string {
  * 获取需要用到到 URL 信息
  */
 function getUrls() {
-  const NEXT_PUBLIC_HOST = process.env.NEXT_PUBLIC_HOST
-  const NEXT_PUBLIC_SSO_HOST = process.env.NEXT_PUBLIC_SSO_HOST
+  // 登陆完成跳转回当前页面时需要用到
+  const current = `${host}${urlMap[Product.Geek]}`
 
-  const urls = {
-    current: `${NEXT_PUBLIC_HOST}${urlMap[Product.Geek]}`,
-    sso: `${NEXT_PUBLIC_SSO_HOST}`,
-    support: 'https://support.qiniu.com/tickets/new/form'
+  return {
+    sso: urlForSignin(current),
+    support: stringifyUrl('https://support.qiniu.com/tickets/new/form', {
+      space: '直播云',
+      category: '其他类咨询',
+      title: '七牛低延时直播',
+      method: 'PC 推流',
+      description: '七牛低延时直播接入测试申请'
+    })
   }
-
-  urls.sso = stringifyUrl(urls.sso, {
-    client_id: 'web-api',
-    redirect_url: urls.current
-  })
-
-  urls.support = stringifyUrl(urls.support, {
-    space: '直播云',
-    category: '其他类咨询',
-    title: '七牛低延时直播',
-    method: 'PC 推流',
-    description: '七牛低延时直播接入测试申请'
-  })
-
-  return urls
 }
 
 function PageContent({ notices }: { notices: INotice[] }) {
@@ -76,8 +68,9 @@ function PageContent({ notices }: { notices: INotice[] }) {
 
   const firstBtn = {
     children: '立即咨询',
-    // 根据登陆状态判断是跳转登陆还是跳转到工单系统
-    href: (user?.signedIn) ? urls.support : urls.sso
+    // 根据登陆状态判断是跳转 SSO 登陆还是跳转到工单系统
+    href: (user?.signedIn) ? urls.support : urls.sso,
+    target: '_self'
   }
 
   const BannerBtns = useBtns(firstBtn)
