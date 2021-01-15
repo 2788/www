@@ -24,7 +24,7 @@ import Arch from 'components/pages/pili/Arch'
 import PiliScene from 'components/pages/pili/Scene'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 // 功能与优势 图片
 import DelayIcon from './_images/advantages-delay.svg'
@@ -58,7 +58,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}

@@ -1,0 +1,46 @@
+/**
+ * @file Geek 适用场景 style.less
+ * @author hovenjay <hovenjay@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.sceneHeader {
+  color: @grey-6;
+  font-size: 16px;
+  margin: 12px 12px 0 12px;
+}
+
+.sceneIcon {
+  height: 320px;
+  width: 570px;
+
+  .mobile({
+    width: 100%;
+    height: auto;
+  });
+}
+
+.sceneTitle {
+  color: @grey-7;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+
+  &.client {
+    padding-top: 20px;
+  }
+}
+
+.sceneContent {
+  color: @grey-6;
+  font-size: 16px;
+  margin-bottom: 16px;
+
+  .mobile({
+    font-size: 12px;
+    text-align: left;
+    line-height: 18px;
+    margin-bottom: 0;
+  });
+}

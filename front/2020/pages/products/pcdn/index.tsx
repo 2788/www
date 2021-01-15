@@ -10,7 +10,7 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/pcdn/Advantage'
@@ -39,7 +39,7 @@ function Page({ notices }: { notices: INotice[] }) {
 
       <Navigator>{btns.nav}</Navigator>
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Advantage />
 

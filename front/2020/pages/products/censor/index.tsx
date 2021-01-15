@@ -14,7 +14,7 @@ import Feature, * as feature from 'components/Product/Feature'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
 import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
@@ -58,7 +58,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         icon={imgBanner}
       />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 

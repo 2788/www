@@ -20,7 +20,7 @@ import DoraScene from 'components/pages/dora/Scene'
 import DoraFunctions from 'components/pages/dora/Functions'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Customer1Icon from './_images/客户-聚美.png'
 import Customer2Icon from './_images/客户-大疆.png'
@@ -54,7 +54,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}

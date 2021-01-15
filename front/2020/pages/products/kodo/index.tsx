@@ -11,7 +11,7 @@ import { Product } from 'constants/products'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
@@ -45,7 +45,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 

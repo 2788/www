@@ -8,7 +8,7 @@ import Func from 'components/pages/openapi/Func'
 import Doc from 'components/pages/openapi/Doc'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import { useBtns } from 'hooks/product-btn'
 import { urlForPrice } from 'utils/route'
@@ -32,7 +32,7 @@ function Page({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={banner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator>{btns.nav}</Navigator>
 

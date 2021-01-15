@@ -1,0 +1,25 @@
+/**
+ * @file Geek 产品比较 style.less
+ * @author hovenjay <hovenjay@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.videoCard {
+  width: @centered-content-width;
+  padding: 28px;
+  border: 1px solid @grey-3;
+  box-shadow: 0 4px 20px 0 rgba(51, 51, 51, 0.08);
+
+  .mobile({
+    width: auto;
+    margin: 0 0 12px 0;
+    padding: 12px;
+  });
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

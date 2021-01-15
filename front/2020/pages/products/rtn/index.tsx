@@ -21,7 +21,7 @@ import Feature, {
 import { useModal as useFeedbackModal } from 'components/Feedback'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
@@ -60,7 +60,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}

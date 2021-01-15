@@ -12,7 +12,7 @@ import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
@@ -64,7 +64,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         icon={imgBanner}
       />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink="https://developer.qiniu.com/insight/manual/4677/billing-way?ref=www.qiniu.com">
         {btns.nav}

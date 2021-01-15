@@ -18,7 +18,7 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import { useBtns } from 'hooks/product-btn'
 import imgBanner from './banner.png'
@@ -61,7 +61,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         icon={imgBanner}
       />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 

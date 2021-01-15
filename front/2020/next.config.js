@@ -125,7 +125,7 @@ module.exports = withPlugins(
           ]
         },
         {
-          test: /(?<!\.base64)\.(png|jpe?g|gif)$/i,
+          test: /(?<!\.base64)\.(png|jpe?g|gif|mp4)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },

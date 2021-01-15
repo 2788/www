@@ -15,7 +15,7 @@ import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
@@ -63,7 +63,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
         icon={imgBanner}
       />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}

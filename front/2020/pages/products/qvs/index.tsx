@@ -21,7 +21,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Advantage from 'components/pages/qvs/Advantage'
 import Core from 'components/pages/qvs/Core'
@@ -49,7 +49,7 @@ export function Page({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 

@@ -10,7 +10,7 @@ import { useBtns } from 'hooks/product-btn'
 
 import { Product } from 'constants/products'
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
@@ -44,7 +44,7 @@ function Page({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={banner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator>{btns.nav}</Navigator>
 

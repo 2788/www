@@ -36,7 +36,8 @@ const iconMap = {
   [Product.Ocr]: require('./images/default/ocr.svg').default,
   [Product.Pcdn]: require('./images/default/pcdn.svg').default,
   [Product.Plesdk]: require('./images/default/plesdk.svg').default,
-  [Product.CloudSql]: require('./images/default/cloud-sql.svg').default
+  [Product.CloudSql]: require('./images/default/cloud-sql.svg').default,
+  [Product.Geek]: require('./images/default/geek.svg').default
 }
 
 const smallIconMap = {
@@ -62,7 +63,8 @@ const smallIconMap = {
   [Product.Ocr]: require('./images/small/ocr.svg').default,
   [Product.Pcdn]: require('./images/small/pcdn.svg').default,
   [Product.Plesdk]: require('./images/small/plesdk.svg').default,
-  [Product.CloudSql]: require('./images/small/cloud-sql.svg').default
+  [Product.CloudSql]: require('./images/small/cloud-sql.svg').default,
+  [Product.Geek]: require('./images/small/geek.svg').default
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {

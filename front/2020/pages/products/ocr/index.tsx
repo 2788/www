@@ -11,7 +11,7 @@ import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
 
 import { getNotices, INotice } from 'apis/admin/notice'
-import ProducNotice from 'components/Product/common/ProducNotice'
+import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/ocr/Advantage'
@@ -46,7 +46,7 @@ function Page({ notices }: { notices: INotice[] }) {
         btns={btns.banner}
         icon={banner} />
 
-      <ProducNotice notices={notices} />
+      <ProductNotice notices={notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
