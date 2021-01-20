@@ -73,7 +73,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
     target: '_self'
   }
 
-  const BannerBtns = useBtns(firstBtn)
+  const bannerBtns = useBtns(firstBtn)
 
   return (
     <>
@@ -81,11 +81,11 @@ function PageContent({ notices }: { notices: INotice[] }) {
         title={pageInfo.bannerTitle}
         desc={pageInfo.description}
         bgColor="#34A1EC"
-        btns={BannerBtns.banner}
+        btns={bannerBtns.banner}
         icon={BannerIcon}
       />
       <ProductNotice notices={notices} />
-      <Navigator>{BannerBtns.nav}</Navigator>
+      <Navigator>{bannerBtns.nav}</Navigator>
       <FeatureList />
       <SceneList />
       <Comparison />

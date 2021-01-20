@@ -51,7 +51,9 @@ export enum Product {
   /** 直播特效 SDK */
   Plesdk = 'plesdk',
   /** 低延时直播 Geek */
-  Geek = 'Geek'
+  Geek = 'Geek',
+  /** 视频智能分析 */
+  Vii = 'Vii'
 }
 
 // TODO: 这个再核对一遍
@@ -80,7 +82,8 @@ export const nameMap = {
   [Product.Ocr]: '票证自动识别 OCR',
   [Product.Pcdn]: 'PCDN',
   [Product.Plesdk]: '直播特效 SDK',
-  [Product.Geek]: '低延时直播 Geek'
+  [Product.Geek]: '低延时直播 Geek',
+  [Product.Vii]: '视频智能分析'
 } as const
 
 export const urlMap = {
@@ -107,7 +110,8 @@ export const urlMap = {
   [Product.Ocr]: '/products/ocr',
   [Product.Pcdn]: '/products/pcdn',
   [Product.Plesdk]: '/products/plesdk',
-  [Product.Geek]: '/products/geek'
+  [Product.Geek]: '/products/geek',
+  [Product.Vii]: '/products/vii'
 } as const
 
 export const priceUrlMap = {
@@ -134,7 +138,8 @@ export const priceUrlMap = {
   [Product.Ocr]: null,
   [Product.Pcdn]: null,
   [Product.Plesdk]: null,
-  [Product.Geek]: null
+  [Product.Geek]: null,
+  [Product.Vii]: null
 } as const
 
 export const descMap = {
@@ -165,7 +170,8 @@ export const descMap = {
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
   [Product.Plesdk]: '',
-  [Product.Geek]: '构建了全新的低延时直播互动体验'
+  [Product.Geek]: '构建了全新的低延时直播互动体验',
+  [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐'
 } as const
 
 export enum Category {
@@ -194,6 +200,7 @@ export const categoryVision = [
   Product.Censor,
   Product.FaceID,
   Product.Ocr,
+  Product.Vii,
   Product.Pili,
   Product.Rtn,
   Product.Plsv,

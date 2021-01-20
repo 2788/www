@@ -1,0 +1,38 @@
+/**
+ * @file 视频智能分析 适用场景 style.less
+ * @author hovenjay <hovenjay@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.sceneIcon {
+  width: 570px;
+
+  .mobile({
+     width: 100%;
+   });
+}
+
+.sceneTitle {
+  color: @grey-7;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 16px;
+
+  .mobile({
+    font-size: 14px;
+    margin-bottom: 8px;
+  });
+}
+
+.sceneContent {
+  color: @grey-6;
+  font-size: 16px;
+  margin-bottom: 16px;
+
+  .mobile({
+     font-size: 12px;
+     text-align: left;
+     margin-bottom: 0;
+   });
+}
