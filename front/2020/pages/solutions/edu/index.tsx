@@ -132,7 +132,10 @@ function PageContent() {
           <RelatedProduct product={Product.Pili} />
           <RelatedProduct product={Product.Plsv} />
           <RelatedProduct product={Product.FaceID} />
+        </Related>
+        <Related>
           <RelatedProduct product={Product.Cdn} />
+          <RelatedProduct product={Product.Qvm} />
         </Related>
       </Section>
 

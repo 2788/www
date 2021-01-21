@@ -54,6 +54,7 @@ function Page() {
           <RelatedProduct product={Product.Cdn} />
           <RelatedProduct product={Product.Pili} />
           <RelatedProduct product={Product.Plms} />
+          <RelatedProduct product={Product.Qvm} />
         </Related>
       </Section>
 

@@ -184,12 +184,12 @@ export enum Category {
 export const categoryService = [
   Product.Qvm,
   Product.Kodo,
-  Product.CloudSql,
   Product.Archive,
   Product.Cdn,
   Product.Pcdn,
   Product.Ssl,
   Product.Pili,
+  Product.CloudSql,
   Product.Ddos,
   Product.Sms
 ] as const
@@ -202,11 +202,11 @@ export const categoryVision = [
   Product.Ocr,
   Product.Vii,
   Product.Pili,
+  Product.Geek,
   Product.Rtn,
   Product.Plsv,
   Product.Plms,
-  Product.Qvs,
-  Product.Geek
+  Product.Qvs
 ] as const
 
 /** 机器数据智能 */

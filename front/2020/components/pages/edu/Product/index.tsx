@@ -44,7 +44,8 @@ const cards = [
     lintText: '立即购买'
   }
 ]
-const tip = '其他美颜、活体检测等内容审核产品请联系我们'
+
+const tip = '其他转码、美颜等内容审核产品以及云主机产品请联系我们。'
 
 export default function Product() {
   return (
