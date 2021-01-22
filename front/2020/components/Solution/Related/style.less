@@ -1,15 +1,22 @@
 @import '~utils/less/index.less';
+@card-height: 252px;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: @card-height;
+  padding: 24px 24px 32px;
+  background-color: @grey-1;
+}
+
+.invisibleCard {
+  padding: 24px 24px 32px;
+}
 
 .wrapper {
   display: flex;
-  height: 100%;
-  padding: 30px 28px;
   align-items: center;
-  background-color: @grey-1;
-
-  .mobile({
-    padding: 24px 16px;
-  });
+  padding: 24px 16px;
 }
 
 .icon {
@@ -22,13 +29,26 @@
   }
 }
 
+.title {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .content {
   flex: 1 1 auto;
-  font-size: 20px;
-  line-height: 1.4;
-  margin-left: 16px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: @grey-6;
 
   .mobile({
+    margin-top: 0;
+    margin-left: 16px;
     font-size: 16px;
+    color: @grey-7;
   });
+}
+
+.link {
+  color: @grey-6;
 }

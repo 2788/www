@@ -7,7 +7,7 @@ import React from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
-import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related/New'
+import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product } from 'constants/products'
 
 import Navigator from 'components/Product/Navigator'

@@ -5,8 +5,8 @@
 /* eslint-disable max-len */
 import React from 'react'
 
-import { Product, urlMap as productUrlMap } from 'constants/products'
-import { Solution, urlMap as solutionUrlMap, iconMap as solutionIconMap } from 'constants/solutions'
+import { Product } from 'constants/products'
+import { Solution, urlMap as solutionUrlMap, smallIconMap as solutionIconMap, descMap as solutionDescMap } from 'constants/solutions'
 import Swiper from 'components/UI/Swiper'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
@@ -34,7 +34,6 @@ import IconAdvan4 from './_images/advan-4.svg'
 import imgArchitecture from './_images/architecture.png'
 import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.jpg'
-import IconOcr from './_images/ocr.svg'
 import style from './style.less'
 
 const IconKodoe = solutionIconMap[Solution.Kodoe]
@@ -120,14 +119,12 @@ function PageContent() {
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
-          <RelatedItem icon={<IconKodoe />} href={solutionUrlMap[Solution.Kodoe]!}>
+          <RelatedItem icon={<IconKodoe />} href={solutionUrlMap[Solution.Kodoe]!} desc={solutionDescMap[Solution.Kodoe]}>
             存储与数据湖
           </RelatedItem>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct product={Product.FaceID} />
-          <RelatedItem icon={<IconOcr />} href={productUrlMap[Product.FaceID] + '#features'}>
-            OCR 识别
-          </RelatedItem>
+          <RelatedProduct name="OCR 识别" product={Product.Ocr} />
         </Related>
       </Section>
 

@@ -6,7 +6,7 @@
 import React from 'react'
 import { Product } from 'constants/products'
 import Section from 'components/Product/Section'
-import Related, { ProductItem } from 'components/Solution/Related/New'
+import Related, { ProductItem } from 'components/Solution/Related'
 
 export default function RelatedProducts() {
   return (

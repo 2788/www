@@ -2,7 +2,7 @@
  * @file 智能制造
  */
 
-import React from 'react'
+import React, { createElement } from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -12,8 +12,7 @@ import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct, Item as RelatedItem } from 'components/Solution/Related'
 import { Product } from 'constants/products'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
-import { urlMap, Landpage } from 'constants/landpage'
-import ProductIcon from 'components/Product/Icon'
+import { Landpage as Land, nameMap, urlMap, descMap, smallIconMap as iconMap } from 'constants/landpage'
 
 import Value from 'components/pages/solutions/manufacture/Value'
 import TypicalScene from 'components/pages/solutions/manufacture/Scene'
@@ -48,7 +47,9 @@ function Page() {
         <Related>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
-          <RelatedItem icon={<ProductIcon product={Product.Dora} />} href={urlMap[Landpage.Dora]}>视觉数据智能</RelatedItem>
+          <RelatedItem icon={createElement(iconMap[Land.Dora])} href={urlMap[Land.Dora]} desc={descMap[Land.Dora]}>
+            {nameMap[Land.Dora]}
+          </RelatedItem>
         </Related>
       </Section>
 

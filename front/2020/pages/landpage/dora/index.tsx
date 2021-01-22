@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createElement } from 'react'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import { useBtns } from 'hooks/product-btn'
@@ -10,10 +10,9 @@ import PageNotice, {
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import Section from 'components/Product/Section'
-import ProductIcon from 'components/Product/Icon'
 import Related, { Item as RelatedItem, ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product } from 'constants/products'
-import { urlMap as lanUrlMap, Landpage } from 'constants/landpage'
+import { Landpage as Land, nameMap, urlMap, descMap, smallIconMap as iconMap } from 'constants/landpage'
 
 import Arch from 'components/pages/landpage/dora/Architecture'
 import CoreProduct from 'components/pages/landpage/dora/Core'
@@ -60,8 +59,8 @@ function Main() {
         <Related>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
-          <RelatedItem icon={<ProductIcon product={Product.Plsv} />} href={lanUrlMap[Landpage.Sdk]} >
-            视频云 SDK
+          <RelatedItem icon={createElement(iconMap[Land.Sdk])} href={urlMap[Land.Sdk]} desc={descMap[Land.Sdk]}>
+            {nameMap[Land.Sdk]}
           </RelatedItem>
           <RelatedProduct name="视觉数据智能" product={Product.Plsv} />
         </Related>

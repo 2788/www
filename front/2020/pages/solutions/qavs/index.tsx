@@ -3,7 +3,6 @@
  */
 
 import React from 'react'
-import { chunk } from 'lodash'
 
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
@@ -60,13 +59,11 @@ function PageContent() {
       <QavsScene />
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
-        {chunk(categoryVision, 4).map((group, i) => (
-          <Related key={i}>
-            {group.map(product => (
-              <RelatedProduct key={product} product={product} />
-            ))}
-          </Related>
-        ))}
+        <Related>
+          {
+            categoryVision.map(product => <RelatedProduct key={product} product={product} />)
+          }
+        </Related>
       </Section>
 
     </>
