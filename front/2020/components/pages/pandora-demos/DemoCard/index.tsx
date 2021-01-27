@@ -27,7 +27,7 @@ export default function DemoCard({ title, content, link }: IDemoCardProps) {
     size: 'small'
   } as const
 
-  const btnForPC = (
+  const btnForPc = (
     <Button {...btnProps} withBorder href={link}>
       立即体验
     </Button>
@@ -45,7 +45,7 @@ export default function DemoCard({ title, content, link }: IDemoCardProps) {
         {title}
       </Img>
       <Content className={style.content}>{content}</Content>
-      {isMobile ? btnForMobile : btnForPC}
+      {isMobile ? btnForMobile : btnForPc}
     </Card>
   )
 }

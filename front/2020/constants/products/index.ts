@@ -51,9 +51,11 @@ export enum Product {
   /** 直播特效 SDK */
   Plesdk = 'plesdk',
   /** 低延时直播 Geek */
-  Geek = 'Geek',
+  Geek = 'geek',
   /** 视频智能分析 */
-  Vii = 'Vii'
+  Vii = 'vii',
+  /** 播放器 SDK */
+  QnPlayer = 'qnPlayer'
 }
 
 // TODO: 这个再核对一遍
@@ -83,7 +85,8 @@ export const nameMap = {
   [Product.Pcdn]: 'PCDN',
   [Product.Plesdk]: '直播特效 SDK',
   [Product.Geek]: '低延时直播 Geek',
-  [Product.Vii]: '视频智能分析'
+  [Product.Vii]: '视频智能分析',
+  [Product.QnPlayer]: '播放器 SDK'
 } as const
 
 export const urlMap = {
@@ -111,7 +114,8 @@ export const urlMap = {
   [Product.Pcdn]: '/products/pcdn',
   [Product.Plesdk]: '/products/plesdk',
   [Product.Geek]: '/products/geek',
-  [Product.Vii]: '/products/vii'
+  [Product.Vii]: '/products/vii',
+  [Product.QnPlayer]: '/products/qnplayer'
 } as const
 
 export const priceUrlMap = {
@@ -139,7 +143,8 @@ export const priceUrlMap = {
   [Product.Pcdn]: null,
   [Product.Plesdk]: null,
   [Product.Geek]: null,
-  [Product.Vii]: null
+  [Product.Vii]: null,
+  [Product.QnPlayer]: null
 } as const
 
 export const descMap = {
@@ -169,9 +174,10 @@ export const descMap = {
   [Product.OpenAPI]: '',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
-  [Product.Plesdk]: '',
+  [Product.Plesdk]: '提供直播推流场景下的美颜滤镜、大眼瘦脸、美妆美形等特效功能',
   [Product.Geek]: '构建了全新的低延时直播互动体验',
-  [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐'
+  [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐',
+  [Product.QnPlayer]: '全自研点直播多媒体播放器'
 } as const
 
 export enum Category {
@@ -206,6 +212,7 @@ export const categoryVision = [
   Product.Rtn,
   Product.Plsv,
   Product.Plms,
+  Product.QnPlayer,
   Product.Qvs
 ] as const
 

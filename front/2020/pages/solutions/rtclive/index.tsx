@@ -73,7 +73,7 @@ function Page() {
   )
 }
 
-export default function RtclivePage() {
+export default function RtcLivePage() {
   return (
     <Layout
       title="互动直播解决方案"

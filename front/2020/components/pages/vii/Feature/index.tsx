@@ -21,7 +21,7 @@ interface IFeatureItem {
 }
 
 interface IFeatureGroup {
-  key: string,
+  key: string
   children: IFeatureItem[]
 }
 
@@ -46,7 +46,7 @@ const featureGroups: IFeatureGroup[] = [
   }
 ]
 
-export function ForPC({ icon, title, desc, moreUrl }: IFeatureItem) {
+export function ForPc({ icon, title, desc, moreUrl }: IFeatureItem) {
   return (
     <Card className={styles.featureCard}>
       <div className={styles.featureIcon}>{icon}</div>
@@ -84,7 +84,7 @@ export default function Features() {
       {featureGroups.map(({ key: groupKey, children }: IFeatureGroup) => (
         <Group key={groupKey}>
           {children.map((item: IFeatureItem) => (
-            isMobile ? <ForMobile {...item} /> : <ForPC {...item} />
+            isMobile ? <ForMobile {...item} /> : <ForPc {...item} />
           ))}
         </Group>
       ))}

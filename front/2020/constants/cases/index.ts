@@ -89,6 +89,8 @@ import hpImg from './社交网络/客户-虎扑.png'
 import mmImg from './社交网络/客户-陌陌.png'
 import xhsImg from './社交网络/客户-小红书.png'
 import qczjImg from './社交网络/客户-汽车之家.png'
+import mtimeImg from './社交网络/客户-时光网.png'
+import maimaiImg from './社交网络/客户-脉脉.png'
 
 import huataiImg from './金融保险/客户-华泰.png'
 import zsImg from './金融保险/客户-招商.png'
@@ -184,6 +186,8 @@ export const hp = { logo: hpImg, name: '虎扑' }
 export const mm = { logo: mmImg, name: '陌陌' }
 export const xhs = { logo: xhsImg, name: '小红书' }
 export const qczj = { logo: qczjImg, name: '汽车之家' }
+export const mtime = { logo: mtimeImg, name: '时光网' }
+export const maimai = { logo: maimaiImg, name: '脉脉' }
 
 export const huatai = { logo: huataiImg, name: '华泰' }
 export const zs = { logo: zsImg, name: '招商银行' }
@@ -212,7 +216,7 @@ export const industries = [
   },
   {
     name: '社交网络',
-    cases: [blue, tq, tt, zh, hp, mm, xhs, qczj]
+    cases: [blue, tq, tt, zh, hp, mm, xhs, qczj, mtime, maimai]
   },
   {
     name: '时尚生活',

@@ -1,0 +1,86 @@
+/**
+ * @file: 播放器 SDK —— 产品功能 style.less
+ * @author hovenjay <hovenjay@qiniu.com>
+ */
+
+@import '~utils/less/index.less';
+
+.centered {
+  width: @centered-content-width;
+  margin: 0 auto;
+}
+
+.wrapper {
+  background: linear-gradient(140deg, #426394 3%, #192946 92%);
+  padding: 72px 0;
+
+  .mobile({
+    padding: 16px;
+  });
+}
+
+.sectionTitle {
+  .centered;
+  color: @grey-1;
+  font-size: 28px;
+  text-align: center;
+  padding-bottom: 36px;
+
+  .mobile({
+    font-size: 20px;
+    padding-bottom: 16px;
+  });
+}
+
+.sectionContent {
+  .centered;
+  display: flex;
+  flex-flow: row;
+}
+
+.img {
+  width: 776px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 20px 0px rgba(9, 28, 64, 0.5);
+
+  .mobile({
+    display: none;
+  });
+}
+
+.list {
+  flex: 1;
+  margin-right: 24px;
+  color: @grey-1;
+
+  .mobile({
+    margin: 0;
+  });
+}
+
+.listItem {
+  padding: 20px;
+  border-radius: 8px;
+  background: #4d6891;
+
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+}
+
+.itemTitle {
+  font-size: 20px;
+  margin-bottom: 7px;
+
+  .mobile({
+    font-size: 14px;
+  });
+}
+
+.itemDescription {
+  font-size: 14px;
+
+  .mobile({
+    font-size: 12px;
+  });
+}
