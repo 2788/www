@@ -165,8 +165,8 @@ function ProductCard({ title, desc, btnTitle = '免费领取', getUrl, moreUrl, 
     // 用户已登录
     if (userInfo && userInfo.signedIn) {
       const mpModalTitle = userInfo.is_certified
-        ? <>领取成功，请在电脑端<br />登录七牛云管理控制台管理产品</>
-        : <>请在电脑端登录七牛管理控制台<br />完成实名认证，即可领取免费产品</>
+        ? <>领取成功，请在电脑端<br />登录七牛控制台管理产品</>
+        : <>请在电脑端登录七牛控制台<br />完成实名认证，即可领取免费产品</>
 
       add(<MpModal title={mpModalTitle} />)
     } else {
