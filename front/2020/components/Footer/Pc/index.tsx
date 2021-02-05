@@ -91,11 +91,11 @@ function LinkGroups() {
         <LinkItem url="/cooperations">工具插件 SDK 合作</LinkItem>
       </LinkGroup>
       <LinkGroup title="关于我们">
+        <LinkItem url="https://campus.qiniu.com">校园招聘</LinkItem>
+        <LinkItem url="https://career.qiniu.com/social">社会招聘</LinkItem>
         <LinkItem url="/company">公司介绍</LinkItem>
-        {/* <LinkItem url="/case">客户案例</LinkItem> */}
         <LinkItem url="/contact">联系我们</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/1">最新动态</LinkItem>
-        <LinkItem url="https://career.qiniu.com/social">加入我们</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
       </LinkGroup>
     </section>

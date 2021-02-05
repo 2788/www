@@ -67,11 +67,11 @@ export default function Overlay() {
         <MenuItem><Link href={activityUrlMap[Activity.Main]}>活动</Link></MenuItem>
       </SubMenu>
       <SubMenu key="sub6" title="关于我们">
+        <MenuItem><a href="https://campus.qiniu.com">校园招聘</a></MenuItem>
+        <MenuItem><a href="https://career.qiniu.com/social">社会招聘</a></MenuItem>
         <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
-        {/* <MenuItem><Link href="/case">客户案例</Link></MenuItem> */}
         <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
         <MenuItem><a href="https://blog.qiniu.com/archives/category/1">最新动态</a></MenuItem>
-        <MenuItem><a href="https://career.qiniu.com/social">招聘</a></MenuItem>
       </SubMenu>
     </Menu>
   )
