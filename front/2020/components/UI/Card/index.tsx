@@ -25,9 +25,8 @@ export function LayoutCard({ className, ...others }: HTMLAttributes<HTMLElement>
 }
 
 /** 隐形卡片，占位用 */
-export function InvisibleCard({ className, ...others }: HTMLAttributes<HTMLElement>) {
-  const wrapperClassName = [style.invisibleCard, className].filter(Boolean).join(' ')
-  return <LayoutCard className={wrapperClassName} {...others} />
+export function InvisibleCard({ children, ...others }: HTMLAttributes<HTMLElement>) {
+  return <LayoutCard {...others}>{null}</LayoutCard>
 }
 
 export type ImgProps = HTMLAttributes<HTMLElement> & {
