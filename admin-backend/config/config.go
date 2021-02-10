@@ -23,6 +23,7 @@ type ServerConfig struct {
 	SendMessageTaskInterval          int    `yaml:"send_message_task_interval"`
 	RedisHost                        string `yaml:"redis_host"`
 	RedisDB                          int    `yaml:"redis_db"`
+	LilliputHost                     string `yaml:"lilliput_host"` // 短链服务地址
 }
 
 // TbpConfig 对接腾讯智能对话平台（tbp）的配置
