@@ -3,6 +3,7 @@ package lilliput
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"strings"
 
 	"github.com/qiniu/rpc.v1/lb.v2.1"
@@ -31,8 +32,8 @@ type shortUrlResp struct {
 	Host string `json:"host"`
 }
 
-func (l *LilliputService) GetShortUrl(logger *xlog.Logger, url string) (shortUrl string, err error) {
-	path := fmt.Sprintf("/short-url/get?url=%s", url)
+func (l *LilliputService) GetShortUrl(logger *xlog.Logger, urlStr string) (shortUrl string, err error) {
+	path := fmt.Sprintf("/short-url/get?url=%s", url.QueryEscape(urlStr))
 	var res shortUrlResp
 	err = l.client.GetCall(logger, &res, path)
 	if err != nil {
