@@ -183,14 +183,14 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 		if err != nil {
 			logger.Errorf("lilliputService.GetShortUrl %s error: %v", url, err)
 		}
-		if shortUrl == "" {
-			shortUrl = url
+		if shortUrl != "" {
+			url = shortUrl
 		}
 		data := SMSData{
 			UserName:  user.UserName,
 			Title:     activity.Title,
 			StartTime: time.Unix(activity.StartTime, 0).Format("2006-01-02 15:04:05"),
-			DetailUrl: shortUrl,
+			DetailUrl: url,
 		}
 		content, err := f.render(data)
 		if err != nil {
