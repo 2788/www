@@ -23,7 +23,7 @@ const data = [
     btnTitle: '立即使用',
     getUrl: 'https://portal.qiniu.com/rtn/rtc/create',
     moreUrl: urlMap[Product.Rtn],
-    items: ['每月免费连麦语音、标清、超清、高清各 5000 分钟']
+    items: ['每月免费连麦 20000 分钟']
   },
   {
     title: nameMap[Product.Plsv],
