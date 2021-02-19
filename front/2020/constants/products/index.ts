@@ -55,7 +55,9 @@ export enum Product {
   /** 视频智能分析 */
   Vii = 'vii',
   /** 播放器 SDK */
-  QnPlayer = 'qnPlayer'
+  QnPlayer = 'qnPlayer',
+  /** 短视频特效 SDK */
+  Svesdk = 'svesdk',
 }
 
 // TODO: 这个再核对一遍
@@ -86,7 +88,8 @@ export const nameMap = {
   [Product.Plesdk]: '直播特效 SDK',
   [Product.Geek]: '低延时直播 Geek',
   [Product.Vii]: '视频智能分析',
-  [Product.QnPlayer]: '播放器 SDK'
+  [Product.QnPlayer]: '播放器 SDK',
+  [Product.Svesdk]: '短视频特效 SDK'
 } as const
 
 export const urlMap = {
@@ -115,7 +118,8 @@ export const urlMap = {
   [Product.Plesdk]: '/products/plesdk',
   [Product.Geek]: '/products/geek',
   [Product.Vii]: '/products/vii',
-  [Product.QnPlayer]: '/products/qnplayer'
+  [Product.QnPlayer]: '/products/qnplayer',
+  [Product.Svesdk]: '/products/svesdk'
 } as const
 
 export const priceUrlMap = {
@@ -144,7 +148,8 @@ export const priceUrlMap = {
   [Product.Plesdk]: null,
   [Product.Geek]: null,
   [Product.Vii]: null,
-  [Product.QnPlayer]: null
+  [Product.QnPlayer]: null,
+  [Product.Svesdk]: null
 } as const
 
 export const descMap = {
@@ -177,7 +182,8 @@ export const descMap = {
   [Product.Plesdk]: '提供直播推流场景下的美颜滤镜、大眼瘦脸、美妆美形等特效功能',
   [Product.Geek]: '构建了全新的低延时直播互动体验',
   [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐',
-  [Product.QnPlayer]: '全自研点直播多媒体播放器'
+  [Product.QnPlayer]: '全自研点直播多媒体播放器',
+  [Product.Svesdk]: ''
 } as const
 
 export enum Category {

@@ -2,7 +2,7 @@
  * @file 解决方案”视频云 SDK“
  */
 import React from 'react'
-import { Product } from 'constants/products'
+import { Product, urlMap } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
@@ -37,13 +37,13 @@ function PageContent() {
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem title="短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省地打造专业级短视频制作工具 >>" href="../products/svesdk">
+          <PageNoticeItem title="短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省地打造专业级短视频制作工具 >>" href={urlMap[Product.Svesdk]}>
             短视频特效 SDK，深度融合字节跳动特效 SDK，多快好省地打造专业级短视频制作工具 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem title="直播特效 SDK，助你快速搞定美颜滤镜，塑造最美直播 >>" href="../products/plesdk">
+          <PageNoticeItem title="直播特效 SDK，助你快速搞定美颜滤镜，塑造最美直播 >>" href={urlMap[Product.Plesdk]}>
             直播特效 SDK，助你快速搞定美颜滤镜，塑造最美直播 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem title="零基础搭建音视频平台，开通 QRTC 获取每月 15000 分钟免费时长 >>" href="../products/rtn">
+          <PageNoticeItem title="零基础搭建音视频平台，开通 QRTC 获取每月 15000 分钟免费时长 >>" href={urlMap[Product.Rtn]}>
             零基础搭建音视频平台，开通 QRTC 获取每月 15000 分钟免费时长 &gt;&gt;
           </PageNoticeItem>
         </PageNoticeGroup>
@@ -53,7 +53,7 @@ function PageContent() {
 
       <Feature />
 
-      <Section name="related" title="相关产品" header="相关云产品" withTailPadding grey>
+      <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
           <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="异构数据湖" product={Product.Kodo} />

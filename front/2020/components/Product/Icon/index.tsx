@@ -39,7 +39,8 @@ const iconMap = {
   [Product.CloudSql]: require('./images/default/cloud-sql.svg').default,
   [Product.Geek]: require('./images/default/geek.svg').default,
   [Product.Vii]: require('./images/default/vii.svg').default,
-  [Product.QnPlayer]: require('./images/default/qnplayer.svg').default
+  [Product.QnPlayer]: require('./images/default/qnplayer.svg').default,
+  [Product.Svesdk]: null
 }
 
 const smallIconMap = {
@@ -68,7 +69,8 @@ const smallIconMap = {
   [Product.CloudSql]: require('./images/small/cloud-sql.svg').default,
   [Product.Geek]: require('./images/small/geek.svg').default,
   [Product.Vii]: require('./images/small/vii.svg').default,
-  [Product.QnPlayer]: require('./images/small/qnplayer.svg').default
+  [Product.QnPlayer]: require('./images/small/qnplayer.svg').default,
+  [Product.Svesdk]: null
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {

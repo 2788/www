@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="570" height="478" viewBox="0 0 570 478">
+  <defs>
+    <linearGradient id="插图-a" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#F2F7FF"/>
+      <stop offset="46.804%" stop-color="#F2F7FF"/>
+      <stop offset="80.638%" stop-color="#F2F7FF"/>
+      <stop offset="100%" stop-color="#F2F7FF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="插图-b" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#75C6FE"/>
+      <stop offset="100%" stop-color="#3EA7EF"/>
+    </linearGradient>
+    <linearGradient id="插图-c" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#75C6FF"/>
+      <stop offset="99.909%" stop-color="#3EA7EF"/>
+    </linearGradient>
+    <linearGradient id="插图-f" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#8DD1FF"/>
+      <stop offset="100%" stop-color="#49ADF2"/>
+    </linearGradient>
+    <circle id="插图-e" cx="97" cy="10" r="10"/>
+    <filter id="插图-d" width="240%" height="240%" x="-70%" y="-50%" filterUnits="objectBoundingBox">
+      <feOffset dy="4" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="4"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.08 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g opacity=".3" transform="translate(65 59)">
+      <rect width="436" height="356" x="2" y="2" fill="url(#插图-a)" stroke="#00AAE7" stroke-width="4" rx="12"/>
+      <g transform="translate(4 4)">
+        <path fill="#DAE9FB" d="M8,0 L424,0 C428.418278,-8.11624501e-16 432,3.581722 432,8 L432,28 L432,28 L0,28 L0,8 C-5.41083001e-16,3.581722 3.581722,8.11624501e-16 8,0 Z"/>
+        <path fill="#00AAE7" d="M14,10 C16.209139,10 18,11.790861 18,14 C18,16.209139 16.209139,18 14,18 C11.790861,18 10,16.209139 10,14 C10,11.790861 11.790861,10 14,10 Z M30,10 C32.209139,10 34,11.790861 34,14 C34,16.209139 32.209139,18 30,18 C27.790861,18 26,16.209139 26,14 C26,11.790861 27.790861,10 30,10 Z M46,10 C48.209139,10 50,11.790861 50,14 C50,16.209139 48.209139,18 46,18 C43.790861,18 42,16.209139 42,14 C42,11.790861 43.790861,10 46,10 Z"/>
+      </g>
+    </g>
+    <g transform="translate(241 175)">
+      <circle cx="44" cy="44" r="44" fill="url(#插图-b)"/>
+      <polygon fill="#FFF" points="49 33 62 55.75 36 55.75" transform="rotate(90 49 44.375)"/>
+    </g>
+    <rect width="400" height="45" x="85" y="354" fill="url(#插图-c)" rx="9"/>
+    <g transform="translate(104 367)">
+      <rect width="359" height="6" y="7" fill="#FFF" opacity=".4" rx="3"/>
+      <path fill="#FFF" d="M3,7 L91,7 C92.6568542,7 94,8.34314575 94,10 C94,11.6568542 92.6568542,13 91,13 L3,13 C1.34314575,13 2.02906125e-16,11.6568542 0,10 C-1.09108455e-15,8.34314575 1.34314575,7 3,7 Z"/>
+      <use fill="#000" filter="url(#插图-d)" xlink:href="#插图-e"/>
+      <circle cx="97" cy="10" r="8" fill="url(#插图-f)" stroke="#FFF" stroke-linejoin="square" stroke-width="4"/>
+    </g>
+  </g>
+</svg>
