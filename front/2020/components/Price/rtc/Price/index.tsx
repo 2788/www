@@ -14,6 +14,20 @@ export default function Price() {
     <PricePane>
       <PricePaneSection title="计费方式" padding>
         <TextWrapper target="mode" >
+          <h4>实时音视频连麦</h4>
+          <p>开通七牛云实时音视频服务的标准用户，每月可享受 <em>20000 分钟</em> 的实时音视频连麦免费使用时长。</p>
+          <p>每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</p>
+          <Card title="实时音视频连麦纯音频每月免费时长" num="5,000" unit="分钟" />
+          <Card title="实时音视频连麦标清每月免费时长" num="5,000" unit="分钟" />
+          <Card title="实时音视频连麦超清每月免费时长" num="5,000" unit="分钟" />
+          <Card title="实时音视频连麦高清清每月免费时长" num="5,000" unit="分钟" />
+          <h4>福利活动</h4>
+          <PackageCard name="实时音视频资源包" href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">
+            特惠 4 折起
+          </PackageCard>
+          <PackageCard name="新客套餐包" href="https://qmall.qiniu.com/template/NDM?ref=RTC2020801">
+            低至 7.7 元
+          </PackageCard>
           <p>实时音视频互动直播解决方案，可能产生的费用会有以下九部分：</p>
           <ol>
             <li>
@@ -44,21 +58,6 @@ export default function Price() {
           <p>
             了解详细计费说明见价格详情；
           </p>
-
-          <h4>实时音视频连麦</h4>
-          <p>开通七牛云实时音视频服务的标准用户，每月可享受一定量的实时音视频连麦免费使用时长。</p>
-          <p>每月计费时，会先抵扣免费额度，超出部分再按照价格详情付费结算。</p>
-          <Card title="实时音视频连麦纯音频每月免费时长" num="5,000" unit="分钟" />
-          <Card title="实时音视频连麦标清每月免费时长" num="5,000" unit="分钟" />
-          <Card title="实时音视频连麦超清每月免费时长" num="5,000" unit="分钟" />
-          <Card title="实时音视频连麦高清清每月免费时长" num="5,000" unit="分钟" />
-          <h4>福利活动</h4>
-          <PackageCard name="实时音视频资源包" href="https://qmall.qiniu.com/template/NDA?ref=RTC2020801">
-            特惠 4 折起
-          </PackageCard>
-          <PackageCard name="新客套餐包" href="https://qmall.qiniu.com/template/NDM?ref=RTC2020801">
-            低至 7.7 元
-          </PackageCard>
         </TextWrapper>
       </PricePaneSection>
       <PricePaneSection title="价格详情">
