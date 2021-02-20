@@ -19,7 +19,7 @@ export default function Main() {
     <Layout title="七牛云产品" keywords="" description="">
       <div style={{ padding: '16px' }}>
         <MpBanner banner={banner} />
-        <Tabs value={Category.Service} size="middle" className={style.tabs} contentClassName={style.tabsContent}>
+        <Tabs value={Category.Service} size="middle" className={style.tabs} contentClassName={style.tabsContent} shadow={false}>
           <TabPane value={Category.Service} tab={categoryNameMap[Category.Service]}>
             {categoryService.map(product => <Card key={product} product={product} />)}
           </TabPane>

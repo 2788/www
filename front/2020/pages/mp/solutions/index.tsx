@@ -17,10 +17,10 @@ import style from './index.less'
 export default function Main() {
   return (
     <Layout title="七牛云解决方案" keywords="" description="">
-      <div style={{ padding: '16px' }}>
+      <div style={{ padding: '16px', background: '#FFFFFF' }}>
         <MpBanner banner={banner} />
         <h1 className={style.title}>全部解决方案</h1>
-        <Tabs value={Category.Scene} size="middle" className={style.tabs} contentClassName={style.tabsContent}>
+        <Tabs value={Category.Scene} size="middle" className={style.tabs} contentClassName={style.tabsContent} shadow={false}>
           <TabPane value={Category.Scene} tab={categoryNameMap[Category.Scene]}>
             {
               categorySolutionsMap[Category.Scene]
