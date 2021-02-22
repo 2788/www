@@ -37,10 +37,10 @@ function Main() {
 
       <PageNotice>
         <PageNoticeGroup title="福利活动" type="welfares">
-          <PageNoticeItem href="https://qmall.qiniu.com/template/MQ">
+          <PageNoticeItem href="https://qmall.qiniu.com/template/NjQ">
             转码时长包，优惠来袭。立即选购 &gt;&gt;
           </PageNoticeItem>
-          <PageNoticeItem href="https://developer.qiniu.com/censor/manual/4835/censor-plus-manual">
+          <PageNoticeItem href="https://qmall.qiniu.com/template/NTg">
             内容审核，新用户可享 24 万次免费额度，更有超值套餐包可供选择 &gt;&gt;
           </PageNoticeItem>
           <PageNoticeItem href="https://marketing.qiniu.com/activity/activity-faceid">

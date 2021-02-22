@@ -43,6 +43,32 @@ export default function ForMobile() {
         <FeatureItem
           pos="left-right"
           align="left"
+          icon={<ProductIcon product={Product.Vii} />}
+          title="视频智能分析"
+        >
+          <FeatureDesc>
+            视频智能分析是一款针对视频等多媒体文件，通过对视频，图片，音频等内容的多维理解，对其实现结构化标签提取，审核，识别等功能的产品，可广泛应用于多媒体内容的管理，搜索和推荐
+          </FeatureDesc>
+          <FeatureLink href={urlMap[Product.Vii]}>了解更多 &gt;&gt;</FeatureLink>
+        </FeatureItem>
+      </FeatureGroup>
+      <FeatureGroup>
+        <FeatureItem
+          pos="left-right"
+          align="left"
+          icon={<ProductIcon product={Product.Ocr} />}
+          title="票证自动识别 OCR"
+        >
+          <FeatureDesc>
+            票证自动识别 OCR 基于行业前沿的深度学习技术，提供身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率
+          </FeatureDesc>
+          <FeatureLink href={urlMap[Product.Ocr]}>了解更多 &gt;&gt;</FeatureLink>
+        </FeatureItem>
+      </FeatureGroup>
+      <FeatureGroup>
+        <FeatureItem
+          pos="left-right"
+          align="left"
           icon={<ProductIcon product={Product.OpenAPI} />}
           title="Open API"
         >
