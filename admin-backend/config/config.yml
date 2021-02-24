@@ -12,6 +12,7 @@ server:
   send_message_task_interval: 30 # 单位为分钟
   redis_host: 127.0.0.1:6379
   redis_db: 7
+  lilliput_host: http://bo-staging-lilliput.qa.qiniu.io # 短链服务地址
 
 target: privatized
 token_expire_days: 7

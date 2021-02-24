@@ -18,6 +18,7 @@ import (
 
 	"qiniu.com/www/admin-backend/config"
 	"qiniu.com/www/admin-backend/models"
+	"qiniu.com/www/admin-backend/service/lilliput"
 )
 
 const (
@@ -32,6 +33,7 @@ type CronJobService struct {
 	redis           *redis.Client
 	mongoApiService *mongoClient.MongoApiServiceWithAuth
 	morseService    message.HandleNotification
+	lilliputService *lilliput.LilliputService
 }
 
 func NewCronJobService(conf *config.Config) *CronJobService {
@@ -51,7 +53,15 @@ func NewCronJobService(conf *config.Config) *CronJobService {
 	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, conf.MongoApiPrefix, transport)
 
 	morseService := message.HandleNotification{Host: conf.MorseHost, Client: morseClient}
-	return &CronJobService{conf: conf, morseService: morseService, redis: redisClient, mongoApiService: mongoService}
+	lilliputService := lilliput.NewLilliputService(conf.LilliputHost, http.DefaultTransport)
+
+	return &CronJobService{
+		conf:            conf,
+		morseService:    morseService,
+		redis:           redisClient,
+		mongoApiService: mongoService,
+		lilliputService: lilliputService,
+	}
 }
 
 func (f *CronJobService) Run() {
@@ -167,11 +177,20 @@ func (f *CronJobService) send(logger *xlog.Logger, wg *sync.WaitGroup, ch, activ
 func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity models.PartOfMarketActivity, logger *xlog.Logger) (jobId string, err error) {
 	in := make([]message.SendSmsIn, 0)
 	for _, user := range users {
+		url := fmt.Sprintf("%s%s", activity.DetailUrlPrefix, activity.Id.Hex())
+		var shortUrl string
+		shortUrl, err = f.lilliputService.GetShortUrl(logger, url)
+		if err != nil {
+			logger.Errorf("lilliputService.GetShortUrl %s error: %v", url, err)
+		}
+		if shortUrl != "" {
+			url = shortUrl
+		}
 		data := SMSData{
 			UserName:  user.UserName,
 			Title:     activity.Title,
 			StartTime: time.Unix(activity.StartTime, 0).Format("2006-01-02 15:04:05"),
-			DetailUrl: fmt.Sprintf("%s%s", activity.DetailUrlPrefix, activity.Id.Hex()),
+			DetailUrl: url,
 		}
 		content, err := f.render(data)
 		if err != nil {
