@@ -6,6 +6,9 @@
 @import '~utils/less/index.less';
 
 .card {
+  display: flex;
+  flex-direction: column;
+
   .mobile({
     margin: 0 0 16px;
   });
@@ -22,4 +25,19 @@
 .placeholder {
   border: none;
   box-shadow: none;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.desc {
+  flex: 1;
+}
+
+.btn {
+  align-self: end;
+  margin-top: 20px;
 }

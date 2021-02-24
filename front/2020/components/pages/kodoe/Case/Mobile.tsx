@@ -210,7 +210,7 @@ export default function Mobile() {
             <div className={styles.item}>
               <div className={styles.itemTitle}>解决方案</div>
               <p>1、实时音视频云：支持多种双录模式（远程双录，自助双录），支持多种风险揭示方式（图片、视频、语音、PPT ），后台管理系统，支持检索、回放、审核；</p>
-              <p>2、监管需求与易用性：实时叠加水印、时间戳、防止篡改 朗读声明及电子签名，留痕符合监管要求，开放 SDK ，可与客户 APP 快速集成。</p>
+              <p>2、监管需求与易用性：实时叠加水印、时间戳、防止篡改 朗读声明及电子签名，留痕符合监管要求，开放 SDK ，可与客户 App 快速集成。</p>
             </div>
             <div className={styles.item}>
               <div className={styles.itemTitle}>实现价值</div>

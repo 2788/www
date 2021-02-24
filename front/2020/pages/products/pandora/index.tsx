@@ -290,7 +290,7 @@ function ExpressFeatures() {
           <card.Img className={style.featureImg} src={imgFeature5} />
           <card.Content className={style.featureContent}>
             <card.Title>全面可视化呈现</card.Title>
-            <card.Desc>内置丰富图表类型并支持自定义可视化 app 扩展能力，通过拖拽方式简单高效定制仪表盘，实时监控关键指标，及时发现业务异常，使纷繁复杂的数据可视、可感、可知。</card.Desc>
+            <card.Desc>内置丰富图表类型并支持自定义可视化 App 扩展能力，通过拖拽方式简单高效定制仪表盘，实时监控关键指标，及时发现业务异常，使纷繁复杂的数据可视、可感、可知。</card.Desc>
           </card.Content>
         </card.Card>
         <card.Card>

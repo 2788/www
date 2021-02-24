@@ -31,10 +31,10 @@ export default function Mobile() {
           <MenuItem><Card noBorder title="高级美颜" desc="美白、磨皮、锐化、大眼、瘦脸，强度可调节" /></MenuItem>
         </SubMenu>
         <SubMenu mode="inline" title="贴纸">
-          <MenuItem><Card noBorder title="贴纸" desc="可从特效君 APP 中挑选" /></MenuItem>
+          <MenuItem><Card noBorder title="贴纸" desc="可从特效君 App 中挑选" /></MenuItem>
         </SubMenu>
         <SubMenu mode="inline" title="滤镜">
-          <MenuItem><Card noBorder title="滤镜" desc="可从特效君 APP 中挑选" /></MenuItem>
+          <MenuItem><Card noBorder title="滤镜" desc="可从特效君 App 中挑选" /></MenuItem>
         </SubMenu>
       </Menu>
     </div>

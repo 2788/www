@@ -24,7 +24,7 @@ export default function Price() {
         <PricePaneSubSection title="图片处理">
           <PictureProcess />
         </PricePaneSubSection>
-        <PricePaneSubSection title="APP 安装包分析">
+        <PricePaneSubSection title="App 安装包分析">
           <App />
         </PricePaneSubSection>
       </PricePaneSection>

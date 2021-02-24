@@ -57,3 +57,9 @@ Next.js 相关文档：https://nextjs.org/docs/basic-features/environment-variab
 ```shell
 node deploy.js $AK $SK $BUCKET
 ```
+
+### 开发注意
+
+* [文案排版](https://github.com/sparanoid/chinese-copywriting-guidelines)
+* [CSS 顺序](https://www.shejidaren.com/css-written-specifications.html)
+* 文案统一，例如应用程序统一写为 App，而不是 App、APP 混用

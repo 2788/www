@@ -12,12 +12,15 @@ import { useMobile } from 'hooks/ua'
 
 import Section from 'components/Product/Section'
 import * as Cards from 'components/UI/Card'
+import Button from 'components/UI/Button'
 
-import SceneImgOneURL from './scene-img-one.png'
-import SceneImgTwoURL from './scene-img-two.png'
-import SceneImgThreeURL from './scene-img-three.png'
-import SceneImgFourURL from './scene-img-four.png'
-import SceneImgFiveURL from './scene-img-five.png'
+import scene1 from './scene1.png'
+import scene2 from './scene2.png'
+import scene3 from './scene3.png'
+import scene4 from './scene4.png'
+import scene5 from './scene5.png'
+import scene6 from './scene6.png'
+import scene7 from './scene7.png'
 
 import styles from './style.less'
 
@@ -28,7 +31,27 @@ export default function QavsScene() {
     <Section name="scene" title="应用场景" header="典型应用场景">
       <Cards.Row>
         <Cards.Card className={styles.card}>
-          <Cards.Img className={styles.img} src={SceneImgOneURL} />
+          <Cards.Img className={styles.img} src={scene1} />
+          <Cards.Content className={styles.content}>
+            <Cards.Title>新零售</Cards.Title>
+            <Cards.Desc className={styles.desc}>
+              新零售时代的来临促使传统零售业将生产、流通、销售等环节进行数字化改造。七牛云基于智能视频云技术打造「新零售在线销售解决方案」，赋能新零售行业从无到有的起步和发展，有针对性的为商家和消费者之间建立连接，实现商家和消费者的双向互动。
+            </Cards.Desc>
+            <Button className={styles.btn} href="/solutions/retailing-onlinesale" type="hollow" withBorder>了解更多</Button>
+          </Cards.Content>
+        </Cards.Card>
+        <Cards.Card className={styles.card}>
+          <Cards.Img className={styles.img} src={scene2} />
+          <Cards.Content className={styles.content}>
+            <Cards.Title>金融产品</Cards.Title>
+            <Cards.Desc className={styles.desc}>
+              保险、基金等产品面临销售渠道线上化运营，如何依托线上流量与私域流量进行裂变转化，维护存量客户、提高客户质量对企业的发展至关重要。七牛云基于智能视频云技术打造「金融产品在线营销解决方案」，为金融产品在线营销提供智能、高效、一站式的视频解决方案，并提供完整的数据分析与处理服务，推动业务成交。
+            </Cards.Desc>
+            <Button className={styles.btn} href="/solutions/fin-onlinesale" type="hollow" withBorder>了解更多</Button>
+          </Cards.Content>
+        </Cards.Card>
+        <Cards.Card className={styles.card}>
+          <Cards.Img className={styles.img} src={scene3} />
           <Cards.Content>
             <Cards.Title>安防监控</Cards.Title>
             <Cards.Desc>
@@ -36,8 +59,10 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
+      </Cards.Row>
+      <Cards.Row>
         <Cards.Card className={styles.card}>
-          <Cards.Img className={styles.img} src={SceneImgTwoURL} />
+          <Cards.Img className={styles.img} src={scene4} />
           <Cards.Content>
             <Cards.Title>在线教育</Cards.Title>
             <Cards.Desc>
@@ -46,7 +71,7 @@ export default function QavsScene() {
           </Cards.Content>
         </Cards.Card>
         <Cards.Card className={styles.card}>
-          <Cards.Img className={styles.img} src={SceneImgThreeURL} />
+          <Cards.Img className={styles.img} src={scene5} />
           <Cards.Content>
             <Cards.Title>广电新媒体</Cards.Title>
             <Cards.Desc>
@@ -54,10 +79,8 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-      </Cards.Row>
-      <Cards.Row>
         <Cards.Card className={styles.card}>
-          <Cards.Img className={styles.img} src={SceneImgFourURL} />
+          <Cards.Img className={styles.img} src={scene6} />
           <Cards.Content>
             <Cards.Title>智慧法院</Cards.Title>
             <Cards.Desc>
@@ -65,8 +88,10 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
+      </Cards.Row>
+      <Cards.Row>
         <Cards.Card className={styles.card}>
-          <Cards.Img className={styles.img} src={SceneImgFiveURL} />
+          <Cards.Img className={styles.img} src={scene7} />
           <Cards.Content>
             <Cards.Title>远程医疗</Cards.Title>
             <Cards.Desc>
@@ -74,7 +99,16 @@ export default function QavsScene() {
             </Cards.Desc>
           </Cards.Content>
         </Cards.Card>
-        {isMobile ? null : <Cards.Card className={styles.placeholder} />}
+        {
+          isMobile
+            ? null
+            : (
+              <>
+                <Cards.InvisibleCard className={styles.placeholder} />
+                <Cards.InvisibleCard className={styles.placeholder} />
+              </>
+            )
+        }
       </Cards.Row>
     </Section>
   )

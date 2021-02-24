@@ -32,8 +32,8 @@ export interface IFeatureGroupProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
 }
 
-export interface IFeatureItemProps extends HTMLAttributes<HTMLElement> {
-  title?: string
+export interface IFeatureItemProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+  title?: ReactNode
   icon: ReactNode
   children: ReactNode
   pos?: PosType

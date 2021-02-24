@@ -2,7 +2,7 @@
  * @author: corol
  * @github: github.com/huangbinjie
  * @created: Wed Aug 12 2020
- * @file: APP 安装包分析
+ * @file: App 安装包分析
  *
  * Copyright (c) 2020 Qiniu
  */

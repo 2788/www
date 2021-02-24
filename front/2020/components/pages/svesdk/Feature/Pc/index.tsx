@@ -38,10 +38,10 @@ export default function Pc() {
         <MyCard title="高级美颜" desc="美白、磨皮、锐化、大眼、瘦脸，强度可调节" />
       </TabPane>
       <TabPane tab="贴纸" value="4">
-        <MyCard title="贴纸" desc="可从特效君 APP 中挑选" />
+        <MyCard title="贴纸" desc="可从特效君 App 中挑选" />
       </TabPane>
       <TabPane tab="滤镜" value="5">
-        <MyCard title="滤镜" desc="可从特效君 APP 中挑选" />
+        <MyCard title="滤镜" desc="可从特效君 App 中挑选" />
       </TabPane>
     </Tabs>
   )
