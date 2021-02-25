@@ -10,10 +10,10 @@ export async function getCpsInfo(): Promise<boolean> {
   )
 }
 
-export type SetCpsKeyCookieOptions = {
+export type ReportCpsVisitOptions = {
   cps_key: string
 }
 
-export function setCpsKeyCookie(options: SetCpsKeyCookieOptions): Promise<void> {
+export function reportCpsVisit(options: ReportCpsVisitOptions): Promise<void> {
   return post(`${apiPrefix}/promotions/visit/report`, options)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useMobile } from 'hooks/ua'
-import { useSetCpsKeyCookie } from 'hooks/cps'
+import { useReportCpsVisit } from 'hooks/cps'
 
 import Pc from './Pc'
 import Mobile from './Mobile'
@@ -9,7 +9,7 @@ import Mobile from './Mobile'
 export default function Header() {
   const isMobile = useMobile()
 
-  useSetCpsKeyCookie()
+  useReportCpsVisit()
 
   return isMobile ? <Mobile /> : <Pc />
 }
