@@ -28,10 +28,10 @@ export function Case({ logo, title, children }: CaseProps) {
       <h5 className={style.title}>{title}</h5>
       <div className={style.desc}>{children}</div>
       <div className={style.footer}>
-        <span className={style.consultEntry} onClick={startConsulting}>
+        <button type="button" className={style.consultEntry} onClick={startConsulting}>
           <IconChat className={style.iconChat} />
           在线咨询
-        </span>
+        </button>
       </div>
     </section>
   )
