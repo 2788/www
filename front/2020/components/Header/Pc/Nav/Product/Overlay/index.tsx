@@ -1,15 +1,15 @@
 import React, { MouseEvent } from 'react'
-import { categoryNameMap, nameMap, categories, categoryEnNameMap, urlMap, Product, descMap, categoryProductsMap } from 'constants/products'
+import { categoryNameMap, nameMap, categories, categoryEnNameMap, urlMap, Product, descMap, categorySubCategoriesMap, subCategoryNameMap, subCategoryProductsMap, subCategoryUrlMap } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
 
-import ScrollableOverlay from '../../ScrollableOverlay'
-import Menu from '../../ScrollableOverlay/Menu'
-import MenuItem from '../../ScrollableOverlay/Menu/Item'
-import Content from '../../ScrollableOverlay/Content'
+import ProductOverlay from '../../ProductOverlay'
+import Menu from '../../ProductOverlay/Menu'
+import MenuItem from '../../ProductOverlay/Menu/Item'
+import Content from '../../ProductOverlay/Content'
 import ContentItem from '../../ScrollableOverlay/Content/Item'
-import ContentSection from '../../ScrollableOverlay/Content/Section'
+import ContentSection from '../../ProductOverlay/Content/Section'
 
 export default function Overlay() {
   const { startConsulting } = useModal()
@@ -24,27 +24,35 @@ export default function Overlay() {
     startConsulting()
   }
 
-  const contentSections = categories.map(category => (
-    <ContentSection key={category} title={categoryNameMap[category]}>
-      {categoryProductsMap[category].map(product => (
-        <ProductContentItem
-          key={product}
-          product={product}
-          onConsult={handleConsult}
-        />
-      ))}
-    </ContentSection>
-  ))
-
   return (
-    <ScrollableOverlay>
+    <ProductOverlay>
       <Menu defaultActive={categoryNameMap[categories[0]]}>
         {menuItems}
       </Menu>
-      <Content>
-        {contentSections}
-      </Content>
-    </ScrollableOverlay>
+      {
+        categories.map(category => (
+          <Content key={category} name={categoryNameMap[category]}>
+            {
+              categorySubCategoriesMap[category].map(subCategory => (
+                <ContentSection
+                  key={subCategory}
+                  title={subCategoryNameMap[subCategory]}
+                  url={subCategoryUrlMap[subCategory]}
+                >
+                  {subCategoryProductsMap[subCategory].map(product => (
+                    <ProductContentItem
+                      key={product}
+                      product={product}
+                      onConsult={handleConsult}
+                    />
+                  ))}
+                </ContentSection>
+              ))
+            }
+          </Content>
+        ))
+      }
+    </ProductOverlay>
   )
 }
 

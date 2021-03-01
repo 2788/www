@@ -3,6 +3,8 @@
  * @description 包括 id、展示名、页面地址等
  */
 
+import { Landpage, urlMap as landUrlMap } from '../landpage'
+
 export enum Product {
   /** 对象存储 Kodo */
   Kodo = 'kodo',
@@ -192,6 +194,42 @@ export enum Category {
   Intelligence = 'intelligence'
 }
 
+export enum SubCategory {
+  ServiceStorage = 'service-storage',
+  ServiceDistribution = 'service-distribution',
+  ServiceBasis = 'service-basis',
+  VisionPlatform = 'vision-platform',
+  VisionLiveBroadcast = 'vision-liveBroadcast',
+  IntelligencePlatform = 'intelligence-platform',
+  IntelligenceStorage = 'intelligence-storage',
+}
+
+export const subCategoryNameMap = {
+  [SubCategory.ServiceStorage]: '云存储',
+  [SubCategory.ServiceDistribution]: '云分发',
+  [SubCategory.ServiceBasis]: '云基础',
+  [SubCategory.VisionPlatform]: '视觉数据分析平台',
+  [SubCategory.VisionLiveBroadcast]: '互动直播',
+  [SubCategory.IntelligencePlatform]: '机器数据分析平台',
+  [SubCategory.IntelligenceStorage]: '云存储'
+} as const
+
+// 次级标题链接
+export const subCategoryUrlMap: { [s in SubCategory]?: string } = {
+  [SubCategory.VisionPlatform]: landUrlMap[Landpage.Dora]
+}
+
+export const subCategoryProductsMap: { [s in SubCategory]: readonly Product[] } = {
+  [SubCategory.ServiceStorage]: [Product.Kodo, Product.Archive],
+  [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
+  [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.Sms],
+  [SubCategory.VisionPlatform]: [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii],
+  [SubCategory.VisionLiveBroadcast]:
+    [Product.Pili, Product.Geek, Product.Rtn, Product.Plsv, Product.Plms, Product.QnPlayer, Product.Qvs],
+  [SubCategory.IntelligencePlatform]: [Product.Express],
+  [SubCategory.IntelligenceStorage]: [Product.Kodo, Product.Archive, Product.Hdfs]
+}
+
 /** 基础服务 */
 export const categoryService = [
   Product.Qvm,
@@ -229,6 +267,12 @@ export const categoryIntelligence = [
   Product.Archive,
   Product.Hdfs
 ] as const
+
+export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[] } = {
+  [Category.Service]: [SubCategory.ServiceStorage, SubCategory.ServiceDistribution, SubCategory.ServiceBasis],
+  [Category.Vision]: [SubCategory.VisionPlatform, SubCategory.VisionLiveBroadcast],
+  [Category.Intelligence]: [SubCategory.IntelligencePlatform, SubCategory.IntelligenceStorage]
+}
 
 export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
   [Category.Service]: categoryService,
