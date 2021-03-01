@@ -30,7 +30,10 @@ const pageInfo = {
 function PageContent({ notices }: { notices: INotice[] }) {
   const { startConsulting } = useFeedbackModal()
 
-  const bannerBtns = useBtns({ onClick: startConsulting, children: '立即咨询' })
+  const bannerBtns = useBtns(
+    { href: 'https://portal.qiniu.com/vii/tasks', children: '立即使用', pcOnly: true },
+    { onClick: startConsulting, children: '立即咨询' }
+  )
 
   return (
     <>
