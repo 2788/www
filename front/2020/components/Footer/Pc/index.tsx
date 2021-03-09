@@ -7,7 +7,7 @@ import React, { PropsWithChildren } from 'react'
 import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
-import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import { Product, nameMap, urlMap, categories, categoryNameMap, getCategoryProducts } from 'constants/products'
 import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 
 import Github from './images/github.svg'
@@ -62,7 +62,9 @@ function ProductItems({ products }: { products: readonly Product[] }) {
 function LinkGroups() {
   const productLinkGroupsView = categories.map(category => (
     <LinkGroup key={category} title={categoryNameMap[category]}>
-      <ProductItems products={categoryProductsMap[category]} />
+      <ProductItems
+        products={getCategoryProducts(category)}
+      />
     </LinkGroup>
   ))
   const solutionLinksView = allAvailableSolutions.map(solution => (

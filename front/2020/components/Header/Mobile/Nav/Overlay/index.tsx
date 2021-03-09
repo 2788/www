@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'components/Link'
-import { Product, urlMap, nameMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import { Product, urlMap, nameMap, categories, categoryNameMap, getCategoryProducts } from 'constants/products'
 import { Activity, urlMap as activityUrlMap } from 'constants/activity'
 import * as sol from 'constants/solutions'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
@@ -30,7 +30,9 @@ function getSolutionItems(solutions: readonly sol.Solution[]) {
 export default function Overlay() {
   const productSubMenus = categories.map(category => (
     <SubMenu key={category} title={categoryNameMap[category]}>
-      {getProductItems(categoryProductsMap[category])}
+      {
+        getProductItems(getCategoryProducts(category))
+      }
     </SubMenu>
   ))
 

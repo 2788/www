@@ -7,7 +7,7 @@ import Section from 'components/pages/index/Section'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import { Card as UICard, Title, Content, Desc } from 'components/UI/Card'
-import { Product, nameMap, urlMap, descMap, Category, categoryNameMap, categoryProductsMap, categories } from 'constants/products'
+import { Product, nameMap, urlMap, descMap, Category, categoryNameMap, categories, getCategoryProducts } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import Link from 'components/Link'
 
@@ -64,9 +64,7 @@ function Anim({ active, children }: PropsWithChildren<AnimProps>) {
   return (
     <QueueAnim ease="easeInOutCubic">
       {
-        active
-        ? children
-        : null
+        active ? children : null
       }
     </QueueAnim>
   )
@@ -120,7 +118,7 @@ function subMenuForMobileCategory(category: Category, startConsulting: () => voi
       <Icon />{categoryNameMap[category]}
     </span>
   )
-  const products: readonly Product[] = categoryProductsMap[category]
+  const products: readonly Product[] = getCategoryProducts(category)
   const menuItemsView = products.map(
     product => menuItemForMobileProduct(product, startConsulting)
   )
@@ -168,7 +166,7 @@ function tabPaneForPcCategory(category: Category, active: Category) {
       <Icon />{categoryNameMap[category]}
     </span>
   )
-  const products: readonly Product[] = categoryProductsMap[category]
+  const products: readonly Product[] = getCategoryProducts(category)
   const cardsView = products.map(
     product => <CardForPcProduct key={product} product={product} />
   )

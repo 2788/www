@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
-import { Product, nameMap, urlMap, categories, categoryNameMap, categoryProductsMap } from 'constants/products'
+import { Product, nameMap, urlMap, categories, categoryNameMap, getCategoryProducts } from 'constants/products'
 import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 import Button from 'components/UI/Button'
 
@@ -28,7 +28,9 @@ function getProductItems(products: readonly Product[]) {
 export default function FooterForMobile() {
   const productSubMenusView = categories.map(category => (
     <SubMenu key={category} title={categoryNameMap[category]}>
-      {getProductItems(categoryProductsMap[category])}
+      {
+        getProductItems(getCategoryProducts(category))
+      }
     </SubMenu>
   ))
   const solutionMenuItemsView = allAvailableSolutions.map(solution => (

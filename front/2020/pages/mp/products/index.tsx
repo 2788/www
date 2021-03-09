@@ -6,7 +6,7 @@ import Layout from 'components/Layout'
 import Link from 'components/Link'
 import MpBanner from 'components/mp/Banner'
 import Tabs, { TabPane } from 'components/UI/Tabs'
-import { Category, categoryNameMap, categoryService, Product, nameMap, descMap, categoryVision, categoryIntelligence, urlMap } from 'constants/products'
+import { Category, categoryNameMapForMp, categories, Product, nameMap, descMap, urlMap, getCategoryProducts } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { MpPage } from 'constants/mp'
 
@@ -20,15 +20,15 @@ export default function Main() {
       <div style={{ padding: '16px', background: '#FFFFFF' }}>
         <MpBanner banner={banner} />
         <Tabs value={Category.Service} size="middle" className={style.tabs} contentClassName={style.tabsContent} shadow={false}>
-          <TabPane value={Category.Service} tab={categoryNameMap[Category.Service]}>
-            {categoryService.map(product => <Card key={product} product={product} />)}
-          </TabPane>
-          <TabPane value={Category.Vision} tab={categoryNameMap[Category.Vision]}>
-            {categoryVision.map(product => <Card key={product} product={product} />)}
-          </TabPane>
-          <TabPane value={Category.Intelligence} tab={categoryNameMap[Category.Intelligence]}>
-            {categoryIntelligence.map(product => <Card key={product} product={product} />)}
-          </TabPane>
+          {
+            categories.map(category => (
+              <TabPane value={category} tab={categoryNameMapForMp[category]} key={category}>
+                {
+                  getCategoryProducts(category).map(product => <Card key={product} product={product} />)
+                }
+              </TabPane>
+            ))
+          }
         </Tabs>
         <MpBanner
           title="更多产品咨询"
@@ -48,12 +48,20 @@ type CardProps = {
 
 function Card({ product }: CardProps) {
   return (
-    <Link className={style.card} href={urlMap[product] as string}>
-      <div className={style.cardIcon}><ProductIcon product={product} /></div>
-      <div>
-        <div className={style.cardTitle}>{nameMap[product]}</div>
-        <div className={style.cardDesc}>{descMap[product]}</div>
-      </div>
-    </Link>
+    <>
+      {
+        descMap[product]
+          ? (
+            <Link className={style.card} href={urlMap[product] as string} >
+              <div className={style.cardIcon}><ProductIcon product={product} /></div>
+              <div>
+                <div className={style.cardTitle}>{nameMap[product]}</div>
+                <div className={style.cardDesc}>{descMap[product]}</div>
+              </div>
+            </Link>
+          )
+          : null
+      }
+    </>
   )
 }

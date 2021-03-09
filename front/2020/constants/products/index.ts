@@ -198,20 +198,22 @@ export enum SubCategory {
   ServiceStorage = 'service-storage',
   ServiceDistribution = 'service-distribution',
   ServiceBasis = 'service-basis',
+  VisionStoDist = 'vision-stoDist',
   VisionPlatform = 'vision-platform',
   VisionLiveBroadcast = 'vision-liveBroadcast',
-  IntelligencePlatform = 'intelligence-platform',
-  IntelligenceStorage = 'intelligence-storage',
+  IntelligenceStoDist = 'intelligence-stoDist',
+  IntelligencePlatform = 'intelligence-platform'
 }
 
 export const subCategoryNameMap = {
   [SubCategory.ServiceStorage]: '云存储',
   [SubCategory.ServiceDistribution]: '云分发',
   [SubCategory.ServiceBasis]: '云基础',
+  [SubCategory.VisionStoDist]: '存储与分发',
   [SubCategory.VisionPlatform]: '视觉数据分析平台',
   [SubCategory.VisionLiveBroadcast]: '互动直播',
-  [SubCategory.IntelligencePlatform]: '机器数据分析平台',
-  [SubCategory.IntelligenceStorage]: '云存储'
+  [SubCategory.IntelligenceStoDist]: '存储与分发',
+  [SubCategory.IntelligencePlatform]: '机器数据分析平台'
 } as const
 
 // 次级标题链接
@@ -223,11 +225,12 @@ export const subCategoryProductsMap: { [s in SubCategory]: readonly Product[] } 
   [SubCategory.ServiceStorage]: [Product.Kodo, Product.Archive],
   [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
   [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.Sms],
+  [SubCategory.VisionStoDist]: [Product.Kodo, Product.Cdn],
   [SubCategory.VisionPlatform]: [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii],
   [SubCategory.VisionLiveBroadcast]:
     [Product.Pili, Product.Geek, Product.Rtn, Product.Plsv, Product.Plms, Product.QnPlayer, Product.Qvs],
-  [SubCategory.IntelligencePlatform]: [Product.Express],
-  [SubCategory.IntelligenceStorage]: [Product.Kodo, Product.Archive, Product.Hdfs]
+  [SubCategory.IntelligenceStoDist]: [Product.Kodo, Product.Cdn, Product.Hdfs],
+  [SubCategory.IntelligencePlatform]: [Product.Express]
 }
 
 /** 基础服务 */
@@ -270,8 +273,16 @@ export const categoryIntelligence = [
 
 export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[] } = {
   [Category.Service]: [SubCategory.ServiceStorage, SubCategory.ServiceDistribution, SubCategory.ServiceBasis],
-  [Category.Vision]: [SubCategory.VisionPlatform, SubCategory.VisionLiveBroadcast],
-  [Category.Intelligence]: [SubCategory.IntelligencePlatform, SubCategory.IntelligenceStorage]
+  [Category.Vision]: [SubCategory.VisionStoDist, SubCategory.VisionPlatform, SubCategory.VisionLiveBroadcast],
+  [Category.Intelligence]:
+    [SubCategory.IntelligenceStoDist, SubCategory.IntelligencePlatform]
+}
+
+export function getCategoryProducts(category: Category): Product[] {
+  return categorySubCategoriesMap[category].reduce(
+    (accumulator, current) => [...accumulator, ...subCategoryProductsMap[current]],
+    [] as Product[]
+  )
 }
 
 export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
@@ -281,19 +292,25 @@ export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
 }
 
 export const categoryNameMap = {
-  [Category.Service]: '基础服务',
+  [Category.Service]: '基础能力',
+  [Category.Vision]: '智能多媒体数据处理平台',
+  [Category.Intelligence]: '机器数据处理平台'
+} as const
+
+export const categoryNameMapForMp = {
   [Category.Vision]: '视觉数据智能',
-  [Category.Intelligence]: '机器数据智能'
+  [Category.Intelligence]: '机器数据智能',
+  [Category.Service]: '基础服务'
 } as const
 
 export const categoryEnNameMap = {
   [Category.Service]: 'Cloud Essentials',
-  [Category.Vision]: 'CV Data Intelligence',
-  [Category.Intelligence]: 'Machine Data Intelligence'
+  [Category.Vision]: 'Media PaaS',
+  [Category.Intelligence]: 'Data PaaS'
 } as const
 
 export const categories = [
-  Category.Service,
   Category.Vision,
-  Category.Intelligence
+  Category.Intelligence,
+  Category.Service
 ] as const
