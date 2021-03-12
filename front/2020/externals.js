@@ -15,7 +15,12 @@ const { PHASE_PRODUCTION_BUILD } = require('next/dist/next-server/lib/constants'
 const { runCompiler } = require('next/dist/build/compiler')
 
 // 所有需要对外的 external 组件，对应 /externals/ 下的内容
-const externals = ['header', 'footer', 'feedback-entry']
+const externals = [
+  'header',
+  'footer',
+  'feedback-entry',
+  'cps-visit-reporter'
+]
 
 const dir = resolve('.')
 const outputPath = resolve('.next')
