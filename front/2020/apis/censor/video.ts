@@ -82,8 +82,13 @@ export async function videoCensor(options: CreateVideoJobOptions) {
   let shouldRetry = maxRetry
 
   while (shouldRetry--) {
-    // eslint-disable-next-line no-await-in-loop
-    const res = await getVideoJob(jobId)
+    let res
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      res = await getVideoJob(jobId)
+    } catch {
+      throw new Error(failedMsg)
+    }
     if (res.status === 'FINISHED') {
       const result = res.result!
       if (result.code !== 200) {

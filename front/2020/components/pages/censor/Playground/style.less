@@ -7,7 +7,12 @@
 .playground {
   display: flex;
   .left {
-    flex: 1 1 700px
+    flex: 1 1 700px;
+  }
+  .leftText, .leftAudio {
+    .left;
+    background: white;
+    padding: 12px 0 12px 12px;
   }
   .right {
     margin-left: 24px;
@@ -18,42 +23,103 @@
 
 .activeBlock {
   display: flex;
-  .imgBlock, .videoBlock {
-    flex: 1 1 auto;
-    height: 338px;
+  .imgBlock, .videoBlock, .textBlock {
     position: relative;
+    height: 338px;
+    flex: 1 1 auto;
     text-align: center;
     img, video {
       max-width: 100%;
       max-height: 100%;
     }
+    textarea {
+      width: 100%;
+      height: 100%;
+      min-height: 438px;
+      padding: 8px 12px;
+      color: #333333;
+      border: 1px solid #bfbfbf;
+      background-color: #FFFFFF;
+      border-radius: 3px;
+      outline: none;
+      resize: none;
+      &::placeholder {
+       color: #BFBFBF; 
+      }
+    }
+    button {
+      float: right;
+      margin-top: 8px;
+    }
+  }
+
+  .audioBlock {
+    position: relative;
+    flex: 1 1 auto;
+    height: 382px;
+    text-align: center;
+    .infoBlock {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #FAFAFA;
+      .tip {
+        margin-top: 15px;
+        color: #999999;
+        font-size: 12px;
+      }
+      .filename {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #333333;
+      }
+    }
   }
 
   .resultBlock {
     flex: 0 0 175px;
-    padding: 20px 24px;
-    background-color: #FAFAFA;
-
+    padding: 16px 12px;
+    background-color: white;
     .loadingText {
       font-size: 12px;
       color: @grey-6;
     }
   }
+
+  .audioTextResultBlock {
+    .resultBlock;
+    padding: 0 12px;
+  }
+
   .resultItem {
+    display: inline-flex;
+    width: 152px;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 12px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
     & + .resultItem {
-      margin-top: 20px;
+      margin-top: 12px;
     }
     &.nopass {
+      border: 1px solid @red-6;
       .scene, .suggestion {
         color: @red-6;
       }
     }
     .scene {
-      font-size: 12px;
+      float: left;
       color: @grey-6;
     }
     .suggestion {
-      margin-top: 8px;
+      float: right;
+      color: #333333;
     }
   }
 }
@@ -61,20 +127,36 @@
 .inputLine {
   margin-top: 20px;
   display: flex;
-
   .input {
     flex: 1 1 auto;
     padding: 6px 8px;
     border: 1px solid @grey-3;
+    background-color: #FFFFFF;
   }
-
   .submitBtn {
     margin-left: 8px;
     flex: 0 0 92px;
   }
 }
 
+.audioInputLine {
+  margin-top: 20px;
+  .input {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid @grey-3;
+  }
+  .submitBtn {
+    float: right;
+    margin-top: 16px;
+    margin-left: 8px;
+  }
+}
+
 .apiResult {
+  height: 518px;
+  overflow-y: auto;
+  background-color: white;
   .radios {
     margin-bottom: 20px;
   }

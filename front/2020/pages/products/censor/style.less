@@ -1,0 +1,35 @@
+@import '~utils/less/index.less';
+
+.cardWrapper {
+  height: 162px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 36px;
+  .mobile({
+    height: 96px;
+    padding: 16px 12px;
+  })
+}
+
+.cardTitle {
+  font-size: 20px;
+  color: #00AAE7;
+  line-height: 30px;
+  margin-bottom: 12px;
+  .mobile({
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  })
+}
+
+.cardDesc {
+  flex: 1;
+  font-size: 16px;
+  line-height: 24px;
+  color: @grey-7;
+  .mobile({
+    font-size: 12px;
+    line-height: 17px;
+  })
+}

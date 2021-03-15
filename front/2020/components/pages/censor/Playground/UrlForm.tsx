@@ -11,9 +11,10 @@ import style from './style.less'
 export type Props = {
   placeholder: string
   onSubmit(url: string): void
+  isAudio?: boolean
 }
 
-export default function UrlForm({ placeholder, onSubmit }: Props) {
+export default function UrlForm({ placeholder, onSubmit, isAudio = false }: Props) {
   const [input, setInput] = useState('')
 
   const isValid = isUrl(input)
@@ -24,7 +25,7 @@ export default function UrlForm({ placeholder, onSubmit }: Props) {
   }
 
   return (
-    <form className={style.inputLine} onSubmit={handleSubmit}>
+    <form className={isAudio ? style.audioInputLine : style.inputLine} onSubmit={handleSubmit}>
       <input
         type="text"
         className={style.input}
