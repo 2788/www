@@ -63,8 +63,8 @@ function getSuggestion(apiResult: ImageCensorRes | null, openApiResult: ImageOpe
   } as Record<string, number>
   const weightToRiskLevel = {
     0: 'pass',
-    1: 'block',
-    2: 'review'
+    1: 'review',
+    2: 'block'
   } as Record<number, string>
   return weightToRiskLevel[Math.max(riskLevelToWeight[apiResult?.suggestion!], riskLevelToWeight[openApiSuggestion])]
 }

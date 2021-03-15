@@ -114,8 +114,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
         <feature.Group>
           <feature.Item pos="left-right" title="直播审核" icon={<IconLiveAudit />}>
             <feature.Desc>
-              帮助您检测直播中的不良信息，并给出审核结果管控建议。
-              支持的审核类型包括：直播鉴黄、直播鉴暴恐、
+              帮助您检测直播中的不良信息，并给出审核结果管控建议。<br />
+              支持的审核类型包括：直播鉴黄、直播鉴暴恐、<br />
               直播敏感人物识别、直播语音违规内容识别。
             </feature.Desc>
           </feature.Item>
