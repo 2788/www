@@ -3,7 +3,7 @@
  * @author jiayizhen <jiayizhen@qiniu.com>
  */
 
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { getUrlQueryValueByKey } from 'hooks/url'
 import { useApi } from 'hooks/api'
@@ -29,5 +29,5 @@ export default function CpsVisitReporter() {
     })
   }, [callReportCpsVisit])
 
-  return <div></div>
+  return null
 }
