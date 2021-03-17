@@ -147,19 +147,3 @@ export function useUrl() {
 
   return url
 }
-
-/**
- * 根据 key 直接从 window.location.search 中获取对应的 value
- * 适用于路由无法正确反映当前页面 url 所造成的无法使用 useQueryValue 的情况
- * 例如：externals 组件中需要获取当前页面的 url query 参数
- */
-export function getUrlQueryValueByKey(key: string) {
-  if (!key) return ''
-
-  const reg = new RegExp(`(^|&)${key}=([^&]*)(&|#|$)`)
-  const match = window.location.search.substring(1).match(reg)
-
-  if (!match) return ''
-
-  return decodeURIComponent(match[2] || '')
-}
