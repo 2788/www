@@ -4,8 +4,8 @@
  */
 
 import { useEffect } from 'react'
+import { parse } from 'query-string'
 
-import { getUrlQueryValueByKey } from 'hooks/url'
 import { useApi } from 'hooks/api'
 
 import { reportCpsVisit } from 'apis/cps'
@@ -20,7 +20,14 @@ export default function CpsVisitReporter() {
     // 注意，这边不能使用 useQueryValue 来获取 url 中的 cps_key query 值
     // 因为在 例如：externals 组件中路由不能反映当前页面的 url
     // 用 useQueryValue 会出现取不到值的情况
-    const cpsKey = getUrlQueryValueByKey('cps_key')
+    const parsedSearchObj = parse(window.location.search)
+    let cpsKey = parsedSearchObj.cps_key
+
+    // 如果 cps_key 为一个数组
+    // 则取第一个有效的值
+    if (Array.isArray(cpsKey)) {
+      cpsKey = cpsKey.find(item => !!item)
+    }
 
     if (!cpsKey) return
 
