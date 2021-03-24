@@ -11,6 +11,7 @@ import { pv } from 'utils/sensors'
 import { useMp } from 'hooks/ua'
 import { useSource } from 'hooks/sensors'
 import { OverlayProvider, OverlaySlot } from 'components/Overlay'
+import CpsVisitReporter from 'components/CpsVisitReporter'
 
 import ErrorBoundary from './ErrorBoundary'
 import UaProvider from './UaProvider'
@@ -76,6 +77,7 @@ function ContentWrapper({ children }: PropsWithChildren<{}>) {
         <feedback.Modal />
       </feedback.ModalProvider>
       <OverlaySlot />
+      <CpsVisitReporter />
     </OverlayProvider>
   )
 }
