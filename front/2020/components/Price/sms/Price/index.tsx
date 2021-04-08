@@ -32,7 +32,7 @@ export default function Price() {
   return (
     <PricePane>
       <PricePaneSection title="计费方式" className={style.mode} padding>
-        <p>云短信服务的计费方式只支持预付费（资源包），自 2019 年 12 月 10 日起，完成实名认证后，还可享受共 300 条的免费测试短信（1 年有效期）。</p>
+        <p>云短信服务的计费方式只支持预付费（资源包），自 2019 年 12 月 10 日起，完成企业认证后，还可享受共 300 条的免费测试短信（1 年有效期）。</p>
         <strong>免费短信套餐包 300 条 = 验证码 100 条 + 通知 100 条 + 推广 100 条</strong>
 
         <p className={style.alert}>* 请您在免费额度使用完后，及时购买短信资源包，以免您的短信服务受到限制。</p>
