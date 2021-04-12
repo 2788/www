@@ -298,7 +298,7 @@ const data = [
     measure: '',
     standard: '免费',
     low: '0.06 元/GB',
-    archive: '0.01 元/GB'
+    archive: '0.1 元/GB'
   },
   {
     key: 12,

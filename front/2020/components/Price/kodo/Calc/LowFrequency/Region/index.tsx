@@ -29,7 +29,7 @@ export default function Region({ region, desc, onChange }: RegionProps) {
       { name: 'CDN', desc: 'CDN 回源流出流量/月', count: 0, unit: 'GB' },
       { name: 'GET', desc: 'GET 读请求数/月', count: 0, unit: '万次' },
       { name: 'PUT/DELETE', desc: 'PUT/DELETE 写请求数/月', count: 0, unit: '万次' },
-      { name: '数据取回', desc: '数据取回/月', count: 0, unit: '万次' },
+      { name: '数据取回', desc: '数据取回/月', count: 0, unit: 'GB' },
       { name: '类型转换次数', desc: '存储类型转换/月', count: 0, unit: '万次' }
     ]
   })
@@ -82,7 +82,7 @@ export default function Region({ region, desc, onChange }: RegionProps) {
         </div>
         <div className={style.areaItem}>
           <p>数据取回/月</p>
-          <InputNumber onChange={handleValueChange(5)} addonAfter="万次" />
+          <InputNumber onChange={handleValueChange(5)} addonAfter="GB" />
         </div>
       </div>
       <div className={style.areaRow}>

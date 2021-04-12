@@ -228,7 +228,7 @@ const east: CalcRule = {
     },
     {
       name: '数据取回',
-      price: 0.06,
+      price: 0.08,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -349,7 +349,7 @@ const us: CalcRule = {
     },
     {
       name: '数据取回',
-      price: 0.01,
+      price: 0.1,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
