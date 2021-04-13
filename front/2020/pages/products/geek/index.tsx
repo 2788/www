@@ -97,7 +97,7 @@ export default function GeekPage({ notices }: InferGetStaticPropsType<typeof get
   return (
     <Layout
       title={pageInfo.layoutTitle}
-      keywords={pageInfo.description}
+      keywords={pageInfo.keywords}
       description={pageInfo.description}
     >
       <PageContent notices={notices} />
