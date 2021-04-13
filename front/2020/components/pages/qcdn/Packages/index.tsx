@@ -6,11 +6,12 @@
 import React from 'react'
 import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
+import { ids, Promotion } from 'apis/qcdn'
 
 import CheckedIcon from './checked.svg'
 import style from './index.less'
 
-export default function Packages() {
+export default function Packages({ promotionMap }: { promotionMap: { [k: number]: Promotion } }) {
   return (
     <Section name="packages" title="热销套餐" grey>
       <Card
@@ -19,7 +20,8 @@ export default function Packages() {
         category="国内加速流量"
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
-        price="75.00"
+        originalPrice={promotionMap[ids[0]].original_price}
+        price={promotionMap[ids[0]].price}
         detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk3OA"
         sellPoints={['适用时段：9:00 - 18:00']}
       />
@@ -29,7 +31,8 @@ export default function Packages() {
         category="国内加速流量"
         capacity="500 GB"
         categoryDesc="一次性发放，一年有效"
-        price="98.00"
+        originalPrice={promotionMap[ids[1]].original_price}
+        price={promotionMap[ids[1]].price}
         detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk1MQ"
         sellPoints={['适用时段：全时段可用']}
       />
@@ -39,7 +42,8 @@ export default function Packages() {
         category="国内加速流量"
         capacity="1 TB"
         categoryDesc="一次性发放，一年有效"
-        price="193.00"
+        originalPrice={promotionMap[ids[2]].original_price}
+        price={promotionMap[ids[2]].price}
         detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk1NA"
         sellPoints={['适用时段：全时段可用']}
       />
@@ -49,7 +53,8 @@ export default function Packages() {
         category="国内加速流量"
         capacity="5 TB"
         categoryDesc="一次性发放，一年有效"
-        price="942.00"
+        originalPrice={promotionMap[ids[3]].original_price}
+        price={promotionMap[ids[3]].price}
         detailLink="https://qmall.qiniu.com/template/NTI?spec_combo=MTk1Nw"
         sellPoints={['适用时段：全时段可用']}
       />
@@ -65,7 +70,8 @@ type CardProps = {
   categoryDesc: string
   unit: string
   sellPoints: string[]
-  price: string
+  originalPrice: number
+  price: number
   detailLink: string
 }
 
@@ -74,7 +80,7 @@ Card.defaultProps = {
 }
 
 function Card(props: CardProps) {
-  const { title, desc, category, capacity, categoryDesc, sellPoints, price, unit, detailLink } = props
+  const { title, desc, category, capacity, categoryDesc, sellPoints, originalPrice, price, unit, detailLink } = props
   const sellPointItems = sellPoints.map((sellPoint, index) => (
     <p key={index} className={style.row}>
       <CheckedIcon className={style.icon} />
@@ -100,8 +106,11 @@ function Card(props: CardProps) {
       </div>
       <div className={style.footer}>
         <p className={style.price}>
-          <span className={style.number}>{price}</span>
+          <span className={style.number}>{price.toFixed(2)}</span>
           <span>{unit}</span>
+        </p>
+        <p className={style.originalPrice}>
+          原价：{originalPrice.toFixed(2)}{unit}
         </p>
         <Button className={style.button} href={detailLink} type="hollow" withBorder>
           立即购买

@@ -11,6 +11,7 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNotices, INotice } from 'apis/admin/notice'
+import { getPromotionMap, Promotion } from 'apis/qcdn'
 import ProductNotice from 'components/Product/common/ProductNotice'
 
 import Navigator from 'components/Product/Navigator'
@@ -47,7 +48,7 @@ import Advantage6Icon from './_images/advantage6.svg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, promotionMap }: { notices: INotice[], promotionMap: { [k: number]: Promotion } }) {
 
   const priceUrl = urlForPrice(Product.Cdn)
 
@@ -74,7 +75,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
 
       <Coverage />
 
-      <Packages />
+      <Packages promotionMap={promotionMap} />
 
       <Feature name="core" title="核心功能" header="核心功能及服务">
         <FeatureGroup>
@@ -173,14 +174,14 @@ function PageContent({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function CdnPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function CdnPage({ notices, promotionMap }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="CDN_内容分发网络_CDN 网站加速_CDN 服务器_国内 CDN 加速"
       keywords="高防CDN, 动态CDN, 静态CDN, CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器, 内容分发, 云加速, CDN, 图片CDN, 视频CDN"
       description="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} promotionMap={promotionMap} />
     </Layout>
   )
 }
@@ -188,7 +189,8 @@ export default function CdnPage({ notices }: InferGetStaticPropsType<typeof getS
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Cdn)
+      notices: await getNotices(Product.Cdn),
+      promotionMap: await getPromotionMap()
     }
   }
 }
