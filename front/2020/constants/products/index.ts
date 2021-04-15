@@ -60,6 +60,8 @@ export enum Product {
   QnPlayer = 'qnPlayer',
   /** 短视频特效 SDK */
   Svesdk = 'svesdk',
+  /** 智能语音 */
+  Voice = 'voice'
 }
 
 // TODO: 这个再核对一遍
@@ -91,7 +93,8 @@ export const nameMap = {
   [Product.Geek]: '低延时直播 Geek',
   [Product.Vii]: '视频智能分析',
   [Product.QnPlayer]: '播放器 SDK',
-  [Product.Svesdk]: '短视频特效 SDK'
+  [Product.Svesdk]: '短视频特效 SDK',
+  [Product.Voice]: '智能语音'
 } as const
 
 export const urlMap = {
@@ -121,7 +124,8 @@ export const urlMap = {
   [Product.Geek]: '/products/geek',
   [Product.Vii]: '/products/vii',
   [Product.QnPlayer]: '/products/qnplayer',
-  [Product.Svesdk]: '/products/svesdk'
+  [Product.Svesdk]: '/products/svesdk',
+  [Product.Voice]: '/products/voice'
 } as const
 
 export const priceUrlMap = {
@@ -151,7 +155,8 @@ export const priceUrlMap = {
   [Product.Geek]: null,
   [Product.Vii]: null,
   [Product.QnPlayer]: null,
-  [Product.Svesdk]: null
+  [Product.Svesdk]: null,
+  [Product.Voice]: null
 } as const
 
 export const descMap = {
@@ -185,7 +190,8 @@ export const descMap = {
   [Product.Geek]: '构建了全新的低延时直播互动体验',
   [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐',
   [Product.QnPlayer]: '全自研点直播多媒体播放器',
-  [Product.Svesdk]: ''
+  [Product.Svesdk]: '',
+  [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互'
 } as const
 
 export enum Category {
@@ -226,7 +232,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: readonly Product[] } 
   [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
   [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.Sms],
   [SubCategory.VisionStoDist]: [Product.Kodo, Product.Cdn],
-  [SubCategory.VisionPlatform]: [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii],
+  [SubCategory.VisionPlatform]: [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii, Product.Voice],
   [SubCategory.VisionLiveBroadcast]:
     [Product.Pili, Product.Geek, Product.Rtn, Product.Plsv, Product.Plms, Product.QnPlayer, Product.Qvs],
   [SubCategory.IntelligenceStoDist]: [Product.Kodo, Product.Cdn, Product.Hdfs],
@@ -254,6 +260,7 @@ export const categoryVision = [
   Product.FaceID,
   Product.Ocr,
   Product.Vii,
+  Product.Voice,
   Product.Pili,
   Product.Geek,
   Product.Rtn,

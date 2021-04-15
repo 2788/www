@@ -40,7 +40,8 @@ const iconMap = {
   [Product.Geek]: require('./images/default/geek.svg').default,
   [Product.Vii]: require('./images/default/vii.svg').default,
   [Product.QnPlayer]: require('./images/default/qnplayer.svg').default,
-  [Product.Svesdk]: null
+  [Product.Svesdk]: null,
+  [Product.Voice]: require('./images/default/voice.svg').default
 }
 
 const smallIconMap = {
@@ -70,7 +71,8 @@ const smallIconMap = {
   [Product.Geek]: require('./images/small/geek.svg').default,
   [Product.Vii]: require('./images/small/vii.svg').default,
   [Product.QnPlayer]: require('./images/small/qnplayer.svg').default,
-  [Product.Svesdk]: null
+  [Product.Svesdk]: null,
+  [Product.Voice]: require('./images/small/voice.svg').default
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {
