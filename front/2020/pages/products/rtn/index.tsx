@@ -46,7 +46,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   const priceUrl = urlForPrice(Product.Rtn)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/rtn/rtc/report/duration', children: '开始使用', pcOnly: true },
+    { href: 'https://portal.qiniu.com/rtn', children: '开始使用', pcOnly: true },
     { onClick: startConsulting, children: '立即咨询' },
     { href: 'https://demo-rtc.qnsdk.com/', children: '在线体验' }
   )
