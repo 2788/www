@@ -3,6 +3,7 @@
  */
 
 import React, { useState, useMemo } from 'react'
+import Select from 'react-icecream/lib/select'
 import { urlForQvmBuy } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
 import { getPriceWithDiscount, PriceWithDiscount, GetPriceWithDiscountOptions, MetaInfo } from 'apis/qvm'
@@ -77,18 +78,18 @@ function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: Met
   const regionIds = Object.keys(instanceTypesByRegions).sort(regionIdSorter)
   const [regionId, setRegionId] = useState(regionIds[0])
   const regionOptions = regionIds.map(id => (
-    <option key={id} value={id}>{regionMap[id]}</option>
+    <Select.Option key={id} value={id}>{regionMap[id]}</Select.Option>
   ))
 
   const instanceTypes = instanceTypesByRegions[regionId] || []
   const [instanceType, setInstanceType] = useState(instanceTypes[0])
   const instanceTypeOptions = instanceTypes.map(type => (
-    <option key={type} value={type}>{instanceTypeMap[type]}</option>
+    <Select.Option key={type} value={type}>{instanceTypeMap[type]}</Select.Option>
   ))
 
   const [duration, setDuration] = useState(durations[0])
   const durationOptions = durations.map(d => (
-    <option key={d} value={d}>{humanizeDuration(d)}</option>
+    <Select.Option key={d} value={d}>{humanizeDuration(d)}</Select.Option>
   ))
 
   const buyUrl = urlForQvmBuy({
@@ -114,30 +115,33 @@ function PriceForm({ instanceTypesByRegions, metaInfo }: Props & { metaInfo: Met
     <form className={style.priceForm}>
       <label className={style.formItem}>
         <span className={style.text}>地域</span>
-        <select
-          name="region"
+        <Select
           className={style.ctrl}
           value={regionId}
-          onChange={e => setRegionId(e.target.value)}
-        >{regionOptions}</select>
+          onChange={val => setRegionId(val as string)}
+        >
+          {regionOptions}
+        </Select>
       </label>
       <label className={style.formItem}>
         <span className={style.text}>CPU 内存</span>
-        <select
-          name="instanceType"
+        <Select
           className={style.ctrl}
           value={instanceType}
-          onChange={e => setInstanceType(e.target.value)}
-        >{instanceTypeOptions}</select>
+          onChange={val => setInstanceType(val as string)}
+        >
+          {instanceTypeOptions}
+        </Select>
       </label>
       <label className={style.formItem}>
         <span className={style.text}>购买时长</span>
-        <select
-          name="duration"
+        <Select
           className={style.ctrl}
           value={duration}
-          onChange={e => setDuration(parseInt(e.target.value, 10))}
-        >{durationOptions}</select>
+          onChange={val => setDuration(parseInt(val as string, 10))}
+        >
+          {durationOptions}
+        </Select>
       </label>
       <PriceInfo loading={loading} info={priceWithDiscount} error={error} />
       {/* 这边不走 form 的 submit 是因为参数不好控制，参考 https://stackoverflow.com/questions/1116019/submitting-a-get-form-with-query-string-params-and-hidden-params-disappear */}

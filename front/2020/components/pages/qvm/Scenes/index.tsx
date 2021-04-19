@@ -36,7 +36,8 @@ export default function QvmScenes() {
               <Tabs defaultValue="1" size="small">
                 <TabPane value="1" tab="个人测试开发环境">
                   <InstanceCard
-                    type="t5-lc1m2.small"
+                    type="ecs.t5-lc1m2.small"
+                    region="cn-zhangjiakou"
                     name="突发性能型 1 C/2 G"
                     desc="适合测试开发等非线上生产环境"
                     bandwidth={1}
@@ -46,7 +47,8 @@ export default function QvmScenes() {
                 </TabPane>
                 <TabPane value="2" tab="中小型官网/应用">
                   <InstanceCard
-                    type="n4.large"
+                    type="ecs.n4.large"
+                    region="cn-qingdao"
                     name="共享计算型 2 C/4 G"
                     desc="适合 PV 10 万， DAU 1000左右的业务系统"
                     bandwidth={3}
@@ -56,7 +58,8 @@ export default function QvmScenes() {
                 </TabPane>
                 <TabPane value="3" tab="大型官网/应用">
                   <InstanceCard
-                    type="c6.xlarge"
+                    type="ecs.c5.xlarge"
+                    region="cn-zhangjiakou"
                     name="计算型 4 C/8 G"
                     desc="适合 PV 20 万， DAU 3000 的业务系统 "
                     bandwidth={5}
@@ -88,11 +91,12 @@ export default function QvmScenes() {
             <>
               <Title>推荐配置</Title>
               <InstanceCard
-                type="r6.2xlarge"
+                type="ecs.r6.2xlarge"
+                region="cn-zhangjiakou"
                 name="内存型 8 C/64 G"
                 bandwidth={5}
                 ipNum={1}
-                storage="ESSD 100 G"
+                storage="高效云盘 40 G"
               />
             </>
           )}
@@ -115,7 +119,8 @@ export default function QvmScenes() {
             <>
               <Title>推荐配置</Title>
               <InstanceCard
-                type="sn1ne.xlarge"
+                type="ecs.sn1ne.xlarge"
+                region="cn-qingdao"
                 name="计算网络增强型 4 C/8 G"
                 bandwidth={3}
                 ipNum={1}
@@ -159,11 +164,12 @@ export default function QvmScenes() {
             <>
               <Title>推荐配置</Title>
               <InstanceCard
-                type="gn6v-c8g1.8xlarge"
+                type="ecs.gn6v-c8g1.8xlarge"
+                region="cn-zhangjiakou"
                 name="GPU机型 32 C/128 G"
                 bandwidth={5}
                 ipNum={1}
-                storage="ESSD 200 G"
+                storage="高效云盘 40 G"
               />
             </>
           )}
@@ -197,11 +203,12 @@ export default function QvmScenes() {
             <>
               <Title>推荐配置</Title>
               <InstanceCard
-                type="hfc6.16xlarge"
+                type="ecs.hfc6.16xlarge"
+                region="cn-zhangjiakou"
                 name="高主频计算型 64 C/128 G"
                 bandwidth={1}
                 ipNum={1}
-                storage="ESSD 100 G"
+                storage="高效云盘 40 G"
               />
             </>
           )}
@@ -237,6 +244,7 @@ function SubItem({ children }: PropsWithChildren<{}>) {
 
 type InstanceCardProps = {
   type: string // instance type 用来拼接购买链接
+  region: string // region id 用来拼接购买链接
   name: string
   desc?: string
   bandwidth: number // 带宽，单位 M
@@ -244,11 +252,12 @@ type InstanceCardProps = {
   storage: string // 系统盘大小
 }
 
-function InstanceCard({ type, name, desc, bandwidth, ipNum, storage }: InstanceCardProps) {
+function InstanceCard({ type, region, name, desc, bandwidth, ipNum, storage }: InstanceCardProps) {
 
   const buyUrl = urlForQvmBuy({
     ui_mode: 'submit',
     instance_type: type,
+    region_id: region,
     eip: bandwidth,
     buymonth: 12
   })
