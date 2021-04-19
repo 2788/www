@@ -69,8 +69,8 @@ const products = [
       '规格：4 核 16G',
       '节点数量：双节点'
     ],
-    prePrice: '11400',
-    nowPrice: '8520',
+    prePrice: '22800',
+    nowPrice: '17040',
     href: 'https://portal.qiniu.com/qvm/db/polardb/create?region_id=cn-hangzhou&buymonth=12&db_type=MySQL&db_version=mysql56&db_node_class=polar.mysql.x4.large&replication_factor=2'
   }
 ]

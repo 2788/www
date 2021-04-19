@@ -9,6 +9,7 @@ import Link from 'next/link'
 import SearchInput from './Search'
 import Userinfo from './Userinfo'
 import Nav from './Nav'
+import Button from '../../UI/Button'
 
 import Logo from '../logo.svg'
 import style from './style.less'
@@ -22,6 +23,7 @@ export default function HeaderForPc() {
         <SearchInput />
         <div className={style.space}></div>
         <Userinfo />
+        <Button type="primary" size="small" href="https://portal.qiniu.com" style={{ width: '94px' }}>管理控制台</Button>
       </div>
     </header>
   )
