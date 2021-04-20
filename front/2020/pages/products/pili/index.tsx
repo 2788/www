@@ -44,7 +44,7 @@ function PageContent({ notices }: { notices: INotice[] }) {
   const priceUrl = urlForPrice(Product.Pili)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/apply-pili', children: '立即使用', pcOnly: true },
+    { href: 'https://portal.qiniu.com/pili', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true },
     { onClick: startConsulting, children: '立即咨询' }
   )
