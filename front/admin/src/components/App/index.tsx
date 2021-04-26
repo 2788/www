@@ -1,15 +1,13 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
-
 import { hot } from 'react-hot-loader/root'
-import ConfigProvider from 'react-icecream/lib/locale-provider'
-import zh_CN from 'react-icecream/lib/locale-provider/zh_CN'
+import ConfigProvider from 'react-icecream/lib/config-provider'
+
 import { Route, Redirect, Switch } from 'qn-fe-core/router'
 
 import NotFound from 'admin-base/common/components/NotFound'
 import Toaster from 'admin-base/common/components/Toaster'
 import { getBaseRouters } from 'admin-base/user/components/Router'
-
 import UserProvider from 'admin-base/user/components/Provider'
 import UserList from 'admin-base/user/components/Manage'
 import PermissionList from 'admin-base/user/components/PermissionManage'
@@ -22,9 +20,9 @@ import Homepage from 'components/Www/Homepage'
 import Product from 'components/Www/Product'
 import Consult from 'components/Www/Consult'
 import Activity from 'components/Www/Activity'
-
 import { homepageRoute, accountTitle, accountRoute, userTitle, userRoute, roleTitle, roleRoute, permissionTitle, permissionRoute, wwwTitle, wwwRoute, homepageTitle, productTitle, productRoute, consultTitle, consultRoute, activityTitle, activityRoute } from 'constants/route'
-import Provider from '../Provider'
+
+import Provider from './Provider'
 import Layout from '../Layout'
 
 import * as style from './style.m.less'
@@ -96,7 +94,7 @@ export default class App extends React.Component<any, any> {
 
     return (
       <div className={style.wrapper}>
-        <ConfigProvider locale={zh_CN}>
+        <ConfigProvider>
           {cnt}
         </ConfigProvider>
       </div>

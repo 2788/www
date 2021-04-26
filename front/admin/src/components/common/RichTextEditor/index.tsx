@@ -4,8 +4,9 @@ import { Button, Icon } from 'react-icecream'
 import { FieldState, FormState, bindInput } from 'formstate-x'
 import BraftEditor, { ControlType, ExtendControlType, EditorState } from 'braft-editor'
 import { ContentUtils } from 'braft-utils'
-import UploadImg, * as uploadImg from '../UploadImg'
 import 'braft-editor/dist/index.css'
+
+import UploadImg, * as uploadImg from '../UploadImg'
 import * as style from './style.m.less'
 
 const maxLen = 5000 // 文本最大长度
@@ -49,7 +50,7 @@ export function getValue(state: State): string {
   return state.$.editorState.$.toHTML()
 }
 
-export default observer(function Editor({ state, readOnly }: IProps) {
+export default observer(function RichTextEditor({ state, readOnly }: IProps) {
   const uploadHandler = useCallback(
     url => {
       state.$.editorState.onChange(

@@ -1,20 +1,21 @@
+import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
 import Store from 'qn-fe-core/store'
-import ToasterStore from 'admin-base/common/stores/toaster'
 import { injectable } from 'qn-fe-core/di'
-import { action, computed, observable } from 'mobx'
+
 import Loadings from 'admin-base/common/stores/loadings'
+
 import ActivityApis, { IActivityWithId, IActivity, IListOptions, IListResponse } from 'apis/activity'
+import { StateType } from 'constants/activity'
+import { pageSize } from '.'
 
 @injectable()
 export default class ActivityStore extends Store {
 
   constructor(
-    private activityApis: ActivityApis,
-    toasterStore: ToasterStore
+    private activityApis: ActivityApis
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
   }
 
   @observable.ref total = 0
@@ -35,13 +36,13 @@ export default class ActivityStore extends Store {
 
   @autobind
   @Loadings.handle('fetchList')
-  fetchList(options: IListOptions) {
-    return this.activityApis.list(options).then((res: IListResponse) => this.updateList(res.count, res.data))
+  fetchList({ page, states }: { page: number, states?: StateType[] }) {
+    const opt: IListOptions = { limit: pageSize, offset: (page - 1) * pageSize, states }
+    return this.activityApis.list(opt).then((res: IListResponse) => this.updateList(res.count, res.data))
   }
 
   @action.bound
   refresh() {
-    this.updateList()
     return this.fetchList({ page: 1 })
   }
 
@@ -53,7 +54,6 @@ export default class ActivityStore extends Store {
     return this.activityApis.update(data, id)
   }
 
-  @ToasterStore.handle('删除活动成功！')
   del(id: string) {
     return this.activityApis.delete(id)
   }

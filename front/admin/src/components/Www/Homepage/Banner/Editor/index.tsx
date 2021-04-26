@@ -1,31 +1,35 @@
 import * as React from 'react'
-import autobind from 'autobind-decorator'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { Form, Input, DatePicker } from 'react-icecream'
+import moment, { Moment } from 'moment'
+import autobind from 'autobind-decorator'
+
 import { FieldState, FormState, ValueOf } from 'formstate-x'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
+
 import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
 import { textNotBlank } from 'admin-base/common/utils/validator'
+
 import { bindRangePicker } from 'utils/bind'
-import moment, { Moment } from 'moment'
 import { textHttp } from 'utils/validator'
+import * as style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IBanner } from 'apis/homepage/banner'
 import ImgColor, * as imgColor from 'components/common/ImgColor'
 import UploadImg, * as uploadImg from 'components/common/UploadImg'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
+
 import { checkOverlap } from 'utils/check'
 import BannerStore from '../store'
-import OrderField from '../../OrderField'
+import OrderSelect, * as orderSelect from '../../OrderSelect'
 import { maxNum } from '..'
-import * as style from './style.m.less'
 
 type State = FormState<{
   name: FieldState<string>
@@ -34,7 +38,7 @@ type State = FormState<{
   effectTime: FieldState<Moment>
   invalidTime: FieldState<Moment>
   link: FieldState<string>
-  order: FieldState<number>
+  order: orderSelect.State
 }>
 
 type FormDataType = {
@@ -61,7 +65,7 @@ export const defaultFormData: FormDataType = {
 }
 
 @injectable()
-class EditorModalStore extends Store {
+class LocalStore extends Store {
 
   constructor(
     @injectProps() private props: Props,
@@ -85,14 +89,12 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  async doAdd(param: IBanner) {
-    await this.bannerStore.add(param)
-    this.toasterStore.success('创建 banner 成功！')
+  doAdd(param: IBanner) {
+    return this.toasterStore.promise(this.bannerStore.add(param), '添加 banner 成功！')
   }
 
-  async doEdit(param: IBanner) {
-    await this.bannerStore.update(param)
-    this.toasterStore.success('更新 banner 成功！')
+  doEdit(param: IBanner) {
+    return this.toasterStore.promise(this.bannerStore.update(param), '更新 banner 成功！')
   }
 
   @Loadings.handle('submit')
@@ -108,7 +110,7 @@ class EditorModalStore extends Store {
       editTime: this.props.banner.editTime,
       createTime: this.props.banner.createTime,
       link: this.formValue.link,
-      order: this.formValue.order
+      order: orderSelect.getValue(this.form.$.order)
     }
     if (this.props.status === EditorStatus.Creating) {
       return this.doAdd(param)
@@ -124,7 +126,7 @@ class EditorModalStore extends Store {
       return Promise.reject('请检查输入')
     }
     await this.doSubmit()
-    await this.props.onSubmit()
+    this.props.onSubmit()
   }
 
   @autobind
@@ -146,14 +148,13 @@ class EditorModalStore extends Store {
     const effectTime = start.startOf('day').unix()
     const invalidTime = end.endOf('day').unix()
     // 同一 order 的数据 list，且去除 id 相同的（即当前所编辑数据）
-    // eslint-disable-next-line no-underscore-dangle
     const filteredList = this.bannerStore.list
       .filter(item => item.order === order && item.name !== this.props.banner.name)
     return checkOverlap({ effectTime, invalidTime }, filteredList) ? '生效时间段内该顺序已存在 banner' : null
   }
 
   @action
-  initFormState(banner) {
+  initFormState(banner: IBanner) {
     const effectTime = new FieldState(moment.unix(banner.effectTime))
     const invalidTime = new FieldState(moment.unix(banner.invalidTime))
     this.form = new FormState({
@@ -163,7 +164,7 @@ class EditorModalStore extends Store {
       effectTime,
       invalidTime,
       link: new FieldState(banner.link).validators(textNotBlank, textHttp),
-      order: new FieldState(banner.order)
+      order: orderSelect.createState(banner.order)
         .validators((order: number) => this.doValidateOrder(order, effectTime.value, invalidTime.value))
     })
     this.addDisposer(this.form.dispose)
@@ -186,13 +187,14 @@ class EditorModalStore extends Store {
 
 export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   props = { ...defaultFormData, ...props }
-  const store = useLocalStore(EditorModalStore, props)
+  const store = useLocalStore(LocalStore, props)
   const { visible, onCancel } = props
 
   if (!store.form) {
     return null
   }
 
+  const fields = store.form.$
   const pcExtra = <p className={style.desc}>推荐尺寸：2880 * 800 px</p>
   const mobileExtra = <p className={style.desc}>推荐尺寸：1125 * 480 px</p>
 
@@ -207,33 +209,33 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
       <Form>
         <FormItem
           label="banner 名称"
-          {...bindFormItem(store.form.$.name)}
+          {...bindFormItem(fields.name)}
         >
-          <Input disabled={props.status === EditorStatus.Editing} placeholder="请输入 banner 名称" maxLength={20} {...bindTextInput(store.form.$.name)} />
+          <Input disabled={props.status === EditorStatus.Editing} placeholder="请输入 banner 名称" maxLength={20} {...bindTextInput(fields.name)} />
         </FormItem>
-        <ImgColor state={store.form.$.imgColor} labels={['PC 端图片', '背景色']} extra={[pcExtra]} />
+        <ImgColor state={fields.imgColor} labels={['PC 端图片', '背景色']} extra={[pcExtra]} />
         <FormItem
           label="移动端图片"
-          {...bindFormItem(store.form.$.mobileImg)}
+          {...bindFormItem(fields.mobileImg)}
           extra={mobileExtra}
         >
-          <UploadImg state={store.form.$.mobileImg} maxSize={500} />
+          <UploadImg state={fields.mobileImg} maxSize={500} />
         </FormItem>
         <FormItem
           label="跳转链接"
-          {...bindFormItem(store.form.$.link)}
+          {...bindFormItem(fields.link)}
         >
-          <Input placeholder="请输入链接" {...bindTextInput(store.form.$.link)} />
+          <Input placeholder="请输入链接" {...bindTextInput(fields.link)} />
         </FormItem>
         <FormItem
           label="展示顺序"
-          {...bindFormItem(store.form.$.order)}
+          {...bindFormItem(fields.order)}
         >
-          <OrderField state={store.form.$.order} maxNum={maxNum} />
+          <OrderSelect state={fields.order} maxNum={maxNum} />
         </FormItem>
         <FormItem label="生效起止时间">
           <DatePicker.RangePicker
-            {...bindRangePicker(store.form.$.effectTime, store.form.$.invalidTime)}
+            {...bindRangePicker(fields.effectTime, fields.invalidTime)}
             style={{ width: '100%' }}
             disabledDate={current => !!current && current < moment().startOf('day')}
             allowClear={false}

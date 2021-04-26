@@ -1,9 +1,10 @@
+import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
 import Store from 'qn-fe-core/store'
-import ToasterStore from 'admin-base/common/stores/toaster'
 import { injectable } from 'qn-fe-core/di'
-import { action, computed, observable } from 'mobx'
+
 import Loadings from 'admin-base/common/stores/loadings'
+
 import NoticeApis, { INotice, INoticeWithId } from 'apis/product/notice'
 import PageApis, { IPage } from 'apis/product/page'
 import { State } from 'constants/state'
@@ -14,11 +15,9 @@ export default class NoticeStore extends Store {
 
   constructor(
     private noticeApis: NoticeApis,
-    private pageApis: PageApis,
-    toasterStore: ToasterStore
+    private pageApis: PageApis
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
   }
 
   @observable.ref list: INoticeWithId[] = []
@@ -70,13 +69,12 @@ export default class NoticeStore extends Store {
 
   @action.bound
   refresh() {
-    this.updateList([])
     return this.fetchList()
   }
 
   @autobind
-  async init() {
-    await Promise.all([this.fetchPageList(), this.fetchList()])
+  init() {
+    return Promise.all([this.fetchPageList(), this.fetchList()])
   }
 
   add(data: INotice) {
@@ -87,7 +85,6 @@ export default class NoticeStore extends Store {
     return this.noticeApis.update(data, id)
   }
 
-  @ToasterStore.handle('删除产品公告成功！')
   del(id: string) {
     return this.noticeApis.delete(id)
   }

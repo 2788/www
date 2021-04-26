@@ -1,0 +1,18 @@
+// 组件内部公共样式
+@import "~react-icecream/style/less/variables/index.less";
+
+.cellContent {
+  word-break: break-word;
+}
+
+.operation a {
+  &:not(:first-child) {
+    margin-left: @icecream-gap-md;
+  }
+}
+
+.desc {
+  width: 100%;
+  margin: 0;
+  font-size: 12px;
+}

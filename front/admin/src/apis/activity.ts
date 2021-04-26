@@ -1,12 +1,12 @@
-import { injectable } from 'qn-fe-core/di'
 import moment from 'moment'
+import { injectable } from 'qn-fe-core/di'
 import FetchStore from 'stores/fetch'
 import { apiMongo } from 'constants/api-prefix'
 import { detailUrlPrefix } from 'constants/env'
-import { StateType, pageSize } from 'constants/activity'
+import { StateType } from 'constants/activity'
 
 // 一次请求最大返回条数，依赖于后台配置的 batch_limit
-const limit = 1000
+const batchLimit = 1000
 
 export interface IActivity {
   title: string // 标题
@@ -29,7 +29,8 @@ export interface IActivityWithId extends IActivity {
 }
 
 export interface IListOptions {
-  page: number
+  limit: number
+  offset: number
   states?: StateType[]
 }
 
@@ -65,9 +66,9 @@ export default class ActivityApis {
     return this.fetchStore.delete(apiMongo + '/www-market-activity/' + id)
   }
 
-  list({ page, states = [] }: IListOptions): Promise<IListResponse> {
+  list({ limit, offset, states = [] }: IListOptions): Promise<IListResponse> {
     const query = states.length > 0 ? { query: JSON.stringify({ state: { $in: states } }) } : null
-    const options = { ...query, limit: pageSize, offset: (page - 1) * pageSize, sort: '-editTime,-startTime' }
+    const options = { ...query, limit, offset, sort: '-editTime,-startTime' }
     return this.fetchStore.get(apiMongo + '/www-market-activity', options)
       .then(res => (res.data ? res : { ...res, data: [] }))
   }
@@ -82,9 +83,9 @@ export default class ActivityApis {
   getAllUsers(id: string, total: number): Promise<IUser[]> {
     const options = { query: JSON.stringify({ marketActivityId: id }) }
     const pArr: Array<Promise<IUser[]>> = []
-    for (let i = 0; i < total / limit; i++) {
+    for (let i = 0; i < total / batchLimit; i++) {
       pArr.push(
-        this.fetchStore.get(apiMongo + '/www-activity-registration', { ...options, limit, offset: i * limit })
+        this.fetchStore.get(apiMongo + '/www-activity-registration', { ...options, batchLimit, offset: i * batchLimit })
           .then(res => (res.data || []))
       )
     }

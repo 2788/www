@@ -1,10 +1,10 @@
 import React from 'react'
+import { Icon } from 'react-icecream'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x'
 import { injectable } from 'qn-fe-core/di'
 import { injectProps, useLocalStore } from 'qn-fe-core/local-store'
-import Icon from 'react-icecream/lib/icon'
 
 import SimpleInput from './SimpleInput'
 import Tag from './Tag'

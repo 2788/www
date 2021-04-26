@@ -1,8 +1,8 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { Checkbox, InputNumber } from 'react-icecream'
-import { bindCheckbox, bindInputNumber } from 'admin-base/common/utils/form'
 import { FieldState, FormState } from 'formstate-x'
+import { bindCheckbox, bindInputNumber } from 'admin-base/common/utils/form'
 import * as style from './style.m.less'
 
 export type State = FormState<{

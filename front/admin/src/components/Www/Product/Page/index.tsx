@@ -1,49 +1,77 @@
 import React from 'react'
-import autobind from 'autobind-decorator'
+import { action, observable } from 'mobx'
 import { observer } from 'mobx-react'
+import { Tooltip, Icon, Modal, Button } from 'react-icecream'
+import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import autobind from 'autobind-decorator'
+
 import { injectable } from 'qn-fe-core/di'
-import Button from 'react-icecream/lib/button'
 import { useLocalStore } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
+import Provider from 'qn-fe-core/di/Provider'
+
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
-import Provider from 'qn-fe-core/di/Provider'
+
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
 import { EditorStatus } from 'constants/editor'
+import { IPage } from 'apis/product/page'
+import * as style from 'utils/style.m.less'
 
 import PageStore from './store'
-import PageList from './List'
 import EditorModal, { ExtraProps } from './Editor'
 
+// 表格数据一页条数
+const pageSize = 5
 @injectable()
-class PageManageStore extends Store {
+class LocalStore extends Store {
 
   constructor(
     public pageStore: PageStore,
-    toasterStore: ToasterStore
+    public toasterStore: ToasterStore
   ) {
     super()
     ToasterStore.bind(this, toasterStore)
   }
 
   editorModal = new ModalStore<ExtraProps>()
+  @observable.ref currentPage = 1
+
+  @action.bound
+  updateCurrentPage(currentPage: number) {
+    this.currentPage = currentPage
+  }
 
   @autobind
-  @ToasterStore.handle()
   refresh() {
-    return this.pageStore.refresh()
+    this.toasterStore.promise(this.pageStore.refresh())
   }
 
   @autobind
   add() {
-    this.editorModal.open({ status: EditorStatus.Creating }).then(this.refresh)
+    this.editorModal.open({ status: EditorStatus.Creating }).then(() => this.refresh())
   }
 
   @autobind
   edit(id: string) {
     const page = this.pageStore.list.find(item => item.id === id)
-    this.editorModal.open({ page, status: EditorStatus.Editing }).then(this.refresh)
+    this.editorModal.open({ page, status: EditorStatus.Editing }).then(() => this.refresh())
+  }
+
+  @autobind
+  @ToasterStore.handle('删除产品页成功！')
+  del(id: string) {
+    return this.pageStore.del(id).then(() => this.refresh())
+  }
+
+  @autobind
+  handleDelete(id: string) {
+    Modal.confirm({
+      title: `确定要删除产品页 ${id}？`,
+      okType: 'danger',
+      onOk: () => this.del(id)
+    })
   }
 
   init() {
@@ -54,21 +82,53 @@ class PageManageStore extends Store {
   }
 }
 
-const PageManage = observer(function PageManage() {
-  const store = useLocalStore(PageManageStore)
+const PageContent = observer(function _PageContent() {
+  const store = useLocalStore(LocalStore)
   const pageStore = store.pageStore
+  const { list, isLoading } = pageStore
+
+  const renderOperation = (_: string, record: IPage) => (
+    <div className={style.operation}>
+      <Tooltip title="编辑">
+        <a onClick={() => store.edit(record.id)}>
+          <Icon type="edit" />
+        </a>
+      </Tooltip>
+      <Tooltip title="删除">
+        <a onClick={() => store.handleDelete(record.id)}
+          style={{ marginLeft: 16 }}
+        >
+          <Icon type="delete" />
+        </a>
+      </Tooltip>
+    </div>
+  )
+
+  const pagination: PaginationConfig = {
+    pageSize,
+    current: store.currentPage,
+    onChange: store.updateCurrentPage
+  }
+
   return (
     <>
       <Container>
         <Spacer />
-        <Button icon="plus" onClick={store.add}>新增产品页</Button>
+        <Button icon="plus" onClick={store.add}>添加产品页</Button>
       </Container>
-      <PageList
-        list={pageStore.list}
-        isLoading={pageStore.isLoading}
-        onDelete={store.refresh}
-        onEdit={store.edit}
-      />
+      <Table
+        dataSource={list.slice()}
+        rowKey="id"
+        loading={isLoading}
+        bodyStyle={{ backgroundColor: '#fff' }}
+        pagination={pagination}
+        scroll={{ x: 'max-content' }}
+      >
+        <Table.Column title="页面 ID" width={120} dataIndex="id" />
+        <Table.Column title="页面名称" width={200} dataIndex="name" />
+        <Table.Column title="链接地址" width={200} dataIndex="link" />
+        <Table.Column title="操作" width={100} render={renderOperation} />
+      </Table>
       {store.editorModal.visible && <EditorModal {...store.editorModal.bind()} />}
     </>
   )
@@ -77,7 +137,7 @@ const PageManage = observer(function PageManage() {
 export default function Page() {
   return (
     <Provider provides={[{ identifier: PageStore, constr: PageStore }]} >
-      <PageManage />
+      <PageContent />
     </Provider>
   )
 }

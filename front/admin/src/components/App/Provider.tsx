@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as di from 'qn-fe-core/di'
 import Disposable from 'qn-fe-core/disposable'
+
 import BaseProvider, * as base from 'admin-base/common/components/Provider'
 
 import FetchStore from 'stores/fetch'

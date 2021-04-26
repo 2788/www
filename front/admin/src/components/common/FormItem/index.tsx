@@ -1,6 +1,5 @@
 import React from 'react'
-import { Form } from 'react-icecream'
-import { FormItemProps } from 'react-icecream/lib/form'
+import Form, { FormItemProps } from 'react-icecream/lib/form'
 import { DefaultFormItemLayout as formItemLayout } from 'constants/editor'
 
 export default function FormItem({ children, ...rest }: React.PropsWithChildren<FormItemProps>) {

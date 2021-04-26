@@ -10,7 +10,7 @@ export enum EditorStatus {
 }
 
 export const titleMap = {
-  [EditorStatus.Creating]: '创建',
+  [EditorStatus.Creating]: '添加',
   [EditorStatus.Editing]: '编辑',
   [EditorStatus.Reading]: '查看'
 }

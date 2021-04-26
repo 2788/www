@@ -1,26 +1,28 @@
 import * as React from 'react'
-import autobind from 'autobind-decorator'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { Form, Input } from 'react-icecream'
+import autobind from 'autobind-decorator'
+
 import { FieldState, FormState, ValueOf } from 'formstate-x'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
+
 import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
 import { textNotBlank } from 'admin-base/common/utils/validator'
-import { textProductLink } from 'utils/validator'
-import { EditorProps, EditorStatus } from 'constants/editor'
 
+import { textProductLink } from 'utils/validator'
+import * as style from 'utils/style.m.less'
+import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
 import { IPage } from 'apis/product/page'
-import PageStore from '../store'
 
-import * as style from './style.m.less'
+import PageStore from '../store'
 
 type State = FormState<{
   id: FieldState<string>
@@ -45,7 +47,7 @@ export const defaultFormData: FormDataType = {
 }
 
 @injectable()
-class EditorModalStore extends Store {
+class LocalStore extends Store {
 
   constructor(
     @injectProps() private props: Props,
@@ -69,14 +71,12 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  async doAdd(param: IPage) {
-    await this.pageStore.add(param)
-    this.toasterStore.success('新增产品页成功！')
+  doAdd(param: IPage) {
+    return this.toasterStore.promise(this.pageStore.add(param), '添加产品页成功！')
   }
 
-  async doEdit(param: IPage) {
-    await this.pageStore.update(param)
-    this.toasterStore.success('更新产品页成功！')
+  doEdit(param: IPage) {
+    return this.toasterStore.promise(this.pageStore.update(param), '更新产品页成功！')
   }
 
   @Loadings.handle('submit')
@@ -96,7 +96,7 @@ class EditorModalStore extends Store {
       return Promise.reject('请检查输入')
     }
     await this.doSubmit()
-    await this.props.onSubmit()
+    this.props.onSubmit()
   }
 
   @autobind
@@ -113,7 +113,7 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState(page) {
+  initFormState(page: IPage) {
     this.form = new FormState({
       id: new FieldState(page.id).validators(textNotBlank, this.doValidateId),
       name: new FieldState(page.name).validators(textNotBlank),
@@ -139,20 +139,20 @@ class EditorModalStore extends Store {
 
 export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   props = { ...defaultFormData, ...props }
-  const store = useLocalStore(EditorModalStore, props)
+  const store = useLocalStore(LocalStore, props)
   const { visible, onCancel } = props
 
   if (!store.form) {
     return null
   }
 
-  const title = props.status === EditorStatus.Creating ? '新增产品页' : '编辑产品页'
+  const fields = store.form.$
   const linkExtra = <p className={style.desc}>格式：/products/***</p>
 
   return (
     <Modal
       visible={visible}
-      title={title}
+      title={titleMap[props.status] + '产品页'}
       onCancel={onCancel}
       onOk={store.handleSubmit}
       confirmLoading={store.confirmLoading}
@@ -160,22 +160,22 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
       <Form>
         <FormItem
           label="页面 ID"
-          {...bindFormItem(store.form.$.id)}
+          {...bindFormItem(fields.id)}
         >
-          <Input disabled={props.status === EditorStatus.Editing} placeholder="请输入 ID" {...bindTextInput(store.form.$.id)} />
+          <Input disabled={props.status === EditorStatus.Editing} placeholder="请输入 ID" {...bindTextInput(fields.id)} />
         </FormItem>
         <FormItem
           label="页面名称"
-          {...bindFormItem(store.form.$.name)}
+          {...bindFormItem(fields.name)}
         >
-          <Input placeholder="请输入名称" {...bindTextInput(store.form.$.name)} />
+          <Input placeholder="请输入名称" {...bindTextInput(fields.name)} />
         </FormItem>
         <FormItem
           label="链接地址"
-          {...bindFormItem(store.form.$.link)}
+          {...bindFormItem(fields.link)}
           extra={linkExtra}
         >
-          <Input placeholder="请输入链接" {...bindTextInput(store.form.$.link)} />
+          <Input placeholder="请输入链接" {...bindTextInput(fields.link)} />
         </FormItem>
       </Form>
     </Modal>

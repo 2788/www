@@ -1,30 +1,34 @@
 import * as React from 'react'
-import autobind from 'autobind-decorator'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
+import moment, { Moment } from 'moment'
 import { Form, Input, DatePicker } from 'react-icecream'
+import autobind from 'autobind-decorator'
+
 import { FieldState, FormState, ValueOf } from 'formstate-x'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
+
 import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { bindRangePicker } from 'utils/bind'
-import moment, { Moment } from 'moment'
 import { textNotBlank } from 'admin-base/common/utils/validator'
+
+import { bindRangePicker } from 'utils/bind'
 import { textHttp } from 'utils/validator'
+import * as style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IActivity } from 'apis/homepage/activity'
 import UploadImg, * as uploadImg from 'components/common/UploadImg'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
+
 import { checkOverlap } from 'utils/check'
 import ActivityStore from '../store'
-import OrderField from '../../OrderField'
+import OrderSelect, * as orderSelect from '../../OrderSelect'
 import LabelInput, * as labelInput from '../LabelInput'
-import * as style from './style.m.less'
 
 type State = FormState<{
   title: FieldState<string>
@@ -34,7 +38,7 @@ type State = FormState<{
   icon: uploadImg.State
   link: FieldState<string>
   label: labelInput.State
-  order: FieldState<number>
+  order: orderSelect.State
 }>
 
 type FormDataType = {
@@ -63,7 +67,7 @@ export const defaultFormData: FormDataType = {
 }
 
 @injectable()
-class EditorModalStore extends Store {
+class LocalStore extends Store {
 
   constructor(
     @injectProps() private props: Props,
@@ -87,14 +91,12 @@ class EditorModalStore extends Store {
     return this.form.value
   }
 
-  async doAdd(param: IActivity) {
-    await this.activityStore.add(param)
-    this.toasterStore.success('创建活动成功！')
+  doAdd(param: IActivity) {
+    return this.toasterStore.promise(this.activityStore.add(param), '添加活动成功！')
   }
 
-  async doEdit(param: IActivity, id: string) {
-    await this.activityStore.update(param, id)
-    this.toasterStore.success('更新活动成功！')
+  doEdit(param: IActivity, id: string) {
+    return this.toasterStore.promise(this.activityStore.update(param, id), '更新活动成功！')
   }
 
   @Loadings.handle('submit')
@@ -109,7 +111,7 @@ class EditorModalStore extends Store {
       editTime: this.props.activity.editTime,
       label: labelInput.getValue(this.form.$.label),
       link: this.formValue.link,
-      order: this.formValue.order
+      order: orderSelect.getValue(this.form.$.order)
     }
     if (this.props.status === EditorStatus.Creating) {
       return this.doAdd(param)
@@ -140,7 +142,7 @@ class EditorModalStore extends Store {
   }
 
   @action
-  initFormState(activity) {
+  initFormState(activity: IActivity) {
     const effectTime = new FieldState(moment.unix(activity.effectTime))
     const invalidTime = new FieldState(moment.unix(activity.invalidTime))
 
@@ -152,7 +154,7 @@ class EditorModalStore extends Store {
       label: labelInput.createState(activity.label),
       icon: uploadImg.createState(activity.icon).validators(textNotBlank),
       link: new FieldState(activity.link).validators(textNotBlank, textHttp),
-      order: new FieldState(activity.order)
+      order: orderSelect.createState(activity.order)
         .validators((order: number) => this.doValidateOrder(order, effectTime.value, invalidTime.value))
     })
     this.addDisposer(this.form.dispose)
@@ -175,13 +177,14 @@ class EditorModalStore extends Store {
 
 export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   props = { ...defaultFormData, ...props }
-  const store = useLocalStore(EditorModalStore, props)
+  const store = useLocalStore(LocalStore, props)
   const { visible, onCancel } = props
 
   if (!store.form) {
     return null
   }
 
+  const fields = store.form.$
   const iconExtra = <p className={style.desc}>推荐尺寸：48 * 48 px</p>
 
   return (
@@ -195,44 +198,44 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
       <Form>
         <FormItem
           label="标题"
-          {...bindFormItem(store.form.$.title)}
+          {...bindFormItem(fields.title)}
         >
-          <Input placeholder="请输入标题" maxLength={10} {...bindTextInput(store.form.$.title)} />
+          <Input placeholder="请输入标题" maxLength={10} {...bindTextInput(fields.title)} />
         </FormItem>
         <FormItem
           label="副标题"
-          {...bindFormItem(store.form.$.subTitle)}
+          {...bindFormItem(fields.subTitle)}
         >
-          <Input placeholder="请输入副标题" maxLength={12} {...bindTextInput(store.form.$.subTitle)} />
+          <Input placeholder="请输入副标题" maxLength={12} {...bindTextInput(fields.subTitle)} />
         </FormItem>
         <FormItem
           label="icon"
           extra={iconExtra}
-          {...bindFormItem(store.form.$.icon)}
+          {...bindFormItem(fields.icon)}
         >
-          <UploadImg state={store.form.$.icon} maxSize={500} />
+          <UploadImg state={fields.icon} maxSize={500} />
         </FormItem>
         <FormItem
           label="跳转链接"
-          {...bindFormItem(store.form.$.link)}
+          {...bindFormItem(fields.link)}
         >
-          <Input placeholder="请输入链接" {...bindTextInput(store.form.$.link)} />
+          <Input placeholder="请输入链接" {...bindTextInput(fields.link)} />
         </FormItem>
         <FormItem
           label="标签"
-          {...bindFormItem(store.form.$.label)}
+          {...bindFormItem(fields.label)}
         >
-          <LabelInput state={store.form.$.label} />
+          <LabelInput state={fields.label} />
         </FormItem>
         <FormItem
           label="展示顺序"
-          {...bindFormItem(store.form.$.order)}
+          {...bindFormItem(fields.order)}
         >
-          <OrderField state={store.form.$.order} />
+          <OrderSelect state={fields.order} />
         </FormItem>
         <FormItem label="生效起止时间">
           <DatePicker.RangePicker
-            {...bindRangePicker(store.form.$.effectTime, store.form.$.invalidTime)}
+            {...bindRangePicker(fields.effectTime, fields.invalidTime)}
             style={{ width: '100%' }}
             disabledDate={current => !!current && current < moment().startOf('day')}
             allowClear={false}

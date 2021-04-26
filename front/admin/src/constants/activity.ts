@@ -11,6 +11,3 @@ export const stateMap = {
 
 export const dateFormat = 'YYYY-MM-DD HH:mm'
 export const timeFormat = 'HH:mm'
-
-// 表格数据一页条数
-export const pageSize = 5

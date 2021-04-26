@@ -1,16 +1,20 @@
 import React, { PropsWithChildren } from 'react'
-import autobind from 'autobind-decorator'
 import { observer } from 'mobx-react'
-import * as qiniu from 'qiniu-js'
-import { FieldState } from 'formstate-x'
 import { Upload, Button, Modal } from 'react-icecream'
 import { RcFile } from 'react-icecream/lib/upload'
+import moment from 'moment'
+import autobind from 'autobind-decorator'
+
+import { FieldState } from 'formstate-x'
+import * as qiniu from 'qiniu-js'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
+
 import ToasterStore from 'admin-base/common/stores/toaster'
-import moment from 'moment'
+
 import UploadApis from 'apis/upload'
+
 import ImgPreview from '../ImgPreview'
 import * as style from './style.m.less'
 
@@ -38,7 +42,7 @@ export function getValue(state: State): string {
 }
 
 @injectable()
-class UploadStore extends Store {
+class LocalStore extends Store {
 
   constructor(
     @injectProps() private props: IProps,
@@ -91,7 +95,7 @@ class UploadStore extends Store {
 }
 
 export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
-  const store = useLocalStore(UploadStore, props)
+  const store = useLocalStore(LocalStore, props)
   const { state, maxSize, children } = props
 
   const childrenView = children || (

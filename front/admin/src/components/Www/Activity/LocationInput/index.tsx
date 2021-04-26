@@ -16,8 +16,8 @@ export type State = FormState<{
 }>
 
 export function createState(value: string): State {
-  let location
-  let customLocation
+  let location: FieldState<string>
+  let customLocation: FieldState<string>
   if (value === 'online') {
     location = new FieldState(value)
     customLocation = new FieldState('')

@@ -38,7 +38,6 @@ export default class InfoStore extends Store {
 
   @action.bound
   refresh() {
-    this.updateList([])
     return this.fetchList()
   }
 
@@ -50,7 +49,6 @@ export default class InfoStore extends Store {
     return this.newsApis.update(data, id)
   }
 
-  @ToasterStore.handle('删除资讯成功！')
   del(id: string) {
     return this.newsApis.delete(id)
   }

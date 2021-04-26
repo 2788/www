@@ -5,8 +5,8 @@
 import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 import { SketchPicker } from 'react-color'
-import { textNotBlank } from 'admin-base/common/utils/validator'
 import { FieldState } from 'formstate-x'
+import { textNotBlank } from 'admin-base/common/utils/validator'
 import * as style from './style.m.less'
 
 export type State = FieldState<string>

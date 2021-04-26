@@ -1,5 +1,5 @@
 import React from 'react'
-import Checkbox from 'react-icecream/lib/checkbox'
+import { Checkbox } from 'react-icecream'
 import moment from 'moment'
 import { stateOption, State } from 'constants/state'
 

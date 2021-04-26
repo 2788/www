@@ -7,6 +7,6 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 }
 
 export default function ImgPreview(props: Props) {
-  const { url, className } = props
-  return <div className={cls(style.icon, className)} style={{ backgroundImage: `url(${url})` }} ></div>
+  const { url, className, ...rest } = props
+  return <div className={cls(style.icon, className)} style={{ backgroundImage: `url(${url})` }} {...rest}></div>
 }

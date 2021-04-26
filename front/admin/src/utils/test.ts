@@ -1,6 +1,6 @@
 import * as di from 'qn-fe-core/di'
 import * as base from 'admin-base/common/utils/test'
-import { defaultProvides } from 'components/Provider'
+import { defaultProvides } from 'components/App/Provider'
 
 export class RendererUtils extends base.RendererUtils {
   constructor(

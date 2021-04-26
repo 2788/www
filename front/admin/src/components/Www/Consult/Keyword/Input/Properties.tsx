@@ -1,9 +1,9 @@
 import React from 'react'
+import { Icon } from 'react-icecream'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
 import { injectable } from 'qn-fe-core/di'
 import { injectProps, useLocalStore } from 'qn-fe-core/local-store'
-import Icon from 'react-icecream/lib/icon'
 import ModalStore from 'admin-base/common/stores/modal'
 
 import { Property, PropertyData } from 'apis/consult/property'

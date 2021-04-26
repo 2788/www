@@ -1,29 +1,33 @@
 import * as React from 'react'
-import autobind from 'autobind-decorator'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { Form, Input } from 'react-icecream'
+import moment from 'moment'
+import autobind from 'autobind-decorator'
+
 import { FieldState, FormState, ValueOf } from 'formstate-x'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
+
 import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
 import { textNotBlank, textPositiveInterger } from 'admin-base/common/utils/validator'
+
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
-import moment from 'moment'
 import { INews, IArchive } from 'apis/homepage/news'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
+
 import NewsStore from '../store'
-import OrderField from '../../OrderField'
+import OrderSelect, * as orderSelect from '../../OrderSelect'
 import { maxNum } from '..'
 
 type State = FormState<{
   articleId: FieldState<string>
-  order: FieldState<number>
+  order: orderSelect.State
 }>
 
 type FormDataType = {
@@ -50,7 +54,7 @@ export const defaultFormData: FormDataType = {
 }
 
 @injectable()
-class EditorModalStore extends Store {
+class LocalStore extends Store {
 
   constructor(
     @injectProps() private props: Props,
@@ -87,14 +91,12 @@ class EditorModalStore extends Store {
     })
   }
 
-  async doAdd(param: INews) {
-    await this.newsStore.add(param).catch(() => Promise.reject(''))
-    this.toasterStore.success('创建资讯成功！')
+  doAdd(param: INews) {
+    return this.toasterStore.promise(this.newsStore.add(param), '添加资讯成功！')
   }
 
-  async doEdit(param: INews, id: string) {
-    await this.newsStore.update(param, id)
-    this.toasterStore.success('更新资讯成功！')
+  doEdit(param: INews, id: string) {
+    return this.toasterStore.promise(this.newsStore.update(param, id), '更新资讯成功！')
   }
 
   @Loadings.handle('submit')
@@ -103,7 +105,7 @@ class EditorModalStore extends Store {
 
     const param: INews = {
       articleId,
-      order: this.formValue.order,
+      order: orderSelect.getValue(this.form.$.order),
       title: this.archive.title,
       summary: this.archive.summary,
       banner: this.archive.cover,
@@ -125,7 +127,7 @@ class EditorModalStore extends Store {
       return Promise.reject('请检查输入')
     }
     await this.doSubmit()
-    await this.props.onSubmit()
+    this.props.onSubmit()
   }
 
   // 校验文章 ID 是否是合法的
@@ -151,17 +153,16 @@ class EditorModalStore extends Store {
   @autobind
   doValidateOrder(order: number) {
     // 同一 order 的数据 list，且去除 id 相同的（即当前所编辑数据）
-    // eslint-disable-next-line no-underscore-dangle
     const hasRecord = this.newsStore.list.some(item => item.order === order && item._id !== this.props.id)
     return hasRecord ? '该顺序已存在资讯' : null
   }
 
   @action
-  initFormState(news) {
+  initFormState(news: INews) {
     this.form = new FormState({
       articleId: new FieldState(news.articleId)
         .validators(textNotBlank, textPositiveInterger, this.doValidateId),
-      order: new FieldState(news.order)
+      order: orderSelect.createState(news.order)
         .validators(this.doValidateOrder)
     })
     this.addDisposer(this.form.dispose)
@@ -198,12 +199,13 @@ class EditorModalStore extends Store {
 
 export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   props = { ...defaultFormData, ...props }
-  const store = useLocalStore(EditorModalStore, props)
+  const store = useLocalStore(LocalStore, props)
   const { visible, onCancel } = props
 
   if (!store.form) {
     return null
   }
+  const fields = store.form.$
 
   return (
     <Modal
@@ -216,12 +218,12 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
       <Form>
         <FormItem
           label="文章 ID"
-          {...bindFormItem(store.form.$.articleId)}
+          {...bindFormItem(fields.articleId)}
         >
-          <Input placeholder="请输入文章 ID" maxLength={5} {...bindTextInput(store.form.$.articleId)} />
+          <Input placeholder="请输入文章 ID" maxLength={5} {...bindTextInput(fields.articleId)} />
         </FormItem>
         {
-          store.form.$.articleId.value !== ''
+          fields.articleId.value !== ''
             ? (
               <FormItem
                 label="文章标题"
@@ -233,9 +235,9 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         }
         <FormItem
           label="展示顺序"
-          {...bindFormItem(store.form.$.order)}
+          {...bindFormItem(fields.order)}
         >
-          <OrderField state={store.form.$.order} maxNum={maxNum} />
+          <OrderSelect state={fields.order} maxNum={maxNum} />
         </FormItem>
       </Form>
     </Modal >

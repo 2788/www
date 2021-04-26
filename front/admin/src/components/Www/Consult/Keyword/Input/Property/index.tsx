@@ -1,7 +1,8 @@
-import autobind from 'autobind-decorator'
 import React, { FormEvent, useRef } from 'react'
+import { Form } from 'react-icecream'
 import { computed, reaction, comparer, observable } from 'mobx'
 import { observer } from 'mobx-react'
+import autobind from 'autobind-decorator'
 import { FormState, FieldState, bindInput } from 'formstate-x'
 import Store from 'qn-fe-core/store'
 import { injectable } from 'qn-fe-core/di'
@@ -9,7 +10,6 @@ import { injectProps, useLocalStore } from 'qn-fe-core/local-store'
 import { IModalProps } from 'admin-base/common/stores/modal'
 import Loadings from 'admin-base/common/stores/loadings'
 import Toaster from 'admin-base/common/stores/toaster'
-import Form from 'react-icecream/lib/form'
 
 import Modal from 'components/common/Modal'
 import { Property, PropertyData } from 'apis/consult/property'
@@ -109,8 +109,8 @@ class LocalStore extends Store {
     const value = getValue(this.state)
     await (
       this.editing
-      ? this.props.onUpdate({ ...this.props.property!, ...value })
-      : this.props.onCreate({ ...value, entityId: this.props.entityId })
+        ? this.props.onUpdate({ ...this.props.property!, ...value })
+        : this.props.onCreate({ ...value, entityId: this.props.entityId })
     )
     this.props.onSubmit()
   }

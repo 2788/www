@@ -8,7 +8,6 @@ import Container from 'components/common/Container'
 
 import SubSidebar from './SubSidebar'
 import Navbar from './NavBar'
-// import Main from './Main'
 import * as style from './style.m.less'
 
 @registerPermission(signinRequired)
