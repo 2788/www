@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
 import { hot } from 'react-hot-loader/root'
-import ConfigProvider from 'react-icecream/lib/config-provider'
+import { ConfigProvider } from 'react-icecream'
 
 import { Route, Redirect, Switch } from 'qn-fe-core/router'
 
