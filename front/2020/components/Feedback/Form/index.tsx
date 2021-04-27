@@ -116,7 +116,7 @@ function Footer({ pending, onSubmit }: FooterProps) {
       <img className={style.qrCode} src={humanServiceQrCode} alt="人工客服企业微信二维码" />
       <div className={style.content}>
         <p className={style.up}>人工客服企业微信二维码，微信扫码添加。</p>
-        <p className={style.down}>在线时间：<br />工作日09:00-18:00</p>
+        <p className={style.bottom}>在线时间：<br />工作日09:00-18:00</p>
       </div>
     </div>
   )
