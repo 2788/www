@@ -143,17 +143,34 @@ function Footer({ pending, onSubmit }: FooterProps) {
     : <textarea onKeyPress={handleTextareaKeypress} {...inputProps} />
   )
 
+  // 这个组件会被作为 externals 用于其他站点，modal 的 z-index 设置得比较高；
+  // 这边控制 tooltip 渲染在 form 中，以确保 tooltip 被正确地展示
+  const formRef = useRef<HTMLFormElement>(null)
+  const getTooltipPopupContainer = useCallback(() => formRef.current ?? document.body, [])
+
   return (
-    <form className={style.footer} onSubmit={handleSubmit}>
+    <form ref={formRef} className={style.footer} onSubmit={handleSubmit}>
       <div className={style.linkLine}>
-        <Tooltip trigger={humanServiceTrigger} overlay={humanServiceView} overlayClassName={style.humanServiceOverlay} placement="topLeft">
+        <Tooltip
+          trigger={humanServiceTrigger}
+          overlay={humanServiceView}
+          overlayClassName={style.humanServiceOverlay}
+          placement="topLeft"
+          getPopupContainer={getTooltipPopupContainer}
+        >
           <span className={style.linkButton}>人工售前咨询</span>
         </Tooltip>
         <Link className={style.linkButton} href="https://support.qiniu.com/tickets/new">提交工单</Link>
         <Link className={style.linkButton} href="https://developer.qiniu.com/faq">常见问题</Link>
       </div>
       {inputView}
-      <Tooltip title={submitTip} visible={submitTipVisible} overlayClassName={style.tooltip} placement="topRight">
+      <Tooltip
+        title={submitTip}
+        visible={submitTipVisible}
+        overlayClassName={style.tooltip}
+        placement="topRight"
+        getPopupContainer={getTooltipPopupContainer}
+      >
         <Button
           className={style.sendButton}
           htmlType="submit"
