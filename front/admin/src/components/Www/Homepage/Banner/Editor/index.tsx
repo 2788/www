@@ -89,16 +89,8 @@ class LocalStore extends Store {
     return this.form.value
   }
 
-  doAdd(param: IBanner) {
-    return this.toasterStore.promise(this.bannerStore.add(param), '添加 banner 成功！')
-  }
-
-  doEdit(param: IBanner) {
-    return this.toasterStore.promise(this.bannerStore.update(param), '更新 banner 成功！')
-  }
-
   @Loadings.handle('submit')
-  doSubmit() {
+  async doSubmit() {
     const imgColorVal = imgColor.getValue(this.form.$.imgColor)
     const param: IBanner = {
       name: this.formValue.name,
@@ -113,9 +105,10 @@ class LocalStore extends Store {
       order: orderSelect.getValue(this.form.$.order)
     }
     if (this.props.status === EditorStatus.Creating) {
-      return this.doAdd(param)
+      this.toasterStore.promise(this.bannerStore.add(param), '添加 banner 成功！')
+    } else {
+      this.toasterStore.promise(this.bannerStore.update(param), '更新 banner 成功！')
     }
-    return this.doEdit(param)
   }
 
   @autobind

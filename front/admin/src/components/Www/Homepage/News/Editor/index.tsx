@@ -91,18 +91,9 @@ class LocalStore extends Store {
     })
   }
 
-  doAdd(param: INews) {
-    return this.toasterStore.promise(this.newsStore.add(param), '添加资讯成功！')
-  }
-
-  doEdit(param: INews, id: string) {
-    return this.toasterStore.promise(this.newsStore.update(param, id), '更新资讯成功！')
-  }
-
   @Loadings.handle('submit')
-  doSubmit() {
+  async doSubmit() {
     const articleId = this.formValue.articleId
-
     const param: INews = {
       articleId,
       order: orderSelect.getValue(this.form.$.order),
@@ -114,9 +105,10 @@ class LocalStore extends Store {
       createTime: moment(this.archive.created_at).format('YYYY-MM-DD')
     }
     if (this.props.status === EditorStatus.Creating) {
-      return this.doAdd(param)
+      this.toasterStore.promise(this.newsStore.add(param), '添加资讯成功！')
+    } else {
+      this.toasterStore.promise(this.newsStore.update(param, this.props.id), '更新资讯成功！')
     }
-    return this.doEdit(param, this.props.id)
   }
 
   @autobind

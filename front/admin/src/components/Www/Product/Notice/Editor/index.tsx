@@ -84,16 +84,8 @@ class LocalStore extends Store {
     return this.form.value
   }
 
-  doAdd(param: INotice) {
-    return this.toasterStore.promise(this.noticeStore.add(param), '添加产品公告成功！')
-  }
-
-  doEdit(param: INotice, id: string) {
-    return this.toasterStore.promise(this.noticeStore.update(param, id), '更新产品公告成功！')
-  }
-
   @Loadings.handle('submit')
-  doSubmit() {
+  async doSubmit() {
     const param: INotice = {
       product: productSelect.getValue(this.form.$.product),
       summary: this.formValue.summary,
@@ -105,9 +97,10 @@ class LocalStore extends Store {
       editTime: this.props.notice.editTime
     }
     if (this.props.status === EditorStatus.Creating) {
-      return this.doAdd(param)
+      this.toasterStore.promise(this.noticeStore.add(param), '添加产品公告成功！')
+    } else {
+      this.toasterStore.promise(this.noticeStore.update(param, this.props.id), '更新产品公告成功！')
     }
-    return this.doEdit(param, this.props.id)
   }
 
   @autobind

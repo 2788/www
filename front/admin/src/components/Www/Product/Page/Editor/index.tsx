@@ -71,21 +71,14 @@ class LocalStore extends Store {
     return this.form.value
   }
 
-  doAdd(param: IPage) {
-    return this.toasterStore.promise(this.pageStore.add(param), '添加产品页成功！')
-  }
-
-  doEdit(param: IPage) {
-    return this.toasterStore.promise(this.pageStore.update(param), '更新产品页成功！')
-  }
-
   @Loadings.handle('submit')
-  doSubmit() {
+  async doSubmit() {
     const param: IPage = this.formValue
     if (this.props.status === EditorStatus.Creating) {
-      return this.doAdd(param)
+      this.toasterStore.promise(this.pageStore.add(param), '添加产品页成功！')
+    } else {
+      this.toasterStore.promise(this.pageStore.update(param), '更新产品页成功！')
     }
-    return this.doEdit(param)
   }
 
   @autobind

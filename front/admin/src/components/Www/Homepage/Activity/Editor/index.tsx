@@ -91,16 +91,8 @@ class LocalStore extends Store {
     return this.form.value
   }
 
-  doAdd(param: IActivity) {
-    return this.toasterStore.promise(this.activityStore.add(param), '添加活动成功！')
-  }
-
-  doEdit(param: IActivity, id: string) {
-    return this.toasterStore.promise(this.activityStore.update(param, id), '更新活动成功！')
-  }
-
   @Loadings.handle('submit')
-  doSubmit() {
+  async doSubmit() {
     const param: IActivity = {
       title: this.formValue.title,
       subTitle: this.formValue.subTitle,
@@ -114,9 +106,10 @@ class LocalStore extends Store {
       order: orderSelect.getValue(this.form.$.order)
     }
     if (this.props.status === EditorStatus.Creating) {
-      return this.doAdd(param)
+      this.toasterStore.promise(this.activityStore.add(param), '添加活动成功！')
+    } else {
+      this.toasterStore.promise(this.activityStore.update(param, this.props.id), '更新活动成功！')
     }
-    return this.doEdit(param, this.props.id)
   }
 
   @autobind
