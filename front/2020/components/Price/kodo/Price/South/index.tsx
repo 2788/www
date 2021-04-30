@@ -127,7 +127,7 @@ const columns: Array<ColumnProps<any>> = [
     }
   },
   {
-    title: <>归档存储 <Hot text="new" /></>,
+    title: '归档存储',
     dataIndex: 'archive',
     render(archive, _, idx) {
       const result = { children: archive, props: { rowSpan: 1 } }

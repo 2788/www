@@ -4,13 +4,16 @@ import Tabs, { TabPane } from 'components/UI/Tabs'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
+import Hot from 'components/Hot'
 
 import South from './South'
 import East from './East'
 import style from './index.less'
 import North from './North'
-import UA from './UA'
+import US from './US'
 import SouthAsia from './SouthAsia'
+import EashZheJiang2 from './EastZheJiang2'
+import Region, { nameMap } from '../region'
 
 export default function Price() {
   const isMobile = useMobile()
@@ -38,12 +41,13 @@ export default function Price() {
         <Card title="每月免费上传流量" num="无上限" unit="" style={{ width: isMobile ? '100%' : '136px' }} />
       </PricePaneSection>
       <PricePaneSection title="价格详情" className={style.desc}>
-        <Tabs defaultValue="1" size="middle">
-          <TabPane value="1" tab="华南"><South /></TabPane>
-          <TabPane value="2" tab="华东"><East /></TabPane>
-          <TabPane value="3" tab="华北"><North /></TabPane>
-          <TabPane value="4" tab="北美"><UA /></TabPane>
-          <TabPane value="5" tab="东南亚"><SouthAsia /></TabPane>
+        <Tabs defaultValue={Region.EastZheJiang2} size="middle">
+          <TabPane value={Region.EastZheJiang2} tab={<>{nameMap[Region.EastZheJiang2]} <Hot text="new" /></>}><EashZheJiang2 /></TabPane>
+          <TabPane value={Region.South} tab={nameMap[Region.South]}><South /></TabPane>
+          <TabPane value={Region.East} tab={nameMap[Region.East]}><East /></TabPane>
+          <TabPane value={Region.North} tab={nameMap[Region.North]}><North /></TabPane>
+          <TabPane value={Region.US} tab={nameMap[Region.US]}><US /></TabPane>
+          <TabPane value={Region.SouthAsia} tab={nameMap[Region.SouthAsia]}><SouthAsia /></TabPane>
         </Tabs>
       </PricePaneSection>
     </PricePane>

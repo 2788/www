@@ -5,14 +5,6 @@ import InputNumber from 'components/UI/InputNumber'
 
 import style from './index.less'
 
-export const regionOptions = [
-  { label: '华东', value: 'east' },
-  { label: '华南', value: 'south' },
-  { label: '华北', value: 'north' },
-  { label: '东南亚', value: 'south_aisa' },
-  { label: '北美', value: 'us' }
-]
-
 type RegionProps = {
   desc: string
   region: string

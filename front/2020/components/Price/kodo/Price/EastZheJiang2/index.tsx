@@ -1,10 +1,10 @@
 /**
  * @author: corol
  * @github: github.com/huangbinjie
- * @created: Mon May 18 2020
- * @file: 东南亚
+ * @created: Thu Apr 29 2021
+ * @file: 华东-浙江2
  *
- * Copyright (c) 2020 Qiniu
+ * Copyright (c) 2021 Qiniu
  */
 
 import React from 'react'
@@ -198,61 +198,61 @@ const data = [
     measure: '0 - 10 GB',
     standard: '免费',
     low: '0.06 元/GB/月',
-    archive: '0.033 元/GB/月'
+    archive: '0.028 元/GB/月'
   },
   {
     key: 1,
     name: '存储费用',
     detail: '存储空间费用',
-    measure: '10 GB - 50 TB',
-    standard: '0.165 元/GB/月',
+    measure: '10 GB - 1 TB',
+    standard: '0.098 元/GB/月',
     low: '0.06 元/GB/月',
-    archive: '0.032 元/GB/月'
+    archive: '0.028 元/GB/月'
   },
   {
     key: 2,
     name: '存储费用',
     detail: '存储空间费用',
-    measure: '50 TB - 500 TB',
-    standard: '0.162 元/GB/月',
+    measure: '1 TB - 200 TB',
+    standard: '0.095 元/GB/月',
     low: '0.06 元/GB/月',
-    archive: '0.032 元/GB/月'
+    archive: '0.028 元/GB/月'
   },
   {
     key: 3,
     name: '存储费用',
     detail: '存储空间费用',
-    measure: '500 TB - 5 PB',
-    standard: '0.159 元/GB/月',
+    measure: '200 TB - 5 PB',
+    standard: '0.092 元/GB/月',
     low: '0.06 元/GB/月',
-    archive: '0.032 元/GB/月'
+    archive: '0.028 元/GB/月'
   },
   {
     key: 4,
     name: '存储费用',
     detail: '存储空间费用',
     measure: '5 PB 以上',
-    standard: '0.156 元/GB/月',
+    standard: '0.089 元/GB/月',
     low: '0.06 元/GB/月',
-    archive: '0.032 元/GB/月'
+    archive: '0.028 元/GB/月'
   },
   {
     key: 5,
     name: '流量费用',
     detail: '外网流出流量',
     measure: '0 - 100 TB',
-    standard: '0.29 元/GB',
-    low: '0.29 元/GB',
-    archive: '0.29 元/GB'
+    standard: '0.26 元/GB',
+    low: '0.26 元/GB',
+    archive: '0.26 元/GB'
   },
   {
     key: 6,
     name: '流量费用',
     detail: '外网流出流量',
     measure: '100 TB 以上',
-    standard: '0.26 元/GB',
-    low: '0.26 元/GB',
-    archive: '0.26 元/GB'
+    standard: '0.24 元/GB',
+    low: '0.24 元/GB',
+    archive: '0.24 元/GB'
   },
   {
     key: 7,
@@ -276,9 +276,9 @@ const data = [
     key: 9,
     name: '流量费用',
     detail: '跨区域同步流量',
-    measure: '海外 <-> 海外',
-    standard: '0.58 元/GB',
-    low: '0.58 元/GB',
+    measure: '国内 <-> 国内',
+    standard: '0.29 元/GB',
+    low: '0.29 元/GB',
     archive: '不涉及'
   },
   {
@@ -297,7 +297,7 @@ const data = [
     measure: '',
     standard: '免费',
     low: '0.06 元/GB',
-    archive: '0.1 元/GB'
+    archive: '0.06 元/GB'
   },
   {
     key: 12,
@@ -306,7 +306,7 @@ const data = [
     measure: '0 - 10 万次',
     standard: '免费',
     low: '0.1 元/万次',
-    archive: '0.3 元/万次'
+    archive: '0.1 元/万次'
   },
   {
     key: 13,
@@ -346,6 +346,15 @@ const data = [
   }
 ]
 
-export default function SouthAsia() {
-  return <Table bordered scroll={{ x: 'max-content' }} pagination={false} columns={columns} dataSource={data} footer={() => <Footer />} />
+export default function EastZheJiang2() {
+  return (
+    <Table
+      bordered
+      scroll={{ x: 'max-content' }}
+      pagination={false}
+      columns={columns}
+      dataSource={data}
+      footer={() => <Footer />}
+    />
+  )
 }

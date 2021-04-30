@@ -4,7 +4,8 @@ import Calculator, { CalcInput } from 'components/Price/Calculator'
 
 import rules from './rules'
 import style from '../index.less'
-import Region, { regionOptions } from './Region'
+import Region from './Region'
+import RegionName, { defaultRegion, nameMap, regionOptions } from '../../region'
 import Duration from '../Duration'
 
 // icecream 没暴露出来
@@ -13,7 +14,7 @@ export declare type CheckboxValueType = string | number | boolean
 export type Props = { setCalculator: (calc: Calculator) => void }
 
 export default function LowFrequency({ setCalculator }: Props) {
-  const [regions, setRegions] = useState(['east'])
+  const [regions, setRegions] = useState([defaultRegion])
   const calculator = useRef(Calculator.fromRules(rules)).current
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function LowFrequency({ setCalculator }: Props) {
   }, [setCalculator, calculator])
 
   function handleRegionChange(checkdValues: CheckboxValueType[]) {
-    setRegions(checkdValues as string[])
+    setRegions(checkdValues as RegionName[])
     const currentInputs = calculator.getInputs().filter(input => checkdValues.find(value => value === input.region))
     calculator.setInput(currentInputs)
   }
@@ -38,7 +39,7 @@ export default function LowFrequency({ setCalculator }: Props) {
     <Region
       key={region}
       region={region}
-      desc={regionOptions.find(option => option.value === region)!.label}
+      desc={nameMap[region]}
       onChange={handleRegionItemChange}
     />
   ))
