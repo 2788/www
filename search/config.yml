@@ -3,7 +3,7 @@ server:
   mode: dev
 
 es_hosts: http://localhost:9200
-redis_host: 10.200.20.22:6379
+redis_hosts: 10.200.20.22:6379
 
 crawl:
   max_depth: 100

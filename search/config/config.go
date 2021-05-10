@@ -49,11 +49,11 @@ type SitesConfig struct {
 }
 
 type Config struct {
-	Server    ServerConfig  `yaml:"server"`
-	Crawl     CrawlConfig   `yaml:"crawl"`
-	EsHosts   string        `yaml:"es_hosts"`
-	RedisHost string        `yaml:"redis_host"`
-	Sites     []SitesConfig `yaml:"sites"`
+	Server     ServerConfig  `yaml:"server"`
+	Crawl      CrawlConfig   `yaml:"crawl"`
+	EsHosts    string        `yaml:"es_hosts"`
+	RedisHosts string        `yaml:"redis_hosts"`
+	Sites      []SitesConfig `yaml:"sites"`
 }
 
 var Conf *Config

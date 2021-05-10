@@ -22,13 +22,13 @@ import (
 const KeyPrefix = "www:search:"
 
 type CrawlService struct {
-	redis *redis.Client
+	redis redis.UniversalClient
 	sites []config.SitesConfig
 }
 
 func NewCrawl(es EsService) *CrawlService {
-	client := redis.NewClient(&redis.Options{
-		Addr: config.Conf.RedisHost,
+	client := redis.NewUniversalClient(&redis.UniversalOptions{
+		Addrs: strings.Split(config.Conf.RedisHosts, ","),
 	})
 	crawl := &CrawlService{
 		sites: config.Conf.Sites,

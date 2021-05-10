@@ -148,6 +148,8 @@ github.com/qbox/rmb-web/admin-backend v0.0.9 h1:Zyz6bfP2eH1dhwUyNNdM/l/VvhHu4WpU
 github.com/qbox/rmb-web/admin-backend v0.0.9/go.mod h1:St7Ymest7ZiqXoSoWm+6CovkBcmTL5h85VEMyqsBOIo=
 github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.1 h1:pxOwT0q2bu26OZbyO4a5XNYG/GInS1nJBeWzU4IfGQs=
 github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.1/go.mod h1:D4nU5zRGOinx3Y4VmypHjCGd5Pd/RwOQUQhq33hL8m0=
+github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.2 h1:cLLQt1Ae1FEyO2ipCfohbho/fPrQHRa+kxrJGSJ5lIA=
+github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.2/go.mod h1:D4nU5zRGOinx3Y4VmypHjCGd5Pd/RwOQUQhq33hL8m0=
 github.com/qbox/rmb-web/puck/v3 v3.1.0/go.mod h1:ZjUWc8hAST0VVEF+x7eF7bagmDQMGpm8laowKIKGU3I=
 github.com/qbox/rmb-web/puck/v3 v3.2.0 h1:UqidM9cdXQ2yUoQmRIIdYkEa2nGjB4yacr9/jiDiO1M=
 github.com/qbox/rmb-web/puck/v3 v3.2.0/go.mod h1:a8Zug2lPn3Q5c86ZL4rhHETcn8W4JFtersvyPSBcqdI=
