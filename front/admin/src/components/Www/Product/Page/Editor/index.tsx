@@ -75,9 +75,11 @@ class LocalStore extends Store {
   async doSubmit() {
     const param: IPage = this.formValue
     if (this.props.status === EditorStatus.Creating) {
-      this.toasterStore.promise(this.pageStore.add(param), '添加产品页成功！')
+      await this.pageStore.add(param)
+      this.toasterStore.success('添加产品页成功！')
     } else {
-      this.toasterStore.promise(this.pageStore.update(param), '更新产品页成功！')
+      await this.pageStore.update(param)
+      this.toasterStore.success('更新产品页成功！')
     }
   }
 

@@ -97,9 +97,11 @@ class LocalStore extends Store {
       editTime: this.props.notice.editTime
     }
     if (this.props.status === EditorStatus.Creating) {
-      this.toasterStore.promise(this.noticeStore.add(param), '添加产品公告成功！')
+      await this.noticeStore.add(param)
+      this.toasterStore.success('添加产品公告成功！')
     } else {
-      this.toasterStore.promise(this.noticeStore.update(param, this.props.id), '更新产品公告成功！')
+      await this.noticeStore.update(param, this.props.id)
+      this.toasterStore.success('更新产品公告成功！')
     }
   }
 

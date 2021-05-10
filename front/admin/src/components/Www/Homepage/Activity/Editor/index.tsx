@@ -106,9 +106,11 @@ class LocalStore extends Store {
       order: orderSelect.getValue(this.form.$.order)
     }
     if (this.props.status === EditorStatus.Creating) {
-      this.toasterStore.promise(this.activityStore.add(param), '添加活动成功！')
+      await this.activityStore.add(param)
+      this.toasterStore.success('添加活动成功！')
     } else {
-      this.toasterStore.promise(this.activityStore.update(param, this.props.id), '更新活动成功！')
+      await this.activityStore.update(param, this.props.id)
+      this.toasterStore.success('更新活动成功！')
     }
   }
 
@@ -120,7 +122,7 @@ class LocalStore extends Store {
       return Promise.reject('请检查输入')
     }
     await this.doSubmit()
-    await this.props.onSubmit()
+    this.props.onSubmit()
   }
 
   // 校验同一 order 下，生效时间段是否有重叠的

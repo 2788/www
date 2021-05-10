@@ -105,9 +105,11 @@ class LocalStore extends Store {
       createTime: moment(this.archive.created_at).format('YYYY-MM-DD')
     }
     if (this.props.status === EditorStatus.Creating) {
-      this.toasterStore.promise(this.newsStore.add(param), '添加资讯成功！')
+      await this.newsStore.add(param)
+      this.toasterStore.success('添加资讯成功！')
     } else {
-      this.toasterStore.promise(this.newsStore.update(param, this.props.id), '更新资讯成功！')
+      await this.newsStore.update(param, this.props.id)
+      this.toasterStore.success('更新资讯成功！')
     }
   }
 

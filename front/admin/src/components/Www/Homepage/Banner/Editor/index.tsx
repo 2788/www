@@ -105,9 +105,11 @@ class LocalStore extends Store {
       order: orderSelect.getValue(this.form.$.order)
     }
     if (this.props.status === EditorStatus.Creating) {
-      this.toasterStore.promise(this.bannerStore.add(param), '添加 banner 成功！')
+      await this.bannerStore.add(param)
+      this.toasterStore.success('添加 banner 成功！')
     } else {
-      this.toasterStore.promise(this.bannerStore.update(param), '更新 banner 成功！')
+      await this.bannerStore.update(param)
+      this.toasterStore.success('更新 banner 成功！')
     }
   }
 
