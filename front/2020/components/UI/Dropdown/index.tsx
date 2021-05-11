@@ -4,6 +4,8 @@ import useDelay from 'hooks/use-delay'
 import { useOnChange } from 'hooks'
 
 import 'rc-dropdown/assets/index.css'
+
+import Link from 'components/Link'
 import style from './index.less'
 
 export * from 'rc-dropdown/lib/Dropdown'
@@ -108,6 +110,22 @@ export function DropdownMenuItem({ className, ...others }: DropdownMenuItemProps
   className = [style.item, className].filter(Boolean).join(' ')
   return (
     <li className={className} {...others} />
+  )
+}
+
+export type DropdownMenuItemLinkProps = DropdownMenuItemProps & {
+  href: string
+  target?: string // 有的站外链接但是需要当前页面打开而不是新页面，所以这边支持下 target
+}
+
+// 专门用于 MenuItem 内容为一个 link 的组件，统一规范下行为，并使点击区域扩大为整个 Item
+export function DropdownMenuItemLink({ className, href, target, children, ...others }: DropdownMenuItemLinkProps) {
+  className = [style.itemLink, className].filter(Boolean).join(' ')
+  const targetProp = target !== undefined ? { target } : null
+  return (
+    <li className={className} {...others}>
+      <Link className={style.link} href={href} {...targetProp}>{children}</Link>
+    </li >
   )
 }
 

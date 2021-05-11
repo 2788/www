@@ -1,6 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
-import { DropdownMenu, DropdownMenuItem } from 'components/UI/Dropdown'
+import { DropdownMenu, DropdownMenuItemLink } from 'components/UI/Dropdown'
 import Hot from 'components/Hot'
 
 import style from '../style.less'
@@ -8,12 +7,12 @@ import style from '../style.less'
 export default function Overlay() {
   return (
     <DropdownMenu className={style.dropdown}>
-      <DropdownMenuItem><a href="https://campus.qiniu.com">校园招聘 <Hot /></a></DropdownMenuItem>
-      <DropdownMenuItem><a href="https://career.qiniu.com/social">社会招聘</a></DropdownMenuItem>
-      <DropdownMenuItem><Link href="/company"><a>公司介绍</a></Link></DropdownMenuItem>
-      <DropdownMenuItem><Link href="/contact"><a>联系我们</a></Link></DropdownMenuItem>
-      <DropdownMenuItem><a href="https://blog.qiniu.com/archives/category/1">最新动态</a></DropdownMenuItem>
-      <DropdownMenuItem><a href="https://blog.qiniu.com/archives/category/5">技术博客</a></DropdownMenuItem>
+      <DropdownMenuItemLink href="https://campus.qiniu.com" target="_self">校园招聘 <Hot /></DropdownMenuItemLink>
+      <DropdownMenuItemLink href="https://career.qiniu.com/social" target="_self">社会招聘</DropdownMenuItemLink>
+      <DropdownMenuItemLink href="/company">公司介绍</DropdownMenuItemLink>
+      <DropdownMenuItemLink href="/contact">联系我们</DropdownMenuItemLink>
+      <DropdownMenuItemLink href="https://blog.qiniu.com/archives/category/1" target="_self">最新动态</DropdownMenuItemLink>
+      <DropdownMenuItemLink href="https://blog.qiniu.com/archives/category/5" target="_self">技术博客</DropdownMenuItemLink>
     </DropdownMenu>
   )
 }

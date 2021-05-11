@@ -19,7 +19,8 @@
   padding: 12px 0;
   background: @grey-1;
 
-  .item {
+  .item,
+  .itemLink {
     .ellipsis();
     padding: 8px 20px;
     cursor: pointer;
@@ -30,6 +31,16 @@
     &:hover {
       color: @blue-6;
       background: @blue-1;
+    }
+  }
+
+  .itemLink {
+    padding: 0;
+
+    .link {
+      display: block;
+      width: 100%;
+      padding: 8px 20px; // 这边和上面 item 的 padding 保持一致
     }
   }
 

@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import { categoryNameMap, Category, Product, nameMap, categoryProductsMap } from 'constants/products'
 import { urlForPrice, hasPrice } from 'utils/route'
-import Dropdown, { DropdownMenu, DropdownMenuGroup, DropdownMenuItem } from 'components/UI/Dropdown'
+import Dropdown, { DropdownMenu, DropdownMenuGroup, DropdownMenuItemLink } from 'components/UI/Dropdown'
 import Button from 'components/UI/Button'
-import Link from 'components/Link'
 
 import CalcIcon from './calc.svg'
 import ArrowDownIcon from './arrow-down.svg'
@@ -26,12 +25,10 @@ function Overlay() {
   function menuItemForProduct(product: Product) {
     if (!hasPrice(product)) return null
     return (
-      <DropdownMenuItem>
-        <Link href={urlForPrice(product)}>
-          {nameMap[product]}
-          {hasCalculator(product) && <CalcIcon className={style.calc} />}
-        </Link>
-      </DropdownMenuItem>
+      <DropdownMenuItemLink href={urlForPrice(product)}>
+        {nameMap[product]}
+        {hasCalculator(product) && <CalcIcon className={style.calc} />}
+      </DropdownMenuItemLink>
     )
   }
   const serviceProducts = categoryProductsMap[Category.Service]
@@ -49,11 +46,9 @@ function Overlay() {
         <DropdownMenuGroup title={categoryNameMap[Category.Vision]}>
           {visionProducts.map(menuItemForProduct)}
           {/* TODO OpenAPI 加入导航后可去掉 */}
-          <DropdownMenuItem>
-            <Link href={urlForPrice(Product.OpenAPI)}>
-              {nameMap[Product.OpenAPI]}
-            </Link>
-          </DropdownMenuItem>
+          <DropdownMenuItemLink href={urlForPrice(Product.OpenAPI)}>
+            {nameMap[Product.OpenAPI]}
+          </DropdownMenuItemLink>
         </DropdownMenuGroup>
       </DropdownMenu>
     </>
