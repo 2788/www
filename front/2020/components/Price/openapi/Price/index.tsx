@@ -6,7 +6,6 @@ import Audio from './Audio'
 import Picture from './Picture'
 import Text from './Text'
 import PictureProcess from './PictureProcess'
-import App from './App'
 
 export default function Price() {
   return (
@@ -23,9 +22,6 @@ export default function Price() {
         </PricePaneSubSection>
         <PricePaneSubSection title="图片处理">
           <PictureProcess />
-        </PricePaneSubSection>
-        <PricePaneSubSection title="App 安装包分析">
-          <App />
         </PricePaneSubSection>
       </PricePaneSection>
     </PricePane>
