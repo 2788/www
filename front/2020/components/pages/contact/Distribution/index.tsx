@@ -25,7 +25,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={beijing} />
           <Title className={style.title}>北京分部</Title>
-          <Desc className={style.desc}>北京市朝阳区太阳宫中路 12 号冠城大厦 1503 室</Desc>
+          <Desc className={style.desc}>北京市朝阳区太阳宫中路 12 号冠城大厦 1506 室</Desc>
         </LayoutCard>
         <LayoutCard>
           <Img className={style.image} src={hangzhou} />
