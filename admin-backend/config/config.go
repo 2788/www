@@ -21,8 +21,7 @@ type ServerConfig struct {
 	MorseHost                        string `yaml:"morse_host"`
 	MorseClientId                    string `yaml:"morse_client_id"`
 	SendMessageTaskInterval          int    `yaml:"send_message_task_interval"`
-	RedisHost                        string `yaml:"redis_host"`
-	RedisDB                          int    `yaml:"redis_db"`
+	RedisHosts                       string `yaml:"redis_hosts"`
 	LilliputHost                     string `yaml:"lilliput_host"` // 短链服务地址
 }
 

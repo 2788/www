@@ -8,10 +8,9 @@ server:
   sms_template: 亲爱的 [[.UserName]]，您报名的 [[.Title]] 将于 [[.StartTime]] 开始。更多活动详情可访问 [[.DetailUrl]] 查看。 # 发送短信模版
   sms_batch_limit: 100 # 每次最多同时发送多少条短信，不能超过 morse batch 的限制
   morse_host: http://bo-staging-morse.qa.qiniu.io
-  morse_client_id: 5963399a43c8ce5967000001
+  morse_client_id: 606c4437c0c3ed0008e35f0e
   send_message_task_interval: 30 # 单位为分钟
-  redis_host: 127.0.0.1:6379
-  redis_db: 7
+  redis_hosts: 10.200.20.22:6379
   lilliput_host: http://bo-staging-lilliput.qa.qiniu.io # 短链服务地址
 
 target: privatized

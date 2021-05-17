@@ -6,6 +6,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"html/template"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 
@@ -30,7 +31,7 @@ const (
 
 type CronJobService struct {
 	conf            *config.Config
-	redis           *redis.Client
+	redis           redis.UniversalClient
 	mongoApiService *mongoClient.MongoApiServiceWithAuth
 	morseService    message.HandleNotification
 	lilliputService *lilliput.LilliputService
@@ -46,7 +47,8 @@ func NewCronJobService(conf *config.Config) *CronJobService {
 			},
 		},
 	}
-	redisClient := redis.NewClient(&redis.Options{Addr: conf.RedisHost, DB: conf.RedisDB})
+	redisClient := redis.NewUniversalClient(
+		&redis.UniversalOptions{Addrs: strings.Split(conf.RedisHosts, ",")})
 
 	transport := auth.NewQiniuAuthTransport(conf.Admin.AccessKey, conf.Admin.SecretKey, http.DefaultTransport)
 	host := []string{fmt.Sprintf("http://127.0.0.1:%d", conf.Port)}
@@ -232,8 +234,15 @@ func (f *CronJobService) getNeedSendMsgActivs(logger *xlog.Logger) (activs []mod
 	query := map[string]interface{}{
 		"state":          1,
 		"enableReminder": true,
-		"noticeStatus":   map[string]interface{}{"$ne": 2},
-		"startTime":      map[string]interface{}{"$gt": now},
+		"noticeStatus":   bson.M{"$ne": 2},
+		"startTime":      bson.M{"$gt": now},
+		"$expr": bson.M{"$lte": []interface{}{
+			"$startTime", bson.M{
+				"$add": []interface{}{
+					bson.M{"$multiply": []interface{}{"$reminderTime", 60}}, now,
+				},
+			},
+		}},
 	}
 	listQuery := mongoClient.ListQuery{
 		Query: query,
