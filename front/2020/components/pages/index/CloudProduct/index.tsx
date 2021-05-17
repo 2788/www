@@ -74,7 +74,7 @@ export default function CloudProduct() {
   )
 
   return (
-    <Section title="产品与服务" subtitle={subtitle}>
+    <Section title="产品与服务" subtitle={subtitle} rootClassName={style.wraper}>
       <Context.Provider value={{ getPrevOffset, registerOffset }}>
         <div className={style.container}>
           {productType === 'all' && <All />}
