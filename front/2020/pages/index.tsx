@@ -27,6 +27,7 @@ import { getBanners, Banner, getActivities, Activity, getNews, NewsType } from '
 
 import styles from './style.less'
 
+import img517 from './_images/517.png'
 import YigouCoreIcon from './_images/core1.svg'
 import ChuanshuCoreIcon from './_images/core2.svg'
 import ShijueCoreIcon from './_images/core3.svg'
@@ -41,18 +42,25 @@ function PageContent({ banners, activities, news }: { banners: Banner[], activit
 
   return (
     <>
-      <Carousel className={styles.headerBanner} autoplay>
-        {
-          banners.map(({ name, pcImg, mobileImg, backgroundColor, link }: Banner) => (
-            <PageBanner
-              key={name}
-              bgImg={isMobile ? mobileImg : pcImg}
-              bgColor={backgroundColor}
-              href={link}
-            />
-          ))
-        }
-      </Carousel>
+      <>
+        <div className={styles.imgWrapper}>
+          <div className={styles.imgContainer}>
+            <img src={img517} className={styles.img} alt="517" />
+          </div>
+        </div>
+        <Carousel className={styles.headerBanner} autoplay>
+          {
+            banners.map(({ name, pcImg, mobileImg, backgroundColor, link }: Banner) => (
+              <PageBanner
+                key={name}
+                bgImg={isMobile ? mobileImg : pcImg}
+                bgColor={backgroundColor}
+                href={link}
+              />
+            ))
+          }
+        </Carousel>
+      </>
 
       <Activities activities={activities} />
 
