@@ -101,7 +101,7 @@ function PageContent({ notices, promotionMap }: { notices: INotice[], promotionM
             icon={<Advantage3Icon />}
             title="精准智能调度"
           >
-            <FeatureDesc>支持 DNS、HTTPDNS、HTTP302 调度模式，有效提高访问响应速度，防止劫持，实现全网实时精准调度调度</FeatureDesc>
+            <FeatureDesc>支持 DNS、HTTPDNS、HTTP302 调度模式，有效提高访问响应速度，防止劫持，实现全网实时精准调度</FeatureDesc>
           </FeatureItem>
         </FeatureGroup>
 
