@@ -32,8 +32,8 @@ export default function CdnScene() {
           <p className={styles.sceneContent}>网页静态资源优化加速分发，例如：HTML、CSS、JS、img、短视频等。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
-            <li className={styles.item}>全站 HTTPS 保证网站访问安全；TCP 压缩优化使网页大图、样式等完成秒级加载，缩短网页响应时间提高用户体验。</li>
-            <li className={styles.item}>配合七牛云-图片处理服务一起使用，还可以针对图片进行缩略、打水印，转格式等数据处理服务。</li>
+            <li className={styles.item}>全站 HTTPS 保证网站访问安全；TCP 压缩优化使网页大图、样式等完成秒级加载，缩短网页响应时间，提高用户体验。</li>
+            <li className={styles.item}>配合七牛云-图片处理服务一起使用，还可以针对图片进行缩略、打水印、转格式等数据处理服务。</li>
           </ul>
         </SceneBlock>
       </ScenePanel>
@@ -80,7 +80,7 @@ export default function CdnScene() {
           <p className={styles.sceneContent}>动态加速针对动态资源进行加速分发，在电商、社交、社区论坛、金融支付和游戏娱乐等方面可以显著提升用户的访问性能。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
-            <li className={styles.item}>借助特有的动态路由探测技术和私有传输协议优化，可以保证客户源站的内容通过安全稳定的最优链路分发到用户端</li>
+            <li className={styles.item}>借助特有的动态路由探测技术和私有传输协议优化，可以保证客户源站的内容通过安全稳定的最优链路分发到用户端。</li>
           </ul>
         </SceneBlock>
       </ScenePanel>
@@ -91,11 +91,11 @@ export default function CdnScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer} shadow>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>全球加速，源站在国内的场景</p>
+          <p className={styles.sceneContent}>全球加速，源站在国内的场景。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
-            <li className={styles.item}>跨国回源链路质量</li>
-            <li className={styles.item}>海外低命中资源访问时，降低响应时间，提升下载速度</li>
+            <li className={styles.item}>跨国回源链路质量。</li>
+            <li className={styles.item}>海外低命中资源访问时，降低响应时间，提升下载速度。</li>
           </ul>
         </SceneBlock>
       </ScenePanel>

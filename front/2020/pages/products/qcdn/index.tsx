@@ -120,7 +120,7 @@ function PageContent({ notices, promotionMap }: { notices: INotice[], promotionM
             icon={<Advantage5Icon />}
             title="灵活分时计费"
           >
-            <FeatureDesc>日间、闲时、忙时可分开计费，根据使用场景精细化运营，为用户最大化降低 成本费用</FeatureDesc>
+            <FeatureDesc>日间、闲时、忙时可分开计费，根据使用场景精细化运营，为用户最大化降低成本费用</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"
