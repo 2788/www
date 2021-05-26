@@ -189,7 +189,6 @@ function PageContent({ notices }: { notices: INotice[] }) {
               <Case pic={logos.qutoutiao} alt="趣头条" />
             </CaseGroup>
             <CaseGroup>
-              <Case pic={logos.shyc} alt="上海烟草" />
               <Case pic={logos.huashu} alt="华数传媒" />
               <Case pic={logos.sohutv} alt="搜狐视频" />
               <Case pic={logos.qczj} alt="汽车之家" />
