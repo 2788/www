@@ -70,9 +70,9 @@ export default function ForMobile() {
           pos="left-right"
           align="left"
           icon={<ProductIcon product={Product.OpenAPI} />}
-          title="Open API"
+          title="AI 开放市场"
         >
-          <FeatureDesc>提供各种图片、音视频、以及其他数据处理的第三方服务接口，提供高质量的数据处理服务</FeatureDesc>
+          <FeatureDesc>AI 开放市场提供图片、文本、音频、视频等智能数据处理服务，对媒体内容实现智能审核、智能分析</FeatureDesc>
           <FeatureLink href={urlMap[Product.OpenAPI]}>了解更多 &gt;&gt;</FeatureLink>
         </FeatureItem>
       </FeatureGroup>

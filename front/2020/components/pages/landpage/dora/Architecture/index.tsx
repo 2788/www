@@ -87,12 +87,12 @@ export default function Architecture() {
                     </g>
                   </g>
                 </g>
-                <g transform="translate(299 2)">
+                <g transform="translate(289 2)">
                   <Link href={urlMap[Product.OpenAPI]}>
-                    <g transform="translate(0 45)">
-                      <rect width="66" height="20" y="1" fill="#E0F7FF"></rect>
+                    <g transform="translate(-4 45)">
+                      <rect width="77" height="20" y="1" fill="#E0F7FF"></rect>
                       <text fill="#00AAE7">
-                        <tspan x="2" y="15.617">Open API</tspan>
+                        <tspan x="2" y="15.617">AI 开放市场</tspan>
                       </text>
                     </g>
                   </Link>
@@ -195,7 +195,7 @@ export default function Architecture() {
                   </g>
                 </g>
                 <g stroke="#AAC5FA" strokeWidth="2" transform="translate(46 87)">
-                  <polyline points="0 9 0 0 287 0 287 9" transform="matrix(1 0 0 -1 0 9)"></polyline>
+                  <polyline points="0 9 0 0 277 0 277 9" transform="matrix(1 0 0 -1 0 9)"></polyline>
                   <line x1="136.214" x2="136.214" y1="9" y2="19" transform="matrix(1 0 0 -1 0 28)"></line>
                   <line x1="110.214" x2="110.214" y2="9" transform="matrix(1 0 0 -1 0 9)"></line>
                   <line x1="199.214" x2="199.214" y2="9" transform="matrix(1 0 0 -1 0 9)"></line>
@@ -280,7 +280,7 @@ export default function Architecture() {
                     <g transform="translate(0 109)">
                       <rect width="120" height="32" fill="#E0F7FF"></rect>
                       <text fill="#00AAE7">
-                        <tspan x="30" y="21">Open API</tspan>
+                        <tspan x="24" y="21">AI 开放市场</tspan>
                       </text>
                     </g>
                   </Link>

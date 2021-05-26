@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <path stroke="#00AAE6" stroke-linecap="square" d="M48.4094922,9 C48.4094922,12.8659932 45.2754855,16 41.4094922,16 C37.543499,16 34.4094922,19.1340068 34.4094922,23"/>
+    <circle cx="37.909" cy="2.5" r="2.5" stroke="#00AAE6" stroke-linecap="square"/>
+    <circle cx="54.909" cy="19.5" r="2.5" stroke="#00AAE6" stroke-linecap="square"/>
+    <circle cx="54.409" cy="3" r="3" stroke="#00AAE6" stroke-linecap="square"/>
+    <line x1="25.409" x2="22.409" y1="1" y2="10" stroke="#00AAE6" stroke-linecap="square"/>
+    <line x1="28.409" x2="33.409" y1="16" y2="9" stroke="#00AAE6" stroke-linecap="square"/>
+    <line x1="41.409" x2="48.409" y1="29" y2="24" stroke="#00AAE6" stroke-linecap="square"/>
+    <path stroke="#333" stroke-linecap="square" d="M0.0554922202,56.142 L15.4094922,12 L45.4094922,44 L1.29149222,57.427 C0.931424032,57.536712 0.540250396,57.4349368 0.279309711,57.1636514 C0.0183690258,56.892366 -0.0681287163,56.497533 0.0554922202,56.142 Z"/>
+    <line x1="10.909" x2="5.877" y1="54.5" y2="39.404" stroke="#333"/>
+    <line x1="21.198" x2="11.664" y1="51.368" y2="22.766" stroke="#333"/>
+    <line x1="31.488" x2="21.616" y1="48.237" y2="18.621" stroke="#333"/>
+    <line x1="56.409" x2="47.409" y1="32" y2="35" stroke="#00AAE6" stroke-linecap="square"/>
+  </g>
+</svg>

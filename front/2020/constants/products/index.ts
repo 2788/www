@@ -44,7 +44,7 @@ export enum Product {
   Express = 'express',
   /** 视频监控 */
   Qvs = 'qvs',
-  /** Open API */
+  /** AI 开放市场 */
   OpenAPI = 'openapi',
   /** 票证自动识别（OCR） */
   Ocr = 'ocr',
@@ -86,7 +86,7 @@ export const nameMap = {
   [Product.Insight]: '智能日志管理平台',
   [Product.Express]: '机器数据分析平台 Pandora',
   [Product.Qvs]: '视频监控 QVS',
-  [Product.OpenAPI]: 'Open API',
+  [Product.OpenAPI]: 'AI 开放市场',
   [Product.Ocr]: '票证自动识别 OCR',
   [Product.Pcdn]: 'PCDN',
   [Product.Plesdk]: '直播特效 SDK',
@@ -183,7 +183,7 @@ export const descMap = {
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
   [Product.Express]: '助力企业探索数据、创造价值、预见未来',
   // TODO 需要加入到顶部导航再补充
-  [Product.OpenAPI]: '',
+  [Product.OpenAPI]: 'AI 开放市场是一个开放平台，提供图片，文本，音频，视频等智能数据处理服务',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
   [Product.Plesdk]: '提供直播推流场景下的美颜滤镜、大眼瘦脸、美妆美形等特效功能',
@@ -232,7 +232,8 @@ export const subCategoryProductsMap: { [s in SubCategory]: readonly Product[] } 
   [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
   [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.Sms],
   [SubCategory.VisionStoDist]: [Product.Kodo, Product.Cdn],
-  [SubCategory.VisionPlatform]: [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii, Product.Voice],
+  [SubCategory.VisionPlatform]:
+    [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.OpenAPI],
   [SubCategory.VisionLiveBroadcast]:
     [Product.Pili, Product.Geek, Product.Rtn, Product.Plsv, Product.Plms, Product.QnPlayer, Product.Qvs],
   [SubCategory.IntelligenceStoDist]: [Product.Kodo, Product.Cdn, Product.Hdfs],
@@ -261,6 +262,7 @@ export const categoryVision = [
   Product.Ocr,
   Product.Vii,
   Product.Voice,
+  Product.OpenAPI,
   Product.Pili,
   Product.Geek,
   Product.Rtn,

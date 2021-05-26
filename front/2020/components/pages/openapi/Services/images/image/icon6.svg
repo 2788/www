@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="46" viewBox="0 0 41 46">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+    <polyline stroke="#333" points="24 0 24 12 36 12"/>
+    <polyline stroke="#333" stroke-linecap="square" points="36 22 36 12 24 0 0 0 0 44 23 44"/>
+    <line x1="8" x2="13" y1="34" y2="34" stroke="#333" stroke-linecap="square"/>
+    <line x1="8" x2="16" y1="24" y2="24" stroke="#333" stroke-linecap="square"/>
+    <line x1="8" x2="16" y1="14" y2="14" stroke="#333" stroke-linecap="square"/>
+    <line x1="38" x2="31.949" y1="42" y2="35.949" stroke="#00AAE6" stroke-linecap="square"/>
+    <circle cx="27" cy="31" r="7" stroke="#00AAE6" stroke-linecap="square"/>
+  </g>
+</svg>

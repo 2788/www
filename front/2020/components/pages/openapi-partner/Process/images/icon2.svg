@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
+    <path stroke="#333" d="M4 42C1.790861 42 0 40.209139 0 38L0 22 3 22M8 0L8 38C8 40.209139 6.209139 42 4 42L38 42C40.209139 42 42 40.209139 42 38L42 0 8 0z"/>
+    <line x1="15" x2="35" y1="24" y2="24" stroke="#00AAE6"/>
+    <line x1="15" x2="35" y1="32" y2="32" stroke="#00AAE6"/>
+    <rect width="20" height="8" x="15" y="8" stroke="#00AAE6"/>
+  </g>
+</svg>

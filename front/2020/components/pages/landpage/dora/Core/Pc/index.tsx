@@ -24,7 +24,7 @@ export default function CoreProduct() {
       </Row>
       <Row>
         <MyCard icon={<Ocr />} link={urlMap[Product.Ocr]} title="票证自动识别 OCR" desc="票证自动识别 OCR 基于行业前沿的深度学习技术，提供身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率" />
-        <MyCard icon={<OpenAPI />} link={urlMap[Product.OpenAPI]} title="Open API" desc="提供各种图片、音视频、以及其他数据处理的第三方服务接口，提供高质量的数据处理服务" />
+        <MyCard icon={<OpenAPI />} link={urlMap[Product.OpenAPI]} title="AI 开放市场" desc="AI 开放市场提供图片、文本、音频、视频等智能数据处理服务，对媒体内容实现智能审核、智能分析" />
         <InvisibleCard className={style.cardWrapper} />
         <InvisibleCard className={style.cardWrapper} />
       </Row>

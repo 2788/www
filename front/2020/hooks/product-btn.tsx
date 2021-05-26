@@ -16,6 +16,7 @@ export type BtnOptions = {
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
   target?: string // 同 <a> 标签 target 属性，同站点页面默认在当前标签页打开，非同站点页面默认新标签页打开
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void
 } | {
   type?: Props['type'],
   children: ReactNode,
