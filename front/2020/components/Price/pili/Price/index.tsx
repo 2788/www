@@ -1,6 +1,7 @@
 import React from 'react'
 import PricePane, { PricePaneSection } from 'components/Price/Banner/PricePane'
 import Tabs, { TabPane } from 'components/UI/Tabs'
+import Link from 'components/Link'
 
 import Pack from './Pack'
 import Transcoding from './Transcoding'
@@ -41,7 +42,9 @@ export default function Price() {
             <p className={style.red}>请联系对应销售或拨打 400-808-9176 转 1 了解收费详情</p>
           </TabPane>
           <TabPane value="3" tab="预付费直播流量包">
-            <p className={style.alert}>内测用户专享</p>
+            <p className={style.alert}>
+              内测用户专享<Link href="https://qmall.qiniu.com/template/NjE?ref=category&spec_combo=MjM0Nw" className={style.link} blue>购买资源包</Link>
+            </p>
             <Pack />
           </TabPane>
           <TabPane value="4" tab="极速直播转码"><Transcoding /></TabPane>
