@@ -119,9 +119,11 @@ class LocalStore extends Store {
       reminderTime: reminder.reminderTime
     }
     if (this.props.status === EditorStatus.Creating) {
-      this.toasterStore.promise(this.activityStore.add(param), '添加活动成功！')
+      await this.activityStore.add(param)
+      this.toasterStore.success('添加活动成功！')
     } else {
-      this.toasterStore.promise(this.activityStore.update(param, this.props.id), '更新活动成功！')
+      await this.activityStore.update(param, this.props.id)
+      this.toasterStore.success('更新活动成功！')
     }
   }
 
