@@ -68,13 +68,13 @@ const dataMap = {
     },
     {
       icon: <ImageIcon3 />,
-      title: '图谱图片鉴黄',
+      title: '图普图片鉴黄',
       desc: '图片鉴黄服务帮您判断保存在七牛云的图片是属于色情、性感还是正常。根据该服务提供商的评测结果显示，鉴别的准确度超过 99.5%，可以替代 80% 以上的人工审核，并且机器可以通过不断学习提高鉴别的准确度。',
       href: 'https://portal.qiniu.com/dora/thirdparty/create/nrop/quickstart'
     },
     {
       icon: <ImageIcon4 />,
-      title: '图谱图片鉴暴恐',
+      title: '图普图片鉴暴恐',
       desc: (
         <>
           图片鉴暴恐服务 terror，为保存在七牛云的图片，根据以下特征识别暴恐和非暴恐的图片：
@@ -88,13 +88,13 @@ const dataMap = {
     },
     {
       icon: <ImageIcon5 />,
-      title: '图谱广告过滤',
+      title: '图普广告过滤',
       desc: '广告过滤服务 ad 帮您判断保存在七牛云的图片是否属于广告。',
       href: 'https://portal.qiniu.com/dora/thirdparty/create/ad/quickstart'
     },
     {
       icon: <ImageIcon6 />,
-      title: '图谱广告过滤增强版',
+      title: '图普广告过滤增强版',
       desc: '广告过滤服务增强版能够帮您有效判断保存在七牛云的带文字图片是否属于广告，如果图片被识别为带有文字，会将对应的文字内容识别出来反馈给您，您可以方便的根据文本信息去判断是否是广告内容。',
       href: 'https://portal.qiniu.com/dora/thirdparty/create/ad-plus/quickstart'
     },
@@ -132,7 +132,7 @@ const dataMap = {
     },
     {
       icon: <VideoIcon2 />,
-      title: '图谱视频鉴黄',
+      title: '图普视频鉴黄',
       desc: '短视频鉴黄服务能够帮您有效判断保存在七牛云的视频是属于色情、性感还是正常。',
       href: 'https://portal.qiniu.com/dora/thirdparty/create/tupu-video/quickstart'
     },
