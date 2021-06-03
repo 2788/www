@@ -4,6 +4,8 @@ import PricePane, { PricePaneSection, PricePaneSubSection } from 'components/Pri
 import Picture from './Picture'
 import Live from './Live'
 import Video from './Video'
+import Audio from './Audio'
+import Text from './Text'
 import Other from './Other'
 
 export default function Price() {
@@ -18,6 +20,12 @@ export default function Price() {
         </PricePaneSubSection>
         <PricePaneSubSection title="视频">
           <Video />
+        </PricePaneSubSection>
+        <PricePaneSubSection title="音频">
+          <Audio />
+        </PricePaneSubSection>
+        <PricePaneSubSection title="文本">
+          <Text />
         </PricePaneSubSection>
         <PricePaneSubSection title="以图搜图">
           <Other />
