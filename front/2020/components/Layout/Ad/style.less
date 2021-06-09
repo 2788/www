@@ -1,0 +1,27 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  display: block;
+  background-color: #0F1C30;
+  overflow-x: auto;
+
+  .container {
+    margin: 0 auto;
+    width: @centered-content-width;
+    height: 65px;
+    background-image: url(./images/pc.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    .pcLg({
+      width: @centered-content-width-lg;
+      height: 80px;
+    });
+  }
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+}
