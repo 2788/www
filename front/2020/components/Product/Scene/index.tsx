@@ -57,17 +57,21 @@ export default function Scene(props: ISceneProps) {
     return null
   }
 
-  function renderMain() {
+  function renderMain({ subPaths }: { subPaths?: string[] }) {
+    let { defaultActive } = otherProps
+    if (subPaths && subPaths.length > 0) {
+      defaultActive = subPaths[0]
+    }
     if (isMobile) {
       return (
-        <MobileScene {...otherProps}>
+        <MobileScene defaultActive={defaultActive} {...otherProps}>
           {children}
         </MobileScene>
       )
     }
 
     return (
-      <PcScene {...otherProps}>
+      <PcScene defaultActive={defaultActive} {...otherProps}>
         {children}
       </PcScene>
     )
@@ -89,10 +93,9 @@ export default function Scene(props: ISceneProps) {
       title={title}
       grey={grey && !isMobile}
       style={isMobile ? mobileStyle : {}}
+      render={renderMain}
       {...otherPropsForSection}
-    >
-      {renderMain()}
-    </Section>
+    />
   )
 }
 

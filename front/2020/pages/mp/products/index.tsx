@@ -6,7 +6,7 @@ import Layout from 'components/Layout'
 import Link from 'components/Link'
 import MpBanner from 'components/mp/Banner'
 import Tabs, { TabPane } from 'components/UI/Tabs'
-import { Category, categoryNameMapForMp, categories, Product, nameMap, descMap, urlMap, getCategoryProducts } from 'constants/products'
+import { Category, categoryNameMapForMp, categories, getCategoryProducts, normalizeProduct, PartialProductData } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { MpPage } from 'constants/mp'
 
@@ -24,7 +24,9 @@ export default function Main() {
             categories.map(category => (
               <TabPane value={category} tab={categoryNameMapForMp[category]} key={category}>
                 {
-                  getCategoryProducts(category).map(product => <Card key={product} product={product} />)
+                  getCategoryProducts(category).map((product, index) => (
+                    <Card key={index} product={product} />
+                  ))
                 }
               </TabPane>
             ))
@@ -43,20 +45,23 @@ export default function Main() {
 }
 
 type CardProps = {
-  product: Product
+  product: PartialProductData
 }
 
 function Card({ product }: CardProps) {
+  const productData = normalizeProduct(product)
   return (
     <>
       {
-        descMap[product]
+        productData.desc
           ? (
-            <Link className={style.card} href={urlMap[product] as string} >
-              <div className={style.cardIcon}><ProductIcon product={product} /></div>
+            <Link className={style.card} href={productData.url as string} >
+              <div className={style.cardIcon}>
+                <ProductIcon product={productData.product} />
+              </div>
               <div>
-                <div className={style.cardTitle}>{nameMap[product]}</div>
-                <div className={style.cardDesc}>{descMap[product]}</div>
+                <div className={style.cardTitle}>{productData.name}</div>
+                <div className={style.cardDesc}>{productData.desc}</div>
               </div>
             </Link>
           )

@@ -1,20 +1,25 @@
 import React from 'react'
 import Link from 'components/Link'
-import { Product, urlMap, nameMap, categories, categoryNameMap, getCategoryProducts } from 'constants/products'
+import { categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
 import { Activity, urlMap as activityUrlMap } from 'constants/activity'
 import * as sol from 'constants/solutions'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
 
 import style from './index.less'
 
-function getProductItems(products: readonly Product[]) {
+function getProductItems(products: PartialProductData[]) {
   return products.filter(
-    product => urlMap[product] != null
-  ).map(product => (
-    <MenuItem key={product}>
-      <Link href={urlMap[product]!}>{nameMap[product]}</Link>
-    </MenuItem>
-  ))
+    product => normalizeProduct(product).url !== null
+  ).map((product, index) => {
+    const productData = normalizeProduct(product)
+    return (
+      <MenuItem key={index}>
+        <Link href={productData.url!}>
+          {productData.name}
+        </Link>
+      </MenuItem>
+    )
+  })
 }
 
 function getSolutionItems(solutions: readonly sol.Solution[]) {

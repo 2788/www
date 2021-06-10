@@ -3,8 +3,6 @@
  * @description 包括 id、展示名、页面地址等
  */
 
-import { Landpage, urlMap as landUrlMap } from '../landpage'
-
 export enum Product {
   /** 对象存储 Kodo */
   Kodo = 'kodo',
@@ -28,6 +26,10 @@ export enum Product {
   Sms = 'sms',
   /** 智能多媒体服务 */
   Dora = 'dora',
+  /** 音视频处理 */
+  DoraAudio = 'doraAudio',
+  /** 图片处理 */
+  DoraImage = 'doraImage',
   /** 内容安全 */
   Censor = 'censor',
   /** 人脸核验 */
@@ -61,7 +63,9 @@ export enum Product {
   /** 短视频特效 SDK */
   Svesdk = 'svesdk',
   /** 智能语音 */
-  Voice = 'voice'
+  Voice = 'voice',
+  /** 存储一体机 */
+  Storage = 'storage'
 }
 
 // TODO: 这个再核对一遍
@@ -78,9 +82,11 @@ export const nameMap = {
   [Product.Ddos]: 'DDoS 高防',
   [Product.Sms]: '云短信 SMS',
   [Product.Dora]: '智能多媒体服务',
+  [Product.DoraAudio]: '音视频处理',
+  [Product.DoraImage]: '图片处理',
   [Product.Censor]: '内容审核',
   [Product.FaceID]: '人脸核验',
-  [Product.Rtn]: '实时音视频',
+  [Product.Rtn]: '实时音视频 QRTC',
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '直播推流 SDK',
   [Product.Insight]: '智能日志管理平台',
@@ -94,7 +100,8 @@ export const nameMap = {
   [Product.Vii]: '视频智能分析',
   [Product.QnPlayer]: '播放器 SDK',
   [Product.Svesdk]: '短视频特效 SDK',
-  [Product.Voice]: '智能语音'
+  [Product.Voice]: '智能语音',
+  [Product.Storage]: '云存储一体机'
 } as const
 
 export const urlMap = {
@@ -109,6 +116,8 @@ export const urlMap = {
   [Product.Ddos]: '/products/ddos',
   [Product.Sms]: '/products/sms',
   [Product.Dora]: '/products/dora',
+  [Product.DoraAudio]: '/products/dora#functions/audio',
+  [Product.DoraImage]: '/products/dora#functions/image',
   [Product.Censor]: '/products/censor',
   [Product.FaceID]: '/products/faceid',
   [Product.Rtn]: '/products/rtn',
@@ -125,7 +134,8 @@ export const urlMap = {
   [Product.Vii]: '/products/vii',
   [Product.QnPlayer]: '/products/qnplayer',
   [Product.Svesdk]: '/products/svesdk',
-  [Product.Voice]: '/products/voice'
+  [Product.Voice]: '/products/voice',
+  [Product.Storage]: '/products/storage'
 } as const
 
 export const priceUrlMap = {
@@ -140,6 +150,8 @@ export const priceUrlMap = {
   [Product.Ddos]: null,
   [Product.Sms]: '/prices/sms',
   [Product.Dora]: '/prices/dora',
+  [Product.DoraAudio]: null,
+  [Product.DoraImage]: null,
   [Product.Censor]: '/prices/censor',
   [Product.FaceID]: '/prices/faceid',
   [Product.Rtn]: '/prices/rtc',
@@ -156,7 +168,8 @@ export const priceUrlMap = {
   [Product.Vii]: null,
   [Product.QnPlayer]: null,
   [Product.Svesdk]: null,
-  [Product.Voice]: null
+  [Product.Voice]: null,
+  [Product.Storage]: null
 } as const
 
 export const descMap = {
@@ -173,6 +186,8 @@ export const descMap = {
   [Product.Sms]: '致力于为用户提供快捷高效的通信服务能力',
 
   [Product.Dora]: '提供云端图片、音视频基础处理、丰富的人工智能服务',
+  [Product.DoraAudio]: '提供高性能的转码、切片、分段、拼接、截帧、水印等音视频处理接口',
+  [Product.DoraImage]: '提供高可用的图片格式转换、缩放、裁剪、旋转、水印、拼接等图片处理接口',
   [Product.Censor]: '提供图片、视频等内容的审核服务，精准识别过滤色情、暴恐、敏感人物等违规内容',
   [Product.Rtn]: '基于 WebRTC 的一站式解决方案，零基础搭建音视频平台',
   [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
@@ -191,53 +206,93 @@ export const descMap = {
   [Product.Vii]: '通过视频、图片、音频的多维理解，实现多媒体内容的管理，搜索和推荐',
   [Product.QnPlayer]: '全自研点直播多媒体播放器',
   [Product.Svesdk]: '',
-  [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互'
+  [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互',
+  [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品'
 } as const
 
 export enum Category {
   Service = 'service',
-  Vision = 'vision',
-  Intelligence = 'intelligence'
+  Media = 'media',
+  Data = 'data'
 }
 
 export enum SubCategory {
   ServiceStorage = 'service-storage',
   ServiceDistribution = 'service-distribution',
   ServiceBasis = 'service-basis',
-  VisionStoDist = 'vision-stoDist',
-  VisionPlatform = 'vision-platform',
-  VisionLiveBroadcast = 'vision-liveBroadcast',
-  IntelligenceStoDist = 'intelligence-stoDist',
-  IntelligencePlatform = 'intelligence-platform'
+  MediaAudio = 'media-audio',
+  MediaLiveBroadcast = 'media-liveBroadcast',
+  MediaDora = 'media-dora',
+  MediaSdk = 'media-sdk',
+  MediaStorage = 'media-storage',
+  MediaDistribution = 'media-distribution',
+  DataStorage = 'data-storage',
+  DataPlatform = 'data-platform'
 }
 
 export const subCategoryNameMap = {
   [SubCategory.ServiceStorage]: '云存储',
   [SubCategory.ServiceDistribution]: '云分发',
   [SubCategory.ServiceBasis]: '云基础',
-  [SubCategory.VisionStoDist]: '存储与分发',
-  [SubCategory.VisionPlatform]: '视觉数据分析平台',
-  [SubCategory.VisionLiveBroadcast]: '互动直播',
-  [SubCategory.IntelligenceStoDist]: '存储与分发',
-  [SubCategory.IntelligencePlatform]: '机器数据分析平台'
+  [SubCategory.MediaAudio]: '音视频点播',
+  [SubCategory.MediaLiveBroadcast]: '直播与实时互动',
+  [SubCategory.MediaDora]: '智能多媒体服务',
+  [SubCategory.MediaSdk]: '客户端 SDK',
+  [SubCategory.MediaStorage]: '云存储',
+  [SubCategory.MediaDistribution]: '云分发',
+  [SubCategory.DataStorage]: '云存储',
+  [SubCategory.DataPlatform]: '机器数据分析平台'
 } as const
 
 // 次级标题链接
 export const subCategoryUrlMap: { [s in SubCategory]?: string } = {
-  [SubCategory.VisionPlatform]: landUrlMap[Landpage.Dora]
+  [SubCategory.MediaDora]: urlMap[Product.Dora]
 }
 
-export const subCategoryProductsMap: { [s in SubCategory]: readonly Product[] } = {
+export type ProductData = {
+  product: Product
+  name: string
+  desc: string
+  url: string | null
+}
+
+export type PartialProductData = Product | {
+  product: Product
+  name?: string
+  desc?: string
+  url?: string | null
+}
+
+export function normalizeProduct(val: Product | PartialProductData): ProductData {
+  if (typeof val === 'string') {
+    return {
+      product: val,
+      name: nameMap[val],
+      desc: descMap[val],
+      url: urlMap[val]
+    }
+  }
+  return { name: nameMap[val.product], desc: descMap[val.product], url: urlMap[val.product], ...val }
+}
+
+export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] } = {
   [SubCategory.ServiceStorage]: [Product.Kodo, Product.Archive],
   [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
   [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.Sms],
-  [SubCategory.VisionStoDist]: [Product.Kodo, Product.Cdn],
-  [SubCategory.VisionPlatform]:
-    [Product.Dora, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.OpenAPI],
-  [SubCategory.VisionLiveBroadcast]:
-    [Product.Pili, Product.Geek, Product.Rtn, Product.Plsv, Product.Plms, Product.QnPlayer, Product.Qvs],
-  [SubCategory.IntelligenceStoDist]: [Product.Kodo, Product.Cdn, Product.Hdfs],
-  [SubCategory.IntelligencePlatform]: [Product.Express]
+  [SubCategory.MediaAudio]: [
+    { product: Product.Kodo, name: '音视频存储', desc: '为音视频多媒体数据提供高可靠、高可用和高性能的对象存储服务' },
+    Product.DoraAudio,
+    { product: Product.Cdn, name: '点播加速', desc: '通过全方位的 CDN 质量监控和智能节点调度，提供音视频点播优化加速服务' }
+  ],
+  [SubCategory.MediaLiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
+  [SubCategory.MediaDora]:
+    [Product.DoraImage, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.OpenAPI],
+  [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer],
+  [SubCategory.MediaStorage]: [Product.Kodo, Product.Storage],
+  [SubCategory.MediaDistribution]: [Product.Cdn, Product.Pcdn],
+
+  [SubCategory.DataStorage]: [Product.Kodo, Product.Hdfs],
+  [SubCategory.DataPlatform]: [Product.Express]
 }
 
 /** 基础服务 */
@@ -255,7 +310,7 @@ export const categoryService = [
 ] as const
 
 /** 视觉数据智能 */
-export const categoryVision = [
+export const categoryMedia = [
   Product.Dora,
   Product.Censor,
   Product.FaceID,
@@ -273,7 +328,7 @@ export const categoryVision = [
 ] as const
 
 /** 机器数据智能 */
-export const categoryIntelligence = [
+export const categoryData = [
   Product.Express,
   Product.Kodo,
   Product.Archive,
@@ -282,44 +337,47 @@ export const categoryIntelligence = [
 
 export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[] } = {
   [Category.Service]: [SubCategory.ServiceStorage, SubCategory.ServiceDistribution, SubCategory.ServiceBasis],
-  [Category.Vision]: [SubCategory.VisionStoDist, SubCategory.VisionPlatform, SubCategory.VisionLiveBroadcast],
-  [Category.Intelligence]:
-    [SubCategory.IntelligenceStoDist, SubCategory.IntelligencePlatform]
+  [Category.Media]: [
+    SubCategory.MediaAudio, SubCategory.MediaLiveBroadcast, SubCategory.MediaDora,
+    SubCategory.MediaSdk, SubCategory.MediaStorage, SubCategory.MediaDistribution
+  ],
+  [Category.Data]: [SubCategory.DataStorage, SubCategory.DataPlatform]
 }
 
-export function getCategoryProducts(category: Category): Product[] {
+export function getCategoryProducts(category: Category): PartialProductData[] {
   return categorySubCategoriesMap[category].reduce(
     (accumulator, current) => [...accumulator, ...subCategoryProductsMap[current]],
-    [] as Product[]
+    [] as PartialProductData[]
   )
 }
 
 export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
   [Category.Service]: categoryService,
-  [Category.Vision]: categoryVision,
-  [Category.Intelligence]: categoryIntelligence
+  [Category.Media]: categoryMedia,
+  [Category.Data]: categoryData
 }
 
 export const categoryNameMap = {
   [Category.Service]: '基础能力',
-  [Category.Vision]: '智能多媒体数据处理平台',
-  [Category.Intelligence]: '机器数据处理平台'
+  [Category.Media]: '多媒体数据处理平台及服务',
+  [Category.Data]: '机器数据处理平台'
 } as const
 
 export const categoryNameMapForMp = {
-  [Category.Vision]: '视觉数据智能',
-  [Category.Intelligence]: '机器数据智能',
+  [Category.Media]: '视觉数据智能',
+  [Category.Data]: '机器数据智能',
   [Category.Service]: '基础服务'
 } as const
 
 export const categoryEnNameMap = {
   [Category.Service]: 'Cloud Essentials',
-  [Category.Vision]: 'Media PaaS',
-  [Category.Intelligence]: 'Data PaaS'
+  [Category.Media]: 'Media PaaS',
+  [Category.Data]: 'Data PaaS'
 } as const
 
 export const categories = [
-  Category.Vision,
-  Category.Intelligence,
+  Category.Media,
+  Category.Data,
   Category.Service
 ] as const
+

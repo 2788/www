@@ -54,7 +54,7 @@ export default function Navigatable({ children }: Props) {
     setActive(null)
   }, [scrollTop])
 
-  const activeBlock = active && blockMap[active]
+  const activeBlock = active && blockMap[active.split('/')[0]]
 
   // 控制页面滚动到 active block 对应的位置
   const syncScrollTop = useCallback(() => {

@@ -7,20 +7,20 @@ import Section from 'components/pages/index/Section'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import { Card as UICard, Title, Content, Desc } from 'components/UI/Card'
-import { Product, nameMap, urlMap, descMap, Category, categoryNameMap, categories, getCategoryProducts } from 'constants/products'
+import { Category, categoryNameMap, categories, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import Link from 'components/Link'
 
 import styles from './style.less'
 
 import TabServiceIcon from './images/tabs/product2.svg'
-import TabVideoIcon from './images/tabs/product3.svg'
-import TabIntelligenceIcon from './images/tabs/product4.svg'
+import TabMediaIcon from './images/tabs/product3.svg'
+import TabDataIcon from './images/tabs/product4.svg'
 
 const categoryIconMap = {
   [Category.Service]: TabServiceIcon,
-  [Category.Vision]: TabVideoIcon,
-  [Category.Intelligence]: TabIntelligenceIcon
+  [Category.Media]: TabMediaIcon,
+  [Category.Data]: TabDataIcon
 }
 
 interface CardProps {
@@ -97,16 +97,16 @@ function PaneForMobile({ children }: PropsWithChildren<{}>) {
   )
 }
 
-function menuItemForMobileProduct(product: Product, startConsulting: () => void) {
-  const url = urlMap[product]
+function menuItemForMobileProduct(product: PartialProductData, startConsulting: () => void) {
+  const productData = normalizeProduct(product)
   return (
     <MenuItem
-      key={product}
-      title={nameMap[product]}
-      href={url != null ? url : undefined}
-      onClick={url != null ? undefined : startConsulting}
+      key={`${productData.product}-${productData.name}`}
+      title={productData.name}
+      href={productData.url !== null ? productData.url : undefined}
+      onClick={productData.url != null ? undefined : startConsulting}
     >
-      {url != null ? descMap[product] : '即将上线，欢迎垂询'}
+      {productData.url != null ? productData.desc : '即将上线，欢迎垂询'}
     </MenuItem>
   )
 }
@@ -118,7 +118,7 @@ function subMenuForMobileCategory(category: Category, startConsulting: () => voi
       <Icon />{categoryNameMap[category]}
     </span>
   )
-  const products: readonly Product[] = getCategoryProducts(category)
+  const products: PartialProductData[] = getCategoryProducts(category)
   const menuItemsView = products.map(
     product => menuItemForMobileProduct(product, startConsulting)
   )
@@ -143,18 +143,19 @@ function ProductsForMobile() {
   )
 }
 
-function CardForPcProduct({ product }: { product: Product }) {
+function CardForPcProduct({ product }: { product: PartialProductData }) {
+  const productData = normalizeProduct(product)
   const { startConsulting } = useModal()
-  const url = urlMap[product]
+
   return (
     <Card
-      key={product}
-      icon={<ProductIcon className={styles.icon} product={product} />}
-      title={nameMap[product]}
-      href={url}
-      onClick={url != null ? undefined : startConsulting}
+      key={`${productData.product}-${productData.name}`}
+      icon={<ProductIcon className={styles.icon} product={productData.product} />}
+      title={productData.name}
+      href={productData.url}
+      onClick={productData.url !== null ? undefined : startConsulting}
     >
-      {url != null ? descMap[product] : '即将上线，欢迎垂询'}
+      {productData.url !== null ? productData.desc : '即将上线，欢迎垂询'}
     </Card>
   )
 }
@@ -166,9 +167,11 @@ function tabPaneForPcCategory(category: Category, active: Category) {
       <Icon />{categoryNameMap[category]}
     </span>
   )
-  const products: readonly Product[] = getCategoryProducts(category)
+  const products: PartialProductData[] = getCategoryProducts(category)
   const cardsView = products.map(
-    product => <CardForPcProduct key={product} product={product} />
+    (product, index) => (
+      <CardForPcProduct key={index} product={product} />
+    )
   )
   return (
     <TabPane key={category} value={category} tab={tabView} className={styles.pane}>
@@ -182,7 +185,7 @@ function tabPaneForPcCategory(category: Category, active: Category) {
 }
 
 export function ProductsForPc() {
-  const [activeKey, setActiveKey] = useState(Category.Intelligence)
+  const [activeKey, setActiveKey] = useState(Category.Data)
   const onTabChange = (key: string) => {
     setActiveKey(key as Category)
   }

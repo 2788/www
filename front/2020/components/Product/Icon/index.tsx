@@ -24,6 +24,8 @@ const iconMap = {
   [Product.Ddos]: require('./images/default/ddos.svg').default,
   [Product.Sms]: require('./images/default/sms.svg').default,
   [Product.Dora]: require('./images/default/dora.svg').default,
+  [Product.DoraAudio]: require('./images/default/dora-audio.svg').default,
+  [Product.DoraImage]: require('./images/default/dora-image.svg').default,
   [Product.Censor]: require('./images/default/censor.svg').default,
   [Product.FaceID]: require('./images/default/faceid.svg').default,
   [Product.Rtn]: require('./images/default/rtn.svg').default,
@@ -41,7 +43,8 @@ const iconMap = {
   [Product.Vii]: require('./images/default/vii.svg').default,
   [Product.QnPlayer]: require('./images/default/qnplayer.svg').default,
   [Product.Svesdk]: null,
-  [Product.Voice]: require('./images/default/voice.svg').default
+  [Product.Voice]: require('./images/default/voice.svg').default,
+  [Product.Storage]: require('./images/default/storage.svg').default
 }
 
 const smallIconMap = {
@@ -55,6 +58,8 @@ const smallIconMap = {
   [Product.Ddos]: require('./images/small/ddos.svg').default,
   [Product.Sms]: require('./images/small/sms.svg').default,
   [Product.Dora]: require('./images/small/dora.svg').default,
+  [Product.DoraAudio]: require('./images/small/dora-audio.svg').default,
+  [Product.DoraImage]: require('./images/small/dora-image.svg').default,
   [Product.Censor]: require('./images/small/censor.svg').default,
   [Product.FaceID]: require('./images/small/faceid.svg').default,
   [Product.Rtn]: require('./images/small/rtn.svg').default,
@@ -72,7 +77,8 @@ const smallIconMap = {
   [Product.Vii]: require('./images/small/vii.svg').default,
   [Product.QnPlayer]: require('./images/small/qnplayer.svg').default,
   [Product.Svesdk]: null,
-  [Product.Voice]: require('./images/small/voice.svg').default
+  [Product.Voice]: require('./images/small/voice.svg').default,
+  [Product.Storage]: require('./images/default/storage.svg').default
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {

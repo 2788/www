@@ -20,11 +20,11 @@ import { context, PanelInfo } from './utils'
 
 import styles from './style.less'
 
-export interface IPcSceneProps extends ISceneProps {}
+export interface IPcSceneProps extends ISceneProps { }
 
-export interface IPcPanelProps extends IPanelProps {}
+export interface IPcPanelProps extends IPanelProps { }
 
-export interface IPcBlockProps extends IBlockProps {}
+export interface IPcBlockProps extends IBlockProps { }
 
 /** 可切换 panel 区块信息集合 */
 export type PanelInfoMap = {
@@ -44,10 +44,12 @@ export default function PcScene(props: IPcSceneProps) {
   const [active, setActive] = useState<string | null>(props.defaultActive || null)
 
   useOnChange(() => {
-    if (panels.length > 0 && active == null) {
+    if (props.defaultActive) {
+      setActive(props.defaultActive)
+    } else if (panels.length > 0 && active == null) {
       setActive(panels[0].name)
     }
-  }, [panels])
+  }, [props.defaultActive, panels])
 
   function handlePanelsChange(activeKey: string) {
     setActive(activeKey)

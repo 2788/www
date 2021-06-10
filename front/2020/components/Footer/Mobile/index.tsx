@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
-import { Product, nameMap, urlMap, categories, categoryNameMap, getCategoryProducts } from 'constants/products'
+import { categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
 import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 import Button from 'components/UI/Button'
 
@@ -15,14 +15,19 @@ function MenuItem({ children }: PropsWithChildren<{}>) {
   return <div className="menu-item">{children}</div>
 }
 
-function getProductItems(products: readonly Product[]) {
+function getProductItems(products: PartialProductData[]) {
   return products.filter(
-    product => urlMap[product] != null
-  ).map(product => (
-    <MenuItem key={product}>
-      <Link href={urlMap[product]!}>{nameMap[product]}</Link>
-    </MenuItem>
-  ))
+    product => normalizeProduct(product).url !== null
+  ).map((product, index) => {
+    const productData = normalizeProduct(product)
+    return (
+      <MenuItem key={index}>
+        <Link href={productData.url!}>
+          {productData.name}
+        </Link>
+      </MenuItem>
+    )
+  })
 }
 
 export default function FooterForMobile() {

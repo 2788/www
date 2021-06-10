@@ -18,7 +18,7 @@ import QavsArch from 'components/pages/qavs/Arch'
 import QavsScene from 'components/pages/qavs/Scene'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { categoryVision } from 'constants/products'
+import { categoryMedia } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
@@ -61,7 +61,7 @@ function PageContent() {
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
           {
-            categoryVision.map(product => <RelatedProduct key={product} product={product} />)
+            categoryMedia.map(product => <RelatedProduct key={product} product={product} />)
           }
         </Related>
       </Section>

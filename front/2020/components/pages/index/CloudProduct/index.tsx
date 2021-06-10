@@ -9,7 +9,7 @@ import All from './All'
 import Machine from './Machine'
 import Video from './Vision'
 
-export type ProductType = 'all' | Category.Intelligence | Category.Vision
+export type ProductType = 'all' | Category.Data | Category.Media
 export enum Node {
   // 机器数据
   MachineData = 'machine_data',
@@ -63,12 +63,12 @@ export default function CloudProduct() {
   }
   const subtitle = (
     <div className={style.subtitle}>
-      <Button className={productType === Category.Intelligence && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Intelligence)}>
-        {categoryNameMap[Category.Intelligence]}
+      <Button className={productType === Category.Data && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Data)}>
+        {categoryNameMap[Category.Data]}
       </Button>
       <Button className={productType === 'all' && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick('all')}>整体</Button>
-      <Button className={productType === Category.Vision && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Vision)}>
-        {categoryNameMap[Category.Vision]}
+      <Button className={productType === Category.Media && 'active' || ''} type="hollow" withBorder onClick={handleButtonClick(Category.Media)}>
+        {categoryNameMap[Category.Media]}
       </Button>
     </div>
   )
@@ -78,8 +78,8 @@ export default function CloudProduct() {
       <Context.Provider value={{ getPrevOffset, registerOffset }}>
         <div className={style.container}>
           {productType === 'all' && <All />}
-          {productType === Category.Intelligence && <Machine />}
-          {productType === Category.Vision && <Video />}
+          {productType === Category.Data && <Machine />}
+          {productType === Category.Media && <Video />}
         </div>
       </Context.Provider>
     </Section>

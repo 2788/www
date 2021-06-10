@@ -7,14 +7,18 @@ import React, { ReactNode, useContext, useRef, useEffect } from 'react'
 import { context, BlockInfo } from './utils'
 
 export type Props = Pick<BlockInfo, 'name' | 'title'> & {
-  children: ReactNode
+  children?: ReactNode
   className?: string
+  render?: (props: { subPaths: string[] }) => ReactNode
 }
 
 /** 可导航块 */
-export default function Block({ name, title, children, className = '' }: Props) {
+export default function Block({ name, title, children, className = '', render }: Props) {
   const contextValue = useContext(context)
   const wrapperRef = useRef<HTMLDivElement>(null)
+
+  const active = contextValue?.active
+  const subPaths = active ? active.split('/').slice(1) : []
 
   // 将当前 block 信息向上注册
   const register = contextValue?.registerBlock
@@ -38,7 +42,7 @@ export default function Block({ name, title, children, className = '' }: Props) 
   return (
     // 这里不添加 id，是为了避免 hash 变化时浏览器自动定位的行为
     <div ref={wrapperRef} data-block-name={name} className={className}>
-      {children}
+      {render ? render({ subPaths }) : children}
     </div>
   )
 }

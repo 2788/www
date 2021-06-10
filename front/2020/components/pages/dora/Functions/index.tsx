@@ -54,7 +54,7 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
 export default function DoraFuctions() {
   return (
     <Scene name="functions" title="产品功能" grey>
-      <ScenePanel name="scene-tab-1" title="图片处理" verticalCenter>
+      <ScenePanel name="image" title="图片处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="图片瘦身"
@@ -81,7 +81,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-2" title="音视频处理" verticalCenter>
+      <ScenePanel name="audio" title="音视频处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="音视频转码"
@@ -118,7 +118,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-3" title="智能识别" verticalCenter>
+      <ScenePanel name="recognition" title="智能识别" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="人脸识别"
@@ -153,7 +153,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-4" title="视频分析" verticalCenter>
+      <ScenePanel name="video" title="视频分析" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="视频截图"
@@ -192,7 +192,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-5" title="音频画质优化" verticalCenter>
+      <ScenePanel name="optimization" title="音频画质优化" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="高帧率重制服务"
@@ -215,7 +215,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-6" title="自定义数据处理" verticalCenter>
+      <ScenePanel name="handle" title="自定义数据处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="自定义数据处理平台"
@@ -230,7 +230,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-7" title="智能审核" verticalCenter>
+      <ScenePanel name="censor" title="智能审核" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="图片审核"
@@ -253,7 +253,7 @@ export default function DoraFuctions() {
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="scene-tab-8" title="版权保护" verticalCenter>
+      <ScenePanel name="copyright" title="版权保护" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="视频加密"

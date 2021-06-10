@@ -7,7 +7,7 @@ import React, { PropsWithChildren } from 'react'
 import Link from 'components/Link'
 
 import { getCurrentYear } from 'utils'
-import { Product, nameMap, urlMap, categories, categoryNameMap, getCategoryProducts } from 'constants/products'
+import { categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
 import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 
 import Github from './images/github.svg'
@@ -50,12 +50,20 @@ function LinkGroup({ title, children }: PropsWithChildren<ILinkGroupProps>) {
   )
 }
 
-function ProductItems({ products }: { products: readonly Product[] }) {
+function ProductItems({ products }: { products: PartialProductData[] }) {
   const itemsView = products.filter(
-    product => urlMap[product] != null
-  ).map(product => (
-    <LinkItem key={product} url={urlMap[product]!}>{nameMap[product]}</LinkItem>
-  ))
+    product => normalizeProduct(product).url !== null
+  ).map((product, index) => {
+    const productData = normalizeProduct(product)
+    return (
+      <LinkItem
+        key={index}
+        url={productData.url!}
+      >
+        {productData.name}
+      </LinkItem>
+    )
+  })
   return <>{itemsView}</>
 }
 

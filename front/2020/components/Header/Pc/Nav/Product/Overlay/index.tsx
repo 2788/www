@@ -1,5 +1,5 @@
 import React, { MouseEvent } from 'react'
-import { categoryNameMap, nameMap, categories, categoryEnNameMap, urlMap, Product, descMap, categorySubCategoriesMap, subCategoryNameMap, subCategoryProductsMap, subCategoryUrlMap } from 'constants/products'
+import { categoryNameMap, categories, categoryEnNameMap, Product, normalizeProduct, PartialProductData, categorySubCategoriesMap, subCategoryNameMap, subCategoryProductsMap, subCategoryUrlMap } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
@@ -39,11 +39,11 @@ export default function Overlay() {
                   title={subCategoryNameMap[subCategory]}
                   url={subCategoryUrlMap[subCategory]}
                 >
-                  {subCategoryProductsMap[subCategory].map(product => (
+                  {subCategoryProductsMap[subCategory].map((item, index) => (
                     <ProductContentItem
-                      key={product}
-                      product={product}
+                      key={index}
                       onConsult={handleConsult}
+                      product={item}
                     />
                   ))}
                 </ContentSection>
@@ -60,28 +60,28 @@ export default function Overlay() {
 const hotProducts = [
   Product.Qvm
 ]
-function ProductContentItem({ product, onConsult }: {
-  product: Product
-  onConsult(): void
-}) {
-  const url = urlMap[product]
-  const isHot = hotProducts.includes(product)
+type ItemProps = {
+  product: PartialProductData
+  onConsult: () => void
+}
+
+function ProductContentItem(props: ItemProps) {
+  const productData = normalizeProduct(props.product)
 
   function handleClick(e: MouseEvent) {
-    if (url != null) return
+    if (productData.url != null) return
     e.preventDefault()
-    onConsult()
+    props.onConsult()
   }
 
   return (
     <ContentItem
-      key={product}
-      href={url != null ? url : '#'}
-      icon={<ProductIcon product={product} small />}
-      title={nameMap[product]}
-      subtitle={url != null ? descMap[product] : '即将上线，欢迎垂询'}
+      href={productData.url !== null ? productData.url : '#'}
+      icon={<ProductIcon product={productData.product} small />}
+      title={productData.name}
+      subtitle={productData.url !== null ? productData.desc : '即将上线，欢迎垂询'}
       onClick={handleClick}
-      hot={isHot}
+      hot={hotProducts.includes(productData.product)}
     />
   )
 }

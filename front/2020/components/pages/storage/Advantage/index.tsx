@@ -49,9 +49,9 @@ const advantages = [
   ]
 ]
 
-export default function Advantage() {
+export default function Advantage({ title }: { title: string }) {
   return (
-    <Feature title="方案优势" name="advantage">
+    <Feature title={title} name="advantage">
       {
         advantages.map((advantage, index) => (
           <FeatureGroup key={index}>

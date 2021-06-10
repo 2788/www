@@ -32,7 +32,7 @@ function Overlay() {
     )
   }
   const serviceProducts = categoryProductsMap[Category.Service]
-  const visionProducts = categoryProductsMap[Category.Vision].filter(
+  const mediaProducts = categoryProductsMap[Category.Media].filter(
     product => !serviceProducts.includes(product) // 去除跟基础服务重复的项
   )
   return (
@@ -43,8 +43,8 @@ function Overlay() {
         </DropdownMenuGroup>
       </DropdownMenu>
       <DropdownMenu>
-        <DropdownMenuGroup title={categoryNameMap[Category.Vision]}>
-          {visionProducts.map(menuItemForProduct)}
+        <DropdownMenuGroup title={categoryNameMap[Category.Media]}>
+          {mediaProducts.map(menuItemForProduct)}
         </DropdownMenuGroup>
       </DropdownMenu>
     </>
