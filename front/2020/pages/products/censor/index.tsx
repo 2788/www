@@ -21,7 +21,7 @@ import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/P
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Section from 'components/Product/Section'
 import Playground from 'components/pages/censor/Playground'
-import { Card, Row } from 'components/UI/Card'
+import { Card, InvisibleCard, Row } from 'components/UI/Card'
 import { useBtns } from 'hooks/product-btn'
 import imgBanner from './banner.png'
 import IconCoreAdvantage1 from './_icons/core-advantage1.svg'
@@ -131,7 +131,12 @@ function PageContent({ notices }: { notices: INotice[] }) {
         <Row>
           <FeatureCard title="垃圾广告审核" desc="实时过滤图片、视频中利用微信号、手机号、QQ 开展的违法垃圾广告内容。" />
           <FeatureCard title="水印 Logo 识别" desc="高精度 Logo 水印检测识别技术，支持竞品 Logo 检测、涉政 Logo 检测，帮助维护您的品牌形象。" />
-          <FeatureCard title="不良场景识别" desc="支持识别吸烟、喝酒、赌博、吸毒、避孕套和无意义画面，并支持未成年人画面识别。" />
+          <FeatureCard title="不良场景识别" desc="支持识别吸烟、喝酒、吸毒、避孕套和无意义画面，并支持未成年人画面识别。" />
+        </Row>
+        <Row>
+          <FeatureCard title="赌博识别" desc="精准识别图片、视频、直播中涉及的各类涉赌内容，帮助打击违法行为" />
+          {isPc && <InvisibleCard className={style.cardWrapper} />}
+          {isPc && <InvisibleCard className={style.cardWrapper} />}
         </Row>
       </Feature>
 
