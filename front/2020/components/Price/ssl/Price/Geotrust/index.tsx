@@ -33,87 +33,87 @@ const columns: Array<ColumnProps<any>> = [
 const data = [
   {
     key: 1,
+    type: '域名型（DV）通配符 SSL 证书',
+    years: 1,
+    price: 1162.5
+  },
+  {
+    key: 2,
+    type: '域名型（DV）通配符 SSL 证书',
+    years: 2,
+    price: 1953
+  },
+  {
+    key: 3,
     type: '企业型（OV）证书',
     years: 1,
     price: 1995
   },
   {
-    key: 2,
+    key: 4,
     type: '企业型（OV）证书',
     years: 2,
     price: 3334.5
   },
   {
-    key: 3,
-    type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
-    years: 1,
-    price: 2450
-  },
-  {
-    key: 4,
-    type: '企业型（OV）多域名证书（默认包含 2 个标准域名额度）',
-    years: 2,
-    price: 4095
-  },
-  {
     key: 5,
-    type: '企业型（OV）多域名证书额外域名',
+    type: '企业型（OV）多域名证书',
     years: 1,
-    price: 455
+    price: '2450（默认包含 2 个单域名）+ 额外单域名个数 x 455'
   },
   {
     key: 6,
-    type: '企业型（OV）多域名证书额外域名',
+    type: '企业型（OV）多域名证书',
     years: 2,
-    price: 760.5
+    price: '4095（默认包含 2 个单域名）+ 额外单域名个数 x 760.5'
   },
   {
     key: 7,
+    type: '企业型（OV）多域名泛域名证书',
+    years: 2,
+    price: '2450（默认包含 2 个单域名）+ 额外单域名个数 x 455 + 额外泛域名个数 x 4795'
+  },
+  {
+    key: 8,
+    type: '企业型（OV）多域名泛域名证书',
+    years: 2,
+    price: '4095（默认包含 2 个单域名）+ 额外单域名个数 x 760.5 + 额外泛域名个数 x 8014.5'
+  },
+  {
+    key: 9,
     type: '企业型（OV）通配符证书',
     years: 1,
     price: 4795
   },
   {
-    key: 8,
+    key: 10,
     type: '企业型（OV）通配符证书',
     years: 2,
     price: 8014.5
   },
   {
-    key: 9,
-    type: '企业增强型(EV)证书',
+    key: 11,
+    type: '企业增强型（EV）证书',
     years: 1,
     price: 3637.5
   },
   {
-    key: 10,
-    type: '企业增强型(EV)证书',
+    key: 12,
+    type: '企业增强型（EV）证书',
     years: 2,
     price: 5674.50
   },
   {
-    key: 11,
-    type: '企业增强型(EV)多域名证书（默认包含 2 个单域名）',
-    years: 1,
-    price: 4725
-  },
-  {
-    key: 12,
-    type: '企业增强型(EV)多域名证书（默认包含 2 个单域名）',
-    years: 2,
-    price: 7371
-  },
-  {
     key: 13,
-    type: '企业增强型(EV)多域名证书额外域名',
+    type: '企业增强型（EV）多域名证书',
     years: 1,
-    price: 1087.5
+    price: '4725（默认包含 2 个单域名）+ 额外单域名个数 x 1087.5'
   },
   {
     key: 14,
-    type: '企业增强型(EV)多域名证书额外域名',
+    type: '企业增强型（EV）多域名证书',
     years: 2,
-    price: 1696.5
+    price: '7371（默认包含 2 个单域名）+ 额外单域名个数 x 1696.5'
   }
 ]
 
