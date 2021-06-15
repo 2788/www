@@ -78,7 +78,7 @@ const smallIconMap = {
   [Product.QnPlayer]: require('./images/small/qnplayer.svg').default,
   [Product.Svesdk]: null,
   [Product.Voice]: require('./images/small/voice.svg').default,
-  [Product.Storage]: require('./images/default/storage.svg').default
+  [Product.Storage]: require('./images/small/storage.svg').default
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {
