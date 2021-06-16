@@ -24,7 +24,7 @@ export default function StorageType() {
         title="标准存储"
         desc="高可靠、高可用和高性能的对象存储服务"
         scene="设计应用、内容分享、热点对象"
-        price="0.099"
+        price="0.098"
         detailLink={priceUrl}
         sellPoints={['设计可靠性：99.999999999%（11 个 9）', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计量：无']}
       />
