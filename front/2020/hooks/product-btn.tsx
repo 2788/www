@@ -53,36 +53,20 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
       ({ pcOnly, mobileOnly, mpOnly, ...options }) => options // pcOnly / mobileOnly 信息用完了扔掉
     )
 
+  // 确保只有一个主要按钮（面形），其余的都为次要按钮（线形）
   const bannerBtnViews = [
     firstBtnProps && <Button key={0} {...firstBtnProps} />,
-    ...otherBtnsProps.map((otherBtn, i) => {
-      if (i < otherBtnsProps.length - 1) {
-        return (
-          <Button key={i + 1} {...otherBtn} />
-        )
-      }
-
-      // 最后一个 btn type: primary-hollow
-      return (
-        <Button key={i + 1} type="primary-hollow" withBorder {...otherBtn} />
-      )
-    })
+    ...otherBtnsProps.map((otherBtn, i) => (
+      <Button key={i + 1} type="primary-hollow" withBorder {...otherBtn} />
+    ))
   ].filter(Boolean)
 
+  // 确保只有一个主要按钮（面形），其余的都为次要按钮（线形）
   const navBtnsView = [
     firstBtnProps && <NavButton key={0} type="primary" {...firstBtnProps} />,
-    ...otherBtnsProps.map((otherBtn, i) => {
-      if (i < otherBtnsProps.length - 1) {
-        return (
-          <NavButton key={i + 1} type="primary" {...otherBtn} />
-        )
-      }
-
-      // 最后一个 btn type: hollow & withBorder
-      return (
-        <NavButton key={i + 1} type="hollow" withBorder {...otherBtn} />
-      )
-    })
+    ...otherBtnsProps.map((otherBtn, i) => (
+      <NavButton key={i + 1} type="hollow" withBorder {...otherBtn} />
+    ))
   ].filter(Boolean)
 
   return {
