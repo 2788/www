@@ -15,6 +15,7 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/pages/index/Feature'
 
+import { useApiWithParams } from 'hooks/api'
 import { useMobile } from 'hooks/ua'
 
 import Activities from 'components/pages/index/Activities'
@@ -35,15 +36,25 @@ import ZhiboCoreIcon from './_images/core5.svg'
 import YunCoreIcon from './_images/core6.svg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent({ banners, activities, news }: { banners: Banner[], activities: Activity[], news: NewsType[] }) {
+function PageContent(
+  { preBanners, preActivities, news }: { preBanners: Banner[], preActivities: Activity[], news: NewsType[] }
+) {
 
+  const { $: currentActivities } = useApiWithParams(
+    getActivities,
+    { params: [] }
+  )
+  const { $: currentBanners } = useApiWithParams(
+    getBanners,
+    { params: [] }
+  )
   const isMobile = useMobile()
 
   return (
     <>
       <Carousel className={styles.headerBanner} autoplay>
         {
-          banners.map(({ name, pcImg, mobileImg, backgroundColor, link }: Banner) => (
+          (currentBanners || preBanners).map(({ name, pcImg, mobileImg, backgroundColor, link }: Banner) => (
             <PageBanner
               key={name}
               bgImg={isMobile ? mobileImg : pcImg}
@@ -54,7 +65,7 @@ function PageContent({ banners, activities, news }: { banners: Banner[], activit
         }
       </Carousel>
 
-      <Activities activities={activities} />
+      <Activities activities={currentActivities || preActivities} />
 
       <Feature
         className={styles.core}
@@ -139,14 +150,14 @@ function PageContent({ banners, activities, news }: { banners: Banner[], activit
   )
 }
 
-export default function IndexPage({ banners, activities, news }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function IndexPage({ preBanners, preActivities, news }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title=""
       keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
       description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
     >
-      <PageContent banners={banners} activities={activities} news={news} />
+      <PageContent preBanners={preBanners} preActivities={preActivities} news={news} />
     </Layout>
   )
 }
@@ -154,8 +165,8 @@ export default function IndexPage({ banners, activities, news }: InferGetStaticP
 export async function getStaticProps() {
   return {
     props: {
-      banners: await getBanners(),
-      activities: await getActivities(),
+      preBanners: await getBanners(),
+      preActivities: await getActivities(),
       news: await getNews()
     }
   }
