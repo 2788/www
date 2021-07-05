@@ -10,8 +10,9 @@ import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/ocr/Advantage'
@@ -26,7 +27,7 @@ import { Product } from 'constants/products'
 
 import banner from './banner.png'
 
-function Page({ notices }: { notices: INotice[] }) {
+function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -58,6 +59,8 @@ function Page({ notices }: { notices: INotice[] }) {
 
       <Scene />
 
+      <ProductNews newsRes={newsRes} />
+
       <Section name="related" title="相关产品" withTailPadding>
         <Related>
           <RelatedProduct product={Product.Dora} />
@@ -69,14 +72,14 @@ function Page({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function OcrPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function OcrPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="票证自动识别 OCR"
       keywords="票证自动识别, OCR, open api, 身份证识别, 车险保单识别, 营业执照识别, 新车发票识别, 车辆登记识别"
       description="票证自动识别 OCR 基于行业前沿的深度学习技术，提供身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
     >
-      <Page notices={notices} />
+      <Page notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -84,7 +87,8 @@ export default function OcrPage({ notices }: InferGetStaticPropsType<typeof getS
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Ocr)
+      notices: await getNotices(Product.Ocr),
+      newsRes: await getNews({ product: Product.Ocr })
     }
   }
 }

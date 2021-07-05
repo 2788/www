@@ -10,8 +10,9 @@ import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
@@ -25,7 +26,7 @@ import { MpPage } from 'constants/mp'
 import imgBanner from './images/banner.png'
 // import style from './index.less'
 
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const priceUrl = urlForPrice(Product.Kodo)
 
@@ -57,6 +58,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
 
       <KodoScene />
 
+      <ProductNews newsRes={newsRes} />
+
       <LinkGroups>
         <LinkGroup title="常用文档">
           <LinkItem href="https://developer.qiniu.com/kodo">使用文档</LinkItem>
@@ -86,14 +89,14 @@ function PageContent({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function KodoPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function KodoPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="对象存储 Kodo_云存储_海量安全高可靠云存储_oss"
       keywords="云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案, 视频托管, 图片托管, 低频存储, 镜像存储, 私有部署, 静态资源托管, 备份归档, 数据迁移, 数据灾备, 弹性扩容, 图床, cos, obs"
       description="七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。"
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -101,7 +104,8 @@ export default function KodoPage({ notices }: InferGetStaticPropsType<typeof get
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Kodo)
+      notices: await getNotices(Product.Kodo),
+      newsRes: await getNews({ product: Product.Kodo })
     }
   }
 }

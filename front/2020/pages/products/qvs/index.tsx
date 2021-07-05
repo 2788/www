@@ -20,8 +20,9 @@ import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import Advantage from 'components/pages/qvs/Advantage'
 import Core from 'components/pages/qvs/Core'
@@ -30,7 +31,7 @@ import Process from 'components/pages/qvs/Process'
 
 import imgBanner from './images/banner.png'
 
-export function Page({ notices }: { notices: INotice[] }) {
+export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const portalUrl = 'https://portal.qiniu.com/qvs'
   const priceUrl = urlForPrice(Product.Qvs)
 
@@ -57,6 +58,7 @@ export function Page({ notices }: { notices: INotice[] }) {
       <Core />
       <Scene />
       <Process />
+      <ProductNews newsRes={newsRes} />
       <LinkGroups title="相关文档">
         <LinkGroup title="使用文档">
           <LinkItem href="https://developer.qiniu.com/qvs/manual/6753/qvs-product-overview">产品简介</LinkItem>
@@ -80,14 +82,14 @@ export function Page({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function Main({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="视频监控 QVS_音视频监控存储_智能多媒体"
       keywords="视频监控, QVS, qvs"
       description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
     >
-      <Page notices={notices} />
+      <Page notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -95,7 +97,8 @@ export default function Main({ notices }: InferGetStaticPropsType<typeof getStat
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Qvs)
+      notices: await getNotices(Product.Qvs),
+      newsRes: await getNews({ product: Product.Qvs })
     }
   }
 }

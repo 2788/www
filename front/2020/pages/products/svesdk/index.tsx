@@ -8,7 +8,15 @@
  */
 
 import React from 'react'
+import { InferGetStaticPropsType } from 'next'
+
 import { useBtns } from 'hooks/product-btn'
+
+import { Product } from 'constants/products'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
+
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -29,7 +37,7 @@ import Step2 from './images/step2.svg'
 import Step3 from './images/step3.svg'
 import Step4 from './images/step4.svg'
 
-export function Content() {
+export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const { startConsulting } = useModal()
 
   const btns = useBtns(
@@ -45,12 +53,15 @@ export function Content() {
         btns={btns.banner}
         icon={banner} />
 
+      <ProductNotice notices={notices} />
+
       <Navigator>{btns.nav}</Navigator>
 
       <Advantage />
       <ProductFeature />
       <Scene />
       <Demo />
+      <ProductNews newsRes={newsRes} />
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
           <LinkItem href="https://developer.qiniu.com/pili/sdk/3955/short-video-quick-guide">短视频 SDK 快速接入指南</LinkItem>
@@ -75,14 +86,23 @@ export function Content() {
   )
 }
 
-export default function Page() {
+export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="短视频特效 SDK"
       keywords="短视频特效SDK, 短视频SDK, 七牛云, 七牛短视频, 短视频特效"
       description="七牛短视频特效 SDK，在七牛短视频 SDK 中集成了美颜特效功能。其不仅拥有七牛短视频 SDK 本身提供的拍摄、编辑、上传等能力，还集成了美颜、滤镜、动态贴纸、美妆、微整形等特效功能，旨在帮助开发者一站式打造一款拥有美颜特效功能的专业的短视频拍摄工具，让用户的拍摄更美丽有趣。"
     >
-      <Content />
+      <Content notices={notices} newsRes={newsRes} />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      notices: await getNotices(Product.Svesdk),
+      newsRes: await getNews({ product: Product.Svesdk })
+    }
+  }
 }

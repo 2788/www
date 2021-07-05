@@ -5,13 +5,14 @@
 
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 import Navigator from 'components/Navigator'
 import Advantage from 'components/pages/qnplayer/Advantage'
 import QnPlayerCase from 'components/pages/qnplayer/Case'
@@ -27,7 +28,7 @@ const pageInfo = {
     '七牛云播放器是一款全自研内核的多媒体播放器，支持多种视频格式及流媒体协议。包体小、首开快、播放流畅、使用简单，可支持直播、点播等多种场景。'
 }
 
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const { startConsulting } = useFeedbackModal()
 
   const bannerBtns = useBtns(
@@ -52,19 +53,20 @@ function PageContent({ notices }: { notices: INotice[] }) {
       <Advantage />
       <Feature />
       <QnPlayerCase />
+      <ProductNews newsRes={newsRes} />
       <Document />
     </>
   )
 }
 
-export default function QnPlayerPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function QnPlayerPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -72,7 +74,8 @@ export default function QnPlayerPage({ notices }: InferGetStaticPropsType<typeof
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.QnPlayer)
+      notices: await getNotices(Product.QnPlayer),
+      newsRes: await getNews({ product: Product.QnPlayer })
     }
   }
 }

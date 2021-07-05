@@ -1,0 +1,82 @@
+@import '~utils/less/index.less';
+
+@card-width: 276px;
+@card-height: 158px;
+@card-gap: 24px;
+
+.container {
+  display: flex;
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "";
+    top: 73px;
+    width: 100%;
+    height: 2px;
+    background-color: #e5e5e5;
+    z-index: 0;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: @card-width + @card-gap;
+
+  &:last-child {
+    width: @card-width;
+  }
+
+  header {
+    padding-bottom: 12px;
+    text-align: left;
+
+    h4 {
+      font-size: 20px;
+    }
+
+    p {
+      margin-top: 8px;
+      color: @grey-6;
+    }
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 16px;
+    border: 8px solid #FAFAFA;
+    border-radius: 50%;
+    background: @blue-6;
+    z-index: 1;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 24px 0 0;
+    padding: 20px;
+    width: @card-width;
+    min-height: @card-height;
+
+    .title {
+      font-size: 16px;
+    }
+
+    .desc {
+      flex: 1;
+      margin-top: 8px;
+    }
+
+    .detailLink {
+      margin-top: 16px;
+    }
+  }
+}
+
+.link {
+  display: block;
+  margin-top: 36px;
+}

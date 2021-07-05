@@ -13,8 +13,9 @@ import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
 import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
@@ -44,7 +45,7 @@ import LogoTangdou from './_logos/tangdou.png'
 import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const isPc = !useMobile()
   const priceUrl = urlForPrice(Product.Censor)
@@ -165,6 +166,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
         </PurchaseInfoItem>
       </PurchaseInfo>
 
+      <ProductNews newsRes={newsRes} />
+
       <LinkGroups title="产品文档">
         <LinkGroup title="使用文档">
           <LinkItem href="https://developer.qiniu.com/censor/manual/4829/censor-introduction">产品简介</LinkItem>
@@ -182,14 +185,14 @@ function PageContent({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function ExpressPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function ExpressPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="内容审核_内容安全_多媒体内容审核服务"
       keywords="内容审核, 视频审核, 图片审核, 智能鉴黄, 鉴暴恐, 政治人物识别, 内容安全"
       description="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容。"
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -197,12 +200,13 @@ export default function ExpressPage({ notices }: InferGetStaticPropsType<typeof 
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Censor)
+      notices: await getNotices(Product.Censor),
+      newsRes: await getNews({ product: Product.Censor })
     }
   }
 }
 
-function FeatureCard({ title, desc }: { title: string, desc: string}) {
+function FeatureCard({ title, desc }: { title: string, desc: string }) {
   return (
     <Card className={style.cardWrapper}>
       <div className={style.cardTitle}>{title}</div>

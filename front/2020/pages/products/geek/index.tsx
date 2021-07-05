@@ -6,7 +6,7 @@
 import React from 'react'
 import qs from 'query-string'
 import { InferGetStaticPropsType } from 'next'
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import { urlForSignin } from 'utils/route'
 import { host } from 'constants/env'
 import { Product, urlMap } from 'constants/products'
@@ -16,6 +16,7 @@ import Layout from 'components/Product/Layout'
 import Navigator from 'components/Product/Navigator'
 import PageBanner from 'components/Product/PageBanner'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 import FeatureList from 'components/pages/geek/Feature'
 import SceneList from 'components/pages/geek/Scene'
 import Comparison from 'components/pages/geek/Comparison'
@@ -62,7 +63,7 @@ function getUrls() {
   }
 }
 
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const user = useUserInfo()
   const urls = getUrls()
 
@@ -89,18 +90,19 @@ function PageContent({ notices }: { notices: INotice[] }) {
       <FeatureList />
       <SceneList />
       <Comparison />
+      <ProductNews newsRes={newsRes} />
     </>
   )
 }
 
-export default function GeekPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function GeekPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -108,7 +110,8 @@ export default function GeekPage({ notices }: InferGetStaticPropsType<typeof get
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Geek)
+      notices: await getNotices(Product.Geek),
+      newsRes: await getNews({ product: Product.Geek })
     }
   }
 }

@@ -20,8 +20,9 @@ import Feature, {
 } from 'components/Product/Feature'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
@@ -39,7 +40,7 @@ import style from './index.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -134,6 +135,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
 
       <RtcDemo />
 
+      <ProductNews newsRes={newsRes} />
+
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
           <LinkItem href="https://doc.qnsdk.com/rtn/docs/rtn_overview">产品简介</LinkItem>
@@ -156,14 +159,14 @@ function PageContent({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function RtcPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function RtcPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="实时音视频_音视频通信 RTC_视频会议_音频通话_互动直播_WebRTC 服务"
       keywords="互动直播, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
       description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -171,7 +174,8 @@ export default function RtcPage({ notices }: InferGetStaticPropsType<typeof getS
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Rtn)
+      notices: await getNotices(Product.Rtn),
+      newsRes: await getNews({ product: Product.Rtn })
     }
   }
 }

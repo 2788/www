@@ -65,6 +65,7 @@ export default function Overlay() {
       <SubMenu key="sub4" title="服务与支持">
         <MenuItem><a href="https://developer.qiniu.com/">开发文档</a></MenuItem>
         <MenuItem><a href="https://support.qiniu.com">技术支持</a></MenuItem>
+        <MenuItem><Link href="/product-news">产品动态</Link></MenuItem>
         <MenuItem><a href="https://segmentfault.com/qiniu?ref=portal.qiniu.com">问答社区</a></MenuItem>
         <MenuItem><a href="https://support.qiniu.com/tickets">工单系统</a></MenuItem>
         <MenuItem><a href="https://status.qiniu.com">服务健康状态</a></MenuItem>

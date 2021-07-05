@@ -12,8 +12,9 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNotices } from 'apis/admin/notice'
+import { getNews, getNotices } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 import Section from 'components/Product/Section'
@@ -125,6 +126,8 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
 
       <QvmCommonCases title="客户案例" header="他们都在用七牛" />
 
+      <ProductNews newsRes={props.newsRes} />
+
       <LinkGroups name="docs" title="产品文档">
         <LinkGroup title="产品文档">
           <LinkItem href="https://developer.qiniu.com/qvm/manual/4289/qvm-overview">产品简介</LinkItem>
@@ -167,7 +170,8 @@ export async function getStaticProps() {
       starter: await getStarterSpecs(),
       enterprise: await getEnterpriseSpecs(),
       metaInfo: await getMetaInfo(),
-      notices: await getNotices(Product.Qvm)
+      notices: await getNotices(Product.Qvm),
+      newsRes: await getNews({ product: Product.Qvm })
     }
   }
 }

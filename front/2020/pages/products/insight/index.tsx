@@ -11,8 +11,9 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
@@ -46,7 +47,7 @@ import style from './style.less'
 const applyUrl = 'https://portal.qiniu.com/apply-pandora'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const isPc = !useMobile()
 
@@ -211,6 +212,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
         <CustomerCase pic={LogoFaceu} />
       </CustomerCaseGroup>
 
+      <ProductNews newsRes={newsRes} />
+
       <LinkGroups>
         <LinkGroup title="快速入门">
           <LinkItem href="https://developer.qiniu.com/insight/manual/4834/10-minutes-to-play-smart-logging-platform">10 分钟玩转智能日志平台</LinkItem>
@@ -241,14 +244,14 @@ function PageContent({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function InsightPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function InsightPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="智能日志管理平台"
       keywords="日志、日志收集、日志管理、日志分析、业务分析、运维、运维监控、AIOps、安全审计、数据监控、异常监控、数据智能、物联网数据、混合云监控"
       description="智能日志管理平台实现日志数据/业务数据的全生命周期智能管理，适用于运维监控、安全审计及业务数据分析等场景，已帮助上千家互联网、智能制造、金融、新媒体及物联网等行业客户数字化升级。"
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -256,7 +259,8 @@ export default function InsightPage({ notices }: InferGetStaticPropsType<typeof 
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Insight)
+      notices: await getNotices(Product.Insight),
+      newsRes: await getNews({ product: Product.Insight })
     }
   }
 }

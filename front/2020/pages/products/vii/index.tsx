@@ -6,7 +6,7 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import { useBtns } from 'hooks/product-btn'
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import { Product } from 'constants/products'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
@@ -16,6 +16,7 @@ import Features from 'components/pages/vii/Feature'
 import Navigator from 'components/Product/Navigator'
 import PageBanner from 'components/Product/PageBanner'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 import RelatedProducts from 'components/pages/vii/RelatedProducts'
 import bannerImg from './banner.png'
 
@@ -27,7 +28,7 @@ const pageInfo = {
     '视频智能分析是一款针对视频等多媒体文件，通过对视频，图片，音频等内容的多维理解，对其实现结构化标签提取，审核，识别等功能的产品，可广泛应用于多媒体内容的管理，搜索和推荐。'
 }
 
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const { startConsulting } = useFeedbackModal()
 
   const bannerBtns = useBtns(
@@ -49,15 +50,16 @@ function PageContent({ notices }: { notices: INotice[] }) {
       <Advantage />
       <Features />
       <Scenes />
+      <ProductNews newsRes={newsRes} />
       <RelatedProducts />
     </>
   )
 }
 
-export default function ViiPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function ViiPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title={pageInfo.layoutTitle} keywords={pageInfo.keywords} description={pageInfo.description}>
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -65,7 +67,8 @@ export default function ViiPage({ notices }: InferGetStaticPropsType<typeof getS
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Vii)
+      notices: await getNotices(Product.Vii),
+      newsRes: await getNews({ product: Product.Vii })
     }
   }
 }

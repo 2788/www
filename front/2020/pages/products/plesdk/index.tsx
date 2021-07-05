@@ -18,8 +18,9 @@ import { useModal } from 'components/Feedback'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import Advantage from 'components/pages/plesdk/Advantage'
 import ProductFeature from 'components/pages/plesdk/Feature'
@@ -28,7 +29,7 @@ import Scene from 'components/pages/plesdk/Scene'
 
 import banner from './images/banner.png'
 
-export function Content({ notices }: { notices: INotice[] }) {
+export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const { startConsulting } = useModal()
 
   const btns = useBtns(
@@ -55,6 +56,7 @@ export function Content({ notices }: { notices: INotice[] }) {
       <ProductFeature />
       <Scene />
       <Demo />
+      <ProductNews newsRes={newsRes} />
       <LinkGroups title="相关文档">
         <LinkGroup title="Github 地址">
           <LinkItem href="https://github.com/pili-engineering/PLDroidMediaStreaming-ByteDance">Android Github 地址</LinkItem>
@@ -70,14 +72,14 @@ export function Content({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function Page({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="直播特效 SDK"
       keywords="直播sdk, 直播特效 sdk, 特效 sdk, 特效, 美颜"
       description="直播特效 SDK，由七牛云 SDK 团队和字节跳动特效 SDK 团队联合打造。提供直播推流等基础功能的同时，也可快速集成上线美颜滤镜、大眼瘦脸、美妆美形等特效功能。更有上千款贴纸和滤镜资源可供挑选，火山、轻颜也在用。"
     >
-      <Content notices={notices} />
+      <Content notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -85,7 +87,8 @@ export default function Page({ notices }: InferGetStaticPropsType<typeof getStat
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Plesdk)
+      notices: await getNotices(Product.Plesdk),
+      newsRes: await getNews({ product: Product.Plesdk })
     }
   }
 }

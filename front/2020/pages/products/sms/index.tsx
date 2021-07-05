@@ -14,8 +14,9 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
@@ -41,7 +42,7 @@ import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices }: { notices: INotice[] }) {
+function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -141,6 +142,8 @@ function PageContent({ notices }: { notices: INotice[] }) {
         </AccessStep>
       </AccessProcess>
 
+      <ProductNews newsRes={newsRes} />
+
       <LinkGroups>
         <LinkGroup title="产品文档">
           <LinkItem href="https://developer.qiniu.com/sms/manual/5812/sms-product-introduction">产品简介</LinkItem>
@@ -160,14 +163,14 @@ function PageContent({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function SmsPage({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function SmsPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
       keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
       description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
     >
-      <PageContent notices={notices} />
+      <PageContent notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -175,7 +178,8 @@ export default function SmsPage({ notices }: InferGetStaticPropsType<typeof getS
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Sms)
+      notices: await getNotices(Product.Sms),
+      newsRes: await getNews({ product: Product.Sms })
     }
   }
 }

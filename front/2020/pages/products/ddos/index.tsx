@@ -14,8 +14,9 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNotices, INotice } from 'apis/admin/notice'
+import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
+import ProductNews from 'components/Product/common/ProductNews'
 
 import DdosProduct from 'components/pages/ddos/Product'
 import Advantage from 'components/pages/ddos/Advantage'
@@ -23,7 +24,7 @@ import QvmCommonCases from 'components/pages/qvm/Cases'
 
 import banner from './banner.png'
 
-function Page({ notices }: { notices: INotice[] }) {
+function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/security/bgpip/create', pcOnly: true },
@@ -49,6 +50,8 @@ function Page({ notices }: { notices: INotice[] }) {
 
       <QvmCommonCases title="客户案例" />
 
+      <ProductNews newsRes={newsRes} />
+
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
           <RelatedProduct name="云主机" product={Product.Qvm} />
@@ -59,14 +62,14 @@ function Page({ notices }: { notices: INotice[] }) {
   )
 }
 
-export default function Ddos({ notices }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Ddos({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="DDoS 高防"
       keywords="DDoS, 高防, DoS, 互联网服务器, 大规模, CC, DDoS / CC, 全面, 高效专业, 安全服务, 七牛云"
       description="DDoS 高防是针对互联网服务器（包括非七牛云主机）在遭受大规模 DDoS / CC 攻击后导致服务不可用的情况下，推出的全面、高效专业的抗 D 安全服务。用户可通过七牛云 T 级高防 IP ，应对 DDoS / CC 攻击问题，确保关键业务连续性，安全运行。该解决方案广泛应用于游戏、电商、企业服务等场景。"
     >
-      <Page notices={notices} />
+      <Page notices={notices} newsRes={newsRes} />
     </Layout>
   )
 }
@@ -74,7 +77,8 @@ export default function Ddos({ notices }: InferGetStaticPropsType<typeof getStat
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Ddos)
+      notices: await getNotices(Product.Ddos),
+      newsRes: await getNews({ product: Product.Ddos })
     }
   }
 }
