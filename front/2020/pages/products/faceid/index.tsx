@@ -39,7 +39,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   const priceUrl = urlForPrice(Product.FaceID)
 
   const btns = useBtns(
-    { href: 'https://developer.qiniu.com/dora/api/6699/facecompare', children: '使用文档' },
+    { href: 'https://developer.qiniu.com/dora/6874/seven-niuyun-face-check-products-use-is-introduced', children: '使用文档' },
     { href: 'https://portal.qiniu.com/faceid', children: '立即使用' },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
