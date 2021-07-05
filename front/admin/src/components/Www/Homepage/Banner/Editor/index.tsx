@@ -237,6 +237,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           />
         </FormItem>
       </Form>
+      <p className={style.tips}>说明：上传 banner 前，请企业微信联系 @杨寒星 确认 banner 设计中是否涉及字体侵权（请重视该流程，不可跳过）</p>
     </Modal>
   )
 })
