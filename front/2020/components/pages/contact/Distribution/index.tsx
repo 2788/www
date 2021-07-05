@@ -1,6 +1,6 @@
 import React from 'react'
 import Section from 'components/Product/Section'
-import { Row, LayoutCard, InvisibleCard, Img, Desc, Title } from 'components/UI/Card'
+import { Row, LayoutCard, Img, Desc, Title } from 'components/UI/Card'
 
 import shanghai from './images/shanghai.png'
 import beijing from './images/beijing.png'
@@ -10,6 +10,7 @@ import hangzhou from './images/hangzhou.png'
 import nanjing from './images/nanjing.png'
 import shenzhen from './images/shenzhen.png'
 import xiamen from './images/xiamen.png'
+import wuhan from './images/wuhan.png'
 
 import style from './index.less'
 
@@ -61,7 +62,11 @@ export default function Distribution() {
           <Title className={style.title}>厦门分部</Title>
           <Desc className={style.desc}>福建省厦门市思明区软件园二期望海路 27 号 1 楼 101-4 室</Desc>
         </LayoutCard>
-        <InvisibleCard />
+        <LayoutCard>
+          <Img className={style.image} src={wuhan} />
+          <Title className={style.title}>武汉分部</Title>
+          <Desc className={style.desc}>湖北省武汉市武昌区公正路 216 号平安企业服务中心 27 楼 31 号</Desc>
+        </LayoutCard>
       </Row>
     </Section>
   )
