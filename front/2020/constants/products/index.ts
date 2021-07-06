@@ -65,7 +65,9 @@ export enum Product {
   /** 智能语音 */
   Voice = 'voice',
   /** 存储一体机 */
-  Storage = 'storage'
+  Storage = 'storage',
+  /** 锐智转码 */
+  Avsmart = 'avsmart',
 }
 
 // TODO: 这个再核对一遍
@@ -101,7 +103,8 @@ export const nameMap = {
   [Product.QnPlayer]: '播放器 SDK',
   [Product.Svesdk]: '短视频特效 SDK',
   [Product.Voice]: '智能语音',
-  [Product.Storage]: '云存储一体机'
+  [Product.Storage]: '云存储一体机',
+  [Product.Avsmart]: '锐智转码 2.0'
 } as const
 
 export const urlMap = {
@@ -135,7 +138,8 @@ export const urlMap = {
   [Product.QnPlayer]: '/products/qnplayer',
   [Product.Svesdk]: '/products/svesdk',
   [Product.Voice]: '/products/voice',
-  [Product.Storage]: '/products/storage'
+  [Product.Storage]: '/products/storage',
+  [Product.Avsmart]: '/products/avsmart'
 } as const
 
 export const priceUrlMap = {
@@ -169,7 +173,8 @@ export const priceUrlMap = {
   [Product.QnPlayer]: null,
   [Product.Svesdk]: null,
   [Product.Voice]: null,
-  [Product.Storage]: null
+  [Product.Storage]: null,
+  [Product.Avsmart]: null
 } as const
 
 export const descMap = {
@@ -207,7 +212,8 @@ export const descMap = {
   [Product.QnPlayer]: '全自研点直播多媒体播放器',
   [Product.Svesdk]: '',
   [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互',
-  [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品'
+  [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
+  [Product.Avsmart]: '更低的码率，更清晰的画质'
 } as const
 
 export enum Category {
@@ -285,8 +291,11 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
     { product: Product.Cdn, name: '点播加速', desc: '通过全方位的 CDN 质量监控和智能节点调度，提供音视频点播优化加速服务' }
   ],
   [SubCategory.MediaLiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
-  [SubCategory.MediaDora]:
-    [Product.DoraImage, Product.Censor, Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.OpenAPI],
+  [SubCategory.MediaDora]: [
+    Product.DoraImage, Product.Avsmart, Product.Censor,
+    Product.FaceID, Product.Ocr, Product.Vii,
+    Product.Voice, Product.OpenAPI
+  ],
   [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer],
   [SubCategory.MediaStorage]: [Product.Kodo, Product.Storage],
   [SubCategory.MediaDistribution]: [Product.Cdn, Product.Pcdn],

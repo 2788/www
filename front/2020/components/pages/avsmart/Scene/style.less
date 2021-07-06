@@ -1,0 +1,41 @@
+@import '~utils/less/index.less';
+
+@block-height: 280px;
+
+.scenePanel{
+  padding: 0 52px;
+
+  .mobile({
+    padding: 0;
+  });
+}
+
+.icon {
+  width: 476px;
+  height: @block-height;
+  line-height: 1;
+
+  .mobile({
+    width: 100%;
+    height: auto;
+  });
+}
+
+.blockRight {
+  padding: 0 24px;
+  margin-left: 0 !important;
+}
+
+.title {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: @grey-7;
+  line-height: 22px;
+}
+
+.desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: @grey-6;
+}
