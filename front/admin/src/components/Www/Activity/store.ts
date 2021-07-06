@@ -9,6 +9,7 @@ import ActivityApis, { IActivityWithId, IActivity, IListOptions, IListResponse }
 import { StateType } from 'constants/activity'
 import { pageSize } from '.'
 
+type FecthListOptions = { page: number, states?: StateType[] }
 @injectable()
 export default class ActivityStore extends Store {
 
@@ -19,6 +20,7 @@ export default class ActivityStore extends Store {
   }
 
   @observable.ref total = 0
+  @observable.ref options: FecthListOptions | null = null // list 查询条件，方便获取之前的查询条件
   @observable.ref list: IActivityWithId[] = []
 
   loadings = Loadings.collectFrom(this)
@@ -29,6 +31,11 @@ export default class ActivityStore extends Store {
   }
 
   @action.bound
+  updateOptions(options: FecthListOptions | null) {
+    this.options = options
+  }
+
+  @action.bound
   updateList(total = 0, list: IActivityWithId[] = []) {
     this.total = total
     this.list = list
@@ -36,14 +43,15 @@ export default class ActivityStore extends Store {
 
   @autobind
   @Loadings.handle('fetchList')
-  fetchList({ page, states }: { page: number, states?: StateType[] }) {
+  fetchList({ page, states }: FecthListOptions) {
+    this.updateOptions({ page, states })
     const opt: IListOptions = { limit: pageSize, offset: (page - 1) * pageSize, states }
     return this.activityApis.list(opt).then((res: IListResponse) => this.updateList(res.count, res.data))
   }
 
   @action.bound
   refresh() {
-    return this.fetchList({ page: 1 })
+    return this.fetchList({ ...this.options, page: 1 })
   }
 
   add(data: IActivity) {
