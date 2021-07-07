@@ -21,7 +21,7 @@ const data = [
     title: nameMap[Product.Rtn],
     desc: descMap[Product.Rtn],
     btnTitle: '立即使用',
-    getUrl: 'https://portal.qiniu.com/rtn/rtc/create',
+    getUrl: 'https://portal.qiniu.com/rtn/app',
     moreUrl: urlMap[Product.Rtn],
     items: ['每月免费连麦 20000 分钟']
   },
