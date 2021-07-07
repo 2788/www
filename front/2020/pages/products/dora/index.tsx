@@ -14,7 +14,6 @@ import { useBtns } from 'hooks/product-btn'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
-import PurchaseInfo, { PurchaseInfoItem, PurchaseInfoAction } from 'components/Product/PurchaseInfo'
 import DoraCore from 'components/pages/dora/Core'
 import DoraScene from 'components/pages/dora/Scene'
 import DoraFunctions from 'components/pages/dora/Functions'
@@ -41,7 +40,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   const priceUrl = urlForPrice(Product.Dora)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/create?source_page=dora', children: '立即使用', pcOnly: true },
+    { href: 'https://portal.qiniu.com/dora/media-gate/overview', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格' },
     { href: 'https://developer.qiniu.com/dora?source_page=dora', children: '帮助文档' }
   )
@@ -77,15 +76,6 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         <CustomerCase pic={Customer7Icon} />
         <CustomerCase pic={Customer8Icon} />
       </CustomerCaseGroup>
-
-      <PurchaseInfo>
-        <PurchaseInfoItem title="智能多媒体服务" desc="了解更多产品价格信息">
-          <PurchaseInfoAction url={priceUrl}>查看价格</PurchaseInfoAction>
-        </PurchaseInfoItem>
-        <PurchaseInfoItem title="价格页" desc="特惠套餐包">
-          <PurchaseInfoAction url="https://qmall.qiniu.com/template/NjQ">立即购买</PurchaseInfoAction>
-        </PurchaseInfoItem>
-      </PurchaseInfo>
 
       <ProductNews newsRes={newsRes} />
 

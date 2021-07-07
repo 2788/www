@@ -6,6 +6,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import { urlMap, nameMap, Product } from 'constants/products'
 import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
@@ -53,216 +54,198 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
 
 export default function DoraFuctions() {
   return (
-    <Scene name="functions" title="产品功能" grey>
+    <Scene name="functions" title="产品功能" className={styles.wrapper} grey>
       <ScenePanel name="image" title="图片处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
             title="图片瘦身"
-            linkText="立即试用"
+            linkText="立即使用"
             link="https://portal.qiniu.com/dora/fop/imageslim?source_page=dora"
-            content="支持对 PNG、JPG 图片实时压缩，缩小图片体积，节省流量，提升产品体验。"
+            content="在尽可能不影响画质的情况下，将图片实时压缩，大幅缩小文件体积。"
           />
           <SceneCard
-            title="图片基本处理"
-            content="提供简单快捷的图片格式转换、缩略、剪裁、自定义裁剪功能。"
-          />
-          <SceneCard
-            title="图片高级处理"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/dora/manual/1270/the-advanced-treatment-of-images-imagemogr2?source_page=dora"
-            content="提供一系列高级图片处理功能，并支持控制台操作，包括格式转换、缩放、裁剪、旋转等。"
+            title="图片通用处理"
+            content="支持对图片进行格式转换、缩略、剪裁、旋转、获取基本信息、图片 EXIF 信息、圆角处理、计算平均色调等操作。"
           />
           <SceneCard
             title="图片水印处理"
-            linkText="立即试用"
+            linkText="立即使用"
             link="https://portal.qiniu.com/dora/fop/imageprocess?source_page=dora"
-            content="提供添加图片、文字、图文混合水印三种处理方式。"
+            content="支持对图片添加图片水印、文字水印、文字平铺水印、混合水印、渐变色水印和盲水印等。"
           />
+          <SceneCard
+            title="全景拼接"
+            content="支持将多张图像拼接起来，拼成一幅大的图像来创建全景图像。"
+          />
+          <SceneCard
+            title="动图合成"
+            content="将多张图片合成 GIF 动图。"
+          />
+          <Link href="https://developer.qiniu.com/dora/3683/img-directions-for-use" className={styles.detailLink} blue>了解详情 &gt;</Link>
         </SceneBlock>
       </ScenePanel>
 
       <ScenePanel name="audio" title="音视频处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
-            title="音视频转码"
-            content="超大规模转码集群，主流转码格式全覆盖，支持转封装、水印、截图等功能满足您的各种场景应用。"
+            title="普通音视频转码"
+            content="实现对音频、视频资源的编码和格式转换。"
           />
           <SceneCard
-            title="转码模板"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="提供控制台图形化操作，通过设置任务模板，可对海量音视频文件进行流程化处理，一站式完成转码、截图、水印、鉴黄等基本操作，满足您的多样化转码需求。"
-          />
-          <SceneCard
-            title="视频瘦身"
+            title="锐智转码"
             linkText="了解详情"
-            link="https://developer.qiniu.com/dora/manual/5135/avsmart?source_page=dora"
-            content="利用视频内容自适应转码技术，在相同的观看体验下，在节省码率的同时降低宽带成本，并可通过视频增强处理，达到更优的观看效果。"
+            link={urlMap[Product.Avsmart]}
+            content="根据视频场景内容自适应进行转码，在不损失画质的情况下（肉眼无感知）以总体更低的码率进行转码。"
           />
           <SceneCard
             title="倍速转码"
-            content="适用于 25 分钟以上的长视频，通过对视频分片并行转码，大幅提升转码速度。"
+            content="加速对视频资源进行编码。"
           />
           <SceneCard
-            title="水印"
-            content="支持在输出视频上覆盖图片、文字水印，各类分辨率视频均可支持，满足开发者各种需要。"
+            title="音视频通用处理"
+            content="对音视频进行分段、切片、打水印、拼接、获取音视频元信息等操作。"
           />
           <SceneCard
-            title="安全加密"
-            content="提供多样化的视频加密服务，可有效保障视频资源安全性，防止文件泄露或盗用，适用于在线教育，付费观看等场景。"
+            title="多码率自适应转码"
+            content="用于对已经上传到七牛云的视频转码成包含多种码率的 HLS 视频流。以便能随着终端网络带宽的变化动态选择适应的码率播放。"
           />
           <SceneCard
-            title="完善的 API 体系"
-            content="转码服务提供完善全面的服务端 API 和简洁易懂的接入文档，方便客户快速对接。"
+            title="视频缩略图"
+            content="支持获取视频的帧缩略图和采样缩略图。"
           />
+          <SceneCard
+            title="智能多媒体平台"
+            linkText="立即使用"
+            link="https://portal.qiniu.com/dora/media-gate/overview"
+            content="通过控制台可视化操作，可对海量视频进行流程化处理，支持工作流、预设集、任务触发器等配置。"
+          />
+          <Link href="https://developer.qiniu.com/dora/3685/directions-for-use-av" className={styles.detailLink} blue>了解详情 &gt;</Link>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="recognition" title="智能识别" verticalCenter>
+      <ScenePanel name="censor" title={nameMap[Product.Censor]} verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
-            title="人脸识别"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/dora/manual/4281/face-detection?source_page=dora"
-            content="业界领先的人脸检测、五官关键点定位、人脸属性分析和快速的人脸聚类功能。 可广泛应用在美颜、智能相册分类、新零售、安防监控和金融领域身份识别等多种场景。"
+            title="图片审核"
+            content="高效精准识别图片中的违规内容，支持的审核类型包括：图片鉴黄、图片鉴暴恐、图片敏感人物识别、图片广告识别、图片水印 Logo、不良场景等类型。"
           />
           <SceneCard
-            title="OCR 文字识别"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="自然场景下对整图和文字进行检测、定位和识别。常用于对各种证件、票据、水电表所含信息进行自动识别和结构化处理，快速实现信息电子化入库，减少人力成本。"
+            title="视频审核"
+            content="高效精准识别视频中的违规内容，包括涉黄、涉暴恐、涉政敏感人物检测等，准确率高达 99.95%，可替代 80% 以上的人工审核。"
           />
           <SceneCard
-            title="以图搜图"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/dora/manual/4680/image-search?source_page=dora"
-            content="可对一张图片在底库中进行相似图片搜索，结果返回与搜索图语义最相似的多张图片，实现精准的图像匹配。"
+            title="语音审核"
+            content="为音频文件的内容审核场景提供涉政、国歌、色情、广告、娇喘等违规内容的识别，并支持识别唱歌、性别、音色标签等功能。"
           />
           <SceneCard
-            title="场景物体识别"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="360+ 类的场景检测和 200+ 类的物体识别，Top-5 准确率达 90.07%。可应用于相册中不同维度的分类， 场景化的广告营销和特定物体的识别与检索等场景。"
+            title="文本审核"
+            content="帮助您检测文本是否存在色情、暴恐、涉政、辱骂、灌水、违禁、无意义等违规内容。"
           />
           <SceneCard
-            title="物体分割"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="80+ 类的物体识别和定位，精确划分出物体的边界信息。可应用于抠图、增强现实等领域。"
+            title="直播审核"
+            content="帮助您检测直播中的不良信息，并给出审核结果管控建议。支持的审核类型包括：直播鉴黄、直播鉴暴恐、直播敏感人物识别、直播语音违规内容识别。"
           />
+          <SceneCard
+            title="审核工作台"
+            linkText="立即使用"
+            link="https://portal.qiniu.com/censor/main/overview"
+            content="可视化操作，支持存量和增量审核，以及直播流审核配置。"
+          />
+          <Link href={urlMap[Product.Censor]} className={styles.detailLink} blue>了解详情 &gt;</Link>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="video" title="视频分析" verticalCenter>
+      <ScenePanel name="faceid" title={nameMap[Product.FaceID]} verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
-            title="视频截图"
-            content="从视频流中截取指定时刻的截图，提供雪碧图、视频首图功能，优化视觉体验，提升视频点击率。"
+            title="身份证 OCR"
+            content="检测单张身份证图片信息，例如：身份证中姓名、性别、民族、住址和身份证号码、有效期、签发地址等关键信息。"
           />
           <SceneCard
-            title="视频摘要"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="对视频内容进行深度学习和理解，提取一组截图，自动生成视频摘要。"
+            title="人脸检测"
+            content="检测单张图片中的人脸信息。"
           />
           <SceneCard
-            title="视频精彩集锦"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="通过对视频内容的全面分析，对视频进行关键点识别，智能生成视频精彩集锦。"
+            title="活体检测"
+            content="深度神经网络的活体检测技术，检测图片或视频中的人脸是否是活体，有效防止伪造照片、视频、人脸面具，抵御人脸伪造攻击。"
           />
           <SceneCard
-            title="智能封面"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="抽取精彩画面，智能推荐更吸引用户的视频封面。"
+            title="人脸比对"
+            content="将用户人脸照片和预留照片进行比对，判断是否为同一人。"
           />
           <SceneCard
-            title="智能标签"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="对视频进行场景分类、任务识别、语音识别、文字识别等多维度分析，形成层次化的分类标签，可用于视频搜索和视频推荐等应用场景。"
+            title="权威人脸核验"
+            content="将用户照片与权威公安接口数据进行比对，核验是否为本人。"
           />
           <SceneCard
-            title="智能识别"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="利用人脸识别、语音识别、 OCR 文本识别以及图像识别等技术，对直播、点播、UGC 视频进行全媒体内容识别，支持涉黄、涉暴、涉恐、涉政检测等功能。"
+            title="自由组合"
+            linkText="立即使用"
+            link="https://portal.qiniu.com/faceid/sdk-auth"
+            content="人脸相关接口可根据场景组合调用，并支持 SDK 授权下载。"
           />
+          <Link href={urlMap[Product.FaceID]} className={styles.detailLink} blue>了解详情 &gt;</Link>
         </SceneBlock>
       </ScenePanel>
 
-      <ScenePanel name="optimization" title="音频画质优化" verticalCenter>
+      <ScenePanel name="voice" title={nameMap[Product.Voice]} verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
-            title="高帧率重制服务"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="对于 30 帧/秒以内的普通帧率高清节目，生成 60 帧/秒的高帧率版本，消除在播放中的顿挫感。"
+            title="语音识别"
+            content="支持录音文件识别，一句话识别和实时语音识别。"
           />
           <SceneCard
-            title="超高清重制服务"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="使用超分辨率、HDR、噪音抑制等技术，将标清的影片重置为高清版本和将 1080p 影片重制为 4K 版本，提供极致清晰的视频观感。"
+            title="语音合成"
+            content="将文本转化为拟人化语音。"
           />
           <SceneCard
-            title="受损片源修复"
-            linkText="立即申请"
-            link="#feedback-modal"
-            content="针对被过度压缩的网络视频，去除画面中的毛刺和马赛克，生成更高清晰度的修复重制版。"
+            title="声纹识别"
+            content="高效提取说话人的声纹特征，辨别说话人的信息。"
           />
+          <Link href={urlMap[Product.Voice]} className={styles.detailLink} blue>了解详情 &gt;</Link>
+        </SceneBlock>
+      </ScenePanel>
+
+      <ScenePanel name="ocr" title={nameMap[Product.Ocr]} verticalCenter>
+        <SceneBlock className={styles.sceneContainer}>
+          <SceneCard
+            title="票证识别 OCR"
+            content="识别车险保单、营业执照、新车发票、车辆登记等票证文件，返回结构化信息。"
+          />
+          <Link href={urlMap[Product.Ocr]} className={styles.detailLink} blue>了解详情 &gt;</Link>
+        </SceneBlock>
+      </ScenePanel>
+
+      <ScenePanel name="vii" title={nameMap[Product.Vii]} verticalCenter>
+        <SceneBlock className={styles.sceneContainer}>
+          <SceneCard
+            title="视频智能分析"
+            linkText="立即使用"
+            link="https://portal.qiniu.com/vii/tasks"
+            content="通过对视频、图片、音频等内容的多维理解，对其实现结构化标签提取、审核和识别等功能的产品，可广泛应用于多媒体内容的管理、搜索和推荐，并且支持工作台体验。"
+          />
+          <Link href={urlMap[Product.Vii]} className={styles.detailLink} blue>了解详情 &gt;</Link>
+        </SceneBlock>
+      </ScenePanel>
+
+      <ScenePanel name="openapi" title={nameMap[Product.OpenAPI]} verticalCenter>
+        <SceneBlock className={styles.sceneContainer}>
+          <SceneCard
+            title="AI 开放市场"
+            linkText="加入我们"
+            link={`${urlMap[Product.OpenAPI]}/partner`}
+            content="协同合作伙伴共同为七牛的客户提供高质量的数据处理服务，也欢迎更多的合作伙伴加入我们。"
+          />
+          <Link href={urlMap[Product.OpenAPI]} className={styles.detailLink} blue>了解详情 &gt;</Link>
         </SceneBlock>
       </ScenePanel>
 
       <ScenePanel name="handle" title="自定义数据处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard
-            title="自定义数据处理平台"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/dora/manual/3687/ufop-directions-for-use?source_page=dora"
-            content="容器化的形式运行用户自定义的数据处理程序，为您的数据处理业务提供稳定、可靠、按需弹性缩放的运行平台，支持各种主流开发语言，并提供可视化管理界面让您更好地监控各种应用运行和使用状态。"
+            title="自定义数据处理"
+            content="容器化的形式运行用户自定义的数据处理程序，为您的数据处理业务提供稳定、可靠、按需弹性缩放的服务。"
           />
-          <SceneCard
-            title="安全可靠"
-            content="使用内核级别的资源隔离和访问控制，数据安全可靠，您无需担心您的运行实例及其相关数据会被相同物理主机上的其他实例非法访问。"
-          />
-        </SceneBlock>
-      </ScenePanel>
-
-      <ScenePanel name="censor" title="智能审核" verticalCenter>
-        <SceneBlock className={styles.sceneContainer}>
-          <SceneCard
-            title="图片审核"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/censor/api/5588/image-censor?source_page=dora"
-            content="高效精准识别图片中的违规内容，支持的审核类型包括：图片鉴黄、图片鉴暴恐、图片敏感人物识别、图片广告识别。"
-          />
-          <SceneCard
-            title="视频审核"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/censor/api/5620/video-censor?source_page=dora"
-            content="高效精准识别视频中的违规内容，包括涉黄、涉暴、涉恐、涉政检测等，准确率高达 99.95%，可替代 80% 以上的人工审核，节省人力成本。并且能通过机器学习不断提高准确率。"
-          />
-          <SceneCard
-            title="文本内容审核"
-            linkText="了解详情"
-            link="https://developer.qiniu.com/dora/manual/1258/text-as-jian-zheng-huang-service?source_page=dora"
-            content="能够有效帮助您识别文本中的垃圾广告、色情暴恐、政治违规、不文明用语等垃圾、恶意内容；提高平台用户体验，降低平台运营成本。"
-          />
-        </SceneBlock>
-      </ScenePanel>
-
-      <ScenePanel name="copyright" title="版权保护" verticalCenter>
-        <SceneBlock className={styles.sceneContainer}>
-          <SceneCard
-            title="视频加密"
-            content="提供多密钥加密、视频防盗链的视频加密服务，实现对视频的全方位加密保护。"
-          />
-          <SceneCard
-            title="DRM 算法加密"
-            content="广泛认可的视频版权保护系统，可有效保障视频资源安全性。"
-          />
+          <Link href="https://developer.qiniu.com/dora/3687/ufop-directions-for-use" className={styles.detailLink} blue>了解详情 &gt;</Link>
         </SceneBlock>
       </ScenePanel>
     </Scene>

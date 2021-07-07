@@ -5,8 +5,20 @@
 
 @import "~utils/less/index.less";
 
-@card-height: 110px;
+@card-height: 158px;
 @card-width: 376px;
+
+.wrapper {
+  ul li {
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
 
 .sceneContainer {
   padding: 0;
@@ -67,10 +79,11 @@
     }
 
     .content {
+      margin-top: 8px;
       color: @grey-6;
       font-size: 14px;
       text-align: start;
-      .ellipsis-line-clamp(2, 44px);
+      .ellipsis-line-clamp(4, 88px);
     }
   }
 }
@@ -117,4 +130,10 @@
   .mobile({
     width: 80px;
   })
+}
+
+.detailLink {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
 }
