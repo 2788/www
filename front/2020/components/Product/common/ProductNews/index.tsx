@@ -18,7 +18,7 @@ export default function ProductNews({ newsRes }: { newsRes: INewsResponse }) {
   return (
     isMobile
       ? <ForMobile news={newsRes.data} count={newsRes.count} maxNum={maxNum} />
-      : <ForPc news={newsRes.data} count={newsRes.count} maxNum={maxNum} />
+      : <ForPc news={newsRes.data.slice().reverse()} count={newsRes.count} maxNum={maxNum} />
   )
 }
 
