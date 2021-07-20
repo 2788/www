@@ -5,11 +5,9 @@
 
 import React, { PropsWithChildren } from 'react'
 import Link from 'components/Link'
-
 import { getCurrentYear } from 'utils'
-import { categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
-import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
-
+import { nameMap, Product, urlMap } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
 import Wechat from './images/wechat.svg'
@@ -22,7 +20,6 @@ import imgCertIso20000 from './images/cert/iso20000.png'
 import imgCertIso27001 from './images/cert/iso27001.png'
 import imgCertIso27701 from './images/cert/iso27701.png'
 import imgCertKexin from './images/cert/kexin.png'
-
 import style from './style.less'
 
 interface ILinkItemProps {
@@ -50,63 +47,54 @@ function LinkGroup({ title, children }: PropsWithChildren<ILinkGroupProps>) {
   )
 }
 
-function ProductItems({ products }: { products: PartialProductData[] }) {
-  const itemsView = products.filter(
-    product => normalizeProduct(product).url !== null
-  ).map((product, index) => {
-    const productData = normalizeProduct(product)
-    return (
-      <LinkItem
-        key={index}
-        url={productData.url!}
-      >
-        {productData.name}
-      </LinkItem>
-    )
-  })
-  return <>{itemsView}</>
-}
-
 function LinkGroups() {
-  const productLinkGroupsView = categories.map(category => (
-    <LinkGroup key={category} title={categoryNameMap[category]}>
-      <ProductItems
-        products={getCategoryProducts(category)}
-      />
-    </LinkGroup>
-  ))
-  const solutionLinksView = allAvailableSolutions.map(solution => (
-    <LinkItem key={solution} url={solutionUrlMap[solution]!}>{solutionNameMap[solution]}</LinkItem>
-  ))
   return (
     <section className={style.linkGroups}>
-      {productLinkGroupsView}
-      <LinkGroup title="解决方案">
-        {solutionLinksView}
+      <LinkGroup title="快速入口">
+        <LinkItem url="https://portal.qiniu.com/financial/overview">充值开票</LinkItem>
+        <LinkItem url="https://portal.qiniu.com/user/profile">账号管理</LinkItem>
+        <LinkItem url="https://portal.qiniu.com/home">控制台</LinkItem>
+        <LinkItem url="https://qmall.qiniu.com">资源包购买</LinkItem>
+        <LinkItem url={urlForPrice(Product.Kodo)}>产品报价</LinkItem>
       </LinkGroup>
-      <LinkGroup title="服务与支持">
-        <LinkItem url="https://developer.qiniu.com/">开发文档</LinkItem>
-        <LinkItem url="https://support.qiniu.com">技术支持</LinkItem>
-        <LinkItem url="https://segmentfault.com/qiniu?ref=portal.qiniu.com">问答社区</LinkItem>
-        <LinkItem url="https://support.qiniu.com/tickets">工单系统</LinkItem>
+
+      <LinkGroup title="热门产品">
+        <LinkItem url={urlMap[Product.Kodo]}>{nameMap[Product.Kodo]}</LinkItem>
+        <LinkItem url={urlMap[Product.Cdn]}>{nameMap[Product.Cdn]}</LinkItem>
+        <LinkItem url={urlMap[Product.Pili]}>{nameMap[Product.Pili]}</LinkItem>
+        <LinkItem url={`${urlMap[Product.Dora]}#functions`}>{nameMap[Product.DoraAudio]}</LinkItem>
+        <LinkItem url={urlMap[Product.Censor]}>{nameMap[Product.Censor]}</LinkItem>
+        <LinkItem url={urlMap[Product.Qvm]}>{nameMap[Product.Qvm]}</LinkItem>
+        <LinkItem url={urlMap[Product.Express]}>{nameMap[Product.Express]}</LinkItem>
+      </LinkGroup>
+
+      <LinkGroup title="服务支持">
+        <LinkItem url="https://support.qiniu.com/tickets/new">工单系统</LinkItem>
+        <LinkItem url="https://developer.qiniu.com">文档中心</LinkItem>
         <LinkItem url="/user-agreement">用户协议</LinkItem>
-        <LinkItem url="/privacy-right">隐私权政策</LinkItem>
+        <LinkItem url="/sla-kodo">产品 SLA</LinkItem>
         <LinkItem url="https://status.qiniu.com">服务状态</LinkItem>
       </LinkGroup>
+
       <LinkGroup title="开发者">
-        <LinkItem url="https://developer.qiniu.com">开发者中心</LinkItem>
-        <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
-        <LinkItem url="https://www.ecug.org/">ECUG 技术大会</LinkItem>
-        <LinkItem url="/events/arch">架构师实践日</LinkItem>
-        <LinkItem url="/cooperations">工具插件 SDK 合作</LinkItem>
+        <LinkItem url="/activity">开发者活动</LinkItem>
+        <LinkItem url="https://developer.qiniu.com/sdk#official-tool">开发者工具</LinkItem>
       </LinkGroup>
+
+      <LinkGroup title="合作伙伴">
+        <LinkItem url={`${urlMap[Product.OpenAPI]}/partner`}>{nameMap[Product.OpenAPI]}</LinkItem>
+        <LinkItem url="/cps">CPS 返现</LinkItem>
+        <LinkItem url="/partner">代理合作伙伴</LinkItem>
+        <LinkItem url="/cooperations">工具插件 SDK 合作</LinkItem>
+
+      </LinkGroup>
+
       <LinkGroup title="关于我们">
-        <LinkItem url="https://campus.qiniu.com">校园招聘</LinkItem>
-        <LinkItem url="https://career.qiniu.com/social">社会招聘</LinkItem>
         <LinkItem url="/company">公司介绍</LinkItem>
+        <LinkItem url="https://jobs.qiniu.com">社会招聘</LinkItem>
+        <LinkItem url="https://campus.qiniu.com">校园招聘</LinkItem>
         <LinkItem url="/contact">联系我们</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/1">最新动态</LinkItem>
-        <LinkItem url="https://blog.qiniu.com/archives/category/5">技术博客</LinkItem>
       </LinkGroup>
     </section>
   )

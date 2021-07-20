@@ -1,78 +1,65 @@
 import React, { PropsWithChildren } from 'react'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
-import { categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
-import { urlMap as solutionUrlMap, nameMap as solutionNameMap, allAvailableSolutions } from 'constants/solutions'
 import Button from 'components/UI/Button'
-
+import { nameMap, Product, urlMap } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
 import Qrcode from './images/qrcode.png'
-
 import style from './style.less'
 
 function MenuItem({ children }: PropsWithChildren<{}>) {
   return <div className="menu-item">{children}</div>
 }
 
-function getProductItems(products: PartialProductData[]) {
-  return products.filter(
-    product => normalizeProduct(product).url !== null
-  ).map((product, index) => {
-    const productData = normalizeProduct(product)
-    return (
-      <MenuItem key={index}>
-        <Link href={productData.url!}>
-          {productData.name}
-        </Link>
-      </MenuItem>
-    )
-  })
-}
-
 export default function FooterForMobile() {
-  const productSubMenusView = categories.map(category => (
-    <SubMenu key={category} title={categoryNameMap[category]}>
-      {
-        getProductItems(getCategoryProducts(category))
-      }
-    </SubMenu>
-  ))
-  const solutionMenuItemsView = allAvailableSolutions.map(solution => (
-    <MenuItem key={solution}>
-      <Link href={solutionUrlMap[solution]!}>{solutionNameMap[solution]}</Link>
-    </MenuItem>
-  ))
   return (
     <div className={style.footer}>
       <div className={style.nav}>
         <Menu mode="inline" inlineIndent={15}>
-          {productSubMenusView}
-          <SubMenu title="解决方案">
-            {solutionMenuItemsView}
+          <SubMenu title="快速入口">
+            <MenuItem><Link href="https://portal.qiniu.com/financial/overview">充值开票</Link></MenuItem>
+            <MenuItem><Link href="https://portal.qiniu.com/user/profile">账号管理</Link></MenuItem>
+            <MenuItem><Link href="https://portal.qiniu.com/home">控制台</Link></MenuItem>
+            <MenuItem><Link href="https://qmall.qiniu.com">资源包购买</Link></MenuItem>
+            <MenuItem><Link href={urlForPrice(Product.Kodo)}>产品报价</Link></MenuItem>
           </SubMenu>
-          <SubMenu title="合作伙伴">
-            <MenuItem><Link href="/partner">合作伙伴与生态</Link></MenuItem>
-            <MenuItem><Link href="/products/kodo/goglobal">出海企业扶持</Link></MenuItem>
-            <MenuItem><Link href="/invite">邀请好友</Link></MenuItem>
+
+          <SubMenu title="热门产品">
+            <MenuItem><Link href={urlMap[Product.Kodo]}>{nameMap[Product.Kodo]}</Link></MenuItem>
+            <MenuItem><Link href={urlMap[Product.Cdn]}>{nameMap[Product.Cdn]}</Link></MenuItem>
+            <MenuItem><Link href={urlMap[Product.Pili]}>{nameMap[Product.Pili]}</Link></MenuItem>
+            <MenuItem><Link href={`${urlMap[Product.Dora]}#functions`}>{nameMap[Product.DoraAudio]}</Link></MenuItem>
+            <MenuItem><Link href={urlMap[Product.Censor]}>{nameMap[Product.Censor]}</Link></MenuItem>
+            <MenuItem><Link href={urlMap[Product.Qvm]}>{nameMap[Product.Qvm]}</Link></MenuItem>
+            <MenuItem><Link href={urlMap[Product.Express]}>{nameMap[Product.Express]}</Link></MenuItem>
           </SubMenu>
-          <SubMenu title="服务与支持">
-            <MenuItem><a href="https://developer.qiniu.com/">开发文档</a></MenuItem>
-            <MenuItem><a href="https://support.qiniu.com">技术支持</a></MenuItem>
-            <MenuItem><a href="https://segmentfault.com/qiniu?ref=portal.qiniu.com">问答社区</a></MenuItem>
-            <MenuItem><a href="https://support.qiniu.com/tickets">工单系统</a></MenuItem>
-            <MenuItem><a href="https://status.qiniu.com">服务健康状态</a></MenuItem>
+
+          <SubMenu title="服务支持">
+            <MenuItem><Link href="https://support.qiniu.com/tickets/new">工单系统</Link></MenuItem>
+            <MenuItem><Link href="https://developer.qiniu.com">文档中心</Link></MenuItem>
+            <MenuItem><Link href="/user-agreement">用户协议</Link></MenuItem>
+            <MenuItem><Link href="/sla-kodo">产品 SLA</Link></MenuItem>
+            <MenuItem><Link href="https://status.qiniu.com">服务状态</Link></MenuItem>
           </SubMenu>
+
           <SubMenu title="开发者">
-            <MenuItem><a href="https://developer.qiniu.com">开发者中心</a></MenuItem>
-            <MenuItem><a href="https://blog.qiniu.com/archives/category/5">技术博客</a></MenuItem>
-            <MenuItem><a href="https://www.ecug.org/">ECUG 技术大会</a></MenuItem>
-            <MenuItem><Link href="/cooperations">工具/插件/SDK 合作</Link></MenuItem>
+            <MenuItem><Link href="/activity">开发者活动</Link></MenuItem>
+            <MenuItem><Link href="https://developer.qiniu.com/sdk#official-tool">开发者工具</Link></MenuItem>
           </SubMenu>
+
+          <SubMenu title="合作伙伴">
+            <MenuItem><Link href={`${urlMap[Product.OpenAPI]}/partner`}>{nameMap[Product.OpenAPI]}</Link></MenuItem>
+            <MenuItem><Link href="/cps">CPS 返现</Link></MenuItem>
+            <MenuItem><Link href="/partner">代理合作伙伴</Link></MenuItem>
+            <MenuItem><Link href="/cooperations">工具插件 SDK 合作</Link></MenuItem>
+          </SubMenu>
+
           <SubMenu title="关于我们">
-            <MenuItem><a href="https://campus.qiniu.com">校园招聘</a></MenuItem>
-            <MenuItem><a href="https://career.qiniu.com/social">社会招聘</a></MenuItem>
             <MenuItem><Link href="/company">公司介绍</Link></MenuItem>
+            <MenuItem><Link href="https://jobs.qiniu.com">社会招聘</Link></MenuItem>
+            <MenuItem><Link href="https://campus.qiniu.com">校园招聘</Link></MenuItem>
             <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
             <MenuItem><Link href="https://blog.qiniu.com/archives/category/1">最新动态</Link></MenuItem>
           </SubMenu>

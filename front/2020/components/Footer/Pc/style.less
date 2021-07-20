@@ -13,7 +13,6 @@
   border-bottom: 1px solid #2f3d53;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   padding-bottom: 10px;
 
   .linkGroup {
@@ -29,8 +28,23 @@
       font-size: 13px;
     }
   }
+  // 设计要求每个间距是固定值
+  .linkGroup:nth-child(2){
+    margin-left: 140px;
+  }
+  .linkGroup:nth-child(3){
+    margin-left: 88px;
+  }
+  .linkGroup:nth-child(4){
+    margin-left: 150px;
+  }
+  .linkGroup:nth-child(5){
+    margin-left: 150px;
+  }
+  .linkGroup:nth-child(6){
+    margin-left: 138px;
+  }
 }
-
 .contact {
   height: 140px;
   border-bottom: 1px solid #2f3d53;
