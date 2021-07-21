@@ -1,21 +1,27 @@
 @import '~utils/less/index.less';
 
-.cardWrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 220px;
-  padding: 0 20px;
-  border: unset;
-  box-shadow: unset;
-  text-align: center;
-
-  .mobile({
-    margin: 0;
-    padding: 20px;
-    height: auto;
-  });
+.section {
+  .row {
+    flex-direction: row;
+  
+    .cardWrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 220px;
+      padding: 0 20px;
+      border: unset;
+      box-shadow: unset;
+      text-align: center;
+    
+      .mobile({
+        margin: 0;
+        padding: 20px;
+        height: auto;
+      });
+    }
+  }
 }
 
 .cardIcon {
@@ -44,8 +50,4 @@
     margin-top: 12px;
     font-size: 14px;
   });
-}
-
-.row {
-  flex-direction: row;
 }

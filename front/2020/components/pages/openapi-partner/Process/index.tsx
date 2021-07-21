@@ -50,7 +50,7 @@ export default function Process() {
     }
   }, [currentUrl, userInfo])
   return (
-    <Section name="process" title="如何加入我们">
+    <Section name="process" title="如何加入我们" className={style.section}>
       <AccessProcess>
         {
           steps.map((step, index) => (
@@ -60,7 +60,7 @@ export default function Process() {
           ))
         }
       </AccessProcess>
-      <Card className={style.wrapper}>
+      <Card className={style.card}>
         <img src={partner} className={style.img} />
         <div className={style.content}>
           <p className={style.title}>成为合作伙伴</p>

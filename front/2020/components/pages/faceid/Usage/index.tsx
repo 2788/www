@@ -71,7 +71,7 @@ export default function FaceIdUsage() {
   )
 
   return (
-    <Section name="usage" title="使用流程" header="产品使用流程">
+    <Section name="usage" title="使用流程" header="产品使用流程" className={style.section}>
       {radiosView}
       {processIdAuthView}
       {processFaceCompareView}

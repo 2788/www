@@ -14,19 +14,20 @@ import style from './style.less'
 
 type CardProps = {
   icon: ReactNode
-  title: string
+  title: ReactNode
+  mobileTitle?: ReactNode
 }
 
 const benefits: CardProps[] = [
   { icon: <Icon1 />, title: '在云市场售卖产品' },
   { icon: <Icon2 />, title: '七牛云销售支持' },
   { icon: <Icon3 />, title: '可参与市场营销活动' },
-  { icon: <Icon4 />, title: '有机会参与七牛云线下活动' }
+  { icon: <Icon4 />, title: <>有机会参与<br />七牛云线下活动</>, mobileTitle: '有机会参与七牛云线下活动' }
 ]
 
 export default function Benefit() {
   return (
-    <Section title="您将享受以下权益" name="benefit">
+    <Section title="您将享受以下权益" name="benefit" className={style.section}>
       {
         useMobile() ? <ForMobile data={benefits} /> : <ForPc data={benefits} />
       }
@@ -36,7 +37,7 @@ export default function Benefit() {
 
 function ForPc({ data }: { data: CardProps[] }) {
   return (
-    <Row>
+    <Row className={style.row}>
       {
         data.map((item, index) => (
           <Card className={style.cardWrapper} key={index}>
@@ -59,7 +60,7 @@ function ForMobile({ data }: { data: CardProps[] }) {
               group.map((item, i) => (
                 <Card className={style.cardWrapper} key={i}>
                   <div className={style.cardIcon}>{item.icon}</div>
-                  <div className={style.cardTitle}>{item.title}</div>
+                  <div className={style.cardTitle}>{item.mobileTitle || item.title}</div>
                 </Card>
               ))
             }
