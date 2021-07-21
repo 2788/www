@@ -14,6 +14,13 @@ function MenuItem({ children }: PropsWithChildren<{}>) {
 }
 
 export default function FooterForMobile() {
+  const productItems = [
+    Product.Kodo, Product.Cdn, Product.Pili, Product.DoraAudio, Product.Censor, Product.Qvm, Product.Express
+  ] as const
+  const productItemsView = productItems.map(product => (
+    <MenuItem key={product}><Link href={urlMap[product]}>{nameMap[product]}</Link></MenuItem>
+  ))
+
   return (
     <div className={style.footer}>
       <div className={style.nav}>
@@ -27,13 +34,7 @@ export default function FooterForMobile() {
           </SubMenu>
 
           <SubMenu title="热门产品">
-            <MenuItem><Link href={urlMap[Product.Kodo]}>{nameMap[Product.Kodo]}</Link></MenuItem>
-            <MenuItem><Link href={urlMap[Product.Cdn]}>{nameMap[Product.Cdn]}</Link></MenuItem>
-            <MenuItem><Link href={urlMap[Product.Pili]}>{nameMap[Product.Pili]}</Link></MenuItem>
-            <MenuItem><Link href={`${urlMap[Product.Dora]}#functions`}>{nameMap[Product.DoraAudio]}</Link></MenuItem>
-            <MenuItem><Link href={urlMap[Product.Censor]}>{nameMap[Product.Censor]}</Link></MenuItem>
-            <MenuItem><Link href={urlMap[Product.Qvm]}>{nameMap[Product.Qvm]}</Link></MenuItem>
-            <MenuItem><Link href={urlMap[Product.Express]}>{nameMap[Product.Express]}</Link></MenuItem>
+            {productItemsView}
           </SubMenu>
 
           <SubMenu title="服务支持">

@@ -48,6 +48,13 @@ function LinkGroup({ title, children }: PropsWithChildren<ILinkGroupProps>) {
 }
 
 function LinkGroups() {
+  const productItems = [
+    Product.Kodo, Product.Cdn, Product.Pili, Product.DoraAudio, Product.Censor, Product.Qvm, Product.Express
+  ] as const
+  const productItemsView = productItems.map(product => (
+    <LinkItem key={product} url={urlMap[product]}>{nameMap[product]}</LinkItem>
+  ))
+
   return (
     <section className={style.linkGroups}>
       <LinkGroup title="快速入口">
@@ -59,13 +66,7 @@ function LinkGroups() {
       </LinkGroup>
 
       <LinkGroup title="热门产品">
-        <LinkItem url={urlMap[Product.Kodo]}>{nameMap[Product.Kodo]}</LinkItem>
-        <LinkItem url={urlMap[Product.Cdn]}>{nameMap[Product.Cdn]}</LinkItem>
-        <LinkItem url={urlMap[Product.Pili]}>{nameMap[Product.Pili]}</LinkItem>
-        <LinkItem url={`${urlMap[Product.Dora]}#functions`}>{nameMap[Product.DoraAudio]}</LinkItem>
-        <LinkItem url={urlMap[Product.Censor]}>{nameMap[Product.Censor]}</LinkItem>
-        <LinkItem url={urlMap[Product.Qvm]}>{nameMap[Product.Qvm]}</LinkItem>
-        <LinkItem url={urlMap[Product.Express]}>{nameMap[Product.Express]}</LinkItem>
+        {productItemsView}
       </LinkGroup>
 
       <LinkGroup title="服务支持">
