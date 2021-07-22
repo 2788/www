@@ -54,7 +54,7 @@ function SceneCard({ title, content, linkText, link }: SceneCardProps) {
 
 export default function DoraFuctions() {
   return (
-    <Scene name="functions" title="产品功能" className={styles.wrapper} grey>
+    <Scene name="functions" title="产品功能" className={styles.wrapper}>
       <ScenePanel name="image" title="图片处理" verticalCenter>
         <SceneBlock className={styles.sceneContainer}>
           <SceneCard

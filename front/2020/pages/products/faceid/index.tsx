@@ -79,6 +79,8 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         </feature.Group>
       </Feature>
 
+      <Usage />
+
       <Feature name="advantages" title="产品优势">
         <feature.Group>
           <feature.Item pos="left-right" title="算法领先" icon={<IconAdvan1 />}>
@@ -98,7 +100,6 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         </feature.Group>
       </Feature>
 
-      <Usage />
       <Scenes />
 
       <ProductNews newsRes={newsRes} />

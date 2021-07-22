@@ -51,11 +51,11 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
-      <Advantage />
-
       <OcrProduct />
 
       {funcContent}
+
+      <Advantage />
 
       <Scene />
 

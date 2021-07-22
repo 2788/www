@@ -60,13 +60,13 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         {btns.nav}
       </Navigator>
 
-      <DoraCore />
-
       <DoraFunctions />
+
+      <DoraCore />
 
       <DoraScene />
 
-      <CustomerCaseGroup grey>
+      <CustomerCaseGroup>
         <CustomerCase pic={Customer1Icon} />
         <CustomerCase pic={Customer2Icon} />
         <CustomerCase pic={Customer3Icon} />
@@ -79,7 +79,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
 
       <ProductNews newsRes={newsRes} />
 
-      <LinkGroups grey>
+      <LinkGroups>
         <LinkGroup title="用户指南">
           <LinkItem href="https://developer.qiniu.com/dora?source_page=dora&ref=www.qiniu.com">如何使用智能多媒体服务</LinkItem>
         </LinkGroup>

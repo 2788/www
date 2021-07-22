@@ -47,8 +47,8 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
       />
       <ProductNotice notices={notices} />
       <Navigator>{bannerBtns.nav}</Navigator>
-      <Advantage />
       <Features />
+      <Advantage />
       <Scenes />
       <ProductNews newsRes={newsRes} />
       <RelatedProducts />

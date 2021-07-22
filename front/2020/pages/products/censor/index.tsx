@@ -69,23 +69,6 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
-      <Feature name="advantages" title="核心优势">
-        <feature.Group>
-          <feature.Item align="left" title="准确率高" icon={<IconCoreAdvantage1 />}>
-            <feature.Desc>深度多种融合，实时监测舆情趋势，识别精准高效。</feature.Desc>
-          </feature.Item>
-          <feature.Item align="left" title="节约成本" icon={<IconCoreAdvantage2 />}>
-            <feature.Desc>帮助您节约 80% 以上的人工审核成本。</feature.Desc>
-          </feature.Item>
-          <feature.Item align="left" title="接入方便" icon={<IconCoreAdvantage3 />}>
-            <feature.Desc>服务使用简单快捷，兼容性强，并提供全流程技术支持。</feature.Desc>
-          </feature.Item>
-          <feature.Item align="left" title="贴合场景" icon={<IconCoreAdvantage4 />}>
-            <feature.Desc>支持业务场景维度的配置，全方位识别各类违规内容，极大降低平台监管风险。</feature.Desc>
-          </feature.Item>
-        </feature.Group>
-      </Feature>
-
       <Feature name="specs" title="产品规格">
         <feature.Group>
           <feature.Item pos="left-right" title="图片审核" icon={<IconImgAudit />}>
@@ -146,6 +129,23 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
           <Playground />
         </Section>
       )}
+
+      <Feature name="advantages" title="核心优势">
+        <feature.Group>
+          <feature.Item align="left" title="准确率高" icon={<IconCoreAdvantage1 />}>
+            <feature.Desc>深度多种融合，实时监测舆情趋势，识别精准高效。</feature.Desc>
+          </feature.Item>
+          <feature.Item align="left" title="节约成本" icon={<IconCoreAdvantage2 />}>
+            <feature.Desc>帮助您节约 80% 以上的人工审核成本。</feature.Desc>
+          </feature.Item>
+          <feature.Item align="left" title="接入方便" icon={<IconCoreAdvantage3 />}>
+            <feature.Desc>服务使用简单快捷，兼容性强，并提供全流程技术支持。</feature.Desc>
+          </feature.Item>
+          <feature.Item align="left" title="贴合场景" icon={<IconCoreAdvantage4 />}>
+            <feature.Desc>支持业务场景维度的配置，全方位识别各类违规内容，极大降低平台监管风险。</feature.Desc>
+          </feature.Item>
+        </feature.Group>
+      </Feature>
 
       <CustomerCaseGroup>
         <CustomerCase pic={LogoHujiang} />
