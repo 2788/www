@@ -13,7 +13,7 @@ import style from './style.less'
 
 export default function Scenes() {
   return (
-    <Scene name="scenes" title="使用场景">
+    <Scene name="scenes" title="应用场景">
       <Panel name="1" title="金融">
         <Block className={style.imgBlock}><Img1 /></Block>
         <Block className={style.detailBlock} shadow>

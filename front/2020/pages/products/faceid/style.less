@@ -4,15 +4,27 @@
   font-size: 16px;
   line-height: 22px;
   margin-top: 12px;
-
   .mobile({
     font-size: 14px;
   });
 }
 
+.title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .featureItemDesc {
   text-align: left;
-  .notMobile({
-    width: 288px;
+}
+
+.link {
+  position: absolute;
+  right: 0;
+  font-size: 14px;
+  .mobile({
+    right: 12px;
   });
 }
