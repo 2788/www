@@ -147,7 +147,7 @@
         <tspan x="21" y="13">内容下发</tspan>
       </text>
       <text fill="#28B8BB" font-family="PingFangSC-Regular, PingFang SC" font-size="12">
-        <tspan x="3" y="75">SDK 或 Cname</tspan> <tspan x="3" y="92">接入</tspan>
+        <tspan x="3" y="75">SDK 或 CNAME</tspan> <tspan x="3" y="92">接入</tspan>
       </text>
     </g>
     <g transform="translate(835)">

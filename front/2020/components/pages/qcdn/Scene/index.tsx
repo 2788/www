@@ -29,7 +29,7 @@ export default function CdnScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer} shadow>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>网页静态资源优化加速分发，例如：HTML、CSS、JS、img、短视频等。</p>
+          <p className={styles.sceneContent}>网页静态资源优化加速分发，例如：HTML、CSS、JS、IMG、短视频等。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
             <li className={styles.item}>全站 HTTPS 保证网站访问安全；TCP 压缩优化使网页大图、样式等完成秒级加载，缩短网页响应时间，提高用户体验。</li>
@@ -44,7 +44,7 @@ export default function CdnScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer} shadow>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>大文件下载优化加速分发，例如：apk、mp3、exe、zip 等。</p>
+          <p className={styles.sceneContent}>大文件下载优化加速分发，例如：APK、MP3、EXE、ZIP 等。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
             <li className={styles.item}>七牛 CDN 在全球数千个节点，让用户在下载过程中获得更快的下载速度。</li>
@@ -60,7 +60,7 @@ export default function CdnScene() {
         </SceneBlock>
         <SceneBlock className={styles.sceneContainer} shadow>
           <p className={styles.sceneTitle}>场景描述</p>
-          <p className={styles.sceneContent}>音视频点播优化加速服务，例如：mp4、flv、rmvb、wmv、HLS 等。</p>
+          <p className={styles.sceneContent}>音视频点播优化加速服务，例如：MP4、FLV、RMVB、WMV、HLS 等。</p>
           <p className={classnames(styles.sceneTitle, styles.client)}>业务价值</p>
           <ul className={styles.sceneList}>
             <li className={styles.item}>七牛 CDN 利用 BGP 网络中间源技术降低回源带宽压力节省了用户回源成本。</li>
