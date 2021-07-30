@@ -83,7 +83,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
             icon={<PackageLossIcon />}
             title="弱网抗丢包"
           >
-            <FeatureDesc>路由传输动态选择，支持 QUIC 等推流协议，优化弱网环境推流服务品质</FeatureDesc>
+            <FeatureDesc>路由传输动态选择，支持 SRT、QUIC 等推流协议，优化弱网环境推流服务品质</FeatureDesc>
           </FeatureItem>
           <FeatureItem
             pos="top-down"

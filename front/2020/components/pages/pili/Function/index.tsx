@@ -14,7 +14,7 @@ import Icon6 from './images/icon6.svg'
 
 const funcs = [
   [
-    { icon: <Icon1 />, title: '直播推流 SDK', desc: '提供音视频采集、处理、编码及推流能力，支持多种终端和各类客户场景' },
+    { icon: <Icon1 />, title: '直播推流 SDK', desc: '提供音视频采集、处理、编码及推流能力，支持 RTMP、SRT、QUIC 等推流协议，支持多种终端和各类客户场景' },
     { icon: <Icon2 />, title: '直播转码', desc: '基于推流内容，指定码率和分辨率进行多路输出，满足各类播放需求' }
   ],
   [
