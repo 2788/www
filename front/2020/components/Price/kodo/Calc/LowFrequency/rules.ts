@@ -101,7 +101,7 @@ const south: CalcRule = {
     },
     {
       name: '数据取回',
-      price: 0.06,
+      price: 0.03,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -231,7 +231,7 @@ const east: CalcRule = {
     },
     {
       name: '数据取回',
-      price: 0.06,
+      price: 0.03,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }
@@ -361,7 +361,7 @@ const eastZheJiang2: CalcRule = {
     },
     {
       name: '数据取回',
-      price: 0.06,
+      price: 0.03,
       min: 0,
       max: Number.POSITIVE_INFINITY
     }

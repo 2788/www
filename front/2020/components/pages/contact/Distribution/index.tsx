@@ -31,7 +31,7 @@ export default function Distribution() {
         <LayoutCard>
           <Img className={style.image} src={hangzhou} />
           <Title className={style.title}>杭州分部</Title>
-          <Desc className={style.desc}>浙江省杭州市下城区上塘路 15 号武林时代商务中心 21 楼</Desc>
+          <Desc className={style.desc}>浙江省杭州市拱墅区上塘路 15 号武林时代商务中心 21 楼</Desc>
         </LayoutCard>
       </Row>
       <Row>

@@ -296,7 +296,7 @@ const data = [
     detail: '数据取回',
     measure: '',
     standard: '免费',
-    low: '0.06 元/GB',
+    low: '0.03 元/GB',
     archive: '0.06 元/GB'
   },
   {
