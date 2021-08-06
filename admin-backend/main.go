@@ -36,7 +36,9 @@ func main() {
 
 	// 定时发送短信通知
 	cronJobService := service.NewCronJobService(conf)
+	// todo: 处理完历史数据后去掉 Run
 	go cronJobService.Run()
+	go cronJobService.RunActivityReminder()
 
 	app.RunHTTPServer(conf.Port, conf.WriteTimeout, r)
 }

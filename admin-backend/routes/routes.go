@@ -17,6 +17,7 @@ func InitCustomRoutes(r *gin.Engine, conf *config.Config) error {
 	g := r.Group("/api/www")
 	{
 		g.POST("/activity-registration", activCtl.ActivityRegistration)
+		g.POST("/activity-checkin", activCtl.CheckIn)
 		g.POST("/consult/text-process", consultCtl.TextProcess)
 	}
 

@@ -16,37 +16,74 @@ import (
 	"qiniu.com/www/admin-backend/codes"
 	"qiniu.com/www/admin-backend/config"
 	"qiniu.com/www/admin-backend/models"
+	"qiniu.com/www/admin-backend/service/lilliput"
+	"qiniu.com/www/admin-backend/service/morse"
 )
 
-const SameUidLimitNum = 100
+const sameUidLimitNum = 100
 
 var (
-	EmailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
-	MobilePhonePattern = regexp.MustCompile(`^(13[0-9]|14[579]|15[012356789]|166|17[235678]|18[0-9]|19[01589])[0-9]{8}$`)
+	emailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
+	mobilePhonePattern = regexp.MustCompile(`^(13[0-9]|14[579]|15[012356789]|166|17[235678]|18[0-9]|19[01589])[0-9]{8}$`)
 )
 
 type Activity struct {
-	conf *config.Config
+	conf            *config.Config
+	mongoService    *mongoClient.MongoApiServiceWithAuth
+	lilliputService *lilliput.LilliputService
+	morseService    *morse.MorseService
 }
 
 func NewActivity(config *config.Config) *Activity {
-	return &Activity{conf: config}
+	transport := auth.NewQiniuAuthTransport(config.Admin.AccessKey, config.Admin.SecretKey, http.DefaultTransport)
+	host := []string{fmt.Sprintf("http://127.0.0.1:%d", config.Port)}
+	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, config.MongoApiPrefix, transport)
+	lilliputService := lilliput.NewLilliputService(config.LilliputHost, http.DefaultTransport)
+	morseService := morse.NewMorseService(config.MorseHost, config.MorseClientId)
+	return &Activity{
+		conf:            config,
+		mongoService:    mongoService,
+		lilliputService: lilliputService,
+		morseService:    morseService,
+	}
 }
 
-type activRegInput struct {
+type activityRegInput struct {
 	Uid              uint32 `json:"uid"`
 	UserName         string `json:"userName"`
 	PhoneNumber      string `json:"phoneNumber"`
 	Email            string `json:"email"`
 	Company          string `json:"company"`
 	MarketActivityId string `json:"marketActivityId"`
+	LinkPrefix       string `json:"linkPrefix"`
+}
+
+func (i *activityRegInput) valid() (code codes.Code, valid bool) {
+	code = codes.OK
+	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.LinkPrefix == "" {
+		code = codes.ArgsEmpty
+		return
+	}
+	if !emailPattern.MatchString(i.Email) {
+		code = codes.EmailInvalid
+		return
+	}
+	if !mobilePhonePattern.MatchString(i.PhoneNumber) {
+		code = codes.PhoneNumInvalid
+		return
+	}
+	if !bson.IsObjectIdHex(i.MarketActivityId) {
+		code = codes.MarketActivityIdInvalid
+		return
+	}
+	valid = true
+	return
 }
 
 func (m *Activity) ActivityRegistration(c *gin.Context) {
 	logger := xlog.NewWithReq(c.Request)
 
-	var res interface{}
-	var params activRegInput
+	var params activityRegInput
 	err := c.BindJSON(&params)
 	if err != nil {
 		logger.Errorf("BindJSON error: %v", err)
@@ -54,35 +91,15 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
-	if params.UserName == "" || params.Email == "" || params.PhoneNumber == "" {
-		logger.Errorf("name(%s) or email(%s) or phone_number(%s) is empty", params.UserName, params.Email, params.PhoneNumber)
-		m.Send(c, codes.ArgsEmpty, "name or email or phone_number is empty")
+	if code, valid := params.valid(); !valid {
+		logger.Error("params is invalid")
+		m.Send(c, code, nil)
 		return
 	}
-	if !EmailPattern.MatchString(params.Email) {
-		logger.Errorf("email(%s) is invalid", params.Email)
-		m.Send(c, codes.EmailInvalid, nil)
-		return
-	}
-	if !MobilePhonePattern.MatchString(params.PhoneNumber) {
-		logger.Errorf("phone(%s) is invalid", params.PhoneNumber)
-		m.Send(c, codes.PhoneNumInvalid, nil)
-		return
-	}
-
-	if !bson.IsObjectIdHex(params.MarketActivityId) {
-		logger.Errorf("market_activity_id(%s) is invalid", params.MarketActivityId)
-		m.Send(c, codes.MarketActivityIdInvalid, nil)
-		return
-	}
-
-	transport := auth.NewQiniuAuthTransport(m.conf.Admin.AccessKey, m.conf.Admin.SecretKey, http.DefaultTransport)
-	host := []string{fmt.Sprintf("http://127.0.0.1:%d", m.conf.Port)}
-	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, m.conf.MongoApiPrefix, transport)
 
 	var getRes models.PartOfMarketActivity
 	// 查看当前活动是否存在
-	err = mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, &getRes)
+	err = m.mongoService.Get(logger, m.conf.MarketActivityResourceName, params.MarketActivityId, &getRes)
 	if err != nil {
 		if errInfo, ok := err.(*rpc.ErrorInfo); ok && errInfo.Code == 404 {
 			logger.Errorf("market_activity_id(%s) not found", params.MarketActivityId)
@@ -91,6 +108,14 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		}
 		logger.Errorf("%s get market_activity_id error: %v", m.conf.MarketActivityResourceName, err)
 		m.Send(c, codes.ResultError, nil)
+		return
+	}
+
+	// 活动如果需要登录才能报名，检查 uid 是否不为 0
+	if !getRes.NoLoginRequired && params.Uid == 0 {
+		logger.Errorf("login is required to register for market activity (id: %s, title: %s)",
+			params.MarketActivityId, getRes.Title)
+		m.Send(c, codes.UidRequired, nil)
 		return
 	}
 
@@ -114,16 +139,16 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		Limit: "1",
 		Query: phoneQuery,
 	}
-	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, listQuery, &listRes)
-	if err == nil {
-		if listRes.Count > 0 {
-			logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
-			m.Send(c, codes.DuplicatePhoneNum, "phone number already exists")
-			return
-		}
-	} else {
-		logger.Errorf("%s find phone_number(%s) error :%v", m.conf.ActivityRegistrationResourceName, params.PhoneNumber, err)
+	err = m.mongoService.List(logger, m.conf.ActivityRegistrationResourceName, listQuery, &listRes)
+	if err != nil {
+		logger.Errorf("%s find phone_number(%s) error :%v",
+			m.conf.ActivityRegistrationResourceName, params.PhoneNumber, err)
 		m.Send(c, codes.ResultError, nil)
+		return
+	}
+	if listRes.Count > 0 {
+		logger.Errorf("phone number(%s) already exists", params.PhoneNumber)
+		m.Send(c, codes.DuplicatePhoneNum, "phone number already exists")
 		return
 	}
 
@@ -136,38 +161,130 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		Limit: "1",
 		Query: uidQuery,
 	}
-	err = mongoService.List(logger, m.conf.ActivityRegistrationResourceName, listQuery, &listRes)
-	if err == nil {
-		if listRes.Count >= SameUidLimitNum {
-			logger.Errorf("uid(%d) reach the limit number", params.Uid)
-			m.Send(c, codes.SameUidRegistrationNumLimit, nil)
-			return
-		}
-	} else {
-		logger.Errorf("%s find same uid(%d) num error :%v", m.conf.ActivityRegistrationResourceName, params.Uid, err)
+	err = m.mongoService.List(logger, m.conf.ActivityRegistrationResourceName, listQuery, &listRes)
+	if err != nil {
+		logger.Errorf("%s find same uid(%d) num error :%v", m.conf.ActivityRegistrationResourceName,
+			params.Uid, err)
+		m.Send(c, codes.ResultError, nil)
+		return
+	}
+	if listRes.Count >= sameUidLimitNum {
+		logger.Errorf("uid(%d) reach the limit number", params.Uid)
+		m.Send(c, codes.SameUidRegistrationNumLimit, nil)
+		return
+	}
+
+	var res models.ActivityRegistration
+	// 提交用户活动报名请求
+	activityRegParams := &models.ActivityRegistration{
+		Uid:                 params.Uid,
+		UserName:            params.UserName,
+		PhoneNumber:         params.PhoneNumber,
+		Email:               params.Email,
+		Company:             params.Company,
+		MarketActivityId:    params.MarketActivityId,
+		ReceivedReminderIds: []string{},
+		SMSJobIds:           make(map[string]string),
+		CreatedAt:           time.Now().Unix(),
+		UpdatedAt:           time.Now().Unix(),
+	}
+	err = m.mongoService.Create(logger, m.conf.ActivityRegistrationResourceName, activityRegParams, &res)
+	if err != nil {
+		logger.Errorf("%s body(%v) error: %v", m.conf.ActivityRegistrationResourceName, activityRegParams, err)
 		m.Send(c, codes.ResultError, nil)
 		return
 	}
 
-	// 提交用户活动报名请求
-	activRegisParams := &models.ActivityRegistration{
-		Uid:              params.Uid,
-		UserName:         params.UserName,
-		PhoneNumber:      params.PhoneNumber,
-		Email:            params.Email,
-		Company:          params.Company,
-		MarketActivityId: params.MarketActivityId,
-		CreatedAt:        time.Now().Unix(),
-		UpdatedAt:        time.Now().Unix(),
-	}
-	err = mongoService.Create(logger, m.conf.ActivityRegistrationResourceName, activRegisParams, &res)
-	if err != nil {
-		logger.Errorf("%s body(%v) error: %v", m.conf.ActivityRegistrationResourceName, activRegisParams, err)
-		m.Send(c, codes.ResultError, nil)
-		return
-	}
+	// 发送活动报名成功短信
+	m.sendActivityRegSucceedSMS(logger, res.Id.Hex(), getRes.Title, params.LinkPrefix, params.PhoneNumber)
 
 	m.Send(c, codes.OK, res)
+}
+
+// sendActivityRegSucceedSMS 发送报名成功短信通知
+func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activityRegId, activityTitle,
+	linkPrefix, phoneNumber string) {
+
+	url := fmt.Sprintf("%s%s", linkPrefix, activityRegId)
+	// 获取短链
+	var shortUrl string
+	shortUrl, err := m.lilliputService.GetShortUrl(logger, url)
+	if err != nil {
+		logger.Errorf("lilliputService.GetShortUrl %s error: %v", url, err)
+	}
+	if shortUrl != "" {
+		url = shortUrl
+	}
+	// 发送短信
+	data := map[string]interface{}{
+		"Title": activityTitle,
+		"Link":  url,
+	}
+	_, err = m.morseService.SendSms(logger, phoneNumber, data, m.conf.SMSTemplates.ActivityRegSucceed)
+	if err != nil {
+		logger.Errorf("SendSms error: %v", err)
+	}
+	return
+}
+
+type checkInInput struct {
+	Id string `json:"id"`
+}
+
+func (p *checkInInput) valid() bool {
+	return p.Id != ""
+}
+
+// CheckIn 用于报名用户签到
+func (m *Activity) CheckIn(c *gin.Context) {
+	logger := xlog.NewWithReq(c.Request)
+
+	var param checkInInput
+	err := c.BindJSON(&param)
+	if err != nil {
+		logger.Errorf("BindJSON error: %v", err)
+		m.Send(c, codes.InvalidArgs, "bind json error")
+		return
+	}
+	if !param.valid() {
+		logger.Error("id is empty")
+		m.Send(c, codes.InvalidArgs, "id is empty")
+		return
+	}
+
+	// 查看报名信息是否存在若存在则查看对应报名信息是否已签到
+	var res models.ActivityRegistration
+	err = m.mongoService.Get(logger, m.conf.ActivityRegistrationResourceName, param.Id, &res)
+	if err != nil {
+		// 报名信息不存在
+		if errInfo, ok := err.(*rpc.ErrorInfo); ok && errInfo.Code == 404 {
+			logger.Errorf("activity_registration_id(%s) not found", param.Id)
+			m.Send(c, codes.InvalidActivityRegistrationId, "activity_registration_id not found")
+			return
+		}
+		logger.Errorf("%s get activity_registration_id error: %v", m.conf.ActivityRegistrationResourceName, err)
+		m.Send(c, codes.ResultError, nil)
+		return
+	}
+	if res.CheckedIn {
+		logger.Errorf("activity_registration_id(%s) has already checked in", param.Id)
+		m.Send(c, codes.ActivityRegistrationIdCheckedIn, nil)
+		return
+	}
+
+	// 设置报名签到
+	update := map[string]interface{}{
+		"checkedIn": true,
+		"updatedAt": time.Now().Unix(),
+	}
+	err = m.mongoService.Update(logger, m.conf.ActivityRegistrationResourceName, param.Id, update, nil)
+	if err != nil {
+		logger.Errorf("update activity_registration_id(%s) error: %v", param.Id, err)
+		m.Send(c, codes.ResultError, nil)
+		return
+	}
+
+	m.Send(c, codes.OK, nil)
 }
 
 func (m *Activity) Send(c *gin.Context, code codes.Code, data interface{}) {
