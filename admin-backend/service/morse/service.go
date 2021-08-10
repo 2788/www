@@ -2,8 +2,8 @@ package morse
 
 import (
 	"bytes"
-	"html/template"
 	"net/http"
+	textTemplate "text/template"
 	"time"
 
 	"github.com/qiniu/rpc.v1"
@@ -34,16 +34,20 @@ func NewMorseService(host, clientId string) *MorseService {
 	return &MorseService{morseService}
 }
 
-func (m *MorseService) SendSms(logger *xlog.Logger, phoneNumber string, tmplData interface{},
-	tmpl string) (id string, err error) {
+type SendSmsIn struct {
+	TmplData    interface{}
+	PhoneNumber string
+}
 
-	content, err := Render(tmplData, tmpl)
+func (m *MorseService) SendSms(logger *xlog.Logger, in SendSmsIn, tmpl string) (id string, err error) {
+
+	content, err := txtRender(in.TmplData, tmpl)
 	if err != nil {
-		logger.Errorf("render data(%v) error: %v", tmplData, err)
+		logger.Errorf("txtRender data(%v) error: %v", in.TmplData, err)
 		return
 	}
 	sendIn := message.SendSmsIn{
-		PhoneNumber: phoneNumber,
+		PhoneNumber: in.PhoneNumber,
 		Message:     content,
 	}
 	resp, err := m.HandleNotification.SendSms(logger, sendIn)
@@ -53,6 +57,31 @@ func (m *MorseService) SendSms(logger *xlog.Logger, phoneNumber string, tmplData
 		return
 	}
 	id = resp.Oid
+	return
+}
+
+func (m *MorseService) BatchSendSms(logger *xlog.Logger, input []SendSmsIn,
+	tmpl string) (jobId string, err error) {
+
+	in := make([]message.SendSmsIn, 0)
+	for _, item := range input {
+		content, err := txtRender(item.TmplData, tmpl)
+		if err != nil {
+			logger.Errorf("txtRender data(%v) error: %v", item.TmplData, err)
+			return jobId, err
+		}
+		in = append(in, message.SendSmsIn{
+			PhoneNumber: item.PhoneNumber,
+			Message:     content,
+		})
+	}
+	resp, err := m.HandleNotification.BatchSendSms(logger, in)
+	if err != nil {
+		logger.Errorf("HandleNotification.BatchSendSms in(%+v) error: %v",
+			in, err)
+		return
+	}
+	jobId = resp.JobID
 	return
 }
 
@@ -71,8 +100,8 @@ func (tr *morseTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	return tr.transport.RoundTrip(req)
 }
 
-func Render(data interface{}, tmpl string) (content string, err error) {
-	t, err := template.New("default").Delims("[[", "]]").Parse(tmpl)
+func txtRender(data interface{}, tmpl string) (content string, err error) {
+	t, err := textTemplate.New("default").Delims("[[", "]]").Parse(tmpl)
 	if err != nil {
 		return
 	}

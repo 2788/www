@@ -13,27 +13,40 @@ const (
 	Succeeded                        // 提醒完成
 )
 
-type ActivityRegistration struct {
-	Id                  bson.ObjectId     `json:"_id,omitempty"`
-	Uid                 uint32            `json:"uid,omitempty"`
-	CheckedIn           bool              `json:"checkedIn"` // 是否签到
-	UserName            string            `json:"userName"`
-	PhoneNumber         string            `json:"phoneNumber"`
-	Email               string            `json:"email"`
-	Company             string            `json:"company"`
-	MarketActivityId    string            `json:"marketActivityId"`
-	HasBeenSent         bool              `json:"hasBeenSent"`         // deprecated TODO: 删除
-	SMSJobId            string            `json:"smsJobId"`            // deprecated TODO: 删除
-	ReceivedReminderIds []string          `json:"receivedReminderIds"` // 标记接收到的 `reminderId` 列表
-	SMSJobIds           map[string]string `json:"smsJobIds"`           // 记录每个 `reminder` 发送时对应的 `smsJobId`
-	CreatedAt           int64             `json:"createdAt"`
-	UpdatedAt           int64             `json:"updatedAt"`
+type ActivityState int
+
+const (
+	Draft   ActivityState = iota // 草稿
+	Release                      //发布
+)
+
+// ActivityRegistrationReminder 标记接收到的活动通知的 reminder 信息
+type ActivityRegistrationReminder struct {
+	Id       int64  `json:"id"`       // 标记接收到的 `reminderId`
+	SMSJobId string `json:"smsJobId"` // 记录每个 `reminder` 发送时对应的 `smsJobId`
 }
 
+type ActivityRegistration struct {
+	Id               bson.ObjectId                  `json:"_id,omitempty"`
+	Uid              uint32                         `json:"uid,omitempty"`
+	CheckedIn        bool                           `json:"checkedIn"` // 是否签到
+	UserName         string                         `json:"userName"`
+	PhoneNumber      string                         `json:"phoneNumber"`
+	Email            string                         `json:"email"`
+	Company          string                         `json:"company"`
+	MarketActivityId string                         `json:"marketActivityId"`
+	HasBeenSent      bool                           `json:"hasBeenSent"` // deprecated TODO: 删除
+	SMSJobId         string                         `json:"smsJobId"`    // deprecated TODO: 删除
+	Reminders        []ActivityRegistrationReminder `json:"reminders"`
+	CreatedAt        int64                          `json:"createdAt"`
+	UpdatedAt        int64                          `json:"updatedAt"`
+}
+
+// PartOfMarketActivity 为 `admin-backend` 中需要使用到的部分活动字段
 type PartOfMarketActivity struct {
 	Id              bson.ObjectId `json:"_id"`
 	Title           string        `json:"title"`
-	State           int           `json:"state"`           // 0 draft，1 release
+	State           ActivityState `json:"state"`           // 0 draft，1 release
 	NoLoginRequired bool          `json:"noLoginRequired"` // 是否不需要登录，默认都是需要登录才能报名的活动
 	EnableReminder  bool          `json:"enableReminder"`  // 是否开启提醒
 	StartTime       int64         `json:"startTime"`       // 活动开始时间
@@ -46,7 +59,7 @@ type PartOfMarketActivity struct {
 }
 
 type Reminder struct {
-	Id             string         `json:"id"`           // reminder 唯一标识
+	Id             int64          `json:"id"`           // reminder 唯一标识
 	ReminderTime   int64          `json:"reminderTime"` // 活动开始前多少分钟提醒
 	ReminderStatus ReminderStatus `json:"reminderStatus"`
 	CreatedAt      int64          `json:"createdAt"`

@@ -59,7 +59,6 @@ type activityRegInput struct {
 }
 
 func (i *activityRegInput) valid() (code codes.Code, valid bool) {
-	code = codes.OK
 	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.LinkPrefix == "" {
 		code = codes.ArgsEmpty
 		return
@@ -76,6 +75,7 @@ func (i *activityRegInput) valid() (code codes.Code, valid bool) {
 		code = codes.MarketActivityIdInvalid
 		return
 	}
+	code = codes.OK
 	valid = true
 	return
 }
@@ -92,7 +92,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	if code, valid := params.valid(); !valid {
-		logger.Error("params is invalid")
+		logger.Errorf("params is invalid, code: %d", code)
 		m.Send(c, code, nil)
 		return
 	}
@@ -177,16 +177,14 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	var res models.ActivityRegistration
 	// 提交用户活动报名请求
 	activityRegParams := &models.ActivityRegistration{
-		Uid:                 params.Uid,
-		UserName:            params.UserName,
-		PhoneNumber:         params.PhoneNumber,
-		Email:               params.Email,
-		Company:             params.Company,
-		MarketActivityId:    params.MarketActivityId,
-		ReceivedReminderIds: []string{},
-		SMSJobIds:           make(map[string]string),
-		CreatedAt:           time.Now().Unix(),
-		UpdatedAt:           time.Now().Unix(),
+		Uid:              params.Uid,
+		UserName:         params.UserName,
+		PhoneNumber:      params.PhoneNumber,
+		Email:            params.Email,
+		Company:          params.Company,
+		MarketActivityId: params.MarketActivityId,
+		CreatedAt:        time.Now().Unix(),
+		UpdatedAt:        time.Now().Unix(),
 	}
 	err = m.mongoService.Create(logger, m.conf.ActivityRegistrationResourceName, activityRegParams, &res)
 	if err != nil {
@@ -220,7 +218,11 @@ func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activityRegId,
 		"Title": activityTitle,
 		"Link":  url,
 	}
-	_, err = m.morseService.SendSms(logger, phoneNumber, data, m.conf.SMSTemplates.ActivityRegSucceed)
+	in := morse.SendSmsIn{
+		PhoneNumber: phoneNumber,
+		TmplData:    data,
+	}
+	_, err = m.morseService.SendSms(logger, in, m.conf.SMSTemplates.ActivityRegSucceed)
 	if err != nil {
 		logger.Errorf("SendSms error: %v", err)
 	}
@@ -247,8 +249,8 @@ func (m *Activity) CheckIn(c *gin.Context) {
 		return
 	}
 	if !param.valid() {
-		logger.Error("id is empty")
-		m.Send(c, codes.InvalidArgs, "id is empty")
+		logger.Errorf("param(%+v) is invalid", param)
+		m.Send(c, codes.InvalidArgs, "param is invalid")
 		return
 	}
 
@@ -262,7 +264,7 @@ func (m *Activity) CheckIn(c *gin.Context) {
 			m.Send(c, codes.InvalidActivityRegistrationId, "activity_registration_id not found")
 			return
 		}
-		logger.Errorf("%s get activity_registration_id error: %v", m.conf.ActivityRegistrationResourceName, err)
+		logger.Errorf("get activity_registration_id(%s) error: %v", param.Id, err)
 		m.Send(c, codes.ResultError, nil)
 		return
 	}
