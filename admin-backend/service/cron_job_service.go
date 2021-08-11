@@ -486,6 +486,7 @@ func (f *CronJobService) getReminderUsers(logger *xlog.Logger, activityId, remin
 func (f *CronJobService) updateActivityRegistrationReminders(logger *xlog.Logger,
 	activityRegs []models.ActivityRegistration, reminderId, jobId string) (resErr string) {
 
+	var errStrList []string
 	for _, activityReg := range activityRegs {
 		activityReg.Reminders = append(activityReg.Reminders, models.ActivityRegistrationReminder{
 			Id:       reminderId,
@@ -499,8 +500,11 @@ func (f *CronJobService) updateActivityRegistrationReminders(logger *xlog.Logger
 			activityReg.Id.Hex(), update, nil)
 		if err != nil {
 			logger.Errorf("update(%+v) error: %v", update, err)
-			resErr = fmt.Sprintf("%s%s; ", resErr, err.Error())
+			errStrList = append(errStrList, err.Error())
 		}
+	}
+	if len(errStrList) != 0 {
+		resErr = strings.Join(errStrList, ";")
 	}
 
 	return
