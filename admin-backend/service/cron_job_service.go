@@ -1,6 +1,7 @@
 package service
 
 import (
+	"errors"
 	"fmt"
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
@@ -445,9 +446,9 @@ func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId str
 			return
 		}
 		// 更新用户报名表 reminders
-		resErr := f.updateActivityRegistrationReminders(logger, users, reminderId, jobId)
-		if resErr != "" {
-			logger.Errorf("updateActivityRegistrationReminders error: %s", resErr)
+		err = f.updateActivityRegistrationReminders(logger, users, reminderId, jobId)
+		if err != nil {
+			logger.Errorf("updateActivityRegistrationReminders error: %v", err)
 		}
 
 		if len(users) < f.conf.SMSBatchLimit {
@@ -484,7 +485,7 @@ func (f *CronJobService) getReminderUsers(logger *xlog.Logger, activityId, remin
 
 // updateActivityRegistrationReminders 更新用户报名表，主要将 `reminderId` 及短信发送的 `jobId` 更新到相应字段
 func (f *CronJobService) updateActivityRegistrationReminders(logger *xlog.Logger,
-	activityRegs []models.ActivityRegistration, reminderId, jobId string) (resErr string) {
+	activityRegs []models.ActivityRegistration, reminderId, jobId string) (err error) {
 
 	var errStrList []string
 	for _, activityReg := range activityRegs {
@@ -504,7 +505,7 @@ func (f *CronJobService) updateActivityRegistrationReminders(logger *xlog.Logger
 		}
 	}
 	if len(errStrList) != 0 {
-		resErr = strings.Join(errStrList, ";")
+		err = errors.New(strings.Join(errStrList, "; "))
 	}
 
 	return
