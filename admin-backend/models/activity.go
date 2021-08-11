@@ -22,7 +22,7 @@ const (
 
 // ActivityRegistrationReminder 标记接收到的活动通知的 reminder 信息
 type ActivityRegistrationReminder struct {
-	Id       int64  `json:"id"`       // 标记接收到的 `reminderId`
+	Id       string `json:"id"`       // 标记接收到的 `reminderId`
 	SMSJobId string `json:"smsJobId"` // 记录每个 `reminder` 发送时对应的 `smsJobId`
 }
 
@@ -59,7 +59,7 @@ type PartOfMarketActivity struct {
 }
 
 type Reminder struct {
-	Id             int64          `json:"id"`           // reminder 唯一标识
+	Id             string         `json:"id"`           // reminder 唯一标识
 	ReminderTime   int64          `json:"reminderTime"` // 活动开始前多少分钟提醒
 	ReminderStatus ReminderStatus `json:"reminderStatus"`
 	CreatedAt      int64          `json:"createdAt"`

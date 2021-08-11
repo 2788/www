@@ -341,7 +341,7 @@ func (f *CronJobService) RunActivityReminder() {
 
 // activityReminderItemsMap 记录每个活动此时的提醒列表，key 是 `activityId`， value 是 `reminderId` 列表
 // 大多数情况下在当前时刻同一个活动的提醒任务只有一条，如果上次提醒任务意外中止则此时同一个任务可能会出现多个 `reminderId`
-type activityReminderItemsMap map[string][]int64
+type activityReminderItemsMap map[string][]string
 
 // findReminderItems 查找可能需要发送提醒的 activityReminderItemsMap
 func (f *CronJobService) findActivityReminderItemsMap(logger *xlog.Logger) (res activityReminderItemsMap, err error) {
@@ -381,7 +381,7 @@ func (f *CronJobService) findActivityReminderItemsMap(logger *xlog.Logger) (res 
 
 // sendWithReminderIds 根据 activityId 与 reminderIds 给报名用户发送活动提醒
 func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId string,
-	reminderIds []int64, reminderEnd chan bool) {
+	reminderIds []string, reminderEnd chan bool) {
 
 	defer func() {
 		reminderEnd <- true
@@ -409,7 +409,7 @@ func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId str
 				break
 			}
 			if index == len(activity.Reminders)-1 {
-				logger.Errorf("activityId(%s)-reminderId(%d) not found", activityId, reminderId)
+				logger.Errorf("activityId(%s)-reminderId(%s) not found", activityId, reminderId)
 			}
 		}
 	}
@@ -445,9 +445,9 @@ func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId str
 			return
 		}
 		// 更新用户报名表 reminders
-		err = f.updateActivityRegistrationReminders(logger, users, reminderId, jobId)
-		if err != nil {
-			logger.Errorf("updateActivityRegistrationReminders error: %v", err)
+		resErr := f.updateActivityRegistrationReminders(logger, users, reminderId, jobId)
+		if resErr != "" {
+			logger.Errorf("updateActivityRegistrationReminders error: %s", resErr)
 		}
 
 		if len(users) < f.conf.SMSBatchLimit {
@@ -464,11 +464,11 @@ func (f *CronJobService) sendWithReminderIds(logger *xlog.Logger, activityId str
 }
 
 // getReminderUsers 获取当前活动需要提醒的用户列表
-func (f *CronJobService) getReminderUsers(logger *xlog.Logger, activityId string, reminderId int64,
+func (f *CronJobService) getReminderUsers(logger *xlog.Logger, activityId, reminderId string,
 	limit int) (users []models.ActivityRegistration, err error) {
 	query := map[string]interface{}{
 		"marketActivityId": activityId,
-		"reminders.id":     bson.M{"$nin": []int64{reminderId}},
+		"reminders.id":     bson.M{"$nin": []string{reminderId}},
 	}
 	listQuery := mongoClient.ListQuery{
 		Limit: fmt.Sprint(limit),
@@ -484,7 +484,7 @@ func (f *CronJobService) getReminderUsers(logger *xlog.Logger, activityId string
 
 // updateActivityRegistrationReminders 更新用户报名表，主要将 `reminderId` 及短信发送的 `jobId` 更新到相应字段
 func (f *CronJobService) updateActivityRegistrationReminders(logger *xlog.Logger,
-	activityRegs []models.ActivityRegistration, reminderId int64, jobId string) (err error) {
+	activityRegs []models.ActivityRegistration, reminderId, jobId string) (resErr string) {
 
 	for _, activityReg := range activityRegs {
 		activityReg.Reminders = append(activityReg.Reminders, models.ActivityRegistrationReminder{
@@ -495,10 +495,11 @@ func (f *CronJobService) updateActivityRegistrationReminders(logger *xlog.Logger
 			"reminders": activityReg.Reminders,
 			"updatedAt": time.Now().Unix(),
 		}
-		err = f.mongoApiService.Update(logger, f.conf.ActivityRegistrationResourceName,
+		err := f.mongoApiService.Update(logger, f.conf.ActivityRegistrationResourceName,
 			activityReg.Id.Hex(), update, nil)
 		if err != nil {
 			logger.Errorf("update(%+v) error: %v", update, err)
+			resErr = fmt.Sprintf("%s%s; ", resErr, err.Error())
 		}
 	}
 
