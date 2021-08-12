@@ -68,6 +68,8 @@ export enum Product {
   Storage = 'storage',
   /** 锐智转码 */
   Avsmart = 'avsmart',
+  /** 美颜特效 SDK */
+  Beautysdk = 'beautysdk'
 }
 
 // TODO: 这个再核对一遍
@@ -104,7 +106,8 @@ export const nameMap = {
   [Product.Svesdk]: '短视频特效 SDK',
   [Product.Voice]: '智能语音',
   [Product.Storage]: '云存储一体机',
-  [Product.Avsmart]: '锐智转码 2.0'
+  [Product.Avsmart]: '锐智转码 2.0',
+  [Product.Beautysdk]: '美颜特效 SDK'
 } as const
 
 export const urlMap = {
@@ -139,7 +142,8 @@ export const urlMap = {
   [Product.Svesdk]: '/products/svesdk',
   [Product.Voice]: '/products/voice',
   [Product.Storage]: '/products/storage',
-  [Product.Avsmart]: '/products/avsmart'
+  [Product.Avsmart]: '/products/avsmart',
+  [Product.Beautysdk]: '/products/beautysdk'
 } as const
 
 export const priceUrlMap = {
@@ -174,7 +178,8 @@ export const priceUrlMap = {
   [Product.Svesdk]: null,
   [Product.Voice]: null,
   [Product.Storage]: null,
-  [Product.Avsmart]: null
+  [Product.Avsmart]: null,
+  [Product.Beautysdk]: null
 } as const
 
 export const descMap = {
@@ -213,7 +218,8 @@ export const descMap = {
   [Product.Svesdk]: '',
   [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互',
   [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
-  [Product.Avsmart]: '更低的码率，更清晰的画质'
+  [Product.Avsmart]: '更低的码率，更清晰的画质',
+  [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景'
 } as const
 
 export enum Category {
@@ -296,7 +302,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
     Product.FaceID, Product.Ocr, Product.Vii,
     Product.Voice, Product.OpenAPI
   ],
-  [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer],
+  [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
   [SubCategory.MediaStorage]: [Product.Kodo, Product.Storage],
   [SubCategory.MediaDistribution]: [Product.Cdn, Product.Pcdn],
 

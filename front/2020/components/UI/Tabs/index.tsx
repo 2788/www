@@ -8,6 +8,7 @@ import { useOnChange } from 'hooks'
 import style from './style.less'
 
 type ContextValue = {
+  vertical: boolean
   value: string | null
   onChange: (value: string) => void
 }
@@ -36,7 +37,9 @@ export type Props = {
   /** 是否显示 shadow 默认为 true */
   shadow?: boolean
   /** 颜色 */
-  theme?: Theme
+  theme?: Theme,
+  /** 是否垂直 */
+  vertical?: boolean
 }
 
 const themeClassMap = {
@@ -53,7 +56,7 @@ const sizeMap = {
 export default function Tabs({
   children, className, contentClassName, defaultValue,
   value = null, onChange, size = 'default',
-  shadow = true, theme = 'default'
+  shadow = true, theme = 'default', vertical = false
 }: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
   const tabList: ReactElement[] = []
@@ -78,7 +81,13 @@ export default function Tabs({
     }
   })
 
-  const content = tabPanes.length > 0 && <div className={classnames(style.content, contentClassName)}>{tabPanes}</div>
+  const content = tabPanes.length > 0 && (
+    <div
+      className={classnames(style.content, contentClassName, vertical && style.verticalContent)}
+    >
+      {tabPanes}
+    </div>
+  )
 
   const handleChange = useCallback((_value: string) => {
     if (onChange) {
@@ -92,13 +101,14 @@ export default function Tabs({
     style.wrapper,
     className,
     sizeMap[size],
-    themeClassMap[theme]
+    themeClassMap[theme],
+    vertical && style.verticalWrapper
   )
 
   return (
-    <tabContext.Provider value={{ onChange: handleChange, value: active }}>
+    <tabContext.Provider value={{ vertical, onChange: handleChange, value: active }}>
       <div className={wrapperClass}>
-        <ul className={classnames(style.header, shadow && style.shadow)}>
+        <ul className={classnames(style.header, shadow && style.shadow, vertical && style.verticalHeader)}>
           {tabList}
         </ul>
         {content}
@@ -132,7 +142,7 @@ export function Tab({ value, title, children }: TabProps) {
 
   const active = contextValue.value === value
   const onClick = () => !active && contextValue.onChange(value)
-  const className = [style.item, active && style.active].filter(Boolean).join(' ')
+  const className = [style.item, active && style.active, contextValue.vertical && style.verticalItem].filter(Boolean).join(' ')
   // eslint-disable-next-line no-underscore-dangle
   const _title = title || (typeof children === 'string' ? children : undefined)
 
