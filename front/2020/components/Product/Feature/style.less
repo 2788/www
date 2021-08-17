@@ -40,6 +40,7 @@
       }
 
       .itemContent {
+        position: relative;
         flex: 1 1;
         margin-left: 24px;
         text-align: left;
@@ -118,6 +119,13 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+    &.topLink {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+      line-height: 28px;
     }
   }
 }

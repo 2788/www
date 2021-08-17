@@ -73,36 +73,39 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         <feature.Group>
           <feature.Item pos="left-right" title="图片审核" icon={<IconImgAudit />}>
             <feature.Desc>
-              高效精准识别图片中的违规内容，支持的审核类型包括：
-              图片鉴黄，图片鉴暴恐，图片敏感人物识别，图片广告识别、图片水印 Logo，不良场景等类型。
+              精准检测图片中的违规内容。包括：鉴黄、鉴暴恐、敏感人物识别、广告识别、赌博、吸毒等不良场景识别。
             </feature.Desc>
+            <feature.Link href="https://developer.qiniu.com/censor/5588/image-censor" top>接口文档 &gt;&gt;</feature.Link>
           </feature.Item>
           <feature.Item pos="left-right" title="视频审核" icon={<IconVideoAudit />}>
             <feature.Desc>
-              高效精准识别视频中的违规内容，包括涉黄、涉暴恐、涉政敏感人物检测等，准确率高达 99.95%， 可替代 80% 以上的人工审核。
+              精准识别视频中的违规内容。包括：鉴黄、鉴暴恐、敏感人物识别、广告识别、赌博、吸毒等不良场景识别。
             </feature.Desc>
+            <feature.Link href="https://developer.qiniu.com/censor/5620/video-censor" top>接口文档 &gt;&gt;</feature.Link>
           </feature.Item>
         </feature.Group>
         <feature.Group>
-          <feature.Item pos="left-right" title="语音审核" icon={<IconAudioAudit />}>
+          <feature.Item pos="left-right" title="音频文件审核" icon={<IconAudioAudit />}>
             <feature.Desc>
-              为音频文件的内容审核场景提供涉政，国歌，色情，广告，娇喘，等违规内容的识别，并支持识别唱歌，性别，音色标签等功能。
+              对音频文件的内容进行违规检测，包括：涉政、色情、违禁、辱骂等。
             </feature.Desc>
+            <feature.Link href="https://developer.qiniu.com/censor/8061/audio-censor" top>接口文档 &gt;&gt;</feature.Link>
           </feature.Item>
           <feature.Item pos="left-right" title="文本审核" icon={<IconTextAudit />}>
             <feature.Desc>
-              帮助您检测文本是否存在色情，暴恐，涉政，辱骂，灌水，违禁，无意义等违规内容。
+              精准检测文本中的违规内容，包括：涉政、色情、暴恐、辱骂、灌水、违禁、无意义等。
             </feature.Desc>
+            <feature.Link href="https://developer.qiniu.com/censor/7260/api-text-censor" top>接口文档 &gt;&gt;</feature.Link>
           </feature.Item>
         </feature.Group>
         <feature.Group>
           <feature.Item pos="left-right" title="直播审核" icon={<IconLiveAudit />}>
             <feature.Desc>
-              帮助您检测直播中的不良信息，并给出审核结果管控建议。<br />
-              支持的审核类型包括：直播鉴黄、直播鉴暴恐、<br />
-              直播敏感人物识别、直播语音违规内容识别。
+              精准检测直播视频/音频流中的违规信息，包括：鉴黄、鉴暴恐、敏感人物识别、广告识别、实时音频审核等。
             </feature.Desc>
+            <feature.Link href="https://developer.qiniu.com/censor/7118/api-live-censor" top>接口文档 &gt;&gt;</feature.Link>
           </feature.Item>
+          <feature.Placeholder />
         </feature.Group>
       </Feature>
 
@@ -162,7 +165,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
           <PurchaseInfoAction url={priceUrl}>查看详情</PurchaseInfoAction>
         </PurchaseInfoItem>
         <PurchaseInfoItem title="资源包" desc="特惠套餐包">
-          <PurchaseInfoAction url="https://qmall.qiniu.com/template/NTg">立即购买</PurchaseInfoAction>
+          <PurchaseInfoAction url="https://qmall.qiniu.com/template/MTA5">立即购买</PurchaseInfoAction>
         </PurchaseInfoItem>
       </PurchaseInfo>
 
@@ -175,11 +178,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         <LinkGroup title="API 文档">
           <LinkItem href="https://developer.qiniu.com/censor/api/5588/image-censor">图片审核</LinkItem>
           <LinkItem href="https://developer.qiniu.com/censor/api/5620/video-censor">视频审核</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/censor/8061/audio-censor">音频文件审核</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/censor/7260/api-text-censor">文本审核</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/censor/7118/api-live-censor">直播审核</LinkItem>
         </LinkGroup>
       </LinkGroups>
 
-      <UsageGuide title="体验全方位内容安全保护" description="更享 24 万次免费使用额度">
-        <UGButton href="https://portal.qiniu.com/censor">免费试用</UGButton>
+      <UsageGuide title="体验全方位内容安全保护" description="更享 18 万次免费使用额度">
+        <UGButton href="https://developer.qiniu.com/censor/4833/censor-price">免费试用</UGButton>
       </UsageGuide>
     </>
   )

@@ -48,6 +48,7 @@ export interface IFeatureDescProps extends HTMLAttributes<HTMLElement> {
 export interface IFeatureLinkProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
   href: string
+  top?: boolean
 }
 
 export function RawFeature({ children }: PropsWithChildren<{}>) {
@@ -188,7 +189,7 @@ export function Desc(props: IFeatureDescProps) {
 }
 
 export function Link(props: IFeatureLinkProps) {
-  const { children, href } = props
+  const { children, href, top } = props
   const isMobile = useMobile()
 
   if (!children) {
@@ -206,7 +207,8 @@ export function Link(props: IFeatureLinkProps) {
 
     const className = [
       props.className,
-      styles.link
+      styles.link,
+      top && styles.topLink
     ].filter(Boolean).join(' ')
 
     return (
