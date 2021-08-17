@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'components/Link'
 import { useApiWithParams } from 'hooks/api'
-import ResultEmpty from 'components/ResultEmpty'
+import ResultEmpty from 'components/UI/ResultEmpty'
 import DeveloperSiteSearch from 'components/Header/DeveloperSiteSearch'
 import { getSuggestions } from 'apis/search'
 import { urlForSearch } from 'utils/route'

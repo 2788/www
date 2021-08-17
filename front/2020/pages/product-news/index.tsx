@@ -19,6 +19,7 @@ import { getPages, IPage, getNews, INews } from 'apis/admin/product'
 import { useApiWithParams } from 'hooks/api'
 import { useMobile } from 'hooks/ua'
 import { withLoading } from 'utils/loading'
+import ResultEmpty from 'components/UI/ResultEmpty'
 
 import banner from './images/banner.png'
 import styles from './style.less'
@@ -93,6 +94,14 @@ function Page({ pages }: IProps) {
       onChange={page => setCurrentPage(page)}
     />
   )
+  const contentView = data.length > 0 ? (
+    <>
+      {cardsView}
+      {paginationView}
+    </>
+  ) : (
+    <ResultEmpty className={styles.emptyBox} tip="该产品暂无动态" />
+  )
 
   return (
     <div className={styles.wrapper}>
@@ -118,8 +127,7 @@ function Page({ pages }: IProps) {
       {
         withLoading(loading)(
           <>
-            {cardsView}
-            {paginationView}
+            {contentView}
           </>
         )
       }
@@ -218,4 +226,3 @@ export async function getStaticProps() {
     }
   }
 }
-

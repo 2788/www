@@ -6,7 +6,7 @@ import React from 'react'
 import { SearchResult } from 'apis/search'
 import Button from 'components/UI/Button'
 import Loading from 'components/UI/Loading'
-import ResultEmpty from 'components/ResultEmpty'
+import ResultEmpty from 'components/UI/ResultEmpty'
 import { ResultList } from '.'
 import style from './style.less'
 

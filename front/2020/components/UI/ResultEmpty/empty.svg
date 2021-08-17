@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+  <g fill="none" fill-rule="evenodd">
+    <rect width="56" height="56"/>
+    <path fill="#F5F5F5" stroke="#BFBFBF" stroke-width="2" d="M33.4418314,2.99978065 L47,16.5560321 L47,53 L9,53 L9,2.99999138 L33.4418314,2.99978065 Z"/>
+    <polygon fill="#FFF" points="33 4 46 17 33 17"/>
+    <polyline stroke="#BFBFBF" stroke-width="2" points="46 18 32 18 32 4"/>
+  </g>
+</svg>

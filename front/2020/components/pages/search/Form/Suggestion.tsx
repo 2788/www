@@ -6,7 +6,7 @@
 
 import React from 'react'
 import { DropdownMenu, DropdownMenuItem } from 'components/UI/Dropdown'
-import ResultEmpty from 'components/ResultEmpty'
+import ResultEmpty from 'components/UI/ResultEmpty'
 import { getSuggestions } from 'apis/search'
 import { useApiWithParams } from 'hooks/api'
 import { withLoading } from 'utils/loading'
