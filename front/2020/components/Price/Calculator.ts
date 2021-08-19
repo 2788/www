@@ -1,3 +1,5 @@
+import toPrecision from 'utils/to-precision'
+
 // 规则按区域划分
 export type CalcRule = {
   // 地区名字(给人看的)
@@ -76,6 +78,7 @@ export default class Calculator {
   // 使用时间. 考虑到可能不只是月故不用 month
   private duration = 1
   private inputs: CalcInput[] = []
+  private precision = 2
 
   constructor(
     private rules: CalcRule[],
@@ -186,7 +189,7 @@ export default class Calculator {
       return _total + totalForRegion
     }, 0)
 
-    return (total * this.duration).toFixed(3)
+    return toPrecision((total * this.duration), this.precision)
   }
 
   public setDuration = (duration: number) => {

@@ -59,7 +59,7 @@ export default function Region({ region, desc, onChange }: RegionProps) {
         </div>
         <div className={style.areaItem}>
           <p>CDN 回源流出流量/月</p>
-          <InputNumber onChange={handleValueChange(2)} addonAfter={selectAfter(4)} />
+          <InputNumber onChange={handleValueChange(2)} addonAfter={selectAfter(2)} />
         </div>
       </div>
       <div className={style.areaRow}>

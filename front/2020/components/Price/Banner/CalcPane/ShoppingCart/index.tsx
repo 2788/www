@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { CSVLink } from 'react-csv'
 import { useLocalStorage } from 'hooks/storage'
 import { useSticky } from 'hooks/scroll'
+import toPrecision from 'utils/to-precision'
 import Card, { CardGroup, CardItem } from './Card'
 import EmptyIcon from './empty.svg'
 
@@ -24,7 +25,7 @@ export type Product = {
 export default function ShoppingCart() {
   const [products, setProducts] = useLocalStorage<Product[]>(STORAGE_KEY)
   const reversedProducts = products?.slice().reverse()
-  const total = products?.reduce((_total, product) => +product.price + _total, 0) || 0.000
+  const total = products?.reduce((_total, product) => +product.price + _total, 0)
 
   function handleDelete(index: number) {
     const newProducts = reversedProducts || []
@@ -49,7 +50,7 @@ export default function ShoppingCart() {
       <div className={style.body}>
         {products && products.length > 0 ? cards : <Empty />}
       </div>
-      <Footer products={products} total={total.toFixed(3)} />
+      <Footer products={products} total={toPrecision(total, 2)} />
     </div>
   )
 }
