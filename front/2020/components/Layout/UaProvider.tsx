@@ -110,7 +110,9 @@ function useIsMp() {
       }
     }
 
-    if (uaParser.getBrowser().name === 'WeChat') {
+    // UAParser 是通过 micromessenger 关键词来判断是否为微信的，但是有该关键词的不一定就是微信小程序，也有可能是微信内置浏览器
+    // 目前安卓企业微信就是用的的 tbs x5 内置浏览器，所以这边增加判断 wx.miniProgram 是否有值
+    if (uaParser.getBrowser().name === 'WeChat' && wx.miniProgram) {
       wx.miniProgram.getEnv(res => {
         if (res.miniprogram) {
           setIsMp(true)
