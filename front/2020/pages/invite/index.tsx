@@ -221,7 +221,7 @@ function Cases() {
         <CustomerCase pic={cases.hw.logo} alt={cases.hw.name} />
         <CustomerCase pic={cases.bbg.logo} alt={cases.bbg.name} />
         <CustomerCase pic={cases.zgdx.logo} alt={cases.zgdx.name} />
-        <CustomerCase pic={cases.zyd.logo} alt={cases.zyd.name} />
+        <CustomerCase pic={cases.zgyd.logo} alt={cases.zgyd.name} />
         <CustomerCase pic={cases.mb.logo} alt={cases.mb.name} />
       </CustomerCaseGroup>
       <CustomerCaseGroup>

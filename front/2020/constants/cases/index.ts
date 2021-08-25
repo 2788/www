@@ -39,7 +39,7 @@ import zgsyImg from './大型企业/客户-中国石油.png'
 import qbImg from './广电传媒/客户-清博.png'
 import zgdxImg from './广电传媒/客户-中国电信.png'
 import mgtvImg from './广电传媒/客户-芒果TV.png'
-import zydImg from './广电传媒/客户-中移动.png'
+import zgydImg from './广电传媒/客户-中国移动.png'
 import rmwImg from './广电传媒/客户-人民网.png'
 import hscmImg from './广电传媒/客户-华数传媒.png'
 import jswsImg from './广电传媒/客户-江苏卫视.png'
@@ -136,7 +136,7 @@ export const zgsy = { logo: zgsyImg, name: '中国石油' }
 export const qb = { logo: qbImg, name: '清博' }
 export const zgdx = { logo: zgdxImg, name: '中国电信' }
 export const mgtv = { logo: mgtvImg, name: '芒果TV' }
-export const zyd = { logo: zydImg, name: '中移动' }
+export const zgyd = { logo: zgydImg, name: '中国移动' }
 export const rmw = { logo: rmwImg, name: '人民网' }
 export const hscm = { logo: hscmImg, name: '华数传媒' }
 export const jsws = { logo: jswsImg, name: '江苏卫视' }
@@ -204,7 +204,7 @@ export const industries = [
   },
   {
     name: '广电传媒',
-    cases: [qb, zgdx, mgtv, zyd, rmw, hscm, jsws, zbcm, jldst]
+    cases: [qb, zgdx, mgtv, zgyd, rmw, hscm, jsws, zbcm, jldst]
   },
   {
     name: '交通旅游',

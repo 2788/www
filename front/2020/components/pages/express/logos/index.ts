@@ -11,7 +11,7 @@ import ruxin from './客户-如新.png'
 import jingsheng from './客户-晶盛.png'
 import qingbo from './客户-清博.png'
 import baiao from './客户-百奥.png'
-import yiodng from './客户-中移动.png'
+import yidong from './客户-中国移动.png'
 import qutoutiao from './客户-趣头条.png'
 import shyc from './客户-上海烟草.png'
 import shdq from './客户-上海电气.png'
@@ -36,7 +36,7 @@ export {
   jingsheng,
   qingbo,
   baiao,
-  yiodng,
+  yidong,
   qutoutiao,
   shyc,
   shdq,

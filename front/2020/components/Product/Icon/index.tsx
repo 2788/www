@@ -46,7 +46,8 @@ const iconMap = {
   [Product.Voice]: require('./images/default/voice.svg').default,
   [Product.Storage]: require('./images/default/storage.svg').default,
   [Product.Avsmart]: require('./images/default/avsmart.svg').default,
-  [Product.Beautysdk]: require('./images/default/beautysdk.svg').default
+  [Product.Beautysdk]: require('./images/default/beautysdk.svg').default,
+  [Product.WAF]: require('./images/default/waf.svg').default
 }
 
 const smallIconMap = {
@@ -82,7 +83,8 @@ const smallIconMap = {
   [Product.Voice]: require('./images/small/voice.svg').default,
   [Product.Storage]: require('./images/small/storage.svg').default,
   [Product.Avsmart]: require('./images/small/avsmart.svg').default,
-  [Product.Beautysdk]: require('./images/small/beautysdk.svg').default
+  [Product.Beautysdk]: require('./images/small/beautysdk.svg').default,
+  [Product.WAF]: require('./images/small/waf.svg').default
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {

@@ -69,7 +69,9 @@ export enum Product {
   /** 锐智转码 */
   Avsmart = 'avsmart',
   /** 美颜特效 SDK */
-  Beautysdk = 'beautysdk'
+  Beautysdk = 'beautysdk',
+  /** Web 应用防火墙 */
+  WAF = 'waf'
 }
 
 // TODO: 这个再核对一遍
@@ -107,7 +109,8 @@ export const nameMap = {
   [Product.Voice]: '智能语音',
   [Product.Storage]: '云存储一体机',
   [Product.Avsmart]: '锐智转码 2.0',
-  [Product.Beautysdk]: '美颜特效 SDK'
+  [Product.Beautysdk]: '美颜特效 SDK',
+  [Product.WAF]: 'Web 应用防火墙'
 } as const
 
 export const urlMap = {
@@ -143,7 +146,8 @@ export const urlMap = {
   [Product.Voice]: '/products/voice',
   [Product.Storage]: '/products/storage',
   [Product.Avsmart]: '/products/avsmart',
-  [Product.Beautysdk]: '/products/beautysdk'
+  [Product.Beautysdk]: '/products/beautysdk',
+  [Product.WAF]: '/products/waf'
 } as const
 
 export const priceUrlMap = {
@@ -179,7 +183,8 @@ export const priceUrlMap = {
   [Product.Voice]: null,
   [Product.Storage]: null,
   [Product.Avsmart]: null,
-  [Product.Beautysdk]: null
+  [Product.Beautysdk]: null,
+  [Product.WAF]: null
 } as const
 
 export const descMap = {
@@ -219,7 +224,8 @@ export const descMap = {
   [Product.Voice]: '基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互',
   [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
   [Product.Avsmart]: '更低的码率，更清晰的画质',
-  [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景'
+  [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景',
+  [Product.WAF]: '高性能 Web 应用防火墙'
 } as const
 
 export enum Category {
@@ -290,7 +296,7 @@ export function normalizeProduct(val: Product | PartialProductData): ProductData
 export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] } = {
   [SubCategory.ServiceStorage]: [Product.Kodo, Product.Archive],
   [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
-  [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.Sms],
+  [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
   [SubCategory.MediaAudio]: [
     { product: Product.Kodo, name: '音视频存储', desc: '为音视频多媒体数据提供高可靠、高可用和高性能的对象存储服务' },
     Product.DoraAudio,
@@ -321,6 +327,7 @@ export const categoryService = [
   Product.Pili,
   Product.CloudSql,
   Product.Ddos,
+  Product.WAF,
   Product.Sms
 ] as const
 

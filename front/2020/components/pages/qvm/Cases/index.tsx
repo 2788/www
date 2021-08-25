@@ -4,7 +4,7 @@
 
 import React from 'react'
 import CustomerCaseGroup, { CustomerCase } from 'components/Product/CustomerCaseGroup'
-import { cb, zyd, zgpa, sfsy, shsp, zh, zx, qtfm } from 'constants/cases'
+import { cb, zgyd, zgpa, sfsy, shsp, zh, zx, qtfm } from 'constants/cases'
 import { SectionProps } from 'components/Product/Section'
 
 // qvm相关统一客户案例
@@ -12,7 +12,7 @@ export default function QvmCommonCases(props: Pick<SectionProps, 'header' | 'tit
   return (
     <CustomerCaseGroup name="cases" {...props}>
       <CustomerCase pic={cb.logo} />
-      <CustomerCase pic={zyd.logo} />
+      <CustomerCase pic={zgyd.logo} />
       <CustomerCase pic={zgpa.logo} />
       <CustomerCase pic={sfsy.logo} />
       <CustomerCase pic={shsp.logo} />

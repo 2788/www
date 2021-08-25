@@ -174,7 +174,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
               <Case pic={logos.zhongxin} alt="中信银行" />
               <Case pic={logos.taiping} alt="中国太平" />
               <Case pic={logos.huatai} alt="华泰" />
-              <Case pic={logos.yiodng} alt="中移动" />
+              <Case pic={logos.yidong} alt="中国移动" />
               <Case pic={logos.dianxin} alt="中国电信" />
               <Case pic={logos.shdq} alt="上海电气" />
               <Case pic={logos.huawei} alt="华为" />

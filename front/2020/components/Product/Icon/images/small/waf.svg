@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 2)">
+    <line x1="15" x2="15" y2="7" stroke="#333"/>
+    <polyline stroke="#333" points="10 0 22 0 22 21 0 21 0 18"/>
+    <line x1="22" x2="13" y1="7" y2="7" stroke="#333"/>
+    <line x1="22" x2="13" y1="14" y2="14" stroke="#333"/>
+    <line x1="15" x2="15" y1="14" y2="21" stroke="#333"/>
+    <line x1="7" x2="7" y1="18" y2="21" stroke="#333"/>
+    <path stroke="#00AAE7" d="M0,9 C0,5 5,0 5,0 C5,0 10,5 10,9 C10,11.761 7.761,14 5,14 C2.239,14 0,11.761 0,9 Z"/>
+  </g>
+</svg>

@@ -162,7 +162,7 @@ export default function MoreProducts() {
           <Product>
             <IconSafe3 className={style.icon} />
             <Title>网站应用防火墙</Title>
-            <Desc>网站应用防火墙（Web Application Firewall）是一款基于 AI 的一站式 Web 业务运营风险防护方案。可以有效防御 SQL 注入、XSS 跨站脚本、木马上传、非授权访问等 OWASP 攻击。此外还可以有效过滤 CC 攻击、提供 0day 漏洞补丁、防止网页篡改等。</Desc>
+            <Desc>网站应用防火墙（Web Application Firewall）是一款基于 AI 的一站式 Web 业务运营风险防护方案。可以有效防御 SQL 注入、XSS 跨站脚本、木马上传、非授权访问等 OWASP 攻击。此外还可以有效过滤 CC 攻击、提供 0-day 漏洞补丁、防止网页篡改等。</Desc>
             <Footer tags="安全,网站应用防护,可靠" />
           </Product>
           <InvisibleProduct />
