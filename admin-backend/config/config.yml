@@ -8,6 +8,7 @@ server:
   sms_templates:
     activity_reminder: 亲爱的 [[.UserName]]，您报名的 [[.Title]] 将于 [[.StartTime]] 开始。更多活动详情可访问 [[.DetailUrl]] 查看。 # 活动提醒短信模版
     activity_reg_succeed: 您已成功报名 [[.Title]]，链接为您的签到二维码，请妥善保存。[[.Link]] # 活动报名成功短信模版
+    activity_reg_succeed_link_prefix: # 活动报名成功模版链接前缀
   sms_batch_limit: 100 # 每次最多同时发送多少条短信，不能超过 morse batch 的限制
   morse_host: http://bo-staging-morse.qa.qiniu.io
   morse_client_id: 606c4437c0c3ed0008e35f0e

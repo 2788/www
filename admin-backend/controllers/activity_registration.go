@@ -55,11 +55,10 @@ type activityRegInput struct {
 	Email            string `json:"email"`
 	Company          string `json:"company"`
 	MarketActivityId string `json:"marketActivityId"`
-	LinkPrefix       string `json:"linkPrefix"`
 }
 
 func (i *activityRegInput) valid() (code codes.Code, valid bool) {
-	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.LinkPrefix == "" {
+	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" {
 		code = codes.ArgsEmpty
 		return
 	}
@@ -194,7 +193,8 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 发送活动报名成功短信
-	m.sendActivityRegSucceedSMS(logger, res.Id.Hex(), getRes.Title, params.LinkPrefix, params.PhoneNumber)
+	m.sendActivityRegSucceedSMS(logger, res.Id.Hex(), getRes.Title,
+		m.conf.SMSTemplates.ActivityRegSucceedLinkPrefix, params.PhoneNumber)
 
 	m.Send(c, codes.OK, res)
 }
