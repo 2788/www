@@ -136,16 +136,18 @@ export function useSticky() {
     const sb = stickybits(element)
     return () => { try { sb.cleanup() } catch (e) { /* do nothing */ } }
   }, [element])
-
-  const [scrollTop] = useScrollTop(0)
   const [isFixed, setIsFixed] = useState(false)
-
+  // useScrollTop 的方式来获取 scrollTop 时，会有 animatingHolder 延迟 scrollTop 的更新
+  // 另外，这种方式来获取 scrollTop 时，都会多次 setScrollTop，所以我们直接在 useSticky 内部来监听，减少 set 操作
   useEffect(() => {
-    if (element) {
-      // 平时 scrollTop 应该小于 offsetTop，fix 住后，这俩值相等
-      setIsFixed(scrollTop >= element.offsetTop)
+    function handleScroll() {
+      if (element) {
+        setIsFixed(getGlobalScrollTop() >= element.offsetTop)
+      }
     }
-  }, [element, scrollTop])
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [element])
 
   return [
     setElement, // elementRef

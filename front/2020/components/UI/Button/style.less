@@ -25,7 +25,9 @@
 .withSize(@height, @width) {
   width: @width;
   height: @height;
-  line-height: @height;
+  // 盒子模型用的 box-sizing，另外还有 1 像素的 border
+  // 所以内容区的高度应该是 （height - 2 倍的 border 的高度），line-height 应该与内容区高度相同
+  line-height: @height - 2;
 }
 
 .button {
