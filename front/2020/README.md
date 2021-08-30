@@ -22,6 +22,8 @@ yarn dev
 ```
 
 打开浏览器 `http://localhost:3000` 即可
+（如果使用 Chrome，需要配本地 host 和 `.env` 文件，然后打开 `http://www-2020.dev.qiniu.io:3000`，否则无法登录，
+具体参考 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite）
 
 ### 服务端依赖
 

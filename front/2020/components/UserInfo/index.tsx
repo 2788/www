@@ -3,14 +3,24 @@
  */
 
 import React, { createContext, useContext, PropsWithChildren, useEffect, useState } from 'react'
-import { UserInfo, getUserInfo } from 'apis/legacy'
+import { getUserInfo } from 'apis/gaea'
 import { login as sensorsLogin } from 'utils/sensors'
 import { useQueryValue } from 'hooks/url'
 
+export interface UserInfo {
+  email: string
+  signedIn: boolean
+  name: string
+  uid: number
+  is_certified: boolean
+}
+
 const context = createContext<UserInfo | null>(null)
+const loadingContext = createContext(true)
 
 /** 向子元素提供当前用户信息 */
 export function Provider({ children }: PropsWithChildren<{}>) {
+  const [isLoading, setIsLoading] = useState(true)
   const [userInfo, setUserinfo] = useState<UserInfo | null>(null)
   // 参数可能指定用户信息，比如小程序
   const [userinfoOfQuery] = useQueryValue('userInfo', '')
@@ -24,11 +34,23 @@ export function Provider({ children }: PropsWithChildren<{}>) {
       } catch {
         // 无需处理
       }
+      setIsLoading(false)
     } else {
       let cancelled = false
-      getUserInfo().then(_userInfo => {
+      getUserInfo().then(data => {
         if (!cancelled) {
-          setUserinfo(_userInfo)
+          setUserinfo({
+            signedIn: true,
+            email: data.customer_email,
+            name: data.full_name,
+            uid: data.uid,
+            is_certified: data.is_certified
+          })
+          setIsLoading(false)
+        }
+      }, () => {
+        if (!cancelled) {
+          setIsLoading(false)
         }
       })
       return () => {
@@ -44,7 +66,13 @@ export function Provider({ children }: PropsWithChildren<{}>) {
     }
   }, [userInfo])
 
-  return <context.Provider value={userInfo}>{children}</context.Provider>
+  return (
+    <loadingContext.Provider value={isLoading}>
+      <context.Provider value={userInfo}>
+        {children}
+      </context.Provider>
+    </loadingContext.Provider>
+  )
 }
 
 /** 获取当前用户信息 */
@@ -52,3 +80,7 @@ export function useUserInfo(): UserInfo | null {
   return useContext(context)
 }
 
+/** 是否正在加载当前用户信息 */
+export function useIsLoadingUserInfo() {
+  return useContext(loadingContext)
+}

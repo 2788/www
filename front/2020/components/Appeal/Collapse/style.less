@@ -1,0 +1,36 @@
+@import "~utils/less/index.less";
+@import "~react-icecream-2/dist/variables.less";
+
+.collapse {
+  //
+}
+
+.panel {
+  padding-bottom: @icecream-gap-sm;
+  border-bottom: 1px solid @grey-3;
+  margin-bottom: @icecream-gap-sm;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &Icon {
+    color: @grey-4;
+    margin-left: -2px; // HACK
+  }
+
+  &Title {
+    margin-left: @icecream-gap-sm;
+  }
+}
+
+.content {
+  padding: 0 @icecream-gap-lg;
+
+  &Hidden {
+    display: none;
+  }
+}
+

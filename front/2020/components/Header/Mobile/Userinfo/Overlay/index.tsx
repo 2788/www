@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'components/UI/Button'
-import { UserInfo } from 'apis/legacy'
+import { UserInfo } from 'components/UserInfo'
 import { useUrl } from 'hooks/url'
 import { urlForSignin, urlForSignout } from 'utils/route'
 

@@ -2,7 +2,7 @@
  * @file 老官网接口
  */
 
-import { get, post } from 'utils/fetch'
+import { post } from 'utils/fetch'
 import { apiPrefix as basePrefix } from 'constants/api'
 import { timeout } from 'utils'
 
@@ -26,20 +26,6 @@ export function createDeveloperCooperation(options: CreateDeveloperOptions): Pro
   return post(`${apiPrefix}/cooperations/create_developer`, {
     developer_cooperation: options
   })
-}
-
-export type UserInfo = {
-  email: string
-  signedIn: boolean
-  name: string
-  uid: number
-  is_certified: boolean
-}
-
-/** 获取用户信息 */
-export async function getUserInfo(): Promise<UserInfo> {
-  const { is_signin: signedIn, ...others } = await get(`${apiPrefix}/userinfo`)
-  return { signedIn, ...others }
 }
 
 export type CreateFeedbackOptions = {

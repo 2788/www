@@ -3,6 +3,8 @@
  * @description 相关文档 https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables
  */
 
+export const isDev = process.env.NODE_ENV === 'development'
+
 /** 站点 Host */
 export const host = must('host', process.env.NEXT_PUBLIC_HOST)
 
@@ -29,6 +31,9 @@ export const ecugHost = must('ecugHost', process.env.NEXT_PUBLIC_ECUG_HOST)
 
 /** 构建时间（时间戳），注意该值不来自 .env.* 文件，而是在 next.config.js 中配置（从而动态获得当前时间） */
 export const builtAt = parseInt(must('builtAt', process.env.NEXT_PUBLIC_BUILT_AT), 10)
+
+/** 文件上传名的前缀，如 `kodo-admin/` （meihua 专用） */
+export const meihuaUploadPrefix = must('meihuaUploadPrefix', process.env.NEXT_PUBLIC_MEIHUA_UPLOAD_PREFIX)
 
 function must(name: string, variable?: string): string {
   if (variable == null) {

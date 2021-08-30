@@ -83,6 +83,20 @@
   });
 }
 
+.line-wrap() {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.line-nowrap() {
+  word-wrap: normal;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
 .ellipsis() {
   white-space: nowrap;
   overflow: hidden;

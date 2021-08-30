@@ -1,0 +1,139 @@
+@import "~utils/less/index.less";
+@import "~react-icecream-2/dist/variables.less";
+
+@appeal-input-width: 320px; // FIXME: icecream magic number
+@appeal-anchor-color: @blue-6;
+
+.unavailableTips {
+  width: 100%;
+  margin-top: 200px;
+  text-align: center;
+  font-size: @icecream-font-size-6;
+}
+
+.signInRequiredLoading {
+  height: 600px;
+  width: 100%;
+}
+
+.main {
+  min-height: 600px;
+  .centered();
+  margin-top: @icecream-gap-lg;
+  margin-bottom: @icecream-gap-lg;
+}
+
+.submit {
+  .type {
+    width: @appeal-input-width;
+  }
+
+  .submitLine {
+    width: 100%;
+    text-align: center;
+  }
+
+  .fileInputMain {
+    display: flex;
+    line-height: @icecream-form-input-height-md;
+
+    .inputWrapper {
+      width: @appeal-input-width;
+      .line-wrap();
+      cursor: pointer;
+
+      input {
+        display: none;
+      }
+    }
+
+    .templateDownload {
+      .line-nowrap();
+      color: @appeal-anchor-color;
+
+      .downloadIcon {
+        margin: 0 @icecream-gap-xs;
+        vertical-align: baseline;
+      }
+    }
+  }
+}
+
+.domainsDisabled {
+  display: none;
+}
+
+.domainItem {
+  position: relative;
+
+  .btns {
+    position: absolute;
+    top: 0;
+    left: @appeal-input-width;
+    margin: 0 @icecream-gap-xs;
+    .line-nowrap();
+
+    > * {
+      margin: 0 @icecream-gap-xs;
+      font-size: @icecream-font-size-8;
+      line-height: 1;
+      color: @appeal-anchor-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.history {
+  .coverCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    color: @grey-5;
+
+    .loading {
+      width: 100%;
+    }
+  }
+
+  .appealInfoItem,
+  .op {
+    display: flex;
+    line-height: 2.5;
+  }
+
+  .appealInfoItem .title,
+  .op .opBtn {
+    width: 75px;
+  }
+
+  .appealInfoItem {
+    .title {
+      .line-nowrap();
+      color: @grey-5;
+    }
+
+    .content {
+      flex: 1;
+      .line-wrap();
+    }
+
+    .urls {
+      a {
+        color: @appeal-anchor-color;
+      }
+
+      .url {
+        display: block;
+      }
+    }
+  }
+
+  .op {
+    .opBtn {
+      text-align: left;
+      margin-left: 0;
+    }
+  }
+}
