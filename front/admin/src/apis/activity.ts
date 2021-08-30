@@ -2,26 +2,36 @@ import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
 import FetchStore from 'stores/fetch'
 import { apiMongo } from 'constants/api-prefix'
-import { detailUrlPrefix } from 'constants/env'
+import { wwwHost } from 'constants/env'
 import { StateType } from 'constants/activity'
 
 // 一次请求最大返回条数，依赖于后台配置的 batch_limit
 const batchLimit = 1000
+
+const detailUrlPrefix = wwwHost + '/activity/detail?id='
+
+export interface IReminder {
+  id: string // 唯一 id
+  reminderTime: number // 活动开始前多少分钟提醒
+  reminderStatus: number // 0: 未提醒，1:开始提醒，2:提醒完成
+  createdAt: number // 创建提醒的时间，单位为秒
+  updatedAt: number // 更新提醒的时间，单位为秒
+}
 
 export interface IActivity {
   title: string // 标题
   imgUrl: string // 图片
   desc: string // 简介
   state: StateType // 发布状态
-  startTime: number // 活动开始时间
-  endTime: number // 活动结束时间
-  applyEndTime: number // 报名截止时间
-  editTime: number // 修改时间
+  startTime: number // 活动开始时间，单位为秒
+  endTime: number // 活动结束时间，单位为秒
+  applyEndTime: number // 报名截止时间，单位为秒
+  noLoginRequired: boolean // 代表活动是否不需要登录，默认为需要登录
+  editTime: number // 修改时间，单位为秒
   detail: string // 详情
   detailUrlPrefix?: string // 详情页面 url 前缀
   enableReminder: boolean // 是否提醒
-  reminderTime: number // 活动开始前多少分钟提醒
-  noticeStatus?: number // 通知状态,默认为 0
+  reminders: IReminder[] // 活动提醒数组
   location: string // 地点
 }
 export interface IActivityWithId extends IActivity {
@@ -39,12 +49,19 @@ export interface IListResponse {
   data: IActivityWithId[]
 }
 
-export interface IUser {
+export interface IRegistration {
+  checkedIn: boolean // 是否已签到
   userName: string
   phoneNumber: string
   email: string
   company: string
   createdAt: number
+}
+
+export interface IScanner {
+  _id: string
+  startTime: number // 链接有效期开始时间，单位为秒
+  endTime: number // 链接有效期结束时间，单位为秒
 }
 
 @injectable()
@@ -53,7 +70,7 @@ export default class ActivityApis {
   constructor(private fetchStore: FetchStore) { }
 
   add(options: IActivity): Promise<void> {
-    options = { ...options, ...{ detailUrlPrefix, editTime: moment().unix(), noticeStatus: 0 } }
+    options = { ...options, ...{ detailUrlPrefix, editTime: moment().unix() } }
     return this.fetchStore.postJSON(apiMongo + '/www-market-activity', options)
   }
 
@@ -73,16 +90,16 @@ export default class ActivityApis {
       .then(res => (res.data ? res : { ...res, data: [] }))
   }
 
-  // 获取注册用户总量
-  getUserCount(id: string): Promise<number> {
+  // 获取注册信息总量
+  getRegistrationsCount(id: string): Promise<number> {
     const options = { query: JSON.stringify({ marketActivityId: id }), limit: 1 }
     return this.fetchStore.get(apiMongo + '/www-activity-registration', options).then(res => res.count)
   }
 
-  // 获取注册的所有用户
-  getAllUsers(id: string, total: number): Promise<IUser[]> {
+  // 获取所有注册信息
+  getRegistrations(id: string, total: number): Promise<IRegistration[]> {
     const options = { query: JSON.stringify({ marketActivityId: id }) }
-    const pArr: Array<Promise<IUser[]>> = []
+    const pArr: Array<Promise<IRegistration[]>> = []
     for (let i = 0; i < total / batchLimit; i++) {
       pArr.push(
         this.fetchStore.get(apiMongo + '/www-activity-registration', { ...options, batchLimit, offset: i * batchLimit })
@@ -90,9 +107,18 @@ export default class ActivityApis {
       )
     }
     return Promise.all(pArr).then(res => {
-      const arr: IUser[] = []
+      const arr: IRegistration[] = []
       res.forEach(item => arr.push(...item))
       return arr
     })
+  }
+
+  // 创建一条用于扫码页面的数据
+  createScanner(): Promise<IScanner> {
+    const opts = {
+      startTime: moment().unix(),
+      endTime: moment().add(3, 'day').unix()
+    }
+    return this.fetchStore.postJSON(apiMongo + '/www-activity-check-in-qr-code-scanner', opts)
   }
 }

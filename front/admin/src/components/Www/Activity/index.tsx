@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { Tooltip, Icon, Modal, Button } from 'react-icecream'
@@ -13,17 +13,20 @@ import Store from 'qn-fe-core/store'
 
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
+
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
-
 import { timeFormatter } from 'utils/time'
-import * as style from 'utils/style.m.less'
+import * as commonStyle from 'utils/style.m.less'
+import { wwwHost } from 'constants/env'
 import { stateMap, dateFormat, StateType } from 'constants/activity'
 import { EditorStatus } from 'constants/editor'
 import { IActivityWithId } from 'apis/activity'
 
+import CopyUrlButton from './CopyUrlButton'
 import ActivityStore from './store'
 import EditorModal, { ExtraProps } from './Editor'
+import * as style from './style.m.less'
 
 // 表格数据一页条数
 export const pageSize = 5
@@ -83,6 +86,12 @@ class LocalStore extends Store {
     })
   }
 
+  @autobind
+  @ToasterStore.handle()
+  createScanner() {
+    return this.activityStore.createScanner()
+  }
+
   init() {
     this.addDisposer(
       () => this.editorModal.dispose()
@@ -99,7 +108,7 @@ const PageContent = observer(function _PageContent() {
   const renderState = (_: string, record: IActivityWithId) => stateMap[record.state]
   const renderTime = (_: string, record: IActivityWithId) => timeFormatter(dateFormat)(record.startTime) + ' 至 ' + timeFormatter(dateFormat)(record.endTime)
   const renderOperation = (_: string, record: IActivityWithId) => (
-    <div className={style.operation}>
+    <div className={commonStyle.operation}>
       <Tooltip title="详情">
         <a onClick={() => store.read(record._id)}>
           <Icon type="eye" />
@@ -131,11 +140,28 @@ const PageContent = observer(function _PageContent() {
     activityStore.fetchList({ page: current, states: filters.state })
   }
 
+  const handleShowUrl = useCallback(() => {
+    store.createScanner().then(res => {
+      const url = `${wwwHost}/activity/check-in/qr-code/scanner?id=${encodeURIComponent(res._id)}`
+      Modal.info({
+        title: '扫码签到链接',
+        content: <CopyUrlButton url={url} />
+      })
+    })
+  }, [store])
+  const handleCreateScannerUrl = useCallback(() => {
+    Modal.confirm({
+      title: '确定生成扫码签到链接？',
+      onOk: handleShowUrl
+    })
+  }, [handleShowUrl])
+
   return (
     <>
       <Container>
         <Spacer />
-        <Button icon="plus" onClick={store.add}>添加活动</Button>
+        <Button type="primary" onClick={handleCreateScannerUrl}>生成扫码签到链接</Button>
+        <Button icon="plus" className={style.add} onClick={store.add}>添加活动</Button>
       </Container>
       <Table
         dataSource={list.slice()}
@@ -146,7 +172,7 @@ const PageContent = observer(function _PageContent() {
         onChange={handleTableChange}
         scroll={{ x: 'max-content' }}
       >
-        <Table.Column title="活动主题" width={200} dataIndex="title" className={style.cellContent} />
+        <Table.Column title="活动主题" width={200} dataIndex="title" className={commonStyle.cellContent} />
         <Table.Column title="活动时间" width={300} render={renderTime} />
         <Table.Column title="更新时间" width={150} dataIndex="editTime" render={timeFormatter(dateFormat)} />
         <Table.Column title="状态" width={120} dataIndex="state" render={renderState} filters={stateFilters} />

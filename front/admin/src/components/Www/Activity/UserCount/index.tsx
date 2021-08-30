@@ -4,7 +4,7 @@ import { Button, Modal } from 'react-icecream'
 import XLSX from 'xlsx'
 import { useInjection } from 'qn-fe-core/di'
 
-import { IUser } from 'apis/activity'
+import { IRegistration } from 'apis/activity'
 import { timeFormatter } from 'utils/time'
 
 import ActivityStore from '../store'
@@ -14,9 +14,9 @@ interface IProps {
 }
 
 const filenName = '活动报名人员信息表.xlsx'
-const header = ['userName', 'phoneNumber', 'email', 'company', 'createdAt']
+const header = ['userName', 'phoneNumber', 'email', 'company', 'createdAt', 'checkedIn']
 // 展示的名称
-const headerDisplay = ['姓名', '手机号', '邮箱', '公司', '报名时间']
+const headerDisplay = ['姓名', '手机号', '邮箱', '公司', '报名时间', '是否已签到']
 // 每列显示宽度
 const cols = [{ wpx: 120 }, { wpx: 120 }, { wpx: 200 }, { wpx: 300 }, { wpx: 150 }]
 
@@ -25,7 +25,7 @@ export default observer(function UserCount({ id }: IProps) {
   const activityStore = useInjection(ActivityStore)
 
   useEffect(() => {
-    activityStore.getUserCount(id).then(count => {
+    activityStore.getRegistrationsCount(id).then(count => {
       setTotal(count)
     })
   }, [activityStore, id])
@@ -35,7 +35,7 @@ export default observer(function UserCount({ id }: IProps) {
       Modal.confirm({
         title: '确定下载报名人员信息表？',
         onOk: () => {
-          activityStore.getAllUsers(id, total).then(res => {
+          activityStore.getRegistrations(id, total).then(res => {
             const wb = XLSX.utils.book_new()
             const ws = XLSX.utils.aoa_to_sheet(genSheetData(res))
             ws['!cols'] = cols
@@ -53,16 +53,20 @@ export default observer(function UserCount({ id }: IProps) {
 })
 
 // 生成表格所需的 data
-function genSheetData(users: IUser[]) {
+function genSheetData(registrations: IRegistration[]) {
   const res = [headerDisplay]
-  for (const user of users) {
+  for (const registration of registrations) {
     const arr: string[] = []
     for (const i of header) {
       if (i === 'createdAt') {
-        arr.push(user.createdAt ? timeFormatter('YYYY-MM-DD HH:mm')(user.createdAt) : '')
+        arr.push(registration.createdAt ? timeFormatter('YYYY-MM-DD HH:mm')(registration.createdAt) : '')
         continue
       }
-      arr.push(user[i] || '')
+      if (i === 'checkedIn') {
+        arr.push(registration.checkedIn ? '是' : '否')
+        continue
+      }
+      arr.push(registration[i] || '')
     }
     res.push(arr)
   }

@@ -1,0 +1,21 @@
+@import "~react-icecream/style/less/variables/index.less";
+
+.container {
+  margin-left: @icecream-gap-sm;
+
+  .row {
+    display: flex;
+    align-items: center;
+    height: 40px;
+
+    p {
+      margin: 0 @icecream-gap-xs;
+    }
+
+    .icon {
+      &:nth-child(2) {
+        margin-left: @icecream-gap-xs;
+      }
+    }
+  }
+}

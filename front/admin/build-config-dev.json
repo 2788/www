@@ -4,6 +4,6 @@
     "/api": "http://admin-backend-www-env-staging.qa.qiniu.io"
   },
   "envVariables": {
-    "activityDetailUrlPrefix": "http://www-2020.dev.qiniu.io/activity/detail?id="
+    "process.env.WWW_HOST": "http://www-2020.dev.qiniu.io"
   }
 }

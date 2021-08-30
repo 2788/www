@@ -3,5 +3,12 @@
  * @author renpanpan <renpanpan@qiniu.com>
  */
 
-// 市场活动详情地址前缀
-export const detailUrlPrefix = activityDetailUrlPrefix
+// 官网站点 Host
+export const wwwHost = must('host', process.env.WWW_HOST)
+
+function must(name: string, variable?: string): string {
+  if (variable === undefined) {
+    throw new Error(`Invalid value for environment variable ${name}.`)
+  }
+  return variable
+}

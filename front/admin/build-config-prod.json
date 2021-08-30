@@ -1,6 +1,6 @@
 {
   "extends": "./build-config.json",
   "envVariables": {
-    "activityDetailUrlPrefix": "https://www.qiniu.com/activity/detail?id="
+    "process.env.WWW_HOST": "https://www.qiniu.com"
   }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Modal, Form, Input, DatePicker, Button } from 'react-icecream'
+import { Modal, Form, Input, DatePicker, Button, Checkbox } from 'react-icecream'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import moment, { Moment } from 'moment'
@@ -13,11 +13,11 @@ import Store from 'qn-fe-core/store'
 import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
+import { bindFormItem, bindTextInput, bindCheckbox } from 'admin-base/common/utils/form'
 import { textNotBlank } from 'admin-base/common/utils/validator'
 
 import { bindRangePicker } from 'utils/bind'
-import * as style from 'utils/style.m.less'
+import * as commonStyle from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { StateType, stateMap, dateFormat, timeFormat } from 'constants/activity'
 import { IActivity } from 'apis/activity'
@@ -26,9 +26,10 @@ import RichTextEditor, * as richTextEditor from 'components/common/RichTextEdito
 import ImgPreview from 'components/common/ImgPreview'
 
 import LocationInput, * as locationInput from '../LocationInput'
-import ReminderInput, * as reminderInput from '../ReminderInput'
+import ReminderConfig, * as reminderConfig from '../ReminderConfig'
 import UserCount from '../UserCount'
 import ActivityStore from '../store'
+import * as style from './style.m.less'
 
 const defaultFormItemLayout = {
   labelCol: { xs: { span: 4 }, sm: { span: 4 } },
@@ -43,8 +44,9 @@ type State = FormState<{
   startTime: FieldState<Moment>
   endTime: FieldState<Moment>
   applyEndTime: FieldState<Moment>
+  requireLogin: FieldState<boolean>
   detail: richTextEditor.State
-  reminder: reminderInput.State
+  reminder: reminderConfig.State
 }>
 
 type FormDataType = {
@@ -68,10 +70,11 @@ export const defaultFormData: FormDataType = {
     endTime: moment().add(1, 'day').hour(16).startOf('hour')
       .unix(),
     applyEndTime: moment().unix(),
+    noLoginRequired: false,
     editTime: 0,
     detail: '',
     enableReminder: false,
-    reminderTime: 30
+    reminders: []
   },
   id: ''
 }
@@ -103,7 +106,7 @@ class LocalStore extends Store {
 
   @Loadings.handle('submit')
   async doSubmit(state: StateType) {
-    const reminder = reminderInput.getValue(this.form.$.reminder)
+    const reminder = reminderConfig.getValue(this.form.$.reminder)
     const param: IActivity = {
       title: this.formValue.title,
       imgUrl: uploadImg.getValue(this.form.$.imgUrl),
@@ -113,10 +116,11 @@ class LocalStore extends Store {
       startTime: this.formValue.startTime.startOf('minute').unix(),
       endTime: this.formValue.endTime.endOf('minute').unix(),
       applyEndTime: this.formValue.applyEndTime.endOf('minute').unix(),
+      noLoginRequired: !this.formValue.requireLogin,
       editTime: this.props.activity.editTime,
       detail: richTextEditor.getValue(this.form.$.detail),
       enableReminder: reminder.enableReminder,
-      reminderTime: reminder.reminderTime
+      reminders: reminder.reminders
     }
     if (this.props.status === EditorStatus.Creating) {
       await this.activityStore.add(param)
@@ -145,7 +149,7 @@ class LocalStore extends Store {
 
   @action
   initFormState(activity: IActivity) {
-    const { enableReminder, reminderTime } = activity
+    const { enableReminder, reminders } = activity
     const startTime = new FieldState(moment.unix(activity.startTime))
     const endTime = new FieldState(moment.unix(activity.endTime))
 
@@ -158,8 +162,9 @@ class LocalStore extends Store {
       endTime,
       applyEndTime: new FieldState(moment.unix(activity.applyEndTime))
         .validators(val => (val >= startTime.value.startOf('minute') ? '报名截止时间不能大于等于活动开始时间' : null)),
+      requireLogin: new FieldState(!activity.noLoginRequired),
       detail: richTextEditor.createState(activity.detail),
-      reminder: reminderInput.createState({ enableReminder, reminderTime })
+      reminder: reminderConfig.createState({ enableReminder, reminders })
     })
     this.addDisposer(this.form.dispose)
   }
@@ -190,7 +195,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
 
   const fields = store.form.$
   const isReading = status === EditorStatus.Reading
-  const imgExtra = <p className={style.desc}>推荐尺寸：1600 * 900 px</p>
+  const imgExtra = <p className={commonStyle.desc}>推荐尺寸：1600 * 900 px</p>
 
   const footerView = isReading
     ? null
@@ -255,6 +260,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         </Form.Item>
         <Form.Item
           label="报名截止时间"
+          className={style.applyItem}
           {...bindFormItem(fields.applyEndTime)}
         >
           <DatePicker
@@ -264,6 +270,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
             allowClear={false}
             disabled={isReading}
           />
+          <Checkbox className={style.checkbox} {...bindCheckbox(fields.requireLogin)}>报名前是否需要强制登录</Checkbox>
         </Form.Item>
         {isReading && <Form.Item label="已报名人数"><UserCount id={props.id!} /></Form.Item>}
         <Form.Item
@@ -274,9 +281,10 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         </Form.Item>
         <Form.Item
           label="活动提醒"
+          extra={<p className={commonStyle.desc}>因为有延迟，所以醒间隔最好不要短于 30 分钟</p>}
           {...bindFormItem(fields.reminder)}
         >
-          <ReminderInput state={fields.reminder} disabled={isReading} />
+          <ReminderConfig state={fields.reminder} disabled={isReading} />
         </Form.Item>
       </Form>
     </Modal>

@@ -3,6 +3,7 @@ import autobind from 'autobind-decorator'
 import Store from 'qn-fe-core/store'
 import { injectable } from 'qn-fe-core/di'
 
+import ToasterStore from 'admin-base/common/stores/toaster'
 import Loadings from 'admin-base/common/stores/loadings'
 
 import ActivityApis, { IActivityWithId, IActivity, IListOptions, IListResponse } from 'apis/activity'
@@ -14,9 +15,11 @@ type FecthListOptions = { page: number, states?: StateType[] }
 export default class ActivityStore extends Store {
 
   constructor(
-    private activityApis: ActivityApis
+    private activityApis: ActivityApis,
+    public toasterStore: ToasterStore
   ) {
     super()
+    ToasterStore.bind(this, toasterStore)
   }
 
   @observable.ref total = 0
@@ -66,11 +69,15 @@ export default class ActivityStore extends Store {
     return this.activityApis.delete(id)
   }
 
-  getUserCount(id: string) {
-    return this.activityApis.getUserCount(id)
+  getRegistrationsCount(id: string) {
+    return this.activityApis.getRegistrationsCount(id)
   }
 
-  getAllUsers(id: string, total: number) {
-    return this.activityApis.getAllUsers(id, total)
+  getRegistrations(id: string, total: number) {
+    return this.activityApis.getRegistrations(id, total)
+  }
+
+  createScanner() {
+    return this.activityApis.createScanner()
   }
 }

@@ -1,6 +1,6 @@
-
-export const apiMongo = '/api/proxy/mongo'
-export const apiBlog = '/api/proxy/blog/api'
+export const apiPrefix = '/api/proxy'
+export const apiMongo = `${apiPrefix}/mongo`
+export const apiBlog = `${apiPrefix}/blog/api`
 
 export enum HttpMethod {
   GET = 'GET',
