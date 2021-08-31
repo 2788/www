@@ -10,19 +10,25 @@ import (
 )
 
 type ServerConfig struct {
-	Port                             int    `yaml:"port"`
-	Mode                             string `yaml:"mode"`
-	WriteTimeout                     int    `yaml:"write_timeout"`
-	MongoApiPrefix                   string `yaml:"mongo_api_prefix"`
-	MarketActivityResourceName       string `yaml:"market_activity_resource_name"`
-	ActivityRegistrationResourceName string `yaml:"activity_registration_resource_name"`
-	SMSTemplate                      string `yaml:"sms_template"`
-	SMSBatchLimit                    int    `yaml:"sms_batch_limit"`
-	MorseHost                        string `yaml:"morse_host"`
-	MorseClientId                    string `yaml:"morse_client_id"`
-	SendMessageTaskInterval          int    `yaml:"send_message_task_interval"`
-	RedisHosts                       string `yaml:"redis_hosts"`
-	LilliputHost                     string `yaml:"lilliput_host"` // 短链服务地址
+	Port                             int               `yaml:"port"`
+	Mode                             string            `yaml:"mode"`
+	WriteTimeout                     int               `yaml:"write_timeout"`
+	MongoApiPrefix                   string            `yaml:"mongo_api_prefix"`
+	MarketActivityResourceName       string            `yaml:"market_activity_resource_name"`
+	ActivityRegistrationResourceName string            `yaml:"activity_registration_resource_name"`
+	SMSTemplates                     SMSTemplateConfig `yaml:"sms_templates"`
+	SMSBatchLimit                    int               `yaml:"sms_batch_limit"`
+	MorseHost                        string            `yaml:"morse_host"`
+	MorseClientId                    string            `yaml:"morse_client_id"`
+	SendMessageTaskInterval          int               `yaml:"send_message_task_interval"`
+	RedisHosts                       string            `yaml:"redis_hosts"`
+	LilliputHost                     string            `yaml:"lilliput_host"` // 短链服务地址
+}
+
+type SMSTemplateConfig struct {
+	ActivityReminder             string `yaml:"activity_reminder"`                // 活动提醒模版
+	ActivityRegSucceed           string `yaml:"activity_reg_succeed"`             // 活动报名成功模版
+	ActivityRegSucceedLinkPrefix string `yaml:"activity_reg_succeed_link_prefix"` // 活动报名成功模版链接前缀
 }
 
 // TbpConfig 对接腾讯智能对话平台（tbp）的配置
