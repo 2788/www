@@ -4,7 +4,7 @@
 
 import React, { useState, useCallback, useRef } from 'react'
 
-// FIXME: 查一下 Modal / Dialog 是不是也需要 cancel 啥的
+// FIXME: 查一下 Modal / Dialog 是不是也需要类似 `useAlive` 啥的 @huangbinjie
 import IcecreamBaseDialog from 'react-icecream-2/lib/Dialog'
 import * as icecreamDialog from 'react-icecream-2/lib/Dialog'
 
@@ -26,7 +26,7 @@ export function useDialog(IcecreamDialog: DialogType) {
   const rejectRef = useRef(doNothing)
   const [shownDialogProps, setShownDialogProps] = useState<UseDialogProps | undefined>(undefined)
 
-  const showDialog = useCallback((props?: UseDialogProps) => {
+  const showDialog = useCallback((props?: UseDialogProps): Promise<void> => {
     setVisible(true)
     setShownDialogProps(props)
 
@@ -71,31 +71,52 @@ export function useBaseDialog() {
   return useDialog(IcecreamBaseDialog)
 }
 
-function useStatusDialog(IcecreamDialog: DialogType, isCancelable = true) {
-  const [showDialog, Dialog] = useDialog(IcecreamDialog)
+// TODO: 未来 icecream 的 status dialog 如果没有 `onCancel` 的概念 @huangbinjie
+//   那么 `CancelType` 也许是不需要的，因为 `reject` 没了，默认行为就是 `resolve`
+//   而 `none` 也许可以直接通过配置 Dialog 的各种 closable 行为来实现
+type CancelType = 'none' | 'resolve' | 'reject'
 
-  // TODO: need sth like `maskClosable` & `keyboardClosable` to avoid cancel
-  const showDialogWithoutCancel = useCallback((props?: UseDialogProps) => (
-    showDialog(props).catch(() => undefined)
-  ), [showDialog])
+function useStatusDialog(IcecreamDialog: DialogType, cancelType: CancelType = 'resolve') {
+  const [showBaseDialog, Dialog] = useDialog(IcecreamDialog)
 
-  return [isCancelable ? showDialogWithoutCancel : showDialog, Dialog] as const
+  const showDialog = useCallback((props?: UseDialogProps): Promise<void> => {
+    if (cancelType === 'resolve') {
+      return showBaseDialog(props).catch(() => undefined)
+    }
+
+    if (cancelType === 'reject') {
+      return showBaseDialog(props)
+    }
+
+    if (cancelType === 'none') {
+      return showBaseDialog({
+        ...props,
+        // `StatusDialog` 本身就没有右上角的叉和取消按钮
+        maskClickable: false,
+        keyboard: false
+      })
+    }
+
+    throw new Error(`Unexpect cancel type: ${cancelType}.`)
+  }, [showBaseDialog, cancelType])
+
+  return [showDialog, Dialog] as const
 }
 
-export function useSuccessDialog(isCancelable?: boolean) {
-  return useStatusDialog(icecreamDialog.SuccessDialog, isCancelable)
+export function useSuccessDialog(cancelType?: CancelType) {
+  return useStatusDialog(icecreamDialog.SuccessDialog, cancelType)
 }
 
-export function useErrorDialog(isCancelable?: boolean) {
-  return useStatusDialog(icecreamDialog.ErrorDialog, isCancelable)
+export function useErrorDialog(cancelType?: CancelType) {
+  return useStatusDialog(icecreamDialog.ErrorDialog, cancelType)
 }
 
-export function useInfoDialog(isCancelable?: boolean) {
-  return useStatusDialog(icecreamDialog.InfoDialog, isCancelable)
+export function useInfoDialog(cancelType?: CancelType) {
+  return useStatusDialog(icecreamDialog.InfoDialog, cancelType)
 }
 
-export function useWarningDialog(isCancelable?: boolean) {
-  return useStatusDialog(icecreamDialog.WarningDialog, isCancelable)
+export function useWarningDialog(cancelType?: CancelType) {
+  return useStatusDialog(icecreamDialog.WarningDialog, cancelType)
 }
 
 export function useConfirmDialog() {

@@ -147,7 +147,6 @@ export function useApiWithDialogToaster<F extends ApiMethod>(
   const [showSuccessDialog, SuccessDialog] = useSuccessDialog()
   const [showErrorDialog, ErrorDialog] = useErrorDialog()
 
-  // const promiseHandlersRef = useRef(getPromiseHandlers<ResultFor<F>>())
   const promiseHandlersRef = useRef<PromiseHandlers<ResultFor<F>> | null>(null)
 
   useEffect(() => {
@@ -162,6 +161,7 @@ export function useApiWithDialogToaster<F extends ApiMethod>(
       if (base.error == null) {
         const done = () => {
           resolve(base.$ as ResultFor<F>) // not null
+          promiseHandlersRef.current = null
         }
 
         if (!successText) {
@@ -175,20 +175,29 @@ export function useApiWithDialogToaster<F extends ApiMethod>(
       } else {
         showErrorDialog({ children: getNormalizedErrorMessage(base.error, errorText) }).then(() => {
           reject(base.error)
+          promiseHandlersRef.current = null
         })
       }
-
-      promiseHandlersRef.current = null
     }
   }, [base.loading, base.completed, base.$, base.error, successText, errorText, showSuccessDialog, showErrorDialog])
 
   const baseCall = base.call // eslint check hooks deps bug
   const call = useCallback((...args: Parameters<F>): ReturnType<F> => {
-    baseCall(...args)
-
     // the beginning of each group of api calls
     if (promiseHandlersRef.current == null) {
       promiseHandlersRef.current = getPromiseHandlers<ResultFor<F>>() // init status for future completed
+      baseCall(...args)
+    } else {
+      // 注意：这里跟 `useApi` 的行为有所不同：
+      // `useApi` 虽然有 debounce（解决短时间内多次 re render 导致的多次 use effect -> api call 的问题）
+      // 但实质上是不管竞态的，运行结果比较随机但一般不会报错问题不大；
+      // 而这里由于要缓存 promise，直接不管是有可能导致 js 报错页面崩溃的，为了实现简单一点，这里采取的策略是：
+      // 上锁，在前面的 fetch 结束前后续 fetch 会一直复用前面这个还没结束的 fetch 产生的 promise；
+      // 而不是产生一个新的替换掉正在 fetch 的这个，然后把正在 fetch 的这个给 abort / discard 掉。
+      // 一般来说，`useApiWithDialogToaster` 的使用场景本身就会用 `loading` 上锁，
+      // 跟 `portal` 的常见情况是一致的，因此实际上也不容易出问题
+      // eslint-disable-next-line no-console
+      console.error('[USE_API_ERROR]', 'Last request was discarded, use pending one instead.')
     }
 
     return promiseHandlersRef.current.promise as ReturnType<F>

@@ -3,6 +3,7 @@
  * @desc 文件输入组件，将文件上传并返回外链地址
  * @todo 支持多文件上传
  * @todo 脱离 meihua 并移植到公共代码里
+ * @fixme 支持 `state.reset()`
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'

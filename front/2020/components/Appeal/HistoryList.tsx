@@ -58,17 +58,17 @@ function AppealDetailInfoEntry({ appealInfo }: { appealInfo: AppealInfo }) {
           {renderInfoItem('申诉说明', (
             <div className={style.urls}>
               {(appealInfo.attaches || []).map((attachment, index) => (
-                <a
-                  key={index}
-                  title="申诉说明附件"
-                  href={attachment}
-                  download // FIXME: 不一定能触发下载，有各种条件限制，待优化
-                  target="_blank"
-                  rel="noopener nofollow" // noreferrer
-                  className={style.url}
-                >
-                  附件 {index + 1}
-                </a>
+                <span key={index} className={style.url}>
+                  <a
+                    title="申诉说明附件"
+                    href={attachment}
+                    download // FIXME: 不一定能触发下载，有各种条件限制，待优化
+                    target="_blank"
+                    rel="noopener nofollow" // noreferrer
+                  >
+                    附件 {index + 1}
+                  </a>
+                </span>
               ))}
             </div>
           ))}
@@ -98,13 +98,9 @@ function RevertAppealEntry({ appealInfo, onReverted }: { appealInfo: AppealInfo,
     return null
   }
 
-  const btnView = isSubmitting
-    ? (<Button type="link" className={style.opBtn} disabled>申请撤销中...</Button>)
-    : (<Button type="link" className={style.opBtn} onClick={revert}>撤销申诉</Button>)
-
   return (
     <>
-      {btnView}
+      <Button type="link" className={style.opBtn} onClick={revert} loading={isSubmitting}>撤销申诉</Button>
       <ConfirmDialog>确定撤销本申诉吗？</ConfirmDialog>
       <ResultDialog />
     </>

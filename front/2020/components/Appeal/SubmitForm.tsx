@@ -38,7 +38,7 @@ function createState() {
   })
 }
 
-export default observer(function SubmitCard() {
+export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () => void }) {
   const state = useFormstateX(createState)
   const fields = state.$
   const type = fields.type.value
@@ -59,8 +59,10 @@ export default observer(function SubmitCard() {
 
     await submit(value)
 
-    window.location.reload()
-  }, [state, type, submit])
+    state.reset()
+
+    onSubmitted()
+  }, [state, type, submit, onSubmitted])
 
   return (
     <Card className={style.submit} title="发起申诉">

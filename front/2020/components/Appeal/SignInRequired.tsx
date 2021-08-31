@@ -23,7 +23,7 @@ function SignInFooter() {
 }
 
 export default function SignInRequired({ children }: Props) {
-  const [showDialog, Dialog] = useInfoDialog(false)
+  const [showDialog, Dialog] = useInfoDialog('none')
   const isLoadingUserInfo = useIsLoadingUserInfo()
   const uesrInfo = useUserInfo()
   const isSignedIn = !!uesrInfo && uesrInfo.signedIn

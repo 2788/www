@@ -2,7 +2,7 @@
  * @file 申诉
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Row } from 'components/UI/Card'
 import { useMobile } from 'hooks/ua'
@@ -15,6 +15,8 @@ import style from './style.less'
 
 export default function Appeal() {
   const isMobile = useMobile()
+  const [mainId, setMainId] = useState(0) // HACK: uuid for reload
+
   return (
     <Row className={style.main}>
       {
@@ -24,8 +26,10 @@ export default function Appeal() {
         )
         : (
           <SignInRequired>
-            <SubmitForm />
-            <HistoryList />
+            <React.Fragment key={mainId}>
+              <SubmitForm onSubmitted={() => { setMainId(currMainId => currMainId + 1) }} />
+              <HistoryList />
+            </React.Fragment>
           </SignInRequired>
         )
       }

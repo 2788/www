@@ -5247,7 +5247,7 @@ humanize-ms@^1.2.0, humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
-icecream-base@^0.0.4, icecream-base@^0.0.5:
+icecream-base@^0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/icecream-base/-/icecream-base-0.0.5.tgz#3ca52c18dbc51e1155f86b3b0a654ff895595236"
   integrity sha512-nGQeQ859IlTJWzXKPGjN1KjLp6z+QTd6sRb1SG5Ue8YOXhTu7u6JT2EBQ/SlxPrri0OGnaqYKbECa+tBSzsK0Q==
@@ -8670,7 +8670,7 @@ rc-menu@~7.4.23:
     rc-util "^4.13.0"
     resize-observer-polyfill "^1.5.0"
 
-rc-motion@^2.0.0, rc-motion@^2.3.0:
+rc-motion@^2.0.0, rc-motion@^2.3.0, rc-motion@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/rc-motion/-/rc-motion-2.4.4.tgz#e995d5fa24fc93065c24f714857cf2677d655bb0"
   integrity sha512-ms7n1+/TZQBS0Ydd2Q5P4+wJTSOrhIrwNxLXCZpR7Fa3/oac7Yi803HDALc2hLAKaCTQtw9LmQeB58zcwOsqlQ==
@@ -9049,20 +9049,21 @@ react-dom@^16.12.0:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-"react-icecream-2@npm:react-icecream@2.0.0-beta.27":
-  version "2.0.0-beta.27"
-  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.0.0-beta.27.tgz#73f9349d88625af863181bd38b9e86747b6fd884"
-  integrity sha512-IaH17TjbYM6FqCRxlBtgXOZOrEE3qtEo9I1xVmHWG9Xb829Ko14Px9N0yf/qRiU1hqMsJSrRFN3vs1m4ULZ6cA==
+"react-icecream-2@npm:react-icecream@2.0.0-beta.28.1":
+  version "2.0.0-beta.28.1"
+  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.0.0-beta.28.1.tgz#795428bc2b9c029f6ba7b4de6687e49e2e4318f8"
+  integrity sha512-1JvcIdSnozAz/8Q7AsZ1FOKH+VqjDTu0xLnWevf7c3sQU2z2wI7OZLnAQGRkyk0XhS2iW+KhTfHqjYXCqUcjFQ==
   dependencies:
     "@types/react-table" "^7.0.28"
     classnames "^2.2.5"
-    icecream-base "^0.0.4"
+    icecream-base "^0.0.5"
     lodash "^4.17.20"
     moment "^2.29.1"
     rc-cascader "^1.4.2"
     rc-dialog "^8.5.0"
     rc-drawer "^4.2.2"
     rc-dropdown "^3.2.0"
+    rc-motion "^2.4.4"
     rc-pagination "^3.1.3"
     rc-picker "^2.5.2"
     rc-slider "^9.7.1"
