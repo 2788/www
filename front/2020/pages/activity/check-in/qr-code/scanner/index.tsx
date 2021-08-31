@@ -34,7 +34,7 @@ export function PageContent() {
   }, [scanQrCodeResult, isIdValid, isIdValidLoading, isWx])
 
   const wrappedGetConfig = useCallback((url: string): Promise<IWechatConfig | null> => {
-    if (!isWx) return new Promise(resolve => resolve(null))
+    if (!isWx) return Promise.resolve(null)
     return getConfig(url)
   }, [isWx])
 
@@ -95,7 +95,7 @@ export function PageContent() {
 
 export default function Scanner() {
   return (
-    <Layout title="扫码签到" keywords="" description="" simple>
+    <Layout title="扫码签到" keywords="" description="" forceSimple>
       <PageContent />
     </Layout>
   )

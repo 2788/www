@@ -21,7 +21,7 @@ export function PageContent() {
 
 export default function QrCode() {
   return (
-    <Layout title="签到二维码" keywords="" description="" simple>
+    <Layout title="签到二维码" keywords="" description="" forceSimple>
       <PageContent />
     </Layout>
   )

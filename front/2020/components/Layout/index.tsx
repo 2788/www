@@ -29,10 +29,10 @@ export type Props = {
   /** 页面 description（SEO 用） */
   description: string
   children: ReactNode
-  simple?: boolean // 是否简单布局，优先级高于 useSimple
+  forceSimple?: boolean // 是否强制简单布局，优先级高于 useSimple
 }
 
-export default function Layout({ title, keywords, description, simple, children }: Props) {
+export default function Layout({ title, keywords, description, forceSimple, children }: Props) {
   title = !title ? defaultTitle : (title + titleSuffix)
 
   usePv(title)
@@ -56,15 +56,15 @@ export default function Layout({ title, keywords, description, simple, children 
           {keywordsMeta}
           {descriptionMeta}
         </Head>
-        <ContentWrapper simple={simple}>{children}</ContentWrapper>
+        <ContentWrapper forceSimple={forceSimple}>{children}</ContentWrapper>
       </UserInfoProvider>
     </UaProvider>
   )
 }
 
-function ContentWrapper({ simple, children }: PropsWithChildren<{ simple?: boolean }>) {
+function ContentWrapper({ forceSimple = false, children }: PropsWithChildren<{ forceSimple?: boolean }>) {
   const keepSimple = useSimple()
-  const notSimple = !simple && !keepSimple
+  const notSimple = !forceSimple && !keepSimple
 
   return (
     <OverlayProvider>
