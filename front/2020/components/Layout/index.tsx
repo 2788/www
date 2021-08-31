@@ -29,9 +29,10 @@ export type Props = {
   /** 页面 description（SEO 用） */
   description: string
   children: ReactNode
+  simple?: boolean // 是否简单布局，优先级高于 useSimple
 }
 
-export default function Layout({ title, keywords, description, children }: Props) {
+export default function Layout({ title, keywords, description, simple, children }: Props) {
   title = !title ? defaultTitle : (title + titleSuffix)
 
   usePv(title)
@@ -55,25 +56,26 @@ export default function Layout({ title, keywords, description, children }: Props
           {keywordsMeta}
           {descriptionMeta}
         </Head>
-        <ContentWrapper>{children}</ContentWrapper>
+        <ContentWrapper simple={simple}>{children}</ContentWrapper>
       </UserInfoProvider>
     </UaProvider>
   )
 }
 
-function ContentWrapper({ children }: PropsWithChildren<{}>) {
+function ContentWrapper({ simple, children }: PropsWithChildren<{ simple?: boolean }>) {
   const keepSimple = useSimple()
+  const notSimple = !simple && !keepSimple
 
   return (
     <OverlayProvider>
       <feedback.ModalProvider>
-        {!keepSimple && <Header />}
+        {notSimple && <Header />}
         <ErrorBoundary>
           {children}
         </ErrorBoundary>
-        {!keepSimple && <Footer />}
+        {notSimple && <Footer />}
         <RegisterEntry />
-        {!keepSimple && <feedback.Entry />}
+        {notSimple && <feedback.Entry />}
         <feedback.Modal />
       </feedback.ModalProvider>
       <OverlaySlot />

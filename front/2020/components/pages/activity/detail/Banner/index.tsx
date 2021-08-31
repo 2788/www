@@ -19,6 +19,7 @@ const defaultBannerData = {
   startTime: '',
   endTime: '',
   applyEndTime: '',
+  noLoginRequired: true,
   location: '',
   progressState: ProgressState.End,
   isOverApplyTime: true
@@ -28,23 +29,23 @@ Banner.defaultProps = defaultBannerData
 
 export default function Banner(props: IActivity) {
   const {
-    id, imgUrl, title, desc, startTime, endTime, applyEndTime, location, progressState, isOverApplyTime
+    id, imgUrl, title, desc, startTime, endTime, applyEndTime, noLoginRequired, location, progressState, isOverApplyTime
   } = props
   const currentUrl = useUrl()
   const { add: addModal } = useOverlay()
   const userInfo = useUserInfo()
 
   const handelClick = useCallback(() => {
-    // 已登录则弹出报名框
-    if (userInfo && userInfo.signedIn) {
+    // 不需要登录或者已登录则弹出报名框
+    if (noLoginRequired || (userInfo && userInfo.signedIn)) {
       return addModal(<MyModal marketActivityId={id} />)
     }
-    // 未登录
+    // 需要登录且未登录
     Modal.info({
       content: '未登录，请先登录再报名',
       okText: <a target="_blank" rel="noopener" href={urlForSignin(currentUrl)}>登录</a>
     })
-  }, [addModal, currentUrl, id, userInfo])
+  }, [addModal, currentUrl, id, noLoginRequired, userInfo])
 
   return (
     <div className={style.wrapper}>

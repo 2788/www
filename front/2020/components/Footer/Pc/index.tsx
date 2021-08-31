@@ -7,6 +7,7 @@ import React, { PropsWithChildren } from 'react'
 import Link from 'components/Link'
 import { getCurrentYear } from 'utils'
 import { nameMap, Product, urlMap } from 'constants/products'
+import { Activity, nameMap as activityNameMap, urlMap as activityUrlMap } from 'constants/activity'
 import { urlForPrice } from 'utils/route'
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
@@ -75,10 +76,6 @@ function LinkGroups() {
         <LinkItem url="/user-agreement">用户协议</LinkItem>
         <LinkItem url="/sla-kodo">产品 SLA</LinkItem>
         <LinkItem url="https://status.qiniu.com">服务状态</LinkItem>
-      </LinkGroup>
-
-      <LinkGroup title="开发者">
-        <LinkItem url="/activity">开发者活动</LinkItem>
         <LinkItem url="https://developer.qiniu.com/sdk#official-tool">开发者工具</LinkItem>
       </LinkGroup>
 
@@ -96,6 +93,7 @@ function LinkGroups() {
         <LinkItem url="https://campus.qiniu.com">校园招聘</LinkItem>
         <LinkItem url="/contact">联系我们</LinkItem>
         <LinkItem url="https://blog.qiniu.com/archives/category/1">最新动态</LinkItem>
+        <LinkItem url={activityUrlMap[Activity.Main]}>{activityNameMap[Activity.Main]}</LinkItem>
       </LinkGroup>
     </section>
   )

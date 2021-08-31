@@ -1,5 +1,5 @@
 /**
- * @file 开发者活动
+ * @file 市场活动
  */
 
 import React from 'react'
@@ -26,8 +26,8 @@ function Page({ activities, page, total }: IProps) {
   return (
     <>
       <PageBanner
-        title="开发者活动"
-        desc="为广大开发者提供丰富的线上直播和线下活动。致力于分享最前沿、优质的技术信息，共创繁荣技术生态。"
+        title="市场活动"
+        desc="为广大客户和开发者提供线上直播和线下活动，分享七牛最新产品动态和实践应用，共同探讨最前沿最优质的技术信息。"
         icon={<Banner />}
       />
 
@@ -43,9 +43,9 @@ function Page({ activities, page, total }: IProps) {
 export default function Activity(props: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
-      title="开发者活动"
-      keywords="活动, 开发者, 开发者活动, 线上直播, 线下活动, 前沿, 优质, 技术, 生态"
-      description="为广大开发者提供丰富的线上直播和线下活动。致力于分享最前沿、优质的技术信息，共创繁荣技术生态。"
+      title="市场活动"
+      keywords="活动, 开发者, 市场活动, 线上直播, 线下活动, 前沿, 优质, 技术, 生态"
+      description="为广大客户和开发者提供线上直播和线下活动，分享七牛最新产品动态和实践应用，共同探讨最前沿最优质的技术信息。"
     >
       <Page {...props} />
     </Layout>

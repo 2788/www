@@ -3,6 +3,7 @@ import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import { nameMap, Product, urlMap } from 'constants/products'
+import { Activity, nameMap as activityNameMap, urlMap as activityUrlMap } from 'constants/activity'
 import { urlForPrice } from 'utils/route'
 import Github from './images/github.svg'
 import Weibo from './images/sina_weibo.svg'
@@ -43,10 +44,6 @@ export default function FooterForMobile() {
             <MenuItem><Link href="/user-agreement">用户协议</Link></MenuItem>
             <MenuItem><Link href="/sla-kodo">产品 SLA</Link></MenuItem>
             <MenuItem><Link href="https://status.qiniu.com">服务状态</Link></MenuItem>
-          </SubMenu>
-
-          <SubMenu title="开发者">
-            <MenuItem><Link href="/activity">开发者活动</Link></MenuItem>
             <MenuItem><Link href="https://developer.qiniu.com/sdk#official-tool">开发者工具</Link></MenuItem>
           </SubMenu>
 
@@ -63,6 +60,7 @@ export default function FooterForMobile() {
             <MenuItem><Link href="https://campus.qiniu.com">校园招聘</Link></MenuItem>
             <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
             <MenuItem><Link href="https://blog.qiniu.com/archives/category/1">最新动态</Link></MenuItem>
+            <MenuItem><Link href={activityUrlMap[Activity.Main]}>{activityNameMap[Activity.Main]}</Link></MenuItem>
           </SubMenu>
         </Menu>
       </div>

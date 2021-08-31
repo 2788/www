@@ -1,5 +1,5 @@
 /**
- * @file 开发者活动动态路由页面
+ * @file 市场活动动态路由页面
  */
 
 import React from 'react'

@@ -11,12 +11,14 @@ export default function UaProvider({ children }: PropsWithChildren<{}>) {
   // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provider 覆盖手动值
   const ua = useUa()
   const isMobile = useIsMobile()
+  const isWx = useIsWx()
   const isMp = useIsMp()
   const loaded = useLoaded()
   const uaParser = useUaParser()
 
   const uaValue: Ua = {
     isMobile,
+    isWx,
     isMp,
     loaded,
     browser: uaParser.getBrowser(),
@@ -85,6 +87,20 @@ function useLoaded() {
   }, [])
 
   return loaded
+}
+
+function useIsWx() {
+  // 是否是微信环境
+  const uaParser = useUaParser()
+  const [isWx, setIsWx] = useState(false)
+
+  useEffect(() => {
+    if (uaParser.getBrowser().name === 'WeChat') {
+      setIsWx(true)
+    }
+  }, [uaParser])
+
+  return isWx
 }
 
 function useIsMp() {

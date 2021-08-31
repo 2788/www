@@ -10,6 +10,12 @@ export const urlMap = {
   [Activity.Detail]: '/activity/detail'
 }
 
+export const nameMap = {
+  [Activity.Main]: '市场活动',
+  [Activity.Page]: null,
+  [Activity.Detail]: '活动详情'
+}
+
 export const pageSize = 5 // 每页 5 条
 
 export enum ProgressState {

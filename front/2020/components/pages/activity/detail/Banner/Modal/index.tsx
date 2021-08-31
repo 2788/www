@@ -8,6 +8,7 @@ import Input from 'react-icecream/lib/input'
 
 import { createRegistration as doSubmit } from 'apis/admin/activity'
 import { bindFormItem, bindTextInput, textNotEmpty, textOfPattern } from 'utils/form'
+import { track as sensorsTrack } from 'utils/sensors'
 import { ApiException } from 'utils/fetch'
 import { useFormState } from 'hooks/form'
 import { useOverlay } from 'components/Overlay'
@@ -54,6 +55,7 @@ export default observer(function MyModal({ marketActivityId }: { marketActivityI
     if (result.hasError) return
 
     const value = state.value
+    sensorsTrack('WwwActivityRegistration', getSensorsOptions(marketActivityId, state))
     setStatus(Status.Submitting)
     try {
       await doSubmit({ ...value, marketActivityId })
@@ -151,5 +153,16 @@ function getErrorMessage(code: number) {
       return '电话号码不合法'
     default:
       return '未知错误'
+  }
+}
+
+// 神策统计需要收集的数据
+function getSensorsOptions(activityId: string, state: ReturnType<typeof createState>) {
+  return {
+    activity_id: activityId,
+    registration_name: state.value.userName,
+    registration_phone: state.value.phoneNumber,
+    registration_email: state.value.email,
+    registration_company: state.value.company
   }
 }
