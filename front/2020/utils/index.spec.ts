@@ -1,0 +1,53 @@
+import { isUrl, isHost } from '.'
+
+describe('isUrl', () => {
+  it('should work well', () => {
+    expect(isUrl('')).toBe(false)
+    expect(isUrl('  ')).toBe(false)
+    expect(isUrl('  http://qiniu.com  ')).toBe(false)
+    expect(isUrl('http://qi niu.com')).toBe(false)
+    expect(isUrl('qiniu://abc')).toBe(false)
+    expect(isUrl('//www.qiniu.com/products')).toBe(false)
+    expect(isUrl('www.qiniu.com')).toBe(false)
+    expect(isUrl('/products/kodo')).toBe(false)
+    expect(isUrl('http:')).toBe(false)
+    expect(isUrl('https://')).toBe(false)
+
+    expect(isUrl('http://a')).toBe(true)
+    expect(isUrl('https://www.qiniu.com')).toBe(true)
+    expect(isUrl('Https://WWW.QiNiu.com')).toBe(true)
+    expect(isUrl('http://localhost:3000/a/b?x=1&y=1#https://www.qiniu.com/products')).toBe(true)
+    expect(isUrl('http://饿了.么')).toBe(true)
+    expect(isUrl('http://127.0.0.1:3000')).toBe(true)
+    expect(isUrl('https://[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]:443')).toBe(true)
+    expect(isUrl('http://xn--pgt')).toBe(true)
+  })
+})
+
+describe('isHost', () => {
+  it('should work well', () => {
+    expect(isHost('')).toBe(false)
+    expect(isHost('  ')).toBe(false)
+    expect(isHost('  qiniu.com  ')).toBe(false)
+    expect(isHost('qi niu.com')).toBe(false)
+    expect(isHost('http://abc')).toBe(false)
+    expect(isHost('//www.qiniu.com')).toBe(false)
+    expect(isHost('/path')).toBe(false)
+
+    expect(isHost('www.qiniu.com')).toBe(true)
+    expect(isHost('WWW.QiNiu.com')).toBe(true)
+    expect(isHost('www.qiniu.com:80')).toBe(true)
+    expect(isHost('*.dev.*.qiniu.io')).toBe(true)
+    expect(isHost('dev-Qi_niu.io')).toBe(true)
+    expect(isHost('localhost')).toBe(true)
+    expect(isHost('localhost.charlesproxy')).toBe(true)
+    expect(isHost('七牛')).toBe(true)
+    expect(isHost('饿了.么')).toBe(true)
+    expect(isHost('m.上海.gov')).toBe(true)
+    expect(isHost('127.0.0.1:3000')).toBe(true)
+    expect(isHost('::1')).toBe(true)
+    expect(isHost('[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]')).toBe(true)
+    expect(isHost('[::192.9.5.5]')).toBe(true)
+    expect(isHost('xn--pgt')).toBe(true)
+  })
+})

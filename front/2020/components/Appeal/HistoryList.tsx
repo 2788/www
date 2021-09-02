@@ -51,7 +51,16 @@ function AppealDetailInfoEntry({ appealInfo }: { appealInfo: AppealInfo }) {
           {type === AppealType.Url && renderInfoItem('申诉链接', (
             <div className={style.urls}>
               {(appealInfo.urls || []).map((url, index) => (
-                <span key={index} className={style.url}>{url}</span>
+                <span key={index} className={style.url}>
+                  <a
+                    title="申诉链接"
+                    href={url}
+                    target="_blank"
+                    rel="noopener nofollow noreferrer"
+                  >
+                    {url}
+                  </a>
+                </span>
               ))}
             </div>
           ))}

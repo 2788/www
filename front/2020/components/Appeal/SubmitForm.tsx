@@ -9,38 +9,71 @@ import { FormState, FieldState, bindInput } from 'formstate-x'
 import { useFormstateX, Form, FormFooter, FormItem, TextInput, TextArea } from 'react-icecream-2/lib/form-x'
 
 import { bindFormItem, textOfPattern, textNotEmpty } from 'utils/form'
+import { isHost, isUrl } from 'utils'
 import { useApiWithDialogToaster } from 'hooks/api'
 import { AppealType, appealTypeTextMap } from 'constants/appeal'
 import { createAppeal, CreateAppealOptions } from 'apis/meihua'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
 
 import Card from './Card'
-import DomainsInput, * as domainsInput from './DomainsInput'
+import MultiTextInput, { useMultiTextInputState, State as MultiTextInputFormState } from './MultiTextInput'
 import FileUploadInput, * as fileUploadInput from './FileUploadInput'
 
 import style from './style.less'
 
 const textAreaMaxCount = 140
 
-function createState() {
-  const typeField = new FieldState(AppealType.Domain)
+const validateDomain = (domain: string) => !isHost(domain) && '请填写正确的域名'
+const validateUrl = (url: string) => !isUrl(url) && '请填写正确的地址'
+
+function createTypeField(appealType = AppealType.Domain) {
+  return new FieldState(appealType)
+}
+
+function createState(
+  typeState: FieldState<AppealType>,
+  domainsState: MultiTextInputFormState,
+  urlsState: MultiTextInputFormState
+) {
   return new FormState({
     title: new FieldState('').validators(textNotEmpty()),
-    type: typeField,
-    domains: domainsInput.createState(() => typeField.value !== AppealType.Domain),
-    urls: domainsInput.createState(() => typeField.value !== AppealType.Url),
+    type: typeState,
+    domains: domainsState,
+    urls: urlsState,
     mobile: new FieldState('').validators(textNotEmpty(), textOfPattern(/^\d{11}$/, '请填写正确的手机号')),
     email: new FieldState('').validators(textNotEmpty(), textOfPattern(/^.+@.+$/, '请填写正确的邮箱')),
     reason: new FieldState('').validators(
-      value => value.length > textAreaMaxCount && `不能超过 ${textAreaMaxCount} 个字`
+      value => value.length > textAreaMaxCount && `不可超过 ${textAreaMaxCount} 个字`
     ),
     attachment: fileUploadInput.createState()
   })
 }
 
+function useSubmitState() {
+  const typeField = useFormstateX(createTypeField)
+
+  const isDomainsStateDisabled = useCallback(() => typeField.value !== AppealType.Domain, [typeField])
+  const domainsState = useMultiTextInputState(validateDomain, isDomainsStateDisabled)
+
+  const isUrlsStateDisabled = useCallback(() => typeField.value !== AppealType.Url, [typeField])
+  const urlsState = useMultiTextInputState(validateUrl, isUrlsStateDisabled)
+
+  const createFormState = useCallback(
+    () => createState(typeField, domainsState.form, urlsState.form),
+    [typeField, domainsState.form, urlsState.form]
+  )
+  const form = useFormstateX(createFormState)
+
+  return {
+    domainsState,
+    urlsState,
+    form
+  }
+}
+
 export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () => void }) {
-  const state = useFormstateX(createState)
-  const fields = state.$
+  const { form, domainsState, urlsState } = useSubmitState()
+  const fields = form.$
   const type = fields.type.value
 
   const {
@@ -48,26 +81,28 @@ export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () =
     Dialog
   } = useApiWithDialogToaster(createAppeal, '申诉提交成功', '申诉提交失败')
 
+  const getValidDomains = domainsState.getValidValue
+  const getValidUrls = urlsState.getValidValue
   const handleSubmit = useCallback(async () => {
-    const { domains, urls, attachment, ...otherValues } = state.value
+    const { domains, urls, attachment, ...otherValues } = form.value
     const value: CreateAppealOptions = {
       ...otherValues,
-      ...(type === AppealType.Domain && { domains: domainsInput.getValidValue(state.$.domains) }),
-      ...(type === AppealType.Url && { urls: domainsInput.getValidValue(state.$.urls) }),
-      attaches: [fileUploadInput.getValidValue(state.$.attachment)]
+      ...(type === AppealType.Domain && { domains: getValidDomains() }),
+      ...(type === AppealType.Url && { urls: getValidUrls() }),
+      attaches: [fileUploadInput.getValidValue(form.$.attachment)]
     }
 
     await submit(value)
 
-    state.reset()
+    form.reset()
 
     onSubmitted()
-  }, [state, type, submit, onSubmitted])
+  }, [form, type, getValidDomains, getValidUrls, submit, onSubmitted])
 
   return (
     <Card className={style.submit} title="发起申诉">
       <Form
-        state={state}
+        state={form}
         onSubmit={handleSubmit}
         layout="horizontal"
         labelWidth="4em"
@@ -87,8 +122,8 @@ export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () =
             <Radio value={AppealType.Url}>{appealTypeTextMap[AppealType.Url]}</Radio>
           </RadioGroup>
         </FormItem>
-        <DomainsInput label="申诉域名" state={fields.domains} isDisabled={() => type !== AppealType.Domain} />
-        <DomainsInput label="申诉链接" state={fields.urls} isDisabled={() => type !== AppealType.Url} />
+        <MultiTextInput label="申诉域名" state={domainsState} />
+        <MultiTextInput label="申诉链接" state={urlsState} />
         <FormItem label="手机号" required>
           <TextInput inputProps={{ name: 'mobile' }} state={fields.mobile} />
         </FormItem>

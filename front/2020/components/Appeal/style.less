@@ -59,11 +59,11 @@
   }
 }
 
-.domainsDisabled {
+.multiTextDisabled {
   display: none;
 }
 
-.domainItem {
+.textItem {
   position: relative;
 
   .btns {
@@ -73,7 +73,7 @@
     margin: 0 @icecream-gap-xs;
     .line-nowrap();
 
-    > * {
+    .btn {
       margin: 0 @icecream-gap-xs;
       font-size: @icecream-font-size-8;
       line-height: 1;
@@ -132,8 +132,10 @@
 
   .op {
     .opBtn {
-      text-align: left;
       margin-left: 0;
+      height: auto;
+      line-height: inherit;
+      text-align: left;
     }
   }
 }

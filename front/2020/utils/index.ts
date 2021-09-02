@@ -30,7 +30,15 @@ export function getCurrentYear() {
 
 /** 判断给定字符串内容是否 URL */
 export function isUrl(input: string) {
-  return /^https?:\/\/.+/.test(input)
+  return /^https?:\/\/[^\s]+$/i.test(input)
+}
+
+/**
+ * 是否是一个 host （域名、IP、端口）
+ * 宽松版：普通域名、中文域名、内网域名、本地域名、泛域名（通配符）、IPv4、IPv6 等等
+ */
+export function isHost(hostStr: string): boolean {
+  return /^[a-zA-Z0-9-_:.*[\]\u0100-\uFFFF]+$/i.test(hostStr)
 }
 
 /** 判断当前代码是否嵌入在外部站点运行（以 external 的方式） */
