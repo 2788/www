@@ -44,9 +44,6 @@ function AppealDetailInfoEntry({ appealInfo }: { appealInfo: AppealInfo }) {
           {renderInfoItem('标题', appealInfo.title)}
           {renderInfoItem('申诉状态', appealStatusTextMap[appealInfo.status])}
           {renderInfoItem('申诉类型', appealTypeTextMap[appealInfo.type])}
-          {renderInfoItem('提交时间', formatDateTime(appealInfo.createdAt))}
-          {renderInfoItem('手机号', appealInfo.mobile)}
-          {renderInfoItem('邮箱', appealInfo.email)}
           {type === AppealType.Domain && renderInfoItem('申诉域名', appealInfo.domain)}
           {type === AppealType.Url && renderInfoItem('申诉链接', (
             <div className={style.urls}>
@@ -64,6 +61,10 @@ function AppealDetailInfoEntry({ appealInfo }: { appealInfo: AppealInfo }) {
               ))}
             </div>
           ))}
+          {renderInfoItem('申诉回复', appealInfo.reply)}
+          {renderInfoItem('提交时间', formatDateTime(appealInfo.createdAt))}
+          {renderInfoItem('手机号', appealInfo.mobile)}
+          {renderInfoItem('邮箱', appealInfo.email)}
           {renderInfoItem('申诉说明', (
             <div className={style.urls}>
               {(appealInfo.attaches || []).map((attachment, index) => (
@@ -124,6 +125,7 @@ function ListItem({ appealInfo, onRefresh }: { appealInfo: AppealInfo, onRefresh
   return (
     <CollapsePanel header={headerView}>
       {renderInfoItem('申诉类型', appealTypeTextMap[appealInfo.type])}
+      {renderInfoItem('申诉回复', appealInfo.reply)}
       {renderInfoItem('提交时间', formatDateTime(appealInfo.createdAt))}
       <div className={style.op}>
         <AppealDetailInfoEntry appealInfo={appealInfo} />
