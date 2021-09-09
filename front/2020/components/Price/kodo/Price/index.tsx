@@ -17,7 +17,7 @@ import Region, { nameMap } from '../region'
 
 export default function Price() {
   const isMobile = useMobile()
-  const packageLink = 'https://qmall.qiniu.com/template/NA?spec_combo=Nzk&ref=kodo-price'
+  const packageLink = 'https://qmall.qiniu.com/template/MTEy?spec_combo=MzA0Mw'
 
   return (
     <PricePane>
