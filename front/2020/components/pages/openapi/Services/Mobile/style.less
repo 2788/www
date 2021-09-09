@@ -4,9 +4,21 @@
   border-bottom: unset;
 }
 
-.groupWrapper {
-  border-bottom-color: transparent; // 去掉下边框
-  padding-bottom: 4px; // 去掉 16px（即跟 section 16px 的下边距合并）
+.companyWrapper {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+
+  .prefix {
+    margin-right: 12px;
+    width: 3px;
+    height: 16px;
+    background: #00aae7;
+  }
+
+  .company {
+    font-size: 16px;
+  }
 }
 
 .linkItem {
@@ -16,7 +28,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px 16px;
+    margin: 0 16px;
+    padding: 12px 0;
     border-bottom: 1px solid @grey-3;
   }
 
@@ -29,11 +42,10 @@
     color: @grey-7;
     font-size: 14px;
     font-weight: 500;
-    line-height: 20px;
   }
 
   .desc {
-    margin: 4px 0;
+    margin-top: 4px;
     color: @grey-6;
     font-size: 12px;
     line-height: 18px;
@@ -42,6 +54,6 @@
   .arrowIcon {
     width: 16px;
     height: 16px;
-    margin-left: 16px;
+    margin-left: 12px;
   }
 }

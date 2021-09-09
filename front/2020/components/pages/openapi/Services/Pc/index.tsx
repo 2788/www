@@ -2,41 +2,48 @@ import React from 'react'
 import { chunk } from 'lodash'
 
 import Section from 'components/Product/Section'
-import Button from 'components/UI/Button'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import { Card, Row, InvisibleCard } from 'components/UI/Card'
+import Link from 'components/Link'
 
-import { Type, CardProps, textMap, typeArr } from '..'
+import { HandpickValue, CardProps } from '..'
 import style from './style.less'
 
-export default function ForPc({ dataMap }: { dataMap: { [k in Type]: Array<CardProps | null> } }) {
+export default function ForPc({ data }: { data: HandpickValue }) {
   return (
     <Section name="services" title="服务精选">
-      <Tabs defaultValue={Type.Image}>
-        {
-          typeArr.map(type => (
-            <TabPane value={type} tab={textMap[type]} key={type}>
-              <TabContent data={dataMap[type]} />
-            </TabPane>
-          ))
-        }
+      <Tabs defaultValue="内容审核">
+        {data.map(({ key, group }) => (
+          <TabPane value={key} tab={key} key={key}>
+            {group.map(({ title, list }) => (
+              <>
+                <div className={style.companyWrapper}>
+                  <div className={style.prefix} />
+                  <div className={style.company}>{title}</div>
+                </div>
+                <TabContent data={list} />
+              </>
+            ))}
+          </TabPane>
+        ))}
       </Tabs>
     </Section >
   )
 }
 
-function TabContent({ data }: { data: Array<CardProps | null> }) {
+function TabContent({ data }: { data: CardProps[] }) {
   return (
     <>
       {
-        chunk(data, 4).map((group, index) => {
-          while (group.length < 4) {
-            group.push(null)
+        chunk(data, 3).map((group, index) => {
+          const list: Array<CardProps | null> = group
+          while (group.length < 3) {
+            list.push(null)
           }
           return (
-            <Row key={index}>
+            <Row key={index} className={style.row}>
               {
-                group.map((item, i) => (
+                list.map((item, i) => (
                   item !== null
                     ? <MyCard {...item} key={i} />
                     : <InvisibleCard className={style.wrapper} />
@@ -50,13 +57,14 @@ function TabContent({ data }: { data: Array<CardProps | null> }) {
   )
 }
 
-function MyCard({ title, icon, desc, href }: CardProps) {
+function MyCard({ title, desc, href }: CardProps) {
   return (
     <Card className={style.wrapper}>
-      <div className={style.icon}>{icon}</div>
-      <div className={style.title}>{title}</div>
-      <div className={style.desc}>{desc}</div>
-      <Button href={href} className={style.btn} type="hollow" withBorder>了解更多</Button>
+      <div>
+        <div className={style.title}>{title}</div>
+        <div className={style.desc}>{desc}</div>
+      </div>
+      <Link href={href} className={style.href}>了解更多 &gt;</Link>
     </Card>
   )
 }

@@ -1,19 +1,23 @@
 import React from 'react'
 import Scene, { Panel } from 'components/Product/Scene'
-import { Type, CardProps, typeArr, textMap } from '..'
+import { HandpickValue } from '..'
 import ArrowIcon from './arrow.svg'
 import style from './style.less'
 
-export default function ForMobile({ dataMap }: { dataMap: { [k in Type]: Array<CardProps | null> } }) {
+export default function ForMobile({ data }: { data: HandpickValue }) {
   return (
     <Scene name="services" title="服务精选">
       {
-        typeArr.map(type => (
-          <Panel name={type} title={textMap[type]} key={type} className={style.container}>
-            {
-              dataMap[type].map(item => (
-                item ? (
-                  <a className={style.linkItem} href={item.href}>
+        data.map(({ key, group }) => (
+          <Panel name={key} title={key} key={key} className={style.container}>
+            {group.map(({ title, list }) => (
+              <>
+                <div className={style.companyWrapper}>
+                  <div className={style.prefix} />
+                  <div className={style.company}>{title}</div>
+                </div>
+                {list.map(item => (
+                  <a key={item.title} className={style.linkItem} href={item.href}>
                     <div className={style.item}>
                       <div className={style.itemContent}>
                         <h3 className={style.itemTitle}>{item.title}</h3>
@@ -22,9 +26,9 @@ export default function ForMobile({ dataMap }: { dataMap: { [k in Type]: Array<C
                       <ArrowIcon className={style.arrowIcon} />
                     </div>
                   </a>
-                ) : null
-              ))
-            }
+                ))}
+              </>
+            ))}
           </Panel>
         ))
       }

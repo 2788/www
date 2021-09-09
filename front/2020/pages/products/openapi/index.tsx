@@ -29,7 +29,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
     <>
       <PageBanner
         title="AI 开放市场"
-        desc="AI 开放市场提供图片，文本，音频，视频等智能数据处理服务，对媒体内容实现智能审核，智能分析。"
+        desc="AI 开放市场是一个开放平台，协同合作伙伴一起为七牛的客户提供图片，文本，音频，视频等智能数据处理服务，实现对媒体内容的智能审核，智能处理。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={banner} />
@@ -54,7 +54,7 @@ export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeo
     <Layout
       title="AI 开放市场_Open API"
       keywords="AI 开放市场, AI, 开放市场, Open API, openapi, open api, 开放平台, 第三方, 图片, 音视频, 数据处理"
-      description="AI 开放市场提供图片，文本，音频，视频等智能数据处理服务，对媒体内容实现智能审核，智能分析。"
+      description="AI 开放市场是一个开放平台，协同合作伙伴一起为七牛的客户提供图片，文本，音频，视频等智能数据处理服务，实现对媒体内容的智能审核，智能处理。"
     >
       <Page notices={notices} newsRes={newsRes} />
     </Layout>
