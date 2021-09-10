@@ -1,5 +1,5 @@
 /**
- * @file 免费体验落地页
+ * @file 拦截老页面 https://www.qiniu.com/events/free，重定向至 https://marketing.qiniu.com/activity/act-free
  */
 
 import React from 'react'
@@ -12,6 +12,7 @@ import FreeActivities from 'components/pages/events/free/Activities'
 import Section from 'components/Product/Section'
 import { useMp } from 'hooks/ua'
 
+import Redirect from 'components/Redirect'
 import imgBanner from './banner.png'
 import mpBannner from './banner-mp.png'
 import style from './style.less'
@@ -53,6 +54,8 @@ function MpPage() {
 }
 
 export default function Main() {
+  // 暂时将页面重定向，以前代码保留，以后可能会换回来
+  return <Redirect target="https://marketing.qiniu.com/activity/act-free" />
   return (
     <Layout
       title="免费云服务套餐"
