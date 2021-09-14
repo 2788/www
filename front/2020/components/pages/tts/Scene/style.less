@@ -1,0 +1,29 @@
+@import '~utils/less/index.less';
+
+.pic {
+  width: 476px;
+  height: 280px;
+
+  .mobile({
+    width: 100%;
+    height: auto;
+  });
+}
+
+.blockRight {
+  margin-left: 24px !important;
+  .mobile({
+    margin-left: 0 !important;
+  })
+}
+
+.title {
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.desc {
+  font-size: 14px;
+  color: @grey-6;
+}

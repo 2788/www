@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="62" viewBox="0 0 62 62">
+  <g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(2 2)">
+    <line x1="29.672" x2="48.997" y1="9.003" y2="28.328" stroke="#00AAE7"/>
+    <line x2="9.003" y1="58" y2="48.997" stroke="#333" stroke-linecap="square"/>
+    <line x1="25.033" x2="19.033" y1="25" y2="31" stroke="#333" stroke-linecap="square"/>
+    <line x1="33.033" x2="27.033" y1="33" y2="39" stroke="#333" stroke-linecap="square"/>
+    <path stroke="#333" stroke-linecap="square" d="M13.337,25.337 L9,29.672 C3.66272037,35.0092799 3.66272046,43.6627201 9.0000002,48.9999998 C14.3372799,54.3372795 22.9907201,54.3372796 28.328,49 L32.663,44.666 L13.337,25.337 Z"/>
+    <line x1="58" x2="48.997" y2="9.003" stroke="#00AAE7" stroke-linecap="square"/>
+    <path stroke="#00AAE7" stroke-linecap="square" d="M44.663,32.663 L49,28.328 C54.3372796,22.9907201 54.3372795,14.3372799 48.9999998,9.0000002 C43.6627201,3.66272046 35.0092799,3.66272037 29.672,9 L25.337,13.334 L44.663,32.663 Z"/>
+    <line x1="9.003" x2="28.328" y1="29.672" y2="48.998" stroke="#333"/>
+  </g>
+</svg>

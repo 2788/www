@@ -70,6 +70,8 @@ export enum Product {
   Avsmart = 'avsmart',
   /** 美颜特效 SDK */
   Beautysdk = 'beautysdk',
+  /** 语音合成 */
+  Tts = 'tts',
   /** Web 应用防火墙 */
   WAF = 'waf'
 }
@@ -110,6 +112,7 @@ export const nameMap = {
   [Product.Storage]: '云存储一体机',
   [Product.Avsmart]: '锐智转码 2.0',
   [Product.Beautysdk]: '美颜特效 SDK',
+  [Product.Tts]: '语音合成',
   [Product.WAF]: 'Web 应用防火墙'
 } as const
 
@@ -147,6 +150,7 @@ export const urlMap = {
   [Product.Storage]: '/products/storage',
   [Product.Avsmart]: '/products/avsmart',
   [Product.Beautysdk]: '/products/beautysdk',
+  [Product.Tts]: '/products/tts',
   [Product.WAF]: '/products/waf'
 } as const
 
@@ -184,6 +188,7 @@ export const priceUrlMap = {
   [Product.Storage]: null,
   [Product.Avsmart]: null,
   [Product.Beautysdk]: null,
+  [Product.Tts]: '/prices/tts',
   [Product.WAF]: null
 } as const
 
@@ -225,6 +230,7 @@ export const descMap = {
   [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
   [Product.Avsmart]: '更低的码率，更清晰的画质',
   [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景',
+  [Product.Tts]: '',
   [Product.WAF]: '高性能 Web 应用防火墙'
 } as const
 
@@ -346,7 +352,8 @@ export const categoryMedia = [
   Product.Plsv,
   Product.Plms,
   Product.QnPlayer,
-  Product.Qvs
+  Product.Qvs,
+  Product.Tts
 ] as const
 
 /** 机器数据智能 */

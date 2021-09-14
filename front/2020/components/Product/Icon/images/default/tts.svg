@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 2)">
+    <polygon stroke="#00AAE7" points="16 0 16 13 21 9 30 9 30 0"/>
+    <circle cx="8" cy="12" r="4" stroke="#333"/>
+    <path stroke="#333" d="M16,28 L0,28 L0,23.831 C0,22.602 0.739,21.486 1.885,21.044 C3.217,20.53 5.256,20 8,20 C10.744,20 12.783,20.53 14.115,21.044 C15.261,21.486 16,22.602 16,23.831 L16,28 Z"/>
+  </g>
+</svg>

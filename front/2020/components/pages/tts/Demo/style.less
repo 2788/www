@@ -1,0 +1,83 @@
+@import '~utils/less/index.less';
+
+.container {
+  display: flex;
+  width: 1060px;
+  height: 390px;
+  margin: 0 auto;
+  padding: 16px 20px 20px;
+  border: 1px solid @grey-3;
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px 0px rgba(51,51,51,0.08);
+}
+.title {
+  margin-bottom: 12px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.left {
+  position: relative;
+  .textArea {
+    width: 432px;
+    height: 320px;
+    border: 1px solid @grey-4;
+    border-radius: 2px;
+    padding: 8px 12px;
+    resize: none;
+    outline: none;
+  }
+}
+
+.right {
+  position: relative;
+  margin-left: 28px;
+  width: 560px;
+  .buttonWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 128px;
+      height: 44px;
+      margin-bottom: 16px;
+      padding: 10px 16px;
+      background-color: @grey-2;
+      border: 2px solid @grey-2;
+      border-radius: 4px;
+    }
+    :hover {
+      cursor: pointer;
+    }
+    .active {
+      border: 2px solid @blue-6;
+      color: @blue-6
+    }
+  }
+  .sliderWrapper {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    .sliderTag {
+      width: 40px;
+    }
+    .slider {
+     width: 484px;
+     margin-left: 16px;
+     margin-right: 0;
+    }
+    .sliderValue{
+     width: 36px;
+     text-align: right;
+    }
+  }
+  .submitBtn {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 96px;
+  }
+}
