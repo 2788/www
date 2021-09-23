@@ -44,8 +44,10 @@ class LocalStore extends Store {
   }
 
   @autobind
-  refresh() {
-    this.toasterStore.promise(this.pageStore.refresh())
+  refresh(page?: number) {
+    this.toasterStore.promise(
+      this.pageStore.refresh()
+    ).then(() => this.updateCurrentPage(page || 1))
   }
 
   @autobind
@@ -56,7 +58,9 @@ class LocalStore extends Store {
   @autobind
   edit(id: string) {
     const page = this.pageStore.list.find(item => item.id === id)
-    this.editorModal.open({ page, status: EditorStatus.Editing }).then(() => this.refresh())
+    this.editorModal.open(
+      { page, status: EditorStatus.Editing }
+    ).then(() => this.refresh())
   }
 
   @autobind

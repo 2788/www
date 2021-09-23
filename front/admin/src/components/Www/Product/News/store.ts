@@ -83,8 +83,11 @@ export default class NewsStore extends Store {
   }
 
   @autobind
-  refresh() {
-    return this.fetchList({ ...this.options, page: 1 })
+  refresh(page?: number) {
+    page = page || 1
+    return this.fetchList(
+      { ...this.options, page }
+    ).then(() => this.updateCurrentPage(page!))
   }
 
   @autobind
@@ -103,7 +106,9 @@ export default class NewsStore extends Store {
   @ToasterStore.handle()
   handleEdit(id: string) {
     const news = this.list.find(item => item._id === id)
-    return this.editorModal.open({ news, id, status: EditorStatus.Editing }).then(() => this.refresh())
+    return this.editorModal.open(
+      { news, id, status: EditorStatus.Editing }
+    ).then(() => this.refresh(this.currentPage))
   }
 
   @autobind
