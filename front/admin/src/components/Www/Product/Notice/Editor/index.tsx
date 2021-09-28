@@ -24,7 +24,7 @@ import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
 
 import NoticeStore from '../store'
-import ProductSelect, * as productSelect from '../ProductSelect'
+import ProductSelect, * as productSelect from '../../ProductSelect'
 import { typeMap } from '..'
 
 type State = FormState<{

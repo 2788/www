@@ -27,7 +27,7 @@ import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import NewsApis, { INews, NewsType } from 'apis/product/news'
 import Modal from 'components/common/Modal'
 
-import ProductSelect, * as productSelect from '../ProductSelect'
+import ProductSelect, * as productSelect from '../../ProductSelect'
 import { newsTypeTextMap, newsTypeArr } from '..'
 
 type State = FormState<{

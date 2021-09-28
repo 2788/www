@@ -21,7 +21,7 @@ import * as commonStyle from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { StateType, stateMap, dateFormat, timeFormat } from 'constants/activity'
 import { IActivity } from 'apis/activity'
-import UploadImg, * as uploadImg from 'components/common/UploadImg'
+import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import RichTextEditor, * as richTextEditor from 'components/common/RichTextEditor'
 import ImgPreview from 'components/common/ImgPreview'
 

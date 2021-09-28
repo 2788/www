@@ -6,7 +6,7 @@ import { bindFormItem } from 'admin-base/common/utils/form'
 import { textNotBlank } from 'admin-base/common/utils/validator'
 
 import FormItem from 'components/common/FormItem'
-import UploadImg, * as uploadImg from 'components/common/UploadImg'
+import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import ColorPicker, * as colorPicker from 'components/common/ColorPicker'
 
 export type State = FormState<{

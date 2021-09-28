@@ -1,0 +1,94 @@
+@import "~react-icecream/style/less/variables/index.less";
+
+// 这边样式是复制 icecream/antd 表格的样式
+// todo：以后改为 icecream2 table 的样式？
+
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-color-split: #e8e8e8;
+
+.container {
+  table {
+    width: 100%;
+    max-width: max-content;
+    font-size: @icecream-font-size-2;
+    border: @border-width-base @border-style-base @border-color-split;
+    text-align: left;
+    color: @icecream-grey-7;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: @icecream-border-radius-base @icecream-border-radius-base 0 0;
+    border-collapse: collapse;
+
+    thead tr {
+      background: @icecream-grey-3;
+      transition: all .3s, height 0s;
+
+      th {
+        padding: @icecream-gap-md;
+        vertical-align: middle;
+        color: @icecream-grey-7;
+        font-weight: 500;
+        text-align: left;
+        background: @icecream-grey-1;
+        border: @border-width-base @border-style-base @border-color-split;
+        transition: background 0.3s ease;
+
+        &[colspan] {
+          text-align: center;
+        }
+      }
+
+      &:first-child>th {
+        &:first-child {
+          border-top-left-radius: @icecream-border-radius-base;
+        }
+
+        &:last-child {
+          border-top-right-radius: @icecream-border-radius-base;
+        }
+      }
+
+      &:not(:last-child)>th {
+        &[colspan] {
+          border-bottom: 0;
+        }
+      }
+
+    }
+
+    tbody>tr {
+      transition: all 0.3s, height 0s;
+
+      &:hover {
+        &>td {
+          background: @icecream-blue-2;
+        }
+      }
+
+      &:nth-child(2n) {
+        background: @icecream-grey-1;
+      }
+
+      td {
+        padding: @icecream-gap-md;
+        vertical-align: middle;
+        border: @border-width-base @border-style-base @border-color-split;
+        transition: all 0.3s, border 0s;
+      }
+    }
+  }
+
+  a {
+    color: @icecream-blue-6;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}

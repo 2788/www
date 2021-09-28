@@ -66,7 +66,7 @@ export default class EntityApis {
 
   /** 列出所有实体，并带上实体对应的属性信息 */
   async listWithProperties(): Promise<EntityWithProperties[]> {
-    const [entities, properties] = await Promise.all([
+    const [entities, properties] = await Promise.all<Entity[], Property[]>([
       this.list(),
       this.propertyApis.list()
     ])

@@ -21,7 +21,7 @@ import { textHttp } from 'utils/validator'
 import * as style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IActivity } from 'apis/homepage/activity'
-import UploadImg, * as uploadImg from 'components/common/UploadImg'
+import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
 

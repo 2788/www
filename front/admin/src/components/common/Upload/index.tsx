@@ -1,11 +1,9 @@
 import React, { PropsWithChildren } from 'react'
 import { observer } from 'mobx-react'
-import { Upload, Button, Modal } from 'react-icecream'
-import { RcFile } from 'react-icecream/lib/upload'
+import Upload, { UploadProps } from 'react-icecream/lib/upload'
 import moment from 'moment'
 import autobind from 'autobind-decorator'
 
-import { FieldState } from 'formstate-x'
 import * as qiniu from 'qiniu-js'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
@@ -14,15 +12,12 @@ import Store from 'qn-fe-core/store'
 import ToasterStore from 'admin-base/common/stores/toaster'
 
 import UploadApis from 'apis/upload'
-
-import ImgPreview from '../ImgPreview'
 import * as style from './style.m.less'
 
-interface IProps {
-  state: State
-  maxSize: number // 支持的图片大小，单位为 kb
+export interface IProps extends UploadProps {
   onUploaded?: (url: string, file: File) => void // 上传成功之后执行的方法
 }
+
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg, .gif'
 // 公共前缀
@@ -30,16 +25,6 @@ const uploadKeyPrefix = 'www/admin/'
 
 const publicUrl = 'https://static-file.qiniu.io/'
 const bucket = 'admin-v2-static'
-
-export type State = FieldState<string>
-
-export function createState(value: string): State {
-  return new FieldState(value)
-}
-
-export function getValue(state: State): string {
-  return state.value
-}
 
 @injectable()
 class LocalStore extends Store {
@@ -85,53 +70,32 @@ class LocalStore extends Store {
   UploadFile(file: File) {
     const req = this.fetchToken()
       .then(token => this.doUpload(file, token), () => Promise.reject('token 获取失败！'))
-      .then(val => {
-        this.props.state.onChange(val)
-        return val
-      })
-    req.then(val => this.props.onUploaded && this.props.onUploaded(val, file))
+      .then(val => this.props.onUploaded && this.props.onUploaded(val, file))
     return req
   }
 }
 
-export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
+export default observer(function CommonUpload(props: PropsWithChildren<IProps>) {
   const store = useLocalStore(LocalStore, props)
-  const { state, maxSize, children } = props
+  const { children, ...rest } = props
 
-  const childrenView = children || (
-    <>
-      <Button type="link">上传</Button>
-      {state.value ? <ImgPreview url={state.value} className={style.icon} /> : null}
-    </>
-  )
-
-  const handleChange = (file: File | undefined) => {
+  const handleFileChange = (file: File | undefined) => {
     if (file) {
       store.UploadFile(file)
     }
   }
 
-  function beforeUpload(file: RcFile): boolean {
-    const isOver = file.size > maxSize * 1024
-    if (isOver) {
-      Modal.info({
-        content: `上传的图片大小不能超过 ${maxSize} KB`,
-        okText: '知道了'
-      })
-    }
-    return !isOver
-  }
-
   return (
-    <Upload name="file"
+    <Upload
+      name="file"
       accept={imgFilter}
-      beforeUpload={beforeUpload}
-      onChange={info => handleChange(info.file.originFileObj)}
+      onChange={info => handleFileChange(info.file.originFileObj)}
       showUploadList={false}
       customRequest={() => false}
       className={style.upload}
+      {...rest}
     >
-      {childrenView}
+      {children}
     </Upload>
   )
 })

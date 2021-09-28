@@ -22,7 +22,7 @@ import * as style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IBanner } from 'apis/homepage/banner'
 import ImgColor, * as imgColor from 'components/common/ImgColor'
-import UploadImg, * as uploadImg from 'components/common/UploadImg'
+import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import Modal from 'components/common/Modal'
 import FormItem from 'components/common/FormItem'
 

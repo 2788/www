@@ -21,7 +21,8 @@
           "javascriptEnabled": true
         }
       }
-    }
+    },
+    "md": "file"
   },
   "devProxy": {
     "/api": "http://admin-backend-www-env-staging.qa.qiniu.io"

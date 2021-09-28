@@ -19,6 +19,7 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
     "detect-browser": "^4.8.0",
+    "file-saver": "^2.0.5",
     "formstate-x": "^1.2.0",
     "history": "^3.0.0",
     "lodash": "^4.17.15",
@@ -34,8 +35,14 @@
     "react-dom": "~16.8.6",
     "react-hot-loader": "^4.12.21",
     "react-icecream": "^1.7.4",
+    "rehype-raw": "^5.1.0",
+    "remark-gfm": "^1.0.0",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.1.0",
+    "stringify-entities": "^4.0.1",
     "ts-enum-util": "^4.0.1",
-    "tslib": "^1.0.0"
+    "tslib": "^1.0.0",
+    "unified": "^9.0.0"
   },
   "devDependencies": {
     "@qiniu/eslint-config": "0.0.4",
