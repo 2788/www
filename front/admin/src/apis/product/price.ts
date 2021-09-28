@@ -31,12 +31,6 @@ export interface IUpdatePriceOptions extends IAddPriceOptions {
   createdAt: number
 }
 
-export interface IListOptions {
-  limit: number
-  offset: number
-  products?: string[]
-}
-
 export interface IListResponse {
   count: number
   data: IPrice[]
@@ -88,10 +82,8 @@ export default class PriceApis {
     return this.fetchStore.delete(apiMongo + '/www-product-price/' + id)
   }
 
-  list({ limit, offset, products = [] }: IListOptions): Promise<IListResponse> {
-    const query = products.length > 0 ? { query: JSON.stringify({ product: { $in: products } }) } : null
-    const options = { ...query, limit, offset, sort: '-updatedAt,-createdAt' }
-    return this.fetchStore.get(apiMongo + '/www-product-price', options)
+  list(): Promise<IListResponse> {
+    return this.fetchStore.get(apiMongo + '/www-product-price')
       .then(res => (res.data ? res : { ...res, data: [] }))
   }
 
@@ -102,7 +94,7 @@ export default class PriceApis {
 
   // 获取某个产品价格页下所有的历史记录
   getVersionsByProduct(product: string): Promise<IVersionWithId[]> {
-    const options = { query: { product }, sort: '-createdAt' }
+    const options = { query: JSON.stringify({ product }), sort: '-createdAt' }
     return this.fetchStore.get(apiMongo + '/www-product-price-version', options)
       .then(res => res.data || [])
   }

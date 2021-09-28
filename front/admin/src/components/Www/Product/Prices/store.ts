@@ -13,14 +13,10 @@ import Loadings from 'admin-base/common/stores/loadings'
 import ModalStore from 'admin-base/common/stores/modal'
 import ToasterStore from 'admin-base/common/stores/toaster'
 
-import PriceApis, { IPrice, IListOptions, IListResponse } from 'apis/product/price'
+import PriceApis, { IPrice, IListResponse } from 'apis/product/price'
 import PageApis, { IPage } from 'apis/product/page'
 import { ExtraProps as CreateModalProps } from './Create'
 import { ExtraProps as VersionsModalProps } from './Versions'
-
-import { pageSize } from '.'
-
-type FecthListOptions = Omit<IListOptions, 'limit' | 'offset'> & { page: number }
 
 @injectable()
 export default class PricesStore extends Store {
@@ -36,12 +32,10 @@ export default class PricesStore extends Store {
 
   createModal = new ModalStore<CreateModalProps>()
   versionsModal = new ModalStore<VersionsModalProps>()
-  @observable total = 0
   @observable currentPage = 1
   @observable.ref list: IPrice[] = []
   @observable.ref pageList: IPage[] = []
 
-  options: FecthListOptions | null = null // list 查询条件，方便获取之前的查询条件
   loadings = Loadings.collectFrom(this)
 
   @computed
@@ -55,8 +49,7 @@ export default class PricesStore extends Store {
   }
 
   @action.bound
-  updateTableData(total = 0, list: IPrice[]) {
-    this.total = total
+  updateList(list: IPrice[]) {
     this.list = list
   }
 
@@ -76,10 +69,9 @@ export default class PricesStore extends Store {
 
   @autobind
   @Loadings.handle('fetchList')
-  fetchList({ page, products }: FecthListOptions) {
-    this.options = { page, products }
-    const opts: IListOptions = { limit: pageSize, offset: (page - 1) * pageSize, products }
-    return this.priceApis.list(opts).then((res: IListResponse) => this.updateTableData(res.count, res.data))
+  fetchList() {
+    return this.priceApis.list()
+      .then((res: IListResponse) => this.updateList(res.data))
   }
 
   // 获取产品页列表
@@ -91,14 +83,7 @@ export default class PricesStore extends Store {
 
   @autobind
   refresh() {
-    return this.fetchList({ ...this.options, page: 1 }).then(() => this.updateCurrentPage(1))
-  }
-
-  @autobind
-  @ToasterStore.handle()
-  handleUpdatePage(opt: Omit<IListOptions, 'limit' | 'offset'> & { page: number }) {
-    this.updateCurrentPage(opt.page)
-    return this.fetchList(opt)
+    return this.fetchList().then(() => this.updateCurrentPage(1))
   }
 
   @autobind

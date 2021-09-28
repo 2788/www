@@ -8,7 +8,6 @@ import React, { useCallback, useMemo, useRef } from 'react'
 import { observer } from 'mobx-react'
 import { Tooltip, Button, Icon, Modal } from 'react-icecream'
 import Table, { PaginationConfig } from 'react-icecream/lib/table'
-import { PaginationProps } from 'react-icecream/lib/pagination'
 import { saveAs } from 'file-saver'
 
 import Provider from 'qn-fe-core/di/Provider'
@@ -28,7 +27,7 @@ import VersionsModal from './Versions'
 import * as style from './style.m.less'
 
 // 表格数据一页条数
-export const pageSize = 5
+export const pageSize = 10
 
 function ImmutableUploadMdFile(props: Omit<uploadMdFile.Props, 'state'>) {
   const ref = useRef(uploadMdFile.createState())
@@ -39,7 +38,7 @@ function ImmutableUploadMdFile(props: Omit<uploadMdFile.Props, 'state'>) {
 
 const PageContent = observer(function _PageContent() {
   const store = useInjection(PricesStore)
-  const { total, list, pageList, pageMap, isLoading } = store
+  const { list, pageList, pageMap, isLoading } = store
 
   const renderProduct = useCallback((product: string) => (
     pageMap.get(product) || '-'
@@ -79,14 +78,11 @@ const PageContent = observer(function _PageContent() {
   const productFilters = useMemo(() => pageList.map(item => ({ text: item.name, value: item.id })), [pageList])
   const filterProduct = useCallback((value: string, record: IPrice) => record.product === value, [])
   // 分页
-  const paginationConfig: PaginationConfig = useMemo(() => ({
-    total,
+  const paginationConfig: PaginationConfig = {
     pageSize,
-    current: store.currentPage
-  }), [store.currentPage, total])
-  const handleTableChange = useCallback((pag: PaginationProps, filters: { product: string[] }) => {
-    store.handleUpdatePage({ page: pag.current || 1, products: filters.product })
-  }, [store])
+    current: store.currentPage,
+    onChange: store.updateCurrentPage
+  }
 
   return (
     <>
@@ -101,7 +97,6 @@ const PageContent = observer(function _PageContent() {
         loading={isLoading}
         bodyStyle={{ backgroundColor: '#fff' }}
         pagination={paginationConfig}
-        onChange={handleTableChange}
         scroll={{ x: 'max-content' }}
         className={style.table}
       >
