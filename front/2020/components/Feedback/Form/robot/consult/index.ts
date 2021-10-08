@@ -26,13 +26,16 @@ const promptMessage = makeSelect({
 })
 export default class ConsultRobot extends Trackable implements IRobot {
 
-  protected id = `consult-${uuid()}`
   protected state = State.Initial
+
+  constructor(protected id = `consult-${uuid()}`) {
+    super()
+  }
 
   private preSalesRobot = new PreSalesRobot(this.id)
   private afterSalesRobot = new AfterSalesRobot(this.id)
 
-  processOnInitial(input: InputData) {
+  private processOnInitial(input: InputData) {
     switch (input.type) {
       case InputType.Initial:
         return [

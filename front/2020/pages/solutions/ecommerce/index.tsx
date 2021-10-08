@@ -5,6 +5,7 @@
 import React from 'react'
 
 import { Product } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -22,18 +23,21 @@ import Cases from 'components/pages/ecommerce/Cases'
 
 import banner from './banner.png'
 
+const title = `${nameMap[Solution.ECommerce]}行业解决方案`
+
 function Page() {
 
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
 
   return (
     <>
       <PageBanner
-        title="电商行业解决方案"
+        title={title}
         desc="为各种规模的电商企业提供灵活、安全、稳定、低成本的方案，深入结合直播、视频等新型运营方式，灵活构建面向业务的电解决方案，帮助企业从容应对业务高峰，以数字化运营掌控市场趋势。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -59,7 +63,7 @@ function Page() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

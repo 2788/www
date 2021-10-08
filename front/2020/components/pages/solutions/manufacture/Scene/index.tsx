@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card, Row, Img, Content, Title, Desc } from 'components/UI/Card'
 import Section, { SectionArrowLink } from 'components/Product/Section'
-import { useModal } from 'components/Feedback'
 
 import scene1 from './images/scene1.jpg'
 import scene2 from './images/scene2.jpg'
@@ -10,8 +9,11 @@ import scene4 from './images/scene4.jpg'
 import scene5 from './images/scene5.jpg'
 import scene6 from './images/scene6.jpg'
 
-export default function TypicalScene() {
-  const { startConsulting } = useModal()
+interface Props {
+  onConsult: () => void
+}
+
+export default function TypicalScene({ onConsult }: Props) {
   return (
     <Section title="典型应用场景" name="scene">
       <Row>
@@ -60,7 +62,7 @@ export default function TypicalScene() {
           </Content>
         </Card>
       </Row>
-      <SectionArrowLink onClick={startConsulting}>立即咨询</SectionArrowLink>
+      <SectionArrowLink onClick={onConsult}>立即咨询</SectionArrowLink>
     </Section>
   )
 }

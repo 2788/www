@@ -20,18 +20,22 @@ import Cases from 'components/pages/fin-onlinesale/Cases'
 
 import banner from './banner.png'
 
+// TODO: `constants/solutions` 中没有对应的定义，需要添加 @renpanpan5
+const title = '金融产品在线营销解决方案'
+
 function Page() {
 
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
 
   return (
     <>
       <PageBanner
-        title="金融产品在线营销解决方案"
+        title={title}
         desc="保险、基金等产品面临销售渠道线上化运营，如何依托线上流量与私域流量进行裂变转化，维护存量客户、提高客户质量对企业的发展至关重要。七牛云基于智能视频云技术打造「金融产品在线营销解决方案」，为金融产品在线营销提供智能、高效、一站式的视频解决方案，并提供完整的数据分析与处理服务，推动业务成交。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -45,10 +49,10 @@ function Page() {
 
       <Advantage />
 
-      <Cases />
+      <Cases onConsult={handleConsult} />
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

@@ -19,22 +19,26 @@ import QavsScene from 'components/pages/qavs/Scene'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { categoryMedia } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
 
+const title = nameMap[Solution.Qavs]
+
 function PageContent() {
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' },
+    { onClick: handleConsult, children: '立即咨询' },
     { href: 'https://dn-mars-assets.qbox.me/lsm7Yon7_XwirC_mGIQvRe1Fmkx3', children: '下载白皮书' }
   )
 
   return (
     <>
       <PageBanner
-        title="智能视频云"
+        title={title}
         desc="七牛智能视频云为企业提供智能、高效、一站式的视频解决方案，帮助企业节省 70% 系统自建成本，
         并集海量存储、弹性计算、智能网络、直播、点播、实时音视频、播放器、视觉智能及数据智能于一体。"
         bgColor="#34A1EC"

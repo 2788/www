@@ -7,14 +7,14 @@ import { ReactNode } from 'react'
 
 export * from './utils'
 
-/** 文本消息内容 */
+/** 普通消息内容 */
 export type MessageContent = ReactNode
 
 /** 机器人的输入类型 */
 export enum InputType {
   /** 逻辑初始化，用户还没有开始交互 */
   Initial,
-  /** 用户通过消息框输入文本消息 */
+  /** 用户通过消息框输入普通消息 */
   Message,
   /** 用户表单提交完成 */
   FormSubmitted
@@ -25,7 +25,7 @@ export type InitialInput = {
   type: InputType.Initial
 }
 
-/** 用户通过消息框输入文本消息对应的输入 */
+/** 用户通过消息框输入普通消息对应的输入 */
 export type MessageInput = {
   type: InputType.Message
   content: MessageContent
@@ -41,19 +41,19 @@ export type Input = InitialInput | MessageInput | FormSubmitInput
 
 /** 机器人的输出类型 */
 export enum OutputType {
-  /** 文本消息 */
+  /** 普通消息 */
   Message,
-  /** 让用户选择一个选项 */
-  Select,
+  /** 操作类输出，用户完成操作后消失 */
+  Action,
 }
 
-/** 文本消息类型的输出 */
+/** 普通消息类型的输出 */
 export type MessageOutput = {
   type: OutputType.Message
   content: MessageContent
 }
 
-/** 构造文本消息类型的输出 */
+/** 构造普通消息类型的输出 */
 export function makeMessage(content: MessageContent): MessageOutput {
   return {
     type: OutputType.Message,
@@ -61,38 +61,25 @@ export function makeMessage(content: MessageContent): MessageOutput {
   }
 }
 
-/** 模式：长选项 / 短选项 */
-export type SelectMode = 'long' | 'short'
+/** 操作类型输出的内容 */
+export type ActionContent = ReactNode
 
-/** 让用户选择一个选项的输出 */
-export type SelectOutput = {
-  type: OutputType.Select
-  /** 选项列表 */
-  options: string[]
-  /** 选项前置内容 */
-  before?: string
-  /** 选项后置内容 */
-  after?: string
-  /** 模式：长选项 / 短选项 */
-  mode: SelectMode
+/** 操作类型的输出 */
+export type ActionOutput = {
+  type: OutputType.Action
+  content: ActionContent
 }
 
-/** 构造让用户选择一个选项的输出 */
-export function makeSelect(params: {
-  options: string[]
-  after?: string
-  before?: string
-  mode?: SelectMode
-}): SelectOutput {
+/** 构造操作类型的输出 */
+export function makeAction(content: ActionContent): ActionOutput {
   return {
-    type: OutputType.Select,
-    mode: 'short',
-    ...params
+    type: OutputType.Action,
+    content
   }
 }
 
 /** 机器人的输出 */
-export type Output = MessageOutput | SelectOutput
+export type Output = MessageOutput | ActionOutput
 
 export type MaybeOutput = Output | undefined | null
 

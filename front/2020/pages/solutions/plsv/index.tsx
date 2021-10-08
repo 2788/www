@@ -4,6 +4,8 @@
 
 import React from 'react'
 
+import { Solution, nameMap } from 'constants/solutions'
+import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -20,7 +22,13 @@ import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
 
+const title = `${nameMap[Solution.Plsv]}解决方案`
+
 function PageContent() {
+
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
+
   const btns = useBtns(
     { children: '0 元体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer', pcOnly: true },
     { children: '短视频 SDK', href: 'https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download' },
@@ -30,7 +38,7 @@ function PageContent() {
   return (
     <>
       <PageBanner
-        title="短视频解决方案"
+        title={title}
         desc="七牛短视频解决方案（PLSV）是提供端到云的一站式的短视频解决方案，
         集视频拍摄、编辑、处理、上传、存储、分发加速、播放、内容分析审核、大数据分析等功能于一体。"
         bgColor="#34A1EC"
@@ -50,7 +58,7 @@ function PageContent() {
 
       <PlsvClientLogo />
 
-      <PlsvAccess />
+      <PlsvAccess onConsult={handleConsult} />
 
       <LinkGroups title="产品相关" header="相关文档">
         <LinkGroup title="常用文档">

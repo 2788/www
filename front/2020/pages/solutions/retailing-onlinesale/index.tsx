@@ -20,18 +20,22 @@ import Cases from 'components/pages/retailing-onlinesale/Cases'
 
 import banner from './banner.png'
 
+// TODO: `constants/solutions` 中没有对应的定义，需要添加 @renpanpan5
+const title = '新零售在线销售解决方案'
+
 function Page() {
 
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
 
   return (
     <>
       <PageBanner
-        title="新零售在线销售解决方案"
+        title={title}
         desc="新零售时代的来临促使传统零售业将生产、流通、销售等环节进行数字化改造。七牛云基于智能视频云技术打造「新零售在线销售解决方案」，赋能新零售行业从无到有的起步和发展，有针对性的为商家和消费者之间建立连接，实现商家和消费者的双向互动。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -45,10 +49,10 @@ function Page() {
 
       <Advantage />
 
-      <Cases />
+      <Cases onConsult={handleConsult} />
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

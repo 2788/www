@@ -2,8 +2,8 @@
  * @file 用于构建消息内容的辅助工具
  */
 
-import React, { createContext, PropsWithChildren, useContext, useCallback, MouseEvent, useEffect } from 'react'
-import { MessageContent, Input, IRobot, MaybeAsyncOutput } from '.'
+import React, { createContext, PropsWithChildren, useContext, useCallback, MouseEvent, useEffect, ReactNode } from 'react'
+import { MessageContent, Input, IRobot, MaybeAsyncOutput, Output, makeAction } from '.'
 import style from './style.less'
 
 /**
@@ -75,44 +75,75 @@ export function useDisposer(disposer: Disposer) {
 }
 
 export type MessageSelectProps = {
+  children: ReactNode
   before?: string
-  options: string[]
   after?: string
 }
 
 /** 简单的选择组件，让用户在多个选项中选择一个 */
-export function MessageSelect({ before, options, after }: MessageSelectProps) {
-  const ctxValue = useMustContext()
+export function MessageSelect({ children, before, after }: MessageSelectProps) {
   return (
     <div className={style.messageSelect}>
       {before && <p className={style.before}>{before}</p>}
       <ul className={style.options}>
-        {options.map(option => (
-          <li
-            className={style.option}
-            key={option}
-            onClick={() => ctxValue.sendMessage(option)}
-          >{option}</li>
-        ))}
+        {children}
       </ul>
       {after && <p className={style.after}>{after}</p>}
     </div>
   )
 }
 
+export interface MessageSelectOptionProps {
+  children: string
+  onClick?: () => void
+}
+
+export function MessageSelectOption({ children, onClick }: MessageSelectOptionProps) {
+  const ctxValue = useMustContext()
+  onClick = onClick || (() => ctxValue.sendMessage(children))
+  return (
+    <li className={style.option} onClick={onClick}>{children}</li>
+  )
+}
+
 /** 长选择组件，用法同 MessageSelect，适用于较长的选项 */
-export function LongMessageSelect({ before, options, after }: MessageSelectProps) {
+function LongMessageSelect({ children, before, after }: MessageSelectProps) {
   return (
     <div className={style.longMessageSelect}>
       {before && <p className={style.before}>{before}</p>}
       <ol className={style.options}>
-        {options.map(option => (
-          <li className={style.option} key={option}>
-            <MessageLink message={option}>{option}</MessageLink>
-          </li>
-        ))}
+        {children}
       </ol>
       {after && <p className={style.after}>{after}</p>}
     </div>
+  )
+}
+
+// 暂不支持 onClick，需要的时候再支持
+export function LongMessageSelectOption({ children }: Omit<MessageSelectOptionProps, 'onClick'>) {
+  return (
+    <li className={style.option}>
+      <MessageLink message={children}>{children}</MessageLink>
+    </li>
+  )
+}
+
+/** 构造让用户选择一个选项的输出 */
+export function makeSelect(params: {
+  options: string[]
+  after?: string
+  before?: string
+  mode?: 'long' | 'short'
+}): Output {
+  const { mode, options, ...otherParams } = params
+  const optionsView = options.map(option => (
+    mode === 'long'
+    ? <LongMessageSelectOption key={option}>{option}</LongMessageSelectOption>
+    : <MessageSelectOption key={option}>{option}</MessageSelectOption>
+  ))
+  return makeAction(
+    mode === 'long'
+    ? <LongMessageSelect {...otherParams}>{optionsView}</LongMessageSelect>
+    : <MessageSelect {...otherParams}>{optionsView}</MessageSelect>
   )
 }

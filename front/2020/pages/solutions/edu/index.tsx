@@ -6,6 +6,7 @@
 import React from 'react'
 
 import { Product } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
@@ -31,17 +32,20 @@ import imgCase2 from './_images/case-2.png'
 import imgCase3 from './_images/case-3.png'
 import style from './style.less'
 
+const title = `${nameMap[Solution.Edu]}行业解决方案`
+
 function PageContent() {
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
 
   return (
     <>
       <PageBanner
-        title="教育行业解决方案"
+        title={title}
         desc="以出色的技术能力全场景覆盖，实现直播教学、课程回看、师生身份核验等功能，打造满足不同群体的在线学习解决方案。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -115,13 +119,13 @@ function PageContent() {
 
       <Section name="cases" title="客户案例">
         <Cases>
-          <Case logo={imgCase1} title="英语流利说">
+          <Case logo={imgCase1} title="英语流利说" onConsult={handleConsult}>
             “英语流利说”是一款融合创新口语教学理念和尖端语音评估技术的英语口语学习应用，是中国知名的“AI+教育”公司，为个人、企业提供专业英语学习解决方案。
           </Case>
-          <Case logo={imgCase2} title="云上钢琴">
+          <Case logo={imgCase2} title="云上钢琴" onConsult={handleConsult}>
             云上钢琴用智能硬件设备与教学软件相结合，通过闭环教学管理模式 、「浸润式」的教学方法，使钢琴教育融入到生活中。
           </Case>
-          <Case logo={imgCase3} title="创客匠人">
+          <Case logo={imgCase3} title="创客匠人" onConsult={handleConsult}>
             2016 年开始跟七牛合作，从音频到视频、直播、RTC，七牛在技术产品上的更新迭代一直处于行业领先位置，创客匠人选择七牛云成为战略合作伙伴，提升了产品研发的灵活性跟稳定性，确保了产品的服务体验跟性能。
           </Case>
         </Cases>
@@ -140,7 +144,7 @@ function PageContent() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

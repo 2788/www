@@ -29,3 +29,26 @@ export function splitWithUrl(content: string): ContentPart[] {
 
   return parts
 }
+
+const cnPattern = /[\u4e00-\u9fa5]/
+const numEnPattern = /[a-zA-Z0-9]/
+
+/**
+ * 拼接文本，在拼接时尽可能遵循[文案排版对空格的要求](https://github.com/sparanoid/chinese-copywriting-guidelines#%E7%A9%BA%E6%A0%BC)；
+ * 如，将中英文（或中文与数字）进行拼接时添加空格
+ */
+export function joinText(...textList: string[]): string {
+  let result = ''
+  for (const text of textList) {
+    const baseTail = result[result.length - 1] || ''
+    const addonHead = text[0] || ''
+    if (
+      (cnPattern.test(baseTail) && numEnPattern.test(addonHead))
+      || (numEnPattern.test(baseTail) && cnPattern.test(addonHead))
+    ) {
+      result += ' '
+    }
+    result += text
+  }
+  return result
+}

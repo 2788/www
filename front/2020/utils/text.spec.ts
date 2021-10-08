@@ -1,4 +1,4 @@
-import { splitWithUrl } from './text'
+import { splitWithUrl, joinText } from './text'
 
 describe('splitWithUrl', () => {
   it('should work well with plain text', () => {
@@ -49,5 +49,27 @@ describe('splitWithUrl', () => {
       { isUrl: false, content: '域名管理，配置管理等CDN相关内容，你可以通过查看以下文档了解：' },
       { isUrl: true, content: 'https://developer.qiniu.com/fusion/manual/4939/the-domain-name-to-access' }
     ])
+  })
+})
+
+describe('joinText', () => {
+  it('should work well with normal text', () => {
+    expect(joinText('a', 'b')).toBe('ab')
+    expect(joinText('a', '')).toBe('a')
+    expect(joinText('a', 'b', 'c')).toBe('abc')
+  })
+  it('should work well with chinese & english', () => {
+    expect(joinText('a', '中')).toBe('a 中')
+    expect(joinText('a', 'b', '中文', 'c')).toBe('ab 中文 c')
+  })
+  it('should work well with chinese & number', () => {
+    expect(joinText('1', '中')).toBe('1 中')
+    expect(joinText('a', 'b', '中文', 'c')).toBe('ab 中文 c')
+  })
+  it('should work well with punctuation marks', () => {
+    expect(joinText('a', '.')).toBe('a.')
+    expect(joinText('a', '+', 'b', '.', 'c', '&', 'd')).toBe('a+b.c&d')
+    expect(joinText('中', '+', '文', '.', '符', '&', '号')).toBe('中+文.符&号')
+    expect(joinText('中', '，', '文', '：', '符', '“', '号', '”')).toBe('中，文：符“号”')
   })
 })

@@ -4,7 +4,8 @@
 
 import React from 'react'
 
-import { Product, urlMap, nameMap } from 'constants/products'
+import { Product, urlMap as productUrlMap, nameMap as productNameMap } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -21,11 +22,14 @@ import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
 
+const title = `${nameMap[Solution.Kodoe]}解决方案 Kodo Enterprise`
+
 function PageContent() {
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '咨询详情' },
+    { onClick: handleConsult, children: '咨询详情' },
     { href: 'https://developer.qiniu.com/kodoe/manual/5867/a-free-trial', children: '免费试用' }
   )
 
@@ -39,7 +43,7 @@ function PageContent() {
   return (
     <>
       <PageBanner
-        title="私有云存储解决方案 Kodo Enterprise"
+        title={title}
         desc={descView}
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -64,13 +68,13 @@ function PageContent() {
         </LinkGroup>
         <LinkGroup title="相关产品">
           {[Product.Kodo, Product.Dora, Product.Express].map(product => (
-            <LinkItem key={product} href={urlMap[product]!}>{nameMap[product]}</LinkItem>
+            <LinkItem key={product} href={productUrlMap[product]!}>{productNameMap[product]}</LinkItem>
           ))}
         </LinkGroup>
       </LinkGroups>
 
       <UsageGuide title="联系我们，了解更多详情">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

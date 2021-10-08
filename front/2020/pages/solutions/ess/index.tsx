@@ -18,15 +18,19 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { Product } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 import { useBtns } from 'hooks/product-btn'
 
 import imgBanner from './images/banner.png'
 
+const title = `${nameMap[Solution.Ess]}解决方案`
+
 function PageContent() {
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '咨询详情' }
+    { onClick: handleConsult, children: '咨询详情' }
   )
 
   return (
@@ -62,7 +66,7 @@ function PageContent() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

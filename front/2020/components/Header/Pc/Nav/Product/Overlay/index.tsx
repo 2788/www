@@ -3,6 +3,7 @@ import { categoryNameMap, categories, categoryEnNameMap, Product, normalizeProdu
 import ProductIcon from 'components/Product/Icon'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
+import { joinText } from 'utils/text'
 
 import ProductOverlay from '../../ProductOverlay'
 import Menu from '../../ProductOverlay/Menu'
@@ -12,16 +13,16 @@ import ContentItem from '../../ScrollableOverlay/Content/Item'
 import ContentSection from '../../ProductOverlay/Content/Section'
 
 export default function Overlay() {
-  const { startConsulting } = useModal()
+  const { startIntentConsulting } = useModal()
   const { close } = useDropdown()
   const menuItems = categories.map(category => (
     <MenuItem key={category} title={categoryNameMap[category]} subtitle={categoryEnNameMap[category]} />
   ))
 
-  function handleConsult() {
+  function handleConsult(intention: string) {
     // eslint-disable-next-line no-unused-expressions
     close?.()
-    startConsulting()
+    startIntentConsulting(intention)
   }
 
   return (
@@ -62,7 +63,7 @@ const hotProducts = [
 ]
 type ItemProps = {
   product: PartialProductData
-  onConsult: () => void
+  onConsult: (intention: string) => void
 }
 
 function ProductContentItem(props: ItemProps) {
@@ -71,7 +72,7 @@ function ProductContentItem(props: ItemProps) {
   function handleClick(e: MouseEvent) {
     if (productData.url != null) return
     e.preventDefault()
-    props.onConsult()
+    props.onConsult(joinText(productData.name, '产品'))
   }
 
   return (

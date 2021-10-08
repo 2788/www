@@ -10,6 +10,7 @@ import { Card as UICard, Title, Content, Desc } from 'components/UI/Card'
 import { Category, categoryNameMap, categories, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import Link from 'components/Link'
+import { joinText } from 'utils/text'
 
 import styles from './style.less'
 
@@ -111,7 +112,7 @@ function menuItemForMobileProduct(product: PartialProductData, startConsulting: 
   )
 }
 
-function subMenuForMobileCategory(category: Category, startConsulting: () => void) {
+function subMenuForMobileCategory(category: Category, startConsulting: (intention: string) => void) {
   const Icon = categoryIconMap[category]
   const title = (
     <span className={styles.tab}>
@@ -120,7 +121,10 @@ function subMenuForMobileCategory(category: Category, startConsulting: () => voi
   )
   const products: PartialProductData[] = getCategoryProducts(category)
   const menuItemsView = products.map(
-    product => menuItemForMobileProduct(product, startConsulting)
+    product => menuItemForMobileProduct(
+      product,
+      () => startConsulting(joinText(normalizeProduct(product).name, '产品'))
+    )
   )
   return (
     <SubMenu key={category} title={title}>
@@ -132,9 +136,9 @@ function subMenuForMobileCategory(category: Category, startConsulting: () => voi
 }
 
 function ProductsForMobile() {
-  const { startConsulting } = useModal()
+  const { startIntentConsulting } = useModal()
   const subMenusView = categories.map(category => (
-    subMenuForMobileCategory(category, startConsulting)
+    subMenuForMobileCategory(category, startIntentConsulting)
   ))
   return (
     <Menu mode="inline">
@@ -145,7 +149,13 @@ function ProductsForMobile() {
 
 function CardForPcProduct({ product }: { product: PartialProductData }) {
   const productData = normalizeProduct(product)
-  const { startConsulting } = useModal()
+  const { startIntentConsulting } = useModal()
+
+  function handleClick() {
+    if (productData.url == null) {
+      startIntentConsulting(joinText(productData.name, '产品'))
+    }
+  }
 
   return (
     <Card
@@ -153,7 +163,7 @@ function CardForPcProduct({ product }: { product: PartialProductData }) {
       icon={<ProductIcon className={styles.icon} product={productData.product} />}
       title={productData.name}
       href={productData.url}
-      onClick={productData.url !== null ? undefined : startConsulting}
+      onClick={handleClick}
     >
       {productData.url !== null ? productData.desc : '即将上线，欢迎垂询'}
     </Card>

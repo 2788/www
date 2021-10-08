@@ -16,13 +16,13 @@ let showModalFn: (() => void) | undefined
  * 方便 external 的嵌入方通过代码逻辑调起反馈浮层
  */
 function FeedbackInvoker() {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
   useEffect(() => {
-    showModalFn = showModal
+    showModalFn = startConsulting
     return () => {
       showModalFn = undefined
     }
-  }, [showModal])
+  }, [startConsulting])
   return null
 }
 

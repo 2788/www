@@ -10,9 +10,11 @@ import { useMobile } from 'hooks/ua'
 import { uuid } from 'utils'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
+import { joinText } from 'utils/text'
 import MessageList, { Message, MessageFrom } from './MessageList'
-import { IRobot, InputType, OutputType, withEase, Input, context, Disposer, MessageSelect, LongMessageSelect } from './robot'
+import { IRobot, InputType, OutputType, withEase, Input, context, Disposer } from './robot'
 import ConsultRobot from './robot/consult'
+import IntentConsultRobot from './robot/consult/intent'
 import qiniu from '../icons/qiniu.png'
 import humanServiceQrCode from './human-service-qr-code.png'
 import style from './style.less'
@@ -20,24 +22,33 @@ import style from './style.less'
 export type Props = {
   /** 是否激活，非激活转为激活意味着新的对话开始，反之意味着当前对话结束 */
   active?: boolean
-  /** 初始用户消息内容 */
-  startWith?: string // TODO: 按现在需求暂时不需要这个 startWith 逻辑，这里先不干掉，下次需求变更时再考察下这里
+  /** 明确的意图（某个需要咨询的关键词） */
+  intention?: string
 }
 
-export default function FeedbackForm({ active, startWith }: Props) {
-  const [robot, setRobot] = useState(makeConsultRobot())
-  const { messages, sendUserMessage, sendInput, clearMessages, pending } = useRobot(robot, startWith)
+export default function FeedbackForm({ active, intention }: Props) {
+  if (intention != null) {
+    intention = joinText('我想咨询', intention)
+  }
+
+  const makeRobot = useCallback(() => makeConsultRobot(intention), [intention])
+  const [robot, setRobot] = useState<IRobot | null>(makeRobot)
+  const { messages, sendUserMessage, sendInput, pending } = useRobot(robot, intention)
+
+  // TODO: disposers 也是为 robot 服务的（提供 robot context），
+  // 可以把 robot 相关逻辑放到一起（包括准备上下文、初始化、销毁等），
+  // 方便以后除 FeedbackForm 之外的组件去使用 robot
   const disposersRef = useRef<Disposer[]>([])
 
   useOnChange(() => {
     if (active) {
       // 新的对话开始时重新初始化对应的机器人逻辑
-      setRobot(makeConsultRobot())
+      setRobot(makeRobot())
     } else {
+      setRobot(null)
       // 对话结束时执行对应回调
       disposersRef.current.forEach(disposer => disposer())
       disposersRef.current = []
-      clearMessages()
     }
   }, [active])
 
@@ -61,7 +72,10 @@ export default function FeedbackForm({ active, startWith }: Props) {
   )
 }
 
-function makeConsultRobot() {
+function makeConsultRobot(intention?: string): IRobot {
+  if (intention != null) {
+    return withEase(200)(new IntentConsultRobot(intention))
+  }
   return withEase(200)(new ConsultRobot())
 }
 
@@ -205,36 +219,41 @@ function useTipWithTimeout() {
 }
 
 /** 使用给定 Robot 与用户交互 */
-function useRobot(robot: IRobot, startWith?: string) {
+function useRobot(robot: IRobot | null, startWith?: string) {
+  const robotRef = useRef(robot)
+  robotRef.current = robot
+
   const [messages, setMessages] = useState<Message[]>([])
   // 是否有 output 消息在 pending（异步的 output 还没结束）
   const [pending, increasePending, decreasePending] = useCount()
 
-  function pushMessage(from: MessageFrom, content: ReactNode) {
+  const pushMessage = useCallback((from: MessageFrom, content: ReactNode) => {
     const id = uuid()
     setMessages(current => [
       ...current,
       { id, from, content }
     ])
     return id
-  }
+  }, [])
 
-  function removeMessage(id: string) {
+  const removeMessage = useCallback((id: string) => {
     setMessages(current => current.filter(
       message => message.id !== id
     ))
-  }
+  }, [])
 
   const clearMessages = useCallback(() => {
     setMessages([])
   }, [])
 
-  const lastSelectMessageId = useRef<string>()
+  const lastActionMessageId = useRef<string>()
 
   const callRobot = useCallback(async (input: Input) => {
-    // 每次用户输入，都把之前的 select message 干掉
-    if (lastSelectMessageId.current != null) {
-      removeMessage(lastSelectMessageId.current)
+    if (robot == null) return
+
+    // 操作类输出应当在用户完成操作后消失；这里每次用户产生新的输入，都把之前的 action 对应的 message 干掉
+    if (lastActionMessageId.current != null) {
+      removeMessage(lastActionMessageId.current)
     }
 
     increasePending()
@@ -248,19 +267,15 @@ function useRobot(robot: IRobot, startWith?: string) {
       const output = await item // eslint-disable-line no-await-in-loop
       decreasePending()
       if (!output) return
+      if (robotRef.current !== robot) return
 
       switch (output.type) {
         case OutputType.Message:
           pushMessage(MessageFrom.Qiniu, output.content)
           break
-        case OutputType.Select: {
-          const { type, mode, ...others } = output
-          const messageId = pushMessage(MessageFrom.Qiniu, (
-            mode === 'long'
-            ? <LongMessageSelect {...others} />
-            : <MessageSelect {...others} />
-          ))
-          lastSelectMessageId.current = messageId
+        case OutputType.Action: {
+          const messageId = pushMessage(MessageFrom.Qiniu, output.content)
+          lastActionMessageId.current = messageId
           break
         }
         default:
@@ -268,26 +283,25 @@ function useRobot(robot: IRobot, startWith?: string) {
     }
 
     await Promise.all(items)
-  }, [robot, increasePending, decreasePending])
+  }, [robot, increasePending, decreasePending, pushMessage, removeMessage])
 
   const addUserMessage = useCallback((content: string) => {
     pushMessage(MessageFrom.User, content)
     return callRobot({ type: InputType.Message, content })
-  }, [callRobot])
+  }, [pushMessage, callRobot])
 
   useEffect(() => {
-    callRobot({ type: InputType.Initial }).then(() => {
-      if (startWith != null) {
-        addUserMessage(startWith)
-      }
-    })
-  }, [startWith, callRobot, addUserMessage])
+    clearMessages()
+    if (startWith != null) {
+      pushMessage(MessageFrom.User, startWith)
+    }
+    callRobot({ type: InputType.Initial })
+  }, [robot]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     messages,
     sendUserMessage: addUserMessage,
     sendInput: callRobot,
-    clearMessages,
     pending: pending > 0
   }
 }

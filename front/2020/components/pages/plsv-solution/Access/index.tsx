@@ -6,7 +6,6 @@
 
 import React from 'react'
 
-import { useModal as useFeedbackModal } from 'components/Feedback'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
 
 import AccessIconOne from './access-icon-one.svg'
@@ -16,9 +15,11 @@ import ArrowIcon from './arrow.svg'
 
 import styles from './style.less'
 
-export default function PlsvAccess() {
-  const { startConsulting } = useFeedbackModal()
+interface Props {
+  onConsult: () => void
+}
 
+export default function PlsvAccess({ onConsult }: Props) {
   return (
     <>
       <AccessProcess name="access" title="快速接入" header="接入流程">
@@ -36,7 +37,7 @@ export default function PlsvAccess() {
         </Step>
       </AccessProcess>
       <div className={styles.linkWrapper}>
-        <a className={styles.link} onClick={startConsulting}>
+        <a className={styles.link} onClick={onConsult}>
           立即咨询<ArrowIcon className={styles.arrow} />
         </a>
       </div>

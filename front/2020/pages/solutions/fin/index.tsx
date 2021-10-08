@@ -38,17 +38,21 @@ import style from './style.less'
 
 const IconKodoe = solutionIconMap[Solution.Kodoe]
 
+// 注意这个值跟 `constants/solutions` 中的 `nameMap` 不同，维护的时候需要小心
+const title = '金融行业银行合规解决方案'
+
 function PageContent() {
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '咨询详情' }
+    { onClick: handleConsult, children: '咨询详情' }
   )
 
   return (
     <>
       <PageBanner
-        title="金融行业银行合规解决方案"
+        title={title}
         desc="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和稳健地开展各项金融业务。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -108,10 +112,10 @@ function PageContent() {
 
       <Section name="cases" title="客户案例">
         <Cases>
-          <Case logo={imgCase1} title="银基富力">
+          <Case logo={imgCase1} title="银基富力" onConsult={handleConsult}>
             Pandora 助力我们打造专业的信息科技风险监管报送系统，面对海量抽象的机器数据，Pandora 提供了专业化的数据采集、实时分析、可视化能力，实时获取监管数据，有效识别、计量、监测和控制信息科技风险，大大提升监管效率。
           </Case>
-          <Case logo={imgCase2} title="开泰银行">
+          <Case logo={imgCase2} title="开泰银行" onConsult={handleConsult}>
             接入七牛云之后， 开泰银行的网络设备日志、服务器日志、安全设备的审计日志都可以统一收集到 Pandora 2.0 平台，数据采集时无需对多种不同数据源进行梳理和解析，可以直接原始数据进行统一存储归档，入库后再根据不同的需求对数据进行高效灵活的处理和分析，为客户带来了极其简便的数据接入体验。统一归档存储超过一年，轻松满足等保 2.0 合规要求。
           </Case>
         </Cases>
@@ -129,7 +133,7 @@ function PageContent() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>
@@ -140,7 +144,7 @@ function PageContent() {
 export default function FinPage() {
   return (
     <Layout
-      title="金融行业银行合规解决方案"
+      title={title}
       keywords="金融, 银行, 合规, 行业解决方案"
       description="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和稳健地开展各项金融业务。"
     >

@@ -18,17 +18,35 @@ export type Props = PropsWithChildren<{
 }>
 
 export default function FormInvoker({ consult, children }: Props) {
-  const isMobile = useMobile()
-  const { sendInput } = useRobotCtx()
   const [visible, setVisible] = useState(false)
   const showModal = useCallback(() => setVisible(true), [])
   const hideModal = useCallback(() => setVisible(false), [])
+
+  return (
+    <>
+      <span className={style.invoker} onClick={showModal}>
+        {children}
+      </span>
+      <FormModal consult={consult} visible={visible} onClose={hideModal} />
+    </>
+  )
+}
+
+export interface FormModalProps {
+  consult: string
+  visible: boolean
+  onClose: () => void
+}
+
+export function FormModal({ visible, consult, onClose }: FormModalProps) {
+  const isMobile = useMobile()
+  const { sendInput } = useRobotCtx()
 
   const headerView = (
     isMobile
     ? (
       <header className={style.mobileHeader}>
-        <div className={style.closeBtn} onClick={hideModal}>
+        <div className={style.closeBtn} onClick={onClose}>
           <IconArrow className={style.iconArrow} />
         </div>
         问题反馈
@@ -37,32 +55,22 @@ export default function FormInvoker({ consult, children }: Props) {
     : (
       <header className={style.header}>
         问题反馈
-        <div className={style.closeBtn} onClick={hideModal}><IconClose /></div>
+        <div className={style.closeBtn} onClick={onClose}><IconClose /></div>
       </header>
     )
   )
 
   const handleSubmit = useCallback(() => {
-    hideModal()
+    onClose()
     sendInput({ type: InputType.FormSubmitted })
-  }, [hideModal, sendInput])
+  }, [onClose, sendInput])
 
-  const modalView = (
-    <Modal visible={visible} onMaskClick={hideModal} className={style.modalWrapper} modalClassName={style.modal}>
+  return (
+    <Modal visible={visible} onMaskClick={onClose} className={style.modalWrapper} modalClassName={style.modal}>
       {headerView}
       <section className={style.body}>
-        <Form consult={consult} onSubmit={handleSubmit} onCancel={hideModal} />
+        <Form consult={consult} onSubmit={handleSubmit} onCancel={onClose} />
       </section>
     </Modal>
   )
-
-  return (
-    <>
-      <span className={style.invoker} onClick={showModal}>
-        {children}
-      </span>
-      {modalView}
-    </>
-  )
 }
-

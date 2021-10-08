@@ -57,7 +57,7 @@ type ContactPanelProps = {
 }
 
 function ContactPanel({ visible, onHover }: ContactPanelProps) {
-  const { showModal } = useModal()
+  const { startConsulting } = useModal()
   const hoverHandlers = useHoverHandlers(onHover)
   return (
     <div className={cls(style.contactPanelWrapper, !visible && style.hidden)} {...hoverHandlers}>
@@ -65,7 +65,7 @@ function ContactPanel({ visible, onHover }: ContactPanelProps) {
         <p>售前：<span className={style.number}>400-808-9176 转 1</span></p>
         <p>售后：<span className={style.number}>400-808-9176 转 2</span></p>
       </ContactItem>
-      <ContactItem title="智能客服" icon={<IconEarphone />} onClick={showModal}>
+      <ContactItem title="智能客服" icon={<IconEarphone />} onClick={startConsulting}>
         智能客服 24 小时在线，为你解决问题
       </ContactItem>
     </div>

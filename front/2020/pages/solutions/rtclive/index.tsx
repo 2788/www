@@ -5,6 +5,7 @@
 import React from 'react'
 
 import { Product } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -22,12 +23,15 @@ import Demo from 'components/pages/rtclive/Demo'
 
 import banner from './banner.png'
 
+const title = `${nameMap[Solution.Rtclive]}解决方案`
+
 function Page() {
 
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' },
+    { onClick: handleConsult, children: '立即咨询' },
     { href: 'https://doc.qnsdk.com/rtn', children: '查看文档' },
     { href: '#demo', children: '下载 Demo' }
   )
@@ -35,7 +39,7 @@ function Page() {
   return (
     <>
       <PageBanner
-        title="互动直播解决方案"
+        title={title}
         desc="一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线，支持美颜滤镜功能快速接入。"
         bgColor="#34A1EC"
         btns={btns.banner}
@@ -65,7 +69,7 @@ function Page() {
       </Section>
 
       <UsageGuide title="联系我们，了解更多详情">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>
@@ -76,7 +80,7 @@ function Page() {
 export default function RtcLivePage() {
   return (
     <Layout
-      title="互动直播解决方案"
+      title={title}
       keywords="互动直播, SDK, 直播推流, 连麦互动, 商用级开源, 美颜, 美颜滤镜, 连麦 PK, 视频交友, 语音聊天, 一站式方案, 美颜美妆, 双模式, 高性能网络, 快速接入, 全链路监控"
       description="一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线，支持美颜滤镜功能快速接入。"
     >

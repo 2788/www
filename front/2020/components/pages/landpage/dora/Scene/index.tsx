@@ -1,6 +1,5 @@
 import React from 'react'
 import Section from 'components/Product/Section'
-import { useModal as useFeedbackModal } from 'components/Feedback'
 import { LayoutCard, Row } from 'components/UI/Card'
 
 import scene1 from './images/scene1.png'
@@ -13,8 +12,11 @@ import Arrow from './images/arrow.svg'
 
 import style from './index.less'
 
-export default function Scene() {
-  const { startConsulting } = useFeedbackModal()
+interface Props {
+  onConsult: () => void
+}
+
+export default function Scene({ onConsult }: Props) {
   return (
     <Section title="典型应用场景" name="scene">
       <Row>
@@ -27,16 +29,18 @@ export default function Scene() {
         <MyCard bgImg={scene5} title="在线政务" />
         <MyCard bgImg={scene6} title="网约车" />
       </Row>
-      <span className={style.link} onClick={startConsulting}>立即咨询 <Arrow /></span>
+      <span className={style.link} onClick={onConsult}>
+        立即咨询 <Arrow />
+      </span>
     </Section>
   )
 }
 
-type Props = {
+type MyCardProps = {
   title: string
   bgImg: string
 }
 
-function MyCard({ title, bgImg }: Props) {
+function MyCard({ title, bgImg }: MyCardProps) {
   return <LayoutCard className={style.card} style={{ background: `url(${bgImg})`, backgroundSize: 'contain' }}>{title}</LayoutCard>
 }

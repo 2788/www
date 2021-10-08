@@ -2,6 +2,7 @@ import React, { createElement, MouseEvent } from 'react'
 import { categoryNameMap, Category, nameMap, categorySolutionsMap, urlMap, smallIconMap, descMap, allCategories, categoryEnNameMap, Solution, IndustrySolution } from 'constants/solutions'
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
+import { joinText } from 'utils/text'
 
 import ScrollableOverlay from '../../ScrollableOverlay'
 import Menu from '../../ScrollableOverlay/Menu'
@@ -38,7 +39,7 @@ export default function Overlay() {
 
 function SolutionItem({ solution }: { solution: Solution }) {
 
-  const { startConsulting } = useModal()
+  const { startIntentConsulting } = useModal()
   const { close } = useDropdown()
 
   const url = urlMap[solution]
@@ -47,7 +48,7 @@ function SolutionItem({ solution }: { solution: Solution }) {
   function handleClick(e: MouseEvent) {
     e.preventDefault()
     if (close) close()
-    startConsulting()
+    startIntentConsulting(joinText(nameMap[solution], '解决方案'))
   }
 
   return (

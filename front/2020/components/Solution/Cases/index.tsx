@@ -4,7 +4,6 @@
  */
 
 import React, { PropsWithChildren } from 'react'
-import { useModal } from 'components/Feedback'
 
 import IconChat from './chat.svg'
 import style from './style.less'
@@ -18,17 +17,17 @@ export default function Cases({ children }: Props) {
 export type CaseProps = PropsWithChildren<{
   logo: string
   title: string
+  onConsult: () => void
 }>
 
-export function Case({ logo, title, children }: CaseProps) {
-  const { startConsulting } = useModal()
+export function Case({ logo, title, onConsult, children }: CaseProps) {
   return (
     <section className={style.case}>
       <img src={logo} alt={title} className={style.logo} />
       <h5 className={style.title}>{title}</h5>
       <div className={style.desc}>{children}</div>
       <div className={style.footer}>
-        <button type="button" className={style.consultEntry} onClick={startConsulting}>
+        <button type="button" className={style.consultEntry} onClick={onConsult}>
           <IconChat className={style.iconChat} />
           在线咨询
         </button>

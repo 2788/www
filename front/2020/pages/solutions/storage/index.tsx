@@ -9,6 +9,7 @@ import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product } from 'constants/products'
+import { Solution, nameMap } from 'constants/solutions'
 
 import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/storage/Advantage'
@@ -20,18 +21,21 @@ import { useBtns } from 'hooks/product-btn'
 
 import banner from './banner.png'
 
+const title = nameMap[Solution.Storage]
+
 function Page() {
 
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
 
   return (
     <>
       <PageBanner
-        title="云存储一体机"
+        title={title}
         desc="七牛云存储一体机，预集成七牛自主研发的企业级存储服务和智能多媒体计算平台，经过深度的软硬件整合优化，以一体机为载体，实现敏捷部署、开箱即用，降低企业 IT 基础架构建设与运维成本。以高性能、高可扩展、高可靠、高资源利用率的存储能力和对软、硬件资源统一管理能力，帮助企业轻松管理和智能处理 EB 级海量数据。"
         bgColor="#34A1EC"
         btns={btns.banner}

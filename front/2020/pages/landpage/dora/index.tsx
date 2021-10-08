@@ -21,10 +21,13 @@ import Case from 'components/pages/landpage/dora/Case'
 
 import bannerImg from './_images/banner.png'
 
+const title = '视觉数据分析平台'
+
 function Main() {
-  const { startConsulting } = useFeedbackModal()
+  const { startIntentConsulting } = useFeedbackModal()
+  const handleConsult = () => startIntentConsulting(title)
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: handleConsult, children: '立即咨询' }
   )
   return (
     <>
@@ -53,7 +56,7 @@ function Main() {
 
       <Arch />
       <CoreProduct />
-      <TypicalScene />
+      <TypicalScene onConsult={handleConsult} />
       <Case />
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
@@ -69,7 +72,7 @@ function Main() {
       <UsageGuide
         title="欢迎联系我们了解更多行业成功案例经验"
       >
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={handleConsult}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>
