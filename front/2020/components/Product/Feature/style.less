@@ -201,3 +201,54 @@
     line-height: 18px;
   }
 }
+
+.card {
+  height: 410px;
+  padding: 0 28px 28px;
+  text-align: center;
+
+  .cardFeatureItem {
+    position: relative;
+    height: 100%;
+
+    .cardIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px;
+    }
+
+    .cardTittle {
+      margin: 16px 0 12px;
+      font-size: 20px;
+    }
+
+    .cardDesc {
+      // 加 flex 是为了保证文字不够一行时水平居中
+      display: flex;
+      justify-content: center;
+      text-align: left;
+      color: @grey-6;
+    }
+    .buttonsContainer {
+      margin-top: 20px;
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+
+      .button {
+        flex: 1;
+        margin: 0 8px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
