@@ -109,7 +109,7 @@ export default class PricesStore extends Store {
     return Promise.all([
       this.priceApis.update({ ...opts, creator: record.creator, createdAt: record.createdAt }),
       this.priceApis.addVersion(opts)
-    ])
+    ]).then(() => this.fetchList())
   }
 
   @autobind

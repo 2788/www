@@ -11,6 +11,7 @@ import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
+import * as style from './style.m.less'
 
 type RootNode = {
   type: 'root'
@@ -29,19 +30,20 @@ type ElementNode = {
   tagName: keyof ReactHTML
 }
 
-type RenderOptions = {
+export type RenderOptions = {
   renderTabPane: (tab: ReactNode, key: string, children: ReactNode) => ReactNode
   renderTabs: (key: number, children: ReactNode) => ReactNode
   tagNames?: { [k in keyof ReactHTML]?: keyof ReactHTML } // 映射标签名称到指定标签
 }
 
-export function renderMdText(text: string, options: RenderOptions): Promise<JSX.Element> {
+export function mdTextToHTMLAst(text: string): Promise<RootNode> {
   return new Promise(resolve => {
-    function htmlNodeToReactPlugin() {
+    // todo：这边 this 的实际类型为 Processor<void, Input, Input, Output>，
+    // 但是改为实际类型比较麻烦，所以先 as any 了
+    function getHTMLAstPlugin(this: any) {
       Object.assign(this, { Compiler: compiler })
       function compiler(root: RootNode) {
-        const res = renderRootNode(root, options)
-        resolve(res)
+        resolve(root)
       }
     }
     unified()
@@ -49,16 +51,16 @@ export function renderMdText(text: string, options: RenderOptions): Promise<JSX.
       .use(remarkParse) // 将 md text 转为 md ast
       .use(remarkRehype, { allowDangerousHtml: true }) // rehype 解析树
       .use(rehypeRaw) // // rehype 再次解析树，处理 md 里面的 html
-      .use([htmlNodeToReactPlugin])
+      .use(getHTMLAstPlugin)
       .process(text)
   })
 }
 
-function renderRootNode(root: RootNode, options: RenderOptions) {
+export function renderHTMLAst(htmlAst: RootNode, options: RenderOptions) {
   return React.createElement(
     Fragment,
     null,
-    childrenToReactNode(root.children, options)
+    childrenToReactNode(htmlAst.children, options)
   )
 }
 
@@ -112,14 +114,23 @@ function childrenToReactNode(
   return res
 }
 
-function renderElementNode(element: ElementNode, key: number, options: RenderOptions): JSX.Element {
+function renderElementNode(element: ElementNode, key: number, options: RenderOptions): ReactNode {
   const children = element.children
   const len = children.length
-  return React.createElement(
-    (options.tagNames && options.tagNames[element.tagName]) || element.tagName,
-    { key, ...element.properties },
+  const tagName = ((options.tagNames && options.tagNames[element.tagName]) || element.tagName).toLowerCase()
+  if (tagName === 'style' || tagName === 'script') {
+    return null
+  }
+  const reactElement = React.createElement(
+    tagName,
+    // todo：和产品确认了可以先屏蔽 style、className，后续如果要支持，可参考 react-markdown 中的做法来支持
+    { key, ...element.properties, style: undefined, className: undefined },
     len !== 0 ? childrenToReactNode(children, options, element) : null
   )
+  if (tagName === 'table') { // 表格外面包一层 div，防止宽度超出
+    return <div className={style.tableWrapper} key={key}>{reactElement}</div>
+  }
+  return reactElement
 }
 
 // The table-related elements that must not contain whitespace text according to React.
