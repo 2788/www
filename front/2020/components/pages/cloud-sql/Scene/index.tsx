@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
 } from 'components/Product/Scene'
 import Link from 'components/Link'
-
+import { useMobile } from 'hooks/ua'
+import ArrowDownIcon from 'components/UI/Menu/arrow-down.svg'
 import image1 from './images/image1.png'
 import image2 from './images/image2.png'
 import image3 from './images/image3.png'
 import image4 from './images/image4.png'
-
 import style from './index.less'
 
 const urlMap = {
@@ -72,7 +72,24 @@ const scenes = [
   }
 ]
 
+interface ProductItemProps {
+  name: string
+  url: string
+}
+
+function ProductItem({ name, url }: ProductItemProps) {
+  const isMobile = useMobile()
+
+  return (
+    <Link href={url} className={style.productItem}>
+      <span>{name}</span>
+      {isMobile && <ArrowDownIcon className={style.arrow} />}
+    </Link>
+  )
+}
+
 export default function SqlScene() {
+
   return (
     <Scene name="scene" title="应用场景" header="广泛的应用场景">
       {
@@ -85,13 +102,10 @@ export default function SqlScene() {
               <h3 className={style.sceneTitle}>上云建议</h3>
               <p>{scene.suggest}</p>
               <h3 className={style.sceneTitle}>推荐产品</h3>
-              <div className={style.suggestContent}>
+              <div className={style.productsContainer}>
                 {
-                  scene.desc.map((desc, i) => (
-                    <Fragment key={`${index}-${i}`}>
-                      <Link href={desc.href} className={style.link}>{desc.title}</Link>
-                      <div className={style.bar}></div>
-                    </Fragment>
+                  scene.desc.map(item => (
+                    <ProductItem key={item.title} name={item.title} url={item.href} />
                   ))
                 }
               </div>
