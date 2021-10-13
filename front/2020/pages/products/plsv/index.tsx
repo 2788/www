@@ -32,7 +32,7 @@ import imgBanner from './images/banner.png'
 function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
 
   const btns = useBtns(
-    { children: '免费体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com', pcOnly: true },
+    { children: '免费体验', href: 'https://qmall.qiniu.com/template/MTE1', pcOnly: true },
     { children: '接入指南', href: 'https://developer.qiniu.com/pili/sdk/3955/short-video-quick-guide' }
   )
 
@@ -66,7 +66,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="注册即可全方位体验短视频 SDK">
-        <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com">
+        <UsageGuideButton href="https://qmall.qiniu.com/template/MTE1">
           免费体验
         </UsageGuideButton>
       </UsageGuide>

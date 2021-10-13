@@ -28,7 +28,7 @@ const data = [
   {
     title: nameMap[Product.Plsv],
     desc: '免费使用一个月专业版短视频 SDK license',
-    getUrl: 'https://portal.qiniu.com/sdk/licenses?showDrawer',
+    getUrl: 'https://qmall.qiniu.com/template/MTE1',
     moreUrl: urlMap[Product.Plsv],
     items: ['集合视频拍摄、上传、编辑等全套功能，快速打造手机 Vlog 制作神器']
   },

@@ -35,7 +35,7 @@ function MyCard({ title, desc, price }: CardProps) {
         </div>
         <div className={style.footer}>
           <p className={style.price}><span className={style.number}>{price}</span> 元/年</p>
-          <Button type="hollow" href="https://portal.qiniu.com/sdk/licenses?showDrawer&ref=www.qiniu.com" withBorder className={style.button}>立即购买</Button>
+          <Button type="hollow" href="https://qmall.qiniu.com/template/MTE1" withBorder className={style.button}>立即购买</Button>
         </div>
       </div>
     </Card>

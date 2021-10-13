@@ -30,7 +30,7 @@ function PageContent() {
   const handleConsult = () => startIntentConsulting(title)
 
   const btns = useBtns(
-    { children: '0 元体验', href: 'https://portal.qiniu.com/sdk/licenses?showDrawer', pcOnly: true },
+    { children: '0 元体验', href: 'https://qmall.qiniu.com/template/MTE1', pcOnly: true },
     { children: '短视频 SDK', href: 'https://developer.qiniu.com/pili/sdk/3920/short-video-demo-download' },
     { children: 'SDK 功能列表', href: 'https://developer.qiniu.com/pili/sdk/3731/short-video' }
   )
@@ -76,7 +76,7 @@ function PageContent() {
       </LinkGroups>
 
       <UsageGuide title="注册即可免费试用短视频">
-        <UsageGuideButton href="https://portal.qiniu.com/sdk/licenses?showDrawer">
+        <UsageGuideButton href="https://qmall.qiniu.com/template/MTE1">
           立即开通
         </UsageGuideButton>
       </UsageGuide>
