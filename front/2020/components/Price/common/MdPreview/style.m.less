@@ -1,0 +1,140 @@
+@import "~react-icecream/style/less/variables/index.less";
+
+.withMargin(@margin: 12px) {
+  margin-top: @margin;
+  margin-bottom: @margin;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@screen-sm: 768px;
+.mobile(@rules) {
+  @media only screen and (max-width: @screen-sm - 1) {
+    @rules();
+  }
+}
+
+// 本身就是蓝色的链接，hover 时出下划线（不同于大部分链接本身黑色，hover 变蓝）
+.blueLink() {
+  color: @icecream-blue-6;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabs {
+  background-color: @icecream-grey-0;
+}
+
+markdown-container {
+  display: block;
+  
+  .mobile({
+    padding: 0 16px;
+  });
+
+  table {
+    width: 100%;
+    border: 1px solid #e8e8e8;
+
+    .mobile({
+      min-width: 100%;
+      width: max-content;
+    });
+  }
+
+  tr {
+    &:hover td {
+      background-color: #f2fcff;
+    }
+  }
+
+  tr:nth-child(2n) {
+    background: #fafafa;
+  }
+
+  th,
+  td {
+    padding: 16px;
+    border: 1px solid #e8e8e8;
+    transition: all .3s, height 0s;
+  }
+
+  th {
+    color: #595959;
+    font-weight: 500;
+    text-align: left;
+    background: #fafafa;
+  }
+
+  a {
+    .blueLink();
+  }
+
+  h2 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 16px;
+
+    &:not(:first-child) {
+      margin-top: 72px;
+    }
+  }
+
+  h3,
+  h4,
+  h5 {
+    .withMargin(16px);
+  }
+
+  p {
+    .withMargin();
+  }
+
+
+  em {
+    font-style: normal;
+    color: @icecream-blue-6;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  li,
+  li p {
+    .withMargin(6px);
+  }
+
+  ul,
+  ol {
+    .withMargin();
+    padding-left: 1.5em;
+    color: #999999;
+  }
+
+  ul>li {
+    list-style-type: circle;
+  }
+
+  ol>li {
+    list-style-type: decimal;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

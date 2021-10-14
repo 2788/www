@@ -6,12 +6,18 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const withGlobalLess = require('next-global-less')
+// next-transpile-modules 作用是指定 node_moudules 模块中的代码也会被 babel 转译
+// todo：目前测试在 ie11 显示正常，后续需要再测试下 ie10 显示是否也正常
+const tm = require('next-transpile-modules')
+// 这些模块是在 mdPreview 中处理逻辑中二次引用的
+const withTM = tm(['parse5', 'is-plain-obj', 'escape-string-regexp'])
 const path = require('path')
 
 const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
 
 module.exports = withPlugins(
   [
+    [withTM],
     [ withGlobalLess, { globalPath: path.join(__dirname, './pages/global.less') } ],
     [ withCss ],
     [

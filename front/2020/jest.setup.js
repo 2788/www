@@ -10,5 +10,6 @@ process.env = {
   NEXT_PUBLIC_MARKETING_HOST: 'http://www-staging-marketing.qa.qiniu.io',
   NEXT_PUBLIC_ECUG_HOST: 'https://www.ecug.org',
   NEXT_PUBLIC_MEIHUA_UPLOAD_PREFIX: 'upload-www/',
-  NEXT_PUBLIC_BUILT_AT: new Date().getTime()
+  NEXT_PUBLIC_BUILT_AT: new Date().getTime(),
+  NEXT_PUBLIC_IGNORE_PRODUCT_PRICE_ERROR: true
 }

@@ -171,7 +171,7 @@ export const priceUrlMap = {
   [Product.Censor]: '/prices/censor',
   [Product.FaceID]: '/prices/faceid',
   [Product.Rtn]: '/prices/rtc',
-  [Product.Plsv]: '/products/plsv#price',
+  [Product.Plsv]: '/prices/plsv',
   [Product.Plms]: null,
   [Product.Insight]: null,
   [Product.Express]: null,

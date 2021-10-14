@@ -3,6 +3,7 @@
  */
 
 import { get } from 'utils/fetch'
+import { ignoreProductPriceError } from 'constants/env'
 import { Product } from 'constants/products'
 import { NewsType } from 'constants/products/news'
 import { mongoApiPrefix, getFilteredList, handleResponseData } from '.'
@@ -73,5 +74,29 @@ export async function getNews({ limit = 4, offset = 0, product, type }: INewsOpt
   return {
     count: res.count || 0,
     data: handleResponseData(res)
+  }
+}
+
+export interface IPrice {
+  product: string // 所在产品页,一个产品页只能有一个价格页，唯一性 key
+  fileName: string // 文件名称
+  fileUrl: string // 文件内容 url
+  creator: string // 创建者
+  modifier: string // 更改者
+  createdAt: number // 创建时间，精确到秒
+  updatedAt: number // 更新时间，精确到秒
+}
+
+// 获取产品价格页内容，先获取文件地址，再根据地址获取内容
+export async function getPriceFileContent(product: Product): Promise<string> {
+  try {
+    const price: IPrice = await get(mongoApiPrefix + '/www-product-price/' + product)
+    const text: string = await fetch(price.fileUrl).then((r: Response) => r.text())
+    return text
+  } catch (e) {
+    if (ignoreProductPriceError) {
+      return '该产品未配置价格详情，可 @tangbingyan 配置'
+    }
+    throw e
   }
 }

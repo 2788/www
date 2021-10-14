@@ -35,6 +35,9 @@ export const meihuaUploadPrefix = must('meihuaUploadPrefix', process.env.NEXT_PU
 /** 构建时间（时间戳），注意该值不来自 .env.* 文件，而是在 next.config.js 中配置（从而动态获得当前时间） */
 export const builtAt = parseInt(must('builtAt', process.env.NEXT_PUBLIC_BUILT_AT), 10)
 
+/** 是否忽略错误信息（产品价格页专用） */
+export const ignoreProductPriceError = must('ignoreProductPriceError', process.env.NEXT_PUBLIC_IGNORE_PRODUCT_PRICE_ERROR) === 'true'
+
 function must(name: string, variable?: string): string {
   if (variable == null) {
     throw new Error(`Invalid value for environment variable ${name}, you need to configure it in env file`)
