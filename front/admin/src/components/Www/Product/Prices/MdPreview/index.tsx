@@ -33,12 +33,6 @@ const options: RenderOptions = {
         {children}
       </Tabs>
     )
-  },
-  // 因价格页展示需求，md 文档会有多个一级标题，为符合 html 语义以及和实际上页面展示所对应，
-  // 这边特意将 h1 -> h2，顺延 h2 -> h3，因 h3 -> tabs，故后续无需再转换
-  tagNames: {
-    h1: 'h2',
-    h2: 'h3'
   }
 }
 

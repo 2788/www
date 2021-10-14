@@ -1,12 +1,15 @@
 @import "~react-icecream/style/less/variables/index.less";
 
 .withMargin(@margin: 12px) {
-  &:not(:first-child) {
-    margin-top: @margin;
-  }
+  margin-top: @margin;
+  margin-bottom: @margin;
 
-  &:not(:last-child) {
-    margin-bottom: @margin;
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -38,7 +41,7 @@
 
 markdown-container {
   display: block;
-
+  
   .mobile({
     padding: 0 16px;
   });
@@ -51,30 +54,30 @@ markdown-container {
       min-width: 100%;
       width: max-content;
     });
+  }
 
-    tr {
-      &:hover td {
-        background-color: #f2fcff;
-      }
+  tr {
+    &:hover td {
+      background-color: #f2fcff;
     }
+  }
 
-    tr:nth-child(2n) {
-      background: #fafafa;
-    }
+  tr:nth-child(2n) {
+    background: #fafafa;
+  }
 
-    th,
-    td {
-      padding: 16px;
-      border: 1px solid #e8e8e8;
-      transition: all .3s, height 0s;
-    }
+  th,
+  td {
+    padding: 16px;
+    border: 1px solid #e8e8e8;
+    transition: all .3s, height 0s;
+  }
 
-    th {
-      color: #595959;
-      font-weight: 500;
-      text-align: left;
-      background: #fafafa;
-    }
+  th {
+    color: #595959;
+    font-weight: 500;
+    text-align: left;
+    background: #fafafa;
   }
 
   a {
@@ -84,7 +87,7 @@ markdown-container {
   h2 {
     color: #333;
     font-size: 28px;
-    margin-bottom: @icecream-gap-md;
+    margin-bottom: 16px;
 
     &:not(:first-child) {
       margin-top: 72px;
@@ -94,7 +97,7 @@ markdown-container {
   h3,
   h4,
   h5 {
-    .withMargin(@icecream-gap-md);
+    .withMargin(16px);
   }
 
   p {

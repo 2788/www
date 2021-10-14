@@ -11,9 +11,10 @@ import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
+
 import * as style from './style.m.less'
 
-type RootNode = {
+export type RootNode = {
   type: 'root'
   children: Array<TextNode | ElementNode>
 }
@@ -46,6 +47,7 @@ export function mdTextToHTMLAst(text: string): Promise<RootNode> {
         resolve(root)
       }
     }
+
     unified()
       .use(remarkGfm) // 支持 github 风格的 md，如链接
       .use(remarkParse) // 将 md text 转为 md ast
@@ -56,7 +58,15 @@ export function mdTextToHTMLAst(text: string): Promise<RootNode> {
   })
 }
 
+// 因价格页展示需求，md 文档会有多个一级标题，为符合 html 语义以及和实际上页面展示所对应，
+// 这边特意将 h1 -> h2，顺延 h2 -> h3，因 h3 -> tabs，故后续无需再转换
+const defaultTagNames: { [k in keyof ReactHTML]?: keyof ReactHTML } = {
+  h1: 'h2',
+  h2: 'h3'
+}
+
 export function renderHTMLAst(htmlAst: RootNode, options: RenderOptions) {
+  options = { ...options, tagNames: { ...defaultTagNames, ...options.tagNames } }
   return React.createElement(
     Fragment,
     null,
