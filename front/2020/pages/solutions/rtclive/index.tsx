@@ -32,7 +32,7 @@ function Page() {
 
   const btns = useBtns(
     { onClick: handleConsult, children: '立即咨询' },
-    { href: 'https://doc.qnsdk.com/rtn', children: '查看文档' },
+    { href: 'https://developer.qiniu.com/rtc', children: '查看文档' },
     { href: '#demo', children: '下载 Demo' }
   )
 

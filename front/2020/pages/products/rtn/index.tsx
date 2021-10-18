@@ -139,20 +139,18 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
 
       <LinkGroups title="相关文档">
         <LinkGroup title="常用文档">
-          <LinkItem href="https://doc.qnsdk.com/rtn/docs/rtn_overview">产品简介</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/docs/feature_list">核心功能</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/docs/rtn_startup">接入流程</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/8802/pd-overview">产品概述</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/8803/pd-function">核心功能</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/8804/pd-price">价格说明</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc">产品动态</LinkItem>
         </LinkGroup>
         <LinkGroup title="开发手册">
-          <LinkItem href="https://doc.qnsdk.com/rtn/ios">iOS 开发手册</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/android">Android 开发手册</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/8830/an-overview-of-the-ios-sdk">iOS 开发手册</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/8764/an-overview-of-the-android-sdk">Android 开发手册</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/9478/an-overview-of-the-web-sd">Web 开发手册</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/9536/windows-overview-of-the-sdk">Windows 开发手册</LinkItem>
           <LinkItem href="https://doc.qnsdk.com/rtn/wxapp">微信小程序开发手册</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/web">Web 开发手册</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/windows">Windows 开发手册</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/docs/server_overview">服务端开发手册</LinkItem>
-        </LinkGroup>
-        <LinkGroup title="其他">
-          <LinkItem href="https://doc.qnsdk.com/rtn/docs/demo">Demo 体验及源码下载</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/8805/server-overview">服务端开发手册</LinkItem>
         </LinkGroup>
       </LinkGroups>
     </>
