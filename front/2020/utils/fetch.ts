@@ -109,3 +109,13 @@ export function getNormalizedErrorMessage(error: unknown, msg?: string) {
   const message = getMessage(error)
   return normalizeErrorMessage(code, message, msg)
 }
+
+export function postBlob(url: string, params: Blob) {
+  return fetchJSON(url, {
+    headers: {
+      'Content-Type': params.type
+    },
+    method: 'POST',
+    body: params
+  })
+}

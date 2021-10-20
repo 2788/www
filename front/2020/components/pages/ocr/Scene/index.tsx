@@ -7,6 +7,7 @@ import Scene, {
 import Icon1 from './images/icon1.svg'
 import Icon2 from './images/icon2.svg'
 import Icon3 from './images/icon3.svg'
+import Icon4 from './images/icon4.svg'
 
 import style from './index.less'
 
@@ -25,6 +26,11 @@ const scenes = [
     icon: <Icon3 />,
     title: '车主信息服务',
     content: '票证自动识别 OCR 能够帮助实现汽车保险理赔、二手车交易、车辆租借年审等场景下的用户快速录入车辆相关信息，提高业务人员的办公效率和服务准确性。'
+  },
+  {
+    icon: <Icon4 />,
+    title: '财税报销',
+    content: '使用多票识别技术，一次识别多张票据，在批量报销、贴票报销等场景中可广泛应用，成倍提升票据录入效率，有效减少人工录入工作量，降低人力成本。'
   }
 ]
 export default function OcrScene() {

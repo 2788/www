@@ -6,7 +6,7 @@ import Scene, {
   Panel as ScenePanel,
   Block as SceneBlock
 } from 'components/Product/Scene'
-import { ImageOptions, getApiByName, IdCardResponse, CarBdResponse, BsResponse, NewCarResponse, CzResponse } from 'apis/ocr/function'
+import { ImageOptions, getApiByName, IdCardResponse, CarBdResponse, BsResponse, NewCarResponse, CzResponse, InvoiceResponse } from 'apis/ocr/function'
 import { OcrDemo, getRequestMesgByName } from 'apis/ocr/common'
 import Button from 'components/UI/Button'
 import { useOnChange } from 'hooks'
@@ -22,6 +22,8 @@ import carBd from './images/carBd.base64.jpg'
 import bs from './images/bs.base64.jpg'
 import cz from './images/cz.base64.jpg'
 import newCar from './images/newCar.base64.jpg'
+import singleInvoice from './images/singleInvoice.base64.png'
+import multipleInvoice from './images/multipleInvoice.base64.png'
 
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg'
@@ -29,6 +31,8 @@ const imgRegex = /^data:(image\/)?(png|jpg|jpeg)?;base64,/
 
 export default function Function() {
   const panelArr = [
+    { name: OcrDemo.singleInvoice, title: '单张发票识别' },
+    { name: OcrDemo.multipleInvoice, title: '多张发票识别' },
     { name: OcrDemo.IdCard, title: '身份证' },
     { name: OcrDemo.CarBd, title: '车险保单' },
     { name: OcrDemo.Bs, title: '营业执照' },
@@ -70,12 +74,14 @@ function MyPanel({ name, title }: PanelProps) {
 
   // 防止不必要的更新影响到image数据，不直接使用set是为了避免接口多次执行
   const reqBody = useMemo(() => ({
-    image: removeImageBase64Prefix(imgUrl)
-  }), [imgUrl])
+    image: removeImageBase64Prefix(imgUrl),
+    blob: imgData
+  }), [imgUrl, imgData])
 
   // 当imgUrl改变时，函数引用也会改变，这时候会触发useApiWithParams变更机制，发送一次请求
   const wrappedOcr = useCallback(
-    (options: ImageOptions): Promise<IdCardResponse | CarBdResponse | BsResponse | NewCarResponse | CzResponse> => {
+    (options: ImageOptions):
+    Promise<IdCardResponse | CarBdResponse | BsResponse | NewCarResponse | CzResponse | InvoiceResponse> => {
       if (imgUrl === getImgByName(name)) return new Promise(resolve => resolve(defaultResponse(name)))
       return getApiByName(name)(options)
     },
@@ -158,15 +164,26 @@ function removeImageBase64Prefix(url: string) {
   return url.replace(imgRegex, '')
 }
 
-function makeRequestForDisplay(name: OcrDemo, body: any) {
+function makeRequestForDisplay(name: OcrDemo, body: { image: string; blob: Blob | undefined }) {
   const req = getRequestMesgByName(name)
-  return {
+
+  const request = {
     Method: 'POST ' + req.path + ' HTTP/1.1',
     Host: req.host,
     'Content-Type': 'application/json',
     Authorization: 'Qiniu <AccessKey>:<Sign>',
-    body
+    body: {}
   }
+
+  if (name === OcrDemo.singleInvoice || name === OcrDemo.multipleInvoice) {
+    request.body = '<Binary Data>'
+  } else {
+    request.body = {
+      image: body.image
+    }
+  }
+
+  return request
 }
 function getImgByName(name: OcrDemo) {
   switch (name) {
@@ -180,6 +197,10 @@ function getImgByName(name: OcrDemo) {
       return newCar
     case OcrDemo.Cz:
       return cz
+    case OcrDemo.singleInvoice:
+      return singleInvoice
+    case OcrDemo.multipleInvoice:
+      return multipleInvoice
     default:
       return idCard
   }

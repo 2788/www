@@ -42,7 +42,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
     <>
       <PageBanner
         title="票证自动识别 OCR"
-        desc="票证自动识别 OCR 基于行业前沿的深度学习技术，提供身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
+        desc="票证自动识别 OCR 基于行业前沿的深度学习技术，提供单张多张发票识别，身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={banner} />
@@ -77,7 +77,7 @@ export default function OcrPage({ notices, newsRes }: InferGetStaticPropsType<ty
     <Layout
       title="票证自动识别 OCR"
       keywords="票证自动识别, OCR, open api, 身份证识别, 车险保单识别, 营业执照识别, 新车发票识别, 车辆登记识别"
-      description="票证自动识别 OCR 基于行业前沿的深度学习技术，提供身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
+      description="票证自动识别 OCR 基于行业前沿的深度学习技术，提供单张多张发票识别，身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
     >
       <Page notices={notices} newsRes={newsRes} />
     </Layout>

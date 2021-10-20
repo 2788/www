@@ -149,7 +149,7 @@ module.exports = withPlugins(
         },
         //ocr身份证、发票等默认图片转base64
         {
-          test: /\.base64\.jpg$/i,
+          test: /\.base64\.(jpg|png)$/i,
           issuer: {
             test: /\.(js|ts)x?$/
           },

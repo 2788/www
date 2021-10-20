@@ -6,12 +6,16 @@
  * 营业执照OCR    https://developer.qiniu.com/dora/api/7033/business-license-of-ocr
  * 新车发票OCR   https://developer.qiniu.com/dora/api/7030/new-invoice-ocr
  * 车辆登记OCR   https://developer.qiniu.com/dora/api/7031/vehicle-registration-ocr
+ * 单张发票OCR    https://developer.qiniu.com/dora/7764/invoice-to-identify
+ * 多张发票OCR    https://developer.qiniu.com/dora/7769/more-than-the-invoice-identification-ocr
  */
 
-import { post, ApiException } from 'utils/fetch'
+import { post, ApiException, postBlob } from 'utils/fetch'
 import { apiPrefix as basePrefix } from 'constants/api'
 import { OcrDemo, pathMap } from './common'
 
+const singleInvoicePrefix = `${basePrefix}/ocr_single_invoice`
+const multipleInvoicePrefix = `${basePrefix}/ocr_multiple_invoice`
 const idcardPrefix = `${basePrefix}/ocr_idcard`
 const carbdPrefix = `${basePrefix}/ocr_carbd`
 const bsPrefix = `${basePrefix}/ocr_bs`
@@ -20,6 +24,7 @@ const czPrefix = `${basePrefix}/ocr_cz`
 
 export type ImageOptions = {
   image: string
+  blob: Blob | undefined
 }
 
 export type IdCardResponse = {
@@ -80,6 +85,27 @@ export async function getMesgByCz(options: ImageOptions): Promise<CzResponse> {
   return response
 }
 
+export type InvoiceResponse = {
+  result: number
+  code?: number
+  message?: string
+  response?: {
+    data: {
+      identify_results: Array<Record<string, any>>
+    }
+  }
+}
+
+export async function getMesgBysingleInvoice(options: ImageOptions): Promise<InvoiceResponse> {
+  const response: InvoiceResponse = await postBlob(`${singleInvoicePrefix}${pathMap[OcrDemo.singleInvoice]}`, options.blob!).catch(resCatch)
+  return response
+}
+
+export async function getMesgBymultipleInvoice(options: ImageOptions): Promise<InvoiceResponse> {
+  const response: InvoiceResponse = await postBlob(`${multipleInvoicePrefix}${pathMap[OcrDemo.multipleInvoice]}`, options.blob!).catch(resCatch)
+  return response
+}
+
 function resCatch(e: any) {
   if (!(e instanceof ApiException)) {
     throw e
@@ -99,6 +125,10 @@ export function getApiByName(name: OcrDemo) {
       return getMesgByNewCar
     case OcrDemo.Cz:
       return getMesgByCz
+    case OcrDemo.singleInvoice:
+      return getMesgBysingleInvoice
+    case OcrDemo.multipleInvoice:
+      return getMesgBymultipleInvoice
     default:
       return getMesgByIdCard
   }

@@ -72,3 +72,24 @@
     .blueLink();
   }
 }
+
+.invoiceSwitch {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 16px;
+  line-height: 24px;
+
+  .invoiceButton {
+    flex: 0 0 auto;
+    padding: 0 11px;
+    width: auto;
+    height: 24px;
+    line-height: 22px;
+    font-size: 12px;
+    border-color: @blue-6!important;
+  }
+
+  .invoiceButton + .invoiceButton {
+    margin-left: 12px;
+  }
+}

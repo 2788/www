@@ -1,4 +1,6 @@
 export enum OcrDemo {
+  singleInvoice = 'singleInvoice',
+  multipleInvoice = 'multipleInvoice',
   IdCard = 'idCard',
   CarBd = 'carBd',
   Bs = 'bs',
@@ -7,6 +9,8 @@ export enum OcrDemo {
 }
 
 export const pathMap = {
+  [OcrDemo.singleInvoice]: '/invoice/single',
+  [OcrDemo.multipleInvoice]: '/invoice/multiple',
   [OcrDemo.IdCard]: '/ocr/idcard',
   [OcrDemo.CarBd]: '/ocr/car_bd',
   [OcrDemo.Bs]: '/ocr/bs',
@@ -15,6 +19,8 @@ export const pathMap = {
 } as const
 
 export const hostMap = {
+  [OcrDemo.singleInvoice]: 'ap-gate-z0.qiniuapi.com',
+  [OcrDemo.multipleInvoice]: 'ap-gate-z0.qiniuapi.com',
   [OcrDemo.IdCard]: 'ocr-idcard.qiniuapi.com',
   [OcrDemo.CarBd]: 'ocr-car-bd.qiniuapi.com',
   [OcrDemo.Bs]: 'ocr-bs.qiniuapi.com',

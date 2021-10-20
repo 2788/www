@@ -1,5 +1,5 @@
 import { OcrDemo } from 'apis/ocr/common'
-import { IdCardResponse, CarBdResponse, BsResponse, NewCarResponse, CzResponse } from 'apis/ocr/function'
+import { IdCardResponse, CarBdResponse, BsResponse, NewCarResponse, CzResponse, InvoiceResponse } from 'apis/ocr/function'
 
 const idCardRes = {
   errorcode: 0,
@@ -310,6 +310,170 @@ const czRes = {
   errormsg: 'success'
 } as CzResponse
 
+const singleInvoiceRes: InvoiceResponse = {
+  result: 1,
+  message: 'success',
+  response: {
+    data: {
+      identify_results: [
+        {
+          details: {
+            code: '031002100411',
+            number: '25096213',
+            date: '2021年09月03日',
+            pretax_amount: '6.56',
+            tax: '0.20',
+            check_code: '11631437361999467829',
+            total: '6.76',
+            seller: '上海滴滴畅行科技有限公司',
+            seller_tax_id: '91310114MA1GW61J6U',
+            buyer: '上海七牛信息技术有限公司',
+            buyer_tax_id: '',
+            company_seal: '1',
+            form_type: '',
+            kind: '交通',
+            ciphertext: '039-9-*7/75+*+1934->+<580231,<869670609940<*1<731-+1>5950,><9-9-*7/75+*+1934>+-+-3/3+-,*8<5934--00123<2193*632*364<',
+            machine_code: '499098504973',
+            receiptor: '张雪丽',
+            reviewer: '蔡静',
+            issuer: '杜洪亮',
+            province: '上海市',
+            city: '',
+            service_name: '运输服务',
+            remark: '',
+            item_names: '*运输服务*客运服务费,*运输服务*客运服务费',
+            seller_addr_tel: '上海市静安区万荣路777弄12号202-7室022-59002850',
+            seller_bank_account: '招商银行股份有限公司上海东方支行121932981110606',
+            code_confirm: '031002100411',
+            electronic_mark: '1',
+            total_cn: '陆圆柒角陆分',
+            vehicle_mark: '0'
+          },
+          extra: {
+            barcode: [],
+            check_code_candidates: [],
+            check_code_last_six: [],
+            number_order_error: [],
+            qrcode: [
+              '01,10,031002100411,25096213,6.56,20210903,11631437361999467829,F168,'
+            ]
+          },
+          orientation: 0,
+          type: '10102'
+        }
+      ]
+    }
+  }
+}
+
+const multipleInvoiceRes: InvoiceResponse = {
+  result: 1,
+  message: 'success',
+  response: {
+    data: {
+      identify_results: [
+        {
+          details: {
+            code: '031001600311',
+            number: '21154005',
+            date: '2016年10月27日',
+            pretax_amount: '170.09',
+            tax: '28.91',
+            check_code: '49811982181998877848',
+            total: '199.00',
+            seller: '索尼(中国)有限公司上海分公司',
+            seller_tax_id: '91310000X07256148A',
+            buyer: '个人',
+            buyer_tax_id: '',
+            company_seal: '1',
+            form_type: '',
+            kind: '数码电器',
+            ciphertext: '5614365<3/696+72*+>/*6<7+99,37165/1904-35/<834>/*>-<66>,6/-503+>1292/3646+53-+>543>,6-91-5<65/1904-35/<834>-53>',
+            machine_code: '661613302481',
+            receiptor: '周逸清',
+            reviewer: '朱雯婕',
+            issuer: '任思雨',
+            province: '上海市',
+            city: '',
+            service_name: '',
+            remark: '10226443649206302545,93088010701196741101105861882138476',
+            item_names: '通话耳机',
+            seller_addr_tel: '上海市卢湾区湖滨路222号企业天地一号8楼61216121',
+            seller_bank_account: '花旗银行(中国)有限公司上海分行404003-1730642012',
+            code_confirm: '031001600311',
+            electronic_mark: '1',
+            total_cn: '壹佰玖拾玖圆整',
+            vehicle_mark: '0'
+          },
+          extra: {
+            check_code_candidates: [],
+            check_code_last_six: [],
+            number_order_error: []
+          },
+          orientation: 0,
+          region: [
+            0,
+            346,
+            592,
+            776
+          ],
+          type: '10102'
+        },
+        {
+          details: {
+            code: '033001700211',
+            number: '56894556',
+            date: '2018年01月08日',
+            pretax_amount: '66.97',
+            tax: '0.03',
+            check_code: '59838459272440005323',
+            total: '67.00',
+            seller: '浙江外企德科人力资源服务有限公司',
+            seller_tax_id: '91330100552660066F',
+            buyer: '支付宝(中国)网络技术有限公司',
+            buyer_tax_id: '91310115768225450T',
+            company_seal: '1',
+            form_type: '',
+            kind: '服务',
+            ciphertext: '+>9>0417/18>975584//852**+9,4><557*>60++24+2>>><42/33>+,76>3/-9631823<829710+5*5832,*/252/*41>-7702<00-3-->*/++',
+            machine_code: '661620034630',
+            receiptor: '外企德科',
+            reviewer: '周莉国',
+            issuer: '宋凯悦',
+            province: '浙江省',
+            city: '',
+            service_name: '',
+            remark: '差额征税: 66.46。',
+            item_names: '劳务费-代驾',
+            seller_addr_tel: '杭州市江干区钱潮路369号智谷人才广场8楼0571-87233885',
+            seller_bank_account: '上海浦东发展银行杭州高新支行95130154800003964',
+            code_confirm: '033001700211',
+            electronic_mark: '1',
+            total_cn: '陆拾柒圆整',
+            vehicle_mark: '0'
+          },
+          extra: {
+            check_code_candidates: [],
+            check_code_last_six: [],
+            number_order_error: [],
+            qrcode: [
+              '01,10,033001700211,56894556,66.97,20180108,59838459272440005323,FB60,'
+            ]
+          },
+          orientation: 0,
+          region: [
+            0,
+            0,
+            592,
+            425
+          ],
+          type: '10102'
+        }
+      ]
+    }
+  }
+}
+
 export default function defaultResponse(name: OcrDemo) {
   switch (name) {
     case OcrDemo.IdCard:
@@ -322,6 +486,10 @@ export default function defaultResponse(name: OcrDemo) {
       return newCarRes
     case OcrDemo.Cz:
       return czRes
+    case OcrDemo.singleInvoice:
+      return singleInvoiceRes
+    case OcrDemo.multipleInvoice:
+      return multipleInvoiceRes
     default:
       return idCardRes
   }
