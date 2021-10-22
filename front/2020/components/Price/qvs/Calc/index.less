@@ -1,0 +1,38 @@
+@import '~utils/less/index.less';
+
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionSummary {
+  margin-top: 24px;
+  color: @orange-6;
+}
+
+.inputGroup {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.inputItem {
+  width: 210px;
+
+  &:first-child {
+    width: 175px;
+  }
+
+  > p {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+
+    > svg {
+      color: @grey-5;
+      margin-left: 8px;
+    }
+  }
+
+  + .inputItem {
+    margin-left: 32px;
+  }
+}

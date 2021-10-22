@@ -3,6 +3,7 @@ import { InferGetStaticPropsType } from 'next'
 import Layout from 'components/Price/Layout'
 import Banner from 'components/Price/Banner'
 import PriceMdPreview, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/common/MdPreview'
+import CalcPane from 'components/Price/qvs/Calc'
 import { Product } from 'constants/products'
 import { getPriceFileContent } from 'apis/admin/product'
 
@@ -11,6 +12,7 @@ function Page({ htmlAst }: { htmlAst: HTMLRootNode | null }) {
     <>
       <Banner product="价格 | 视频监控">
         <PriceMdPreview htmlAst={htmlAst} />
+        <CalcPane />
       </Banner>
     </>
   )
