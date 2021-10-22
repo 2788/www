@@ -52,6 +52,6 @@ function Overlay() {
 }
 
 function hasCalculator(product: Product) {
-  // 目前就这仨有计算器
-  return [Product.Kodo, Product.Cdn, Product.Qvm].includes(product)
+  // 目前就这四个有计算器
+  return [Product.Kodo, Product.Cdn, Product.Qvm, Product.Qvs].includes(product)
 }
