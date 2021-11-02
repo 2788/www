@@ -1,0 +1,52 @@
+@import '~utils/less/index.less';
+
+.content {
+  padding: 40px 36px;
+  background: @grey-1;
+  color: @grey-7;
+
+  .mobile({
+    padding: 16px;
+  });
+
+  h2 {
+    font-size: 28px;
+    font-weight: 500;
+
+    .mobile({
+      font-size: 24px;
+    });
+  }
+
+  h3 {
+    margin-top: 40px;
+    font-size: 24px;
+    font-weight: 400;
+
+    .mobile({
+      margin-top: 24px;
+      font-size: 20px;
+    });
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 14px;
+
+    .mobile({
+      margin-top: 16px;
+    });
+  }
+
+  .bold {
+    font-weight: 500;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  a {
+    .blueLink();
+  }
+}

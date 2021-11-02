@@ -3,6 +3,7 @@ export default [
   /^\/products\/kodo\/goglobal/,
   /^\/events\/.+/,
   /^\/user-agreement/,
+  /^\/sdk-agreement/,
   /^\/privacy-right/,
   /^\/sla-.+/
 ]
