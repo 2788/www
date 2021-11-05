@@ -16,7 +16,7 @@ export function createState() {
   return new FormState({
     billingType: billingTypeSelect.createState(),
     duration: durationInput.createState(),
-    concurrent: countInput.createState()
+    concurrent: countInput.createState(0)
   })
 }
 
@@ -63,7 +63,7 @@ export default observer(function DownFlowSection({ state, bitrate }: Props) {
         }
         <div className={style.inputItem}>
           <p>下行播放观看人数<Tooltip title="同时观看实时视频的并发人数" placement="right"><HelpIcon /></Tooltip></p>
-          <CountInput state={state.$.concurrent} unit="个" />
+          <CountInput state={state.$.concurrent} min={0} emptyValue={0} unit="个" />
         </div>
       </div>
       <div className={style.sectionSummary}>下行使用量：{getDownFlowUsage(state, bitrate)}</div>
