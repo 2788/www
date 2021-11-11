@@ -20,7 +20,12 @@ import Homepage from 'components/Www/Homepage'
 import Product from 'components/Www/Product'
 import Consult from 'components/Www/Consult'
 import Activity from 'components/Www/Activity'
-import { homepageRoute, accountTitle, accountRoute, userTitle, userRoute, roleTitle, roleRoute, permissionTitle, permissionRoute, wwwTitle, wwwRoute, homepageTitle, productTitle, productRoute, consultTitle, consultRoute, activityTitle, activityRoute } from 'constants/route'
+import GlobalBanners from 'components/Www/GlobalBanners'
+import {
+  accountTitle, accountRoute, userTitle, userRoute, roleTitle, roleRoute, permissionTitle, permissionRoute,
+  wwwTitle, wwwRoute, homepageRoute, homepageTitle, productTitle, productRoute, consultTitle, consultRoute,
+  activityTitle, activityRoute, globalBannersTitle, globalBannersRoute
+} from 'constants/route'
 
 import Provider from './Provider'
 import Layout from '../Layout'
@@ -66,13 +71,18 @@ export default class App extends React.Component<any, any> {
                         <Homepage />
                       </Permission>
                     </Route>
+                    <Route relative title={globalBannersTitle} path={globalBannersRoute}>
+                      <Permission code={PermissionCode.GLOBAL_BANNER}>
+                        <GlobalBanners />
+                      </Permission>
+                    </Route>
                     <Route relative title={productTitle} path={productRoute}>
                       <Permission code={PermissionCode.PRODUCT}>
                         <Product />
                       </Permission>
                     </Route>
                     <Route relative title={consultTitle} path={consultRoute}>
-                      <Permission code={PermissionCode.PRODUCT}>
+                      <Permission code={PermissionCode.CONSULT}>
                         <Consult />
                       </Permission>
                     </Route>

@@ -33,3 +33,7 @@ export const consultTitle = '在线咨询'
 export const activityRoute = '/activity'
 
 export const activityTitle = '活动'
+
+export const globalBannersRoute = '/global-banners'
+
+export const globalBannersTitle = '全局公告'

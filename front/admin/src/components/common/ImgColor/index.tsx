@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
-import { FormState } from 'formstate-x'
+import { FormState, ValueOf } from 'formstate-x'
 
 import { bindFormItem } from 'admin-base/common/utils/form'
 import { textNotBlank } from 'admin-base/common/utils/validator'
@@ -14,12 +14,9 @@ export type State = FormState<{
   color: colorPicker.State
 }>
 
-type Value = {
-  img: string,
-  color: string
-}
+type Value = ValueOf<State>
 
-export function createState({ img, color }): State {
+export function createState({ img, color }: Value): State {
   return new FormState({
     img: uploadImg.createState(img).validators(textNotBlank),
     color: colorPicker.createState(color)
@@ -37,9 +34,12 @@ interface IProps {
   state: State
   labels?: string[]
   extra?: React.ReactNode[]
+  imgMaxSize?: number
 }
 
-export default observer(function ImgColor({ state, labels = ['图片', '背景色'], extra }: IProps) {
+export default observer(function ImgColor(
+  { state, labels = ['图片', '背景色'], extra, imgMaxSize = 500 }: IProps
+) {
 
   const onUploaded = useCallback(
     (_url: string, file: File) => {
@@ -63,7 +63,7 @@ export default observer(function ImgColor({ state, labels = ['图片', '背景�
         extra={extra && extra[0]}
         {...bindFormItem(state.$.img)}
       >
-        <UploadImg state={state.$.img} maxSize={500} onUploaded={onUploaded} />
+        <UploadImg state={state.$.img} maxSize={imgMaxSize} onUploaded={onUploaded} />
       </FormItem>
       <FormItem
         label={labels[1]}
