@@ -53,7 +53,9 @@ export const industrySceneSolutionsMap: { [k in Industry]: Solution[] } = {
   [Industry.ECommerce]: [Solution.Qavs, Solution.Plsv],
   [Industry.IntelligentManufacturing]: [Solution.Kodoe, Solution.Qavs, Solution.Ess],
   [Industry.Social]: [Solution.Qavs, Solution.Plsv],
-  [Industry.Isp]: [Solution.Kodoe, Solution.Qavs, Solution.Ess]
+  [Industry.Isp]: [Solution.Kodoe, Solution.Qavs, Solution.Ess],
+  // 现在暂时没有对应的场景解决方案，先置为空
+  [Industry.Gene]: []
 }
 
 export const industryDescMap: { [k in Industry]: string } = {
@@ -63,7 +65,8 @@ export const industryDescMap: { [k in Industry]: string } = {
   [Industry.ECommerce]: '以视频促进转化，用所见带动所得。一站式的智能视频云平台，为电商行业提供短视频、直播等多种能力。场景联动，赋能行业客户业务提升。',
   [Industry.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造。',
   [Industry.Social]: '不管陌生人还是老朋友，纵使万水千山，即刻就能相见。七牛云为社交行业提供直播、RTC、视频 SDK 等多种能力，以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法。',
-  [Industry.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务。'
+  [Industry.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务。',
+  [Industry.Gene]: ''
 }
 
 type Case = {
@@ -116,7 +119,9 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
     { name: '中国电信', logo: logoDianxin },
     { name: '华为', logo: logoHuawei },
     { name: '中兴', logo: logoZhongxing }
-  ]
+  ],
+  // 先置为空
+  [Industry.Gene]: []
 }
 
 export const allIndustries = [
@@ -127,6 +132,7 @@ export const allIndustries = [
   Industry.IntelligentManufacturing,
   Industry.Social,
   Industry.Isp
+  // 基因检测行业暂时不加在首页下面
 ]
 
 export function solutionsOf(industry: Industry): Solution[] {
