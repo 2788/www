@@ -84,7 +84,7 @@ export const industryNameMap = {
   [Industry.IntelligentManufacturing]: '智能制造',
   [Industry.Social]: '社交',
   [Industry.Isp]: '运营商',
-  [Industry.Gene]: '基因检测'
+  [Industry.Gene]: '基因测序'
 }
 
 export const industryEnNameMap = {

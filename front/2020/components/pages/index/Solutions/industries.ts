@@ -132,7 +132,7 @@ export const allIndustries = [
   Industry.IntelligentManufacturing,
   Industry.Social,
   Industry.Isp
-  // 基因检测行业暂时不加在首页下面
+  // 基因测序行业暂时不加在首页下面
 ]
 
 export function solutionsOf(industry: Industry): Solution[] {
