@@ -15,7 +15,7 @@ type SortProps = {
 }
 
 // admin 通用响应数据处理
-export function handleResponseData(res: any) {
+export function handleResponseData<T>(res: { data: T[] | null }): T[] {
   return res.data || []
 }
 

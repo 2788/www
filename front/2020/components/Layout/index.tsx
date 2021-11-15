@@ -20,7 +20,7 @@ import Footer from '../Footer'
 import * as feedback from '../Feedback'
 import { Provider as UserInfoProvider } from '../UserInfo'
 import RegisterEntry from '../RegisterEntry'
-import Ad from './Ad'
+import GlobalBanner from './GlobalBanner'
 
 export type Props = {
   /** 页面 title */
@@ -70,7 +70,7 @@ function ContentWrapper({ forceSimple = false, children }: PropsWithChildren<{ f
   return (
     <OverlayProvider>
       <feedback.ModalProvider>
-        {notSimple && <Ad />}
+        {notSimple && <GlobalBanner />}
         {notSimple && <Header />}
         <ErrorBoundary>
           {children}

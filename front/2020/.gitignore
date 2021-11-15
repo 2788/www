@@ -4,6 +4,7 @@ out
 .DS_Store
 .env.local
 coverage
+**/initial-data/data.json
 
 # IDE Configuration
 .vscode

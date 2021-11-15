@@ -5,11 +5,12 @@
   "license": "UNLICENSED",
   "scripts": {
     "type-check": "tsc --noEmit",
-    "dev": "next",
+    "prepare:initial-data": "node hack/initial-data/produce.js",
+    "dev": "npm run prepare:initial-data && next",
     "clean": "rm -rf .next out",
     "build:sitemap": "node sitemap.js",
     "build:externals": "node externals.js",
-    "build": "npm run clean && next build && next export && npm run build:sitemap && npm run build:externals",
+    "build": "npm run clean && npm run prepare:initial-data && next build && next export && npm run build:sitemap && npm run build:externals",
     "start": "next start",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
     "test": "jest --coverage",
@@ -90,7 +91,7 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "engines": {
-    "node": ">= 10.0.0"
+    "node": ">= 12.0.0"
   },
   "browserslist": [
     "last 2 version",

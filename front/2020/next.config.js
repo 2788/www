@@ -21,7 +21,7 @@ const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
 
 module.exports = withPlugins(
   [
-    [withTM],
+    [ withTM ],
     [ withGlobalLess, { globalPath: path.join(__dirname, './pages/global.less') } ],
     [ withCss ],
     [
@@ -54,7 +54,6 @@ module.exports = withPlugins(
 
         return entries
       }
-
       config.module.rules.push(
         {
           test: /\.(eot|ttf|woff|woff2|png|jpe?g|gif)$/i,

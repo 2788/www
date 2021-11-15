@@ -8,5 +8,13 @@ module.exports = {
         moduleDirectory: [ 'node_modules', './' ]
       }
     }
+  },
+  rules: {
+    'import/no-unresolved': [
+      2, 
+      { 
+        ignore: ['initial-data\/data\.json$'] 
+      }
+    ]
   }
 }
