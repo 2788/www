@@ -231,7 +231,7 @@ export const descMap = {
   [Product.Avsmart]: '更低的码率，更清晰的画质',
   [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景',
   [Product.Tts]: '',
-  [Product.WAF]: '高性能 Web 应用防火墙'
+  [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击'
 } as const
 
 export enum Category {

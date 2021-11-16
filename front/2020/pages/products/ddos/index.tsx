@@ -56,6 +56,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
         <Related>
           <RelatedProduct name="云主机" product={Product.Qvm} />
           <RelatedProduct product={Product.CloudSql} />
+          <RelatedProduct product={Product.WAF} />
         </Related>
       </Section>
     </>
