@@ -1,80 +1,117 @@
 @import '~utils/less/index.less';
 
+@logo-width: 276px;
+@logo-height: 160px;
+@mobile-logo-width: 252px;
+@mobile-logo-height: 146px;
+
+.row {
+  display: flex;
+  margin-top: 24px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .case {
-  @margin: 20px;
-  @logoWidth: 276px;
-  @logoHeight: 160px;
-  @footerHeight: 36px;
-  @textMargin: 16px;
-
-  position: relative;
-  margin-top: @margin;
-  padding: 32px 40px @margin (@logoWidth + @margin + 40px);
-  min-height: @logoHeight + (@margin * 2);
-  text-align: left;
-
-  border: 1px solid rgba(238,238,238,1);
-  box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
+  flex: 1;
+  display: flex;
+  padding: 20px;
   background-color: @grey-1;
+  border: 1px solid @grey-3;
+  box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
+
+  .content {
+    margin-left: 40px;
+  }
+}
+
+.vertical {
+  flex-direction: column;
+  margin-left: 24px;
+  padding: 0;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  .logoWrapper {
+    border-bottom: 1px solid @grey-3;
+
+    .mobile({
+      border-bottom: none;
+    });
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 24px;
+
+    .mobile({
+      padding: 16px;
+    });
+  }
+}
+
+.logo {
+  align-self: center;
+  width: @logo-width;
+  height: @logo-height;
 
   .mobile({
-    padding: 16px 16px;
-    margin-top: 16px;
-    text-align: center;
+    width: @mobile-logo-width;
+    height: @mobile-logo-height;
   });
+}
 
-  .logo {
-    position: absolute;
-    left: @margin;
-    top: @margin;
-    width: @logoWidth;
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 
-    .mobile({
-      position: static;
-      width: 60%;
-      border: none;
-      box-shadow: none;
-    });
-  }
+  .mobile({
+    font-size: 12px;
+  });
+}
 
-  .title {
-    font-size: 20px;
-    line-height: 1.4em;
-    font-weight: normal;
+.title {
+  font-size: 20px;
+  font-weight: 400;
 
-    .mobile({
-      margin-top: @textMargin;
-    });
-  }
+  .mobile({
+    font-size: 16px;
+  });
+}
 
-  .desc {
-    margin-top: @textMargin;
-    margin-bottom: @footerHeight + @textMargin;
-    color: @grey-6;
+.desc {
+  flex: 1;
+  margin-top: 16px;
+  color: @grey-6;
 
-    .mobile({
-      margin-bottom: @textMargin;
-      font-size: 12px;
-      text-align: left;
-    });
-  }
+  .mobile({
+    margin-top: 12px;
+  });
+}
 
-  .footer {
-    position: absolute;
-    left: @logoWidth + @margin + 40px;
-    bottom: @margin;
+.footer {
+  justify-self: end;
+  margin-top: 16px;
 
-    .mobile({
-      position: static;
-      font-size: 12px;
-    });
-  }
+  .mobile({
+    font-size: 12px;
+  });
+}
 
-  .consultEntry {
-    .blueLink();
-    cursor: pointer;
-    .iconChat {
-      margin-right: 8px;
-    }
+.consultEntry {
+  .blueLink();
+
+  .iconChat {
+    margin-right: 8px;
   }
 }

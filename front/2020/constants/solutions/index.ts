@@ -77,7 +77,7 @@ export function getIndustrySolution(industry: Industry) {
 }
 
 export const industryNameMap = {
-  [Industry.Edu]: '教育',
+  [Industry.Edu]: '在线教育',
   [Industry.Fin]: '金融',
   [Industry.Automobile]: '汽车',
   [Industry.ECommerce]: '电商',
@@ -154,7 +154,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Vcs]: '/solutions/vcs',
   [Solution.Ess]: '/solutions/ess',
   [Solution.Storage]: '/solutions/storage',
-  [Solution.Edu]: '/solutions/edu',
+  [Solution.Edu]: '/solutions/edu-online',
   [Solution.Fin]: '/solutions/fin',
   [Solution.Automobile]: null,
   [Solution.ECommerce]: '/solutions/ecommerce',
@@ -172,7 +172,7 @@ export const descMap: MapTo<string> = {
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
   [Solution.Ess]: '满足监控视频及图片就近存储、加速传输、倍速播放等关键需求',
   [Solution.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
-  [Solution.Edu]: '以出色的技术能力实现教学全场景覆盖，打造满足不同群体的在线学习解决方案',
+  [Solution.Edu]: '一站式在线教育解决方案，打造高清、实时、智能的教学体验',
   [Solution.Fin]: '帮助金融客户满足监管合规要求，科技创新、流程再造，洞察数据价值',
   [Solution.Automobile]: '助力汽车行业的数字化升级和转型，创新商业模式，数据驱动降本升效',
   [Solution.ECommerce]: '以视频促进转化，用所见带动所得。一站式智能视频云平台，实现场景联动，赋能业务升维',

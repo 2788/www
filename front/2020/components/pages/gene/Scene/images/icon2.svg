@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-  <g fill="none" fill-rule="evenodd" stroke="#666" stroke-linecap="square">
-    <path d="M13.5 14L2.5 14C1.3955 14 .5 13.1045.5 12L.5 12 15.5 12 15.5 12C15.5 13.1045 14.6045 14 13.5 14zM2 10L2 3C2 2.4475 2.4475 2 3 2L13 2C13.5525 2 14 2.4475 14 3L14 10"/>
-    <line x1="8" x2="8" y1="4.5" y2="9"/>
-    <line x1="5" x2="5" y1="8" y2="9"/>
-    <line x1="11" x2="11" y1="6" y2="9"/>
-  </g>
-</svg>

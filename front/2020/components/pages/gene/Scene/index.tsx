@@ -1,53 +1,11 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
-import { urlMap, Product, nameMap } from 'constants/products'
-import { useMobile } from 'hooks/ua'
-import ArrowDownIcon from 'components/UI/Menu/arrow-down.svg'
-import Link from 'components/Link'
+import { Product } from 'constants/products'
+import ProductIcon from 'components/Product/Icon'
+import Related, { Item, ProductItem } from 'components/Solution/Scene/Related'
 import style from './style.less'
 import scene1 from './images/scene1.png'
 import scene2 from './images/scene2.png'
-import KodoIcon from './images/icon1.svg'
-import StorageIcon from './images/icon2.svg'
-import CdnIcon from './images/icon3.svg'
-import QvmIcon from './images/icon4.svg'
-
-const storeCombination = [
-  { name: nameMap[Product.Kodo], url: urlMap[Product.Kodo], icon: <KodoIcon /> },
-  { name: nameMap[Product.Storage], url: urlMap[Product.Storage], icon: <StorageIcon /> },
-  { name: 'KodoFS', icon: <KodoIcon /> },
-  { name: nameMap[Product.Cdn], url: urlMap[Product.Cdn], icon: <CdnIcon /> }
-]
-const computeCombination = [
-  { name: nameMap[Product.Qvm], url: urlMap[Product.Qvm], icon: <QvmIcon /> },
-  { name: nameMap[Product.Kodo], url: urlMap[Product.Kodo], icon: <KodoIcon /> },
-  { name: nameMap[Product.Cdn], url: urlMap[Product.Cdn], icon: <CdnIcon /> }
-]
-
-interface ProductItemProps {
-  name: string
-  icon: ReactNode
-  url?: string
-}
-
-function ProductItem({ name, icon, url }: ProductItemProps) {
-  const isMobile = useMobile()
-  if (!url) {
-    return (
-      <span className={style.productItem}>
-        {icon}
-        <span className={style.productItemName} style={{ cursor: 'default' }}>{name}</span>
-      </span>
-    )
-  }
-  return (
-    <Link href={url} className={style.productItem}>
-      {icon}
-      <span className={style.productItemName}>{name}</span>
-      {isMobile && <ArrowDownIcon className={style.arrow} />}
-    </Link>
-  )
-}
 
 export default function GeneSecne() {
   return (
@@ -69,13 +27,12 @@ export default function GeneSecne() {
             <li className={style.sceneContentItem}>遍布全球的内容分发网络，加速数据传输和分发，便于用户、科研单位、监管机构等获得所需的相关数据和文件。</li>
           </ul>
           <h4 className={style.sceneTitle}>推荐产品</h4>
-          <div className={style.productsContainer}>
-            {
-              storeCombination.map(item => (
-                <ProductItem key={item.name} name={item.name} icon={item.icon} url={item.url} />
-              ))
-            }
-          </div>
+          <Related size={3}>
+            <ProductItem product={Product.Kodo} />
+            <ProductItem product={Product.Storage} />
+            <Item icon={<ProductIcon product={Product.Kodo} />}>KodoFS</Item>
+            <ProductItem product={Product.Cdn} />
+          </Related>
         </SceneBlock>
       </ScenePanel>
       <ScenePanel name="scene-2" title="基因计算解决方案">
@@ -93,13 +50,11 @@ export default function GeneSecne() {
               <li className={style.sceneContentItem}>遍布全球的内容分发网络，便于各类用户获取所需的数据和文件。</li>
             </ul>
             <h4 className={style.sceneTitle}>推荐产品</h4>
-            <div className={style.productsContainer}>
-              {
-                computeCombination.map(item => (
-                  <ProductItem key={item.name} name={item.name} icon={item.icon} url={item.url} />
-                ))
-              }
-            </div>
+            <Related size={3}>
+              <ProductItem product={Product.Qvm} />
+              <ProductItem product={Product.Kodo} />
+              <ProductItem product={Product.Cdn} />
+            </Related>
           </div>
         </SceneBlock>
       </ScenePanel>

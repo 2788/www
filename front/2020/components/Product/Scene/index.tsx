@@ -36,6 +36,7 @@ export interface IBlockProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
   shadow?: boolean
   blockType?: BlockType
+  withoutMargin?: boolean
 }
 
 export interface IClientGroupProps extends HTMLAttributes<HTMLElement> {

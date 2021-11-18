@@ -113,7 +113,7 @@ export function PcPanel(props: IPcPanelProps) {
 }
 
 export function PcBlock(props: IPcBlockProps) {
-  const { children, shadow, blockType } = props
+  const { children, shadow, withoutMargin, blockType } = props
 
   function getClassByBlockType(type: BlockType) {
     switch (type) {
@@ -130,6 +130,7 @@ export function PcBlock(props: IPcBlockProps) {
     props.className,
     styles.block,
     shadow && styles.shadow,
+    !withoutMargin && styles.margin,
     getClassByBlockType(blockType)
   ].filter(Boolean).join(' ')
 
