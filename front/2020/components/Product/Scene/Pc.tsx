@@ -16,7 +16,7 @@ import {
   BlockType
 } from '.'
 
-import { context, PanelInfo } from './utils'
+import { context, PanelInfo, blockContext } from './utils'
 
 import styles from './style.less'
 
@@ -135,8 +135,10 @@ export function PcBlock(props: IPcBlockProps) {
   ].filter(Boolean).join(' ')
 
   return (
-    <div className={className}>
-      {children}
-    </div>
+    <blockContext.Provider value={{ isShadow: shadow }}>
+      <div className={className}>
+        {children}
+      </div>
+    </blockContext.Provider>
   )
 }

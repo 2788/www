@@ -1,29 +1,26 @@
 /**
- * @file 电商行业解决方案
+ * @file 电商网购解决方案
  */
 
 import React from 'react'
 
-import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import Section from 'components/Product/Section'
-import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import { useBtns } from 'hooks/product-btn'
 
 import Scene from 'components/pages/ecommerce/Scene'
-import Architecture from 'components/pages/ecommerce/Architecture'
+import Advantage from 'components/pages/ecommerce/Advantage'
 import EcProduct from 'components/pages/ecommerce/Product'
 import Cases from 'components/pages/ecommerce/Cases'
 
 import banner from './banner.png'
 
-const title = `${nameMap[Solution.ECommerce]}行业解决方案`
+const title = `${nameMap[Solution.ECommerce]}解决方案`
 
 function Page() {
 
@@ -38,7 +35,7 @@ function Page() {
     <>
       <PageBanner
         title={title}
-        desc="为各种规模的电商企业提供灵活、安全、稳定、低成本的方案，深入结合直播、视频等新型运营方式，灵活构建面向业务的电解决方案，帮助企业从容应对业务高峰，以数字化运营掌控市场趋势。"
+        desc="为不同类型、不同规模的电商企业提供图片处理、短视频、音视频直播、连麦互动等技术，灵活构建社交电商、内容电商、垂直电商、跨境电商等电商类型，促进平台获客和交易转化，提升用户线上购物体验。"
         bgColor="#34A1EC"
         btns={btns.banner}
         icon={banner} />
@@ -47,20 +44,11 @@ function Page() {
 
       <Scene />
 
-      <Architecture />
+      <Advantage />
 
       <EcProduct />
 
-      <Cases />
-
-      <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
-        <Related>
-          <RelatedProduct product={Product.Cdn} />
-          <RelatedProduct product={Product.Pili} />
-          <RelatedProduct product={Product.Plms} />
-          <RelatedProduct product={Product.Qvm} />
-        </Related>
-      </Section>
+      <Cases onConsult={handleConsult} />
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
         <UsageGuideButton onClick={handleConsult}>
@@ -74,9 +62,9 @@ function Page() {
 export default function EcommercePage() {
   return (
     <Layout
-      title="电商行业解决方案_云电商场景_七牛云直播电商"
-      keywords="电商, 灵活, 安全, 稳定, 低成本, 直播, 视频, 直播卖货, 超低延时, 灵活构建, 数字化运营, 七牛直播云, 实时监控, 预测业务运营, 数据驱动, 商业智能"
-      description="为各种规模的电商企业提供灵活、安全、稳定、低成本的方案，深入结合直播、视频等新型运营方式，灵活构建面向业务的电解决方案，帮助企业从容应对业务高峰，以数字化运营掌控市场趋势。"
+      title="电商网购_图文电商_直播带货_PK带货_产地连麦_文玩电商_美妆电商"
+      keywords="电商网购, 图文电商, 直播带货, PK 带货, 产地连麦, 文玩电商, 美妆电商"
+      description="为不同类型、不同规模的电商企业提供图片处理、短视频、音视频直播、连麦互动等技术，灵活构建社交电商、内容电商、垂直电商、跨境电商等电商类型，促进平台获客和交易转化，提升用户线上购物体验。"
     >
       <Page />
     </Layout>

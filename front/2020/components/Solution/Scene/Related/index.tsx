@@ -10,6 +10,8 @@ import { RightIcon } from 'react-icecream-2/lib/icons'
 import { Product, urlMap, nameMap } from 'constants/products'
 import { useMobile } from 'hooks/ua'
 import Link from 'components/Link'
+import { useIsShadow } from 'components/Product/Scene/utils'
+import { useIsGrey } from 'components/Product/Section'
 import ProductIcon from 'components/Product/Icon'
 
 import style from './style.less'
@@ -49,18 +51,25 @@ export type ItemProps = PropsWithChildren<{
 }>
 
 export function Item({ icon, href, children }: ItemProps) {
+  const isGrey = useIsGrey()
+  const isShadow = useIsShadow()
   const isMobile = useMobile()
   const iconView = <div className={style.iconContainer}>{icon}</div>
+  const wrapperClassName = cls(
+    style.itemWrapper,
+    // 根据外部的 section 和 block 的背景色，决定 item 的背景色是否为白色
+    !isShadow && isGrey && style.white
+  )
   if (href === undefined) {
     return (
-      <div className={style.itemWrapper}>
+      <div className={wrapperClassName}>
         {iconView}
         <span className={style.content}>{children}</span>
       </div>
     )
   }
   return (
-    <Link className={style.itemWrapper} href={href}>
+    <Link className={wrapperClassName} href={href}>
       {iconView}
       <div className={style.content}>{children}</div>
       {isMobile && <RightIcon className={style.rightIcon} />}

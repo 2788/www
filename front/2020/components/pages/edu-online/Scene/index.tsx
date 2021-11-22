@@ -152,6 +152,6 @@ export default function EduScene() {
           </ScenePanel>
         ))
       }
-    </Scene >
+    </Scene>
   )
 }

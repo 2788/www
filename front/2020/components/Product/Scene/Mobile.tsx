@@ -13,7 +13,7 @@ import {
   ISceneProps, IPanelProps, IBlockProps
 } from '.'
 
-import { context, PanelInfo } from './utils'
+import { context, PanelInfo, blockContext } from './utils'
 
 import styles from './style.less'
 
@@ -124,7 +124,7 @@ export function MobilePanel(props: IMobilePanelProps) {
 }
 
 export function MobileBlock(props: IMobileBlockProps) {
-  const { children } = props
+  const { shadow, children } = props
 
   const className = [
     props.className,
@@ -132,8 +132,10 @@ export function MobileBlock(props: IMobileBlockProps) {
   ].filter(Boolean).join(' ')
 
   return (
-    <div className={className}>
-      {children}
-    </div>
+    <blockContext.Provider value={{ isShadow: shadow }}>
+      <div className={className}>
+        {children}
+      </div>
+    </blockContext.Provider>
   )
 }

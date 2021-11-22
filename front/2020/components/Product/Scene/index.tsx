@@ -34,7 +34,7 @@ export interface IPanelProps extends HTMLAttributes<HTMLElement> {
 
 export interface IBlockProps extends HTMLAttributes<HTMLElement> {
   children: ReactNode
-  shadow?: boolean
+  shadow?: boolean // 控制 block 的背景色和阴影，会通过 content 传递给子组件，不建议通过其他方式控制相关样式
   blockType?: BlockType
   withoutMargin?: boolean
 }

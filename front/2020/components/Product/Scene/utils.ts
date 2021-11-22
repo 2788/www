@@ -3,7 +3,7 @@
  * @description 各种类型、context 定义等
  */
 
-import { ReactNode, createContext } from 'react'
+import { ReactNode, createContext, useContext } from 'react'
 
 /** 可切换 panel 区块信息 */
 export type PanelInfo = {
@@ -26,3 +26,13 @@ export type ContextValue = {
 }
 
 export const context = createContext<ContextValue | null>(null)
+
+export type BlockContextValue = {
+  isShadow?: boolean
+}
+
+export const blockContext = createContext<BlockContextValue>({})
+
+export function useIsShadow() {
+  return !!useContext(blockContext).isShadow
+}

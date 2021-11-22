@@ -1,49 +1,58 @@
 @import '~utils/less/index.less';
 
-@block-height: 280px;
-
-.scenePanel{
-  padding: 0 52px;
-
-  .mobile({
-    padding: 0;
-  });
-}
-
-.sceneIcon {
-  width: 476px;
-  height: @block-height;
-  line-height: 1;
+.iconContainer {
+  display: flex;
+  align-items: center;
+  width: 800px;
 
   .mobile({
     width: 100%;
-    height: auto;
+    padding: 16px;
   });
+
+  svg {
+    .mobile({
+      width: 100%;
+      height: 100%;
+    })
+  }
 }
 
-.blockRight {
-  padding: 0 24px;
-  margin-left: 0 !important;
+.block {
+  padding: 20px;
 
-  p {
+  .title {
+    margin-top: 20px;
+    margin-bottom: 12px;
+    font-size: 16px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .mobile({
+      margin-top: 16px;
+      margin-bottom: 8px;
+    })
+  }
+
+  .content {
     font-size: 14px;
-    font-weight: 400;
     color: @grey-6;
   }
 
-}
+  .list {
+    .item {
+      .dot-item();
+      margin-bottom: 12px;
 
-.sceneTitle {
-  margin-bottom: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  color: @grey-7;
-  line-height: 22px;
-}
+      .mobile({
+        margin-bottom: 8px;
+      });
 
-.list {
-  .item {
-    .dot-item();
-    margin-bottom: 12px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
