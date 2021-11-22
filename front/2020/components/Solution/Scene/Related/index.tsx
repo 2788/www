@@ -55,12 +55,14 @@ export function Item({ icon, href, children }: ItemProps) {
   const isShadow = useIsShadow()
   const isMobile = useMobile()
   const iconView = <div className={style.iconContainer}>{icon}</div>
+  const hasHref = href !== undefined
   const wrapperClassName = cls(
     style.itemWrapper,
+    hasHref && style.link,
     // 根据外部的 section 和 block 的背景色，决定 item 的背景色是否为白色
     !isShadow && isGrey && style.white
   )
-  if (href === undefined) {
+  if (!hasHref) {
     return (
       <div className={wrapperClassName}>
         {iconView}

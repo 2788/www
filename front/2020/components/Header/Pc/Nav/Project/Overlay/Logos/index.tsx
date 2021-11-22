@@ -11,6 +11,7 @@ import blued from './blued.png'
 import cmb from './cmb.png'
 import dianxin from './dianxin.png'
 import hujiang from './hujiang.png'
+import ddpai from './ddpai.png'
 import jili from './jili.png'
 import liantong from './liantong.png'
 import liulishuo from './liulishuo.png'
@@ -31,7 +32,7 @@ import style from './style.less'
 const solutionLogosMap: { [s in Solution]?: string[] } = {
   [Solution.Fin]: [taiping, cmb, zhongxin],
   [Solution.Edu]: [liulishuo, hujiang, vipkid],
-  [Solution.Automobile]: [jili, shangqi],
+  [Solution.Automobile]: [ddpai, jili, shangqi],
   [Solution.ECommerce]: [secoo, xiaohongshu, mogujie],
   [Solution.IntelligentManufacturing]: [oppo, vivo, shanghaidianqi],
   [Solution.Social]: [bilibili, momo, blued],

@@ -16,6 +16,7 @@ import logoCkjr from './images/logos/ckjr.png'
 import logoHujiang from './images/logos/hujiang.png'
 import logoVipkid from './images/logos/vipkid.png'
 
+import logoDdpai from './images/logos/ddpai.png'
 import logoJili from './images/logos/jili.png'
 import logoShangqi from './images/logos/shangqi.png'
 
@@ -61,7 +62,7 @@ export const industrySceneSolutionsMap: { [k in Industry]: Solution[] } = {
 export const industryDescMap: { [k in Industry]: string } = {
   [Industry.Fin]: '帮助金融客户重塑传统 IT 平台架构、科技创新、流程再造，洞察数据价值。',
   [Industry.Edu]: '以出色的技术能力全场景覆盖，实现直播教学、课程回看、师生身份核验等功能，打造满足不同群体的在线学习解决方案。',
-  [Industry.Automobile]: '助力汽车行业的数字化升级和转型，创新商业模式，数据驱动降本升效。',
+  [Industry.Automobile]: '连接海量汽车出行数据，助力汽车产业加速迈入智能、网联和共享时代。',
   [Industry.ECommerce]: '以视频促进转化，用所见带动所得。一站式的智能视频云平台，为电商行业提供短视频、直播等多种能力。场景联动，赋能行业客户业务提升。',
   [Industry.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造。',
   [Industry.Social]: '不管陌生人还是老朋友，纵使万水千山，即刻就能相见。七牛云为社交行业提供直播、RTC、视频 SDK 等多种能力，以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法。',
@@ -89,6 +90,7 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
     { name: '创客匠人', logo: logoCkjr }
   ],
   [Industry.Automobile]: [
+    { name: '盯盯拍', logo: logoDdpai },
     { name: '吉利汽车', logo: logoJili },
     { name: '上汽集团', logo: logoShangqi }
   ],

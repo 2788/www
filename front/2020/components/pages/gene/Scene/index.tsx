@@ -26,7 +26,7 @@ export default function GeneSecne() {
             <li className={style.sceneContentItem}>在云端，按照数据特征进行数据生命周期管理。</li>
             <li className={style.sceneContentItem}>遍布全球的内容分发网络，加速数据传输和分发，便于用户、科研单位、监管机构等获得所需的相关数据和文件。</li>
           </ul>
-          <h4 className={style.sceneTitle}>推荐产品</h4>
+          <h4 className={style.sceneTitle}>相关产品</h4>
           <Related size={3}>
             <ProductItem product={Product.Kodo} />
             <ProductItem product={Product.Storage} />
@@ -49,7 +49,7 @@ export default function GeneSecne() {
               <li className={style.sceneContentItem}>按需灵活扩展所需的云基础资源，降低 TCO。</li>
               <li className={style.sceneContentItem}>遍布全球的内容分发网络，便于各类用户获取所需的数据和文件。</li>
             </ul>
-            <h4 className={style.sceneTitle}>推荐产品</h4>
+            <h4 className={style.sceneTitle}>相关产品</h4>
             <Related size={3}>
               <ProductItem product={Product.Qvm} />
               <ProductItem product={Product.Kodo} />

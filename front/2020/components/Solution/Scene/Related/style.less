@@ -24,11 +24,13 @@
   background: @grey-2;
   .withColor(@grey-7);
 
-  &:hover{
-    .withColor(@blue-6);
-
-    .rightIcon{
-      color: @blue-6;
+  &.link {
+    &:hover{
+      .withColor(@blue-6);
+  
+      .rightIcon{
+        color: @blue-6;
+      }
     }
   }
 
@@ -87,6 +89,7 @@
       // todo:svg 设置颜色分为两种，分别为 stroke 和 fill，一般只会用到其中一种
       // 所以这边分别针对具有 stroke、fill 属性的元素，将颜色改为期望的颜色
       // 以后如果有 stroke、fill 混用或者其他问题，可考虑将 svg 中颜色使用变量来实现
+      g,
       path,
       circle,
       use,
