@@ -56,7 +56,9 @@ export const industrySceneSolutionsMap: { [k in Industry]: Solution[] } = {
   [Industry.Social]: [Solution.Qavs, Solution.Plsv],
   [Industry.Isp]: [Solution.Kodoe, Solution.Qavs, Solution.Ess],
   // 现在暂时没有对应的场景解决方案，先置为空
-  [Industry.Gene]: []
+  [Industry.Gene]: [],
+  // 泛娱乐不展示在首页
+  [Industry.Entertainment]: []
 }
 
 export const industryDescMap: { [k in Industry]: string } = {
@@ -67,7 +69,8 @@ export const industryDescMap: { [k in Industry]: string } = {
   [Industry.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造。',
   [Industry.Social]: '不管陌生人还是老朋友，纵使万水千山，即刻就能相见。七牛云为社交行业提供直播、RTC、视频 SDK 等多种能力，以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法。',
   [Industry.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务。',
-  [Industry.Gene]: ''
+  [Industry.Gene]: '',
+  [Industry.Entertainment]: ''
 }
 
 type Case = {
@@ -123,7 +126,8 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
     { name: '中兴', logo: logoZhongxing }
   ],
   // 先置为空
-  [Industry.Gene]: []
+  [Industry.Gene]: [],
+  [Industry.Entertainment]: []
 }
 
 export const allIndustries = [

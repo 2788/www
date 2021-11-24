@@ -18,7 +18,9 @@ export enum Industry {
   /** 运营商行业 */
   Isp = 'isp',
   /** 基因测序行业 */
-  Gene = 'gene'
+  Gene = 'gene',
+  /** 泛娱乐行业 */
+  Entertainment = 'entertainment'
 }
 
 /** 场景解决方案 */
@@ -56,7 +58,9 @@ export enum IndustrySolution {
   /** 运营商行业 */
   Isp = 'isp',
   /** 基因测序行业 */
-  Gene = 'gene'
+  Gene = 'gene',
+  /** 泛娱乐行业 */
+  Entertainment = 'entertainment'
 }
 
 /** 行业与其对应的行业解决方案的映射表 */
@@ -68,7 +72,8 @@ export const industrySolutionMap = {
   [Industry.IntelligentManufacturing]: IndustrySolution.IntelligentManufacturing,
   [Industry.Social]: IndustrySolution.Social,
   [Industry.Isp]: IndustrySolution.Isp,
-  [Industry.Gene]: IndustrySolution.Gene
+  [Industry.Gene]: IndustrySolution.Gene,
+  [Industry.Entertainment]: IndustrySolution.Entertainment
 }
 
 /** 获取行业对应的行业解决方案 */
@@ -84,7 +89,8 @@ export const industryNameMap = {
   [Industry.IntelligentManufacturing]: '智能制造',
   [Industry.Social]: '社交',
   [Industry.Isp]: '运营商',
-  [Industry.Gene]: '基因测序'
+  [Industry.Gene]: '基因测序',
+  [Industry.Entertainment]: '泛娱乐'
 }
 
 export const industryEnNameMap = {
@@ -95,7 +101,8 @@ export const industryEnNameMap = {
   [Industry.IntelligentManufacturing]: 'Manufacture',
   [Industry.Social]: 'Social',
   [Industry.Isp]: 'Operators',
-  [Industry.Gene]: 'Gene'
+  [Industry.Gene]: 'Gene',
+  [Industry.Entertainment]: 'Entertainment'
 }
 
 export type Solution = SceneSolution | IndustrySolution
@@ -143,7 +150,8 @@ export const nameMap: MapTo<string> = {
   [Solution.IntelligentManufacturing]: industryNameMap[Industry.IntelligentManufacturing],
   [Solution.Social]: industryNameMap[Industry.Social],
   [Solution.Isp]: industryNameMap[Industry.Isp],
-  [Solution.Gene]: industryNameMap[Industry.Gene]
+  [Solution.Gene]: industryNameMap[Industry.Gene],
+  [Solution.Entertainment]: industryNameMap[Industry.Entertainment]
 }
 
 export const urlMap: MapTo<string | null> = {
@@ -161,7 +169,8 @@ export const urlMap: MapTo<string | null> = {
   [Solution.IntelligentManufacturing]: '/solutions/manufacture',
   [Solution.Social]: null,
   [Solution.Isp]: null,
-  [Solution.Gene]: '/solutions/gene'
+  [Solution.Gene]: '/solutions/gene',
+  [Solution.Entertainment]: '/solutions/entertainment'
 }
 
 export const descMap: MapTo<string> = {
@@ -179,13 +188,14 @@ export const descMap: MapTo<string> = {
   [Solution.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造',
   [Solution.Social]: '以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法',
   [Solution.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务',
-  [Solution.Gene]: '集计算和存储为一体的一站式基因测序解决方案'
+  [Solution.Gene]: '集计算和存储为一体的一站式基因测序解决方案',
+  [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用'
 }
 
 export const categorySolutionsMap = {
   [Category.Scene]: [Solution.Qavs, Solution.Rtclive, Solution.Plsv, Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
-    Solution.Fin, Solution.Edu, Solution.Automobile, Solution.ECommerce,
+    Solution.Fin, Solution.Entertainment, Solution.Edu, Solution.Automobile, Solution.ECommerce,
     Solution.IntelligentManufacturing, Solution.Social, Solution.Isp, Solution.Gene
   ]
 }
@@ -206,7 +216,8 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
   [Solution.IntelligentManufacturing]: require('./images/default/industry/im.svg').default,
   [Solution.Social]: require('./images/default/industry/social.svg').default,
   [Solution.Isp]: require('./images/default/industry/isp.svg').default,
-  [Solution.Gene]: require('./images/default/industry/gen.svg').default
+  [Solution.Gene]: require('./images/default/industry/gen.svg').default,
+  [Solution.Entertainment]: require('./images/default/scene/entertainment.svg').default
 }
 
 // 24px的icon，导航栏使用
@@ -225,7 +236,8 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
   [Solution.IntelligentManufacturing]: require('./images/small/industry/im.svg').default,
   [Solution.Social]: require('./images/small/industry/social.svg').default,
   [Solution.Isp]: require('./images/small/industry/isp.svg').default,
-  [Solution.Gene]: require('./images/small/industry/gen.svg').default
+  [Solution.Gene]: require('./images/small/industry/gen.svg').default,
+  [Solution.Entertainment]: require('./images/small/scene/entertainment.svg').default
 }
 
 export const allSolutions = allCategories.reduce(

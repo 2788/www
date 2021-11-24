@@ -27,6 +27,8 @@ import vivo from './vivo.png'
 import xiaohongshu from './xiaohongshu.png'
 import yidong from './yidong.png'
 import zhongxin from './zhongxin.png'
+import iqiyi from './iqiyi.png'
+import dongqiu from './dongqiu.png'
 import style from './style.less'
 
 const solutionLogosMap: { [s in Solution]?: string[] } = {
@@ -36,7 +38,8 @@ const solutionLogosMap: { [s in Solution]?: string[] } = {
   [Solution.ECommerce]: [secoo, xiaohongshu, mogujie],
   [Solution.IntelligentManufacturing]: [oppo, vivo, shanghaidianqi],
   [Solution.Social]: [bilibili, momo, blued],
-  [Solution.Isp]: [yidong, dianxin, liantong]
+  [Solution.Isp]: [yidong, dianxin, liantong],
+  [Solution.Entertainment]: [iqiyi, dongqiu]
 }
 
 export type Props = {
