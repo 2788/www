@@ -33,10 +33,7 @@ import logoJingsheng from './images/logos/jingsheng.png'
 import logoBubugao from './images/logos/bubugao.png'
 
 import logoBilibili from './images/logos/bilibili.png'
-import logoMomo from './images/logos/momo.png'
 import logoBlued from './images/logos/blued.png'
-import logoFaceu from './images/logos/faceu.png'
-import logoTaqu from './images/logos/taqu.png'
 
 import logoYidong from './images/logos/yidong.png'
 import logoDianxin from './images/logos/dianxin.png'
@@ -67,6 +64,7 @@ export const industryDescMap: { [k in Industry]: string } = {
   [Industry.Automobile]: '连接海量汽车出行数据，助力汽车产业加速迈入智能、网联和共享时代。',
   [Industry.ECommerce]: '以视频促进转化，用所见带动所得。一站式的智能视频云平台，为电商行业提供短视频、直播等多种能力。场景联动，赋能行业客户业务提升。',
   [Industry.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造。',
+  // todo: 这边先不进行修改，后面首页会整个改造
   [Industry.Social]: '不管陌生人还是老朋友，纵使万水千山，即刻就能相见。七牛云为社交行业提供直播、RTC、视频 SDK 等多种能力，以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法。',
   [Industry.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务。',
   [Industry.Gene]: '',
@@ -113,10 +111,7 @@ export const industryCasesMap: { [k in Industry]: Case[] } = {
   ],
   [Industry.Social]: [
     { name: 'Bilibili', logo: logoBilibili },
-    { name: '陌陌', logo: logoMomo },
-    { name: '淡蓝', logo: logoBlued },
-    { name: '脸萌', logo: logoFaceu },
-    { name: '他趣', logo: logoTaqu }
+    { name: '淡蓝', logo: logoBlued }
   ],
   [Industry.Isp]: [
     { name: '中国移动', logo: logoYidong },

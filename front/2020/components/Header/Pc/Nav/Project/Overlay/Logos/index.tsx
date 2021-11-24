@@ -16,7 +16,6 @@ import jili from './jili.png'
 import liantong from './liantong.png'
 import liulishuo from './liulishuo.png'
 import mogujie from './mogujie.png'
-import momo from './momo.png'
 import oppo from './oppo.png'
 import secoo from './secoo.png'
 import shanghaidianqi from './shanghaidianqi.png'
@@ -37,7 +36,7 @@ const solutionLogosMap: { [s in Solution]?: string[] } = {
   [Solution.Automobile]: [ddpai, jili, shangqi],
   [Solution.ECommerce]: [secoo, xiaohongshu, mogujie],
   [Solution.IntelligentManufacturing]: [oppo, vivo, shanghaidianqi],
-  [Solution.Social]: [bilibili, momo, blued],
+  [Solution.Social]: [bilibili, blued],
   [Solution.Isp]: [yidong, dianxin, liantong],
   [Solution.Entertainment]: [iqiyi, dongqiu]
 }

@@ -167,7 +167,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Automobile]: '/solutions/automobile',
   [Solution.ECommerce]: '/solutions/ecommerce',
   [Solution.IntelligentManufacturing]: '/solutions/manufacture',
-  [Solution.Social]: null,
+  [Solution.Social]: '/solutions/social',
   [Solution.Isp]: null,
   [Solution.Gene]: '/solutions/gene',
   [Solution.Entertainment]: '/solutions/entertainment'
@@ -186,7 +186,7 @@ export const descMap: MapTo<string> = {
   [Solution.Automobile]: '连接海量汽车出行数据，助力汽车产业加速迈入智能、网联和共享时代',
   [Solution.ECommerce]: '提供一站式图片处理及音视频服务，实现电商多场景联动，助力业务增长',
   [Solution.IntelligentManufacturing]: '帮助制造行业客户快速落地工业互联网，优选生态，数据驱动智能制造',
-  [Solution.Social]: '以卓越的大视频能力串联「兴趣-交友-人脉」，解锁社交行业的视频新玩法',
+  [Solution.Social]: '七牛云提供社交解决方案，助力快速构建社交平台和应用',
   [Solution.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务',
   [Solution.Gene]: '集计算和存储为一体的一站式基因测序解决方案',
   [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用'
