@@ -3,10 +3,11 @@ package controllers
 import (
 	"fmt"
 	"net/http"
-	"regexp"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis/v7"
 	"github.com/qiniu/rpc.v1"
 	"github.com/qiniu/xlog.v1"
 	"gopkg.in/mgo.v2/bson"
@@ -16,23 +17,22 @@ import (
 	"qiniu.com/www/admin-backend/codes"
 	"qiniu.com/www/admin-backend/config"
 	"qiniu.com/www/admin-backend/models"
+	"qiniu.com/www/admin-backend/service/counter"
 	"qiniu.com/www/admin-backend/service/lilliput"
 	"qiniu.com/www/admin-backend/service/morse"
+	"qiniu.com/www/admin-backend/service/verification"
+	"qiniu.com/www/admin-backend/service/verification/sms"
 	"qiniu.com/www/admin-backend/utils"
 )
 
 const sameUidLimitNum = 100
-
-var (
-	emailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
-	mobilePhonePattern = regexp.MustCompile(`^(13[0-9]|14[579]|15[012356789]|166|17[235678]|18[0-9]|19[01589])[0-9]{8}$`)
-)
 
 type Activity struct {
 	conf            *config.Config
 	mongoService    *mongoClient.MongoApiServiceWithAuth
 	lilliputService *lilliput.LilliputService
 	morseService    *morse.MorseService
+	smsService      verification.Service
 }
 
 func NewActivity(config *config.Config) *Activity {
@@ -41,11 +41,16 @@ func NewActivity(config *config.Config) *Activity {
 	mongoService := mongoClient.NewMongoApiServiceWithAuth(host, config.MongoApiPrefix, transport)
 	lilliputService := lilliput.NewLilliputService(config.LilliputHost, http.DefaultTransport)
 	morseService := morse.NewMorseService(config.MorseHost, config.MorseClientId)
+	redisClient := redis.NewUniversalClient(&redis.UniversalOptions{Addrs: strings.Split(config.RedisHosts, ",")})
+	redisCounterService := counter.NewRedisCounterService(redisClient)
+	redisStore := verification.NewRedisStore(redisClient)
+	smsService := sms.NewSmsVerification(redisCounterService, redisStore)
 	return &Activity{
 		conf:            config,
 		mongoService:    mongoService,
 		lilliputService: lilliputService,
 		morseService:    morseService,
+		smsService:      smsService,
 	}
 }
 
@@ -63,20 +68,21 @@ type activityRegInput struct {
 	Relationship            string `json:"relationship"`            // 和 qiniu 的关系
 	MarketActivityId        string `json:"marketActivityId"`        // 报名活动 id
 	MarketActivitySessionId string `json:"marketActivitySessionId"` // 报名活动场次 id
+	Captcha                 string `json:"captcha"`                 // 手机验证码
 }
 
 func (i *activityRegInput) valid() (code codes.Code, valid bool) {
 	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.Company == "" ||
 		i.Province == "" || i.City == "" || i.Industry == "" || i.Department == "" ||
-		i.Position == "" || i.Relationship == "" || i.MarketActivitySessionId == "" {
+		i.Position == "" || i.Relationship == "" || i.MarketActivitySessionId == "" || i.Captcha == "" {
 		code = codes.ArgsEmpty
 		return
 	}
-	if !emailPattern.MatchString(i.Email) {
+	if !utils.EmailPattern.MatchString(i.Email) {
 		code = codes.EmailInvalid
 		return
 	}
-	if !mobilePhonePattern.MatchString(i.PhoneNumber) {
+	if !utils.MobilePhonePattern.MatchString(i.PhoneNumber) {
 		code = codes.PhoneNumInvalid
 		return
 	}
@@ -101,7 +107,14 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	if code, valid := params.valid(); !valid {
-		logger.Errorf("params is invalid, code: %d", code)
+		logger.Errorf("params(%+v) is invalid, code: %d", params, code)
+		m.Send(c, code, nil)
+		return
+	}
+
+	// 查看手机验证码是否正确
+	if code := m.verify(logger, params.Captcha, params.PhoneNumber); code != codes.OK {
+		logger.Errorf("verify captcha(%s) error: %s", params.Captcha, code.Humanize())
 		m.Send(c, code, nil)
 		return
 	}
@@ -249,6 +262,22 @@ func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activityRegId,
 	if err != nil {
 		logger.Errorf("SendSms error: %v", err)
 	}
+	return
+}
+
+func (m *Activity) verify(logger *xlog.Logger, code string, key string) (resCode codes.Code) {
+	if ok, err := m.smsService.VerifyCaptcha(logger, code, key); !ok {
+		switch err {
+		case verification.CaptchaExpiredErr:
+			resCode = codes.CaptchaExpired
+		case verification.CaptchaIncorrectErr:
+			resCode = codes.CaptchaIncorrect
+		default:
+			resCode = codes.ResultError
+		}
+		return
+	}
+	resCode = codes.OK
 	return
 }
 

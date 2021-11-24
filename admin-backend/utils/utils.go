@@ -2,11 +2,21 @@ package utils
 
 import (
 	"fmt"
+	"net/http"
+	"regexp"
+	"strings"
 	"time"
 
 	"github.com/qiniu/xlog.v1"
 
 	"qiniu.com/www/admin-backend/service/lilliput"
+)
+
+const RedisKeyPrefix = "uxd:www:admin-backend:verification"
+
+var (
+	EmailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
+	MobilePhonePattern = regexp.MustCompile(`^(13[0-9]|14[579]|15[012356789]|166|17[235678]|18[0-9]|19[01589])[0-9]{8}$`)
 )
 
 // GetCheckinLinkUrl 获取用户报名签到链接
@@ -28,4 +38,17 @@ func GetCheckinLinkUrl(logger *xlog.Logger, lilliputService *lilliput.LilliputSe
 // FormatSecTime 将秒时间戳格式化为时间字符串
 func FormatSecTime(sec int64) string {
 	return time.Unix(sec, 0).Format("2006-01-02")
+}
+
+func RequestRealIp(req *http.Request) string {
+	ip := strings.TrimSpace(strings.Split(req.Header.Get("X-Forwarded-For"), ",")[0])
+	if ip != "" {
+		return ip
+	}
+	ip = strings.TrimSpace(req.Header.Get("X-Real-Ip"))
+	if ip != "" {
+		return ip
+	}
+	ip = strings.TrimSpace(strings.Split(req.RemoteAddr, ":")[0])
+	return ip
 }
