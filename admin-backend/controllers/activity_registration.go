@@ -18,6 +18,7 @@ import (
 	"qiniu.com/www/admin-backend/models"
 	"qiniu.com/www/admin-backend/service/lilliput"
 	"qiniu.com/www/admin-backend/service/morse"
+	"qiniu.com/www/admin-backend/utils"
 )
 
 const sameUidLimitNum = 100
@@ -49,16 +50,25 @@ func NewActivity(config *config.Config) *Activity {
 }
 
 type activityRegInput struct {
-	Uid              uint32 `json:"uid"`
-	UserName         string `json:"userName"`
-	PhoneNumber      string `json:"phoneNumber"`
-	Email            string `json:"email"`
-	Company          string `json:"company"`
-	MarketActivityId string `json:"marketActivityId"`
+	Uid                     uint32 `json:"uid"`
+	UserName                string `json:"userName"`
+	PhoneNumber             string `json:"phoneNumber"`
+	Email                   string `json:"email"`
+	Company                 string `json:"company"`
+	Province                string `json:"province"`                // 所在省份
+	City                    string `json:"city"`                    // 所在城市
+	Industry                string `json:"industry"`                // 所在行业
+	Department              string `json:"department"`              // 部门
+	Position                string `json:"position"`                // 职位
+	Relationship            string `json:"relationship"`            // 和 qiniu 的关系
+	MarketActivityId        string `json:"marketActivityId"`        // 报名活动 id
+	MarketActivitySessionId string `json:"marketActivitySessionId"` // 报名活动场次 id
 }
 
 func (i *activityRegInput) valid() (code codes.Code, valid bool) {
-	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" {
+	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.Company == "" ||
+		i.Province == "" || i.City == "" || i.Industry == "" || i.Department == "" ||
+		i.Position == "" || i.Relationship == "" || i.MarketActivitySessionId == "" {
 		code = codes.ArgsEmpty
 		return
 	}
@@ -109,6 +119,18 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		m.Send(c, codes.ResultError, nil)
 		return
 	}
+	// 场次 id 是否有效
+	for index, session := range getRes.Sessions {
+		if session.Id == params.MarketActivitySessionId {
+			break
+		}
+		// 场次 id 不存在
+		if index == len(getRes.Sessions)-1 {
+			logger.Errorf("session id(%s) not found", params.MarketActivitySessionId)
+			m.Send(c, codes.MarketActivitySessionIdInvalid, "not found")
+			return
+		}
+	}
 
 	// 活动如果需要登录才能报名，检查 uid 是否不为 0
 	if !getRes.NoLoginRequired && params.Uid == 0 {
@@ -131,8 +153,9 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 
 	// 查看手机号是否已经存在
 	phoneQuery := map[string]interface{}{
-		"phoneNumber":      params.PhoneNumber,
-		"marketActivityId": params.MarketActivityId,
+		"phoneNumber":             params.PhoneNumber,
+		"marketActivityId":        params.MarketActivityId,
+		"marketActivitySessionId": params.MarketActivitySessionId,
 	}
 	listQuery := mongoClient.ListQuery{
 		Limit: "1",
@@ -151,10 +174,11 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		return
 	}
 
-	// 查看同一活动同一 uid 报名人数是否达到上限
+	// 查看同一活动同一场次同一 uid 报名人数是否达到上限
 	uidQuery := map[string]interface{}{
-		"uid":              params.Uid,
-		"marketActivityId": params.MarketActivityId,
+		"uid":                     params.Uid,
+		"marketActivityId":        params.MarketActivityId,
+		"marketActivitySessionId": params.MarketActivitySessionId,
 	}
 	listQuery = mongoClient.ListQuery{
 		Limit: "1",
@@ -176,14 +200,21 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	var res models.ActivityRegistration
 	// 提交用户活动报名请求
 	activityRegParams := &models.ActivityRegistration{
-		Uid:              params.Uid,
-		UserName:         params.UserName,
-		PhoneNumber:      params.PhoneNumber,
-		Email:            params.Email,
-		Company:          params.Company,
-		MarketActivityId: params.MarketActivityId,
-		CreatedAt:        time.Now().Unix(),
-		UpdatedAt:        time.Now().Unix(),
+		Uid:                     params.Uid,
+		UserName:                params.UserName,
+		PhoneNumber:             params.PhoneNumber,
+		Email:                   params.Email,
+		Company:                 params.Company,
+		MarketActivityId:        params.MarketActivityId,
+		MarketActivitySessionId: params.MarketActivitySessionId,
+		Province:                params.Province,
+		City:                    params.City,
+		Industry:                params.Industry,
+		Department:              params.Department,
+		Position:                params.Position,
+		Relationship:            params.Relationship,
+		CreatedAt:               time.Now().Unix(),
+		UpdatedAt:               time.Now().Unix(),
 	}
 	err = m.mongoService.Create(logger, m.conf.ActivityRegistrationResourceName, activityRegParams, &res)
 	if err != nil {
@@ -194,35 +225,27 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 
 	// 发送活动报名成功短信
 	m.sendActivityRegSucceedSMS(logger, res.Id.Hex(), getRes.Title,
-		m.conf.SMSTemplates.ActivityRegSucceedLinkPrefix, params.PhoneNumber)
+		m.conf.SMSTemplates.ActivityCheckinLinkPrefix, params.PhoneNumber, getRes.StartTime)
 
 	m.Send(c, codes.OK, res)
 }
 
 // sendActivityRegSucceedSMS 发送报名成功短信通知
 func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activityRegId, activityTitle,
-	linkPrefix, phoneNumber string) {
+	linkPrefix, phoneNumber string, activityStartTime int64) {
 
-	url := fmt.Sprintf("%s%s", linkPrefix, activityRegId)
-	// 获取短链
-	var shortUrl string
-	shortUrl, err := m.lilliputService.GetShortUrl(logger, url)
-	if err != nil {
-		logger.Errorf("lilliputService.GetShortUrl %s error: %v", url, err)
-	}
-	if shortUrl != "" {
-		url = shortUrl
-	}
+	url := utils.GetCheckinLinkUrl(logger, m.lilliputService, linkPrefix, activityRegId)
 	// 发送短信
 	data := map[string]interface{}{
-		"Title": activityTitle,
-		"Link":  url,
+		"Title":     activityTitle,
+		"Link":      url,
+		"StartTime": utils.FormatSecTime(activityStartTime),
 	}
 	in := morse.SendSmsIn{
 		PhoneNumber: phoneNumber,
 		TmplData:    data,
 	}
-	_, err = m.morseService.SendSms(logger, in, m.conf.SMSTemplates.ActivityRegSucceed)
+	_, err := m.morseService.SendSms(logger, in, m.conf.SMSTemplates.ActivityRegSucceed)
 	if err != nil {
 		logger.Errorf("SendSms error: %v", err)
 	}

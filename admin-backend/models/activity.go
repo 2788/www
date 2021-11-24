@@ -27,19 +27,26 @@ type ActivityRegistrationReminder struct {
 }
 
 type ActivityRegistration struct {
-	Id               bson.ObjectId                  `json:"_id,omitempty"`
-	Uid              uint32                         `json:"uid,omitempty"`
-	CheckedIn        bool                           `json:"checkedIn"` // 是否签到
-	UserName         string                         `json:"userName"`
-	PhoneNumber      string                         `json:"phoneNumber"`
-	Email            string                         `json:"email"`
-	Company          string                         `json:"company"`
-	MarketActivityId string                         `json:"marketActivityId"`
-	HasBeenSent      bool                           `json:"hasBeenSent"` // deprecated TODO: 删除
-	SMSJobId         string                         `json:"smsJobId"`    // deprecated TODO: 删除
-	Reminders        []ActivityRegistrationReminder `json:"reminders"`
-	CreatedAt        int64                          `json:"createdAt"`
-	UpdatedAt        int64                          `json:"updatedAt"`
+	Id                      bson.ObjectId                  `json:"_id,omitempty"`
+	Uid                     uint32                         `json:"uid,omitempty"`
+	CheckedIn               bool                           `json:"checkedIn"` // 是否签到
+	UserName                string                         `json:"userName"`
+	PhoneNumber             string                         `json:"phoneNumber"`
+	Email                   string                         `json:"email"`
+	Company                 string                         `json:"company"`
+	MarketActivityId        string                         `json:"marketActivityId"`
+	MarketActivitySessionId string                         `json:"marketActivitySessionId"`
+	Province                string                         `json:"province"`     // 所在省份
+	City                    string                         `json:"city"`         // 所在城市
+	Industry                string                         `json:"industry"`     // 所在行业
+	Department              string                         `json:"department"`   // 部门
+	Position                string                         `json:"position"`     // 职位
+	Relationship            string                         `json:"relationship"` // 和 qiniu 的关系
+	HasBeenSent             bool                           `json:"hasBeenSent"`  // deprecated TODO: 删除
+	SMSJobId                string                         `json:"smsJobId"`     // deprecated TODO: 删除
+	Reminders               []ActivityRegistrationReminder `json:"reminders"`
+	CreatedAt               int64                          `json:"createdAt"`
+	UpdatedAt               int64                          `json:"updatedAt"`
 }
 
 // PartOfMarketActivity 为 `admin-backend` 中需要使用到的部分活动字段
@@ -56,6 +63,12 @@ type PartOfMarketActivity struct {
 	NoticeStatus int       `json:"noticeStatus"`
 	ApplyEndTime int64     `json:"applyEndTime"` // 报名截止时间
 	Reminders    Reminders `json:"reminders"`    // 活动提醒
+	Sessions     []session `json:"sessions"`     // 活动场次
+}
+
+// session 定义活动场次结构
+type session struct {
+	Id string `json:"id"`
 }
 
 type Reminder struct {

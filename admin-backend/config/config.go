@@ -26,9 +26,9 @@ type ServerConfig struct {
 }
 
 type SMSTemplateConfig struct {
-	ActivityReminder             string `yaml:"activity_reminder"`                // 活动提醒模版
-	ActivityRegSucceed           string `yaml:"activity_reg_succeed"`             // 活动报名成功模版
-	ActivityRegSucceedLinkPrefix string `yaml:"activity_reg_succeed_link_prefix"` // 活动报名成功模版链接前缀
+	ActivityReminder          string `yaml:"activity_reminder"`            // 活动提醒模版
+	ActivityRegSucceed        string `yaml:"activity_reg_succeed"`         // 活动报名成功模版
+	ActivityCheckinLinkPrefix string `yaml:"activity_checkin_link_prefix"` // 活动签到链接前缀
 }
 
 // TbpConfig 对接腾讯智能对话平台（tbp）的配置

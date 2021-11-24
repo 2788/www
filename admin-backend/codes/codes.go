@@ -26,6 +26,7 @@ const (
 	UidRequired                     code = 400007 // 需要 uid
 	InvalidActivityRegistrationId   code = 400008 // 不合法的活动报名 id
 	ActivityRegistrationIdCheckedIn code = 400009 // 活动报名 id 已经签到
+	MarketActivitySessionIdInvalid  code = 400010 // 市场活动场次 id 不合法
 )
 
 var codeHumanize = map[code]string{
@@ -43,6 +44,7 @@ var codeHumanize = map[code]string{
 	UidRequired:                     "uid is required",
 	InvalidActivityRegistrationId:   "activity registration id is invalid",
 	ActivityRegistrationIdCheckedIn: "activity registration id has already checked in",
+	MarketActivitySessionIdInvalid:  "market activity session id is invalid",
 }
 
 type code int

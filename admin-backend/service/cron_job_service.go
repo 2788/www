@@ -18,6 +18,7 @@ import (
 	"qiniu.com/www/admin-backend/models"
 	"qiniu.com/www/admin-backend/service/lilliput"
 	"qiniu.com/www/admin-backend/service/morse"
+	"qiniu.com/www/admin-backend/utils"
 )
 
 const (
@@ -171,20 +172,12 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 
 	in := make([]morse.SendSmsIn, 0)
 	for _, user := range users {
-		url := fmt.Sprintf("%s%s", activity.DetailUrlPrefix, activity.Id.Hex())
-		var shortUrl string
-		shortUrl, err = f.lilliputService.GetShortUrl(logger, url)
-		if err != nil {
-			logger.Errorf("lilliputService.GetShortUrl %s error: %v", url, err)
-		}
-		if shortUrl != "" {
-			url = shortUrl
-		}
-		data := SMSData{
-			UserName:  user.UserName,
-			Title:     activity.Title,
-			StartTime: time.Unix(activity.StartTime, 0).Format("2006-01-02 15:04:05"),
-			DetailUrl: url,
+		url := utils.GetCheckinLinkUrl(logger, f.lilliputService, f.conf.SMSTemplates.ActivityCheckinLinkPrefix,
+			activity.Id.Hex())
+		data := map[string]interface{}{
+			"Title":     activity.Title,
+			"Link":      url,
+			"StartTime": utils.FormatSecTime(activity.StartTime),
 		}
 		in = append(in, morse.SendSmsIn{
 			TmplData:    data,
@@ -292,13 +285,6 @@ func (f *CronJobService) addLockExpireTimeOrUnlock(logger *xlog.Logger, end chan
 			}
 		}
 	}
-}
-
-type SMSData struct {
-	UserName  string
-	Title     string
-	StartTime string
-	DetailUrl string
 }
 
 // ---------------------------------------- 下面方法为最新提醒逻辑 ----------------------------------------
