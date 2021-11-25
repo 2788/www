@@ -49,7 +49,7 @@ func (s *service) GenerateCaptcha(logger *xlog.Logger, key string) (captcha stri
 }
 
 func (s *service) getCaptchaKey(key string) string {
-	return fmt.Sprintf("%s:captcha:%s", utils.RedisKeyPrefix, key)
+	return fmt.Sprintf("%s:verification:captcha:%s", utils.RedisKeyPrefix, key)
 }
 
 func (s *service) newCaptchaCounter(key string) counter.Counter {
@@ -58,7 +58,7 @@ func (s *service) newCaptchaCounter(key string) counter.Counter {
 }
 
 func (s *service) getCaptchaCounterKey(key string) string {
-	return fmt.Sprintf("%s:captcha:counter:%s", utils.RedisKeyPrefix, key)
+	return fmt.Sprintf("%s:verification:captcha:counter:%s", utils.RedisKeyPrefix, key)
 }
 
 func (s *service) VerifyCaptcha(logger *xlog.Logger, captcha string, key string) (ok bool, err error) {

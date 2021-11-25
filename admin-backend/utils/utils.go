@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"net"
 	"net/http"
 	"regexp"
 	"strings"
@@ -12,7 +13,7 @@ import (
 	"qiniu.com/www/admin-backend/service/lilliput"
 )
 
-const RedisKeyPrefix = "uxd:www:admin-backend:verification"
+const RedisKeyPrefix = "uxd:www:admin-backend"
 
 var (
 	EmailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
@@ -40,15 +41,19 @@ func FormatSecTime(sec int64) string {
 	return time.Unix(sec, 0).Format("2006-01-02")
 }
 
-func RequestRealIp(req *http.Request) string {
-	ip := strings.TrimSpace(strings.Split(req.Header.Get("X-Forwarded-For"), ",")[0])
+func RequestRealIp(req *http.Request) (ip string, err error) {
+	ip = strings.TrimSpace(strings.Split(req.Header.Get("X-Forwarded-For"), ",")[0])
 	if ip != "" {
-		return ip
+		return
 	}
 	ip = strings.TrimSpace(req.Header.Get("X-Real-Ip"))
 	if ip != "" {
-		return ip
+		return
 	}
-	ip = strings.TrimSpace(strings.Split(req.RemoteAddr, ":")[0])
-	return ip
+	ip, _, err = net.SplitHostPort(req.RemoteAddr)
+	if err != nil {
+		err = fmt.Errorf("SplitHostPort(%s) error: %v", req.RemoteAddr, err)
+		return
+	}
+	return
 }

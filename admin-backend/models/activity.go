@@ -36,8 +36,7 @@ type ActivityRegistration struct {
 	Company                 string                         `json:"company"`
 	MarketActivityId        string                         `json:"marketActivityId"`
 	MarketActivitySessionId string                         `json:"marketActivitySessionId"`
-	Province                string                         `json:"province"`     // 所在省份
-	City                    string                         `json:"city"`         // 所在城市
+	Location                string                         `json:"location"`     // 所在地址
 	Industry                string                         `json:"industry"`     // 所在行业
 	Department              string                         `json:"department"`   // 部门
 	Position                string                         `json:"position"`     // 职位

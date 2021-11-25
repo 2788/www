@@ -15,7 +15,6 @@ import (
 	"qiniu.com/www/admin-backend/service/counter"
 	"qiniu.com/www/admin-backend/service/morse"
 	"qiniu.com/www/admin-backend/service/verification"
-	"qiniu.com/www/admin-backend/service/verification/sms"
 	"qiniu.com/www/admin-backend/utils"
 )
 
@@ -25,24 +24,25 @@ const (
 )
 
 type Verification struct {
-	conf           *config.Config
-	morseService   *morse.MorseService
-	counterService counter.Service
-	smsService     verification.Service
+	conf                   *config.Config
+	morseService           *morse.MorseService
+	counterService         counter.Service
+	smsVerificationService verification.Service
 }
 
 func NewVerification(config *config.Config) *Verification {
 	redisClient := redis.NewUniversalClient(&redis.UniversalOptions{Addrs: strings.Split(config.RedisHosts, ",")})
 	redisCounterService := counter.NewRedisCounterService(redisClient)
 	redisStore := verification.NewRedisStore(redisClient)
-	smsService := sms.NewSmsVerification(redisCounterService, redisStore)
+	smsVerificationService := verification.NewVerificationService(redisCounterService,
+		controllers.SMSVerificationConfig, redisStore)
 	morseService := morse.NewMorseService(config.MorseHost, config.MorseClientId)
 
 	return &Verification{
-		conf:           config,
-		morseService:   morseService,
-		counterService: redisCounterService,
-		smsService:     smsService,
+		conf:                   config,
+		morseService:           morseService,
+		counterService:         redisCounterService,
+		smsVerificationService: smsVerificationService,
 	}
 }
 
@@ -72,7 +72,7 @@ func (v *Verification) SendSMS(c *gin.Context) {
 	err := c.BindJSON(&input)
 	if err != nil {
 		logger.Errorf("BindJSON error: %v", err)
-		controllers.SendResponse(c, codes.InvalidArgs, "bind json error")
+		controllers.SendResponse(c, codes.InvalidArgs, "parse input failed")
 		return
 	}
 	if code, valid := input.valid(); !valid {
@@ -90,7 +90,7 @@ func (v *Verification) SendSMS(c *gin.Context) {
 		return
 	}
 
-	captcha, err := v.smsService.GenerateCaptcha(logger, input.PhoneNumber)
+	captcha, err := v.smsVerificationService.GenerateCaptcha(logger, input.PhoneNumber)
 	if err != nil {
 		logger.Errorf("GenerateCaptcha(%s) error: %v", input.PhoneNumber, err)
 		if err == verification.GenCaptchaTooFrequentlyErr {
@@ -103,7 +103,7 @@ func (v *Verification) SendSMS(c *gin.Context) {
 
 	data := map[string]interface{}{
 		"Captcha": captcha,
-		"Time":    sms.VerificationConfig.CaptchaExpirationInterval / 60,
+		"Time":    controllers.SMSVerificationConfig.CaptchaExpirationInterval / 60,
 	}
 	in := morse.SendSmsIn{
 		PhoneNumber: input.PhoneNumber,
@@ -121,5 +121,5 @@ func (v *Verification) SendSMS(c *gin.Context) {
 }
 
 func (v *Verification) getCounterKey(key string) string {
-	return fmt.Sprintf("%s:%s", utils.RedisKeyPrefix, key)
+	return fmt.Sprintf("%s:verification:%s", utils.RedisKeyPrefix, key)
 }

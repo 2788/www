@@ -10,6 +10,7 @@ import (
 	"github.com/qiniu/rpc.v1/lb.v2.1"
 
 	"qiniu.com/www/admin-backend/codes"
+	"qiniu.com/www/admin-backend/service/verification"
 )
 
 type ErrorBody struct {
@@ -60,4 +61,12 @@ func NewClient(host string, transport http.RoundTripper) *lb.Client {
 		TryTimes: uint32(len(hosts)),
 	}
 	return lb.New(cfg, transport)
+}
+
+var SMSVerificationConfig = verification.Config{
+	CaptchaChars:              verification.NumberChars,
+	CaptchaLength:             6,
+	CaptchaExpirationInterval: 60 * 60, // 1 小时
+	CaptchaLimit:              10,
+	CaptchaLimitInterval:      60 * 60,
 }

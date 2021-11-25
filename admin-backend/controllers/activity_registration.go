@@ -21,18 +21,17 @@ import (
 	"qiniu.com/www/admin-backend/service/lilliput"
 	"qiniu.com/www/admin-backend/service/morse"
 	"qiniu.com/www/admin-backend/service/verification"
-	"qiniu.com/www/admin-backend/service/verification/sms"
 	"qiniu.com/www/admin-backend/utils"
 )
 
 const sameUidLimitNum = 100
 
 type Activity struct {
-	conf            *config.Config
-	mongoService    *mongoClient.MongoApiServiceWithAuth
-	lilliputService *lilliput.LilliputService
-	morseService    *morse.MorseService
-	smsService      verification.Service
+	conf                *config.Config
+	mongoService        *mongoClient.MongoApiServiceWithAuth
+	lilliputService     *lilliput.LilliputService
+	morseService        *morse.MorseService
+	verificationService verification.Service
 }
 
 func NewActivity(config *config.Config) *Activity {
@@ -44,13 +43,13 @@ func NewActivity(config *config.Config) *Activity {
 	redisClient := redis.NewUniversalClient(&redis.UniversalOptions{Addrs: strings.Split(config.RedisHosts, ",")})
 	redisCounterService := counter.NewRedisCounterService(redisClient)
 	redisStore := verification.NewRedisStore(redisClient)
-	smsService := sms.NewSmsVerification(redisCounterService, redisStore)
+	verificationService := verification.NewVerificationService(redisCounterService, SMSVerificationConfig, redisStore)
 	return &Activity{
-		conf:            config,
-		mongoService:    mongoService,
-		lilliputService: lilliputService,
-		morseService:    morseService,
-		smsService:      smsService,
+		conf:                config,
+		mongoService:        mongoService,
+		lilliputService:     lilliputService,
+		morseService:        morseService,
+		verificationService: verificationService,
 	}
 }
 
@@ -60,8 +59,7 @@ type activityRegInput struct {
 	PhoneNumber             string `json:"phoneNumber"`
 	Email                   string `json:"email"`
 	Company                 string `json:"company"`
-	Province                string `json:"province"`                // 所在省份
-	City                    string `json:"city"`                    // 所在城市
+	Location                string `json:"location"`                // 所在地址
 	Industry                string `json:"industry"`                // 所在行业
 	Department              string `json:"department"`              // 部门
 	Position                string `json:"position"`                // 职位
@@ -73,8 +71,8 @@ type activityRegInput struct {
 
 func (i *activityRegInput) valid() (code codes.Code, valid bool) {
 	if i.UserName == "" || i.Email == "" || i.PhoneNumber == "" || i.Company == "" ||
-		i.Province == "" || i.City == "" || i.Industry == "" || i.Department == "" ||
-		i.Position == "" || i.Relationship == "" || i.MarketActivitySessionId == "" || i.Captcha == "" {
+		i.Location == "" || i.Industry == "" || i.Department == "" || i.Position == "" ||
+		i.Relationship == "" || i.MarketActivitySessionId == "" || i.Captcha == "" {
 		code = codes.ArgsEmpty
 		return
 	}
@@ -113,7 +111,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 	}
 
 	// 查看手机验证码是否正确
-	if code := m.verify(logger, params.Captcha, params.PhoneNumber); code != codes.OK {
+	if code := m.verifyCaptcha(logger, params.Captcha, params.PhoneNumber); code != codes.OK {
 		logger.Errorf("verify captcha(%s) error: %s", params.Captcha, code.Humanize())
 		m.Send(c, code, nil)
 		return
@@ -220,8 +218,7 @@ func (m *Activity) ActivityRegistration(c *gin.Context) {
 		Company:                 params.Company,
 		MarketActivityId:        params.MarketActivityId,
 		MarketActivitySessionId: params.MarketActivitySessionId,
-		Province:                params.Province,
-		City:                    params.City,
+		Location:                params.Location,
 		Industry:                params.Industry,
 		Department:              params.Department,
 		Position:                params.Position,
@@ -265,8 +262,8 @@ func (m *Activity) sendActivityRegSucceedSMS(logger *xlog.Logger, activityRegId,
 	return
 }
 
-func (m *Activity) verify(logger *xlog.Logger, code string, key string) (resCode codes.Code) {
-	if ok, err := m.smsService.VerifyCaptcha(logger, code, key); !ok {
+func (m *Activity) verifyCaptcha(logger *xlog.Logger, code string, key string) (resCode codes.Code) {
+	if ok, err := m.verificationService.VerifyCaptcha(logger, code, key); !ok {
 		switch err {
 		case verification.CaptchaExpiredErr:
 			resCode = codes.CaptchaExpired
