@@ -112,6 +112,8 @@ func (v *Verification) SendSMS(c *gin.Context) {
 	_, err = v.morseService.SendSms(logger, in, input.Operation.SMSTmplContent())
 	if err != nil {
 		logger.Errorf("SendSms error: %v", err)
+		controllers.SendResponse(c, codes.ResultError, nil)
+		return
 	}
 
 	redisCounter.Increase(1)
