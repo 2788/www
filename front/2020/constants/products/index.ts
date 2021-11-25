@@ -34,6 +34,8 @@ export enum Product {
   Censor = 'censor',
   /** 人脸核验 */
   FaceID = 'faceid',
+  /** 智能风控 */
+  RiskControl = 'riskcontrol',
   /** 实时音视频 */
   Rtn = 'rtn',
   /** 短视频 SDK */
@@ -94,6 +96,7 @@ export const nameMap = {
   [Product.DoraImage]: '图片处理',
   [Product.Censor]: '内容审核',
   [Product.FaceID]: '人脸核验',
+  [Product.RiskControl]: '智能风控',
   [Product.Rtn]: '实时音视频 QRTC',
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '直播推流 SDK',
@@ -132,6 +135,7 @@ export const urlMap = {
   [Product.DoraImage]: '/products/dora#functions',
   [Product.Censor]: '/products/censor',
   [Product.FaceID]: '/products/faceid',
+  [Product.RiskControl]: '/products/risk-control',
   [Product.Rtn]: '/products/rtn',
   [Product.Plsv]: '/products/plsv',
   [Product.Plms]: '/products/plms',
@@ -170,6 +174,7 @@ export const priceUrlMap = {
   [Product.DoraImage]: null,
   [Product.Censor]: '/prices/censor',
   [Product.FaceID]: '/prices/faceid',
+  [Product.RiskControl]: null,
   [Product.Rtn]: '/prices/rtc',
   [Product.Plsv]: '/prices/plsv',
   [Product.Plms]: null,
@@ -213,6 +218,7 @@ export const descMap = {
   [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
   [Product.Plms]: '支持手机端 RTMP & QUIC 推流，简单易上手，马上开播',
   [Product.FaceID]: '利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证',
+  [Product.RiskControl]: '',
   [Product.Qvs]: '面向视频监控设备提供视频流接入、存储、分发服务',
 
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',

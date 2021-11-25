@@ -17,7 +17,6 @@ import Scenes from 'components/pages/faceid/Scenes'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 import Link from 'components/Link'
-import Tag from 'components/UI/Tag'
 import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
@@ -35,16 +34,12 @@ import IconFeat4 from './_icons/feat-4.svg'
 import IconFeat5 from './_icons/feat-5.svg'
 import IconFeat6 from './_icons/feat-6.svg'
 import IconFeat7 from './_icons/feat-7.svg'
+import IconFeat8 from './_icons/feat-8.svg'
 import style from './style.less'
 
 interface LinkTitleProps {
   title: string
   href: string
-}
-
-interface TagTitleProps {
-  title: string
-  tag: string
 }
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
@@ -72,16 +67,6 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
       <div className={style.title}>
         <span>{title}</span>
         <Link className={style.link} href={href} blue>接口文档 &gt;&gt;</Link>
-      </div>
-    )
-  }
-
-  // 生成带敬请期待的标题
-  function TagTitle({ title, tag }: TagTitleProps) {
-    return (
-      <div className={style.title}>
-        <span>{title}</span>
-        <Tag text={tag} />
       </div>
     )
   }
@@ -152,12 +137,18 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         <feature.Group>
           <feature.Item
             pos="left-right"
-            title={<TagTitle title="银行卡三要素" tag="敬请期待" />}
+            title={<LinkTitle title="手机号三要素" href="https://developer.qiniu.com/dora/9906/mobile-phone-number-check-the-three-elements" />}
             icon={<IconFeat7 />}
           >
-            <feature.Desc>提交姓名、身份证号、银行卡号信息，校验银行卡是否为该身份信息所有</feature.Desc>
+            <feature.Desc>手机号三要素核验接口采用权威官方数据库进行比对，验证验证姓名，证件号码，手机号码的真实性和一致性。</feature.Desc>
           </feature.Item>
-          <feature.Placeholder />
+          <feature.Item
+            pos="left-right"
+            title={<LinkTitle title="银行卡四要素" href="https://developer.qiniu.com/dora/9905/the-four-essential-factors-of-bank-card" />}
+            icon={<IconFeat8 />}
+          >
+            <feature.Desc>银行卡四要素核验接口采用权威官方数据库进行比对，验证姓名、证件号码、手机号码、银行卡号的真实性和一致性。</feature.Desc>
+          </feature.Item>
         </feature.Group>
       </Feature>
 

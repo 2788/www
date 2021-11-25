@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="46px" viewBox="0 0 62 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>contactless-card</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="智能风控" transform="translate(-512.000000, -1891.000000)" stroke-width="2">
+            <g id="接入流程" transform="translate(0.000000, 1678.000000)">
+                <g id="编组-26" transform="translate(483.000000, 176.000000)">
+                    <g id="contactless-card" transform="translate(30.000000, 38.000000)">
+                        <path d="M0,40 L0,4 C0,1.790861 1.790861,0 4,0 L56,0 C58.209139,0 60,1.790861 60,4 L60,40 C60,42.209139 58.209139,44 56,44 L4,44 C1.790861,44 0,42.209139 0,40 Z" id="路径" stroke="#333333"></path>
+                        <line x1="8" y1="35" x2="52" y2="35" id="路径" stroke="#333333"></line>
+                        <line x1="8" y1="28" x2="25" y2="28" id="路径" stroke="#333333"></line>
+                        <rect id="矩形" stroke="#333333" x="8" y="10" width="10" height="8"></rect>
+                        <path d="M45.6,19 C49.1344,19 52,21.8656 52,25.4 L36,25.4 C36,21.8656 38.8656,19 42.4,19 L45.6,19 Z M44,7 C46.209139,7 48,8.790861 48,11 C48,13.209139 46.209139,15 44,15 C41.790861,15 40,13.209139 40,11 C40,8.790861 41.790861,7 44,7 Z" id="形状结合" stroke="#00AAE7"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

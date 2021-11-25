@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="60px" viewBox="0 0 54 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>algorithm</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="智能风控" transform="translate(-933.000000, -2316.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 2138.000000)">
+                <g id="01" transform="translate(772.000000, 148.000000)">
+                    <g id="algorithm" transform="translate(162.000000, 31.000000)">
+                        <rect id="矩形" stroke="#333333" x="44" y="50" width="8" height="8"></rect>
+                        <rect id="矩形" stroke="#333333" x="22" y="0" width="8" height="8"></rect>
+                        <rect id="矩形" stroke="#333333" x="3.55271368e-15" y="50" width="8" height="8"></rect>
+                        <circle id="椭圆形" stroke="#333333" cx="4" cy="4" r="4"></circle>
+                        <polyline id="路径" stroke="#333333" points="4 8 4 15 9 20"></polyline>
+                        <circle id="椭圆形" stroke="#333333" cx="48" cy="4" r="4"></circle>
+                        <polyline id="路径" stroke="#333333" points="48 8 48 15 43 20"></polyline>
+                        <line x1="26" y1="8" x2="26" y2="13" id="路径" stroke="#333333"></line>
+                        <circle id="椭圆形" stroke="#333333" cx="26" cy="54" r="4"></circle>
+                        <polyline id="路径" stroke="#333333" points="4 50 4 43 9 38"></polyline>
+                        <polyline id="路径" stroke="#333333" points="48 50 48 43 43 38"></polyline>
+                        <line x1="26" y1="50" x2="26" y2="45" id="路径" stroke="#333333"></line>
+                        <circle id="椭圆形" stroke="#00AAE7" cx="26" cy="29" r="7"></circle>
+                        <line x1="26" y1="22" x2="26" y2="19" id="路径" stroke="#00AAE7"></line>
+                        <line x1="30.95" y1="24.05" x2="33.071" y2="21.929" id="路径" stroke="#00AAE7"></line>
+                        <line x1="33" y1="29" x2="36" y2="29" id="路径" stroke="#00AAE7"></line>
+                        <line x1="30.95" y1="33.95" x2="33.071" y2="36.071" id="路径" stroke="#00AAE7"></line>
+                        <line x1="26" y1="36" x2="26" y2="39" id="路径" stroke="#00AAE7"></line>
+                        <line x1="21.05" y1="33.95" x2="18.929" y2="36.071" id="路径" stroke="#00AAE7"></line>
+                        <line x1="19" y1="29" x2="16" y2="29" id="路径" stroke="#00AAE7"></line>
+                        <line x1="21.05" y1="24.05" x2="18.929" y2="21.929" id="路径" stroke="#00AAE7"></line>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="62" height="57" viewBox="0 0 62 57">
-  <g fill="none" fill-rule="evenodd" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
-    <line x1="46" x2="46" y1="39" y2="47" stroke="#00AAE7"/>
-    <line x1="42" x2="50" y1="43" y2="43" stroke="#00AAE7"/>
-    <circle cx="46" cy="43" r="12" stroke="#00AAE7"/>
-    <line x2="60" y1="12" y2="12" stroke="#333"/>
-    <line x2="60" y1="22" y2="22" stroke="#333"/>
-    <path stroke="#333" d="M26,44 L4,44 C1.791,44 0,42.209 0,40 L0,4 C0,1.791 1.791,0 4,0 L56,0 C58.209,0 60,1.791 60,4 L60,28"/>
-    <line x1="8" x2="22" y1="34" y2="34" stroke="#333"/>
-  </g>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M45 18H36" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M54 10H36" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M28 6C28 4.93913 28.4214 3.92172 29.1716 3.17157C29.9217 2.42143 30.9391 2 32 2H58C59.0609 2 60.0783 2.42143 60.8284 3.17157C61.5786 3.92172 62 4.93913 62 6V22C62 23.0609 61.5786 24.0783 60.8284 24.8284C60.0783 25.5786 59.0609 26 58 26H37L28 33V6Z" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M7 14H23" stroke="#333333" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M7 52H45" stroke="#333333" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M45 31V57C45 58.3261 44.4732 59.5979 43.5355 60.5355C42.5979 61.4732 41.3261 62 40 62H12C10.6739 62 9.40215 61.4732 8.46447 60.5355C7.52678 59.5979 7 58.3261 7 57V11C7 9.67392 7.52678 8.40215 8.46447 7.46447C9.40215 6.52678 10.6739 6 12 6H23" stroke="#333333" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
 </svg>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>virtual-reality</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="智能风控" transform="translate(-1329.000000, -2315.000000)" stroke-width="2">
+            <g id="产品介绍-2" transform="translate(0.000000, 2138.000000)">
+                <g id="01" transform="translate(1172.000000, 148.000000)">
+                    <g id="virtual-reality" transform="translate(158.000000, 30.000000)">
+                        <polyline id="路径" stroke="#333333" points="16 21 30 27 44 21"></polyline>
+                        <line x1="30" y1="27" x2="30" y2="45" id="路径" stroke="#333333"></line>
+                        <polygon id="路径" stroke="#333333" points="44 21 30 15 16 21 16 39 30 45 44 39"></polygon>
+                        <path d="M0,30 C0,13.4314575 13.4314575,0 30,0 L34,0 L28,6" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                        <path d="M60,30 C60,46.5685425 46.5685425,60 30,60 L26,60 L32,54" id="路径" stroke="#00AAE7" stroke-linecap="square"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

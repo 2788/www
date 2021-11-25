@@ -148,8 +148,12 @@ export const productFunctions: FunctionValue = [
             link: 'https://developer.qiniu.com/dora/6926/id-card-two-elements'
           },
           {
-            name: '银行卡三要素',
-            label: '敬请期待'
+            name: '手机号三要素',
+            link: 'https://developer.qiniu.com/dora/9906/mobile-phone-number-check-the-three-elements'
+          },
+          {
+            name: '银行卡四要素',
+            link: 'https://developer.qiniu.com/dora/9905/the-four-essential-factors-of-bank-card'
           }
         ]
       },
@@ -157,7 +161,7 @@ export const productFunctions: FunctionValue = [
         title: '智能风控',
         content: [{
           name: '智能风控',
-          label: '敬请期待'
+          link: urlMap[Product.RiskControl]
         }]
       }
     ]
@@ -382,6 +386,13 @@ export const productFunctions: FunctionValue = [
             link: 'https://developer.qiniu.com/dora/7099/ali-audio-trans'
           }
         ]
+      },
+      {
+        title: '智能文档处理',
+        content: [{
+          name: '翻译狗文档翻译',
+          link: 'https://developer.qiniu.com/dora/9907/to-translate-documents'
+        }]
       }
     ],
     extra: {

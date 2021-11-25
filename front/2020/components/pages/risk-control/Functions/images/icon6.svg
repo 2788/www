@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="50px" viewBox="0 0 60 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>license-key</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="智能风控" transform="translate(-1026.000000, -1123.000000)">
+            <g id="产品介绍-2" transform="translate(0.000000, 542.000000)">
+                <g id="编组-44" transform="translate(372.000000, 148.000000)">
+                    <g id="编组-5" transform="translate(600.000000, 376.000000)">
+                        <g id="编组-48" transform="translate(24.000000, 22.000000)">
+                            <g id="license-key" transform="translate(31.000000, 36.000000)">
+                                <g id="icons" transform="translate(9.002849, 19.999005)" stroke="#00AAE7" stroke-width="2">
+                                    <circle id="椭圆形" cx="7.99715139" cy="10.0009949" r="3"></circle>
+                                    <path d="M19.1651514,6.00099488 C17.2709936,1.66093417 12.5924111,-0.755555008 7.95690356,0.211931747 C3.32139603,1.1794185 0,5.26560042 0,10.0009949 C0,14.7363893 3.32139603,18.8225713 7.95690356,19.790058 C12.5924111,20.7575448 17.2709936,18.3410556 19.1651514,14.0009949 L27.0091514,14.0009949 L31.0091514,17.0009949 L35.0091514,14.0009949 L40.0091514,14.0009949 L42.0091514,6.00099488 L19.1651514,6.00099488 Z" id="路径"></path>
+                                </g>
+                                <g id="guides">
+                                    <line x1="0" y1="12" x2="58" y2="12" id="路径" stroke="#333333" stroke-width="2"></line>
+                                    <rect id="矩形" stroke="#333333" stroke-width="2" x="0" y="0" width="58" height="48"></rect>
+                                    <circle id="椭圆形" fill="#333333" fill-rule="nonzero" cx="7" cy="6" r="2"></circle>
+                                    <circle id="椭圆形" fill="#333333" fill-rule="nonzero" cx="15" cy="6" r="2"></circle>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

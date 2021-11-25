@@ -164,6 +164,21 @@ export const handpickServices: HandpickValue = [
         ]
       }
     ]
+  },
+  {
+    key: '智能文档处理',
+    group: [
+      {
+        title: '翻译狗',
+        list: [
+          {
+            title: '翻译狗文档翻译',
+            desc: '提供多格式、多语种、高质量的文档翻译服务，支持源语言自动检测，只需指定文档链接并指定目标语言、文档格式、需要存储至七牛 kodo 的 bucket 等参数，即可在七牛云存储 kodo 中获取翻译后的文档。',
+            href: 'https://developer.qiniu.com/dora/9907/to-translate-documents'
+          }
+        ]
+      }
+    ]
   }
 ]
 
