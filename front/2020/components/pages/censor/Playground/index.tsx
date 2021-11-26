@@ -58,7 +58,8 @@ const sceneTextMap = {
   flood: '灌水识别',
   contraband: '违禁识别',
   meaningless: '无意义识别',
-  anthen: '国歌识别'
+  anthen: '国歌识别',
+  antispam: '垃圾识别'
 }
 
 const suggestionTextMap = {

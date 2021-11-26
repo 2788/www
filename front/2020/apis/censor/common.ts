@@ -23,7 +23,8 @@ export type Scene =
   'flood' |
   'contraband' |
   'meaningless' |
-  'anthen'
+  'anthen' |
+  'antispam'
 
 // 默认带的审查参数，注意 censor 测试环境没有广告服务，这里通过环境变量控制
 export const scenes = censorScenes.split(',') as Scene[]

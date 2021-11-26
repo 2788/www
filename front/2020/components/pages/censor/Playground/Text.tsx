@@ -7,14 +7,15 @@ import Loading from 'components/UI/Loading'
 import Button from 'components/UI/Button'
 import { useApiWithParams } from 'hooks/api'
 import { useUserInfo } from 'components/UserInfo'
-import { textCensor, TextCensorOptions } from 'apis/censor/text'
+import { Suggestion, Scene } from 'apis/censor/common'
+import { textCensor, TextCensorOptions, defaultParams, TextCensorResponse } from 'apis/censor/text'
 import showModal from './Modal'
 import { ResultPanel, ApiResult } from '.'
 
 import style from './style.less'
 
-function wrappedTextCensor(options: TextCensorOptions): Promise<any> {
-  if (!options.data) {
+function wrappedTextCensor(options: TextCensorOptions): Promise<TextCensorResponse['result'] | void> {
+  if (!options.data || !options.data.text) {
     return Promise.resolve()
   }
   return textCensor(options)
@@ -26,7 +27,8 @@ export default function TextPlayground() {
   const userInfo = useUserInfo()
 
   const apiRequestBody = useMemo(() => ({
-    data: textContent
+    data: { text: textContent },
+    params: defaultParams
   }), [textContent])
 
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
@@ -35,21 +37,18 @@ export default function TextPlayground() {
   )
 
   const results = useMemo(() => {
-    const result = apiResult?.results[0] || {}
+    const result = apiResult
     return (
-      ['ad', 'politics', 'terror', 'abuse', 'porn', 'flood', 'contraband', 'meaningless'] as const
+      ['antispam'] as Scene[]
     ).map(scene => {
       if (!apiResult) {
         return ({ scene, suggestion: '' })
       }
-      let suggestion = 'pass'
-      if (result.details) {
-        for (const detail of result.details) {
-          if (detail.label === scene) {
-            suggestion = result.suggestion
-          }
-        }
+      let suggestion: Suggestion = 'pass'
+      if (result && result.scenes && result.scenes[scene]) {
+        suggestion = result.scenes[scene].suggestion
       }
+
       return ({ scene, suggestion })
     })
   }, [apiResult])
@@ -75,14 +74,14 @@ export default function TextPlayground() {
                 placeholder="请输入需要检测的文本内容" />
               <Button type="primary" disabled={loading || !text} onClick={handleSubmit} className={style.submitBtn}>检测</Button>
             </div>
-            <ResultPanel panelStyle={style.audioTextResultBlock} results={results} loading={loading && apiResult} />
+            <ResultPanel panelStyle={style.audioTextResultBlock} results={results} loading={loading && !!apiResult} />
           </div>
         </Loading>
       </div>
       <div className={style.right}>
         <ApiResult
           request={makeRequestForDisplay(apiRequestBody)}
-          response={apiResult}
+          response={apiResult || {}}
           error={apiError}
           loading={loading}
         />
@@ -97,7 +96,7 @@ function makeRequestForDisplay(body: TextCensorOptions) {
   }
   return {
     Method: 'POST /handler HTTP/1.1',
-    Host: 'ali_textscan.apistore.qiniu.com',
+    Host: 'ai.qiniuapi.com',
     'Content-Type': 'application/json',
     Authorization: 'Qiniu <AccessKey>:<Sign>',
     body
