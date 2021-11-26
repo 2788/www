@@ -52,8 +52,8 @@ func (m *MorseService) SendSms(logger *xlog.Logger, in SendSmsIn, tmpl string) (
 	}
 	resp, err := m.HandleNotification.SendSms(logger, sendIn)
 	if err != nil {
-		logger.Errorf("HandleNotification.SendSms phoneNumber(%s) error: %v",
-			sendIn.PhoneNumber, err)
+		logger.Errorf("HandleNotification.SendSms phoneNumber(%s) content(%s) error: %v",
+			sendIn.PhoneNumber, sendIn.Message, err)
 		return
 	}
 	id = resp.Oid

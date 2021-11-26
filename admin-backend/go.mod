@@ -16,6 +16,7 @@ require (
 	qiniu.com/rmb-web/admin-backend v0.0.9
 	qiniu.com/rmb-web/admin-backend/mongo-api v0.0.2
 	qiniu.com/rmb-web/puck/v3 v3.2.0
+	qbox.us/verifycode v0.0.0
 )
 
 replace qiniu.com/rmb-web/admin-backend v0.0.9 => github.com/qbox/rmb-web/admin-backend v0.0.9
@@ -167,3 +168,5 @@ replace github.com/qiniu/rpc.v1/lb.v2.1/transport v0.0.0 => ../../base/qiniu/src
 replace labix.org/v2/mgo v0.0.0 => ../../base/com/src/labix.org/v2/mgo
 
 replace qbox.us/biz/component/providers/account/auth v0.0.0 => ../../base/portal/src/qbox.us/biz/component/providers/account/auth
+
+replace qbox.us/verifycode v0.0.0 => ../../base/com/src/qbox.us/verifycode

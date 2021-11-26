@@ -8,9 +8,10 @@ type Code interface {
 const (
 	OK code = 200
 
-	InvalidArgs code = 400 // 请求参数错误，或者数据未通过验证
-	Forbidden   code = 403 // 不允许使用此接口
-	ResultError code = 500 // 请求结果发生错误
+	InvalidArgs     code = 400 // 请求参数错误，或者数据未通过验证
+	Forbidden       code = 403 // 不允许使用此接口
+	TooManyRequests code = 429 // 请求太频繁
+	ResultError     code = 500 // 请求结果发生错误
 )
 
 // 特殊错误
@@ -26,13 +27,18 @@ const (
 	UidRequired                     code = 400007 // 需要 uid
 	InvalidActivityRegistrationId   code = 400008 // 不合法的活动报名 id
 	ActivityRegistrationIdCheckedIn code = 400009 // 活动报名 id 已经签到
+	MarketActivitySessionIdInvalid  code = 400010 // 市场活动场次 id 不合法
+	CaptchaExpired                  code = 400011 // 验证码过期
+	CaptchaIncorrect                code = 400012 // 验证码不正确
+	GenCaptchaTooFrequently         code = 400013 // 生成验证码太频繁
 )
 
 var codeHumanize = map[code]string{
-	OK:          "ok",
-	InvalidArgs: "invalid args",
-	Forbidden:   "forbidden",
-	ResultError: "response result error",
+	OK:              "ok",
+	InvalidArgs:     "invalid args",
+	Forbidden:       "forbidden",
+	ResultError:     "response result error",
+	TooManyRequests: "too many requests",
 
 	ArgsEmpty:                       "args empty",
 	EmailInvalid:                    "email is invalid",
@@ -43,6 +49,10 @@ var codeHumanize = map[code]string{
 	UidRequired:                     "uid is required",
 	InvalidActivityRegistrationId:   "activity registration id is invalid",
 	ActivityRegistrationIdCheckedIn: "activity registration id has already checked in",
+	MarketActivitySessionIdInvalid:  "market activity session id is invalid",
+	CaptchaExpired:                  "captcha expired",
+	CaptchaIncorrect:                "captcha incorrect",
+	GenCaptchaTooFrequently:         "generate captcha too frequently",
 }
 
 type code int
