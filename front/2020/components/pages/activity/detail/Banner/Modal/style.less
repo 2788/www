@@ -1,16 +1,42 @@
 @import "~utils/less/index.less";
 
+@form-width: 400px;
+
 .modal {
   width: 600px;
+  height: 450px;
+  overflow-y: auto;
 
   .mobile({
-    width: 300px;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
   });
 }
 
+.form {
+  width: 400px;
+  margin: 0 auto;
 
-.submitLine {
+  .mobile({
+    width: 100%;
+  });
+}
+
+.itemContent {
+  width: 100%;
+}
+
+.isReaded {
+  color: @grey-5;
+
+  .isReadedCheckbox {
+    margin-right: 8px;
+  }
+}
+
+.footer {
+  width: 100%;
   text-align: center;
 }
 
@@ -18,4 +44,15 @@
   margin-bottom: 12px;
   text-align: center;
   color: @red-6;
+}
+
+.captchaWarpper {
+  position: relative;
+
+  .captchaButton {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    height: 100%;
+  }
 }

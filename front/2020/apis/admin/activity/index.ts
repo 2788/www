@@ -6,6 +6,11 @@ import { get, post } from 'utils/fetch'
 import { ProgressState, locationMap } from 'constants/activity'
 import { mongoApiPrefix, wwwApiPrefix, handleResponseData } from '..'
 
+export interface ISession {
+  id: string // 唯一 id
+  title: string // 场次标题
+}
+
 export interface IActivity {
   id: string
   title: string // 标题
@@ -19,6 +24,7 @@ export interface IActivity {
   progressState: string // 活动进行状态
   location: string // 地点
   isOverApplyTime: boolean // 是否超过报名时间
+  sessions: ISession[] // 活动场次数组
 }
 
 export interface IReminder {
@@ -45,6 +51,7 @@ interface IActivityRes {
   enableReminder: boolean // 是否提醒
   reminders: IReminder[] // 活动开始前多少分钟提醒
   location: string // 地点
+  sessions?: ISession[] // 活动场次数组
 }
 
 // 根据 id 获取市场活动
@@ -72,11 +79,16 @@ export function getActivities({ page, pageSize }: IListOptions): Promise<IListRe
 
 export interface IRegistrationInfo {
   checkedIn: boolean // 是否已签到
-  userName: string
-  phoneNumber: string
-  email: string
-  company: string
-  createdAt: number
+  userName: string // 报名人姓名
+  phoneNumber: string // 手机号
+  email: string // 邮箱
+  company: string // 公司
+  location: string // 所在地
+  industry: string // 所在行业
+  department: string // 部门
+  position: string // 职位
+  relationship: string // 与七牛的关系
+  createdAt: number // 创建时间，单位为秒
 }
 
 export function getRegistrationInfo(registrationId: string): Promise<IRegistrationInfo> {
@@ -86,9 +98,16 @@ export function getRegistrationInfo(registrationId: string): Promise<IRegistrati
 export interface IRegistrationOptions {
   userName: string
   phoneNumber: string
+  captcha: string
   email: string
   company: string
   marketActivityId: string
+  location: string
+  industry: string
+  department: string
+  position: string
+  relationship: string
+  marketActivitySessionId: string
 }
 
 // 创建报名信息
@@ -123,7 +142,8 @@ function genDisplayList(list: IActivityRes[]): IActivity[] {
       detail: item.detail,
       progressState: state,
       location: locationMap[item.location] || item.location,
-      isOverApplyTime: nowTime > item.applyEndTime
+      isOverApplyTime: nowTime > item.applyEndTime,
+      sessions: item.sessions || []
     })
   }
   return res
@@ -137,4 +157,13 @@ function formatTime(time: number): string {
 // 补 0
 function fillSpace(num: number): string {
   return num >= 10 ? num.toString() : '0' + num
+}
+
+// 获取验证码
+export function verifySms(phoneNumber: string): Promise<void> {
+  const opts = {
+    phone_number: phoneNumber,
+    operation: 1 //  1 代表活动报名
+  }
+  return post(wwwApiPrefix + '/verification/sms/send', opts)
 }

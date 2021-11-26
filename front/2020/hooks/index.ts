@@ -26,3 +26,34 @@ export function useCount(initialValue = 0) {
   }, [])
   return [count, increase, decrease] as const
 }
+
+/** 定时器 */
+export function useInterval(callback: () => void, delay: number) {
+  const ref = useRef<() => void>()
+  ref.current = callback
+
+  const timerRef = useRef<number>()
+  const [shouldStart, setShouldStart] = useState(false)
+
+  const clear = useCallback(() => {
+    clearInterval(timerRef.current)
+  }, [])
+  const stop = useCallback(() => {
+    setShouldStart(false)
+    clear()
+  }, [clear])
+  const start = useCallback(() => {
+    clear()
+    setShouldStart(true)
+  }, [clear])
+
+  useEffect(() => {
+    if (shouldStart) {
+      const timer = setInterval(() => ref.current && ref.current(), delay)
+      timerRef.current = timer as any as number
+    }
+    return clear
+  }, [delay, shouldStart, clear])
+
+  return { start, stop }
+}
