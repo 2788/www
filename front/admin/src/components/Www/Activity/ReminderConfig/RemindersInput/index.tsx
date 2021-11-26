@@ -24,9 +24,8 @@ const defaultTime = 30 // 默认开启活动前提醒时间，单位为分钟
 
 function createReminderState(reminderValue?: IReminder): ReminderState {
   const now = dayjs()
-  const millisecondStr = `000${now.millisecond()}`.slice(-3) // 三位毫秒，不足三位的补 0
   const val = reminderValue || {
-    id: `${now.unix()}${millisecondStr}`,
+    id: `${now.valueOf()}`,
     reminderTime: defaultTime,
     reminderStatus: 0,
     createdAt: now.unix(),

@@ -27,6 +27,7 @@ import ImgPreview from 'components/common/ImgPreview'
 
 import LocationInput, * as locationInput from '../LocationInput'
 import ReminderConfig, * as reminderConfig from '../ReminderConfig'
+import SessionsInput, * as sessionsInput from '../SessionsInput'
 import UserCount from '../UserCount'
 import ActivityStore from '../store'
 import * as style from './style.m.less'
@@ -47,6 +48,7 @@ type State = FormState<{
   requireLogin: FieldState<boolean>
   detail: richTextEditor.State
   reminder: reminderConfig.State
+  sessions: sessionsInput.State
 }>
 
 type FormDataType = {
@@ -74,7 +76,8 @@ export const defaultFormData: FormDataType = {
     editTime: 0,
     detail: '',
     enableReminder: false,
-    reminders: []
+    reminders: [],
+    sessions: []
   },
   id: ''
 }
@@ -120,7 +123,8 @@ class LocalStore extends Store {
       editTime: this.props.activity.editTime,
       detail: richTextEditor.getValue(this.form.$.detail),
       enableReminder: reminder.enableReminder,
-      reminders: reminder.reminders
+      reminders: reminder.reminders,
+      sessions: sessionsInput.getValue(this.form.$.sessions)
     }
     if (this.props.status === EditorStatus.Creating) {
       await this.activityStore.add(param)
@@ -164,7 +168,8 @@ class LocalStore extends Store {
         .validators(val => (val >= startTime.value.startOf('minute') ? '报名截止时间不能大于等于活动开始时间' : null)),
       requireLogin: new FieldState(!activity.noLoginRequired),
       detail: richTextEditor.createState(activity.detail),
-      reminder: reminderConfig.createState({ enableReminder, reminders })
+      reminder: reminderConfig.createState({ enableReminder, reminders }),
+      sessions: sessionsInput.createState(activity.sessions || [])
     })
     this.addDisposer(this.form.dispose)
   }
@@ -273,6 +278,12 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           <Checkbox className={style.checkbox} {...bindCheckbox(fields.requireLogin)}>报名前是否需要强制登录</Checkbox>
         </Form.Item>
         {isReading && <Form.Item label="已报名人数"><UserCount id={props.id!} /></Form.Item>}
+        <Form.Item
+          label="活动场次"
+          {...bindFormItem(fields.sessions)}
+        >
+          <SessionsInput state={fields.sessions} disabled={isReading} />
+        </Form.Item>
         <Form.Item
           label="详情"
           {...bindFormItem(fields.detail)}

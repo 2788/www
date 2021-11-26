@@ -14,11 +14,20 @@ interface IProps {
 }
 
 const filenName = '活动报名人员信息表.xlsx'
-const header = ['userName', 'phoneNumber', 'email', 'company', 'createdAt', 'checkedIn']
+const header = [
+  'userName', 'phoneNumber', 'email', 'location', 'industry',
+  'company', 'department', 'position', 'relationship', 'createdAt', 'checkedIn'
+]
 // 展示的名称
-const headerDisplay = ['姓名', '手机号', '邮箱', '公司', '报名时间', '是否已签到']
+const headerDisplay = [
+  '姓名', '手机号', '邮箱', '所在地', '所在行业',
+  '公司', '部门', '职位', '与七牛的关系', '报名时间', '是否已签到'
+]
 // 每列显示宽度
-const cols = [{ wpx: 120 }, { wpx: 120 }, { wpx: 200 }, { wpx: 300 }, { wpx: 150 }]
+const cols = [
+  { wpx: 120 }, { wpx: 120 }, { wpx: 200 }, { wpx: 300 }, { wpx: 150 },
+  { wpx: 300 }, { wpx: 120 }, { wpx: 200 }, { wpx: 150 }, { wpx: 150 }, { wpx: 150 }
+]
 
 export default observer(function UserCount({ id }: IProps) {
   const [total, setTotal] = useState(0)

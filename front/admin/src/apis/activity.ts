@@ -18,6 +18,11 @@ export interface IReminder {
   updatedAt: number // 更新提醒的时间，单位为秒
 }
 
+export interface ISession {
+  id: string // 唯一 id
+  title: string // 场次标题
+}
+
 export interface IActivity {
   title: string // 标题
   imgUrl: string // 图片
@@ -33,6 +38,8 @@ export interface IActivity {
   enableReminder: boolean // 是否提醒
   reminders: IReminder[] // 活动提醒数组
   location: string // 地点
+  // todo；此处为可选是为了兼容老数据
+  sessions?: ISession[] // 活动场次数组
 }
 export interface IActivityWithId extends IActivity {
   _id: string
@@ -51,11 +58,16 @@ export interface IListResponse {
 
 export interface IRegistration {
   checkedIn: boolean // 是否已签到
-  userName: string
-  phoneNumber: string
-  email: string
-  company: string
-  createdAt: number
+  userName: string // 报名人姓名
+  phoneNumber: string // 手机号
+  email: string // 邮箱
+  company: string // 公司
+  location: string // 所在地
+  industry: string // 所在行业
+  department: string // 部门
+  position: string // 职位
+  relationship: string // 与七牛的关系
+  createdAt: number // 创建时间，单位为秒
 }
 
 export interface IScanner {
