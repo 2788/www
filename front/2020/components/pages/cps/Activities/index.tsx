@@ -12,16 +12,16 @@ import Relation from './images/relation.svg'
 import style from './style.less'
 
 const activities = [{
-  title: '返佣比例超高',
-  desc: '订单返现高达 30%，等级越高，返现越多',
+  title: '享受超高免税佣金',
+  desc: '推荐好友上云最高可获 35% 返现奖励',
   icon: <Rebate />
 }, {
-  title: '众多爆款云产品',
-  desc: '海量预付费产品均可返现，推广收入一目了然',
+  title: '众多爆款推广素材',
+  desc: '多场景推广素材助力新推官轻松获客',
   icon: <Cloud />
 }, {
-  title: '30 天关联期',
-  desc: '新客注册成功即建立 30 天关联',
+  title: '推广返佣不限首单',
+  desc: '30 天关联期间内受邀人购买订单均可返佣',
   icon: <Relation />
 }]
 

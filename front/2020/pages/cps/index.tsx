@@ -28,6 +28,7 @@ function Page() {
   const { $: result } = useApiWithParams(getCpsInfo, { params: [] })
   const bgImg = isMobile ? banner_mobile : banner
   const btnText = result ? '立即推广' : '加入新推官'
+
   return (
     <>
       <Banner
