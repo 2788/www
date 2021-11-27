@@ -33,6 +33,7 @@ export default function Reward() {
     <Section
       name="process"
       title="推广流程"
+      subtitle="加入新推官分享专属链接获高额返现奖励"
     >
       <AccessProcess>
         {
