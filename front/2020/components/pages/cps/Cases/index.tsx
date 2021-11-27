@@ -38,7 +38,7 @@ export default function Cases() {
   return (
     <Section
       name="cases"
-      title="优秀推广案例"
+      title="推广案例"
     >
       <Row>
         {
