@@ -15,7 +15,7 @@ const columns: Array<ColumnProps<any>> = [{
   dataIndex: 'level',
   align: 'center'
 }, {
-  title: '首单返佣比例',
+  title: '返佣比例',
   width: 80,
   dataIndex: 'rebate',
   align: 'center'
@@ -28,29 +28,19 @@ const columns: Array<ColumnProps<any>> = [{
 
 const data = [{
   key: 1,
-  level: '钻石',
-  rebate: '30%',
-  limit: '10 万'
+  level: '青铜',
+  rebate: '25%',
+  limit: '5 万'
 }, {
   key: 2,
-  level: '铂金',
-  rebate: '26%',
+  level: '白银',
+  rebate: '30%',
   limit: '8 万'
 }, {
   key: 3,
   level: '黄金',
-  rebate: '24%',
-  limit: '5 万'
-}, {
-  key: 4,
-  level: '白银',
-  rebate: '22%',
-  limit: '5 万'
-}, {
-  key: 5,
-  level: '青铜',
-  rebate: '20%',
-  limit: '5 万'
+  rebate: '35%',
+  limit: '10 万'
 }]
 
 const linkView = (
@@ -58,18 +48,18 @@ const linkView = (
     href="https://developer.qiniu.com/mkt/manual/7261/cps-promotion-rules"
     blue
   >
-    CPS 推广解释
+    推广规则解释 &gt;
   </Link>
 )
 const footerView = (
   <div className={style.footer}>
-    注意：返佣奖励将根据推广等级分期结算给推广者，关于更多规则请查看 {linkView}
+    客户通过专属推广链接注册 / 登录与新推官建立关联，关联期间所产生的有效订单均可获得现金奖励。了解 {linkView}
   </div>
 )
 
 export default function Reward() {
   const isMobile = useMobile()
-  // pc端使用中文括号，移动端使用英文括号
+  // pc 端使用中文括号，移动端使用英文括号
   if (isMobile) {
     columns[2].title = <>每月佣金上限(元)<span className={style.subTitle}>(单笔订单佣金上限 5 千)</span></>
   }
@@ -77,6 +67,7 @@ export default function Reward() {
     <Section
       name="reward"
       title="推广奖励"
+      subtitle="推荐客户下单最高可获 35% 返现奖励"
     >
       <Table
         bordered
