@@ -11,26 +11,28 @@ import Icon3 from './images/icon3.svg'
 import style from './index.less'
 
 const cards = [{
+  title: '新客福利推广',
+  desc: 'TODO',
+  icon: <Icon1 />,
+  href: 'https://portal.qiniu.com/invitation'
+}, {
   title: '热门活动推广',
   desc: '近期热门活动、爆款产品一网打尽，助力推广下单。',
-  icon: <Icon1 />,
+  icon: <Icon2 />,
   href: 'https://portal.qiniu.com/invitation'
 }, {
   title: '自定义推广链接',
   desc: '自定义专属推广链接，灵活方便。',
-  icon: <Icon2 />,
+  icon: <Icon3 />,
   href: 'https://portal.qiniu.com/invitation'
-}, {
-  title: '多渠道推广',
-  desc: '一键分享至各大社交平台，也可下载推广图库，分享至自建网站。',
-  icon: <Icon3 />
 }]
 
 export default function Raiders() {
   return (
     <Section
       name="raiders"
-      title="推广攻略"
+      title="推广素材"
+      subtitle="多种推广方式助力新推官快速获客"
     >
       <Row>
         {
@@ -50,11 +52,11 @@ type CardProps = {
   title: string
   desc: string
   icon: ReactNode
-  href?: string
+  href: string
 }
 
 export function MyCard({ title, desc, icon, href }: CardProps) {
-  const footerView = href ? <Button href={href} target="_blank">立即推广</Button> : <Button disabled>即将上线</Button>
+  const footerView = <Button href={href} target="_blank">立即推广</Button>
 
   return (
     <Card
