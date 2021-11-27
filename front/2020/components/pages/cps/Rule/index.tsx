@@ -10,8 +10,30 @@ import style from './style.less'
 
 export default function Rule() {
   const isMobile = useMobile()
+
+  const qrCodeImgView = (
+    <img
+      src={code}
+      title="通过 QQ 扫一扫二维码，加入群聊了解更多"
+      alt="通过 QQ 扫一扫二维码，加入群聊了解更多"
+    />
+  )
+  const mobileJoinBtn = (
+    <Button
+      className={style.btn}
+      href="https://jq.qq.com/?_wv=1027&k=f7BABHHj"
+      target="_blank"
+    >
+      加入群聊
+    </Button>
+  )
+
   return (
-    <Section name="rule" title="规则解释" withTailPadding>
+    <Section
+      name="rule"
+      title="规则解释"
+      withTailPadding
+    >
       <div className={style.content}>
         <ol>
           <li>
@@ -37,12 +59,12 @@ export default function Rule() {
           </li>
           <li>
             <h4>5、常见问题</h4>
-            <p>更多常见问题请查看文档<Link blue href="https://developer.qiniu.com/mkt/manual/7261/cps-promotion-rules"> CPS 推广规则解释</Link></p>
+            <p>更多常见问题请查看文档 <Link href="https://developer.qiniu.com/mkt/manual/7261/cps-promotion-rules" blue>CPS 推广规则解释</Link></p>
           </li>
           <li>
             <h4>6、七牛云 CPS 推广交流</h4>
             <p>QQ 群号：1106335666，通过 QQ 扫一扫二维码，加入群聊了解更多。</p>
-            {isMobile ? <Button className={style.btn} target="_blank" href="https://jq.qq.com/?_wv=1027&k=f7BABHHj">加入群聊</Button> : <img src={code} />}
+            {isMobile ? mobileJoinBtn : qrCodeImgView}
           </li>
         </ol>
       </div>

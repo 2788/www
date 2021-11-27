@@ -67,7 +67,7 @@ export default function Cps() {
     <Layout
       title="新推官"
       keywords="七牛云, 新推官, 推广, 权益返现, 返佣, 爆款云产品, 30 天关联期, 佣金, 推广攻略, 推广流程, 奖励, 多渠道, 注册"
-      description="七牛云新推官 火热招募中,推广简单易上手，权益返现新升级"
+      description="七牛云新推官 火热招募中，推广简单易上手，权益返现新升级"
     >
       <Page />
     </Layout>
