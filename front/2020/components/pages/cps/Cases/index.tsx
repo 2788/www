@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 
 import Section from 'components/Product/Section'
 import { Row, Card, Desc } from 'components/UI/Card'
+import { Button } from 'components/OperationCard'
 
 import { useMobile } from 'hooks/ua'
 
@@ -11,6 +12,7 @@ import Icon3 from './images/icon3.svg'
 import zhao from './images/zhao.png'
 import wang from './images/wang.png'
 import zhang from './images/zhang.png'
+import iconQrCode from './images/icon-qrcode.png'
 
 import style from './index.less'
 
@@ -49,6 +51,7 @@ export default function Cases() {
             />
           ))
         }
+        <QrCodeCard />
       </Row>
     </Section>
   )
@@ -80,6 +83,50 @@ export function MyCard({ desc, icon, avatar, name, job }: CardProps) {
           <h4>{name}</h4>
           <h5>{job}</h5>
         </div>
+      </footer>
+    </Card>
+  )
+}
+
+function QrCodeCard() {
+  const isMobile = useMobile()
+  const qrCodeIconView = (
+    <img
+      className={style.iconQrCode}
+      src={iconQrCode}
+      title="通过 QQ 扫一扫二维码，加入群聊了解更多"
+      alt="通过 QQ 扫一扫二维码，加入群聊了解更多"
+    />
+  )
+  const mobileJoinBtn = (
+    <Button
+      className={style.btn}
+      href="https://jq.qq.com/?_wv=1027&k=f7BABHHj"
+      target="_blank"
+    >
+      加入群聊
+    </Button>
+  )
+
+  return (
+    <Card className={style.qrCodeCard}>
+      <div className={style.title}>
+        加入我们
+      </div>
+
+      <Desc className={style.desc}>
+        和推广大神们一起分享推广经验
+      </Desc>
+
+      <div className={style.iconQrCodeWrapper}>
+        {isMobile ? mobileJoinBtn : qrCodeIconView}
+      </div>
+
+      <footer className={style.bottom}>
+        <h5>通过添加 七牛云新推官交流群 了解更多推广方法、交流学习、问题探讨、最新活动</h5>
+        <h5 className={style.bold}>
+          QQ 群号：1106335666{isMobile ? null : <>，通过 QQ 扫一扫二维码</>}
+        </h5>
       </footer>
     </Card>
   )
