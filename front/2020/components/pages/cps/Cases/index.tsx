@@ -41,6 +41,7 @@ export default function Cases() {
     <Section
       name="cases"
       title="推广案例"
+      subtitle="加入我们，和推广大神们一起分享推广经验"
     >
       <Row>
         {
@@ -111,11 +112,11 @@ function QrCodeCard() {
   return (
     <Card className={style.qrCodeCard}>
       <div className={style.title}>
-        加入我们
+        新推官交流群
       </div>
 
       <Desc className={style.desc}>
-        和推广大神们一起分享推广经验
+        加入了解更多推广方法、交流学习、问题探讨、最新活动
       </Desc>
 
       <div className={style.iconQrCodeWrapper}>
@@ -123,10 +124,7 @@ function QrCodeCard() {
       </div>
 
       <footer className={style.bottom}>
-        <h5>通过添加 七牛云新推官交流群 了解更多推广方法、交流学习、问题探讨、最新活动</h5>
-        <h5 className={style.bold}>
-          QQ 群号：1106335666{isMobile ? null : <>，通过 QQ 扫一扫二维码</>}
-        </h5>
+        <h4>QQ 群号：1106335666{isMobile ? null : <>，通过 QQ 扫一扫二维码</>}</h4>
       </footer>
     </Card>
   )
