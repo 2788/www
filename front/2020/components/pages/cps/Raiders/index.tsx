@@ -12,7 +12,7 @@ import style from './index.less'
 
 const cards = [{
   title: '新客福利推广',
-  desc: 'TODO',
+  desc: '新人上云无门槛，助力新推官轻松快速获客。',
   icon: <Icon1 />,
   href: 'https://portal.qiniu.com/invitation'
 }, {
