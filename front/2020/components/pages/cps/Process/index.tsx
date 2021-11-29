@@ -28,7 +28,7 @@ const steps = [{
   icon: <Icon4 />
 }]
 
-export default function Reward() {
+export default function Process() {
   return (
     <Section
       name="process"
@@ -39,7 +39,7 @@ export default function Reward() {
         {
           steps.map((step, index) => (
             <Step
-              key={index}
+              key={`cps-process-${index}`}
               icon={step.icon}
             >
               <Title className={style.title}>

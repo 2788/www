@@ -38,7 +38,7 @@ export default function Raiders() {
         {
           cards.map((item, index) => (
             <MyCard
-              key={index}
+              key={`cps-raiders-${index}`}
               {...item}
             />
           ))

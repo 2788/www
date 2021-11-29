@@ -40,7 +40,7 @@ function Page() {
       >
         <Button
           className={style.btn}
-          key="1"
+          key="cps-banner"
           href="https://portal.qiniu.com/invitation"
           type="default"
         >

@@ -46,7 +46,7 @@ export default function Cases() {
         {
           cases.map((item, index) => (
             <MyCard
-              key={index}
+              key={`cps-cases-${index}`}
               {...item}
             />
           ))

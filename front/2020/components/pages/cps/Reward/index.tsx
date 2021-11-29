@@ -27,17 +27,17 @@ const columns: Array<ColumnProps<any>> = [{
 }]
 
 const data = [{
-  key: 1,
+  key: 'cps-reward-bronze',
   level: '青铜',
   rebate: '25%',
   limit: '5 万'
 }, {
-  key: 2,
+  key: 'cps-reward-silver',
   level: '白银',
   rebate: '30%',
   limit: '8 万'
 }, {
-  key: 3,
+  key: 'cps-reward-gold',
   level: '黄金',
   rebate: '35%',
   limit: '10 万'

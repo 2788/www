@@ -31,7 +31,7 @@ export default function Activities() {
       {
         activities.map((activity, index) => (
           <Card
-            key={index}
+            key={`cps-activities-${index}`}
             {...activity}
           />
         ))
