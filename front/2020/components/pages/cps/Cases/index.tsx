@@ -116,7 +116,7 @@ function QrCodeCard() {
       </div>
 
       <Desc className={style.desc}>
-        加入了解更多推广方法、交流学习、问题探讨、最新活动
+        加入了解更多推广方法和最新活动
       </Desc>
 
       <div className={style.iconQrCodeWrapper}>
