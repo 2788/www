@@ -19,8 +19,8 @@ import Raiders from 'components/pages/cps/Raiders'
 import Cases from 'components/pages/cps/Cases'
 import Rule from 'components/pages/cps/Rule'
 
-import banner from './images/banner.png'
-import banner_mobile from './images/banner_mobile.png'
+import banner from './images/banner.jpg'
+import banner_mobile from './images/banner_mobile.jpg'
 import style from './style.less'
 
 function Page() {
