@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react'
 import {
-  Card as UICard, Title, Desc
+  Card as UICard,
+  Title,
+  Desc
 } from 'components/UI/Card'
 
 import Rebate from './images/rebate.svg'
@@ -9,30 +11,29 @@ import Relation from './images/relation.svg'
 
 import style from './style.less'
 
-const activities = [
-  {
-    title: '返佣比例超高',
-    desc: '订单返现高达 30%，等级越高，返现越多',
-    icon: <Rebate />
-  },
-  {
-    title: '众多爆款云产品',
-    desc: '海量预付费产品均可返现，推广收入一目了然',
-    icon: <Cloud />
-  },
-  {
-    title: '30 天关联期',
-    desc: '新客注册成功即建立 30 天关联',
-    icon: <Relation />
-  }
-]
+const activities = [{
+  title: '享受超高免税佣金',
+  desc: '推荐好友上云最高可获 35% 返现奖励',
+  icon: <Rebate />
+}, {
+  title: '众多爆款推广素材',
+  desc: '多场景推广素材助力新推官轻松获客',
+  icon: <Cloud />
+}, {
+  title: '推广返佣不限首单',
+  desc: '30 天关联期间内受邀人购买订单均可返佣',
+  icon: <Relation />
+}]
 
 export default function Activities() {
   return (
     <div className={style.content}>
       {
         activities.map((activity, index) => (
-          <Card {...activity} key={index} />
+          <Card
+            key={`cps-activities-${index}`}
+            {...activity}
+          />
         ))
       }
     </div>
@@ -50,8 +51,12 @@ function Card({ icon, title, desc }: CardProps) {
     <UICard className={style.card}>
       {icon}
       <div className={style.cardContent}>
-        <Title className={style.title}>{title}</Title>
-        <Desc className={style.desc}>{desc}</Desc>
+        <Title className={style.title}>
+          {title}
+        </Title>
+        <Desc className={style.desc}>
+          {desc}
+        </Desc>
       </div>
     </UICard>
   )

@@ -1,6 +1,6 @@
 @import '~utils/less/index.less';
 
-@card-height: 384px;
+@card-height: 400px;
 @mobile-card-height: 160px;
 
 .card {
@@ -17,6 +17,7 @@
     margin-top: 28px;
     font-size: 16px;
     color: @grey-7;
+
     .mobile({
       margin-top: 0;
       font-size: 14px;
@@ -51,4 +52,69 @@
       color: @grey-6;
     }
   }
+}
+
+.qrCodeCard {
+  height: @card-height;
+  padding: 36px 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+
+  .title {
+    flex: 0;
+    color: @blue-6;
+    font-size: 33px;
+    font-weight: 900;
+    font-style: oblique;
+    line-height: 33px;
+
+    .mobile({
+      font-size: 20px;
+      font-weight: normal;
+      font-style: normal;
+      line-height: 20px;
+    });
+  }
+
+  .desc {
+    flex: 0;
+    margin-top: 28px;
+    font-size: 14px;
+    color: @grey-7;
+
+    .mobile({
+      margin-top: 16px;
+    });
+  }
+
+  .iconQrCodeWrapper {
+    flex: 1;
+    width: 100%;
+    margin: 12px 0;
+    text-align: center;
+
+    .iconQrCode {
+      width: 175px;
+      height: 175px;
+    }
+
+    .mobile({
+      margin: 16px 0;
+    });
+  }
+
+  .bottom {
+    flex: 0;
+
+    h4 {
+      color: @grey-7;
+    }
+  }
+
+  .mobile({
+    height: auto;
+    padding: 18px 12px;
+  });
 }

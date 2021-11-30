@@ -4,6 +4,7 @@
   font-size: 14px;
   color: @grey-6;
   font-weight: 400;
+
   .mobile({
     font-size: 12px;
   });
@@ -12,6 +13,7 @@
 .footer {
   margin-top: 20px;
   text-align: left;
+
   .mobile({
     margin-top: 12px;
   });
@@ -23,6 +25,7 @@
       font-size: 20px;
       font-weight: 400 !important;
       background-color: @grey-2 !important;
+
       .mobile({
         padding: 16px 8px !important;
         font-size: 14px;
@@ -31,12 +34,15 @@
 
     .ant-table-row {
       font-size: 20px;
-      &>td:first-child {
+
+      & > td:first-child {
         background-color: @grey-2;
       }
-      &>td:not(:first-child) {
+
+      & > td:not(:first-child) {
         background-color: @grey-1;
       }
+
       .mobile({
         font-size: 14px;
       });
@@ -45,6 +51,7 @@
     .ant-table-footer {
       padding: 0;
       border: none !important;
+
       &:before {
         height: 0;
       }

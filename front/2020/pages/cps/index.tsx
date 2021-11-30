@@ -19,8 +19,8 @@ import Raiders from 'components/pages/cps/Raiders'
 import Cases from 'components/pages/cps/Cases'
 import Rule from 'components/pages/cps/Rule'
 
-import banner from './images/banner.png'
-import banner_mobile from './images/banner_mobile.png'
+import banner from './images/banner.jpg'
+import banner_mobile from './images/banner_mobile.jpg'
 import style from './style.less'
 
 function Page() {
@@ -28,6 +28,7 @@ function Page() {
   const { $: result } = useApiWithParams(getCpsInfo, { params: [] })
   const bgImg = isMobile ? banner_mobile : banner
   const btnText = result ? '立即推广' : '加入新推官'
+
   return (
     <>
       <Banner
@@ -39,7 +40,7 @@ function Page() {
       >
         <Button
           className={style.btn}
-          key="1"
+          key="cps-banner"
           href="https://portal.qiniu.com/invitation"
           type="default"
         >
@@ -67,7 +68,7 @@ export default function Cps() {
     <Layout
       title="新推官"
       keywords="七牛云, 新推官, 推广, 权益返现, 返佣, 爆款云产品, 30 天关联期, 佣金, 推广攻略, 推广流程, 奖励, 多渠道, 注册"
-      description="七牛云新推官 火热招募中,推广简单易上手，权益返现新升级"
+      description="七牛云新推官 火热招募中，推广简单易上手，权益返现新升级"
     >
       <Page />
     </Layout>
