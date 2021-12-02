@@ -201,7 +201,7 @@ class LocalStore extends Store {
 
 const BannerForm = observer(function _BannerForm({ state, status }: { state: State } & ExtraProps) {
   const fields = state.$
-  const pcImgExtra = <p className={style.desc}>推荐尺寸：2880 * 800 px</p>
+  const pcImgExtra = <p className={style.desc}>推荐尺寸：2880 * 160 px</p>
   const mobileImgExtra = <p className={style.desc}>推荐尺寸：1125 * 156 px</p>
 
   return (

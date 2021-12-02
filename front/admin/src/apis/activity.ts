@@ -114,8 +114,10 @@ export default class ActivityApis {
     const pArr: Array<Promise<IRegistration[]>> = []
     for (let i = 0; i < total / batchLimit; i++) {
       pArr.push(
-        this.fetchStore.get(apiMongo + '/www-activity-registration', { ...options, batchLimit, offset: i * batchLimit })
-          .then(res => (res.data || []))
+        this.fetchStore.get(
+          apiMongo + '/www-activity-registration',
+          { ...options, limit: batchLimit, offset: i * batchLimit }
+        ).then(res => (res.data || []))
       )
     }
     return Promise.all(pArr).then(res => {
