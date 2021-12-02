@@ -20,9 +20,6 @@ export const ssoClientID = must('ssoClientID', process.env.NEXT_PUBLIC_SSO_CLIEN
 /** 搜索时指定的站点名（site name） */
 export const siteNameForSearch = must('siteNameForSearch', process.env.NEXT_PUBLIC_SITE_NAME_FOR_SEARCH)
 
-/** 内容审核接口调用时的审核类型，在测试环境没有广告模块，带广告参数调用接口会报错，这里进行配置 */
-export const censorScenes = must('censorScenes', process.env.NEXT_PUBLIC_CENSOR_SCENES)
-
 /** 活动站 Host */
 export const marketingHost = must('marketingHost', process.env.NEXT_PUBLIC_MARKETING_HOST)
 

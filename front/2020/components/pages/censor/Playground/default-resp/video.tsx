@@ -1,11 +1,11 @@
-import { VideoJobResult } from 'apis/censor/video'
+import { VideoResult } from 'apis/censor/video'
 
 export const videos = [
   'https://dn-mars-assets.qbox.me/Fi1UC6waXtXYCpnTGHa8XxIziGNk',
   'https://dn-mars-assets.qbox.me/Fos2uiHzcuvF6HZF3RarMp9J1ewZ',
   'https://dn-mars-assets.qbox.me/FgV6wvTgRv8ZgUZBecKojdIlfs58'
 ]
-export const defaultResponse: { [k in string]: VideoJobResult } = {}
+export const defaultResponse: { [k in string]: VideoResult } = {}
 
 defaultResponse[videos[0]] = {
   suggestion: 'review',
@@ -71,7 +71,7 @@ defaultResponse[videos[0]] = {
       suggestion: 'pass'
     }
   }
-} as VideoJobResult
+}
 
 defaultResponse[videos[1]] = {
   suggestion: 'block',
@@ -178,7 +178,7 @@ defaultResponse[videos[1]] = {
       suggestion: 'block'
     }
   }
-} as VideoJobResult
+}
 
 defaultResponse[videos[2]] = {
   suggestion: 'block',
@@ -248,4 +248,4 @@ defaultResponse[videos[2]] = {
       suggestion: 'block'
     }
   }
-} as VideoJobResult
+}

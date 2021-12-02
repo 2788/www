@@ -7,14 +7,14 @@ import Loading from 'components/UI/Loading'
 import Button from 'components/UI/Button'
 import { useApiWithParams } from 'hooks/api'
 import { useUserInfo } from 'components/UserInfo'
-import { Suggestion, Scene } from 'apis/censor/common'
-import { textCensor, TextCensorOptions, defaultParams, TextCensorResponse } from 'apis/censor/text'
+import { Scene, Options, TextData, Result } from 'apis/censor/censor-types'
+import { textCensor, defaultTextParams } from 'apis/censor/text'
 import showModal from './Modal'
-import { ResultPanel, ApiResult } from '.'
+import { ResultPanel, ApiResult, ResultItem } from '.'
 
 import style from './style.less'
 
-function wrappedTextCensor(options: TextCensorOptions): Promise<TextCensorResponse['result'] | void> {
+function wrappedTextCensor(options: Options<TextData>): Promise<Result | void> {
   if (!options.data || !options.data.text) {
     return Promise.resolve()
   }
@@ -26,9 +26,9 @@ export default function TextPlayground() {
   const [text, setText] = useState('')
   const userInfo = useUserInfo()
 
-  const apiRequestBody = useMemo(() => ({
+  const apiRequestBody = useMemo<Options<TextData>>(() => ({
     data: { text: textContent },
-    params: defaultParams
+    params: defaultTextParams
   }), [textContent])
 
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
@@ -40,13 +40,13 @@ export default function TextPlayground() {
     const result = apiResult
     return (
       ['antispam'] as Scene[]
-    ).map(scene => {
+    ).map<ResultItem>(scene => {
       if (!apiResult) {
-        return ({ scene, suggestion: '' })
+        return ({ scene, suggestion: undefined })
       }
-      let suggestion: Suggestion = 'pass'
+      let suggestion: ResultItem['suggestion'] = 'pass'
       if (result && result.scenes && result.scenes[scene]) {
-        suggestion = result.scenes[scene].suggestion
+        suggestion = result.scenes[scene]?.suggestion
       }
 
       return ({ scene, suggestion })
@@ -90,8 +90,8 @@ export default function TextPlayground() {
   )
 }
 
-function makeRequestForDisplay(body: TextCensorOptions) {
-  if (!body.data) {
+function makeRequestForDisplay(body: Options<TextData>) {
+  if (!body.data || !body.data.text) {
     return {}
   }
   return {

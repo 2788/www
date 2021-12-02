@@ -5,27 +5,34 @@
 
 import { timeout } from 'utils'
 import { post, get } from 'utils/fetch'
-import { Suggestion, Scene, SceneResultDetail, apiPrefix, failedMsg } from './common'
+import { apiPrefix, failedMsg } from './common'
 
-export { defaultParams } from './common'
+import type { Params, Options, ResultWrapper, Result, SceneResult, Scene, Suggestion } from './censor-types'
+import type { ImageDetail } from './image'
 
-export type SceneResultCut = {
+export const defaultVideoParams: Params = {
+  scenes: ['pulp', 'terror', 'politician', 'ads']
+}
+
+export interface ICutDetail extends ImageDetail {
   suggestion: Suggestion
+}
+
+export type IVideoCutResult = {
   offset: number
-  uri?: string
-  details?: SceneResultDetail[]
+  suggestion: Suggestion
+  details?: ICutDetail[]
 }
 
-export type SceneResult = {
-  suggestion: Suggestion
-  cuts: SceneResultCut[]
+export interface VideoSceneResult extends SceneResult {
+  cuts: IVideoCutResult[]
 }
 
-export type Result = {
-  suggestion: Suggestion
-  scenes: {
-    [scene in Scene]: SceneResult
-  }
+export type VideoScenesResult = {
+  [scene in Scene]?: VideoSceneResult
+}
+export interface VideoResult extends Result {
+  scenes: VideoScenesResult
 }
 
 export type VideoJobStatus = 'WAITING' | 'DOING' | 'RESCHEDULED' | 'FAILED' | 'FINISHED'
@@ -34,12 +41,7 @@ export type CreateVideoJobRes = {
   job: string
 }
 
-export type CreateVideoJobOptions = {
-  data: { uri: string },
-  params: { scenes: Scene[] }
-}
-
-async function createVideoJob(options: CreateVideoJobOptions): Promise<CreateVideoJobRes> {
+async function createVideoJob(options: Options): Promise<CreateVideoJobRes> {
   if (typeof window === 'undefined') {
     await timeout(300)
     return { job: '5ebe37de3d07ee0007d4db61' }
@@ -47,21 +49,10 @@ async function createVideoJob(options: CreateVideoJobOptions): Promise<CreateVid
   return post(`${apiPrefix}/v3/video/censor`, options)
 }
 
-export type VideoJobResult = {
-  suggestion: Suggestion
-  scenes: {
-    [scene in Scene]: SceneResult
-  }
-}
-
 export type GetVideoJobRes = {
   id: string
   request: unknown
-  result?: {
-    code: number
-    message?: string
-    result: VideoJobResult
-  }
+  result?: ResultWrapper<VideoResult>
   status: VideoJobStatus
   created_at: string
   updated_at: string
@@ -76,7 +67,7 @@ async function getVideoJob(jobId: string): Promise<GetVideoJobRes> {
 const pollInterval = 1000
 const maxRetry = 30
 
-export async function videoCensor(options: CreateVideoJobOptions) {
+export async function videoCensor(options: Options) {
   const jobId = (await createVideoJob(options)).job
 
   let shouldRetry = maxRetry

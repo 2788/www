@@ -7,16 +7,17 @@ import Loading from 'components/UI/Loading'
 import { useOnChange } from 'hooks'
 import { useApiWithParams } from 'hooks/api'
 import { useUserInfo } from 'components/UserInfo'
-import { videoCensor, defaultParams, CreateVideoJobOptions, VideoJobResult } from 'apis/censor/video'
+import { videoCensor, defaultVideoParams } from 'apis/censor/video'
+import { Options, Result } from 'apis/censor/censor-types'
 import { defaultResponse, videos } from './default-resp/video'
 import showModal from './Modal'
 import Slides, { Slide } from './Slides'
 import UrlForm from './UrlForm'
-import { ResultPanel, ApiResult, ResultMask } from '.'
+import { ResultPanel, ApiResult, ResultMask, ResultItem } from '.'
 
 import style from './style.less'
 
-function wrappedVideoCensor(options: CreateVideoJobOptions): Promise<VideoJobResult> {
+function wrappedVideoCensor(options: Options): Promise<Result> {
   const uri = options.data.uri
   if (defaultResponse[uri]) {
     return new Promise(resolve => setTimeout(() => resolve(defaultResponse[uri]), 300))
@@ -33,7 +34,7 @@ export default function VideoPlayground() {
 
   const apiRequestBody = useMemo(() => ({
     data: { uri: videoUrl },
-    params: defaultParams
+    params: defaultVideoParams
   }), [videoUrl])
 
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
@@ -43,7 +44,7 @@ export default function VideoPlayground() {
 
   const results = useMemo(() => {
     if (!apiResult) return null
-    return (['pulp', 'terror', 'politician', 'ads'] as const).map(
+    return (['pulp', 'terror', 'politician', 'ads'] as const).map<ResultItem>(
       scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
   }, [apiResult])

@@ -1,71 +1,10 @@
-import { ImageCensorRes, ImageOpenCensorRes } from 'apis/censor/image'
+import { ImageResult } from 'apis/censor/image'
 import img1 from '../images/playground-1.png'
 import img2 from '../images/playground-2.png'
 import img3 from '../images/playground-3.png'
 import img4 from '../images/playground-4.png'
 
-export const defaultResponse: { [k in string]: ImageCensorRes } = {}
-export const defaultOpenResponse: { [k in string]: ImageOpenCensorRes } = {}
-
-defaultOpenResponse[img1] = {
-  code: 1100,
-  message: '成功',
-  entryId: '603e0213000000005512f165ca4895bc',
-  score: 0,
-  riskLevel: 'PASS',
-  status: 0,
-  detail: {
-    riskType: 0,
-    model: 'M1000',
-    description: '正常',
-    descriptionV2: ''
-  }
-}
-
-defaultOpenResponse[img2] = {
-  code: 1100,
-  message: '成功',
-  entryId: '603e0213000000005512f165ca4895bc',
-  score: 0,
-  riskLevel: 'PASS',
-  status: 0,
-  detail: {
-    riskType: 0,
-    model: 'M1000',
-    description: '正常',
-    descriptionV2: ''
-  }
-}
-
-defaultOpenResponse[img3] = {
-  code: 1100,
-  message: '成功',
-  entryId: '603e0213000000005512f165ca4895bc',
-  score: 0,
-  riskLevel: 'PASS',
-  status: 0,
-  detail: {
-    riskType: 0,
-    model: 'M1000',
-    description: '正常',
-    descriptionV2: ''
-  }
-}
-
-defaultOpenResponse[img4] = {
-  code: 1100,
-  message: '成功',
-  entryId: '603e0213000000005512f165ca4895bc',
-  score: 800,
-  riskLevel: 'REJECT',
-  status: 0,
-  detail: {
-    riskType: 510,
-    model: 'M103001080',
-    description: '违禁：违禁品：烟草',
-    descriptionV2: '违禁：违禁品：烟草'
-  }
-}
+export const defaultResponse: { [k in string]: ImageResult } = {}
 
 defaultResponse[img1] = {
   suggestion: 'review',
@@ -93,9 +32,13 @@ defaultResponse[img1] = {
         label: 'normal',
         score: 0.8947
       }]
+    },
+    behavior: {
+      suggestion: 'pass',
+      details: [{ suggestion: 'pass', label: 'normal', score: 0.99 }]
     }
   }
-} as ImageCensorRes
+}
 
 defaultResponse[img2] = {
   suggestion: 'block',
@@ -150,9 +93,15 @@ defaultResponse[img2] = {
           ]
         }
       ]
+    },
+    behavior: {
+      suggestion: 'block',
+      details: [
+        { suggestion: 'block', label: 'behavior', score: 0.8 }
+      ]
     }
   }
-} as ImageCensorRes
+}
 
 defaultResponse[img3] = {
   suggestion: 'block',
@@ -189,12 +138,16 @@ defaultResponse[img3] = {
           score: 0.73546
         }
       ]
+    },
+    behavior: {
+      suggestion: 'pass',
+      details: [{ suggestion: 'pass', label: 'normal', score: 0.99 }]
     }
   }
-} as ImageCensorRes
+}
 
 defaultResponse[img4] = {
-  suggestion: 'pass',
+  suggestion: 'block',
   scenes: {
     ads: {
       suggestion: 'pass'
@@ -219,6 +172,12 @@ defaultResponse[img4] = {
         label: 'normal',
         score: 0.84688
       }]
+    },
+    behavior: {
+      suggestion: 'block',
+      details: [
+        { suggestion: 'block', label: 'behavior', score: 0.85 }
+      ]
     }
   }
-} as ImageCensorRes
+}

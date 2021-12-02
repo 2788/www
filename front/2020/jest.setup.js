@@ -6,7 +6,6 @@ process.env = {
   NEXT_PUBLIC_SSO_HOST: 'https://sso-dev.qiniu.io',
   NEXT_PUBLIC_SSO_CLIENT_ID: 'web-api',
   NEXT_PUBLIC_SITE_NAME_FOR_SEARCH: 'www.qiniu.com',
-  NEXT_PUBLIC_CENSOR_SCENES: 'pulp,terror,politician',
   NEXT_PUBLIC_MARKETING_HOST: 'http://www-staging-marketing.qa.qiniu.io',
   NEXT_PUBLIC_ECUG_HOST: 'https://www.ecug.org',
   NEXT_PUBLIC_MEIHUA_UPLOAD_PREFIX: 'upload-www/',

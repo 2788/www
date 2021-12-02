@@ -9,18 +9,14 @@ import { useApiWithParams } from 'hooks/api'
 import { useUserInfo } from 'components/UserInfo'
 import {
   imageCensor,
-  defaultParams,
-  ImageCensorOptions,
-  ImageCensorRes,
-  imageOpenCensor,
-  ImageOpenCensorOptions,
-  ImageOpenCensorRes
+  defaultImageParams
 } from 'apis/censor/image'
-import { defaultResponse, defaultOpenResponse } from './default-resp/image'
+import { Options, Scene, Result } from 'apis/censor/censor-types'
+import { defaultResponse } from './default-resp/image'
 import showModal from './Modal'
 import Slides, { Slide } from './Slides'
 import UrlForm from './UrlForm'
-import { ResultPanel, ApiResult, ResultMask } from '.'
+import { ResultPanel, ApiResult, ResultMask, ResultItem } from '.'
 import img1 from './images/playground-1.png'
 import img2 from './images/playground-2.png'
 import img3 from './images/playground-3.png'
@@ -30,43 +26,12 @@ import style from './style.less'
 
 const images = [img1, img2, img3, img4]
 
-function wrappedImageCensor(options: ImageCensorOptions): Promise<ImageCensorRes> {
+function wrappedImageCensor(options: Options): Promise<Result> {
   const uri = options.data.uri
   if (defaultResponse[uri]) {
     return new Promise(resolve => setTimeout(() => resolve(defaultResponse[uri]), 300))
   }
   return imageCensor(options)
-}
-
-function wrappedImageOpenCensor(options: ImageOpenCensorOptions): Promise<ImageOpenCensorRes> {
-  const uri = options.data.img
-  if (defaultOpenResponse[uri]) {
-    return new Promise(resolve => setTimeout(() => resolve(defaultOpenResponse[uri]), 300))
-  }
-  return imageOpenCensor(options)
-}
-
-function getOpenApiSuggestion(apiResult: ImageOpenCensorRes | null) {
-  return {
-    PASS: 'pass',
-    REJECT: 'block',
-    REVIEW: 'review'
-  }[apiResult?.riskLevel!]
-}
-
-function getSuggestion(apiResult: ImageCensorRes | null, openApiResult: ImageOpenCensorRes | null) {
-  const openApiSuggestion = getOpenApiSuggestion(openApiResult)
-  const riskLevelToWeight = {
-    pass: 0,
-    review: 1,
-    block: 2
-  } as Record<string, number>
-  const weightToRiskLevel = {
-    0: 'pass',
-    1: 'review',
-    2: 'block'
-  } as Record<number, string>
-  return weightToRiskLevel[Math.max(riskLevelToWeight[apiResult?.suggestion!], riskLevelToWeight[openApiSuggestion])]
 }
 
 export default function ImagePlayground() {
@@ -76,14 +41,9 @@ export default function ImagePlayground() {
 
   useOnChange(() => setImgUrl(images[activeIndex]), [activeIndex])
 
-  const apiRequestBody = useMemo(() => ({
+  const apiRequestBody = useMemo<Options>(() => ({
     data: { uri: imgUrl },
-    params: defaultParams
-  }), [imgUrl])
-
-  const openApiRequestBody = useMemo(() => ({
-    type: 'BEHAVIOR',
-    data: { img: imgUrl }
+    params: defaultImageParams
   }), [imgUrl])
 
   const { $: apiResult, error: apiError, loading } = useApiWithParams(
@@ -91,31 +51,14 @@ export default function ImagePlayground() {
     { params: [apiRequestBody] }
   )
 
-  const { $: openApiResult, error: openApiError, loading: openApiLoading } = useApiWithParams(
-    wrappedImageOpenCensor,
-    { params: [openApiRequestBody] }
-  )
-
-  const results = useMemo(() => {
+  const result = useMemo(() => {
     if (!apiResult) return null
-    const apiScenes = (['pulp', 'terror', 'politician', 'ads'] as const).map(
+    return (['pulp', 'terror', 'politician', 'ads', 'behavior'] as Scene[]).map<ResultItem>(
       scene => ({ scene, suggestion: apiResult.scenes[scene]?.suggestion })
     )
-    const openApiScenes = (['logo', 'behavior'] as const).map(
-      scene => {
-        const riskType = {
-          logo: 320,
-          behavior: 510
-        }[scene]
-        let suggestion = 'pass'
-        if (openApiResult?.detail?.riskType === riskType) {
-          suggestion = getOpenApiSuggestion(openApiResult)
-        }
-        return ({ scene, suggestion })
-      }
-    )
-    return [...apiScenes, ...openApiScenes]
-  }, [apiResult, openApiResult])
+  }, [apiResult])
+
+  const suggestion = apiResult ? apiResult.suggestion : undefined
 
   function handleSubmit(url: string) {
     // 用户登录时，提示需要收费
@@ -137,9 +80,9 @@ export default function ImagePlayground() {
               <div className={style.activeBlock}>
                 <div className={style.imgBlock}>
                   <img src={imgUrl} />
-                  <ResultMask suggestion={getSuggestion(apiResult, openApiResult)} loading={loading} />
+                  <ResultMask suggestion={suggestion} loading={loading} />
                 </div>
-                <ResultPanel results={results} loading={loading} />
+                <ResultPanel results={result} loading={loading} />
               </div>
             </Loading>
           )}
@@ -153,13 +96,10 @@ export default function ImagePlayground() {
       </div>
       <div className={style.right}>
         <ApiResult
-          request={[
-            makeRequestForDisplay(apiRequestBody),
-            makeRequestForCensorOpenDisplay(openApiRequestBody)
-          ]}
-          response={[apiResult, openApiResult]}
-          error={[apiError, openApiError]}
-          loading={loading || openApiLoading}
+          request={makeRequestForDisplay(apiRequestBody)}
+          response={apiResult}
+          error={apiError}
+          loading={loading}
         />
       </div>
     </div>
@@ -170,16 +110,6 @@ function makeRequestForDisplay(body: any) {
   return {
     Method: 'POST /v3/image/censor HTTP/1.1',
     Host: 'ai.qiniuapi.com',
-    'Content-Type': 'application/json',
-    Authorization: 'Qiniu <AccessKey>:<Sign>',
-    body
-  }
-}
-
-function makeRequestForCensorOpenDisplay(body: any) {
-  return {
-    Method: 'POST /anti_fraud/v2/img HTTP/1.1',
-    Host: 'censor-open.qiniuapi.com',
     'Content-Type': 'application/json',
     Authorization: 'Qiniu <AccessKey>:<Sign>',
     body

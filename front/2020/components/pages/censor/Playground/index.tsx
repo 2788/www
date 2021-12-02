@@ -3,7 +3,7 @@
  */
 
 import React, { useState } from 'react'
-import { Scene, Suggestion } from 'apis/censor/common'
+import { Scene, Suggestion } from 'apis/censor/censor-types'
 import { withLoading } from 'utils/loading'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import RadioGroup, { ButtonRadio as Radio } from 'components/UI/ButtonRadio'
@@ -42,23 +42,11 @@ export default function CensorPlayground() {
 }
 
 const sceneTextMap = {
-  ad: '广告识别',
   ads: '广告识别',
   pulp: '色情识别',
-  porn: '色情识别',
   terror: '暴恐识别',
   politician: '政治敏感人物识别',
-  politics: '涉政识别',
-  logo: '水印 logo 识别',
   behavior: '不良场景识别',
-  gender: '性别识别',
-  timbre: '音色标签',
-  abuse: '辱骂识别',
-  sing: '唱歌识别',
-  flood: '灌水识别',
-  contraband: '违禁识别',
-  meaningless: '无意义识别',
-  anthen: '国歌识别',
   antispam: '垃圾识别'
 }
 
@@ -68,13 +56,13 @@ const suggestionTextMap = {
   pass: '正常'
 } as Record<string, string>
 
-type ResultItem = {
+export type ResultItem = {
   scene: Scene
   suggestion?: Suggestion
   suggestionText?: string
 }
 
-type ResultPanelProps = {
+export type ResultPanelProps = {
   results: ResultItem[] | null
   loading: boolean
   panelStyle?: string
@@ -83,7 +71,6 @@ type ResultPanelProps = {
 // 图片/视频右侧的结果块
 export function ResultPanel({ results, loading, panelStyle }: ResultPanelProps) {
   const resultsView = (results || []).map(({ scene, suggestion, suggestionText }) => {
-    if (suggestion == null && suggestionText == null) return null
     const isNegative = suggestion === 'block' || suggestion === 'review'
     const className = [style.resultItem, isNegative && style.nopass].filter(Boolean).join(' ')
     let humanizedSuggestion = null
