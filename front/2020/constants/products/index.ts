@@ -75,7 +75,9 @@ export enum Product {
   /** 语音合成 */
   Tts = 'tts',
   /** Web 应用防火墙 */
-  WAF = 'waf'
+  WAF = 'waf',
+  /** 音画质量分析 */
+  Qoe = 'qoe'
 }
 
 // TODO: 这个再核对一遍
@@ -116,7 +118,8 @@ export const nameMap = {
   [Product.Avsmart]: '锐智转码 2.0',
   [Product.Beautysdk]: '美颜特效 SDK',
   [Product.Tts]: '语音合成',
-  [Product.WAF]: 'Web 应用防火墙'
+  [Product.WAF]: 'Web 应用防火墙',
+  [Product.Qoe]: '音画质量分析'
 } as const
 
 export const urlMap = {
@@ -155,7 +158,8 @@ export const urlMap = {
   [Product.Avsmart]: '/products/avsmart',
   [Product.Beautysdk]: '/products/beautysdk',
   [Product.Tts]: '/products/tts',
-  [Product.WAF]: '/products/waf'
+  [Product.WAF]: '/products/waf',
+  [Product.Qoe]: '/products/qoe'
 } as const
 
 export const priceUrlMap = {
@@ -194,7 +198,8 @@ export const priceUrlMap = {
   [Product.Avsmart]: null,
   [Product.Beautysdk]: null,
   [Product.Tts]: '/prices/tts',
-  [Product.WAF]: null
+  [Product.WAF]: null,
+  [Product.Qoe]: null
 } as const
 
 export const descMap = {
@@ -237,7 +242,8 @@ export const descMap = {
   [Product.Avsmart]: '更低的码率，更清晰的画质',
   [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景',
   [Product.Tts]: '',
-  [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击'
+  [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击',
+  [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统'
 } as const
 
 export enum Category {
@@ -318,7 +324,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.MediaDora]: [
     Product.DoraImage, Product.Avsmart, Product.Censor,
     Product.FaceID, Product.Ocr, Product.Vii,
-    Product.Voice, Product.OpenAPI
+    Product.Voice, Product.Qoe, Product.OpenAPI
   ],
   [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
   [SubCategory.MediaStorage]: [Product.Kodo, Product.Storage],
