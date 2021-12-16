@@ -2,7 +2,7 @@
 
 import { FC, SVGAttributes } from 'react'
 
-export enum Industry {
+export enum Solution {
   /** 金融行业 */
   Fin = 'fin',
   /** 教育行业 */
@@ -20,11 +20,7 @@ export enum Industry {
   /** 基因测序行业 */
   Gene = 'gene',
   /** 泛娱乐行业 */
-  Entertainment = 'entertainment'
-}
-
-/** 场景解决方案 */
-export enum SceneSolution {
+  Entertainment = 'entertainment',
   /** 智能视频云 */
   Qavs = 'qavs',
   /** 互动直播 */
@@ -38,121 +34,100 @@ export enum SceneSolution {
   /** 监控视频边缘存储 */
   Ess = 'ess',
   /** 云存储一体机 */
-  Storage = 'storage'
+  Storage = 'storage',
+  /** 新媒体 */
+  Medium = 'medium'
 }
 
-/** 行业解决方案 */
-export enum IndustrySolution {
-  /** 金融行业 */
-  Fin = 'fin',
-  /** 教育行业 */
-  Edu = 'edu',
-  /** 汽车行业 */
-  Automobile = 'auto',
-  /** 电商行业 */
-  ECommerce = 'ec',
-  /** 智能制造行业 */
-  IntelligentManufacturing = 'im',
-  /** 社交行业 */
-  Social = 'social',
-  /** 运营商行业 */
-  Isp = 'isp',
-  /** 基因测序行业 */
-  Gene = 'gene',
-  /** 泛娱乐行业 */
-  Entertainment = 'entertainment'
+export enum Category {
+  Media = 'media',
+  Storage = 'storage',
+  Industry = 'industry',
+  Consumer = 'consumer'
 }
 
-/** 行业与其对应的行业解决方案的映射表 */
-export const industrySolutionMap = {
-  [Industry.Fin]: IndustrySolution.Fin,
-  [Industry.Edu]: IndustrySolution.Edu,
-  [Industry.Automobile]: IndustrySolution.Automobile,
-  [Industry.ECommerce]: IndustrySolution.ECommerce,
-  [Industry.IntelligentManufacturing]: IndustrySolution.IntelligentManufacturing,
-  [Industry.Social]: IndustrySolution.Social,
-  [Industry.Isp]: IndustrySolution.Isp,
-  [Industry.Gene]: IndustrySolution.Gene,
-  [Industry.Entertainment]: IndustrySolution.Entertainment
+export const categories = [
+  Category.Media,
+  Category.Storage,
+  Category.Industry,
+  Category.Consumer
+] as const
+
+export const categoryNameMap = {
+  [Category.Media]: '音视频解决方案',
+  [Category.Storage]: '存储解决方案',
+  [Category.Industry]: '行业解决方案',
+  [Category.Consumer]: '消费互联网解决方案'
+} as const
+
+export const categoryNameMapForMp = {
+  [Category.Media]: '音视频',
+  [Category.Storage]: '存储',
+  [Category.Industry]: '行业',
+  [Category.Consumer]: '消费互联网'
+} as const
+
+export const categoryEnNameMap = {
+  [Category.Media]: 'Solutions by Media',
+  [Category.Storage]: 'Solutions by Storage',
+  [Category.Industry]: 'Solutions by Industry',
+  [Category.Consumer]: 'Solutions by Consumer Internet'
+} as const
+
+export const categorySolutionsMap = {
+  [Category.Media]: [Solution.Rtclive, Solution.Plsv],
+  [Category.Storage]: [Solution.Kodoe, Solution.Ess, Solution.Storage],
+  [Category.Industry]: [
+    Solution.Fin, Solution.Automobile, Solution.Gene, Solution.IntelligentManufacturing,
+    Solution.Medium, Solution.Isp
+  ],
+  [Category.Consumer]: [Solution.Entertainment, Solution.Social, Solution.ECommerce, Solution.Edu]
 }
 
-/** 获取行业对应的行业解决方案 */
-export function getIndustrySolution(industry: Industry) {
-  return industrySolutionMap[industry]
-}
+// todo：目前 ts 工作区版本当使用联合类型时，作为函数的成员也将被类型化为联合类型，因此对于 map 之类的方法会产生多种类型，
+// 例如：期望 (val:Type1 | Type2) => any 实际则是 (val:Type1) => any || (val:Type1) => any，无法兼容
+// 后续等 ts 升级到 4.2 之后可以改为在 categorySolutionsMap as const 即可
+export const industrySolutions = categorySolutionsMap[Category.Industry] as [
+  Solution.Fin, Solution.Automobile, Solution.Gene, Solution.IntelligentManufacturing,
+  Solution.Medium, Solution.Isp
+]
 
-export const industryNameMap = {
-  [Industry.Edu]: '在线教育',
-  [Industry.Fin]: '金融',
-  [Industry.Automobile]: '汽车',
-  [Industry.ECommerce]: '电商网购',
-  [Industry.IntelligentManufacturing]: '智能制造',
-  [Industry.Social]: '社交',
-  [Industry.Isp]: '运营商',
-  [Industry.Gene]: '基因测序',
-  [Industry.Entertainment]: '泛娱乐'
-}
-
-export const industryEnNameMap = {
-  [Industry.Edu]: 'Education',
-  [Industry.Fin]: 'Financial',
-  [Industry.Automobile]: 'Automobile',
-  [Industry.ECommerce]: 'Retail',
-  [Industry.IntelligentManufacturing]: 'Manufacture',
-  [Industry.Social]: 'Social',
-  [Industry.Isp]: 'Operators',
-  [Industry.Gene]: 'Gene',
-  [Industry.Entertainment]: 'Entertainment'
-}
-
-export type Solution = SceneSolution | IndustrySolution
-
-export const Solution = {
-  ...SceneSolution,
-  ...IndustrySolution
-}
+export type IndustrySolution = (typeof industrySolutions)[number]
 
 export type MapTo<T> = { [s in Solution]: T }
 
-export enum Category {
-  Scene = 'scene',
-  // eslint-disable-next-line no-shadow
-  Industry = 'industry',
-}
+export const industryNameMap: { [s in IndustrySolution]: string } = {
+  [Solution.Fin]: '金融',
+  [Solution.Automobile]: '汽车',
+  [Solution.Gene]: '基因测序',
+  [Solution.IntelligentManufacturing]: '智能制造',
+  [Solution.Medium]: '新媒体',
+  [Solution.Isp]: '运营商'
+} as const
 
-export const allCategories = [
-  Category.Scene,
-  Category.Industry
-]
-
-export const categoryNameMap = {
-  [Category.Scene]: '场景解决方案',
-  [Category.Industry]: '行业解决方案'
-}
-
-export const categoryEnNameMap = {
-  [Category.Scene]: 'Solutions by Scenario',
-  [Category.Industry]: 'Solutions by Industry'
-}
+export const industryEnNameMap = {
+  [Solution.Fin]: 'Financial',
+  [Solution.Automobile]: 'Automobile',
+  [Solution.Gene]: 'Gene',
+  [Solution.IntelligentManufacturing]: 'Manufacture',
+  [Solution.Medium]: 'Medium',
+  [Solution.Isp]: 'Isp'
+} as const
 
 export const nameMap: MapTo<string> = {
+  ...industryNameMap,
+  [Solution.Edu]: '在线教育',
+  [Solution.ECommerce]: '电商网购',
+  [Solution.Social]: '社交',
+  [Solution.Entertainment]: '泛娱乐',
   [Solution.Qavs]: '智能视频云',
   [Solution.Rtclive]: '互动直播',
   [Solution.Plsv]: '短视频',
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
-  [Solution.Storage]: '云存储一体机',
-  [Solution.Edu]: industryNameMap[Industry.Edu],
-  [Solution.Fin]: industryNameMap[Industry.Fin],
-  [Solution.Automobile]: industryNameMap[Industry.Automobile],
-  [Solution.ECommerce]: industryNameMap[Industry.ECommerce],
-  [Solution.IntelligentManufacturing]: industryNameMap[Industry.IntelligentManufacturing],
-  [Solution.Social]: industryNameMap[Industry.Social],
-  [Solution.Isp]: industryNameMap[Industry.Isp],
-  [Solution.Gene]: industryNameMap[Industry.Gene],
-  [Solution.Entertainment]: industryNameMap[Industry.Entertainment]
-}
+  [Solution.Storage]: '云存储一体机'
+} as const
 
 export const urlMap: MapTo<string | null> = {
   [Solution.Qavs]: '/solutions/qavs',
@@ -170,8 +145,9 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Social]: '/solutions/social',
   [Solution.Isp]: null,
   [Solution.Gene]: '/solutions/gene',
-  [Solution.Entertainment]: '/solutions/entertainment'
-}
+  [Solution.Entertainment]: '/solutions/entertainment',
+  [Solution.Medium]: null
+} as const
 
 export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',
@@ -189,58 +165,53 @@ export const descMap: MapTo<string> = {
   [Solution.Social]: '七牛云提供社交解决方案，助力快速构建社交平台和应用',
   [Solution.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务',
   [Solution.Gene]: '集计算和存储为一体的一站式基因测序解决方案',
-  [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用'
-}
-
-export const categorySolutionsMap = {
-  [Category.Scene]: [Solution.Qavs, Solution.Rtclive, Solution.Plsv, Solution.Kodoe, Solution.Ess, Solution.Storage],
-  [Category.Industry]: [
-    Solution.Fin, Solution.Entertainment, Solution.Edu, Solution.Automobile, Solution.ECommerce,
-    Solution.IntelligentManufacturing, Solution.Social, Solution.Isp, Solution.Gene
-  ]
-}
+  [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用',
+  [Solution.Medium]: ''
+} as const
 
 // 32px的icon，默认除导航栏均为该类型
-export const iconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
-  [Solution.Qavs]: require('./images/default/scene/qavs.svg').default,
-  [Solution.Rtclive]: require('./images/default/scene/rtclive.svg').default,
-  [Solution.Plsv]: require('./images/default/scene/plsv.svg').default,
-  [Solution.Kodoe]: require('./images/default/scene/kodoe.svg').default,
-  [Solution.Vcs]: require('./images/default/scene/vcs.svg').default,
-  [Solution.Ess]: require('./images/default/scene/ess.svg').default,
-  [Solution.Storage]: require('./images/default/scene/storage.svg').default,
-  [Solution.Edu]: require('./images/default/industry/edu.svg').default,
-  [Solution.Fin]: require('./images/default/industry/fin.svg').default,
-  [Solution.Automobile]: require('./images/default/industry/auto.svg').default,
-  [Solution.ECommerce]: require('./images/default/industry/ec.svg').default,
-  [Solution.IntelligentManufacturing]: require('./images/default/industry/im.svg').default,
-  [Solution.Social]: require('./images/default/industry/social.svg').default,
-  [Solution.Isp]: require('./images/default/industry/isp.svg').default,
-  [Solution.Gene]: require('./images/default/industry/gen.svg').default,
-  [Solution.Entertainment]: require('./images/default/scene/entertainment.svg').default
-}
+export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
+  [Solution.Qavs]: require('./images/default/qavs.svg').default,
+  [Solution.Rtclive]: require('./images/default/rtclive.svg').default,
+  [Solution.Plsv]: require('./images/default/plsv.svg').default,
+  [Solution.Kodoe]: require('./images/default/kodoe.svg').default,
+  [Solution.Vcs]: require('./images/default/vcs.svg').default,
+  [Solution.Ess]: require('./images/default/ess.svg').default,
+  [Solution.Storage]: require('./images/default/storage.svg').default,
+  [Solution.Edu]: require('./images/default/edu.svg').default,
+  [Solution.Fin]: require('./images/default/fin.svg').default,
+  [Solution.Automobile]: require('./images/default/auto.svg').default,
+  [Solution.ECommerce]: require('./images/default/ec.svg').default,
+  [Solution.IntelligentManufacturing]: require('./images/default/im.svg').default,
+  [Solution.Social]: require('./images/default/social.svg').default,
+  [Solution.Isp]: require('./images/default/isp.svg').default,
+  [Solution.Gene]: require('./images/default/gen.svg').default,
+  [Solution.Entertainment]: require('./images/default/entertainment.svg').default,
+  [Solution.Medium]: null
+} as const
 
 // 24px的icon，导航栏使用
-export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>>> = {
-  [Solution.Qavs]: require('./images/small/scene/qavs.svg').default,
-  [Solution.Rtclive]: require('./images/small/scene/rtclive.svg').default,
-  [Solution.Plsv]: require('./images/small/scene/plsv.svg').default,
-  [Solution.Kodoe]: require('./images/small/scene/kodoe.svg').default,
-  [Solution.Vcs]: require('./images/small/scene/vcs.svg').default,
-  [Solution.Ess]: require('./images/small/scene/ess.svg').default,
-  [Solution.Storage]: require('./images/small/scene/storage.svg').default,
-  [Solution.Edu]: require('./images/small/industry/edu.svg').default,
-  [Solution.Fin]: require('./images/small/industry/fin.svg').default,
-  [Solution.Automobile]: require('./images/small/industry/auto.svg').default,
-  [Solution.ECommerce]: require('./images/small/industry/ec.svg').default,
-  [Solution.IntelligentManufacturing]: require('./images/small/industry/im.svg').default,
-  [Solution.Social]: require('./images/small/industry/social.svg').default,
-  [Solution.Isp]: require('./images/small/industry/isp.svg').default,
-  [Solution.Gene]: require('./images/small/industry/gen.svg').default,
-  [Solution.Entertainment]: require('./images/small/scene/entertainment.svg').default
-}
+export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
+  [Solution.Qavs]: require('./images/small/qavs.svg').default,
+  [Solution.Rtclive]: require('./images/small/rtclive.svg').default,
+  [Solution.Plsv]: require('./images/small/plsv.svg').default,
+  [Solution.Kodoe]: require('./images/small/kodoe.svg').default,
+  [Solution.Vcs]: require('./images/small/vcs.svg').default,
+  [Solution.Ess]: require('./images/small/ess.svg').default,
+  [Solution.Storage]: require('./images/small/storage.svg').default,
+  [Solution.Edu]: require('./images/small/edu.svg').default,
+  [Solution.Fin]: require('./images/small/fin.svg').default,
+  [Solution.Automobile]: require('./images/small/auto.svg').default,
+  [Solution.ECommerce]: require('./images/small/ec.svg').default,
+  [Solution.IntelligentManufacturing]: require('./images/small/im.svg').default,
+  [Solution.Social]: require('./images/small/social.svg').default,
+  [Solution.Isp]: require('./images/small/isp.svg').default,
+  [Solution.Gene]: require('./images/small/gen.svg').default,
+  [Solution.Entertainment]: require('./images/small/entertainment.svg').default,
+  [Solution.Medium]: null
+} as const
 
-export const allSolutions = allCategories.reduce(
+export const allSolutions = categories.reduce(
   (solutions, category) => [...solutions, ...categorySolutionsMap[category]],
   [] as Solution[]
 )

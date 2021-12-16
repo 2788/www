@@ -28,7 +28,7 @@ export default function useDelay(delay: number) {
     startEffect(callback)
   }, [startEffect, stop])
 
-  useEffect(() => stop)
+  useEffect(() => stop, [stop])
 
   return { start, stop }
 }

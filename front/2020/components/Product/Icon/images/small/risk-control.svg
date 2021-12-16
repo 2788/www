@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>归档存储备份 4</title>
+    <g id="图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-757.000000, -1142.000000)" id="矩形-2">
+            <g transform="translate(60.000000, 181.000000)">
+                <g id="编组备份-13" transform="translate(659.000000, 929.000000)">
+                    <g id="编组-53" transform="translate(38.000000, 32.000000)">
+                        <g id="radar" transform="translate(1.000000, 1.000000)">
+                            <path d="M15.243,15.243 C14.157,16.328 12.657,17 11,17 C7.686,17 5,14.314 5,11 C5,7.686 7.686,5 11,5 C12.656,5 14.156,5.671 15.242,6.757" id="路径" stroke="#00AAE7" stroke-width="2"></path>
+                            <line x1="11.707" y1="11.707" x2="18.778" y2="18.778" id="路径" stroke="#333333" stroke-width="2"></line>
+                            <line x1="18.778" y1="3.222" x2="11.708" y2="10.292" id="路径" stroke="#333333" stroke-width="2"></line>
+                            <circle id="椭圆形" stroke="#333333" stroke-width="2" stroke-linecap="square" cx="11" cy="11" r="11"></circle>
+                            <circle id="椭圆形" stroke="#333333" stroke-width="2" stroke-linecap="square" cx="11" cy="11" r="1"></circle>
+                            <circle id="椭圆形" fill="#333333" fill-rule="nonzero" cx="11" cy="11" r="1"></circle>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

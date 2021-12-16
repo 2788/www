@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 
 import React from 'react'
-
+import { useMobile } from 'hooks/ua'
 import Layout from 'components/Product/Layout'
 import Banner, { Title } from 'components/Banner'
 import PageNotice from 'components/Product/PageNotice'
@@ -22,15 +22,17 @@ import Honor from 'components/company/Honor'
 import styles from './style.less'
 
 import imgBanner from './_images/banner.png'
-import IconMissionMan from './_images/icon-mission-man.svg'
-import IconMissionBuilding from './_images/icon-mission-building.svg'
 import IconCultureMan from './_images/icon-culture-man.svg'
 import IconCultureProduct from './_images/icon-culture-product.svg'
 import IconCultureCompany from './_images/icon-culture-company.svg'
 
+import imgMission from './_images/mission.png'
+import mobileImgMission from './_images/mission-mobile.png'
+
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
+  const isMobile = useMobile()
 
   return (
     <div className={styles.pageContent}>
@@ -73,26 +75,13 @@ function PageContent() {
         </section>
       </Section>
 
-      <Feature name="mission" title="使命和愿景">
-        <FeatureGroup>
-          <FeatureItem
-            pos="left-right"
-            align="center"
-            icon={<IconMissionMan className={styles.missionIcon} />}
-            title="企业使命"
-          >
-            <FeatureDesc>用数据科技全面驱动数字化未来，赋能各行各业全面进入 DT 时代，并让每一个人掌握数据的力量</FeatureDesc>
-          </FeatureItem>
-          <FeatureItem
-            pos="left-right"
-            align="center"
-            icon={<IconMissionBuilding className={styles.missionIcon} />}
-            title="企业愿景"
-          >
-            <FeatureDesc>成为 5G 时代的异构数据湖与数据分析平台的第一品牌</FeatureDesc>
-          </FeatureItem>
-        </FeatureGroup>
-      </Feature>
+      <div className={styles.missionWrapper}>
+        <img src={isMobile ? mobileImgMission : imgMission} className={styles.img} />
+        <div className={styles.missionContent}>
+          <h2>企业使命</h2>
+          <p className={styles.subTitle}>缩短从想法到产品之间的距离</p>
+        </div>
+      </div>
 
       <Feature name="culture" title="七牛云文化">
         <FeatureGroup>

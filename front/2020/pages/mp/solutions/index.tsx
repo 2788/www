@@ -7,7 +7,7 @@ import Layout from 'components/Layout'
 import Link from 'components/Link'
 import MpBanner from 'components/mp/Banner'
 import Tabs, { TabPane } from 'components/UI/Tabs'
-import { Category, categoryNameMap, nameMap, urlMap, categorySolutionsMap, Solution, iconMap } from 'constants/solutions'
+import { Category, categoryNameMapForMp, nameMap, urlMap, categorySolutionsMap, Solution, iconMap, categories } from 'constants/solutions'
 import { MpPage } from 'constants/mp'
 
 import banner from './banner.png'
@@ -20,19 +20,19 @@ export default function Main() {
       <div style={{ padding: '16px', background: '#FFFFFF' }}>
         <MpBanner banner={banner} />
         <h1 className={style.title}>全部解决方案</h1>
-        <Tabs value={Category.Scene} size="middle" className={style.tabs} contentClassName={style.tabsContent} shadow={false}>
-          <TabPane value={Category.Scene} tab={categoryNameMap[Category.Scene]}>
-            {
-              categorySolutionsMap[Category.Scene]
-                .map(solution => <Card key={solution} category={Category.Scene} solution={solution} />)
-            }
-          </TabPane>
-          <TabPane value={Category.Industry} tab={categoryNameMap[Category.Industry]}>
-            {
-              categorySolutionsMap[Category.Industry]
-                .map(solution => <Card key={solution} category={Category.Industry} solution={solution} />)
-            }
-          </TabPane>
+        <Tabs value={categories[0]} size="middle" className={style.tabs} contentClassName={style.tabsContent} shadow={false}>
+          {
+            categories.map(category => ((
+              <TabPane key={category} value={category} tab={categoryNameMapForMp[category]}>
+                {
+                  categorySolutionsMap[category].map(solution => (
+                    <Card key={solution} category={category} solution={solution} />
+                  ))
+                }
+              </TabPane>
+            )
+            ))
+          }
         </Tabs>
         <MpBanner
           title="更多方案咨询"
@@ -52,13 +52,15 @@ type CardProps = {
 }
 
 function Card({ solution, category }: CardProps) {
-  const styleMap = {
-    [Category.Scene]: style.scene,
-    [Category.Industry]: style.industry
-  }
+  const url = urlMap[solution]
+  if (url === null) return null
+  const icon = iconMap[solution] ? createElement(iconMap[solution]!) : null
   return (
-    <Link className={classnames(style.card, styleMap[category])} href={urlMap[solution] as string}>
-      <div className={style.cardIcon}>{createElement(iconMap[solution])}</div>
+    <Link
+      className={classnames(style.card, category === Category.Industry && style.industry)}
+      href={url}
+    >
+      <div className={style.cardIcon}>{icon}</div>
       <div className={style.cardTitle}>{nameMap[solution]}</div>
     </Link>
   )

@@ -9,7 +9,6 @@
 
 import React from 'react'
 import classnames from 'classnames'
-import Dropdown from 'components/UI/Dropdown'
 import { useUserInfo } from 'components/UserInfo'
 import { useUrl } from 'hooks/url'
 import { urlForSignin } from 'utils/route'
@@ -17,6 +16,7 @@ import Overlay from './Overlay'
 import ArrowDown from './arrow-down.svg'
 
 import style from './style.less'
+import DropdownForHeader from '../Dropdown'
 
 export default function Userinfo() {
   const currentUrl = useUrl()
@@ -24,19 +24,19 @@ export default function Userinfo() {
 
   if (user?.signedIn) {
     return (
-      <Dropdown align={{ points: ['bc', 'tc'], offset: [0, 0] }} overlay={() => <Overlay />}>
+      <DropdownForHeader align={{ points: ['br', 'tr'], offset: [0, 0] }} overlay={() => <Overlay />}>
         <span className={classnames(style.wrapper, style.haveSignin)}>
           {user.name || user.email}
           <ArrowDown className={style.arrow} />
         </span>
-      </Dropdown>
+      </DropdownForHeader>
     )
   }
 
   return (
     <span className={style.wrapper}>
       <a href={urlForSignin(currentUrl)} className={style.signin}>登录</a>
-      <a href="https://portal.qiniu.com/signup?ref=www.qiniu.com" className={style.signup}>免费注册</a>
+      <a href="https://portal.qiniu.com/signup?ref=www.qiniu.com" className={style.signup}>立即注册</a>
     </span>
   )
 }

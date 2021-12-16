@@ -5,41 +5,38 @@ import animation from '../../animation.less'
 // 数据采集
 export default function DataCollectIcon() {
   return (
-    <svg>
-      <defs>
-        <filter id="数据采集logkit-b" width="111%" height="116.7%" x="-5.5%" y="-8.4%" filterUnits="objectBoundingBox">
-          <feGaussianBlur in="SourceAlpha" result="shadowBlurInner1" stdDeviation="1.5"></feGaussianBlur>
-          <feOffset dy="1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
-          <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"></feComposite>
-          <feColorMatrix in="shadowInnerInner1" values="0 0 0 0 0   0 0 0 0 0.431372549   0 0 0 0 0.733333333  0 0 0 1 0"></feColorMatrix>
-        </filter>
-      </defs>
-      <g fill="none" transform="translate(0 10)">
-        <polygon fill="#C2E7FF" points="0 60.857 60 96.498 120 60.857 60 28"></polygon>
-        <g className={animation.levitate3}>
-          <g transform="translate(18 32)">
-            <polygon fill="#006EBB" points="0 23 42 23 42 55 0 29.2"></polygon>
-            <polygon fill="#34A1EC" points="42 23 84 23 84 55 42 29.2" transform="matrix(-1 0 0 1 126 0)"></polygon>
-            <polygon fill="#5EBDFF" points="0 23 42 47.949 84 23 42 0"></polygon>
-          </g>
-        </g>
-        <g className={animation.levitate2}>
-          <g transform="translate(18 16)">
-            <polygon fill="#006EBB" points="0 23 42 23 42 55 0 29.2"></polygon>
-            <polygon fill="#34A1EC" points="42 23 84 23 84 55 42 29.2" transform="matrix(-1 0 0 1 126 0)"></polygon>
-            <polygon fill="#5EBDFF" points="0 23 42 47.949 84 23 42 0"></polygon>
-          </g>
-        </g>
-        <g className={animation.levitate1}>
-          <g transform="translate(18)">
-            <polygon fill="#006EBB" points="0 23 42 23 42 55 0 29.2"></polygon>
-            <polygon fill="#34A1EC" points="42 23 84 23 84 55 42 29.2" transform="matrix(-1 0 0 1 126 0)"></polygon>
-            <polygon fill="#98D5FF" points="0 23 42 47.949 84 23 42 0"></polygon>
-            <path d="M52.4504705,25.3469056 L56.4301758,27.5 L43.0820962,35.9744749 L38.9468478,33.5 L52.4504705,25.3469056 Z M51.1645818,14.4701966 L55.1442871,16.623291 L33.0820962,29.9744749 L28.9468478,27.5 L51.1645818,14.4701966 Z M36.6730434,12.039388 L40.5153809,14.4472656 L24.0820962,23.9744749 L19.9468478,21.5 L36.6730434,12.039388 Z" fill="#319EEA"></path>
-            <path d="M52.4504705,25.3469056 L56.4301758,27.5 L43.0820962,35.9744749 L38.9468478,33.5 L52.4504705,25.3469056 Z M51.1645818,14.4701966 L55.1442871,16.623291 L33.0820962,29.9744749 L28.9468478,27.5 L51.1645818,14.4701966 Z M36.6730434,12.039388 L40.5153809,14.4472656 L24.0820962,23.9744749 L19.9468478,21.5 L36.6730434,12.039388 Z" fill="#000" filter="url(#数据采集logkit-b)"></path>
-          </g>
+    <svg width="64" height="76" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g className={animation.levitate3}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M1.45459 52.7271L32 52.7271V75.9998L1.45459 57.2361V52.7271Z" fill="#1DA4ED" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M62.5454 52.7271L32 52.7271V75.9998L62.5454 57.2361V52.7271Z" fill="#46BEFF" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M1.45459 52.7273L32 70.872L62.5455 52.7273L32 36L1.45459 52.7273Z" fill="#79DCFF" />
+      </g>
+      <g className={animation.levitate2}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M1.45459 41.0908L32 41.0908V64.3635L1.45459 45.5999V41.0908Z" fill="#1DA4ED" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M62.5454 41.0908L32 41.0908V64.3635L62.5454 45.5999V41.0908Z" fill="#46BEFF" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M1.45459 41.091L32 59.2357L62.5455 41.091L32 24.3638L1.45459 41.091Z" fill="#79DCFF" />
+      </g>
+      <g className={animation.levitate1}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M1.45459 29.4541L32 29.4541V52.7268L1.45459 33.9632V29.4541Z" fill="#1DA4ED" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M62.5454 29.4541L32 29.4541V52.7268L62.5454 33.9632V29.4541Z" fill="#46BEFF" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M1.45459 29.4543L32 47.599L62.5455 29.4543L32 12.7271L1.45459 29.4543Z" fill="#AAE9FF" />
+        <g filter="url(#filter0_i_701_535)">
+          <path fillRule="evenodd" clipRule="evenodd" d="M18 27.7421L20.947 29.5056L32.6583 22.716L29.92 21L18 27.7421ZM24.4138 32.0178L27.3608 33.7812L43.0836 24.2665L40.2474 22.7321L24.4138 32.0178ZM34.4874 38.0577L31.5404 36.2943L41.1638 30.4839L44 32.0183L34.4874 38.0577Z" fill="#07BEFF" />
         </g>
       </g>
+      <defs>
+        <filter id="filter0_i_701_535" x="18" y="21" width="26" height="17.7703" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+          <feOffset dy="0.712654" />
+          <feGaussianBlur stdDeviation="0.712654" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.581333 0 0 0 0 0.908333 0 0 0 1 0" />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_701_535" />
+        </filter>
+      </defs>
     </svg>
+
   )
 }

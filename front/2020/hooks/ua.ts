@@ -5,6 +5,7 @@
 import { createContext, useContext } from 'react'
 
 export type Ua = {
+  isPcLg?: boolean
   isMobile?: boolean
   isWx?: boolean
   isMp?: boolean
@@ -25,6 +26,15 @@ export function useMp() {
 
 export function useWx() {
   return useUa().isWx || false
+}
+
+/** 获取是否 pc 大屏信息 */
+export function usePcLg() {
+  const isPcLg = useUa().isPcLg
+  if (isPcLg == null) {
+    throw new Error('Invalid isPcLg value, usePcLg should be used under UaContext.Provider')
+  }
+  return isPcLg
 }
 
 /** 获取是否移动端信息 */

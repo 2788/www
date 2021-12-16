@@ -2,35 +2,51 @@
 
 .wrapper {
   position: relative;
-  margin-left: 38px;
-  margin-right: 16px;
-
+  margin-left: 24px;
   white-space: nowrap; // 避免 safari 上文本换行
+
+  .pcLg({
+    margin-left: 32px;
+  });
+
+  .signin {
+    margin-right: 24px;
+    
+    &:hover {
+      color: #07BEFF;
+    }
+  
+    .pcLg({
+      margin-right: 32px;
+    });
+  }
+
+  .signup {
+    display: inline-block;
+    height: 100%;
+    padding: 0 16px;
+    background: #07BEFF;
+    color: @grey-1;
+  
+    &:hover {
+      color: @grey-1;
+      background-color:#37CAFF;
+    }
+  }
 }
 
 .haveSignin {
   .ellipsis();
 
-  flex: 1 1 100px;
-  padding-right: 20px;
+  width: auto;
+  margin-right: 24px;
+  padding-right: 24px;
   cursor: pointer;
   text-align: right;
-}
 
-.signin {
-  margin-right: 16px;
-
-  &:hover {
-    color: @blue-6;
-  }
-}
-
-.signup {
-  color: @blue-6;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  .pcLg({
+    margin-right: 32px;
+  });
 }
 
 .dropdown {
@@ -52,6 +68,6 @@
 
 .arrow {
   position: absolute;
-  top: 33px;
+  top: 23px;
   right: 0;
 }

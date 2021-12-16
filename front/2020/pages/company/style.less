@@ -132,3 +132,57 @@
 .cultureDesc {
   text-align: left;
 }
+
+.missionWrapper {
+  .centered();
+  height: auto;
+  padding: 0;
+
+  .mobile({
+    padding: 0 16px;
+  });
+
+  .img {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .missionContent {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 56px 0;
+    text-align: center;
+
+    .mobile({
+      width: calc(100% - 32px);
+      padding: 20px 0;
+    });
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 45px;
+    font-weight: 500;
+
+    .mobile({
+      font-size: 20px;
+      line-height: unset;
+      font-weight: 400;
+    });
+  }
+
+  .subTitle{
+    margin-top: 24px;
+    font-size: 24px;
+    line-height: 34px;
+    color: @grey-7;
+
+    .mobile({
+      margin-top: 2px;
+      font-size: 14px;
+      line-height: unset;
+    });
+  }
+}

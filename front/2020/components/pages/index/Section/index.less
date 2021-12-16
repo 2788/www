@@ -4,35 +4,31 @@
   overflow-x: auto;
   background-color: @grey-1;
 
-
-  &.grey {
-    background: #FAFAFA;
+  &:nth-child(2n + 1) {
+    background-color: #F8FCFF;
   }
 
   .mobile({
-    overflow-x: hidden;
-  });
-
-  .mobile({
     margin-top: 12px;
+    overflow-x: hidden;
   });
 }
 
 .wrapper {
-  .centered();
+  .centeredWithLg();
   padding: 72px 0;
   text-align: center;
 
   .mobile({
-    padding: 16px;
+    padding: 28px 16px;
   });
 }
 
 .intro {
-  margin-bottom: 37px;
+  margin-bottom: 36px;
 
   .mobile({
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   });
 }
 

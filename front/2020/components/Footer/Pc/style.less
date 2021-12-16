@@ -1,80 +1,91 @@
 @import "~utils/less/index.less";
 
 .footer {
-  min-width: @centered-content-width;
-  background-color: rgba(0,20,50,1);
-}
+  width: 100%;
+  background-color: @grey-1;
+  border-top: 1px solid #E5EDF4;
 
-.content {
-  .centered();
+  .content {
+    .centeredWithLg();
+    padding: 56px 0;
+  
+    a {
+      &:hover {
+        color: #07BEFF;
+      }
+    }
+  }
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .linkGroups {
-  border-bottom: 1px solid #2f3d53;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  padding-bottom: 10px;
 
   .linkGroup {
-    margin-top: 72px;
-    .title {
-      color: @grey-1;
-      margin-bottom: 14px;
-      font-size: 13px;
-      white-space: nowrap;
+    width: 130px;
+    margin-left: 24px;
+
+    .pcLg({
+      margin-left: 36px;
+    });
+
+    &:first-child {
+      margin-left: 0;
     }
+  
+    .title {
+      font-weight: 500;
+      color: @grey-7;
+    }
+
     .link {
-      color: @grey-5;
-      margin-bottom: 10px;
-      font-size: 13px;
+      margin-top: 12px;
+      color: @grey-6;
     }
   }
 }
-.contact {
-  height: 140px;
-  border-bottom: 1px solid #2f3d53;
-  display: flex;
-  justify-content: space-between;
 
-  .pic {
-    width: 130px;
-    height: 60px;
-    margin-top: 40px;
-    .background-image(url(./images/qiniu_logo.svg), top);
-    font-size:13px;
-    color:rgba(80,85,95,1);
-    line-height:18px;
-    text-align: center;
-    padding-top: 50px;
+.contact {
+  display: flex;
+  flex-direction: column;
+
+  .copyright {
+    margin-top: 24px;
+    color: @grey-6;
+  }
+
+  .phone {
+    margin-top: 4px;
+    color: @grey-6;
   }
 
   .contact {
-    line-height: 140px;
     display: inline;
+    margin-top: 24px;
     
-    .title {
-      color: @grey-5;
-      font-size: 13px;
-      vertical-align: middle;
-    }
-    .phone {
-      color: @grey-5;
-      font-size: 22px;
-      margin-left: 25px;
-      padding-left: 25px;
-      vertical-align: middle;
-      .background-image(url(./images/phone.svg), left, border-box, 14px 14px);
-    }
     .icon {
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      margin-left: 25px;
       display: inline-block;
+      position: relative;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      margin-left: 20px;
       vertical-align: middle;
       color: @grey-5;
-      position: relative;
+      
+      &:first-child {
+        margin-left: 0;
+      }
+    
       .tooltip {
         position: absolute;
         left: 50%;
@@ -104,33 +115,26 @@
 }
 
 .icp {
-  height: 166px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  font-size: 12px;
+  color: @grey-5;
 
-  .info {
-    font-size: 13px;
-    color: #50555f;
-    margin-top: 42px;
-    line-height: 30px;
+  .report {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    margin-right: 8px;
+    width: 16px;
+    height: 14px;
+    .background-image(url(./images/report.png))
+  }
+  p {
+    margin-top: 8px;
 
-    .report {
-      display: inline-block;
-      vertical-align: middle;
-      font-size: 0;
-      margin-right: 4px;
-      width: 16px;
-      height: 14px;
-      .background-image(url(./images/report.png))
+    &:first-child {
+      margin-top: 0;
     }
   }
-
-  .certIconsWrapper {
-    margin-top: 35px;
-
-    .certIcon {
-      height: 75px;
-    }
-  }
+}
 }

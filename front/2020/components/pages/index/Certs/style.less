@@ -1,0 +1,70 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  width: 100%;
+  background: #F8FCFF;
+
+  .content {
+    .centeredWithLg();
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 178px;
+    padding: 0;
+    background: transparent;
+    text-align: center;
+  
+    .mobile({
+      display: block;
+      height: auto;
+      padding: 28px 0;
+    })
+  }
+
+  .item,
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+  
+  .img {
+    width: 52px;
+    height: 52px;
+  
+    .mobile({
+      width: 48px;
+      height: 48px;
+    });
+  }
+
+  .name {
+    margin-top: 20px;
+    color: @grey-6;
+  
+    .mobile({
+      margin-top: 24px;
+    });
+  }
+  
+  .row {
+    display: flex;
+    margin-top: 36px;
+  
+    &:first-child {
+      margin-top: 0;
+    }
+  
+    .item {
+      flex: 1;
+    }
+  }
+
+  .mobile({
+    background: @grey-1;
+  })
+}

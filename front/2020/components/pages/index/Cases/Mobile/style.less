@@ -1,0 +1,108 @@
+@import '~utils/less/index.less';
+
+@card-width: 302px;
+@card-height: 170px;
+@logo-wrapper-width: 150px;
+@logo-wrapper-height: 52px;
+@logo-width: 140px;
+@logo-height: 40px;
+@logos-gap: 12px; // 每行 logos（即 row）之间的间隙
+
+.wrapper {
+  .cardsWrapper {
+    height: @card-height;
+    overflow: hidden;
+  
+    .cards {
+      display: flex;
+      height: @card-height + 100px; // 这边加上 100(滚动条最大不会超过 100px 高度) 是为了没有不显示滚动条但是可以滚动
+      overflow-x: scroll;
+    }
+  
+    .card {
+      display: flex;
+      flex: 0 0 @card-width;
+      height: @card-height;
+      margin: 0 12px 0 0;
+      padding: 20px;
+      border: 1px solid #E5EDF4;
+      border-radius: 8px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
+    
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  
+    .imgWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+    
+      .img {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 16px;
+      font-size: 14px;
+      color: @grey-7;
+    
+      .desc {
+        .ellipsis-line-clamp(4, 6em);
+        flex: 1;
+      }
+    
+      .name {
+        margin-top: 20px;
+        text-align: right;
+      }
+    }
+  }
+
+  .logosWrapper {
+    margin-top: 16px;
+    height: @logo-wrapper-height * 3 + 2 * @logos-gap;
+    overflow: hidden;
+  
+    .rows {
+      // 这边加上 100(滚动条最大不会超过 100px 高度) 是为了没有不显示滚动条但是可以滚动
+      height: @logo-wrapper-height * 3 + 2 * @logos-gap + 100px;
+      overflow-x: scroll;
+    }
+  
+    .row {
+      display: flex;
+      height: @logo-wrapper-height;
+      margin-bottom: @logos-gap;
+    }
+  
+    .logoWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 0 0 @logo-wrapper-width;
+      height: @logo-wrapper-height;
+      margin-left: 12px;
+      border: 1px solid #E5EDF4;
+      border-radius: 4px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
+  
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  
+    .logo {
+      width: @logo-width;
+      height: @logo-height;
+    }
+  }
+}

@@ -17,11 +17,12 @@ interface CardProps {
 }
 
 function Card({ icon, title, banner, bannerBg = '#FA8C16', href, children }: PropsWithChildren<CardProps>) {
+  banner = banner?.trim()
   return (
     <Link className={styles.container} href={href}>
       <UICard className={styles.card}>
         {icon}
-        {banner ? <span className={styles.banner} style={{ background: bannerBg }}>{banner}</span> : null}
+        {banner ? <div className={styles.banner} style={{ background: bannerBg }}>{banner}</div> : null}
         <Content className={styles.cardContent}>
           <Title className={styles.title}>{title}</Title>
           <Desc className={styles.desc}>{children}</Desc>

@@ -1,75 +1,22 @@
-import React, { ReactNode, PropsWithChildren, useState, MouseEvent } from 'react'
-import QueueAnim from 'rc-queue-anim'
+import React, { PropsWithChildren, MouseEvent } from 'react'
+import cls from 'classnames'
 
 import { useModal } from 'components/Feedback'
-import { useMobile } from 'hooks/ua'
 import Section from 'components/pages/index/Section'
-import Tabs, { TabPane } from 'components/UI/Tabs'
 import Menu, { SubMenu } from 'components/UI/Menu'
-import { Card as UICard, Title, Content, Desc } from 'components/UI/Card'
-import { Category, categoryNameMap, categories, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
-import ProductIcon from 'components/Product/Icon'
+import { Product, urlMap, Category, categoryNameMap, categories, getCategoryProducts, PartialProductData, normalizeProduct } from 'constants/products'
 import Link from 'components/Link'
+import Button from 'components/UI/Button'
 import { joinText } from 'utils/text'
 
 import styles from './style.less'
 
-import TabServiceIcon from './images/tabs/product2.svg'
-import TabMediaIcon from './images/tabs/product3.svg'
-import TabDataIcon from './images/tabs/product4.svg'
-
-const categoryIconMap = {
-  [Category.Service]: TabServiceIcon,
-  [Category.Media]: TabMediaIcon,
-  [Category.Data]: TabDataIcon
-}
-
-interface CardProps {
-  icon: ReactNode
-  title: string
-  href: string | null
-  onClick?: () => void
-  disabled?: boolean
-}
-
-function Card({ icon, title, href, onClick, children }: PropsWithChildren<CardProps>) {
-  if (href == null) {
-    return (
-      <UICard onClick={onClick} className={styles.card}>
-        {icon}
-        <Content className={styles.content}>
-          <Title className={styles.title}>{title}</Title>
-          <Desc className={styles.desc}>{children}</Desc>
-        </Content>
-      </UICard>
-    )
-  }
-  return (
-    <Link href={href} onClick={onClick}>
-      <UICard className={styles.card}>
-        {icon}
-        <Content className={styles.content}>
-          <Title className={styles.title}>{title}</Title>
-          <Desc className={styles.desc}>{children}</Desc>
-        </Content>
-      </UICard>
-    </Link>
-  )
-}
-
-interface AnimProps {
-  active: boolean
-}
-
-function Anim({ active, children }: PropsWithChildren<AnimProps>) {
-  return (
-    <QueueAnim ease="easeInOutCubic">
-      {
-        active ? children : null
-      }
-    </QueueAnim>
-  )
-}
+import cdn from './images/paas/cdn.png'
+import dora from './images/paas/dora.png'
+import express from './images/paas/express.png'
+import kodo from './images/paas/kodo.png'
+import liveBroadcast from './images/paas/liveBroadcast.png'
+import qvm from './images/paas/qvm.png'
 
 function MenuItem({ title, href, onClick, children }: PropsWithChildren<{
   title: string,
@@ -90,15 +37,15 @@ function MenuItem({ title, href, onClick, children }: PropsWithChildren<{
   )
 }
 
-function PaneForMobile({ children }: PropsWithChildren<{}>) {
+function Pane({ children }: PropsWithChildren<{}>) {
   return (
-    <div className={styles.mobilePane}>
+    <div className={styles.pane}>
       {children}
     </div>
   )
 }
 
-function menuItemForMobileProduct(product: PartialProductData, startConsulting: () => void) {
+function menuItemForProduct(product: PartialProductData, startConsulting: () => void) {
   const productData = normalizeProduct(product)
   return (
     <MenuItem
@@ -112,113 +59,89 @@ function menuItemForMobileProduct(product: PartialProductData, startConsulting: 
   )
 }
 
-function subMenuForMobileCategory(category: Category, startConsulting: (intention: string) => void) {
-  const Icon = categoryIconMap[category]
-  const title = (
-    <span className={styles.tab}>
-      <Icon />{categoryNameMap[category]}
-    </span>
-  )
+function subMenuForCategory(category: Category, startConsulting: (intention: string) => void) {
   const products: PartialProductData[] = getCategoryProducts(category)
   const menuItemsView = products.map(
-    product => menuItemForMobileProduct(
+    product => menuItemForProduct(
       product,
       () => startConsulting(joinText(normalizeProduct(product).name, '产品'))
     )
   )
   return (
-    <SubMenu key={category} title={title}>
-      <PaneForMobile>
+    <SubMenu key={category} title={categoryNameMap[category]}>
+      <Pane>
         {menuItemsView}
-      </PaneForMobile>
+      </Pane>
     </SubMenu>
   )
 }
 
-function ProductsForMobile() {
+function CloudProducts() {
   const { startIntentConsulting } = useModal()
   const subMenusView = categories.map(category => (
-    subMenuForMobileCategory(category, startIntentConsulting)
+    subMenuForCategory(category, startIntentConsulting)
   ))
   return (
-    <Menu mode="inline">
+    <Menu mode="inline" className={styles.cloudMenu}>
       {subMenusView}
     </Menu>
   )
 }
 
-function CardForPcProduct({ product }: { product: PartialProductData }) {
-  const productData = normalizeProduct(product)
-  const { startIntentConsulting } = useModal()
-
-  function handleClick() {
-    if (productData.url == null) {
-      startIntentConsulting(joinText(productData.name, '产品'))
-    }
-  }
-
+function PaasProducts() {
   return (
-    <Card
-      key={`${productData.product}-${productData.name}`}
-      icon={<ProductIcon className={styles.icon} product={productData.product} />}
-      title={productData.name}
-      href={productData.url}
-      onClick={handleClick}
-    >
-      {productData.url !== null ? productData.desc : '即将上线，欢迎垂询'}
-    </Card>
-  )
-}
-
-function tabPaneForPcCategory(category: Category, active: Category) {
-  const Icon = categoryIconMap[category]
-  const tabView = (
-    <span className={styles.tab}>
-      <Icon />{categoryNameMap[category]}
-    </span>
-  )
-  const products: PartialProductData[] = getCategoryProducts(category)
-  const cardsView = products.map(
-    (product, index) => (
-      <CardForPcProduct key={index} product={product} />
-    )
-  )
-  return (
-    <TabPane key={category} value={category} tab={tabView} className={styles.pane}>
-      {/* 目前缺少合适的文案，先藏起来 */}
-      {/* <div className={styles.tip}>七牛云提供的大数据产品集和机器学习产品集可以帮助您以简单直观的方式理解自己的资产</div> */}
-      <Anim active={active === category}>
-        {cardsView}
-      </Anim>
-    </TabPane>
-  )
-}
-
-export function ProductsForPc() {
-  const [activeKey, setActiveKey] = useState(Category.Data)
-  const onTabChange = (key: string) => {
-    setActiveKey(key as Category)
-  }
-  const tabPanesView = categories.map(category => (
-    tabPaneForPcCategory(category, activeKey)
-  ))
-  return (
-    <>
-      <Tabs value={activeKey} onChange={onTabChange}>
-        {tabPanesView}
-      </Tabs>
-      <Link href="/events/free" className={styles.explore}>开始免费体验</Link>
-    </>
+    <div className={styles.paasProducts}>
+      <Button className={styles.item} type="default-grey" href={urlMap[Product.Kodo]} withBorder>
+        <img src={kodo} className={styles.img} />
+        对象存储 Kodo
+      </Button>
+      <Button className={styles.item} type="default-grey" href={urlMap[Product.Dora]} withBorder>
+        <img src={dora} className={styles.img} />
+        智能多媒体服务 Dora
+      </Button>
+      <Button className={styles.item} type="default-grey" href={urlMap[Product.Express]} withBorder>
+        <img src={express} className={styles.img} />
+        机器数据分析平台 Pandora
+      </Button>
+      <Menu mode="inline" className={cls(styles.paasMenu, styles.item)}>
+        <SubMenu title={<><img src={liveBroadcast} className={styles.img} />直播与实时互动</>}>
+          <Pane>
+            <Link className={styles.link} href={urlMap[Product.Pili]}>
+              视频直播 Pili
+            </Link>
+            <Link className={styles.link} href={urlMap[Product.Geek]}>
+              低延时直播 Geek
+            </Link>
+            <Link className={styles.link} href={urlMap[Product.Rtn]}>
+              实时音视频 QRTC
+            </Link>
+            <Link className={styles.link} href={urlMap[Product.Qvs]}>
+              视频监控 QVS
+            </Link>
+          </Pane>
+        </SubMenu>
+      </Menu>
+      <Button className={styles.item} type="default-grey" href={urlMap[Product.Cdn]} withBorder>
+        <img src={cdn} className={styles.img} />
+        内容分发网络 QCDN
+      </Button>
+      <Button className={styles.item} type="default-grey" href={urlMap[Product.Qvm]} withBorder>
+        <img src={qvm} className={styles.img} />
+        云主机服务 QVM
+      </Button>
+    </div>
   )
 }
 
 export default function Products() {
-  const isMobile = useMobile()
   return (
-    <Section grey className={styles.products} title="云产品" style={{ padding: isMobile ? '0' : 'auto' }}>
-      {
-        isMobile ? <ProductsForMobile /> : <ProductsForPc />
-      }
-    </Section>
+    <div className={styles.wrapper}>
+      <Section className={styles.section} rootClassName={styles.block} title="“云+数据” 一体化 PaaS 平台">
+        <PaasProducts />
+      </Section>
+      <Section className={styles.section} title="云产品">
+        <CloudProducts />
+      </Section>
+    </div>
   )
 }

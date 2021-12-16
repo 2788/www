@@ -11,12 +11,14 @@ export default function UaProvider({ children }: PropsWithChildren<{}>) {
   // 满足某些场景需要手动提供 ua 的情况，可以在父组件 provider 覆盖手动值
   const ua = useUa()
   const isMobile = useIsMobile()
+  const isPcLg = useIsPcLg()
   const isWx = useIsWx()
   const isMp = useIsMp()
   const loaded = useLoaded()
   const uaParser = useUaParser()
 
   const uaValue: Ua = {
+    isPcLg,
     isMobile,
     isWx,
     isMp,
@@ -44,6 +46,42 @@ function useUaParser() {
   return parser
 }
 
+enum Screen {
+  Mobile = 'mobile',
+  PcNormal = 'pc-normal',
+  PcLarger = 'pc-larger',
+}
+
+// 同 utils/less/index.less 关于 screen 尺寸的定义
+const screenSizeMap = {
+  [Screen.Mobile]: 768,
+  [Screen.PcNormal]: 1280,
+  [Screen.PcLarger]: 1600
+}
+
+function useIsPcLg() {
+  // 初始状态使用 false，以保持客户端渲染跟静态（服务端）渲染逻辑的一致
+  const [isPcLg, setIsPcLg] = useState(false)
+  useEffect(() => {
+    function syncIsPcLg() {
+      setIsPcLg(getIsPcLg())
+    }
+    syncIsPcLg()
+    window.addEventListener('resize', syncIsPcLg)
+    return () => window.removeEventListener('resize', syncIsPcLg)
+  }, [])
+
+  return isPcLg
+}
+
+export function getIsPcLg() {
+  return (
+    typeof window !== 'undefined'
+    // 同 utils/style.less `.mobile()` 实现
+    && window.matchMedia(`(min-width: ${screenSizeMap[Screen.PcLarger]}px)`).matches
+  )
+}
+
 function useIsMobile() {
   // 初始状态使用 false，以保持客户端渲染跟静态（服务端）渲染逻辑的一致
   return useIsMobileWithInitialState(false)
@@ -67,8 +105,8 @@ export function useIsMobileWithInitialState(initialState: boolean) {
 export function getIsMobile() {
   return (
     typeof window !== 'undefined'
-    // 同 utils/style.less `.mobile()` 实现
-    && window.matchMedia('(max-width: 767px)').matches
+    // 同 utils/less/index.less `.mobile()` 实现
+    && window.matchMedia(`(max-width: ${screenSizeMap[Screen.Mobile] - 1}px)`).matches
   )
 }
 

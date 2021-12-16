@@ -36,7 +36,7 @@ import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.jpg'
 import style from './style.less'
 
-const IconKodoe = solutionIconMap[Solution.Kodoe]
+const IconKodoe = solutionIconMap[Solution.Kodoe]!
 
 // 注意这个值跟 `constants/solutions` 中的 `nameMap` 不同，维护的时候需要小心
 const title = '金融行业银行合规解决方案'

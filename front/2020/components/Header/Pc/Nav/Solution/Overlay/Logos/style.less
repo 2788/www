@@ -1,0 +1,32 @@
+@import '~utils/less/index.less';
+
+.logoList {
+  margin-top: 12px;
+}
+
+.item {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  margin-left: 10px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.logoItem {
+  position: relative;
+  background-color: @grey-1;
+  border: 1px solid @grey-3;
+  border-radius: 2px;
+}
+
+.logoImg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 80%;
+  max-height: 80%;
+  transform: translate(-50%, -50%);
+}

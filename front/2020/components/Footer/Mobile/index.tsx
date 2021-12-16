@@ -65,8 +65,8 @@ export default function FooterForMobile() {
         </Menu>
       </div>
       <div className={style.icons}>
-        <a href="https://github.com/qiniu" target="_blank" rel="noopener"><Github className={style.icon} /></a>
         <a href="http://weibo.com/qiniutek" target="_blank" rel="noopener"><Weibo className={style.icon} /></a>
+        <a href="https://github.com/qiniu" target="_blank" rel="noopener"><Github className={style.icon} /></a>
       </div>
       <div className={style.qrCode}>
         <img className={style.image} src={Qrcode} />
@@ -76,10 +76,7 @@ export default function FooterForMobile() {
         <Button type="primary" className={style.buyBtn} href="tel:4008089176">购买咨询：400-808-9176</Button>
       </div>
       <div className={style.icp}>
-        沪公网安备31011502000961号<br />
-        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" rel="noreferrer noopener">
-          沪ICP备11037377号-5
-        </a>
+        Copyright © 2011-2021 Qiniu Cloud.
       </div>
     </div>
   )

@@ -1,21 +1,29 @@
 import React from 'react'
-import { DropdownMenu, DropdownMenuItemLink, DropdownMenuGroup } from 'components/UI/Dropdown'
-import Hot from 'components/Hot'
 
-import style from '../style.less'
+import CommonOverlay from '../Overlay'
+import Content from '../Overlay/Content'
+import ContentSection, { ContentSectionItem } from '../Overlay/Content/Section'
 
 export default function Overlay() {
   return (
-    <DropdownMenu className={style.dropdown}>
-      <DropdownMenuGroup title="推广返现">
-        <DropdownMenuItemLink href="/cps">新推官 CPS 推广返现</DropdownMenuItemLink>
-      </DropdownMenuGroup>
-      <DropdownMenuGroup title="合作伙伴">
-        <DropdownMenuItemLink href="/partner">合作伙伴与生态</DropdownMenuItemLink>
-      </DropdownMenuGroup>
-      <DropdownMenuGroup title="市场活动">
-        <DropdownMenuItemLink href="/cooperations">工具插件 SDK 合作 <Hot /></DropdownMenuItemLink>
-      </DropdownMenuGroup>
-    </DropdownMenu>
+    <CommonOverlay>
+      <Content size={3}>
+        <ContentSection title="合作伙伴">
+          <ContentSectionItem href="/partner">
+            合作伙伴与生态
+          </ContentSectionItem>
+        </ContentSection>
+        <ContentSection title="开发合作">
+          <ContentSectionItem href="/cooperations" hot>
+            工具插件 SDK 合作
+          </ContentSectionItem>
+        </ContentSection>
+        <ContentSection title="推广返现">
+          <ContentSectionItem href="/cps">
+            新推官 CPS 推广返现
+          </ContentSectionItem>
+        </ContentSection>
+      </Content>
+    </CommonOverlay>
   )
 }

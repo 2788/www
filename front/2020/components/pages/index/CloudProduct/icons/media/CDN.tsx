@@ -4,35 +4,23 @@ import animation from '../../animation.less'
 
 export default function CDNIcon() {
   return (
-    <svg>
-      <g fill="none">
-        <polygon fill="#C2E7FF" points="0 59.857 60 95.498 120 59.857 60 27"></polygon>
-        <g transform="translate(19)">
-          <mask id="cdn-b" fill="#fff">
-            <polygon points="41 0 76.507 20.5 76.507 61.5 41 82 5.493 61.5 5.493 20.5"></polygon>
-          </mask>
-          <polygon points="41 0 76.507 20.5 76.507 61.5 41 82 5.493 61.5 5.493 20.5" fill="#74C6FF"></polygon>
-          <path fill="#34A1EC" d="M-23,4 L12.5070416,24.5 L12.5069584,57.545 L41.0070416,74 L41.0070416,115 L5.5,135.5 L-30.0070416,115 L-30.0080416,81.954 L-58.5070416,65.5 L-58.5070416,24.5 L-23,4 Z" mask="url(#cdn-b)"></path>
-        </g>
-        <g transform="translate(27 8)">
-          <mask id="cdn-d" fill="#fff">
-            <polygon points="33 0 61.579 16.5 61.579 49.5 33 66 4.421 49.5 4.421 16.5"></polygon>
-          </mask>
-          <polygon points="33 0 61.579 16.5 61.579 49.5 33 66 4.421 49.5 4.421 16.5" fill="#C4E7FF"></polygon>
-          <polygon fill="#A1D0F1" points="61.5 -16.5 90.079 0 90.079 33 61.5 49.5 32.921 33 32.921 0" mask="url(#cdn-d)"></polygon>
-        </g>
-        <g className={animation.levitate1}>
-          <g transform="translate(38 19)">
-            <mask id="cdn-f" fill="#fff">
-              <polygon points="22 0 41.053 11 41.053 33 22 44 2.947 33 2.947 11"></polygon>
-            </mask>
-            <polygon points="22 0 41.053 11 41.053 33 22 44 2.947 33 2.947 11" fill="#FFF"></polygon>
-            <polygon fill="#78C8FF" points="22 -22 41.053 -11 41.053 11 22 22 2.947 11 2.947 -11" mask="url(#cdn-f)"></polygon>
-            <polygon fill="#006EBB" points="3 11 22.053 22 22.053 44 3 55 -16.053 44 -16.053 22" mask="url(#cdn-f)"></polygon>
-            <polygon fill="#34A1EC" points="41 11 60.053 22 60.053 44 41 55 21.947 44 21.947 22" mask="url(#cdn-f)"></polygon>
-          </g>
-        </g>
+    <svg width="64" height="76" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fillRule="evenodd" clipRule="evenodd" d="M32 12L59.7128 28V60L32 76L4.28719 60V28L32 12Z" fill="#46BEFF" />
+      <path fillRule="evenodd" clipRule="evenodd" d="M32.0054 75.9968L31.9999 76L4.28711 60V28L4.32051 27.9807L9.76149 31.1221V56.9137L32.0054 69.7562V75.9968Z" fill="#079FF1" />
+      <g clipPath="url(#clip0_731_4219)">
+        <path fillRule="evenodd" clipRule="evenodd" d="M32 18.2439L54.3054 31.1219V56.878L32 69.7561L9.69456 56.878V31.1219L32 18.2439Z" fill="#AAE9FF" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M54.3055 56.8426L54.2439 56.8782L31.9385 44.0001V18.2794L32 18.2439L54.3055 31.1219V56.8426Z" fill="#97E4FF" />
       </g>
+      <g className={animation.levitate1}>
+        <path fillRule="evenodd" clipRule="evenodd" d="M46.7406 34.5854L31.8703 26L17 34.5854V34.7561L31.8703 43.3415L46.7406 34.7561L46.7406 34.5854Z" fill="#66D7FF" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M46.6578 34.8293L46.9115 34.9758V52.1465L32.083 60.7078L31.8293 60.5613V43.3906L46.6578 34.8293Z" fill="#46BEFF" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M31.6578 60.8293L31.9115 60.6829V43.5122L17.083 34.9509L16.8293 35.0974V52.2681L31.6578 60.8293Z" fill="#2BB3FD" />
+      </g>
+      <defs>
+        <clipPath id="clip0_731_4219">
+          <rect width="51.5122" height="51.5122" fill="white" transform="translate(6.2439 18.2439)" />
+        </clipPath>
+      </defs>
     </svg>
   )
 }

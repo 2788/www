@@ -3,28 +3,53 @@
  * @description 包含产品、解决方案、登录入口，及用户信息等内容
  */
 
-import React from 'react'
-import Link from 'next/link'
+import React, { useContext, createContext, useState } from 'react'
+import cls from 'classnames'
+import Link from 'components/Link'
 
 import SearchInput from './Search'
 import Userinfo from './Userinfo'
 import Nav from './Nav'
-import Button from '../../UI/Button'
 
 import Logo from '../logo.svg'
 import style from './style.less'
 
+type HeaderThemeType = 'default' | 'light' | 'dark'
+
+export const headerThemeContext = createContext<HeaderThemeType>('default')
+
+export type HeaderDropdownContextValue = {
+  setDisplayedDropdownTotal: (cb: (val: number) => number) => void
+}
+
+export const headerDropdownContext = createContext<HeaderDropdownContextValue | null>(null)
+
 export default function HeaderForPc() {
+  const [displayedDropdownTotal, setDisplayedDropdownTotal] = useState(0)
+  const themeType = useContext(headerThemeContext)
+  const transparent = themeType !== 'default'
+  const headerClassNames = cls(
+    style.header,
+    themeType === 'default' && style.default,
+    transparent && style.transparent,
+    themeType === 'dark' && style.dark,
+    displayedDropdownTotal > 0 && style.hover
+  )
+
   return (
-    <header className={style.header}>
-      <div className={style.content}>
-        <Link href="/"><a className={style.logo}><Logo /></a></Link>
-        <Nav />
-        <SearchInput />
-        <div className={style.space}></div>
-        <Userinfo />
-        <Button type="primary" size="small" href="https://portal.qiniu.com" style={{ width: '94px' }}>管理控制台</Button>
-      </div>
-    </header>
+    <headerDropdownContext.Provider value={{ setDisplayedDropdownTotal }}>
+      <section className={cls(style.wrapper, transparent && style.hiddenHeight)}>
+        <header className={headerClassNames}>
+          <div className={style.content}>
+            <Link className={style.logo} href="/"><Logo /></Link>
+            <Nav />
+            <div className={style.space}></div>
+            <SearchInput className={style.searchInput} />
+            <Link href="https://portal.qiniu.com" className={style.console}>控制台</Link>
+            <Userinfo />
+          </div>
+        </header>
+      </section>
+    </headerDropdownContext.Provider>
   )
 }

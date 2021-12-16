@@ -5,7 +5,6 @@
 
 import React, { ReactNode, CSSProperties } from 'react'
 import classnames from 'classnames'
-import { useMobile } from 'hooks/ua'
 
 import style from './index.less'
 
@@ -13,20 +12,18 @@ export interface IndexSectionProps {
   title?: ReactNode
   subtitle?: ReactNode
   children: ReactNode
-  grey?: boolean
   style?: CSSProperties
   className?: string
   rootClassName?: string
 }
 
 export default function Section(props: IndexSectionProps) {
-  const { title, subtitle = null, children, grey, rootClassName, ...rest } = props
-  const isMobile = useMobile()
+  const { title, subtitle = null, children, rootClassName, ...rest } = props
 
   const wrapperClassName = [style.wrapper, props.className].filter(Boolean).join(' ')
 
   return (
-    <div className={classnames(style.blockWraper, !isMobile && grey && style.grey, rootClassName)}>
+    <div className={classnames(style.blockWraper, rootClassName)}>
       <div {...rest} className={wrapperClassName}>
         {
           (title !== '') && (

@@ -8,7 +8,19 @@
         display: block;
         padding-top: 12px;
         padding-bottom: 12px;
+
+        &:hover {
+          color: #07BEFF;
+        }
       }
+    }
+
+    .rc-menu-submenu-open > .rc-menu-submenu-title {
+      color: #07BEFF ! important;
+    }
+
+    .rc-menu li { // 非一级标题下面都不应该有线
+      border-top: none;
     }
   }
 }

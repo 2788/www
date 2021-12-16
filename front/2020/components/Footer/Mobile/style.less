@@ -1,19 +1,25 @@
 @import '~utils/less/index.less';
 
-.icon {
-  float: right;
-  margin-top: 4.5px;
-  margin-right: 16px;
-}
-
 .footer {
   color: @grey-5;
-  background-color: rgba(0,20,50,1);
+  background-color: #F8FBFF;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-bottom: 20px;
+  padding: 16px 16px 32px;
+
+  .icon {
+    float: right;
+    margin-top: 4.5px;
+    margin-right: 16px;
+  }
+  
+  a {
+    &:hover {
+      color: #07BEFF;
+    }
+  }
 
   :global {
     .rc-menu {
@@ -21,33 +27,45 @@
       font-size: 16px;
       border: none;
       box-shadow: none;
-      background-color: rgba(0,20,50,1) !important;
-
-      &.rc-menu-sub {
-        padding: 10px 0;
-      }
+      background-color: @grey-1 !important;
 
       .rc-menu-submenu {
-        border: none;
-        background-color: rgba(0,20,50,1);
+        margin-top: 8px;
+        border: 1px solid #E5EDF4;
+        border-radius: 2px;
+        background: @grey-1;
+        
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    
+      &.rc-menu-sub {
+        padding: 16px 12px;
+        border-top: 1px solid #E5EDF4;
       }
 
+
       .rc-menu-submenu-title {
-        border-top: 1px solid rgba(255,255,255,0.1);;
-        margin-top: -1px;
-        background-color: rgba(0,20,50,1);
+        padding-left: 12px ! important;
+        padding-top: 14px;
+        padding-bottom: 14px;
         font-size: 14px;
+        background-color: @grey-1;
       }
 
       .menu-item {
-        font-size: 12px;
-        padding: 6px 15px;
+        margin-top: 12px;
+        font-size: 14px;
+
+        &:first-child {
+          margin-top: 0;
+        }
       }
     
       .rc-menu-submenu-open {
         .rc-menu-submenu-title {
-          color: @blue-6;
-          border-bottom: 1px solid rgba(255,255,255,0.1);
+          color: #07BEFF;
         }
       }
     }
@@ -56,12 +74,11 @@
 
   .nav {
     width: 100%;
-    margin: 0 -15px;
-    color: @grey-5;
+    color: @grey-7;
   }
 
   .icons {
-    margin-top: 10px;
+    margin-top: 20px;
 
     .icon {
       width: 30px;
@@ -71,35 +88,37 @@
   }
 
   .qrCode {
+    width: 100%;
     margin-top: 20px;
     font-size: 12px;
     color: @grey-5;
-    width: 100%;
-    .image {
-      width: 130px;
-      height: 130px;
-      display: block;
-      margin: 0 auto 15px;
-    }
     text-align: center;
+
+    .image {
+      display: block;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 16px;
+    }
   }
 
   .buy {
-    padding: 0 15px;
     width: 100%;
     text-align: center;
     .buyBtn {
-      height: 36px;
       width: 100%;
+      height: 40px;
+      line-height: 38px;
       margin-top: 24px;
+      background-color: #07BEFF;
     }
   }
   
   .icp {
     display: block;
-    margin-top: 17px;
-    color: @grey-6;
-    font-size: 12px;
+    margin-top: 20px;
+    color: @grey-5;
+    font-size: 14px;
     text-align: center;
   }
 }

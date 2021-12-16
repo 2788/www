@@ -8,20 +8,54 @@
 
 .headerBanner {
   :global {
-    .slick-dots.slick-dots-bottom {
-      bottom: 50px;
-      button, .slick-active button {
-        width: 28px;
-        height: 4px;
-        position: relative;
-        // 增大页面切换按钮选中范围
-        &:before {
-          content: '';
+    .slick-slider{
+      .slick-dots.slick-dots-bottom {
+        bottom: 50px;
+  
+        li {
+          margin: 0 4px;
+        }
+  
+        button, .slick-active button {
+          width: 32px;
+          height: 4px;
           position: relative;
-          top: -30px;
-          height: 30px;
-          width: 28px;
-          display: block;
+          // 增大页面切换按钮选中范围
+          &:before {
+            content: '';
+            position: relative;
+            top: -30px;
+            height: 30px;
+            width: 32px;
+            display: block;
+          }
+        }
+        button {
+          background: @grey-5;
+          opacity: 0.2;
+        }
+  
+        .slick-active button {
+          background: #07BEFF;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.dark {
+    :global {
+      .slick-slider {
+        .slick-dots.slick-dots-bottom {
+          button {
+            background: @grey-1;
+            opacity: 0.5;
+          }
+  
+          .slick-active button {
+            background: @grey-1;
+            opacity: 1;
+          }
         }
       }
     }
@@ -29,11 +63,13 @@
 
   .mobile({
     :global {
-      .slick-dots.slick-dots-bottom {
-        bottom: 8px;
-        button, .slick-active button {
-          width: 20px;
-          height: 2px;
+      .slick-slider {
+        .slick-dots.slick-dots-bottom {
+          bottom: 32px;
+          button, .slick-active button {
+            width: 24px;
+            height: 4px;
+          }
         }
       }
     }

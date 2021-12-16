@@ -1,7 +1,7 @@
 import React from 'react'
-import Positioned from '../Positioned'
+import Positioned from '../share/Positioned'
 import { Node } from '..'
-import Line from '../Line'
+import Line from '../share/Line'
 import TerminalUserIcon from '../icons/media/TerminalUser'
 
 export default function TerminalUser() {

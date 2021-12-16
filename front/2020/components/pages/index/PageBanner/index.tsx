@@ -1,62 +1,62 @@
-import React, { ReactNode, CSSProperties } from 'react'
+/* eslint-disable react/no-danger */
+import React, { CSSProperties, ReactNode } from 'react'
 import classnames from 'classnames'
 import Link from 'components/Link'
+import Button from 'components/UI/Button'
+import { useMobile } from 'hooks/ua'
+import { Banner } from 'apis/admin/homepage'
 
 import styles from './style.less'
 
-interface IndexPageBannerProps {
-  title?: ReactNode
-  desc?: ReactNode
-  bgColor?: string
-  btns?: ReactNode[]
-  bgImg: string
-  className?: string
-  href?: string
-}
-
-export default function IndexPageBanner(props: IndexPageBannerProps) {
-  const { title, desc, bgColor = '#34A1EC', btns, bgImg, className, href } = props
+export default function IndexPageBanner({ dark, ...banner }: Banner & { dark: boolean }) {
+  const { title, desc, backgroundColor = '#34A1EC', href, pcImg, mobileImg, buttons } = banner
+  const isMobile = useMobile()
+  const bgImg = isMobile ? mobileImg : pcImg
 
   function renderBtnWrapper() {
-    if (!btns || !btns.length) {
+    if (isMobile || !buttons || !buttons.length) {
       return null
     }
-
     return (
-      <div className={classnames(styles.btnsWrapper, className)}>
-        {btns.map((btn: ReactNode, index: number) => (
-          <div className={styles.btn} key={index}>
-            {btn}
-          </div>
-        ))}
+      <div className={styles.btnsWrapper}>
+        {
+          buttons.map((btn, index) => (
+            index === 0
+              ? <Button key={index} type="primary" className={styles.btn} href={btn.href}>{btn.title}</Button>
+              : <Button key={index} type="hollow" className={classnames(styles.btn, styles.hollow)} href={btn.href} withBorder>{btn.title}</Button>
+          ))
+        }
       </div>
     )
   }
-
-  const bgColorStyle = {
-    backgroundColor: bgColor
-  }
+  const bgColorStyle = { backgroundColor }
 
   const bgStyle: CSSProperties = {
-    backgroundImage: bgImg ? `url(${bgImg})` : '',
+    backgroundImage: `url(${bgImg})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'
   }
 
-  const wrapperTag = href != null ? Link : 'div'
+  function withWrapper(children: ReactNode) {
+    const props = {
+      className: classnames(styles.mainWrapper, styles.index),
+      style: bgColorStyle,
+      children
+    }
+    if (href == null) {
+      return <div {...props} />
+    }
+    return <Link {...props} href={href} />
+  }
 
-  return React.createElement(wrapperTag, {
-    className: classnames(styles.mainWrapper, styles.index, className),
-    style: bgColorStyle,
-    href
-  }, (
+  return withWrapper(
     <div className={styles.contentWrapper} style={bgStyle}>
-      <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
-        <div className={styles.desc}>{desc}</div>
+      <div className={classnames(styles.content, dark && styles.dark)}>
+        {title && <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />}
+        {desc && <p className={styles.desc} dangerouslySetInnerHTML={{ __html: desc }} />}
         {renderBtnWrapper()}
       </div>
     </div>
-  ))
+  )
 }

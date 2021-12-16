@@ -1,0 +1,29 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  padding: 14px 16px;
+  color: @grey-7;
+  transition: color 0.25s;
+
+  &.active {
+    color: #07BEFF;
+  }
+
+  &:first-child {
+    padding-top: 0px;
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+}

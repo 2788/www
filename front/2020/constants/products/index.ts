@@ -1,3 +1,4 @@
+import { Landpage, urlMap as landpageUrlMap } from 'constants/landpage'
 /**
  * @file 所有产品信息的定义，全局用同一份保证一致
  * @description 包括 id、展示名、页面地址等
@@ -223,12 +224,12 @@ export const descMap = {
   [Product.Plsv]: '集合视频拍摄、编辑、上传等全套功能，快速打造手机 Vlog 制作神器',
   [Product.Plms]: '支持手机端 RTMP & QUIC 推流，简单易上手，马上开播',
   [Product.FaceID]: '利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证',
-  [Product.RiskControl]: '',
+  [Product.RiskControl]: '精准识别业务风险和欺诈问题，助力企业建立全流程风控体系',
   [Product.Qvs]: '面向视频监控设备提供视频流接入、存储、分发服务',
 
   [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
   [Product.Express]: '助力企业探索数据、创造价值、预见未来',
-  // TODO 需要加入到顶部导航再补充
+  // TODO 需要加入到顶部导航或者相关产品再补充
   [Product.OpenAPI]: 'AI 开放市场是一个开放平台，提供图片，文本，音频，视频等智能数据处理服务',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
@@ -241,7 +242,7 @@ export const descMap = {
   [Product.Storage]: '开箱即用，预集成 AI 智能服务，低 TCO 的海量存储产品',
   [Product.Avsmart]: '更低的码率，更清晰的画质',
   [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景',
-  [Product.Tts]: '',
+  [Product.Tts]: '采用先进的深度神经网络模型技术，将文本转化成拟人化语音',
   [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击',
   [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统'
 } as const
@@ -282,7 +283,8 @@ export const subCategoryNameMap = {
 
 // 次级标题链接
 export const subCategoryUrlMap: { [s in SubCategory]?: string } = {
-  [SubCategory.MediaDora]: urlMap[Product.Dora]
+  [SubCategory.MediaDora]: urlMap[Product.Dora],
+  [SubCategory.MediaSdk]: landpageUrlMap[Landpage.Sdk]
 }
 
 export type ProductData = {
@@ -324,7 +326,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.MediaDora]: [
     Product.DoraImage, Product.Avsmart, Product.Censor,
     Product.FaceID, Product.Ocr, Product.Vii,
-    Product.Voice, Product.Qoe, Product.OpenAPI
+    Product.Voice, Product.Qoe, Product.RiskControl, Product.OpenAPI
   ],
   [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
   [SubCategory.MediaStorage]: [Product.Kodo, Product.Storage],
@@ -357,6 +359,7 @@ export const categoryMedia = [
   Product.Ocr,
   Product.Vii,
   Product.Voice,
+  Product.RiskControl,
   Product.OpenAPI,
   Product.Pili,
   Product.Geek,

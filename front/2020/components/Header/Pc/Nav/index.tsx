@@ -1,26 +1,27 @@
-import React, { PropsWithChildren, ReactElement, useRef } from 'react'
+import React, { PropsWithChildren, ReactElement, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { useRouter } from 'next/router'
-import Dropdown from 'components/UI/Dropdown'
+import { Product, priceUrlMap } from 'constants/products'
 import Link from 'components/Link'
 
-import Product from './Product'
+import ProductComponent from './Product'
 import style from './style.less'
 import About from './About'
 import Support from './Support'
-import Project from './Project'
+import Solution from './Solution'
 import Partner from './Partner'
-import News from './News'
+import DropdownForHeader from '../Dropdown'
 
 export default function Nav() {
   return (
     <nav className={style.nav}>
-      <Product />
-      <Project />
+      <ItemWithLink href="https://marketing.qiniu.com/activity/all?entry=index-advert">最新活动</ItemWithLink>
+      <ProductComponent />
+      <Solution />
       <ItemWithLink href="https://qmall.qiniu.com/">云商城</ItemWithLink>
+      <ItemWithLink href={priceUrlMap[Product.Kodo]}>定价</ItemWithLink>
       <Support />
       <Partner />
-      <News />
       <About />
     </nav>
   )
@@ -30,23 +31,23 @@ type ItemWithOverlayProps = PropsWithChildren<{
   visible?: boolean
   overlay: ReactElement
   overlayOffsetX?: number
-  alignLeft?: boolean // 下拉框是否显示在导航栏对应的左侧（是则是对应方案和产品，否则默认直接显示在下面）
 }>
 
-export function ItemWithOverlay({ visible, overlay, overlayOffsetX, children, alignLeft }: ItemWithOverlayProps) {
+export function ItemWithOverlay({ visible, overlay, overlayOffsetX, children }: ItemWithOverlayProps) {
   const offsetX = overlayOffsetX != null ? overlayOffsetX : 0
   const ref = useRef(null)
+  const [active, setActive] = useState(visible || false)
   return (
     <div ref={ref} className={style.item}>
-      <Dropdown
+      <DropdownForHeader
         visible={visible}
         align={{ offset: [offsetX, -1] }}
-        getPopupContainer={() => ref.current || window.document.body}
         overlay={overlay}
-        overlayClassName={alignLeft ? style.overlay : undefined}
+        overlayClassName={style.overlay}
+        onVisibleChange={setActive}
       >
-        <a className={style.itemText}>{children}</a>
-      </Dropdown>
+        <a className={classnames(style.itemText, active && 'active')}>{children}</a>
+      </DropdownForHeader>
     </div>
   )
 }
@@ -57,7 +58,7 @@ type ItemLinkProps = PropsWithChildren<{
 
 export function ItemWithLink({ href, children }: ItemLinkProps) {
   const { pathname } = useRouter()
-  const linkClassName = classnames(style.itemText, href === pathname && 'active')
+  const linkClassName = classnames(style.itemText, style.link, href === pathname && 'active')
   return (
     <div className={style.item}>
       <Link href={href} className={linkClassName}>{children}</Link>

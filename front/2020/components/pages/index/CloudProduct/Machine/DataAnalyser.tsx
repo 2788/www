@@ -1,5 +1,5 @@
 import React from 'react'
-import Positioned from '../Positioned'
+import Positioned from '../share/Positioned'
 import { Node } from '..'
 import DataAnalyserIcon from '../icons/machine/DataAnalyser'
 

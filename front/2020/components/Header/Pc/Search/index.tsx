@@ -1,7 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react'
 import classnames from 'classnames'
 import { useRouter } from 'next/router'
-import Dropdown from 'components/UI/Dropdown'
 import { urlForSearch } from 'utils/route'
 import { useApiWithParams } from 'hooks/api'
 import { getHotKeywords } from 'apis/search'
@@ -9,8 +8,9 @@ import { getHotKeywords } from 'apis/search'
 import SearchIcon from './search.svg'
 import style from './style.less'
 import Overlay from './Overlay'
+import DropdownForHeader from '../Dropdown'
 
-export default function Search() {
+export default function Search({ className }: { className?: string }) {
   const router = useRouter()
   const [focus, setFocus] = useState(false)
   const [keyword, setKeyword] = useState('')
@@ -61,13 +61,13 @@ export default function Search() {
   )
 
   return (
-    <Dropdown
+    <DropdownForHeader
       align={{ offset: [0, 4] }}
       visible={overlayVisible}
       overlay={overlayView}
     >
       <form
-        className={classnames(style.wrapper, focus && style.wrapperFocus)}
+        className={classnames(style.wrapper, focus && style.wrapperFocus, className)}
         onSubmit={handleKeywordSubmit}
         autoComplete="off"
       >
@@ -83,6 +83,6 @@ export default function Search() {
           <SearchIcon className={style.icon} />
         </button>
       </form>
-    </Dropdown>
+    </DropdownForHeader>
   )
 }

@@ -1,178 +1,161 @@
 @import '~utils/less/index.less';
 
-@card-width: 376px;
-@card-space: 24px;
+.wrapper {
 
-.products {
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
+  .block {
+    margin-top: 0;
 
-  .mobile({
-    margin-top: 12px;
-    padding: 0 8px;
-    height: auto;
-    min-height: 0;
-  });
-
-  .tab {
-    text-align: center;
-    display: inline-block;
-    width: 190px;
-    > svg {
-      display: block;
-      height: 22px;
-      margin: 0 auto;
-    }
-
-    .mobile({
-      display: inline-block;
-      text-align: left;
-      > svg {
-        display: inline-block;
-        width: 40px;
-        margin-right: 16px;
-      }
-    });
-  }
-
-  .pane {
-    margin: 0 -@card-space/2 16px;
-
-    .tip {
-      display: block;
-      padding-left: 45px;
-      font-size: 14px;
-      color: @grey-6;
-      line-height: 35px;
-      margin: 0 @card-space/2 @card-space;
-      height: 35px;
-      .background-image(url(./images/tip.svg), left, border-box, 32px);
-    }
-
-    .card {
-      display: inline-block;
-      width: @card-width;
-      background: white;
-      vertical-align: top;
-      margin: 0 @card-space/2 @card-space;
-      box-shadow:0px 4px 8px 0px rgba(51,51,51,0.08);
-      border-radius:4px;
-      border:1px solid rgba(238,238,238,1);
-      cursor: pointer;
-      .hover-transition();
-  
-      .mobile({
-        width: 100%;
-        height: auto;
-      });
-  
-      .icon {
-        display: inline-block;
-        width: 32x;
-        height: 44px;
-        font-size: 0;
-        margin-left: 20px;
-        margin-top: 28px;
-        vertical-align: top;
-  
-        .mobile({
-          width: 20%;
-        });
-      }
-  
-      .content {
-        display: inline-block;
-        vertical-align: middle;
-        width: 320px;
-        padding: 28px 20px !important;
-  
-        .title {
-          display: block;
+    .section {
+      .paasProducts {
+        .item {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 64px;
+          margin-top: 16px;
+          padding: 0 16px;
           font-size: 16px;
-          line-height: 20px !important;
-          color: black;
-          transition: color 0.25s;
-
+          line-height: 24px;
+          border: 1px solid #E5EDF4;
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+          border-radius: 4px;
+    
+          &:first-child {
+            margin-top: 0;
+          }
+    
           &:hover {
-            color: @blue-6;
+            color: #07BEFF;
+            border-color: #E5EDF4;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+          }
+    
+          &.paasMenu {
+            height: auto;
+            padding: 0;
+            border: none;
+    
+            &>li {
+              width: 100%;
+              text-align: left;
+    
+              :global(.rc-menu-submenu-title) {
+                padding-top: 15px;
+                padding-bottom: 15px;
+              }
+            }
+    
+            .pane {
+              padding: 20px 64px; // 64px 是为了方便和 dropdown 上的文字对齐
+            }
+    
+            .link {
+              display: block;
+              margin-top: 20px;
+              font-size: 14px;
+              color: @grey-7;
+    
+              &:hover {
+                color: #07BEFF;
+              }
+    
+              &:first-child {
+                margin-top: 0;
+              }
+            }
           }
         }
-      
-        .desc {
-          margin-top: 6px;
+    
+        .img {
+          width: 32px;
+          height: 32px;
+          margin-right: 16px;
+        }
+      }
+    
+      .cloudMenu {
+        &>li {
           display: block;
-          line-height: 20px !important;
-          height: 40px;
-          font-size: 14px;
-          color: @grey-6;
+          width: 100%;
+          height: auto;
+          margin-top: 8px;
+          border: 1px solid #E5EDF4;
+          border-radius: 2px;
+          background: @grey-1;
+    
+          &:first-child {
+            margin-top: 0;
+            border-top: 1px solid #E5EDF4;
+          }
+    
+          :global(.rc-menu-submenu-title) {
+            padding-left: 12px ! important;
+            padding-top: 14px;
+            padding-bottom: 14px;
+            line-height: 22px;
+          }
+        }
+    
+        .menuItem {
+          margin-top: 20px;
+    
+          &:first-child {
+            margin-top: 0;
+          }
+    
+          .title {
+            font-weight: 400;
+            color: @grey-7;
+          }
+    
+          .desc {
+            margin-top: 4px;
+            font-size: 12px;
+            color: @grey-6;
+          }
         }
       }
-      
-    }
-  }
-
-  .explore {
-    display: inline-block;
-    width: 164px;
-    height: 28px;
-    line-height: 28px;
-    font-size: 20px;
-    color: #00AAE7;
-    text-align: left;
-    cursor: pointer;
-    .background-image(url(./images/arrow.svg), right, border-box, 22px);
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-
-  .mobilePane {
-
-    .menuItem {
-      text-align: left;
-      padding: 10px 16px;
-      background: #FAFAFA;
-      &:after {
-        content: '';
-        display: block;
-        height: 1px;
-        width: 100%;
-        position: relative;
-        bottom: -10px;
-        border-bottom: 1px solid @grey-3;
-      }
-      &:last-of-type {
-        &:after {
-          border-bottom: none;
-        }
-      }
-      .title {
-        color: @grey-7;
-        font-size: 14px;
-        font-weight: 500;
-      }
-      .desc {
-        margin-top: 4px;
-        font-size: 12px;
-        color: @grey-6;
-      }
-    }
-  }
-
-  :global {
-    .rc-menu .rc-menu-submenu {
-      .rc-menu-submenu-title {
-        background-color: white;
+    
+      .pane {
+        padding: 20px 12px;
+        font-size: 16px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        background: @grey-1;
         text-align: left;
-        color: @grey-7;
-        &:hover {
-          color: #00AAE7;
+      }
+    
+      :global {
+        .rc-menu {
+          border: none;
+          box-shadow: none;
+        
+          .rc-menu-submenu {
+            border: 1px solid #E5EDF4;
+          }
+    
+          &.rc-menu-sub {
+            border-top: 1px solid #E5EDF4;
+          }
+        
+          .rc-menu-submenu-title {
+            position: relative;
+            display: flex;
+            align-items: center;
+    
+            &>svg {
+              position: absolute;
+              right: 0;
+            }
+          }
+    
+          .rc-menu-submenu-open .rc-menu-submenu-title {
+            color: #07BEFF;
+          }
         }
       }
     }
   }
-
 }

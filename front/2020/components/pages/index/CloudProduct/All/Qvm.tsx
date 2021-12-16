@@ -1,19 +1,18 @@
 import React from 'react'
-import Link from 'components/Link'
-import { urlMap, Product } from 'constants/products'
-import style from '../index.less'
+import { nameMap, urlMap, Product, descMap } from 'constants/products'
+import Text from '../share/Text'
 
 export default function Qvm() {
   return (
-    <svg width="1130" height="32" viewBox="0 0 1130 32">
-      <Link href={urlMap[Product.Qvm]} className={style.link}>
-        <g fill="none" fillRule="evenodd">
-          <rect width="1130" height="32" fill="#E0F7FF" />
-          <text fill="#34A1EC">
-            <tspan x="549" y="21">QVM</tspan>
-          </text>
-        </g>
-      </Link>
-    </svg>
+    <Text
+      name={nameMap[Product.Qvm]}
+      url={urlMap[Product.Qvm]}
+      tooltipTitle={nameMap[Product.Qvm]}
+      tooltipDesc={descMap[Product.Qvm]}
+      centerContent
+      tooltipPlacement="top"
+      noBorder
+      style={{ width: 1048 }}
+    />
   )
 }
