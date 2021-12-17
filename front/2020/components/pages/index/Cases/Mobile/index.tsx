@@ -2,6 +2,7 @@ import React from 'react'
 import { chunk } from 'lodash'
 import { LayoutCard, Img as CardImg } from 'components/UI/Card'
 import { cardData, logoUrls } from '../constants'
+import MarkIcon from '../images/mark.svg'
 import style from './style.less'
 
 export default function Mobile() {
@@ -15,6 +16,7 @@ export default function Mobile() {
                 <div className={style.imgWrapper}>
                   <CardImg src={iconUrl} className={style.img} />
                 </div>
+                <MarkIcon className={style.markIcon} />
                 <div className={style.content}>
                   <p className={style.desc}>{desc}</p>
                   <p className={style.name}>— {name}</p>

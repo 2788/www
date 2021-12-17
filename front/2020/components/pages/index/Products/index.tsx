@@ -135,13 +135,13 @@ function PaasProducts() {
 
 export default function Products() {
   return (
-    <div className={styles.wrapper}>
-      <Section className={styles.section} rootClassName={styles.block} title="“云+数据” 一体化 PaaS 平台">
+    <>
+      <Section className={styles.section} rootClassName={cls(styles.block, styles.paasBlock)} title="“云+数据” 一体化 PaaS 平台">
         <PaasProducts />
       </Section>
-      <Section className={styles.section} title="云产品">
+      <Section className={styles.section} rootClassName={styles.block} title="云产品">
         <CloudProducts />
       </Section>
-    </div>
+    </>
   )
 }

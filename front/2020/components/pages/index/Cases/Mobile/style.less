@@ -20,6 +20,7 @@
     }
   
     .card {
+      position: relative;
       display: flex;
       flex: 0 0 @card-width;
       height: @card-height;
@@ -28,9 +29,16 @@
       border: 1px solid #E5EDF4;
       border-radius: 8px;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
+      background: @grey-1;
     
       &:first-child {
         margin-left: 0;
+      }
+
+      .markIcon {
+        position: absolute;
+        top: 12px;
+        left: 60px;
       }
     }
   
@@ -53,6 +61,7 @@
       flex-direction: column;
       margin-left: 16px;
       font-size: 14px;
+      z-index: 1;
       color: @grey-7;
     
       .desc {
@@ -93,6 +102,7 @@
       margin-left: 12px;
       border: 1px solid #E5EDF4;
       border-radius: 4px;
+      background: @grey-1;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
   
       &:first-child {
