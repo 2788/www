@@ -106,7 +106,7 @@ function Contact() {
   return (
     <section className={style.contact}>
       <Link href="/"><QiniuLogo /></Link>
-      <p className={style.copyright}>Copyright © {getCurrentYear()} Qiniu Cloud.</p>
+      <p className={style.copyright}>Copyright © 2011-{getCurrentYear()} Qiniu Cloud.</p>
       <p className={style.phone}>产品及服务咨询：400-808-9176</p>
       <div className={style.contact}>
         <a className={style.icon} href="http://weibo.com/qiniutek" target="_blank" rel="noopener">

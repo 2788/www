@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import { getCurrentYear } from 'utils'
 import Menu, { SubMenu } from 'components/UI/Menu'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
@@ -76,7 +77,7 @@ export default function FooterForMobile() {
         <Button type="primary" className={style.buyBtn} href="tel:4008089176">购买咨询：400-808-9176</Button>
       </div>
       <div className={style.icp}>
-        Copyright © 2011-2021 Qiniu Cloud.
+        Copyright © 2011-{getCurrentYear()} Qiniu Cloud.
       </div>
     </div>
   )
