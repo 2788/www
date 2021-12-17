@@ -173,7 +173,7 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 	in := make([]morse.SendSmsIn, 0)
 	for _, user := range users {
 		url := utils.GetCheckinLinkUrl(logger, f.lilliputService, f.conf.SMSTemplates.ActivityCheckinLinkPrefix,
-			activity.Id.Hex())
+			user.Id.Hex())
 		data := map[string]interface{}{
 			"Title":     activity.Title,
 			"Link":      url,
