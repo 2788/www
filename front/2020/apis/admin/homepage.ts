@@ -47,7 +47,7 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#191e2d',
-      href: 'http://live.bilibili.com/22319872',
+      href: 'https://www.qiniu.com/activity/detail?id=619ca0150d50910aa577e1fe',
       order: 1
     },
     {

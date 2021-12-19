@@ -23,7 +23,7 @@
     transition: @transition-duration;
   
     .pcLg({
-      width: @card-width-lg;
+      flex-basis: @card-width-lg;
     });
   
     &:last-child {
@@ -43,6 +43,11 @@
   
       .desc {
         margin-top: 12px;
+        opacity: 1;
+      }
+
+      .cases {
+        opacity: 1;
       }
     }
   }
@@ -99,14 +104,24 @@
   width: @card-width - 2 * @content-wrapper-padding;
   height: 44px;
   margin-top: 28px;
+  opacity: 0;
   transition: @transition-duration;
+
+  .pcLg({
+    width: @card-width-lg - 2 * @content-wrapper-padding;
+  });
 }
 
 .cases {
   display: flex;
   width: @card-width - 2 * @content-wrapper-padding;
   margin-top: 16px;
+  opacity: 0;
   transition: @transition-duration;
+
+  .pcLg({
+    width: @card-width-lg - 2 * @content-wrapper-padding;
+  });
 
   .case {
     display: inline-block;

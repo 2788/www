@@ -40,6 +40,7 @@
 
   &.transparent {
     background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
     transition: .3s;
   }
 
@@ -51,6 +52,7 @@
     background-color: @main-bg-color;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.04);
     transition: none;
+    backdrop-filter: none;
   
     .logo svg path {
       fill: #07BEFF;
