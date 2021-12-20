@@ -27,7 +27,7 @@ export default function Advantages() {
         </FeatureItem>
         <FeatureItem
           icon={<Icon2 />}
-          title="处理迅速"
+          title="功能全面"
           align="left"
         >
           <FeatureDesc>支持图片/视频的画质、美观度等质量评估，同时可精准输出多维度的客观质量指标，指导定位具体质量问题。</FeatureDesc>
