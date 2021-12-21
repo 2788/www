@@ -9,21 +9,21 @@ import { Banner } from 'apis/admin/homepage'
 import styles from './style.less'
 
 export default function IndexPageBanner({ dark, ...banner }: Banner & { dark: boolean }) {
-  const { title, desc, backgroundColor = '#34A1EC', href, pcImg, mobileImg, buttons } = banner
+  const { title, desc, backgroundColor = '#34A1EC', href, pcImg, mobileImg, buttonTexts } = banner
   const isMobile = useMobile()
   const bgImg = isMobile ? mobileImg : pcImg
 
   function renderBtnWrapper() {
-    if (isMobile || !buttons || !buttons.length) {
+    if (isMobile || !buttonTexts || !buttonTexts.length) {
       return null
     }
     return (
       <div className={styles.btnsWrapper}>
         {
-          buttons.map((btn, index) => (
+          buttonTexts.map((text, index) => (
             index === 0
-              ? <Button key={index} type="primary" className={styles.btn} href={btn.href}>{btn.title}</Button>
-              : <Button key={index} type="hollow" className={classnames(styles.btn, styles.hollow)} href={btn.href} withBorder>{btn.title}</Button>
+              ? <Button key={index} type="primary" className={styles.btn}>{text}</Button>
+              : <Button key={index} type="hollow" className={classnames(styles.btn, styles.hollow)} withBorder>{text}</Button>
           ))
         }
       </div>

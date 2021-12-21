@@ -3,19 +3,16 @@ import { mongoApiPrefix, getFilteredList, sortByOrder, handleResponseData } from
 
 import pcStrategy from './banners/pc/strategy.jpg'
 import pc1212 from './banners/pc/1212.jpg'
+import pcCps from './banners/pc/cps.jpg'
 import pcQvm from './banners/pc/qvm.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewcomer from './banners/pc/qvm-newcomer.jpg'
 import mobileStrategy from './banners/mobile/strategy.jpg'
 import mobile1212 from './banners/mobile/1212.jpg'
+import mobileCps from './banners/mobile/cps.jpg'
 import mobileQvm from './banners/mobile/qvm.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewcomer from './banners/mobile/qvm-newcomer.jpg'
-
-type Button = {
-  title: string
-  href: string
-}
 
 export type Banner = {
   name: string
@@ -31,25 +28,13 @@ export type Banner = {
   backgroundColor: string
   href: string | null
   order: number
-  buttons?: Button[]
+  buttonTexts?: string[]
 }
 
 // 获取首页 banners
 export function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
   return Promise.resolve([
-    {
-      name: '战略发布会',
-      pcImg: pcStrategy,
-      mobileImg: mobileStrategy,
-      effectedAt: 0,
-      invalidAt: 0,
-      createdAt: 0,
-      updatedAt: 0,
-      backgroundColor: '#191e2d',
-      href: 'https://www.qiniu.com/activity/detail?id=619ca0150d50910aa577e1fe',
-      order: 1
-    },
     {
       name: '双十二',
       pcImg: pc1212,
@@ -60,7 +45,34 @@ export function getBanners(): Promise<Banner[]> {
       updatedAt: 0,
       backgroundColor: '#191e2d',
       href: 'https://marketing.qiniu.com/activity/2021-1212-act?entry=www-top-banner',
+      order: 1
+    },
+    {
+      name: '战略发布会',
+      pcImg: pcStrategy,
+      mobileImg: mobileStrategy,
+      effectedAt: 0,
+      invalidAt: 0,
+      createdAt: 0,
+      updatedAt: 0,
+      backgroundColor: '#191e2d',
+      href: 'https://www.qiniu.com/activity/detail?id=619ca0150d50910aa577e1fe',
       order: 2
+    },
+    {
+      name: 'cps',
+      title: '七牛云新推官 火热招募中',
+      desc: '推广简单易上手·权益返现新升级',
+      pcImg: pcCps,
+      mobileImg: mobileCps,
+      effectedAt: 0,
+      invalidAt: 0,
+      createdAt: 0,
+      updatedAt: 0,
+      backgroundColor: '#ffffff',
+      href: '/cps',
+      order: 3,
+      buttonTexts: ['立即推广']
     },
     {
       name: '云主机',
@@ -74,10 +86,8 @@ export function getBanners(): Promise<Banner[]> {
       updatedAt: 0,
       backgroundColor: '#ffffff',
       href: 'https://marketing.qiniu.com/activity/2021-12-qvmact?entry=www-index-banner-2',
-      order: 3,
-      buttons: [
-        { title: '立即抢购', href: 'https://marketing.qiniu.com/activity/2021-12-qvmact?entry=www-index-banner-2' }
-      ]
+      order: 4,
+      buttonTexts: ['立即抢购']
     },
     {
       name: '云存储',
@@ -91,10 +101,8 @@ export function getBanners(): Promise<Banner[]> {
       updatedAt: 0,
       backgroundColor: '#ffffff',
       href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-2',
-      order: 4,
-      buttons: [
-        { title: '免费领用', href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-2' }
-      ]
+      order: 5,
+      buttonTexts: ['免费领用']
     },
     {
       name: '云主机新人',
@@ -108,14 +116,10 @@ export function getBanners(): Promise<Banner[]> {
       updatedAt: 0,
       backgroundColor: '#ffffff',
       href: 'https://marketing.qiniu.com/activity/qvm0rmbv2?entry=www-index-banner-6',
-      order: 5,
-      buttons: [
-        { title: '立即抢购', href: 'https://marketing.qiniu.com/activity/qvm0rmbv2?entry=www-index-banner-6' }
-      ]
+      order: 6,
+      buttonTexts: ['立即抢购']
     }
   ] as Banner[])
-  // return get(mongoApiPrefix + '/www-homepage-banner')
-  //   .then(res => sortByOrder(getFilteredList(handleResponseData(res))))
 }
 
 export type Activity = {

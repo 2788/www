@@ -1,6 +1,5 @@
 import React, { PropsWithChildren, ReactElement, useRef, useState } from 'react'
 import classnames from 'classnames'
-import { useRouter } from 'next/router'
 import { Product, priceUrlMap } from 'constants/products'
 import Link from 'components/Link'
 
@@ -57,8 +56,7 @@ type ItemLinkProps = PropsWithChildren<{
 }>
 
 export function ItemWithLink({ href, children }: ItemLinkProps) {
-  const { pathname } = useRouter()
-  const linkClassName = classnames(style.itemText, style.link, href === pathname && 'active')
+  const linkClassName = classnames(style.itemText, style.link)
   return (
     <div className={style.item}>
       <Link href={href} className={linkClassName}>{children}</Link>

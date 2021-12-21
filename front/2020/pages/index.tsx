@@ -12,12 +12,10 @@ import Layout from 'components/Layout'
 import PageBanner from 'components/pages/index/PageBanner'
 
 import { useApiWithParams } from 'hooks/api'
-import { useMobile } from 'hooks/ua'
 import { isDark } from 'utils/color'
 
 import { headerThemeContext } from 'components/Header/Pc'
 import Activities from 'components/pages/index/Activities'
-import ProductsForMobile from 'components/pages/index/Products'
 import CloudProduct from 'components/pages/index/CloudProduct'
 import Solutions from 'components/pages/index/Solutions'
 import Cases from 'components/pages/index/Cases'
@@ -47,7 +45,6 @@ function PageContent(
     getBanners,
     { params: [] }
   )
-  const isMobile = useMobile()
   const contextValue = useContext(context)
   const banners = currentBanners || preBanners
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -76,7 +73,7 @@ function PageContent(
 
       <Activities activities={currentActivities || preActivities} />
 
-      {isMobile ? <ProductsForMobile /> : <CloudProduct />}
+      <CloudProduct />
 
       <Solutions />
 

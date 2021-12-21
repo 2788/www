@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import cls from 'classnames'
 import { chunk } from 'lodash'
 import Link from 'components/Link'
@@ -8,7 +8,7 @@ import style from './style.less'
 
 export default function Pc() {
   return (
-    <>
+    <div className={style.wrapper}>
       {
         chunk(cardData, 4).map((group, i) => (
           <div className={style.row} key={i}>
@@ -20,19 +20,14 @@ export default function Pc() {
           </div>
         ))
       }
-    </>
+    </div>
   )
 }
 
 function Card({ url, title, desc, iconUrl, backgroundImgUrl, cases }: CardProps) {
-  const [active, setActive] = useState(false)
   return (
-    <LayoutCard
-      className={cls(style.card, active && style.active)}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-    >
-      <Link href={url || '#'}>
+    <LayoutCard className={style.card}>
+      <Link href={url || '#'} className={style.link}>
         <div className={style.bgImg} style={{ ...defaultBgStyle, backgroundImage: `url(${backgroundImgUrl})` }} />
         <div className={style.overlay} ></div>
         <div className={style.contentWrapper}>
