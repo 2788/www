@@ -78,7 +78,9 @@ export enum Product {
   /** Web 应用防火墙 */
   WAF = 'waf',
   /** 音画质量分析 */
-  Qoe = 'qoe'
+  Qoe = 'qoe',
+  /** 专有云计算 */
+  Qec = 'qec'
 }
 
 // TODO: 这个再核对一遍
@@ -120,7 +122,8 @@ export const nameMap = {
   [Product.Beautysdk]: '美颜特效 SDK',
   [Product.Tts]: '语音合成',
   [Product.WAF]: 'Web 应用防火墙',
-  [Product.Qoe]: '音画质量分析'
+  [Product.Qoe]: '音画质量分析',
+  [Product.Qec]: '专有云计算'
 } as const
 
 export const urlMap = {
@@ -160,7 +163,8 @@ export const urlMap = {
   [Product.Beautysdk]: '/products/beautysdk',
   [Product.Tts]: '/products/tts',
   [Product.WAF]: '/products/waf',
-  [Product.Qoe]: '/products/qoe'
+  [Product.Qoe]: '/products/qoe',
+  [Product.Qec]: '/products/qec'
 } as const
 
 export const priceUrlMap = {
@@ -200,7 +204,8 @@ export const priceUrlMap = {
   [Product.Beautysdk]: null,
   [Product.Tts]: '/prices/tts',
   [Product.WAF]: null,
-  [Product.Qoe]: null
+  [Product.Qoe]: null,
+  [Product.Qec]: null
 } as const
 
 export const descMap = {
@@ -244,7 +249,8 @@ export const descMap = {
   [Product.Beautysdk]: '丰富多样的美颜特效功能，广泛应用于各类图像、视频与互动直播等场景',
   [Product.Tts]: '采用先进的深度神经网络模型技术，将文本转化成拟人化语音',
   [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击',
-  [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统'
+  [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统',
+  [Product.Qec]: '针对企业级市场使用特点，为客户量身打造的开放、统一、可信的云计算平台'
 } as const
 
 export enum Category {
@@ -316,7 +322,7 @@ export function normalizeProduct(val: Product | PartialProductData): ProductData
 export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] } = {
   [SubCategory.ServiceStorage]: [Product.Kodo, Product.Archive],
   [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
-  [SubCategory.ServiceBasis]: [Product.Qvm, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
+  [SubCategory.ServiceBasis]: [Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
   [SubCategory.MediaAudio]: [
     { product: Product.Kodo, name: '音视频存储', desc: '为音视频多媒体数据提供高可靠、高可用和高性能的对象存储服务' },
     Product.DoraAudio,

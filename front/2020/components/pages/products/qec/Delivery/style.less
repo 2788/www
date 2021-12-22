@@ -1,0 +1,46 @@
+@import '~utils/less/index.less';
+
+.card {
+  display: flex;
+  flex: 1;
+  padding: 22px 38px 22px 24px;
+  text-align: left;
+
+  + .card {
+    margin-left: 24px;
+  }
+
+  .mobile({
+    margin-bottom: 24px;
+
+    + .card {
+      margin-left: 0;
+    }
+  });
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 24px;
+}
+
+.title {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.desc {
+  font-size: 14px;
+  color: @grey-6;
+}
