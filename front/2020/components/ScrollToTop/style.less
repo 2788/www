@@ -1,0 +1,21 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  .floatingBar();
+
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 50px;
+  right: @floating-bar-pc-right;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  z-index: @operation-entry-z-index;
+  cursor: pointer;
+
+  &.hidden {
+    visibility: hidden;
+  }
+}

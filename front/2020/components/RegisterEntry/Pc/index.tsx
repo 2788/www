@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import IconTextEntry from 'components/IconTextEntry'
+import IconTextEntry from 'components/IconTextEntryV2'
 
 import IconHead from './head.svg'
 import styles from './style.less'
@@ -16,7 +16,7 @@ export default function PcRegisterEntry() {
         icon={<IconHead />}
         href="https://portal.qiniu.com/signup"
       >
-        免费<br />注册
+        免费注册
       </IconTextEntry>
     </div>
   )

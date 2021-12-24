@@ -30,7 +30,7 @@ class __MeihuaApiException extends fetchUtils.ApiException<MeihuaApiExceptionBod
   constructor(
     meihuaData: MeihuaBody,
     message: string,
-    code?: number
+    code: number
   ) {
     super(
       {
@@ -54,7 +54,7 @@ class __MeihuaApiException extends fetchUtils.ApiException<MeihuaApiExceptionBod
 // 4、有 `data` 就应该去掉 `response` 或者换成真正的 `Response` 这里只是为了跟 `ApiException` 保持一致以保证全局用法统一
 declare class _MeihuaApiException extends __MeihuaApiException {
   // these fields will be inited in super class
-  code?: number
+  code: number
   response: { data: MeihuaApiExceptionBody }
   data: MeihuaApiExceptionBody
 }
@@ -78,7 +78,7 @@ function createMeihuaFetch<T extends ((...args: any) => any)>(fetchFn: T): T {
     (error: unknown) => {
       if (error instanceof fetchUtils.ApiException && isMeihuaBody(error.data)) {
         // 基础版本的 fetch 抛出的 code 都是 number 类型的 http status code
-        const httpStatusCode = error.code as (number | undefined)
+        const httpStatusCode = error.code as number
         throw new MeihuaApiException(error.data, error.data.msg || error.message, error.data.code || httpStatusCode)
       }
       throw error

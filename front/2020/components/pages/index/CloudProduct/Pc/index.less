@@ -24,7 +24,7 @@
       }
     
       .btn:global(.active) {
-        color: #07BEFF;
+        color: @primary-color;
         background: rgba(7, 190, 255, 0.05);
       }
     }
@@ -33,7 +33,7 @@
       display: inline-block;
       width: auto;
       padding: 0 24px;
-      border: 1px solid #E5EDF4;
+      border: 1px solid @border-color;
       background: @grey-1;
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
   
@@ -42,13 +42,13 @@
       });
     
       &:hover {
-        color: #07BEFF;
+        color: @primary-color;
         background: @grey-1;
-        border-color: #E5EDF4;
+        border-color: @border-color;
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   
         .arrow path{
-          fill: #07BEFF;
+          fill: @primary-color;
         }
       }
     
@@ -87,7 +87,7 @@
 
 .overlay {
   padding: 20px;
-  border: 1px solid #E5EDF4;
+  border: 1px solid @border-color;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   background: @grey-1;
@@ -105,7 +105,7 @@
     font-size: 14px;
 
     &:hover {
-      color: #07BEFF;
+      color: @primary-color;
     }
 
     &:first-child {

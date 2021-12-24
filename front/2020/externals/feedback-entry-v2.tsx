@@ -1,12 +1,12 @@
 /**
- * @file 用户反馈入口 V1
- * @description 用户反馈入口 对应的 HTML 片段，用于外部集成
- * @deprecated 待其他站点切换为 feedback-entry-v2 后这里（及对应的依赖）可以删除
+ * @file 用户反馈入口 V2
+ * @description 用户反馈入口（含滚动到顶部的按钮）对应的 HTML 片段，用于外部集成
  */
 
 import React, { useEffect } from 'react'
 import Layout from 'components/Layout/External'
-import { Entry as FeedbackEntry, useModal } from 'components/Feedback'
+import { EntryV2 as FeedbackEntry, useModal } from 'components/Feedback'
+import ScrollToTop from 'components/ScrollToTop'
 import { register } from './helper'
 
 // 调起反馈浮层的函数
@@ -27,10 +27,11 @@ function FeedbackInvoker() {
   return null
 }
 
-register('feedback-entry', () => (
+register('feedback-entry-v2', () => (
   <Layout>
     <FeedbackInvoker />
     <FeedbackEntry />
+    <ScrollToTop />
   </Layout>
 ), {
   showModal() {

@@ -19,6 +19,7 @@ const externals = [
   'header',
   'footer',
   'feedback-entry',
+  'feedback-entry-v2',
   'cps-visit-reporter'
 ]
 

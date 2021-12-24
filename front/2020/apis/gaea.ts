@@ -15,14 +15,20 @@ export interface UserInfo {
   is_certified: boolean
 }
 
+interface GetUserInfoBody {
+  code: number
+  data?: UserInfo
+}
+
+export enum GetUserInfoErrorCode {
+  Unauthorized = 401
+}
+
 /** 获取用户信息 */
 export async function getUserInfo(): Promise<UserInfo> {
-  const res = await get(`${apiPrefix}/api/developer-view/overview`)
-
-  // TODO: 需要封装
-  if (!(res && res.code === 200 && res.data)) {
-    throw new ApiException(res, '获取用户信息失败')
+  const res: GetUserInfoBody = await get(`${apiPrefix}/api/developer-view/overview`)
+  if (res.code !== 200) {
+    throw new ApiException(res, '获取用户信息失败', res.code)
   }
-
-  return res.data
+  return res.data!
 }

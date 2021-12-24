@@ -3,13 +3,15 @@
  */
 
 import React, { createContext, useContext, PropsWithChildren, useEffect, useState } from 'react'
-import { getUserInfo } from 'apis/gaea'
+import { getUserInfo, GetUserInfoErrorCode } from 'apis/gaea'
 import { login as sensorsLogin } from 'utils/sensors'
 import { useQueryValue } from 'hooks/url'
+import { ApiException } from 'utils/fetch'
 
 export interface UserInfo {
-  email: string
+  /** 是否已登录 */
   signedIn: boolean
+  email: string
   name: string
   uid: number
   is_certified: boolean
@@ -48,9 +50,17 @@ export function Provider({ children }: PropsWithChildren<{}>) {
           })
           setIsLoading(false)
         }
-      }, () => {
-        if (!cancelled) {
-          setIsLoading(false)
+      }, (e: unknown) => {
+        if (cancelled) return
+        setIsLoading(false)
+        if (e instanceof ApiException && e.code === GetUserInfoErrorCode.Unauthorized) {
+          setUserinfo({
+            signedIn: false,
+            email: '',
+            name: '',
+            uid: 0,
+            is_certified: false
+          })
         }
       })
       return () => {
@@ -75,7 +85,7 @@ export function Provider({ children }: PropsWithChildren<{}>) {
   )
 }
 
-/** 获取当前用户信息 */
+/** 获取当前用户信息，若返回 `null` 表示正在获取用户信息，或加载用户信息失败 */
 export function useUserInfo(): UserInfo | null {
   return useContext(context)
 }

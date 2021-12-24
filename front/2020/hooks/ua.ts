@@ -2,7 +2,8 @@
  * @file 浏览器相关 hooks
  */
 
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
+import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect'
 
 export type Ua = {
   isPcLg?: boolean
@@ -69,4 +70,28 @@ export function useOs() {
     throw new Error('Invalid os value, useOs should be used under UaContext.Provider')
   }
   return os
+}
+
+export interface ViewportSize {
+  width: number
+  height: number
+}
+
+export function useViewportSize() {
+  const [size, setSize] = useState<ViewportSize | null>(null)
+
+  function syncSize() {
+    setSize({
+      width: window.innerWidth,
+      height: window.innerHeight
+    })
+  }
+
+  useIsomorphicLayoutEffect(() => {
+    syncSize()
+    window.addEventListener('resize', syncSize)
+    return () => window.removeEventListener('resize', syncSize)
+  }, [])
+
+  return size
 }

@@ -13,7 +13,7 @@ export class ApiException<T> extends Error {
   constructor(
     public data: T,
     public message: string,
-    public code?: number | string
+    public code: number | string
   ) {
     super(message)
     this.response = { data }

@@ -1,3 +1,5 @@
+@import "~utils/less/index.less";
+
 .menu {
   :global {
     .rc-menu-item {
@@ -10,13 +12,13 @@
         padding-bottom: 12px;
 
         &:hover {
-          color: #07BEFF;
+          color: @primary-color;
         }
       }
     }
 
     .rc-menu-submenu-open > .rc-menu-submenu-title {
-      color: #07BEFF ! important;
+      color: @primary-color ! important;
     }
 
     .rc-menu li { // 非一级标题下面都不应该有线

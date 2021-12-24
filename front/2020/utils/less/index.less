@@ -23,7 +23,7 @@
 @screen-lg: 1600px;
 
 .mobile(@rules) {
-  @media only screen and (max-width: @screen-sm - 1) {
+  @media only screen and (max-width: (@screen-sm - 1)) {
     @rules();
   }
 }
@@ -35,13 +35,13 @@
 }
 
 .pcLessMd(@rules) {
-  @media only screen and (max-width: @screen-md - 1) {
+  @media only screen and (max-width: (@screen-md - 1)) {
     @rules();
   }
 }
 
 .pcLessLg(@rules) {
-  @media only screen and (max-width: @screen-lg - 1) {
+  @media only screen and (max-width: (@screen-lg - 1)) {
     @rules();
   }
 }
@@ -204,5 +204,21 @@
 
   li {
     list-style: none;
+  }
+}
+
+// 页面右下角浮动条离页面右侧的距离
+@floating-bar-pc-right: 16px;
+@floating-bar-mobile-right: 16px;
+
+// 页面右下角浮动条（如“回到顶部”、“免费注册”、“联系我们”等）的公共样式
+.floatingBar() {
+  border: 1px solid @border-color;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+  background-color: @grey-1;
+
+  color: @grey-7;
+  &:hover {
+    color: @primary-color;
   }
 }
