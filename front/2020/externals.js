@@ -28,13 +28,12 @@ const outputPath = resolve('.next')
 const finalOutputPath = resolve('out')
 
 // 生成 loader 文件到 out 目录
-function generateLoader(assetPrefix) {
+function generateLoader() {
   const loaderJs = readFileSync(resolve('externals/loader.js'), { encoding: 'utf8' })
   const manifest = require(join(outputPath, 'manifest.json'))
-  assetPrefix = assetPrefix.endsWith('/') ? assetPrefix : (assetPrefix + '/')
   const simplifiedManifest = Object.keys(manifest).reduce((o, key) => {
-    if (key.indexOf('externals') === 0 && key.slice(-4) !== '.map') {
-      o[key] = assetPrefix + '_next/' + manifest[key]
+    if (key.indexOf('externals/') === 0 && key.slice(-4) !== '.map') {
+      o[key] = manifest[key]
     }
     return o
   }, {})
@@ -83,7 +82,11 @@ async function main() {
 
   console.log('entries:', webpackConfig.entry)
 
+  let assetPrefix = nextConfig.assetPrefix
+  assetPrefix = assetPrefix.endsWith('/') ? assetPrefix : (assetPrefix + '/')
+
   webpackConfig.output = {
+    publicPath: assetPrefix + '_next/',
     path: outputPath,
     filename: 'static/[name].[contenthash].js',
     jsonpFunction: `webpackJsonpForExternals`
@@ -107,7 +110,7 @@ async function main() {
 
   await runCompiler(webpackConfig)
   exportFiles()
-  generateLoader(nextConfig.assetPrefix)
+  generateLoader()
   console.log('done')
 }
 

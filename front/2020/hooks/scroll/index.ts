@@ -58,7 +58,8 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
 
   const scrollTo = useCallback((top: number, duration = defaultScrollDuration) => {
     if (duration <= 0 || !MoveToRef.current) {
-      window.scroll({ top })
+      // TODO: 确认下，`behavior: 'smooth'` 够靠谱的话，也许可以干掉 moveto
+      window.scroll({ top, behavior: 'smooth' })
       return
     }
     const MoveToConstr = MoveToRef.current
