@@ -2,17 +2,17 @@ import { get } from 'utils/fetch'
 import { mongoApiPrefix, getFilteredList, sortByOrder, handleResponseData } from '.'
 
 import pcStrategy from './banners/pc/strategy.jpg'
-import pc1212 from './banners/pc/1212.jpg'
+import pcNewUser from './banners/pc/new-user.jpg'
 import pcCps from './banners/pc/cps.jpg'
 import pcQvm from './banners/pc/qvm.jpg'
 import pcStorage from './banners/pc/storage.jpg'
-import pcQvmNewcomer from './banners/pc/qvm-newcomer.jpg'
+import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
 import mobileStrategy from './banners/mobile/strategy.jpg'
-import mobile1212 from './banners/mobile/1212.jpg'
+import mobileNewUser from './banners/mobile/new-user.jpg'
 import mobileCps from './banners/mobile/cps.jpg'
 import mobileQvm from './banners/mobile/qvm.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
-import mobileQvmNewcomer from './banners/mobile/qvm-newcomer.jpg'
+import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
 
 export type Banner = {
   name: string
@@ -36,16 +36,19 @@ export function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
   return Promise.resolve([
     {
-      name: '双十二',
-      pcImg: pc1212,
-      mobileImg: mobile1212,
+      name: '云存储',
+      title: '云存储 Kodo 永久 0 元享用',
+      desc: '注册即可每月免费使用 10GB 标准存储空间',
+      pcImg: pcStorage,
+      mobileImg: mobileStorage,
       effectedAt: 0,
       invalidAt: 0,
       createdAt: 0,
       updatedAt: 0,
-      backgroundColor: '#191e2d',
-      href: 'https://marketing.qiniu.com/activity/2021-1212-act?entry=www-top-banner',
-      order: 1
+      backgroundColor: '#ffffff',
+      href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-1',
+      order: 1,
+      buttonTexts: ['免费领用']
     },
     {
       name: '战略发布会',
@@ -85,31 +88,31 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/2021-12-qvmact?entry=www-index-banner-2',
+      href: 'https://marketing.qiniu.com/activity/2021-12-qvmact?entry=www-index-banner-4',
       order: 4,
       buttonTexts: ['立即抢购']
     },
     {
-      name: '云存储',
-      title: '云存储 Kodo 永久 0 元享用',
-      desc: '注册即可每月免费使用 10GB 标准存储空间',
-      pcImg: pcStorage,
-      mobileImg: mobileStorage,
+      name: '新人特价活动',
+      title: '新用户专享超低折扣',
+      desc: '云产品首单钜惠 存储低至 1 折',
+      pcImg: pcNewUser,
+      mobileImg: mobileNewUser,
       effectedAt: 0,
       invalidAt: 0,
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-2',
+      href: 'https://marketing.qiniu.com/activity/newuser-act?entry=www-index-banner-5',
       order: 5,
-      buttonTexts: ['免费领用']
+      buttonTexts: ['立即购买']
     },
     {
       name: '云主机新人',
       title: '云主机新人专场',
       desc: '0 元享用 8 款云主机 4核8G 服务器免费用',
-      pcImg: pcQvmNewcomer,
-      mobileImg: mobileQvmNewcomer,
+      pcImg: pcQvmNewUser,
+      mobileImg: mobileQvmNewUser,
       effectedAt: 0,
       invalidAt: 0,
       createdAt: 0,
