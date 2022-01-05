@@ -6,7 +6,6 @@ import (
 	"gopkg.in/mgo.v2/bson"
 	"net/http"
 	"strings"
-	"sync"
 	"time"
 
 	"github.com/go-redis/redis/v7"
@@ -23,7 +22,6 @@ import (
 
 const (
 	redisKeyPrefix     = "www:admin-backend:send-msg:"
-	maxGoroutine       = 10
 	redisKeyExpireTime = 10 // 单位：分钟
 )
 
@@ -55,118 +53,6 @@ func NewCronJobService(conf *config.Config) *CronJobService {
 	}
 }
 
-// TODO: 等没有历史数据未提醒，去掉该方法
-func (f *CronJobService) Run() {
-	// 保证服务先跑起来以后再执行定时任务
-	time.Sleep(5 * time.Second)
-	ticker := time.NewTicker(time.Duration(f.conf.SendMessageTaskInterval) * time.Minute)
-	for {
-		logger := xlog.NewDummy()
-		activs, err := f.getNeedSendMsgActivs(logger)
-		if err != nil {
-			logger.Errorf("getNeedSendMsgActivs error :%v", err)
-			return
-		}
-
-		ch := make(chan bool, maxGoroutine)
-		wg := &sync.WaitGroup{}
-		for _, activ := range activs {
-			// 添加分布式锁保证同一时间只有一个协程在处理当前活动
-			key := fmt.Sprintf("%s%s", redisKeyPrefix, activ.Id.Hex())
-			value := time.Now().UnixNano()
-			ok, err := f.tryLock(key, value)
-			if err != nil {
-				logger.Errorf("tryLock key(%s) error :%v", key, err)
-				continue
-			}
-			if !ok {
-				logger.Warnf("tryLock key(%s) failed", key)
-				continue
-			}
-
-			activEnd := make(chan bool)
-			// 定时给锁加过期时间或者释放锁
-			go f.addLockExpireTimeOrUnlock(logger.SpawnWithCtx(), activEnd, key, value)
-			go f.send(logger.SpawnWithCtx(), wg, ch, activEnd, activ)
-		}
-		wg.Wait()
-		<-ticker.C
-	}
-}
-
-func (f *CronJobService) send(logger *xlog.Logger, wg *sync.WaitGroup, ch, activEnd chan bool, activity models.PartOfMarketActivity) {
-	defer func() {
-		wg.Done()
-		<-ch
-		activEnd <- true
-	}()
-
-	wg.Add(1)
-	ch <- true
-
-	// 查询当前任务是否已完成
-	err := f.mongoApiService.Get(logger, f.conf.MarketActivityResourceName, activity.Id.Hex(), &activity)
-	if err != nil {
-		logger.Errorf("mongoApiService get activityId(%s) error :%v", activity.Id.Hex(), err)
-		return
-	}
-	if activity.NoticeStatus == 2 {
-		return
-	}
-
-	// 更新活动表通知状态为正在进行中
-	update := map[string]interface{}{
-		"noticeStatus": 1,
-	}
-	err = f.mongoApiService.Update(logger, f.conf.MarketActivityResourceName, activity.Id.Hex(), update, nil)
-	if err != nil {
-		logger.Errorf("mongoApiService update marketActivityId(%s) noticeStatus equals 1 error :%v", activity.Id.Hex(), err)
-		return
-	}
-
-	for {
-		users, err := f.getNeedSendMsgUsers(logger, activity.Id.Hex(), f.conf.SMSBatchLimit)
-		if err != nil {
-			logger.Errorf("getNeedSendMsgUsers activityId(%s) error :%v", activity.Id.Hex(), err)
-			return
-		}
-
-		if len(users) == 0 {
-			break
-		}
-
-		var ids []bson.ObjectId
-		for _, user := range users {
-			ids = append(ids, user.Id)
-		}
-
-		jobId, err := f.batchSend(users, activity, logger)
-		if err != nil {
-			logger.Errorf("f.batchSend error: %v", err)
-			return
-		}
-		// 用户报名表写入短信通知结果
-		err = f.setSMSResult(logger, ids, jobId)
-		if err != nil {
-			return
-		}
-
-		if len(users) < f.conf.SMSBatchLimit {
-			break
-		}
-	}
-
-	// 更新活动表通知状态为已完成
-	update = map[string]interface{}{
-		"noticeStatus": 2,
-	}
-	err = f.mongoApiService.Update(logger, f.conf.MarketActivityResourceName, activity.Id.Hex(), update, nil)
-	if err != nil {
-		logger.Errorf("set marketActivityId(%s) noticeStatus equals 2 error :%v", activity.Id, err)
-	}
-	return
-}
-
 func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity models.PartOfMarketActivity,
 	logger *xlog.Logger) (jobId string, err error) {
 
@@ -185,69 +71,6 @@ func (f *CronJobService) batchSend(users []models.ActivityRegistration, activity
 		})
 	}
 	return f.morseService.BatchSendSms(logger, in, f.conf.SMSTemplates.ActivityReminder)
-}
-
-func (f *CronJobService) setSMSResult(logger *xlog.Logger, ids []bson.ObjectId, jobId string) (err error) {
-	bsonQuery := map[string]interface{}{
-		"_id": map[string]interface{}{"$in": ids},
-	}
-	updates := map[string]interface{}{"hasBeenSent": true, "smsJobId": jobId}
-
-	param := mongoClient.BatchUpdateParam{
-		BsonQuery:  bsonQuery,
-		UpdateBody: updates,
-	}
-	err = f.mongoApiService.BatchUpdate(logger, f.conf.ActivityRegistrationResourceName, param, nil)
-	if err != nil {
-		logger.Errorf("mongoApiService BatchUpdate ids(%v) error :%v", ids, err)
-	}
-	return
-}
-
-func (f *CronJobService) getNeedSendMsgActivs(logger *xlog.Logger) (activs []models.PartOfMarketActivity, err error) {
-	now := time.Now().Unix()
-	query := map[string]interface{}{
-		"state":          1,
-		"enableReminder": true,
-		"noticeStatus":   bson.M{"$ne": 2},
-		"startTime":      bson.M{"$gt": now},
-		"$expr": bson.M{"$lte": []interface{}{
-			"$startTime", bson.M{
-				"$add": []interface{}{
-					bson.M{"$multiply": []interface{}{"$reminderTime", 60}}, now,
-				},
-			},
-		}},
-	}
-	listQuery := mongoClient.ListQuery{
-		Query: query,
-	}
-
-	var listRes struct {
-		Data []models.PartOfMarketActivity `json:"data"`
-	}
-
-	err = f.mongoApiService.List(logger, f.conf.MarketActivityResourceName, listQuery, &listRes)
-
-	return listRes.Data, err
-}
-
-func (f *CronJobService) getNeedSendMsgUsers(logger *xlog.Logger, activityId string, limit int) (users []models.ActivityRegistration, err error) {
-	query := map[string]interface{}{
-		"hasBeenSent":      false,
-		"marketActivityId": activityId,
-	}
-	listQuery := mongoClient.ListQuery{
-		Limit: fmt.Sprint(limit),
-		Query: query,
-	}
-
-	var listRes struct {
-		Data []models.ActivityRegistration `json:"data"`
-	}
-
-	err = f.mongoApiService.List(logger, f.conf.ActivityRegistrationResourceName, listQuery, &listRes)
-	return listRes.Data, err
 }
 
 func (f *CronJobService) tryLock(key string, value int64) (ok bool, err error) {

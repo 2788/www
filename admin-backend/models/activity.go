@@ -41,8 +41,6 @@ type ActivityRegistration struct {
 	Department              string                         `json:"department"`   // 部门
 	Position                string                         `json:"position"`     // 职位
 	Relationship            string                         `json:"relationship"` // 和 qiniu 的关系
-	HasBeenSent             bool                           `json:"hasBeenSent"`  // deprecated TODO: 删除
-	SMSJobId                string                         `json:"smsJobId"`     // deprecated TODO: 删除
 	Reminders               []ActivityRegistrationReminder `json:"reminders"`
 	CreatedAt               int64                          `json:"createdAt"`
 	UpdatedAt               int64                          `json:"updatedAt"`
@@ -57,12 +55,9 @@ type PartOfMarketActivity struct {
 	EnableReminder  bool          `json:"enableReminder"`  // 是否开启提醒
 	StartTime       int64         `json:"startTime"`       // 活动开始时间
 	DetailUrlPrefix string        `json:"detailUrlPrefix"` // 详情页面 url 前缀
-	// TODO: 删除 `NoticeStatus` 字段
-	// NoticeStatus 该字段已废弃，为兼容现有逻辑而保留，当不再有旧数据未处理时就会去掉这个字段
-	NoticeStatus int       `json:"noticeStatus"`
-	ApplyEndTime int64     `json:"applyEndTime"` // 报名截止时间
-	Reminders    Reminders `json:"reminders"`    // 活动提醒
-	Sessions     []session `json:"sessions"`     // 活动场次
+	ApplyEndTime    int64         `json:"applyEndTime"`    // 报名截止时间
+	Reminders       Reminders     `json:"reminders"`       // 活动提醒
+	Sessions        []session     `json:"sessions"`        // 活动场次
 }
 
 // session 定义活动场次结构
