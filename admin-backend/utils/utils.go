@@ -17,7 +17,7 @@ const RedisKeyPrefix = "uxd:www:admin-backend"
 
 var (
 	EmailPattern       = regexp.MustCompile("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[a-zA-Z0-9](?:[\\w-]*[\\w])?")
-	MobilePhonePattern = regexp.MustCompile(`^(13[0-9]|14[579]|15[012356789]|166|17[1235678]|18[0-9]|19[0-9])[0-9]{8}$`)
+	MobilePhonePattern = regexp.MustCompile(`^1\d{10}$`)
 )
 
 // GetCheckinLinkUrl 获取用户报名签到链接
