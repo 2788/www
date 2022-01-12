@@ -53,7 +53,7 @@ export enum Product {
   OpenAPI = 'openapi',
   /** 票证自动识别（OCR） */
   Ocr = 'ocr',
-  /** PCDN */
+  /** 边缘加速 */
   Pcdn = 'pcdn',
   /** 直播特效 SDK */
   Plesdk = 'plesdk',
@@ -110,7 +110,7 @@ export const nameMap = {
   [Product.Qvs]: '视频监控 QVS',
   [Product.OpenAPI]: 'AI 开放市场',
   [Product.Ocr]: '票证自动识别 OCR',
-  [Product.Pcdn]: 'PCDN',
+  [Product.Pcdn]: '边缘加速',
   [Product.Plesdk]: '直播特效 SDK',
   [Product.Geek]: '低延时直播 Geek',
   [Product.Vii]: '视频智能分析',
