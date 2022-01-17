@@ -99,7 +99,10 @@
       color: @grey-6;
 
       p {
-        margin-top: 2px;
+        // 这里稍微防御一下，避免 externals 模式下加被外站样式影响
+        margin: 2px 0 0;
+        font-size: inherit;
+        line-height: inherit;
       }
     }
 
