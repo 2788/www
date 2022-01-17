@@ -1,13 +1,13 @@
 import { get } from 'utils/fetch'
 import { mongoApiPrefix, getFilteredList, sortByOrder, handleResponseData } from '.'
 
-import pcStrategy from './banners/pc/strategy.jpg'
+import pcCloudProducts from './banners/pc/cloud-products.jpg'
 import pcNewUser from './banners/pc/new-user.jpg'
 import pcCps from './banners/pc/cps.jpg'
 import pcQvm from './banners/pc/qvm.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
-import mobileStrategy from './banners/mobile/strategy.jpg'
+import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
 import mobileCps from './banners/mobile/cps.jpg'
 import mobileQvm from './banners/mobile/qvm.jpg'
@@ -51,16 +51,19 @@ export function getBanners(): Promise<Banner[]> {
       buttonTexts: ['免费领用']
     },
     {
-      name: '战略发布会',
-      pcImg: pcStrategy,
-      mobileImg: mobileStrategy,
+      name: '云产品',
+      title: '免费试用专区 0 元上云',
+      desc: '多款云产品长期免费使用 注册即享超值赠送',
+      pcImg: pcCloudProducts,
+      mobileImg: mobileCloudProducts,
       effectedAt: 0,
       invalidAt: 0,
       createdAt: 0,
       updatedAt: 0,
-      backgroundColor: '#191e2d',
-      href: 'https://www.qiniu.com/activity/detail?id=619ca0150d50910aa577e1fe',
-      order: 2
+      backgroundColor: '#ffffff',
+      href: 'https://marketing.qiniu.com/activity/act-free?entry=www-index-banner-2',
+      order: 2,
+      buttonTexts: ['免费领用']
     },
     {
       name: 'cps',
