@@ -13,6 +13,7 @@ import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -23,7 +24,11 @@ import RiskControlAdvantages from 'components/pages/risk-control/Advantages'
 import imgBanner from './_images/banner.png'
 
 function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
-  const btns = useBtns({ href: 'https://jinshuju.net/f/cwtofb', children: '立即申请' })
+  const priceUrl = urlForPrice(Product.RiskControl)
+  const btns = useBtns(
+    { href: 'https://jinshuju.net/f/cwtofb', children: '立即申请' },
+    { children: '查看价格', href: priceUrl }
+  )
 
   return (
     <>

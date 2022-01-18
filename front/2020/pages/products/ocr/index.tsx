@@ -11,10 +11,10 @@ import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
 
 import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
-import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/ocr/Advantage'
 import OcrProduct from 'components/pages/ocr/Product'
 import Function from 'components/pages/ocr/Function'
@@ -31,9 +31,10 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
 
   const { startConsulting } = useFeedbackModal()
 
-  const priceUrl = 'https://developer.qiniu.com/dora/api/7038/pricingofOCR'
+  const priceUrl = urlForPrice(Product.Ocr)
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: startConsulting, children: '立即咨询' },
+    { children: '查看价格', href: priceUrl }
   )
 
   const isMobile = useMobile()
@@ -48,8 +49,6 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
         icon={banner} />
 
       <ProductNotice notices={notices} />
-
-      <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
       <OcrProduct />
 

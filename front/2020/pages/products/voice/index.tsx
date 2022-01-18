@@ -16,6 +16,7 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 
 import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -35,9 +36,11 @@ const pageInfo = {
 
 export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const { startConsulting } = useFeedbackModal()
+  const priceUrl = urlForPrice(Product.Voice)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: startConsulting, children: '立即咨询' },
+    { children: '查看价格', href: priceUrl }
   )
 
   return (

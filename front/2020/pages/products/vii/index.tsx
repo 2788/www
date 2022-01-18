@@ -8,6 +8,7 @@ import { InferGetStaticPropsType } from 'next'
 import { useBtns } from 'hooks/product-btn'
 import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
 import { Product } from 'constants/products'
+import { urlForPrice } from 'utils/route'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
 import Scenes from 'components/pages/vii/Scene'
@@ -30,10 +31,12 @@ const pageInfo = {
 
 function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
   const { startConsulting } = useFeedbackModal()
+  const priceUrl = urlForPrice(Product.Vii)
 
   const bannerBtns = useBtns(
     { href: 'https://portal.qiniu.com/vii/tasks', children: '立即使用', pcOnly: true },
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: startConsulting, children: '立即咨询' },
+    { children: '查看价格', href: priceUrl }
   )
 
   return (
