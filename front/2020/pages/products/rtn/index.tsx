@@ -18,6 +18,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
+import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 
 import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
@@ -153,6 +154,12 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
           <LinkItem href="https://developer.qiniu.com/rtc/8805/server-overview">服务端开发手册</LinkItem>
         </LinkGroup>
       </LinkGroups>
+
+      <UsageGuide title="现在开始使用，每月即享 20000 分钟免费时长">
+        <UsageGuideButton href="https://portal.qiniu.com/rtn/app">
+          开始使用
+        </UsageGuideButton>
+      </UsageGuide>
     </>
   )
 }

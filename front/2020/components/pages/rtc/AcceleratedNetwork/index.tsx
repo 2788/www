@@ -27,12 +27,12 @@ function Advantage({ title, children }: PropsWithChildren<AdvantageProps>) {
 export function Advantages() {
   return (
     <div className={styles.advantages}>
-      <Advantage title="全球节点">全球节点 180+<br />支持全球 200+ 国家和地区互动</Advantage>
-      <Advantage title="实时性">延迟 150ms 左右</Advantage>
-      <Advantage title="传输协议">基于 WebRTC<br />接入门槛低，兼容性强，用户体验好</Advantage>
-      <Advantage title="加速方案">全自研边缘加速方案<br />实现信息在全球网络的实时共享交互</Advantage>
-      <Advantage title="调度策略">智能分配流媒体服务器和加速线路<br />快速响应全球实时互动需求</Advantage>
-      <Advantage title="质量监控">网络品质监控与自动调度系统<br />实时优化传输质量</Advantage>
+      <Advantage title="超低延迟">自研 RTC 实时网络智能调度，音视频通信端到端延迟小于 200 ms</Advantage>
+      <Advantage title="超大房间">支持万人规模的超大房间，保障音视频互动各端同步</Advantage>
+      <Advantage title="超强扩展">拥有美颜特效、白板、聊天等功能组件，支持快速扩展</Advantage>
+      <Advantage title="全球节点">全球 200+ 节点可就近接入，可根据业务实际情况动态扩容</Advantage>
+      <Advantage title="快速上线">30 分钟实现视频通话，多场景 demo 及示例代码帮助快速上线</Advantage>
+      <Advantage title="质量透明">全天候质量监测，实时感知各类情况，保障音视频互动体验</Advantage>
     </div>
   )
 }
