@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useRef } from 'react'
+import React, { useState, useMemo, useRef } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, FieldState, ValueOf } from 'formstate-x'
 
@@ -50,13 +50,13 @@ type Props = {
 
 export default observer(function MyModal({ marketActivityId, sessions }: Props) {
   const userInfo = useUserInfo()
-  const createFormState = useCallback(() => (
-    createState({
+  const form = useFormstateX(
+    () => createState({
       ...userInfo,
       marketActivitySessionId: sessions.length === 0 ? 'default' : null
-    })
-  ), [sessions.length, userInfo])
-  const form = useFormstateX(createFormState)
+    }),
+    [sessions.length, userInfo]
+  )
   const { remove: removeModal } = useOverlay()
   const fields = form.$
   const [status, setStatus] = useState(Status.Initial)

@@ -21,8 +21,7 @@ export function useMultiTextInputState(
   textValidator: Validator<string>,
   isDisabled: () => boolean
 ) {
-  const createFormState = useCallback(() => createForm(isDisabled, textValidator), [isDisabled, textValidator])
-  const form = useFormstateX(createFormState)
+  const form = useFormstateX(() => createForm(isDisabled, textValidator), [isDisabled, textValidator])
   const getValidValueWithState = useCallback(() => getValidValue(form, isDisabled), [form, isDisabled])
   const state = useMemo(() => ({
     form,

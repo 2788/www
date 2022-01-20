@@ -9429,10 +9429,10 @@ react-dom@^16.12.0:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-"react-icecream-2@npm:react-icecream@2.0.0-beta.28.1":
-  version "2.0.0-beta.28.1"
-  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.0.0-beta.28.1.tgz#795428bc2b9c029f6ba7b4de6687e49e2e4318f8"
-  integrity sha512-1JvcIdSnozAz/8Q7AsZ1FOKH+VqjDTu0xLnWevf7c3sQU2z2wI7OZLnAQGRkyk0XhS2iW+KhTfHqjYXCqUcjFQ==
+"react-icecream-2@npm:react-icecream@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.2.0.tgz#b9f4b2e960c189eb20f508b9eb1fb4f3334aec6e"
+  integrity sha512-OmE0hWbpTjrrOfCyHyrTmwR2B0OvMgG5DtVJzmkNdFSxXyvyJsRNOHTZ/bybUDTin/OSO5gY5NvZjsQnG6SMiw==
   dependencies:
     "@types/react-table" "^7.0.28"
     classnames "^2.2.5"
@@ -9451,7 +9451,7 @@ react-dom@^16.12.0:
     rc-textarea "^0.3.4"
     rc-tooltip "^5.0.1"
     react-slick "^0.27.13"
-    react-table "git+ssh://git@github.com/huangbinjie/react-table.git#fixUseControlledState"
+    react-table "^7.7.0"
     resize-detector "^0.3.0"
     tslib "^2.0.0"
 
@@ -9521,9 +9521,10 @@ react-slick@~0.24.0:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-"react-table@git+ssh://git@github.com/huangbinjie/react-table.git#fixUseControlledState":
-  version "1.0.0-semantic-release"
-  resolved "git+ssh://git@github.com/huangbinjie/react-table.git#3a66406041088bf730b07c7ce0ae79d99943a15b"
+react-table@^7.7.0:
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.7.0.tgz#e2ce14d7fe3a559f7444e9ecfe8231ea8373f912"
+  integrity sha512-jBlj70iBwOTvvImsU9t01LjFjy4sXEtclBovl3mTiqjz23Reu0DKnRza4zlLtOPACx6j2/7MrQIthIK1Wi+LIA==
 
 react-textarea-autosize@^6.1.0:
   version "6.1.0"

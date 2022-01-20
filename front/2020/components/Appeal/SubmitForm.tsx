@@ -50,7 +50,7 @@ function createState(
 }
 
 function useSubmitState() {
-  const typeField = useFormstateX(createTypeField)
+  const typeField = useFormstateX(createTypeField, [])
 
   const isDomainsStateDisabled = useCallback(() => typeField.value !== AppealType.Domain, [typeField])
   const domainsState = useMultiTextInputState(validateDomain, isDomainsStateDisabled)
@@ -58,11 +58,10 @@ function useSubmitState() {
   const isUrlsStateDisabled = useCallback(() => typeField.value !== AppealType.Url, [typeField])
   const urlsState = useMultiTextInputState(validateUrl, isUrlsStateDisabled)
 
-  const createFormState = useCallback(
+  const form = useFormstateX(
     () => createState(typeField, domainsState.form, urlsState.form),
     [typeField, domainsState.form, urlsState.form]
   )
-  const form = useFormstateX(createFormState)
 
   return {
     domainsState,
@@ -106,11 +105,7 @@ export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () =
         onSubmit={handleSubmit}
         layout="horizontal"
         labelWidth="4em"
-        footer={
-          <div className={style.submitLine}>
-            <FormFooter submitText="提交申诉" />
-          </div>
-        }
+        footer={<FormFooter align="right" submitText="提交申诉" />}
       >
         <FormItem label="标题" required>
           <TextInput state={fields.title} />

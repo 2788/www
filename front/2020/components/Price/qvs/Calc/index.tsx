@@ -61,7 +61,7 @@ function transformShoppingCartProduct(state: State): Product {
 }
 
 export default observer(function QvsCalc() {
-  const state = useFormstateX(createState)
+  const state = useFormstateX(createState, [])
   const addProduct = useShoppingCart()
 
   function handleAdd() {
