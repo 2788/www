@@ -9,7 +9,7 @@ import { PartialProductData, normalizeProduct, Product } from 'constants/product
 import { useModal } from 'components/Feedback'
 import { useDropdown } from 'components/UI/Dropdown'
 import { joinText } from 'utils/text'
-import Section, { ContentSectionItem } from '../../../Overlay/Content/Section'
+import Section, { ContentSectionItem, ItemProps } from '../../../Overlay/Content/Section'
 
 type Props = {
   title: string
@@ -17,10 +17,11 @@ type Props = {
   partialProductDatas: PartialProductData[]
 }
 
-// 需要加热门的产品目录
-const hotProducts = [
-  Product.Qvm
-]
+// 产品对应的热门内容
+const productHotMap = {
+  [Product.Qvm]: true,
+  [Product.Qec]: 'New'
+} as { [k in Product]: ItemProps['hot'] }
 
 export default function ContentSection({ title, url, partialProductDatas }: Props) {
   return (
@@ -38,7 +39,7 @@ function ListItem({ partialProductData }: { partialProductData: PartialProductDa
   const { startIntentConsulting } = useModal()
   const { close } = useDropdown()
   const productData = normalizeProduct(partialProductData)
-  const hot = hotProducts.includes(productData.product)
+  const hot = productHotMap[productData.product]
   const text = `${productData.name}${productData.url ? '' : ' (即将上线)'}`
   function handleClick(e: MouseEvent): void {
     if (productData.url != null) return

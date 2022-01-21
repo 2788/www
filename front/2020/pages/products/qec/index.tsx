@@ -32,7 +32,7 @@ function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProp
     <>
       <PageBanner
         title="专有云计算 Qiniu Enterprise Cloud"
-        desc="七牛专有云计算（QEC）是七牛云为政企客户提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
+        desc="七牛专有云计算（QEC）是七牛云为政企、金融、能源等行业提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
         btns={btns.banner}
         icon={banner} />
 
@@ -56,7 +56,7 @@ export default function Main(props: InferGetStaticPropsType<typeof getStaticProp
     <Layout
       title="专有云计算"
       keywords="专有云计算, QEC, 专有, 云计算"
-      description="七牛专有云计算（QEC）是七牛云为政企客户提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
+      description="七牛专有云计算（QEC）是七牛云为政企、金融、能源等行业提供的，部署在客户本地数据中心或七牛云机房的云基础设施。七牛专有云计算的架构设计和公有云保持一致，兼顾公有云的快速创新能力和私有云的可管可控，以满足企业对业务信息化高性能、高可靠、可扩展、简单易用的诉求。"
     >
       <Page {...props} />
     </Layout>

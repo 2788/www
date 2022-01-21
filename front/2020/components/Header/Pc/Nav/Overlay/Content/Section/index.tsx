@@ -50,7 +50,7 @@ export default function ContentSection({ title, url, className, horizontal, size
   )
 }
 
-type ItemProps = PropsWithChildren<{
+export type ItemProps = PropsWithChildren<{
   title?: string
   href: string
   hot?: boolean | string // 可能是"热门"之外的内容
