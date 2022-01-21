@@ -76,7 +76,7 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: '/cps',
+      href: '/cps?entry=www-index-banner-3',
       order: 3,
       buttonTexts: ['立即推广']
     },
