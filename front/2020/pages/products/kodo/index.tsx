@@ -63,7 +63,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
       <LinkGroups>
         <LinkGroup title="常用文档">
           <LinkItem href="https://developer.qiniu.com/kodo">使用文档</LinkItem>
-          <LinkItem href="https://developer.qiniu.com/kodo/api/1731/api-overview">API 文档</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/kodo/3939/overview-of-the-api">API 文档</LinkItem>
           <LinkItem href="https://developer.qiniu.com/kodo/sdk/1240/objc">SDK 文档</LinkItem>
         </LinkGroup>
         <LinkGroup title="FAQ（常见问题）">
