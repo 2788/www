@@ -13,17 +13,18 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 	qbox.us/api/message v0.0.0
 	qbox.us/api/message/code v0.0.0 // indirect
-	qiniu.com/rmb-web/admin-backend v0.0.9
-	qiniu.com/rmb-web/admin-backend/mongo-api v0.0.2
-	qiniu.com/rmb-web/puck/v3 v3.2.0
+	qbox.us/rpc v0.0.0 // indirect
 	qbox.us/verifycode v0.0.0
+	qiniu.com/rmb-web/admin-backend v0.0.11
+	qiniu.com/rmb-web/admin-backend/mongo-api v0.0.2
+	qiniu.com/rmb-web/puck/v3 v3.3.0
 )
 
-replace qiniu.com/rmb-web/admin-backend v0.0.9 => github.com/qbox/rmb-web/admin-backend v0.0.9
+replace qiniu.com/rmb-web/admin-backend v0.0.11 => github.com/qbox/rmb-web/admin-backend v0.0.11
 
 replace qiniu.com/rmb-web/admin-backend/mongo-api v0.0.2 => github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.2
 
-replace qiniu.com/rmb-web/puck/v3 v3.2.0 => github.com/qbox/rmb-web/puck/v3 v3.2.0
+replace qiniu.com/rmb-web/puck/v3 v3.3.0 => github.com/qbox/rmb-web/puck/v3 v3.3.0
 
 replace code.google.com/p/go.net/context v0.0.0 => ../../base/com/src/code.google.com/p/go.net/context
 

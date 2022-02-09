@@ -23,6 +23,17 @@ type ServerConfig struct {
 	SendMessageTaskInterval          int               `yaml:"send_message_task_interval"`
 	RedisHosts                       string            `yaml:"redis_hosts"`
 	LilliputHost                     string            `yaml:"lilliput_host"` // 短链服务地址
+	RsHosts                          string            `yaml:"rs_hosts"`
+	RsfHosts                         string            `yaml:"rsf_hosts"`
+	FusionRefreshHosts               string            `yaml:"fusion_refresh_hosts"`
+}
+
+type Refresher struct {
+	AccessKey       string   `yaml:"access_key"`       // 存储官网内容账号的 ak
+	SecretKey       string   `yaml:"secret_key"`       // 存储官网内容账号的 sk
+	Bucket          string   `yaml:"bucket"`           // 官网内容存储空间
+	Url             string   `yaml:"url"`              // 官网 url
+	PrefixWhitelist []string `yaml:"prefix_whitelist"` // 只有在前缀白名单中的前缀可以被刷新
 }
 
 type SMSTemplateConfig struct {
@@ -46,6 +57,7 @@ type Config struct {
 	ServerConfig           `yaml:"server"`
 	*mongoApi.MgoApiConfig `yaml:"mongo_api"`
 	Tbp                    TbpConfig `yaml:"tbp"`
+	Refresher              Refresher `yaml:"refresher"`
 }
 
 // InitConf inits Config info

@@ -18,6 +18,16 @@ server:
   send_message_task_interval: 30 # 单位为分钟
   redis_hosts: 10.200.20.22:6379
   lilliput_host: http://bo-staging-lilliput.qa.qiniu.io # 短链服务地址
+  rs_hosts: http://10.200.20.23:9433
+  rsf_hosts: http://10.200.20.23:10500
+  fusion_refresh_hosts: http://bo-staging-gingate-3472.qa.qiniu.io
+
+refresher:
+  access_key:
+  secret_key:
+  bucket:
+  url:
+  prefix_whitelist: []
 
 target: privatized
 token_expire_days: 7
