@@ -3,8 +3,11 @@ import { urlMap, Product } from 'constants/products'
 export type ContentValue = {
   name: string
   link?: string
-  label?: 'HOT' | '敬请期待'
-  immediate?: string
+  label?: 'HOT' | '敬请期待' | 'NEW'
+  extra?: {
+    title: string
+    link: string
+  }
 }
 
 export type FunctionValue = Array<{
@@ -74,7 +77,10 @@ export const productFunctions: FunctionValue = [
           {
             name: '图片瘦身',
             link: 'https://developer.qiniu.com/dora/1271/image-thin-body-imageslim',
-            immediate: 'https://portal.qiniu.com/dora/fop/imageslim'
+            extra: {
+              title: '立即使用',
+              link: 'https://portal.qiniu.com/dora/fop/imageslim'
+            }
           },
           {
             name: '图片基础处理',
@@ -83,7 +89,10 @@ export const productFunctions: FunctionValue = [
           {
             name: '图片水印处理',
             link: 'https://developer.qiniu.com/dora/1316/image-watermarking-processing-watermark',
-            immediate: 'https://portal.qiniu.com/dora/fop/imageprocess'
+            extra: {
+              title: '立即使用',
+              link: 'https://portal.qiniu.com/dora/fop/imageprocess'
+            }
           },
           {
             name: '全景拼接',
@@ -103,6 +112,22 @@ export const productFunctions: FunctionValue = [
             link: 'https://developer.qiniu.com/dora/3687/ufop-directions-for-use'
           }
         ]
+      },
+      {
+        title: '文档处理',
+        link: urlMap[Product.Document],
+        content: [
+          {
+            name: '文档转换',
+            link: `${urlMap[Product.Document]}#features`,
+            label: 'NEW'
+          },
+          {
+            name: '文档翻译',
+            link: `${urlMap[Product.Document]}#features`,
+            label: 'NEW'
+          }
+        ]
       }
     ]
   },
@@ -116,23 +141,38 @@ export const productFunctions: FunctionValue = [
         content: [
           {
             name: '图片审核',
-            link: 'https://developer.qiniu.com/censor/5588/image-censor'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Censor]}#playground`
+            }
           },
           {
             name: '视频审核',
-            link: 'https://developer.qiniu.com/censor/5620/video-censor'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Censor]}#playground`
+            }
           },
           {
             name: '直播审核',
-            link: 'https://developer.qiniu.com/censor/7118/api-live-censor'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Censor]}#playground`
+            }
           },
           {
             name: '音频审核',
-            link: 'https://developer.qiniu.com/censor/8061/audio-censor'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Censor]}#playground`
+            }
           },
           {
             name: '文本审核',
-            link: 'https://developer.qiniu.com/censor/7260/api-text-censor'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Censor]}#playground`
+            }
           }
         ]
       },
@@ -149,20 +189,56 @@ export const productFunctions: FunctionValue = [
           },
           {
             name: '手机号三要素',
-            link: 'https://developer.qiniu.com/dora/9906/mobile-phone-number-check-the-three-elements'
+            link: 'https://developer.qiniu.com/dora/9906/mobile-phone-number-check-the-three-elements',
+            label: 'NEW'
           },
           {
             name: '银行卡四要素',
-            link: 'https://developer.qiniu.com/dora/9905/the-four-essential-factors-of-bank-card'
+            link: 'https://developer.qiniu.com/dora/9905/the-four-essential-factors-of-bank-card',
+            label: 'NEW'
           }
         ]
       },
       {
         title: '智能风控',
-        content: [{
-          name: '智能风控',
-          link: urlMap[Product.RiskControl]
-        }]
+        content: [
+          {
+            name: '先享后付',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '汽车金融',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '信贷风险洞察',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '申请欺诈防护',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '租赁风控',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '注册保护',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '账户保护',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '营销保护',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          },
+          {
+            name: '营销价值分层',
+            link: `${urlMap[Product.RiskControl]}#functions`
+          }
+        ]
       }
     ]
   },
@@ -193,23 +269,38 @@ export const productFunctions: FunctionValue = [
         content: [
           {
             name: '车险保单识别',
-            link: 'https://developer.qiniu.com/dora/7032/car-insurance-policy-ocr'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Ocr]}#demo`
+            }
           },
           {
             name: '新车发票识别',
-            link: 'https://developer.qiniu.com/dora/7030/new-invoice-ocr'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Ocr]}#demo`
+            }
           },
           {
             name: '车辆登记证识别',
-            link: 'https://developer.qiniu.com/dora/7031/vehicle-registration-ocr'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Ocr]}#demo`
+            }
           },
           {
             name: '营业执照识别',
-            link: 'https://developer.qiniu.com/dora/7033/business-license-of-ocr'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Ocr]}#demo`
+            }
           },
           {
             name: '身份证识别',
-            link: 'https://developer.qiniu.com/dora/6820/ocr-idcard'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Ocr]}#demo`
+            }
           }
         ]
       },
@@ -219,11 +310,17 @@ export const productFunctions: FunctionValue = [
         content: [
           {
             name: '实时语音识别',
-            link: 'https://developer.qiniu.com/dora/8084/real-time-speech-recognition'
+            extra: {
+              title: '立即体验',
+              link: 'http://fir.qnsdk.com/5a94'
+            }
           },
           {
             name: '语音合成',
-            link: 'https://developer.qiniu.com/dora/8091/speech-synthesis'
+            extra: {
+              title: '立即体验',
+              link: `${urlMap[Product.Tts]}#demo`
+            }
           },
           {
             name: '一句话识别',
@@ -257,7 +354,7 @@ export const productFunctions: FunctionValue = [
         content: [
           {
             name: '视频智能分析',
-            link: 'https://developer.qiniu.com/dora/7045/image-video-tag'
+            link: urlMap[Product.Vii]
           },
           {
             name: '人车宠识别',

@@ -80,7 +80,9 @@ export enum Product {
   /** 音画质量分析 */
   Qoe = 'qoe',
   /** 专有云计算 */
-  Qec = 'qec'
+  Qec = 'qec',
+  /** 文档处理 */
+  Document = 'document',
 }
 
 // TODO: 这个再核对一遍
@@ -123,7 +125,8 @@ export const nameMap = {
   [Product.Tts]: '语音合成',
   [Product.WAF]: 'Web 应用防火墙',
   [Product.Qoe]: '音画质量分析',
-  [Product.Qec]: '专有云计算'
+  [Product.Qec]: '专有云计算',
+  [Product.Document]: '文档处理'
 } as const
 
 export const urlMap = {
@@ -164,7 +167,8 @@ export const urlMap = {
   [Product.Tts]: '/products/tts',
   [Product.WAF]: '/products/waf',
   [Product.Qoe]: '/products/qoe',
-  [Product.Qec]: '/products/qec'
+  [Product.Qec]: '/products/qec',
+  [Product.Document]: '/products/document'
 } as const
 
 export const priceUrlMap = {
@@ -205,7 +209,8 @@ export const priceUrlMap = {
   [Product.Tts]: '/prices/tts',
   [Product.WAF]: null,
   [Product.Qoe]: null,
-  [Product.Qec]: null
+  [Product.Qec]: null,
+  [Product.Document]: null
 } as const
 
 export const descMap = {
@@ -250,7 +255,8 @@ export const descMap = {
   [Product.Tts]: '采用先进的深度神经网络模型技术，将文本转化成拟人化语音',
   [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击',
   [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统',
-  [Product.Qec]: '针对企业级市场使用特点，为客户量身打造的开放、统一、可信的云计算平台'
+  [Product.Qec]: '针对企业级市场使用特点，为客户量身打造的开放、统一、可信的云计算平台',
+  [Product.Document]: '基于文档预览，文档转换，文档翻译等技术，对文档实现智能处理'
 } as const
 
 export enum Category {
@@ -330,7 +336,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   ],
   [SubCategory.MediaLiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
   [SubCategory.MediaDora]: [
-    Product.DoraImage, Product.Avsmart, Product.Censor,
+    Product.DoraImage, Product.Document, Product.Avsmart, Product.Censor,
     Product.FaceID, Product.Ocr, Product.Vii,
     Product.Voice, Product.Qoe, Product.RiskControl, Product.OpenAPI
   ],

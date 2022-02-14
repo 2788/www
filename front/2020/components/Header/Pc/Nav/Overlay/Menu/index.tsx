@@ -18,8 +18,10 @@ export default function Menu({ children, defaultActive }: MenuProps) {
   }, [ctxValue.setActiveMenu])
 
   return (
-    <ul className={style.menu}>
-      {children}
-    </ul>
+    <>
+      <ul className={style.menu}>
+        {children}
+      </ul>
+    </>
   )
 }

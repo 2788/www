@@ -41,10 +41,10 @@ function MobileItem({ contentList }: { contentList: ContentValue[] }) {
               </div>
               <ArrowDownIcon className={style.arrow} />
             </div>
-            {content.immediate && (
+            {content.extra && (
               <>
                 <div className={style.divider}></div>
-                <Link href={content.immediate} className={style.immediate}>立即使用</Link>
+                <Link href={content.extra.link} className={style.itemExtra}>{content.extra.title}</Link>
               </>
             )}
           </div>

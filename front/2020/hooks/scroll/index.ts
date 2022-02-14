@@ -163,27 +163,52 @@ function getGlobalScrollTop() {
   return document.body.scrollTop
 }
 
-/** 禁用全局的滚动行为，用于全屏模态框的展示 */
-export function useGlobalModal(visible: boolean) {
+function getScrollBarWidth() {
+  const outer = document.createElement('div')
+  const inner = document.createElement('div')
+  outer.appendChild(inner)
+  outer.style.width = '100px'
+  outer.style.overflow = 'scroll'
+  outer.style.position = 'absolute'
+  outer.style.opacity = '0'
+  document.body.appendChild(outer)
+  const barWidth = outer.offsetWidth - inner.offsetWidth
+  document.body.removeChild(outer)
+  return barWidth
+}
 
+/** 禁用全局的滚动行为 */
+export function useGlobalScroll() {
   const os = useOs()
   const browser = useBrowser()
-
+  const scrollWidth = getScrollBarWidth()
   function stopScroll() {
+    document.body.style.paddingRight = `${scrollWidth}px`
     document.body.classList.add(style.noScroll)
 
     // PC 端 Safari & iOS 所有浏览器，需要给 document element 也加上 noSroll
     // 另，safari 下还会偶发地把视口定位到奇怪的位置，不过问题不大，这里就不处理了
     if (os.name === 'iOS' || browser.name === 'Safari') {
+      document.documentElement.style.paddingRight = `${scrollWidth}px`
       document.documentElement.classList.add(style.noScroll)
     }
   }
 
   function resumeScroll() {
+    document.body.style.paddingRight = 'unset'
     document.body.classList.remove(style.noScroll)
+    document.documentElement.style.paddingRight = 'unset'
     document.documentElement.classList.remove(style.noScroll)
   }
+  return {
+    stopScroll,
+    resumeScroll
+  }
+}
 
+/** 禁用全局的滚动行为，用于全屏模态框的展示 */
+export function useGlobalModal(visible: boolean) {
+  const { stopScroll, resumeScroll } = useGlobalScroll()
   useEffect(() => {
     if (visible) {
       stopScroll()

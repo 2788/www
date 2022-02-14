@@ -3,8 +3,9 @@
  * @description 包含产品、解决方案、登录入口，及用户信息等内容
  */
 
-import React, { useContext, createContext, useState } from 'react'
+import React, { useContext, createContext, useState, useEffect } from 'react'
 import cls from 'classnames'
+import { useGlobalScroll } from 'hooks/scroll'
 import Link from 'components/Link'
 
 import SearchInput from './Search'
@@ -35,6 +36,15 @@ export default function HeaderForPc() {
     themeType === 'dark' && style.dark,
     displayedDropdownTotal > 0 && style.hover
   )
+
+  const { stopScroll, resumeScroll } = useGlobalScroll()
+  useEffect(() => {
+    if (displayedDropdownTotal > 0) {
+      stopScroll()
+    } else {
+      resumeScroll()
+    }
+  }, [displayedDropdownTotal, resumeScroll, stopScroll])
 
   return (
     <headerDropdownContext.Provider value={{ setDisplayedDropdownTotal }}>

@@ -28,8 +28,8 @@ function PcItem({ contentList }: { contentList: ContentValue[] }) {
           ) : (
             <div>{content.name}{content.label && <Tag className={style.tag} text={content.label} />}</div>
           )}
-          {content.immediate
-            && <Link href={content.immediate} className={style.immediate}>立即使用 &gt;</Link>}
+          {content.extra
+            && <Link href={content.extra.link} className={style.itemExtra}>{content.extra.title} &gt;</Link>}
         </div>
       ))}
     </>

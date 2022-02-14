@@ -39,8 +39,10 @@ export default function Content({ className, size = 3, children, horizontal }: P
       ))
     )
   return (
-    <ul className={cls(style.content, horizontal && style.horizontal, className)}>
-      {contentView}
-    </ul>
+    <div className={style.wrapper}>
+      <ul className={cls(style.content, horizontal && style.horizontal, className)}>
+        {contentView}
+      </ul>
+    </div>
   )
 }

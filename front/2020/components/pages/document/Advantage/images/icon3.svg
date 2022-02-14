@@ -1,0 +1,8 @@
+<svg width="56" height="58" viewBox="0 0 56 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 17V52C1 53.3261 1.52678 54.5979 2.46447 55.5355C3.40215 56.4732 4.67392 57 6 57H50C51.3261 57 52.5979 56.4732 53.5355 55.5355C54.4732 54.5979 55 53.3261 55 52V17" stroke="#333333" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M7 34V1H49V34" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M1 40H18V47H38V40H55" stroke="#333333" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M17 12H39" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M17 21H39" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+<path d="M17 30H28" stroke="#00AAE7" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square"/>
+</svg>

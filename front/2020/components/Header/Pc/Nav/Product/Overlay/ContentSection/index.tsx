@@ -20,7 +20,7 @@ type Props = {
 // 产品对应的热门内容
 const productHotMap = {
   [Product.Qvm]: true,
-  [Product.Qec]: 'New'
+  [Product.Qec]: 'NEW'
 } as { [k in Product]: ItemProps['hot'] }
 
 export default function ContentSection({ title, url, partialProductDatas }: Props) {
