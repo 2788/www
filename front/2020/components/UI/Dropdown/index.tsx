@@ -1,6 +1,5 @@
 import React, { PropsWithChildren, HTMLAttributes, useState, useCallback, createContext, useContext, useMemo, useRef } from 'react'
 import RcDropdown, { DropdownProps } from 'rc-dropdown/lib/Dropdown'
-import useDelay from 'hooks/use-delay'
 import { useOnChange } from 'hooks'
 
 import 'rc-dropdown/assets/index.css'
@@ -35,12 +34,12 @@ export function DropdownContainerProvider(
   )
 }
 
-// 给 Dropdown 增加类似 debounce 效果，防止滑过等误开其他 Dropdown
-export default function Dropdown(props: DropdownProps & { delay?: number }) {
-  const { visible: _visible, onVisibleChange: _onVisibleChange, delay = 50, ...rest } = props
+export default function Dropdown(props: DropdownProps) {
+  const {
+    visible: _visible, onVisibleChange: _onVisibleChange,
+    mouseEnterDelay = 0.05, mouseLeaveDelay = 0.15, ...rest
+  } = props
   const [visible, setVisible] = useState(_visible || false)
-  // 因为可能有延迟，所以增加一个临时变量表示期望产生的 visible（和 visible 不一定一致)
-  const [tempVisible, setTempVisible] = useState(_visible || false)
   const onVisibleChangeRef = useRef(_onVisibleChange)
   onVisibleChangeRef.current = _onVisibleChange
 
@@ -56,16 +55,10 @@ export default function Dropdown(props: DropdownProps & { delay?: number }) {
     }
   }, [visible])
   const onVisibleChange = useCallback((value: boolean) => {
-    setTempVisible(value)
-    // case: Header Product
-    if (shouldAddDelayEffect) { // 需要延迟效果则交给后面的的处理
-      return
-    }
-    // 非受控自己管理状态 case: 价格 Banner
     if (_visible === undefined) {
       setVisible(value)
     }
-  }, [shouldAddDelayEffect, _visible])
+  }, [_visible])
 
   useOnChange(() => {
     if (_visible !== undefined && _visible !== visible) {
@@ -73,41 +66,26 @@ export default function Dropdown(props: DropdownProps & { delay?: number }) {
     }
   }, [_visible])
 
-  /** 开启和关闭 dropdown 都做成延时的 */
-  const openDelayObj = useDelay(delay)
-  const closeDelayObj = useDelay(delay)
-  useOnChange(() => {
-    if (shouldAddDelayEffect) {
-      /** 当应该开始 dropdown 时，停止'关闭定时器'，并启动'开启定时器' */
-      if (tempVisible === true) {
-        closeDelayObj.stop()
-        openDelayObj.start(() => {
-          setVisible(true)
-        })
-      } else { /** 当应该关闭 dropdown 时，停止'开启定时器'，并启动'关闭定时器' */
-        openDelayObj.stop()
-        closeDelayObj.start(() => {
-          setVisible(false)
-        })
-      }
-    }
-  }, [shouldAddDelayEffect, tempVisible])
-
   const getContainer = useContext(DropdownContainerContext)
 
   const open = useCallback(() => {
     setVisible(true)
-    setTempVisible(true)
   }, [])
 
   const close = useCallback(() => {
     setVisible(false)
-    setTempVisible(false)
   }, [])
 
   return (
     <DropdownContext.Provider value={{ open, close }}>
-      <RcDropdown onVisibleChange={onVisibleChange} visible={visible} getPopupContainer={getContainer} {...rest}>
+      <RcDropdown
+        onVisibleChange={onVisibleChange}
+        visible={visible}
+        getPopupContainer={getContainer}
+        mouseEnterDelay={shouldAddDelayEffect ? mouseEnterDelay : undefined}
+        mouseLeaveDelay={shouldAddDelayEffect ? mouseLeaveDelay : undefined}
+        {...rest}
+      >
         {props.children}
       </RcDropdown>
     </DropdownContext.Provider>
