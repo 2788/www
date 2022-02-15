@@ -181,7 +181,10 @@ function getScrollBarWidth() {
 export function useGlobalScroll() {
   const os = useOs()
   const browser = useBrowser()
-  const scrollWidth = getScrollBarWidth()
+  const [scrollWidth, setScrollWidth] = useState(0)
+  useEffect(() => {
+    setScrollWidth(getScrollBarWidth())
+  }, [])
   function stopScroll() {
     document.body.style.paddingRight = `${scrollWidth}px`
     document.body.classList.add(style.noScroll)
