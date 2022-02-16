@@ -1,5 +1,5 @@
 import React from 'react'
-import { categoryNameMap, categories, categoryEnNameMap, categorySubCategoriesMap, subCategoryNameMap, subCategoryProductsMap, subCategoryUrlMap } from 'constants/products'
+import { categoryNameMap, categories, categoryEnNameMap, categorySubCategoriesMap, subCategoryNameMap, getSubCategoryProducts, subCategoryUrlMap } from 'constants/products'
 
 import { OverlayWithMenu } from '../../Overlay'
 import Menu from '../../Overlay/Menu'
@@ -27,7 +27,7 @@ export default function Overlay() {
                   key={subCategory}
                   title={subCategoryNameMap[subCategory]}
                   url={subCategoryUrlMap[subCategory]}
-                  partialProductDatas={subCategoryProductsMap[subCategory]}
+                  partialProductDatas={getSubCategoryProducts(category, subCategory)}
                 />
               ))
             }

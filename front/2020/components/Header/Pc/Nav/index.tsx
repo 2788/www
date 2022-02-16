@@ -1,6 +1,5 @@
 import React, { PropsWithChildren, ReactElement, useRef, useState } from 'react'
 import classnames from 'classnames'
-import { Product, priceUrlMap } from 'constants/products'
 import Link from 'components/Link'
 
 import ProductComponent from './Product'
@@ -9,6 +8,7 @@ import About from './About'
 import Support from './Support'
 import Solution from './Solution'
 import Partner from './Partner'
+import Price from './Price'
 import DropdownForHeader from '../Dropdown'
 
 export default function Nav() {
@@ -18,7 +18,7 @@ export default function Nav() {
       <ProductComponent />
       <Solution />
       <ItemWithLink href="https://qmall.qiniu.com/">云商城</ItemWithLink>
-      <ItemWithLink href={priceUrlMap[Product.Kodo]}>定价</ItemWithLink>
+      <Price />
       <Support />
       <Partner />
       <About />

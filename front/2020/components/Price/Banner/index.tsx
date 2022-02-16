@@ -4,7 +4,6 @@ import { useQueryValue } from 'hooks/url'
 import { useMobile } from 'hooks/ua'
 
 import style from './index.less'
-import Select from './Select'
 
 export * from './Pane'
 
@@ -62,7 +61,6 @@ export default function PriceBanner(props: PriceBannerProps) {
         <div className={style.content}>
           <div className={style.actions}>
             <div className={style.title}>{product}</div>
-            <Select />
           </div>
           {
             !isMobile && (

@@ -266,37 +266,36 @@ export enum Category {
 }
 
 export enum SubCategory {
-  ServiceStorage = 'service-storage',
-  ServiceDistribution = 'service-distribution',
-  ServiceBasis = 'service-basis',
-  MediaAudio = 'media-audio',
-  MediaLiveBroadcast = 'media-liveBroadcast',
-  MediaDora = 'media-dora',
-  MediaSdk = 'media-sdk',
-  MediaStorage = 'media-storage',
-  MediaDistribution = 'media-distribution',
-  DataStorage = 'data-storage',
-  DataPlatform = 'data-platform'
+  Storage = 'storage',
+  Distribution = 'distribution',
+  Basis = 'basis',
+  Audio = 'audio',
+  LiveBroadcast = 'liveBroadcast',
+  Dora = 'dora',
+  Sdk = 'sdk',
+  Platform = 'platform'
 }
 
 export const subCategoryNameMap = {
-  [SubCategory.ServiceStorage]: '云存储',
-  [SubCategory.ServiceDistribution]: '云分发',
-  [SubCategory.ServiceBasis]: '云基础',
-  [SubCategory.MediaAudio]: '音视频点播',
-  [SubCategory.MediaLiveBroadcast]: '直播与实时互动',
-  [SubCategory.MediaDora]: '智能多媒体服务',
-  [SubCategory.MediaSdk]: '客户端 SDK',
-  [SubCategory.MediaStorage]: '云存储',
-  [SubCategory.MediaDistribution]: '云分发',
-  [SubCategory.DataStorage]: '云存储',
-  [SubCategory.DataPlatform]: '机器数据分析平台'
+  [SubCategory.Storage]: '云存储',
+  [SubCategory.Distribution]: '云分发',
+  [SubCategory.Basis]: '云基础',
+  [SubCategory.Audio]: '音视频点播',
+  [SubCategory.LiveBroadcast]: '直播与实时互动',
+  [SubCategory.Dora]: '智能多媒体服务',
+  [SubCategory.Sdk]: '客户端 SDK',
+  [SubCategory.Platform]: '机器数据分析平台'
 } as const
 
 // 次级标题链接
 export const subCategoryUrlMap: { [s in SubCategory]?: string } = {
-  [SubCategory.MediaDora]: urlMap[Product.Dora],
-  [SubCategory.MediaSdk]: landpageUrlMap[Landpage.Sdk]
+  [SubCategory.Dora]: urlMap[Product.Dora],
+  [SubCategory.Sdk]: landpageUrlMap[Landpage.Sdk]
+}
+
+// 定价次级标题链接
+export const subCategoryUrlMapForPrice: { [s in SubCategory]?: string } = {
+  [SubCategory.Dora]: priceUrlMap[Product.Dora]
 }
 
 export type ProductData = {
@@ -326,42 +325,72 @@ export function normalizeProduct(val: Product | PartialProductData): ProductData
 }
 
 export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] } = {
-  [SubCategory.ServiceStorage]: [Product.Kodo, Product.Archive],
-  [SubCategory.ServiceDistribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
-  [SubCategory.ServiceBasis]: [Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
-  [SubCategory.MediaAudio]: [
+  [SubCategory.Storage]: [Product.Kodo, Product.Archive, Product.Storage, Product.Hdfs],
+  [SubCategory.Distribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
+  [SubCategory.Basis]: [Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
+  [SubCategory.Audio]: [
     { product: Product.Kodo, name: '音视频存储', desc: '为音视频多媒体数据提供高可靠、高可用和高性能的对象存储服务' },
     Product.DoraAudio,
     { product: Product.Cdn, name: '点播加速', desc: '通过全方位的 CDN 质量监控和智能节点调度，提供音视频点播优化加速服务' }
   ],
-  [SubCategory.MediaLiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
-  [SubCategory.MediaDora]: [
+  [SubCategory.LiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
+  [SubCategory.Dora]: [
     Product.DoraImage, Product.Document, Product.Avsmart, Product.Censor,
     Product.FaceID, Product.Ocr, Product.Vii,
     Product.Voice, Product.Qoe, Product.RiskControl, Product.OpenAPI
   ],
-  [SubCategory.MediaSdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
-  [SubCategory.MediaStorage]: [Product.Kodo, Product.Storage],
-  [SubCategory.MediaDistribution]: [Product.Cdn, Product.Pcdn],
-
-  [SubCategory.DataStorage]: [Product.Kodo, Product.Hdfs],
-  [SubCategory.DataPlatform]: [Product.Express]
+  [SubCategory.Sdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
+  [SubCategory.Platform]: [Product.Express]
 }
 
-/** 基础服务 */
-export const categoryService = [
-  Product.Qvm,
-  Product.Kodo,
-  Product.Archive,
-  Product.Cdn,
-  Product.Pcdn,
-  Product.Ssl,
-  Product.Pili,
-  Product.CloudSql,
-  Product.Ddos,
-  Product.WAF,
-  Product.Sms
-] as const
+export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[] } = {
+  [Category.Service]: [SubCategory.Storage, SubCategory.Distribution, SubCategory.Basis],
+  [Category.Media]: [
+    SubCategory.Audio, SubCategory.LiveBroadcast, SubCategory.Dora,
+    SubCategory.Sdk, SubCategory.Storage, SubCategory.Distribution
+  ],
+  [Category.Data]: [SubCategory.Storage, SubCategory.Platform]
+}
+
+export function getSubCategoryProducts(category: Category, subCategory: SubCategory) {
+  // 二级目录云存储在不同一级目录下，内部的产品不一样，所以这边特殊处理一下
+  if (subCategory === SubCategory.Storage) {
+    switch (category) {
+      case Category.Service:
+        return [Product.Kodo, Product.Archive]
+      case Category.Media:
+        return [Product.Kodo, Product.Storage]
+      case Category.Data:
+        return [Product.Kodo, Product.Hdfs]
+      default:
+        // 默认返回全部的云存储产品
+        return subCategoryProductsMap[subCategory]
+    }
+  }
+  // 二级目录云分发在不同一级目录下，内部的产品不一样，所以这边特殊处理一下
+  if (subCategory === SubCategory.Distribution) {
+    switch (category) {
+      case Category.Media:
+        return [Product.Cdn, Product.Pcdn]
+      default:
+        // 默认返回全部的云分发产品
+        return subCategoryProductsMap[subCategory]
+    }
+  }
+  return subCategoryProductsMap[subCategory]
+}
+
+export function getCategoryProducts(category: Category): PartialProductData[] {
+  return categorySubCategoriesMap[category].reduce(
+    (accumulator, current) => [...accumulator, ...subCategoryProductsMap[current]],
+    [] as PartialProductData[]
+  )
+}
+
+export const subcategoriesForPrice: SubCategory[] = [
+  SubCategory.Storage, SubCategory.LiveBroadcast, SubCategory.Dora,
+  SubCategory.Sdk, SubCategory.Basis, SubCategory.Distribution
+]
 
 /** 视觉数据智能 */
 export const categoryMedia = [
@@ -382,36 +411,6 @@ export const categoryMedia = [
   Product.Qvs,
   Product.Tts
 ] as const
-
-/** 机器数据智能 */
-export const categoryData = [
-  Product.Express,
-  Product.Kodo,
-  Product.Archive,
-  Product.Hdfs
-] as const
-
-export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[] } = {
-  [Category.Service]: [SubCategory.ServiceStorage, SubCategory.ServiceDistribution, SubCategory.ServiceBasis],
-  [Category.Media]: [
-    SubCategory.MediaAudio, SubCategory.MediaLiveBroadcast, SubCategory.MediaDora,
-    SubCategory.MediaSdk, SubCategory.MediaStorage, SubCategory.MediaDistribution
-  ],
-  [Category.Data]: [SubCategory.DataStorage, SubCategory.DataPlatform]
-}
-
-export function getCategoryProducts(category: Category): PartialProductData[] {
-  return categorySubCategoriesMap[category].reduce(
-    (accumulator, current) => [...accumulator, ...subCategoryProductsMap[current]],
-    [] as PartialProductData[]
-  )
-}
-
-export const categoryProductsMap: { [c in Category]: readonly Product[] } = {
-  [Category.Service]: categoryService,
-  [Category.Media]: categoryMedia,
-  [Category.Data]: categoryData
-}
 
 export const categoryNameMap = {
   [Category.Service]: '基础能力',
