@@ -4,13 +4,13 @@ import { mongoApiPrefix, getFilteredList, sortByOrder, handleResponseData } from
 import pcCloudProducts from './banners/pc/cloud-products.jpg'
 import pcNewUser from './banners/pc/new-user.jpg'
 import pcCps from './banners/pc/cps.jpg'
-import pcQvm from './banners/pc/qvm.jpg'
+import pcNewYear from './banners/pc/new-year.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
 import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
 import mobileCps from './banners/mobile/cps.jpg'
-import mobileQvm from './banners/mobile/qvm.jpg'
+import mobileNewYear from './banners/mobile/new-year.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
 
@@ -24,7 +24,12 @@ export type Banner = {
   invalidAt: number
   createdAt: number
   updatedAt: number
-  // todo：目前背景色只用来判断是否为暗色，不用于填充，所以后面改为直接在官网获取图片颜色
+  /** 主题是否为深色，优先级高于背景色判断逻辑 */
+  // todo：目前增加该字段是因为有的 banner 根据现有逻辑是浅色，但是应该按照深色显示
+  // 后续将重新制定更规范的逻辑，从而根据 banner 图自动判断是否为深色主题，而不再需要这个字段
+  dark?: boolean
+  /** 背景色，用于判断是否为暗色（仅当 dark 不为 true 时才会生效）以及提供 button text color */
+  // todo：后续可能将判断主题深浅和提供 button text color 能力分离，即两者各自有一套自己的取值逻辑
   backgroundColor: string
   href: string | null
   order: number
@@ -36,6 +41,22 @@ export function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
   return Promise.resolve([
     {
+      name: '新春采购季',
+      title: '2022 新春优惠季',
+      desc: '领 8080 元开工红包 CDN 流量低至 1 元',
+      pcImg: pcNewYear,
+      mobileImg: mobileNewYear,
+      effectedAt: 0,
+      invalidAt: 0,
+      createdAt: 0,
+      updatedAt: 0,
+      dark: true,
+      backgroundColor: '#F6902C',
+      href: 'https://marketing.qiniu.com/activity/2022-newyear-act?entry=www-index-banner-1',
+      order: 1,
+      buttonTexts: ['立即抢购']
+    },
+    {
       name: '云存储',
       title: '云存储 Kodo 永久 0 元享用',
       desc: '注册即可每月免费使用 10GB 标准存储空间',
@@ -46,8 +67,8 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-1',
-      order: 1,
+      href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-2',
+      order: 2,
       buttonTexts: ['免费领用']
     },
     {
@@ -61,8 +82,8 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/act-free?entry=www-index-banner-2',
-      order: 2,
+      href: 'https://marketing.qiniu.com/activity/act-free?entry=www-index-banner-3',
+      order: 3,
       buttonTexts: ['免费领用']
     },
     {
@@ -76,24 +97,9 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: '/cps?entry=www-index-banner-3',
-      order: 3,
-      buttonTexts: ['立即推广']
-    },
-    {
-      name: '云主机',
-      title: '云主机专场 感恩回馈',
-      desc: '爆款机型 6 折起 新老客领券打折送好礼',
-      pcImg: pcQvm,
-      mobileImg: mobileQvm,
-      effectedAt: 0,
-      invalidAt: 0,
-      createdAt: 0,
-      updatedAt: 0,
-      backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/2021-12-qvmact?entry=www-index-banner-4',
+      href: '/cps?entry=www-index-banner-4',
       order: 4,
-      buttonTexts: ['立即抢购']
+      buttonTexts: ['立即推广']
     },
     {
       name: '新人特价活动',

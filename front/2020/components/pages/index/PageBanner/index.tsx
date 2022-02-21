@@ -17,13 +17,14 @@ export default function IndexPageBanner({ dark, ...banner }: Banner & { dark: bo
     if (isMobile || !buttonTexts || !buttonTexts.length) {
       return null
     }
+    const btnStyle = dark ? { color: backgroundColor } : undefined
     return (
       <div className={styles.btnsWrapper}>
         {
           buttonTexts.map((text, index) => (
             index === 0
-              ? <Button key={index} type="primary" className={styles.btn}>{text}</Button>
-              : <Button key={index} type="hollow" className={classnames(styles.btn, styles.hollow)} withBorder>{text}</Button>
+              ? <Button key={index} type="primary" className={styles.btn} style={btnStyle}>{text}</Button>
+              : <Button key={index} type="hollow" className={classnames(styles.btn, styles.hollow)} style={btnStyle} withBorder>{text}</Button>
           ))
         }
       </div>

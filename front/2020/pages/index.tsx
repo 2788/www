@@ -35,23 +35,18 @@ export const context = createContext<ContextValue | null>(null)
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
 function PageContent(
-  { preBanners, preActivities }: { preBanners: Banner[], preActivities: Activity[] }
+  { banners, preActivities }: { banners: Banner[], preActivities: Activity[] }
 ) {
   const { $: currentActivities } = useApiWithParams(
     getActivities,
     { params: [] }
   )
-  const { $: currentBanners } = useApiWithParams(
-    getBanners,
-    { params: [] }
-  )
   const contextValue = useContext(context)
-  const banners = currentBanners || preBanners
   const [currentSlide, setCurrentSlide] = useState(0)
   useEffect(() => {
-    if (contextValue) {
-      const bgColor = banners[currentSlide]?.backgroundColor
-      contextValue.setDark(bgColor !== undefined ? isDark(bgColor) : false)
+    if (contextValue && currentSlide < banners.length) {
+      const currentBanner = banners[currentSlide]
+      contextValue.setDark(currentBanner.dark || isDark(currentBanner.backgroundColor))
     }
   }, [banners, contextValue, currentSlide])
   const dark = !!(contextValue?.dark)
@@ -88,8 +83,9 @@ function PageContent(
   )
 }
 
-export default function IndexPage({ preBanners, preActivities }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [dark, setDark] = useState<boolean>(false)
+export default function IndexPage({ banners, preActivities }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const defaultDarkValue = banners.length > 0 && (banners[0].dark || isDark(banners[0].backgroundColor))
+  const [dark, setDark] = useState<boolean>(defaultDarkValue)
   return (
     <context.Provider value={{ dark, setDark }}>
       <headerThemeContext.Provider value={dark ? 'dark' : 'light'} >
@@ -99,7 +95,7 @@ export default function IndexPage({ preBanners, preActivities }: InferGetStaticP
           description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
         >
 
-          <PageContent preBanners={preBanners} preActivities={preActivities} />
+          <PageContent banners={banners} preActivities={preActivities} />
         </Layout>
       </headerThemeContext.Provider>
     </context.Provider >
@@ -109,7 +105,7 @@ export default function IndexPage({ preBanners, preActivities }: InferGetStaticP
 export async function getStaticProps() {
   return {
     props: {
-      preBanners: await getBanners(),
+      banners: await getBanners(),
       preActivities: await getActivities()
     }
   }
