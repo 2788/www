@@ -73,6 +73,42 @@ const baiduzhanzhangScriptContent = `
 })();
 `
 
+// TODO
+// 以下火眼云埋点代码用于测试
+// 后续测试完成需要移除
+// https://jira.qiniu.io/browse/UG-528
+const huoyanScriptContent = `
+(function(para) {
+  var p = para.sdk_url, n = 'huoYan', w = window, d = document, s = 'script', x = null, y = null;
+  if (typeof(w['huoyanDataAnalytic']) !== 'undefined') {
+    return false;
+  }
+  w['huoyanDataAnalytic'] = n;
+  w[n] = w[n] || function(a) {
+    return function() {
+      (w[n]._q = w[n]._q || []).push([a, arguments]);
+    }
+  };
+  w[n]['quick'] = w[n].call(null, 'quick');
+  w[n]['search'] = w[n].call(null, 'search');
+  x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+  x.async = 1;
+  x.src = p;
+  w[n].para = para;
+  y.parentNode.insertBefore(x, y);
+})({
+  sdk_url: 'https://identify.tankeai.com/assets/js/identify.js',
+  server_url: 'https://identify.tankeai.com'
+});
+
+var g_huoyan_opt = {
+  site_id: 2337,
+  user_company: 2433
+};
+
+huoYan.quick('autoTrack', g_huoyan_opt);
+`
+
 class MyDocument extends Document {
   render() {
     return (
@@ -90,6 +126,7 @@ class MyDocument extends Document {
           <script> </script>
           <Main />
           <NextScript />
+          <script dangerouslySetInnerHTML={{ __html: huoyanScriptContent }} />
           {/* https://stackoverflow.com/a/42969608 修复 Chrome 下 transition 会立即触发的问题 */}
           <script> </script>
         </body>
