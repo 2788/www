@@ -52,7 +52,8 @@ const iconMap = {
   [Product.Tts]: require('./images/default/tts.svg').default,
   [Product.Qoe]: require('./images/default/qoe.svg').default,
   [Product.Qec]: require('./images/default/qec.svg').default,
-  [Product.Document]: null
+  [Product.Document]: null,
+  [Product.Enhancement]: null
 }
 
 const smallIconMap = {
@@ -94,7 +95,8 @@ const smallIconMap = {
   [Product.Tts]: require('./images/small/tts.svg').default,
   [Product.Qoe]: require('./images/small/qoe.svg').default,
   [Product.Qec]: require('./images/small/qec.svg').default,
-  [Product.Document]: null
+  [Product.Document]: null,
+  [Product.Enhancement]: null
 }
 
 export default function ProductIcon({ product, small, ...others }: Props) {

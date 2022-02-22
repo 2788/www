@@ -83,6 +83,8 @@ export enum Product {
   Qec = 'qec',
   /** 文档处理 */
   Document = 'document',
+  /** 画质增强 */
+  Enhancement = 'enhancement'
 }
 
 // TODO: 这个再核对一遍
@@ -126,7 +128,8 @@ export const nameMap = {
   [Product.WAF]: 'Web 应用防火墙',
   [Product.Qoe]: '音画质量分析',
   [Product.Qec]: '专有云计算',
-  [Product.Document]: '文档处理'
+  [Product.Document]: '文档处理',
+  [Product.Enhancement]: '画质增强'
 } as const
 
 export const urlMap = {
@@ -168,7 +171,8 @@ export const urlMap = {
   [Product.WAF]: '/products/waf',
   [Product.Qoe]: '/products/qoe',
   [Product.Qec]: '/products/qec',
-  [Product.Document]: '/products/document'
+  [Product.Document]: '/products/document',
+  [Product.Enhancement]: '/products/enhancement'
 } as const
 
 export const priceUrlMap = {
@@ -210,7 +214,8 @@ export const priceUrlMap = {
   [Product.WAF]: null,
   [Product.Qoe]: null,
   [Product.Qec]: null,
-  [Product.Document]: null
+  [Product.Document]: null,
+  [Product.Enhancement]: null
 } as const
 
 export const descMap = {
@@ -256,7 +261,8 @@ export const descMap = {
   [Product.WAF]: '有效防御各类 OWASP 常见 Web 攻击并过滤海量恶意 CC 攻击',
   [Product.Qoe]: '领先的基于深度学习的智能音画质量分析系统',
   [Product.Qec]: '针对企业级市场使用特点，为客户量身打造的开放、统一、可信的云计算平台',
-  [Product.Document]: '基于文档预览，文档转换，文档翻译等技术，对文档实现智能处理'
+  [Product.Document]: '基于文档预览，文档转换，文档翻译等技术，对文档实现智能处理',
+  [Product.Enhancement]: '基于七牛领先的深度学习技术，提供视频画质增强服务'
 } as const
 
 export enum Category {
@@ -336,8 +342,8 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.LiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
   [SubCategory.Dora]: [
     Product.DoraImage, Product.Document, Product.Avsmart, Product.Censor,
-    Product.FaceID, Product.Ocr, Product.Vii,
-    Product.Voice, Product.Qoe, Product.RiskControl, Product.OpenAPI
+    Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.Qoe,
+    Product.RiskControl, Product.Enhancement, Product.OpenAPI
   ],
   [SubCategory.Sdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
   [SubCategory.Platform]: [Product.Express]
