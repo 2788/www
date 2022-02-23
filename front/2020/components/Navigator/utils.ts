@@ -43,6 +43,7 @@ export function isBlockInView(
   scrollTop: number, // 当前页面的滚动高度
   offsetTop: number // 偏移量，比如吸顶 Navigator 的高度
 ) {
-  const viewStart = scrollTop + offsetTop
+  // 因 scrollTop 是浮点值，而 offsetTop 是四舍五入的整数，所以不能直接进行两者之间的比较，故这边对 scrollTop 也进行四舍五入
+  const viewStart = Math.round(scrollTop) + offsetTop
   return viewStart >= block.offsetTop && viewStart < block.offsetTop + block.offsetHeight
 }

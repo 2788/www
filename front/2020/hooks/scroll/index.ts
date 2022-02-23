@@ -143,8 +143,8 @@ export function useSticky() {
   useEffect(() => {
     function handleScroll() {
       if (element) {
-        // 因 scrollTop 是浮点值，而 offsetTop 是向上取整的整数，故这边比较要对 scrollTop 也进行向上取整
-        setIsFixed(Math.ceil(getGlobalScrollTop()) >= element.offsetTop)
+        // 因 scrollTop 是浮点值，而 offsetTop 是四舍五入的整数，故这边比较要对 scrollTop 也进行四舍五入
+        setIsFixed(Math.round(getGlobalScrollTop()) >= element.offsetTop)
       }
     }
     window.addEventListener('scroll', handleScroll)
