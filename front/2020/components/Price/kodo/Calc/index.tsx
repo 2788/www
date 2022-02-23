@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react'
-import CalcPane from 'components/Price/Banner/CalcPane'
+import CalcPane from 'components/Price/Tabs/CalcPane'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import Calculator from 'components/Price/Calculator'
-import { useShoppingCart } from 'components/Price/Banner/CalcPane/ShoppingCart'
+import { useShoppingCart } from 'components/Price/Tabs/CalcPane/ShoppingCart'
 import transform from 'components/Price/transform'
 
 import Standard from './Standard'

@@ -1,8 +1,8 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import Layout from 'components/Price/Layout'
-import Banner from 'components/Price/Banner'
-import PriceMdPreview, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/common/MdPreview'
+import Tabs from 'components/Price/Tabs'
+import DocumentPane, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/Tabs/DocumentPane'
 import { Product, nameMap } from 'constants/products'
 import { getPriceFileContent } from 'apis/admin/product'
 
@@ -11,9 +11,9 @@ const title = `价格 | ${nameMap[Product.Rtn]}`
 function Page({ htmlAst }: { htmlAst: HTMLRootNode | null }) {
   return (
     <>
-      <Banner product={title}>
-        <PriceMdPreview htmlAst={htmlAst} />
-      </Banner>
+      <Tabs product={title}>
+        <DocumentPane htmlAst={htmlAst} />
+      </Tabs>
     </>
   )
 }

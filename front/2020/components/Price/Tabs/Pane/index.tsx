@@ -1,11 +1,11 @@
 import React, { PropsWithChildren, useContext } from 'react'
 import classnames from 'classnames'
-import { BannerContext, Active } from '..'
+import { TabsContext, Active } from '..'
 
 import style from './index.less'
 
 export function Pane({ children, className, name }: PropsWithChildren<{ name: Active, className?: string }>) {
-  const context = useContext(BannerContext)
+  const context = useContext(TabsContext)
   const isActive = context?.active === name
 
   return (

@@ -1,4 +1,4 @@
-import { Product, ProductRegion } from './Banner/CalcPane/ShoppingCart'
+import { Product, ProductRegion } from './Tabs/CalcPane/ShoppingCart'
 import { CalcInput } from './Calculator'
 
 // 把 CalcInput 转换成购物车需要的产品信息

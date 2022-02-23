@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
-import CalcPane from 'components/Price/Banner/CalcPane'
+import CalcPane from 'components/Price/Tabs/CalcPane'
 import Checkbox from 'react-icecream/lib/checkbox'
 import Select from 'react-icecream/lib/select'
 
 import InputNumber from 'components/UI/InputNumber'
 import transform from 'components/Price/transform'
-import { useShoppingCart } from 'components/Price/Banner/CalcPane/ShoppingCart'
+import { useShoppingCart } from 'components/Price/Tabs/CalcPane/ShoppingCart'
 
 import Calculator, { CalcInput, Unit } from '../../Calculator'
 import style from './index.less'

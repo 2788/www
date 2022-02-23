@@ -10,21 +10,21 @@ export * from './Pane'
 export type Active = 'price' | 'calc'
 export type Pane = 'price' | 'calc'
 
-export type BannerContext = {
+export type TabsContext = {
   panes: Active[]
   registerPane(pane: Pane): void
   active: Active
   setActive(active: Active): void
 }
 
-export const BannerContext = createContext<BannerContext>({} as BannerContext)
+export const TabsContext = createContext<TabsContext>({} as TabsContext)
 
-export type PriceBannerProps = {
+export type PriceTabsProps = {
   product: string
   children: ReactNode
 }
 
-export default function PriceBanner(props: PriceBannerProps) {
+export default function PriceTabs(props: PriceTabsProps) {
   const { children, product } = props
   const [query, setQuery] = useQueryValue<Active>('tab', 'price')
   const [active, setActive] = useState<Active>(query)
@@ -57,7 +57,7 @@ export default function PriceBanner(props: PriceBannerProps) {
 
   return (
     <>
-      <div className={style.bannerWrapper}>
+      <div className={style.wrapper}>
         <div className={style.content}>
           <div className={style.actions}>
             <div className={style.title}>{product}</div>
@@ -72,9 +72,9 @@ export default function PriceBanner(props: PriceBannerProps) {
           }
         </div>
       </div>
-      <BannerContext.Provider value={{ active, setActive: handleTabClick, panes, registerPane }}>
+      <TabsContext.Provider value={{ active, setActive: handleTabClick, panes, registerPane }}>
         {children}
-      </BannerContext.Provider>
+      </TabsContext.Provider>
     </>
   )
 }

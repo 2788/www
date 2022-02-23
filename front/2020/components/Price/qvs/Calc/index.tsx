@@ -3,8 +3,8 @@ import { observer } from 'mobx-react'
 import { FormState } from 'formstate-x'
 import { useFormstateX } from 'react-icecream-2/lib/form-x'
 
-import CalcPane from 'components/Price/Banner/CalcPane'
-import { useShoppingCart, Product } from 'components/Price/Banner/CalcPane/ShoppingCart'
+import CalcPane from 'components/Price/Tabs/CalcPane'
+import { useShoppingCart, Product } from 'components/Price/Tabs/CalcPane/ShoppingCart'
 
 import DeviceSection, * as deviceSection from './DeviceSection'
 import UpFlowSection, * as upFlowSection from './UpFlowSection'

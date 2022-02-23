@@ -1,17 +1,17 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import Layout from 'components/Price/Layout'
-import Banner from 'components/Price/Banner'
-import PriceMdPreview, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/common/MdPreview'
+import Tabs from 'components/Price/Tabs'
+import DocumentPane, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/Tabs/DocumentPane'
 import { Product } from 'constants/products'
 import { getPriceFileContent } from 'apis/admin/product'
 
 function Page({ htmlAst }: { htmlAst: HTMLRootNode | null }) {
   return (
     <>
-      <Banner product="价格 | 人脸核验">
-        <PriceMdPreview htmlAst={htmlAst} />
-      </Banner>
+      <Tabs product="价格 | 人脸核验">
+        <DocumentPane htmlAst={htmlAst} />
+      </Tabs>
     </>
   )
 }

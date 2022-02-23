@@ -1,8 +1,8 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import Layout from 'components/Price/Layout'
-import Banner from 'components/Price/Banner'
-import PriceMdPreview, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/common/MdPreview'
+import Tabs from 'components/Price/Tabs'
+import DocumentPane, { mdTextToHTMLAst, HTMLRootNode } from 'components/Price/Tabs/DocumentPane'
 import CalcPane from 'components/Price/kodo/Calc'
 import { Product } from 'constants/products'
 import { getPriceFileContent } from 'apis/admin/product'
@@ -11,10 +11,10 @@ function Page({ htmlAst }: { htmlAst: HTMLRootNode | null }) {
 
   return (
     <>
-      <Banner product="价格 | 对象存储">
-        <PriceMdPreview htmlAst={htmlAst} />
+      <Tabs product="价格 | 对象存储">
+        <DocumentPane htmlAst={htmlAst} />
         <CalcPane />
-      </Banner>
+      </Tabs>
     </>
   )
 }

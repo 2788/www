@@ -6,7 +6,7 @@ import { Pane } from '../Pane'
 import ShoppingCart from './ShoppingCart'
 
 import style from './index.less'
-import { BannerContext } from '..'
+import { TabsContext } from '..'
 
 export type CalcPaneProps = {
   children: ReactNode
@@ -18,7 +18,7 @@ export type CalcPaneProps = {
 }
 
 export default function CalcPane({ children, disabled, total, buyLink, onAdd }: CalcPaneProps) {
-  const { registerPane } = useContext(BannerContext)
+  const { registerPane } = useContext(TabsContext)
 
   useEffect(() => registerPane('calc'), [registerPane])
 

@@ -1,12 +1,12 @@
 import React, { PropsWithChildren, useEffect, useContext } from 'react'
 import { Pane } from '../Pane'
-import { BannerContext } from '..'
+import { TabsContext } from '..'
 
 export * from './PricePaneSection'
 export * from './PricePaneSubSection'
 
 export default function PricePane({ children }: PropsWithChildren<{}>) {
-  const { registerPane } = useContext(BannerContext)
+  const { registerPane } = useContext(TabsContext)
 
   useEffect(() => registerPane('price'), [registerPane])
 

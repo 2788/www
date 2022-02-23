@@ -1,5 +1,5 @@
 import React from 'react'
-import CalcPane from 'components/Price/Banner/CalcPane'
+import CalcPane from 'components/Price/Tabs/CalcPane'
 
 import style from './index.less'
 

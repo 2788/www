@@ -1,10 +1,10 @@
 /**
- * @file          component  MdPreview
- * @description   markdown 预览
+ * @file          component  DocumentPane
+ * @description   具备 markdown 预览能力的产品价格文档 pane
  */
 
 import React, { ReactNode } from 'react'
-import PricePane from 'components/Price/Banner/PricePane'
+import PricePane from 'components/Price/Tabs/PricePane'
 import Tabs, { TabPane } from 'components/UI/Tabs'
 import { renderHTMLAst, RootNode as HTMLRootNode, RenderOptions } from './utils'
 import * as style from './style.m.less'
@@ -29,7 +29,9 @@ const options: RenderOptions = {
   }
 }
 
-export default function MdPreview({ htmlAst, className }: { htmlAst: HTMLRootNode | null, className?: string }) {
+export default function DocumentPane(
+  { htmlAst, className }: { htmlAst: HTMLRootNode | null, className?: string }
+) {
   return (
     <PricePane>
       {/** 这边之所以使用自定义标签，是为了保证这边样式的独立性（不会影响到其他页面）之外，
