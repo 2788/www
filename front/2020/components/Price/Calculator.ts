@@ -180,16 +180,16 @@ export default class Calculator {
           restCount = unitAdaptor.frombase(matchedRuleItem.min, itemUnit)
 
           // 加上当前区间价格
-          sum = strip(sum + strip(matchedRuleItem.price * count))
+          sum += matchedRuleItem.price * count
         }
 
-        return strip(_totalForRegion + sum)
+        return _totalForRegion + sum
       }, 0)
 
-      return strip(_total + totalForRegion)
+      return _total + totalForRegion
     }, 0)
 
-    return toPrecision(strip((total * this.duration)), this.precision)
+    return toPrecision((total * this.duration), this.precision)
   }
 
   public setDuration = (duration: number) => {
@@ -271,9 +271,4 @@ export class CountUnitAdaptor extends UnitAdaptor {
 
     return num
   }
-}
-
-/** 解决浮点误差 */
-function strip(num: number, precision = 12) {
-  return +parseFloat(num.toPrecision(precision))
 }
