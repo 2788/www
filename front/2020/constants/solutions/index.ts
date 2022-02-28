@@ -23,8 +23,8 @@ export enum Solution {
   Entertainment = 'entertainment',
   /** 智能视频云 */
   Qavs = 'qavs',
-  /** 互动直播 */
-  Rtclive = 'rtclive',
+  /** 社交娱乐 */
+  MediaSocial = 'media-social',
   /** 短视频 */
   Plsv = 'plsv',
   /** 私有云存储 */
@@ -75,7 +75,7 @@ export const categoryEnNameMap = {
 } as const
 
 export const categorySolutionsMap = {
-  [Category.Media]: [Solution.Rtclive, Solution.Plsv],
+  [Category.Media]: [Solution.MediaSocial, Solution.Plsv],
   [Category.Storage]: [Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
     Solution.Fin, Solution.Automobile, Solution.Gene, Solution.IntelligentManufacturing,
@@ -121,7 +121,7 @@ export const nameMap: MapTo<string> = {
   [Solution.Social]: '社交',
   [Solution.Entertainment]: '泛娱乐',
   [Solution.Qavs]: '智能视频云',
-  [Solution.Rtclive]: '互动直播',
+  [Solution.MediaSocial]: '社交娱乐',
   [Solution.Plsv]: '短视频',
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
@@ -131,7 +131,7 @@ export const nameMap: MapTo<string> = {
 
 export const urlMap: MapTo<string | null> = {
   [Solution.Qavs]: '/solutions/qavs',
-  [Solution.Rtclive]: '/solutions/rtclive',
+  [Solution.MediaSocial]: '/solutions/media-social',
   [Solution.Plsv]: '/solutions/plsv',
   [Solution.Kodoe]: '/solutions/kodoe',
   [Solution.Vcs]: '/solutions/vcs',
@@ -151,7 +151,7 @@ export const urlMap: MapTo<string | null> = {
 
 export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',
-  [Solution.Rtclive]: '一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线',
+  [Solution.MediaSocial]: '社交连麦、超大房间互动直播，提供商用级开源 UI 辅助快速上线',
   [Solution.Plsv]: '集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案',
   [Solution.Kodoe]: '为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型',
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
@@ -172,7 +172,7 @@ export const descMap: MapTo<string> = {
 // 32px的icon，默认除导航栏均为该类型
 export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/default/qavs.svg').default,
-  [Solution.Rtclive]: require('./images/default/rtclive.svg').default,
+  [Solution.MediaSocial]: require('./images/default/media-social.svg').default,
   [Solution.Plsv]: require('./images/default/plsv.svg').default,
   [Solution.Kodoe]: require('./images/default/kodoe.svg').default,
   [Solution.Vcs]: require('./images/default/vcs.svg').default,
@@ -193,7 +193,7 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
 // 24px的icon，导航栏使用
 export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/small/qavs.svg').default,
-  [Solution.Rtclive]: require('./images/small/rtclive.svg').default,
+  [Solution.MediaSocial]: require('./images/small/media-social.svg').default,
   [Solution.Plsv]: require('./images/small/plsv.svg').default,
   [Solution.Kodoe]: require('./images/small/kodoe.svg').default,
   [Solution.Vcs]: require('./images/small/vcs.svg').default,

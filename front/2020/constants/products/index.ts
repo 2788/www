@@ -31,7 +31,7 @@ export enum Product {
   DoraAudio = 'doraAudio',
   /** 图片处理 */
   DoraImage = 'doraImage',
-  /** 内容安全 */
+  /** 内容审核 */
   Censor = 'censor',
   /** 人脸核验 */
   FaceID = 'faceid',

@@ -19,8 +19,8 @@ import styles from './style.less'
 // 图片和文案和布局，支持上下布局和左右布局，默认上下布局
 export type PosType = 'top-down' | 'left-right' | undefined
 
-// 文案（标题除外）及连接对齐方式，支持居中和左对齐，默认居中
-export type AlignType = 'center' | 'left' | undefined
+// 文案（标题除外）及连接对齐方式，支持居中、左对齐、两端对齐，默认居中
+export type AlignType = 'center' | 'left' | 'justify' | undefined
 
 // 描述前面的 icon 样式，支持 check 和 dot，默认 undefined
 // 推荐在上下布局 && 文案左对齐的情况下使用

@@ -44,6 +44,8 @@ export function PcFeatureItem(props: IPcFeatureItemProps) {
         return styles.contentCenter
       case 'left':
         return styles.contentLeft
+      case 'justify':
+        return styles.contentJustify
       default:
         return styles.contentCenter
     }
