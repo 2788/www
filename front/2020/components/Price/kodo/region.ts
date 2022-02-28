@@ -1,5 +1,3 @@
-import { CheckboxOptionType } from 'react-icecream/lib/checkbox'
-
 enum Region {
   EastZheJiang2 = 'east-zhejiang2',
   East = 'east',
@@ -22,7 +20,7 @@ export const nameMap: { [key in Region]: string } = {
   [Region.SouthAsia]: '东南亚'
 }
 
-export const regionOptions: CheckboxOptionType[] = [
+export const regionOptions = [
   { label: nameMap[Region.EastZheJiang2], value: Region.EastZheJiang2 },
   { label: nameMap[Region.East], value: Region.East },
   { label: nameMap[Region.South], value: Region.South },

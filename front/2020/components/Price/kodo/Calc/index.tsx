@@ -9,11 +9,13 @@ import Standard from './Standard'
 import style from './index.less'
 import LowFrequency from './LowFrequency'
 import Archive from './Archive'
+import DeepinArchive from './DeepinArchive'
 
 const tabMap: { [key in string]: string } = {
   1: '标准存储',
   2: '低频存储',
-  3: '归档存储'
+  3: '归档存储',
+  4: '深度归档存储'
 }
 
 export default function KodoCalc() {
@@ -54,6 +56,7 @@ export default function KodoCalc() {
         <TabPane value="1" tab={tabMap[1]} autoDestroy><Standard setCalculator={setCalculator} /></TabPane>
         <TabPane value="2" tab={tabMap[2]} autoDestroy><LowFrequency setCalculator={setCalculator} /></TabPane>
         <TabPane value="3" tab={tabMap[3]} autoDestroy><Archive setCalculator={setCalculator} /></TabPane>
+        <TabPane value="4" tab={tabMap[4]} autoDestroy><DeepinArchive setCalculator={setCalculator} /></TabPane>
       </Tabs>
     </CalcPane>
   )
