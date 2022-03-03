@@ -78,7 +78,7 @@ const scenes = [
   }
 ]
 
-export default function MediaSocialScene() {
+export default function RtcliveScene() {
   return (
     <Scene name="scene" title="适用场景">
       {
