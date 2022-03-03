@@ -11,10 +11,10 @@ export default function Core() {
     <Feature name="cores" title="核心功能">
       <Group>
         <Item pos="left-right" title="视频接入管理" icon={<Icon1 />}>
-          <Desc>支持 RTMP 或 GB/T28181 国标协议的摄像头、NVR、智能硬件设备、视频监控平台的接入与管理</Desc>
+          <Desc>摄像头、NVR、视频监控平台以及各类具备视音频能力的硬件，可以通过 RTMP 推流、GB/T28181 或者 RTSP、RTMP、FLV、HLS 拉流接入七牛云 QVS</Desc>
         </Item>
         <Item pos="left-right" title="视频实时播放" icon={<Icon2 />}>
-          <Desc>视频流接入 QVS 后，可以实现三种标准播放协议 RTMP、HLS、HTTP-FLV 实时分发</Desc>
+          <Desc>视频流接入 QVS 后，可以实现三种标准播放协议 RTMP、HLS、HTTP-FLV 的实时观看，同时支持使用低延时的 WebRTC 拉流观看</Desc>
         </Item>
       </Group>
       <Group>
