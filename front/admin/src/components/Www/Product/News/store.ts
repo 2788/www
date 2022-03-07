@@ -6,12 +6,11 @@
 
 import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
-import Store from 'qn-fe-core/store'
-import { injectable } from 'qn-fe-core/di'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import Loadings from 'admin-base/common/stores/loadings'
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import NewsApis, { INewsWithId, IListOptions, IListResponse } from 'apis/product/news'
 import PageApis, { IPage } from 'apis/product/page'
@@ -21,6 +20,7 @@ import { ExtraProps } from './Editor'
 import { pageSize } from '.'
 
 type FecthListOptions = Omit<IListOptions, 'limit' | 'offset'> & { page: number }
+
 @injectable()
 export default class NewsStore extends Store {
 
@@ -30,7 +30,7 @@ export default class NewsStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   editorModal = new ModalStore<ExtraProps>()

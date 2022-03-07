@@ -2,8 +2,7 @@ import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, ValueOf } from 'formstate-x'
 
-import { bindFormItem } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { bindFormItem, textNotBlank } from 'admin-base/common/form'
 
 import FormItem from 'components/common/FormItem'
 import UploadImg, * as uploadImg from 'components/common/Upload/Img'

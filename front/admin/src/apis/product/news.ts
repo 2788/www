@@ -6,7 +6,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 
 // 动态类型
@@ -47,20 +48,20 @@ export interface IListResponse {
 @injectable()
 export default class NewsApis {
 
-  constructor(private fetchStore: FetchStore) { }
+  constructor(private client: BaseClient) { }
 
   add(options: INews): Promise<void> {
     options = { ...options, ...{ createTime: moment().unix(), editTime: moment().unix() } }
-    return this.fetchStore.postJSON(apiMongo + '/www-product-news', options)
+    return this.client.post(apiMongo + '/www-product-news', options)
   }
 
   update(options: INews, id: string): Promise<void> {
     options = { ...options, editTime: moment().unix() }
-    return this.fetchStore.putJSON(apiMongo + '/www-product-news/' + id, options)
+    return this.client.put(apiMongo + '/www-product-news/' + id, options)
   }
 
   delete(id: string): Promise<void> {
-    return this.fetchStore.delete(apiMongo + '/www-product-news/' + id)
+    return this.client.delete(apiMongo + '/www-product-news/' + id)
   }
 
   list({ limit, offset, products = [], types = [] }: IListOptions): Promise<IListResponse> {
@@ -70,7 +71,7 @@ export default class NewsApis {
       ? { query: JSON.stringify({ ...productParam, ...typeParam }) }
       : null
     const options = { ...query, limit, offset, sort: '-releaseTime,-editTime,-startTime' }
-    return this.fetchStore.get(apiMongo + '/www-product-news', options)
+    return this.client.get<IListResponse>(apiMongo + '/www-product-news', options)
       .then(res => (res.data ? res : { ...res, data: [] }))
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 import { Checkbox } from 'react-icecream'
 import moment from 'moment'
+
 import { stateOption, State } from 'constants/state'
 
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 type StateProps = {
   effectTime: number
@@ -11,7 +12,7 @@ type StateProps = {
 }
 
 type CheckboxProps = {
-  onChange: (vals: State[]) => void;
+  onChange: (vals: State[]) => void
 }
 
 export function renderState(_: string, record: StateProps) {

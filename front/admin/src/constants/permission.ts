@@ -1,5 +1,5 @@
 // 命名：${target/group}_${action}
-export enum permissionCodes {
+export enum PermissionCode {
 
   // 帐户中心查看、编辑权限
   ACCOUNT = 'ACCOUNT',
@@ -8,6 +8,7 @@ export enum permissionCodes {
   HOMEPAGE = 'HOMEPAGE',
 
   // 官网全局公告查看、编辑权限
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   GLOBAL_BANNER = 'GLOBAL_BANNER',
 
   // 官网产品查看、编辑权限
@@ -19,6 +20,3 @@ export enum permissionCodes {
   // 官网活动查看、编辑权限
   ACTIVITY = 'ACTIVITY'
 }
-
-export default permissionCodes
-

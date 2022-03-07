@@ -1,9 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
-import Store from 'qn-fe-core/store'
-import { injectable } from 'qn-fe-core/di'
-
-import Loadings from 'admin-base/common/stores/loadings'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { Loadings } from 'admin-base/common/loading'
 
 import BannerApis, { IBanner } from 'apis/homepage/banner'
 import { State } from 'constants/state'

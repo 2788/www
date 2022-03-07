@@ -1,8 +1,7 @@
 /**
  * admin 特有的校验，其他公共校验使用admin-base/common/utils/validator
  */
-import { createValidator, textPattern } from 'admin-base/common/utils/validator'
-import { httpUrl } from 'admin-base/common/constants/pattern'
+import { createValidator, textPattern, httpUrl } from 'admin-base/common/form'
 
 const productLink = /^\/products\/[a-zA-Z-_0-9#]+$/
 const inSiteLink = /^\/.+$/

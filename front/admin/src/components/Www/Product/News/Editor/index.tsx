@@ -12,15 +12,13 @@ import { Form, Input, Radio, DatePicker } from 'react-icecream'
 import autobind from 'autobind-decorator'
 
 import { FieldState, FormState, bindInput } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup, textNotBlank } from 'admin-base/common/form'
 
 import { textHttp } from 'utils/validator'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
@@ -96,7 +94,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)

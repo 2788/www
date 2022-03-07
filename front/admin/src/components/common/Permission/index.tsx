@@ -1,14 +1,13 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { useInjection } from 'qn-fe-core/di'
-import { IProps } from 'admin-base/user/components/Permission'
-import CurrentUserPermissionStore from 'admin-base/user/stores/user-permission'
+import { PermissionProps, PermissionStore as CurrentUserPermissionStore } from 'admin-base/user/permission'
 
 type Props = {
   message?: string
-} & IProps
+} & PermissionProps
 
-// 引自 admin-base/user/components/Permission ,增加 message 字段方便修改提示文案
+// 引自 admin-base/user/permission ,增加 message 字段方便修改提示文案
 export default observer(function Permission(
   { code, deny = false, message = '没有权限，可找 @tangbingyan 开通权限', children }: Props
 ) {

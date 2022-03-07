@@ -1,6 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import cls from 'classnames'
-import * as style from './style.m.less'
+
+import style from './style.m.less'
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   url: string // 移动端是否显示背景图

@@ -6,19 +6,17 @@ import moment, { Moment } from 'moment'
 import autobind from 'autobind-decorator'
 
 import { FieldState, FormState, ValueOf } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { bindFormItem, bindTextInput, textNotBlank } from 'admin-base/common/form'
 
 import { bindRangePicker } from 'utils/bind'
 import { textHttp } from 'utils/validator'
-import * as style from 'utils/style.m.less'
+import style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { IBanner } from 'apis/homepage/banner'
 import ImgColor, * as imgColor from 'components/common/ImgColor'
@@ -73,7 +71,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)

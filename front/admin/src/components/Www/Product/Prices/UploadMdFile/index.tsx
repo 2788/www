@@ -8,9 +8,10 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import Modal from 'react-icecream/lib/modal'
 import { RcFile } from 'react-icecream/lib/upload'
+
 import UploadMdFile, { Props as CommonProps } from 'components/common/Upload/MdFile'
 import MdPreview from '../MdPreview'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 export type Props = Pick<CommonProps, 'state' | 'onUploaded' | 'children'>
 

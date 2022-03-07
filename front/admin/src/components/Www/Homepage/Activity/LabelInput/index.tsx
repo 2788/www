@@ -2,8 +2,9 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { Input, Radio } from 'react-icecream'
 import { FieldState, FormState } from 'formstate-x'
-import { bindTextInput, bindRadioGroup } from 'admin-base/common/utils/form'
-import * as style from './style.m.less'
+import { bindTextInput, bindRadioGroup } from 'admin-base/common/form'
+
+import style from './style.m.less'
 
 export const labelMap = {
   hot: 'HOT',

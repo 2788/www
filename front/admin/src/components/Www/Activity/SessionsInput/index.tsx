@@ -5,12 +5,10 @@ import { action } from 'mobx'
 import { observer } from 'mobx-react'
 import { Input, Icon } from 'react-icecream'
 import { FieldState, FormState } from 'formstate-x'
-
-import { bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { bindTextInput, textNotBlank } from 'admin-base/common/form'
 
 import { ISession } from 'apis/activity'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 type SessionState = FormState<{
   id: FieldState<string>

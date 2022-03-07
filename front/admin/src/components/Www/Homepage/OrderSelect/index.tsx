@@ -2,7 +2,7 @@ import * as React from 'react'
 import { observer } from 'mobx-react'
 import { Select } from 'react-icecream'
 import { FieldState } from 'formstate-x'
-import { bindSelect } from 'admin-base/common/utils/form'
+import { bindSelect } from 'admin-base/common/form'
 
 export type State = FieldState<number>
 

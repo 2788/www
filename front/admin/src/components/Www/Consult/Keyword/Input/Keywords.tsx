@@ -3,7 +3,7 @@ import { Icon } from 'react-icecream'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
+import { observeInjectable as injectable } from 'qn-fe-core/store'
 import { injectProps, useLocalStore } from 'qn-fe-core/local-store'
 
 import SimpleInput from './SimpleInput'

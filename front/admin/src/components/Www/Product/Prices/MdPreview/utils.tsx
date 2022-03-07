@@ -12,7 +12,7 @@ import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 export type RootNode = {
   type: 'root'

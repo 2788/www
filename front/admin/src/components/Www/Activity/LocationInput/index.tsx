@@ -1,9 +1,10 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { Input, Radio } from 'react-icecream'
-import { bindTextInput, bindRadioGroup } from 'admin-base/common/utils/form'
 import { FieldState, FormState } from 'formstate-x'
-import * as style from './style.m.less'
+import { bindTextInput, bindRadioGroup } from 'admin-base/common/form'
+
+import style from './style.m.less'
 
 export const locationMap = {
   online: '线上',

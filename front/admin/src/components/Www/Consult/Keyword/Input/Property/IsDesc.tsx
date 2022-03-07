@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Form } from 'react-icecream'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x'
-import { bindFormItem, bindSwitch } from 'admin-base/common/utils/form'
+import { bindFormItem, bindSwitch } from 'admin-base/common/form'
 
 export type State = FieldState<boolean>
 

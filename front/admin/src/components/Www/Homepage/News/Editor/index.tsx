@@ -6,15 +6,13 @@ import moment from 'moment'
 import autobind from 'autobind-decorator'
 
 import { FieldState, FormState, ValueOf } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank, textPositiveInterger } from 'admin-base/common/utils/validator'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { bindFormItem, bindTextInput, textNotBlank, textPositiveInterger } from 'admin-base/common/form'
 
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import { INews, IArchive } from 'apis/homepage/news'
@@ -62,7 +60,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)

@@ -7,7 +7,7 @@ import { ContentUtils } from 'braft-utils'
 import 'braft-editor/dist/index.css'
 
 import UploadImg, * as uploadImg from '../Upload/Img'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 const maxLen = 5000 // 文本最大长度
 

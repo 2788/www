@@ -13,15 +13,6 @@
     }
   },
   "transforms": {
-    "m.less": {
-      "transformer": "less",
-      "config": {
-        "modules": true,
-        "options": {
-          "javascriptEnabled": true
-        }
-      }
-    },
     "md": "file"
   },
   "devProxy": {
@@ -35,6 +26,6 @@
     }
   },
   "engines": {
-    "builder": "^1.17.0"
+    "builder": "^2.0.0"
   }
 }

@@ -7,7 +7,7 @@ import { FieldState } from 'formstate-x'
 
 import ImgPreview from '../../ImgPreview'
 import CommonUpload from '..'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg, .gif'

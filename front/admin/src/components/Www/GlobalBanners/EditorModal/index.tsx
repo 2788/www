@@ -6,20 +6,18 @@ import moment from 'moment'
 import autobind from 'autobind-decorator'
 
 import { FieldState, FormState, ValueOf } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { bindFormItem, bindTextInput, textNotBlank } from 'admin-base/common/form'
 
 import { bindCheckboxGroup } from 'utils/bind'
 import { textHttp } from 'utils/validator'
 import { checkOverlap } from 'utils/check'
-import * as style from 'utils/style.m.less'
+import style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import BannerApis, { IBannerWithId, IAddBannerOptions, DisplayPages, IListResponse } from 'apis/global-banner'
 import ImgColor, * as imgColor from 'components/common/ImgColor'
@@ -111,7 +109,7 @@ class LocalStore extends Store {
     private toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)
@@ -175,8 +173,8 @@ class LocalStore extends Store {
 
   init() {
     this.addDisposer(
-      reaction<[IBannerWithId, IBannerWithId[]]>(
-        () => [this.props.banner, this.allBanners],
+      reaction(
+        () => [this.props.banner, this.allBanners] as const,
         ([banner, allBanners]) => {
           this.state.dispose()
           this.state = createState(banner, allBanners)
@@ -252,7 +250,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   const extraProps = {
     ...defaultFormData,
     status: EditorStatus.Creating,
-    ...originalExtraProps
+    ...originalExtraProps as any // FIXME
   }
   const store = useLocalStore(LocalStore, { ...props, ...extraProps })
 

@@ -4,9 +4,10 @@ import { action } from 'mobx'
 import { observer } from 'mobx-react'
 import { InputNumber, Icon } from 'react-icecream'
 import { FieldState, FormState } from 'formstate-x'
-import { bindInputNumber } from 'admin-base/common/utils/form'
+import { bindInputNumber } from 'admin-base/common/form'
+
 import { IReminder } from 'apis/activity'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 type ReminderState = FormState<{
   id: FieldState<string>

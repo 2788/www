@@ -6,12 +6,11 @@
 
 import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
-import Store from 'qn-fe-core/store'
-import { injectable } from 'qn-fe-core/di'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import Loadings from 'admin-base/common/stores/loadings'
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import PriceApis, { IPrice, IListResponse } from 'apis/product/price'
 import PageApis, { IPage } from 'apis/product/page'
@@ -27,7 +26,7 @@ export default class PricesStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   createModal = new ModalStore<CreateModalProps>()

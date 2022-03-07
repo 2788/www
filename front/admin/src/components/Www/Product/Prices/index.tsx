@@ -10,21 +10,20 @@ import { Tooltip, Button, Icon, Modal } from 'react-icecream'
 import Table, { PaginationConfig } from 'react-icecream/lib/table'
 import { saveAs } from 'file-saver'
 
-import Provider from 'qn-fe-core/di/Provider'
-import { useInjection } from 'qn-fe-core/di'
+import { Provider, useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
 import { IPrice } from 'apis/product/price'
 import { timeFormatter } from 'utils/time'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 
 import UploadMdFile, * as uploadMdFile from './UploadMdFile'
 import PricesStore from './store'
 import CreateModal from './Create'
 import VersionsModal from './Versions'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 // 表格数据一页条数
 export const pageSize = 10
@@ -108,7 +107,7 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="操作" width={120} render={renderOperation} />
       </Table>
       <CreateModal {...store.createModal.bind()} />
-      <VersionsModal {...store.versionsModal.bind()} />
+      <VersionsModal {...store.versionsModal.bind() as any} />
     </>
   )
 })

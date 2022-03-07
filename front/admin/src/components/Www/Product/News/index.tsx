@@ -10,19 +10,18 @@ import { Tooltip, Button, Icon, Modal } from 'react-icecream'
 import Table, { PaginationConfig } from 'react-icecream/lib/table'
 import { PaginationProps } from 'react-icecream/lib/pagination'
 
-import Provider from 'qn-fe-core/di/Provider'
-import { useInjection } from 'qn-fe-core/di'
+import { Provider, useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
 import { INewsWithId, NewsType } from 'apis/product/news'
 import { timeFormatter } from 'utils/time'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 
 import NewsStore from './store'
 import EditorModal from './Editor'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 // 表格数据一页条数
 export const pageSize = 5
@@ -108,7 +107,7 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="相关文档链接" width={200} className={commonStyle.cellContent} dataIndex="link" />
         <Table.Column title="操作" width={120} render={renderOperation} />
       </Table>
-      <EditorModal {...store.editorModal.bind()} />
+      <EditorModal {...store.editorModal.bind() as any} />
     </>
   )
 })

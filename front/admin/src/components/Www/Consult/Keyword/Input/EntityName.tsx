@@ -2,6 +2,7 @@ import React, { useCallback, FormEvent, useState } from 'react'
 import { Icon } from 'react-icecream'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x'
+
 import { useFormState } from 'hooks/form'
 
 import SimpleInput from './SimpleInput'

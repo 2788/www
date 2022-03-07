@@ -7,7 +7,7 @@ import React, { useCallback, CSSProperties, KeyboardEvent } from 'react'
 import { Input } from 'react-icecream'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x'
-import { bindTextInput } from 'admin-base/common/utils/form'
+import { bindTextInput } from 'admin-base/common/form'
 
 export interface Props {
   style?: CSSProperties

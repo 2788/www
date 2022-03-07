@@ -4,14 +4,11 @@ import { observer } from 'mobx-react'
 import { Tooltip, Icon, Modal, Button } from 'react-icecream'
 import Table, { PaginationConfig } from 'react-icecream/lib/table'
 import autobind from 'autobind-decorator'
-
-import { injectable } from 'qn-fe-core/di'
-import Provider from 'qn-fe-core/di/Provider'
+import { Provider } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
-
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
@@ -19,13 +16,13 @@ import { StateCheckboxGroup, renderState } from 'components/common/State'
 import ImgPreview from 'components/common/ImgPreview'
 import { IBanner } from 'apis/homepage/banner'
 import { timeFormatter } from 'utils/time'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 
 import { EditorStatus } from 'constants/editor'
 import BannerStore from './store'
 import EditorModal, { ExtraProps } from './Editor'
 
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 // 顺序个数
 export const maxNum = 6
@@ -39,7 +36,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
   editorModal = new ModalStore<ExtraProps>()
   @observable.ref currentPage = 1
@@ -94,8 +91,9 @@ class LocalStore extends Store {
 const PageContent = observer(function _PageContent() {
   const store = useLocalStore(LocalStore)
   const bannerStore = store.bannerStore
-  const { list, isLoading } = bannerStore
+  const { filteredList: list, isLoading } = bannerStore
 
+  // eslint-disable-next-line react/display-name
   const renderImg = (item: 'pcImg' | 'mobileImg') => (_: string, record: IBanner) => <ImgPreview url={record[item]} />
 
   const renderOther = (_: string, record: IBanner) => (
@@ -157,7 +155,7 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} sorter={sortEditTime} />
         <Table.Column title="操作" width={80} render={renderOperation} />
       </Table>
-      {store.editorModal.visible && <EditorModal {...store.editorModal.bind()} />}
+      {store.editorModal.visible && <EditorModal {...store.editorModal.bind() as any} />}
     </>
   )
 })
