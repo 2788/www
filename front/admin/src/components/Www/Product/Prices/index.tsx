@@ -100,11 +100,11 @@ const PageContent = observer(function _PageContent() {
         className={style.table}
       >
         <Table.Column title="所属产品" width={120} className={commonStyle.cellContent} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
-        <Table.Column title="文件" width={250} dataIndex="file" className={commonStyle.cellContent} render={renderFile} />
+        <Table.Column title="文件" dataIndex="file" className={commonStyle.cellContent} render={renderFile} />
         <Table.Column title="创建人" width={100} dataIndex="creator" render={(val: string) => val || '-'} />
         <Table.Column title="更新人" width={100} dataIndex="modifier" render={(val: string) => val || '-'} />
         <Table.Column title="更新时间" width={160} dataIndex="updatedAt" render={timeFormatter('YYYY-MM-DD HH:mm')} />
-        <Table.Column title="操作" width={120} render={renderOperation} />
+        <Table.Column title="操作" width={140} render={renderOperation} />
       </Table>
       <CreateModal {...store.createModal.bind()} />
       <VersionsModal {...store.versionsModal.bind() as any} />
