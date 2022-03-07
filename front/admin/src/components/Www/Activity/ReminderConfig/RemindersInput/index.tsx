@@ -3,9 +3,9 @@ import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
 import { InputNumber, Icon } from 'react-icecream'
-import { FieldState, FormState } from 'formstate-x'
-import { bindInputNumber } from 'admin-base/common/form'
+import { FieldState, FormState } from 'formstate-x-v2'
 
+import { bindInputNumber } from 'utils/bind'
 import { IReminder } from 'apis/activity'
 import style from './style.m.less'
 

@@ -9,13 +9,13 @@ import { action, computed, observable } from 'mobx'
 import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'
 import Select, { SelectProps } from 'react-icecream/lib/select'
-import { FieldState } from 'formstate-x'
+import { FieldState } from 'formstate-x-v2'
 import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 import { useLocalStore } from 'qn-fe-core/local-store'
 import { ToasterStore } from 'admin-base/common/toaster'
-import { bindSelect } from 'admin-base/common/form'
 import { Loadings } from 'admin-base/common/loading'
 
+import { bindSelect } from 'utils/bind'
 import PageApis, { IPage } from 'apis/product/page'
 
 export type State = FieldState<string>

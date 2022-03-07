@@ -2842,10 +2842,15 @@ form-data@^3.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-formstate-x@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-2.0.2.tgz#6628e5f6130ce1e96d648e7b28f5e2fcd0761d65"
-  integrity sha512-or9iH0DLwDwiGgWCHl8Qpn3Jlp3bmXM0spU/5BnltPzhSb9w0pCm2Vfu/BBL5LWrn8h+42Ou89XA+5G1vw/EKw==
+"formstate-x-v2@npm:formstate-x@^2.0.2":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-2.0.3.tgz#12553bae573773a135f039ee1fef831a78457677"
+  integrity sha512-kPpZxF2cX67hiGhkhsGIAA+aISCdNvRhJsIVkB6DkvThY6bARDkqgaNyMvWdmV5d/5bS4XRhxfvvLVxr67c+qQ==
+
+formstate-x@3.0.0-beta.1:
+  version "3.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-3.0.0-beta.1.tgz#a8a1a64f9968a0fd43d92cff48c4eebcbac7366e"
+  integrity sha512-BqRFUfswZ+d3cJH8lFY1yJ6nOsNYdIi72P5XCKA0GVFd8r+pJzHSB5vUEm+tp8HBHneCWFKNx5d+pKYqoQvAOg==
 
 frac@~1.1.2:
   version "1.1.2"

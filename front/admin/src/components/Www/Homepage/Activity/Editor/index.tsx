@@ -4,16 +4,17 @@ import { observer } from 'mobx-react'
 import moment, { Moment } from 'moment'
 import { Form, Input, DatePicker } from 'react-icecream'
 import autobind from 'autobind-decorator'
-import { FieldState, FormState, ValueOf } from 'formstate-x'
+import { toV2 } from 'formstate-x/adapter'
+import { FieldState, FormState, ValidatorResponse, ValueOf } from 'formstate-x-v2'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
-import { bindFormItem, bindTextInput, textNotBlank } from 'admin-base/common/form'
+import { textNotBlank } from 'admin-base/common/form'
 
-import { bindRangePicker } from 'utils/bind'
+import { bindFormItem, bindTextInput, bindRangePicker } from 'utils/bind'
 import { textHttp } from 'utils/validator'
 import style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
@@ -27,16 +28,27 @@ import ActivityStore from '../store'
 import OrderSelect, * as orderSelect from '../../OrderSelect'
 import LabelInput, * as labelInput from '../LabelInput'
 
-type State = FormState<{
-  title: FieldState<string>
-  subTitle: FieldState<string>
-  effectTime: FieldState<Moment>
-  invalidTime: FieldState<Moment>
-  icon: uploadImg.State
-  link: FieldState<string>
-  label: labelInput.State
-  order: orderSelect.State
-}>
+function createState(
+  activity: IActivity,
+  validateOrder: (order: number, start: Moment, end: Moment) => ValidatorResponse
+) {
+  const effectTime = new FieldState(moment.unix(activity.effectTime))
+  const invalidTime = new FieldState(moment.unix(activity.invalidTime))
+
+  return new FormState({
+    title: new FieldState(activity.title).validators(textNotBlank),
+    subTitle: new FieldState(activity.subTitle).validators(textNotBlank),
+    effectTime,
+    invalidTime,
+    label: labelInput.createState(activity.label),
+    icon: toV2(uploadImg.createState(activity.icon).withValidator(textNotBlank)),
+    link: new FieldState(activity.link).validators(textNotBlank, textHttp),
+    order: orderSelect.createState(activity.order)
+      .validators((order: number) => validateOrder(order, effectTime.value, invalidTime.value))
+  })
+}
+
+type State = ReturnType<typeof createState>
 
 type FormDataType = {
   activity: IActivity
@@ -93,7 +105,7 @@ class LocalStore extends Store {
     const param: IActivity = {
       title: this.formValue.title,
       subTitle: this.formValue.subTitle,
-      icon: uploadImg.getValue(this.form.$.icon),
+      icon: this.form.$.icon.value,
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
       createTime: this.props.activity.createTime,
@@ -135,20 +147,7 @@ class LocalStore extends Store {
 
   @action
   initFormState(activity: IActivity) {
-    const effectTime = new FieldState(moment.unix(activity.effectTime))
-    const invalidTime = new FieldState(moment.unix(activity.invalidTime))
-
-    this.form = new FormState({
-      title: new FieldState(activity.title).validators(textNotBlank),
-      subTitle: new FieldState(activity.subTitle).validators(textNotBlank),
-      effectTime,
-      invalidTime,
-      label: labelInput.createState(activity.label),
-      icon: uploadImg.createState(activity.icon).validators(textNotBlank),
-      link: new FieldState(activity.link).validators(textNotBlank, textHttp),
-      order: orderSelect.createState(activity.order)
-        .validators((order: number) => this.doValidateOrder(order, effectTime.value, invalidTime.value))
-    })
+    this.form = createState(activity, this.doValidateOrder)
     this.addDisposer(this.form.dispose)
   }
 
@@ -205,7 +204,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           extra={iconExtra}
           {...bindFormItem(fields.icon)}
         >
-          <UploadImg state={fields.icon} maxSize={500} />
+          <UploadImg state={fields.icon.$} maxSize={500} />
         </FormItem>
         <FormItem
           label="跳转链接"

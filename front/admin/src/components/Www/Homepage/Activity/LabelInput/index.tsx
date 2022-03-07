@@ -1,9 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { Input, Radio } from 'react-icecream'
-import { FieldState, FormState } from 'formstate-x'
-import { bindTextInput, bindRadioGroup } from 'admin-base/common/form'
+import { FieldState, FormState } from 'formstate-x-v2'
 
+import { bindTextInput, bindRadioGroup } from 'utils/bind'
 import style from './style.m.less'
 
 export const labelMap = {

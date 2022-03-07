@@ -8,7 +8,7 @@ import React, { PropsWithChildren } from 'react'
 import { observer } from 'mobx-react'
 import { Button, Modal } from 'react-icecream'
 import { RcFile } from 'react-icecream/lib/upload'
-import { FieldState, FormState, ValueOf } from 'formstate-x'
+import { FieldState, FormState, ValueOf } from 'formstate-x-v2'
 
 import CommonUpload from '..'
 

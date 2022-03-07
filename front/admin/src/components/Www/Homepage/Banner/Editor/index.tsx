@@ -5,16 +5,17 @@ import { Form, Input, DatePicker } from 'react-icecream'
 import moment, { Moment } from 'moment'
 import autobind from 'autobind-decorator'
 
-import { FieldState, FormState, ValueOf } from 'formstate-x'
+import { toV2 } from 'formstate-x/adapter'
+import { FieldState, FormState, ValueOf, Validator, ValidatorResponse } from 'formstate-x-v2'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
-import { bindFormItem, bindTextInput, textNotBlank } from 'admin-base/common/form'
+import { textNotBlank } from 'admin-base/common/form'
 
-import { bindRangePicker } from 'utils/bind'
+import { bindFormItem, bindTextInput, bindRangePicker } from 'utils/bind'
 import { textHttp } from 'utils/validator'
 import style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
@@ -28,16 +29,6 @@ import { checkOverlap } from 'utils/check'
 import BannerStore from '../store'
 import OrderSelect, * as orderSelect from '../../OrderSelect'
 import { maxNum } from '..'
-
-type State = FormState<{
-  name: FieldState<string>
-  imgColor: imgColor.State
-  mobileImg: uploadImg.State
-  effectTime: FieldState<Moment>
-  invalidTime: FieldState<Moment>
-  link: FieldState<string>
-  order: orderSelect.State
-}>
 
 type FormDataType = {
   banner: IBanner
@@ -61,6 +52,27 @@ export const defaultFormData: FormDataType = {
     order: 1
   }
 }
+
+function createState(
+  banner: IBanner,
+  validateName: Validator<string>,
+  validateOrder: (order: number, start: Moment, end: Moment) => ValidatorResponse
+) {
+  const effectTime = new FieldState(moment.unix(banner.effectTime))
+  const invalidTime = new FieldState(moment.unix(banner.invalidTime))
+  return new FormState({
+    name: new FieldState(banner.name).validators(textNotBlank, validateName),
+    imgColor: toV2(imgColor.createState({ img: banner.pcImg, color: banner.backgroundColor })),
+    mobileImg: toV2(uploadImg.createState(banner.mobileImg).withValidator(textNotBlank)),
+    effectTime,
+    invalidTime,
+    link: new FieldState(banner.link).validators(textNotBlank, textHttp),
+    order: orderSelect.createState(banner.order)
+      .validators((order: number) => validateOrder(order, effectTime.value, invalidTime.value))
+  })
+}
+
+type State = ReturnType<typeof createState>
 
 @injectable()
 class LocalStore extends Store {
@@ -89,12 +101,12 @@ class LocalStore extends Store {
 
   @Loadings.handle('submit')
   async doSubmit() {
-    const imgColorVal = imgColor.getValue(this.form.$.imgColor)
+    const imgColorVal = this.form.$.imgColor.value
     const param: IBanner = {
       name: this.formValue.name,
       pcImg: imgColorVal.img,
       backgroundColor: imgColorVal.color,
-      mobileImg: uploadImg.getValue(this.form.$.mobileImg),
+      mobileImg: this.form.$.mobileImg.value,
       effectTime: this.formValue.effectTime.startOf('day').unix(),
       invalidTime: this.formValue.invalidTime.endOf('day').unix(),
       editTime: this.props.banner.editTime,
@@ -148,18 +160,7 @@ class LocalStore extends Store {
 
   @action
   initFormState(banner: IBanner) {
-    const effectTime = new FieldState(moment.unix(banner.effectTime))
-    const invalidTime = new FieldState(moment.unix(banner.invalidTime))
-    this.form = new FormState({
-      name: new FieldState(banner.name).validators(textNotBlank, this.doValidateName),
-      imgColor: imgColor.createState({ img: banner.pcImg, color: banner.backgroundColor }),
-      mobileImg: uploadImg.createState(banner.mobileImg).validators(textNotBlank),
-      effectTime,
-      invalidTime,
-      link: new FieldState(banner.link).validators(textNotBlank, textHttp),
-      order: orderSelect.createState(banner.order)
-        .validators((order: number) => this.doValidateOrder(order, effectTime.value, invalidTime.value))
-    })
+    this.form = createState(banner, this.doValidateName, this.doValidateOrder)
     this.addDisposer(this.form.dispose)
   }
 
@@ -206,13 +207,13 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         >
           <Input disabled={props.status === EditorStatus.Editing} placeholder="请输入 banner 名称" maxLength={20} {...bindTextInput(fields.name)} />
         </FormItem>
-        <ImgColor state={fields.imgColor} labels={['PC 端图片', '背景色']} extra={[pcExtra]} />
+        <ImgColor state={fields.imgColor.$} labels={['PC 端图片', '背景色']} extra={[pcExtra]} />
         <FormItem
           label="移动端图片"
           {...bindFormItem(fields.mobileImg)}
           extra={mobileExtra}
         >
-          <UploadImg state={fields.mobileImg} maxSize={500} />
+          <UploadImg state={fields.mobileImg.$} maxSize={500} />
         </FormItem>
         <FormItem
           label="跳转链接"

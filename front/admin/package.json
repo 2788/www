@@ -8,7 +8,7 @@
     "clear": "jest --clearCache",
     "snapshot": "jest -u",
     "validate": "npm run lint && npm run test",
-    "travis:before-script": "yarn install --network-timeout 1000000",
+    "travis:before-script": "yarn install --ignore-engines --network-timeout 1000000",
     "travis:script": "npm run validate",
     "travis:after-success": "npx codecov -t $CODECOV_TOKEN -F www-admin"
   },
@@ -17,7 +17,8 @@
     "autobind-decorator": "~2.4.0",
     "classnames": "^2.2.6",
     "dayjs": "^1.0.0",
-    "formstate-x": "^2.0.2",
+    "formstate-x-v2": "npm:formstate-x@^2.0.2",
+    "formstate-x": "3.0.0-beta.1",
     "history": "~5.0.0",
     "immer": "^8.0.1",
     "lodash": "^4.17.20",

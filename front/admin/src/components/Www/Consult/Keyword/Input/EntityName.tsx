@@ -1,7 +1,7 @@
 import React, { useCallback, FormEvent, useState } from 'react'
 import { Icon } from 'react-icecream'
 import { observer } from 'mobx-react'
-import { FieldState } from 'formstate-x'
+import { FieldState } from 'formstate-x-v2'
 
 import { useFormState } from 'hooks/form'
 

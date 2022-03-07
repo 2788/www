@@ -5,15 +5,16 @@ import { Form, Input } from 'react-icecream'
 import moment from 'moment'
 import autobind from 'autobind-decorator'
 
-import { FieldState, FormState, ValueOf } from 'formstate-x'
+import { FieldState, FormState, ValueOf } from 'formstate-x-v2'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
-import { bindFormItem, bindTextInput, textNotBlank, textPositiveInterger } from 'admin-base/common/form'
+import { textNotBlank, textPositiveInterger } from 'admin-base/common/form'
 
+import { bindFormItem, bindTextInput } from 'utils/bind'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import { INews, IArchive } from 'apis/homepage/news'
 import Modal from 'components/common/Modal'

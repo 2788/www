@@ -13,11 +13,7 @@ import style from './style.m.less'
 export type State = FieldState<string>
 
 export function createState(value: string): State {
-  return new FieldState(value).validators(textNotBlank)
-}
-
-export function getValue(state: State): string {
-  return state.value
+  return new FieldState(value).withValidator(textNotBlank)
 }
 
 interface IProps {

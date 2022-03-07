@@ -4,10 +4,12 @@ import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
 import { Input, Icon } from 'react-icecream'
-import { FieldState, FormState } from 'formstate-x'
-import { bindTextInput, textNotBlank } from 'admin-base/common/form'
+import { FieldState, FormState } from 'formstate-x-v2'
+import { textNotBlank } from 'admin-base/common/form'
 
+import { bindTextInput } from 'utils/bind'
 import { ISession } from 'apis/activity'
+
 import style from './style.m.less'
 
 type SessionState = FormState<{

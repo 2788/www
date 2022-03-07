@@ -1,8 +1,9 @@
 import React from 'react'
 import { Input, Form } from 'react-icecream'
 import { observer } from 'mobx-react'
-import { FieldState } from 'formstate-x'
-import { bindFormItem, bindTextInput } from 'admin-base/common/form'
+import { FieldState } from 'formstate-x-v2'
+
+import { bindFormItem, bindTextInput } from 'utils/bind'
 
 export type State = FieldState<string>
 

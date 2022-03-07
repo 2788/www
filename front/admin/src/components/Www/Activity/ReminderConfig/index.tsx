@@ -1,8 +1,9 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import Checkbox from 'react-icecream/lib/checkbox'
-import { FieldState, FormState } from 'formstate-x'
-import { bindCheckbox } from 'admin-base/common/form'
+import { FieldState, FormState } from 'formstate-x-v2'
+
+import { bindCheckbox } from 'utils/bind'
 
 import RemindersInput, * as remindersInput from './RemindersInput'
 import style from './style.m.less'

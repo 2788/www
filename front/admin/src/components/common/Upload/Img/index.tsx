@@ -24,10 +24,6 @@ export function createState(value: string): State {
   return new FieldState(value)
 }
 
-export function getValue(state: State): string {
-  return state.value
-}
-
 export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
   const { state, maxSize, children } = props
 

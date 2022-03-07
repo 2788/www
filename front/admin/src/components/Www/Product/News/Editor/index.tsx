@@ -11,15 +11,16 @@ import { observer } from 'mobx-react'
 import { Form, Input, Radio, DatePicker } from 'react-icecream'
 import autobind from 'autobind-decorator'
 
-import { FieldState, FormState, bindInput } from 'formstate-x'
+import { FieldState, FormState, bindInput } from 'formstate-x-v2'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Loadings } from 'admin-base/common/loading'
 import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
-import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup, textNotBlank } from 'admin-base/common/form'
+import { textNotBlank } from 'admin-base/common/form'
 
+import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup } from 'utils/bind'
 import { textHttp } from 'utils/validator'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import NewsApis, { INews, NewsType } from 'apis/product/news'
