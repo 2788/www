@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'react-icecream'
+import { Icon } from 'react-icecream-1'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x-v2'

@@ -1,5 +1,5 @@
 import React from 'react'
-import Form, { FormItemProps } from 'react-icecream/lib/form'
+import Form, { FormItemProps } from 'react-icecream-1/lib/form'
 
 import { DefaultFormItemLayout as formItemLayout } from 'constants/editor'
 

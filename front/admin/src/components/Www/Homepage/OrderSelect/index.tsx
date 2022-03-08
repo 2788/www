@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { observer } from 'mobx-react'
-import { Select } from 'react-icecream'
+import { Select } from 'react-icecream-1'
 import { FieldState } from 'formstate-x-v2'
 
 import { bindSelect } from 'utils/bind'

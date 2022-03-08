@@ -3,7 +3,7 @@ import cls from 'classnames'
 import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Input, Icon } from 'react-icecream'
+import { Input, Icon } from 'react-icecream-1'
 import { FieldState, FormState } from 'formstate-x-v2'
 import { textNotBlank } from 'admin-base/common/form'
 

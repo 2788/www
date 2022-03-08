@@ -7,7 +7,7 @@
 import * as React from 'react'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Form } from 'react-icecream'
+import { Form } from 'react-icecream-1'
 import autobind from 'autobind-decorator'
 import { saveAs } from 'file-saver'
 

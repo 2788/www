@@ -4,7 +4,7 @@
  */
 
 import React, { useCallback, CSSProperties, KeyboardEvent } from 'react'
-import { Input } from 'react-icecream'
+import { Input } from 'react-icecream-1'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x-v2'
 

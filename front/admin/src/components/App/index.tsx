@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ConfigProvider } from 'react-icecream'
+import { ConfigProvider } from 'react-icecream-1'
 
 import { Route, Redirect, Switch } from 'qn-fe-core/router'
 

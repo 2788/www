@@ -6,8 +6,8 @@
 
 import React, { useCallback, useMemo, useRef } from 'react'
 import { observer } from 'mobx-react'
-import { Tooltip, Button, Icon, Modal } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import { Tooltip, Button, Icon, Modal } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 import { saveAs } from 'file-saver'
 
 import { Provider, useInjection } from 'qn-fe-core/di'

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { observer } from 'mobx-react'
-import Upload, { UploadProps } from 'react-icecream/lib/upload'
+import Upload, { UploadProps } from 'react-icecream-1/lib/upload'
 import moment from 'moment'
 import autobind from 'autobind-decorator'
 

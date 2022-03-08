@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Modal, Form, Input, DatePicker, Button, Checkbox } from 'react-icecream'
+import { Modal, Form, Input, DatePicker, Button, Checkbox } from 'react-icecream-1'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import moment from 'moment'

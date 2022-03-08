@@ -6,9 +6,9 @@
 
 import React, { useCallback, useMemo } from 'react'
 import { observer } from 'mobx-react'
-import { Tooltip, Button, Icon, Modal } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
-import { PaginationProps } from 'react-icecream/lib/pagination'
+import { Tooltip, Button, Icon, Modal } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
+import { PaginationProps } from 'react-icecream-1/lib/pagination'
 
 import { Provider, useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'

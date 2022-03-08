@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'react-icecream'
+import { Icon } from 'react-icecream-1'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
 import { observeInjectable as injectable } from 'qn-fe-core/store'

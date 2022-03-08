@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Form, Input } from 'react-icecream'
+import { Form, Input } from 'react-icecream-1'
 import autobind from 'autobind-decorator'
 
 import { FieldState, FormState, ValueOf } from 'formstate-x-v2'

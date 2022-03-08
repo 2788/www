@@ -5,10 +5,10 @@
 
 import { ChangeEvent } from 'react'
 import * as v2 from 'formstate-x-v2'
-import { RadioChangeEvent } from 'react-icecream/lib/radio'
-import { CheckboxChangeEvent } from 'react-icecream/lib/checkbox'
-import { SelectValue } from 'react-icecream/lib/select'
-import { RangePickerProps } from 'react-icecream/lib/date-picker'
+import { RadioChangeEvent } from 'react-icecream-1/lib/radio'
+import { CheckboxChangeEvent } from 'react-icecream-1/lib/checkbox'
+import { SelectValue } from 'react-icecream-1/lib/select'
+import { RangePickerProps } from 'react-icecream-1/lib/date-picker'
 import { CheckboxValueType } from 'antd/lib/checkbox/Group'
 import { Moment } from 'moment'
 

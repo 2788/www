@@ -6097,7 +6097,17 @@ react-dom@~17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-"react-icecream-2@npm:react-icecream@^2.2.0":
+"react-icecream-1@npm:react-icecream@^1.7.4":
+  version "1.7.6"
+  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-1.7.6.tgz#f5a165f23ccc2b85d235efcbdedaf28b30e4e68a"
+  integrity sha512-ltodkJzBc7RWQBzKjfl8pyf3FMVnCI85VPpqjtgMZDhk5vqiyiTJekBVqAAqoKiLEzO4Mhh9OQEGf9iitHYrKw==
+  dependencies:
+    antd "~3.19.8"
+    classnames "^2.2.5"
+    normalize.css "^8.0.1"
+    tslib "^1.11.1"
+
+"react-icecream-2@npm:react-icecream@^2.2.0", react-icecream@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.2.1.tgz#ff96463767207a07c415f94ffc030546cdc14b79"
   integrity sha512-lkYcw1rHnGv0CfcbiC0nztrgrtNy3FYEqf2CNGMFS9+iPFK1fonOOwwFoeIp+CwbeT0xf9WuzHehhLDhcrgLIQ==
@@ -6133,15 +6143,10 @@ react-icecream-charts@^0.6.0:
     lodash.memoize "~4.1.2"
     lodash.merge "~4.6.2"
 
-react-icecream@^1.7.4:
-  version "1.7.4"
-  resolved "https://registry.npmjs.org/react-icecream/-/react-icecream-1.7.4.tgz#786d35bbf7f299999400ceb0df428ce6281a9b6a"
-  integrity sha512-4iUof2JPNse+79T5UtvFl/rAW5hj8ZKNnCNT8c5S2A5SMiK7vaY7arcN46F3JCNDwxXOGl4CWBTVqcwHhMiNLw==
-  dependencies:
-    antd "~3.19.8"
-    classnames "^2.2.5"
-    normalize.css "^8.0.1"
-    tslib "^1.11.1"
+react-icecream-form@1.0.0-beta.1:
+  version "1.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/react-icecream-form/-/react-icecream-form-1.0.0-beta.1.tgz#fca2537c3d9e13c4f7032a3027b1dc5c558ac821"
+  integrity sha512-vvDd/StZ8DSDC2Z1U3gu4DiA8cipiLLllbQsz+a211PuH+JQojr642xsxmeIaorY3peJ4DaVmc0XuKUUw9zmtg==
 
 react-is@^16.12.0, react-is@^16.8.4:
   version "16.13.1"

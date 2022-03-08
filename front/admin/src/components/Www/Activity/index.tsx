@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Tooltip, Icon, Modal, Button } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
-import { PaginationProps } from 'react-icecream/lib/pagination'
+import { Tooltip, Icon, Modal, Button } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
+import { PaginationProps } from 'react-icecream-1/lib/pagination'
 import autobind from 'autobind-decorator'
 
 import { Provider } from 'qn-fe-core/di'

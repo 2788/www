@@ -1,5 +1,5 @@
 import React, { FormEvent, useRef } from 'react'
-import { Form } from 'react-icecream'
+import { Form } from 'react-icecream-1'
 import { computed, reaction, comparer, observable } from 'mobx'
 import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'

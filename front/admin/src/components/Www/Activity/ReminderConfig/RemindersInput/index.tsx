@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
-import { InputNumber, Icon } from 'react-icecream'
+import { InputNumber, Icon } from 'react-icecream-1'
 import { FieldState, FormState } from 'formstate-x-v2'
 
 import { bindInputNumber } from 'utils/bind'

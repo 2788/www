@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Form, Input, Radio, DatePicker } from 'react-icecream'
+import { Form, Input, Radio, DatePicker } from 'react-icecream-1'
 import moment, { Moment } from 'moment'
 import autobind from 'autobind-decorator'
 

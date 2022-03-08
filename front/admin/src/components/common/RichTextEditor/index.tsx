@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
-import { Button, Icon } from 'react-icecream'
+import { Button, Icon } from 'react-icecream-1'
 import { toV2 } from 'formstate-x/adapter'
 import { FieldState, FormState, bindInput } from 'formstate-x-v2'
 import BraftEditor, { ControlType, ExtendControlType } from 'braft-editor'

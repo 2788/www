@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { Input, Radio } from 'react-icecream'
+import { Input, Radio } from 'react-icecream-1'
 import { FieldState, FormState } from 'formstate-x-v2'
 
 import { bindTextInput, bindRadioGroup } from 'utils/bind'

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import { observer } from 'mobx-react'
-import { Button, Modal } from 'react-icecream'
-import { RcFile } from 'react-icecream/lib/upload'
+import { Button, Modal } from 'react-icecream-1'
+import { RcFile } from 'react-icecream-1/lib/upload'
 
 import { FieldState } from 'formstate-x'
 

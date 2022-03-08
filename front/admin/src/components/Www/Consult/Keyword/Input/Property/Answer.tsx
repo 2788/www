@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Form } from 'react-icecream'
+import { Input, Form } from 'react-icecream-1'
 import { observer } from 'mobx-react'
 import { FieldState } from 'formstate-x-v2'
 

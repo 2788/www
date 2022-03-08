@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import moment, { Moment } from 'moment'
 import { FormState, ValueOf, FieldState } from 'formstate-x-v2'
-import DatePicker from 'react-icecream/lib/date-picker'
+import DatePicker from 'react-icecream-1/lib/date-picker'
 
 import { bindRangePicker } from 'utils/bind'
 

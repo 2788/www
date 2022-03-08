@@ -6,8 +6,8 @@
 
 import React from 'react'
 import { observer } from 'mobx-react'
-import Modal from 'react-icecream/lib/modal'
-import { RcFile } from 'react-icecream/lib/upload'
+import Modal from 'react-icecream-1/lib/modal'
+import { RcFile } from 'react-icecream-1/lib/upload'
 
 import UploadMdFile, { Props as CommonProps } from 'components/common/Upload/MdFile'
 import MdPreview from '../MdPreview'
