@@ -97,8 +97,7 @@ function Region({ region, desc, onChange }: RegionProps) {
     desc,
     items: [
       { name: 'http', desc: 'HTTP 下载流量/月', count: 0, unit: 'GB' },
-      { name: 'https', desc: 'HTTPS 下载流量/月', count: 0, unit: 'GB' },
-      { name: 'acc', desc: '动态加速请求次数/月', count: 0, unit: '万次' }
+      { name: 'https', desc: 'HTTPS 下载流量/月', count: 0, unit: 'GB' }
     ]
   })
 
@@ -109,12 +108,6 @@ function Region({ region, desc, onChange }: RegionProps) {
 
   function handleHttpsChange(value: number) {
     inputRef.current.items[1].count = value
-    onChange(inputRef.current)
-  }
-
-  // 动态加速次数
-  function handleAccCountChange(value: number) {
-    inputRef.current.items[2].count = value
     onChange(inputRef.current)
   }
 
@@ -141,10 +134,6 @@ function Region({ region, desc, onChange }: RegionProps) {
       <div className={style.areaItem}>
         <p>HTTPS 下载流量/月</p>
         <InputNumber onChange={handleHttpsChange} addonAfter={selectAfter(1)} />
-      </div>
-      <div className={style.areaItem}>
-        <p>动态加速请求次数/月</p>
-        <InputNumber onChange={handleAccCountChange} addonAfter="万次" />
       </div>
     </div>
   )
