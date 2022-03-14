@@ -81,6 +81,7 @@ interface IProps {
 }
 
 export default observer(function RemindersInput({ state, disabled, visible }: IProps) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleAdd = useCallback(action(() => {
     state.$.push(createReminderState())
   }), [state])

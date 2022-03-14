@@ -16,9 +16,11 @@ import Product from 'components/Www/Product'
 import Consult from 'components/Www/Consult'
 import Activity from 'components/Www/Activity'
 import GlobalBanners from 'components/Www/GlobalBanners'
+import PgcManage from 'components/Pgc/Manage'
 import {
   accountRoute, wwwTitle, wwwRoute, homepageRoute, homepageTitle, productTitle, productRoute,
-  consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute
+  consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute,
+  pgcRoute, pgcTitle, pgcManageRoute, pgcManageTitle
 } from 'constants/route'
 
 import Provider from './Provider'
@@ -33,6 +35,9 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
         <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
         <LinkItem relative to={activityRoute}>{activityTitle}</LinkItem>
       </Group>
+      {/* TODO: <Group title={pgcTitle} path={pgcRoute}>
+        <LinkItem relative to={pgcManageRoute}>{pgcManageTitle}</LinkItem>
+      </Group> */}
       <UserSidebarGroup prefix={accountRoute} />
     </BaseSidebar>
   )
@@ -95,6 +100,17 @@ export default function App() {
                   <Permission code={PermissionCode.ACTIVITY}>
                     <Activity />
                   </Permission>
+                </Route>
+              </Switch>
+            </Route>
+            <Route relative title={pgcTitle} path={pgcRoute}>
+              <Switch>
+                <Route relative exact path="/">
+                  <Redirect relative to={pgcManageRoute} />
+                </Route>
+                <Route relative title={pgcManageTitle} path={pgcManageRoute}>
+                  {/* TODO: permission */}
+                  <PgcManage />
                 </Route>
               </Switch>
             </Route>

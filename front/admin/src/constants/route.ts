@@ -1,18 +1,6 @@
 export const accountRoute = '/account'
 
-export const accountTitle = '帐户中心'
-
-export const userRoute = '/user'
-
-export const userTitle = '用户管理'
-
-export const roleRoute = '/role'
-
-export const roleTitle = '角色管理'
-
-export const permissionRoute = '/permission'
-
-export const permissionTitle = '权限管理'
+// ================ 官网 ================
 
 export const wwwRoute = '/www'
 
@@ -37,3 +25,21 @@ export const activityTitle = '活动'
 export const globalBannersRoute = '/global-banners'
 
 export const globalBannersTitle = '全局公告'
+
+// ================ 内容站 ================
+
+export const pgcRoute = '/pgc'
+
+export const pgcTitle = '内容站'
+
+export const pgcManageRoute = '/manage'
+
+export const pgcManageTitle = '内容管理'
+
+export const pgcManageAddRoute = '/add'
+
+export const pgcManageAddTitle = '新增内容'
+
+export const pgcManageEditRoute = '/edit'
+
+export const pgcManageEditTitle = '编辑内容'

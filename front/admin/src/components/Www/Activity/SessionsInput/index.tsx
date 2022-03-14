@@ -51,6 +51,7 @@ interface IProps {
 const maxSize = 5
 
 export default observer(function SessionsInput({ state, disabled }: IProps) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleAdd = useCallback(action(() => {
     state.$.push(createSessionState())
   }), [state])
