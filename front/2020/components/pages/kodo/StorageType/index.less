@@ -4,37 +4,39 @@
   text-align: center;
 }
 .card {
+  flex: 1;
   display: inline-flex;
   display: -ms-inline-flexbox;
   flex-direction: column;
   -ms-flex-direction: column;
-  width: 376px;
-  height: 525px;
+  height: 477px;
   box-shadow: 0px 4px 8px 0px rgba(51, 51, 51, 0.08);
   border: 1px solid @grey-3;
   border-top: none;
 
   .mobile({
     width: 100%;
-    height: 394px;
   });
 
   .header {
-    padding: 24px;
+    flex: 0 0 153px;
+    padding: 18px 20px 24px;
     text-align: left;
     background: #fafafa;
     border-top: 2px solid @blue-6;
     border-bottom: 1px solid @grey-3;
 
     .mobile({
+      flex: auto;
       padding: 20px 16px;
     });
 
     .title {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       color: @grey-7;
       font-size: 20px;
       font-weight: 500;
+      line-height: 1.5;
 
       .mobile({
         margin-bottom: 12px;
@@ -43,9 +45,10 @@
     }
 
     .desc {
-      margin-bottom: 10px;
+      margin-bottom: 4px;
       color: @grey-6;
-      font-size: 14px;
+      font-size: 12px;
+      line-height: 1.5;
 
       .mobile({
         margin-bottom: 8px;
@@ -55,7 +58,8 @@
 
     .scene {
       color: @grey-6;
-      font-size: 14px;
+      font-size: 12px;
+      line-height: 1.5;
 
       .mobile({
         font-size: 12px;
@@ -65,16 +69,22 @@
 
   .body {
     flex: 1;
-    padding: 20px 24px;
+    padding: 20px 20px 0;
 
     .mobile({
       padding: 16px 16px 0 16px;
     });
 
     .row {
+      display: flex;
       margin-bottom: 12px;
       text-align: left;
       color: @grey-7;
+      word-break: keep-all;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       .mobile({
         font-size: 12px;
@@ -82,12 +92,17 @@
     }
 
     .icon {
-      margin-right: 9px;
+      margin-top: 3px;
+      margin-right: 8px;
+
+      .mobile({
+        margin-top: 0;
+      });
     }
   }
 
   .footer {
-    padding: 32px 24px;
+    padding: 32px 20px;
 
     .mobile({
       padding: 0 16px 16px;
@@ -115,7 +130,7 @@
 }
 
 .card + .card {
-  margin-left: 24px;
+  margin-left: 20px;
 
   .mobile({
     margin-top: 16px;

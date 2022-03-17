@@ -12,6 +12,7 @@ import Button from 'components/UI/Button'
 import Section from 'components/Product/Section'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
+import { Row } from 'components/UI/Card'
 
 import CheckedIcon from './checked.svg'
 import style from './index.less'
@@ -20,30 +21,41 @@ export default function StorageType() {
   const priceUrl = urlForPrice(Product.Kodo)
   return (
     <Section name="storage_type" title="存储类型">
-      <Card
-        title="标准存储"
-        desc="高可靠、高可用和高性能的对象存储服务"
-        scene="设计应用、内容分享、热点对象"
-        price="0.098"
-        detailLink={priceUrl}
-        sellPoints={['设计可靠性：99.999999999%（11 个 9）', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计量：无']}
-      />
-      <Card
-        title="低频访问存储"
-        desc="高可靠、高可用和较低成本的实时访问存储服务"
-        scene="网盘应用、政企数据备份、监控数据"
-        price="0.06"
-        detailLink={priceUrl}
-        sellPoints={['设计可靠性：99.999999999%（11 个 9）', '设计可用性：99.99%', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计量：64 KB']}
-      />
-      <Card
-        title="归档存储"
-        desc="极低成本的高可靠归档数据存储服务"
-        scene="档案数据、医疗影像、科学资料"
-        price="0.032"
-        detailLink={priceUrl}
-        sellPoints={['设计可靠性：99.999999999%（11 个 9）', '设计可用性：99.99%（数据解冻后）', '数据访问：先解冻再访问', '最短存储时间：60 天', 'Object 最小计量：64 KB']}
-      />
+      <Row>
+        <Card
+          title="标准存储"
+          desc="高可靠、高可用和高性能的对象存储服务"
+          scene="设计应用、内容分享、热点对象"
+          price="0.098"
+          detailLink={priceUrl}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计量：无']}
+        />
+        <Card
+          title="低频访问存储"
+          desc="高可靠、高可用和较低成本的实时访问存储服务"
+          scene="网盘应用、政企数据备份、监控"
+          price="0.06"
+          detailLink={priceUrl}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计量：64 KB']}
+        />
+        <Card
+          title="归档存储"
+          desc="低成本的高可靠归档数据存储服务"
+          scene="档案数据、医疗影像、科学资料"
+          price="0.028"
+          detailLink={priceUrl}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：先解冻再访问', '最短存储时间：60 天', 'Object 最小计量：64 KB']}
+        />
+
+        <Card
+          title="深度归档存储"
+          desc="单价最低的高可靠深度归档数据存储服务"
+          scene="合规数据冷归档、媒体资源超长留存"
+          price="0.012"
+          detailLink={priceUrl}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：先解冻再访问', '最短存储时间：180 天', 'Object 最小计量：64 KB']}
+        />
+      </Row>
     </Section>
   )
 }
