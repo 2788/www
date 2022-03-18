@@ -1,0 +1,29 @@
+@import '~utils/less/index.less';
+
+.area {
+  padding: 24px 0;
+  border-bottom: 1px solid @grey-3;
+}
+
+.areaTitle {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.areaItem {
+  display: inline-block;
+  width: 232px;
+
+  > p {
+    margin-bottom: 8px;
+  }
+
+  + .areaItem {
+    margin-left: 16px;
+  }
+}
+
+.areaRow + .areaRow {
+  margin-top: 20px;
+}
