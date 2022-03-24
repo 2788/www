@@ -40,7 +40,7 @@ export default function KodoCore() {
           title="跨区域同步"
         >
           <FeatureDesc>跨区域同步让用户通过简单操作即可对不同存储区域的数据进行高效迁移和同步，实现数据异地容灾</FeatureDesc>
-          <FeatureLink href="https://developer.qiniu.com/kodo/manual/1700/cross-regional-synchronization">了解更多 &gt;&gt;</FeatureLink>
+          <FeatureLink href="https://developer.qiniu.com/kodo/8613/dev-cross-regional-synchronization">了解更多 &gt;&gt;</FeatureLink>
         </FeatureItem>
         <FeatureItem
           pos="top-down"
@@ -49,7 +49,7 @@ export default function KodoCore() {
           title="生命周期管理"
         >
           <FeatureDesc>生命周期管理让用户可以根据业务需要，为存储空间制定规则，存储对象可自动化定时进行存储类型转化或删除操作</FeatureDesc>
-          <FeatureLink href="https://developer.qiniu.com/kodo/manual/3699/life-cycle-management">了解更多 &gt;&gt;</FeatureLink>
+          <FeatureLink href="https://developer.qiniu.com/kodo/8609/dev-life-cycle-management">了解更多 &gt;&gt;</FeatureLink>
         </FeatureItem>
       </FeatureGroup>
 
@@ -61,7 +61,7 @@ export default function KodoCore() {
           title="低频存储"
         >
           <FeatureDesc>低频存储提供了比标准存储更低的价格，适用于数据访问实时，读取频率较低的业务场景（如企业数据备份、监控数据、网盘应用等）</FeatureDesc>
-          <FeatureLink href="https://developer.qiniu.com/kodo/manual/3737/infrequent-storage">了解更多 &gt;&gt;</FeatureLink>
+          <FeatureLink href="https://developer.qiniu.com/kodo/3956/kodo-category#IA">了解更多 &gt;&gt;</FeatureLink>
         </FeatureItem>
         <FeatureItem
           pos="top-down"
@@ -70,7 +70,7 @@ export default function KodoCore() {
           title="镜像存储"
         >
           <FeatureDesc>镜像存储适用于迁移原有业务系统的已有数据。可以帮助用户实现无缝数据迁移，迁移过程中并不影响原有业务系统的访问</FeatureDesc>
-          <FeatureLink href="https://developer.qiniu.com/kodo/kb/1376/seven-cattle-image-storage-instruction-manuals">了解更多 &gt;&gt;</FeatureLink>
+          <FeatureLink href="https://developer.qiniu.com/kodo/8611/dev-the-mirror-back-to-the-source">了解更多 &gt;&gt;</FeatureLink>
         </FeatureItem>
         <FeatureItem
           pos="top-down"
