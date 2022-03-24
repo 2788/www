@@ -150,7 +150,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
           <LinkItem href="https://developer.qiniu.com/rtc/8764/an-overview-of-the-android-sdk">Android 开发手册</LinkItem>
           <LinkItem href="https://developer.qiniu.com/rtc/9478/an-overview-of-the-web-sd">Web 开发手册</LinkItem>
           <LinkItem href="https://developer.qiniu.com/rtc/9536/windows-overview-of-the-sdk">Windows 开发手册</LinkItem>
-          <LinkItem href="https://doc.qnsdk.com/rtn/wxapp">微信小程序开发手册</LinkItem>
+          <LinkItem href="https://developer.qiniu.com/rtc/11118/an-overview-of-the-wxapp-sd">微信小程序开发手册</LinkItem>
           <LinkItem href="https://developer.qiniu.com/rtc/8805/server-overview">服务端开发手册</LinkItem>
         </LinkGroup>
       </LinkGroups>

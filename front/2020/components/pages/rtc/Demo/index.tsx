@@ -5,7 +5,7 @@
 
 import React from 'react'
 import Demo from 'components/Product/Demo'
-import mpDemoImg from './mp-demo.jpg'
+import mpDemoImg from './mp-demo.png'
 
 export default function RTCDemo() {
   return (
