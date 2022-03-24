@@ -3,7 +3,7 @@
  * @author zhuhao <zhuhao@qiniu.com>
  */
 
-import React, { PropsWithChildren, ReactNode } from 'react'
+import React, { createContext, PropsWithChildren, ReactNode, useContext } from 'react'
 
 import Section, { SectionProps } from 'components/Product/Section'
 import classNames from 'classnames'
@@ -16,9 +16,17 @@ export interface ICustomerCaseProps {
   alt?: string
 }
 
+const sizeCtx = createContext(4)
+
 export function CustomerCase({ pic, ...otherProps }: PropsWithChildren<ICustomerCaseProps>) {
+  const size = useContext(sizeCtx)
+  const isMobile = useMobile()
+  const minWidth = isMobile ? undefined : Math.max(100 / size, 25) + '%'
+  const style = {
+    minWidth
+  }
   return (
-    <li className={styles.caseContainer}>
+    <li className={styles.caseContainer} style={style}>
       <div className={styles.case}>
         {
           typeof pic === 'string'
@@ -32,9 +40,12 @@ export function CustomerCase({ pic, ...otherProps }: PropsWithChildren<ICustomer
 
 export function RawCustomerCaseGroup({ children }: PropsWithChildren<{}>) {
   const isMobile = useMobile()
+  const childrenArr = React.Children.toArray(children)
   return (
     <ul className={classNames(styles.customerCaseGroup, { [styles.mobile]: isMobile })}>
-      {children}
+      <sizeCtx.Provider value={childrenArr.length}>
+        {children}
+      </sizeCtx.Provider>
     </ul>
   )
 }

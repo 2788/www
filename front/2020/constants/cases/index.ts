@@ -71,6 +71,7 @@ import fddImg from './时尚生活/客户-房多多.png'
 import mklImg from './时尚生活/客户-马卡龙.png'
 import mllhImg from './时尚生活/客户-美丽联合.png'
 import hyxjImg from './时尚生活/客户-黄油相机.png'
+import himoImg from './时尚生活/客户-海马体.png'
 
 import oppoImg from './智能硬件/客户-oppo.png'
 import cyImg from './智能硬件/客户-传音.png'
@@ -168,6 +169,7 @@ export const fdd = { logo: fddImg, name: '房多多' }
 export const mkl = { logo: mklImg, name: '马卡龙' }
 export const mllh = { logo: mllhImg, name: '美丽联合' }
 export const hyxj = { logo: hyxjImg, name: '黄油相机' }
+export const himo = { logo: himoImg, name: '海马体' }
 
 export const oppo = { logo: oppoImg, name: 'oppo' }
 export const cy = { logo: cyImg, name: '传音' }
@@ -220,7 +222,7 @@ export const industries = [
   },
   {
     name: '时尚生活',
-    cases: [faceu, wps, haitun, td, mp, jm, zr, xea, fdd, mkl, mllh, hyxj]
+    cases: [faceu, wps, haitun, td, mp, jm, zr, xea, fdd, mkl, mllh, hyxj, himo]
   },
   {
     name: '文化娱乐',

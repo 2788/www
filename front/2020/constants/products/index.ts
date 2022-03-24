@@ -53,6 +53,8 @@ export enum Product {
   OpenAPI = 'openapi',
   /** 票证自动识别（OCR） */
   Ocr = 'ocr',
+  /** 全站加速 */
+  Dcdn = 'dcdn',
   /** 边缘加速 */
   Pcdn = 'pcdn',
   /** 直播特效 SDK */
@@ -114,6 +116,7 @@ export const nameMap = {
   [Product.Qvs]: '视频监控 QVS',
   [Product.OpenAPI]: 'AI 开放市场',
   [Product.Ocr]: '票证自动识别 OCR',
+  [Product.Dcdn]: '全站加速',
   [Product.Pcdn]: '边缘加速',
   [Product.Plesdk]: '直播特效 SDK',
   [Product.Geek]: '低延时直播 Geek',
@@ -157,6 +160,7 @@ export const urlMap = {
   [Product.Qvs]: '/products/qvs',
   [Product.OpenAPI]: '/products/openapi',
   [Product.Ocr]: '/products/ocr',
+  [Product.Dcdn]: '/products/dcdn',
   [Product.Pcdn]: '/products/pcdn',
   [Product.Plesdk]: '/products/plesdk',
   [Product.Geek]: '/products/geek',
@@ -200,6 +204,7 @@ export const priceUrlMap = {
   [Product.Qvs]: '/prices/qvs',
   [Product.OpenAPI]: '/prices/openapi',
   [Product.Ocr]: '/prices/ocr',
+  [Product.Dcdn]: null,
   [Product.Pcdn]: null,
   [Product.Plesdk]: null,
   [Product.Geek]: null,
@@ -247,6 +252,7 @@ export const descMap = {
   // TODO 需要加入到顶部导航或者相关产品再补充
   [Product.OpenAPI]: 'AI 开放市场是一个开放平台，提供图片，文本，音频，视频等智能数据处理服务',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
+  [Product.Dcdn]: '简单配置即可实现全站资源的加速',
   [Product.Pcdn]: '高质量低成本的 P2P CDN 服务，有效提升热点资源的分发效果',
   [Product.Plesdk]: '提供直播推流场景下的美颜滤镜、大眼瘦脸、美妆美形等特效功能',
   [Product.Geek]: '构建了全新的低延时直播互动体验',
@@ -332,7 +338,7 @@ export function normalizeProduct(val: Product | PartialProductData): ProductData
 
 export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] } = {
   [SubCategory.Storage]: [Product.Kodo, Product.Archive, Product.Storage, Product.Hdfs],
-  [SubCategory.Distribution]: [Product.Cdn, Product.Pcdn, Product.Ssl],
+  [SubCategory.Distribution]: [Product.Cdn, Product.Dcdn, Product.Pcdn, Product.Ssl],
   [SubCategory.Basis]: [Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
   [SubCategory.Audio]: [
     { product: Product.Kodo, name: '音视频存储', desc: '为音视频多媒体数据提供高可靠、高可用和高性能的对象存储服务' },
@@ -377,7 +383,7 @@ export function getSubCategoryProducts(category: Category, subCategory: SubCateg
   if (subCategory === SubCategory.Distribution) {
     switch (category) {
       case Category.Media:
-        return [Product.Cdn, Product.Pcdn]
+        return [Product.Cdn, Product.Dcdn, Product.Pcdn]
       default:
         // 默认返回全部的云分发产品
         return subCategoryProductsMap[subCategory]
