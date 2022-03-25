@@ -11,16 +11,18 @@ import Store from 'qn-fe-core/store'
 import { ToasterStore } from 'admin-base/common/toaster'
 
 import UploadApis from 'apis/upload'
+import { generateUploadBucketKey } from 'transforms/pgc/content'
 import style from './style.m.less'
 
 export interface IProps extends UploadProps {
+  uploadBucketKeyRule?: 'www' | 'pgc-content'
   onUploaded?: (url: string, file: File) => void // 上传成功之后执行的方法
 }
 
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg, .gif'
 // 公共前缀
-const uploadKeyPrefix = 'www/admin/'
+const uploadKeyPrefix = 'www/admin'
 
 const publicUrl = 'https://static-file.qiniu.io/'
 const bucket = 'admin-v2-static'
@@ -47,7 +49,11 @@ class LocalStore extends Store {
 
   doUpload(file: File, token: string) {
     return new Promise<string>((resolve, reject) => {
-      const obser = qiniu.upload(file, uploadKeyPrefix + moment().unix(), token)
+      const uploadKey = {
+        www: `${uploadKeyPrefix}/${moment().unix()}/${file.name}`,
+        'pgc-content': generateUploadBucketKey(file.name)
+      }[this.props.uploadBucketKeyRule ?? 'www']
+      const obser = qiniu.upload(file, uploadKey, token)
       const subscription = obser.subscribe({
         error: err => {
           // TODO: file 上传状态管理?
@@ -76,7 +82,7 @@ class LocalStore extends Store {
 
 export default observer(function CommonUpload(props: PropsWithChildren<IProps>) {
   const store = useLocalStore(LocalStore, props)
-  const { children, ...rest } = props
+  const { children, uploadBucketKeyRule, onUploaded, ...rest } = props
 
   const handleFileChange = (file: File | undefined) => {
     if (file) {

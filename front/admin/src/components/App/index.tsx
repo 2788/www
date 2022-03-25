@@ -104,15 +104,16 @@ export default function App() {
               </Switch>
             </Route>
             <Route relative title={pgcTitle} path={pgcRoute}>
-              <Switch>
-                <Route relative exact path="/">
-                  <Redirect relative to={pgcManageRoute} />
-                </Route>
-                <Route relative title={pgcManageTitle} path={pgcManageRoute}>
-                  {/* TODO: permission */}
-                  <PgcManage />
-                </Route>
-              </Switch>
+              <Permission code={PermissionCode.PGC}>
+                <Switch>
+                  <Route relative exact path="/">
+                    <Redirect relative to={pgcManageRoute} />
+                  </Route>
+                  <Route relative title={pgcManageTitle} path={pgcManageRoute}>
+                    <PgcManage />
+                  </Route>
+                </Switch>
+              </Permission>
             </Route>
             {userRoutes}
           </Switch>

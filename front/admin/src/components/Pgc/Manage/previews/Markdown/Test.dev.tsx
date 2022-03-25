@@ -18,8 +18,28 @@ abc
 -----
 
 
-  https://www.qiniu.com/pgc/detail/666
+  https://www.qiniu.com/pgc/detail/1ab5f2e47164060535b98d89
 
+
+
+---
+
+---
+https://www.qiniu.com/pgc/detail/4d3d6f84eabc3f758b26c491
+---
+666
+
+
+---
+
+https://www.qiniu.com/pgc/detail/763aaacf2df90d158b336dc0
+
+---
+
+
+---
+
+https://www.qiniu.com/pgc/detail/666
 
 ---
 
@@ -43,7 +63,7 @@ export default observer(function TestEditor() {
       {/* eslint-disable-next-line no-console */}
       <Form state={form} onSubmit={value => console.log(value)}>
         <FormItem required>
-          <Editor state={form.$.content} />
+          <Editor state={form.$.content} uploadBucketKeyRule="pgc-content" />
         </FormItem>
       </Form>
       <div style={{ display: 'flex' }}>

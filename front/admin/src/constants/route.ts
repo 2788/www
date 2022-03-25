@@ -38,8 +38,8 @@ export const pgcManageTitle = '内容管理'
 
 export const pgcManageAddRoute = '/add'
 
-export const pgcManageAddTitle = '新增内容'
+export const pgcManageAddTitle = '新建'
 
 export const pgcManageEditRoute = '/edit'
 
-export const pgcManageEditTitle = '编辑内容'
+export const pgcManageEditTitle = '编辑'

@@ -91,5 +91,3 @@ export function bindCheckboxGroup(state: v2.FieldState<CheckboxValueType[]>) {
     onChange: (value: CheckboxValueType[]) => state.onChange(value)
   }
 }
-
-// TODO: bind select (with other types) & date-range-picker, ...

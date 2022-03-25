@@ -9,7 +9,7 @@ import unified from 'unified'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 
-import { wwwDetailUrlPrefix } from 'constants/pgc'
+import { isWwwContentDetailUrl } from 'transforms/pgc/content'
 
 import style from './style.m.less'
 
@@ -31,7 +31,7 @@ type ElementNode = {
 }
 
 export type RenderOptions = {
-  renderExternalContent(url: string, key: number): ReactNode
+  renderWwwContentDetail(url: string, key: number): ReactNode
 }
 
 export function mdTextToHTMLAst(text: string): Promise<RootNode> {
@@ -70,10 +70,10 @@ function childrenToReactNode(
   const res: ReactNode[] = []
   let key = 0
   for (let i = 0; i < children.length; i++) {
-    const externalContentInfo = getExternalContentInfo(children, i)
-    if (externalContentInfo != null) {
-      res.push(options.renderExternalContent(externalContentInfo.url, key++))
-      children.splice(i, externalContentInfo.end - i)
+    const wwwContentDetailInfo = getWwwContentDetailInfo(children, i)
+    if (wwwContentDetailInfo != null) {
+      res.push(options.renderWwwContentDetail(wwwContentDetailInfo.url, key++))
+      children.splice(i, wwwContentDetailInfo.end - i)
       continue
     }
 
@@ -95,16 +95,16 @@ function childrenToReactNode(
   return res
 }
 
-interface ExternalContentInfo {
+interface WwwContentDetailInfo {
   url: string
   end: number
 }
 
-// 识别类似这种三段式结构： <hr /><p>${wwwUrlPrefix}${id}</p><hr />
-function getExternalContentInfo(
+// 识别类似这种三段式 markdown 结构对应的 html： \n --- \n ${wwwUrlPrefix}${id} \n --- \n
+function getWwwContentDetailInfo(
   children: Array<TextNode | ElementNode>,
   index: number
-): null | ExternalContentInfo {
+): null | WwwContentDetailInfo {
   // 至少 3 段结构，提前熔断
   if (index + 3 > children.length) {
     return null
@@ -132,7 +132,7 @@ function getExternalContentInfo(
 
       if (current.type === 'text') {
         text = current.value
-      } else if (current.type === 'element' && isHtmlTag(current, 'p')) {
+      } else if (current.type === 'element' && (isHtmlTag(current, 'p') || isHtmlTag(current, 'h2'))) {
         const childrenOfP = current.children.filter(child => !isBlank(child))
         if (childrenOfP.length === 1 && childrenOfP[0].type === 'text') {
           text = childrenOfP[0].value
@@ -141,7 +141,15 @@ function getExternalContentInfo(
 
       text = text.trim()
 
-      if (isExternalContentUrl(text)) {
+      if (isWwwContentDetailUrl(text)) {
+        // 如果第二、第三段被 merge 为一个 h2
+        if (current.type === 'element' && isHtmlTag(current, 'h2')) {
+          return {
+            url: text,
+            end: i
+          }
+        }
+
         url = text
         continue
       }
@@ -209,12 +217,3 @@ function isHr(node: TextNode | ElementNode): boolean {
 function isHtmlTag(element: ElementNode, tag: string): boolean {
   return element.tagName.toLowerCase() === tag.toLowerCase()
 }
-
-function isExternalContentUrl(url: string): boolean {
-  return url.trim().indexOf(wwwDetailUrlPrefix) === 0
-}
-
-export function getExternalContentId(url: string): string {
-  return url.trim().replace(wwwDetailUrlPrefix, '').replace(/[/?#].*/, '')
-}
-

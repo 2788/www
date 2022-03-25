@@ -1047,13 +1047,14 @@ adler-32@~1.2.0:
     exit-on-epipe "~1.0.1"
     printj "~1.1.0"
 
-"admin-base@git+ssh://git@github.com/qbox/admin-base.git#semver:^v4.0.1":
-  version "4.0.1"
-  resolved "git+ssh://git@github.com/qbox/admin-base.git#3a1fdc8c6c97297a968ed04a28331efd7aca80b3"
+"admin-base@git+ssh://git@github.com/qbox/admin-base.git#semver:^v4.1.0":
+  version "4.1.0"
+  resolved "git+ssh://git@github.com/qbox/admin-base.git#6b156315897d813f64bcce19556e5f4d84c0de0c"
   dependencies:
     autobind-decorator "^2.4.0"
     classnames "^2.2.6"
     dayjs "^1.0.0"
+    formstate-x-v3 "npm:formstate-x@3.0.0-beta.1"
     lodash "^4.17.20"
     mustache "^3.1.0"
     normalize.css "^8.0.1"
@@ -2853,6 +2854,11 @@ form-data@^3.0.0:
   integrity sha512-kPpZxF2cX67hiGhkhsGIAA+aISCdNvRhJsIVkB6DkvThY6bARDkqgaNyMvWdmV5d/5bS4XRhxfvvLVxr67c+qQ==
 
 formstate-x@3.0.0-beta.1:
+  version "3.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-3.0.0-beta.1.tgz#a8a1a64f9968a0fd43d92cff48c4eebcbac7366e"
+  integrity sha512-BqRFUfswZ+d3cJH8lFY1yJ6nOsNYdIi72P5XCKA0GVFd8r+pJzHSB5vUEm+tp8HBHneCWFKNx5d+pKYqoQvAOg==
+
+"formstate-x-v3@npm:formstate-x@3.0.0-beta.1":
   version "3.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-3.0.0-beta.1.tgz#a8a1a64f9968a0fd43d92cff48c4eebcbac7366e"
   integrity sha512-BqRFUfswZ+d3cJH8lFY1yJ6nOsNYdIi72P5XCKA0GVFd8r+pJzHSB5vUEm+tp8HBHneCWFKNx5d+pKYqoQvAOg==
@@ -4811,7 +4817,7 @@ moment-timezone@^0.5.14:
   dependencies:
     moment ">= 2.9.0"
 
-moment@2.x, moment@^2.15.1, moment@^2.24.0:
+moment@2.x, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.npmjs.org/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
 

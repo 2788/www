@@ -1,5 +1,5 @@
 /**
- * @file WYSIWYG Markdown editor (vditor) for Pgc, etc.
+ * @file WYSIWYG Markdown editor (vditor)
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
@@ -14,14 +14,14 @@ import { Icon } from 'react-icecream-1'
 import Vditor from 'vditor'
 import 'vditor/dist/index.css'
 
-import UploadImage from 'components/common/Upload'
+import UploadImage, { IProps as UploadImageProps } from 'components/common/Upload'
 
 import style from './style.m.less'
 
 const uploadImageEntryId = 'upload-image-entry'
 
 type VditorOptions = NonNullable<ConstructorParameters<typeof Vditor>[1]>
-type VditorToolbarMenuItemOptions = Exclude<NonNullable<VditorOptions['toolbar']>[0], string>
+type VditorToolbarMenuItemOptions = Exclude<NonNullable<VditorOptions['toolbar']>[number], string>
 
 const uploadImageToolbarMenuItemOptions: VditorToolbarMenuItemOptions = {
   name: 'upload-image',
@@ -29,7 +29,7 @@ const uploadImageToolbarMenuItemOptions: VditorToolbarMenuItemOptions = {
   tipPosition: 'n',
   icon: `<div data-role="${uploadImageEntryId}"></div>`,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  click() {}
+  click() {} // TODO: https://github.com/qbox/www/pull/2527#discussion_r825239527
 }
 
 const vditorBaseOptions: VditorOptions = {
@@ -43,9 +43,6 @@ const vditorBaseOptions: VditorOptions = {
   icon: 'material',
   minHeight: 300,
   // height: 'auto',
-  classes: {
-    preview: '' // TODO: 样式，缺省匹配官网内容站
-  },
   placeholder: '请填写内容',
   toolbarConfig: {
     pin: true,
@@ -57,7 +54,7 @@ const vditorBaseOptions: VditorOptions = {
     'bold', 'italic', 'headings', 'quote', 'code', 'line',
     'list', 'ordered-list', 'outdent', 'indent', 'insert-before', 'insert-after',
     'link', '|',
-    uploadImageToolbarMenuItemOptions, '|', // TODO: +'upload' 上传视频 & 文件
+    uploadImageToolbarMenuItemOptions, '|', // TODO: +'upload' 上传视频 & 文件（注意不要直接跟 pgc 业务耦合）
     'undo', 'redo', '|',
     'edit-mode', 'fullscreen', 'outline', 'preview', 'export', '|',
     'help',
@@ -71,8 +68,8 @@ const vditorBaseOptions: VditorOptions = {
 }
 
 // FIXME: insertValue 后接下来的第一次用户输入（按 debounce 算）无法触发 vditor 的 input 事件
-// 参考 https://github.com/Vanessa219/vditor/issues/1193
-// 因此目前用轮询来临时 fix 一下，后续直接去掉即可
+// 参考 https://github.com/Vanessa219/vditor/issues/1198
+// 因此目前用轮询来临时 fix 一下，后续升级到 vditor 3.8.13 直接去掉即可
 function useAutoSyncValueHandler(
   getValue: () => string | undefined, // 非空表示已经 dirty 了
   syncValue: (value: string) => void
@@ -87,7 +84,7 @@ function useAutoSyncValueHandler(
   const latestSyncValueRef = useRef(syncValue)
   latestSyncValueRef.current = syncValue
   const sync = useMemo( // 直接 useCallback 的话 lint 不太对劲但 ignore deps 又不太好
-    () => debounce((value: string) => latestSyncValueRef.current(value), 1000),
+    () => debounce((value: string) => latestSyncValueRef.current(value), time),
     []
   )
 
@@ -141,6 +138,8 @@ interface BaseProps {
   value: string
   // eslint-disable-next-line react/no-unused-prop-types
   onChange(value: string): void
+  uploadBucketKeyRule: UploadImageProps['uploadBucketKeyRule']
+  previewClassName?: string
 }
 
 function BaseEditor(props: BaseProps) {
@@ -191,7 +190,8 @@ function BaseEditor(props: BaseProps) {
         const vditorContainerEle = placeholderEle.parentNode!.parentNode as Element
         vditorContainerEle.innerHTML = ''
         setVditorUploadImageEntry(vditorContainerEle)
-      }
+      },
+      classes: { preview: props.previewClassName ?? '' }
     })
 
     setVditor(vditorInstance)
@@ -202,11 +202,12 @@ function BaseEditor(props: BaseProps) {
       setVditor(null)
       setVditorUploadImageEntry(null)
     }
-  }, [handle])
+  }, [handle, props.previewClassName])
 
   useEffect(() => {
     // 非受控组件转受控的同时保证编辑器局部状态不丢失 & 性能
     if (vditor && currentValueRef.current !== props.value) {
+      currentValueRef.current = props.value
       vditor.setValue(props.value)
     }
   }, [vditor, props.value])
@@ -225,7 +226,7 @@ function BaseEditor(props: BaseProps) {
         className={`vditor-tooltipped vditor-tooltipped__n ${style.uploadImageEntry}`}
         aria-label={uploadImageToolbarMenuItemOptions.tip}
       >
-        <UploadImage onUploaded={handleImageUploaded}>
+        <UploadImage uploadBucketKeyRule={props.uploadBucketKeyRule} onUploaded={handleImageUploaded}>
           <Icon type="picture" theme="filled" className={style.pictureIcon} />
         </UploadImage>
       </div>
@@ -241,14 +242,14 @@ function BaseEditor(props: BaseProps) {
   )
 }
 
-export interface Props {
+export interface Props extends Omit<BaseProps, 'value' | 'onChange'> {
   state: IState<string>
 }
 
-export default observer(function Editor({ state }: Props) {
+export default observer(function Editor({ state, ...rest }: Props) {
   return (
     <InputWrapper state={state}>
-      <BaseEditor {...bindInput(state)} />
+      <BaseEditor {...bindInput(state)} {...rest} />
     </InputWrapper>
   )
 })

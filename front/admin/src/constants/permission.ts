@@ -18,5 +18,8 @@ export enum PermissionCode {
   CONSULT = 'CONSULT',
 
   // 官网活动查看、编辑权限
-  ACTIVITY = 'ACTIVITY'
+  ACTIVITY = 'ACTIVITY',
+
+  // 内容站查看、编辑权限
+  PGC = 'PGC'
 }

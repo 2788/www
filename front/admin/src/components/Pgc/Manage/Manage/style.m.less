@@ -1,0 +1,23 @@
+/**
+ * @file 内容管理
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~admin-base/common/utils/style/index.less";
+
+.panel {
+  text-align: right;
+  margin-bottom: @icecream-gap-md;
+
+  > * + * {
+    margin-left: @icecream-gap-xs;
+  }
+}
+
+.addEntry {
+  // HACK: 占满 menu item
+  margin: -7px -20px;
+  padding: 7px 20px;
+
+  color: inherit;
+}
