@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal, { ModalProps } from 'react-icecream/lib/modal'
+import Modal, { ModalProps } from 'react-icecream-1/lib/modal'
 
 export default function EditorModal(props: React.PropsWithChildren<ModalProps>) {
   const { visible, title, onCancel, onOk, confirmLoading, children, ...rest } = props

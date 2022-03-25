@@ -1,27 +1,26 @@
 import * as React from 'react'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Form, Input, Checkbox } from 'react-icecream'
+import { Form, Input, Checkbox } from 'react-icecream-1'
 import moment from 'moment'
 import autobind from 'autobind-decorator'
 
-import { FieldState, FormState, ValueOf } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
+import { toV2 } from 'formstate-x/adapter'
+import { FieldState, FormState, ValueOf } from 'formstate-x-v2'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { textNotBlank } from 'admin-base/common/form'
 
-import { bindCheckboxGroup } from 'utils/bind'
+import { bindFormItem, bindTextInput, bindCheckboxGroup } from 'utils/bind'
 import { textHttp } from 'utils/validator'
 import { checkOverlap } from 'utils/check'
-import * as style from 'utils/style.m.less'
+import style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
-import BannerApis, { IBannerWithId, IAddBannerOptions, DisplayPages, IListResponse } from 'apis/global-banner'
+import BannerApis, { IBannerWithId, IAddBannerOptions, IListResponse } from 'apis/global-banner'
 import ImgColor, * as imgColor from 'components/common/ImgColor'
 import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import Modal from 'components/common/Modal'
@@ -29,15 +28,6 @@ import FormItem from 'components/common/FormItem'
 
 import { displayPagesArr, displayPagesTextMap } from '../constants'
 import RangeTime, * as rangeTime from '../RangeTime'
-
-type State = FormState<{
-  name: FieldState<string>
-  imgColor: imgColor.State
-  mobileImg: uploadImg.State
-  rangeTime: rangeTime.State
-  link: FieldState<string>
-  displayPages: FieldState<DisplayPages[]>
-}>
 
 type FormDataType = {
   banner: IBannerWithId
@@ -88,8 +78,8 @@ function createState(banner: IBannerWithId, allBanners: IBannerWithId[]) {
   }
   return new FormState({
     name: new FieldState(banner.name).validators(textNotBlank, doValidateName),
-    imgColor: imgColor.createState({ img: banner.pcImg, color: banner.backgroundColor }),
-    mobileImg: uploadImg.createState(banner.mobileImg).validators(textNotBlank),
+    imgColor: toV2(imgColor.createState({ img: banner.pcImg, color: banner.backgroundColor })),
+    mobileImg: toV2(uploadImg.createState(banner.mobileImg).withValidator(textNotBlank)),
     rangeTime: rangeTime.createState({
       effectTime: moment.unix(banner.effectTime),
       invalidTime: moment.unix(banner.invalidTime)
@@ -101,6 +91,8 @@ function createState(banner: IBannerWithId, allBanners: IBannerWithId[]) {
   })
 }
 
+type State = ReturnType<typeof createState>
+
 @injectable()
 class LocalStore extends Store {
 
@@ -111,7 +103,7 @@ class LocalStore extends Store {
     private toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)
@@ -141,12 +133,12 @@ class LocalStore extends Store {
 
   @Loadings.handle('submit')
   async doSubmit() {
-    const imgColorVal = imgColor.getValue(this.state.$.imgColor)
+    const imgColorVal = this.state.$.imgColor.value
     const opts: IAddBannerOptions = {
       name: this.stateValue.name,
       pcImg: imgColorVal.img,
       backgroundColor: imgColorVal.color,
-      mobileImg: uploadImg.getValue(this.state.$.mobileImg),
+      mobileImg: this.state.$.mobileImg.value,
       effectTime: this.stateValue.rangeTime.effectTime.startOf('day').unix(),
       invalidTime: this.stateValue.rangeTime.invalidTime.endOf('day').unix(),
       link: this.stateValue.link,
@@ -175,8 +167,8 @@ class LocalStore extends Store {
 
   init() {
     this.addDisposer(
-      reaction<[IBannerWithId, IBannerWithId[]]>(
-        () => [this.props.banner, this.allBanners],
+      reaction(
+        () => [this.props.banner, this.allBanners] as const,
         ([banner, allBanners]) => {
           this.state.dispose()
           this.state = createState(banner, allBanners)
@@ -212,13 +204,13 @@ const BannerForm = observer(function _BannerForm({ state, status }: { state: Sta
       >
         <Input disabled={status === EditorStatus.Editing} placeholder="请输入公告名称" maxLength={20} {...bindTextInput(fields.name)} />
       </FormItem>
-      <ImgColor state={fields.imgColor} labels={['PC 端图片', '背景色']} extra={[pcImgExtra]} />
+      <ImgColor state={fields.imgColor.$} labels={['PC 端图片', '背景色']} extra={[pcImgExtra]} />
       <FormItem
         label="移动端图片"
         {...bindFormItem(fields.mobileImg)}
         extra={mobileImgExtra}
       >
-        <UploadImg state={fields.mobileImg} maxSize={500} />
+        <UploadImg state={fields.mobileImg.$} maxSize={500} />
       </FormItem>
       <FormItem
         label="跳转链接"
@@ -252,7 +244,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
   const extraProps = {
     ...defaultFormData,
     status: EditorStatus.Creating,
-    ...originalExtraProps
+    ...originalExtraProps as any // FIXME
   }
   const store = useLocalStore(LocalStore, { ...props, ...extraProps })
 

@@ -1,6 +1,6 @@
 ### Admin
 
-基于官网的 admin 管理系统
+官网（www.qiniu.com）管理系统
 
 #### 安装依赖
 

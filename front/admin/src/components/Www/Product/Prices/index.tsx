@@ -6,25 +6,24 @@
 
 import React, { useCallback, useMemo, useRef } from 'react'
 import { observer } from 'mobx-react'
-import { Tooltip, Button, Icon, Modal } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import { Tooltip, Button, Icon, Modal } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 import { saveAs } from 'file-saver'
 
-import Provider from 'qn-fe-core/di/Provider'
-import { useInjection } from 'qn-fe-core/di'
+import { Provider, useInjection } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
 import { IPrice } from 'apis/product/price'
 import { timeFormatter } from 'utils/time'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 
 import UploadMdFile, * as uploadMdFile from './UploadMdFile'
 import PricesStore from './store'
 import CreateModal from './Create'
 import VersionsModal from './Versions'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 // 表格数据一页条数
 export const pageSize = 10
@@ -101,14 +100,14 @@ const PageContent = observer(function _PageContent() {
         className={style.table}
       >
         <Table.Column title="所属产品" width={120} className={commonStyle.cellContent} dataIndex="product" render={renderProduct} filters={productFilters} onFilter={filterProduct} />
-        <Table.Column title="文件" width={250} dataIndex="file" className={commonStyle.cellContent} render={renderFile} />
+        <Table.Column title="文件" dataIndex="file" className={commonStyle.cellContent} render={renderFile} />
         <Table.Column title="创建人" width={100} dataIndex="creator" render={(val: string) => val || '-'} />
         <Table.Column title="更新人" width={100} dataIndex="modifier" render={(val: string) => val || '-'} />
         <Table.Column title="更新时间" width={160} dataIndex="updatedAt" render={timeFormatter('YYYY-MM-DD HH:mm')} />
-        <Table.Column title="操作" width={120} render={renderOperation} />
+        <Table.Column title="操作" width={140} render={renderOperation} />
       </Table>
       <CreateModal {...store.createModal.bind()} />
-      <VersionsModal {...store.versionsModal.bind()} />
+      <VersionsModal {...store.versionsModal.bind() as any} />
     </>
   )
 })

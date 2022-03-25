@@ -1,11 +1,9 @@
 import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
-import Store from 'qn-fe-core/store'
-import { injectable } from 'qn-fe-core/di'
-
-import Loadings from 'admin-base/common/stores/loadings'
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import BannerApis, { IBannerWithId, IListResponse } from 'apis/global-banner'
 import { EditorStatus } from 'constants/editor'
@@ -22,7 +20,7 @@ export default class BannersStore extends Store {
     toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   @observable currentPage = 1

@@ -1,6 +1,7 @@
 import React, { HTMLAttributes } from 'react'
 import cls from 'classnames'
-import * as style from './style.m.less'
+
+import style from './style.m.less'
 
 /**
  * 容器组件，提供丰富的布局效果。

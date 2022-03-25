@@ -1,23 +1,22 @@
 import * as React from 'react'
-import { Modal, Form, Input, DatePicker, Button, Checkbox } from 'react-icecream'
+import { Modal, Form, Input, DatePicker, Button, Checkbox } from 'react-icecream-1'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import moment, { Moment } from 'moment'
+import moment from 'moment'
 import autobind from 'autobind-decorator'
 
-import { FieldState, FormState, ValueOf, bindInput } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
+import { FieldState, FormState, ValueOf, bindInput } from 'formstate-x-v2'
+import { toV2 } from 'formstate-x/adapter'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput, bindCheckbox } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { textNotBlank } from 'admin-base/common/form'
 
-import { bindRangePicker } from 'utils/bind'
-import * as commonStyle from 'utils/style.m.less'
+import { bindFormItem, bindTextInput, bindCheckbox, bindRangePicker } from 'utils/bind'
+import commonStyle from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import { StateType, stateMap, dateFormat, timeFormat } from 'constants/activity'
 import { IActivity } from 'apis/activity'
@@ -30,26 +29,12 @@ import ReminderConfig, * as reminderConfig from '../ReminderConfig'
 import SessionsInput, * as sessionsInput from '../SessionsInput'
 import UserCount from '../UserCount'
 import ActivityStore from '../store'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 const defaultFormItemLayout = {
   labelCol: { xs: { span: 4 }, sm: { span: 4 } },
   wrapperCol: { xs: { span: 18 }, sm: { span: 18 } }
 }
-
-type State = FormState<{
-  title: FieldState<string>
-  imgUrl: uploadImg.State
-  desc: FieldState<string>
-  location: locationInput.State
-  startTime: FieldState<Moment>
-  endTime: FieldState<Moment>
-  applyEndTime: FieldState<Moment>
-  requireLogin: FieldState<boolean>
-  detail: richTextEditor.State
-  reminder: reminderConfig.State
-  sessions: sessionsInput.State
-}>
 
 type FormDataType = {
   activity: IActivity
@@ -82,6 +67,29 @@ export const defaultFormData: FormDataType = {
   id: ''
 }
 
+function createState(activity: IActivity) {
+  const { enableReminder, reminders } = activity
+  const startTime = new FieldState(moment.unix(activity.startTime))
+  const endTime = new FieldState(moment.unix(activity.endTime))
+
+  return new FormState({
+    title: new FieldState(activity.title).validators(textNotBlank),
+    imgUrl: toV2(uploadImg.createState(activity.imgUrl).withValidator(textNotBlank)),
+    desc: new FieldState(activity.desc).validators(textNotBlank),
+    location: locationInput.createState(activity.location),
+    startTime,
+    endTime,
+    applyEndTime: new FieldState(moment.unix(activity.applyEndTime))
+      .validators(val => (val >= startTime.value.startOf('minute') ? '报名截止时间不能大于等于活动开始时间' : null)),
+    requireLogin: new FieldState(!activity.noLoginRequired),
+    detail: richTextEditor.createState(activity.detail),
+    reminder: reminderConfig.createState({ enableReminder, reminders }),
+    sessions: sessionsInput.createState(activity.sessions || [])
+  })
+}
+
+type State = ReturnType<typeof createState>
+
 @injectable()
 class LocalStore extends Store {
 
@@ -91,7 +99,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)
@@ -112,7 +120,7 @@ class LocalStore extends Store {
     const reminder = reminderConfig.getValue(this.form.$.reminder)
     const param: IActivity = {
       title: this.formValue.title,
-      imgUrl: uploadImg.getValue(this.form.$.imgUrl),
+      imgUrl: this.form.$.imgUrl.value,
       desc: this.formValue.desc,
       location: locationInput.getValue(this.form.$.location),
       state,
@@ -153,24 +161,7 @@ class LocalStore extends Store {
 
   @action
   initFormState(activity: IActivity) {
-    const { enableReminder, reminders } = activity
-    const startTime = new FieldState(moment.unix(activity.startTime))
-    const endTime = new FieldState(moment.unix(activity.endTime))
-
-    this.form = new FormState({
-      title: new FieldState(activity.title).validators(textNotBlank),
-      imgUrl: uploadImg.createState(activity.imgUrl).validators(textNotBlank),
-      desc: new FieldState(activity.desc).validators(textNotBlank),
-      location: locationInput.createState(activity.location),
-      startTime,
-      endTime,
-      applyEndTime: new FieldState(moment.unix(activity.applyEndTime))
-        .validators(val => (val >= startTime.value.startOf('minute') ? '报名截止时间不能大于等于活动开始时间' : null)),
-      requireLogin: new FieldState(!activity.noLoginRequired),
-      detail: richTextEditor.createState(activity.detail),
-      reminder: reminderConfig.createState({ enableReminder, reminders }),
-      sessions: sessionsInput.createState(activity.sessions || [])
-    })
+    this.form = createState(activity)
     this.addDisposer(this.form.dispose)
   }
 
@@ -237,7 +228,7 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
           extra={imgExtra}
           {...bindFormItem(fields.imgUrl)}
         >
-          {isReading ? <ImgPreview url={activity!.imgUrl} /> : <UploadImg state={fields.imgUrl} maxSize={500} />}
+          {isReading ? <ImgPreview url={activity!.imgUrl} /> : <UploadImg state={fields.imgUrl.$} maxSize={500} />}
         </Form.Item>
         <Form.Item
           label="活动简介"

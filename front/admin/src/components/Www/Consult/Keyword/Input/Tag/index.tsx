@@ -5,9 +5,9 @@
 
 import React from 'react'
 import cns from 'classnames'
-import IcecreamTag, { TagProps } from 'react-icecream/lib/tag'
+import IcecreamTag, { TagProps } from 'react-icecream-1/lib/tag'
 
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 export type Props = TagProps
 

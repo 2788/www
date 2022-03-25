@@ -4,7 +4,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 import PropertyApis, { Property } from './property'
 
@@ -35,38 +36,38 @@ const resourceName = 'www-consult-entity'
 export default class EntityApis {
 
   constructor(
-    private fetchStore: FetchStore,
+    private client: BaseClient,
     private propertyApis: PropertyApis
   ) { }
 
   add(options: EntityData) {
     const now = moment().unix()
-    return this.fetchStore.postJSON(`${apiMongo}/${resourceName}`, {
+    return this.client.post<Entity>(`${apiMongo}/${resourceName}`, {
       ...options,
       createTime: now,
       editTime: now
-    }) as Promise<Entity>
+    })
   }
 
   update(id: string, options: Partial<EntityData>) {
-    return this.fetchStore.patchJSON(`${apiMongo}/${resourceName}/${id}`, {
+    return this.client.patch<void>(`${apiMongo}/${resourceName}/${id}`, {
       ...options,
       editTime: moment().unix()
-    }) as Promise<void>
+    })
   }
 
   delete(id: string) {
-    return this.fetchStore.delete(`${apiMongo}/${resourceName}/${id}`) as Promise<void>
+    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`)
   }
 
   async list(): Promise<Entity[]> {
-    const res = await this.fetchStore.get(`${apiMongo}/${resourceName}`, { sort: '-createTime' })
+    const res: any = await this.client.get(`${apiMongo}/${resourceName}`, { sort: '-createTime' })
     return (res.data || []) as Entity[]
   }
 
   /** 列出所有实体，并带上实体对应的属性信息 */
   async listWithProperties(): Promise<EntityWithProperties[]> {
-    const [entities, properties] = await Promise.all<Entity[], Property[]>([
+    const [entities, properties] = await Promise.all([
       this.list(),
       this.propertyApis.list()
     ])
@@ -83,6 +84,6 @@ export default class EntityApis {
     await Promise.all(properties.map(
       property => this.propertyApis.delete(property._id)
     ))
-    return this.fetchStore.delete(`${apiMongo}/${resourceName}/${id}`) as Promise<void>
+    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`)
   }
 }

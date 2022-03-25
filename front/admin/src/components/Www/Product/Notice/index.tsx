@@ -1,30 +1,28 @@
 import React from 'react'
 import { action, observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { Tooltip, Icon, Modal, Button } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import { Tooltip, Icon, Modal, Button } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 import autobind from 'autobind-decorator'
 
-import { injectable } from 'qn-fe-core/di'
-import Provider from 'qn-fe-core/di/Provider'
+import { Provider } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
-
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
 import { renderState, StateCheckboxGroup } from 'components/common/State'
 import { timeFormatter } from 'utils/time'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 
 import { EditorStatus } from 'constants/editor'
 import { INoticeWithId } from 'apis/product/notice'
 
 import NoticeStore from './store'
 import EditorModal, { ExtraProps } from './Editor'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 export const typeMap = {
   news: '新闻动态',
@@ -41,7 +39,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
   editorModal = new ModalStore<ExtraProps>()
   @observable.ref currentPage = 1
@@ -102,7 +100,7 @@ class LocalStore extends Store {
 const PageContent = observer(function _PageContent() {
   const store = useLocalStore(LocalStore)
   const noticeStore = store.noticeStore
-  const { pageList, list, isLoading } = noticeStore
+  const { pageList, filteredList: list, isLoading } = noticeStore
 
   const renderProduct = (_: string, record: INoticeWithId) => {
     const page = pageList.find(item => item.id === record.product)
@@ -163,7 +161,7 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} sorter={sortEditTime} />
         <Table.Column title="操作" width={80} render={renderOperation} />
       </Table>
-      {store.editorModal.visible && <EditorModal {...store.editorModal.bind()} />}
+      {store.editorModal.visible && <EditorModal {...store.editorModal.bind() as any} />}
     </>
   )
 })

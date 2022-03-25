@@ -6,22 +6,22 @@
 
 import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
-import { Tooltip, Button, Icon, Modal } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import { Tooltip, Button, Icon, Modal } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 
 import { useLocalStore } from 'qn-fe-core/local-store'
 
 import { Spacer } from 'libs/layout-element'
 import { IBannerWithId } from 'apis/global-banner'
 import { timeFormatter } from 'utils/time'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 import Container from 'components/common/Container'
 import ImgPreview from 'components/common/ImgPreview'
 import { StateCheckboxGroup, renderState } from 'components/common/State'
 
 import BannersStore from './store'
 import EditorModal from './EditorModal'
-import * as style from './style.m.less'
+import style from './style.m.less'
 import { displayPagesTextMap } from './constants'
 
 // 表格数据一页条数
@@ -96,7 +96,7 @@ export default observer(function GlobalBanners() {
         <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} />
         <Table.Column title="操作" width={80} render={renderOperation} />
       </Table>
-      <EditorModal {...store.editorModal.bind()} />
+      <EditorModal {...store.editorModal.bind() as any} />
     </>
   )
 })

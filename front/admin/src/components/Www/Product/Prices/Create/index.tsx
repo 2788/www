@@ -7,20 +7,20 @@
 import * as React from 'react'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Form } from 'react-icecream'
+import { Form } from 'react-icecream-1'
 import autobind from 'autobind-decorator'
 import { saveAs } from 'file-saver'
 
-import { FormState, ValueOf } from 'formstate-x'
-import { injectable, useInjection } from 'qn-fe-core/di'
+import { FormState, ValueOf } from 'formstate-x-v2'
+import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem } from 'admin-base/common/utils/form'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
 
+import { bindFormItem } from 'utils/bind'
 import { titleMap, EditorStatus } from 'constants/editor'
 import PriceApis from 'apis/product/price'
 import Modal from 'components/common/Modal'
@@ -29,7 +29,7 @@ import ProductSelect, * as productSelect from '../../ProductSelect'
 import UploadMdFile, * as uploadMdFile from '../UploadMdFile'
 import PricesStore from '../store'
 import documentationMd from './documentation.md'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 type State = FormState<{
   product: productSelect.State
@@ -57,7 +57,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)

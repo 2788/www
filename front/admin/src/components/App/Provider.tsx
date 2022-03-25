@@ -1,45 +1,42 @@
 import * as React from 'react'
 import * as di from 'qn-fe-core/di'
-import Disposable from 'qn-fe-core/disposable'
+import { RouterStore } from 'qn-fe-core/router'
+import BaseProvider, { Props as BaseProps, createRouterStore } from 'admin-base/common/components/BootProvider'
 
-import BaseProvider, * as base from 'admin-base/common/components/Provider'
-
-import FetchStore from 'stores/fetch'
-
-export * from 'admin-base/common/components/Provider'
-
-@di.injectable()
-export class Env extends Disposable implements base.IEnv {
-
-  constructor(
-    // eslint-disable-next-line no-shadow
-    public base: base.Env,
-    public fetchStore: FetchStore
-  ) {
-    super()
-  }
-
-  init() {
-    this.base.init()
-    this.base.userInfoStore.fetch()
-    this.base.routerStore.bindDocument(window.document, '官网 Admin - {{routeTitle}}')
-    this.fetchStore.bindRealFetch(window.fetch)
-
-    this.addDisposer(
-      this.base.dispose,
-      this.fetchStore.dispose
-    )
-  }
-}
+import ActivityApis from 'apis/activity'
+import GlobalBannerApis from 'apis/global-banner'
+import UploadApis from 'apis/upload'
+import EntityApis from 'apis/consult/entity'
+import PropertyApis from 'apis/consult/property'
+import HomepageActivityApis from 'apis/homepage/activity'
+import HomepageBannerApis from 'apis/homepage/banner'
+import HomepageNewsApis from 'apis/homepage/news'
+import ProductNewsApis from 'apis/product/news'
+import ProductNoticeApis from 'apis/product/notice'
+import ProductPageApis from 'apis/product/page'
+import ProductPriceApis from 'apis/product/price'
+import PgcContentApis from 'apis/pgc/content'
 
 export const defaultProvides: di.Provides = [
-  { identifier: base.ENV, constr: Env },
-  ...base.v2provides
+  { identifier: RouterStore, factory: () => createRouterStore('官网 Admin - {{routeTitle}}') },
+  ActivityApis,
+  GlobalBannerApis,
+  UploadApis,
+  EntityApis,
+  PropertyApis,
+  HomepageActivityApis,
+  HomepageBannerApis,
+  HomepageNewsApis,
+  ProductNewsApis,
+  ProductNoticeApis,
+  ProductPageApis,
+  ProductPriceApis,
+  PgcContentApis
 ]
 
-export interface IProps extends base.IProps { }
+export type Props = BaseProps
 
-export default function Provider({ provides, ...restProps }: IProps) {
+export default function Provider({ provides, ...restProps }: Props) {
   provides = di.mergeProvides(defaultProvides, provides)
   return <BaseProvider {...restProps} provides={provides} />
 }

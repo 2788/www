@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { Button, Input } from 'react-icecream'
-import * as style from './style.m.less'
+import { Button, Input } from 'react-icecream-1'
+
+import style from './style.m.less'
 
 export default function CopyUrlButton({ url }: { url: string }) {
   const [copied, setCopied] = useState(false)

@@ -6,7 +6,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 
 // 展示区域
@@ -53,25 +54,25 @@ export interface IListResponse {
 export default class BannerApis {
 
   constructor(
-    private fetchStore: FetchStore
+    private client: BaseClient
   ) { }
 
   add(options: IAddBannerOptions): Promise<void> {
     const opts = { ...options, createTime: moment().unix(), editTime: moment().unix() }
-    return this.fetchStore.postJSON(apiMongo + '/www-global-banner', opts)
+    return this.client.post(apiMongo + '/www-global-banner', opts)
   }
 
   update(id: string, options: IUpdateBannerOptions): Promise<void> {
     const opts = { ...options, editTime: moment().unix() }
-    return this.fetchStore.putJSON(apiMongo + '/www-global-banner/' + id, opts)
+    return this.client.put(apiMongo + '/www-global-banner/' + id, opts)
   }
 
   delete(id: string): Promise<void> {
-    return this.fetchStore.delete(apiMongo + '/www-global-banner/' + id)
+    return this.client.delete(apiMongo + '/www-global-banner/' + id)
   }
 
   list(): Promise<IListResponse> {
-    return this.fetchStore.get(
+    return this.client.get<IListResponse>(
       apiMongo + '/www-global-banner', { sort: '-editTime' }
     ).then(res => (res.data ? res : { ...res, data: [] }))
   }

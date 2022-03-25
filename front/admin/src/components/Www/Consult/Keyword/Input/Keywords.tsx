@@ -1,9 +1,9 @@
 import React from 'react'
-import { Icon } from 'react-icecream'
+import { Icon } from 'react-icecream-1'
 import { observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { FieldState } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
+import { FieldState } from 'formstate-x-v2'
+import { observeInjectable as injectable } from 'qn-fe-core/store'
 import { injectProps, useLocalStore } from 'qn-fe-core/local-store'
 
 import SimpleInput from './SimpleInput'

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { observer } from 'mobx-react'
-import { Button, Modal } from 'react-icecream'
+import { Button, Modal } from 'react-icecream-1'
 import XLSX from 'xlsx'
 import { useInjection } from 'qn-fe-core/di'
 

@@ -1,5 +1,6 @@
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 
 export interface IPage {
@@ -11,21 +12,21 @@ export interface IPage {
 @injectable()
 export default class PageApis {
 
-  constructor(private fetchStore: FetchStore) { }
+  constructor(private client: BaseClient) { }
 
   add(options: IPage): Promise<void> {
-    return this.fetchStore.postJSON(apiMongo + '/www-product-page', options)
+    return this.client.post(apiMongo + '/www-product-page', options)
   }
 
   update(options: IPage): Promise<void> {
-    return this.fetchStore.putJSON(apiMongo + '/www-product-page/' + options.id, options)
+    return this.client.put(apiMongo + '/www-product-page/' + options.id, options)
   }
 
   delete(id: string): Promise<void> {
-    return this.fetchStore.delete(apiMongo + '/www-product-page/' + id)
+    return this.client.delete(apiMongo + '/www-product-page/' + id)
   }
 
   list(): Promise<IPage[]> {
-    return this.fetchStore.get(apiMongo + '/www-product-page').then(res => res.data || [])
+    return this.client.get<any>(apiMongo + '/www-product-page').then(res => res.data || [])
   }
 }

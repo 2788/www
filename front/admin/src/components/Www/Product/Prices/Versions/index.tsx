@@ -9,21 +9,21 @@ import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
 import { saveAs } from 'file-saver'
 
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
-import { PaginationProps } from 'react-icecream/lib/pagination'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
+import { PaginationProps } from 'react-icecream-1/lib/pagination'
 import autobind from 'autobind-decorator'
-import { injectable, useInjection } from 'qn-fe-core/di'
+import { useInjection } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
 
 import PriceApis, { IVersion } from 'apis/product/price'
 import { timeFormatter } from 'utils/time'
 import Modal from 'components/common/Modal'
-import * as commonStyle from 'utils/style.m.less'
+import commonStyle from 'utils/style.m.less'
 
 import PricesStore from '../store'
 
@@ -42,7 +42,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)
@@ -81,8 +81,8 @@ class LocalStore extends Store {
 
   init() {
     this.addDisposer(
-      reaction<[string | null, boolean]>(
-        () => [this.props.product, this.props.visible],
+      reaction(
+        () => [this.props.product, this.props.visible] as const,
         ([product, visible]) => {
           if (product !== null && visible) {
             this.fetchList(product)
@@ -95,7 +95,7 @@ class LocalStore extends Store {
 }
 
 export default observer(function VersionsModal(props: Props) {
-  props = { product: null, ...props }
+  props = { product: null, ...props as any /** FIXME */ }
   const store = useLocalStore(LocalStore, props)
   const { list, isLoading, total } = store
   const { visible, product, onCancel } = props

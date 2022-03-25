@@ -1,113 +1,124 @@
-import * as React from 'react'
-import { observer } from 'mobx-react'
-import { hot } from 'react-hot-loader/root'
-import { ConfigProvider } from 'react-icecream'
+import React, { useState } from 'react'
+import { ConfigProvider } from 'react-icecream-1'
 
 import { Route, Redirect, Switch } from 'qn-fe-core/router'
 
-import NotFound from 'admin-base/common/components/NotFound'
-import Toaster from 'admin-base/common/components/Toaster'
-import { getBaseRouters } from 'admin-base/user/components/Router'
-import UserProvider from 'admin-base/user/components/Provider'
-import UserList from 'admin-base/user/components/Manage'
-import PermissionList from 'admin-base/user/components/PermissionManage'
-import RoleList from 'admin-base/user/components/RoleManage'
+import BaseLayout, { Page } from 'admin-base/common/components/Layout'
+import Navbar from 'admin-base/common/components/Navbar'
+import BaseSidebar, { Group, LinkItem } from 'admin-base/common/components/Sidebar'
+import { renderUserRoutes, User, UserSidebarGroup } from 'admin-base/user/manage'
 
 import Permission from 'components/common/Permission'
-import PermissionCode from 'constants/permission'
+import { PermissionCode } from 'constants/permission'
 
 import Homepage from 'components/Www/Homepage'
 import Product from 'components/Www/Product'
 import Consult from 'components/Www/Consult'
 import Activity from 'components/Www/Activity'
 import GlobalBanners from 'components/Www/GlobalBanners'
+import PgcManage from 'components/Pgc/Manage'
 import {
-  accountTitle, accountRoute, userTitle, userRoute, roleTitle, roleRoute, permissionTitle, permissionRoute,
-  wwwTitle, wwwRoute, homepageRoute, homepageTitle, productTitle, productRoute, consultTitle, consultRoute,
-  activityTitle, activityRoute, globalBannersTitle, globalBannersRoute
+  accountRoute, wwwTitle, wwwRoute, homepageRoute, homepageTitle, productTitle, productRoute,
+  consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute,
+  pgcRoute, pgcTitle, pgcManageRoute, pgcManageTitle
 } from 'constants/route'
 
 import Provider from './Provider'
-import Layout from '../Layout'
 
-import * as style from './style.m.less'
+function Sidebar({ collapsed }: { collapsed: boolean }) {
+  return (
+    <BaseSidebar collapsed={collapsed}>
+      <Group title={wwwTitle} path={wwwRoute}>
+        <LinkItem relative to={homepageRoute}>{homepageTitle}</LinkItem>
+        <LinkItem relative to={globalBannersRoute}>{globalBannersTitle}</LinkItem>
+        <LinkItem relative to={productRoute}>{productTitle}</LinkItem>
+        <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
+        <LinkItem relative to={activityRoute}>{activityTitle}</LinkItem>
+      </Group>
+      {/* TODO: <Group title={pgcTitle} path={pgcRoute}>
+        <LinkItem relative to={pgcManageRoute}>{pgcManageTitle}</LinkItem>
+      </Group> */}
+      <UserSidebarGroup prefix={accountRoute} />
+    </BaseSidebar>
+  )
+}
 
-@hot
-@observer
-export default class App extends React.Component<any, any> {
+function Layout({ children }: { children: React.ReactNode }) {
+  const [collapsed, setCollapsed] = useState(false)
+  return (
+    <BaseLayout
+      header={<Navbar header="官网 Admin" onCollapse={setCollapsed} />}
+      sidebar={<Sidebar collapsed={collapsed} />}
+    >
+      <Page>{children}</Page>
+    </BaseLayout>
+  )
+}
 
-  render() {
-    const cnt = (
+export default function App() {
+
+  const userRoutes = renderUserRoutes((
+    <Permission code={PermissionCode.ACCOUNT}>
+      <User />
+    </Permission>
+  ), accountRoute)
+
+  return (
+    <ConfigProvider>
       <Provider>
-        <Toaster />
-        <Switch>
-          {getBaseRouters()}
-          <Route path="/">
-            <Layout>
+        <Layout>
+          <Switch>
+            <Route relative exact path="/">
+              <Redirect relative to={wwwRoute} />
+            </Route>
+            <Route relative title={wwwTitle} path={wwwRoute}>
               <Switch>
-                <Route relative exact path="/"><Redirect relative to={`${wwwRoute}${homepageRoute}`} /></Route>
-                <Route relative title={accountTitle} path={accountRoute}>
-                  <UserProvider>
-                    <Permission code={PermissionCode.ACCOUNT}>
-                      <Switch>
-                        <Route relative exact title={userTitle} path={userRoute}>
-                          <UserList className={style.account} />
-                        </Route>
-                        <Route relative exact title={roleTitle} path={roleRoute}>
-                          <RoleList className={style.account} />
-                        </Route>
-                        <Route relative exact title={permissionTitle} path={permissionRoute}>
-                          <PermissionList className={style.account} />
-                        </Route>
-                        <Route relative path="*"><NotFound /></Route>
-                      </Switch>
-                    </Permission>
-                  </UserProvider>
+                <Route relative exact path="/">
+                  <Redirect relative to={homepageRoute} />
                 </Route>
-                <Route relative title={wwwTitle} path={wwwRoute}>
-                  <Switch>
-                    <Route relative title={homepageTitle} path={homepageRoute}>
-                      <Permission code={PermissionCode.HOMEPAGE}>
-                        <Homepage />
-                      </Permission>
-                    </Route>
-                    <Route relative title={globalBannersTitle} path={globalBannersRoute}>
-                      <Permission code={PermissionCode.GLOBAL_BANNER}>
-                        <GlobalBanners />
-                      </Permission>
-                    </Route>
-                    <Route relative title={productTitle} path={productRoute}>
-                      <Permission code={PermissionCode.PRODUCT}>
-                        <Product />
-                      </Permission>
-                    </Route>
-                    <Route relative title={consultTitle} path={consultRoute}>
-                      <Permission code={PermissionCode.CONSULT}>
-                        <Consult />
-                      </Permission>
-                    </Route>
-                    <Route relative title={activityTitle} path={activityRoute}>
-                      <Permission code={PermissionCode.ACTIVITY}>
-                        <Activity />
-                      </Permission>
-                    </Route>
-                    <Route relative path="*"><NotFound /></Route>
-                  </Switch>
+                <Route relative title={homepageTitle} path={homepageRoute}>
+                  <Permission code={PermissionCode.HOMEPAGE}>
+                    <Homepage />
+                  </Permission>
                 </Route>
-                <Route relative path="*"><NotFound /></Route>
+                <Route relative title={globalBannersTitle} path={globalBannersRoute}>
+                  <Permission code={PermissionCode.GLOBAL_BANNER}>
+                    <GlobalBanners />
+                  </Permission>
+                </Route>
+                <Route relative title={productTitle} path={productRoute}>
+                  <Permission code={PermissionCode.PRODUCT}>
+                    <Product />
+                  </Permission>
+                </Route>
+                <Route relative title={consultTitle} path={consultRoute}>
+                  <Permission code={PermissionCode.CONSULT}>
+                    <Consult />
+                  </Permission>
+                </Route>
+                <Route relative title={activityTitle} path={activityRoute}>
+                  <Permission code={PermissionCode.ACTIVITY}>
+                    <Activity />
+                  </Permission>
+                </Route>
               </Switch>
-            </Layout>
-          </Route>
-        </Switch>
+            </Route>
+            <Route relative title={pgcTitle} path={pgcRoute}>
+              <Permission code={PermissionCode.PGC}>
+                <Switch>
+                  <Route relative exact path="/">
+                    <Redirect relative to={pgcManageRoute} />
+                  </Route>
+                  <Route relative title={pgcManageTitle} path={pgcManageRoute}>
+                    <PgcManage />
+                  </Route>
+                </Switch>
+              </Permission>
+            </Route>
+            {userRoutes}
+          </Switch>
+        </Layout>
       </Provider>
-    )
-
-    return (
-      <div className={style.wrapper}>
-        <ConfigProvider>
-          {cnt}
-        </ConfigProvider>
-      </div>
-    )
-  }
+    </ConfigProvider>
+  )
 }

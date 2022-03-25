@@ -6,8 +6,9 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import UserInfoStore from 'admin-base/user/stores/user-info'
-import FetchStore from 'stores/fetch'
+import { UserInfoStore } from 'admin-base/user/account'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 
 export interface IPrice {
@@ -58,7 +59,7 @@ export interface IAddVersionOptions {
 export default class PriceApis {
 
   constructor(
-    private fetchStore: FetchStore,
+    private client: BaseClient,
     private userInfoStore: UserInfoStore
   ) { }
 
@@ -70,32 +71,32 @@ export default class PriceApis {
       createdAt: moment().unix(),
       updatedAt: moment().unix()
     }
-    return this.fetchStore.postJSON(apiMongo + '/www-product-price', opts)
+    return this.client.post(apiMongo + '/www-product-price', opts)
   }
 
   update(options: IUpdatePriceOptions): Promise<void> {
     const opts = { ...options, modifier: this.userInfoStore.name, updatedAt: moment().unix() }
-    return this.fetchStore.putJSON(apiMongo + '/www-product-price/' + options.product, opts)
+    return this.client.put(apiMongo + '/www-product-price/' + options.product, opts)
   }
 
   delete(id: string): Promise<void> {
-    return this.fetchStore.delete(apiMongo + '/www-product-price/' + id)
+    return this.client.delete(apiMongo + '/www-product-price/' + id)
   }
 
   list(): Promise<IListResponse> {
-    return this.fetchStore.get(apiMongo + '/www-product-price')
+    return this.client.get<IListResponse>(apiMongo + '/www-product-price')
       .then(res => (res.data ? res : { ...res, data: [] }))
   }
 
   addVersion(options: IAddVersionOptions): Promise<void> {
     const opts = { ...options, creator: this.userInfoStore.name, createdAt: moment().unix() }
-    return this.fetchStore.postJSON(apiMongo + '/www-product-price-version', opts)
+    return this.client.post(apiMongo + '/www-product-price-version', opts)
   }
 
   // 获取某个产品价格页下所有的历史记录
   getVersionsByProduct(product: string): Promise<IVersionWithId[]> {
     const options = { query: JSON.stringify({ product }), sort: '-createdAt' }
-    return this.fetchStore.get(apiMongo + '/www-product-price-version', options)
+    return this.client.get<any>(apiMongo + '/www-product-price-version', options)
       .then(res => res.data || [])
   }
 
@@ -103,7 +104,7 @@ export default class PriceApis {
   async deleteVersionsByProduct(product: string): Promise<void> {
     const versions = await this.getVersionsByProduct(product)
     await Promise.all(versions.map(version => (
-      this.fetchStore.delete(apiMongo + '/www-product-price-version/' + version._id)
+      this.client.delete(apiMongo + '/www-product-price-version/' + version._id)
     )))
   }
 }

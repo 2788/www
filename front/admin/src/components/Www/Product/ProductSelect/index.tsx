@@ -8,15 +8,14 @@ import * as React from 'react'
 import { action, computed, observable } from 'mobx'
 import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'
-import Select, { SelectProps } from 'react-icecream/lib/select'
-import { FieldState } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
-import Store from 'qn-fe-core/store'
+import Select, { SelectProps } from 'react-icecream-1/lib/select'
+import { FieldState } from 'formstate-x-v2'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 import { useLocalStore } from 'qn-fe-core/local-store'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import { bindSelect } from 'admin-base/common/utils/form'
-import Loadings from 'admin-base/common/stores/loadings'
+import { bindSelect } from 'utils/bind'
 import PageApis, { IPage } from 'apis/product/page'
 
 export type State = FieldState<string>
@@ -42,7 +41,7 @@ class LocalStore extends Store {
     toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   @observable.ref pageList: IPage[] = []

@@ -1,8 +1,8 @@
 import autobind from 'autobind-decorator'
-import Store from 'qn-fe-core/store'
-import { injectable } from 'qn-fe-core/di'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 import { action, computed, observable } from 'mobx'
-import Loadings from 'admin-base/common/stores/loadings'
+import { Loadings } from 'admin-base/common/loading'
+
 import NewsApis, { INews, INewsWithId } from 'apis/homepage/news'
 
 @injectable()

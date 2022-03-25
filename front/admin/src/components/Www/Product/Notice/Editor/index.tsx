@@ -1,22 +1,19 @@
 import * as React from 'react'
 import { computed, reaction, observable, action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Form, Input, Radio, DatePicker } from 'react-icecream'
+import { Form, Input, Radio, DatePicker } from 'react-icecream-1'
 import moment, { Moment } from 'moment'
 import autobind from 'autobind-decorator'
 
-import { FieldState, FormState, ValueOf } from 'formstate-x'
-import { injectable } from 'qn-fe-core/di'
+import { FieldState, FormState, ValueOf } from 'formstate-x-v2'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { ToasterStore } from 'admin-base/common/toaster'
+import { Loadings } from 'admin-base/common/loading'
+import { ModalProps as IModalProps } from 'admin-base/common/utils/modal'
+import { textNotBlank } from 'admin-base/common/form'
 
-import ToasterStore from 'admin-base/common/stores/toaster'
-import Loadings from 'admin-base/common/stores/loadings'
-import { IModalProps } from 'admin-base/common/stores/modal'
-import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
-
-import { bindRangePicker } from 'utils/bind'
+import { bindFormItem, bindTextInput, bindInputWithCurrentTarget, bindRadioGroup, bindRangePicker } from 'utils/bind'
 import { textNoticeLink } from 'utils/validator'
 import { EditorProps, EditorStatus, titleMap } from 'constants/editor'
 import { INotice } from 'apis/product/notice'
@@ -68,7 +65,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   loadings = Loadings.collectFrom(this)

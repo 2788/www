@@ -1,10 +1,12 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import Checkbox from 'react-icecream/lib/checkbox'
-import { FieldState, FormState } from 'formstate-x'
-import { bindCheckbox } from 'admin-base/common/utils/form'
+import Checkbox from 'react-icecream-1/lib/checkbox'
+import { FieldState, FormState } from 'formstate-x-v2'
+
+import { bindCheckbox } from 'utils/bind'
+
 import RemindersInput, * as remindersInput from './RemindersInput'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 export type State = FormState<{
   enableReminder: FieldState<boolean>

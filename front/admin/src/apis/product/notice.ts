@@ -1,6 +1,7 @@
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 
 export interface INotice {
@@ -21,23 +22,23 @@ export interface INoticeWithId extends INotice {
 @injectable()
 export default class NoticeApis {
 
-  constructor(private fetchStore: FetchStore) { }
+  constructor(private client: BaseClient) { }
 
   add(options: INotice): Promise<void> {
     options = { ...options, ...{ createTime: moment().unix(), editTime: moment().unix() } }
-    return this.fetchStore.postJSON(apiMongo + '/www-product-notice', options)
+    return this.client.post(apiMongo + '/www-product-notice', options)
   }
 
   update(options: INotice, noticeId: string): Promise<void> {
     options = { ...options, editTime: moment().unix() }
-    return this.fetchStore.putJSON(apiMongo + '/www-product-notice/' + noticeId, options)
+    return this.client.put(apiMongo + '/www-product-notice/' + noticeId, options)
   }
 
   delete(noticeId: string): Promise<void> {
-    return this.fetchStore.delete(apiMongo + '/www-product-notice/' + noticeId)
+    return this.client.delete(apiMongo + '/www-product-notice/' + noticeId)
   }
 
   list(): Promise<INoticeWithId[]> {
-    return this.fetchStore.get(apiMongo + '/www-product-notice', { sort: '-editTime' }).then(res => res.data || [])
+    return this.client.get<any>(apiMongo + '/www-product-notice', { sort: '-editTime' }).then(res => res.data || [])
   }
 }

@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
-import { Button, Icon } from 'react-icecream'
-import { FieldState, FormState, bindInput } from 'formstate-x'
-import BraftEditor, { ControlType, ExtendControlType, EditorState } from 'braft-editor'
+import { Button, Icon } from 'react-icecream-1'
+import { toV2 } from 'formstate-x/adapter'
+import { FieldState, FormState, bindInput } from 'formstate-x-v2'
+import BraftEditor, { ControlType, ExtendControlType } from 'braft-editor'
 import { ContentUtils } from 'braft-utils'
 import 'braft-editor/dist/index.css'
 
 import UploadImg, * as uploadImg from '../Upload/Img'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 const maxLen = 5000 // 文本最大长度
 
@@ -28,12 +29,7 @@ interface IProps {
   readOnly: boolean
 }
 
-export type State = FormState<{
-  editorState: FieldState<EditorState>
-  img: uploadImg.State
-}>
-
-export function createState(value: string): State {
+export function createState(value: string) {
   const editorState = BraftEditor.createEditorState(value)
   return new FormState({
     editorState: new FieldState(editorState, 600).validators(val => {
@@ -42,9 +38,11 @@ export function createState(value: string): State {
       if (len > maxLen) return `长度不能大于 ${maxLen}`
       return null
     }),
-    img: uploadImg.createState('')
+    img: toV2(uploadImg.createState(''))
   })
 }
+
+export type State = ReturnType<typeof createState>
 
 export function getValue(state: State): string {
   return state.$.editorState.$.toHTML()
@@ -68,7 +66,7 @@ export default observer(function RichTextEditor({ state, readOnly }: IProps) {
       key: 'uploader',
       type: 'component',
       component: (
-        <UploadImg state={state.$.img} onUploaded={uploadHandler} maxSize={500}>
+        <UploadImg state={state.$.img.$} onUploaded={uploadHandler} maxSize={500}>
           <Button data-title="插入图片" className={style.btn}>
             <Icon type="picture" theme="filled" className={style.icon} />
           </Button>

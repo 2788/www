@@ -3,14 +3,14 @@ import cls from 'classnames'
 import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
-import { Input, Icon } from 'react-icecream'
-import { FieldState, FormState } from 'formstate-x'
+import { Input, Icon } from 'react-icecream-1'
+import { FieldState, FormState } from 'formstate-x-v2'
+import { textNotBlank } from 'admin-base/common/form'
 
-import { bindTextInput } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
-
+import { bindTextInput } from 'utils/bind'
 import { ISession } from 'apis/activity'
-import * as style from './style.m.less'
+
+import style from './style.m.less'
 
 type SessionState = FormState<{
   id: FieldState<string>
@@ -51,6 +51,7 @@ interface IProps {
 const maxSize = 5
 
 export default observer(function SessionsInput({ state, disabled }: IProps) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleAdd = useCallback(action(() => {
     state.$.push(createSessionState())
   }), [state])

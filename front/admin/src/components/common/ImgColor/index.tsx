@@ -2,9 +2,9 @@ import React, { useCallback } from 'react'
 import { observer } from 'mobx-react'
 import { FormState, ValueOf } from 'formstate-x'
 
-import { bindFormItem } from 'admin-base/common/utils/form'
-import { textNotBlank } from 'admin-base/common/utils/validator'
+import { textNotBlank } from 'admin-base/common/form'
 
+import { bindFormItem } from 'utils/bind'
 import FormItem from 'components/common/FormItem'
 import UploadImg, * as uploadImg from 'components/common/Upload/Img'
 import ColorPicker, * as colorPicker from 'components/common/ColorPicker'
@@ -18,16 +18,9 @@ type Value = ValueOf<State>
 
 export function createState({ img, color }: Value): State {
   return new FormState({
-    img: uploadImg.createState(img).validators(textNotBlank),
+    img: uploadImg.createState(img).withValidator(textNotBlank),
     color: colorPicker.createState(color)
   })
-}
-
-export function getValue(state: State): Value {
-  return {
-    img: uploadImg.getValue(state.$.img),
-    color: state.$.color.value
-  }
 }
 
 interface IProps {

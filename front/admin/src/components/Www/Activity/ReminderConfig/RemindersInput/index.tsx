@@ -2,11 +2,12 @@ import React, { useCallback } from 'react'
 import dayjs from 'dayjs'
 import { action } from 'mobx'
 import { observer } from 'mobx-react'
-import { InputNumber, Icon } from 'react-icecream'
-import { FieldState, FormState } from 'formstate-x'
-import { bindInputNumber } from 'admin-base/common/utils/form'
+import { InputNumber, Icon } from 'react-icecream-1'
+import { FieldState, FormState } from 'formstate-x-v2'
+
+import { bindInputNumber } from 'utils/bind'
 import { IReminder } from 'apis/activity'
-import * as style from './style.m.less'
+import style from './style.m.less'
 
 type ReminderState = FormState<{
   id: FieldState<string>
@@ -80,6 +81,7 @@ interface IProps {
 }
 
 export default observer(function RemindersInput({ state, disabled, visible }: IProps) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleAdd = useCallback(action(() => {
     state.$.push(createReminderState())
   }), [state])

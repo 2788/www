@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import { observer } from 'mobx-react'
-import Upload, { UploadProps } from 'react-icecream/lib/upload'
+import Upload, { UploadProps } from 'react-icecream-1/lib/upload'
 import moment from 'moment'
 import autobind from 'autobind-decorator'
 
@@ -8,20 +8,21 @@ import * as qiniu from 'qiniu-js'
 import { injectable } from 'qn-fe-core/di'
 import { useLocalStore, injectProps } from 'qn-fe-core/local-store'
 import Store from 'qn-fe-core/store'
-
-import ToasterStore from 'admin-base/common/stores/toaster'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import UploadApis from 'apis/upload'
-import * as style from './style.m.less'
+import { generateUploadBucketKey } from 'transforms/pgc/content'
+import style from './style.m.less'
 
 export interface IProps extends UploadProps {
+  uploadBucketKeyRule?: 'www' | 'pgc-content'
   onUploaded?: (url: string, file: File) => void // 上传成功之后执行的方法
 }
 
 // 图片筛选
 const imgFilter = '.png, .jpg, .jpeg, .gif'
 // 公共前缀
-const uploadKeyPrefix = 'www/admin/'
+const uploadKeyPrefix = 'www/admin'
 
 const publicUrl = 'https://static-file.qiniu.io/'
 const bucket = 'admin-v2-static'
@@ -35,7 +36,7 @@ class LocalStore extends Store {
     toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   fetchToken() {
@@ -48,7 +49,11 @@ class LocalStore extends Store {
 
   doUpload(file: File, token: string) {
     return new Promise<string>((resolve, reject) => {
-      const obser = qiniu.upload(file, uploadKeyPrefix + moment().unix(), token)
+      const uploadKey = {
+        www: `${uploadKeyPrefix}/${moment().unix()}/${file.name}`,
+        'pgc-content': generateUploadBucketKey(file.name)
+      }[this.props.uploadBucketKeyRule ?? 'www']
+      const obser = qiniu.upload(file, uploadKey, token)
       const subscription = obser.subscribe({
         error: err => {
           // TODO: file 上传状态管理?
@@ -67,7 +72,7 @@ class LocalStore extends Store {
 
   @autobind
   @ToasterStore.handle('上传成功')
-  UploadFile(file: File) {
+  uploadFile(file: File) {
     const req = this.fetchToken()
       .then(token => this.doUpload(file, token), () => Promise.reject('token 获取失败！'))
       .then(val => this.props.onUploaded && this.props.onUploaded(val, file))
@@ -77,11 +82,11 @@ class LocalStore extends Store {
 
 export default observer(function CommonUpload(props: PropsWithChildren<IProps>) {
   const store = useLocalStore(LocalStore, props)
-  const { children, ...rest } = props
+  const { children, uploadBucketKeyRule, onUploaded, ...rest } = props
 
   const handleFileChange = (file: File | undefined) => {
     if (file) {
-      store.UploadFile(file)
+      store.uploadFile(file)
     }
   }
 

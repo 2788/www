@@ -1,6 +1,7 @@
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 import { wwwHost } from 'constants/env'
 import { StateType } from 'constants/activity'
@@ -79,33 +80,33 @@ export interface IScanner {
 @injectable()
 export default class ActivityApis {
 
-  constructor(private fetchStore: FetchStore) { }
+  constructor(private client: BaseClient) { }
 
   add(options: IActivity): Promise<void> {
     options = { ...options, ...{ detailUrlPrefix, editTime: moment().unix() } }
-    return this.fetchStore.postJSON(apiMongo + '/www-market-activity', options)
+    return this.client.post(apiMongo + '/www-market-activity', options)
   }
 
   update(options: IActivity, id: string): Promise<void> {
     options = { ...options, ...{ detailUrlPrefix, editTime: moment().unix() } }
-    return this.fetchStore.putJSON(apiMongo + '/www-market-activity/' + id, options)
+    return this.client.put(apiMongo + '/www-market-activity/' + id, options)
   }
 
   delete(id: string): Promise<void> {
-    return this.fetchStore.delete(apiMongo + '/www-market-activity/' + id)
+    return this.client.delete(apiMongo + '/www-market-activity/' + id)
   }
 
   list({ limit, offset, states = [] }: IListOptions): Promise<IListResponse> {
     const query = states.length > 0 ? { query: JSON.stringify({ state: { $in: states } }) } : null
     const options = { ...query, limit, offset, sort: '-editTime,-startTime' }
-    return this.fetchStore.get(apiMongo + '/www-market-activity', options)
+    return this.client.get<IListResponse>(apiMongo + '/www-market-activity', options)
       .then(res => (res.data ? res : { ...res, data: [] }))
   }
 
   // 获取注册信息总量
   getRegistrationsCount(id: string): Promise<number> {
     const options = { query: JSON.stringify({ marketActivityId: id }), limit: 1 }
-    return this.fetchStore.get(apiMongo + '/www-activity-registration', options).then(res => res.count)
+    return this.client.get<{ count: number }>(apiMongo + '/www-activity-registration', options).then(res => res.count)
   }
 
   // 获取所有注册信息
@@ -114,7 +115,7 @@ export default class ActivityApis {
     const pArr: Array<Promise<IRegistration[]>> = []
     for (let i = 0; i < total / batchLimit; i++) {
       pArr.push(
-        this.fetchStore.get(
+        this.client.get<{ data: IRegistration[] }>(
           apiMongo + '/www-activity-registration',
           { ...options, limit: batchLimit, offset: i * batchLimit }
         ).then(res => (res.data || []))
@@ -133,6 +134,6 @@ export default class ActivityApis {
       startTime: moment().unix(),
       endTime: moment().add(3, 'day').unix()
     }
-    return this.fetchStore.postJSON(apiMongo + '/www-activity-check-in-qr-code-scanner', opts)
+    return this.client.post(apiMongo + '/www-activity-check-in-qr-code-scanner', opts)
   }
 }

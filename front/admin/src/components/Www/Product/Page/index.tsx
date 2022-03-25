@@ -1,29 +1,27 @@
 import React from 'react'
 import { action, observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { Tooltip, Icon, Modal, Button } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import { Tooltip, Icon, Modal, Button } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 import autobind from 'autobind-decorator'
 
-import { injectable } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
-import Provider from 'qn-fe-core/di/Provider'
-
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { Provider } from 'qn-fe-core/di'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
 import { EditorStatus } from 'constants/editor'
 import { IPage } from 'apis/product/page'
-import * as style from 'utils/style.m.less'
+import style from 'utils/style.m.less'
 
 import PageStore from './store'
 import EditorModal, { ExtraProps } from './Editor'
 
 // 表格数据一页条数
-const pageSize = 5
+const pageSize = 8
 @injectable()
 class LocalStore extends Store {
 
@@ -32,7 +30,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
 
   editorModal = new ModalStore<ExtraProps>()
@@ -133,7 +131,7 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="链接地址" width={200} dataIndex="link" />
         <Table.Column title="操作" width={100} render={renderOperation} />
       </Table>
-      {store.editorModal.visible && <EditorModal {...store.editorModal.bind()} />}
+      {store.editorModal.visible && <EditorModal {...store.editorModal.bind() as any} />}
     </>
   )
 })

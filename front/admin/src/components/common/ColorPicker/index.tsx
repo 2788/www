@@ -6,17 +6,14 @@ import React, { useState } from 'react'
 import { observer } from 'mobx-react'
 import { SketchPicker } from 'react-color'
 import { FieldState } from 'formstate-x'
-import { textNotBlank } from 'admin-base/common/utils/validator'
-import * as style from './style.m.less'
+import { textNotBlank } from 'admin-base/common/form'
+
+import style from './style.m.less'
 
 export type State = FieldState<string>
 
 export function createState(value: string): State {
-  return new FieldState(value).validators(textNotBlank)
-}
-
-export function getValue(state: State): string {
-  return state.value
+  return new FieldState(value).withValidator(textNotBlank)
 }
 
 interface IProps {

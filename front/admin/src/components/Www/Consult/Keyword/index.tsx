@@ -6,13 +6,11 @@ import autobind from 'autobind-decorator'
 import React, { useCallback } from 'react'
 import { observable, runInAction } from 'mobx'
 import { observer, Observer } from 'mobx-react'
-import { Table, Icon, Button, Modal } from 'react-icecream'
-import { injectable } from 'qn-fe-core/di'
-import Store from 'qn-fe-core/store'
+import { Table, Icon, Button, Modal } from 'react-icecream-1'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
 import { useLocalStore } from 'qn-fe-core/local-store'
 import { makeCancelled } from 'qn-fe-core/exception'
-
-import Toaster from 'admin-base/common/stores/toaster'
+import { ToasterStore as Toaster } from 'admin-base/common/toaster'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
@@ -30,7 +28,7 @@ class LocalStore extends Store {
     toaster: Toaster
   ) {
     super()
-    Toaster.bind(this, toaster)
+    Toaster.bindTo(this, toaster)
   }
 
   async init() {

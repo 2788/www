@@ -1,9 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import autobind from 'autobind-decorator'
-import Store from 'qn-fe-core/store'
-import { injectable } from 'qn-fe-core/di'
-
-import Loadings from 'admin-base/common/stores/loadings'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { Loadings } from 'admin-base/common/loading'
 
 import NoticeApis, { INotice, INoticeWithId } from 'apis/product/notice'
 import PageApis, { IPage } from 'apis/product/page'
@@ -72,9 +70,8 @@ export default class NoticeStore extends Store {
     return this.fetchList()
   }
 
-  @autobind
-  init() {
-    return Promise.all([this.fetchPageList(), this.fetchList()])
+  async init() {
+    await Promise.all([this.fetchPageList(), this.fetchList()])
   }
 
   add(data: INotice) {

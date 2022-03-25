@@ -4,7 +4,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import FetchStore from 'stores/fetch'
+import { BaseClient } from 'admin-base/common/apis/base'
+
 import { apiMongo } from 'constants/api-prefix'
 
 export interface PropertyData {
@@ -34,30 +35,30 @@ const resourceName = 'www-consult-property'
 @injectable()
 export default class PropertyApis {
 
-  constructor(private fetchStore: FetchStore) { }
+  constructor(private client: BaseClient) { }
 
   add(options: PropertyData) {
     const now = moment().unix()
-    return this.fetchStore.postJSON(`${apiMongo}/${resourceName}`, {
+    return this.client.post<Property>(`${apiMongo}/${resourceName}`, {
       ...options,
       createTime: now,
       editTime: now
-    }) as Promise<Property>
+    })
   }
 
   update(id: string, options: Partial<PropertyData>) {
-    return this.fetchStore.patchJSON(`${apiMongo}/${resourceName}/${id}`, {
+    return this.client.patch<void>(`${apiMongo}/${resourceName}/${id}`, {
       ...options,
       editTime: moment().unix()
-    }) as Promise<void>
+    })
   }
 
   delete(id: string) {
-    return this.fetchStore.delete(`${apiMongo}/${resourceName}/${id}`) as Promise<void>
+    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`)
   }
 
   async list(query?: Record<string, unknown>) {
-    const res = await this.fetchStore.get(`${apiMongo}/${resourceName}`, {
+    const res: any = await this.client.get(`${apiMongo}/${resourceName}`, {
       query: JSON.stringify(query),
       sort: '-createTime'
     })

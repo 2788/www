@@ -1,17 +1,14 @@
 import React from 'react'
 import { action, observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { Tooltip, Icon, Modal, Button } from 'react-icecream'
-import Table, { PaginationConfig } from 'react-icecream/lib/table'
+import { Tooltip, Icon, Modal, Button } from 'react-icecream-1'
+import Table, { PaginationConfig } from 'react-icecream-1/lib/table'
 import autobind from 'autobind-decorator'
-
-import { injectable } from 'qn-fe-core/di'
-import Provider from 'qn-fe-core/di/Provider'
+import { Provider } from 'qn-fe-core/di'
 import { useLocalStore } from 'qn-fe-core/local-store'
-import Store from 'qn-fe-core/store'
-
-import ModalStore from 'admin-base/common/stores/modal'
-import ToasterStore from 'admin-base/common/stores/toaster'
+import Store, { observeInjectable as injectable } from 'qn-fe-core/store'
+import { ModalStore } from 'admin-base/common/utils/modal'
+import { ToasterStore } from 'admin-base/common/toaster'
 
 import { Spacer } from 'libs/layout-element'
 import Container from 'components/common/Container'
@@ -20,7 +17,7 @@ import ImgPreview from 'components/common/ImgPreview'
 import { EditorStatus } from 'constants/editor'
 import { IActivityWithId } from 'apis/homepage/activity'
 import { timeFormatter } from 'utils/time'
-import * as style from 'utils/style.m.less'
+import style from 'utils/style.m.less'
 
 import { labelMap } from './LabelInput'
 import ActivityStore from './store'
@@ -38,7 +35,7 @@ class LocalStore extends Store {
     public toasterStore: ToasterStore
   ) {
     super()
-    ToasterStore.bind(this, toasterStore)
+    ToasterStore.bindTo(this, toasterStore)
   }
   editorModal = new ModalStore<ExtraProps>()
   @observable.ref currentPage = 1
@@ -94,7 +91,7 @@ class LocalStore extends Store {
 const PageContent = observer(function _PageContent() {
   const store = useLocalStore(LocalStore)
   const activityStore = store.activityStore
-  const { list, isLoading } = activityStore
+  const { filteredList: list, isLoading } = activityStore
 
   const renderImg = (_: string, record: IActivityWithId) => <ImgPreview url={record.icon} />
   const renderOther = (_: string, record: IActivityWithId) => (
@@ -158,7 +155,7 @@ const PageContent = observer(function _PageContent() {
         <Table.Column title="更新时间" width={120} dataIndex="editTime" render={timeFormatter('YYYY-MM-DD')} sorter={sortEditTime} />
         <Table.Column title="操作" width={80} render={renderOperation} />
       </Table>
-      {store.editorModal.visible && <EditorModal {...store.editorModal.bind()} />}
+      {store.editorModal.visible && <EditorModal {...store.editorModal.bind() as any} />}
     </>
   )
 })
