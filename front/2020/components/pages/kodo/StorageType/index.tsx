@@ -28,7 +28,7 @@ export default function StorageType() {
           scene="设计应用、内容分享、热点对象"
           price="0.098"
           detailLink={priceUrl}
-          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计量：无']}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：实时访问', '最短存储时间：无', 'Object 最小计量：无', '数据取回费用：无']}
         />
         <Card
           title="低频访问存储"
@@ -36,7 +36,7 @@ export default function StorageType() {
           scene="网盘应用、政企数据备份、监控"
           price="0.06"
           detailLink={priceUrl}
-          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计量：64 KB']}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：实时访问', '最短存储时间：30 天', 'Object 最小计量：64 KB', '数据取回费用：按实际获取的数据量计费']}
         />
         <Card
           title="归档存储"
@@ -44,7 +44,7 @@ export default function StorageType() {
           scene="档案数据、医疗影像、科学资料"
           price="0.028"
           detailLink={priceUrl}
-          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：先解冻再访问', '最短存储时间：60 天', 'Object 最小计量：64 KB']}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：\n先解冻再访问（1 ~ 5 分钟）', '最短存储时间：60 天', 'Object 最小计量：64 KB', '数据取回费用：按实际解冻的数据量计费']}
         />
 
         <Card
@@ -53,7 +53,7 @@ export default function StorageType() {
           scene="合规数据冷归档、媒体资源超长留存"
           price="0.012"
           detailLink={priceUrl}
-          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：先解冻再访问', '最短存储时间：180 天', 'Object 最小计量：64 KB']}
+          sellPoints={['设计可靠性：99.999999999%（11 个 9）', '数据访问：\n先解冻再访问（5 ～ 12 小时）', '最短存储时间：180 天', 'Object 最小计量：64 KB', '数据取回费用：按实际解冻的数据量计费']}
         />
       </Row>
     </Section>
