@@ -1,0 +1,99 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  display: flex;
+  width: 100%;
+
+  .left {
+    flex: 1;
+    background: #fafafa;
+  }
+
+  .right {
+    flex: 1;
+    background: @grey-1;
+  }
+
+  .container {
+    flex: 0 0 @centered-content-width;
+    display: flex;
+    justify-content: space-between;
+
+    .mobile({
+      flex-basis: 100%;
+      flex-direction: column;
+      justify-content: initial;
+    });
+
+    .header {
+      padding-top: 40px;
+      font-size: 14px;
+      color: @grey-7;
+      background: #fafafa;
+      border-right: 1px solid #e5e5e5;
+
+      .mobile({
+        padding: 12px 2px; //和下面 a 标签的 padding 相加，实际为 padding: 20px 16px
+        border: unset;
+      });
+
+      li {
+        .ellipsis();
+        position: relative;
+        display: block;
+        min-width: 2em; // 最少两个字宽度
+        max-width: 12em; // 最多 12 个字宽度, TODO: 改为超出则 ...
+        line-height: 44px;
+        padding: 0 24px 0 16px;
+        text-align: start;
+        box-sizing: content-box;
+        transition: .2s;
+
+        .mobile({
+          display: inline-block;
+          line-height: 22px;
+          padding: 0;
+        });
+
+        .link {
+          display: inline-block;
+          width: 100%;
+
+          .mobile({
+            width: auto;
+            padding: 8px 14px;
+          });
+        }
+
+        .notMobile({
+          &:hover {
+            background-color: rgba(0, 170, 231, 0.05);
+          }
+
+          &.active {
+            background-color: rgba(0, 170, 231, 0.1);
+            color: @blue-6;
+          }
+
+          &:after {
+            content: " ";
+            position: absolute;
+            bottom: 0;
+            left: 0px;
+            width: 2px;
+            height: 100%;
+            margin: 0;
+          }
+  
+          &.active:after {
+            background-color: @blue-6;
+          }
+        });
+  
+        &.active {
+          color: @blue-6;
+        }        
+      }
+    }
+  }
+}

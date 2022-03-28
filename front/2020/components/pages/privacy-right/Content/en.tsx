@@ -1,7 +1,7 @@
 import React from 'react'
 import cls from 'classnames'
 
-import style from './style.less'
+import style from 'components/agreement/content.less'
 
 export default function Content() {
   return (
