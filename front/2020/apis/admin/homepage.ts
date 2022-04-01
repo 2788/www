@@ -4,13 +4,11 @@ import { mongoApiPrefix, getFilteredList, sortByOrder, handleResponseData } from
 import pcCloudProducts from './banners/pc/cloud-products.jpg'
 import pcNewUser from './banners/pc/new-user.jpg'
 import pcCps from './banners/pc/cps.jpg'
-import pcNewYear from './banners/pc/new-year.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
 import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
 import mobileCps from './banners/mobile/cps.jpg'
-import mobileNewYear from './banners/mobile/new-year.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
 
@@ -40,22 +38,6 @@ export type Banner = {
 export function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
   return Promise.resolve([
-    {
-      name: '新春采购季',
-      title: '2022 新春优惠季',
-      desc: '领 8080 元开工红包 CDN 流量低至 1 元',
-      pcImg: pcNewYear,
-      mobileImg: mobileNewYear,
-      effectedAt: 0,
-      invalidAt: 0,
-      createdAt: 0,
-      updatedAt: 0,
-      dark: true,
-      backgroundColor: '#F6902C',
-      href: 'https://marketing.qiniu.com/activity/2022-newyear-act?entry=www-index-banner-1',
-      order: 1,
-      buttonTexts: ['立即抢购']
-    },
     {
       name: '云存储',
       title: '云存储 Kodo 永久 0 元享用',
