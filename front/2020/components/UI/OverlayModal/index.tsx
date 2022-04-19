@@ -5,7 +5,7 @@ import { useOverlay } from 'components/Overlay'
 import IconClose from './image/close.svg'
 import style from './index.less'
 
-type Props = HTMLAttributes<HTMLElement> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   title: string
 }
 

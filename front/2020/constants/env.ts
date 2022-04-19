@@ -35,6 +35,9 @@ export const builtAt = parseInt(must('builtAt', process.env.NEXT_PUBLIC_BUILT_AT
 /** 是否忽略错误信息（产品价格页专用） */
 export const ignoreProductPriceError = must('ignoreProductPriceError', process.env.NEXT_PUBLIC_IGNORE_PRODUCT_PRICE_ERROR) === 'true'
 
+/** 内容站内链 Host */
+export const pgcContentMdEmbedHost = must('pgcContentMdEmbedHost', process.env.NEXT_PUBLIC_PGC_CONTENT_MD_EMBED_HOST)
+
 function must(name: string, variable?: string): string {
   if (variable == null) {
     throw new Error(`Invalid value for environment variable ${name}, you need to configure it in env file`)

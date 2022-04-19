@@ -12,7 +12,7 @@ export default function MpModal({ title }: ModalProps) {
   return (
     <div className={style.modal}>
       <div className={style.modalTitle}>{title}</div>
-      <div className={style.modalFooter} onClick={remove}>我知道了</div>
+      <div className={style.modalFooter} onClick={() => remove()}>我知道了</div>
     </div>
   )
 }

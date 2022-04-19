@@ -1,0 +1,79 @@
+/**
+ * @file video
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.main {
+  margin: 36px auto;
+
+  .mobile({
+    margin: 0 0 16px;
+  });
+}
+
+.header {
+  margin-bottom: 24px;
+
+  .mobile({
+    margin-top: 16px;
+  });
+}
+
+.desc {
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: #FAFAFA;
+
+  .mobile({
+    margin-bottom: 0;
+    padding: 0;
+    background: none;
+  });
+}
+
+.video {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #333;
+
+  &:hover {
+    opacity: .9;
+    cursor: pointer;
+  }
+
+  video {
+    max-width: 730px;
+    max-height: 410px;
+    background: #333;
+
+    .mobile({
+      max-width: 100%;
+      max-height: none;
+    });
+  }
+
+  .playIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -32px 0 0 -32px;
+    width: 64px;
+    height: 64px;
+
+    .mobile({
+      margin: -16px 0 0 -16px;
+      width: 32px;
+      height: 32px;
+    })
+  }
+}
+
+.embed {
+  display: block;
+  margin: 20px 0;
+}

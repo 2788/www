@@ -19,6 +19,7 @@ export type Props = HTMLAttributes<HTMLElement> & {
   target?: string
   htmlType?: ButtonHTMLAttributes<HTMLButtonElement>['type']
   disabled?: boolean
+  download?: any
 }
 
 const typeStyleMap = {
@@ -39,7 +40,7 @@ function disabledClickHandler(e: MouseEvent) {
 }
 
 export default function Button({
-  type, size, withBorder, className,
+  type, size, withBorder, className, download,
   htmlType, href, disabled, onClick, ...otherProps
 }: Props) {
 
@@ -75,6 +76,7 @@ export default function Button({
   return (
     <Link
       href={href}
+      download={download}
       {...otherProps}
       className={className}
       onClick={onClick}

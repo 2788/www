@@ -1,0 +1,50 @@
+/**
+ * @file render markdown
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ * @description modify from `components/Price/Tabs/DocumentPane/style.m.less` & to be merged
+ */
+
+@import "~utils/less/index.less";
+
+pgc-markdown-container {
+  display: block;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin: 20px 0 8px;
+  }
+
+  h1, h2, h3 {
+    font-size: 20px;
+  }
+
+  h4, h5, h6 {
+    font-size: 16px;
+  }
+
+  ul, ul li {
+    list-style: disc;
+    list-style-position: inside;
+  }
+
+  ol, ol li {
+    list-style: decimal;
+    list-style-position: inside;
+  }
+
+  img {
+    margin: 20px 0;
+    max-width: 730px;
+
+    .mobile({
+      max-width: 100%;
+      width: 100%;
+    })
+  }
+
+  a {
+    color: #00AAE7;
+  }
+
+  // TODO: 各类标签补充完整
+}

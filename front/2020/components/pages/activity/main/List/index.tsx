@@ -24,7 +24,7 @@ export function MyCard({ imgUrl, title, desc, startTime, endTime, id }: IActivit
         <p className={style.title}>{title}</p>
         <p className={style.desc}>{desc}</p>
         <p className={style.time}>{`活动时间：${startTime} 至 ${endTime}`}</p>
-        <Button className={style.btn} type="primary" withBorder href={`${urlMap[Activity.Detail]}?id=${id}`} target="_blank">查看详情</Button>
+        <Button className={style.btn} type="primary" withBorder href={`${urlMap[Activity.Detail]}/${id}`} target="_blank">查看详情</Button>
       </div>
     </div>
   )

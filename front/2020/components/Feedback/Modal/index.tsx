@@ -1,7 +1,7 @@
 import React, { createContext, useState, ReactNode, useContext, useCallback } from 'react'
 import { useGlobalModal } from 'hooks/scroll'
 import { track } from 'utils/sensors'
-import UIModal from 'components/UI/Modal'
+import { BaseModal } from 'components/UI/Modal'
 import DialogForm from '../Form'
 import IconClose from '../icons/close.svg'
 import style from './style.less'
@@ -56,12 +56,12 @@ export default function FeedbackModal() {
   }
 
   return (
-    <UIModal visible={visible} onMaskClick={hideModal} className={style.wrapper} modalClassName={style.modal}>
+    <BaseModal visible={visible} onCancel={hideModal} className={style.wrapper} modalClassName={style.modal}>
       <div title="关闭" className={style.closeBtn} onClick={hideModal}>
         <IconClose />
       </div>
       <DialogForm active={visible} intention={intention ?? undefined} />
-    </UIModal>
+    </BaseModal>
   )
 }
 

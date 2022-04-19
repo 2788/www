@@ -1,6 +1,0 @@
-{
-  "extends": "./build-config.json",
-  "envVariables": {
-    "process.env.WWW_HOST": "https://www-2020.qiniu.com"
-  }
-}

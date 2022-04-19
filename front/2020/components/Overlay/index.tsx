@@ -1,50 +1,57 @@
-import React, { createContext, PropsWithChildren, ReactNode, useCallback, useContext, useState } from 'react'
+import React, { createContext, PropsWithChildren, ReactElement, useCallback, useContext, useState, useMemo } from 'react'
 import { useGlobalModal } from 'hooks/scroll'
 import style from './index.less'
 
 export type OverlayContext = {
-  entry: ReactNode
-  add(entry: ReactNode, options?: { bgColor?: string }): () => void
-  remove(): void
+  entries: ReactElement[]
+  add(entry: ReactElement, options?: { bgColor?: string }): () => void
+  remove(entry?: ReactElement): void
 }
 
 export const OverlayContext = createContext<OverlayContext | null>(null)
 
 export function OverlayProvider({ children }: PropsWithChildren<{}>) {
-  const [entry, setEntry] = useState<ReactNode>(null)
-  const removeEntry = useCallback(() => {
-    setEntry(null)
-  }, [])
-  const addEntry = useCallback((_entry: ReactNode) => {
-    setEntry(previous => {
-      if (previous) {
-        throw Error('暂不支持多层 Overlay')
-      }
+  const [entries, setEntries] = useState<ReactElement[]>([])
 
-      return _entry
-    })
-    return removeEntry
+  const removeEntry = useCallback((entry?: ReactElement) => {
+    setEntries(list => (
+      entry
+      ? list.filter(item => item !== entry)
+      : list.slice(0, -1)
+    ))
+  }, [])
+
+  const addEntry = useCallback((entry: ReactElement) => {
+    setEntries(list => [...list, entry])
+    return () => { removeEntry(entry) }
   }, [removeEntry])
 
+  const value = useMemo(() => ({
+    entries,
+    add: addEntry,
+    remove: removeEntry
+  }), [entries, addEntry, removeEntry])
+
   return (
-    <OverlayContext.Provider value={{ entry, add: addEntry, remove: removeEntry }}>{children}</OverlayContext.Provider>
+    <OverlayContext.Provider value={value}>{children}</OverlayContext.Provider>
   )
 }
 
 export function OverlaySlot() {
   const context = useContext(OverlayContext)
-  useGlobalModal(!!(context && context.entry))
-  if (context == null) {
+  const hasEntry = context != null && context.entries.length > 0
+
+  useGlobalModal(hasEntry)
+
+  if (!hasEntry) {
     return null
   }
 
-  if (context.entry === null) {
-    return null
-  }
   return (
     <div className={style.wrapper}>
-      <div className={style.mask} onClick={() => context.remove()}></div>
-      <div className={style.modal}>{context.entry}</div>
+      <div className={style.mask} onClick={() => { context!.remove() }}></div>
+      {/* TODO: 优化成能显示多层 entry */}
+      <div className={style.modal}>{context!.entries.slice(-1)[0]}</div>
     </div>
   )
 }

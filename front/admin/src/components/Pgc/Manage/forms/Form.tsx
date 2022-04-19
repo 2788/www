@@ -43,7 +43,6 @@ function validatedValueToContentDetail(type: ContentType, value: ValidatedValue)
     ...value,
     category: value.category,
     userLimit: {
-      preview: [],
       view: type === ContentType.Video ? [value.userLimit!] : [],
       download: type === ContentType.File ? [value.userLimit!] : []
     }

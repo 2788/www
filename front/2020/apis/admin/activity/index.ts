@@ -98,7 +98,6 @@ export function getRegistrationInfo(registrationId: string): Promise<IRegistrati
 export interface IRegistrationOptions {
   userName: string
   phoneNumber: string
-  captcha: string
   email: string
   company: string
   marketActivityId: string
@@ -157,13 +156,4 @@ function formatTime(time: number): string {
 // 补 0
 function fillSpace(num: number): string {
   return num >= 10 ? num.toString() : '0' + num
-}
-
-// 获取验证码
-export function verifySms(phoneNumber: string): Promise<void> {
-  const opts = {
-    phone_number: phoneNumber,
-    operation: 1 //  1 代表活动报名
-  }
-  return post(wwwApiPrefix + '/verification/sms/send', opts)
 }

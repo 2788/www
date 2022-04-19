@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-export const wwwContentDetailUrlPrefix = 'https://www.qiniu.com/pgc/detail' // 后面跟 `/:id`
+export const wwwContentDetailUrlPrefix = 'pgc/detail' // 后面跟 `/:id`
 
 export const uploadBucketKeyPrefix = 'pgc/admin/content' // 后面跟 `/:timestamp/:file-name-with-suffix`
 
@@ -67,7 +67,6 @@ export const userLimitTypeTextMap = {
 } as const
 
 export interface UserLimit {
-  preview: UserLimitType[] // TODO: 预览
   view: UserLimitType[] // 网站上看完整内容
   download: UserLimitType[] // 下载
 }

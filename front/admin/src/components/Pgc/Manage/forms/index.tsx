@@ -3,21 +3,30 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { observer } from 'mobx-react'
 import { Modal, ModalFooter, Loading } from 'react-icecream'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
 import { ContentId, ContentType, ContentDetail, Content } from 'constants/pgc/conetnt'
+import { getWwwContentDetailPreviewUrl, getEditPageUrl } from 'transforms/pgc/content'
 import PgcContentApis from 'apis/pgc/content'
 
-import ArticlePreview from '../previews/Article'
-import VideoPreview from '../previews/Video'
-import FilePreview from '../previews/File'
 import Form from './Form'
 
 import style from './style.m.less'
+
+const msgKey = 'QINIU_PGC_CONTENT_DETAIL_PREVIEW'
+
+interface WwwPreview {
+  type: ContentType
+  contentDetail: ContentDetail
+  createdAt?: number
+  editPagePrefix: string
+}
+
+const wwwCenteredContentWidth = 1180
 
 interface PreviewProps {
   type: ContentType
@@ -28,15 +37,46 @@ interface PreviewProps {
 
 function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
   const toasterStore = useInjection(ToasterStore)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    function receiveMessage(event: MessageEvent) {
+      if (event.origin === window.location.origin) {
+        return
+      }
+
+      const { hostname } = new URL(event.origin)
+      if (
+        ![
+          /\.qiniu\.com$/,
+          /\.qiniu\.io$/,
+          /^localhost$/
+        ].some(pattern => pattern.test(hostname))
+      ) {
+        return
+      }
+
+      if (event.data === `[${msgKey}] READY`) {
+        const data: WwwPreview = {
+          type,
+          contentDetail: contentDetail!,
+          editPagePrefix: `${window.location.origin}${getEditPageUrl('')}`
+        }
+
+        iframeRef.current!.contentWindow!.postMessage(JSON.stringify({ [msgKey]: data }), '*')
+      }
+    }
+
+    window.addEventListener('message', receiveMessage, false)
+    return () => {
+      window.removeEventListener('message', receiveMessage, false)
+    }
+  }, [type, contentDetail])
 
   const previewContentView = contentDetail && (
     <div className={style.previewPageContainer}>
       <div className={style.previewPage}>
-        {{
-          [ContentType.Article]: (<ArticlePreview contentDetail={contentDetail} />),
-          [ContentType.Video]: (<VideoPreview contentDetail={contentDetail} />),
-          [ContentType.File]: (<FilePreview contentDetail={contentDetail} />)
-        }[type]}
+        <iframe src={getWwwContentDetailPreviewUrl()} ref={iframeRef}></iframe>
       </div>
     </div>
   )
@@ -56,7 +96,7 @@ function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
   return (
     <Modal
       title="预览"
-      width={768 + 24 * 2} // @icecream-gap-lg
+      width={wwwCenteredContentWidth + 100 + 24 * 2} // @icecream-gap-lg = 24
       visible={!!contentDetail}
       onOk={handleRelease}
       onCancel={() => { onClose() }}

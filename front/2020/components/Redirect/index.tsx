@@ -14,10 +14,11 @@ import { checkInSite } from 'utils/route'
 
 export type Props = {
   target: string
+  keepQuery?: boolean
 }
 
 export default function Redirect(props: Props) {
-  const { target } = props
+  const { target, keepQuery = true } = props
   const [hash] = useHash()
   const router = useRouter()
 
@@ -38,10 +39,10 @@ export default function Redirect(props: Props) {
 
     replace({
       pathname,
-      query: { ...query, ...targetQuery },
+      query: { ...(keepQuery && query), ...targetQuery },
       hash
     })
-  }, [target, router, hash])
+  }, [target, router, hash, keepQuery])
 
   return null
 }

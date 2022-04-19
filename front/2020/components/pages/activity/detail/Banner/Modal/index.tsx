@@ -6,6 +6,7 @@ import { Modal } from 'react-icecream'
 import { PopupContainerProvider } from 'react-icecream-2'
 import { useFormstateX, Form, FormItem, TextInput, Select, SelectOption, Checkbox } from 'react-icecream-2/esm/form-x'
 
+import { verifySms, VerificationSmsOperation } from 'apis/admin/verification'
 import { createRegistration as doSubmit, IRegistrationOptions, ISession } from 'apis/admin/activity'
 import { track as sensorsTrack } from 'utils/sensors'
 import { ApiException } from 'utils/fetch'
@@ -15,7 +16,7 @@ import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import OverlayModal from 'components/UI/OverlayModal'
 
-import PhoneInfoInput, * as phoneInfoInput from './PhoneInfoInput'
+import PhoneInfoInput, * as phoneInfoInput from 'components/PhoneInfoInput'
 import LocationInput, * as locationInput from './LocationInput'
 import { validateTextRequired, validateSelectorRequired, validateEmail } from './validators'
 import { hasCode } from './utils'
@@ -74,11 +75,11 @@ export default observer(function MyModal({ marketActivityId, sessions }: Props) 
     setStatus(Status.Submitting)
     try {
       const { location, phoneInfo, ...rest } = value
+      await verifySms(phoneInfo.captcha, phoneInfo.phoneNumber, VerificationSmsOperation.ApplyActivity)
       const opts = {
         ...rest,
         location: `${location.province}/${location.city}`,
         phoneNumber: phoneInfo.phoneNumber,
-        captcha: phoneInfo.captcha,
         marketActivityId
       } as IRegistrationOptions
       await doSubmit(opts)
@@ -122,7 +123,7 @@ export default observer(function MyModal({ marketActivityId, sessions }: Props) 
           <FormItem label="姓名" required>
             <TextInput inputProps={{ name: 'userName' }} placeholder="请填写姓名" state={fields.userName} className={style.itemContent} />
           </FormItem>
-          <PhoneInfoInput state={fields.phoneInfo} />
+          <PhoneInfoInput state={fields.phoneInfo} operation={VerificationSmsOperation.ApplyActivity} />
           <FormItem label="邮箱" required>
             <TextInput inputProps={{ name: 'email' }} placeholder="请填写邮箱" state={fields.email} className={style.itemContent} />
           </FormItem>
@@ -281,9 +282,11 @@ function getErrorMessage(code: number) {
       return '电话号码不合法'
     case 400010:
       return '市场活动场次 ID 不合法'
-    case 400011:
+    case 400011: // 验证码过期
     case 400012:
       return '验证码不正确'
+    case 400013:
+      return '生成验证码太频繁'
     default:
       return '未知错误'
   }

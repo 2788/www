@@ -4,7 +4,7 @@
  */
 
 // 官网站点 Host
-export const wwwHost = must('host', process.env.WWW_HOST)
+export const wwwHost = must('wwwHost', process.env.WWW_HOST)
 
 function must(name: string, variable?: string): string {
   if (variable === undefined) {

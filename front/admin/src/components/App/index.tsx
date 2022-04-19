@@ -35,9 +35,9 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
         <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
         <LinkItem relative to={activityRoute}>{activityTitle}</LinkItem>
       </Group>
-      {/* TODO: <Group title={pgcTitle} path={pgcRoute}>
+      <Group title={pgcTitle} path={pgcRoute}>
         <LinkItem relative to={pgcManageRoute}>{pgcManageTitle}</LinkItem>
-      </Group> */}
+      </Group>
       <UserSidebarGroup prefix={accountRoute} />
     </BaseSidebar>
   )

@@ -76,7 +76,8 @@ function hasOwnProp(target: any, key: string) {
  */
 export function useQuery() {
   const router = useRouter()
-  const querystring = router.asPath.split('?')[1] || ''
+  const querystringWithHash = router.asPath.split('?')[1] || ''
+  const querystring = querystringWithHash.split('#')[0]
   const [query, setQuery] = useState<ParsedQuery>({})
 
   useEffect(() => {

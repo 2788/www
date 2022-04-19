@@ -5511,6 +5511,16 @@ query-string@^6.13.7:
     split-on-first "^1.0.0"
     strict-uri-encode "^2.0.0"
 
+query-string@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.1.1.tgz#754620669db978625a90f635f12617c271a088e1"
+  integrity sha512-MplouLRDHBZSG9z7fpuAAcI7aAYjDLhtsiVZsevsfaHWDS2IDdORKbSd1kWUA+V4zyva/HZoSfpwnYMMQDhb0w==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    filter-obj "^1.1.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
@@ -7455,10 +7465,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-vditor@^3.8.12:
-  version "3.8.12"
-  resolved "https://registry.yarnpkg.com/vditor/-/vditor-3.8.12.tgz#1df354eba83939438969a48748ad5be3670cae6c"
-  integrity sha512-bpYubNGA5PcWSsOOKK6rXYOSU1Wy6plmhwdWB9oXy8D714hj6vcVtJjE/8x8+aZOyX45Rxa+a72h5xOU0SdfFg==
+vditor@^3.8.13:
+  version "3.8.13"
+  resolved "https://registry.yarnpkg.com/vditor/-/vditor-3.8.13.tgz#9f4a549fd559e14fe65cc188ceadba61051db57c"
+  integrity sha512-vp6OF1n9wIduKtLvvTYtn+7Gr1Az6MqDIEBpLzik+PTQ208YjrcQ+Ba4AHXMMvJgDtbYP3PdY8OixWKecFzo2A==
   dependencies:
     diff-match-patch "^1.0.5"
 

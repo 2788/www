@@ -8,6 +8,8 @@ import React, { useState, useCallback, useRef } from 'react'
 import IcecreamBaseDialog from 'react-icecream-2/lib/Dialog'
 import * as icecreamDialog from 'react-icecream-2/lib/Dialog'
 
+import style from './style.less'
+
 export * from 'react-icecream-2/lib/Dialog'
 export { default } from 'react-icecream-2/lib/Dialog'
 
@@ -60,6 +62,7 @@ export function useDialog(IcecreamDialog: DialogType) {
         visible={visible}
         onOk={resolveRef.current}
         onCancel={rejectRef.current}
+        className={style.dialog}
       />
     )
   }, [IcecreamDialog, visible, shownDialogProps])

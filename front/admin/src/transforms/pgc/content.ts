@@ -5,8 +5,11 @@
 
 import moment from 'moment'
 
+import { wwwHost } from 'constants/env'
 import { pgcRoute, pgcManageRoute, pgcManageAddRoute, pgcManageEditRoute } from 'constants/route'
-import { wwwContentDetailUrlPrefix, uploadBucketKeyPrefix, ContentId, ContentType, Content } from 'constants/pgc/conetnt'
+import {
+  wwwContentDetailUrlPrefix, uploadBucketKeyPrefix, ContentId, ContentType, Content
+} from 'constants/pgc/conetnt'
 
 export function getListPageUrl(): string {
   return `${pgcRoute}${pgcManageRoute}`
@@ -20,20 +23,16 @@ export function getEditPageUrl(id: ContentId): string {
   return `${pgcRoute}${pgcManageRoute}${pgcManageEditRoute}?id=${id}`
 }
 
-export function isWwwContentDetailUrl(url: string): boolean {
-  return url.trim().indexOf(`${wwwContentDetailUrlPrefix}/`) === 0
-}
-
-export function getContentIdFromWwwContentDetailUrl(url: string): string {
-  return url.trim().replace(`${wwwContentDetailUrlPrefix}/`, '').replace(/[/?#].*/, '')
-}
-
 export function getWwwContentDetailUrl(id: ContentId): string {
-  return `${wwwContentDetailUrlPrefix}/${id}`
+  return `${wwwHost}/${wwwContentDetailUrlPrefix}/${id}`
 }
 
 export function getWwwContentDetailEmbedMarkdown(id: ContentId): string {
   return `\n----\n${getWwwContentDetailUrl(id)}\n\n---\n` // 针对 vditor 解析规则优化 FIXME: 插在第一行还是会有点奇怪…
+}
+
+export function getWwwContentDetailPreviewUrl(): string {
+  return `${wwwHost}/${wwwContentDetailUrlPrefix}/preview`
 }
 
 export function generateUploadBucketKey(fileName: string): string {

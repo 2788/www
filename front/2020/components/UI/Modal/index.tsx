@@ -4,19 +4,20 @@
  */
 
 import cls from 'classnames'
-import React, { PropsWithChildren, useEffect, useState } from 'react'
+import React, { PropsWithChildren, useEffect, useState, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 
+import CloseIcon from './close.svg'
 import style from './style.less'
 
-export type Props = PropsWithChildren<{
+export type BaseModalProps = PropsWithChildren<{
   className?: string
   modalClassName?: string
   visible: boolean
-  onMaskClick: () => void
+  onCancel: () => void
 }>
 
-export default function Modal({ className, modalClassName, visible, onMaskClick, children }: Props) {
+export function BaseModal({ className, modalClassName, visible, onCancel, children }: BaseModalProps) {
   const [wrapper, setWrapper] = useState<HTMLDivElement | undefined>()
 
   useEffect(() => {
@@ -35,9 +36,47 @@ export default function Modal({ className, modalClassName, visible, onMaskClick,
 
   return createPortal(
     <div className={cls(style.wrapper, !visible && style.hidden, className)}>
-      <div className={style.mask} onClick={onMaskClick}></div>
+      <div className={style.mask} onClick={() => { onCancel() }}></div>
       <div className={cls(style.modal, modalClassName)}>{children}</div>
     </div>,
     wrapper
+  )
+}
+
+export interface ModalHeaderProps {
+  title: string
+  onClose(): void
+  className?: string
+}
+
+export function ModalHeader(props: ModalHeaderProps) {
+  return (
+    <header className={cls(style.header, props.className)}>
+      {props.title}
+      <div className={style.closeBtn} onClick={() => { props.onClose() }}>
+        <CloseIcon className={style.closeIcon} />
+      </div>
+    </header>
+  )
+}
+
+export interface ModalWithHeaderProps extends BaseModalProps {
+  header: ReactNode
+}
+
+export function ModalWithHeader({ header, children, onCancel, modalClassName, ...baseProps }: ModalWithHeaderProps) {
+  return (
+    <BaseModal
+      {...baseProps}
+      modalClassName={cls(style.modalWithHeader, modalClassName)}
+      onCancel={onCancel}
+    >
+      {
+        typeof header === 'string'
+        ? (<ModalHeader title={header} onClose={onCancel} />)
+        : header
+      }
+      <div className={style.body}>{children}</div>
+    </BaseModal>
   )
 }

@@ -4,7 +4,7 @@
 
 import React, { PropsWithChildren, useState, useCallback } from 'react'
 
-import Modal from 'components/UI/Modal'
+import { BaseModal } from 'components/UI/Modal'
 import { useMobile } from 'hooks/ua'
 import Form from '../Form'
 import { useMustContext as useRobotCtx } from '../../utils'
@@ -66,11 +66,11 @@ export function FormModal({ visible, consult, onClose }: FormModalProps) {
   }, [onClose, sendInput])
 
   return (
-    <Modal visible={visible} onMaskClick={onClose} className={style.modalWrapper} modalClassName={style.modal}>
+    <BaseModal visible={visible} onCancel={onClose} className={style.modalWrapper} modalClassName={style.modal}>
       {headerView}
       <section className={style.body}>
         <Form consult={consult} onSubmit={handleSubmit} onCancel={onClose} />
       </section>
-    </Modal>
+    </BaseModal>
   )
 }

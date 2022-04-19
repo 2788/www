@@ -1,0 +1,61 @@
+/**
+ * @file base layout
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.layout {
+  .centered();
+
+  .mobile({
+    padding: 0 16px;
+  });
+}
+
+.title {
+  font-size: 32px;
+  color: #333;
+
+  .mobile({
+    font-size: 20px;
+  });
+}
+
+.meta {
+  display: flex;
+  margin-top: 8px;
+  color: #999;
+
+  dt {
+    font-weight: 400;
+  }
+
+  dd + dt {
+    margin-left: 32px;
+
+    .mobile({
+      margin-left: 16px;
+    });
+  }
+}
+
+// TODO: Parallax Scrolling Effect
+.hasBackground {
+  position: relative;
+  height: 460px;
+
+  .header {
+    .centered();
+    padding-top: 320px;
+  }
+
+  .title,
+  .meta {
+    color: #FFF;
+  }
+
+  .meta {
+    margin-top: 24px;
+  }
+}

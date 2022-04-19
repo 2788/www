@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetStaticPropsType, GetStaticPropsContext } from 'next'
 
 import { pageSize } from 'constants/activity'
 import { getActivities } from 'apis/admin/activity'
@@ -26,8 +26,8 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }: { params: { page: string } }) {
-  const currentPage = Number(params.page)
+export async function getStaticProps({ params }: GetStaticPropsContext<{ page: string }>) {
+  const currentPage = Number(params!.page)
   const res = await getActivities({ page: currentPage, pageSize })
   return {
     props: {
