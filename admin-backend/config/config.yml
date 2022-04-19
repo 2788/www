@@ -113,6 +113,10 @@ qconf:
   lc_chan_bufsize: 16000
   mc_rw_timeout_ms: 100
 
+audit_log:
+  log_dir: ./log
+  chunk_bits: 29
+
 puck:
   api_prefix: /api/proxy
   service:

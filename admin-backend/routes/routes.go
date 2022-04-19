@@ -23,9 +23,11 @@ func InitCustomRoutes(r *gin.Engine, conf *config.Config) error {
 
 	wwwGroup := r.Group("/api/www")
 	{
+		// 活动报名接口并未做手机号上次验证时间检查，业务上可以接受通过直接请求活动报名接口跳过手机号验证
 		wwwGroup.POST("/activity-registration", activCtl.ActivityRegistration)
 		wwwGroup.POST("/activity-checkin", activCtl.CheckIn)
 		wwwGroup.POST("/consult/text-process", consultCtl.TextProcess)
+		wwwGroup.POST("/verification/sms/verify", verificationCtl.VerifySMS)
 		wwwGroup.POST("/verification/sms/send",
 			middlewares.IPBasedRateLimiter(conf.RedisHosts, 5, 1*time.Minute),
 			verificationCtl.SendSMS)

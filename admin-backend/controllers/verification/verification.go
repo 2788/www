@@ -81,8 +81,8 @@ func (v *Verification) SendSMS(c *gin.Context) {
 		return
 	}
 
-	// 查看手机号是否达到请求限制，相同手机号一分钟只允许请求 1 次
-	key := v.getCounterKey(input.PhoneNumber)
+	// 查看手机号是否达到请求限制，相同手机号相同操作一分钟只允许请求 1 次
+	key := getCounterKey(input.PhoneNumber, input.Operation)
 	redisCounter := v.counterService.Create(key, limit, limitInterval*time.Second)
 	if redisCounter.IsLimitReached() {
 		logger.Errorf("key(%s) reached the limit(%d)", key, limit)
@@ -90,9 +90,10 @@ func (v *Verification) SendSMS(c *gin.Context) {
 		return
 	}
 
-	captcha, err := v.smsVerificationService.GenerateCaptcha(logger, input.PhoneNumber)
+	captchaKey := getCaptchaKey(input.PhoneNumber, input.Operation)
+	captcha, err := v.smsVerificationService.GenerateCaptcha(logger, captchaKey)
 	if err != nil {
-		logger.Errorf("GenerateCaptcha(%s) error: %v", input.PhoneNumber, err)
+		logger.Errorf("GenerateCaptcha(%s) error: %v", captchaKey, err)
 		if err == verification.GenCaptchaTooFrequentlyErr {
 			controllers.SendResponse(c, codes.GenCaptchaTooFrequently, nil)
 			return
@@ -103,7 +104,7 @@ func (v *Verification) SendSMS(c *gin.Context) {
 
 	data := map[string]interface{}{
 		"Captcha": captcha,
-		"Time":    controllers.SMSVerificationConfig.CaptchaExpirationInterval / 60,
+		"Time":    controllers.SMSVerificationConfig.CaptchaExpirationInterval,
 	}
 	in := morse.SendSmsIn{
 		PhoneNumber: input.PhoneNumber,
@@ -120,6 +121,62 @@ func (v *Verification) SendSMS(c *gin.Context) {
 	controllers.SendResponse(c, codes.OK, nil)
 }
 
-func (v *Verification) getCounterKey(key string) string {
-	return fmt.Sprintf("%s:verification:%s", utils.RedisKeyPrefix, key)
+func getCounterKey(key string, typ operationType) string {
+	return fmt.Sprintf("%s:verification:%s:%s", utils.RedisKeyPrefix, key, typ.String())
+}
+
+type verifySMSInput struct {
+	Captcha     string        `json:"captcha"`
+	PhoneNumber string        `json:"phone_number"`
+	Operation   operationType `json:"operation"`
+}
+
+func (i verifySMSInput) valid() bool {
+	if !utils.MobilePhonePattern.MatchString(i.PhoneNumber) {
+		return false
+	}
+	if !i.Operation.Valid() {
+		return false
+	}
+
+	return true
+}
+
+func (v *Verification) VerifySMS(c *gin.Context) {
+	logger := xlog.NewWithReq(c.Request)
+
+	var input verifySMSInput
+	err := c.BindJSON(&input)
+	if err != nil {
+		logger.Errorf("get input failed: %v", err)
+		controllers.SendResponse(c, codes.InvalidArgs, nil)
+		return
+	}
+	if !input.valid() {
+		logger.Errorf("input(%+v) is invalid", input)
+		controllers.SendResponse(c, codes.InvalidArgs, nil)
+		return
+	}
+
+	captchaKey := getCaptchaKey(input.PhoneNumber, input.Operation)
+	if ok, err := v.smsVerificationService.VerifyCaptcha(logger, input.Captcha, captchaKey); !ok {
+		switch err {
+		case verification.CaptchaExpiredErr:
+			controllers.SendResponse(c, codes.CaptchaExpired, nil)
+			return
+		case verification.CaptchaIncorrectErr:
+			controllers.SendResponse(c, codes.CaptchaIncorrect, nil)
+			return
+		default:
+			controllers.SendResponse(c, codes.ResultError, nil)
+			return
+		}
+	}
+
+	controllers.SendResponse(c, codes.OK, nil)
+	return
+}
+
+func getCaptchaKey(key string, typ operationType) string {
+	return fmt.Sprintf("%s:%s", key, typ.String())
 }

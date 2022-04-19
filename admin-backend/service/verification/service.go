@@ -19,7 +19,7 @@ type Service interface {
 type Config struct {
 	CaptchaChars              []byte
 	CaptchaLength             int
-	CaptchaExpirationInterval int // 验证码过期时间间隔，单位：秒
+	CaptchaExpirationInterval int // 验证码过期时间间隔，单位：分钟
 	CaptchaLimit              int // 针对同一个 key 生成验证码的次数限制
 	CaptchaLimitInterval      int // 在一段时间内限制对同一个 key 生成验证码的次数，单位：秒
 }
@@ -44,7 +44,7 @@ func (s *service) GenerateCaptcha(logger *xlog.Logger, key string) (captcha stri
 		return "", GenCaptchaTooFrequentlyErr
 	}
 	captcha = verifycode.NewLenChars(s.config.CaptchaLength, s.config.CaptchaChars)
-	s.store.Set(s.getCaptchaKey(key), captcha, s.config.CaptchaExpirationInterval)
+	s.store.Set(s.getCaptchaKey(key), captcha, s.config.CaptchaExpirationInterval*60)
 	return
 }
 

@@ -19,6 +19,14 @@ func main() {
 	r, err := app.InitEngine(conf.Mode, &conf.Config)
 	Must(err)
 
+	// 记录审计
+	if conf.AuditLog.LogFile != "" {
+		auditLogger, err := app.GetAuditLogger(&conf.Config, "WWW-ADMIN-BACKEND")
+		Must(err)
+		defer auditLogger.Close()
+		r.Use(auditLogger.Handler)
+	}
+
 	err = r.InitDBAndData("config/init_data.json")
 	Must(err)
 

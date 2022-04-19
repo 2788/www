@@ -1,6 +1,6 @@
 module qiniu.com/www/admin-backend
 
-go 1.13
+go 1.17
 
 require (
 	github.com/gin-gonic/gin v1.6.3
@@ -12,19 +12,114 @@ require (
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	gopkg.in/yaml.v2 v2.4.0
 	qbox.us/api/message v0.0.0
-	qbox.us/api/message/code v0.0.0 // indirect
-	qbox.us/rpc v0.0.0 // indirect
 	qbox.us/verifycode v0.0.0
-	qiniu.com/rmb-web/admin-backend v0.0.11
+	qiniu.com/rmb-web/admin-backend v0.0.12
 	qiniu.com/rmb-web/admin-backend/mongo-api v0.0.2
-	qiniu.com/rmb-web/puck/v3 v3.3.0
+	qiniu.com/rmb-web/puck/v3 v3.3.3
 )
 
-replace qiniu.com/rmb-web/admin-backend v0.0.11 => github.com/qbox/rmb-web/admin-backend v0.0.11
+require (
+	code.google.com/p/go.net/context v0.0.0 // indirect
+	github.com/bradfitz/gomemcache v0.0.0-20190913173617-a41fca850d0b // indirect
+	github.com/facebookgo/clock v0.0.0 // indirect
+	github.com/facebookgo/httpdown v0.0.0 // indirect
+	github.com/facebookgo/stats v0.0.0 // indirect
+	github.com/fsnotify/fsnotify v1.4.9 // indirect
+	github.com/gin-contrib/pprof v1.2.1 // indirect
+	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/go-playground/locales v0.13.0 // indirect
+	github.com/go-playground/universal-translator v0.17.0 // indirect
+	github.com/go-playground/validator/v10 v10.2.0 // indirect
+	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
+	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/json-iterator/go v1.1.9 // indirect
+	github.com/kavu/go_reuseport v0.0.0 // indirect
+	github.com/leodido/go-urn v1.2.0 // indirect
+	github.com/magiconair/properties v1.8.0 // indirect
+	github.com/mattn/go-isatty v0.0.12 // indirect
+	github.com/mitchellh/mapstructure v1.1.2 // indirect
+	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
+	github.com/modern-go/reflect2 v1.0.1 // indirect
+	github.com/mojocn/base64Captcha v1.3.1 // indirect
+	github.com/pelletier/go-toml v1.2.0 // indirect
+	github.com/qiniu/api/auth/digest v0.0.0 // indirect
+	github.com/qiniu/api/conf v0.0.0 // indirect
+	github.com/qiniu/bytes v0.0.0 // indirect
+	github.com/qiniu/bytes/seekable v0.0.0 // indirect
+	github.com/qiniu/errors v0.0.0 // indirect
+	github.com/qiniu/http/audit/jsonlog v0.0.0 // indirect
+	github.com/qiniu/http/audit/proto v0.0.0 // indirect
+	github.com/qiniu/http/formutil.v1 v0.0.0 // indirect
+	github.com/qiniu/http/httputil.v1 v0.0.0 // indirect
+	github.com/qiniu/http/misc/pool v0.0.0 // indirect
+	github.com/qiniu/http/misc/strconv v0.0.0 // indirect
+	github.com/qiniu/http/misc/types v0.0.0 // indirect
+	github.com/qiniu/http/servestk.v1 v0.0.0 // indirect
+	github.com/qiniu/http/supervisor v0.0.0 // indirect
+	github.com/qiniu/io v0.0.0 // indirect
+	github.com/qiniu/io/crc32util v0.0.0 // indirect
+	github.com/qiniu/largefile v0.0.0 // indirect
+	github.com/qiniu/largefile/log v0.0.0 // indirect
+	github.com/qiniu/log.v1 v0.0.0 // indirect
+	github.com/qiniu/rpc.v1/brpc/lb.v2.1 v0.0.0 // indirect
+	github.com/qiniu/rpc.v1/lb.v2.1/transport v0.0.0 // indirect
+	github.com/spf13/afero v1.1.2 // indirect
+	github.com/spf13/cast v1.3.0 // indirect
+	github.com/spf13/jwalterweatherman v1.0.0 // indirect
+	github.com/spf13/pflag v1.0.3 // indirect
+	github.com/spf13/viper v1.4.0 // indirect
+	github.com/teapots/inject v0.0.0 // indirect
+	github.com/teapots/teapot v0.0.0 // indirect
+	github.com/ugorji/go/codec v1.1.7 // indirect
+	github.com/vanackere/asn1-ber v0.0.0-20140915131724-295c7b21db5d // indirect
+	github.com/vanackere/ldap v0.0.0-20140915131551-e29b797d1abd // indirect
+	golang.org/x/image v0.0.0-20190501045829-6d32002ffd75 // indirect
+	golang.org/x/sys v0.0.0-20200519105757-fe76b779f299 // indirect
+	golang.org/x/text v0.3.2 // indirect
+	google.golang.org/protobuf v1.23.0 // indirect
+	gopkg.in/bsm/ratelimit.v1 v1.0.0-20160220154919-db14e161995a // indirect
+	labix.org/v2/mgo/bson v0.0.0 // indirect
+	qbox.us/account-api v0.0.0 // indirect
+	qbox.us/admin_api/account.v2 v0.0.0 // indirect
+	qbox.us/api v0.0.0 // indirect
+	qbox.us/api/account v0.0.0 // indirect
+	qbox.us/api/account.v2 v0.0.0 // indirect
+	qbox.us/api/message/code v0.0.0 // indirect
+	qbox.us/api/message/enum v0.0.0 // indirect
+	qbox.us/api/one/access v0.0.0 // indirect
+	qbox.us/api/qconf/akg v0.0.0 // indirect
+	qbox.us/api/qconf/uidg v0.0.0 // indirect
+	qbox.us/biz/component/providers/account/auth v0.0.0 // indirect
+	qbox.us/biz/services.v2/account v0.0.0 // indirect
+	qbox.us/biz/utils.v2/log v0.0.0 // indirect
+	qbox.us/cc v0.0.0 // indirect
+	qbox.us/cc/time v0.0.0 // indirect
+	qbox.us/errors v0.0.0 // indirect
+	qbox.us/http/audit/jsonlog.v3 v0.0.0 // indirect
+	qbox.us/limit v0.0.0 // indirect
+	qbox.us/limit/keycount v0.0.0 // indirect
+	qbox.us/oauth v0.0.0 // indirect
+	qbox.us/qconf/qconfapi v0.0.0 // indirect
+	qbox.us/ratelimit v0.0.0 // indirect
+	qbox.us/servend/account v0.0.0 // indirect
+	qbox.us/servend/oauth v0.0.0 // indirect
+	qbox.us/servend/proxy_auth v0.0.0 // indirect
+	qiniu.com/auth/account.v1 v0.0.0 // indirect
+	qiniu.com/auth/authutil.v1 v0.0.0 // indirect
+	qiniu.com/auth/proto.v1 v0.0.0 // indirect
+	qiniu.com/auth/qboxmac.v1 v0.0.0 // indirect
+	qiniu.com/auth/qiniumac.v1 v0.0.0 // indirect
+	qiniu.com/auth/signer.v1 v0.0.0 // indirect
+)
+
+replace qiniu.com/rmb-web/admin-backend v0.0.12 => github.com/qbox/rmb-web/admin-backend v0.0.12
 
 replace qiniu.com/rmb-web/admin-backend/mongo-api v0.0.2 => github.com/qbox/rmb-web/admin-backend/pkg/mongo-api v0.0.2
 
-replace qiniu.com/rmb-web/puck/v3 v3.3.0 => github.com/qbox/rmb-web/puck/v3 v3.3.0
+replace qiniu.com/rmb-web/puck/v3 v3.3.3 => github.com/qbox/rmb-web/puck/v3 v3.3.3
 
 replace code.google.com/p/go.net/context v0.0.0 => ../../base/com/src/code.google.com/p/go.net/context
 
@@ -67,6 +162,8 @@ replace qbox.us/mockacc v0.0.0 => ../../base/biz/src/qbox.us/mockacc
 replace qbox.us/api/message v0.0.0 => ../../base/biz/src/qbox.us/api/message
 
 replace qbox.us/api/message/code v0.0.0 => ../../base/biz/src/qbox.us/api/message/code
+
+replace qbox.us/api/message/enum v0.0.0 => ../../base/biz/src/qbox.us/api/message/enum
 
 replace qbox.us/servend/account v0.0.0 => ../../base/biz/src/qbox.us/servend/account
 
@@ -171,3 +268,21 @@ replace labix.org/v2/mgo v0.0.0 => ../../base/com/src/labix.org/v2/mgo
 replace qbox.us/biz/component/providers/account/auth v0.0.0 => ../../base/portal/src/qbox.us/biz/component/providers/account/auth
 
 replace qbox.us/verifycode v0.0.0 => ../../base/com/src/qbox.us/verifycode
+
+replace github.com/qiniu/largefile/log v0.0.0 => ../../base/qiniu/src/github.com/qiniu/largefile/log
+
+replace github.com/qiniu/largefile v0.0.0 => ../../base/qiniu/src/github.com/qiniu/largefile
+
+replace github.com/qiniu/http/audit/jsonlog v0.0.0 => ../../base/qiniu/src/github.com/qiniu/http/audit/jsonlog
+
+replace qbox.us/http/audit/jsonlog.v3 v0.0.0 => ../../base/biz/src/qbox.us/http/audit/jsonlog.v3
+
+replace github.com/qiniu/http/supervisor v0.0.0 => ../../base/qiniu/src/github.com/qiniu/http/supervisor
+
+replace github.com/qiniu/http/audit/proto v0.0.0 => ../../base/qiniu/src/github.com/qiniu/http/audit/proto
+
+replace github.com/qiniu/http/servestk.v1 v0.0.0 => ../../base/qiniu/src/github.com/qiniu/http/servestk.v1
+
+replace github.com/qiniu/http/misc/pool v0.0.0 => ../../base/qiniu/src/github.com/qiniu/http/misc/pool
+
+replace qbox.us/admin_api/v2/account v0.0.0 => ../../base/biz/src/qbox.us/admin_api/v2/account
