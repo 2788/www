@@ -94,7 +94,9 @@ export default function File({ contentDetail, preview, createdAt }: BaseProps) {
         <div className={style.card}>
           <PosterImage contentDetail={contentDetail} />
           <div className={style.summary}>
-            <p className={style.desc}>{contentDetail.description}</p>
+            {contentDetail.description && (
+              <p className={style.desc}>{contentDetail.description}</p>
+            )}
             <Download contentDetail={contentDetail} />
           </div>
         </div>
@@ -107,7 +109,12 @@ export default function File({ contentDetail, preview, createdAt }: BaseProps) {
       <div className={style.card}>
         <PosterImage contentDetail={contentDetail} />
         <div className={style.summary}>
-          <Header contentDetail={contentDetail} createdAt={createdAt} preview={preview} />
+          <Header
+            contentDetail={contentDetail}
+            createdAt={createdAt}
+            preview={preview}
+            className={style.header}
+          />
           <p className={style.desc}>{contentDetail.description}</p>
           <Download contentDetail={contentDetail} />
         </div>

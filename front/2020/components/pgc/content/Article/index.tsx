@@ -31,6 +31,9 @@ export default function Article({ contentDetail, htmlAst, createdAt, preview }: 
           preview={preview}
           className={style.header}
         />
+        {contentDetail.description && (
+          <p className={style.desc}>{contentDetail.description}</p>
+        )}
         <Markdown htmlAst={htmlAst} preview={preview} />
       </Layout>
     )
@@ -46,6 +49,9 @@ export default function Article({ contentDetail, htmlAst, createdAt, preview }: 
         hasBackground
       />
       <Layout preview={preview} className={style.main}>
+        {contentDetail.description && (
+          <p className={style.desc}>{contentDetail.description}</p>
+        )}
         <Markdown htmlAst={htmlAst} preview={preview} />
       </Layout>
     </div>

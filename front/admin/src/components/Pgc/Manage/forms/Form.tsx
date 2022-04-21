@@ -208,7 +208,7 @@ export default observer(function DetailForm({ type, onSubmitDraft, content, onPr
         </FormItem>
       )}
       <FormItem label="类别" required={!isEditMode}>
-        <Select state={state.$.category} disabled={isEditMode}>
+        <Select state={state.$.category}>
           {contentCategorys.map(contentCategory => (
             <SelectOption key={contentCategory} value={contentCategory}>
               {contentCategoryTextMap[contentCategory]}
