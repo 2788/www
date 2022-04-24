@@ -6,11 +6,14 @@ import pcNewUser from './banners/pc/new-user.jpg'
 import pcCps from './banners/pc/cps.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
+import pcOverseas from './banners/pc/overseas.jpg'
+
 import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
 import mobileCps from './banners/mobile/cps.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
+import mobileOverseas from './banners/mobile/overseas.jpg'
 
 export type Banner = {
   name: string
@@ -38,6 +41,21 @@ export type Banner = {
 export function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
   return Promise.resolve([
+    {
+      name: '海外云产品专场活动',
+      title: '踏浪扬帆 海外云产品专场',
+      desc: '爆款海外云产品 个人&企业出海必备',
+      pcImg: pcOverseas,
+      mobileImg: mobileOverseas,
+      effectedAt: 0,
+      invalidAt: 0,
+      createdAt: 0,
+      updatedAt: 0,
+      backgroundColor: '#ffffff',
+      href: 'https://marketing.qiniu.com/activity/os_lp?entry=www-index-banner-1',
+      order: 1,
+      buttonTexts: ['立即抢购']
+    },
     {
       name: '云存储',
       title: '云存储 Kodo 永久 0 元享用',
