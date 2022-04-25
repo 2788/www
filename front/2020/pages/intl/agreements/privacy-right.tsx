@@ -1,15 +1,16 @@
 /**
  * @file 七牛云隐私权政策
  */
+
 import React from 'react'
 
-import Layout from 'components/Product/Layout'
+import Layout from 'components/Layout'
 import Wrapper from 'components/pages/intl/agreements/Wrapper'
 import Content from 'components/pages/intl/agreements/privacy-right'
 
 function Page() {
   return (
-    <Wrapper active="privacy-right">
+    <Wrapper>
       <Content />
     </Wrapper>
   )

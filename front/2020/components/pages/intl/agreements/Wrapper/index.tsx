@@ -1,27 +1,19 @@
 import React, { ReactNode } from 'react'
 
-import Link from 'components/Link'
+import BaseWrapper from 'components/agreement/BaseWrapper'
 
-import style from './style.less'
+type AgreementWrapperProps = {
+  children: ReactNode
+}
 
-export type AgreementName = 'user-agreement' | 'privacy-right'
+export default function Wrapper({ children }: AgreementWrapperProps) {
+  const links = [
+    { href: '/intl/agreements/user-agreement', text: '服务用户协议' },
+    { href: '/intl/agreements/privacy-right', text: '隐私权政策' }
+  ]
 
-export default function Wrapper({ children, active }: { children: ReactNode, active: AgreementName }) {
   return (
-    <div className={style.wrapper}>
-      <div className={style.left}></div>
-      <div className={style.container}>
-        <ul className={style.header}>
-          <li className={active === 'user-agreement' && style.active || ''}>
-            <Link className={style.link} href="/intl/agreements/user-agreement">服务用户协议</Link>
-          </li>
-          <li className={active === 'privacy-right' && style.active || ''}>
-            <Link className={style.link} href="/intl/agreements/privacy-right">隐私权政策</Link>
-          </li>
-        </ul>
-        {children}
-      </div>
-      <div className={style.right}></div>
-    </div>
+    <BaseWrapper links={links}>{children}</BaseWrapper>
   )
 }
+

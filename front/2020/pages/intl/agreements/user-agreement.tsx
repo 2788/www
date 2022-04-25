@@ -1,15 +1,16 @@
 /**
  * @file 七牛云用户服务协议
  */
+
 import React from 'react'
 
-import Layout from 'components/Product/Layout'
+import Layout from 'components/Layout'
 import Wrapper from 'components/pages/intl/agreements/Wrapper'
 import Content from 'components/pages/intl/agreements/user-agreement'
 
 function Page() {
   return (
-    <Wrapper active="user-agreement">
+    <Wrapper>
       <Content />
     </Wrapper>
   )

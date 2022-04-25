@@ -38,15 +38,30 @@
     });
   }
 
-  .bold, b, strong {
+  b, strong {
     font-weight: 500;
   }
 
-  .underline {
+  .underline, strong {
     text-decoration: underline;
   }
 
   a {
     .blueLink();
   }
+
+  table {
+    margin: 20px auto;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+    letter-spacing: 1px;
+  }
+
+  td, th {
+    text-align: left;
+    border: 1px solid #e6eaef;
+    padding: 15px 20px;
+  }
+
 }

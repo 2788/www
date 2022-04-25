@@ -1,5 +1,4 @@
 import React from 'react'
-import cls from 'classnames'
 
 import style from 'components/agreement/content.less'
 
@@ -8,7 +7,7 @@ export default function Content() {
     <div className={style.content}>
       <h2>Qiniu Cloud Privacy Policy</h2>
       <h3>Overview</h3>
-      <p className={style.bold}>
+      <p><b>
         Shanghai Qiniu Information Technology Co., Ltd. (&quot;Qiniu Cloud&quot;
         or &quot;we&quot;) attaches great importance to the privacy and
         information security of its users (&quot;you&quot; or &quot;your&quot;),
@@ -17,15 +16,15 @@ export default function Content() {
         Therefore, we understand that Qiniu Cloud has a great responsibility and
         will make every effort to protect the security of your personal
         information.
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         This Qiniu Cloud Privacy Policy (&quot;Policy&quot;) intends to help you
         understand what information we collect, why we collect such information,
         how we use, store, share and safeguard such information, and the methods
         we provide for you to access, update, control and protect such
         information.
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         If, prior to the registration, browser or use of Qiniu Cloud Service,
         you confirm your acceptance of this Policy by checking the pop-up window
         or in any other voluntary manner, you shall be deemed to have carefully
@@ -35,31 +34,31 @@ export default function Content() {
         Qiniu Cloud, especially the provisions of limitation or exemption from
         liability (including jurisdiction provisions) which shall be highlighted
         in bold and/or underlined forms.
-      </p>
+      </b></p>
       <p>
         If you have any questions, comments or suggestions, we would be happy to
         hear them and welcome you to contact us via the contact information set
         forth in this Policy and we will answer them for you.
       </p>
       <p>This Policy will help you to understand the following:</p>
-      <p className={style.bold}>1. Key Words Definition</p>
-      <p className={style.bold}>
+      <p><b>1. Key Words Definition</b></p>
+      <p><b>
         2. How We Collect and Use Personal Information About You
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         3. How We Use Cookies and Similar Technologies
-      </p>
-      <p className={style.bold}>4. When We Share or Disclose Information</p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>4. When We Share or Disclose Information</b></p>
+      <p><b>
         5. How Do We Protect Your Personal Information
-      </p>
-      <p className={style.bold}>6. Your Rights to Personal Information</p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>6. Your Rights to Personal Information</b></p>
+      <p><b>
         7. How Do We Process Minors&#39; Personal Information
-      </p>
-      <p className={style.bold}>8. Scope of Application of This Policy</p>
-      <p className={style.bold}>9. How is This Policy Updated</p>
-      <p className={style.bold}>10. Contact Information</p>
+      </b></p>
+      <p><b>8. Scope of Application of This Policy</b></p>
+      <p><b>9. How is This Policy Updated</b></p>
+      <p><b>10. Contact Information</b></p>
       <h3>1. Key Words Definition</h3>
       <p>
         1.1 &quot;Qiniu Cloud&quot;, &quot;we&quot;, &quot;us&quot;,
@@ -105,12 +104,12 @@ export default function Content() {
         mobile phone number, itinerary information, web-browsing record and
         precise location information).
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           For the above personal sensitive information listed in this Policy, in
           order to make it more alert to your reading, we define and list it
           uniformly here, and also highlight it in this Policy by bold font,
           underlined font, or by pointing it out in a separate way.
-        </span>
+        </strong>
       </p>
       <p>
         1.7 &quot;Non-personal information&quot; refers to information that
@@ -155,24 +154,24 @@ export default function Content() {
         In the process of account registration, you will directly provide to us
         with your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           user name, email address, mobile phone number, mobile phone
           verification code and password (encrypted) of the account created by
           you.
-        </span>
+        </strong>
         <span> </span>
         After the successful registration, your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           email address and mobile phone number
-        </span>
+        </strong>
         <span> </span>
         will be used as your login account in our service platform and we will
         use such
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           email address and mobile phone number
-        </span>
+        </strong>
         <span> </span>
         to send verification code information for you to verify your identity
         and for password recovery. Meanwhile, it will be used as one of the
@@ -184,17 +183,16 @@ export default function Content() {
         Of course, during the registration process, you can also choose to
         provide your
         <span> </span>
-        <span className={style.bold}>
+        <b>
           current province and current city
-        </span>
-        <span> </span>
+        </b>
         information, so that we can provide you with higher quality localized
         exclusive services. If you have already logged in your Qiniu Cloud
         account, you can provide us with your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           nickname, address, QQ number and personal website information
-        </span>
+        </strong>
         <span> </span>
         through the &quot;Personal Center&quot;. You can choose to refuse to
         provide such information, but this does not affect your registration
@@ -218,19 +216,19 @@ export default function Content() {
         If you are an individual user, you may choose to use face recognition
         for verification and we will collect your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           ace recognition information
-        </span>
+        </strong>
         <span> </span>
         and compare it with the verification data provided by the Ministry of
         Public Security to verify your identity, but we will not store any face
         recognition information of you. When you choose to use Alipay
         verification method, you are required to provide us with your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           real name, ID card number, and photos of front and back side of your
           ID card and personal website (optional),
-        </span>
+        </strong>
         <span> </span>
         and you may authorize us to access your authentication information by
         logging into Alipay(see more about Alipay, please click here：
@@ -241,9 +239,9 @@ export default function Content() {
         to the above identity information, you shall also provide us with
         certain financial information including your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           bank account, bank name and its branch information,
-        </span>
+        </strong>
         <span> </span>
         so that we may verify your authentic information by transferring some
         change to the bank account. The above information provided by you shall
@@ -256,15 +254,15 @@ export default function Content() {
         enterprise authentication, when you choose to use Alipay authentication
         method, you are required to provide your
         <span> </span>
-        <span className={style.bold}>
+        <b>
           corporate entity name, unified social credit code,
-        </span>
+        </b>
         <span> </span>
         and enterprise information including
         <span> </span>
-        <span className={style.bold}>
+        <b>
           a scanned copy of the organization&#39;s license and certificate,
-        </span>
+        </b>
         <span> </span>
         and you may authorize us to access your authentication information by
         logging into Enterprise Alipay. When you choose to use bank transfer
@@ -272,41 +270,41 @@ export default function Content() {
         you are also required to provide us with relevant financial information
         including
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           bank account, bank name and its branch information.
-        </span>
+        </strong>
         <span> </span>
         The above information you provide will only be used for the verification
         of your real-name authentication by Qiniu Cloud.
       </p>
-      <p className={cls(style.bold, style.underline)}>
+      <p><strong>
         You should be aware that various technical services of Qiniu Cloud fall
         into our basic core business functions. We collect the above information
         to satisfy the requirements of relevant laws and regulations for the
         Internet Real-name System. If you fail to provide your personal
         information and pass the real-name authentication, you will not be able
         to enjoy the basic and core technical services provided by us.
-      </p>
+      </strong></p>
       <p>(3) Payment Information</p>
       <p>
         We support Alipay, WeChat Pay and Online Banking payment. We need to
         have access to your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           bank account information
-        </span>
+        </strong>
         <span> </span>
         for your recharge, withdrawal and product order payment needs. We will
         display your recharge and withdrawal records on the Finance Center
         management page to make it easy for you to check your records of fees.
         When we issue and send invoices to you, we will collect your
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           bank card number or account number, invoice information, tax
           information, and invoice delivery address (including the addressee’s
           name, full address, postal code, mobile phone number and email
           address).
-        </span>
+        </strong>
         <span> </span>
         We may send an invoice to you using the information above. We will not
         provide your bank account information, payment passwords, recharge and
@@ -322,9 +320,9 @@ export default function Content() {
         promotions, we will make clear to you of the type, scope and purpose of
         the collection of information and obtain your explicit consent.
       </p>
-      <p className={style.bold}>
+      <p><b>
         2.1.2 Information we collect in the course of your use of the services.
-      </p>
+      </b></p>
       <p>
         When you use our services, we may collect the following information
         about you:
@@ -356,16 +354,18 @@ export default function Content() {
         from your use of our service so that we can respond to your requests for
         help in a timely manner and use them to improve our service.
       </p>
-      <p className={cls(style.bold, style.underline)}>
-        Please note that individual device information, log information, etc. is
-        information that cannot be used to identify a particular natural person.
-        However, if we use such non-personal information in combination with
-        other information for the purpose of identifying a particular natural
-        person or in combination with personal information, for example when
-        associated with your account number, such non-personal information will
-        be considered to be personal information for that period of combined
-        use. We will anonymiz or de-identify such personal information unless
-        authorized by you or as otherwise required by law or regulation.
+      <p>
+        <strong>
+          Please note that individual device information, log information, etc. is
+          information that cannot be used to identify a particular natural person.
+          However, if we use such non-personal information in combination with
+          other information for the purpose of identifying a particular natural
+          person or in combination with personal information, for example when
+          associated with your account number, such non-personal information will
+          be considered to be personal information for that period of combined
+          use. We will anonymiz or de-identify such personal information unless
+          authorized by you or as otherwise required by law or regulation.
+        </strong>
       </p>
       <p>2.1.3 Information shared about you by third partie</p>
       <p>
@@ -398,9 +398,9 @@ export default function Content() {
         us or other users, we will collect and use your contact information
         includes
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           name (nickname), mobile phone number, email address.
-        </span>
+        </strong>
         <span> </span>
         When you use our technical guidance or technical support service, you
         are required to submit work order information to us and have our
@@ -408,9 +408,9 @@ export default function Content() {
         &quot;Q&amp;A Community&quot; section; we provide you with friend
         invitation service. You can provide
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           your friend&#39;s email address
-        </span>
+        </strong>
         <span> </span>
         and you choose to send email invitation activities or to share relevant
         activities on your other account platforms for sharing and interaction.
@@ -441,13 +441,13 @@ export default function Content() {
         with the company&#39;s business contact person by mobile phone or email,
         etc.).
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           In order to improve our product or service, upon your consent, we may
           match your personal information with third party data to create
           indirect user portrait for us to conduct product research and
           development or provide service information to you on a targeted basis
           (via mail, email or phone call).
-        </span>
+        </strong>
         <span> </span>
         Of course, even if you agree to our use of such information, you may
         inform us at any time by using the contact information published in this
@@ -461,18 +461,17 @@ export default function Content() {
         introduce products and services to you. For example, commercial
         information about products and services is sent to you via
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           email and mobile phone numbers.
-        </span>
-        <span> </span>
+        </strong>
         Of course, even if you agree to our use of such information,
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           you have the right to choose not to receive promotion and introduction
           information of products and services at any time in accordance with
           the functions set up by us on the Website or by the opt-out method
           provided by us.
-        </span>
+        </strong>
       </p>
       <p>2.2.4 To provide you with security</p>
       <p>
@@ -482,12 +481,12 @@ export default function Content() {
         identify violations of laws and regulations or the rules of relevant
         agreement of Qiniu Cloud.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           We may use or integrate your account information, device information,
           software use information and information obtained from you by our
           affiliated companies and partners or shared according to law for the
           purpose of identity verification,
-        </span>
+        </strong>
         <span> </span>
         detection and prevention of security incidentsand take necessary
         recording, auditing, analysis and disposal measures as required by law.
@@ -498,58 +497,58 @@ export default function Content() {
         consent when we wish to use the information we collect for a specific
         purpose for other purposes.
       </p>
-      <p className={style.bold}>2.4 Exceptions with Your Authorized Consent</p>
-      <p className={style.bold}>
+      <p><b>2.4 Exceptions with Your Authorized Consent</b></p>
+      <p><b>
         In accordance with relevant laws and regulations as well as personal
         information protection standards, we do not need to obtain your
         authorizationand consent for collection and use of personal information
         in the following circumstances:
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.1 Those related to national security or national defense security;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.2 The confidential information relates to public security, public
         health and other major public interests;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.3 The evidence relating to criminal investigation, prosecution,
         trial and judgment execution;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.4 For the purpose of maintaining material legitimate rights and
         interests such as the life and property of personal information subjects
         or other individuals, it is difficult to obtain your consent;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.5 The personal information collected is disclosed to the public on
         your own initiative;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.6 Collecting personal information from legally and publicly
         disclosed information, such as legally disclosed channels of news report
         and government information disclosure;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.7 The entry into and performance of the contract at your request is
         necessary;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.8 Necessary for maintaining the safe and stable operation of our
         products or services, such as detecting and handling the faults of our
         products or services;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.9 The information has been subject to technical processing of your
         personal information, such that your subject cannot be identified, and
         the processed information cannot be recovered(not personal information),
         or the circumstances of de - identification technical processing of your
         personal information and guarantee security;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         2.4.10 Other circumstances provided for in laws, regulations or relevant
         rules.
-      </p>
+      </b></p>
       <h3>3. How we use cookies and similar technologies</h3>
       <p>3.1 Cookie</p>
       <p>
@@ -557,17 +556,16 @@ export default function Content() {
         access experience, recommend content or advertisements that you may be
         interested in, and so on,
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           we store a small data file called a Cookie on your computer or mobile
           device
-        </span>
+        </strong>
         <span> </span>
         when you log on to our website or browse content on the Web.
-        <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           Cookie usually contains an identifier, the name of the site, and some
           numbers and characters.
-        </span>
+        </strong>
         <span> </span>
         For example, with Cookies, our website and our clients may store data
         such as your account number, email address, password (encrypted), and
@@ -584,13 +582,13 @@ export default function Content() {
         Many Web browsers have a &quot;Do Not Track&quot; feature that allows
         you to issue a &quot;Do Not Track&quot; request to a Web site.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           You can use the various browsers&#39; built-in features to deny or
           erase all Cookies saved on your device, but if you do so, you&#39;ll
           need to change your user settings yourself every time you use Qiniu Cloud.
           Also, we may not be able to provide you with a better experience, and
           some services may not work properly.
-        </span>
+        </strong>
       </p>
       <p>
         Most browsers also allow you to choose whether you want to disable all
@@ -652,7 +650,7 @@ export default function Content() {
         If you use another browser, please refer to the documentation provided
         by the browser manufacturer.
       </p>
-      <p className={style.bold}>3.2 Website Beacons and Pixel Tags</p>
+      <p><b>3.2 Website Beacons and Pixel Tags</b></p>
       <p>
         In addition to Cookies, we may use other similar technologies, such as
         Web beacons and pixel tags. For example, we may send you an email that
@@ -669,7 +667,7 @@ export default function Content() {
         4. How We delegate, Share, Transfer, and Disclose Your Personal
         Information
       </h3>
-      <p className={style.bold}>4.1 Delegate</p>
+      <p><b>4.1 Delegate</b></p>
       <p>
         Subject to some of our data processing capabilities and service
         resources, certain functions may be provided by the vendors (including
@@ -688,8 +686,8 @@ export default function Content() {
         termination of the entrusted matters (including invalidation,
         invalidity, cancellation or termination of the entrustment contract).
       </p>
-      <p className={style.bold}>4.2 Sharing</p>
-      <p className={cls(style.bold, style.underline)}>
+      <p><b>4.2 Sharing</b></p>
+      <p><strong>
         Unless otherwise required by laws, regulations and regulatory bodies, we
         will not share your information with third parties without your consent.
         At present, in order to provide services to you, after obtaining the
@@ -698,15 +696,15 @@ export default function Content() {
         third parties in the forms of confirmation agreement, case following in
         specific scenario and pop-up window prompt under the following
         circumstances, in accordance with the requirements of the laws and
-        regulations and national standards:
+        regulations and national standards:</strong>
       </p>
       <p>
         4.2.1 Your personal information may be shared with affiliates of Qiniu Cloud.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           We will only share the personal information deemed necessary and
           subject to the purposes stated in this Policy.
-        </span>
+        </strong>
         <span> </span>
         If affiliates want to change the purpose of processing personal
         information, they will seek your authorization again.
@@ -721,17 +719,17 @@ export default function Content() {
         information for legal, proper, necessary, specific and explicit purposes
         and
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           only share the personal information necessary for the provision of the
           Services.
-        </span>
+        </strong>
         <span> </span>
         Our partners are not authorized to use the personal information for any
         other purposes.If partners want to change the purpose of personal
         information processing, processing methods, you will be asked for
         authorization again.
       </p>
-      <p className={cls(style.bold, style.underline)}>
+      <p><strong>
         Our authorized partners mainly serve the needs of you and other users.
         Therefore, we may change our partners if we meet the needs of new
         service and changes in business functions. We will keep you updated on
@@ -741,19 +739,19 @@ export default function Content() {
         relevant information. We will also agree to strict data protection
         measures with our authorized partners and require the processing of
         personal information in accordance with this Policy and any other
-        relevant confidentiality and security measures.
+        relevant confidentiality and security measures.</strong>
       </p>
       <p>
         (1) To achieve the sharing between advertising partners and advertising
         partners and statistical analysis partners for the push of
         advertisements.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           Qiniu Cloud may only provide such partners with user portrait tags and
           de - identification or anonymization statistical information that fail
           to identify you, so as to help them increase effective access to
           advertisements without identifying you.
-        </span>
+        </strong>
         <span> </span>
         Unless we have obtained your permission, we will not share your
         personally identifiable information(meaning your information, such as
@@ -773,20 +771,20 @@ export default function Content() {
         accordance with our instructions and in accordance with this Privacy
         Policy and any other relevant confidentiality and security measures.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           If we share your personal sensitive information or authorize a partner
           to change the use or processing of the personal information, we will
           ask for your written consent again.
-        </span>
+        </strong>
       </p>
       <p>
         4.2.3 Sharing under legal circumstances:
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           we may share or disclose your personal information in accordance with
           laws and regulations, as required for dispute resolution or upon
           request made by administrative or judicial authority according to law.
-        </span>
+        </strong>
         <span> </span>
         For example, if we determine that you have violated laws or regulations
         or seriously violated the relevant agreements or rules of Qiniu Cloud,
@@ -804,26 +802,26 @@ export default function Content() {
         the reputation of our platform, we may publicly disclose your
         information and penalties.
       </p>
-      <p className={style.bold}>4.3 Transferring</p>
+      <p><b>4.3 Transferring</b></p>
       <p>
         We will not transfer your personal information to any company,
         organization or individual, except that:
       </p>
-      <p className={style.bold}>
+      <p><b>
         4.3.1 After obtaining your express prior consent;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         4.3.2 Pursuant to law, regulation or compulsory administrative or
         judicial requirements;
-      </p>
-      <p className={style.bold}>
+      </b></p>
+      <p><b>
         4.3.3 In the event of merger, acquisition or bankruptcy liquidation, if
         transfer of personal information is involved, we will request new
         companies or organizations that hold your personal information to
         continue to be bound by this Policy.Otherwise, we will request such
         companies or organizations to seek consent from you again.
-      </p>
-      <p className={style.bold}>4.4 Disclosure</p>
+      </b></p>
+      <p><b>4.4 Disclosure</b></p>
       <p>
         We may publicly disclose your personal information only under the
         following circumstances and have adopted industry-standard security
@@ -835,13 +833,13 @@ export default function Content() {
       </p>
       <p>
         <span>4.4.2 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           If we have to provide your personal information in accordance with the
           requirements of laws, regulations, compulsory administrative
           enforcement or judicial requirements, we may publicly disclose your
           personal information dependingon the type of personal information
           required and the manner of disclosure.
-        </span>
+        </strong>
         Subject to laws and regulations, when we receive a request for
         disclosure of information mentioned above, we will request that relevant
         legal documents, such as subpoena or investigation letter, be issued in
@@ -852,10 +850,10 @@ export default function Content() {
         the law enforcement authority has the legal right to obtain for the
         specific investigation.
       </p>
-      <p className={style.bold}>
+      <p><b>
         4.5 Exceptions Where the Sharing, Transferring and Disclosure of Your
         Information Are Subject to Authorization in Advance
-      </p>
+      </b></p>
       <p>
         No prior authorized consent is required for the sharing, transferring or
         disclosure of your user information in the following circumstances:
@@ -897,12 +895,12 @@ export default function Content() {
       </p>
       <p>4.5.8 Other circumstances provided by laws and regulations.</p>
       <h3>5. How Do We Protect Your Personal Information</h3>
-      <p className={style.bold}>5.1 Security Exception</p>
+      <p><b>5.1 Security Exception</b></p>
       <p>
         We take reasonable practical and technical measures to protect the
         information we collect in connection with our services.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           Please note, however, that while we take reasonable measures to
           protect your information, no website, internet transmission, computer
           system or wireless connection is absolutely secure. Please properly
@@ -911,9 +909,9 @@ export default function Content() {
           disclosed, in particular your account and password, please contact our
           online customer service immediately so that we can take appropriate
           action.
-        </span>
+        </strong>
       </p>
-      <p className={style.bold}>5.2 Safety measures we take</p>
+      <p><b>5.2 Safety measures we take</b></p>
       <p>
         We have applied industry-standard security precautions to protect the
         personal information you have provided to protect it from unauthorized
@@ -926,9 +924,9 @@ export default function Content() {
         reduce the risk that other organizations and individuals may identify
         you through the personal information.
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           We use SSL to encrypt our services.
-        </span>
+        </strong>
         <span> </span>
         We review our practices(including physical security measures) in respect
         of information collection, storage and processing to prevent
@@ -936,12 +934,12 @@ export default function Content() {
       </p>
       <p>
         <span>5.2.2 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           We have obtained ISO 27001 Certificate of Information Security
           Management System Certification issued by the British Standards
           Institute (BSI) and Certificate of Trusted Cloud Service Certification
           issued by China Academy of Information and Communications Technology,
-        </span>
+        </strong>
         which can effectively protect the security of your information system,
         intellectual property and trade secrets.
       </p>
@@ -968,9 +966,9 @@ export default function Content() {
         technical measures to process it before storing it, such as storing only
         a summary of the personal biometric information.
       </p>
-      <p className={style.bold}>
+      <p><b>
         5.3 Emergency responses to security incidents
-      </p>
+      </b></p>
       <p>
         After the occurrence of personal information security incidents, we
         will, in accordance with the requirements of laws and regulations,
@@ -985,34 +983,29 @@ export default function Content() {
         information security incidents according to the requirements of
         regulatory authorities.
       </p>
-      <p className={style.bold}>5.4 Duration and territory</p>
+      <p><b>5.4 Duration and territory</b></p>
       <p>
         During the period that you use Qiniu Cloud, we will continue to preserve
         your personal information for you but the relevant information will be
         preserved for the minimum period necessary to achieve the Purpose.
         Unless you agree to an extension of the storage period or we are
         permitted by law, we will
-        <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           delete or anonymize the source data and back-up data of your personal
           information.
-        </span>
-        <span> </span>
+        </strong>
         If you cancel your account or delete the aforesaid information
         voluntarily,
-        <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           Qiniu Cloud will retain your existing personal information for the
           shortest period in accordance with laws and regulations.
-        </span>
-        <span> </span>
+        </strong>
         During the shortest storage period as required by law, we will not use
         your personal information commercially. When your personal information
         expires the above storage period,
-        <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           we will delete or anonymize the source data and back-up data of it.
-        </span>
+        </strong>
       </p>
       <p>
         Qiniu Cloud will, in accordance with laws and regulations, store the
@@ -1020,7 +1013,7 @@ export default function Content() {
         China in the People&#39;s Republic of China, and will not transmit such
         information overseas. If
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           Qiniu Cloud needs to transfer relevant personal information collected
           in China to overseas institutions due to its involvement in
           cross-border business, we will comply with laws and regulations and
@@ -1033,7 +1026,7 @@ export default function Content() {
           require the offshore institution to keep confidential your personal
           information obtained through execution of agreements, on-site
           verification and other effective measures.
-        </span>
+        </strong>
       </p>
       <h3>6. Your Rights to Personal Information</h3>
       <p>
@@ -1046,7 +1039,7 @@ export default function Content() {
       <p>
         In principle,
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           we do not charge fees for your reasonable requests. However, we will
           charge you a cost if the request is repeated and exceeds the
           reasonable limit. We may refuse requests that are repetitive, require
@@ -1054,7 +1047,7 @@ export default function Content() {
           systems or fundamental changes to existing practices), pose risks to
           the legitimate rights and interests of others, or are highly
           impractical.
-        </span>
+        </strong>
         <span> </span>
         In addition, we may not be able to respond to your request if it
         directly relates to:
@@ -1091,22 +1084,22 @@ export default function Content() {
         organizations;
       </p>
       <p>(8) Concerning business secrets.</p>
-      <p className={style.bold}>6.1 Access to personal information</p>
+      <p><b>6.1 Access to personal information</b></p>
       <p>
         You have the right to access your personal information subject to the
         exceptions set forth by laws and regulations. If you want to exercise
         the right of data access, you may log in your account on the Qiniu Cloud
         website and
         <span> </span>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           enter into &quot;Personal Dashboard - Personal Information&quot; to
           access and edit your personal information, account information,
           service information and other contents under your account.
-        </span>
+        </strong>
       </p>
-      <p className={style.bold}>6.2 Correction of personal information</p>
+      <p><b>6.2 Correction of personal information</b></p>
       <p>
-        <span className={cls(style.bold, style.underline)}>
+        <strong>
           When you find that we process any error in your personal information,
           you have the right to submit the application for correction to us
           through the contact information publicized in this Policy, and request
@@ -1114,18 +1107,18 @@ export default function Content() {
           yourself and change your personal information through the
           &quot;Personal Dashboard – Personal Information/Security
           Settings&quot; of Qiniu Cloud.
-        </span>
+        </strong>
         When updating your personal information, we may request you to verify
         your identity (for example, by sending a verification message to your
         E-mail or mobile phone number) before we process your request. Under
         normal circumstances, we will complete the correction processing within
         fifteen business days.
       </p>
-      <p className={style.bold}>6.3 Delete your personal information</p>
-      <p className={style.bold}>
+      <p><b>6.3 Delete your personal information</b></p>
+      <p><b>
         You may request us to delete your personal information in the following
         situations:
-      </p>
+      </b></p>
       <p>
         6.3.1 If our processing of personal information violates laws or
         regulations;
@@ -1143,19 +1136,19 @@ export default function Content() {
         cancelled your account;
       </p>
       <p>6.3.5 If we no longer provide you with products or services.</p>
-      <p className={cls(style.bold, style.underline)}>
+      <p><strong>
         If we decide to respond to your request, we will also at the same time
         notify the persons from whom we have received your personal information,
         requiring them to request them to delete it promptly, unless otherwise
         provided by laws and regulations or unless those persons are
-        independently authorized by you.
+        independently authorized by you.</strong>
       </p>
-      <p className={cls(style.bold, style.underline)}>
+      <p><strong>
         When you delete information from our service, we may not immediately
         delete it from the backup system, but we will delete it when the backup
-        is updated.
+        is updated.</strong>
       </p>
-      <p className={style.bold}>6.4 Vary the scope of your consents</p>
+      <p><b>6.4 Vary the scope of your consents</b></p>
       <p>
         Each business function requires some basic personal information or
         device access to be performed. You may give or withdraw your consent to
@@ -1167,29 +1160,29 @@ export default function Content() {
         the consent will not affect any previous processing of personal
         information based on your authorization.
       </p>
-      <p className={style.bold}>6.5 Cancellation of account number</p>
+      <p><b>6.5 Cancellation of account number</b></p>
       <p>
         If your account has no resources, no unpaid fee or no dispute, you may
         <span>cancel your account by </span>
-        <a href="https://support.qiniu.com/tickets/new" target="_blank" rel="noreferrer noopener">
+        <a href="https://support.qiniu.com/tickets/new" target="_blank" rel="noopener">
           submitting a work order
         </a>
         .
         <span> </span>
-        <span className={style.bold}>
+        <b>
           Please be aware that your cancellation of your account is
           irreversible. After you cancel your account, you will not be able to
           access the products or services provided by Qiniu Cloud through your
           cancelled account.
-        </span>
+        </b>
         <span> </span>
         We will delete or anonymize all information regarding your account and
         ensure that such information will not be disclosed, except for the data
         that are required to be preserved by law and regulation.
       </p>
-      <p className={style.bold}>
+      <p><b>
         6.6 Obtain the duplicate of personal information
-      </p>
+      </b></p>
       <p>
         To the extent permitted by laws and regulations, you shall have the
         right to obtain a copy of your personal information, which may be
@@ -1198,9 +1191,9 @@ export default function Content() {
         your personal information to your designated third party in accordance
         with your express request.
       </p>
-      <p className={style.bold}>
+      <p><b>
         6.7 Automatic decision of constrained information systems
-      </p>
+      </b></p>
       <p>
         In some business functions, we may make decisions based only on
         non-human automated decision-making mechanisms, including information
@@ -1209,13 +1202,13 @@ export default function Content() {
         also provide options that are not based on your personal characteristics
         or easy ways of refusal.
       </p>
-      <p className={style.bold}>6.8 Complaints, reports and response</p>
+      <p><b>6.8 Complaints, reports and response</b></p>
       <p>
         If you have any other complaints, suggestions or relevant questions,
         please contact Qiniu Cloud via the contact information published in this
         Policy.
         <span> </span>
-        <span className={style.bold}>
+        <b>
           We will review the issue as soon as possible and reply after we verify
           your identity. In general, we will reply within thirty days after we
           verify your identity. Of course, if you are not satisfied with our
@@ -1224,11 +1217,11 @@ export default function Content() {
           fail to provide a satisfactory reply and refuse to improve after your
           feedback to us, you may also file a complaint to the relevant
           regulatory authorities.
-        </span>
+        </b>
       </p>
-      <p className={style.bold}>
+      <p><b>
         6.9 Entitled to receive notices of cessation of operation
-      </p>
+      </b></p>
       <p>
         If Qiniu Cloud terminates its service or operation, we will promptly
         cease our collection of your personal information and notify you of the
@@ -1259,11 +1252,11 @@ export default function Content() {
         information we hold.
       </p>
       <p>
-        <span className={style.bold}>7.4 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>7.4 </b>
+        <strong>
           We further take the following measures to safeguard the personal
           information of children under the age of 14 that may be involved:
-        </span>
+        </strong>
       </p>
       <p>
         7.4.1 We shall, in addition to complying with the provisions of this
@@ -1308,17 +1301,17 @@ export default function Content() {
       </p>
       <h3>8. Application Scope</h3>
       <p>
-        <span className={style.bold}>8.1 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>8.1 </b>
+        <strong>
           If you register an account on Qiniu Cloud website or purchase products
           and services of Qiniu Cloud, this Policy will apply, unless the
           relevant service has a separate privacy policy or there are special
           provisions in the corresponding user agreement.
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>8.2 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>8.2 </b>
+        <strong>
           To the extent that our services may contain links, content, products
           and services to third parties, we have no control over such third
           parties. This Policy will not apply to any links, content, products or
@@ -1335,16 +1328,16 @@ export default function Content() {
           and interests. This Policy will not apply to your data processed,
           stored, uploaded, downloaded, distributed or otherwise processed by
           you by using Qiniu Cloud products.
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>8.3 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>8.3 </b>
+        <strong>
           In particular, as a customer of Qiniu Cloud, we also suggest that if
           you use our cloud service to provide services to your users involving
           the collection and use of your users&#39; personal information, you
           should enter into a separate privacy policy with your users.
-        </span>
+        </strong>
       </p>
       <h3>9. Update</h3>
       <p>
@@ -1354,8 +1347,8 @@ export default function Content() {
         your rights under this Policy.
       </p>
       <p>
-        <span className={style.bold}>9.2 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.2 </b>
+        <strong>
           If any of the foregoing amendments or updates may materially reduce
           your rights under this Policy or change material to important rules
           that expand the scope of information we collect and use, such as by
@@ -1367,73 +1360,73 @@ export default function Content() {
           we will notify you by publishing a notice on our website or even
           provide you with pop-up notices explaining the changes to the Privacy
           Policy).
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3 </b>
+        <strong>
           For the purpose of this Policy, material changes include but are not
           limited to:
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3.1 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3.1 </b>
+        <strong>
           Our service model has undergone major changes. Such as the purpose of
           personal information processing, the type of personal information
           processing, personal information use, etc.;
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3.2 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3.2 </b>
+        <strong>
           The company has undergone a material change in its ownership
           structure, organizational structure and other aspects. Such as change
           of owner resulting from business adjustment, bankruptcy or merger or
           acquisition etc.;
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3.3 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3.3 </b>
+        <strong>
           The main objects of sharing, transferring or public disclosure of
           personal information have changed;
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3.4 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3.4 </b>
+        <strong>
           There are material changes in the rights you exercise to participate
           in processing of personal information;
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3.5 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3.5 </b>
+        <strong>
           When the department in charge of dealing with personal information
           security, our contact information and channels for complaints change;
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.3.6 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.3.6 </b>
+        <strong>
           Personal information security impact assessment report indicates that
           there is a high risk.
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.4 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.4 </b>
+        <strong>
           We will also keep the previous version of this Policy on file for your
           review.
-        </span>
+        </strong>
       </p>
       <p>
-        <span className={style.bold}>9.5 </span>
-        <span className={cls(style.bold, style.underline)}>
+        <b>9.5 </b>
+        <strong>
           If you continue to use our service under such circumstances, it shall
           mean that you agree to accept the amended content.
-        </span>
+        </strong>
       </p>
       <h3>10. Contact Information</h3>
       <p>
@@ -1442,7 +1435,7 @@ export default function Content() {
       </p>
       <p>
         <span>10.1.1 </span>
-        <a href="https://support.qiniu.com/tickets/new" target="_blank" rel="noreferrer noopener">
+        <a href="https://support.qiniu.com/tickets/new" target="_blank" rel="noopener">
           Submission of Work Order
         </a>
         ;

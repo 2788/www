@@ -1,5 +1,5 @@
 /**
- * @file 产品页用的 Layout
+ * @file 产品页 & 解决方案页用的 Layout
  * @description 在基础的 Layout 基础上多一些产品页特有的逻辑，如 Navigatable
  */
 

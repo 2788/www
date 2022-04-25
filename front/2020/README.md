@@ -64,4 +64,5 @@ node deploy.js $AK $SK $BUCKET
 
 * [文案排版](https://github.com/sparanoid/chinese-copywriting-guidelines)
 * [CSS 顺序](https://www.shejidaren.com/css-written-specifications.html)
+* [协议排版规范](https://cf.qiniu.io/pages/viewpage.action?pageId=92196844)
 * 文案统一，例如应用程序统一写为 App，而不是 App、APP 混用
