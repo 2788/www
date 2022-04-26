@@ -9,8 +9,8 @@ export default function ProductNotice({ notices }: { notices: INotice[] }) {
   if (!notices || !notices.length) {
     return null
   }
-  const news = notices.filter(item => item.type === 'news')
-  const welfares = notices.filter(item => item.type === 'welfares')
+  const news = notices.filter(item => item.type === 'news').sort(((a, b) => b.editTime - a.editTime))
+  const welfares = notices.filter(item => item.type === 'welfares').sort(((a, b) => b.editTime - a.editTime))
 
   return (
     <PageNotice>
