@@ -4,7 +4,9 @@
  */
 
 import React, { PropsWithChildren, ReactNode } from 'react'
+
 import Link from 'components/Link'
+
 import { useHoverHandlers } from 'hooks/hover'
 
 import style from './style.less'
@@ -16,16 +18,43 @@ export type Props = PropsWithChildren<{
   onHover?: (hovered: boolean) => void
 }>
 
-export default function IconTextEntry({ icon, href, onClick, onHover, children }: Props) {
+export default function IconTextEntry({
+  icon,
+  href,
+  onClick,
+  onHover,
+  children
+}: Props) {
   const hoverHandlers = useHoverHandlers(onHover)
   const content = (
     <>
       {icon}
-      <span className={style.text}>{children}</span>
+      <span className={style.text}>
+        {children}
+      </span>
     </>
   )
+
   if (href != null) {
-    return <Link className={style.wrapper} href={href} onClick={onClick} {...hoverHandlers}>{content}</Link>
+    return (
+      <Link
+        className={style.wrapper}
+        href={href}
+        onClick={onClick}
+        {...hoverHandlers}
+      >
+        {content}
+      </Link>
+    )
   }
-  return <div className={style.wrapper} onClick={onClick} {...hoverHandlers}>{content}</div>
+
+  return (
+    <div
+      className={style.wrapper}
+      onClick={onClick}
+      {...hoverHandlers}
+    >
+      {content}
+    </div>
+  )
 }
