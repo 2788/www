@@ -4,9 +4,11 @@
  */
 
 import React, { useEffect } from 'react'
+
 import Layout from 'components/Layout/External'
 import { EntryV2 as FeedbackEntry, useModal } from 'components/Feedback'
 import ScrollToTop from 'components/ScrollToTop'
+
 import { register } from './helper'
 
 // 调起反馈浮层的函数
@@ -18,12 +20,15 @@ let showModalFn: (() => void) | undefined
  */
 function FeedbackInvoker() {
   const { startConsulting } = useModal()
+
   useEffect(() => {
     showModalFn = startConsulting
+
     return () => {
       showModalFn = undefined
     }
   }, [startConsulting])
+
   return null
 }
 
@@ -38,8 +43,10 @@ register('feedback-entry-v2', () => (
     if (!showModalFn) {
       // eslint-disable-next-line no-console
       console.warn('showModal() not ready yet')
+
       return
     }
+
     showModalFn()
   }
 })
