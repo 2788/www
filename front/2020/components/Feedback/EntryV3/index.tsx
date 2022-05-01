@@ -12,24 +12,27 @@ import { useMobile } from 'hooks/ua'
 import { useClickOutside } from 'hooks/click'
 
 import Link from 'components/Link'
-import IconTextEntry from 'components/IconTextEntryV2'
+import IconEntry from 'components/IconEntry'
 
 import { useModal } from '../Modal'
 
 import IconContact from '../icons/contact_v2.svg'
 import IconPhone from '../icons/phone.svg'
+import IconWechat from '../icons/wechat.svg'
 import IconEarphone from '../icons/earphone.svg'
+import IconWechatQRCode from '../icons/wechat_qr_code.png'
 
 import style from './style.less'
 
 /** 用户反馈入口 */
 export default function FeedbackEntry() {
   const isMobile = useMobile()
-  return (
-    isMobile
-    ? <FeedbackEntryMobile />
-    : <FeedbackEntryPc />
-  )
+
+  if (isMobile) {
+    return <FeedbackEntryMobile />
+  }
+
+  return <FeedbackEntryPc />
 }
 
 function FeedbackEntryMobile() {
@@ -62,7 +65,7 @@ function FeedbackEntryMobile() {
         icon={<IconEarphone />}
         onClick={startConsulting}
       >
-        智能客服 24 小时在线，为你解决问题
+        <p>智能客服 24 小时在线，为你解决问题</p>
       </ContactItem>
     </ContactPanel>
   )
@@ -88,14 +91,19 @@ function FeedbackEntryMobile() {
 
 function FeedbackEntryPc() {
   const { startConsulting } = useModal()
-  const [contactPanelVisible, setPanelVisible] = useState<boolean | null>(null)
 
-  const handleHover = useMemo(() => debounce(setPanelVisible, 100), [])
+  const [contactPanelVisible, setContactPanelVisible] = useState<boolean | null>(null)
+  const [wechatPanelVisible, setWechatPanelVisible] = useState<boolean | null>(null)
+  const [consultPanelVisible, setConsultPanelVisible] = useState<boolean | null>(null)
+
+  const handleContactHover = useMemo(() => debounce(setContactPanelVisible, 100), [])
+  const handleWechatHover = useMemo(() => debounce(setWechatPanelVisible, 100), [])
+  const handleConsultHover = useMemo(() => debounce(setConsultPanelVisible, 100), [])
 
   const contactPanelView = (contactPanelVisible != null) && (
     <ContactPanel
       visible={contactPanelVisible}
-      onHover={handleHover}
+      onHover={handleContactHover}
     >
       <ContactItem
         title="电话咨询"
@@ -104,29 +112,89 @@ function FeedbackEntryPc() {
         <p>售前：<span className={style.number}>400-808-9176 转 1</span></p>
         <p>售后：<span className={style.number}>400-808-9176 转 2</span></p>
       </ContactItem>
+    </ContactPanel>
+  )
+  const wechatPanelView = (wechatPanelVisible != null) && (
+    <ContactPanel
+      visible={wechatPanelVisible}
+      onHover={handleWechatHover}
+    >
+      <ContactItem title="微信咨询">
+        <p>扫码添加牛小七，立获专业售前服务和新人优惠券</p>
 
+        <img
+          className={style.iconWechatQRCode}
+          src={IconWechatQRCode}
+          title="微信咨询"
+          alt="微信咨询"
+        />
+      </ContactItem>
+    </ContactPanel>
+  )
+  const consultPanelView = (consultPanelVisible != null) && (
+    <ContactPanel
+      visible={consultPanelVisible}
+      onHover={handleConsultHover}
+    >
       <ContactItem
         title="智能客服"
         onClick={startConsulting}
       >
-        智能客服 24 小时在线，为你解决问题
+        <p>智能客服 24 小时在线，为你解决问题</p>
       </ContactItem>
     </ContactPanel>
   )
 
   return (
-    <div className={style.wrapper}>
-      <div className={style.entryWrapper}>
-        <IconTextEntry
-          icon={<IconContact />}
-          onHover={handleHover}
-        >
-          联系我们
-        </IconTextEntry>
+    <>
+      <div
+        className={cls(
+          style.wrapper,
+          style.phoneWrapper
+        )}
+      >
+        <div className={style.entryWrapper}>
+          <IconEntry
+            icon={<IconPhone />}
+            onHover={handleContactHover}
+          />
+        </div>
+
+        {contactPanelView}
       </div>
 
-      {contactPanelView}
-    </div>
+      <div
+        className={cls(
+          style.wrapper,
+          style.wechatWrapper
+        )}
+      >
+        <div className={style.entryWrapper}>
+          <IconEntry
+            icon={<IconWechat />}
+            onHover={handleWechatHover}
+          />
+        </div>
+
+        {wechatPanelView}
+      </div>
+
+      <div
+        className={cls(
+          style.wrapper,
+          style.earphoneWrapper
+        )}
+      >
+        <div className={style.entryWrapper}>
+          <IconEntry
+            icon={<IconEarphone />}
+            onHover={handleConsultHover}
+          />
+        </div>
+
+        {consultPanelView}
+      </div>
+    </>
   )
 }
 
