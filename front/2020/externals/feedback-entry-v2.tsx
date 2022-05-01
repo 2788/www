@@ -1,6 +1,7 @@
 /**
  * @file 用户反馈入口 V2
  * @description 用户反馈入口（含滚动到顶部的按钮）对应的 HTML 片段，用于外部集成
+ * @deprecated 待其他站点切换为 feedback-entry-v3 后这里（及对应的依赖）可以删除
  */
 
 import React, { useEffect } from 'react'
