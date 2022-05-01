@@ -29,6 +29,7 @@ export default function IconTextEntry({
   const content = (
     <>
       {icon}
+
       <span className={style.text}>
         {children}
       </span>
