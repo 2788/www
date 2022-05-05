@@ -18,9 +18,11 @@ import { useModal } from '../Modal'
 
 import IconContact from '../icons/contact_v2.svg'
 import IconPhone from '../icons/phone.svg'
-import IconWechat from '../icons/wechat.svg'
+import IconPhoneV3 from '../icons/phone_v3.svg'
+import IconWechatV3 from '../icons/wechat_v3.svg'
 import IconEarphone from '../icons/earphone.svg'
-import IconWechatQRCode from '../icons/wechat_qr_code.png'
+import IconEarphoneV3 from '../icons/earphone_v3.svg'
+import IconWechatQRCodeV3 from '../icons/wechat_qr_code_v3.png'
 
 import style from './style.less'
 
@@ -124,7 +126,7 @@ function FeedbackEntryPc() {
 
         <img
           className={style.iconWechatQRCode}
-          src={IconWechatQRCode}
+          src={IconWechatQRCodeV3}
           title="微信咨询"
           alt="微信咨询"
         />
@@ -155,7 +157,7 @@ function FeedbackEntryPc() {
       >
         <div className={style.entryWrapper}>
           <IconEntry
-            icon={<IconPhone />}
+            icon={<IconPhoneV3 />}
             onHover={handleContactHover}
           />
         </div>
@@ -171,7 +173,7 @@ function FeedbackEntryPc() {
       >
         <div className={style.entryWrapper}>
           <IconEntry
-            icon={<IconWechat />}
+            icon={<IconWechatV3 />}
             onHover={handleWechatHover}
           />
         </div>
@@ -187,7 +189,7 @@ function FeedbackEntryPc() {
       >
         <div className={style.entryWrapper}>
           <IconEntry
-            icon={<IconEarphone />}
+            icon={<IconEarphoneV3 />}
             onHover={handleConsultHover}
           />
         </div>
