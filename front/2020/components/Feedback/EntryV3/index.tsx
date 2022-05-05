@@ -121,8 +121,11 @@ function FeedbackEntryPc() {
       visible={wechatPanelVisible}
       onHover={handleWechatHover}
     >
-      <ContactItem title="微信咨询">
-        <p>扫码添加牛小七，立获专业售前服务和新人优惠券</p>
+      <ContactItem
+        title="微信咨询"
+        withHover={false}
+      >
+        <p>扫码添加客户经理，立获专业售前服务和新人优惠券</p>
 
         <img
           className={style.iconWechatQRCode}
@@ -229,6 +232,7 @@ type ContactItemProps = PropsWithChildren<{
   title: string
   icon?: ReactNode
   href?: string
+  withHover?: boolean
   onClick?: () => void
 }>
 
@@ -236,6 +240,7 @@ function ContactItem({
   title,
   icon,
   href,
+  withHover = true,
   onClick,
   children
 }: ContactItemProps) {
@@ -262,7 +267,10 @@ function ContactItem({
   if (href == null) {
     return (
       <div
-        className={style.contactItem}
+        className={cls(
+          style.contactItem,
+          withHover && style.withHover
+        )}
         onClick={onClick}
       >
         {content}
@@ -272,7 +280,10 @@ function ContactItem({
 
   return (
     <Link
-      className={style.contactItem}
+      className={cls(
+        style.contactItem,
+        withHover && style.withHover
+      )}
       href={href}
       onClick={onClick}
     >

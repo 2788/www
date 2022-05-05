@@ -83,7 +83,6 @@
     position: relative;
     display: block;
     padding: 8px 20px;
-    cursor: pointer;
 
     .iconWrapper {
       position: absolute;
@@ -132,11 +131,15 @@
       padding: 8px 8px 8px 50px;
     });
 
-    &:hover {
-      background-color: #F2FBFE;
+    &.withHover {
+      cursor: pointer;
 
-      .title {
-        color: @primary-color;
+      &:hover {
+        background-color: #F2FBFE;
+
+        .title {
+          color: @primary-color;
+        }
       }
     }
   }
