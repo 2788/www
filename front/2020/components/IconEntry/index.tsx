@@ -1,9 +1,9 @@
 /**
- * @file 带标题 & icon 的操作入口 V2
+ * @file 带 icon 的操作入口
  * @description 一般用于 PC 端，固定在页面右下角
  */
 
-import React, { PropsWithChildren, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 import Link from 'components/Link'
 
@@ -11,30 +11,20 @@ import { useHoverHandlers } from 'hooks/hover'
 
 import style from './style.less'
 
-export type Props = PropsWithChildren<{
+export type Props = {
   icon: ReactNode
   href?: string
   onClick?: () => void
   onHover?: (hovered: boolean) => void
-}>
+}
 
-export default function IconTextEntry({
+export default function IconEntry({
   icon,
   href,
   onClick,
-  onHover,
-  children
+  onHover
 }: Props) {
   const hoverHandlers = useHoverHandlers(onHover)
-  const content = (
-    <>
-      {icon}
-
-      <span className={style.text}>
-        {children}
-      </span>
-    </>
-  )
 
   if (href != null) {
     return (
@@ -44,7 +34,7 @@ export default function IconTextEntry({
         onClick={onClick}
         {...hoverHandlers}
       >
-        {content}
+        {icon}
       </Link>
     )
   }
@@ -55,7 +45,7 @@ export default function IconTextEntry({
       onClick={onClick}
       {...hoverHandlers}
     >
-      {content}
+      {icon}
     </div>
   )
 }

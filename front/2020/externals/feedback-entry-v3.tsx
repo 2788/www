@@ -1,13 +1,12 @@
 /**
- * @file 用户反馈入口 V2
+ * @file 用户反馈入口 V3
  * @description 用户反馈入口（含滚动到顶部的按钮）对应的 HTML 片段，用于外部集成
- * @deprecated 待其他站点切换为 feedback-entry-v3 后这里（及对应的依赖）可以删除
  */
 
 import React, { useEffect } from 'react'
 
 import Layout from 'components/Layout/External'
-import { EntryV2 as FeedbackEntry, useModal } from 'components/Feedback'
+import { EntryV3 as FeedbackEntry, useModal } from 'components/Feedback'
 import ScrollToTop from 'components/ScrollToTop'
 
 import { register } from './helper'
@@ -33,7 +32,7 @@ function FeedbackInvoker() {
   return null
 }
 
-register('feedback-entry-v2', () => (
+register('feedback-entry-v3', () => (
   <Layout>
     <FeedbackInvoker />
     <FeedbackEntry />

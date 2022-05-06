@@ -128,6 +128,7 @@
   :global {
     animation-name: fadeIn;
   }
+
   animation-duration: @time;
   animation-timing-function: @ease;
   animation-delay: @delay;
@@ -173,6 +174,7 @@
   &:hover {
     transform: @transform !important;
   }
+
   .mobile({
     &:hover {
       transform: @mobile-transform !important;
@@ -214,10 +216,11 @@
 // 页面右下角浮动条（如“回到顶部”、“免费注册”、“联系我们”等）的公共样式
 .floatingBar() {
   border: 1px solid @border-color;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .04);
   background-color: @grey-1;
 
   color: @grey-7;
+
   &:hover {
     color: @primary-color;
   }

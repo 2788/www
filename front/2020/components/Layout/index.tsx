@@ -78,7 +78,7 @@ function ContentWrapper({ forceSimple = false, children }: PropsWithChildren<{ f
         </ErrorBoundary>
         {notSimple && <Footer />}
         <RegisterEntry />
-        {notSimple && <feedback.EntryV2 />}
+        {notSimple && <feedback.EntryV3 />}
         <feedback.Modal />
         <ScrollToTop />
       </feedback.ModalProvider>

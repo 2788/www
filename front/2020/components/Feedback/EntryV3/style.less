@@ -1,21 +1,29 @@
 @import '~utils/less/index.less';
 
-// 同 ./Button/style.less
-@buttonSize: 64px;
-@mobileButtonSize: 44px;
-
-.wrapper, .mobileWrapper {
+.wrapper,
+.mobileWrapper {
   position: fixed;
   display: flex;
   z-index: @feedback-z-index;
 }
 
 .wrapper {
-  bottom: 94px;
   right: @floating-bar-pc-right;
   height: 0;
   flex-direction: row-reverse;
   align-items: flex-end;
+
+  &.phoneWrapper {
+    bottom: 182px;
+  }
+
+  &.wechatWrapper {
+    bottom: 138px;
+  }
+
+  &.earphoneWrapper {
+    bottom: 94px;
+  }
 }
 
 .mobileWrapper {
@@ -40,13 +48,13 @@
 }
 
 .contactPanelWrapper {
-  flex: 0 0 274px;
+  flex: 0 0 246px;
   margin-right: 12px;
   padding: 8px 0;
 
-  border: 1px solid @border-color;
+  border: 1px solid #E6EDF3;
   border-radius: 2px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, .04);
+  box-shadow: 0 4px 8px rgba(51, 51, 51, .08);
   background-color: @grey-1;
 
   .mobile({
@@ -70,8 +78,7 @@
   .contactItem {
     position: relative;
     display: block;
-    padding: 8px 8px 8px 50px;
-    cursor: pointer;
+    padding: 8px 20px;
 
     .iconWrapper {
       position: absolute;
@@ -88,15 +95,17 @@
     }
 
     .title {
+      color: @grey-7;
       font-size: 14px;
       font-weight: 500;
-      color: @grey-7;
+      line-height: 22px;
     }
 
     .content {
       margin-top: 4px;
-      font-size: 12px;
       color: @grey-6;
+      font-size: 12px;
+      line-height: 18px;
 
       p {
         // 这里稍微防御一下，避免 externals 模式下加被外站样式影响
@@ -104,13 +113,29 @@
         font-size: inherit;
         line-height: inherit;
       }
+
+      .iconWechatQRCode {
+        width: 204px;
+        height: 204px;
+        margin: 0 auto;
+        margin-top: 12px;
+        display: block;
+      }
     }
 
-    &:hover {
-      background-color: rgba(0, 170, 231, .05);
+    .mobile({
+      padding: 8px 8px 8px 50px;
+    });
 
-      .title {
-        color: @primary-color;
+    &.withHover {
+      cursor: pointer;
+
+      &:hover {
+        background-color: #F2FBFE;
+
+        .title {
+          color: @primary-color;
+        }
       }
     }
   }

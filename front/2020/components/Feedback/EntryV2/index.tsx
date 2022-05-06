@@ -3,19 +3,23 @@
  * @description
  */
 
+import React, { useState, ReactNode, PropsWithChildren, useMemo, useCallback } from 'react'
 import cls from 'classnames'
 import { debounce } from 'lodash'
-import React, { useState, ReactNode, PropsWithChildren, useMemo, useCallback } from 'react'
+
 import { useHoverHandlers } from 'hooks/hover'
 import { useMobile } from 'hooks/ua'
 import { useClickOutside } from 'hooks/click'
+
 import Link from 'components/Link'
 import IconTextEntry from 'components/IconTextEntryV2'
 
 import { useModal } from '../Modal'
+
 import IconContact from '../icons/contact_v2.svg'
 import IconPhone from '../icons/phone.svg'
 import IconEarphone from '../icons/earphone.svg'
+
 import style from './style.less'
 
 /** 用户反馈入口 */
@@ -34,7 +38,10 @@ function FeedbackEntryPc() {
   const handleHover = useMemo(() => debounce(setPanelVisible, 100), [])
 
   const contactPanelView = (contactPanelVisible != null) && (
-    <ContactPanel visible={contactPanelVisible} onHover={handleHover} />
+    <ContactPanel
+      visible={contactPanelVisible}
+      onHover={handleHover}
+    />
   )
 
   return (
@@ -47,6 +54,7 @@ function FeedbackEntryPc() {
           联系我们
         </IconTextEntry>
       </div>
+
       {contactPanelView}
     </div>
   )
@@ -57,16 +65,35 @@ type ContactPanelProps = {
   onHover?: (hovered: boolean) => void
 }
 
-export function ContactPanel({ visible, onHover }: ContactPanelProps) {
+export function ContactPanel({
+  visible,
+  onHover
+}: ContactPanelProps) {
   const { startConsulting } = useModal()
   const hoverHandlers = useHoverHandlers(onHover)
+
   return (
-    <div className={cls(style.contactPanelWrapper, !visible && style.hidden)} {...hoverHandlers}>
-      <ContactItem title="电话咨询" icon={<IconPhone />} href="/contact">
+    <div
+      className={cls(
+        style.contactPanelWrapper,
+        !visible && style.hidden
+      )}
+      {...hoverHandlers}
+    >
+      <ContactItem
+        title="电话咨询"
+        icon={<IconPhone />}
+        href="/contact"
+      >
         <p>售前：<span className={style.number}>400-808-9176 转 1</span></p>
         <p>售后：<span className={style.number}>400-808-9176 转 2</span></p>
       </ContactItem>
-      <ContactItem title="智能客服" icon={<IconEarphone />} onClick={startConsulting}>
+
+      <ContactItem
+        title="智能客服"
+        icon={<IconEarphone />}
+        onClick={startConsulting}
+      >
         智能客服 24 小时在线，为你解决问题
       </ContactItem>
     </div>
@@ -80,19 +107,46 @@ type ContactItemProps = PropsWithChildren<{
   onClick?: () => void
 }>
 
-function ContactItem({ icon, title, href, onClick, children }: ContactItemProps) {
+function ContactItem({
+  title,
+  icon,
+  href,
+  onClick,
+  children
+}: ContactItemProps) {
   const content = (
     <>
-      <div className={style.iconWrapper}>{icon}</div>
-      <h5 className={style.title}>{title}</h5>
-      <div className={style.content}>{children}</div>
+      <div className={style.iconWrapper}>
+        {icon}
+      </div>
+
+      <h5 className={style.title}>
+        {title}
+      </h5>
+
+      <div className={style.content}>
+        {children}
+      </div>
     </>
   )
+
   if (href == null) {
-    return <div className={style.contactItem} onClick={onClick}>{content}</div>
+    return (
+      <div
+        className={style.contactItem}
+        onClick={onClick}
+      >
+        {content}
+      </div>
+    )
   }
+
   return (
-    <Link className={style.contactItem} href={href} onClick={onClick}>
+    <Link
+      className={style.contactItem}
+      href={href}
+      onClick={onClick}
+    >
       {content}
     </Link>
   )
@@ -116,12 +170,19 @@ function FeedbackEntryMobile() {
   )
 
   return (
-    <div className={style.mobileWrapper} ref={wrapperRef}>
+    <div
+      className={style.mobileWrapper}
+      ref={wrapperRef}
+    >
       <div className={style.mobileEntryWrapper}>
-        <div className={style.iconBtn} onClick={handleEntryClick}>
+        <div
+          className={style.iconBtn}
+          onClick={handleEntryClick}
+        >
           <IconContact />
         </div>
       </div>
+
       {contactPanelView}
     </div>
   )
