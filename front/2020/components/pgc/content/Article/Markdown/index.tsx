@@ -7,7 +7,9 @@
 import React, { useMemo, createElement } from 'react'
 
 import { Preview } from 'constants/pgc/content'
-import { mdTextToHTMLAst, RootNode, renderHTMLAst, getIdFromContentDetailUrl } from './utils'
+
+import { getIdFromContentDetailUrl } from '../../url'
+import { mdTextToHTMLAst, RootNode, renderHTMLAst } from './utils'
 import Embed from './Embed'
 
 import './style.less'

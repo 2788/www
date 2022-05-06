@@ -1,13 +1,13 @@
 /**
- * @file 内容站
+ * @file 内容站 - 详情页
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
 import React from 'react'
 import { GetStaticPropsContext } from 'next'
 
-import { ContentType } from 'constants/pgc/content'
-import { getContent, listReleasedContent, ListResult } from 'apis/admin/pgc/content'
+import { ContentType, contentTypeTextMap, contentCategoryTextMap } from 'constants/pgc/content'
+import { getContent, listAllReleasedContent } from 'apis/admin/pgc/content'
 import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
 import { BaseProps } from 'components/pgc/content/Layout'
@@ -20,15 +20,19 @@ export interface Props extends Partial<BaseProps> {
   articleHtmlAst: AstRootNode | null
 }
 
-export default function Detail({ type, contentDetail, articleHtmlAst, createdAt, preview }: Props) {
+export default function PgcDetail({ type, contentDetail, articleHtmlAst, createdAt, preview }: Props) {
   if (!type || !contentDetail) {
     return (
       <Redirect target="/404" />
     )
   }
 
-  const title = contentDetail.title || '内容详情'
-  const keywords = ['七牛云', '内容站'].concat(contentDetail.keywords ?? []).join(', ')
+  const title = contentDetail.title || `${contentDetail.category}${type}`
+  const keywords = [
+    '七牛云',
+    contentTypeTextMap[type],
+    contentCategoryTextMap[contentDetail.category]
+  ].concat(contentDetail.keywords ?? []).join(', ')
 
   const pageView = {
     [ContentType.Article]: (
@@ -47,7 +51,7 @@ export default function Detail({ type, contentDetail, articleHtmlAst, createdAt,
     <Layout
       title={title}
       keywords={keywords}
-      description={contentDetail.description ?? ''}
+      description={contentDetail.description ?? keywords}
       forceSimple={!!preview}
     >
       {pageView}
@@ -71,12 +75,7 @@ export async function getStaticProps({ params }: GetStaticPropsContext<{ id: str
 }
 
 export async function getStaticPaths() {
-  const maxLimit = 999
-  const { count } = await listReleasedContent({ offset: 0, limit: 1 })
-  const len = Math.ceil(count / maxLimit)
-  const optionsList = Array.from(Array(len), (_, i) => ({ offset: i, limit: maxLimit }))
-  const resultList = await Promise.all(optionsList.map(options => listReleasedContent(options)))
-  const contents = ([] as ListResult['data']).concat(...resultList.map(result => result.data)) // flat
+  const contents = await listAllReleasedContent()
   const paths = contents.map(({ id }) => ({ params: { id } }))
   return {
     paths,

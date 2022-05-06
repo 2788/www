@@ -82,6 +82,22 @@
     }
   }
 
+  &.typePrimaryLight {
+    .withColor(
+      @grey-1, @primary-color, @primary-color,
+      @grey-1, @blue-5, @blue-5,
+      @border-color, #F2F2F2, #F2F2F2
+    );
+
+    &.withBorder {
+      .withColor(
+        @grey-1, @primary-color, @grey-1,
+        @grey-1, @blue-5, @grey-1,
+        @border-color, #F2F2F2, @border-color
+      );
+    }
+  }
+
   &.typeHollow {
     .withColor(
       @blue-6, transparent, transparent,
@@ -133,6 +149,14 @@
   &.sizeSmall {
     .withSize(32px, 96px);
     // TODO: 移动端要不要再小一号？
+  }
+
+  &.sizeLarge {
+    .withSize(40px, 120px);
+
+    .mobile({
+      .withSize(40px, 120px); // TODO: 移动端真的不需要小一号吗？
+    });
   }
 }
 

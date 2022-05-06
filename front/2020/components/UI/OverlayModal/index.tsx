@@ -1,3 +1,7 @@
+/**
+ * @deprecated use `components/UI/Modal` instead
+ */
+
 import React, { HTMLAttributes } from 'react'
 import classnames from 'classnames'
 import { useOverlay } from 'components/Overlay'
@@ -9,6 +13,7 @@ type Props = Omit<HTMLAttributes<HTMLElement>, 'title'> & {
   title: string
 }
 
+/** @deprecated use `components/UI/Modal` instead */
 export default function OverlayModal(props: Props) {
   const { remove } = useOverlay()
   const modalClassName = classnames(style.modalContent, props.className)

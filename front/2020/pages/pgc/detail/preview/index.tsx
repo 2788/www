@@ -19,7 +19,7 @@ interface WwwPreview {
   editPagePrefix: string
 }
 
-export default function DetailPreview() {
+export default function PgcDetailPreview() {
   const [previewData, setPreviewData] = useState<WwwPreview>()
   const [articleHtmlAst, setArticleHtmlAst] = useState<AstRootNode | null>(null)
 

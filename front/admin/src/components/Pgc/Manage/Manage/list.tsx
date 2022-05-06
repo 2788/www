@@ -16,7 +16,7 @@ import { timeFormatter } from 'utils/time'
 import { pgcManageEditTitle } from 'constants/route'
 import {
   ContentId, Content,
-  ContentType, contentTypes, contentTypeTextMap, ContentCategory, contentCategorys, contentCategoryTextMap
+  ContentType, contentTypes, contentTypeTextMap, ContentCategory, contentCategories, contentCategoryTextMap
 } from 'constants/pgc/conetnt'
 import {
   getEditPageUrl, getWwwContentDetailUrl, getWwwContentDetailEmbedMarkdown, isUpToDate
@@ -66,7 +66,7 @@ function usePgcListState() {
   const contentCategoryColumnFilter = useMemo<TableColumnSelectFilterOptions<ContentCategory>>(() => ({
     type: 'select',
     value: selectedContentCategory,
-    optionItems: contentCategorys.map(
+    optionItems: contentCategories.map(
       contentCategory => ({
         text: contentCategoryTextMap[contentCategory],
         value: contentCategory

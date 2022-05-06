@@ -5,27 +5,35 @@
 
 @import "~utils/less/index.less";
 
-.main {
+.detail {
   .mobile({
     padding-top: 20px;
     padding-bottom: 20px;
   });
-}
 
-.header {
-  margin-bottom: 36px;
-}
+  .header {
+    margin-bottom: 36px;
+  }
 
-.card {
-  display: flex;
+  .card {
+    display: flex;
 
-  .summary {
-    flex: 1;
-    overflow: hidden;
-    margin-left: 36px;
+    .summary {
+      flex: 1;
+      overflow: hidden;
+      margin-left: 36px;
+
+      .mobile({
+        margin-left: 16px;
+      });
+    }
+  }
+
+  .desc {
+    margin-bottom: 32px;
 
     .mobile({
-      margin-left: 16px;
+      margin: 16px 0;
     });
   }
 }
@@ -37,14 +45,6 @@
   .mobile({
     width: 90px;
     height: 118px;
-  });
-}
-
-.desc {
-  margin-bottom: 32px;
-
-  .mobile({
-    margin: 16px 0;
   });
 }
 
@@ -68,11 +68,45 @@
         margin: -16px 0 0 -16px;
         width: 32px;
         height: 32px;
-      })
+      });
     }
 
     &:hover {
       opacity: .9;
     }
+  }
+}
+
+.item {
+  display: flex;
+  margin: 0 72px 36px 0;
+
+  .mobile({
+    width: 100%;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #EEE;
+  });
+
+  > img {
+    width: 137px;
+    height: 180px;
+    margin-right: 16px;
+
+    .mobile({
+      width: 84px;
+      height: 110px;
+      margin-right: 8px;
+    });
+  }
+
+  .card {
+    width: 400px;
+    min-width: 0;
+
+    .mobile({
+      width: auto;
+      flex: 1;
+    });
   }
 }

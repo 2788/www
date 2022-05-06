@@ -2,9 +2,13 @@
  * @file 可切换的 tab 列表
  */
 
-import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties } from 'react'
+import React, {
+  ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties, useRef, useEffect
+} from 'react'
 import classnames from 'classnames'
 import { useOnChange } from 'hooks'
+
+import { useMobile } from 'hooks/ua'
 import style from './style.less'
 
 type ContextValue = {
@@ -15,9 +19,9 @@ type ContextValue = {
 
 const tabContext = createContext<ContextValue | null>(null)
 
-// 72 40 56
-export type Size = 'default' | 'small' | 'middle'
-export type Theme = 'default' | 'white' // theme: white 适用于有底色的环境
+// 72 56 40 34
+export type Size = 'default' | 'middle' | 'small' | 'mini'
+export type Theme = 'default' | 'white' | 'thin-primary-light' | 'thin-grey' // theme: white 适用于有底色的环境
 
 export type Props = {
   /** Tabs 的内容，一般是多个 `<Tab>` */
@@ -39,18 +43,44 @@ export type Props = {
   /** 颜色 */
   theme?: Theme,
   /** 是否垂直 */
-  vertical?: boolean
+  vertical?: boolean // FIXME: 支持移动端
 }
 
 const themeClassMap = {
   default: style.themeDefault,
-  white: style.themeWhite
+  white: style.themeWhite,
+  'thin-primary-light': style.themeThinPrimaryLight,
+  'thin-grey': style.themeThinGrey
 }
 
 const sizeMap = {
   default: null,
   middle: style.middle,
-  small: style.small
+  small: style.small,
+  mini: style.mini
+}
+
+// tabs 横向滚动条
+function useScrollable(enabled: boolean) {
+  const headerRef = useRef<HTMLUListElement>(null)
+  const [scrollable, setScrollable] = useState(false)
+
+  useEffect(() => {
+    if (!enabled) {
+      return
+    }
+
+    // TODO: 改为比 setInterval 更好的实现
+    const handleId = setInterval(() => {
+      const ele = headerRef.current!
+      setScrollable(ele.scrollWidth > ele.clientWidth)
+    }, 200)
+    return () => {
+      clearInterval(handleId)
+    }
+  }, [enabled])
+
+  return [enabled && scrollable, headerRef] as const
 }
 
 export default function Tabs({
@@ -59,6 +89,8 @@ export default function Tabs({
   shadow = true, theme = 'default', vertical = false
 }: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
+  const isMobile = useMobile()
+  const [scrollable, headerRef] = useScrollable(isMobile && !vertical) // TODO: 支持 PC 端
   const tabList: ReactElement[] = []
   const tabPanes: ReactElement[] = []
 
@@ -108,9 +140,19 @@ export default function Tabs({
   return (
     <tabContext.Provider value={{ vertical, onChange: handleChange, value: active }}>
       <div className={wrapperClass}>
-        <ul className={classnames(style.header, shadow && style.shadow, vertical && style.verticalHeader)}>
-          {tabList}
-        </ul>
+        <div className={classnames(style.headerWrapper, scrollable && style.scrollable)}>
+          <ul
+            ref={headerRef}
+            className={classnames(
+              style.header,
+              shadow && style.shadow,
+              vertical && style.verticalHeader,
+              scrollable && style.scrollable
+            )}
+          >
+            {tabList}
+          </ul>
+        </div>
         {content}
       </div>
     </tabContext.Provider>
@@ -132,9 +174,11 @@ export type TabProps = {
   value: string
   /** Tab 内容 */
   children: ReactNode
+  /** class 名 */
+  className?: string
 }
 
-export function Tab({ value, title, children }: TabProps) {
+export function Tab({ value, title, children, className }: TabProps) {
   const contextValue = useContext(tabContext)
   if (!contextValue) {
     throw new Error('Component Tab should be used in Tabs.')
@@ -142,12 +186,17 @@ export function Tab({ value, title, children }: TabProps) {
 
   const active = contextValue.value === value
   const onClick = () => !active && contextValue.onChange(value)
-  const className = [style.item, active && style.active, contextValue.vertical && style.verticalItem].filter(Boolean).join(' ')
+  const css = [
+    style.item,
+    active && style.active,
+    contextValue.vertical && style.verticalItem,
+    className
+  ].filter(Boolean).join(' ')
   // eslint-disable-next-line no-underscore-dangle
   const _title = title || (typeof children === 'string' ? children : undefined)
 
   return (
-    <li className={className} onClick={onClick} title={_title}>
+    <li className={css} onClick={onClick} title={_title}>
       {children}
     </li>
   )
@@ -159,7 +208,7 @@ type TabPaneProps = {
   className?: string
   // 非激活自动销毁, 默认隐藏
   autoDestroy?: boolean
-  children: ReactNode
+  children?: ReactNode
   style?: CSSProperties
 }
 

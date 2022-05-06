@@ -6,15 +6,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import { useMobile } from 'hooks/ua'
-import { UserLimitType } from 'constants/pgc/content'
+import { ContentId, ContentDetailWithTime, UserLimitType } from 'constants/pgc/content'
 import { VerificationSmsOperation } from 'apis/admin/verification'
 
 import { useSignInRequired } from '../sign-in-required'
 import { useVerifySms } from '../verification-sms-required'
 import Layout, { BaseProps, Header } from '../Layout'
+import Card, { CardLink, CardContent } from '../Card'
 import PlayIcon from './play.svg'
 
-import style from './style.m.less'
+import style from './style.less'
 
 function Video({ contentDetail }: BaseProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -83,7 +84,7 @@ export default function VideoPage({ contentDetail, preview, createdAt }: BasePro
 
   if (isMobile) {
     return (
-      <Layout preview={preview} className={style.main}>
+      <Layout preview={preview} className={style.detail}>
         <Video contentDetail={contentDetail} />
         <Header
           contentDetail={contentDetail}
@@ -97,7 +98,7 @@ export default function VideoPage({ contentDetail, preview, createdAt }: BasePro
   }
 
   return (
-    <Layout preview={preview} className={style.main}>
+    <Layout preview={preview} className={style.detail}>
       <Header
         contentDetail={contentDetail}
         createdAt={createdAt}
@@ -118,5 +119,22 @@ export function EmbedVideo({ contentDetail }: BaseProps) {
     <ins className={style.embed}>
       <Video contentDetail={contentDetail} />
     </ins>
+  )
+}
+
+export interface VideoItemProps {
+  id: ContentId
+  contentDetail: ContentDetailWithTime
+}
+
+export function VideoItem({ id, contentDetail }: VideoItemProps) {
+  const isMobile = useMobile()
+  return (
+    <CardLink id={id} className={style.item}>
+      <img src={contentDetail.posterUrl} alt="封面" />
+      <Card contentDetail={contentDetail} className={style.card}>
+        <CardContent description={isMobile ? undefined : contentDetail.description} />
+      </Card>
+    </CardLink>
   )
 }

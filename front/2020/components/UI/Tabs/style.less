@@ -1,6 +1,29 @@
 @import '~utils/less/index.less';
 
 .wrapper {
+  &.mini {
+    .item {
+      padding: 0 12px;
+      height: 34px;
+      line-height: 34px;
+      font-size: 12px;
+
+      &.active::after {
+        margin-left: -8px;
+        width: 16px;
+        border-radius: 2px;
+      }
+    }
+
+    .content {
+      padding-top: 0;
+
+      .mobile({
+        padding-top: 0;
+      });
+    }
+  }
+
   &.small {
     .item {
       padding: 0;
@@ -9,7 +32,7 @@
       font-size: 12px;
 
       &:not(:first-child) {
-        margin-left: 26px;
+        margin-left: 26px; // FIXME: 可点击区域跟其他 size 不一致
       }
     }
     .content {
@@ -34,6 +57,21 @@
   }
 }
 
+.headerWrapper {
+  position: relative;
+
+  &.scrollable::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 6px; // TODO: 支持不同的 size
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.0001) 0%, rgba(0, 0, 0, 0.1) 99.94%);
+  }
+}
+
 .header {
   margin: 0;
   padding: 0;
@@ -44,11 +82,26 @@
     box-shadow: 0 1px 0 0 rgba(238, 238, 238, 1);
   }
 
+  // TODO: scroll 实现优化 & 加折叠菜单
+  &.scrollable {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    &::-webkit-scrollbar {
+      display: none;  /* Safari and Chrome */
+    }
+    -webkit-overflow-scrolling: touch;
+  }
+
   .mobile({
     margin: 0;
     display: flex;
     justify-content: space-around;
     font-size: 12px;
+
+    &.scrollable {
+      justify-content: start;
+    }
   });
 
   &.verticalHeader{
@@ -93,6 +146,8 @@
   .ellipsis();
 
   .mobile({
+    flex-basis: auto;
+    flex-shrink: 0;
     padding: 0 4px;
     height: 48px;
     line-height: 48px;
@@ -136,6 +191,35 @@
     }
     &.active:after {
       background-color: @grey-1;
+    }
+  }
+}
+
+.themeThinPrimaryLight {
+  .item {
+    &.active, &:hover {
+      color: @primary-color;
+    }
+    &.active::after {
+      height: 2px;
+      background-color: @primary-color;
+    }
+  }
+}
+
+.themeThinGrey {
+  .header {
+    color: @grey-6;
+  }
+
+  .item {
+    &.active, &:hover {
+      color: @grey-7;
+      font-weight: 700;
+    }
+    &.active::after {
+      height: 2px;
+      background-color: @grey-7;
     }
   }
 }

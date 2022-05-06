@@ -9,10 +9,9 @@ import { useFormstateX, Form, useFormFooterCtx } from 'react-icecream-2/esm/form
 
 import { ApiException } from 'utils/fetch'
 import { verifySms, VerificationSmsOperation } from 'apis/admin/verification'
+import Button from 'components/UI/Button'
 import { ModalWithHeader, ModalHeader } from 'components/UI/Modal'
 import PhoneInfoInput, * as phoneInfoInput from 'components/PhoneInfoInput'
-
-import Button from '../Button'
 
 import style from './style.less'
 
@@ -45,7 +44,15 @@ function Footer({ submitText, errorMsg }: FooterProps) {
       {errorMsg && (
         <p className={style.error}>{errorMsg}</p>
       )}
-      <Button htmlType="submit" disabled={submitting} className={style.submitBtn}>{submitText}</Button>
+      <Button
+        type="primary-light"
+        size="large"
+        htmlType="submit"
+        disabled={submitting}
+        className={style.submitBtn}
+      >
+        {submitText}
+      </Button>
     </div>
   )
 }

@@ -1,0 +1,51 @@
+/**
+ * @file 加载更多
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.main {
+  margin-bottom: 24px;
+  text-align: center;
+
+  .mobile({
+    margin: 0 16px 12px;
+    background: #F2FBFE;
+  });
+}
+
+.btn {
+  .mobile({
+    width: 100% !important;
+  });
+}
+
+.loading {
+  width: 96px;
+}
+
+.loadingContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loadingIcon {
+  @name: ~'pgc-content-load-more-btn-loading-spin';
+
+  margin-right: 4px;
+  animation: @name 1s linear infinite;
+
+  @keyframes @name {
+    from {
+      transform-origin: 50% 50%;
+      transform: rotate(0);
+    }
+    to {
+      transform-origin: 50% 50%;
+      transform: rotate(360deg);
+    }
+  }
+}

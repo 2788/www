@@ -1,3 +1,7 @@
+/**
+ * @deprecated use `components/UI/Modal` instead
+ */
+
 import React, { createContext, PropsWithChildren, ReactElement, useCallback, useContext, useState, useMemo } from 'react'
 import { useGlobalModal } from 'hooks/scroll'
 import style from './index.less'
@@ -56,6 +60,7 @@ export function OverlaySlot() {
   )
 }
 
+/** @deprecated use `components/UI/Modal` instead */
 export function useOverlay() {
   const context = useContext(OverlayContext)
 

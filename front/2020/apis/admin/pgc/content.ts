@@ -4,48 +4,56 @@
  */
 
 import { get } from 'utils/fetch'
-import { ContentId, ContentType, ContentDetail } from 'constants/pgc/content'
+import { ContentId, ContentType, ContentCategory, Content, ReleasedContent } from 'constants/pgc/content'
+
 import { mongoApiPrefix, handleResponseData } from '..'
 
-interface ContentDetailWithTime extends ContentDetail {
-  createdAt: number
-  updatedAt: number
-}
-
-interface Content {
-  id: ContentId
-  type: ContentType // 种类
-  draft: ContentDetailWithTime
-  release?: ContentDetailWithTime // 每次刚发布的时候，release 的内容会跟 draft 相同（createdAt 除外）
-}
-
 export interface ListOptions {
-  limit?: number
+  type?: ContentType
+  category?: ContentCategory
+  limit: number
   offset?: number
 }
 
 interface ListOriginalResult {
   count: number
-  data: Array<Required<Content>> | null
+  data: ReleasedContent[] | null
 }
 
 export interface ListResult {
   count: number
-  data: Array<Required<Content>>
+  data: ReleasedContent[]
 }
 
-export async function listReleasedContent(options: ListOptions) {
-  const key = 'release.createdAt'
+export async function listReleasedContent({ type, category, ...baseOptions }: ListOptions): Promise<ListResult> {
+  const prefix = 'release'
   const query = {
-    sort: `-${key}`, // TODO: 规则需要细化
-    query: JSON.stringify({ [key]: { $gt: 0 } }),
-    ...options
+    sort: `-${prefix}.createdAt`,
+    query: JSON.stringify({
+      ...(type && { type }),
+      ...(category && { [`${prefix}.category`]: category }),
+      [prefix]: { $ne: null }
+    }),
+    ...baseOptions
   }
   const result: ListOriginalResult = await get(`${mongoApiPrefix}/pgc-content`, query)
   return {
     ...result,
     data: handleResponseData(result)
   }
+}
+
+// TODO: 抽象出与具体业务无关的 list all 方法
+export async function listAllReleasedContent(
+  options?: Omit<ListOptions, 'offset' | 'limit'>
+): Promise<ListResult['data']> {
+  const maxLimit = 999
+  const { count } = await listReleasedContent({ ...options, offset: 0, limit: 1 })
+  const len = Math.ceil(count / maxLimit)
+  const paramsList = Array.from(Array(len), (_, i) => ({ ...options, offset: i * maxLimit, limit: maxLimit }))
+  const resultList = await Promise.all(paramsList.map(params => listReleasedContent(params)))
+  const contents = ([] as ListResult['data']).concat(...resultList.map(result => result.data)) // flat
+  return contents
 }
 
 export function getContent(id: ContentId): Promise<Content> {

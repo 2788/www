@@ -5,31 +5,31 @@
 
 @import "~utils/less/index.less";
 
-.main {
+.detail {
   .mobile({
     padding: 0 0 16px;
     border-top: none;
   });
-}
 
-.header {
-  margin-bottom: 24px;
+  .header {
+    margin-bottom: 24px;
 
-  .mobile({
-    margin: 16px 16px 0 16px;
-  });
-}
+    .mobile({
+      margin: 16px 16px 0 16px;
+    });
+  }
 
-.desc {
-  margin-bottom: 20px;
-  padding: 16px 20px;
-  background: #FAFAFA;
+  .desc {
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: #FAFAFA;
 
-  .mobile({
-    margin-bottom: 0;
-    padding: 16px;
-    background: none;
-  });
+    .mobile({
+      margin-bottom: 0;
+      padding: 16px;
+      background: none;
+    });
+  }
 }
 
 .video {
@@ -68,11 +68,46 @@
       margin: -16px 0 0 -16px;
       width: 32px;
       height: 32px;
-    })
+    });
   }
 }
 
 .embed {
   display: block;
   margin: 20px 0;
+}
+
+.item {
+  width: 280px;
+  margin: 0 20px 36px 0;
+
+  .mobile({
+    display: flex;
+    width: 100%;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #EEE;
+  });
+
+  > img {
+    width: 280px;
+    height: 158px;
+    margin-bottom: 16px;
+
+    .mobile({
+      width: 140px;
+      height: 79px;
+      margin: 0 8px 0 0;
+    });
+  }
+
+  .card {
+    height: 148px;
+
+    .mobile({
+      height: auto;
+      flex: 1;
+      min-width: 0;
+    });
+  }
 }

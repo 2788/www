@@ -14,7 +14,7 @@ import { Button, TextInput as BaseTextInput } from 'react-icecream'
 import { ReplaceValue } from 'utils/ts'
 import {
   ContentDetail, Content, ContentType, contentTypeTextMap,
-  contentCategorys, contentCategoryTextMap, UserLimitType, userLimitTypes, userLimitTypeTextMap
+  contentCategories, contentCategoryTextMap, UserLimitType, userLimitTypes, userLimitTypeTextMap
 } from 'constants/pgc/conetnt'
 import Editor from 'components/common/MarkdownEditor'
 import UploadImage, { createState as createUploadImageState } from 'components/common/Upload/Img'
@@ -209,7 +209,7 @@ export default observer(function DetailForm({ type, onSubmitDraft, content, onPr
       )}
       <FormItem label="类别" required={!isEditMode}>
         <Select state={state.$.category}>
-          {contentCategorys.map(contentCategory => (
+          {contentCategories.map(contentCategory => (
             <SelectOption key={contentCategory} value={contentCategory}>
               {contentCategoryTextMap[contentCategory]}
             </SelectOption>

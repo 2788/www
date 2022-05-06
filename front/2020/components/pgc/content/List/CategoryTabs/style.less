@@ -1,0 +1,29 @@
+/**
+ * @file 类别选择
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.tabs {
+  padding-bottom: 36px;
+
+  .mobile({
+    padding-bottom: 12px;
+  });
+}
+
+// TODO: 让 `components/UI/Tabs` 支持 anchor 的场景
+.tab {
+  padding: 0 !important;
+
+  a {
+    display: block;
+    height: 100%;
+    padding: 0 24px;
+
+    .mobile({
+      padding: 0 12px;
+    });
+  }
+}

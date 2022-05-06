@@ -12,7 +12,7 @@ import Loading from 'components/UI/Loading'
 
 import { EmbedVideo } from '../../Video'
 import { EmbedFile } from '../../File'
-import { getContentDetailUrl } from './utils'
+import { getContentDetailUrl } from '../../url'
 
 export interface Props {
   id: ContentId

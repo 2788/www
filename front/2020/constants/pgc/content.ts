@@ -13,8 +13,14 @@ export enum ContentType {
   File = 'file'
 }
 
+export const contentTypes = [
+  ContentType.Article,
+  ContentType.Video,
+  ContentType.File
+]
+
 export const contentTypeTextMap = {
-  [ContentType.Article]: '图文',
+  [ContentType.Article]: '文章',
   [ContentType.Video]: '视频',
   [ContentType.File]: '文件'
 } as const
@@ -26,6 +32,14 @@ export enum ContentCategory {
   News = 'news',
   Activity = 'activity'
 }
+
+export const contentCategories = [
+  ContentCategory.Activity,
+  ContentCategory.Case,
+  ContentCategory.News,
+  ContentCategory.Solution,
+  ContentCategory.Technology
+]
 
 export const contentCategoryTextMap = {
   [ContentCategory.Solution]: '产品方案',
@@ -59,6 +73,20 @@ export interface ContentDetail {
   userLimit: UserLimit
   content: string // type 决定是 url 还是 markdown 还是啥
 }
+
+export interface ContentDetailWithTime extends ContentDetail {
+  createdAt: number
+  updatedAt: number
+}
+
+export interface Content {
+  id: ContentId
+  type: ContentType // 种类
+  draft: ContentDetailWithTime
+  release?: ContentDetailWithTime // 每次刚发布的时候，release 的内容会跟 draft 相同（createdAt 除外）
+}
+
+export type ReleasedContent = Required<Content>
 
 export interface Preview {
   editPagePrefix: string

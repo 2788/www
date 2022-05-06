@@ -7,13 +7,14 @@ import React, { ReactNode } from 'react'
 
 import { useMobile } from 'hooks/ua'
 import { downloadFile } from 'utils/file'
-import { UserLimitType } from 'constants/pgc/content'
+import { ContentId, ContentDetailWithTime, UserLimitType } from 'constants/pgc/content'
 import { VerificationSmsOperation } from 'apis/admin/verification'
+import Button from 'components/UI/Button'
 
-import Button from '../Button'
 import { useSignInRequired } from '../sign-in-required'
 import { useVerifySms } from '../verification-sms-required'
 import Layout, { BaseProps, Header } from '../Layout'
+import Card, { CardLink } from '../Card'
 import DownloadIcon from './download.svg'
 
 import style from './style.less'
@@ -24,7 +25,7 @@ interface DownloadProps extends BaseProps {
 
 function Download({ contentDetail, render }: DownloadProps) {
   render = render ?? (download => (
-    <Button onClick={() => { download() }}>
+    <Button type="primary-light" size="large" onClick={() => { download() }}>
       立即下载
     </Button>
   ))
@@ -69,7 +70,7 @@ export default function File({ contentDetail, preview, createdAt }: BaseProps) {
 
   if (isMobile) {
     return (
-      <Layout preview={preview} className={style.main}>
+      <Layout preview={preview} className={style.detail}>
         <div className={style.card}>
           <PosterImage contentDetail={contentDetail} />
           <div className={style.summary}>
@@ -84,7 +85,7 @@ export default function File({ contentDetail, preview, createdAt }: BaseProps) {
 
   if (hasSidebar) {
     return (
-      <Layout preview={preview} className={style.main}>
+      <Layout preview={preview} className={style.detail}>
         <Header
           contentDetail={contentDetail}
           createdAt={createdAt}
@@ -105,7 +106,7 @@ export default function File({ contentDetail, preview, createdAt }: BaseProps) {
   }
 
   return (
-    <Layout preview={preview} className={style.main}>
+    <Layout preview={preview} className={style.detail}>
       <div className={style.card}>
         <PosterImage contentDetail={contentDetail} />
         <div className={style.summary}>
@@ -137,5 +138,19 @@ export function EmbedFile({ contentDetail }: BaseProps) {
         )}
       />
     </ins>
+  )
+}
+
+export interface FileItemProps {
+  id: ContentId
+  contentDetail: ContentDetailWithTime
+}
+
+export function FileItem({ id, contentDetail }: FileItemProps) {
+  return (
+    <CardLink id={id} className={style.item}>
+      <img src={contentDetail.posterUrl} alt="封面" />
+      <Card contentDetail={contentDetail} className={style.card} />
+    </CardLink>
   )
 }

@@ -1,0 +1,100 @@
+/**
+ * @file 常用豆腐块卡片
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.card {
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .content {
+      flex: 1;
+      display: flex;
+
+      p {
+        flex: 1;
+      }
+    }
+
+    .footer {
+      display: flex;
+      width: 100%;
+
+      .tags {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.header {
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  .ellipsis-line-clamp(2, 60px);
+
+  .mobile({
+    margin-bottom: 4px;
+    font-size: 14px;
+    .ellipsis-line-clamp(2, 44px);
+  });
+}
+
+.main {
+  color: #666;
+}
+
+.content {
+  p {
+    font-size: 14px;
+    .ellipsis-line-clamp(2, 44px);
+
+    .mobile({
+      font-size: 12px;
+      .ellipsis-line-clamp(2, 34px);
+    });
+  }
+}
+
+.footer {
+  font-size: 12px;
+
+  .mobile({
+    font-size: 10px;
+    color: #999;
+  });
+
+  .time {
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+
+  .tags {
+    .ellipsis();
+    text-align: right;
+
+    .mobile({
+      text-align: left;
+    });
+
+    > * {
+      margin-left: 12px;
+    }
+  }
+}
+
+.cardLink {
+  display: block;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}

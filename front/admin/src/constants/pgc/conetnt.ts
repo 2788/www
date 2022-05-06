@@ -35,7 +35,7 @@ export enum ContentCategory {
   Activity = 'activity'
 }
 
-export const contentCategorys = [
+export const contentCategories = [
   ContentCategory.Activity,
   ContentCategory.Case,
   ContentCategory.News,
