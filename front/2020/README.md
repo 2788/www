@@ -66,3 +66,4 @@ node deploy.js $AK $SK $BUCKET
 * [CSS 顺序](https://www.shejidaren.com/css-written-specifications.html)
 * [协议排版规范](https://cf.qiniu.io/pages/viewpage.action?pageId=92196844)
 * 文案统一，例如应用程序统一写为 App，而不是 App、APP 混用
+* [浏览器支持](https://cf.qiniu.io/pages/viewpage.action?pageId=92204421)
