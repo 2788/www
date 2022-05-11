@@ -3,7 +3,7 @@
  * @description 调起这个机器人时应当有明确的意图（某个需要咨询的关键词）
  */
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { uuid } from 'utils'
 import { track as sensorsTrack } from 'utils/sensors'
 import { IRobot, Input as InputData, Processed, InputType, makeMessage, MessageSelect, MessageSelectOption, makeAction } from '..'
@@ -34,8 +34,6 @@ export default class IntentConsultRobot extends Trackable implements IRobot {
         ]
       case InputType.Message:
         if (input.content === '微信联系') {
-          sensorsTrack('WechatQRCodeShow', { source: 'feedback-modal-content' })
-
           return [
             makeMessage('扫码添加人工客服企业微信二维码进行咨询（工作日 09:00-18:00 在线）。'),
             makeMessage(<HumanServiceQrCode />)
@@ -70,5 +68,7 @@ function makeMethodSelect(intention: string) {
 }
 
 function HumanServiceQrCode() {
+  useEffect(() => sensorsTrack('WechatQRCodeShow', { source: 'feedback-modal-content' }), [])
+
   return <img style={{ width: '126px', height: '126px' }} src={humanServiceQrCode} alt="人工客服企业微信二维码" />
 }
