@@ -5,6 +5,7 @@
 
 import React, { useState } from 'react'
 import { uuid } from 'utils'
+import { track as sensorsTrack } from 'utils/sensors'
 import { IRobot, Input as InputData, Processed, InputType, makeMessage, MessageSelect, MessageSelectOption, makeAction } from '..'
 import humanServiceQrCode from '../../human-service-qr-code.png'
 import Trackable from './trackable'
@@ -33,6 +34,8 @@ export default class IntentConsultRobot extends Trackable implements IRobot {
         ]
       case InputType.Message:
         if (input.content === '微信联系') {
+          sensorsTrack('WechatQRCodeShow', { source: 'feedback-modal-content' })
+
           return [
             makeMessage('扫码添加人工客服企业微信二维码进行咨询（工作日 09:00-18:00 在线）。'),
             makeMessage(<HumanServiceQrCode />)
