@@ -3,7 +3,7 @@
  * @description
  */
 
-import React, { useState, ReactNode, PropsWithChildren, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, ReactNode, PropsWithChildren, useMemo, useCallback } from 'react'
 import cls from 'classnames'
 import { debounce } from 'lodash'
 
@@ -13,6 +13,8 @@ import { useClickOutside } from 'hooks/click'
 
 import Link from 'components/Link'
 import IconEntry from 'components/IconEntry'
+
+import { track as sensorsTrack } from 'utils/sensors'
 
 import { useModal } from '../Modal'
 
@@ -101,6 +103,14 @@ function FeedbackEntryPc() {
   const handleContactHover = useMemo(() => debounce(setContactPanelVisible, 100), [])
   const handleWechatHover = useMemo(() => debounce(setWechatPanelVisible, 100), [])
   const handleConsultHover = useMemo(() => debounce(setConsultPanelVisible, 100), [])
+
+  useEffect(() => {
+    if (!wechatPanelVisible) {
+      return
+    }
+
+    sensorsTrack('WechatQRCodeShow', { source: 'feedback-entry' })
+  }, [wechatPanelVisible])
 
   const contactPanelView = (contactPanelVisible != null) && (
     <ContactPanel

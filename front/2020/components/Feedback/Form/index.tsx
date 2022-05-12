@@ -8,6 +8,7 @@ import Tooltip from 'react-icecream/lib/tooltip'
 import { useCount, useOnChange } from 'hooks'
 import { useMobile } from 'hooks/ua'
 import { uuid } from 'utils'
+import { track as sensorsTrack } from 'utils/sensors'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import { joinText } from 'utils/text'
@@ -161,6 +162,13 @@ function Footer({ pending, onSubmit }: FooterProps) {
   // 这边控制 tooltip 渲染在 form 中，以确保 tooltip 被正确地展示
   const formRef = useRef<HTMLFormElement>(null)
   const getTooltipPopupContainer = useCallback(() => formRef.current ?? document.body, [])
+  const handleTooltipVisibleChange = useCallback((visible: boolean) => {
+    if (!visible) {
+      return
+    }
+
+    sensorsTrack('WechatQRCodeShow', { source: 'feedback-modal-tag' })
+  }, [])
 
   return (
     <form ref={formRef} className={style.footer} onSubmit={handleSubmit}>
@@ -171,6 +179,7 @@ function Footer({ pending, onSubmit }: FooterProps) {
           overlayClassName={style.humanServiceOverlay}
           placement="topLeft"
           getPopupContainer={getTooltipPopupContainer}
+          onVisibleChange={handleTooltipVisibleChange}
         >
           <span className={style.linkButton}>人工售前咨询</span>
         </Tooltip>
