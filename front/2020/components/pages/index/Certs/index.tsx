@@ -62,7 +62,7 @@ function Mobile() {
               <div className={style.row} key={i}>
                 {
                   group.map((cert, index) => (
-                    cert ? <Item {...cert} key={index} /> : <InvisibleItem />
+                    cert ? <Item {...cert} key={index} /> : <InvisibleItem key={index} />
                   ))
                 }
               </div>

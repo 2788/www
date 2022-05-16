@@ -7,6 +7,7 @@ import pcCps from './banners/pc/cps.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
 import pcOverseas from './banners/pc/overseas.jpg'
+import pcQrtc from './banners/pc/qrtc.jpg'
 
 import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
@@ -14,6 +15,7 @@ import mobileCps from './banners/mobile/cps.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
 import mobileOverseas from './banners/mobile/overseas.jpg'
+import mobileQrtc from './banners/mobile/qrtc.jpg'
 
 export type Banner = {
   name: string
@@ -35,6 +37,35 @@ export type Banner = {
   href: string | null
   order: number
   buttonTexts?: string[]
+}
+
+// TODO: 5 月 22 日后可移除相关代码
+function getQrtcBanner(): Banner | undefined {
+  const effectTime = new Date('2022-05-20T23:59:59.000+08:00').getTime()
+  const invalidTime = new Date('2022-05-21T23:59:59.000+08:00').getTime()
+  const now = Date.now()
+
+  if (now > invalidTime) {
+    return undefined
+  }
+
+  return {
+    name: 'QRTC',
+    title: '', // '七牛云 QRTC 多媒体传输技术揭秘'
+    desc: '', // '七牛云音频实践日 RTC 专场'
+    pcImg: pcQrtc,
+    mobileImg: mobileQrtc,
+    effectedAt: 0,
+    invalidAt: 0,
+    createdAt: 0,
+    updatedAt: 0,
+    backgroundColor: '#ffffff',
+    href: now < effectTime
+      ? 'https://jinshuju.net/f/yPEtXM?x_field_1=wb'
+      : 'http://live-market.qiniu.com/watch/10742317',
+    order: 2,
+    buttonTexts: [] // ['点击预约直播']
+  }
 }
 
 // 获取首页 banners
@@ -68,10 +99,10 @@ export function getBanners(): Promise<Banner[]> {
       updatedAt: 0,
       backgroundColor: '#ffffff',
       href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-2',
-      order: 2,
+      order: getQrtcBanner() ? 3 : 2,
       buttonTexts: ['免费领用']
     },
-    {
+    getQrtcBanner() ?? {
       name: '云产品',
       title: '免费试用专区 0 元上云',
       desc: '多款云产品长期免费使用 注册即享超值赠送',
@@ -131,7 +162,7 @@ export function getBanners(): Promise<Banner[]> {
       order: 6,
       buttonTexts: ['立即抢购']
     }
-  ] as Banner[])
+  ].sort((a, b) => a.order - b.order) as Banner[])
 }
 
 export type Activity = {
