@@ -63,7 +63,7 @@ function getQrtcBanner(): Banner | undefined {
     href: now < effectTime
       ? 'https://jinshuju.net/f/yPEtXM?x_field_1=wb'
       : 'http://live-market.qiniu.com/watch/10742317',
-    order: 2,
+    order: 1,
     buttonTexts: [] // ['点击预约直播']
   }
 }
@@ -84,7 +84,7 @@ export function getBanners(): Promise<Banner[]> {
       updatedAt: 0,
       backgroundColor: '#ffffff',
       href: 'https://marketing.qiniu.com/activity/os_lp?entry=www-index-banner-1',
-      order: 1,
+      order: getQrtcBanner() ? 2 : 1,
       buttonTexts: ['立即抢购']
     },
     {
