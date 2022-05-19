@@ -3,6 +3,8 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
+import { TimeInfo } from 'apis/mongo-api-client'
+
 export const wwwContentDetailUrlPrefix = 'pgc/detail' // 后面跟 `/:id`
 
 export const uploadBucketKeyPrefix = 'pgc/admin/content' // 后面跟 `/:timestamp/:file-name-with-suffix`
@@ -81,10 +83,7 @@ export interface ContentDetail {
   content: string // type 决定是 url 还是 markdown 还是啥
 }
 
-export interface ContentDetailWithTime extends ContentDetail {
-  createdAt: number
-  updatedAt: number
-}
+export interface ContentDetailWithTime extends ContentDetail, TimeInfo {}
 
 export interface Content {
   id: ContentId

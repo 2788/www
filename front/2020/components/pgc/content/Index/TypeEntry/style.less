@@ -1,0 +1,63 @@
+/**
+ * @file type entry
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.typeEntry {
+  display: flex;
+  align-items: center;
+  margin-bottom: 36px;
+  background: #FFF;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+
+  .mobile({
+    margin-bottom: 12px;
+    box-shadow: none;
+    border-radius: 0;
+  });
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  line-height: 88px;
+  align-items: center;
+  justify-content: center;
+
+  .mobile({
+    flex-direction: column;
+    height: 94px;
+    line-height: 18px;
+  });
+}
+
+.sep {
+  width: 1px;
+  height: 48px;
+  overflow: hidden;
+  background: #E5E5E5;
+
+  .mobile({
+    display: none;
+  });
+}
+
+.type {
+  margin-left: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+
+  .mobile({
+    margin: 8px 0 0 0;
+    font-size: 14px;
+  });
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}

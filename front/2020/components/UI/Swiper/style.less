@@ -11,27 +11,72 @@
 
   :global(.ant-carousel .slick-dots) {
     button {
-      width: 20px;
       height: 4px;
-      background-color: #DBDBDB;
-    }
-    :global(.slick-active) button {
-      width: 20px;
-      background-color: @grey-5;
-    }
-    li + li  {
-      margin-left: 4px;
     }
   }
 
-  :global(.slick-dots-bottom) {
-    position: static;
-    margin-top: 24px;
+  &.typeSecondary {
+    :global(.ant-carousel .slick-dots) {
+      button {
+        width: 20px;
+        background-color: #DBDBDB;
+      }
 
-    .mobile({
-      margin-top: -2px;
-      margin-bottom: 6px;
-    });
+      :global(.slick-active) button {
+        width: 20px;
+        background-color: @grey-5;
+      }
+
+      li + li {
+        margin-left: 4px;
+      }
+    }
+
+    :global(.slick-dots-bottom) {
+      position: static;
+      margin-top: 24px;
+
+      .mobile({
+        margin-top: -2px;
+        margin-bottom: 6px;
+      });
+    }
+  }
+
+  &.typeClassic {
+    :global(.ant-carousel .slick-dots) {
+      height: 4px;
+
+      button {
+        width: 32px;
+        background-color: #999;
+
+        .mobile({
+          width: 24px;
+        });
+      }
+
+      :global(.slick-active) button {
+        width: 32px;
+        background-color: @primary-color;
+
+        .mobile({
+          width: 24px;
+        });
+      }
+
+      li + li {
+        margin: 0 4px;
+      }
+    }
+
+    :global(.slick-dots-bottom) {
+      bottom: 25px + @paddingForShadow;
+
+      .mobile({
+        bottom: 12px + @paddingForShadow;
+      });
+    }
   }
 }
 

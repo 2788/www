@@ -9,6 +9,7 @@ import classNames from 'classnames'
 import { useMobile } from 'hooks/ua'
 import { ContentType, ContentCategory, contentCategories, contentCategoryTextMap } from 'constants/pgc/content'
 import Tabs, { Tab } from 'components/UI/Tabs'
+import Link from 'components/Link'
 
 import { getListUrl } from '../../url'
 
@@ -40,14 +41,14 @@ export default function CategoryTabs({ type, category }: Props) {
             {
               contentCategory === 'all'
               ? (
-                <a href={getListUrl(type, null)} className={className}>
+                <Link href={getListUrl(type, null)} className={className}>
                   全部
-                </a>
+                </Link>
               )
               : (
-                <a href={getListUrl(type, contentCategory)} className={className}>
+                <Link href={getListUrl(type, contentCategory)} className={className}>
                   {contentCategoryTextMap[contentCategory]}
-                </a>
+                </Link>
               )
             }
           </Tab>

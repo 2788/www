@@ -4,8 +4,8 @@
  */
 
 import React from 'react'
-import { Button, Dropdown, Menu, MenuItem } from 'react-icecream'
-import { AddThinIcon } from 'react-icecream/icons'
+import { Button, Dropdown, Menu, MenuItem } from 'react-icecream-2'
+import { AddThinIcon } from 'react-icecream-2/icons'
 import Link from 'admin-base/common/components/Link'
 
 import { pgcManageAddTitle } from 'constants/route'

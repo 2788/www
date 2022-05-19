@@ -6,8 +6,8 @@
 import React, { useRef } from 'react'
 import { observer } from 'mobx-react'
 import { IState, DebouncedFieldState } from 'formstate-x'
-import { Tag, TextInput } from 'react-icecream'
-import { AddIcon } from 'react-icecream/icons'
+import { Tag, TextInput } from 'react-icecream-2'
+import { AddIcon } from 'react-icecream-2/icons'
 import { useFormstateX, InputWrapper, bindInput, FormItem } from 'react-icecream-form'
 
 import style from './style.m.less'

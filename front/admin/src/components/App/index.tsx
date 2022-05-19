@@ -17,10 +17,11 @@ import Consult from 'components/Www/Consult'
 import Activity from 'components/Www/Activity'
 import GlobalBanners from 'components/Www/GlobalBanners'
 import PgcManage from 'components/Pgc/Manage'
+import PgcBanner from 'components/Pgc/Banner'
 import {
   accountRoute, wwwTitle, wwwRoute, homepageRoute, homepageTitle, productTitle, productRoute,
   consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute,
-  pgcRoute, pgcTitle, pgcManageRoute, pgcManageTitle
+  pgcRoute, pgcTitle, pgcManageRoute, pgcManageTitle, pgcBannerRoute, pgcBannerTitle
 } from 'constants/route'
 
 import Provider from './Provider'
@@ -37,6 +38,7 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
       </Group>
       <Group title={pgcTitle} path={pgcRoute}>
         <LinkItem relative to={pgcManageRoute}>{pgcManageTitle}</LinkItem>
+        <LinkItem relative to={pgcBannerRoute}>{pgcBannerTitle}</LinkItem>
       </Group>
       <UserSidebarGroup prefix={accountRoute} />
     </BaseSidebar>
@@ -111,6 +113,9 @@ export default function App() {
                   </Route>
                   <Route relative title={pgcManageTitle} path={pgcManageRoute}>
                     <PgcManage />
+                  </Route>
+                  <Route relative title={pgcBannerTitle} path={pgcBannerRoute}>
+                    <PgcBanner />
                   </Route>
                 </Switch>
               </Permission>

@@ -2,7 +2,7 @@
  * @file 滚动相关 hooks
  */
 
-import { useState, useEffect, useCallback, useRef, RefObject } from 'react'
+import { useState, useEffect, useCallback, useRef, RefObject, useMemo } from 'react'
 import stickybits from 'stickybits'
 import { MoveTo } from 'moveto'
 import { debounce } from 'lodash'
@@ -221,4 +221,40 @@ export function useGlobalModal(visible: boolean) {
     }
     return resumeScroll
   }, [visible]) // eslint-disable-line react-hooks/exhaustive-deps
+}
+
+/** 检测是否出现了滚动条 */
+export function useScrollable<T extends HTMLElement>(enabled = true) {
+  const elementRef = useRef<T>(null)
+
+  const [scrollableX, setScrollableX] = useState(false)
+  const [scrollableY, setScrollableY] = useState(false)
+
+  const scrollable = useMemo(() => ({
+    x: scrollableX,
+    y: scrollableY
+  }), [scrollableX, scrollableY])
+
+  useEffect(() => {
+    if (!enabled) {
+      return
+    }
+
+    // TODO: 改为比 setInterval 更好的实现
+    const handleId = setInterval(() => {
+      const ele = elementRef.current
+      if (ele == null) {
+        return
+      }
+
+      setScrollableX(ele.scrollWidth > ele.clientWidth)
+      setScrollableY(ele.scrollHeight > ele.clientHeight)
+    }, 200)
+
+    return () => {
+      clearInterval(handleId)
+    }
+  }, [enabled])
+
+  return [scrollable, elementRef] as const
 }

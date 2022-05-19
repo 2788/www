@@ -18,8 +18,10 @@ export interface Props {
 export default function FileList({ contents }: Props) {
   return (
     <div className={style.items}>
-      {contents.map((content, index) => (
-        <FileItem key={index} id={content.id} contentDetail={content.release} />
+      {contents.map(content => (
+        <div key={content.id} className={style.item}>
+          <FileItem id={content.id} contentDetail={content.release} />
+        </div>
       ))}
     </div>
   )

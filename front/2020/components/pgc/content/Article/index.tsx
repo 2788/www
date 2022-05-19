@@ -72,13 +72,11 @@ export function ArticleItem({ id, contentDetail }: ArticleItemProps) {
       {!isMobile && (
         <img src={contentDetail.posterUrl} alt="封面" />
       )}
-      <Card contentDetail={contentDetail} className={style.card}>
+      <Card contentDetail={contentDetail} className={style.card} tagsAlignRight={false}>
         <CardContent description={contentDetail.description} className={style.content}>
-          {
-            isMobile
-            ? (<img src={contentDetail.posterUrl} alt="封面" />)
-            : undefined
-          }
+          {isMobile && (
+            <img src={contentDetail.posterUrl} alt="封面" />
+          )}
         </CardContent>
       </Card>
     </CardLink>

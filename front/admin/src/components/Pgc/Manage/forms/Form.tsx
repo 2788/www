@@ -9,7 +9,7 @@ import { FieldState, FormState, DebouncedFieldState } from 'formstate-x'
 import {
   Form, FormItem, useFormstateX, useFormFooterCtx, TextInput, TextArea, Select, SelectOption
 } from 'react-icecream-form'
-import { Button, TextInput as BaseTextInput } from 'react-icecream'
+import { Button, TextInput as BaseTextInput } from 'react-icecream-2'
 
 import { ReplaceValue } from 'utils/ts'
 import {

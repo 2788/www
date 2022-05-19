@@ -79,26 +79,45 @@
 
 .item {
   width: 280px;
-  margin: 0 20px 36px 0;
 
   .mobile({
-    display: flex;
-    width: 100%;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #EEE;
+    &.mobileHorizontal {
+      display: flex;
+      width: 100%;
+    }
+
+    &.mobileVertical {
+      width: 140px;
+    }
   });
 
-  > img {
-    width: 280px;
-    height: 158px;
+  .imgWrapper {
+    position: relative;
+    width: 100%;
     margin-bottom: 16px;
 
     .mobile({
       width: 140px;
-      height: 79px;
-      margin: 0 8px 0 0;
+
+      .mobileHorizontal& {
+        margin: 0 8px 0 0;
+      }
     });
+
+    .imgPlaceholder {
+      width: 100%;
+      padding-bottom: 56.43%;
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
 
   .card {

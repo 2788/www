@@ -5,9 +5,10 @@
 
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
-import dayjs from 'dayjs'
 
 import { ContentDetail, contentCategoryTextMap, Preview } from 'constants/pgc/content'
+
+import { formateDate } from '../date-time'
 
 import style from './style.less'
 
@@ -69,7 +70,7 @@ export function Header({ contentDetail, createdAt, hasBackground, className }: H
             <dt>类别：</dt>
             <dd>{contentCategoryTextMap[contentDetail.category]}</dd>
             <dt>发布时间：</dt>
-            <dd>{dayjs(createdAt ? createdAt * 1e3 : Date.now()).format('YYYY-MM-DD')}</dd>
+            <dd>{formateDate(createdAt ?? Math.floor(Date.now() / 1e3))}</dd>
           </dl>
         </div>
       </header>

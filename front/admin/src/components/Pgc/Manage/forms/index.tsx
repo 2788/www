@@ -5,7 +5,7 @@
 
 import React, { useEffect, useState, useRef } from 'react'
 import { observer } from 'mobx-react'
-import { Modal, ModalFooter, Loading } from 'react-icecream'
+import { Modal, ModalFooter, Loading } from 'react-icecream-2'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 

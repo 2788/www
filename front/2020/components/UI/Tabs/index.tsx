@@ -2,13 +2,12 @@
  * @file 可切换的 tab 列表
  */
 
-import React, {
-  ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties, useRef, useEffect
-} from 'react'
+import React, { ReactNode, createContext, useContext, ReactElement, useCallback, useState, CSSProperties } from 'react'
 import classnames from 'classnames'
 import { useOnChange } from 'hooks'
 
 import { useMobile } from 'hooks/ua'
+import { useScrollable } from 'hooks/scroll'
 import style from './style.less'
 
 type ContextValue = {
@@ -61,26 +60,9 @@ const sizeMap = {
 }
 
 // tabs 横向滚动条
-function useScrollable(enabled: boolean) {
-  const headerRef = useRef<HTMLUListElement>(null)
-  const [scrollable, setScrollable] = useState(false)
-
-  useEffect(() => {
-    if (!enabled) {
-      return
-    }
-
-    // TODO: 改为比 setInterval 更好的实现
-    const handleId = setInterval(() => {
-      const ele = headerRef.current!
-      setScrollable(ele.scrollWidth > ele.clientWidth)
-    }, 200)
-    return () => {
-      clearInterval(handleId)
-    }
-  }, [enabled])
-
-  return [enabled && scrollable, headerRef] as const
+function useScrollableX(enabled: boolean) {
+  const [scrollable, ref] = useScrollable<HTMLUListElement>(enabled)
+  return [enabled && scrollable.x, ref] as const
 }
 
 export default function Tabs({
@@ -90,7 +72,7 @@ export default function Tabs({
 }: Props) {
   const [active, setActive] = useState(value || defaultValue || null)
   const isMobile = useMobile()
-  const [scrollable, headerRef] = useScrollable(isMobile && !vertical) // TODO: 支持 PC 端
+  const [scrollable, headerRef] = useScrollableX(isMobile && !vertical) // TODO: 支持 PC 端
   const tabList: ReactElement[] = []
   const tabPanes: ReactElement[] = []
 

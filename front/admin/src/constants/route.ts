@@ -43,3 +43,7 @@ export const pgcManageAddTitle = '新建'
 export const pgcManageEditRoute = '/edit'
 
 export const pgcManageEditTitle = '编辑'
+
+export const pgcBannerRoute = '/banner'
+
+export const pgcBannerTitle = '首页公告'

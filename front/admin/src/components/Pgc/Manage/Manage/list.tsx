@@ -4,10 +4,9 @@
  */
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import {
-  Table, TableType, TablePaginationOptions, TableColumnSelectFilterOptions, Button
-} from 'react-icecream'
+  Table, TableType, TablePaginationOptions, TableColumnSelectFilterOptions, Button, Popover
+} from 'react-icecream-2'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { ButtonLink } from 'admin-base/common/components/Link'
@@ -22,6 +21,7 @@ import {
   getEditPageUrl, getWwwContentDetailUrl, getWwwContentDetailEmbedMarkdown, isUpToDate
 } from 'transforms/pgc/content'
 import PgcContentApis from 'apis/pgc/content'
+import CopyButton from 'components/common/CopyButton'
 
 import style from './list.m.less'
 
@@ -80,15 +80,14 @@ function usePgcListState() {
   const refresh = useCallback(() => {
     setIsLoading(true)
     toasterStore.promise(
-      pgcContentApis.list(
-        {
+      pgcContentApis.list({
+        query: {
           ...(selectedContentType && { type: selectedContentType }),
           ...(selectedContentCategory && { 'draft.category': selectedContentCategory })
-        }, {
-          offset: currentPage * pageSize,
-          limit: pageSize
-        }
-      )
+        },
+        offset: currentPage * pageSize,
+        limit: pageSize
+      })
         .then(result => {
           setRecords(result.data)
           setTotalPage(result.count)
@@ -129,23 +128,19 @@ export function usePgcList() {
     return (
       <div className={style.operations}>
         <ButtonLink type="link" to={getEditPageUrl(id)}>{pgcManageEditTitle}</ButtonLink>
-        {/* TODO: 二次确认？ */}
-        <Button type="link" onClick={() => { deleteContent(id) }}>删除</Button>
+        <Popover
+          trigger="click"
+          placement="left"
+          content="确认删除？"
+          buttons={{ onOk() { deleteContent(id) } }}
+          icon
+        >
+          <Button type="link">删除</Button>
+        </Popover>
         {isReleased && (<>
-          <CopyToClipboard
-            text={getWwwContentDetailUrl(id)}
-            // TODO: 提示文本应该出现在字旁边
-            onCopy={() => { toasterStore.info('复制完成') }}
-          >
-            <Button type="link">复制链接</Button>
-          </CopyToClipboard>
-          <CopyToClipboard
-            text={getWwwContentDetailEmbedMarkdown(id) + '\n'} // FIXME: 貌似有 bug 会吞掉结尾的最后一个回车
-            // TODO: 提示文本应该出现在字旁边
-            onCopy={() => { toasterStore.info('复制完成') }}
-          >
-            <Button type="link">复制嵌入内容</Button>
-          </CopyToClipboard>
+          <CopyButton text={getWwwContentDetailUrl(id)}>复制链接</CopyButton>
+          {/* FIXME: 貌似有 bug 会吞掉结尾的最后一个回车 */}
+          <CopyButton text={getWwwContentDetailEmbedMarkdown(id) + '\n'}>复制嵌入内容</CopyButton>
         </>)}
       </div>
     )

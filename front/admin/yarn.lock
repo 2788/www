@@ -2853,10 +2853,10 @@ form-data@^3.0.0:
   resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-2.0.3.tgz#12553bae573773a135f039ee1fef831a78457677"
   integrity sha512-kPpZxF2cX67hiGhkhsGIAA+aISCdNvRhJsIVkB6DkvThY6bARDkqgaNyMvWdmV5d/5bS4XRhxfvvLVxr67c+qQ==
 
-formstate-x@3.0.0-beta.1:
-  version "3.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-3.0.0-beta.1.tgz#a8a1a64f9968a0fd43d92cff48c4eebcbac7366e"
-  integrity sha512-BqRFUfswZ+d3cJH8lFY1yJ6nOsNYdIi72P5XCKA0GVFd8r+pJzHSB5vUEm+tp8HBHneCWFKNx5d+pKYqoQvAOg==
+formstate-x@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/formstate-x/-/formstate-x-3.0.0.tgz#a1caf06f6279b08c76d53c2a1675defa77592745"
+  integrity sha512-mzzIrh/+C3WM2/6Y49yyG1JuAGE+sqnWT5uXmzhySuJbjQ/UJKDmoO1LNc675SrdRvYYLUWBWb6V5DgvOX2etA==
 
 "formstate-x-v3@npm:formstate-x@3.0.0-beta.1":
   version "3.0.0-beta.1"
@@ -6128,10 +6128,10 @@ react-dom@~17.0.1:
     normalize.css "^8.0.1"
     tslib "^1.11.1"
 
-"react-icecream-2@npm:react-icecream@^2.2.0", react-icecream@^2.2.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.2.1.tgz#ff96463767207a07c415f94ffc030546cdc14b79"
-  integrity sha512-lkYcw1rHnGv0CfcbiC0nztrgrtNy3FYEqf2CNGMFS9+iPFK1fonOOwwFoeIp+CwbeT0xf9WuzHehhLDhcrgLIQ==
+"react-icecream-2@npm:react-icecream@^2.4.0", react-icecream@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-icecream/-/react-icecream-2.4.0.tgz#e7738c4aade9d044f1edd69ca307706a3468caa0"
+  integrity sha512-QBBJxruX7jpxtZydBYmphy2dMJDMxPIyBGPxiAOboI7e305IQaDUXsiC54UmBC5hretf0i2vzSN6IVcnW2lKoA==
   dependencies:
     "@types/react-table" "^7.0.28"
     classnames "^2.2.5"
@@ -6164,10 +6164,10 @@ react-icecream-charts@^0.6.0:
     lodash.memoize "~4.1.2"
     lodash.merge "~4.6.2"
 
-react-icecream-form@1.0.0-beta.1:
-  version "1.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/react-icecream-form/-/react-icecream-form-1.0.0-beta.1.tgz#fca2537c3d9e13c4f7032a3027b1dc5c558ac821"
-  integrity sha512-vvDd/StZ8DSDC2Z1U3gu4DiA8cipiLLllbQsz+a211PuH+JQojr642xsxmeIaorY3peJ4DaVmc0XuKUUw9zmtg==
+react-icecream-form@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-icecream-form/-/react-icecream-form-1.0.0.tgz#f81eb2eebad7a7cd3705b14f4d43ad2f91eacbbe"
+  integrity sha512-i/g0WLujKlstNUprRI+JTNbWjE5EGARaf29fhN3PkXOpbuiFgERhY7vGGYw/Jv83XCQiH4cNDJHaqxgc3j+FWg==
 
 react-is@^16.12.0, react-is@^16.8.4:
   version "16.13.1"

@@ -59,7 +59,7 @@ function getQrtcBanner(): Banner | undefined {
     invalidAt: 0,
     createdAt: 0,
     updatedAt: 0,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#025bd9',
     href: now < effectTime
       ? 'https://jinshuju.net/f/yPEtXM?x_field_1=wb'
       : 'http://live-market.qiniu.com/watch/10742317',

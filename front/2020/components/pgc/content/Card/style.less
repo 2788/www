@@ -78,11 +78,10 @@
 
   .tags {
     .ellipsis();
-    text-align: right;
 
-    .mobile({
-      text-align: left;
-    });
+    &.tagsRight {
+      text-align: right;
+    }
 
     > * {
       margin-left: 12px;
@@ -94,7 +93,15 @@
   display: block;
   color: inherit;
 
+  .header {
+    transition: color 0.25s;
+  }
+
   &:hover {
     color: inherit;
+
+    .header {
+      color: @blue-6;
+    }
   }
 }

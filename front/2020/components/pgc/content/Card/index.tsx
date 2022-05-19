@@ -5,12 +5,12 @@
 
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
-import dayjs from 'dayjs'
 import { Tag, TagColor } from 'react-icecream-2'
 
 import { useMobile } from 'hooks/ua'
 import { ContentId, ContentDetailWithTime } from 'constants/pgc/content'
 
+import { formateDate } from '../date-time'
 import { getContentDetailUrl } from '../url'
 
 import style from './style.less'
@@ -42,12 +42,14 @@ export interface Props {
   contentDetail: ContentDetailWithTime
   className?: string
   children?: ReactNode
+  tagsAlignRight?: boolean
 }
 
 export default function Card({
   contentDetail,
   className,
-  children = (<CardContent description={contentDetail.description} />)
+  children = (<CardContent description={contentDetail.description} />),
+  tagsAlignRight
 }: Props) {
   const isMobile = useMobile()
   return (
@@ -56,8 +58,11 @@ export default function Card({
       <div className={style.main}>
         {children}
         <div className={style.footer}>
-          <div className={style.time}>{dayjs(contentDetail.createdAt * 1e3).format('YYYY-MM-DD')}</div>
-          <div className={style.tags} title={contentDetail.keywords.join(', ')}>
+          <div className={style.time}>{formateDate(contentDetail.createdAt)}</div>
+          <div
+            className={classNames(style.tags, (tagsAlignRight ?? !isMobile) && style.tagsRight)}
+            title={contentDetail.keywords.join(', ')}
+          >
             {contentDetail.keywords.map((keyword, index) => (
               isMobile
               ? (<span key={index}>{keyword}</span>)

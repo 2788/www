@@ -5,22 +5,34 @@
 
 import React, { PropsWithChildren, Children, useRef, useEffect, useCallback } from 'react'
 import Carousel from 'react-icecream/lib/carousel'
+import cns from 'classnames'
 
 import IconArrowPrev from './arrow-prev.svg'
 import IconArrowNext from './arrow-next.svg'
 import style from './style.less'
 
+type Type = 'classic' | 'secondary'
+
 export type Props = PropsWithChildren<{
   index?: number
   onIndexChange?(index: number): void
+  type?: Type
   withArrow?: boolean
   withPagination?: boolean
+  autoplay?: boolean
 }>
 
-export default function Swiper({ index, onIndexChange, withArrow, withPagination, children }: Props) {
+const typeStyleMap: Record<Type, string> = {
+  classic: style.typeClassic,
+  secondary: style.typeSecondary
+}
+
+export default function Swiper({
+  type = 'secondary', index, onIndexChange, withArrow, withPagination, autoplay, children
+}: Props) {
   const carouselRef = useRef<Carousel>(null)
-  const wrappedChildren = Children.map(children, child => (
-    <div className={style.pageWrapper}>{child}</div>
+  const wrappedChildren = Children.map(children, (child, i) => (
+    <div key={i} className={style.pageWrapper}>{child}</div>
   ))
 
   // index 变化对应地控制轮播组件
@@ -49,10 +61,10 @@ export default function Swiper({ index, onIndexChange, withArrow, withPagination
   }, [])
 
   return (
-    <div className={style.wrapper}>
+    <div className={cns(style.wrapper, typeStyleMap[type])}>
       {withArrow && <ArrowPrev onClick={handlePrevClick} />}
       {withArrow && <ArrowNext onClick={handleNextClick} />}
-      <Carousel ref={carouselRef} afterChange={handleChange} dots={withPagination}>
+      <Carousel ref={carouselRef} afterChange={handleChange} dots={withPagination} autoplay={autoplay}>
         {wrappedChildren}
       </Carousel>
     </div>

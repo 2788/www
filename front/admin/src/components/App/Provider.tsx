@@ -3,6 +3,7 @@ import * as di from 'qn-fe-core/di'
 import { RouterStore } from 'qn-fe-core/router'
 import BaseProvider, { Props as BaseProps, createRouterStore } from 'admin-base/common/components/BootProvider'
 
+import { MongoApiBaseClient } from 'apis/mongo-api-client'
 import ActivityApis from 'apis/activity'
 import GlobalBannerApis from 'apis/global-banner'
 import UploadApis from 'apis/upload'
@@ -16,9 +17,11 @@ import ProductNoticeApis from 'apis/product/notice'
 import ProductPageApis from 'apis/product/page'
 import ProductPriceApis from 'apis/product/price'
 import PgcContentApis from 'apis/pgc/content'
+import PgcContentBannerApis from 'apis/pgc/content-banner'
 
 export const defaultProvides: di.Provides = [
   { identifier: RouterStore, factory: () => createRouterStore('官网 Admin - {{routeTitle}}') },
+  MongoApiBaseClient,
   ActivityApis,
   GlobalBannerApis,
   UploadApis,
@@ -31,7 +34,8 @@ export const defaultProvides: di.Provides = [
   ProductNoticeApis,
   ProductPageApis,
   ProductPriceApis,
-  PgcContentApis
+  PgcContentApis,
+  PgcContentBannerApis
 ]
 
 export type Props = BaseProps

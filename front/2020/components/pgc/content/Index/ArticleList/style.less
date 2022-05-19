@@ -1,0 +1,29 @@
+/**
+ * @file article list
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.list {
+  .mobile({
+    background: #FFF;
+  });
+}
+
+.item {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #EEE;
+
+  .mobile({
+    &:last-child {
+      border-bottom: none;
+    }
+  });
+
+  .mobile({
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+  });
+}

@@ -18,8 +18,10 @@ export interface Props {
 export default function ArticleList({ contents }: Props) {
   return (
     <div className={style.items}>
-      {contents.map((content, index) => (
-        <ArticleItem key={index} id={content.id} contentDetail={content.release} />
+      {contents.map(content => (
+        <div key={content.id} className={style.item}>
+          <ArticleItem id={content.id} contentDetail={content.release} />
+        </div>
       ))}
     </div>
   )

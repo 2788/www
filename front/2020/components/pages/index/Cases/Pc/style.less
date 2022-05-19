@@ -10,11 +10,11 @@
     :global(.slick-slider .slick-dots-bottom) {
       bottom: -8px;
     }
-  
+
     .group {
       display: flex;
       margin-bottom: 20px;
-    
+
       .card {
         position: relative;
         display: flex;
@@ -26,31 +26,31 @@
         border-radius: 8px;
         box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
         background: @grey-1;
-      
+
         &:last-child {
           margin-right: 0;
         }
       }
-    
+
       .markIcon {
         position: absolute;
         top: 24px;
         left: 64px;
       }
-    
+
       .imgWrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 40px;
         height: 40px;
-      
+
         .img {
           width: 36px;
           height: 36px;
         }
       }
-    
+
       .content {
         flex: 1;
         display: flex;
@@ -60,12 +60,12 @@
         line-height: 1.5;
         z-index: 1;
         color: @grey-7;
-      
+
         .desc {
           .ellipsis-line-clamp(4, 6em);
           flex: 1;
         }
-      
+
         .name {
           margin-top: 16px;
           text-align: right;
@@ -73,7 +73,7 @@
       }
     }
   }
-  
+
   .logosWrapper {
     margin-top: 40px;
 
@@ -120,6 +120,7 @@
 
         .slick-dots-bottom li.slick-active {
           button {
+            opacity: 1;
             background: @grey-5;
           }
         }

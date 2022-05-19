@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react'
+import classNames from 'classnames'
 
 import { useMobile } from 'hooks/ua'
 import { ContentId, ContentDetailWithTime, UserLimitType } from 'constants/pgc/content'
@@ -125,13 +126,23 @@ export function EmbedVideo({ contentDetail }: BaseProps) {
 export interface VideoItemProps {
   id: ContentId
   contentDetail: ContentDetailWithTime
+  mobileTheme: 'horizontal' | 'vertical'
+  className?: string
 }
 
-export function VideoItem({ id, contentDetail }: VideoItemProps) {
+const mobileThemeStyleMap: Record<VideoItemProps['mobileTheme'], string> = {
+  horizontal: style.mobileHorizontal,
+  vertical: style.mobileVertical
+}
+
+export function VideoItem({ id, contentDetail, mobileTheme, className }: VideoItemProps) {
   const isMobile = useMobile()
   return (
-    <CardLink id={id} className={style.item}>
-      <img src={contentDetail.posterUrl} alt="封面" />
+    <CardLink id={id} className={classNames(style.item, mobileThemeStyleMap[mobileTheme], className)}>
+      <div className={style.imgWrapper}>
+        <img src={contentDetail.posterUrl} alt="封面" />
+        <div className={style.imgPlaceholder}></div>
+      </div>
       <Card contentDetail={contentDetail} className={style.card}>
         <CardContent description={isMobile ? undefined : contentDetail.description} />
       </Card>
