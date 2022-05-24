@@ -30,7 +30,6 @@ export function getPageSize(type: ContentType, isMobile: boolean) {
 
 interface FirstScreenContent { // 首屏
   contents: ReleasedContent[]
-  currentPage: number // 从 1 开始
   total: number
 }
 
@@ -45,12 +44,13 @@ export default function List(props: Props) {
 
   const isMobile = useMobile()
   const [isLoading, setIsLoading] = useState(false)
-  const [currentPage, setCurrentPage] = useState(firstScreenContent.currentPage)
+  const [currentPage, setCurrentPage] = useState(1)
   const pageSize = getPageSize(type, isMobile)
   const [contents, setContents] = useState(firstScreenContent.contents.slice(0, pageSize))
   const [hasMore, setHasMore] = useState(firstScreenContent.total > pageSize)
 
   async function loadMore() {
+    // FIXME: 如果一个页面能在 mobile 与否之间反复横跳，这里就可能会出 bug…
     const offset = currentPage * pageSize
 
     setIsLoading(true)

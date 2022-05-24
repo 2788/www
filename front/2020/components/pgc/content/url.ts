@@ -14,8 +14,8 @@ export function getIdFromContentDetailUrl(url: string): string {
   return url.trim().replace(`${pgcContentMdEmbedHost}/${contentDetailEmbedUrlPrefix}/`, '').replace(/[/?#].*/, '')
 }
 
-export function getContentDetailUrl(id: ContentId): string {
-  return `${host}/${contentDetailEmbedUrlPrefix}/${id}`
+export function getContentDetailUrl(id: ContentId, isFull = false): string {
+  return `${isFull ? host : ''}/${contentDetailEmbedUrlPrefix}/${id}`
 }
 
 export function getIndexUrl() {
@@ -26,7 +26,7 @@ export function getListIndexUrl() {
   return '/pgc/list'
 }
 
-export function getListUrl(type: ContentType, category: ContentCategory | null, page?: number) {
-  return `${getListIndexUrl()}/${type}/${category ?? 'all'}` + (page == null ? '' : `/page/${page}`)
+export function getListUrl(type: ContentType, category: ContentCategory | null) {
+  return `${getListIndexUrl()}/${type}/${category ?? 'all'}`
 }
 

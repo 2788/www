@@ -38,14 +38,15 @@
   }
 }
 
-.posterImg {
-  width: 260px;
-  height: 342px;
+.detail,
+.embed {
+  .img {
+    width: 261px;
 
-  .mobile({
-    width: 90px;
-    height: 118px;
-  });
+    .mobile({
+      width: 90px;
+    });
+  }
 }
 
 .embed {
@@ -84,14 +85,12 @@
     width: 100%;
   });
 
-  > img {
-    width: 137px;
-    height: 180px;
+  > .img {
+    width: 135px;
     margin-right: 16px;
 
     .mobile({
       width: 84px;
-      height: 110px;
       margin-right: 8px;
     });
   }

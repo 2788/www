@@ -14,6 +14,7 @@ import { useSignInRequired } from '../sign-in-required'
 import { useVerifySms } from '../verification-sms-required'
 import Layout, { BaseProps, Header } from '../Layout'
 import Card, { CardLink, CardContent } from '../Card'
+import PosterImage from '../PosterImage'
 import PlayIcon from './play.svg'
 
 import style from './style.less'
@@ -139,10 +140,7 @@ export function VideoItem({ id, contentDetail, mobileTheme, className }: VideoIt
   const isMobile = useMobile()
   return (
     <CardLink id={id} className={classNames(style.item, mobileThemeStyleMap[mobileTheme], className)}>
-      <div className={style.imgWrapper}>
-        <img src={contentDetail.posterUrl} alt="封面" />
-        <div className={style.imgPlaceholder}></div>
-      </div>
+      <PosterImage url={contentDetail.posterUrl} ratio={9 / 16} className={style.img} />
       <Card contentDetail={contentDetail} className={style.card}>
         <CardContent description={isMobile ? undefined : contentDetail.description} />
       </Card>

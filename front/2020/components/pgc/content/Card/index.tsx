@@ -9,6 +9,7 @@ import { Tag, TagColor } from 'react-icecream-2'
 
 import { useMobile } from 'hooks/ua'
 import { ContentId, ContentDetailWithTime } from 'constants/pgc/content'
+import Link from 'components/Link'
 
 import { formateDate } from '../date-time'
 import { getContentDetailUrl } from '../url'
@@ -83,8 +84,8 @@ export interface CardLinkProps {
 
 export function CardLink({ id, children, className }: CardLinkProps) {
   return (
-    <a href={getContentDetailUrl(id)} className={classNames(style.cardLink, className)}>
+    <Link href={getContentDetailUrl(id)} className={classNames(style.cardLink, className)}>
       {children}
-    </a>
+    </Link>
   )
 }

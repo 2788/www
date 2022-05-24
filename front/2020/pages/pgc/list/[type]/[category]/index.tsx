@@ -3,15 +3,33 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
+import React from 'react'
 import { GetStaticPropsContext } from 'next'
 
-import { ContentType, contentTypes, ContentCategory, contentCategories } from 'constants/pgc/content'
+import {
+  ContentType, contentTypes, contentTypeTextMap, ContentCategory, contentCategories, contentCategoryTextMap
+} from 'constants/pgc/content'
 import { listReleasedContent, ListOptions } from 'apis/admin/pgc/content'
-import { getPageSize } from 'components/pgc/content/List'
+import Layout from 'components/Layout'
+import List, { Props, getPageSize } from 'components/pgc/content/List'
 
-import { Props } from './page/[page]'
+export default function PgcList(props: Props) {
+  const keywords = [
+    '列表',
+    contentTypeTextMap[props.type],
+    props.category && contentCategoryTextMap[props.category]
+  ].filter(Boolean)
 
-export { default } from './page/[page]'
+  return (
+    <Layout
+      title={keywords.join(' - ')}
+      keywords={['七牛云', ...keywords].join(', ')}
+      description={['七牛云', ...keywords].join(', ')}
+    >
+      <List {...props} />
+    </Layout>
+  )
+}
 
 export async function getStaticProps(ctx: GetStaticPropsContext<{ type: string, category: string }>) {
   const params = ctx.params!
@@ -31,7 +49,6 @@ export async function getStaticProps(ctx: GetStaticPropsContext<{ type: string, 
     category,
     firstScreenContent: {
       contents: result.data,
-      currentPage: 1,
       total: result.count
     }
   }

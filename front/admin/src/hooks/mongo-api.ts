@@ -8,11 +8,11 @@ import { useInjection } from 'qn-fe-core/di'
 
 import { MongoApiBaseClient, MongoApiStdClient } from 'apis/mongo-api-client'
 
-export function useMongoApiStdClient(resourcePrefix: string) {
+export function useMongoApiStdClient(resource: string) {
   const mongoApiBaseClient = useInjection(MongoApiBaseClient)
   const mongoApiStdClient = useMemo(
-    () => new MongoApiStdClient(resourcePrefix, mongoApiBaseClient),
-    [resourcePrefix, mongoApiBaseClient]
+    () => new MongoApiStdClient(resource, mongoApiBaseClient),
+    [resource, mongoApiBaseClient]
   )
   return mongoApiStdClient
 }

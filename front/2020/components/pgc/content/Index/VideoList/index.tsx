@@ -29,6 +29,7 @@ export default function VideoList({ category, contents }: Props) {
     <div className={style.main}>
       <header className={style.header}>
         <h3>视频</h3>
+        {/* TODO: 支持 `查看更多视频` */}
         <Link href={getListUrl(ContentType.Video, category)}>查看全部视频</Link>
       </header>
       <div className={style.list}>

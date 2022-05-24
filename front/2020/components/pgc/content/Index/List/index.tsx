@@ -95,6 +95,7 @@ export default function List({ isActive, category, defaultArticles, defaultHasMo
       <ArticleList contents={bottomArticles} className={style.bottomArticles} />
       {hasMoreArticles && (
         <div className={style.moreArticlesLinkWrapper}>
+          {/* TODO: 支持 `查看更多文章` */}
           <Link href={getListUrl(ContentType.Article, category)}>查看全部文章</Link>
         </div>
       )}

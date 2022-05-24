@@ -8,12 +8,14 @@ import { injectable } from 'qn-fe-core/di'
 import { BannerInfo } from 'constants/pgc/conetnt-banner'
 import { MongoApiBaseClient, MongoApiStdClient } from 'apis/mongo-api-client'
 
+const resource = 'pgc-content-banner'
+
 @injectable()
 export default class PgcContentBannerApis {
   client: MongoApiStdClient<BannerInfo>
 
   constructor(client: MongoApiBaseClient) {
-    this.client = new MongoApiStdClient('pgc-content-banner', client)
+    this.client = new MongoApiStdClient(resource, client)
   }
 
   async listAll() {

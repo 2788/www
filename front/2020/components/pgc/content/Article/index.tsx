@@ -10,6 +10,7 @@ import { ContentId, ContentDetailWithTime } from 'constants/pgc/content'
 
 import Layout, { BaseProps, Header } from '../Layout'
 import Card, { CardLink, CardContent } from '../Card'
+import PosterImage from '../PosterImage'
 import Markdown, { mdTextToHTMLAst, AstRootNode } from './Markdown'
 
 import style from './style.less'
@@ -67,16 +68,15 @@ export interface ArticleItemProps {
 
 export function ArticleItem({ id, contentDetail }: ArticleItemProps) {
   const isMobile = useMobile()
+  const imgView = (
+    <PosterImage url={contentDetail.posterUrl} ratio={10 / 18} className={style.img} />
+  )
   return (
     <CardLink id={id} className={style.item}>
-      {!isMobile && (
-        <img src={contentDetail.posterUrl} alt="封面" />
-      )}
+      {!isMobile && imgView}
       <Card contentDetail={contentDetail} className={style.card} tagsAlignRight={false}>
         <CardContent description={contentDetail.description} className={style.content}>
-          {isMobile && (
-            <img src={contentDetail.posterUrl} alt="封面" />
-          )}
+          {isMobile && imgView}
         </CardContent>
       </Card>
     </CardLink>

@@ -15,6 +15,7 @@ import { useSignInRequired } from '../sign-in-required'
 import { useVerifySms } from '../verification-sms-required'
 import Layout, { BaseProps, Header } from '../Layout'
 import Card, { CardLink } from '../Card'
+import PosterImageBase from '../PosterImage'
 import DownloadIcon from './download.svg'
 
 import style from './style.less'
@@ -56,10 +57,10 @@ function Download({ contentDetail, render }: DownloadProps) {
 
 function PosterImage({ contentDetail }: BaseProps) {
   return (
-    <img
-      src={contentDetail.posterUrl}
-      alt="文件封面"
-      className={style.posterImg}
+    <PosterImageBase
+      url={contentDetail.posterUrl}
+      ratio={4 / 3}
+      className={style.img}
     />
   )
 }
@@ -149,7 +150,7 @@ export interface FileItemProps {
 export function FileItem({ id, contentDetail }: FileItemProps) {
   return (
     <CardLink id={id} className={style.item}>
-      <img src={contentDetail.posterUrl} alt="封面" />
+      <PosterImage contentDetail={contentDetail} />
       <Card contentDetail={contentDetail} className={style.card} />
     </CardLink>
   )

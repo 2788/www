@@ -7,7 +7,6 @@ import pcCps from './banners/pc/cps.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
 import pcOverseas from './banners/pc/overseas.jpg'
-import pcQrtc from './banners/pc/qrtc.jpg'
 
 import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
@@ -15,7 +14,6 @@ import mobileCps from './banners/mobile/cps.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
 import mobileOverseas from './banners/mobile/overseas.jpg'
-import mobileQrtc from './banners/mobile/qrtc.jpg'
 
 export type Banner = {
   name: string
@@ -39,35 +37,6 @@ export type Banner = {
   buttonTexts?: string[]
 }
 
-// TODO: 5 月 22 日后可移除相关代码
-function getQrtcBanner(): Banner | undefined {
-  const effectTime = new Date('2022-05-20T23:59:59.000+08:00').getTime()
-  const invalidTime = new Date('2022-05-21T23:59:59.000+08:00').getTime()
-  const now = Date.now()
-
-  if (now > invalidTime) {
-    return undefined
-  }
-
-  return {
-    name: 'QRTC',
-    title: '', // '七牛云 QRTC 多媒体传输技术揭秘'
-    desc: '', // '七牛云音频实践日 RTC 专场'
-    pcImg: pcQrtc,
-    mobileImg: mobileQrtc,
-    effectedAt: 0,
-    invalidAt: 0,
-    createdAt: 0,
-    updatedAt: 0,
-    backgroundColor: '#025bd9',
-    href: now < effectTime
-      ? 'https://jinshuju.net/f/yPEtXM?x_field_1=wb'
-      : 'http://live-market.qiniu.com/watch/10742317',
-    order: 1,
-    buttonTexts: [] // ['点击预约直播']
-  }
-}
-
 // 获取首页 banners
 export function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
@@ -83,8 +52,7 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/os_lp?entry=www-index-banner-1',
-      order: getQrtcBanner() ? 2 : 1,
+      href: 'https://marketing.qiniu.com/activity/os_lp',
       buttonTexts: ['立即抢购']
     },
     {
@@ -98,11 +66,10 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/2021618-act-kodo?entry=www-index-banner-2',
-      order: getQrtcBanner() ? 3 : 2,
+      href: 'https://marketing.qiniu.com/activity/2021618-act-kodo',
       buttonTexts: ['免费领用']
     },
-    getQrtcBanner() ?? {
+    {
       name: '云产品',
       title: '免费试用专区 0 元上云',
       desc: '多款云产品长期免费使用 注册即享超值赠送',
@@ -113,8 +80,7 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/act-free?entry=www-index-banner-3',
-      order: 3,
+      href: 'https://marketing.qiniu.com/activity/act-free',
       buttonTexts: ['免费领用']
     },
     {
@@ -128,8 +94,7 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: '/cps?entry=www-index-banner-4',
-      order: 4,
+      href: '/cps',
       buttonTexts: ['立即推广']
     },
     {
@@ -143,8 +108,7 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/newuser-act?entry=www-index-banner-5',
-      order: 5,
+      href: 'https://marketing.qiniu.com/activity/newuser-act',
       buttonTexts: ['立即购买']
     },
     {
@@ -158,11 +122,14 @@ export function getBanners(): Promise<Banner[]> {
       createdAt: 0,
       updatedAt: 0,
       backgroundColor: '#ffffff',
-      href: 'https://marketing.qiniu.com/activity/qvm0rmbv2?entry=www-index-banner-6',
-      order: 6,
+      href: 'https://marketing.qiniu.com/activity/qvm0rmbv2',
       buttonTexts: ['立即抢购']
     }
-  ].sort((a, b) => a.order - b.order) as Banner[])
+  ].map((banner, index) => ({
+    ...banner,
+    order: index + 1,
+    href: `${banner.href}?entry=www-index-banner-${index + 1}`
+  })))
 }
 
 export type Activity = {

@@ -6,6 +6,7 @@
 // 接口文档 https://github.com/qbox/rmb-web/blob/master/admin-backend/pkg/mongo-api/apis.md
 // TODO: https://github.com/qbox/rmb-web/issues/1052
 // TODO: 记录 creator、editor 等信息？
+// TODO: https://github.com/qbox/www/pull/2563#discussion_r875424340
 
 import { injectable } from 'qn-fe-core/di'
 import Client, { InternalOptions } from 'qn-fe-core/client'
@@ -17,6 +18,8 @@ import { generateUuidId } from 'utils/uuid'
 import { timeFormatterNum } from 'utils/time'
 
 export const maxLimit = 999
+
+export type Query = Record<string | number, any>
 
 export interface TimeInfo {
   /** 10 位秒级 unix 时间戳 */
@@ -41,21 +44,23 @@ export function generateStdInfo(): StdInfo {
 }
 
 export interface ListOriginalOptions {
-  limit?: number
-  offset?: number
-  sort?: string
   query?: string
+  offset?: number
+  limit?: number
+  sort?: string
 }
 
 export type ListBaseOptions = ReplaceValue<ListOriginalOptions, {
-  query?: Record<string | number, any>
+  query?: Query | ListOriginalOptions['query']
 }>
 
-export interface ListStdOptions extends Omit<ListBaseOptions, 'offset' | 'limit'> {
+export interface ListStdOptions {
+  query?: Query
   /** 从 0 开始 */
   currentPage: number
   /** 缺省为 10 */
   pageSize?: number
+  sort?: string
 }
 
 export interface ListOriginalResult<T> {
@@ -63,9 +68,10 @@ export interface ListOriginalResult<T> {
   data: T[] | null
 }
 
-export type ListBaseResult<T> = ReplaceValue<ListOriginalResult<T>, {
+export interface ListBaseResult<T> {
+  count: number
   data: T[]
-}>
+}
 
 export function normalizeListResult<T>(result: ListOriginalResult<T>): ListBaseResult<T> {
   return {
@@ -81,13 +87,13 @@ export class MongoApiBaseClient extends Client {
   }
 
   protected async _send(url: string, options?: InternalOptions) {
-    return this.baseClient.send(url, options)
+    return this.baseClient.send(`${apiMongo}/${url}`, options)
   }
 
   async list<T>(url: string, { query, ...params }: ListBaseOptions = {}): Promise<ListBaseResult<T>> {
     const options: ListOriginalOptions = {
       ...params,
-      ...(query && { query: JSON.stringify(query) })
+      ...(query != null && { query: typeof query === 'string' ? query : JSON.stringify(query) })
     }
     const result = await this.get<ListOriginalResult<T>>(url, options)
     return normalizeListResult(result)
@@ -113,13 +119,9 @@ export class MongoApiBaseClient extends Client {
 }
 
 /** 一类标准接口，绑定 `resource` 并且自动维护固定的 `StdInfo` 结构 */
-// TODO: 各类接口实现补充完整
+// TODO: 各类接口实现补充完整，包括 batch 等
 export class MongoApiStdClient<T> {
-  resource: string
-
-  constructor(resourcePrefix: string, private client: MongoApiBaseClient) {
-    this.resource = `${apiMongo}/${resourcePrefix}`
-  }
+  constructor(private resource: string, private client: MongoApiBaseClient) {}
 
   get(id: string) {
     return this.client.get<T & StdInfo>(`${this.resource}/${id}`)
@@ -159,7 +161,7 @@ export class MongoApiStdClient<T> {
     return this.client.patch<T & StdInfo>(`${this.resource}/${id}`, data)
   }
 
-  getCount(query?: ListBaseOptions['query']) {
+  getCount(query?: Query) {
     return this.client.getCount(this.resource, query)
   }
 

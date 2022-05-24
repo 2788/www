@@ -49,7 +49,7 @@ export default function Embed({ id, preview }: Props) {
     }
   }
 
-  const url = getContentDetailUrl(id)
+  const url = getContentDetailUrl(id, true)
   return (
     <Loading loading={loading}>
       <p>
