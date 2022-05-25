@@ -7,6 +7,7 @@ import pcCps from './banners/pc/cps.jpg'
 import pcStorage from './banners/pc/storage.jpg'
 import pcQvmNewUser from './banners/pc/qvm-new-user.jpg'
 import pcOverseas from './banners/pc/overseas.jpg'
+import pc618 from './banners/pc/618.jpg'
 
 import mobileCloudProducts from './banners/mobile/cloud-products.jpg'
 import mobileNewUser from './banners/mobile/new-user.jpg'
@@ -14,8 +15,9 @@ import mobileCps from './banners/mobile/cps.jpg'
 import mobileStorage from './banners/mobile/storage.jpg'
 import mobileQvmNewUser from './banners/mobile/qvm-new-user.jpg'
 import mobileOverseas from './banners/mobile/overseas.jpg'
+import mobile618 from './banners/mobile/618.jpg'
 
-export type Banner = {
+type BannerConfig = {
   name: string
   title: string // todo：后面要改为传入 html 字符串
   desc: string // todo：后面要改为传入 html 字符串
@@ -33,14 +35,45 @@ export type Banner = {
   // todo：后续可能将判断主题深浅和提供 button text color 能力分离，即两者各自有一套自己的取值逻辑
   backgroundColor: string
   href: string | null
-  order: number
   buttonTexts?: string[]
 }
 
+export type Banner = BannerConfig & {
+  order: number
+}
+
+// TODO: 7 月初可移除相关代码
+function get618Banner(): BannerConfig | undefined {
+  const effectTime = new Date('2022-05-26T00:00:00.000+08:00').getTime()
+  const invalidTime = new Date('2022-06-30T23:59:59.000+08:00').getTime()
+  const now = Date.now()
+
+  if (now < effectTime || now > invalidTime) {
+    return undefined
+  }
+
+  return {
+    name: '618',
+    title: '6·18 年中大促',
+    desc: '存储低至 0.01元/GB/月 领券购买享折上折',
+    pcImg: pc618,
+    mobileImg: mobile618,
+    effectedAt: 0,
+    invalidAt: 0,
+    createdAt: 0,
+    updatedAt: 0,
+    dark: true,
+    backgroundColor: '#fe8a23',
+    href: 'https://marketing.qiniu.com/activity/2022-618-act',
+    buttonTexts: ['立即抢购']
+  }
+}
+
 // 获取首页 banners
-export function getBanners(): Promise<Banner[]> {
+export async function getBanners(): Promise<Banner[]> {
   // todo：先写死数据，后面再改为从 admin 获取数据
-  return Promise.resolve([
+  return ([
+    get618Banner(),
     {
       name: '海外云产品专场活动',
       title: '踏浪扬帆 海外云产品专场',
@@ -125,11 +158,11 @@ export function getBanners(): Promise<Banner[]> {
       href: 'https://marketing.qiniu.com/activity/qvm0rmbv2',
       buttonTexts: ['立即抢购']
     }
-  ].map((banner, index) => ({
+  ].filter(Boolean) as BannerConfig[]).map((banner, index) => ({
     ...banner,
     order: index + 1,
     href: `${banner.href}?entry=www-index-banner-${index + 1}`
-  })))
+  }))
 }
 
 export type Activity = {
