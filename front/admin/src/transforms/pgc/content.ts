@@ -35,8 +35,8 @@ export function getWwwContentDetailPreviewUrl(): string {
   return `${wwwHost}/${wwwContentDetailUrlPrefix}/preview`
 }
 
-export function generateUploadBucketKey(fileName: string): string {
-  return `${uploadBucketKeyPrefix}/${moment().unix()}/${fileName}`
+export function generateUploadBucketKey(fileName: string, timestamp = moment().unix()): string {
+  return `${uploadBucketKeyPrefix}/${timestamp}/${fileName}`
 }
 
 /** has released without edit (draft) */
