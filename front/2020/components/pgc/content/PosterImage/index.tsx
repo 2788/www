@@ -9,7 +9,7 @@ import style from './style.less'
 
 export interface Props {
   url: string
-  /** 宽高比 */
+  /** 高宽比 */
   ratio: number
   className?: string
 }

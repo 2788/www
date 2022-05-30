@@ -1,7 +1,31 @@
-.icon {
-  width: 80px;
-  height: 40px;
-  background-size: contain;
+/**
+ * @file 图片预览
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~admin-base/common/utils/style/index.less";
+
+.main {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon,
+.preview {
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.preview {
+  margin: 0 auto;
+}
+
+.bordered {
+  border: 1px solid #EEE;
+  box-shadow: @icecream-box-shadow-sm;
+}
+
+.hidden {
+  display: none;
 }

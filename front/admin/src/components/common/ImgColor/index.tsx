@@ -27,11 +27,11 @@ interface IProps {
   state: State
   labels?: string[]
   extra?: React.ReactNode[]
-  imgMaxSize?: number
+  upload?: Pick<uploadImg.IProps, 'maxSize' | 'previewType' | 'width' | 'height'>
 }
 
 export default observer(function ImgColor(
-  { state, labels = ['图片', '背景色'], extra, imgMaxSize = 500 }: IProps
+  { state, labels = ['图片', '背景色'], extra, upload }: IProps
 ) {
 
   const onUploaded = useCallback(
@@ -56,7 +56,7 @@ export default observer(function ImgColor(
         extra={extra && extra[0]}
         {...bindFormItem(state.$.img)}
       >
-        <UploadImg state={state.$.img} maxSize={imgMaxSize} onUploaded={onUploaded} />
+        <UploadImg state={state.$.img} onUploaded={onUploaded} {...upload} />
       </FormItem>
       <FormItem
         label={labels[1]}

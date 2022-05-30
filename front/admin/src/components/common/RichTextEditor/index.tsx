@@ -66,7 +66,7 @@ export default observer(function RichTextEditor({ state, readOnly }: IProps) {
       key: 'uploader',
       type: 'component',
       component: (
-        <UploadImg state={state.$.img.$} onUploaded={uploadHandler} maxSize={500}>
+        <UploadImg state={state.$.img.$} onUploaded={uploadHandler} maxSize={500} previewType="none">
           <Button data-title="插入图片" className={style.btn}>
             <Icon type="picture" theme="filled" className={style.icon} />
           </Button>

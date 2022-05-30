@@ -18,7 +18,6 @@ import { textNotBlank } from 'admin-base/common/form'
 import { bindFormItem, bindTextInput, bindCheckboxGroup } from 'utils/bind'
 import { textHttp } from 'utils/validator'
 import { checkOverlap } from 'utils/check'
-import style from 'utils/style.m.less'
 import { EditorProps, titleMap, EditorStatus } from 'constants/editor'
 import BannerApis, { IBannerWithId, IAddBannerOptions, IListResponse } from 'apis/global-banner'
 import ImgColor, * as imgColor from 'components/common/ImgColor'
@@ -193,9 +192,6 @@ class LocalStore extends Store {
 
 const BannerForm = observer(function _BannerForm({ state, status }: { state: State } & ExtraProps) {
   const fields = state.$
-  const pcImgExtra = <p className={style.desc}>推荐尺寸：2880 * 160 px</p>
-  const mobileImgExtra = <p className={style.desc}>推荐尺寸：1125 * 156 px</p>
-
   return (
     <Form>
       <FormItem
@@ -204,13 +200,26 @@ const BannerForm = observer(function _BannerForm({ state, status }: { state: Sta
       >
         <Input disabled={status === EditorStatus.Editing} placeholder="请输入公告名称" maxLength={20} {...bindTextInput(fields.name)} />
       </FormItem>
-      <ImgColor state={fields.imgColor.$} labels={['PC 端图片', '背景色']} extra={[pcImgExtra]} />
+      <ImgColor
+        state={fields.imgColor.$}
+        labels={['PC 端图片', '背景色']}
+        upload={{
+          previewType: 'cover',
+          width: 2880,
+          height: 160
+        }}
+      />
       <FormItem
         label="移动端图片"
         {...bindFormItem(fields.mobileImg)}
-        extra={mobileImgExtra}
       >
-        <UploadImg state={fields.mobileImg.$} maxSize={500} />
+        <UploadImg
+          state={fields.mobileImg.$}
+          maxSize={500}
+          previewType="cover"
+          width={1125}
+          height={156}
+        />
       </FormItem>
       <FormItem
         label="跳转链接"

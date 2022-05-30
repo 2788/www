@@ -31,7 +31,10 @@ export default observer(function GlobalBanners() {
   const store = useLocalStore(BannersStore)
   const { filteredList, isLoading } = store
 
-  const renderImg = (url: string) => <ImgPreview url={url} />
+  const renderImg = (url: string, width: number, height: number) => (
+    <ImgPreview url={url} type="cover" width={width} height={height} />
+  )
+
   const renderOthers = (_: string, record: IBannerWithId) => (
     <>
       <h5>背景色：<div className={style.color} style={{ backgroundColor: `${record.backgroundColor}` }} /></h5>
@@ -88,8 +91,8 @@ export default observer(function GlobalBanners() {
       >
         <Table.Column title="公告名称" width={120} className={commonStyle.cellContent} dataIndex="name" />
         <Table.Column title="状态" width={100} render={renderState} />
-        <Table.Column title="PC 端缩略图" width={150} dataIndex="pcImg" render={renderImg} />
-        <Table.Column title="移动端缩略图" width={150} dataIndex="mobileImg" render={renderImg} />
+        <Table.Column title="PC 端缩略图" width={150} dataIndex="pcImg" render={url => renderImg(url, 2880, 160)} />
+        <Table.Column title="移动端缩略图" width={150} dataIndex="mobileImg" render={url => renderImg(url, 1125, 156)} />
         <Table.Column title="其他信息" width={200} dataIndex="others" render={renderOthers} className={commonStyle.cellContent} />
         <Table.Column title="生效时间段" width={240} render={renderRangeTime} />
         <Table.Column title="创建时间" width={120} dataIndex="createTime" render={timeFormatter('YYYY-MM-DD')} />

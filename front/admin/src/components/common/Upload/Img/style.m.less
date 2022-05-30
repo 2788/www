@@ -1,13 +1,29 @@
+@import "~admin-base/common/utils/style/index.less";
+
 .uploadImg {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.main {
   display: inline-flex;
 }
 
 .icon {
-  width: 80px;
-  height: 40px;
   margin-left: 20px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  cursor: pointer;
+}
+
+.desc {
+  margin: @icecream-gap-xs 0 0;
+  font-size: smaller;
+  line-height: 1.5;
+  color: @icecream-color-grey-8;
+}
+
+.btn {
+  line-height: 32px;
+}
+
+.hidden {
+  display: none;
 }

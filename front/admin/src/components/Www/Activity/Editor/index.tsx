@@ -191,7 +191,6 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
 
   const fields = store.form.$
   const isReading = status === EditorStatus.Reading
-  const imgExtra = <p className={commonStyle.desc}>推荐尺寸：1600 * 900 px</p>
 
   const footerView = isReading
     ? null
@@ -225,10 +224,13 @@ export default observer(function EditorModal(props: IModalProps & ExtraProps) {
         </Form.Item>
         <Form.Item
           label="活动配图"
-          extra={imgExtra}
           {...bindFormItem(fields.imgUrl)}
         >
-          {isReading ? <ImgPreview url={activity!.imgUrl} /> : <UploadImg state={fields.imgUrl.$} maxSize={500} />}
+          {
+            isReading
+            ? (<ImgPreview url={activity!.imgUrl} width={1600} height={900} />)
+            : (<UploadImg state={fields.imgUrl.$} maxSize={500} width={1600} height={900} />)
+          }
         </Form.Item>
         <Form.Item
           label="活动简介"

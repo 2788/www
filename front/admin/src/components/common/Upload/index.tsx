@@ -47,7 +47,7 @@ class LocalStore extends Store {
     return this.uploadApis.genToken({ putPolicy: JSON.stringify(putPolicy) })
   }
 
-  getUploadKey(fileName: string, timestamp: number) {
+  generateUploadKey(fileName: string, timestamp: number) {
     return {
       www: `${uploadKeyPrefix}/${timestamp}/${fileName}`,
       'pgc-content': generateUploadBucketKey(fileName, timestamp)
@@ -58,7 +58,7 @@ class LocalStore extends Store {
     return new Promise<string>((resolve, reject) => {
       const fileName = file.name
       const timestamp = moment().unix()
-      const obser = qiniu.upload(file, this.getUploadKey(fileName, timestamp), token)
+      const obser = qiniu.upload(file, this.generateUploadKey(fileName, timestamp), token)
       const subscription = obser.subscribe({
         error: err => {
           // TODO: file 上传状态管理?
@@ -69,7 +69,7 @@ class LocalStore extends Store {
           return reject(err)
         },
         complete: () => {
-          resolve(publicUrl + this.getUploadKey(encodeURIComponent(fileName), timestamp))
+          resolve(publicUrl + this.generateUploadKey(encodeURIComponent(fileName), timestamp))
         }
       })
     })

@@ -16,8 +16,6 @@ import { BannerInfo, Banner } from 'constants/pgc/conetnt-banner'
 import PgcContentBannerApis from 'apis/pgc/content-banner'
 import UploadImage, { createState as createUploadImageState } from 'components/common/Upload/Img'
 
-import style from './modal-form.m.less'
-
 interface Props {
   current?: number
   banners: BannerInfo[]
@@ -130,8 +128,13 @@ const BannerModalForm = observer(function _BannerModalForm(props: Props) {
         <TextInput state={state.$.name} />
       </FormItem>
       <FormItem label="banner 图片" state={state.$.img} required>
-        <UploadImage uploadBucketKeyRule="pgc-content" state={state.$.img} />
-        <p className={style.img}>推荐尺寸： 2880 * 1000 px</p>
+        <UploadImage
+          uploadBucketKeyRule="pgc-content"
+          state={state.$.img}
+          previewType="cover"
+          width={2880}
+          height={1000}
+        />
       </FormItem>
       <FormItem label="跳转路径" required>
         <TextInput state={state.$.link} />

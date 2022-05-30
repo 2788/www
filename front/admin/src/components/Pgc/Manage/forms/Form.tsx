@@ -120,6 +120,21 @@ function Footer({ isReleased, onPreview, onReset }: FooterProps) {
   )
 }
 
+const posterSizeMap = {
+  [ContentType.Article]: { // 18:10
+    width: 1287,
+    height: 715
+  },
+  [ContentType.Video]: { // 16:9
+    width: 736,
+    height: 414
+  },
+  [ContentType.File]: { // 3:4
+    width: 261,
+    height: 348
+  }
+}
+
 export interface Props {
   type: ContentType
   /** 注意：传了代表编辑，空代表新建 */
@@ -225,7 +240,12 @@ export default observer(function DetailForm({ type, onSubmitDraft, content, onPr
         />
       </FormItem>
       <FormItem label="封面" state={state.$.posterUrl} required>
-        <UploadImage uploadBucketKeyRule="pgc-content" state={state.$.posterUrl} />
+        <UploadImage
+          uploadBucketKeyRule="pgc-content"
+          state={state.$.posterUrl}
+          previewType="cover"
+          {...posterSizeMap[type]}
+        />
       </FormItem>
       <FormItem label="标签">
         <Tags state={state.$.keywords} />
