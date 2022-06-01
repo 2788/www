@@ -1,6 +1,9 @@
 import React from 'react'
 import Link from 'components/Link'
-import { categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct, priceUrlMap, Product } from 'constants/products'
+import {
+  categories, categoryNameMap, getCategoryProducts, PartialProductData, normalizeProduct,
+  subCategoryNameMap, subCategoryProductDatasForPrice, ProductDataForPrice
+} from 'constants/products'
 import { Activity, urlMap as activityUrlMap, nameMap as activityNameMap } from 'constants/activity'
 import * as sol from 'constants/solutions'
 import Menu, { SubMenu, MenuItem } from 'components/UI/Menu'
@@ -32,6 +35,14 @@ function getSolutionItems(solutions: readonly sol.Solution[]) {
   ))
 }
 
+function getPrictItems({ product, name, priceUrl }: ProductDataForPrice) {
+  return (
+    <MenuItem key={product}>
+      <Link href={priceUrl}>{name}</Link>
+    </MenuItem>
+  )
+}
+
 export default function Overlay() {
   const productSubMenus = categories.map(category => (
     <SubMenu key={category} title={categoryNameMap[category]}>
@@ -47,8 +58,19 @@ export default function Overlay() {
     </SubMenu>
   ))
 
+  const priceSubMenus = subCategoryProductDatasForPrice.map(([subCategory, productDatas]) => (
+    <SubMenu key={subCategory} title={subCategoryNameMap[subCategory]}>
+      {productDatas.map(getPrictItems)}
+    </SubMenu>
+  ))
+
+  const rootMenus = [
+    'sub1', 'sub2', 'sub3', 'sub4', 'sub5',
+    ...(priceSubMenus.length > 0 ? ['sub6'] : [])
+  ]
+
   return (
-    <Menu mode="inline" className={style.menu} rootMenus={['sub1', 'sub2', 'sub3', 'sub4', 'sub5']}>
+    <Menu mode="inline" className={style.menu} rootMenus={rootMenus}>
       <MenuItem><Link href="https://marketing.qiniu.com/activity/all?entry=index-advert">最新活动</Link></MenuItem>
       <SubMenu key="sub1" mode="inline" title="产品">
         {productSubMenus}
@@ -57,7 +79,11 @@ export default function Overlay() {
         {solutionSubMenus}
       </SubMenu>
       <MenuItem><Link href="https://qmall.qiniu.com/">云商城</Link></MenuItem>
-      <MenuItem><Link href={priceUrlMap[Product.Kodo]}>定价</Link></MenuItem>
+      {priceSubMenus.length > 0 && (
+        <SubMenu key="sub6" title="定价">
+          {priceSubMenus}
+        </SubMenu>
+      )}
       <SubMenu key="sub3" title="服务与支持">
         <SubMenu key="sub3-1" title="文档与工具">
           <MenuItem><a href="https://developer.qiniu.com/">文档中心</a></MenuItem>

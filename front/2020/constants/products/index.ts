@@ -336,6 +336,10 @@ export function normalizeProduct(val: Product | PartialProductData): ProductData
   return { name: nameMap[val.product], desc: descMap[val.product], url: urlMap[val.product], ...val }
 }
 
+function isProduct(data: PartialProductData): data is Product {
+  return typeof data !== 'object'
+}
+
 export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] } = {
   [SubCategory.Storage]: [Product.Kodo, Product.Archive, Product.Storage, Product.Hdfs],
   [SubCategory.Distribution]: [Product.Cdn, Product.Dcdn, Product.Pcdn, Product.Ssl],
@@ -399,10 +403,37 @@ export function getCategoryProducts(category: Category): PartialProductData[] {
   )
 }
 
-export const subcategoriesForPrice: SubCategory[] = [
+export const subCategoriesForPrice: SubCategory[] = [
   SubCategory.Storage, SubCategory.LiveBroadcast, SubCategory.Dora,
   SubCategory.Sdk, SubCategory.Basis, SubCategory.Distribution
 ]
+
+export interface ProductDataForPrice extends ProductData {
+  priceUrl: string
+}
+
+export const subCategoryProductDatasForPrice = subCategoriesForPrice.map(subCategory => {
+  const productDatas = subCategoryProductsMap[subCategory]
+    .map((productData: PartialProductData) => {
+      if (!isProduct(productData)) {
+        return null
+      }
+
+      const url = priceUrlMap[productData]
+      if (url == null) {
+        return null
+      }
+
+      const productDataForPrice: ProductDataForPrice = {
+        ...normalizeProduct(productData),
+        priceUrl: url
+      }
+
+      return productDataForPrice
+    })
+    .filter(Boolean) as ProductDataForPrice[]
+  return productDatas.length === 0 ? null : [subCategory, productDatas] as const
+}).filter(Boolean) as Array<[SubCategory, ProductDataForPrice[]]>
 
 /** 视觉数据智能 */
 export const categoryMedia = [

@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { subcategoriesForPrice, subCategoryNameMap, subCategoryProductsMap, priceUrlMap, nameMap, PartialProductData, Product, subCategoryUrlMapForPrice } from 'constants/products'
+import {
+  subCategoryNameMap, Product, subCategoryUrlMapForPrice, subCategoryProductDatasForPrice, ProductDataForPrice
+} from 'constants/products'
 import CommonOverlay from '../Overlay'
 import Content from '../Overlay/Content'
 import ContentSection, { ContentSectionItem } from '../Overlay/Content/Section'
@@ -12,15 +14,15 @@ export default function Overlay() {
     <CommonOverlay>
       <Content size={4}>
         {
-          subcategoriesForPrice.map(subCategory => (
+          subCategoryProductDatasForPrice.map(([subCategory, productDatas]) => (
             <ContentSection
               title={subCategoryNameMap[subCategory]}
               url={subCategoryUrlMapForPrice[subCategory]}
               key={subCategory}
             >
               {
-                subCategoryProductsMap[subCategory].map((product, index) => (
-                  <PrictContentSectionItem productData={product} key={index} />
+                productDatas.map((productData, index) => (
+                  <PrictContentSectionItem productData={productData} key={index} />
                 ))
               }
             </ContentSection>
@@ -36,22 +38,12 @@ function hasCalculator(product: Product) {
   return [Product.Kodo, Product.Cdn, Product.Qvm, Product.Qvs].includes(product)
 }
 
-function PrictContentSectionItem({ productData }: { productData: PartialProductData }) {
-  if (!isProduct(productData)) {
-    return null
-  }
-  const url = priceUrlMap[productData]
-  if (url === null) {
-    return null
-  }
+function PrictContentSectionItem({ productData }: { productData: ProductDataForPrice }) {
+  const { product, name, priceUrl } = productData
   return (
-    <ContentSectionItem href={url}>
-      {nameMap[productData]}
-      {hasCalculator(productData) && <CalcIcon className={style.calc} />}
+    <ContentSectionItem href={priceUrl}>
+      {name}
+      {hasCalculator(product) && <CalcIcon className={style.calc} />}
     </ContentSectionItem>
   )
-}
-
-function isProduct(data: PartialProductData): data is Product {
-  return typeof data !== 'object'
 }
