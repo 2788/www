@@ -55,7 +55,7 @@ function get618Banner(): BannerConfig | undefined {
   return {
     name: '618',
     title: '6·18 年中大促',
-    desc: '存储低至 0.01元/GB/月 领券购买享折上折',
+    desc: '存储0.99元起购 8080元满减券享折上折',
     pcImg: pc618,
     mobileImg: mobile618,
     effectedAt: 0,
