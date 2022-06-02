@@ -20,7 +20,7 @@ export default function PosterImage({ url, ratio, className }: Props) {
       <div
         className={style.image}
         style={{
-          backgroundImage: `url(${url})`,
+          backgroundImage: `url("${url}")`,
           paddingBottom: `${ratio * 100}%`
         }}
       ></div>

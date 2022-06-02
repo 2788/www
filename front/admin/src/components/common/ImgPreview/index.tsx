@@ -65,7 +65,7 @@ export default function ImgPreview({ url, type, width, height, className }: Prop
   }
 
   const commonImgStyles = {
-    backgroundImage: `url(${url})`,
+    backgroundImage: `url("${url}")`,
     backgroundSize: type ?? 'contain'
   }
 

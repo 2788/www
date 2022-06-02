@@ -27,7 +27,7 @@ export default function Pgc({ banners }: Props) {
           href={banner.link}
           rel="noopener"
           className={style.slide}
-          style={{ backgroundImage: `url(${banner.img})` }}
+          style={{ backgroundImage: `url("${banner.img}")` }}
         >
         </a>
       ))}

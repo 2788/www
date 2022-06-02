@@ -33,7 +33,7 @@ function useHeaderBackgroundStyle(url: string | undefined) {
 
   const className = 'pgc-content-header-bg'
 
-  const backgroundImage = `url(${url})`
+  const backgroundImage = `url("${url}")`
   const backgroundMask = (
     'linear-gradient(180deg, rgba(0, 0, 0, 0) 42.29%, rgba(0, 0, 0, 0.492857) 72.42%, rgba(0, 0, 0, 0.75) 100%)'
   )

@@ -68,6 +68,7 @@ export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
     setIsLoading(true)
     return true
   }
+
   function onUploaded(url: string, file: File) {
     state.onChange(url)
     setIsLoading(false)

@@ -69,7 +69,13 @@ class LocalStore extends Store {
           return reject(err)
         },
         complete: () => {
-          resolve(publicUrl + this.generateUploadKey(encodeURIComponent(fileName), timestamp))
+          // TODO: 改成调 kodo 接口生成 url 并且 css 统一成 `url("xxx")` 使用形式后移除
+          const encodedFileName = encodeURIComponent(fileName)
+            .replace(/'/g, '%27')
+            .replace(/"/g, '%22')
+            .replace(/\(/g, '%28')
+            .replace(/\)/g, '%29')
+          resolve(publicUrl + this.generateUploadKey(encodedFileName, timestamp))
         }
       })
     })
