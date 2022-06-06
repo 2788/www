@@ -139,7 +139,7 @@ function MyPanel({ name, title }: PanelProps) {
       <SceneBlock blockType="fixed" className={style.blockLeft}>
         <div className={style.imgBlock}>
           <div className={style.imgInner}>
-            <div className={style.img} style={{ backgroundImage: `url(${imgUrl})` }}></div>
+            <div className={style.img} style={{ backgroundImage: `url("${imgUrl}")` }}></div>
           </div>
         </div>
         {/** 使用customRequest来覆盖默认的上传行为，防止upload每次上传时出现刷新页面的行为 */}

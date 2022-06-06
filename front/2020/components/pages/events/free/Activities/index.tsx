@@ -42,7 +42,7 @@ type CardProps = {
 
 function Card({ title, desc, url, background, btnText }: CardProps) {
   const cardStyle: CSSProperties = {
-    backgroundImage: `url(${process(background, scaleBy({ width: 576 }), withFormat('jpg'))})`
+    backgroundImage: `url("${process(background, scaleBy({ width: 576 }), withFormat('jpg'))}")`
   }
   return (
     <LayoutCard className={style.card} style={cardStyle}>

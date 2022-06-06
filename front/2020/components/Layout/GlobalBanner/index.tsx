@@ -46,7 +46,7 @@ export default function GlobalBanner() {
       href={banner.link}
       style={{ backgroundColor: banner.backgroundColor }}
     >
-      <div className={style.container} style={{ backgroundImage: `url(${banner.pcImg})` }} />
+      <div className={style.container} style={{ backgroundImage: `url("${banner.pcImg}")` }} />
     </Link>
   )
 }

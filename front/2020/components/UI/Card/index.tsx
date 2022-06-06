@@ -37,7 +37,7 @@ export function Img({ className, src, style: customStyle, ...others }: ImgProps)
   const wrapperClassName = [style.imgWrapper, className].filter(Boolean).join(' ')
   const wrapperStyle: CSSProperties = {
     ...customStyle,
-    backgroundImage: `url(${src})`
+    backgroundImage: `url("${src}")`
   }
   return (
     <div className={wrapperClassName} style={wrapperStyle} {...others} />

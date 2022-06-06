@@ -42,5 +42,5 @@ type MyCardProps = {
 }
 
 function MyCard({ title, bgImg }: MyCardProps) {
-  return <LayoutCard className={style.card} style={{ background: `url(${bgImg})`, backgroundSize: 'contain' }}>{title}</LayoutCard>
+  return <LayoutCard className={style.card} style={{ background: `url("${bgImg}")`, backgroundSize: 'contain' }}>{title}</LayoutCard>
 }

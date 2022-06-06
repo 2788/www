@@ -43,7 +43,7 @@ export default function Activities({ activities }: { activities: Activity[] }) {
     .map(({ title, subTitle, icon, label, link }, i) => (
       <Card
         key={i}
-        icon={<div className={styles.icon} style={{ backgroundImage: `url(${icon})` }}></div>}
+        icon={<div className={styles.icon} style={{ backgroundImage: `url("${icon}")` }}></div>}
         title={title}
         href={link}
         banner={labelMap[label] || label}

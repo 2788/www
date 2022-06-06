@@ -28,7 +28,7 @@ function Card({ url, title, desc, iconUrl, backgroundImgUrl, cases }: CardProps)
   return (
     <LayoutCard className={style.card}>
       <Link href={url || '#'} className={style.link}>
-        <div className={style.bgImg} style={{ ...defaultBgStyle, backgroundImage: `url(${backgroundImgUrl})` }} />
+        <div className={style.bgImg} style={{ ...defaultBgStyle, backgroundImage: `url("${backgroundImgUrl}")` }} />
         <div className={style.overlay} ></div>
         <div className={style.contentWrapper}>
           <div className={style.content}>

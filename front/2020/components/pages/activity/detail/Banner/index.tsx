@@ -51,7 +51,7 @@ export default function Banner(props: IActivity) {
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
-        <div className={style.icon} style={{ backgroundImage: `url(${imgUrl})` }}></div>
+        <div className={style.icon} style={{ backgroundImage: `url("${imgUrl}")` }}></div>
         <div className={style.content}>
           <p className={style.title}>{title}</p>
           <p className={style.desc}>{desc}</p>

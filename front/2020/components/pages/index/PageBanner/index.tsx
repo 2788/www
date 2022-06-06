@@ -33,7 +33,7 @@ export default function IndexPageBanner({ dark, ...banner }: Banner & { dark: bo
   const bgColorStyle = { backgroundColor }
 
   const bgStyle: CSSProperties = {
-    backgroundImage: `url(${bgImg})`,
+    backgroundImage: `url("${bgImg}")`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover'

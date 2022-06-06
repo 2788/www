@@ -19,7 +19,7 @@ export default function List({ activities }: { activities: IActivity[] }) {
 export function MyCard({ imgUrl, title, desc, startTime, endTime, id }: IActivity) {
   return (
     <div className={style.card}>
-      <div className={style.icon} style={{ backgroundImage: `url(${imgUrl})` }}></div>
+      <div className={style.icon} style={{ backgroundImage: `url("${imgUrl}")` }}></div>
       <div className={style.content}>
         <p className={style.title}>{title}</p>
         <p className={style.desc}>{desc}</p>

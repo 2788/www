@@ -55,7 +55,7 @@ export default function PageBanner(props: IPageBannerProps) {
 
     if (typeof icon === 'string') {
       const styl: CSSProperties = {
-        backgroundImage: `url(${icon})`
+        backgroundImage: `url("${icon}")`
       }
       return <div className={styles.iconWrapper} style={styl} />
     }

@@ -30,7 +30,7 @@ export default function Banner(props: Props) {
   const isMobile = useMobile()
 
   const backgroundStyle: CSSProperties = {
-    backgroundImage: (isMobile && !showMobileBgImg) ? 'none' : `url(${background})`,
+    backgroundImage: (isMobile && !showMobileBgImg) ? 'none' : `url("${background}")`,
     backgroundSize,
     backgroundPosition
   }
