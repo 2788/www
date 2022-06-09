@@ -11,7 +11,6 @@ import { renderUserRoutes, User, UserSidebarGroup } from 'admin-base/user/manage
 import Permission from 'components/common/Permission'
 import { PermissionCode } from 'constants/permission'
 
-import Homepage from 'components/Www/Homepage'
 import Product from 'components/Www/Product'
 import Consult from 'components/Www/Consult'
 import Activity from 'components/Www/Activity'
@@ -19,7 +18,7 @@ import GlobalBanners from 'components/Www/GlobalBanners'
 import PgcManage from 'components/Pgc/Manage'
 import PgcBanner from 'components/Pgc/Banner'
 import {
-  accountRoute, wwwTitle, wwwRoute, homepageRoute, homepageTitle, productTitle, productRoute,
+  accountRoute, wwwTitle, wwwRoute, productTitle, productRoute,
   consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute,
   pgcRoute, pgcTitle, pgcManageRoute, pgcManageTitle, pgcBannerRoute, pgcBannerTitle
 } from 'constants/route'
@@ -30,7 +29,6 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
   return (
     <BaseSidebar collapsed={collapsed}>
       <Group title={wwwTitle} path={wwwRoute}>
-        <LinkItem relative to={homepageRoute}>{homepageTitle}</LinkItem>
         <LinkItem relative to={globalBannersRoute}>{globalBannersTitle}</LinkItem>
         <LinkItem relative to={productRoute}>{productTitle}</LinkItem>
         <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
@@ -76,12 +74,7 @@ export default function App() {
             <Route relative title={wwwTitle} path={wwwRoute}>
               <Switch>
                 <Route relative exact path="/">
-                  <Redirect relative to={homepageRoute} />
-                </Route>
-                <Route relative title={homepageTitle} path={homepageRoute}>
-                  <Permission code={PermissionCode.HOMEPAGE}>
-                    <Homepage />
-                  </Permission>
+                  <Redirect relative to={productRoute} />
                 </Route>
                 <Route relative title={globalBannersTitle} path={globalBannersRoute}>
                   <Permission code={PermissionCode.GLOBAL_BANNER}>

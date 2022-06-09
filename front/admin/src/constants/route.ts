@@ -6,10 +6,6 @@ export const wwwRoute = '/www'
 
 export const wwwTitle = '官网'
 
-export const homepageRoute = '/homepage'
-
-export const homepageTitle = '首页'
-
 export const productRoute = '/product'
 
 export const productTitle = '产品'

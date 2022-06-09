@@ -9,11 +9,6 @@ import GlobalBannerApis from 'apis/global-banner'
 import UploadApis from 'apis/upload'
 import EntityApis from 'apis/consult/entity'
 import PropertyApis from 'apis/consult/property'
-import HomepageActivityApis from 'apis/homepage/activity'
-import HomepageBannerApis from 'apis/homepage/banner'
-import HomepageNewsApis from 'apis/homepage/news'
-import ProductNewsApis from 'apis/product/news'
-import ProductNoticeApis from 'apis/product/notice'
 import ProductPageApis from 'apis/product/page'
 import ProductPriceApis from 'apis/product/price'
 import PgcContentApis from 'apis/pgc/content'
@@ -27,11 +22,6 @@ export const defaultProvides: di.Provides = [
   UploadApis,
   EntityApis,
   PropertyApis,
-  HomepageActivityApis,
-  HomepageBannerApis,
-  HomepageNewsApis,
-  ProductNewsApis,
-  ProductNoticeApis,
   ProductPageApis,
   ProductPriceApis,
   PgcContentApis,
