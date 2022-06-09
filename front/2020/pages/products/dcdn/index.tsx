@@ -9,7 +9,8 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -23,7 +24,9 @@ import { useBtns } from 'hooks/product-btn'
 
 import banner from './banner.png'
 
-function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/dcdn/domain', children: '立即配置' },
@@ -41,7 +44,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
 
       <Navigator>{btns.nav}</Navigator>
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <DcdnFunction />
 
@@ -71,14 +74,14 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
   )
 }
 
-export default function DcdnPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function DcdnPage(props: Props) {
   return (
     <Layout
       title="全站加速_动态加速_混合加速"
       keywords="全站加速,动态加速,混合加速,dcdn,cdn,Dynamic acceleration"
       description="七牛全站加速 DCDN 在 CDN 静态加速的基础上融合了动态加速的能力，通过资源动静态分离、智能缓存、路由优化等核心技术一站式解决动静态资源混合站点内容分发慢的问题。适用于动态资源或动静态资源混合的加速场景。"
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -86,7 +89,7 @@ export default function DcdnPage({ notices, newsRes }: InferGetStaticPropsType<t
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Dcdn),
+      notices: await getProductPageNotices(Product.Dcdn),
       newsRes: await getNews({ product: Product.Dcdn })
     }
   }

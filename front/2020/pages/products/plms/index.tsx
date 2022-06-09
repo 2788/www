@@ -15,7 +15,8 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -29,7 +30,9 @@ import Scene from 'components/pages/plms/Scene'
 
 import imgBanner from './images/banner.png'
 
-export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useModal()
 
   const btns = useBtns(
@@ -45,7 +48,7 @@ export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INe
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -72,14 +75,14 @@ export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INe
   )
 }
 
-export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page(props: Props) {
   return (
     <Layout
       title="直播推流 SDK_推流 SDK_视频直播"
       keywords="直播推流 SDK, 直播 SDK, 第三方直播 SDK, ios 直播 SDK, android 直播 SDK, 第三方直播推流 SDK, ios 直播推流 SDK, android 直播推流 SDK"
       description="直播推流 SDK，由七牛音视频团队多年精心打磨，包体轻盈、接入简单，协助您快速搭建直播推流核心功能，同时可无缝对接美颜、滤镜、人脸贴纸等高级特效。"
     >
-      <Content notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -87,7 +90,7 @@ export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Plms),
+      notices: await getProductPageNotices(Product.Plms),
       newsRes: await getNews({ product: Product.Plms })
     }
   }

@@ -6,6 +6,8 @@
 
 import React, { ReactNode, HTMLAttributes } from 'react'
 
+import { Ref } from 'utils/type'
+
 import NewsIcon from './images/news.svg'
 import WelfaresIcon from './images/welfares.svg'
 
@@ -16,6 +18,7 @@ export type GroupType = 'news' | 'welfares'
 export interface INoticeItemProps extends HTMLAttributes<HTMLElement> {
   href: string
   children: ReactNode
+  linkRef?: Ref<HTMLAnchorElement>
   title?: string
 }
 
@@ -82,7 +85,7 @@ export function Group(props: INoticeGroupProps) {
 }
 
 export function Item(props: INoticeItemProps) {
-  const { title, href, children } = props
+  const { title, href, children, linkRef } = props
 
   const className = [
     props.className,
@@ -94,6 +97,7 @@ export function Item(props: INoticeItemProps) {
   return (
     <p className={className}>
       <a
+        ref={linkRef}
         className={styles.notice}
         {...anchorTitle && { title: anchorTitle }}
         href={href}

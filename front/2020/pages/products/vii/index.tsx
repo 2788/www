@@ -6,7 +6,8 @@
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 import { useBtns } from 'hooks/product-btn'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import { useModal as useFeedbackModal } from 'components/Feedback'
@@ -29,7 +30,9 @@ const pageInfo = {
     '视频智能分析是一款针对视频等多媒体文件，通过对视频，图片，音频等内容的多维理解，对其实现结构化标签提取，审核，识别等功能的产品，可广泛应用于多媒体内容的管理，搜索和推荐。'
 }
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useFeedbackModal()
   const priceUrl = urlForPrice(Product.Vii)
 
@@ -48,7 +51,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={bannerBtns.banner}
         icon={bannerImg}
       />
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Navigator>{bannerBtns.nav}</Navigator>
       <Features />
       <Advantage />
@@ -59,10 +62,10 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function ViiPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function ViiPage(props: Props) {
   return (
     <Layout title={pageInfo.layoutTitle} keywords={pageInfo.keywords} description={pageInfo.description}>
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -70,7 +73,7 @@ export default function ViiPage({ notices, newsRes }: InferGetStaticPropsType<ty
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Vii),
+      notices: await getProductPageNotices(Product.Vii),
       newsRes: await getNews({ product: Product.Vii })
     }
   }

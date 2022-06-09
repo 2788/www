@@ -5,7 +5,7 @@
 import React, { CSSProperties } from 'react'
 import { Row, LayoutCard } from 'components/UI/Card'
 import Button from 'components/UI/Button'
-import { process, scaleBy, withFormat } from 'utils/img'
+import { process, scaleBy, withFormat } from 'utils/dora-img'
 
 import ImgGoglobal from './goglobal.png'
 import Qvm0buy from './qvm0buy.png'

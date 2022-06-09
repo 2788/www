@@ -10,8 +10,9 @@ import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
-import { getPromotionMap, Promotion } from 'apis/qcdn'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
+import { getPromotionMap } from 'apis/qcdn'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -47,12 +48,11 @@ import Advantage4Icon from './_images/advantage4.svg'
 import Advantage5Icon from './_images/advantage5.svg'
 import Advantage6Icon from './_images/advantage6.svg'
 
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent(
-  { notices, newsRes, promotionMap }:
-  { notices: INotice[], newsRes: INewsResponse, promotionMap: { [k: number]: Promotion } }
-) {
+function PageContent({ notices, newsRes, promotionMap }: Props) {
 
   const priceUrl = urlForPrice(Product.Cdn)
 
@@ -71,7 +71,7 @@ function PageContent(
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -180,7 +180,7 @@ function PageContent(
   )
 }
 
-export default function CdnPage({ notices, newsRes, promotionMap }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function CdnPage(props: Props) {
 
   return (
     <Layout
@@ -188,7 +188,7 @@ export default function CdnPage({ notices, newsRes, promotionMap }: InferGetStat
       keywords="高防CDN, 动态CDN, 静态CDN, CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器, 内容分发, 云加速, CDN, 图片CDN, 视频CDN"
       description="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
     >
-      <PageContent notices={notices} newsRes={newsRes} promotionMap={promotionMap} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -196,7 +196,7 @@ export default function CdnPage({ notices, newsRes, promotionMap }: InferGetStat
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Cdn),
+      notices: await getProductPageNotices(Product.Cdn),
       newsRes: await getNews({ product: Product.Cdn }),
       promotionMap: await getPromotionMap()
     }

@@ -12,7 +12,8 @@ import { Product } from 'constants/products'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
@@ -23,7 +24,9 @@ import RiskControlAdvantages from 'components/pages/risk-control/Advantages'
 
 import imgBanner from './_images/banner.png'
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const priceUrl = urlForPrice(Product.RiskControl)
   const btns = useBtns(
     { href: 'https://jinshuju.net/f/cwtofb', children: '立即申请' },
@@ -40,7 +43,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         icon={imgBanner}
       />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>
         {btns.nav}
@@ -65,14 +68,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function RiskControlPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function RiskControlPage(props: Props) {
   return (
     <Layout
       title="智能风控_安全_风险业务管理_欺诈识别"
       keywords="智能风控，安全，风险业务管理，欺诈识别"
       description="智能风控产品利用 AI 人工智能算法精准评估金融、租赁、营销等业务风险，帮助企业建立事前防范、事中监控及事后分析的全流程风控体系，识别和防范注册、交易、贷款等关键环节中的欺诈问题，减少企业损失。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -80,7 +83,7 @@ export default function RiskControlPage({ notices, newsRes }: InferGetStaticProp
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.RiskControl),
+      notices: await getProductPageNotices(Product.RiskControl),
       newsRes: await getNews({ product: Product.RiskControl })
     }
   }

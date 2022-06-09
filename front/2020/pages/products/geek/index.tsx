@@ -6,7 +6,8 @@
 import React from 'react'
 import qs from 'query-string'
 import { InferGetStaticPropsType } from 'next'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import { urlForSignin } from 'utils/route'
 import { host } from 'constants/env'
 import { Product, urlMap } from 'constants/products'
@@ -63,7 +64,9 @@ function getUrls() {
   }
 }
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const user = useUserInfo()
   const urls = getUrls()
 
@@ -85,7 +88,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={bannerBtns.banner}
         icon={BannerIcon}
       />
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Navigator>{bannerBtns.nav}</Navigator>
       <FeatureList />
       <SceneList />
@@ -95,14 +98,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function GeekPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function GeekPage(props: Props) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -110,7 +113,7 @@ export default function GeekPage({ notices, newsRes }: InferGetStaticPropsType<t
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Geek),
+      notices: await getProductPageNotices(Product.Geek),
       newsRes: await getNews({ product: Product.Geek })
     }
   }

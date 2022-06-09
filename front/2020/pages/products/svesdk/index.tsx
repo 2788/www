@@ -13,7 +13,8 @@ import { InferGetStaticPropsType } from 'next'
 import { useBtns } from 'hooks/product-btn'
 
 import { Product } from 'constants/products'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -37,7 +38,9 @@ import Step2 from './images/step2.svg'
 import Step3 from './images/step3.svg'
 import Step4 from './images/step4.svg'
 
-export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useModal()
 
   const btns = useBtns(
@@ -53,7 +56,7 @@ export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INe
         btns={btns.banner}
         icon={banner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -86,14 +89,14 @@ export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INe
   )
 }
 
-export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page(props: Props) {
   return (
     <Layout
       title="短视频特效 SDK"
       keywords="短视频特效SDK, 短视频SDK, 七牛云, 七牛短视频, 短视频特效"
       description="七牛短视频特效 SDK，在七牛短视频 SDK 中集成了美颜特效功能。其不仅拥有七牛短视频 SDK 本身提供的拍摄、编辑、上传等能力，还集成了美颜、滤镜、动态贴纸、美妆、微整形等特效功能，旨在帮助开发者一站式打造一款拥有美颜特效功能的专业的短视频拍摄工具，让用户的拍摄更美丽有趣。"
     >
-      <Content notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -101,7 +104,7 @@ export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Svesdk),
+      notices: await getProductPageNotices(Product.Svesdk),
       newsRes: await getNews({ product: Product.Svesdk })
     }
   }

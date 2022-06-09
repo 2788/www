@@ -12,7 +12,8 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNews, getNotices } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import Navigator from 'components/Product/Navigator'
@@ -35,8 +36,10 @@ import IconFeatureScalable from './_icons/feature/scalable.svg'
 import IconFeatureStable from './_icons/feature/stable.svg'
 import style from './style.less'
 
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
+function PageContent(props: Props) {
 
   const isMobile = useMobile()
 
@@ -72,7 +75,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
         icon={imgBanner}
       />
 
-      <ProductNotice notices={props.notices} />
+      <ProductNotice {...props.notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -152,7 +155,7 @@ function PageContent(props: InferGetStaticPropsType<typeof getStaticProps>) {
   )
 }
 
-export default function QvmPage(props: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function QvmPage(props: Props) {
   return (
     <Layout
       title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
@@ -170,7 +173,7 @@ export async function getStaticProps() {
       starter: await getStarterSpecs(),
       enterprise: await getEnterpriseSpecs(),
       metaInfo: await getMetaInfo(),
-      notices: await getNotices(Product.Qvm),
+      notices: await getProductPageNotices(Product.Qvm),
       newsRes: await getNews({ product: Product.Qvm })
     }
   }

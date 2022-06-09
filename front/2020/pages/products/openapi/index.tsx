@@ -8,7 +8,8 @@ import Services from 'components/pages/openapi/Services'
 import Advantage from 'components/pages/openapi/Advantage'
 import Cases from 'components/pages/openapi/Cases'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -18,7 +19,9 @@ import { Product, urlMap } from 'constants/products'
 
 import banner from './banner.png'
 
-function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const btns = useBtns(
     { href: `${urlMap[Product.OpenAPI]}/partner`, children: '合作申请' },
     { children: '立即使用', href: 'https://portal.qiniu.com/openapi', pcOnly: true },
@@ -34,7 +37,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
         btns={btns.banner}
         icon={banner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -49,14 +52,14 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
   )
 }
 
-export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Main(props: Props) {
   return (
     <Layout
       title="AI 开放市场_Open API"
       keywords="AI 开放市场, AI, 开放市场, Open API, openapi, open api, 开放平台, 第三方, 图片, 音视频, 数据处理"
       description="AI 开放市场是一个开放平台，协同合作伙伴一起为七牛的客户提供图片，文本，音频，视频等智能数据处理服务，实现对媒体内容的智能审核，智能处理。"
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -64,7 +67,7 @@ export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.OpenAPI),
+      notices: await getProductPageNotices(Product.OpenAPI),
       newsRes: await getNews({ product: Product.OpenAPI })
     }
   }

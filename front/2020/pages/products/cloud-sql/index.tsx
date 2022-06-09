@@ -9,7 +9,8 @@ import { urlForPrice } from 'utils/route'
 import { useBtns } from 'hooks/product-btn'
 
 import { Product } from 'constants/products'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -25,7 +26,9 @@ import QvmCommonCases from 'components/pages/qvm/Cases'
 
 import banner from './banner.png'
 
-function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const priceCalculatorUrl = urlForPrice(Product.Qvm, true)
   const priceUrl = urlForPrice(Product.Qvm)
@@ -45,7 +48,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
         btns={btns.banner}
         icon={banner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -77,14 +80,14 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
   )
 }
 
-export default function CloudSql({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function CloudSql(props: Props) {
   return (
     <Layout
       title="云数据库"
       keywords="七牛云, 数据库, 云数据库, 高可用, 高性能, 弹性伸缩, 容灾, 备份, 恢复, 安防, 监控, 迁移, PolarDB, RDS MySQL, RDS SQL, Redis, MongoDB"
       description="基于七牛云积累多年的数据库研发、搭建和维护经验，为您打造高可用、高性能、即开即用、弹性伸缩的云数据库服务，拥有容灾、备份、恢复、安防、监控、迁移等全方位解决方案。"
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -92,7 +95,7 @@ export default function CloudSql({ notices, newsRes }: InferGetStaticPropsType<t
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.CloudSql),
+      notices: await getProductPageNotices(Product.CloudSql),
       newsRes: await getNews({ product: Product.CloudSql })
     }
   }

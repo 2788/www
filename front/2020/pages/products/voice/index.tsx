@@ -14,7 +14,8 @@ import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -34,7 +35,9 @@ const pageInfo = {
     '智能语音基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互，可广泛应用于智能终端设备、智能客服、质检、导航资讯播报、实时获取字幕、有声书等多种场景，同时提供私有化（本地部署）服务。'
 }
 
-export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useFeedbackModal()
   const priceUrl = urlForPrice(Product.Voice)
 
@@ -53,7 +56,7 @@ export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         icon={imgBanner}
       />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Function />
       <Advantage />
       <Scene />
@@ -70,14 +73,14 @@ export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Main(props: Props) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -85,7 +88,7 @@ export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Voice),
+      notices: await getProductPageNotices(Product.Voice),
       newsRes: await getNews({ product: Product.Voice })
     }
   }

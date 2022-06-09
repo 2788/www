@@ -14,7 +14,8 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Feature, * as feature from 'components/Product/Feature'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -42,7 +43,9 @@ import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -64,7 +67,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         icon={imgBanner}
       />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -163,14 +166,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function SmsPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function SmsPage(props: Props) {
   return (
     <Layout
       title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
       keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
       description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -178,7 +181,7 @@ export default function SmsPage({ notices, newsRes }: InferGetStaticPropsType<ty
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Sms),
+      notices: await getProductPageNotices(Product.Sms),
       newsRes: await getNews({ product: Product.Sms })
     }
   }

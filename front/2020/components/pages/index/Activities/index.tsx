@@ -1,61 +1,46 @@
-import React, { ReactNode, PropsWithChildren } from 'react'
+import React, { useState } from 'react'
 
 import {
   Card as UICard, Title, Desc, Content
 } from 'components/UI/Card'
 import Link from 'components/Link'
-import { Activity } from 'apis/admin/homepage'
+import { HomePageActivity, AdvertInfo } from 'apis/thallo'
+import { useTrack } from 'hooks/thallo'
 
 import styles from './style.less'
 
-interface CardProps {
-  icon: ReactNode
-  title: string
-  banner?: string
-  bannerBg?: string
-  href?: string
-}
+function Card(props: AdvertInfo<HomePageActivity>) {
+  const { icon, txt, subTxt, url, cornerTxt } = props.elements
+  const banner = cornerTxt.value.trim().toUpperCase()
 
-function Card({ icon, title, banner, bannerBg = '#FA8C16', href, children }: PropsWithChildren<CardProps>) {
-  banner = banner?.trim()
+  const [link, setLink] = useState<HTMLElement | null>(null)
+  useTrack(link, props)
+
   return (
-    <Link className={styles.container} href={href}>
+    <Link ref={setLink} className={styles.container} href={url.value}>
       <UICard className={styles.card}>
-        {icon}
-        {banner ? <div className={styles.banner} style={{ background: bannerBg }}>{banner}</div> : null}
+        <div className={styles.icon} style={{ backgroundImage: `url(${icon.value})` }} />
+        {banner ? <div className={styles.banner} style={{ background: '#FA8C16' }}>{banner}</div> : null}
         <Content className={styles.cardContent}>
-          <Title className={styles.title}>{title}</Title>
-          <Desc className={styles.desc}>{children}</Desc>
+          <Title className={styles.title}>{txt.value}</Title>
+          <Desc className={styles.desc}>{subTxt.value}</Desc>
         </Content>
       </UICard>
     </Link>
   )
 }
 
-// lable值集合，不在此集合内则直接取值
-const labelMap = {
-  hot: 'HOT',
-  new: 'NEW'
-} as { [k: string]: string }
+export interface Props {
+  activities: Array<AdvertInfo<HomePageActivity>>
+}
 
-export default function Activities({ activities }: { activities: Activity[] }) {
-  const cardsView = activities
-    .map(({ title, subTitle, icon, label, link }, i) => (
-      <Card
-        key={i}
-        icon={<div className={styles.icon} style={{ backgroundImage: `url("${icon}")` }}></div>}
-        title={title}
-        href={link}
-        banner={labelMap[label] || label}
-      >
-        {subTitle}
-      </Card>
-    ))
-
+export default function Activities({ activities }: Props) {
   return (
     <div className={styles.activities}>
       <div className={styles.content}>
-        {cardsView}
+        {activities.map((activity, i) => (
+          <Card key={i} {...activity} />
+        ))}
       </div>
     </div>
   )

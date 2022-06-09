@@ -7,7 +7,8 @@ import React from 'react'
 import { InferGetStaticPropsType } from 'next'
 
 import { useBtns } from 'hooks/product-btn'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import { Product, priceUrlMap } from 'constants/products'
@@ -29,7 +30,9 @@ const pageInfo = {
   description: '智能分析视频内容场景特性，动态调整图像增强算法，并结合高性能视频编码器，实现在更低带宽下，传输更清晰的视频。'
 }
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const bannerBtns = useBtns(
     { href: 'https://developer.qiniu.com/dora/6097/perceptive-transcoding-avsmart-1', children: '立即使用', pcOnly: true },
@@ -45,7 +48,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={bannerBtns.banner}
         icon={bannerImg}
       />
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Navigator>{bannerBtns.nav}</Navigator>
 
       <Function />
@@ -64,10 +67,10 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page(props: Props) {
   return (
     <Layout title={pageInfo.layoutTitle} keywords={pageInfo.keywords} description={pageInfo.description}>
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -75,7 +78,7 @@ export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Avsmart),
+      notices: await getProductPageNotices(Product.Avsmart),
       newsRes: await getNews({ product: Product.Avsmart })
     }
   }

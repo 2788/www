@@ -17,7 +17,8 @@ import Scenes from 'components/pages/faceid/Scenes'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 import Link from 'components/Link'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -44,7 +45,9 @@ interface LinkTitleProps {
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const priceUrl = urlForPrice(Product.FaceID)
 
@@ -81,7 +84,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         icon={imgBanner}
       />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -191,14 +194,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function FaceIdPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function FaceIdPage(props: Props) {
   return (
     <Layout
       title="人脸核验_活体检测识别_身份验证 OCR 识别_刷脸识别"
       keywords="人脸核验, 身份验证, 人脸比对, 实名制"
       description="利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证，广泛应用于数字金融、在线教育、线上政务和直播等各类实名制场景中。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -206,7 +209,7 @@ export default function FaceIdPage({ notices, newsRes }: InferGetStaticPropsType
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.FaceID),
+      notices: await getProductPageNotices(Product.FaceID),
       newsRes: await getNews({ product: Product.FaceID })
     }
   }

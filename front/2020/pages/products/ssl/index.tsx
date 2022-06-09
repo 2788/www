@@ -10,7 +10,8 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -50,7 +51,9 @@ import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const priceUrl = urlForPrice(Product.Ssl)
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/ssl', children: '立即使用', pcOnly: true },
@@ -66,7 +69,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -190,14 +193,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function SslPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function SslPage(props: Props) {
   return (
     <Layout
       title="SSL 证书_证书服务_SSL 数字证书_HTTPS 加密_服务器证书_CA 认证"
       keywords="ssl, ssl 证书, ssl 证书申请, ssl 企业证书, ssl 数字证书, 免费 ssl 证书, 企业 ssl 证书, ssl 证书购买, ssl 证书服务, ssl 证书价格, ev ssl 证书, dv ssl 证书, ov ssl 证书, https 证书"
       description="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -205,7 +208,7 @@ export default function SslPage({ notices, newsRes }: InferGetStaticPropsType<ty
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Ssl),
+      notices: await getProductPageNotices(Product.Ssl),
       newsRes: await getNews({ product: Product.Ssl })
     }
   }

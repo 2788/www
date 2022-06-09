@@ -21,7 +21,8 @@ import Feature, {
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -41,7 +42,9 @@ import style from './index.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -62,7 +65,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -164,14 +167,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function RtcPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function RtcPage(props: Props) {
   return (
     <Layout
       title="实时音视频_音视频通信 RTC_视频会议_音频通话_互动直播_WebRTC 服务"
       keywords="互动直播, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
       description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -179,7 +182,7 @@ export default function RtcPage({ notices, newsRes }: InferGetStaticPropsType<ty
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Rtn),
+      notices: await getProductPageNotices(Product.Rtn),
       newsRes: await getNews({ product: Product.Rtn })
     }
   }

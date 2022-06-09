@@ -14,7 +14,8 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -53,7 +54,9 @@ import style from './style.less'
 // 使用链接
 const portalUrl = 'https://portal.qiniu.com/express'
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const btns = useBtns(
     { href: portalUrl, children: '立即使用', pcOnly: true },
@@ -70,7 +73,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         icon={imgBanner}
       />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -234,14 +237,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function PandoraPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function PandoraPage(props: Props) {
   return (
     <Layout
       title="机器数据分析平台 Pandora_机器数据分析_数据分析平台 Pandora"
       keywords="数据分析, 数据管理, 智能运维管理, 业务运营分析, 安全事态分析, 智能网联数据, 金融, 汽车, 运营商, 智能制造, 互联网"
       description="机器数据分析平台 Pandora 能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -249,7 +252,7 @@ export default function PandoraPage({ notices, newsRes }: InferGetStaticPropsTyp
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Express),
+      notices: await getProductPageNotices(Product.Express),
       newsRes: await getNews({ product: Product.Express })
     }
   }

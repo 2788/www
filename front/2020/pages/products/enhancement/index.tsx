@@ -10,7 +10,8 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -26,7 +27,9 @@ import banner from './banner.png'
 
 const desc = '基于七牛计算机视觉与深度学习技术，提供视频画质增强服务，通过超分辨率、降噪、去模糊、去马赛克等手段，显著提升图片和视频的主观画质评价，可广泛应用于互联网媒体、直播、短视频、在线教育、广电传媒等行业应用。'
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
@@ -42,7 +45,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={btns.banner}
         icon={banner}
       />
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Navigator>{btns.nav}</Navigator>
       <Advantage />
       <Feature />
@@ -52,14 +55,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function EnhancementPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function EnhancementPage(props: Props) {
   return (
     <Layout
       title="画质增强"
       keywords="超分辨率, 降噪, 去模糊, 去马赛克, 画质增强, 画质修复, 提升画质"
       description={desc}
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -67,7 +70,7 @@ export default function EnhancementPage({ notices, newsRes }: InferGetStaticProp
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Enhancement),
+      notices: await getProductPageNotices(Product.Enhancement),
       newsRes: await getNews({ product: Product.Enhancement })
     }
   }

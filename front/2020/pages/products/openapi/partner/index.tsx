@@ -15,7 +15,7 @@ import { useBtns } from 'hooks/product-btn'
 
 import banner from './banner.png'
 
-function Page() {
+function PageContent() {
   const currentUrl = useUrl()
   const userInfo = useUserInfo()
   const handelClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -58,7 +58,7 @@ export default function Partner() {
       keywords="合作申请, 合作伙伴, 服务商"
       description="加入我们成为合作伙伴，让我们一起为用户提供更加优质和便捷的服务"
     >
-      <Page />
+      <PageContent />
     </Layout>
   )
 }

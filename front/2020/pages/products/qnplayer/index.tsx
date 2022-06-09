@@ -5,7 +5,8 @@
 
 import React from 'react'
 import { InferGetStaticPropsType } from 'next'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 import { useModal as useFeedbackModal } from 'components/Feedback'
@@ -28,7 +29,9 @@ const pageInfo = {
     '七牛云播放器是一款全自研内核的多媒体播放器，支持多种视频格式及流媒体协议。包体小、首开快、播放流畅、使用简单，可支持直播、点播等多种场景。'
 }
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useFeedbackModal()
 
   const bannerBtns = useBtns(
@@ -48,7 +51,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={bannerBtns.banner}
         icon={bannerImg}
       />
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Navigator>{bannerBtns.nav}</Navigator>
       <Advantage />
       <Feature />
@@ -59,14 +62,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function QnPlayerPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function QnPlayerPage(props: Props) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -74,7 +77,7 @@ export default function QnPlayerPage({ notices, newsRes }: InferGetStaticPropsTy
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.QnPlayer),
+      notices: await getProductPageNotices(Product.QnPlayer),
       newsRes: await getNews({ product: Product.QnPlayer })
     }
   }

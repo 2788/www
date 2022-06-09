@@ -8,7 +8,8 @@ import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import QvmCommonCases from 'components/pages/qvm/Cases'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Advantage from 'components/pages/waf/Advantage'
@@ -17,7 +18,9 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 import Section from 'components/Product/Section'
 import imgBanner from './images/banner.png'
 
-export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/security/waf' },
@@ -32,7 +35,7 @@ export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INe
         btns={btns.banner}
         icon={imgBanner}
       />
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
       <Navigator>{btns.nav}</Navigator>
       <Advantage />
       <Scenes />
@@ -63,14 +66,14 @@ export function Content({ notices, newsRes }: { notices: INotice[], newsRes: INe
   )
 }
 
-export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Page(props: Props) {
   return (
     <Layout
       title="Web 应用防火墙"
       keywords="Web 应用防火墙, WAF, Web 应用防火墙价格, 网站防火墙, 网站安全防护"
       description="Web 应用防火墙对网站或者 APP 的业务流量进行恶意特征识别及防护，将正常、安全的流量回源到服务器。避免网站服务器被恶意入侵，保障业务的核心数据安全，解决因恶意攻击导致的服务器性能异常问题。"
     >
-      <Content notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -78,7 +81,7 @@ export default function Page({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.WAF),
+      notices: await getProductPageNotices(Product.WAF),
       newsRes: await getNews({ product: Product.WAF })
     }
   }

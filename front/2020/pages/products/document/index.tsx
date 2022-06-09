@@ -15,7 +15,8 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -27,7 +28,9 @@ import banner from './banner.png'
 
 const desc = '文档处理依托先进的自然语言处理技术，提供文档预览、文档转换、文档翻译等多种文档处理服务，可广泛应用于在线教育、OA 系统、在线网盘等多种使用场景。'
 
-function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const { startConsulting } = useModal()
 
@@ -44,7 +47,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
         btns={btns.banner}
         icon={banner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -67,14 +70,14 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
   )
 }
 
-export default function Document({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Document(props: Props) {
   return (
     <Layout
       title="文档处理_文档转换_文档预览_文档翻译"
       keywords="document, 文档处理, 文档转换, 文档预览, 文档翻译"
       description={desc}
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -82,7 +85,7 @@ export default function Document({ notices, newsRes }: InferGetStaticPropsType<t
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Document),
+      notices: await getProductPageNotices(Product.Document),
       newsRes: await getNews({ product: Product.Document })
     }
   }

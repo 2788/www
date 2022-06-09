@@ -4,29 +4,33 @@ import classnames from 'classnames'
 import Link from 'components/Link'
 import Button from 'components/UI/Button'
 import { useMobile } from 'hooks/ua'
-import { Banner } from 'apis/admin/homepage'
+import { HomePageBanner, AdvertInfo } from 'apis/thallo'
+import { trackClick as trackThalloClick } from 'utils/sensors/thallo'
 
 import styles from './style.less'
 
-export default function IndexPageBanner({ dark, ...banner }: Banner & { dark: boolean }) {
-  const { title, desc, backgroundColor = '#34A1EC', href, pcImg, mobileImg, buttonTexts } = banner
+export interface Props extends AdvertInfo<HomePageBanner> {
+  dark: boolean
+}
+
+export default function IndexPageBanner({ dark, ...advertInfo }: Props) {
+  const { pPic, txt, subTxt, url, bTxt, mPic } = advertInfo.elements
   const isMobile = useMobile()
-  const bgImg = isMobile ? mobileImg : pcImg
+  const bgImg = isMobile ? mPic.value : pPic.value
+  const backgroundColor = pPic.imgColorFill
 
   function renderBtnWrapper() {
-    if (isMobile || !buttonTexts || !buttonTexts.length) {
+    if (isMobile || !bTxt.value) {
       return null
     }
-    const btnStyle = dark ? { color: backgroundColor } : undefined
     return (
       <div className={styles.btnsWrapper}>
-        {
-          buttonTexts.map((text, index) => (
-            index === 0
-              ? <Button key={index} type="primary" className={styles.btn} style={btnStyle}>{text}</Button>
-              : <Button key={index} type="hollow" className={classnames(styles.btn, styles.hollow)} style={btnStyle} withBorder>{text}</Button>
-          ))
-        }
+        <Button
+          className={styles.btn}
+          type={dark ? 'default' : 'hollow'}
+          style={dark ? { color: backgroundColor } : undefined}
+          withBorder={!dark}
+        >{bTxt.value}</Button>
       </div>
     )
   }
@@ -40,20 +44,28 @@ export default function IndexPageBanner({ dark, ...banner }: Banner & { dark: bo
   }
 
   function withWrapper(children: ReactNode) {
+    const href = url.value
+    const handleClick = () => {
+      trackThalloClick(advertInfo)
+    }
     const props = {
       className: classnames(styles.mainWrapper, styles.index),
       style: bgColorStyle,
+      onClick: handleClick,
       children
     }
-    if (href == null) {
+    if (!href) {
       return <div {...props} />
     }
     return <Link {...props} href={href} />
   }
 
+  const title = txt.value
+  const desc = subTxt.value
+
   return withWrapper(
     <div className={styles.contentWrapper} style={bgStyle}>
-      <div className={classnames(styles.content, dark && styles.dark)}>
+      <div className={classnames(styles.content, dark ? styles.dark : styles.light)}>
         {title && <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: title }} />}
         {desc && <p className={styles.desc} dangerouslySetInnerHTML={{ __html: desc }} />}
         {renderBtnWrapper()}

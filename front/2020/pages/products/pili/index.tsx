@@ -23,7 +23,8 @@ import Function from 'components/pages/pili/Function'
 import Arch from 'components/pages/pili/Arch'
 import PiliScene from 'components/pages/pili/Scene'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -39,7 +40,9 @@ import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const { startConsulting } = useFeedbackModal()
 
   const priceUrl = urlForPrice(Product.Pili)
@@ -59,7 +62,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -150,14 +153,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function PiliPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function PiliPage(props: Props) {
   return (
     <Layout
       title="视频直播_直播推流_直播 SDK_直播云服务_视频直播 Pili"
       keywords="直播云, 云直播, 直播 SDK, 视频直播云服务, 视频直播服务, 直播 API, 推流 SDK, 播放 SDK, 视频直播, 七牛视频直播, quic 推流"
       description="七牛视频直播是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -165,7 +168,7 @@ export default function PiliPage({ notices, newsRes }: InferGetStaticPropsType<t
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Pili),
+      notices: await getProductPageNotices(Product.Pili),
       newsRes: await getNews({ product: Product.Pili })
     }
   }

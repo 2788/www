@@ -2,12 +2,13 @@
  * @file 自动判断是否应使用 next/Link <Link> or <a> 的链接组件
  */
 
-import React, { AnchorHTMLAttributes } from 'react'
+import React, { AnchorHTMLAttributes, forwardRef } from 'react'
 import classnames from 'classnames'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 import { isExternal } from 'utils'
+import { Ref } from 'utils/type'
 import { checkInSite } from 'utils/route'
 import { host } from 'constants/env'
 
@@ -18,34 +19,39 @@ export type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
   blue?: boolean
 }
 
-export default function Link({ href, className, blue, children, ...others }: Props) {
+export default forwardRef<HTMLAnchorElement, Props>(function Link(
+  { href, className, blue, children, ...others }: Props,
+  ref: Ref<HTMLAnchorElement> | null
+) {
   const { pathname } = useRouter()
   const classname = classnames(className, blue && style.blue)
+  const anchorProps = { ...others, ref, className: classname }
+
   // 对于 hash 直接走 a 标签，next/link 会干掉 hrefe: hash 点击触发的 hashchange 事件
   if (href && href.indexOf('#') > -1) {
     // 当前页跳转 处于 /kodo 想跳转到 /kodo#target，生成 #target
     if (href.indexOf(pathname + '#') === 0) {
-      return <a className={classname} href={'#' + href.split('#')[1]} {...others}>{children}</a>
+      return <a href={'#' + href.split('#')[1]} {...anchorProps}>{children}</a>
     }
 
     // 不同页跳转 处于 /plsv 想跳转到 /kodo#target，不处理。交给 next/link 单页跳转
 
     // # 开头
     if (href[0] === '#') {
-      return <a className={classname} href={href} {...others}>{children}</a>
+      return <a href={href} {...anchorProps}>{children}</a>
     }
   }
 
   const checked = checkInSite(href)
   if (!checked.inSite) {
     // 站外链接默认新页面打开
-    return <a className={classname} target="_blank" rel="noopener" href={href} {...others}>{children}</a>
+    return <a target="_blank" rel="noopener" href={href} {...anchorProps}>{children}</a>
   }
 
   // 当前内容嵌入其他站点时走此逻辑
   if (isExternal() && href != null) {
     href = new URL(href, host).href
-    return <a className={classname} href={href} {...others}>{children}</a>
+    return <a href={href} {...anchorProps}>{children}</a>
   }
 
   // NextLink 只适用于指向站内的 page，每个 page 会生成对应的 pagename.js 并 prefetch
@@ -55,7 +61,7 @@ export default function Link({ href, className, blue, children, ...others }: Pro
   const prefetchProps = shouldNotPrefetch ? { prefetch: false } : {}
   return (
     <NextLink {...prefetchProps} href={checked.path}>
-      <a className={classname} {...others}>{children}</a>
+      <a {...anchorProps}>{children}</a>
     </NextLink>
   )
-}
+})

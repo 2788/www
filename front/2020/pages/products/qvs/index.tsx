@@ -20,7 +20,8 @@ import Navigator from 'components/Product/Navigator'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -31,7 +32,9 @@ import Process from 'components/pages/qvs/Process'
 
 import imgBanner from './images/banner.png'
 
-export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
   const portalUrl = 'https://portal.qiniu.com/qvs'
   const priceUrl = urlForPrice(Product.Qvs)
 
@@ -50,7 +53,7 @@ export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -82,14 +85,14 @@ export function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Main(props: Props) {
   return (
     <Layout
       title="视频监控 QVS_音视频监控存储_智能多媒体"
       keywords="视频监控, QVS, qvs"
       description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -97,7 +100,7 @@ export default function Main({ notices, newsRes }: InferGetStaticPropsType<typeo
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Qvs),
+      notices: await getProductPageNotices(Product.Qvs),
       newsRes: await getNews({ product: Product.Qvs })
     }
   }

@@ -14,7 +14,8 @@ import { useBtns } from 'hooks/product-btn'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -29,7 +30,9 @@ import Scene from 'components/pages/plsv/Scene'
 
 import imgBanner from './images/banner.png'
 
-function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const btns = useBtns(
     { children: '免费体验', href: 'https://qmall.qiniu.com/template/MTE1', pcOnly: true },
@@ -44,7 +47,7 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -74,14 +77,14 @@ function PageContent({ notices, newsRes }: { notices: INotice[], newsRes: INewsR
   )
 }
 
-export default function PlsvPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function PlsvPage(props: Props) {
   return (
     <Layout
       title="短视频 SDK_短视频特效 SDK"
       keywords="短视频 SDK, 七牛短视频, 短视频服务, 短视频解决方案, ios 短视频 sdk, android 短视频 sdk"
       description="短视频 SDK，由七牛音视频团队潜心研发。100+ 功能覆盖绝大部分视频拍摄和编辑场景，本地转码性能优异，更支持对接第三方视频滤镜、人脸贴纸、背景分割等高级功能，协助您打造一站式手机视频制作工具。"
     >
-      <PageContent notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -89,7 +92,7 @@ export default function PlsvPage({ notices, newsRes }: InferGetStaticPropsType<t
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Plsv),
+      notices: await getProductPageNotices(Product.Plsv),
       newsRes: await getNews({ product: Product.Plsv })
     }
   }

@@ -1,54 +1,59 @@
 /**
- * @file 图片相关处理函数（基于 dora 图片高级处理能力）
- * @description 参考文档 https://developer.qiniu.com/dora/api/1270/the-advanced-treatment-of-images-imagemogr2
+ * @file 图片相关工具函数
+ * @desc -
  */
 
-/** 指定宽度等比缩放，单位 px */
-export type ScaleOptionsByWidth = { width: number }
-/** 指定高度等比缩放，单位 px */
-export type ScaleOptionsByHeight = { height: number }
-/** 等比缩放使得图片刚好被指定尺寸的区域包含，单位 px */
-export type ScaleOptionsContain = { type: 'contain', width: number, height: number }
-/** 等比缩放使得图片刚好覆盖指定尺寸的区域，单位 px */
-export type ScaleOptionsCover = { type: 'cover', width: number, height: number }
+import { luminanceOfRGB } from './color'
 
-export type ScaleOptions = ScaleOptionsByWidth | ScaleOptionsByHeight | ScaleOptionsContain | ScaleOptionsCover
+/**
+ * 计算给定图片亮度，通过均匀选取多个点计算平均亮度，
+ * 结果为 `[0, 1]` 间的数字，数字越大则认为图片亮度越高，反之亮度越低；
+ * 注意若图片 URL 与当前页面不同域，需要允许跨域访问（通过设置响应头中的 `access-control-allow-origin`）
+ */
+export function luminanceOf(
+  /** 图片 URL */
+  imgUrl: string,
+  /** （一维上的）采样数，如设置 10，则总共会取 10*10=100 个点 */
+  sampleNum = 20
+) {
+  return new Promise<number>((resolve, reject) => {
+    const canvas = document.createElement('canvas')
+    const img = new Image()
+    img.crossOrigin = 'Anonymous'
+    img.src = imgUrl
+    img.onerror = reject
 
-function isByWidth(options: ScaleOptions): options is ScaleOptionsByWidth {
-  return (options as ScaleOptionsByWidth).width != null
-}
+    img.onload = () => {
+      const { width, height } = img
+      canvas.width = width
+      canvas.height = height
 
-function isContain(options: ScaleOptions): options is ScaleOptionsContain {
-  return (options as ScaleOptionsContain).type === 'contain'
-}
+      const ctx = canvas.getContext('2d')!
+      ctx.drawImage(img, 0, 0)
 
-function isCover(options: ScaleOptions): options is ScaleOptionsCover {
-  return (options as ScaleOptionsCover).type === 'cover'
-}
+      // 对坐标值进行处理，确保其为 [0, limit) 区间内的整数
+      function normalize(v: number, limit: number) {
+        v = Math.floor(v)
+        if (v < 0) v = 0
+        if (v >= limit) v = limit - 1
+        return v
+      }
 
-/** 等比缩放 */
-export function scaleBy(options: ScaleOptions) {
-  const prefix = 'thumbnail'
-  if (isContain(options)) return `${prefix}/${options.width}x${options.height}`
-  if (isCover(options)) return `${prefix}/!${options.width}x${options.height}r`
-  if (isByWidth(options)) return `${prefix}/${options.width}x`
-  return `${prefix}/x${options.height}`
-}
+      let sumOfLuminance = 0
+      sampleNum = Math.min(sampleNum, width, height)
+      const stepX = width / (sampleNum - 1)
+      const stepY = height / (sampleNum - 1)
 
-export type Format = 'jpg' | 'png' | 'webp'
-
-/** 转换为指定格式 */
-export function withFormat(format: Format) {
-  return `format/${format}`
-}
-
-/** 对目标图片（地址）执行指定的操作，返回结果图片（地址） */
-export function process(imgUrl: string, ...methods: string[]) {
-  const fops = ['imageMogr2', ...methods].join('/')
-  const [withoutHash, hash] = imgUrl.split('#')
-  const [withoutSearch, search] = withoutHash.split('?')
-  const searchWithFops = search ? [search, fops].join('&') : fops
-  const withSearch = [withoutSearch, searchWithFops].filter(Boolean).join('?')
-  const withHash = [withSearch, hash].filter(Boolean).join('#')
-  return withHash
+      for (let i = 0; i < sampleNum; i++) {
+        for (let j = 0; j < sampleNum; j++) {
+          const x = normalize(stepX * i, width)
+          const y = normalize(stepY * j, height)
+          const [r, g, b] = ctx.getImageData(x, y, 1, 1).data
+          sumOfLuminance += luminanceOfRGB(r, g, b)
+        }
+      }
+      const averageLuminance = sumOfLuminance / (sampleNum ** 2)
+      resolve(averageLuminance)
+    }
+  })
 }

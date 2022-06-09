@@ -32,33 +32,11 @@
       padding-top: 60px; // 距离顶部导航栏
       padding-bottom: 54px; // 距离底部滑块
       color: @grey-7;
-    
+
       &.dark {
         color: @grey-1;
-
-        .btnsWrapper {
-          .btn {
-            background-color: @grey-1;
-            border-color: @grey-1;
-
-            &:hover {
-              background-color: #f2f2f2;
-              border-color: #f2f2f2;
-            }
-
-            &.hollow {
-              background-color: @grey-1;
-              border-color: @grey-1;
-
-              &:hover {
-                background-color: #f2f2f2;
-                border-color: #f2f2f2;
-              }
-            }
-          }
-        }
       }
-    
+
       .mobile({
         justify-content: flex-start;
         align-items: center;
@@ -88,11 +66,11 @@
       
       .btnsWrapper {
         margin-top: 64px;
-      
+
         .mobile({
           margin-top: 2px;
         });
-      
+
         .btn {
           display: inline-block;
           width: auto;
@@ -100,35 +78,22 @@
           line-height: 38px;
           margin-right: 16px;
           padding: 0 24px;
-          background-color: @primary-color;
-          border-color: @primary-color;
-        
-          &:hover {
-            background-color: #37CAFF;
-            border-color: #37CAFF;
-          }
-          
-          &.hollow{
-            color: @primary-color;
-            border-color: @primary-color;
-      
-            &:hover {
-              color: @grey-1;
-              background: @primary-color;
-            }
-          }
-        
+
           .mobile({
             margin-right: 8px;
           });
         }
       }
+
+      // 为首页 banner 定制的透明底（hollow）酷黑 button
+      &.light .btnsWrapper .btn {
+        color: @grey-7;
+        border-color: @grey-7;
       
-      .iconWrapper {
-        flex: 0 1;
-      
-        svg, img {
-          width: 500px;
+        &:hover {
+          color: @grey-1;
+          background-color: @grey-7;
+          border-color: @grey-7;
         }
       }
     }

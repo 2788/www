@@ -10,7 +10,8 @@ import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
 
-import { getNews, getNotices, INewsResponse, INotice } from 'apis/admin/product'
+import { getNews } from 'apis/admin/product'
+import { getProductPageNotices } from 'apis/thallo'
 import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
@@ -27,7 +28,9 @@ import { Product } from 'constants/products'
 
 import banner from './banner.png'
 
-function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse }) {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+function PageContent({ notices, newsRes }: Props) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -48,7 +51,7 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
         btns={btns.banner}
         icon={banner} />
 
-      <ProductNotice notices={notices} />
+      <ProductNotice {...notices} />
 
       <OcrProduct />
 
@@ -71,14 +74,14 @@ function Page({ notices, newsRes }: { notices: INotice[], newsRes: INewsResponse
   )
 }
 
-export default function OcrPage({ notices, newsRes }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function OcrPage(props: Props) {
   return (
     <Layout
       title="票证自动识别 OCR"
       keywords="票证自动识别, OCR, open api, 身份证识别, 车险保单识别, 营业执照识别, 新车发票识别, 车辆登记识别"
       description="票证自动识别 OCR 基于行业前沿的深度学习技术，提供单张多张发票识别，身份证识别，车险保单识别，营业执照识别，新车发票识别，车辆登记识别等服务，帮助解决信息结构化问题，大幅提升信息处理效率。"
     >
-      <Page notices={notices} newsRes={newsRes} />
+      <PageContent {...props} />
     </Layout>
   )
 }
@@ -86,7 +89,7 @@ export default function OcrPage({ notices, newsRes }: InferGetStaticPropsType<ty
 export async function getStaticProps() {
   return {
     props: {
-      notices: await getNotices(Product.Ocr),
+      notices: await getProductPageNotices(Product.Ocr),
       newsRes: await getNews({ product: Product.Ocr })
     }
   }
