@@ -17,9 +17,9 @@ export default function Overlay() {
             联系我们
           </ContentSectionItem>
         </ContentSection>
-        <ContentSection title="活动与资讯">
-          <ContentSectionItem href="https://blog.qiniu.com/" target="_self">
-            七牛资讯
+        <ContentSection title="活动与资料">
+          <ContentSectionItem href="/pgc" target="_self">
+            七牛资料库
           </ContentSectionItem>
           <ContentSectionItem href={urlMap[Activity.Main]} hot>
             {nameMap[Activity.Main]}

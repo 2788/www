@@ -14,3 +14,14 @@ export interface BannerInfo extends StateProps {
 }
 
 export interface Banner extends BannerInfo, StdInfo {}
+
+export const bannerSize = {
+  preview: {
+    width: 1180,
+    height: 410
+  },
+  upload: {
+    width: 2880,
+    height: 800
+  }
+}

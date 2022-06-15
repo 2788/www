@@ -5,7 +5,7 @@
 
 import { injectable } from 'qn-fe-core/di'
 
-import { BannerInfo } from 'constants/pgc/conetnt-banner'
+import { BannerInfo } from 'constants/pgc/content-banner'
 import { MongoApiBaseClient, MongoApiStdClient } from 'apis/mongo-api-client'
 
 const resource = 'pgc-content-banner'

@@ -10,7 +10,7 @@ import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
 import { pgcManageAddRoute, pgcManageAddTitle, pgcManageEditRoute, pgcManageEditTitle } from 'constants/route'
-import { ContentType, Content } from 'constants/pgc/conetnt'
+import { ContentType, Content } from 'constants/pgc/content'
 import { getListPageUrl, getEditPageUrl } from 'transforms/pgc/content'
 
 import PgcManage from './Manage'

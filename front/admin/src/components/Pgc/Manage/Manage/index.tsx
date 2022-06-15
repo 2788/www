@@ -9,7 +9,7 @@ import { AddThinIcon } from 'react-icecream-2/icons'
 import Link from 'admin-base/common/components/Link'
 
 import { pgcManageAddTitle } from 'constants/route'
-import { contentTypes, contentTypeTextMap } from 'constants/pgc/conetnt'
+import { contentTypes, contentTypeTextMap } from 'constants/pgc/content'
 import { getAddPageUrl } from 'transforms/pgc/content'
 
 import { usePgcList } from './list'

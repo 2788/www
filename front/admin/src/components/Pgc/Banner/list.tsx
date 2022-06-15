@@ -9,7 +9,7 @@ import { EditIcon, DeleteIcon } from 'react-icecream-2/icons'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
-import { Banner } from 'constants/pgc/conetnt-banner'
+import { Banner, bannerSize } from 'constants/pgc/content-banner'
 import { timeFormatter } from 'utils/time'
 import { getStateName } from 'utils/check'
 import PgcContentBannerApis from 'apis/pgc/content-banner'
@@ -95,7 +95,7 @@ export function usePgcBannerList() {
       <PgcBannerTable.Column
         title="banner"
         accessor="img"
-        render={url => (<ImgPreview url={url} type="cover" width={2880} height={1000} />)}
+        render={url => (<ImgPreview url={url} type="cover" {...bannerSize.preview} />)}
       />
       <PgcBannerTable.Column
         title="跳转地址"

@@ -43,14 +43,21 @@
   }
 }
 
-// TODO: Parallax Scrolling Effect
 .hasBackground {
-  position: relative;
   height: 460px;
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  visibility: hidden;
+
+  &.lgLimit {
+    background-size: 1920px auto, 1920px auto;
+    background-position-x: center, center;
+  }
 
   .header {
     .centered();
-    padding-top: 320px;
+    padding-top: 310px;
   }
 
   .title,

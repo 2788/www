@@ -5,7 +5,7 @@
 
 import React, { Fragment } from 'react'
 
-import { ContentType, contentTypes, contentTypeTextMap } from 'constants/pgc/content'
+import { ContentType, contentTypes } from 'constants/pgc/content'
 import Link from 'components/Link'
 
 import { getListUrl } from '../../url'
@@ -20,6 +20,12 @@ const iconSrcMap = {
   [ContentType.Article]: articleIconSrc,
   [ContentType.Video]: videoIconSrc,
   [ContentType.File]: fileIconSrc
+}
+
+const contentTypeTextMap = {
+  [ContentType.Article]: '文章资讯',
+  [ContentType.Video]: '视频资料',
+  [ContentType.File]: '技术资料'
 }
 
 export default function TypeEntry() {

@@ -12,7 +12,7 @@ import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
 import { StateProps as RecordRange, checkOverlap } from 'utils/check'
-import { BannerInfo, Banner } from 'constants/pgc/conetnt-banner'
+import { BannerInfo, Banner, bannerSize } from 'constants/pgc/content-banner'
 import PgcContentBannerApis from 'apis/pgc/content-banner'
 import UploadImage, { createState as createUploadImageState } from 'components/common/Upload/Img'
 
@@ -132,8 +132,8 @@ const BannerModalForm = observer(function _BannerModalForm(props: Props) {
           uploadBucketKeyRule="pgc-content"
           state={state.$.img}
           previewType="cover"
-          width={2880}
-          height={1000}
+          {...bannerSize.preview}
+          desc={`推荐尺寸： ${bannerSize.upload.width} × ${bannerSize.upload.height} px`}
         />
       </FormItem>
       <FormItem label="跳转路径" required>

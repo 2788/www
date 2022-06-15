@@ -7,7 +7,7 @@
 
 import { injectable } from 'qn-fe-core/di'
 
-import { ContentId, ContentType, ContentDetail, ContentDetailWithTime, Content } from 'constants/pgc/conetnt'
+import { ContentId, ContentType, ContentDetail, ContentDetailWithTime, Content } from 'constants/pgc/content'
 import { MongoApiBaseClient, generateStdInfo, ListBaseOptions } from 'apis/mongo-api-client'
 
 const prefix = 'pgc-content'

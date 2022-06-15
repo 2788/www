@@ -9,7 +9,7 @@ import { Modal, ModalFooter, Loading } from 'react-icecream-2'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
-import { ContentId, ContentType, ContentDetail, Content } from 'constants/pgc/conetnt'
+import { ContentId, ContentType, ContentDetail, Content } from 'constants/pgc/content'
 import { getWwwContentDetailPreviewUrl, getEditPageUrl } from 'transforms/pgc/content'
 import PgcContentApis from 'apis/pgc/content'
 

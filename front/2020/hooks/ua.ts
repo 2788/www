@@ -3,6 +3,9 @@
  */
 
 import { createContext, useContext, useState } from 'react'
+
+import { ViewportSize, getViewportSize } from 'utils/dom'
+
 import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect'
 
 export type Ua = {
@@ -72,19 +75,11 @@ export function useOs() {
   return os
 }
 
-export interface ViewportSize {
-  width: number
-  height: number
-}
-
 export function useViewportSize() {
   const [size, setSize] = useState<ViewportSize | null>(null)
 
   function syncSize() {
-    setSize({
-      width: window.innerWidth,
-      height: window.innerHeight
-    })
+    setSize(getViewportSize())
   }
 
   useIsomorphicLayoutEffect(() => {

@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useState, useMemo } from 'react'
 import { observer } from 'mobx-react'
 import { RcFile } from 'react-icecream-1/lib/upload'
 import { Button, Loading, Dialog, DialogFooter } from 'react-icecream-2'
@@ -20,6 +20,8 @@ export interface IProps extends Pick<CommonUploadProps, 'uploadBucketKeyRule'> {
   previewType?: 'contain' | 'cover' | 'none'
   width?: number
   height?: number
+  /** 图片规格说明，默认为跟 width height maxSize 等相匹配的尺寸说明 */
+  desc?: string
 }
 
 export type State = FieldState<string>
@@ -50,13 +52,18 @@ export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
       />
     )
 
-  const descView = props.width && props.height
-    ? (
-      <p className={style.desc}>
-        推荐尺寸： {props.width} × {props.height} px
-      </p>
-    )
-    : null
+  const desc = useMemo(() => {
+    if (props.desc !== undefined) {
+      return props.desc
+    }
+
+    const whGcd = props.width && props.height ? gcd(props.width, props.height) : null
+    const boxDesc = whGcd
+      ? `推荐尺寸 ${props.width} × ${props.height} px (${props.width! / whGcd}:${props.height! / whGcd})`
+      : null
+    const sizeDesc = maxSize ? `最大 ${maxSize} KB` : null
+    return [boxDesc, sizeDesc].filter(Boolean).join('，')
+  }, [props.desc, props.width, props.height, maxSize])
 
   function beforeUpload(file: RcFile): boolean {
     const isOver = file.size > maxSize * 1024
@@ -92,7 +99,9 @@ export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
         </Loading>
         {previewView}
       </div>
-      {descView}
+      {desc && (
+        <p className={style.desc}>{desc}</p>
+      )}
       <Dialog
         visible={visible}
         onOk={() => { setVisible(false) }}
@@ -104,3 +113,8 @@ export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
     </div>
   )
 })
+
+// 求最大公约数
+function gcd(m: number, n: number): number {
+  return n === 0 ? m : gcd(n, m % n)
+}

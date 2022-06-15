@@ -6,7 +6,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import { ContentType, contentTypes, contentTypeTextMap, ContentCategory } from 'constants/pgc/content'
+import { ContentType, contentTypes, contentTypeTextMap } from 'constants/pgc/content'
 import Link from 'components/Link'
 
 import { getListUrl } from '../../url'
@@ -15,16 +15,15 @@ import style from './style.less'
 
 export interface Props {
   type: ContentType
-  category: ContentCategory | null
 }
 
-export default function TypeNav({ type, category }: Props) {
+export default function TypeNav({ type }: Props) {
   return (
     <div className={style.nav}>
       {contentTypes.map(contentType => (
         <Link
           key={contentType}
-          href={getListUrl(contentType, category)}
+          href={getListUrl(contentType, null)}
           className={classNames(type === contentType && style.active)}
         >
           {contentTypeTextMap[contentType]}

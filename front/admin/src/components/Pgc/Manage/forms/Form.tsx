@@ -15,9 +15,11 @@ import { ReplaceValue } from 'utils/ts'
 import {
   ContentDetail, Content, ContentType, contentTypeTextMap,
   contentCategories, contentCategoryTextMap, UserLimitType, userLimitTypes, userLimitTypeTextMap
-} from 'constants/pgc/conetnt'
+} from 'constants/pgc/content'
 import Editor from 'components/common/MarkdownEditor'
-import UploadImage, { createState as createUploadImageState } from 'components/common/Upload/Img'
+import UploadImage, {
+  createState as createUploadImageState, IProps as UploadImageProps
+} from 'components/common/Upload/Img'
 import UploadVideo from 'components/common/Upload/Video'
 import UploadFile from 'components/common/Upload/File'
 
@@ -120,10 +122,11 @@ function Footer({ isReleased, onPreview, onReset }: FooterProps) {
   )
 }
 
-const posterSizeMap = {
+const posterUploadConfig: Record<ContentType, Partial<UploadImageProps>> = {
   [ContentType.Article]: { // 18:10
-    width: 1287,
-    height: 715
+    width: 1926,
+    height: 1070,
+    maxSize: 1000 // TODO: 移动端 & 缩略图体积优化
   },
   [ContentType.Video]: { // 16:9
     width: 736,
@@ -244,7 +247,7 @@ export default observer(function DetailForm({ type, onSubmitDraft, content, onPr
           uploadBucketKeyRule="pgc-content"
           state={state.$.posterUrl}
           previewType="cover"
-          {...posterSizeMap[type]}
+          {...posterUploadConfig[type]}
         />
       </FormItem>
       <FormItem label="标签">

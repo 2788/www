@@ -80,9 +80,11 @@ export default function List(props: Props) {
     <div className={style.wrapper}>
       <Breadcrumb type={type} />
       <div className={style.content}>
-        <TypeNav type={type} category={category} />
+        <TypeNav type={type} />
         <div className={style.main}>
-          <CategoryTabs type={type} category={category} />
+          {type === ContentType.Article && (
+            <CategoryTabs type={type} category={category} />
+          )}
           {
             contents.length
             ? (

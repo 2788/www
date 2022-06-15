@@ -7,8 +7,11 @@ import stickybits from 'stickybits'
 import { MoveTo } from 'moveto'
 import { debounce } from 'lodash'
 import { isBrowser } from 'utils'
+
 import Emitter from 'utils/emtter'
+import { getGlobalScrollTop, getScrollBarWidth, getViewportSize, getBoundingClientRect, raf } from 'utils/dom'
 import { useBrowser, useOs } from 'hooks/ua'
+import useUnstableEvent from 'hooks/use-event'
 
 import style from './style.less'
 
@@ -93,6 +96,24 @@ export function useScrollTop(debounceWait = defaultDebounceWait) {
   return [scrollTop, scrollTo] as const
 }
 
+/** 获取实时滚动事件（非强实时响应场景建议优先使用接口更 nice 的 `useScrollTop`） */
+export function useRealTimeScrollingEvent(onScroll: (scrollTop: number) => void, enabled = true) {
+  onScroll = useUnstableEvent(onScroll)
+
+  useEffect(() => {
+    if (!enabled) {
+      return
+    }
+
+    function handleScroll() {
+      raf(() => { onScroll(getGlobalScrollTop()) })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => { window.removeEventListener('scroll', handleScroll) }
+  }, [enabled, onScroll])
+}
+
 // 兼容的 Element.scroll. Element.scroll 在 ie 上不支持.
 export function useSmoothElementScrollTo({ current }: RefObject<HTMLElement | undefined>) {
   const scrollTo = useCallback((scrollTop: number) => {
@@ -115,6 +136,7 @@ export function useSmoothElementScrollTo({ current }: RefObject<HTMLElement | un
         if (previousBehavior) {
           current.style.scrollBehavior = previousBehavior
         } else {
+          // FIXME: 有逻辑 bug 这东西在浏览器支持的情况下是删不掉也不该删的…
           delete current.style.scrollBehavior
         }
       }
@@ -155,27 +177,6 @@ export function useSticky() {
     setElement, // elementRef
     isFixed
   ] as const
-}
-
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY
-function getGlobalScrollTop() {
-  if (window.pageXOffset !== undefined) return window.pageYOffset
-  if (document.compatMode === 'CSS1Compat') return document.documentElement.scrollTop
-  return document.body.scrollTop
-}
-
-function getScrollBarWidth() {
-  const outer = document.createElement('div')
-  const inner = document.createElement('div')
-  outer.appendChild(inner)
-  outer.style.width = '100px'
-  outer.style.overflow = 'scroll'
-  outer.style.position = 'absolute'
-  outer.style.opacity = '0'
-  document.body.appendChild(outer)
-  const barWidth = outer.offsetWidth - inner.offsetWidth
-  document.body.removeChild(outer)
-  return barWidth
 }
 
 /** 禁用全局的滚动行为 */
@@ -240,21 +241,92 @@ export function useScrollable<T extends HTMLElement>(enabled = true) {
       return
     }
 
-    // TODO: 改为比 setInterval 更好的实现
-    const handleId = setInterval(() => {
+    let isActive = true
+
+    function startUpdateLoop() {
+      if (!isActive) {
+        return
+      }
+
       const ele = elementRef.current
       if (ele == null) {
+        raf(() => { startUpdateLoop() })
         return
       }
 
       setScrollableX(ele.scrollWidth > ele.clientWidth)
       setScrollableY(ele.scrollHeight > ele.clientHeight)
-    }, 200)
 
-    return () => {
-      clearInterval(handleId)
+      raf(() => { startUpdateLoop() })
     }
+
+    startUpdateLoop()
+    return () => { isActive = false }
   }, [enabled])
 
   return [scrollable, elementRef] as const
+}
+
+interface RectInfo {
+  height: number
+  top: number
+}
+
+/** 当目标对象出现在可视范围内的时候，监听实时滚动状况 */
+export function useIntersectionGlobalScrollingY<T extends HTMLElement>(
+  target: T | null,
+  onScroll: (
+    /** 0 ~ (targetHeight + viewportHeight) */
+    offset: number,
+    target: RectInfo,
+    viewport: RectInfo,
+    targetEle: T
+  ) => void,
+  enabled = true,
+  fireImmediately = true
+) {
+  enabled = enabled && !!target
+
+  const lastOffsetRef = useRef<number | undefined>(undefined)
+  const handleScroll = useUnstableEvent((scrollTop: number) => {
+    const targetRect = getBoundingClientRect(target!)
+    const viewportSize = getViewportSize()
+
+    const offset = targetRect.bottom < 0
+      ? targetRect.height + viewportSize.height  // out of boundary: target above viewport
+      : Math.max(
+        0,                                       // out of boundary: target below viewport
+        viewportSize.height - targetRect.top     // intersection
+      )
+
+    if (lastOffsetRef.current !== offset) {
+      lastOffsetRef.current = offset
+      onScroll(
+        offset,
+        {
+          height: targetRect.height,
+          top: targetRect.top
+        },
+        {
+          height: viewportSize.height,
+          top: scrollTop
+        },
+        target!
+      )
+    }
+  })
+
+  useRealTimeScrollingEvent(handleScroll, enabled)
+
+  const firedRef = useRef(false)
+  useEffect(() => {
+    if (enabled) {
+      if (target && fireImmediately && !firedRef.current) {
+        firedRef.current = true
+        handleScroll(getGlobalScrollTop())
+      }
+    } else {
+      firedRef.current = false
+    }
+  }, [enabled, target, fireImmediately, handleScroll])
 }

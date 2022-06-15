@@ -9,7 +9,7 @@ import { wwwHost } from 'constants/env'
 import { pgcRoute, pgcManageRoute, pgcManageAddRoute, pgcManageEditRoute } from 'constants/route'
 import {
   wwwContentDetailUrlPrefix, uploadBucketKeyPrefix, ContentId, ContentType, Content
-} from 'constants/pgc/conetnt'
+} from 'constants/pgc/content'
 
 export function getListPageUrl(): string {
   return `${pgcRoute}${pgcManageRoute}`

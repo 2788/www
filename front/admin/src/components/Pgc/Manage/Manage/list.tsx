@@ -16,7 +16,7 @@ import { pgcManageEditTitle } from 'constants/route'
 import {
   ContentId, Content,
   ContentType, contentTypes, contentTypeTextMap, ContentCategory, contentCategories, contentCategoryTextMap
-} from 'constants/pgc/conetnt'
+} from 'constants/pgc/content'
 import {
   getEditPageUrl, getWwwContentDetailUrl, getWwwContentDetailEmbedMarkdown, isUpToDate
 } from 'transforms/pgc/content'
