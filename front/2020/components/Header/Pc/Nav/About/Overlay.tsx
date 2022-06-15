@@ -24,9 +24,6 @@ export default function Overlay() {
           <ContentSectionItem href={urlMap[Activity.Main]} hot>
             {nameMap[Activity.Main]}
           </ContentSectionItem>
-          <ContentSectionItem href="https://blog.qiniu.com/archives/category/5" target="_self">
-            技术博客
-          </ContentSectionItem>
         </ContentSection>
         <ContentSection title="加入我们">
           <ContentSectionItem href="https://campus.qiniu.com" target="_self">

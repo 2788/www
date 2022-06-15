@@ -121,7 +121,6 @@ export default function Overlay() {
         <SubMenu key="sub5-2" title="活动与资料">
           <MenuItem><a href="/pgc">七牛资料库</a></MenuItem>
           <MenuItem><Link href={activityUrlMap[Activity.Main]}>{activityNameMap[Activity.Main]}</Link></MenuItem>
-          <MenuItem><a href="https://blog.qiniu.com/archives/category/5">技术博客</a></MenuItem>
         </SubMenu>
         <SubMenu key="sub5-3" title="加入我们">
           <MenuItem><a href="https://campus.qiniu.com">校园招聘</a></MenuItem>

@@ -35,7 +35,7 @@ export default function Selected() {
         </Case>
         <Case
           title="快看漫画"
-          url="https://blog.qiniu.com/archives/8891"
+          url="/pgc/detail/0a9a65eadf55e2d3691113f2"
           logo={logoKuaikan}
           products={[Product.Plsv]}
         >
@@ -51,7 +51,7 @@ export default function Selected() {
         </Case>
         <Case
           title="石墨文档"
-          url="https://blog.qiniu.com/archives/8895"
+          url="/pgc/detail/404ad10bba43f5fc0656a920"
           logo={logoShimowendang}
           products={[Product.Kodo, Product.Cdn, Product.Dora]}
         >

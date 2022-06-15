@@ -60,7 +60,7 @@ export default function FooterForMobile() {
             <MenuItem><Link href="https://jobs.qiniu.com">社会招聘</Link></MenuItem>
             <MenuItem><Link href="https://campus.qiniu.com">校园招聘</Link></MenuItem>
             <MenuItem><Link href="/contact">联系我们</Link></MenuItem>
-            <MenuItem><Link href="https://blog.qiniu.com/archives/category/1">最新动态</Link></MenuItem>
+            <MenuItem><Link href="/pgc">七牛资料库</Link></MenuItem>
             <MenuItem><Link href={activityUrlMap[Activity.Main]}>{activityNameMap[Activity.Main]}</Link></MenuItem>
           </SubMenu>
         </Menu>

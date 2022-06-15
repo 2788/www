@@ -89,7 +89,7 @@ function LinkGroups() {
         <LinkItem url="https://jobs.qiniu.com">社会招聘</LinkItem>
         <LinkItem url="https://campus.qiniu.com">校园招聘</LinkItem>
         <LinkItem url="/contact">联系我们</LinkItem>
-        <LinkItem url="https://blog.qiniu.com/archives/category/1">最新动态</LinkItem>
+        <LinkItem url="/pgc">七牛资料库</LinkItem>
         <LinkItem url={activityUrlMap[Activity.Main]}>{activityNameMap[Activity.Main]}</LinkItem>
       </LinkGroup>
     </section>
