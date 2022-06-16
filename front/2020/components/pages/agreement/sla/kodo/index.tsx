@@ -91,7 +91,7 @@ export default function Content() {
           <td>99.9%</td>
         </tr>
         <tr>
-          <td>低频存储 / 归档存储</td>
+          <td>低频存储 / 归档存储 / 深度归档存储</td>
           <td>99.0%</td>
         </tr>
       </table>
@@ -123,7 +123,7 @@ export default function Content() {
             <td>月度服务费用的 50%</td>
           </tr>
           <tr>
-            <td rowSpan={2}>低频存储 / 归档存储</td>
+            <td rowSpan={2}>低频存储 / 归档存储 / 深度归档存储</td>
             <td style={{ backgroundColor: '#f6f8fa' }}>低于 99.00% 但高于或等于 95%</td>
             <td style={{ backgroundColor: '#f6f8fa' }}>月度服务费用的 30%</td>
           </tr>
