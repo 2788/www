@@ -46,7 +46,7 @@ export const contentCategoryTextMap = {
   [ContentCategory.Case]: '案例分享',
   [ContentCategory.Technology]: '技术道场',
   [ContentCategory.News]: '新闻动态',
-  [ContentCategory.Activity]: '线下活动'
+  [ContentCategory.Activity]: '极客活动'
 } as const
 
 export enum UserLimitType {
