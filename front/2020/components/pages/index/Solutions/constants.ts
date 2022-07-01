@@ -25,8 +25,7 @@ import ecBackgroundImg from './images/backgroundImgs/ec.png'
 import eduIcon from './images/icons/edu.png'
 import eduBackgroundImg from './images/backgroundImgs/edu.png'
 
-import bilibili from './images/cases/bilibili.png'
-import blued from './images/cases/blued.png'
+import xueqiu from './images/cases/xueqiu.png'
 import ckjr from './images/cases/ckjr.png'
 import ddpai from './images/cases/ddpai.png'
 import dongqiudi from './images/cases/dongqiudi.png'
@@ -108,7 +107,7 @@ export const cardData: CardProps[] = [
     title: nameMap[Solution.Social],
     desc: descMap[Solution.Social],
     url: urlMap[Solution.Social],
-    cases: [bilibili, blued]
+    cases: [xueqiu]
   },
   {
     iconUrl: ecIcon,

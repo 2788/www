@@ -10,9 +10,7 @@ import yinjiIcon from './images/yinji.png'
 import logoAdaspace from './images/logos/adaspace.png'
 import logoBabytree from './images/logos/babytree.png'
 import logoBayi from './images/logos/bayi.png'
-import logoBilibili from './images/logos/bilibili.png'
 import logoBixin from './images/logos/bixin.png'
-import logoBlued from './images/logos/blued.png'
 import logoCctv from './images/logos/cctv.png'
 import logoChangba from './images/logos/changba.png'
 import logoChinacom from './images/logos/chinacom.png'
@@ -129,8 +127,8 @@ export const logoUrls = [
   logoZgyh, logoWeipaitang, logoZte, logoMomo, logoDewu, logoXiaohongshu, logoZjol, logoEastday, logoZhaoshang,
   logoShdq, logoOppo, logoMeitu, logoWasu, logoChangba, logoGuazi, logoYh, logoShopee, logoPingan, logoGeely,
   logoVivo, logoChinacom, logoXiaotiancai, logoSeewo, logoYiqi, logoDianxin, logoDongqiudi, logoTaiping,
-  logoHuawei, logoEzviz, logoRmrb, logoWeilai, logoBlued, logoQczj, logoBayi, logoThunisoft, logoHuatai,
-  logoShunfeng, logoBilibili, logoCctv, logoHujiang, logoJsws, logoBixin, logoHisense, logoZgsy, logoZhongxin,
+  logoHuawei, logoEzviz, logoRmrb, logoWeilai, logoQczj, logoBayi, logoThunisoft, logoHuatai,
+  logoShunfeng, logoCctv, logoHujiang, logoJsws, logoBixin, logoHisense, logoZgsy, logoZhongxin,
   logoLenovo, logoIqiyi, logoRenminwang, logoXueersi, logoShangqi, logoTaptap, logoAdaspace, logoUnionpay,
   logoYidong, logoBabytree, logoMangguotv, logoMihoyo, logoHanjutv, logoWps, logoKuaikan, logoXueqiu, logoLiantong,
   logoKuaishou, logoWatsons, logoMogujie, logoWifi, logoHaier, logoMeipian
