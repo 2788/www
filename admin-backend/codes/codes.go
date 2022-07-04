@@ -35,9 +35,6 @@ const (
 	InvalidPaths                      code = 400015 // 不合法的 path 列表
 	ExceedLengthLimitForPrefixRefresh code = 400016 // 超过前缀刷新输入参数长度限制
 	InvalidPrefixes                   code = 400017 // 不合法的前缀列表
-
-	RefreshFailed       code = 500001 // refresh 失败
-	PrefixRefreshFailed code = 500002 // 前缀刷新失败
 )
 
 var codeHumanize = map[code]string{
@@ -64,9 +61,6 @@ var codeHumanize = map[code]string{
 	InvalidPaths:                      "invalid paths",
 	ExceedLengthLimitForPrefixRefresh: "exceed length limit for prefix refresh",
 	InvalidPrefixes:                   "invalid prefixes",
-
-	RefreshFailed:       "refresh failed",
-	PrefixRefreshFailed: "prefix refresh failed",
 }
 
 type code int

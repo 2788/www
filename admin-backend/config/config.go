@@ -23,9 +23,6 @@ type ServerConfig struct {
 	SendMessageTaskInterval          int               `yaml:"send_message_task_interval"`
 	RedisHosts                       string            `yaml:"redis_hosts"`
 	LilliputHost                     string            `yaml:"lilliput_host"` // 短链服务地址
-	RsHosts                          string            `yaml:"rs_hosts"`
-	RsfHosts                         string            `yaml:"rsf_hosts"`
-	FusionRefreshHosts               string            `yaml:"fusion_refresh_hosts"`
 }
 
 type Refresher struct {
