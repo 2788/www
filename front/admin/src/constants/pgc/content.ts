@@ -91,3 +91,82 @@ export interface Content {
   draft: ContentDetailWithTime
   release?: ContentDetailWithTime // 每次刚发布的时候，release 的内容会跟 draft 相同（createdAt 除外）
 }
+
+export enum TagCategory {
+  Service = 'service',
+  Vision = 'vision',
+  Intelligence = 'intelligence',
+  SDK = 'sdk',
+  Solution = 'solution'
+}
+
+export const tagCategories = [
+  TagCategory.Service,
+  TagCategory.Vision,
+  TagCategory.Intelligence,
+  TagCategory.SDK,
+  TagCategory.Solution
+]
+
+export const tagCategoryTextMap = {
+  [TagCategory.Service]: '基础服务',
+  [TagCategory.Vision]: '视觉数据智能',
+  [TagCategory.Intelligence]: '机器数据智能',
+  [TagCategory.SDK]: 'SDK',
+  [TagCategory.Solution]: '解决方案'
+} as const
+
+const categoryServiceTags = [
+  '对象存储Kodo',
+  'CDN',
+  '边缘加速',
+  '全站加速',
+  '云存储一体机',
+  '云短信SMS',
+  'SSL证书',
+  '云主机服务QVM',
+  '云数据库'
+]
+
+const categoryVisionTags = [
+  '视频直播Pili',
+  '低延时直播Geek',
+  '实时音视频QRTC',
+  '视频监控QVS'
+]
+
+const categoryIntelligenceTags = [
+  '人脸核验',
+  '内容审核',
+  '票证自动识别OCR',
+  '音视频质量分析',
+  '视频智能分析',
+  '智能语音',
+  '智能风控',
+  '锐智转码',
+  '画质增强'
+]
+
+const categorySDKTags = [
+  '短视频SDK',
+  '直播推流SDK',
+  '播放器SDK',
+  '美颜特效SDK'
+]
+
+const categorySolutionTags = [
+  '泛娱乐解决方案',
+  '在线教育解决方案',
+  '社交解决方案',
+  '汽车行业解决方案',
+  '基因测序解决方案',
+  '电商网购解决方案'
+]
+
+export const categoryTagsMap: { [c in TagCategory]: readonly string[] } = {
+  [TagCategory.Service]: categoryServiceTags,
+  [TagCategory.Vision]: categoryVisionTags,
+  [TagCategory.Intelligence]: categoryIntelligenceTags,
+  [TagCategory.SDK]: categorySDKTags,
+  [TagCategory.Solution]: categorySolutionTags
+}
