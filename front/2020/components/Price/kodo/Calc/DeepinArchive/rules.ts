@@ -64,12 +64,6 @@ const south: CalcRule = {
           max: Number.POSITIVE_INFINITY
         },
         {
-          name: '类型转换次数',
-          price: 0.1,
-          min: 0,
-          max: Number.POSITIVE_INFINITY
-        },
-        {
           name: '数据取回请求次数',
           price: 6,
           min: 0,
@@ -143,12 +137,6 @@ const eastZheJiang2: CalcRule = {
         {
           name: 'GET',
           price: 0.5,
-          min: 0,
-          max: Number.POSITIVE_INFINITY
-        },
-        {
-          name: '类型转换次数',
-          price: 0.1,
           min: 0,
           max: Number.POSITIVE_INFINITY
         },
@@ -240,12 +228,6 @@ const us: CalcRule = {
         {
           name: 'GET',
           price: 0.8,
-          min: 0,
-          max: Number.POSITIVE_INFINITY
-        },
-        {
-          name: '类型转换次数',
-          price: 0.1,
           min: 0,
           max: Number.POSITIVE_INFINITY
         },

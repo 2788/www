@@ -20,8 +20,7 @@ export default function Region({ region, desc, onChange }: RegionProps) {
       { name: '外网流出流量', desc: '外网流出流量/月', count: 0, unit: 'GB' },
       { name: 'CDN', desc: 'CDN 回源流出流量/月', count: 0, unit: 'GB' },
       { name: 'GET', desc: 'GET 读请求数/月', count: 0, unit: '万次' },
-      { name: 'PUT/DELETE', desc: 'PUT/DELETE 写请求数/月', count: 0, unit: '万次' },
-      { name: '类型转换次数', desc: '存储类型转换/月', count: 0, unit: '万次' }
+      { name: 'PUT/DELETE', desc: 'PUT/DELETE 写请求数/月', count: 0, unit: '万次' }
     ]
   })
 
@@ -70,10 +69,6 @@ export default function Region({ region, desc, onChange }: RegionProps) {
         <div className={style.areaItem}>
           <p>PUT/DELETE 写请求数/月</p>
           <InputNumber onChange={handleValueChange(4)} addonAfter="万次" />
-        </div>
-        <div className={style.areaItem}>
-          <p>类型转换次数/月</p>
-          <InputNumber onChange={handleValueChange(5)} addonAfter="万次" />
         </div>
       </div>
     </section>
