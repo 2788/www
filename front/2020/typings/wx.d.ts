@@ -4,6 +4,7 @@ type WX = {
     navigateBack(): void
     reLaunch(options: { url: string }): void
     getEnv(get: (res: { miniprogram: any }) => void): void
+    postMessage(message: { data: any }): void
   }
   config: (options: {
     debug: boolean, appId: string, timestamp: number, nonceStr: string, signature: string, jsApiList: string[]

@@ -38,6 +38,7 @@ export default function Layout({ title, keywords, description, forceSimple, chil
   title = !title ? defaultTitle : (title + titleSuffix)
 
   usePv(title)
+  useReportUrl(title)
 
   const keywordsMeta = keywords && (
     <meta name="keywords" content={keywords} />
@@ -106,4 +107,22 @@ function usePv(title: string) {
   useEffect(() => {
     pv(title, path)
   }, [title, path])
+}
+
+// 给小程序 webview 上报当前 url
+// https://jira.qiniu.io/browse/RMBWEB-2881
+function useReportUrl(title: string) {
+  useEffect(() => {
+    // 参数必须是 { data: {} } 格式
+    wx.miniProgram.postMessage({
+      data: {
+        from: 'www',
+        event: 'location:href',
+        data: {
+          href: window.location.href,
+          title
+        }
+      }
+    })
+  })
 }
