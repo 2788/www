@@ -7,9 +7,6 @@ import { get } from 'utils/fetch'
 import { apiPrefix as basePrefix } from 'constants/api'
 import { Product } from 'constants/products'
 
-import ecugUrl from './ecug.jpg'
-import ecugMobileUrl from './ecug_mobile.jpg'
-
 const apiPrefix = `${basePrefix}/thallo/v1`
 
 /** 接口响应体的形状 */
@@ -146,39 +143,7 @@ export interface HomePageBanner {
 /** 获取首页 Banner 列表 */
 export async function getHomePageBanners() {
   const codes = [1, 2, 3, 4, 5, 6].map(i => `www-homepage_banner-${i}`)
-  const banners = await getAdvertList<HomePageBanner>(codes)
-
-  // ECUG Con 2022 banner
-  const ecugBanner = {
-    code: 'ECUG-2022',
-    name: 'ECUG 2022',
-    servingId: '2022ECUG20220630',
-    elements: {
-      pPic: {
-        value: ecugUrl,
-        imgAlt: 'ECUG Con 2022',
-        imgTitle: 'ECUG Con 2022',
-        imgColorFill: ''
-      },
-      txt: { value: '' },
-      subTxt: { value: '' },
-      url: { value: 'https://www.ecug.org' },
-      bTxt: { value: '' },
-      mPic: {
-        value: ecugMobileUrl,
-        imgAlt: 'ECUG Con 2022',
-        imgTitle: 'ECUG Con 2022',
-        imgColorFill: ''
-      }
-    }
-  }
-  // 插入到第二个 banner 位
-  if (banners.length > 1) {
-    banners.splice(1, 0, ecugBanner)
-  } else {
-    banners.push(ecugBanner)
-  }
-  return banners
+  return getAdvertList<HomePageBanner>(codes)
 }
 
 /** 首页 Banner 下方活动广告位信息 */
