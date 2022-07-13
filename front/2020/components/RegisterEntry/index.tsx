@@ -7,20 +7,15 @@ import React from 'react'
 import { useUserInfo } from 'components/UserInfo'
 import { useMobile } from 'hooks/ua'
 import MobileEntry from './Mobile'
-import PcEntry from './Pc'
 
 export default function RegisterEntry() {
   const userInfo = useUserInfo()
   const isMobile = useMobile()
 
-  // 正在请求用户信息，或已登录，则不展示注册入口
-  if (!userInfo || userInfo.signedIn) {
+  // 如 PC 端、正在请求用户信息或已登录，则不展示注册入口
+  if (!isMobile || !userInfo || userInfo.signedIn) {
     return null
   }
 
-  return (
-    isMobile
-      ? <MobileEntry />
-      : <PcEntry />
-  )
+  return <MobileEntry />
 }

@@ -18,7 +18,7 @@ import UaProvider from './UaProvider'
 import Header from '../Header'
 import Footer from '../Footer'
 import * as feedback from '../Feedback'
-import ScrollToTop from '../ScrollToTop'
+import ScrollToTop from '../ScrollToTopV2'
 import { Provider as UserInfoProvider } from '../UserInfo'
 import RegisterEntry from '../RegisterEntry'
 import GlobalBanner from './GlobalBanner'
@@ -79,7 +79,7 @@ function ContentWrapper({ forceSimple = false, children }: PropsWithChildren<{ f
         </ErrorBoundary>
         {notSimple && <Footer />}
         <RegisterEntry />
-        {notSimple && <feedback.EntryV3 />}
+        {notSimple && <feedback.EntryV4 />}
         <feedback.Modal />
         <ScrollToTop />
       </feedback.ModalProvider>

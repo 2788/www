@@ -1,0 +1,118 @@
+@import '~utils/less/index.less';
+
+.wrapper {
+  width: 64px;
+  height: 82px;
+  margin: 4px 7px;
+
+  &:hover {
+    color: @primary-color;
+    .wave {
+      visibility: hidden!important;
+    }
+  }
+
+  .imgWrapper {
+    width: 64px;
+    height: 64px;
+    position: relative;
+
+    .waveWrapper {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      .wave {
+        width: 48px;
+        height: 48px;
+        background-color: @primary-color;
+        border-radius: 50%;
+
+        &.waving_1 {
+          animation: feedback_entry_wechat_entry_waving_1 2s ease-in infinite;
+        }
+
+        &.waving_2 {
+          animation: feedback_entry_wechat_entry_waving_2 2s ease-in infinite;
+        }
+      }
+
+      img {
+        width: 48px;
+        border: 1px solid @primary-color;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  span {
+    font-size: 12px;
+    line-height: 18px;
+    text-decoration: none;
+  }
+}
+
+@keyframes feedback_entry_wechat_entry_waving_1 {
+  0% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: visible;
+  }
+  50% {
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  51% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: hidden;
+  }
+  100% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: hidden;
+  }
+}
+
+@keyframes feedback_entry_wechat_entry_waving_2 {
+  0% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: hidden;
+  }
+  35% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: visible;
+  }
+  85% {
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  86% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: hidden;
+  }
+  100% {
+    width: 48px;
+    height: 48px;
+    opacity: .4;
+    visibility: hidden;
+  }
+}

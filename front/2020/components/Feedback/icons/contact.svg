@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g fill="none" fill-rule="evenodd" stroke="#00AAE7" stroke-linecap="square" stroke-width="2" transform="translate(1 1)">
-    <path d="M0,2 L0,14 C0,15.1045695 0.8954305,16 2,16 L7,16 L11,21 L15,16 L20,16 C21.1045695,16 22,15.1045695 22,14 L22,2 C22,0.8954305 21.1045695,0 20,0 L2,0 C0.8954305,0 0,0.8954305 0,2 Z"/>
-    <line x1="5" x2="5" y1="6" y2="10"/>
-    <line x1="9" x2="9" y1="4" y2="12"/>
-    <line x1="13" x2="13" y1="7" y2="9"/>
-    <line x1="17" x2="17" y1="5" y2="11"/>
-  </g>
-</svg>
