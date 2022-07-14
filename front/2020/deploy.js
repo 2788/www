@@ -145,9 +145,12 @@ async function deploy(config) {
   // 否则在发布过程中页面在对应的静态资源上次完成前更新，会导致访问到的页面不能正确工作
   const pageFiles = []
   const assetFiles = []
-  outputFiles.forEach(fileName => (
-    (path.extname(fileName) === '.html' ? pageFiles : assetFiles).push(fileName)
-  ))
+  outputFiles
+    // 过滤掉 source map 防止线上能通过错误栈等方式定位到源码
+    .filter(fileName => !fileName.endsWith('.js.map'))
+    .forEach(fileName => (
+      (path.extname(fileName) === '.html' ? pageFiles : assetFiles).push(fileName)
+    ))
 
   // 如果指定了 notFoundPage，但构建结果中不存在对应的文件，提醒之
   if (outputFiles.indexOf(config.notFoundPage) < 0) {

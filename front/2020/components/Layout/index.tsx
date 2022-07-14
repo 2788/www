@@ -112,7 +112,9 @@ function usePv(title: string) {
 // 给小程序 webview 上报当前 url
 // https://jira.qiniu.io/browse/RMBWEB-2881
 function useReportUrl(title: string) {
+  const isMp = useMp()
   useEffect(() => {
+    if (!isMp) return
     // 参数必须是 { data: {} } 格式
     wx.miniProgram.postMessage({
       data: {
