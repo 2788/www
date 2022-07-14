@@ -18,9 +18,9 @@ const { runCompiler } = require('next/dist/build/compiler')
 const externals = [
   'header',
   'footer',
-  'feedback-entry',
   'feedback-entry-v2',
   'feedback-entry-v3',
+  'feedback-entry-v4',
   'cps-visit-reporter'
 ]
 
@@ -115,4 +115,7 @@ async function main() {
   console.log('done')
 }
 
-main()
+main().catch(e => {
+  console.error(`[ERROR] build externals failed: ${e}`)
+  process.exit(1)
+})

@@ -35,15 +35,47 @@ window.__qiniu_www_externals__.components[componentName]
 window.__qiniu_www_externals__.components['feedback-entry'].showModal()
 ```
 
-可以调起用户反馈浮层
+可以调起用户反馈浮层。
 
-### externals 内容的生成
+### 开发和测试
 
-`externals/` 下的内容（如 `header.tsx` / `footer.tsx`）是对应的组件的入口文件，执行 `node externals.js` 会使用与 `next build` 一致的配置（稍作调整）对这些文件分别构建并输出到结果中
+#### externals/
 
-为了确保被嵌入的组件在外部站点的页面上也能正常运行，这里要求每个组件在被导出为 external 内容时使用 `components/Layout/External` 进行包裹，该组件提供了依赖 next.js 的组件所需要的基本的运行环境（如 `next/router`）
+`externals/` 下的内容（如 `header.tsx` / `footer.tsx`）是对应的组件的入口文件，这里会调用 `externals/help.tsx` 的 `register` 函数将组件的 `render` 函数和 `extra`（其他需要被提供出去的内容，如 `showModal`）挂载到 `window.__qiniu_www_externals__.components[componentName]`，供 `load` 调用来渲染组件或做上面提到的 “其他操作”。
 
-上边提到的加载组件用的 `loader.js` 由 `externals/loader.js` 得到，目前不会通过 babel 等工具处理，仅通过简单的正则替换来将本次构建结果的映射信息置入到内容中，确保 `loader.js` 可以得到 externals 内容准确的线上地址
+确保被嵌入的组件在外部站点的页面上也能正常运行，这里要求每个组件在被导出为 external 内容时使用 `components/Layout/External` 进行包裹，该组件提供了依赖 next.js 的组件所需要的基本的运行环境（如 `next/router`）以及各种 React Context。
+
+#### loader.js
+
+上边提到的加载和渲染组件用的 `window.__qiniu_www_externals__.load` 由 `externals/loader.js` 得到，`load` 主要是加载对应组件的 js / css 文件并插入到页面，同时执行对应的 render 函数来渲染组件。
+
+目前不会通过 babel 等工具处理，仅通过简单的正则替换来将本次构建结果的映射信息置入到内容中，确保 `loader.js` 可以得到 externals 内容准确的线上地址。
+
+#### externals.js
+
+执行 `node externals.js` 会使用与 `next build` 一致的配置（稍作调整）对 `externals/` 下的内容分别构建并输出到结果中，`externals/` 下的内容通过数组的方式配置在 `external.js` 里，每次更新  `externals/` 下的内容后应检查这里的配置是否一致。
+
+#### 开发组件
+
+##### 添加组件
+
+1. 在 `externals/` 下添加新的组件，确保使用 `components/Layout/External` 进行包裹；调用 `externals/help.tsx` 的 `register` 函数挂载组件和其他需要被提供出去的内容。
+2. 检查新的组件是否有新的依赖（比如 React Context），如有，确保更新  `components/Layout/External`。
+3. 在 `externals.js` 里配置的 externals 列表里增加新的组件的名称。
+4. 更新用于测试的 `test/external/` 下的 html 文件。
+
+##### 删除组件
+
+1. 删除 `externals/` 下的组件以及其他依赖的且不再用到的业务组件。
+2. 删除  `components/Layout/External` 里不再用到的依赖（确保其他组件也不再依赖的）
+3. 同上，更新 `externals.js`。
+4. 同上，更新用于测试的 `test/external/` 下的 html 文件。
+
+##### 测试
+
+发到测试环境后，访问本地 `test/external/` 下的 html 文件，检查对应 external 内容渲染结果是否预期。
+
+> 把页面上的 script 地址 http://localhost:3000/externals/loader.js 里边 localhost:3000 换成测试环境地址进行测试。
 
 ### TODO
 
