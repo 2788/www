@@ -34,6 +34,7 @@ func InitCustomRoutes(r *gin.Engine, conf *config.Config) error {
 
 		checkedGroup := wwwGroup.Use(app.LoginCheckMiddleware(&conf.Config), app.PermissionCheckMiddleware())
 		checkedGroup.POST("/refresh/prefix", refresherCtl.PrefixRefresh)
+		checkedGroup.POST("/refresh", refresherCtl.Refresh)
 	}
 	refresherGroup := r.Group("/api/refresher")
 	{
