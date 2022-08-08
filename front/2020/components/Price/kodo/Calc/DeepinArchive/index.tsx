@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { CheckboxGroup, Checkbox } from 'react-icecream-2'
+import Checkbox from 'react-icecream/lib/checkbox'
 import Calculator, { CalcInput } from 'components/Price/Calculator'
 
 import rules from './rules'
@@ -7,6 +7,9 @@ import style from '../index.less'
 import Region from './Region'
 import RegionName, { defaultRegion, nameMap, regionOptions } from '../../region'
 import Duration from '../Duration'
+
+// icecream 没暴露出来
+export declare type CheckboxValueType = string | number | boolean
 
 export type Props = { setCalculator: (calc: Calculator) => void }
 
@@ -18,8 +21,8 @@ export default function DeepinArchive({ setCalculator }: Props) {
     setCalculator(calculator)
   }, [setCalculator, calculator])
 
-  function handleRegionChange(checkdValues: RegionName[]) {
-    setRegions(checkdValues)
+  function handleRegionChange(checkdValues: CheckboxValueType[]) {
+    setRegions(checkdValues as RegionName[])
     const currentInputs = calculator.getInputs().filter(input => checkdValues.find(value => value === input.region))
     calculator.setInput(currentInputs)
   }
@@ -46,9 +49,7 @@ export default function DeepinArchive({ setCalculator }: Props) {
       <section className={style.region}>
         <div>存储区域</div>
         <div>
-          <CheckboxGroup value={regions} onChange={handleRegionChange} size="large">
-            {regionOptions.map((option, i) => <Checkbox key={i} value={option.value}>{option.label}</Checkbox>)}
-          </CheckboxGroup>
+          <Checkbox.Group options={regionOptions} value={regions} onChange={handleRegionChange} />
         </div>
       </section>
       {regionSections}

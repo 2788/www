@@ -1,23 +1,29 @@
 enum Region {
   EastZheJiang2 = 'east-zhejiang2',
+  // 华东-浙江
   East = 'east',
+  // 华南-广东
   South = 'south',
+  // 华北-河北
   North = 'north',
-  // 北美
-  US = 'us',
-  // 东南亚
-  SouthAsia = 'south-asia'
+  // 北美-洛杉矶
+  USLA = 'us-la',
+  // 亚太-新加坡
+  AsiaSgp = 'asia-sgp',
+  // 亚太-首尔
+  AsiaSeoul = 'asia-seoul'
 }
 
 export const defaultRegion = Region.EastZheJiang2
 
 export const nameMap: { [key in Region]: string } = {
   [Region.EastZheJiang2]: '华东-浙江2',
-  [Region.East]: '华东',
-  [Region.South]: '华南',
-  [Region.North]: '华北',
-  [Region.US]: '北美',
-  [Region.SouthAsia]: '东南亚'
+  [Region.East]: '华东-浙江',
+  [Region.South]: '华南-广东',
+  [Region.North]: '华北-河北',
+  [Region.USLA]: '北美-洛杉矶',
+  [Region.AsiaSgp]: '亚太-新加坡',
+  [Region.AsiaSeoul]: '亚太-首尔'
 }
 
 export const regionOptions = [
@@ -25,8 +31,9 @@ export const regionOptions = [
   { label: nameMap[Region.East], value: Region.East },
   { label: nameMap[Region.South], value: Region.South },
   { label: nameMap[Region.North], value: Region.North },
-  { label: nameMap[Region.SouthAsia], value: Region.SouthAsia },
-  { label: nameMap[Region.US], value: Region.US }
+  { label: nameMap[Region.USLA], value: Region.USLA },
+  { label: nameMap[Region.AsiaSgp], value: Region.AsiaSgp },
+  { label: nameMap[Region.AsiaSeoul], value: Region.AsiaSeoul }
 ]
 
 export default Region

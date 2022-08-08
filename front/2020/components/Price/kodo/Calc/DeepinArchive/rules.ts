@@ -171,10 +171,10 @@ const north = {
   items: south.items
 }
 
-// 北美
-const us: CalcRule = {
-  region: Region.US,
-  desc: nameMap[Region.US],
+// 北美-洛杉矶
+const usla: CalcRule = {
+  region: Region.USLA,
+  desc: nameMap[Region.USLA],
   items: [
     {
       name: '存储空间费用',
@@ -249,10 +249,100 @@ const us: CalcRule = {
 }
 
 // 东南亚
-const southAsia = {
-  region: Region.SouthAsia,
-  desc: nameMap[Region.SouthAsia],
-  items: us.items
+const asiaSgp = {
+  region: Region.AsiaSgp,
+  desc: nameMap[Region.AsiaSgp],
+  items: usla.items
 }
 
-export default [eastZheJiang2, east, south, north, us, southAsia]
+// 亚太-首尔
+const asiaSeoul: CalcRule = {
+  region: Region.AsiaSeoul,
+  desc: nameMap[Region.AsiaSeoul],
+  items: [
+    {
+      name: '存储空间费用',
+      desc: '',
+      price: 0.015,
+      min: 0,
+      max: Number.POSITIVE_INFINITY
+    },
+    {
+      type: 'group',
+      name: '流量费用',
+      items: [
+        {
+          name: '外网流出流量',
+          desc: '0 - 10TB',
+          price: 0.56,
+          min: 0,
+          max: 10 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '10 - 50TB',
+          price: 0.52,
+          min: 10 * 1024,
+          max: 50 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '50TB - 100TB',
+          price: 0.47,
+          min: 50 * 1024,
+          max: 100 * 1024
+        },
+        {
+          name: '外网流出流量',
+          desc: '100TB 以上',
+          price: 0.435,
+          min: 100 * 1024,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'CDN',
+          desc: '',
+          price: 0.56,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        }
+      ] },
+    {
+      type: 'group',
+      name: '请求费用',
+      unitAdaptor: countUnitAdaptor,
+      items: [
+        {
+          name: 'PUT/DELETE',
+          desc: '',
+          price: 1,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: 'GET',
+          desc: '',
+          price: 0.8,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        },
+        {
+          name: '数据取回请求次数',
+          desc: '标准（5 - 12 小时）',
+          price: 8,
+          min: 0,
+          max: Number.POSITIVE_INFINITY
+        }
+      ]
+    },
+    {
+      name: '数据取回',
+      desc: '',
+      price: 0.14,
+      min: 0,
+      max: Number.POSITIVE_INFINITY
+    }
+  ]
+}
+
+export default [eastZheJiang2, east, south, north, usla, asiaSgp, asiaSeoul]

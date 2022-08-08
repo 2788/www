@@ -80,7 +80,7 @@ export default function Region({ region, desc, onChange }: RegionProps) {
       <div className={style.areaRow}>
         <div className={style.areaItem}>
           <p>数据取回/月</p>
-          <InputNumber onChange={handleValueChange(7)} addonAfter="GB" />
+          <InputNumber onChange={handleValueChange(6)} addonAfter="GB" />
         </div>
       </div>
     </section>
