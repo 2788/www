@@ -24,7 +24,8 @@ refresher:
   secret_key:
   bucket:
   url:
-  prefix_whitelist: []
+  prefix_path_blacklist: ["", "/assets", "/_next", "/_next/data", "/_next/static"]
+  kodo_prefetch_max_goroutine: 30
 
 target: privatized
 token_expire_days: 7

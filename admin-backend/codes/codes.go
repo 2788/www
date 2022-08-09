@@ -34,7 +34,6 @@ const (
 	ExceedLengthLimitForRefresh       code = 400014 // 超过 refresh 输入参数长度限制
 	InvalidPaths                      code = 400015 // 不合法的 path 列表
 	ExceedLengthLimitForPrefixRefresh code = 400016 // 超过前缀刷新输入参数长度限制
-	InvalidPrefixes                   code = 400017 // 不合法的前缀列表
 )
 
 var codeHumanize = map[code]string{
@@ -60,7 +59,6 @@ var codeHumanize = map[code]string{
 	ExceedLengthLimitForRefresh:       "exceed length limit for refresh",
 	InvalidPaths:                      "invalid paths",
 	ExceedLengthLimitForPrefixRefresh: "exceed length limit for prefix refresh",
-	InvalidPrefixes:                   "invalid prefixes",
 }
 
 type code int

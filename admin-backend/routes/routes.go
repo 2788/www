@@ -32,15 +32,20 @@ func InitCustomRoutes(r *gin.Engine, conf *config.Config) error {
 			middlewares.IPBasedRateLimiter(conf.RedisHosts, 5, 1*time.Minute),
 			verificationCtl.SendSMS)
 
-		checkedGroup := wwwGroup.Use(app.LoginCheckMiddleware(&conf.Config), app.PermissionCheckMiddleware())
-		checkedGroup.POST("/refresh/prefix", refresherCtl.PrefixRefresh)
-		checkedGroup.POST("/refresh", refresherCtl.Refresh)
+		refresherGroup := wwwGroup.Group("/refresher")
+		{
+			checkedGroup := refresherGroup.Use(app.LoginCheckMiddleware(&conf.Config), app.PermissionCheckMiddleware())
+			checkedGroup.POST("/refresh", refresherCtl.Refresh)
+			checkedGroup.POST("/refresh/prefix", refresherCtl.PrefixRefresh)
+			checkedGroup.POST("/fast-refresh/prefix", refresherCtl.PrefixFastRefresh)
+		}
 	}
 	refresherGroup := r.Group("/api/refresher")
 	{
 		checkedGroup := refresherGroup.Use(app.ParseAuthMiddleware(&conf.Config), app.AdminCheck())
 		checkedGroup.POST("/refresh", refresherCtl.Refresh)
 		checkedGroup.POST("/refresh/prefix", refresherCtl.PrefixRefresh)
+		checkedGroup.POST("/fast-refresh/prefix", refresherCtl.PrefixFastRefresh)
 	}
 
 	return nil

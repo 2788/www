@@ -26,11 +26,12 @@ type ServerConfig struct {
 }
 
 type Refresher struct {
-	AccessKey       string   `yaml:"access_key"`       // 存储官网内容账号的 ak
-	SecretKey       string   `yaml:"secret_key"`       // 存储官网内容账号的 sk
-	Bucket          string   `yaml:"bucket"`           // 官网内容存储空间
-	Url             string   `yaml:"url"`              // 官网 url
-	PrefixWhitelist []string `yaml:"prefix_whitelist"` // 只有在前缀白名单中的前缀可以被刷新
+	AccessKey                string   `yaml:"access_key"`                  // 存储官网内容账号的 ak
+	SecretKey                string   `yaml:"secret_key"`                  // 存储官网内容账号的 sk
+	Bucket                   string   `yaml:"bucket"`                      // 官网内容存储空间
+	Url                      string   `yaml:"url"`                         // 官网 url
+	PrefixPathBlacklist      []string `yaml:"prefix_path_blacklist"`       // 不可以传入在黑名单中的 `path` 作为前缀刷新参数
+	KodoPrefetchMaxGoroutine int      `yaml:"kodo_prefetch_max_goroutine"` // prefetch 操作最大的并发数量
 }
 
 type SMSTemplateConfig struct {

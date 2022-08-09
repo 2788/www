@@ -9,6 +9,7 @@ require (
 	github.com/qiniu/rpc.v1 v0.0.0
 	github.com/qiniu/rpc.v1/lb.v2.1 v0.0.0
 	github.com/qiniu/xlog.v1 v0.0.0
+	github.com/stretchr/testify v1.7.0
 	github.com/tencentcloud/tencentcloud-sdk-go v1.0.80
 	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 	gopkg.in/yaml.v2 v2.4.0
@@ -22,6 +23,7 @@ require (
 require (
 	code.google.com/p/go.net/context v0.0.0 // indirect
 	github.com/bradfitz/gomemcache v0.0.0-20190913173617-a41fca850d0b // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/facebookgo/clock v0.0.0 // indirect
 	github.com/facebookgo/httpdown v0.0.0 // indirect
 	github.com/facebookgo/stats v0.0.0 // indirect
@@ -36,16 +38,17 @@ require (
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/json-iterator/go v1.1.9 // indirect
+	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/kavu/go_reuseport v0.0.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
-	github.com/magiconair/properties v1.8.0 // indirect
+	github.com/magiconair/properties v1.8.4 // indirect
 	github.com/mattn/go-isatty v0.0.12 // indirect
-	github.com/mitchellh/mapstructure v1.1.2 // indirect
+	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/mojocn/base64Captcha v1.3.1 // indirect
-	github.com/pelletier/go-toml v1.2.0 // indirect
+	github.com/pelletier/go-toml v1.8.1 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/qiniu/api/auth/digest v0.0.0 // indirect
 	github.com/qiniu/api/conf v0.0.0 // indirect
 	github.com/qiniu/bytes v0.0.0 // indirect
@@ -67,23 +70,26 @@ require (
 	github.com/qiniu/log.v1 v0.0.0 // indirect
 	github.com/qiniu/rpc.v1/brpc/lb.v2.1 v0.0.0 // indirect
 	github.com/qiniu/rpc.v1/lb.v2.1/transport v0.0.0 // indirect
-	github.com/spf13/afero v1.1.2 // indirect
-	github.com/spf13/cast v1.3.0 // indirect
-	github.com/spf13/jwalterweatherman v1.0.0 // indirect
-	github.com/spf13/pflag v1.0.3 // indirect
-	github.com/spf13/viper v1.4.0 // indirect
+	github.com/spf13/afero v1.5.1 // indirect
+	github.com/spf13/cast v1.3.1 // indirect
+	github.com/spf13/jwalterweatherman v1.1.0 // indirect
+	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/viper v1.7.1 // indirect
+	github.com/subosito/gotenv v1.2.0 // indirect
 	github.com/teapots/inject v0.0.0 // indirect
 	github.com/teapots/teapot v0.0.0 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	github.com/vanackere/asn1-ber v0.0.0-20140915131724-295c7b21db5d // indirect
 	github.com/vanackere/ldap v0.0.0-20140915131551-e29b797d1abd // indirect
-	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
-	golang.org/x/image v0.0.0-20190501045829-6d32002ffd75 // indirect
-	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a // indirect
-	golang.org/x/sys v0.0.0-20211020174200-9d6173849985 // indirect
+	golang.org/x/crypto v0.0.0-20220131195533-30dcbda58838 // indirect
+	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
+	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
+	golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.23.0 // indirect
 	gopkg.in/bsm/ratelimit.v1 v1.0.0-20160220154919-db14e161995a // indirect
+	gopkg.in/ini.v1 v1.62.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0 // indirect
 	labix.org/v2/mgo/bson v0.0.0 // indirect
 	qbox.us/account-api v0.0.0 // indirect
 	qbox.us/admin_api/account.v2 v0.0.0 // indirect
