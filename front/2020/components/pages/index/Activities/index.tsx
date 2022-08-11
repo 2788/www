@@ -35,6 +35,10 @@ export interface Props {
 }
 
 export default function Activities({ activities }: Props) {
+  if (activities.length === 0) {
+    return null
+  }
+
   return (
     <div className={styles.activities}>
       <div className={styles.content}>

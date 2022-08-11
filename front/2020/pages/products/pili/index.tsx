@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
@@ -12,6 +12,7 @@ import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
 import Feature, {
   Group as FeatureGroup,
@@ -25,6 +26,7 @@ import PiliScene from 'components/pages/pili/Scene'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -40,9 +42,9 @@ import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const { startConsulting } = useFeedbackModal()
 
   const priceUrl = urlForPrice(Product.Pili)
@@ -53,6 +55,10 @@ function PageContent({ notices, newsRes }: Props) {
     { onClick: startConsulting, children: '立即咨询' }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Pili]
+  })
+
   return (
     <>
       <PageBanner
@@ -62,7 +68,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -153,23 +159,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function PiliPage(props: Props) {
+export default function PiliPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="视频直播_直播推流_直播 SDK_直播云服务_视频直播 Pili"
       keywords="直播云, 云直播, 直播 SDK, 视频直播云服务, 视频直播服务, 直播 API, 推流 SDK, 播放 SDK, 视频直播, 七牛视频直播, quic 推流"
       description="七牛视频直播是专为直播平台打造的全球化直播流服务和端到端直播场景解决方案，提供 RTMP、HLS、HDL 直播支持、配套的数据处理服务、端到端 SDK 支持、APM 数据服务。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Pili),
-      newsRes: await getNews({ product: Product.Pili })
+      newsRes: await getNews({ product: Product.Pili }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

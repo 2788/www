@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
 import { useModal as useFeedbackModal } from 'components/Feedback'
@@ -16,6 +16,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Architecture from 'components/pages/automobile/Architecture'
 import Scene from 'components/pages/automobile/Scene'
@@ -25,6 +26,8 @@ import imgBanner from './_images/banner.png'
 import imgCase1 from './_images/case1.png'
 import imgCase2 from './_images/case2.png'
 import imgCase3 from './_images/case3.png'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const title = `${nameMap[Solution.Automobile]}行业解决方案`
 const desc = '在汽车产业加速走向智能、网联和共享的时代背景下，如何在愈加复杂的交通环境和市场竞争中，保障人、车、货的安全以及帮助车企实现业务的创新是目前面临的主要难题。'
@@ -92,14 +95,23 @@ function PageContent() {
 const layoutDescription = '“数智赋能，洞见出行新未来”，在汽车产业加速走向智能、网联和共享的时代背景下，如何在愈加复杂的交通环境和市场竞争中，保障人、车、货的安全以及帮助车企实现业务的创新是目前面临的主要难题。'
   + '七牛云携手合作伙伴基于直播与实时互动、大数据、云计算等技术打造可视化安全出行、车联网大数据运营运维服务等场景化解决方案，帮助车企实现数字化转型和升级，加快产品和服务创新。'
 
-export default function AutomobilePage() {
+export default function AutomobilePage({ globalBanners }: Props) {
   return (
     <Layout
       title="汽车行业解决方案"
       keywords="汽车, 数字化转型, 安全出行, 车联网, 车载监控, 大数据运营运维"
       description={layoutDescription}
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

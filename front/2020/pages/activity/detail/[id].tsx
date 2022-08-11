@@ -1,9 +1,13 @@
 import React from 'react'
-import { InferGetStaticPropsType, GetStaticPropsContext } from 'next'
+import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
+
 import { getActivityById, IActivity, getActivities } from 'apis/admin/activity'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import Layout from 'components/Product/Layout'
 import Banner from 'components/pages/activity/detail/Banner'
 import DetailInfo from 'components/pages/activity/detail/Info'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function Page({ activity }: { activity: IActivity | null }) {
 
@@ -16,13 +20,14 @@ function Page({ activity }: { activity: IActivity | null }) {
   )
 }
 
-export default function Detail({ activity }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Detail({ globalBanners, activity }: Props) {
   const title = activity ? activity.title : '活动详情'
   return (
     <Layout
       title={title}
       keywords="七牛云, 活动, 会议"
       description=""
+      globalBanners={globalBanners}
     >
       <Page activity={activity} />
     </Layout>
@@ -35,15 +40,20 @@ async function getData(id?: string) {
   return getActivityById(id)
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext<{ id: string }>) {
+export async function getServerSideProps({ params }: GetServerSidePropsContext<{ id: string }>) {
+  const [activity, globalBanners] = await Promise.all([
+    getData(params?.id),
+    getGlobalBanners()
+  ] as const)
   return {
     props: {
-      activity: await getData(params?.id)
+      activity,
+      globalBanners
     }
   }
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const maxPageSize = 999
   const { count } = await getActivities({ page: 1, pageSize: 1 })
   const len = Math.ceil(count / maxPageSize)

@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 import { Product } from 'constants/products'
 
 import Layout from 'components/Product/Layout'
@@ -11,6 +11,7 @@ import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -21,17 +22,22 @@ import DcdnFunction from 'components/pages/dcdn/Function'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 
 import banner from './banner.png'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/dcdn/domain', children: '立即配置' },
     { href: 'https://developer.qiniu.com/dcdn/10489/dynamic-acceleration-upgraded-to-total-station', children: '开发者文档' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Dcdn]
+  })
 
   return (
     <>
@@ -44,7 +50,7 @@ function PageContent({ notices, newsRes }: Props) {
 
       <Navigator>{btns.nav}</Navigator>
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <DcdnFunction />
 
@@ -74,23 +80,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function DcdnPage(props: Props) {
+export default function DcdnPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="全站加速_动态加速_混合加速"
       keywords="全站加速,动态加速,混合加速,dcdn,cdn,Dynamic acceleration"
       description="七牛全站加速 DCDN 在 CDN 静态加速的基础上融合了动态加速的能力，通过资源动静态分离、智能缓存、路由优化等核心技术一站式解决动静态资源混合站点内容分发慢的问题。适用于动态资源或动静态资源混合的加速场景。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Dcdn),
-      newsRes: await getNews({ product: Product.Dcdn })
+      newsRes: await getNews({ product: Product.Dcdn }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

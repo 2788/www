@@ -6,8 +6,9 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
+import { wwwPaths } from 'constants/deploy/refresh'
 import { apiMongo } from 'constants/api-prefix'
 
 // 展示区域
@@ -50,6 +51,8 @@ export interface IListResponse {
   data: IBannerWithId[]
 }
 
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: [...wwwPaths] }
+
 @injectable()
 export default class BannerApis {
 
@@ -59,16 +62,16 @@ export default class BannerApis {
 
   add(options: IAddBannerOptions): Promise<void> {
     const opts = { ...options, createTime: moment().unix(), editTime: moment().unix() }
-    return this.client.post(apiMongo + '/www-global-banner', opts)
+    return this.client.post(apiMongo + '/www-global-banner', opts, refreshPathsOptions)
   }
 
   update(id: string, options: IUpdateBannerOptions): Promise<void> {
     const opts = { ...options, editTime: moment().unix() }
-    return this.client.put(apiMongo + '/www-global-banner/' + id, opts)
+    return this.client.put(apiMongo + '/www-global-banner/' + id, opts, refreshPathsOptions)
   }
 
   delete(id: string): Promise<void> {
-    return this.client.delete(apiMongo + '/www-global-banner/' + id)
+    return this.client.delete(apiMongo + '/www-global-banner/' + id, refreshPathsOptions)
   }
 
   list(): Promise<IListResponse> {

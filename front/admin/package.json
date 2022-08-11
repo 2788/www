@@ -5,6 +5,7 @@
     "start": "fec-builder -p 8080 -c build-config-dev.json",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
     "test": "jest --passWithNoTests",
+    "test:dev": "jest --collectCoverage=false -i --watch",
     "clear": "jest --clearCache",
     "snapshot": "jest -u",
     "validate": "npm run lint && npm run test",

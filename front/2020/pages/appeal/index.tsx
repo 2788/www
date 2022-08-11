@@ -3,13 +3,16 @@
  */
 
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Layout'
 import Banner, * as banner from 'components/Banner'
 import AppealMain from 'components/Appeal'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import imgBanner from './banner-bg.png'
 import style from './style.less'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function AppealBanner() {
   return (
@@ -33,14 +36,23 @@ function PageContent() {
   )
 }
 
-export default function AppealPage() {
+export default function AppealPage({ globalBanners }: Props) {
   return (
     <Layout
       title="申诉平台"
       keywords="七牛云, 申诉"
       description="七牛云与你共建晴朗健康的互联网空间"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

@@ -47,7 +47,7 @@ function usePgcListState() {
     }
   }), [currentPage, pageSize, totalPage])
 
-  const [selectedContentType, selecteContentType] = useState<ContentType | null>(null)
+  const [selectedContentType, selectContentType] = useState<ContentType | null>(null)
   const contentTypeColumnFilter = useMemo<TableColumnSelectFilterOptions<ContentType>>(() => ({
     type: 'select',
     value: selectedContentType,
@@ -58,7 +58,7 @@ function usePgcListState() {
       })
     ),
     onChange(contentType) {
-      selecteContentType(contentType)
+      selectContentType(contentType)
     }
   }), [selectedContentType])
 

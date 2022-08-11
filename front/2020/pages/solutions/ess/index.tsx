@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -20,10 +20,13 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import imgBanner from './images/banner.png'
 
 const title = `${nameMap[Solution.Ess]}解决方案`
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
   const { startIntentConsulting } = useFeedbackModal()
@@ -74,14 +77,23 @@ function PageContent() {
   )
 }
 
-export default function EssPage() {
+export default function EssPage({ globalBanners }: Props) {
   return (
     <Layout
       title="监控视频边缘存储解决方案_视频监控_音视频监控存储_智能多媒体_视频边缘监控"
       keywords="边缘存储, 边缘计算, 七牛云, 视频监控, 物联网"
       description="面向视频监控行业，在七牛云边缘节点和用户侧部署边缘存储服务，加速视频数据边缘上传，自动同步边缘中心数据，有效解决上传链路差，带宽利用率低等行业痛点，降低本地存储成本。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

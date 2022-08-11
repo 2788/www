@@ -5,9 +5,10 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
@@ -16,6 +17,7 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -35,9 +37,9 @@ const pageInfo = {
     '智能语音基于语音识别、语音合成、声纹识别、自然语言理解等技术，实现智能语音交互，可广泛应用于智能终端设备、智能客服、质检、导航资讯播报、实时获取字幕、有声书等多种场景，同时提供私有化（本地部署）服务。'
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const { startConsulting } = useFeedbackModal()
   const priceUrl = urlForPrice(Product.Voice)
 
@@ -45,6 +47,10 @@ function PageContent({ notices, newsRes }: Props) {
     { onClick: startConsulting, children: '立即咨询' },
     { children: '查看价格', href: priceUrl }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Voice]
+  })
 
   return (
     <>
@@ -56,7 +62,7 @@ function PageContent({ notices, newsRes }: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Function />
       <Advantage />
       <Scene />
@@ -73,23 +79,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function Main(props: Props) {
+export default function Main({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Voice),
-      newsRes: await getNews({ product: Product.Voice })
+      newsRes: await getNews({ product: Product.Voice }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

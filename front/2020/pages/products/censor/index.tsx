@@ -3,7 +3,9 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
+import { useApiWithParams } from 'hooks/api'
 import { useMobile } from 'hooks/ua'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
@@ -15,6 +17,7 @@ import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -46,9 +49,9 @@ import LogoTangdou from './_logos/tangdou.png'
 import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const isPc = !useMobile()
   const priceUrl = urlForPrice(Product.Censor)
@@ -57,6 +60,10 @@ function PageContent({ notices, newsRes }: Props) {
     { href: 'https://portal.qiniu.com/censor', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Censor]
+  })
 
   return (
     <>
@@ -68,7 +75,7 @@ function PageContent({ notices, newsRes }: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -194,23 +201,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function ExpressPage(props: Props) {
+export default function ExpressPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="内容审核_内容安全_多媒体内容审核服务"
       keywords="内容审核, 视频审核, 图片审核, 智能鉴黄, 鉴暴恐, 政治人物识别, 内容安全"
       description="七牛云提供图片、视频等多媒体内容的审核服务，为你精准识别过滤色情、暴恐、敏感人物、广告等违规内容。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Censor),
-      newsRes: await getNews({ product: Product.Censor })
+      newsRes: await getNews({ product: Product.Censor }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

@@ -1,7 +1,7 @@
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 import { wwwHost } from 'constants/env'
 import { StateType } from 'constants/activity'
@@ -77,6 +77,8 @@ export interface IScanner {
   endTime: number // 链接有效期结束时间，单位为秒
 }
 
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/activity', '/sitemap.xml'] }
+
 @injectable()
 export default class ActivityApis {
 
@@ -84,16 +86,16 @@ export default class ActivityApis {
 
   add(options: IActivity): Promise<void> {
     options = { ...options, ...{ detailUrlPrefix, editTime: moment().unix() } }
-    return this.client.post(apiMongo + '/www-market-activity', options)
+    return this.client.post(apiMongo + '/www-market-activity', options, refreshPathsOptions)
   }
 
   update(options: IActivity, id: string): Promise<void> {
     options = { ...options, ...{ detailUrlPrefix, editTime: moment().unix() } }
-    return this.client.put(apiMongo + '/www-market-activity/' + id, options)
+    return this.client.put(apiMongo + '/www-market-activity/' + id, options, refreshPathsOptions)
   }
 
   delete(id: string): Promise<void> {
-    return this.client.delete(apiMongo + '/www-market-activity/' + id)
+    return this.client.delete(apiMongo + '/www-market-activity/' + id, refreshPathsOptions)
   }
 
   list({ limit, offset, states = [] }: IListOptions): Promise<IListResponse> {
@@ -134,6 +136,6 @@ export default class ActivityApis {
       startTime: moment().unix(),
       endTime: moment().add(3, 'day').unix()
     }
-    return this.client.post(apiMongo + '/www-activity-check-in-qr-code-scanner', opts)
+    return this.client.post(apiMongo + '/www-activity-check-in-qr-code-scanner', opts, refreshPathsOptions)
   }
 }

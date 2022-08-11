@@ -5,6 +5,7 @@
 /* eslint-disable max-len */
 
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import { useMobile } from 'hooks/ua'
 import Layout from 'components/Product/Layout'
 import Banner from 'components/Banner'
@@ -18,6 +19,7 @@ import Feature, {
 } from 'components/Product/Feature'
 import Timeline from 'components/company/Timeline'
 import Honor from 'components/company/Honor'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import styles from './style.less'
 
@@ -28,6 +30,8 @@ import IconCultureCompany from './_images/icon-culture-company.svg'
 
 import imgMission from './_images/mission.png'
 import mobileImgMission from './_images/mission-mobile.png'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -118,16 +122,25 @@ function PageContent() {
   )
 }
 
-export default function IntroductionPage() {
+export default function IntroductionPage({ globalBanners }: Props) {
   return (
     <Layout
       title="关于七牛云_七牛云公司_七牛云提供一站式云上解决方案"
       keywords="七牛云, 七牛, 关于七牛, 七牛介绍, 七牛云愿景, 七牛文化, 七牛发展历史"
       description="七牛云创立于 2011 年，总部位于上海，在北京、深圳、广州、成都、杭州、厦门、武汉等地设有分公司和研发中心。作为国内知名的云计算及数据服务提供商，七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
+      globalBanners={globalBanners}
     >
       <SectionProvider startWithGrey>
         <PageContent />
       </SectionProvider>
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

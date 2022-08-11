@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 
 import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
@@ -16,6 +17,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Scene from 'components/pages/social/Scene'
 import Advantage from 'components/pages/social/Advantage'
@@ -25,6 +27,8 @@ import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.png'
 
 const title = `${nameMap[Solution.Social]}解决方案`
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
   const { startIntentConsulting } = useFeedbackModal()
@@ -80,15 +84,23 @@ function PageContent() {
   )
 }
 
-export default function SocialPage() {
+export default function SocialPage({ globalBanners }: Props) {
   return (
     <Layout
       title="社交_图片社交_短视频社交_直播连麦_视频相亲_互动游戏_语音聊天室"
       keywords="社交, 图片社交, 短视频社交, 直播连麦, 视频相亲, 互动游戏, 语音聊天室"
       description="七牛云社交解决方案提供端到端的一站式解决方案，助力客户快速打造属于自己的社交产品。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
 }
 
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
+}

@@ -3,11 +3,13 @@
  */
 
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Layout'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
 import Section from 'components/Product/Section'
 import { Navigatable } from 'components/Product/Navigator'
 import ApplyForm from 'components/pages/cooperations/ApplyForm'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import IconStep1 from './_icons/step-1.svg'
 import IconStep2 from './_icons/step-2.svg'
@@ -15,12 +17,15 @@ import IconStep3 from './_icons/step-3.svg'
 
 import style from './style.less'
 
-export default function CooperationsPage() {
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+export default function CooperationsPage({ globalBanners }: Props) {
   return (
     <Layout
       title="工具、插件、SDK 合作"
       keywords="工具, 插件, SDK, 开发者, 合作"
       description="七牛云欢迎广大开发者提交工具、插件、SDK，我们会及时跟进您的提交申请。通过审核的工具、插件、SDK 将会在七牛云开发者中心社区资源上线。并且，您可以免费享受一定额度的云服务一整年。"
+      globalBanners={globalBanners}
     >
       <Navigatable>
         <div className={style.banner}>
@@ -53,4 +58,12 @@ export default function CooperationsPage() {
       </Navigatable>
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

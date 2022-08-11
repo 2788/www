@@ -8,6 +8,7 @@ import React from 'react'
 import QRCode from 'qrcode.react'
 import { useQueryValue } from 'hooks/url'
 import Layout from 'components/Layout'
+
 import style from './style.less'
 
 export function PageContent() {

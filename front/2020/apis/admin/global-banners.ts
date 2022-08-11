@@ -1,7 +1,16 @@
+/**
+ * @file 全局公告
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+import { get } from 'utils/fetch'
+
+import { mongoApiPrefix, handleResponseData } from '.'
+
 // 展示区域
 type DisplayPages = 'www-homepage' | 'www-others'
 
-interface IBanner {
+export interface GlobalBanner {
   name: string // 公告名称，类似 id，唯一
   pcImg: string
   mobileImg: string
@@ -14,4 +23,7 @@ interface IBanner {
   displayPages: DisplayPages[] // 展示区域
 }
 
-export declare const globalBannersRes: { data: IBanner[] | null }
+export function getGlobalBanners(): Promise<GlobalBanner[]> {
+  return get(mongoApiPrefix + '/www-global-banner')
+    .then(res => handleResponseData(res))
+}

@@ -4,11 +4,13 @@
  * @author        renpanpan
  */
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import { Product, priceUrlMap } from 'constants/products'
@@ -30,14 +32,18 @@ const pageInfo = {
   description: '智能分析视频内容场景特性，动态调整图像增强算法，并结合高性能视频编码器，实现在更低带宽下，传输更清晰的视频。'
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const bannerBtns = useBtns(
     { href: 'https://developer.qiniu.com/dora/6097/perceptive-transcoding-avsmart-1', children: '立即使用', pcOnly: true },
     { children: '查看价格', href: priceUrlMap[Product.Dora] }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Avsmart]
+  })
 
   return (
     <>
@@ -48,7 +54,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={bannerBtns.banner}
         icon={bannerImg}
       />
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
 
       <Function />
@@ -67,19 +73,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function Page(props: Props) {
+export default function Page({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout title={pageInfo.layoutTitle} keywords={pageInfo.keywords} description={pageInfo.description}>
-      <PageContent {...props} />
+    <Layout
+      title={pageInfo.layoutTitle}
+      keywords={pageInfo.keywords}
+      description={pageInfo.description}
+      globalBanners={globalBanners}
+    >
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Avsmart),
-      newsRes: await getNews({ product: Product.Avsmart })
+      newsRes: await getNews({ product: Product.Avsmart }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

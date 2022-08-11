@@ -2,6 +2,7 @@
  * @file 解决方案”视频云 SDK“
  */
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import { Product, urlMap } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
@@ -15,8 +16,11 @@ import { useModal as useFeedbackModal } from 'components/Feedback'
 import Feature from 'components/pages/landpage/sdk/Feature'
 import { useBtns } from 'hooks/product-btn'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import imgBanner from './images/banner.png'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const title = '视频云 SDK'
 
@@ -68,14 +72,23 @@ function PageContent() {
   )
 }
 
-export default function SdkPage() {
+export default function SdkPage({ globalBanners }: Props) {
   return (
     <Layout
       title={title}
       keywords="视频云, SDK, 短视频, 连麦, 直播推流, 直播, 视频特效, 实时音视频, 生态, 一站式"
       description="由七牛音视频团队多年精心打磨，提供丰富多样的 SDK，帮助用户聚焦业务本身，快速构建短视频、直播推流、实时音视频等核心能力，并且生态开放，优选业内领先厂商深度合作，技术融合，最新最热特效无时差上线，为用户带来简单、开放、一站式的极致体验。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

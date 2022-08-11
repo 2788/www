@@ -6,6 +6,9 @@
 /** 官网站点 Host */
 export const wwwHost = must('wwwHost', process.env.WWW_HOST)
 
+/** 官网源站 Host */
+export const wwwSourceHost = must('wwwSourceHost', process.env.WWW_SOURCE_HOST)
+
 function must(name: string, variable?: string): string {
   if (variable === undefined) {
     throw new Error(`Invalid value for environment variable ${name}.`)

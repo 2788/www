@@ -4,20 +4,25 @@
  */
 
 import React from 'react'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 
 import {
   ContentType, contentTypes, contentTypeTextMap, ContentCategory, contentCategories, contentCategoryTextMap
 } from 'constants/pgc/content'
 import { listReleasedContent, ListOptions } from 'apis/admin/pgc/content'
+import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import Layout from 'components/Layout'
-import List, { Props, getPageSize } from 'components/pgc/content/List'
+import List, { Props as BaseProps, getPageSize } from 'components/pgc/content/List'
 
-export default function PgcList(props: Props) {
+interface Props extends BaseProps {
+  globalBanners: GlobalBanner[]
+}
+
+export default function PgcList({ globalBanners, ...pageProps }: Props) {
   const keywords = [
     '列表',
-    contentTypeTextMap[props.type],
-    props.category && contentCategoryTextMap[props.category]
+    contentTypeTextMap[pageProps.type],
+    pageProps.category && contentCategoryTextMap[pageProps.category]
   ].filter(Boolean)
 
   return (
@@ -25,13 +30,14 @@ export default function PgcList(props: Props) {
       title={keywords.join(' - ')}
       keywords={['七牛云', ...keywords].join(', ')}
       description={['七牛云', ...keywords].join(', ')}
+      globalBanners={globalBanners}
     >
-      <List {...props} />
+      <List {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps(ctx: GetStaticPropsContext<{ type: string, category: string }>) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext<{ type: string, category: string }>) {
   const params = ctx.params!
   const type = params.type as ContentType
   const category = params.category === 'all' ? null : (params.category as ContentCategory)
@@ -44,18 +50,21 @@ export async function getStaticProps(ctx: GetStaticPropsContext<{ type: string, 
   }
   const result = await listReleasedContent(options)
 
+  const globalBanners = await getGlobalBanners()
+
   const props: Props = {
     type,
     category,
     firstScreenContent: {
       contents: result.data,
       total: result.count
-    }
+    },
+    globalBanners
   }
   return { props }
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const paths: Array<{ params: { type: string, category: string } }> = []
   contentTypes.forEach(type => {
     [...contentCategories, 'all'].forEach(category => {

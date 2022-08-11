@@ -3,6 +3,7 @@
  */
 
 import React, { PropsWithChildren, useState } from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import * as cases from 'constants/cases'
 import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
@@ -18,6 +19,7 @@ import Section from 'components/Product/Section'
 import { RawAccessProcess, Step as AccessProcessStep } from 'components/Product/AccessProcess'
 import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 import { RawCustomerCaseGroup as CustomerCaseGroup, CustomerCase } from 'components/Product/CustomerCaseGroup'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import IconStep1 from './_icons/step-1.svg'
 import IconStep2 from './_icons/step-2.svg'
@@ -29,6 +31,8 @@ import imgBanner from './banner.file.svg'
 import IconTitle from './_icons/title.svg'
 
 import style from './style.less'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const inviteUrl = 'https://portal.qiniu.com/invitation'
 
@@ -180,7 +184,7 @@ function PageContent() {
   )
 }
 
-export default function InvitePage() {
+export default function InvitePage({ globalBanners }: Props) {
   return (
     <Redirect target="/cps" />
   )
@@ -189,6 +193,7 @@ export default function InvitePage() {
       title="邀请有礼活动"
       keywords="七牛云, 邀请活动, 七牛优惠券, 七牛免费CDN"
       description="邀请好友注册七牛云，即可获得CDN免费下载流量，购物卡、产品代金券、七牛云活动VIP门票、优先产品内测资格等福利。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
@@ -236,4 +241,12 @@ function Cases() {
       </CustomerCaseGroup>
     </Swiper>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

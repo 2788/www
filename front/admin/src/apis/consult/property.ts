@@ -4,8 +4,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 
 export interface PropertyData {
@@ -31,6 +31,7 @@ export interface Property extends PropertyData {
 }
 
 const resourceName = 'www-consult-property'
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: [] }
 
 @injectable()
 export default class PropertyApis {
@@ -43,18 +44,18 @@ export default class PropertyApis {
       ...options,
       createTime: now,
       editTime: now
-    })
+    }, refreshPathsOptions)
   }
 
   update(id: string, options: Partial<PropertyData>) {
     return this.client.patch<void>(`${apiMongo}/${resourceName}/${id}`, {
       ...options,
       editTime: moment().unix()
-    })
+    }, refreshPathsOptions)
   }
 
   delete(id: string) {
-    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`)
+    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`, refreshPathsOptions)
   }
 
   async list(query?: Record<string, unknown>) {

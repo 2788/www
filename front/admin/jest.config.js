@@ -37,7 +37,8 @@ module.exports = {
     '^react\\-icecream\\/form\\-x$': '<rootDir>/node_modules/react-icecream-2/lib/form-x/index.js',
     '^react\\-icecream$': '<rootDir>/node_modules/react-icecream-2/lib',
     '^react\\-icecream\\-form$': '<rootDir>/node_modules/react-icecream-form/lib',
-    '^qn\\-fe\\-core\\/(.*)$': '<rootDir>/node_modules/qn-fe-core/lib/$1'
+    '^qn\\-fe\\-core\\/(.*)$': '<rootDir>/node_modules/qn-fe-core/lib/$1',
+    '^admin\\-base\\/(.*)$': '<rootDir>/node_modules/admin-base/lib/$1'
   },
   moduleDirectories: ['node_modules', 'src'],
   collectCoverageFrom: ['src/**/*.ts', 'src/**/*.tsx'],

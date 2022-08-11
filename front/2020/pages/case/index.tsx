@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
 import Section from 'components/Product/Section'
@@ -10,10 +11,13 @@ import { Navigatable } from 'components/Product/Navigator'
 import ByIndustry from 'components/pages/case/ByIndustry'
 import Selected from 'components/pages/case/Selected'
 import Words from 'components/pages/case/Words'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import style from './style.less'
 
-export default function CasePage() {
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+export default function CasePage({ globalBanners }: Props) {
   // 这边先干掉客户案例页面内容，等内容 OK 了，再重新打开
   // eslint-disable-next-line no-constant-condition
   if (true) {
@@ -27,6 +31,7 @@ export default function CasePage() {
       title="客户案例"
       keywords="七牛客户, 七牛客户案例"
       description="100 多万企业用户和开发者，间接服务超过 90% 网民"
+      globalBanners={globalBanners}
     >
       <Navigatable>
         <section className={style.banner}>
@@ -48,4 +53,12 @@ export default function CasePage() {
       </Navigatable>
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

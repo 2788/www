@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Layout'
 import Form from 'components/pages/search/Form'
 import Result, { pageSize } from 'components/pages/search/Result'
@@ -16,6 +17,7 @@ import { useQueryValue, useQuery } from 'hooks/url'
 import { useMobile } from 'hooks/ua'
 import { useOnChange } from 'hooks'
 import { search as _search, countByTags, SearchResult, SearchResultItem, SearchParams } from 'apis/search'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import style from './style.less'
 
 async function count(keyword: string) {
@@ -69,6 +71,8 @@ function useMobileLogic(
     handleLoadMore
   }
 }
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
 function PageContent() {
@@ -155,10 +159,18 @@ function PageContent() {
   )
 }
 
-export default function SearchPage() {
+export default function SearchPage({ globalBanners }: Props) {
   return (
-    <Layout title="搜索" keywords="" description="">
+    <Layout title="搜索" keywords="" description="" globalBanners={globalBanners}>
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

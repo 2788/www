@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
@@ -13,11 +13,13 @@ import PageBanner from 'components/Product/PageBanner'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getPromotionMap } from 'apis/qcdn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import Coverage from 'components/pages/qcdn/Coverage'
 import Packages from 'components/pages/qcdn/Packages'
 import CustomerRemarks from 'components/pages/qcdn/CustomerRemarks'
@@ -48,11 +50,11 @@ import Advantage4Icon from './_images/advantage4.svg'
 import Advantage5Icon from './_images/advantage5.svg'
 import Advantage6Icon from './_images/advantage6.svg'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-function PageContent({ notices, newsRes, promotionMap }: Props) {
+function PageContent({ notices, newsRes, promotionMap }: Omit<Props, 'globalBanners'>) {
 
   const priceUrl = urlForPrice(Product.Cdn)
 
@@ -61,6 +63,10 @@ function PageContent({ notices, newsRes, promotionMap }: Props) {
     { href: 'https://portal.qiniu.com/cdn', children: '立即使用', pcOnly: true },
     { href: 'https://qmall.qiniu.com/template/NTI', children: '立即购买' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Cdn]
+  })
 
   return (
     <>
@@ -71,7 +77,7 @@ function PageContent({ notices, newsRes, promotionMap }: Props) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -180,25 +186,27 @@ function PageContent({ notices, newsRes, promotionMap }: Props) {
   )
 }
 
-export default function CdnPage(props: Props) {
+export default function CdnPage({ globalBanners, ...pageProps }: Props) {
 
   return (
     <Layout
       title="CDN_内容分发网络_CDN 网站加速_CDN 服务器_国内 CDN 加速"
       keywords="高防CDN, 动态CDN, 静态CDN, CDN, CDN加速, CDN加速服务, 七牛CDN, CDN服务器, 内容分发, 云加速, CDN, 图片CDN, 视频CDN"
       description="七牛 CDN 是在传统 CDN 基础上实现的对数据网络加速进一步优化的智能管理服务。通过全方位的 CDN 质量监控，以及智能易用的节点调度等功能，提供稳定快速的网络访问服务。保障客户的音视频点播、大文件下载、应用及 Web 加速服务的稳定及连续性。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Cdn),
       newsRes: await getNews({ product: Product.Cdn }),
-      promotionMap: await getPromotionMap()
+      promotionMap: await getPromotionMap(),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

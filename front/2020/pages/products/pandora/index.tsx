@@ -5,7 +5,8 @@
 /* eslint-disable max-len */
 
 import React, { PropsWithChildren } from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { Product } from 'constants/products'
 import * as card from 'components/UI/Card'
 import Button from 'components/UI/Button'
@@ -16,6 +17,7 @@ import Navigator from 'components/Product/Navigator'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -28,7 +30,9 @@ import GuideLink from 'components/Product/GuideLink'
 import * as logos from 'components/pages/express/logos'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { bbg } from 'constants/cases'
+
 import imgBanner from './banner.png'
 import ImgIntro from './_images/intro.svg'
 import imgFeature1 from './_images/feature-1.png'
@@ -54,14 +58,18 @@ import style from './style.less'
 // 使用链接
 const portalUrl = 'https://portal.qiniu.com/express'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const btns = useBtns(
     { href: portalUrl, children: '立即使用', pcOnly: true },
     { href: '/products/pandora/demos', children: '查看 Demo' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Express]
+  })
 
   return (
     <>
@@ -73,7 +81,7 @@ function PageContent({ notices, newsRes }: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -237,23 +245,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function PandoraPage(props: Props) {
+export default function PandoraPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="机器数据分析平台 Pandora_机器数据分析_数据分析平台 Pandora"
       keywords="数据分析, 数据管理, 智能运维管理, 业务运营分析, 安全事态分析, 智能网联数据, 金融, 汽车, 运营商, 智能制造, 互联网"
       description="机器数据分析平台 Pandora 能实现数据的全生命周期智能管理，适用于智能运维管理、业务运营分析、安全事态分析、智能网联数据分析等场景，帮助金融、汽车、运营商、智能制造、互联网等行业客户探索数据、挖掘价值、预见未来。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Express),
-      newsRes: await getNews({ product: Product.Express })
+      newsRes: await getNews({ product: Product.Express }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

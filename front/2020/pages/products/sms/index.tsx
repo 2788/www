@@ -5,8 +5,10 @@
 /* eslint-disable max-len */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
@@ -16,6 +18,7 @@ import Feature, * as feature from 'components/Product/Feature'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -43,9 +46,9 @@ import style from './style.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -57,6 +60,10 @@ function PageContent({ notices, newsRes }: Props) {
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Sms]
+  })
+
   return (
     <>
       <PageBanner
@@ -67,7 +74,7 @@ function PageContent({ notices, newsRes }: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -166,23 +173,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function SmsPage(props: Props) {
+export default function SmsPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
       keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
       description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Sms),
-      newsRes: await getNews({ product: Product.Sms })
+      newsRes: await getNews({ product: Product.Sms }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

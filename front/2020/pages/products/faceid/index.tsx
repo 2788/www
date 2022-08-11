@@ -5,7 +5,8 @@
 /* eslint-disable max-len */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
@@ -19,10 +20,13 @@ import UsageGuide, { Button as UGButton } from 'components/Product/UsageGuide'
 import Link from 'components/Link'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
+
 import imgBanner from './banner.png'
 import IconAdvan1 from './_icons/advan-1.svg'
 import IconAdvan2 from './_icons/advan-2.svg'
@@ -45,9 +49,9 @@ interface LinkTitleProps {
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const priceUrl = urlForPrice(Product.FaceID)
 
@@ -57,6 +61,10 @@ function PageContent({ notices, newsRes }: Props) {
     { href: 'https://developer.qiniu.com/dora/6874/seven-niuyun-face-check-products-use-is-introduced', children: '使用文档' }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.FaceID]
+  })
+
   const featureHeaderView = (
     <>
       核心功能
@@ -64,6 +72,7 @@ function PageContent({ notices, newsRes }: Props) {
     </>
   )
 
+  // FIXME: 动态生成组件…？
   // 生成带接口文档标签的标题
   function LinkTitle({ title, href }: LinkTitleProps) {
     return (
@@ -84,7 +93,7 @@ function PageContent({ notices, newsRes }: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -194,23 +203,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function FaceIdPage(props: Props) {
+export default function FaceIdPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="人脸核验_活体检测识别_身份验证 OCR 识别_刷脸识别"
       keywords="人脸核验, 身份验证, 人脸比对, 实名制"
       description="利用活体检测、1:1 人脸比对、身份证 OCR 等 AI 技术，对用户身份进行审核验证，广泛应用于数字金融、在线教育、线上政务和直播等各类实名制场景中。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.FaceID),
-      newsRes: await getNews({ product: Product.FaceID })
+      newsRes: await getNews({ product: Product.FaceID }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

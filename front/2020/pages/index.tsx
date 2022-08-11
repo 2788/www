@@ -3,7 +3,7 @@
  */
 
 import React, { createContext, useState, useContext, useEffect, useMemo } from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 import cls from 'classnames'
 import { memoize } from 'lodash'
 
@@ -25,6 +25,7 @@ import Certs from 'components/pages/index/Certs'
 import UsageGuide from 'components/pages/index/UsageGuide'
 import Services from 'components/pages/index/Services'
 import { getHomePageBanners, getHomePageActivities, AdvertInfo, HomePageBanner } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import styles from './style.less'
 
@@ -81,8 +82,10 @@ function useBanner(banners: Array<AdvertInfo<HomePageBanner>>) {
   }
 }
 
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent({ banners, activities }: InferGetStaticPropsType<typeof getStaticProps>) {
+function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
   const { $: currentActivities } = useApiWithParams(
     getHomePageActivities,
     { params: [] }
@@ -117,7 +120,7 @@ function PageContent({ banners, activities }: InferGetStaticPropsType<typeof get
   )
 }
 
-export default function IndexPage({ banners, activities }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function IndexPage({ globalBanners, banners, activities }: Props) {
   const [dark, setDark] = useState(false)
   const bannerDark = useMemo(() => ({ dark, setDark }), [dark, setDark])
   return (
@@ -127,8 +130,8 @@ export default function IndexPage({ banners, activities }: InferGetStaticPropsTy
           title=""
           keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
           description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
+          globalBanners={globalBanners}
         >
-
           <PageContent banners={banners} activities={activities} />
         </Layout>
       </headerThemeContext.Provider>
@@ -136,11 +139,12 @@ export default function IndexPage({ banners, activities }: InferGetStaticPropsTy
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       banners: await getHomePageBanners(),
-      activities: await getHomePageActivities()
+      activities: await getHomePageActivities(),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

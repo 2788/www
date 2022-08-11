@@ -21,5 +21,8 @@ export enum PermissionCode {
   ACTIVITY = 'ACTIVITY',
 
   // 内容站查看、编辑权限
-  PGC = 'PGC'
+  PGC = 'PGC',
+
+  // 发布上线、缓存刷新、刷新预取等
+  DEPLOY = 'DEPLOY'
 }

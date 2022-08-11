@@ -2,11 +2,14 @@
 /**
  * @file 新推官
  */
+
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 
 import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 import { getCpsInfo } from 'apis/cps'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Button from 'components/UI/Button'
 import Layout from 'components/Product/Layout'
@@ -22,6 +25,8 @@ import Rule from 'components/pages/cps/Rule'
 import banner from './images/banner.jpg'
 import banner_mobile from './images/banner_mobile.jpg'
 import style from './style.less'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function Page() {
   const isMobile = useMobile()
@@ -63,14 +68,23 @@ function Page() {
   )
 }
 
-export default function Cps() {
+export default function Cps({ globalBanners }: Props) {
   return (
     <Layout
       title="新推官"
       keywords="七牛云, 新推官, 推广, 权益返现, 返佣, 爆款云产品, 30 天关联期, 佣金, 推广攻略, 推广流程, 奖励, 多渠道, 注册"
       description="七牛云新推官 火热招募中，推广简单易上手，权益返现新升级"
+      globalBanners={globalBanners}
     >
       <Page />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

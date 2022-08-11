@@ -46,7 +46,7 @@ export function usePgcBannerList() {
   const [openEditModal, editModalView] = useEditModal(list, refresh)
 
   async function deleteBanner(id: string) {
-    await toasterStore.promise(pgcContentBannerApis.client.delete(id))
+    await toasterStore.promise(pgcContentBannerApis.delete(id))
     refresh()
   }
 

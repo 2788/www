@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
@@ -12,6 +12,7 @@ import Navigator from 'components/Product/Navigator'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -21,20 +22,25 @@ import Scene from 'components/pages/enhancement/Scene'
 
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { Product } from 'constants/products'
 
 import banner from './banner.png'
 
 const desc = '基于七牛计算机视觉与深度学习技术，提供视频画质增强服务，通过超分辨率、降噪、去模糊、去马赛克等手段，显著提升图片和视频的主观画质评价，可广泛应用于互联网媒体、直播、短视频、在线教育、广电传媒等行业应用。'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const { startConsulting } = useFeedbackModal()
 
   const btns = useBtns(
     { onClick: startConsulting, children: '立即咨询' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Enhancement]
+  })
 
   return (
     <>
@@ -45,7 +51,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={banner}
       />
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
       <Advantage />
       <Feature />
@@ -55,23 +61,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function EnhancementPage(props: Props) {
+export default function EnhancementPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="画质增强"
       keywords="超分辨率, 降噪, 去模糊, 去马赛克, 画质增强, 画质修复, 提升画质"
       description={desc}
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Enhancement),
-      newsRes: await getNews({ product: Product.Enhancement })
+      newsRes: await getNews({ product: Product.Enhancement }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

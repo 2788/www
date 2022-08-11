@@ -4,11 +4,13 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
@@ -19,6 +21,7 @@ import Advantage from 'components/pages/qnplayer/Advantage'
 import QnPlayerCase from 'components/pages/qnplayer/Case'
 import Document from 'components/pages/qnplayer/Document'
 import Feature from 'components/pages/qnplayer/Feature'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import bannerImg from './banner.png'
 
 const pageInfo = {
@@ -29,9 +32,9 @@ const pageInfo = {
     '七牛云播放器是一款全自研内核的多媒体播放器，支持多种视频格式及流媒体协议。包体小、首开快、播放流畅、使用简单，可支持直播、点播等多种场景。'
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const { startConsulting } = useFeedbackModal()
 
   const bannerBtns = useBtns(
@@ -42,6 +45,10 @@ function PageContent({ notices, newsRes }: Props) {
     }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.QnPlayer]
+  })
+
   return (
     <>
       <PageBanner
@@ -51,7 +58,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={bannerBtns.banner}
         icon={bannerImg}
       />
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
       <Advantage />
       <Feature />
@@ -62,23 +69,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function QnPlayerPage(props: Props) {
+export default function QnPlayerPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.QnPlayer),
-      newsRes: await getNews({ product: Product.QnPlayer })
+      newsRes: await getNews({ product: Product.QnPlayer }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

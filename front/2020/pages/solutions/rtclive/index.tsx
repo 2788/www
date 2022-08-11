@@ -4,6 +4,7 @@
  */
 
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 
 import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
@@ -16,6 +17,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Architecture from 'components/pages/rtclive/Architecture'
 import Scene from 'components/pages/rtclive/Scene'
@@ -25,6 +27,8 @@ import Demo from 'components/pages/rtclive/Demo'
 import banner from './banner.png'
 
 const title = `${nameMap[Solution.Rtclive]}解决方案`
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function Page() {
 
@@ -80,14 +84,23 @@ function Page() {
   )
 }
 
-export default function RtclivePage() {
+export default function RtclivePage({ globalBanners }: Props) {
   return (
     <Layout
       title={title}
       keywords="社交连麦, 互动直播, 超大房间互动直播, 商用级开源, 美颜, 美颜特效, 连麦 PK, 视频交友, 语聊房, FM 电台, 在线 KTV, 一起看视频, 一站式方案, 双模式可用, 快速接入, 美颜美妆, 高性能网络, 全链路监控"
       description="一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线，支持美颜滤镜功能快速接入。"
+      globalBanners={globalBanners}
     >
       <Page />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

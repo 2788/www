@@ -8,9 +8,14 @@
 import { injectable } from 'qn-fe-core/di'
 
 import { ContentId, ContentType, ContentDetail, ContentDetailWithTime, Content } from 'constants/pgc/content'
+import { RefreshOptions } from 'apis/base-client'
 import { MongoApiBaseClient, generateStdInfo, ListBaseOptions } from 'apis/mongo-api-client'
 
 const prefix = 'pgc-content'
+
+function getRefreshPathsOptions(needRelease: boolean): RefreshOptions {
+  return { wwwRefresh: needRelease ? ['/pgc', '/sitemap.xml'] : [] }
+}
 
 @injectable()
 export default class PgcContentApis {
@@ -31,7 +36,7 @@ export default class PgcContentApis {
         release: contentDetailWithTime
       })
     }
-    return this.client.post<Content>(prefix, content)
+    return this.client.post<Content>(prefix, content, getRefreshPathsOptions(needRelease))
   }
 
   update(originalContent: Content, contentDetail: Partial<ContentDetail>, needRelease: boolean) {
@@ -50,11 +55,15 @@ export default class PgcContentApis {
         }
       })
     }
-    return this.client.patch<Content>(`${prefix}/${originalContent.id}`, content)
+    return this.client.patch<Content>(
+      `${prefix}/${originalContent.id}`,
+      content,
+      getRefreshPathsOptions(needRelease)
+    )
   }
 
   delete(id: ContentId) {
-    return this.client.delete<void>(`${prefix}/${id}`)
+    return this.client.delete<void>(`${prefix}/${id}`, getRefreshPathsOptions(true))
   }
 
   get(id: ContentId) {

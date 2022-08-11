@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
@@ -14,6 +14,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Scene from 'components/pages/edu-online/Scene'
 import EduProduct from 'components/pages/edu-online/Product'
@@ -24,6 +25,8 @@ import imgCase2 from './_images/case-2.png'
 import imgCase3 from './_images/case-3.png'
 
 const title = `${nameMap[Solution.Edu]}解决方案`
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
   const { startIntentConsulting } = useFeedbackModal()
@@ -72,15 +75,23 @@ function PageContent() {
   )
 }
 
-export default function EduOnlinePage() {
+export default function EduOnlinePage({ globalBanners }: Props) {
   return (
     <Layout
       title="在线教育_直播课_在线课堂_录播课_点播课_大班课_小班课_双师课堂_在线监考_互动教学"
       keywords="在线教育, 直播课, 点播, 在线课堂, 大班课, 小班课, 1v1 教学, 双师课堂, 在线监考, 互动教学"
       description="七牛云在线教育解决方案基于七牛云多年的音视频、AI 及大数据技术积累，提供点播教学、一对一教学、双师课堂、互动直播课等丰富多样的解决方案，帮助客户轻松搭建自己的在线教育平台，提升线上教学体验。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
 }
 
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
+}

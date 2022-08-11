@@ -56,8 +56,16 @@ Next.js 相关文档：https://nextjs.org/docs/basic-features/environment-variab
 
 ### 发布
 
+往 bucket 里推静态资源
+
 ```shell
 node deploy.js $AK $SK $BUCKET
+```
+
+本地可以简单模拟发布后的效果，需要先构建，然后执行
+
+```shell
+yarn dev:built
 ```
 
 ### 开发注意

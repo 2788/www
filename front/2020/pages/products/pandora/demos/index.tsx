@@ -3,6 +3,7 @@
  */
 
 import React, { useEffect } from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Layout'
 import Banner, { Title } from 'components/Banner'
 import Tabs, { TabPane } from 'components/UI/Tabs'
@@ -15,6 +16,7 @@ import {
   BIDemos
 } from 'constants/products/pandora-demos'
 import { useHash } from 'hooks/url'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import bannerImg from './_images/banner.png'
 import ArrowIcon from './_images/arrow.svg'
 
@@ -22,7 +24,9 @@ import style from './style.less'
 
 const BreadcrumbItem = Breadcrumb.Item
 
-export default function ExpressDemoPage() {
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+export default function ExpressDemoPage({ globalBanners }: Props) {
   const [active, setActive] = useHash()
   useEffect(() => {
     window.scroll({ top: 0 })
@@ -33,6 +37,7 @@ export default function ExpressDemoPage() {
       title="Pandora Demo 体验"
       keywords="Pandora, demo, demo 体验, 数据分析平台"
       description="Pandora 机器数据分析平台 Demo 在线体验"
+      globalBanners={globalBanners}
     >
       <div className={style.demoPage}>
         <Banner
@@ -81,4 +86,12 @@ export default function ExpressDemoPage() {
       </div>
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

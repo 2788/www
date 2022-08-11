@@ -6,7 +6,7 @@
  */
 
 import React, { useCallback, useMemo, useState } from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 import { chunk } from 'lodash'
 
 import Layout from 'components/Product/Layout'
@@ -16,6 +16,7 @@ import { Row } from 'components/UI/Card'
 import Pagination from 'components/UI/Pagination'
 import { NewsType, nameMap, newsTypeArr } from 'constants/products/news'
 import { getPages, IPage, getNews, INews } from 'apis/admin/product'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import { useApiWithParams } from 'hooks/api'
 import { useMobile } from 'hooks/ua'
 import { withLoading } from 'utils/loading'
@@ -24,13 +25,12 @@ import ResultEmpty from 'components/UI/ResultEmpty'
 import banner from './images/banner.png'
 import styles from './style.less'
 
-export interface IProps {
-  pages: IPage[]
-}
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
 const pcPageSize = 10
 const mobilePageSize = 5
 
-function Page({ pages }: IProps) {
+function Page({ pages }: Omit<Props, 'globalBanners'>) {
   const [currentPage, setCurrentPage] = useState(1)
   const [product, setProduct] = useState<string | undefined>(undefined)
   const [newsType, setNewsType] = useState<NewsType | undefined>(undefined)
@@ -206,23 +206,26 @@ function fillSpace(num: number): string {
   return num >= 10 ? num.toString() : '0' + num
 }
 
-export default function ProductNews(props: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function ProductNews({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="产品动态"
       keywords="产品, 动态, 产品动态, 最新, 科技趋势, 新产品, 实时动态"
       description="了解行业最新技术，七牛云产品最新权威动态"
+      globalBanners={globalBanners}
     >
-      <Page {...props} />
+      <Page {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await getPages()
+  const globalBanners = await getGlobalBanners()
   return {
     props: {
-      pages: res
+      pages: res,
+      globalBanners
     }
   }
 }

@@ -9,15 +9,19 @@ import { useRouter } from 'next/router'
 
 import { useMobile } from 'hooks/ua'
 import Link from 'components/Link'
-import { globalBannersRes } from 'hack/initial-data/data.json'
-import { handleResponseData, getFilteredList } from 'apis/admin'
+import { GlobalBanner } from 'apis/admin/global-banners'
+import { getFilteredList } from 'apis/admin'
 
 import style from './style.less'
 
-export default function GlobalBanner() {
+export interface Props {
+  banners: GlobalBanner[]
+}
+
+export default function GlobalBannerComp({ banners }: Props) {
   const isMobile = useMobile()
   const { pathname } = useRouter()
-  const globalBanners = getFilteredList(handleResponseData(globalBannersRes))
+  const globalBanners = getFilteredList(banners)
   if (globalBanners == null || globalBanners.length === 0) {
     return null
   }

@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import { Modal } from 'react-icecream'
 
 import Layout from 'components/Product/Layout'
@@ -6,14 +7,15 @@ import PageBanner from 'components/Product/PageBanner'
 import { useUserInfo } from 'components/UserInfo'
 import { useUrl } from 'hooks/url'
 import { urlForSignin } from 'utils/route'
-
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import Benefit from 'components/pages/openapi-partner/Benefit'
 import Process from 'components/pages/openapi-partner/Process'
 import Cases from 'components/pages/openapi-partner/Cases'
-
 import { useBtns } from 'hooks/product-btn'
 
 import banner from './banner.png'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
   const currentUrl = useUrl()
@@ -51,14 +53,23 @@ function PageContent() {
   )
 }
 
-export default function Partner() {
+export default function Partner({ globalBanners }: Props) {
   return (
     <Layout
       title="合作申请_合作伙伴_服务商"
       keywords="合作申请, 合作伙伴, 服务商"
       description="加入我们成为合作伙伴，让我们一起为用户提供更加优质和便捷的服务"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

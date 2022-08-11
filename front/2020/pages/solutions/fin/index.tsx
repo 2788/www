@@ -4,7 +4,7 @@
 
 /* eslint-disable max-len */
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import { Product } from 'constants/products'
 import { Solution, urlMap as solutionUrlMap, smallIconMap as solutionIconMap, descMap as solutionDescMap } from 'constants/solutions'
 import Swiper from 'components/UI/Swiper'
@@ -19,6 +19,7 @@ import Cases, { Case } from 'components/Solution/Cases'
 import Related, { Item as RelatedItem, ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import imgBanner from './_images/banner.png'
 import IconValue1 from './_images/value-1.svg'
@@ -35,6 +36,8 @@ import imgArchitecture from './_images/architecture.png'
 import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.jpg'
 import style from './style.less'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const IconKodoe = solutionIconMap[Solution.Kodoe]!
 
@@ -141,12 +144,13 @@ function PageContent() {
   )
 }
 
-export default function FinPage() {
+export default function FinPage({ globalBanners }: Props) {
   return (
     <Layout
       title={title}
       keywords="金融, 银行, 合规, 行业解决方案"
       description="凭借七牛在异构数据湖和数据分析与处理等领域的核心技术和独到理解，帮助银行客户在满足监管合规要求的同时有序和稳健地开展各项金融业务。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
@@ -165,4 +169,12 @@ function ScreenshotItem({ imgUrl, name }: ScreenshotItemProps) {
       <p className={style.name}>{name}</p>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

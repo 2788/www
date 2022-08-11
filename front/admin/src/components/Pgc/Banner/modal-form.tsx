@@ -160,7 +160,7 @@ export function useAddModal(banners: Banner[], onRefresh: () => void) {
   }
 
   async function submit(bannerInfo: BannerInfo) {
-    await toasterStore.promise(pgcContentBannerApis.client.post(bannerInfo))
+    await toasterStore.promise(pgcContentBannerApis.post(bannerInfo))
     setVisible(false)
     onRefresh()
   }
@@ -194,7 +194,7 @@ export function useEditModal(banners: Banner[], onRefresh: () => void) {
       ...banners[current],
       ...bannerInfo
     }
-    await toasterStore.promise(pgcContentBannerApis.client.put(banner))
+    await toasterStore.promise(pgcContentBannerApis.put(banner))
     setVisible(false)
     onRefresh()
   }

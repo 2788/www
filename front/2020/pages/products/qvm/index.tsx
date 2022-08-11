@@ -5,8 +5,10 @@
 /* eslint-disable max-len */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
@@ -14,6 +16,7 @@ import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 import Navigator from 'components/Product/Navigator'
@@ -36,10 +39,10 @@ import IconFeatureScalable from './_icons/feature/scalable.svg'
 import IconFeatureStable from './_icons/feature/stable.svg'
 import style from './style.less'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
-function PageContent(props: Props) {
+function PageContent(props: Omit<Props, 'globalBanners'>) {
 
   const isMobile = useMobile()
 
@@ -65,6 +68,10 @@ function PageContent(props: Props) {
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Qvm]
+  })
+
   return (
     <>
       <PageBanner
@@ -75,7 +82,7 @@ function PageContent(props: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...props.notices} />
+      <ProductNotice {...(currentNotices || props.notices)} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -155,26 +162,28 @@ function PageContent(props: Props) {
   )
 }
 
-export default function QvmPage(props: Props) {
+export default function QvmPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="云主机服务 QVM_云服务器_云主机_弹性计算_云主机合伙人_0 元主机"
       keywords="七牛云, 云服务器, 云主机, 云数据库, 高防"
       description="七牛云主机服务是围绕云主机为核心，推出的含云硬盘、数据库、高防、负载均衡等解决方案为一体的云计算综合服务。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       starter: await getStarterSpecs(),
       enterprise: await getEnterpriseSpecs(),
       metaInfo: await getMetaInfo(),
       notices: await getProductPageNotices(Product.Qvm),
-      newsRes: await getNews({ product: Product.Qvm })
+      newsRes: await getNews({ product: Product.Qvm }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

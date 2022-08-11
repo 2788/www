@@ -17,6 +17,9 @@ import Activity from 'components/Www/Activity'
 import GlobalBanners from 'components/Www/GlobalBanners'
 import PgcManage from 'components/Pgc/Manage'
 import PgcBanner from 'components/Pgc/Banner'
+import Refresh from 'components/Deploy/Refresh'
+import Paths from 'components/Deploy/Paths'
+import Status from 'components/Deploy/Status'
 import {
   accountRoute, wwwTitle, wwwRoute, productTitle, productRoute,
   consultTitle, consultRoute, activityTitle, activityRoute, globalBannersTitle, globalBannersRoute,
@@ -37,6 +40,10 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
       <Group title={pgcTitle} path={pgcRoute}>
         <LinkItem relative to={pgcManageRoute}>{pgcManageTitle}</LinkItem>
         <LinkItem relative to={pgcBannerRoute}>{pgcBannerTitle}</LinkItem>
+      </Group>
+      <Group title="发布控制台" path="/deploy">
+        <LinkItem relative to="/refresh">缓存刷新</LinkItem>
+        <LinkItem relative to="/paths">地址大全</LinkItem>
       </Group>
       <UserSidebarGroup prefix={accountRoute} />
     </BaseSidebar>
@@ -109,6 +116,24 @@ export default function App() {
                   </Route>
                   <Route relative title={pgcBannerTitle} path={pgcBannerRoute}>
                     <PgcBanner />
+                  </Route>
+                </Switch>
+              </Permission>
+            </Route>
+            <Route relative title="发布控制台" path="/deploy">
+              <Permission code={PermissionCode.DEPLOY}>
+                <Switch>
+                  <Route relative exact path="/">
+                    <Redirect relative to="refresh" />
+                  </Route>
+                  <Route relative title="缓存刷新" path="/refresh">
+                    <Refresh />
+                  </Route>
+                  <Route relative title="地址大全" path="/paths">
+                    <Paths />
+                  </Route>
+                  <Route relative title="服务监测" path="/status">
+                    <Status />
                   </Route>
                 </Switch>
               </Permission>

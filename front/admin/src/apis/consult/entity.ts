@@ -4,8 +4,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 import PropertyApis, { Property } from './property'
 
@@ -31,6 +31,7 @@ export interface EntityWithProperties extends Entity {
 }
 
 const resourceName = 'www-consult-entity'
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: [] }
 
 @injectable()
 export default class EntityApis {
@@ -46,18 +47,18 @@ export default class EntityApis {
       ...options,
       createTime: now,
       editTime: now
-    })
+    }, refreshPathsOptions)
   }
 
   update(id: string, options: Partial<EntityData>) {
     return this.client.patch<void>(`${apiMongo}/${resourceName}/${id}`, {
       ...options,
       editTime: moment().unix()
-    })
+    }, refreshPathsOptions)
   }
 
   delete(id: string) {
-    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`)
+    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`, refreshPathsOptions)
   }
 
   async list(): Promise<Entity[]> {
@@ -84,6 +85,6 @@ export default class EntityApis {
     await Promise.all(properties.map(
       property => this.propertyApis.delete(property._id)
     ))
-    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`)
+    return this.client.delete<void>(`${apiMongo}/${resourceName}/${id}`, refreshPathsOptions)
   }
 }

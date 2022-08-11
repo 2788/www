@@ -3,12 +3,13 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import RtcScene from 'components/pages/rtc/Scene'
 import RtcDemo from 'components/pages/rtc/Demo'
 import AcceleratedNetwork from 'components/pages/rtc/AcceleratedNetwork'
@@ -23,6 +24,7 @@ import { useModal as useFeedbackModal } from 'components/Feedback'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -42,9 +44,9 @@ import style from './index.less'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const { startConsulting } = useFeedbackModal()
 
@@ -56,6 +58,10 @@ function PageContent({ notices, newsRes }: Props) {
     { href: 'https://demo-rtc.qnsdk.com/', children: '在线体验' }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Rtn]
+  })
+
   return (
     <>
       <PageBanner
@@ -65,7 +71,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -167,23 +173,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function RtcPage(props: Props) {
+export default function RtcPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="实时音视频_音视频通信 RTC_视频会议_音频通话_互动直播_WebRTC 服务"
       keywords="互动直播, 实时语音, 实时语音 SDK, 语音通话 SDK, 语音聊天 SDK, 互动直播, 实时通信, webrtc, rtc"
       description="七牛实时音视频云是基于七牛在直播产品上的积累，结合实时音视频 SDK 和自研实时互动流媒体网络及强大云端能力，为客户提供跨平台、高品质的一站式解决方案，零基础搭建音视频平台，快速支持一对一视频通话、多人会议、互动直播、语音聊天室等多种业务场景。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Rtn),
-      newsRes: await getNews({ product: Product.Rtn })
+      newsRes: await getNews({ product: Product.Rtn }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

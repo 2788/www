@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 
 import { ContentType, contentTypes } from 'constants/pgc/content'
 import { getListUrl } from 'components/pgc/content/url'
@@ -20,14 +20,14 @@ export default function List({ type }: Props) {
   )
 }
 
-export async function getStaticProps(ctx: GetStaticPropsContext<{ type: string }>) {
+export async function getServerSideProps(ctx: GetServerSidePropsContext<{ type: string }>) {
   const params = ctx.params!
   const type = params.type as ContentType
   const props: Props = { type }
   return { props }
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const paths = contentTypes.map(type => ({ params: { type } }))
   return {
     paths,

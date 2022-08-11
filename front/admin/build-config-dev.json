@@ -4,6 +4,7 @@
     "/api": "http://admin-backend-www-env-staging.qa.qiniu.io"
   },
   "envVariables": {
-    "process.env.WWW_HOST": "http://www-2020.dev.qiniu.io"
+    "process.env.WWW_HOST": "http://www-2020.dev.qiniu.io",
+    "process.env.WWW_SOURCE_HOST": "http://www-source.dev.qiniu.io"
   }
 }

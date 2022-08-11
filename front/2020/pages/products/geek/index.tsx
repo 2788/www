@@ -5,13 +5,16 @@
 
 import React from 'react'
 import qs from 'query-string'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import { urlForSignin } from 'utils/route'
 import { host } from 'constants/env'
 import { Product, urlMap } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { useUserInfo } from 'components/UserInfo'
 import Layout from 'components/Product/Layout'
 import Navigator from 'components/Product/Navigator'
@@ -21,6 +24,7 @@ import ProductNews from 'components/Product/common/ProductNews'
 import FeatureList from 'components/pages/geek/Feature'
 import SceneList from 'components/pages/geek/Scene'
 import Comparison from 'components/pages/geek/Comparison'
+
 import BannerIcon from './banner.png'
 
 const pageInfo = {
@@ -64,9 +68,9 @@ function getUrls() {
   }
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const user = useUserInfo()
   const urls = getUrls()
 
@@ -79,6 +83,10 @@ function PageContent({ notices, newsRes }: Props) {
 
   const bannerBtns = useBtns(firstBtn)
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Geek]
+  })
+
   return (
     <>
       <PageBanner
@@ -88,7 +96,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={bannerBtns.banner}
         icon={BannerIcon}
       />
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
       <FeatureList />
       <SceneList />
@@ -98,23 +106,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function GeekPage(props: Props) {
+export default function GeekPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title={pageInfo.layoutTitle}
       keywords={pageInfo.keywords}
       description={pageInfo.description}
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Geek),
-      newsRes: await getNews({ product: Product.Geek })
+      newsRes: await getNews({ product: Product.Geek }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

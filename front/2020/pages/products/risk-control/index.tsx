@@ -3,17 +3,20 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { Product } from 'constants/products'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import { urlForPrice } from 'utils/route'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
@@ -24,14 +27,18 @@ import RiskControlAdvantages from 'components/pages/risk-control/Advantages'
 
 import imgBanner from './_images/banner.png'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const priceUrl = urlForPrice(Product.RiskControl)
   const btns = useBtns(
     { href: 'https://jinshuju.net/f/cwtofb', children: '立即申请' },
     { children: '查看价格', href: priceUrl }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.RiskControl]
+  })
 
   return (
     <>
@@ -43,7 +50,7 @@ function PageContent({ notices, newsRes }: Props) {
         icon={imgBanner}
       />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator>
         {btns.nav}
@@ -68,23 +75,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function RiskControlPage(props: Props) {
+export default function RiskControlPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="智能风控_安全_风险业务管理_欺诈识别"
       keywords="智能风控，安全，风险业务管理，欺诈识别"
       description="智能风控产品利用 AI 人工智能算法精准评估金融、租赁、营销等业务风险，帮助企业建立事前防范、事中监控及事后分析的全流程风控体系，识别和防范注册、交易、贷款等关键环节中的欺诈问题，减少企业损失。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.RiskControl),
-      newsRes: await getNews({ product: Product.RiskControl })
+      newsRes: await getNews({ product: Product.RiskControl }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

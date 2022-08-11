@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
@@ -12,11 +12,13 @@ import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import Packages from 'components/pages/ssl/Packages'
 import SslScene from 'components/pages/ssl/Scene'
 import Recommend from 'components/pages/ssl/Recommend'
@@ -51,14 +53,18 @@ import imgBanner from './_images/banner.png'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const priceUrl = urlForPrice(Product.Ssl)
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/ssl', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '价格' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Ssl]
+  })
 
   return (
     <>
@@ -69,7 +75,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>
         {btns.nav}
@@ -193,23 +199,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function SslPage(props: Props) {
+export default function SslPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="SSL 证书_证书服务_SSL 数字证书_HTTPS 加密_服务器证书_CA 认证"
       keywords="ssl, ssl 证书, ssl 证书申请, ssl 企业证书, ssl 数字证书, 免费 ssl 证书, 企业 ssl 证书, ssl 证书购买, ssl 证书服务, ssl 证书价格, ev ssl 证书, dv ssl 证书, ov ssl 证书, https 证书"
       description="七牛云 SSL 证书提供证书申请、管理等一站式服务，与顶级的数字证书授权（CA）机构和代理商合作，为您的网站、应用、服务保驾护航。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Ssl),
-      newsRes: await getNews({ product: Product.Ssl })
+      newsRes: await getNews({ product: Product.Ssl }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

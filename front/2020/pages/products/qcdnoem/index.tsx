@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -16,6 +16,7 @@ import Feature, {
   Item as FeatureItem,
   Desc as FeatureDesc
 } from 'components/Product/Feature'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import AccessStep1 from './_images/accessstep1.svg'
 import AccessStep2 from './_images/accessstep2.svg'
@@ -27,6 +28,8 @@ import SiteCustomize from './_images/sitecustomize.svg'
 import FullSceneCoverage from './_images/fullscenecoverage.svg'
 import HighQualityLine from './_images/highqualityline.svg'
 import TechSupport from './_images/techsupport.svg'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -98,14 +101,23 @@ function PageContent() {
   )
 }
 
-export default function CdnOemPage() {
+export default function CdnOemPage({ globalBanners }: Props) {
   return (
     <Layout
       title="CDN OEM"
       keywords="cdn, oem, cdnoem"
       description="成为七牛 CDN OEM 合作伙伴，零门槛获得七牛 CDN 产品技术能力，在创收的同时，为您的客户提供专业的 CDN 服务能力，我们期待与您合作共赢。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

@@ -9,9 +9,11 @@
 // TODO: https://github.com/qbox/www/pull/2563#discussion_r875424340
 
 import { injectable } from 'qn-fe-core/di'
-import Client, { InternalOptions } from 'qn-fe-core/client'
-import { BaseClient } from 'admin-base/common/apis/base'
+import Client from 'qn-fe-core/client'
 
+import BaseClient, {
+  BaseClientOptions, BaseInternalOptions, BaseOptions, Output, WwwRefreshPath
+} from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 import { ReplaceValue } from 'utils/ts'
 import { generateUuidId } from 'utils/uuid'
@@ -81,12 +83,12 @@ export function normalizeListResult<T>(result: ListOriginalResult<T>): ListBaseR
 }
 
 @injectable()
-export class MongoApiBaseClient extends Client {
+export class MongoApiBaseClient extends Client<unknown, unknown, Output, BaseClientOptions> {
   constructor(private baseClient: BaseClient) {
     super()
   }
 
-  protected async _send(url: string, options?: InternalOptions) {
+  protected async _send(url: string, options: BaseInternalOptions) {
     return this.baseClient.send(`${apiMongo}/${url}`, options)
   }
 
@@ -116,6 +118,22 @@ export class MongoApiBaseClient extends Client {
     const list = first.data.concat(...resultList.map(result => result.data)) // flat
     return list
   }
+
+  post<T>(url: string, payload: unknown, options: BaseOptions) {
+    return super.post<T>(url, payload, options)
+  }
+
+  put<T>(url: string, payload: unknown, options: BaseOptions) {
+    return super.put<T>(url, payload, options)
+  }
+
+  patch<T>(url: string, payload: unknown, options: BaseOptions) {
+    return super.patch<T>(url, payload, options)
+  }
+
+  delete<T>(url: string, options: BaseOptions) {
+    return super.delete<T>(url, options)
+  }
 }
 
 /** 一类标准接口，绑定 `resource` 并且自动维护固定的 `StdInfo` 结构 */
@@ -127,38 +145,38 @@ export class MongoApiStdClient<T> {
     return this.client.get<T & StdInfo>(`${this.resource}/${id}`)
   }
 
-  delete(id: string) {
-    return this.client.delete<void>(`${this.resource}/${id}`)
+  delete(id: string, wwwRefresh: WwwRefreshPath[]) {
+    return this.client.delete<void>(`${this.resource}/${id}`, { wwwRefresh })
   }
 
-  post(record: T) {
+  post(record: T, wwwRefresh: WwwRefreshPath[]) {
     const baseInfo = generateStdInfo()
     const data: T & StdInfo = {
       ...record,
       ...baseInfo
     }
-    return this.client.post<T & StdInfo>(this.resource, data)
+    return this.client.post<T & StdInfo>(this.resource, data, { wwwRefresh })
   }
 
   // TODO: 再搞个不需要提供 StdInfo 的更方便的 put 方法
-  put(record: T & Omit<StdInfo, 'updatedAt'>) {
+  put(record: T & Omit<StdInfo, 'updatedAt'>, wwwRefresh: WwwRefreshPath[]) {
     const baseInfo = generateStdInfo()
     const data: T & StdInfo = {
       ...record,
       updatedAt: baseInfo.updatedAt
     }
     delete (data as any)._id // FIXME: 需要干这件事也有点奇怪… 查一下其他接口需不需要这个
-    return this.client.put<T & StdInfo>(`${this.resource}/${record.id}`, data)
+    return this.client.put<T & StdInfo>(`${this.resource}/${record.id}`, data, { wwwRefresh })
   }
 
-  patch(id: string, record: Partial<T>) {
+  patch(id: string, record: Partial<T>, wwwRefresh: WwwRefreshPath[]) {
     const baseInfo = generateStdInfo()
     const data: Partial<T> & Omit<StdInfo, 'createdAt'> = {
       ...record,
       id,
       updatedAt: baseInfo.updatedAt
     }
-    return this.client.patch<T & StdInfo>(`${this.resource}/${id}`, data)
+    return this.client.patch<T & StdInfo>(`${this.resource}/${id}`, data, { wwwRefresh })
   }
 
   getCount(query?: Query) {

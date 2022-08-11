@@ -2,6 +2,7 @@
  * 七牛云产品
  */
 import React from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Layout'
 import Link from 'components/Link'
 import MpBanner from 'components/mp/Banner'
@@ -9,14 +10,17 @@ import Tabs, { TabPane } from 'components/UI/Tabs'
 import { Category, categoryNameMapForMp, categories, getCategoryProducts, normalizeProduct, PartialProductData } from 'constants/products'
 import ProductIcon from 'components/Product/Icon'
 import { MpPage } from 'constants/mp'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import banner from './banner.png'
 import bannerContact from './banner_contact.png'
 import style from './index.less'
 
-export default function Main() {
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+export default function Main({ globalBanners }: Props) {
   return (
-    <Layout title="七牛云产品" keywords="" description="">
+    <Layout title="七牛云产品" keywords="" description="" globalBanners={globalBanners}>
       <div style={{ padding: '16px', background: '#FFFFFF' }}>
         <MpBanner banner={banner} />
         <Tabs value={Category.Service} size="middle" className={style.tabs} contentClassName={style.tabsContent} shadow={false}>
@@ -69,4 +73,12 @@ function Card({ product }: CardProps) {
       }
     </>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

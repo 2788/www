@@ -4,10 +4,11 @@
  */
 
 import React from 'react'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 
 import { ContentType, contentTypeTextMap, contentCategoryTextMap } from 'constants/pgc/content'
 import { getContent, listAllReleasedContent } from 'apis/admin/pgc/content'
+import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
 import { BaseProps } from 'components/pgc/content/Layout'
@@ -18,9 +19,12 @@ import File from 'components/pgc/content/File'
 export interface Props extends Partial<BaseProps> {
   type?: ContentType
   articleHtmlAst: AstRootNode | null
+  globalBanners?: GlobalBanner[]
 }
 
-export default function PgcDetail({ type, contentDetail, articleHtmlAst, createdAt, preview }: Props) {
+export default function PgcDetail(
+  { type, contentDetail, articleHtmlAst, createdAt, preview, globalBanners }: Props
+) {
   if (!type || !contentDetail) {
     return (
       <Redirect target="/404" />
@@ -47,34 +51,43 @@ export default function PgcDetail({ type, contentDetail, articleHtmlAst, created
     [ContentType.File]: (<File contentDetail={contentDetail} createdAt={createdAt} />)
   }[type]
 
+  const layoutBaseProps = {
+    title,
+    keywords,
+    description: contentDetail.description ?? keywords
+  }
+
   return (
-    <Layout
-      title={title}
-      keywords={keywords}
-      description={contentDetail.description ?? keywords}
-      forceSimple={!!preview}
-    >
-      {pageView}
-    </Layout>
+    preview ? (
+      <Layout {...layoutBaseProps} forceSimple>
+        {pageView}
+      </Layout>
+    ) : (
+      <Layout {...layoutBaseProps} globalBanners={globalBanners ?? []}>
+        {pageView}
+      </Layout>
+    )
   )
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext<{ id: string }>) {
+export async function getServerSideProps({ params }: GetServerSidePropsContext<{ id: string }>) {
   const id = params!.id
   const content = await getContent(id)
   const articleHtmlAst = content.type === ContentType.Article
     ? await mdTextToHTMLAst(content.release!.content)
     : null
+  const globalBanners = await getGlobalBanners()
   const props: Props = {
     type: content.type,
     contentDetail: content.release,
     articleHtmlAst,
-    createdAt: content.release?.createdAt
+    createdAt: content.release?.createdAt,
+    globalBanners
   }
   return { props }
 }
 
-export async function getStaticPaths() {
+export async function getServerSidePaths() {
   const contents = await listAllReleasedContent()
   const paths = contents.map(({ id }) => ({ params: { id } }))
   return {

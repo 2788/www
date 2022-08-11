@@ -3,11 +3,13 @@
  */
 
 import React, { PropsWithChildren, ReactNode } from 'react'
+import { InferGetServerSidePropsType } from 'next'
 
 import Link from 'components/Link'
 import Layout from 'components/Layout'
 import Banner, { Title, Desc } from 'components/Banner'
 import FriendLinkSection, { IFriendLinkSectionProps } from 'components/pages/friendlink/FriendLinkSection'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import style from './style.less'
 
@@ -178,10 +180,25 @@ function PageContent() {
   )
 }
 
-export default function FriendLinkPage() {
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
+export default function FriendLinkPage({ globalBanners }: Props) {
   return (
-    <Layout title="平等互利 共创双赢" keywords="友情链接, 友链" description="欢迎与七牛云交换友情链接">
+    <Layout
+      title="平等互利 共创双赢"
+      keywords="友情链接, 友链"
+      description="欢迎与七牛云交换友情链接"
+      globalBanners={globalBanners}
+    >
       <PageContent />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

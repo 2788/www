@@ -75,12 +75,13 @@ function useVisible(target: Element | null) {
 }
 
 /** 指定广告投放对应的元素，当其可见时上报 */
-export function useTrackShow(target: Element | null, advertInfo: AdvertInfo) {
+export function useTrackShow(target: Element | null, advertInfo: AdvertInfo | undefined) {
   // 单个广告位一次 PV 中最多上报一次展示事件，这里记录下上报过的广告位
   const [reported] = useState(() => new Set<string>())
   const visible = useVisible(target)
   useEffect(() => {
     if (!visible) return
+    if (advertInfo == null) return
     if (reported.has(advertInfo.code)) return
     reported.add(advertInfo.code)
     trackShow(advertInfo)

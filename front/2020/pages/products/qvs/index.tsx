@@ -8,12 +8,13 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import { useMobile } from 'hooks/ua'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -22,6 +23,7 @@ import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -32,9 +34,9 @@ import Process from 'components/pages/qvs/Process'
 
 import imgBanner from './images/banner.png'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const portalUrl = 'https://portal.qiniu.com/qvs'
   const priceUrl = urlForPrice(Product.Qvs)
 
@@ -42,6 +44,10 @@ function PageContent({ notices, newsRes }: Props) {
     { children: '立即使用', href: portalUrl, pcOnly: true },
     { children: '文档 & API', href: 'https://developer.qiniu.com/qvs/manual/6753/qvs-product-overview' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Qvs]
+  })
 
   const isMobile = useMobile()
 
@@ -53,7 +59,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -85,23 +91,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function Main(props: Props) {
+export default function Main({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="视频监控 QVS_音视频监控存储_智能多媒体"
       keywords="视频监控, QVS, qvs"
       description="视频监控（QVS）是基于七牛云实时流网络和完善的视频处理技术，面向视频监控设备提供的音视频流接入、存储、分发、录制回放的服务。视频流接入云端后，可与七牛云智能多媒体服务等产品集成，快速构建智能视频监控服务。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Qvs),
-      newsRes: await getNews({ product: Product.Qvs })
+      newsRes: await getNews({ product: Product.Qvs }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

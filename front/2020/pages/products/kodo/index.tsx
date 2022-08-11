@@ -3,15 +3,18 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import Layout from 'components/Product/Layout'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import PageBanner from 'components/Product/PageBanner'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -27,9 +30,9 @@ import { MpPage } from 'constants/mp'
 import imgBanner from './images/banner.png'
 // import style from './index.less'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const priceUrl = urlForPrice(Product.Kodo)
 
@@ -38,6 +41,10 @@ function PageContent({ notices, newsRes }: Props) {
     { children: '立即使用', onClick: () => wx.miniProgram.navigateTo({ url: MpPage.PortalKodo }), mpOnly: true },
     { href: priceUrl, children: '产品价格' }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Kodo]
+  })
 
   return (
     <>
@@ -49,7 +56,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={imgBanner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
@@ -92,23 +99,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function KodoPage(props: Props) {
+export default function KodoPage({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="对象存储 Kodo_云存储_海量安全高可靠云存储_oss"
       keywords="云存储, 对象存储, 七牛云存储, 分布式存储, 图片存储, 视频存储, 存储解决方案, 视频托管, 图片托管, 低频存储, 镜像存储, 私有部署, 静态资源托管, 备份归档, 数据迁移, 数据灾备, 弹性扩容, 图床, cos, obs"
       description="七牛云对象存储为七牛完全自主研发并拥有核心技术，经过大规模客户验证已占据行业绝对领先地位，可广泛应用于海量数据管理的场景。强安全、高可靠、易扩展、低成本，比传统存储节省 62% 的存储成本。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Kodo),
-      newsRes: await getNews({ product: Product.Kodo })
+      newsRes: await getNews({ product: Product.Kodo }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

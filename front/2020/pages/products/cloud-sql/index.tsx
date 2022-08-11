@@ -3,14 +3,16 @@
  * @file 云数据库
  */
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 
 import { urlForPrice } from 'utils/route'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 
 import { Product } from 'constants/products'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
 
@@ -26,9 +28,9 @@ import QvmCommonCases from 'components/pages/qvm/Cases'
 
 import banner from './banner.png'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const priceCalculatorUrl = urlForPrice(Product.Qvm, true)
   const priceUrl = urlForPrice(Product.Qvm)
@@ -39,6 +41,10 @@ function PageContent({ notices, newsRes }: Props) {
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.CloudSql]
+  })
+
   return (
     <>
       <PageBanner
@@ -48,7 +54,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={banner} />
 
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
 
       <Navigator>{btns.nav}</Navigator>
 
@@ -80,23 +86,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function CloudSql(props: Props) {
+export default function CloudSql({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="云数据库"
       keywords="七牛云, 数据库, 云数据库, 高可用, 高性能, 弹性伸缩, 容灾, 备份, 恢复, 安防, 监控, 迁移, PolarDB, RDS MySQL, RDS SQL, Redis, MongoDB"
       description="基于七牛云积累多年的数据库研发、搭建和维护经验，为您打造高可用、高性能、即开即用、弹性伸缩的云数据库服务，拥有容灾、备份、恢复、安防、监控、迁移等全方位解决方案。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.CloudSql),
-      newsRes: await getNews({ product: Product.CloudSql })
+      newsRes: await getNews({ product: Product.CloudSql }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

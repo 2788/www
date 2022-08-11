@@ -6,13 +6,15 @@
 import { injectable } from 'qn-fe-core/di'
 
 import { BannerInfo } from 'constants/pgc/content-banner'
+import { WwwRefreshPath } from 'apis/base-client'
 import { MongoApiBaseClient, MongoApiStdClient } from 'apis/mongo-api-client'
 
 const resource = 'pgc-content-banner'
+const refreshPaths: WwwRefreshPath[] = ['/pgc']
 
 @injectable()
 export default class PgcContentBannerApis {
-  client: MongoApiStdClient<BannerInfo>
+  private client: MongoApiStdClient<BannerInfo>
 
   constructor(client: MongoApiBaseClient) {
     this.client = new MongoApiStdClient(resource, client)
@@ -21,5 +23,17 @@ export default class PgcContentBannerApis {
   async listAll() {
     const list = await this.client.listAll({ sort: '+order,-effectTime,-updatedAt' })
     return list // TODO: 二次排序优化 & 根据状态筛选
+  }
+
+  delete(id: string) {
+    return this.client.delete(id, refreshPaths)
+  }
+
+  post(record: BannerInfo) {
+    return this.client.post(record, refreshPaths)
+  }
+
+  put(record: Parameters<MongoApiStdClient<BannerInfo>['put']>[0]) {
+    return this.client.put(record, refreshPaths)
   }
 }

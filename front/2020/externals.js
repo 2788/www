@@ -26,9 +26,9 @@ const externals = [
 
 const dir = resolve('.')
 const outputPath = resolve('.next')
-const finalOutputPath = resolve('out')
+const finalOutputPath = resolve('dist')
 
-// 生成 loader 文件到 out 目录
+// 生成 loader 文件到 dist/public 目录
 function generateLoader() {
   const loaderJs = readFileSync(resolve('externals/loader.js'), { encoding: 'utf8' })
   const manifest = require(join(outputPath, 'manifest.json'))
@@ -39,16 +39,16 @@ function generateLoader() {
     return o
   }, {})
   const loaderJsWithManifest = loaderJs.replace(/\bMANIFEST\b/g, JSON.stringify(simplifiedManifest))
-  const loaderDirPath = join(finalOutputPath, 'externals')
+  const loaderDirPath = join(finalOutputPath, 'public', 'externals')
   if (!existsSync(loaderDirPath)) mkdirSync(loaderDirPath)
-  writeFileSync(join(finalOutputPath, 'externals/loader.js'), loaderJsWithManifest)
+  writeFileSync(join(finalOutputPath, 'public', 'externals/loader.js'), loaderJsWithManifest)
 }
 
-// 导出 externals 内容的构建结果（从 .next/ 到 out/）
+// 导出 externals 内容的构建结果（从 .next/ 到 dist/）
 function exportFiles() {
   copySync(
     join(outputPath, 'static'),
-    join(finalOutputPath, '_next', 'static'),
+    join(finalOutputPath, '.next', 'static'),
     { errorOnExist: true }
   )
 }

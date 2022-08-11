@@ -6,8 +6,8 @@
 
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 
 // 动态类型
@@ -45,6 +45,8 @@ export interface IListResponse {
   data: INewsWithId[]
 }
 
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/products', '/product-news'] }
+
 @injectable()
 export default class NewsApis {
 
@@ -52,16 +54,16 @@ export default class NewsApis {
 
   add(options: INews): Promise<void> {
     options = { ...options, ...{ createTime: moment().unix(), editTime: moment().unix() } }
-    return this.client.post(apiMongo + '/www-product-news', options)
+    return this.client.post(apiMongo + '/www-product-news', options, refreshPathsOptions)
   }
 
   update(options: INews, id: string): Promise<void> {
     options = { ...options, editTime: moment().unix() }
-    return this.client.put(apiMongo + '/www-product-news/' + id, options)
+    return this.client.put(apiMongo + '/www-product-news/' + id, options, refreshPathsOptions)
   }
 
   delete(id: string): Promise<void> {
-    return this.client.delete(apiMongo + '/www-product-news/' + id)
+    return this.client.delete(apiMongo + '/www-product-news/' + id, refreshPathsOptions)
   }
 
   list({ limit, offset, products = [], types = [] }: IListOptions): Promise<IListResponse> {

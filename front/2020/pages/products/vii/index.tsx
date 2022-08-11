@@ -4,10 +4,13 @@
  */
 
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import { useModal as useFeedbackModal } from 'components/Feedback'
@@ -30,9 +33,9 @@ const pageInfo = {
     '视频智能分析是一款针对视频等多媒体文件，通过对视频，图片，音频等内容的多维理解，对其实现结构化标签提取，审核，识别等功能的产品，可广泛应用于多媒体内容的管理，搜索和推荐。'
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   const { startConsulting } = useFeedbackModal()
   const priceUrl = urlForPrice(Product.Vii)
 
@@ -41,6 +44,10 @@ function PageContent({ notices, newsRes }: Props) {
     { onClick: startConsulting, children: '立即咨询' },
     { children: '查看价格', href: priceUrl }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.Vii]
+  })
 
   return (
     <>
@@ -51,7 +58,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={bannerBtns.banner}
         icon={bannerImg}
       />
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{bannerBtns.nav}</Navigator>
       <Features />
       <Advantage />
@@ -62,19 +69,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function ViiPage(props: Props) {
+export default function ViiPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout title={pageInfo.layoutTitle} keywords={pageInfo.keywords} description={pageInfo.description}>
-      <PageContent {...props} />
+    <Layout
+      title={pageInfo.layoutTitle}
+      keywords={pageInfo.keywords}
+      description={pageInfo.description}
+      globalBanners={globalBanners}
+    >
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.Vii),
-      newsRes: await getNews({ product: Product.Vii })
+      newsRes: await getNews({ product: Product.Vii }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }

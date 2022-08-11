@@ -12,6 +12,7 @@ import { useMp } from 'hooks/ua'
 import { useSource } from 'hooks/sensors'
 import { OverlayProvider, OverlaySlot } from 'components/Overlay'
 import CpsVisitReporter from 'components/CpsVisitReporter'
+import { GlobalBanner } from 'apis/admin/global-banners'
 
 import ErrorBoundary from './ErrorBoundary'
 import UaProvider from './UaProvider'
@@ -21,9 +22,9 @@ import * as feedback from '../Feedback'
 import ScrollToTop from '../ScrollToTopV2'
 import { Provider as UserInfoProvider } from '../UserInfo'
 import RegisterEntry from '../RegisterEntry'
-import GlobalBanner from './GlobalBanner'
+import GlobalBannerComp from './GlobalBanner'
 
-export type Props = {
+type BaseProps = {
   /** 页面 title */
   title: string
   /** 页面 keywords（SEO 用） */
@@ -31,10 +32,17 @@ export type Props = {
   /** 页面 description（SEO 用） */
   description: string
   children: ReactNode
-  forceSimple?: boolean // 是否强制简单布局，优先级高于 useSimple
 }
 
-export default function Layout({ title, keywords, description, forceSimple, children }: Props) {
+export type Props = BaseProps & ({
+  forceSimple?: false
+  globalBanners: GlobalBanner[]
+} | {
+  forceSimple: true
+  globalBanners?: undefined
+})
+
+export default function Layout({ title, keywords, description, forceSimple, globalBanners, children }: Props) {
   title = !title ? defaultTitle : (title + titleSuffix)
 
   usePv(title)
@@ -59,20 +67,24 @@ export default function Layout({ title, keywords, description, forceSimple, chil
           {keywordsMeta}
           {descriptionMeta}
         </Head>
-        <ContentWrapper forceSimple={forceSimple}>{children}</ContentWrapper>
+        <ContentWrapper forceSimple={forceSimple} globalBanners={globalBanners}>{children}</ContentWrapper>
       </UserInfoProvider>
     </UaProvider>
   )
 }
 
-function ContentWrapper({ forceSimple = false, children }: PropsWithChildren<{ forceSimple?: boolean }>) {
+function ContentWrapper({
+  forceSimple = false,
+  globalBanners,
+  children
+}: PropsWithChildren<Pick<Props, 'forceSimple' | 'globalBanners'>>) {
   const keepSimple = useSimple()
   const notSimple = !forceSimple && !keepSimple
 
   return (
     <OverlayProvider>
       <feedback.ModalProvider>
-        {notSimple && <GlobalBanner />}
+        {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
         {notSimple && <Header />}
         <ErrorBoundary>
           {children}

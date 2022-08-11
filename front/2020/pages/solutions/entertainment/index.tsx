@@ -3,7 +3,7 @@
  */
 
 import React from 'react'
-
+import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
 import { useModal as useFeedbackModal } from 'components/Feedback'
 import Layout from 'components/Product/Layout'
@@ -14,6 +14,7 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Cases, { Case } from 'components/Solution/Cases'
 
 import { useBtns } from 'hooks/product-btn'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import Scene from 'components/pages/entertainment/Scene'
 import Advantage from 'components/pages/entertainment/Advantage'
@@ -23,6 +24,8 @@ import imgCase1 from './_images/case-1.png'
 import imgCase2 from './_images/case-2.png'
 
 const title = `${nameMap[Solution.Entertainment]}解决方案`
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
   const { startIntentConsulting } = useFeedbackModal()
@@ -68,15 +71,23 @@ function PageContent() {
   )
 }
 
-export default function EntertainmentPage() {
+export default function EntertainmentPage({ globalBanners }: Props) {
   return (
     <Layout
       title="泛娱乐_兴趣社区_长视频点播_秀场直播_游戏直播_赛事直播_电台播客"
       keywords="泛娱乐, 兴趣社区, 长视频点播, 秀场直播, 游戏直播, 赛事直播, 电台播客"
       description="七牛云提供泛娱乐一站式解决方案，覆盖内容生产、处理、审核、存储、分发的全业务流程，助力企业快速构建泛娱乐应用。"
+      globalBanners={globalBanners}
     >
       <PageContent />
     </Layout>
   )
 }
 
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
+}

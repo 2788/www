@@ -1,4 +1,5 @@
 import React, { createElement } from 'react'
+import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import { useBtns } from 'hooks/product-btn'
@@ -13,13 +14,15 @@ import Section from 'components/Product/Section'
 import Related, { Item as RelatedItem, ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { Product } from 'constants/products'
 import { Landpage as Land, nameMap, urlMap, descMap, smallIconMap as iconMap } from 'constants/landpage'
-
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import Arch from 'components/pages/landpage/dora/Architecture'
 import CoreProduct from 'components/pages/landpage/dora/Core'
 import TypicalScene from 'components/pages/landpage/dora/Scene'
 import Case from 'components/pages/landpage/dora/Case'
 
 import bannerImg from './_images/banner.png'
+
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const title = '视觉数据分析平台'
 
@@ -80,14 +83,23 @@ function Main() {
   )
 }
 
-export default function Page() {
+export default function Page({ globalBanners }: Props) {
   return (
     <Layout
       title="视觉数据分析平台"
       keywords="七牛云, 视觉数据分析平台, 智能多媒体服务, 内容审核, 人脸核验"
       description="零运维、高可用、高性能的视觉数据分析平台。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习算法，提供多媒体数据的智能内容审核，智能识别，智能标签等高级功能，服务企业和开发者连接数据，重塑价值。"
+      globalBanners={globalBanners}
     >
       <Main />
     </Layout>
   )
+}
+
+export async function getServerSideProps() {
+  return {
+    props: {
+      globalBanners: await getGlobalBanners()
+    }
+  }
 }

@@ -4,38 +4,45 @@
  */
 
 import React from 'react'
-
 import { ContentType } from 'constants/pgc/content'
 import { articlesCount, videosMaxCount } from 'constants/pgc/content-banner'
 import { listBanners } from 'apis/admin/pgc/content-banner'
 import { listReleasedContent } from 'apis/admin/pgc/content'
+import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import Layout from 'components/Layout'
-import PgcIndex, { Props } from 'components/pgc/content/Index'
+import PgcIndex, { Props as BaseProps } from 'components/pgc/content/Index'
 
-export default function Pgc(props: Props) {
+interface Props extends BaseProps {
+  globalBanners: GlobalBanner[]
+}
+
+export default function Pgc({ globalBanners, ...pageProps }: Props) {
   const title = '内容首页'
   return (
     <Layout
       title={title}
       keywords={`七牛云, ${title}`}
       description={`七牛云, ${title}`}
+      globalBanners={globalBanners}
     >
-      <PgcIndex {...props} />
+      <PgcIndex {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
-  const [banners, articleRes, videoRes] = await Promise.all([
+export async function getServerSideProps() {
+  const [banners, articleRes, videoRes, globalBanners] = await Promise.all([
     listBanners(),
     listReleasedContent({ type: ContentType.Article, limit: articlesCount }),
-    listReleasedContent({ type: ContentType.Video, limit: videosMaxCount })
+    listReleasedContent({ type: ContentType.Video, limit: videosMaxCount }),
+    getGlobalBanners()
   ])
   const props: Props = {
     banners,
     articles: articleRes.data,
     hasMoreArticles: articleRes.count > articlesCount,
-    videos: videoRes.data
+    videos: videoRes.data,
+    globalBanners
   }
   return { props }
 }

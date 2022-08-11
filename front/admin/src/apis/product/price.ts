@@ -7,8 +7,8 @@
 import moment from 'moment'
 import { injectable } from 'qn-fe-core/di'
 import { UserInfoStore } from 'admin-base/user/account'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 
 export interface IPrice {
@@ -55,6 +55,8 @@ export interface IAddVersionOptions {
   fileUrl: string
 }
 
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/prices'] }
+
 @injectable()
 export default class PriceApis {
 
@@ -71,16 +73,16 @@ export default class PriceApis {
       createdAt: moment().unix(),
       updatedAt: moment().unix()
     }
-    return this.client.post(apiMongo + '/www-product-price', opts)
+    return this.client.post(apiMongo + '/www-product-price', opts, refreshPathsOptions)
   }
 
   update(options: IUpdatePriceOptions): Promise<void> {
     const opts = { ...options, modifier: this.userInfoStore.name, updatedAt: moment().unix() }
-    return this.client.put(apiMongo + '/www-product-price/' + options.product, opts)
+    return this.client.put(apiMongo + '/www-product-price/' + options.product, opts, refreshPathsOptions)
   }
 
   delete(id: string): Promise<void> {
-    return this.client.delete(apiMongo + '/www-product-price/' + id)
+    return this.client.delete(apiMongo + '/www-product-price/' + id, refreshPathsOptions)
   }
 
   list(): Promise<IListResponse> {
@@ -90,7 +92,7 @@ export default class PriceApis {
 
   addVersion(options: IAddVersionOptions): Promise<void> {
     const opts = { ...options, creator: this.userInfoStore.name, createdAt: moment().unix() }
-    return this.client.post(apiMongo + '/www-product-price-version', opts)
+    return this.client.post(apiMongo + '/www-product-price-version', opts, refreshPathsOptions)
   }
 
   // 获取某个产品价格页下所有的历史记录
@@ -104,7 +106,7 @@ export default class PriceApis {
   async deleteVersionsByProduct(product: string): Promise<void> {
     const versions = await this.getVersionsByProduct(product)
     await Promise.all(versions.map(version => (
-      this.client.delete(apiMongo + '/www-product-price-version/' + version._id)
+      this.client.delete(apiMongo + '/www-product-price-version/' + version._id, refreshPathsOptions)
     )))
   }
 }

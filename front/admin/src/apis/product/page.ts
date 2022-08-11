@@ -1,6 +1,6 @@
 import { injectable } from 'qn-fe-core/di'
-import { BaseClient } from 'admin-base/common/apis/base'
 
+import BaseClient, { RefreshOptions } from 'apis/base-client'
 import { apiMongo } from 'constants/api-prefix'
 
 export interface IPage {
@@ -9,21 +9,23 @@ export interface IPage {
   link: string
 }
 
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/product-news'] }
+
 @injectable()
 export default class PageApis {
 
   constructor(private client: BaseClient) { }
 
   add(options: IPage): Promise<void> {
-    return this.client.post(apiMongo + '/www-product-page', options)
+    return this.client.post(apiMongo + '/www-product-page', options, refreshPathsOptions)
   }
 
   update(options: IPage): Promise<void> {
-    return this.client.put(apiMongo + '/www-product-page/' + options.id, options)
+    return this.client.put(apiMongo + '/www-product-page/' + options.id, options, refreshPathsOptions)
   }
 
   delete(id: string): Promise<void> {
-    return this.client.delete(apiMongo + '/www-product-page/' + id)
+    return this.client.delete(apiMongo + '/www-product-page/' + id, refreshPathsOptions)
   }
 
   list(): Promise<IPage[]> {

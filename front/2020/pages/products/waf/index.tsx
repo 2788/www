@@ -1,7 +1,9 @@
 import React from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
+
 import Layout from 'components/Product/Layout'
 import { useBtns } from 'hooks/product-btn'
+import { useApiWithParams } from 'hooks/api'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -10,6 +12,7 @@ import { urlForPrice } from 'utils/route'
 import { Product } from 'constants/products'
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
+import { getGlobalBanners } from 'apis/admin/global-banners'
 import QvmCommonCases from 'components/pages/qvm/Cases'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Advantage from 'components/pages/waf/Advantage'
@@ -18,14 +21,18 @@ import Related, { ProductItem as RelatedProduct } from 'components/Solution/Rela
 import Section from 'components/Product/Section'
 import imgBanner from './images/banner.png'
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Props) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
   const btns = useBtns(
     { children: '立即购买', href: 'https://portal.qiniu.com/qvm/security/waf' },
     { children: '查看价格', href: urlForPrice(Product.Qvm, true) }
   )
+
+  const { $: currentNotices } = useApiWithParams(getProductPageNotices, {
+    params: [Product.WAF]
+  })
 
   return (
     <>
@@ -35,7 +42,7 @@ function PageContent({ notices, newsRes }: Props) {
         btns={btns.banner}
         icon={imgBanner}
       />
-      <ProductNotice {...notices} />
+      <ProductNotice {...(currentNotices || notices)} />
       <Navigator>{btns.nav}</Navigator>
       <Advantage />
       <Scenes />
@@ -66,23 +73,25 @@ function PageContent({ notices, newsRes }: Props) {
   )
 }
 
-export default function Page(props: Props) {
+export default function Page({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title="Web 应用防火墙"
       keywords="Web 应用防火墙, WAF, Web 应用防火墙价格, 网站防火墙, 网站安全防护"
       description="Web 应用防火墙对网站或者 APP 的业务流量进行恶意特征识别及防护，将正常、安全的流量回源到服务器。避免网站服务器被恶意入侵，保障业务的核心数据安全，解决因恶意攻击导致的服务器性能异常问题。"
+      globalBanners={globalBanners}
     >
-      <PageContent {...props} />
+      <PageContent {...pageProps} />
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     props: {
       notices: await getProductPageNotices(Product.WAF),
-      newsRes: await getNews({ product: Product.WAF })
+      newsRes: await getNews({ product: Product.WAF }),
+      globalBanners: await getGlobalBanners()
     }
   }
 }
