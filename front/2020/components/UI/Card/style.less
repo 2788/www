@@ -24,6 +24,15 @@
   box-shadow: 0 4px 8px 0 rgba(51, 51, 51, 0.08);
   background: @grey-1;
 
+  &.horizontal {
+    display: flex;
+    flex-direction: row;
+
+    .content {
+      padding: 0;
+    }
+  }
+
   &:first-child {
     margin-left: 0;
   }
@@ -73,6 +82,7 @@
 
   .title {
     font-size: 16px;
+    // TODO 这个在非首页确认下是不是应该用 400
     font-weight: 600;
     line-height: 30px;
 

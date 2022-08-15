@@ -27,7 +27,7 @@ const certs: Cert[] = [
   { name: 'ISO 27001', imgUrl: iso27001 },
   { name: 'ISO 27701', imgUrl: iso27701 },
   { name: 'CMMI3', imgUrl: cmmi3 },
-  { name: '可信云', imgUrl: kexin, href: 'https://www.kexinyun.org.cn/' }
+  { name: '可信云', imgUrl: kexin }
 ]
 
 export default function Certs() {
@@ -54,8 +54,8 @@ function Mobile() {
     <div className={style.wrapper}>
       <div className={style.content}>
         {
-          chunk(certs, 3).map((group, i) => {
-            while (group.length < 3) {
+          chunk(certs, 4).map((group, i) => {
+            while (group.length < 4) {
               (group as Array<Cert | null>).push(null)
             }
             return (

@@ -1,0 +1,88 @@
+@import "~utils/less/index.less";
+
+.section {
+  background: url(./background.svg);
+  background-size: cover;
+  background-position: center center;
+
+  .content {
+    padding-top: 12px;
+  }
+
+  .code {
+    height: 300px;
+    padding: 20px;
+    font-size: 14px;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+    border-radius: 4px;
+    background: #ffffff;
+
+    .mobile({
+      height: 286px;
+      padding: 11px;
+      font-size: 12px;
+      white-space: pre-wrap;
+    });
+  }
+
+  .stepsTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 36px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 500;
+
+    .mobile({
+      margin-top: 16px;
+      margin-bottom: 14px;
+      font-size: 16px;
+    });
+
+    .consult {
+      .setFontSize(18px);
+
+      .mobile({
+        .setFontSize(14px)
+      });
+    }
+  }
+
+  .stepCard {
+    margin: 0;
+    padding-left: 36px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    box-shadow: none;
+    border: none;
+    border-radius: 4px;
+
+    .number {
+      margin-right: 8px;
+      font-weight: 500;
+    }
+
+    .mobile({
+      & + .arrowWrapper + .stepCard {
+        margin-top: 10px;
+      }
+    });
+  }
+
+  .arrowWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+
+    .pcLg({
+      width: 80px;
+    });
+
+    .mobile({
+      display: none;
+    });
+  }
+}

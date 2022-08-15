@@ -29,7 +29,7 @@ export default function Mobile() {
       <div className={style.logosWrapper}>
         <div className={style.rows}>
           {
-            chunk(logoUrls, Math.ceil(logoUrls.length / 3)).map((logos, index) => (
+            chunk(logoUrls, Math.ceil(logoUrls.length / 2)).map((logos, index) => (
               <div className={style.row} key={index}>
                 {
                   logos.map((logo, i) => (

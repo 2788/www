@@ -78,13 +78,13 @@
 
   .logosWrapper {
     margin-top: 16px;
-    height: @logo-wrapper-height * 3 + 2 * @logos-gap;
     overflow: hidden;
   
     .rows {
-      // 这边加上 100(滚动条最大不会超过 100px 高度) 是为了没有不显示滚动条但是可以滚动
-      height: @logo-wrapper-height * 3 + 2 * @logos-gap + 100px;
       overflow-x: scroll;
+      ::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
     }
   
     .row {

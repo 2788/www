@@ -73,3 +73,28 @@ export default function IndexPageBanner({ dark, ...advertInfo }: Props) {
     </div>
   )
 }
+
+type WrapperProps = {
+  bgImg: string
+  children: ReactNode
+  dark?: boolean
+  bgColor?: string
+}
+
+export function Wrapper({ dark = false, bgImg, bgColor = '#e9f2fd', children }: WrapperProps) {
+  const bgStyle: CSSProperties = {
+    backgroundImage: `url("${bgImg}")`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  }
+  return (
+    <div className={classnames(styles.mainWrapper, styles.index)} style={{ backgroundColor: bgColor }}>
+      <div className={styles.contentWrapper} style={bgStyle}>
+        <div className={classnames(styles.content, dark ? styles.dark : styles.light)}>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}

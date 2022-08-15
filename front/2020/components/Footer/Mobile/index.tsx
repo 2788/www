@@ -6,8 +6,8 @@ import Button from 'components/UI/Button'
 import { nameMap, Product, urlMap } from 'constants/products'
 import { Activity, nameMap as activityNameMap, urlMap as activityUrlMap } from 'constants/activity'
 import { urlForPrice } from 'utils/route'
-import Github from './images/github.svg'
-import Weibo from './images/sina_weibo.svg'
+import Github from '../shares/github.svg'
+import Weibo from '../shares/sina_weibo.svg'
 import Qrcode from './images/qrcode.png'
 import style from './style.less'
 
@@ -66,8 +66,8 @@ export default function FooterForMobile() {
         </Menu>
       </div>
       <div className={style.icons}>
-        <a href="http://weibo.com/qiniutek" target="_blank" rel="noopener"><Weibo className={style.icon} /></a>
         <a href="https://github.com/qiniu" target="_blank" rel="noopener"><Github className={style.icon} /></a>
+        <a href="https://weibo.com/qiniutek" target="_blank" rel="noopener"><Weibo className={style.icon} /></a>
       </div>
       <div className={style.qrCode}>
         <img className={style.image} src={Qrcode} />

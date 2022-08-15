@@ -33,6 +33,11 @@ declare module '*.mp4' {
   export default exports
 }
 
+declare module '*.mov' {
+  const exports: string
+  export default exports
+}
+
 declare module '*.less' {
   const cssModuleExport: {
     [className: string]: string

@@ -1,0 +1,45 @@
+@import '~utils/less/index.less';
+
+.title {
+  .setFontSize(52px);
+  margin-top: 176px;
+  color: @grey-1;
+
+  .mobile({
+    .setFontSize(24px);
+    margin-top: 0;
+  })
+}
+
+.desc {
+  .setFontSize(18px);
+  margin-top: 8px;
+  color: @grey-1;
+
+  .mobile({
+    .setFontSize(14px);
+    margin-top: 6px;
+    text-align: center;
+  })
+}
+
+.features {
+  display: flex;
+
+  .item {
+    .setFontSize(16px);
+    display: inline-flex;
+    align-items: center;
+    margin-top: 75px;
+    color: @grey-1;
+
+    & + .item {
+      margin-left: 44px;
+    }
+  }
+
+  .icon {
+    margin-right: 12px;
+    font-size: 26px;
+  }
+}

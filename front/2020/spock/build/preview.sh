@@ -23,6 +23,6 @@ node ./deploy.js $DEPLOY_AK $DEPLOY_SK www-2020-preview
 date
 echo "deploy end"
 
-# . $FRONTEND/spock/build/docker.sh
+. $FRONTEND/spock/build/docker.sh
 
 . $FRONTEND/spock/build/pkg.sh

@@ -15,17 +15,22 @@ import PageBanner from 'components/pages/index/PageBanner'
 import { useApiWithParams } from 'hooks/api'
 import { luminanceOf } from 'utils/img'
 import { useTrackShow } from 'hooks/thallo'
+import { useMobile } from 'hooks/ua'
 
 import { headerThemeContext } from 'components/Header/Pc'
 import Activities from 'components/pages/index/Activities'
-import CloudProduct from 'components/pages/index/CloudProduct'
-import Solutions from 'components/pages/index/Solutions'
 import Cases from 'components/pages/index/Cases'
 import Certs from 'components/pages/index/Certs'
 import UsageGuide from 'components/pages/index/UsageGuide'
 import Services from 'components/pages/index/Services'
 import { getHomePageBanners, getHomePageActivities, AdvertInfo, HomePageBanner } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
+import VideoCloudBanner from 'components/pages/index/PageBanner/static/VideoCloud'
+import VideoAbility from 'components/pages/index/VideoAbility'
+import AI from 'components/pages/index/AI'
+import Code from 'components/pages/index/Code'
+import VideoCloud from 'components/pages/index/VideoCloud'
+import LowCodeSolutions from 'components/pages/index/LowCodeSolutions'
 
 import styles from './style.less'
 
@@ -82,6 +87,37 @@ function useBanner(banners: Array<AdvertInfo<HomePageBanner>>) {
   }
 }
 
+// 包含静态 banner 的 hook
+function useBanners(banners: Array<AdvertInfo<HomePageBanner>>) {
+  const { dark, onBannerChange, setBannerWrapper } = useBanner(banners)
+  const [isStaticBannerActive, setIsStaticBannerActive] = useState(true)
+  const setDark = useContext(bannerDarkCtx).setDark
+
+  useEffect(() => {
+    onBannerChange(-1)
+    // 第一张静态图是暗色的，所以手动设置下
+    setDark(true)
+  }, [onBannerChange, setDark])
+
+  function handleBannerChange(currentSlide: number) {
+    if (currentSlide === 0) {
+      setDark(true)
+      setIsStaticBannerActive(true)
+      onBannerChange(-1)
+      return
+    }
+    setIsStaticBannerActive(false)
+    onBannerChange(currentSlide - 1)
+  }
+
+  return {
+    dark,
+    onBannerChange: handleBannerChange,
+    setBannerWrapper,
+    isStaticBannerActive
+  }
+}
+
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback context & ua context 等信息（由 `<Layout>` 提供）
@@ -91,7 +127,9 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
     { params: [] }
   )
 
-  const { dark, onBannerChange, setBannerWrapper } = useBanner(banners)
+  // 去掉静态图后换成 useBanner
+  const { dark, onBannerChange, isStaticBannerActive, setBannerWrapper } = useBanners(banners)
+  const isMobile = useMobile()
 
   return (
     <>
@@ -104,14 +142,16 @@ function PageContent({ banners, activities }: Omit<Props, 'globalBanners'>) {
         autoplaySpeed={5000}
         autoplay
       >
-        {banners.map((banner, i) => (
-          <PageBanner key={i} dark={dark} {...banner} />
-        ))}
+        <VideoCloudBanner />
+        {banners.map((banner, i) => <PageBanner key={i} dark={dark} {...banner} />)}
       </Carousel>
 
-      <Activities activities={currentActivities || activities} />
-      <CloudProduct />
-      <Solutions />
+      <Activities hide={!isMobile && isStaticBannerActive} activities={currentActivities || activities} />
+      <VideoCloud />
+      <VideoAbility />
+      <Code />
+      <AI />
+      <LowCodeSolutions />
       <Cases />
       <Certs />
       <UsageGuide />
@@ -129,7 +169,7 @@ export default function IndexPage({ globalBanners, banners, activities }: Props)
         <Layout
           title=""
           keywords="七牛, 七牛云, 七牛云存储, 七牛直播云, 七牛CDN加速, 七牛短视频, 七牛智能视频云, 七牛实时音视频云, 七牛数据分析平台"
-          description="七牛云（隶属于上海七牛信息技术有限公司）是国内知名的云计算及数据服务提供商， 七牛云持续在海量文件存储、CDN 内容分发、视频点播、互动直播及大规模异构数据的智能分析与处理等领域的核心技术进行深度投入，致力于以数据科技全面驱动数字化未来，赋能各行各业全面进入数据时代。"
+          description="2011 年成立以来，七牛云致力于成为全球领先的一站式场景化智能视频云服务商，围绕数字化浪潮下的在线音视频需求，基于强大的云边一体化能力和低代码能力，持续在视频点播、互动直播、实时音视频、摄像头上云等领域，进行深度技术投入，提供面向业务场景的视频云解决方案。截至目前，有超过 100 万企业客户和开发者长期使用七牛云服务，包括 OPPO 、爱奇艺、平安银行、招商银行、上汽集团、芒果 TV 等知名企业。"
           globalBanners={globalBanners}
         >
           <PageContent banners={banners} activities={activities} />

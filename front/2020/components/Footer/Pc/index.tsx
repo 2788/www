@@ -10,8 +10,8 @@ import { nameMap, Product, urlMap } from 'constants/products'
 import { Activity, nameMap as activityNameMap, urlMap as activityUrlMap } from 'constants/activity'
 import { urlForPrice } from 'utils/route'
 import QiniuLogo from './images/qiniu_logo.svg'
-import Github from './images/github.svg'
-import Weibo from './images/sina_weibo.svg'
+import Github from '../shares/github.svg'
+import Weibo from '../shares/sina_weibo.svg'
 import Wechat from './images/wechat.svg'
 import Qrcode from './images/qrcode.png'
 import style from './style.less'
@@ -105,11 +105,11 @@ function Tooltip({ children }: PropsWithChildren<{}>) {
 function Contact() {
   return (
     <section className={style.contact}>
-      <Link href="/"><QiniuLogo /></Link>
+      <Link href="/" className={style.logo}><QiniuLogo /></Link>
       <p className={style.copyright}>Copyright © 2011-{getCurrentYear()} Qiniu Cloud.</p>
       <p className={style.phone}>产品及服务咨询：400-808-9176</p>
       <div className={style.contact}>
-        <a className={style.icon} href="http://weibo.com/qiniutek" target="_blank" rel="noopener">
+        <a className={style.icon} href="https://weibo.com/qiniutek" target="_blank" rel="noopener">
           <Weibo />
         </a>
         <a className={style.icon} href="https://github.com/qiniu" target="_blank" rel="noopener">

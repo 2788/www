@@ -1,0 +1,105 @@
+@import "~utils/less/index.less";
+
+// 4px 是 a 标签下划线的 offset
+@content-expanded-height: 186px + 4px;
+@content-height: 148px;
+
+.row {
+  .mobile({
+    flex-direction: row !important;
+  })
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none!important;
+  background-color: #515962!important;
+
+  .mobile({
+    flex: 1 !important;
+    height: auto;
+    margin: 0 6px !important;
+    padding: 6px 6px 12px 6px !important;
+  });
+
+  .img {
+    flex: 1;
+    border-radius: 8px;
+
+    .mobile({
+      flex-basis: 97px;
+    });
+  }
+
+  .content {
+    padding: 20px 10px;
+    height: @content-height;
+    overflow-y: hidden;
+    transition: height 0.3s ease-in-out;
+
+    .mobile({
+      height: auto;;
+      padding: 12px;
+    });
+
+
+    .title {
+      .setIcecreamFontSize(20px);
+      color: white;
+      font-weight: 400;
+
+      .mobile({
+        font-size: 16px;
+      })
+    }
+
+    .desc {
+      .setFontSize(14px);
+      margin-top: 12px;
+      color: fade(white, 60);
+
+      .mobile({
+        .setFontSize(12px);
+      });
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 16px;
+      text-underline-offset: 4px;
+
+      .arrow {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .spacer {
+    flex-basis: @content-expanded-height - @content-height;
+
+    .mobile({
+      display: none;
+    });
+  }
+
+  &.hovered {
+    .content {
+      height: @content-expanded-height;
+    }
+  }
+  
+  .desc {
+    &.activeEllipsis {
+      .ellipsis-line-clamp-by-font-size(3, 14px);
+
+      .mobile({
+        .ellipsis-line-clamp-by-font-size(2, 12px);
+      });
+    }
+  }
+}

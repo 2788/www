@@ -4,8 +4,8 @@
   overflow-x: auto;
   background-color: @grey-1;
 
-  &:nth-child(2n + 1) {
-    background-color: #F8FCFF;
+  &.dark {
+    background-color: #4A5158;
   }
 
   .mobile({
@@ -47,8 +47,15 @@
   line-height: 22px;
 
   .mobile({
-    margin-top: 6px;
-    font-size: 12px;
-    line-height: 18px;
+    display: none;
   });
+}
+
+.dark {
+  .title {
+    color: @grey-1;
+  }
+  .subtitle {
+    color: #D1D1D1;
+  }
 }

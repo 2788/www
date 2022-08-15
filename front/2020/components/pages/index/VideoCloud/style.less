@@ -1,0 +1,128 @@
+/**
+ * @file styles
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~utils/less/index.less";
+
+.wrapper {
+  .mobile({
+    overflow-x: auto;
+    overflow-y: hidden;
+  });
+}
+
+.bg {
+  background-image: url(./images/bg.png);
+  background-size: cover;
+  background-position: center;
+
+  .mobile({
+    width: @screen-sm;
+  });
+}
+
+.main {
+  position: relative;
+  margin: 0 auto;
+
+  .notMobile({
+    height: 750px; // 宽 1920px
+  });
+
+  .mobile({
+    width: 654px; // 宽 960px 截掉两边
+    height: 375px;
+  });
+}
+
+.title {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  top: 36px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+
+  .mobile({
+    top: 16px;
+    font-size: 20px;
+  });
+}
+
+.layout,
+.step1,
+.step2,
+.step3,
+.step4,
+.step5 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.step1 {
+  animation: www-index-video-cloud-step-1 5s infinite;
+}
+
+.step2 {
+  animation: www-index-video-cloud-step-2 5s infinite;
+}
+
+.step3 {
+  animation: www-index-video-cloud-step-3 5s infinite;
+}
+
+.step4 {
+  animation: www-index-video-cloud-step-4 5s infinite;
+}
+
+.step5 {
+  animation: www-index-video-cloud-step-5 5s infinite;
+}
+
+@keyframes www-index-video-cloud-step-1 {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes www-index-video-cloud-step-2 {
+  0% { opacity: 0; }
+  10% { opacity: 0; }
+  45% { opacity: 1; }
+  80% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes www-index-video-cloud-step-3 {
+  0% { opacity: 0; }
+  15% { opacity: 0; }
+  55% { opacity: 1; }
+  85% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes www-index-video-cloud-step-4 {
+  0% { opacity: 0; }
+  30% { opacity: 0; }
+  65% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes www-index-video-cloud-step-5 {
+  0% { opacity: 0; }
+  30% { opacity: 0; }
+  65% { opacity: 1; }
+  100% { opacity: 0; }
+}

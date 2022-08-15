@@ -3,17 +3,18 @@
  * @description 注册在 Navigatable 中，对应 Navigator 中的一个 tab
  */
 
-import React, { ReactNode, useContext, useRef, useEffect } from 'react'
+import React, { ReactNode, useContext, useRef, useEffect, CSSProperties } from 'react'
 import { context, BlockInfo } from './utils'
 
 export type Props = Pick<BlockInfo, 'name' | 'title'> & {
   children?: ReactNode
   className?: string
   render?: (props: { subPaths: string[] }) => ReactNode
+  style?: CSSProperties
 }
 
 /** 可导航块 */
-export default function Block({ name, title, children, className = '', render }: Props) {
+export default function Block({ name, title, children, className = '', render, style }: Props) {
   const contextValue = useContext(context)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
@@ -41,7 +42,7 @@ export default function Block({ name, title, children, className = '', render }:
 
   return (
     // 这里不添加 id，是为了避免 hash 变化时浏览器自动定位的行为
-    <div ref={wrapperRef} data-block-name={name} className={className}>
+    <div ref={wrapperRef} data-block-name={name} className={className} style={style}>
       {render ? render({ subPaths }) : children}
     </div>
   )

@@ -17,7 +17,7 @@ export default function UsageGuide() {
   return (
     <div className={style.wrapper}>
       <h3 className={style.title}>立即注册，即可免费试用30+产品</h3>
-      <Button className={style.btn} href="https://portal.qiniu.com/signup?ref=www.qiniu.com">免费试用</Button>
+      <Button type="primary" className={style.btn} href="https://portal.qiniu.com/signup?ref=www.qiniu.com">免费试用</Button>
     </div>
   )
 }

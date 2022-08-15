@@ -1,25 +1,29 @@
 @import '~utils/less/index.less';
 
 .wrapper {
-  .centeredWithLg();
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   height: 120px;
-  background: @grey-1;
+  background: @dark-color;
 
-  .item {
+  .content {
+    .centeredWithLg();
     display: flex;
+    justify-content: space-around;
     align-items: center;
-  }
+    height: 100%;
 
-  .img {
-    width: 48px;
-    height: 48px;
-  }
-
-  .name {
-    margin-left: 20px;
-    color: @grey-7;
+    .item {
+      display: flex;
+      align-items: center;
+    }
+  
+    .img {
+      width: 48px;
+      height: 48px;
+    }
+  
+    .name {
+      margin-left: 20px;
+      color: @grey-1;
+    }
   }
 }

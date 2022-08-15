@@ -1,0 +1,119 @@
+@import "~utils/less/index.less";
+
+.row {
+  & + .row {
+    margin-top: 20px !important;
+  }
+  .mobile({
+    flex-direction: row !important;
+    & + .row {
+      margin-top: 12px !important;
+    }
+  })
+}
+
+.link {
+  flex: 1;
+
+  & + .link {
+    margin-left: 20px;
+  }
+
+  .mobile({
+    & + .link {
+      margin-left: 12px;
+    }
+  });
+
+  .card {
+    position: relative;
+    padding: 24px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: none;
+    background-color: #515962;
+  
+    &:hover {
+      .icon {
+        color: @primary-color;
+      }
+      .background {
+        opacity: 1;
+      }
+      .arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    .mobile({
+      flex: 1;
+      height: 100%;
+      margin: 0 0 0 11px;
+      padding: 12px;
+    });
+  
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-image: url(./images/card-bg.png);
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      transition: opacity 0.3s;
+    }
+  
+    .icon {
+      position: relative;
+      margin-right: 20px;
+      color: #526378;
+      transition: 0.3s;
+  
+      .mobile({
+        width: 38px;
+        height: 38px;
+        margin-right: 0;
+        margin-left: 4px;
+      })
+    }
+  
+    .content {
+      position: relative;
+      padding: 0;
+  
+      .title {
+        .setIcecreamFontSize(20px);
+        color: white;
+        font-weight: 400;
+  
+        .mobile({
+          font-size: 14px;
+        })
+      }
+  
+      .desc {
+        .setIcecreamFontSize(14px);
+        margin-top: 4px;
+        color: fade(white, 80);
+  
+        .mobile({
+          .ellipsis-line-clamp-by-font-size(3, 12px);
+          font-size: 12px;
+        })
+      }
+    }
+  
+    .arrow {
+      position: absolute;
+      top: 68px;
+      right: 32px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: 0.5s;
+    }
+  }  
+}

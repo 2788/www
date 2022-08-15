@@ -15,15 +15,17 @@ export interface IndexSectionProps {
   style?: CSSProperties
   className?: string
   rootClassName?: string
+  // 使用深色背景
+  dark?: boolean
 }
 
 export default function Section(props: IndexSectionProps) {
-  const { title, subtitle = null, children, rootClassName, ...rest } = props
+  const { title, subtitle = null, children, rootClassName, dark = false, ...rest } = props
 
   const wrapperClassName = [style.wrapper, props.className].filter(Boolean).join(' ')
 
   return (
-    <div className={classnames(style.blockWraper, rootClassName)}>
+    <div className={classnames(style.blockWraper, rootClassName, dark && style.dark)}>
       <div {...rest} className={wrapperClassName}>
         {
           (title !== '') && (

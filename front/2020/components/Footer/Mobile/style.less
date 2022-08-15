@@ -2,7 +2,7 @@
 
 .footer {
   color: @grey-5;
-  background-color: #F8FBFF;
+  background-color: @dark-color;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -30,9 +30,8 @@
 
       .rc-menu-submenu {
         margin-top: 8px;
-        border: 1px solid @border-color;
+        border: 1px solid #464A50;
         border-radius: 2px;
-        background: @grey-1;
         
         &:first-child {
           margin-top: 0;
@@ -41,7 +40,9 @@
     
       &.rc-menu-sub {
         padding: 16px 12px;
-        border-top: 1px solid @border-color;
+        color: @grey-4;
+        border-top: 1px solid #464A50;
+        background-color: @dark-color;
       }
 
 
@@ -51,7 +52,7 @@
         padding-bottom: 14px;
         font-size: 16px;
         line-height: 22px;
-        background-color: @grey-1;
+        background: @dark-color;
       }
 
       .menu-item {
@@ -74,7 +75,7 @@
 
   .nav {
     width: 100%;
-    color: @grey-7;
+    color: @grey-1;
   }
 
   .icons {
@@ -91,7 +92,7 @@
     width: 100%;
     margin-top: 20px;
     font-size: 12px;
-    color: @grey-5;
+    color: @grey-4;
     text-align: center;
 
     .image {
@@ -117,7 +118,7 @@
   .icp {
     display: block;
     margin-top: 20px;
-    color: @grey-5;
+    color: @grey-4;
     font-size: 14px;
     text-align: center;
   }

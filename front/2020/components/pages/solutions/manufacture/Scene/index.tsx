@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card, Row, Img, Content, Title, Desc } from 'components/UI/Card'
 import Section, { SectionArrowLink } from 'components/Product/Section'
+import { Card, Row, Img, Content, Title, Desc } from 'components/UI/Card'
 
 import scene1 from './images/scene1.jpg'
 import scene2 from './images/scene2.jpg'

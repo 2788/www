@@ -1,6 +1,6 @@
 @import '~utils/less/index.less';
 
-@banner-height: 560px;
+@banner-height: 712px;
 @mobile-banner-height: 340px;
 
 .mainWrapper {
@@ -26,8 +26,6 @@
       .centeredWithLg();
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
       height: 100%;
       padding-top: 60px; // 距离顶部导航栏
       padding-bottom: 54px; // 距离底部滑块
@@ -45,22 +43,22 @@
       });
 
       .title {
-        font-size: 52px;
-        line-height: 73px;
-        font-weight: 600;
+        margin-top: 176px;
+        .setFontSize(52px);
+        font-weight: 500;
         .mobile({
-          font-size: 24px;
-          line-height: 34px;
+          .setFontSize(24px);
+          margin-top: 0;
         });
       }
       
       .desc {
-        margin-top: 12px;
-        font-size: 20px;
+        margin-top: 8px;
+        .setFontSize(20px);
       
         .mobile({
-          margin-top: 8px;
-          font-size: 14px;
+          margin-top: 6px;
+          .setFontSize(14px);
         });
       }
       

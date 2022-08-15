@@ -2,15 +2,12 @@ import React from 'react'
 import cls from 'classnames'
 import { Carousel } from 'react-icecream-2'
 import { chunk } from 'lodash'
-import { usePcLg } from 'hooks/ua'
 import { LayoutCard, Img as CardImg } from 'components/UI/Card'
 import { cardData, CardProps, logoUrls } from '../constants'
 import MarkIcon from '../images/mark.svg'
 import style from './style.less'
 
 export default function Pc() {
-  const isPcLg = usePcLg()
-  const logosSize = isPcLg ? 6 : 5
   return (
     <div className={style.wrapper}>
       <Carousel rootHtmlProps={{ className: style.cardsWrapper }} type="secondary">
@@ -22,8 +19,8 @@ export default function Pc() {
       </Carousel>
       <Carousel rootHtmlProps={{ className: style.logosWrapper }}>
         {
-          chunk(logoUrls, logosSize * 3).map((logos, index) => (
-            <Logos logos={logos} key={index} size={logosSize} />
+          chunk(logoUrls, 12).map((logos, index) => (
+            <Logos logos={logos} key={index} size={6} />
           ))
         }
       </Carousel>

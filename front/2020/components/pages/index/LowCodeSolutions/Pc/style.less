@@ -1,0 +1,203 @@
+@import "~utils/less/index.less";
+
+.row2 {
+  .card{
+    .desc {
+      width: 324px;
+
+      .pcLg({
+        width: 404px;
+      });
+    }
+    .smallDesc {
+      width: 299px;
+
+      .pcLg({
+        width: 384px;
+      });
+    }
+  }
+}
+
+.cardWrapper {
+  // 用间距而不用 margin 填充间距，防止 hover 到间距去了导致移动的过程中有抖动
+  padding: 0 10px;
+  flex: 1 1 0;
+  transition: 0.5s;
+  box-sizing: content-box;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  &:hover {
+    flex-shrink: 0;
+
+    .icons {
+      opacity: 1;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  margin: 0;
+  padding: 32px 28px 24px 28px;
+  height: 242px;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 8px;
+  background: linear-gradient(104.67deg, #F8FAFF 2.18%, #F6F8FB 42.97%, #F7F7F8 99.67%), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF!important;
+
+  .backIcon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 220px 160px;
+    background-position: bottom right;
+  }
+
+  .backImage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-size: cover;
+    // 右对齐，则 card 缩小后背景会从左边消失
+    background-position-x: right;
+    transition: opacity 0.5s;
+  }
+
+  .mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: fade(#000D16, 50);
+    transition: opacity 0.5s;
+  }
+
+  .title {
+    .setFontSize(20px);
+    font-weight: 400;
+    transition: opacity 0.5s;
+  }
+
+  .titleOnHover {
+    .setFontSize(20px);
+    position: absolute;
+    top: 32px;
+    left: 28px;
+    z-index: 2;
+    color: @grey-1;
+    font-weight: 400;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    .link {
+      display: flex;
+      align-items: center;
+      color: @grey-1;
+      &:hover {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .arrow {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .desc {
+    .ellipsis-line-clamp-by-font-size(2, 14px);
+    position: absolute;
+    top: 32px + 20px * 1.5 + 12px;
+    left: 28px;
+    right: 28px;
+    width: 224px;
+    line-height: 24px;
+    max-height: 2 * 24px;
+    transition: opacity 0.5s;
+    opacity: 0;
+    color: @grey-7;
+
+    .pcLg({
+      width: 284px;
+    });
+  }
+
+  .fullDesc {
+    position: absolute;
+    top: 32px + 20px * 1.5 + 12px;
+    left: 28px;
+    z-index: 2;
+    // magic，不算了
+    width: 374px;
+    color: @grey-1;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    .pcLg({
+      width: 444px;
+    });
+  }
+
+  .smallDesc {
+    .ellipsis-line-clamp-by-font-size(2, 14px);
+    position: absolute;
+    top: 32px + 20px * 1.5 + 12px;
+    left: 28px;
+    // magic 不算了
+    width: 174px;
+    color: @grey-7;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    .pcLg({
+      width: 231px;
+    });
+  }
+
+  .icons {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    .icon {
+      width: 114px;
+      height: 46px;
+      overflow: hidden;
+      border-radius: 4px;
+
+      + .icon {
+        margin-left: 16px;
+      }
+    }
+  }
+}
+
+.show {
+  opacity: 1 !important;
+}
+
+.hide {
+  opacity: 0 !important;
+}
