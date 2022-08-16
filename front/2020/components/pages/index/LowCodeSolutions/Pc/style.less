@@ -122,14 +122,13 @@
   }
 
   .desc {
+    .setFontSize(14px);
     .ellipsis-line-clamp-by-font-size(2, 14px);
     position: absolute;
     top: 32px + 20px * 1.5 + 12px;
     left: 28px;
     right: 28px;
     width: 224px;
-    line-height: 24px;
-    max-height: 2 * 24px;
     transition: opacity 0.5s;
     opacity: 0;
     color: @grey-7;
@@ -140,6 +139,7 @@
   }
 
   .fullDesc {
+    .setFontSize(14px);
     position: absolute;
     top: 32px + 20px * 1.5 + 12px;
     left: 28px;
@@ -156,6 +156,7 @@
   }
 
   .smallDesc {
+    .setFontSize(14px);
     .ellipsis-line-clamp-by-font-size(2, 14px);
     position: absolute;
     top: 32px + 20px * 1.5 + 12px;

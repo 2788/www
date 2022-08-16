@@ -23,6 +23,7 @@ import ScrollToTop from '../ScrollToTopV2'
 import { Provider as UserInfoProvider } from '../UserInfo'
 import RegisterEntry from '../RegisterEntry'
 import GlobalBannerComp from './GlobalBanner'
+import logo from './logo.jpg'
 
 type BaseProps = {
   /** 页面 title */
@@ -84,6 +85,8 @@ function ContentWrapper({
   return (
     <OverlayProvider>
       <feedback.ModalProvider>
+        {/* 企业微信会自动寻找第一张 img 作为分享出去的图标 */}
+        <img src={logo} style={{ display: 'none' }} />
         {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
         {notSimple && <Header />}
         <ErrorBoundary>
