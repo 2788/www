@@ -7,8 +7,9 @@ import React from 'react'
 import { ContentType } from 'constants/pgc/content'
 import { articlesCount, videosMaxCount } from 'constants/pgc/content-banner'
 import { listBanners } from 'apis/admin/pgc/content-banner'
-import { listReleasedContent } from 'apis/admin/pgc/content'
+import { listReleasedContents } from 'apis/admin/pgc/content'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
+import { getPgcHomePageActivities } from 'apis/thallo'
 import Layout from 'components/Layout'
 import PgcIndex, { Props as BaseProps } from 'components/pgc/content/Index'
 
@@ -31,10 +32,11 @@ export default function Pgc({ globalBanners, ...pageProps }: Props) {
 }
 
 export async function getServerSideProps() {
-  const [banners, articleRes, videoRes, globalBanners] = await Promise.all([
+  const [banners, articleRes, videoRes, activities, globalBanners] = await Promise.all([
     listBanners(),
-    listReleasedContent({ type: ContentType.Article, limit: articlesCount }),
-    listReleasedContent({ type: ContentType.Video, limit: videosMaxCount }),
+    listReleasedContents({ type: ContentType.Article, limit: articlesCount }),
+    listReleasedContents({ type: ContentType.Video, limit: videosMaxCount }),
+    getPgcHomePageActivities(),
     getGlobalBanners()
   ])
   const props: Props = {
@@ -42,6 +44,7 @@ export async function getServerSideProps() {
     articles: articleRes.data,
     hasMoreArticles: articleRes.count > articlesCount,
     videos: videoRes.data,
+    activities,
     globalBanners
   }
   return { props }

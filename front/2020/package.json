@@ -12,6 +12,7 @@
     "build": "sh build.sh",
     "lint": "tsc --noEmit && eslint --ignore-path .gitignore --ext .ts,.tsx ./",
     "test": "jest --coverage",
+    "test:dev": "jest --collectCoverage=false -i --watch",
     "travis:script": "npm run lint && npm test",
     "travis:before-script": "yarn"
   },

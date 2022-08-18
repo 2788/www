@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 
 import { useMobile } from 'hooks/ua'
 import { ContentType, ContentCategory, ReleasedContent } from 'constants/pgc/content'
-import { listReleasedContent } from 'apis/admin/pgc/content'
+import { listReleasedContents } from 'apis/admin/pgc/content'
 import ResultEmpty from 'components/UI/ResultEmpty'
 
 import Breadcrumb from './Breadcrumb'
@@ -54,7 +54,7 @@ export default function List(props: Props) {
     const offset = currentPage * pageSize
 
     setIsLoading(true)
-    const { data, count } = await listReleasedContent({
+    const { data, count } = await listReleasedContents({
       type,
       category: category ?? undefined,
       limit: pageSize,

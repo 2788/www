@@ -12,6 +12,10 @@ const resource = 'pgc-content'
 export interface BaseListOptions {
   type?: ContentType
   category?: ContentCategory
+  /** 任意一个完全相同 */
+  keywords?: string[]
+  /** 首次发布晚于该时间，单位为秒 */
+  after?: number
 }
 
 export interface ListOptions extends BaseListOptions {
@@ -19,13 +23,15 @@ export interface ListOptions extends BaseListOptions {
   offset?: number
 }
 
-function getListParams<T extends BaseListOptions>({ type, category, ...baseOptions }: T) {
+function getListParams<T extends BaseListOptions>({ type, category, keywords, after, ...baseOptions }: T) {
   const prefix = 'release'
   const options = {
     sort: `-${prefix}.createdAt`,
     query: {
       ...(type && { type }),
       ...(category && { [`${prefix}.category`]: category }),
+      ...(keywords && { [`${prefix}.keywords`]: { $in: keywords } }),
+      ...(after && { [`${prefix}.createdAt`]: { $gt: after } }),
       [prefix]: { $ne: null }
     },
     ...baseOptions
@@ -33,11 +39,11 @@ function getListParams<T extends BaseListOptions>({ type, category, ...baseOptio
   return options
 }
 
-export async function listReleasedContent(options: ListOptions) {
+export async function listReleasedContents(options: ListOptions) {
   return list<ReleasedContent>(resource, getListParams(options))
 }
 
-export async function listAllReleasedContent(options: BaseListOptions = {}) {
+export async function listAllReleasedContents(options: BaseListOptions = {}) {
   return listAll<ReleasedContent>(resource, getListParams(options))
 }
 

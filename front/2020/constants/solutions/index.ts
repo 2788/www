@@ -2,6 +2,20 @@
 
 import { FC, SVGAttributes } from 'react'
 
+import rtcliveLargeIconUrl from './images/large/rtclive.png'
+import plsvLargeIconUrl from './images/large/plsv.png'
+import kodoeLargeIconUrl from './images/large/kodoe.png'
+import essLargeIconUrl from './images/large/ess.png'
+import storageLargeIconUrl from './images/large/storage.png'
+import eduLargeIconUrl from './images/large/edu.png'
+import finLargeIconUrl from './images/large/fin.png'
+import autoLargeIconUrl from './images/large/auto.png'
+import ecLargeIconUrl from './images/large/ec.png'
+import imLargeIconUrl from './images/large/im.png'
+import socialLargeIconUrl from './images/large/social.png'
+import genLargeIconUrl from './images/large/gen.png'
+import entertainmentLargeIconUrl from './images/large/entertainment.png'
+
 export enum Solution {
   /** 金融行业 */
   Fin = 'fin',
@@ -210,6 +224,27 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Entertainment]: require('./images/small/entertainment.svg').default,
   [Solution.Medium]: null
 } as const
+
+// 96px 的 icon，相关推荐用
+export const largeIconMap: MapTo<string | null> = {
+  [Solution.Qavs]: null,
+  [Solution.Rtclive]: rtcliveLargeIconUrl,
+  [Solution.Plsv]: plsvLargeIconUrl,
+  [Solution.Kodoe]: kodoeLargeIconUrl,
+  [Solution.Vcs]: null,
+  [Solution.Ess]: essLargeIconUrl,
+  [Solution.Storage]: storageLargeIconUrl,
+  [Solution.Edu]: eduLargeIconUrl,
+  [Solution.Fin]: finLargeIconUrl,
+  [Solution.Automobile]: autoLargeIconUrl,
+  [Solution.ECommerce]: ecLargeIconUrl,
+  [Solution.IntelligentManufacturing]: imLargeIconUrl,
+  [Solution.Social]: socialLargeIconUrl,
+  [Solution.Isp]: null,
+  [Solution.Gene]: genLargeIconUrl,
+  [Solution.Entertainment]: entertainmentLargeIconUrl,
+  [Solution.Medium]: null
+}
 
 export const allSolutions = categories.reduce(
   (solutions, category) => [...solutions, ...categorySolutionsMap[category]],

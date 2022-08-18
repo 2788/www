@@ -11,34 +11,39 @@ import { ContentId, ContentDetailWithTime } from 'constants/pgc/content'
 import Layout, { BaseProps, Header } from '../Layout'
 import Card, { CardLink, CardContent } from '../Card'
 import PosterImage from '../PosterImage'
-import Markdown, { mdTextToHTMLAst, AstRootNode } from './Markdown'
 
+import Markdown, { mdTextToHTMLAst, AstRootNode } from './Markdown'
+import Sidebar from './Sidebar'
 import style from './style.less'
 
 export { mdTextToHTMLAst }
 export type { AstRootNode }
 
 export interface Props extends BaseProps {
+  id?: ContentId
   htmlAst: AstRootNode
 }
 
-export default function Article({ contentDetail, htmlAst, createdAt, preview }: Props) {
+export default function Article({ id, contentDetail, htmlAst, createdAt, preview }: Props) {
   const isMobile = useMobile()
 
   if (isMobile) {
     return (
-      <Layout preview={preview} className={style.detail}>
-        <Header
-          contentDetail={contentDetail}
-          createdAt={createdAt}
-          preview={preview}
-          className={style.detailHeader}
-        />
-        {contentDetail.description && (
-          <p className={style.desc}>{contentDetail.description}</p>
-        )}
-        <Markdown htmlAst={htmlAst} preview={preview} />
-      </Layout>
+      <>
+        <Layout preview={preview} className={style.detail}>
+          <Header
+            contentDetail={contentDetail}
+            createdAt={createdAt}
+            preview={preview}
+            className={style.detailHeader}
+          />
+          {contentDetail.description && (
+            <p className={style.desc}>{contentDetail.description}</p>
+          )}
+          <Markdown htmlAst={htmlAst} preview={preview} />
+        </Layout>
+        <Sidebar id={id} contentDetail={contentDetail} />
+      </>
     )
   }
 
@@ -52,10 +57,13 @@ export default function Article({ contentDetail, htmlAst, createdAt, preview }: 
         hasBackground
       />
       <Layout preview={preview} className={style.detail}>
-        {contentDetail.description && (
-          <p className={style.desc}>{contentDetail.description}</p>
-        )}
-        <Markdown htmlAst={htmlAst} preview={preview} />
+        <div className={style.main}>
+          {contentDetail.description && (
+            <p className={style.desc}>{contentDetail.description}</p>
+          )}
+          <Markdown htmlAst={htmlAst} preview={preview} />
+        </div>
+        <Sidebar id={id} contentDetail={contentDetail} />
       </Layout>
     </div>
   )

@@ -39,7 +39,8 @@ export default function VideoList({ category, contents }: Props) {
               id={content.id}
               contentDetail={content.release}
               mobileTheme="vertical"
-              className={style.video}
+              // 整体宽度接近容器宽度时要求恰好填满并且间距不变
+              className={contents.length <= 3 ? style.videoLess : style.videoMore}
             />
           </div>
         ))}

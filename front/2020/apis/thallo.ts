@@ -234,3 +234,16 @@ export async function getProductPageNotices(product: keyof typeof productCodeMap
   ])
   return { news, mkts }
 }
+
+export interface PgcHomePageActivity {
+  /** PC端图片 */
+  pPic: ImageElement
+  /** 跳转链接 */
+  url: LinkElement
+}
+
+/** pgc 首页右侧广告 */
+export async function getPgcHomePageActivities() {
+  const codes = [1, 2].map(i => `www-pgc-index_right-${i}`)
+  return getAdvertList<PgcHomePageActivity>(codes)
+}

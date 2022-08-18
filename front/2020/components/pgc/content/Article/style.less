@@ -8,6 +8,15 @@
 .detail {
   padding-top: 0;
 
+  .notMobile({
+    display: flex;
+
+    .main {
+      flex: 1;
+      min-width: 0;
+    }
+  });
+
   .desc {
     margin: 36px 0 20px;
     padding: 16px 20px;

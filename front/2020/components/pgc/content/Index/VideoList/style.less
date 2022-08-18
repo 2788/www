@@ -13,7 +13,7 @@
     margin: 24px 0 12px;
     padding: 12px 0 0 12px;
     border-bottom: none;
-    background: #FFF;
+    background: @grey-1;
   });
 }
 
@@ -30,7 +30,7 @@
   h3 {
     font-size: 20px;
     font-weight: 400;
-    color: #000;
+    color: @grey-8;
 
     .mobile({
       font-size: 14px;
@@ -67,14 +67,20 @@
 
   .video {
     .notMobile({
-      width: 220px;
+      &Less {
+        width: 230px;
+      }
+
+      &More {
+        width: 220px;
+      }
     });
   }
 }
 
 .placeholder {
   .mobile({
-    background: #FFF;
+    background: @grey-1;
 
     &::before {
       content: ' ';

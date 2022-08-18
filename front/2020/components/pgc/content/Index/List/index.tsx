@@ -8,7 +8,7 @@ import Loading from 'components/UI/Loading'
 
 import { ContentType, ContentCategory, ReleasedContent } from 'constants/pgc/content'
 import { articlesCount, videosMinCount, videosMaxCount } from 'constants/pgc/content-banner'
-import { listReleasedContent } from 'apis/admin/pgc/content'
+import { listReleasedContents } from 'apis/admin/pgc/content'
 import { useMobile } from 'hooks/ua'
 import Link from 'components/Link'
 import ResultEmpty from 'components/UI/ResultEmpty'
@@ -24,12 +24,15 @@ const topCount = 3
 export interface Props {
   isActive: boolean
   category: ContentCategory | null
+  hasSidebar: boolean
   defaultArticles?: ReleasedContent[]
   defaultHasMoreArticles?: boolean
   defaultVideos?: ReleasedContent[]
 }
 
-export default function List({ isActive, category, defaultArticles, defaultHasMoreArticles, defaultVideos }: Props) {
+export default function List({
+  isActive, category, hasSidebar, defaultArticles, defaultHasMoreArticles, defaultVideos
+}: Props) {
   const isMobile = useMobile()
 
   const [articles, setArticles] = useState(defaultArticles)
@@ -37,7 +40,6 @@ export default function List({ isActive, category, defaultArticles, defaultHasMo
   const [videos, setVideos] = useState(defaultVideos)
   const [isLoading, setIsLoading] = useState(defaultArticles == null || defaultVideos == null)
 
-  const hasSidebar = false // TODO: 后续右侧加上营销活动广告侧边栏后再把这里的实现补充完整
   const displayVideos = useMemo(() => {
     if (videos == null) {
       return []
@@ -57,12 +59,12 @@ export default function List({ isActive, category, defaultArticles, defaultHasMo
 
     setIsLoading(true)
     Promise.all([
-      listReleasedContent({
+      listReleasedContents({
         type: ContentType.Article,
         category: category ?? undefined,
         limit: articlesCount
       }),
-      listReleasedContent({
+      listReleasedContents({
         type: ContentType.Video,
         category: category ?? undefined,
         limit: videosMaxCount

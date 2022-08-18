@@ -4,6 +4,44 @@ import { Landpage, urlMap as landpageUrlMap } from 'constants/landpage'
  * @description 包括 id、展示名、页面地址等
  */
 
+/* eslint-disable import/no-dynamic-require */
+/* eslint-disable global-require */
+
+import kodoLargeIconUrl from './icons/large/kodo.png'
+import qcdnLargeIconUrl from './icons/large/qcdn.png'
+import sslLargeIconUrl from './icons/large/ssl.png'
+import piliLargeIconUrl from './icons/large/pili.png'
+import qvmLargeIconUrl from './icons/large/qvm.png'
+import cloudSqlLargeIconUrl from './icons/large/cloud-sql.png'
+import ddosLargeIconUrl from './icons/large/ddos.png'
+import smsLargeIconUrl from './icons/large/sms.png'
+import doraLargeIconUrl from './icons/large/dora.png'
+import doraImageLargeIconUrl from './icons/large/dora-image.png'
+import censorLargeIconUrl from './icons/large/censor.png'
+import faceidLargeIconUrl from './icons/large/faceid.png'
+import riskcontrolLargeIconUrl from './icons/large/riskcontrol.png'
+import rtnLargeIconUrl from './icons/large/rtn.png'
+import plsvLargeIconUrl from './icons/large/plsv.png'
+import plmsLargeIconUrl from './icons/large/plms.png'
+import expressLargeIconUrl from './icons/large/express.png'
+import qvsLargeIconUrl from './icons/large/qvs.png'
+import openapiLargeIconUrl from './icons/large/openapi.png'
+import ocrLargeIconUrl from './icons/large/ocr.png'
+import dcdnLargeIconUrl from './icons/large/dcdn.png'
+import pcdnLargeIconUrl from './icons/large/pcdn.png'
+import geekLargeIconUrl from './icons/large/geek.png'
+import viiLargeIconUrl from './icons/large/vii.png'
+import qnPlayerLargeIconUrl from './icons/large/qn-player.png'
+import voiceLargeIconUrl from './icons/large/voice.png'
+import storageLargeIconUrl from './icons/large/storage.png'
+import avsmartLargeIconUrl from './icons/large/avsmart.png'
+import beautysdkLargeIconUrl from './icons/large/beautysdk.png'
+import wafLargeIconUrl from './icons/large/waf.png'
+import qoeLargeIconUrl from './icons/large/qoe.png'
+import qecLargeIconUrl from './icons/large/qec.png'
+import documentLargeIconUrl from './icons/large/document.png'
+import enhancementLargeIconUrl from './icons/large/enhancement.png'
+
 export enum Product {
   /** 对象存储 Kodo */
   Kodo = 'kodo',
@@ -271,6 +309,138 @@ export const descMap = {
   [Product.Enhancement]: '基于七牛领先的深度学习技术，提供视频画质增强服务'
 } as const
 
+export const iconMap = {
+  [Product.Kodo]: require('./icons/default/kodo.svg').default,
+  [Product.Archive]: require('./icons/default/archive.svg').default,
+  [Product.Hdfs]: require('./icons/default/hdfs.svg').default,
+  [Product.Cdn]: require('./icons/default/cdn.svg').default,
+  [Product.Ssl]: require('./icons/default/ssl.svg').default,
+  [Product.Pili]: require('./icons/default/pili.svg').default,
+  [Product.Qvm]: require('./icons/default/qvm.svg').default,
+  [Product.Ddos]: require('./icons/default/ddos.svg').default,
+  [Product.Sms]: require('./icons/default/sms.svg').default,
+  [Product.Dora]: require('./icons/default/dora.svg').default,
+  [Product.DoraAudio]: require('./icons/default/dora-audio.svg').default,
+  [Product.DoraImage]: require('./icons/default/dora-image.svg').default,
+  [Product.Censor]: require('./icons/default/censor.svg').default,
+  [Product.FaceID]: require('./icons/default/faceid.svg').default,
+  [Product.RiskControl]: require('./icons/default/risk-control.svg').default,
+  [Product.Rtn]: require('./icons/default/rtn.svg').default,
+  [Product.Plsv]: require('./icons/default/plsv.svg').default,
+  [Product.Plms]: require('./icons/default/plms.svg').default,
+  [Product.Insight]: require('./icons/default/insight.svg').default,
+  [Product.Express]: require('./icons/default/express.svg').default,
+  [Product.Qvs]: require('./icons/default/qvs.svg').default,
+  [Product.OpenAPI]: require('./icons/default/openapi.svg').default,
+  [Product.Ocr]: require('./icons/default/ocr.svg').default,
+  [Product.Dcdn]: require('./icons/default/dcdn.svg').default,
+  [Product.Pcdn]: require('./icons/default/pcdn.svg').default,
+  [Product.Plesdk]: require('./icons/default/plesdk.svg').default,
+  [Product.CloudSql]: require('./icons/default/cloud-sql.svg').default,
+  [Product.Geek]: require('./icons/default/geek.svg').default,
+  [Product.Vii]: require('./icons/default/vii.svg').default,
+  [Product.QnPlayer]: require('./icons/default/qnplayer.svg').default,
+  [Product.Svesdk]: null,
+  [Product.Voice]: require('./icons/default/voice.svg').default,
+  [Product.Storage]: require('./icons/default/storage.svg').default,
+  [Product.Avsmart]: require('./icons/default/avsmart.svg').default,
+  [Product.Beautysdk]: require('./icons/default/beautysdk.svg').default,
+  [Product.WAF]: require('./icons/default/waf.svg').default,
+  [Product.Tts]: require('./icons/default/tts.svg').default,
+  [Product.Qoe]: require('./icons/default/qoe.svg').default,
+  [Product.Qec]: require('./icons/default/qec.svg').default,
+  [Product.Document]: null,
+  [Product.Enhancement]: null
+}
+
+export const smallIconMap = {
+  [Product.Kodo]: require('./icons/small/kodo.svg').default,
+  [Product.Archive]: require('./icons/small/archive.svg').default,
+  [Product.Hdfs]: require('./icons/small/hdfs.svg').default,
+  [Product.Cdn]: require('./icons/small/cdn.svg').default,
+  [Product.Ssl]: require('./icons/small/ssl.svg').default,
+  [Product.Pili]: require('./icons/small/pili.svg').default,
+  [Product.Qvm]: require('./icons/small/qvm.svg').default,
+  [Product.Ddos]: require('./icons/small/ddos.svg').default,
+  [Product.Sms]: require('./icons/small/sms.svg').default,
+  [Product.Dora]: require('./icons/small/dora.svg').default,
+  [Product.DoraAudio]: require('./icons/small/dora-audio.svg').default,
+  [Product.DoraImage]: require('./icons/small/dora-image.svg').default,
+  [Product.Censor]: require('./icons/small/censor.svg').default,
+  [Product.FaceID]: require('./icons/small/faceid.svg').default,
+  [Product.RiskControl]: require('./icons/small/risk-control.svg').default,
+  [Product.Rtn]: require('./icons/small/rtn.svg').default,
+  [Product.Plsv]: require('./icons/small/plsv.svg').default,
+  [Product.Plms]: require('./icons/small/plms.svg').default,
+  [Product.Insight]: require('./icons/small/insight.svg').default,
+  [Product.Express]: require('./icons/small/express.svg').default,
+  [Product.Qvs]: require('./icons/small/qvs.svg').default,
+  [Product.OpenAPI]: require('./icons/small/openapi.svg').default,
+  [Product.Ocr]: require('./icons/small/ocr.svg').default,
+  [Product.Dcdn]: require('./icons/small/dcdn.svg').default,
+  [Product.Pcdn]: require('./icons/small/pcdn.svg').default,
+  [Product.Plesdk]: require('./icons/small/plesdk.svg').default,
+  [Product.CloudSql]: require('./icons/small/cloud-sql.svg').default,
+  [Product.Geek]: require('./icons/small/geek.svg').default,
+  [Product.Vii]: require('./icons/small/vii.svg').default,
+  [Product.QnPlayer]: require('./icons/small/qnplayer.svg').default,
+  [Product.Svesdk]: null,
+  [Product.Voice]: require('./icons/small/voice.svg').default,
+  [Product.Storage]: require('./icons/small/storage.svg').default,
+  [Product.Avsmart]: require('./icons/small/avsmart.svg').default,
+  [Product.Beautysdk]: require('./icons/small/beautysdk.svg').default,
+  [Product.WAF]: require('./icons/small/waf.svg').default,
+  [Product.Tts]: require('./icons/small/tts.svg').default,
+  [Product.Qoe]: require('./icons/small/qoe.svg').default,
+  [Product.Qec]: require('./icons/small/qec.svg').default,
+  [Product.Document]: null,
+  [Product.Enhancement]: null
+}
+
+export const largeIconMap: Record<Product, string | null> = {
+  [Product.Kodo]: kodoLargeIconUrl,
+  [Product.Archive]: null,
+  [Product.Hdfs]: null,
+  [Product.Cdn]: qcdnLargeIconUrl,
+  [Product.Ssl]: sslLargeIconUrl,
+  [Product.Pili]: piliLargeIconUrl,
+  [Product.Qvm]: qvmLargeIconUrl,
+  [Product.CloudSql]: cloudSqlLargeIconUrl,
+  [Product.Ddos]: ddosLargeIconUrl,
+  [Product.Sms]: smsLargeIconUrl,
+  [Product.Dora]: doraLargeIconUrl,
+  [Product.DoraAudio]: null,
+  [Product.DoraImage]: doraImageLargeIconUrl,
+  [Product.Censor]: censorLargeIconUrl,
+  [Product.FaceID]: faceidLargeIconUrl,
+  [Product.RiskControl]: riskcontrolLargeIconUrl,
+  [Product.Rtn]: rtnLargeIconUrl,
+  [Product.Plsv]: plsvLargeIconUrl,
+  [Product.Plms]: plmsLargeIconUrl,
+  [Product.Insight]: null,
+  [Product.Express]: expressLargeIconUrl,
+  [Product.Qvs]: qvsLargeIconUrl,
+  [Product.OpenAPI]: openapiLargeIconUrl,
+  [Product.Ocr]: ocrLargeIconUrl,
+  [Product.Dcdn]: dcdnLargeIconUrl,
+  [Product.Pcdn]: pcdnLargeIconUrl,
+  [Product.Plesdk]: null,
+  [Product.Geek]: geekLargeIconUrl,
+  [Product.Vii]: viiLargeIconUrl,
+  [Product.QnPlayer]: qnPlayerLargeIconUrl,
+  [Product.Svesdk]: null,
+  [Product.Voice]: voiceLargeIconUrl,
+  [Product.Storage]: storageLargeIconUrl,
+  [Product.Avsmart]: avsmartLargeIconUrl,
+  [Product.Beautysdk]: beautysdkLargeIconUrl,
+  [Product.Tts]: null,
+  [Product.WAF]: wafLargeIconUrl,
+  [Product.Qoe]: qoeLargeIconUrl,
+  [Product.Qec]: qecLargeIconUrl,
+  [Product.Document]: documentLargeIconUrl,
+  [Product.Enhancement]: enhancementLargeIconUrl
+}
+
 export enum Category {
   Service = 'service',
   Media = 'media',
@@ -345,8 +515,10 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
   [SubCategory.Distribution]: [Product.Cdn, Product.Dcdn, Product.Pcdn, Product.Ssl],
   [SubCategory.Basis]: [Product.Qvm, Product.Qec, Product.CloudSql, Product.Ddos, Product.WAF, Product.Sms],
   [SubCategory.Audio]: [
+    // TODO: 尝试弄成一个跟 Product.Kodo 配置几乎一样的真·Product 简化这里的逻辑
     { product: Product.Kodo, name: '音视频存储', desc: '为音视频多媒体数据提供高可靠、高可用和高性能的对象存储服务' },
     Product.DoraAudio,
+    // TODO: 尝试弄成一个跟 Product.Cdn 配置几乎一样的真·Product 简化这里的逻辑
     { product: Product.Cdn, name: '点播加速', desc: '通过全方位的 CDN 质量监控和智能节点调度，提供音视频点播优化加速服务' }
   ],
   [SubCategory.LiveBroadcast]: [Product.Pili, Product.Geek, Product.Rtn, Product.Qvs],
@@ -478,4 +650,3 @@ export const categories = [
   Category.Data,
   Category.Service
 ] as const
-

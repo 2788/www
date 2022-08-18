@@ -9,7 +9,7 @@ import { GetServerSidePropsContext } from 'next'
 import {
   ContentType, contentTypes, contentTypeTextMap, ContentCategory, contentCategories, contentCategoryTextMap
 } from 'constants/pgc/content'
-import { listReleasedContent, ListOptions } from 'apis/admin/pgc/content'
+import { listReleasedContents, ListOptions } from 'apis/admin/pgc/content'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import Layout from 'components/Layout'
 import List, { Props as BaseProps, getPageSize } from 'components/pgc/content/List'
@@ -48,7 +48,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext<{ type: 
     type,
     category: category ?? undefined
   }
-  const result = await listReleasedContent(options)
+  const result = await listReleasedContents(options)
 
   const globalBanners = await getGlobalBanners()
 

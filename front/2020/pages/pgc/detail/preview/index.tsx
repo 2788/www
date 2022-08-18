@@ -73,7 +73,7 @@ export default function PgcDetailPreview() {
   const preview = useMemo(() => (
     previewData
     ? { editPagePrefix: previewData.editPagePrefix }
-    : undefined
+    : null
   ), [previewData])
 
   if (!previewData) {
@@ -82,10 +82,11 @@ export default function PgcDetailPreview() {
 
   return (
     <Detail
+      id={null}
       type={previewData.type}
       contentDetail={previewData.contentDetail}
       articleHtmlAst={articleHtmlAst}
-      createdAt={previewData.createdAt ? Number(previewData.createdAt) : undefined}
+      createdAt={previewData.createdAt ? Number(previewData.createdAt) : null}
       preview={preview}
     />
   )
