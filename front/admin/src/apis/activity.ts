@@ -77,7 +77,7 @@ export interface IScanner {
   endTime: number // 链接有效期结束时间，单位为秒
 }
 
-const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/activity', '/sitemap.xml'] }
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/activity'] }
 
 @injectable()
 export default class ActivityApis {

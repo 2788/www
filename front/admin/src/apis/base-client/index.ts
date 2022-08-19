@@ -7,7 +7,7 @@ import { injectable } from 'qn-fe-core/di'
 import Client, { Output, Options, InternalOptions } from 'qn-fe-core/client'
 import { BaseClient as AdminBaseClient } from 'admin-base/common/apis/base'
 
-import { wwwPaths } from 'constants/deploy/refresh'
+import { wwwPaths, sitemapPaths } from 'constants/deploy/refresh'
 import { RefreshClient } from 'apis/refresh'
 
 export { Output }
@@ -49,7 +49,7 @@ export default class BaseClient extends Client<unknown, unknown, Output, BaseCli
     const result = await this.adminBaseClient.send(url, baseOptions)
 
     if (wwwRefresh && wwwRefresh.length > 0) {
-      await this.refreshClient.refresh(wwwRefresh, true)
+      await this.refreshClient.refresh([...wwwRefresh, ...sitemapPaths], true)
     }
 
     return result

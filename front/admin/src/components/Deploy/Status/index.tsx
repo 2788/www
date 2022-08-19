@@ -10,9 +10,12 @@ import { ToasterStore } from 'admin-base/common/toaster'
 import { Button, NumberInput } from 'react-icecream-2'
 
 import { wwwSourceHost, wwwHost } from 'constants/env'
+import { kodo404Path, sitemapPaths } from 'constants/deploy/refresh'
 import WwwApis from 'apis/refresh/www'
 
 import style from './style.m.less'
+
+const specialPaths = ['/', kodo404Path, ...sitemapPaths].sort()
 
 type Status = boolean | undefined | null
 
@@ -88,7 +91,7 @@ function Diff() {
   useEffect(() => {
     toasterStore.promise(
       wwwApis.getPathsFromSitemap().then(paths => {
-        setAllPaths(['/', '/sitemap.xml', '/errno-404', ...paths])
+        setAllPaths([...specialPaths, ...paths])
       })
     )
   }, [toasterStore, wwwApis])

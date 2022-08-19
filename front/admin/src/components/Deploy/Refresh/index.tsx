@@ -13,7 +13,7 @@ import { Button, Alert, Dialog, DialogFooter } from 'react-icecream-2'
 import { InfoIcon } from 'react-icecream-2/icons'
 import { Form, FormItem, useFormstateX, TextArea, Checkbox, useFormFooterCtx } from 'react-icecream-form'
 
-import { wwwPaths, pathRule } from 'constants/deploy/refresh'
+import { wwwPaths, sitemapPaths, indexPath, pathRule } from 'constants/deploy/refresh'
 import { validatePath } from 'transforms/deploy/refresh'
 import { RefreshClient } from 'apis/refresh'
 
@@ -53,7 +53,7 @@ function getPathsFromTextarea(textInput: string): string[] {
 function getAllPaths(value: ReturnType<typeof createState>['value']) {
   const paths = getPathsFromTextarea(value.paths).filter(Boolean)
   if (value.withIndex) {
-    paths.push('')
+    paths.push(indexPath)
   }
   return [...new Set(paths)].sort()
 }
@@ -93,7 +93,7 @@ export default observer(function Refresh() {
 
   function setDefaultGlobal() {
     state.set({
-      paths: wwwPaths.filter(path => path !== '').join('\n'),
+      paths: [...sitemapPaths, ...wwwPaths.filter(path => path !== indexPath)].join('\n'),
       withIndex: true,
       withSub: true
     })

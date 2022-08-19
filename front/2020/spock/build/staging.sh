@@ -19,7 +19,7 @@ cp .env.staging .env.local
 echo "deploy start"
 date
 cd $FRONTEND
-node ./deploy.js $DEPLOY_AK $DEPLOY_SK www-2020-staging
+node ./deploy.js $DEPLOY_AK $DEPLOY_SK www-2020-staging --with-source-map
 date
 echo "deploy end"
 

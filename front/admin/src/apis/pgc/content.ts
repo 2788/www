@@ -14,7 +14,7 @@ import { MongoApiBaseClient, generateStdInfo, ListBaseOptions } from 'apis/mongo
 const prefix = 'pgc-content'
 
 function getRefreshPathsOptions(needRelease: boolean): RefreshOptions {
-  return { wwwRefresh: needRelease ? ['/pgc', '/sitemap.xml'] : [] }
+  return { wwwRefresh: needRelease ? ['/pgc'] : [] }
 }
 
 @injectable()

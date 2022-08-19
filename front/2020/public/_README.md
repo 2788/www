@@ -9,7 +9,6 @@
 - `googlea68cdff03883fe2f.html` `google` 的 `search console`
 - `ByteDanceVerify.html` 头条搜索站长验证文件
 - `sitemapindex.xml` `sitemap index` 文件
-  - `TODO`：临时将 `sitemapindex.xml` 维护在 `public` 目录下，后续需要像 `sitemap.xml` 一样做成路由
   - 包含 `www.qiniu.com sitemap` 及云社区（`qfans`）`sitemap`
   - 云社区（`qfans`）`sitemap`（`www.qiniu.com/qfans/sitemap_xxx.xml`）文件维护在云社区站点代码中
 

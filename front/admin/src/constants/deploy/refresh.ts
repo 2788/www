@@ -43,22 +43,19 @@ export const basePaths = [
   '/user-agreement'
 ] as const
 
-/** 4xx & 5xx */
-export const errorPaths = [
-  // https://developer.qiniu.com/kodo/manual/1659/download-setting
-  // TODO: 404 本身并不触发 errno-404 回源，因此目前只能覆盖更新、不能直接删缓存自动回源，后续需要优化
-  '/errno-404',
+export const indexPath = ''
 
-  // https://nextjs.org/docs/advanced-features/custom-error-page
-  '/404',
+// https://developer.qiniu.com/kodo/manual/1659/download-setting
+// TODO: 404 本身并不触发 errno-404 回源，因此目前只能覆盖更新、不能直接删缓存自动回源，后续需要优化
+export const kodo404Path = '/errno-404'
 
-  // https://nextjs.org/docs/advanced-features/custom-error-page
-  // TODO: 待实现
-  '/500'
+export const sitemapPaths = [
+  '/sitemap.xml',
+  '/sitemapindex.xml'
 ] as const
 
 /** www 主站内可通过 ssr 生成的主体动态内容，全局刷新的时候需要刷新这里的全部内容 */
-export const wwwPaths = ['', '/sitemap.xml', ...errorPaths, ...basePaths] as const // 空字符串为首页
+export const wwwPaths = [indexPath, kodo404Path, ...basePaths] as const
 
 /** 分站路径前缀 */
 export const externalSitePaths = [

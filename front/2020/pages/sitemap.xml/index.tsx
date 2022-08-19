@@ -3,7 +3,7 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-// TODO: 通过 sitemapindex 引入分站的 sitemap？
+// https://cf.qiniu.io/pages/viewpage.action?pageId=107322875
 
 import dayjs from 'dayjs'
 import { GetServerSidePropsContext } from 'next'
@@ -42,7 +42,7 @@ async function getPaths(staticPaths: string[]): Promise<string[]> {
 function render(paths: string[]): string {
   const now = dayjs().format('YYYY-MM-DD')
 
-  // TODO: 优化 lastmod 时间
+  // TODO: 设置 priority & 优化 lastmod 时间
   const urls = paths.map(path => `
       <url>
         <loc>${path}</loc>

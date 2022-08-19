@@ -3,23 +3,25 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { Collapse, CollapsePanel, RadioGroup, Radio } from 'react-icecream-2'
 
 import { wwwHost, wwwSourceHost } from 'constants/env'
-import { basePaths, wwwPaths, externalSitePaths } from 'constants/deploy/refresh'
+import { basePaths, indexPath, kodo404Path, sitemapPaths, externalSitePaths } from 'constants/deploy/refresh'
 import WwwApis from 'apis/refresh/www'
 
 import style from './style.m.less'
+
+const specialPaths = [indexPath, kodo404Path, ...sitemapPaths].sort()
 
 function PathItem({ host, path }: { host: string, path: string }) {
   return (
     <li>
       {/* eslint-disable-next-line react/jsx-no-target-blank */}
-      <a href={host + path} target="_blank">{path || '首页'}</a>
+      <a href={host + path} target="_blank">{path === indexPath ? '首页' : path}</a>
     </li>
   )
 }
@@ -27,14 +29,6 @@ function PathItem({ host, path }: { host: string, path: string }) {
 export default function PathsDashboard() {
   const toasterStore = useInjection(ToasterStore)
   const wwwApis = useInjection(WwwApis)
-
-  const specialPaths = useMemo(() => {
-    const baseList = Array.from<string>(basePaths)
-    const allList = Array.from<string>(wwwPaths)
-    const specialList = allList.filter(path => !baseList.includes(path))
-    specialList.sort()
-    return specialList
-  }, [])
 
   const [allPaths, setAllPaths] = useState<string[]>([])
   const [currentHost, setCurrentHost] = useState<string>(wwwHost)
@@ -58,7 +52,7 @@ export default function PathsDashboard() {
             ))}
           </ol>
         </CollapsePanel>
-        <CollapsePanel title="主站特殊路径" value="special">
+        <CollapsePanel title="主站特殊路径（不包括 public 里的静态文件）" value="special">
           <ol>
             {specialPaths.map(path => (
               <PathItem key={path} host={currentHost} path={path} />
@@ -72,7 +66,7 @@ export default function PathsDashboard() {
             ))}
           </ol>
         </CollapsePanel>
-        <CollapsePanel title="主站主要路径" value="sitemap">
+        <CollapsePanel title="主站主要路径（不包括首页和特殊路径）" value="sitemap">
           <ol>
             {allPaths.map(path => (
               <PathItem key={path} host={currentHost} path={path} />

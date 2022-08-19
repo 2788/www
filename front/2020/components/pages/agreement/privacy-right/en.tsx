@@ -990,19 +990,24 @@ export default function Content() {
         preserved for the minimum period necessary to achieve the Purpose.
         Unless you agree to an extension of the storage period or we are
         permitted by law, we will
+        <span> </span>
         <strong>
           delete or anonymize the source data and back-up data of your personal
           information.
         </strong>
+        <span> </span>
         If you cancel your account or delete the aforesaid information
         voluntarily,
+        <span> </span>
         <strong>
           Qiniu Cloud will retain your existing personal information for the
           shortest period in accordance with laws and regulations.
         </strong>
+        <span> </span>
         During the shortest storage period as required by law, we will not use
         your personal information commercially. When your personal information
         expires the above storage period,
+        <span> </span>
         <strong>
           we will delete or anonymize the source data and back-up data of it.
         </strong>
@@ -1440,7 +1445,7 @@ export default function Content() {
         </a>
         ;
       </p>
-      <p>10.1.2 Call our customer service hotline(400 - 808 - 9176 ext. 1)</p>
+      <p>10.1.2 Call our customer service hotline (400 - 808 - 9176 ext. 1);</p>
       <p>10.1.3 Send mail to bd@qiniu.com;</p>
       <p>
         10.1.4 Mailing letters to: Customer Service Center, Building Q, Shanghai
