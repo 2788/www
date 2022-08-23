@@ -177,15 +177,15 @@ function FeedbackEntryPc() {
         </div>
 
         <div className={style.contectWrapper}>
-          <div className={style.wechatPanel}>
+          <div className={cls(style.wechatPanel, !wechatPanelVisible && style.hidden)}>
             {wechatPanelView}
           </div>
 
-          <div className={style.contactPanel}>
+          <div className={cls(style.contactPanel, !contactPanelVisible && style.hidden)}>
             {contactPanelView}
           </div>
 
-          <div className={style.consultPanel}>
+          <div className={cls(style.consultPanel, !consultPanelVisible && style.hidden)}>
             {consultPanelView}
           </div>
         </div>
