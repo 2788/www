@@ -211,8 +211,6 @@ const productCodeMap = {
   [Product.Beautysdk]: 'beautysdk',
   [Product.CloudSql]: 'cloud-sql',
   [Product.Ddos]: 'ddos',
-  [Product.Insight]: 'insight',
-  [Product.Express]: 'pandora',
   [Product.Plesdk]: 'plesdk',
   [Product.Qec]: 'qec',
   [Product.Qvm]: 'qvm',

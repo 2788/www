@@ -23,7 +23,6 @@ import riskcontrolLargeIconUrl from './icons/large/riskcontrol.png'
 import rtnLargeIconUrl from './icons/large/rtn.png'
 import plsvLargeIconUrl from './icons/large/plsv.png'
 import plmsLargeIconUrl from './icons/large/plms.png'
-import expressLargeIconUrl from './icons/large/express.png'
 import qvsLargeIconUrl from './icons/large/qvs.png'
 import openapiLargeIconUrl from './icons/large/openapi.png'
 import ocrLargeIconUrl from './icons/large/ocr.png'
@@ -81,10 +80,6 @@ export enum Product {
   Plsv = 'plsv',
   /** 推流 SDK */
   Plms = 'plms',
-  /** 智能日志管理平台 */
-  Insight = 'insight',
-  /** 机器数据分析平台 */
-  Express = 'express',
   /** 视频监控 */
   Qvs = 'qvs',
   /** AI 开放市场 */
@@ -149,8 +144,6 @@ export const nameMap = {
   [Product.Rtn]: '实时音视频 QRTC',
   [Product.Plsv]: '短视频 SDK',
   [Product.Plms]: '直播推流 SDK',
-  [Product.Insight]: '智能日志管理平台',
-  [Product.Express]: '机器数据分析平台 Pandora',
   [Product.Qvs]: '视频监控 QVS',
   [Product.OpenAPI]: 'AI 开放市场',
   [Product.Ocr]: '票证自动识别 OCR',
@@ -193,8 +186,6 @@ export const urlMap = {
   [Product.Rtn]: '/products/rtn',
   [Product.Plsv]: '/products/plsv',
   [Product.Plms]: '/products/plms',
-  [Product.Insight]: '/products/insight',
-  [Product.Express]: '/products/pandora',
   [Product.Qvs]: '/products/qvs',
   [Product.OpenAPI]: '/products/openapi',
   [Product.Ocr]: '/products/ocr',
@@ -237,8 +228,6 @@ export const priceUrlMap = {
   [Product.Rtn]: '/prices/rtc',
   [Product.Plsv]: '/prices/plsv',
   [Product.Plms]: null,
-  [Product.Insight]: null,
-  [Product.Express]: null,
   [Product.Qvs]: '/prices/qvs',
   [Product.OpenAPI]: '/prices/openapi',
   [Product.Ocr]: '/prices/ocr',
@@ -285,8 +274,6 @@ export const descMap = {
   [Product.RiskControl]: '精准识别业务风险和欺诈问题，助力企业建立全流程风控体系',
   [Product.Qvs]: '面向视频监控设备提供视频流接入、存储、分发服务',
 
-  [Product.Insight]: '海量异构数据采集，秒级实时日志检索，高效智能业务洞察',
-  [Product.Express]: '助力企业探索数据、创造价值、预见未来',
   // TODO 需要加入到顶部导航或者相关产品再补充
   [Product.OpenAPI]: 'AI 开放市场是一个开放平台，提供图片，文本，音频，视频等智能数据处理服务',
   [Product.Ocr]: '提供车险保单识别，营业执照识别等票证识别服务，帮助解决信息结构化问题',
@@ -328,8 +315,6 @@ export const iconMap = {
   [Product.Rtn]: require('./icons/default/rtn.svg').default,
   [Product.Plsv]: require('./icons/default/plsv.svg').default,
   [Product.Plms]: require('./icons/default/plms.svg').default,
-  [Product.Insight]: require('./icons/default/insight.svg').default,
-  [Product.Express]: require('./icons/default/express.svg').default,
   [Product.Qvs]: require('./icons/default/qvs.svg').default,
   [Product.OpenAPI]: require('./icons/default/openapi.svg').default,
   [Product.Ocr]: require('./icons/default/ocr.svg').default,
@@ -372,8 +357,6 @@ export const smallIconMap = {
   [Product.Rtn]: require('./icons/small/rtn.svg').default,
   [Product.Plsv]: require('./icons/small/plsv.svg').default,
   [Product.Plms]: require('./icons/small/plms.svg').default,
-  [Product.Insight]: require('./icons/small/insight.svg').default,
-  [Product.Express]: require('./icons/small/express.svg').default,
   [Product.Qvs]: require('./icons/small/qvs.svg').default,
   [Product.OpenAPI]: require('./icons/small/openapi.svg').default,
   [Product.Ocr]: require('./icons/small/ocr.svg').default,
@@ -417,8 +400,6 @@ export const largeIconMap: Record<Product, string | null> = {
   [Product.Rtn]: rtnLargeIconUrl,
   [Product.Plsv]: plsvLargeIconUrl,
   [Product.Plms]: plmsLargeIconUrl,
-  [Product.Insight]: null,
-  [Product.Express]: expressLargeIconUrl,
   [Product.Qvs]: qvsLargeIconUrl,
   [Product.OpenAPI]: openapiLargeIconUrl,
   [Product.Ocr]: ocrLargeIconUrl,
@@ -443,8 +424,7 @@ export const largeIconMap: Record<Product, string | null> = {
 
 export enum Category {
   Service = 'service',
-  Media = 'media',
-  Data = 'data'
+  Media = 'media'
 }
 
 export enum SubCategory {
@@ -454,8 +434,7 @@ export enum SubCategory {
   Audio = 'audio',
   LiveBroadcast = 'liveBroadcast',
   Dora = 'dora',
-  Sdk = 'sdk',
-  Platform = 'platform'
+  Sdk = 'sdk'
 }
 
 export const subCategoryNameMap = {
@@ -465,8 +444,7 @@ export const subCategoryNameMap = {
   [SubCategory.Audio]: '音视频点播',
   [SubCategory.LiveBroadcast]: '直播与实时互动',
   [SubCategory.Dora]: '智能多媒体服务',
-  [SubCategory.Sdk]: '客户端 SDK',
-  [SubCategory.Platform]: '机器数据分析平台'
+  [SubCategory.Sdk]: '客户端 SDK'
 } as const
 
 // 次级标题链接
@@ -527,8 +505,7 @@ export const subCategoryProductsMap: { [s in SubCategory]: PartialProductData[] 
     Product.FaceID, Product.Ocr, Product.Vii, Product.Voice, Product.Qoe,
     Product.RiskControl, Product.Enhancement, Product.OpenAPI
   ],
-  [SubCategory.Sdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk],
-  [SubCategory.Platform]: [Product.Express]
+  [SubCategory.Sdk]: [Product.Plsv, Product.Plms, Product.QnPlayer, Product.Beautysdk]
 }
 
 export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[] } = {
@@ -536,8 +513,7 @@ export const categorySubCategoriesMap: { [c in Category]: readonly SubCategory[]
   [Category.Media]: [
     SubCategory.Audio, SubCategory.LiveBroadcast, SubCategory.Dora,
     SubCategory.Sdk, SubCategory.Storage, SubCategory.Distribution
-  ],
-  [Category.Data]: [SubCategory.Storage, SubCategory.Platform]
+  ]
 }
 
 export function getSubCategoryProducts(category: Category, subCategory: SubCategory) {
@@ -548,8 +524,6 @@ export function getSubCategoryProducts(category: Category, subCategory: SubCateg
         return [Product.Kodo, Product.Archive]
       case Category.Media:
         return [Product.Kodo, Product.Storage]
-      case Category.Data:
-        return [Product.Kodo, Product.Hdfs]
       default:
         // 默认返回全部的云存储产品
         return subCategoryProductsMap[subCategory]
@@ -629,24 +603,20 @@ export const categoryMedia = [
 
 export const categoryNameMap = {
   [Category.Service]: '基础能力',
-  [Category.Media]: '多媒体数据处理平台及服务',
-  [Category.Data]: '机器数据处理平台'
+  [Category.Media]: '多媒体数据处理平台及服务'
 } as const
 
 export const categoryNameMapForMp = {
   [Category.Media]: '视觉数据智能',
-  [Category.Data]: '机器数据智能',
   [Category.Service]: '基础服务'
 } as const
 
 export const categoryEnNameMap = {
   [Category.Service]: 'Cloud Essentials',
-  [Category.Media]: 'Media PaaS',
-  [Category.Data]: 'Data PaaS'
+  [Category.Media]: 'Media PaaS'
 } as const
 
 export const categories = [
   Category.Media,
-  Category.Data,
   Category.Service
 ] as const

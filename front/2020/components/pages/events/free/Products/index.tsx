@@ -86,14 +86,6 @@ const data = [
     items: ['免费赠送内容审核（三鉴）各 6 万张，有效规避内容不合规风险']
   },
   {
-    title: nameMap[Product.Insight],
-    desc: '适用于运维监控、安全审计及业务数据分析等场景',
-    btnTitle: '立即使用',
-    getUrl: 'https://portal.qiniu.com/insight/logdb/overview',
-    moreUrl: urlMap[Product.Insight],
-    items: ['新增日志数据 1 GB/月', '存量日志数据 1 GB/月', '日志仓库 1 个/月']
-  },
-  {
     title: nameMap[Product.Dora],
     desc: '针对海量多媒体数据提供高效、稳定、丰富的多媒体数据处理服务',
     btnTitle: '立即使用',

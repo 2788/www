@@ -62,7 +62,6 @@ function PageContent() {
 
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
-          <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="异构数据湖" product={Product.Kodo} />
           <RelatedProduct name="视觉数据智能" product={Product.Dora} />
         </Related>

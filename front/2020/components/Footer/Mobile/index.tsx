@@ -17,7 +17,7 @@ function MenuItem({ children }: PropsWithChildren<{}>) {
 
 export default function FooterForMobile() {
   const productItems = [
-    Product.Kodo, Product.Cdn, Product.Pili, Product.DoraAudio, Product.Censor, Product.Qvm, Product.Express
+    Product.Kodo, Product.Cdn, Product.Pili, Product.DoraAudio, Product.Censor, Product.Qvm
   ] as const
   const productItemsView = productItems.map(product => (
     <MenuItem key={product}><Link href={urlMap[product]}>{nameMap[product]}</Link></MenuItem>

@@ -63,7 +63,6 @@ function Main() {
       <Case />
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
-          <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct name="存储与数据湖" product={Product.Kodo} />
           <RelatedItem icon={createElement(iconMap[Land.Sdk])} href={urlMap[Land.Sdk]} desc={descMap[Land.Sdk]}>
             {nameMap[Land.Sdk]}

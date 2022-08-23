@@ -70,7 +70,7 @@ function PageContent() {
           <LinkItem href="https://developer.qiniu.com/kodoe">私有云存储</LinkItem>
         </LinkGroup>
         <LinkGroup title="相关产品">
-          {[Product.Kodo, Product.Dora, Product.Express].map(product => (
+          {[Product.Kodo, Product.Dora].map(product => (
             <LinkItem key={product} href={productUrlMap[product]!}>{productNameMap[product]}</LinkItem>
           ))}
         </LinkGroup>

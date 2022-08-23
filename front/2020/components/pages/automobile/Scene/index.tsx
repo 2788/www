@@ -1,9 +1,8 @@
 import React from 'react'
 import { Product } from 'constants/products'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
-import Related, { Item, ProductItem } from 'components/Solution/Scene/Related'
+import Related, { ProductItem } from 'components/Solution/Scene/Related'
 
-import PisaIcon from './images/pisa.svg'
 import image1 from './images/image1.png'
 import image2 from './images/image2.png'
 
@@ -35,13 +34,7 @@ const panels = [
       '用户行为趋势：用户访问时间段、车品牌访问统计、页面访问量、用户区域分布等信息，并进行同比、环比可视化展示',
       'AI 故障预测：利用专家经验及机器学习算法设计动态阈值，一旦触发阈值，提示故障风险，联动预案处理',
       '拓扑化快速故障定位：拓扑呈现服务间依赖关系，业务故障，服务间影响一目了然，关联IT指标及事件层层展开，挖掘根因'
-    ],
-    relatedComponent: (
-      <Related size={3}>
-        <ProductItem product={Product.Express} />
-        <Item icon={<PisaIcon />}>智能运维分析服务 Pisa</Item>
-      </Related>
-    )
+    ]
   }
 ]
 
@@ -67,8 +60,12 @@ export default function AutomobileScene() {
                   ))
                 }
               </ul>
-              <h4 className={style.title}>相关产品</h4>
-              {panel.relatedComponent}
+              {panel.relatedComponent && (
+                <>
+                  <h4 className={style.title}>相关产品</h4>
+                  {panel.relatedComponent}
+                </>
+              )}
             </SceneBlock>
           </ScenePanel>
         ))

@@ -43,13 +43,12 @@ function LinkGroup({ title, children }: PropsWithChildren<ILinkGroupProps>) {
 
 function LinkGroups() {
   const productItems = [
-    Product.Kodo, Product.Cdn, Product.Pili, Product.DoraAudio, Product.Censor, Product.Qvm, Product.Express
+    Product.Kodo, Product.Cdn, Product.Pili, Product.DoraAudio, Product.Censor, Product.Qvm
   ] as const
   const productItemsView = productItems.map(product => (
     <LinkItem key={product} url={urlMap[product]}>
-      {/** pandora 因文字较多所以特殊处理一下
-       * todo：以后考虑改为多出显示省略号？ */}
-      {product === Product.Express ? 'Pandora' : nameMap[product]}
+      {/* todo：以后考虑改为多出显示省略号？ */}
+      {nameMap[product]}
     </LinkItem>
   ))
 

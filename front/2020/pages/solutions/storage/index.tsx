@@ -57,7 +57,6 @@ function Page() {
         <Related>
           <RelatedProduct product={Product.Kodo} />
           <RelatedProduct product={Product.Dora} />
-          <RelatedProduct product={Product.Express} />
         </Related>
       </Section>
     </>

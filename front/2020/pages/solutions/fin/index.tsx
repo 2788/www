@@ -129,7 +129,6 @@ function PageContent() {
           <RelatedItem icon={<IconKodoe />} href={solutionUrlMap[Solution.Kodoe]!} desc={solutionDescMap[Solution.Kodoe]}>
             存储与数据湖
           </RelatedItem>
-          <RelatedProduct name="机器数据智能" product={Product.Express} />
           <RelatedProduct product={Product.FaceID} />
           <RelatedProduct name="OCR 识别" product={Product.Ocr} />
         </Related>

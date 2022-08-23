@@ -11,12 +11,10 @@ import ProductTag from 'components/Product/Tag'
 import Link from 'components/Link'
 
 import logoDanlan from './logos/danlan.png'
-import logoJinsheng from './logos/jinsheng.png'
 import logoKuaikan from './logos/kuaikan.png'
 import logoLiulishuo from './logos/liulishuo.png'
 import logoPinganhaoyisheng from './logos/pinganhaoyisheng.png'
 import logoShimowendang from './logos/shimowendang.png'
-import logoYinjifuli from './logos/yinjifuli.png'
 import logoZhongguowang from './logos/zhongguowang.png'
 
 import style from './style.less'
@@ -40,14 +38,6 @@ export default function Selected() {
           products={[Product.Plsv]}
         >
           “快看漫画是是引领行业的新生代漫画阅读平台和兴趣社区。它为用户提供优质原创漫画内容,营造良好的二次元社区氛围,成为年轻一代的潮流文化阵地。
-        </Case>
-        <Case
-          title="银基富力"
-          url="https://blog.qiniu.com/archives/8894"
-          logo={logoYinjifuli}
-          products={[Product.Express]}
-        >
-          上海银基富力信息技术有限公司是一家新兴的创业企业，致力于大数据，人工智能领域的创新应用和研发，专注在数据中心领域的智能运维业务。
         </Case>
         <Case
           title="石墨文档"
@@ -84,16 +74,6 @@ export default function Selected() {
           products={[Product.Kodo, Product.Cdn, Product.Pili]}
         >
           中国网是国务院新闻办公室领导，中国外文出版发行事业局管理的国家重点新闻网站。自 2000 年成立以来，陆续实现了用中、英、法、西、德、日、俄、阿、韩、世界语 10 个语种 11 个文版，24 小时对外发布信息，访问用户覆盖全球 200 多个国家和地区，成为中国进行国际传播、信息交流的重要窗口。
-        </Case>
-      </TabPane>
-      <TabPane value="4" tab="智能硬件">
-        <Case
-          title="晶盛机电"
-          url="https://blog.qiniu.com/archives/8814"
-          logo={logoJinsheng}
-          products={[Product.Express]}
-        >
-          浙江晶盛机电股份有限公司创建于 2006 年 12 月，是一家以「发展绿色智能高科技制造产业」为使命的高端半导体装备和 LED 衬底材料制造的高新技术企业。拥有工业 4.0 方向的省级重点研究院、省级晶体装备研究院等研究平台、博士后工作站，是国内光伏产业链的装备龙头企业。
         </Case>
       </TabPane>
     </Tabs>
