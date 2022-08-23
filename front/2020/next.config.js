@@ -18,6 +18,7 @@ const withTM = tm([
 const path = require('path')
 
 const assetHost = process.env.NEXT_PUBLIC_ASSET_HOST
+const needSourceMaps = process.env.NEXT_PUBLIC_WITH_SOURCE_MAPS === 'true'
 
 module.exports = withPlugins(
   [
@@ -35,10 +36,10 @@ module.exports = withPlugins(
         }
       }
     ],
-    [ withSourceMaps ],
+    needSourceMaps ? [ withSourceMaps ] : null,
     // 通过 ANALYZE=true yarn build 启用
     [ withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' }) ]
-  ],
+  ].filter(Boolean),
   {
     env: {
       NEXT_PUBLIC_BUILT_AT: Date.now() + ''

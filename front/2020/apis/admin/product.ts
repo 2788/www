@@ -76,6 +76,7 @@ export async function getPriceFileContent(product: Product): Promise<string> {
     const text: string = await fetch(price.fileUrl).then((r: Response) => r.text())
     return text
   } catch (e) {
+    // FIXME: 已配置但出错了依然会进这个分支误导人
     if (ignoreProductPriceError) {
       return '该产品未配置价格详情，可 @tangbingyan 配置'
     }

@@ -10,6 +10,7 @@ process.env = {
   NEXT_PUBLIC_ECUG_HOST: 'https://www.ecug.org',
   NEXT_PUBLIC_MEIHUA_UPLOAD_PREFIX: 'upload-www/',
   NEXT_PUBLIC_BUILT_AT: new Date().getTime(),
-  NEXT_PUBLIC_IGNORE_PRODUCT_PRICE_ERROR: true,
-  NEXT_PUBLIC_PGC_CONTENT_MD_EMBED_HOST: 'http://www-2020.dev.qiniu.io'
+  NEXT_PUBLIC_IGNORE_PRODUCT_PRICE_ERROR: 'true',
+  NEXT_PUBLIC_PGC_CONTENT_MD_EMBED_HOST: 'http://www-2020.dev.qiniu.io',
+  NEXT_PUBLIC_WITH_SOURCE_MAPS: 'true'
 }

@@ -119,9 +119,7 @@ function makeDeployer(config) {
 }
 
 async function deploy(config) {
-  const outputFiles = (await getAllFiles(config.outputPath))
-    // 过滤掉 source map 防止线上能通过错误栈等方式定位到源码
-    .filter(fileName => config.withSourceMap || !fileName.endsWith('.js.map'))
+  const outputFiles = await getAllFiles(config.outputPath)
   const deployFiles = makeDeployer(config)
   await deployFiles(outputFiles)
   console.log(`[SUCCESS] Deploy succeeded: ${outputFiles.length} asset files.`)
@@ -130,12 +128,11 @@ async function deploy(config) {
 const keyPrefix = '_next/static'
 const outputPath = path.resolve(__dirname, '.next/static')
 
-// 执行命令（顺序固定）：node deploy.js $AK $SK $BUCKET [--with-source-map]
+// 执行命令（顺序固定）：node deploy.js $AK $SK $BUCKET
 const argv = minimist(process.argv.slice(2))
 const [accessKey, secretKey, bucket] = argv._
-const withSourceMap = !!argv['with-source-map']
 
-deploy({ keyPrefix, outputPath, accessKey, secretKey, bucket, withSourceMap }).catch(e => {
+deploy({ keyPrefix, outputPath, accessKey, secretKey, bucket }).catch(e => {
   console.error(`[ERROR] Deploy failed: ${e}`)
   process.exit(1)
 })

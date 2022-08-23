@@ -28,3 +28,7 @@ open http://localhost:8080/
 - admin-boilerplate https://gitlab.qiniu.io/qbox/admin-boilerplate
 - admin-base https://github.com/qbox/admin-base
 - codecov https://cf.qiniu.io/pages/viewpage.action?pageId=46670583
+
+### 相关文档
+
+https://cf.qiniu.io/display/Exarch/www-admin
