@@ -35,7 +35,7 @@ export default function AI() {
     <Card
       key="2"
       title="多媒体内容审核"
-      desc="对图片、视频、语音、文本、直播流等进行审核，提供色情、暴恐、敏感人物、广告、水印 Logo等多种违规内容检测服务。"
+      desc="对图片、视频、语音、文本、直播流等进行审核，提供色情、暴恐、敏感人物、广告、水印 Logo 等多种违规内容检测服务。"
       src={image2}
       link={urlMap[Product.Censor]}
     />,
