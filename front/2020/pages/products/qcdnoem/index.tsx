@@ -7,7 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
 import Advantages from 'components/pages/qcdnoem/Advantages'
@@ -34,10 +34,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 function PageContent() {
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '咨询详情' }
+    { onClick: showWechatConsultModal, children: '咨询详情' }
   )
 
   return (

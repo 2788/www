@@ -8,7 +8,7 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import { useBtns } from 'hooks/product-btn'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct, Item as RelatedItem } from 'components/Solution/Related'
 import { Product } from 'constants/products'
@@ -28,11 +28,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 const title = `${nameMap[Solution.IntelligentManufacturing]}行业解决方案`
 
 function Page() {
-  const { startIntentConsulting } = useModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: handleConsult }
+    { children: '立即咨询', onClick: showWechatConsultModal }
   )
 
   return (
@@ -48,7 +47,7 @@ function Page() {
 
       <Value />
 
-      <TypicalScene onConsult={handleConsult} />
+      <TypicalScene onConsult={showWechatConsultModal} />
 
       <Case />
 
@@ -64,7 +63,7 @@ function Page() {
       <UsageGuide
         title="欢迎联系我们了解更多行业成功案例经验"
       >
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

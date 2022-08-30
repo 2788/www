@@ -20,7 +20,7 @@ import Feature from 'components/pages/enhancement/Feature'
 import Advantage from 'components/pages/enhancement/Advantage'
 import Scene from 'components/pages/enhancement/Scene'
 
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import { Product } from 'constants/products'
@@ -32,10 +32,10 @@ const desc = '基于七牛计算机视觉与深度学习技术，提供视频画
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   const { $: currentNotices } = useApiWithParams(getProductPageNotices, {

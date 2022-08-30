@@ -25,7 +25,7 @@ import ProductNews from 'components/Product/common/ProductNews'
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import QvmCommonCases from 'components/pages/qvm/Cases' // 短信使用跟 QVM 一样的客户案例内容
 import imgBanner from './banner.png'
 import IconSchedule from './_icons/schedule.svg'
@@ -50,13 +50,13 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const priceUrl = urlForPrice(Product.Sms)
 
   const btns = useBtns(
     { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true },
-    { children: '售前咨询', onClick: startConsulting },
+    { children: '售前咨询', onClick: showWechatConsultModal },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
 

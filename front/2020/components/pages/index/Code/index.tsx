@@ -6,6 +6,7 @@ import React, { useEffect, useRef } from 'react'
 
 import { Card, Row } from 'components/UI/Card'
 import Tabs, { TabPane } from 'components/UI/Tabs'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useMobile } from 'hooks/ua'
 import Section from '../Section'
 import Arrow from './arrow.svg'
@@ -30,6 +31,7 @@ QLive.setUser(QUserInfo("your avatar", "your nick", extraInfo), callback)
 QLive.getLiveUIKit().launch(context)`
 
 export default function Code() {
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const iOSCodeRef = useRef<HTMLElement>(null)
   const androidCodeRef = useRef<HTMLElement>(null)
   const isMobile = useMobile()
@@ -60,8 +62,7 @@ export default function Code() {
       </Tabs>
       <h3 className={styles.stepsTitle}>
         {title}
-        {/* TODO 咨询框改版后加上这个 */}
-        {/* <Link as="button" className={styles.consult} onClick={startConsulting} blue>点我咨询</Link> */}
+        <span className={styles.consult} onClick={showWechatConsultModal}>点我咨询</span>
       </h3>
       <Row>
         <Card className={styles.stepCard}><span className={styles.number}>01.</span>选择场景</Card>

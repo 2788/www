@@ -7,7 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { Product } from 'constants/products'
 import { Solution, nameMap } from 'constants/solutions'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
@@ -31,11 +31,10 @@ const title = `${nameMap[Solution.Social]}解决方案`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (
@@ -56,10 +55,10 @@ function PageContent() {
 
       <Section name="cases" title="客户案例">
         <Cases>
-          <Case logo={imgCase1} title="bilibili" onConsult={handleConsult}>
+          <Case logo={imgCase1} title="bilibili" onConsult={showWechatConsultModal}>
             bilibili 是国内领先的年轻人文化社区，被粉丝亲切的称为「B 站」。七牛自 2017 年成为 bilibli 的供应商后，长期为 bilibli 提供稳定、高效的内容分发服务。
           </Case>
-          <Case logo={imgCase2} title="Blued" onConsult={handleConsult}>
+          <Case logo={imgCase2} title="Blued" onConsult={showWechatConsultModal}>
             Blued 是一款倡导健康生活的直播互动应用和健康教育平台。七牛云为 Blued 提供包括存储、CDN、质量数据监控等各种产品，助力 Blued 业务稳定运行。
           </Case>
         </Cases>
@@ -76,7 +75,7 @@ function PageContent() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

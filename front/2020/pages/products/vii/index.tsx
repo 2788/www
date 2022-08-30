@@ -13,7 +13,7 @@ import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import Scenes from 'components/pages/vii/Scene'
 import Advantage from 'components/pages/vii/Advantage'
@@ -36,12 +36,12 @@ const pageInfo = {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const priceUrl = urlForPrice(Product.Vii)
 
   const bannerBtns = useBtns(
     { href: 'https://portal.qiniu.com/vii/tasks', children: '立即使用', pcOnly: true },
-    { onClick: startConsulting, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { children: '查看价格', href: priceUrl }
   )
 

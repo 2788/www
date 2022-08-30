@@ -5,7 +5,7 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -29,8 +29,7 @@ const title = `${nameMap[Solution.Plsv]}解决方案`
 
 function PageContent() {
 
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
     { children: '0 元体验', href: 'https://qmall.qiniu.com/template/MTE1', pcOnly: true },
@@ -61,7 +60,7 @@ function PageContent() {
 
       <PlsvClientLogo />
 
-      <PlsvAccess onConsult={handleConsult} />
+      <PlsvAccess onConsult={showWechatConsultModal} />
 
       <LinkGroups title="产品相关" header="相关文档">
         <LinkGroup title="常用文档">

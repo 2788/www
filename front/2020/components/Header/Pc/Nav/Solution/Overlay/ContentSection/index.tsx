@@ -6,9 +6,8 @@
 
 import React, { MouseEvent } from 'react'
 import { nameMap, urlMap, descMap, Solution } from 'constants/solutions'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useDropdown } from 'components/UI/Dropdown'
-import { joinText } from 'utils/text'
 import { ContentSectionItem } from '../../../Overlay/Content/Section'
 
 import Logos from '../Logos'
@@ -18,7 +17,7 @@ import style from './style.less'
 const hotSolutions: Solution[] = []
 
 export default function ContentSection({ solution }: { solution: Solution }) {
-  const { startIntentConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const { close } = useDropdown()
   const url = urlMap[solution]
   const online = url != null // 方案内容已上线
@@ -29,7 +28,7 @@ export default function ContentSection({ solution }: { solution: Solution }) {
     if (online) return
     e.preventDefault()
     if (close) close()
-    startIntentConsulting(joinText(nameMap[solution], '解决方案'))
+    showWechatConsultModal()
   }
 
   return (

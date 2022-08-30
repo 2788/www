@@ -14,10 +14,12 @@ export type BaseModalProps = PropsWithChildren<{
   className?: string
   modalClassName?: string
   visible: boolean
+  /** 移动端效果，full：全屏、slideUp：底部上滑（默认 full） */
+  mobileMode?: 'full' | 'slideUp'
   onCancel: () => void
 }>
 
-export function BaseModal({ className, modalClassName, visible, onCancel, children }: BaseModalProps) {
+export function BaseModal({ className, modalClassName, visible, mobileMode = 'full', onCancel, children }: BaseModalProps) {
   const [wrapper, setWrapper] = useState<HTMLDivElement | undefined>()
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export function BaseModal({ className, modalClassName, visible, onCancel, childr
   }
 
   return createPortal(
-    <div className={cls(style.wrapper, !visible && style.hidden, className)}>
+    <div className={cls(style.wrapper, style[mobileMode], !visible && style.hidden, className)}>
       <div className={style.mask} onClick={() => { onCancel() }}></div>
       <div className={cls(style.modal, modalClassName)}>{children}</div>
     </div>,

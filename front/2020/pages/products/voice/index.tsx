@@ -9,7 +9,7 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Section from 'components/Product/Section'
@@ -40,11 +40,11 @@ const pageInfo = {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const priceUrl = urlForPrice(Product.Voice)
 
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { children: '查看价格', href: priceUrl }
   )
 

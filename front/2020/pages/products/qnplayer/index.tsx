@@ -11,7 +11,7 @@ import { getProductPageNotices } from 'apis/thallo'
 import { Product } from 'constants/products'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import ProductNotice from 'components/Product/common/ProductNotice'
@@ -35,10 +35,10 @@ const pageInfo = {
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const bannerBtns = useBtns(
-    { children: '立即咨询', onClick: startConsulting },
+    { children: '立即咨询', onClick: showWechatConsultModal },
     {
       children: '接入指南',
       href: 'https://developer.qiniu.com/pili/4262/player-sdk-introduction-and-demo-download'

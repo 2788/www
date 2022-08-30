@@ -6,9 +6,8 @@
 
 import React, { MouseEvent } from 'react'
 import { PartialProductData, normalizeProduct, Product } from 'constants/products'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useDropdown } from 'components/UI/Dropdown'
-import { joinText } from 'utils/text'
 import Section, { ContentSectionItem, ItemProps } from '../../../Overlay/Content/Section'
 
 type Props = {
@@ -36,7 +35,7 @@ export default function ContentSection({ title, url, partialProductDatas }: Prop
 }
 
 function ListItem({ partialProductData }: { partialProductData: PartialProductData }) {
-  const { startIntentConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const { close } = useDropdown()
   const productData = normalizeProduct(partialProductData)
   const hot = productHotMap[productData.product]
@@ -45,7 +44,7 @@ function ListItem({ partialProductData }: { partialProductData: PartialProductDa
     if (productData.url != null) return
     e.preventDefault()
     if (close) close()
-    startIntentConsulting(joinText(productData.name, '产品'))
+    showWechatConsultModal()
   }
 
   return (

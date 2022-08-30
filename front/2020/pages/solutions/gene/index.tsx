@@ -7,7 +7,7 @@ import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import GeneAdvantage from 'components/pages/gene/Advantage'
 import GeneScene from 'components/pages/gene/Scene'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
@@ -21,11 +21,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 const title = '基因测序行业解决方案'
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (
@@ -47,7 +46,7 @@ function PageContent() {
       <GeneAdvantage />
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

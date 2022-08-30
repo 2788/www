@@ -3,7 +3,6 @@ import { InferGetServerSidePropsType } from 'next'
 
 import { useApiWithParams } from 'hooks/api'
 import Layout from 'components/Product/Layout'
-import { useModal } from 'components/Feedback'
 import { useBtns } from 'hooks/product-btn'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
@@ -18,16 +17,17 @@ import Scenes from 'components/pages/beautysdk/Scene'
 import Demo from 'components/pages/beautysdk/Demo'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import Section from 'components/Product/Section'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 
 import imgBanner from './images/banner.png'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: startConsulting },
+    { children: '立即咨询', onClick: showWechatConsultModal },
     { children: 'Demo 下载', href: '#demo' }
   )
 

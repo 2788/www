@@ -3,7 +3,7 @@ import { InferGetServerSidePropsType } from 'next'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import { useBtns } from 'hooks/product-btn'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import PageNotice, {
   Group as PageNoticeGroup,
   Item as PageNoticeItem
@@ -24,13 +24,10 @@ import bannerImg from './_images/banner.png'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-const title = '视觉数据分析平台'
-
 function Main() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
   return (
     <>
@@ -59,7 +56,7 @@ function Main() {
 
       <Arch />
       <CoreProduct />
-      <TypicalScene onConsult={handleConsult} />
+      <TypicalScene onConsult={showWechatConsultModal} />
       <Case />
       <Section name="related" title="相关产品" header="相关云产品" withTailPadding>
         <Related>
@@ -74,7 +71,7 @@ function Main() {
       <UsageGuide
         title="欢迎联系我们了解更多行业成功案例经验"
       >
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

@@ -17,7 +17,7 @@ import Advantage from 'components/pages/storage/Advantage'
 import Scene from 'components/pages/storage/Scene'
 import Cases from 'components/pages/storage/Cases'
 
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
@@ -29,11 +29,10 @@ const title = nameMap[Solution.Storage]
 
 function Page() {
 
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (

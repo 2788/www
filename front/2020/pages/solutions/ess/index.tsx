@@ -8,7 +8,7 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Section from 'components/Product/Section'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import EssArch from 'components/pages/ess/Arch'
 import EssIndustry from 'components/pages/ess/Industry'
 import EssUnique from 'components/pages/ess/Unique'
@@ -18,22 +18,18 @@ import UsageGuide, { Button as UsageGuideButton } from 'components/Product/Usage
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 
 import { Product } from 'constants/products'
-import { Solution, nameMap } from 'constants/solutions'
 import { useBtns } from 'hooks/product-btn'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
 import imgBanner from './images/banner.png'
 
-const title = `${nameMap[Solution.Ess]}解决方案`
-
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '咨询详情' }
+    { onClick: showWechatConsultModal, children: '咨询详情' }
   )
 
   return (
@@ -69,7 +65,7 @@ function PageContent() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

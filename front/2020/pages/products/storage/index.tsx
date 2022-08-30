@@ -21,8 +21,8 @@ import Navigator from 'components/Product/Navigator'
 import Advantage from 'components/pages/storage/Advantage'
 import Scene from 'components/pages/storage/Scene'
 import Cases from 'components/pages/storage/Cases'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 
-import { useModal as useFeedbackModal } from 'components/Feedback'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 
@@ -33,12 +33,10 @@ const title = nameMap[Product.Storage]
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   const { $: currentNotices } = useApiWithParams(getProductPageNotices, {

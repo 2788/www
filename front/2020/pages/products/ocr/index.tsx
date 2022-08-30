@@ -23,7 +23,7 @@ import OcrProduct from 'components/pages/ocr/Product'
 import Function from 'components/pages/ocr/Function'
 import Scene from 'components/pages/ocr/Scene'
 
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { useBtns } from 'hooks/product-btn'
 import { Product } from 'constants/products'
@@ -34,11 +34,11 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const priceUrl = urlForPrice(Product.Ocr)
   const btns = useBtns(
-    { onClick: startConsulting, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { children: '查看价格', href: priceUrl }
   )
 

@@ -23,7 +23,7 @@ import ProductNews from 'components/Product/common/ProductNews'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import AccessProcess, { Step } from 'components/Product/AccessProcess'
@@ -43,10 +43,10 @@ import Step4 from './images/step4.svg'
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: startConsulting },
+    { children: '立即咨询', onClick: showWechatConsultModal },
     { children: 'Demo 下载', href: '#demo' }
   )
 
@@ -79,15 +79,15 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         </LinkGroup>
       </LinkGroups>
       <AccessProcess header="接入流程">
-        <Step icon={<Step1 />} onClick={startConsulting}>
-          <Link blue onClick={startConsulting}>售前咨询 &gt;&gt;</Link>
+        <Step icon={<Step1 />} onClick={showWechatConsultModal}>
+          <Link blue onClick={showWechatConsultModal}>售前咨询 &gt;&gt;</Link>
         </Step>
         <Step icon={<Step2 />}>申请试用</Step>
         <Step icon={<Step3 />}>接入测试</Step>
         <Step icon={<Step4 />}>正式购买</Step>
       </AccessProcess>
       <UsageGuide title="全方位体验短视频特效 SDK">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

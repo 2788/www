@@ -12,7 +12,7 @@ import PageNotice, {
   Item as PageNoticeItem
 } from 'components/Product/PageNotice'
 import Navigator from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import QavsFeature from 'components/pages/qavs/Feature'
 import QavsArch from 'components/pages/qavs/Arch'
 import QavsScene from 'components/pages/qavs/Scene'
@@ -30,11 +30,10 @@ const title = nameMap[Solution.Qavs]
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { href: 'https://dn-mars-assets.qbox.me/lsm7Yon7_XwirC_mGIQvRe1Fmkx3', children: '下载白皮书' }
   )
 

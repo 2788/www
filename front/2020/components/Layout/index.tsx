@@ -13,6 +13,7 @@ import { useSource } from 'hooks/sensors'
 import { OverlayProvider, OverlaySlot } from 'components/Overlay'
 import CpsVisitReporter from 'components/CpsVisitReporter'
 import { GlobalBanner } from 'apis/admin/global-banners'
+import WechatConsultModal, { ModalProvider as WechatConsultModalProvider } from 'components/WechatConsultModal'
 
 import ErrorBoundary from './ErrorBoundary'
 import UaProvider from './UaProvider'
@@ -84,20 +85,23 @@ function ContentWrapper({
 
   return (
     <OverlayProvider>
-      <feedback.ModalProvider>
-        {/* 企业微信会自动寻找第一张 img 作为分享出去的图标 */}
-        <img src={logo} style={{ display: 'none' }} />
-        {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
-        {notSimple && <Header />}
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
-        {notSimple && <Footer />}
-        <RegisterEntry />
-        {notSimple && <feedback.EntryV4 />}
-        <feedback.Modal />
-        <ScrollToTop />
-      </feedback.ModalProvider>
+      <WechatConsultModalProvider>
+        <feedback.ModalProvider>
+          {/* 企业微信会自动寻找第一张 img 作为分享出去的图标 */}
+          <img src={logo} style={{ display: 'none' }} />
+          {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
+          {notSimple && <Header />}
+          <ErrorBoundary>
+            {children}
+          </ErrorBoundary>
+          {notSimple && <Footer />}
+          <RegisterEntry />
+          {notSimple && <feedback.EntryV4 />}
+          <feedback.Modal />
+          <ScrollToTop />
+          <WechatConsultModal />
+        </feedback.ModalProvider>
+      </WechatConsultModalProvider>
       <OverlaySlot />
       <CpsVisitReporter />
     </OverlayProvider>

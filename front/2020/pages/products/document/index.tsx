@@ -11,7 +11,7 @@ import { useApiWithParams } from 'hooks/api'
 import { Product } from 'constants/products'
 import Section from 'components/Product/Section'
 import Layout from 'components/Product/Layout'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
@@ -34,10 +34,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
-  const { startConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: startConsulting }
+    { children: '立即咨询', onClick: showWechatConsultModal }
   )
 
   const { $: currentNotices } = useApiWithParams(getProductPageNotices, {

@@ -5,7 +5,7 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
@@ -29,11 +29,10 @@ const title = `${nameMap[Solution.Edu]}解决方案`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (
@@ -54,20 +53,20 @@ function PageContent() {
 
       <Section name="cases" title="客户案例" withTailPadding>
         <Cases>
-          <Case logo={imgCase1} title="英语流利说" onConsult={handleConsult}>
+          <Case logo={imgCase1} title="英语流利说" onConsult={showWechatConsultModal}>
             “英语流利说”是一款融合创新口语教学理念和尖端语音评估技术的英语口语学习应用，是中国知名的“AI+教育”公司，为个人、企业提供专业英语学习解决方案。
           </Case>
-          <Case logo={imgCase2} title="云上钢琴" onConsult={handleConsult}>
+          <Case logo={imgCase2} title="云上钢琴" onConsult={showWechatConsultModal}>
             云上钢琴用智能硬件设备与教学软件相结合，通过闭环教学管理模式 、「浸润式」的教学方法，使钢琴教育融入到生活中。
           </Case>
-          <Case logo={imgCase3} title="创客匠人" onConsult={handleConsult}>
+          <Case logo={imgCase3} title="创客匠人" onConsult={showWechatConsultModal}>
             2016 年开始跟七牛合作，从音频到视频、直播、RTC，七牛在技术产品上的更新迭代一直处于行业领先位置，创客匠人选择七牛云成为战略合作伙伴，提升了产品研发的灵活性跟稳定性，确保了产品的服务体验跟性能。
           </Case>
         </Cases>
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

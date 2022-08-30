@@ -20,7 +20,7 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 
 import { getNews } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
@@ -48,13 +48,13 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const priceUrl = urlForPrice(Product.Rtn)
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/rtn', children: '开始使用', pcOnly: true },
-    { onClick: startConsulting, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { href: 'https://demo-rtc.qnsdk.com/', children: '在线体验' }
   )
 

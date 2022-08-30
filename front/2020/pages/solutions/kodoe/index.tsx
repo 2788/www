@@ -9,7 +9,7 @@ import { Solution, nameMap } from 'constants/solutions'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import KodoeAdvantage from 'components/pages/kodoe/Advantage'
 import KodoeSpec from 'components/pages/kodoe/Spec'
 import KodoeScene from 'components/pages/kodoe/Scene'
@@ -28,11 +28,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 const title = `${nameMap[Solution.Kodoe]}解决方案 Kodo Enterprise`
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '咨询详情' },
+    { onClick: showWechatConsultModal, children: '咨询详情' },
     { href: 'https://developer.qiniu.com/kodoe/manual/5867/a-free-trial', children: '免费试用' }
   )
 
@@ -77,7 +76,7 @@ function PageContent() {
       </LinkGroups>
 
       <UsageGuide title="联系我们，了解更多详情">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

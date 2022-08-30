@@ -10,7 +10,7 @@ import { Product } from 'constants/products'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
 import { useApiWithParams } from 'hooks/api'
 import LinkGroups, { LinkItem, LinkGroup } from 'components/Product/LinkGroups'
@@ -45,14 +45,14 @@ import imgBanner from './_images/banner.png'
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useFeedbackModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const priceUrl = urlForPrice(Product.Pili)
 
   const btns = useBtns(
     { href: 'https://portal.qiniu.com/pili', children: '立即使用', pcOnly: true },
     { href: priceUrl, children: '产品价格', mobileOnly: true },
-    { onClick: startConsulting, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   const { $: currentNotices } = useApiWithParams(getProductPageNotices, {

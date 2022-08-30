@@ -25,7 +25,7 @@ import ProductNews from 'components/Product/common/ProductNews'
 
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 
 import ProductFeature from 'components/pages/plms/Feature'
 import Demo from 'components/pages/plms/Demo'
@@ -36,10 +36,10 @@ import imgBanner from './images/banner.png'
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: startConsulting },
+    { children: '立即咨询', onClick: showWechatConsultModal },
     { children: '接入指南', href: 'https://developer.qiniu.com/pili/sdk/5028/push-the-sdk-download-experience' }
   )
 
@@ -74,7 +74,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="全方位体验直播推流 SDK">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

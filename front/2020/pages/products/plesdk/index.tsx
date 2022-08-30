@@ -16,7 +16,7 @@ import { useApiWithParams } from 'hooks/api'
 import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import Navigator from 'components/Product/Navigator'
-import { useModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 
@@ -36,10 +36,10 @@ import banner from './images/banner.png'
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
-  const { startConsulting } = useModal()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { children: '立即咨询', onClick: startConsulting },
+    { children: '立即咨询', onClick: showWechatConsultModal },
     { children: 'Demo 下载', href: '#demo' }
   )
 
@@ -74,7 +74,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         </LinkGroup>
       </LinkGroups>
       <UsageGuide title="全方位体验直播特效 SDK">
-        <UsageGuideButton onClick={startConsulting}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

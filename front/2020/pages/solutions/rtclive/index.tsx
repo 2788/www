@@ -15,7 +15,7 @@ import Section from 'components/Product/Section'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import UsageGuide, { Button as UsageGuideButton } from 'components/Product/UsageGuide'
 
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useBtns } from 'hooks/product-btn'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 
@@ -32,11 +32,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function Page() {
 
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { href: 'https://portal.qiniu.com/rtn/app', children: '开始使用' },
     { href: '#demo', children: 'DEMO 体验' }
   )

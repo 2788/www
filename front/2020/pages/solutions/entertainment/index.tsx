@@ -5,7 +5,7 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import { Solution, nameMap } from 'constants/solutions'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
@@ -28,11 +28,10 @@ const title = `${nameMap[Solution.Entertainment]}解决方案`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' }
+    { onClick: showWechatConsultModal, children: '立即咨询' }
   )
 
   return (
@@ -53,17 +52,17 @@ function PageContent() {
 
       <Section name="cases" title="客户案例" withTailPadding>
         <Cases>
-          <Case logo={imgCase1} title="爱奇艺" onConsult={handleConsult}>
+          <Case logo={imgCase1} title="爱奇艺" onConsult={showWechatConsultModal}>
             爱奇艺（iQIYI.COM）是拥有海量、优质、高清的网络视频的大型视频网站。七牛云为爱奇艺提供 CDN 加速等多种服务，助力爱奇艺将视频内容更快速地分到到各地用户。
           </Case>
-          <Case logo={imgCase2} title="懂球帝" onConsult={handleConsult}>
+          <Case logo={imgCase2} title="懂球帝" onConsult={showWechatConsultModal}>
             懂球帝是一款提供全球体育足球新闻、深度报道、足球社区的手机 App。七牛云为懂球帝提供存储及 CDN 加速功能，助力懂球帝实现海量内容的稳定存储和快速分发。
           </Case>
         </Cases>
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

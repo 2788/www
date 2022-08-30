@@ -9,7 +9,7 @@ import Layout from 'components/Product/Layout'
 import PageBanner from 'components/Product/PageBanner'
 import VcsFeature from 'components/pages/vcs/Feature'
 import Navigator from 'components/Product/Navigator'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import VcsIndustry from 'components/pages/vcs/Industry'
 import VcsAdvantage from 'components/pages/vcs/Advantage'
 import VcsScene from 'components/pages/vcs/Scene'
@@ -26,11 +26,10 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 const title = `${nameMap[Solution.Vcs]}解决方案`
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '立即咨询' },
+    { onClick: showWechatConsultModal, children: '立即咨询' },
     { href: '/products/kodo', children: '了解更多' }
   )
 
@@ -58,7 +57,7 @@ function PageContent() {
       <VcsCase />
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>

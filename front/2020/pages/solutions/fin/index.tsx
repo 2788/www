@@ -8,7 +8,7 @@ import { InferGetServerSidePropsType } from 'next'
 import { Product } from 'constants/products'
 import { Solution, urlMap as solutionUrlMap, smallIconMap as solutionIconMap, descMap as solutionDescMap } from 'constants/solutions'
 import Swiper from 'components/UI/Swiper'
-import { useModal as useFeedbackModal } from 'components/Feedback'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Layout from 'components/Product/Layout'
 import Section from 'components/Product/Section'
 import PageBanner from 'components/Product/PageBanner'
@@ -45,11 +45,10 @@ const IconKodoe = solutionIconMap[Solution.Kodoe]!
 const title = '金融行业银行合规解决方案'
 
 function PageContent() {
-  const { startIntentConsulting } = useFeedbackModal()
-  const handleConsult = () => startIntentConsulting(title)
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const btns = useBtns(
-    { onClick: handleConsult, children: '咨询详情' }
+    { onClick: showWechatConsultModal, children: '咨询详情' }
   )
 
   return (
@@ -115,10 +114,10 @@ function PageContent() {
 
       <Section name="cases" title="客户案例">
         <Cases>
-          <Case logo={imgCase1} title="银基富力" onConsult={handleConsult}>
+          <Case logo={imgCase1} title="银基富力" onConsult={showWechatConsultModal}>
             Pandora 助力我们打造专业的信息科技风险监管报送系统，面对海量抽象的机器数据，Pandora 提供了专业化的数据采集、实时分析、可视化能力，实时获取监管数据，有效识别、计量、监测和控制信息科技风险，大大提升监管效率。
           </Case>
-          <Case logo={imgCase2} title="开泰银行" onConsult={handleConsult}>
+          <Case logo={imgCase2} title="开泰银行" onConsult={showWechatConsultModal}>
             接入七牛云之后， 开泰银行的网络设备日志、服务器日志、安全设备的审计日志都可以统一收集到 Pandora 2.0 平台，数据采集时无需对多种不同数据源进行梳理和解析，可以直接原始数据进行统一存储归档，入库后再根据不同的需求对数据进行高效灵活的处理和分析，为客户带来了极其简便的数据接入体验。统一归档存储超过一年，轻松满足等保 2.0 合规要求。
           </Case>
         </Cases>
@@ -135,7 +134,7 @@ function PageContent() {
       </Section>
 
       <UsageGuide title="欢迎联系我们了解更多行业成功案例经验">
-        <UsageGuideButton onClick={handleConsult}>
+        <UsageGuideButton onClick={showWechatConsultModal}>
           立即咨询
         </UsageGuideButton>
       </UsageGuide>
