@@ -16,7 +16,7 @@ const typeDemoMap = {
 }
 
 const urlsMap = {
-  [DemoType.VedioSdk]: ['http://fir.qnsdk.com/654e', 'http://fir.qnsdk.com/5qwg'],
+  [DemoType.VedioSdk]: ['http://fir.qnsdk.com/654e', 'http://fir.qnsdk.com/bd4g'],
   [DemoType.LiveSdk]: ['http://fir.qnsdk.com/5fdt', 'http://fir.qnsdk.com/b3jw'],
   [DemoType.RealTimeSdk]: ['http://fir.qnsdk.com/naem', 'http://fir.qnsdk.com/kzh9']
 }
