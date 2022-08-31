@@ -13,6 +13,7 @@ export const basePaths = [
   '/calculator',
   '/calculator_qvm',
   '/case',
+  '/channel',
   '/company',
   '/contact',
   '/cooperations',
