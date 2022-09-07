@@ -31,6 +31,7 @@ import AI from 'components/pages/index/AI'
 import Code from 'components/pages/index/Code'
 import VideoCloud from 'components/pages/index/VideoCloud'
 import LowCodeSolutions from 'components/pages/index/LowCodeSolutions'
+import NetPolice from 'components/netPolice'
 
 import styles from './style.less'
 
@@ -173,6 +174,8 @@ export default function IndexPage({ globalBanners, banners, activities }: Props)
           globalBanners={globalBanners}
         >
           <PageContent banners={banners} activities={activities} />
+          {/*  9月12日24时 之后可以去掉 */}
+          <NetPolice />
         </Layout>
       </headerThemeContext.Provider>
     </bannerDarkCtx.Provider >
