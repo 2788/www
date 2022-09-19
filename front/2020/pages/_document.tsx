@@ -109,6 +109,30 @@ var g_huoyan_opt = {
 huoYan.quick('autoTrack', g_huoyan_opt);
 `
 
+const nertInitScriptContent = `
+const debug = window.location.search.includes('debug')
+netr.initProxy()
+if ('serviceWorker' in navigator) {
+  fetch("https://api.qiniudns.com/v1/resolve?name=www-static.qbox.me&type=A").then(function (res) {
+    res.json().then(function (body) {
+      if (body.groups) {
+        netr.register('/sw-0.0.1-alpha.26.umd.js', {
+          app: { appID: 'id', appSalt: 'salt' },
+          patterns: [/\\w+:\\/\\/www\\-static\\.qbox\\.me\\/.+\\.(jpe?g|png|svg|mp3|mp4)$/],
+          debug
+        })
+      } else {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+          for (let registration of registrations) {
+            registration.unregister()
+          }
+        })
+      }
+    })
+  })
+}
+  `
+
 class MyDocument extends Document {
   render() {
     return (
@@ -120,6 +144,9 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
+          <script src="https://www-static.qbox.me/performance-0.0.1-alpha.26.umd.js" />
+          <script src="https://www-static.qbox.me/netr-0.0.1-alpha.26.umd.js" />
+          <script dangerouslySetInnerHTML={{ __html: nertInitScriptContent }} />
         </Head>
         <body>
           {/* https://stackoverflow.com/a/57888310 */}
