@@ -5,6 +5,7 @@
 import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 
+import { headerThemeContext } from 'components/Header/Pc'
 import { Product } from 'constants/products'
 import { urlForPrice } from 'utils/route'
 import Layout from 'components/Product/Layout'
@@ -24,6 +25,7 @@ import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
+import { useMobile } from 'hooks/ua'
 
 import Customer1Icon from './_images/客户-聚美.png'
 import Customer2Icon from './_images/客户-大疆.png'
@@ -34,19 +36,20 @@ import Customer6Icon from './_images/客户-虎扑.png'
 import Customer7Icon from './_images/客户-房多多.png'
 import Customer8Icon from './_images/客户-小红书.png'
 
-import imgBanner from './_images/banner.png'
+import bgImgUrl from './_images/banner.jpg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const priceUrl = urlForPrice(Product.Dora)
 
   const btns = useBtns(
-    { href: 'https://portal.qiniu.com/dora/media-gate/overview', children: '立即使用', pcOnly: true },
-    { href: priceUrl, children: '产品价格' },
+    { href: 'https://portal.qiniu.com/dora/media-gate/overview', children: '立即使用', pcOnly: true, type: 'primary' },
+    { href: priceUrl, children: '产品价格', type: isMobile ? 'primary' : 'primary-hollow' },
     { href: 'https://developer.qiniu.com/dora?source_page=dora', children: '帮助文档' }
   )
 
@@ -59,9 +62,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="智能多媒体服务"
         desc="智能多媒体服务（Dora），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
-        bgColor="#34A1EC"
+        bgColor="#18243C"
         btns={btns.banner}
-        icon={imgBanner} />
+        bgImgUrl={bgImgUrl} />
 
       <ProductNotice {...(currentNotices || notices)} />
 
@@ -113,14 +116,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function DoraPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="智能多媒体服务_图片处理_音视频转码_水印截图_瘦身处理"
-      keywords="图片处理, 音视频处理, 智能识别, 视频分析, 视频画质优化, 智能审核, 版权保护, 音视频转码, 图片瘦身"
-      description="智能多媒体服务（Dora），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="智能多媒体服务_图片处理_音视频转码_水印截图_瘦身处理"
+        keywords="图片处理, 音视频处理, 智能识别, 视频分析, 视频画质优化, 智能审核, 版权保护, 音视频转码, 图片瘦身"
+        description="智能多媒体服务（Dora），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 

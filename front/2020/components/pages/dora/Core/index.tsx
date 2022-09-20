@@ -10,20 +10,24 @@ import Feature, {
   Desc as FeatureDesc
 } from 'components/Product/Feature'
 
-import CheckedIcon from './images/checked.svg'
-import Core1Icon from './images/智能可靠.svg'
-import Core2Icon from './images/灵活介入.svg'
-import Core3Icon from './images/功能丰富.svg'
-import Core4Icon from './images/识别准确.svg'
+import core1Icon from './images/智能可靠.png'
+import core2Icon from './images/灵活介入.png'
+import core3Icon from './images/功能丰富.png'
+import core4Icon from './images/识别准确.png'
 
 import styles from './style.less'
 
 function DescItem({ children }: PropsWithChildren<{}>) {
   return (
     <div className={styles.descItem}>
-      <CheckedIcon className={styles.icon} />
       <p className={styles.content}>{children}</p>
     </div>
+  )
+}
+
+function Icon({ src, alt }: { src: string, alt: string }) {
+  return (
+    <img className={styles.icon} src={src} alt={alt} />
   )
 }
 
@@ -34,7 +38,7 @@ export default function DoraCore() {
         <FeatureItem
           pos="top-down"
           align="left"
-          icon={<Core1Icon className={styles.featureIcon} />}
+          icon={<Icon src={core1Icon} alt="稳定可靠" />}
           title="稳定可靠"
         >
           <FeatureDesc>
@@ -45,7 +49,7 @@ export default function DoraCore() {
         <FeatureItem
           pos="top-down"
           align="left"
-          icon={<Core2Icon className={styles.featureIcon} />}
+          icon={<Icon src={core2Icon} alt="灵活接入" />}
           title="灵活接入"
         >
           <FeatureDesc>
@@ -56,7 +60,7 @@ export default function DoraCore() {
         <FeatureItem
           pos="top-down"
           align="left"
-          icon={<Core3Icon className={styles.featureIcon} />}
+          icon={<Icon src={core3Icon} alt="功能丰富" />}
           title="功能丰富"
         >
           <FeatureDesc>
@@ -67,7 +71,7 @@ export default function DoraCore() {
         <FeatureItem
           pos="top-down"
           align="left"
-          icon={<Core4Icon className={styles.featureIcon} />}
+          icon={<Icon src={core4Icon} alt="识别准确" />}
           title="识别准确"
         >
           <FeatureDesc>

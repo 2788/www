@@ -65,7 +65,7 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
   const navBtnsView = [
     firstBtnProps && <NavButton key={0} type="primary" {...firstBtnProps} />,
     ...otherBtnsProps.map((otherBtn, i) => (
-      <NavButton key={i + 1} type="hollow" withBorder {...otherBtn} />
+      <NavButton key={i + 1} withBorder {...otherBtn} type="hollow" />
     ))
   ].filter(Boolean)
 

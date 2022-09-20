@@ -16,7 +16,9 @@ export interface IPageBannerProps {
   desc?: ReactNode
   bgColor?: string
   btns?: ReactNode[]
+  /** @deprecated 后面 icon 会删掉，全部替换成背景图 `bgImgUrl` 的方式 */
   icon?: ReactNode
+  bgImgUrl?: string
 }
 
 export const defaultProps: IPageBannerProps = {
@@ -24,13 +26,16 @@ export const defaultProps: IPageBannerProps = {
   desc: '连接数据，重塑价值',
   bgColor: '#34A1EC',
   btns: [],
-  icon: null
+  icon: null,
+  bgImgUrl: ''
 }
 
 export default function PageBanner(props: IPageBannerProps) {
-  const { title, desc, bgColor, btns, icon } = { ...defaultProps, ...props }
+  const { title, desc, bgColor, btns, icon, bgImgUrl } = { ...defaultProps, ...props }
   const isMobile = useMobile()
   const isBtnsValid = btns && btns.length
+  const pcBanner = bgImgUrl && !isMobile
+  const mobileBanner = bgImgUrl && isMobile
 
   function renderBtnWrapper() {
     if (!isBtnsValid) {
@@ -49,7 +54,7 @@ export default function PageBanner(props: IPageBannerProps) {
   }
 
   function renderIconWrapper() {
-    if (!icon || isMobile) {
+    if (!icon || isMobile || bgImgUrl) {
       return null
     }
 
@@ -63,13 +68,28 @@ export default function PageBanner(props: IPageBannerProps) {
     return <div className={styles.iconWrapper}>{icon}</div>
   }
 
-  const bgColorStyle = {
-    backgroundColor: bgColor
-  }
+  const bgStyle = !bgImgUrl
+    ? {
+      backgroundColor: bgColor
+    }
+    : {
+      backgroundImage: `url("${bgImgUrl}")`,
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundColor: bgColor
+    }
 
   return (
-    <div className={styles.mainWrapper} style={bgColorStyle}>
-      <div className={classnames(styles.contentWrapper, !isBtnsValid && styles.verticalCenter)}>
+    <div className={styles.mainWrapper} style={bgStyle}>
+      <div
+        className={classnames(
+          styles.contentWrapper,
+          !isBtnsValid && styles.verticalCenter,
+          pcBanner && styles.pcBanner,
+          mobileBanner && styles.mobileBanner
+        )}
+      >
         <div className={classnames(styles.content, !isBtnsValid && styles.marginTopNone)}>
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.desc}>{desc}</div>

@@ -107,3 +107,53 @@
     width: @iconSize;
   }
 }
+
+.contentWrapper {
+  &.pcBanner {
+    .centeredWithLg();
+    height: 480px;
+
+    .content {
+      margin-top: 150px;
+    }
+
+    .title {
+      .setFontSize(40px);
+    }
+
+    .desc {
+      width: 740px;
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 28px;
+    }
+
+    .btnsWrapper {
+      margin-top: 40px;
+    }
+
+    .btn {
+      margin-right: 16px;
+    }
+  }
+
+  &.mobileBanner {
+    padding: 36px 24px 42px;
+
+    .title {
+      .setFontSize(22px);
+    }
+
+    .desc {
+      .ellipsis-line-clamp-by-font-size(3, 12px);
+      padding-right: 73px;
+      margin-top: 12px;
+      max-height: 60px;
+      line-height: 20px;
+    }
+
+    .btnsWrapper {
+      margin-top: 36px;
+    }
+  }
+}
