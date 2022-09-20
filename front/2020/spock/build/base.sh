@@ -11,7 +11,7 @@
 
 cd $FRONTEND
 
-yarn install --ignore-engines
+yarn install
 
 # 加代理可能导致 docker push 失败等
 export http_proxy=
