@@ -54,6 +54,12 @@ Next.js 相关文档：https://nextjs.org/docs/basic-features/environment-variab
 
 在 spock 构建时，对应于测试环境与线上环境的 Spock 任务分别会将 `.env.staging` 或 `.env.prod` 等重命名为 `.env.local`（Next.js 会优先使用之），从而实现不同环境对应不同配置
 
+### netr 部署
+
+部署到 netr 专用环境 https://www-staging-ecdn-www-frontend.qa.qiniu.io/
+
+使用 [2020-staging-ecdn-pipeline](https://spock.qiniu.io/v1/projects/detail/www/pipelines/single/2020-staging-ecdn-pipeline)，选择 PR [#2629 netr](https://github.com/qbox/www/pull/2629) 构建，部署环境选择“www-env-staging-ecdn”即可
+
 ### 发布
 
 往 bucket 里推静态资源

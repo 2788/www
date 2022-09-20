@@ -11,6 +11,9 @@ export const host = must('host', process.env.NEXT_PUBLIC_HOST)
 /** API Host */
 export const apiHost = must('apiHost', process.env.NEXT_PUBLIC_API_HOST)
 
+/** asset Host */
+export const assetHost = must('assetHost', process.env.NEXT_PUBLIC_ASSET_HOST)
+
 /** SSO Host */
 export const ssoHost = must('ssoHost', process.env.NEXT_PUBLIC_SSO_HOST)
 
