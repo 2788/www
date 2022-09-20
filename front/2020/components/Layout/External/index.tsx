@@ -11,6 +11,7 @@ import UaProvider, { useIsMobileWithInitialState, getIsMobile } from 'components
 import { Provider as UserInfoProvider } from 'components/UserInfo'
 import * as feedback from 'components/Feedback'
 import { DropdownContainerProvider } from 'components/UI/Dropdown'
+import WechatConsultModal, { ModalProvider as WechatConsultModalProvider } from 'components/WechatConsultModal'
 import { UaContext, useUa } from 'hooks/ua'
 import { host } from 'constants/env'
 
@@ -68,10 +69,13 @@ export default function ExternalLayout({ children }: PropsWithChildren<{}>) {
           <InstantMobileProvider>
             <UserInfoProvider>
               <DropdownContainerProvider getContainer={getWrapper}>
-                <feedback.ModalProvider>
-                  {children}
-                  <feedback.Modal />
-                </feedback.ModalProvider>
+                <WechatConsultModalProvider>
+                  <feedback.ModalProvider>
+                    {children}
+                    <feedback.Modal />
+                    <WechatConsultModal />
+                  </feedback.ModalProvider>
+                </WechatConsultModalProvider>
               </DropdownContainerProvider>
             </UserInfoProvider>
           </InstantMobileProvider>
