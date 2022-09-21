@@ -312,13 +312,13 @@ var __async = (__this, __arguments, generator) => {
   function encodeHeaderValue(value) {
     return non_ios_8859_1Code.test(value) ? "REPLACED_BY_netr_SEE_netr_utils_http_encodeHeaderValue" : value;
   }
-  const apiPrefix$1 = "https://api.qiniudns.com";
+  const apiPrefix$1 = "https://api.qiniudns.com/v1/resolve";
   function httpResolve(ctx, domain) {
     return __async(this, null, function* () {
       var _a2;
       const params = { name: domain, type: "A" };
       const startAt = Date.now();
-      const resp = yield fetch(`${apiPrefix$1}/v1/resolve?${queryStringify(params)}`);
+      const resp = yield fetch(`${apiPrefix$1}?${queryStringify(params)}`);
       ctx.set("dnsResolveStatus", resp.status);
       ctx.set("dnsResolveReqID", (_a2 = resp.headers.get("x-reqid")) != null ? _a2 : "");
       ctx.set("dnsResolveConnectionTime", (Date.now() - startAt) / 1e3);
@@ -417,6 +417,9 @@ var __async = (__this, __arguments, generator) => {
           try {
             result = yield fromCache;
           } catch (e) {
+            if (e instanceof NonECDNError) {
+              throw new NonECDNError(`Non-ECDN domain: ${domain}`);
+            }
           }
           if (result != null && result.expireAt > Date.now()) {
             ctx.set("dnsResolveFromCache", true);
@@ -3248,48 +3251,54 @@ var __async = (__this, __arguments, generator) => {
     constructor(pcConnectTimeout = 10 * 1e3, dcOpenTimeout = 3 * 1e3) {
       __publicField(this, "pcMap", /* @__PURE__ */ new Map());
       __publicField(this, "pcMutex", new Mutex());
+      __publicField(this, "offer");
       this.pcConnectTimeout = pcConnectTimeout;
       this.dcOpenTimeout = dcOpenTimeout;
     }
-    pubPc(pc, ctx, target, fingerprint) {
+    getPc(ctx, target, fingerprint) {
       return __async(this, null, function* () {
         const startAt = Date.now();
-        yield this.pcMutex.runExclusive(() => __async(this, null, function* () {
-          this.pcMap.set(target, pc);
-          const offer = yield pc.createOffer();
+        const pc = yield this.pcMutex.runExclusive(() => __async(this, null, function* () {
+          if (this.pcMap.has(target)) {
+            return this.pcMap.get(target);
+          }
+          const pc2 = new RTCPeerConnection();
+          const channel = pc2.createDataChannel("test");
+          this.pcMap.set(target, pc2);
+          const offer = yield pc2.createOffer();
+          channel.close();
           if (offer.sdp == null)
             throw new Error("TODO: empty sdp");
           offer.sdp = offer.sdp.replace(/a=ice-pwd:.+/, `a=ice-pwd:${icePwd}`);
-          pc.setLocalDescription(offer);
+          pc2.setLocalDescription(offer);
           const [targetIP, targetPort] = parseIPPort(target, 0);
           const webrtcPort = targetPort + defaultWebRTCPort;
           const answer = {
             type: "answer",
             sdp: makeAnswerSdp(targetIP, webrtcPort, fingerprint, useTcp)
           };
-          pc.setRemoteDescription(answer);
+          pc2.setRemoteDescription(answer);
           try {
             yield Promise.race([
-              waitPCConnected(pc),
+              waitPCConnected(pc2),
               waitTimeout(this.pcConnectTimeout, "PeerConnection connect")
             ]);
           } catch (e) {
             this.pcMap.delete(target);
             throw e;
           }
-          return pc;
+          return pc2;
         }));
         ctx.set("hoWPeerConnectionConnectTime", (Date.now() - startAt) / 1e3);
+        return pc;
       });
     }
     fetch(ctx, id, request, fingerprint) {
       return __async(this, null, function* () {
         debug$2("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
-        const hasPcMap = this.pcMap.has(target);
-        const pc = hasPcMap ? this.pcMap.get(target) : new RTCPeerConnection();
+        const pc = yield this.getPc(ctx, target, fingerprint);
         const processor = new HoWRequest(pc, ctx, id, request, this.dcOpenTimeout);
-        !hasPcMap && (yield this.pubPc(pc, ctx, target, fingerprint));
         const resp = yield processor.start();
         return resp;
       });
@@ -7841,7 +7850,7 @@ a=end-of-candidates
     });
   })(cryptoJs);
   const crypto = cryptoJs.exports;
-  const defaultWorkersCount = 100;
+  const defaultWorkersCount = 10;
   const defaultBlockSize = 1 << 18;
   function createHoWHttpForMP(logger, config2) {
     const resolver = new Resolver(logger, config2 == null ? void 0 : config2.dnsResolver);
