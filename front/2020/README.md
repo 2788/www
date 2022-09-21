@@ -58,7 +58,7 @@ Next.js 相关文档：https://nextjs.org/docs/basic-features/environment-variab
 
 部署到 netr 专用环境 https://www-staging-ecdn-www-frontend.qa.qiniu.io/
 
-使用 [2020-staging-ecdn-pipeline](https://spock.qiniu.io/v1/projects/detail/www/pipelines/single/2020-staging-ecdn-pipeline)，选择 PR [#2629 netr](https://github.com/qbox/www/pull/2629) 构建，部署环境选择“www-env-staging-ecdn”即可
+使用 [2020-staging-ecdn-pipeline](https://spock.qiniu.io/v1/projects/detail/www/pipelines/single/2020-staging-ecdn-pipeline)，部署环境选择“www-env-staging-ecdn”即可
 
 ### 发布
 
