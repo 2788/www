@@ -222,3 +222,9 @@ export function Link(props: IFeatureLinkProps) {
 
   return renderMain()
 }
+
+export function Icon({ src, alt }: { src: string, alt: string }) {
+  return (
+    <img className={styles.icon} src={src} alt={alt} />
+  )
+}

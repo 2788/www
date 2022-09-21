@@ -51,7 +51,7 @@ export const cardData: CardProps[] = [
     backgroundImgUrl: bg1,
     title: '私域营销直播',
     desc: '帮助企业快速集成和接入直播服务，促进私域流量沉淀',
-    url: null,
+    url: urlMap[Solution.Entlive],
     cases: [case1_1, case1_2, case1_3],
     icon: icon1
   },

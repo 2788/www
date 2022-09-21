@@ -4,6 +4,7 @@ import { FC, SVGAttributes } from 'react'
 
 import rtcliveLargeIconUrl from './images/large/rtclive.png'
 import plsvLargeIconUrl from './images/large/plsv.png'
+import EntliveLargeIconUrl from './images/large/entlive.png'
 import kodoeLargeIconUrl from './images/large/kodoe.png'
 import essLargeIconUrl from './images/large/ess.png'
 import storageLargeIconUrl from './images/large/storage.png'
@@ -41,6 +42,8 @@ export enum Solution {
   Rtclive = 'rtclive',
   /** 短视频 */
   Plsv = 'plsv',
+  /** 企业直播 */
+  Entlive = 'entlive',
   /** 私有云存储 */
   Kodoe = 'kodoe',
   /** 视频冷存储 */
@@ -89,7 +92,7 @@ export const categoryEnNameMap = {
 } as const
 
 export const categorySolutionsMap = {
-  [Category.Media]: [Solution.Rtclive, Solution.Plsv],
+  [Category.Media]: [Solution.Rtclive, Solution.Plsv, Solution.Entlive],
   [Category.Storage]: [Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
     Solution.Fin, Solution.Automobile, Solution.Gene, Solution.IntelligentManufacturing,
@@ -137,6 +140,7 @@ export const nameMap: MapTo<string> = {
   [Solution.Qavs]: '智能视频云',
   [Solution.Rtclive]: '互动直播',
   [Solution.Plsv]: '短视频',
+  [Solution.Entlive]: '企业直播',
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
@@ -147,6 +151,7 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Qavs]: '/solutions/qavs',
   [Solution.Rtclive]: '/solutions/rtclive',
   [Solution.Plsv]: '/solutions/plsv',
+  [Solution.Entlive]: '/solutions/ent-live',
   [Solution.Kodoe]: '/solutions/kodoe',
   [Solution.Vcs]: '/solutions/vcs',
   [Solution.Ess]: '/solutions/ess',
@@ -167,6 +172,7 @@ export const descMap: MapTo<string> = {
   [Solution.Qavs]: '集视觉智能及数据智能为一体、高效、低成本的一站式视频解决方案',
   [Solution.Rtclive]: '一个 SDK 解决客户端直播推流及连麦互动，提供商用级开源 UI 辅助快速上线',
   [Solution.Plsv]: '集成完整云端能力及卓越采集端、播放端功能的一站式短视频解决方案',
+  [Solution.Entlive]: '多场景通用、0开发接入的直播解决方案',
   [Solution.Kodoe]: '为传统媒体、安防、金融等行业用户提供一站式专属解决方案，帮助企业快速实现云转型',
   [Solution.Vcs]: '专为综合视频平台打造，高可用低成本的 EB 级数据存储解决方案',
   [Solution.Ess]: '满足监控视频及图片就近存储、加速传输、倍速播放等关键需求',
@@ -188,6 +194,7 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/default/qavs.svg').default,
   [Solution.Rtclive]: require('./images/default/rtclive.svg').default,
   [Solution.Plsv]: require('./images/default/plsv.svg').default,
+  [Solution.Entlive]: require('./images/default/entlive.svg').default,
   [Solution.Kodoe]: require('./images/default/kodoe.svg').default,
   [Solution.Vcs]: require('./images/default/vcs.svg').default,
   [Solution.Ess]: require('./images/default/ess.svg').default,
@@ -209,6 +216,7 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Qavs]: require('./images/small/qavs.svg').default,
   [Solution.Rtclive]: require('./images/small/rtclive.svg').default,
   [Solution.Plsv]: require('./images/small/plsv.svg').default,
+  [Solution.Entlive]: require('./images/small/entlive.svg').default,
   [Solution.Kodoe]: require('./images/small/kodoe.svg').default,
   [Solution.Vcs]: require('./images/small/vcs.svg').default,
   [Solution.Ess]: require('./images/small/ess.svg').default,
@@ -230,6 +238,7 @@ export const largeIconMap: MapTo<string | null> = {
   [Solution.Qavs]: null,
   [Solution.Rtclive]: rtcliveLargeIconUrl,
   [Solution.Plsv]: plsvLargeIconUrl,
+  [Solution.Entlive]: EntliveLargeIconUrl,
   [Solution.Kodoe]: kodoeLargeIconUrl,
   [Solution.Vcs]: null,
   [Solution.Ess]: essLargeIconUrl,
