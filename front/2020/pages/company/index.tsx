@@ -8,7 +8,7 @@ import React from 'react'
 import { InferGetServerSidePropsType } from 'next'
 import { useMobile } from 'hooks/ua'
 import Layout from 'components/Product/Layout'
-import Banner from 'components/Banner'
+import Banner, { Title } from 'components/Banner'
 import PageNotice from 'components/Product/PageNotice'
 import Navigator from 'components/Navigator'
 import Section, { Provider as SectionProvider } from 'components/Product/Section'
@@ -40,7 +40,9 @@ function PageContent() {
 
   return (
     <div className={styles.pageContent}>
-      <Banner background={imgBanner} backgroundSize="contain" backgroundPosition="right bottom" />
+      <Banner background={imgBanner} backgroundSize="contain" backgroundPosition="right bottom" >
+        <Title className={styles.bannerTitle}>一站式场景化智能视频云</Title>
+      </Banner>
 
       <PageNotice>
         <div className={styles.overview}>
