@@ -1015,7 +1015,7 @@ var netrPerformance = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.0.1-alpha.28";
+  const version = "0.2.0";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -1147,6 +1147,7 @@ var netrPerformance = function(exports) {
     }
     return text;
   }
+  const namespace = "cdnr/dcr/v2";
   const _NetrPerformance = class {
     constructor(type, app) {
       __publicField(this, "pageLogData", {
@@ -1182,7 +1183,7 @@ var netrPerformance = function(exports) {
                   );
                 } else {
                   try {
-                    const cache = yield caches.has("cdnr/dcr");
+                    const cache = yield caches.has(namespace);
                     if (cache) {
                       resolve(
                         _NetrPerformance.initInstance(

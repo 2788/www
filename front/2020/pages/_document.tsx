@@ -120,7 +120,7 @@ const netrInitScriptContent = `
     fetch("https://api.qiniudns.com/v1/resolve?name=www-static.qbox.me&type=A").then(function (res) {
       res.json().then(function (body) {
         if (body.groups) {
-          netr.register('/sw-0.0.1-alpha.28.iife.js', {
+          netr.register('/sw-0.2.0.iife.js', {
             app: appInfo,
             patterns: [/\\w+:\\/\\/www\\-static\\.qbox\\.me\\/.+\\.(jpe?g|png|svg|mp3|mp4)$/],
             debug
@@ -149,8 +149,8 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/netr-performance-0.0.1-alpha.28.iife.js`} />
-          <script src={`${assetHost}/netr-0.0.1-alpha.28.iife.js`} />
+          <script src={`${assetHost}/netr-performance-0.2.0.iife.js`} />
+          <script src={`${assetHost}/netr-0.2.0.iife.js`} />
           <script dangerouslySetInnerHTML={{ __html: netrInitScriptContent }} />
         </Head>
         <body>

@@ -1905,7 +1905,7 @@ a=end-of-candidates
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.0.1-alpha.28";
+  const version = "0.2.0";
   function getEnv() {
     var _a2, _b;
     const { os, device } = uaParser(navigator.userAgent);
