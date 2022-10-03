@@ -43,45 +43,6 @@ var __async = (__this, __arguments, generator) => {
 };
 var netr = function(exports) {
   "use strict";
-  class Mutex {
-    constructor() {
-      __publicField(this, "locked", false);
-      __publicField(this, "waitings", []);
-      this.unlock = this.unlock.bind(this);
-    }
-    lock() {
-      return __async(this, null, function* () {
-        if (!this.locked) {
-          this.locked = true;
-          return this.unlock;
-        }
-        yield new Promise((resolve) => {
-          this.waitings.push(resolve);
-        });
-        return this.unlock;
-      });
-    }
-    unlock() {
-      if (this.waitings.length === 0) {
-        this.locked = false;
-        return;
-      }
-      const waiting = this.waitings.shift();
-      waiting();
-    }
-    runExclusive(job) {
-      return __async(this, null, function* () {
-        const unlock = yield this.lock();
-        try {
-          return yield job();
-        } catch (e) {
-          throw e;
-        } finally {
-          unlock();
-        }
-      });
-    }
-  }
   function appendQuery(url, params) {
     const querystring = new URLSearchParams(params).toString();
     const sep = url.includes("?") ? "&" : "?";
@@ -130,16 +91,81 @@ var netr = function(exports) {
       setTimeout(() => reject(new TimeoutError(msg + " timeout")), timeout);
     });
   }
+  class AbortError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "AbortError");
+    }
+  }
+  function waitAbort(signal) {
+    return new Promise((_, reject) => {
+      if (signal.aborted) {
+        reject(signal.reason);
+      } else {
+        signal.addEventListener("abort", () => {
+          reject(signal.reason);
+        });
+      }
+    });
+  }
+  let enabled = false;
+  function getDebug(namespace2) {
+    return (...args) => {
+      if (enabled)
+        console.debug(`[${namespace2}] [${(Date.now() / 1e3).toFixed(3)}]`, ...args);
+    };
+  }
+  function enableDebug() {
+    enabled = true;
+  }
+  class Emitter {
+    constructor() {
+      __publicField(this, "map", /* @__PURE__ */ new Map());
+    }
+    on(type, handler) {
+      var _a;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
+      const newHandlers = [...handlers, handler];
+      this.map.set(type, newHandlers);
+      return () => this.off(type, handler);
+    }
+    once(type, handler) {
+      const off = this.on(type, (e) => {
+        off();
+        handler(e);
+      });
+      return off;
+    }
+    off(type, handler) {
+      var _a;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
+      const newHandlers = handlers.filter((h) => h !== handler);
+      this.map.set(type, newHandlers);
+    }
+    emit(...args) {
+      var _a;
+      const [type, event] = args;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
+      handlers.forEach((handler) => {
+        handler(event);
+      });
+    }
+    dispose() {
+      this.map.clear();
+    }
+  }
   class HttpRequest {
-    constructor(url, { method, headers, body: body2 }) {
+    constructor(url, { method, headers, signal, body: body2 }) {
       __publicField(this, "url");
       __publicField(this, "method");
       __publicField(this, "headers");
       __publicField(this, "body");
+      __publicField(this, "signal");
       this.url = url;
       this.method = method != null ? method : "GET";
       this.headers = new Headers(headers);
       this.body = body2 != null ? body2 : null;
+      this.signal = signal != null ? signal : new AbortSignal();
     }
   }
   class HttpResponse {
@@ -152,6 +178,71 @@ var netr = function(exports) {
       this.statusText = statusText != null ? statusText : "";
       this.headers = new Headers(headers);
       this.body = body2;
+    }
+  }
+  function isHoWMessage(message) {
+    return message && message.hoW === true;
+  }
+  function dehydrateHeaders(headers) {
+    const res = {};
+    headers.forEach((v, k) => {
+      res[k] = v;
+    });
+    return res;
+  }
+  function isInServiceWorker() {
+    const scope2 = self;
+    return !!(scope2.clients && scope2.registration);
+  }
+  const messageEmitter = new Emitter();
+  let scope;
+  if (typeof self !== "undefined") {
+    scope = self;
+    scope.addEventListener("message", (e) => messageEmitter.emit("message", e));
+  }
+  class WindowClientError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "WindowClientError");
+    }
+  }
+  class Mutex {
+    constructor() {
+      __publicField(this, "locked", false);
+      __publicField(this, "waitings", []);
+      this.unlock = this.unlock.bind(this);
+    }
+    lock() {
+      return __async(this, null, function* () {
+        if (!this.locked) {
+          this.locked = true;
+          return this.unlock;
+        }
+        yield new Promise((resolve) => {
+          this.waitings.push(resolve);
+        });
+        return this.unlock;
+      });
+    }
+    unlock() {
+      if (this.waitings.length === 0) {
+        this.locked = false;
+        return;
+      }
+      const waiting = this.waitings.shift();
+      waiting();
+    }
+    runExclusive(job) {
+      return __async(this, null, function* () {
+        const unlock = yield this.lock();
+        try {
+          return yield job();
+        } catch (e) {
+          throw e;
+        } finally {
+          unlock();
+        }
+      });
     }
   }
   function httpGetContentRange(headers) {
@@ -169,8 +260,7 @@ var netr = function(exports) {
     const [range, totalSizeStr] = rest.split("/");
     const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
     const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
-    const rangeSize = start != null && end != null ? end - start + 1 : null;
-    return { totalSize, rangeSize, start, end };
+    return { totalSize, start, end };
   }
   function atoi(v) {
     return !v ? null : Number(v);
@@ -215,16 +305,6 @@ var netr = function(exports) {
   function encodeHeaderValue(value) {
     return non_ios_8859_1Code.test(value) ? "REPLACED_BY_netr_SEE_netr_utils_http_encodeHeaderValue" : value;
   }
-  let enabled = false;
-  function getDebug(namespace2) {
-    return (...args) => {
-      if (enabled)
-        console.debug(`[${namespace2}] [${(Date.now() / 1e3).toFixed(3)}]`, ...args);
-    };
-  }
-  function enableDebug() {
-    enabled = true;
-  }
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
   const useTcp = true;
@@ -237,7 +317,7 @@ var netr = function(exports) {
       this.pcConnectTimeout = pcConnectTimeout;
       this.dcOpenTimeout = dcOpenTimeout;
     }
-    makePc(target, fingerprint) {
+    makePc(signal, target, fingerprint) {
       return __async(this, null, function* () {
         const pc = new RTCPeerConnection();
         const channel = pc.createDataChannel("test");
@@ -255,18 +335,18 @@ var netr = function(exports) {
         };
         pc.setRemoteDescription(answer);
         yield Promise.race([
-          waitPCConnected(pc),
+          waitPCConnected(signal, pc, target),
           waitTimeout(this.pcConnectTimeout, "PeerConnection connect")
         ]);
         return pc;
       });
     }
-    getPc(ctx, target, fingerprint) {
+    getPc(signal, target, fingerprint) {
       return __async(this, null, function* () {
         if (this.pcMap.has(target)) {
           return this.pcMap.get(target);
         }
-        const promisedPc = this.makePc(target, fingerprint);
+        const promisedPc = this.makePc(signal, target, fingerprint);
         this.pcMap.set(target, promisedPc);
         promisedPc.catch((e) => {
           this.pcMap.delete(target);
@@ -278,7 +358,7 @@ var netr = function(exports) {
       return __async(this, null, function* () {
         debug$7("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
-        const pc = yield this.getPc(ctx, target, fingerprint);
+        const pc = yield this.getPc(request.signal, target, fingerprint);
         const processor = new HoWRequest(pc, ctx, id, request, this.dcOpenTimeout);
         const resp = yield processor.start();
         return resp;
@@ -346,7 +426,7 @@ a=end-of-candidates
     dc.addEventListener(type, listener);
     return () => dc.removeEventListener(type, listener);
   }
-  function streamForDC(id, dc, closeOn = "close") {
+  function streamForDC(id, dc, signal) {
     const disposers = [
       () => {
         if (dc.readyState !== "closing" && dc.readyState !== "closed") {
@@ -354,34 +434,34 @@ a=end-of-candidates
         }
       }
     ];
-    const dispose = () => disposers.forEach((d) => d());
+    let finished = false;
+    const finish = (cb) => {
+      if (finished)
+        return;
+      finished = true;
+      disposers.forEach((d) => d());
+      disposers.length = 0;
+      cb == null ? void 0 : cb();
+    };
     return new ReadableStream({
       start: (ctrl) => {
+        waitAbort(signal).catch((e) => {
+          finish(() => ctrl.error(e));
+        });
         disposers.push(listenDC(dc, "message", ({ data }) => {
           ctrl.enqueue(data);
         }));
         disposers.push(listenDC(dc, "error", (e) => {
           debug$7(`dc ${id} error`, e);
-          dispose();
-          ctrl.error(e);
+          finish(() => ctrl.error(e));
         }));
         disposers.push(listenDC(dc, "closing", (e) => {
           debug$7(`DataChannel ${id} closing`, e);
-          if (closeOn === "closing") {
-            dispose();
-            ctrl.close();
-          }
-        }));
-        disposers.push(listenDC(dc, "close", (e) => {
-          debug$7(`DataChannel ${id} close`, e);
-          if (closeOn === "close") {
-            dispose();
-            ctrl.close();
-          }
+          finish(() => ctrl.close());
         }));
       },
       cancel: (reason) => {
-        dispose();
+        finish();
       }
     });
   }
@@ -394,7 +474,7 @@ a=end-of-candidates
       this.request = request;
       this.dcOpenTimeout = dcOpenTimeout;
       this.dc = pc.createDataChannel(`http|${id}`);
-      this.stream = streamForDC(this.id, this.dc, "closing");
+      this.stream = streamForDC(this.id, this.dc, request.signal);
     }
     open() {
       return __async(this, null, function* () {
@@ -414,7 +494,8 @@ a=end-of-candidates
         });
         return Promise.race([
           opened,
-          waitTimeout(this.dcOpenTimeout, `DataChannel ${this.id} open`)
+          waitTimeout(this.dcOpenTimeout, `DataChannel ${this.id} open`),
+          waitAbort(this.request.signal)
         ]).finally(dispose);
       });
     }
@@ -496,21 +577,15 @@ a=end-of-candidates
     }
     start() {
       return __async(this, null, function* () {
-        return new Promise((resolve, reject) => __async(this, null, function* () {
-          try {
-            const startAt = Date.now();
-            yield this.open();
-            const dataChannelOpenTime = (Date.now() - startAt) / 1e3;
-            this.ctx.set("hoWDataChannelOpenTime", dataChannelOpenTime);
-            const [, resp] = yield Promise.all([
-              this.sendRequest(),
-              this.receiveResponse()
-            ]);
-            resolve(resp);
-          } catch (e) {
-            reject(e);
-          }
-        }));
+        const startAt = Date.now();
+        yield this.open();
+        const dataChannelOpenTime = (Date.now() - startAt) / 1e3;
+        this.ctx.set("hoWDataChannelOpenTime", dataChannelOpenTime);
+        const [, resp] = yield Promise.all([
+          this.sendRequest(),
+          this.receiveResponse()
+        ]);
+        return resp;
       });
     }
   }
@@ -526,12 +601,12 @@ a=end-of-candidates
       __publicField(this, "name", "PeerConnectionDisconnectedError");
     }
   }
-  function waitPCConnected(pc, desc) {
+  function waitPCConnected(signal, pc, desc) {
     return new Promise((resolve, reject) => {
       if (pc.connectionState === "connected") {
         resolve();
       }
-      let unlisten = listenPC(pc, "connectionstatechange", () => {
+      const unlisten = listenPC(pc, "connectionstatechange", () => {
         debug$7(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
         if (["failed", "closed", "disconnected"].includes(pc.connectionState)) {
           reject(new PeerConnectionDisconnectedError(desc));
@@ -543,6 +618,10 @@ a=end-of-candidates
           unlisten();
           return;
         }
+      });
+      waitAbort(signal).catch((e) => {
+        reject(e);
+        unlisten();
       });
     });
   }
@@ -961,6 +1040,10 @@ a=end-of-candidates
   function shouldDisableTarget(e) {
     if (e && e.name === unexpectedDataChannelCloseErrorName)
       return false;
+    if (e && e.name === "AbortError")
+      return false;
+    if (e instanceof WindowClientError)
+      return false;
     return true;
   }
   class DB {
@@ -1193,22 +1276,26 @@ a=end-of-candidates
     }
   }
   function withNode(originalReq, nodeIP) {
-    const { url: originalUrl, method, headers: originalHeaders, body: body2 } = originalReq;
+    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
     const urlObject = new URL(originalUrl);
     const originalHost = urlObject.host;
     urlObject.host = nodeIP;
     const headers = new Headers(originalHeaders);
     headers.set("Host", originalHost);
-    return new HttpRequest(urlObject.toString(), { method, headers, body: body2 });
+    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
   }
   class Task {
     constructor(client, url, range, expiry) {
       __publicField(this, "priority", 0);
+      __publicField(this, "abortCtrl", new AbortController());
       __publicField(this, "started", false);
       this.client = client;
       this.url = url;
       this.range = range;
       this.expiry = expiry;
+    }
+    get signal() {
+      return this.abortCtrl.signal;
     }
     setPriority(priority) {
       this.priority = priority;
@@ -1221,6 +1308,9 @@ a=end-of-candidates
         this.started = true;
         return this.client.startTask(this);
       });
+    }
+    cancel(reason) {
+      this.abortCtrl.abort(reason);
     }
   }
   function slice(stream, range) {
@@ -1440,18 +1530,17 @@ a=end-of-candidates
             priority: task.priority,
             run: () => __async(this, null, function* () {
               const cachedContent = yield this.cache.getContent(this.key, [0, null]);
-              if (cachedContent === void 0) {
-                try {
-                  const { body: body2 } = yield this.doRequest(null);
-                  const [stream1, stream2] = body2.tee();
-                  resolve(stream1);
-                  this.saveCachePiece([0, null], stream2);
-                } catch (e) {
-                  reject(e);
-                }
-              } else {
+              if (cachedContent != null) {
                 debug$3("use cache", task.url);
                 resolve(cachedContent);
+                return;
+              }
+              try {
+                const { body: body2, bodyDone } = yield this.doRequestAndSaveCache(null, task.signal);
+                resolve(body2);
+                yield bodyDone;
+              } catch (e) {
+                reject(e);
               }
             })
           });
@@ -1473,30 +1562,17 @@ a=end-of-candidates
         (() => __async(this, null, function* () {
           for (let i = 0; i < pieces.length; i++) {
             const { cached, range: range2 } = pieces[i];
-            let pieceStream;
-            try {
-              pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
-            } catch (e) {
-              console.warn("readPiece failed for", this.url, e);
-              if (i === 0) {
-                stream.writable.abort(e);
-              } else {
-                abortCtrl.abort(e);
-              }
-              return;
-            }
+            const pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
             const isLast = i === pieces.length - 1;
-            try {
-              yield pieceStream.pipeTo(stream.writable, {
-                preventClose: !isLast,
-                signal: abortCtrl.signal
-              });
-            } catch (e) {
-              debug$3("readRange cancelled for", this.url, e);
-              return;
-            }
+            yield pieceStream.pipeTo(stream.writable, {
+              preventClose: !isLast,
+              signal: abortCtrl.signal
+            });
           }
-        }))();
+        }))().catch((e) => {
+          console.warn("readRange stream error for", this.url, e);
+          stream.writable.abort(e);
+        });
         return stream.readable;
       });
     }
@@ -1524,17 +1600,14 @@ a=end-of-candidates
             name: `readPieceFromRemote: ${this.url}, [${range[0], range[1]})]`,
             priority: task.priority,
             run: () => __async(this, null, function* () {
-              var _a;
               try {
-                const { response, body: body2 } = yield this.doRequest(range);
-                const [bodyForResolve, bodyForCache] = body2.tee();
+                const { response, body: body2, bodyDone } = yield this.doRequestAndSaveCache(range, task.signal);
                 if (!isFull(this.fileSize(), range) && response.status === 200) {
-                  resolve(slice(bodyForResolve, range));
+                  resolve(slice(body2, range));
                 } else {
-                  resolve(bodyForResolve);
+                  resolve(body2);
                 }
-                const piece = [(_a = range[0]) != null ? _a : 0, range[1]];
-                this.saveCachePiece(piece, bodyForCache);
+                yield bodyDone;
               } catch (e) {
                 reject(e);
               }
@@ -1543,7 +1616,7 @@ a=end-of-candidates
         });
       });
     }
-    doRequest(range) {
+    doRequest(range, signal) {
       return __async(this, null, function* () {
         try {
           const ctx = new Context();
@@ -1556,7 +1629,7 @@ a=end-of-candidates
             ctx.set("downloadRange", httpRange);
             headers["Range"] = stringifyRange(httpRange);
           }
-          const request = new HttpRequest(this.url, { headers });
+          const request = new HttpRequest(this.url, { method: "GET", headers, signal });
           const response = yield this.http.do(ctx, request);
           if (response.body == null) {
             throw new Error("Body expected");
@@ -1572,13 +1645,24 @@ a=end-of-candidates
         }
       });
     }
+    doRequestAndSaveCache(range, signal) {
+      return __async(this, null, function* () {
+        var _a, _b;
+        const { response, body: body2 } = yield this.doRequest(range, signal);
+        const [bodyForUse, bodyForCache] = body2.tee();
+        const piece = [(_a = range == null ? void 0 : range[0]) != null ? _a : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
+        this.saveCachePiece(piece, bodyForCache);
+        const transform = new TransformStream();
+        const bodyDone = bodyForUse.pipeTo(transform.writable);
+        return { response, body: transform.readable, bodyDone };
+      });
+    }
     saveCachePiece(piece, content) {
       return __async(this, null, function* () {
         debug$3("saveCachePiece", this.url, piece);
         yield this.cache.setContent(this.key, piece, content);
         this.cachePieces = addPiece(this.cachePieces, piece);
         yield this.save();
-        debug$3("saveCachePiece finish", this.url, piece);
       });
     }
     saveMeta(response) {
@@ -1622,42 +1706,6 @@ a=end-of-candidates
         };
         yield this.cache.setItem(this.key, item);
       });
-    }
-  }
-  class Emitter {
-    constructor() {
-      __publicField(this, "map", /* @__PURE__ */ new Map());
-    }
-    on(type, handler) {
-      var _a;
-      const handlers = (_a = this.map.get(type)) != null ? _a : [];
-      const newHandlers = [...handlers, handler];
-      this.map.set(type, newHandlers);
-      return () => this.off(type, handler);
-    }
-    once(type, handler) {
-      const off = this.on(type, (e) => {
-        off();
-        handler(e);
-      });
-      return off;
-    }
-    off(type, handler) {
-      var _a;
-      const handlers = (_a = this.map.get(type)) != null ? _a : [];
-      const newHandlers = handlers.filter((h) => h !== handler);
-      this.map.set(type, newHandlers);
-    }
-    emit(...args) {
-      var _a;
-      const [type, event] = args;
-      const handlers = (_a = this.map.get(type)) != null ? _a : [];
-      handlers.forEach((handler) => {
-        handler(event);
-      });
-    }
-    dispose() {
-      this.map.clear();
     }
   }
   const debug$2 = getDebug("utils/taskq");
@@ -1706,6 +1754,8 @@ a=end-of-candidates
           yield task == null ? void 0 : task.run();
         } catch (e) {
           console.warn("Task run failed:", e);
+        } finally {
+          debug$2("end task", task.name);
         }
       });
     }
@@ -2635,7 +2685,7 @@ a=end-of-candidates
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.0";
+  const version = "0.2.1";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -2761,31 +2811,12 @@ a=end-of-candidates
     }
     return str;
   }
-  function isRequestMessage(message) {
-    return message && message.hoW === true && ["req-head", "req-body-chunk"].includes(message.type);
-  }
-  function dehydrateHeaders(headers) {
-    const res = {};
-    headers.forEach((v, k) => {
-      res[k] = v;
-    });
-    return res;
-  }
-  function isInServiceWorker() {
-    const scope2 = self;
-    return !!(scope2.clients && scope2.registration);
-  }
-  const messageEmitter = new Emitter();
-  let scope;
-  if (typeof self !== "undefined") {
-    scope = self;
-    scope.addEventListener("message", (e) => messageEmitter.emit("message", e));
-  }
   const debug = getDebug("cdnr/http/webrtc/service");
   class HoWService {
     constructor(pcConnectTimeout, dcOpenTimeout) {
       __publicField(this, "workerContainer", navigator.serviceWorker);
       __publicField(this, "hoW");
+      __publicField(this, "abortCtrls", /* @__PURE__ */ new Map());
       __publicField(this, "disposers", []);
       this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
       this.disposers.push(() => this.hoW.dispose());
@@ -2813,7 +2844,7 @@ a=end-of-candidates
     sendResponse(ctx, id, response) {
       return __async(this, null, function* () {
         var _a, _b;
-        debug("sendResponse in MainPage", id, response);
+        debug("sendResponse in window", id, response);
         const { status, statusText, headers, body: body2 } = response;
         const message = {
           hoW: true,
@@ -2830,6 +2861,7 @@ a=end-of-candidates
         if (body2 != null) {
           yield this.sendBody(id, body2);
         }
+        debug("sendResponse finished in window", id, response);
       });
     }
     sendResponseError(id, err) {
@@ -2848,7 +2880,7 @@ a=end-of-candidates
         start: (ctrl) => streamCtrl = ctrl
       });
       const unlisten = listen(this.workerContainer, "message", ({ data }) => {
-        if (!isRequestMessage(data))
+        if (!isHoWMessage(data))
           return;
         if (data.id !== id)
           return;
@@ -2866,26 +2898,36 @@ a=end-of-candidates
       return stream;
     }
     getRequest({ id, url, method, headers, hasBody }) {
+      const abortCtrl = new AbortController();
+      this.abortCtrls.set(id, abortCtrl);
       if (!hasBody)
-        return new HttpRequest(url, { method, headers });
+        return new HttpRequest(url, { method, headers, signal: abortCtrl.signal });
       const body2 = this.receiveRequestBody(id);
-      return new HttpRequest(url, { method, headers, body: body2 });
+      return new HttpRequest(url, { method, headers, signal: abortCtrl.signal, body: body2 });
     }
     run() {
       this.disposers.push(listen(this.workerContainer, "message", (_0) => __async(this, [_0], function* ({ data }) {
-        debug("Got message in MainPage", data);
-        if (!isRequestMessage(data))
+        var _a;
+        debug("Got message in window", data);
+        if (!isHoWMessage(data))
           return;
-        if (data.type !== "req-head")
+        if (data.type === "req-head") {
+          const { id, fingerprint } = data;
+          const request = this.getRequest(data);
+          const ctx = new Context();
+          try {
+            const response = yield this.hoW.fetch(ctx, id, request, fingerprint);
+            yield this.sendResponse(ctx, id, response);
+          } catch (e) {
+            this.sendResponseError(id, e);
+          } finally {
+            this.abortCtrls.delete(id);
+          }
           return;
-        const { id, fingerprint } = data;
-        const request = this.getRequest(data);
-        const ctx = new Context();
-        try {
-          const response = yield this.hoW.fetch(ctx, id, request, fingerprint);
-          yield this.sendResponse(ctx, id, response);
-        } catch (e) {
-          this.sendResponseError(id, e);
+        }
+        if (data.type === "req-abort") {
+          (_a = this.abortCtrls.get(data.id)) == null ? void 0 : _a.abort(new AbortError(data.reason));
+          return;
         }
       })));
     }
@@ -2897,12 +2939,12 @@ a=end-of-candidates
     target.addEventListener(type, listener);
     return () => target.removeEventListener(type, listener);
   }
-  class HoWHttpClientForMP {
+  class HoWHttpClientForWindow {
     constructor(getFingerprint, pcConnectTimeout, dcOpenTimeout) {
       __publicField(this, "hoW");
       this.getFingerprint = getFingerprint;
       if (isInServiceWorker())
-        throw new Error("HoWHttpClientMainPage should not be used in Service Worker");
+        throw new Error("HoWHttpClientForWindow should not be used in Service Worker");
       this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
     }
     fetch(ctx, request) {
@@ -2921,9 +2963,9 @@ a=end-of-candidates
     }
   }
   const defaultWorkersCount = 10;
-  function createHoWHttpForMP(logger, config) {
+  function createHoWHttpForWindow(logger, config) {
     const resolver = new Resolver(logger, config == null ? void 0 : config.dnsResolver);
-    const httpClient = new HoWHttpClientForMP((ipPort) => resolver.getFingerprint(ipPort));
+    const httpClient = new HoWHttpClientForWindow((ipPort) => resolver.getFingerprint(ipPort));
     return new Http(logger, resolver, httpClient);
   }
   class Client {
@@ -2940,7 +2982,7 @@ a=end-of-candidates
       this.cache = new Cache(config == null ? void 0 : config.cache);
       this.hasher = (_a = config == null ? void 0 : config.hasher) != null ? _a : defaultHash;
       const logger = (_b = config == null ? void 0 : config.logger) != null ? _b : new Logger(appInfo);
-      this.http = (_c = config == null ? void 0 : config.http) != null ? _c : createHoWHttpForMP(logger, config);
+      this.http = (_c = config == null ? void 0 : config.http) != null ? _c : createHoWHttpForWindow(logger, config);
       this.taskq = new TaskQueue((_d = config == null ? void 0 : config.workersCount) != null ? _d : defaultWorkersCount);
     }
     createTask(url, range) {
@@ -2976,7 +3018,7 @@ a=end-of-candidates
     });
     return appendQuery(scriptUrl, { [configQueryName]: JSON.stringify(serializableConfig) });
   }
-  function register(scriptUrl, config, options) {
+  function registerSW(scriptUrl, config, options) {
     return __async(this, null, function* () {
       const reason = checkAbility();
       if (reason != null) {
@@ -2989,15 +3031,34 @@ a=end-of-candidates
       yield navigator.serviceWorker.register(scriptUrl, options);
     });
   }
-  function initProxy() {
+  function initPage() {
     return __async(this, null, function* () {
       const reason = checkAbility();
       if (reason != null) {
         console.warn("Ability not OK for netr SDK:", reason);
         return;
       }
-      const hoWService = new HoWService();
-      hoWService.run();
+      new HoWService().run();
+      syncWindowStatus();
+    });
+  }
+  function syncWindowStatus() {
+    function notify(state) {
+      var _a;
+      const message = { netrProxy: true, type: `window-${state}` };
+      (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
+    }
+    notify("available");
+    window.addEventListener("pageshow", () => notify("available"));
+    window.addEventListener("pagehide", () => notify("unavailable"));
+    window.addEventListener("beforeunload", () => notify("unavailable"));
+  }
+  function initProxy(scriptUrl, config, options) {
+    return __async(this, null, function* () {
+      yield Promise.all([
+        initPage(),
+        registerSW(scriptUrl, config, options)
+      ]);
     });
   }
   function checkAbility() {
@@ -3028,8 +3089,9 @@ a=end-of-candidates
     return null;
   }
   exports.Client = Client;
+  exports.initPage = initPage;
   exports.initProxy = initProxy;
-  exports.register = register;
+  exports.registerSW = registerSW;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
 }({});

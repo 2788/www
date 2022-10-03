@@ -44,45 +44,6 @@ var __async = (__this, __arguments, generator) => {
 (function() {
   var _a;
   "use strict";
-  class Mutex {
-    constructor() {
-      __publicField(this, "locked", false);
-      __publicField(this, "waitings", []);
-      this.unlock = this.unlock.bind(this);
-    }
-    lock() {
-      return __async(this, null, function* () {
-        if (!this.locked) {
-          this.locked = true;
-          return this.unlock;
-        }
-        yield new Promise((resolve) => {
-          this.waitings.push(resolve);
-        });
-        return this.unlock;
-      });
-    }
-    unlock() {
-      if (this.waitings.length === 0) {
-        this.locked = false;
-        return;
-      }
-      const waiting = this.waitings.shift();
-      waiting();
-    }
-    runExclusive(job) {
-      return __async(this, null, function* () {
-        const unlock = yield this.lock();
-        try {
-          return yield job();
-        } catch (e) {
-          throw e;
-        } finally {
-          unlock();
-        }
-      });
-    }
-  }
   function uuid() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
     const charNum = chars.length;
@@ -126,16 +87,81 @@ var __async = (__this, __arguments, generator) => {
       setTimeout(() => reject(new TimeoutError(msg + " timeout")), timeout);
     });
   }
+  class AbortError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "AbortError");
+    }
+  }
+  function waitAbort(signal) {
+    return new Promise((_, reject) => {
+      if (signal.aborted) {
+        reject(signal.reason);
+      } else {
+        signal.addEventListener("abort", () => {
+          reject(signal.reason);
+        });
+      }
+    });
+  }
+  let enabled = false;
+  function getDebug(namespace2) {
+    return (...args) => {
+      if (enabled)
+        console.debug(`[${namespace2}] [${(Date.now() / 1e3).toFixed(3)}]`, ...args);
+    };
+  }
+  function enableDebug() {
+    enabled = true;
+  }
+  class Emitter {
+    constructor() {
+      __publicField(this, "map", /* @__PURE__ */ new Map());
+    }
+    on(type, handler) {
+      var _a2;
+      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
+      const newHandlers = [...handlers, handler];
+      this.map.set(type, newHandlers);
+      return () => this.off(type, handler);
+    }
+    once(type, handler) {
+      const off = this.on(type, (e) => {
+        off();
+        handler(e);
+      });
+      return off;
+    }
+    off(type, handler) {
+      var _a2;
+      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
+      const newHandlers = handlers.filter((h) => h !== handler);
+      this.map.set(type, newHandlers);
+    }
+    emit(...args) {
+      var _a2;
+      const [type, event] = args;
+      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
+      handlers.forEach((handler) => {
+        handler(event);
+      });
+    }
+    dispose() {
+      this.map.clear();
+    }
+  }
   class HttpRequest {
-    constructor(url, { method, headers, body: body2 }) {
+    constructor(url, { method, headers, signal, body: body2 }) {
       __publicField(this, "url");
       __publicField(this, "method");
       __publicField(this, "headers");
       __publicField(this, "body");
+      __publicField(this, "signal");
       this.url = url;
       this.method = method != null ? method : "GET";
       this.headers = new Headers(headers);
       this.body = body2 != null ? body2 : null;
+      this.signal = signal != null ? signal : new AbortSignal();
     }
   }
   class HttpResponse {
@@ -148,6 +174,274 @@ var __async = (__this, __arguments, generator) => {
       this.statusText = statusText != null ? statusText : "";
       this.headers = new Headers(headers);
       this.body = body2;
+    }
+  }
+  function isHoWMessage(message) {
+    return message && message.hoW === true;
+  }
+  function dehydrateHeaders(headers) {
+    const res = {};
+    headers.forEach((v, k) => {
+      res[k] = v;
+    });
+    return res;
+  }
+  function isInServiceWorker() {
+    const scope2 = self;
+    return !!(scope2.clients && scope2.registration);
+  }
+  const scope$2 = self;
+  const debug$a = getDebug("utils/sw/clients");
+  class SWClients {
+    constructor(swScope = scope$2) {
+      __publicField(this, "clientIds", []);
+      __publicField(this, "removed", /* @__PURE__ */ new Set());
+      __publicField(this, "emitter", new Emitter());
+      this.swScope = swScope;
+    }
+    add(id) {
+      if (this.clientIds.includes(id))
+        return;
+      if (this.removed.has(id))
+        return;
+      this.clientIds.push(id);
+      debug$a("add", id, this.clientIds);
+    }
+    remove(id) {
+      const i = this.clientIds.indexOf(id);
+      if (i < 0)
+        return;
+      this.clientIds.splice(i, 1);
+      this.removed.add(id);
+      this.emitter.emit("remove", id);
+      debug$a("remove", id, this.clientIds);
+    }
+    set(newIds) {
+      const oldIds = this.clientIds;
+      const kept = [];
+      const removed = [];
+      oldIds.forEach((o) => {
+        const idxInNew = newIds.indexOf(o);
+        if (idxInNew >= 0) {
+          kept.push(o);
+          newIds.splice(idxInNew, 1);
+        } else {
+          removed.push(o);
+        }
+      });
+      this.clientIds = [...kept, ...newIds];
+      removed.forEach((r) => {
+        this.emitter.emit("remove", r);
+      });
+      if (removed.length > 0 || newIds.length > 0) {
+        debug$a("set", this.clientIds);
+      }
+    }
+    getAllIds() {
+      return this.clientIds;
+    }
+    getAll() {
+      return __async(this, null, function* () {
+        const clients = (yield this.swScope.clients.matchAll({ type: "window" })).slice();
+        clients.reverse();
+        this.set(clients.map((c) => c.id));
+        return this.clientIds.map((id) => clients.find((c) => c.id === id));
+      });
+    }
+    whenRemoved(id, cb) {
+      if (!this.clientIds.includes(id))
+        return;
+      const unlisten = this.emitter.on("remove", (removedId) => {
+        if (removedId !== id)
+          return;
+        unlisten();
+        cb();
+      });
+    }
+  }
+  const swClients = new SWClients();
+  const debug$9 = getDebug("cdnr/http/webrtc/client");
+  const messageEmitter = new Emitter();
+  let scope$1;
+  if (typeof self !== "undefined") {
+    scope$1 = self;
+    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
+  }
+  class HoWMessageError extends Error {
+    constructor(name, message) {
+      super(message);
+      this.name = name;
+    }
+  }
+  class HoWClient {
+    constructor(timeout = 30 * 1e3) {
+      this.timeout = timeout;
+    }
+    sendBody(client, id, body2) {
+      return __async(this, null, function* () {
+        const reader = body2.getReader();
+        while (true) {
+          const { value, done } = yield reader.read();
+          if (done) {
+            const message2 = { hoW: true, type: "req-body-chunk", id, payload: null };
+            client.postMessage(message2);
+            return;
+          }
+          const message = { hoW: true, type: "req-body-chunk", id, payload: value.buffer };
+          client.postMessage(message, [value.buffer]);
+        }
+      });
+    }
+    sendRequest(client, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        debug$9("sendRequest in Service Worker", id, request);
+        const { body: body2, url, method, headers } = request;
+        const message = {
+          hoW: true,
+          type: "req-head",
+          id,
+          url,
+          method,
+          headers: dehydrateHeaders(headers),
+          fingerprint,
+          hasBody: body2 != null
+        };
+        client.postMessage(message);
+        waitAbort(request.signal).catch((e) => {
+          const message2 = {
+            hoW: true,
+            type: "req-abort",
+            id,
+            reason: e instanceof AbortError ? e.message : e
+          };
+          client.postMessage(message2);
+        });
+        if (body2 != null) {
+          yield this.sendBody(client, id, body2);
+        }
+      });
+    }
+    receiveResponse(ctx, signal, id) {
+      return __async(this, null, function* () {
+        let streamCtrl;
+        const disposers = [];
+        let finished = false;
+        const finish = (cb) => {
+          if (finished)
+            return;
+          finished = true;
+          disposers.forEach((d) => d());
+          disposers.length = 0;
+          cb == null ? void 0 : cb();
+        };
+        return new Promise((resolve, reject) => {
+          disposers.push(messageEmitter.on("message", ({ data }) => {
+            if (!isHoWMessage(data))
+              return;
+            if (data.id !== id)
+              return;
+            if (data.type === "resp-head") {
+              debug$9("Message resp-head", data);
+              ctx.set("hoWDataChannelOpenTime", data.dataChannelOpenTime);
+              ctx.set("hoWStartTransferTime", data.startTransferTime);
+              if (!data.hasBody) {
+                debug$9("Resolve with no body");
+                finish(() => resolve(new HttpResponse(null, data)));
+                return;
+              }
+              const stream = new ReadableStream({
+                start: (ctrl) => streamCtrl = ctrl
+              });
+              const response = new HttpResponse(stream, data);
+              debug$9("Resolve with body", response);
+              resolve(response);
+              return;
+            }
+            if (data.type === "resp-body-chunk") {
+              if (streamCtrl == null)
+                throw new Error("Stream Controller should be ready");
+              if (data.payload == null) {
+                finish(() => streamCtrl.close());
+                return;
+              }
+              streamCtrl.enqueue(new Uint8Array(data.payload));
+              return;
+            }
+            if (data.type === "resp-error") {
+              finish(() => reject(new HoWMessageError(data.name, data.message)));
+              return;
+            }
+          }));
+          waitAbort(signal).catch((e) => {
+            finish(() => streamCtrl == null ? reject(e) : streamCtrl.error(e));
+          });
+        });
+      });
+    }
+    fetch(ctx, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        const windowClients = yield swClients.getAll();
+        if (windowClients.length === 0)
+          throw new WindowClientError("No available window client");
+        const windowClient = windowClients[0];
+        this.sendRequest(windowClient, id, request, fingerprint);
+        const responseReceived = this.receiveResponse(ctx, request.signal, id);
+        const windowClosed = new Promise((_, reject) => {
+          swClients.whenRemoved(windowClient.id, () => reject(new WindowClientError(`Target window client ${windowClient.id} closed`)));
+        });
+        return Promise.race([
+          responseReceived,
+          windowClosed,
+          waitTimeout(this.timeout, "HoWClient fetch")
+        ]);
+      });
+    }
+    dispose() {
+    }
+  }
+  class WindowClientError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "WindowClientError");
+    }
+  }
+  class Mutex {
+    constructor() {
+      __publicField(this, "locked", false);
+      __publicField(this, "waitings", []);
+      this.unlock = this.unlock.bind(this);
+    }
+    lock() {
+      return __async(this, null, function* () {
+        if (!this.locked) {
+          this.locked = true;
+          return this.unlock;
+        }
+        yield new Promise((resolve) => {
+          this.waitings.push(resolve);
+        });
+        return this.unlock;
+      });
+    }
+    unlock() {
+      if (this.waitings.length === 0) {
+        this.locked = false;
+        return;
+      }
+      const waiting = this.waitings.shift();
+      waiting();
+    }
+    runExclusive(job) {
+      return __async(this, null, function* () {
+        const unlock = yield this.lock();
+        try {
+          return yield job();
+        } catch (e) {
+          throw e;
+        } finally {
+          unlock();
+        }
+      });
     }
   }
   function httpGetContentRange(headers) {
@@ -165,8 +459,7 @@ var __async = (__this, __arguments, generator) => {
     const [range, totalSizeStr] = rest.split("/");
     const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
     const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
-    const rangeSize = start != null && end != null ? end - start + 1 : null;
-    return { totalSize, rangeSize, start, end };
+    return { totalSize, start, end };
   }
   function stringifyContentRange(v) {
     const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
@@ -199,9 +492,6 @@ var __async = (__this, __arguments, generator) => {
     }
     const [start, end] = [startStr, endStr].map((v2) => atoi(v2));
     return { start, end };
-  }
-  function getRangeSize$1({ start, end }) {
-    return start != null && end != null ? end - start + 1 : null;
   }
   function stringifyRange(range) {
     var _a2, _b;
@@ -243,20 +533,10 @@ var __async = (__this, __arguments, generator) => {
   function encodeHeaderValue(value) {
     return non_ios_8859_1Code.test(value) ? "REPLACED_BY_netr_SEE_netr_utils_http_encodeHeaderValue" : value;
   }
-  let enabled = false;
-  function getDebug(namespace2) {
-    return (...args) => {
-      if (enabled)
-        console.debug(`[${namespace2}] [${(Date.now() / 1e3).toFixed(3)}]`, ...args);
-    };
-  }
-  function enableDebug() {
-    enabled = true;
-  }
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
   const useTcp = true;
-  const debug$9 = getDebug("cdnr/http/webrtc/how");
+  const debug$8 = getDebug("cdnr/http/webrtc/how");
   class HoW {
     constructor(pcConnectTimeout = 10 * 1e3, dcOpenTimeout = 3 * 1e3) {
       __publicField(this, "pcMap", /* @__PURE__ */ new Map());
@@ -265,7 +545,7 @@ var __async = (__this, __arguments, generator) => {
       this.pcConnectTimeout = pcConnectTimeout;
       this.dcOpenTimeout = dcOpenTimeout;
     }
-    makePc(target, fingerprint) {
+    makePc(signal, target, fingerprint) {
       return __async(this, null, function* () {
         const pc = new RTCPeerConnection();
         const channel = pc.createDataChannel("test");
@@ -283,18 +563,18 @@ var __async = (__this, __arguments, generator) => {
         };
         pc.setRemoteDescription(answer);
         yield Promise.race([
-          waitPCConnected(pc),
+          waitPCConnected(signal, pc, target),
           waitTimeout(this.pcConnectTimeout, "PeerConnection connect")
         ]);
         return pc;
       });
     }
-    getPc(ctx, target, fingerprint) {
+    getPc(signal, target, fingerprint) {
       return __async(this, null, function* () {
         if (this.pcMap.has(target)) {
           return this.pcMap.get(target);
         }
-        const promisedPc = this.makePc(target, fingerprint);
+        const promisedPc = this.makePc(signal, target, fingerprint);
         this.pcMap.set(target, promisedPc);
         promisedPc.catch((e) => {
           this.pcMap.delete(target);
@@ -304,9 +584,9 @@ var __async = (__this, __arguments, generator) => {
     }
     fetch(ctx, id, request, fingerprint) {
       return __async(this, null, function* () {
-        debug$9("fetch", request.url, "with id", id);
+        debug$8("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
-        const pc = yield this.getPc(ctx, target, fingerprint);
+        const pc = yield this.getPc(request.signal, target, fingerprint);
         const processor = new HoWRequest(pc, ctx, id, request, this.dcOpenTimeout);
         const resp = yield processor.start();
         return resp;
@@ -374,7 +654,7 @@ a=end-of-candidates
     dc.addEventListener(type, listener);
     return () => dc.removeEventListener(type, listener);
   }
-  function streamForDC(id, dc, closeOn = "close") {
+  function streamForDC(id, dc, signal) {
     const disposers = [
       () => {
         if (dc.readyState !== "closing" && dc.readyState !== "closed") {
@@ -382,34 +662,34 @@ a=end-of-candidates
         }
       }
     ];
-    const dispose = () => disposers.forEach((d) => d());
+    let finished = false;
+    const finish = (cb) => {
+      if (finished)
+        return;
+      finished = true;
+      disposers.forEach((d) => d());
+      disposers.length = 0;
+      cb == null ? void 0 : cb();
+    };
     return new ReadableStream({
       start: (ctrl) => {
+        waitAbort(signal).catch((e) => {
+          finish(() => ctrl.error(e));
+        });
         disposers.push(listenDC(dc, "message", ({ data }) => {
           ctrl.enqueue(data);
         }));
         disposers.push(listenDC(dc, "error", (e) => {
-          debug$9(`dc ${id} error`, e);
-          dispose();
-          ctrl.error(e);
+          debug$8(`dc ${id} error`, e);
+          finish(() => ctrl.error(e));
         }));
         disposers.push(listenDC(dc, "closing", (e) => {
-          debug$9(`DataChannel ${id} closing`, e);
-          if (closeOn === "closing") {
-            dispose();
-            ctrl.close();
-          }
-        }));
-        disposers.push(listenDC(dc, "close", (e) => {
-          debug$9(`DataChannel ${id} close`, e);
-          if (closeOn === "close") {
-            dispose();
-            ctrl.close();
-          }
+          debug$8(`DataChannel ${id} closing`, e);
+          finish(() => ctrl.close());
         }));
       },
       cancel: (reason) => {
-        dispose();
+        finish();
       }
     });
   }
@@ -422,7 +702,7 @@ a=end-of-candidates
       this.request = request;
       this.dcOpenTimeout = dcOpenTimeout;
       this.dc = pc.createDataChannel(`http|${id}`);
-      this.stream = streamForDC(this.id, this.dc, "closing");
+      this.stream = streamForDC(this.id, this.dc, request.signal);
     }
     open() {
       return __async(this, null, function* () {
@@ -432,17 +712,18 @@ a=end-of-candidates
         const dispose = () => disposers.forEach((d) => d());
         const opened = new Promise((resolve, reject) => {
           disposers.push(listenDC(this.dc, "open", () => {
-            debug$9(`DataChannel ${this.id} opened`);
+            debug$8(`DataChannel ${this.id} opened`);
             resolve();
           }));
           disposers.push(listenDC(this.dc, "error", () => {
-            debug$9(`DataChannel ${this.id} error`);
+            debug$8(`DataChannel ${this.id} error`);
             reject(new Error("DataChannel error"));
           }));
         });
         return Promise.race([
           opened,
-          waitTimeout(this.dcOpenTimeout, `DataChannel ${this.id} open`)
+          waitTimeout(this.dcOpenTimeout, `DataChannel ${this.id} open`),
+          waitAbort(this.request.signal)
         ]).finally(dispose);
       });
     }
@@ -456,7 +737,7 @@ a=end-of-candidates
         if (contentLength > 0)
           throw new Error("TODO: Request with body is not supported");
         const requestHead = stringifyRequestHead(request);
-        debug$9(`DataChannel ${this.id} sendRequest:`, requestHead);
+        debug$8(`DataChannel ${this.id} sendRequest:`, requestHead);
         this.dc.send(requestHead);
       });
     }
@@ -464,7 +745,7 @@ a=end-of-candidates
       return __async(this, null, function* () {
         var _a2;
         const startAt = Date.now();
-        debug$9(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
+        debug$8(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
         const request = this.request;
         const dcReader = this.stream.getReader();
         const { value, done } = yield dcReader.read();
@@ -473,7 +754,7 @@ a=end-of-candidates
         if (typeof value !== "string")
           throw new Error(`Expected first message type to be string, while got ${typeof value}`);
         const respHead = parseResponseHead(value);
-        debug$9(`DataChannel ${this.id} get respHead:`, respHead);
+        debug$8(`DataChannel ${this.id} get respHead:`, respHead);
         const status = respHead.status;
         const headers = new Headers(mapObj((_a2 = respHead.header) != null ? _a2 : {}, (hs) => encodeHeaderValue(hs[0])));
         const respInit = { status, statusText: respHead.reason, headers };
@@ -482,7 +763,7 @@ a=end-of-candidates
         this.ctx.set("hoWStartTransferTime", startTransferTime);
         if (!hasBody) {
           const resp2 = new HttpResponse(null, respInit);
-          debug$9("DataChannel receiveResponse done with no body");
+          debug$8("DataChannel receiveResponse done with no body");
           return resp2;
         }
         let received = 0;
@@ -514,7 +795,7 @@ a=end-of-candidates
             });
           },
           cancel(reason) {
-            debug$9("DataChannel bodyStream cancel:", reason);
+            debug$8("DataChannel bodyStream cancel:", reason);
             dcReader.cancel(reason);
           }
         });
@@ -524,21 +805,15 @@ a=end-of-candidates
     }
     start() {
       return __async(this, null, function* () {
-        return new Promise((resolve, reject) => __async(this, null, function* () {
-          try {
-            const startAt = Date.now();
-            yield this.open();
-            const dataChannelOpenTime = (Date.now() - startAt) / 1e3;
-            this.ctx.set("hoWDataChannelOpenTime", dataChannelOpenTime);
-            const [, resp] = yield Promise.all([
-              this.sendRequest(),
-              this.receiveResponse()
-            ]);
-            resolve(resp);
-          } catch (e) {
-            reject(e);
-          }
-        }));
+        const startAt = Date.now();
+        yield this.open();
+        const dataChannelOpenTime = (Date.now() - startAt) / 1e3;
+        this.ctx.set("hoWDataChannelOpenTime", dataChannelOpenTime);
+        const [, resp] = yield Promise.all([
+          this.sendRequest(),
+          this.receiveResponse()
+        ]);
+        return resp;
       });
     }
   }
@@ -554,13 +829,13 @@ a=end-of-candidates
       __publicField(this, "name", "PeerConnectionDisconnectedError");
     }
   }
-  function waitPCConnected(pc, desc) {
+  function waitPCConnected(signal, pc, desc) {
     return new Promise((resolve, reject) => {
       if (pc.connectionState === "connected") {
         resolve();
       }
-      let unlisten = listenPC(pc, "connectionstatechange", () => {
-        debug$9(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
+      const unlisten = listenPC(pc, "connectionstatechange", () => {
+        debug$8(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
         if (["failed", "closed", "disconnected"].includes(pc.connectionState)) {
           reject(new PeerConnectionDisconnectedError(desc));
           unlisten();
@@ -571,6 +846,10 @@ a=end-of-candidates
           unlisten();
           return;
         }
+      });
+      waitAbort(signal).catch((e) => {
+        reject(e);
+        unlisten();
       });
     });
   }
@@ -781,7 +1060,7 @@ a=end-of-candidates
     return err instanceof Error ? err.name : "Unknown";
   }
   const defaultDuration = 1e3;
-  const debug$8 = getDebug("dnsr");
+  const debug$7 = getDebug("dnsr");
   class NonECDNError extends Error {
     constructor() {
       super(...arguments);
@@ -890,13 +1169,13 @@ a=end-of-candidates
           throw new Error("TODO: no port");
         let err;
         for (let i = 0; i < attempts; i++) {
-          debug$8("Resolve for", url);
+          debug$7("Resolve for", url);
           const group = yield this.resolve(ctx, urlObj.host);
           if (group == null)
             throw new Error(`No available group for ${url}`);
-          debug$8("Resolved for", url);
+          debug$7("Resolved for", url);
           try {
-            debug$8("doWithGroup", i, url);
+            debug$7("doWithGroup", i, url);
             yield doWithGroup(group, url, job);
             group.duration = this.initialDuration;
             return;
@@ -929,7 +1208,7 @@ a=end-of-candidates
         if (elt == null)
           throw new Error("No available elt");
         try {
-          debug$8("doWithElt", elt.id, url);
+          debug$7("doWithElt", elt.id, url);
           yield doWithElt(elt, url, job);
           return;
         } catch (e) {
@@ -954,7 +1233,7 @@ a=end-of-candidates
         if (ip == null)
           break;
         try {
-          debug$8("doWithIP", ip, url);
+          debug$7("doWithIP", ip, url);
           yield job(ip);
           return;
         } catch (e) {
@@ -988,6 +1267,10 @@ a=end-of-candidates
   const unexpectedDataChannelCloseErrorName = new UnexpectedDataChannelCloseError().name;
   function shouldDisableTarget(e) {
     if (e && e.name === unexpectedDataChannelCloseErrorName)
+      return false;
+    if (e && e.name === "AbortError")
+      return false;
+    if (e instanceof WindowClientError)
       return false;
     return true;
   }
@@ -1905,7 +2188,7 @@ a=end-of-candidates
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.0";
+  const version = "0.2.1";
   function getEnv() {
     var _a2, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -1924,7 +2207,7 @@ a=end-of-candidates
     };
   }
   const logNumPerCall = 200;
-  const debug$7 = getDebug("logr");
+  const debug$6 = getDebug("logr");
   class SchemaLogger {
     constructor(schemaName, fetch2, flushNum, flushWait) {
       __publicField(this, "env", queryStringify(getEnv()));
@@ -1972,12 +2255,12 @@ a=end-of-candidates
           if (buffer.length === 0)
             return false;
           if (buffer.length >= this.flushNum) {
-            debug$7("buffer.length >= this.flushNum");
+            debug$6("buffer.length >= this.flushNum");
             return true;
           }
           const waited = Date.now() - buffer[0].ts;
           if (waited >= this.flushWait * 1e3) {
-            debug$7("waited >= this.flushWait");
+            debug$6("waited >= this.flushWait");
             return true;
           }
           return this.flushWait * 1e3 - waited;
@@ -2117,13 +2400,13 @@ a=end-of-candidates
       transaction.addEventListener("abort", () => reject(transaction.error));
     });
   }
-  const debug$6 = getDebug("dcr");
+  const debug$5 = getDebug("dcr");
   const namespace = "cdnr/dcr/v2";
   const itemStoreName = "item";
   class Cache {
-    constructor(config2 = {}) {
+    constructor(config = {}) {
       __publicField(this, "db", new DB(namespace, [itemStoreName]));
-      this.config = config2;
+      this.config = config;
     }
     getBrowserCache() {
       return caches.open(namespace);
@@ -2135,7 +2418,7 @@ a=end-of-candidates
     }
     setItem(key, item) {
       return __async(this, null, function* () {
-        debug$6("setItem", key, item);
+        debug$5("setItem", key, item);
         yield this.db.set(itemStoreName, key, item);
       });
     }
@@ -2173,12 +2456,12 @@ a=end-of-candidates
     }
   }
   const defaultAttempts = 3;
-  const debug$5 = getDebug("cdnr/http");
+  const debug$4 = getDebug("cdnr/http");
   class Http {
-    constructor(logger, resolver, client2) {
+    constructor(logger, resolver, client) {
       __publicField(this, "logger");
       this.resolver = resolver;
-      this.client = client2;
+      this.client = client;
       this.logger = new CdnrLogger(logger);
     }
     doWithIp(ctx, request, ip, currentRetryCount) {
@@ -2188,17 +2471,17 @@ a=end-of-candidates
         const startAt = Date.now();
         let err;
         try {
-          debug$5("do request", request.url, "with ip", ip);
+          debug$4("do request", request.url, "with ip", ip);
           const req = withNode(request, ip);
           const resp = yield this.client.fetch(ctx, req);
-          debug$5("do request", request.url, "with ip succeeded with status", resp.status);
+          debug$4("do request", request.url, "with ip succeeded with status", resp.status);
           ctx.set("downloadStatus", resp.status);
           ctx.set("downloadReqID", (_a2 = resp.headers.get("x-reqid")) != null ? _a2 : "");
           if (resp.status >= 500)
             throw new Error(`TODO: HTTP Status error: ${resp.status}`);
           return resp;
         } catch (e) {
-          debug$5("do request", request.url, "with ip", ip, "failed:", e);
+          debug$4("do request", request.url, "with ip", ip, "failed:", e);
           err = e;
           throw e;
         } finally {
@@ -2261,22 +2544,26 @@ a=end-of-candidates
     }
   }
   function withNode(originalReq, nodeIP) {
-    const { url: originalUrl, method, headers: originalHeaders, body: body2 } = originalReq;
+    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
     const urlObject = new URL(originalUrl);
     const originalHost = urlObject.host;
     urlObject.host = nodeIP;
     const headers = new Headers(originalHeaders);
     headers.set("Host", originalHost);
-    return new HttpRequest(urlObject.toString(), { method, headers, body: body2 });
+    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
   }
   class Task {
-    constructor(client2, url, range, expiry) {
+    constructor(client, url, range, expiry) {
       __publicField(this, "priority", 0);
+      __publicField(this, "abortCtrl", new AbortController());
       __publicField(this, "started", false);
-      this.client = client2;
+      this.client = client;
       this.url = url;
       this.range = range;
       this.expiry = expiry;
+    }
+    get signal() {
+      return this.abortCtrl.signal;
     }
     setPriority(priority) {
       this.priority = priority;
@@ -2289,6 +2576,9 @@ a=end-of-candidates
         this.started = true;
         return this.client.startTask(this);
       });
+    }
+    cancel(reason) {
+      this.abortCtrl.abort(reason);
     }
   }
   function slice(stream, range) {
@@ -2461,7 +2751,7 @@ a=end-of-candidates
   function minus(num1, num2) {
     return num1 == null || num2 == null ? null : num1 - num2;
   }
-  const debug$4 = getDebug("cdnr/ftask");
+  const debug$3 = getDebug("cdnr/ftask");
   class FileTask {
     constructor(taskq, cache, http, key, url) {
       __publicField(this, "id", uuid());
@@ -2478,9 +2768,9 @@ a=end-of-candidates
     startTask(task) {
       return __async(this, null, function* () {
         if (task.range != null) {
-          debug$4("startTask", task.url);
+          debug$3("startTask", task.url);
           yield this.inited;
-          debug$4("startTask inited", task.url);
+          debug$3("startTask inited", task.url);
           return this.startTaskWithRange(task);
         } else {
           return this.startTaskWithoutRange(task);
@@ -2489,7 +2779,7 @@ a=end-of-candidates
     }
     startTaskWithRange(task) {
       return __async(this, null, function* () {
-        debug$4("startTaskWithRange", task.url);
+        debug$3("startTaskWithRange", task.url);
         const range = task.range != null ? [task.range.start, task.range.end] : [0, null];
         const [stream, meta] = yield Promise.all([
           this.readRange(task, range),
@@ -2501,25 +2791,24 @@ a=end-of-candidates
     }
     startTaskWithoutRange(task) {
       return __async(this, null, function* () {
-        debug$4("startTaskWithoutRange", task.url);
+        debug$3("startTaskWithoutRange", task.url);
         const streamPromise = new Promise((resolve, reject) => {
           this.taskq.add({
             name: `startTaskWithoutRange: ${this.url}`,
             priority: task.priority,
             run: () => __async(this, null, function* () {
               const cachedContent = yield this.cache.getContent(this.key, [0, null]);
-              if (cachedContent === void 0) {
-                try {
-                  const { body: body2 } = yield this.doRequest(null);
-                  const [stream1, stream2] = body2.tee();
-                  resolve(stream1);
-                  this.saveCachePiece([0, null], stream2);
-                } catch (e) {
-                  reject(e);
-                }
-              } else {
-                debug$4("use cache", task.url);
+              if (cachedContent != null) {
+                debug$3("use cache", task.url);
                 resolve(cachedContent);
+                return;
+              }
+              try {
+                const { body: body2, bodyDone } = yield this.doRequestAndSaveCache(null, task.signal);
+                resolve(body2);
+                yield bodyDone;
+              } catch (e) {
+                reject(e);
               }
             })
           });
@@ -2535,42 +2824,29 @@ a=end-of-candidates
       return __async(this, null, function* () {
         var _a2, _b, _c, _d;
         const pieces = applyRange(range, (_b = (_a2 = this.meta.value) == null ? void 0 : _a2.fsize) != null ? _b : null, this.cachePieces);
-        debug$4("applyRange", range, (_d = (_c = this.meta.value) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
+        debug$3("applyRange", range, (_d = (_c = this.meta.value) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
         const stream = new TransformStream();
         const abortCtrl = new AbortController();
         (() => __async(this, null, function* () {
           for (let i = 0; i < pieces.length; i++) {
             const { cached, range: range2 } = pieces[i];
-            let pieceStream;
-            try {
-              pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
-            } catch (e) {
-              console.warn("readPiece failed for", this.url, e);
-              if (i === 0) {
-                stream.writable.abort(e);
-              } else {
-                abortCtrl.abort(e);
-              }
-              return;
-            }
+            const pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
             const isLast = i === pieces.length - 1;
-            try {
-              yield pieceStream.pipeTo(stream.writable, {
-                preventClose: !isLast,
-                signal: abortCtrl.signal
-              });
-            } catch (e) {
-              debug$4("readRange cancelled for", this.url, e);
-              return;
-            }
+            yield pieceStream.pipeTo(stream.writable, {
+              preventClose: !isLast,
+              signal: abortCtrl.signal
+            });
           }
-        }))();
+        }))().catch((e) => {
+          console.warn("readRange stream error for", this.url, e);
+          stream.writable.abort(e);
+        });
         return stream.readable;
       });
     }
     readPieceFromLocal(task, range) {
       return __async(this, null, function* () {
-        debug$4("readPieceFromLocal", task.url, range);
+        debug$3("readPieceFromLocal", task.url, range);
         const { piece, start, end } = findPiece(this.cachePieces, range);
         const pieceContent = yield this.cache.getContent(this.key, piece);
         if (pieceContent == null) {
@@ -2586,23 +2862,20 @@ a=end-of-candidates
     }
     readPieceFromRemote(task, range) {
       return __async(this, null, function* () {
-        debug$4("readPieceFromRemote", task.url, range);
+        debug$3("readPieceFromRemote", task.url, range);
         return new Promise((resolve, reject) => {
           this.taskq.add({
             name: `readPieceFromRemote: ${this.url}, [${range[0], range[1]})]`,
             priority: task.priority,
             run: () => __async(this, null, function* () {
-              var _a2;
               try {
-                const { response, body: body2 } = yield this.doRequest(range);
-                const [bodyForResolve, bodyForCache] = body2.tee();
+                const { response, body: body2, bodyDone } = yield this.doRequestAndSaveCache(range, task.signal);
                 if (!isFull(this.fileSize(), range) && response.status === 200) {
-                  resolve(slice(bodyForResolve, range));
+                  resolve(slice(body2, range));
                 } else {
-                  resolve(bodyForResolve);
+                  resolve(body2);
                 }
-                const piece = [(_a2 = range[0]) != null ? _a2 : 0, range[1]];
-                this.saveCachePiece(piece, bodyForCache);
+                yield bodyDone;
               } catch (e) {
                 reject(e);
               }
@@ -2611,7 +2884,7 @@ a=end-of-candidates
         });
       });
     }
-    doRequest(range) {
+    doRequest(range, signal) {
       return __async(this, null, function* () {
         try {
           const ctx = new Context();
@@ -2624,7 +2897,7 @@ a=end-of-candidates
             ctx.set("downloadRange", httpRange);
             headers["Range"] = stringifyRange(httpRange);
           }
-          const request = new HttpRequest(this.url, { headers });
+          const request = new HttpRequest(this.url, { method: "GET", headers, signal });
           const response = yield this.http.do(ctx, request);
           if (response.body == null) {
             throw new Error("Body expected");
@@ -2640,13 +2913,24 @@ a=end-of-candidates
         }
       });
     }
+    doRequestAndSaveCache(range, signal) {
+      return __async(this, null, function* () {
+        var _a2, _b;
+        const { response, body: body2 } = yield this.doRequest(range, signal);
+        const [bodyForUse, bodyForCache] = body2.tee();
+        const piece = [(_a2 = range == null ? void 0 : range[0]) != null ? _a2 : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
+        this.saveCachePiece(piece, bodyForCache);
+        const transform = new TransformStream();
+        const bodyDone = bodyForUse.pipeTo(transform.writable);
+        return { response, body: transform.readable, bodyDone };
+      });
+    }
     saveCachePiece(piece, content) {
       return __async(this, null, function* () {
-        debug$4("saveCachePiece", this.url, piece);
+        debug$3("saveCachePiece", this.url, piece);
         yield this.cache.setContent(this.key, piece, content);
         this.cachePieces = addPiece(this.cachePieces, piece);
         yield this.save();
-        debug$4("saveCachePiece finish", this.url, piece);
       });
     }
     saveMeta(response) {
@@ -2692,43 +2976,7 @@ a=end-of-candidates
       });
     }
   }
-  class Emitter {
-    constructor() {
-      __publicField(this, "map", /* @__PURE__ */ new Map());
-    }
-    on(type, handler) {
-      var _a2;
-      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
-      const newHandlers = [...handlers, handler];
-      this.map.set(type, newHandlers);
-      return () => this.off(type, handler);
-    }
-    once(type, handler) {
-      const off = this.on(type, (e) => {
-        off();
-        handler(e);
-      });
-      return off;
-    }
-    off(type, handler) {
-      var _a2;
-      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
-      const newHandlers = handlers.filter((h) => h !== handler);
-      this.map.set(type, newHandlers);
-    }
-    emit(...args) {
-      var _a2;
-      const [type, event] = args;
-      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
-      handlers.forEach((handler) => {
-        handler(event);
-      });
-    }
-    dispose() {
-      this.map.clear();
-    }
-  }
-  const debug$3 = getDebug("utils/taskq");
+  const debug$2 = getDebug("utils/taskq");
   class TaskQueue {
     constructor(jobs) {
       __publicField(this, "tasks", []);
@@ -2769,11 +3017,13 @@ a=end-of-candidates
         if (!this.running)
           return;
         const task = yield this.pop();
-        debug$3("run task", task.name, ", with priority:", task.priority);
+        debug$2("run task", task.name, ", with priority:", task.priority);
         try {
           yield task == null ? void 0 : task.run();
         } catch (e) {
           console.warn("Task run failed:", e);
+        } finally {
+          debug$2("end task", task.name);
         }
       });
     }
@@ -2789,143 +3039,12 @@ a=end-of-candidates
       this.running = false;
     }
   }
-  function isResponseMessage(message) {
-    return message && message.hoW === true && ["resp-head", "resp-body-chunk", "resp-error"].includes(message.type);
-  }
-  function dehydrateHeaders(headers) {
-    const res = {};
-    headers.forEach((v, k) => {
-      res[k] = v;
-    });
-    return res;
-  }
-  function isInServiceWorker() {
-    const scope2 = self;
-    return !!(scope2.clients && scope2.registration);
-  }
-  const debug$2 = getDebug("cdnr/http/webrtc/client");
-  const messageEmitter = new Emitter();
-  let scope$1;
-  if (typeof self !== "undefined") {
-    scope$1 = self;
-    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
-  }
-  class HoWMessageError extends Error {
-    constructor(name, message) {
-      super(message);
-      this.name = name;
-    }
-  }
-  class HoWClient {
-    constructor(timeout = 30 * 1e3) {
-      this.timeout = timeout;
-    }
-    sendBody(client2, id, body2) {
-      return __async(this, null, function* () {
-        const reader = body2.getReader();
-        while (true) {
-          const { value, done } = yield reader.read();
-          if (done) {
-            const message2 = { hoW: true, type: "req-body-chunk", id, payload: null };
-            client2.postMessage(message2);
-            return;
-          }
-          const message = { hoW: true, type: "req-body-chunk", id, payload: value.buffer };
-          client2.postMessage(message, [value.buffer]);
-        }
-      });
-    }
-    sendRequest(client2, id, request, fingerprint) {
-      return __async(this, null, function* () {
-        debug$2("sendRequest in Service Worker", id, request);
-        const { body: body2, url, method, headers } = request;
-        const message = {
-          hoW: true,
-          type: "req-head",
-          id,
-          url,
-          method,
-          headers: dehydrateHeaders(headers),
-          fingerprint,
-          hasBody: body2 != null
-        };
-        client2.postMessage(message);
-        if (body2 != null) {
-          yield this.sendBody(client2, id, body2);
-        }
-      });
-    }
-    receiveResponse(ctx, id) {
-      return __async(this, null, function* () {
-        let streamCtrl;
-        return new Promise((resolve, reject) => {
-          const unlisten = messageEmitter.on("message", ({ data }) => {
-            if (!isResponseMessage(data))
-              return;
-            if (data.id !== id)
-              return;
-            if (data.type === "resp-head") {
-              debug$2("Message resp-head", data);
-              ctx.set("hoWDataChannelOpenTime", data.dataChannelOpenTime);
-              ctx.set("hoWStartTransferTime", data.startTransferTime);
-              if (!data.hasBody) {
-                debug$2("Resolve with no body");
-                resolve(new HttpResponse(null, data));
-                unlisten();
-                return;
-              }
-              const stream = new ReadableStream({
-                start: (ctrl) => streamCtrl = ctrl
-              });
-              const response = new HttpResponse(stream, data);
-              debug$2("Resolve with body", response);
-              resolve(response);
-              return;
-            }
-            if (data.type === "resp-body-chunk") {
-              if (streamCtrl == null)
-                throw new Error("Stream Controller should be ready");
-              if (data.payload == null) {
-                streamCtrl.close();
-                unlisten();
-                return;
-              }
-              streamCtrl.enqueue(new Uint8Array(data.payload));
-              return;
-            }
-            if (data.type === "resp-error") {
-              reject(new HoWMessageError(data.name, data.message));
-            }
-          });
-        });
-      });
-    }
-    fetch(ctx, id, request, fingerprint) {
-      return __async(this, null, function* () {
-        const fetched = (() => __async(this, null, function* () {
-          const clients = yield scope$1.clients.matchAll({ type: "window" });
-          if (clients.length === 0)
-            throw new Error("No available window client");
-          const client2 = clients[clients.length - 1];
-          this.sendRequest(client2, id, request, fingerprint);
-          const resp = yield this.receiveResponse(ctx, id);
-          return resp;
-        }))();
-        return Promise.race([
-          fetched,
-          waitTimeout(this.timeout, "HoWClient fetch")
-        ]);
-      });
-    }
-    dispose() {
-    }
-  }
-  class HoWHttpClientForMP {
+  class HoWHttpClientForWindow {
     constructor(getFingerprint, pcConnectTimeout, dcOpenTimeout) {
       __publicField(this, "hoW");
       this.getFingerprint = getFingerprint;
       if (isInServiceWorker())
-        throw new Error("HoWHttpClientMainPage should not be used in Service Worker");
+        throw new Error("HoWHttpClientForWindow should not be used in Service Worker");
       this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
     }
     fetch(ctx, request) {
@@ -2967,13 +3086,13 @@ a=end-of-candidates
     }
   }
   const defaultWorkersCount = 10;
-  function createHoWHttpForMP(logger, config2) {
-    const resolver = new Resolver(logger, config2 == null ? void 0 : config2.dnsResolver);
-    const httpClient = new HoWHttpClientForMP((ipPort) => resolver.getFingerprint(ipPort));
+  function createHoWHttpForWindow(logger, config) {
+    const resolver = new Resolver(logger, config == null ? void 0 : config.dnsResolver);
+    const httpClient = new HoWHttpClientForWindow((ipPort) => resolver.getFingerprint(ipPort));
     return new Http(logger, resolver, httpClient);
   }
   class Client {
-    constructor(appInfo, config2) {
+    constructor(appInfo, config) {
       __publicField(this, "fileTasks", /* @__PURE__ */ new Map());
       __publicField(this, "taskq");
       __publicField(this, "cache");
@@ -2981,13 +3100,13 @@ a=end-of-candidates
       __publicField(this, "http");
       var _a2, _b, _c, _d;
       this.appInfo = appInfo;
-      if (config2 == null ? void 0 : config2.debug)
+      if (config == null ? void 0 : config.debug)
         enableDebug();
-      this.cache = new Cache(config2 == null ? void 0 : config2.cache);
-      this.hasher = (_a2 = config2 == null ? void 0 : config2.hasher) != null ? _a2 : defaultHash;
-      const logger = (_b = config2 == null ? void 0 : config2.logger) != null ? _b : new Logger(appInfo);
-      this.http = (_c = config2 == null ? void 0 : config2.http) != null ? _c : createHoWHttpForMP(logger, config2);
-      this.taskq = new TaskQueue((_d = config2 == null ? void 0 : config2.workersCount) != null ? _d : defaultWorkersCount);
+      this.cache = new Cache(config == null ? void 0 : config.cache);
+      this.hasher = (_a2 = config == null ? void 0 : config.hasher) != null ? _a2 : defaultHash;
+      const logger = (_b = config == null ? void 0 : config.logger) != null ? _b : new Logger(appInfo);
+      this.http = (_c = config == null ? void 0 : config.http) != null ? _c : createHoWHttpForWindow(logger, config);
+      this.taskq = new TaskQueue((_d = config == null ? void 0 : config.workersCount) != null ? _d : defaultWorkersCount);
     }
     createTask(url, range) {
       const hashIdx = url.indexOf("#");
@@ -3014,17 +3133,23 @@ a=end-of-candidates
   function defaultHash(url) {
     return url;
   }
+  function isProxyMessage(message) {
+    return message && message.netrProxy === true;
+  }
   const debug$1 = getDebug("cdnr/proxy/common");
-  function proxyRequest(client2, request) {
+  function proxyRequest(client, request) {
     return __async(this, null, function* () {
-      var _a2, _b, _c;
-      const range = httpGetRange(request.headers);
-      const task = client2.createTask(request.url, range != null ? range : void 0);
-      const { size, fileSize, contentType, stream } = yield task.start();
-      request.signal.addEventListener("abort", () => {
-        debug$1("request", request.url, "aborted");
-        stream.cancel();
+      var _a2, _b;
+      const httpRange = httpGetRange(request.headers);
+      const range = httpRange == null ? void 0 : {
+        start: httpRange.start,
+        end: httpRange.end == null ? null : httpRange.end + 1
+      };
+      const task = client.createTask(request.url, range != null ? range : void 0);
+      waitAbort(request.signal).catch((e) => {
+        task.cancel(e);
       });
+      const { size, fileSize, contentType, stream } = yield task.start();
       const headers = {
         "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
@@ -3032,13 +3157,10 @@ a=end-of-candidates
         "Content-Length": (size != null ? size : "") + "",
         "Content-Transfer-Encoding": "binary"
       };
-      const realRangeEnd = (_a2 = range == null ? void 0 : range.end) != null ? _a2 : fileSize != null ? fileSize - 1 : null;
       const response = range == null ? new Response(stream, { status: 200, statusText: "OK", headers }) : new Response(stream, { status: 206, statusText: "Partial Content", headers: __spreadProps(__spreadValues({}, headers), {
-        "Content-Length": realRangeEnd != null && range.start != null ? realRangeEnd - range.start + 1 + "" : "",
         "Content-Range": stringifyContentRange({
-          start: (_b = range.start) != null ? _b : 0,
-          end: (_c = range.end) != null ? _c : fileSize != null ? fileSize - 1 : null,
-          rangeSize: getRangeSize$1(range),
+          start: (_a2 = range.start) != null ? _a2 : 0,
+          end: (_b = range.end) != null ? _b : fileSize != null ? fileSize - 1 : null,
           totalSize: fileSize
         })
       }) });
@@ -3076,30 +3198,50 @@ a=end-of-candidates
   }
   const debug = getDebug("cdnr/proxy/service-worker");
   const scope = self;
-  const config = getProxyConfig(scope.location.href);
-  const clientConfig = (_a = config.client) != null ? _a : {};
-  clientConfig.debug = config.debug;
-  const client = createClientForSW(config.app, clientConfig);
+  const proxyConfig = getProxyConfig(scope.location.href);
+  const cdnrClientConfig = (_a = proxyConfig.client) != null ? _a : {};
+  cdnrClientConfig.debug = proxyConfig.debug;
+  const cdnrClient = createClientForSW(proxyConfig.app, cdnrClientConfig);
   scope.addEventListener("fetch", (event) => __async(this, null, function* () {
-    const { request } = event;
-    if (shouldUseCDN(request, config)) {
+    if (event.clientId !== "") {
+      swClients.add(event.clientId);
+    }
+    const request = event.request;
+    const abortCtrl = new AbortController();
+    Object.defineProperty(request, "signal", { value: abortCtrl.signal });
+    swClients.whenRemoved(event.clientId, () => abortCtrl.abort(new AbortError(`Source client ${event.clientId} closed`)));
+    if (shouldUseCDN(request, proxyConfig)) {
       debug("use cdn", request.url);
-      event.respondWith(proxyRequest(client, request).catch((e) => {
+      event.respondWith(proxyRequest(cdnrClient, request).catch((e) => {
         if (e instanceof NonECDNError) {
           debug("Use fallback fetch for request", request.url);
-          return fetch(request);
+          return fetch(request, { signal: abortCtrl.signal });
         }
-        console.error(`proxyRequest ${request.url} failed: ${e}`);
         throw e;
       }));
       return;
     }
   }));
-  function createClientForSW(app, clientConfig2) {
+  scope.addEventListener("message", (e) => __async(this, null, function* () {
+    if (!(e.source instanceof WindowClient))
+      return;
+    if (!isProxyMessage(e.data))
+      return;
+    debug("got proxy message", e.data, "from", e.source.id);
+    switch (e.data.type) {
+      case "window-available":
+        swClients.add(e.source.id);
+        break;
+      case "window-unavailable":
+        swClients.remove(e.source.id);
+        break;
+    }
+  }));
+  function createClientForSW(app, clientConfig) {
     const logger = new Logger(app, void 0, void 0, 3);
     const resolver = new Resolver(logger);
     const httpClient = new HoWHttpClientForSW((ipPort) => resolver.getFingerprint(ipPort));
     const http = new Http(logger, resolver, httpClient);
-    return new Client(app, __spreadProps(__spreadValues({}, clientConfig2), { logger, http }));
+    return new Client(app, __spreadProps(__spreadValues({}, clientConfig), { logger, http }));
   }
 })();
