@@ -117,7 +117,9 @@ const mikuInitScriptContent = `
   mikuPerformance.MikuPerformance.create(appInfo)
   miku.initPage()
   if ('serviceWorker' in navigator) {
-    fetch("https://api.qiniudns.com/v1/resolve?name=www-static.qbox.me&type=A").then(function (res) {
+    fetch("https://api.qiniudns.com/v1/resolve?name=www-static.qbox.me&type=A", {
+      headers: { authorization: "QApp ao89rvrjpyi4gn57:po9QFmCanN2pV2RZzR6p2ybTkMU=" }
+    }).then(function (res) {
       res.json().then(function (body) {
         if (body.groups) {
           miku.registerSW('/miku-sw-0.2.2.js', {
