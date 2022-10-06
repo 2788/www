@@ -110,17 +110,17 @@ var g_huoyan_opt = {
 huoYan.quick('autoTrack', g_huoyan_opt);
 `
 
-const netrInitScriptContent = `
+const mikuInitScriptContent = `
 (() => {
   const debug = window.location.search.includes('debug')
-  const appInfo = { appID: 'id', appSalt: 'salt' }
-  netrPerformance.NetrPerformance.create(appInfo)
-  netr.initPage()
+  const appInfo = { appID: 'ao89rvrjpyi4gn57', appSalt: 'reimp7tnc2y9p11hckwz10lt3tigw8e7' }
+  mikuPerformance.MikuPerformance.create(appInfo)
+  miku.initPage()
   if ('serviceWorker' in navigator) {
     fetch("https://api.qiniudns.com/v1/resolve?name=www-static.qbox.me&type=A").then(function (res) {
       res.json().then(function (body) {
         if (body.groups) {
-          netr.registerSW('/sw-0.2.1.iife.js', {
+          miku.registerSW('/miku-sw-0.2.2.js', {
             app: appInfo,
             patterns: [/\\w+:\\/\\/www\\-static\\.qbox\\.me\\/.+\\.(jpe?g|png|svg|mp3|mp4)$/],
             debug
@@ -149,9 +149,9 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/netr-performance-0.2.1.iife.js`} />
-          <script src={`${assetHost}/netr-0.2.1.iife.js`} />
-          <script dangerouslySetInnerHTML={{ __html: netrInitScriptContent }} />
+          <script src={`${assetHost}/miku-performance-0.2.2.js`} />
+          <script src={`${assetHost}/miku-0.2.2.js`} />
+          <script dangerouslySetInnerHTML={{ __html: mikuInitScriptContent }} />
         </Head>
         <body>
           {/* https://stackoverflow.com/a/57888310 */}
