@@ -122,9 +122,9 @@ const mikuInitScriptContent = `
     }).then(function (res) {
       res.json().then(function (body) {
         if (body.groups) {
-          miku.registerSW('/miku-sw-0.2.2.js', {
+          miku.registerSW('/miku-sw-0.2.3.js', {
             app: appInfo,
-            patterns: [/\\w+:\\/\\/www\\-static\\.qbox\\.me\\/.+\\.(jpe?g|png|svg|mp3|mp4)$/],
+            domains: ['www-static.qbox.me'],
             debug
           })
         } else {
@@ -151,8 +151,8 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/miku-performance-0.2.2.js`} />
-          <script src={`${assetHost}/miku-0.2.2.js`} />
+          <script src={`${assetHost}/miku-performance-0.2.3.js`} />
+          <script src={`${assetHost}/miku-0.2.3.js`} />
           <script dangerouslySetInnerHTML={{ __html: mikuInitScriptContent }} />
         </Head>
         <body>

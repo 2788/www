@@ -41,9 +41,13 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-(function() {
-  var _a;
+var miku = function(exports) {
   "use strict";
+  function appendQuery(url, params) {
+    const querystring = new URLSearchParams(params).toString();
+    const sep = url.includes("?") ? "&" : "?";
+    return url + sep + querystring;
+  }
   function uuid() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
     const charNum = chars.length;
@@ -119,8 +123,8 @@ var __async = (__this, __arguments, generator) => {
       __publicField(this, "map", /* @__PURE__ */ new Map());
     }
     on(type, handler) {
-      var _a2;
-      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
+      var _a;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
       const newHandlers = [...handlers, handler];
       this.map.set(type, newHandlers);
       return () => this.off(type, handler);
@@ -133,15 +137,15 @@ var __async = (__this, __arguments, generator) => {
       return off;
     }
     off(type, handler) {
-      var _a2;
-      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
+      var _a;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
       const newHandlers = handlers.filter((h) => h !== handler);
       this.map.set(type, newHandlers);
     }
     emit(...args) {
-      var _a2;
+      var _a;
       const [type, event] = args;
-      const handlers = (_a2 = this.map.get(type)) != null ? _a2 : [];
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
       handlers.forEach((handler) => {
         handler(event);
       });
@@ -150,76 +154,102 @@ var __async = (__this, __arguments, generator) => {
       this.map.clear();
     }
   }
-  const scope$2 = self;
-  const debug$a = getDebug("utils/sw/clients");
-  class SWClients {
-    constructor(swScope = scope$2) {
-      __publicField(this, "clientIds", []);
-      __publicField(this, "removed", /* @__PURE__ */ new Set());
-      __publicField(this, "emitter", new Emitter());
-      this.swScope = swScope;
-    }
-    add(id) {
-      if (this.clientIds.includes(id))
-        return;
-      if (this.removed.has(id))
-        return;
-      this.clientIds.push(id);
-      debug$a("add", id, this.clientIds);
-    }
-    remove(id) {
-      const i = this.clientIds.indexOf(id);
-      if (i < 0)
-        return;
-      this.clientIds.splice(i, 1);
-      this.removed.add(id);
-      this.emitter.emit("remove", id);
-      debug$a("remove", id, this.clientIds);
-    }
-    set(newIds) {
-      const oldIds = this.clientIds;
-      const kept = [];
-      const removed = [];
-      oldIds.forEach((o) => {
-        const idxInNew = newIds.indexOf(o);
-        if (idxInNew >= 0) {
-          kept.push(o);
-          newIds.splice(idxInNew, 1);
-        } else {
-          removed.push(o);
+  function slice(stream, range) {
+    var _a;
+    const reader = stream.getReader();
+    const resultStart = (_a = range[0]) != null ? _a : 0;
+    const resultEnd = range[1];
+    const newStream = new ReadableStream({
+      start: (ctrl) => __async(this, null, function* () {
+        let valueStart = 0;
+        while (true) {
+          const { done, value } = yield reader.read();
+          if (done) {
+            ctrl.close();
+            break;
+          }
+          const valueEnd = valueStart + value.byteLength;
+          if (valueEnd > resultStart) {
+            let resultValue = value;
+            const sliceStart = resultStart > valueStart ? resultStart - valueStart : 0;
+            const sliceEnd = resultEnd != null && resultEnd < valueEnd ? resultEnd - valueStart : void 0;
+            if (sliceStart !== 0 || sliceEnd !== void 0) {
+              resultValue = value.slice(sliceStart, sliceEnd);
+            }
+            ctrl.enqueue(resultValue);
+            if (resultEnd != null && valueEnd >= resultEnd) {
+              ctrl.close();
+              break;
+            }
+          }
+          valueStart = valueEnd;
         }
-      });
-      this.clientIds = [...kept, ...newIds];
-      removed.forEach((r) => {
-        this.emitter.emit("remove", r);
-      });
-      if (removed.length > 0 || newIds.length > 0) {
-        debug$a("set", this.clientIds);
+      }),
+      cancel: (reason) => {
+        reader.releaseLock();
+        stream.cancel(reason);
       }
-    }
-    getAllIds() {
-      return this.clientIds;
-    }
-    getAll() {
-      return __async(this, null, function* () {
-        const clients = (yield this.swScope.clients.matchAll({ type: "window" })).slice();
-        clients.reverse();
-        this.set(clients.map((c) => c.id));
-        return this.clientIds.map((id) => clients.find((c) => c.id === id));
-      });
-    }
-    whenRemoved(id, cb) {
-      if (!this.clientIds.includes(id))
-        return;
-      const unlisten = this.emitter.on("remove", (removedId) => {
-        if (removedId !== id)
-          return;
-        unlisten();
-        cb();
-      });
-    }
+    });
+    return newStream;
   }
-  const swClients = new SWClients();
+  function withReadResult(source) {
+    let size = 0;
+    const transform = new TransformStream({
+      transform: (chunk, ctrl) => {
+        size += chunk.byteLength;
+        ctrl.enqueue(chunk);
+      }
+    });
+    const resultPromise = source.pipeTo(transform.writable).then(
+      () => ({ size, success: true }),
+      (e) => ({ size, success: false, error: e })
+    );
+    return [transform.readable, resultPromise];
+  }
+  function teeWithMain(source) {
+    let minorCtrl;
+    let minorCancelled = false;
+    const minorStream = new ReadableStream({
+      start: (ctrl) => {
+        minorCtrl = ctrl;
+      },
+      cancel: () => {
+        minorCancelled = true;
+      }
+    });
+    const sourceReader = source.getReader();
+    let mainCancelled = false;
+    const mainStream = new ReadableStream({
+      start: (ctrl) => __async(this, null, function* () {
+        try {
+          while (true) {
+            const { value, done } = yield sourceReader.read();
+            if (mainCancelled)
+              return;
+            if (done) {
+              ctrl.close();
+              if (!minorCancelled)
+                minorCtrl.close();
+              return;
+            }
+            ctrl.enqueue(value);
+            if (!minorCancelled)
+              minorCtrl.enqueue(value);
+          }
+        } catch (e) {
+          ctrl.error(e);
+          if (!minorCancelled)
+            minorCtrl.error(e);
+        }
+      }),
+      cancel: (reason) => __async(this, null, function* () {
+        mainCancelled = true;
+        yield sourceReader.cancel(reason);
+        minorCtrl.error(reason);
+      })
+    });
+    return { main: mainStream, minor: minorStream };
+  }
   class HttpRequest {
     constructor(url, { method, headers, signal, body: body2 }) {
       __publicField(this, "url");
@@ -240,10 +270,18 @@ var __async = (__this, __arguments, generator) => {
       __publicField(this, "statusText");
       __publicField(this, "headers");
       __publicField(this, "body");
+      __publicField(this, "bodyReadResult");
       this.status = status != null ? status : 200;
       this.statusText = statusText != null ? statusText : "";
       this.headers = new Headers(headers);
-      this.body = body2;
+      if (body2 == null) {
+        this.body = body2;
+        this.bodyReadResult = Promise.resolve({ success: true, size: 0 });
+      } else {
+        const [newBody, bodyReadResult] = withReadResult(body2);
+        this.body = newBody;
+        this.bodyReadResult = bodyReadResult;
+      }
     }
   }
   function isHoWMessage(message) {
@@ -260,144 +298,11 @@ var __async = (__this, __arguments, generator) => {
     const scope2 = self;
     return !!(scope2.clients && scope2.registration);
   }
-  const debug$9 = getDebug("http/webrtc/client");
   const messageEmitter = new Emitter();
-  let scope$1;
+  let scope;
   if (typeof self !== "undefined") {
-    scope$1 = self;
-    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
-  }
-  class HoWMessageError extends Error {
-    constructor(name, message) {
-      super(message);
-      this.name = name;
-    }
-  }
-  class HoWClient {
-    constructor(timeout = 30 * 1e3) {
-      this.timeout = timeout;
-    }
-    sendBody(client, id, body2) {
-      return __async(this, null, function* () {
-        const reader = body2.getReader();
-        while (true) {
-          const { value, done } = yield reader.read();
-          if (done) {
-            const message2 = { hoW: true, type: "req-body-chunk", id, payload: null };
-            client.postMessage(message2);
-            return;
-          }
-          const message = { hoW: true, type: "req-body-chunk", id, payload: value.buffer };
-          client.postMessage(message, [value.buffer]);
-        }
-      });
-    }
-    sendRequest(client, id, request, fingerprint) {
-      return __async(this, null, function* () {
-        debug$9("sendRequest in Service Worker", id, request);
-        const { body: body2, url, method, headers } = request;
-        const message = {
-          hoW: true,
-          type: "req-head",
-          id,
-          url,
-          method,
-          headers: dehydrateHeaders(headers),
-          fingerprint,
-          hasBody: body2 != null
-        };
-        client.postMessage(message);
-        waitAbort(request.signal).catch((e) => {
-          const message2 = {
-            hoW: true,
-            type: "req-abort",
-            id,
-            reason: e instanceof AbortError ? e.message : e
-          };
-          client.postMessage(message2);
-        });
-        if (body2 != null) {
-          yield this.sendBody(client, id, body2);
-        }
-      });
-    }
-    receiveResponse(ctx, signal, id) {
-      return __async(this, null, function* () {
-        let streamCtrl;
-        const disposers = [];
-        let finished = false;
-        const finish = (cb) => {
-          if (finished)
-            return;
-          finished = true;
-          disposers.forEach((d) => d());
-          disposers.length = 0;
-          cb == null ? void 0 : cb();
-        };
-        return new Promise((resolve, reject) => {
-          disposers.push(messageEmitter.on("message", ({ data }) => {
-            if (!isHoWMessage(data))
-              return;
-            if (data.id !== id)
-              return;
-            if (data.type === "resp-head") {
-              debug$9("Message resp-head", data);
-              ctx.set("hoWDataChannelOpenTime", data.dataChannelOpenTime);
-              ctx.set("hoWStartTransferTime", data.startTransferTime);
-              if (!data.hasBody) {
-                debug$9("Resolve with no body");
-                finish(() => resolve(new HttpResponse(null, data)));
-                return;
-              }
-              const stream = new ReadableStream({
-                start: (ctrl) => streamCtrl = ctrl
-              });
-              const response = new HttpResponse(stream, data);
-              debug$9("Resolve with body", response);
-              resolve(response);
-              return;
-            }
-            if (data.type === "resp-body-chunk") {
-              if (streamCtrl == null)
-                throw new Error("Stream Controller should be ready");
-              if (data.payload == null) {
-                finish(() => streamCtrl.close());
-                return;
-              }
-              streamCtrl.enqueue(new Uint8Array(data.payload));
-              return;
-            }
-            if (data.type === "resp-error") {
-              finish(() => reject(new HoWMessageError(data.name, data.message)));
-              return;
-            }
-          }));
-          waitAbort(signal).catch((e) => {
-            finish(() => streamCtrl == null ? reject(e) : streamCtrl.error(e));
-          });
-        });
-      });
-    }
-    fetch(ctx, id, request, fingerprint) {
-      return __async(this, null, function* () {
-        const windowClients = yield swClients.getAll();
-        if (windowClients.length === 0)
-          throw new WindowClientError("No available window client");
-        const windowClient = windowClients[0];
-        this.sendRequest(windowClient, id, request, fingerprint);
-        const responseReceived = this.receiveResponse(ctx, request.signal, id);
-        const windowClosed = new Promise((_, reject) => {
-          swClients.whenRemoved(windowClient.id, () => reject(new WindowClientError(`Target window client ${windowClient.id} closed`)));
-        });
-        return Promise.race([
-          responseReceived,
-          windowClosed,
-          waitTimeout(this.timeout, "HoWClient fetch")
-        ]);
-      });
-    }
-    dispose() {
-    }
+    scope = self;
+    scope.addEventListener("message", (e) => messageEmitter.emit("message", e));
   }
   class WindowClientError extends Error {
     constructor() {
@@ -461,41 +366,12 @@ var __async = (__this, __arguments, generator) => {
     const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
     return { totalSize, start, end };
   }
-  function stringifyContentRange(v) {
-    const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
-    const size = v.totalSize == null ? "*" : v.totalSize + "";
-    return `bytes ${range}/${size}`;
-  }
   function atoi(v) {
     return !v ? null : Number(v);
   }
-  function httpGetRange(headers) {
-    const range = headers.get("Range");
-    if (range == null)
-      return null;
-    return parseRange(range);
-  }
-  function parseRange(v) {
-    const normalized = v.trim().toLowerCase();
-    if (!normalized.startsWith("bytes=")) {
-      throw new Error(`Unit must be bytes: ${v}`);
-    }
-    if (normalized.includes(",")) {
-      throw new Error(`Multiple range: ${v}`);
-    }
-    const [, startStr, endStr] = /(\d*)-(\d*)/.exec(normalized) || [];
-    if (!startStr && !endStr) {
-      throw new Error(`Invalid range values: ${v}`);
-    }
-    if (!startStr) {
-      throw new Error("Suffix range not supported");
-    }
-    const [start, end] = [startStr, endStr].map((v2) => atoi(v2));
-    return { start, end };
-  }
   function stringifyRange(range) {
-    var _a2, _b;
-    return `bytes=${(_a2 = range.start) != null ? _a2 : 0}-${(_b = range.end) != null ? _b : ""}`;
+    var _a, _b;
+    return `bytes=${(_a = range.start) != null ? _a : 0}-${(_b = range.end) != null ? _b : ""}`;
   }
   function queryStringify(params) {
     return Object.keys(params).map(
@@ -536,7 +412,7 @@ var __async = (__this, __arguments, generator) => {
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
   const useTcp = true;
-  const debug$8 = getDebug("http/webrtc/how");
+  const debug$7 = getDebug("http/webrtc/how");
   class HoW {
     constructor(pcConnectTimeout = 10 * 1e3, dcOpenTimeout = 3 * 1e3) {
       __publicField(this, "pcMap", /* @__PURE__ */ new Map());
@@ -584,9 +460,11 @@ var __async = (__this, __arguments, generator) => {
     }
     fetch(ctx, id, request, fingerprint) {
       return __async(this, null, function* () {
-        debug$8("fetch", request.url, "with id", id);
+        debug$7("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
+        const getPcStartAt = Date.now();
         const pc = yield this.getPc(request.signal, target, fingerprint);
+        ctx.set("hoWPeerConnectionConnectTime", (Date.now() - getPcStartAt) / 1e3);
         const processor = new HoWRequest(pc, ctx, id, request, this.dcOpenTimeout);
         const resp = yield processor.start();
         return resp;
@@ -680,11 +558,11 @@ a=end-of-candidates
           ctrl.enqueue(data);
         }));
         disposers.push(listenDC(dc, "error", (e) => {
-          debug$8(`dc ${id} error`, e);
+          debug$7(`dc ${id} error`, e);
           finish(() => ctrl.error(e));
         }));
         disposers.push(listenDC(dc, "closing", (e) => {
-          debug$8(`DataChannel ${id} closing`, e);
+          debug$7(`DataChannel ${id} closing`, e);
           finish(() => ctrl.close());
         }));
       },
@@ -712,11 +590,11 @@ a=end-of-candidates
         const dispose = () => disposers.forEach((d) => d());
         const opened = new Promise((resolve, reject) => {
           disposers.push(listenDC(this.dc, "open", () => {
-            debug$8(`DataChannel ${this.id} opened`);
+            debug$7(`DataChannel ${this.id} opened`);
             resolve();
           }));
           disposers.push(listenDC(this.dc, "error", () => {
-            debug$8(`DataChannel ${this.id} error`);
+            debug$7(`DataChannel ${this.id} error`);
             reject(new Error("DataChannel error"));
           }));
         });
@@ -729,23 +607,23 @@ a=end-of-candidates
     }
     sendRequest() {
       return __async(this, null, function* () {
-        var _a2;
+        var _a;
         const request = this.request;
         if (request.method !== "GET")
           throw new Error(`TODO: Request with method ${request.method} is not supported`);
-        const contentLength = parseInt((_a2 = request.headers.get("Content-Length")) != null ? _a2 : "0", 10);
+        const contentLength = parseInt((_a = request.headers.get("Content-Length")) != null ? _a : "0", 10);
         if (contentLength > 0)
           throw new Error("TODO: Request with body is not supported");
         const requestHead = stringifyRequestHead(request);
-        debug$8(`DataChannel ${this.id} sendRequest:`, requestHead);
+        debug$7(`DataChannel ${this.id} sendRequest:`, requestHead);
         this.dc.send(requestHead);
       });
     }
     receiveResponse() {
       return __async(this, null, function* () {
-        var _a2;
+        var _a;
         const startAt = Date.now();
-        debug$8(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
+        debug$7(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
         const request = this.request;
         const dcReader = this.stream.getReader();
         const { value, done } = yield dcReader.read();
@@ -754,16 +632,16 @@ a=end-of-candidates
         if (typeof value !== "string")
           throw new Error(`Expected first message type to be string, while got ${typeof value}`);
         const respHead = parseResponseHead(value);
-        debug$8(`DataChannel ${this.id} get respHead:`, respHead);
+        debug$7(`DataChannel ${this.id} get respHead:`, respHead);
         const status = respHead.status;
-        const headers = new Headers(mapObj((_a2 = respHead.header) != null ? _a2 : {}, (hs) => encodeHeaderValue(hs[0])));
+        const headers = new Headers(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => encodeHeaderValue(hs[0])));
         const respInit = { status, statusText: respHead.reason, headers };
         const [hasBody, bodyLength] = getRespBodyLength(request.method, status, request.headers, headers);
         const startTransferTime = (Date.now() - startAt) / 1e3;
         this.ctx.set("hoWStartTransferTime", startTransferTime);
         if (!hasBody) {
           const resp2 = new HttpResponse(null, respInit);
-          debug$8("DataChannel receiveResponse done with no body");
+          debug$7("DataChannel receiveResponse done with no body");
           return resp2;
         }
         let received = 0;
@@ -795,7 +673,7 @@ a=end-of-candidates
             });
           },
           cancel(reason) {
-            debug$8("DataChannel bodyStream cancel:", reason);
+            debug$7("DataChannel bodyStream cancel:", reason);
             dcReader.cancel(reason);
           }
         });
@@ -835,7 +713,7 @@ a=end-of-candidates
         resolve();
       }
       const unlisten = listenPC(pc, "connectionstatechange", () => {
-        debug$8(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
+        debug$7(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
         if (["failed", "closed", "disconnected"].includes(pc.connectionState)) {
           reject(new PeerConnectionDisconnectedError(desc));
           unlisten();
@@ -988,11 +866,11 @@ a=end-of-candidates
       this.membersReplicas.delete(key);
     }
     get(key) {
-      var _a2;
+      var _a;
       if (this.circle.size === 0)
         return null;
       const hash = this.hasher(key);
-      const resultHash = (_a2 = this.sortedHashes.find((h) => h > hash)) != null ? _a2 : this.sortedHashes[0];
+      const resultHash = (_a = this.sortedHashes.find((h) => h > hash)) != null ? _a : this.sortedHashes[0];
       return this.circle.get(resultHash);
     }
     add(key, replicas) {
@@ -1068,7 +946,7 @@ a=end-of-candidates
     if (hasRequiredCore)
       return core.exports;
     hasRequiredCore = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory();
@@ -1360,7 +1238,7 @@ a=end-of-candidates
     if (hasRequiredX64Core)
       return x64Core.exports;
     hasRequiredX64Core = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1420,7 +1298,7 @@ a=end-of-candidates
     if (hasRequiredLibTypedarrays)
       return libTypedarrays.exports;
     hasRequiredLibTypedarrays = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1465,7 +1343,7 @@ a=end-of-candidates
     if (hasRequiredEncUtf16)
       return encUtf16.exports;
     hasRequiredEncUtf16 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1531,7 +1409,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64)
       return encBase64.exports;
     hasRequiredEncBase64 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1613,7 +1491,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64url)
       return encBase64url.exports;
     hasRequiredEncBase64url = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1696,7 +1574,7 @@ a=end-of-candidates
     if (hasRequiredMd5)
       return md5.exports;
     hasRequiredMd5 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1875,7 +1753,7 @@ a=end-of-candidates
     if (hasRequiredSha1)
       return sha1.exports;
     hasRequiredSha1 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1966,7 +1844,7 @@ a=end-of-candidates
     if (hasRequiredSha256)
       return sha256.exports;
     hasRequiredSha256 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2087,7 +1965,7 @@ a=end-of-candidates
     if (hasRequiredSha224)
       return sha224.exports;
     hasRequiredSha224 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha256());
@@ -2132,7 +2010,7 @@ a=end-of-candidates
     if (hasRequiredSha512)
       return sha512.exports;
     hasRequiredSha512 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -2414,7 +2292,7 @@ a=end-of-candidates
     if (hasRequiredSha384)
       return sha384.exports;
     hasRequiredSha384 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core(), requireSha512());
@@ -2460,7 +2338,7 @@ a=end-of-candidates
     if (hasRequiredSha3)
       return sha3.exports;
     hasRequiredSha3 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -2654,7 +2532,7 @@ a=end-of-candidates
     if (hasRequiredRipemd160)
       return ripemd160.exports;
     hasRequiredRipemd160 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3135,7 +3013,7 @@ a=end-of-candidates
     if (hasRequiredHmac)
       return hmac.exports;
     hasRequiredHmac = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3199,7 +3077,7 @@ a=end-of-candidates
     if (hasRequiredPbkdf2)
       return pbkdf2.exports;
     hasRequiredPbkdf2 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -3267,7 +3145,7 @@ a=end-of-candidates
     if (hasRequiredEvpkdf)
       return evpkdf.exports;
     hasRequiredEvpkdf = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -3328,7 +3206,7 @@ a=end-of-candidates
     if (hasRequiredCipherCore)
       return cipherCore.exports;
     hasRequiredCipherCore = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEvpkdf());
@@ -3624,7 +3502,7 @@ a=end-of-candidates
     if (hasRequiredModeCfb)
       return modeCfb.exports;
     hasRequiredModeCfb = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3676,7 +3554,7 @@ a=end-of-candidates
     if (hasRequiredModeCtr)
       return modeCtr.exports;
     hasRequiredModeCtr = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3716,7 +3594,7 @@ a=end-of-candidates
     if (hasRequiredModeCtrGladman)
       return modeCtrGladman.exports;
     hasRequiredModeCtrGladman = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3796,7 +3674,7 @@ a=end-of-candidates
     if (hasRequiredModeOfb)
       return modeOfb.exports;
     hasRequiredModeOfb = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3834,7 +3712,7 @@ a=end-of-candidates
     if (hasRequiredModeEcb)
       return modeEcb.exports;
     hasRequiredModeEcb = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3865,7 +3743,7 @@ a=end-of-candidates
     if (hasRequiredPadAnsix923)
       return padAnsix923.exports;
     hasRequiredPadAnsix923 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3897,7 +3775,7 @@ a=end-of-candidates
     if (hasRequiredPadIso10126)
       return padIso10126.exports;
     hasRequiredPadIso10126 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3925,7 +3803,7 @@ a=end-of-candidates
     if (hasRequiredPadIso97971)
       return padIso97971.exports;
     hasRequiredPadIso97971 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3952,7 +3830,7 @@ a=end-of-candidates
     if (hasRequiredPadZeropadding)
       return padZeropadding.exports;
     hasRequiredPadZeropadding = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3986,7 +3864,7 @@ a=end-of-candidates
     if (hasRequiredPadNopadding)
       return padNopadding.exports;
     hasRequiredPadNopadding = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4009,7 +3887,7 @@ a=end-of-candidates
     if (hasRequiredFormatHex)
       return formatHex.exports;
     hasRequiredFormatHex = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4043,7 +3921,7 @@ a=end-of-candidates
     if (hasRequiredAes)
       return aes.exports;
     hasRequiredAes = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4197,7 +4075,7 @@ a=end-of-candidates
     if (hasRequiredTripledes)
       return tripledes.exports;
     hasRequiredTripledes = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4978,7 +4856,7 @@ a=end-of-candidates
     if (hasRequiredRc4)
       return rc4.exports;
     hasRequiredRc4 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5056,7 +4934,7 @@ a=end-of-candidates
     if (hasRequiredRabbit)
       return rabbit.exports;
     hasRequiredRabbit = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5185,7 +5063,7 @@ a=end-of-candidates
     if (hasRequiredRabbitLegacy)
       return rabbitLegacy.exports;
     hasRequiredRabbitLegacy = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5305,7 +5183,7 @@ a=end-of-candidates
     })(rabbitLegacy);
     return rabbitLegacy.exports;
   }
-  (function(module, exports) {
+  (function(module, exports2) {
     (function(root, factory, undef) {
       {
         module.exports = factory(requireCore(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy());
@@ -5341,7 +5219,7 @@ a=end-of-candidates
   }
   function httpResolve(ctx, domain, app) {
     return __async(this, null, function* () {
-      var _a2;
+      var _a;
       const params = { name: domain, type: "A" };
       const startAt = Date.now();
       const query = queryStringify(params);
@@ -5357,7 +5235,7 @@ a=end-of-candidates
         }
       });
       ctx.set("dnsResolveStatus", resp.status);
-      ctx.set("dnsResolveReqID", (_a2 = resp.headers.get("x-reqid")) != null ? _a2 : "");
+      ctx.set("dnsResolveReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
       ctx.set("dnsResolveConnectionTime", (Date.now() - startAt) / 1e3);
       if (!resp.ok)
         throw new Error(`Call resolve API failed, status: ${resp.status} ${resp.statusText}`);
@@ -5380,7 +5258,7 @@ a=end-of-candidates
     return err instanceof Error ? err.name : "Unknown";
   }
   const defaultDuration = 1e3;
-  const debug$7 = getDebug("dns");
+  const debug$6 = getDebug("dns");
   class NonECDNError extends Error {
     constructor() {
       super(...arguments);
@@ -5405,7 +5283,7 @@ a=end-of-candidates
     }
     getResolveResult(ctx, domain) {
       return __async(this, null, function* () {
-        var _a2, _b, _c;
+        var _a, _b, _c;
         const startAt = Date.now();
         let err;
         try {
@@ -5434,7 +5312,7 @@ a=end-of-candidates
         } finally {
           const totalTime = (Date.now() - startAt) / 1e3;
           this.logger.log("DnsResolveLog", {
-            r_id: (_a2 = ctx.get("dnsResolveReqID")) != null ? _a2 : "",
+            r_id: (_a = ctx.get("dnsResolveReqID")) != null ? _a : "",
             ip: "",
             domain,
             status_code: (_b = ctx.get("dnsResolveStatus")) != null ? _b : -1,
@@ -5490,13 +5368,13 @@ a=end-of-candidates
           throw new Error("TODO: no port");
         let err;
         for (let i = 0; i < attempts; i++) {
-          debug$7("Resolve for", url);
+          debug$6("Resolve for", url);
           const group = yield this.resolve(ctx, urlObj.host);
           if (group == null)
             throw new Error(`No available group for ${url}`);
-          debug$7("Resolved for", url);
+          debug$6("Resolved for", url);
           try {
-            debug$7("doWithGroup", i, url);
+            debug$6("doWithGroup", i, url);
             yield doWithGroup(group, url, job);
             group.duration = this.initialDuration;
             return;
@@ -5529,7 +5407,7 @@ a=end-of-candidates
         if (elt == null)
           throw new Error("No available elt");
         try {
-          debug$7("doWithElt", elt.id, url);
+          debug$6("doWithElt", elt.id, url);
           yield doWithElt(elt, url, job);
           return;
         } catch (e) {
@@ -5554,7 +5432,7 @@ a=end-of-candidates
         if (ip == null)
           break;
         try {
-          debug$7("doWithIP", ip, url);
+          debug$6("doWithIP", ip, url);
           yield job(ip);
           return;
         } catch (e) {
@@ -5595,8 +5473,704 @@ a=end-of-candidates
       return false;
     return true;
   }
+  class DB {
+    constructor(dbName, storeNames) {
+      __publicField(this, "db");
+      this.dbName = dbName;
+      this.storeNames = storeNames;
+    }
+    getDB() {
+      return __async(this, null, function* () {
+        if (this.db != null)
+          return this.db;
+        return new Promise((resolve) => {
+          const request = indexedDB.open(this.dbName);
+          request.addEventListener("upgradeneeded", () => {
+            this.storeNames.forEach((storeName) => {
+              request.result.createObjectStore(storeName);
+            });
+          });
+          resolve(promisifyRequest(request));
+        });
+      });
+    }
+    get(storeName, key) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).get(key);
+        return promisifyRequest(request);
+      });
+    }
+    getAll(storeName) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).getAll();
+        return promisifyRequest(request);
+      });
+    }
+    count(storeName) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).count();
+        return promisifyRequest(request);
+      });
+    }
+    set(storeName, key, value) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const transaction = db.transaction(storeName, "readwrite");
+        transaction.objectStore(storeName).put(value, key);
+        return promisifyTransaction(transaction);
+      });
+    }
+    remove(storeName, key) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const transaction = db.transaction(storeName, "readwrite");
+        transaction.objectStore(storeName).delete(key);
+        return promisifyTransaction(transaction);
+      });
+    }
+    clear() {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        yield Promise.all(this.storeNames.map((storeName) => {
+          const transaction = db.transaction(storeName, "readwrite");
+          transaction.objectStore(storeName).clear();
+          return promisifyTransaction(transaction);
+        }));
+      });
+    }
+    dispose() {
+      var _a;
+      (_a = this.db) == null ? void 0 : _a.close();
+    }
+  }
+  function promisifyRequest(request) {
+    return new Promise((resolve, reject) => {
+      request.addEventListener("success", () => resolve(request.result));
+      request.addEventListener("error", () => reject(request.error));
+    });
+  }
+  function promisifyTransaction(transaction) {
+    return new Promise((resolve, reject) => {
+      transaction.addEventListener("complete", () => resolve());
+      transaction.addEventListener("error", () => reject(transaction.error));
+      transaction.addEventListener("abort", () => reject(transaction.error));
+    });
+  }
+  const debug$5 = getDebug("dc");
+  const namespace = "miku/dc";
+  const itemStoreName = "item";
+  class Cache {
+    constructor(config = {}) {
+      __publicField(this, "db", new DB(namespace, [itemStoreName]));
+      this.config = config;
+    }
+    getBrowserCache() {
+      return caches.open(namespace);
+    }
+    getItem(key) {
+      return __async(this, null, function* () {
+        return this.db.get(itemStoreName, key);
+      });
+    }
+    setItem(key, item) {
+      return __async(this, null, function* () {
+        debug$5("setItem", key, item);
+        yield this.db.set(itemStoreName, key, item);
+      });
+    }
+    getContent(key, piece) {
+      return __async(this, null, function* () {
+        const browserCache = yield this.getBrowserCache();
+        const cachedResponse = yield browserCache.match(getBrowserCacheKey(key, piece));
+        if (cachedResponse == null)
+          return void 0;
+        if (cachedResponse.body == null)
+          throw new Error("Body expected for cached response");
+        return cachedResponse.body;
+      });
+    }
+    setContent(key, piece, content) {
+      return __async(this, null, function* () {
+        const browserCache = yield this.getBrowserCache();
+        yield browserCache.put(getBrowserCacheKey(key, piece), new Response(content));
+      });
+    }
+    dispose() {
+      this.db.dispose();
+    }
+  }
+  function getBrowserCacheKey(key, piece) {
+    var _a;
+    return `${key}_with_range_${piece[0]}_${(_a = piece[1]) != null ? _a : ""}`;
+  }
+  class DownloadLogger {
+    constructor(logger) {
+      this.logger = logger;
+    }
+    log(schemaName, logData) {
+      return this.logger.log(schemaName, logData);
+    }
+  }
+  const defaultAttempts = 3;
+  const debug$4 = getDebug("http");
+  class Http {
+    constructor(logger, resolver, client) {
+      __publicField(this, "logger");
+      this.resolver = resolver;
+      this.client = client;
+      this.logger = new DownloadLogger(logger);
+    }
+    doWithIp(ctx, request, ip, currentRetryCount) {
+      return __async(this, null, function* () {
+        var _a;
+        const domain = new URL(request.url).host;
+        const startAt = Date.now();
+        let err;
+        let resp;
+        try {
+          debug$4("do request", request.url, "with ip", ip);
+          const req = withNode(request, ip);
+          resp = yield this.client.fetch(ctx, req);
+          debug$4("do request", request.url, "with ip succeeded with status", resp.status);
+          ctx.set("downloadStatus", resp.status);
+          ctx.set("downloadReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
+          if (resp.status >= 500)
+            throw new Error(`TODO: HTTP Status error: ${resp.status}`);
+          return resp;
+        } catch (e) {
+          debug$4("do request", request.url, "with ip", ip, "failed:", e);
+          err = e;
+          throw e;
+        } finally {
+          const range = ctx.get("downloadRange");
+          const retry = currentRetryCount;
+          const doDownloadLog = (extra) => {
+            var _a2, _b, _c, _d, _e, _f, _g, _h, _i;
+            return this.logger.log("DownloadLog", __spreadValues({
+              ip,
+              domain,
+              range_st: (_a2 = range == null ? void 0 : range.start) != null ? _a2 : -1,
+              range_end: (_b = range == null ? void 0 : range.end) != null ? _b : -1,
+              retry,
+              ftask_id: (_c = ctx.get("downloadFileTaskID")) != null ? _c : "",
+              lookup_type: true,
+              t_lookup: (_d = ctx.get("dnsResolveFromCache") === true ? 0 : ctx.get("dnsResolveTotalTime")) != null ? _d : -1,
+              r_id: (_e = ctx.get("downloadReqID")) != null ? _e : "",
+              status_code: (_f = ctx.get("downloadStatus")) != null ? _f : -1,
+              t_conn: (_g = ctx.get("downloadConnectionTime")) != null ? _g : -1,
+              t_tls: (_h = ctx.get("downloadTlsConnectionTime")) != null ? _h : -1,
+              t_st_trans: (_i = ctx.get("downloadStartTransferTime")) != null ? _i : -1,
+              err_msg: "",
+              err_desc: "",
+              t_content_trans: -1,
+              t_total: -1,
+              resp_size: -1
+            }, extra));
+          };
+          const onDownloadError = (e) => doDownloadLog({
+            t_total: (Date.now() - startAt) / 1e3,
+            err_msg: err instanceof Error ? err.name : "Unknown",
+            err_desc: err instanceof Error ? err.message : err + ""
+          });
+          const transferStartAt = Date.now();
+          const onDownloadTransfered = (size) => doDownloadLog({
+            t_content_trans: Date.now() - transferStartAt,
+            t_total: (Date.now() - startAt) / 1e3,
+            resp_size: size
+          });
+          if (err != null) {
+            onDownloadError();
+          } else if (resp != null) {
+            resp.bodyReadResult.then((bodyReadResult) => {
+              if (bodyReadResult.success) {
+                onDownloadTransfered(bodyReadResult.size);
+              } else {
+                onDownloadError(bodyReadResult.error);
+              }
+            });
+          }
+        }
+      });
+    }
+    do(ctx, request) {
+      return __async(this, null, function* () {
+        let currentRetryCount = -1;
+        let finalResp = null;
+        yield this.resolver.do(ctx, request.url, defaultAttempts, (ip) => __async(this, null, function* () {
+          currentRetryCount++;
+          finalResp = yield this.doWithIp(ctx, request, ip, currentRetryCount);
+        }));
+        if (finalResp == null)
+          throw new Error(`Http do failed: resolver do finished with no finalResp, url: ${request.url}`);
+        return finalResp;
+      });
+    }
+  }
+  function withNode(originalReq, nodeIP) {
+    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
+    const urlObject = new URL(originalUrl);
+    const originalHost = urlObject.host;
+    urlObject.host = nodeIP;
+    const headers = new Headers(originalHeaders);
+    headers.set("Host", originalHost);
+    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
+  }
+  class Task {
+    constructor(client, url, range, expiry) {
+      __publicField(this, "priority", 0);
+      __publicField(this, "abortCtrl", new AbortController());
+      __publicField(this, "started", false);
+      this.client = client;
+      this.url = url;
+      this.range = range;
+      this.expiry = expiry;
+    }
+    get signal() {
+      return this.abortCtrl.signal;
+    }
+    setPriority(priority) {
+      this.priority = priority;
+    }
+    start() {
+      return __async(this, null, function* () {
+        if (this.started) {
+          throw new Error("Task already started");
+        }
+        this.started = true;
+        return this.client.startTask(this);
+      });
+    }
+    cancel(reason) {
+      this.abortCtrl.abort(reason);
+    }
+  }
+  class Context {
+    constructor() {
+      __publicField(this, "value", {});
+    }
+    set(key, value) {
+      this.value[key] = value;
+    }
+    get(key) {
+      return this.value[key];
+    }
+  }
+  class Result {
+    constructor(stream, size, fileMeta) {
+      __publicField(this, "fileSize");
+      __publicField(this, "contentType");
+      var _a;
+      this.stream = stream;
+      this.size = size;
+      this.fileSize = fileMeta.fsize;
+      this.contentType = (_a = fileMeta.contentType) != null ? _a : "";
+    }
+    blob() {
+      return __async(this, null, function* () {
+        const stream = this.stream;
+        const reader = stream.getReader();
+        const parts = [];
+        while (true) {
+          const { done, value } = yield reader.read();
+          if (done)
+            break;
+          const arrayBuffer = value;
+          parts.push(arrayBuffer);
+        }
+        return new Blob(parts);
+      });
+    }
+  }
+  function makeRange(totalSize, start, end) {
+    if (totalSize != null && end != null) {
+      if (end >= totalSize)
+        end = null;
+    }
+    if (start == null || start < 0)
+      start = 0;
+    return [start, end];
+  }
+  function isFull(totalSize, range) {
+    var _a;
+    const startFull = ((_a = range[0]) != null ? _a : 0) === 0;
+    const endFull = range[1] == null || totalSize != null && range[1] === totalSize;
+    return startFull && endFull;
+  }
+  function getRangeSize(totalSize, range) {
+    var _a, _b;
+    const start = (_a = range[0]) != null ? _a : 0;
+    const end = (_b = range[1]) != null ? _b : totalSize;
+    return end == null ? null : end - start;
+  }
+  function applyRange(range, fsize, pieces) {
+    var _a, _b;
+    if (fsize === 0)
+      return [];
+    const endGt = (num1, num2) => {
+      return gt(num1, num2, fsize != null ? fsize : Number.POSITIVE_INFINITY);
+    };
+    const start = (_a = range == null ? void 0 : range[0]) != null ? _a : 0;
+    const end = (_b = range == null ? void 0 : range[1]) != null ? _b : fsize;
+    const result = [];
+    let applyFrom = start;
+    for (const p of pieces) {
+      if (applyFrom == null)
+        break;
+      if (fsize != null && p[1] != null && p[1] > fsize)
+        break;
+      if (p[1] != null && applyFrom >= p[1])
+        continue;
+      if (end == null || end > p[0]) {
+        if (p[0] > applyFrom) {
+          result.push({
+            cached: false,
+            range: makeRange(fsize, applyFrom, p[0])
+          });
+        }
+        const cacheStart = endGt(p[0], applyFrom) ? p[0] : applyFrom;
+        const cacheEnd = endGt(p[1], end) ? end : p[1];
+        if (endGt(cacheEnd, cacheStart)) {
+          result.push({
+            cached: true,
+            range: makeRange(fsize, cacheStart, cacheEnd)
+          });
+          applyFrom = cacheEnd;
+        }
+        continue;
+      }
+      break;
+    }
+    if (endGt(end, applyFrom)) {
+      result.push({
+        cached: false,
+        range: makeRange(fsize, applyFrom, end)
+      });
+    }
+    return result;
+  }
+  function findPiece(pieces, range) {
+    var _a;
+    const rangeStart = (_a = range[0]) != null ? _a : 0;
+    const rangeEnd = range[1];
+    for (const piece of pieces) {
+      if (piece[1] != null && piece[1] <= rangeStart)
+        continue;
+      if (piece[0] > rangeStart)
+        break;
+      const start = rangeStart - piece[0];
+      const end = minus(rangeEnd != null ? rangeEnd : piece[1], piece[0]);
+      return { piece, start, end };
+    }
+    throw new Error("Piece not found");
+  }
+  function addPiece(pieces, piece) {
+    return [...pieces, piece].sort(
+      (piece1, piece2) => piece1[0] - piece2[0]
+    );
+  }
+  function gt(num1, num2, nullAs) {
+    const val1 = num1 != null ? num1 : nullAs;
+    const val2 = num2 != null ? num2 : nullAs;
+    return val1 > val2;
+  }
+  function minus(num1, num2) {
+    return num1 == null || num2 == null ? null : num1 - num2;
+  }
+  const debug$3 = getDebug("ftask");
+  class FileTask {
+    constructor(taskq, cache, http, key, url) {
+      __publicField(this, "id", uuid());
+      __publicField(this, "inited");
+      __publicField(this, "cachePieces", []);
+      __publicField(this, "meta", createDefered());
+      this.taskq = taskq;
+      this.cache = cache;
+      this.http = http;
+      this.key = key;
+      this.url = url;
+      this.inited = this.resume();
+    }
+    startTask(task) {
+      return __async(this, null, function* () {
+        if (task.range != null) {
+          debug$3("startTask", task.url);
+          yield this.inited;
+          debug$3("startTask inited", task.url);
+          return this.startTaskWithRange(task);
+        } else {
+          return this.startTaskWithoutRange(task);
+        }
+      });
+    }
+    startTaskWithRange(task) {
+      return __async(this, null, function* () {
+        debug$3("startTaskWithRange", task.url);
+        const range = task.range != null ? [task.range.start, task.range.end] : [0, null];
+        const [stream, meta] = yield Promise.all([
+          this.readRange(task, range),
+          this.meta.promise
+        ]);
+        const size = getRangeSize(meta.fsize, range);
+        return new Result(stream, size, meta);
+      });
+    }
+    startTaskWithoutRange(task) {
+      return __async(this, null, function* () {
+        debug$3("startTaskWithoutRange", task.url);
+        const streamPromise = new Promise((resolve, reject) => {
+          this.taskq.add({
+            name: `startTaskWithoutRange: ${this.url}`,
+            priority: task.priority,
+            run: () => __async(this, null, function* () {
+              const cachedContent = yield this.cache.getContent(this.key, [0, null]);
+              if (cachedContent != null) {
+                debug$3("use cache", task.url);
+                resolve(cachedContent);
+                return;
+              }
+              try {
+                const { response, body: body2 } = yield this.doRequestAndSaveCache(null, task.signal);
+                resolve(body2);
+                yield response.bodyReadResult;
+              } catch (e) {
+                reject(e);
+              }
+            })
+          });
+        });
+        const [stream, meta] = yield Promise.all([
+          streamPromise,
+          this.meta.promise
+        ]);
+        return new Result(stream, meta.fsize, meta);
+      });
+    }
+    readRange(task, range) {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d;
+        const pieces = applyRange(range, (_b = (_a = this.meta.value) == null ? void 0 : _a.fsize) != null ? _b : null, this.cachePieces);
+        debug$3("applyRange", range, (_d = (_c = this.meta.value) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
+        const stream = new TransformStream();
+        const abortCtrl = new AbortController();
+        (() => __async(this, null, function* () {
+          for (let i = 0; i < pieces.length; i++) {
+            const { cached, range: range2 } = pieces[i];
+            const pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
+            const isLast = i === pieces.length - 1;
+            yield pieceStream.pipeTo(stream.writable, {
+              preventClose: !isLast,
+              signal: abortCtrl.signal
+            });
+          }
+        }))().catch((e) => {
+          console.warn("readRange stream error for", this.url, e);
+          stream.writable.abort(e);
+        });
+        return stream.readable;
+      });
+    }
+    readPieceFromLocal(task, range) {
+      return __async(this, null, function* () {
+        debug$3("readPieceFromLocal", task.url, range);
+        const { piece, start, end } = findPiece(this.cachePieces, range);
+        const pieceContent = yield this.cache.getContent(this.key, piece);
+        if (pieceContent == null) {
+          console.warn(`Missing cache item: ${this.key} [${piece})`);
+          return this.readPieceFromRemote(task, range);
+        }
+        return slice(pieceContent, [start, end]);
+      });
+    }
+    fileSize() {
+      var _a, _b;
+      return (_b = (_a = this.meta.value) == null ? void 0 : _a.fsize) != null ? _b : null;
+    }
+    readPieceFromRemote(task, range) {
+      return __async(this, null, function* () {
+        debug$3("readPieceFromRemote", task.url, range);
+        return new Promise((resolve, reject) => {
+          this.taskq.add({
+            name: `readPieceFromRemote: ${this.url}, [${range[0], range[1]})]`,
+            priority: task.priority,
+            run: () => __async(this, null, function* () {
+              try {
+                const { response, body: body2 } = yield this.doRequestAndSaveCache(range, task.signal);
+                if (!isFull(this.fileSize(), range) && response.status === 200) {
+                  console.warn("Range request not supported for", this.url);
+                  resolve(slice(body2, range));
+                } else {
+                  resolve(body2);
+                }
+                yield response.bodyReadResult;
+              } catch (e) {
+                reject(e);
+              }
+            })
+          });
+        });
+      });
+    }
+    doRequest(range, signal) {
+      return __async(this, null, function* () {
+        try {
+          const ctx = new Context();
+          ctx.set("downloadFileTaskID", this.id);
+          const headers = {
+            "Accept-Encoding": "identity;q=1, *;q=0"
+          };
+          if (range != null && !isFull(this.fileSize(), range)) {
+            const httpRange = { start: range[0], end: range[1] == null ? null : range[1] - 1 };
+            ctx.set("downloadRange", httpRange);
+            headers["Range"] = stringifyRange(httpRange);
+          }
+          const request = new HttpRequest(this.url, { method: "GET", headers, signal });
+          const response = yield this.http.do(ctx, request);
+          if (response.body == null) {
+            throw new Error("Body expected");
+          }
+          if (response.status !== 200 && response.status !== 206) {
+            throw new Error(`Invalid response, status: ${response.status}`);
+          }
+          this.saveMeta(response);
+          response.bodyReadResult.then((bodyReadResult) => {
+            debug$3(`bodyReadResult for ${this.url}:`, bodyReadResult);
+          });
+          return { response, body: response.body };
+        } catch (e) {
+          this.meta.reject(e);
+          throw e;
+        }
+      });
+    }
+    doRequestAndSaveCache(range, signal) {
+      return __async(this, null, function* () {
+        var _a, _b;
+        const { response, body: body2 } = yield this.doRequest(range, signal);
+        const { main: bodyForUse, minor: bodyForCache } = teeWithMain(body2);
+        const piece = [(_a = range == null ? void 0 : range[0]) != null ? _a : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
+        this.saveCachePiece(piece, bodyForCache);
+        return { response, body: bodyForUse };
+      });
+    }
+    saveCachePiece(piece, content) {
+      return __async(this, null, function* () {
+        debug$3("saveCachePiece", this.url, piece);
+        yield this.cache.setContent(this.key, piece, content);
+        this.cachePieces = addPiece(this.cachePieces, piece);
+        yield this.save();
+      });
+    }
+    saveMeta(response) {
+      return __async(this, null, function* () {
+        var _a;
+        if (this.meta.value != null) {
+          this.meta = createDefered();
+        }
+        let fileSize = null;
+        if (response.status === 200) {
+          const contentLengthStr = response.headers.get("Content-Length");
+          const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
+          fileSize = contentLength;
+        }
+        if (response.status === 206) {
+          const contentRange = httpGetContentRange(response.headers);
+          fileSize = (_a = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a : null;
+        }
+        this.meta.resolve({
+          contentType: response.headers.get("Content-Type"),
+          fsize: fileSize
+        });
+        yield this.meta.promise;
+        yield this.save();
+      });
+    }
+    resume() {
+      return __async(this, null, function* () {
+        const item = yield this.cache.getItem(this.key);
+        if (item == null || item.meta == null)
+          return;
+        this.meta.resolve(item.meta);
+        this.cachePieces = item.pieces;
+      });
+    }
+    save() {
+      return __async(this, null, function* () {
+        const item = {
+          meta: this.meta.value,
+          pieces: this.cachePieces
+        };
+        yield this.cache.setItem(this.key, item);
+      });
+    }
+  }
+  const debug$2 = getDebug("utils/taskq");
+  class TaskQueue {
+    constructor(jobs) {
+      __publicField(this, "tasks", []);
+      __publicField(this, "emitter", new Emitter());
+      __publicField(this, "running", true);
+      for (let i = 0; i < jobs; i++) {
+        this.comsumeLoop();
+      }
+    }
+    add(task) {
+      let i = 0;
+      for (; i < this.tasks.length; i++) {
+        if (this.tasks[i].priority >= task.priority) {
+          break;
+        }
+      }
+      this.tasks.splice(i, 0, task);
+      this.emitter.emit("task");
+    }
+    pop() {
+      return __async(this, null, function* () {
+        const task = this.tasks.pop();
+        if (task != null)
+          return task;
+        return new Promise((resolve) => {
+          const off = this.emitter.on("task", () => {
+            const task2 = this.tasks.pop();
+            if (task2 != null) {
+              resolve(task2);
+              off();
+            }
+          });
+        });
+      });
+    }
+    consumeTask() {
+      return __async(this, null, function* () {
+        if (!this.running)
+          return;
+        const task = yield this.pop();
+        debug$2("run task", task.name, ", with priority:", task.priority);
+        try {
+          yield task == null ? void 0 : task.run();
+        } catch (e) {
+          console.warn("Task run failed:", e);
+        } finally {
+          debug$2("end task", task.name);
+        }
+      });
+    }
+    comsumeLoop() {
+      return __async(this, null, function* () {
+        while (this.running) {
+          yield this.consumeTask();
+        }
+      });
+    }
+    dispose() {
+      this.emitter.dispose();
+      this.running = false;
+    }
+  }
   var uaParser$1 = { exports: {} };
-  (function(module, exports) {
+  (function(module, exports2) {
     (function(window2, undefined$1) {
       var LIBVERSION = "1.0.2", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 255;
       var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook";
@@ -6486,9 +7060,9 @@ a=end-of-candidates
       UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
       {
         if (module.exports) {
-          exports = module.exports = UAParser;
+          exports2 = module.exports = UAParser;
         }
-        exports.UAParser = UAParser;
+        exports2.UAParser = UAParser;
       }
       var $ = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
       if ($ && !$.ua) {
@@ -6508,9 +7082,9 @@ a=end-of-candidates
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.2";
+  const version = "0.2.3";
   function getEnv() {
-    var _a2, _b;
+    var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
     let location;
     if (typeof window !== "undefined") {
@@ -6520,14 +7094,14 @@ a=end-of-candidates
     }
     return {
       os: `${os.name}_${os.version}`,
-      app: (_a2 = location == null ? void 0 : location.host) != null ? _a2 : "",
+      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
       sdk: `Web SDK v${version}`,
       dev_model: (_b = device.model) != null ? _b : "",
       dev_id: ""
     };
   }
   const logNumPerCall = 200;
-  const debug$6 = getDebug("log");
+  const debug$1 = getDebug("log");
   class SchemaLogger {
     constructor(schemaName, fetch2, flushNum, flushWait, app) {
       __publicField(this, "env", queryStringify(getEnv()));
@@ -6582,12 +7156,12 @@ a=end-of-candidates
           if (buffer.length === 0)
             return false;
           if (buffer.length >= this.flushNum) {
-            debug$6("buffer.length >= this.flushNum");
+            debug$1("buffer.length >= this.flushNum");
             return true;
           }
           const waited = Date.now() - buffer[0].ts;
           if (waited >= this.flushWait * 1e3) {
-            debug$6("waited >= this.flushWait");
+            debug$1("waited >= this.flushWait");
             return true;
           }
           return this.flushWait * 1e3 - waited;
@@ -6641,730 +7215,134 @@ a=end-of-candidates
     }
     return str;
   }
-  class DB {
-    constructor(dbName, storeNames) {
-      __publicField(this, "db");
-      this.dbName = dbName;
-      this.storeNames = storeNames;
+  const debug = getDebug("http/webrtc/service");
+  class HoWService {
+    constructor(pcConnectTimeout, dcOpenTimeout) {
+      __publicField(this, "workerContainer", navigator.serviceWorker);
+      __publicField(this, "hoW");
+      __publicField(this, "abortCtrls", /* @__PURE__ */ new Map());
+      __publicField(this, "disposers", []);
+      this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
+      this.disposers.push(() => this.hoW.dispose());
     }
-    getDB() {
+    get worker() {
+      if (this.workerContainer.controller == null)
+        throw new Error("No available service worker");
+      return this.workerContainer.controller;
+    }
+    sendBody(id, body2) {
       return __async(this, null, function* () {
-        if (this.db != null)
-          return this.db;
-        return new Promise((resolve) => {
-          const request = indexedDB.open(this.dbName);
-          request.addEventListener("upgradeneeded", () => {
-            this.storeNames.forEach((storeName) => {
-              request.result.createObjectStore(storeName);
-            });
-          });
-          resolve(promisifyRequest(request));
-        });
-      });
-    }
-    get(storeName, key) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const request = db.transaction(storeName, "readonly").objectStore(storeName).get(key);
-        return promisifyRequest(request);
-      });
-    }
-    getAll(storeName) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const request = db.transaction(storeName, "readonly").objectStore(storeName).getAll();
-        return promisifyRequest(request);
-      });
-    }
-    count(storeName) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const request = db.transaction(storeName, "readonly").objectStore(storeName).count();
-        return promisifyRequest(request);
-      });
-    }
-    set(storeName, key, value) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const transaction = db.transaction(storeName, "readwrite");
-        transaction.objectStore(storeName).put(value, key);
-        return promisifyTransaction(transaction);
-      });
-    }
-    remove(storeName, key) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const transaction = db.transaction(storeName, "readwrite");
-        transaction.objectStore(storeName).delete(key);
-        return promisifyTransaction(transaction);
-      });
-    }
-    clear() {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        yield Promise.all(this.storeNames.map((storeName) => {
-          const transaction = db.transaction(storeName, "readwrite");
-          transaction.objectStore(storeName).clear();
-          return promisifyTransaction(transaction);
-        }));
-      });
-    }
-    dispose() {
-      var _a2;
-      (_a2 = this.db) == null ? void 0 : _a2.close();
-    }
-  }
-  function promisifyRequest(request) {
-    return new Promise((resolve, reject) => {
-      request.addEventListener("success", () => resolve(request.result));
-      request.addEventListener("error", () => reject(request.error));
-    });
-  }
-  function promisifyTransaction(transaction) {
-    return new Promise((resolve, reject) => {
-      transaction.addEventListener("complete", () => resolve());
-      transaction.addEventListener("error", () => reject(transaction.error));
-      transaction.addEventListener("abort", () => reject(transaction.error));
-    });
-  }
-  const debug$5 = getDebug("dc");
-  const namespace = "miku/dc";
-  const itemStoreName = "item";
-  class Cache {
-    constructor(config = {}) {
-      __publicField(this, "db", new DB(namespace, [itemStoreName]));
-      this.config = config;
-    }
-    getBrowserCache() {
-      return caches.open(namespace);
-    }
-    getItem(key) {
-      return __async(this, null, function* () {
-        return this.db.get(itemStoreName, key);
-      });
-    }
-    setItem(key, item) {
-      return __async(this, null, function* () {
-        debug$5("setItem", key, item);
-        yield this.db.set(itemStoreName, key, item);
-      });
-    }
-    getContent(key, piece) {
-      return __async(this, null, function* () {
-        const browserCache = yield this.getBrowserCache();
-        const cachedResponse = yield browserCache.match(getBrowserCacheKey(key, piece));
-        if (cachedResponse == null)
-          return void 0;
-        if (cachedResponse.body == null)
-          throw new Error("Body expected for cached response");
-        return cachedResponse.body;
-      });
-    }
-    setContent(key, piece, content) {
-      return __async(this, null, function* () {
-        const browserCache = yield this.getBrowserCache();
-        yield browserCache.put(getBrowserCacheKey(key, piece), new Response(content));
-      });
-    }
-    dispose() {
-      this.db.dispose();
-    }
-  }
-  function getBrowserCacheKey(key, piece) {
-    var _a2;
-    return `${key}_with_range_${piece[0]}_${(_a2 = piece[1]) != null ? _a2 : ""}`;
-  }
-  class DownloadLogger {
-    constructor(logger) {
-      this.logger = logger;
-    }
-    log(schemaName, logData) {
-      return this.logger.log(schemaName, logData);
-    }
-  }
-  const defaultAttempts = 3;
-  const debug$4 = getDebug("http");
-  class Http {
-    constructor(logger, resolver, client) {
-      __publicField(this, "logger");
-      this.resolver = resolver;
-      this.client = client;
-      this.logger = new DownloadLogger(logger);
-    }
-    doWithIp(ctx, request, ip, currentRetryCount) {
-      return __async(this, null, function* () {
-        var _a2;
-        const domain = new URL(request.url).host;
-        const startAt = Date.now();
-        let err;
-        try {
-          debug$4("do request", request.url, "with ip", ip);
-          const req = withNode(request, ip);
-          const resp = yield this.client.fetch(ctx, req);
-          debug$4("do request", request.url, "with ip succeeded with status", resp.status);
-          ctx.set("downloadStatus", resp.status);
-          ctx.set("downloadReqID", (_a2 = resp.headers.get("x-reqid")) != null ? _a2 : "");
-          if (resp.status >= 500)
-            throw new Error(`TODO: HTTP Status error: ${resp.status}`);
-          return resp;
-        } catch (e) {
-          debug$4("do request", request.url, "with ip", ip, "failed:", e);
-          err = e;
-          throw e;
-        } finally {
-          const range = ctx.get("downloadRange");
-          const retry = currentRetryCount;
-          const doDownloadLog = (extra) => {
-            var _a3, _b, _c, _d, _e, _f, _g, _h, _i;
-            return this.logger.log("DownloadLog", __spreadValues({
-              ip,
-              domain,
-              range_st: (_a3 = range == null ? void 0 : range.start) != null ? _a3 : -1,
-              range_end: (_b = range == null ? void 0 : range.end) != null ? _b : -1,
-              retry,
-              ftask_id: (_c = ctx.get("downloadFileTaskID")) != null ? _c : "",
-              lookup_type: true,
-              t_lookup: (_d = ctx.get("dnsResolveFromCache") === true ? 0 : ctx.get("dnsResolveTotalTime")) != null ? _d : -1,
-              r_id: (_e = ctx.get("downloadReqID")) != null ? _e : "",
-              status_code: (_f = ctx.get("downloadStatus")) != null ? _f : -1,
-              t_conn: (_g = ctx.get("downloadConnectionTime")) != null ? _g : -1,
-              t_tls: (_h = ctx.get("downloadTlsConnectionTime")) != null ? _h : -1,
-              t_st_trans: (_i = ctx.get("downloadStartTransferTime")) != null ? _i : -1,
-              err_msg: "",
-              err_desc: "",
-              t_content_trans: -1,
-              t_total: -1,
-              resp_size: -1
-            }, extra));
-          };
-          const onDownloadError = (e) => doDownloadLog({
-            t_total: (Date.now() - startAt) / 1e3,
-            err_msg: err instanceof Error ? err.name : "Unknown",
-            err_desc: err instanceof Error ? err.message : err + ""
-          });
-          const onDownloadTransfered = (size, time) => doDownloadLog({
-            t_content_trans: time,
-            t_total: (Date.now() - startAt) / 1e3,
-            resp_size: size
-          });
-          if (err != null) {
-            onDownloadError();
-          } else {
-            ctx.set("downloadOnError", onDownloadError);
-            ctx.set("downloadOnTransfered", onDownloadTransfered);
-          }
-        }
-      });
-    }
-    do(ctx, request) {
-      return __async(this, null, function* () {
-        let currentRetryCount = -1;
-        let finalResp = null;
-        yield this.resolver.do(ctx, request.url, defaultAttempts, (ip) => __async(this, null, function* () {
-          currentRetryCount++;
-          finalResp = yield this.doWithIp(ctx, request, ip, currentRetryCount);
-        }));
-        if (finalResp == null)
-          throw new Error(`Http do failed: resolver do finished with no finalResp, url: ${request.url}`);
-        return finalResp;
-      });
-    }
-  }
-  function withNode(originalReq, nodeIP) {
-    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
-    const urlObject = new URL(originalUrl);
-    const originalHost = urlObject.host;
-    urlObject.host = nodeIP;
-    const headers = new Headers(originalHeaders);
-    headers.set("Host", originalHost);
-    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
-  }
-  class Task {
-    constructor(client, url, range, expiry) {
-      __publicField(this, "priority", 0);
-      __publicField(this, "abortCtrl", new AbortController());
-      __publicField(this, "started", false);
-      this.client = client;
-      this.url = url;
-      this.range = range;
-      this.expiry = expiry;
-    }
-    get signal() {
-      return this.abortCtrl.signal;
-    }
-    setPriority(priority) {
-      this.priority = priority;
-    }
-    start() {
-      return __async(this, null, function* () {
-        if (this.started) {
-          throw new Error("Task already started");
-        }
-        this.started = true;
-        return this.client.startTask(this);
-      });
-    }
-    cancel(reason) {
-      this.abortCtrl.abort(reason);
-    }
-  }
-  function slice(stream, range) {
-    var _a2;
-    const reader = stream.getReader();
-    const resultStart = (_a2 = range[0]) != null ? _a2 : 0;
-    const resultEnd = range[1];
-    const newStream = new ReadableStream({
-      start: (ctrl) => __async(this, null, function* () {
-        let valueStart = 0;
+        const reader = body2.getReader();
         while (true) {
-          const { done, value } = yield reader.read();
+          const { value, done } = yield reader.read();
           if (done) {
-            ctrl.close();
-            break;
+            const message2 = { hoW: true, type: "resp-body-chunk", id, payload: null };
+            this.worker.postMessage(message2);
+            return;
           }
-          const valueEnd = valueStart + value.byteLength;
-          if (valueEnd > resultStart) {
-            let resultValue = value;
-            const sliceStart = resultStart > valueStart ? resultStart - valueStart : 0;
-            const sliceEnd = resultEnd != null && resultEnd < valueEnd ? resultEnd - valueStart : void 0;
-            if (sliceStart !== 0 || sliceEnd !== void 0) {
-              resultValue = value.slice(sliceStart, sliceEnd);
-            }
-            ctrl.enqueue(resultValue);
-            if (resultEnd != null && valueEnd >= resultEnd) {
-              ctrl.close();
-              break;
-            }
-          }
-          valueStart = valueEnd;
-        }
-      }),
-      cancel: (reason) => {
-        reader.releaseLock();
-        stream.cancel(reason);
-      }
-    });
-    return newStream;
-  }
-  class Context {
-    constructor() {
-      __publicField(this, "value", {});
-    }
-    set(key, value) {
-      this.value[key] = value;
-    }
-    get(key) {
-      return this.value[key];
-    }
-  }
-  class Result {
-    constructor(stream, size, fileMeta) {
-      __publicField(this, "fileSize");
-      __publicField(this, "contentType");
-      var _a2;
-      this.stream = stream;
-      this.size = size;
-      this.fileSize = fileMeta.fsize;
-      this.contentType = (_a2 = fileMeta.contentType) != null ? _a2 : "";
-    }
-    blob() {
-      return __async(this, null, function* () {
-        const stream = this.stream;
-        const reader = stream.getReader();
-        const parts = [];
-        while (true) {
-          const { done, value } = yield reader.read();
-          if (done)
-            break;
-          const arrayBuffer = value;
-          parts.push(arrayBuffer);
-        }
-        return new Blob(parts);
-      });
-    }
-  }
-  function makeRange(totalSize, start, end) {
-    if (totalSize != null && end != null) {
-      if (end >= totalSize)
-        end = null;
-    }
-    if (start == null || start < 0)
-      start = 0;
-    return [start, end];
-  }
-  function isFull(totalSize, range) {
-    var _a2;
-    const startFull = ((_a2 = range[0]) != null ? _a2 : 0) === 0;
-    const endFull = range[1] == null || totalSize != null && range[1] === totalSize;
-    return startFull && endFull;
-  }
-  function getRangeSize(totalSize, range) {
-    var _a2, _b;
-    const start = (_a2 = range[0]) != null ? _a2 : 0;
-    const end = (_b = range[1]) != null ? _b : totalSize;
-    return end == null ? null : end - start;
-  }
-  function applyRange(range, fsize, pieces) {
-    var _a2, _b;
-    if (fsize === 0)
-      return [];
-    const endGt = (num1, num2) => {
-      return gt(num1, num2, fsize != null ? fsize : Number.POSITIVE_INFINITY);
-    };
-    const start = (_a2 = range == null ? void 0 : range[0]) != null ? _a2 : 0;
-    const end = (_b = range == null ? void 0 : range[1]) != null ? _b : fsize;
-    const result = [];
-    let applyFrom = start;
-    for (const p of pieces) {
-      if (applyFrom == null)
-        break;
-      if (fsize != null && p[1] != null && p[1] > fsize)
-        break;
-      if (p[1] != null && applyFrom >= p[1])
-        continue;
-      if (end == null || end > p[0]) {
-        if (p[0] > applyFrom) {
-          result.push({
-            cached: false,
-            range: makeRange(fsize, applyFrom, p[0])
-          });
-        }
-        const cacheStart = endGt(p[0], applyFrom) ? p[0] : applyFrom;
-        const cacheEnd = endGt(p[1], end) ? end : p[1];
-        if (endGt(cacheEnd, cacheStart)) {
-          result.push({
-            cached: true,
-            range: makeRange(fsize, cacheStart, cacheEnd)
-          });
-          applyFrom = cacheEnd;
-        }
-        continue;
-      }
-      break;
-    }
-    if (endGt(end, applyFrom)) {
-      result.push({
-        cached: false,
-        range: makeRange(fsize, applyFrom, end)
-      });
-    }
-    return result;
-  }
-  function findPiece(pieces, range) {
-    var _a2;
-    const rangeStart = (_a2 = range[0]) != null ? _a2 : 0;
-    const rangeEnd = range[1];
-    for (const piece of pieces) {
-      if (piece[1] != null && piece[1] <= rangeStart)
-        continue;
-      if (piece[0] > rangeStart)
-        break;
-      const start = rangeStart - piece[0];
-      const end = minus(rangeEnd != null ? rangeEnd : piece[1], piece[0]);
-      return { piece, start, end };
-    }
-    throw new Error("Piece not found");
-  }
-  function addPiece(pieces, piece) {
-    return [...pieces, piece].sort(
-      (piece1, piece2) => piece1[0] - piece2[0]
-    );
-  }
-  function gt(num1, num2, nullAs) {
-    const val1 = num1 != null ? num1 : nullAs;
-    const val2 = num2 != null ? num2 : nullAs;
-    return val1 > val2;
-  }
-  function minus(num1, num2) {
-    return num1 == null || num2 == null ? null : num1 - num2;
-  }
-  const debug$3 = getDebug("ftask");
-  class FileTask {
-    constructor(taskq, cache, http, key, url) {
-      __publicField(this, "id", uuid());
-      __publicField(this, "inited");
-      __publicField(this, "cachePieces", []);
-      __publicField(this, "meta", createDefered());
-      this.taskq = taskq;
-      this.cache = cache;
-      this.http = http;
-      this.key = key;
-      this.url = url;
-      this.inited = this.resume();
-    }
-    startTask(task) {
-      return __async(this, null, function* () {
-        if (task.range != null) {
-          debug$3("startTask", task.url);
-          yield this.inited;
-          debug$3("startTask inited", task.url);
-          return this.startTaskWithRange(task);
-        } else {
-          return this.startTaskWithoutRange(task);
+          const message = { hoW: true, type: "resp-body-chunk", id, payload: value.buffer };
+          this.worker.postMessage(message, [value.buffer]);
         }
       });
     }
-    startTaskWithRange(task) {
+    sendResponse(ctx, id, response) {
       return __async(this, null, function* () {
-        debug$3("startTaskWithRange", task.url);
-        const range = task.range != null ? [task.range.start, task.range.end] : [0, null];
-        const [stream, meta] = yield Promise.all([
-          this.readRange(task, range),
-          this.meta.promise
-        ]);
-        const size = getRangeSize(meta.fsize, range);
-        return new Result(stream, size, meta);
-      });
-    }
-    startTaskWithoutRange(task) {
-      return __async(this, null, function* () {
-        debug$3("startTaskWithoutRange", task.url);
-        const streamPromise = new Promise((resolve, reject) => {
-          this.taskq.add({
-            name: `startTaskWithoutRange: ${this.url}`,
-            priority: task.priority,
-            run: () => __async(this, null, function* () {
-              const cachedContent = yield this.cache.getContent(this.key, [0, null]);
-              if (cachedContent != null) {
-                debug$3("use cache", task.url);
-                resolve(cachedContent);
-                return;
-              }
-              try {
-                const { body: body2, bodyDone } = yield this.doRequestAndSaveCache(null, task.signal);
-                resolve(body2);
-                yield bodyDone;
-              } catch (e) {
-                reject(e);
-              }
-            })
-          });
-        });
-        const [stream, meta] = yield Promise.all([
-          streamPromise,
-          this.meta.promise
-        ]);
-        return new Result(stream, meta.fsize, meta);
-      });
-    }
-    readRange(task, range) {
-      return __async(this, null, function* () {
-        var _a2, _b, _c, _d;
-        const pieces = applyRange(range, (_b = (_a2 = this.meta.value) == null ? void 0 : _a2.fsize) != null ? _b : null, this.cachePieces);
-        debug$3("applyRange", range, (_d = (_c = this.meta.value) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
-        const stream = new TransformStream();
-        const abortCtrl = new AbortController();
-        (() => __async(this, null, function* () {
-          for (let i = 0; i < pieces.length; i++) {
-            const { cached, range: range2 } = pieces[i];
-            const pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
-            const isLast = i === pieces.length - 1;
-            yield pieceStream.pipeTo(stream.writable, {
-              preventClose: !isLast,
-              signal: abortCtrl.signal
-            });
-          }
-        }))().catch((e) => {
-          console.warn("readRange stream error for", this.url, e);
-          stream.writable.abort(e);
-        });
-        return stream.readable;
-      });
-    }
-    readPieceFromLocal(task, range) {
-      return __async(this, null, function* () {
-        debug$3("readPieceFromLocal", task.url, range);
-        const { piece, start, end } = findPiece(this.cachePieces, range);
-        const pieceContent = yield this.cache.getContent(this.key, piece);
-        if (pieceContent == null) {
-          console.warn(`Missing cache item: ${this.key} [${piece})`);
-          return this.readPieceFromRemote(task, range);
-        }
-        return slice(pieceContent, [start, end]);
-      });
-    }
-    fileSize() {
-      var _a2, _b;
-      return (_b = (_a2 = this.meta.value) == null ? void 0 : _a2.fsize) != null ? _b : null;
-    }
-    readPieceFromRemote(task, range) {
-      return __async(this, null, function* () {
-        debug$3("readPieceFromRemote", task.url, range);
-        return new Promise((resolve, reject) => {
-          this.taskq.add({
-            name: `readPieceFromRemote: ${this.url}, [${range[0], range[1]})]`,
-            priority: task.priority,
-            run: () => __async(this, null, function* () {
-              try {
-                const { response, body: body2, bodyDone } = yield this.doRequestAndSaveCache(range, task.signal);
-                if (!isFull(this.fileSize(), range) && response.status === 200) {
-                  resolve(slice(body2, range));
-                } else {
-                  resolve(body2);
-                }
-                yield bodyDone;
-              } catch (e) {
-                reject(e);
-              }
-            })
-          });
-        });
-      });
-    }
-    doRequest(range, signal) {
-      return __async(this, null, function* () {
-        try {
-          const ctx = new Context();
-          ctx.set("downloadFileTaskID", this.id);
-          const headers = {
-            "Accept-Encoding": "identity;q=1, *;q=0"
-          };
-          if (range != null && !isFull(this.fileSize(), range)) {
-            const httpRange = { start: range[0], end: range[1] == null ? null : range[1] - 1 };
-            ctx.set("downloadRange", httpRange);
-            headers["Range"] = stringifyRange(httpRange);
-          }
-          const request = new HttpRequest(this.url, { method: "GET", headers, signal });
-          const response = yield this.http.do(ctx, request);
-          if (response.body == null) {
-            throw new Error("Body expected");
-          }
-          if (response.status !== 200 && response.status !== 206) {
-            throw new Error(`Invalid response, status: ${response.status}`);
-          }
-          this.saveMeta(response);
-          return { response, body: response.body };
-        } catch (e) {
-          this.meta.reject(e);
-          throw e;
-        }
-      });
-    }
-    doRequestAndSaveCache(range, signal) {
-      return __async(this, null, function* () {
-        var _a2, _b;
-        const { response, body: body2 } = yield this.doRequest(range, signal);
-        const [bodyForUse, bodyForCache] = body2.tee();
-        const piece = [(_a2 = range == null ? void 0 : range[0]) != null ? _a2 : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
-        this.saveCachePiece(piece, bodyForCache);
-        const transform = new TransformStream();
-        const bodyDone = bodyForUse.pipeTo(transform.writable);
-        return { response, body: transform.readable, bodyDone };
-      });
-    }
-    saveCachePiece(piece, content) {
-      return __async(this, null, function* () {
-        debug$3("saveCachePiece", this.url, piece);
-        yield this.cache.setContent(this.key, piece, content);
-        this.cachePieces = addPiece(this.cachePieces, piece);
-        yield this.save();
-      });
-    }
-    saveMeta(response) {
-      return __async(this, null, function* () {
-        var _a2;
-        if (this.meta.value != null) {
-          this.meta = createDefered();
-        }
-        let fileSize = null;
-        if (response.status === 200) {
-          const contentLengthStr = response.headers.get("Content-Length");
-          const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
-          fileSize = contentLength;
-        }
-        if (response.status === 206) {
-          const contentRange = httpGetContentRange(response.headers);
-          fileSize = (_a2 = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a2 : null;
-        }
-        this.meta.resolve({
-          contentType: response.headers.get("Content-Type"),
-          fsize: fileSize
-        });
-        yield this.meta.promise;
-        yield this.save();
-      });
-    }
-    resume() {
-      return __async(this, null, function* () {
-        const item = yield this.cache.getItem(this.key);
-        if (item == null || item.meta == null)
-          return;
-        this.meta.resolve(item.meta);
-        this.cachePieces = item.pieces;
-      });
-    }
-    save() {
-      return __async(this, null, function* () {
-        const item = {
-          meta: this.meta.value,
-          pieces: this.cachePieces
+        var _a, _b, _c;
+        debug("sendResponse in window", id, response);
+        const { status, statusText, headers, body: body2 } = response;
+        const message = {
+          hoW: true,
+          type: "resp-head",
+          id,
+          status,
+          statusText,
+          headers: dehydrateHeaders(headers),
+          hasBody: body2 != null,
+          peerConnectionConnectTime: (_a = ctx.get("hoWPeerConnectionConnectTime")) != null ? _a : -1,
+          dataChannelOpenTime: (_b = ctx.get("hoWDataChannelOpenTime")) != null ? _b : -1,
+          startTransferTime: (_c = ctx.get("hoWStartTransferTime")) != null ? _c : -1
         };
-        yield this.cache.setItem(this.key, item);
-      });
-    }
-  }
-  const debug$2 = getDebug("utils/taskq");
-  class TaskQueue {
-    constructor(jobs) {
-      __publicField(this, "tasks", []);
-      __publicField(this, "emitter", new Emitter());
-      __publicField(this, "running", true);
-      for (let i = 0; i < jobs; i++) {
-        this.comsumeLoop();
-      }
-    }
-    add(task) {
-      let i = 0;
-      for (; i < this.tasks.length; i++) {
-        if (this.tasks[i].priority >= task.priority) {
-          break;
+        this.worker.postMessage(message);
+        if (body2 != null) {
+          yield this.sendBody(id, body2);
         }
-      }
-      this.tasks.splice(i, 0, task);
-      this.emitter.emit("task");
-    }
-    pop() {
-      return __async(this, null, function* () {
-        const task = this.tasks.pop();
-        if (task != null)
-          return task;
-        return new Promise((resolve) => {
-          const off = this.emitter.on("task", () => {
-            const task2 = this.tasks.pop();
-            if (task2 != null) {
-              resolve(task2);
-              off();
-            }
-          });
-        });
+        debug("sendResponse finished in window", id, response);
       });
     }
-    consumeTask() {
-      return __async(this, null, function* () {
-        if (!this.running)
+    sendResponseError(id, err) {
+      const message = {
+        hoW: true,
+        type: "resp-error",
+        id,
+        name: err instanceof Error ? err.name : "UnknownError",
+        message: err instanceof Error ? err.message : err + ""
+      };
+      this.worker.postMessage(message);
+    }
+    receiveRequestBody(id) {
+      let streamCtrl;
+      const stream = new ReadableStream({
+        start: (ctrl) => streamCtrl = ctrl
+      });
+      const unlisten = listen(this.workerContainer, "message", ({ data }) => {
+        if (!isHoWMessage(data))
           return;
-        const task = yield this.pop();
-        debug$2("run task", task.name, ", with priority:", task.priority);
-        try {
-          yield task == null ? void 0 : task.run();
-        } catch (e) {
-          console.warn("Task run failed:", e);
-        } finally {
-          debug$2("end task", task.name);
+        if (data.id !== id)
+          return;
+        if (data.type !== "req-body-chunk")
+          return;
+        if (streamCtrl == null)
+          throw new Error("Stream Controller should be ready");
+        if (data.payload == null) {
+          streamCtrl.close();
+          unlisten();
+          return;
         }
+        streamCtrl.enqueue(new Uint8Array(data.payload));
       });
+      return stream;
     }
-    comsumeLoop() {
-      return __async(this, null, function* () {
-        while (this.running) {
-          yield this.consumeTask();
+    getRequest({ id, url, method, headers, hasBody }) {
+      const abortCtrl = new AbortController();
+      this.abortCtrls.set(id, abortCtrl);
+      if (!hasBody)
+        return new HttpRequest(url, { method, headers, signal: abortCtrl.signal });
+      const body2 = this.receiveRequestBody(id);
+      return new HttpRequest(url, { method, headers, signal: abortCtrl.signal, body: body2 });
+    }
+    run() {
+      this.disposers.push(listen(this.workerContainer, "message", (_0) => __async(this, [_0], function* ({ data }) {
+        var _a;
+        debug("Got message in window", data);
+        if (!isHoWMessage(data))
+          return;
+        if (data.type === "req-head") {
+          const { id, fingerprint } = data;
+          const request = this.getRequest(data);
+          const ctx = new Context();
+          try {
+            const response = yield this.hoW.fetch(ctx, id, request, fingerprint);
+            yield this.sendResponse(ctx, id, response);
+          } catch (e) {
+            this.sendResponseError(id, e);
+          } finally {
+            this.abortCtrls.delete(id);
+          }
+          return;
         }
-      });
+        if (data.type === "req-abort") {
+          (_a = this.abortCtrls.get(data.id)) == null ? void 0 : _a.abort(new AbortError(data.reason));
+          return;
+        }
+      })));
     }
     dispose() {
-      this.emitter.dispose();
-      this.running = false;
+      this.disposers.forEach((d) => d());
     }
+  }
+  function listen(target, type, listener) {
+    target.addEventListener(type, listener);
+    return () => target.removeEventListener(type, listener);
   }
   class HoWHttpClientForWindow {
     constructor(getFingerprint, pcConnectTimeout, dcOpenTimeout) {
@@ -7376,12 +7354,12 @@ a=end-of-candidates
     }
     fetch(ctx, request) {
       return __async(this, null, function* () {
-        var _a2, _b;
+        var _a;
         const id = uuid();
         const fingerprint = this.getFingerprint(new URL(request.url).host);
         const resp = yield this.hoW.fetch(ctx, id, request, fingerprint);
-        ctx.set("downloadConnectionTime", (_a2 = ctx.get("hoWPeerConnectionConnectTime")) != null ? _a2 : -1);
-        ctx.set("downloadStartTransferTime", (_b = ctx.get("hoWStartTransferTime")) != null ? _b : -1);
+        ctx.set("downloadConnectionTime", getDownloadConnectionTime(ctx));
+        ctx.set("downloadStartTransferTime", (_a = ctx.get("hoWStartTransferTime")) != null ? _a : -1);
         return resp;
       });
     }
@@ -7389,28 +7367,12 @@ a=end-of-candidates
       this.hoW.dispose();
     }
   }
-  class HoWHttpClientForSW {
-    constructor(getFingerprint, timeout) {
-      __publicField(this, "client");
-      this.getFingerprint = getFingerprint;
-      if (!isInServiceWorker())
-        throw new Error("HoWHttpClientForSW should be used in Service Worker");
-      this.client = new HoWClient(timeout);
-    }
-    fetch(ctx, request) {
-      return __async(this, null, function* () {
-        var _a2, _b;
-        const id = uuid();
-        const fingerprint = this.getFingerprint(new URL(request.url).host);
-        const resp = yield this.client.fetch(ctx, id, request, fingerprint);
-        ctx.set("downloadConnectionTime", (_a2 = ctx.get("hoWPeerConnectionConnectTime")) != null ? _a2 : -1);
-        ctx.set("downloadStartTransferTime", (_b = ctx.get("hoWStartTransferTime")) != null ? _b : -1);
-        return resp;
-      });
-    }
-    dispose() {
-      this.client.dispose();
-    }
+  function getDownloadConnectionTime(ctx) {
+    const peerConnectionConnectTime = ctx.get("hoWPeerConnectionConnectTime");
+    const dataChannelOpenTime = ctx.get("hoWDataChannelOpenTime");
+    if (peerConnectionConnectTime == null || peerConnectionConnectTime < 0 || dataChannelOpenTime == null || dataChannelOpenTime < 0)
+      return -1;
+    return peerConnectionConnectTime + dataChannelOpenTime;
   }
   const defaultWorkersCount = 10;
   function createHoWHttpForWindow(logger, app, config) {
@@ -7425,12 +7387,12 @@ a=end-of-candidates
       __publicField(this, "cache");
       __publicField(this, "cacheUrlFn");
       __publicField(this, "http");
-      var _a2, _b, _c, _d;
+      var _a, _b, _c, _d;
       this.appInfo = appInfo;
       if (config == null ? void 0 : config.debug)
         enableDebug();
       this.cache = new Cache(config == null ? void 0 : config.cache);
-      this.cacheUrlFn = (_a2 = config == null ? void 0 : config.cacheUrl) != null ? _a2 : defaultHash;
+      this.cacheUrlFn = (_a = config == null ? void 0 : config.cacheUrl) != null ? _a : defaultHash;
       const logger = (_b = config == null ? void 0 : config.logger) != null ? _b : new Logger(appInfo);
       this.http = (_c = config == null ? void 0 : config.http) != null ? _c : createHoWHttpForWindow(logger, appInfo, config);
       this.taskq = new TaskQueue((_d = config == null ? void 0 : config.workersCount) != null ? _d : defaultWorkersCount);
@@ -7460,115 +7422,88 @@ a=end-of-candidates
   function defaultHash(url) {
     return url;
   }
-  function isProxyMessage(message) {
-    return message && message.mikuProxy === true;
-  }
-  const debug$1 = getDebug("proxy/common");
-  function proxyRequest(client, request) {
-    return __async(this, null, function* () {
-      var _a2, _b;
-      const httpRange = httpGetRange(request.headers);
-      const range = httpRange == null ? void 0 : {
-        start: httpRange.start,
-        end: httpRange.end == null ? null : httpRange.end + 1
-      };
-      const task = client.createTask(request.url, range != null ? range : void 0);
-      waitAbort(request.signal).catch((e) => {
-        task.cancel(e);
-      });
-      const { size, fileSize, contentType, stream } = yield task.start();
-      const headers = {
-        "Accept-Ranges": "bytes",
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": contentType != null ? contentType : "",
-        "Content-Length": (size != null ? size : "") + "",
-        "Content-Transfer-Encoding": "binary"
-      };
-      const response = range == null ? new Response(stream, { status: 200, statusText: "OK", headers }) : new Response(stream, { status: 206, statusText: "Partial Content", headers: __spreadProps(__spreadValues({}, headers), {
-        "Content-Range": stringifyContentRange({
-          start: (_a2 = range.start) != null ? _a2 : 0,
-          end: (_b = range.end) != null ? _b : fileSize != null ? fileSize - 1 : null,
-          totalSize: fileSize
-        })
-      }) });
-      debug$1("proxyRequest response got", response, [...response.headers.entries()]);
-      return response;
-    });
-  }
   const configQueryName = "MIKU_PROXY_CONFIG";
-  function getProxyConfig(scriptUrl) {
-    var _a2;
-    const search = scriptUrl.split("?")[1];
-    if (!search)
-      throw new Error("Invalid script url");
-    const params = new URLSearchParams(search);
-    const configText = params.get(configQueryName);
-    if (configText == null)
-      throw new Error("Invalid script url: no config info");
-    const serializableConfig = JSON.parse(configText);
-    return __spreadProps(__spreadValues({}, serializableConfig), {
-      patterns: (_a2 = serializableConfig.patterns) == null ? void 0 : _a2.map(({ source, flags }) => new RegExp(source, flags))
+  function getScriptUrl(scriptUrl, config) {
+    var _a;
+    const serializableConfig = __spreadProps(__spreadValues({}, config), {
+      patterns: (_a = config.patterns) == null ? void 0 : _a.map((re) => ({ source: re.source, flags: re.flags }))
+    });
+    return appendQuery(scriptUrl, { [configQueryName]: JSON.stringify(serializableConfig) });
+  }
+  function registerSW(scriptUrl, config, options) {
+    return __async(this, null, function* () {
+      const reason = checkAbility();
+      if (reason != null) {
+        console.warn("Ability not OK for Miku SDK:", reason);
+        return;
+      }
+      if (config.debug)
+        enableDebug();
+      scriptUrl = getScriptUrl(scriptUrl, config);
+      yield navigator.serviceWorker.register(scriptUrl, options);
     });
   }
-  function shouldUseCDN(request, { domains, patterns }) {
-    if (request.method !== "GET")
-      return false;
-    const reqUrl = request.url;
-    if (patterns != null) {
-      return patterns.some((pattern) => pattern.test(reqUrl));
-    }
-    if (domains != null) {
-      const reqDomain = new URL(reqUrl).hostname;
-      return domains.includes(reqDomain);
-    }
-    return false;
+  function initPage() {
+    return __async(this, null, function* () {
+      const reason = checkAbility();
+      if (reason != null) {
+        console.warn("Ability not OK for Miku SDK:", reason);
+        return;
+      }
+      new HoWService().run();
+      syncWindowStatus();
+    });
   }
-  const debug = getDebug("proxy/service-worker");
-  const scope = self;
-  const proxyConfig = getProxyConfig(scope.location.href);
-  const mikuClientConfig = (_a = proxyConfig.client) != null ? _a : {};
-  mikuClientConfig.debug = proxyConfig.debug;
-  const mikuClient = createClientForSW(proxyConfig.app, mikuClientConfig);
-  scope.addEventListener("fetch", (event) => __async(this, null, function* () {
-    if (event.clientId !== "") {
-      swClients.add(event.clientId);
+  function syncWindowStatus() {
+    function notify(state) {
+      var _a;
+      const message = { mikuProxy: true, type: `window-${state}` };
+      (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
     }
-    const request = event.request;
-    const abortCtrl = new AbortController();
-    Object.defineProperty(request, "signal", { value: abortCtrl.signal });
-    swClients.whenRemoved(event.clientId, () => abortCtrl.abort(new AbortError(`Source client ${event.clientId} closed`)));
-    if (shouldUseCDN(request, proxyConfig)) {
-      debug("use cdn", request.url);
-      event.respondWith(proxyRequest(mikuClient, request).catch((e) => {
-        if (e instanceof NonECDNError) {
-          debug("Use fallback fetch for request", request.url);
-          return fetch(request, { signal: abortCtrl.signal });
-        }
-        throw e;
-      }));
-      return;
-    }
-  }));
-  scope.addEventListener("message", (e) => __async(this, null, function* () {
-    if (!(e.source instanceof WindowClient))
-      return;
-    if (!isProxyMessage(e.data))
-      return;
-    debug("got proxy message", e.data, "from", e.source.id);
-    switch (e.data.type) {
-      case "window-available":
-        swClients.add(e.source.id);
-        break;
-      case "window-unavailable":
-        swClients.remove(e.source.id);
-        break;
-    }
-  }));
-  function createClientForSW(app, clientConfig) {
-    const logger = new Logger(app, void 0, void 0, 3);
-    const resolver = new Resolver(logger, app);
-    const httpClient = new HoWHttpClientForSW((ipPort) => resolver.getFingerprint(ipPort));
-    const http = new Http(logger, resolver, httpClient);
-    return new Client(app, __spreadProps(__spreadValues({}, clientConfig), { logger, http }));
+    notify("available");
+    window.addEventListener("pageshow", () => notify("available"));
+    window.addEventListener("pagehide", () => notify("unavailable"));
+    window.addEventListener("beforeunload", () => notify("unavailable"));
   }
-})();
+  function initProxy(scriptUrl, config, options) {
+    return __async(this, null, function* () {
+      yield Promise.all([
+        initPage(),
+        registerSW(scriptUrl, config, options)
+      ]);
+    });
+  }
+  function checkAbility() {
+    var _a, _b, _c, _d;
+    if (!("serviceWorker" in navigator))
+      return "navigator.serviceWorker not available";
+    const { engine, browser, device } = uaParser(navigator.userAgent);
+    if (engine.name !== "Blink")
+      return "Response() constructor does not accept ReadableByteStream as body";
+    if (browser.name === "Chrome" || browser.name === "Chromium") {
+      if (parseInt((_a = browser.version) != null ? _a : "0", 10) < 56)
+        return "WebRTC not fully supported";
+    }
+    if (browser.name === "Edge") {
+      if (parseInt((_b = browser.version) != null ? _b : "0", 10) < 79)
+        return "WebRTC not fully supported";
+    }
+    if (browser.name === "Safari") {
+      if (parseInt((_c = browser.version) != null ? _c : "0", 10) < 11)
+        return "WebRTC not fully supported";
+    }
+    if (browser.name === "Firefox") {
+      if (parseInt((_d = browser.version) != null ? _d : "0", 10) < 44)
+        return "WebRTC not fully supported";
+    }
+    if (device.type === "mobile")
+      return "Mobile device";
+    return null;
+  }
+  exports.Client = Client;
+  exports.initPage = initPage;
+  exports.initProxy = initProxy;
+  exports.registerSW = registerSW;
+  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+  return exports;
+}({});
