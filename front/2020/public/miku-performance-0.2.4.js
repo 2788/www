@@ -1039,7 +1039,7 @@ var mikuPerformance = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.3";
+  const version = "0.2.4";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -5567,7 +5567,7 @@ var mikuPerformance = function(exports) {
       let observer = new PerformanceObserver(
         (list) => {
           list.getEntries().forEach((entry) => {
-            if (entry.entryType === "resource" && entry.initiatorType === "img") {
+            if (entry.entryType === "resource") {
               this.submitResourceLoadLog({
                 r_id: this.pageLogData.r_id,
                 ts: Date.now(),
