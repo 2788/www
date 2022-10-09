@@ -1039,7 +1039,7 @@ var mikuPerformance = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.4";
+  const version = "0.2.5";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
