@@ -53,7 +53,7 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-var mikuPerformance = function(exports) {
+var mikuPerf = function(exports) {
   "use strict";
   const logApiPrefix = "https://log.qiniuapi.com";
   function queryStringify(params) {
@@ -1039,7 +1039,7 @@ var mikuPerformance = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.5";
+  const version = "0.3.0";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -5489,53 +5489,6 @@ var mikuPerformance = function(exports) {
       _MikuPerformance.mikuPerformanceInstance = performance;
       return performance;
     }
-    static create(app) {
-      return __async(this, null, function* () {
-        const cache = yield caches.open(namespace);
-        const requestList = yield cache.keys();
-        return new Promise((resolve, reject) => {
-          if (_MikuPerformance.mikuPerformanceInstance === void 0) {
-            if ("serviceWorker" in navigator && "caches" in window) {
-              navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                return __async(this, null, function* () {
-                  if (registrations.length === 0) {
-                    resolve(
-                      _MikuPerformance.initInstance("direct", app)
-                    );
-                  } else {
-                    try {
-                      if (requestList.length) {
-                        resolve(
-                          _MikuPerformance.initInstance(
-                            "cache",
-                            app
-                          )
-                        );
-                      } else {
-                        resolve(
-                          _MikuPerformance.initInstance(
-                            "nocache",
-                            app
-                          )
-                        );
-                      }
-                    } catch (e) {
-                      reject(e);
-                    }
-                  }
-                });
-              }).catch((e) => {
-                reject(e);
-              });
-            } else {
-              resolve(_MikuPerformance.initInstance("direct", app));
-            }
-          } else {
-            resolve(_MikuPerformance.mikuPerformanceInstance);
-          }
-        });
-      });
-    }
     pageLoadPerformance() {
       let observer = new PerformanceObserver(
         (list) => {
@@ -5567,7 +5520,7 @@ var mikuPerformance = function(exports) {
       let observer = new PerformanceObserver(
         (list) => {
           list.getEntries().forEach((entry) => {
-            if (entry.entryType === "resource") {
+            if (entry.entryType === "resource" && entry.initiatorType !== "fetch") {
               this.submitResourceLoadLog({
                 r_id: this.pageLogData.r_id,
                 ts: Date.now(),
@@ -5594,7 +5547,52 @@ var mikuPerformance = function(exports) {
   };
   let MikuPerformance = _MikuPerformance;
   __publicField(MikuPerformance, "mikuPerformanceInstance");
-  exports.MikuPerformance = MikuPerformance;
+  const createPerformance = (app) => __async(this, null, function* () {
+    const cache = yield caches.open(namespace);
+    const requestList = yield cache.keys();
+    return new Promise((resolve, reject) => {
+      if (MikuPerformance.mikuPerformanceInstance === void 0) {
+        if ("serviceWorker" in navigator && "caches" in window) {
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            return __async(this, null, function* () {
+              if (registrations.length === 0) {
+                resolve(
+                  MikuPerformance.initInstance("direct", app)
+                );
+              } else {
+                try {
+                  if (requestList.length) {
+                    resolve(
+                      MikuPerformance.initInstance(
+                        "cache",
+                        app
+                      )
+                    );
+                  } else {
+                    resolve(
+                      MikuPerformance.initInstance(
+                        "nocache",
+                        app
+                      )
+                    );
+                  }
+                } catch (e) {
+                  reject(e);
+                }
+              }
+            });
+          }).catch((e) => {
+            reject(e);
+          });
+        } else {
+          resolve(MikuPerformance.initInstance("direct", app));
+        }
+      } else {
+        resolve(MikuPerformance.mikuPerformanceInstance);
+      }
+    });
+  });
+  exports.init = createPerformance;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
 }({});

@@ -53,13 +53,8 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-var miku = function(exports) {
+(function() {
   "use strict";
-  function appendQuery(url, params) {
-    const querystring = new URLSearchParams(params).toString();
-    const sep = url.includes("?") ? "&" : "?";
-    return url + sep + querystring;
-  }
   function uuid() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
     const charNum = chars.length;
@@ -124,12 +119,31 @@ var miku = function(exports) {
       }
     });
   }
+  const imagePattern = /\.(jpe?g|png|gif|webp|svg|bmp|ico|tiff)$/;
   const videoPattern = /\.(3gp|aac|flac|mpe?g|mp3|mp4|m4a|m4v|m4p|oga|ogg|ogv|wav|webm|mov)$/;
   function removeQueryHash(url) {
     const urlObj = new URL(url);
     urlObj.search = "";
     urlObj.hash = "";
     return urlObj.toString();
+  }
+  function getErrInfo(err) {
+    if (err == null)
+      return { err_msg: "", err_desc: "" };
+    if (err instanceof Error) {
+      return { err_msg: err.name, err_desc: err.message };
+    }
+    return { err_msg: "Unknown", err_desc: err + "" };
+  }
+  function timeMinus(t1, t2) {
+    if (t1 == null || t1 === -1 || t2 == null || t2 === -1)
+      return -1;
+    return (t1 - t2) / 1e3;
+  }
+  function parseHost(hostname, defaultPort = 80) {
+    const [host, portStr] = hostname.split(":");
+    const port = portStr ? parseInt(portStr, 10) : defaultPort;
+    return [host, port];
   }
   let enabled = false;
   function getDebug(namespace2) {
@@ -177,6 +191,76 @@ var miku = function(exports) {
       this.map.clear();
     }
   }
+  const scope$2 = self;
+  const debug$9 = getDebug("utils/sw/clients");
+  class SWClients {
+    constructor(swScope = scope$2) {
+      __publicField(this, "clientIds", []);
+      __publicField(this, "removed", /* @__PURE__ */ new Set());
+      __publicField(this, "emitter", new Emitter());
+      this.swScope = swScope;
+    }
+    add(id) {
+      if (this.clientIds.includes(id))
+        return;
+      if (this.removed.has(id))
+        return;
+      this.clientIds.push(id);
+      debug$9("add", id, this.clientIds);
+    }
+    remove(id) {
+      const i = this.clientIds.indexOf(id);
+      if (i < 0)
+        return;
+      this.clientIds.splice(i, 1);
+      this.removed.add(id);
+      this.emitter.emit("remove", id);
+      debug$9("remove", id, this.clientIds);
+    }
+    set(newIds) {
+      const oldIds = this.clientIds;
+      const kept = [];
+      const removed = [];
+      oldIds.forEach((o) => {
+        const idxInNew = newIds.indexOf(o);
+        if (idxInNew >= 0) {
+          kept.push(o);
+          newIds.splice(idxInNew, 1);
+        } else {
+          removed.push(o);
+        }
+      });
+      this.clientIds = [...kept, ...newIds];
+      removed.forEach((r) => {
+        this.emitter.emit("remove", r);
+      });
+      if (removed.length > 0 || newIds.length > 0) {
+        debug$9("set", this.clientIds);
+      }
+    }
+    getAllIds() {
+      return this.clientIds;
+    }
+    getAll() {
+      return __async(this, null, function* () {
+        const clients = (yield this.swScope.clients.matchAll({ type: "window" })).slice();
+        clients.reverse();
+        this.set(clients.map((c) => c.id));
+        return this.clientIds.map((id) => clients.find((c) => c.id === id));
+      });
+    }
+    whenRemoved(id, cb) {
+      if (!this.clientIds.includes(id))
+        return;
+      const unlisten = this.emitter.on("remove", (removedId) => {
+        if (removedId !== id)
+          return;
+        unlisten();
+        cb();
+      });
+    }
+  }
+  const swClients = new SWClients();
   function slice(stream, range) {
     var _a;
     const reader = stream.getReader();
@@ -226,6 +310,23 @@ var miku = function(exports) {
       (e) => ({ size, success: false, error: e })
     );
     return [transform.readable, resultPromise];
+  }
+  function getReadResult(source) {
+    return __async(this, null, function* () {
+      let size = 0;
+      try {
+        const reader = source.getReader();
+        while (true) {
+          const { value, done } = yield reader.read();
+          if (done)
+            break;
+          size += value.byteLength;
+        }
+        return { size, success: true };
+      } catch (e) {
+        return { size, success: false, error: e };
+      }
+    });
   }
   function teeWithMain(source) {
     let minorCtrl;
@@ -315,11 +416,156 @@ var miku = function(exports) {
     });
     return res;
   }
+  const debug$8 = getDebug("http/webrtc/client");
   const messageEmitter = new Emitter();
-  let scope;
+  let scope$1;
   if (typeof self !== "undefined") {
-    scope = self;
-    scope.addEventListener("message", (e) => messageEmitter.emit("message", e));
+    scope$1 = self;
+    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
+  }
+  class HoWMessageError extends Error {
+    constructor(name, message) {
+      super(message);
+      this.name = name;
+    }
+  }
+  class HoWClient {
+    constructor(timeout = 30 * 1e3) {
+      this.timeout = timeout;
+    }
+    sendBody(client, id, body2) {
+      return __async(this, null, function* () {
+        const reader = body2.getReader();
+        while (true) {
+          const { value, done } = yield reader.read();
+          if (done) {
+            const message2 = { hoW: true, type: "req-body-chunk", id, payload: null };
+            client.postMessage(message2);
+            return;
+          }
+          const message = { hoW: true, type: "req-body-chunk", id, payload: value.buffer };
+          client.postMessage(message, [value.buffer]);
+        }
+      });
+    }
+    sendAbort(client, id, reason) {
+      const message = {
+        hoW: true,
+        type: "req-abort",
+        id,
+        reason: reason instanceof AbortError ? reason.message : reason + ""
+      };
+      client.postMessage(message);
+    }
+    sendRequest(client, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        debug$8("sendRequest in Service Worker", id, request);
+        const { body: body2, url, method, headers } = request;
+        const message = {
+          hoW: true,
+          type: "req-head",
+          id,
+          url,
+          method,
+          headers: dehydrateHeaders(headers),
+          fingerprint,
+          hasBody: body2 != null
+        };
+        client.postMessage(message);
+        waitAbort(request.signal).catch((e) => {
+          this.sendAbort(client, id, e);
+        });
+        if (body2 != null) {
+          yield this.sendBody(client, id, body2);
+        }
+      });
+    }
+    receiveResponse(ctx, signal, client, id) {
+      return __async(this, null, function* () {
+        let streamCtrl;
+        const disposers = [];
+        let finished = false;
+        const finish = (cb) => {
+          if (finished)
+            return;
+          finished = true;
+          disposers.forEach((d) => d());
+          disposers.length = 0;
+          cb == null ? void 0 : cb();
+        };
+        return new Promise((resolve, reject) => {
+          disposers.push(messageEmitter.on("message", ({ data }) => {
+            if (!isHoWMessage(data))
+              return;
+            if (data.id !== id)
+              return;
+            if (data.type === "resp-head") {
+              debug$8("Message resp-head", data);
+              ctx.set("hoWReqMessageAt", data.reqMessageAt);
+              ctx.set("hoWPeerConnectionConnectAt", data.peerConnectionConnectAt);
+              ctx.set("hoWDataChannelOpenAt", data.dataChannelOpenAt);
+              ctx.set("hoWStartTransferAt", data.startTransferAt);
+              ctx.set("hoWRespMessageAt", Date.now());
+              if (!data.hasBody) {
+                debug$8("Resolve with no body");
+                finish(() => resolve(new HttpResponse(null, data)));
+                return;
+              }
+              const bodyStream = new ReadableStream({
+                start: (ctrl) => streamCtrl = ctrl,
+                cancel: (reason) => {
+                  console.warn("receiveResponse cancelled:", reason);
+                  finish(() => {
+                    this.sendAbort(client, id, reason != null ? reason : "Body stream cancelled by reader");
+                  });
+                }
+              });
+              const response = new HttpResponse(bodyStream, data);
+              debug$8("Resolve with body", response);
+              resolve(response);
+              return;
+            }
+            if (data.type === "resp-body-chunk") {
+              if (streamCtrl == null)
+                throw new Error("Stream Controller should be ready");
+              if (data.payload == null) {
+                finish(() => streamCtrl.close());
+                return;
+              }
+              streamCtrl.enqueue(new Uint8Array(data.payload));
+              return;
+            }
+            if (data.type === "resp-error") {
+              finish(() => reject(new HoWMessageError(data.name, data.message)));
+              return;
+            }
+          }));
+          waitAbort(signal).catch((e) => {
+            finish(() => streamCtrl == null ? reject(e) : streamCtrl.error(e));
+          });
+        });
+      });
+    }
+    fetch(ctx, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        const windowClients = yield swClients.getAll();
+        if (windowClients.length === 0)
+          throw new WindowClientError("No available window client");
+        const windowClient = windowClients[0];
+        this.sendRequest(windowClient, id, request, fingerprint);
+        const responseReceived = this.receiveResponse(ctx, request.signal, windowClient, id);
+        const windowClosed = new Promise((_, reject) => {
+          swClients.whenRemoved(windowClient.id, () => reject(new WindowClientError(`Target window client ${windowClient.id} closed`)));
+        });
+        return Promise.race([
+          responseReceived,
+          windowClosed,
+          waitTimeout(this.timeout, "HoWClient fetch")
+        ]);
+      });
+    }
+    dispose() {
+    }
   }
   class WindowClientError extends Error {
     constructor() {
@@ -349,6 +595,11 @@ var miku = function(exports) {
     const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
     const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
     return { totalSize, start, end };
+  }
+  function stringifyContentRange(v) {
+    const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
+    const size = v.totalSize == null ? "*" : v.totalSize + "";
+    return `bytes ${range}/${size}`;
   }
   function atoi(v) {
     return !v ? null : Number(v);
@@ -417,6 +668,23 @@ var miku = function(exports) {
   function encodeHeaderValue(value) {
     return non_ios_8859_1Code.test(value) ? "REPLACED_BY_Miku_SEE_Miku_utils_http_encodeHeaderValue" : value;
   }
+  function getFileSize(response) {
+    var _a;
+    let fileSize = null;
+    if (response.status === 200) {
+      const contentLengthStr = response.headers.get("Content-Length");
+      const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
+      fileSize = contentLength;
+    }
+    if (response.status === 206) {
+      const contentRange = httpGetContentRange(response.headers);
+      fileSize = (_a = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a : null;
+    }
+    return fileSize;
+  }
+  function canClone(request, response) {
+    return !request.headers.get("Range");
+  }
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
   const useTcp = true;
@@ -439,7 +707,7 @@ var miku = function(exports) {
           throw new Error("TODO: empty sdp");
         offer.sdp = offer.sdp.replace(/a=ice-pwd:.+/, `a=ice-pwd:${icePwd}`);
         pc.setLocalDescription(offer);
-        const [targetIP, targetPort] = parseIPPort(target, 0);
+        const [targetIP, targetPort] = parseHost(target, 0);
         const webrtcPort = targetPort + defaultWebRTCPort;
         const answer = {
           type: "answer",
@@ -475,9 +743,8 @@ var miku = function(exports) {
       return __async(this, null, function* () {
         debug$7("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
-        const getPcStartAt = Date.now();
         const pc = yield this.getPc(request.signal, target, fingerprint);
-        ctx.set("hoWPeerConnectionConnectTime", (Date.now() - getPcStartAt) / 1e3);
+        ctx.set("hoWPeerConnectionConnectAt", Date.now());
         const processor = new HoWRequest(pc, ctx, id, request, this.dcOpenTimeout);
         const resp = yield processor.start();
         return resp;
@@ -510,11 +777,6 @@ a=ice-pwd:uNjBwWiGCWkRpkmkjPtjAgqrUTpVqWaM
 ${candidateLine}
 a=end-of-candidates
 `;
-  }
-  function parseIPPort(ipPort, defaultPort = 80) {
-    const [ip, portStr] = ipPort.split(":");
-    const port = portStr ? parseInt(portStr, 10) : defaultPort;
-    return [ip, port];
   }
   function stringifyRequestHead(request) {
     const urlObj = new URL(request.url);
@@ -636,7 +898,6 @@ a=end-of-candidates
     receiveResponse() {
       return __async(this, null, function* () {
         var _a;
-        const startAt = Date.now();
         debug$7(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
         const request = this.request;
         const dcReader = this.stream.getReader();
@@ -651,8 +912,7 @@ a=end-of-candidates
         const headers = new Headers(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => encodeHeaderValue(hs[0])));
         const respInit = { status, statusText: respHead.reason, headers };
         const [hasBody, bodyLength] = getRespBodyLength(request.method, status, request.headers, headers);
-        const startTransferTime = (Date.now() - startAt) / 1e3;
-        this.ctx.set("hoWStartTransferTime", startTransferTime);
+        this.ctx.set("hoWStartTransferAt", Date.now());
         if (!hasBody) {
           const resp2 = new HttpResponse(null, respInit);
           debug$7("DataChannel receiveResponse done with no body");
@@ -697,10 +957,8 @@ a=end-of-candidates
     }
     start() {
       return __async(this, null, function* () {
-        const startAt = Date.now();
         yield this.open();
-        const dataChannelOpenTime = (Date.now() - startAt) / 1e3;
-        this.ctx.set("hoWDataChannelOpenTime", dataChannelOpenTime);
+        this.ctx.set("hoWDataChannelOpenAt", Date.now());
         const [, resp] = yield Promise.all([
           this.sendRequest(),
           this.receiveResponse()
@@ -967,7 +1225,7 @@ a=end-of-candidates
     if (hasRequiredCore)
       return core.exports;
     hasRequiredCore = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory();
@@ -1259,7 +1517,7 @@ a=end-of-candidates
     if (hasRequiredX64Core)
       return x64Core.exports;
     hasRequiredX64Core = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1319,7 +1577,7 @@ a=end-of-candidates
     if (hasRequiredLibTypedarrays)
       return libTypedarrays.exports;
     hasRequiredLibTypedarrays = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1364,7 +1622,7 @@ a=end-of-candidates
     if (hasRequiredEncUtf16)
       return encUtf16.exports;
     hasRequiredEncUtf16 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1430,7 +1688,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64)
       return encBase64.exports;
     hasRequiredEncBase64 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1512,7 +1770,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64url)
       return encBase64url.exports;
     hasRequiredEncBase64url = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1595,7 +1853,7 @@ a=end-of-candidates
     if (hasRequiredMd5)
       return md5.exports;
     hasRequiredMd5 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1774,7 +2032,7 @@ a=end-of-candidates
     if (hasRequiredSha1)
       return sha1.exports;
     hasRequiredSha1 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1865,7 +2123,7 @@ a=end-of-candidates
     if (hasRequiredSha256)
       return sha256.exports;
     hasRequiredSha256 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1986,7 +2244,7 @@ a=end-of-candidates
     if (hasRequiredSha224)
       return sha224.exports;
     hasRequiredSha224 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha256());
@@ -2031,7 +2289,7 @@ a=end-of-candidates
     if (hasRequiredSha512)
       return sha512.exports;
     hasRequiredSha512 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -2313,7 +2571,7 @@ a=end-of-candidates
     if (hasRequiredSha384)
       return sha384.exports;
     hasRequiredSha384 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core(), requireSha512());
@@ -2359,7 +2617,7 @@ a=end-of-candidates
     if (hasRequiredSha3)
       return sha3.exports;
     hasRequiredSha3 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -2553,7 +2811,7 @@ a=end-of-candidates
     if (hasRequiredRipemd160)
       return ripemd160.exports;
     hasRequiredRipemd160 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3034,7 +3292,7 @@ a=end-of-candidates
     if (hasRequiredHmac)
       return hmac.exports;
     hasRequiredHmac = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3098,7 +3356,7 @@ a=end-of-candidates
     if (hasRequiredPbkdf2)
       return pbkdf2.exports;
     hasRequiredPbkdf2 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -3166,7 +3424,7 @@ a=end-of-candidates
     if (hasRequiredEvpkdf)
       return evpkdf.exports;
     hasRequiredEvpkdf = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -3227,7 +3485,7 @@ a=end-of-candidates
     if (hasRequiredCipherCore)
       return cipherCore.exports;
     hasRequiredCipherCore = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEvpkdf());
@@ -3523,7 +3781,7 @@ a=end-of-candidates
     if (hasRequiredModeCfb)
       return modeCfb.exports;
     hasRequiredModeCfb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3575,7 +3833,7 @@ a=end-of-candidates
     if (hasRequiredModeCtr)
       return modeCtr.exports;
     hasRequiredModeCtr = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3615,7 +3873,7 @@ a=end-of-candidates
     if (hasRequiredModeCtrGladman)
       return modeCtrGladman.exports;
     hasRequiredModeCtrGladman = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3695,7 +3953,7 @@ a=end-of-candidates
     if (hasRequiredModeOfb)
       return modeOfb.exports;
     hasRequiredModeOfb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3733,7 +3991,7 @@ a=end-of-candidates
     if (hasRequiredModeEcb)
       return modeEcb.exports;
     hasRequiredModeEcb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3764,7 +4022,7 @@ a=end-of-candidates
     if (hasRequiredPadAnsix923)
       return padAnsix923.exports;
     hasRequiredPadAnsix923 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3796,7 +4054,7 @@ a=end-of-candidates
     if (hasRequiredPadIso10126)
       return padIso10126.exports;
     hasRequiredPadIso10126 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3824,7 +4082,7 @@ a=end-of-candidates
     if (hasRequiredPadIso97971)
       return padIso97971.exports;
     hasRequiredPadIso97971 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3851,7 +4109,7 @@ a=end-of-candidates
     if (hasRequiredPadZeropadding)
       return padZeropadding.exports;
     hasRequiredPadZeropadding = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3885,7 +4143,7 @@ a=end-of-candidates
     if (hasRequiredPadNopadding)
       return padNopadding.exports;
     hasRequiredPadNopadding = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3908,7 +4166,7 @@ a=end-of-candidates
     if (hasRequiredFormatHex)
       return formatHex.exports;
     hasRequiredFormatHex = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3942,7 +4200,7 @@ a=end-of-candidates
     if (hasRequiredAes)
       return aes.exports;
     hasRequiredAes = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4096,7 +4354,7 @@ a=end-of-candidates
     if (hasRequiredTripledes)
       return tripledes.exports;
     hasRequiredTripledes = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4877,7 +5135,7 @@ a=end-of-candidates
     if (hasRequiredRc4)
       return rc4.exports;
     hasRequiredRc4 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4955,7 +5213,7 @@ a=end-of-candidates
     if (hasRequiredRabbit)
       return rabbit.exports;
     hasRequiredRabbit = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5084,7 +5342,7 @@ a=end-of-candidates
     if (hasRequiredRabbitLegacy)
       return rabbitLegacy.exports;
     hasRequiredRabbitLegacy = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5204,7 +5462,7 @@ a=end-of-candidates
     })(rabbitLegacy);
     return rabbitLegacy.exports;
   }
-  (function(module, exports2) {
+  (function(module, exports) {
     (function(root, factory, undef) {
       {
         module.exports = factory(requireCore(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy());
@@ -5242,7 +5500,6 @@ a=end-of-candidates
     return __async(this, null, function* () {
       var _a;
       const params = { name: domain, type: "A" };
-      const startAt = Date.now();
       const query = queryStringify(params);
       const accessToken = getAccessToken({
         appID: app.appID,
@@ -5257,7 +5514,7 @@ a=end-of-candidates
       });
       ctx.set("dnsResolveStatus", resp.status);
       ctx.set("dnsResolveReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
-      ctx.set("dnsResolveConnectionTime", (Date.now() - startAt) / 1e3);
+      ctx.set("dnsResolveConnectionAt", Date.now());
       if (!resp.ok)
         throw new Error(`Call resolve API failed, status: ${resp.status} ${resp.statusText}`);
       const body2 = yield resp.json();
@@ -5272,18 +5529,18 @@ a=end-of-candidates
       return this.logger.log(schemaName, logData);
     }
   }
-  function getErrorMsg(err) {
-    return err instanceof Error ? err.name : "Unknown";
-  }
-  function getErrorDesc(err) {
-    return err instanceof Error ? err.name : "Unknown";
-  }
   const defaultDuration = 1e3;
   const debug$6 = getDebug("dns");
   class NonECDNError extends Error {
     constructor() {
       super(...arguments);
       __publicField(this, "name", "NonECDNError");
+    }
+  }
+  class NoAvailableECDNNodeError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "NoAvailableNodeError");
     }
   }
   class Resolver {
@@ -5304,7 +5561,7 @@ a=end-of-candidates
     }
     getResolveResult(ctx, domain) {
       return __async(this, null, function* () {
-        var _a, _b, _c;
+        var _a, _b;
         const startAt = Date.now();
         let err;
         try {
@@ -5331,18 +5588,17 @@ a=end-of-candidates
           err = e;
           throw e;
         } finally {
-          const totalTime = (Date.now() - startAt) / 1e3;
-          this.logger.log("DnsResolveLog", {
+          const totalTime = timeMinus(Date.now(), startAt);
+          this.logger.log("DnsResolveLog", __spreadProps(__spreadValues({
             r_id: (_a = ctx.get("dnsResolveReqID")) != null ? _a : "",
             ip: "",
             domain,
-            status_code: (_b = ctx.get("dnsResolveStatus")) != null ? _b : -1,
-            err_msg: err != null ? getErrorMsg(err) : "",
-            err_desc: err != null ? getErrorDesc(err) : "",
-            t_conn: (_c = ctx.get("dnsResolveConnectionTime")) != null ? _c : -1,
+            status_code: (_b = ctx.get("dnsResolveStatus")) != null ? _b : -1
+          }, getErrInfo(err)), {
+            t_conn: timeMinus(ctx.get("dnsResolveConnectionAt"), startAt),
             t_total: totalTime,
             type: 1
-          });
+          }));
           ctx.set("dnsResolveTotalTime", totalTime);
         }
       });
@@ -5355,9 +5611,8 @@ a=end-of-candidates
           try {
             result = yield fromCache;
           } catch (e) {
-            if (e instanceof NonECDNError) {
-              throw new NonECDNError(`Non-ECDN domain: ${domain}`);
-            }
+            if (e instanceof NonECDNError)
+              throw e;
           }
           if (result != null && result.expireAt > Date.now()) {
             ctx.set("dnsResolveFromCache", true);
@@ -5371,18 +5626,22 @@ a=end-of-candidates
         return promise;
       });
     }
-    resolve(ctx, domain) {
+    resolve(ctx, domain, hostRequired = false) {
       return __async(this, null, function* () {
         const now = Date.now();
         const resolved = yield this.getResolveResultWithCache(ctx, domain);
         if (resolved.groups.length === 0)
           throw new Error("Empty group list");
-        const availableGroups = resolved.groups.filter((g) => g.after < now);
+        const availableGroups = resolved.groups.filter((g) => {
+          if (hostRequired && !supportHost(g))
+            return false;
+          return g.after < now;
+        });
         const group = random(availableGroups, (g) => g.weight);
         return group;
       });
     }
-    do(ctx, url, attempts, job) {
+    do(ctx, url, attempts, hostRequired, job) {
       return __async(this, null, function* () {
         const urlObj = new URL(url);
         if (urlObj.port !== "")
@@ -5390,13 +5649,13 @@ a=end-of-candidates
         let err;
         for (let i = 0; i < attempts; i++) {
           debug$6("Resolve for", url);
-          const group = yield this.resolve(ctx, urlObj.host);
+          const group = yield this.resolve(ctx, urlObj.host, hostRequired);
           if (group == null)
-            throw new Error(`No available group for ${url}`);
+            throw new NoAvailableECDNNodeError(`No available group for ${url}`);
           debug$6("Resolved for", url);
           try {
             debug$6("doWithGroup", i, url);
-            yield doWithGroup(group, url, job);
+            yield doWithGroup(group, url, hostRequired, job);
             group.duration = this.initialDuration;
             return;
           } catch (e) {
@@ -5412,7 +5671,7 @@ a=end-of-candidates
       });
     }
   }
-  function doWithGroup(group, url, job) {
+  function doWithGroup(group, url, hostRequired, job) {
     return __async(this, null, function* () {
       const elts = group.elts;
       if (elts.length === 0)
@@ -5429,7 +5688,7 @@ a=end-of-candidates
           throw new Error("No available elt");
         try {
           debug$6("doWithElt", elt.id, url);
-          yield doWithElt(elt, url, job);
+          yield doWithElt(elt, url, hostRequired, job);
           return;
         } catch (e) {
           console.warn("doWithElt", elt.id, "failed:", e, url);
@@ -5442,24 +5701,24 @@ a=end-of-candidates
       throw err;
     });
   }
-  function doWithElt(elt, url, job) {
+  function doWithElt(elt, url, hostRequired, job) {
     return __async(this, null, function* () {
-      let ips = elt.ips;
-      if (ips.length === 0)
-        throw new Error("Empty IP list");
+      let ipOrHosts = hostRequired ? elt.hosts : elt.ips;
+      if (ipOrHosts.length === 0)
+        throw new Error(`Empty ${hostRequired ? "host" : "IP"} list`);
       let err;
       for (let i = 0; i < 2; i++) {
-        const ip = random(ips);
-        if (ip == null)
+        const curr = random(ipOrHosts);
+        if (curr == null)
           break;
         try {
-          debug$6("doWithIP", ip, url);
-          yield job(ip);
+          debug$6(`do with ${hostRequired ? "host" : "IP"}`, curr, url);
+          yield job(curr);
           return;
         } catch (e) {
-          console.warn("do job with ip", ip, "failed:", e, url);
+          console.warn("do job with", curr, "failed:", e, url);
           if (shouldDisableTarget(e)) {
-            ips = ips.filter((i2) => i2 !== ip);
+            ipOrHosts = ipOrHosts.filter((i2) => i2 !== curr);
           }
           err = e;
         }
@@ -5495,775 +5754,8 @@ a=end-of-candidates
       return false;
     return true;
   }
-  class DB {
-    constructor(dbName, storeNames) {
-      __publicField(this, "db");
-      this.dbName = dbName;
-      this.storeNames = storeNames;
-    }
-    getDB() {
-      return __async(this, null, function* () {
-        if (this.db != null)
-          return this.db;
-        return new Promise((resolve) => {
-          const request = indexedDB.open(this.dbName);
-          request.addEventListener("upgradeneeded", () => {
-            this.storeNames.forEach((storeName) => {
-              request.result.createObjectStore(storeName);
-            });
-          });
-          resolve(promisifyRequest(request));
-        });
-      });
-    }
-    get(storeName, key) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const request = db.transaction(storeName, "readonly").objectStore(storeName).get(key);
-        return promisifyRequest(request);
-      });
-    }
-    getAll(storeName) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const request = db.transaction(storeName, "readonly").objectStore(storeName).getAll();
-        return promisifyRequest(request);
-      });
-    }
-    count(storeName) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const request = db.transaction(storeName, "readonly").objectStore(storeName).count();
-        return promisifyRequest(request);
-      });
-    }
-    set(storeName, key, value) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const transaction = db.transaction(storeName, "readwrite");
-        transaction.objectStore(storeName).put(value, key);
-        return promisifyTransaction(transaction);
-      });
-    }
-    remove(storeName, key) {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        const transaction = db.transaction(storeName, "readwrite");
-        transaction.objectStore(storeName).delete(key);
-        return promisifyTransaction(transaction);
-      });
-    }
-    clear() {
-      return __async(this, null, function* () {
-        const db = yield this.getDB();
-        yield Promise.all(this.storeNames.map((storeName) => {
-          const transaction = db.transaction(storeName, "readwrite");
-          transaction.objectStore(storeName).clear();
-          return promisifyTransaction(transaction);
-        }));
-      });
-    }
-    dispose() {
-      var _a;
-      (_a = this.db) == null ? void 0 : _a.close();
-    }
-  }
-  function promisifyRequest(request) {
-    return new Promise((resolve, reject) => {
-      request.addEventListener("success", () => resolve(request.result));
-      request.addEventListener("error", () => reject(request.error));
-    });
-  }
-  function promisifyTransaction(transaction) {
-    return new Promise((resolve, reject) => {
-      transaction.addEventListener("complete", () => resolve());
-      transaction.addEventListener("error", () => reject(transaction.error));
-      transaction.addEventListener("abort", () => reject(transaction.error));
-    });
-  }
-  const debug$5 = getDebug("dc");
-  const namespace = "miku/dc";
-  const itemStoreName = "item";
-  class Cache {
-    constructor(config = {}) {
-      __publicField(this, "db", new DB(namespace, [itemStoreName]));
-      this.config = config;
-    }
-    getBrowserCache() {
-      return caches.open(namespace);
-    }
-    getItem(key) {
-      return __async(this, null, function* () {
-        return this.db.get(itemStoreName, key);
-      });
-    }
-    setItem(key, item) {
-      return __async(this, null, function* () {
-        debug$5("setItem", key, item);
-        yield this.db.set(itemStoreName, key, item);
-      });
-    }
-    getContent(key, piece) {
-      return __async(this, null, function* () {
-        const browserCache = yield this.getBrowserCache();
-        const cachedResponse = yield browserCache.match(getBrowserCacheKey(key, piece));
-        if (cachedResponse == null)
-          return void 0;
-        if (cachedResponse.body == null)
-          throw new Error("Body expected for cached response");
-        return cachedResponse.body;
-      });
-    }
-    setContent(key, piece, content) {
-      return __async(this, null, function* () {
-        const browserCache = yield this.getBrowserCache();
-        yield browserCache.put(getBrowserCacheKey(key, piece), new Response(content));
-      });
-    }
-    dispose() {
-      this.db.dispose();
-    }
-  }
-  function getBrowserCacheKey(key, piece) {
-    var _a;
-    return `${key}_with_range_${piece[0]}_${(_a = piece[1]) != null ? _a : ""}`;
-  }
-  class Context {
-    constructor(init) {
-      __publicField(this, "value");
-      this.value = init != null ? __spreadValues({}, init.value) : {};
-    }
-    set(key, value) {
-      this.value[key] = value;
-    }
-    get(key) {
-      return this.value[key];
-    }
-  }
-  class DownloadLogger {
-    constructor(logger) {
-      this.logger = logger;
-    }
-    log(schemaName, logData) {
-      return this.logger.log(schemaName, logData);
-    }
-  }
-  const defaultAttempts = 3;
-  const debug$4 = getDebug("http");
-  class Http {
-    constructor(logger, resolver, client) {
-      __publicField(this, "logger");
-      this.resolver = resolver;
-      this.client = client;
-      this.logger = new DownloadLogger(logger);
-    }
-    doWithIp(ctx, request, ip, currentRetryCount) {
-      return __async(this, null, function* () {
-        var _a;
-        const domain = new URL(request.url).host;
-        const startAt = Date.now();
-        let err;
-        let resp;
-        try {
-          debug$4("do request", request.url, "with ip", ip);
-          const req = withNode(request, ip);
-          resp = yield this.client.fetch(ctx, req);
-          debug$4("do request", request.url, "with ip succeeded with status", resp.status);
-          ctx.set("downloadStatus", resp.status);
-          ctx.set("downloadReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
-          if (resp.status >= 500)
-            throw new Error(`TODO: HTTP Status error: ${resp.status}`);
-          return resp;
-        } catch (e) {
-          debug$4("do request", request.url, "with ip", ip, "failed:", e);
-          err = e;
-          throw e;
-        } finally {
-          const range = ctx.get("downloadRange");
-          const retry = currentRetryCount;
-          const doDownloadLog = (extra) => {
-            var _a2, _b, _c, _d, _e, _f, _g, _h, _i;
-            return this.logger.log("DownloadLog", __spreadValues({
-              ip: ip.split(":")[0],
-              domain,
-              range_st: (_a2 = range == null ? void 0 : range.start) != null ? _a2 : -1,
-              range_end: (_b = range == null ? void 0 : range.end) != null ? _b : -1,
-              retry,
-              ftask_id: (_c = ctx.get("downloadFileTaskID")) != null ? _c : "",
-              lookup_type: true,
-              t_lookup: (_d = ctx.get("dnsResolveFromCache") === true ? 0 : ctx.get("dnsResolveTotalTime")) != null ? _d : -1,
-              r_id: (_e = ctx.get("downloadReqID")) != null ? _e : "",
-              status_code: (_f = ctx.get("downloadStatus")) != null ? _f : -1,
-              t_conn: (_g = ctx.get("downloadConnectionTime")) != null ? _g : -1,
-              t_tls: (_h = ctx.get("downloadTlsConnectionTime")) != null ? _h : -1,
-              t_st_trans: (_i = ctx.get("downloadStartTransferTime")) != null ? _i : -1,
-              err_msg: "",
-              err_desc: "",
-              t_content_trans: -1,
-              t_total: -1,
-              resp_size: -1
-            }, extra));
-          };
-          const onDownloadError = (e) => doDownloadLog({
-            t_total: (Date.now() - startAt) / 1e3,
-            err_msg: err instanceof Error ? err.name : "Unknown",
-            err_desc: err instanceof Error ? err.message : err + ""
-          });
-          const transferStartAt = Date.now();
-          const onDownloadTransfered = (size) => doDownloadLog({
-            t_content_trans: (Date.now() - transferStartAt) / 1e3,
-            t_total: (Date.now() - startAt) / 1e3,
-            resp_size: size
-          });
-          if (err != null) {
-            onDownloadError();
-          } else if (resp != null) {
-            resp.bodyReadResult.then((bodyReadResult) => {
-              if (bodyReadResult.success) {
-                onDownloadTransfered(bodyReadResult.size);
-              } else {
-                onDownloadError(bodyReadResult.error);
-              }
-            });
-          }
-        }
-      });
-    }
-    originalDo(ctx, request) {
-      return __async(this, null, function* () {
-        let currentRetryCount = -1;
-        let finalResp = null;
-        yield this.resolver.do(ctx, request.url, defaultAttempts, (ip) => __async(this, null, function* () {
-          currentRetryCount++;
-          finalResp = yield this.doWithIp(ctx, request, ip, currentRetryCount);
-        }));
-        if (finalResp == null)
-          throw new Error(`Http do failed: resolver do finished with no finalResp, url: ${request.url}`);
-        return finalResp;
-      });
-    }
-    do(ctx, request) {
-      return withInitialOptimization(
-        (...args) => this.originalDo(...args),
-        nativeDo,
-        1024 * 1024 * 10
-      )(ctx, request);
-    }
-  }
-  function withNode(originalReq, nodeIP) {
-    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
-    const urlObject = new URL(originalUrl);
-    const originalHost = urlObject.host;
-    urlObject.host = nodeIP;
-    const headers = new Headers(originalHeaders);
-    headers.set("Host", originalHost);
-    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
-  }
-  function withInitialOptimization(originalDo, initialDo, threshold) {
-    return function optimizedDo(ctx, request) {
-      return __async(this, null, function* () {
-        var _b, _c;
-        const _a = request, { url } = _a, reqExtra = __objRest(_a, ["url"]);
-        const urlWithoutQueryHash = removeQueryHash(url);
-        if (request.method !== "GET" || !videoPattern.test(urlWithoutQueryHash))
-          return originalDo(ctx, request);
-        debug$4("doWithInitialOptimization", url);
-        const initialCtx = new Context(ctx);
-        const initalReq = new HttpRequest(url, reqExtra);
-        const initialResp = yield initialDo(initialCtx, initalReq);
-        const contentSize = httpGetContentLength(initialResp.headers);
-        if (contentSize != null && contentSize <= threshold)
-          return initialResp;
-        const followingHeaders = new Headers(reqExtra.headers);
-        const followingRange = (_b = httpGetRange(followingHeaders)) != null ? _b : { start: null, end: null };
-        followingRange.start = ((_c = followingRange.start) != null ? _c : 0) + threshold;
-        if (followingRange.end != null && followingRange.end < followingRange.start)
-          return initialResp;
-        debug$4("doWithInitialOptimization followingRange", followingRange);
-        followingHeaders.set("Range", stringifyRange(followingRange));
-        const followingReq = new HttpRequest(url, __spreadProps(__spreadValues({}, reqExtra), {
-          headers: followingHeaders
-        }));
-        const followingRespPromise = originalDo(ctx, followingReq);
-        const _d = initialResp, { body: initialBody } = _d, initialRespExtra = __objRest(_d, ["body"]);
-        const stream = new TransformStream();
-        if (initialBody == null)
-          throw new Error(`Body expected for initial response of ${url}`);
-        slice(initialBody, [0, threshold]).pipeTo(stream.writable, { preventClose: true }).then(
-          () => __async(this, null, function* () {
-            debug$4("doWithInitialOptimization initialBody transfered");
-            const followingResp = yield followingRespPromise;
-            if (followingResp.body == null)
-              throw new Error(`Body expected for following response of ${url}`);
-            const followingBody = followingResp.status === 206 ? followingResp.body : slice(followingResp.body, [followingRange.start, followingRange.end == null ? null : followingRange.end + 1]);
-            followingBody.pipeTo(stream.writable).then(
-              () => debug$4("doWithInitialOptimization followingBody transfered"),
-              (e) => debug$4("doWithInitialOptimization followingBody transfer errored", e)
-            );
-          }),
-          (e) => __async(this, null, function* () {
-            var _a2;
-            debug$4("doWithInitialOptimization initialBody transfer errored", e);
-            const followingResp = yield followingRespPromise;
-            (_a2 = followingResp.body) == null ? void 0 : _a2.cancel(e);
-          })
-        );
-        return new HttpResponse(stream.readable, initialRespExtra);
-      });
-    };
-  }
-  function nativeDo(ctx, request) {
-    return __async(this, null, function* () {
-      const _a = request, { url } = _a, others = __objRest(_a, ["url"]);
-      const nativeRequest = new Request(url, __spreadValues({
-        mode: "cors",
-        credentials: "omit"
-      }, others));
-      const { status, statusText, headers, body: body2 } = yield fetch(nativeRequest);
-      return new HttpResponse(body2, { status, statusText, headers });
-    });
-  }
-  class Task {
-    constructor(client, url, range, expiry) {
-      __publicField(this, "priority", 0);
-      __publicField(this, "abortCtrl", new AbortController());
-      __publicField(this, "started", false);
-      this.client = client;
-      this.url = url;
-      this.range = range;
-      this.expiry = expiry;
-    }
-    get signal() {
-      return this.abortCtrl.signal;
-    }
-    setPriority(priority) {
-      this.priority = priority;
-    }
-    start() {
-      return __async(this, null, function* () {
-        if (this.started) {
-          throw new Error("Task already started");
-        }
-        this.started = true;
-        return this.client.startTask(this);
-      });
-    }
-    cancel(reason) {
-      this.abortCtrl.abort(reason);
-    }
-  }
-  class Result {
-    constructor(stream, size, fileMeta) {
-      __publicField(this, "fileSize");
-      __publicField(this, "contentType");
-      var _a;
-      this.stream = stream;
-      this.size = size;
-      this.fileSize = fileMeta.fsize;
-      this.contentType = (_a = fileMeta.contentType) != null ? _a : "";
-    }
-    blob() {
-      return __async(this, null, function* () {
-        const stream = this.stream;
-        const reader = stream.getReader();
-        const parts = [];
-        while (true) {
-          const { done, value } = yield reader.read();
-          if (done)
-            break;
-          const arrayBuffer = value;
-          parts.push(arrayBuffer);
-        }
-        return new Blob(parts);
-      });
-    }
-  }
-  function makeRange(totalSize, start, end) {
-    if (totalSize != null && end != null) {
-      if (end >= totalSize)
-        end = null;
-    }
-    if (start == null || start < 0)
-      start = 0;
-    return [start, end];
-  }
-  function isFull(totalSize, range) {
-    var _a;
-    const startFull = ((_a = range[0]) != null ? _a : 0) === 0;
-    const endFull = range[1] == null || totalSize != null && range[1] === totalSize;
-    return startFull && endFull;
-  }
-  function getRangeSize(totalSize, range) {
-    var _a, _b;
-    const start = (_a = range[0]) != null ? _a : 0;
-    const end = (_b = range[1]) != null ? _b : totalSize;
-    return end == null ? null : end - start;
-  }
-  function applyRange(range, fsize, pieces) {
-    var _a, _b;
-    if (fsize === 0)
-      return [];
-    const endGt = (num1, num2) => {
-      return gt(num1, num2, fsize != null ? fsize : Number.POSITIVE_INFINITY);
-    };
-    const start = (_a = range == null ? void 0 : range[0]) != null ? _a : 0;
-    const end = (_b = range == null ? void 0 : range[1]) != null ? _b : fsize;
-    const result = [];
-    let applyFrom = start;
-    for (const p of pieces) {
-      if (applyFrom == null)
-        break;
-      if (fsize != null && p[1] != null && p[1] > fsize)
-        break;
-      if (p[1] != null && applyFrom >= p[1])
-        continue;
-      if (end == null || end > p[0]) {
-        if (p[0] > applyFrom) {
-          result.push({
-            cached: false,
-            range: makeRange(fsize, applyFrom, p[0])
-          });
-        }
-        const cacheStart = endGt(p[0], applyFrom) ? p[0] : applyFrom;
-        const cacheEnd = endGt(p[1], end) ? end : p[1];
-        if (endGt(cacheEnd, cacheStart)) {
-          result.push({
-            cached: true,
-            range: makeRange(fsize, cacheStart, cacheEnd)
-          });
-          applyFrom = cacheEnd;
-        }
-        continue;
-      }
-      break;
-    }
-    if (endGt(end, applyFrom)) {
-      result.push({
-        cached: false,
-        range: makeRange(fsize, applyFrom, end)
-      });
-    }
-    return result;
-  }
-  function findPiece(pieces, range) {
-    var _a;
-    const rangeStart = (_a = range[0]) != null ? _a : 0;
-    const rangeEnd = range[1];
-    for (const piece of pieces) {
-      if (piece[1] != null && piece[1] <= rangeStart)
-        continue;
-      if (piece[0] > rangeStart)
-        break;
-      const start = rangeStart - piece[0];
-      const end = minus(rangeEnd != null ? rangeEnd : piece[1], piece[0]);
-      return { piece, start, end };
-    }
-    throw new Error("Piece not found");
-  }
-  function addPiece(pieces, piece) {
-    return [...pieces, piece].sort(
-      (piece1, piece2) => piece1[0] - piece2[0]
-    );
-  }
-  function gt(num1, num2, nullAs) {
-    const val1 = num1 != null ? num1 : nullAs;
-    const val2 = num2 != null ? num2 : nullAs;
-    return val1 > val2;
-  }
-  function minus(num1, num2) {
-    return num1 == null || num2 == null ? null : num1 - num2;
-  }
-  const debug$3 = getDebug("ftask");
-  class FileTask {
-    constructor(taskq, cache, http, key, url) {
-      __publicField(this, "id", uuid());
-      __publicField(this, "inited");
-      __publicField(this, "cachePieces", []);
-      __publicField(this, "meta", createDefered());
-      this.taskq = taskq;
-      this.cache = cache;
-      this.http = http;
-      this.key = key;
-      this.url = url;
-      this.inited = this.resume();
-    }
-    startTask(task) {
-      return __async(this, null, function* () {
-        if (task.range != null) {
-          debug$3("startTask", task.url);
-          yield this.inited;
-          debug$3("startTask inited", task.url);
-          return this.startTaskWithRange(task);
-        } else {
-          return this.startTaskWithoutRange(task);
-        }
-      });
-    }
-    startTaskWithRange(task) {
-      return __async(this, null, function* () {
-        debug$3("startTaskWithRange", task.url);
-        const range = task.range != null ? [task.range.start, task.range.end] : [0, null];
-        const [stream, meta] = yield Promise.all([
-          this.readRange(task, range),
-          this.meta.promise
-        ]);
-        const size = getRangeSize(meta.fsize, range);
-        return new Result(stream, size, meta);
-      });
-    }
-    startTaskWithoutRange(task) {
-      return __async(this, null, function* () {
-        debug$3("startTaskWithoutRange", task.url);
-        const streamPromise = new Promise((resolve, reject) => {
-          this.taskq.add({
-            name: `startTaskWithoutRange: ${this.url}`,
-            priority: task.priority,
-            run: () => __async(this, null, function* () {
-              const cachedContent = yield this.cache.getContent(this.key, [0, null]);
-              if (cachedContent != null) {
-                debug$3("use cache", task.url);
-                resolve(cachedContent);
-                return;
-              }
-              try {
-                const { response, body: body2 } = yield this.doRequestAndSaveCache(null, task.signal);
-                resolve(body2);
-                yield response.bodyReadResult;
-              } catch (e) {
-                reject(e);
-              }
-            })
-          });
-        });
-        const [stream, meta] = yield Promise.all([
-          streamPromise,
-          this.meta.promise
-        ]);
-        return new Result(stream, meta.fsize, meta);
-      });
-    }
-    readRange(task, range) {
-      return __async(this, null, function* () {
-        var _a, _b, _c, _d;
-        const pieces = applyRange(range, (_b = (_a = this.meta.value) == null ? void 0 : _a.fsize) != null ? _b : null, this.cachePieces);
-        debug$3("applyRange", range, (_d = (_c = this.meta.value) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
-        const stream = new TransformStream();
-        (() => __async(this, null, function* () {
-          for (let i = 0; i < pieces.length; i++) {
-            const { cached, range: range2 } = pieces[i];
-            const pieceStream = yield cached ? this.readPieceFromLocal(task, range2) : this.readPieceFromRemote(task, range2);
-            const isLast = i === pieces.length - 1;
-            yield pieceStream.pipeTo(stream.writable, {
-              preventClose: !isLast
-            });
-          }
-        }))().catch((e) => {
-          console.warn("readRange stream error for", this.url, e);
-          stream.writable.abort(e);
-        });
-        return stream.readable;
-      });
-    }
-    readPieceFromLocal(task, range) {
-      return __async(this, null, function* () {
-        debug$3("readPieceFromLocal", task.url, range);
-        const { piece, start, end } = findPiece(this.cachePieces, range);
-        const pieceContent = yield this.cache.getContent(this.key, piece);
-        if (pieceContent == null) {
-          console.warn(`Missing cache item: ${this.key} [${piece})`);
-          return this.readPieceFromRemote(task, range);
-        }
-        return slice(pieceContent, [start, end]);
-      });
-    }
-    fileSize() {
-      var _a, _b;
-      return (_b = (_a = this.meta.value) == null ? void 0 : _a.fsize) != null ? _b : null;
-    }
-    readPieceFromRemote(task, range) {
-      return __async(this, null, function* () {
-        debug$3("readPieceFromRemote", task.url, range);
-        return new Promise((resolve, reject) => {
-          this.taskq.add({
-            name: `readPieceFromRemote: ${this.url}, [${range[0], range[1]})]`,
-            priority: task.priority,
-            run: () => __async(this, null, function* () {
-              try {
-                const { response, body: body2 } = yield this.doRequestAndSaveCache(range, task.signal);
-                if (!isFull(this.fileSize(), range) && response.status === 200) {
-                  console.warn("Range request not supported for", this.url);
-                  resolve(slice(body2, range));
-                } else {
-                  resolve(body2);
-                }
-                yield response.bodyReadResult;
-              } catch (e) {
-                reject(e);
-              }
-            })
-          });
-        });
-      });
-    }
-    doRequest(range, signal) {
-      return __async(this, null, function* () {
-        try {
-          const ctx = new Context();
-          ctx.set("downloadFileTaskID", this.id);
-          const headers = {
-            "Accept-Encoding": "identity;q=1, *;q=0"
-          };
-          if (range != null && !isFull(this.fileSize(), range)) {
-            const httpRange = { start: range[0], end: range[1] == null ? null : range[1] - 1 };
-            ctx.set("downloadRange", httpRange);
-            headers["Range"] = stringifyRange(httpRange);
-          }
-          const request = new HttpRequest(this.url, { method: "GET", headers, signal });
-          const response = yield this.http.do(ctx, request);
-          if (response.body == null) {
-            throw new Error("Body expected");
-          }
-          if (response.status !== 200 && response.status !== 206) {
-            throw new Error(`Invalid response, status: ${response.status}`);
-          }
-          this.saveMeta(response);
-          response.bodyReadResult.then((bodyReadResult) => {
-            debug$3(`bodyReadResult for ${this.url}:`, bodyReadResult);
-          });
-          return { response, body: response.body };
-        } catch (e) {
-          this.meta.reject(e);
-          this.meta = createDefered();
-          throw e;
-        }
-      });
-    }
-    doRequestAndSaveCache(range, signal) {
-      return __async(this, null, function* () {
-        var _a, _b;
-        const { response, body: body2 } = yield this.doRequest(range, signal);
-        const { main: bodyForUse, minor: bodyForCache } = teeWithMain(body2);
-        const piece = [(_a = range == null ? void 0 : range[0]) != null ? _a : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
-        this.saveCachePiece(piece, bodyForCache);
-        return { response, body: bodyForUse };
-      });
-    }
-    saveCachePiece(piece, content) {
-      return __async(this, null, function* () {
-        yield this.meta.promise;
-        debug$3("saveCachePiece", this.url, piece);
-        yield this.cache.setContent(this.key, piece, content);
-        this.cachePieces = addPiece(this.cachePieces, piece);
-        yield this.save();
-      });
-    }
-    saveMeta(response) {
-      return __async(this, null, function* () {
-        var _a;
-        if (this.meta.status != "pending") {
-          this.meta = createDefered();
-        }
-        let fileSize = null;
-        if (response.status === 200) {
-          const contentLengthStr = response.headers.get("Content-Length");
-          const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
-          fileSize = contentLength;
-        }
-        if (response.status === 206) {
-          const contentRange = httpGetContentRange(response.headers);
-          if (contentRange == null)
-            console.warn("206 without Content-Range for", this.url);
-          fileSize = (_a = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a : null;
-        }
-        this.meta.resolve({
-          contentType: response.headers.get("Content-Type"),
-          fsize: fileSize
-        });
-        yield this.meta.promise;
-        yield this.save();
-      });
-    }
-    resume() {
-      return __async(this, null, function* () {
-        const item = yield this.cache.getItem(this.key);
-        if (item == null || item.meta == null)
-          return;
-        this.meta.resolve(item.meta);
-        this.cachePieces = item.pieces;
-      });
-    }
-    save() {
-      return __async(this, null, function* () {
-        const item = {
-          meta: this.meta.value,
-          pieces: this.cachePieces
-        };
-        yield this.cache.setItem(this.key, item);
-      });
-    }
-  }
-  const debug$2 = getDebug("utils/taskq");
-  class TaskQueue {
-    constructor(jobs) {
-      __publicField(this, "tasks", []);
-      __publicField(this, "emitter", new Emitter());
-      __publicField(this, "running", true);
-      for (let i = 0; i < jobs; i++) {
-        this.comsumeLoop();
-      }
-    }
-    add(task) {
-      let i = 0;
-      for (; i < this.tasks.length; i++) {
-        if (this.tasks[i].priority >= task.priority) {
-          break;
-        }
-      }
-      this.tasks.splice(i, 0, task);
-      this.emitter.emit("task");
-    }
-    pop() {
-      return __async(this, null, function* () {
-        const task = this.tasks.pop();
-        if (task != null)
-          return task;
-        return new Promise((resolve) => {
-          const off = this.emitter.on("task", () => {
-            const task2 = this.tasks.pop();
-            if (task2 != null) {
-              resolve(task2);
-              off();
-            }
-          });
-        });
-      });
-    }
-    consumeTask() {
-      return __async(this, null, function* () {
-        if (!this.running)
-          return;
-        const task = yield this.pop();
-        debug$2("run task", task.name, ", with priority:", task.priority);
-        try {
-          yield task == null ? void 0 : task.run();
-        } catch (e) {
-          console.warn("Task run failed:", e);
-        } finally {
-          debug$2("end task", task.name);
-        }
-      });
-    }
-    comsumeLoop() {
-      return __async(this, null, function* () {
-        while (this.running) {
-          yield this.consumeTask();
-        }
-      });
-    }
-    dispose() {
-      this.emitter.dispose();
-      this.running = false;
-    }
+  function supportHost(group) {
+    return group.elts.every((e) => e.hosts != null && e.hosts.length > 0);
   }
   class Mutex {
     constructor() {
@@ -6305,7 +5797,7 @@ a=end-of-candidates
     }
   }
   var uaParser$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module, exports) {
     (function(window2, undefined$1) {
       var LIBVERSION = "1.0.2", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 255;
       var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook";
@@ -7195,9 +6687,9 @@ a=end-of-candidates
       UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
       {
         if (module.exports) {
-          exports2 = module.exports = UAParser;
+          exports = module.exports = UAParser;
         }
-        exports2.UAParser = UAParser;
+        exports.UAParser = UAParser;
       }
       var $ = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
       if ($ && !$.ua) {
@@ -7217,7 +6709,7 @@ a=end-of-candidates
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.2.5";
+  const version = "0.3.0";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -7236,7 +6728,7 @@ a=end-of-candidates
     };
   }
   const logNumPerCall = 200;
-  const debug$1 = getDebug("log");
+  const debug$5 = getDebug("log");
   class SchemaLogger {
     constructor(schemaName, fetch2, flushNum, flushWait, app) {
       __publicField(this, "env", queryStringify(getEnv()));
@@ -7291,12 +6783,12 @@ a=end-of-candidates
           if (buffer.length === 0)
             return false;
           if (buffer.length >= this.flushNum) {
-            debug$1("buffer.length >= this.flushNum");
+            debug$5("buffer.length >= this.flushNum");
             return true;
           }
           const waited = Date.now() - buffer[0].ts;
           if (waited >= this.flushWait * 1e3) {
-            debug$1("waited >= this.flushWait");
+            debug$5("waited >= this.flushWait");
             return true;
           }
           return this.flushWait * 1e3 - waited;
@@ -7350,134 +6842,1117 @@ a=end-of-candidates
     }
     return str;
   }
-  const debug = getDebug("http/webrtc/service");
-  class HoWService {
-    constructor(pcConnectTimeout, dcOpenTimeout) {
-      __publicField(this, "workerContainer", navigator.serviceWorker);
-      __publicField(this, "hoW");
-      __publicField(this, "abortCtrls", /* @__PURE__ */ new Map());
-      __publicField(this, "disposers", []);
-      this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
-      this.disposers.push(() => this.hoW.dispose());
+  class DB {
+    constructor(dbName, storeNames) {
+      __publicField(this, "db");
+      this.dbName = dbName;
+      this.storeNames = storeNames;
     }
-    get worker() {
-      if (this.workerContainer.controller == null)
-        throw new Error("No available service worker");
-      return this.workerContainer.controller;
-    }
-    sendBody(id, body2) {
+    getDB() {
       return __async(this, null, function* () {
-        const reader = body2.getReader();
-        while (true) {
-          const { value, done } = yield reader.read();
-          if (done) {
-            const message2 = { hoW: true, type: "resp-body-chunk", id, payload: null };
-            this.worker.postMessage(message2);
-            return;
-          }
-          const message = { hoW: true, type: "resp-body-chunk", id, payload: value.buffer };
-          this.worker.postMessage(message, [value.buffer]);
-        }
+        if (this.db != null)
+          return this.db;
+        return new Promise((resolve) => {
+          const request = indexedDB.open(this.dbName);
+          request.addEventListener("upgradeneeded", () => {
+            this.storeNames.forEach((storeName) => {
+              request.result.createObjectStore(storeName);
+            });
+          });
+          resolve(promisifyRequest(request));
+        });
       });
     }
-    sendResponse(ctx, id, response) {
+    get(storeName, key) {
       return __async(this, null, function* () {
-        var _a, _b, _c;
-        debug("sendResponse in window", id, response);
-        const { status, statusText, headers, body: body2 } = response;
-        const message = {
-          hoW: true,
-          type: "resp-head",
-          id,
-          status,
-          statusText,
-          headers: dehydrateHeaders(headers),
-          hasBody: body2 != null,
-          peerConnectionConnectTime: (_a = ctx.get("hoWPeerConnectionConnectTime")) != null ? _a : -1,
-          dataChannelOpenTime: (_b = ctx.get("hoWDataChannelOpenTime")) != null ? _b : -1,
-          startTransferTime: (_c = ctx.get("hoWStartTransferTime")) != null ? _c : -1
-        };
-        this.worker.postMessage(message);
-        if (body2 != null) {
-          yield this.sendBody(id, body2);
-        }
-        debug("sendResponse finished in window", id, response);
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).get(key);
+        return promisifyRequest(request);
       });
     }
-    sendResponseError(id, err) {
-      const message = {
-        hoW: true,
-        type: "resp-error",
-        id,
-        name: err instanceof Error ? err.name : "UnknownError",
-        message: err instanceof Error ? err.message : err + ""
-      };
-      this.worker.postMessage(message);
-    }
-    receiveRequestBody(id) {
-      let streamCtrl;
-      const stream = new ReadableStream({
-        start: (ctrl) => streamCtrl = ctrl
+    getAll(storeName) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).getAll();
+        return promisifyRequest(request);
       });
-      const unlisten = listen(this.workerContainer, "message", ({ data }) => {
-        if (!isHoWMessage(data))
-          return;
-        if (data.id !== id)
-          return;
-        if (data.type !== "req-body-chunk")
-          return;
-        if (streamCtrl == null)
-          throw new Error("Stream Controller should be ready");
-        if (data.payload == null) {
-          streamCtrl.close();
-          unlisten();
-          return;
-        }
-        streamCtrl.enqueue(new Uint8Array(data.payload));
+    }
+    count(storeName) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).count();
+        return promisifyRequest(request);
       });
-      return stream;
     }
-    getRequest({ id, url, method, headers, hasBody }) {
-      const abortCtrl = new AbortController();
-      this.abortCtrls.set(id, abortCtrl);
-      if (!hasBody)
-        return new HttpRequest(url, { method, headers, signal: abortCtrl.signal });
-      const body2 = this.receiveRequestBody(id);
-      return new HttpRequest(url, { method, headers, signal: abortCtrl.signal, body: body2 });
+    set(storeName, key, value) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const transaction = db.transaction(storeName, "readwrite");
+        transaction.objectStore(storeName).put(value, key);
+        return promisifyTransaction(transaction);
+      });
     }
-    run() {
-      this.disposers.push(listen(this.workerContainer, "message", (_0) => __async(this, [_0], function* ({ data }) {
-        var _a;
-        debug("Got message in window", data);
-        if (!isHoWMessage(data))
-          return;
-        if (data.type === "req-head") {
-          const { id, fingerprint } = data;
-          const request = this.getRequest(data);
-          const ctx = new Context();
-          try {
-            const response = yield this.hoW.fetch(ctx, id, request, fingerprint);
-            yield this.sendResponse(ctx, id, response);
-          } catch (e) {
-            this.sendResponseError(id, e);
-          } finally {
-            this.abortCtrls.delete(id);
-          }
-          return;
-        }
-        if (data.type === "req-abort") {
-          (_a = this.abortCtrls.get(data.id)) == null ? void 0 : _a.abort(new AbortError(data.reason));
-          return;
-        }
-      })));
+    remove(storeName, key) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const transaction = db.transaction(storeName, "readwrite");
+        transaction.objectStore(storeName).delete(key);
+        return promisifyTransaction(transaction);
+      });
+    }
+    clear() {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        yield Promise.all(this.storeNames.map((storeName) => {
+          const transaction = db.transaction(storeName, "readwrite");
+          transaction.objectStore(storeName).clear();
+          return promisifyTransaction(transaction);
+        }));
+      });
     }
     dispose() {
-      this.disposers.forEach((d) => d());
+      var _a;
+      (_a = this.db) == null ? void 0 : _a.close();
     }
   }
-  function listen(target, type, listener) {
-    target.addEventListener(type, listener);
-    return () => target.removeEventListener(type, listener);
+  function promisifyRequest(request) {
+    return new Promise((resolve, reject) => {
+      request.addEventListener("success", () => resolve(request.result));
+      request.addEventListener("error", () => reject(request.error));
+    });
+  }
+  function promisifyTransaction(transaction) {
+    return new Promise((resolve, reject) => {
+      transaction.addEventListener("complete", () => resolve());
+      transaction.addEventListener("error", () => reject(transaction.error));
+      transaction.addEventListener("abort", () => reject(transaction.error));
+    });
+  }
+  const debug$4 = getDebug("dc");
+  const namespace = "miku/dc";
+  const itemStoreName = "item";
+  class DataCache {
+    constructor(config = {}) {
+      __publicField(this, "db", new DB(namespace, [itemStoreName]));
+      __publicField(this, "browserCache", null);
+      __publicField(this, "browserCachePromise", null);
+      this.config = config;
+    }
+    openBrowserCache() {
+      return __async(this, null, function* () {
+        if (this.browserCachePromise != null)
+          return this.browserCachePromise;
+        this.browserCachePromise = caches.open(namespace);
+        this.browserCachePromise.then((c) => {
+          this.browserCache = c;
+        });
+        return this.browserCachePromise;
+      });
+    }
+    getItem(key) {
+      return __async(this, null, function* () {
+        return this.db.get(itemStoreName, key);
+      });
+    }
+    setItem(key, item) {
+      return __async(this, null, function* () {
+        debug$4("setItem", key, item);
+        yield this.db.set(itemStoreName, key, item);
+      });
+    }
+    browserCacheMatch(request) {
+      return __async(this, null, function* () {
+        let browserCache = this.browserCache;
+        if (browserCache == null) {
+          browserCache = yield this.openBrowserCache();
+        }
+        return browserCache.match(request);
+      });
+    }
+    browserCachePut(request, response) {
+      return __async(this, null, function* () {
+        let browserCache = this.browserCache;
+        if (browserCache == null) {
+          browserCache = yield this.openBrowserCache();
+        }
+        yield browserCache.put(request, response);
+      });
+    }
+    getContent(key, piece) {
+      return __async(this, null, function* () {
+        const cachedResponse = yield this.browserCacheMatch(getBrowserCacheKey(key, piece));
+        if (cachedResponse == null)
+          return void 0;
+        if (cachedResponse.body == null)
+          throw new Error("Body expected for cached response");
+        return cachedResponse.body;
+      });
+    }
+    setContent(key, piece, content) {
+      return __async(this, null, function* () {
+        yield this.browserCachePut(getBrowserCacheKey(key, piece), new Response(content));
+      });
+    }
+    dispose() {
+      this.db.dispose();
+    }
+  }
+  function getBrowserCacheKey(key, piece) {
+    var _a;
+    return `${key}_with_range_${piece[0]}_${(_a = piece[1]) != null ? _a : ""}`;
+  }
+  class Context {
+    constructor(init) {
+      __publicField(this, "value");
+      this.value = init != null ? __spreadValues({}, init.value) : {};
+    }
+    set(key, value) {
+      this.value[key] = value;
+    }
+    get(key) {
+      return this.value[key];
+    }
+  }
+  class DownloadLogger {
+    constructor(logger) {
+      this.logger = logger;
+    }
+    log(schemaName, logData) {
+      return this.logger.log(schemaName, logData);
+    }
+  }
+  class DoLogger {
+    constructor(logger) {
+      this.logger = logger;
+    }
+    log(logData) {
+    }
+  }
+  const defaultAttempts = 3;
+  const debug$3 = getDebug("http");
+  class Http {
+    constructor(logger, resolver, client) {
+      __publicField(this, "logger");
+      __publicField(this, "dologger");
+      this.resolver = resolver;
+      this.client = client;
+      this.logger = new DownloadLogger(logger);
+      this.dologger = new DoLogger(logger);
+    }
+    doWithIp(ctx, request, ip, currentRetryCount) {
+      return __async(this, null, function* () {
+        var _a;
+        const domain = new URL(request.url).host;
+        const startAt = Date.now();
+        let err;
+        let response;
+        try {
+          debug$3("do request", request.url, "with ip", ip);
+          const req = withNodeIP(request, ip);
+          const resp = yield this.client.fetch(ctx, req);
+          debug$3("do request", request.url, "with ip succeeded with status", resp.status);
+          ctx.set("downloadStatus", resp.status);
+          ctx.set("downloadReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
+          if (resp.status >= 500)
+            throw new Error(`TODO: HTTP Status error: ${resp.status}`);
+          response = resp;
+          return response;
+        } catch (e) {
+          debug$3("do request", request.url, "with ip", ip, "failed:", e);
+          err = e;
+          throw e;
+        } finally {
+          const requestRange = request.headers.get("Range");
+          const range = requestRange == null ? null : parseRange(requestRange);
+          const reqMessageAt = ctx.get("downloadReqMessageAt");
+          const connectionAt = ctx.get("downloadConnectionAt");
+          const startTransferAt = ctx.get("downloadStartTransferAt");
+          const respMessageAt = ctx.get("downloadRespMessageAt");
+          const doDownloadLog = (extra) => {
+            var _a2, _b, _c, _d, _e, _f, _g;
+            return this.logger.log("DownloadLog", __spreadValues({
+              ip: ip.split(":")[0],
+              domain,
+              range_st: (_a2 = range == null ? void 0 : range.start) != null ? _a2 : -1,
+              range_end: (_b = range == null ? void 0 : range.end) != null ? _b : -1,
+              retry: currentRetryCount,
+              ftask_id: (_c = ctx.get("downloadFileTaskID")) != null ? _c : "",
+              task_id: (_d = ctx.get("taskID")) != null ? _d : "",
+              d_id: (_e = ctx.get("doID")) != null ? _e : "",
+              ts_st: startAt,
+              r_id: (_f = ctx.get("downloadReqID")) != null ? _f : "",
+              status_code: (_g = ctx.get("downloadStatus")) != null ? _g : -1,
+              t_req_msg: timeMinus(reqMessageAt, startAt),
+              t_conn: timeMinus(connectionAt, reqMessageAt != null ? reqMessageAt : startAt),
+              t_tls: -1,
+              t_st_trans: timeMinus(startTransferAt, connectionAt),
+              t_resp_msg: timeMinus(respMessageAt, startTransferAt),
+              err_msg: "",
+              err_desc: "",
+              t_content_trans: -1,
+              t_total: -1,
+              resp_size: -1
+            }, extra));
+          };
+          const onDownloadError = (e) => {
+            const finishAt = Date.now();
+            doDownloadLog(__spreadValues({
+              t_total: timeMinus(finishAt, startAt)
+            }, getErrInfo(e)));
+          };
+          const onDownloadTransfered = (size) => {
+            const finishAt = Date.now();
+            doDownloadLog({
+              t_content_trans: timeMinus(finishAt, respMessageAt != null ? respMessageAt : startTransferAt),
+              t_total: timeMinus(finishAt, startAt),
+              resp_size: size
+            });
+          };
+          if (response == null) {
+            onDownloadError(err);
+          } else {
+            response.bodyReadResult.then((bodyReadResult) => {
+              if (bodyReadResult.success) {
+                onDownloadTransfered(bodyReadResult.size);
+              } else {
+                onDownloadError(bodyReadResult.error);
+              }
+            });
+          }
+        }
+      });
+    }
+    originalDo(ctx, request) {
+      return __async(this, null, function* () {
+        let currentRetryCount = -1;
+        let finalResp;
+        yield this.resolver.do(ctx, request.url, defaultAttempts, false, (ip) => __async(this, null, function* () {
+          currentRetryCount++;
+          const newCtx = new Context(ctx);
+          finalResp = yield this.doWithIp(newCtx, request, ip, currentRetryCount);
+        }));
+        if (finalResp == null)
+          throw new Error(`Http do failed: resolver do finished with no finalResp, url: ${request.url}`);
+        return finalResp;
+      });
+    }
+    do(ctx, request) {
+      return __async(this, null, function* () {
+        const startAt = Date.now();
+        const id = uuid();
+        ctx.set("doID", id);
+        let response = null;
+        let err = null;
+        try {
+          response = yield withInitialOptimization(
+            (...args) => this.originalDo(...args),
+            nativeDo,
+            1024 * 1024 * 10
+          )(ctx, request);
+          return response;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const { onDoError, onDoResponsed } = this.getDoLog(ctx, id, startAt);
+          response == null ? onDoError(err) : onDoResponsed(response.status);
+        }
+      });
+    }
+    doNativelyWithHost(ctx, request, host, currentRetryCount) {
+      return __async(this, null, function* () {
+        var _a, _b;
+        const startAt = Date.now();
+        let err;
+        let response;
+        try {
+          const req = withNodeHost(request, host);
+          const resp = yield fetch(req);
+          ctx.set("downloadStatus", resp.status);
+          ctx.set("downloadReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
+          if (resp.status >= 500)
+            throw new Error(`TODO: HTTP Status error: ${resp.status}`);
+          response = resp;
+          return response;
+        } catch (e) {
+          debug$3("do request", request.url, "with host", host, "failed:", e);
+          err = e;
+          throw e;
+        } finally {
+          const requestRange = request.headers.get("Range");
+          const range = requestRange == null ? null : parseRange(requestRange);
+          const respAt = Date.now();
+          const doDownloadLog = (extra) => {
+            var _a2, _b2, _c, _d, _e, _f, _g, _h;
+            return this.logger.log("DownloadLog", __spreadValues({
+              ip: "",
+              domain: host.split(":")[0],
+              range_st: (_a2 = range == null ? void 0 : range.start) != null ? _a2 : -1,
+              range_end: (_b2 = range == null ? void 0 : range.end) != null ? _b2 : -1,
+              retry: currentRetryCount,
+              ftask_id: (_c = ctx.get("downloadFileTaskID")) != null ? _c : "",
+              task_id: (_d = ctx.get("taskID")) != null ? _d : "",
+              d_id: (_e = ctx.get("doID")) != null ? _e : "",
+              ts_st: startAt,
+              r_id: (_f = ctx.get("downloadReqID")) != null ? _f : "",
+              status_code: (_g = ctx.get("downloadStatus")) != null ? _g : -1,
+              t_req_msg: -1,
+              t_conn: timeMinus(respAt, startAt),
+              t_tls: -1,
+              t_st_trans: -1,
+              t_resp_msg: -1,
+              resp_size: (_h = response != null ? httpGetContentLength(response.headers) : null) != null ? _h : -1,
+              err_msg: "",
+              err_desc: "",
+              t_content_trans: -1,
+              t_total: -1
+            }, extra));
+          };
+          const onDownloadError = (e) => {
+            const finishAt = Date.now();
+            doDownloadLog(__spreadValues({
+              t_total: timeMinus(finishAt, startAt)
+            }, getErrInfo(e)));
+          };
+          const onDownloadTransfered = (size) => {
+            const finishAt = Date.now();
+            doDownloadLog({
+              t_content_trans: timeMinus(finishAt, respAt),
+              t_total: timeMinus(finishAt, startAt),
+              resp_size: size
+            });
+          };
+          if (response == null) {
+            onDownloadError(err);
+          } else {
+            if (canClone(request)) {
+              getReadResult(response.clone().body).then(
+                (res) => res.success ? onDownloadTransfered(res.size) : onDownloadError(res.error)
+              );
+            } else {
+              onDownloadTransfered((_b = httpGetContentLength(response.headers)) != null ? _b : -1);
+            }
+          }
+        }
+      });
+    }
+    doNatively(ctx, request) {
+      return __async(this, null, function* () {
+        const startAt = Date.now();
+        const id = uuid();
+        ctx.set("doID", id);
+        let currentRetryCount = -1;
+        let response;
+        let err = null;
+        try {
+          yield this.resolver.do(ctx, request.url, defaultAttempts, true, (host) => __async(this, null, function* () {
+            currentRetryCount++;
+            const newCtx = new Context(ctx);
+            response = yield this.doNativelyWithHost(newCtx, request, host, currentRetryCount);
+          }));
+          if (response == null)
+            throw new Error(`Http do natively failed: resolver do finished with no finalResp, url: ${request.url}`);
+          return response;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const { onDoError, onDoResponsed } = this.getDoLog(ctx, id, startAt);
+          response == null ? onDoError(err) : onDoResponsed(response.status);
+        }
+      });
+    }
+    getDoLog(ctx, id, startAt) {
+      const doDoLog = (extra) => {
+        var _a;
+        return this.dologger.log(__spreadValues({
+          lookup_type: true,
+          t_lookup: (_a = ctx.get("dnsResolveFromCache") === true ? 0 : ctx.get("dnsResolveTotalTime")) != null ? _a : -1,
+          t_total: -1,
+          ts_st: startAt,
+          err_desc: "",
+          err_msg: "",
+          status_code: -1,
+          task_id: ctx.get("taskID"),
+          id
+        }, extra));
+      };
+      const onDoError = (e) => {
+        const finishAt = Date.now();
+        doDoLog(__spreadValues({
+          t_total: timeMinus(finishAt, startAt)
+        }, getErrInfo(e)));
+      };
+      const onDoResponsed = (status) => {
+        const finishAt = Date.now();
+        doDoLog({
+          t_total: timeMinus(finishAt, startAt),
+          status_code: status
+        });
+      };
+      return { onDoError, onDoResponsed };
+    }
+  }
+  function withNodeIP(originalReq, nodeIP) {
+    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
+    const urlObject = new URL(originalUrl);
+    const originalHost = urlObject.host;
+    urlObject.host = nodeIP;
+    const headers = new Headers(originalHeaders);
+    headers.set("Host", originalHost);
+    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
+  }
+  const defaultHttpsPort = 443;
+  function withNodeHost(request, nodeHost) {
+    const { url: originalUrl, headers, method, redirect, signal } = request;
+    const urlObject = new URL(originalUrl);
+    const originalHost = urlObject.host;
+    const [nodeHostname, nodeBasePort] = parseHost(nodeHost);
+    const nodeHttpsPort = nodeBasePort + defaultHttpsPort;
+    urlObject.protocol = "https:";
+    urlObject.host = `${nodeHostname}:${nodeHttpsPort}`;
+    urlObject.pathname = `/${originalHost}${urlObject.pathname}`;
+    return createNativeRequest(urlObject.toString(), { headers, method, redirect, signal });
+  }
+  function withInitialOptimization(originalDo, initialDo, threshold) {
+    return function optimizedDo(ctx, request) {
+      return __async(this, null, function* () {
+        var _b, _c;
+        const _a = request, { url } = _a, reqExtra = __objRest(_a, ["url"]);
+        const urlWithoutQueryHash = removeQueryHash(url);
+        if (request.method !== "GET" || !videoPattern.test(urlWithoutQueryHash))
+          return originalDo(ctx, request);
+        debug$3("doWithInitialOptimization", url);
+        const initialCtx = new Context(ctx);
+        const initalReq = new HttpRequest(url, reqExtra);
+        const initialResp = yield initialDo(initialCtx, initalReq);
+        const contentSize = httpGetContentLength(initialResp.headers);
+        if (contentSize != null && contentSize <= threshold)
+          return initialResp;
+        const followingHeaders = new Headers(reqExtra.headers);
+        const followingRange = (_b = httpGetRange(followingHeaders)) != null ? _b : { start: null, end: null };
+        followingRange.start = ((_c = followingRange.start) != null ? _c : 0) + threshold;
+        if (followingRange.end != null && followingRange.end < followingRange.start)
+          return initialResp;
+        debug$3("doWithInitialOptimization followingRange", followingRange);
+        followingHeaders.set("Range", stringifyRange(followingRange));
+        const followingReq = new HttpRequest(url, __spreadProps(__spreadValues({}, reqExtra), {
+          headers: followingHeaders
+        }));
+        const followingRespPromise = originalDo(ctx, followingReq);
+        const _d = initialResp, { body: initialBody } = _d, initialRespExtra = __objRest(_d, ["body"]);
+        const stream = new TransformStream();
+        if (initialBody == null)
+          throw new Error(`Body expected for initial response of ${url}`);
+        slice(initialBody, [0, threshold]).pipeTo(stream.writable, { preventClose: true }).then(
+          () => __async(this, null, function* () {
+            debug$3("doWithInitialOptimization initialBody transfered");
+            const followingResp = yield followingRespPromise;
+            if (followingResp.body == null)
+              throw new Error(`Body expected for following response of ${url}`);
+            const followingBody = followingResp.status === 206 ? followingResp.body : slice(followingResp.body, [followingRange.start, followingRange.end == null ? null : followingRange.end + 1]);
+            followingBody.pipeTo(stream.writable).then(
+              () => debug$3("doWithInitialOptimization followingBody transfered"),
+              (e) => debug$3("doWithInitialOptimization followingBody transfer errored", e)
+            );
+          }),
+          (e) => __async(this, null, function* () {
+            var _a2;
+            debug$3("doWithInitialOptimization initialBody transfer errored", e);
+            const followingResp = yield followingRespPromise;
+            (_a2 = followingResp.body) == null ? void 0 : _a2.cancel(e);
+          })
+        );
+        return new HttpResponse(stream.readable, initialRespExtra);
+      });
+    };
+  }
+  function createNativeRequest(url, init) {
+    return new Request(url, __spreadValues({
+      mode: "cors",
+      credentials: "omit"
+    }, init));
+  }
+  function nativeDo(ctx, request) {
+    return __async(this, null, function* () {
+      const _a = request, { url } = _a, others = __objRest(_a, ["url"]);
+      const nativeRequest = createNativeRequest(url, others);
+      const { status, statusText, headers, body: body2 } = yield fetch(nativeRequest);
+      return new HttpResponse(body2, { status, statusText, headers });
+    });
+  }
+  class Task {
+    constructor(url, range, expiry, startByClient) {
+      __publicField(this, "id", uuid());
+      __publicField(this, "priority", 0);
+      __publicField(this, "abortCtrl", new AbortController());
+      __publicField(this, "started", false);
+      this.url = url;
+      this.range = range;
+      this.expiry = expiry;
+      this.startByClient = startByClient;
+    }
+    get signal() {
+      return this.abortCtrl.signal;
+    }
+    setPriority(priority) {
+      this.priority = priority;
+    }
+    start() {
+      return __async(this, null, function* () {
+        if (this.started) {
+          throw new Error("Task already started");
+        }
+        this.started = true;
+        return this.startByClient(this);
+      });
+    }
+    cancel(reason) {
+      this.abortCtrl.abort(reason);
+    }
+  }
+  class Result {
+    constructor(stream, size, fileSize, contentType, response) {
+      this.stream = stream;
+      this.size = size;
+      this.fileSize = fileSize;
+      this.contentType = contentType;
+      this.response = response;
+    }
+    blob() {
+      return __async(this, null, function* () {
+        const stream = this.stream;
+        const reader = stream.getReader();
+        const parts = [];
+        while (true) {
+          const { done, value } = yield reader.read();
+          if (done)
+            break;
+          const arrayBuffer = value;
+          parts.push(arrayBuffer);
+        }
+        return new Blob(parts);
+      });
+    }
+  }
+  function createResultFromResponse(response) {
+    if (!response.body)
+      throw new Error("Body expected");
+    return new Result(
+      response.body,
+      httpGetContentLength(response.headers),
+      getFileSize(response),
+      response.headers.get("Content-Type"),
+      response
+    );
+  }
+  function makeRange(totalSize, start, end) {
+    if (totalSize != null && end != null) {
+      if (end >= totalSize)
+        end = null;
+    }
+    if (start == null || start < 0)
+      start = 0;
+    return [start, end];
+  }
+  function isFull(totalSize, range) {
+    var _a;
+    const startFull = ((_a = range[0]) != null ? _a : 0) === 0;
+    const endFull = range[1] == null || totalSize != null && range[1] === totalSize;
+    return startFull && endFull;
+  }
+  function getRangeSize(totalSize, range) {
+    var _a, _b;
+    const start = (_a = range[0]) != null ? _a : 0;
+    const end = (_b = range[1]) != null ? _b : totalSize;
+    return end == null ? null : end - start;
+  }
+  function applyRange(range, fsize, pieces) {
+    var _a, _b;
+    if (fsize === 0)
+      return [];
+    const endGt = (num1, num2) => {
+      return gt(num1, num2, fsize != null ? fsize : Number.POSITIVE_INFINITY);
+    };
+    const start = (_a = range == null ? void 0 : range[0]) != null ? _a : 0;
+    const end = (_b = range == null ? void 0 : range[1]) != null ? _b : fsize;
+    const result = [];
+    let applyFrom = start;
+    for (const p of pieces) {
+      if (applyFrom == null)
+        break;
+      if (fsize != null && p[1] != null && p[1] > fsize)
+        break;
+      if (p[1] != null && applyFrom >= p[1])
+        continue;
+      if (end == null || end > p[0]) {
+        if (p[0] > applyFrom) {
+          result.push({
+            cached: false,
+            range: makeRange(fsize, applyFrom, p[0])
+          });
+        }
+        const cacheStart = endGt(p[0], applyFrom) ? p[0] : applyFrom;
+        const cacheEnd = endGt(p[1], end) ? end : p[1];
+        if (endGt(cacheEnd, cacheStart)) {
+          result.push({
+            cached: true,
+            range: makeRange(fsize, cacheStart, cacheEnd)
+          });
+          applyFrom = cacheEnd;
+        }
+        continue;
+      }
+      break;
+    }
+    if (endGt(end, applyFrom)) {
+      result.push({
+        cached: false,
+        range: makeRange(fsize, applyFrom, end)
+      });
+    }
+    return result;
+  }
+  function findPiece(pieces, range) {
+    var _a;
+    const rangeStart = (_a = range[0]) != null ? _a : 0;
+    const rangeEnd = range[1];
+    for (const piece of pieces) {
+      if (piece[1] != null && piece[1] <= rangeStart)
+        continue;
+      if (piece[0] > rangeStart)
+        break;
+      const start = rangeStart - piece[0];
+      const end = minus(rangeEnd != null ? rangeEnd : piece[1], piece[0]);
+      return { piece, start, end };
+    }
+    throw new Error("Piece not found");
+  }
+  function addPiece(pieces, piece) {
+    return [...pieces, piece].sort(
+      (piece1, piece2) => piece1[0] - piece2[0]
+    );
+  }
+  function gt(num1, num2, nullAs) {
+    const val1 = num1 != null ? num1 : nullAs;
+    const val2 = num2 != null ? num2 : nullAs;
+    return val1 > val2;
+  }
+  function minus(num1, num2) {
+    return num1 == null || num2 == null ? null : num1 - num2;
+  }
+  class TaskLogger {
+    constructor(logger) {
+      this.logger = logger;
+    }
+    log(logData) {
+    }
+  }
+  let disableCache = false;
+  const debug$2 = getDebug("ftask");
+  class FileTask {
+    constructor(taskq, cache, http, key, url, logger) {
+      __publicField(this, "id", uuid());
+      __publicField(this, "inited");
+      __publicField(this, "cachePieces", []);
+      __publicField(this, "taskLogger");
+      __publicField(this, "meta", createDefered());
+      this.taskq = taskq;
+      this.cache = cache;
+      this.http = http;
+      this.key = key;
+      this.url = url;
+      this.taskLogger = new TaskLogger(logger);
+      this.inited = this.resume();
+    }
+    startTask(task) {
+      return __async(this, null, function* () {
+        const startAt = Date.now();
+        const ctx = new Context();
+        ctx.set("taskID", task.id);
+        let result;
+        let err = null;
+        try {
+          if (task.range != null) {
+            result = yield this.startTaskWithRange(ctx, task);
+          } else {
+            result = yield this.startTaskWithoutRange(ctx, task);
+          }
+          return result;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const { onTaskError, onTaskTransfered } = this.getTaskLog(ctx, task, startAt);
+          if (result == null) {
+            onTaskError(err);
+          } else {
+            const [newStream, readResultPromise] = withReadResult(result.stream);
+            result.stream = newStream;
+            readResultPromise.then((readResult) => {
+              if (readResult.success) {
+                onTaskTransfered();
+              } else {
+                onTaskError(readResult.error);
+              }
+            });
+          }
+        }
+      });
+    }
+    startTaskNatively(task) {
+      return __async(this, null, function* () {
+        const startAt = Date.now();
+        const ctx = new Context();
+        ctx.set("taskID", task.id);
+        ctx.set("downloadFileTaskID", this.id);
+        const headers = {
+          "Accept-Encoding": "gzip"
+        };
+        const range = task.range;
+        if (range != null) {
+          headers["Range"] = stringifyRange({ start: range.start, end: range.end == null ? null : range.end - 1 });
+        }
+        const request = new Request(task.url, { method: "GET", headers, signal: task.signal });
+        let result;
+        let err = null;
+        try {
+          let response = yield this.cache.browserCacheMatch(request);
+          ctx.set("taskCacheMatchAt", Date.now());
+          if (!disableCache && response != null) {
+            debug$2("use cache", task.url);
+          } else {
+            debug$2("http doNatively", task.url);
+            ctx.set("task1stHttpDoAt", Date.now());
+            response = yield this.http.doNatively(ctx, request);
+            debug$2("http doNatively response:", response.status, response);
+            ctx.set("taskResultStreamAt", Date.now());
+            if (response.status >= 200 && response.status < 300 && canClone(request, response)) {
+              this.cache.browserCachePut(request, response.clone());
+            }
+          }
+          result = createResultFromResponse(response);
+          return result;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const { onTaskError, onTaskTransfered } = this.getTaskLog(ctx, task, startAt);
+          if (result == null) {
+            onTaskError(err);
+          } else {
+            const response = result.response;
+            if (canClone(request)) {
+              getReadResult(response.clone().body).then(
+                (res) => res.success ? onTaskTransfered() : onTaskError(res.error)
+              );
+            } else {
+              onTaskTransfered();
+            }
+          }
+        }
+      });
+    }
+    getTaskLog(ctx, task, startAt) {
+      const cacheMatchAt = ctx.get("taskCacheMatchAt");
+      const httpDoAt = ctx.get("task1stHttpDoAt");
+      const resultStreamAt = ctx.get("taskResultStreamAt");
+      const resultAt = Date.now();
+      const doTaskLog = (extra) => {
+        var _a, _b, _c, _d;
+        return this.taskLogger.log(__spreadValues({
+          id: task.id,
+          url: task.url,
+          err_msg: "",
+          err_desc: "",
+          range_st: (_b = (_a = task.range) == null ? void 0 : _a.start) != null ? _b : -1,
+          range_end: (_d = (_c = task.range) == null ? void 0 : _c.end) != null ? _d : -1,
+          ts_st: startAt,
+          t_cc_match: timeMinus(cacheMatchAt, startAt),
+          t_http_do: timeMinus(httpDoAt, cacheMatchAt),
+          t_res_stream: timeMinus(resultStreamAt, cacheMatchAt),
+          t_res: timeMinus(resultAt, resultStreamAt),
+          t_trans: -1,
+          t_total: -1
+        }, extra));
+      };
+      const onTaskError = (e) => {
+        const finishAt = Date.now();
+        doTaskLog(__spreadValues({
+          t_total: timeMinus(finishAt, startAt)
+        }, getErrInfo(e)));
+      };
+      const onTaskTransfered = () => {
+        const finishAt = Date.now();
+        doTaskLog({
+          t_trans: timeMinus(finishAt, resultAt),
+          t_total: timeMinus(finishAt, startAt)
+        });
+      };
+      return { onTaskError, onTaskTransfered };
+    }
+    startTaskWithRange(ctx, task) {
+      return __async(this, null, function* () {
+        debug$2("startTaskWithRange", task.url);
+        yield this.inited;
+        debug$2("startTaskWithRange inited", task.url);
+        const range = task.range != null ? [task.range.start, task.range.end] : [0, null];
+        const [stream, meta] = yield Promise.all([
+          this.readRange(ctx, task, range),
+          this.meta.promise
+        ]);
+        const size = getRangeSize(meta.fsize, range);
+        return new Result(stream, size, meta.fsize, meta.contentType);
+      });
+    }
+    startTaskWithoutRange(ctx, task) {
+      return __async(this, null, function* () {
+        debug$2("startTaskWithoutRange", task.url);
+        const streamPromise = new Promise((_resolve, reject) => __async(this, null, function* () {
+          const resolve = (s) => {
+            ctx.set("taskResultStreamAt", Date.now());
+            _resolve(s);
+          };
+          const cachedContent = yield this.cache.getContent(this.key, [0, null]);
+          ctx.set("taskCacheMatchAt", Date.now());
+          if (cachedContent != null) {
+            debug$2("use cache", task.url);
+            resolve(cachedContent);
+            return;
+          }
+          this.taskq.add({
+            name: `startTaskWithoutRange: ${this.url}`,
+            priority: task.priority,
+            run: () => __async(this, null, function* () {
+              try {
+                const { response, body: body2 } = yield this.doRequestAndSaveCache(ctx, null, task.signal);
+                resolve(body2);
+                yield response.bodyReadResult;
+              } catch (e) {
+                reject(e);
+              }
+            })
+          });
+        }));
+        const [stream, meta] = yield Promise.all([
+          streamPromise,
+          this.meta.promise
+        ]);
+        return new Result(stream, meta.fsize, meta.fsize, meta.contentType);
+      });
+    }
+    readRange(ctx, task, range) {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d;
+        const pieces = applyRange(range, (_b = (_a = this.meta.value) == null ? void 0 : _a.fsize) != null ? _b : null, this.cachePieces);
+        debug$2("applyRange", range, (_d = (_c = this.meta.value) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
+        ctx.set("taskCacheMatchAt", Date.now());
+        const stream = new TransformStream();
+        (() => __async(this, null, function* () {
+          for (let i = 0; i < pieces.length; i++) {
+            const { cached, range: range2 } = pieces[i];
+            const pieceStream = yield cached ? this.readPieceFromLocal(ctx, task, range2) : this.readPieceFromRemote(ctx, task, range2);
+            const isLast = i === pieces.length - 1;
+            yield pieceStream.pipeTo(stream.writable, {
+              preventClose: !isLast
+            });
+          }
+        }))().catch((e) => {
+          console.warn("readRange stream error for", this.url, e);
+          stream.writable.abort(e);
+        });
+        ctx.set("taskResultStreamAt", Date.now());
+        return stream.readable;
+      });
+    }
+    readPieceFromLocal(ctx, task, range) {
+      return __async(this, null, function* () {
+        debug$2("readPieceFromLocal", task.url, range);
+        const { piece, start, end } = findPiece(this.cachePieces, range);
+        const pieceContent = yield this.cache.getContent(this.key, piece);
+        if (pieceContent == null) {
+          console.warn(`Missing cache item: ${this.key} [${piece})`);
+          return this.readPieceFromRemote(ctx, task, range);
+        }
+        return slice(pieceContent, [start, end]);
+      });
+    }
+    fileSize() {
+      var _a, _b;
+      return (_b = (_a = this.meta.value) == null ? void 0 : _a.fsize) != null ? _b : null;
+    }
+    readPieceFromRemote(ctx, task, range) {
+      return __async(this, null, function* () {
+        debug$2("readPieceFromRemote", task.url, range);
+        return new Promise((resolve, reject) => {
+          this.taskq.add({
+            name: `readPieceFromRemote: ${this.url}, [${range[0], range[1]})]`,
+            priority: task.priority,
+            run: () => __async(this, null, function* () {
+              try {
+                const { response, body: body2 } = yield this.doRequestAndSaveCache(ctx, range, task.signal);
+                if (!isFull(this.fileSize(), range) && response.status === 200) {
+                  console.warn("Range request not supported for", this.url);
+                  resolve(slice(body2, range));
+                } else {
+                  resolve(body2);
+                }
+                yield response.bodyReadResult;
+              } catch (e) {
+                reject(e);
+              }
+            })
+          });
+        });
+      });
+    }
+    doRequest(_ctx, range, signal) {
+      return __async(this, null, function* () {
+        try {
+          const ctx = new Context(_ctx);
+          ctx.set("downloadFileTaskID", this.id);
+          const headers = {
+            "Accept-Encoding": "identity;q=1, *;q=0"
+          };
+          if (range != null && !isFull(this.fileSize(), range)) {
+            headers["Range"] = stringifyRange({ start: range[0], end: range[1] == null ? null : range[1] - 1 });
+          }
+          const request = new HttpRequest(this.url, { method: "GET", headers, signal });
+          const response = yield this.http.do(ctx, request);
+          if (response.body == null) {
+            throw new Error("Body expected");
+          }
+          if (response.status !== 200 && response.status !== 206) {
+            throw new Error(`Invalid response, status: ${response.status}`);
+          }
+          this.saveMeta(response);
+          response.bodyReadResult.then((bodyReadResult) => {
+            debug$2(`bodyReadResult for ${this.url}:`, bodyReadResult);
+          });
+          return { response, body: response.body };
+        } catch (e) {
+          this.meta.reject(e);
+          this.meta = createDefered();
+          throw e;
+        }
+      });
+    }
+    doRequestAndSaveCache(ctx, range, signal) {
+      return __async(this, null, function* () {
+        var _a, _b;
+        if (ctx.get("task1stHttpDoAt") == null) {
+          ctx.set("task1stHttpDoAt", Date.now());
+        }
+        const { response, body: body2 } = yield this.doRequest(ctx, range, signal);
+        const { main: bodyForUse, minor: bodyForCache } = teeWithMain(body2);
+        const piece = [(_a = range == null ? void 0 : range[0]) != null ? _a : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
+        this.saveCachePiece(piece, bodyForCache);
+        return { response, body: bodyForUse };
+      });
+    }
+    saveCachePiece(piece, content) {
+      return __async(this, null, function* () {
+        yield this.meta.promise;
+        debug$2("saveCachePiece", this.url, piece);
+        yield this.cache.setContent(this.key, piece, content);
+        this.cachePieces = addPiece(this.cachePieces, piece);
+        yield this.save();
+      });
+    }
+    saveMeta(response) {
+      return __async(this, null, function* () {
+        if (this.meta.status != "pending") {
+          this.meta = createDefered();
+        }
+        this.meta.resolve({
+          contentType: response.headers.get("Content-Type"),
+          fsize: getFileSize(response)
+        });
+        yield this.meta.promise;
+        yield this.save();
+      });
+    }
+    resume() {
+      return __async(this, null, function* () {
+        const item = yield this.cache.getItem(this.key);
+        if (item == null || item.meta == null)
+          return;
+        this.meta.resolve(item.meta);
+        this.cachePieces = item.pieces;
+      });
+    }
+    save() {
+      return __async(this, null, function* () {
+        const item = {
+          meta: this.meta.value,
+          pieces: this.cachePieces
+        };
+        yield this.cache.setItem(this.key, item);
+      });
+    }
+  }
+  const debug$1 = getDebug("utils/taskq");
+  class TaskQueue {
+    constructor(jobs) {
+      __publicField(this, "tasks", []);
+      __publicField(this, "emitter", new Emitter());
+      __publicField(this, "running", true);
+      for (let i = 0; i < jobs; i++) {
+        this.comsumeLoop();
+      }
+    }
+    add(task) {
+      let i = 0;
+      for (; i < this.tasks.length; i++) {
+        if (this.tasks[i].priority >= task.priority) {
+          break;
+        }
+      }
+      this.tasks.splice(i, 0, task);
+      this.emitter.emit("task");
+    }
+    pop() {
+      return __async(this, null, function* () {
+        const task = this.tasks.pop();
+        if (task != null)
+          return task;
+        return new Promise((resolve) => {
+          const off = this.emitter.on("task", () => {
+            const task2 = this.tasks.pop();
+            if (task2 != null) {
+              resolve(task2);
+              off();
+            }
+          });
+        });
+      });
+    }
+    consumeTask() {
+      return __async(this, null, function* () {
+        if (!this.running)
+          return;
+        const task = yield this.pop();
+        debug$1("run task", task.name, ", with priority:", task.priority);
+        try {
+          yield task == null ? void 0 : task.run();
+        } catch (e) {
+          console.warn("Task run failed:", e);
+        } finally {
+          debug$1("end task", task.name);
+        }
+      });
+    }
+    comsumeLoop() {
+      return __async(this, null, function* () {
+        while (this.running) {
+          yield this.consumeTask();
+        }
+      });
+    }
+    dispose() {
+      this.emitter.dispose();
+      this.running = false;
+    }
   }
   class HoWHttpClientForWindow {
     constructor(getFingerprint, pcConnectTimeout, dcOpenTimeout) {
@@ -7489,12 +7964,12 @@ a=end-of-candidates
     }
     fetch(ctx, request) {
       return __async(this, null, function* () {
-        var _a;
+        var _a, _b;
         const id = uuid();
         const fingerprint = this.getFingerprint(new URL(request.url).host);
         const resp = yield this.hoW.fetch(ctx, id, request, fingerprint);
-        ctx.set("downloadConnectionTime", getDownloadConnectionTime(ctx));
-        ctx.set("downloadStartTransferTime", (_a = ctx.get("hoWStartTransferTime")) != null ? _a : -1);
+        ctx.set("downloadConnectionAt", (_a = ctx.get("hoWDataChannelOpenAt")) != null ? _a : -1);
+        ctx.set("downloadStartTransferAt", (_b = ctx.get("hoWStartTransferAt")) != null ? _b : -1);
         return resp;
       });
     }
@@ -7502,38 +7977,56 @@ a=end-of-candidates
       this.hoW.dispose();
     }
   }
-  function getDownloadConnectionTime(ctx) {
-    const peerConnectionConnectTime = ctx.get("hoWPeerConnectionConnectTime");
-    const dataChannelOpenTime = ctx.get("hoWDataChannelOpenTime");
-    if (peerConnectionConnectTime == null || peerConnectionConnectTime < 0 || dataChannelOpenTime == null || dataChannelOpenTime < 0)
-      return -1;
-    return peerConnectionConnectTime + dataChannelOpenTime;
+  class HoWHttpClientForSW {
+    constructor(getFingerprint, timeout) {
+      __publicField(this, "client");
+      this.getFingerprint = getFingerprint;
+      if (!isInServiceWorker())
+        throw new Error("HoWHttpClientForSW should be used in Service Worker");
+      this.client = new HoWClient(timeout);
+    }
+    fetch(ctx, request) {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d;
+        const id = uuid();
+        const fingerprint = this.getFingerprint(new URL(request.url).host);
+        const resp = yield this.client.fetch(ctx, id, request, fingerprint);
+        ctx.set("downloadReqMessageAt", (_a = ctx.get("hoWReqMessageAt")) != null ? _a : -1);
+        ctx.set("downloadConnectionAt", (_b = ctx.get("hoWDataChannelOpenAt")) != null ? _b : -1);
+        ctx.set("downloadStartTransferAt", (_c = ctx.get("hoWStartTransferAt")) != null ? _c : -1);
+        ctx.set("downloadRespMessageAt", (_d = ctx.get("hoWRespMessageAt")) != null ? _d : -1);
+        return resp;
+      });
+    }
+    dispose() {
+      this.client.dispose();
+    }
   }
   function isInServiceWorker() {
     const scope2 = self;
     return !!(scope2.clients && scope2.registration);
   }
   const defaultWorkersCount = 10;
-  function createHoWHttpForWindow(logger, app, config) {
-    const resolver = new Resolver(logger, app, config == null ? void 0 : config.dnsResolver);
-    const httpClient = new HoWHttpClientForWindow((ipPort) => resolver.getFingerprint(ipPort));
-    return new Http(logger, resolver, httpClient);
-  }
   class Client {
     constructor(appInfo, config) {
       __publicField(this, "fileTasks", /* @__PURE__ */ new Map());
       __publicField(this, "taskq");
       __publicField(this, "cache");
       __publicField(this, "cacheUrlFn");
+      __publicField(this, "resolver");
       __publicField(this, "http");
+      __publicField(this, "logger");
       var _a, _b, _c, _d;
-      this.appInfo = appInfo;
       if (config == null ? void 0 : config.debug)
         enableDebug();
-      this.cache = new Cache(config == null ? void 0 : config.cache);
+      this.cache = new DataCache(config == null ? void 0 : config.cache);
       this.cacheUrlFn = (_a = config == null ? void 0 : config.cacheUrl) != null ? _a : defaultHash;
-      const logger = (_b = config == null ? void 0 : config.logger) != null ? _b : new Logger(appInfo);
-      this.http = (_c = config == null ? void 0 : config.http) != null ? _c : createHoWHttpForWindow(logger, appInfo, config);
+      this.logger = (_b = config == null ? void 0 : config.logger) != null ? _b : new Logger(appInfo);
+      this.resolver = new Resolver(this.logger, appInfo, config == null ? void 0 : config.dnsResolver);
+      const httpClient = (_c = config == null ? void 0 : config.httpClient) != null ? _c : new HoWHttpClientForWindow(
+        (ipPort) => this.resolver.getFingerprint(ipPort)
+      );
+      this.http = new Http(this.logger, this.resolver, httpClient);
       this.taskq = new TaskQueue((_d = config == null ? void 0 : config.workersCount) != null ? _d : defaultWorkersCount);
     }
     createTask(url, range) {
@@ -7541,16 +8034,27 @@ a=end-of-candidates
       if (hashIdx >= 0) {
         url = url.slice(0, hashIdx);
       }
-      return new Task(this, url, range != null ? range : null, Number.POSITIVE_INFINITY);
+      return new Task(url, range != null ? range : null, Number.POSITIVE_INFINITY, (t) => {
+        return this.startTaskNatively(t);
+      });
     }
-    startTask(task) {
+    fileTaskFor(task) {
       const key = this.cacheUrlFn(task.url);
       let fileTask = this.fileTasks.get(key);
       if (fileTask == null) {
-        fileTask = new FileTask(this.taskq, this.cache, this.http, key, task.url);
+        fileTask = new FileTask(this.taskq, this.cache, this.http, key, task.url, this.logger);
         this.fileTasks.set(key, fileTask);
       }
+      return fileTask;
+    }
+    startTask(task) {
+      const fileTask = this.fileTaskFor(task);
       const result = fileTask.startTask(task);
+      return result;
+    }
+    startTaskNatively(task) {
+      const fileTask = this.fileTaskFor(task);
+      const result = fileTask.startTaskNatively(task);
       return result;
     }
     dispose() {
@@ -7561,88 +8065,117 @@ a=end-of-candidates
   function defaultHash(url) {
     return url;
   }
+  function isProxyMessage(message) {
+    return message && message.mikuProxy === true;
+  }
+  const defaultPatterns = [imagePattern, videoPattern];
+  function proxyRequest(client, request) {
+    return __async(this, null, function* () {
+      var _a, _b;
+      const httpRange = httpGetRange(request.headers);
+      const range = httpRange == null ? void 0 : {
+        start: httpRange.start,
+        end: httpRange.end == null ? null : httpRange.end + 1
+      };
+      const task = client.createTask(request.url, range != null ? range : void 0);
+      waitAbort(request.signal).catch((e) => {
+        task.cancel(e);
+      });
+      let { stream, contentType, size, fileSize, response } = yield task.start();
+      if (response == null) {
+        const headers = {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": contentType != null ? contentType : "",
+          "Content-Length": (size != null ? size : "") + "",
+          "Content-Transfer-Encoding": "binary"
+        };
+        response = range == null ? new Response(stream, { status: 200, statusText: "OK", headers }) : new Response(stream, { status: 206, statusText: "Partial Content", headers: __spreadProps(__spreadValues({}, headers), {
+          "Content-Range": stringifyContentRange({
+            start: (_a = range.start) != null ? _a : 0,
+            end: (_b = range.end) != null ? _b : fileSize != null ? fileSize - 1 : null,
+            totalSize: fileSize
+          })
+        }) });
+      }
+      return response;
+    });
+  }
   const configQueryName = "MIKU_PROXY_CONFIG";
-  function getScriptUrl(scriptUrl, config) {
+  function getProxyConfig(scriptUrl) {
     var _a;
-    const serializableConfig = __spreadProps(__spreadValues({}, config), {
-      patterns: (_a = config.patterns) == null ? void 0 : _a.map((re) => ({ source: re.source, flags: re.flags }))
-    });
-    return appendQuery(scriptUrl, { [configQueryName]: JSON.stringify(serializableConfig) });
-  }
-  function registerSW(scriptUrl, config, options) {
-    return __async(this, null, function* () {
-      const reason = checkAbility();
-      if (reason != null) {
-        console.warn("Ability not OK for Miku SDK:", reason);
-        return;
-      }
-      if (config.debug)
-        enableDebug();
-      scriptUrl = getScriptUrl(scriptUrl, config);
-      yield navigator.serviceWorker.register(scriptUrl, options);
+    const search = scriptUrl.split("?")[1];
+    if (!search)
+      throw new Error("Invalid script url");
+    const params = new URLSearchParams(search);
+    const configText = params.get(configQueryName);
+    if (configText == null)
+      throw new Error("Invalid script url: no config info");
+    const serializableConfig = JSON.parse(configText);
+    return __spreadProps(__spreadValues({}, serializableConfig), {
+      patterns: (_a = serializableConfig.patterns) == null ? void 0 : _a.map(({ source, flags }) => new RegExp(source, flags))
     });
   }
-  function initPage() {
-    return __async(this, null, function* () {
-      const reason = checkAbility();
-      if (reason != null) {
-        console.warn("Ability not OK for Miku SDK:", reason);
-        return;
-      }
-      new HoWService().run();
-      syncWindowStatus();
-    });
+  function shouldUseCDN(request, { domains, patterns = defaultPatterns }) {
+    if (request.method !== "GET")
+      return false;
+    const reqUrlObj = new URL(request.url);
+    if (!domains.includes(reqUrlObj.hostname))
+      return false;
+    reqUrlObj.search = "";
+    reqUrlObj.hash = "";
+    const reqUrlWithoutQueryHash = reqUrlObj.toString();
+    return patterns.some((pattern) => pattern.test(reqUrlWithoutQueryHash));
   }
-  function syncWindowStatus() {
-    function notify(state) {
-      var _a;
-      const message = { mikuProxy: true, type: `window-${state}` };
-      (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
+  const debug = getDebug("proxy/service-worker");
+  const scope = self;
+  const proxyConfig = getProxyConfig(scope.location.href);
+  const mikuClient = createClientForSW(proxyConfig);
+  scope.addEventListener("activate", (event) => {
+    event.waitUntil(scope.clients.claim());
+  });
+  scope.addEventListener("fetch", (event) => __async(this, null, function* () {
+    if (event.clientId !== "") {
+      swClients.add(event.clientId);
     }
-    notify("available");
-    window.addEventListener("pageshow", () => notify("available"));
-    window.addEventListener("pagehide", () => notify("unavailable"));
-    window.addEventListener("beforeunload", () => notify("unavailable"));
+    const request = event.request;
+    const abortCtrl = new AbortController();
+    Object.defineProperty(request, "signal", { value: abortCtrl.signal });
+    swClients.whenRemoved(event.clientId, () => abortCtrl.abort(new AbortError(`Source client ${event.clientId} closed`)));
+    if (shouldUseCDN(request, proxyConfig)) {
+      debug("use cdn", request.url);
+      event.respondWith(proxyRequest(mikuClient, request).catch((e) => {
+        if (e instanceof NonECDNError || e instanceof NoAvailableECDNNodeError) {
+          debug("Use fallback fetch for request", request.url, `, error:`, e);
+          return fetch(request, { signal: abortCtrl.signal });
+        }
+        throw e;
+      }));
+      return;
+    }
+  }));
+  scope.addEventListener("message", (e) => __async(this, null, function* () {
+    if (!(e.source instanceof WindowClient))
+      return;
+    if (!isProxyMessage(e.data))
+      return;
+    debug("got proxy message", e.data, "from", e.source.id);
+    switch (e.data.type) {
+      case "window-available":
+        swClients.add(e.source.id);
+        break;
+      case "window-unavailable":
+        swClients.remove(e.source.id);
+        break;
+    }
+  }));
+  function createClientForSW(proxyConfig2) {
+    var _a;
+    const clientConfig = (_a = proxyConfig2.client) != null ? _a : {};
+    clientConfig.debug = proxyConfig2.debug;
+    const logger = new Logger(proxyConfig2.app, void 0, void 0, 3);
+    const resolver = new Resolver(logger, proxyConfig2.app);
+    const httpClient = new HoWHttpClientForSW((ipPort) => resolver.getFingerprint(ipPort));
+    return new Client(proxyConfig2.app, __spreadProps(__spreadValues({}, clientConfig), { logger, httpClient }));
   }
-  function initProxy(scriptUrl, config, options) {
-    return __async(this, null, function* () {
-      yield Promise.all([
-        initPage(),
-        registerSW(scriptUrl, config, options)
-      ]);
-    });
-  }
-  function checkAbility() {
-    var _a, _b, _c, _d;
-    if (!("serviceWorker" in navigator))
-      return "navigator.serviceWorker not available";
-    const { engine, browser, device } = uaParser(navigator.userAgent);
-    if (engine.name !== "Blink")
-      return "Response() constructor does not accept ReadableByteStream as body";
-    if (browser.name === "Chrome" || browser.name === "Chromium") {
-      if (parseInt((_a = browser.version) != null ? _a : "0", 10) < 56)
-        return "WebRTC not fully supported";
-    }
-    if (browser.name === "Edge") {
-      if (parseInt((_b = browser.version) != null ? _b : "0", 10) < 79)
-        return "WebRTC not fully supported";
-    }
-    if (browser.name === "Safari") {
-      if (parseInt((_c = browser.version) != null ? _c : "0", 10) < 11)
-        return "WebRTC not fully supported";
-    }
-    if (browser.name === "Firefox") {
-      if (parseInt((_d = browser.version) != null ? _d : "0", 10) < 44)
-        return "WebRTC not fully supported";
-    }
-    if (device.type === "mobile")
-      return "Mobile device";
-    return null;
-  }
-  exports.Client = Client;
-  exports.initPage = initPage;
-  exports.initProxy = initProxy;
-  exports.registerSW = registerSW;
-  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
-  return exports;
-}({});
+})();
