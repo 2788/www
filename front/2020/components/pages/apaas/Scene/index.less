@@ -1,0 +1,141 @@
+@import "~utils/less/index.less";
+
+@block-height: 304px;
+
+.scenePanel {
+  padding: 0 10px;
+
+  .mobile({
+    padding: 0;
+  });
+
+  .sceneIcon {
+    width: 460px;
+    height: @block-height;
+    box-shadow: 0px 4px 8px rgba(51, 51, 51, 0.08);
+
+    .mobile({
+      width: 100%;
+      height: auto;
+    });
+  }
+
+  .blockRight {
+    padding-left: 24px;
+    margin-left: 0 !important;
+
+    .mobile({
+      padding: 0 16px;
+    });
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: @grey-6;
+    }
+  }
+
+  .sceneTitle {
+    margin-bottom: 9px;
+    font-size: 16px;
+    font-weight: 500;
+    color: @grey-7;
+    line-height: 22px;
+  }
+
+  .sceneBtnPanelWrapper {
+    position: relative;
+    margin-bottom: 24px;
+
+    .qrCodePanel {
+      position: absolute;
+      display: flex;
+      top: -12px;
+      width: 360px;
+      height: 226px;
+      padding: 20px 14px;
+      background-color: #FFF;
+      box-shadow: 0px 4px 8px rgba(51, 51, 51, 0.08);
+      transform: translateY(-100%);
+      justify-content: center;
+
+      &.hidden {
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity .2s;
+      }
+
+      .itemWrapper {
+        margin: 0 6px;
+
+        .itemTitle {
+          .setFontSize(14px);
+          margin-bottom: 10px;
+          text-align: center;
+        }
+
+        .qrCodeWrapper {
+          padding: 8px;
+          border: 1px solid #EEE;
+
+          .qrCode {
+            height: 138px;
+            width: 138px;
+          }
+        }
+      }
+    }
+
+    .sceneBtnWrapper {
+      button, a {
+        margin-right: 16px;
+
+        .mobile({
+          width: auto;
+          padding: 0;
+          color: @primary-color;
+          border: none;
+          background: none;
+        });
+      }
+
+      .btn {
+        width: auto;
+        padding: 0 16px;
+
+        .mobile({
+          padding: 0;
+        });
+      }
+    }
+  }
+
+  .list {
+    &:not(:last-child) {
+      margin-bottom: 21px;
+      .mobile({
+        margin-bottom: 16px;
+      });
+    }
+
+    .descItem {
+      margin-bottom: 9px;
+      line-height: 2;
+    }
+
+    .item {
+      .dot-item();
+      margin-bottom: 9px;
+      line-height: 2;
+
+      .title {
+        color: @grey-7;
+        margin-right: 15px;
+      }
+
+      .content {
+        display: inline;
+      }
+    }
+  }
+}

@@ -25,7 +25,7 @@ export default function UsageGuide({ title, description, children }: Props) {
       <div className={style.content}>
         <div className={style.textContent}>
           <h3 className={style.title}>{title}</h3>
-          <p className={style.description}>{description}</p>
+          {description && <p className={style.description}>{description}</p>}
         </div>
         <div className={style.opContent}>
           {children}
@@ -43,5 +43,5 @@ export function Button(props: ButtonProps) {
     style.button
   ].filter(Boolean).join(' ')
 
-  return <UIButton {...props} className={className} />
+  return <UIButton type="primary" {...props} className={className} />
 }

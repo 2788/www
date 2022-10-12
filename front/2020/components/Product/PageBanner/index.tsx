@@ -74,7 +74,7 @@ export default function PageBanner(props: IPageBannerProps) {
     }
     : {
       backgroundImage: `url("${bgImgUrl}")`,
-      backgroundPosition: 'center',
+      backgroundPosition: isMobile ? 'right 0px center' : 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundColor: bgColor

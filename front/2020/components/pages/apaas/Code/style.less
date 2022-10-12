@@ -1,0 +1,81 @@
+@import "~utils/less/index.less";
+
+.content {
+  padding-top: 36px;
+
+  .mobile({
+    padding-top: 20px;
+  });
+}
+
+.codeWrapper {
+  height: 300px;
+  padding: 20px 24px;
+  border-radius: 4px;
+  background: #333;
+
+  .code {
+    .setFontSize(14px);
+    padding: 0;
+    background: #333;
+    color: #fff;
+  }
+
+  .mobile({
+    height: 286px;
+    padding: 11px;
+    font-size: 12px;
+    white-space: pre-wrap;
+  });
+}
+
+.stepsTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 500;
+
+  .mobile({
+    margin-top: 16px;
+    margin-bottom: 14px;
+    font-size: 16px;
+  });
+}
+
+.stepCard {
+  margin: 0;
+  padding-left: 36px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  border: 1px solid #E5EDF4;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.02);
+  border-radius: 2px;
+
+  .mobile({
+    margin-top: 10px;
+  });
+
+  .number {
+    margin-right: 8px;
+    font-weight: 500;
+  }
+}
+
+.arrowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+
+  .pcLg({
+    width: 80px;
+  });
+
+  .mobile({
+    display: none;
+  });
+}

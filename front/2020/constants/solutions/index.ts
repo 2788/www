@@ -16,6 +16,7 @@ import imLargeIconUrl from './images/large/im.png'
 import socialLargeIconUrl from './images/large/social.png'
 import genLargeIconUrl from './images/large/gen.png'
 import entertainmentLargeIconUrl from './images/large/entertainment.png'
+import ApaasLargeIconUrl from './images/large/apaas.png'
 
 export enum Solution {
   /** 金融行业 */
@@ -53,11 +54,14 @@ export enum Solution {
   /** 云存储一体机 */
   Storage = 'storage',
   /** 新媒体 */
-  Medium = 'medium'
+  Medium = 'medium',
+  /** 低代码音视频工厂 */
+  Apaas = 'Apaas'
 }
 
 export enum Category {
   Media = 'media',
+  LowCode = 'lowCode',
   Storage = 'storage',
   Industry = 'industry',
   Consumer = 'consumer'
@@ -65,6 +69,7 @@ export enum Category {
 
 export const categories = [
   Category.Media,
+  Category.LowCode,
   Category.Storage,
   Category.Industry,
   Category.Consumer
@@ -72,6 +77,7 @@ export const categories = [
 
 export const categoryNameMap = {
   [Category.Media]: '音视频解决方案',
+  [Category.LowCode]: '低代码解决方案',
   [Category.Storage]: '存储解决方案',
   [Category.Industry]: '行业解决方案',
   [Category.Consumer]: '消费互联网解决方案'
@@ -79,6 +85,7 @@ export const categoryNameMap = {
 
 export const categoryNameMapForMp = {
   [Category.Media]: '音视频',
+  [Category.LowCode]: '低代码',
   [Category.Storage]: '存储',
   [Category.Industry]: '行业',
   [Category.Consumer]: '消费互联网'
@@ -86,6 +93,7 @@ export const categoryNameMapForMp = {
 
 export const categoryEnNameMap = {
   [Category.Media]: 'Solutions by Media',
+  [Category.LowCode]: 'Solutions by LowCode',
   [Category.Storage]: 'Solutions by Storage',
   [Category.Industry]: 'Solutions by Industry',
   [Category.Consumer]: 'Solutions by Consumer Internet'
@@ -93,6 +101,7 @@ export const categoryEnNameMap = {
 
 export const categorySolutionsMap = {
   [Category.Media]: [Solution.Rtclive, Solution.Plsv, Solution.Entlive],
+  [Category.LowCode]: [Solution.Apaas],
   [Category.Storage]: [Solution.Kodoe, Solution.Ess, Solution.Storage],
   [Category.Industry]: [
     Solution.Fin, Solution.Automobile, Solution.Gene, Solution.IntelligentManufacturing,
@@ -144,7 +153,8 @@ export const nameMap: MapTo<string> = {
   [Solution.Kodoe]: '私有云存储',
   [Solution.Vcs]: '视频冷存储',
   [Solution.Ess]: '监控视频边缘存储',
-  [Solution.Storage]: '云存储一体机'
+  [Solution.Storage]: '云存储一体机',
+  [Solution.Apaas]: '音视频低代码工厂'
 } as const
 
 export const urlMap: MapTo<string | null> = {
@@ -165,7 +175,8 @@ export const urlMap: MapTo<string | null> = {
   [Solution.Isp]: null,
   [Solution.Gene]: '/solutions/gene',
   [Solution.Entertainment]: '/solutions/entertainment',
-  [Solution.Medium]: null
+  [Solution.Medium]: null,
+  [Solution.Apaas]: '/solutions/apaas'
 } as const
 
 export const descMap: MapTo<string> = {
@@ -186,7 +197,8 @@ export const descMap: MapTo<string> = {
   [Solution.Isp]: '为运营商的中长期架构演进路线提供全方位的技术咨询和一站式方案服务',
   [Solution.Gene]: '集计算和存储为一体的一站式基因测序解决方案',
   [Solution.Entertainment]: '丰富的内容生产工具和音视频服务，助力企业快速构建泛娱乐应用',
-  [Solution.Medium]: ''
+  [Solution.Medium]: '',
+  [Solution.Apaas]: '提供易接入、强扩展、高效部署和覆盖多场景的音视频服务，助力企业快速搭建业务平台'
 } as const
 
 // 32px的icon，默认除导航栏均为该类型
@@ -208,7 +220,8 @@ export const iconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Isp]: require('./images/default/isp.svg').default,
   [Solution.Gene]: require('./images/default/gen.svg').default,
   [Solution.Entertainment]: require('./images/default/entertainment.svg').default,
-  [Solution.Medium]: null
+  [Solution.Medium]: null,
+  [Solution.Apaas]: require('./images/default/apaas.svg').default
 } as const
 
 // 24px的icon，导航栏使用
@@ -230,7 +243,8 @@ export const smallIconMap: MapTo<FC<SVGAttributes<SVGElement>> | null> = {
   [Solution.Isp]: require('./images/small/isp.svg').default,
   [Solution.Gene]: require('./images/small/gen.svg').default,
   [Solution.Entertainment]: require('./images/small/entertainment.svg').default,
-  [Solution.Medium]: null
+  [Solution.Medium]: null,
+  [Solution.Apaas]: require('./images/small/apaas.svg').default
 } as const
 
 // 96px 的 icon，相关推荐用
@@ -252,7 +266,8 @@ export const largeIconMap: MapTo<string | null> = {
   [Solution.Isp]: null,
   [Solution.Gene]: genLargeIconUrl,
   [Solution.Entertainment]: entertainmentLargeIconUrl,
-  [Solution.Medium]: null
+  [Solution.Medium]: null,
+  [Solution.Apaas]: ApaasLargeIconUrl
 }
 
 export const allSolutions = categories.reduce(

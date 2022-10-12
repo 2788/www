@@ -1,16 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
-    <title>直播32*32</title>
-    <desc>Created with Sketch.</desc>
-    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="icon" transform="translate(-388.000000, -288.000000)" stroke-width="2">
-            <g id="直播备份" transform="translate(390.000000, 292.000000)">
-                <polygon id="三角形备份-6" stroke="#00AAE6" transform="translate(14.480130, 14.000000) rotate(-270.000000) translate(-14.480130, -14.000000) " points="14.4801295 10 18.4801295 18 10.4801295 18"></polygon>
-                <rect id="矩形备份-20" stroke="#333333" x="0" y="4" width="28" height="20"></rect>
-                <path d="M6,0 L10,4" id="直线-8备份-3" stroke="#333333"></path>
-                <path d="M18,0 L22,4" id="直线-8备份-6" stroke="#333333" transform="translate(20.000000, 2.000000) scale(-1, 1) translate(-20.000000, -2.000000) "></path>
-            </g>
-        </g>
-    </g>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3 3H29V21H31V23H21.1742L25.7593 28.3492L24.2407 29.6508L18.5401 23H17V29H15V23H13.4599L7.75926 29.6508L6.24074 28.3492L10.8258 23H1V21H3V3ZM5 21H27V5H5V21Z" fill="#333333"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20 13L12 17L12 9L20 13Z" stroke="#00AAE6" stroke-width="2"/>
 </svg>

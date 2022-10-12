@@ -46,12 +46,24 @@ export type SectionProps = Pick<BlockProps, 'name' | 'title' | 'render'> & {
   grey?: boolean
   style?: CSSProperties
   className?: string
+  rootClassName?: string
   /** 是否一定有下边距（默认为 false，此时对于移动端的最后一个 Section，会取消下边距） */
   withTailPadding?: boolean
 }
 
 export default function Section(props: SectionProps) {
-  const { name, title, subtitle = null, header, children, grey: propGrey, withTailPadding, render, ...rest } = props
+  const {
+    name,
+    title,
+    subtitle = null,
+    header,
+    children,
+    grey: propGrey,
+    withTailPadding,
+    render,
+    rootClassName,
+    ...rest
+  } = props
 
   const isMobile = useMobile()
   const isPc = !isMobile
@@ -64,7 +76,7 @@ export default function Section(props: SectionProps) {
   const defaultGrey = isPc ? greyByIndex : false
   const grey = propGrey != null && isPc ? propGrey : defaultGrey
   const isLast = blockIndex === blocks.length - 1
-  const blockClassName = classnames(style.blockWraper, grey && style.grey)
+  const blockClassName = classnames(style.blockWraper, grey && style.grey, rootClassName)
   const wrapperClassName = classnames(
     style.wrapper,
     props.className,

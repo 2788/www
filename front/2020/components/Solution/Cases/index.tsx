@@ -53,10 +53,11 @@ export function InvisibleCase() {
 export type CaseProps = PropsWithChildren<{
   logo: string
   title: string
+  logoClassName?: string
   onConsult: () => void
 }>
 
-export function Case({ logo, title, onConsult, children }: CaseProps) {
+export function Case({ logo, title, logoClassName, onConsult, children }: CaseProps) {
   const contextValue = useContext(caseContext)
   if (!contextValue) {
     throw new Error('Component Case should be used in Cases.')
@@ -65,7 +66,7 @@ export function Case({ logo, title, onConsult, children }: CaseProps) {
   return (
     <section className={cls(style.case, vertical && style.vertical)}>
       <div className={style.logoWrapper}>
-        <img src={logo} alt={title} className={style.logo} />
+        <img src={logo} alt={title} className={cls(style.logo, logoClassName)} />
       </div>
       <div className={style.content}>
         <h5 className={style.title}>{title}</h5>

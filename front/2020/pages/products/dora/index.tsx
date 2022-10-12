@@ -36,7 +36,8 @@ import Customer6Icon from './_images/客户-虎扑.png'
 import Customer7Icon from './_images/客户-房多多.png'
 import Customer8Icon from './_images/客户-小红书.png'
 
-import bgImgUrl from './_images/banner.jpg'
+import pcBgImgUrl from './_images/banner.jpg'
+import mobileBgImgUrl from './_images/banner-mobile.jpg'
 
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
@@ -64,7 +65,7 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
         desc="智能多媒体服务（Dora），是一种零运维、高可用、高性能的多媒体数据处理服务。提供图片处理、音视频转码、水印、截图、瘦身等基础功能，并基于海量数据深度学习，对媒体内容实现智能审核、智能识别、智能标签。"
         bgColor="#18243C"
         btns={btns.banner}
-        bgImgUrl={bgImgUrl} />
+        bgImgUrl={isMobile ? mobileBgImgUrl : pcBgImgUrl} />
 
       <ProductNotice {...(currentNotices || notices)} />
 

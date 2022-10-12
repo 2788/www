@@ -16,6 +16,9 @@ export type BtnOptions = {
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
   target?: string // 同 <a> 标签 target 属性，同站点页面默认在当前标签页打开，非同站点页面默认新标签页打开
+  className?: string
+  onMouseEnter?: Props['onMouseEnter']
+  onMouseLeave?: Props['onMouseLeave']
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void
 } | {
   type?: Props['type'],
@@ -24,6 +27,9 @@ export type BtnOptions = {
   mpOnly?: boolean // 是否仅小程序，默认 false
   pcOnly?: boolean // 是否仅 PC，默认 false
   mobileOnly?: boolean // 是否仅移动端，默认 false
+  className?: string
+  onMouseEnter?: Props['onMouseEnter']
+  onMouseLeave?: Props['onMouseLeave']
 }
 
 export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
