@@ -53,13 +53,8 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-var miku = function(exports) {
+(function() {
   "use strict";
-  function appendQuery(url, params) {
-    const querystring = new URLSearchParams(params).toString();
-    const sep = url.includes("?") ? "&" : "?";
-    return url + sep + querystring;
-  }
   function uuid() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
     const charNum = chars.length;
@@ -124,6 +119,7 @@ var miku = function(exports) {
       }
     });
   }
+  const imagePattern = /\.(jpe?g|png|gif|webp|svg|bmp|ico|tiff)$/;
   const videoPattern = /\.(3gp|aac|flac|mpe?g|mp3|mp4|m4a|m4v|m4p|oga|ogg|ogv|wav|webm|mov)$/;
   function removeQueryHash(url) {
     const urlObj = new URL(url);
@@ -195,6 +191,76 @@ var miku = function(exports) {
       this.map.clear();
     }
   }
+  const scope$2 = self;
+  const debug$a = getDebug("utils/sw/clients");
+  class SWClients {
+    constructor(swScope = scope$2) {
+      __publicField(this, "clientIds", []);
+      __publicField(this, "removed", /* @__PURE__ */ new Set());
+      __publicField(this, "emitter", new Emitter());
+      this.swScope = swScope;
+    }
+    add(id) {
+      if (this.clientIds.includes(id))
+        return;
+      if (this.removed.has(id))
+        return;
+      this.clientIds.push(id);
+      debug$a("add", id, this.clientIds);
+    }
+    remove(id) {
+      const i = this.clientIds.indexOf(id);
+      if (i < 0)
+        return;
+      this.clientIds.splice(i, 1);
+      this.removed.add(id);
+      this.emitter.emit("remove", id);
+      debug$a("remove", id, this.clientIds);
+    }
+    set(newIds) {
+      const oldIds = this.clientIds;
+      const kept = [];
+      const removed = [];
+      oldIds.forEach((o) => {
+        const idxInNew = newIds.indexOf(o);
+        if (idxInNew >= 0) {
+          kept.push(o);
+          newIds.splice(idxInNew, 1);
+        } else {
+          removed.push(o);
+        }
+      });
+      this.clientIds = [...kept, ...newIds];
+      removed.forEach((r) => {
+        this.emitter.emit("remove", r);
+      });
+      if (removed.length > 0 || newIds.length > 0) {
+        debug$a("set", this.clientIds);
+      }
+    }
+    getAllIds() {
+      return this.clientIds;
+    }
+    getAll() {
+      return __async(this, null, function* () {
+        const clients = (yield this.swScope.clients.matchAll({ type: "window" })).slice();
+        clients.reverse();
+        this.set(clients.map((c) => c.id));
+        return this.clientIds.map((id) => clients.find((c) => c.id === id));
+      });
+    }
+    whenRemoved(id, cb) {
+      if (!this.clientIds.includes(id))
+        return;
+      const unlisten = this.emitter.on("remove", (removedId) => {
+        if (removedId !== id)
+          return;
+        unlisten();
+        cb();
+      });
+    }
+  }
+  const swClients = new SWClients();
   function slice(stream, range) {
     var _a;
     const reader = stream.getReader();
@@ -350,11 +416,156 @@ var miku = function(exports) {
     });
     return res;
   }
+  const debug$9 = getDebug("http/webrtc/client");
   const messageEmitter = new Emitter();
-  let scope;
+  let scope$1;
   if (typeof self !== "undefined") {
-    scope = self;
-    scope.addEventListener("message", (e) => messageEmitter.emit("message", e));
+    scope$1 = self;
+    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
+  }
+  class HoWMessageError extends Error {
+    constructor(name, message) {
+      super(message);
+      this.name = name;
+    }
+  }
+  class HoWClient {
+    constructor(timeout = 30 * 1e3) {
+      this.timeout = timeout;
+    }
+    sendBody(client, id, body2) {
+      return __async(this, null, function* () {
+        const reader = body2.getReader();
+        while (true) {
+          const { value, done } = yield reader.read();
+          if (done) {
+            const message2 = { hoW: true, type: "req-body-chunk", id, payload: null };
+            client.postMessage(message2);
+            return;
+          }
+          const message = { hoW: true, type: "req-body-chunk", id, payload: value.buffer };
+          client.postMessage(message, [value.buffer]);
+        }
+      });
+    }
+    sendAbort(client, id, reason) {
+      const message = {
+        hoW: true,
+        type: "req-abort",
+        id,
+        reason: reason instanceof AbortError ? reason.message : reason + ""
+      };
+      client.postMessage(message);
+    }
+    sendRequest(client, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        debug$9("sendRequest in Service Worker", id, request);
+        const { body: body2, url, method, headers } = request;
+        const message = {
+          hoW: true,
+          type: "req-head",
+          id,
+          url,
+          method,
+          headers: dehydrateHeaders(headers),
+          fingerprint,
+          hasBody: body2 != null
+        };
+        client.postMessage(message);
+        waitAbort(request.signal).catch((e) => {
+          this.sendAbort(client, id, e);
+        });
+        if (body2 != null) {
+          yield this.sendBody(client, id, body2);
+        }
+      });
+    }
+    receiveResponse(ctx, signal, client, id) {
+      return __async(this, null, function* () {
+        let streamCtrl;
+        const disposers = [];
+        let finished = false;
+        const finish = (cb) => {
+          if (finished)
+            return;
+          finished = true;
+          disposers.forEach((d) => d());
+          disposers.length = 0;
+          cb == null ? void 0 : cb();
+        };
+        return new Promise((resolve, reject) => {
+          disposers.push(messageEmitter.on("message", ({ data }) => {
+            if (!isHoWMessage(data))
+              return;
+            if (data.id !== id)
+              return;
+            if (data.type === "resp-head") {
+              debug$9("Message resp-head", data);
+              ctx.set("hoWReqMessageAt", data.reqMessageAt);
+              ctx.set("hoWPeerConnectionConnectAt", data.peerConnectionConnectAt);
+              ctx.set("hoWDataChannelOpenAt", data.dataChannelOpenAt);
+              ctx.set("hoWStartTransferAt", data.startTransferAt);
+              ctx.set("hoWRespMessageAt", Date.now());
+              if (!data.hasBody) {
+                debug$9("Resolve with no body");
+                finish(() => resolve(new HttpResponse(null, data)));
+                return;
+              }
+              const bodyStream = new ReadableStream({
+                start: (ctrl) => streamCtrl = ctrl,
+                cancel: (reason) => {
+                  console.warn("receiveResponse cancelled:", reason);
+                  finish(() => {
+                    this.sendAbort(client, id, reason != null ? reason : "Body stream cancelled by reader");
+                  });
+                }
+              });
+              const response = new HttpResponse(bodyStream, data);
+              debug$9("Resolve with body", response);
+              resolve(response);
+              return;
+            }
+            if (data.type === "resp-body-chunk") {
+              if (streamCtrl == null)
+                throw new Error("Stream Controller should be ready");
+              if (data.payload == null) {
+                finish(() => streamCtrl.close());
+                return;
+              }
+              streamCtrl.enqueue(new Uint8Array(data.payload));
+              return;
+            }
+            if (data.type === "resp-error") {
+              finish(() => reject(new HoWMessageError(data.name, data.message)));
+              return;
+            }
+          }));
+          waitAbort(signal).catch((e) => {
+            finish(() => streamCtrl == null ? reject(e) : streamCtrl.error(e));
+          });
+        });
+      });
+    }
+    fetch(ctx, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        const windowClients = yield swClients.getAll();
+        if (windowClients.length === 0)
+          throw new WindowClientError("No available window client");
+        const windowClient = windowClients[0];
+        this.sendRequest(windowClient, id, request, fingerprint);
+        const responseReceived = this.receiveResponse(ctx, request.signal, windowClient, id);
+        const windowClosed = new Promise((_, reject) => {
+          swClients.whenRemoved(windowClient.id, () => reject(new WindowClientError(`Target window client ${windowClient.id} closed`)));
+        });
+        return Promise.race([
+          responseReceived,
+          windowClosed,
+          waitTimeout(this.timeout, "HoWClient fetch")
+        ]);
+      });
+    }
+    dispose() {
+    }
   }
   class WindowClientError extends Error {
     constructor() {
@@ -384,6 +595,11 @@ var miku = function(exports) {
     const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
     const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
     return { totalSize, start, end };
+  }
+  function stringifyContentRange(v) {
+    const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
+    const size = v.totalSize == null ? "*" : v.totalSize + "";
+    return `bytes ${range}/${size}`;
   }
   function atoi(v) {
     return !v ? null : Number(v);
@@ -472,7 +688,7 @@ var miku = function(exports) {
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
   const useTcp = true;
-  const debug$7 = getDebug("http/webrtc/how");
+  const debug$8 = getDebug("http/webrtc/how");
   class HoW {
     constructor(pcConnectTimeout = 10 * 1e3, dcOpenTimeout = 3 * 1e3) {
       __publicField(this, "pcMap", /* @__PURE__ */ new Map());
@@ -525,7 +741,7 @@ var miku = function(exports) {
     }
     fetch(ctx, id, request, fingerprint) {
       return __async(this, null, function* () {
-        debug$7("fetch", request.url, "with id", id);
+        debug$8("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
         const pc = yield this.getPc(request.signal, target, fingerprint);
         ctx.set("hoWPeerConnectionConnectAt", Date.now());
@@ -595,7 +811,7 @@ a=end-of-candidates
     const disposers = [
       () => {
         if (dc.readyState !== "closing" && dc.readyState !== "closed") {
-          debug$7(`close DataChannel ${id} for finish`);
+          debug$8(`close DataChannel ${id} for finish`);
           dc.close();
         }
       }
@@ -618,11 +834,11 @@ a=end-of-candidates
           ctrl.enqueue(data);
         }));
         disposers.push(listenDC(dc, "error", (e) => {
-          debug$7(`dc ${id} error`, e);
+          debug$8(`dc ${id} error`, e);
           finish(() => ctrl.error(e));
         }));
         disposers.push(listenDC(dc, "closing", (e) => {
-          debug$7(`DataChannel ${id} closing`, e);
+          debug$8(`DataChannel ${id} closing`, e);
           finish(() => ctrl.close());
         }));
       },
@@ -650,11 +866,11 @@ a=end-of-candidates
         const dispose = () => disposers.forEach((d) => d());
         const opened = new Promise((resolve, reject) => {
           disposers.push(listenDC(this.dc, "open", () => {
-            debug$7(`DataChannel ${this.id} opened`);
+            debug$8(`DataChannel ${this.id} opened`);
             resolve();
           }));
           disposers.push(listenDC(this.dc, "error", () => {
-            debug$7(`DataChannel ${this.id} error`);
+            debug$8(`DataChannel ${this.id} error`);
             reject(new Error("DataChannel error"));
           }));
         });
@@ -675,14 +891,14 @@ a=end-of-candidates
         if (contentLength > 0)
           throw new Error("TODO: Request with body is not supported");
         const requestHead = stringifyRequestHead(request);
-        debug$7(`DataChannel ${this.id} sendRequest:`, requestHead);
+        debug$8(`DataChannel ${this.id} sendRequest:`, requestHead);
         this.dc.send(requestHead);
       });
     }
     receiveResponse() {
       return __async(this, null, function* () {
         var _a;
-        debug$7(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
+        debug$8(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
         const request = this.request;
         const dcReader = this.stream.getReader();
         const { value, done } = yield dcReader.read();
@@ -691,7 +907,7 @@ a=end-of-candidates
         if (typeof value !== "string")
           throw new UnexpectedDataChannel1stMessageError(`Expected first message type to be string, while got ${typeof value}`);
         const respHead = parseResponseHead(value);
-        debug$7(`DataChannel ${this.id} get respHead:`, respHead);
+        debug$8(`DataChannel ${this.id} get respHead:`, respHead);
         const status = respHead.status;
         const headers = new Headers(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => encodeHeaderValue(hs[0])));
         const respInit = { status, statusText: respHead.reason, headers };
@@ -699,7 +915,7 @@ a=end-of-candidates
         this.ctx.set("hoWStartTransferAt", Date.now());
         if (!hasBody) {
           const resp2 = new HttpResponse(null, respInit);
-          debug$7("DataChannel receiveResponse done with no body");
+          debug$8("DataChannel receiveResponse done with no body");
           return resp2;
         }
         let received = 0;
@@ -731,7 +947,7 @@ a=end-of-candidates
             });
           },
           cancel(reason) {
-            debug$7("DataChannel bodyStream cancel:", reason);
+            debug$8("DataChannel bodyStream cancel:", reason);
             dcReader.cancel(reason);
           }
         });
@@ -776,7 +992,7 @@ a=end-of-candidates
         return;
       }
       const unlisten = listenPC(pc, "connectionstatechange", () => {
-        debug$7(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
+        debug$8(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
         if (["failed", "closed", "disconnected"].includes(pc.connectionState)) {
           reject(new PeerConnectionDisconnectedError(`${desc} ${pc.connectionState}`));
           unlisten();
@@ -1009,7 +1225,7 @@ a=end-of-candidates
     if (hasRequiredCore)
       return core.exports;
     hasRequiredCore = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory();
@@ -1301,7 +1517,7 @@ a=end-of-candidates
     if (hasRequiredX64Core)
       return x64Core.exports;
     hasRequiredX64Core = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1361,7 +1577,7 @@ a=end-of-candidates
     if (hasRequiredLibTypedarrays)
       return libTypedarrays.exports;
     hasRequiredLibTypedarrays = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1406,7 +1622,7 @@ a=end-of-candidates
     if (hasRequiredEncUtf16)
       return encUtf16.exports;
     hasRequiredEncUtf16 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1472,7 +1688,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64)
       return encBase64.exports;
     hasRequiredEncBase64 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1554,7 +1770,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64url)
       return encBase64url.exports;
     hasRequiredEncBase64url = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1637,7 +1853,7 @@ a=end-of-candidates
     if (hasRequiredMd5)
       return md5.exports;
     hasRequiredMd5 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1816,7 +2032,7 @@ a=end-of-candidates
     if (hasRequiredSha1)
       return sha1.exports;
     hasRequiredSha1 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1907,7 +2123,7 @@ a=end-of-candidates
     if (hasRequiredSha256)
       return sha256.exports;
     hasRequiredSha256 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2028,7 +2244,7 @@ a=end-of-candidates
     if (hasRequiredSha224)
       return sha224.exports;
     hasRequiredSha224 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha256());
@@ -2073,7 +2289,7 @@ a=end-of-candidates
     if (hasRequiredSha512)
       return sha512.exports;
     hasRequiredSha512 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -2355,7 +2571,7 @@ a=end-of-candidates
     if (hasRequiredSha384)
       return sha384.exports;
     hasRequiredSha384 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core(), requireSha512());
@@ -2401,7 +2617,7 @@ a=end-of-candidates
     if (hasRequiredSha3)
       return sha3.exports;
     hasRequiredSha3 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -2595,7 +2811,7 @@ a=end-of-candidates
     if (hasRequiredRipemd160)
       return ripemd160.exports;
     hasRequiredRipemd160 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3076,7 +3292,7 @@ a=end-of-candidates
     if (hasRequiredHmac)
       return hmac.exports;
     hasRequiredHmac = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3140,7 +3356,7 @@ a=end-of-candidates
     if (hasRequiredPbkdf2)
       return pbkdf2.exports;
     hasRequiredPbkdf2 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -3208,7 +3424,7 @@ a=end-of-candidates
     if (hasRequiredEvpkdf)
       return evpkdf.exports;
     hasRequiredEvpkdf = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -3269,7 +3485,7 @@ a=end-of-candidates
     if (hasRequiredCipherCore)
       return cipherCore.exports;
     hasRequiredCipherCore = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEvpkdf());
@@ -3565,7 +3781,7 @@ a=end-of-candidates
     if (hasRequiredModeCfb)
       return modeCfb.exports;
     hasRequiredModeCfb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3617,7 +3833,7 @@ a=end-of-candidates
     if (hasRequiredModeCtr)
       return modeCtr.exports;
     hasRequiredModeCtr = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3657,7 +3873,7 @@ a=end-of-candidates
     if (hasRequiredModeCtrGladman)
       return modeCtrGladman.exports;
     hasRequiredModeCtrGladman = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3737,7 +3953,7 @@ a=end-of-candidates
     if (hasRequiredModeOfb)
       return modeOfb.exports;
     hasRequiredModeOfb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3775,7 +3991,7 @@ a=end-of-candidates
     if (hasRequiredModeEcb)
       return modeEcb.exports;
     hasRequiredModeEcb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3806,7 +4022,7 @@ a=end-of-candidates
     if (hasRequiredPadAnsix923)
       return padAnsix923.exports;
     hasRequiredPadAnsix923 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3838,7 +4054,7 @@ a=end-of-candidates
     if (hasRequiredPadIso10126)
       return padIso10126.exports;
     hasRequiredPadIso10126 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3866,7 +4082,7 @@ a=end-of-candidates
     if (hasRequiredPadIso97971)
       return padIso97971.exports;
     hasRequiredPadIso97971 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3893,7 +4109,7 @@ a=end-of-candidates
     if (hasRequiredPadZeropadding)
       return padZeropadding.exports;
     hasRequiredPadZeropadding = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3927,7 +4143,7 @@ a=end-of-candidates
     if (hasRequiredPadNopadding)
       return padNopadding.exports;
     hasRequiredPadNopadding = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3950,7 +4166,7 @@ a=end-of-candidates
     if (hasRequiredFormatHex)
       return formatHex.exports;
     hasRequiredFormatHex = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3984,7 +4200,7 @@ a=end-of-candidates
     if (hasRequiredAes)
       return aes.exports;
     hasRequiredAes = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4138,7 +4354,7 @@ a=end-of-candidates
     if (hasRequiredTripledes)
       return tripledes.exports;
     hasRequiredTripledes = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4919,7 +5135,7 @@ a=end-of-candidates
     if (hasRequiredRc4)
       return rc4.exports;
     hasRequiredRc4 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -4997,7 +5213,7 @@ a=end-of-candidates
     if (hasRequiredRabbit)
       return rabbit.exports;
     hasRequiredRabbit = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5126,7 +5342,7 @@ a=end-of-candidates
     if (hasRequiredRabbitLegacy)
       return rabbitLegacy.exports;
     hasRequiredRabbitLegacy = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5246,7 +5462,7 @@ a=end-of-candidates
     })(rabbitLegacy);
     return rabbitLegacy.exports;
   }
-  (function(module, exports2) {
+  (function(module, exports) {
     (function(root, factory, undef) {
       {
         module.exports = factory(requireCore(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy());
@@ -5314,7 +5530,7 @@ a=end-of-candidates
     }
   }
   const defaultDuration = 1e3;
-  const debug$6 = getDebug("dns");
+  const debug$7 = getDebug("dns");
   class NonECDNError extends Error {
     constructor() {
       super(...arguments);
@@ -5425,6 +5641,15 @@ a=end-of-candidates
         return group;
       });
     }
+    resolveUrl(ctx, url, hostRequired = false) {
+      return __async(this, null, function* () {
+        let result = null;
+        yield this.do(ctx, url, 1, true, (host) => {
+          result = host;
+        });
+        return result;
+      });
+    }
     do(ctx, url, attempts, hostRequired, job) {
       return __async(this, null, function* () {
         const urlObj = new URL(url);
@@ -5432,13 +5657,13 @@ a=end-of-candidates
           throw new Error("TODO: no port");
         let err;
         for (let i = 0; i < attempts; i++) {
-          debug$6("Resolve for", url);
+          debug$7("Resolve for", url);
           const group = yield this.resolve(ctx, urlObj.host, hostRequired);
           if (group == null)
             throw new NoAvailableECDNNodeError(`No available group for ${url}`);
-          debug$6("Resolved for", url);
+          debug$7("Resolved for", url);
           try {
-            debug$6("doWithGroup", i, url);
+            debug$7("doWithGroup", i, url);
             yield doWithGroup(group, url, hostRequired, job);
             group.duration = this.initialDuration;
             return;
@@ -5471,7 +5696,7 @@ a=end-of-candidates
         if (elt == null)
           throw new Error("No available elt");
         try {
-          debug$6("doWithElt", elt.id, url);
+          debug$7("doWithElt", elt.id, url);
           yield doWithElt(elt, url, hostRequired, job);
           return;
         } catch (e) {
@@ -5496,7 +5721,7 @@ a=end-of-candidates
         if (curr == null)
           break;
         try {
-          debug$6(`do with ${hostRequired ? "host" : "IP"}`, curr, url);
+          debug$7(`do with ${hostRequired ? "host" : "IP"}`, curr, url);
           yield job(curr);
           return;
         } catch (e) {
@@ -5540,6 +5765,1091 @@ a=end-of-candidates
   }
   function supportHost(group) {
     return group.elts.every((e) => e.hosts != null && e.hosts.length > 0);
+  }
+  class Mutex {
+    constructor() {
+      __publicField(this, "locked", false);
+      __publicField(this, "waitings", []);
+      this.unlock = this.unlock.bind(this);
+    }
+    lock() {
+      return __async(this, null, function* () {
+        if (!this.locked) {
+          this.locked = true;
+          return this.unlock;
+        }
+        yield new Promise((resolve) => {
+          this.waitings.push(resolve);
+        });
+        return this.unlock;
+      });
+    }
+    unlock() {
+      if (this.waitings.length === 0) {
+        this.locked = false;
+        return;
+      }
+      const waiting = this.waitings.shift();
+      waiting();
+    }
+    runExclusive(job) {
+      return __async(this, null, function* () {
+        const unlock = yield this.lock();
+        try {
+          return yield job();
+        } catch (e) {
+          throw e;
+        } finally {
+          unlock();
+        }
+      });
+    }
+  }
+  var uaParser$1 = { exports: {} };
+  (function(module, exports) {
+    (function(window2, undefined$1) {
+      var LIBVERSION = "1.0.2", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 255;
+      var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook";
+      var extend = function(regexes2, extensions) {
+        var mergedRegexes = {};
+        for (var i in regexes2) {
+          if (extensions[i] && extensions[i].length % 2 === 0) {
+            mergedRegexes[i] = extensions[i].concat(regexes2[i]);
+          } else {
+            mergedRegexes[i] = regexes2[i];
+          }
+        }
+        return mergedRegexes;
+      }, enumerize = function(arr) {
+        var enums = {};
+        for (var i = 0; i < arr.length; i++) {
+          enums[arr[i].toUpperCase()] = arr[i];
+        }
+        return enums;
+      }, has = function(str1, str2) {
+        return typeof str1 === STR_TYPE ? lowerize(str2).indexOf(lowerize(str1)) !== -1 : false;
+      }, lowerize = function(str) {
+        return str.toLowerCase();
+      }, majorize = function(version2) {
+        return typeof version2 === STR_TYPE ? version2.replace(/[^\d\.]/g, EMPTY).split(".")[0] : undefined$1;
+      }, trim = function(str, len) {
+        if (typeof str === STR_TYPE) {
+          str = str.replace(/^\s\s*/, EMPTY).replace(/\s\s*$/, EMPTY);
+          return typeof len === UNDEF_TYPE ? str : str.substring(0, UA_MAX_LENGTH);
+        }
+      };
+      var rgxMapper = function(ua, arrays) {
+        var i = 0, j, k, p, q, matches, match;
+        while (i < arrays.length && !matches) {
+          var regex = arrays[i], props = arrays[i + 1];
+          j = k = 0;
+          while (j < regex.length && !matches) {
+            matches = regex[j++].exec(ua);
+            if (!!matches) {
+              for (p = 0; p < props.length; p++) {
+                match = matches[++k];
+                q = props[p];
+                if (typeof q === OBJ_TYPE && q.length > 0) {
+                  if (q.length === 2) {
+                    if (typeof q[1] == FUNC_TYPE) {
+                      this[q[0]] = q[1].call(this, match);
+                    } else {
+                      this[q[0]] = q[1];
+                    }
+                  } else if (q.length === 3) {
+                    if (typeof q[1] === FUNC_TYPE && !(q[1].exec && q[1].test)) {
+                      this[q[0]] = match ? q[1].call(this, match, q[2]) : undefined$1;
+                    } else {
+                      this[q[0]] = match ? match.replace(q[1], q[2]) : undefined$1;
+                    }
+                  } else if (q.length === 4) {
+                    this[q[0]] = match ? q[3].call(this, match.replace(q[1], q[2])) : undefined$1;
+                  }
+                } else {
+                  this[q] = match ? match : undefined$1;
+                }
+              }
+            }
+          }
+          i += 2;
+        }
+      }, strMapper = function(str, map) {
+        for (var i in map) {
+          if (typeof map[i] === OBJ_TYPE && map[i].length > 0) {
+            for (var j = 0; j < map[i].length; j++) {
+              if (has(map[i][j], str)) {
+                return i === UNKNOWN ? undefined$1 : i;
+              }
+            }
+          } else if (has(map[i], str)) {
+            return i === UNKNOWN ? undefined$1 : i;
+          }
+        }
+        return str;
+      };
+      var oldSafariMap = {
+        "1.0": "/8",
+        "1.2": "/1",
+        "1.3": "/3",
+        "2.0": "/412",
+        "2.0.2": "/416",
+        "2.0.3": "/417",
+        "2.0.4": "/419",
+        "?": "/"
+      }, windowsVersionMap = {
+        "ME": "4.90",
+        "NT 3.11": "NT3.51",
+        "NT 4.0": "NT4.0",
+        "2000": "NT 5.0",
+        "XP": ["NT 5.1", "NT 5.2"],
+        "Vista": "NT 6.0",
+        "7": "NT 6.1",
+        "8": "NT 6.2",
+        "8.1": "NT 6.3",
+        "10": ["NT 6.4", "NT 10.0"],
+        "RT": "ARM"
+      };
+      var regexes = {
+        browser: [
+          [
+            /\b(?:crmo|crios)\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Chrome"]],
+          [
+            /edg(?:e|ios|a)?\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Edge"]],
+          [
+            /(opera mini)\/([-\w\.]+)/i,
+            /(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i,
+            /(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /opios[\/ ]+([\w\.]+)/i
+          ],
+          [VERSION, [NAME, OPERA + " Mini"]],
+          [
+            /\bopr\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, OPERA]],
+          [
+            /(kindle)\/([\w\.]+)/i,
+            /(lunascape|maxthon|netfront|jasmine|blazer)[\/ ]?([\w\.]*)/i,
+            /(avant |iemobile|slim)(?:browser)?[\/ ]?([\w\.]*)/i,
+            /(ba?idubrowser)[\/ ]?([\w\.]+)/i,
+            /(?:ms|\()(ie) ([\w\.]+)/i,
+            /(flock|rockmelt|midori|epiphany|silk|skyfire|ovibrowser|bolt|iron|vivaldi|iridium|phantomjs|bowser|quark|qupzilla|falkon|rekonq|puffin|brave|whale|qqbrowserlite|qq)\/([-\w\.]+)/i,
+            /(weibo)__([\d\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "UC" + BROWSER]],
+          [
+            /\bqbcore\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "WeChat(Win) Desktop"]],
+          [
+            /micromessenger\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "WeChat"]],
+          [
+            /konqueror\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Konqueror"]],
+          [
+            /trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i
+          ],
+          [VERSION, [NAME, "IE"]],
+          [
+            /yabrowser\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Yandex"]],
+          [
+            /(avast|avg)\/([\w\.]+)/i
+          ],
+          [[NAME, /(.+)/, "$1 Secure " + BROWSER], VERSION],
+          [
+            /\bfocus\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, FIREFOX + " Focus"]],
+          [
+            /\bopt\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, OPERA + " Touch"]],
+          [
+            /coc_coc\w+\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Coc Coc"]],
+          [
+            /dolfin\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Dolphin"]],
+          [
+            /coast\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, OPERA + " Coast"]],
+          [
+            /miuibrowser\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "MIUI " + BROWSER]],
+          [
+            /fxios\/([-\w\.]+)/i
+          ],
+          [VERSION, [NAME, FIREFOX]],
+          [
+            /\bqihu|(qi?ho?o?|360)browser/i
+          ],
+          [[NAME, "360 " + BROWSER]],
+          [
+            /(oculus|samsung|sailfish)browser\/([\w\.]+)/i
+          ],
+          [[NAME, /(.+)/, "$1 " + BROWSER], VERSION],
+          [
+            /(comodo_dragon)\/([\w\.]+)/i
+          ],
+          [[NAME, /_/g, " "], VERSION],
+          [
+            /(electron)\/([\w\.]+) safari/i,
+            /(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i,
+            /m?(qqbrowser|baiduboxapp|2345Explorer)[\/ ]?([\w\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /(metasr)[\/ ]?([\w\.]+)/i,
+            /(lbbrowser)/i
+          ],
+          [NAME],
+          [
+            /((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i
+          ],
+          [[NAME, FACEBOOK], VERSION],
+          [
+            /safari (line)\/([\w\.]+)/i,
+            /\b(line)\/([\w\.]+)\/iab/i,
+            /(chromium|instagram)[\/ ]([-\w\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /\bgsa\/([\w\.]+) .*safari\//i
+          ],
+          [VERSION, [NAME, "GSA"]],
+          [
+            /headlesschrome(?:\/([\w\.]+)| )/i
+          ],
+          [VERSION, [NAME, CHROME + " Headless"]],
+          [
+            / wv\).+(chrome)\/([\w\.]+)/i
+          ],
+          [[NAME, CHROME + " WebView"], VERSION],
+          [
+            /droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i
+          ],
+          [VERSION, [NAME, "Android " + BROWSER]],
+          [
+            /(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /version\/([\w\.]+) .*mobile\/\w+ (safari)/i
+          ],
+          [VERSION, [NAME, "Mobile Safari"]],
+          [
+            /version\/([\w\.]+) .*(mobile ?safari|safari)/i
+          ],
+          [VERSION, NAME],
+          [
+            /webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i
+          ],
+          [NAME, [VERSION, strMapper, oldSafariMap]],
+          [
+            /(webkit|khtml)\/([\w\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /(navigator|netscape\d?)\/([-\w\.]+)/i
+          ],
+          [[NAME, "Netscape"], VERSION],
+          [
+            /mobile vr; rv:([\w\.]+)\).+firefox/i
+          ],
+          [VERSION, [NAME, FIREFOX + " Reality"]],
+          [
+            /ekiohf.+(flow)\/([\w\.]+)/i,
+            /(swiftfox)/i,
+            /(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror|klar)[\/ ]?([\w\.\+]+)/i,
+            /(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i,
+            /(firefox)\/([\w\.]+)/i,
+            /(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i,
+            /(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf|sleipnir|obigo|mosaic|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i,
+            /(links) \(([\w\.]+)/i
+          ],
+          [NAME, VERSION]
+        ],
+        cpu: [
+          [
+            /(?:(amd|x(?:(?:86|64)[-_])?|wow|win)64)[;\)]/i
+          ],
+          [[ARCHITECTURE, "amd64"]],
+          [
+            /(ia32(?=;))/i
+          ],
+          [[ARCHITECTURE, lowerize]],
+          [
+            /((?:i[346]|x)86)[;\)]/i
+          ],
+          [[ARCHITECTURE, "ia32"]],
+          [
+            /\b(aarch64|arm(v?8e?l?|_?64))\b/i
+          ],
+          [[ARCHITECTURE, "arm64"]],
+          [
+            /\b(arm(?:v[67])?ht?n?[fl]p?)\b/i
+          ],
+          [[ARCHITECTURE, "armhf"]],
+          [
+            /windows (ce|mobile); ppc;/i
+          ],
+          [[ARCHITECTURE, "arm"]],
+          [
+            /((?:ppc|powerpc)(?:64)?)(?: mac|;|\))/i
+          ],
+          [[ARCHITECTURE, /ower/, EMPTY, lowerize]],
+          [
+            /(sun4\w)[;\)]/i
+          ],
+          [[ARCHITECTURE, "sparc"]],
+          [
+            /((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i
+          ],
+          [[ARCHITECTURE, lowerize]]
+        ],
+        device: [
+          [
+            /\b(sch-i[89]0\d|shw-m380s|sm-[pt]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i
+          ],
+          [MODEL, [VENDOR, SAMSUNG], [TYPE, TABLET]],
+          [
+            /\b((?:s[cgp]h|gt|sm)-\w+|galaxy nexus)/i,
+            /samsung[- ]([-\w]+)/i,
+            /sec-(sgh\w+)/i
+          ],
+          [MODEL, [VENDOR, SAMSUNG], [TYPE, MOBILE]],
+          [
+            /\((ip(?:hone|od)[\w ]*);/i
+          ],
+          [MODEL, [VENDOR, APPLE], [TYPE, MOBILE]],
+          [
+            /\((ipad);[-\w\),; ]+apple/i,
+            /applecoremedia\/[\w\.]+ \((ipad)/i,
+            /\b(ipad)\d\d?,\d\d?[;\]].+ios/i
+          ],
+          [MODEL, [VENDOR, APPLE], [TYPE, TABLET]],
+          [
+            /\b((?:ag[rs][23]?|bah2?|sht?|btv)-a?[lw]\d{2})\b(?!.+d\/s)/i
+          ],
+          [MODEL, [VENDOR, HUAWEI], [TYPE, TABLET]],
+          [
+            /(?:huawei|honor)([-\w ]+)[;\)]/i,
+            /\b(nexus 6p|\w{2,4}-[atu]?[ln][01259x][012359][an]?)\b(?!.+d\/s)/i
+          ],
+          [MODEL, [VENDOR, HUAWEI], [TYPE, MOBILE]],
+          [
+            /\b(poco[\w ]+)(?: bui|\))/i,
+            /\b; (\w+) build\/hm\1/i,
+            /\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i,
+            /\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i,
+            /\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite)?)(?: bui|\))/i
+          ],
+          [[MODEL, /_/g, " "], [VENDOR, XIAOMI], [TYPE, MOBILE]],
+          [
+            /\b(mi[-_ ]?(?:pad)(?:[\w_ ]+))(?: bui|\))/i
+          ],
+          [[MODEL, /_/g, " "], [VENDOR, XIAOMI], [TYPE, TABLET]],
+          [
+            /; (\w+) bui.+ oppo/i,
+            /\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i
+          ],
+          [MODEL, [VENDOR, "OPPO"], [TYPE, MOBILE]],
+          [
+            /vivo (\w+)(?: bui|\))/i,
+            /\b(v[12]\d{3}\w?[at])(?: bui|;)/i
+          ],
+          [MODEL, [VENDOR, "Vivo"], [TYPE, MOBILE]],
+          [
+            /\b(rmx[12]\d{3})(?: bui|;|\))/i
+          ],
+          [MODEL, [VENDOR, "Realme"], [TYPE, MOBILE]],
+          [
+            /\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i,
+            /\bmot(?:orola)?[- ](\w*)/i,
+            /((?:moto[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i
+          ],
+          [MODEL, [VENDOR, MOTOROLA], [TYPE, MOBILE]],
+          [
+            /\b(mz60\d|xoom[2 ]{0,2}) build\//i
+          ],
+          [MODEL, [VENDOR, MOTOROLA], [TYPE, TABLET]],
+          [
+            /((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i
+          ],
+          [MODEL, [VENDOR, LG], [TYPE, TABLET]],
+          [
+            /(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i,
+            /\blg[-e;\/ ]+((?!browser|netcast|android tv)\w+)/i,
+            /\blg-?([\d\w]+) bui/i
+          ],
+          [MODEL, [VENDOR, LG], [TYPE, MOBILE]],
+          [
+            /(ideatab[-\w ]+)/i,
+            /lenovo ?(s[56]000[-\w]+|tab(?:[\w ]+)|yt[-\d\w]{6}|tb[-\d\w]{6})/i
+          ],
+          [MODEL, [VENDOR, "Lenovo"], [TYPE, TABLET]],
+          [
+            /(?:maemo|nokia).*(n900|lumia \d+)/i,
+            /nokia[-_ ]?([-\w\.]*)/i
+          ],
+          [[MODEL, /_/g, " "], [VENDOR, "Nokia"], [TYPE, MOBILE]],
+          [
+            /(pixel c)\b/i
+          ],
+          [MODEL, [VENDOR, GOOGLE], [TYPE, TABLET]],
+          [
+            /droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i
+          ],
+          [MODEL, [VENDOR, GOOGLE], [TYPE, MOBILE]],
+          [
+            /droid.+ ([c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i
+          ],
+          [MODEL, [VENDOR, SONY], [TYPE, MOBILE]],
+          [
+            /sony tablet [ps]/i,
+            /\b(?:sony)?sgp\w+(?: bui|\))/i
+          ],
+          [[MODEL, "Xperia Tablet"], [VENDOR, SONY], [TYPE, TABLET]],
+          [
+            / (kb2005|in20[12]5|be20[12][59])\b/i,
+            /(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i
+          ],
+          [MODEL, [VENDOR, "OnePlus"], [TYPE, MOBILE]],
+          [
+            /(alexa)webm/i,
+            /(kf[a-z]{2}wi)( bui|\))/i,
+            /(kf[a-z]+)( bui|\)).+silk\//i
+          ],
+          [MODEL, [VENDOR, AMAZON], [TYPE, TABLET]],
+          [
+            /((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i
+          ],
+          [[MODEL, /(.+)/g, "Fire Phone $1"], [VENDOR, AMAZON], [TYPE, MOBILE]],
+          [
+            /(playbook);[-\w\),; ]+(rim)/i
+          ],
+          [MODEL, VENDOR, [TYPE, TABLET]],
+          [
+            /\b((?:bb[a-f]|st[hv])100-\d)/i,
+            /\(bb10; (\w+)/i
+          ],
+          [MODEL, [VENDOR, BLACKBERRY], [TYPE, MOBILE]],
+          [
+            /(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i
+          ],
+          [MODEL, [VENDOR, ASUS], [TYPE, TABLET]],
+          [
+            / (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i
+          ],
+          [MODEL, [VENDOR, ASUS], [TYPE, MOBILE]],
+          [
+            /(nexus 9)/i
+          ],
+          [MODEL, [VENDOR, "HTC"], [TYPE, TABLET]],
+          [
+            /(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i,
+            /(zte)[- ]([\w ]+?)(?: bui|\/|\))/i,
+            /(alcatel|geeksphone|nexian|panasonic|sony)[-_ ]?([-\w]*)/i
+          ],
+          [VENDOR, [MODEL, /_/g, " "], [TYPE, MOBILE]],
+          [
+            /droid.+; ([ab][1-7]-?[0178a]\d\d?)/i
+          ],
+          [MODEL, [VENDOR, "Acer"], [TYPE, TABLET]],
+          [
+            /droid.+; (m[1-5] note) bui/i,
+            /\bmz-([-\w]{2,})/i
+          ],
+          [MODEL, [VENDOR, "Meizu"], [TYPE, MOBILE]],
+          [
+            /\b(sh-?[altvz]?\d\d[a-ekm]?)/i
+          ],
+          [MODEL, [VENDOR, "Sharp"], [TYPE, MOBILE]],
+          [
+            /(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|meizu|motorola|polytron)[-_ ]?([-\w]*)/i,
+            /(hp) ([\w ]+\w)/i,
+            /(asus)-?(\w+)/i,
+            /(microsoft); (lumia[\w ]+)/i,
+            /(lenovo)[-_ ]?([-\w]+)/i,
+            /(jolla)/i,
+            /(oppo) ?([\w ]+) bui/i
+          ],
+          [VENDOR, MODEL, [TYPE, MOBILE]],
+          [
+            /(archos) (gamepad2?)/i,
+            /(hp).+(touchpad(?!.+tablet)|tablet)/i,
+            /(kindle)\/([\w\.]+)/i,
+            /(nook)[\w ]+build\/(\w+)/i,
+            /(dell) (strea[kpr\d ]*[\dko])/i,
+            /(le[- ]+pan)[- ]+(\w{1,9}) bui/i,
+            /(trinity)[- ]*(t\d{3}) bui/i,
+            /(gigaset)[- ]+(q\w{1,9}) bui/i,
+            /(vodafone) ([\w ]+)(?:\)| bui)/i
+          ],
+          [VENDOR, MODEL, [TYPE, TABLET]],
+          [
+            /(surface duo)/i
+          ],
+          [MODEL, [VENDOR, MICROSOFT], [TYPE, TABLET]],
+          [
+            /droid [\d\.]+; (fp\du?)(?: b|\))/i
+          ],
+          [MODEL, [VENDOR, "Fairphone"], [TYPE, MOBILE]],
+          [
+            /(u304aa)/i
+          ],
+          [MODEL, [VENDOR, "AT&T"], [TYPE, MOBILE]],
+          [
+            /\bsie-(\w*)/i
+          ],
+          [MODEL, [VENDOR, "Siemens"], [TYPE, MOBILE]],
+          [
+            /\b(rct\w+) b/i
+          ],
+          [MODEL, [VENDOR, "RCA"], [TYPE, TABLET]],
+          [
+            /\b(venue[\d ]{2,7}) b/i
+          ],
+          [MODEL, [VENDOR, "Dell"], [TYPE, TABLET]],
+          [
+            /\b(q(?:mv|ta)\w+) b/i
+          ],
+          [MODEL, [VENDOR, "Verizon"], [TYPE, TABLET]],
+          [
+            /\b(?:barnes[& ]+noble |bn[rt])([\w\+ ]*) b/i
+          ],
+          [MODEL, [VENDOR, "Barnes & Noble"], [TYPE, TABLET]],
+          [
+            /\b(tm\d{3}\w+) b/i
+          ],
+          [MODEL, [VENDOR, "NuVision"], [TYPE, TABLET]],
+          [
+            /\b(k88) b/i
+          ],
+          [MODEL, [VENDOR, "ZTE"], [TYPE, TABLET]],
+          [
+            /\b(nx\d{3}j) b/i
+          ],
+          [MODEL, [VENDOR, "ZTE"], [TYPE, MOBILE]],
+          [
+            /\b(gen\d{3}) b.+49h/i
+          ],
+          [MODEL, [VENDOR, "Swiss"], [TYPE, MOBILE]],
+          [
+            /\b(zur\d{3}) b/i
+          ],
+          [MODEL, [VENDOR, "Swiss"], [TYPE, TABLET]],
+          [
+            /\b((zeki)?tb.*\b) b/i
+          ],
+          [MODEL, [VENDOR, "Zeki"], [TYPE, TABLET]],
+          [
+            /\b([yr]\d{2}) b/i,
+            /\b(dragon[- ]+touch |dt)(\w{5}) b/i
+          ],
+          [[VENDOR, "Dragon Touch"], MODEL, [TYPE, TABLET]],
+          [
+            /\b(ns-?\w{0,9}) b/i
+          ],
+          [MODEL, [VENDOR, "Insignia"], [TYPE, TABLET]],
+          [
+            /\b((nxa|next)-?\w{0,9}) b/i
+          ],
+          [MODEL, [VENDOR, "NextBook"], [TYPE, TABLET]],
+          [
+            /\b(xtreme\_)?(v(1[045]|2[015]|[3469]0|7[05])) b/i
+          ],
+          [[VENDOR, "Voice"], MODEL, [TYPE, MOBILE]],
+          [
+            /\b(lvtel\-)?(v1[12]) b/i
+          ],
+          [[VENDOR, "LvTel"], MODEL, [TYPE, MOBILE]],
+          [
+            /\b(ph-1) /i
+          ],
+          [MODEL, [VENDOR, "Essential"], [TYPE, MOBILE]],
+          [
+            /\b(v(100md|700na|7011|917g).*\b) b/i
+          ],
+          [MODEL, [VENDOR, "Envizen"], [TYPE, TABLET]],
+          [
+            /\b(trio[-\w\. ]+) b/i
+          ],
+          [MODEL, [VENDOR, "MachSpeed"], [TYPE, TABLET]],
+          [
+            /\btu_(1491) b/i
+          ],
+          [MODEL, [VENDOR, "Rotor"], [TYPE, TABLET]],
+          [
+            /(shield[\w ]+) b/i
+          ],
+          [MODEL, [VENDOR, "Nvidia"], [TYPE, TABLET]],
+          [
+            /(sprint) (\w+)/i
+          ],
+          [VENDOR, MODEL, [TYPE, MOBILE]],
+          [
+            /(kin\.[onetw]{3})/i
+          ],
+          [[MODEL, /\./g, " "], [VENDOR, MICROSOFT], [TYPE, MOBILE]],
+          [
+            /droid.+; (cc6666?|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i
+          ],
+          [MODEL, [VENDOR, ZEBRA], [TYPE, TABLET]],
+          [
+            /droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i
+          ],
+          [MODEL, [VENDOR, ZEBRA], [TYPE, MOBILE]],
+          [
+            /(ouya)/i,
+            /(nintendo) ([wids3utch]+)/i
+          ],
+          [VENDOR, MODEL, [TYPE, CONSOLE]],
+          [
+            /droid.+; (shield) bui/i
+          ],
+          [MODEL, [VENDOR, "Nvidia"], [TYPE, CONSOLE]],
+          [
+            /(playstation [345portablevi]+)/i
+          ],
+          [MODEL, [VENDOR, SONY], [TYPE, CONSOLE]],
+          [
+            /\b(xbox(?: one)?(?!; xbox))[\); ]/i
+          ],
+          [MODEL, [VENDOR, MICROSOFT], [TYPE, CONSOLE]],
+          [
+            /smart-tv.+(samsung)/i
+          ],
+          [VENDOR, [TYPE, SMARTTV]],
+          [
+            /hbbtv.+maple;(\d+)/i
+          ],
+          [[MODEL, /^/, "SmartTV"], [VENDOR, SAMSUNG], [TYPE, SMARTTV]],
+          [
+            /(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i
+          ],
+          [[VENDOR, LG], [TYPE, SMARTTV]],
+          [
+            /(apple) ?tv/i
+          ],
+          [VENDOR, [MODEL, APPLE + " TV"], [TYPE, SMARTTV]],
+          [
+            /crkey/i
+          ],
+          [[MODEL, CHROME + "cast"], [VENDOR, GOOGLE], [TYPE, SMARTTV]],
+          [
+            /droid.+aft(\w)( bui|\))/i
+          ],
+          [MODEL, [VENDOR, AMAZON], [TYPE, SMARTTV]],
+          [
+            /\(dtv[\);].+(aquos)/i
+          ],
+          [MODEL, [VENDOR, "Sharp"], [TYPE, SMARTTV]],
+          [
+            /\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i,
+            /hbbtv\/\d+\.\d+\.\d+ +\([\w ]*; *(\w[^;]*);([^;]*)/i
+          ],
+          [[VENDOR, trim], [MODEL, trim], [TYPE, SMARTTV]],
+          [
+            /\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i
+          ],
+          [[TYPE, SMARTTV]],
+          [
+            /((pebble))app/i
+          ],
+          [VENDOR, MODEL, [TYPE, WEARABLE]],
+          [
+            /droid.+; (glass) \d/i
+          ],
+          [MODEL, [VENDOR, GOOGLE], [TYPE, WEARABLE]],
+          [
+            /droid.+; (wt63?0{2,3})\)/i
+          ],
+          [MODEL, [VENDOR, ZEBRA], [TYPE, WEARABLE]],
+          [
+            /(quest( 2)?)/i
+          ],
+          [MODEL, [VENDOR, FACEBOOK], [TYPE, WEARABLE]],
+          [
+            /(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i
+          ],
+          [VENDOR, [TYPE, EMBEDDED]],
+          [
+            /droid .+?; ([^;]+?)(?: bui|\) applew).+? mobile safari/i
+          ],
+          [MODEL, [TYPE, MOBILE]],
+          [
+            /droid .+?; ([^;]+?)(?: bui|\) applew).+?(?! mobile) safari/i
+          ],
+          [MODEL, [TYPE, TABLET]],
+          [
+            /\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i
+          ],
+          [[TYPE, TABLET]],
+          [
+            /(phone|mobile(?:[;\/]| safari)|pda(?=.+windows ce))/i
+          ],
+          [[TYPE, MOBILE]],
+          [
+            /(android[-\w\. ]{0,9});.+buil/i
+          ],
+          [MODEL, [VENDOR, "Generic"]]
+        ],
+        engine: [
+          [
+            /windows.+ edge\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, EDGE + "HTML"]],
+          [
+            /webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "Blink"]],
+          [
+            /(presto)\/([\w\.]+)/i,
+            /(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna)\/([\w\.]+)/i,
+            /ekioh(flow)\/([\w\.]+)/i,
+            /(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i,
+            /(icab)[\/ ]([23]\.[\d\.]+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /rv\:([\w\.]{1,9})\b.+(gecko)/i
+          ],
+          [VERSION, NAME]
+        ],
+        os: [
+          [
+            /microsoft (windows) (vista|xp)/i
+          ],
+          [NAME, VERSION],
+          [
+            /(windows) nt 6\.2; (arm)/i,
+            /(windows (?:phone(?: os)?|mobile))[\/ ]?([\d\.\w ]*)/i,
+            /(windows)[\/ ]?([ntce\d\. ]+\w)(?!.+xbox)/i
+          ],
+          [NAME, [VERSION, strMapper, windowsVersionMap]],
+          [
+            /(win(?=3|9|n)|win 9x )([nt\d\.]+)/i
+          ],
+          [[NAME, "Windows"], [VERSION, strMapper, windowsVersionMap]],
+          [
+            /ip[honead]{2,4}\b(?:.*os ([\w]+) like mac|; opera)/i,
+            /cfnetwork\/.+darwin/i
+          ],
+          [[VERSION, /_/g, "."], [NAME, "iOS"]],
+          [
+            /(mac os x) ?([\w\. ]*)/i,
+            /(macintosh|mac_powerpc\b)(?!.+haiku)/i
+          ],
+          [[NAME, "Mac OS"], [VERSION, /_/g, "."]],
+          [
+            /droid ([\w\.]+)\b.+(android[- ]x86)/i
+          ],
+          [VERSION, NAME],
+          [
+            /(android|webos|qnx|bada|rim tablet os|maemo|meego|sailfish)[-\/ ]?([\w\.]*)/i,
+            /(blackberry)\w*\/([\w\.]*)/i,
+            /(tizen|kaios)[\/ ]([\w\.]+)/i,
+            /\((series40);/i
+          ],
+          [NAME, VERSION],
+          [
+            /\(bb(10);/i
+          ],
+          [VERSION, [NAME, BLACKBERRY]],
+          [
+            /(?:symbian ?os|symbos|s60(?=;)|series60)[-\/ ]?([\w\.]*)/i
+          ],
+          [VERSION, [NAME, "Symbian"]],
+          [
+            /mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, FIREFOX + " OS"]],
+          [
+            /web0s;.+rt(tv)/i,
+            /\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i
+          ],
+          [VERSION, [NAME, "webOS"]],
+          [
+            /crkey\/([\d\.]+)/i
+          ],
+          [VERSION, [NAME, CHROME + "cast"]],
+          [
+            /(cros) [\w]+ ([\w\.]+\w)/i
+          ],
+          [[NAME, "Chromium OS"], VERSION],
+          [
+            /(nintendo|playstation) ([wids345portablevuch]+)/i,
+            /(xbox); +xbox ([^\);]+)/i,
+            /\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i,
+            /(mint)[\/\(\) ]?(\w*)/i,
+            /(mageia|vectorlinux)[; ]/i,
+            /([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i,
+            /(hurd|linux) ?([\w\.]*)/i,
+            /(gnu) ?([\w\.]*)/i,
+            /\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i,
+            /(haiku) (\w+)/i
+          ],
+          [NAME, VERSION],
+          [
+            /(sunos) ?([\w\.\d]*)/i
+          ],
+          [[NAME, "Solaris"], VERSION],
+          [
+            /((?:open)?solaris)[-\/ ]?([\w\.]*)/i,
+            /(aix) ((\d)(?=\.|\)| )[\w\.])*/i,
+            /\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux)/i,
+            /(unix) ?([\w\.]*)/i
+          ],
+          [NAME, VERSION]
+        ]
+      };
+      var UAParser = function(ua, extensions) {
+        if (typeof ua === OBJ_TYPE) {
+          extensions = ua;
+          ua = undefined$1;
+        }
+        if (!(this instanceof UAParser)) {
+          return new UAParser(ua, extensions).getResult();
+        }
+        var _ua = ua || (typeof window2 !== UNDEF_TYPE && window2.navigator && window2.navigator.userAgent ? window2.navigator.userAgent : EMPTY);
+        var _rgxmap = extensions ? extend(regexes, extensions) : regexes;
+        this.getBrowser = function() {
+          var _browser = {};
+          _browser[NAME] = undefined$1;
+          _browser[VERSION] = undefined$1;
+          rgxMapper.call(_browser, _ua, _rgxmap.browser);
+          _browser.major = majorize(_browser.version);
+          return _browser;
+        };
+        this.getCPU = function() {
+          var _cpu = {};
+          _cpu[ARCHITECTURE] = undefined$1;
+          rgxMapper.call(_cpu, _ua, _rgxmap.cpu);
+          return _cpu;
+        };
+        this.getDevice = function() {
+          var _device = {};
+          _device[VENDOR] = undefined$1;
+          _device[MODEL] = undefined$1;
+          _device[TYPE] = undefined$1;
+          rgxMapper.call(_device, _ua, _rgxmap.device);
+          return _device;
+        };
+        this.getEngine = function() {
+          var _engine = {};
+          _engine[NAME] = undefined$1;
+          _engine[VERSION] = undefined$1;
+          rgxMapper.call(_engine, _ua, _rgxmap.engine);
+          return _engine;
+        };
+        this.getOS = function() {
+          var _os = {};
+          _os[NAME] = undefined$1;
+          _os[VERSION] = undefined$1;
+          rgxMapper.call(_os, _ua, _rgxmap.os);
+          return _os;
+        };
+        this.getResult = function() {
+          return {
+            ua: this.getUA(),
+            browser: this.getBrowser(),
+            engine: this.getEngine(),
+            os: this.getOS(),
+            device: this.getDevice(),
+            cpu: this.getCPU()
+          };
+        };
+        this.getUA = function() {
+          return _ua;
+        };
+        this.setUA = function(ua2) {
+          _ua = typeof ua2 === STR_TYPE && ua2.length > UA_MAX_LENGTH ? trim(ua2, UA_MAX_LENGTH) : ua2;
+          return this;
+        };
+        this.setUA(_ua);
+        return this;
+      };
+      UAParser.VERSION = LIBVERSION;
+      UAParser.BROWSER = enumerize([NAME, VERSION, MAJOR]);
+      UAParser.CPU = enumerize([ARCHITECTURE]);
+      UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
+      UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
+      {
+        if (module.exports) {
+          exports = module.exports = UAParser;
+        }
+        exports.UAParser = UAParser;
+      }
+      var $ = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
+      if ($ && !$.ua) {
+        var parser = new UAParser();
+        $.ua = parser.getResult();
+        $.ua.get = function() {
+          return parser.getUA();
+        };
+        $.ua.set = function(ua) {
+          parser.setUA(ua);
+          var result = parser.getResult();
+          for (var prop in result) {
+            $.ua[prop] = result[prop];
+          }
+        };
+      }
+    })(typeof window === "object" ? window : commonjsGlobal);
+  })(uaParser$1, uaParser$1.exports);
+  const uaParser = uaParser$1.exports;
+  const version = "0.3.1";
+  function getEnv() {
+    var _a, _b;
+    const { os, device } = uaParser(navigator.userAgent);
+    let location;
+    if (typeof window !== "undefined") {
+      location = window.location;
+    } else if (typeof self !== void 0) {
+      location = self.location;
+    }
+    return {
+      os: `${os.name}_${os.version}`,
+      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
+      sdk: `Web SDK v${version}`,
+      dev_model: (_b = device.model) != null ? _b : "",
+      dev_id: ""
+    };
+  }
+  const logNumPerCall = 200;
+  const debug$6 = getDebug("log");
+  class SchemaLogger {
+    constructor(schemaName, fetch2, flushNum, flushWait, app) {
+      __publicField(this, "env", queryStringify(getEnv()));
+      __publicField(this, "flushMutex", new Mutex());
+      __publicField(this, "buffer", []);
+      this.schemaName = schemaName;
+      this.fetch = fetch2;
+      this.flushNum = flushNum;
+      this.flushWait = flushWait;
+      this.app = app;
+    }
+    callApiLog(logs) {
+      return __async(this, null, function* () {
+        const fetch2 = this.fetch;
+        try {
+          const accessToken = getAccessToken({
+            appID: this.app.appID,
+            appSalt: this.app.appSalt,
+            path: `${logApiPrefix}/v1/log/${this.schemaName}`
+          });
+          const resp = yield fetch2(new Request(`${logApiPrefix}/v1/log/${this.schemaName}`, {
+            method: "POST",
+            headers: {
+              "Authorization": accessToken,
+              "Content-Type": "text/csv",
+              "X-Env": this.env
+            },
+            body: getLogBody(logs)
+          }));
+          if (!resp.ok)
+            throw new Error(`Unexpected response status: ${resp.status} ${resp.statusText}`);
+        } catch (e) {
+          console.warn("Call log API failed:", e);
+        }
+      });
+    }
+    flush() {
+      return __async(this, null, function* () {
+        return this.flushMutex.runExclusive(() => __async(this, null, function* () {
+          const logs = this.buffer.splice(0);
+          if (logs.length === 0)
+            return;
+          const callNum = Math.ceil(logs.length / logNumPerCall);
+          return Promise.all(Array.from({ length: callNum }).map((_, i) => this.callApiLog(logs.slice(i * logNumPerCall, (i + 1) * logNumPerCall))));
+        }));
+      });
+    }
+    tryFlush() {
+      return __async(this, null, function* () {
+        const flushOrRetry = yield this.flushMutex.runExclusive(() => {
+          const buffer = this.buffer;
+          if (buffer.length === 0)
+            return false;
+          if (buffer.length >= this.flushNum) {
+            debug$6("buffer.length >= this.flushNum");
+            return true;
+          }
+          const waited = Date.now() - buffer[0].ts;
+          if (waited >= this.flushWait * 1e3) {
+            debug$6("waited >= this.flushWait");
+            return true;
+          }
+          return this.flushWait * 1e3 - waited;
+        });
+        if (flushOrRetry === true)
+          return this.flush();
+        if (typeof flushOrRetry === "number") {
+          setTimeout(() => this.tryFlush(), flushOrRetry);
+        }
+      });
+    }
+    log(logData) {
+      this.buffer.push(__spreadValues({ ts: Date.now() }, logData));
+      this.tryFlush();
+    }
+  }
+  class Logger {
+    constructor(appInfo, fetch2 = self.fetch, flushNum = 100, flushWait = 30) {
+      __publicField(this, "schemaLoggers", /* @__PURE__ */ new Map());
+      this.appInfo = appInfo;
+      this.fetch = fetch2;
+      this.flushNum = flushNum;
+      this.flushWait = flushWait;
+    }
+    log(schemaName, logData) {
+      let logger = this.schemaLoggers.get(schemaName);
+      if (logger == null) {
+        logger = new SchemaLogger(schemaName, this.fetch, this.flushNum, this.flushWait, this.appInfo);
+        this.schemaLoggers.set(schemaName, logger);
+      }
+      logger.log(logData);
+    }
+  }
+  function getLogBody(logs) {
+    const fields = Object.keys(logs[0]);
+    const sortedFields = ["ts", ...fields.filter((f) => f !== "ts")];
+    const headLine = sortedFields.map(processCSVValue).join(",");
+    const bodyLines = logs.map(
+      (log) => sortedFields.map(
+        (k) => log[k]
+      ).map(
+        (v) => v != null ? v + "" : ""
+      ).map(processCSVValue).join(",")
+    );
+    return [headLine, ...bodyLines].join("\n");
+  }
+  function processCSVValue(value) {
+    let str = value.replace(/"/g, '""');
+    if (/("|,|\n)/.test(str)) {
+      str = '"' + str + '"';
+    }
+    return str;
   }
   class DB {
     constructor(dbName, storeNames) {
@@ -6653,1222 +7963,6 @@ a=end-of-candidates
       this.running = false;
     }
   }
-  class Mutex {
-    constructor() {
-      __publicField(this, "locked", false);
-      __publicField(this, "waitings", []);
-      this.unlock = this.unlock.bind(this);
-    }
-    lock() {
-      return __async(this, null, function* () {
-        if (!this.locked) {
-          this.locked = true;
-          return this.unlock;
-        }
-        yield new Promise((resolve) => {
-          this.waitings.push(resolve);
-        });
-        return this.unlock;
-      });
-    }
-    unlock() {
-      if (this.waitings.length === 0) {
-        this.locked = false;
-        return;
-      }
-      const waiting = this.waitings.shift();
-      waiting();
-    }
-    runExclusive(job) {
-      return __async(this, null, function* () {
-        const unlock = yield this.lock();
-        try {
-          return yield job();
-        } catch (e) {
-          throw e;
-        } finally {
-          unlock();
-        }
-      });
-    }
-  }
-  var uaParser$1 = { exports: {} };
-  (function(module, exports2) {
-    (function(window2, undefined$1) {
-      var LIBVERSION = "1.0.2", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 255;
-      var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook";
-      var extend = function(regexes2, extensions) {
-        var mergedRegexes = {};
-        for (var i in regexes2) {
-          if (extensions[i] && extensions[i].length % 2 === 0) {
-            mergedRegexes[i] = extensions[i].concat(regexes2[i]);
-          } else {
-            mergedRegexes[i] = regexes2[i];
-          }
-        }
-        return mergedRegexes;
-      }, enumerize = function(arr) {
-        var enums = {};
-        for (var i = 0; i < arr.length; i++) {
-          enums[arr[i].toUpperCase()] = arr[i];
-        }
-        return enums;
-      }, has = function(str1, str2) {
-        return typeof str1 === STR_TYPE ? lowerize(str2).indexOf(lowerize(str1)) !== -1 : false;
-      }, lowerize = function(str) {
-        return str.toLowerCase();
-      }, majorize = function(version2) {
-        return typeof version2 === STR_TYPE ? version2.replace(/[^\d\.]/g, EMPTY).split(".")[0] : undefined$1;
-      }, trim = function(str, len) {
-        if (typeof str === STR_TYPE) {
-          str = str.replace(/^\s\s*/, EMPTY).replace(/\s\s*$/, EMPTY);
-          return typeof len === UNDEF_TYPE ? str : str.substring(0, UA_MAX_LENGTH);
-        }
-      };
-      var rgxMapper = function(ua, arrays) {
-        var i = 0, j, k, p, q, matches, match;
-        while (i < arrays.length && !matches) {
-          var regex = arrays[i], props = arrays[i + 1];
-          j = k = 0;
-          while (j < regex.length && !matches) {
-            matches = regex[j++].exec(ua);
-            if (!!matches) {
-              for (p = 0; p < props.length; p++) {
-                match = matches[++k];
-                q = props[p];
-                if (typeof q === OBJ_TYPE && q.length > 0) {
-                  if (q.length === 2) {
-                    if (typeof q[1] == FUNC_TYPE) {
-                      this[q[0]] = q[1].call(this, match);
-                    } else {
-                      this[q[0]] = q[1];
-                    }
-                  } else if (q.length === 3) {
-                    if (typeof q[1] === FUNC_TYPE && !(q[1].exec && q[1].test)) {
-                      this[q[0]] = match ? q[1].call(this, match, q[2]) : undefined$1;
-                    } else {
-                      this[q[0]] = match ? match.replace(q[1], q[2]) : undefined$1;
-                    }
-                  } else if (q.length === 4) {
-                    this[q[0]] = match ? q[3].call(this, match.replace(q[1], q[2])) : undefined$1;
-                  }
-                } else {
-                  this[q] = match ? match : undefined$1;
-                }
-              }
-            }
-          }
-          i += 2;
-        }
-      }, strMapper = function(str, map) {
-        for (var i in map) {
-          if (typeof map[i] === OBJ_TYPE && map[i].length > 0) {
-            for (var j = 0; j < map[i].length; j++) {
-              if (has(map[i][j], str)) {
-                return i === UNKNOWN ? undefined$1 : i;
-              }
-            }
-          } else if (has(map[i], str)) {
-            return i === UNKNOWN ? undefined$1 : i;
-          }
-        }
-        return str;
-      };
-      var oldSafariMap = {
-        "1.0": "/8",
-        "1.2": "/1",
-        "1.3": "/3",
-        "2.0": "/412",
-        "2.0.2": "/416",
-        "2.0.3": "/417",
-        "2.0.4": "/419",
-        "?": "/"
-      }, windowsVersionMap = {
-        "ME": "4.90",
-        "NT 3.11": "NT3.51",
-        "NT 4.0": "NT4.0",
-        "2000": "NT 5.0",
-        "XP": ["NT 5.1", "NT 5.2"],
-        "Vista": "NT 6.0",
-        "7": "NT 6.1",
-        "8": "NT 6.2",
-        "8.1": "NT 6.3",
-        "10": ["NT 6.4", "NT 10.0"],
-        "RT": "ARM"
-      };
-      var regexes = {
-        browser: [
-          [
-            /\b(?:crmo|crios)\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Chrome"]],
-          [
-            /edg(?:e|ios|a)?\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Edge"]],
-          [
-            /(opera mini)\/([-\w\.]+)/i,
-            /(opera [mobiletab]{3,6})\b.+version\/([-\w\.]+)/i,
-            /(opera)(?:.+version\/|[\/ ]+)([\w\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /opios[\/ ]+([\w\.]+)/i
-          ],
-          [VERSION, [NAME, OPERA + " Mini"]],
-          [
-            /\bopr\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, OPERA]],
-          [
-            /(kindle)\/([\w\.]+)/i,
-            /(lunascape|maxthon|netfront|jasmine|blazer)[\/ ]?([\w\.]*)/i,
-            /(avant |iemobile|slim)(?:browser)?[\/ ]?([\w\.]*)/i,
-            /(ba?idubrowser)[\/ ]?([\w\.]+)/i,
-            /(?:ms|\()(ie) ([\w\.]+)/i,
-            /(flock|rockmelt|midori|epiphany|silk|skyfire|ovibrowser|bolt|iron|vivaldi|iridium|phantomjs|bowser|quark|qupzilla|falkon|rekonq|puffin|brave|whale|qqbrowserlite|qq)\/([-\w\.]+)/i,
-            /(weibo)__([\d\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /(?:\buc? ?browser|(?:juc.+)ucweb)[\/ ]?([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "UC" + BROWSER]],
-          [
-            /\bqbcore\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "WeChat(Win) Desktop"]],
-          [
-            /micromessenger\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "WeChat"]],
-          [
-            /konqueror\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Konqueror"]],
-          [
-            /trident.+rv[: ]([\w\.]{1,9})\b.+like gecko/i
-          ],
-          [VERSION, [NAME, "IE"]],
-          [
-            /yabrowser\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Yandex"]],
-          [
-            /(avast|avg)\/([\w\.]+)/i
-          ],
-          [[NAME, /(.+)/, "$1 Secure " + BROWSER], VERSION],
-          [
-            /\bfocus\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, FIREFOX + " Focus"]],
-          [
-            /\bopt\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, OPERA + " Touch"]],
-          [
-            /coc_coc\w+\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Coc Coc"]],
-          [
-            /dolfin\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Dolphin"]],
-          [
-            /coast\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, OPERA + " Coast"]],
-          [
-            /miuibrowser\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "MIUI " + BROWSER]],
-          [
-            /fxios\/([-\w\.]+)/i
-          ],
-          [VERSION, [NAME, FIREFOX]],
-          [
-            /\bqihu|(qi?ho?o?|360)browser/i
-          ],
-          [[NAME, "360 " + BROWSER]],
-          [
-            /(oculus|samsung|sailfish)browser\/([\w\.]+)/i
-          ],
-          [[NAME, /(.+)/, "$1 " + BROWSER], VERSION],
-          [
-            /(comodo_dragon)\/([\w\.]+)/i
-          ],
-          [[NAME, /_/g, " "], VERSION],
-          [
-            /(electron)\/([\w\.]+) safari/i,
-            /(tesla)(?: qtcarbrowser|\/(20\d\d\.[-\w\.]+))/i,
-            /m?(qqbrowser|baiduboxapp|2345Explorer)[\/ ]?([\w\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /(metasr)[\/ ]?([\w\.]+)/i,
-            /(lbbrowser)/i
-          ],
-          [NAME],
-          [
-            /((?:fban\/fbios|fb_iab\/fb4a)(?!.+fbav)|;fbav\/([\w\.]+);)/i
-          ],
-          [[NAME, FACEBOOK], VERSION],
-          [
-            /safari (line)\/([\w\.]+)/i,
-            /\b(line)\/([\w\.]+)\/iab/i,
-            /(chromium|instagram)[\/ ]([-\w\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /\bgsa\/([\w\.]+) .*safari\//i
-          ],
-          [VERSION, [NAME, "GSA"]],
-          [
-            /headlesschrome(?:\/([\w\.]+)| )/i
-          ],
-          [VERSION, [NAME, CHROME + " Headless"]],
-          [
-            / wv\).+(chrome)\/([\w\.]+)/i
-          ],
-          [[NAME, CHROME + " WebView"], VERSION],
-          [
-            /droid.+ version\/([\w\.]+)\b.+(?:mobile safari|safari)/i
-          ],
-          [VERSION, [NAME, "Android " + BROWSER]],
-          [
-            /(chrome|omniweb|arora|[tizenoka]{5} ?browser)\/v?([\w\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /version\/([\w\.]+) .*mobile\/\w+ (safari)/i
-          ],
-          [VERSION, [NAME, "Mobile Safari"]],
-          [
-            /version\/([\w\.]+) .*(mobile ?safari|safari)/i
-          ],
-          [VERSION, NAME],
-          [
-            /webkit.+?(mobile ?safari|safari)(\/[\w\.]+)/i
-          ],
-          [NAME, [VERSION, strMapper, oldSafariMap]],
-          [
-            /(webkit|khtml)\/([\w\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /(navigator|netscape\d?)\/([-\w\.]+)/i
-          ],
-          [[NAME, "Netscape"], VERSION],
-          [
-            /mobile vr; rv:([\w\.]+)\).+firefox/i
-          ],
-          [VERSION, [NAME, FIREFOX + " Reality"]],
-          [
-            /ekiohf.+(flow)\/([\w\.]+)/i,
-            /(swiftfox)/i,
-            /(icedragon|iceweasel|camino|chimera|fennec|maemo browser|minimo|conkeror|klar)[\/ ]?([\w\.\+]+)/i,
-            /(seamonkey|k-meleon|icecat|iceape|firebird|phoenix|palemoon|basilisk|waterfox)\/([-\w\.]+)$/i,
-            /(firefox)\/([\w\.]+)/i,
-            /(mozilla)\/([\w\.]+) .+rv\:.+gecko\/\d+/i,
-            /(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf|sleipnir|obigo|mosaic|(?:go|ice|up)[\. ]?browser)[-\/ ]?v?([\w\.]+)/i,
-            /(links) \(([\w\.]+)/i
-          ],
-          [NAME, VERSION]
-        ],
-        cpu: [
-          [
-            /(?:(amd|x(?:(?:86|64)[-_])?|wow|win)64)[;\)]/i
-          ],
-          [[ARCHITECTURE, "amd64"]],
-          [
-            /(ia32(?=;))/i
-          ],
-          [[ARCHITECTURE, lowerize]],
-          [
-            /((?:i[346]|x)86)[;\)]/i
-          ],
-          [[ARCHITECTURE, "ia32"]],
-          [
-            /\b(aarch64|arm(v?8e?l?|_?64))\b/i
-          ],
-          [[ARCHITECTURE, "arm64"]],
-          [
-            /\b(arm(?:v[67])?ht?n?[fl]p?)\b/i
-          ],
-          [[ARCHITECTURE, "armhf"]],
-          [
-            /windows (ce|mobile); ppc;/i
-          ],
-          [[ARCHITECTURE, "arm"]],
-          [
-            /((?:ppc|powerpc)(?:64)?)(?: mac|;|\))/i
-          ],
-          [[ARCHITECTURE, /ower/, EMPTY, lowerize]],
-          [
-            /(sun4\w)[;\)]/i
-          ],
-          [[ARCHITECTURE, "sparc"]],
-          [
-            /((?:avr32|ia64(?=;))|68k(?=\))|\barm(?=v(?:[1-7]|[5-7]1)l?|;|eabi)|(?=atmel )avr|(?:irix|mips|sparc)(?:64)?\b|pa-risc)/i
-          ],
-          [[ARCHITECTURE, lowerize]]
-        ],
-        device: [
-          [
-            /\b(sch-i[89]0\d|shw-m380s|sm-[pt]\w{2,4}|gt-[pn]\d{2,4}|sgh-t8[56]9|nexus 10)/i
-          ],
-          [MODEL, [VENDOR, SAMSUNG], [TYPE, TABLET]],
-          [
-            /\b((?:s[cgp]h|gt|sm)-\w+|galaxy nexus)/i,
-            /samsung[- ]([-\w]+)/i,
-            /sec-(sgh\w+)/i
-          ],
-          [MODEL, [VENDOR, SAMSUNG], [TYPE, MOBILE]],
-          [
-            /\((ip(?:hone|od)[\w ]*);/i
-          ],
-          [MODEL, [VENDOR, APPLE], [TYPE, MOBILE]],
-          [
-            /\((ipad);[-\w\),; ]+apple/i,
-            /applecoremedia\/[\w\.]+ \((ipad)/i,
-            /\b(ipad)\d\d?,\d\d?[;\]].+ios/i
-          ],
-          [MODEL, [VENDOR, APPLE], [TYPE, TABLET]],
-          [
-            /\b((?:ag[rs][23]?|bah2?|sht?|btv)-a?[lw]\d{2})\b(?!.+d\/s)/i
-          ],
-          [MODEL, [VENDOR, HUAWEI], [TYPE, TABLET]],
-          [
-            /(?:huawei|honor)([-\w ]+)[;\)]/i,
-            /\b(nexus 6p|\w{2,4}-[atu]?[ln][01259x][012359][an]?)\b(?!.+d\/s)/i
-          ],
-          [MODEL, [VENDOR, HUAWEI], [TYPE, MOBILE]],
-          [
-            /\b(poco[\w ]+)(?: bui|\))/i,
-            /\b; (\w+) build\/hm\1/i,
-            /\b(hm[-_ ]?note?[_ ]?(?:\d\w)?) bui/i,
-            /\b(redmi[\-_ ]?(?:note|k)?[\w_ ]+)(?: bui|\))/i,
-            /\b(mi[-_ ]?(?:a\d|one|one[_ ]plus|note lte|max)?[_ ]?(?:\d?\w?)[_ ]?(?:plus|se|lite)?)(?: bui|\))/i
-          ],
-          [[MODEL, /_/g, " "], [VENDOR, XIAOMI], [TYPE, MOBILE]],
-          [
-            /\b(mi[-_ ]?(?:pad)(?:[\w_ ]+))(?: bui|\))/i
-          ],
-          [[MODEL, /_/g, " "], [VENDOR, XIAOMI], [TYPE, TABLET]],
-          [
-            /; (\w+) bui.+ oppo/i,
-            /\b(cph[12]\d{3}|p(?:af|c[al]|d\w|e[ar])[mt]\d0|x9007|a101op)\b/i
-          ],
-          [MODEL, [VENDOR, "OPPO"], [TYPE, MOBILE]],
-          [
-            /vivo (\w+)(?: bui|\))/i,
-            /\b(v[12]\d{3}\w?[at])(?: bui|;)/i
-          ],
-          [MODEL, [VENDOR, "Vivo"], [TYPE, MOBILE]],
-          [
-            /\b(rmx[12]\d{3})(?: bui|;|\))/i
-          ],
-          [MODEL, [VENDOR, "Realme"], [TYPE, MOBILE]],
-          [
-            /\b(milestone|droid(?:[2-4x]| (?:bionic|x2|pro|razr))?:?( 4g)?)\b[\w ]+build\//i,
-            /\bmot(?:orola)?[- ](\w*)/i,
-            /((?:moto[\w\(\) ]+|xt\d{3,4}|nexus 6)(?= bui|\)))/i
-          ],
-          [MODEL, [VENDOR, MOTOROLA], [TYPE, MOBILE]],
-          [
-            /\b(mz60\d|xoom[2 ]{0,2}) build\//i
-          ],
-          [MODEL, [VENDOR, MOTOROLA], [TYPE, TABLET]],
-          [
-            /((?=lg)?[vl]k\-?\d{3}) bui| 3\.[-\w; ]{10}lg?-([06cv9]{3,4})/i
-          ],
-          [MODEL, [VENDOR, LG], [TYPE, TABLET]],
-          [
-            /(lm(?:-?f100[nv]?|-[\w\.]+)(?= bui|\))|nexus [45])/i,
-            /\blg[-e;\/ ]+((?!browser|netcast|android tv)\w+)/i,
-            /\blg-?([\d\w]+) bui/i
-          ],
-          [MODEL, [VENDOR, LG], [TYPE, MOBILE]],
-          [
-            /(ideatab[-\w ]+)/i,
-            /lenovo ?(s[56]000[-\w]+|tab(?:[\w ]+)|yt[-\d\w]{6}|tb[-\d\w]{6})/i
-          ],
-          [MODEL, [VENDOR, "Lenovo"], [TYPE, TABLET]],
-          [
-            /(?:maemo|nokia).*(n900|lumia \d+)/i,
-            /nokia[-_ ]?([-\w\.]*)/i
-          ],
-          [[MODEL, /_/g, " "], [VENDOR, "Nokia"], [TYPE, MOBILE]],
-          [
-            /(pixel c)\b/i
-          ],
-          [MODEL, [VENDOR, GOOGLE], [TYPE, TABLET]],
-          [
-            /droid.+; (pixel[\daxl ]{0,6})(?: bui|\))/i
-          ],
-          [MODEL, [VENDOR, GOOGLE], [TYPE, MOBILE]],
-          [
-            /droid.+ ([c-g]\d{4}|so[-gl]\w+|xq-a\w[4-7][12])(?= bui|\).+chrome\/(?![1-6]{0,1}\d\.))/i
-          ],
-          [MODEL, [VENDOR, SONY], [TYPE, MOBILE]],
-          [
-            /sony tablet [ps]/i,
-            /\b(?:sony)?sgp\w+(?: bui|\))/i
-          ],
-          [[MODEL, "Xperia Tablet"], [VENDOR, SONY], [TYPE, TABLET]],
-          [
-            / (kb2005|in20[12]5|be20[12][59])\b/i,
-            /(?:one)?(?:plus)? (a\d0\d\d)(?: b|\))/i
-          ],
-          [MODEL, [VENDOR, "OnePlus"], [TYPE, MOBILE]],
-          [
-            /(alexa)webm/i,
-            /(kf[a-z]{2}wi)( bui|\))/i,
-            /(kf[a-z]+)( bui|\)).+silk\//i
-          ],
-          [MODEL, [VENDOR, AMAZON], [TYPE, TABLET]],
-          [
-            /((?:sd|kf)[0349hijorstuw]+)( bui|\)).+silk\//i
-          ],
-          [[MODEL, /(.+)/g, "Fire Phone $1"], [VENDOR, AMAZON], [TYPE, MOBILE]],
-          [
-            /(playbook);[-\w\),; ]+(rim)/i
-          ],
-          [MODEL, VENDOR, [TYPE, TABLET]],
-          [
-            /\b((?:bb[a-f]|st[hv])100-\d)/i,
-            /\(bb10; (\w+)/i
-          ],
-          [MODEL, [VENDOR, BLACKBERRY], [TYPE, MOBILE]],
-          [
-            /(?:\b|asus_)(transfo[prime ]{4,10} \w+|eeepc|slider \w+|nexus 7|padfone|p00[cj])/i
-          ],
-          [MODEL, [VENDOR, ASUS], [TYPE, TABLET]],
-          [
-            / (z[bes]6[027][012][km][ls]|zenfone \d\w?)\b/i
-          ],
-          [MODEL, [VENDOR, ASUS], [TYPE, MOBILE]],
-          [
-            /(nexus 9)/i
-          ],
-          [MODEL, [VENDOR, "HTC"], [TYPE, TABLET]],
-          [
-            /(htc)[-;_ ]{1,2}([\w ]+(?=\)| bui)|\w+)/i,
-            /(zte)[- ]([\w ]+?)(?: bui|\/|\))/i,
-            /(alcatel|geeksphone|nexian|panasonic|sony)[-_ ]?([-\w]*)/i
-          ],
-          [VENDOR, [MODEL, /_/g, " "], [TYPE, MOBILE]],
-          [
-            /droid.+; ([ab][1-7]-?[0178a]\d\d?)/i
-          ],
-          [MODEL, [VENDOR, "Acer"], [TYPE, TABLET]],
-          [
-            /droid.+; (m[1-5] note) bui/i,
-            /\bmz-([-\w]{2,})/i
-          ],
-          [MODEL, [VENDOR, "Meizu"], [TYPE, MOBILE]],
-          [
-            /\b(sh-?[altvz]?\d\d[a-ekm]?)/i
-          ],
-          [MODEL, [VENDOR, "Sharp"], [TYPE, MOBILE]],
-          [
-            /(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|meizu|motorola|polytron)[-_ ]?([-\w]*)/i,
-            /(hp) ([\w ]+\w)/i,
-            /(asus)-?(\w+)/i,
-            /(microsoft); (lumia[\w ]+)/i,
-            /(lenovo)[-_ ]?([-\w]+)/i,
-            /(jolla)/i,
-            /(oppo) ?([\w ]+) bui/i
-          ],
-          [VENDOR, MODEL, [TYPE, MOBILE]],
-          [
-            /(archos) (gamepad2?)/i,
-            /(hp).+(touchpad(?!.+tablet)|tablet)/i,
-            /(kindle)\/([\w\.]+)/i,
-            /(nook)[\w ]+build\/(\w+)/i,
-            /(dell) (strea[kpr\d ]*[\dko])/i,
-            /(le[- ]+pan)[- ]+(\w{1,9}) bui/i,
-            /(trinity)[- ]*(t\d{3}) bui/i,
-            /(gigaset)[- ]+(q\w{1,9}) bui/i,
-            /(vodafone) ([\w ]+)(?:\)| bui)/i
-          ],
-          [VENDOR, MODEL, [TYPE, TABLET]],
-          [
-            /(surface duo)/i
-          ],
-          [MODEL, [VENDOR, MICROSOFT], [TYPE, TABLET]],
-          [
-            /droid [\d\.]+; (fp\du?)(?: b|\))/i
-          ],
-          [MODEL, [VENDOR, "Fairphone"], [TYPE, MOBILE]],
-          [
-            /(u304aa)/i
-          ],
-          [MODEL, [VENDOR, "AT&T"], [TYPE, MOBILE]],
-          [
-            /\bsie-(\w*)/i
-          ],
-          [MODEL, [VENDOR, "Siemens"], [TYPE, MOBILE]],
-          [
-            /\b(rct\w+) b/i
-          ],
-          [MODEL, [VENDOR, "RCA"], [TYPE, TABLET]],
-          [
-            /\b(venue[\d ]{2,7}) b/i
-          ],
-          [MODEL, [VENDOR, "Dell"], [TYPE, TABLET]],
-          [
-            /\b(q(?:mv|ta)\w+) b/i
-          ],
-          [MODEL, [VENDOR, "Verizon"], [TYPE, TABLET]],
-          [
-            /\b(?:barnes[& ]+noble |bn[rt])([\w\+ ]*) b/i
-          ],
-          [MODEL, [VENDOR, "Barnes & Noble"], [TYPE, TABLET]],
-          [
-            /\b(tm\d{3}\w+) b/i
-          ],
-          [MODEL, [VENDOR, "NuVision"], [TYPE, TABLET]],
-          [
-            /\b(k88) b/i
-          ],
-          [MODEL, [VENDOR, "ZTE"], [TYPE, TABLET]],
-          [
-            /\b(nx\d{3}j) b/i
-          ],
-          [MODEL, [VENDOR, "ZTE"], [TYPE, MOBILE]],
-          [
-            /\b(gen\d{3}) b.+49h/i
-          ],
-          [MODEL, [VENDOR, "Swiss"], [TYPE, MOBILE]],
-          [
-            /\b(zur\d{3}) b/i
-          ],
-          [MODEL, [VENDOR, "Swiss"], [TYPE, TABLET]],
-          [
-            /\b((zeki)?tb.*\b) b/i
-          ],
-          [MODEL, [VENDOR, "Zeki"], [TYPE, TABLET]],
-          [
-            /\b([yr]\d{2}) b/i,
-            /\b(dragon[- ]+touch |dt)(\w{5}) b/i
-          ],
-          [[VENDOR, "Dragon Touch"], MODEL, [TYPE, TABLET]],
-          [
-            /\b(ns-?\w{0,9}) b/i
-          ],
-          [MODEL, [VENDOR, "Insignia"], [TYPE, TABLET]],
-          [
-            /\b((nxa|next)-?\w{0,9}) b/i
-          ],
-          [MODEL, [VENDOR, "NextBook"], [TYPE, TABLET]],
-          [
-            /\b(xtreme\_)?(v(1[045]|2[015]|[3469]0|7[05])) b/i
-          ],
-          [[VENDOR, "Voice"], MODEL, [TYPE, MOBILE]],
-          [
-            /\b(lvtel\-)?(v1[12]) b/i
-          ],
-          [[VENDOR, "LvTel"], MODEL, [TYPE, MOBILE]],
-          [
-            /\b(ph-1) /i
-          ],
-          [MODEL, [VENDOR, "Essential"], [TYPE, MOBILE]],
-          [
-            /\b(v(100md|700na|7011|917g).*\b) b/i
-          ],
-          [MODEL, [VENDOR, "Envizen"], [TYPE, TABLET]],
-          [
-            /\b(trio[-\w\. ]+) b/i
-          ],
-          [MODEL, [VENDOR, "MachSpeed"], [TYPE, TABLET]],
-          [
-            /\btu_(1491) b/i
-          ],
-          [MODEL, [VENDOR, "Rotor"], [TYPE, TABLET]],
-          [
-            /(shield[\w ]+) b/i
-          ],
-          [MODEL, [VENDOR, "Nvidia"], [TYPE, TABLET]],
-          [
-            /(sprint) (\w+)/i
-          ],
-          [VENDOR, MODEL, [TYPE, MOBILE]],
-          [
-            /(kin\.[onetw]{3})/i
-          ],
-          [[MODEL, /\./g, " "], [VENDOR, MICROSOFT], [TYPE, MOBILE]],
-          [
-            /droid.+; (cc6666?|et5[16]|mc[239][23]x?|vc8[03]x?)\)/i
-          ],
-          [MODEL, [VENDOR, ZEBRA], [TYPE, TABLET]],
-          [
-            /droid.+; (ec30|ps20|tc[2-8]\d[kx])\)/i
-          ],
-          [MODEL, [VENDOR, ZEBRA], [TYPE, MOBILE]],
-          [
-            /(ouya)/i,
-            /(nintendo) ([wids3utch]+)/i
-          ],
-          [VENDOR, MODEL, [TYPE, CONSOLE]],
-          [
-            /droid.+; (shield) bui/i
-          ],
-          [MODEL, [VENDOR, "Nvidia"], [TYPE, CONSOLE]],
-          [
-            /(playstation [345portablevi]+)/i
-          ],
-          [MODEL, [VENDOR, SONY], [TYPE, CONSOLE]],
-          [
-            /\b(xbox(?: one)?(?!; xbox))[\); ]/i
-          ],
-          [MODEL, [VENDOR, MICROSOFT], [TYPE, CONSOLE]],
-          [
-            /smart-tv.+(samsung)/i
-          ],
-          [VENDOR, [TYPE, SMARTTV]],
-          [
-            /hbbtv.+maple;(\d+)/i
-          ],
-          [[MODEL, /^/, "SmartTV"], [VENDOR, SAMSUNG], [TYPE, SMARTTV]],
-          [
-            /(nux; netcast.+smarttv|lg (netcast\.tv-201\d|android tv))/i
-          ],
-          [[VENDOR, LG], [TYPE, SMARTTV]],
-          [
-            /(apple) ?tv/i
-          ],
-          [VENDOR, [MODEL, APPLE + " TV"], [TYPE, SMARTTV]],
-          [
-            /crkey/i
-          ],
-          [[MODEL, CHROME + "cast"], [VENDOR, GOOGLE], [TYPE, SMARTTV]],
-          [
-            /droid.+aft(\w)( bui|\))/i
-          ],
-          [MODEL, [VENDOR, AMAZON], [TYPE, SMARTTV]],
-          [
-            /\(dtv[\);].+(aquos)/i
-          ],
-          [MODEL, [VENDOR, "Sharp"], [TYPE, SMARTTV]],
-          [
-            /\b(roku)[\dx]*[\)\/]((?:dvp-)?[\d\.]*)/i,
-            /hbbtv\/\d+\.\d+\.\d+ +\([\w ]*; *(\w[^;]*);([^;]*)/i
-          ],
-          [[VENDOR, trim], [MODEL, trim], [TYPE, SMARTTV]],
-          [
-            /\b(android tv|smart[- ]?tv|opera tv|tv; rv:)\b/i
-          ],
-          [[TYPE, SMARTTV]],
-          [
-            /((pebble))app/i
-          ],
-          [VENDOR, MODEL, [TYPE, WEARABLE]],
-          [
-            /droid.+; (glass) \d/i
-          ],
-          [MODEL, [VENDOR, GOOGLE], [TYPE, WEARABLE]],
-          [
-            /droid.+; (wt63?0{2,3})\)/i
-          ],
-          [MODEL, [VENDOR, ZEBRA], [TYPE, WEARABLE]],
-          [
-            /(quest( 2)?)/i
-          ],
-          [MODEL, [VENDOR, FACEBOOK], [TYPE, WEARABLE]],
-          [
-            /(tesla)(?: qtcarbrowser|\/[-\w\.]+)/i
-          ],
-          [VENDOR, [TYPE, EMBEDDED]],
-          [
-            /droid .+?; ([^;]+?)(?: bui|\) applew).+? mobile safari/i
-          ],
-          [MODEL, [TYPE, MOBILE]],
-          [
-            /droid .+?; ([^;]+?)(?: bui|\) applew).+?(?! mobile) safari/i
-          ],
-          [MODEL, [TYPE, TABLET]],
-          [
-            /\b((tablet|tab)[;\/]|focus\/\d(?!.+mobile))/i
-          ],
-          [[TYPE, TABLET]],
-          [
-            /(phone|mobile(?:[;\/]| safari)|pda(?=.+windows ce))/i
-          ],
-          [[TYPE, MOBILE]],
-          [
-            /(android[-\w\. ]{0,9});.+buil/i
-          ],
-          [MODEL, [VENDOR, "Generic"]]
-        ],
-        engine: [
-          [
-            /windows.+ edge\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, EDGE + "HTML"]],
-          [
-            /webkit\/537\.36.+chrome\/(?!27)([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "Blink"]],
-          [
-            /(presto)\/([\w\.]+)/i,
-            /(webkit|trident|netfront|netsurf|amaya|lynx|w3m|goanna)\/([\w\.]+)/i,
-            /ekioh(flow)\/([\w\.]+)/i,
-            /(khtml|tasman|links)[\/ ]\(?([\w\.]+)/i,
-            /(icab)[\/ ]([23]\.[\d\.]+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /rv\:([\w\.]{1,9})\b.+(gecko)/i
-          ],
-          [VERSION, NAME]
-        ],
-        os: [
-          [
-            /microsoft (windows) (vista|xp)/i
-          ],
-          [NAME, VERSION],
-          [
-            /(windows) nt 6\.2; (arm)/i,
-            /(windows (?:phone(?: os)?|mobile))[\/ ]?([\d\.\w ]*)/i,
-            /(windows)[\/ ]?([ntce\d\. ]+\w)(?!.+xbox)/i
-          ],
-          [NAME, [VERSION, strMapper, windowsVersionMap]],
-          [
-            /(win(?=3|9|n)|win 9x )([nt\d\.]+)/i
-          ],
-          [[NAME, "Windows"], [VERSION, strMapper, windowsVersionMap]],
-          [
-            /ip[honead]{2,4}\b(?:.*os ([\w]+) like mac|; opera)/i,
-            /cfnetwork\/.+darwin/i
-          ],
-          [[VERSION, /_/g, "."], [NAME, "iOS"]],
-          [
-            /(mac os x) ?([\w\. ]*)/i,
-            /(macintosh|mac_powerpc\b)(?!.+haiku)/i
-          ],
-          [[NAME, "Mac OS"], [VERSION, /_/g, "."]],
-          [
-            /droid ([\w\.]+)\b.+(android[- ]x86)/i
-          ],
-          [VERSION, NAME],
-          [
-            /(android|webos|qnx|bada|rim tablet os|maemo|meego|sailfish)[-\/ ]?([\w\.]*)/i,
-            /(blackberry)\w*\/([\w\.]*)/i,
-            /(tizen|kaios)[\/ ]([\w\.]+)/i,
-            /\((series40);/i
-          ],
-          [NAME, VERSION],
-          [
-            /\(bb(10);/i
-          ],
-          [VERSION, [NAME, BLACKBERRY]],
-          [
-            /(?:symbian ?os|symbos|s60(?=;)|series60)[-\/ ]?([\w\.]*)/i
-          ],
-          [VERSION, [NAME, "Symbian"]],
-          [
-            /mozilla\/[\d\.]+ \((?:mobile|tablet|tv|mobile; [\w ]+); rv:.+ gecko\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, FIREFOX + " OS"]],
-          [
-            /web0s;.+rt(tv)/i,
-            /\b(?:hp)?wos(?:browser)?\/([\w\.]+)/i
-          ],
-          [VERSION, [NAME, "webOS"]],
-          [
-            /crkey\/([\d\.]+)/i
-          ],
-          [VERSION, [NAME, CHROME + "cast"]],
-          [
-            /(cros) [\w]+ ([\w\.]+\w)/i
-          ],
-          [[NAME, "Chromium OS"], VERSION],
-          [
-            /(nintendo|playstation) ([wids345portablevuch]+)/i,
-            /(xbox); +xbox ([^\);]+)/i,
-            /\b(joli|palm)\b ?(?:os)?\/?([\w\.]*)/i,
-            /(mint)[\/\(\) ]?(\w*)/i,
-            /(mageia|vectorlinux)[; ]/i,
-            /([kxln]?ubuntu|debian|suse|opensuse|gentoo|arch(?= linux)|slackware|fedora|mandriva|centos|pclinuxos|red ?hat|zenwalk|linpus|raspbian|plan 9|minix|risc os|contiki|deepin|manjaro|elementary os|sabayon|linspire)(?: gnu\/linux)?(?: enterprise)?(?:[- ]linux)?(?:-gnu)?[-\/ ]?(?!chrom|package)([-\w\.]*)/i,
-            /(hurd|linux) ?([\w\.]*)/i,
-            /(gnu) ?([\w\.]*)/i,
-            /\b([-frentopcghs]{0,5}bsd|dragonfly)[\/ ]?(?!amd|[ix346]{1,2}86)([\w\.]*)/i,
-            /(haiku) (\w+)/i
-          ],
-          [NAME, VERSION],
-          [
-            /(sunos) ?([\w\.\d]*)/i
-          ],
-          [[NAME, "Solaris"], VERSION],
-          [
-            /((?:open)?solaris)[-\/ ]?([\w\.]*)/i,
-            /(aix) ((\d)(?=\.|\)| )[\w\.])*/i,
-            /\b(beos|os\/2|amigaos|morphos|openvms|fuchsia|hp-ux)/i,
-            /(unix) ?([\w\.]*)/i
-          ],
-          [NAME, VERSION]
-        ]
-      };
-      var UAParser = function(ua, extensions) {
-        if (typeof ua === OBJ_TYPE) {
-          extensions = ua;
-          ua = undefined$1;
-        }
-        if (!(this instanceof UAParser)) {
-          return new UAParser(ua, extensions).getResult();
-        }
-        var _ua = ua || (typeof window2 !== UNDEF_TYPE && window2.navigator && window2.navigator.userAgent ? window2.navigator.userAgent : EMPTY);
-        var _rgxmap = extensions ? extend(regexes, extensions) : regexes;
-        this.getBrowser = function() {
-          var _browser = {};
-          _browser[NAME] = undefined$1;
-          _browser[VERSION] = undefined$1;
-          rgxMapper.call(_browser, _ua, _rgxmap.browser);
-          _browser.major = majorize(_browser.version);
-          return _browser;
-        };
-        this.getCPU = function() {
-          var _cpu = {};
-          _cpu[ARCHITECTURE] = undefined$1;
-          rgxMapper.call(_cpu, _ua, _rgxmap.cpu);
-          return _cpu;
-        };
-        this.getDevice = function() {
-          var _device = {};
-          _device[VENDOR] = undefined$1;
-          _device[MODEL] = undefined$1;
-          _device[TYPE] = undefined$1;
-          rgxMapper.call(_device, _ua, _rgxmap.device);
-          return _device;
-        };
-        this.getEngine = function() {
-          var _engine = {};
-          _engine[NAME] = undefined$1;
-          _engine[VERSION] = undefined$1;
-          rgxMapper.call(_engine, _ua, _rgxmap.engine);
-          return _engine;
-        };
-        this.getOS = function() {
-          var _os = {};
-          _os[NAME] = undefined$1;
-          _os[VERSION] = undefined$1;
-          rgxMapper.call(_os, _ua, _rgxmap.os);
-          return _os;
-        };
-        this.getResult = function() {
-          return {
-            ua: this.getUA(),
-            browser: this.getBrowser(),
-            engine: this.getEngine(),
-            os: this.getOS(),
-            device: this.getDevice(),
-            cpu: this.getCPU()
-          };
-        };
-        this.getUA = function() {
-          return _ua;
-        };
-        this.setUA = function(ua2) {
-          _ua = typeof ua2 === STR_TYPE && ua2.length > UA_MAX_LENGTH ? trim(ua2, UA_MAX_LENGTH) : ua2;
-          return this;
-        };
-        this.setUA(_ua);
-        return this;
-      };
-      UAParser.VERSION = LIBVERSION;
-      UAParser.BROWSER = enumerize([NAME, VERSION, MAJOR]);
-      UAParser.CPU = enumerize([ARCHITECTURE]);
-      UAParser.DEVICE = enumerize([MODEL, VENDOR, TYPE, CONSOLE, MOBILE, SMARTTV, TABLET, WEARABLE, EMBEDDED]);
-      UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
-      {
-        if (module.exports) {
-          exports2 = module.exports = UAParser;
-        }
-        exports2.UAParser = UAParser;
-      }
-      var $ = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
-      if ($ && !$.ua) {
-        var parser = new UAParser();
-        $.ua = parser.getResult();
-        $.ua.get = function() {
-          return parser.getUA();
-        };
-        $.ua.set = function(ua) {
-          parser.setUA(ua);
-          var result = parser.getResult();
-          for (var prop in result) {
-            $.ua[prop] = result[prop];
-          }
-        };
-      }
-    })(typeof window === "object" ? window : commonjsGlobal);
-  })(uaParser$1, uaParser$1.exports);
-  const uaParser = uaParser$1.exports;
-  const version = "0.3.0";
-  function getEnv() {
-    var _a, _b;
-    const { os, device } = uaParser(navigator.userAgent);
-    let location;
-    if (typeof window !== "undefined") {
-      location = window.location;
-    } else if (typeof self !== void 0) {
-      location = self.location;
-    }
-    return {
-      os: `${os.name}_${os.version}`,
-      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
-      sdk: `Web SDK v${version}`,
-      dev_model: (_b = device.model) != null ? _b : "",
-      dev_id: ""
-    };
-  }
-  const logNumPerCall = 200;
-  const debug$1 = getDebug("log");
-  class SchemaLogger {
-    constructor(schemaName, fetch2, flushNum, flushWait, app) {
-      __publicField(this, "env", queryStringify(getEnv()));
-      __publicField(this, "flushMutex", new Mutex());
-      __publicField(this, "buffer", []);
-      this.schemaName = schemaName;
-      this.fetch = fetch2;
-      this.flushNum = flushNum;
-      this.flushWait = flushWait;
-      this.app = app;
-    }
-    callApiLog(logs) {
-      return __async(this, null, function* () {
-        const fetch2 = this.fetch;
-        try {
-          const accessToken = getAccessToken({
-            appID: this.app.appID,
-            appSalt: this.app.appSalt,
-            path: `${logApiPrefix}/v1/log/${this.schemaName}`
-          });
-          const resp = yield fetch2(new Request(`${logApiPrefix}/v1/log/${this.schemaName}`, {
-            method: "POST",
-            headers: {
-              "Authorization": accessToken,
-              "Content-Type": "text/csv",
-              "X-Env": this.env
-            },
-            body: getLogBody(logs)
-          }));
-          if (!resp.ok)
-            throw new Error(`Unexpected response status: ${resp.status} ${resp.statusText}`);
-        } catch (e) {
-          console.warn("Call log API failed:", e);
-        }
-      });
-    }
-    flush() {
-      return __async(this, null, function* () {
-        return this.flushMutex.runExclusive(() => __async(this, null, function* () {
-          const logs = this.buffer.splice(0);
-          if (logs.length === 0)
-            return;
-          const callNum = Math.ceil(logs.length / logNumPerCall);
-          return Promise.all(Array.from({ length: callNum }).map((_, i) => this.callApiLog(logs.slice(i * logNumPerCall, (i + 1) * logNumPerCall))));
-        }));
-      });
-    }
-    tryFlush() {
-      return __async(this, null, function* () {
-        const flushOrRetry = yield this.flushMutex.runExclusive(() => {
-          const buffer = this.buffer;
-          if (buffer.length === 0)
-            return false;
-          if (buffer.length >= this.flushNum) {
-            debug$1("buffer.length >= this.flushNum");
-            return true;
-          }
-          const waited = Date.now() - buffer[0].ts;
-          if (waited >= this.flushWait * 1e3) {
-            debug$1("waited >= this.flushWait");
-            return true;
-          }
-          return this.flushWait * 1e3 - waited;
-        });
-        if (flushOrRetry === true)
-          return this.flush();
-        if (typeof flushOrRetry === "number") {
-          setTimeout(() => this.tryFlush(), flushOrRetry);
-        }
-      });
-    }
-    log(logData) {
-      this.buffer.push(__spreadValues({ ts: Date.now() }, logData));
-      this.tryFlush();
-    }
-  }
-  class Logger {
-    constructor(appInfo, fetch2 = self.fetch, flushNum = 100, flushWait = 30) {
-      __publicField(this, "schemaLoggers", /* @__PURE__ */ new Map());
-      this.appInfo = appInfo;
-      this.fetch = fetch2;
-      this.flushNum = flushNum;
-      this.flushWait = flushWait;
-    }
-    log(schemaName, logData) {
-      let logger = this.schemaLoggers.get(schemaName);
-      if (logger == null) {
-        logger = new SchemaLogger(schemaName, this.fetch, this.flushNum, this.flushWait, this.appInfo);
-        this.schemaLoggers.set(schemaName, logger);
-      }
-      logger.log(logData);
-    }
-  }
-  function getLogBody(logs) {
-    const fields = Object.keys(logs[0]);
-    const sortedFields = ["ts", ...fields.filter((f) => f !== "ts")];
-    const headLine = sortedFields.map(processCSVValue).join(",");
-    const bodyLines = logs.map(
-      (log) => sortedFields.map(
-        (k) => log[k]
-      ).map(
-        (v) => v != null ? v + "" : ""
-      ).map(processCSVValue).join(",")
-    );
-    return [headLine, ...bodyLines].join("\n");
-  }
-  function processCSVValue(value) {
-    let str = value.replace(/"/g, '""');
-    if (/("|,|\n)/.test(str)) {
-      str = '"' + str + '"';
-    }
-    return str;
-  }
-  const debug = getDebug("http/webrtc/service");
-  class HoWService {
-    constructor(pcConnectTimeout, dcOpenTimeout) {
-      __publicField(this, "workerContainer", navigator.serviceWorker);
-      __publicField(this, "hoW");
-      __publicField(this, "abortCtrls", /* @__PURE__ */ new Map());
-      __publicField(this, "disposers", []);
-      this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
-      this.disposers.push(() => this.hoW.dispose());
-    }
-    get worker() {
-      if (this.workerContainer.controller == null)
-        throw new Error("No available service worker");
-      return this.workerContainer.controller;
-    }
-    sendBody(id, body2) {
-      return __async(this, null, function* () {
-        const reader = body2.getReader();
-        while (true) {
-          const { value, done } = yield reader.read();
-          if (done) {
-            const message2 = { hoW: true, type: "resp-body-chunk", id, payload: null };
-            this.worker.postMessage(message2);
-            return;
-          }
-          const message = { hoW: true, type: "resp-body-chunk", id, payload: value.buffer };
-          this.worker.postMessage(message, [value.buffer]);
-        }
-      });
-    }
-    sendResponse(ctx, id, response) {
-      return __async(this, null, function* () {
-        var _a, _b, _c, _d;
-        debug("sendResponse in window", id, response);
-        const { status, statusText, headers, body: body2 } = response;
-        const message = {
-          hoW: true,
-          type: "resp-head",
-          id,
-          status,
-          statusText,
-          headers: dehydrateHeaders(headers),
-          hasBody: body2 != null,
-          reqMessageAt: (_a = ctx.get("hoWReqMessageAt")) != null ? _a : -1,
-          peerConnectionConnectAt: (_b = ctx.get("hoWPeerConnectionConnectAt")) != null ? _b : -1,
-          dataChannelOpenAt: (_c = ctx.get("hoWDataChannelOpenAt")) != null ? _c : -1,
-          startTransferAt: (_d = ctx.get("hoWStartTransferAt")) != null ? _d : -1
-        };
-        this.worker.postMessage(message);
-        if (body2 != null) {
-          yield this.sendBody(id, body2);
-        }
-        debug("sendResponse finished in window", id, response);
-      });
-    }
-    sendResponseError(id, err) {
-      const message = {
-        hoW: true,
-        type: "resp-error",
-        id,
-        name: err instanceof Error ? err.name : "UnknownError",
-        message: err instanceof Error ? err.message : err + ""
-      };
-      this.worker.postMessage(message);
-    }
-    receiveRequestBody(id) {
-      let streamCtrl;
-      const stream = new ReadableStream({
-        start: (ctrl) => streamCtrl = ctrl
-      });
-      const unlisten = listen(this.workerContainer, "message", ({ data }) => {
-        if (!isHoWMessage(data))
-          return;
-        if (data.id !== id)
-          return;
-        if (data.type !== "req-body-chunk")
-          return;
-        if (streamCtrl == null)
-          throw new Error("Stream Controller should be ready");
-        if (data.payload == null) {
-          streamCtrl.close();
-          unlisten();
-          return;
-        }
-        streamCtrl.enqueue(new Uint8Array(data.payload));
-      });
-      return stream;
-    }
-    getRequest({ id, url, method, headers, hasBody }) {
-      const abortCtrl = new AbortController();
-      this.abortCtrls.set(id, abortCtrl);
-      if (!hasBody)
-        return new HttpRequest(url, { method, headers, signal: abortCtrl.signal });
-      const body2 = this.receiveRequestBody(id);
-      return new HttpRequest(url, { method, headers, signal: abortCtrl.signal, body: body2 });
-    }
-    run() {
-      this.disposers.push(listen(this.workerContainer, "message", (_0) => __async(this, [_0], function* ({ data }) {
-        var _a;
-        debug("Got message in window", data);
-        if (!isHoWMessage(data))
-          return;
-        if (data.type === "req-head") {
-          const { id, fingerprint } = data;
-          const request = this.getRequest(data);
-          const ctx = new Context();
-          ctx.set("hoWReqMessageAt", Date.now());
-          try {
-            const response = yield this.hoW.fetch(ctx, id, request, fingerprint);
-            yield this.sendResponse(ctx, id, response);
-          } catch (e) {
-            this.sendResponseError(id, e);
-          } finally {
-            this.abortCtrls.delete(id);
-          }
-          return;
-        }
-        if (data.type === "req-abort") {
-          (_a = this.abortCtrls.get(data.id)) == null ? void 0 : _a.abort(new AbortError(data.reason));
-          return;
-        }
-      })));
-    }
-    dispose() {
-      this.disposers.forEach((d) => d());
-    }
-  }
-  function listen(target, type, listener) {
-    target.addEventListener(type, listener);
-    return () => target.removeEventListener(type, listener);
-  }
   class HoWHttpClientForWindow {
     constructor(getFingerprint, pcConnectTimeout, dcOpenTimeout) {
       __publicField(this, "hoW");
@@ -7890,6 +7984,31 @@ a=end-of-candidates
     }
     dispose() {
       this.hoW.dispose();
+    }
+  }
+  class HoWHttpClientForSW {
+    constructor(getFingerprint, timeout) {
+      __publicField(this, "client");
+      this.getFingerprint = getFingerprint;
+      if (!isInServiceWorker())
+        throw new Error("HoWHttpClientForSW should be used in Service Worker");
+      this.client = new HoWClient(timeout);
+    }
+    fetch(ctx, request) {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d;
+        const id = uuid();
+        const fingerprint = this.getFingerprint(new URL(request.url).host);
+        const resp = yield this.client.fetch(ctx, id, request, fingerprint);
+        ctx.set("downloadReqMessageAt", (_a = ctx.get("hoWReqMessageAt")) != null ? _a : -1);
+        ctx.set("downloadConnectionAt", (_b = ctx.get("hoWDataChannelOpenAt")) != null ? _b : -1);
+        ctx.set("downloadStartTransferAt", (_c = ctx.get("hoWStartTransferAt")) != null ? _c : -1);
+        ctx.set("downloadRespMessageAt", (_d = ctx.get("hoWRespMessageAt")) != null ? _d : -1);
+        return resp;
+      });
+    }
+    dispose() {
+      this.client.dispose();
     }
   }
   function isInServiceWorker() {
@@ -7955,59 +8074,126 @@ a=end-of-candidates
   function defaultHash(url) {
     return url;
   }
-  const configQueryName = "MIKU_PROXY_CONFIG";
-  function getScriptUrl(scriptUrl, config) {
-    var _a;
-    const serializableConfig = __spreadProps(__spreadValues({}, config), {
-      patterns: (_a = config.patterns) == null ? void 0 : _a.map((re) => ({ source: re.source, flags: re.flags }))
-    });
-    return appendQuery(scriptUrl, { [configQueryName]: JSON.stringify(serializableConfig) });
+  function isProxyMessage(message) {
+    return message && message.mikuProxy === true;
   }
-  function registerSW(scriptUrl, config, options) {
+  const defaultPatterns = [imagePattern, videoPattern];
+  const debug$1 = getDebug("proxy/common");
+  function proxyRequest(client, request) {
     return __async(this, null, function* () {
-      scriptUrl = getScriptUrl(scriptUrl, config);
-      yield navigator.serviceWorker.register(scriptUrl, options);
-    });
-  }
-  function initPage() {
-    return __async(this, null, function* () {
-      new HoWService().run();
-      syncWindowStatus();
-    });
-  }
-  function syncWindowStatus() {
-    function notify(state) {
-      var _a;
-      const message = { mikuProxy: true, type: `window-${state}` };
-      (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
-    }
-    notify("available");
-    window.addEventListener("pageshow", () => notify("available"));
-    window.addEventListener("pagehide", () => notify("unavailable"));
-    window.addEventListener("beforeunload", () => notify("unavailable"));
-  }
-  function initProxy(scriptUrl, config, options) {
-    return __async(this, null, function* () {
-      const reason = supportProxy();
-      if (reason != null) {
-        console.warn("Ability not OK for Miku Proxy API:", reason);
-        return;
+      var _a, _b;
+      const { browser } = uaParser(navigator.userAgent);
+      if (browser.name === "Firefox" && request.headers.get("Range")) {
+        debug$1("Short circuit for Firefox:", request.url);
+        const nodeHost = yield client["resolver"].resolveUrl(new Context(), request.url, true);
+        const newRequest = withNodeHost(request, nodeHost);
+        const response2 = Response.redirect(newRequest.url);
+        return response2;
       }
-      if (config.debug)
-        enableDebug();
-      yield Promise.all([
-        initPage(),
-        registerSW(scriptUrl, config, options)
-      ]);
+      const httpRange = httpGetRange(request.headers);
+      const range = httpRange == null ? void 0 : {
+        start: httpRange.start,
+        end: httpRange.end == null ? null : httpRange.end + 1
+      };
+      const task = client.createTask(request.url, range != null ? range : void 0);
+      waitAbort(request.signal).catch((e) => {
+        task.cancel(e);
+      });
+      let { stream, contentType, size, fileSize, response } = yield task.start();
+      if (response == null) {
+        const headers = {
+          "Accept-Ranges": "bytes",
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": contentType != null ? contentType : "",
+          "Content-Length": (size != null ? size : "") + "",
+          "Content-Transfer-Encoding": "binary"
+        };
+        response = range == null ? new Response(stream, { status: 200, statusText: "OK", headers }) : new Response(stream, { status: 206, statusText: "Partial Content", headers: __spreadProps(__spreadValues({}, headers), {
+          "Content-Range": stringifyContentRange({
+            start: (_a = range.start) != null ? _a : 0,
+            end: (_b = range.end) != null ? _b : fileSize != null ? fileSize - 1 : null,
+            totalSize: fileSize
+          })
+        }) });
+      }
+      return response;
     });
   }
-  function supportProxy() {
-    if (!("serviceWorker" in navigator))
-      return "navigator.serviceWorker not available";
-    return null;
+  const configQueryName = "MIKU_PROXY_CONFIG";
+  function getProxyConfig(scriptUrl) {
+    var _a;
+    const search = scriptUrl.split("?")[1];
+    if (!search)
+      throw new Error("Invalid script url");
+    const params = new URLSearchParams(search);
+    const configText = params.get(configQueryName);
+    if (configText == null)
+      throw new Error("Invalid script url: no config info");
+    const serializableConfig = JSON.parse(configText);
+    return __spreadProps(__spreadValues({}, serializableConfig), {
+      patterns: (_a = serializableConfig.patterns) == null ? void 0 : _a.map(({ source, flags }) => new RegExp(source, flags))
+    });
   }
-  exports.Client = Client;
-  exports.initProxy = initProxy;
-  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
-  return exports;
-}({});
+  function shouldUseCDN(request, { domains, patterns = defaultPatterns }) {
+    if (request.method !== "GET")
+      return false;
+    const reqUrlObj = new URL(request.url);
+    if (!domains.includes(reqUrlObj.hostname))
+      return false;
+    reqUrlObj.search = "";
+    reqUrlObj.hash = "";
+    const reqUrlWithoutQueryHash = reqUrlObj.toString();
+    return patterns.some((pattern) => pattern.test(reqUrlWithoutQueryHash));
+  }
+  const debug = getDebug("proxy/service-worker");
+  const scope = self;
+  const proxyConfig = getProxyConfig(scope.location.href);
+  const mikuClient = createClientForSW(proxyConfig);
+  scope.addEventListener("activate", (event) => {
+    event.waitUntil(scope.clients.claim());
+  });
+  scope.addEventListener("fetch", (event) => __async(this, null, function* () {
+    if (event.clientId !== "") {
+      swClients.add(event.clientId);
+    }
+    const request = event.request;
+    const abortCtrl = new AbortController();
+    Object.defineProperty(request, "signal", { value: abortCtrl.signal });
+    swClients.whenRemoved(event.clientId, () => abortCtrl.abort(new AbortError(`Source client ${event.clientId} closed`)));
+    if (shouldUseCDN(request, proxyConfig)) {
+      debug("use cdn", request.url);
+      event.respondWith(proxyRequest(mikuClient, request).catch((e) => {
+        if (e instanceof NonECDNError || e instanceof NoAvailableECDNNodeError) {
+          debug("Use fallback fetch for request", request.url, `, error:`, e);
+          return fetch(request, { signal: abortCtrl.signal });
+        }
+        throw e;
+      }));
+      return;
+    }
+  }));
+  scope.addEventListener("message", (e) => __async(this, null, function* () {
+    if (!(e.source instanceof WindowClient))
+      return;
+    if (!isProxyMessage(e.data))
+      return;
+    debug("got proxy message", e.data, "from", e.source.id);
+    switch (e.data.type) {
+      case "window-available":
+        swClients.add(e.source.id);
+        break;
+      case "window-unavailable":
+        swClients.remove(e.source.id);
+        break;
+    }
+  }));
+  function createClientForSW(proxyConfig2) {
+    var _a;
+    const clientConfig = (_a = proxyConfig2.client) != null ? _a : {};
+    clientConfig.debug = proxyConfig2.debug;
+    const logger = new Logger(proxyConfig2.app, void 0, void 0, 3);
+    const resolver = new Resolver(logger, proxyConfig2.app);
+    const httpClient = new HoWHttpClientForSW((ipPort) => resolver.getFingerprint(ipPort));
+    return new Client(proxyConfig2.app, __spreadProps(__spreadValues({}, clientConfig), { logger, httpClient }));
+  }
+})();

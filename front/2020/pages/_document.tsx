@@ -121,7 +121,7 @@ const mikuInitScriptContent = `
     }).then(function (res) {
       res.json().then(function (body) {
         if (body.groups) {
-          miku.initProxy('/miku-sw-0.3.0.js', {
+          miku.initProxy('/miku-sw-0.3.1.js', {
             app: appInfo,
             domains: ['www-static.qbox.me'],
             debug
@@ -150,8 +150,8 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/miku-perf-0.3.0.js`} />
-          <script src={`${assetHost}/miku-0.3.0.js`} />
+          <script src={`${assetHost}/miku-perf-0.3.1.js`} />
+          <script src={`${assetHost}/miku-0.3.1.js`} />
           <script dangerouslySetInnerHTML={{ __html: mikuInitScriptContent }} />
         </Head>
         <body>
