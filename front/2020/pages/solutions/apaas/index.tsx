@@ -70,8 +70,8 @@ function Page() {
           <Case logo={imgCase1} title="华商网" onConsult={showWechatConsultModal} logoClassName={styles.logo}>
             <div className={styles.desc}>七牛低代码方案帮助华商网快速实现直播、连线等功能开发，为华商网“应用驱动，产品致胜”的发展理念提供支撑。</div>
           </Case>
-          <Case logo={imgCase2} title="北京市社会心理工作联合会" onConsult={showWechatConsultModal} logoClassName={styles.logo}>
-            <div className={styles.desc}>七牛低代码方案让客户快速拥有线上直播大会 + 1V1 视频连麦 + 多人视频聊天的功能。</div>
+          <Case logo={imgCase2} title="心跳觅友" onConsult={showWechatConsultModal} logoClassName={styles.logo}>
+            <div className={styles.desc}>七牛低代码方案助力心跳觅友 App 快速上线，为用户提供一对一的视频通话社交服务。</div>
           </Case>
           <Case logo={imgCase3} title="心尚臻品" onConsult={showWechatConsultModal} logoClassName={styles.logo}>
             <div className={styles.desc}>七牛低代码方案助力心尚臻品 App 快速上线直播带货功能板块。</div>
