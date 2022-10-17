@@ -1039,7 +1039,7 @@ var mikuPerf = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.3.1";
+  const version = "0.9.1";
   function getEnv() {
     var _a, _b;
     const { os, device } = uaParser(navigator.userAgent);
@@ -5465,6 +5465,9 @@ var mikuPerf = function(exports) {
     }
     return text;
   }
+  function formatMillisecondToSecond(time) {
+    return parseFloat((time / 1e3).toFixed(2));
+  }
   const namespace = "miku/dc";
   const _MikuPerformance = class {
     constructor(type, app) {
@@ -5483,11 +5486,12 @@ var mikuPerf = function(exports) {
       this.logger = new Logger(app, void 0, void 0, 3);
     }
     static initInstance(type, app) {
-      const performance = new _MikuPerformance(type, app);
-      performance.pageLoadPerformance();
-      performance.resourceLoadPerformance();
-      _MikuPerformance.mikuPerformanceInstance = performance;
-      return performance;
+      const performance2 = new _MikuPerformance(type, app);
+      performance2.pageLoadPerformance();
+      performance2.resourceLoadPerformance();
+      performance2.videoLoadPerformance();
+      _MikuPerformance.mikuPerformanceInstance = performance2;
+      return performance2;
     }
     pageLoadPerformance() {
       let observer = new PerformanceObserver(
@@ -5496,18 +5500,18 @@ var mikuPerf = function(exports) {
             if (entry.entryType === "paint" && entry.name === "first-contentful-paint") {
               this.pageLogData.url = window.location.href;
               this.pageLogData.tag = this.type;
-              this.pageLogData.t_full_load = parseFloat(
-                (entry.startTime / 1e3).toFixed(4)
+              this.pageLogData.t_full_load = formatMillisecondToSecond(
+                entry.startTime
               );
               this.submitPageLoadLog(observer);
             } else if (entry.entryType === "paint" && entry.name === "first-paint") {
-              this.pageLogData.t_page_load = parseFloat(
-                (entry.startTime / 1e3).toFixed(4)
+              this.pageLogData.t_page_load = formatMillisecondToSecond(
+                entry.startTime
               );
               this.submitPageLoadLog(observer);
             } else if (entry.entryType === "navigation" && entry.initiatorType === "navigation") {
-              this.pageLogData.t_window_load = parseFloat(
-                ((entry.loadEventEnd - entry.fetchStart) / 1e3).toFixed(4)
+              this.pageLogData.t_window_load = formatMillisecondToSecond(
+                entry.loadEventEnd - entry.fetchStart
               );
               this.submitPageLoadLog(observer);
             }
@@ -5525,7 +5529,7 @@ var mikuPerf = function(exports) {
                 r_id: this.pageLogData.r_id,
                 ts: Date.now(),
                 url: entry.name,
-                t_page_perf: parseFloat((entry.duration / 1e3).toFixed(4))
+                t_page_perf: formatMillisecondToSecond(entry.duration)
               });
             }
           });
@@ -5533,16 +5537,175 @@ var mikuPerf = function(exports) {
       );
       observer.observe({ entryTypes: ["resource"] });
     }
+    videoLoadPerformance() {
+      const hasAddEventMap = [];
+      const observer = new MutationObserver(() => {
+        const nodes = document.getElementsByTagName("video");
+        for (const node of Array.from(nodes)) {
+          const _node = node;
+          if (!hasAddEventMap.includes(_node)) {
+            hasAddEventMap.push(_node);
+            this.addVideoEventListener(_node);
+          }
+        }
+      });
+      observer.observe(document.body, { subtree: true, childList: true });
+    }
+    addVideoEventListener(node) {
+      let videoPerformanceLog = this.resetVideoLogData();
+      node.addEventListener("loadstart", (event) => {
+        if (videoPerformanceLog.path) {
+          this.submitVideoLoadLog(videoPerformanceLog);
+          videoPerformanceLog = this.resetVideoLogData();
+        }
+        videoPerformanceLog.ts_play = Date.now();
+        videoPerformanceLog.path = node.src;
+        try {
+          const url = new URL(node.src);
+          videoPerformanceLog.protocol = url.protocol.slice(0, -1);
+          videoPerformanceLog.domain = url.host;
+        } catch (e) {
+        }
+        videoPerformanceLog.start = event.timeStamp;
+      });
+      node.addEventListener("loadedmetadata", (event) => {
+        videoPerformanceLog.t_loaded_metadata = formatMillisecondToSecond(
+          event.timeStamp - videoPerformanceLog.start
+        );
+      });
+      node.addEventListener("loadeddata", (event) => {
+        videoPerformanceLog.t_loaded_data = formatMillisecondToSecond(
+          event.timeStamp - videoPerformanceLog.start
+        );
+        videoPerformanceLog.t_duration = Number(node.duration.toFixed(2));
+        videoPerformanceLog.playback_rate = node.playbackRate;
+        this.submitVideoLoadLog(videoPerformanceLog);
+        videoPerformanceLog.lastSubmitLogTime = performance.now();
+      });
+      node.addEventListener("seeking", () => {
+        videoPerformanceLog.isSeeking = true;
+        videoPerformanceLog.lastSeekingTime = performance.now();
+      });
+      node.addEventListener("playing", () => {
+        const now = performance.now();
+        videoPerformanceLog.lastPlayingTime = now;
+        if (videoPerformanceLog.lastWaitingTime) {
+          const waitingTime = now - videoPerformanceLog.lastWaitingTime;
+          videoPerformanceLog.t_jank_total += waitingTime;
+          videoPerformanceLog.t_play_total += waitingTime;
+          videoPerformanceLog.lastWaitingTime = 0;
+        }
+        if (videoPerformanceLog.lastSeekingTime) {
+          const seekingTime = now - videoPerformanceLog.lastSeekingTime;
+          videoPerformanceLog.t_seek_total += seekingTime;
+          videoPerformanceLog.t_play_total += seekingTime;
+          videoPerformanceLog.lastSeekingTime = 0;
+        }
+      });
+      node.addEventListener("timeupdate", () => {
+        if (performance.now() - videoPerformanceLog.lastSubmitLogTime > 1e3 * 10) {
+          this.submitVideoLoadLog(videoPerformanceLog);
+          videoPerformanceLog.lastSubmitLogTime = performance.now();
+        }
+      });
+      const stopOrPauseListener = () => {
+        const now = performance.now();
+        if (videoPerformanceLog.lastPlayingTime) {
+          const playingTime = now - videoPerformanceLog.lastPlayingTime;
+          videoPerformanceLog.t_play_total += playingTime;
+          videoPerformanceLog.lastPlayingTime = 0;
+        }
+        if (videoPerformanceLog.lastWaitingTime) {
+          const waitingTime = now - videoPerformanceLog.lastWaitingTime;
+          videoPerformanceLog.t_jank_total += waitingTime;
+          videoPerformanceLog.t_play_total += waitingTime;
+          videoPerformanceLog.lastWaitingTime = 0;
+        }
+        if (videoPerformanceLog.lastSeekingTime) {
+          const seekingTime = now - videoPerformanceLog.lastSeekingTime;
+          videoPerformanceLog.t_seek_total += seekingTime;
+          videoPerformanceLog.t_play_total += seekingTime;
+          videoPerformanceLog.lastSeekingTime = 0;
+        }
+        this.submitVideoLoadLog(videoPerformanceLog);
+        videoPerformanceLog.lastSubmitLogTime = performance.now();
+      };
+      node.addEventListener("pause", stopOrPauseListener);
+      node.addEventListener("stop", stopOrPauseListener);
+      node.addEventListener("waiting", () => {
+        const now = performance.now();
+        if (videoPerformanceLog.lastPlayingTime) {
+          const playingTime = now - videoPerformanceLog.lastPlayingTime;
+          videoPerformanceLog.t_play_total += playingTime;
+          videoPerformanceLog.lastPlayingTime = 0;
+        }
+        if (videoPerformanceLog.isSeeking) {
+          videoPerformanceLog.isSeeking = false;
+        } else {
+          videoPerformanceLog.lastWaitingTime = now;
+        }
+      });
+    }
     submitResourceLoadLog(data) {
-      this.logger.log("QiniuPageResourceLoadLog", data);
+      this.logger.log("PageResourceLoadLog", data);
     }
     submitPageLoadLog(observer) {
       this.pageLogData.ts = Date.now();
       const _a = this.pageLogData, { t_page_load } = _a, pageLogData = __objRest(_a, ["t_page_load"]);
       if (Object.values(pageLogData).every((item) => !!item)) {
-        this.logger.log("QiniuPageLoadLog", this.pageLogData);
+        this.logger.log("PageLoadLog", this.pageLogData);
         observer.disconnect();
       }
+    }
+    submitVideoLoadLog(log) {
+      const now = performance.now();
+      const submitLog = {
+        r_id: log.r_id,
+        s_id: log.s_id,
+        ts: Date.now(),
+        protocol: log.protocol,
+        domain: log.domain,
+        path: log.path,
+        ts_play: log.ts_play,
+        t_loaded_metadata: log.t_loaded_metadata,
+        t_loaded_data: log.t_loaded_data,
+        playback_rate: log.playback_rate,
+        t_duration: log.t_duration,
+        t_play_total: log.lastPlayingTime ? formatMillisecondToSecond(
+          log.t_play_total + now - log.lastPlayingTime
+        ) : formatMillisecondToSecond(log.t_play_total),
+        t_jank_total: log.lastWaitingTime ? formatMillisecondToSecond(
+          log.t_jank_total + now - log.lastWaitingTime
+        ) : formatMillisecondToSecond(log.t_jank_total),
+        t_seek_total: log.lastSeekingTime ? formatMillisecondToSecond(
+          log.t_seek_total + now - log.lastSeekingTime
+        ) : formatMillisecondToSecond(log.t_seek_total)
+      };
+      this.logger.log("PageVideoLoadLog", submitLog);
+    }
+    resetVideoLogData() {
+      return {
+        ts: 0,
+        r_id: this.pageLogData.r_id,
+        s_id: uuid(),
+        protocol: "",
+        domain: "",
+        path: "",
+        ts_play: 0,
+        t_play_total: 0,
+        t_loaded_metadata: 0,
+        t_loaded_data: 0,
+        t_jank_total: 0,
+        t_seek_total: 0,
+        playback_rate: 0,
+        t_duration: 0,
+        start: 0,
+        isSeeking: false,
+        lastPlayingTime: 0,
+        lastWaitingTime: 0,
+        lastSeekingTime: 0,
+        lastSubmitLogTime: 0
+      };
     }
   };
   let MikuPerformance = _MikuPerformance;
@@ -5592,6 +5755,7 @@ var mikuPerf = function(exports) {
       }
     });
   });
+  exports.MikuPerformance = MikuPerformance;
   exports.init = createPerformance;
   Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
   return exports;
