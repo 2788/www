@@ -21,19 +21,14 @@ import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import ProductNotice from 'components/Product/common/ProductNotice'
 import ProductNews from 'components/Product/common/ProductNews'
+import { useMobile } from 'hooks/ua'
 
+import { headerThemeContext } from 'components/Header/Pc'
 import AccessProcess, { Step as AccessStep } from 'components/Product/AccessProcess'
 import LinkGroups, { LinkGroup, LinkItem } from 'components/Product/LinkGroups'
 import Scene, { Panel as ScenePanel, Block as SceneBlock } from 'components/Product/Scene'
 import { useWechatConsultModal } from 'components/WechatConsultModal'
 import QvmCommonCases from 'components/pages/qvm/Cases' // 短信使用跟 QVM 一样的客户案例内容
-import imgBanner from './banner.png'
-import IconSchedule from './_icons/schedule.svg'
-import IconQuick from './_icons/quick.svg'
-import Icon3Net from './_icons/3-net.svg'
-import IconShunt from './_icons/shunt.svg'
-import IconCustomize from './_icons/customize.svg'
-import IconEasy from './_icons/easy.svg'
 import ImgSceneConfirm from './_imgs/scene-confirm.png'
 import ImgSceneMarketing from './_imgs/scene-marketing.png'
 import ImgSceneNotice from './_imgs/scene-notice.png'
@@ -44,18 +39,29 @@ import IconStep4 from './_icons/step-4.svg'
 
 import style from './style.less'
 
+import pcBanner from './banner.jpg'
+import mobileBanner from './banner-mobile.jpg'
+
+import iconSchedule from './_imgs/schedule.png'
+import iconQuick from './_imgs/quick.png'
+import icon3Net from './_imgs/3-net.png'
+import iconShunt from './_imgs/shunt.png'
+import iconCustomize from './_imgs/customize.png'
+import iconEasy from './_imgs/easy.png'
+
 // 内容放到单独的组件里，主要是为了让这里的内容可以接触到 feedback
 // context（由 `<Layout>` 提供），使用 `useFeedbackModal`
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+  const isMobile = useMobile()
 
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
   const priceUrl = urlForPrice(Product.Sms)
 
   const btns = useBtns(
-    { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true },
+    { children: '免费试用', href: 'https://portal.qiniu.com/sms', pcOnly: true, type: 'primary' },
     { children: '售前咨询', onClick: showWechatConsultModal },
     { href: priceUrl, children: '产品价格', mobileOnly: true }
   )
@@ -69,9 +75,9 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
       <PageBanner
         title="云短信 SMS"
         desc="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
-        bgColor="#34A1EC"
+        bgColor="#213149"
         btns={btns.banner}
-        icon={imgBanner}
+        bgImgUrl={isMobile ? mobileBanner : pcBanner}
       />
 
       <ProductNotice {...(currentNotices || notices)} />
@@ -82,24 +88,24 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
       <Feature name="advantages" title="产品优势">
         <feature.Group>
-          <feature.Item title="智能调度" icon={<IconSchedule />}>
+          <feature.Item title="智能调度" icon={<feature.Icon src={iconSchedule} alt="智能调度" />}>
             <feature.Desc className={style.featureDesc}>七牛短信服务平台融合多家专属运营商，多通道智能调度，轻松应对业务高峰</feature.Desc>
           </feature.Item>
-          <feature.Item title="快速稳定" icon={<IconQuick />}>
+          <feature.Item title="快速稳定" icon={<feature.Icon src={iconQuick} alt="快速稳定" />}>
             <feature.Desc className={style.featureDesc}>专属通道，3-5 秒到达，国内短信具备 99% 超高到达率（空号或不在服务区除外），保障终端用户体验</feature.Desc>
           </feature.Item>
-          <feature.Item title="三网合一" icon={<Icon3Net />}>
+          <feature.Item title="三网合一" icon={<feature.Icon src={icon3Net} alt="三网合一" />}>
             <feature.Desc className={style.featureDesc}>移动、联通、电信网全覆盖，充分满足跨网发送的需求</feature.Desc>
           </feature.Item>
         </feature.Group>
         <feature.Group>
-          <feature.Item title="智能分流" icon={<IconShunt />}>
+          <feature.Item title="智能分流" icon={<feature.Icon src={iconShunt} alt="智能分流" />}>
             <feature.Desc className={style.featureDesc}>海量数据多通道智能分流，到达率可靠</feature.Desc>
           </feature.Item>
-          <feature.Item title="满足个性化" icon={<IconCustomize />}>
+          <feature.Item title="满足个性化" icon={<feature.Icon src={iconCustomize} alt="满足个性化" />}>
             <feature.Desc className={style.featureDesc}>支持自定义签名，支持为不同的客户提供独享通道、专用通道、大客户通道</feature.Desc>
           </feature.Item>
-          <feature.Item title="便捷接入" icon={<IconEasy />}>
+          <feature.Item title="便捷接入" icon={<feature.Icon src={iconEasy} alt="便捷接入" />}>
             <feature.Desc className={style.featureDesc}>提供详尽、完善的短信接入文档，简单易懂，快速上线</feature.Desc>
           </feature.Item>
         </feature.Group>
@@ -175,14 +181,16 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
 
 export default function SmsPage({ globalBanners, ...pageProps }: Props) {
   return (
-    <Layout
-      title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
-      keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
-      description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
-      globalBanners={globalBanners}
-    >
-      <PageContent {...pageProps} />
-    </Layout>
+    <headerThemeContext.Provider value="dark">
+      <Layout
+        title="云短信 SMS_短信服务_提供国内短信验证码_短信通知_企业营销推广短信发送"
+        keywords="短信平台, SMS, 云短信, 短信服务, 短信验证码, 群发短信"
+        description="七牛云短信服务（SMS），是指对短信功能进行封装打包、向用户提供通信能力的服务。借助七牛云短信服务，企业和开发者可以自定义各类短信使用场景，如验证码、通知类短信以及营销短信等。"
+        globalBanners={globalBanners}
+      >
+        <PageContent {...pageProps} />
+      </Layout>
+    </headerThemeContext.Provider>
   )
 }
 
