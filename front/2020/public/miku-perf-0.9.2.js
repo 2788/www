@@ -17,18 +17,6 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
-var __objRest = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols)
-    for (var prop of __getOwnPropSymbols(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
@@ -1039,10 +1027,10 @@ var mikuPerf = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.9.1";
+  const version = "0.9.2";
   function getEnv() {
     var _a, _b;
-    const { os, device } = uaParser(navigator.userAgent);
+    const { os, device, browser } = uaParser(navigator.userAgent);
     let location;
     if (typeof window !== "undefined") {
       location = window.location;
@@ -1051,6 +1039,7 @@ var mikuPerf = function(exports) {
     }
     return {
       os: `${os.name}_${os.version}`,
+      browser: `${browser.name}_${browser.version}`,
       app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
       sdk: `Web SDK v${version}`,
       dev_model: (_b = device.model) != null ? _b : "",
@@ -5470,23 +5459,25 @@ var mikuPerf = function(exports) {
   }
   const namespace = "miku/dc";
   const _MikuPerformance = class {
-    constructor(type, app) {
+    constructor(tag, tagReason, app) {
       __publicField(this, "pageLogData", {
         r_id: uuid(),
         ts: 0,
         url: "",
         tag: "nocache",
+        tag_reason: "",
         t_page_load: 0,
         t_full_load: 0,
         t_window_load: 0
       });
       __publicField(this, "logger");
-      this.type = type;
+      this.tag = tag;
+      this.tagReason = tagReason;
       this.app = app;
       this.logger = new Logger(app, void 0, void 0, 3);
     }
-    static initInstance(type, app) {
-      const performance2 = new _MikuPerformance(type, app);
+    static initInstance(tag, tagReason, app) {
+      const performance2 = new _MikuPerformance(tag, tagReason, app);
       performance2.pageLoadPerformance();
       performance2.resourceLoadPerformance();
       performance2.videoLoadPerformance();
@@ -5497,28 +5488,35 @@ var mikuPerf = function(exports) {
       let observer = new PerformanceObserver(
         (list) => {
           list.getEntries().forEach((entry) => {
-            if (entry.entryType === "paint" && entry.name === "first-contentful-paint") {
+            if (entry.entryType === "navigation" && entry.initiatorType === "navigation") {
+              this.pageLogData.ts = Date.now();
               this.pageLogData.url = window.location.href;
-              this.pageLogData.tag = this.type;
-              this.pageLogData.t_full_load = formatMillisecondToSecond(
-                entry.startTime
-              );
-              this.submitPageLoadLog(observer);
-            } else if (entry.entryType === "paint" && entry.name === "first-paint") {
-              this.pageLogData.t_page_load = formatMillisecondToSecond(
-                entry.startTime
-              );
-              this.submitPageLoadLog(observer);
-            } else if (entry.entryType === "navigation" && entry.initiatorType === "navigation") {
+              this.pageLogData.tag = this.tag;
               this.pageLogData.t_window_load = formatMillisecondToSecond(
                 entry.loadEventEnd - entry.fetchStart
               );
-              this.submitPageLoadLog(observer);
+              const paint = performance.getEntriesByType("paint");
+              paint.forEach((item) => {
+                if (item.name === "first-contentful-paint") {
+                  this.pageLogData.t_full_load = formatMillisecondToSecond(
+                    item.startTime
+                  );
+                } else if (item.name === "first-paint") {
+                  this.pageLogData.t_page_load = formatMillisecondToSecond(
+                    item.startTime
+                  );
+                }
+              });
+              Promise.resolve(this.tagReason).then((tagReason) => {
+                this.pageLogData.tag_reason = tagReason;
+                this.submitPageLoadLog();
+              });
+              observer.disconnect();
             }
           });
         }
       );
-      observer.observe({ entryTypes: ["paint", "navigation"] });
+      observer.observe({ entryTypes: ["navigation"] });
     }
     resourceLoadPerformance() {
       let observer = new PerformanceObserver(
@@ -5574,6 +5572,17 @@ var mikuPerf = function(exports) {
         );
       });
       node.addEventListener("loadeddata", (event) => {
+        if (!videoPerformanceLog.path) {
+          videoPerformanceLog.ts_play = Date.now();
+          videoPerformanceLog.path = node.src;
+          try {
+            const url = new URL(node.src.replace("blob:", ""));
+            videoPerformanceLog.protocol = url.protocol.slice(0, -1);
+            videoPerformanceLog.domain = url.host;
+          } catch (e) {
+          }
+          videoPerformanceLog.start = event.timeStamp;
+        }
         videoPerformanceLog.t_loaded_data = formatMillisecondToSecond(
           event.timeStamp - videoPerformanceLog.start
         );
@@ -5649,13 +5658,8 @@ var mikuPerf = function(exports) {
     submitResourceLoadLog(data) {
       this.logger.log("PageResourceLoadLog", data);
     }
-    submitPageLoadLog(observer) {
-      this.pageLogData.ts = Date.now();
-      const _a = this.pageLogData, { t_page_load } = _a, pageLogData = __objRest(_a, ["t_page_load"]);
-      if (Object.values(pageLogData).every((item) => !!item)) {
-        this.logger.log("PageLoadLog", this.pageLogData);
-        observer.disconnect();
-      }
+    submitPageLoadLog() {
+      this.logger.log("PageLoadLog", this.pageLogData);
     }
     submitVideoLoadLog(log) {
       const now = performance.now();
@@ -5710,17 +5714,21 @@ var mikuPerf = function(exports) {
   };
   let MikuPerformance = _MikuPerformance;
   __publicField(MikuPerformance, "mikuPerformanceInstance");
-  const createPerformance = (app) => __async(this, null, function* () {
+  const createPerformance = (app, hasMiku = true) => __async(this, null, function* () {
     const cache = yield caches.open(namespace);
     const requestList = yield cache.keys();
     return new Promise((resolve, reject) => {
       if (MikuPerformance.mikuPerformanceInstance === void 0) {
-        if ("serviceWorker" in navigator && "caches" in window) {
+        if ("serviceWorker" in navigator) {
           navigator.serviceWorker.getRegistrations().then(function(registrations) {
             return __async(this, null, function* () {
               if (registrations.length === 0) {
                 resolve(
-                  MikuPerformance.initInstance("direct", app)
+                  MikuPerformance.initInstance(
+                    "direct",
+                    Promise.resolve(hasMiku).then((shouldHasMiku) => shouldHasMiku ? "sw_not_registered" : "no_miku"),
+                    app
+                  )
                 );
               } else {
                 try {
@@ -5728,6 +5736,7 @@ var mikuPerf = function(exports) {
                     resolve(
                       MikuPerformance.initInstance(
                         "cache",
+                        "",
                         app
                       )
                     );
@@ -5735,6 +5744,7 @@ var mikuPerf = function(exports) {
                     resolve(
                       MikuPerformance.initInstance(
                         "nocache",
+                        "",
                         app
                       )
                     );
@@ -5748,7 +5758,11 @@ var mikuPerf = function(exports) {
             reject(e);
           });
         } else {
-          resolve(MikuPerformance.initInstance("direct", app));
+          resolve(MikuPerformance.initInstance(
+            "direct",
+            Promise.resolve(hasMiku).then((shouldHasMiku) => shouldHasMiku ? "sw_not_supported" : "no_miku"),
+            app
+          ));
         }
       } else {
         resolve(MikuPerformance.mikuPerformanceInstance);
