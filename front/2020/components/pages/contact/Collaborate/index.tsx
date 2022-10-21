@@ -41,7 +41,7 @@ export default function Collaborate() {
       <Row>
         <Card className={style.card}>
           <CardIcon><SecurityIcon /></CardIcon>
-          <CardTitle title="网络安全反馈" subtitle="安全漏洞与网络安全咨询" />
+          <CardTitle title="数据安全和网络安全" subtitle="数据安全合规风险反馈与网络安全问题咨询" />
           <CardItem title="电子邮箱" link="mailto:sec@qiniu.com">sec@qiniu.com</CardItem>
         </Card>
         <InvisibleCard className={style.card} />
