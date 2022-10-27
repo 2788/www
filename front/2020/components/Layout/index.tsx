@@ -14,6 +14,7 @@ import { OverlayProvider, OverlaySlot } from 'components/Overlay'
 import CpsVisitReporter from 'components/CpsVisitReporter'
 import { GlobalBanner } from 'apis/admin/global-banners'
 import WechatConsultModal, { ModalProvider as WechatConsultModalProvider } from 'components/WechatConsultModal'
+import BDVidReporter from 'components/BDVidReporter'
 
 import ErrorBoundary from './ErrorBoundary'
 import UaProvider from './UaProvider'
@@ -104,6 +105,7 @@ function ContentWrapper({
       </WechatConsultModalProvider>
       <OverlaySlot />
       <CpsVisitReporter />
+      <BDVidReporter />
     </OverlayProvider>
   )
 }

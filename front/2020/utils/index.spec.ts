@@ -1,4 +1,4 @@
-import { isUrl, isHost } from '.'
+import { isUrl, isHost, getTopLevelDomain } from '.'
 
 describe('isUrl', () => {
   it('should work well', () => {
@@ -49,5 +49,29 @@ describe('isHost', () => {
     expect(isHost('[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]')).toBe(true)
     expect(isHost('[::192.9.5.5]')).toBe(true)
     expect(isHost('xn--pgt')).toBe(true)
+  })
+})
+
+describe('getTopLevelDomain', () => {
+  it('should work well', () => {
+    expect(getTopLevelDomain('')).toBe('')
+    expect(getTopLevelDomain('  ')).toBe('')
+    expect(getTopLevelDomain('  qiniu.com  ')).toBe('')
+    expect(getTopLevelDomain('qi niu.com')).toBe('')
+    expect(getTopLevelDomain('www.qiniu.com')).toBe('')
+    expect(getTopLevelDomain('//www.qiniu.com')).toBe('')
+    expect(getTopLevelDomain('/path')).toBe('')
+
+    expect(getTopLevelDomain('http://www.qiniu.com')).toBe('qiniu.com')
+    expect(getTopLevelDomain('https://www.qiniu.com')).toBe('qiniu.com')
+    expect(getTopLevelDomain('https://www.qiniu.com/')).toBe('qiniu.com')
+    expect(getTopLevelDomain('https://www.qiniu.com?query=test')).toBe('qiniu.com')
+    expect(getTopLevelDomain('https://www.qiniu.com/?query=test')).toBe('qiniu.com')
+    expect(getTopLevelDomain('  https://qiniu.com  ')).toBe('qiniu.com')
+    expect(getTopLevelDomain('https://qiniu.com:3000')).toBe('qiniu.com')
+    expect(getTopLevelDomain('http://localhost:3000')).toBe('localhost')
+    expect(getTopLevelDomain('https://www.qiniu.com/foo')).toBe('qiniu.com')
+    expect(getTopLevelDomain('https://www.qiniu.com/foo?query=test')).toBe('qiniu.com')
+    expect(getTopLevelDomain('http://www-2020.dev.qiniu.io/')).toBe('qiniu.io')
   })
 })

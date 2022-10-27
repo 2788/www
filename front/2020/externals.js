@@ -21,7 +21,8 @@ const externals = [
   'feedback-entry-v2',
   'feedback-entry-v3',
   'feedback-entry-v4',
-  'cps-visit-reporter'
+  'cps-visit-reporter',
+  'bd-vid-reporter'
 ]
 
 const dir = resolve('.')

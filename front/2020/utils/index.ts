@@ -50,3 +50,20 @@ export function isExternal() {
 export function uuid(): string {
   return (Math.random() + '').slice(2)
 }
+
+// 获取 url 一级域名
+// 例如传入 https://www.qiniu.com 返回 qiniu.com
+export function getTopLevelDomain(url: string): string {
+  if (!url) return ''
+
+  const urlTrim = url.trim()
+
+  if (!urlTrim) return ''
+
+  const reg = /(([^:]+:)\/\/(([^:/?#]+)(:\d+)?))(\/[^?#]*)?(\?[^#]*)?(#.*)?/
+  const hostName = (reg.exec(urlTrim) || [])[4] || ''
+
+  if (!hostName) return ''
+
+  return hostName.split('.').slice(-2).join('.')
+}
