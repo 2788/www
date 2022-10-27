@@ -125,9 +125,14 @@ const mikuInitScriptContent = `
   if ('serviceWorker' in navigator) {
     useMikuPromise.then(function (useMiku) {
       if (useMiku) {
-        miku.initProxy('/miku-sw-0.9.2.js', {
+        miku.initProxy('/miku-sw-0.9.5.js', {
           app: appInfo,
           domains: ['www-static.qbox.me'],
+          client: {
+            mediaOptimization: {
+              threshold: 1024 * 1024
+            }
+          },
           debug
         })
       } else {
@@ -153,8 +158,8 @@ class MyDocument extends Document {
           <script dangerouslySetInnerHTML={{ __html: gaScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduhmScriptContent }} />
           <script dangerouslySetInnerHTML={{ __html: baiduzhanzhangScriptContent }} />
-          <script src={`${assetHost}/miku-perf-0.9.2.js`} />
-          <script src={`${assetHost}/miku-0.9.2.js`} />
+          <script src={`${assetHost}/miku-perf-0.9.5.js`} />
+          <script src={`${assetHost}/miku-0.9.5.js`} />
           <script dangerouslySetInnerHTML={{ __html: mikuInitScriptContent }} />
         </Head>
         <body>
