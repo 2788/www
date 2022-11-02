@@ -22,8 +22,8 @@ export default function Pgc({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title={title}
-      keywords={`七牛云, ${title}`}
-      description={`七牛云, ${title}`}
+      keywords={`七牛云,${title}`}
+      description={`七牛云,${title}`}
       globalBanners={globalBanners}
     >
       <PgcIndex {...pageProps} />

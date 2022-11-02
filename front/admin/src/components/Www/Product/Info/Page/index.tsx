@@ -1,0 +1,310 @@
+/**
+ * @file 产品页面模块配置
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+import React, { useState, useMemo, useEffect } from 'react'
+import { observer } from 'mobx-react'
+import { Button, Loading, Alert, Dropdown, Menu, MenuItem, Checkbox, Dialog, DialogFooter } from 'react-icecream-2'
+import { AddIcon, SettingIcon } from 'react-icecream-2/icons'
+import { useInjection } from 'qn-fe-core/di'
+import { RouterStore, useRouteTitle } from 'qn-fe-core/router'
+import { ToasterStore } from 'admin-base/common/toaster'
+
+import { productPageInfoTitle } from 'constants/route'
+import { ProductId } from 'constants/product'
+import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
+import { ProductComponentName } from 'constants/product/page/comp-common'
+import ProductInfoApis, { ProductInfo } from 'apis/product/info'
+import { getProductInfoPageUrl } from 'transforms/product/info'
+
+import Preview from './Preview'
+import List from './List'
+
+import useCompBanner from './comps/banner'
+import useCompAdvantage from './comps/advantage'
+import useCompArchitecture from './comps/architecture'
+import useCompCase from './comps/case'
+import useCompDocument from './comps/document'
+import useCompFunction from './comps/function'
+import useCompRelated from './comps/related'
+import useCompScene from './comps/scene'
+
+import styles from './style.m.less'
+
+export interface Props {
+  productId: ProductId
+}
+
+export default observer(function PageInfo({ productId }: Props) {
+  const toasterStore = useInjection(ToasterStore)
+  const productInfoApis = useInjection(ProductInfoApis)
+  const routerStore = useInjection(RouterStore)
+
+  useRouteTitle(`${productPageInfoTitle}：${productId}`)
+
+  const [productInfo, setProductInfo] = useState<ProductInfo | undefined>(undefined)
+
+  useEffect(() => {
+    toasterStore.promise(
+      productInfoApis.get(productId).then(result => {
+        setProductInfo(result)
+      })
+    )
+  }, [productId, productInfoApis, toasterStore])
+
+  const [configFixed, setConfigFixed] = useState(true)
+  const [isEditingComp, setIsEditingComp] = useState(false)
+  const [submittedConfirmVisible, setSubmittedConfirmVisible] = useState(false)
+  const [unsaved, setUnsaved] = useState(false)
+
+  useEffect(() => {
+    function confirmUnsaved(event: BeforeUnloadEvent) {
+      if (unsaved) {
+        event.preventDefault()
+        const text = '还没保存发布，确认离开？'
+        event.returnValue = text
+        return text
+      }
+    }
+
+    window.addEventListener('beforeunload', confirmUnsaved, false)
+    return () => { window.removeEventListener('beforeunload', confirmUnsaved, false) }
+  }, [unsaved])
+
+  const [configCompBanner, compBannerView] = useCompBanner(productInfo)
+  const [configCompAdvantage, compAdvantageView] = useCompAdvantage()
+  const [configCompArchitecture, compArchitectureView] = useCompArchitecture()
+  const [configCompCase, compCaseView] = useCompCase()
+  const [configCompDocument, compDocumentView] = useCompDocument()
+  const [configCompFunction, compFunctionView] = useCompFunction()
+  const [configCompRelated, compRelatedView] = useCompRelated()
+  const [configCompScene, compSceneView] = useCompScene()
+
+  async function submit() {
+    if (!productInfo) {
+      return
+    }
+
+    if (productInfo.banner == null) {
+      toasterStore.error('需要设置 banner')
+      return
+    }
+
+    if (productInfo.sections.length === 0) {
+      toasterStore.error('需要添加内容')
+      return
+    }
+
+    await toasterStore.promise(productInfoApis.update(productInfo))
+
+    setUnsaved(false)
+    setSubmittedConfirmVisible(true)
+  }
+
+  function add(productModule: ProductModule) {
+    const info = productInfo!
+
+    setIsEditingComp(true)
+
+    let configSectionComp: Promise<ProductSection>
+    switch (productModule) {
+      case ProductModule.Banner:
+        toasterStore.promise(
+          configCompBanner().then(banner => {
+            setProductInfo({ ...info, banner })
+            setUnsaved(true)
+          }).finally(() => {
+            setIsEditingComp(false)
+          })
+        )
+        return
+      case ProductModule.Advantage:
+        configSectionComp = configCompAdvantage()
+        break
+      case ProductModule.Architecture:
+        configSectionComp = configCompArchitecture()
+        break
+      case ProductModule.Case:
+        configSectionComp = configCompCase()
+        break
+      case ProductModule.Document:
+        configSectionComp = configCompDocument()
+        break
+      case ProductModule.Function:
+        configSectionComp = configCompFunction()
+        break
+      case ProductModule.Related:
+        configSectionComp = configCompRelated()
+        break
+      case ProductModule.Scene:
+        configSectionComp = configCompScene()
+        break
+      default:
+        toasterStore.error(`未知模块 ${productModule}`)
+        return
+    }
+
+    toasterStore.promise(
+      configSectionComp.then(section => {
+        setProductInfo({
+          ...info,
+          sections: [...info.sections, section]
+        })
+        setUnsaved(true)
+      }).finally(() => {
+        setIsEditingComp(false)
+      })
+    )
+  }
+
+  function edit(index: number) {
+    const info = productInfo!
+    const currentSection = info.sections[index]
+
+    setIsEditingComp(true)
+
+    let configComp: Promise<ProductSection>
+    switch (currentSection.component.name) {
+      case ProductComponentName.Advantage:
+        configComp = configCompAdvantage({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.Architecture:
+        configComp = configCompArchitecture({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.Case:
+        configComp = configCompCase({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.Document:
+        configComp = configCompDocument({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.Function:
+        configComp = configCompFunction({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.Related:
+        configComp = configCompRelated({ ...currentSection, component: currentSection.component })
+        break
+      case ProductComponentName.Scene:
+        configComp = configCompScene({ ...currentSection, component: currentSection.component })
+        break
+      default:
+        toasterStore.error(`未知组件 ${currentSection.name}`)
+        return
+    }
+
+    toasterStore.promise(
+      configComp.then(newSection => {
+        const sections = [...info.sections]
+        sections[index] = newSection
+        setProductInfo({ ...info, sections })
+        setUnsaved(true)
+      }).finally(() => {
+        setIsEditingComp(false)
+      })
+    )
+  }
+
+  const modules = useMemo(
+    () => (
+      productInfo
+      ? Object.values(ProductModule).filter(module => (
+        module === ProductModule.Banner
+        ? productInfo.banner == null
+        : !productInfo.sections.some(section => section.name === module)
+      ))
+      : []
+    ),
+    [productInfo]
+  )
+
+  if (productInfo == null) {
+    return (<Loading />)
+  }
+
+  const configForm = (
+    <div className={styles.list}>
+      <div className={styles.fixedCheck}>
+        固定：<Checkbox value={configFixed} defaultChecked onChange={setConfigFixed} />
+      </div>
+
+      <List
+        productInfo={productInfo}
+        onProductInfoChange={setProductInfo}
+        onBannerEdit={() => {
+          setIsEditingComp(true)
+          toasterStore.promise(
+            configCompBanner().then(banner => {
+              setProductInfo({ ...productInfo, banner })
+              setUnsaved(true)
+            }).finally(() => {
+              setIsEditingComp(false)
+            })
+          )
+        }}
+        onSectionEdit={edit}
+      />
+
+      {modules.length > 0 && (
+        <div className={styles.btns}>
+          <Dropdown
+            overlay={
+              <Menu className={styles.menu}>
+                {modules.map(module => (
+                  <MenuItem key={module} onClick={() => { add(module) }}>
+                    {productModuleTitleMap[module]}
+                  </MenuItem>
+                ))}
+              </Menu>
+            }
+          >
+            <Button className={styles.menuBtn} icon={<AddIcon />}>添加模块</Button>
+          </Dropdown>
+        </div>
+      )}
+    </div>
+  )
+
+  return (
+    <div className={styles.wrapper}>
+
+      {unsaved && (<Alert type="info" message="还没保存发布" />)}
+
+      <div className={styles.config}>
+        <Button type="primary" disabled={!productInfo} onClick={() => submit()}>保存并发布</Button>
+        <Dropdown
+          // FIXME: 优化实现方式，不依赖于 undefined
+          visible={configFixed && !isEditingComp || undefined}
+          overlay={configForm}
+        >
+          <Button className={styles.menuBtn} icon={<SettingIcon />}>页面配置</Button>
+        </Dropdown>
+      </div>
+
+      <div className={styles.preview}>
+        <Preview productInfo={productInfo} />
+      </div>
+
+      <Dialog
+        title="保存发布完成"
+        visible={submittedConfirmVisible}
+        footer={<DialogFooter okText="去列表页" okType="default" cancelText="留在这里" />}
+        onOk={() => {
+          setSubmittedConfirmVisible(false)
+          routerStore.push(getProductInfoPageUrl())
+        }}
+        onCancel={() => { setSubmittedConfirmVisible(false) }}
+      >
+        回到列表页还是留在这里？
+      </Dialog>
+
+      {compBannerView}
+      {compAdvantageView}
+      {compArchitectureView}
+      {compCaseView}
+      {compDocumentView}
+      {compFunctionView}
+      {compRelatedView}
+      {compSceneView}
+    </div>
+  )
+})

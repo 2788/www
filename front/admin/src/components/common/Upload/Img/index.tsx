@@ -2,7 +2,8 @@ import React, { PropsWithChildren, useState, useMemo } from 'react'
 import { observer } from 'mobx-react'
 import { RcFile } from 'react-icecream-1/lib/upload'
 import { Button, Loading, Dialog, DialogFooter } from 'react-icecream-2'
-import { FieldState } from 'formstate-x'
+import { IState, FieldState } from 'formstate-x'
+import { InputWrapper } from 'react-icecream-form'
 
 import ImgPreview from 'components/common/ImgPreview'
 
@@ -10,12 +11,13 @@ import CommonUpload, { IProps as CommonUploadProps } from '..'
 import style from './style.m.less'
 
 // 图片筛选
-const imgFilter = '.png, .jpg, .jpeg, .gif'
+const imgFilter = ['.png', '.jpg', '.jpeg', '.gif', '.svg']
 
 export interface IProps extends Pick<CommonUploadProps, 'uploadBucketKeyRule'> {
   state: State
   maxSize?: number // 支持的图片大小，单位为 kb
   onUploaded?: (url: string, file: File) => void // 上传成功之后执行的方法
+  accept?: string[]
   /** 默认 contain */
   previewType?: 'contain' | 'cover' | 'none'
   width?: number
@@ -24,13 +26,14 @@ export interface IProps extends Pick<CommonUploadProps, 'uploadBucketKeyRule'> {
   desc?: string
 }
 
-export type State = FieldState<string>
+export type State = IState<string>
 
 export function createState(value: string): State {
   return new FieldState(value)
 }
 
-export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
+/** @deprecated use `UploadImgInput` instead */
+const UploadImg = observer(function _UploadImg(props: PropsWithChildren<IProps>) {
   const { state, maxSize = 500, children } = props
   const [isLoading, setIsLoading] = useState(false)
   const [visible, setVisible] = useState(false)
@@ -89,7 +92,7 @@ export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
       <div className={style.main}>
         <Loading loading={isLoading}>
           <CommonUpload
-            accept={imgFilter}
+            accept={(props.accept ?? imgFilter).join(', ')}
             uploadBucketKeyRule={props.uploadBucketKeyRule}
             beforeUpload={beforeUpload}
             onUploaded={onUploaded}
@@ -113,6 +116,17 @@ export default observer(function UploadImg(props: PropsWithChildren<IProps>) {
     </div>
   )
 })
+
+export default UploadImg
+
+/** for react-icecream-form */
+export function UploadImgInput(props: IProps) {
+  return (
+    <InputWrapper state={props.state}>
+      <UploadImg {...props} />
+    </InputWrapper>
+  )
+}
 
 // 求最大公约数
 function gcd(m: number, n: number): number {

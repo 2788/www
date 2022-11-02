@@ -17,6 +17,8 @@ import ProductPageApis from 'apis/product/page'
 import ProductPriceApis from 'apis/product/price'
 import PgcContentApis from 'apis/pgc/content'
 import PgcContentBannerApis from 'apis/pgc/content-banner'
+import ProductInfoApis from 'apis/product/info'
+import IconInfoApis from 'apis/icon'
 
 export const defaultProvides: di.Provides = [
   { identifier: RouterStore, factory: () => createRouterStore('官网 Admin - {{routeTitle}}') },
@@ -33,7 +35,9 @@ export const defaultProvides: di.Provides = [
   ProductPageApis,
   ProductPriceApis,
   PgcContentApis,
-  PgcContentBannerApis
+  PgcContentBannerApis,
+  ProductInfoApis,
+  IconInfoApis
 ]
 
 export type Props = BaseProps

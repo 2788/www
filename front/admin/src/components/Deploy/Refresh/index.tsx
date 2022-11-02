@@ -13,7 +13,7 @@ import { Button, Alert, Dialog, DialogFooter } from 'react-icecream-2'
 import { InfoIcon } from 'react-icecream-2/icons'
 import { Form, FormItem, useFormstateX, TextArea, Checkbox, useFormFooterCtx } from 'react-icecream-form'
 
-import { wwwPaths, sitemapPaths, indexPath, pathRule } from 'constants/deploy/refresh'
+import { wwwPaths, sitemapPaths, indexPath, pathRule, externalLoaderPath } from 'constants/deploy/refresh'
 import { validatePath } from 'transforms/deploy/refresh'
 import { RefreshClient } from 'apis/refresh'
 
@@ -37,6 +37,7 @@ function createState() {
       }
     }),
     withIndex: new DebouncedFieldState(false),
+    withExternals: new DebouncedFieldState(false),
     withSub: new DebouncedFieldState(true)
   }).withValidator(value => {
     const paths = getAllPaths(value)
@@ -55,6 +56,9 @@ function getAllPaths(value: ReturnType<typeof createState>['value']) {
   if (value.withIndex) {
     paths.push(indexPath)
   }
+  if (value.withExternals) {
+    paths.push(externalLoaderPath)
+  }
   return [...new Set(paths)].sort()
 }
 
@@ -69,7 +73,7 @@ function FormFooter({ state, onSetGlobalDefault }: FormFooterProps) {
     <div className={style.formFooter}>
       <div>
         <Button type="primary" htmlType="submit" loading={submitting} danger>开始刷新</Button>
-        <Button type="secondary" onClick={() => { onSetGlobalDefault() }}>填入主站全局更新默认配置</Button>
+        <Button type="secondary" onClick={() => { onSetGlobalDefault() }}>填入全局更新默认配置</Button>
       </div>
       <p className={style.formError}>{state.ownError}</p>
     </div>
@@ -95,6 +99,7 @@ export default observer(function Refresh() {
     state.set({
       paths: [...sitemapPaths, ...wwwPaths.filter(path => path !== indexPath)].join('\n'),
       withIndex: true,
+      withExternals: true,
       withSub: true
     })
   }
@@ -121,6 +126,7 @@ export default observer(function Refresh() {
         </FormItem>
         <FormItem label="" labelVerticalAlign="text">
           <Checkbox state={state.$.withIndex}>首页</Checkbox>
+          <Checkbox state={state.$.withExternals}>嵌入式组件</Checkbox>
         </FormItem>
       </Form>
       <Dialog

@@ -3,6 +3,8 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
+// TODO: 使用 `components/common/SelectTags` 组件
+
 import React from 'react'
 import { observer } from 'mobx-react'
 import { IState } from 'formstate-x'

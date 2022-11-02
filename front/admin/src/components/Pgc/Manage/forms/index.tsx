@@ -3,15 +3,17 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { observer } from 'mobx-react'
-import { Modal, ModalFooter, Loading } from 'react-icecream-2'
+import { Button, Modal, ModalFooter, Loading } from 'react-icecream-2'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 
+import { wwwCenteredContentWidth } from 'constants/www'
 import { ContentId, ContentType, ContentDetail, Content } from 'constants/pgc/content'
 import { getWwwContentDetailPreviewUrl, getEditPageUrl } from 'transforms/pgc/content'
 import PgcContentApis from 'apis/pgc/content'
+import { useWwwPreviewMessage } from 'utils/www'
 
 import Form from './Form'
 
@@ -26,8 +28,6 @@ interface WwwPreview {
   editPagePrefix: string
 }
 
-const wwwCenteredContentWidth = 1180
-
 interface PreviewProps {
   type: ContentType
   contentDetail: ContentDetail | null
@@ -37,41 +37,21 @@ interface PreviewProps {
 
 function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
   const toasterStore = useInjection(ToasterStore)
-  const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  useEffect(() => {
-    function receiveMessage(event: MessageEvent) {
-      if (event.origin === window.location.origin) {
-        return
-      }
+  const msgData: WwwPreview = useMemo(() => ({
+    type,
+    contentDetail: contentDetail!,
+    editPagePrefix: `${window.location.origin}${getEditPageUrl('')}`
+  }), [type, contentDetail])
 
-      const { hostname } = new URL(event.origin)
-      if (
-        ![
-          /\.qiniu\.com$/,
-          /\.qiniu\.io$/,
-          /^localhost$/
-        ].some(pattern => pattern.test(hostname))
-      ) {
-        return
-      }
+  const iframeRef = useWwwPreviewMessage(msgKey, msgData)
 
-      if (event.data === `[${msgKey}] READY`) {
-        const data: WwwPreview = {
-          type,
-          contentDetail: contentDetail!,
-          editPagePrefix: `${window.location.origin}${getEditPageUrl('')}`
-        }
-
-        iframeRef.current!.contentWindow!.postMessage(JSON.stringify({ [msgKey]: data }), '*')
-      }
+  function openFullScreen() {
+    const iframe = iframeRef.current
+    if (iframe) {
+      iframe.requestFullscreen({ navigationUI: 'show' })
     }
-
-    window.addEventListener('message', receiveMessage, false)
-    return () => {
-      window.removeEventListener('message', receiveMessage, false)
-    }
-  }, [type, contentDetail])
+  }
 
   const previewContentView = contentDetail && (
     <div className={style.previewPageContainer}>
@@ -100,7 +80,12 @@ function Preview({ type, contentDetail, onRelease, onClose }: PreviewProps) {
       visible={!!contentDetail}
       onOk={handleRelease}
       onCancel={() => { onClose() }}
-      footer={<ModalFooter okText="保存并发布" cancelText="关闭" />}
+      footer={
+        <>
+          <Button onClick={() => { openFullScreen() }}>全屏预览</Button>
+          <ModalFooter okText="保存并发布" cancelText="关闭" />
+        </>
+      }
       autoDestroy
     >
       {previewContentView}

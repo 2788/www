@@ -41,7 +41,7 @@ export default function PgcDetail(
     '七牛云',
     contentTypeTextMap[type],
     contentCategoryTextMap[contentDetail.category]
-  ].concat(contentDetail.keywords ?? []).join(', ')
+  ].concat(contentDetail.keywords ?? []).join(',')
 
   const pageView = {
     [ContentType.Article]: (

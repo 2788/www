@@ -11,6 +11,7 @@ export interface IPage {
 
 const refreshPathsOptions: RefreshOptions = { wwwRefresh: ['/product-news'] }
 
+/** @deprecated TODO: use `ProductInfoApis` instead */
 @injectable()
 export default class PageApis {
 

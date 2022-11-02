@@ -48,7 +48,7 @@ export default class BaseClient extends Client<unknown, unknown, Output, BaseCli
 
     const result = await this.adminBaseClient.send(url, baseOptions)
 
-    if (wwwRefresh && wwwRefresh.length > 0) {
+    if (wwwRefresh && wwwRefresh.length > 0 && window.location.hostname !== 'localhost') {
       await this.refreshClient.refresh([...wwwRefresh, ...sitemapPaths], true)
     }
 

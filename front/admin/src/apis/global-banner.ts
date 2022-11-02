@@ -51,7 +51,7 @@ export interface IListResponse {
   data: IBannerWithId[]
 }
 
-const refreshPathsOptions: RefreshOptions = { wwwRefresh: [...wwwPaths] }
+const refreshPathsOptions: RefreshOptions = { wwwRefresh: wwwPaths }
 
 @injectable()
 export default class BannerApis {

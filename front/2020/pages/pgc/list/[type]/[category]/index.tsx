@@ -28,8 +28,8 @@ export default function PgcList({ globalBanners, ...pageProps }: Props) {
   return (
     <Layout
       title={keywords.join(' - ')}
-      keywords={['七牛云', ...keywords].join(', ')}
-      description={['七牛云', ...keywords].join(', ')}
+      keywords={['七牛云', ...keywords].join(',')}
+      description={['七牛云', ...keywords].join(',')}
       globalBanners={globalBanners}
     >
       <List {...pageProps} />

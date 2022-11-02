@@ -1,0 +1,61 @@
+/**
+ * @file 图标列表
+ * @author lizhifeng <lizhifeng@qiniu.com>
+ */
+
+@import "~admin-base/common/utils/style/index.less";
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @icecream-gap-md;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .img {
+      position: relative;
+      display: flex;
+      width: 84px;
+      height: 84px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: @icecream-gap-xs;
+      padding: @icecream-gap-sm;
+      background: @icecream-color-grey-3;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .modify {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 32px;
+        color: @icecream-white;
+        background: rgba(153, 153, 153, .7);
+        cursor: pointer;
+      }
+    }
+
+    &:hover .img .modify {
+      display: flex;
+    }
+
+    h6 {
+      font-size: inherit;
+      font-weight: 400;
+    }
+  }
+}

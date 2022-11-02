@@ -7,7 +7,7 @@ import { injectable } from 'qn-fe-core/di'
 
 import { BannerInfo } from 'constants/pgc/content-banner'
 import { WwwRefreshPath } from 'apis/base-client'
-import { MongoApiBaseClient, MongoApiStdClient } from 'apis/mongo-api-client'
+import { MongoApiBaseClient, MongoApiStdClient, MongoApiStdClientPutOptions } from 'apis/mongo-api-client'
 
 const resource = 'pgc-content-banner'
 const refreshPaths: WwwRefreshPath[] = ['/pgc']
@@ -33,7 +33,7 @@ export default class PgcContentBannerApis {
     return this.client.post(record, refreshPaths)
   }
 
-  put(record: Parameters<MongoApiStdClient<BannerInfo>['put']>[0]) {
+  put(record: MongoApiStdClientPutOptions<BannerInfo>) {
     return this.client.put(record, refreshPaths)
   }
 }

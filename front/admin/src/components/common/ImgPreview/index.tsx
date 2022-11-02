@@ -21,7 +21,7 @@ const iconMaxSize: Size = {
 
 const previewMaxSize: Size = {
   width: 800,
-  height: 600
+  height: 500
 }
 
 function getSize(width: number | undefined, height: number | undefined, maxSize: Size): Size | undefined {

@@ -32,7 +32,7 @@ export interface TimeInfo {
 
 export interface StdInfo extends TimeInfo {
   /** 自定义 `primary_key` */
-  id: string
+  id: string // TODO: 需要从整体上重新考虑 primary_key 换字段名 & 换值类型 & 自定义 id 值的需求
 }
 
 export function generateStdInfo(): StdInfo {
@@ -136,39 +136,47 @@ export class MongoApiBaseClient extends Client<unknown, unknown, Output, BaseCli
   }
 }
 
+export type MongoApiStdClientPutOptions<T> = T & Omit<StdInfo, 'updatedAt'>
+
 /** 一类标准接口，绑定 `resource` 并且自动维护固定的 `StdInfo` 结构 */
 // TODO: 各类接口实现补充完整，包括 batch 等
 export class MongoApiStdClient<T> {
-  constructor(private resource: string, private client: MongoApiBaseClient) {}
+  constructor(private resource: string, public client: MongoApiBaseClient) {}
 
   get(id: string) {
-    return this.client.get<T & StdInfo>(`${this.resource}/${id}`)
+    return this.client.get<T & StdInfo>(`${this.resource}/${encodeURIComponent(id)}`)
   }
 
   delete(id: string, wwwRefresh: WwwRefreshPath[]) {
-    return this.client.delete<void>(`${this.resource}/${id}`, { wwwRefresh })
+    return this.client.delete<void>(`${this.resource}/${encodeURIComponent(id)}`, { wwwRefresh })
   }
 
   post(record: T, wwwRefresh: WwwRefreshPath[]) {
-    const baseInfo = generateStdInfo()
+    const { id, ...baseInfo } = generateStdInfo()
     const data: T & StdInfo = {
+      id,
       ...record,
       ...baseInfo
     }
+    // TODO: 后续需要研究如果被指定的 _id & primary_key 不存在/已存在并且不 delete 的情况下的相关行为
+    // delete (data as any)._id
     return this.client.post<T & StdInfo>(this.resource, data, { wwwRefresh })
   }
 
   // TODO: 再搞个不需要提供 StdInfo 的更方便的 put 方法
-  put(record: T & Omit<StdInfo, 'updatedAt'>, wwwRefresh: WwwRefreshPath[]) {
+  // TODO: 根据 id 是否相同决定是否生成 `createdAt`
+  put(record: MongoApiStdClientPutOptions<T>, wwwRefresh: WwwRefreshPath[]) {
     const baseInfo = generateStdInfo()
     const data: T & StdInfo = {
       ...record,
       updatedAt: baseInfo.updatedAt
     }
-    delete (data as any)._id // FIXME: 需要干这件事也有点奇怪… 查一下其他接口需不需要这个
-    return this.client.put<T & StdInfo>(`${this.resource}/${record.id}`, data, { wwwRefresh })
+    delete (data as any)._id // FIXME: 需要干这件事有点奇怪…
+    return this.client.put<T & StdInfo>(`${this.resource}/${encodeURIComponent(record.id)}`, data, { wwwRefresh })
   }
 
+  // TODO: 处理 value 为 undefined 的 case （删除字段）
+  // TODO: 让 record 的 id 变成 required 的，避免参数多一个 id 字段？
   patch(id: string, record: Partial<T>, wwwRefresh: WwwRefreshPath[]) {
     const baseInfo = generateStdInfo()
     const data: Partial<T> & Omit<StdInfo, 'createdAt'> = {
@@ -176,7 +184,8 @@ export class MongoApiStdClient<T> {
       id,
       updatedAt: baseInfo.updatedAt
     }
-    return this.client.patch<T & StdInfo>(`${this.resource}/${id}`, data, { wwwRefresh })
+    delete (data as any)._id // FIXME: 需要干这件事有点奇怪…
+    return this.client.patch<T & StdInfo>(`${this.resource}/${encodeURIComponent(id)}`, data, { wwwRefresh })
   }
 
   getCount(query?: Query) {
