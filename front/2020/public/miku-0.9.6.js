@@ -53,8 +53,13 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-(function() {
+var miku = function(exports) {
   "use strict";
+  function appendQuery(url, params) {
+    const querystring = new URLSearchParams(params).toString();
+    const sep = url.includes("?") ? "&" : "?";
+    return url + sep + querystring;
+  }
   function uuid() {
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
     const charNum = chars.length;
@@ -136,6 +141,12 @@ var __async = (__this, __arguments, generator) => {
     const port = portStr ? parseInt(portStr, 10) : defaultPort;
     return [host, port];
   }
+  function getExt(pathname) {
+    const segs = pathname.split("/");
+    const lastSeg = segs[segs.length - 1];
+    const extIndex = lastSeg.lastIndexOf(".");
+    return extIndex >= 0 ? lastSeg.slice(extIndex + 1) : "";
+  }
   let enabled = false;
   function getDebug(namespace2) {
     return (...args) => {
@@ -182,89 +193,6 @@ var __async = (__this, __arguments, generator) => {
       this.map.clear();
     }
   }
-  const scope$2 = self;
-  const debug$9 = getDebug("utils/sw/clients");
-  class SWClients {
-    constructor(swScope = scope$2) {
-      __publicField(this, "clientIds", []);
-      __publicField(this, "removed", /* @__PURE__ */ new Set());
-      __publicField(this, "emitter", new Emitter());
-      this.swScope = swScope;
-    }
-    add(id) {
-      if (this.clientIds.includes(id))
-        return;
-      if (this.removed.has(id))
-        return;
-      this.clientIds.push(id);
-      debug$9("add", id, this.clientIds);
-    }
-    remove(id) {
-      const i = this.clientIds.indexOf(id);
-      if (i < 0)
-        return;
-      this.clientIds.splice(i, 1);
-      this.removed.add(id);
-      this.emitter.emit("remove", id);
-      debug$9("remove", id, this.clientIds);
-    }
-    set(newIds) {
-      const oldIds = this.clientIds;
-      const kept = [];
-      const removed = [];
-      oldIds.forEach((o) => {
-        const idxInNew = newIds.indexOf(o);
-        if (idxInNew >= 0) {
-          kept.push(o);
-          newIds.splice(idxInNew, 1);
-        } else {
-          removed.push(o);
-        }
-      });
-      this.clientIds = [...kept, ...newIds];
-      removed.forEach((r) => {
-        this.emitter.emit("remove", r);
-      });
-      if (removed.length > 0 || newIds.length > 0) {
-        debug$9("set", this.clientIds);
-      }
-    }
-    getAllIds() {
-      return this.clientIds;
-    }
-    getAll() {
-      return __async(this, null, function* () {
-        const clients = (yield this.swScope.clients.matchAll({ type: "window" })).slice();
-        clients.reverse();
-        this.set(clients.map((c) => c.id));
-        return this.clientIds.map((id) => clients.find((c) => c.id === id));
-      });
-    }
-    get(id) {
-      return __async(this, null, function* () {
-        const client = yield this.swScope.clients.get(id);
-        if (client != null)
-          this.add(id);
-        else
-          this.remove(id);
-        return client;
-      });
-    }
-    onRemove(cb) {
-      return this.emitter.on("remove", cb);
-    }
-    whenRemoved(id, cb) {
-      if (!this.clientIds.includes(id))
-        return;
-      const unlisten = this.emitter.on("remove", (removedId) => {
-        if (removedId !== id)
-          return;
-        unlisten();
-        cb();
-      });
-    }
-  }
-  const swClients = new SWClients();
   function slice(stream, range) {
     var _a;
     const reader = stream.getReader();
@@ -382,7 +310,7 @@ var __async = (__this, __arguments, generator) => {
     return a;
   }
   var uaParser$1 = { exports: {} };
-  (function(module, exports) {
+  (function(module, exports2) {
     (function(window2, undefined$1) {
       var LIBVERSION = "1.0.2", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 255;
       var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook";
@@ -1272,9 +1200,9 @@ var __async = (__this, __arguments, generator) => {
       UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
       {
         if (module.exports) {
-          exports = module.exports = UAParser;
+          exports2 = module.exports = UAParser;
         }
-        exports.UAParser = UAParser;
+        exports2.UAParser = UAParser;
       }
       var $ = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
       if ($ && !$.ua) {
@@ -1345,11 +1273,28 @@ var __async = (__this, __arguments, generator) => {
     const { status, statusText, headers, body: body2 } = nativeResponse;
     return new HttpResponse(body2, { status, statusText, headers, underlayer: nativeResponse });
   }
+  class UnexpectedHttpStatusError extends Error {
+    constructor(response) {
+      super(`Unexpected HTTP status: ${response.status} ${response.statusText}`);
+      __publicField(this, "name", "UnexpectedHttpStatusError");
+      this.response = response;
+    }
+  }
+  function isHoWMessage(message) {
+    return message && message.hoW === true;
+  }
+  function dehydrateHeaders(headers) {
+    const res = {};
+    headers.forEach((v, k) => {
+      res[k] = v;
+    });
+    return res;
+  }
   const messageEmitter = new Emitter();
-  let scope$1;
+  let scope;
   if (typeof self !== "undefined") {
-    scope$1 = self;
-    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
+    scope = self;
+    scope.addEventListener("message", (e) => messageEmitter.emit("message", e));
   }
   class WindowClientError extends Error {
     constructor() {
@@ -1469,7 +1414,7 @@ var __async = (__this, __arguments, generator) => {
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
   const useTcp = true;
-  const debug$8 = getDebug("http/webrtc/how");
+  const debug$7 = getDebug("http/webrtc/how");
   class HoW {
     constructor(pcConnectTimeout = 10 * 1e3, dcOpenTimeout = 3 * 1e3) {
       __publicField(this, "pcMap", /* @__PURE__ */ new Map());
@@ -1522,7 +1467,7 @@ var __async = (__this, __arguments, generator) => {
     }
     fetch(ctx, id, request, fingerprint) {
       return __async(this, null, function* () {
-        debug$8("fetch", request.url, "with id", id);
+        debug$7("fetch", request.url, "with id", id);
         const target = new URL(request.url).host;
         const pc = yield this.getPc(request.signal, target, fingerprint);
         ctx.set("hoWPeerConnectionConnectAt", Date.now());
@@ -1592,7 +1537,7 @@ a=end-of-candidates
     const disposers = [
       () => {
         if (dc.readyState !== "closing" && dc.readyState !== "closed") {
-          debug$8(`close DataChannel ${id} for finish`);
+          debug$7(`close DataChannel ${id} for finish`);
           dc.close();
         }
       }
@@ -1615,11 +1560,11 @@ a=end-of-candidates
           ctrl.enqueue(data);
         }));
         disposers.push(listenDC(dc, "error", (e) => {
-          debug$8(`dc ${id} error`, e);
+          debug$7(`dc ${id} error`, e);
           finish(() => ctrl.error(e));
         }));
         disposers.push(listenDC(dc, "closing", (e) => {
-          debug$8(`DataChannel ${id} closing`, e);
+          debug$7(`DataChannel ${id} closing`, e);
           finish(() => ctrl.close());
         }));
       },
@@ -1647,11 +1592,11 @@ a=end-of-candidates
         const dispose = () => disposers.forEach((d) => d());
         const opened = new Promise((resolve, reject) => {
           disposers.push(listenDC(this.dc, "open", () => {
-            debug$8(`DataChannel ${this.id} opened`);
+            debug$7(`DataChannel ${this.id} opened`);
             resolve();
           }));
           disposers.push(listenDC(this.dc, "error", () => {
-            debug$8(`DataChannel ${this.id} error`);
+            debug$7(`DataChannel ${this.id} error`);
             reject(new Error("DataChannel error"));
           }));
         });
@@ -1672,14 +1617,14 @@ a=end-of-candidates
         if (contentLength > 0)
           throw new Error("TODO: Request with body is not supported");
         const requestHead = stringifyRequestHead(request);
-        debug$8(`DataChannel ${this.id} sendRequest:`, requestHead);
+        debug$7(`DataChannel ${this.id} sendRequest:`, requestHead);
         this.dc.send(requestHead);
       });
     }
     receiveResponse() {
       return __async(this, null, function* () {
         var _a;
-        debug$8(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
+        debug$7(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
         const request = this.request;
         const dcReader = this.stream.getReader();
         const { value, done } = yield dcReader.read();
@@ -1688,7 +1633,7 @@ a=end-of-candidates
         if (typeof value !== "string")
           throw new UnexpectedDataChannel1stMessageError(`Expected first message type to be string, while got ${typeof value}`);
         const respHead = parseResponseHead(value);
-        debug$8(`DataChannel ${this.id} get respHead:`, respHead);
+        debug$7(`DataChannel ${this.id} get respHead:`, respHead);
         const status = respHead.status;
         const headers = new Headers(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => encodeHeaderValue(hs[0])));
         const respInit = { status, statusText: respHead.reason, headers };
@@ -1696,7 +1641,7 @@ a=end-of-candidates
         this.ctx.set("hoWStartTransferAt", Date.now());
         if (!hasBody) {
           const resp2 = new HttpResponse(null, respInit);
-          debug$8("DataChannel receiveResponse done with no body");
+          debug$7("DataChannel receiveResponse done with no body");
           return resp2;
         }
         let received = 0;
@@ -1728,7 +1673,7 @@ a=end-of-candidates
             });
           },
           cancel(reason) {
-            debug$8("DataChannel bodyStream cancel:", reason);
+            debug$7("DataChannel bodyStream cancel:", reason);
             dcReader.cancel(reason);
           }
         });
@@ -1773,7 +1718,7 @@ a=end-of-candidates
         return;
       }
       const unlisten = listenPC(pc, "connectionstatechange", () => {
-        debug$8(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
+        debug$7(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
         if (["failed", "closed", "disconnected"].includes(pc.connectionState)) {
           reject(new PeerConnectionDisconnectedError(`${desc} ${pc.connectionState}`));
           unlisten();
@@ -1984,7 +1929,7 @@ a=end-of-candidates
     if (hasRequiredCore)
       return core.exports;
     hasRequiredCore = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory();
@@ -2276,7 +2221,7 @@ a=end-of-candidates
     if (hasRequiredX64Core)
       return x64Core.exports;
     hasRequiredX64Core = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2336,7 +2281,7 @@ a=end-of-candidates
     if (hasRequiredLibTypedarrays)
       return libTypedarrays.exports;
     hasRequiredLibTypedarrays = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2381,7 +2326,7 @@ a=end-of-candidates
     if (hasRequiredEncUtf16)
       return encUtf16.exports;
     hasRequiredEncUtf16 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2447,7 +2392,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64)
       return encBase64.exports;
     hasRequiredEncBase64 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2529,7 +2474,7 @@ a=end-of-candidates
     if (hasRequiredEncBase64url)
       return encBase64url.exports;
     hasRequiredEncBase64url = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2612,7 +2557,7 @@ a=end-of-candidates
     if (hasRequiredMd5)
       return md5.exports;
     hasRequiredMd5 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2791,7 +2736,7 @@ a=end-of-candidates
     if (hasRequiredSha1)
       return sha1.exports;
     hasRequiredSha1 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2882,7 +2827,7 @@ a=end-of-candidates
     if (hasRequiredSha256)
       return sha256.exports;
     hasRequiredSha256 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -3003,7 +2948,7 @@ a=end-of-candidates
     if (hasRequiredSha224)
       return sha224.exports;
     hasRequiredSha224 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha256());
@@ -3048,7 +2993,7 @@ a=end-of-candidates
     if (hasRequiredSha512)
       return sha512.exports;
     hasRequiredSha512 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -3330,7 +3275,7 @@ a=end-of-candidates
     if (hasRequiredSha384)
       return sha384.exports;
     hasRequiredSha384 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core(), requireSha512());
@@ -3376,7 +3321,7 @@ a=end-of-candidates
     if (hasRequiredSha3)
       return sha3.exports;
     hasRequiredSha3 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
@@ -3570,7 +3515,7 @@ a=end-of-candidates
     if (hasRequiredRipemd160)
       return ripemd160.exports;
     hasRequiredRipemd160 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -4051,7 +3996,7 @@ a=end-of-candidates
     if (hasRequiredHmac)
       return hmac.exports;
     hasRequiredHmac = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -4115,7 +4060,7 @@ a=end-of-candidates
     if (hasRequiredPbkdf2)
       return pbkdf2.exports;
     hasRequiredPbkdf2 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -4183,7 +4128,7 @@ a=end-of-candidates
     if (hasRequiredEvpkdf)
       return evpkdf.exports;
     hasRequiredEvpkdf = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
@@ -4244,7 +4189,7 @@ a=end-of-candidates
     if (hasRequiredCipherCore)
       return cipherCore.exports;
     hasRequiredCipherCore = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEvpkdf());
@@ -4540,7 +4485,7 @@ a=end-of-candidates
     if (hasRequiredModeCfb)
       return modeCfb.exports;
     hasRequiredModeCfb = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4592,7 +4537,7 @@ a=end-of-candidates
     if (hasRequiredModeCtr)
       return modeCtr.exports;
     hasRequiredModeCtr = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4632,7 +4577,7 @@ a=end-of-candidates
     if (hasRequiredModeCtrGladman)
       return modeCtrGladman.exports;
     hasRequiredModeCtrGladman = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4712,7 +4657,7 @@ a=end-of-candidates
     if (hasRequiredModeOfb)
       return modeOfb.exports;
     hasRequiredModeOfb = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4750,7 +4695,7 @@ a=end-of-candidates
     if (hasRequiredModeEcb)
       return modeEcb.exports;
     hasRequiredModeEcb = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4781,7 +4726,7 @@ a=end-of-candidates
     if (hasRequiredPadAnsix923)
       return padAnsix923.exports;
     hasRequiredPadAnsix923 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4813,7 +4758,7 @@ a=end-of-candidates
     if (hasRequiredPadIso10126)
       return padIso10126.exports;
     hasRequiredPadIso10126 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4841,7 +4786,7 @@ a=end-of-candidates
     if (hasRequiredPadIso97971)
       return padIso97971.exports;
     hasRequiredPadIso97971 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4868,7 +4813,7 @@ a=end-of-candidates
     if (hasRequiredPadZeropadding)
       return padZeropadding.exports;
     hasRequiredPadZeropadding = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4902,7 +4847,7 @@ a=end-of-candidates
     if (hasRequiredPadNopadding)
       return padNopadding.exports;
     hasRequiredPadNopadding = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4925,7 +4870,7 @@ a=end-of-candidates
     if (hasRequiredFormatHex)
       return formatHex.exports;
     hasRequiredFormatHex = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4959,7 +4904,7 @@ a=end-of-candidates
     if (hasRequiredAes)
       return aes.exports;
     hasRequiredAes = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5113,7 +5058,7 @@ a=end-of-candidates
     if (hasRequiredTripledes)
       return tripledes.exports;
     hasRequiredTripledes = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5894,7 +5839,7 @@ a=end-of-candidates
     if (hasRequiredRc4)
       return rc4.exports;
     hasRequiredRc4 = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -5972,7 +5917,7 @@ a=end-of-candidates
     if (hasRequiredRabbit)
       return rabbit.exports;
     hasRequiredRabbit = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -6101,7 +6046,7 @@ a=end-of-candidates
     if (hasRequiredRabbitLegacy)
       return rabbitLegacy.exports;
     hasRequiredRabbitLegacy = 1;
-    (function(module, exports) {
+    (function(module, exports2) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
@@ -6221,7 +6166,7 @@ a=end-of-candidates
     })(rabbitLegacy);
     return rabbitLegacy.exports;
   }
-  (function(module, exports) {
+  (function(module, exports2) {
     (function(root, factory, undef) {
       {
         module.exports = factory(requireCore(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy());
@@ -6281,15 +6226,14 @@ a=end-of-candidates
     });
   }
   class DnsLogger {
-    constructor(logger2) {
-      this.logger = logger2;
+    constructor(logger) {
+      this.logger = logger;
     }
     log(schemaName, logData) {
       return this.logger.log(schemaName, logData);
     }
   }
-  const defaultDuration = 1e3;
-  const debug$7 = getDebug("dns");
+  const debug$6 = getDebug("dns");
   class NonECDNError extends Error {
     constructor() {
       super(...arguments);
@@ -6302,15 +6246,21 @@ a=end-of-candidates
       __publicField(this, "name", "NoAvailableNodeError");
     }
   }
+  class DoWithECDNNodeError extends Error {
+    constructor(cause) {
+      super(cause + "");
+      __publicField(this, "name", "DoWithECDNNodeError");
+      this.cause = cause;
+    }
+  }
   class Resolver {
-    constructor(logger2, app, dnsResolver = httpResolve, initialDuration = defaultDuration) {
+    constructor(logger, app, dnsResolver = httpResolve) {
       __publicField(this, "cache", /* @__PURE__ */ new Map());
       __publicField(this, "logger");
       __publicField(this, "fingerprints", /* @__PURE__ */ new Map());
       this.app = app;
       this.dnsResolver = dnsResolver;
-      this.initialDuration = initialDuration;
-      this.logger = new DnsLogger(logger2);
+      this.logger = new DnsLogger(logger);
     }
     getFingerprint(ipPort) {
       const fingerprint = this.fingerprints.get(ipPort);
@@ -6325,14 +6275,11 @@ a=end-of-candidates
         let err;
         try {
           const resolved = yield this.dnsResolver(ctx, domain, this.app);
-          if (!isECDNResolveResult(resolved)) {
+          if (!isECDNResolveResult(resolved))
             throw new NonECDNError(`Non-ECDN domain: ${domain}`);
-          }
+          if (resolved.groups.length === 0)
+            throw new NoAvailableECDNNodeError(`No available group for ${domain}`);
           const toSave = __spreadProps(__spreadValues({}, resolved), {
-            groups: resolved.groups.map((g) => __spreadProps(__spreadValues({}, g), {
-              duration: this.initialDuration,
-              after: 0
-            })),
             expireAt: Date.now() + resolved.ttl * 1e3
           });
           toSave.groups.forEach((g) => {
@@ -6362,7 +6309,7 @@ a=end-of-candidates
         }
       });
     }
-    getResolveResultWithCache(ctx, domain) {
+    resolve(ctx, domain) {
       return __async(this, null, function* () {
         const fromCache = this.cache.get(domain);
         if (fromCache != null) {
@@ -6370,7 +6317,7 @@ a=end-of-candidates
           try {
             result = yield fromCache;
           } catch (e) {
-            if (e instanceof NonECDNError)
+            if (e instanceof NonECDNError || e instanceof NoAvailableECDNNodeError)
               throw e;
           }
           if (result != null && result.expireAt > Date.now()) {
@@ -6383,21 +6330,6 @@ a=end-of-candidates
         const promise = this.getResolveResult(ctx, domain);
         this.cache.set(domain, promise);
         return promise;
-      });
-    }
-    resolve(ctx, domain, hostRequired = false) {
-      return __async(this, null, function* () {
-        const now = Date.now();
-        const resolved = yield this.getResolveResultWithCache(ctx, domain);
-        if (resolved.groups.length === 0)
-          throw new Error("Empty group list");
-        const availableGroups = resolved.groups.filter((g) => {
-          if (hostRequired && !supportHost(g))
-            return false;
-          return g.after < now;
-        });
-        const group = random(availableGroups, (g) => g.weight);
-        return group;
       });
     }
     resolveUrl(ctx, url, hostRequired = false) {
@@ -6415,26 +6347,26 @@ a=end-of-candidates
         if (urlObj.port !== "")
           throw new Error("TODO: no port");
         let err;
+        let { groups } = yield this.resolve(ctx, urlObj.host);
         for (let i = 0; i < attempts; i++) {
-          debug$7("Resolve for", url);
-          const group = yield this.resolve(ctx, urlObj.host, hostRequired);
+          debug$6("Resolve for", url);
+          const group = random(groups, (g) => g.weight);
           if (group == null)
-            throw new NoAvailableECDNNodeError(`No available group for ${url}`);
-          debug$7("Resolved for", url);
+            break;
+          debug$6("Resolved for", url);
           try {
-            debug$7("doWithGroup", i, url);
+            debug$6("doWithGroup", i, url);
             yield doWithGroup(group, url, hostRequired, job);
-            group.duration = this.initialDuration;
             return;
           } catch (e) {
             console.warn("doWithGroup (weight:", group.weight, ") failed:", e, url);
             if (shouldDisableTarget(e)) {
-              group.after = Date.now() + group.duration;
-              group.duration *= 2;
+              groups = groups.filter((g) => g !== group);
             }
             err = e;
           }
         }
+        err = isAbortError(err) ? err : new DoWithECDNNodeError(err);
         throw err;
       });
     }
@@ -6455,7 +6387,7 @@ a=end-of-candidates
         if (elt == null)
           throw new Error("No available elt");
         try {
-          debug$7("doWithElt", elt.id, url);
+          debug$6("doWithElt", elt.id, url);
           yield doWithElt(elt, url, hostRequired, job);
           return;
         } catch (e) {
@@ -6480,7 +6412,7 @@ a=end-of-candidates
         if (curr == null)
           break;
         try {
-          debug$7(`do with ${hostRequired ? "host" : "IP"}`, curr, url);
+          debug$6(`do with ${hostRequired ? "host" : "IP"}`, curr, url);
           yield job(curr);
           return;
         } catch (e) {
@@ -6511,193 +6443,19 @@ a=end-of-candidates
   function isECDNResolveResult(result) {
     return result.groups != null;
   }
+  function isAbortError(e) {
+    return e && e.name === "AbortError";
+  }
   const unexpectedDataChannelCloseErrorName = new UnexpectedDataChannelCloseError().name;
   const unexpectedDataChannel1stMessageErrorName = new UnexpectedDataChannel1stMessageError().name;
   function shouldDisableTarget(e) {
     if (e && [unexpectedDataChannelCloseErrorName, unexpectedDataChannel1stMessageErrorName].includes(e.name))
       return false;
-    if (e && e.name === "AbortError")
+    if (isAbortError(e))
       return false;
     if (e instanceof WindowClientError)
       return false;
     return true;
-  }
-  function supportHost(group) {
-    return group.elts.every((e) => e.hosts != null && e.hosts.length > 0);
-  }
-  class Mutex {
-    constructor() {
-      __publicField(this, "locked", false);
-      __publicField(this, "waitings", []);
-      this.unlock = this.unlock.bind(this);
-    }
-    lock() {
-      return __async(this, null, function* () {
-        if (!this.locked) {
-          this.locked = true;
-          return this.unlock;
-        }
-        yield new Promise((resolve) => {
-          this.waitings.push(resolve);
-        });
-        return this.unlock;
-      });
-    }
-    unlock() {
-      if (this.waitings.length === 0) {
-        this.locked = false;
-        return;
-      }
-      const waiting = this.waitings.shift();
-      waiting();
-    }
-    runExclusive(job) {
-      return __async(this, null, function* () {
-        const unlock = yield this.lock();
-        try {
-          return yield job();
-        } catch (e) {
-          throw e;
-        } finally {
-          unlock();
-        }
-      });
-    }
-  }
-  const version = "0.9.5";
-  function getEnv() {
-    var _a, _b;
-    const { os, device, browser } = uaParser(navigator.userAgent);
-    let location;
-    if (typeof window !== "undefined") {
-      location = window.location;
-    } else if (typeof self !== void 0) {
-      location = self.location;
-    }
-    return {
-      os: `${os.name}_${os.version}`,
-      browser: `${browser.name}_${browser.version}`,
-      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
-      sdk: `Web SDK v${version}`,
-      dev_model: (_b = device.model) != null ? _b : "",
-      dev_id: ""
-    };
-  }
-  const logNumPerCall = 200;
-  const debug$6 = getDebug("log");
-  class SchemaLogger {
-    constructor(schemaName, fetch2, flushNum, flushWait, app) {
-      __publicField(this, "env", queryStringify(getEnv()));
-      __publicField(this, "flushMutex", new Mutex());
-      __publicField(this, "buffer", []);
-      this.schemaName = schemaName;
-      this.fetch = fetch2;
-      this.flushNum = flushNum;
-      this.flushWait = flushWait;
-      this.app = app;
-    }
-    callApiLog(logs) {
-      return __async(this, null, function* () {
-        const fetch2 = this.fetch;
-        try {
-          const accessToken = getAccessToken({
-            appID: this.app.appID,
-            appSalt: this.app.appSalt,
-            path: `${logApiPrefix}/v1/log/${this.schemaName}`
-          });
-          const resp = yield fetch2(new Request(`${logApiPrefix}/v1/log/${this.schemaName}`, {
-            method: "POST",
-            headers: {
-              "Authorization": accessToken,
-              "Content-Type": "text/csv",
-              "X-Env": this.env
-            },
-            body: getLogBody(logs)
-          }));
-          if (!resp.ok)
-            throw new Error(`Unexpected response status: ${resp.status} ${resp.statusText}`);
-        } catch (e) {
-          console.warn("Call log API failed:", e);
-        }
-      });
-    }
-    flush() {
-      return __async(this, null, function* () {
-        return this.flushMutex.runExclusive(() => __async(this, null, function* () {
-          const logs = this.buffer.splice(0);
-          if (logs.length === 0)
-            return;
-          const callNum = Math.ceil(logs.length / logNumPerCall);
-          return Promise.all(Array.from({ length: callNum }).map((_, i) => this.callApiLog(logs.slice(i * logNumPerCall, (i + 1) * logNumPerCall))));
-        }));
-      });
-    }
-    tryFlush() {
-      return __async(this, null, function* () {
-        const flushOrRetry = yield this.flushMutex.runExclusive(() => {
-          const buffer = this.buffer;
-          if (buffer.length === 0)
-            return false;
-          if (buffer.length >= this.flushNum) {
-            debug$6("buffer.length >= this.flushNum");
-            return true;
-          }
-          const waited = Date.now() - buffer[0].ts;
-          if (waited >= this.flushWait * 1e3) {
-            debug$6("waited >= this.flushWait");
-            return true;
-          }
-          return this.flushWait * 1e3 - waited;
-        });
-        if (flushOrRetry === true)
-          return this.flush();
-        if (typeof flushOrRetry === "number") {
-          setTimeout(() => this.tryFlush(), flushOrRetry);
-        }
-      });
-    }
-    log(logData) {
-      this.buffer.push(__spreadValues({ ts: Date.now() }, logData));
-      this.tryFlush();
-    }
-  }
-  class Logger {
-    constructor(appInfo, fetch2 = self.fetch, flushNum = 100, flushWait = 30) {
-      __publicField(this, "schemaLoggers", /* @__PURE__ */ new Map());
-      this.appInfo = appInfo;
-      this.fetch = fetch2;
-      this.flushNum = flushNum;
-      this.flushWait = flushWait;
-    }
-    log(schemaName, logData) {
-      debug$6("log", schemaName, logData);
-      let logger2 = this.schemaLoggers.get(schemaName);
-      if (logger2 == null) {
-        logger2 = new SchemaLogger(schemaName, this.fetch, this.flushNum, this.flushWait, this.appInfo);
-        this.schemaLoggers.set(schemaName, logger2);
-      }
-      logger2.log(logData);
-    }
-  }
-  function getLogBody(logs) {
-    const fields = Object.keys(logs[0]);
-    const sortedFields = ["ts", ...fields.filter((f) => f !== "ts")];
-    const headLine = sortedFields.map(processCSVValue).join(",");
-    const bodyLines = logs.map(
-      (log) => sortedFields.map(
-        (k) => log[k]
-      ).map(
-        (v) => v != null ? v + "" : ""
-      ).map(processCSVValue).join(",")
-    );
-    return [headLine, ...bodyLines].join("\n");
-  }
-  function processCSVValue(value) {
-    let str = value.replace(/"/g, '""');
-    if (/("|,|\n)/.test(str)) {
-      str = '"' + str + '"';
-    }
-    return str;
   }
   class DB {
     constructor(dbName, storeNames) {
@@ -6879,36 +6637,37 @@ a=end-of-candidates
     }
   }
   class DownloadLogger {
-    constructor(logger2) {
-      this.logger = logger2;
+    constructor(logger) {
+      this.logger = logger;
     }
     log(logData) {
       return this.logger.log("DownloadLog", logData);
     }
   }
   class DoLogger {
-    constructor(logger2) {
-      this.logger = logger2;
+    constructor(logger) {
+      this.logger = logger;
     }
     log(logData) {
       return this.logger.log("DoLog", logData);
     }
   }
+  const version = "0.9.6";
   const defaultAttempts = 3;
   const debug$4 = getDebug("http");
   const defaultMediaOptimization = {
-    threshold: 1024 * 1024 * 4,
+    threshold: 1024 * 1024 * 2,
     contentRangeExposed: true
   };
   class Http {
-    constructor(logger2, client, patterns, mediaOptimization) {
+    constructor(logger, client, patterns, mediaOptimization) {
       __publicField(this, "downloadLogger");
       __publicField(this, "doLogger");
       __publicField(this, "mediaOptimization");
       this.client = client;
       this.patterns = patterns;
-      this.downloadLogger = new DownloadLogger(logger2);
-      this.doLogger = new DoLogger(logger2);
+      this.downloadLogger = new DownloadLogger(logger);
+      this.doLogger = new DoLogger(logger);
       this.mediaOptimization = __spreadValues(__spreadValues({}, defaultMediaOptimization), mediaOptimization);
     }
     doWithResolved(ctx, request, resolved, currentRetryCount) {
@@ -6920,12 +6679,13 @@ a=end-of-candidates
         let response;
         try {
           debug$4("fetch", request.url, "with resolved", resolved);
+          request.headers.set("X-Miku-Agent", `web-miku/v${version}`);
           const resp = yield this.client.fetch(ctx, request, resolved);
           debug$4("fetch", request.url, "succeeded with status", resp.status);
           ctx.set("downloadStatus", resp.status);
           ctx.set("downloadReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
-          if (resp.status >= 500)
-            throw new Error(`TODO: HTTP Status error: ${resp.status}`);
+          if (resp.status === 429 || resp.status >= 500)
+            throw new UnexpectedHttpStatusError(resp);
           response = resp;
           return response;
         } catch (e) {
@@ -6995,6 +6755,8 @@ a=end-of-candidates
     }
     originalDo(ctx, request) {
       return __async(this, null, function* () {
+        if (request.signal.aborted)
+          throw request.signal.reason;
         let currentRetryCount = -1;
         let finalResp;
         yield this.client.resolve(ctx, request, defaultAttempts, (resolved) => __async(this, null, function* () {
@@ -7066,18 +6828,6 @@ a=end-of-candidates
       return { onDoError, onDoResponsed };
     }
   }
-  const defaultHttpsPort$1 = 443;
-  function withNodeHost(request, nodeHost) {
-    const { url: originalUrl, headers, method, redirect, signal } = request;
-    const urlObject = new URL(originalUrl);
-    const originalHost = urlObject.host;
-    const [nodeHostname, nodeBasePort] = parseHost(nodeHost);
-    const nodeHttpsPort = nodeBasePort + defaultHttpsPort$1;
-    urlObject.protocol = "https:";
-    urlObject.host = `${nodeHostname}:${nodeHttpsPort}`;
-    urlObject.pathname = `/${originalHost}${urlObject.pathname}`;
-    return createNativeRequest$1(urlObject.toString(), { headers, method, redirect, signal });
-  }
   function withMediaOptimization(originalDo, initialDo, { threshold, contentRangeExposed }, patterns) {
     return function optimizedDo(ctx, request) {
       return __async(this, null, function* () {
@@ -7089,11 +6839,20 @@ a=end-of-candidates
         debug$4("doWithInitialOptimization", url);
         const initialCtx = new Context(ctx);
         const initalReq = new HttpRequest(url, reqExtra);
-        let polyfilledContentRangePromise = null;
-        if (reqExtra.headers.get("Range") && !contentRangeExposed) {
-          polyfilledContentRangePromise = polyfillContentRange(url, reqExtra.headers, initialDo);
-        }
-        const initialResp = yield initialDo(initialCtx, initalReq);
+        const initialDoWithContentRange = (ctx2, req) => __async(this, null, function* () {
+          let polyfilledContentRangePromise = null;
+          if (req.headers.get("Range") && !contentRangeExposed) {
+            polyfilledContentRangePromise = polyfillContentRange(url, reqExtra.headers, initialDo);
+          }
+          const resp = yield initialDo(ctx2, req);
+          if (resp.status === 206 && !resp.headers.get("Content-Range")) {
+            const polyfilledContentRange = yield polyfilledContentRangePromise;
+            if (polyfilledContentRange != null)
+              resp.headers.set("Content-Range", polyfilledContentRange);
+          }
+          return resp;
+        });
+        const initialResp = yield initialDoWithContentRange(initialCtx, initalReq);
         const contentLength = httpGetContentLength(initialResp.headers);
         if (contentLength != null && contentLength <= threshold)
           return initialResp;
@@ -7107,20 +6866,14 @@ a=end-of-candidates
         const followingReq = new HttpRequest(url, __spreadProps(__spreadValues({}, reqExtra), {
           headers: followingHeaders
         }));
-        const followingRespPromise = originalDo(ctx, followingReq);
         const _d = initialResp, { body: initialBody } = _d, initialRespExtra = __objRest(_d, ["body"]);
-        if (initialRespExtra.status === 206 && !initialRespExtra.headers.get("Content-Range")) {
-          const polyfilledContentRange = yield polyfilledContentRangePromise;
-          if (polyfilledContentRange != null)
-            initialRespExtra.headers.set("Content-Range", polyfilledContentRange);
-        }
         const stream = new TransformStream();
         if (initialBody == null)
           throw new Error(`Body expected for initial response of ${url}`);
         slice(initialBody, [0, threshold]).pipeTo(stream.writable, { preventClose: true }).then(
           () => __async(this, null, function* () {
             debug$4("doWithInitialOptimization initialBody transfered");
-            const followingResp = yield followingRespPromise;
+            const followingResp = yield originalDo(ctx, followingReq);
             if (followingResp.body == null)
               throw new Error(`Body expected for following response of ${url}`);
             const followingBody = followingResp.status === 206 ? followingResp.body : slice(followingResp.body, [followingRange.start, followingRange.end == null ? null : followingRange.end + 1]);
@@ -7130,17 +6883,14 @@ a=end-of-candidates
             );
           }),
           (e) => __async(this, null, function* () {
-            var _a2;
             debug$4("doWithInitialOptimization initialBody transfer errored", e);
-            const followingResp = yield followingRespPromise;
-            (_a2 = followingResp.body) == null ? void 0 : _a2.cancel(e);
           })
         );
         return new HttpResponse(stream.readable, initialRespExtra);
       });
     };
   }
-  function createNativeRequest$1(url, init) {
+  function createNativeRequest(url, init) {
     return new Request(url, __spreadValues({
       mode: "cors",
       credentials: "omit"
@@ -7149,13 +6899,14 @@ a=end-of-candidates
   function nativeDo(ctx, request) {
     return __async(this, null, function* () {
       const _a = request, { url } = _a, others = __objRest(_a, ["url"]);
-      const nativeRequest = createNativeRequest$1(url, others);
+      const nativeRequest = createNativeRequest(url, others);
       const nativeResponse = yield fetch(nativeRequest);
       return createResponseFromNative(nativeResponse);
     });
   }
   function polyfillContentRange(reqUrl, reqHeaders, initialDo) {
     return __async(this, null, function* () {
+      var _a;
       const headers = new Headers(reqHeaders);
       headers.delete("Range");
       const resp = yield initialDo(new Context(), new HttpRequest(reqUrl, {
@@ -7168,7 +6919,7 @@ a=end-of-candidates
         return null;
       return stringifyContentRange({
         start: range.start,
-        end: range.end,
+        end: (_a = range.end) != null ? _a : totalSize - 1,
         totalSize
       });
     });
@@ -7323,8 +7074,8 @@ a=end-of-candidates
     return num1 == null || num2 == null ? null : num1 - num2;
   }
   class TaskLogger {
-    constructor(logger2) {
-      this.logger = logger2;
+    constructor(logger) {
+      this.logger = logger;
     }
     log(logData) {
       return this.logger.log("TaskLog", logData);
@@ -7332,7 +7083,7 @@ a=end-of-candidates
   }
   const debug$3 = getDebug("ftask");
   class FileTask {
-    constructor(cache, http, key, url, logger2) {
+    constructor(cache, http, key, url, logger) {
       __publicField(this, "id", uuid());
       __publicField(this, "inited");
       __publicField(this, "cachePieces", []);
@@ -7342,7 +7093,7 @@ a=end-of-candidates
       this.http = http;
       this.key = key;
       this.url = url;
-      this.taskLogger = new TaskLogger(logger2);
+      this.taskLogger = new TaskLogger(logger);
       this.inited = this.resume();
     }
     startTask(task) {
@@ -7502,22 +7253,25 @@ a=end-of-candidates
         }
       });
     }
-    doRequest(_ctx, range, signal) {
+    doRequest(_ctx, task, range) {
       return __async(this, null, function* () {
         const ctx = new Context(_ctx);
         ctx.set("downloadFileTaskID", this.id);
         const headers = {
           "Accept-Encoding": "identity;q=1, *;q=0"
         };
-        if (range != null && !isFull(this.fileSize(), range)) {
-          headers["Range"] = stringifyRange({ start: range[0], end: range[1] == null ? null : range[1] - 1 });
+        if (range != null) {
+          const uselessRange = task.range == null && isFull(this.fileSize(), range);
+          if (!uselessRange) {
+            headers["Range"] = stringifyRange({ start: range[0], end: range[1] == null ? null : range[1] - 1 });
+          }
         }
-        const request = new HttpRequest(this.url, { method: "GET", headers, signal });
+        const request = new HttpRequest(this.url, { method: "GET", headers, signal: task.signal });
         const response = yield this.http.do(ctx, request);
         if (response.body == null)
           throw new Error("Body expected");
         if (response.status !== 200 && response.status !== 206)
-          throw new Error(`Invalid response, status: ${response.status}`);
+          throw new UnexpectedHttpStatusError(response);
         this.saveMeta(response);
         response.bodyReadResult.then((bodyReadResult) => {
           debug$3(`bodyReadResult for ${this.url}:`, bodyReadResult);
@@ -7530,7 +7284,7 @@ a=end-of-candidates
         if (ctx.get("task1stHttpDoAt") == null) {
           ctx.set("task1stHttpDoAt", Date.now());
         }
-        const response = yield this.doRequest(ctx, range, task.signal);
+        const response = yield this.doRequest(ctx, task, range);
         const responseForUse = this.saveCachePiece(task, range, response);
         return responseForUse;
       });
@@ -7590,7 +7344,311 @@ a=end-of-candidates
       });
     }
   }
-  const debug$2 = getDebug("utils/taskq");
+  class Mutex {
+    constructor() {
+      __publicField(this, "locked", false);
+      __publicField(this, "waitings", []);
+      this.unlock = this.unlock.bind(this);
+    }
+    lock() {
+      return __async(this, null, function* () {
+        if (!this.locked) {
+          this.locked = true;
+          return this.unlock;
+        }
+        yield new Promise((resolve) => {
+          this.waitings.push(resolve);
+        });
+        return this.unlock;
+      });
+    }
+    unlock() {
+      if (this.waitings.length === 0) {
+        this.locked = false;
+        return;
+      }
+      const waiting = this.waitings.shift();
+      waiting();
+    }
+    runExclusive(job) {
+      return __async(this, null, function* () {
+        const unlock = yield this.lock();
+        try {
+          return yield job();
+        } catch (e) {
+          throw e;
+        } finally {
+          unlock();
+        }
+      });
+    }
+  }
+  function getEnv() {
+    var _a, _b;
+    const { os, device, browser } = uaParser(navigator.userAgent);
+    let location;
+    if (typeof window !== "undefined") {
+      location = window.location;
+    } else if (typeof self !== void 0) {
+      location = self.location;
+    }
+    return {
+      os: `${os.name}_${os.version}`,
+      browser: `${browser.name}_${browser.version}`,
+      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
+      sdk: `Web SDK v${version}`,
+      dev_model: (_b = device.model) != null ? _b : "",
+      dev_id: ""
+    };
+  }
+  const logNumPerCall = 200;
+  const debug$2 = getDebug("log");
+  class SchemaLogger {
+    constructor(schemaName, fetch2, flushNum, flushWait, app) {
+      __publicField(this, "env", queryStringify(getEnv()));
+      __publicField(this, "flushMutex", new Mutex());
+      __publicField(this, "buffer", []);
+      this.schemaName = schemaName;
+      this.fetch = fetch2;
+      this.flushNum = flushNum;
+      this.flushWait = flushWait;
+      this.app = app;
+    }
+    callApiLog(logs) {
+      return __async(this, null, function* () {
+        const fetch2 = this.fetch;
+        try {
+          const accessToken = getAccessToken({
+            appID: this.app.appID,
+            appSalt: this.app.appSalt,
+            path: `${logApiPrefix}/v1/log/${this.schemaName}`
+          });
+          const resp = yield fetch2(new Request(`${logApiPrefix}/v1/log/${this.schemaName}`, {
+            method: "POST",
+            headers: {
+              "Authorization": accessToken,
+              "Content-Type": "text/csv",
+              "X-Env": this.env
+            },
+            body: getLogBody(logs)
+          }));
+          if (!resp.ok)
+            throw new Error(`Unexpected response status: ${resp.status} ${resp.statusText}`);
+        } catch (e) {
+          console.warn("Call log API failed:", e);
+        }
+      });
+    }
+    flush() {
+      return __async(this, null, function* () {
+        return this.flushMutex.runExclusive(() => __async(this, null, function* () {
+          const logs = this.buffer.splice(0);
+          if (logs.length === 0)
+            return;
+          const callNum = Math.ceil(logs.length / logNumPerCall);
+          return Promise.all(Array.from({ length: callNum }).map((_, i) => this.callApiLog(logs.slice(i * logNumPerCall, (i + 1) * logNumPerCall))));
+        }));
+      });
+    }
+    tryFlush() {
+      return __async(this, null, function* () {
+        const flushOrRetry = yield this.flushMutex.runExclusive(() => {
+          const buffer = this.buffer;
+          if (buffer.length === 0)
+            return false;
+          if (buffer.length >= this.flushNum) {
+            debug$2("buffer.length >= this.flushNum");
+            return true;
+          }
+          const waited = Date.now() - buffer[0].ts;
+          if (waited >= this.flushWait * 1e3) {
+            debug$2("waited >= this.flushWait");
+            return true;
+          }
+          return this.flushWait * 1e3 - waited;
+        });
+        if (flushOrRetry === true)
+          return this.flush();
+        if (typeof flushOrRetry === "number") {
+          setTimeout(() => this.tryFlush(), flushOrRetry);
+        }
+      });
+    }
+    log(logData) {
+      this.buffer.push(__spreadValues({ ts: Date.now() }, logData));
+      this.tryFlush();
+    }
+  }
+  class Logger {
+    constructor(appInfo, fetch2 = self.fetch, flushNum = 100, flushWait = 30) {
+      __publicField(this, "schemaLoggers", /* @__PURE__ */ new Map());
+      this.appInfo = appInfo;
+      this.fetch = fetch2;
+      this.flushNum = flushNum;
+      this.flushWait = flushWait;
+    }
+    log(schemaName, logData) {
+      debug$2("log", schemaName, logData);
+      let logger = this.schemaLoggers.get(schemaName);
+      if (logger == null) {
+        logger = new SchemaLogger(schemaName, this.fetch, this.flushNum, this.flushWait, this.appInfo);
+        this.schemaLoggers.set(schemaName, logger);
+      }
+      logger.log(logData);
+    }
+  }
+  function getLogBody(logs) {
+    const fields = Object.keys(logs[0]);
+    const sortedFields = ["ts", ...fields.filter((f) => f !== "ts")];
+    const headLine = sortedFields.map(processCSVValue).join(",");
+    const bodyLines = logs.map(
+      (log) => sortedFields.map(
+        (k) => log[k]
+      ).map(
+        (v) => v != null ? v + "" : ""
+      ).map(processCSVValue).join(",")
+    );
+    return [headLine, ...bodyLines].join("\n");
+  }
+  function processCSVValue(value) {
+    let str = value.replace(/"/g, '""');
+    if (/("|,|\n)/.test(str)) {
+      str = '"' + str + '"';
+    }
+    return str;
+  }
+  const debug$1 = getDebug("http/webrtc/service");
+  class HoWService {
+    constructor(pcConnectTimeout, dcOpenTimeout) {
+      __publicField(this, "workerContainer", navigator.serviceWorker);
+      __publicField(this, "hoW");
+      __publicField(this, "abortCtrls", /* @__PURE__ */ new Map());
+      __publicField(this, "disposers", []);
+      this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
+      this.disposers.push(() => this.hoW.dispose());
+    }
+    get worker() {
+      if (this.workerContainer.controller == null)
+        throw new Error("No available service worker");
+      return this.workerContainer.controller;
+    }
+    sendBody(id, body2) {
+      return __async(this, null, function* () {
+        const reader = body2.getReader();
+        while (true) {
+          const { value, done } = yield reader.read();
+          if (done) {
+            const message2 = { hoW: true, type: "resp-body-chunk", id, payload: null };
+            this.worker.postMessage(message2);
+            return;
+          }
+          const message = { hoW: true, type: "resp-body-chunk", id, payload: value.buffer };
+          this.worker.postMessage(message, [value.buffer]);
+        }
+      });
+    }
+    sendResponse(ctx, id, response) {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d;
+        debug$1("sendResponse in window", id, response);
+        const { status, statusText, headers, body: body2 } = response;
+        const message = {
+          hoW: true,
+          type: "resp-head",
+          id,
+          status,
+          statusText,
+          headers: dehydrateHeaders(headers),
+          hasBody: body2 != null,
+          reqMessageAt: (_a = ctx.get("hoWReqMessageAt")) != null ? _a : -1,
+          peerConnectionConnectAt: (_b = ctx.get("hoWPeerConnectionConnectAt")) != null ? _b : -1,
+          dataChannelOpenAt: (_c = ctx.get("hoWDataChannelOpenAt")) != null ? _c : -1,
+          startTransferAt: (_d = ctx.get("hoWStartTransferAt")) != null ? _d : -1
+        };
+        this.worker.postMessage(message);
+        if (body2 != null) {
+          yield this.sendBody(id, body2);
+        }
+        debug$1("sendResponse finished in window", id, response);
+      });
+    }
+    sendResponseError(id, err) {
+      const message = {
+        hoW: true,
+        type: "resp-error",
+        id,
+        name: err instanceof Error ? err.name : "UnknownError",
+        message: err instanceof Error ? err.message : err + ""
+      };
+      this.worker.postMessage(message);
+    }
+    receiveRequestBody(id) {
+      let streamCtrl;
+      const stream = new ReadableStream({
+        start: (ctrl) => streamCtrl = ctrl
+      });
+      const unlisten = listen(this.workerContainer, "message", ({ data }) => {
+        if (!isHoWMessage(data))
+          return;
+        if (data.id !== id)
+          return;
+        if (data.type !== "req-body-chunk")
+          return;
+        if (streamCtrl == null)
+          throw new Error("Stream Controller should be ready");
+        if (data.payload == null) {
+          streamCtrl.close();
+          unlisten();
+          return;
+        }
+        streamCtrl.enqueue(new Uint8Array(data.payload));
+      });
+      return stream;
+    }
+    getRequest({ id, url, method, headers, hasBody }) {
+      const abortCtrl = new AbortController();
+      this.abortCtrls.set(id, abortCtrl);
+      if (!hasBody)
+        return new HttpRequest(url, { method, headers, signal: abortCtrl.signal });
+      const body2 = this.receiveRequestBody(id);
+      return new HttpRequest(url, { method, headers, signal: abortCtrl.signal, body: body2 });
+    }
+    run() {
+      this.disposers.push(listen(this.workerContainer, "message", (_0) => __async(this, [_0], function* ({ data }) {
+        var _a;
+        debug$1("Got message in window", data);
+        if (!isHoWMessage(data))
+          return;
+        if (data.type === "req-head") {
+          const { id, fingerprint } = data;
+          const request = this.getRequest(data);
+          const ctx = new Context();
+          ctx.set("hoWReqMessageAt", Date.now());
+          try {
+            const response = yield this.hoW.fetch(ctx, id, request, fingerprint);
+            yield this.sendResponse(ctx, id, response);
+          } catch (e) {
+            this.sendResponseError(id, e);
+          } finally {
+            this.abortCtrls.delete(id);
+          }
+          return;
+        }
+        if (data.type === "req-abort") {
+          (_a = this.abortCtrls.get(data.id)) == null ? void 0 : _a.abort(new AbortError(data.reason));
+          return;
+        }
+      })));
+    }
+    dispose() {
+      this.disposers.forEach((d) => d());
+    }
+  }
+  function listen(target, type, listener) {
+    target.addEventListener(type, listener);
+    return () => target.removeEventListener(type, listener);
+  }
+  const debug = getDebug("utils/taskq");
   class TaskQueue {
     constructor(jobs) {
       __publicField(this, "tasks", []);
@@ -7631,13 +7689,13 @@ a=end-of-candidates
         if (!this.running)
           return;
         const task = yield this.pop();
-        debug$2("run task", task.name, ", with priority:", task.priority);
+        debug("run task", task.name, ", with priority:", task.priority);
         try {
           yield task == null ? void 0 : task.run();
         } catch (e) {
           console.warn("Task run failed:", e);
         } finally {
-          debug$2("end task", task.name);
+          debug("end task", task.name);
         }
       });
     }
@@ -7767,324 +7825,135 @@ a=end-of-candidates
   function defaultHash(url) {
     return url;
   }
-  const defaultHttpsPort = 443;
-  class DipHttpClient {
-    constructor(resolver) {
-      this.resolver = resolver;
-    }
-    resolve(ctx, request, attempts, job) {
-      return __async(this, null, function* () {
-        return this.resolver.do(ctx, request.url, attempts, true, job);
-      });
-    }
-    fetch(ctx, request, resolvedHost) {
-      return __async(this, null, function* () {
-        const { url: originalUrl, headers: reqHeaders, method, signal } = request;
-        const urlObject = new URL(originalUrl);
-        const originalHost = urlObject.host;
-        const [nodeHostname, nodeBasePort] = parseHost(resolvedHost);
-        const nodeHttpsPort = nodeBasePort + defaultHttpsPort;
-        urlObject.protocol = "https:";
-        urlObject.host = `${nodeHostname}:${nodeHttpsPort}`;
-        urlObject.pathname = `/${originalHost}${urlObject.pathname}`;
-        const nativeRequest = createNativeRequest(urlObject.toString(), {
-          headers: reqHeaders,
-          method,
-          signal,
-          keepalive: true
-        });
-        const nativeResponse = yield fetch(nativeRequest);
-        const now = Date.now();
-        ctx.set("downloadConnectionAt", now);
-        ctx.set("downloadStartTransferAt", now);
-        const resp = createResponseFromNative(nativeResponse);
-        return resp;
-      });
-    }
-    dispose() {
-    }
-  }
-  function createNativeRequest(url, init) {
-    return new Request(url, __spreadValues({
-      mode: "cors",
-      credentials: "omit"
-    }, init));
-  }
   function isProxyMessage(message) {
     return message && message.mikuProxy === true;
   }
-  const debug$1 = getDebug("proxy/common");
-  function proxyRequest(client, request) {
-    return __async(this, null, function* () {
-      var _a, _b;
-      const { browser } = uaParser(navigator.userAgent);
-      if (browser.name === "Firefox" && request.headers.get("Range")) {
-        debug$1("Short circuit for Firefox:", request.url);
-        const nodeHost = yield client["resolver"].resolveUrl(new Context(), request.url, true);
-        const newRequest = withNodeHost(request, nodeHost);
-        const response2 = Response.redirect(newRequest.url);
-        return response2;
-      }
-      const httpRange = httpGetRange(request.headers);
-      const range = httpRange == null ? void 0 : {
-        start: httpRange.start,
-        end: httpRange.end == null ? null : httpRange.end + 1
-      };
-      const task = client.createTask(request.url, range != null ? range : void 0);
-      waitAbort(request.signal).catch((e) => {
-        task.cancel(e);
-      });
-      let { stream, contentType, size, fileSize, underlayer: response } = yield task.start();
-      if (!supportResponseWithStream())
-        return response.underlayer;
-      let headers = new Headers(response == null ? void 0 : response.headers);
-      headers.set("Accept-Ranges", "bytes");
-      headers.set("Access-Control-Allow-Origin", "*");
-      headers.set("Content-Type", contentType != null ? contentType : "");
-      headers.set("Content-Length", (size != null ? size : "") + "");
-      headers.set("Content-Transfer-Encoding", "binary");
-      if (range != null) {
-        headers.set("Content-Range", stringifyContentRange({
-          start: (_a = range.start) != null ? _a : 0,
-          end: (_b = range.end) != null ? _b : fileSize != null ? fileSize - 1 : null,
-          totalSize: fileSize
-        }));
-      }
-      const finalResp = new Response(stream, {
-        status: range == null ? 200 : 206,
-        statusText: range == null ? "OK" : "Partial Content",
-        headers
-      });
-      return finalResp;
-    });
-  }
   const configQueryName = "MIKU_PROXY_CONFIG";
-  function getProxyConfig(scriptUrl) {
-    const search = scriptUrl.split("?")[1];
-    if (!search)
-      throw new Error("Invalid script url");
-    const params = new URLSearchParams(search);
-    const configText = params.get(configQueryName);
-    if (configText == null)
-      throw new Error("Invalid script url: no config info");
-    const config = JSON.parse(configText);
-    const makeREs = (rs) => rs == null ? void 0 : rs.map(({ source, flags }) => new RegExp(source, flags));
-    return __spreadProps(__spreadValues({}, config), {
+  function getScriptUrl(scriptUrl, config) {
+    const serializeREs = (rs) => rs == null ? void 0 : rs.map((re) => ({ source: re.source, flags: re.flags }));
+    const serializableConfig = __spreadProps(__spreadValues({}, config), {
       patterns: config.patterns == null ? void 0 : {
-        image: makeREs(config.patterns.image),
-        media: makeREs(config.patterns.media),
-        other: makeREs(config.patterns.other)
+        image: serializeREs(config.patterns.image),
+        media: serializeREs(config.patterns.media),
+        other: serializeREs(config.patterns.other)
       }
     });
+    return appendQuery(scriptUrl, { [configQueryName]: JSON.stringify(serializableConfig) });
   }
-  function matchDomains(urlObj, domains) {
-    const hostname = urlObj.hostname;
-    return domains.includes("*") || domains.includes(hostname);
-  }
-  function shouldUseCDN(request, { domains, patterns: patternsFromConfig }) {
-    if (request.method !== "GET")
-      return false;
-    const reqUrlObj = new URL(request.url);
-    if (!matchDomains(reqUrlObj, domains))
-      return false;
-    const patterns = __spreadValues(__spreadValues({}, defaultPatterns), patternsFromConfig);
-    return matchPatterns(reqUrlObj, patterns);
-  }
-  class Statistics {
-    constructor() {
-      __publicField(this, "windowFetchItemsMap", /* @__PURE__ */ new Map());
-    }
-    onFetchItem(windowId, url, response, ecdn, fallback) {
-      const item = {
-        url,
-        ecdn,
-        fallback: fallback != null ? fallback : false,
-        size: httpGetContentLength(response.headers)
-      };
-      let fetchItems = this.windowFetchItemsMap.get(windowId);
-      if (fetchItems == null) {
-        fetchItems = [];
-        this.windowFetchItemsMap.set(windowId, fetchItems);
+  function filterDomains(items) {
+    const results = {};
+    const suggested = [];
+    for (const { url, ecdn, fallback } of items) {
+      const urlObj = new URL(url);
+      const hostname = urlObj.hostname;
+      const ext = getExt(urlObj.pathname);
+      if (hostname !== "localhost" && hostname.indexOf(".") < 0)
+        continue;
+      if (/\.qnqcdn\.net$/.test(hostname))
+        continue;
+      let result = results[hostname];
+      if (result == null) {
+        results[hostname] = result = { exts: [], total: 0, ecdn: 0, fallback: 0 };
       }
-      fetchItems.push(item);
+      if (!result.exts.includes(ext))
+        result.exts.push(ext);
+      result.total++;
+      if (ecdn)
+        result.ecdn++;
+      if (fallback)
+        result.fallback++;
+      if (matchPatterns(urlObj, defaultPatterns) && !suggested.includes(hostname))
+        suggested.push(hostname);
     }
-    onWindowClose(windowId) {
-      this.windowFetchItemsMap.delete(windowId);
-    }
-    getFetchItems(windowId) {
-      return this.windowFetchItemsMap.get(windowId) || [];
-    }
+    return results;
   }
-  function adaptRequest(_0) {
-    return __async(this, arguments, function* (request, extra = {}) {
-      const { url, headers, method, redirect, signal } = request;
-      const pageHost = self.location.host;
-      const reqHost = new URL(url).host;
-      if (pageHost === reqHost)
-        return request;
-      const requestWithCORS = new Request(url, __spreadValues({ mode: "cors", credentials: "omit", headers, method, redirect, signal }, extra));
-      try {
-        const ctrl = new AbortController();
-        yield fetch(requestWithCORS, { signal: ctrl.signal });
-        ctrl.abort();
-        return requestWithCORS;
-      } catch (e) {
-        return request;
+  function filterRequests(domains, items) {
+    const results = {};
+    for (const { url, ecdn, size } of items) {
+      const urlObj = new URL(url);
+      const hostname = urlObj.hostname;
+      const ext = getExt(urlObj.pathname);
+      if (!domains.includes(hostname) && !domains.includes("*"))
+        continue;
+      for (const key of [`${hostname}/*`, `${hostname}/*.${ext || "<none>"}`]) {
+        let result = results[key];
+        if (result == null) {
+          results[key] = result = { total: 0, totalSize: 0, ecdn: 0, ecdnSize: 0 };
+        }
+        result.total++;
+        result.totalSize += size != null ? size : 0;
+        if (ecdn) {
+          result.ecdn++;
+          result.ecdnSize += size != null ? size : 0;
+        }
       }
+    }
+    return results;
+  }
+  function registerSW(scriptUrl, config, options) {
+    return __async(this, null, function* () {
+      scriptUrl = getScriptUrl(scriptUrl, config);
+      yield navigator.serviceWorker.register(scriptUrl, options);
     });
   }
-  class SatusLogger {
-    constructor(logger2) {
-      this.logger = logger2;
-    }
-    log(logData) {
-      return this.logger.log("PageStatusLog", logData);
-    }
-  }
-  const debug = getDebug("proxy/service-worker");
-  const perfIdMap = /* @__PURE__ */ new Map();
-  const scope = self;
-  const proxyConfig = getProxyConfig(scope.location.href);
-  const mikuClient = createClientForSW(proxyConfig);
-  const statistics = new Statistics();
-  const logger = new Logger(proxyConfig.app, void 0, void 0, 3);
-  const statusLogger = new SatusLogger(logger);
-  scope.addEventListener("activate", (event) => {
-    event.waitUntil(scope.clients.claim());
-    swClients.onRemove((id) => {
-      statistics.onWindowClose(id);
+  function initPage() {
+    return __async(this, null, function* () {
+      new HoWService().run();
+      syncWindowStatus();
     });
-  });
-  scope.addEventListener("fetch", (event) => __async(this, null, function* () {
-    if (event.clientId !== "") {
-      swClients.add(event.clientId);
+  }
+  function syncWindowStatus() {
+    function notify(state) {
+      var _a;
+      const message = { mikuProxy: true, type: `window-${state}` };
+      (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
     }
-    const request = event.request;
-    const abortCtrl = new AbortController();
-    Object.defineProperty(request, "signal", { value: abortCtrl.signal });
-    swClients.whenRemoved(event.clientId, () => abortCtrl.abort(new AbortError(`Source client ${event.clientId} closed`)));
-    if (shouldUseCDN(request, proxyConfig)) {
-      debug("use cdn", request.url);
-      event.respondWith(proxyRequest(mikuClient, request).then(
-        (resp) => {
-          var _a;
-          if (proxyConfig.statistics) {
-            statistics.onFetchItem(event.clientId, request.url, resp, true, false);
-            statusLogger.log({
-              r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
-              text: resp.statusText,
-              code: resp.status,
-              url: request.url
-            });
-          }
-          return resp;
-        },
-        (e) => __async(this, null, function* () {
-          var _a, _b, _c;
-          if (e instanceof NonECDNError || e instanceof NoAvailableECDNNodeError) {
-            debug("Use fallback fetch for request", request.url, `, error:`, e);
-            if (proxyConfig.statistics) {
-              const adaptedRequest = yield adaptRequest(request);
-              try {
-                const resp = yield fetch(adaptedRequest, { signal: abortCtrl.signal });
-                statistics.onFetchItem(event.clientId, request.url, resp, true, true);
-                statusLogger.log({
-                  r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
-                  text: resp.statusText,
-                  code: resp.status,
-                  url: request.url
-                });
-                return resp;
-              } catch (e2) {
-                statusLogger.log({
-                  r_id: (_b = perfIdMap.get(event.clientId)) != null ? _b : "",
-                  text: e2 instanceof Error ? e2.message : "",
-                  code: -1,
-                  url: request.url
-                });
-                throw e2;
-              }
-            } else {
-              return fetch(request, { signal: abortCtrl.signal });
-            }
-          }
-          if (proxyConfig.statistics) {
-            statusLogger.log({
-              r_id: (_c = perfIdMap.get(event.clientId)) != null ? _c : "",
-              text: e instanceof Error ? e.message : "",
-              code: -1,
-              url: request.url
-            });
-          }
-          throw e;
-        })
-      ));
-      return;
-    }
-    if (request.method === "GET" && proxyConfig.statistics) {
-      event.respondWith(adaptRequest(request).then(
-        (adaptedRequest) => fetch(adaptedRequest)
-      ).then((resp) => {
+    notify("available");
+    window.addEventListener("pageshow", () => notify("available"));
+    window.addEventListener("pagehide", () => notify("unavailable"));
+    window.addEventListener("beforeunload", () => notify("unavailable"));
+  }
+  function listenStatistics(config, callback) {
+    navigator.serviceWorker.addEventListener("message", ({ data }) => {
+      if (!isProxyMessage(data))
+        return;
+      if (data.type !== "window-fetch-items")
+        return;
+      const domains = filterDomains(data.items);
+      const requests = filterRequests(config.domains, data.items);
+      callback(domains, requests);
+    });
+    window.addEventListener("load", () => {
+      setTimeout(() => {
         var _a;
-        statistics.onFetchItem(event.clientId, request.url, resp, false);
-        statusLogger.log({
-          r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
-          text: resp.statusText,
-          code: resp.status,
-          url: request.url
-        });
-        return resp;
-      }).catch((e) => {
-        var _a;
-        statusLogger.log({
-          r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
-          text: e instanceof Error ? e.message : "",
-          code: -1,
-          url: request.url
-        });
-        return e;
-      }));
-    }
-  }));
-  scope.addEventListener("message", (e) => __async(this, null, function* () {
-    if (!(e.source instanceof WindowClient))
-      return;
-    if (!isProxyMessage(e.data))
-      return;
-    debug("got proxy message", e.data, "from", e.source.id);
-    switch (e.data.type) {
-      case "window-available":
-        swClients.add(e.source.id);
-        break;
-      case "window-unavailable":
-        swClients.remove(e.source.id);
-        perfIdMap.delete(e.source.id);
-        break;
-      case "get-window-fetch-items":
-        const clientID = e.source.id;
-        const fetchItems = statistics.getFetchItems(clientID);
-        const windowClient = yield swClients.get(clientID);
-        if (windowClient == null)
-          throw new Error(`Invalid window client ID: ${clientID}`);
-        const message = {
-          mikuProxy: true,
-          type: "window-fetch-items",
-          items: fetchItems
-        };
-        windowClient.postMessage(message);
-        break;
-      case "get-perf-rid":
-        perfIdMap.set(e.source.id, e.data.rid);
-    }
-  }));
-  function createClientForSW(proxyConfig2) {
-    const clientConfig = __spreadValues({
-      debug: proxyConfig2.debug,
-      patterns: proxyConfig2.patterns
-    }, proxyConfig2.client);
-    const logger2 = new Logger(proxyConfig2.app, void 0, void 0, 3);
-    const resolver = new Resolver(logger2, proxyConfig2.app);
-    const httpClient = new DipHttpClient(resolver);
-    return new Client(proxyConfig2.app, __spreadProps(__spreadValues({}, clientConfig), { logger: logger2, httpClient }));
+        const message = { mikuProxy: true, type: "get-window-fetch-items" };
+        (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
+      }, 1e3);
+    });
   }
-})();
+  function initProxy(scriptUrl, config, options) {
+    return __async(this, null, function* () {
+      const reason = supportProxy();
+      if (reason != null) {
+        console.warn("Ability not OK for Miku Proxy API:", reason);
+        return;
+      }
+      if (config.debug)
+        enableDebug();
+      yield Promise.all([
+        initPage(),
+        registerSW(scriptUrl, config, options)
+      ]);
+    });
+  }
+  function supportProxy() {
+    if (!("serviceWorker" in navigator))
+      return "navigator.serviceWorker not available";
+    return null;
+  }
+  exports.Client = Client;
+  exports.initProxy = initProxy;
+  exports.listenStatistics = listenStatistics;
+  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
+  return exports;
+}({});

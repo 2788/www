@@ -1027,7 +1027,7 @@ var mikuPerf = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.9.5";
+  const version = "0.9.6";
   function getEnv() {
     var _a, _b;
     const { os, device, browser } = uaParser(navigator.userAgent);
@@ -5718,11 +5718,19 @@ var mikuPerf = function(exports) {
   };
   let MikuPerformance = _MikuPerformance;
   __publicField(MikuPerformance, "mikuPerformanceInstance");
-  const createPerformance = (app, hasMiku = true) => __async(this, null, function* () {
+  const createPerformance = (app, hasMiku = true, tag) => __async(this, null, function* () {
     const cache = yield caches.open(namespace);
     const requestList = yield cache.keys();
     return new Promise((resolve, reject) => {
       if (MikuPerformance.mikuPerformanceInstance === void 0) {
+        if (tag) {
+          resolve(MikuPerformance.initInstance(
+            tag,
+            "",
+            app
+          ));
+          return;
+        }
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.getRegistrations().then(function(registrations) {
             return __async(this, null, function* () {
