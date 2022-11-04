@@ -193,6 +193,132 @@ var miku = function(exports) {
       this.map.clear();
     }
   }
+  function httpGetContentLength(headers) {
+    const contentSize = headers.get("Content-Length");
+    if (!contentSize)
+      return null;
+    return parseInt(contentSize, 10);
+  }
+  function httpGetContentRange(headers) {
+    const contentRange = headers.get("Content-Range");
+    if (contentRange == null)
+      return null;
+    return parseContentRange(contentRange);
+  }
+  function parseContentRange(v) {
+    const normalized = v.trim().toLowerCase();
+    const [unit, rest] = normalized.split(/\s+/);
+    if (unit !== "bytes") {
+      throw new Error(`Unit must be bytes: ${v}`);
+    }
+    const [range, totalSizeStr] = rest.split("/");
+    const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
+    const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
+    return { totalSize, start, end };
+  }
+  function stringifyContentRange(v) {
+    const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
+    const size = v.totalSize == null ? "*" : v.totalSize + "";
+    return `bytes ${range}/${size}`;
+  }
+  function atoi(v) {
+    return !v ? null : Number(v);
+  }
+  function httpGetRange(headers) {
+    const range = headers.get("Range");
+    if (range == null)
+      return null;
+    return parseRange(range);
+  }
+  function parseRange(v) {
+    const normalized = v.trim().toLowerCase();
+    if (!normalized.startsWith("bytes=")) {
+      throw new Error(`Unit must be bytes: ${v}`);
+    }
+    if (normalized.includes(",")) {
+      throw new Error(`Multiple range: ${v}`);
+    }
+    const [, startStr, endStr] = /(\d*)-(\d*)/.exec(normalized) || [];
+    if (!startStr && !endStr) {
+      throw new Error(`Invalid range values: ${v}`);
+    }
+    if (!startStr) {
+      throw new Error("Suffix range not supported");
+    }
+    const [start, end] = [startStr, endStr].map((v2) => atoi(v2));
+    return { start, end };
+  }
+  function stringifyRange(range) {
+    var _a, _b;
+    return `bytes=${(_a = range.start) != null ? _a : 0}-${(_b = range.end) != null ? _b : ""}`;
+  }
+  function queryStringify(params) {
+    return Object.keys(params).map(
+      (k) => [k, params[k]]
+    ).filter(
+      ([k, v]) => v !== void 0
+    ).map(
+      ([k, v]) => v === null ? k : [k, v].map(encodeURIComponent).join("=")
+    ).join("&");
+  }
+  function getRespBodyLength(method, status, reqHeaders, respHeaders) {
+    if (method === "HEAD")
+      return [false];
+    if (status >= 100 && status < 200)
+      return [false];
+    if (status === 204 || status === 304)
+      return [false];
+    if (method === "CONNECT" && status >= 200 && status < 300)
+      return [false];
+    const transferEncodingVal = reqHeaders.get("Transfer-Encoding");
+    if (transferEncodingVal != null && transferEncodingVal.length > 0)
+      return [true, null];
+    const contentLengthVal = respHeaders.get("Content-Length");
+    if (contentLengthVal != null) {
+      const contentLength = parseInt(contentLengthVal, 10);
+      if (!Number.isNaN(contentLength)) {
+        if (contentLength === 0)
+          return [false];
+        return [true, contentLength];
+      }
+    }
+    return [true, null];
+  }
+  const non_ios_8859_1Code = /[^\u0000-\u00ff]/;
+  function encodeHeaderValue(value) {
+    return non_ios_8859_1Code.test(value) ? "REPLACED_BY_Miku_SEE_Miku_utils_http_encodeHeaderValue" : value;
+  }
+  function createHeaders(init) {
+    if (init instanceof Headers) {
+      const o = {};
+      init.forEach((v, k) => {
+        o[k] = encodeHeaderValue(v);
+      });
+      init = o;
+    }
+    if (Array.isArray(init)) {
+      const o = {};
+      init.forEach(([v, k]) => {
+        o[k] = encodeHeaderValue(v);
+      });
+      init = o;
+    }
+    return new Headers(init);
+  }
+  function getFileSize(response) {
+    var _a;
+    let fileSize = null;
+    if (response.status === 200) {
+      const contentLengthStr = response.headers.get("Content-Length");
+      const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
+      fileSize = contentLength;
+    }
+    if (response.status === 206) {
+      const contentRange = httpGetContentRange(response.headers);
+      fileSize = (_a = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a : null;
+    }
+    return fileSize;
+  }
   function slice(stream, range) {
     var _a;
     const reader = stream.getReader();
@@ -1257,7 +1383,7 @@ var miku = function(exports) {
       __publicField(this, "underlayer");
       this.status = status != null ? status : 200;
       this.statusText = statusText != null ? statusText : "";
-      this.headers = new Headers(headers);
+      this.headers = createHeaders(headers);
       this.underlayer = underlayer;
       if (body2 == null || !supportResponseWithStream()) {
         this.body = body2;
@@ -1301,115 +1427,6 @@ var miku = function(exports) {
       super(...arguments);
       __publicField(this, "name", "WindowClientError");
     }
-  }
-  function httpGetContentLength(headers) {
-    const contentSize = headers.get("Content-Length");
-    if (!contentSize)
-      return null;
-    return parseInt(contentSize, 10);
-  }
-  function httpGetContentRange(headers) {
-    const contentRange = headers.get("Content-Range");
-    if (contentRange == null)
-      return null;
-    return parseContentRange(contentRange);
-  }
-  function parseContentRange(v) {
-    const normalized = v.trim().toLowerCase();
-    const [unit, rest] = normalized.split(/\s+/);
-    if (unit !== "bytes") {
-      throw new Error(`Unit must be bytes: ${v}`);
-    }
-    const [range, totalSizeStr] = rest.split("/");
-    const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
-    const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
-    return { totalSize, start, end };
-  }
-  function stringifyContentRange(v) {
-    const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
-    const size = v.totalSize == null ? "*" : v.totalSize + "";
-    return `bytes ${range}/${size}`;
-  }
-  function atoi(v) {
-    return !v ? null : Number(v);
-  }
-  function httpGetRange(headers) {
-    const range = headers.get("Range");
-    if (range == null)
-      return null;
-    return parseRange(range);
-  }
-  function parseRange(v) {
-    const normalized = v.trim().toLowerCase();
-    if (!normalized.startsWith("bytes=")) {
-      throw new Error(`Unit must be bytes: ${v}`);
-    }
-    if (normalized.includes(",")) {
-      throw new Error(`Multiple range: ${v}`);
-    }
-    const [, startStr, endStr] = /(\d*)-(\d*)/.exec(normalized) || [];
-    if (!startStr && !endStr) {
-      throw new Error(`Invalid range values: ${v}`);
-    }
-    if (!startStr) {
-      throw new Error("Suffix range not supported");
-    }
-    const [start, end] = [startStr, endStr].map((v2) => atoi(v2));
-    return { start, end };
-  }
-  function stringifyRange(range) {
-    var _a, _b;
-    return `bytes=${(_a = range.start) != null ? _a : 0}-${(_b = range.end) != null ? _b : ""}`;
-  }
-  function queryStringify(params) {
-    return Object.keys(params).map(
-      (k) => [k, params[k]]
-    ).filter(
-      ([k, v]) => v !== void 0
-    ).map(
-      ([k, v]) => v === null ? k : [k, v].map(encodeURIComponent).join("=")
-    ).join("&");
-  }
-  function getRespBodyLength(method, status, reqHeaders, respHeaders) {
-    if (method === "HEAD")
-      return [false];
-    if (status >= 100 && status < 200)
-      return [false];
-    if (status === 204 || status === 304)
-      return [false];
-    if (method === "CONNECT" && status >= 200 && status < 300)
-      return [false];
-    const transferEncodingVal = reqHeaders.get("Transfer-Encoding");
-    if (transferEncodingVal != null && transferEncodingVal.length > 0)
-      return [true, null];
-    const contentLengthVal = respHeaders.get("Content-Length");
-    if (contentLengthVal != null) {
-      const contentLength = parseInt(contentLengthVal, 10);
-      if (!Number.isNaN(contentLength)) {
-        if (contentLength === 0)
-          return [false];
-        return [true, contentLength];
-      }
-    }
-    return [true, null];
-  }
-  const non_ios_8859_1Code = /[^\u0000-\u00ff]/;
-  function encodeHeaderValue(value) {
-    return non_ios_8859_1Code.test(value) ? "REPLACED_BY_Miku_SEE_Miku_utils_http_encodeHeaderValue" : value;
-  }
-  function getFileSize(response) {
-    var _a;
-    let fileSize = null;
-    if (response.status === 200) {
-      const contentLengthStr = response.headers.get("Content-Length");
-      const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
-      fileSize = contentLength;
-    }
-    if (response.status === 206) {
-      const contentRange = httpGetContentRange(response.headers);
-      fileSize = (_a = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a : null;
-    }
-    return fileSize;
   }
   const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
   const defaultWebRTCPort = 8443;
@@ -1635,7 +1652,7 @@ a=end-of-candidates
         const respHead = parseResponseHead(value);
         debug$7(`DataChannel ${this.id} get respHead:`, respHead);
         const status = respHead.status;
-        const headers = new Headers(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => encodeHeaderValue(hs[0])));
+        const headers = createHeaders(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => hs[0]));
         const respInit = { status, statusText: respHead.reason, headers };
         const [hasBody, bodyLength] = getRespBodyLength(request.method, status, request.headers, headers);
         this.ctx.set("hoWStartTransferAt", Date.now());
@@ -6652,7 +6669,7 @@ a=end-of-candidates
       return this.logger.log("DoLog", logData);
     }
   }
-  const version = "0.9.6";
+  const version = "0.9.7";
   const defaultAttempts = 3;
   const debug$4 = getDebug("http");
   const defaultMediaOptimization = {
