@@ -12,7 +12,7 @@ import { IconId, IconInfo as BaseIconInfo } from 'constants/icon'
 const resource = 'icon'
 const refreshPaths = wwwPaths
 
-export interface IconInfo extends BaseIconInfo, StdInfo {}
+export type IconInfo = BaseIconInfo & StdInfo
 
 @injectable()
 export default class IconInfoApis {

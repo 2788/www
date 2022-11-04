@@ -11,6 +11,7 @@ import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-f
 
 import { useModalLike } from 'utils/async'
 import { ProductComponentBannerProps, BannerButton, platformMap } from 'constants/product/page/comp-banner'
+import { ProductModule, productModuleTitleMap } from 'constants/product/page'
 import { UploadImgInput, createState as createUploadImgState } from 'components/common/Upload/Img'
 import { ProductInfo } from 'apis/product/info'
 
@@ -146,8 +147,8 @@ export default function useCompBanner(productInfo: ProductInfo | undefined) {
 
   const view = productInfo != null && (
     <DrawerForm
-      title="顶部 banner"
-      width={850}
+      title={productModuleTitleMap[ProductModule.Banner]}
+      width={820}
       layout="horizontal"
       labelWidth="4em"
       visible={visible}

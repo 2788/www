@@ -226,7 +226,7 @@ export default function useMetaInfo() {
         <FormItem label="标签关键字" required tip="用于产品页 TDK、产品相关搜索等">
           <SelectTags state={state.$.keywords} />
         </FormItem>
-        <FormItem label="短描述" required tip="用于产品页相关产品模块等">
+        <FormItem label="短描述" required tip="用于导航栏、产品页相关产品模块等">
           <TextArea state={state.$.desc.$.brief} maxCount={40} textareaProps={{ rows: 2 }} />
         </FormItem>
         <FormItem label="长描述" required tip="用于产品页 banner、产品页 TDK 等">

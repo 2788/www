@@ -14,6 +14,7 @@ import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
 import { ProductComponentDocumentConfig, DocumentItem, DocumentLink } from 'constants/product/page/comp-document'
+import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
 
 import styles from './style.m.less'
 
@@ -39,8 +40,8 @@ function createState(props?: ProductComponentDocumentConfig['props']) {
                 return '不能超过 30 个字'
               }
             }),
-            url: new DebouncedFieldState(link.url).withValidator(url => {
-              if (url === '') {
+            url: createWwwUrlPathState(link.url).withValidator(url => {
+              if (url.trim() === '') {
                 return '不能为空'
               }
             })
@@ -116,7 +117,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={productModuleTitleMap[ProductModule.Document]}
-      width={655}
+      width={740}
       layout="horizontal"
       labelWidth="4em"
       visible={props.visible}
@@ -145,13 +146,13 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
               <FormItem label="文档分类" required>
                 <TextInput state={itemState.$.type} />
               </FormItem>
-              <FormItem required state={itemState.$.links}>
+              <FormItem label="文档列表" required state={itemState.$.links}>
                 {itemState.$.links.$.map((linkState, linkIndex) => (
                   <Fragment key={linkIndex}>
                     <FormItem
                       label={
                         <span className={styles.section}>
-                          <span>{itemIndex + 1}.{linkIndex + 1}</span>
+                          <span>{linkIndex + 1}</span>
                           <Button
                             type="link"
                             icon={<DeleteIcon />}
@@ -167,17 +168,17 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                         <TextInput state={linkState.$.title} />
                       </FormItem>
                       <FormItem label="跳转地址" required>
-                        <TextInput state={linkState.$.url} />
+                        <WwwUrlPath state={linkState.$.url} />
                       </FormItem>
                     </FormItem>
                   </Fragment>
                 ))}
-                <Button icon={<AddIcon />} onClick={() => { addLink(itemIndex) }}>添加文档</Button>
+                <Button icon={<AddIcon />} onClick={() => { addLink(itemIndex) }} />
               </FormItem>
             </FormItem>
           </Fragment>
         ))}
-        <Button icon={<AddIcon />} onClick={() => { addItem() }}>添加文档组</Button>
+        <Button icon={<AddIcon />} onClick={() => { addItem() }} />
       </FormItem>
     </DrawerForm>
   )

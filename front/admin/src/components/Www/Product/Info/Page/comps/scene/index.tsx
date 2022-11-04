@@ -45,8 +45,8 @@ function createState(props?: ProductComponentSceneConfig['props']) {
         })
       })
     )).withValidator(items => {
-      if (![3, 4].includes(items.length)) {
-        return '数量只能为 3 4'
+      if (items.length !== 3) {
+        return '数量只能为 3 个'
       }
     })
   })
@@ -124,8 +124,8 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                 <UploadImgInput
                   state={itemState.$.imgUrl}
                   previewType="cover"
-                  width={776}
-                  height={370}
+                  width={608}
+                  height={548}
                 />
               </FormItem>
             </FormItem>

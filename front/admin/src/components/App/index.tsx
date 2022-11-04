@@ -45,7 +45,7 @@ function Sidebar({ collapsed }: { collapsed: boolean }) {
         <LinkItem relative to={productNewsRoute}>{productNewsTitle}</LinkItem>
         <LinkItem relative to={productPriceRoute}>{productPriceTitle}</LinkItem>
       </Group>
-      <LinkItem relative to={solutionRoute}>{solutionTitle}</LinkItem>
+      {/* <LinkItem relative to={solutionRoute}>{solutionTitle}</LinkItem> TODO: 待放出来 */}
       <LinkItem relative to={consultRoute}>{consultTitle}</LinkItem>
       <LinkItem relative to={activityRoute}>{activityTitle}</LinkItem>
       <LinkItem relative to={iconRoute}>{iconTitle}</LinkItem>

@@ -120,13 +120,13 @@ const UploadImg = observer(function _UploadImg(props: PropsWithChildren<IProps>)
 export default UploadImg
 
 /** for react-icecream-form */
-export function UploadImgInput(props: IProps) {
+export const UploadImgInput = observer(function _UploadImgInput(props: IProps) {
   return (
     <InputWrapper state={props.state}>
       <UploadImg {...props} />
     </InputWrapper>
   )
-}
+})
 
 // 求最大公约数
 function gcd(m: number, n: number): number {

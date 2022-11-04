@@ -49,6 +49,8 @@ export default observer(function SelectIcon({ state }: Props) {
         >
           {icons != null && icons.map(({ id, name }) => (
             // TODO: 优化，用更科学的方式支持按 icon id 搜索
+            // TODO: 优化，在这里直接显示小 icon
+            // TODO: 优化，选中后在旁边预览 icon 图标
             <SelectOption value={id} key={id}>{name} ({id})</SelectOption>
           ))}
         </Select>

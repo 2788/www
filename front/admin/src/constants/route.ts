@@ -26,6 +26,10 @@ export const solutionRoute = '/solution'
 
 export const solutionTitle = '解决方案'
 
+export const solutionPageRoute = '/page'
+
+export const solutionPageTitle = '页面模块配置'
+
 export const consultRoute = '/consult'
 
 export const consultTitle = '在线咨询'

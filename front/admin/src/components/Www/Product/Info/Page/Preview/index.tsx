@@ -1,5 +1,5 @@
 /**
- * @file 预览 & 发布
+ * @file 预览
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
@@ -8,12 +8,13 @@ import { Button } from 'react-icecream-2'
 import { ShareIcon } from 'react-icecream-2/icons'
 
 import { wwwHost } from 'constants/env'
+import { wwwProductPathPrefix } from 'constants/product'
 import { ProductInfo } from 'apis/product/info'
 import { useWwwPreviewMessage } from 'utils/www'
 
 import styles from './style.m.less'
 
-const wwwProductPreviewPageUrl = '/products/preview'
+const wwwProductPreviewPageUrl = `${wwwProductPathPrefix}preview`
 const wwwProductPreviewMsgKey = 'QINIU_PRODUCT_PAGE_PREVIEW'
 
 export interface Props {
@@ -48,7 +49,14 @@ function PreviewIframe({ productInfo }: Props) {
 
   return (
     <>
-      <Button size="small" className={styles.fullScreenBtn} icon={<ShareIcon />} onClick={openFullScreen}>全屏预览</Button>
+      <Button
+        size="small"
+        className={styles.fullScreenBtn}
+        icon={<ShareIcon />}
+        onClick={openFullScreen}
+      >
+        全屏预览
+      </Button>
       <iframe src={wwwHost + wwwProductPreviewPageUrl} ref={iframeRef}></iframe>
     </>
   )

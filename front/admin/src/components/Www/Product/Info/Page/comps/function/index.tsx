@@ -14,6 +14,7 @@ import { useModalLike } from 'utils/async'
 import { ProductModule, productModuleTitleMap, ProductSection } from 'constants/product/page'
 import { ProductComponentName } from 'constants/product/page/comp-common'
 import { ProductComponentFunctionConfig, FunctionItem } from 'constants/product/page/comp-function'
+import WwwUrlPath, { createState as createWwwUrlPathState } from 'components/common/WwwUrlPath'
 
 import styles from './style.m.less'
 
@@ -37,14 +38,14 @@ function createState(props?: ProductComponentFunctionConfig['props']) {
             return '不能超过 70 个字'
           }
         }),
-        url: new DebouncedFieldState(item.url ?? '')
+        url: createWwwUrlPathState(item.url ?? '')
       })
     )).withValidator(items => {
       if (items.length < 3) {
         return '最少 3 组'
       }
-      if (items.length > 6) {
-        return '最多 6 组'
+      if (items.length > 9) {
+        return '最多 9 组'
       }
     })
   })
@@ -126,7 +127,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                 <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 3 }} />
               </FormItem>
               <FormItem label={<div className={styles.urlLabel}>立即体验<br />跳转地址</div>}>
-                <TextInput state={itemState.$.url} />
+                <WwwUrlPath state={itemState.$.url} />
               </FormItem>
             </FormItem>
           </Fragment>

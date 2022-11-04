@@ -44,12 +44,13 @@ export default observer(function SelectProducts({ state, className }: Props) {
       <Loading loading={productInfoList == null}>
         <MultiSelect
           state={state}
-          searchable // TODO: 优化，同时支持按 path 搜索
+          searchable
           collapsed={false}
           className={styles.select}
         >
           {productInfoList != null && productInfoList.map(({ path, name }) => (
-            <SelectOption value={path} key={path}>{name}</SelectOption>
+            // TODO: 优化，用更科学的方式支持按 path 搜索
+            <SelectOption value={path} key={path}>{name} {path}</SelectOption>
           ))}
         </MultiSelect>
       </Loading>

@@ -6,6 +6,11 @@
 import { useRef, useState, useCallback } from 'react'
 import { makeCancelled } from 'qn-fe-core/exception'
 
+// https://github.com/then/is-promise/blob/master/index.js
+export function isPromise<T = unknown>(obj: any): obj is Promise<T> {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function'
+}
+
 export function usePromise<T>() {
   const resolveRef = useRef<(value: T | PromiseLike<T>) => void>(() => undefined)
   const rejectRef = useRef<(reason?: unknown) => void>(() => undefined)

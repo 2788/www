@@ -18,6 +18,7 @@ import ProductPriceApis from 'apis/product/price'
 import PgcContentApis from 'apis/pgc/content'
 import PgcContentBannerApis from 'apis/pgc/content-banner'
 import ProductInfoApis from 'apis/product/info'
+import SolutionApis from 'apis/solution'
 import IconInfoApis from 'apis/icon'
 
 export const defaultProvides: di.Provides = [
@@ -37,6 +38,7 @@ export const defaultProvides: di.Provides = [
   PgcContentApis,
   PgcContentBannerApis,
   ProductInfoApis,
+  SolutionApis,
   IconInfoApis
 ]
 

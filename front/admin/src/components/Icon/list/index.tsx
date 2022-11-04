@@ -41,6 +41,24 @@ function useAllIconsState() {
   }
 }
 
+// TODO: 抽公共组件
+function IconPreview({ iconInfo }: { iconInfo: IconInfo }) {
+  if (iconInfo.type === 'svg-inline') {
+    return (
+      // eslint-disable-next-line react/no-danger
+      <div dangerouslySetInnerHTML={{ __html: iconInfo.content }} className={styles.typeSvg}></div>
+    )
+  }
+
+  if (iconInfo.type === 'url') {
+    return (
+      <img src={iconInfo.url} alt={iconInfo.name} className={styles.typeUrl} />
+    )
+  }
+
+  return null
+}
+
 export default function useAllIcons(editIcon: (iconId: IconId) => void) {
   const { allIcons, isLoading, refresh } = useAllIconsState()
 
@@ -50,7 +68,7 @@ export default function useAllIcons(editIcon: (iconId: IconId) => void) {
         {allIcons.map(iconInfo => (
           <li key={iconInfo.id}>
             <div className={styles.img}>
-              <img src={iconInfo.url} alt={iconInfo.name} />
+              <IconPreview iconInfo={iconInfo} />
               <div className={styles.modify} onClick={() => { editIcon(iconInfo.id) }}>
                 <EditIcon />
               </div>
