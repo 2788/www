@@ -4,15 +4,17 @@
  */
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import { Table, TableType, TablePaginationOptions, Button } from 'react-icecream-2'
+import { Table, TableType, TablePaginationOptions, Button, Tooltip } from 'react-icecream-2'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { ButtonLink } from 'admin-base/common/components/Link'
+import { ShareIcon } from 'react-icecream-2/icons'
 
 import { timeFormatter } from 'utils/time'
 import { ProductId, wwwProductPathPrefix } from 'constants/product'
 import { getProductPageInfoPageUrl } from 'transforms/product/info'
 import ProductInfoApis, { ProductInfo } from 'apis/product/info'
+import { wwwHost } from 'constants/env'
 
 import styles from './style.m.less'
 
@@ -75,7 +77,21 @@ export default function useProductList(editMetaInfo: (productId: ProductId) => v
       <ProductTable.Column
         title="地址"
         accessor="path"
-        render={path => wwwProductPathPrefix + path}
+        render={path => (
+          <>
+            <span>{wwwProductPathPrefix}{path} </span>
+            <Tooltip title="新 Tab 页访问">
+              <ButtonLink
+                type="link"
+                size="small"
+                to={wwwHost + wwwProductPathPrefix + path}
+                target="_blank"
+              >
+                <ShareIcon />
+              </ButtonLink>
+            </Tooltip>
+          </>
+        )}
       />
       <ProductTable.Column
         title="名称"

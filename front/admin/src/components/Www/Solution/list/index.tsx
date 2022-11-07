@@ -4,15 +4,17 @@
  */
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import { Table, TableType, TablePaginationOptions, Button } from 'react-icecream-2'
+import { Table, TableType, TablePaginationOptions, Button, Tooltip } from 'react-icecream-2'
 import { useInjection } from 'qn-fe-core/di'
 import { ToasterStore } from 'admin-base/common/toaster'
 import { ButtonLink } from 'admin-base/common/components/Link'
+import { ShareIcon } from 'react-icecream-2/icons'
 
 import { timeFormatter } from 'utils/time'
 import { SolutionId, wwwSolutionPathPrefix } from 'constants/solution'
 import { getSolutionPageUrl } from 'transforms/solution'
 import SolutionApis, { SolutionInfo } from 'apis/solution'
+import { wwwHost } from 'constants/env'
 
 import styles from './style.m.less'
 
@@ -75,7 +77,21 @@ export default function useSolutionList(editMetaInfo: (solutionId: SolutionId) =
       <SolutionTable.Column
         title="地址"
         accessor="path"
-        render={path => wwwSolutionPathPrefix + path}
+        render={path => (
+          <>
+            <span>{wwwSolutionPathPrefix}{path} </span>
+            <Tooltip title="新 Tab 页访问">
+              <ButtonLink
+                type="link"
+                size="small"
+                to={wwwHost + wwwSolutionPathPrefix + path}
+                target="_blank"
+              >
+                <ShareIcon />
+              </ButtonLink>
+            </Tooltip>
+          </>
+        )}
       />
       <SolutionTable.Column
         title="名称"
