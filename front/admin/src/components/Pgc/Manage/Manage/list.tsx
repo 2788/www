@@ -156,12 +156,15 @@ export function usePgcList() {
       <PgcTable.Column
         title="内容 ID"
         accessor="id"
+        render={id => (<div className={style.id}>{id}</div>)}
       />
       <PgcTable.Column
         title="种类"
         accessor="type"
         filter={contentTypeColumnFilter}
-        render={contentType => contentTypeTextMap[contentType]}
+        render={contentType => (
+          <div className={style.type}>{contentTypeTextMap[contentType]}</div>
+        )}
       />
       <PgcTable.Column
         title="标题"
@@ -172,12 +175,16 @@ export function usePgcList() {
         title="类别"
         id="draft.category"
         filter={contentCategoryColumnFilter}
-        render={(_, { draft: { category } }) => contentCategoryTextMap[category]}
+        render={(_, { draft: { category } }) => (
+          <div className={style.category}>{contentCategoryTextMap[category]}</div>
+        )}
       />
       <PgcTable.Column
         title="状态"
         id="status"
-        render={(_, record) => (isUpToDate(record) ? '已发布' : '草稿')}
+        render={(_, record) => (
+          <div className={style.status}>{isUpToDate(record) ? '已发布' : '草稿'}</div>
+        )}
       />
       <PgcTable.Column
         title="更新时间"

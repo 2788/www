@@ -94,7 +94,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={productModuleTitleMap[ProductModule.Function]}
-      width={620}
+      width={570}
       layout="horizontal"
       labelWidth="4em"
       visible={props.visible}
@@ -124,7 +124,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                 <TextInput state={itemState.$.title} />
               </FormItem>
               <FormItem label="副标题" required>
-                <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 3 }} />
+                <TextArea state={itemState.$.desc} maxCount={70} textareaProps={{ rows: 4 }} />
               </FormItem>
               <FormItem label={<div className={styles.urlLabel}>立即体验<br />跳转地址</div>}>
                 <WwwUrlPath state={itemState.$.url} />

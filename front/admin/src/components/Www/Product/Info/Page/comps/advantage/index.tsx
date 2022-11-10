@@ -88,7 +88,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={productModuleTitleMap[ProductModule.Advantage]}
-      width={720}
+      width={685}
       layout="horizontal"
       labelWidth="4em"
       visible={props.visible}

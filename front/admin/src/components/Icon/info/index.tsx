@@ -36,7 +36,7 @@ function getBaseValue(iconInfo: BaseIconInfo | undefined) {
 function createState(icons: BaseIconInfo[], current?: BaseIconInfo) {
   const init = getBaseValue(current)
 
-  const typeState = new DebouncedFieldState(init.file.type)
+  const typeState = new DebouncedFieldState(init.file.type) // TODO: type 自动推断
   const state = new FormState({
     id: new DebouncedFieldState(init.id).withValidator(id => {
       if (id.trim() === '') {
@@ -130,8 +130,8 @@ const IconModalForm = observer(function _IconModalForm(props: Props) {
       <FormItem label="图片" required>
         <div className={styles.inputGroup}>
           <Select state={fields.file.$.type} className={styles.inputGroupSelect}>
-            <SelectOption<BaseIconInfo['type']> value="url">普通图片</SelectOption>
             <SelectOption<BaseIconInfo['type']> value="svg-inline">SVG</SelectOption>
+            <SelectOption<BaseIconInfo['type']> value="url">普通图片</SelectOption>
           </Select>
           {fields.file.$.type.value === 'svg-inline' && (
             <SvgFileInput state={fields.file.$.content} />

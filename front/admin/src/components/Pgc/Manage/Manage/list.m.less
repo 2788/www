@@ -3,10 +3,24 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-@import "~admin-base/common/utils/style/index.less";
+@import "~utils/common.less";
+
+.id {
+  .common-line-wrap();
+  min-width: 100px;
+}
+
+.type {
+  min-width: 4em;
+}
+
+.category,
+.status {
+  .common-line-nowrap();
+}
 
 .operations {
-  > * + * {
-    margin-left: @icecream-gap-xs;
+  > *  {
+    margin-right: @icecream-gap-xs;
   }
 }

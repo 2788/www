@@ -18,9 +18,10 @@ export function createState(value: string): State {
 
 interface IProps {
   state: State
+  colors?: string[]
 }
 
-export default observer(function ColorPicker({ state }: IProps) {
+export default observer(function ColorPicker({ state, colors }: IProps) {
   const [display, setDisplay] = useState(false)
   return (
     <div>
@@ -32,7 +33,12 @@ export default observer(function ColorPicker({ state }: IProps) {
         && (
           <div className={style.popover}>
             <div className={style.cover} onClick={() => setDisplay(false)} />
-            <SketchPicker className={style.sketch} color={state.value} onChange={val => state.onChange(val.hex)} />
+            <SketchPicker
+              className={style.sketch}
+              color={state.value}
+              onChange={val => state.onChange(val.hex)}
+              presetColors={colors}
+            />
           </div>)
       }
     </div >

@@ -12,8 +12,8 @@ import { DrawerForm, FormItem, useFormstateX, TextInput } from 'react-icecream-f
 import { useModalLike } from 'utils/async'
 import { ProductComponentBannerProps, BannerButton, platformMap } from 'constants/product/page/comp-banner'
 import { ProductModule, productModuleTitleMap } from 'constants/product/page'
-import { UploadImgInput, createState as createUploadImgState } from 'components/common/Upload/Img'
 import { ProductInfo } from 'apis/product/info'
+import Banner, { createState as createBannerBaseState } from 'components/common/Banner'
 
 import { createPcState, renderPc } from './pc'
 import { createMobileState, renderMobile } from './mobile'
@@ -84,11 +84,17 @@ function createButtonsState(buttons: BannerButton[]) {
   )
 }
 
-function createState(banner: ProductComponentBannerProps | null | undefined) {
-  return new FormState({
-    bgImgUrl: createUploadImgState(banner?.bgImgUrl ?? ''),
-    buttons: createButtonsState(banner?.buttons ?? [])
+function createState(initBanner: ProductComponentBannerProps | null | undefined) {
+  const state = new FormState({
+    banner: createBannerBaseState(initBanner ?? undefined),
+    buttons: createButtonsState(initBanner?.buttons ?? [])
   })
+
+  return new TransformedState(
+    state,
+    ({ banner, buttons }) => ({ ...banner, buttons }),
+    ({ buttons, ...banner }) => ({ banner, buttons })
+  )
 }
 
 export default function useCompBanner(productInfo: ProductInfo | undefined) {
@@ -96,24 +102,15 @@ export default function useCompBanner(productInfo: ProductInfo | undefined) {
 
   const state = useFormstateX(createState, [visible ? productInfo?.banner : undefined])
 
-  function submit() {
-    const { bgImgUrl, ...value } = state.value
-    const banner: ProductComponentBannerProps = {
-      ...value,
-      ...(bgImgUrl && ({ bgImgUrl }))
-    }
-    resolve(banner)
-  }
-
   function addButton() {
     const button: BannerButton = {
       text: ''
     }
-    state.$.buttons.$.append(button)
+    state.$.$.buttons.$.append(button)
   }
 
   function removeButton(index: number) {
-    state.$.buttons.$.remove(index)
+    state.$.$.buttons.$.remove(index)
   }
 
   function renderButton(buttonState: ReturnType<typeof createButtonState>, index: number) {
@@ -153,26 +150,20 @@ export default function useCompBanner(productInfo: ProductInfo | undefined) {
       labelWidth="4em"
       visible={visible}
       state={state}
-      onSubmit={submit}
+      onSubmit={() => { resolve(state.value) }}
       onCancel={() => { reject() }}
     >
-      <FormItem label="背景图">
-        <UploadImgInput
-          state={state.$.bgImgUrl}
-          previewType="cover"
-          width={5120}
-          height={960}
-          maxSize={1024}
-        />
-      </FormItem>
-      <FormItem label="产品名" tip="在产品基本信息里配置">
+      <FormItem label="产品名" tip="在产品基本信息里配置" labelVerticalAlign="text">
         <p className={styles.desc}>{productInfo.name}</p>
       </FormItem>
-      <FormItem label="产品描述" tip="在产品基本信息的长描述里配置">
+      <FormItem label="产品描述" tip="在产品基本信息的长描述里配置" labelVerticalAlign="text">
         <p className={styles.desc}>{productInfo.desc.detail}</p>
       </FormItem>
-      <FormItem label="按钮" required state={state.$.buttons}>
-        {state.$.buttons.$.$.map(renderButton)}
+      <FormItem>
+        <Banner state={state.$.$.banner} />
+      </FormItem>
+      <FormItem label="按钮" required state={state.$.$.buttons}>
+        {state.$.$.buttons.$.$.map(renderButton)}
         <Button icon={<AddIcon />} onClick={() => { addButton() }} />
       </FormItem>
     </DrawerForm>

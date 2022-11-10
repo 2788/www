@@ -118,7 +118,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                 <TextInput state={itemState.$.title} />
               </FormItem>
               <FormItem label="描述" required>
-                <TextArea state={itemState.$.desc} maxCount={60} textareaProps={{ rows: 3 }} />
+                <TextArea state={itemState.$.desc} maxCount={60} textareaProps={{ rows: 4 }} />
               </FormItem>
               <FormItem label="图片" required>
                 <UploadImgInput

@@ -52,7 +52,15 @@ export interface BannerButton {
 }
 
 export type ProductComponentBannerProps = ProductComponentProps<{
-  bgImgUrl?: string
+  /** 主题：深色 / 浅色 */
+  light: boolean
+  bgColor: string
+  bgImgUrl: {
+    /** 默认图片，PC 端使用，其他端亦可 */
+    large: string
+    /** 针对移动端、小程序等场景优化，非必需 */
+    small?: string
+  }
   buttons: BannerButton[]
 }>
 

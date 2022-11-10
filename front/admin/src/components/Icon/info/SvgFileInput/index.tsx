@@ -62,7 +62,7 @@ export default observer(function SvgFileInput({ state }: Props) {
               uploadBucketKeyRule="icon"
               beforeUpload={updateFileContent}
             >
-              <Button type="link" className={style.btn}>选择文件</Button>
+              <Button type="link" className={style.btn}>上传</Button>
             </CommonUpload>
           </Loading>
           <SvgIconPreview svg={state.value} />

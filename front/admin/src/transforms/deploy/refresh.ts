@@ -3,11 +3,11 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-import { ValidationResult } from 'formstate-x'
+import { ValidationResult, ValidationErrorObject } from 'formstate-x'
 
 import { pathRule } from 'constants/deploy/refresh'
 
-export function validatePath(path: string): ValidationResult {
+export function validatePath(path: string): Exclude<ValidationResult, ValidationErrorObject> {
   if (path === '') { // 首页
     return
   }

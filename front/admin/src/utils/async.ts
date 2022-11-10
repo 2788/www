@@ -11,6 +11,16 @@ export function isPromise<T = unknown>(obj: any): obj is Promise<T> {
   return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function'
 }
 
+export function getPromise<T>() {
+  let resolve!: (value: T | PromiseLike<T>) => void
+  let reject!: (reason?: unknown) => void
+  const promise = new Promise<T>((resolveFn, rejectFn) => {
+    resolve = resolveFn
+    reject = rejectFn
+  })
+  return { resolve, reject, promise }
+}
+
 export function usePromise<T>() {
   const resolveRef = useRef<(value: T | PromiseLike<T>) => void>(() => undefined)
   const rejectRef = useRef<(reason?: unknown) => void>(() => undefined)

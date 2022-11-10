@@ -1,10 +1,11 @@
-import React, { PropsWithChildren, useState, useMemo } from 'react'
+import React, { PropsWithChildren, ReactNode, useState, useMemo } from 'react'
 import { observer } from 'mobx-react'
 import { RcFile } from 'react-icecream-1/lib/upload'
 import { Button, Loading, Dialog, DialogFooter } from 'react-icecream-2'
 import { IState, FieldState } from 'formstate-x'
 import { InputWrapper } from 'react-icecream-form'
 
+import { gcd } from 'utils/math'
 import ImgPreview from 'components/common/ImgPreview'
 
 import CommonUpload, { IProps as CommonUploadProps } from '..'
@@ -24,6 +25,7 @@ export interface IProps extends Pick<CommonUploadProps, 'uploadBucketKeyRule'> {
   height?: number
   /** 图片规格说明，默认为跟 width height maxSize 等相匹配的尺寸说明 */
   desc?: string
+  children?: ReactNode
 }
 
 export type State = IState<string>
@@ -127,8 +129,3 @@ export const UploadImgInput = observer(function _UploadImgInput(props: IProps) {
     </InputWrapper>
   )
 })
-
-// 求最大公约数
-function gcd(m: number, n: number): number {
-  return n === 0 ? m : gcd(n, m % n)
-}

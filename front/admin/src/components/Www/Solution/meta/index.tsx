@@ -202,6 +202,7 @@ export default function useMetaInfo() {
   const metaView = (
     <DrawerForm
       title={isNew ? '新增' : '修改'}
+      width={458}
       layout="horizontal"
       labelWidth="5em"
       state={state}
@@ -227,10 +228,10 @@ export default function useMetaInfo() {
           <SelectTags state={state.$.keywords} />
         </FormItem>
         <FormItem label="短描述" required tip="用于导航栏等">
-          <TextArea state={state.$.desc.$.brief} maxCount={40} textareaProps={{ rows: 2 }} />
+          <TextArea state={state.$.desc.$.brief} maxCount={40} textareaProps={{ rows: 3 }} />
         </FormItem>
         <FormItem label="长描述" required tip="用于解决方案页 banner、解决方案页 TDK 等">
-          <TextArea state={state.$.desc.$.detail} maxCount={124} textareaProps={{ rows: 5 }} />
+          <TextArea state={state.$.desc.$.detail} maxCount={124} textareaProps={{ rows: 7 }} />
         </FormItem>
         <FormItem label="线框图标" required>
           <SelectIcon state={state.$.icon.$.line} />

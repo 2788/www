@@ -3,11 +3,12 @@
  * @author lizhifeng <lizhifeng@qiniu.com>
  */
 
-@import "~admin-base/common/utils/style/index.less";
+@import "~utils/common.less";
 
 .list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   gap: @icecream-gap-md;
 
   li {
@@ -61,6 +62,7 @@
     h6 {
       font-size: inherit;
       font-weight: 400;
+      .common-line-nowrap();
     }
   }
 }

@@ -132,7 +132,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
   return (
     <DrawerForm
       title={solutionModuleTitleMap[SolutionModule.Scene]}
-      width={700}
+      width={725}
       layout="horizontal"
       labelWidth="4em"
       visible={props.visible}
@@ -194,7 +194,7 @@ const CompDrawerForm = observer(function _CompDrawerForm(props: Props) {
                         <TextInput state={problemState.$.name} />
                       </FormItem>
                       <FormItem label="描述" required>
-                        <TextArea state={problemState.$.desc} maxCount={120} textareaProps={{ rows: 5 }} />
+                        <TextArea state={problemState.$.desc} maxCount={120} textareaProps={{ rows: 7 }} />
                       </FormItem>
                     </FormItem>
                   </Fragment>
