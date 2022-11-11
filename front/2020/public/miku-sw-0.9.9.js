@@ -17,6 +17,18 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __objRest = (source, exclude) => {
+  var target = {};
+  for (var prop in source)
+    if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
+      target[prop] = source[prop];
+  if (source != null && __getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(source)) {
+      if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
+        target[prop] = source[prop];
+    }
+  return target;
+};
 var __publicField = (obj, key, value) => {
   __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
   return value;
@@ -41,9 +53,280 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
-var mikuPerf = function(exports) {
+(function() {
   "use strict";
-  const logApiPrefix = "https://log.qiniuapi.com";
+  function uuid() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+    const charNum = chars.length;
+    let text = "";
+    for (let i = 0; i < 20; i++) {
+      text += chars[Math.floor(Math.random() * charNum)];
+    }
+    return text;
+  }
+  function mapObj(obj, mapper) {
+    const o = {};
+    Object.keys(obj).forEach((k) => {
+      o[k] = mapper(obj[k]);
+    });
+    return o;
+  }
+  class TimeoutError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "TimeoutError");
+    }
+  }
+  function waitTimeout(timeout, msg) {
+    return new Promise((_, reject) => {
+      setTimeout(() => reject(new TimeoutError(msg + " timeout")), timeout);
+    });
+  }
+  class AbortError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "AbortError");
+    }
+  }
+  function waitAbort(signal) {
+    return new Promise((_, reject) => {
+      if (signal.aborted) {
+        reject(signal.reason);
+      } else {
+        signal.addEventListener("abort", () => {
+          reject(signal.reason);
+        });
+      }
+    });
+  }
+  const defaultImagePattern = /\.(jpe?g|png|gif|webp|svg|bmp|ico|tiff|avif|svga)$/;
+  const defaultMediaPattern = /\.(3gp|aac|flac|mpe?g|mp3|mp4|m4a|m4v|m4p|oga|ogg|ogv|wav|webm|mov|m4s)$/;
+  const defaultPatterns = {
+    image: [defaultImagePattern],
+    media: [defaultMediaPattern],
+    other: []
+  };
+  function matchPatterns(urlObj, patterns) {
+    urlObj.search = "";
+    urlObj.hash = "";
+    const urlWithoutQueryHash = urlObj.toString();
+    return Object.values(patterns).some(
+      (rs) => (rs != null ? rs : []).some((r) => r.test(urlWithoutQueryHash))
+    );
+  }
+  function removeQueryHash(url) {
+    const urlObj = new URL(url);
+    urlObj.search = "";
+    urlObj.hash = "";
+    return urlObj.toString();
+  }
+  function getErrInfo(err) {
+    if (err instanceof Error) {
+      return { err_msg: err.name, err_desc: err.message };
+    }
+    return { err_msg: "Unknown", err_desc: err + "" };
+  }
+  function timeMinus(t1, t2) {
+    if (t1 == null || t1 === -1 || t2 == null || t2 === -1)
+      return -1;
+    return (t1 - t2) / 1e3;
+  }
+  function parseHost(hostname, defaultPort = 80) {
+    const [host, portStr] = hostname.split(":");
+    const port = portStr ? parseInt(portStr, 10) : defaultPort;
+    return [host, port];
+  }
+  let enabled = false;
+  function getDebug(namespace2) {
+    return (...args) => {
+      if (enabled)
+        console.debug(`[${namespace2}] [${(Date.now() / 1e3).toFixed(3)}]`, ...args);
+    };
+  }
+  function enableDebug() {
+    enabled = true;
+  }
+  class Emitter {
+    constructor() {
+      __publicField(this, "map", /* @__PURE__ */ new Map());
+    }
+    on(type, handler) {
+      var _a;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
+      const newHandlers = [...handlers, handler];
+      this.map.set(type, newHandlers);
+      return () => this.off(type, handler);
+    }
+    once(type, handler) {
+      const off = this.on(type, (e) => {
+        off();
+        handler(e);
+      });
+      return off;
+    }
+    off(type, handler) {
+      var _a;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
+      const newHandlers = handlers.filter((h) => h !== handler);
+      this.map.set(type, newHandlers);
+    }
+    emit(...args) {
+      var _a;
+      const [type, event] = args;
+      const handlers = (_a = this.map.get(type)) != null ? _a : [];
+      handlers.forEach((handler) => {
+        handler(event);
+      });
+    }
+    dispose() {
+      this.map.clear();
+    }
+  }
+  const scope$2 = self;
+  const debug$9 = getDebug("utils/sw/clients");
+  class SWClients {
+    constructor(swScope = scope$2) {
+      __publicField(this, "clientIds", []);
+      __publicField(this, "removed", /* @__PURE__ */ new Set());
+      __publicField(this, "emitter", new Emitter());
+      this.swScope = swScope;
+    }
+    add(id) {
+      if (this.clientIds.includes(id))
+        return;
+      if (this.removed.has(id))
+        return;
+      this.clientIds.push(id);
+      debug$9("add", id, this.clientIds);
+    }
+    remove(id) {
+      const i = this.clientIds.indexOf(id);
+      if (i < 0)
+        return;
+      this.clientIds.splice(i, 1);
+      this.removed.add(id);
+      this.emitter.emit("remove", id);
+      debug$9("remove", id, this.clientIds);
+    }
+    set(newIds) {
+      const oldIds = this.clientIds;
+      const kept = [];
+      const removed = [];
+      oldIds.forEach((o) => {
+        const idxInNew = newIds.indexOf(o);
+        if (idxInNew >= 0) {
+          kept.push(o);
+          newIds.splice(idxInNew, 1);
+        } else {
+          removed.push(o);
+        }
+      });
+      this.clientIds = [...kept, ...newIds];
+      removed.forEach((r) => {
+        this.emitter.emit("remove", r);
+      });
+      if (removed.length > 0 || newIds.length > 0) {
+        debug$9("set", this.clientIds);
+      }
+    }
+    getAllIds() {
+      return this.clientIds;
+    }
+    getAll() {
+      return __async(this, null, function* () {
+        const clients = (yield this.swScope.clients.matchAll({ type: "window" })).slice();
+        clients.reverse();
+        this.set(clients.map((c) => c.id));
+        return this.clientIds.map((id) => clients.find((c) => c.id === id));
+      });
+    }
+    get(id) {
+      return __async(this, null, function* () {
+        const client = yield this.swScope.clients.get(id);
+        if (client != null)
+          this.add(id);
+        else
+          this.remove(id);
+        return client;
+      });
+    }
+    onRemove(cb) {
+      return this.emitter.on("remove", cb);
+    }
+    whenRemoved(id, cb) {
+      if (!this.clientIds.includes(id))
+        return;
+      const unlisten = this.emitter.on("remove", (removedId) => {
+        if (removedId !== id)
+          return;
+        unlisten();
+        cb();
+      });
+    }
+  }
+  const swClients = new SWClients();
+  function httpGetContentLength(headers) {
+    const contentSize = headers.get("Content-Length");
+    if (!contentSize)
+      return null;
+    return parseInt(contentSize, 10);
+  }
+  function httpGetContentRange(headers) {
+    const contentRange = headers.get("Content-Range");
+    if (contentRange == null)
+      return null;
+    return parseContentRange(contentRange);
+  }
+  function parseContentRange(v) {
+    const normalized = v.trim().toLowerCase();
+    const [unit, rest] = normalized.split(/\s+/);
+    if (unit !== "bytes") {
+      throw new Error(`Unit must be bytes: ${v}`);
+    }
+    const [range, totalSizeStr] = rest.split("/");
+    const totalSize = totalSizeStr === "*" ? null : atoi(totalSizeStr);
+    const [start, end] = (range.includes("-") ? range.split("-") : [null, null]).map((v2) => atoi(v2));
+    return { totalSize, start, end };
+  }
+  function stringifyContentRange(v) {
+    const range = v.start != null && v.end != null ? `${v.start}-${v.end}` : "*";
+    const size = v.totalSize == null ? "*" : v.totalSize + "";
+    return `bytes ${range}/${size}`;
+  }
+  function atoi(v) {
+    return !v ? null : Number(v);
+  }
+  function httpGetRange(headers) {
+    const range = headers.get("Range");
+    if (range == null)
+      return null;
+    return parseRange(range);
+  }
+  function isRangeFull(range) {
+    return range.start === 0 && range.end == null;
+  }
+  function parseRange(v) {
+    const normalized = v.trim().toLowerCase();
+    if (!normalized.startsWith("bytes=")) {
+      throw new Error(`Unit must be bytes: ${v}`);
+    }
+    if (normalized.includes(",")) {
+      throw new Error(`Multiple range: ${v}`);
+    }
+    const [, startStr, endStr] = /(\d*)-(\d*)/.exec(normalized) || [];
+    if (!startStr && !endStr) {
+      throw new Error(`Invalid range values: ${v}`);
+    }
+    if (!startStr) {
+      throw new Error("Suffix range not supported");
+    }
+    const [start, end] = [startStr, endStr].map((v2) => atoi(v2));
+    return { start, end };
+  }
+  function stringifyRange(range) {
+    var _a, _b;
+    return `bytes=${(_a = range.start) != null ? _a : 0}-${(_b = range.end) != null ? _b : ""}`;
+  }
   function queryStringify(params) {
     return Object.keys(params).map(
       (k) => [k, params[k]]
@@ -53,44 +336,157 @@ var mikuPerf = function(exports) {
       ([k, v]) => v === null ? k : [k, v].map(encodeURIComponent).join("=")
     ).join("&");
   }
-  class Mutex {
-    constructor() {
-      __publicField(this, "locked", false);
-      __publicField(this, "waitings", []);
-      this.unlock = this.unlock.bind(this);
-    }
-    lock() {
-      return __async(this, null, function* () {
-        if (!this.locked) {
-          this.locked = true;
-          return this.unlock;
-        }
-        yield new Promise((resolve) => {
-          this.waitings.push(resolve);
-        });
-        return this.unlock;
-      });
-    }
-    unlock() {
-      if (this.waitings.length === 0) {
-        this.locked = false;
-        return;
+  function getRespBodyLength(method, status, reqHeaders, respHeaders) {
+    if (method === "HEAD")
+      return [false];
+    if (status >= 100 && status < 200)
+      return [false];
+    if (status === 204 || status === 304)
+      return [false];
+    if (method === "CONNECT" && status >= 200 && status < 300)
+      return [false];
+    const transferEncodingVal = reqHeaders.get("Transfer-Encoding");
+    if (transferEncodingVal != null && transferEncodingVal.length > 0)
+      return [true, null];
+    const contentLengthVal = respHeaders.get("Content-Length");
+    if (contentLengthVal != null) {
+      const contentLength = parseInt(contentLengthVal, 10);
+      if (!Number.isNaN(contentLength)) {
+        if (contentLength === 0)
+          return [false];
+        return [true, contentLength];
       }
-      const waiting = this.waitings.shift();
-      waiting();
     }
-    runExclusive(job) {
-      return __async(this, null, function* () {
-        const unlock = yield this.lock();
-        try {
-          return yield job();
-        } catch (e) {
-          throw e;
-        } finally {
-          unlock();
-        }
+    return [true, null];
+  }
+  const non_ios_8859_1Code = /[^\u0000-\u00ff]/;
+  function encodeHeaderValue(value) {
+    return non_ios_8859_1Code.test(value) ? "REPLACED_BY_Miku_SEE_Miku_utils_http_encodeHeaderValue" : value;
+  }
+  function createHeaders(init) {
+    if (init instanceof Headers) {
+      const o = {};
+      init.forEach((v, k) => {
+        o[k] = encodeHeaderValue(v);
       });
+      init = o;
     }
+    if (Array.isArray(init)) {
+      const o = {};
+      init.forEach(([v, k]) => {
+        o[k] = encodeHeaderValue(v);
+      });
+      init = o;
+    }
+    return new Headers(init);
+  }
+  function getFileSize(response) {
+    var _a;
+    let fileSize = null;
+    if (response.status === 200) {
+      const contentLengthStr = response.headers.get("Content-Length");
+      const contentLength = contentLengthStr != null ? parseInt(contentLengthStr, 10) : null;
+      fileSize = contentLength;
+    }
+    if (response.status === 206) {
+      const contentRange = httpGetContentRange(response.headers);
+      fileSize = (_a = contentRange == null ? void 0 : contentRange.totalSize) != null ? _a : null;
+    }
+    return fileSize;
+  }
+  function slice(stream, range) {
+    var _a;
+    const reader = stream.getReader();
+    const resultStart = (_a = range[0]) != null ? _a : 0;
+    const resultEnd = range[1];
+    const newStream = new ReadableStream({
+      start: (ctrl) => __async(this, null, function* () {
+        let valueStart = 0;
+        while (true) {
+          const { done, value } = yield reader.read();
+          if (done) {
+            ctrl.close();
+            break;
+          }
+          const valueEnd = valueStart + value.byteLength;
+          if (valueEnd > resultStart) {
+            let resultValue = value;
+            const sliceStart = resultStart > valueStart ? resultStart - valueStart : 0;
+            const sliceEnd = resultEnd != null && resultEnd < valueEnd ? resultEnd - valueStart : void 0;
+            if (sliceStart !== 0 || sliceEnd !== void 0) {
+              resultValue = value.slice(sliceStart, sliceEnd);
+            }
+            ctrl.enqueue(resultValue);
+            if (resultEnd != null && valueEnd >= resultEnd) {
+              reader.cancel("Cancelled by slice for target range met");
+              ctrl.close();
+              break;
+            }
+          }
+          valueStart = valueEnd;
+        }
+      }),
+      cancel: (reason) => reader.cancel(reason)
+    });
+    return newStream;
+  }
+  function withReadResult(source) {
+    let size = 0;
+    const transform = new TransformStream({
+      transform: (chunk, ctrl) => {
+        size += chunk.byteLength;
+        ctrl.enqueue(chunk);
+      }
+    });
+    const resultPromise = source.pipeTo(transform.writable).then(
+      () => ({ size, success: true }),
+      (e) => ({ size, success: false, error: e })
+    );
+    return [transform.readable, resultPromise];
+  }
+  function teeWithMain(source) {
+    let minorCtrl;
+    let minorCancelled = false;
+    const minorStream = new ReadableStream({
+      start: (ctrl) => {
+        minorCtrl = ctrl;
+      },
+      cancel: () => {
+        minorCancelled = true;
+      }
+    });
+    const sourceReader = source.getReader();
+    let mainCancelled = false;
+    const mainStream = new ReadableStream({
+      start: (ctrl) => __async(this, null, function* () {
+        try {
+          while (true) {
+            const { value, done } = yield sourceReader.read();
+            if (mainCancelled)
+              return;
+            if (done) {
+              ctrl.close();
+              if (!minorCancelled)
+                minorCtrl.close();
+              return;
+            }
+            ctrl.enqueue(value);
+            if (!minorCancelled)
+              minorCtrl.enqueue(value);
+          }
+        } catch (e) {
+          ctrl.error(e);
+          if (!minorCancelled)
+            minorCtrl.error(e);
+        }
+      }),
+      cancel: (reason) => __async(this, null, function* () {
+        mainCancelled = true;
+        yield sourceReader.cancel(reason);
+        minorCtrl.error(reason);
+      })
+    });
+    return { main: mainStream, minor: minorStream };
   }
   var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
   function getAugmentedNamespace(n) {
@@ -115,7 +511,7 @@ var mikuPerf = function(exports) {
     return a;
   }
   var uaParser$1 = { exports: {} };
-  (function(module, exports2) {
+  (function(module, exports) {
     (function(window2, undefined$1) {
       var LIBVERSION = "1.0.2", EMPTY = "", UNKNOWN = "?", FUNC_TYPE = "function", UNDEF_TYPE = "undefined", OBJ_TYPE = "object", STR_TYPE = "string", MAJOR = "major", MODEL = "model", NAME = "name", TYPE = "type", VENDOR = "vendor", VERSION = "version", ARCHITECTURE = "architecture", CONSOLE = "console", MOBILE = "mobile", TABLET = "tablet", SMARTTV = "smarttv", WEARABLE = "wearable", EMBEDDED = "embedded", UA_MAX_LENGTH = 255;
       var AMAZON = "Amazon", APPLE = "Apple", ASUS = "ASUS", BLACKBERRY = "BlackBerry", BROWSER = "Browser", CHROME = "Chrome", EDGE = "Edge", FIREFOX = "Firefox", GOOGLE = "Google", HUAWEI = "Huawei", LG = "LG", MICROSOFT = "Microsoft", MOTOROLA = "Motorola", OPERA = "Opera", SAMSUNG = "Samsung", SONY = "Sony", XIAOMI = "Xiaomi", ZEBRA = "Zebra", FACEBOOK = "Facebook";
@@ -1005,9 +1401,9 @@ var mikuPerf = function(exports) {
       UAParser.ENGINE = UAParser.OS = enumerize([NAME, VERSION]);
       {
         if (module.exports) {
-          exports2 = module.exports = UAParser;
+          exports = module.exports = UAParser;
         }
-        exports2.UAParser = UAParser;
+        exports.UAParser = UAParser;
       }
       var $ = typeof window2 !== UNDEF_TYPE && (window2.jQuery || window2.Zepto);
       if ($ && !$.ua) {
@@ -1027,25 +1423,595 @@ var mikuPerf = function(exports) {
     })(typeof window === "object" ? window : commonjsGlobal);
   })(uaParser$1, uaParser$1.exports);
   const uaParser = uaParser$1.exports;
-  const version = "0.9.8";
-  function getEnv() {
-    var _a, _b;
-    const { os, device, browser } = uaParser(navigator.userAgent);
-    let location;
-    if (typeof window !== "undefined") {
-      location = window.location;
-    } else if (typeof self !== void 0) {
-      location = self.location;
+  uaParser(navigator.userAgent);
+  let supportResponseWithStreamResult;
+  function supportResponseWithStream() {
+    if (supportResponseWithStreamResult != null)
+      return supportResponseWithStreamResult;
+    try {
+      new Response(new ReadableStream());
+      supportResponseWithStreamResult = true;
+    } catch (e) {
+      supportResponseWithStreamResult = false;
     }
-    return {
-      os: `${os.name}_${os.version}`,
-      browser: `${browser.name}_${browser.version}`,
-      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
-      sdk: `Web SDK v${version}`,
-      dev_model: (_b = device.model) != null ? _b : "",
-      dev_id: ""
-    };
+    return supportResponseWithStreamResult;
   }
+  function supportStreamOperation() {
+    if (typeof TransformStream === "undefined")
+      return false;
+    if (!supportResponseWithStream())
+      return false;
+    return true;
+  }
+  class HttpRequest {
+    constructor(url, { method, headers, signal, body: body2 }) {
+      __publicField(this, "url");
+      __publicField(this, "method");
+      __publicField(this, "headers");
+      __publicField(this, "body");
+      __publicField(this, "signal");
+      this.url = url;
+      this.method = method != null ? method : "GET";
+      this.headers = new Headers(headers);
+      this.body = body2 != null ? body2 : null;
+      this.signal = signal != null ? signal : new AbortController().signal;
+    }
+  }
+  class HttpResponse {
+    constructor(body2, { status, statusText, headers, underlayer }) {
+      __publicField(this, "status");
+      __publicField(this, "statusText");
+      __publicField(this, "headers");
+      __publicField(this, "body");
+      __publicField(this, "bodyReadResult");
+      __publicField(this, "underlayer");
+      this.status = status != null ? status : 200;
+      this.statusText = statusText != null ? statusText : "";
+      this.headers = createHeaders(headers);
+      this.underlayer = underlayer;
+      if (body2 == null || !supportStreamOperation()) {
+        this.body = body2;
+        this.bodyReadResult = Promise.resolve({ success: true, size: 0 });
+      } else {
+        const [newBody, bodyReadResult] = withReadResult(body2);
+        this.body = newBody;
+        this.bodyReadResult = bodyReadResult;
+      }
+    }
+  }
+  function createResponseFromNative(nativeResponse) {
+    const { status, statusText, headers, body: body2 } = nativeResponse;
+    return new HttpResponse(body2, { status, statusText, headers, underlayer: nativeResponse });
+  }
+  class UnexpectedHttpStatusError extends Error {
+    constructor(response) {
+      super(`Unexpected HTTP status: ${response.status} ${response.statusText}`);
+      __publicField(this, "name", "UnexpectedHttpStatusError");
+      this.response = response;
+    }
+  }
+  const messageEmitter = new Emitter();
+  let scope$1;
+  if (typeof self !== "undefined") {
+    scope$1 = self;
+    scope$1.addEventListener("message", (e) => messageEmitter.emit("message", e));
+  }
+  class WindowClientError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "WindowClientError");
+    }
+  }
+  const icePwd = "pR0mHGTJGIoVehu/AQCGTNeY";
+  const defaultWebRTCPort = 8443;
+  const useTcp = true;
+  const debug$8 = getDebug("http/webrtc/how");
+  class HoW {
+    constructor(pcConnectTimeout = 10 * 1e3, dcOpenTimeout = 3 * 1e3) {
+      __publicField(this, "pcMap", /* @__PURE__ */ new Map());
+      this.pcConnectTimeout = pcConnectTimeout;
+      this.dcOpenTimeout = dcOpenTimeout;
+    }
+    makePc(signal, target, fingerprint) {
+      return __async(this, null, function* () {
+        if (signal.aborted)
+          throw signal.reason;
+        const pc = new RTCPeerConnection();
+        const channel = pc.createDataChannel("test");
+        const offer = yield pc.createOffer();
+        channel.close();
+        if (offer.sdp == null)
+          throw new Error("TODO: empty sdp");
+        offer.sdp = offer.sdp.replace(/a=ice-pwd:.+/, `a=ice-pwd:${icePwd}`);
+        pc.setLocalDescription(offer);
+        const [targetIP, targetPort] = parseHost(target, 0);
+        const webrtcPort = targetPort + defaultWebRTCPort;
+        const answer = {
+          type: "answer",
+          sdp: makeAnswerSdp(targetIP, webrtcPort, fingerprint, useTcp)
+        };
+        pc.setRemoteDescription(answer);
+        yield Promise.race([
+          waitPCConnected(signal, pc, target),
+          waitTimeout(this.pcConnectTimeout, "PeerConnection connect")
+        ]).catch((e) => {
+          pc.close();
+          throw e;
+        });
+        return pc;
+      });
+    }
+    getPc(signal, target, fingerprint) {
+      return __async(this, null, function* () {
+        if (this.pcMap.has(target)) {
+          const pc = yield this.pcMap.get(target);
+          if (pc.connectionState === "connected")
+            return pc;
+        }
+        const promisedPc = this.makePc(signal, target, fingerprint);
+        this.pcMap.set(target, promisedPc);
+        promisedPc.catch((e) => {
+          this.pcMap.delete(target);
+        });
+        return promisedPc;
+      });
+    }
+    fetch(ctx, id, request, fingerprint) {
+      return __async(this, null, function* () {
+        debug$8("fetch", request.url, "with id", id);
+        const target = new URL(request.url).host;
+        const pc = yield this.getPc(request.signal, target, fingerprint);
+        ctx.set("hoWPeerConnectionConnectAt", Date.now());
+        const processor = new HoWRequest(pc, ctx, id, request, this.dcOpenTimeout);
+        const resp = yield processor.start();
+        return resp;
+      });
+    }
+    dispose() {
+      this.pcMap.forEach((promisedPc) => promisedPc.then((pc) => pc.close()));
+      this.pcMap.clear();
+    }
+  }
+  function makeAnswerSdp(targetIP, targetPort, fingerprint, tcp = false) {
+    const candidateLine = tcp ? `a=candidate:2932249642 1 tcp 2130706431 ${targetIP} ${targetPort} typ host tcptype passive` : `a=candidate:2932249642 1 udp 2130706431 ${targetIP} ${targetPort} typ host`;
+    const ufrag = uuid();
+    return `v=0
+o=- 4679586637491621141 1661250920 IN IP4 0.0.0.0
+s=-
+t=0 0
+a=fingerprint:sha-256 ${fingerprint}
+a=ice-lite
+a=extmap-allow-mixed
+a=group:BUNDLE 0
+m=application 9 UDP/DTLS/SCTP webrtc-datachannel
+c=IN IP4 0.0.0.0
+a=setup:active
+a=mid:0
+a=sendrecv
+a=sctp-port:5000
+a=ice-ufrag:${ufrag}
+a=ice-pwd:uNjBwWiGCWkRpkmkjPtjAgqrUTpVqWaM
+${candidateLine}
+a=end-of-candidates
+`;
+  }
+  function stringifyRequestHead(request) {
+    const urlObj = new URL(request.url);
+    const header = {};
+    request.headers.forEach((v, k) => {
+      header[k] = [v];
+    });
+    const requestHead = {
+      method: request.method,
+      target: urlObj.pathname + urlObj.search,
+      version: "HTTP/1.1",
+      header
+    };
+    return JSON.stringify(requestHead);
+  }
+  function parseResponseHead(data) {
+    try {
+      const parsed = JSON.parse(data);
+      if (!parsed.header && parsed.Header) {
+        parsed.header = parsed.Header;
+      }
+      return parsed;
+    } catch (e) {
+      throw new Error("Invalid Response head");
+    }
+  }
+  function listenDC(dc, type, listener) {
+    dc.addEventListener(type, listener);
+    return () => dc.removeEventListener(type, listener);
+  }
+  function streamForDC(id, dc, signal) {
+    const disposers = [
+      () => {
+        if (dc.readyState !== "closing" && dc.readyState !== "closed") {
+          debug$8(`close DataChannel ${id} for finish`);
+          dc.close();
+        }
+      }
+    ];
+    let finished = false;
+    const finish = (cb) => {
+      if (finished)
+        return;
+      finished = true;
+      disposers.forEach((d) => d());
+      disposers.length = 0;
+      cb == null ? void 0 : cb();
+    };
+    return new ReadableStream({
+      start: (ctrl) => {
+        waitAbort(signal).catch((e) => {
+          finish(() => ctrl.error(e));
+        });
+        disposers.push(listenDC(dc, "message", ({ data }) => {
+          ctrl.enqueue(data);
+        }));
+        disposers.push(listenDC(dc, "error", (e) => {
+          debug$8(`dc ${id} error`, e);
+          finish(() => ctrl.error(e));
+        }));
+        disposers.push(listenDC(dc, "closing", (e) => {
+          debug$8(`DataChannel ${id} closing`, e);
+          finish(() => ctrl.close());
+        }));
+      },
+      cancel: (reason) => {
+        finish();
+      }
+    });
+  }
+  class HoWRequest {
+    constructor(pc, ctx, id, request, dcOpenTimeout) {
+      __publicField(this, "dc");
+      __publicField(this, "stream");
+      this.ctx = ctx;
+      this.id = id;
+      this.request = request;
+      this.dcOpenTimeout = dcOpenTimeout;
+      this.dc = pc.createDataChannel(`http|${id}`);
+      this.stream = streamForDC(this.id, this.dc, request.signal);
+    }
+    open() {
+      return __async(this, null, function* () {
+        if (this.dc.readyState === "open")
+          return;
+        const disposers = [];
+        const dispose = () => disposers.forEach((d) => d());
+        const opened = new Promise((resolve, reject) => {
+          disposers.push(listenDC(this.dc, "open", () => {
+            debug$8(`DataChannel ${this.id} opened`);
+            resolve();
+          }));
+          disposers.push(listenDC(this.dc, "error", () => {
+            debug$8(`DataChannel ${this.id} error`);
+            reject(new Error("DataChannel error"));
+          }));
+        });
+        return Promise.race([
+          opened,
+          waitTimeout(this.dcOpenTimeout, `DataChannel ${this.id} open`),
+          waitAbort(this.request.signal)
+        ]).finally(dispose);
+      });
+    }
+    sendRequest() {
+      return __async(this, null, function* () {
+        var _a;
+        const request = this.request;
+        if (!["GET", "HEAD"].includes(request.method))
+          throw new Error(`TODO: Request with method ${request.method} is not supported`);
+        const contentLength = parseInt((_a = request.headers.get("Content-Length")) != null ? _a : "0", 10);
+        if (contentLength > 0)
+          throw new Error("TODO: Request with body is not supported");
+        const requestHead = stringifyRequestHead(request);
+        debug$8(`DataChannel ${this.id} sendRequest:`, requestHead);
+        this.dc.send(requestHead);
+      });
+    }
+    receiveResponse() {
+      return __async(this, null, function* () {
+        var _a;
+        debug$8(`DataChannel ${this.id} receiveResponse with state: ${this.dc.readyState}`);
+        const request = this.request;
+        const dcReader = this.stream.getReader();
+        const { value, done } = yield dcReader.read();
+        if (done)
+          throw new UnexpectedDataChannelCloseError(`Unexpected DataChannel close, resp head expected. id: ${this.id}, url: ${this.request.url}`);
+        if (typeof value !== "string")
+          throw new UnexpectedDataChannel1stMessageError(`Expected first message type to be string, while got ${typeof value}`);
+        const respHead = parseResponseHead(value);
+        debug$8(`DataChannel ${this.id} get respHead:`, respHead);
+        const status = respHead.status;
+        const headers = createHeaders(mapObj((_a = respHead.header) != null ? _a : {}, (hs) => hs[0]));
+        const respInit = { status, statusText: respHead.reason, headers };
+        const [hasBody, bodyLength] = getRespBodyLength(request.method, status, request.headers, headers);
+        this.ctx.set("hoWStartTransferAt", Date.now());
+        if (!hasBody) {
+          const resp2 = new HttpResponse(null, respInit);
+          debug$8("DataChannel receiveResponse done with no body");
+          return resp2;
+        }
+        let received = 0;
+        const bodyStream = new ReadableStream({
+          start: (ctrl) => {
+            (() => __async(this, null, function* () {
+              while (true) {
+                const { value: value2, done: done2 } = yield dcReader.read();
+                if (done2) {
+                  ctrl.close();
+                  return;
+                }
+                if (!(value2 instanceof ArrayBuffer))
+                  throw new Error(`Unexpected message type: ${typeof value2} / ${value2 == null ? void 0 : value2.constructor.name}`);
+                if (value2.byteLength === 0) {
+                  dcReader.cancel("Empty message indicates resp end");
+                  ctrl.close();
+                  return;
+                }
+                ctrl.enqueue(new Uint8Array(value2));
+                received += value2.byteLength;
+                if (bodyLength != null && received >= bodyLength) {
+                  dcReader.cancel(`Body length (${bodyLength}) reached`);
+                  ctrl.close();
+                }
+              }
+            }))().catch((e) => {
+              ctrl.error(e);
+            });
+          },
+          cancel(reason) {
+            debug$8("DataChannel bodyStream cancel:", reason);
+            dcReader.cancel(reason);
+          }
+        });
+        const resp = new HttpResponse(bodyStream, respInit);
+        return resp;
+      });
+    }
+    start() {
+      return __async(this, null, function* () {
+        yield this.open();
+        this.ctx.set("hoWDataChannelOpenAt", Date.now());
+        const [, resp] = yield Promise.all([
+          this.sendRequest(),
+          this.receiveResponse()
+        ]);
+        return resp;
+      });
+    }
+  }
+  class UnexpectedDataChannelCloseError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "UnexpectedDataChannelCloseError");
+    }
+  }
+  class UnexpectedDataChannel1stMessageError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "UnexpectedDataChannel1stMessageError");
+    }
+  }
+  class PeerConnectionDisconnectedError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "PeerConnectionDisconnectedError");
+    }
+  }
+  function waitPCConnected(signal, pc, desc) {
+    return new Promise((resolve, reject) => {
+      if (pc.connectionState === "connected") {
+        resolve();
+        return;
+      }
+      const unlisten = listenPC(pc, "connectionstatechange", () => {
+        debug$8(`RTCPeerConnection ${desc} connectionstatechange`, pc.connectionState);
+        if (["failed", "closed", "disconnected"].includes(pc.connectionState)) {
+          reject(new PeerConnectionDisconnectedError(`${desc} ${pc.connectionState}`));
+          unlisten();
+          return;
+        }
+        if (pc.connectionState === "connected") {
+          resolve();
+          unlisten();
+          return;
+        }
+      });
+      waitAbort(signal).catch((e) => {
+        reject(e);
+        unlisten();
+      });
+    });
+  }
+  function listenPC(dc, type, listener) {
+    dc.addEventListener(type, listener);
+    return () => dc.removeEventListener(type, listener);
+  }
+  function encodeUtf8(input) {
+    const result = [];
+    const size = input.length;
+    for (let index = 0; index < size; index++) {
+      let point = input.charCodeAt(index);
+      if (point >= 55296 && point <= 56319 && size > index + 1) {
+        const second = input.charCodeAt(index + 1);
+        if (second >= 56320 && second <= 57343) {
+          point = (point - 55296) * 1024 + second - 56320 + 65536;
+          index += 1;
+        }
+      }
+      if (point < 128) {
+        result.push(point);
+        continue;
+      }
+      if (point < 2048) {
+        result.push(point >> 6 | 192);
+        result.push(point & 63 | 128);
+        continue;
+      }
+      if (point < 55296 || point >= 57344 && point < 65536) {
+        result.push(point >> 12 | 224);
+        result.push(point >> 6 & 63 | 128);
+        result.push(point & 63 | 128);
+        continue;
+      }
+      if (point >= 65536 && point <= 1114111) {
+        result.push(point >> 18 | 240);
+        result.push(point >> 12 & 63 | 128);
+        result.push(point >> 6 & 63 | 128);
+        result.push(point & 63 | 128);
+        continue;
+      }
+      result.push(239, 191, 189);
+    }
+    return new Uint8Array(result).buffer;
+  }
+  function fmix(input) {
+    input ^= input >>> 16;
+    input = Math.imul(input, 2246822507);
+    input ^= input >>> 13;
+    input = Math.imul(input, 3266489909);
+    input ^= input >>> 16;
+    return input >>> 0;
+  }
+  const C = new Uint32Array([
+    3432918353,
+    461845907
+  ]);
+  function rotl(m, n) {
+    return m << n | m >>> 32 - n;
+  }
+  function body(key, hash) {
+    const blocks = key.byteLength / 4 | 0;
+    const view32 = new Uint32Array(key, 0, blocks);
+    for (let i = 0; i < blocks; i++) {
+      view32[i] = Math.imul(view32[i], C[0]);
+      view32[i] = rotl(view32[i], 15);
+      view32[i] = Math.imul(view32[i], C[1]);
+      hash[0] = hash[0] ^ view32[i];
+      hash[0] = rotl(hash[0], 13);
+      hash[0] = Math.imul(hash[0], 5) + 3864292196;
+    }
+  }
+  function tail(key, hash) {
+    const blocks = key.byteLength / 4 | 0;
+    const reminder = key.byteLength % 4;
+    let k = 0;
+    const tail2 = new Uint8Array(key, blocks * 4, reminder);
+    switch (reminder) {
+      case 3:
+        k = k ^ tail2[2] << 16;
+      case 2:
+        k = k ^ tail2[1] << 8;
+      case 1:
+        k = k ^ tail2[0] << 0;
+        k = Math.imul(k, C[0]);
+        k = rotl(k, 15);
+        k = Math.imul(k, C[1]);
+        hash[0] = hash[0] ^ k;
+    }
+  }
+  function finalize(key, hash) {
+    hash[0] = hash[0] ^ key.byteLength;
+    hash[0] = fmix(hash[0]);
+  }
+  function murmur(key, seed) {
+    seed = seed ? seed | 0 : 0;
+    if (typeof key === "string") {
+      key = encodeUtf8(key);
+    }
+    if (!(key instanceof ArrayBuffer)) {
+      throw new TypeError("Expected key to be ArrayBuffer or string");
+    }
+    const hash = new Uint32Array([seed]);
+    body(key, hash);
+    tail(key, hash);
+    finalize(key, hash);
+    return hash.buffer;
+  }
+  class ConsistentHash {
+    constructor(hasher = defaultHash$1) {
+      __publicField(this, "circle", /* @__PURE__ */ new Map());
+      __publicField(this, "members", /* @__PURE__ */ new Set());
+      __publicField(this, "membersReplicas", /* @__PURE__ */ new Map());
+      __publicField(this, "sortedHashes", []);
+      this.hasher = hasher;
+    }
+    clone() {
+      const ch = new ConsistentHash();
+      ch.circle = new Map(this.circle);
+      ch.members = new Set(this.members);
+      ch.membersReplicas = new Map(this.membersReplicas);
+      ch.sortedHashes = [...this.sortedHashes];
+      return ch;
+    }
+    updateSortedHashes() {
+      this.sortedHashes = [...this.circle.keys()].sort(
+        (v1, v2) => v1 - v2
+      );
+    }
+    _add({ key, replicas }) {
+      for (let i = 0; i < replicas; i++) {
+        const hash = this.hasher(getKey(key, i));
+        this.circle.set(hash, key);
+      }
+      this.members.add(key);
+      this.membersReplicas.set(key, replicas);
+    }
+    _remove({ key, replicas }) {
+      for (let i = 0; i < replicas; i++) {
+        const hash = this.hasher(getKey(key, i));
+        this.circle.delete(hash);
+      }
+      this.members.delete(key);
+      this.membersReplicas.delete(key);
+    }
+    get(key) {
+      var _a;
+      if (this.circle.size === 0)
+        return null;
+      const hash = this.hasher(key);
+      const resultHash = (_a = this.sortedHashes.find((h) => h > hash)) != null ? _a : this.sortedHashes[0];
+      return this.circle.get(resultHash);
+    }
+    add(key, replicas) {
+      if (this.members.has(key))
+        return false;
+      this._add({ key, replicas });
+      this.updateSortedHashes();
+      return true;
+    }
+    remove(key) {
+      if (!this.members.has(key))
+        return false;
+      const replicas = this.membersReplicas.get(key);
+      this._remove({ key, replicas });
+      this.updateSortedHashes();
+      return true;
+    }
+    set(members) {
+      this.circle.clear();
+      this.members.clear();
+      this.membersReplicas.clear();
+      members.forEach((member) => {
+        this._add(member);
+      });
+      this.updateSortedHashes();
+    }
+  }
+  function getKey(memberKey, index) {
+    return index + memberKey;
+  }
+  const defaultHash$1 = murmur3Hash32;
+  function murmur3Hash32(key) {
+    const ab = murmur(key);
+    return new Uint32Array(ab)[0];
+  }
+  const httpdnsResolveApi = "https://api.qiniudns.com/v1/resolve";
+  const logApiPrefix = "https://log.qiniuapi.com";
   var cryptoJs = { exports: {} };
   function commonjsRequire(path) {
     throw new Error('Could not dynamically require "' + path + '". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.');
@@ -1062,7 +2028,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredCore)
       return core.exports;
     hasRequiredCore = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory();
@@ -1119,8 +2085,8 @@ var mikuPerf = function(exports) {
               return subtype;
             };
           }();
-          var C = {};
-          var C_lib = C.lib = {};
+          var C2 = {};
+          var C_lib = C2.lib = {};
           var Base = C_lib.Base = function() {
             return {
               extend: function(overrides) {
@@ -1209,7 +2175,7 @@ var mikuPerf = function(exports) {
               return new WordArray.init(words, nBytes);
             }
           });
-          var C_enc = C.enc = {};
+          var C_enc = C2.enc = {};
           var Hex = C_enc.Hex = {
             stringify: function(wordArray) {
               var words = wordArray.words;
@@ -1340,8 +2306,8 @@ var mikuPerf = function(exports) {
               };
             }
           });
-          var C_algo = C.algo = {};
-          return C;
+          var C_algo = C2.algo = {};
+          return C2;
         }(Math);
         return CryptoJS;
       });
@@ -1354,18 +2320,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredX64Core)
       return x64Core.exports;
     hasRequiredX64Core = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function(undefined$1) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var Base = C_lib.Base;
           var X32WordArray = C_lib.WordArray;
-          var C_x64 = C.x64 = {};
+          var C_x64 = C2.x64 = {};
           C_x64.Word = Base.extend({
             init: function(high, low) {
               this.high = high;
@@ -1414,7 +2380,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredLibTypedarrays)
       return libTypedarrays.exports;
     hasRequiredLibTypedarrays = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -1424,8 +2390,8 @@ var mikuPerf = function(exports) {
           if (typeof ArrayBuffer != "function") {
             return;
           }
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var superInit = WordArray.init;
           var subInit = WordArray.init = function(typedArray) {
@@ -1459,17 +2425,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredEncUtf16)
       return encUtf16.exports;
     hasRequiredEncUtf16 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
-          var C_enc = C.enc;
+          var C_enc = C2.enc;
           C_enc.Utf16 = C_enc.Utf16BE = {
             stringify: function(wordArray) {
               var words = wordArray.words;
@@ -1525,17 +2491,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredEncBase64)
       return encBase64.exports;
     hasRequiredEncBase64 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
-          var C_enc = C.enc;
+          var C_enc = C2.enc;
           C_enc.Base64 = {
             stringify: function(wordArray) {
               var words = wordArray.words;
@@ -1607,17 +2573,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredEncBase64url)
       return encBase64url.exports;
     hasRequiredEncBase64url = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
-          var C_enc = C.enc;
+          var C_enc = C2.enc;
           C_enc.Base64url = {
             stringify: function(wordArray, urlSafe = true) {
               var words = wordArray.words;
@@ -1690,18 +2656,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredMd5)
       return md5.exports;
     hasRequiredMd5 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function(Math2) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var Hasher = C_lib.Hasher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var T = [];
           (function() {
             for (var i = 0; i < 64; i++) {
@@ -1855,8 +2821,8 @@ var mikuPerf = function(exports) {
             var n = a + (c ^ (b | ~d)) + x + t;
             return (n << s | n >>> 32 - s) + b;
           }
-          C.MD5 = Hasher._createHelper(MD5);
-          C.HmacMD5 = Hasher._createHmacHelper(MD5);
+          C2.MD5 = Hasher._createHelper(MD5);
+          C2.HmacMD5 = Hasher._createHmacHelper(MD5);
         })(Math);
         return CryptoJS.MD5;
       });
@@ -1869,18 +2835,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredSha1)
       return sha1.exports;
     hasRequiredSha1 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var Hasher = C_lib.Hasher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var W = [];
           var SHA1 = C_algo.SHA1 = Hasher.extend({
             _doReset: function() {
@@ -1946,8 +2912,8 @@ var mikuPerf = function(exports) {
               return clone;
             }
           });
-          C.SHA1 = Hasher._createHelper(SHA1);
-          C.HmacSHA1 = Hasher._createHmacHelper(SHA1);
+          C2.SHA1 = Hasher._createHelper(SHA1);
+          C2.HmacSHA1 = Hasher._createHmacHelper(SHA1);
         })();
         return CryptoJS.SHA1;
       });
@@ -1960,18 +2926,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredSha256)
       return sha256.exports;
     hasRequiredSha256 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function(Math2) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var Hasher = C_lib.Hasher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var H = [];
           var K = [];
           (function() {
@@ -2067,8 +3033,8 @@ var mikuPerf = function(exports) {
               return clone;
             }
           });
-          C.SHA256 = Hasher._createHelper(SHA256);
-          C.HmacSHA256 = Hasher._createHmacHelper(SHA256);
+          C2.SHA256 = Hasher._createHelper(SHA256);
+          C2.HmacSHA256 = Hasher._createHmacHelper(SHA256);
         })(Math);
         return CryptoJS.SHA256;
       });
@@ -2081,17 +3047,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredSha224)
       return sha224.exports;
     hasRequiredSha224 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha256());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var SHA256 = C_algo.SHA256;
           var SHA224 = C_algo.SHA224 = SHA256.extend({
             _doReset: function() {
@@ -2112,8 +3078,8 @@ var mikuPerf = function(exports) {
               return hash;
             }
           });
-          C.SHA224 = SHA256._createHelper(SHA224);
-          C.HmacSHA224 = SHA256._createHmacHelper(SHA224);
+          C2.SHA224 = SHA256._createHelper(SHA224);
+          C2.HmacSHA224 = SHA256._createHmacHelper(SHA224);
         })();
         return CryptoJS.SHA224;
       });
@@ -2126,20 +3092,20 @@ var mikuPerf = function(exports) {
     if (hasRequiredSha512)
       return sha512.exports;
     hasRequiredSha512 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var Hasher = C_lib.Hasher;
-          var C_x64 = C.x64;
+          var C_x64 = C2.x64;
           var X64Word = C_x64.Word;
           var X64WordArray = C_x64.WordArray;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           function X64Word_create() {
             return X64Word.create.apply(X64Word, arguments);
           }
@@ -2394,8 +3360,8 @@ var mikuPerf = function(exports) {
             },
             blockSize: 1024 / 32
           });
-          C.SHA512 = Hasher._createHelper(SHA512);
-          C.HmacSHA512 = Hasher._createHmacHelper(SHA512);
+          C2.SHA512 = Hasher._createHelper(SHA512);
+          C2.HmacSHA512 = Hasher._createHmacHelper(SHA512);
         })();
         return CryptoJS.SHA512;
       });
@@ -2408,18 +3374,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredSha384)
       return sha384.exports;
     hasRequiredSha384 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core(), requireSha512());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_x64 = C.x64;
+          var C2 = CryptoJS;
+          var C_x64 = C2.x64;
           var X64Word = C_x64.Word;
           var X64WordArray = C_x64.WordArray;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var SHA512 = C_algo.SHA512;
           var SHA384 = C_algo.SHA384 = SHA512.extend({
             _doReset: function() {
@@ -2440,8 +3406,8 @@ var mikuPerf = function(exports) {
               return hash;
             }
           });
-          C.SHA384 = SHA512._createHelper(SHA384);
-          C.HmacSHA384 = SHA512._createHmacHelper(SHA384);
+          C2.SHA384 = SHA512._createHelper(SHA384);
+          C2.HmacSHA384 = SHA512._createHmacHelper(SHA384);
         })();
         return CryptoJS.SHA384;
       });
@@ -2454,20 +3420,20 @@ var mikuPerf = function(exports) {
     if (hasRequiredSha3)
       return sha3.exports;
     hasRequiredSha3 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireX64Core());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function(Math2) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var Hasher = C_lib.Hasher;
-          var C_x64 = C.x64;
+          var C_x64 = C2.x64;
           var X64Word = C_x64.Word;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var RHO_OFFSETS = [];
           var PI_INDEXES = [];
           var ROUND_CONSTANTS = [];
@@ -2634,8 +3600,8 @@ var mikuPerf = function(exports) {
               return clone;
             }
           });
-          C.SHA3 = Hasher._createHelper(SHA3);
-          C.HmacSHA3 = Hasher._createHmacHelper(SHA3);
+          C2.SHA3 = Hasher._createHelper(SHA3);
+          C2.HmacSHA3 = Hasher._createHmacHelper(SHA3);
         })(Math);
         return CryptoJS.SHA3;
       });
@@ -2648,7 +3614,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredRipemd160)
       return ripemd160.exports;
     hasRequiredRipemd160 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
@@ -2665,11 +3631,11 @@ var mikuPerf = function(exports) {
           			THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           			*/
         (function(Math2) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var Hasher = C_lib.Hasher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var _zl = WordArray.create([
             0,
             1,
@@ -3039,11 +4005,11 @@ var mikuPerf = function(exports) {
                   t += f5(bl, cl, dl) + hl[4];
                 }
                 t = t | 0;
-                t = rotl(t, sl[i]);
+                t = rotl2(t, sl[i]);
                 t = t + el | 0;
                 al = el;
                 el = dl;
-                dl = rotl(cl, 10);
+                dl = rotl2(cl, 10);
                 cl = bl;
                 bl = t;
                 t = ar + M[offset + zr[i]] | 0;
@@ -3059,11 +4025,11 @@ var mikuPerf = function(exports) {
                   t += f1(br, cr, dr) + hr[4];
                 }
                 t = t | 0;
-                t = rotl(t, sr[i]);
+                t = rotl2(t, sr[i]);
                 t = t + er | 0;
                 ar = er;
                 er = dr;
-                dr = rotl(cr, 10);
+                dr = rotl2(cr, 10);
                 cr = br;
                 br = t;
               }
@@ -3112,11 +4078,11 @@ var mikuPerf = function(exports) {
           function f5(x, y, z) {
             return x ^ (y | ~z);
           }
-          function rotl(x, n) {
+          function rotl2(x, n) {
             return x << n | x >>> 32 - n;
           }
-          C.RIPEMD160 = Hasher._createHelper(RIPEMD160);
-          C.HmacRIPEMD160 = Hasher._createHmacHelper(RIPEMD160);
+          C2.RIPEMD160 = Hasher._createHelper(RIPEMD160);
+          C2.HmacRIPEMD160 = Hasher._createHmacHelper(RIPEMD160);
         })();
         return CryptoJS.RIPEMD160;
       });
@@ -3129,19 +4095,19 @@ var mikuPerf = function(exports) {
     if (hasRequiredHmac)
       return hmac.exports;
     hasRequiredHmac = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory) {
         {
           module.exports = factory(requireCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var Base = C_lib.Base;
-          var C_enc = C.enc;
+          var C_enc = C2.enc;
           var Utf8 = C_enc.Utf8;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           C_algo.HMAC = Base.extend({
             init: function(hasher, key) {
               hasher = this._hasher = new hasher.init();
@@ -3193,18 +4159,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredPbkdf2)
       return pbkdf2.exports;
     hasRequiredPbkdf2 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var Base = C_lib.Base;
           var WordArray = C_lib.WordArray;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var SHA1 = C_algo.SHA1;
           var HMAC = C_algo.HMAC;
           var PBKDF2 = C_algo.PBKDF2 = Base.extend({
@@ -3246,7 +4212,7 @@ var mikuPerf = function(exports) {
               return derivedKey;
             }
           });
-          C.PBKDF2 = function(password, salt, cfg) {
+          C2.PBKDF2 = function(password, salt, cfg) {
             return PBKDF2.create(cfg).compute(password, salt);
           };
         })();
@@ -3261,18 +4227,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredEvpkdf)
       return evpkdf.exports;
     hasRequiredEvpkdf = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireSha1(), requireHmac());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var Base = C_lib.Base;
           var WordArray = C_lib.WordArray;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var MD5 = C_algo.MD5;
           var EvpKDF = C_algo.EvpKDF = Base.extend({
             cfg: Base.extend({
@@ -3307,7 +4273,7 @@ var mikuPerf = function(exports) {
               return derivedKey;
             }
           });
-          C.EvpKDF = function(password, salt, cfg) {
+          C2.EvpKDF = function(password, salt, cfg) {
             return EvpKDF.create(cfg).compute(password, salt);
           };
         })();
@@ -3322,22 +4288,22 @@ var mikuPerf = function(exports) {
     if (hasRequiredCipherCore)
       return cipherCore.exports;
     hasRequiredCipherCore = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEvpkdf());
         }
       })(commonjsGlobal, function(CryptoJS) {
         CryptoJS.lib.Cipher || function(undefined$1) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var Base = C_lib.Base;
           var WordArray = C_lib.WordArray;
           var BufferedBlockAlgorithm = C_lib.BufferedBlockAlgorithm;
-          var C_enc = C.enc;
+          var C_enc = C2.enc;
           C_enc.Utf8;
           var Base64 = C_enc.Base64;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var EvpKDF = C_algo.EvpKDF;
           var Cipher = C_lib.Cipher = BufferedBlockAlgorithm.extend({
             cfg: Base.extend(),
@@ -3399,7 +4365,7 @@ var mikuPerf = function(exports) {
             },
             blockSize: 1
           });
-          var C_mode = C.mode = {};
+          var C_mode = C2.mode = {};
           var BlockCipherMode = C_lib.BlockCipherMode = Base.extend({
             createEncryptor: function(cipher, iv) {
               return this.Encryptor.create(cipher, iv);
@@ -3448,7 +4414,7 @@ var mikuPerf = function(exports) {
             }
             return CBC2;
           }();
-          var C_pad = C.pad = {};
+          var C_pad = C2.pad = {};
           var Pkcs7 = C_pad.Pkcs7 = {
             pad: function(data, blockSize) {
               var blockSizeBytes = blockSize * 4;
@@ -3515,7 +4481,7 @@ var mikuPerf = function(exports) {
               return (formatter || this.formatter).stringify(this);
             }
           });
-          var C_format = C.format = {};
+          var C_format = C2.format = {};
           var OpenSSLFormatter = C_format.OpenSSL = {
             stringify: function(cipherParams) {
               var wordArray;
@@ -3574,7 +4540,7 @@ var mikuPerf = function(exports) {
               }
             }
           });
-          var C_kdf = C.kdf = {};
+          var C_kdf = C2.kdf = {};
           var OpenSSLKdf = C_kdf.OpenSSL = {
             execute: function(password, keySize, ivSize, salt) {
               if (!salt) {
@@ -3618,7 +4584,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredModeCfb)
       return modeCfb.exports;
     hasRequiredModeCfb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3670,7 +4636,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredModeCtr)
       return modeCtr.exports;
     hasRequiredModeCtr = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3710,7 +4676,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredModeCtrGladman)
       return modeCtrGladman.exports;
     hasRequiredModeCtrGladman = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3790,7 +4756,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredModeOfb)
       return modeOfb.exports;
     hasRequiredModeOfb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3828,7 +4794,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredModeEcb)
       return modeEcb.exports;
     hasRequiredModeEcb = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3859,7 +4825,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredPadAnsix923)
       return padAnsix923.exports;
     hasRequiredPadAnsix923 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3891,7 +4857,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredPadIso10126)
       return padIso10126.exports;
     hasRequiredPadIso10126 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3919,7 +4885,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredPadIso97971)
       return padIso97971.exports;
     hasRequiredPadIso97971 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3946,7 +4912,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredPadZeropadding)
       return padZeropadding.exports;
     hasRequiredPadZeropadding = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -3980,7 +4946,7 @@ var mikuPerf = function(exports) {
     if (hasRequiredPadNopadding)
       return padNopadding.exports;
     hasRequiredPadNopadding = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
@@ -4003,19 +4969,19 @@ var mikuPerf = function(exports) {
     if (hasRequiredFormatHex)
       return formatHex.exports;
     hasRequiredFormatHex = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireCipherCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function(undefined$1) {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var CipherParams = C_lib.CipherParams;
-          var C_enc = C.enc;
+          var C_enc = C2.enc;
           var Hex = C_enc.Hex;
-          var C_format = C.format;
+          var C_format = C2.format;
           C_format.Hex = {
             stringify: function(cipherParams) {
               return cipherParams.ciphertext.toString(Hex);
@@ -4037,17 +5003,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredAes)
       return aes.exports;
     hasRequiredAes = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var BlockCipher = C_lib.BlockCipher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var SBOX = [];
           var INV_SBOX = [];
           var SUB_MIX_0 = [];
@@ -4178,7 +5144,7 @@ var mikuPerf = function(exports) {
             },
             keySize: 256 / 32
           });
-          C.AES = BlockCipher._createHelper(AES);
+          C2.AES = BlockCipher._createHelper(AES);
         })();
         return CryptoJS.AES;
       });
@@ -4191,18 +5157,18 @@ var mikuPerf = function(exports) {
     if (hasRequiredTripledes)
       return tripledes.exports;
     hasRequiredTripledes = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var WordArray = C_lib.WordArray;
           var BlockCipher = C_lib.BlockCipher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var PC1 = [
             57,
             49,
@@ -4930,7 +5896,7 @@ var mikuPerf = function(exports) {
             this._lBlock ^= t;
             this._rBlock ^= t << offset;
           }
-          C.DES = BlockCipher._createHelper(DES);
+          C2.DES = BlockCipher._createHelper(DES);
           var TripleDES = C_algo.TripleDES = BlockCipher.extend({
             _doReset: function() {
               var key = this._key;
@@ -4959,7 +5925,7 @@ var mikuPerf = function(exports) {
             ivSize: 64 / 32,
             blockSize: 64 / 32
           });
-          C.TripleDES = BlockCipher._createHelper(TripleDES);
+          C2.TripleDES = BlockCipher._createHelper(TripleDES);
         })();
         return CryptoJS.TripleDES;
       });
@@ -4972,17 +5938,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredRc4)
       return rc4.exports;
     hasRequiredRc4 = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var StreamCipher = C_lib.StreamCipher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var RC4 = C_algo.RC4 = StreamCipher.extend({
             _doReset: function() {
               var key = this._key;
@@ -5025,7 +5991,7 @@ var mikuPerf = function(exports) {
             this._j = j;
             return keystreamWord;
           }
-          C.RC4 = StreamCipher._createHelper(RC4);
+          C2.RC4 = StreamCipher._createHelper(RC4);
           var RC4Drop = C_algo.RC4Drop = RC4.extend({
             cfg: RC4.cfg.extend({
               drop: 192
@@ -5037,7 +6003,7 @@ var mikuPerf = function(exports) {
               }
             }
           });
-          C.RC4Drop = StreamCipher._createHelper(RC4Drop);
+          C2.RC4Drop = StreamCipher._createHelper(RC4Drop);
         })();
         return CryptoJS.RC4;
       });
@@ -5050,17 +6016,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredRabbit)
       return rabbit.exports;
     hasRequiredRabbit = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var StreamCipher = C_lib.StreamCipher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var S = [];
           var C_ = [];
           var G = [];
@@ -5081,7 +6047,7 @@ var mikuPerf = function(exports) {
                 K[3],
                 K[2] << 16 | K[1] >>> 16
               ];
-              var C2 = this._C = [
+              var C3 = this._C = [
                 K[2] << 16 | K[2] >>> 16,
                 K[0] & 4294901760 | K[1] & 65535,
                 K[3] << 16 | K[3] >>> 16,
@@ -5096,7 +6062,7 @@ var mikuPerf = function(exports) {
                 nextState.call(this);
               }
               for (var i = 0; i < 8; i++) {
-                C2[i] ^= X[i + 4 & 7];
+                C3[i] ^= X[i + 4 & 7];
               }
               if (iv) {
                 var IV = iv.words;
@@ -5106,14 +6072,14 @@ var mikuPerf = function(exports) {
                 var i2 = (IV_1 << 8 | IV_1 >>> 24) & 16711935 | (IV_1 << 24 | IV_1 >>> 8) & 4278255360;
                 var i1 = i0 >>> 16 | i2 & 4294901760;
                 var i3 = i2 << 16 | i0 & 65535;
-                C2[0] ^= i0;
-                C2[1] ^= i1;
-                C2[2] ^= i2;
-                C2[3] ^= i3;
-                C2[4] ^= i0;
-                C2[5] ^= i1;
-                C2[6] ^= i2;
-                C2[7] ^= i3;
+                C3[0] ^= i0;
+                C3[1] ^= i1;
+                C3[2] ^= i2;
+                C3[3] ^= i3;
+                C3[4] ^= i0;
+                C3[5] ^= i1;
+                C3[6] ^= i2;
+                C3[7] ^= i3;
                 for (var i = 0; i < 4; i++) {
                   nextState.call(this);
                 }
@@ -5136,21 +6102,21 @@ var mikuPerf = function(exports) {
           });
           function nextState() {
             var X = this._X;
-            var C2 = this._C;
+            var C3 = this._C;
             for (var i = 0; i < 8; i++) {
-              C_[i] = C2[i];
+              C_[i] = C3[i];
             }
-            C2[0] = C2[0] + 1295307597 + this._b | 0;
-            C2[1] = C2[1] + 3545052371 + (C2[0] >>> 0 < C_[0] >>> 0 ? 1 : 0) | 0;
-            C2[2] = C2[2] + 886263092 + (C2[1] >>> 0 < C_[1] >>> 0 ? 1 : 0) | 0;
-            C2[3] = C2[3] + 1295307597 + (C2[2] >>> 0 < C_[2] >>> 0 ? 1 : 0) | 0;
-            C2[4] = C2[4] + 3545052371 + (C2[3] >>> 0 < C_[3] >>> 0 ? 1 : 0) | 0;
-            C2[5] = C2[5] + 886263092 + (C2[4] >>> 0 < C_[4] >>> 0 ? 1 : 0) | 0;
-            C2[6] = C2[6] + 1295307597 + (C2[5] >>> 0 < C_[5] >>> 0 ? 1 : 0) | 0;
-            C2[7] = C2[7] + 3545052371 + (C2[6] >>> 0 < C_[6] >>> 0 ? 1 : 0) | 0;
-            this._b = C2[7] >>> 0 < C_[7] >>> 0 ? 1 : 0;
+            C3[0] = C3[0] + 1295307597 + this._b | 0;
+            C3[1] = C3[1] + 3545052371 + (C3[0] >>> 0 < C_[0] >>> 0 ? 1 : 0) | 0;
+            C3[2] = C3[2] + 886263092 + (C3[1] >>> 0 < C_[1] >>> 0 ? 1 : 0) | 0;
+            C3[3] = C3[3] + 1295307597 + (C3[2] >>> 0 < C_[2] >>> 0 ? 1 : 0) | 0;
+            C3[4] = C3[4] + 3545052371 + (C3[3] >>> 0 < C_[3] >>> 0 ? 1 : 0) | 0;
+            C3[5] = C3[5] + 886263092 + (C3[4] >>> 0 < C_[4] >>> 0 ? 1 : 0) | 0;
+            C3[6] = C3[6] + 1295307597 + (C3[5] >>> 0 < C_[5] >>> 0 ? 1 : 0) | 0;
+            C3[7] = C3[7] + 3545052371 + (C3[6] >>> 0 < C_[6] >>> 0 ? 1 : 0) | 0;
+            this._b = C3[7] >>> 0 < C_[7] >>> 0 ? 1 : 0;
             for (var i = 0; i < 8; i++) {
-              var gx = X[i] + C2[i];
+              var gx = X[i] + C3[i];
               var ga = gx & 65535;
               var gb = gx >>> 16;
               var gh = ((ga * ga >>> 17) + ga * gb >>> 15) + gb * gb;
@@ -5166,7 +6132,7 @@ var mikuPerf = function(exports) {
             X[6] = G[6] + (G[5] << 16 | G[5] >>> 16) + (G[4] << 16 | G[4] >>> 16) | 0;
             X[7] = G[7] + (G[6] << 8 | G[6] >>> 24) + G[5] | 0;
           }
-          C.Rabbit = StreamCipher._createHelper(Rabbit);
+          C2.Rabbit = StreamCipher._createHelper(Rabbit);
         })();
         return CryptoJS.Rabbit;
       });
@@ -5179,17 +6145,17 @@ var mikuPerf = function(exports) {
     if (hasRequiredRabbitLegacy)
       return rabbitLegacy.exports;
     hasRequiredRabbitLegacy = 1;
-    (function(module, exports2) {
+    (function(module, exports) {
       (function(root, factory, undef) {
         {
           module.exports = factory(requireCore(), requireEncBase64(), requireMd5(), requireEvpkdf(), requireCipherCore());
         }
       })(commonjsGlobal, function(CryptoJS) {
         (function() {
-          var C = CryptoJS;
-          var C_lib = C.lib;
+          var C2 = CryptoJS;
+          var C_lib = C2.lib;
           var StreamCipher = C_lib.StreamCipher;
-          var C_algo = C.algo;
+          var C_algo = C2.algo;
           var S = [];
           var C_ = [];
           var G = [];
@@ -5207,7 +6173,7 @@ var mikuPerf = function(exports) {
                 K[3],
                 K[2] << 16 | K[1] >>> 16
               ];
-              var C2 = this._C = [
+              var C3 = this._C = [
                 K[2] << 16 | K[2] >>> 16,
                 K[0] & 4294901760 | K[1] & 65535,
                 K[3] << 16 | K[3] >>> 16,
@@ -5222,7 +6188,7 @@ var mikuPerf = function(exports) {
                 nextState.call(this);
               }
               for (var i = 0; i < 8; i++) {
-                C2[i] ^= X[i + 4 & 7];
+                C3[i] ^= X[i + 4 & 7];
               }
               if (iv) {
                 var IV = iv.words;
@@ -5232,14 +6198,14 @@ var mikuPerf = function(exports) {
                 var i2 = (IV_1 << 8 | IV_1 >>> 24) & 16711935 | (IV_1 << 24 | IV_1 >>> 8) & 4278255360;
                 var i1 = i0 >>> 16 | i2 & 4294901760;
                 var i3 = i2 << 16 | i0 & 65535;
-                C2[0] ^= i0;
-                C2[1] ^= i1;
-                C2[2] ^= i2;
-                C2[3] ^= i3;
-                C2[4] ^= i0;
-                C2[5] ^= i1;
-                C2[6] ^= i2;
-                C2[7] ^= i3;
+                C3[0] ^= i0;
+                C3[1] ^= i1;
+                C3[2] ^= i2;
+                C3[3] ^= i3;
+                C3[4] ^= i0;
+                C3[5] ^= i1;
+                C3[6] ^= i2;
+                C3[7] ^= i3;
                 for (var i = 0; i < 4; i++) {
                   nextState.call(this);
                 }
@@ -5262,21 +6228,21 @@ var mikuPerf = function(exports) {
           });
           function nextState() {
             var X = this._X;
-            var C2 = this._C;
+            var C3 = this._C;
             for (var i = 0; i < 8; i++) {
-              C_[i] = C2[i];
+              C_[i] = C3[i];
             }
-            C2[0] = C2[0] + 1295307597 + this._b | 0;
-            C2[1] = C2[1] + 3545052371 + (C2[0] >>> 0 < C_[0] >>> 0 ? 1 : 0) | 0;
-            C2[2] = C2[2] + 886263092 + (C2[1] >>> 0 < C_[1] >>> 0 ? 1 : 0) | 0;
-            C2[3] = C2[3] + 1295307597 + (C2[2] >>> 0 < C_[2] >>> 0 ? 1 : 0) | 0;
-            C2[4] = C2[4] + 3545052371 + (C2[3] >>> 0 < C_[3] >>> 0 ? 1 : 0) | 0;
-            C2[5] = C2[5] + 886263092 + (C2[4] >>> 0 < C_[4] >>> 0 ? 1 : 0) | 0;
-            C2[6] = C2[6] + 1295307597 + (C2[5] >>> 0 < C_[5] >>> 0 ? 1 : 0) | 0;
-            C2[7] = C2[7] + 3545052371 + (C2[6] >>> 0 < C_[6] >>> 0 ? 1 : 0) | 0;
-            this._b = C2[7] >>> 0 < C_[7] >>> 0 ? 1 : 0;
+            C3[0] = C3[0] + 1295307597 + this._b | 0;
+            C3[1] = C3[1] + 3545052371 + (C3[0] >>> 0 < C_[0] >>> 0 ? 1 : 0) | 0;
+            C3[2] = C3[2] + 886263092 + (C3[1] >>> 0 < C_[1] >>> 0 ? 1 : 0) | 0;
+            C3[3] = C3[3] + 1295307597 + (C3[2] >>> 0 < C_[2] >>> 0 ? 1 : 0) | 0;
+            C3[4] = C3[4] + 3545052371 + (C3[3] >>> 0 < C_[3] >>> 0 ? 1 : 0) | 0;
+            C3[5] = C3[5] + 886263092 + (C3[4] >>> 0 < C_[4] >>> 0 ? 1 : 0) | 0;
+            C3[6] = C3[6] + 1295307597 + (C3[5] >>> 0 < C_[5] >>> 0 ? 1 : 0) | 0;
+            C3[7] = C3[7] + 3545052371 + (C3[6] >>> 0 < C_[6] >>> 0 ? 1 : 0) | 0;
+            this._b = C3[7] >>> 0 < C_[7] >>> 0 ? 1 : 0;
             for (var i = 0; i < 8; i++) {
-              var gx = X[i] + C2[i];
+              var gx = X[i] + C3[i];
               var ga = gx & 65535;
               var gb = gx >>> 16;
               var gh = ((ga * ga >>> 17) + ga * gb >>> 15) + gb * gb;
@@ -5292,14 +6258,14 @@ var mikuPerf = function(exports) {
             X[6] = G[6] + (G[5] << 16 | G[5] >>> 16) + (G[4] << 16 | G[4] >>> 16) | 0;
             X[7] = G[7] + (G[6] << 8 | G[6] >>> 24) + G[5] | 0;
           }
-          C.RabbitLegacy = StreamCipher._createHelper(RabbitLegacy);
+          C2.RabbitLegacy = StreamCipher._createHelper(RabbitLegacy);
         })();
         return CryptoJS.RabbitLegacy;
       });
     })(rabbitLegacy);
     return rabbitLegacy.exports;
   }
-  (function(module, exports2) {
+  (function(module, exports) {
     (function(root, factory, undef) {
       {
         module.exports = factory(requireCore(), requireX64Core(), requireLibTypedarrays(), requireEncUtf16(), requireEncBase64(), requireEncBase64url(), requireMd5(), requireSha1(), requireSha256(), requireSha224(), requireSha512(), requireSha384(), requireSha3(), requireRipemd160(), requireHmac(), requirePbkdf2(), requireEvpkdf(), requireCipherCore(), requireModeCfb(), requireModeCtr(), requireModeCtrGladman(), requireModeOfb(), requireModeEcb(), requirePadAnsix923(), requirePadIso10126(), requirePadIso97971(), requirePadZeropadding(), requirePadNopadding(), requireFormatHex(), requireAes(), requireTripledes(), requireRc4(), requireRabbit(), requireRabbitLegacy());
@@ -5333,28 +6299,366 @@ var mikuPerf = function(exports) {
     accessToken = accessToken.replace(/\+/g, "-");
     return accessToken;
   }
+  function httpResolve(ctx, domain, app) {
+    return __async(this, null, function* () {
+      var _a;
+      const params = { name: domain, type: "A" };
+      const query = queryStringify(params);
+      const accessToken = getAccessToken({
+        appID: app.appID,
+        appSalt: app.appSalt,
+        path: httpdnsResolveApi,
+        query
+      });
+      const resp = yield fetch(`${httpdnsResolveApi}?${query}`, {
+        headers: {
+          "Authorization": accessToken
+        }
+      });
+      ctx.set("dnsResolveStatus", resp.status);
+      ctx.set("dnsResolveReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
+      ctx.set("dnsResolveConnectionAt", Date.now());
+      if (!resp.ok)
+        throw new Error(`Call resolve API failed, status: ${resp.status} ${resp.statusText}`);
+      const body2 = yield resp.json();
+      return body2;
+    });
+  }
+  class DnsLogger {
+    constructor(logger2) {
+      this.logger = logger2;
+    }
+    log(schemaName, logData) {
+      return this.logger.log(schemaName, logData);
+    }
+  }
+  const debug$7 = getDebug("dns");
+  class DNSResolveError extends Error {
+    constructor(cause) {
+      super(cause + "");
+      __publicField(this, "name", "DNSResolveError");
+      this.cause = cause;
+    }
+  }
+  class NonECDNError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "NonECDNError");
+    }
+  }
+  class NoAvailableECDNNodeError extends Error {
+    constructor() {
+      super(...arguments);
+      __publicField(this, "name", "NoAvailableNodeError");
+    }
+  }
+  class DoWithECDNNodeError extends Error {
+    constructor(cause) {
+      super(cause + "");
+      __publicField(this, "name", "DoWithECDNNodeError");
+      this.cause = cause;
+    }
+  }
+  class Resolver {
+    constructor(logger2, app, dnsResolver = httpResolve) {
+      __publicField(this, "cache", /* @__PURE__ */ new Map());
+      __publicField(this, "logger");
+      __publicField(this, "fingerprints", /* @__PURE__ */ new Map());
+      this.app = app;
+      this.dnsResolver = dnsResolver;
+      this.logger = new DnsLogger(logger2);
+    }
+    getFingerprint(ipPort) {
+      const fingerprint = this.fingerprints.get(ipPort);
+      if (fingerprint == null)
+        throw new Error(`No fingerprint for ${ipPort}`);
+      return fingerprint;
+    }
+    getResolveResult(ctx, domain) {
+      return __async(this, null, function* () {
+        var _b, _c;
+        const startAt = Date.now();
+        let err;
+        try {
+          let resolved;
+          try {
+            resolved = yield this.dnsResolver(ctx, domain, this.app);
+          } catch (e) {
+            console.warn("DNS resolve failed:", e);
+            throw new DNSResolveError(e);
+          }
+          if (!isECDNResolveResult(resolved))
+            throw new NonECDNError(`Non-ECDN domain: ${domain}`);
+          if (resolved.groups.length === 0)
+            throw new NoAvailableECDNNodeError(`No available group for ${domain}`);
+          const _a = resolved, { groups } = _a, others = __objRest(_a, ["groups"]);
+          const saveGroup = [];
+          groups.forEach((g) => {
+            g.elts.forEach((e) => {
+              e.ips.forEach((ipPort) => {
+                this.fingerprints.set(ipPort, e.fingerprint);
+              });
+            });
+            const consistentHash = new ConsistentHash();
+            consistentHash.set(g.elts.map((e) => ({ key: e.id, replicas: e.replicas })));
+            saveGroup.push(__spreadProps(__spreadValues({}, g), {
+              consistentHash
+            }));
+          });
+          const toSave = __spreadProps(__spreadValues({}, others), {
+            expireAt: Date.now() + resolved.ttl * 1e3,
+            groups: saveGroup
+          });
+          return toSave;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const totalTime = timeMinus(Date.now(), startAt);
+          this.logger.log("DnsResolveLog", __spreadProps(__spreadValues({
+            r_id: (_b = ctx.get("dnsResolveReqID")) != null ? _b : "",
+            ip: "",
+            domain,
+            status_code: (_c = ctx.get("dnsResolveStatus")) != null ? _c : -1
+          }, getErrInfo(err)), {
+            t_conn: timeMinus(ctx.get("dnsResolveConnectionAt"), startAt),
+            t_total: totalTime,
+            type: 1
+          }));
+          ctx.set("dnsResolveTotalTime", totalTime);
+        }
+      });
+    }
+    resolve(ctx, domain) {
+      return __async(this, null, function* () {
+        const fromCache = this.cache.get(domain);
+        if (fromCache != null) {
+          let result;
+          try {
+            result = yield fromCache;
+          } catch (e) {
+            if (e instanceof NonECDNError || e instanceof NoAvailableECDNNodeError)
+              throw e;
+          }
+          if (result != null && result.expireAt > Date.now()) {
+            ctx.set("dnsResolveFromCache", true);
+            return fromCache;
+          } else {
+            this.cache.delete(domain);
+          }
+        }
+        const promise = this.getResolveResult(ctx, domain);
+        this.cache.set(domain, promise);
+        return promise;
+      });
+    }
+    resolveUrl(ctx, url, hostRequired = false) {
+      return __async(this, null, function* () {
+        let result = null;
+        yield this.do(ctx, url, 1, hostRequired, (host) => {
+          result = host;
+        });
+        return result;
+      });
+    }
+    do(ctx, url, attempts, hostRequired, job) {
+      return __async(this, null, function* () {
+        const urlObj = new URL(url);
+        if (urlObj.port !== "")
+          throw new Error("TODO: no port");
+        let err;
+        let { groups } = yield this.resolve(ctx, urlObj.host);
+        for (let i = 0; i < attempts; i++) {
+          debug$7("Resolve for", url);
+          const group = random(groups, (g) => g.weight);
+          if (group == null)
+            break;
+          debug$7("Resolved for", url);
+          try {
+            debug$7("doWithGroup", i, url);
+            yield doWithGroup(group, url, hostRequired, job);
+            return;
+          } catch (e) {
+            console.warn("doWithGroup (weight:", group.weight, ") failed:", e, url);
+            if (shouldDisableTarget(e)) {
+              groups = groups.filter((g) => g !== group);
+            }
+            err = e;
+          }
+        }
+        err = isAbortError(err) ? err : new DoWithECDNNodeError(err);
+        throw err;
+      });
+    }
+  }
+  function doWithGroup(group, url, hostRequired, job) {
+    return __async(this, null, function* () {
+      const elts = group.elts;
+      if (elts.length === 0)
+        throw new Error("Empty elt list");
+      if (!group.consistentHash)
+        throw new Error("no consistentHash");
+      const ch = group.consistentHash.clone();
+      let err;
+      for (let i = 0; i < 2; i++) {
+        const eltId = ch.get(url);
+        if (eltId == null)
+          break;
+        const elt = elts.find((e) => e.id === eltId);
+        if (elt == null)
+          throw new Error("No available elt");
+        try {
+          debug$7("doWithElt", elt.id, url);
+          yield doWithElt(elt, url, hostRequired, job);
+          return;
+        } catch (e) {
+          console.warn("doWithElt", elt.id, "failed:", e, url);
+          if (shouldDisableTarget(e)) {
+            ch.remove(eltId);
+          }
+          err = e;
+        }
+      }
+      throw err;
+    });
+  }
+  function doWithElt(elt, url, hostRequired, job) {
+    return __async(this, null, function* () {
+      let ipOrHosts = hostRequired ? elt.hosts : elt.ips;
+      if (ipOrHosts.length === 0)
+        throw new Error(`Empty ${hostRequired ? "host" : "IP"} list`);
+      let err;
+      for (let i = 0; i < 2; i++) {
+        const curr = random(ipOrHosts);
+        if (curr == null)
+          break;
+        try {
+          debug$7(`do with ${hostRequired ? "host" : "IP"}`, curr, url);
+          yield job(curr);
+          return;
+        } catch (e) {
+          console.warn("do job with", curr, "failed:", e, url);
+          if (shouldDisableTarget(e)) {
+            ipOrHosts = ipOrHosts.filter((i2) => i2 !== curr);
+          }
+          err = e;
+        }
+      }
+      throw err;
+    });
+  }
+  function random(items, getWeight = () => 1) {
+    if (items.length === 0)
+      return null;
+    const weights = items.map(getWeight);
+    const sum = weights.reduce((s, w) => s + w, 0);
+    let val = Math.random() * sum;
+    for (let i = 0; i < weights.length; i++) {
+      const weight = weights[i];
+      if (val < weight)
+        return items[i];
+      val -= weight;
+    }
+    return items[0];
+  }
+  function isECDNResolveResult(result) {
+    return result.groups != null;
+  }
+  function isAbortError(e) {
+    return e && e.name === "AbortError";
+  }
+  const unexpectedDataChannelCloseErrorName = new UnexpectedDataChannelCloseError().name;
+  const unexpectedDataChannel1stMessageErrorName = new UnexpectedDataChannel1stMessageError().name;
+  function shouldDisableTarget(e) {
+    if (e && [unexpectedDataChannelCloseErrorName, unexpectedDataChannel1stMessageErrorName].includes(e.name))
+      return false;
+    if (isAbortError(e))
+      return false;
+    if (e instanceof WindowClientError)
+      return false;
+    return true;
+  }
+  class Mutex {
+    constructor() {
+      __publicField(this, "locked", false);
+      __publicField(this, "waitings", []);
+      this.unlock = this.unlock.bind(this);
+    }
+    lock() {
+      return __async(this, null, function* () {
+        if (!this.locked) {
+          this.locked = true;
+          return this.unlock;
+        }
+        yield new Promise((resolve) => {
+          this.waitings.push(resolve);
+        });
+        return this.unlock;
+      });
+    }
+    unlock() {
+      if (this.waitings.length === 0) {
+        this.locked = false;
+        return;
+      }
+      const waiting = this.waitings.shift();
+      waiting();
+    }
+    runExclusive(job) {
+      return __async(this, null, function* () {
+        const unlock = yield this.lock();
+        try {
+          return yield job();
+        } catch (e) {
+          throw e;
+        } finally {
+          unlock();
+        }
+      });
+    }
+  }
+  const version = "0.9.9";
+  function getEnv() {
+    var _a, _b;
+    const { os, device, browser } = uaParser(navigator.userAgent);
+    let location;
+    if (typeof window !== "undefined") {
+      location = window.location;
+    } else if (typeof self !== void 0) {
+      location = self.location;
+    }
+    return {
+      os: `${os.name}_${os.version}`,
+      browser: `${browser.name}_${browser.version}`,
+      app: (_a = location == null ? void 0 : location.host) != null ? _a : "",
+      sdk: `Web SDK v${version}`,
+      dev_model: (_b = device.model) != null ? _b : "",
+      dev_id: ""
+    };
+  }
   const logNumPerCall = 200;
+  const debug$6 = getDebug("log");
   class SchemaLogger {
-    constructor(schemaName, fetch, flushNum, flushWait, app) {
+    constructor(schemaName, fetch2, flushNum, flushWait, app) {
       __publicField(this, "env", queryStringify(getEnv()));
       __publicField(this, "flushMutex", new Mutex());
       __publicField(this, "buffer", []);
       this.schemaName = schemaName;
-      this.fetch = fetch;
+      this.fetch = fetch2;
       this.flushNum = flushNum;
       this.flushWait = flushWait;
       this.app = app;
     }
     callApiLog(logs) {
       return __async(this, null, function* () {
-        const fetch = this.fetch;
+        const fetch2 = this.fetch;
         try {
           const accessToken = getAccessToken({
             appID: this.app.appID,
             appSalt: this.app.appSalt,
             path: `${logApiPrefix}/v1/log/${this.schemaName}`
           });
-          const resp = yield fetch(new Request(`${logApiPrefix}/v1/log/${this.schemaName}`, {
+          const resp = yield fetch2(new Request(`${logApiPrefix}/v1/log/${this.schemaName}`, {
             method: "POST",
             headers: {
               "Authorization": accessToken,
@@ -5388,10 +6692,12 @@ var mikuPerf = function(exports) {
           if (buffer.length === 0)
             return false;
           if (buffer.length >= this.flushNum) {
+            debug$6("buffer.length >= this.flushNum");
             return true;
           }
           const waited = Date.now() - buffer[0].ts;
           if (waited >= this.flushWait * 1e3) {
+            debug$6("waited >= this.flushWait");
             return true;
           }
           return this.flushWait * 1e3 - waited;
@@ -5409,20 +6715,21 @@ var mikuPerf = function(exports) {
     }
   }
   class Logger {
-    constructor(appInfo, fetch = self.fetch, flushNum = 100, flushWait = 30) {
+    constructor(appInfo, fetch2 = self.fetch, flushNum = 100, flushWait = 30) {
       __publicField(this, "schemaLoggers", /* @__PURE__ */ new Map());
       this.appInfo = appInfo;
-      this.fetch = fetch;
+      this.fetch = fetch2;
       this.flushNum = flushNum;
       this.flushWait = flushWait;
     }
     log(schemaName, logData) {
-      let logger = this.schemaLoggers.get(schemaName);
-      if (logger == null) {
-        logger = new SchemaLogger(schemaName, this.fetch, this.flushNum, this.flushWait, this.appInfo);
-        this.schemaLoggers.set(schemaName, logger);
+      debug$6("log", schemaName, logData);
+      let logger2 = this.schemaLoggers.get(schemaName);
+      if (logger2 == null) {
+        logger2 = new SchemaLogger(schemaName, this.fetch, this.flushNum, this.flushWait, this.appInfo);
+        this.schemaLoggers.set(schemaName, logger2);
       }
-      logger.log(logData);
+      logger2.log(logData);
     }
   }
   function getLogBody(logs) {
@@ -5445,344 +6752,1413 @@ var mikuPerf = function(exports) {
     }
     return str;
   }
-  function uuid() {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-    const charNum = chars.length;
-    let text = "";
-    for (let i = 0; i < 20; i++) {
-      text += chars[Math.floor(Math.random() * charNum)];
+  class DB {
+    constructor(dbName, storeNames) {
+      __publicField(this, "db");
+      this.dbName = dbName;
+      this.storeNames = storeNames;
     }
-    return text;
-  }
-  function formatMillisecondToSecond(time) {
-    return parseFloat((time / 1e3).toFixed(2));
-  }
-  uaParser(navigator.userAgent);
-  const namespace = "miku/dc";
-  const _MikuPerformance = class {
-    constructor(tag, tagReason, app) {
-      __publicField(this, "pageLogData", {
-        r_id: uuid(),
-        ts: 0,
-        url: "",
-        tag: "nocache",
-        tag_reason: "",
-        t_page_load: 0,
-        t_full_load: 0,
-        t_window_load: 0
+    getDB() {
+      return __async(this, null, function* () {
+        if (this.db != null)
+          return this.db;
+        return new Promise((resolve) => {
+          const request = indexedDB.open(this.dbName);
+          request.addEventListener("upgradeneeded", () => {
+            this.storeNames.forEach((storeName) => {
+              request.result.createObjectStore(storeName);
+            });
+          });
+          resolve(promisifyRequest(request));
+        });
       });
-      __publicField(this, "logger");
-      this.tag = tag;
-      this.tagReason = tagReason;
-      this.app = app;
-      this.logger = new Logger(app, void 0, void 0, 3);
     }
-    static initInstance(tag, tagReason, app) {
+    get(storeName, key) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).get(key);
+        return promisifyRequest(request);
+      });
+    }
+    getAll(storeName) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).getAll();
+        return promisifyRequest(request);
+      });
+    }
+    count(storeName) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const request = db.transaction(storeName, "readonly").objectStore(storeName).count();
+        return promisifyRequest(request);
+      });
+    }
+    set(storeName, key, value) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const transaction = db.transaction(storeName, "readwrite");
+        transaction.objectStore(storeName).put(value, key);
+        return promisifyTransaction(transaction);
+      });
+    }
+    remove(storeName, key) {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        const transaction = db.transaction(storeName, "readwrite");
+        transaction.objectStore(storeName).delete(key);
+        return promisifyTransaction(transaction);
+      });
+    }
+    clear() {
+      return __async(this, null, function* () {
+        const db = yield this.getDB();
+        yield Promise.all(this.storeNames.map((storeName) => {
+          const transaction = db.transaction(storeName, "readwrite");
+          transaction.objectStore(storeName).clear();
+          return promisifyTransaction(transaction);
+        }));
+      });
+    }
+    dispose() {
       var _a;
-      const performance2 = new _MikuPerformance(tag, tagReason, app);
-      performance2.pageLoadPerformance();
-      performance2.resourceLoadPerformance();
-      performance2.videoLoadPerformance();
-      _MikuPerformance.mikuPerformanceInstance = performance2;
-      const message = { mikuProxy: true, type: "get-perf-rid", rid: performance2.pageLogData.r_id };
-      (_a = navigator.serviceWorker.controller) == null ? void 0 : _a.postMessage(message);
-      return performance2;
+      (_a = this.db) == null ? void 0 : _a.close();
     }
-    pageLoadPerformance() {
-      let observer = new PerformanceObserver(
-        (list) => {
-          list.getEntries().forEach((entry) => {
-            if (entry.entryType === "navigation" && entry.initiatorType === "navigation") {
-              this.pageLogData.ts = Date.now();
-              this.pageLogData.url = window.location.href;
-              this.pageLogData.tag = this.tag;
-              this.pageLogData.t_window_load = formatMillisecondToSecond(
-                entry.loadEventEnd - entry.fetchStart
-              );
-              const paint = performance.getEntriesByType("paint");
-              paint.forEach((item) => {
-                if (item.name === "first-contentful-paint") {
-                  this.pageLogData.t_full_load = formatMillisecondToSecond(
-                    item.startTime
-                  );
-                } else if (item.name === "first-paint") {
-                  this.pageLogData.t_page_load = formatMillisecondToSecond(
-                    item.startTime
-                  );
-                }
-              });
-              Promise.resolve(this.tagReason).then((tagReason) => {
-                this.pageLogData.tag_reason = tagReason;
-                this.submitPageLoadLog();
-              });
-              observer.disconnect();
-            }
-          });
-        }
-      );
-      observer.observe({ entryTypes: ["navigation"] });
-    }
-    resourceLoadPerformance() {
-      let observer = new PerformanceObserver(
-        (list) => {
-          list.getEntries().forEach((entry) => {
-            if (entry.entryType === "resource" && entry.initiatorType !== "fetch") {
-              this.submitResourceLoadLog({
-                r_id: this.pageLogData.r_id,
-                ts: Date.now(),
-                url: entry.name,
-                t_page_perf: formatMillisecondToSecond(entry.duration)
-              });
-            }
-          });
-        }
-      );
-      observer.observe({ entryTypes: ["resource"] });
-    }
-    videoLoadPerformance() {
-      const hasAddEventMap = [];
-      const observer = new MutationObserver(() => {
-        const nodes = document.getElementsByTagName("video");
-        for (const node of Array.from(nodes)) {
-          const _node = node;
-          if (!hasAddEventMap.includes(_node)) {
-            hasAddEventMap.push(_node);
-            this.addVideoEventListener(_node);
-          }
-        }
-      });
-      observer.observe(document.body, { subtree: true, childList: true });
-    }
-    addVideoEventListener(node) {
-      let videoPerformanceLog = this.resetVideoLogData();
-      node.addEventListener("loadstart", (event) => {
-        if (videoPerformanceLog.path) {
-          this.submitVideoLoadLog(videoPerformanceLog);
-          videoPerformanceLog = this.resetVideoLogData();
-        }
-        videoPerformanceLog.ts_play = Date.now();
-        videoPerformanceLog.path = node.src;
-        try {
-          const url = new URL(node.src);
-          videoPerformanceLog.protocol = url.protocol.slice(0, -1);
-          videoPerformanceLog.domain = url.host;
-        } catch (e) {
-        }
-        videoPerformanceLog.start = event.timeStamp;
-      });
-      node.addEventListener("loadedmetadata", (event) => {
-        videoPerformanceLog.t_loaded_metadata = formatMillisecondToSecond(
-          event.timeStamp - videoPerformanceLog.start
-        );
-      });
-      node.addEventListener("loadeddata", (event) => {
-        if (!videoPerformanceLog.path) {
-          videoPerformanceLog.ts_play = Date.now();
-          videoPerformanceLog.path = node.src;
-          try {
-            const url = new URL(node.src.replace("blob:", ""));
-            videoPerformanceLog.protocol = url.protocol.slice(0, -1);
-            videoPerformanceLog.domain = url.host;
-          } catch (e) {
-          }
-          videoPerformanceLog.start = event.timeStamp;
-        }
-        videoPerformanceLog.t_loaded_data = formatMillisecondToSecond(
-          event.timeStamp - videoPerformanceLog.start
-        );
-        videoPerformanceLog.t_duration = Number(node.duration.toFixed(2));
-        videoPerformanceLog.playback_rate = node.playbackRate;
-        this.submitVideoLoadLog(videoPerformanceLog);
-        videoPerformanceLog.lastSubmitLogTime = performance.now();
-      });
-      node.addEventListener("seeking", () => {
-        videoPerformanceLog.isSeeking = true;
-        videoPerformanceLog.lastSeekingTime = performance.now();
-      });
-      node.addEventListener("playing", () => {
-        const now = performance.now();
-        videoPerformanceLog.lastPlayingTime = now;
-        if (videoPerformanceLog.lastWaitingTime) {
-          const waitingTime = now - videoPerformanceLog.lastWaitingTime;
-          videoPerformanceLog.t_jank_total += waitingTime;
-          videoPerformanceLog.t_play_total += waitingTime;
-          videoPerformanceLog.lastWaitingTime = 0;
-        }
-        if (videoPerformanceLog.lastSeekingTime) {
-          const seekingTime = now - videoPerformanceLog.lastSeekingTime;
-          videoPerformanceLog.t_seek_total += seekingTime;
-          videoPerformanceLog.t_play_total += seekingTime;
-          videoPerformanceLog.lastSeekingTime = 0;
-        }
-      });
-      node.addEventListener("timeupdate", () => {
-        if (performance.now() - videoPerformanceLog.lastSubmitLogTime > 1e3 * 10) {
-          this.submitVideoLoadLog(videoPerformanceLog);
-          videoPerformanceLog.lastSubmitLogTime = performance.now();
-        }
-      });
-      const stopOrPauseListener = () => {
-        const now = performance.now();
-        if (videoPerformanceLog.lastPlayingTime) {
-          const playingTime = now - videoPerformanceLog.lastPlayingTime;
-          videoPerformanceLog.t_play_total += playingTime;
-          videoPerformanceLog.lastPlayingTime = 0;
-        }
-        if (videoPerformanceLog.lastWaitingTime) {
-          const waitingTime = now - videoPerformanceLog.lastWaitingTime;
-          videoPerformanceLog.t_jank_total += waitingTime;
-          videoPerformanceLog.t_play_total += waitingTime;
-          videoPerformanceLog.lastWaitingTime = 0;
-        }
-        if (videoPerformanceLog.lastSeekingTime) {
-          const seekingTime = now - videoPerformanceLog.lastSeekingTime;
-          videoPerformanceLog.t_seek_total += seekingTime;
-          videoPerformanceLog.t_play_total += seekingTime;
-          videoPerformanceLog.lastSeekingTime = 0;
-        }
-        this.submitVideoLoadLog(videoPerformanceLog);
-        videoPerformanceLog.lastSubmitLogTime = performance.now();
-      };
-      node.addEventListener("pause", stopOrPauseListener);
-      node.addEventListener("stop", stopOrPauseListener);
-      node.addEventListener("waiting", () => {
-        const now = performance.now();
-        if (videoPerformanceLog.lastPlayingTime) {
-          const playingTime = now - videoPerformanceLog.lastPlayingTime;
-          videoPerformanceLog.t_play_total += playingTime;
-          videoPerformanceLog.lastPlayingTime = 0;
-        }
-        if (videoPerformanceLog.isSeeking) {
-          videoPerformanceLog.isSeeking = false;
-        } else {
-          videoPerformanceLog.lastWaitingTime = now;
-        }
-      });
-    }
-    submitResourceLoadLog(data) {
-      this.logger.log("PageResourceLoadLog", data);
-    }
-    submitPageLoadLog() {
-      this.logger.log("PageLoadLog", this.pageLogData);
-    }
-    submitVideoLoadLog(log) {
-      const now = performance.now();
-      const submitLog = {
-        r_id: log.r_id,
-        s_id: log.s_id,
-        ts: Date.now(),
-        protocol: log.protocol,
-        domain: log.domain,
-        path: log.path,
-        ts_play: log.ts_play,
-        t_loaded_metadata: log.t_loaded_metadata,
-        t_loaded_data: log.t_loaded_data,
-        playback_rate: log.playback_rate,
-        t_duration: log.t_duration,
-        t_play_total: log.lastPlayingTime ? formatMillisecondToSecond(
-          log.t_play_total + now - log.lastPlayingTime
-        ) : formatMillisecondToSecond(log.t_play_total),
-        t_jank_total: log.lastWaitingTime ? formatMillisecondToSecond(
-          log.t_jank_total + now - log.lastWaitingTime
-        ) : formatMillisecondToSecond(log.t_jank_total),
-        t_seek_total: log.lastSeekingTime ? formatMillisecondToSecond(
-          log.t_seek_total + now - log.lastSeekingTime
-        ) : formatMillisecondToSecond(log.t_seek_total)
-      };
-      this.logger.log("PageVideoLoadLog", submitLog);
-    }
-    resetVideoLogData() {
-      return {
-        ts: 0,
-        r_id: this.pageLogData.r_id,
-        s_id: uuid(),
-        protocol: "",
-        domain: "",
-        path: "",
-        ts_play: 0,
-        t_play_total: 0,
-        t_loaded_metadata: 0,
-        t_loaded_data: 0,
-        t_jank_total: 0,
-        t_seek_total: 0,
-        playback_rate: 0,
-        t_duration: 0,
-        start: 0,
-        isSeeking: false,
-        lastPlayingTime: 0,
-        lastWaitingTime: 0,
-        lastSeekingTime: 0,
-        lastSubmitLogTime: 0
-      };
-    }
-  };
-  let MikuPerformance = _MikuPerformance;
-  __publicField(MikuPerformance, "mikuPerformanceInstance");
-  const createPerformance = (app, hasMiku = true, tag) => __async(this, null, function* () {
-    const cache = yield caches.open(namespace);
-    const requestList = yield cache.keys();
+  }
+  function promisifyRequest(request) {
     return new Promise((resolve, reject) => {
-      if (MikuPerformance.mikuPerformanceInstance === void 0) {
-        if (tag) {
-          resolve(MikuPerformance.initInstance(
-            tag,
-            "",
-            app
-          ));
-          return;
+      request.addEventListener("success", () => resolve(request.result));
+      request.addEventListener("error", () => reject(request.error));
+    });
+  }
+  function promisifyTransaction(transaction) {
+    return new Promise((resolve, reject) => {
+      transaction.addEventListener("complete", () => resolve());
+      transaction.addEventListener("error", () => reject(transaction.error));
+      transaction.addEventListener("abort", () => reject(transaction.error));
+    });
+  }
+  const debug$5 = getDebug("dc");
+  const namespace = "miku/dc";
+  const itemStoreName = "item";
+  class DataCache {
+    constructor(config = {}) {
+      __publicField(this, "db", new DB(namespace, [itemStoreName]));
+      __publicField(this, "browserCache", null);
+      __publicField(this, "browserCachePromise", null);
+      this.config = config;
+    }
+    openBrowserCache() {
+      return __async(this, null, function* () {
+        if (this.browserCachePromise != null)
+          return this.browserCachePromise;
+        this.browserCachePromise = caches.open(namespace);
+        this.browserCachePromise.then((c) => {
+          this.browserCache = c;
+        });
+        return this.browserCachePromise;
+      });
+    }
+    getItem(key) {
+      return __async(this, null, function* () {
+        return this.db.get(itemStoreName, key);
+      });
+    }
+    setItem(key, item) {
+      return __async(this, null, function* () {
+        debug$5("setItem", key, item);
+        yield this.db.set(itemStoreName, key, item);
+      });
+    }
+    browserCacheMatch(request) {
+      return __async(this, null, function* () {
+        let browserCache = this.browserCache;
+        if (browserCache == null) {
+          browserCache = yield this.openBrowserCache();
         }
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.getRegistrations().then(function(registrations) {
-            return __async(this, null, function* () {
-              if (registrations.length === 0) {
-                resolve(
-                  MikuPerformance.initInstance(
-                    "direct",
-                    Promise.resolve(hasMiku).then((shouldHasMiku) => shouldHasMiku ? "sw_not_registered" : "no_miku"),
-                    app
-                  )
-                );
+        return browserCache.match(request);
+      });
+    }
+    browserCachePut(request, response) {
+      return __async(this, null, function* () {
+        let browserCache = this.browserCache;
+        if (browserCache == null) {
+          browserCache = yield this.openBrowserCache();
+        }
+        yield browserCache.put(request, response);
+      });
+    }
+    getContent(key, piece) {
+      return __async(this, null, function* () {
+        const cached = yield this.browserCacheMatch(getBrowserCacheKey(key, piece));
+        if (cached == null)
+          return void 0;
+        if (cached.body == null)
+          throw new Error("Body expected for cached response");
+        const response = createResponseFromNative(cached);
+        return response;
+      });
+    }
+    setContent(key, piece, content) {
+      return __async(this, null, function* () {
+        let forCache;
+        if (!supportResponseWithStream()) {
+          forCache = content.underlayer;
+        } else {
+          const { headers, body: body2 } = content;
+          forCache = new Response(body2, { status: 200, statusText: "OK", headers });
+        }
+        yield this.browserCachePut(getBrowserCacheKey(key, piece), forCache);
+      });
+    }
+    dispose() {
+      this.db.dispose();
+    }
+  }
+  function getBrowserCacheKey(key, piece) {
+    var _a;
+    return `${key}_with_range_${piece[0]}_${(_a = piece[1]) != null ? _a : ""}`;
+  }
+  class Context {
+    constructor(init) {
+      __publicField(this, "value");
+      this.value = init != null ? __spreadValues({}, init.value) : {};
+    }
+    set(key, value) {
+      this.value[key] = value;
+    }
+    get(key) {
+      return this.value[key];
+    }
+  }
+  class DownloadLogger {
+    constructor(logger2) {
+      this.logger = logger2;
+    }
+    log(logData) {
+      return this.logger.log("DownloadLog", logData);
+    }
+  }
+  class DoLogger {
+    constructor(logger2) {
+      this.logger = logger2;
+    }
+    log(logData) {
+      return this.logger.log("DoLog", logData);
+    }
+  }
+  const defaultAttempts = 3;
+  const debug$4 = getDebug("http");
+  const defaultMediaOptimization = {
+    threshold: 1024 * 1024 * 2,
+    contentRangeExposed: true
+  };
+  class Http {
+    constructor(logger2, client, patterns, mediaOptimization) {
+      __publicField(this, "downloadLogger");
+      __publicField(this, "doLogger");
+      __publicField(this, "mediaOptimization");
+      this.client = client;
+      this.patterns = patterns;
+      this.downloadLogger = new DownloadLogger(logger2);
+      this.doLogger = new DoLogger(logger2);
+      this.mediaOptimization = __spreadValues(__spreadValues({}, defaultMediaOptimization), mediaOptimization);
+    }
+    doWithResolved(ctx, request, resolved, currentRetryCount) {
+      return __async(this, null, function* () {
+        var _a;
+        const domain = new URL(request.url).host;
+        const startAt = Date.now();
+        let err;
+        let response;
+        try {
+          debug$4("fetch", request.url, "with resolved", resolved);
+          request.headers.set("X-Miku-Agent", `web-miku/v${version}`);
+          const resp = yield this.client.fetch(ctx, request, resolved);
+          debug$4("fetch", request.url, "succeeded with status", resp.status);
+          ctx.set("downloadStatus", resp.status);
+          ctx.set("downloadReqID", (_a = resp.headers.get("x-reqid")) != null ? _a : "");
+          if (resp.status === 429 || resp.status >= 500)
+            throw new UnexpectedHttpStatusError(resp);
+          response = resp;
+          return response;
+        } catch (e) {
+          debug$4("fetch", request.url, "with resolved", resolved, "failed:", e);
+          err = e;
+          throw e;
+        } finally {
+          const requestRange = request.headers.get("Range");
+          const range = requestRange == null ? null : parseRange(requestRange);
+          const reqMessageAt = ctx.get("downloadReqMessageAt");
+          const connectionAt = ctx.get("downloadConnectionAt");
+          const startTransferAt = ctx.get("downloadStartTransferAt");
+          const respMessageAt = ctx.get("downloadRespMessageAt");
+          const doDownloadLog = (extra) => {
+            var _a2, _b, _c, _d, _e, _f, _g;
+            return this.downloadLogger.log(__spreadValues({
+              ip: resolved.split(":")[0],
+              domain,
+              range_st: (_a2 = range == null ? void 0 : range.start) != null ? _a2 : -1,
+              range_end: (_b = range == null ? void 0 : range.end) != null ? _b : -1,
+              retry: currentRetryCount,
+              ftask_id: (_c = ctx.get("downloadFileTaskID")) != null ? _c : "",
+              task_id: (_d = ctx.get("taskID")) != null ? _d : "",
+              d_id: (_e = ctx.get("doID")) != null ? _e : "",
+              ts_st: startAt,
+              r_id: (_f = ctx.get("downloadReqID")) != null ? _f : "",
+              status_code: (_g = ctx.get("downloadStatus")) != null ? _g : -1,
+              t_req_msg: timeMinus(reqMessageAt, startAt),
+              t_conn: timeMinus(connectionAt, reqMessageAt != null ? reqMessageAt : startAt),
+              t_tls: -1,
+              t_st_trans: timeMinus(startTransferAt, connectionAt),
+              t_resp_msg: timeMinus(respMessageAt, startTransferAt),
+              err_msg: "",
+              err_desc: "",
+              t_content_trans: -1,
+              t_total: -1,
+              resp_size: -1
+            }, extra));
+          };
+          const onDownloadError = (e) => {
+            const finishAt = Date.now();
+            doDownloadLog(__spreadValues({
+              t_total: timeMinus(finishAt, startAt)
+            }, getErrInfo(e)));
+          };
+          const onDownloadTransfered = (size) => {
+            const finishAt = Date.now();
+            doDownloadLog({
+              t_content_trans: timeMinus(finishAt, respMessageAt != null ? respMessageAt : startTransferAt),
+              t_total: timeMinus(finishAt, startAt),
+              resp_size: size
+            });
+          };
+          if (response == null) {
+            onDownloadError(err);
+          } else {
+            response.bodyReadResult.then((bodyReadResult) => {
+              if (bodyReadResult.success) {
+                onDownloadTransfered(bodyReadResult.size);
               } else {
-                try {
-                  if (requestList.length) {
-                    resolve(
-                      MikuPerformance.initInstance(
-                        "cache",
-                        "",
-                        app
-                      )
-                    );
-                  } else {
-                    resolve(
-                      MikuPerformance.initInstance(
-                        "nocache",
-                        "",
-                        app
-                      )
-                    );
-                  }
-                } catch (e) {
-                  reject(e);
-                }
+                onDownloadError(bodyReadResult.error);
               }
             });
-          }).catch((e) => {
-            reject(e);
-          });
-        } else {
-          resolve(MikuPerformance.initInstance(
-            "direct",
-            Promise.resolve(hasMiku).then((shouldHasMiku) => shouldHasMiku ? "sw_not_supported" : "no_miku"),
-            app
-          ));
+          }
         }
-      } else {
-        resolve(MikuPerformance.mikuPerformanceInstance);
+      });
+    }
+    originalDo(ctx, request) {
+      return __async(this, null, function* () {
+        if (request.signal.aborted)
+          throw request.signal.reason;
+        let currentRetryCount = -1;
+        let finalResp;
+        yield this.client.resolve(ctx, request, defaultAttempts, (resolved) => __async(this, null, function* () {
+          currentRetryCount++;
+          const newCtx = new Context(ctx);
+          finalResp = yield this.doWithResolved(newCtx, request, resolved, currentRetryCount);
+        }));
+        if (finalResp == null)
+          throw new Error(`Http do failed: resolver do finished with no finalResp, url: ${request.url}`);
+        return finalResp;
+      });
+    }
+    do(ctx, request) {
+      return __async(this, null, function* () {
+        const startAt = Date.now();
+        const id = uuid();
+        ctx.set("doID", id);
+        let response;
+        let err = null;
+        try {
+          if (!supportStreamOperation() || this.mediaOptimization.threshold <= 0) {
+            response = yield this.originalDo(ctx, request);
+          } else {
+            response = yield withMediaOptimization(
+              (...args) => this.originalDo(...args),
+              nativeDo,
+              this.mediaOptimization,
+              this.patterns
+            )(ctx, request);
+          }
+          return response;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const { onDoError, onDoResponsed } = this.getDoLog(ctx, id, startAt);
+          response == null ? onDoError(err) : onDoResponsed(response.status);
+        }
+      });
+    }
+    getDoLog(ctx, id, startAt) {
+      const doDoLog = (extra) => {
+        var _a;
+        return this.doLogger.log(__spreadValues({
+          lookup_type: true,
+          t_lookup: (_a = ctx.get("dnsResolveFromCache") === true ? 0 : ctx.get("dnsResolveTotalTime")) != null ? _a : -1,
+          t_total: -1,
+          ts_st: startAt,
+          err_desc: "",
+          err_msg: "",
+          status_code: -1,
+          task_id: ctx.get("taskID"),
+          id
+        }, extra));
+      };
+      const onDoError = (e) => {
+        const finishAt = Date.now();
+        doDoLog(__spreadValues({
+          t_total: timeMinus(finishAt, startAt)
+        }, getErrInfo(e)));
+      };
+      const onDoResponsed = (status) => {
+        const finishAt = Date.now();
+        doDoLog({
+          t_total: timeMinus(finishAt, startAt),
+          status_code: status
+        });
+      };
+      return { onDoError, onDoResponsed };
+    }
+  }
+  const defaultHttpsPort$1 = 443;
+  function withNodeHost(request, nodeHost) {
+    const { url: originalUrl, headers, method, redirect, signal } = request;
+    const urlObject = new URL(originalUrl);
+    const originalHost = urlObject.host;
+    const [nodeHostname, nodeBasePort] = parseHost(nodeHost);
+    const nodeHttpsPort = nodeBasePort + defaultHttpsPort$1;
+    urlObject.protocol = "https:";
+    urlObject.host = `${nodeHostname}:${nodeHttpsPort}`;
+    urlObject.pathname = `/${originalHost}${urlObject.pathname}`;
+    return createNativeRequest$1(urlObject.toString(), { headers, method, redirect, signal });
+  }
+  function withMediaOptimization(originalDo, initialDo, { threshold, contentRangeExposed }, patterns) {
+    return function optimizedDo(ctx, request) {
+      return __async(this, null, function* () {
+        var _b, _c;
+        const _a = request, { url } = _a, reqExtra = __objRest(_a, ["url"]);
+        const urlWithoutQueryHash = removeQueryHash(url);
+        if (request.method !== "GET" || !patterns.media.some((r) => r.test(urlWithoutQueryHash)))
+          return originalDo(ctx, request);
+        debug$4("doWithInitialOptimization", url);
+        const initialCtx = new Context(ctx);
+        const initalReq = new HttpRequest(url, reqExtra);
+        const initialDoWithContentRange = (ctx2, req) => __async(this, null, function* () {
+          var _a2;
+          let totalSizePromise = null;
+          const range = httpGetRange(req.headers);
+          if (range != null && !isRangeFull(range) && !contentRangeExposed) {
+            totalSizePromise = getTotalSize(url, reqExtra.headers, initialDo);
+          }
+          const resp = yield initialDo(ctx2, req);
+          if (range != null && resp.status === 206 && !resp.headers.get("Content-Range")) {
+            const totalSize = isRangeFull(range) ? httpGetContentLength(resp.headers) : yield totalSizePromise;
+            if (totalSize != null) {
+              const contentRange = stringifyContentRange({
+                start: range.start,
+                end: (_a2 = range.end) != null ? _a2 : totalSize - 1,
+                totalSize
+              });
+              resp.headers.set("Content-Range", contentRange);
+            }
+          }
+          return resp;
+        });
+        const initialResp = yield initialDoWithContentRange(initialCtx, initalReq);
+        const contentLength = httpGetContentLength(initialResp.headers);
+        if (contentLength != null && contentLength <= threshold)
+          return initialResp;
+        const followingHeaders = new Headers(reqExtra.headers);
+        const followingRange = (_b = httpGetRange(followingHeaders)) != null ? _b : { start: null, end: null };
+        followingRange.start = ((_c = followingRange.start) != null ? _c : 0) + threshold;
+        if (followingRange.end != null && followingRange.end < followingRange.start)
+          return initialResp;
+        debug$4("doWithInitialOptimization followingRange", followingRange);
+        followingHeaders.set("Range", stringifyRange(followingRange));
+        const followingReq = new HttpRequest(url, __spreadProps(__spreadValues({}, reqExtra), {
+          headers: followingHeaders
+        }));
+        const _d = initialResp, { body: initialBody } = _d, initialRespExtra = __objRest(_d, ["body"]);
+        const stream = new TransformStream();
+        if (initialBody == null)
+          throw new Error(`Body expected for initial response of ${url}`);
+        slice(initialBody, [0, threshold]).pipeTo(stream.writable, { preventClose: true }).then(
+          () => __async(this, null, function* () {
+            debug$4("doWithInitialOptimization initialBody transfered");
+            const followingResp = yield originalDo(ctx, followingReq);
+            if (followingResp.body == null)
+              throw new Error(`Body expected for following response of ${url}`);
+            const followingBody = followingResp.status === 206 ? followingResp.body : slice(followingResp.body, [followingRange.start, followingRange.end == null ? null : followingRange.end + 1]);
+            followingBody.pipeTo(stream.writable).then(
+              () => debug$4("doWithInitialOptimization followingBody transfered"),
+              (e) => debug$4("doWithInitialOptimization followingBody transfer errored", e)
+            );
+          }),
+          (e) => __async(this, null, function* () {
+            debug$4("doWithInitialOptimization initialBody transfer errored", e);
+          })
+        );
+        return new HttpResponse(stream.readable, initialRespExtra);
+      });
+    };
+  }
+  function createNativeRequest$1(url, init) {
+    return new Request(url, __spreadValues({
+      mode: "cors",
+      credentials: "omit"
+    }, init));
+  }
+  function nativeDo(ctx, request) {
+    return __async(this, null, function* () {
+      const _a = request, { url } = _a, others = __objRest(_a, ["url"]);
+      const nativeRequest = createNativeRequest$1(url, others);
+      const nativeResponse = yield fetch(nativeRequest);
+      return createResponseFromNative(nativeResponse);
+    });
+  }
+  function getTotalSize(reqUrl, reqHeaders, initialDo) {
+    return __async(this, null, function* () {
+      const headers = new Headers(reqHeaders);
+      headers.delete("Range");
+      const resp = yield initialDo(new Context(), new HttpRequest(reqUrl, {
+        method: "HEAD",
+        headers
+      }));
+      return httpGetContentLength(resp.headers);
+    });
+  }
+  class Task {
+    constructor(url, range, expiry, startByClient) {
+      __publicField(this, "id", uuid());
+      __publicField(this, "priority", 0);
+      __publicField(this, "abortCtrl", new AbortController());
+      __publicField(this, "started", false);
+      this.url = url;
+      this.range = range;
+      this.expiry = expiry;
+      this.startByClient = startByClient;
+    }
+    get signal() {
+      return this.abortCtrl.signal;
+    }
+    setPriority(priority) {
+      this.priority = priority;
+    }
+    start() {
+      return __async(this, null, function* () {
+        if (this.started) {
+          throw new Error("Task already started");
+        }
+        this.started = true;
+        return this.startByClient(this);
+      });
+    }
+    cancel(reason) {
+      this.abortCtrl.abort(reason);
+    }
+  }
+  class Result {
+    constructor(stream, size, fileSize, contentType, underlayer) {
+      this.stream = stream;
+      this.size = size;
+      this.fileSize = fileSize;
+      this.contentType = contentType;
+      this.underlayer = underlayer;
+    }
+    blob() {
+      return __async(this, null, function* () {
+        const stream = this.stream;
+        const reader = stream.getReader();
+        const parts = [];
+        while (true) {
+          const { done, value } = yield reader.read();
+          if (done)
+            break;
+          const arrayBuffer = value;
+          parts.push(arrayBuffer);
+        }
+        return new Blob(parts);
+      });
+    }
+  }
+  function makeRange(totalSize, start, end) {
+    if (totalSize != null && end != null) {
+      if (end >= totalSize)
+        end = null;
+    }
+    if (start == null || start < 0)
+      start = 0;
+    return [start, end];
+  }
+  function isFull(totalSize, range) {
+    var _a;
+    const startFull = ((_a = range[0]) != null ? _a : 0) === 0;
+    const endFull = range[1] == null || totalSize != null && range[1] === totalSize;
+    return startFull && endFull;
+  }
+  function getRangeSize(totalSize, range) {
+    var _a, _b;
+    const start = (_a = range[0]) != null ? _a : 0;
+    const end = (_b = range[1]) != null ? _b : totalSize;
+    return end == null ? null : end - start;
+  }
+  function applyRange(range, fsize, pieces) {
+    var _a, _b;
+    if (fsize === 0)
+      return [];
+    const endGt = (num1, num2) => {
+      return gt(num1, num2, fsize != null ? fsize : Number.POSITIVE_INFINITY);
+    };
+    const start = (_a = range == null ? void 0 : range[0]) != null ? _a : 0;
+    const end = (_b = range == null ? void 0 : range[1]) != null ? _b : fsize;
+    const result = [];
+    let applyFrom = start;
+    for (const p of pieces) {
+      if (applyFrom == null)
+        break;
+      if (fsize != null && p[1] != null && p[1] > fsize)
+        break;
+      if (p[1] != null && applyFrom >= p[1])
+        continue;
+      if (end == null || end > p[0]) {
+        if (p[0] > applyFrom) {
+          result.push({
+            cached: false,
+            range: makeRange(fsize, applyFrom, p[0])
+          });
+        }
+        const cacheStart = endGt(p[0], applyFrom) ? p[0] : applyFrom;
+        const cacheEnd = endGt(p[1], end) ? end : p[1];
+        if (endGt(cacheEnd, cacheStart)) {
+          result.push({
+            cached: true,
+            range: makeRange(fsize, cacheStart, cacheEnd)
+          });
+          applyFrom = cacheEnd;
+        }
+        continue;
+      }
+      break;
+    }
+    if (endGt(end, applyFrom)) {
+      result.push({
+        cached: false,
+        range: makeRange(fsize, applyFrom, end)
+      });
+    }
+    return result;
+  }
+  function findPiece(pieces, range) {
+    var _a;
+    const rangeStart = (_a = range[0]) != null ? _a : 0;
+    const rangeEnd = range[1];
+    for (const piece of pieces) {
+      if (piece[1] != null && piece[1] <= rangeStart)
+        continue;
+      if (piece[0] > rangeStart)
+        break;
+      const start = rangeStart - piece[0];
+      const end = minus(rangeEnd != null ? rangeEnd : piece[1], piece[0]);
+      return { piece, start, end };
+    }
+    throw new Error("Piece not found");
+  }
+  function addPiece(pieces, piece) {
+    return [...pieces, piece].sort(
+      (piece1, piece2) => piece1[0] - piece2[0]
+    );
+  }
+  function gt(num1, num2, nullAs) {
+    const val1 = num1 != null ? num1 : nullAs;
+    const val2 = num2 != null ? num2 : nullAs;
+    return val1 > val2;
+  }
+  function minus(num1, num2) {
+    return num1 == null || num2 == null ? null : num1 - num2;
+  }
+  class TaskLogger {
+    constructor(logger2) {
+      this.logger = logger2;
+    }
+    log(logData) {
+      return this.logger.log("TaskLog", logData);
+    }
+  }
+  const debug$3 = getDebug("ftask");
+  class FileTask {
+    constructor(cache, http, key, url, logger2) {
+      __publicField(this, "id", uuid());
+      __publicField(this, "inited");
+      __publicField(this, "cachePieces", []);
+      __publicField(this, "taskLogger");
+      __publicField(this, "meta", null);
+      this.cache = cache;
+      this.http = http;
+      this.key = key;
+      this.url = url;
+      this.taskLogger = new TaskLogger(logger2);
+      this.inited = this.resume();
+    }
+    startTask(task) {
+      return __async(this, null, function* () {
+        const startAt = Date.now();
+        const ctx = new Context();
+        ctx.set("taskID", task.id);
+        let result;
+        let err = null;
+        try {
+          result = yield this._startTask(ctx, task);
+          return result;
+        } catch (e) {
+          err = e;
+          throw e;
+        } finally {
+          const { logOnTaskError, logOnTaskTransfered } = this.logTask(ctx, task, startAt);
+          if (result == null) {
+            logOnTaskError(err);
+          } else {
+            result.underlayer.bodyReadResult.then((readResult) => {
+              if (readResult.success) {
+                logOnTaskTransfered();
+              } else {
+                logOnTaskError(readResult.error);
+              }
+            });
+          }
+        }
+      });
+    }
+    logTask(ctx, task, startAt) {
+      const cacheMatchAt = ctx.get("taskCacheMatchAt");
+      const httpDoAt = ctx.get("task1stHttpDoAt");
+      const resultStreamAt = ctx.get("taskResultStreamAt");
+      const resultAt = Date.now();
+      const doTaskLog = (extra) => {
+        var _a, _b, _c, _d;
+        return this.taskLogger.log(__spreadValues({
+          id: task.id,
+          url: task.url,
+          err_msg: "",
+          err_desc: "",
+          range_st: (_b = (_a = task.range) == null ? void 0 : _a.start) != null ? _b : -1,
+          range_end: (_d = (_c = task.range) == null ? void 0 : _c.end) != null ? _d : -1,
+          ts_st: startAt,
+          t_cc_match: timeMinus(cacheMatchAt, startAt),
+          t_http_do: timeMinus(httpDoAt, cacheMatchAt),
+          t_res_stream: timeMinus(resultStreamAt, cacheMatchAt),
+          t_res: timeMinus(resultAt, resultStreamAt),
+          t_trans: -1,
+          t_total: -1
+        }, extra));
+      };
+      const logOnTaskError = (e) => {
+        const finishAt = Date.now();
+        doTaskLog(__spreadValues({
+          t_total: timeMinus(finishAt, startAt)
+        }, getErrInfo(e)));
+      };
+      const logOnTaskTransfered = () => {
+        const finishAt = Date.now();
+        doTaskLog({
+          t_trans: timeMinus(finishAt, resultAt),
+          t_total: timeMinus(finishAt, startAt)
+        });
+      };
+      return { logOnTaskError, logOnTaskTransfered };
+    }
+    _startTask(ctx, task) {
+      return __async(this, null, function* () {
+        var _a;
+        debug$3("_startTask", task.url);
+        let response;
+        const range = task.range != null ? [task.range.start, task.range.end] : [0, null];
+        if (!supportStreamOperation()) {
+          debug$3("supportStreamOperation: false", task.url, task.id);
+          const piece = [(_a = range[0]) != null ? _a : 0, range[1]];
+          const cachedResponse = yield this.cache.getContent(this.key, piece);
+          ctx.set("taskCacheMatchAt", Date.now());
+          if (cachedResponse != null) {
+            debug$3("use cache", task.url, task.id);
+            response = cachedResponse;
+          } else {
+            debug$3("doRequestAndSaveCache", task.url, task.id);
+            response = yield this.doRequestAndSaveCache(ctx, task, range);
+          }
+          ctx.set("taskResultStreamAt", Date.now());
+        } else {
+          response = yield this.readRangeByPieces(ctx, task, range);
+        }
+        yield this.inited;
+        const meta = this.meta;
+        if (meta == null)
+          throw new Error("Missing meta in fileTask");
+        debug$3("_startTask resolved", task.url, task.id);
+        const size = getRangeSize(meta.fsize, range);
+        return new Result(response.body, size, meta.fsize, meta.contentType, response);
+      });
+    }
+    readRangeByPieces(ctx, task, range) {
+      return __async(this, null, function* () {
+        var _a, _b, _c, _d;
+        yield this.inited;
+        const pieces = applyRange(range, (_b = (_a = this.meta) == null ? void 0 : _a.fsize) != null ? _b : null, this.cachePieces);
+        debug$3("applyRange", range, (_d = (_c = this.meta) == null ? void 0 : _c.fsize) != null ? _d : null, this.cachePieces, pieces);
+        ctx.set("taskCacheMatchAt", Date.now());
+        const stream = new TransformStream(void 0);
+        const firstResp = yield new Promise((resolve, reject) => __async(this, null, function* () {
+          try {
+            for (let i = 0; i < pieces.length; i++) {
+              const { cached, range: range2 } = pieces[i];
+              const pieceResp = yield cached ? this.readPieceFromLocal(ctx, task, range2) : this.readPieceFromRemote(ctx, task, range2);
+              const isFirst = i === 0;
+              if (isFirst)
+                resolve(pieceResp);
+              const isLast = i === pieces.length - 1;
+              yield pieceResp.body.pipeTo(stream.writable, {
+                preventClose: !isLast
+              });
+            }
+          } catch (e) {
+            if (e != null)
+              console.warn("readRange stream error for", this.url, e);
+            stream.writable.abort(e);
+            reject(e);
+          }
+        }));
+        ctx.set("taskResultStreamAt", Date.now());
+        return new HttpResponse(stream.readable, firstResp);
+      });
+    }
+    readPieceFromLocal(ctx, task, range) {
+      return __async(this, null, function* () {
+        debug$3("readPieceFromLocal", task.url, range);
+        const { piece, start, end } = findPiece(this.cachePieces, range);
+        const pieceResponse = yield this.cache.getContent(this.key, piece);
+        if (pieceResponse == null) {
+          console.warn(`Missing cache item: ${this.key} [${piece})`);
+          return this.readPieceFromRemote(ctx, task, range);
+        }
+        return new HttpResponse(slice(pieceResponse.body, [start, end]), pieceResponse);
+      });
+    }
+    fileSize() {
+      var _a, _b;
+      return (_b = (_a = this.meta) == null ? void 0 : _a.fsize) != null ? _b : null;
+    }
+    readPieceFromRemote(ctx, task, range) {
+      return __async(this, null, function* () {
+        debug$3("readPieceFromRemote", task.url, range);
+        const response = yield this.doRequestAndSaveCache(ctx, task, range);
+        if (!isFull(this.fileSize(), range) && response.status === 200) {
+          console.warn("Range request not supported for", this.url);
+          return new HttpResponse(slice(response.body, range), response);
+        } else {
+          return response;
+        }
+      });
+    }
+    doRequest(_ctx, task, range) {
+      return __async(this, null, function* () {
+        const ctx = new Context(_ctx);
+        ctx.set("downloadFileTaskID", this.id);
+        const headers = {
+          "Accept-Encoding": "identity;q=1, *;q=0"
+        };
+        if (range != null) {
+          const uselessRange = task.range == null && isFull(this.fileSize(), range);
+          if (!uselessRange) {
+            headers["Range"] = stringifyRange({ start: range[0], end: range[1] == null ? null : range[1] - 1 });
+          }
+        }
+        const request = new HttpRequest(this.url, { method: "GET", headers, signal: task.signal });
+        const response = yield this.http.do(ctx, request);
+        if (response.body == null)
+          throw new Error("Body expected");
+        if (response.status !== 200 && response.status !== 206)
+          throw new UnexpectedHttpStatusError(response);
+        this.saveMeta(response);
+        response.bodyReadResult.then((bodyReadResult) => {
+          debug$3(`bodyReadResult for ${this.url}:`, bodyReadResult);
+        });
+        return response;
+      });
+    }
+    doRequestAndSaveCache(ctx, task, range) {
+      return __async(this, null, function* () {
+        if (ctx.get("task1stHttpDoAt") == null) {
+          ctx.set("task1stHttpDoAt", Date.now());
+        }
+        const response = yield this.doRequest(ctx, task, range);
+        const responseForUse = this.saveCachePiece(task, range, response);
+        return responseForUse;
+      });
+    }
+    saveCachePiece(task, range, response) {
+      return __async(this, null, function* () {
+        var _a, _b;
+        let forUse = response;
+        let forCache;
+        if (supportStreamOperation()) {
+          const { main: bodyForUse, minor: bodyForCache } = teeWithMain(response.body);
+          forUse = new HttpResponse(bodyForUse, response);
+          forCache = new HttpResponse(bodyForCache, response);
+        } else if (!task.range) {
+          const nativeResponseForCache = response.underlayer.clone();
+          forCache = createResponseFromNative(nativeResponseForCache);
+        }
+        if (forCache != null) {
+          const piece = [(_a = range == null ? void 0 : range[0]) != null ? _a : 0, (_b = range == null ? void 0 : range[1]) != null ? _b : null];
+          debug$3("saveCachePiece", this.url, piece);
+          this.cache.setContent(this.key, piece, forCache).then(() => {
+            this.cachePieces = addPiece(this.cachePieces, piece);
+            return this.save();
+          }).then(
+            () => debug$3("saveCachePiece finish", this.url, piece),
+            (e) => debug$3("saveCachePiece failed", this.url, e)
+          );
+        }
+        return forUse;
+      });
+    }
+    saveMeta(response) {
+      return __async(this, null, function* () {
+        this.meta = {
+          contentType: response.headers.get("Content-Type"),
+          fsize: getFileSize(response)
+        };
+        yield this.save();
+      });
+    }
+    resume() {
+      return __async(this, null, function* () {
+        const item = yield this.cache.getItem(this.key);
+        if (item == null || item.meta == null)
+          return;
+        this.meta = item.meta;
+        this.cachePieces = item.pieces;
+      });
+    }
+    save() {
+      return __async(this, null, function* () {
+        const item = {
+          meta: this.meta,
+          pieces: this.cachePieces
+        };
+        yield this.cache.setItem(this.key, item);
+      });
+    }
+  }
+  const debug$2 = getDebug("utils/taskq");
+  class TaskQueue {
+    constructor(jobs) {
+      __publicField(this, "tasks", []);
+      __publicField(this, "emitter", new Emitter());
+      __publicField(this, "running", true);
+      for (let i = 0; i < jobs; i++) {
+        this.comsumeLoop();
+      }
+    }
+    add(task) {
+      let i = 0;
+      for (; i < this.tasks.length; i++) {
+        if (this.tasks[i].priority >= task.priority) {
+          break;
+        }
+      }
+      this.tasks.splice(i, 0, task);
+      this.emitter.emit("task");
+    }
+    pop() {
+      return __async(this, null, function* () {
+        const task = this.tasks.pop();
+        if (task != null)
+          return task;
+        return new Promise((resolve) => {
+          const off = this.emitter.on("task", () => {
+            const task2 = this.tasks.pop();
+            if (task2 != null) {
+              resolve(task2);
+              off();
+            }
+          });
+        });
+      });
+    }
+    consumeTask() {
+      return __async(this, null, function* () {
+        if (!this.running)
+          return;
+        const task = yield this.pop();
+        debug$2("run task", task.name, ", with priority:", task.priority);
+        try {
+          yield task == null ? void 0 : task.run();
+        } catch (e) {
+          console.warn("Task run failed:", e);
+        } finally {
+          debug$2("end task", task.name);
+        }
+      });
+    }
+    comsumeLoop() {
+      return __async(this, null, function* () {
+        while (this.running) {
+          yield this.consumeTask();
+        }
+      });
+    }
+    dispose() {
+      this.emitter.dispose();
+      this.running = false;
+    }
+  }
+  const defaultWorkersCount = 10;
+  class HowHttpClientBase {
+    constructor(resolver, workersCount) {
+      __publicField(this, "taskq");
+      this.resolver = resolver;
+      this.taskq = new TaskQueue(workersCount != null ? workersCount : defaultWorkersCount);
+    }
+    getFingerprint(ipPort) {
+      return this.resolver.getFingerprint(ipPort);
+    }
+    resolve(ctx, request, attempts, job) {
+      return this.resolver.do(ctx, request.url, attempts, false, job);
+    }
+    fetch(ctx, request, resolvedIP) {
+      return __async(this, null, function* () {
+        return new Promise((resolve) => this.taskq.add({
+          name: request.url,
+          priority: 0,
+          run: () => __async(this, null, function* () {
+            const newRequest = withNodeIP(request, resolvedIP);
+            const res = this._fetch(ctx, newRequest);
+            resolve(res);
+            const resp = yield res;
+            yield resp.bodyReadResult;
+          })
+        }));
+      });
+    }
+  }
+  function withNodeIP(originalReq, nodeIP) {
+    const { url: originalUrl, method, headers: originalHeaders, signal, body: body2 } = originalReq;
+    const urlObject = new URL(originalUrl);
+    const originalHost = urlObject.host;
+    urlObject.host = nodeIP;
+    const headers = new Headers(originalHeaders);
+    headers.set("Host", originalHost);
+    return new HttpRequest(urlObject.toString(), { method, headers, signal, body: body2 });
+  }
+  class HoWHttpClientForWindow extends HowHttpClientBase {
+    constructor(resolver, pcConnectTimeout, dcOpenTimeout, workersCount = defaultWorkersCount) {
+      super(resolver, workersCount);
+      __publicField(this, "hoW");
+      if (isInServiceWorker())
+        throw new Error("HoWHttpClientForWindow should not be used in Service Worker");
+      this.hoW = new HoW(pcConnectTimeout, dcOpenTimeout);
+    }
+    _fetch(ctx, request) {
+      return __async(this, null, function* () {
+        var _a, _b;
+        const id = uuid();
+        const fingerprint = this.getFingerprint(new URL(request.url).host);
+        const resp = yield this.hoW.fetch(ctx, id, request, fingerprint);
+        ctx.set("downloadConnectionAt", (_a = ctx.get("hoWDataChannelOpenAt")) != null ? _a : -1);
+        ctx.set("downloadStartTransferAt", (_b = ctx.get("hoWStartTransferAt")) != null ? _b : -1);
+        return resp;
+      });
+    }
+    dispose() {
+      this.hoW.dispose();
+    }
+  }
+  function isInServiceWorker() {
+    const scope2 = self;
+    return !!(scope2.clients && scope2.registration);
+  }
+  class Client {
+    constructor(appInfo, config) {
+      __publicField(this, "fileTasks", /* @__PURE__ */ new Map());
+      __publicField(this, "cache");
+      __publicField(this, "cacheUrlFn");
+      __publicField(this, "resolver");
+      __publicField(this, "http");
+      __publicField(this, "logger");
+      var _a, _b, _c;
+      if (config == null ? void 0 : config.debug)
+        enableDebug();
+      this.cache = new DataCache(config == null ? void 0 : config.cache);
+      this.cacheUrlFn = (_a = config == null ? void 0 : config.cacheUrl) != null ? _a : defaultHash;
+      this.logger = (_b = config == null ? void 0 : config.logger) != null ? _b : new Logger(appInfo);
+      this.resolver = new Resolver(this.logger, appInfo, config == null ? void 0 : config.dnsResolver);
+      const httpClient = (_c = config == null ? void 0 : config.httpClient) != null ? _c : new HoWHttpClientForWindow(this.resolver);
+      const patterns = __spreadValues(__spreadValues({}, defaultPatterns), config == null ? void 0 : config.patterns);
+      this.http = new Http(this.logger, httpClient, patterns, config == null ? void 0 : config.mediaOptimization);
+    }
+    createTask(url, range) {
+      const hashIdx = url.indexOf("#");
+      if (hashIdx >= 0) {
+        url = url.slice(0, hashIdx);
+      }
+      return new Task(url, range != null ? range : null, Number.POSITIVE_INFINITY, (t) => {
+        return this.startTask(t);
+      });
+    }
+    fileTaskFor(task) {
+      const key = this.cacheUrlFn(task.url);
+      let fileTask = this.fileTasks.get(key);
+      if (fileTask == null) {
+        fileTask = new FileTask(this.cache, this.http, key, task.url, this.logger);
+        this.fileTasks.set(key, fileTask);
+      }
+      return fileTask;
+    }
+    startTask(task) {
+      const fileTask = this.fileTaskFor(task);
+      const result = fileTask.startTask(task);
+      return result;
+    }
+    dispose() {
+      this.cache.dispose();
+    }
+  }
+  function defaultHash(url) {
+    return url;
+  }
+  const defaultHttpsPort = 443;
+  class DipHttpClient {
+    constructor(resolver) {
+      this.resolver = resolver;
+    }
+    resolve(ctx, request, attempts, job) {
+      return __async(this, null, function* () {
+        return this.resolver.do(ctx, request.url, attempts, true, job);
+      });
+    }
+    fetch(ctx, request, resolvedHost) {
+      return __async(this, null, function* () {
+        const nativeRequest = transformRequest(request, resolvedHost);
+        const nativeResponse = yield fetch(nativeRequest);
+        const now = Date.now();
+        ctx.set("downloadConnectionAt", now);
+        ctx.set("downloadStartTransferAt", now);
+        const resp = createResponseFromNative(nativeResponse);
+        return resp;
+      });
+    }
+    dispose() {
+    }
+  }
+  function createNativeRequest(url, init) {
+    return new Request(url, __spreadValues({
+      mode: "cors",
+      credentials: "omit"
+    }, init));
+  }
+  function transformRequest(request, resolvedHost) {
+    const { url: originalUrl, headers: originalHeaders, method, signal } = request;
+    const urlObject = new URL(originalUrl);
+    const originalHost = urlObject.host;
+    const headers = new Headers(originalHeaders);
+    const [nodeHostname, nodeBasePort] = parseHost(resolvedHost);
+    const nodeHttpsPort = nodeBasePort + defaultHttpsPort;
+    urlObject.protocol = "https:";
+    urlObject.host = `${nodeHostname}:${nodeHttpsPort}`;
+    urlObject.pathname = `/${originalHost}${urlObject.pathname}`;
+    let url = urlObject.toString();
+    if (headers.has("X-Miku-Agent")) {
+      const mikuAgent = headers.get("X-Miku-Agent");
+      headers.delete("X-Miku-Agent");
+      const sep = url.includes("?") ? "&" : "?";
+      const extra = ["X-Miku-Agent", mikuAgent].map(encodeURIComponent).join("=");
+      url = url + sep + extra;
+    }
+    return createNativeRequest(url, {
+      headers,
+      method,
+      signal,
+      keepalive: true
+    });
+  }
+  function isProxyMessage(message) {
+    return message && message.mikuProxy === true;
+  }
+  const debug$1 = getDebug("proxy/common");
+  function proxyRequest(client, request) {
+    return __async(this, null, function* () {
+      var _a, _b;
+      const { browser } = uaParser(navigator.userAgent);
+      if (browser.name === "Firefox" && request.headers.get("Range")) {
+        debug$1("Short circuit for Firefox:", request.url);
+        const nodeHost = yield client["resolver"].resolveUrl(new Context(), request.url, true);
+        const newRequest = withNodeHost(request, nodeHost);
+        const response2 = Response.redirect(newRequest.url);
+        return response2;
+      }
+      const httpRange = httpGetRange(request.headers);
+      const range = httpRange == null ? void 0 : {
+        start: httpRange.start,
+        end: httpRange.end == null ? null : httpRange.end + 1
+      };
+      const task = client.createTask(request.url, range != null ? range : void 0);
+      waitAbort(request.signal).catch((e) => {
+        task.cancel(e);
+      });
+      let result;
+      try {
+        result = yield task.start();
+      } catch (e) {
+        if (e instanceof UnexpectedHttpStatusError) {
+          const { status, statusText, headers: headers2, body: body2, underlayer: response2 } = e.response;
+          return response2 != null ? response2 : new Response(body2, { status, statusText, headers: headers2 });
+        }
+        throw e;
+      }
+      let { stream, contentType, size, fileSize, underlayer: response } = result;
+      if (!supportStreamOperation())
+        return response.underlayer;
+      let headers = createHeaders(response == null ? void 0 : response.headers);
+      headers.set("Accept-Ranges", "bytes");
+      headers.set("Access-Control-Allow-Origin", "*");
+      headers.set("Content-Type", contentType != null ? contentType : "");
+      headers.set("Content-Length", (size != null ? size : "") + "");
+      headers.set("Content-Transfer-Encoding", "binary");
+      if (range != null) {
+        headers.set("Content-Range", stringifyContentRange({
+          start: (_a = range.start) != null ? _a : 0,
+          end: (_b = range.end) != null ? _b : fileSize != null ? fileSize - 1 : null,
+          totalSize: fileSize
+        }));
+      }
+      const finalResp = new Response(stream, {
+        status: range == null ? 200 : 206,
+        statusText: range == null ? "OK" : "Partial Content",
+        headers
+      });
+      return finalResp;
+    });
+  }
+  const configQueryName = "MIKU_PROXY_CONFIG";
+  function getProxyConfig(scriptUrl) {
+    const search = scriptUrl.split("?")[1];
+    if (!search)
+      throw new Error("Invalid script url");
+    const params = new URLSearchParams(search);
+    const configText = params.get(configQueryName);
+    if (configText == null)
+      throw new Error("Invalid script url: no config info");
+    const config = JSON.parse(configText);
+    const makeREs = (rs) => rs == null ? void 0 : rs.map(({ source, flags }) => new RegExp(source, flags));
+    return __spreadProps(__spreadValues({}, config), {
+      patterns: config.patterns == null ? void 0 : mapObj(config.patterns, (rs) => makeREs(rs))
+    });
+  }
+  function matchDomains(urlObj, domains) {
+    const hostname = urlObj.hostname;
+    return domains.includes("*") || domains.includes(hostname);
+  }
+  function shouldUseCDN(request, { domains, patterns: patternsFromConfig }) {
+    if (request.method !== "GET")
+      return false;
+    const reqUrlObj = new URL(request.url);
+    if (!matchDomains(reqUrlObj, domains))
+      return false;
+    const patterns = __spreadValues(__spreadValues({}, defaultPatterns), patternsFromConfig);
+    return matchPatterns(reqUrlObj, patterns);
+  }
+  class Statistics {
+    constructor() {
+      __publicField(this, "windowFetchItemsMap", /* @__PURE__ */ new Map());
+    }
+    onFetchItem(windowId, url, response, ecdn, fallback) {
+      const item = {
+        url,
+        ecdn,
+        fallback: fallback != null ? fallback : false,
+        size: httpGetContentLength(response.headers)
+      };
+      let fetchItems = this.windowFetchItemsMap.get(windowId);
+      if (fetchItems == null) {
+        fetchItems = [];
+        this.windowFetchItemsMap.set(windowId, fetchItems);
+      }
+      fetchItems.push(item);
+    }
+    onWindowClose(windowId) {
+      this.windowFetchItemsMap.delete(windowId);
+    }
+    getFetchItems(windowId) {
+      return this.windowFetchItemsMap.get(windowId) || [];
+    }
+  }
+  function fetchWithCORS(_0) {
+    return __async(this, arguments, function* (request, extra = {}) {
+      const { url, headers, method, redirect, signal } = request;
+      const pageHost = self.location.host;
+      const reqHost = new URL(url).host;
+      if (pageHost === reqHost)
+        return fetch(request, extra);
+      const requestWithCORS = new Request(url, __spreadValues({ mode: "cors", credentials: "omit", headers, method, redirect, signal }, extra));
+      try {
+        const resp = yield fetch(requestWithCORS);
+        return resp;
+      } catch (e) {
+        console.warn("Request with CORS failed:", url, e);
+        return fetch(request);
       }
     });
+  }
+  class SatusLogger {
+    constructor(logger2) {
+      this.logger = logger2;
+    }
+    log(logData) {
+      return this.logger.log("PageStatusLog", logData);
+    }
+  }
+  const debug = getDebug("proxy/service-worker");
+  const perfIdMap = /* @__PURE__ */ new Map();
+  const scope = self;
+  const proxyConfig = getProxyConfig(scope.location.href);
+  const mikuClient = createClientForSW(proxyConfig);
+  const statistics = new Statistics();
+  const logger = new Logger(proxyConfig.app, void 0, void 0, 3);
+  const statusLogger = new SatusLogger(logger);
+  scope.addEventListener("activate", (event) => {
+    event.waitUntil(scope.clients.claim());
+    swClients.onRemove((id) => {
+      statistics.onWindowClose(id);
+    });
   });
-  exports.MikuPerformance = MikuPerformance;
-  exports.init = createPerformance;
-  Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
-  return exports;
-}({});
+  scope.addEventListener("fetch", (event) => __async(this, null, function* () {
+    if (event.clientId !== "") {
+      swClients.add(event.clientId);
+    }
+    const request = event.request;
+    const abortCtrl = new AbortController();
+    Object.defineProperty(request, "signal", { value: abortCtrl.signal });
+    swClients.whenRemoved(event.clientId, () => abortCtrl.abort(new AbortError(`Source client ${event.clientId} closed`)));
+    if (shouldUseCDN(request, proxyConfig)) {
+      debug("use cdn", request.url);
+      event.respondWith(proxyRequest(mikuClient, request).then(
+        (resp) => {
+          var _a;
+          if (proxyConfig.statistics) {
+            statistics.onFetchItem(event.clientId, request.url, resp, true, false);
+            statusLogger.log({
+              r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
+              text: resp.statusText,
+              code: resp.status,
+              url: request.url
+            });
+          }
+          return resp;
+        },
+        (e) => __async(this, null, function* () {
+          var _a, _b, _c;
+          if (e instanceof DNSResolveError || e instanceof NonECDNError || e instanceof NoAvailableECDNNodeError || e instanceof DoWithECDNNodeError) {
+            debug("Use fallback fetch for request", request.url, `, error:`, e);
+            if (proxyConfig.statistics) {
+              try {
+                const resp = yield fetchWithCORS(request, { signal: abortCtrl.signal });
+                statistics.onFetchItem(event.clientId, request.url, resp, true, true);
+                statusLogger.log({
+                  r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
+                  text: resp.statusText,
+                  code: resp.status,
+                  url: request.url
+                });
+                return resp;
+              } catch (e2) {
+                statusLogger.log({
+                  r_id: (_b = perfIdMap.get(event.clientId)) != null ? _b : "",
+                  text: e2 instanceof Error ? e2.message : "",
+                  code: -1,
+                  url: request.url
+                });
+                throw e2;
+              }
+            } else {
+              return fetch(request, { signal: abortCtrl.signal });
+            }
+          }
+          if (proxyConfig.statistics) {
+            statusLogger.log({
+              r_id: (_c = perfIdMap.get(event.clientId)) != null ? _c : "",
+              text: e instanceof Error ? e.message : "",
+              code: -1,
+              url: request.url
+            });
+          }
+          throw e;
+        })
+      ));
+      return;
+    }
+    if (request.method === "GET" && proxyConfig.statistics) {
+      event.respondWith(fetchWithCORS(request).then((resp) => {
+        var _a;
+        statistics.onFetchItem(event.clientId, request.url, resp, false);
+        statusLogger.log({
+          r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
+          text: resp.statusText,
+          code: resp.status,
+          url: request.url
+        });
+        return resp;
+      }).catch((e) => {
+        var _a;
+        statusLogger.log({
+          r_id: (_a = perfIdMap.get(event.clientId)) != null ? _a : "",
+          text: e instanceof Error ? e.message : "",
+          code: -1,
+          url: request.url
+        });
+        return e;
+      }));
+    }
+  }));
+  scope.addEventListener("message", (e) => __async(this, null, function* () {
+    if (!(e.source instanceof WindowClient))
+      return;
+    if (!isProxyMessage(e.data))
+      return;
+    debug("got proxy message", e.data, "from", e.source.id);
+    switch (e.data.type) {
+      case "window-available":
+        swClients.add(e.source.id);
+        break;
+      case "window-unavailable":
+        swClients.remove(e.source.id);
+        perfIdMap.delete(e.source.id);
+        break;
+      case "get-window-fetch-items":
+        const clientID = e.source.id;
+        const fetchItems = statistics.getFetchItems(clientID);
+        const windowClient = yield swClients.get(clientID);
+        if (windowClient == null)
+          throw new Error(`Invalid window client ID: ${clientID}`);
+        const message = {
+          mikuProxy: true,
+          type: "window-fetch-items",
+          items: fetchItems
+        };
+        windowClient.postMessage(message);
+        break;
+      case "get-perf-rid":
+        perfIdMap.set(e.source.id, e.data.rid);
+    }
+  }));
+  function createClientForSW(proxyConfig2) {
+    const clientConfig = __spreadValues({
+      debug: proxyConfig2.debug,
+      patterns: proxyConfig2.patterns
+    }, proxyConfig2.client);
+    const logger2 = new Logger(proxyConfig2.app, void 0, void 0, 3);
+    const resolver = new Resolver(logger2, proxyConfig2.app);
+    const httpClient = new DipHttpClient(resolver);
+    return new Client(proxyConfig2.app, __spreadProps(__spreadValues({}, clientConfig), { logger: logger2, httpClient }));
+  }
+})();
