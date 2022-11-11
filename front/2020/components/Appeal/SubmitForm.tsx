@@ -26,6 +26,10 @@ const textAreaMaxCount = 140
 const validateDomain = (domain: string) => !isHost(domain) && '请填写正确的域名'
 const validateUrl = (url: string) => !isUrl(url) && '请填写正确的地址'
 
+function isAttachmentAvailable(type: AppealType) {
+  return type !== AppealType.Url
+}
+
 function createTypeField(appealType = AppealType.Domain) {
   return new FieldState(appealType)
 }
@@ -45,7 +49,7 @@ function createState(
     reason: new FieldState('').validators(
       value => value.length > textAreaMaxCount && `不可超过 ${textAreaMaxCount} 个字`
     ),
-    attachment: fileUploadInput.createState()
+    attachment: fileUploadInput.createState().disableValidationWhen(() => !isAttachmentAvailable(typeState.value))
   })
 }
 
@@ -88,7 +92,9 @@ export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () =
       ...otherValues,
       ...(type === AppealType.Domain && { domains: getValidDomains() }),
       ...(type === AppealType.Url && { urls: getValidUrls() }),
-      attaches: [fileUploadInput.getValidValue(form.$.attachment)]
+      ...(isAttachmentAvailable(type) && {
+        attaches: [fileUploadInput.getValidValue(form.$.attachment)]
+      })
     }
 
     await submit(value)
@@ -125,7 +131,11 @@ export default observer(function SubmitCard({ onSubmitted }: { onSubmitted: () =
         <FormItem label="邮箱" required>
           <TextInput inputProps={{ name: 'email' }} state={fields.email} />
         </FormItem>
-        <FormItem label="申诉说明" required>
+        <FormItem
+          label="申诉说明"
+          required
+          className={isAttachmentAvailable(fields.type.value) ? undefined : style.hide}
+        >
           <FileUploadInput state={fields.attachment} />
         </FormItem>
         <FormItem label="补充说明">

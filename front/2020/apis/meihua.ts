@@ -96,7 +96,7 @@ interface AppealBaseInfo {
   mobile: string
   email: string
   reason: string
-  attaches: string[] // urls
+  attaches?: string[] // urls
 }
 
 export interface CreateAppealOptions extends AppealBaseInfo {
