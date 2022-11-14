@@ -5,7 +5,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { ParsedQuery, parse } from 'query-string'
 import { useRouter } from 'next/router'
-import { isBrowser, isExternal } from 'utils'
+import { isBrowser, isExternal, urlFor } from 'utils'
 import { host } from 'constants/env'
 
 export type HashValue = string | null
@@ -143,8 +143,76 @@ export function useUrl() {
     const timer = setInterval(() => {
       setUrl(window.location.href)
     }, 1000)
+
     return () => clearInterval(timer)
   }, [])
 
   return url
+}
+
+/**
+ * 获取当前 hostname
+ * 注意在服务端渲染的时候没有 window.lcoation 信息，也不知道 protocol / host
+ */
+export function useHostname() {
+  const asPath = useRouter().asPath
+  const [hostname, setHostname] = useState('')
+
+  // 路由发生变化时（站内跳转），更新 hostname
+  useEffect(() => {
+    setHostname(window.location.hostname)
+  }, [asPath])
+
+  // 如果是在外站（external），考虑该站点可能发生站内跳转，这里定时同步 hostname
+  // TODO: 通过更靠谱的方式来实现
+  useEffect(() => {
+    if (!isExternal()) return
+
+    const timer = setInterval(() => {
+      setHostname(window.location.hostname)
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  return hostname
+}
+
+/**
+ * 获取当前 pathname
+ * 例如：此时的 url 为 https://www.qiniu.com/products/kodo?foo=test#hash，则返回 /products/kodo
+ * 注意在服务端渲染的时候没有 window.lcoation 信息，也不知道 protocol / host
+ */
+export function usePathname() {
+  const asPath = useRouter().asPath
+  const [pathname, setPathname] = useState('')
+
+  // 路由发生变化时（站内跳转），更新 pathname
+  useEffect(() => {
+    setPathname(window.location.pathname)
+  }, [asPath])
+
+  // 如果是在外站（external），考虑该站点可能发生站内跳转，这里定时同步 pathname
+  // TODO: 通过更靠谱的方式来实现
+  useEffect(() => {
+    if (!isExternal()) return
+
+    const timer = setInterval(() => {
+      setPathname(window.location.pathname)
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  return pathname
+}
+
+export function useSignupUrl() {
+  const currentHostname = useHostname()
+  const currentPathname = usePathname()
+
+  return urlFor('https://portal.qiniu.com/signup', {
+    ref: currentHostname,
+    s_path: currentPathname === '/' ? undefined : currentPathname
+  })
 }

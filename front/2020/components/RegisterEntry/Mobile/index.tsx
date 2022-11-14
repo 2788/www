@@ -6,13 +6,17 @@
 import React from 'react'
 import Link, { Props as LinkProps } from 'components/Link'
 import { useMp } from 'hooks/ua'
+import { useSignupUrl } from 'hooks/url'
 import { MpPage } from 'constants/mp'
 
 import styles from './style.less'
 
 export default function MobileRegisterEntry() {
   const isMp = useMp()
+  const signupUrl = useSignupUrl()
+
   let linkProps: LinkProps
+
   if (isMp) {
     linkProps = {
       onClick(e: React.MouseEvent) {
@@ -22,7 +26,7 @@ export default function MobileRegisterEntry() {
     }
   } else {
     linkProps = {
-      href: 'https://portal.qiniu.com/signup'
+      href: signupUrl
     }
   }
   return (

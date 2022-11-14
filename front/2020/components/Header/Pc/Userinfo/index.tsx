@@ -10,7 +10,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { useUserInfo } from 'components/UserInfo'
-import { useUrl } from 'hooks/url'
+import { useUrl, useSignupUrl } from 'hooks/url'
 import { urlForSignin } from 'utils/route'
 import Overlay from './Overlay'
 import ArrowDown from './arrow-down.svg'
@@ -20,6 +20,7 @@ import DropdownForHeader from '../Dropdown'
 
 export default function Userinfo() {
   const currentUrl = useUrl()
+  const signupUrl = useSignupUrl()
   const user = useUserInfo()
 
   if (user?.signedIn) {
@@ -36,7 +37,7 @@ export default function Userinfo() {
   return (
     <span className={style.wrapper}>
       <a href={urlForSignin(currentUrl)} className={style.signin}>登录</a>
-      <a href="https://portal.qiniu.com/signup?ref=www.qiniu.com" className={style.signup}>立即注册</a>
+      <a href={signupUrl} className={style.signup}>立即注册</a>
     </span>
   )
 }
