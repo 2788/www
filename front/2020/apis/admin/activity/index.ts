@@ -2,7 +2,7 @@
  * @file 产品公告
  */
 
-import { get, post } from 'utils/fetch'
+import { get, getCode, post } from 'utils/fetch'
 import { ProgressState, locationMap } from 'constants/activity'
 import { mongoApiPrefix, wwwApiPrefix, handleResponseData } from '..'
 
@@ -55,9 +55,17 @@ interface IActivityRes {
 }
 
 // 根据 id 获取市场活动
-export function getActivityById(id: string): Promise<IActivity> {
-  return get(mongoApiPrefix + '/www-market-activity/' + id)
-    .then(data => genDisplayList([data])[0])
+export async function getActivityById(id: string): Promise<IActivity | null> {
+  // catch 掉接口 404 错误
+  try {
+    const data = await get(mongoApiPrefix + '/www-market-activity/' + id)
+    return genDisplayList([data])[0]
+  } catch (err) {
+    if (Number(getCode(err)) === 404) {
+      return null
+    }
+    throw err
+  }
 }
 
 interface IListRes {

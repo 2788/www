@@ -472,6 +472,13 @@ export type PartialProductData = Product | {
   url?: string | null
 }
 
+// TODO：之后把这些函数都挪走，不放在 constant 里
+/** 通过 path 反查 Product，用于 priceUrlMap[product] 和 getProductPageNotices */
+export function getProduct(path: string) {
+  const products = Object.keys(urlMap) as Product[]
+  return products.find(product => urlMap[product] === `/product/${path}`) || null
+}
+
 export function normalizeProduct(val: Product | PartialProductData): ProductData {
   if (typeof val === 'string') {
     return {

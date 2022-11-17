@@ -183,7 +183,7 @@ export interface ProductPageNotice {
  * `productCode` 应当与该产品路由（`/product/${name}`）中的 `name` 一致。
  * 关于广告投放平台：https://cf.qiniu.io/pages/viewpage.action?pageId=80465650
  */
-const productCodeMap = {
+export const productCodeMap = {
   [Product.Kodo]: 'kodo',
   [Product.Dora]: 'dora',
   [Product.Cdn]: 'qcdn',

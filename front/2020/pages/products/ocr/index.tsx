@@ -11,7 +11,7 @@ import PageBanner from 'components/Product/PageBanner'
 import { useMobile } from 'hooks/ua'
 import { useApiWithParams } from 'hooks/api'
 
-import { getNews } from 'apis/admin/product'
+import { getNews, getProductInfo } from 'apis/admin/product'
 import { getProductPageNotices } from 'apis/thallo'
 import { getGlobalBanners } from 'apis/admin/global-banners'
 import { urlForPrice } from 'utils/route'
@@ -27,12 +27,14 @@ import { useWechatConsultModal } from 'components/WechatConsultModal'
 import Related, { ProductItem as RelatedProduct } from 'components/Solution/Related'
 import { useBtns } from 'hooks/product-btn'
 import { Product } from 'constants/products'
+import { getIconMap } from 'apis/admin/icon-lib'
 
 import banner from './banner.png'
+import ProductPage, { hasProductPage } from '../[product]'
 
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
-function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
+function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners' | 'productInfo' | 'iconMap'>) {
 
   const { showModal: showWechatConsultModal } = useWechatConsultModal()
 
@@ -80,7 +82,17 @@ function PageContent({ notices, newsRes }: Omit<Props, 'globalBanners'>) {
   )
 }
 
-export default function OcrPage({ globalBanners, ...pageProps }: Props) {
+export default function OcrPage({ globalBanners, productInfo, iconMap, ...pageProps }: Props) {
+  if (productInfo && hasProductPage(productInfo)) {
+    return (
+      <ProductPage
+        notices={pageProps.notices}
+        productInfo={productInfo}
+        globalBanners={globalBanners}
+        iconMap={iconMap} />
+    )
+  }
+
   return (
     <Layout
       title="票证自动识别 OCR"
@@ -98,7 +110,9 @@ export async function getServerSideProps() {
     props: {
       notices: await getProductPageNotices(Product.Ocr),
       newsRes: await getNews({ product: Product.Ocr }),
-      globalBanners: await getGlobalBanners()
+      productInfo: await getProductInfo(Product.Ocr),
+      globalBanners: await getGlobalBanners(),
+      iconMap: await getIconMap()
     }
   }
 }

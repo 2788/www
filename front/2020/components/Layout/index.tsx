@@ -15,6 +15,7 @@ import CpsVisitReporter from 'components/CpsVisitReporter'
 import { GlobalBanner } from 'apis/admin/global-banners'
 import WechatConsultModal, { ModalProvider as WechatConsultModalProvider } from 'components/WechatConsultModal'
 import BDVidReporter from 'components/BDVidReporter'
+import { context as libIconContext, IconMap } from 'components/LibIcon'
 
 import ErrorBoundary from './ErrorBoundary'
 import UaProvider from './UaProvider'
@@ -35,6 +36,7 @@ type BaseProps = {
   /** 页面 description（SEO 用） */
   description: string
   children: ReactNode
+  iconMap?: IconMap
 }
 
 export type Props = BaseProps & ({
@@ -45,7 +47,9 @@ export type Props = BaseProps & ({
   globalBanners?: undefined
 })
 
-export default function Layout({ title, keywords, description, forceSimple, globalBanners, children }: Props) {
+export default function Layout({
+  title, keywords, description, forceSimple, globalBanners, iconMap, children
+}: Props) {
   title = !title ? defaultTitle : (title + titleSuffix)
 
   usePv(title)
@@ -70,7 +74,11 @@ export default function Layout({ title, keywords, description, forceSimple, glob
           {keywordsMeta}
           {descriptionMeta}
         </Head>
-        <ContentWrapper forceSimple={forceSimple} globalBanners={globalBanners}>{children}</ContentWrapper>
+        <ContentWrapper
+          forceSimple={forceSimple}
+          globalBanners={globalBanners}
+          iconMap={iconMap}
+        >{children}</ContentWrapper>
       </UserInfoProvider>
     </UaProvider>
   )
@@ -79,33 +87,36 @@ export default function Layout({ title, keywords, description, forceSimple, glob
 function ContentWrapper({
   forceSimple = false,
   globalBanners,
+  iconMap,
   children
-}: PropsWithChildren<Pick<Props, 'forceSimple' | 'globalBanners'>>) {
+}: PropsWithChildren<Pick<Props, 'forceSimple' | 'globalBanners' | 'iconMap'>>) {
   const keepSimple = useSimple()
   const notSimple = !forceSimple && !keepSimple
 
   return (
     <OverlayProvider>
-      <WechatConsultModalProvider>
-        <feedback.ModalProvider>
-          {/* 企业微信会自动寻找第一张 img 作为分享出去的图标 */}
-          <img src={logo} style={{ display: 'none' }} />
-          {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
-          {notSimple && <Header />}
-          <ErrorBoundary>
-            {children}
-          </ErrorBoundary>
-          {notSimple && <Footer />}
-          <RegisterEntry />
-          {notSimple && <feedback.EntryV4 />}
-          <feedback.Modal />
-          <ScrollToTop />
-          <WechatConsultModal />
-        </feedback.ModalProvider>
-      </WechatConsultModalProvider>
-      <OverlaySlot />
-      <CpsVisitReporter />
-      <BDVidReporter />
+      <libIconContext.Provider value={iconMap || null}>
+        <WechatConsultModalProvider>
+          <feedback.ModalProvider>
+            {/* 企业微信会自动寻找第一张 img 作为分享出去的图标 */}
+            <img src={logo} style={{ display: 'none' }} />
+            {notSimple && <GlobalBannerComp banners={globalBanners ?? []} />}
+            {notSimple && <Header />}
+            <ErrorBoundary>
+              {children}
+            </ErrorBoundary>
+            {notSimple && <Footer />}
+            <RegisterEntry />
+            {notSimple && <feedback.EntryV4 />}
+            <feedback.Modal />
+            <ScrollToTop />
+            <WechatConsultModal />
+          </feedback.ModalProvider>
+        </WechatConsultModalProvider>
+        <OverlaySlot />
+        <CpsVisitReporter />
+        <BDVidReporter />
+      </libIconContext.Provider>
     </OverlayProvider>
   )
 }

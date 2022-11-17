@@ -7,15 +7,15 @@ import React from 'react'
 import { GetServerSidePropsContext } from 'next'
 
 import {
-  ContentId, ContentType, contentTypeTextMap, contentCategoryTextMap, ContentDetail, ReleasedContent, Preview
+  ContentId, ContentType, contentTypeTextMap, contentCategoryTextMap, ContentDetail, Preview
 } from 'constants/pgc/content'
 import { getContent, listAllReleasedContents } from 'apis/admin/pgc/content'
 import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
-import Redirect from 'components/Redirect'
 import Layout from 'components/Layout'
 import Article, { mdTextToHTMLAst, AstRootNode } from 'components/pgc/content/Article'
 import Video from 'components/pgc/content/Video'
 import File from 'components/pgc/content/File'
+import NotFoundPage from 'pages/404'
 
 export interface Props {
   id: ContentId | null
@@ -31,9 +31,7 @@ export default function PgcDetail(
   { id, type, contentDetail, articleHtmlAst, createdAt, preview, globalBanners }: Props
 ) {
   if (type == null || contentDetail == null) {
-    return (
-      <Redirect target="/404" />
-    )
+    return <NotFoundPage globalBanners={globalBanners} />
   }
 
   const title = contentDetail.title || `${contentDetail.category}${type}`
@@ -76,9 +74,18 @@ export default function PgcDetail(
   )
 }
 
-export async function getServerSideProps({ params }: GetServerSidePropsContext<{ id: ContentId }>) {
+export async function getServerSideProps({ params, res }: GetServerSidePropsContext<{ id: ContentId }>) {
   const id = params!.id
-  const content = (await getContent(id)) as ReleasedContent
+
+  const content = await getContent(id)
+
+  if (content == null || content.release == null) {
+    // TODO：暂时这么处理，升级 next 后可以：return { notFound: true }
+    // 参考：https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props#notfound
+    res.statusCode = 404
+    return { props: {} }
+  }
+
   const articleHtmlAst = content.type === ContentType.Article
     ? await mdTextToHTMLAst(content.release!.content)
     : null

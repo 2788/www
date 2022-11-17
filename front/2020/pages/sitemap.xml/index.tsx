@@ -13,6 +13,8 @@ import { getServerSidePaths as getActivityPagePaths } from '../activity/page/[pa
 import { getServerSidePaths as getPgcDetailPaths } from '../pgc/detail/[id]'
 import { getServerSidePaths as getPgcTypePaths } from '../pgc/list/[type]'
 import { getServerSidePaths as getPgcTypeCategoryPaths } from '../pgc/list/[type]/[category]'
+import { getServerSidePaths as getProductPagePaths } from '../products/[product]'
+import { getServerSidePaths as getSolutionPagePaths } from '../solutions/[solution]'
 
 export default function Sitemap() {
   return null
@@ -29,6 +31,12 @@ async function getPaths(staticPaths: string[]): Promise<string[]> {
     ),
     ...(await getPgcDetailPaths()).paths.map(
       ({ params: { id } }) => `${process.env.NEXT_PUBLIC_HOST}/pgc/detail/${id}`
+    ),
+    ...(await getProductPagePaths()).paths.map(
+      ({ params: { path } }) => `${process.env.NEXT_PUBLIC_HOST}/products/${path}`
+    ),
+    ...(await getSolutionPagePaths()).paths.map(
+      ({ params: { path } }) => `${process.env.NEXT_PUBLIC_HOST}/solutions/${path}`
     ),
     ...(await getPgcTypePaths()).paths.map(
       ({ params: { type } }) => `${process.env.NEXT_PUBLIC_HOST}/pgc/list/${type}`

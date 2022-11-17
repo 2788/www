@@ -1,13 +1,17 @@
 import React from 'react'
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 
 import { getActivityById, IActivity, getActivities } from 'apis/admin/activity'
-import { getGlobalBanners } from 'apis/admin/global-banners'
+import { getGlobalBanners, GlobalBanner } from 'apis/admin/global-banners'
 import Layout from 'components/Product/Layout'
 import Banner from 'components/pages/activity/detail/Banner'
 import DetailInfo from 'components/pages/activity/detail/Info'
+import NotFoundPage from 'pages/404'
 
-type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+type Props = {
+  globalBanners?: GlobalBanner[]
+  activity: IActivity
+}
 
 function Page({ activity }: { activity: IActivity | null }) {
 
@@ -21,34 +25,41 @@ function Page({ activity }: { activity: IActivity | null }) {
 }
 
 export default function Detail({ globalBanners, activity }: Props) {
+  if (activity == null) {
+    return <NotFoundPage globalBanners={globalBanners} />
+  }
+
   const title = activity ? activity.title : '活动详情'
   return (
     <Layout
       title={title}
       keywords="七牛云, 活动, 会议"
       description=""
-      globalBanners={globalBanners}
+      globalBanners={globalBanners || []}
     >
       <Page activity={activity} />
     </Layout>
   )
 }
 
-async function getData(id?: string) {
-  // id 为空就别发请求了
-  if (!id) return null
-  return getActivityById(id)
-}
+export async function getServerSideProps({ params, res }: GetServerSidePropsContext<{ id: string }>) {
+  let activity = null
 
-export async function getServerSideProps({ params }: GetServerSidePropsContext<{ id: string }>) {
-  const [activity, globalBanners] = await Promise.all([
-    getData(params?.id),
-    getGlobalBanners()
-  ] as const)
+  if (params?.id) {
+    activity = await getActivityById(params.id)
+  }
+
+  if (activity == null) {
+    // TODO：暂时这么处理，升级 next 后可以：return { notFound: true }
+    // 参考：https://nextjs.org/docs/api-reference/data-fetching/get-server-side-props#notfound
+    res.statusCode = 404
+    return { props: {} }
+  }
+
   return {
     props: {
       activity,
-      globalBanners
+      globalBanners: await getGlobalBanners()
     }
   }
 }

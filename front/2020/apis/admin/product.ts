@@ -2,11 +2,13 @@
  * @file 产品相关 admin 接口
  */
 
-import { get } from 'utils/fetch'
+import { get, getCode } from 'utils/fetch'
 import { ignoreProductPriceError } from 'constants/env'
 import { Product } from 'constants/products'
 import { NewsType } from 'constants/products/news'
-import { mongoApiPrefix, handleResponseData } from '.'
+import { ComponentName } from 'constants/products/components'
+import { BannerButton } from 'hooks/product-btn'
+import { get as mongoGet, mongoApiPrefix, handleResponseData, listAll } from '.'
 
 export interface IPage {
   id: string
@@ -82,4 +84,85 @@ export async function getPriceFileContent(product: Product): Promise<string> {
     }
     throw e
   }
+}
+
+export interface SectionsConfig {
+  /** section 内容的 key，当前区块在可导航区域中的唯一标示，也会用来作为 URL hash 的值 */
+  name: string
+  /** section 内容标题，即对应 tab 项中的文本内容 */
+  title: string
+
+  component: {
+    /** 组件名称，组件被 Section 包裹 */
+    name: ComponentName
+    /** 组件参数 */
+    props: unknown
+  }
+}
+
+/** 产品描述 */
+export interface ProductDesc {
+  /** 长描述，用于产品页 banner、meta 标签 description 等 */
+  detail: string
+  /** 短描述 */
+  brief: string
+}
+
+/** 产品图标 */
+export interface ProductIcons {
+  /** 线框（默认） */
+  line: string
+  /** 线框（小） */
+  lineSmall: string
+  /** 毛玻璃（默认） */
+  glass: string
+}
+
+/** 产品信息 */
+export interface ProductInfo {
+  /** 产品页相对路径，全局唯一，同时用作产品 id */
+  path: string
+  /** 产品名字，全局唯一 */
+  name: string
+
+  /** 产品页标题 */
+  title: string
+  /** 关键字列表、产品标签 */
+  keywords: string[]
+  /** 产品描述 */
+  desc: ProductDesc
+
+  /** 产品图标 */
+  icon: ProductIcons
+
+  /** 产品页 banner 配置 */
+  banner?: {
+    bgImgUrl: {
+      large: string
+      small?: string
+    }
+    bgColor: string
+    /** 是否为浅色风格（默认深色风格）；浅色风格对应深色按钮和深色文字，深色风格反之 */
+    light: boolean
+    buttons: BannerButton[]
+  } | null
+  /** 产品页组件列表配置 */
+  sections: SectionsConfig[]
+}
+
+// 获取产品页面配置
+export async function getProductInfo(path: string): Promise<ProductInfo | null> {
+  // catch 掉接口 404 错误
+  try {
+    return await mongoGet<ProductInfo>('www-product-info', path)
+  } catch (err) {
+    if (Number(getCode(err)) === 404) {
+      return null
+    }
+    throw err
+  }
+}
+
+export async function listAllProductInfos(ids?: string[]) {
+  return listAll<ProductInfo>('www-product-info', ids ? { query: { path: { $in: ids } } } : undefined)
 }

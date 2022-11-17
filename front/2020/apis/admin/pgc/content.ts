@@ -4,6 +4,7 @@
  */
 
 import { ContentId, ContentType, ContentCategory, Content, ReleasedContent } from 'constants/pgc/content'
+import { getCode } from 'utils/fetch'
 
 import { get, list, listAll } from '..'
 
@@ -47,6 +48,14 @@ export async function listAllReleasedContents(options: BaseListOptions = {}) {
   return listAll<ReleasedContent>(resource, getListParams(options))
 }
 
-export function getContent(id: ContentId) {
-  return get<Content>(resource, id)
+export async function getContent(id: ContentId) {
+  // catch 掉接口 404 错误
+  try {
+    return await get<Content>(resource, id)
+  } catch (err) {
+    if (Number(getCode(err)) === 404) {
+      return null
+    }
+    throw err
+  }
 }

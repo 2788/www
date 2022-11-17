@@ -146,6 +146,22 @@
     }
   }
 
+  &.typeGreyHollow {
+    .withColor(
+      @grey-7, transparent, transparent,
+      @grey-1, @grey-7, @grey-7,
+      @grey-4, #F2F2F2, #F2F2F2
+    );
+
+    &.withBorder {
+      .withColor(
+        @grey-7, transparent, @grey-7,
+        @grey-1, @grey-7, @grey-7,
+        @grey-4, #F2F2F2, #F2F2F2
+      );
+    }
+  }
+
   &.sizeSmall {
     .withSize(32px, 96px);
     // TODO: 移动端要不要再小一号？

@@ -8,6 +8,7 @@ import React, { useState, useMemo, useEffect } from 'react'
 import { ContentType, ContentDetail } from 'constants/pgc/content'
 import { mdTextToHTMLAst, AstRootNode } from 'components/pgc/content/Article'
 
+import { usePreviewMessage } from 'hooks/admin-message'
 import Detail from '../[id]'
 
 const msgKey = 'QINIU_PGC_CONTENT_DETAIL_PREVIEW'
@@ -20,55 +21,14 @@ interface WwwPreview {
 }
 
 export default function PgcDetailPreview() {
-  const [previewData, setPreviewData] = useState<WwwPreview>()
+  const previewData = usePreviewMessage<WwwPreview>(msgKey)
   const [articleHtmlAst, setArticleHtmlAst] = useState<AstRootNode | null>(null)
 
   useEffect(() => {
-    window.parent.postMessage(`[${msgKey}] READY`, '*')
-  }, [])
-
-  useEffect(() => {
-    async function receiveMessage(event: MessageEvent) {
-      if (event.origin === window.location.origin) {
-        return
-      }
-
-      const { hostname } = new URL(event.origin)
-      if (
-        ![
-          /\.qiniu\.com$/,
-          /\.qiniu\.io$/,
-          /^localhost$/
-        ].some(pattern => pattern.test(hostname))
-      ) {
-        return
-      }
-
-      let input
-      try {
-        input = JSON.parse(event.data)
-      } catch (error) {
-        return
-      }
-
-      if (!(msgKey in input)) {
-        return
-      }
-
-      const data: WwwPreview = input[msgKey]
-
-      if (data.type === ContentType.Article) {
-        setArticleHtmlAst(await mdTextToHTMLAst(data.contentDetail.content))
-      }
-
-      setPreviewData(data)
+    if (previewData && previewData.type === ContentType.Article) {
+      mdTextToHTMLAst(previewData.contentDetail.content).then(setArticleHtmlAst)
     }
-
-    window.addEventListener('message', receiveMessage, false)
-    return () => {
-      window.removeEventListener('message', receiveMessage, false)
-    }
-  }, [])
+  }, [previewData])
 
   const preview = useMemo(() => (
     previewData

@@ -6,6 +6,7 @@
 import React, { ReactNode } from 'react'
 import Button, { Props } from 'components/UI/Button'
 import { Button as NavButton } from 'components/Product/Navigator'
+import { useWechatConsultModal } from 'components/WechatConsultModal'
 import { useMobile, useMp } from './ua'
 
 export type BtnOptions = {
@@ -68,6 +69,105 @@ export function useBtns(firstBtn: BtnOptions, ...otherBtns: BtnOptions[]) {
   ].filter(Boolean)
 
   // 确保只有一个主要按钮（面形），其余的都为次要按钮（线形）
+  const navBtnsView = [
+    firstBtnProps && <NavButton key={0} type="primary" {...firstBtnProps} />,
+    ...otherBtnsProps.map((otherBtn, i) => (
+      <NavButton key={i + 1} withBorder {...otherBtn} type="hollow" />
+    ))
+  ].filter(Boolean)
+
+  return {
+    banner: bannerBtnViews,
+    nav: navBtnsView
+  }
+}
+
+export enum ButtonClickType {
+  Consult = 'consult',
+  WebLink = 'webLink',
+  MpLink = 'mpLink'
+}
+
+interface ButtonClickConsult {
+  type: ButtonClickType.Consult
+}
+
+interface ButtonClickWebLink {
+  type: ButtonClickType.WebLink
+  url: string
+}
+
+interface ButtonClickMpLink {
+  type: ButtonClickType.MpLink
+  url: string
+}
+
+type ButtonClickTypes = ButtonClickConsult | ButtonClickWebLink | ButtonClickMpLink
+
+interface ButtonClick<T extends ButtonClickTypes> {
+  click: T
+}
+
+type ButtonPlatform<BC extends ButtonClickTypes> = ButtonClick<BC>
+
+export interface BannerButton {
+  text: string
+  pc?: ButtonPlatform<ButtonClickWebLink | ButtonClickConsult>
+  mobile?: ButtonPlatform<ButtonClickWebLink | ButtonClickConsult>
+  mp?: ButtonPlatform<ButtonClickWebLink | ButtonClickMpLink>
+}
+
+/**
+ * @param dark 次要按钮是否为深色风格按钮，默认浅色风格
+ */
+export function useAdminBtns(buttons: BannerButton[], dark?: boolean) {
+  const isMobile = useMobile()
+  const isPc = !isMobile
+  const isMp = useMp()
+  const { showModal: showWechatConsultModal } = useWechatConsultModal()
+
+  const [firstBtnProps, ...otherBtnsProps] = buttons
+    .map(
+      ({ text, pc, mobile, mp }) => ({
+        children: text,
+        click: (isPc && pc && pc.click)
+          || (isMobile && mobile && mobile.click)
+          || (isMp && mp && mp.click)
+          || undefined
+      })
+    )
+    .filter(({ click }) => !!click)
+    .map(({ children, click }) => {
+      const btnProps: Props = { children }
+
+      if (!click) {
+        return btnProps
+      }
+
+      if (click.type === ButtonClickType.WebLink) {
+        btnProps.href = click.url
+      }
+
+      if (click.type === ButtonClickType.MpLink) {
+        btnProps.onClick = () => wx.miniProgram.navigateTo({ url: click.url })
+      }
+
+      if (click.type === ButtonClickType.Consult) {
+        btnProps.onClick = showWechatConsultModal
+      }
+
+      return btnProps
+    })
+
+  // 确保只有一个主要按钮（面形 蓝底白字），其余的都为次要按钮（线形 透明底白字）
+  const bannerBtnViews = [
+    firstBtnProps && <Button key={0} type="primary" {...firstBtnProps} />,
+    ...otherBtnsProps.map((otherBtn, i) => (
+      <Button key={i + 1} type={dark ? 'grey-hollow' : 'primary-hollow'} withBorder {...otherBtn} />
+    ))
+  ].filter(Boolean)
+
+  // 确保只有一个主要按钮（面形 蓝底白字），其余的都为次要按钮（透明 底蓝字）
   const navBtnsView = [
     firstBtnProps && <NavButton key={0} type="primary" {...firstBtnProps} />,
     ...otherBtnsProps.map((otherBtn, i) => (

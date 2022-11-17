@@ -19,6 +19,8 @@ export interface IPageBannerProps {
   /** @deprecated 后面 icon 会删掉，全部替换成背景图 `bgImgUrl` 的方式 */
   icon?: ReactNode
   bgImgUrl?: string
+  /** 是否浅色风格，默认为深色风格 light = fasle（浅色风格文字为深色） */
+  light?: boolean
 }
 
 export const defaultProps: IPageBannerProps = {
@@ -31,7 +33,7 @@ export const defaultProps: IPageBannerProps = {
 }
 
 export default function PageBanner(props: IPageBannerProps) {
-  const { title, desc, bgColor, btns, icon, bgImgUrl } = { ...defaultProps, ...props }
+  const { title, desc, bgColor, btns, icon, bgImgUrl, light = false } = { ...defaultProps, ...props }
   const isMobile = useMobile()
   const isBtnsValid = btns && btns.length
   const pcBanner = bgImgUrl && !isMobile
@@ -90,7 +92,7 @@ export default function PageBanner(props: IPageBannerProps) {
           mobileBanner && styles.mobileBanner
         )}
       >
-        <div className={classnames(styles.content, !isBtnsValid && styles.marginTopNone)}>
+        <div className={classnames(styles.content, !isBtnsValid && styles.marginTopNone, light && styles.darkText)}>
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.desc}>{desc}</div>
           {renderBtnWrapper()}
