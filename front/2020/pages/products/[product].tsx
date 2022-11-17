@@ -35,7 +35,7 @@ type PageContentProps = Omit<ProductPageProps, 'iconMap' | 'globalBanners' | 'is
 function PageContent({ notices, productInfo }: PageContentProps) {
   const isMobile = useMobile()
 
-  const { path, title, desc, banner, sections } = productInfo
+  const { path, name, desc, banner, sections } = productInfo
   const product = getProduct(path)
 
   const priceUrl = product ? priceUrlMap[product] || undefined : undefined
@@ -49,7 +49,7 @@ function PageContent({ notices, productInfo }: PageContentProps) {
     <>
       {banner && (
         <PageBanner
-          title={title}
+          title={name}
           desc={desc.detail}
           bgImgUrl={isMobile ? (banner.bgImgUrl.small || banner.bgImgUrl.large) : banner.bgImgUrl.large}
           bgColor={banner.bgColor}
@@ -62,13 +62,13 @@ function PageContent({ notices, productInfo }: PageContentProps) {
       <Navigator priceLink={priceUrl}>{btns.nav}</Navigator>
 
       {sections.map(section => {
-        const { name, title: sectionTitle, component } = section
+        const { name: sectionName, title: sectionTitle, component } = section
         const Component = ComponentMap[component.name]
         if (!Component) {
           return null
         }
         return (
-          <Section key={name} name={name} title={sectionTitle} withTailPadding>
+          <Section key={sectionName} name={sectionName} title={sectionTitle} withTailPadding>
             <Component {...component.props as any} />
           </Section>
         )
